@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 440,-35 440,4 -4,4"/>
 <!-- Node23 -->
 <g id="node1" class="node"><title>Node23</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="load the consoles color table">
 <polygon fill="#bfbfbf" stroke="black" points="302,-0.5 302,-30.5 436,-30.5 436,-0.5 302,-0.5"/>
 <text text-anchor="start" x="310" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="369" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::load_colors</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node24 -->
 <g id="node2" class="node"><title>Node24</title>
-<g id="a_node2"><a xlink:href="namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" target="_top" xlink:title="runs the game.">
 <polygon fill="white" stroke="black" points="164,-6 164,-25 266,-25 266,-6 164,-6"/>
 <text text-anchor="middle" x="215" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::run_game</text>
 </a>

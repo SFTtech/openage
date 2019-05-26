@@ -33,9 +33,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Quick-formatter for floats when working with string streams. </para>
     </briefdescription>
     <detaileddescription>
-<para>Quick-formatter for floats when working with string streams. Usage: cout &lt;&lt; FormatFloat{1.0, 10}; </para>
+<para>Usage: cout &lt;&lt; FormatFloat{1.0, 10}; </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5802">

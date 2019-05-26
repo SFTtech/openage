@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 327,-35 327,4 -4,4"/>
 <!-- Node9 -->
 <g id="node1" class="node"><title>Node9</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Load a single chunk in the background (through the job manager).">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 168,-30.5 168,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicResource</text>
 <text text-anchor="middle" x="84" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::load_chunk_async</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node10 -->
 <g id="node2" class="node"><title>Node10</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_group.xhtml#a793449eefa0dcc327cd2dc8bdd4144bc" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_group.xhtml#a793449eefa0dcc327cd2dc8bdd4144bc" target="_top" xlink:title="Enqueues the given function into the job group&#39;s worker thread.">
 <polygon fill="white" stroke="black" points="204,-0.5 204,-30.5 323,-30.5 323,-0.5 204,-0.5"/>
 <text text-anchor="start" x="212" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobGroup</text>
 <text text-anchor="middle" x="263.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::enqueue</text>

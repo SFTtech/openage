@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 414,-46 414,4 -4,4"/>
 <!-- Node17 -->
 <g id="node1" class="node"><title>Node17</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Initializes the mesh data with a simple quadrilateral spanning the whole window space,...">
 <polygon fill="#bfbfbf" stroke="black" points="300,-0.5 300,-41.5 410,-41.5 410,-0.5 300,-0.5"/>
 <text text-anchor="start" x="308" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="308" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::MeshData</text>

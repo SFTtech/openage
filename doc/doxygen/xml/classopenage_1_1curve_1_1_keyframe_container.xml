@@ -18,9 +18,9 @@
         <argsstring></argsstring>
         <name>curvecontainer</name>
         <briefdescription>
+<para>The underlaying container type. </para>
         </briefdescription>
         <detaileddescription>
-<para>The underlaying container type.</para>
 <para>The most important property of this container is the iterator validity on insert and remove. </para>
         </detaileddescription>
         <inbodydescription>
@@ -33,9 +33,9 @@
         <argsstring></argsstring>
         <name>KeyframeIterator</name>
         <briefdescription>
+<para>The iterator type to access elements in the container. </para>
         </briefdescription>
         <detaileddescription>
-<para>The iterator type to access elements in the container </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -49,9 +49,9 @@
         <argsstring></argsstring>
         <name>loop</name>
         <briefdescription>
+<para>The data store. </para>
         </briefdescription>
         <detaileddescription>
-<para>The data store. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -88,9 +88,9 @@
           <declname>loop</declname>
         </param>
         <briefdescription>
+<para>need the datamanger for change management </para>
         </briefdescription>
         <detaileddescription>
-<para>need the datamanger for change management </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -125,9 +125,9 @@
           <declname>hint</declname>
         </param>
         <briefdescription>
+<para>Get the last element with e-&gt;time &lt;= time, given a hint where to start the search. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the last element with e-&gt;time &lt;= time, given a hint where to start the search.</para>
 <para>Select the element that directly preceedes the given timestamp.</para>
 <para>Without a hint, start to iterate at the beginning of the buffer, and return the element last element before e-&gt;time &gt; time. This method returns nullptr, if begin-&gt;time &gt; time. </para>
         </detaileddescription>
@@ -148,9 +148,9 @@
           <declname>time</declname>
         </param>
         <briefdescription>
+<para>Get the last element with e-&gt;time &lt;= time, without a hint where to start searching. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the last element with e-&gt;time &lt;= time, without a hint where to start searching.</para>
 <para>The usage of this method is discouraged - except if there is absolutely no chance for you to have a hint (or the container is known to be nearly empty) </para>
         </detaileddescription>
         <inbodydescription>
@@ -169,10 +169,11 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>Insert a new element without a hint. </para>
         </briefdescription>
         <detaileddescription>
 <para><xrefsect id="todo_1_todo000008"><xreftitle>Todo</xreftitle><xrefdescription><para>add something like <computeroutput>previous</computeroutput> that returns element with e-&gt;time &lt; time probably just calls <computeroutput>last</computeroutput> and walks back one element if that is not at <ref refid="classopenage_1_1curve_1_1_keyframe_container_1a4469b92a601c321c3353c663853d9851" kindref="member">begin()</ref> already </para>
-</xrefdescription></xrefsect>Insert a new element without a hint.</para>
+</xrefdescription></xrefsect></para>
 <para>This function is not recommended for use, whenever possible, keep a hint to insert the data. </para>
         </detaileddescription>
         <inbodydescription>
@@ -196,9 +197,10 @@
           <declname>hint</declname>
         </param>
         <briefdescription>
+<para>Insert a new element. </para>
         </briefdescription>
         <detaileddescription>
-<para>Insert a new element. The hint shall give an approximate location, where the inserter will start to look for a insertion point. If a good hint is given, the runtime of this function will not be affected by the current history size. </para>
+<para>The hint shall give an approximate location, where the inserter will start to look for a insertion point. If a good hint is given, the runtime of this function will not be affected by the current history size. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -218,9 +220,10 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>Create and insert a new element without submitting a hint. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create and insert a new element without submitting a hint. The use of this function is discouraged, use it only, if your really do not have the possibility to get a hint </para>
+<para>The use of this function is discouraged, use it only, if your really do not have the possibility to get a hint </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -246,9 +249,10 @@
           <declname>hint</declname>
         </param>
         <briefdescription>
+<para>Create and insert a new element. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create and insert a new element. The hint gives an approximate location. </para>
+<para>The hint gives an approximate location. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -265,10 +269,10 @@
           <declname>last_valid</declname>
         </param>
         <briefdescription>
+<para>Erase all elements that come after this last valid element. </para>
         </briefdescription>
         <detaileddescription>
-<para>Erase all elements that come after this last valid element.</para>
-<para>Go from the end to the last_valid element, and call erase on all of them </para>
+<para>Go from the end to the last_valid element, and call erase on all of them. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -285,9 +289,9 @@
           <declname>it</declname>
         </param>
         <briefdescription>
+<para>Erase a single element from the curve. </para>
         </briefdescription>
         <detaileddescription>
-<para>Erase a single element from the curve.</para>
 <para>Delete the element from the list and call delete on it. </para>
         </detaileddescription>
         <inbodydescription>
@@ -301,9 +305,9 @@
         <argsstring>() const</argsstring>
         <name>begin</name>
         <briefdescription>
+<para>Obtain an iterator to the first value with the smallest timestamp. </para>
         </briefdescription>
         <detaileddescription>
-<para>Obtain an iterator to the first value with the smallest timestamp. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -316,9 +320,9 @@
         <argsstring>() const</argsstring>
         <name>end</name>
         <briefdescription>
+<para>Obtain an iterator to the position after the last value. </para>
         </briefdescription>
         <detaileddescription>
-<para>Obtain an iterator to the position after the last value. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -331,9 +335,9 @@
         <argsstring>()</argsstring>
         <name>dump</name>
         <briefdescription>
+<para>Debugging method to be used from gdb to understand bugs better. </para>
         </briefdescription>
         <detaileddescription>
-<para>Debugging method to be used from gdb to understand bugs better. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -343,9 +347,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A timely ordered list with several management functions. </para>
     </briefdescription>
     <detaileddescription>
-<para>A timely ordered list with several management functions</para>
 <para>This class manages different time-based management functions for list approach that lies underneath. It contains list to be accessed via a non-accurate timing functionality, this means, that for getting a value, not the exact timestamp has to be known, it will always return the one closest, less or equal to the requested one. </para>
     </detaileddescription>
     <collaborationgraph>

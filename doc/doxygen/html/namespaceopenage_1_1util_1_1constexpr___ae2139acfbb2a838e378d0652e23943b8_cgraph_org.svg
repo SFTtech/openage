@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-57 717,-57 717,4 -4,4"/>
 <!-- Node24 -->
 <g id="node1" class="node"><title>Node24</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Strips a prefix from a given string literal.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 121,-30.5 121,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="60.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strip_prefix</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node25 -->
 <g id="node2" class="node"><title>Node25</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#aa4f041b85b8ae3df628165f73397d1fa" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#aa4f041b85b8ae3df628165f73397d1fa" target="_top" xlink:title="Tests whether a string literal starts with the given prefix.">
 <polygon fill="white" stroke="black" points="157,-22.5 157,-52.5 278,-52.5 278,-22.5 157,-22.5"/>
 <text text-anchor="start" x="165" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="217.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::has_prefix</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node26 -->
 <g id="node3" class="node"><title>Node26</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="314,-6 314,-25 401,-25 401,-6 314,-6"/>
 <text text-anchor="middle" x="357.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -65,7 +65,7 @@
 </g>
 <!-- Node28 -->
 <g id="node5" class="node"><title>Node28</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="618,-6 618,-25 713,-25 713,-6 618,-6"/>
 <text text-anchor="middle" x="665.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

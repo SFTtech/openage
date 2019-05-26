@@ -138,9 +138,9 @@
         <argsstring>()</argsstring>
         <name>PairingHeap</name>
         <briefdescription>
+<para>create a empty heap. </para>
         </briefdescription>
         <detaileddescription>
-<para>create a empty heap. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -169,9 +169,10 @@
           <declname>item</declname>
         </param>
         <briefdescription>
+<para>adds the given item to the heap. </para>
         </briefdescription>
         <detaileddescription>
-<para>adds the given item to the heap. O(1) </para>
+<para>O(1) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -192,9 +193,10 @@
           <declname>item</declname>
         </param>
         <briefdescription>
+<para>moves the given item to the heap. </para>
         </briefdescription>
         <detaileddescription>
-<para>moves the given item to the heap. O(1) </para>
+<para>O(1) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -206,9 +208,9 @@
         <argsstring>()</argsstring>
         <name>pop</name>
         <briefdescription>
+<para>returns and removes the smallest item on the heap. </para>
         </briefdescription>
         <detaileddescription>
-<para>returns and removes the smallest item on the heap. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -222,9 +224,10 @@
         <argsstring>()</argsstring>
         <name>pop_node</name>
         <briefdescription>
+<para>returns the smallest item on the heap and deletes it. </para>
         </briefdescription>
         <detaileddescription>
-<para>returns the smallest item on the heap and deletes it. also known as delete_min.</para>
+<para>also known as delete_min.</para>
 <para><hruler/>
  Ω(log log n), O(2^(2*√log log n&apos;)) </para>
         </detaileddescription>
@@ -245,9 +248,9 @@
           <declname>node</declname>
         </param>
         <briefdescription>
+<para>Unlink a node from the heap. </para>
         </briefdescription>
         <detaileddescription>
-<para>Unlink a node from the heap.</para>
 <para>If the item is the current root, just <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1ac6bcfcb890dd8d546b1b4c466cf09009" kindref="member">pop()</ref>. else, cut the node from its parent, <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1ac6bcfcb890dd8d546b1b4c466cf09009" kindref="member">pop()</ref> that subtree and merge these trees.</para>
 <para>O(pop_node) </para>
         </detaileddescription>
@@ -263,9 +266,10 @@
         <argsstring>() const</argsstring>
         <name>top</name>
         <briefdescription>
+<para>Returns the smallest item on the heap. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the smallest item on the heap. O(1) </para>
+<para>O(1) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -278,9 +282,9 @@
         <argsstring>() const</argsstring>
         <name>top_node</name>
         <briefdescription>
+<para>Returns the smallest node on the heap. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the smallest node on the heap.</para>
 <para>O(1) </para>
         </detaileddescription>
         <inbodydescription>
@@ -297,9 +301,10 @@
           <declname>node</declname>
         </param>
         <briefdescription>
+<para>You must call this after the node data decreased. </para>
         </briefdescription>
         <detaileddescription>
-<para>You must call this after the node data decreased. This cuts the subtree and links the subtree again. If the node value <emphasis>increased</emphasis> and you call this, the heap is corrupted. Also known as the decrease_key operation.</para>
+<para>This cuts the subtree and links the subtree again. If the node value <emphasis>increased</emphasis> and you call this, the heap is corrupted. Also known as the decrease_key operation.</para>
 <para>O(1) </para>
         </detaileddescription>
         <inbodydescription>
@@ -317,9 +322,10 @@
           <declname>node</declname>
         </param>
         <briefdescription>
+<para>After a change, call this to reorganize the given node. </para>
         </briefdescription>
         <detaileddescription>
-<para>After a change, call this to reorganize the given node. Support increase and decrease of values.</para>
+<para>Support increase and decrease of values.</para>
 <para>Use <computeroutput>decrease</computeroutput> instead when you know the value decreased.</para>
 <para>O(1) (but slower than decrease), and O(pop) when node is the root. </para>
         </detaileddescription>
@@ -334,9 +340,9 @@
         <argsstring>()</argsstring>
         <name>clear</name>
         <briefdescription>
+<para>erase all elements on the heap. </para>
         </briefdescription>
         <detaileddescription>
-<para>erase all elements on the heap. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -430,9 +436,10 @@
           <declname>node</declname>
         </param>
         <briefdescription>
+<para>adds the given node to the heap. </para>
         </briefdescription>
         <detaileddescription>
-<para>adds the given node to the heap. use this if the node was not in the heap before. O(1) </para>
+<para>use this if the node was not in the heap before. O(1) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -450,9 +457,9 @@
           <declname>node</declname>
         </param>
         <briefdescription>
+<para>insert a node into the heap. </para>
         </briefdescription>
         <detaileddescription>
-<para>insert a node into the heap. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -462,9 +469,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>(Quite) efficient heap implementation. </para>
     </briefdescription>
     <detaileddescription>
-<para>(Quite) efficient heap implementation. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1932">

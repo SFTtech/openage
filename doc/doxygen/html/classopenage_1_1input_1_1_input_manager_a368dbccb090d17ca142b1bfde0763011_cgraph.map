@@ -1,9 +1,9 @@
 <map id="openage::input::InputManager::get_bind" name="openage::input::InputManager::get_bind">
-<area shape="rect" id="node1" title=" " alt="" coords="5,89,199,130"/>
+<area shape="rect" id="node1" title="Return the string representation of the bind assignated to an action." alt="" coords="5,89,199,130"/>
 <area shape="rect" id="node2" href="$classopenage_1_1input_1_1_action_manager.xhtml#a743f9d44332f84adb3eca195732ed09d" title=" " alt="" coords="515,12,743,39"/>
 <area shape="rect" id="node3" href="$classopenage_1_1input_1_1_action_manager.xhtml#a252869fbc85be3b450eb290794352ba4" title=" " alt="" coords="247,37,467,64"/>
-<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2f44a9836b240db76767fe04584a36b4" title=" " alt="" coords="260,89,453,130"/>
-<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_manager.xhtml#a0ba02d8e086457a659747b154facab7a" title=" " alt="" coords="260,154,453,195"/>
-<area shape="rect" id="node7" href="$classopenage_1_1input_1_1_input_manager.xhtml#ae8d78a246ac5d178588ef79b9e380b89" title=" " alt="" coords="260,219,453,261"/>
+<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2f44a9836b240db76767fe04584a36b4" title="Return the string representation of the key event." alt="" coords="260,89,453,130"/>
+<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_manager.xhtml#a0ba02d8e086457a659747b154facab7a" title="Return the string representation of the mouse event." alt="" coords="260,154,453,195"/>
+<area shape="rect" id="node7" href="$classopenage_1_1input_1_1_input_manager.xhtml#ae8d78a246ac5d178588ef79b9e380b89" title="Return the key representation of the event." alt="" coords="260,219,453,261"/>
 <area shape="rect" id="node6" href="$namespacestd.xhtml#a26aa0f4be3a77ac5cc3ce0cabb545042" title=" " alt="" coords="579,161,678,188"/>
 </map>

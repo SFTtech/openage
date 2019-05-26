@@ -35,7 +35,7 @@
 </g>
 <!-- Node32 -->
 <g id="node3" class="node"><title>Node32</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="355,-11.5 355,-30.5 442,-30.5 442,-11.5 355,-11.5"/>
 <text text-anchor="middle" x="398.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node34 -->
 <g id="node5" class="node"><title>Node34</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="659,-11.5 659,-30.5 754,-30.5 754,-11.5 659,-11.5"/>
 <text text-anchor="middle" x="706.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -44,9 +44,10 @@
         <name>skip_entry_frames</name>
         <initializer>= 1</initializer>
         <briefdescription>
+<para>Skip this many frames at the beginning of the trace. </para>
         </briefdescription>
         <detaileddescription>
-<para>Skip this many frames at the beginning of the trace. Can trim away various libc calls. </para>
+<para>Can trim away various libc calls. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -60,9 +61,9 @@
         <name>base_skip_frames</name>
         <initializer>= 1</initializer>
         <briefdescription>
+<para>Skip this many stack frames, this drops the stackanalyzer function call itself. </para>
         </briefdescription>
         <detaileddescription>
-<para>Skip this many stack frames, this drops the stackanalyzer function call itself. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -85,9 +86,9 @@
           <declname>bt_sym</declname>
         </param>
         <briefdescription>
+<para>Prints a <ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">backtrace_symbol</ref> object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Prints a <ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">backtrace_symbol</ref> object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -111,9 +112,9 @@
           <declname>bt</declname>
         </param>
         <briefdescription>
+<para>Prints an entire <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Prints an entire <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -256,9 +257,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>Call this to set or unset the atexit error handler. </para>
         </briefdescription>
         <detaileddescription>
-<para>Call this to set or unset the atexit error handler.</para>
 <para>In order to capture any stray calls to exit() from any place in the game (including libraries), set this to true on startup, and back to false right before termination.</para>
 <para>pxd: void set_exit_ok(cppbool value) except + </para>
         </detaileddescription>

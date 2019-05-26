@@ -10,9 +10,9 @@
         <argsstring>[2]</argsstring>
         <name>state</name>
         <briefdescription>
+<para>The internal state array. </para>
         </briefdescription>
         <detaileddescription>
-<para>The internal state array </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -34,9 +34,9 @@
         <name>discard_on_seed</name>
         <initializer>= 50</initializer>
         <briefdescription>
+<para>elements to discard on seed to escape from high-zero seeds </para>
         </briefdescription>
         <detaileddescription>
-<para>elements to discard on seed to escape from high-zero seeds </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -55,9 +55,10 @@
           <declname>seed</declname>
         </param>
         <briefdescription>
+<para>Creates an rng and seeds it with the 64 bit seed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates an rng and seeds it with the 64 bit seed <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>seed</parametername>
 </parameternamelist>
@@ -87,9 +88,10 @@
           <declname>count</declname>
         </param>
         <briefdescription>
+<para>Initializes the rng using data from the buffer pointed to by data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes the rng using data from the buffer pointed to by data <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -132,9 +134,10 @@
           <declname>instr</declname>
         </param>
         <briefdescription>
+<para>Reads the rng in from the passed string. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reads the rng in from the passed string. If you want to use the data in the string as a seed, then pass the c_str() to rng(const void*, size_t). <parameterlist kind="param"><parameteritem>
+<para>If you want to use the data in the string as a seed, then pass the c_str() to rng(const void*, size_t). <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>instr</parametername>
 </parameternamelist>
@@ -169,9 +172,10 @@
           <declname>instream</declname>
         </param>
         <briefdescription>
+<para>Reads the rng in from the passed std::istream. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reads the rng in from the passed std::istream. This serializes the rng, and does not use the data as a random seed. <parameterlist kind="param"><parameteritem>
+<para>This serializes the rng, and does not use the data as a random seed. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>instream</parametername>
 </parameternamelist>
@@ -206,9 +210,9 @@
           <declname>val</declname>
         </param>
         <briefdescription>
+<para>Seeds with the 64 bit seed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Seeds with the 64 bit seed </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -230,9 +234,10 @@
           <declname>count</declname>
         </param>
         <briefdescription>
+<para>Initializes the rng using bits from the buffer pointed to by data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes the rng using bits from the buffer pointed to by data <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -277,9 +282,9 @@
         <argsstring>()</argsstring>
         <name>random</name>
         <briefdescription>
+<para>Retrieves a random value from the generator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Retrieves a random value from the generator </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -299,9 +304,9 @@
         <argsstring>()</argsstring>
         <name>operator()</name>
         <briefdescription>
+<para>Retrieves a random value from the generator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Retrieves a random value from the generator </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -322,9 +327,9 @@
           <declname>upper</declname>
         </param>
         <briefdescription>
+<para>Returns a random integer in the range [lower, upper]. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a random integer in the range [lower, upper] </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -342,9 +347,9 @@
           <declname>prob</declname>
         </param>
         <briefdescription>
+<para>Returns true with the passed probability. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns true with the passed probability </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -360,9 +365,9 @@
         <argsstring>()</argsstring>
         <name>real</name>
         <briefdescription>
+<para>Retrieves a double in [0, 1) </para>
         </briefdescription>
         <detaileddescription>
-<para>Retrieves a double in [0, 1) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -386,9 +391,9 @@
           <declname>upper</declname>
         </param>
         <briefdescription>
+<para>Returns a double in the range [min, max) </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a double in the range [min, max) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -410,9 +415,10 @@
           <declname>len</declname>
         </param>
         <briefdescription>
+<para>Effeciently fills a chunk of 64 bit integers. </para>
         </briefdescription>
         <detaileddescription>
-<para>Effeciently fills a chunk of 64 bit integers. Gives identical result to calling <ref refid="classopenage_1_1rng_1_1_r_n_g_1a95f8c2c7e00ab2531e0e6c33ae70e154" kindref="member">random()</ref> len times <parameterlist kind="param"><parameteritem>
+<para>Gives identical result to calling <ref refid="classopenage_1_1rng_1_1_r_n_g_1a95f8c2c7e00ab2531e0e6c33ae70e154" kindref="member">random()</ref> len times <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -452,9 +458,10 @@
           <declname>len</declname>
         </param>
         <briefdescription>
+<para>Fills an array of doubles with values in [0, 1) Gives identical results as <ref refid="classopenage_1_1rng_1_1_r_n_g_1a2d906c2de63a31a89589a34bac2a3dd8" kindref="member">real()</ref> but more effeciently. </para>
         </briefdescription>
         <detaileddescription>
-<para>Fills an array of doubles with values in [0, 1) Gives identical results as <ref refid="classopenage_1_1rng_1_1_r_n_g_1a2d906c2de63a31a89589a34bac2a3dd8" kindref="member">real()</ref> but more effeciently <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -491,9 +498,9 @@
           <declname>num_discard</declname>
         </param>
         <briefdescription>
+<para>Discards num_discard numbers from the generator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Discards num_discard numbers from the generator. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -511,9 +518,10 @@
           <declname>out</declname>
         </param>
         <briefdescription>
+<para>Outputs the rng state to a stream. </para>
         </briefdescription>
         <detaileddescription>
-<para>Outputs the rng state to a stream <parameterlist kind="exception"><parameteritem>
+<para><parameterlist kind="exception"><parameteritem>
 <parameternamelist>
 <parametername>Error</parametername>
 </parameternamelist>
@@ -543,9 +551,10 @@
           <declname>in</declname>
         </param>
         <briefdescription>
+<para>Reads the rng state from a stream. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reads the rng state from a stream <parameterlist kind="exception"><parameteritem>
+<para><parameterlist kind="exception"><parameteritem>
 <parameternamelist>
 <parametername>Error</parametername>
 </parameternamelist>
@@ -572,9 +581,9 @@
         <argsstring>() const</argsstring>
         <name>to_string</name>
         <briefdescription>
+<para>Writes the rng state to a string. </para>
         </briefdescription>
         <detaileddescription>
-<para>Writes the rng state to a string </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -591,9 +600,10 @@
           <declname>instr</declname>
         </param>
         <briefdescription>
+<para>Reads the rng in from a string. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reads the rng in from a string <parameterlist kind="exception"><parameteritem>
+<para><parameterlist kind="exception"><parameteritem>
 <parameternamelist>
 <parametername>Error</parametername>
 </parameternamelist>
@@ -642,9 +652,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>This class holds an xorshift128+ rng, as well as utility generator functions. </para>
     </briefdescription>
     <detaileddescription>
-<para>This class holds an xorshift128+ rng, as well as utility generator functions </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5031">

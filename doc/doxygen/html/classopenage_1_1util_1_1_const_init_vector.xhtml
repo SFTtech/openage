@@ -97,13 +97,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1_const_init_ve
 </div><!--header-->
 <div class="contents">
 
+<p>A std::vector-like object that has a constexpr constructor, and thus can be initialized during the const- or zero-initialization phase, before any dynamic initialization happens.  
+ <a href="classopenage_1_1util_1_1_const_init_vector.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="constinit__vector_8h_source.xhtml">constinit_vector.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::ConstInitVector&lt; T &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_const_init_vector__coll__graph.svg" width="166" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_const_init_vector__coll__graph.svg" width="166" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -113,6 +117,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afe5d1ab55d507b83b5cd292f09215d5c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#afe5d1ab55d507b83b5cd292f09215d5c">~ConstInitVector</a> ()</td></tr>
 <tr class="separator:afe5d1ab55d507b83b5cd292f09215d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a0d1bb5f02c9e63a0c8917853033d01"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#a4a0d1bb5f02c9e63a0c8917853033d01">ConstInitVector</a> (const <a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml">ConstInitVector</a>&lt; T &gt; &amp;other)=delete</td></tr>
+<tr class="memdesc:a4a0d1bb5f02c9e63a0c8917853033d01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copying this is not supported.  <a href="#a4a0d1bb5f02c9e63a0c8917853033d01">More...</a><br /></td></tr>
 <tr class="separator:a4a0d1bb5f02c9e63a0c8917853033d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a967da963686387641fa058dc9e0c2794"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#a967da963686387641fa058dc9e0c2794">ConstInitVector</a> (<a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml">ConstInitVector</a>&lt; T &gt; &amp;&amp;other)=delete</td></tr>
 <tr class="separator:a967da963686387641fa058dc9e0c2794"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,8 +128,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adc94bd8cdd68e1076a95dbebe26d98a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#adc94bd8cdd68e1076a95dbebe26d98a2">push_back</a> (const T &amp;<a class="el" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>)</td></tr>
 <tr class="separator:adc94bd8cdd68e1076a95dbebe26d98a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a480596ddb84d5de0cf5efd05a8ada773"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#a480596ddb84d5de0cf5efd05a8ada773">operator[]</a> (size_t idx) const</td></tr>
+<tr class="memdesc:a480596ddb84d5de0cf5efd05a8ada773"><td class="mdescLeft">&#160;</td><td class="mdescRight">The returned reference is invalid if n &gt;= this-&gt;<a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#a2453ffb8432511227127c0e6df561a43" title="Returns the number of elements that have been pushed back.">size()</a>.  <a href="#a480596ddb84d5de0cf5efd05a8ada773">More...</a><br /></td></tr>
 <tr class="separator:a480596ddb84d5de0cf5efd05a8ada773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2453ffb8432511227127c0e6df561a43"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#a2453ffb8432511227127c0e6df561a43">size</a> ()</td></tr>
+<tr class="memdesc:a2453ffb8432511227127c0e6df561a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of elements that have been pushed back.  <a href="#a2453ffb8432511227127c0e6df561a43">More...</a><br /></td></tr>
 <tr class="separator:a2453ffb8432511227127c0e6df561a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -140,7 +147,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><h3>template&lt;typename T&gt;<br />
 class openage::util::ConstInitVector&lt; T &gt;</h3>
 
-<p>A std::vector-like object that has a constexpr constructor, and thus can be initialized during the const- or zero-initialization phase, before any dynamic initialization happens.</p>
+<p>A std::vector-like object that has a constexpr constructor, and thus can be initialized during the const- or zero-initialization phase, before any dynamic initialization happens. </p>
 <p>Use this class if and only if you need that functionality (that should be pretty uncommon; there generally are better ways of guaranteeing dynamic initialization order, such as static function variables). </p>
 
 <p class="definition">Definition at line <a class="el" href="constinit__vector_8h_source.xhtml#l00024">24</a> of file <a class="el" href="constinit__vector_8h_source.xhtml">constinit_vector.h</a>.</p>
@@ -236,6 +243,7 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Copying this is not supported. </p>
 
 </div>
@@ -350,7 +358,9 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The returned reference is invalid if n &gt;= this-&gt;<a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#a2453ffb8432511227127c0e6df561a43">size()</a>. It may be invalidated by a call to <a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#adc94bd8cdd68e1076a95dbebe26d98a2">push_back()</a>. </p>
+
+<p>The returned reference is invalid if n &gt;= this-&gt;<a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#a2453ffb8432511227127c0e6df561a43" title="Returns the number of elements that have been pushed back.">size()</a>. </p>
+<p>It may be invalidated by a call to <a class="el" href="classopenage_1_1util_1_1_const_init_vector.xhtml#adc94bd8cdd68e1076a95dbebe26d98a2">push_back()</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="constinit__vector_8h_source.xhtml#l00081">81</a> of file <a class="el" href="constinit__vector_8h_source.xhtml">constinit_vector.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                           {</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_const_init_vector.xhtml#a513a7f0d7c006a44a0d870cfea7bdf3e">data</a>[idx];</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div><div class="ttc" id="classopenage_1_1util_1_1_const_init_vector_xhtml_a513a7f0d7c006a44a0d870cfea7bdf3e"><div class="ttname"><a href="classopenage_1_1util_1_1_const_init_vector.xhtml#a513a7f0d7c006a44a0d870cfea7bdf3e">openage::util::ConstInitVector::data</a></div><div class="ttdeci">T * data</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8h_source.xhtml#l00094">constinit_vector.h:94</a></div></div>
@@ -429,6 +439,7 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Returns the number of elements that have been pushed back. </p>
 
 <p class="definition">Definition at line <a class="el" href="constinit__vector_8h_source.xhtml#l00089">89</a> of file <a class="el" href="constinit__vector_8h_source.xhtml">constinit_vector.h</a>.</p>
@@ -442,7 +453,8 @@ template&lt;typename T&gt; </div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_const_init_vector_a2453ffb8432511227127c0e6df561a43_icgraph.svg" width="347" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_const_init_vector_a2453ffb8432511227127c0e6df561a43_icgraph.svg" width="347" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

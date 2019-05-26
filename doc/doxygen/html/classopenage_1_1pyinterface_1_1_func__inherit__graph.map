@@ -1,5 +1,5 @@
 <map id="openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;" name="openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="13,5,225,273"/>
+<area shape="rect" id="node1" title="Holds a function pointer, with bound arguments." alt="" coords="13,5,225,273"/>
 <area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_func.xhtml" title=" " alt="" coords="5,351,233,619"/>
-<area shape="rect" id="node3" href="$classopenage_1_1pyinterface_1_1_py_if_func.xhtml" title=" " alt="" coords="21,668,217,877"/>
+<area shape="rect" id="node3" href="$classopenage_1_1pyinterface_1_1_py_if_func.xhtml" title="For usage by &quot;Py Interface Functions&quot;, i.e." alt="" coords="21,668,217,877"/>
 </map>

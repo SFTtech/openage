@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-465 848,-465 848,4 -4,4"/>
 <!-- Node25 -->
 <g id="node1" class="node"><title>Node25</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Called when a unit is destroyed.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-240.5 0,-270.5 118,-270.5 118,-240.5 0,-240.5"/>
 <text text-anchor="start" x="8" y="-258.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::active</text>
 <text text-anchor="middle" x="59" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_removed</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node26 -->
 <g id="node2" class="node"><title>Node26</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_population_tracker.xhtml#a040af223d85f69ceedbc5e51a393fb94" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_population_tracker.xhtml#a040af223d85f69ceedbc5e51a393fb94" target="_top" xlink:title="Remove from the population demand.">
 <polygon fill="white" stroke="black" points="155.5,-429.5 155.5,-459.5 292.5,-459.5 292.5,-429.5 155.5,-429.5"/>
 <text text-anchor="start" x="163.5" y="-447.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="224" y="-436.5" font-family="Helvetica,sans-Serif" font-size="10.00">::free_population</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node27 -->
 <g id="node3" class="node"><title>Node27</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title="Returns the cost.">
 <polygon fill="white" stroke="black" points="154,-391 154,-410 294,-410 294,-391 154,-391"/>
 <text text-anchor="middle" x="224" y="-398" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceCost::get</text>
 </a>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node31 -->
 <g id="node7" class="node"><title>Node31</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title="returns attribute based on templated value">
 <polygon fill="white" stroke="black" points="350.5,-329.5 350.5,-359.5 446.5,-359.5 446.5,-329.5 350.5,-329.5"/>
 <text text-anchor="start" x="358.5" y="-347.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::get</text>
 <text text-anchor="middle" x="398.5" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node33 -->
 <g id="node9" class="node"><title>Node33</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title="returns whether attribute is available">
 <polygon fill="white" stroke="black" points="349.5,-273.5 349.5,-303.5 447.5,-303.5 447.5,-273.5 349.5,-273.5"/>
 <text text-anchor="start" x="357.5" y="-291.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::has</text>
 <text text-anchor="middle" x="398.5" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node35 -->
 <g id="node11" class="node"><title>Node35</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" target="_top" xlink:title="gets the unique id of this unit type">
 <polygon fill="white" stroke="black" points="168.5,-227 168.5,-246 279.5,-246 279.5,-227 168.5,-227"/>
 <text text-anchor="middle" x="224" y="-234" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::id</text>
 </a>
@@ -102,7 +102,7 @@
 </g>
 <!-- Node37 -->
 <g id="node13" class="node"><title>Node37</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" target="_top" xlink:title="Called when the resources amounts change.">
 <polygon fill="white" stroke="black" points="172,-101.5 172,-131.5 276,-131.5 276,-101.5 172,-101.5"/>
 <text text-anchor="start" x="180" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::on</text>
 <text text-anchor="middle" x="224" y="-108.5" font-family="Helvetica,sans-Serif" font-size="10.00">_resources_change</text>
@@ -130,7 +130,7 @@
 </g>
 <!-- Node43 -->
 <g id="node19" class="node"><title>Node43</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title="Returns the sum of all the resources.">
 <polygon fill="white" stroke="black" points="503,-195 503,-214 658,-214 658,-195 503,-195"/>
 <text text-anchor="middle" x="580.5" y="-202" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle::sum</text>
 </a>
@@ -143,7 +143,7 @@
 </g>
 <!-- Node45 -->
 <g id="node21" class="node"><title>Node45</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1_population_tracker.xhtml#a665c07f6c453a6117c514a56eda96f36" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1_population_tracker.xhtml#a665c07f6c453a6117c514a56eda96f36" target="_top" xlink:title="Remove from the capacity given by units.">
 <polygon fill="white" stroke="black" points="155.5,-25.5 155.5,-55.5 292.5,-55.5 292.5,-25.5 155.5,-25.5"/>
 <text text-anchor="start" x="163.5" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="224" y="-32.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove_capacity</text>
@@ -171,7 +171,7 @@
 </g>
 <!-- Node30 -->
 <g id="node6" class="node"><title>Node30</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" target="_top" xlink:title="The number of units considered part of the workforce.">
 <polygon fill="white" stroke="black" points="345,-381.5 345,-411.5 452,-411.5 452,-381.5 345,-381.5"/>
 <text text-anchor="start" x="353" y="-399.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get</text>
 <text text-anchor="middle" x="398.5" y="-388.5" font-family="Helvetica,sans-Serif" font-size="10.00">_workforce_count</text>
@@ -185,7 +185,7 @@
 </g>
 <!-- Node29 -->
 <g id="node5" class="node"><title>Node29</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title="odo remove, here for backwards compatibility">
+<g id="a_node5"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="515,-430.5 515,-460.5 646,-460.5 646,-430.5 515,-430.5"/>
 <text text-anchor="start" x="523" y="-448.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <text text-anchor="middle" x="580.5" y="-437.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ResourceBundle</text>
@@ -199,7 +199,7 @@
 </g>
 <!-- Node32 -->
 <g id="node8" class="node"><title>Node32</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title="Get the attribute based on the type.">
 <polygon fill="white" stroke="black" points="520,-335 520,-354 641,-354 641,-335 520,-335"/>
 <text text-anchor="middle" x="580.5" y="-342" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::get</text>
 </a>
@@ -212,7 +212,7 @@
 </g>
 <!-- Node34 -->
 <g id="node10" class="node"><title>Node34</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title="Check if the attribute of the given type exists.">
 <polygon fill="white" stroke="black" points="519,-279 519,-298 642,-298 642,-279 519,-279"/>
 <text text-anchor="middle" x="580.5" y="-286" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::has</text>
 </a>
@@ -249,7 +249,7 @@
 </g>
 <!-- Node41 -->
 <g id="node17" class="node"><title>Node41</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title="Updates resource based sub&#45;scores.">
 <polygon fill="white" stroke="black" points="338.5,-101.5 338.5,-131.5 458.5,-131.5 458.5,-101.5 338.5,-101.5"/>
 <text text-anchor="start" x="346.5" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score::update</text>
 <text text-anchor="middle" x="398.5" y="-108.5" font-family="Helvetica,sans-Serif" font-size="10.00">_resources</text>
@@ -319,7 +319,7 @@
 </g>
 <!-- Node46 -->
 <g id="node22" class="node"><title>Node46</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1_population_tracker.xhtml#ab62d8be3291c0fd95366875b7bf64d60" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1_population_tracker.xhtml#ab62d8be3291c0fd95366875b7bf64d60" target="_top" xlink:title="Calculates the capacity values based on the limits.">
 <polygon fill="white" stroke="black" points="330,-0.5 330,-30.5 467,-30.5 467,-0.5 330,-0.5"/>
 <text text-anchor="start" x="338" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="398.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_capacity</text>

@@ -1,9 +1,9 @@
 <map id="openage::event::EventTarget" name="openage::event::EventTarget">
-<area shape="rect" id="node1" title=" " alt="" coords="438,5,623,200"/>
+<area shape="rect" id="node1" title="Every Object in the gameworld that wants to be targeted by events or as dependency for events,..." alt="" coords="438,5,623,200"/>
 <area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_value_container.xhtml" title=" " alt="" coords="109,248,345,472"/>
 <area shape="rect" id="node5" href="$classopenage_1_1event_1_1demo_1_1_pong_ball.xhtml" title=" " alt="" coords="369,285,519,435"/>
 <area shape="rect" id="node6" href="$classopenage_1_1event_1_1demo_1_1_pong_player.xhtml" title=" " alt="" coords="543,255,692,465"/>
 <area shape="rect" id="node7" href="$classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object.xhtml" title=" " alt="" coords="716,285,873,435"/>
-<area shape="rect" id="node3" href="$classopenage_1_1curve_1_1_continuous.xhtml" title=" " alt="" coords="5,535,219,612"/>
-<area shape="rect" id="node4" href="$classopenage_1_1curve_1_1_discrete.xhtml" title=" " alt="" coords="243,520,439,627"/>
+<area shape="rect" id="node3" href="$classopenage_1_1curve_1_1_continuous.xhtml" title="Continuous Datatype." alt="" coords="5,535,219,612"/>
+<area shape="rect" id="node4" href="$classopenage_1_1curve_1_1_discrete.xhtml" title="Does not interpolate between values." alt="" coords="243,520,439,627"/>
 </map>

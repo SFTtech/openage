@@ -1,4 +1,4 @@
 <map id="openage::util::compress::BitStream&lt; inbuf_size &gt;" name="openage::util::compress::BitStream&lt; inbuf_size &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,213,420"/>
+<area shape="rect" id="node1" title="Bitstream that is stored in 16&#45;bit little&#45;endian numbers." alt="" coords="5,5,213,420"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="5,483,213,897"/>
 </map>

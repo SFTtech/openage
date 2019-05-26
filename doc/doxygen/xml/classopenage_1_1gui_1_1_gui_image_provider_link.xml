@@ -114,9 +114,9 @@
           <declname>game_spec</declname>
         </param>
         <briefdescription>
+<para>Sets the game spec to load textures from. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the game spec to load textures from.</para>
 <para>Setting to null doesn&apos;t detach from the spec, but picks the &apos;missing texture&apos; from that spec and sets it to every sprite. </para>
         </detaileddescription>
         <inbodydescription>
@@ -242,9 +242,9 @@
           <declname>loaded_game_spec</declname>
         </param>
         <briefdescription>
+<para>Pass loaded assets to the image provider. </para>
         </briefdescription>
         <detaileddescription>
-<para>Pass loaded assets to the image provider.</para>
 <para>Need to check if we still attached to that spec. Also it may be invalidated in the meantime, so share the ownership. </para>
         </detaileddescription>
         <inbodydescription>

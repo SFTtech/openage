@@ -19,7 +19,7 @@
 </g>
 <!-- Node0 -->
 <g id="node2" class="node"><title>Node0</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_external_string_buf.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_external_string_buf.xhtml" target="_top" xlink:title="Used by ExternalOStringStream; data is written to the external accumulator.">
 <polygon fill="white" stroke="black" points="95,-0.5 95,-19.5 249,-19.5 249,-0.5 95,-0.5"/>
 <text text-anchor="middle" x="172" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalStringBuf</text>
 </a>

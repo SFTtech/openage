@@ -170,9 +170,9 @@
         <argsstring>()</argsstring>
         <name>instantiate_core</name>
         <briefdescription>
+<para>Creates and returns a core object inside a holder. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates and returns a core object inside a holder. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -193,9 +193,9 @@
           <declname>tag</declname>
         </param>
         <briefdescription>
+<para>Attaches to a core object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Attaches to a core object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -255,9 +255,9 @@
           <declname>game_logic_callback</declname>
         </param>
         <briefdescription>
+<para>Set up signal to be able to run code in the game logic thread. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set up signal to be able to run code in the game logic thread. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

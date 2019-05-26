@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-435 937,-435 937,4 -4,4"/>
 <!-- Node25 -->
 <g id="node1" class="node"><title>Node25</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="dict()">
 <polygon fill="#bfbfbf" stroke="black" points="841,-215 841,-234 933,-234 933,-215 841,-215"/>
 <text text-anchor="middle" x="887" y="-222" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::dict</text>
 </a>

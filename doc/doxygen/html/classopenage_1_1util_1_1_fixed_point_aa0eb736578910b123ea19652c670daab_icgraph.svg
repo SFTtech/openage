@@ -112,7 +112,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node198 -->
 <g id="node5" class="node"><title>Node198</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="320.5,-316.5 320.5,-346.5 430.5,-346.5 430.5,-316.5 320.5,-316.5"/>
 <text text-anchor="start" x="328.5" y="-334.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAction</text>
 <text text-anchor="middle" x="375.5" y="-323.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -126,7 +126,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node199 -->
 <g id="node6" class="node"><title>Node199</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_move_action.xhtml#a87eb54704dff471c3401ec7c7a88b044" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_move_action.xhtml#a87eb54704dff471c3401ec7c7a88b044" target="_top" xlink:title="updates the distance_to_target value">
 <polygon fill="white" stroke="black" points="475.5,-274.5 475.5,-304.5 585.5,-304.5 585.5,-274.5 475.5,-274.5"/>
 <text text-anchor="start" x="483.5" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAction</text>
 <text text-anchor="middle" x="530.5" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_distance</text>
@@ -140,7 +140,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node201 -->
 <g id="node8" class="node"><title>Node201</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title="how far is a point from the edge of this object">
 <polygon fill="white" stroke="black" points="471,-225.5 471,-255.5 590,-255.5 590,-225.5 471,-225.5"/>
 <text text-anchor="start" x="479" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="530.5" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_edge</text>
@@ -154,7 +154,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node202 -->
 <g id="node9" class="node"><title>Node202</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="white" stroke="black" points="471,-176.5 471,-206.5 590,-206.5 590,-176.5 471,-176.5"/>
 <text text-anchor="start" x="479" y="-194.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="530.5" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>
@@ -168,7 +168,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node203 -->
 <g id="node10" class="node"><title>Node203</title>
-<g id="a_node10"><a xlink:href="namespaceopenage.xhtml#ae2e68c0049a3b6c5671c8006c6a74f84" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage.xhtml#ae2e68c0049a3b6c5671c8006c6a74f84" target="_top" xlink:title="Generate a isometric circle outline texture.">
 <polygon fill="white" stroke="black" points="472.5,-138 472.5,-157 588.5,-157 588.5,-138 472.5,-138"/>
 <text text-anchor="middle" x="530.5" y="-145" font-family="Helvetica,sans-Serif" font-size="10.00">openage::radial_outline</text>
 </a>
@@ -181,7 +181,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node204 -->
 <g id="node11" class="node"><title>Node204</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" target="_top" xlink:title="returns all objects on the next tile">
 <polygon fill="white" stroke="black" points="471,-88.5 471,-118.5 590,-118.5 590,-88.5 471,-88.5"/>
 <text text-anchor="start" x="479" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainSearch</text>
 <text text-anchor="middle" x="530.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">::next_tile</text>
@@ -195,7 +195,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node211 -->
 <g id="node18" class="node"><title>Node211</title>
-<g id="a_node18"><a xlink:href="namespaceopenage.xhtml#af8871290d3c97a11b6761d12827ab9e3" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="namespaceopenage.xhtml#ad019d95177e6ab646a2d239e4ec3daa7" target="_top" xlink:title="the set of images to used based on unit direction, usually 8 directions to draw for each unit (3 are ...">
 <polygon fill="white" stroke="black" points="481,-50 481,-69 580,-69 580,-50 481,-50"/>
 <text text-anchor="middle" x="530.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::dir_group</text>
 </a>
@@ -281,7 +281,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node206 -->
 <g id="node13" class="node"><title>Node206</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title="action to perform when popped from a units action stack">
 <polygon fill="white" stroke="black" points="161.5,-137.5 161.5,-167.5 270.5,-167.5 270.5,-137.5 161.5,-137.5"/>
 <text text-anchor="start" x="169.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAction</text>
 <text text-anchor="middle" x="216" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_completion</text>
@@ -323,7 +323,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node209 -->
 <g id="node16" class="node"><title>Node209</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="0,-88.5 0,-118.5 116,-118.5 116,-88.5 0,-88.5"/>
 <text text-anchor="start" x="8" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAction</text>
 <text text-anchor="middle" x="58" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>
@@ -337,7 +337,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node212 -->
 <g id="node19" class="node"><title>Node212</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title="draw object with direction">
 <polygon fill="white" stroke="black" points="321,-44.5 321,-74.5 430,-74.5 430,-44.5 321,-44.5"/>
 <text text-anchor="start" x="329" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="375.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>

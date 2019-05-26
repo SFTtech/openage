@@ -93,7 +93,7 @@ var sectionId = 'dynsection-35';
 </g>
 <!-- Node230 -->
 <g id="node4" class="node"><title>Node230</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43" target="_top" xlink:title="Reload the image file.">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 124,-25 124,-6 0,-6"/>
 <text text-anchor="middle" x="62" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::reload</text>
 </a>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 290,-35 290,4 -4,4"/>
 <!-- Node28 -->
 <g id="node1" class="node"><title>Node28</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Assignment, reference values share their values non reference values are copied.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 125,-30.5 125,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="62.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Value::operator=</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node29 -->
 <g id="node2" class="node"><title>Node29</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1options_1_1_option_value.xhtml#a4b1ec4a19215c1f708254e32d80c2b33" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1options_1_1_option_value.xhtml#a4b1ec4a19215c1f708254e32d80c2b33" target="_top" xlink:title="set the value">
 <polygon fill="white" stroke="black" points="161,-0.5 161,-30.5 286,-30.5 286,-0.5 161,-0.5"/>
 <text text-anchor="start" x="169" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="223.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Value::set</text>

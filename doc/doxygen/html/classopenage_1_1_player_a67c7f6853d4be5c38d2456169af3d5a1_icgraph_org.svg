@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-440 635,-440 635,4 -4,4"/>
 <!-- Node122 -->
 <g id="node1" class="node"><title>Node122</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="unit types by aoe gamedata unit ids – the unit type which corresponds to an aoe unit id">
 <polygon fill="#bfbfbf" stroke="black" points="500,-214 500,-233 631,-233 631,-214 500,-214"/>
 <text text-anchor="middle" x="565.5" y="-221" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get_type</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node123 -->
 <g id="node2" class="node"><title>Node123</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" target="_top" xlink:title="places all initial objects">
 <polygon fill="white" stroke="black" points="345,-405.5 345,-435.5 447,-435.5 447,-405.5 345,-405.5"/>
 <text text-anchor="start" x="353" y="-423.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="396" y="-412.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_units</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node124 -->
 <g id="node3" class="node"><title>Node124</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="332.5,-356.5 332.5,-386.5 459.5,-386.5 459.5,-356.5 332.5,-356.5"/>
 <text text-anchor="start" x="340.5" y="-374.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="396" y="-363.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node125 -->
 <g id="node4" class="node"><title>Node125</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="158,-318.5 158,-348.5 292,-348.5 292,-318.5 158,-318.5"/>
 <text text-anchor="start" x="166" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="225" y="-325.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node126 -->
 <g id="node5" class="node"><title>Node126</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="0,-274.5 0,-304.5 122,-304.5 122,-274.5 0,-274.5"/>
 <text text-anchor="start" x="8" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="61" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node127 -->
 <g id="node6" class="node"><title>Node127</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="329.5,-230.5 329.5,-260.5 462.5,-260.5 462.5,-230.5 329.5,-230.5"/>
 <text text-anchor="start" x="337.5" y="-248.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <text text-anchor="middle" x="396" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -116,7 +116,7 @@
 </g>
 <!-- Node133 -->
 <g id="node12" class="node"><title>Node133</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="338,-93.5 338,-123.5 454,-123.5 454,-93.5 338,-93.5"/>
 <text text-anchor="start" x="346" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="396" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -144,7 +144,7 @@
 </g>
 <!-- Node136 -->
 <g id="node15" class="node"><title>Node136</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_unit_type.xhtml#a31d2ff66a69c6fb5d2f1cd699abd63a7" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_unit_type.xhtml#a31d2ff66a69c6fb5d2f1cd699abd63a7" target="_top" xlink:title="returns type matching parent_id()">
 <polygon fill="white" stroke="black" points="173,-211.5 173,-241.5 277,-241.5 277,-211.5 173,-211.5"/>
 <text text-anchor="start" x="181" y="-229.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="225" y="-218.5" font-family="Helvetica,sans-Serif" font-size="10.00">parent_type</text>
@@ -168,7 +168,7 @@
 </g>
 <!-- Node129 -->
 <g id="node8" class="node"><title>Node129</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1gameio.xhtml#a75b0984fd51cdc53616318d3f5a0d50f" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1gameio.xhtml#ae6761d88280466d1d1b5c638e7c7a042" target="_top" xlink:title="a game load function that sometimes works">
 <polygon fill="white" stroke="black" points="167.5,-6 167.5,-25 282.5,-25 282.5,-6 167.5,-6"/>
 <text text-anchor="middle" x="225" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gameio::load</text>
 </a>
@@ -181,7 +181,7 @@
 </g>
 <!-- Node130 -->
 <g id="node9" class="node"><title>Node130</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title="Create a game from a specification.">
 <polygon fill="white" stroke="black" points="10,-0.5 10,-30.5 112,-30.5 112,-0.5 10,-0.5"/>
 <text text-anchor="start" x="18" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="61" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>
@@ -195,7 +195,7 @@
 </g>
 <!-- Node132 -->
 <g id="node11" class="node"><title>Node132</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="158.5,-142.5 158.5,-172.5 291.5,-172.5 291.5,-142.5 158.5,-142.5"/>
 <text text-anchor="start" x="166.5" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <text text-anchor="middle" x="225" y="-149.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -209,7 +209,7 @@
 </g>
 <!-- Node135 -->
 <g id="node14" class="node"><title>Node135</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="167,-44.5 167,-74.5 283,-74.5 283,-44.5 167,-44.5"/>
 <text text-anchor="start" x="175" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="225" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

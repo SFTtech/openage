@@ -514,9 +514,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>This file contains the implementation of a pairing heap. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file contains the implementation of a pairing heap. It is a priority queue with near-optimal runtime.</para>
+<para>It is a priority queue with near-optimal runtime.</para>
 <para>The main advantage over the STL heap is the presence of the decrease_key operation.</para>
 <para>Literature:</para>
 <para>Fredman, Michael L., Robert Sedgewick, Daniel D. Sleator, and Robert E. Tarjan. &quot;The pairing heap: A new form of self-adjusting heap.&quot; Algorithmica 1, no. 1-4 (1986): 111-129. </para>

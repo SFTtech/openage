@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-280 594,-280 594,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="experimental and totally inefficient opengl draw of a terminal buffer.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-122.5 0,-152.5 119,-152.5 119,-122.5 0,-122.5"/>
 <text text-anchor="start" x="8" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="59.5" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_opengl</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title="returns a valid pointer to the character info for the character designated by pos">
 <polygon fill="white" stroke="black" points="156,-245.5 156,-275.5 269,-275.5 269,-245.5 156,-245.5"/>
 <text text-anchor="start" x="164" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="212.5" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">::chrdataptr</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1_font.xhtml#a20d9c92be7d85c08a3877b476f479440" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1_font.xhtml#a20d9c92be7d85c08a3877b476f479440" target="_top" xlink:title="Get the typographic ascender of font.">
 <polygon fill="white" stroke="black" points="162,-196.5 162,-226.5 263,-226.5 263,-196.5 162,-196.5"/>
 <text text-anchor="start" x="170" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="212.5" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">Font::get_ascender</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" target="_top" xlink:title="returns a monotonically&#45;increasing time that returns the number of nanoseconds since an unspecified e...">
 <polygon fill="white" stroke="black" points="160,-147.5 160,-177.5 265,-177.5 265,-147.5 160,-147.5"/>
 <text text-anchor="start" x="168" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="212.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">_monotonic_time</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_engine.xhtml#a5684ab06d65ff2afe5e3b8551809d668" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_engine.xhtml#a5684ab06d65ff2afe5e3b8551809d668" target="_top" xlink:title="return this engine&#39;s text renderer.">
 <polygon fill="white" stroke="black" points="158,-98.5 158,-128.5 267,-128.5 267,-98.5 158,-98.5"/>
 <text text-anchor="start" x="166" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="212.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">_text_renderer</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#aa13c06f0e7bc0b5f09f8adcd399f6676" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#aa13c06f0e7bc0b5f09f8adcd399f6676" target="_top" xlink:title="Set the font to be used for the future text draw calls.">
 <polygon fill="white" stroke="black" points="155,-49.5 155,-79.5 270,-79.5 270,-49.5 155,-49.5"/>
 <text text-anchor="start" x="163" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="212.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::set_font</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node10 -->
 <g id="node11" class="node"><title>Node10</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671" target="_top" xlink:title="encodes one Unicode codepoint to a null&#45;terminated UTF&#45;8 character string.">
 <polygon fill="white" stroke="black" points="165.5,-0.5 165.5,-30.5 259.5,-30.5 259.5,-0.5 165.5,-0.5"/>
 <text text-anchor="start" x="173.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::utf8</text>
 <text text-anchor="middle" x="212.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_encode</text>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="491,-251 491,-270 586,-270 586,-251 491,-251"/>
 <text text-anchor="middle" x="538.5" y="-258" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

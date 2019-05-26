@@ -1,4 +1,4 @@
 <map id="openage::UnitSelection" name="openage::UnitSelection">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,180,487"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_hud_handler.xhtml" title=" " alt="" coords="19,5,166,97"/>
+<area shape="rect" id="node1" title="a user interface component allowing control of a selected group" alt="" coords="5,145,180,487"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_hud_handler.xhtml" title="superclass for all possible drawing operations in the game." alt="" coords="19,5,166,97"/>
 </map>

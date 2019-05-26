@@ -1,8 +1,8 @@
 <map id="openage::Unit::give_ability" name="openage::Unit::give_ability">
-<area shape="rect" id="node1" title=" " alt="" coords="668,93,800,135"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title=" " alt="" coords="447,5,616,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title=" " alt="" coords="5,35,168,76"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title=" " alt="" coords="443,123,620,164"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_nyan_type.xhtml#ad058ecef5e52cd4da37dc7d2f10e4255" title=" " alt="" coords="459,188,604,229"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title=" " alt="" coords="216,5,395,47"/>
+<area shape="rect" id="node1" title="adds an available ability to this unit this turns targeted objects into actions which are pushed onto..." alt="" coords="668,93,800,135"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title="Initialize units attributes to this type spec." alt="" coords="447,5,616,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title="Initialize units attributes to this type spec." alt="" coords="5,35,168,76"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title="Initialize units attributes to this type spec." alt="" coords="443,123,620,164"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_nyan_type.xhtml#ad058ecef5e52cd4da37dc7d2f10e4255" title="Initialize units attributes to this type spec." alt="" coords="459,188,604,229"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title="Initialize units attributes to this type spec." alt="" coords="216,5,395,47"/>
 </map>

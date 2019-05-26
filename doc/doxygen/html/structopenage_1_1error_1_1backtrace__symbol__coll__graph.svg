@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-106 132,-106 132,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A single symbol, as determined from a program counter, and returned by Backtrace::get_symbols().">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-101.5 128,-101.5 128,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::backtrace</text>
 <text text-anchor="middle" x="64" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">_symbol</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-171.5 628,-171.5 628,4 -4,4"/>
 <!-- Node59 -->
 <g id="node1" class="node"><title>Node59</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="load the game specification if not already present.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-63 0,-93 138,-93 138,-63 0,-63"/>
 <text text-anchor="start" x="8" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="69" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::start_loading_if_needed</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node60 -->
 <g id="node2" class="node"><title>Node60</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" target="_top" xlink:title="Actually dispatch the loading job to the job manager.">
 <polygon fill="white" stroke="black" points="174,-63 174,-93 312,-93 312,-63 174,-63"/>
 <text text-anchor="start" x="182" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="243" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::start_load_job</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node61 -->
 <g id="node3" class="node"><title>Node61</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" target="_top" xlink:title="Enqueues the given function into the job manager&#39;s queue, so that it will be dispatched by one of the...">
 <polygon fill="white" stroke="black" points="355,-137 355,-167 486,-167 486,-137 355,-137"/>
 <text text-anchor="start" x="363" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="420.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">::enqueue</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node62 -->
 <g id="node4" class="node"><title>Node62</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title="Return the engine responsible for this asset manager.">
 <polygon fill="white" stroke="black" points="359.5,-88 359.5,-118 481.5,-118 481.5,-88 359.5,-88"/>
 <text text-anchor="start" x="367.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="420.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::get_engine</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node63 -->
 <g id="node5" class="node"><title>Node63</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" target="_top" xlink:title="return this engine&#39;s job manager.">
 <polygon fill="white" stroke="black" points="366,-39 366,-69 475,-69 475,-39 366,-39"/>
 <text text-anchor="start" x="374" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="420.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_job_manager</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node65 -->
 <g id="node7" class="node"><title>Node65</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="529,-0.5 529,-19.5 624,-19.5 624,-0.5 529,-0.5"/>
 <text text-anchor="middle" x="576.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

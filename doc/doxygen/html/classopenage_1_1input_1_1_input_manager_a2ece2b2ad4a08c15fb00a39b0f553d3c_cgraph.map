@@ -1,4 +1,4 @@
 <map id="openage::input::InputManager::push_context" name="openage::input::InputManager::push_context">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,199,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" title=" " alt="" coords="247,5,435,47"/>
+<area shape="rect" id="node1" title="register a hotkey context by pushing it onto the stack." alt="" coords="5,5,199,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" title="Called by the InputManager where this context shall be registered to." alt="" coords="247,5,435,47"/>
 </map>

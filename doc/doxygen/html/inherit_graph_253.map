@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1util_1_1filelike_1_1_file_like.xhtml" title=" " alt="" coords="5,39,145,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1filelike_1_1_native.xhtml" title=" " alt="" coords="193,5,333,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1filelike_1_1_python.xhtml" title=" " alt="" coords="193,71,333,112"/>
+<area shape="rect" id="node1" href="$classopenage_1_1util_1_1filelike_1_1_file_like.xhtml" title="File&#45;like class that has the standard operations like read, seek, write etc." alt="" coords="5,39,145,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1filelike_1_1_native.xhtml" title="File&#45;like class that uses native stdlib functions to access data." alt="" coords="193,5,333,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1filelike_1_1_python.xhtml" title="File&#45;like class that wraps a python open() file&#45;like object." alt="" coords="193,71,333,112"/>
 </map>

@@ -1,7 +1,7 @@
 <map id="openage::AssetManager::load_texture" name="openage::AssetManager::load_texture">
-<area shape="rect" id="node1" title=" " alt="" coords="616,39,779,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" title=" " alt="" coords="405,39,568,80"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_game_spec.xhtml#a0d9bb7cf5c16889a6eab13c714b39ae1" title=" " alt="" coords="205,5,357,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" title=" " alt="" coords="205,71,357,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title=" " alt="" coords="5,71,157,112"/>
+<area shape="rect" id="node1" title="Create an internal texture handle." alt="" coords="616,39,779,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" title="Query the Texture for a given filename." alt="" coords="405,39,568,80"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_game_spec.xhtml#a0d9bb7cf5c16889a6eab13c714b39ae1" title="lookup using a texture file name" alt="" coords="205,5,357,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" title="fill in the terrain_data attribute of this" alt="" coords="205,71,357,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title="perform the main loading job." alt="" coords="5,71,157,112"/>
 </map>

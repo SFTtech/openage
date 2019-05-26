@@ -1,23 +1,23 @@
 <map id="openage::util::compress::LZXDecompressor::decompress_next_frame" name="openage::util::compress::LZXDecompressor::decompress_next_frame">
-<area shape="rect" id="node1" title=" " alt="" coords="5,293,220,349"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" title=" " alt="" coords="268,293,449,349"/>
+<area shape="rect" id="node1" title="Decompresses a single 32&#45;KiB frame." alt="" coords="5,293,220,349"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" title="See the doc for LZXDecompressor::decompress_next_frame in lzxd.h." alt="" coords="268,293,449,349"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="807,79,918,105"/>
 <area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a21cc21ce03f6a6aa488e48661666bdd7" title=" " alt="" coords="511,333,685,374"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af4522bbae0ee989e1f5b45606fb2e673" title=" " alt="" coords="782,130,943,171"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#af98ef8408ba92de4f9e28010c3b2d6c8" title=" " alt="" coords="499,267,697,309"/>
-<area shape="rect" id="node12" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a2830bc244fc83678fc56f6e44c057e7c" title=" " alt="" coords="497,5,699,61"/>
-<area shape="rect" id="node14" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a0ced870a816503c5ae2c42756dc0adb2" title=" " alt="" coords="497,136,699,192"/>
-<area shape="rect" id="node15" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#af408bfffcc2e2e086066e13e1f6b96b7" title=" " alt="" coords="506,399,690,455"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af4522bbae0ee989e1f5b45606fb2e673" title="for use in bitstream mode." alt="" coords="782,130,943,171"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#af98ef8408ba92de4f9e28010c3b2d6c8" title="Initializes the next block." alt="" coords="499,267,697,309"/>
+<area shape="rect" id="node12" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a2830bc244fc83678fc56f6e44c057e7c" title="Decodes one symbol from the current verbatim block." alt="" coords="497,5,699,61"/>
+<area shape="rect" id="node14" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a0ced870a816503c5ae2c42756dc0adb2" title="Decodes one symbol from the current aligned block." alt="" coords="497,136,699,192"/>
+<area shape="rect" id="node15" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#af408bfffcc2e2e086066e13e1f6b96b7" title="Reads the given amount of bytes from the current uncompressed block." alt="" coords="506,399,690,455"/>
 <area shape="rect" id="node17" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="563,479,633,505"/>
-<area shape="rect" id="node20" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#ae957302fdbdcb4e99f5264bfc8da3e42" title=" " alt="" coords="507,529,689,585"/>
-<area shape="rect" id="node21" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a7a9740c842e2425f54ddfc168c0df8bb" title=" " alt="" coords="517,609,679,665"/>
-<area shape="rect" id="node7" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a0a33a092ac1b0b664ecf4ced11e1a313" title=" " alt="" coords="782,408,943,464"/>
-<area shape="rect" id="node8" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#a1e2e81d74fd03fd894c4acf72227cc2d" title=" " alt="" coords="747,489,979,530"/>
-<area shape="rect" id="node9" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#a281ecfaf32eb7102310771c48034e107" title=" " alt="" coords="767,195,958,237"/>
-<area shape="rect" id="node10" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af9c25fda38455fbfc348a777e109d03e" title=" " alt="" coords="782,261,943,317"/>
-<area shape="rect" id="node11" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a80c91d5b7ddc061dd9082827286f0e1e" title=" " alt="" coords="771,342,955,383"/>
-<area shape="rect" id="node13" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#ae6b32648570816ac41436130bd87f3be" title=" " alt="" coords="776,13,949,54"/>
-<area shape="rect" id="node16" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#ac38c2ac02d9fa968f2c3e74a404e4014" title=" " alt="" coords="782,554,943,595"/>
-<area shape="rect" id="node18" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="779,685,946,726"/>
-<area shape="rect" id="node19" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="779,619,946,661"/>
+<area shape="rect" id="node20" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#ae957302fdbdcb4e99f5264bfc8da3e42" title="Postprocesses the a frame&#39;s decoded data with E8 decoding." alt="" coords="507,529,689,585"/>
+<area shape="rect" id="node21" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a7a9740c842e2425f54ddfc168c0df8bb" title="Aligns the bitstream &#45; that is, if we&#39;re currenlty in bitstream mode." alt="" coords="517,609,679,665"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a0a33a092ac1b0b664ecf4ced11e1a313" title="Switches to bitstream mode." alt="" coords="782,408,943,464"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#a1e2e81d74fd03fd894c4acf72227cc2d" title="calls try_make_decode_table, and, if allow_empty is false, raises an exception on failure." alt="" coords="747,489,979,530"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#a281ecfaf32eb7102310771c48034e107" title="reads in code lengths for symbols first to last in the given table." alt="" coords="767,195,958,237"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af9c25fda38455fbfc348a777e109d03e" title="Switches to bytestream mode." alt="" coords="782,261,943,317"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a80c91d5b7ddc061dd9082827286f0e1e" title="for use in bytestream mode." alt="" coords="771,342,955,383"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#ae6b32648570816ac41436130bd87f3be" title="Decodes the next huffman symbol from the input bitstream, and returns it." alt="" coords="776,13,949,54"/>
+<area shape="rect" id="node16" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#ac38c2ac02d9fa968f2c3e74a404e4014" title="for use in bytestream mode." alt="" coords="782,554,943,595"/>
+<area shape="rect" id="node18" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="779,685,946,726"/>
+<area shape="rect" id="node19" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="779,619,946,661"/>
 </map>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 682,-35 682,4 -4,4"/>
 <!-- Node21 -->
 <g id="node1" class="node"><title>Node21</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="writes the char">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 97,-30.5 97,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="48.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">putbyte</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node22 -->
 <g id="node2" class="node"><title>Node22</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15" target="_top" xlink:title="writes &#39;bytes&#39; bytes from buf">
 <polygon fill="white" stroke="black" points="133,-0.5 133,-30.5 230,-30.5 230,-0.5 133,-0.5"/>
 <text text-anchor="start" x="141" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="181.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">write</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node23 -->
 <g id="node3" class="node"><title>Node23</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" target="_top" xlink:title="bytes(value)">
 <polygon fill="white" stroke="black" points="266,-6 266,-25 366,-25 366,-6 266,-6"/>
 <text text-anchor="middle" x="316" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::bytes</text>
 </a>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node25 -->
 <g id="node5" class="node"><title>Node25</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="583,-6 583,-25 678,-25 678,-6 583,-6"/>
 <text text-anchor="middle" x="630.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

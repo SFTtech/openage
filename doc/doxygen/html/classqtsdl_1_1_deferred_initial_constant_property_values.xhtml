@@ -97,20 +97,25 @@ $(document).ready(function(){initNavTree('classqtsdl_1_1_deferred_initial_consta
 </div><!--header-->
 <div class="contents">
 
+<p>Stores static properties during initialization to be able to assign them after all 'liveReloadTag' properties are set.  
+ <a href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="deferred__initial__constant__property__values_8h_source.xhtml">deferred_initial_constant_property_values.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for qtsdl::DeferredInitialConstantPropertyValues:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_deferred_initial_constant_property_values__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_deferred_initial_constant_property_values__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for qtsdl::DeferredInitialConstantPropertyValues:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_deferred_initial_constant_property_values__coll__graph.svg" width="224" height="206"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_deferred_initial_constant_property_values__coll__graph.svg" width="224" height="206"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -118,10 +123,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aac6c766faef0e1e1dfb459529ec10651"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#aac6c766faef0e1e1dfb459529ec10651">DeferredInitialConstantPropertyValues</a> ()</td></tr>
 <tr class="separator:aac6c766faef0e1e1dfb459529ec10651"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a83f3321c8f127a794b92f1998c48a8"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#a8a83f3321c8f127a794b92f1998c48a8">~DeferredInitialConstantPropertyValues</a> ()</td></tr>
+<tr class="memdesc:a8a83f3321c8f127a794b92f1998c48a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is virtual to be able to catch the error when non-persistent item uses liveReloadTag.  <a href="#a8a83f3321c8f127a794b92f1998c48a8">More...</a><br /></td></tr>
 <tr class="separator:a8a83f3321c8f127a794b92f1998c48a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f205a98802394ea87deebf898d29d01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#a6f205a98802394ea87deebf898d29d01">apply_static_properties</a> ()</td></tr>
+<tr class="memdesc:a6f205a98802394ea87deebf898d29d01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute saved static properties assignments (for newly created cores).  <a href="#a6f205a98802394ea87deebf898d29d01">More...</a><br /></td></tr>
 <tr class="separator:a6f205a98802394ea87deebf898d29d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a028fdd93b87d2d9e83d7fe4cd0d4b92a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#a028fdd93b87d2d9e83d7fe4cd0d4b92a">clear_static_properties</a> ()</td></tr>
+<tr class="memdesc:a028fdd93b87d2d9e83d7fe4cd0d4b92a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear saved static properties assignments (for cores that existed before the GUI reload).  <a href="#a028fdd93b87d2d9e83d7fe4cd0d4b92a">More...</a><br /></td></tr>
 <tr class="separator:a028fdd93b87d2d9e83d7fe4cd0d4b92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fcda7b66f1088fe1fab1a1b06035090"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#a7fcda7b66f1088fe1fab1a1b06035090">is_init_over</a> () const</td></tr>
 <tr class="separator:a7fcda7b66f1088fe1fab1a1b06035090"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,6 +188,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Is virtual to be able to catch the error when non-persistent item uses liveReloadTag. </p>
 
 <p class="definition">Definition at line <a class="el" href="deferred__initial__constant__property__values_8cpp_source.xhtml#l00012">12</a> of file <a class="el" href="deferred__initial__constant__property__values_8cpp_source.xhtml">deferred_initial_constant_property_values.cpp</a>.</p>
@@ -201,11 +210,12 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Execute saved static properties assignments (for newly created cores). </p>
 
 <p class="definition">Definition at line <a class="el" href="deferred__initial__constant__property__values_8cpp_source.xhtml#l00015">15</a> of file <a class="el" href="deferred__initial__constant__property__values_8cpp_source.xhtml">deferred_initial_constant_property_values.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                                                    {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;f : this-&gt;<a class="code" href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#af1b4bdb4d0af72707d5897cda5823706">static_properties_assignments</a>)</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        f();</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#a028fdd93b87d2d9e83d7fe4cd0d4b92a">clear_static_properties</a>();</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#af17ad49a07c95416daf1eaca114abfd0">init_over</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_deferred_initial_constant_property_values_xhtml_af1b4bdb4d0af72707d5897cda5823706"><div class="ttname"><a href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#af1b4bdb4d0af72707d5897cda5823706">qtsdl::DeferredInitialConstantPropertyValues::static_properties_assignments</a></div><div class="ttdeci">std::vector&lt; std::function&lt; void()&gt; &gt; static_properties_assignments</div><div class="ttdef"><b>Definition:</b> <a href="deferred__initial__constant__property__values_8h_source.xhtml#l00036">deferred_initial_constant_property_values.h:36</a></div></div>
-<div class="ttc" id="classqtsdl_1_1_deferred_initial_constant_property_values_xhtml_a028fdd93b87d2d9e83d7fe4cd0d4b92a"><div class="ttname"><a href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#a028fdd93b87d2d9e83d7fe4cd0d4b92a">qtsdl::DeferredInitialConstantPropertyValues::clear_static_properties</a></div><div class="ttdeci">void clear_static_properties()</div><div class="ttdef"><b>Definition:</b> <a href="deferred__initial__constant__property__values_8cpp_source.xhtml#l00023">deferred_initial_constant_property_values.cpp:23</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_deferred_initial_constant_property_values_xhtml_a028fdd93b87d2d9e83d7fe4cd0d4b92a"><div class="ttname"><a href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#a028fdd93b87d2d9e83d7fe4cd0d4b92a">qtsdl::DeferredInitialConstantPropertyValues::clear_static_properties</a></div><div class="ttdeci">void clear_static_properties()</div><div class="ttdoc">Clear saved static properties assignments (for cores that existed before the GUI reload).</div><div class="ttdef"><b>Definition:</b> <a href="deferred__initial__constant__property__values_8cpp_source.xhtml#l00023">deferred_initial_constant_property_values.cpp:23</a></div></div>
 <div class="ttc" id="classqtsdl_1_1_deferred_initial_constant_property_values_xhtml_af17ad49a07c95416daf1eaca114abfd0"><div class="ttname"><a href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml#af17ad49a07c95416daf1eaca114abfd0">qtsdl::DeferredInitialConstantPropertyValues::init_over</a></div><div class="ttdeci">bool init_over</div><div class="ttdef"><b>Definition:</b> <a href="deferred__initial__constant__property__values_8h_source.xhtml#l00035">deferred_initial_constant_property_values.h:35</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="deferred__initial__constant__property__values_8cpp_source.xhtml#l00023">clear_static_properties()</a>, <a class="el" href="deferred__initial__constant__property__values_8h_source.xhtml#l00035">init_over</a>, and <a class="el" href="deferred__initial__constant__property__values_8h_source.xhtml#l00036">static_properties_assignments</a>.</p>
@@ -214,7 +224,8 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_deferred_initial_constant_property_values_a6f205a98802394ea87deebf898d29d01_cgraph.svg" width="436" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_deferred_initial_constant_property_values_a6f205a98802394ea87deebf898d29d01_cgraph.svg" width="436" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -233,6 +244,7 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Clear saved static properties assignments (for cores that existed before the GUI reload). </p>
 
 <p class="definition">Definition at line <a class="el" href="deferred__initial__constant__property__values_8cpp_source.xhtml#l00023">23</a> of file <a class="el" href="deferred__initial__constant__property__values_8cpp_source.xhtml">deferred_initial_constant_property_values.cpp</a>.</p>
@@ -246,7 +258,8 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_deferred_initial_constant_property_values_a028fdd93b87d2d9e83d7fe4cd0d4b92a_icgraph.svg" width="436" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_deferred_initial_constant_property_values_a028fdd93b87d2d9e83d7fe4cd0d4b92a_icgraph.svg" width="436" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

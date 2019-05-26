@@ -38,7 +38,7 @@
 </g>
 <!-- Node265 -->
 <g id="node3" class="node"><title>Node265</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a16e91ba2a775715dc81088e47e508786" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a16e91ba2a775715dc81088e47e508786" target="_top" xlink:title="create rendering and blending information for a single tile on the terrain.">
 <polygon fill="white" stroke="black" points="464,-284.5 464,-314.5 586,-314.5 586,-284.5 464,-284.5"/>
 <text text-anchor="start" x="472" y="-302.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::create</text>
 <text text-anchor="middle" x="525" y="-291.5" font-family="Helvetica,sans-Serif" font-size="10.00">_tile_advice</text>
@@ -52,7 +52,7 @@
 </g>
 <!-- Node266 -->
 <g id="node4" class="node"><title>Node266</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_terrain.xhtml#a72f81eb7623d4ade8272f8163bfcb4d9" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_terrain.xhtml#a72f81eb7623d4ade8272f8163bfcb4d9" target="_top" xlink:title="calculate blending masks for a given tile position.">
 <polygon fill="white" stroke="black" points="458,-235.5 458,-265.5 592,-265.5 592,-235.5 458,-235.5"/>
 <text text-anchor="start" x="466" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::calculate</text>
 <text text-anchor="middle" x="525" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">_masks</text>
@@ -93,7 +93,7 @@
 </g>
 <!-- Node272 -->
 <g id="node10" class="node"><title>Node272</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aa16fe3c08c498d69f102951ae67fc4ca" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aa16fe3c08c498d69f102951ae67fc4ca" target="_top" xlink:title="Constructs a quaternion from a rotation matrix.">
 <polygon fill="white" stroke="black" points="462.5,-98.5 462.5,-128.5 587.5,-128.5 587.5,-98.5 462.5,-98.5"/>
 <text text-anchor="start" x="470.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="525" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Quaternion</text>
@@ -107,7 +107,7 @@
 </g>
 <!-- Node273 -->
 <g id="node11" class="node"><title>Node273</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" target="_top" xlink:title="Calculate the length of the quaternion.">
 <polygon fill="white" stroke="black" points="462.5,-49.5 462.5,-79.5 587.5,-79.5 587.5,-49.5 462.5,-49.5"/>
 <text text-anchor="start" x="470.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="525" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::norm</text>
@@ -121,7 +121,7 @@
 </g>
 <!-- Node277 -->
 <g id="node15" class="node"><title>Node277</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#a5b3b46a13e28d59eaefacf1549269f9b" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#a5b3b46a13e28d59eaefacf1549269f9b" target="_top" xlink:title="Euclidian norm aka length.">
 <polygon fill="white" stroke="black" points="471.5,-0.5 471.5,-30.5 578.5,-30.5 578.5,-0.5 471.5,-0.5"/>
 <text text-anchor="start" x="479.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="525" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::norm</text>
@@ -135,7 +135,7 @@
 </g>
 <!-- Node269 -->
 <g id="node7" class="node"><title>Node269</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title="draw object with direction">
 <polygon fill="white" stroke="black" points="305,-169.5 305,-199.5 414,-199.5 414,-169.5 305,-169.5"/>
 <text text-anchor="start" x="313" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="359.5" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>
@@ -177,7 +177,7 @@
 </g>
 <!-- Node274 -->
 <g id="node12" class="node"><title>Node274</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a1ea971d2f39920e062b0b91971296b65" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a1ea971d2f39920e062b0b91971296b65" target="_top" xlink:title="Ensure that the quaternion&#39;s length equals 1.">
 <polygon fill="white" stroke="black" points="297,-49.5 297,-79.5 422,-79.5 422,-49.5 297,-49.5"/>
 <text text-anchor="start" x="305" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="359.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalize</text>
@@ -191,7 +191,7 @@
 </g>
 <!-- Node275 -->
 <g id="node13" class="node"><title>Node275</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#adaf56c826ceec78d0f4980148ce498fa" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#adaf56c826ceec78d0f4980148ce498fa" target="_top" xlink:title="Return the normalized version of this quaternion.">
 <polygon fill="white" stroke="black" points="136,-49.5 136,-79.5 261,-79.5 261,-49.5 136,-49.5"/>
 <text text-anchor="start" x="144" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="198.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalized</text>
@@ -219,7 +219,7 @@
 </g>
 <!-- Node278 -->
 <g id="node16" class="node"><title>Node278</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#aae6e40b885d6cdf296bd2568bd2b5e49" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#aae6e40b885d6cdf296bd2568bd2b5e49" target="_top" xlink:title="Scales the Vector so that its norm is 1.">
 <polygon fill="white" stroke="black" points="306,-0.5 306,-30.5 413,-30.5 413,-0.5 306,-0.5"/>
 <text text-anchor="start" x="314" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="359.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalize</text>

@@ -20,7 +20,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#af8b821f1e22d782134986784fd94dbe3" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#af8b821f1e22d782134986784fd94dbe3" target="_top" xlink:title="draws with a specific graphic and frame">
 <polygon fill="white" stroke="black" points="314.5,-176 314.5,-195 417.5,-195 417.5,-176 314.5,-176"/>
 <text text-anchor="middle" x="366" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::draw</text>
 </a>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" target="_top" xlink:title="Draws the texture at tile coordinates.">
 <polygon fill="white" stroke="black" points="0,-143 0,-162 118,-162 118,-143 0,-143"/>
 <text text-anchor="middle" x="59" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -102,7 +102,7 @@
 </g>
 <!-- Node9 -->
 <g id="node9" class="node"><title>Node9</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_texture.xhtml#a67031aa8a376335fe775cf819b22900c" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_texture.xhtml#a67031aa8a376335fe775cf819b22900c" target="_top" xlink:title="Draws the texture at phys coordinates.">
 <polygon fill="white" stroke="black" points="154,-50 154,-69 272,-69 272,-50 154,-50"/>
 <text text-anchor="middle" x="213" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -115,7 +115,7 @@
 </g>
 <!-- Node10 -->
 <g id="node10" class="node"><title>Node10</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" target="_top" xlink:title="execute the drawing action.">
 <polygon fill="white" stroke="black" points="154.5,-0.5 154.5,-30.5 271.5,-30.5 271.5,-0.5 154.5,-0.5"/>
 <text text-anchor="start" x="162.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="213" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_drawhud</text>
@@ -129,7 +129,7 @@
 </g>
 <!-- Node8 -->
 <g id="node8" class="node"><title>Node8</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title="Display this mode.">
 <polygon fill="white" stroke="black" points="3.5,-44.5 3.5,-74.5 114.5,-74.5 114.5,-44.5 3.5,-44.5"/>
 <text text-anchor="start" x="11.5" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="59" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::render</text>

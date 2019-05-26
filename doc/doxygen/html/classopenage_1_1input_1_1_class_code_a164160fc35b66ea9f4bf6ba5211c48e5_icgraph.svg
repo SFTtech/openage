@@ -66,7 +66,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node19 -->
 <g id="node2" class="node"><title>Node19</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" target="_top" xlink:title="true if the given event type is being ignored">
 <polygon fill="white" stroke="black" points="543,-22.5 543,-52.5 688,-52.5 688,-22.5 543,-22.5"/>
 <text text-anchor="start" x="551" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="615.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ignored</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node20 -->
 <g id="node3" class="node"><title>Node20</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" target="_top" xlink:title="manages the pressing of an input event (key, mouse, ...).">
 <polygon fill="white" stroke="black" points="362,-0.5 362,-30.5 507,-30.5 507,-0.5 362,-0.5"/>
 <text text-anchor="start" x="370" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="434.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::trigger</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node21 -->
 <g id="node4" class="node"><title>Node21</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" target="_top" xlink:title="sets the state of a specific key">
 <polygon fill="white" stroke="black" points="181,-44.5 181,-74.5 326,-74.5 326,-44.5 181,-44.5"/>
 <text text-anchor="start" x="189" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_state</text>
@@ -113,7 +113,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node22 -->
 <g id="node5" class="node"><title>Node22</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title="When a SDL event happens, this is called.">
 <polygon fill="white" stroke="black" points="0,-22.5 0,-52.5 145,-52.5 145,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_input</text>

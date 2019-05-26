@@ -62,7 +62,7 @@
 </g>
 <!-- Node8 -->
 <g id="node4" class="node"><title>Node8</title>
-<g id="a_node4"><a xlink:href="classqtsdl_1_1_persistent_core_holder_base.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classqtsdl_1_1_persistent_core_holder_base.xhtml" target="_top" xlink:title="Helper to hide the type of the core.">
 <polygon fill="white" stroke="black" points="6,-554.5 6,-622.5 164,-622.5 164,-554.5 6,-554.5"/>
 <text text-anchor="middle" x="85" y="-610.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::PersistentCoreHolderBase</text>
 <polyline fill="none" stroke="black" points="6,-603.5 164,-603.5 "/>
@@ -106,7 +106,7 @@
 </g>
 <!-- Node10 -->
 <g id="node6" class="node"><title>Node10</title>
-<g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="white" stroke="black" points="149,-95.5 149,-229.5 287,-229.5 287,-95.5 149,-95.5"/>
 <text text-anchor="middle" x="218" y="-217.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="149,-210.5 287,-210.5 "/>

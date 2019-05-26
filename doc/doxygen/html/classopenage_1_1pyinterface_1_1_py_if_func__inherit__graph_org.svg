@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-658 198.5,-658 198.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="For usage by &quot;Py Interface Functions&quot;, i.e.">
 <polygon fill="#bfbfbf" stroke="black" points="12,-0.5 12,-156.5 159,-156.5 159,-0.5 12,-0.5"/>
 <text text-anchor="start" x="20" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="start" x="20" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyIfFunc&lt; ReturnType,</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_func.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_func.xhtml" target="_top" xlink:title="Holds a function pointer, with bound arguments.">
 <polygon fill="white" stroke="black" points="6,-453.5 6,-653.5 165,-653.5 165,-453.5 6,-453.5"/>
 <text text-anchor="start" x="14" y="-641.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="85.5" y="-630.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Func&lt; ReturnType, ArgTypes &gt;</text>

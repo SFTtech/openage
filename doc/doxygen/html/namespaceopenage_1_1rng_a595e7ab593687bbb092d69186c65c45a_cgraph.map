@@ -1,8 +1,8 @@
 <map id="openage::rng::global_seed" name="openage::rng::global_seed">
-<area shape="rect" id="node1" title=" " alt="" coords="5,46,180,73"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a" title=" " alt="" coords="228,46,411,73"/>
+<area shape="rect" id="node1" title="Returns the value of the global seed." alt="" coords="5,46,180,73"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a" title="Returns a seed based on time since epoch as well as data from std::random_device if available." alt="" coords="228,46,411,73"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1rng.xhtml#a4bdd2cc5c7f7f5d81ff514287f65eef0" title=" " alt="" coords="459,46,624,73"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" title=" " alt="" coords="687,5,827,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" title="returns the number of nanoseconds since the UNIX epoch." alt="" coords="687,5,827,47"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1rng.xhtml#a924b85bc82578378e68818dab9a247b6" title=" " alt="" coords="672,71,843,112"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="891,78,1001,105"/>
 </map>

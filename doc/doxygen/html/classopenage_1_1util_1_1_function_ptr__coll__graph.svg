@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73 135,-73 135,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Simple wrapper type that contains a function pointer.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-68.5 131,-68.5 131,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FunctionPtr</text>
 <text text-anchor="middle" x="65.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; ReturnType, ArgTypes &gt;</text>

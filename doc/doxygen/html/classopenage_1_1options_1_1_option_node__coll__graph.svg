@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-249 204,-249 204,4 -4,4"/>
 <!-- Node4 -->
 <g id="node1" class="node"><title>Node4</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Allows objects to expose customisable features.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-244.5 148,-244.5 148,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="74" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::OptionNode</text>
 <polyline fill="none" stroke="black" points="0,-225.5 148,-225.5 "/>

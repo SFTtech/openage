@@ -1,4 +1,4 @@
 <map id="openage::rng::RNG::from_string" name="openage::rng::RNG::from_string">
-<area shape="rect" id="node1" title=" " alt="" coords="223,5,364,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a7afae418b44df4e10bbb3fcd09c21f56" title=" " alt="" coords="5,13,175,39"/>
+<area shape="rect" id="node1" title="Reads the rng in from a string." alt="" coords="223,5,364,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a7afae418b44df4e10bbb3fcd09c21f56" title="Reads the rng in from the passed string." alt="" coords="5,13,175,39"/>
 </map>

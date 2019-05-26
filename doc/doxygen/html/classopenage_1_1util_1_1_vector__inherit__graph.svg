@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-277 111,-277 111,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Vector class with arithmetic.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-178.5 107,-178.5 107,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="53.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; N, T &gt;</text>

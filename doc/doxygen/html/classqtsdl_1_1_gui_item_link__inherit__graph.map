@@ -1,7 +1,7 @@
 <map id="qtsdl::GuiItemLink" name="qtsdl::GuiItemLink">
-<area shape="rect" id="node1" title=" " alt="" coords="1153,5,1280,83"/>
+<area shape="rect" id="node1" title="Base for QObject wrapper of the domain&#45;specific classes." alt="" coords="1153,5,1280,83"/>
 <area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_q_object.xhtml" title=" " alt="" coords="597,182,748,259"/>
-<area shape="rect" id="node8" href="$classqtsdl_1_1_gui_list_model.xhtml" title=" " alt="" coords="1133,131,1300,311"/>
+<area shape="rect" id="node8" href="$classqtsdl_1_1_gui_list_model.xhtml" title="Adapts core that uses a property map to QAbstractListModel interface." alt="" coords="1133,131,1300,311"/>
 <area shape="rect" id="node10" href="$classqtsdl_1_1_gui_singleton_item.xhtml" title=" " alt="" coords="1337,175,1494,267"/>
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_asset_manager_link.xhtml" title=" " alt="" coords="5,571,217,766"/>
 <area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_game_control_link.xhtml" title=" " alt="" coords="241,359,445,979"/>

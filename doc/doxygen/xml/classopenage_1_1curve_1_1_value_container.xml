@@ -18,9 +18,9 @@
         <argsstring></argsstring>
         <name>container</name>
         <briefdescription>
+<para>Stores all the keyframes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stores all the keyframes </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -32,9 +32,9 @@
         <argsstring></argsstring>
         <name>_id</name>
         <briefdescription>
+<para>Identifier for the container. </para>
         </briefdescription>
         <detaileddescription>
-<para>Identifier for the container </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -47,9 +47,9 @@
         <argsstring></argsstring>
         <name>last_element</name>
         <briefdescription>
+<para>Cache the iterator for quickly finding the end. </para>
         </briefdescription>
         <detaileddescription>
-<para>Cache the iterator for quickly finding the end </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -225,9 +225,9 @@
         <name>id</name>
         <reimplements refid="classopenage_1_1event_1_1_event_target_1ac33e23507125a3a248eb8d031e8f39ed">id</reimplements>
         <briefdescription>
+<para>Give a unique event system identifier for the entity. </para>
         </briefdescription>
         <detaileddescription>
-<para>Give a unique event system identifier for the entity </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

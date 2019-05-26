@@ -261,9 +261,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Container for possible enum values. </para>
     </briefdescription>
     <detaileddescription>
-<para>Container for possible enum values. Inherit from this class with CRTP.</para>
+<para>Inherit from this class with CRTP.</para>
 <para>This class should have the various values defined as <computeroutput>static constexpr</computeroutput> members. Due to the C++ standard, individual enum values must be declared as <computeroutput>static constexpr</computeroutput> members of a class. If they are declared as <computeroutput>static constexpr</computeroutput> constants in a namespace instead, the linker will place the constant in the ELF file once per object file instead of deduplicating it.</para>
 <para>Objects of this class contain a reference to a static constexpr value.</para>
 <para>The static constexpr values can be accessed through <computeroutput>operator -&gt;</computeroutput>.</para>

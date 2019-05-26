@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 301,-35 301,4 -4,4"/>
 <!-- Node388 -->
 <g id="node1" class="node"><title>Node388</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="adds a secondary action which is always updated">
 <polygon fill="#bfbfbf" stroke="black" points="169,-0.5 169,-30.5 297,-30.5 297,-0.5 169,-0.5"/>
 <text text-anchor="start" x="177" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::secondary</text>
 <text text-anchor="middle" x="233" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_action</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node389 -->
 <g id="node2" class="node"><title>Node389</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 133,-30.5 133,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UngarrisonAbility</text>
 <text text-anchor="middle" x="66.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>

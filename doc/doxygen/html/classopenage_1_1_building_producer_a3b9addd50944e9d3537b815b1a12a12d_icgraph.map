@@ -1,4 +1,4 @@
 <map id="openage::BuildingProducer::get_accepted_resources" name="openage::BuildingProducer::get_accepted_resources">
 <area shape="rect" id="node1" title=" " alt="" coords="231,5,408,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title=" " alt="" coords="5,5,183,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title="Initialize units attributes to this type spec." alt="" coords="5,5,183,47"/>
 </map>

@@ -1,11 +1,11 @@
 <map id="openage::Attributes::add" name="openage::Attributes::add">
-<area shape="rect" id="node1" title=" " alt="" coords="863,187,1027,214"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#ab74b08bb7725863fc63839d798f6aedb" title=" " alt="" coords="680,115,811,156"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_attributes.xhtml#ae27a84788906e6fd8786f950e8177704" title=" " alt="" coords="678,180,813,221"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_unit_type.xhtml#ad468f1258da7e164a0bc175ebdd11b2a" title=" " alt="" coords="676,245,815,287"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title=" " alt="" coords="451,5,620,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title=" " alt="" coords="216,56,395,97"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title=" " alt="" coords="5,85,168,127"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title=" " alt="" coords="447,173,624,215"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_projectile_producer.xhtml#aa865d0028f76dfeb134b32c24dc63619" title=" " alt="" coords="443,239,628,280"/>
+<area shape="rect" id="node1" title="Add an attribute or replace any attribute of the same type." alt="" coords="863,187,1027,214"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#ab74b08bb7725863fc63839d798f6aedb" title="give a new attribute this this unit this is used to set things like color, hitpoints and speed" alt="" coords="680,115,811,156"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_attributes.xhtml#ae27a84788906e6fd8786f950e8177704" title="Add copies of all the attributes from the given Attributes." alt="" coords="678,180,813,221"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_unit_type.xhtml#ad468f1258da7e164a0bc175ebdd11b2a" title="upgrades one attribute of this unit type" alt="" coords="676,245,815,287"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title="Initialize units attributes to this type spec." alt="" coords="451,5,620,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title="Initialize units attributes to this type spec." alt="" coords="216,56,395,97"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title="Initialize units attributes to this type spec." alt="" coords="5,85,168,127"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title="Initialize units attributes to this type spec." alt="" coords="447,173,624,215"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_projectile_producer.xhtml#aa865d0028f76dfeb134b32c24dc63619" title="Initialize units attributes to this type spec." alt="" coords="443,239,628,280"/>
 </map>

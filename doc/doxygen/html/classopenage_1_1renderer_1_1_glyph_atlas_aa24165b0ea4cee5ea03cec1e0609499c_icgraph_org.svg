@@ -34,7 +34,7 @@
 </g>
 <!-- Node54 -->
 <g id="node3" class="node"><title>Node54</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title="Retrieves the atlas entry for a specified font and glyph.">
 <polygon fill="white" stroke="black" points="143,-0.5 143,-30.5 244,-30.5 244,-0.5 143,-0.5"/>
 <text text-anchor="start" x="151" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="193.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">GlyphAtlas::get</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node55 -->
 <g id="node4" class="node"><title>Node55</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title="Render all the text draw requests made during the frame.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 107,-30.5 107,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="53.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::render</text>

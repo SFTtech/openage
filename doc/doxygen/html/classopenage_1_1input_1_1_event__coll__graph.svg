@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-266 138,-266 138,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Input event, as triggered by some input device like mouse, kezb, joystick, tablet,...">
 <polygon fill="#bfbfbf" stroke="black" points="12,-0.5 12,-123.5 122,-123.5 122,-0.5 12,-0.5"/>
 <text text-anchor="middle" x="67" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::Event</text>
 <polyline fill="none" stroke="black" points="12,-104.5 122,-104.5 "/>
@@ -29,7 +29,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_class_code.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_class_code.xhtml" target="_top" xlink:title="base event type containing event class and event code">
 <polygon fill="white" stroke="black" points="0,-171.5 0,-261.5 134,-261.5 134,-171.5 0,-171.5"/>
 <text text-anchor="middle" x="67" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ClassCode</text>
 <polyline fill="none" stroke="black" points="0,-242.5 134,-242.5 "/>

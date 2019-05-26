@@ -1,6 +1,6 @@
 <map id="openage::event::EventStore::top" name="openage::event::EventStore::top">
 <area shape="rect" id="node1" title=" " alt="" coords="627,13,833,39"/>
-<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_queue.xhtml#aec381e61d472643475de6fa50ae7b5d8" title=" " alt="" coords="392,5,579,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" title=" " alt="" coords="199,5,344,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" title=" " alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_queue.xhtml#aec381e61d472643475de6fa50ae7b5d8" title="Obtain the next event from the event_queue that happens before &lt;= max_time." alt="" coords="392,5,579,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" title="Execute the events." alt="" coords="199,5,344,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" title="Execute all events that are registered until a certain point in time." alt="" coords="5,5,151,47"/>
 </map>

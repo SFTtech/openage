@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-299 111,-299 111,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="buildings train new objects">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-90.5 107,-90.5 107,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="53.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TrainAbility</text>
 <polyline fill="none" stroke="black" points="0,-71.5 107,-71.5 "/>
@@ -26,7 +26,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_ability.xhtml" target="_top" xlink:title="Abilities create an action when given a target some abilities target positions such as moving or patr...">
 <polygon fill="white" stroke="black" points="1.5,-127.5 1.5,-294.5 105.5,-294.5 105.5,-127.5 1.5,-127.5"/>
 <text text-anchor="middle" x="53.5" y="-282.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAbility</text>
 <polyline fill="none" stroke="black" points="1.5,-275.5 105.5,-275.5 "/>

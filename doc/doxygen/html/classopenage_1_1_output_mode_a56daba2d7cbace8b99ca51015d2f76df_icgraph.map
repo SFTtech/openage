@@ -1,4 +1,4 @@
 <map id="openage::OutputMode::set_game_control" name="openage::OutputMode::set_game_control">
-<area shape="rect" id="node1" title=" " alt="" coords="199,5,349,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" title=" " alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node1" title="Called when the GameControl is set in QML." alt="" coords="199,5,349,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" title="Called when the GameControl is set in QML." alt="" coords="5,5,151,47"/>
 </map>

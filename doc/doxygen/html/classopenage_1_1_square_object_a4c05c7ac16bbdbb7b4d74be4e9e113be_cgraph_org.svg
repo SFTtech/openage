@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-146.5 617,-146.5 617,4 -4,4"/>
 <!-- Node20 -->
 <g id="node1" class="node"><title>Node20</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="calculate object start and end positions.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-73.5 0,-103.5 119,-103.5 119,-73.5 0,-73.5"/>
 <text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="59.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_range</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node21 -->
 <g id="node2" class="node"><title>Node21</title>
-<g id="a_node2"><a xlink:href="namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" target="_top" xlink:title="given the west most point of a building foundation and the tile_delta size of the foundation,...">
 <polygon fill="white" stroke="black" points="155,-79 155,-98 280,-98 280,-79 155,-79"/>
 <text text-anchor="middle" x="217.5" y="-86" font-family="Helvetica,sans-Serif" font-size="10.00">openage::building_center</text>
 </a>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node23 -->
 <g id="node4" class="node"><title>Node23</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="507.5,-123 507.5,-142 602.5,-142 602.5,-123 507.5,-123"/>
 <text text-anchor="middle" x="555" y="-130" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

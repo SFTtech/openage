@@ -1,5 +1,5 @@
 <map id="openage::gui::TextureHandle" name="openage::gui::TextureHandle">
 <area shape="rect" id="node1" title=" " alt="" coords="5,725,192,803"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml" title=" " alt="" coords="31,321,166,663"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_path.xhtml" title=" " alt="" coords="33,5,164,259"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml" title="A texture for rendering graphically." alt="" coords="31,321,166,663"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_path.xhtml" title="C++ pendant to the python util.fslike.path.Path." alt="" coords="33,5,164,259"/>
 </map>

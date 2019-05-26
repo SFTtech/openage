@@ -1,9 +1,9 @@
 <map id="openage::Unit::queue_cmd" name="openage::Unit::queue_cmd">
-<area shape="rect" id="node1" title=" " alt="" coords="424,143,601,170"/>
+<area shape="rect" id="node1" title="queues a command to be applied to this unit on the next update" alt="" coords="424,143,601,170"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml#a16660bd780984c6f11ba30e0c7f634ad" title=" " alt="" coords="221,5,360,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title=" " alt="" coords="218,71,363,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title="action to perform when popped from a units action stack" alt="" coords="218,71,363,112"/>
 <area shape="rect" id="node5" href="$classopenage_1_1_gather_action.xhtml#ab76d756df9989badfa91e272f85dee9c" title=" " alt="" coords="205,136,376,177"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" title=" " alt="" coords="223,201,359,243"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" title=" " alt="" coords="213,267,368,308"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92" title=" " alt="" coords="5,5,157,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="223,201,359,243"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" title="Control units action when in range of the target." alt="" coords="213,267,368,308"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="5,5,157,47"/>
 </map>

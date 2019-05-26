@@ -40,9 +40,10 @@
           <declname>path</declname>
         </param>
         <briefdescription>
+<para>Initializes a new <ref refid="classopenage_1_1audio_1_1_in_memory_loader" kindref="compound">InMemoryLoader</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes a new <ref refid="classopenage_1_1audio_1_1_in_memory_loader" kindref="compound">InMemoryLoader</ref>. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>path</parametername>
 </parameternamelist>
@@ -78,9 +79,9 @@
         <name>get_resource</name>
         <reimplementedby refid="classopenage_1_1audio_1_1_opus_in_memory_loader_1afd535fc99780b2823cdd38c8dfc03f5d">get_resource</reimplementedby>
         <briefdescription>
+<para>Returns the resource as pcm data buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the resource as pcm data buffer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -102,9 +103,10 @@
           <declname>format</declname>
         </param>
         <briefdescription>
+<para>Create a <ref refid="classopenage_1_1audio_1_1_in_memory_loader" kindref="compound">InMemoryLoader</ref> instance that supports the given format. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a <ref refid="classopenage_1_1audio_1_1_in_memory_loader" kindref="compound">InMemoryLoader</ref> instance that supports the given format. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>path</parametername>
 </parameternamelist>
@@ -132,9 +134,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A <ref refid="classopenage_1_1audio_1_1_in_memory_loader" kindref="compound">InMemoryLoader</ref> loads a audio file into memory and converts it into 16 bit signed integer pcm data. </para>
     </briefdescription>
     <detaileddescription>
-<para>A <ref refid="classopenage_1_1audio_1_1_in_memory_loader" kindref="compound">InMemoryLoader</ref> loads a audio file into memory and converts it into 16 bit signed integer pcm data. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="497">

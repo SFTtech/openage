@@ -1,6 +1,6 @@
 <map id="openage::util::array64_to_array8" name="openage::util::array64_to_array8">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,152,47"/>
+<area shape="rect" id="node1" title="Convert a C&#45;style array of uint64_t to a std::vector of uint8_t." alt="" coords="5,5,152,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="387,13,580,39"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0" title=" " alt="" coords="200,35,339,76"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="628,13,755,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0" title="Convert a uint64_t to an array of uint8_t." alt="" coords="200,35,339,76"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="628,13,755,39"/>
 </map>

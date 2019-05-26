@@ -19,7 +19,7 @@
 </g>
 <!-- Node130 -->
 <g id="node2" class="node"><title>Node130</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" target="_top" xlink:title="test method for the base CoordXY* classes.">
 <polygon fill="white" stroke="black" points="172.5,-125.5 172.5,-155.5 283.5,-155.5 283.5,-125.5 172.5,-125.5"/>
 <text text-anchor="start" x="180.5" y="-143.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::tests</text>
 <text text-anchor="middle" x="228" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00">::coord</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node133 -->
 <g id="node5" class="node"><title>Node133</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title="odo: move to util">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="155,-87 155,-106 301,-106 301,-87 155,-87"/>
 <text text-anchor="middle" x="228" y="-94" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::tests::max</text>
 </a>
@@ -86,7 +86,7 @@
 </g>
 <!-- Node132 -->
 <g id="node4" class="node"><title>Node132</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" target="_top" xlink:title="Clears the underlying stream object&#39;s flags, if such a stream object exists.">
 <polygon fill="white" stroke="black" points="498,-125.5 498,-155.5 644,-155.5 644,-125.5 498,-125.5"/>
 <text text-anchor="start" x="506" y="-143.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="571" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; FString &gt;::reset_flags</text>
@@ -100,7 +100,7 @@
 </g>
 <!-- Node135 -->
 <g id="node7" class="node"><title>Node135</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="337,-0.5 337,-30.5 462,-30.5 462,-0.5 337,-0.5"/>
 <text text-anchor="start" x="345" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="399.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -114,7 +114,7 @@
 </g>
 <!-- Node136 -->
 <g id="node8" class="node"><title>Node136</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="337,-49.5 337,-79.5 462,-79.5 462,-49.5 337,-49.5"/>
 <text text-anchor="start" x="345" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="399.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

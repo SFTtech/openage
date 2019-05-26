@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-341 314,-341 314,4 -4,4"/>
 <!-- Node7 -->
 <g id="node1" class="node"><title>Node7</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Return a lock to the queue so multiple of the above operations can be done sequentially.">
 <polygon fill="#bfbfbf" stroke="black" points="188,-153.5 188,-183.5 310,-183.5 310,-153.5 188,-153.5"/>
 <text text-anchor="start" x="196" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="249" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConcurrentQueue::lock</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node8 -->
 <g id="node2" class="node"><title>Node8</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#af9b0d0bc8cea20b87178f1be1d9fc005" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#af9b0d0bc8cea20b87178f1be1d9fc005" target="_top" xlink:title="Removes all elements from the queue.">
 <polygon fill="white" stroke="black" points="3,-284.5 3,-336.5 149,-336.5 149,-284.5 3,-284.5"/>
 <text text-anchor="start" x="11" y="-324.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="11" y="-313.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConcurrentQueue&lt; std</text>
@@ -36,7 +36,7 @@
 </g>
 <!-- Node9 -->
 <g id="node3" class="node"><title>Node9</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#aa78ec939e767d66a811046c3165e63c5" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#aa78ec939e767d66a811046c3165e63c5" target="_top" xlink:title="Returns whether the queue is empty.">
 <polygon fill="white" stroke="black" points="0,-213.5 0,-265.5 152,-265.5 152,-213.5 0,-213.5"/>
 <text text-anchor="start" x="8" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="8" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConcurrentQueue&lt; std</text>
@@ -52,7 +52,7 @@
 </g>
 <!-- Node10 -->
 <g id="node4" class="node"><title>Node10</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#ac425a78bff1d289707da09d6a14922dc" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#ac425a78bff1d289707da09d6a14922dc" target="_top" xlink:title="Returns the front item of the queue without removing it.">
 <polygon fill="white" stroke="black" points="4.5,-142.5 4.5,-194.5 147.5,-194.5 147.5,-142.5 4.5,-142.5"/>
 <text text-anchor="start" x="12.5" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="12.5" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConcurrentQueue&lt; std</text>
@@ -68,7 +68,7 @@
 </g>
 <!-- Node11 -->
 <g id="node5" class="node"><title>Node11</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#aec749002b655d28b0aa5f99a802a0008" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#aec749002b655d28b0aa5f99a802a0008" target="_top" xlink:title="Removes the front item of the queue and returns it.">
 <polygon fill="white" stroke="black" points="6,-71.5 6,-123.5 146,-123.5 146,-71.5 6,-71.5"/>
 <text text-anchor="start" x="14" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="14" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConcurrentQueue&lt; std</text>
@@ -84,7 +84,7 @@
 </g>
 <!-- Node12 -->
 <g id="node6" class="node"><title>Node12</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a1c71a5b5a99e60590130d2afe866137c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a1c71a5b5a99e60590130d2afe866137c" target="_top" xlink:title="Appends the given item to the queue.">
 <polygon fill="white" stroke="black" points="3,-0.5 3,-52.5 149,-52.5 149,-0.5 3,-0.5"/>
 <text text-anchor="start" x="11" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="11" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConcurrentQueue&lt; std</text>

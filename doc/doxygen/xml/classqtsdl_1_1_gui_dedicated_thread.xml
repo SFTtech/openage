@@ -134,9 +134,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Runs the gui logic in separate thread. </para>
     </briefdescription>
     <detaileddescription>
-<para>Runs the gui logic in separate thread.</para>
 <para>For sharing the thread with something else, use <ref refid="classqtsdl_1_1_gui_application_impl" kindref="compound">qtsdl::GuiApplicationImpl</ref> instead. </para>
     </detaileddescription>
     <collaborationgraph>

@@ -1,9 +1,9 @@
 <map id="qtsdl::GameLogicCaller::in_game_logic_thread" name="qtsdl::GameLogicCaller::in_game_logic_thread">
 <area shape="rect" id="node1" title=" " alt="" coords="1603,100,1760,141"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173" title=" " alt="" coords="1373,5,1555,76"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774" title=" " alt="" coords="1387,100,1541,141"/>
-<area shape="rect" id="node4" href="$classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" title=" " alt="" coords="1376,165,1552,207"/>
-<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" title=" " alt="" coords="1149,165,1325,207"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173" title="Static QML properties assignments during the init phase are stored for a batch assignment at the end ..." alt="" coords="1373,5,1555,76"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774" title="Invoke a function in the logic thread (the thread of the core of this object)." alt="" coords="1387,100,1541,141"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" title="Set up signal to be able to run code in the game logic thread." alt="" coords="1376,165,1552,207"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" title="Set up signal to be able to run code in the game logic thread." alt="" coords="1149,165,1325,207"/>
 <area shape="rect" id="node6" href="$classqtsdl_1_1_gui_subtree_impl.xhtml#a766c2b35a935c60fcbfcc6758d908ecb" title=" " alt="" coords="951,165,1101,207"/>
 <area shape="rect" id="node7" href="$classqtsdl_1_1_gui_subtree_impl.xhtml#aed216357736342148f86afb0d73f3fdd" title=" " alt="" coords="709,165,903,207"/>
 <area shape="rect" id="node8" href="$classqtsdl_1_1_gui_subtree_impl.xhtml#aea9b559c07846786ebcf6c41ef58ff78" title=" " alt="" coords="515,132,661,173"/>

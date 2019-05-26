@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-167 131,-167 131,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="An exception that is thrown when a job wants to abort itself.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-68.5 127,-68.5 127,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobAborted</text>
 <text text-anchor="middle" x="63.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Exception</text>

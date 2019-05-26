@@ -57,7 +57,7 @@ var sectionId = 'dynsection-18';
 <polygon fill="white" stroke="none" points="-4,4 -4,-161 547,-161 547,4 -4,4"/>
 <!-- Node119 -->
 <g id="node1" class="node"><title>Node119</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="changes the placement state of this object keeping the existing position.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-63 0,-93 117,-93 117,-63 0,-63"/>
 <text text-anchor="start" x="8" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="58.5" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node121 -->
 <g id="node3" class="node"><title>Node121</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title="get tile data by absolute coordinates.">
 <polygon fill="white" stroke="black" points="153.5,-88 153.5,-118 269.5,-118 269.5,-88 153.5,-88"/>
 <text text-anchor="start" x="161.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="211.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node125 -->
 <g id="node7" class="node"><title>Node125</title>
-<g id="a_node7"><a xlink:href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" target="_top" xlink:title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta...">
 <polygon fill="white" stroke="black" points="166.5,-0.5 166.5,-19.5 256.5,-19.5 256.5,-0.5 166.5,-0.5"/>
 <text text-anchor="middle" x="211.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::tile_list</text>
 </a>
@@ -134,7 +134,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node123 -->
 <g id="node5" class="node"><title>Node123</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="446,-93.5 446,-112.5 543,-112.5 543,-93.5 446,-93.5"/>
 <text text-anchor="middle" x="494.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

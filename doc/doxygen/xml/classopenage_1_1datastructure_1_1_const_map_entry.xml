@@ -22,9 +22,9 @@
         <argsstring></argsstring>
         <name>key</name>
         <briefdescription>
+<para>Map entry key. </para>
         </briefdescription>
         <detaileddescription>
-<para>Map entry key. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -37,9 +37,9 @@
         <argsstring></argsstring>
         <name>value</name>
         <briefdescription>
+<para>Map entry value. </para>
         </briefdescription>
         <detaileddescription>
-<para>Map entry value. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -107,9 +107,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>One entry in the lookup map. </para>
     </briefdescription>
     <detaileddescription>
-<para>One entry in the lookup map. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="1931">

@@ -25,9 +25,9 @@
         <name>on_tick</name>
         <reimplementedby refid="classopenage_1_1console_1_1_console_1ae061753f445808da5dbc813dd0e0f4da">on_tick</reimplementedby>
         <briefdescription>
+<para>execute the tick action. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the tick action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -35,9 +35,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>superclass for all calculations being done on engine tick. </para>
     </briefdescription>
     <detaileddescription>
-<para>superclass for all calculations being done on engine tick. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="5254">

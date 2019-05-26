@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 282,-35 282,4 -4,4"/>
 <!-- Node22 -->
 <g id="node1" class="node"><title>Node22</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns true IFF the string literals have equal content.">
 <polygon fill="#bfbfbf" stroke="black" points="157,-0.5 157,-30.5 278,-30.5 278,-0.5 157,-0.5"/>
 <text text-anchor="start" x="165" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="217.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::streq</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node23 -->
 <g id="node2" class="node"><title>Node23</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a61c4b546903316ecf379bfe7bd9553f1" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a61c4b546903316ecf379bfe7bd9553f1" target="_top" xlink:title="Truncates a suffix from a string literal.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 121,-30.5 121,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="60.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::get_prefix</text>

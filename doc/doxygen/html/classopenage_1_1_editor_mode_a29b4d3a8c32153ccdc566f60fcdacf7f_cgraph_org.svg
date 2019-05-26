@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1012 1182,-1012 1182,4 -4,4"/>
 <!-- Node62 -->
 <g id="node1" class="node"><title>Node62</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-776.5 0,-806.5 116,-806.5 116,-776.5 0,-776.5"/>
 <text text-anchor="start" x="8" y="-794.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="58" y="-783.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node63 -->
 <g id="node2" class="node"><title>Node63</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a32c669bab23aa04b6d17309b21486ffa" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a32c669bab23aa04b6d17309b21486ffa" target="_top" xlink:title="bind a specific action idetifier this is the highest matching priority">
 <polygon fill="white" stroke="black" points="154,-977.5 154,-1007.5 295,-1007.5 295,-977.5 154,-977.5"/>
 <text text-anchor="start" x="162" y="-995.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="224.5" y="-984.5" font-family="Helvetica,sans-Serif" font-size="10.00">::bind</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node65 -->
 <g id="node4" class="node"><title>Node65</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#ab6233b0bf461be4bb1633cd9f7e7f08b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#ab6233b0bf461be4bb1633cd9f7e7f08b" target="_top" xlink:title="return this engine&#39;s action manager.">
 <polygon fill="white" stroke="black" points="170,-889.5 170,-919.5 279,-919.5 279,-889.5 170,-889.5"/>
 <text text-anchor="start" x="178" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="224.5" y="-896.5" font-family="Helvetica,sans-Serif" font-size="10.00">_action_manager</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node68 -->
 <g id="node7" class="node"><title>Node68</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title="return this engine&#39;s keybind manager.">
 <polygon fill="white" stroke="black" points="170,-801.5 170,-831.5 279,-831.5 279,-801.5 170,-801.5"/>
 <text text-anchor="start" x="178" y="-819.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="224.5" y="-808.5" font-family="Helvetica,sans-Serif" font-size="10.00">_input_manager</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node69 -->
 <g id="node8" class="node"><title>Node69</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title="Query stored pressing stat for a key.">
 <polygon fill="white" stroke="black" points="152,-752.5 152,-782.5 297,-782.5 297,-752.5 152,-752.5"/>
 <text text-anchor="start" x="160" y="-770.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="224.5" y="-759.5" font-family="Helvetica,sans-Serif" font-size="10.00">::is_down</text>
@@ -103,7 +103,7 @@
 </g>
 <!-- Node70 -->
 <g id="node9" class="node"><title>Node70</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="697.5,-763 697.5,-782 788.5,-782 788.5,-763 697.5,-763"/>
 <text text-anchor="middle" x="743" y="-770" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -171,7 +171,7 @@
 </g>
 <!-- Node71 -->
 <g id="node10" class="node"><title>Node71</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="866,-735.5 866,-765.5 976,-765.5 976,-735.5 866,-735.5"/>
 <text text-anchor="start" x="874" y="-753.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="921" y="-742.5" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -185,7 +185,7 @@
 </g>
 <!-- Node72 -->
 <g id="node11" class="node"><title>Node72</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="849.5,-785 849.5,-804 992.5,-804 992.5,-785 849.5,-785"/>
 <text text-anchor="middle" x="921" y="-792" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -198,7 +198,7 @@
 </g>
 <!-- Node73 -->
 <g id="node12" class="node"><title>Node73</title>
-<g id="a_node12"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="1052,-828.5 1052,-858.5 1156,-858.5 1156,-828.5 1052,-828.5"/>
 <text text-anchor="start" x="1060" y="-846.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="1104" y="-835.5" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -244,7 +244,7 @@
 </g>
 <!-- Node77 -->
 <g id="node16" class="node"><title>Node77</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title="return currently running game or null if a game is not currently running">
 <polygon fill="white" stroke="black" points="500,-501 500,-520 638,-520 638,-501 500,-501"/>
 <text text-anchor="middle" x="569" y="-508" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get_game</text>
 </a>
@@ -285,7 +285,7 @@
 </g>
 <!-- Node84 -->
 <g id="node23" class="node"><title>Node84</title>
-<g id="a_node23"><a xlink:href="classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" target="_top" xlink:title="get or create a terrain chunk for a given chunk position.">
 <polygon fill="white" stroke="black" points="344.5,-752.5 344.5,-782.5 452.5,-782.5 452.5,-752.5 344.5,-752.5"/>
 <text text-anchor="start" x="352.5" y="-770.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="398.5" y="-759.5" font-family="Helvetica,sans-Serif" font-size="10.00">_create_chunk</text>
@@ -299,7 +299,7 @@
 </g>
 <!-- Node89 -->
 <g id="node28" class="node"><title>Node89</title>
-<g id="a_node28"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title=" ">
+<g id="a_node28"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title="get tile data by absolute coordinates.">
 <polygon fill="white" stroke="black" points="511,-390.5 511,-420.5 627,-420.5 627,-390.5 511,-390.5"/>
 <text text-anchor="start" x="519" y="-408.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="569" y="-397.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -313,7 +313,7 @@
 </g>
 <!-- Node92 -->
 <g id="node31" class="node"><title>Node92</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af24e842fc429a5dbb73c12abcb9c3378" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af24e842fc429a5dbb73c12abcb9c3378" target="_top" xlink:title="remove this TerrainObject from the terrain chunks.">
 <polygon fill="white" stroke="black" points="340,-325.5 340,-355.5 457,-355.5 457,-325.5 340,-325.5"/>
 <text text-anchor="start" x="348" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="398.5" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove</text>
@@ -341,7 +341,7 @@
 </g>
 <!-- Node96 -->
 <g id="node35" class="node"><title>Node96</title>
-<g id="a_node35"><a xlink:href="classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" target="_top" xlink:title="unit types by aoe gamedata unit ids – the unit type which corresponds to an aoe unit id">
 <polygon fill="white" stroke="black" points="333,-714 333,-733 464,-733 464,-714 333,-714"/>
 <text text-anchor="middle" x="398.5" y="-721" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get_type</text>
 </a>
@@ -424,7 +424,7 @@
 </g>
 <!-- Node85 -->
 <g id="node24" class="node"><title>Node85</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" target="_top" xlink:title="get a terrain chunk by a given chunk position.">
 <polygon fill="white" stroke="black" points="515,-752.5 515,-782.5 623,-782.5 623,-752.5 515,-752.5"/>
 <text text-anchor="start" x="523" y="-770.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="569" y="-759.5" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk</text>
@@ -438,7 +438,7 @@
 </g>
 <!-- Node86 -->
 <g id="node25" class="node"><title>Node86</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" target="_top" xlink:title="Attach a chunk to the terrain, to a given position.">
 <polygon fill="white" stroke="black" points="508,-801.5 508,-831.5 630,-831.5 630,-801.5 508,-801.5"/>
 <text text-anchor="start" x="516" y="-819.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::attach</text>
 <text text-anchor="middle" x="569" y="-808.5" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk</text>
@@ -476,7 +476,7 @@
 </g>
 <!-- Node88 -->
 <g id="node27" class="node"><title>Node88</title>
-<g id="a_node27"><a xlink:href="classopenage_1_1_terrain.xhtml#a9ce94c372f7e86310506844b352fb20c" target="_top" xlink:title=" ">
+<g id="a_node27"><a xlink:href="classopenage_1_1_terrain.xhtml#a9ce94c372f7e86310506844b352fb20c" target="_top" xlink:title="get the neighbor chunks of a given chunk.">
 <polygon fill="white" stroke="black" points="689,-801.5 689,-831.5 797,-831.5 797,-801.5 689,-801.5"/>
 <text text-anchor="start" x="697" y="-819.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="743" y="-808.5" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk_neighbors</text>
@@ -504,7 +504,7 @@
 </g>
 <!-- Node91 -->
 <g id="node30" class="node"><title>Node91</title>
-<g id="a_node30"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node30"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="872.5,-396 872.5,-415 969.5,-415 969.5,-396 872.5,-396"/>
 <text text-anchor="middle" x="921" y="-403" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>
@@ -522,7 +522,7 @@
 </g>
 <!-- Node93 -->
 <g id="node32" class="node"><title>Node93</title>
-<g id="a_node32"><a xlink:href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" target="_top" xlink:title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta...">
 <polygon fill="white" stroke="black" points="524,-352 524,-371 614,-371 614,-352 524,-352"/>
 <text text-anchor="middle" x="569" y="-359" font-family="Helvetica,sans-Serif" font-size="10.00">openage::tile_list</text>
 </a>
@@ -674,7 +674,7 @@
 </g>
 <!-- Node103 -->
 <g id="node42" class="node"><title>Node103</title>
-<g id="a_node42"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title="odo: move to util">
+<g id="a_node42"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="848,-160 848,-179 994,-179 994,-160 848,-160"/>
 <text text-anchor="middle" x="921" y="-167" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::tests::max</text>
 </a>

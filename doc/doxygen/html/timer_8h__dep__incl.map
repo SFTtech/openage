@@ -22,7 +22,7 @@
 <area shape="rect" id="node19" href="$terrain__chunk_8cpp.xhtml" title=" " alt="" coords="1172,317,1381,373"/>
 <area shape="rect" id="node20" href="$terrain__object_8cpp.xhtml" title=" " alt="" coords="1405,317,1615,373"/>
 <area shape="rect" id="node21" href="$unit_2action_8cpp.xhtml" title=" " alt="" coords="1639,317,1848,373"/>
-<area shape="rect" id="node22" href="$producer_8cpp.xhtml" title=" " alt="" coords="1872,317,2081,373"/>
+<area shape="rect" id="node22" href="$producer_8cpp.xhtml" title="Many values in this file are hardcoded, due to limited understanding of how the original game files w..." alt="" coords="1872,317,2081,373"/>
 <area shape="rect" id="node23" href="$selection_8cpp.xhtml" title=" " alt="" coords="2105,317,2315,373"/>
 <area shape="rect" id="node24" href="$unit_8cpp.xhtml" title=" " alt="" coords="2339,317,2548,373"/>
 <area shape="rect" id="node25" href="$profiler_8cpp.xhtml" title=" " alt="" coords="2572,317,2781,373"/>

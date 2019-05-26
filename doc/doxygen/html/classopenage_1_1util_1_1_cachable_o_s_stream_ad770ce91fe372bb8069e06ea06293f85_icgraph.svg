@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 360,-35 360,4 -4,4"/>
 <!-- Node9 -->
 <g id="node1" class="node"><title>Node9</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Resets the stream to a brand&#45;new state, and clears the flag.">
 <polygon fill="#bfbfbf" stroke="black" points="192,-0.5 192,-30.5 356,-30.5 356,-0.5 192,-0.5"/>
 <text text-anchor="start" x="200" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CachableOSStream</text>
 <text text-anchor="middle" x="274" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::release</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node10 -->
 <g id="node2" class="node"><title>Node10</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#aa55bdace86e9b1eda7b225b694c5a165" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#aa55bdace86e9b1eda7b225b694c5a165" target="_top" xlink:title="Releases the CachableOSStream object (if it was acquired).">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 156,-30.5 156,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="78" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; Formatter &gt;::~StringFormatter</text>

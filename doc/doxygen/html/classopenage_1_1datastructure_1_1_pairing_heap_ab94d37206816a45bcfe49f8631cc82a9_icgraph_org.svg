@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-142 724,-142 724,4 -4,4"/>
 <!-- Node8 -->
 <g id="node1" class="node"><title>Node8</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="You must call this after the node data decreased.">
 <polygon fill="#bfbfbf" stroke="black" points="599,-44.5 599,-74.5 720,-74.5 720,-44.5 599,-44.5"/>
 <text text-anchor="start" x="607" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="659.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::decrease</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node9 -->
 <g id="node2" class="node"><title>Node9</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1path.xhtml#acafe3c2e0b6cef7750a14663eab6c883" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1path.xhtml#acafe3c2e0b6cef7750a14663eab6c883" target="_top" xlink:title="finds a path between two endpoints">
 <polygon fill="white" stroke="black" points="452,-50 452,-69 563,-69 563,-50 452,-50"/>
 <text text-anchor="middle" x="507.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::a_star</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node10 -->
 <g id="node3" class="node"><title>Node10</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1path.xhtml#a4699fb2dbfd8178b2234b9fbb935179f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1path.xhtml#a4699fb2dbfd8178b2234b9fbb935179f" target="_top" xlink:title="path between two static points">
 <polygon fill="white" stroke="black" points="294.5,-88 294.5,-107 413.5,-107 413.5,-88 294.5,-88"/>
 <text text-anchor="middle" x="354" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::to_point</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node14 -->
 <g id="node7" class="node"><title>Node14</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1path.xhtml#a248264f0c87ce0cc7cf00adaf5312934" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1path.xhtml#a047e97b9a81a866f064ad6d6f8dddfd6" target="_top" xlink:title="path between 2 objects, with how close to come to end point">
 <polygon fill="white" stroke="black" points="292,-50 292,-69 416,-69 416,-50 292,-50"/>
 <text text-anchor="middle" x="354" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::to_object</text>
 </a>
@@ -59,7 +59,7 @@
 </g>
 <!-- Node16 -->
 <g id="node9" class="node"><title>Node16</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1path.xhtml#a4382f59f9523f9dd89a6689336cc353a" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1path.xhtml#a4382f59f9523f9dd89a6689336cc353a" target="_top" xlink:title="path to nearest object with lambda">
 <polygon fill="white" stroke="black" points="304.5,-0.5 304.5,-30.5 403.5,-30.5 403.5,-0.5 304.5,-0.5"/>
 <text text-anchor="start" x="312.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::find</text>
 <text text-anchor="middle" x="354" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_nearest</text>
@@ -73,7 +73,7 @@
 </g>
 <!-- Node11 -->
 <g id="node4" class="node"><title>Node11</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_move_action.xhtml#a4e56fc82672dfaf3c62f846afbd6df69" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_move_action.xhtml#a4e56fc82672dfaf3c62f846afbd6df69" target="_top" xlink:title="use a star to find a path to target">
 <polygon fill="white" stroke="black" points="146,-82.5 146,-112.5 256,-112.5 256,-82.5 146,-82.5"/>
 <text text-anchor="start" x="154" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAction</text>
 <text text-anchor="middle" x="201" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_path</text>
@@ -101,7 +101,7 @@
 </g>
 <!-- Node13 -->
 <g id="node6" class="node"><title>Node13</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="0,-58.5 0,-88.5 110,-88.5 110,-58.5 0,-58.5"/>
 <text text-anchor="start" x="8" y="-76.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAction</text>
 <text text-anchor="middle" x="55" y="-65.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -120,7 +120,7 @@
 </g>
 <!-- Node15 -->
 <g id="node8" class="node"><title>Node15</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="150,-33.5 150,-63.5 252,-63.5 252,-33.5 150,-33.5"/>
 <text text-anchor="start" x="158" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::IdleAction</text>
 <text text-anchor="middle" x="201" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>

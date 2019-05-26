@@ -105,9 +105,10 @@
         <argsstring></argsstring>
         <name>maybe_present_fam</name>
         <briefdescription>
+<para>Index of the queue family with presentation support. </para>
         </briefdescription>
         <detaileddescription>
-<para>Index of the queue family with presentation support. This might be the same as the graphics family, in which case this optional is empty. </para>
+<para>This might be the same as the graphics family, in which case this optional is empty. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -117,9 +118,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Contains information about the support of a given physical device for a given surface, for example the formats using which it can present onto the surface. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains information about the support of a given physical device for a given surface, for example the formats using which it can present onto the surface. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4805">

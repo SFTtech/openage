@@ -1,9 +1,9 @@
 <map id="openage::Texture::draw" name="openage::Texture::draw">
-<area shape="rect" id="node1" title=" " alt="" coords="5,141,163,168"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title=" " alt="" coords="466,25,614,66"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_texture.xhtml#a092c7e4cb300b5fda314d0c951d866d3" title=" " alt="" coords="231,39,395,81"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490" title=" " alt="" coords="239,105,387,146"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b" title=" " alt="" coords="463,119,617,161"/>
+<area shape="rect" id="node1" title="Draws the texture at window coordinates." alt="" coords="5,141,163,168"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title="Get the subtexture coordinates by its id." alt="" coords="466,25,614,66"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_texture.xhtml#a092c7e4cb300b5fda314d0c951d866d3" title="get atlas subtexture coordinates." alt="" coords="231,39,395,81"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490" title="returns the opengl texture id of this texture." alt="" coords="239,105,387,146"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b" title="The texture loadin must occur on the thread that manages the gl context." alt="" coords="463,119,617,161"/>
 <area shape="rect" id="node7" href="$classopenage_1_1shader_1_1_program.xhtml#abfd70a48ce216cf044f558328f8dfa4e" title=" " alt="" coords="225,222,400,263"/>
 <area shape="rect" id="node8" href="$classopenage_1_1shader_1_1_program.xhtml#ab36b7c92db2a3e3ce76b79e0451b6978" title=" " alt="" coords="211,288,415,315"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_texture.xhtml#a210c36d673ca296a040fdb72da5ee89f" title=" " alt="" coords="665,119,828,161"/>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 415,-46 415,4 -4,4"/>
 <!-- Node162 -->
 <g id="node1" class="node"><title>Node162</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="processes the CSI escape sequence currently stored in escape_sequence.">
 <polygon fill="#bfbfbf" stroke="black" points="298,-0.5 298,-41.5 411,-41.5 411,-0.5 298,-0.5"/>
 <text text-anchor="start" x="306" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="start" x="306" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::process_csi_escape</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node163 -->
 <g id="node2" class="node"><title>Node163</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#adcdc21533ab920bd72f92f27333716bf" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#adcdc21533ab920bd72f92f27333716bf" target="_top" xlink:title="processes one unicode codepoint internally called by write(char) after feeding the char into streamde...">
 <polygon fill="white" stroke="black" points="149,-6 149,-36 262,-36 262,-6 149,-6"/>
 <text text-anchor="start" x="157" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="205.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">::process_codepoint</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node164 -->
 <g id="node3" class="node"><title>Node164</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" target="_top" xlink:title="write a single byte to the buffer.">
 <polygon fill="white" stroke="black" points="0,-6 0,-36 113,-36 113,-6 0,-6"/>
 <text text-anchor="start" x="8" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="56.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">::write</text>

@@ -71,7 +71,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_uniform_input.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_uniform_input.xhtml" target="_top" xlink:title="The abstract base for uniform input.">
 <polygon fill="white" stroke="black" points="0,-232 0,-311 101,-311 101,-232 0,-232"/>
 <text text-anchor="start" x="8" y="-299" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="50.5" y="-288" font-family="Helvetica,sans-Serif" font-size="10.00">UniformInput</text>
@@ -167,7 +167,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node5" class="node"><title>Node6</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" target="_top" xlink:title="A base class for all classes representing OpenGL Objects to inherit from.">
 <polygon fill="white" stroke="black" points="194,-525 194,-670 313,-670 313,-525 194,-525"/>
 <text text-anchor="start" x="202" y="-658" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="253.5" y="-647" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlSimpleObject</text>

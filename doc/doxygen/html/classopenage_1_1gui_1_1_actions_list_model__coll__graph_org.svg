@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1331 683,-1331 683,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Model used for the Action Buttons to render (e.g.">
 <polygon fill="#bfbfbf" stroke="black" points="131.5,-0.5 131.5,-277.5 274.5,-277.5 274.5,-0.5 131.5,-0.5"/>
 <text text-anchor="start" x="139.5" y="-265.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::ActionsList</text>
 <text text-anchor="middle" x="203" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">Model</text>
@@ -147,7 +147,7 @@
 </g>
 <!-- Node8 -->
 <g id="node7" class="node"><title>Node8</title>
-<g id="a_node7"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title="Shadows inherited member functions.">
 <polygon fill="white" stroke="black" points="106.5,-845 106.5,-946 207.5,-946 207.5,-845 106.5,-845"/>
 <text text-anchor="middle" x="157" y="-934" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Shadow&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="106.5,-927 207.5,-927 "/>
@@ -169,7 +169,7 @@
 </g>
 <!-- Node14 -->
 <g id="node13" class="node"><title>Node14</title>
-<g id="a_node13"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title="Switches the factory to production of the instances of the derived class.">
 <polygon fill="white" stroke="black" points="247.5,-701.5 247.5,-769.5 358.5,-769.5 358.5,-701.5 247.5,-701.5"/>
 <text text-anchor="middle" x="303" y="-757.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Inherits&lt; T, P &gt;</text>
 <polyline fill="none" stroke="black" points="247.5,-750.5 358.5,-750.5 "/>
@@ -251,7 +251,7 @@
 </g>
 <!-- Node12 -->
 <g id="node11" class="node"><title>Node12</title>
-<g id="a_node11"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="white" stroke="black" points="373,-1192.5 373,-1326.5 511,-1326.5 511,-1192.5 373,-1192.5"/>
 <text text-anchor="middle" x="442" y="-1314.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="373,-1307.5 511,-1307.5 "/>

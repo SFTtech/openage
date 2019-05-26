@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 464,-35 464,4 -4,4"/>
 <!-- Node11 -->
 <g id="node1" class="node"><title>Node11</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Return the game.">
 <polygon fill="#bfbfbf" stroke="black" points="323,-0.5 323,-30.5 460,-30.5 460,-0.5 323,-0.5"/>
 <text text-anchor="start" x="331" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMainHandle</text>
 <text text-anchor="middle" x="391.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_game</text>

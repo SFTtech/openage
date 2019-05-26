@@ -1,5 +1,5 @@
 <map id="openage::py::bytes" name="openage::py::bytes">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,139,32"/>
+<area shape="rect" id="node1" title="bytes(value)" alt="" coords="5,5,139,32"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="187,5,380,32"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="428,5,555,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="428,5,555,32"/>
 </map>

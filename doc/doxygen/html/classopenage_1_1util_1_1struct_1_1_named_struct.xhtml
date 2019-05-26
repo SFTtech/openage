@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1struct_1_1_nam
 </div><!--header-->
 <div class="contents">
 
-<p>Designed to be inherited from, similar to <a class="el" href="classopenage_1_1util_1_1_enum.xhtml">Enum</a>.  
+<p>Designed to be inherited from, similar to <a class="el" href="classopenage_1_1util_1_1_enum.xhtml" title="Container for possible enum values.">Enum</a>.  
  <a href="classopenage_1_1util_1_1struct_1_1_named_struct.xhtml#details">More...</a></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.util.struct.NamedStruct:</div>
@@ -161,7 +161,7 @@ Static Private Attributes</h2></td></tr>
 <tr class="separator:a1a2ff8b8ec3b01db2e620a7ab7da9bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Designed to be inherited from, similar to <a class="el" href="classopenage_1_1util_1_1_enum.xhtml">Enum</a>. </p>
+<div class="textblock"><p>Designed to be inherited from, similar to <a class="el" href="classopenage_1_1util_1_1_enum.xhtml" title="Container for possible enum values.">Enum</a>. </p>
 <p>Specify all fields of the struct, as 'membername = specstr', where specstr is a string describing the field, as in struct.Struct. <a class="el" href="classopenage_1_1util_1_1struct_1_1_named_struct_meta.xhtml" title="Metaclass for NamedStruct.">NamedStructMeta</a> translates those individual specstr fragments to a complete specstr.</p>
 <p>Alternatively to a specstr, a callable object with a specstr member may be passed; the specstr is used as usual, but afterwards the callable is invoked to post-process the extracted data. One example for such a callable is the <a class="el" href="classopenage_1_1util_1_1struct_1_1_flags.xhtml" title="Designed to be inherited from, similar to Enum.">Flags</a> class.</p>
 <p>Alternatively, attributes may be set to None; those are ignored, and may be set manually at some later point.</p>
@@ -238,8 +238,8 @@ Static Private Attributes</h2></td></tr>
 <p>Returns the n-th field, or raises IndexError. </p>
 
 <p class="definition">Definition at line <a class="el" href="struct_8py_source.xhtml#l00194">194</a> of file <a class="el" href="struct_8py_source.xhtml">struct.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keyword">def </span>__repr__(self):</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">str</a>(type(self)) + <span class="stringliteral">&quot;: &quot;</span> + <a class="code" href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">repr</a>(self.as_dict())</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a7bc4421a5f0f57f3a0aba3f96eb8d19c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">openage::util::repr</a></div><div class="ttdeci">std::string repr(const std::string &amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="repr_8cpp_source.xhtml#l00012">repr.cpp:12</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1py_xhtml_a4d2bbe46a5d10404c658b54f3b199551"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">openage::py::str</a></div><div class="ttdeci">Obj str(const std::string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00331">pyobject.cpp:331</a></div></div>
+<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keyword">def </span>__repr__(self):</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">str</a>(type(self)) + <span class="stringliteral">&quot;: &quot;</span> + <a class="code" href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">repr</a>(self.as_dict())</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a7bc4421a5f0f57f3a0aba3f96eb8d19c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">openage::util::repr</a></div><div class="ttdeci">std::string repr(const std::string &amp;arg)</div><div class="ttdoc">method that behaves similar to python's &quot;repr&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="repr_8cpp_source.xhtml#l00012">repr.cpp:12</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1py_xhtml_a4d2bbe46a5d10404c658b54f3b199551"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">openage::py::str</a></div><div class="ttdeci">Obj str(const std::string &amp;value)</div><div class="ttdoc">str(value);</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00331">pyobject.cpp:331</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="struct_8py_source.xhtml#l00130">openage.util.struct.NamedStruct._attributes</a>.</p>
 
@@ -313,7 +313,8 @@ Static Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_named_struct_a9cdd6f3d9b9ba4ab07beb41d5021b83e_cgraph.svg" width="650" height="155"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_named_struct_a9cdd6f3d9b9ba4ab07beb41d5021b83e_cgraph.svg" width="650" height="155"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -342,7 +343,8 @@ Static Private Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_named_struct_ad7a89792617e8271fe2b025116d10794_cgraph.svg" width="100%" height="378"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_named_struct_ad7a89792617e8271fe2b025116d10794_cgraph.svg" width="100%" height="378"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>

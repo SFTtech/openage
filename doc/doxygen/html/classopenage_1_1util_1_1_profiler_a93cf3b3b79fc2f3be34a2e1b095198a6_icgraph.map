@@ -1,9 +1,9 @@
 <map id="openage::util::Profiler::registered_components" name="openage::util::Profiler::registered_components">
-<area shape="rect" id="node1" title=" " alt="" coords="616,39,781,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_profiler.xhtml#aaf65afbb05a6aa408a7aff89e74e93dd" title=" " alt="" coords="421,5,568,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_profiler.xhtml#a68f01b02f0824fe2e41e508a75946793" title=" " alt="" coords="423,71,567,112"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title=" " alt="" coords="211,13,361,39"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title=" " alt="" coords="5,13,151,39"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_engine.xhtml#a659dbbf399baf90582f4d8c5b497babc" title=" " alt="" coords="199,70,373,97"/>
+<area shape="rect" id="node1" title="returns a vector of registered component names" alt="" coords="616,39,781,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_profiler.xhtml#aaf65afbb05a6aa408a7aff89e74e93dd" title="sets the end point for the reference time used to compute the portions of the components." alt="" coords="421,5,568,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_profiler.xhtml#a68f01b02f0824fe2e41e508a75946793" title="unregisters all remaining components" alt="" coords="423,71,567,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title="main engine loop function." alt="" coords="211,13,361,39"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title="starts the engine loop." alt="" coords="5,13,151,39"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_engine.xhtml#a659dbbf399baf90582f4d8c5b497babc" title="engine destructor, cleans up memory etc." alt="" coords="199,70,373,97"/>
 <area shape="rect" id="node7" href="$classopenage_1_1util_1_1_profiler.xhtml#a1b4a2302000a4c497762567ce5d63379" title=" " alt="" coords="214,121,358,163"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-393 3155.5,-393 3155.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Many values in this file are hardcoded, due to limited understanding of how the original game files w...">
 <polygon fill="#bfbfbf" stroke="black" points="1073,-347.5 1073,-388.5 1230,-388.5 1230,-347.5 1073,-347.5"/>
 <text text-anchor="start" x="1081" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="1081" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>

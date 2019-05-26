@@ -4,12 +4,12 @@
 <area shape="rect" id="node5" href="$namespaceopenage_1_1gui.xhtml#a4f415900a4d4e55b09b0be3c2ba60d54" title=" " alt="" coords="1459,139,1627,166"/>
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_texture.xhtml#acabd4037e0b47cda554ae353c2c3be3e" title=" " alt="" coords="1234,5,1401,47"/>
 <area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_texture.xhtml#afee0e8d811d508b6e16ae7ab4cf2c4a3" title=" " alt="" coords="1224,71,1411,112"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" title=" " alt="" coords="1246,136,1389,177"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" title="The sourceSize property of the Image QML element ends up here for checking." alt="" coords="1246,136,1389,177"/>
 <area shape="rect" id="node7" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac4c74475a47396d2e1824d2625e9d666" title=" " alt="" coords="987,129,1176,185"/>
-<area shape="rect" id="node8" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" title=" " alt="" coords="749,89,939,145"/>
-<area shape="rect" id="node12" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a183dbf9c55bb6ce603654585a92db3b1" title=" " alt="" coords="749,169,939,225"/>
-<area shape="rect" id="node9" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" title=" " alt="" coords="512,89,701,145"/>
-<area shape="rect" id="node10" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" title=" " alt="" coords="5,96,211,137"/>
-<area shape="rect" id="node11" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" title=" " alt="" coords="259,125,464,167"/>
+<area shape="rect" id="node8" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" title="Change the already produced texture handles to use new source." alt="" coords="749,89,939,145"/>
+<area shape="rect" id="node12" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a183dbf9c55bb6ce603654585a92db3b1" title="Fills in the provided handle object." alt="" coords="749,169,939,225"/>
+<area shape="rect" id="node9" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" title="Unblocks the provider." alt="" coords="512,89,701,145"/>
+<area shape="rect" id="node10" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" title="Sets the game spec to load textures from." alt="" coords="5,96,211,137"/>
+<area shape="rect" id="node11" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" title="Pass loaded assets to the image provider." alt="" coords="259,125,464,167"/>
 <area shape="rect" id="node13" href="$classopenage_1_1gui_1_1_gui_texture_factory.xhtml#af51021a1b0298e9c467ae7b50f2a8180" title=" " alt="" coords="516,176,697,217"/>
 </map>

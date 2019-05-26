@@ -46,9 +46,9 @@
         <argsstring></argsstring>
         <name>score_exploration</name>
         <briefdescription>
+<para>Used by update_map_explored. </para>
         </briefdescription>
         <detaileddescription>
-<para>Used by update_map_explored. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -61,9 +61,9 @@
         <argsstring></argsstring>
         <name>score_resources</name>
         <briefdescription>
+<para>Used by update_resources. </para>
         </briefdescription>
         <detaileddescription>
-<para>Used by update_resources. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -190,9 +190,9 @@
           <declname>progress</declname>
         </param>
         <briefdescription>
+<para>Updates map exploration precentance based sub-scores. </para>
         </briefdescription>
         <detaileddescription>
-<para>Updates map exploration precentance based sub-scores </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -212,9 +212,9 @@
           <declname>resources</declname>
         </param>
         <briefdescription>
+<para>Updates resource based sub-scores. </para>
         </briefdescription>
         <detaileddescription>
-<para>Updates resource based sub-scores </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -234,9 +234,10 @@
         <reimplementedby refid="classopenage_1_1_player_score_1a335bfe5e296ab4563b6689a8cacca562">update_score</reimplementedby>
         <reimplementedby refid="classopenage_1_1_team_score_1ad1af15c7921ffc8ffc57c04b3c8084ff">update_score</reimplementedby>
         <briefdescription>
+<para>Calculates the total score from the sub-scores. </para>
         </briefdescription>
         <detaileddescription>
-<para>Calculates the total score from the sub-scores. <xrefsect id="todo_1_todo000019"><xreftitle>Todo</xreftitle><xrefdescription><para>update gui here </para>
+<para><xrefsect id="todo_1_todo000019"><xreftitle>Todo</xreftitle><xrefdescription><para>update gui here </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -303,9 +304,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Keeps track of a score and all the sub-scores. </para>
     </briefdescription>
     <detaileddescription>
-<para>Keeps track of a score and all the sub-scores </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="5034">

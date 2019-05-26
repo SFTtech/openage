@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-106 325,-106 325,4 -4,4"/>
 <!-- Node49 -->
 <g id="node1" class="node"><title>Node49</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="for use in bytestream mode.">
 <polygon fill="#bfbfbf" stroke="black" points="175,-36 175,-66 321,-66 321,-36 175,-36"/>
 <text text-anchor="start" x="183" y="-54" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="248" y="-43" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream::read_single_byte</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node50 -->
 <g id="node2" class="node"><title>Node50</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a80c91d5b7ddc061dd9082827286f0e1e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a80c91d5b7ddc061dd9082827286f0e1e" target="_top" xlink:title="for use in bytestream mode.">
 <polygon fill="white" stroke="black" points="4.5,-60.5 4.5,-101.5 134.5,-101.5 134.5,-60.5 4.5,-60.5"/>
 <text text-anchor="start" x="12.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="12.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream&lt; 4096 &gt;::read</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node51 -->
 <g id="node3" class="node"><title>Node51</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a0a33a092ac1b0b664ecf4ced11e1a313" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a0a33a092ac1b0b664ecf4ced11e1a313" target="_top" xlink:title="Switches to bitstream mode.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-41.5 139,-41.5 139,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream&lt; 4096 &gt;::switch</text>

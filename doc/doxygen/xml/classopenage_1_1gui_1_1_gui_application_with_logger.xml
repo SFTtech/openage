@@ -33,9 +33,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Houses gui logic event queue and attaches to game logger. </para>
     </briefdescription>
     <detaileddescription>
-<para>Houses gui logic event queue and attaches to game logger. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3534">

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 432,-46 432,4 -4,4"/>
 <!-- Node58 -->
 <g id="node1" class="node"><title>Node58</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Reads the pixel at the given position and casts it to the given type.">
 <polygon fill="#bfbfbf" stroke="black" points="300,-0.5 300,-41.5 428,-41.5 428,-0.5 300,-0.5"/>
 <text text-anchor="start" x="308" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="308" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dData</text>

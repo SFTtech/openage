@@ -1,6 +1,6 @@
 <map id="openage::Terrain::create_draw_advice" name="openage::Terrain::create_draw_advice">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,168,80"/>
+<area shape="rect" id="node1" title="create the drawing instruction data." alt="" coords="5,39,168,80"/>
 <area shape="rect" id="node2" href="$namespacestd.xhtml#a6af851cc1249a970adde4dc422ff824a" title=" " alt="" coords="216,46,285,73"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="333,5,500,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="333,71,500,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="333,5,500,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="333,71,500,112"/>
 </map>

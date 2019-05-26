@@ -202,7 +202,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node50 -->
 <g id="node6" class="node"><title>Node50</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="860,-268.5 860,-287.5 947,-287.5 947,-268.5 860,-268.5"/>
 <text text-anchor="middle" x="903.5" y="-275.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -256,7 +256,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node52 -->
 <g id="node8" class="node"><title>Node52</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1225,-131.5 1225,-150.5 1320,-150.5 1320,-131.5 1225,-131.5"/>
 <text text-anchor="middle" x="1272.5" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -274,7 +274,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node57 -->
 <g id="node13" class="node"><title>Node57</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title="list()">
 <polygon fill="white" stroke="black" points="859,-131.5 859,-150.5 948,-150.5 948,-131.5 859,-131.5"/>
 <text text-anchor="middle" x="903.5" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::list</text>
 </a>
@@ -297,7 +297,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node60 -->
 <g id="node16" class="node"><title>Node60</title>
-<g id="a_node16"><a xlink:href="namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9" target="_top" xlink:title="dict()">
 <polygon fill="white" stroke="black" points="416.5,-93.5 416.5,-112.5 508.5,-112.5 508.5,-93.5 416.5,-93.5"/>
 <text text-anchor="middle" x="462.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::dict</text>
 </a>

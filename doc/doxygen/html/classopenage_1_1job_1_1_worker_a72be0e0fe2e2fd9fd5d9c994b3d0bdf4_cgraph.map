@@ -1,7 +1,7 @@
 <map id="openage::job::Worker::process" name="openage::job::Worker::process">
-<area shape="rect" id="node1" title=" " alt="" coords="5,71,152,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_worker.xhtml#a2546565a41969f4bb1d62773239e20c4" title=" " alt="" coords="214,5,361,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1job_1_1_job_manager.xhtml#adefba3f5fb9db0931cca54c27ab31041" title=" " alt="" coords="200,71,375,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1job_1_1_job_manager.xhtml#afc81fa6e3be5780014ced15942a48fa2" title=" " alt="" coords="200,136,375,177"/>
-<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_job_manager.xhtml#a9e5e1a95045cef58acd980ebdabc6285" title=" " alt="" coords="423,5,597,47"/>
+<area shape="rect" id="node1" title="Fetches pending jobs from the parent job manager and from the internal pending job queue and executes..." alt="" coords="5,71,152,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_worker.xhtml#a2546565a41969f4bb1d62773239e20c4" title="Executes the given job and tells the parent job manager, when it has finished." alt="" coords="214,5,361,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1job_1_1_job_manager.xhtml#adefba3f5fb9db0931cca54c27ab31041" title="Returns a job from the internal job queue." alt="" coords="200,71,375,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1job_1_1_job_manager.xhtml#afc81fa6e3be5780014ced15942a48fa2" title="Returns whether there are jobs to be executed." alt="" coords="200,136,375,177"/>
+<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_job_manager.xhtml#a9e5e1a95045cef58acd980ebdabc6285" title="Adds a finished job to the internal finished job map." alt="" coords="423,5,597,47"/>
 </map>

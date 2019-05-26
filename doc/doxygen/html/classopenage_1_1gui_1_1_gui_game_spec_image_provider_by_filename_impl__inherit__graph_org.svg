@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-663 184,-663 184,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Exposes game textures to the Qt by their file name.">
 <polygon fill="#bfbfbf" stroke="black" points="12,-0.5 12,-134.5 168,-134.5 168,-0.5 12,-0.5"/>
 <text text-anchor="start" x="20" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="90" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderByFilenameImpl</text>
@@ -30,7 +30,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" target="_top" xlink:title="Exposes game textures to the Qt.">
 <polygon fill="white" stroke="black" points="0,-171.5 0,-415.5 180,-415.5 180,-171.5 0,-171.5"/>
 <text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="90" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl</text>

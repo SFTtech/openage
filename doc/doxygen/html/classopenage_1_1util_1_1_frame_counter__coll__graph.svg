@@ -29,7 +29,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml" target="_top" xlink:title="Time measurement class.">
 <polygon fill="white" stroke="black" points="22,-171.5 22,-327.5 124,-327.5 124,-171.5 22,-171.5"/>
 <text text-anchor="middle" x="73" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <polyline fill="none" stroke="black" points="22,-308.5 124,-308.5 "/>

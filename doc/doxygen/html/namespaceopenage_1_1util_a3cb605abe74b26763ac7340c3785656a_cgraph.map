@@ -1,7 +1,7 @@
 <map id="openage::util::hash" name="openage::util::hash">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,137,57"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" title=" " alt="" coords="185,23,325,65"/>
+<area shape="rect" id="node1" title="Siphash implementation." alt="" coords="5,31,137,57"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" title="Convert a C&#45;style array of uint8_t to a uint64_t." alt="" coords="185,23,325,65"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="415,5,525,32"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="373,56,567,83"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="615,56,741,83"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="615,56,741,83"/>
 </map>

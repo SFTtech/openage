@@ -12,9 +12,9 @@
         <argsstring></argsstring>
         <name>get_func</name>
         <briefdescription>
+<para>function type used to get a configuration value </para>
         </briefdescription>
         <detaileddescription>
-<para>function type used to get a configuration value </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -26,9 +26,9 @@
         <argsstring></argsstring>
         <name>set_func</name>
         <briefdescription>
+<para>function type to set the value of a config entry </para>
         </briefdescription>
         <detaileddescription>
-<para>function type to set the value of a config entry </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -42,9 +42,10 @@
         <argsstring></argsstring>
         <name>pyx_load_config_file</name>
         <briefdescription>
+<para>Python function to load a configuration file. </para>
         </briefdescription>
         <detaileddescription>
-<para>Python function to load a configuration file. The config manager is passed into it.</para>
+<para>The config manager is passed into it.</para>
 <para>pxd: ctypedef <ref refid="classopenage_1_1cvar_1_1_c_var_manager" kindref="compound">CVarManager</ref> * CVarManagerPtr PyIfFunc2[void, CVarManagerPtr, const Path&amp;] pyx_load_config_file </para>
         </detaileddescription>
         <inbodydescription>

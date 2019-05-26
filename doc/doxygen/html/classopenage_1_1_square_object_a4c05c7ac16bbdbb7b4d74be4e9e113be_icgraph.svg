@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 278,-35 278,4 -4,4"/>
 <!-- Node28 -->
 <g id="node1" class="node"><title>Node28</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="calculate object start and end positions.">
 <polygon fill="#bfbfbf" stroke="black" points="155,-0.5 155,-30.5 274,-30.5 274,-0.5 155,-0.5"/>
 <text text-anchor="start" x="163" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="214.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_range</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node29 -->
 <g id="node2" class="node"><title>Node29</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 119,-30.5 119,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="59.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>

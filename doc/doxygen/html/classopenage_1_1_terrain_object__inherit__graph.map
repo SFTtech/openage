@@ -1,6 +1,6 @@
 <map id="openage::TerrainObject" name="openage::TerrainObject">
-<area shape="rect" id="node1" title=" " alt="" coords="88,145,255,531"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_radial_object.xhtml" title=" " alt="" coords="5,579,159,773"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_square_object.xhtml" title=" " alt="" coords="183,579,341,773"/>
+<area shape="rect" id="node1" title="Base class for map location types which include square tile aligned positions and radial positions Th..." alt="" coords="88,145,255,531"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_radial_object.xhtml" title="Represents circular shaped objects (movable game units) can only be constructed by unit&#45;&gt;make_locatio..." alt="" coords="5,579,159,773"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_square_object.xhtml" title="terrain object class represents one immobile object on the map (building, trees, fish,..." alt="" coords="183,579,341,773"/>
 <area shape="rect" id="node2" title=" " alt="" coords="80,5,263,97"/>
 </map>

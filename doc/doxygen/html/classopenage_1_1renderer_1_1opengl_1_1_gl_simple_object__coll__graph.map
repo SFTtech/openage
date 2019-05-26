@@ -1,3 +1,3 @@
 <map id="openage::renderer::opengl::GlSimpleObject" name="openage::renderer::opengl::GlSimpleObject">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,164,200"/>
+<area shape="rect" id="node1" title="A base class for all classes representing OpenGL Objects to inherit from." alt="" coords="5,5,164,200"/>
 </map>

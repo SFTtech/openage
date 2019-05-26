@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-996 544.5,-996 544.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Switches the factory to production of the instances of the derived class.">
 <polygon fill="#bfbfbf" stroke="black" points="191.5,-420.5 191.5,-488.5 302.5,-488.5 302.5,-420.5 191.5,-420.5"/>
 <text text-anchor="middle" x="247" y="-476.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Inherits&lt; T, P &gt;</text>
 <polyline fill="none" stroke="black" points="191.5,-469.5 302.5,-469.5 "/>
@@ -133,7 +133,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title="Shadows inherited member functions.">
 <polygon fill="white" stroke="black" points="104.5,-526.5 104.5,-627.5 205.5,-627.5 205.5,-526.5 104.5,-526.5"/>
 <text text-anchor="middle" x="155" y="-615.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Shadow&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="104.5,-608.5 205.5,-608.5 "/>
@@ -216,7 +216,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="white" stroke="black" points="316,-857.5 316,-991.5 454,-991.5 454,-857.5 316,-857.5"/>
 <text text-anchor="middle" x="385" y="-979.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="316,-972.5 454,-972.5 "/>

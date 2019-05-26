@@ -57,7 +57,7 @@ var sectionId = 'dynsection-14';
 <polygon fill="white" stroke="none" points="-4,4 -4,-673.395 1165,-673.395 1165,4 -4,4"/>
 <!-- Node109 -->
 <g id="node1" class="node"><title>Node109</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="perform the main loading job.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-161 0,-191 114,-191 114,-161 0,-161"/>
 <text text-anchor="start" x="8" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="57" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node110 -->
 <g id="node2" class="node"><title>Node110</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title="Demangles a symbol name.">
 <polygon fill="white" stroke="black" points="492,-648.5 492,-667.5 612,-667.5 612,-648.5 492,-648.5"/>
 <text text-anchor="middle" x="552" y="-655.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::demangle</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node113 -->
 <g id="node5" class="node"><title>Node113</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_asset_manager.xhtml#ab32bf393ec81c214585922c1a4cc9698" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_asset_manager.xhtml#ab32bf393ec81c214585922c1a4cc9698" target="_top" xlink:title="Return the path where assets are found in.">
 <polygon fill="white" stroke="black" points="314.5,-327 314.5,-357 436.5,-357 436.5,-327 314.5,-327"/>
 <text text-anchor="start" x="322.5" y="-345" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="375.5" y="-334" font-family="Helvetica,sans-Serif" font-size="10.00">::get_asset_dir</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node114 -->
 <g id="node6" class="node"><title>Node114</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#ad764a82c4de3f85c379ccc39c068f229" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#ad764a82c4de3f85c379ccc39c068f229" target="_top" xlink:title="reads the current timer value, in nanoseconds.">
 <polygon fill="white" stroke="black" points="156,-88 156,-118 258,-118 258,-88 156,-88"/>
 <text text-anchor="start" x="164" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="207" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::getval</text>
@@ -120,7 +120,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node117 -->
 <g id="node9" class="node"><title>Node117</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title="fill in the terrain_data attribute of this">
 <polygon fill="white" stroke="black" points="150,-226 150,-256 264,-256 264,-226 150,-226"/>
 <text text-anchor="start" x="158" y="-244" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-233" font-family="Helvetica,sans-Serif" font-size="10.00">load_terrain</text>
@@ -134,7 +134,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node118 -->
 <g id="node10" class="node"><title>Node118</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="680,-170.5 680,-189.5 771,-189.5 771,-170.5 680,-170.5"/>
 <text text-anchor="middle" x="725.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -147,7 +147,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node134 -->
 <g id="node26" class="node"><title>Node134</title>
-<g id="a_node26"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title="Invoked when the gamedata has been loaded.">
 <polygon fill="white" stroke="black" points="150,-415 150,-445 264,-445 264,-415 150,-415"/>
 <text text-anchor="start" x="158" y="-433" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-422" font-family="Helvetica,sans-Serif" font-size="10.00">on_gamedata_loaded</text>
@@ -161,7 +161,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node141 -->
 <g id="node33" class="node"><title>Node141</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#afe1b5aca34f4b4151c6b85bafcd5dfd2" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#afe1b5aca34f4b4151c6b85bafcd5dfd2" target="_top" xlink:title="starts/unpauses the timer.">
 <polygon fill="white" stroke="black" points="156,-39 156,-69 258,-69 258,-39 156,-39"/>
 <text text-anchor="start" x="164" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="207" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::start</text>
@@ -188,7 +188,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node112 -->
 <g id="node4" class="node"><title>Node112</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="858,-627.5 858,-646.5 953,-646.5 953,-627.5 858,-627.5"/>
 <text text-anchor="middle" x="905.5" y="-634.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -206,7 +206,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node115 -->
 <g id="node7" class="node"><title>Node115</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" target="_top" xlink:title="returns a monotonically&#45;increasing time that returns the number of nanoseconds since an unspecified e...">
 <polygon fill="white" stroke="black" points="323,-63 323,-93 428,-93 428,-63 323,-63"/>
 <text text-anchor="start" x="331" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="375.5" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">_monotonic_time</text>
@@ -243,7 +243,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node125 -->
 <g id="node17" class="node"><title>Node125</title>
-<g id="a_node17"><a xlink:href="namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" target="_top" xlink:title="printf&#45;style to&#45;string formatting.">
 <polygon fill="white" stroke="black" points="320.5,-288.5 320.5,-307.5 430.5,-307.5 430.5,-288.5 320.5,-288.5"/>
 <text text-anchor="middle" x="375.5" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::sformat</text>
 </a>
@@ -256,7 +256,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node127 -->
 <g id="node19" class="node"><title>Node127</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" target="_top" xlink:title="Query the Texture for a given filename.">
 <polygon fill="white" stroke="black" points="314.5,-239 314.5,-269 436.5,-269 436.5,-239 314.5,-239"/>
 <text text-anchor="start" x="322.5" y="-257" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="375.5" y="-246" font-family="Helvetica,sans-Serif" font-size="10.00">::get_texture</text>
@@ -270,7 +270,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node119 -->
 <g id="node11" class="node"><title>Node119</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="850.5,-194 850.5,-224 960.5,-224 960.5,-194 850.5,-194"/>
 <text text-anchor="start" x="858.5" y="-212" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="905.5" y="-201" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -284,7 +284,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node120 -->
 <g id="node12" class="node"><title>Node120</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="834,-155.5 834,-174.5 977,-174.5 977,-155.5 834,-155.5"/>
 <text text-anchor="middle" x="905.5" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -297,7 +297,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node121 -->
 <g id="node13" class="node"><title>Node121</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="1035,-199 1035,-229 1139,-229 1139,-199 1035,-199"/>
 <text text-anchor="start" x="1043" y="-217" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="1087" y="-206" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -338,7 +338,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node126 -->
 <g id="node18" class="node"><title>Node126</title>
-<g id="a_node18"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="495,-288.5 495,-307.5 609,-307.5 609,-288.5 495,-288.5"/>
 <text text-anchor="middle" x="552" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>
@@ -351,7 +351,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node128 -->
 <g id="node20" class="node"><title>Node128</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" target="_top" xlink:title="Create an internal texture handle.">
 <polygon fill="white" stroke="black" points="491,-239 491,-269 613,-269 613,-239 491,-239"/>
 <text text-anchor="start" x="499" y="-257" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="552" y="-246" font-family="Helvetica,sans-Serif" font-size="10.00">::load_texture</text>
@@ -370,7 +370,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node129 -->
 <g id="node21" class="node"><title>Node129</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a20f0383ea39d88917bb5a02fbb239006" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a20f0383ea39d88917bb5a02fbb239006" target="_top" xlink:title="Retrieves the texture for missing textures.">
 <polygon fill="white" stroke="black" points="664.5,-220 664.5,-250 786.5,-250 786.5,-220 664.5,-220"/>
 <text text-anchor="start" x="672.5" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="725.5" y="-227" font-family="Helvetica,sans-Serif" font-size="10.00">::get_missing_tex</text>
@@ -398,7 +398,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node131 -->
 <g id="node23" class="node"><title>Node131</title>
-<g id="a_node23"><a xlink:href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" target="_top" xlink:title="Resolve the native path by flattening all underlying filesystem objects (like unions).">
 <polygon fill="white" stroke="black" points="672,-269 672,-299 779,-299 779,-269 672,-269"/>
 <text text-anchor="start" x="680" y="-287" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <text text-anchor="middle" x="725.5" y="-276" font-family="Helvetica,sans-Serif" font-size="10.00">::resolve_native_path</text>
@@ -460,7 +460,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node135 -->
 <g id="node27" class="node"><title>Node135</title>
-<g id="a_node27"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title=" ">
+<g id="a_node27"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title="Return the engine responsible for this asset manager.">
 <polygon fill="white" stroke="black" points="314.5,-415 314.5,-445 436.5,-445 436.5,-415 314.5,-415"/>
 <text text-anchor="start" x="322.5" y="-433" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="375.5" y="-422" font-family="Helvetica,sans-Serif" font-size="10.00">::get_engine</text>
@@ -474,7 +474,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node136 -->
 <g id="node28" class="node"><title>Node136</title>
-<g id="a_node28"><a xlink:href="classopenage_1_1_engine.xhtml#ad925a7a6258d1382edd274ee4ceafdbd" target="_top" xlink:title=" ">
+<g id="a_node28"><a xlink:href="classopenage_1_1_engine.xhtml#ad925a7a6258d1382edd274ee4ceafdbd" target="_top" xlink:title="return this engine&#39;s audio manager.">
 <polygon fill="white" stroke="black" points="321,-464 321,-494 430,-494 430,-464 321,-464"/>
 <text text-anchor="start" x="329" y="-482" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="375.5" y="-471" font-family="Helvetica,sans-Serif" font-size="10.00">_audio_manager</text>
@@ -488,7 +488,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node137 -->
 <g id="node29" class="node"><title>Node137</title>
-<g id="a_node29"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a7d1dc28dded852d3eadf34771ee8f6b0" target="_top" xlink:title=" ">
+<g id="a_node29"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a7d1dc28dded852d3eadf34771ee8f6b0" target="_top" xlink:title="Loads all audio resources, that are specified in the sound_files vector.">
 <polygon fill="white" stroke="black" points="300,-513 300,-543 451,-543 451,-513 300,-513"/>
 <text text-anchor="start" x="308" y="-531" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <text text-anchor="middle" x="375.5" y="-520" font-family="Helvetica,sans-Serif" font-size="10.00">::load_resources</text>
@@ -502,7 +502,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node139 -->
 <g id="node31" class="node"><title>Node139</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1_game_spec.xhtml#ad72bef762bb38fb93c944d490bf5c113" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1_game_spec.xhtml#ad72bef762bb38fb93c944d490bf5c113" target="_top" xlink:title="create unit abilities from game data">
 <polygon fill="white" stroke="black" points="318.5,-601 318.5,-631 432.5,-631 432.5,-601 318.5,-601"/>
 <text text-anchor="start" x="326.5" y="-619" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="375.5" y="-608" font-family="Helvetica,sans-Serif" font-size="10.00">create_abilities</text>
@@ -516,7 +516,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node138 -->
 <g id="node30" class="node"><title>Node138</title>
-<g id="a_node30"><a xlink:href="classopenage_1_1audio_1_1_resource.xhtml#a01dfa61156a48fe06ea5e3c22978f378" target="_top" xlink:title=" ">
+<g id="a_node30"><a xlink:href="classopenage_1_1audio_1_1_resource.xhtml#a01dfa61156a48fe06ea5e3c22978f378" target="_top" xlink:title="create an audio resource, this produces a DynamicResource or a InMemoryResource">
 <polygon fill="white" stroke="black" points="487,-513 487,-543 617,-543 617,-513 487,-513"/>
 <text text-anchor="start" x="495" y="-531" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Resource</text>
 <text text-anchor="middle" x="552" y="-520" font-family="Helvetica,sans-Serif" font-size="10.00">::create_resource</text>
@@ -535,7 +535,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node140 -->
 <g id="node32" class="node"><title>Node140</title>
-<g id="a_node32"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title="list()">
 <polygon fill="white" stroke="black" points="507.5,-607.5 507.5,-626.5 596.5,-626.5 596.5,-607.5 507.5,-607.5"/>
 <text text-anchor="middle" x="552" y="-614.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::list</text>
 </a>

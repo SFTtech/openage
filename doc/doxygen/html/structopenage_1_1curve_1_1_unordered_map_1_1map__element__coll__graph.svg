@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-993 139,-993 139,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Internal container to access all data and metadata.">
 <polygon fill="#bfbfbf" stroke="black" points="1.5,-0.5 1.5,-79.5 133.5,-79.5 133.5,-0.5 1.5,-0.5"/>
 <text text-anchor="start" x="9.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Unordered</text>
 <text text-anchor="start" x="9.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">Map&lt; key_t, val_t &gt;::map</text>
@@ -117,7 +117,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml" target="_top" xlink:title="Fixed&#45;point integer class;.">
 <polygon fill="white" stroke="black" points="0,-540.5 0,-883.5 135,-883.5 135,-540.5 0,-540.5"/>
 <text text-anchor="start" x="8" y="-871.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="67.5" y="-860.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int_type, fractional_bits &gt;</text>

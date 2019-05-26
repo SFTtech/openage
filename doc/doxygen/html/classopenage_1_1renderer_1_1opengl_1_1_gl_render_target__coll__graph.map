@@ -1,4 +1,4 @@
 <map id="openage::renderer::opengl::GlRenderTarget" name="openage::renderer::opengl::GlRenderTarget">
-<area shape="rect" id="node1" title=" " alt="" coords="5,160,164,311"/>
+<area shape="rect" id="node1" title="Represents an OpenGL target that can be drawn into." alt="" coords="5,160,164,311"/>
 <area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_render_target.xhtml" title="The abstract base for a render target." alt="" coords="17,5,152,112"/>
 </map>

@@ -187,9 +187,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A Vulkan representation of a display target that can be drawn onto directly, that is <emphasis>not</emphasis> by copying data from another object. </para>
     </briefdescription>
     <detaileddescription>
-<para>A Vulkan representation of a display target that can be drawn onto directly, that is <emphasis>not</emphasis> by copying data from another object. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4809">

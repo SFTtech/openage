@@ -1,9 +1,9 @@
 <map id="openage::coord::tile::to_viewport" name="openage::coord::tile::to_viewport">
 <area shape="rect" id="node1" title=" " alt="" coords="5,71,141,112"/>
 <area shape="rect" id="node2" href="$structopenage_1_1coord_1_1tile.xhtml#a81cb5eb0d3404e8433ffbc3a484160dc" title=" " alt="" coords="209,37,345,79"/>
-<area shape="rect" id="node7" href="$structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" title=" " alt="" coords="189,103,365,144"/>
+<area shape="rect" id="node7" href="$structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" title="See the comments for camgame_delta::to_phys3." alt="" coords="189,103,365,144"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1phys3.xhtml#a03daba2a3e79650c251e3c08e0838a5e" title=" " alt="" coords="413,5,568,47"/>
 <area shape="rect" id="node4" href="$structopenage_1_1coord_1_1tile.xhtml#ac306cc74c14e094567447277327b389a" title=" " alt="" coords="423,71,559,112"/>
 <area shape="rect" id="node5" href="$structopenage_1_1coord_1_1tile3.xhtml#a4c8cdcd73dd2d7d1e6109c8b4a82ba65" title=" " alt="" coords="616,37,759,79"/>
-<area shape="rect" id="node6" href="$structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b" title=" " alt="" coords="619,103,755,144"/>
+<area shape="rect" id="node6" href="$structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b" title="adds an UP component to the coordinate." alt="" coords="619,103,755,144"/>
 </map>

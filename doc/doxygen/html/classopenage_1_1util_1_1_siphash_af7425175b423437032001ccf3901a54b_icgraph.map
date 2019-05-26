@@ -1,4 +1,4 @@
 <map id="openage::util::Siphash::set_key" name="openage::util::Siphash::set_key">
-<area shape="rect" id="node1" title=" " alt="" coords="204,5,355,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_siphash.xhtml#a0d9e67468bcba15f9f14f6affc3b9711" title=" " alt="" coords="5,5,156,47"/>
+<area shape="rect" id="node1" title="Set the key for subsequent hashes." alt="" coords="204,5,355,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_siphash.xhtml#a0d9e67468bcba15f9f14f6affc3b9711" title="Creates a hash generator." alt="" coords="5,5,156,47"/>
 </map>

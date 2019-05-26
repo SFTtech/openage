@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 263,-84 263,4 -4,4"/>
 <!-- Node55 -->
 <g id="node1" class="node"><title>Node55</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="gamedata for a graphic nyan will have to replace this somehow">
 <polygon fill="#bfbfbf" stroke="black" points="145,-24.5 145,-54.5 259,-54.5 259,-24.5 145,-24.5"/>
 <text text-anchor="start" x="153" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="202" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">get_graphic_data</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node56 -->
 <g id="node2" class="node"><title>Node56</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" target="_top" xlink:title="initialise graphic data">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 109,-79.5 109,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="54.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node57 -->
 <g id="node3" class="node"><title>Node57</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a1ebf9eb4f473f2980165d1fc8205aa55" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a1ebf9eb4f473f2980165d1fc8205aa55" target="_top" xlink:title="Delta option specifies whether the delta graphics are included.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 109,-30.5 109,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="54.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::UnitTexture</text>

@@ -1,9 +1,9 @@
 <map id="openage::util::utf8_encode" name="openage::util::utf8_encode">
-<area shape="rect" id="node1" title=" " alt="" coords="648,71,773,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" title=" " alt="" coords="456,37,585,79"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" title=" " alt="" coords="441,103,600,144"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" title=" " alt="" coords="225,37,383,79"/>
+<area shape="rect" id="node1" title="encodes one Unicode codepoint to a null&#45;terminated UTF&#45;8 character string." alt="" coords="648,71,773,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" title="writes the unicode codepoint, as utf&#45;8" alt="" coords="456,37,585,79"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" title="experimental and totally inefficient opengl draw of a terminal buffer." alt="" coords="441,103,600,144"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" title="very early and inefficient printing of the console to a pty." alt="" coords="225,37,383,79"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1console_1_1tests.xhtml#a4a108e620e3fead2c08ff14841552186" title=" " alt="" coords="5,5,167,47"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1console_1_1tests.xhtml#a15c3b269411a779e1ae9af60a3b6fedf" title=" " alt="" coords="5,71,167,112"/>
-<area shape="rect" id="node7" href="$classopenage_1_1console_1_1_console.xhtml#a1ce3c30cdc768559e11fc548cbcbddd8" title=" " alt="" coords="215,103,393,144"/>
+<area shape="rect" id="node7" href="$classopenage_1_1console_1_1_console.xhtml#a1ce3c30cdc768559e11fc548cbcbddd8" title="execute the drawing action." alt="" coords="215,103,393,144"/>
 </map>

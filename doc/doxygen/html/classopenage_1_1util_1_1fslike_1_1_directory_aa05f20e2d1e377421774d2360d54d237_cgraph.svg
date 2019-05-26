@@ -80,7 +80,7 @@ var sectionId = 'dynsection-26';
 </g>
 <!-- Node144 -->
 <g id="node4" class="node"><title>Node144</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a7dab02972c0d0fa8ef5b3fd387966855" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a7dab02972c0d0fa8ef5b3fd387966855" target="_top" xlink:title="resolve the path to an actually usable one.">
 <polygon fill="white" stroke="black" points="433,-0.5 433,-30.5 534,-30.5 534,-0.5 433,-0.5"/>
 <text text-anchor="start" x="441" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="483.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Directory::resolve</text>
@@ -140,7 +140,7 @@ var sectionId = 'dynsection-26';
 </g>
 <!-- Node146 -->
 <g id="node6" class="node"><title>Node146</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="592,-50 592,-69 687,-69 687,-50 592,-50"/>
 <text text-anchor="middle" x="639.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

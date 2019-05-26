@@ -18,9 +18,9 @@
         <argsstring></argsstring>
         <name>thread_id</name>
         <briefdescription>
+<para>Id of the thread, that created this job state. </para>
         </briefdescription>
         <detaileddescription>
-<para>Id of the thread, that created this job state. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -33,9 +33,10 @@
         <argsstring></argsstring>
         <name>callback</name>
         <briefdescription>
+<para>A callback function that is called when the job has finished. </para>
         </briefdescription>
         <detaileddescription>
-<para>A callback function that is called when the job has finished. Can be empty. </para>
+<para>Can be empty. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -50,9 +51,10 @@
         <argsstring></argsstring>
         <name>finished</name>
         <briefdescription>
+<para>Whether the <ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref>&apos;s execution has already been finished. </para>
         </briefdescription>
         <detaileddescription>
-<para>Whether the <ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref>&apos;s execution has already been finished. An atomic_bool is used, as this field can be used by multiple threads. Thus explicit synchronization is avoided. </para>
+<para>An atomic_bool is used, as this field can be used by multiple threads. Thus explicit synchronization is avoided. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -64,9 +66,9 @@
         <argsstring></argsstring>
         <name>result</name>
         <briefdescription>
+<para>The result of the <ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref>&apos;s executed function. </para>
         </briefdescription>
         <detaileddescription>
-<para>The result of the <ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref>&apos;s executed function. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -78,9 +80,9 @@
         <argsstring></argsstring>
         <name>exception</name>
         <briefdescription>
+<para>If executing the <ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref> throws an exception, it is stored here. </para>
         </briefdescription>
         <detaileddescription>
-<para>If executing the <ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref> throws an exception, it is stored here. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -98,9 +100,9 @@
           <declname>callback</declname>
         </param>
         <briefdescription>
+<para>Creates a new typed job with the given callback. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a new typed job with the given callback. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -113,9 +115,9 @@
         <argsstring>()=default</argsstring>
         <name>~TypedJobStateBase</name>
         <briefdescription>
+<para>Default destructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Default destructor. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -132,9 +134,10 @@
           <declname>should_abort</declname>
         </param>
         <briefdescription>
+<para>Executes the internal function object and stores its result. </para>
         </briefdescription>
         <detaileddescription>
-<para>Executes the internal function object and stores its result. Occuring exceptions are stored, as well. Returns whether this job has been aborted. </para>
+<para>Occuring exceptions are stored, as well. Returns whether this job has been aborted. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -148,9 +151,10 @@
         <name>execute_callback</name>
         <reimplements refid="classopenage_1_1job_1_1_job_state_base_1ae5c8164b998e8a1ba780c3114e4492b4">execute_callback</reimplements>
         <briefdescription>
+<para>Called when the job was finished. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when the job was finished. This is the result notification for the place where the job was constructed. </para>
+<para>This is the result notification for the place where the job was constructed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -166,9 +170,9 @@
         <name>get_thread_id</name>
         <reimplements refid="classopenage_1_1job_1_1_job_state_base_1aee0926a562a65f87308e1eda7d14040c">get_thread_id</reimplements>
         <briefdescription>
+<para>Returns the id of the thread that has created this job. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the id of the thread that has created this job. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -189,9 +193,10 @@
           <declname>should_abort</declname>
         </param>
         <briefdescription>
+<para>Executes the job and returns the result. </para>
         </briefdescription>
         <detaileddescription>
-<para>Executes the job and returns the result. If an exception is thrown it must be passed to the calling function. </para>
+<para>If an exception is thrown it must be passed to the calling function. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -200,9 +205,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A templated job state base class, that implements basic functionality of job states. </para>
     </briefdescription>
     <detaileddescription>
-<para>A templated job state base class, that implements basic functionality of job states.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>T</parametername>

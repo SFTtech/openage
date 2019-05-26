@@ -1,10 +1,10 @@
 <map id="openage::Unit::apply_all_cmds" name="openage::Unit::apply_all_cmds">
-<area shape="rect" id="node1" title=" " alt="" coords="5,41,147,83"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#aef7363eab8f805124114c4967470379d" title=" " alt="" coords="195,49,368,75"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_command.xhtml#acbb97472983c470bf9ba48fa9297c970" title=" " alt="" coords="416,19,611,46"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a9f53ef015fca7c42ff3bf9d0779145a3" title=" " alt="" coords="446,71,581,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="661,5,791,47"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_unit.xhtml#a238fb029bd4cc32e393506533facd976" title=" " alt="" coords="659,71,793,112"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_unit.xhtml#aae0b3f53cb1d75823391322876d199ef" title=" " alt="" coords="852,100,995,141"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="841,13,1005,39"/>
+<area shape="rect" id="node1" title="applies new commands as part of the units update process" alt="" coords="5,41,147,83"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#aef7363eab8f805124114c4967470379d" title="applies one command using a chosen ability locks the command queue mutex while operating" alt="" coords="195,49,368,75"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_command.xhtml#acbb97472983c470bf9ba48fa9297c970" title="read the range setting" alt="" coords="416,19,611,46"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a9f53ef015fca7c42ff3bf9d0779145a3" title="removes all actions above and including the first interuptable action this will stop any of the units..." alt="" coords="446,71,581,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title="returns whether attribute is available" alt="" coords="661,5,791,47"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit.xhtml#a238fb029bd4cc32e393506533facd976" title="removes all gather actions without calling their on_complete actions this cancels the gathering actio..." alt="" coords="659,71,793,112"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_unit.xhtml#aae0b3f53cb1d75823391322876d199ef" title="erase from action specified by func to the end of the stack all actions erased will have the on_compl..." alt="" coords="852,100,995,141"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title="Check if the attribute of the given type exists." alt="" coords="841,13,1005,39"/>
 </map>

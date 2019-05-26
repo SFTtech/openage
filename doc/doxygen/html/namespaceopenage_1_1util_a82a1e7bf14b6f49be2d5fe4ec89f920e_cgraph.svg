@@ -57,7 +57,7 @@ var sectionId = 'dynsection-54';
 <polygon fill="white" stroke="none" points="-4,4 -4,-95 820,-95 820,4 -4,4"/>
 <!-- Node757 -->
 <g id="node1" class="node"><title>Node757</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="pops back (deletes) the last UTF&#45;8 character in a std::string.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-60.5 0,-90.5 94,-90.5 94,-60.5 0,-60.5"/>
 <text text-anchor="start" x="8" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::utf8</text>
 <text text-anchor="middle" x="47" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">_pop_back</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-54';
 </g>
 <!-- Node758 -->
 <g id="node2" class="node"><title>Node758</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="417,-50 417,-69 504,-69 504,-50 417,-50"/>
 <text text-anchor="middle" x="460.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-54';
 </g>
 <!-- Node761 -->
 <g id="node5" class="node"><title>Node761</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a5519d25810f698275993214ce79016c7" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a5519d25810f698275993214ce79016c7" target="_top" xlink:title="computes the length of the last character in a given UTF&#45;8 string.">
 <polygon fill="white" stroke="black" points="130,-38.5 130,-68.5 224,-68.5 224,-38.5 130,-38.5"/>
 <text text-anchor="start" x="138" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::utf8</text>
 <text text-anchor="middle" x="177" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">_last_char_size</text>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-54';
 </g>
 <!-- Node760 -->
 <g id="node4" class="node"><title>Node760</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="721,-50 721,-69 816,-69 816,-50 721,-50"/>
 <text text-anchor="middle" x="768.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -129,7 +129,7 @@ var sectionId = 'dynsection-54';
 </g>
 <!-- Node762 -->
 <g id="node6" class="node"><title>Node762</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title="Returns the length of the string literal, excluding the terminating NULL byte.">
 <polygon fill="white" stroke="black" points="260,-0.5 260,-30.5 381,-30.5 381,-0.5 260,-0.5"/>
 <text text-anchor="start" x="268" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="320.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strlen</text>

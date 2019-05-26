@@ -517,7 +517,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node322 -->
 <g id="node22" class="node"><title>Node322</title>
-<g id="a_node22"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title="This file contains the implementation of a pairing heap.">
 <polygon fill="white" stroke="red" points="3768,-89.5 3768,-130.5 3925,-130.5 3925,-89.5 3768,-89.5"/>
 <text text-anchor="start" x="3776" y="-118.5" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="3776" y="-107.5" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>

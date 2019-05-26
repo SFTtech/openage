@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 284,-35 284,4 -4,4"/>
 <!-- Node274 -->
 <g id="node1" class="node"><title>Node274</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="FixedPoint + double.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-6 0,-25 119,-25 119,-6 0,-6"/>
 <text text-anchor="middle" x="59.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::operator+</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node275 -->
 <g id="node2" class="node"><title>Node275</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title="Factory function to get a fixed&#45;point number from a double.">
 <polygon fill="white" stroke="black" points="155,-0.5 155,-30.5 280,-30.5 280,-0.5 155,-0.5"/>
 <text text-anchor="start" x="163" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="217.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_double</text>

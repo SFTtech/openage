@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-453 107,-453 107,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="An example of how nyan can work with the type system.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-123.5 103,-123.5 103,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="51.5" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::NyanType</text>
 <polyline fill="none" stroke="black" points="0,-104.5 103,-104.5 "/>
@@ -75,7 +75,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_type.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_type.xhtml" target="_top" xlink:title="units in aoc have a class and a type">
 <polygon fill="white" stroke="black" points="1.5,-160.5 1.5,-448.5 101.5,-448.5 101.5,-160.5 1.5,-160.5"/>
 <text text-anchor="middle" x="51.5" y="-436.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType</text>
 <polyline fill="none" stroke="black" points="1.5,-429.5 101.5,-429.5 "/>

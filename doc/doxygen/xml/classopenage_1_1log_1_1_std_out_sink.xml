@@ -48,9 +48,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Simple logsink that prints messages to stdout (via std::cout). </para>
     </briefdescription>
     <detaileddescription>
-<para>Simple logsink that prints messages to stdout (via std::cout). </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4072">

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-166 670,-166 670,4 -4,4"/>
 <!-- Node42 -->
 <g id="node1" class="node"><title>Node42</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="for use in bytestream mode.">
 <polygon fill="#bfbfbf" stroke="black" points="545,-66 545,-96 666,-96 666,-66 545,-66"/>
 <text text-anchor="start" x="553" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="605.5" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream::read_bytes</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node43 -->
 <g id="node2" class="node"><title>Node43</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a9acf1a67f1d14213c39e611068f8d435" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a9acf1a67f1d14213c39e611068f8d435" target="_top" xlink:title="ensures that at least one byte is available in the input byte buffer.">
 <polygon fill="white" stroke="black" points="369,-120.5 369,-161.5 509,-161.5 509,-120.5 369,-120.5"/>
 <text text-anchor="start" x="377" y="-149.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="377" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream&lt; 4096 &gt;::ensure</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node44 -->
 <g id="node3" class="node"><title>Node44</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#af408bfffcc2e2e086066e13e1f6b96b7" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#af408bfffcc2e2e086066e13e1f6b96b7" target="_top" xlink:title="Reads the given amount of bytes from the current uncompressed block.">
 <polygon fill="white" stroke="black" points="370,-60.5 370,-101.5 508,-101.5 508,-60.5 370,-60.5"/>
 <text text-anchor="start" x="378" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="378" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDStream::read_data</text>
@@ -50,7 +50,7 @@
 </g>
 <!-- Node47 -->
 <g id="node6" class="node"><title>Node47</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a32ee58040a10ca9b1b347f7d535d6439" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a32ee58040a10ca9b1b347f7d535d6439" target="_top" xlink:title="for use in bytestream mode.">
 <polygon fill="white" stroke="black" points="374,-0.5 374,-41.5 504,-41.5 504,-0.5 374,-0.5"/>
 <text text-anchor="start" x="382" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="382" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream&lt; 4096 &gt;::read</text>
@@ -65,7 +65,7 @@
 </g>
 <!-- Node45 -->
 <g id="node4" class="node"><title>Node45</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" target="_top" xlink:title="See the doc for LZXDecompressor::decompress_next_frame in lzxd.h.">
 <polygon fill="white" stroke="black" points="197,-60.5 197,-101.5 333,-101.5 333,-60.5 197,-60.5"/>
 <text text-anchor="start" x="205" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="205" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDStream::decompress</text>
@@ -80,7 +80,7 @@
 </g>
 <!-- Node46 -->
 <g id="node5" class="node"><title>Node46</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" target="_top" xlink:title="Decompresses a single 32&#45;KiB frame.">
 <polygon fill="white" stroke="black" points="0,-60.5 0,-101.5 161,-101.5 161,-60.5 0,-60.5"/>
 <text text-anchor="start" x="8" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="8" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDecompressor::decompress</text>

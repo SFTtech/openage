@@ -21,7 +21,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_renderer_impl.xhtml#a9cbfe11160f7430b912b9dce3fb3063c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_renderer_impl.xhtml#a9cbfe11160f7430b912b9dce3fb3063c" target="_top" xlink:title="Sets &#39;GuiRendererImpl::need_sync&#39; to true.">
 <polygon fill="white" stroke="black" points="204,-6 204,-36 320,-36 320,-6 204,-6"/>
 <text text-anchor="start" x="212" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRendererImpl</text>
 <text text-anchor="middle" x="262" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">::demand_sync</text>

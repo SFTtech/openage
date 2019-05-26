@@ -20,7 +20,7 @@
 </g>
 <!-- Node13 -->
 <g id="node2" class="node"><title>Node13</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_event.xhtml#a8a965360b4fcaa417ffebc7e10c9d8d1" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_event.xhtml#a8a965360b4fcaa417ffebc7e10c9d8d1" target="_top" xlink:title="Let this event depend on another an event target.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 112,-30.5 112,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Event</text>
 <text text-anchor="middle" x="56" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::depend_on</text>

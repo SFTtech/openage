@@ -1,5 +1,5 @@
 <map id="openage::Generator" name="openage::Generator">
-<area shape="rect" id="node1" title=" " alt="" coords="95,292,231,472"/>
+<area shape="rect" id="node1" title="Manages creation and setup of new games." alt="" coords="95,292,231,472"/>
 <area shape="rect" id="node2" href="$structqtsdl_1_1_gui_property_map.xhtml" title=" " alt="" coords="5,5,157,229"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_link.xhtml" title=" " alt="" coords="182,79,309,156"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_link.xhtml" title="Base for QObject wrapper of the domain&#45;specific classes." alt="" coords="182,79,309,156"/>
 </map>

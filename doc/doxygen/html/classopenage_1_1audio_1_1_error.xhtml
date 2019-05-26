@@ -102,14 +102,16 @@ $(document).ready(function(){initNavTree('classopenage_1_1audio_1_1_error.xhtml'
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_error__inherit__graph.svg" width="191" height="471"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_error__inherit__graph.svg" width="191" height="471"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::audio::Error:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_error__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_error__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -120,25 +122,33 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a755a7891dfe08412bc2312f29b0e618d inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_error.xhtml#a755a7891dfe08412bc2312f29b0e618d">Error</a> (const <a class="el" href="structopenage_1_1log_1_1message.xhtml">log::message</a> &amp;<a class="el" href="classopenage_1_1error_1_1_error.xhtml#aa06c25a19f000f6ec51993e123b6681f">msg</a>, bool generate_backtrace=true, bool <a class="el" href="classopenage_1_1error_1_1_error.xhtml#a27cbe56bc7dbab4d399072ef87fe2014">store_cause</a>=true)</td></tr>
 <tr class="separator:a755a7891dfe08412bc2312f29b0e618d inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27cbe56bc7dbab4d399072ef87fe2014 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_error.xhtml#a27cbe56bc7dbab4d399072ef87fe2014">store_cause</a> ()</td></tr>
+<tr class="memdesc:a27cbe56bc7dbab4d399072ef87fe2014 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores a pointer to the currently-handled exception in this-&gt;cause.  <a href="classopenage_1_1error_1_1_error.xhtml#a27cbe56bc7dbab4d399072ef87fe2014">More...</a><br /></td></tr>
 <tr class="separator:a27cbe56bc7dbab4d399072ef87fe2014 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a6de651093edf2d3673cd0d146992e4 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_error.xhtml#a1a6de651093edf2d3673cd0d146992e4">trim_backtrace</a> ()</td></tr>
+<tr class="memdesc:a1a6de651093edf2d3673cd0d146992e4 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls this-&gt;backtrace-&gt;trim_to_current_stack_frame(), if this-&gt;backtrace is not nullptr.  <a href="classopenage_1_1error_1_1_error.xhtml#a1a6de651093edf2d3673cd0d146992e4">More...</a><br /></td></tr>
 <tr class="separator:a1a6de651093edf2d3673cd0d146992e4 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2eac361ac1550421b68e453b9a710d4b inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_error.xhtml#a2eac361ac1550421b68e453b9a710d4b">rethrow_cause</a> () const</td></tr>
+<tr class="memdesc:a2eac361ac1550421b68e453b9a710d4b inherit pub_methods_classopenage_1_1error_1_1_error"><td class="mdescLeft">&#160;</td><td class="mdescRight">Re-throws the exception cause, if the exception has one.  <a href="classopenage_1_1error_1_1_error.xhtml#a2eac361ac1550421b68e453b9a710d4b">More...</a><br /></td></tr>
 <tr class="separator:a2eac361ac1550421b68e453b9a710d4b inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c5c486df5943aa399b6c051d9eb9059 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_error.xhtml#a6c5c486df5943aa399b6c051d9eb9059">type_name</a> () const</td></tr>
+<tr class="memdesc:a6c5c486df5943aa399b6c051d9eb9059 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type name of the exception (for pretty-printing in case the exception hierarchy is used).  <a href="classopenage_1_1error_1_1_error.xhtml#a6c5c486df5943aa399b6c051d9eb9059">More...</a><br /></td></tr>
 <tr class="separator:a6c5c486df5943aa399b6c051d9eb9059 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebb433114d67e8c71b37a3de18019571 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_error.xhtml#aebb433114d67e8c71b37a3de18019571">what</a> () const noexcept override</td></tr>
+<tr class="memdesc:aebb433114d67e8c71b37a3de18019571 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the message's content.  <a href="classopenage_1_1error_1_1_error.xhtml#aebb433114d67e8c71b37a3de18019571">More...</a><br /></td></tr>
 <tr class="separator:aebb433114d67e8c71b37a3de18019571 inherit pub_methods_classopenage_1_1error_1_1_error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_classopenage_1_1error_1_1_error"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classopenage_1_1error_1_1_error')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a></td></tr>
 <tr class="memitem:ad7fc5249c96f6c6e2c3bfa55dfe8235b inherit pub_static_methods_classopenage_1_1error_1_1_error"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_error.xhtml#ad7fc5249c96f6c6e2c3bfa55dfe8235b">debug_break_on_create</a> (bool state)</td></tr>
+<tr class="memdesc:ad7fc5249c96f6c6e2c3bfa55dfe8235b inherit pub_static_methods_classopenage_1_1error_1_1_error"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn on debug breaks in the constructor.  <a href="classopenage_1_1error_1_1_error.xhtml#ad7fc5249c96f6c6e2c3bfa55dfe8235b">More...</a><br /></td></tr>
 <tr class="separator:ad7fc5249c96f6c6e2c3bfa55dfe8235b inherit pub_static_methods_classopenage_1_1error_1_1_error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classopenage_1_1error_1_1_error"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classopenage_1_1error_1_1_error')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a></td></tr>
 <tr class="memitem:aa06c25a19f000f6ec51993e123b6681f inherit pub_attribs_classopenage_1_1error_1_1_error"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenage_1_1log_1_1message.xhtml">log::message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_error.xhtml#aa06c25a19f000f6ec51993e123b6681f">msg</a></td></tr>
+<tr class="memdesc:aa06c25a19f000f6ec51993e123b6681f inherit pub_attribs_classopenage_1_1error_1_1_error"><td class="mdescLeft">&#160;</td><td class="mdescRight">The error message.  <a href="classopenage_1_1error_1_1_error.xhtml#aa06c25a19f000f6ec51993e123b6681f">More...</a><br /></td></tr>
 <tr class="separator:aa06c25a19f000f6ec51993e123b6681f inherit pub_attribs_classopenage_1_1error_1_1_error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ad0320b8e32d6f187d0f4a74bd89d69 inherit pub_attribs_classopenage_1_1error_1_1_error"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classopenage_1_1error_1_1_backtrace.xhtml">Backtrace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_error.xhtml#a8ad0320b8e32d6f187d0f4a74bd89d69">backtrace</a></td></tr>
+<tr class="memdesc:a8ad0320b8e32d6f187d0f4a74bd89d69 inherit pub_attribs_classopenage_1_1error_1_1_error"><td class="mdescLeft">&#160;</td><td class="mdescRight">The (optional) backtrace.  <a href="classopenage_1_1error_1_1_error.xhtml#a8ad0320b8e32d6f187d0f4a74bd89d69">More...</a><br /></td></tr>
 <tr class="separator:a8ad0320b8e32d6f187d0f4a74bd89d69 inherit pub_attribs_classopenage_1_1error_1_1_error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -162,7 +172,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="audio_2error_8cpp_source.xhtml#l00008">8</a> of file <a class="el" href="audio_2error_8cpp_source.xhtml">error.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    :</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    error::Error(<a class="code" href="classopenage_1_1error_1_1_error.xhtml#aa06c25a19f000f6ec51993e123b6681f">msg</a>) {}</div><div class="ttc" id="classopenage_1_1error_1_1_error_xhtml_aa06c25a19f000f6ec51993e123b6681f"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml#aa06c25a19f000f6ec51993e123b6681f">openage::error::Error::msg</a></div><div class="ttdeci">log::message msg</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00091">error.h:91</a></div></div>
+<div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    :</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    error::Error(<a class="code" href="classopenage_1_1error_1_1_error.xhtml#aa06c25a19f000f6ec51993e123b6681f">msg</a>) {}</div><div class="ttc" id="classopenage_1_1error_1_1_error_xhtml_aa06c25a19f000f6ec51993e123b6681f"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml#aa06c25a19f000f6ec51993e123b6681f">openage::error::Error::msg</a></div><div class="ttdeci">log::message msg</div><div class="ttdoc">The error message.</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00091">error.h:91</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-95.5 624,-95.5 624,4 -4,4"/>
 <!-- Node5 -->
 <g id="node1" class="node"><title>Node5</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Shortcut to creating a QMap for a button.">
 <polygon fill="#bfbfbf" stroke="black" points="493,-33 493,-63 620,-63 620,-33 493,-33"/>
 <text text-anchor="start" x="501" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::ActionsList</text>
 <text text-anchor="middle" x="556.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">Model::add_button</text>

@@ -20,7 +20,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_f_string.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_f_string.xhtml" target="_top" xlink:title="A self&#45;formatting string! Get yours today!">
 <polygon fill="white" stroke="black" points="182,-6 182,-25 292,-25 292,-6 182,-6"/>
 <text text-anchor="middle" x="237" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FString</text>
 </a>

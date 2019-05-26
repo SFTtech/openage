@@ -1,4 +1,4 @@
 <map id="openage::Terrain::priority" name="openage::Terrain::priority">
-<area shape="rect" id="node1" title=" " alt="" coords="197,13,363,39"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" title=" " alt="" coords="5,5,149,47"/>
+<area shape="rect" id="node1" title="return the blending priority for a given terrain id." alt="" coords="197,13,363,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" title="gather neighbors of a given base tile." alt="" coords="5,5,149,47"/>
 </map>

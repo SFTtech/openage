@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 273,-35 273,4 -4,4"/>
 <!-- Node6 -->
 <g id="node1" class="node"><title>Node6</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Reads the rng in from the passed string.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-6 0,-25 127,-25 127,-6 0,-6"/>
 <text text-anchor="middle" x="63.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::RNG</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ad4167cc984c7979737fe798e9b79265f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ad4167cc984c7979737fe798e9b79265f" target="_top" xlink:title="Reads the rng in from a string.">
 <polygon fill="white" stroke="black" points="163,-0.5 163,-30.5 269,-30.5 269,-0.5 163,-0.5"/>
 <text text-anchor="start" x="171" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="216" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">from_string</text>

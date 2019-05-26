@@ -96,9 +96,9 @@
         <reimplementedby refid="classopenage_1_1curve_1_1_queue_filter_iterator_1a4aafd29d89c2084adf6bebe8967ffcf8">value</reimplementedby>
         <reimplementedby refid="classopenage_1_1curve_1_1_map_filter_iterator_1adf7f78fc26c05413c06d4b6833b9c29e">value</reimplementedby>
         <briefdescription>
+<para>access the value of the iterator </para>
         </briefdescription>
         <detaileddescription>
-<para>access the value of the iterator </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -115,9 +115,9 @@
         <reimplementedby refid="classopenage_1_1curve_1_1_queue_filter_iterator_1a3701a6bec3e58007aafd6c56248d99a3">valid</reimplementedby>
         <reimplementedby refid="classopenage_1_1curve_1_1_map_filter_iterator_1a9d13c293e4046e4bb4d36bae91d278a1">valid</reimplementedby>
         <briefdescription>
+<para>Check if the iterator is still valid (this breaks from the stl - in the best way) </para>
         </briefdescription>
         <detaileddescription>
-<para>Check if the iterator is still valid (this breaks from the stl - in the best way) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -134,9 +134,9 @@
           <declname>c</declname>
         </param>
         <briefdescription>
+<para>The iterator needs a reference to the container. </para>
         </briefdescription>
         <detaileddescription>
-<para>The iterator needs a reference to the container </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -151,9 +151,9 @@
           <type>const <ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator</ref> &amp;</type>
         </param>
         <briefdescription>
+<para>Default copy c&apos;tor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Default copy c&apos;tor </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -181,9 +181,9 @@
           <type>const <ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator</ref>&lt; val_t, container_t, iterator_t &gt; &amp;</type>
         </param>
         <briefdescription>
+<para>Default assignment operator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Default assignment operator </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -195,9 +195,9 @@
         <argsstring>() const</argsstring>
         <name>operator *</name>
         <briefdescription>
+<para>Dereference will call the virtual function. </para>
         </briefdescription>
         <detaileddescription>
-<para>Dereference will call the virtual function </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -209,9 +209,9 @@
         <argsstring>() const</argsstring>
         <name>operator -&gt;</name>
         <briefdescription>
+<para>Dereference will call the virutal function. </para>
         </briefdescription>
         <detaileddescription>
-<para>Dereference will call the virutal function </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -227,9 +227,9 @@
           <declname>rhs</declname>
         </param>
         <briefdescription>
+<para>For equalness only the base iterator will be testet - not the timespans this is defined in. </para>
         </briefdescription>
         <detaileddescription>
-<para>For equalness only the base iterator will be testet - not the timespans this is defined in. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -245,9 +245,9 @@
           <declname>rhs</declname>
         </param>
         <briefdescription>
+<para>For unequalness only the base iterator will be testet - not the timespans this is defined in. </para>
         </briefdescription>
         <detaileddescription>
-<para>For unequalness only the base iterator will be testet - not the timespans this is defined in. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -259,9 +259,9 @@
         <argsstring>()</argsstring>
         <name>operator++</name>
         <briefdescription>
+<para>Advance to the next valid element. </para>
         </briefdescription>
         <detaileddescription>
-<para>Advance to the next valid element. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -273,9 +273,9 @@
         <argsstring>() const</argsstring>
         <name>get_base</name>
         <briefdescription>
+<para>Access the underlying. </para>
         </briefdescription>
         <detaileddescription>
-<para>Access the underlying </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -287,9 +287,9 @@
         <argsstring>() const</argsstring>
         <name>get_from</name>
         <briefdescription>
+<para>Access the lower end value of the defined time frame. </para>
         </briefdescription>
         <detaileddescription>
-<para>Access the lower end value of the defined time frame </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -301,9 +301,9 @@
         <argsstring>() const</argsstring>
         <name>get_to</name>
         <briefdescription>
+<para>Access the higher end value of the defined time frame. </para>
         </briefdescription>
         <detaileddescription>
-<para>Access the higher end value of the defined time frame </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -333,9 +333,9 @@
           <declname>to</declname>
         </param>
         <briefdescription>
+<para>Can only be constructed from the referenced container. </para>
         </briefdescription>
         <detaileddescription>
-<para>Can only be constructed from the referenced container </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -343,9 +343,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Default interface for curve containers. </para>
     </briefdescription>
     <detaileddescription>
-<para>Default interface for curve containers </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1851">

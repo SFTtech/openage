@@ -403,7 +403,7 @@
 </g>
 <!-- Node191 -->
 <g id="node32" class="node"><title>Node191</title>
-<g id="a_node32"><a xlink:href="classopenage_1_1gui_1_1_actions_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="classopenage_1_1gui_1_1_actions_list_model.xhtml" target="_top" xlink:title="Model used for the Action Buttons to render (e.g.">
 <polygon fill="white" stroke="black" points="537.5,-98.5 537.5,-128.5 664.5,-128.5 664.5,-98.5 537.5,-98.5"/>
 <text text-anchor="start" x="545.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::ActionsList</text>
 <text text-anchor="middle" x="601" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">Model</text>
@@ -417,7 +417,7 @@
 </g>
 <!-- Node192 -->
 <g id="node33" class="node"><title>Node192</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1gui_1_1_category_contents_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1gui_1_1_category_contents_list_model.xhtml" target="_top" xlink:title="Adaptor for the contents of a category of the Civilisation.">
 <polygon fill="white" stroke="black" points="523,-49.5 523,-79.5 679,-79.5 679,-49.5 523,-49.5"/>
 <text text-anchor="start" x="531" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::CategoryContents</text>
 <text text-anchor="middle" x="601" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">ListModel</text>
@@ -431,7 +431,7 @@
 </g>
 <!-- Node193 -->
 <g id="node34" class="node"><title>Node193</title>
-<g id="a_node34"><a xlink:href="classopenage_1_1gui_1_1_resources_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node34"><a xlink:href="classopenage_1_1gui_1_1_resources_list_model.xhtml" target="_top" xlink:title="Resource table for the gui.">
 <polygon fill="white" stroke="black" points="531,-0.5 531,-30.5 671,-30.5 671,-0.5 531,-0.5"/>
 <text text-anchor="start" x="539" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::ResourcesList</text>
 <text text-anchor="middle" x="601" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Model</text>
@@ -445,7 +445,7 @@
 </g>
 <!-- Node7 -->
 <g id="node35" class="node"><title>Node7</title>
-<g id="a_node35"><a xlink:href="classqtsdl_1_1_gui_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classqtsdl_1_1_gui_list_model.xhtml" target="_top" xlink:title="Adapts core that uses a property map to QAbstractListModel interface.">
 <polygon fill="white" stroke="black" points="550.5,-246 550.5,-265 651.5,-265 651.5,-246 550.5,-246"/>
 <text text-anchor="middle" x="601" y="-253" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiListModel</text>
 </a>
@@ -497,7 +497,7 @@
 </g>
 <!-- Node168 -->
 <g id="node39" class="node"><title>Node168</title>
-<g id="a_node39"><a xlink:href="classopenage_1_1_engine_signals.xhtml" target="_top" xlink:title=" ">
+<g id="a_node39"><a xlink:href="classopenage_1_1_engine_signals.xhtml" target="_top" xlink:title="Qt signals for the engine.">
 <polygon fill="white" stroke="black" points="540,-726 540,-745 662,-745 662,-726 540,-726"/>
 <text text-anchor="middle" x="601" y="-733" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EngineSignals</text>
 </a>
@@ -615,7 +615,7 @@
 </g>
 <!-- Node177 -->
 <g id="node48" class="node"><title>Node177</title>
-<g id="a_node48"><a xlink:href="classopenage_1_1gui_1_1_main_args_link.xhtml" target="_top" xlink:title=" ">
+<g id="a_node48"><a xlink:href="classopenage_1_1gui_1_1_main_args_link.xhtml" target="_top" xlink:title="Used to make arguments of the game available in QML.">
 <polygon fill="white" stroke="black" points="532.5,-1342 532.5,-1361 669.5,-1361 669.5,-1342 532.5,-1342"/>
 <text text-anchor="middle" x="601" y="-1349" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::MainArgsLink</text>
 </a>
@@ -628,7 +628,7 @@
 </g>
 <!-- Node178 -->
 <g id="node49" class="node"><title>Node178</title>
-<g id="a_node49"><a xlink:href="classopenage_1_1_output_mode_signals.xhtml" target="_top" xlink:title=" ">
+<g id="a_node49"><a xlink:href="classopenage_1_1_output_mode_signals.xhtml" target="_top" xlink:title="Signals for a gui mode.">
 <polygon fill="white" stroke="black" points="528.5,-1304 528.5,-1323 673.5,-1323 673.5,-1304 528.5,-1304"/>
 <text text-anchor="middle" x="601" y="-1311" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputModeSignals</text>
 </a>
@@ -641,7 +641,7 @@
 </g>
 <!-- Node179 -->
 <g id="node50" class="node"><title>Node179</title>
-<g id="a_node50"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml" target="_top" xlink:title=" ">
+<g id="a_node50"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml" target="_top" xlink:title="Attaches to the GuiCallbackImpl.">
 <polygon fill="white" stroke="black" points="542,-1266 542,-1285 660,-1285 660,-1266 542,-1266"/>
 <text text-anchor="middle" x="601" y="-1273" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 </a>
@@ -706,7 +706,7 @@
 </g>
 <!-- Node183 -->
 <g id="node55" class="node"><title>Node183</title>
-<g id="a_node55"><a xlink:href="classqtsdl_1_1_gui_live_reloader_attached_property.xhtml" target="_top" xlink:title=" ">
+<g id="a_node55"><a xlink:href="classqtsdl_1_1_gui_live_reloader_attached_property.xhtml" target="_top" xlink:title="The &#39;LR.tag&#39; attached property.">
 <polygon fill="white" stroke="black" points="525,-1102.5 525,-1132.5 677,-1132.5 677,-1102.5 525,-1102.5"/>
 <text text-anchor="start" x="533" y="-1120.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiLiveReloaderAttached</text>
 <text text-anchor="middle" x="601" y="-1109.5" font-family="Helvetica,sans-Serif" font-size="10.00">Property</text>
@@ -720,7 +720,7 @@
 </g>
 <!-- Node184 -->
 <g id="node56" class="node"><title>Node184</title>
-<g id="a_node56"><a xlink:href="classqtsdl_1_1_gui_live_reloader_attached_property_provider.xhtml" target="_top" xlink:title=" ">
+<g id="a_node56"><a xlink:href="classqtsdl_1_1_gui_live_reloader_attached_property_provider.xhtml" target="_top" xlink:title="Non&#45;instantiable type that is needed to use a &#39;LR.tag&#39; attached property.">
 <polygon fill="white" stroke="black" points="525,-1053.5 525,-1083.5 677,-1083.5 677,-1053.5 525,-1053.5"/>
 <text text-anchor="start" x="533" y="-1071.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiLiveReloaderAttached</text>
 <text text-anchor="middle" x="601" y="-1060.5" font-family="Helvetica,sans-Serif" font-size="10.00">PropertyProvider</text>
@@ -747,7 +747,7 @@
 </g>
 <!-- Node186 -->
 <g id="node58" class="node"><title>Node186</title>
-<g id="a_node58"><a xlink:href="classqtsdl_1_1_gui_renderer_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node58"><a xlink:href="classqtsdl_1_1_gui_renderer_impl.xhtml" target="_top" xlink:title="Passes the native graphic context to Qt.">
 <polygon fill="white" stroke="black" points="543,-977 543,-996 659,-996 659,-977 543,-977"/>
 <text text-anchor="middle" x="601" y="-984" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRendererImpl</text>
 </a>
@@ -786,7 +786,7 @@
 </g>
 <!-- Node188 -->
 <g id="node62" class="node"><title>Node188</title>
-<g id="a_node62"><a xlink:href="classqtsdl_1_1_recursive_directory_watcher.xhtml" target="_top" xlink:title=" ">
+<g id="a_node62"><a xlink:href="classqtsdl_1_1_recursive_directory_watcher.xhtml" target="_top" xlink:title="Emits a signal when anything changes in the directories.">
 <polygon fill="white" stroke="black" points="538.5,-889.5 538.5,-919.5 663.5,-919.5 663.5,-889.5 538.5,-889.5"/>
 <text text-anchor="start" x="546.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::RecursiveDirectory</text>
 <text text-anchor="middle" x="601" y="-896.5" font-family="Helvetica,sans-Serif" font-size="10.00">Watcher</text>
@@ -800,7 +800,7 @@
 </g>
 <!-- Node189 -->
 <g id="node63" class="node"><title>Node189</title>
-<g id="a_node63"><a xlink:href="classqtsdl_1_1_recursive_directory_watcher_worker.xhtml" target="_top" xlink:title=" ">
+<g id="a_node63"><a xlink:href="classqtsdl_1_1_recursive_directory_watcher_worker.xhtml" target="_top" xlink:title="Emits a signal when anything changes in the directories.">
 <polygon fill="white" stroke="black" points="538.5,-840.5 538.5,-870.5 663.5,-870.5 663.5,-840.5 538.5,-840.5"/>
 <text text-anchor="start" x="546.5" y="-858.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::RecursiveDirectory</text>
 <text text-anchor="middle" x="601" y="-847.5" font-family="Helvetica,sans-Serif" font-size="10.00">WatcherWorker</text>
@@ -880,7 +880,7 @@
 </g>
 <!-- Node142 -->
 <g id="node65" class="node"><title>Node142</title>
-<g id="a_node65"><a xlink:href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" target="_top" xlink:title=" ">
+<g id="a_node65"><a xlink:href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" target="_top" xlink:title="Stores static properties during initialization to be able to assign them after all &#39;liveReloadTag&#39; pr...">
 <polygon fill="white" stroke="black" points="153.5,-412.5 153.5,-442.5 294.5,-442.5 294.5,-412.5 153.5,-412.5"/>
 <text text-anchor="start" x="161.5" y="-430.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::DeferredInitialConstant</text>
 <text text-anchor="middle" x="224" y="-419.5" font-family="Helvetica,sans-Serif" font-size="10.00">PropertyValues</text>
@@ -912,7 +912,7 @@
 </g>
 <!-- Node0 -->
 <g id="node67" class="node"><title>Node0</title>
-<g id="a_node67"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title=" ">
+<g id="a_node67"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title="Base for QObject wrapper of the domain&#45;specific classes.">
 <polygon fill="white" stroke="black" points="358.5,-279 358.5,-298 453.5,-298 453.5,-279 358.5,-279"/>
 <text text-anchor="middle" x="406" y="-286" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemLink</text>
 </a>

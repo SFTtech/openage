@@ -57,7 +57,7 @@ var sectionId = 'dynsection-3';
 <polygon fill="white" stroke="none" points="-4,4 -4,-124 1169,-124 1169,4 -4,4"/>
 <!-- Node14 -->
 <g id="node1" class="node"><title>Node14</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns true IFF the file is executable">
 <polygon fill="#bfbfbf" stroke="black" points="1055,-46.5 1055,-76.5 1165,-76.5 1165,-46.5 1055,-46.5"/>
 <text text-anchor="start" x="1063" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::subprocess</text>
 <text text-anchor="middle" x="1110" y="-53.5" font-family="Helvetica,sans-Serif" font-size="10.00">::is_executable</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node15 -->
 <g id="node2" class="node"><title>Node15</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" target="_top" xlink:title="finds the path to an executable by evaluating env[PATH]">
 <polygon fill="white" stroke="black" points="905.5,-68.5 905.5,-98.5 1015.5,-98.5 1015.5,-68.5 905.5,-68.5"/>
 <text text-anchor="start" x="913.5" y="-86.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::subprocess</text>
 <text text-anchor="middle" x="960.5" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00">::which</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node17 -->
 <g id="node4" class="node"><title>Node17</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1os.xhtml#a5d72e5b58b3036f2298e474c4e9ed9b6" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1os.xhtml#a0c239b26dbfdae2443aa511e31619917" target="_top" xlink:title="tries to xdg&#45;open the file">
 <polygon fill="white" stroke="black" points="731,-74 731,-93 859,-93 859,-74 731,-74"/>
 <text text-anchor="middle" x="795" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::execute_file</text>
 </a>

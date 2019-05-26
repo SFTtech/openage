@@ -65,7 +65,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node45 -->
 <g id="node2" class="node"><title>Node45</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#ac7283a82ddfcc4a556ca4aa4f9277bbc" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#ac7283a82ddfcc4a556ca4aa4f9277bbc" target="_top" xlink:title="current stockpile amount">
 <polygon fill="white" stroke="black" points="637,-482.169 637,-501.169 762,-501.169 762,-482.169 637,-482.169"/>
 <text text-anchor="middle" x="699.5" y="-489.169" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::amount</text>
 </a>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node50 -->
 <g id="node7" class="node"><title>Node50</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" target="_top" xlink:title="The given player buys the given resource with gold.">
 <polygon fill="white" stroke="black" points="0,-215.169 0,-234.169 111,-234.169 111,-215.169 0,-215.169"/>
 <text text-anchor="middle" x="55.5" y="-222.169" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::buy</text>
 </a>
@@ -119,7 +119,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node51 -->
 <g id="node8" class="node"><title>Node51</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title="The given player sells the given resource for gold.">
 <polygon fill="white" stroke="black" points="0.5,-177.169 0.5,-196.169 110.5,-196.169 110.5,-177.169 0.5,-177.169"/>
 <text text-anchor="middle" x="55.5" y="-184.169" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::sell</text>
 </a>
@@ -215,7 +215,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node62 -->
 <g id="node19" class="node"><title>Node62</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#af55bef2ec5af88dfb6c15c3986f1713d" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#af55bef2ec5af88dfb6c15c3986f1713d" target="_top" xlink:title="Round each value to the nearest integer.">
 <polygon fill="white" stroke="black" points="634,-84.6689 634,-114.669 765,-114.669 765,-84.6689 634,-84.6689"/>
 <text text-anchor="start" x="642" y="-102.669" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <text text-anchor="middle" x="699.5" y="-91.6689" font-family="Helvetica,sans-Serif" font-size="10.00">::round</text>
@@ -242,7 +242,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node65 -->
 <g id="node22" class="node"><title>Node65</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title="Returns the sum of all the resources.">
 <polygon fill="white" stroke="black" points="622,-46.1689 622,-65.1689 777,-65.1689 777,-46.1689 622,-46.1689"/>
 <text text-anchor="middle" x="699.5" y="-53.1689" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle::sum</text>
 </a>
@@ -278,7 +278,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node49 -->
 <g id="node6" class="node"><title>Node49</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#a728983ff63d9e16ecc874a942c61fa22" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#a728983ff63d9e16ecc874a942c61fa22" target="_top" xlink:title="add to stockpile">
 <polygon fill="white" stroke="black" points="147,-215.169 147,-234.169 270,-234.169 270,-215.169 147,-215.169"/>
 <text text-anchor="middle" x="208.5" y="-222.169" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::receive</text>
 </a>
@@ -301,7 +301,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node54 -->
 <g id="node11" class="node"><title>Node54</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" target="_top" xlink:title="Called when the resources amounts change.">
 <polygon fill="white" stroke="black" points="306,-166.669 306,-196.669 410,-196.669 410,-166.669 306,-166.669"/>
 <text text-anchor="start" x="314" y="-184.669" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::on</text>
 <text text-anchor="middle" x="358" y="-173.669" font-family="Helvetica,sans-Serif" font-size="10.00">_resources_change</text>
@@ -320,7 +320,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node55 -->
 <g id="node12" class="node"><title>Node55</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" target="_top" xlink:title="Called when a unit is created and active.">
 <polygon fill="white" stroke="black" points="149.5,-127.669 149.5,-157.669 267.5,-157.669 267.5,-127.669 149.5,-127.669"/>
 <text text-anchor="start" x="157.5" y="-145.669" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::active</text>
 <text text-anchor="middle" x="208.5" y="-134.669" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_added</text>
@@ -334,7 +334,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node56 -->
 <g id="node13" class="node"><title>Node56</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" target="_top" xlink:title="Called when a unit is destroyed.">
 <polygon fill="white" stroke="black" points="149.5,-78.6689 149.5,-108.669 267.5,-108.669 267.5,-78.6689 149.5,-78.6689"/>
 <text text-anchor="start" x="157.5" y="-96.6689" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::active</text>
 <text text-anchor="middle" x="208.5" y="-85.6689" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_removed</text>
@@ -348,7 +348,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node57 -->
 <g id="node14" class="node"><title>Node57</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_player.xhtml#a3ff378e505d9036c74204730b53d9fba" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_player.xhtml#a3ff378e505d9036c74204730b53d9fba" target="_top" xlink:title="remove from stockpile if available">
 <polygon fill="white" stroke="black" points="147.5,-177.169 147.5,-196.169 269.5,-196.169 269.5,-177.169 147.5,-177.169"/>
 <text text-anchor="middle" x="208.5" y="-184.169" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::deduct</text>
 </a>
@@ -394,7 +394,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node66 -->
 <g id="node23" class="node"><title>Node66</title>
-<g id="a_node23"><a xlink:href="classopenage_1_1_player.xhtml#a2d3f269dc4b0acd1972e4d0a32f97c2f" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="classopenage_1_1_player.xhtml#a2d3f269dc4b0acd1972e4d0a32f97c2f" target="_top" xlink:title="Called when a unit is killed by this player.">
 <polygon fill="white" stroke="black" points="447.5,-46.1689 447.5,-65.1689 584.5,-65.1689 584.5,-46.1689 447.5,-46.1689"/>
 <text text-anchor="middle" x="516" y="-53.1689" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::killed_unit</text>
 </a>
@@ -407,7 +407,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node67 -->
 <g id="node24" class="node"><title>Node67</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title="Updates resource based sub&#45;scores.">
 <polygon fill="white" stroke="black" points="456,-165.669 456,-195.669 576,-195.669 576,-165.669 456,-165.669"/>
 <text text-anchor="start" x="464" y="-183.669" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score::update</text>
 <text text-anchor="middle" x="516" y="-172.669" font-family="Helvetica,sans-Serif" font-size="10.00">_resources</text>

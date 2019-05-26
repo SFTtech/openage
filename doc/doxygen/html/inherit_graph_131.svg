@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-24 133,-24 133,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="classopenage_1_1log_1_1_log_sink_list.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="classopenage_1_1log_1_1_log_sink_list.xhtml" target="_top" xlink:title="Holds a list of all registered log sinks; Maintained from the LogSink constructors/destructors.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-19.5 129,-19.5 129,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="64.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSinkList</text>
 </a>

@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1event_1_1_event_class.xhtml" title=" " alt="" coords="5,274,188,301"/>
+<area shape="rect" id="node1" href="$classopenage_1_1event_1_1_event_class.xhtml" title="A eventclass has to be implemented for every type of event that exists." alt="" coords="5,274,188,301"/>
 <area shape="rect" id="node2" href="$classopenage_1_1event_1_1_dependency_event_class.xhtml" title=" " alt="" coords="237,37,426,79"/>
 <area shape="rect" id="node5" href="$classopenage_1_1event_1_1_dependency_immediately_event_class.xhtml" title=" " alt="" coords="237,103,426,144"/>
 <area shape="rect" id="node6" href="$classopenage_1_1event_1_1_once_event_class.xhtml" title=" " alt="" coords="241,168,421,209"/>

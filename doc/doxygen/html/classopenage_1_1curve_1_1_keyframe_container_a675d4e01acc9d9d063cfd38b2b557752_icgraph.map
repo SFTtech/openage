@@ -1,4 +1,4 @@
 <map id="openage::curve::KeyframeContainer::last" name="openage::curve::KeyframeContainer::last">
-<area shape="rect" id="node1" title=" " alt="" coords="225,5,397,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_keyframe_container.xhtml#a9fe5fdab43afd4c928337654c72171b3" title=" " alt="" coords="5,5,177,47"/>
+<area shape="rect" id="node1" title="Get the last element with e&#45;&gt;time &lt;= time, given a hint where to start the search." alt="" coords="225,5,397,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_keyframe_container.xhtml#a9fe5fdab43afd4c928337654c72171b3" title="Get the last element with e&#45;&gt;time &lt;= time, without a hint where to start searching." alt="" coords="5,5,177,47"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 294,-84 294,4 -4,4"/>
 <!-- Node34 -->
 <g id="node1" class="node"><title>Node34</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Lazily initializes the global SDL singleton if it isn&#39;t yet available, otherwise does nothing.">
 <polygon fill="#bfbfbf" stroke="black" points="189,-24.5 189,-54.5 290,-54.5 290,-24.5 189,-24.5"/>
 <text text-anchor="start" x="197" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="239.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">make_sdl_available</text>

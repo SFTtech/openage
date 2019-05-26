@@ -67,7 +67,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node24 -->
 <g id="node2" class="node"><title>Node24</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a09329202a589131b1c723fbffb1f806b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a09329202a589131b1c723fbffb1f806b" target="_top" xlink:title="Returns the size in bytes of the raw pixel data.">
 <polygon fill="white" stroke="black" points="142,-60.5 142,-101.5 265,-101.5 265,-60.5 142,-60.5"/>
 <text text-anchor="start" x="150" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="150" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>
@@ -82,7 +82,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node27 -->
 <g id="node5" class="node"><title>Node27</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#af731ce3a5d618782d7fcd6ffffd5a659" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#af731ce3a5d618782d7fcd6ffffd5a659" target="_top" xlink:title="Returns the built&#45;in display target that represents the window.">
 <polygon fill="white" stroke="black" points="150.5,-0.5 150.5,-41.5 256.5,-41.5 256.5,-0.5 150.5,-0.5"/>
 <text text-anchor="start" x="158.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="158.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlRenderer::</text>
@@ -97,7 +97,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node25 -->
 <g id="node3" class="node"><title>Node25</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" target="_top" xlink:title="Returns the size in bytes of a single row, including possible padding at its end.">
 <polygon fill="white" stroke="black" points="301,-60.5 301,-101.5 424,-101.5 424,-60.5 301,-60.5"/>
 <text text-anchor="start" x="309" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="309" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>

@@ -53,9 +53,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>pxd: </para>
     </briefdescription>
     <detaileddescription>
-<para>pxd:</para>
 <para>cppclass testenum(Enum[testenum_value]): <ref refid="structopenage_1_1util_1_1tests_1_1testenum__value" kindref="compound">testenum_value</ref> *value</para>
 <para>testenum foo &quot;::openage::util::tests::testenum::foo&quot; testenum bar &quot;::openage::util::tests::testenum::bar&quot; </para>
     </detaileddescription>

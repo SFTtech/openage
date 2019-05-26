@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-79 596,-79 596,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="The sourceSize property of the Image QML element ends up here for checking.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-22.5 0,-52.5 107,-52.5 107,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::aspect</text>
 <text text-anchor="middle" x="53.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">_fit_size</text>
@@ -92,7 +92,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title="Get the subtexture coordinates by its id.">
 <polygon fill="white" stroke="black" points="319.5,-0.5 319.5,-30.5 430.5,-30.5 430.5,-0.5 319.5,-0.5"/>
 <text text-anchor="start" x="327.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="375" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_subtexture</text>

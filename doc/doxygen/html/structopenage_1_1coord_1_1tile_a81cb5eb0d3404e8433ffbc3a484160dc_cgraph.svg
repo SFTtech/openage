@@ -48,7 +48,7 @@
 </g>
 <!-- Node38 -->
 <g id="node4" class="node"><title>Node38</title>
-<g id="a_node4"><a xlink:href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b" target="_top" xlink:title="adds an UP component to the coordinate.">
 <polygon fill="white" stroke="black" points="292.5,-49.5 292.5,-79.5 394.5,-79.5 394.5,-49.5 292.5,-49.5"/>
 <text text-anchor="start" x="300.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::tile</text>
 <text text-anchor="middle" x="343.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_tile3</text>

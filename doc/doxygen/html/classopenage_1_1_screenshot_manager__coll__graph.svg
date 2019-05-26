@@ -74,7 +74,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title="A job manager can be used to execute functions within separate worker threads.">
 <polygon fill="white" stroke="black" points="0,-160.5 0,-459.5 131,-459.5 131,-160.5 0,-160.5"/>
 <text text-anchor="middle" x="65.5" y="-447.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <polyline fill="none" stroke="black" points="0,-440.5 131,-440.5 "/>

@@ -20,7 +20,7 @@
 </g>
 <!-- Node18 -->
 <g id="node2" class="node"><title>Node18</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1options_1_1_option_node.xhtml#a3caf0f35390dcb01054beb14a4c20819" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1options_1_1_option_node.xhtml#a3caf0f35390dcb01054beb14a4c20819" target="_top" xlink:title="shortcut for get_variable(name).value&lt;T&gt;()">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 125,-30.5 125,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="62.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Node::getv</text>

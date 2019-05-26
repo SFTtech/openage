@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 295,-35 295,4 -4,4"/>
 <!-- Node31 -->
 <g id="node1" class="node"><title>Node31</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Remove from the capacity given by units.">
 <polygon fill="#bfbfbf" stroke="black" points="154,-0.5 154,-30.5 291,-30.5 291,-0.5 154,-0.5"/>
 <text text-anchor="start" x="162" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="222.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove_capacity</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node32 -->
 <g id="node2" class="node"><title>Node32</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" target="_top" xlink:title="Called when a unit is destroyed.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 118,-30.5 118,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::active</text>
 <text text-anchor="middle" x="59" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_removed</text>

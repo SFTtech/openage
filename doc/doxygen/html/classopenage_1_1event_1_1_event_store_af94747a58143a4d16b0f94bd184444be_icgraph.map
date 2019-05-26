@@ -1,5 +1,5 @@
 <map id="openage::event::EventStore::get_sorted_events" name="openage::event::EventStore::get_sorted_events">
-<area shape="rect" id="node1" title=" " alt="" coords="392,5,572,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" title=" " alt="" coords="199,5,344,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" title=" " alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node1" title="Helper function that should not be called &#39;in production&#39;." alt="" coords="392,5,572,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" title="Execute the events." alt="" coords="199,5,344,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" title="Execute all events that are registered until a certain point in time." alt="" coords="5,5,151,47"/>
 </map>

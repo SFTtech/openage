@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title=" " alt="" coords="5,239,176,295"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_editor_mode.xhtml#a8bc3906c89a7ecceff2c24512c5be24b" title=" " alt="" coords="245,202,390,258"/>
 <area shape="rect" id="node15" href="$classqtsdl_1_1_shadow.xhtml#a72190fd685d21b446fae24b92412b54f" title=" " alt="" coords="224,283,411,324"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" title=" " alt="" coords="459,187,613,214"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" title="std::for_each except just on containers." alt="" coords="459,187,613,214"/>
 <area shape="rect" id="node13" href="$classopenage_1_1_game_control.xhtml#aa7c61c3caafc810355005e83c8f234e2" title=" " alt="" coords="459,239,613,280"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1curve_1_1tests.xhtml#afc4e799a037edab37e1e35a74da593b7" title=" " alt="" coords="680,180,827,221"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1curve_1_1tests.xhtml#a994d019a14acd704605a0ccff85558c8" title=" " alt="" coords="893,5,1040,47"/>
@@ -13,5 +13,5 @@
 <area shape="rect" id="node11" href="$classopenage_1_1curve_1_1_queue.xhtml#a3a60297cec80ae6d759ea3567922db8e" title=" " alt="" coords="1088,205,1272,231"/>
 <area shape="rect" id="node12" href="$classopenage_1_1curve_1_1_queue.xhtml#ae7d94b0875221550e5af663a64ea2aec" title=" " alt="" coords="1103,256,1257,297"/>
 <area shape="rect" id="node9" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="1320,205,1515,231"/>
-<area shape="rect" id="node14" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title=" " alt="" coords="661,246,845,273"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title="return currently running game or null if a game is not currently running" alt="" coords="661,246,845,273"/>
 </map>

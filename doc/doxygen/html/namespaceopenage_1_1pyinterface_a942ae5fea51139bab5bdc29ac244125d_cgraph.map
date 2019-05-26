@@ -1,5 +1,5 @@
 <map id="openage::pyinterface::init_exc_message" name="openage::pyinterface::init_exc_message">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,148,65"/>
+<area shape="rect" id="node1" title="For use by Python, to initialize a message&#39;s meta data." alt="" coords="5,23,148,65"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="217,5,327,32"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title=" " alt="" coords="196,56,348,83"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title="get the filename (last part) of a given path" alt="" coords="196,56,348,83"/>
 </map>

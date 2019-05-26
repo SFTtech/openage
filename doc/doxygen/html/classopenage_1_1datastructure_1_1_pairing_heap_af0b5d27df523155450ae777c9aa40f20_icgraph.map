@@ -1,5 +1,5 @@
 <map id="openage::datastructure::PairingHeap::root_insert" name="openage::datastructure::PairingHeap::root_insert">
-<area shape="rect" id="node1" title=" " alt="" coords="272,68,441,109"/>
-<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7" title=" " alt="" coords="5,5,224,76"/>
-<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" title=" " alt="" coords="5,100,224,171"/>
+<area shape="rect" id="node1" title="insert a node into the heap." alt="" coords="272,68,441,109"/>
+<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7" title="adds the given node to the heap." alt="" coords="5,5,224,76"/>
+<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" title="Unlink a node from the heap." alt="" coords="5,100,224,171"/>
 </map>

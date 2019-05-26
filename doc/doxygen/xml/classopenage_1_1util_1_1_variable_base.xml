@@ -37,9 +37,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>sets the type and value </para>
         </briefdescription>
         <detaileddescription>
-<para>sets the type and value </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -58,9 +58,9 @@
         <argsstring>() const</argsstring>
         <name>get</name>
         <briefdescription>
+<para>returns the stored value throws an exception if the template does not match the set type </para>
         </briefdescription>
         <detaileddescription>
-<para>returns the stored value throws an exception if the template does not match the set type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -70,9 +70,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A typed value holder. </para>
     </briefdescription>
     <detaileddescription>
-<para>A typed value holder </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6131">

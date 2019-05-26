@@ -1,4 +1,4 @@
 <map id="openage::rng::RNG::RNG" name="openage::rng::RNG::RNG">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,175,32"/>
-<area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a76d8d1e95491447e8b8ed7946ff4c695" title=" " alt="" coords="223,5,392,32"/>
+<area shape="rect" id="node1" title="Creates an rng and seeds it with the 64 bit seed." alt="" coords="5,5,175,32"/>
+<area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a76d8d1e95491447e8b8ed7946ff4c695" title="Seeds with the 64 bit seed." alt="" coords="223,5,392,32"/>
 </map>

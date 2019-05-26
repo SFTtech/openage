@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 415,-35 415,4 -4,4"/>
 <!-- Node15 -->
 <g id="node1" class="node"><title>Node15</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Get the number of uint64&#45;elements that result from converting a count&#45;sized uint8_t array.">
 <polygon fill="#bfbfbf" stroke="black" points="277,-6 277,-25 411,-25 411,-6 277,-6"/>
 <text text-anchor="middle" x="344" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array64_size</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node16 -->
 <g id="node2" class="node"><title>Node16</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a std::vector of uint64_t.">
 <polygon fill="white" stroke="black" points="136,-0.5 136,-30.5 241,-30.5 241,-0.5 136,-0.5"/>
 <text text-anchor="start" x="144" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="188.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array64</text>

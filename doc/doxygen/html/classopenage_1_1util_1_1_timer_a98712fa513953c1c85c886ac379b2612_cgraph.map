@@ -1,4 +1,4 @@
 <map id="openage::util::Timer::reset" name="openage::util::Timer::reset">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,141,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" title=" " alt="" coords="189,5,329,47"/>
+<area shape="rect" id="node1" title="resets the timer, in either stopped or running state." alt="" coords="5,5,141,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" title="returns a monotonically&#45;increasing time that returns the number of nanoseconds since an unspecified e..." alt="" coords="189,5,329,47"/>
 </map>

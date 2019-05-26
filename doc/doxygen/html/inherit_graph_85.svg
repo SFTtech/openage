@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 318,-73.5 318,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="classopenage_1_1error_1_1_backtrace.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="classopenage_1_1error_1_1_backtrace.xhtml" target="_top" xlink:title="Abstract class for objects that provide backtrave information through get_symbols().">
 <polygon fill="white" stroke="black" points="0,-28 0,-47 129,-47 129,-28 0,-28"/>
 <text text-anchor="middle" x="64.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Backtrace</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_stack_analyzer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_stack_analyzer.xhtml" target="_top" xlink:title="Implementation of the Backtrace interface that analyzes the current C++ stack.">
 <polygon fill="white" stroke="black" points="165,-50 165,-69 314,-69 314,-50 165,-50"/>
 <text text-anchor="middle" x="239.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::StackAnalyzer</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_py_exception_backtrace.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_py_exception_backtrace.xhtml" target="_top" xlink:title="An implementation of the abstract Backtrace class that does not collect Backtrace information itself,...">
 <polygon fill="white" stroke="black" points="178.5,-0.5 178.5,-30.5 300.5,-30.5 300.5,-0.5 178.5,-0.5"/>
 <text text-anchor="start" x="186.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="239.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyExceptionBacktrace</text>

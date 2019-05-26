@@ -1,4 +1,4 @@
 <map id="qtsdl::GuiSeparateRenderingContext::pre_render" name="qtsdl::GuiSeparateRenderingContext::pre_render">
-<area shape="rect" id="node1" title=" " alt="" coords="312,5,500,47"/>
+<area shape="rect" id="node1" title="Function that must be called before rendering the GUI." alt="" coords="312,5,500,47"/>
 <area shape="rect" id="node2" href="$classqtsdl_1_1_gui_separate_rendering_context.xhtml#a8b03edac1a66834ade0619cb8234f45c" title=" " alt="" coords="5,5,264,47"/>
 </map>

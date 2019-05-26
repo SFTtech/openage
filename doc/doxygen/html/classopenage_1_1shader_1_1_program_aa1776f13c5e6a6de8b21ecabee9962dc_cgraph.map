@@ -1,6 +1,6 @@
 <map id="openage::shader::Program::link" name="openage::shader::Program::link">
 <area shape="rect" id="node1" title=" " alt="" coords="5,39,180,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1shader_1_1_program.xhtml#ae0fd13dc3273cf93aa6330973c478e66" title=" " alt="" coords="228,5,403,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1shader_1_1_program.xhtml#ae0fd13dc3273cf93aa6330973c478e66" title="checks a given status for this program." alt="" coords="228,5,403,47"/>
 <area shape="rect" id="node4" href="$classopenage_1_1shader_1_1_program.xhtml#a922c3cba1c006ebbed9cf81261ed79bf" title=" " alt="" coords="228,71,403,112"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="705,13,816,39"/>
 <area shape="rect" id="node5" href="$classopenage_1_1shader_1_1_program.xhtml#a99b5e69d6cc3b17b942c5314c148731a" title=" " alt="" coords="451,64,625,105"/>

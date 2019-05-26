@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>engine</name>
         <briefdescription>
+<para>The engine this asset manager is attached to. </para>
         </briefdescription>
         <detaileddescription>
-<para>The engine this asset manager is attached to. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -26,9 +26,9 @@
         <argsstring></argsstring>
         <name>asset_path</name>
         <briefdescription>
+<para>The root directory for the available assets. </para>
         </briefdescription>
         <detaileddescription>
-<para>The root directory for the available assets. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -44,9 +44,9 @@
         <argsstring></argsstring>
         <name>missing_tex</name>
         <briefdescription>
+<para>The replacement texture for missing textures. </para>
         </briefdescription>
         <detaileddescription>
-<para>The replacement texture for missing textures. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -59,9 +59,9 @@
         <argsstring></argsstring>
         <name>textures</name>
         <briefdescription>
+<para>Map from texture filename to texture instance ptr. </para>
         </briefdescription>
         <detaileddescription>
-<para>Map from texture filename to texture instance ptr. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -109,9 +109,9 @@
         <argsstring>()</argsstring>
         <name>get_asset_dir</name>
         <briefdescription>
+<para>Return the path where assets are found in. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the path where assets are found in. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -131,9 +131,9 @@
           <declname>asset_dir</declname>
         </param>
         <briefdescription>
+<para>Set the asset search path. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the asset search path. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -152,9 +152,10 @@
           <declname>engine</declname>
         </param>
         <briefdescription>
+<para>Set the game engine of this asset manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the game engine of this asset manager. Called from QML. </para>
+<para>Called from QML. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -168,9 +169,9 @@
         <argsstring>() const</argsstring>
         <name>get_engine</name>
         <briefdescription>
+<para>Return the engine responsible for this asset manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the engine responsible for this asset manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -200,9 +201,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>Query the <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> for a given filename. </para>
         </briefdescription>
         <detaileddescription>
-<para>Query the <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> for a given filename.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>
@@ -246,9 +247,9 @@
         <argsstring>()</argsstring>
         <name>check_updates</name>
         <briefdescription>
+<para>Ask the kernel whether there were updates to watched files. </para>
         </briefdescription>
         <detaileddescription>
-<para>Ask the kernel whether there were updates to watched files. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -279,9 +280,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>Create an internal texture handle. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create an internal texture handle. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -300,9 +301,9 @@
         <argsstring>()</argsstring>
         <name>get_missing_tex</name>
         <briefdescription>
+<para>Retrieves the texture for missing textures. </para>
         </briefdescription>
         <detaileddescription>
-<para>Retrieves the texture for missing textures. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -334,9 +335,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Container class for all available assets. </para>
     </briefdescription>
     <detaileddescription>
-<para>Container class for all available assets. Responsible for loading, providing and updating requested files. </para>
+<para>Responsible for loading, providing and updating requested files. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="188">

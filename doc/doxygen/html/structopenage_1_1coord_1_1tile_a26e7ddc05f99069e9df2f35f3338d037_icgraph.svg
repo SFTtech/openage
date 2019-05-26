@@ -20,7 +20,7 @@
 </g>
 <!-- Node57 -->
 <g id="node2" class="node"><title>Node57</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title="how far is a point from the edge of this object">
 <polygon fill="white" stroke="black" points="0,-147.5 0,-177.5 119,-177.5 119,-147.5 0,-147.5"/>
 <text text-anchor="start" x="8" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="59.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_edge</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node58 -->
 <g id="node3" class="node"><title>Node58</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="white" stroke="black" points="0,-98.5 0,-128.5 119,-128.5 119,-98.5 0,-98.5"/>
 <text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="59.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node59 -->
 <g id="node4" class="node"><title>Node59</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" target="_top" xlink:title="get a position on the edge of this object">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 119,-79.5 119,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="59.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_edge</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 261,-35 261,4 -4,4"/>
 <!-- Node193 -->
 <g id="node1" class="node"><title>Node193</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Wrapping a function call with ignore_result makes it more clear to readers, compilers and linters tha...">
 <polygon fill="#bfbfbf" stroke="black" points="153,-0.5 153,-30.5 257,-30.5 257,-0.5 153,-0.5"/>
 <text text-anchor="start" x="161" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ignore</text>
 <text text-anchor="middle" x="205" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_result</text>

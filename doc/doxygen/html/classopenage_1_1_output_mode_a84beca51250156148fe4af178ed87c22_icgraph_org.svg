@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-182 611,-182 611,4 -4,4"/>
 <!-- Node55 -->
 <g id="node1" class="node"><title>Node55</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Called when switching to this mode.">
 <polygon fill="#bfbfbf" stroke="black" points="494,-73.5 494,-103.5 607,-103.5 607,-73.5 494,-73.5"/>
 <text text-anchor="start" x="502" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="550.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_enter</text>

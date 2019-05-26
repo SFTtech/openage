@@ -20,7 +20,7 @@
 </g>
 <!-- Node11 -->
 <g id="node2" class="node"><title>Node11</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title="returns attribute based on templated value">
 <polygon fill="white" stroke="black" points="146,-0.5 146,-30.5 242,-30.5 242,-0.5 146,-0.5"/>
 <text text-anchor="start" x="154" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::get</text>
 <text text-anchor="middle" x="194" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node12 -->
 <g id="node3" class="node"><title>Node12</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title="Get the attribute based on the type.">
 <polygon fill="white" stroke="black" points="278,-6 278,-25 399,-25 399,-6 278,-6"/>
 <text text-anchor="middle" x="338.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::get</text>
 </a>

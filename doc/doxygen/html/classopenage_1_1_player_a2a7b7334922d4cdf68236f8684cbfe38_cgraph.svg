@@ -57,7 +57,7 @@ var sectionId = 'dynsection-28';
 <polygon fill="white" stroke="none" points="-4,4 -4,-211 652,-211 652,4 -4,4"/>
 <!-- Node198 -->
 <g id="node1" class="node"><title>Node198</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Called when the resources amounts change.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-107.5 0,-137.5 104,-137.5 104,-107.5 0,-107.5"/>
 <text text-anchor="start" x="8" y="-125.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::on</text>
 <text text-anchor="middle" x="52" y="-114.5" font-family="Helvetica,sans-Serif" font-size="10.00">_resources_change</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-28';
 </g>
 <!-- Node202 -->
 <g id="node5" class="node"><title>Node202</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title="Updates resource based sub&#45;scores.">
 <polygon fill="white" stroke="black" points="145.5,-63.5 145.5,-93.5 265.5,-93.5 265.5,-63.5 145.5,-63.5"/>
 <text text-anchor="start" x="153.5" y="-81.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score::update</text>
 <text text-anchor="middle" x="205.5" y="-70.5" font-family="Helvetica,sans-Serif" font-size="10.00">_resources</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-28';
 </g>
 <!-- Node204 -->
 <g id="node7" class="node"><title>Node204</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title="Returns the sum of all the resources.">
 <polygon fill="white" stroke="black" points="307,-50 307,-69 462,-69 462,-50 307,-50"/>
 <text text-anchor="middle" x="384.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle::sum</text>
 </a>

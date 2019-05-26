@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-497 143,-497 143,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="creates projectiles">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-167.5 139,-167.5 139,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="69.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ProjectileProducer</text>
 <polyline fill="none" stroke="black" points="0,-148.5 139,-148.5 "/>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_type.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_type.xhtml" target="_top" xlink:title="units in aoc have a class and a type">
 <polygon fill="white" stroke="black" points="19.5,-204.5 19.5,-492.5 119.5,-492.5 119.5,-204.5 19.5,-204.5"/>
 <text text-anchor="middle" x="69.5" y="-480.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType</text>
 <polyline fill="none" stroke="black" points="19.5,-473.5 119.5,-473.5 "/>

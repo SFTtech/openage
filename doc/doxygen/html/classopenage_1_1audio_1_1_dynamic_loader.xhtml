@@ -98,43 +98,53 @@ $(document).ready(function(){initNavTree('classopenage_1_1audio_1_1_dynamic_load
 </div><!--header-->
 <div class="contents">
 
+<p>A <a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml" title="A DynamicLoader loads pcm chunks without loading the whole resource.">DynamicLoader</a> loads pcm chunks without loading the whole resource.  
+ <a href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dynamic__loader_8h_source.xhtml">dynamic_loader.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::audio::DynamicLoader:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_dynamic_loader__inherit__graph.svg" width="219" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_dynamic_loader__inherit__graph.svg" width="219" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::audio::DynamicLoader:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_dynamic_loader__coll__graph.svg" width="219" height="448"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_dynamic_loader__coll__graph.svg" width="219" height="448"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afdb9c0cccf9847bd0dfddf24a5f93bc4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#afdb9c0cccf9847bd0dfddf24a5f93bc4">DynamicLoader</a> (const <a class="el" href="classopenage_1_1util_1_1_path.xhtml">util::Path</a> &amp;<a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">path</a>)</td></tr>
+<tr class="memdesc:afdb9c0cccf9847bd0dfddf24a5f93bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new <a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml" title="A DynamicLoader loads pcm chunks without loading the whole resource.">DynamicLoader</a>.  <a href="#afdb9c0cccf9847bd0dfddf24a5f93bc4">More...</a><br /></td></tr>
 <tr class="separator:afdb9c0cccf9847bd0dfddf24a5f93bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ac5107750260ef94cdbdc753c238e4c"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a1ac5107750260ef94cdbdc753c238e4c">~DynamicLoader</a> ()=default</td></tr>
 <tr class="separator:a1ac5107750260ef94cdbdc753c238e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b691e2596c617e3ccbd0bc6595109db"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a3b691e2596c617e3ccbd0bc6595109db">load_chunk</a> (int16_t *chunk_buffer, size_t offset, size_t <a class="el" href="namespaceopenage.xhtml#a56cc6de59321c74676f145eecf8a8ac9">chunk_size</a>)=0</td></tr>
+<tr class="memdesc:a3b691e2596c617e3ccbd0bc6595109db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a chunk of stereo pcm data from the resource.  <a href="#a3b691e2596c617e3ccbd0bc6595109db">More...</a><br /></td></tr>
 <tr class="separator:a3b691e2596c617e3ccbd0bc6595109db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a112547e0d5b12a174840c036b80b9aad"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml">DynamicLoader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a112547e0d5b12a174840c036b80b9aad">create</a> (const <a class="el" href="classopenage_1_1util_1_1_path.xhtml">util::Path</a> &amp;<a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">path</a>, <a class="el" href="namespaceopenage_1_1audio.xhtml#a6c4cc7d963b9dece05e3b8052a6cb6db">format_t</a> format)</td></tr>
+<tr class="memdesc:a112547e0d5b12a174840c036b80b9aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml" title="A DynamicLoader loads pcm chunks without loading the whole resource.">DynamicLoader</a> instance that supports the given format.  <a href="#a112547e0d5b12a174840c036b80b9aad">More...</a><br /></td></tr>
 <tr class="separator:a112547e0d5b12a174840c036b80b9aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a527295cdc13c4a680af0ef0c022979f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1util_1_1_path.xhtml">util::Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">path</a></td></tr>
+<tr class="memdesc:a527295cdc13c4a680af0ef0c022979f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the resource's location in the filesystem  <a href="#a527295cdc13c4a680af0ef0c022979f2">More...</a><br /></td></tr>
 <tr class="separator:a527295cdc13c4a680af0ef0c022979f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml">DynamicLoader</a> loads pcm chunks without loading the whole resource. A chunk is a int16_t buffer with a fixed size that contains 16 bit signed integer pcm data. </p>
+<div class="textblock"><p>A <a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml" title="A DynamicLoader loads pcm chunks without loading the whole resource.">DynamicLoader</a> loads pcm chunks without loading the whole resource. </p>
+<p>A chunk is a int16_t buffer with a fixed size that contains 16 bit signed integer pcm data. </p>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__loader_8h_source.xhtml#l00021">21</a> of file <a class="el" href="dynamic__loader_8h_source.xhtml">dynamic_loader.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -153,7 +163,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes a new <a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml">DynamicLoader</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Initializes a new <a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml" title="A DynamicLoader loads pcm chunks without loading the whole resource.">DynamicLoader</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>the resource's location in the filesystem </td></tr>
   </table>
@@ -161,7 +173,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__loader_8cpp_source.xhtml#l00012">12</a> of file <a class="el" href="dynamic__loader_8cpp_source.xhtml">dynamic_loader.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    :</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">path</a>{<a class="code" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">path</a>} {}</div><div class="ttc" id="classopenage_1_1audio_1_1_dynamic_loader_xhtml_a527295cdc13c4a680af0ef0c022979f2"><div class="ttname"><a href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">openage::audio::DynamicLoader::path</a></div><div class="ttdeci">util::Path path</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__loader_8h_source.xhtml#l00026">dynamic_loader.h:26</a></div></div>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    :</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">path</a>{<a class="code" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">path</a>} {}</div><div class="ttc" id="classopenage_1_1audio_1_1_dynamic_loader_xhtml_a527295cdc13c4a680af0ef0c022979f2"><div class="ttname"><a href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">openage::audio::DynamicLoader::path</a></div><div class="ttdeci">util::Path path</div><div class="ttdoc">the resource's location in the filesystem</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__loader_8h_source.xhtml#l00026">dynamic_loader.h:26</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dynamic__loader_8h_source.xhtml#l00026">path</a>.</p>
 
@@ -226,7 +238,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Creates a <a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml">DynamicLoader</a> instance that supports the given format. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Creates a <a class="el" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml" title="A DynamicLoader loads pcm chunks without loading the whole resource.">DynamicLoader</a> instance that supports the given format. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>the resource's location in the filesystem </td></tr>
     <tr><td class="paramname">format</td><td>the resource's audio format </td></tr>
@@ -236,7 +250,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__loader_8cpp_source.xhtml#l00017">17</a> of file <a class="el" href="dynamic__loader_8cpp_source.xhtml">dynamic_loader.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                                                      {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::unique_ptr&lt;DynamicLoader&gt; loader;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">switch</span> (format) {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespaceopenage_1_1audio.xhtml#a6c4cc7d963b9dece05e3b8052a6cb6dba4c2223596711a6a941bc19e8067ceef9">format_t::OPUS</a>:</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        loader = std::make_unique&lt;OpusDynamicLoader&gt;(<a class="code" href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">path</a>);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">break</span>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">default</span>:</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">throw</span> audio::Error{</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a> &lt;&lt; <span class="stringliteral">&quot;No dynamic audio loader for format supported: &quot;</span> &lt;&lt; format</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        };</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> loader;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a735563036dced0b7d6cc98f97ea4978b"><div class="ttname"><a href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a></div><div class="ttdeci">#define ERR</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00179">message.h:179</a></div></div>
-<div class="ttc" id="classopenage_1_1audio_1_1_dynamic_loader_xhtml_a527295cdc13c4a680af0ef0c022979f2"><div class="ttname"><a href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">openage::audio::DynamicLoader::path</a></div><div class="ttdeci">util::Path path</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__loader_8h_source.xhtml#l00026">dynamic_loader.h:26</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_dynamic_loader_xhtml_a527295cdc13c4a680af0ef0c022979f2"><div class="ttname"><a href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a527295cdc13c4a680af0ef0c022979f2">openage::audio::DynamicLoader::path</a></div><div class="ttdeci">util::Path path</div><div class="ttdoc">the resource's location in the filesystem</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__loader_8h_source.xhtml#l00026">dynamic_loader.h:26</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1audio_xhtml_a6c4cc7d963b9dece05e3b8052a6cb6dba4c2223596711a6a941bc19e8067ceef9"><div class="ttname"><a href="namespaceopenage_1_1audio.xhtml#a6c4cc7d963b9dece05e3b8052a6cb6dba4c2223596711a6a941bc19e8067ceef9">openage::audio::format_t::OPUS</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="message_8h_source.xhtml#l00179">ERR</a>, <a class="el" href="namespaceopenage_1_1audio.xhtml#a6c4cc7d963b9dece05e3b8052a6cb6dba4c2223596711a6a941bc19e8067ceef9">openage::audio::OPUS</a>, and <a class="el" href="dynamic__loader_8h_source.xhtml#l00026">path</a>.</p>
@@ -247,7 +261,8 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_dynamic_loader_a112547e0d5b12a174840c036b80b9aad_icgraph.svg" width="520" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_dynamic_loader_a112547e0d5b12a174840c036b80b9aad_icgraph.svg" width="520" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -291,7 +306,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Loads a chunk of stereo pcm data from the resource. The chunk of data begins at the given offset from the beginning of the resource. The actual read number of int16_t values is returned. </p><dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000001">Todo:</a></b></dt><dd>Returns zero if the end of resource is reached.</dd></dl>
+
+<p>Loads a chunk of stereo pcm data from the resource. </p>
+<p>The chunk of data begins at the given offset from the beginning of the resource. The actual read number of int16_t values is returned. </p><dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000001">Todo:</a></b></dt><dd>Returns zero if the end of resource is reached.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">chunk_buffer</td><td>the buffer to save the chunk into </td></tr>
@@ -325,6 +342,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>the resource's location in the filesystem </p>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__loader_8h_source.xhtml#l00026">26</a> of file <a class="el" href="dynamic__loader_8h_source.xhtml">dynamic_loader.h</a>.</p>

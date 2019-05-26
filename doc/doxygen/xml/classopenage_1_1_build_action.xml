@@ -102,9 +102,9 @@
           <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
         </param>
         <briefdescription>
+<para>Control units action when in range of the target. </para>
         </briefdescription>
         <detaileddescription>
-<para>Control units action when in range of the target </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -162,9 +162,9 @@
         <name>on_completion</name>
         <reimplements refid="classopenage_1_1_target_action_1ac489c70f995ea358f685676e403df8cc">on_completion</reimplements>
         <briefdescription>
+<para>action to perform when popped from a units action stack </para>
         </briefdescription>
         <detaileddescription>
-<para>action to perform when popped from a units action stack </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -191,9 +191,9 @@
         <name>name</name>
         <reimplements refid="classopenage_1_1_target_action_1ab57d1777fed0ced4ee1e6788ee5e445d">name</reimplements>
         <briefdescription>
+<para>debug string to identify action types </para>
         </briefdescription>
         <detaileddescription>
-<para>debug string to identify action types </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -218,9 +218,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>builds a building </para>
     </briefdescription>
     <detaileddescription>
-<para>builds a building </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="587">

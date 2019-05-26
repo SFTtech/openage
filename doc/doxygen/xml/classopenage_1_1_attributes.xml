@@ -47,9 +47,9 @@
           <declname>attr</declname>
         </param>
         <briefdescription>
+<para>Add an attribute or replace any attribute of the same type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Add an attribute or replace any attribute of the same type. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -69,9 +69,9 @@
           <declname>attrs</declname>
         </param>
         <briefdescription>
+<para>Add copies of all the attributes from the given <ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Add copies of all the attributes from the given <ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -97,9 +97,10 @@
           <declname>unshared</declname>
         </param>
         <briefdescription>
+<para>Add copies of all the attributes from the given <ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Add copies of all the attributes from the given <ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref>. If shared is false, shared attributes are ignored. If unshared is false, unshared attributes are ignored. </para>
+<para>If shared is false, shared attributes are ignored. If unshared is false, unshared attributes are ignored. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -117,9 +118,9 @@
           <declname>type</declname>
         </param>
         <briefdescription>
+<para>Remove an attribute based on the type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Remove an attribute based on the type. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -136,9 +137,9 @@
           <declname>type</declname>
         </param>
         <briefdescription>
+<para>Check if the attribute of the given type exists. </para>
         </briefdescription>
         <detaileddescription>
-<para>Check if the attribute of the given type exists. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -157,9 +158,9 @@
           <declname>type</declname>
         </param>
         <briefdescription>
+<para>Get the attribute based on the type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the attribute based on the type. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -181,9 +182,9 @@
         <argsstring>() const</argsstring>
         <name>get</name>
         <briefdescription>
+<para>Get the attribute. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the attribute </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -192,9 +193,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Contains a group of attributes. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains a group of attributes. Can contain only one attribute of each type. </para>
+<para>Can contain only one attribute of each type. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="459">

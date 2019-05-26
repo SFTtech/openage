@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-475 452,-475 452,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="superclass for handling a window resize event.">
 <polygon fill="#bfbfbf" stroke="black" points="154,-402.5 154,-470.5 276,-470.5 276,-402.5 154,-402.5"/>
 <text text-anchor="middle" x="215" y="-458.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResizeHandler</text>
 <polyline fill="none" stroke="black" points="154,-451.5 276,-451.5 "/>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml" target="_top" xlink:title="main engine container.">
 <polygon fill="white" stroke="black" points="152.5,-0.5 152.5,-365.5 277.5,-365.5 277.5,-0.5 152.5,-0.5"/>
 <text text-anchor="middle" x="215" y="-353.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine</text>
 <polyline fill="none" stroke="black" points="152.5,-346.5 277.5,-346.5 "/>
@@ -151,7 +151,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1gui_1_1_g_u_i.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1gui_1_1_g_u_i.xhtml" target="_top" xlink:title="Main entry point for the openage Qt&#45;based user interface.">
 <polygon fill="white" stroke="black" points="296,-55.5 296,-310.5 448,-310.5 448,-55.5 296,-55.5"/>
 <text text-anchor="middle" x="372" y="-298.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GUI</text>
 <polyline fill="none" stroke="black" points="296,-291.5 448,-291.5 "/>

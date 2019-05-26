@@ -6,5 +6,5 @@
 <area shape="rect" id="node8" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="665,1533,965,1771"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml" title=" " alt="" coords="381,1004,592,1463"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="5,497,213,912"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="5,5,213,420"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title="Bitstream that is stored in 16&#45;bit little&#45;endian numbers." alt="" coords="5,5,213,420"/>
 </map>

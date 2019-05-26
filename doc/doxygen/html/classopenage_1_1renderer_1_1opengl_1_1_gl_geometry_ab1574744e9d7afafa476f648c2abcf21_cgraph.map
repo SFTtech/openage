@@ -1,5 +1,5 @@
 <map id="openage::renderer::opengl::GlGeometry::update_verts_offset" name="openage::renderer::opengl::GlGeometry::update_verts_offset">
-<area shape="rect" id="node1" title=" " alt="" coords="5,20,152,76"/>
+<area shape="rect" id="node1" title="In a meshed geometry, updates the vertex data starting from the offset&#45;th vertex." alt="" coords="5,20,152,76"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="213,5,324,32"/>
 <area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1_geometry.xhtml#af798beba5997d99d6cd882ac4451cc25" title="Returns the type of this geometry." alt="" coords="200,57,337,98"/>
 </map>

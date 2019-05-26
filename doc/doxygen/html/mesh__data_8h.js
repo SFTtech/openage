@@ -25,6 +25,6 @@ var mesh__data_8h =
       [ "TRIANGLE_STRIP", "mesh__data_8h.xhtml#a3d2603af7637716eccfdfa718f01bcb7a708de017e3b83ccba21dfc9f6367d46f", null ],
       [ "TRIANGLE_FAN", "mesh__data_8h.xhtml#a3d2603af7637716eccfdfa718f01bcb7aa9f047dff7e4cd4d8d3bdeafc4029d47", null ]
     ] ],
-    [ "vertex_input_count", "mesh__data_8h.xhtml#ae21e0e1ee561f05a999f3f4f680ea2af", null ],
+    [ "vertex_input_count", "mesh__data_8h.xhtml#ae2c96fa36c9fe77b871ff86b3fedc4b2", null ],
     [ "vertex_input_size", "mesh__data_8h.xhtml#a11c3247d50ab63967293c59f92c47368", null ]
 ];

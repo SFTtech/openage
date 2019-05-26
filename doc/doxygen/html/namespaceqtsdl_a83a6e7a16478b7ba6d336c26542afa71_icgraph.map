@@ -1,5 +1,5 @@
 <map id="qtsdl::unwrap_if_can" name="qtsdl::unwrap_if_can">
 <area shape="rect" id="node1" title=" " alt="" coords="235,67,375,94"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173" title=" " alt="" coords="5,5,187,76"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774" title=" " alt="" coords="19,100,173,141"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173" title="Static QML properties assignments during the init phase are stored for a batch assignment at the end ..." alt="" coords="5,5,187,76"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774" title="Invoke a function in the logic thread (the thread of the core of this object)." alt="" coords="19,100,173,141"/>
 </map>

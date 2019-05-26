@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-662 212,-662 212,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="(Quite) efficient heap implementation.">
 <polygon fill="#bfbfbf" stroke="black" points="14,-369.5 14,-657.5 150,-657.5 150,-369.5 14,-369.5"/>
 <text text-anchor="start" x="22" y="-645.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="22" y="-634.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap&lt; T, compare,</text>

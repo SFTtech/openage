@@ -72,9 +72,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Internal container to access all data and metadata. </para>
     </briefdescription>
     <detaileddescription>
-<para>Internal container to access all data and metadata </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="1913">

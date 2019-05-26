@@ -11,9 +11,10 @@
         <argsstring></argsstring>
         <name>position</name>
         <briefdescription>
+<para>The tile position this node is associated to. </para>
         </briefdescription>
         <detaileddescription>
-<para>The tile position this node is associated to. <xrefsect id="todo_1_todo000026"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
+<para><xrefsect id="todo_1_todo000026"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -56,9 +57,9 @@
         <argsstring></argsstring>
         <name>future_cost</name>
         <briefdescription>
+<para>Future cost estimation value for this node. </para>
         </briefdescription>
         <detaileddescription>
-<para>Future cost estimation value for this node. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -71,9 +72,10 @@
         <argsstring></argsstring>
         <name>past_cost</name>
         <briefdescription>
+<para>Evaluated past cost value for the node. </para>
         </briefdescription>
         <detaileddescription>
-<para>Evaluated past cost value for the node. This stores the actual cost from start to this node. </para>
+<para>This stores the actual cost from start to this node. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -85,9 +87,10 @@
         <argsstring></argsstring>
         <name>heuristic_cost</name>
         <briefdescription>
+<para>Heuristic cost cache. </para>
         </briefdescription>
         <detaileddescription>
-<para>Heuristic cost cache. Calculated once, is the heuristic distance from this node to the goal. </para>
+<para>Calculated once, is the heuristic distance from this node to the goal. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -100,9 +103,9 @@
         <name>accessible</name>
         <initializer>= false</initializer>
         <briefdescription>
+<para>Can this node be passed? </para>
         </briefdescription>
         <detaileddescription>
-<para>Can this node be passed? </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -115,9 +118,9 @@
         <name>visited</name>
         <initializer>= false</initializer>
         <briefdescription>
+<para>Has this <ref refid="classopenage_1_1path_1_1_node" kindref="compound">Node</ref> been visited? </para>
         </briefdescription>
         <detaileddescription>
-<para>Has this <ref refid="classopenage_1_1path_1_1_node" kindref="compound">Node</ref> been visited? </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -130,9 +133,9 @@
         <name>was_best</name>
         <initializer>= false</initializer>
         <briefdescription>
+<para>Does this node already have an alternative path? If the node was once selected as the best next hop, this is set to true. </para>
         </briefdescription>
         <detaileddescription>
-<para>Does this node already have an alternative path? If the node was once selected as the best next hop, this is set to true. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -144,9 +147,10 @@
         <argsstring></argsstring>
         <name>factor</name>
         <briefdescription>
+<para>Factor to adjust movement cost. </para>
         </briefdescription>
         <detaileddescription>
-<para>Factor to adjust movement cost. default: 1 </para>
+<para>default: 1 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -159,9 +163,9 @@
         <argsstring></argsstring>
         <name>path_predecessor</name>
         <briefdescription>
+<para><ref refid="classopenage_1_1path_1_1_node" kindref="compound">Node</ref> where this one was reached by least cost. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1path_1_1_node" kindref="compound">Node</ref> where this one was reached by least cost. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -174,9 +178,9 @@
         <argsstring></argsstring>
         <name>heap_node</name>
         <briefdescription>
+<para>Priority queue node that contains this path node. </para>
         </briefdescription>
         <detaileddescription>
-<para>Priority queue node that contains this path node. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -245,9 +249,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Orders nodes according to their future cost value. </para>
         </briefdescription>
         <detaileddescription>
-<para>Orders nodes according to their future cost value. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -264,9 +268,10 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Compare the node to another one. </para>
         </briefdescription>
         <detaileddescription>
-<para>Compare the node to another one. They are the same if their position is. </para>
+<para>They are the same if their position is. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -283,9 +288,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Calculates the actual movement cose to another node. </para>
         </briefdescription>
         <detaileddescription>
-<para>Calculates the actual movement cose to another node. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -299,9 +304,9 @@
         <argsstring>()</argsstring>
         <name>generate_backtrace</name>
         <briefdescription>
+<para>Create a backtrace path beginning at this node. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a backtrace path beginning at this node. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -323,9 +328,9 @@
           <defval>1.0f</defval>
         </param>
         <briefdescription>
+<para>Get all neighbors of this graph node. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get all neighbors of this graph node. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -335,9 +340,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>One navigation waypoint in a path. </para>
     </briefdescription>
     <detaileddescription>
-<para>One navigation waypoint in a path. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4421">

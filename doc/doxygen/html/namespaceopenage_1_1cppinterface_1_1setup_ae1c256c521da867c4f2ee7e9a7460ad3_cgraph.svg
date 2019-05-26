@@ -65,7 +65,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" target="_top" xlink:title="Checks whether all objects that have been registered via add_py_if_component have been properly initi...">
 <polygon fill="white" stroke="black" points="199,-52 199,-82 306,-82 306,-52 199,-52"/>
 <text text-anchor="start" x="207" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="252.5" y="-59" font-family="Helvetica,sans-Serif" font-size="10.00">::check</text>
@@ -105,7 +105,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8" target="_top" xlink:title="Returns the (demangled) symbol name for a given address.">
 <polygon fill="white" stroke="black" points="342,-38.5 342,-57.5 481,-57.5 481,-38.5 342,-38.5"/>
 <text text-anchor="middle" x="411.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::symbol_name</text>
 </a>
@@ -132,7 +132,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" target="_top" xlink:title="printf&#45;style to&#45;string formatting.">
 <polygon fill="white" stroke="black" points="690.5,-60.5 690.5,-79.5 800.5,-79.5 800.5,-60.5 690.5,-60.5"/>
 <text text-anchor="middle" x="745.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::sformat</text>
 </a>
@@ -145,7 +145,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title="Demangles a symbol name.">
 <polygon fill="white" stroke="black" points="517,-0.5 517,-19.5 637,-19.5 637,-0.5 517,-0.5"/>
 <text text-anchor="middle" x="577" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::demangle</text>
 </a>
@@ -163,7 +163,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="854,-60.5 854,-79.5 968,-79.5 968,-60.5 854,-60.5"/>
 <text text-anchor="middle" x="911" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>
@@ -189,7 +189,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node9 -->
 <g id="node10" class="node"><title>Node9</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="863.5,-0.5 863.5,-19.5 958.5,-19.5 958.5,-0.5 863.5,-0.5"/>
 <text text-anchor="middle" x="911" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

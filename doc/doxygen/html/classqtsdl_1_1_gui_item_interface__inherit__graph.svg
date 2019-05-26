@@ -105,7 +105,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="white" stroke="black" points="144,-405.5 144,-539.5 282,-539.5 282,-405.5 144,-405.5"/>
 <text text-anchor="middle" x="213" y="-527.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="144,-520.5 282,-520.5 "/>

@@ -34,7 +34,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title="Returns the cost.">
 <polygon fill="white" stroke="black" points="326,-93.5 326,-112.5 466,-112.5 466,-93.5 326,-93.5"/>
 <text text-anchor="middle" x="396" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceCost::get</text>
 </a>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title="places hovering building">
 <polygon fill="white" stroke="black" points="165.5,-176 165.5,-206 276.5,-206 276.5,-176 165.5,-176"/>
 <text text-anchor="start" x="173.5" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="221" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">::place_selection</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" target="_top" xlink:title="Check if the player can make a new unit of the given type.">
 <polygon fill="white" stroke="black" points="152,-137.5 152,-156.5 290,-156.5 290,-137.5 152,-137.5"/>
 <text text-anchor="middle" x="221" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::can_make</text>
 </a>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node7 -->
 <g id="node7" class="node"><title>Node7</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" target="_top" xlink:title="Called when a unit is created and active.">
 <polygon fill="white" stroke="black" points="162,-88 162,-118 280,-118 280,-88 162,-88"/>
 <text text-anchor="start" x="170" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::active</text>
 <text text-anchor="middle" x="221" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_added</text>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node8 -->
 <g id="node8" class="node"><title>Node8</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" target="_top" xlink:title="Called when a unit is destroyed.">
 <polygon fill="white" stroke="black" points="162,-39 162,-69 280,-69 280,-39 162,-39"/>
 <text text-anchor="start" x="170" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::active</text>
 <text text-anchor="middle" x="221" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_removed</text>
@@ -102,7 +102,7 @@
 </g>
 <!-- Node9 -->
 <g id="node9" class="node"><title>Node9</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_player.xhtml#a2d3f269dc4b0acd1972e4d0a32f97c2f" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_player.xhtml#a2d3f269dc4b0acd1972e4d0a32f97c2f" target="_top" xlink:title="Called when a unit is killed by this player.">
 <polygon fill="white" stroke="black" points="152.5,-0.5 152.5,-19.5 289.5,-19.5 289.5,-0.5 152.5,-0.5"/>
 <text text-anchor="middle" x="221" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::killed_unit</text>
 </a>
@@ -115,7 +115,7 @@
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-176 0,-206 116,-206 116,-176 0,-176"/>
 <text text-anchor="start" x="8" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

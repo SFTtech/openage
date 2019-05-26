@@ -1,4 +1,4 @@
 <map id="openage::pyinterface::PyExceptionBacktrace" name="openage::pyinterface::PyExceptionBacktrace">
-<area shape="rect" id="node1" title=" " alt="" coords="5,175,180,281"/>
-<area shape="rect" id="node2" href="$classopenage_1_1error_1_1_backtrace.xhtml" title=" " alt="" coords="7,5,179,127"/>
+<area shape="rect" id="node1" title="An implementation of the abstract Backtrace class that does not collect Backtrace information itself,..." alt="" coords="5,175,180,281"/>
+<area shape="rect" id="node2" href="$classopenage_1_1error_1_1_backtrace.xhtml" title="Abstract class for objects that provide backtrave information through get_symbols()." alt="" coords="7,5,179,127"/>
 </map>

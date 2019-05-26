@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-264 272,-264 272,4 -4,4"/>
 <!-- Node11 -->
 <g id="node1" class="node"><title>Node11</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Uploads the provided data into the GPU texture storage.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-120.5 0,-161.5 104,-161.5 104,-120.5 0,-120.5"/>
 <text text-anchor="start" x="8" y="-149.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="8" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlTexture2d</text>
@@ -79,7 +79,7 @@
 </g>
 <!-- Node16 -->
 <g id="node6" class="node"><title>Node16</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" target="_top" xlink:title="Returns the dimensions of the whole texture bitmap.">
 <polygon fill="white" stroke="black" points="142.5,-0.5 142.5,-41.5 265.5,-41.5 265.5,-0.5 142.5,-0.5"/>
 <text text-anchor="start" x="150.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="150.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>

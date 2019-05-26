@@ -1,4 +1,4 @@
 <map id="openage::Terrain" name="openage::Terrain">
-<area shape="rect" id="node1" title=" " alt="" coords="27,233,173,472"/>
-<area shape="rect" id="node2" href="$structopenage_1_1terrain__meta.xhtml" title=" " alt="" coords="5,5,195,171"/>
+<area shape="rect" id="node1" title="the terrain class is the main top&#45;management interface for dealing with cost&#45;benefit analysis to maxi..." alt="" coords="27,233,173,472"/>
+<area shape="rect" id="node2" href="$structopenage_1_1terrain__meta.xhtml" title="specification for all available tile types and blending data" alt="" coords="5,5,195,171"/>
 </map>

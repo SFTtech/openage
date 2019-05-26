@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-420 156,-420 156,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A texture array, where individual elements are 2D textures.">
 <polygon fill="#bfbfbf" stroke="black" points="24,-0.5 24,-101.5 128,-101.5 128,-0.5 24,-0.5"/>
 <text text-anchor="start" x="32" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="76" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">Texture2dArray</text>
@@ -27,7 +27,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml" target="_top" xlink:title="Contains information about a 2D texture surface, without actual texture data.">
 <polygon fill="white" stroke="black" points="0,-149.5 0,-415.5 152,-415.5 152,-149.5 0,-149.5"/>
 <text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="76" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>

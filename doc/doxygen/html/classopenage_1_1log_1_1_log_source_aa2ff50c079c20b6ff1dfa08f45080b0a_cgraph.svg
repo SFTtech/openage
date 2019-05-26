@@ -20,7 +20,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a10cb7dc55a04eb782bbed1d4dbc688bf" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a10cb7dc55a04eb782bbed1d4dbc688bf" target="_top" xlink:title="Provides unique logger ids.">
 <polygon fill="white" stroke="black" points="161,-0.5 161,-30.5 286,-30.5 286,-0.5 161,-0.5"/>
 <text text-anchor="start" x="169" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource</text>
 <text text-anchor="middle" x="223.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_unique_logger_id</text>

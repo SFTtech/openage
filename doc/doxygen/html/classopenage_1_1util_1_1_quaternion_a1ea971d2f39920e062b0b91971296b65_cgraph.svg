@@ -57,7 +57,7 @@ var sectionId = 'dynsection-22';
 <polygon fill="white" stroke="none" points="-4,4 -4,-67.5 632,-67.5 632,4 -4,4"/>
 <!-- Node94 -->
 <g id="node1" class="node"><title>Node94</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Ensure that the quaternion&#39;s length equals 1.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-19.5 0,-49.5 125,-49.5 125,-19.5 0,-19.5"/>
 <text text-anchor="start" x="8" y="-37.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="62.5" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalize</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node95 -->
 <g id="node2" class="node"><title>Node95</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" target="_top" xlink:title="Calculate the length of the quaternion.">
 <polygon fill="white" stroke="black" points="161,-19.5 161,-49.5 286,-49.5 286,-19.5 161,-19.5"/>
 <text text-anchor="start" x="169" y="-37.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="223.5" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">::norm</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node96 -->
 <g id="node3" class="node"><title>Node96</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" target="_top" xlink:title="Perform a dot product with another quaternion.">
 <polygon fill="white" stroke="black" points="322,-44 322,-63 467,-63 467,-44 322,-44"/>
 <text text-anchor="middle" x="394.5" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion::dot</text>
 </a>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-172 108,-172 108,4 -4,4"/>
 <!-- Node14 -->
 <g id="node1" class="node"><title>Node14</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Abilities create an action when given a target some abilities target positions such as moving or patr...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-167.5 104,-167.5 104,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="52" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAbility</text>
 <polyline fill="none" stroke="black" points="0,-148.5 104,-148.5 "/>

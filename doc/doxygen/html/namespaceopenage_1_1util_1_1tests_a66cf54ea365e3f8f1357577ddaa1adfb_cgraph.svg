@@ -79,7 +79,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node24 -->
 <g id="node4" class="node"><title>Node24</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="307.5,-503.5 307.5,-533.5 432.5,-533.5 432.5,-503.5 307.5,-503.5"/>
 <text text-anchor="start" x="315.5" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="370" y="-510.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node25 -->
 <g id="node5" class="node"><title>Node25</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title="Factory function to get a fixed&#45;point number from a double.">
 <polygon fill="white" stroke="black" points="136,-421.5 136,-451.5 261,-451.5 261,-421.5 136,-421.5"/>
 <text text-anchor="start" x="144" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="198.5" y="-428.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_double</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node26 -->
 <g id="node6" class="node"><title>Node26</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a7cc8c2bd1dad2337630abf6f6e42aef3" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a7cc8c2bd1dad2337630abf6f6e42aef3" target="_top" xlink:title="Factory function to get a fixed&#45;point number from a float.">
 <polygon fill="white" stroke="black" points="136,-372.5 136,-402.5 261,-402.5 261,-372.5 136,-372.5"/>
 <text text-anchor="start" x="144" y="-390.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="198.5" y="-379.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_float</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node27 -->
 <g id="node7" class="node"><title>Node27</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" target="_top" xlink:title="Factory function to get a fixed&#45;point number from an integer.">
 <polygon fill="white" stroke="black" points="136,-323.5 136,-353.5 261,-353.5 261,-323.5 136,-323.5"/>
 <text text-anchor="start" x="144" y="-341.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="198.5" y="-330.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_int</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node28 -->
 <g id="node8" class="node"><title>Node28</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a41ce8a71883f18088e7876aa8e2600e4" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a41ce8a71883f18088e7876aa8e2600e4" target="_top" xlink:title="Converter to retrieve the fractional (post&#45;decimal) part of the number.">
 <polygon fill="white" stroke="black" points="136,-274.5 136,-304.5 261,-304.5 261,-274.5 136,-274.5"/>
 <text text-anchor="start" x="144" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="198.5" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_fractional_part</text>
@@ -215,7 +215,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node37 -->
 <g id="node17" class="node"><title>Node37</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title="Converter to retrieve the number as double.">
 <polygon fill="white" stroke="black" points="136,-98.5 136,-128.5 261,-128.5 261,-98.5 136,-98.5"/>
 <text text-anchor="start" x="144" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="198.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_double</text>
@@ -229,7 +229,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node38 -->
 <g id="node18" class="node"><title>Node38</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a07a0fa1c13f5aff3f184a2d82574e7e7" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a07a0fa1c13f5aff3f184a2d82574e7e7" target="_top" xlink:title="Converter to retrieve the number as float.">
 <polygon fill="white" stroke="black" points="136,-49.5 136,-79.5 261,-79.5 261,-49.5 136,-49.5"/>
 <text text-anchor="start" x="144" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="198.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_float</text>
@@ -243,7 +243,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node39 -->
 <g id="node19" class="node"><title>Node39</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a12dc86de2b985fdaff044ed9ab38e453" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a12dc86de2b985fdaff044ed9ab38e453" target="_top" xlink:title="Converter to retrieve the int (pre&#45;decimal) part of the number.">
 <polygon fill="white" stroke="black" points="136,-0.5 136,-30.5 261,-30.5 261,-0.5 136,-0.5"/>
 <text text-anchor="start" x="144" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="198.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_int</text>
@@ -257,7 +257,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node23 -->
 <g id="node3" class="node"><title>Node23</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="307.5,-552.5 307.5,-582.5 432.5,-582.5 432.5,-552.5 307.5,-552.5"/>
 <text text-anchor="start" x="315.5" y="-570.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="370" y="-559.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -310,7 +310,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node34 -->
 <g id="node14" class="node"><title>Node34</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" target="_top" xlink:title="Clears the underlying stream object&#39;s flags, if such a stream object exists.">
 <polygon fill="white" stroke="black" points="297,-186.5 297,-216.5 443,-216.5 443,-186.5 297,-186.5"/>
 <text text-anchor="start" x="305" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="370" y="-193.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; FString &gt;::reset_flags</text>

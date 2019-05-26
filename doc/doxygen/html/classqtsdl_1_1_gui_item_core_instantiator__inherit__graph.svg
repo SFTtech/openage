@@ -73,7 +73,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item.xhtml" target="_top" xlink:title="Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads.">
 <polygon fill="white" stroke="black" points="362,-1095 362,-1152 463,-1152 463,-1095 362,-1095"/>
 <text text-anchor="middle" x="412.5" y="-1140" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItem&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="362,-1133 463,-1133 "/>
@@ -296,7 +296,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="white" stroke="black" points="731.5,-1366.5 731.5,-1500.5 869.5,-1500.5 869.5,-1366.5 731.5,-1366.5"/>
 <text text-anchor="middle" x="800.5" y="-1488.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="731.5,-1481.5 869.5,-1481.5 "/>
@@ -320,7 +320,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classqtsdl_1_1_gui_item_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classqtsdl_1_1_gui_item_list_model.xhtml" target="_top" xlink:title="A shell object fir cores inherited from GuiPropertyMap.">
 <polygon fill="white" stroke="black" points="323,-805.5 323,-917.5 478,-917.5 478,-805.5 323,-805.5"/>
 <text text-anchor="middle" x="400.5" y="-905.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemListModel&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="323,-898.5 478,-898.5 "/>
@@ -693,7 +693,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node21 -->
 <g id="node22" class="node"><title>Node21</title>
-<g id="a_node22"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title="Switches the factory to production of the instances of the derived class.">
 <polygon fill="white" stroke="black" points="1155,-827.5 1155,-895.5 1266,-895.5 1266,-827.5 1155,-827.5"/>
 <text text-anchor="middle" x="1210.5" y="-883.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Inherits&lt; T, P &gt;</text>
 <polyline fill="none" stroke="black" points="1155,-876.5 1266,-876.5 "/>

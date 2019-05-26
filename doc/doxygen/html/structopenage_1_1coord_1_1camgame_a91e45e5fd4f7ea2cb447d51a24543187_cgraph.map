@@ -1,5 +1,5 @@
 <map id="openage::coord::camgame::to_camhud" name="openage::coord::camgame::to_camhud">
 <area shape="rect" id="node1" title=" " alt="" coords="5,39,181,80"/>
 <area shape="rect" id="node2" href="$structopenage_1_1coord_1_1viewport.xhtml#a1eca9ee705a35cf6176e9c9f708c5339" title=" " alt="" coords="235,5,400,47"/>
-<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" title=" " alt="" coords="229,71,405,112"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" title="See the comments for camgame_delta::to_phys3." alt="" coords="229,71,405,112"/>
 </map>

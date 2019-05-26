@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-109.908 822,-109.908 822,4 -4,4"/>
 <!-- Node90 -->
 <g id="node1" class="node"><title>Node90</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="return the head (dirname) part of a path.">
 <polygon fill="#bfbfbf" stroke="black" points="705,-21.9081 705,-40.9081 818,-40.9081 818,-21.9081 705,-21.9081"/>
 <text text-anchor="middle" x="761.5" y="-28.9081" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::dirname</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node91 -->
 <g id="node2" class="node"><title>Node91</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#a687817b834b18f90124915261c3752a8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#a687817b834b18f90124915261c3752a8" target="_top" xlink:title="This function is the entry point to load the whole file tree recursively.">
 <polygon fill="white" stroke="black" points="528,-16.4081 528,-46.4081 669,-46.4081 669,-16.4081 528,-16.4081"/>
 <text text-anchor="start" x="536" y="-34.4081" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CSVCollection</text>
 <text text-anchor="middle" x="598.5" y="-23.4081" font-family="Helvetica,sans-Serif" font-size="10.00">::read</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node92 -->
 <g id="node3" class="node"><title>Node92</title>
-<g id="a_node3"><a xlink:href="structopenage_1_1util_1_1csv__subdata.xhtml#a24b1327a670ab69e55c089234bdcbfec" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="structopenage_1_1util_1_1csv__subdata.xhtml#a24b1327a670ab69e55c089234bdcbfec" target="_top" xlink:title="Read the data of the lineformat from the collection.">
 <polygon fill="white" stroke="black" points="400,-16.4081 400,-46.4081 492,-46.4081 492,-16.4081 400,-16.4081"/>
 <text text-anchor="start" x="408" y="-34.4081" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::csv</text>
 <text text-anchor="middle" x="446" y="-23.4081" font-family="Helvetica,sans-Serif" font-size="10.00">_subdata::read</text>

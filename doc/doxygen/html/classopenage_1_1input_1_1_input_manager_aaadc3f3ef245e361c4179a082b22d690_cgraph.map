@@ -1,9 +1,9 @@
 <map id="openage::input::InputManager::is_down" name="openage::input::InputManager::is_down">
-<area shape="rect" id="node1" title=" " alt="" coords="5,35,199,76"/>
-<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" title=" " alt="" coords="247,5,440,47"/>
+<area shape="rect" id="node1" title="Most cases should use above is_down(class, code) instead to avoid relying on sdl types." alt="" coords="5,35,199,76"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" title="Query stored pressing stat for a key." alt="" coords="247,5,440,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1input.xhtml#aad63294ea2a94dc1723869be3c8d1670" title=" " alt="" coords="263,71,423,98"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title=" " alt="" coords="732,46,861,73"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title="modulo operation that guarantees to return positive values." alt="" coords="732,46,861,73"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1input.xhtml#a440ec4f21ee7c8cf0a64ecb96e4fca91" title=" " alt="" coords="488,97,652,123"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="700,97,893,123"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="941,97,1068,123"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="941,97,1068,123"/>
 </map>

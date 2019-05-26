@@ -87,9 +87,9 @@
         <argsstring>[maxsymbols_p+LZX_LENTABLE_SAFETY]</argsstring>
         <name>len</name>
         <briefdescription>
+<para>table of code lengths (in bits) for each symbol </para>
         </briefdescription>
         <detaileddescription>
-<para>table of code lengths (in bits) for each symbol </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -103,9 +103,10 @@
         <argsstring>[(1&lt;&lt; tablebits_p)+(maxsymbols_p *2)]</argsstring>
         <name>table</name>
         <briefdescription>
+<para>table to fill up with decoded values for symbols, and pointers. </para>
         </briefdescription>
         <detaileddescription>
-<para>table to fill up with decoded values for symbols, and pointers. symbols shorter than tablebits_p are decoded by direct lookup (that&apos;s the first (1&lt;&lt;tablebits_p) entries). longer symbols are decoded by following pointers to the appropriate leaf in the upper nsyms*2 fields. </para>
+<para>symbols shorter than tablebits_p are decoded by direct lookup (that&apos;s the first (1&lt;&lt;tablebits_p) entries). longer symbols are decoded by following pointers to the appropriate leaf in the upper nsyms*2 fields. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -117,9 +118,10 @@
         <argsstring></argsstring>
         <name>is_empty</name>
         <briefdescription>
+<para>the table could not be constructed and is empty (try_make_decode_table failed). </para>
         </briefdescription>
         <detaileddescription>
-<para>the table could not be constructed and is empty (try_make_decode_table failed). this will lead to errors, should <ref refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1ae6b32648570816ac41436130bd87f3be" kindref="member">read_sym()</ref> be called. </para>
+<para>this will lead to errors, should <ref refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1ae6b32648570816ac41436130bd87f3be" kindref="member">read_sym()</ref> be called. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -153,9 +155,10 @@
         <argsstring>()</argsstring>
         <name>read_sym</name>
         <briefdescription>
+<para>Decodes the next huffman symbol from the input bitstream, and returns it. </para>
         </briefdescription>
         <detaileddescription>
-<para>Decodes the next huffman symbol from the input bitstream, and returns it. Do not use this function on a table unless build_decode_table() succeeded. </para>
+<para>Do not use this function on a table unless build_decode_table() succeeded. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -169,9 +172,10 @@
         <argsstring>()</argsstring>
         <name>make_decode_table</name>
         <briefdescription>
+<para>calls try_make_decode_table, and, if allow_empty is false, raises an exception on failure. </para>
         </briefdescription>
         <detaileddescription>
-<para>calls try_make_decode_table, and, if allow_empty is false, raises an exception on failure. builds a huffman lookup table from code lengths. </para>
+<para>builds a huffman lookup table from code lengths. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -192,9 +196,10 @@
           <declname>last</declname>
         </param>
         <briefdescription>
+<para>reads in code lengths for symbols first to last in the given table. </para>
         </briefdescription>
         <detaileddescription>
-<para>reads in code lengths for symbols first to last in the given table. The code lengths are stored in their own special LZX way. </para>
+<para>The code lengths are stored in their own special LZX way. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -209,9 +214,10 @@
         <argsstring>()</argsstring>
         <name>try_make_decode_table</name>
         <briefdescription>
+<para>This function was originally coded by David Tritscher. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function was originally coded by David Tritscher. It builds a fast huffman decoding table from a canonical huffman code lengths table. </para>
+<para>It builds a fast huffman decoding table from a canonical huffman code lengths table. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

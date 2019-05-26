@@ -15,9 +15,9 @@
           <declname>mgr</declname>
         </param>
         <briefdescription>
+<para>See the comments for <ref refid="structopenage_1_1coord_1_1camgame__delta_1a7e761e4e14092c27b01fbc0ee0a39330" kindref="member">camgame_delta::to_phys3</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>See the comments for <ref refid="structopenage_1_1coord_1_1camgame__delta_1a7e761e4e14092c27b01fbc0ee0a39330" kindref="member">camgame_delta::to_phys3</ref>.</para>
 <para><xrefsect id="todo_1_todo000006"><xreftitle>Todo</xreftitle><xrefdescription><para>Once we have terrain elevation, &apos;up&apos; will not mean the absolute elevation, but instead the returned <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref> coordinate will be the intersection between the camgame line and the 3d terrain + up altitude. </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 386,-133 386,4 -4,4"/>
 <!-- Node21 -->
 <g id="node1" class="node"><title>Node21</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Tells the resource, that it will be used by a sound object, so it can preload some pcm samples.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-55 0,-74 190,-74 190,-55 0,-55"/>
 <text text-anchor="middle" x="95" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicResource::use</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node22 -->
 <g id="node2" class="node"><title>Node22</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a112547e0d5b12a174840c036b80b9aad" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_loader.xhtml#a112547e0d5b12a174840c036b80b9aad" target="_top" xlink:title="Creates a DynamicLoader instance that supports the given format.">
 <polygon fill="white" stroke="black" points="226,-98.5 226,-128.5 382,-128.5 382,-98.5 226,-98.5"/>
 <text text-anchor="start" x="234" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicLoader</text>
 <text text-anchor="middle" x="304" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node23 -->
 <g id="node3" class="node"><title>Node23</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#a26dd9d9c12b38ca0d7bf4c7e3c17ee36" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#a26dd9d9c12b38ca0d7bf4c7e3c17ee36" target="_top" xlink:title="Creates a job group, in order to be able to execute multiple jobs on the same worker thread.">
 <polygon fill="white" stroke="black" points="238.5,-49.5 238.5,-79.5 369.5,-79.5 369.5,-49.5 238.5,-49.5"/>
 <text text-anchor="start" x="246.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="304" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_job_group</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node24 -->
 <g id="node4" class="node"><title>Node24</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#add5dcdf1895b883af210f102e4e64199" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#add5dcdf1895b883af210f102e4e64199" target="_top" xlink:title="Return the game engine the audio manager is attached to.">
 <polygon fill="white" stroke="black" points="228.5,-0.5 228.5,-30.5 379.5,-30.5 379.5,-0.5 228.5,-0.5"/>
 <text text-anchor="start" x="236.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <text text-anchor="middle" x="304" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_job_manager</text>

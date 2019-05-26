@@ -1,5 +1,5 @@
 <map id="openage::util::tests::constinit_vector" name="openage::util::tests::constinit_vector">
 <area shape="rect" id="node1" title=" " alt="" coords="5,39,139,80"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1_const_init_vector.xhtml#adc94bd8cdd68e1076a95dbebe26d98a2" title=" " alt="" coords="187,5,341,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_const_init_vector.xhtml#a2453ffb8432511227127c0e6df561a43" title=" " alt="" coords="187,71,341,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_const_init_vector.xhtml#a2453ffb8432511227127c0e6df561a43" title="Returns the number of elements that have been pushed back." alt="" coords="187,71,341,112"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="openage::log::message::init" name="openage::log::message::init">
-<area shape="rect" id="node1" title=" " alt="" coords="227,5,384,47"/>
-<area shape="rect" id="node2" href="$structopenage_1_1log_1_1message.xhtml#a9f25c53eaa48cd37d1d5753e53db9549" title=" " alt="" coords="5,5,179,47"/>
+<area shape="rect" id="node1" title="Sets all members except for filename, lineno, functionname and level." alt="" coords="227,5,384,47"/>
+<area shape="rect" id="node2" href="$structopenage_1_1log_1_1message.xhtml#a9f25c53eaa48cd37d1d5753e53db9549" title="Sets all members except for lineno and level." alt="" coords="5,5,179,47"/>
 </map>

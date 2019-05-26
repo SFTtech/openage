@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-748 2473.12,-748 2473.12,4 -4,4"/>
 <!-- Node31 -->
 <g id="node1" class="node"><title>Node31</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="This file contains the implementation of a pairing heap.">
 <polygon fill="#bfbfbf" stroke="black" points="617,-702.5 617,-743.5 774,-743.5 774,-702.5 617,-702.5"/>
 <text text-anchor="start" x="625" y="-731.5" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="625" y="-720.5" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>
@@ -112,7 +112,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node69 -->
 <g id="node39" class="node"><title>Node69</title>
-<g id="a_node39"><a xlink:href="a__star_8cpp.xhtml" target="_top" xlink:title=" ">
+<g id="a_node39"><a xlink:href="a__star_8cpp.xhtml" target="_top" xlink:title="This file implements the A* search algorithm for openage.">
 <polygon fill="white" stroke="black" points="816,-390.5 816,-431.5 973,-431.5 973,-390.5 816,-390.5"/>
 <text text-anchor="start" x="824" y="-419.5" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="824" y="-408.5" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>
@@ -657,7 +657,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node63 -->
 <g id="node33" class="node"><title>Node63</title>
-<g id="a_node33"><a xlink:href="producer_8cpp.xhtml" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="producer_8cpp.xhtml" target="_top" xlink:title="Many values in this file are hardcoded, due to limited understanding of how the original game files w...">
 <polygon fill="white" stroke="black" points="1593,-468.5 1593,-509.5 1750,-509.5 1750,-468.5 1593,-468.5"/>
 <text text-anchor="start" x="1601" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="1601" y="-486.5" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-652 958,-652 958,4 -4,4"/>
 <!-- Node9 -->
 <g id="node1" class="node"><title>Node9</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="get tile data by absolute coordinates.">
 <polygon fill="#bfbfbf" stroke="black" points="838,-327.5 838,-357.5 954,-357.5 954,-327.5 838,-327.5"/>
 <text text-anchor="start" x="846" y="-345.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="896" y="-334.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node10 -->
 <g id="node2" class="node"><title>Node10</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title="fill the terrain with given terrain_id values.">
 <polygon fill="white" stroke="black" points="684,-609 684,-628 788,-628 788,-609 684,-609"/>
 <text text-anchor="middle" x="736" y="-616" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::fill</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node12 -->
 <g id="node4" class="node"><title>Node12</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#a0b2c2e15da132ea4b093cec0c44f9725" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#a0b2c2e15da132ea4b093cec0c44f9725" target="_top" xlink:title="get tile data by coordinates that are releative to this chunk.">
 <polygon fill="white" stroke="black" points="678,-552.5 678,-582.5 794,-582.5 794,-552.5 678,-552.5"/>
 <text text-anchor="start" x="686" y="-570.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="736" y="-559.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node13 -->
 <g id="node5" class="node"><title>Node13</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_terrain.xhtml#a437d04e21933a02a08861b50a585135e" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_terrain.xhtml#a437d04e21933a02a08861b50a585135e" target="_top" xlink:title="return tile data for the given position.">
 <polygon fill="white" stroke="black" points="670,-514 670,-533 802,-533 802,-514 670,-514"/>
 <text text-anchor="middle" x="736" y="-521" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get_data</text>
 </a>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node20 -->
 <g id="node12" class="node"><title>Node20</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#aa27071b50ca9d928ef1a9ce1af5b8328" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#aa27071b50ca9d928ef1a9ce1af5b8328" target="_top" xlink:title="get the tile data a given tile position relative to this chunk.">
 <polygon fill="white" stroke="black" points="678,-464.5 678,-494.5 794,-494.5 794,-464.5 678,-464.5"/>
 <text text-anchor="start" x="686" y="-482.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="736" y="-471.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data_neigh</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node21 -->
 <g id="node13" class="node"><title>Node21</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1gameio.xhtml#a75b0984fd51cdc53616318d3f5a0d50f" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1gameio.xhtml#ae6761d88280466d1d1b5c638e7c7a042" target="_top" xlink:title="a game load function that sometimes works">
 <polygon fill="white" stroke="black" points="678.5,-426 678.5,-445 793.5,-445 793.5,-426 678.5,-426"/>
 <text text-anchor="middle" x="736" y="-433" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gameio::load</text>
 </a>
@@ -115,7 +115,7 @@
 </g>
 <!-- Node26 -->
 <g id="node18" class="node"><title>Node26</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a227f50f827d1ae7791f06e323c581bbd" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a227f50f827d1ae7791f06e323c581bbd" target="_top" xlink:title="changes the placement state of this object keeping the existing position.">
 <polygon fill="white" stroke="black" points="677.5,-376.5 677.5,-406.5 794.5,-406.5 794.5,-376.5 677.5,-376.5"/>
 <text text-anchor="start" x="685.5" y="-394.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="736" y="-383.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -129,7 +129,7 @@
 </g>
 <!-- Node29 -->
 <g id="node21" class="node"><title>Node29</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af781d73de8772dfe4454e75eb96d104c" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af781d73de8772dfe4454e75eb96d104c" target="_top" xlink:title="placement function which does not check passibility used only when passibilty is already checked othe...">
 <polygon fill="white" stroke="black" points="677.5,-278.5 677.5,-308.5 794.5,-308.5 794.5,-278.5 677.5,-278.5"/>
 <text text-anchor="start" x="685.5" y="-296.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="736" y="-285.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place_unchecked</text>
@@ -143,7 +143,7 @@
 </g>
 <!-- Node32 -->
 <g id="node24" class="node"><title>Node32</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af24e842fc429a5dbb73c12abcb9c3378" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af24e842fc429a5dbb73c12abcb9c3378" target="_top" xlink:title="remove this TerrainObject from the terrain chunks.">
 <polygon fill="white" stroke="black" points="677.5,-210.5 677.5,-240.5 794.5,-240.5 794.5,-210.5 677.5,-210.5"/>
 <text text-anchor="start" x="685.5" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="736" y="-217.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove</text>
@@ -157,7 +157,7 @@
 </g>
 <!-- Node34 -->
 <g id="node26" class="node"><title>Node34</title>
-<g id="a_node26"><a xlink:href="namespaceopenage_1_1gameio.xhtml#a2c4db428aa6da2185b33a86508fb49a8" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="namespaceopenage_1_1gameio.xhtml#afc1134c3c633c8bddb614ecb3da48eb2" target="_top" xlink:title="a game save function that sometimes works">
 <polygon fill="white" stroke="black" points="678,-110 678,-129 794,-129 794,-110 678,-110"/>
 <text text-anchor="middle" x="736" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gameio::save</text>
 </a>
@@ -170,7 +170,7 @@
 </g>
 <!-- Node39 -->
 <g id="node31" class="node"><title>Node39</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a2ad9a9df0f058487a4ec66b68ee390ed" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a2ad9a9df0f058487a4ec66b68ee390ed" target="_top" xlink:title="sets all the ground below the object to a terrain id.">
 <polygon fill="white" stroke="black" points="677.5,-60.5 677.5,-90.5 794.5,-90.5 794.5,-60.5 677.5,-60.5"/>
 <text text-anchor="start" x="685.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="736" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_ground</text>
@@ -184,7 +184,7 @@
 </g>
 <!-- Node40 -->
 <g id="node32" class="node"><title>Node40</title>
-<g id="a_node32"><a xlink:href="classopenage_1_1_generator.xhtml#a8ca4db5b0a66eb2397d2b8d8e8364640" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="classopenage_1_1_generator.xhtml#a8ca4db5b0a66eb2397d2b8d8e8364640" target="_top" xlink:title="returns the generated terrain">
 <polygon fill="white" stroke="black" points="685,-11.5 685,-41.5 787,-41.5 787,-11.5 685,-11.5"/>
 <text text-anchor="start" x="693" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="736" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::terrain</text>
@@ -212,7 +212,7 @@
 </g>
 <!-- Node14 -->
 <g id="node6" class="node"><title>Node14</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" target="_top" xlink:title="gather neighbors of a given base tile.">
 <polygon fill="white" stroke="black" points="501,-480.5 501,-510.5 609,-510.5 609,-480.5 501,-480.5"/>
 <text text-anchor="start" x="509" y="-498.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="555" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00">_neighbors</text>
@@ -226,7 +226,7 @@
 </g>
 <!-- Node15 -->
 <g id="node7" class="node"><title>Node15</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" target="_top" xlink:title="an object which contains the given point, null otherwise">
 <polygon fill="white" stroke="black" points="501.5,-529.5 501.5,-559.5 608.5,-559.5 608.5,-529.5 501.5,-529.5"/>
 <text text-anchor="start" x="509.5" y="-547.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::obj</text>
 <text text-anchor="middle" x="555" y="-536.5" font-family="Helvetica,sans-Serif" font-size="10.00">_at_point</text>
@@ -240,7 +240,7 @@
 </g>
 <!-- Node19 -->
 <g id="node11" class="node"><title>Node19</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="black" points="314,-575.5 314,-605.5 431,-605.5 431,-575.5 314,-575.5"/>
 <text text-anchor="start" x="322" y="-593.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="372.5" y="-582.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>
@@ -254,7 +254,7 @@
 </g>
 <!-- Node16 -->
 <g id="node8" class="node"><title>Node16</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title="point unit selection">
 <polygon fill="white" stroke="black" points="314,-526.5 314,-556.5 431,-556.5 431,-526.5 314,-526.5"/>
 <text text-anchor="start" x="322" y="-544.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="372.5" y="-533.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_point</text>
@@ -282,7 +282,7 @@
 </g>
 <!-- Node18 -->
 <g id="node10" class="node"><title>Node18</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-550.5 0,-580.5 116,-580.5 116,-550.5 0,-550.5"/>
 <text text-anchor="start" x="8" y="-568.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-557.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -301,7 +301,7 @@
 </g>
 <!-- Node22 -->
 <g id="node14" class="node"><title>Node22</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title="Create a game from a specification.">
 <polygon fill="white" stroke="black" points="504,-431.5 504,-461.5 606,-461.5 606,-431.5 504,-431.5"/>
 <text text-anchor="start" x="512" y="-449.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="555" y="-438.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>
@@ -315,7 +315,7 @@
 </g>
 <!-- Node24 -->
 <g id="node16" class="node"><title>Node24</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="314.5,-240.5 314.5,-270.5 430.5,-270.5 430.5,-240.5 314.5,-240.5"/>
 <text text-anchor="start" x="322.5" y="-258.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="372.5" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -348,7 +348,7 @@
 </g>
 <!-- Node28 -->
 <g id="node20" class="node"><title>Node28</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="306,-382.5 306,-412.5 439,-412.5 439,-382.5 306,-382.5"/>
 <text text-anchor="start" x="314" y="-400.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <text text-anchor="middle" x="372.5" y="-389.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -362,7 +362,7 @@
 </g>
 <!-- Node30 -->
 <g id="node22" class="node"><title>Node30</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a90235fcc91847da15129ce77ffcb53a8" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a90235fcc91847da15129ce77ffcb53a8" target="_top" xlink:title="binds the TerrainObject to a certain TerrainChunk.">
 <polygon fill="white" stroke="black" points="496.5,-294.5 496.5,-324.5 613.5,-324.5 613.5,-294.5 496.5,-294.5"/>
 <text text-anchor="start" x="504.5" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="555" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -376,7 +376,7 @@
 </g>
 <!-- Node31 -->
 <g id="node23" class="node"><title>Node31</title>
-<g id="a_node23"><a xlink:href="classopenage_1_1_terrain_object.xhtml#aed04f7dfb2a4836107796fd3598accc3" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="classopenage_1_1_terrain_object.xhtml#aed04f7dfb2a4836107796fd3598accc3" target="_top" xlink:title="moves the object – returns false if object cannot be moved here">
 <polygon fill="white" stroke="black" points="496.5,-245.5 496.5,-275.5 613.5,-275.5 613.5,-245.5 496.5,-245.5"/>
 <text text-anchor="start" x="504.5" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="555" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">::move</text>

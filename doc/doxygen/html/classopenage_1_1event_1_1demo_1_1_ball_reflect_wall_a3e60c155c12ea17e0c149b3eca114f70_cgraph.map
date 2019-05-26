@@ -1,9 +1,9 @@
 <map id="openage::event::demo::BallReflectWall::predict_invoke_time" name="openage::event::demo::BallReflectWall::predict_invoke_time">
-<area shape="rect" id="node1" title=" " alt="" coords="5,82,171,138"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" title=" " alt="" coords="223,5,409,47"/>
+<area shape="rect" id="node1" title="Is called to calculate the execution time for an event of this eventclass." alt="" coords="5,82,171,138"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" title="Factory function to get a fixed&#45;point number from a double." alt="" coords="223,5,409,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="219,71,413,98"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title=" " alt="" coords="258,122,374,149"/>
-<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" title=" " alt="" coords="233,173,399,215"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title="str(value);" alt="" coords="258,122,374,149"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" title="Converter to retrieve the number as double." alt="" coords="233,173,399,215"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="461,122,655,149"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="703,122,829,149"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="703,122,829,149"/>
 </map>

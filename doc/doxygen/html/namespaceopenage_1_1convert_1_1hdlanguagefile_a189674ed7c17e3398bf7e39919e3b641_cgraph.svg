@@ -66,7 +66,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title="list()">
 <polygon fill="white" stroke="black" points="251,-79.5 251,-98.5 340,-98.5 340,-79.5 251,-79.5"/>
 <text text-anchor="middle" x="295.5" y="-86.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::list</text>
 </a>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="599,-79.5 599,-98.5 694,-98.5 694,-79.5 599,-79.5"/>
 <text text-anchor="middle" x="646.5" y="-86.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -137,7 +137,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6" target="_top" xlink:title="Split a string at a delimiter into a vector.">
 <polygon fill="white" stroke="black" points="442.5,-0.5 442.5,-19.5 538.5,-19.5 538.5,-0.5 442.5,-0.5"/>
 <text text-anchor="middle" x="490.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::split</text>
 </a>

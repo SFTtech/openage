@@ -66,9 +66,9 @@
           <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref> const &amp;</type>
         </param>
         <briefdescription>
+<para>Uploads the given texture data (usually loaded from disk) to graphics hardware and makes it available as a <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> object that can be used for various operations. </para>
         </briefdescription>
         <detaileddescription>
-<para>Uploads the given texture data (usually loaded from disk) to graphics hardware and makes it available as a <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> object that can be used for various operations. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -103,9 +103,10 @@
           <type>std::vector&lt; <ref refid="classopenage_1_1renderer_1_1resources_1_1_shader_source" kindref="compound">resources::ShaderSource</ref> &gt; const &amp;</type>
         </param>
         <briefdescription>
+<para>Compiles the given shader source code into a shader program. </para>
         </briefdescription>
         <detaileddescription>
-<para>Compiles the given shader source code into a shader program. A shader program is the main tool used for graphics rendering. </para>
+<para>A shader program is the main tool used for graphics rendering. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -123,9 +124,10 @@
           <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data" kindref="compound">resources::MeshData</ref> const &amp;</type>
         </param>
         <briefdescription>
+<para>Creates a <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> object from the given mesh data, uploading it to the GPU by creating appropriate buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> object from the given mesh data, uploading it to the GPU by creating appropriate buffer. The vertex attributes will be passed to the shader as described in the mesh data. </para>
+<para>The vertex attributes will be passed to the shader as described in the mesh data. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -139,9 +141,10 @@
         <name>add_bufferless_quad</name>
         <reimplements refid="classopenage_1_1renderer_1_1_renderer_1a67a77e7702c68b2fa880f9c26f877eed">add_bufferless_quad</reimplements>
         <briefdescription>
+<para>Adds a <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> object that passes a simple 4-vertex drawing command with no vertex attributes to the shader. </para>
         </briefdescription>
         <detaileddescription>
-<para>Adds a <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> object that passes a simple 4-vertex drawing command with no vertex attributes to the shader. Useful for generating positions in the vertex shader. </para>
+<para>Useful for generating positions in the vertex shader. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -157,9 +160,10 @@
           <type>std::vector&lt; <ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref> * &gt;</type>
         </param>
         <briefdescription>
+<para>Constructs a render target from the given textures. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructs a render target from the given textures. All subsequent drawing operations pointed at this target will write to these textures. Textures are attached to the target in the order in which they appear within the vector. Depth textures are attached as depth components. Textures of every other type are attached as color components. </para>
+<para>All subsequent drawing operations pointed at this target will write to these textures. Textures are attached to the target in the order in which they appear within the vector. Depth textures are attached as depth components. Textures of every other type are attached as color components. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -173,9 +177,10 @@
         <name>get_display_target</name>
         <reimplements refid="classopenage_1_1renderer_1_1_renderer_1a2a55ee0bda543175600d17b62d24dbf1">get_display_target</reimplements>
         <briefdescription>
+<para>Returns the built-in display target that represents the window. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the built-in display target that represents the window. Passes pointed at this target will have their output visible on the screen. </para>
+<para>Passes pointed at this target will have their output visible on the screen. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>resource</name>
         <briefdescription>
+<para>The shared audio resource, which provides the pcm data to play. </para>
         </briefdescription>
         <detaileddescription>
-<para>The shared audio resource, which provides the pcm data to play. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -29,9 +29,9 @@
         <argsstring></argsstring>
         <name>in_use</name>
         <briefdescription>
+<para>Whether this sound currently actively uses it&apos;s shared audio resource. </para>
         </briefdescription>
         <detaileddescription>
-<para>Whether this sound currently actively uses it&apos;s shared audio resource. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -44,9 +44,9 @@
         <argsstring></argsstring>
         <name>volume</name>
         <briefdescription>
+<para>The sound&apos;s volume. </para>
         </briefdescription>
         <detaileddescription>
-<para>The sound&apos;s volume. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -59,9 +59,9 @@
         <argsstring></argsstring>
         <name>offset</name>
         <briefdescription>
+<para>The sound&apos;s playing offset. </para>
         </briefdescription>
         <detaileddescription>
-<para>The sound&apos;s playing offset. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -74,9 +74,9 @@
         <argsstring></argsstring>
         <name>playing</name>
         <briefdescription>
+<para>Whether this sound is currently playing. </para>
         </briefdescription>
         <detaileddescription>
-<para>Whether this sound is currently playing. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -89,9 +89,9 @@
         <argsstring></argsstring>
         <name>looping</name>
         <briefdescription>
+<para>Whether this sound is currently looping. </para>
         </briefdescription>
         <detaileddescription>
-<para>Whether this sound is currently looping. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -145,9 +145,9 @@
         <argsstring>() const</argsstring>
         <name>get_category</name>
         <briefdescription>
+<para>Returns this sound&apos;s category. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns this sound&apos;s category. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -160,9 +160,9 @@
         <argsstring>() const</argsstring>
         <name>get_id</name>
         <briefdescription>
+<para>Returns this sound&apos;s id. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns this sound&apos;s id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -197,9 +197,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A <ref refid="classopenage_1_1audio_1_1_sound_impl" kindref="compound">SoundImpl</ref> is the internal implementation of a sound. </para>
     </briefdescription>
     <detaileddescription>
-<para>A <ref refid="classopenage_1_1audio_1_1_sound_impl" kindref="compound">SoundImpl</ref> is the internal implementation of a sound. It stores the sound&apos;s complete state. It is passed around as a shared_ptr, such that the same <ref refid="classopenage_1_1audio_1_1_sound_impl" kindref="compound">SoundImpl</ref> instance can be shared between the <ref refid="classopenage_1_1audio_1_1_sound" kindref="compound">Sound</ref> objects themselves and the <ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref>. </para>
+<para>It stores the sound&apos;s complete state. It is passed around as a shared_ptr, such that the same <ref refid="classopenage_1_1audio_1_1_sound_impl" kindref="compound">SoundImpl</ref> instance can be shared between the <ref refid="classopenage_1_1audio_1_1_sound" kindref="compound">Sound</ref> objects themselves and the <ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref>. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="536">

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-3';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 621,-35 621,4 -4,4"/>
 <!-- Node10 -->
 <g id="node1" class="node"><title>Node10</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="create an audio resource, this produces a DynamicResource or a InMemoryResource">
 <polygon fill="#bfbfbf" stroke="black" points="487,-0.5 487,-30.5 617,-30.5 617,-0.5 487,-0.5"/>
 <text text-anchor="start" x="495" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Resource</text>
 <text text-anchor="middle" x="552" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_resource</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node11 -->
 <g id="node2" class="node"><title>Node11</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a7d1dc28dded852d3eadf34771ee8f6b0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a7d1dc28dded852d3eadf34771ee8f6b0" target="_top" xlink:title="Loads all audio resources, that are specified in the sound_files vector.">
 <polygon fill="white" stroke="black" points="300,-0.5 300,-30.5 451,-30.5 451,-0.5 300,-0.5"/>
 <text text-anchor="start" x="308" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <text text-anchor="middle" x="375.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::load_resources</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node12 -->
 <g id="node3" class="node"><title>Node12</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title="Invoked when the gamedata has been loaded.">
 <polygon fill="white" stroke="black" points="150,-0.5 150,-30.5 264,-30.5 264,-0.5 150,-0.5"/>
 <text text-anchor="start" x="158" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">on_gamedata_loaded</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node13 -->
 <g id="node4" class="node"><title>Node13</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 114,-30.5 114,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="57" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>

@@ -1,50 +1,50 @@
 <map id="openage::util::FixedPoint::from_raw_value" name="openage::util::FixedPoint::from_raw_value">
-<area shape="rect" id="node1" title=" " alt="" coords="749,1177,916,1218"/>
+<area shape="rect" id="node1" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="749,1177,916,1218"/>
 <area shape="rect" id="node2" href="$namespacestd.xhtml#a6af851cc1249a970adde4dc422ff824a" title=" " alt="" coords="556,348,625,375"/>
-<area shape="rect" id="node15" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" title=" " alt="" coords="498,806,683,847"/>
-<area shape="rect" id="node16" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a6602fc6e0cf22db46a7a2c4d65bbf866" title=" " alt="" coords="489,871,692,913"/>
-<area shape="rect" id="node17" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a7cc8c2bd1dad2337630abf6f6e42aef3" title=" " alt="" coords="505,937,676,978"/>
-<area shape="rect" id="node18" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" title=" " alt="" coords="507,1002,674,1043"/>
-<area shape="rect" id="node19" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a41ce8a71883f18088e7876aa8e2600e4" title=" " alt="" coords="480,1067,701,1109"/>
+<area shape="rect" id="node15" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" title="Factory function to get a fixed&#45;point number from a double." alt="" coords="498,806,683,847"/>
+<area shape="rect" id="node16" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a6602fc6e0cf22db46a7a2c4d65bbf866" title="Factory function to get a fixed&#45;point number from a fixed&#45;point number of different type." alt="" coords="489,871,692,913"/>
+<area shape="rect" id="node17" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a7cc8c2bd1dad2337630abf6f6e42aef3" title="Factory function to get a fixed&#45;point number from a float." alt="" coords="505,937,676,978"/>
+<area shape="rect" id="node18" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" title="Factory function to get a fixed&#45;point number from an integer." alt="" coords="507,1002,674,1043"/>
+<area shape="rect" id="node19" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a41ce8a71883f18088e7876aa8e2600e4" title="Converter to retrieve the fractional (post&#45;decimal) part of the number." alt="" coords="480,1067,701,1109"/>
 <area shape="rect" id="node20" href="$namespacestd.xhtml#a1c0bc145caf5f0b2af8d16d29d952180" title=" " alt="" coords="554,1133,627,1160"/>
-<area shape="rect" id="node31" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" title=" " alt="" coords="235,1027,411,1069"/>
+<area shape="rect" id="node31" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" title="The maximum possible value of this type." alt="" coords="235,1027,411,1069"/>
 <area shape="rect" id="node32" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="556,1445,625,1472"/>
-<area shape="rect" id="node40" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a1432784032d62a4b43961b88de32ae86" title=" " alt="" coords="237,2243,409,2285"/>
-<area shape="rect" id="node46" href="$namespaceopenage_1_1util.xhtml#aa3949bf1d23f5c8446474135851399fc" title=" " alt="" coords="511,1547,671,1573"/>
+<area shape="rect" id="node40" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a1432784032d62a4b43961b88de32ae86" title="The minimum possible value of this type." alt="" coords="237,2243,409,2285"/>
+<area shape="rect" id="node46" href="$namespaceopenage_1_1util.xhtml#aa3949bf1d23f5c8446474135851399fc" title="FixedPoint * N." alt="" coords="511,1547,671,1573"/>
 <area shape="rect" id="node47" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aec3105441d3a31509744116f782fe3e7" title=" " alt="" coords="505,1598,676,1639"/>
-<area shape="rect" id="node48" href="$namespaceopenage_1_1util.xhtml#a976790c1ec88a9cce32a887ca49526db" title=" " alt="" coords="511,1664,670,1691"/>
-<area shape="rect" id="node49" href="$namespaceopenage_1_1util.xhtml#a4202ea3aad51da9bcef0572898fc7175" title=" " alt="" coords="511,1715,670,1741"/>
-<area shape="rect" id="node50" href="$namespaceopenage_1_1util.xhtml#a4e6ea5affdccd958479d0eba1b74ce0f" title=" " alt="" coords="513,1765,668,1792"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1path.xhtml#a825dde52e9d0fd7fe6fa6970a1ec58e0" title=" " alt="" coords="220,5,425,32"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" title=" " alt="" coords="220,567,425,593"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1rng_1_1tests.xhtml#acad40865d58b96a35f6f453e04642f00" title=" " alt="" coords="255,57,390,98"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" title=" " alt="" coords="255,122,390,163"/>
-<area shape="rect" id="node8" href="$namespaceopenage_1_1rng_1_1tests.xhtml#a1270464ae98991431da5e3fa6ee60ab5" title=" " alt="" coords="255,187,390,229"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" title=" " alt="" coords="241,253,404,294"/>
-<area shape="rect" id="node10" href="$namespaceopenage.xhtml#a8f7c4c46ae7b03cd0cc8ceae47ae7139" title=" " alt="" coords="241,319,404,345"/>
+<area shape="rect" id="node48" href="$namespaceopenage_1_1util.xhtml#a976790c1ec88a9cce32a887ca49526db" title="FixedPoint &#45; FixedPoint." alt="" coords="511,1664,670,1691"/>
+<area shape="rect" id="node49" href="$namespaceopenage_1_1util.xhtml#a4202ea3aad51da9bcef0572898fc7175" title="FixedPoint + FixedPoint." alt="" coords="511,1715,670,1741"/>
+<area shape="rect" id="node50" href="$namespaceopenage_1_1util.xhtml#a4e6ea5affdccd958479d0eba1b74ce0f" title="FixedPoint / N." alt="" coords="513,1765,668,1792"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1path.xhtml#a825dde52e9d0fd7fe6fa6970a1ec58e0" title="Manhattan distance cost estimation." alt="" coords="220,5,425,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" title="Chebyshev distance cost estimation." alt="" coords="220,567,425,593"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1rng_1_1tests.xhtml#acad40865d58b96a35f6f453e04642f00" title="Tests the distribution of the bit generator." alt="" coords="255,57,390,98"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" title="Tests the distribution of the boolean generation." alt="" coords="255,122,390,163"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1rng_1_1tests.xhtml#a1270464ae98991431da5e3fa6ee60ab5" title="Tests the distribution of the floating point numbers." alt="" coords="255,187,390,229"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" title="create the drawing instruction data." alt="" coords="241,253,404,294"/>
+<area shape="rect" id="node10" href="$namespaceopenage.xhtml#a8f7c4c46ae7b03cd0cc8ceae47ae7139" title="Generate a isometric square outline texture." alt="" coords="241,319,404,345"/>
 <area shape="rect" id="node11" href="$namespaceopenage_1_1util_1_1tests.xhtml#a66cf54ea365e3f8f1357577ddaa1adfb" title=" " alt="" coords="256,618,389,659"/>
-<area shape="rect" id="node12" href="$classopenage_1_1util_1_1_matrix.xhtml#ac1bc212dbfd151ce922ba27cad25a074" title=" " alt="" coords="253,370,393,411"/>
-<area shape="rect" id="node13" href="$classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" title=" " alt="" coords="239,435,406,477"/>
-<area shape="rect" id="node14" href="$classopenage_1_1util_1_1_vector.xhtml#adb9d43a588f0d7044f201a2dff2db844" title=" " alt="" coords="251,501,394,542"/>
+<area shape="rect" id="node12" href="$classopenage_1_1util_1_1_matrix.xhtml#ac1bc212dbfd151ce922ba27cad25a074" title="Test if both matrices contain the same values within epsilon." alt="" coords="253,370,393,411"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" title="Test rotation equality with another quaternion with given precision in radians." alt="" coords="239,435,406,477"/>
+<area shape="rect" id="node14" href="$classopenage_1_1util_1_1_vector.xhtml#adb9d43a588f0d7044f201a2dff2db844" title="Equality test with given precision." alt="" coords="251,501,394,542"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1rng_1_1tests.xhtml#ae22d2c6364226e0169f0eed1c9701592" title=" " alt="" coords="5,129,165,156"/>
 <area shape="rect" id="node21" href="$classopenage_1_1_generator.xhtml#ae221973cf4125fbf62af6f9626609b4a" title=" " alt="" coords="255,683,391,725"/>
 <area shape="rect" id="node22" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#aa24165b0ea4cee5ea03cec1e0609499c" title=" " alt="" coords="224,1341,421,1382"/>
 <area shape="rect" id="node23" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display.xhtml#ac140c8357daa5298ed6f04821a936ccb" title=" " alt="" coords="232,749,413,805"/>
-<area shape="rect" id="node24" href="$classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" title=" " alt="" coords="243,1093,402,1134"/>
-<area shape="rect" id="node25" href="$classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" title=" " alt="" coords="243,1158,402,1199"/>
-<area shape="rect" id="node26" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title=" " alt="" coords="243,1223,402,1265"/>
-<area shape="rect" id="node27" href="$classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" title=" " alt="" coords="246,830,399,871"/>
-<area shape="rect" id="node28" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title=" " alt="" coords="7,1282,163,1323"/>
+<area shape="rect" id="node24" href="$classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" title="how far is a point from the edge of this object" alt="" coords="243,1093,402,1134"/>
+<area shape="rect" id="node25" href="$classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" title="get a position on the edge of this object" alt="" coords="243,1158,402,1199"/>
+<area shape="rect" id="node26" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title="would this intersect with another object if it were positioned at the given point" alt="" coords="243,1223,402,1265"/>
+<area shape="rect" id="node27" href="$classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" title="how far is a point from the edge of this object" alt="" coords="246,830,399,871"/>
+<area shape="rect" id="node28" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title="boxed unit selection" alt="" coords="7,1282,163,1323"/>
 <area shape="rect" id="node29" href="$namespaceopenage.xhtml#ac00e0eb95e4253ba49dcc06a9f7f65be" title=" " alt="" coords="243,1289,402,1316"/>
 <area shape="rect" id="node30" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a2858e0798bf7e033c56f6ec653180588" title=" " alt="" coords="239,947,406,1003"/>
-<area shape="rect" id="node33" href="$classopenage_1_1curve_1_1_keyframe_container.xhtml#a5721f82c417b564e2adac32f2ef34492" title=" " alt="" coords="225,1705,420,1746"/>
-<area shape="rect" id="node34" href="$classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" title=" " alt="" coords="229,1770,416,1811"/>
-<area shape="rect" id="node35" href="$classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" title=" " alt="" coords="250,1835,395,1877"/>
-<area shape="rect" id="node36" href="$classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" title=" " alt="" coords="250,1901,395,1942"/>
+<area shape="rect" id="node33" href="$classopenage_1_1curve_1_1_keyframe_container.xhtml#a5721f82c417b564e2adac32f2ef34492" title="need the datamanger for change management" alt="" coords="225,1705,420,1746"/>
+<area shape="rect" id="node34" href="$classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" title="Add an event for a specified target." alt="" coords="229,1770,416,1811"/>
+<area shape="rect" id="node35" href="$classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" title="Execute the events." alt="" coords="250,1835,395,1877"/>
+<area shape="rect" id="node36" href="$classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" title="Call all the time change functions." alt="" coords="250,1901,395,1942"/>
 <area shape="rect" id="node37" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248" title=" " alt="" coords="237,1966,409,2007"/>
-<area shape="rect" id="node38" href="$classopenage_1_1_square_object.xhtml#ac5232c53c071a31afb4be3f6ffe45b10" title=" " alt="" coords="243,2031,402,2073"/>
-<area shape="rect" id="node39" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" title=" " alt="" coords="232,2097,413,2153"/>
-<area shape="rect" id="node41" href="$namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" title=" " alt="" coords="253,2178,393,2219"/>
+<area shape="rect" id="node38" href="$classopenage_1_1_square_object.xhtml#ac5232c53c071a31afb4be3f6ffe45b10" title="the shortest line that can be placed across the objects center" alt="" coords="243,2031,402,2073"/>
+<area shape="rect" id="node39" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" title="See the doc for LZXDecompressor::decompress_next_frame in lzxd.h." alt="" coords="232,2097,413,2153"/>
+<area shape="rect" id="node41" href="$namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" title="Convert a C&#45;style array of uint8_t to a std::vector of uint64_t." alt="" coords="253,2178,393,2219"/>
 <area shape="rect" id="node42" href="$classopenage_1_1convert_1_1binpack_1_1_best_packer.xhtml#a94a5247cf3049d7b95b2937858d0db31" title=" " alt="" coords="238,1406,407,1447"/>
 <area shape="rect" id="node43" href="$namespaceopenage_1_1convert_1_1binpack.xhtml#ac86edd0acbc07bb4b440e2f911ca50f3" title="Heuristic Order blocks by maximum side." alt="" coords="213,1471,432,1513"/>
 <area shape="rect" id="node44" href="$classopenage_1_1util_1_1bytequeue_1_1_byte_buffer.xhtml#a11543b907256b66c6b74af27ebb7c82c" title=" " alt="" coords="229,1537,416,1578"/>

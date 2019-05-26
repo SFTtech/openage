@@ -23,7 +23,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item.xhtml" target="_top" xlink:title="Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads.">
 <polygon fill="white" stroke="black" points="364,-784 364,-841 465,-841 465,-784 364,-784"/>
 <text text-anchor="middle" x="414.5" y="-829" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItem&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="364,-822 465,-822 "/>
@@ -171,7 +171,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item_list_model.xhtml" target="_top" xlink:title="A shell object fir cores inherited from GuiPropertyMap.">
 <polygon fill="white" stroke="black" points="304,-618.5 304,-730.5 459,-730.5 459,-618.5 304,-618.5"/>
 <text text-anchor="middle" x="381.5" y="-718.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemListModel&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="304,-711.5 459,-711.5 "/>

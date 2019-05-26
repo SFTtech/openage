@@ -1,4 +1,4 @@
 <map id="openage::curve::KeyframeContainer::insert" name="openage::curve::KeyframeContainer::insert">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,177,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_keyframe_container.xhtml#a3ffa6f71c0489532547ba12a56fd97bc" title=" " alt="" coords="225,5,397,47"/>
+<area shape="rect" id="node1" title="Create and insert a new element without submitting a hint." alt="" coords="5,5,177,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_keyframe_container.xhtml#a3ffa6f71c0489532547ba12a56fd97bc" title="Insert a new element without a hint." alt="" coords="225,5,397,47"/>
 </map>

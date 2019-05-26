@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 612,-35 612,4 -4,4"/>
 <!-- Node21 -->
 <g id="node1" class="node"><title>Node21</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="should this object be tested for collisions, which decides whether another object is allowed to overl...">
 <polygon fill="#bfbfbf" stroke="black" points="491,-0.5 491,-30.5 608,-30.5 608,-0.5 491,-0.5"/>
 <text text-anchor="start" x="499" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="549.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::check_collisions</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node22 -->
 <g id="node2" class="node"><title>Node22</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="328,-0.5 328,-30.5 455,-30.5 455,-0.5 328,-0.5"/>
 <text text-anchor="start" x="336" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="391.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node23 -->
 <g id="node3" class="node"><title>Node23</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="158,-0.5 158,-30.5 292,-30.5 292,-0.5 158,-0.5"/>
 <text text-anchor="start" x="166" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="225" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node24 -->
 <g id="node4" class="node"><title>Node24</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 122,-30.5 122,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="61" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>

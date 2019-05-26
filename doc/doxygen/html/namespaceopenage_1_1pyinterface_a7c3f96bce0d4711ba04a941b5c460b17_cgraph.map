@@ -1,11 +1,11 @@
 <map id="openage::pyinterface::check" name="openage::pyinterface::check">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,148,80"/>
+<area shape="rect" id="node1" title="Checks whether all objects that have been registered via add_py_if_component have been properly initi..." alt="" coords="5,39,148,80"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="233,21,344,47"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c" title=" " alt="" coords="196,71,381,98"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8" title="Returns the (demangled) symbol name for a given address." alt="" coords="196,71,381,98"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#abe26c67b0463cb53c33b0659ebb89370" title=" " alt="" coords="445,5,574,47"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" title=" " alt="" coords="661,42,807,69"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" title=" " alt="" coords="429,122,589,149"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title=" " alt="" coords="879,42,1031,69"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" title="printf&#45;style to&#45;string formatting." alt="" coords="661,42,807,69"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" title="Demangles a symbol name." alt="" coords="429,122,589,149"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output." alt="" coords="879,42,1031,69"/>
 <area shape="rect" id="node8" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="637,122,831,149"/>
-<area shape="rect" id="node9" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="891,122,1018,149"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="891,122,1018,149"/>
 </map>

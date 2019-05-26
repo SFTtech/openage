@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 429,-84 429,4 -4,4"/>
 <!-- Node5 -->
 <g id="node1" class="node"><title>Node5</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Sets all members except for lineno and level.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-24.5 0,-54.5 130,-54.5 130,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::message</text>
 <text text-anchor="middle" x="65" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::init_with_metadata_copy</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node6 -->
 <g id="node2" class="node"><title>Node6</title>
-<g id="a_node2"><a xlink:href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624" target="_top" xlink:title="Sets all members except for filename, lineno, functionname and level.">
 <polygon fill="white" stroke="black" points="166,-24.5 166,-54.5 284,-54.5 284,-24.5 166,-24.5"/>
 <text text-anchor="start" x="174" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::message</text>
 <text text-anchor="middle" x="225" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::init</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node7 -->
 <g id="node3" class="node"><title>Node7</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f" target="_top" xlink:title="Returns the unique identifier of the current thread.">
 <polygon fill="white" stroke="black" points="324,-49.5 324,-79.5 421,-79.5 421,-49.5 324,-49.5"/>
 <text text-anchor="start" x="332" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::get</text>
 <text text-anchor="middle" x="372.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_current_thread_id</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node8 -->
 <g id="node4" class="node"><title>Node8</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title="returns the number of nanoseconds since the UNIX epoch.">
 <polygon fill="white" stroke="black" points="320,-0.5 320,-30.5 425,-30.5 425,-0.5 320,-0.5"/>
 <text text-anchor="start" x="328" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="372.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_real_time</text>

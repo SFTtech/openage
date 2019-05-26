@@ -65,7 +65,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node46 -->
 <g id="node2" class="node"><title>Node46</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" target="_top" xlink:title="Chebyshev distance cost estimation.">
 <polygon fill="white" stroke="black" points="458,-591.5 458,-610.5 612,-610.5 612,-591.5 458,-591.5"/>
 <text text-anchor="middle" x="535" y="-598.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::chebyshev_cost</text>
 </a>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node51 -->
 <g id="node7" class="node"><title>Node51</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title="how far is a point from the edge of this object">
 <polygon fill="white" stroke="black" points="475.5,-383 475.5,-413 594.5,-413 594.5,-383 475.5,-383"/>
 <text text-anchor="start" x="483.5" y="-401" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="535" y="-390" font-family="Helvetica,sans-Serif" font-size="10.00">::from_edge</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node52 -->
 <g id="node8" class="node"><title>Node52</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" target="_top" xlink:title="how far is a point from the edge of this object">
 <polygon fill="white" stroke="black" points="477.5,-334 477.5,-364 592.5,-364 592.5,-334 477.5,-334"/>
 <text text-anchor="start" x="485.5" y="-352" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RadialObject</text>
 <text text-anchor="middle" x="535" y="-341" font-family="Helvetica,sans-Serif" font-size="10.00">::from_edge</text>
@@ -149,7 +149,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node53 -->
 <g id="node9" class="node"><title>Node53</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="white" stroke="black" points="475.5,-285 475.5,-315 594.5,-315 594.5,-285 475.5,-285"/>
 <text text-anchor="start" x="483.5" y="-303" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="535" y="-292" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>
@@ -163,7 +163,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node54 -->
 <g id="node10" class="node"><title>Node54</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" target="_top" xlink:title="The maximum possible value of this type.">
 <polygon fill="white" stroke="black" points="469,-236 469,-266 601,-266 601,-236 469,-236"/>
 <text text-anchor="start" x="477" y="-254" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="535" y="-243" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::max_value</text>
@@ -177,7 +177,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node55 -->
 <g id="node11" class="node"><title>Node55</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" target="_top" xlink:title="get a position on the edge of this object">
 <polygon fill="white" stroke="black" points="475.5,-187 475.5,-217 594.5,-217 594.5,-187 475.5,-187"/>
 <text text-anchor="start" x="483.5" y="-205" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="535" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">::on_edge</text>
@@ -191,7 +191,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node56 -->
 <g id="node12" class="node"><title>Node56</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="black" points="305,-126 305,-156 422,-156 422,-126 305,-126"/>
 <text text-anchor="start" x="313" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>
@@ -247,7 +247,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node48 -->
 <g id="node4" class="node"><title>Node48</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title="Create a game from a specification.">
 <polygon fill="white" stroke="black" points="312.5,-542 312.5,-572 414.5,-572 414.5,-542 312.5,-542"/>
 <text text-anchor="start" x="320.5" y="-560" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="363.5" y="-549" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>
@@ -275,7 +275,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node58 -->
 <g id="node14" class="node"><title>Node58</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-126 0,-156 116,-156 116,-126 0,-126"/>
 <text text-anchor="start" x="8" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -308,7 +308,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node62 -->
 <g id="node18" class="node"><title>Node62</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title="Retrieves the atlas entry for a specified font and glyph.">
 <polygon fill="white" stroke="black" points="160,-61 160,-91 261,-91 261,-61 160,-61"/>
 <text text-anchor="start" x="168" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="210.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">GlyphAtlas::get</text>
@@ -322,7 +322,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node63 -->
 <g id="node19" class="node"><title>Node63</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title="Render all the text draw requests made during the frame.">
 <polygon fill="white" stroke="black" points="4.5,-61 4.5,-91 111.5,-91 111.5,-61 4.5,-61"/>
 <text text-anchor="start" x="12.5" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="58" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::render</text>

@@ -1,4 +1,4 @@
 <map id="openage::event::DependencyEventClass" name="openage::event::DependencyEventClass">
 <area shape="rect" id="node1" title=" " alt="" coords="5,219,195,311"/>
-<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_class.xhtml" title=" " alt="" coords="9,5,191,171"/>
+<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_class.xhtml" title="A eventclass has to be implemented for every type of event that exists." alt="" coords="9,5,191,171"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-354 118,-354 118,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Manages creation and setup of new games.">
 <polygon fill="#bfbfbf" stroke="black" points="6,-0.5 6,-145.5 108,-145.5 108,-0.5 6,-0.5"/>
 <text text-anchor="middle" x="57" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <polyline fill="none" stroke="black" points="6,-126.5 108,-126.5 "/>

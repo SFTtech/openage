@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>id</name>
         <briefdescription>
+<para>this units unique id value </para>
         </briefdescription>
         <detaileddescription>
-<para>this units unique id value </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -28,9 +28,9 @@
         <argsstring></argsstring>
         <name>unit_type</name>
         <briefdescription>
+<para>type of this object, this is set by the the <ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> which was most recently applied to this unit </para>
         </briefdescription>
         <detaileddescription>
-<para>type of this object, this is set by the the <ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> which was most recently applied to this unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -52,9 +52,10 @@
         <argsstring></argsstring>
         <name>selected</name>
         <briefdescription>
+<para>should selection features be drawn </para>
         </briefdescription>
         <detaileddescription>
-<para>should selection features be drawn <xrefsect id="todo_1_todo000043"><xreftitle>Todo</xreftitle><xrefdescription><para>should be a pointer to selection to be updated when unit is removed, or null if not selected </para>
+<para><xrefsect id="todo_1_todo000043"><xreftitle>Todo</xreftitle><xrefdescription><para>should be a pointer to selection to be updated when unit is removed, or null if not selected </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -71,9 +72,10 @@
         <argsstring></argsstring>
         <name>location</name>
         <briefdescription>
+<para>space on the map used by this unit null if the object is not yet placed or garrisoned </para>
         </briefdescription>
         <detaileddescription>
-<para>space on the map used by this unit null if the object is not yet placed or garrisoned <xrefsect id="todo_1_todo000044"><xreftitle>Todo</xreftitle><xrefdescription><para>make private field </para>
+<para><xrefsect id="todo_1_todo000044"><xreftitle>Todo</xreftitle><xrefdescription><para>make private field </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -89,7 +91,7 @@
         <referencedby refid="classopenage_1_1_repair_ability_1ace3c32d3f619cdc28abfca9fa684b3e2" compoundref="ability_8cpp" startline="307" endline="318">openage::RepairAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_heal_ability_1a9940045e67d852476cf73aec89895218" compoundref="ability_8cpp" startline="335" endline="346">openage::HealAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_convert_ability_1ab1d57e75684c4f50b285a7d8fbeefadb" compoundref="ability_8cpp" startline="381" endline="391">openage::ConvertAbility::can_invoke</referencedby>
-        <referencedby refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</referencedby>
+        <referencedby refid="namespaceopenage_1a8c248986ac22a8251e1f27a6cef087eb" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</referencedby>
         <referencedby refid="classopenage_1_1_target_action_1acd97248a087415b6d08fa3e97e90397d" compoundref="unit_2action_8cpp" startline="290" endline="297">openage::TargetAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_projectile_action_1a588ecb867716c22ac7a571274733ad7a" compoundref="unit_2action_8cpp" startline="1378" endline="1380">openage::ProjectileAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_unit_1ae422123ecc6a2e930ba86e45bf8a5a37" compoundref="unit_8cpp" startline="156" endline="160">draw</referencedby>
@@ -127,9 +129,9 @@
         <argsstring></argsstring>
         <name>attributes</name>
         <briefdescription>
+<para><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> attributes include color, hitpoints, speed, objects garrisoned etc contains 0 or 1 values for each type. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> attributes include color, hitpoints, speed, objects garrisoned etc contains 0 or 1 values for each type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -148,9 +150,9 @@
         <argsstring></argsstring>
         <name>ability_available</name>
         <briefdescription>
+<para>ability available <ndash/> actions that this entity can perform when controlled </para>
         </briefdescription>
         <detaileddescription>
-<para>ability available <ndash/> actions that this entity can perform when controlled </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -166,9 +168,9 @@
         <argsstring></argsstring>
         <name>action_stack</name>
         <briefdescription>
+<para>action stack <ndash/> top action determines graphic to be drawn </para>
         </briefdescription>
         <detaileddescription>
-<para>action stack <ndash/> top action determines graphic to be drawn </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -186,9 +188,9 @@
         <argsstring></argsstring>
         <name>action_secondary</name>
         <briefdescription>
+<para>secondary actions are always updated </para>
         </briefdescription>
         <detaileddescription>
-<para>secondary actions are always updated </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -202,9 +204,9 @@
         <argsstring></argsstring>
         <name>command_queue</name>
         <briefdescription>
+<para>queue commands to be applied on the next update </para>
         </briefdescription>
         <detaileddescription>
-<para>queue commands to be applied on the next update </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -218,9 +220,9 @@
         <argsstring></argsstring>
         <name>command_queue_lock</name>
         <briefdescription>
+<para>mutex controlling updates to the command queue </para>
         </briefdescription>
         <detaileddescription>
-<para>mutex controlling updates to the command queue </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -234,9 +236,9 @@
         <argsstring></argsstring>
         <name>pop_destructables</name>
         <briefdescription>
+<para>pop any destructable actions on the next update cycle and prevent additional actions being added </para>
         </briefdescription>
         <detaileddescription>
-<para>pop any destructable actions on the next update cycle and prevent additional actions being added </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -251,9 +253,9 @@
         <argsstring></argsstring>
         <name>container</name>
         <briefdescription>
+<para>the container that updates this unit </para>
         </briefdescription>
         <detaileddescription>
-<para>the container that updates this unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -290,9 +292,9 @@
         <argsstring>()</argsstring>
         <name>~Unit</name>
         <briefdescription>
+<para>unit cleanup will delete terrain object </para>
         </briefdescription>
         <detaileddescription>
-<para>unit cleanup will delete terrain object </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -319,9 +321,9 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>constructs a new location for this unit replacing any existing locatio </para>
         </briefdescription>
         <detaileddescription>
-<para>constructs a new location for this unit replacing any existing locatio</para>
 <para>uses same args as the location constructor except the first which will filled automatically </para>
         </detaileddescription>
         <inbodydescription>
@@ -338,9 +340,9 @@
         <argsstring>()</argsstring>
         <name>reset</name>
         <briefdescription>
+<para>removes all actions and abilities current attributes are kept </para>
         </briefdescription>
         <detaileddescription>
-<para>removes all actions and abilities current attributes are kept </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -357,9 +359,10 @@
         <argsstring>() const</argsstring>
         <name>has_action</name>
         <briefdescription>
+<para>checks the entity has an action, if it has no action it should be removed from the game </para>
         </briefdescription>
         <detaileddescription>
-<para>checks the entity has an action, if it has no action it should be removed from the game <simplesect kind="return"><para>true if the entity currently has an action </para>
+<para><simplesect kind="return"><para>true if the entity currently has an action </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -376,9 +379,9 @@
         <argsstring>() const</argsstring>
         <name>accept_commands</name>
         <briefdescription>
+<para>true when the unit is alive and able to add new actions </para>
         </briefdescription>
         <detaileddescription>
-<para>true when the unit is alive and able to add new actions </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -397,9 +400,9 @@
           <declname>player</declname>
         </param>
         <briefdescription>
+<para>checks whether the current player is the owner of this unit </para>
         </briefdescription>
         <detaileddescription>
-<para>checks whether the current player is the owner of this unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -414,9 +417,9 @@
         <argsstring>() const</argsstring>
         <name>top</name>
         <briefdescription>
+<para>returns the current action on top of the stack </para>
         </briefdescription>
         <detaileddescription>
-<para>returns the current action on top of the stack </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -439,9 +442,9 @@
           <declname>action</declname>
         </param>
         <briefdescription>
+<para>returns action under the passed action in the stack returns null if stack size is less than 2 </para>
         </briefdescription>
         <detaileddescription>
-<para>returns action under the passed action in the stack returns null if stack size is less than 2 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -458,9 +461,9 @@
           <declname>lastframe_duration</declname>
         </param>
         <briefdescription>
+<para>update this object using the action currently on top of the stack </para>
         </briefdescription>
         <detaileddescription>
-<para>update this object using the action currently on top of the stack </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -484,9 +487,9 @@
           <declname>engine</declname>
         </param>
         <briefdescription>
+<para>draws this action by taking the graphic type of the top action the graphic is found from the current graphic set </para>
         </briefdescription>
         <detaileddescription>
-<para>draws this action by taking the graphic type of the top action the graphic is found from the current graphic set</para>
 <para>this function should be used for most draw purposes </para>
         </detaileddescription>
         <inbodydescription>
@@ -517,9 +520,9 @@
           <declname>engine</declname>
         </param>
         <briefdescription>
+<para>an generalized draw function which is useful for drawing annexes </para>
         </briefdescription>
         <detaileddescription>
-<para>an generalized draw function which is useful for drawing annexes </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -556,9 +559,9 @@
           <declname>engine</declname>
         </param>
         <briefdescription>
+<para>draws with a specific graphic and frame </para>
         </briefdescription>
         <detaileddescription>
-<para>draws with a specific graphic and frame </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -580,9 +583,10 @@
           <defname>ability</defname>
         </param>
         <briefdescription>
+<para>adds an available ability to this unit this turns targeted objects into actions which are pushed onto the stack, eg. </para>
         </briefdescription>
         <detaileddescription>
-<para>adds an available ability to this unit this turns targeted objects into actions which are pushed onto the stack, eg. targeting a relic may push a collect relic action </para>
+<para>targeting a relic may push a collect relic action </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -603,9 +607,9 @@
           <declname>type</declname>
         </param>
         <briefdescription>
+<para>get ability with specified type, null if not available </para>
         </briefdescription>
         <detaileddescription>
-<para>get ability with specified type, null if not available</para>
 <para>To invoke commands use the invoke function instead </para>
         </detaileddescription>
         <inbodydescription>
@@ -628,9 +632,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>adds a new action on top of the action stack will be performed immediately </para>
         </briefdescription>
         <detaileddescription>
-<para>adds a new action on top of the action stack will be performed immediately </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -664,9 +668,9 @@
           <declname>action</declname>
         </param>
         <briefdescription>
+<para>adds a secondary action which is always updated </para>
         </briefdescription>
         <detaileddescription>
-<para>adds a secondary action which is always updated </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -685,9 +689,9 @@
           <declname>attr</declname>
         </param>
         <briefdescription>
+<para>give a new attribute this this unit this is used to set things like color, hitpoints and speed </para>
         </briefdescription>
         <detaileddescription>
-<para>give a new attribute this this unit this is used to set things like color, hitpoints and speed </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -710,9 +714,10 @@
           <declname>attr</declname>
         </param>
         <briefdescription>
+<para>Give new attributes to this unit. </para>
         </briefdescription>
         <detaileddescription>
-<para>Give new attributes to this unit. This is used to add the default attributes </para>
+<para>This is used to add the default attributes </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -739,9 +744,10 @@
           <declname>unshared</declname>
         </param>
         <briefdescription>
+<para>Give new attributes to this unit. </para>
         </briefdescription>
         <detaileddescription>
-<para>Give new attributes to this unit. If shared is false, shared attributes are ignored. If unshared is false, unshared attributes are ignored. </para>
+<para>If shared is false, shared attributes are ignored. If unshared is false, unshared attributes are ignored. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -759,9 +765,9 @@
           <declname>type</declname>
         </param>
         <briefdescription>
+<para>returns whether attribute is available </para>
         </briefdescription>
         <detaileddescription>
-<para>returns whether attribute is available </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -779,7 +785,7 @@
         <referencedby refid="classopenage_1_1_build_ability_1abe9ac45166f48d9a53467f17d0c4efdc" compoundref="ability_8cpp" startline="219" endline="228">openage::BuildAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_gather_ability_1a1cd4ba56c06ddf86a3c07c9da73b831d" compoundref="ability_8cpp" startline="246" endline="255">openage::GatherAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_attack_ability_1aed325cf408ccfcfc099dfad62aa1dbbd" compoundref="ability_8cpp" startline="276" endline="290">openage::AttackAbility::can_invoke</referencedby>
-        <referencedby refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</referencedby>
+        <referencedby refid="namespaceopenage_1a8c248986ac22a8251e1f27a6cef087eb" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</referencedby>
         <referencedby refid="classopenage_1_1_dead_action_1ad89ee79aa618b974b24f76e54e81ec29" compoundref="unit_2action_8cpp" startline="405" endline="413">openage::DeadAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_foundation_action_1acb94c9f36774fdf9f94c7a6fc2ce9df9" compoundref="unit_2action_8cpp" startline="447" endline="451">openage::FoundationAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_idle_action_1af276ff712d523244b3094e091ba576e5" compoundref="unit_2action_8cpp" startline="536" endline="546">openage::IdleAction::completed</referencedby>
@@ -826,9 +832,9 @@
         <argsstring>()</argsstring>
         <name>get_attribute</name>
         <briefdescription>
+<para>returns attribute based on templated value </para>
         </briefdescription>
         <detaileddescription>
-<para>returns attribute based on templated value </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -844,7 +850,7 @@
         <referencedby refid="classopenage_1_1_train_ability_1a283fc7f2b511dff98f13027148710a36" compoundref="ability_8cpp" startline="176" endline="182">openage::TrainAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_research_ability_1a10da07c40e39d110a9f2afdf26f0fb2f" compoundref="ability_8cpp" startline="197" endline="205">openage::ResearchAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_build_ability_1abe9ac45166f48d9a53467f17d0c4efdc" compoundref="ability_8cpp" startline="219" endline="228">openage::BuildAbility::can_invoke</referencedby>
-        <referencedby refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</referencedby>
+        <referencedby refid="namespaceopenage_1a8c248986ac22a8251e1f27a6cef087eb" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</referencedby>
         <referencedby refid="classopenage_1_1_dead_action_1ad89ee79aa618b974b24f76e54e81ec29" compoundref="unit_2action_8cpp" startline="405" endline="413">openage::DeadAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_foundation_action_1acb94c9f36774fdf9f94c7a6fc2ce9df9" compoundref="unit_2action_8cpp" startline="447" endline="451">openage::FoundationAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_idle_action_1af276ff712d523244b3094e091ba576e5" compoundref="unit_2action_8cpp" startline="536" endline="546">openage::IdleAction::completed</referencedby>
@@ -899,9 +905,9 @@
           <declname>cmd</declname>
         </param>
         <briefdescription>
+<para>queues a command to be applied to this unit on the next update </para>
         </briefdescription>
         <detaileddescription>
-<para>queues a command to be applied to this unit on the next update</para>
 <para><simplesect kind="return"><para>the ability which will apply the command if an action was created otherwise nullptr is returned when no ability can handle the command </para>
 </simplesect>
 </para>
@@ -927,9 +933,9 @@
         <argsstring>()</argsstring>
         <name>stop_gather</name>
         <briefdescription>
+<para>removes all gather actions without calling their on_complete actions this cancels the gathering action completely </para>
         </briefdescription>
         <detaileddescription>
-<para>removes all gather actions without calling their on_complete actions this cancels the gathering action completely </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -943,9 +949,9 @@
         <argsstring>()</argsstring>
         <name>stop_actions</name>
         <briefdescription>
+<para>removes all actions above and including the first interuptable action this will stop any of the units current moving or attacking actions a direct command from the user will invoke this function </para>
         </briefdescription>
         <detaileddescription>
-<para>removes all actions above and including the first interuptable action this will stop any of the units current moving or attacking actions a direct command from the user will invoke this function </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -962,9 +968,9 @@
         <argsstring>()</argsstring>
         <name>delete_unit</name>
         <briefdescription>
+<para>begins unit removal by popping some actions </para>
         </briefdescription>
         <detaileddescription>
-<para>begins unit removal by popping some actions</para>
 <para>this is the action that occurs when pressing the delete key which plays death sequence and does not remove instantly </para>
         </detaileddescription>
         <inbodydescription>
@@ -979,9 +985,9 @@
         <argsstring>()</argsstring>
         <name>get_ref</name>
         <briefdescription>
+<para>get a reference which can check against the container to ensure this object still exists </para>
         </briefdescription>
         <detaileddescription>
-<para>get a reference which can check against the container to ensure this object still exists </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1006,9 +1012,9 @@
         <argsstring>() const</argsstring>
         <name>get_container</name>
         <briefdescription>
+<para>the container used when constructing this unit </para>
         </briefdescription>
         <detaileddescription>
-<para>the container used when constructing this unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1024,9 +1030,9 @@
         <name>logsource_name</name>
         <reimplements refid="classopenage_1_1log_1_1_log_source_1a7f4d82915a2298899da93d55ab92e7dc">logsource_name</reimplements>
         <briefdescription>
+<para>Returns the unit&apos;s name as the LogSource name. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the unit&apos;s name as the LogSource name. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1041,9 +1047,9 @@
         <argsstring>()</argsstring>
         <name>apply_all_cmds</name>
         <briefdescription>
+<para>applies new commands as part of the units update process </para>
         </briefdescription>
         <detaileddescription>
-<para>applies new commands as part of the units update process </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1068,9 +1074,9 @@
           <declname>cmd</declname>
         </param>
         <briefdescription>
+<para>applies one command using a chosen ability locks the command queue mutex while operating </para>
         </briefdescription>
         <detaileddescription>
-<para>applies one command using a chosen ability locks the command queue mutex while operating </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1090,9 +1096,9 @@
           <declname>time_elapsed</declname>
         </param>
         <briefdescription>
+<para>update all secondary actions </para>
         </briefdescription>
         <detaileddescription>
-<para>update all secondary actions </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1115,9 +1121,9 @@
           <defval>true</defval>
         </param>
         <briefdescription>
+<para>erase from action specified by func to the end of the stack all actions erased will have the on_complete function called </para>
         </briefdescription>
         <detaileddescription>
-<para>erase from action specified by func to the end of the stack all actions erased will have the on_complete function called</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>run_completed</parametername>
@@ -1140,9 +1146,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A game object with current state represented by a stack of actions since this class represents both unit and building objects it may be better to name as GameObject. </para>
     </briefdescription>
     <detaileddescription>
-<para>A game object with current state represented by a stack of actions since this class represents both unit and building objects it may be better to name as GameObject</para>
 <para>it is possible that abilities are not required here and they could be moved to selection controller <ndash/> units only need the attributes </para>
     </detaileddescription>
     <inheritancegraph>

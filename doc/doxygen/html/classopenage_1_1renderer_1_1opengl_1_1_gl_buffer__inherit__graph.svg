@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-299 123,-299 123,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Represents an OpenGL buffer of memory allocated on the GPU.">
 <polygon fill="#bfbfbf" stroke="black" points="9,-0.5 9,-112.5 110,-112.5 110,-0.5 9,-0.5"/>
 <text text-anchor="start" x="17" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="59.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlBuffer</text>
@@ -28,7 +28,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" target="_top" xlink:title="A base class for all classes representing OpenGL Objects to inherit from.">
 <polygon fill="white" stroke="black" points="0,-149.5 0,-294.5 119,-294.5 119,-149.5 0,-149.5"/>
 <text text-anchor="start" x="8" y="-282.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="59.5" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlSimpleObject</text>

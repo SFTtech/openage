@@ -99,52 +99,71 @@ $(document).ready(function(){initNavTree('classopenage_1_1_texture.xhtml','');})
 </div><!--header-->
 <div class="contents">
 
+<p>A texture for rendering graphically.  
+ <a href="classopenage_1_1_texture.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="texture_8h_source.xhtml">texture.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::Texture:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9e58058cc22522ac149768038cc2dc08"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a9e58058cc22522ac149768038cc2dc08">Texture</a> (int width, int height, std::unique_ptr&lt; uint32_t[]&gt; data)</td></tr>
+<tr class="memdesc:a9e58058cc22522ac149768038cc2dc08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a texture from a rgba8 array.  <a href="#a9e58058cc22522ac149768038cc2dc08">More...</a><br /></td></tr>
 <tr class="separator:a9e58058cc22522ac149768038cc2dc08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a245b2f41a0307ea3553fadfbc777bb54"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a245b2f41a0307ea3553fadfbc777bb54">Texture</a> (const <a class="el" href="classopenage_1_1util_1_1_path.xhtml">util::Path</a> &amp;<a class="el" href="classopenage_1_1_texture.xhtml#a1ff717001fe34c3296fb292d83247326">filename</a>, bool <a class="el" href="classopenage_1_1_texture.xhtml#ad2dc162a91c07aaf2875f3f6e3f8a45b">use_metafile</a>=false)</td></tr>
+<tr class="memdesc:a245b2f41a0307ea3553fadfbc777bb54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a texture from a existing image file.  <a href="#a245b2f41a0307ea3553fadfbc777bb54">More...</a><br /></td></tr>
 <tr class="separator:a245b2f41a0307ea3553fadfbc777bb54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedb0d8e12aa8cc20d364b12a75045a5e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#aedb0d8e12aa8cc20d364b12a75045a5e">~Texture</a> ()</td></tr>
 <tr class="separator:aedb0d8e12aa8cc20d364b12a75045a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bb8ecfa34c39de191c45b95139da3ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">draw</a> (const <a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml">coord::CoordManager</a> &amp;mgr, <a class="el" href="structopenage_1_1coord_1_1camhud.xhtml">coord::camhud</a> pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</td></tr>
+<tr class="memdesc:a0bb8ecfa34c39de191c45b95139da3ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the texture at hud coordinates.  <a href="#a0bb8ecfa34c39de191c45b95139da3ed">More...</a><br /></td></tr>
 <tr class="separator:a0bb8ecfa34c39de191c45b95139da3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6537758244bbe7b99bda2de4a337fb4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a6537758244bbe7b99bda2de4a337fb4d">draw</a> (const <a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml">coord::CoordManager</a> &amp;mgr, <a class="el" href="structopenage_1_1coord_1_1camgame.xhtml">coord::camgame</a> pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</td></tr>
+<tr class="memdesc:a6537758244bbe7b99bda2de4a337fb4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the texture at game coordinates.  <a href="#a6537758244bbe7b99bda2de4a337fb4d">More...</a><br /></td></tr>
 <tr class="separator:a6537758244bbe7b99bda2de4a337fb4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67031aa8a376335fe775cf819b22900c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a67031aa8a376335fe775cf819b22900c">draw</a> (const <a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml">coord::CoordManager</a> &amp;mgr, <a class="el" href="structopenage_1_1coord_1_1phys3.xhtml">coord::phys3</a> pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</td></tr>
+<tr class="memdesc:a67031aa8a376335fe775cf819b22900c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the texture at phys coordinates.  <a href="#a67031aa8a376335fe775cf819b22900c">More...</a><br /></td></tr>
 <tr class="separator:a67031aa8a376335fe775cf819b22900c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac79ebb1a99e21faf9ed7faacdf0d68d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5">draw</a> (const <a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml">coord::CoordManager</a> &amp;mgr, const <a class="el" href="classopenage_1_1_terrain.xhtml">Terrain</a> &amp;terrain, <a class="el" href="structopenage_1_1coord_1_1tile.xhtml">coord::tile</a> pos, unsigned int mode, int subid, <a class="el" href="classopenage_1_1_texture.xhtml">Texture</a> *alpha_texture, int alpha_subid) const</td></tr>
+<tr class="memdesc:ac79ebb1a99e21faf9ed7faacdf0d68d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the texture at tile coordinates.  <a href="#ac79ebb1a99e21faf9ed7faacdf0d68d5">More...</a><br /></td></tr>
 <tr class="separator:ac79ebb1a99e21faf9ed7faacdf0d68d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b4128fc6fd1856fbfc6ece4165fd505"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a6b4128fc6fd1856fbfc6ece4165fd505">draw</a> (<a class="el" href="structopenage_1_1coord_1_1viewport.xhtml">coord::viewport</a> pos, unsigned int mode, bool mirrored, int subid, unsigned player, <a class="el" href="classopenage_1_1_texture.xhtml">Texture</a> *alpha_texture, int alpha_subid) const</td></tr>
+<tr class="memdesc:a6b4128fc6fd1856fbfc6ece4165fd505"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the texture at window coordinates.  <a href="#a6b4128fc6fd1856fbfc6ece4165fd505">More...</a><br /></td></tr>
 <tr class="separator:a6b4128fc6fd1856fbfc6ece4165fd505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac02524c602d22cecd5a06199e113cc43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43">reload</a> ()</td></tr>
+<tr class="memdesc:ac02524c602d22cecd5a06199e113cc43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reload the image file.  <a href="#ac02524c602d22cecd5a06199e113cc43">More...</a><br /></td></tr>
 <tr class="separator:ac02524c602d22cecd5a06199e113cc43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2ba756d0a2a61a5dada563790e3ceec"><td class="memItemLeft" align="right" valign="top">const gamedata::subtexture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec">get_subtexture</a> (uint64_t subid) const</td></tr>
+<tr class="memdesc:aa2ba756d0a2a61a5dada563790e3ceec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the subtexture coordinates by its id.  <a href="#aa2ba756d0a2a61a5dada563790e3ceec">More...</a><br /></td></tr>
 <tr class="separator:aa2ba756d0a2a61a5dada563790e3ceec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4548b2bc3eb5310a97deee94ab536035"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a4548b2bc3eb5310a97deee94ab536035">get_subtexture_count</a> () const</td></tr>
 <tr class="separator:a4548b2bc3eb5310a97deee94ab536035"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b306cf19280092e3fe22340e04f1abd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a0b306cf19280092e3fe22340e04f1abd">get_subtexture_size</a> (uint64_t subid, int *<a class="el" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a>, int *<a class="el" href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">h</a>) const</td></tr>
+<tr class="memdesc:a0b306cf19280092e3fe22340e04f1abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch the size of the given subtexture.  <a href="#a0b306cf19280092e3fe22340e04f1abd">More...</a><br /></td></tr>
 <tr class="separator:a0b306cf19280092e3fe22340e04f1abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a092c7e4cb300b5fda314d0c951d866d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a092c7e4cb300b5fda314d0c951d866d3">get_subtexture_coordinates</a> (uint64_t subid, float *txl, float *txr, float *txt, float *txb) const</td></tr>
+<tr class="memdesc:a092c7e4cb300b5fda314d0c951d866d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">get atlas subtexture coordinates.  <a href="#a092c7e4cb300b5fda314d0c951d866d3">More...</a><br /></td></tr>
 <tr class="separator:a092c7e4cb300b5fda314d0c951d866d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae868f4636be962e32dd7ceb96da2d01c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#ae868f4636be962e32dd7ceb96da2d01c">get_subtexture_coordinates</a> (const gamedata::subtexture *subtex, float *txl, float *txr, float *txt, float *txb) const</td></tr>
 <tr class="separator:ae868f4636be962e32dd7ceb96da2d01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b69e4f44b43bb966b8b5030873c1ddd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a5b69e4f44b43bb966b8b5030873c1ddd">fix_hotspots</a> (unsigned x, unsigned y)</td></tr>
+<tr class="memdesc:a5b69e4f44b43bb966b8b5030873c1ddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">fixes the hotspots of all subtextures to (x,y).  <a href="#a5b69e4f44b43bb966b8b5030873c1ddd">More...</a><br /></td></tr>
 <tr class="separator:a5b69e4f44b43bb966b8b5030873c1ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a622e7c5ad0a837004883818ec8f91147"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a622e7c5ad0a837004883818ec8f91147">activate_alphamask</a> (<a class="el" href="classopenage_1_1_texture.xhtml">Texture</a> *mask, uint64_t subid)</td></tr>
+<tr class="memdesc:a622e7c5ad0a837004883818ec8f91147"><td class="mdescLeft">&#160;</td><td class="mdescRight">activates the influence of a given alpha mask to this texture.  <a href="#a622e7c5ad0a837004883818ec8f91147">More...</a><br /></td></tr>
 <tr class="separator:a622e7c5ad0a837004883818ec8f91147"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc6ca9da94bcd6ada3ada56606ca96dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#abc6ca9da94bcd6ada3ada56606ca96dd">disable_alphamask</a> ()</td></tr>
+<tr class="memdesc:abc6ca9da94bcd6ada3ada56606ca96dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable a previously activated alpha mask.  <a href="#abc6ca9da94bcd6ada3ada56606ca96dd">More...</a><br /></td></tr>
 <tr class="separator:abc6ca9da94bcd6ada3ada56606ca96dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a39cc1e433e023254dabef12fe20490"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490">get_texture_id</a> () const</td></tr>
+<tr class="memdesc:a4a39cc1e433e023254dabef12fe20490"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the opengl texture id of this texture.  <a href="#a4a39cc1e433e023254dabef12fe20490">More...</a><br /></td></tr>
 <tr class="separator:a4a39cc1e433e023254dabef12fe20490"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -159,6 +178,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a1fba0cda4b2ce8306d8f6278e936681a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a1fba0cda4b2ce8306d8f6278e936681a">load</a> ()</td></tr>
 <tr class="separator:a1fba0cda4b2ce8306d8f6278e936681a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3360ead41cd7e078088ae3a5cdf4606b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b">load_in_glthread</a> () const</td></tr>
+<tr class="memdesc:a3360ead41cd7e078088ae3a5cdf4606b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The texture loadin must occur on the thread that manages the gl context.  <a href="#a3360ead41cd7e078088ae3a5cdf4606b">More...</a><br /></td></tr>
 <tr class="separator:a3360ead41cd7e078088ae3a5cdf4606b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a210c36d673ca296a040fdb72da5ee89f"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_texture.xhtml#a210c36d673ca296a040fdb72da5ee89f">make_gl_texture</a> (int iformat, int oformat, int <a class="el" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a>, int <a class="el" href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">h</a>, void *) const</td></tr>
 <tr class="separator:a210c36d673ca296a040fdb72da5ee89f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,7 +197,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1ff717001fe34c3296fb292d83247326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A texture for rendering graphically.</p>
+<div class="textblock"><p>A texture for rendering graphically. </p>
 <p>You may believe it or not, but this class represents a single texture, which can be drawn on the screen.</p>
 <p>The class supports subtextures, so that one big texture can contain several small images. These are the ones actually to be rendered. </p>
 
@@ -214,7 +234,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create a texture from a rgba8 array. It will have w * h * 32bit storage. </p>
+
+<p>Create a texture from a rgba8 array. </p>
+<p>It will have w * h * 32bit storage. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00037">37</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    :</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classopenage_1_1_texture.xhtml#ad2dc162a91c07aaf2875f3f6e3f8a45b">use_metafile</a>{<span class="keyword">false</span>} {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(glGenBuffers != <span class="keyword">nullptr</span>, <span class="stringliteral">&quot;gl not initialized properly&quot;</span>);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a> = width;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">h</a> = height;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a> = std::make_unique&lt;gl_texture_buffer&gt;();</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;transferred = <span class="keyword">false</span>;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;texture_format_in = GL_RGBA8;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;texture_format_out = GL_RGBA;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;data = <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(data);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a27d11c496e6544f5288e3c6d7e732a55">subtextures</a>.push_back({0, 0, this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a>, this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">h</a>, this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a>/2, this-&gt;h/2});</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_ad2dc162a91c07aaf2875f3f6e3f8a45b"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#ad2dc162a91c07aaf2875f3f6e3f8a45b">openage::Texture::use_metafile</a></div><div class="ttdeci">bool use_metafile</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00172">texture.h:172</a></div></div>
@@ -252,7 +274,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create a texture from a existing image file. For supported image file types, see the SDL_Image initialization in the engine. </p>
+
+<p>Create a texture from a existing image file. </p>
+<p>For supported image file types, see the SDL_Image initialization in the engine. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00052">52</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    :</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classopenage_1_1_texture.xhtml#ad2dc162a91c07aaf2875f3f6e3f8a45b">use_metafile</a>{<a class="code" href="classopenage_1_1_texture.xhtml#ad2dc162a91c07aaf2875f3f6e3f8a45b">use_metafile</a>},</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classopenage_1_1_texture.xhtml#a1ff717001fe34c3296fb292d83247326">filename</a>{<a class="code" href="classopenage_1_1_texture.xhtml#a1ff717001fe34c3296fb292d83247326">filename</a>} {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// load the texture upon creation</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a1fba0cda4b2ce8306d8f6278e936681a">load</a>();</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_ad2dc162a91c07aaf2875f3f6e3f8a45b"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#ad2dc162a91c07aaf2875f3f6e3f8a45b">openage::Texture::use_metafile</a></div><div class="ttdeci">bool use_metafile</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00172">texture.h:172</a></div></div>
@@ -318,6 +342,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>activates the influence of a given alpha mask to this texture. </p>
 
 </div>
@@ -336,6 +361,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>disable a previously activated alpha mask. </p>
 
 </div>
@@ -389,10 +415,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Draws the texture at hud coordinates. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00198">198</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                                                     {</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">draw</a>(pos.to_viewport(mgr), mode, mirrored, subid, player, <span class="keyword">nullptr</span>, -1);</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a0bb8ecfa34c39de191c45b95139da3ed"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">openage::Texture::draw</a></div><div class="ttdeci">void draw(const coord::CoordManager &amp;mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00198">texture.cpp:198</a></div></div>
+<div class="fragment"><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                                                     {</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">draw</a>(pos.to_viewport(mgr), mode, mirrored, subid, player, <span class="keyword">nullptr</span>, -1);</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a0bb8ecfa34c39de191c45b95139da3ed"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">openage::Texture::draw</a></div><div class="ttdeci">void draw(const coord::CoordManager &amp;mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</div><div class="ttdoc">Draws the texture at hud coordinates.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00198">texture.cpp:198</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="pixel_8cpp_source.xhtml#l00092">openage::coord::camhud::to_viewport()</a>.</p>
 
@@ -402,14 +429,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a0bb8ecfa34c39de191c45b95139da3ed_cgraph.svg" width="382" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a0bb8ecfa34c39de191c45b95139da3ed_cgraph.svg" width="382" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a0bb8ecfa34c39de191c45b95139da3ed_icgraph.svg" width="383" height="286"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a0bb8ecfa34c39de191c45b95139da3ed_icgraph.svg" width="383" height="286"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -463,10 +492,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Draws the texture at game coordinates. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00205">205</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                                     {</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">draw</a>(pos.to_viewport(mgr), mode, mirrored, subid, player, <span class="keyword">nullptr</span>, -1);</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a0bb8ecfa34c39de191c45b95139da3ed"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">openage::Texture::draw</a></div><div class="ttdeci">void draw(const coord::CoordManager &amp;mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00198">texture.cpp:198</a></div></div>
+<div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                                     {</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">draw</a>(pos.to_viewport(mgr), mode, mirrored, subid, player, <span class="keyword">nullptr</span>, -1);</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a0bb8ecfa34c39de191c45b95139da3ed"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">openage::Texture::draw</a></div><div class="ttdeci">void draw(const coord::CoordManager &amp;mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</div><div class="ttdoc">Draws the texture at hud coordinates.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00198">texture.cpp:198</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture_8cpp_source.xhtml#l00198">draw()</a>, and <a class="el" href="pixel_8cpp_source.xhtml#l00045">openage::coord::camgame::to_viewport()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -474,7 +504,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a6537758244bbe7b99bda2de4a337fb4d_cgraph.svg" width="606" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a6537758244bbe7b99bda2de4a337fb4d_cgraph.svg" width="606" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -528,10 +559,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Draws the texture at phys coordinates. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00212">212</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                                     {</div><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">draw</a>(pos.to_viewport(mgr), mode, mirrored, subid, player, <span class="keyword">nullptr</span>, -1);</div><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a0bb8ecfa34c39de191c45b95139da3ed"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">openage::Texture::draw</a></div><div class="ttdeci">void draw(const coord::CoordManager &amp;mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00198">texture.cpp:198</a></div></div>
+<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                                     {</div><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">draw</a>(pos.to_viewport(mgr), mode, mirrored, subid, player, <span class="keyword">nullptr</span>, -1);</div><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a0bb8ecfa34c39de191c45b95139da3ed"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">openage::Texture::draw</a></div><div class="ttdeci">void draw(const coord::CoordManager &amp;mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</div><div class="ttdoc">Draws the texture at hud coordinates.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00198">texture.cpp:198</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture_8cpp_source.xhtml#l00198">draw()</a>, and <a class="el" href="phys_8cpp_source.xhtml#l00098">openage::coord::phys3::to_viewport()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -539,7 +571,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a67031aa8a376335fe775cf819b22900c_cgraph.svg" width="598" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a67031aa8a376335fe775cf819b22900c_cgraph.svg" width="598" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -599,10 +632,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Draws the texture at tile coordinates. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00219">219</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                                                  {</div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">// currently used for drawing terrain tiles.</span></div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">draw</a>(pos.to_viewport(mgr, terrain), mode, <span class="keyword">false</span>,</div><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;               subid, 0, alpha_texture, alpha_subid);</div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a0bb8ecfa34c39de191c45b95139da3ed"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">openage::Texture::draw</a></div><div class="ttdeci">void draw(const coord::CoordManager &amp;mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00198">texture.cpp:198</a></div></div>
+<div class="fragment"><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                                                  {</div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">// currently used for drawing terrain tiles.</span></div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">draw</a>(pos.to_viewport(mgr, terrain), mode, <span class="keyword">false</span>,</div><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;               subid, 0, alpha_texture, alpha_subid);</div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a0bb8ecfa34c39de191c45b95139da3ed"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed">openage::Texture::draw</a></div><div class="ttdeci">void draw(const coord::CoordManager &amp;mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</div><div class="ttdoc">Draws the texture at hud coordinates.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00198">texture.cpp:198</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture_8cpp_source.xhtml#l00198">draw()</a>, and <a class="el" href="tile_8cpp_source.xhtml#l00055">openage::coord::tile::to_viewport()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -610,7 +644,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_ac79ebb1a99e21faf9ed7faacdf0d68d5_cgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_ac79ebb1a99e21faf9ed7faacdf0d68d5_cgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -670,6 +705,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Draws the texture at window coordinates. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00229">229</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
@@ -682,12 +718,12 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="classopenage_1_1shader_1_1_program_xhtml_ad0d5148a261f1087eae30c200ea54094"><div class="ttname"><a href="classopenage_1_1shader_1_1_program.xhtml#ad0d5148a261f1087eae30c200ea54094">openage::shader::Program::pos_id</a></div><div class="ttdeci">GLint pos_id</div><div class="ttdef"><b>Definition:</b> <a href="program_8h_source.xhtml#l00015">program.h:15</a></div></div>
 <div class="ttc" id="classopenage_1_1shader_1_1_program_xhtml_abfd70a48ce216cf044f558328f8dfa4e"><div class="ttname"><a href="classopenage_1_1shader_1_1_program.xhtml#abfd70a48ce216cf044f558328f8dfa4e">openage::shader::Program::stopusing</a></div><div class="ttdeci">void stopusing()</div><div class="ttdef"><b>Definition:</b> <a href="program_8cpp_source.xhtml#l00110">program.cpp:110</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1texture__shader_xhtml_afc27bd08aad20cadf84d8f39268876af"><div class="ttname"><a href="namespaceopenage_1_1texture__shader.xhtml#afc27bd08aad20cadf84d8f39268876af">openage::texture_shader::tex_coord</a></div><div class="ttdeci">GLint tex_coord</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00023">texture.cpp:23</a></div></div>
-<div class="ttc" id="classopenage_1_1_texture_xhtml_aa2ba756d0a2a61a5dada563790e3ceec"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec">openage::Texture::get_subtexture</a></div><div class="ttdeci">const gamedata::subtexture * get_subtexture(uint64_t subid) const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00400">texture.cpp:400</a></div></div>
+<div class="ttc" id="classopenage_1_1_texture_xhtml_aa2ba756d0a2a61a5dada563790e3ceec"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec">openage::Texture::get_subtexture</a></div><div class="ttdeci">const gamedata::subtexture * get_subtexture(uint64_t subid) const</div><div class="ttdoc">Get the subtexture coordinates by its id.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00400">texture.cpp:400</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1teamcolor__shader_xhtml_a290de9c73d125cfbdbf583ee24cee3c8"><div class="ttname"><a href="namespaceopenage_1_1teamcolor__shader.xhtml#a290de9c73d125cfbdbf583ee24cee3c8">openage::teamcolor_shader::program</a></div><div class="ttdeci">shader::Program * program</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00027">texture.cpp:27</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1alphamask__shader_xhtml_a91d9794fbedeb8a2ca32f79e13c860e3"><div class="ttname"><a href="namespaceopenage_1_1alphamask__shader.xhtml#a91d9794fbedeb8a2ca32f79e13c860e3">openage::alphamask_shader::program</a></div><div class="ttdeci">shader::Program * program</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00033">texture.cpp:33</a></div></div>
-<div class="ttc" id="classopenage_1_1_texture_xhtml_a3360ead41cd7e078088ae3a5cdf4606b"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b">openage::Texture::load_in_glthread</a></div><div class="ttdeci">void load_in_glthread() const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00157">texture.cpp:157</a></div></div>
+<div class="ttc" id="classopenage_1_1_texture_xhtml_a3360ead41cd7e078088ae3a5cdf4606b"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b">openage::Texture::load_in_glthread</a></div><div class="ttdeci">void load_in_glthread() const</div><div class="ttdoc">The texture loadin must occur on the thread that manages the gl context.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00157">texture.cpp:157</a></div></div>
 <div class="ttc" id="classopenage_1_1_texture_xhtml_aae75f4bf910ace9dcb0dfe55f1a6d8d5"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">openage::Texture::buffer</a></div><div class="ttdeci">std::unique_ptr&lt; gl_texture_buffer &gt; buffer</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00170">texture.h:170</a></div></div>
-<div class="ttc" id="classopenage_1_1_texture_xhtml_a092c7e4cb300b5fda314d0c951d866d3"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a092c7e4cb300b5fda314d0c951d866d3">openage::Texture::get_subtexture_coordinates</a></div><div class="ttdeci">void get_subtexture_coordinates(uint64_t subid, float *txl, float *txr, float *txt, float *txb) const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00413">texture.cpp:413</a></div></div>
+<div class="ttc" id="classopenage_1_1_texture_xhtml_a092c7e4cb300b5fda314d0c951d866d3"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a092c7e4cb300b5fda314d0c951d866d3">openage::Texture::get_subtexture_coordinates</a></div><div class="ttdeci">void get_subtexture_coordinates(uint64_t subid, float *txl, float *txr, float *txt, float *txb) const</div><div class="ttdoc">get atlas subtexture coordinates.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00413">texture.cpp:413</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1alphamask__shader_xhtml_a58775bda88577e4b2819a53e55ddd9be"><div class="ttname"><a href="namespaceopenage_1_1alphamask__shader.xhtml#a58775bda88577e4b2819a53e55ddd9be">openage::alphamask_shader::base_coord</a></div><div class="ttdeci">GLint base_coord</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00034">texture.cpp:34</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1teamcolor__shader_xhtml_a0d006aeb703278468eb6e97c4fca9abe"><div class="ttname"><a href="namespaceopenage_1_1teamcolor__shader.xhtml#a0d006aeb703278468eb6e97c4fca9abe">openage::teamcolor_shader::tex_coord</a></div><div class="ttdeci">GLint tex_coord</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00028">texture.cpp:28</a></div></div>
 </div><!-- fragment -->
@@ -697,7 +733,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a6b4128fc6fd1856fbfc6ece4165fd505_cgraph.svg" width="100%" height="540"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a6b4128fc6fd1856fbfc6ece4165fd505_cgraph.svg" width="100%" height="540"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -727,7 +764,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>fixes the hotspots of all subtextures to (x,y). this is a temporary workaround; such fixes should actually be done in the convert script. </p>
+
+<p>fixes the hotspots of all subtextures to (x,y). </p>
+<p>this is a temporary workaround; such fixes should actually be done in the convert script. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00190">190</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                                 {</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;subtexture : this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a27d11c496e6544f5288e3c6d7e732a55">subtextures</a>) {</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        subtexture.cx = x;</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        subtexture.cy = y;</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    }</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a27d11c496e6544f5288e3c6d7e732a55"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a27d11c496e6544f5288e3c6d7e732a55">openage::Texture::subtextures</a></div><div class="ttdeci">std::vector&lt; gamedata::subtexture &gt; subtextures</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00171">texture.h:171</a></div></div>
@@ -751,6 +790,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Get the subtexture coordinates by its id. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00400">400</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
@@ -766,7 +806,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_aa2ba756d0a2a61a5dada563790e3ceec_icgraph.svg" width="100%" height="552"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_aa2ba756d0a2a61a5dada563790e3ceec_icgraph.svg" width="100%" height="552"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -814,12 +855,13 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>get atlas subtexture coordinates.</p>
+
+<p>get atlas subtexture coordinates. </p>
 <p>left, right, top and bottom bounds as coordinates these pick the requested area out of the big texture. returned as floats in range 0.0 to 1.0 </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00413">413</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                                                                       {</div><div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <span class="keyword">const</span> gamedata::subtexture *tx = this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec">get_subtexture</a>(subid);</div><div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a092c7e4cb300b5fda314d0c951d866d3">get_subtexture_coordinates</a>(tx, txl, txr, txt, txb);</div><div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_aa2ba756d0a2a61a5dada563790e3ceec"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec">openage::Texture::get_subtexture</a></div><div class="ttdeci">const gamedata::subtexture * get_subtexture(uint64_t subid) const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00400">texture.cpp:400</a></div></div>
-<div class="ttc" id="classopenage_1_1_texture_xhtml_a092c7e4cb300b5fda314d0c951d866d3"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a092c7e4cb300b5fda314d0c951d866d3">openage::Texture::get_subtexture_coordinates</a></div><div class="ttdeci">void get_subtexture_coordinates(uint64_t subid, float *txl, float *txr, float *txt, float *txb) const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00413">texture.cpp:413</a></div></div>
+<div class="fragment"><div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                                                                       {</div><div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <span class="keyword">const</span> gamedata::subtexture *tx = this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec">get_subtexture</a>(subid);</div><div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a092c7e4cb300b5fda314d0c951d866d3">get_subtexture_coordinates</a>(tx, txl, txr, txt, txb);</div><div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_aa2ba756d0a2a61a5dada563790e3ceec"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec">openage::Texture::get_subtexture</a></div><div class="ttdeci">const gamedata::subtexture * get_subtexture(uint64_t subid) const</div><div class="ttdoc">Get the subtexture coordinates by its id.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00400">texture.cpp:400</a></div></div>
+<div class="ttc" id="classopenage_1_1_texture_xhtml_a092c7e4cb300b5fda314d0c951d866d3"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a092c7e4cb300b5fda314d0c951d866d3">openage::Texture::get_subtexture_coordinates</a></div><div class="ttdeci">void get_subtexture_coordinates(uint64_t subid, float *txl, float *txr, float *txt, float *txb) const</div><div class="ttdoc">get atlas subtexture coordinates.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00413">texture.cpp:413</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture_8cpp_source.xhtml#l00400">get_subtexture()</a>.</p>
 
@@ -829,14 +871,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a092c7e4cb300b5fda314d0c951d866d3_cgraph.svg" width="371" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a092c7e4cb300b5fda314d0c951d866d3_cgraph.svg" width="371" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a092c7e4cb300b5fda314d0c951d866d3_icgraph.svg" width="380" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a092c7e4cb300b5fda314d0c951d866d3_icgraph.svg" width="380" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -920,7 +964,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a4548b2bc3eb5310a97deee94ab536035_icgraph.svg" width="100%" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a4548b2bc3eb5310a97deee94ab536035_icgraph.svg" width="100%" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -956,7 +1001,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Fetch the size of the given subtexture. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Fetch the size of the given subtexture. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">subid</td><td>index of the requested subtexture </td></tr>
     <tr><td class="paramname">w</td><td>the subtexture width </td></tr>
@@ -967,7 +1014,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00436">436</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                                                                      {</div><div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keyword">const</span> gamedata::subtexture *subtex = this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec">get_subtexture</a>(subid);</div><div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    *<a class="code" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a> = subtex-&gt;w;</div><div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    *<a class="code" href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">h</a> = subtex-&gt;h;</div><div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a2954f2796e06c22fc2a08361f565b892"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">openage::Texture::w</a></div><div class="ttdeci">int w</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00073">texture.h:73</a></div></div>
-<div class="ttc" id="classopenage_1_1_texture_xhtml_aa2ba756d0a2a61a5dada563790e3ceec"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec">openage::Texture::get_subtexture</a></div><div class="ttdeci">const gamedata::subtexture * get_subtexture(uint64_t subid) const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00400">texture.cpp:400</a></div></div>
+<div class="ttc" id="classopenage_1_1_texture_xhtml_aa2ba756d0a2a61a5dada563790e3ceec"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec">openage::Texture::get_subtexture</a></div><div class="ttdeci">const gamedata::subtexture * get_subtexture(uint64_t subid) const</div><div class="ttdoc">Get the subtexture coordinates by its id.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00400">texture.cpp:400</a></div></div>
 <div class="ttc" id="classopenage_1_1_texture_xhtml_a615e1dad6c2f29c113da88c1c01270d1"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">openage::Texture::h</a></div><div class="ttdeci">int h</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00074">texture.h:74</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture_8cpp_source.xhtml#l00400">get_subtexture()</a>, <a class="el" href="texture_8h_source.xhtml#l00074">h</a>, and <a class="el" href="texture_8h_source.xhtml#l00073">w</a>.</p>
@@ -976,7 +1023,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a0b306cf19280092e3fe22340e04f1abd_cgraph.svg" width="355" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a0b306cf19280092e3fe22340e04f1abd_cgraph.svg" width="355" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -995,10 +1043,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>returns the opengl texture id of this texture. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00443">443</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                                     {</div><div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b">load_in_glthread</a>();</div><div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;id;</div><div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a3360ead41cd7e078088ae3a5cdf4606b"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b">openage::Texture::load_in_glthread</a></div><div class="ttdeci">void load_in_glthread() const</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00157">texture.cpp:157</a></div></div>
+<div class="fragment"><div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                                     {</div><div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b">load_in_glthread</a>();</div><div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;id;</div><div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a3360ead41cd7e078088ae3a5cdf4606b"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b">openage::Texture::load_in_glthread</a></div><div class="ttdeci">void load_in_glthread() const</div><div class="ttdoc">The texture loadin must occur on the thread that manages the gl context.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00157">texture.cpp:157</a></div></div>
 <div class="ttc" id="classopenage_1_1_texture_xhtml_aae75f4bf910ace9dcb0dfe55f1a6d8d5"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">openage::Texture::buffer</a></div><div class="ttdeci">std::unique_ptr&lt; gl_texture_buffer &gt; buffer</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00170">texture.h:170</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture_8h_source.xhtml#l00170">buffer</a>, and <a class="el" href="texture_8cpp_source.xhtml#l00157">load_in_glthread()</a>.</p>
@@ -1009,14 +1058,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a4a39cc1e433e023254dabef12fe20490_cgraph.svg" width="572" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a4a39cc1e433e023254dabef12fe20490_cgraph.svg" width="572" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a4a39cc1e433e023254dabef12fe20490_icgraph.svg" width="588" height="136"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a4a39cc1e433e023254dabef12fe20490_icgraph.svg" width="588" height="136"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1048,10 +1099,10 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                   {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// \todo use libpng directly.</span></div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    SDL_Surface *surface;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// \todo this will break if there is no native path.</span></div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">//       but then we need to load the image</span></div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">//       from the buffer provided by this-&gt;filename.open_r().read().</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::string native_path = this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a1ff717001fe34c3296fb292d83247326">filename</a>.<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe">resolve_native_path</a>();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    surface = IMG_Load(native_path.c_str());</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">if</span> (!surface) {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">throw</span> Error(</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="stringliteral">&quot;SDL_Image could not load texture from &quot;</span></div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            &lt;&lt; this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a1ff717001fe34c3296fb292d83247326">filename</a> &lt;&lt; <span class="stringliteral">&quot; (= &quot;</span> &lt;&lt; native_path &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            &lt;&lt; IMG_GetError()</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        );</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">dbg</a>) &lt;&lt; <span class="stringliteral">&quot;Texture has been loaded from &quot;</span> &lt;&lt; native_path);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a> = std::make_unique&lt;gl_texture_buffer&gt;();</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// glTexImage2D format determination</span></div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">switch</span> (surface-&gt;format-&gt;BytesPerPixel) {</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">case</span> 3: <span class="comment">// RGB 24 bit</span></div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;texture_format_in = GL_RGB8;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;texture_format_out</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        = surface-&gt;format-&gt;Rmask == 0x000000ff</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        ? GL_RGB</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        : GL_BGR;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">break</span>;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">case</span> 4: <span class="comment">// RGBA 32 bit</span></div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;texture_format_in = GL_RGBA8;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;texture_format_out</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        = surface-&gt;format-&gt;Rmask == 0x000000ff</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        ? GL_RGBA</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        : GL_BGRA;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">break</span>;</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">default</span>:</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="stringliteral">&quot;Unknown texture bit depth for &quot;</span> &lt;&lt; this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a1ff717001fe34c3296fb292d83247326">filename</a> &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            surface-&gt;format-&gt;BytesPerPixel &lt;&lt; <span class="stringliteral">&quot; bytes per pixel&quot;</span>);</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">break</span>;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a> = surface-&gt;w;</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">h</a> = surface-&gt;h;</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// temporary buffer for pixel data</span></div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;transferred = <span class="keyword">false</span>;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;data = std::make_unique&lt;uint32_t[]&gt;(this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a> * this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">h</a>);</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    std::memcpy(</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#aae75f4bf910ace9dcb0dfe55f1a6d8d5">buffer</a>-&gt;data.get(),</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        surface-&gt;pixels,</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a> * this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">h</a> * surface-&gt;format-&gt;BytesPerPixel</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    );</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    SDL_FreeSurface(surface);</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_texture.xhtml#ad2dc162a91c07aaf2875f3f6e3f8a45b">use_metafile</a>) {</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="comment">// get subtexture information from the exported metainfo file</span></div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a27d11c496e6544f5288e3c6d7e732a55">subtextures</a> = util::read_csv_file&lt;gamedata::subtexture&gt;(</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <a class="code" href="classopenage_1_1_texture.xhtml#a1ff717001fe34c3296fb292d83247326">filename</a>.<a class="code" href="classopenage_1_1util_1_1_path.xhtml#aa7993e64af5227c5949074566deadbf6">with_suffix</a>(<span class="stringliteral">&quot;.docx&quot;</span>)</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        );</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="comment">// we don&#39;t have a subtexture description file.</span></div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="comment">// use the whole image as one texture then.</span></div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        gamedata::subtexture s{0, 0, this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a>, this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">h</a>, this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">w</a>/2, this-&gt;h/2};</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a27d11c496e6544f5288e3c6d7e732a55">subtextures</a>.push_back(s);</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_ad2dc162a91c07aaf2875f3f6e3f8a45b"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#ad2dc162a91c07aaf2875f3f6e3f8a45b">openage::Texture::use_metafile</a></div><div class="ttdeci">bool use_metafile</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00172">texture.h:172</a></div></div>
 <div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
-<div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a4ca4da6e9e2d8adadb02373ff2be8ebe"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe">openage::util::Path::resolve_native_path</a></div><div class="ttdeci">std::string resolve_native_path(const std::string &amp;mode=&quot;r&quot;) const</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00163">path.cpp:163</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a4ca4da6e9e2d8adadb02373ff2be8ebe"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe">openage::util::Path::resolve_native_path</a></div><div class="ttdeci">std::string resolve_native_path(const std::string &amp;mode=&quot;r&quot;) const</div><div class="ttdoc">Resolve the native path by flattening all underlying filesystem objects (like unions).</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00163">path.cpp:163</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1log_xhtml_aad3d76b2466dbc4f81552935f2d84faa"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">openage::log.dbg</a></div><div class="ttdeci">def dbg(msg, *args, **kwargs)</div><div class="ttdoc">debug message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00109">__init__.py:109</a></div></div>
 <div class="ttc" id="classopenage_1_1_texture_xhtml_a2954f2796e06c22fc2a08361f565b892"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a2954f2796e06c22fc2a08361f565b892">openage::Texture::w</a></div><div class="ttdeci">int w</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00073">texture.h:73</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdoc">Convenience method that makes use of the 'general' LogSource.</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
 <div class="ttc" id="classopenage_1_1_texture_xhtml_a27d11c496e6544f5288e3c6d7e732a55"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a27d11c496e6544f5288e3c6d7e732a55">openage::Texture::subtextures</a></div><div class="ttdeci">std::vector&lt; gamedata::subtexture &gt; subtextures</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00171">texture.h:171</a></div></div>
 <div class="ttc" id="classopenage_1_1_texture_xhtml_a1ff717001fe34c3296fb292d83247326"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a1ff717001fe34c3296fb292d83247326">openage::Texture::filename</a></div><div class="ttdeci">util::Path filename</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00174">texture.h:174</a></div></div>
 <div class="ttc" id="classopenage_1_1_texture_xhtml_a615e1dad6c2f29c113da88c1c01270d1"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a615e1dad6c2f29c113da88c1c01270d1">openage::Texture::h</a></div><div class="ttdeci">int h</div><div class="ttdef"><b>Definition:</b> <a href="texture_8h_source.xhtml#l00074">texture.h:74</a></div></div>
@@ -1074,7 +1125,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a1fba0cda4b2ce8306d8f6278e936681a_icgraph.svg" width="379" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a1fba0cda4b2ce8306d8f6278e936681a_icgraph.svg" width="379" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1101,6 +1153,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>The texture loadin must occur on the thread that manages the gl context. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00157">157</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
@@ -1115,14 +1168,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-17-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a3360ead41cd7e078088ae3a5cdf4606b_cgraph.svg" width="376" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a3360ead41cd7e078088ae3a5cdf4606b_cgraph.svg" width="376" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-18-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a3360ead41cd7e078088ae3a5cdf4606b_icgraph.svg" width="100%" height="402"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a3360ead41cd7e078088ae3a5cdf4606b_icgraph.svg" width="100%" height="402"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -1191,7 +1246,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-19-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-19-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a210c36d673ca296a040fdb72da5ee89f_icgraph.svg" width="100%" height="402"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a210c36d673ca296a040fdb72da5ee89f_icgraph.svg" width="100%" height="402"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -1210,7 +1266,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Reload the image file. Used for inotify refreshing. </p>
+
+<p>Reload the image file. </p>
+<p>Used for inotify refreshing. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.xhtml#l00179">179</a> of file <a class="el" href="texture_8cpp_source.xhtml">texture.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                     {</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a137e84aed7b62a503d06dfe6301f62fd">unload</a>();</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_texture.xhtml#a1fba0cda4b2ce8306d8f6278e936681a">load</a>();</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div><div class="ttc" id="classopenage_1_1_texture_xhtml_a1fba0cda4b2ce8306d8f6278e936681a"><div class="ttname"><a href="classopenage_1_1_texture.xhtml#a1fba0cda4b2ce8306d8f6278e936681a">openage::Texture::load</a></div><div class="ttdeci">void load()</div><div class="ttdef"><b>Definition:</b> <a href="texture_8cpp_source.xhtml#l00061">texture.cpp:61</a></div></div>
@@ -1262,7 +1320,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-21-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-21-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a137e84aed7b62a503d06dfe6301f62fd_icgraph.svg" width="392" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_texture_a137e84aed7b62a503d06dfe6301f62fd_icgraph.svg" width="392" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

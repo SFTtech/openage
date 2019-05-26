@@ -1,5 +1,5 @@
 <map id="openage::Terrain::check_tile" name="openage::Terrain::check_tile">
-<area shape="rect" id="node1" title=" " alt="" coords="5,46,191,73"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#aa0e35745e96c0b263a74dcf2ec2abffb" title=" " alt="" coords="239,5,400,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" title=" " alt="" coords="247,71,391,112"/>
+<area shape="rect" id="node1" title="checks the creation state and premissions of a given tile position." alt="" coords="5,46,191,73"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#aa0e35745e96c0b263a74dcf2ec2abffb" title="checks whether the given tile position is allowed to exist on this terrain." alt="" coords="239,5,400,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" title="get a terrain chunk by a given chunk position." alt="" coords="247,71,391,112"/>
 </map>

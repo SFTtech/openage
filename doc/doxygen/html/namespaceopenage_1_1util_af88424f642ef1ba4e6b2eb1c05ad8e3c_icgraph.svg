@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 415,-35 415,4 -4,4"/>
 <!-- Node766 -->
 <g id="node1" class="node"><title>Node766</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Extend a vector with elements, without destroying source one.">
 <polygon fill="#bfbfbf" stroke="black" points="307,-0.5 307,-30.5 411,-30.5 411,-0.5 307,-0.5"/>
 <text text-anchor="start" x="315" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vector</text>
 <text text-anchor="middle" x="359" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_extend</text>

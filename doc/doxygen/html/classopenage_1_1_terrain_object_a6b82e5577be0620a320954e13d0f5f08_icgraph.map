@@ -1,12 +1,12 @@
 <map id="openage::TerrainObject::min_axis" name="openage::TerrainObject::min_axis">
-<area shape="rect" id="node1" title=" " alt="" coords="829,40,985,81"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" title=" " alt="" coords="627,9,770,51"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1path.xhtml#a248264f0c87ce0cc7cf00adaf5312934" title=" " alt="" coords="616,78,781,105"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title=" " alt="" coords="412,5,568,47"/>
+<area shape="rect" id="node1" title="the shortest line that can be placed across the objects center" alt="" coords="829,40,985,81"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" title="an object which contains the given point, null otherwise" alt="" coords="627,9,770,51"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1path.xhtml#a047e97b9a81a866f064ad6d6f8dddfd6" title="path between 2 objects, with how close to come to end point" alt="" coords="616,78,781,105"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title="point unit selection" alt="" coords="412,5,568,47"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_unit_selection.xhtml#a6b4a0b9275c8ebf623d50a7509487623" title=" " alt="" coords="208,5,364,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,5,160,47"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" title=" " alt="" coords="422,71,558,112"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_move_action.xhtml#a4e56fc82672dfaf3c62f846afbd6df69" title=" " alt="" coords="417,136,563,177"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="422,71,558,112"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_move_action.xhtml#a4e56fc82672dfaf3c62f846afbd6df69" title="use a star to find a path to target" alt="" coords="417,136,563,177"/>
 <area shape="rect" id="node9" href="$classopenage_1_1_move_action.xhtml#a1b34ceffe821a5ef2afd3c3fc08ae3d1" title=" " alt="" coords="213,103,359,144"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" title=" " alt="" coords="213,168,359,209"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="213,168,359,209"/>
 </map>

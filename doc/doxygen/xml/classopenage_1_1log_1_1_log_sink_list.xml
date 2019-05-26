@@ -255,9 +255,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Holds a list of all registered log sinks; Maintained from the <ref refid="classopenage_1_1log_1_1_log_sink" kindref="compound">LogSink</ref> constructors/destructors. </para>
     </briefdescription>
     <detaileddescription>
-<para>Holds a list of all registered log sinks; Maintained from the <ref refid="classopenage_1_1log_1_1_log_sink" kindref="compound">LogSink</ref> constructors/destructors. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4024">

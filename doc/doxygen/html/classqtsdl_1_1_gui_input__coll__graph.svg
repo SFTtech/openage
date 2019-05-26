@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 84,-84 84,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Converts SDL input events into Qt events.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-79.5 80,-79.5 80,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="40" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiInput</text>
 <polyline fill="none" stroke="black" points="0,-60.5 80,-60.5 "/>

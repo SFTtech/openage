@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-308 908,-308 908,4 -4,4"/>
 <!-- Node124 -->
 <g id="node1" class="node"><title>Node124</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="get a terrain chunk by a given chunk position.">
 <polygon fill="#bfbfbf" stroke="black" points="796,-204.5 796,-234.5 904,-234.5 904,-204.5 796,-204.5"/>
 <text text-anchor="start" x="804" y="-222.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="850" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node125 -->
 <g id="node2" class="node"><title>Node125</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#ab9457472de4a25ef737684e27d1d5810" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#ab9457472de4a25ef737684e27d1d5810" target="_top" xlink:title="checks the creation state and premissions of a given tile position.">
 <polygon fill="white" stroke="black" points="621,-279 621,-298 760,-298 760,-279 621,-279"/>
 <text text-anchor="middle" x="690.5" y="-286" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::check_tile</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node128 -->
 <g id="node5" class="node"><title>Node128</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_terrain.xhtml#a3c3153682d7a70b539ff15f492e0f06b" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_terrain.xhtml#a3c3153682d7a70b539ff15f492e0f06b" target="_top" xlink:title="get a terrain chunk by a given tile position.">
 <polygon fill="white" stroke="black" points="636.5,-229.5 636.5,-259.5 744.5,-259.5 744.5,-229.5 636.5,-229.5"/>
 <text text-anchor="start" x="644.5" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="690.5" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node129 -->
 <g id="node6" class="node"><title>Node129</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" target="_top" xlink:title="get or create a terrain chunk for a given chunk position.">
 <polygon fill="white" stroke="black" points="636.5,-180.5 636.5,-210.5 744.5,-210.5 744.5,-180.5 636.5,-180.5"/>
 <text text-anchor="start" x="644.5" y="-198.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="690.5" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00">_create_chunk</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node134 -->
 <g id="node11" class="node"><title>Node134</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_terrain.xhtml#a437d04e21933a02a08861b50a585135e" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_terrain.xhtml#a437d04e21933a02a08861b50a585135e" target="_top" xlink:title="return tile data for the given position.">
 <polygon fill="white" stroke="black" points="624.5,-64 624.5,-83 756.5,-83 756.5,-64 624.5,-64"/>
 <text text-anchor="middle" x="690.5" y="-71" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get_data</text>
 </a>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node126 -->
 <g id="node3" class="node"><title>Node126</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title="fill the terrain with given terrain_id values.">
 <polygon fill="white" stroke="black" points="478.5,-279 478.5,-298 582.5,-298 582.5,-279 478.5,-279"/>
 <text text-anchor="middle" x="530.5" y="-286" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::fill</text>
 </a>
@@ -134,7 +134,7 @@
 </g>
 <!-- Node133 -->
 <g id="node10" class="node"><title>Node133</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_terrain.xhtml#a9fc8a00464422b06cd5ea0dbda4c7d2f" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_terrain.xhtml#a9fc8a00464422b06cd5ea0dbda4c7d2f" target="_top" xlink:title="get or create a terrain chunk for a given tile position.">
 <polygon fill="white" stroke="black" points="476.5,-131.5 476.5,-161.5 584.5,-161.5 584.5,-131.5 476.5,-131.5"/>
 <text text-anchor="start" x="484.5" y="-149.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="530.5" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">_create_chunk</text>
@@ -148,7 +148,7 @@
 </g>
 <!-- Node131 -->
 <g id="node8" class="node"><title>Node131</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="314.5,-202.5 314.5,-232.5 430.5,-232.5 430.5,-202.5 314.5,-202.5"/>
 <text text-anchor="start" x="322.5" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="372.5" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -167,7 +167,7 @@
 </g>
 <!-- Node135 -->
 <g id="node12" class="node"><title>Node135</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" target="_top" xlink:title="an object which contains the given point, null otherwise">
 <polygon fill="white" stroke="black" points="477,-82.5 477,-112.5 584,-112.5 584,-82.5 477,-82.5"/>
 <text text-anchor="start" x="485" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::obj</text>
 <text text-anchor="middle" x="530.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">_at_point</text>
@@ -181,7 +181,7 @@
 </g>
 <!-- Node139 -->
 <g id="node16" class="node"><title>Node139</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" target="_top" xlink:title="gather neighbors of a given base tile.">
 <polygon fill="white" stroke="black" points="476.5,-33.5 476.5,-63.5 584.5,-63.5 584.5,-33.5 476.5,-33.5"/>
 <text text-anchor="start" x="484.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="530.5" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">_neighbors</text>
@@ -195,7 +195,7 @@
 </g>
 <!-- Node140 -->
 <g id="node17" class="node"><title>Node140</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="black" points="314,-0.5 314,-30.5 431,-30.5 431,-0.5 314,-0.5"/>
 <text text-anchor="start" x="322" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="372.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>
@@ -209,7 +209,7 @@
 </g>
 <!-- Node136 -->
 <g id="node13" class="node"><title>Node136</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title="point unit selection">
 <polygon fill="white" stroke="black" points="314,-60.5 314,-90.5 431,-90.5 431,-60.5 314,-60.5"/>
 <text text-anchor="start" x="322" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="372.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_point</text>
@@ -237,7 +237,7 @@
 </g>
 <!-- Node138 -->
 <g id="node15" class="node"><title>Node138</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-30.5 0,-60.5 116,-60.5 116,-30.5 0,-30.5"/>
 <text text-anchor="start" x="8" y="-48.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-37.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

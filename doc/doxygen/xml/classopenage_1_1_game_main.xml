@@ -11,22 +11,22 @@
         <argsstring></argsstring>
         <name>terrain</name>
         <briefdescription>
+<para>map information </para>
         </briefdescription>
         <detaileddescription>
-<para>map information </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="72" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" compoundref="generator_8cpp" startline="252" endline="301">openage::Generator::add_units</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1a7b0a0d95b032af2e9bf2ede80bca03c8" compoundref="game__control_8cpp" startline="390" endline="409">openage::ActionMode::get_action</referencedby>
-        <referencedby refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1ae6761d88280466d1d1b5c638e7c7a042" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
         <referencedby refid="namespaceopenage_1_1gameio_1ac86e0756708907f826cb04e6f13d588d" compoundref="game__save_8cpp" startline="33" endline="54">openage::gameio::load_unit</referencedby>
         <referencedby refid="classopenage_1_1_game_renderer_1a0cc83cf1a6697522d581d220661081a4" compoundref="game__renderer_8cpp" startline="199" endline="213">openage::GameRenderer::on_draw</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
         <referencedby refid="classopenage_1_1_editor_mode_1a1430647b024d4c9e7021756a6fa9700d" compoundref="game__control_8cpp" startline="625" endline="649">openage::EditorMode::paint_entity_at</referencedby>
         <referencedby refid="classopenage_1_1_editor_mode_1a1f47d053e9c09aaf9bc6ec3a85f4a49e" compoundref="game__control_8cpp" startline="615" endline="623">openage::EditorMode::paint_terrain_at</referencedby>
-        <referencedby refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1afc1134c3c633c8bddb614ecb3da48eb2" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_game_main_1a9499997a06046df21b4c76940c8d704d" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classopenage_1_1_team" kindref="compound">Team</ref> &gt;</type>
@@ -34,9 +34,9 @@
         <argsstring></argsstring>
         <name>teams</name>
         <briefdescription>
+<para>all teams in the game </para>
         </briefdescription>
         <detaileddescription>
-<para>all teams in the game </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -50,9 +50,9 @@
         <argsstring></argsstring>
         <name>market</name>
         <briefdescription>
+<para>The global market (the global market prices). </para>
         </briefdescription>
         <detaileddescription>
-<para>The global market (the global market prices). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -64,20 +64,20 @@
         <argsstring></argsstring>
         <name>placed_units</name>
         <briefdescription>
+<para>all the objects that have been placed. </para>
         </briefdescription>
         <detaileddescription>
-<para>all the objects that have been placed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="87" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" compoundref="generator_8cpp" startline="252" endline="301">openage::Generator::add_units</referencedby>
-        <referencedby refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1ae6761d88280466d1d1b5c638e7c7a042" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
         <referencedby refid="namespaceopenage_1_1gameio_1ac86e0756708907f826cb04e6f13d588d" compoundref="game__save_8cpp" startline="33" endline="54">openage::gameio::load_unit</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
         <referencedby refid="classopenage_1_1_editor_mode_1a1430647b024d4c9e7021756a6fa9700d" compoundref="game__control_8cpp" startline="625" endline="649">openage::EditorMode::paint_entity_at</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1a3865e557756044d8183a3d24cd5b8ab4" compoundref="game__control_8cpp" startline="411" endline="443">openage::ActionMode::place_selection</referencedby>
-        <referencedby refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1afc1134c3c633c8bddb614ecb3da48eb2" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
         <referencedby refid="classopenage_1_1_game_main_1a0bec5982fb6c7685722b204ce199e458" compoundref="game__main_8cpp" startline="63" endline="65">update</referencedby>
       </memberdef>
       </sectiondef>
@@ -88,9 +88,9 @@
         <argsstring></argsstring>
         <name>players</name>
         <briefdescription>
+<para>all players in the game no objects should be added of removed once populated </para>
         </briefdescription>
         <detaileddescription>
-<para>all players in the game no objects should be added of removed once populated </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -102,9 +102,9 @@
         <argsstring></argsstring>
         <name>civs</name>
         <briefdescription>
+<para>civs used in this game </para>
         </briefdescription>
         <detaileddescription>
-<para>civs used in this game </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -164,9 +164,9 @@
         <argsstring>() const</argsstring>
         <name>player_count</name>
         <briefdescription>
+<para>the number of players </para>
         </briefdescription>
         <detaileddescription>
-<para>the number of players </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -182,9 +182,9 @@
           <declname>player_id</declname>
         </param>
         <briefdescription>
+<para>player by index </para>
         </briefdescription>
         <detaileddescription>
-<para>player by index </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -198,9 +198,9 @@
         <argsstring>() const</argsstring>
         <name>team_count</name>
         <briefdescription>
+<para>the number of teams </para>
         </briefdescription>
         <detaileddescription>
-<para>the number of teams </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -217,9 +217,9 @@
           <declname>team_id</declname>
         </param>
         <briefdescription>
+<para>team by id </para>
         </briefdescription>
         <detaileddescription>
-<para>team by id </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -232,9 +232,9 @@
         <argsstring>()</argsstring>
         <name>get_spec</name>
         <briefdescription>
+<para>the spec in this games settings </para>
         </briefdescription>
         <detaileddescription>
-<para>the spec in this games settings </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -252,9 +252,9 @@
           <declname>lastframe_duration</declname>
         </param>
         <briefdescription>
+<para>updates the game by one frame </para>
         </briefdescription>
         <detaileddescription>
-<para>updates the game by one frame </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -274,9 +274,9 @@
           <declname>civ_id</declname>
         </param>
         <briefdescription>
+<para>creates a random civ, owned and managed by this game </para>
         </briefdescription>
         <detaileddescription>
-<para>creates a random civ, owned and managed by this game </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -286,9 +286,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Contains information for a single game This information must be synced across network clients. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains information for a single game This information must be synced across network clients</para>
 <para><xrefsect id="todo_1_todo000013"><xreftitle>Todo</xreftitle><xrefdescription><para>include a list of actions to be saved as the game replay file </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>

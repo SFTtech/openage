@@ -47,9 +47,10 @@
         <name>update_score</name>
         <reimplements refid="classopenage_1_1_score_1ad71b795068636d35bd174acde2e080fd">update_score</reimplements>
         <briefdescription>
+<para>Calculates the total score from the sub-scores. </para>
         </briefdescription>
         <detaileddescription>
-<para>Calculates the total score from the sub-scores. <xrefsect id="todo_1_todo000019"><xreftitle>Todo</xreftitle><xrefdescription><para>update gui here </para>
+<para><xrefsect id="todo_1_todo000019"><xreftitle>Todo</xreftitle><xrefdescription><para>update gui here </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -63,9 +64,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The score of a player. </para>
     </briefdescription>
     <detaileddescription>
-<para>The score of a player </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4489">

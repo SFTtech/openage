@@ -1,8 +1,8 @@
 <map id="openage::path::tests::node_passable_line_0" name="openage::path::tests::node_passable_line_0">
-<area shape="rect" id="node1" title=" " alt="" coords="5,100,164,141"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1path_1_1tests.xhtml#a324ebb21684cd1e29b46c01160ad4287" title=" " alt="" coords="237,5,378,47"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1path_1_1tests.xhtml#acebd36a125f535d815cd34536e4f1f1f" title=" " alt="" coords="237,71,378,112"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1path.xhtml#a2752186f11f3e1a26c7a72c647e7ccdd" title=" " alt="" coords="212,137,403,163"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1path_1_1tests.xhtml#ab0beb56de41e9380fbf8abf6b50759af" title=" " alt="" coords="231,188,384,229"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" title=" " alt="" coords="451,129,617,171"/>
+<area shape="rect" id="node1" title="This function tests passable_line." alt="" coords="5,100,164,141"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1path_1_1tests.xhtml#a324ebb21684cd1e29b46c01160ad4287" title="This is a helper passable function that alwalys returns true." alt="" coords="237,5,378,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1path_1_1tests.xhtml#acebd36a125f535d815cd34536e4f1f1f" title="This is a helper passable function that always returns false." alt="" coords="237,71,378,112"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1path.xhtml#a4fb2450790038eed534dfe29ad57d350" title=" " alt="" coords="212,137,403,163"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1path_1_1tests.xhtml#ab0beb56de41e9380fbf8abf6b50759af" title="This is a helper passable function that only returns true when pos.ne == 20." alt="" coords="231,188,384,229"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" title="Converter to retrieve the number as double." alt="" coords="451,129,617,171"/>
 </map>

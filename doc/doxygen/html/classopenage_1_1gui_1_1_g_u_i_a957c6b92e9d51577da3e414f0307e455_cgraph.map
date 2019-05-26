@@ -1,4 +1,4 @@
 <map id="openage::gui::GUI::on_input" name="openage::gui::GUI::on_input">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,140,47"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_input.xhtml#ae7fdec19c83d1cd4dd0bb2d06fa1a8ae" title=" " alt="" coords="188,13,348,39"/>
+<area shape="rect" id="node1" title="execute the input handler." alt="" coords="5,5,140,47"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_input.xhtml#ae7fdec19c83d1cd4dd0bb2d06fa1a8ae" title="Returns true if the event was accepted." alt="" coords="188,13,348,39"/>
 </map>

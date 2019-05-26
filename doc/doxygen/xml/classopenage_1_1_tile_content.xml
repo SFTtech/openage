@@ -110,9 +110,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>describes the properties of one terrain tile. </para>
     </briefdescription>
     <detaileddescription>
-<para>describes the properties of one terrain tile.</para>
 <para>this includes the terrain_id (ice, water, grass, ...) and the list of objects which have a bounding box overlapping the tile </para>
     </detaileddescription>
     <collaborationgraph>

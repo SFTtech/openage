@@ -99,20 +99,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1log_1_1_log_sink.xhtml
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract base for classes that - in one way or an other - print log messages.  
+ <a href="classopenage_1_1log_1_1_log_sink.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="logsink_8h_source.xhtml">logsink.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::log::LogSink:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink__inherit__graph.svg" width="548" height="287"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink__inherit__graph.svg" width="548" height="287"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::log::LogSink:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -127,6 +132,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a93df8d54f1632b8066c15e23b3632a23"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1log_1_1_log_sink.xhtml#a93df8d54f1632b8066c15e23b3632a23">output_log_message</a> (const struct <a class="el" href="structopenage_1_1log_1_1message.xhtml">message</a> &amp;msg, class <a class="el" href="classopenage_1_1log_1_1_log_source.xhtml">LogSource</a> *source)=0</td></tr>
+<tr class="memdesc:a93df8d54f1632b8066c15e23b3632a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called internally by put_log_message if a message is accepted.  <a href="#a93df8d54f1632b8066c15e23b3632a23">More...</a><br /></td></tr>
 <tr class="separator:a93df8d54f1632b8066c15e23b3632a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -140,7 +146,7 @@ Friends</h2></td></tr>
 <tr class="separator:a430da85acad56bcf974bf09ec2ecba7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract base for classes that - in one way or an other - print log messages.</p>
+<div class="textblock"><p>Abstract base for classes that - in one way or an other - print log messages. </p>
 <p>Instances of this class are automatically added to LogSource::global_sink_list vector by their constructors (and removed by their destructors). </p>
 
 <p class="definition">Definition at line <a class="el" href="logsink_8h_source.xhtml#l00020">20</a> of file <a class="el" href="logsink_8h_source.xhtml">logsink.h</a>.</p>
@@ -172,7 +178,8 @@ Friends</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_aea8f646801e461e689465c769f63136c_cgraph.svg" width="100%" height="441"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_aea8f646801e461e689465c769f63136c_cgraph.svg" width="100%" height="441"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -210,7 +217,8 @@ Friends</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_a39411101da7dacb22ae1bea3f6a1f5e6_cgraph.svg" width="100%" height="412"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_a39411101da7dacb22ae1bea3f6a1f5e6_cgraph.svg" width="100%" height="412"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -249,7 +257,8 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Called internally by put_log_message if a message is accepted </p>
+
+<p>Called internally by put_log_message if a message is accepted. </p>
 
 </div>
 </div>
@@ -268,7 +277,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000024">Todo:</a></b></dt><dd>Add iptables-like chains that decide whether a message will be logged, depending on msg.info, logger id, thread id, etc. This member variable is only a make-shift solution with obvious limitations. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000024">Todo:</a></b></dt><dd>Add iptables-like chains that decide whether a message will be logged, depending on msg.info, logger id, thread id, etc.</dd></dl>
+<p>This member variable is only a make-shift solution with obvious limitations. </p>
 
 <p class="definition">Definition at line <a class="el" href="logsink_8cpp_source.xhtml#l00025">25</a> of file <a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                         {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink.xhtml#a3ae8124ae0d14babd800567c9f55493a">loglevel</a> = <a class="code" href="classopenage_1_1log_1_1_log_sink.xhtml#a3ae8124ae0d14babd800567c9f55493a">loglevel</a>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84">LogSinkList::instance</a>().<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#a92501d950b96e9c1978e9112f91773d2">loglevel_changed</a>();</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div><div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_a2d47416fab12651553b4b58c86fd6f84"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84">openage::log::LogSinkList::instance</a></div><div class="ttdeci">static LogSinkList &amp; instance()</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8cpp_source.xhtml#l00036">logsink.cpp:36</a></div></div>
@@ -283,14 +293,16 @@ Friends</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_ac795e3966c4816c4c09fab3a68642cca_cgraph.svg" width="100%" height="412"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_ac795e3966c4816c4c09fab3a68642cca_cgraph.svg" width="100%" height="412"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_ac795e3966c4816c4c09fab3a68642cca_icgraph.svg" width="364" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_ac795e3966c4816c4c09fab3a68642cca_icgraph.svg" width="364" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

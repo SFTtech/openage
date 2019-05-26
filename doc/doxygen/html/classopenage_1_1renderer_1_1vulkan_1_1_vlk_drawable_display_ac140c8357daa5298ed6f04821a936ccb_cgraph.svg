@@ -103,7 +103,7 @@
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="355,-57 355,-87 480,-87 480,-57 355,-57"/>
 <text text-anchor="start" x="363" y="-75" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="417.5" y="-64" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="355,-8 355,-38 480,-38 480,-8 355,-8"/>
 <text text-anchor="start" x="363" y="-26" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="417.5" y="-15" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

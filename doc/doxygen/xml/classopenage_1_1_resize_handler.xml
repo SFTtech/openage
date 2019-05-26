@@ -33,9 +33,9 @@
           <declname>new_size</declname>
         </param>
         <briefdescription>
+<para>execute the resize handler. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the resize handler. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -43,9 +43,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>superclass for handling a window resize event. </para>
     </briefdescription>
     <detaileddescription>
-<para>superclass for handling a window resize event. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="5013">

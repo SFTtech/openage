@@ -1,5 +1,5 @@
 <map id="openage::renderer::opengl::GlTexture2dArray" name="openage::renderer::opengl::GlTexture2dArray">
 <area shape="rect" id="node1" title="An OpenGL array of 2D textures." alt="" coords="77,248,246,369"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_texture2d_array.xhtml" title=" " alt="" coords="5,35,144,171"/>
-<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" title=" " alt="" coords="169,5,327,200"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_texture2d_array.xhtml" title="A texture array, where individual elements are 2D textures." alt="" coords="5,35,144,171"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" title="A base class for all classes representing OpenGL Objects to inherit from." alt="" coords="169,5,327,200"/>
 </map>

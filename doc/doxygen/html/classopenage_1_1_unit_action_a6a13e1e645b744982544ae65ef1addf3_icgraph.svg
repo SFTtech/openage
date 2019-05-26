@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-108 400,-108 400,4 -4,4"/>
 <!-- Node5 -->
 <g id="node1" class="node"><title>Node5</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="a small distance to which units are considered touching when within this distance">
 <polygon fill="#bfbfbf" stroke="black" points="292,-24.5 292,-54.5 396,-54.5 396,-24.5 292,-24.5"/>
 <text text-anchor="start" x="300" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAction</text>
 <text text-anchor="middle" x="344" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::adjacent_range</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node6 -->
 <g id="node2" class="node"><title>Node6</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17" target="_top" xlink:title="looks at an ranged attributes on the unit otherwise returns same as adjacent_range()">
 <polygon fill="white" stroke="black" points="152,-49.5 152,-79.5 256,-79.5 256,-49.5 152,-49.5"/>
 <text text-anchor="start" x="160" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAction</text>
 <text text-anchor="middle" x="204" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_attack_range</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node9 -->
 <g id="node5" class="node"><title>Node9</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_unit_action.xhtml#a40320d4e1be2a48373f5b9b0f6bef2ef" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_unit_action.xhtml#a40320d4e1be2a48373f5b9b0f6bef2ef" target="_top" xlink:title="looks at heal attribute on the unit otherwise returns same as adjacent_range()">
 <polygon fill="white" stroke="black" points="152,-0.5 152,-30.5 256,-30.5 256,-0.5 152,-0.5"/>
 <text text-anchor="start" x="160" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAction</text>
 <text text-anchor="middle" x="204" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_heal_range</text>

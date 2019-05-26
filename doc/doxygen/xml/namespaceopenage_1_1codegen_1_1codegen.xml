@@ -109,7 +109,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="266" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="266" bodyend="294"/>
         <references refid="namespaceopenage_1_1codegen_1_1codegen_1a7cce911eb4c73e57753d1a055e95549b" compoundref="codegen_8py" startline="250" endline="262">openage.codegen.codegen.get_header_lines</references>
-        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+        <references refid="namespaceopenage_1_1util_1a9556b8562574e2c6ad102d8fd87569c6" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
         <referencedby refid="namespaceopenage_1_1codegen_1_1codegen_1ae7b44d30354970dff216b8f5d58fdd02" compoundref="codegen_8py" startline="118" endline="180">openage.codegen.codegen.codegen</referencedby>
       </memberdef>
       </sectiondef>

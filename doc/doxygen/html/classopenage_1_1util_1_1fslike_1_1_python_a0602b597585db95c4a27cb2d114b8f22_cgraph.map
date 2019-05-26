@@ -1,6 +1,6 @@
 <map id="openage::util::fslike::Python::get_native_path" name="openage::util::fslike::Python::get_native_path">
 <area shape="rect" id="node1" title=" " alt="" coords="5,39,175,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a76e2c7f1e3147d1d726d5c277daff1f8" title=" " alt="" coords="223,5,365,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a078ffdebeb6488c9b045d8d49f0f47de" title=" " alt="" coords="223,71,365,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639" title=" " alt="" coords="413,71,564,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a76e2c7f1e3147d1d726d5c277daff1f8" title="bytes(obj)" alt="" coords="223,5,365,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a078ffdebeb6488c9b045d8d49f0f47de" title="obj is other" alt="" coords="223,71,365,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639" title="Provide the internal PyObject *." alt="" coords="413,71,564,112"/>
 </map>

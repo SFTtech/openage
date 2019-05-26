@@ -1,5 +1,5 @@
 <map id="openage::gui::GameSpecLink::invalidate" name="openage::gui::GameSpecLink::invalidate">
 <area shape="rect" id="node1" title=" " alt="" coords="5,39,199,80"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774" title=" " alt="" coords="267,5,420,47"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774" title="Invoke a function in the logic thread (the thread of the core of this object)." alt="" coords="267,5,420,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_game_spec_link.xhtml#ab53e294931ed276b40c9ebb791c79e98" title=" " alt="" coords="247,71,440,112"/>
 </map>

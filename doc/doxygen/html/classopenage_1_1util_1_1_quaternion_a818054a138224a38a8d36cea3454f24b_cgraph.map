@@ -1,4 +1,4 @@
 <map id="openage::util::Quaternion::operator *" name="openage::util::Quaternion::operator *">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,172,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_vector.xhtml#ab33cee057269a707f1f8a5f58944a5a4" title=" " alt="" coords="220,5,363,47"/>
+<area shape="rect" id="node1" title="Transforms a vector by this quaternion." alt="" coords="5,5,172,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_vector.xhtml#ab33cee057269a707f1f8a5f58944a5a4" title="Cross&#45;product of two 3&#45;dimensional vectors." alt="" coords="220,5,363,47"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 426,-35 426,4 -4,4"/>
 <!-- Node214 -->
 <g id="node1" class="node"><title>Node214</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="boxed unit selection">
 <polygon fill="#bfbfbf" stroke="black" points="305,-0.5 305,-30.5 422,-30.5 422,-0.5 305,-0.5"/>
 <text text-anchor="start" x="313" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node216 -->
 <g id="node3" class="node"><title>Node216</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 116,-30.5 116,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

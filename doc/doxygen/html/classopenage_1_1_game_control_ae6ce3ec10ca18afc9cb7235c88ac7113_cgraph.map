@@ -4,5 +4,5 @@
 <area shape="rect" id="node3" href="$classopenage_1_1_game_control.xhtml#a3d4b9fbef261d19138ba87083e4083a5" title=" " alt="" coords="455,35,669,76"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_game_control.xhtml#aa7c61c3caafc810355005e83c8f234e2" title=" " alt="" coords="717,5,872,47"/>
 <area shape="rect" id="node6" href="$namespacestd.xhtml#a26aa0f4be3a77ac5cc3ce0cabb545042" title=" " alt="" coords="745,71,844,98"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title=" " alt="" coords="920,13,1104,39"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title="return currently running game or null if a game is not currently running" alt="" coords="920,13,1104,39"/>
 </map>

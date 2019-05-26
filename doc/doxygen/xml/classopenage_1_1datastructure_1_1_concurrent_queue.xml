@@ -17,9 +17,9 @@
         <argsstring></argsstring>
         <name>mutex_t</name>
         <briefdescription>
+<para>Type of mutex used for the queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type of mutex used for the queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -33,9 +33,9 @@
         <argsstring></argsstring>
         <name>queue</name>
         <briefdescription>
+<para>The internally used queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>The internally used queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -57,9 +57,9 @@
         <argsstring></argsstring>
         <name>mutex</name>
         <briefdescription>
+<para>The mutex to synchronize the queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>The mutex to synchronize the queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -79,9 +79,9 @@
         <argsstring></argsstring>
         <name>elements_available</name>
         <briefdescription>
+<para>Condition variable to signal, whether elements are avaiable from the queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>Condition variable to signal, whether elements are avaiable from the queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -98,9 +98,9 @@
         <argsstring>()</argsstring>
         <name>clear</name>
         <briefdescription>
+<para>Removes all elements from the queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>Removes all elements from the queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -112,9 +112,9 @@
         <argsstring>()</argsstring>
         <name>empty</name>
         <briefdescription>
+<para>Returns whether the queue is empty. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns whether the queue is empty. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -126,9 +126,9 @@
         <argsstring>()</argsstring>
         <name>front</name>
         <briefdescription>
+<para>Returns the front item of the queue without removing it. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the front item of the queue without removing it. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -140,9 +140,9 @@
         <argsstring>()</argsstring>
         <name>pop</name>
         <briefdescription>
+<para>Removes the front item of the queue and returns it. </para>
         </briefdescription>
         <detaileddescription>
-<para>Removes the front item of the queue and returns it. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -158,9 +158,9 @@
           <declname>item</declname>
         </param>
         <briefdescription>
+<para>Appends the given item to the queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>Appends the given item to the queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -172,9 +172,9 @@
         <argsstring>()</argsstring>
         <name>lock</name>
         <briefdescription>
+<para>Return a lock to the queue so multiple of the above operations can be done sequentially. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return a lock to the queue so multiple of the above operations can be done sequentially </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -187,9 +187,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A threadsafe queue. </para>
     </briefdescription>
     <detaileddescription>
-<para>A threadsafe queue. Wraps the std::queue with a mutex.</para>
+<para>Wraps the std::queue with a mutex.</para>
 <para>Supports waiting for data from another thread. </para>
     </detaileddescription>
     <inheritancegraph>

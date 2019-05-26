@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>parent_worker</name>
         <briefdescription>
+<para>The parent worker that executes all jobs from this job group. </para>
         </briefdescription>
         <detaileddescription>
-<para>The parent worker that executes all jobs from this job group. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -27,9 +27,9 @@
         <argsstring></argsstring>
         <name>JobManager</name>
         <briefdescription>
+<para>The job manager must be a friend of the worker in order to call the private constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>The job manager must be a friend of the worker in order to call the private constructor. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -43,9 +43,10 @@
         <argsstring>()</argsstring>
         <name>JobGroup</name>
         <briefdescription>
+<para>Creates a new empty job group with no parent worker. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a new empty job group with no parent worker. Should only be used as dummy object. </para>
+<para>Should only be used as dummy object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -71,9 +72,10 @@
           <defval>{}</defval>
         </param>
         <briefdescription>
+<para>Enqueues the given function into the job group&apos;s worker thread. </para>
         </briefdescription>
         <detaileddescription>
-<para>Enqueues the given function into the job group&apos;s worker thread. A lightweight job object is returned, that allows to keep track of the job&apos;s state.</para>
+<para>A lightweight job object is returned, that allows to keep track of the job&apos;s state.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>function</parametername>
@@ -118,9 +120,10 @@
           <defval>{}</defval>
         </param>
         <briefdescription>
+<para>Enqueues the given function into the job group&apos;s worker thread. </para>
         </briefdescription>
         <detaileddescription>
-<para>Enqueues the given function into the job group&apos;s worker thread. A lightweight job object is returned, that allows to keep track of the job&apos;s state.The passed function must accept a function object that returns, whether the job should be aborted at any time. Further it must accept a function that can be used to abort the execution of the function.</para>
+<para>A lightweight job object is returned, that allows to keep track of the job&apos;s state.The passed function must accept a function object that returns, whether the job should be aborted at any time. Further it must accept a function that can be used to abort the execution of the function.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>function</parametername>
@@ -156,9 +159,9 @@
           <declname>parent_worker</declname>
         </param>
         <briefdescription>
+<para>Creates a new job group with the given parent worker. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a new job group with the given parent worker. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -167,9 +170,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A job group is a proxy object that forwards job&apos;s to a single worker thread. </para>
     </briefdescription>
     <detaileddescription>
-<para>A job group is a proxy object that forwards job&apos;s to a single worker thread. It can be used the assure that multiple jobs are executed on the same background thread. </para>
+<para>It can be used the assure that multiple jobs are executed on the same background thread. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3886">

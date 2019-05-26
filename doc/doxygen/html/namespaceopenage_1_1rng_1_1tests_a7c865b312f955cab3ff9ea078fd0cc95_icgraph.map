@@ -1,5 +1,5 @@
 <map id="openage::rng::tests::fill" name="openage::rng::tests::fill">
-<area shape="rect" id="node1" title=" " alt="" coords="347,35,481,77"/>
+<area shape="rect" id="node1" title="Tests filling integers." alt="" coords="347,35,481,77"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1rng_1_1tests.xhtml#ae22d2c6364226e0169f0eed1c9701592" title=" " alt="" coords="72,5,232,32"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#af44253d3e7adef12c7a4c4371b97a2fd" title=" " alt="" coords="5,57,299,127"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#af44253d3e7adef12c7a4c4371b97a2fd" title="This function was originally coded by David Tritscher." alt="" coords="5,57,299,127"/>
 </map>

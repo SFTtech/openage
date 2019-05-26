@@ -94,7 +94,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node24 -->
 <g id="node3" class="node"><title>Node24</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="354,-55 354,-74 449,-74 449,-55 354,-55"/>
 <text text-anchor="middle" x="401.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

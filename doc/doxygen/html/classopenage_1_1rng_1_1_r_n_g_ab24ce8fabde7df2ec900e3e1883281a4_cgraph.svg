@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 415,-73.5 415,4 -4,4"/>
 <!-- Node61 -->
 <g id="node1" class="node"><title>Node61</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns true with the passed probability.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-22.5 0,-52.5 106,-52.5 106,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="53" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">probability</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node63 -->
 <g id="node3" class="node"><title>Node63</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" target="_top" xlink:title="Retrieves a random value from the generator.">
 <polygon fill="white" stroke="black" points="151.5,-0.5 151.5,-30.5 257.5,-30.5 257.5,-0.5 151.5,-0.5"/>
 <text text-anchor="start" x="159.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="204.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">random</text>

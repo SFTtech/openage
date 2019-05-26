@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 483,-84 483,4 -4,4"/>
 <!-- Node184 -->
 <g id="node1" class="node"><title>Node184</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="processes a text escape sequence that is one of OSC, DCS, APC or PM">
 <polygon fill="#bfbfbf" stroke="black" points="0,-19 0,-60 116,-60 116,-19 0,-19"/>
 <text text-anchor="start" x="8" y="-48" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="start" x="8" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">::process_text_escape</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node185 -->
 <g id="node2" class="node"><title>Node185</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ac59a20dcbdcb3aaffaedc8d9d21d0ec9" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ac59a20dcbdcb3aaffaedc8d9d21d0ec9" target="_top" xlink:title="aborts the current escape sequence (e.g.">
 <polygon fill="white" stroke="black" points="158.5,-49.5 158.5,-79.5 297.5,-79.5 297.5,-49.5 158.5,-49.5"/>
 <text text-anchor="start" x="166.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="228" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::escape_sequence_aborted</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node187 -->
 <g id="node4" class="node"><title>Node187</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a3e924482fd0e3524e44b20acc316fb19" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a3e924482fd0e3524e44b20acc316fb19" target="_top" xlink:title="called when a escape sequence has been successfully processed, clears the sequence.">
 <polygon fill="white" stroke="black" points="152,-0.5 152,-30.5 304,-30.5 304,-0.5 152,-0.5"/>
 <text text-anchor="start" x="160" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="228" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::escape_sequence_processed</text>

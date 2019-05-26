@@ -1,5 +1,5 @@
 <map id="openage::coord::tile::to_phys3" name="openage::coord::tile::to_phys3">
 <area shape="rect" id="node1" title=" " alt="" coords="5,39,141,80"/>
 <area shape="rect" id="node2" href="$structopenage_1_1coord_1_1tile3.xhtml#a4c8cdcd73dd2d7d1e6109c8b4a82ba65" title=" " alt="" coords="189,5,332,47"/>
-<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b" title=" " alt="" coords="193,71,329,112"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b" title="adds an UP component to the coordinate." alt="" coords="193,71,329,112"/>
 </map>

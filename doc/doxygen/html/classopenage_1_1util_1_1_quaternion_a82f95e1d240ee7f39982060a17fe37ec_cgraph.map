@@ -1,6 +1,6 @@
 <map id="openage::util::Quaternion::norm" name="openage::util::Quaternion::norm">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,172,65"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" title=" " alt="" coords="220,5,413,32"/>
+<area shape="rect" id="node1" title="Calculate the length of the quaternion." alt="" coords="5,23,172,65"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" title="Perform a dot product with another quaternion." alt="" coords="220,5,413,32"/>
 <area shape="rect" id="node3" href="$namespacestd.xhtml#a0fc492a11cf74e80f976b24bea2a2eb2" title=" " alt="" coords="281,56,352,83"/>
 <area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#ae963a0d669b00ec8a65da1bf0041172a" title=" " alt="" coords="461,49,628,90"/>
 </map>

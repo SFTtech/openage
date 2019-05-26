@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-354 146,-354 146,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="the terrain class is the main top&#45;management interface for dealing with cost&#45;benefit analysis to maxi...">
 <polygon fill="#bfbfbf" stroke="black" points="16.5,-0.5 16.5,-178.5 125.5,-178.5 125.5,-0.5 16.5,-0.5"/>
 <text text-anchor="middle" x="71" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain</text>
 <polyline fill="none" stroke="black" points="16.5,-159.5 125.5,-159.5 "/>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="structopenage_1_1terrain__meta.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="structopenage_1_1terrain__meta.xhtml" target="_top" xlink:title="specification for all available tile types and blending data">
 <polygon fill="white" stroke="black" points="0,-226.5 0,-349.5 142,-349.5 142,-226.5 0,-226.5"/>
 <text text-anchor="middle" x="71" y="-337.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::terrain_meta</text>
 <polyline fill="none" stroke="black" points="0,-330.5 142,-330.5 "/>

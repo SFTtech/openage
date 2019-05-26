@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 129,-35 129,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="classopenage_1_1options_1_1_option_value.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="classopenage_1_1options_1_1_option_value.xhtml" target="_top" xlink:title="stores a type and value">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 125,-30.5 125,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="62.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Value</text>

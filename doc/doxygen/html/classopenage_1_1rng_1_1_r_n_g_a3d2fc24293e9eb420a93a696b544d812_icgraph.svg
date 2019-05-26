@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 247,-35 247,4 -4,4"/>
 <!-- Node163 -->
 <g id="node1" class="node"><title>Node163</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Writes the rng state to a string.">
 <polygon fill="#bfbfbf" stroke="black" points="137,-0.5 137,-30.5 243,-30.5 243,-0.5 137,-0.5"/>
 <text text-anchor="start" x="145" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="190" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">to_string</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node164 -->
 <g id="node2" class="node"><title>Node164</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a265e3eddfd2efda00d3f1d1d9291469d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a265e3eddfd2efda00d3f1d1d9291469d" target="_top" xlink:title="Tests the serializing functionality.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 101,-30.5 101,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="50.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::serialize</text>

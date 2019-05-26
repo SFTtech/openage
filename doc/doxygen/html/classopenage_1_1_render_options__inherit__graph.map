@@ -1,4 +1,4 @@
 <map id="openage::RenderOptions" name="openage::RenderOptions">
-<area shape="rect" id="node1" title=" " alt="" coords="21,395,187,487"/>
-<area shape="rect" id="node2" href="$classopenage_1_1options_1_1_option_node.xhtml" title=" " alt="" coords="5,5,203,347"/>
+<area shape="rect" id="node1" title="Options for the renderer." alt="" coords="21,395,187,487"/>
+<area shape="rect" id="node2" href="$classopenage_1_1options_1_1_option_node.xhtml" title="Allows objects to expose customisable features." alt="" coords="5,5,203,347"/>
 </map>

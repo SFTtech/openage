@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-24 270,-24 270,4 -4,4"/>
 <!-- Node103 -->
 <g id="node1" class="node"><title>Node103</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="runs the game.">
 <polygon fill="#bfbfbf" stroke="black" points="164,-0.5 164,-19.5 266,-19.5 266,-0.5 164,-0.5"/>
 <text text-anchor="middle" x="215" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::run_game</text>
 </a>

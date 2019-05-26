@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 441,-62 441,4 -4,4"/>
 <!-- Node46 -->
 <g id="node1" class="node"><title>Node46</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Value converted to a string.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-14 0,-44 125,-44 125,-14 0,-14"/>
 <text text-anchor="start" x="8" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="62.5" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">Value::str_value</text>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node48 -->
 <g id="node3" class="node"><title>Node48</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="342,-38.5 342,-57.5 437,-57.5 437,-38.5 342,-38.5"/>
 <text text-anchor="middle" x="389.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

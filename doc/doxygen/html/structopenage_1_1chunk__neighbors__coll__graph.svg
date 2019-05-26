@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-624 410.5,-624 410.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="adjacent neighbors of a chunk.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-331 0,-388 133,-388 133,-331 0,-331"/>
 <text text-anchor="middle" x="66.5" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">openage::chunk_neighbors</text>
 <polyline fill="none" stroke="black" points="0,-369 133,-369 "/>
@@ -69,7 +69,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml" target="_top" xlink:title="terrain chunk class represents one chunk of the the drawn terrain.">
 <polygon fill="white" stroke="black" points="114.5,-0.5 114.5,-222.5 232.5,-222.5 232.5,-0.5 114.5,-0.5"/>
 <text text-anchor="middle" x="173.5" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <polyline fill="none" stroke="black" points="114.5,-203.5 232.5,-203.5 "/>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_tile_content.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_tile_content.xhtml" target="_top" xlink:title="describes the properties of one terrain tile.">
 <polygon fill="white" stroke="black" points="154.5,-320 154.5,-399 262.5,-399 262.5,-320 154.5,-320"/>
 <text text-anchor="middle" x="208.5" y="-387" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TileContent</text>
 <polyline fill="none" stroke="black" points="154.5,-380 262.5,-380 "/>
@@ -128,7 +128,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_terrain.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_terrain.xhtml" target="_top" xlink:title="the terrain class is the main top&#45;management interface for dealing with cost&#45;benefit analysis to maxi...">
 <polygon fill="white" stroke="black" points="281,-270.5 281,-448.5 390,-448.5 390,-270.5 281,-270.5"/>
 <text text-anchor="middle" x="335.5" y="-436.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain</text>
 <polyline fill="none" stroke="black" points="281,-429.5 390,-429.5 "/>
@@ -157,7 +157,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="structopenage_1_1terrain__meta.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="structopenage_1_1terrain__meta.xhtml" target="_top" xlink:title="specification for all available tile types and blending data">
 <polygon fill="white" stroke="black" points="264.5,-496.5 264.5,-619.5 406.5,-619.5 406.5,-496.5 264.5,-496.5"/>
 <text text-anchor="middle" x="335.5" y="-607.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::terrain_meta</text>
 <polyline fill="none" stroke="black" points="264.5,-600.5 406.5,-600.5 "/>

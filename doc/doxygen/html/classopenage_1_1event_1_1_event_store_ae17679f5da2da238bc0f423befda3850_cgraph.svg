@@ -20,7 +20,7 @@
 </g>
 <!-- Node28 -->
 <g id="node2" class="node"><title>Node28</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" target="_top" xlink:title="adds the given item to the heap.">
 <polygon fill="white" stroke="black" points="171,-49.5 171,-79.5 287,-79.5 287,-49.5 171,-49.5"/>
 <text text-anchor="start" x="179" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="229" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::push</text>

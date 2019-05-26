@@ -1,8 +1,8 @@
 <map id="openage::gameio::save_unit" name="openage::gameio::save_unit">
 <area shape="rect" id="node1" title=" " alt="" coords="5,78,188,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="246,5,374,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="245,71,375,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" title=" " alt="" coords="236,137,384,163"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="433,13,595,39"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="432,78,596,105"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title="returns attribute based on templated value" alt="" coords="246,5,374,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title="returns whether attribute is available" alt="" coords="245,71,375,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" title="gets the unique id of this unit type" alt="" coords="236,137,384,163"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title="Get the attribute based on the type." alt="" coords="433,13,595,39"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title="Check if the attribute of the given type exists." alt="" coords="432,78,596,105"/>
 </map>

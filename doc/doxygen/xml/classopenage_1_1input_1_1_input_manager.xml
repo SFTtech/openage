@@ -37,9 +37,9 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Screen edges used for edge scrolling. </para>
         </briefdescription>
         <detaileddescription>
-<para>Screen edges used for edge scrolling. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -53,9 +53,9 @@
         <argsstring></argsstring>
         <name>action_manager</name>
         <briefdescription>
+<para>The action manager to used for keybind action lookups. </para>
         </briefdescription>
         <detaileddescription>
-<para>The action manager to used for keybind action lookups. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -71,9 +71,10 @@
         <argsstring></argsstring>
         <name>global_context</name>
         <briefdescription>
+<para>The global context. </para>
         </briefdescription>
         <detaileddescription>
-<para>The global context. Used as fallback. </para>
+<para>Used as fallback. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -88,9 +89,9 @@
         <argsstring></argsstring>
         <name>keys</name>
         <briefdescription>
+<para>Maps actions to events. </para>
         </briefdescription>
         <detaileddescription>
-<para>Maps actions to events. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -106,9 +107,10 @@
         <argsstring></argsstring>
         <name>contexts</name>
         <briefdescription>
+<para>Stack of active input contexts. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stack of active input contexts. The most recent entry is pushed on top of the stack. </para>
+<para>The most recent entry is pushed on top of the stack. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -124,9 +126,10 @@
         <argsstring></argsstring>
         <name>states</name>
         <briefdescription>
+<para>key to is_down map. </para>
         </briefdescription>
         <detaileddescription>
-<para>key to is_down map. stores a mapping between keycodes and its pressing state. a true value means the key is currently pressed, false indicates the key is untouched. </para>
+<para>stores a mapping between keycodes and its pressing state. a true value means the key is currently pressed, false indicates the key is untouched. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -140,9 +143,10 @@
         <argsstring></argsstring>
         <name>keymod</name>
         <briefdescription>
+<para>Current key modifiers. </para>
         </briefdescription>
         <detaileddescription>
-<para>Current key modifiers. Included ALL modifiers including num lock and caps lock. </para>
+<para>Included ALL modifiers including num lock and caps lock. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,9 +160,9 @@
         <argsstring></argsstring>
         <name>relative_mode</name>
         <briefdescription>
+<para>mode where mouse position is ignored used for map scrolling </para>
         </briefdescription>
         <detaileddescription>
-<para>mode where mouse position is ignored used for map scrolling </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -173,9 +177,9 @@
         <name>mouse_position</name>
         <initializer>{0, 0}</initializer>
         <briefdescription>
+<para>mouse position in the window </para>
         </briefdescription>
         <detaileddescription>
-<para>mouse position in the window </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -190,9 +194,9 @@
         <name>mouse_motion</name>
         <initializer>{0, 0}</initializer>
         <briefdescription>
+<para>mouse position relative to the last frame position. </para>
         </briefdescription>
         <detaileddescription>
-<para>mouse position relative to the last frame position. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -244,9 +248,9 @@
           <declname>action</declname>
         </param>
         <briefdescription>
+<para>Return the string representation of the bind assignated to an action. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the string representation of the bind assignated to an action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -276,9 +280,10 @@
           <declname>action</declname>
         </param>
         <briefdescription>
+<para>Set the given action to be triggered by the given bind (key/mouse /wheel). </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the given action to be triggered by the given bind (key/mouse /wheel). Remove previous assignation. Do nothing if either they given bind or action is invalid/unknow. </para>
+<para>Remove previous assignation. Do nothing if either they given bind or action is invalid/unknow. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -300,9 +305,9 @@
           <declname>ev</declname>
         </param>
         <briefdescription>
+<para>Return the string representation of the key event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the string representation of the key event. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -325,9 +330,9 @@
           <declname>ev</declname>
         </param>
         <briefdescription>
+<para>Return the string representation of the mouse event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the string representation of the mouse event. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -347,9 +352,9 @@
           <declname>ev</declname>
         </param>
         <briefdescription>
+<para>Return the key representation of the event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the key representation of the event. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -364,9 +369,10 @@
         <argsstring>()</argsstring>
         <name>get_global_context</name>
         <briefdescription>
+<para>returns the global keybind context. </para>
         </briefdescription>
         <detaileddescription>
-<para>returns the global keybind context. actions bound here will be retained even when override_context is called. </para>
+<para>actions bound here will be retained even when override_context is called. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -382,9 +388,10 @@
         <argsstring>()</argsstring>
         <name>get_top_context</name>
         <briefdescription>
+<para>Returns the context on top. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the context on top. Note there is always a top context since the global context will be considered on top when none are registered </para>
+<para>Note there is always a top context since the global context will be considered on top when none are registered </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -406,9 +413,9 @@
           <declname>context</declname>
         </param>
         <briefdescription>
+<para>register a hotkey context by pushing it onto the stack. </para>
         </briefdescription>
         <detaileddescription>
-<para>register a hotkey context by pushing it onto the stack.</para>
 <para>this adds the given pointer to the <computeroutput>contexts</computeroutput> list. that way the context lays on &quot;top&quot;.</para>
 <para>if other contexts are registered afterwards, it wanders down the stack, i.e. looses priority. </para>
         </detaileddescription>
@@ -430,9 +437,9 @@
           <declname>context</declname>
         </param>
         <briefdescription>
+<para>removes any matching registered context from the stack. </para>
         </briefdescription>
         <detaileddescription>
-<para>removes any matching registered context from the stack.</para>
 <para>the removal is done by finding the given pointer in the <computeroutput>contexts</computeroutput> lists, then deleting it in there. </para>
         </detaileddescription>
         <inbodydescription>
@@ -454,9 +461,9 @@
           <declname>e</declname>
         </param>
         <briefdescription>
+<para>true if the given event type is being ignored </para>
         </briefdescription>
         <detaileddescription>
-<para>true if the given event type is being ignored </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -480,9 +487,10 @@
           <declname>e</declname>
         </param>
         <briefdescription>
+<para>manages the pressing of an input event (key, mouse, ...). </para>
         </briefdescription>
         <detaileddescription>
-<para>manages the pressing of an input event (key, mouse, ...). first checks whether an action is bound to it. if it is, look for an handler to execute that handler. returns true if the event was responded to </para>
+<para>first checks whether an action is bound to it. if it is, look for an handler to execute that handler. returns true if the event was responded to </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -511,9 +519,9 @@
           <declname>is_down</declname>
         </param>
         <briefdescription>
+<para>sets the state of a specific key </para>
         </briefdescription>
         <detaileddescription>
-<para>sets the state of a specific key </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -541,9 +549,9 @@
           <declname>y</declname>
         </param>
         <briefdescription>
+<para>updates mouse position state and motion </para>
         </briefdescription>
         <detaileddescription>
-<para>updates mouse position state and motion </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -566,9 +574,9 @@
           <declname>y</declname>
         </param>
         <briefdescription>
+<para>updates mouse motion only </para>
         </briefdescription>
         <detaileddescription>
-<para>updates mouse motion only </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -586,9 +594,9 @@
           <declname>mode</declname>
         </param>
         <briefdescription>
+<para>enable relative mouse mode </para>
         </briefdescription>
         <detaileddescription>
-<para>enable relative mouse mode </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -610,9 +618,9 @@
           <declname>window_size</declname>
         </param>
         <briefdescription>
+<para>Query whether cursor is at edgo of screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>Query whether cursor is at edgo of screen</para>
 <para>edge variable is enum Edges</para>
 <para><simplesect kind="return"><para>true when the mouse is at the queried screen edge, false else. </para>
 </simplesect>
@@ -637,9 +645,9 @@
           <declname>cc</declname>
         </param>
         <briefdescription>
+<para>Query stored pressing stat for a key. </para>
         </briefdescription>
         <detaileddescription>
-<para>Query stored pressing stat for a key.</para>
 <para>note that the function stores a unknown/new keycode as &apos;not pressed&apos; if requested <simplesect kind="return"><para>true when the key is pressed, false else. </para>
 </simplesect>
 </para>
@@ -685,9 +693,9 @@
           <declname>k</declname>
         </param>
         <briefdescription>
+<para>Most cases should use above is_down(class, code) instead to avoid relying on sdl types. </para>
         </briefdescription>
         <detaileddescription>
-<para>Most cases should use above is_down(class, code) instead to avoid relying on sdl types</para>
 <para>Query stored pressing stat for a key. <simplesect kind="return"><para>true when the key is pressed, false else. </para>
 </simplesect>
 </para>
@@ -708,9 +716,9 @@
           <declname>mod</declname>
         </param>
         <briefdescription>
+<para>Checks whether a key modifier is held down. </para>
         </briefdescription>
         <detaileddescription>
-<para>Checks whether a key modifier is held down. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -728,9 +736,9 @@
           <declname>e</declname>
         </param>
         <briefdescription>
+<para>When a SDL event happens, this is called. </para>
         </briefdescription>
         <detaileddescription>
-<para>When a SDL event happens, this is called. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -759,9 +767,9 @@
           <declname>ctx_actions</declname>
         </param>
         <briefdescription>
+<para>Return a string representation of active key bindings from the given context. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return a string representation of active key bindings from the given context. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -778,9 +786,9 @@
         <argsstring>() const</argsstring>
         <name>get_action_manager</name>
         <briefdescription>
+<para>Get the action manager attached to this input manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the action manager attached to this input manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -808,9 +816,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The input manager manages all input layers (hud, game, ...) and triggers the registered actions depending on the active layer. </para>
     </briefdescription>
     <detaileddescription>
-<para>The input manager manages all input layers (hud, game, ...) and triggers the registered actions depending on the active layer.</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">InputManager</ref>: bool set_bind(char* bind_char, string action) except + string get_bind(string action) except + </para>
     </detaileddescription>

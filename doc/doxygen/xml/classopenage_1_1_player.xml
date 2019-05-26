@@ -10,9 +10,10 @@
         <argsstring></argsstring>
         <name>player_number</name>
         <briefdescription>
+<para>values 0 . </para>
         </briefdescription>
         <detaileddescription>
-<para>values 0 .. player count - 1 </para>
+<para>. player count - 1 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -26,9 +27,10 @@
         <argsstring></argsstring>
         <name>color</name>
         <briefdescription>
+<para>values 1 . </para>
         </briefdescription>
         <detaileddescription>
-<para>values 1 .. player count would be better to have rgb color value </para>
+<para>. player count would be better to have rgb color value </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -41,9 +43,9 @@
         <argsstring></argsstring>
         <name>civ</name>
         <briefdescription>
+<para>civilisation and techs of this player </para>
         </briefdescription>
         <detaileddescription>
-<para>civilisation and techs of this player </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -56,9 +58,9 @@
         <argsstring></argsstring>
         <name>name</name>
         <briefdescription>
+<para>visible name of this player </para>
         </briefdescription>
         <detaileddescription>
-<para>visible name of this player </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -78,9 +80,9 @@
         <argsstring></argsstring>
         <name>team</name>
         <briefdescription>
+<para>the team of this player nullptr if member of no team </para>
         </briefdescription>
         <detaileddescription>
-<para>the team of this player nullptr if member of no team </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -96,9 +98,9 @@
         <argsstring></argsstring>
         <name>population</name>
         <briefdescription>
+<para>Keeps track of the population information. </para>
         </briefdescription>
         <detaileddescription>
-<para>Keeps track of the population information. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -112,9 +114,9 @@
         <argsstring></argsstring>
         <name>score</name>
         <briefdescription>
+<para>The score of the player. </para>
         </briefdescription>
         <detaileddescription>
-<para>The score of the player. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -132,9 +134,9 @@
         <argsstring></argsstring>
         <name>resources</name>
         <briefdescription>
+<para>The resources this player currently has. </para>
         </briefdescription>
         <detaileddescription>
-<para>The resources this player currently has </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -152,9 +154,9 @@
         <argsstring></argsstring>
         <name>resources_capacity</name>
         <briefdescription>
+<para>The resources capacities this player currently has. </para>
         </briefdescription>
         <detaileddescription>
-<para>The resources capacities this player currently has </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -170,9 +172,10 @@
         <argsstring></argsstring>
         <name>available_objects</name>
         <briefdescription>
+<para>unit types which can be produced by this player. </para>
         </briefdescription>
         <detaileddescription>
-<para>unit types which can be produced by this player. <xrefsect id="todo_1_todo000016"><xreftitle>Todo</xreftitle><xrefdescription><para>revisit, can be simplified? </para>
+<para><xrefsect id="todo_1_todo000016"><xreftitle>Todo</xreftitle><xrefdescription><para>revisit, can be simplified? </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -187,9 +190,10 @@
         <argsstring></argsstring>
         <name>available_ids</name>
         <briefdescription>
+<para>available objects mapped using type id unit ids -&gt; unit type for that id </para>
         </briefdescription>
         <detaileddescription>
-<para>available objects mapped using type id unit ids -&gt; unit type for that id <xrefsect id="todo_1_todo000017"><xreftitle>Todo</xreftitle><xrefdescription><para>revisit, can be simplified? </para>
+<para><xrefsect id="todo_1_todo000017"><xreftitle>Todo</xreftitle><xrefdescription><para>revisit, can be simplified? </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -205,9 +209,10 @@
         <argsstring></argsstring>
         <name>units_have</name>
         <briefdescription>
+<para>The number of units the player has for each unit type id. </para>
         </briefdescription>
         <detaileddescription>
-<para>The number of units the player has for each unit type id. Used for and event triggers. </para>
+<para>Used for and event triggers. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -223,9 +228,10 @@
         <argsstring></argsstring>
         <name>units_had</name>
         <briefdescription>
+<para>The number of units the player ever had for each unit type id. </para>
         </briefdescription>
         <detaileddescription>
-<para>The number of units the player ever had for each unit type id. Used for unit dependencies (eg. Farm). </para>
+<para>Used for unit dependencies (eg. Farm). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -255,9 +261,9 @@
         <argsstring></argsstring>
         <name>age</name>
         <briefdescription>
+<para>The current age. </para>
         </briefdescription>
         <detaileddescription>
-<para>The current age. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -302,9 +308,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>checks if two players are the same </para>
         </briefdescription>
         <detaileddescription>
-<para>checks if two players are the same </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -321,9 +327,9 @@
           <defname>other</defname>
         </param>
         <briefdescription>
+<para>the specified player is an enemy of this player </para>
         </briefdescription>
         <detaileddescription>
-<para>the specified player is an enemy of this player </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -340,9 +346,9 @@
           <defname>other</defname>
         </param>
         <briefdescription>
+<para>the specified player is an ally of this player </para>
         </briefdescription>
         <detaileddescription>
-<para>the specified player is an ally of this player </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -362,9 +368,9 @@
           <defname>unit</defname>
         </param>
         <briefdescription>
+<para>this player owns the specified unit </para>
         </briefdescription>
         <detaileddescription>
-<para>this player owns the specified unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -384,9 +390,9 @@
           <declname>amount</declname>
         </param>
         <briefdescription>
+<para>add to stockpile </para>
         </briefdescription>
         <detaileddescription>
-<para>add to stockpile </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -432,9 +438,9 @@
           <declname>amount</declname>
         </param>
         <briefdescription>
+<para>Check if can add to stockpile. </para>
         </briefdescription>
         <detaileddescription>
-<para>Check if can add to stockpile </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -478,9 +484,9 @@
           <declname>amount</declname>
         </param>
         <briefdescription>
+<para>remove from stockpile if available </para>
         </briefdescription>
         <detaileddescription>
-<para>remove from stockpile if available </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -526,9 +532,9 @@
           <declname>amount</declname>
         </param>
         <briefdescription>
+<para>Check if the player has enough resources to deduct the given amount. </para>
         </briefdescription>
         <detaileddescription>
-<para>Check if the player has enough resources to deduct the given amount. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -571,9 +577,9 @@
           <declname>resource</declname>
         </param>
         <briefdescription>
+<para>current stockpile amount </para>
         </briefdescription>
         <detaileddescription>
-<para>current stockpile amount </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -595,9 +601,9 @@
           <declname>type</declname>
         </param>
         <briefdescription>
+<para>Check if the player can make a new unit of the given type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Check if the player can make a new unit of the given type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -617,9 +623,9 @@
         <argsstring>()</argsstring>
         <name>type_count</name>
         <briefdescription>
+<para>total number of unit types available </para>
         </briefdescription>
         <detaileddescription>
-<para>total number of unit types available </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -636,9 +642,9 @@
           <declname>type_id</declname>
         </param>
         <briefdescription>
+<para>unit types by aoe gamedata unit ids <ndash/> the unit type which corresponds to an aoe unit id </para>
         </briefdescription>
         <detaileddescription>
-<para>unit types by aoe gamedata unit ids <ndash/> the unit type which corresponds to an aoe unit id </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -668,9 +674,9 @@
           <declname>type_index</declname>
         </param>
         <briefdescription>
+<para>unit types by list index <ndash/> a continuous array of all types probably not a useful function / can be removed </para>
         </briefdescription>
         <detaileddescription>
-<para>unit types by list index <ndash/> a continuous array of all types probably not a useful function / can be removed </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -686,9 +692,9 @@
         <argsstring>()</argsstring>
         <name>initialise_unit_types</name>
         <briefdescription>
+<para>initialise with the base tech level </para>
         </briefdescription>
         <detaileddescription>
-<para>initialise with the base tech level </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -718,9 +724,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>Called when a unit is created and active. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when a unit is created and active.</para>
 <para>If the unit was pending when create (constuction site, training) the method must be called again when the unit activates (with the from_penging param set to true) </para>
         </detaileddescription>
         <inbodydescription>
@@ -760,9 +766,9 @@
           <declname>unit</declname>
         </param>
         <briefdescription>
+<para>Called when a unit is destroyed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when a unit is destroyed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -799,9 +805,9 @@
           <declname>unit</declname>
         </param>
         <briefdescription>
+<para>Called when a unit is killed by this player. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when a unit is killed by this player. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -820,9 +826,9 @@
         <argsstring>()</argsstring>
         <name>advance_age</name>
         <briefdescription>
+<para>Advance to next age;. </para>
         </briefdescription>
         <detaileddescription>
-<para>Advance to next age; </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -840,9 +846,9 @@
           <declname>type_id</declname>
         </param>
         <briefdescription>
+<para>Get the number of units the player has for each unit type id. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the number of units the player has for each unit type id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -860,9 +866,9 @@
           <declname>type_id</declname>
         </param>
         <briefdescription>
+<para>Get the number of units the player ever had for each unit type id. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the number of units the player ever had for each unit type id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -879,9 +885,9 @@
           <declname>type_id</declname>
         </param>
         <briefdescription>
+<para>Get the number of units the player has being made for each unit type id. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the number of units the player has being made for each unit type id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -895,9 +901,10 @@
         <argsstring>() const</argsstring>
         <name>get_age</name>
         <briefdescription>
+<para>Get the current age. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the current age. The first age has the value 1. </para>
+<para>The first age has the value 1. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -910,9 +917,9 @@
         <argsstring>() const</argsstring>
         <name>get_workforce_count</name>
         <briefdescription>
+<para>The number of units considered part of the workforce. </para>
         </briefdescription>
         <detaileddescription>
-<para>The number of units considered part of the workforce. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -950,9 +957,9 @@
         <argsstring>()</argsstring>
         <name>on_resources_change</name>
         <briefdescription>
+<para>Called when the resources amounts change. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when the resources amounts change. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

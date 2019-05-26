@@ -3,7 +3,7 @@
 <area shape="rect" id="node2" href="$game__spec_8h.xhtml" title=" " alt="" coords="2895,109,3104,165"/>
 <area shape="rect" id="node16" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="2459,569,2668,625"/>
 <area shape="rect" id="node26" href="$unit_2action_8cpp.xhtml" title=" " alt="" coords="3395,569,3604,625"/>
-<area shape="rect" id="node27" href="$producer_8cpp.xhtml" title=" " alt="" coords="3643,569,3852,625"/>
+<area shape="rect" id="node27" href="$producer_8cpp.xhtml" title="Many values in this file are hardcoded, due to limited understanding of how the original game files w..." alt="" coords="3643,569,3852,625"/>
 <area shape="rect" id="node29" href="$unit_8cpp.xhtml" title=" " alt="" coords="3884,569,4093,625"/>
 <area shape="rect" id="node49" href="$unit__texture_8cpp.xhtml" title=" " alt="" coords="4275,228,4484,284"/>
 <area shape="rect" id="node3" href="$civilisation_8h.xhtml" title=" " alt="" coords="2019,228,2228,284"/>

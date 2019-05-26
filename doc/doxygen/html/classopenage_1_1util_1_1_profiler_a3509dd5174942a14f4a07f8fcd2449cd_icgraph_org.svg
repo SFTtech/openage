@@ -34,7 +34,7 @@
 </g>
 <!-- Node78 -->
 <g id="node5" class="node"><title>Node78</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a376d760c88323c5d4f32db08e302a4de" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a376d760c88323c5d4f32db08e302a4de" target="_top" xlink:title="registers a component">
 <polygon fill="white" stroke="black" points="461.5,-110.5 461.5,-140.5 569.5,-140.5 569.5,-110.5 461.5,-110.5"/>
 <text text-anchor="start" x="469.5" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="515.5" y="-117.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_component</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node80 -->
 <g id="node7" class="node"><title>Node80</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aa2cd0e4084f70dec7bff926afbc7e0de" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aa2cd0e4084f70dec7bff926afbc7e0de" target="_top" xlink:title="unregisters an individual component">
 <polygon fill="white" stroke="black" points="456,-22.5 456,-52.5 575,-52.5 575,-22.5 456,-22.5"/>
 <text text-anchor="start" x="464" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="515.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister_component</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node76 -->
 <g id="node3" class="node"><title>Node76</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="154,-135 154,-154 267,-154 267,-135 154,-135"/>
 <text text-anchor="middle" x="210.5" y="-142" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node77 -->
 <g id="node4" class="node"><title>Node77</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="0,-135 0,-154 109,-154 109,-135 0,-135"/>
 <text text-anchor="middle" x="54.5" y="-142" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>
@@ -112,7 +112,7 @@
 </g>
 <!-- Node81 -->
 <g id="node8" class="node"><title>Node81</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a68f01b02f0824fe2e41e508a75946793" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a68f01b02f0824fe2e41e508a75946793" target="_top" xlink:title="unregisters all remaining components">
 <polygon fill="white" stroke="black" points="312,-22.5 312,-52.5 420,-52.5 420,-22.5 312,-22.5"/>
 <text text-anchor="start" x="320" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="366" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister_all</text>
@@ -126,7 +126,7 @@
 </g>
 <!-- Node82 -->
 <g id="node9" class="node"><title>Node82</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_engine.xhtml#a659dbbf399baf90582f4d8c5b497babc" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_engine.xhtml#a659dbbf399baf90582f4d8c5b497babc" target="_top" xlink:title="engine destructor, cleans up memory etc.">
 <polygon fill="white" stroke="black" points="145,-50 145,-69 276,-69 276,-50 145,-50"/>
 <text text-anchor="middle" x="210.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::~Engine</text>
 </a>

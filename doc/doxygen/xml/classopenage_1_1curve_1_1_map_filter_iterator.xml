@@ -59,9 +59,9 @@
           <declname>to</declname>
         </param>
         <briefdescription>
+<para>Construct the iterator from its boundary conditions: time and container. </para>
         </briefdescription>
         <detaileddescription>
-<para>Construct the iterator from its boundary conditions: time and container </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -90,9 +90,9 @@
         <name>valid</name>
         <reimplements refid="classopenage_1_1curve_1_1_curve_iterator_1a0b8d8cedf66ff2cbb551f2faf63d3026">valid</reimplements>
         <briefdescription>
+<para>Check if the iterator is still valid (this breaks from the stl - in the best way) </para>
         </briefdescription>
         <detaileddescription>
-<para>Check if the iterator is still valid (this breaks from the stl - in the best way) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -107,9 +107,10 @@
         <name>value</name>
         <reimplements refid="classopenage_1_1curve_1_1_curve_iterator_1ab7d2b047846bd36fa2dee3d216bac420">value</reimplements>
         <briefdescription>
+<para>Get the value behind the iterator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the value behind the iterator. Nicer way of accessing it beside operator *. </para>
+<para>Nicer way of accessing it beside operator *. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -123,9 +124,9 @@
         <argsstring>() const</argsstring>
         <name>key</name>
         <briefdescription>
+<para>Get the key pointed to by this iterator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the key pointed to by this iterator. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -134,9 +135,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A filtering operator to iterate over all elements of a map whose elements exist for a certain livespan. </para>
     </briefdescription>
     <detaileddescription>
-<para>A filtering operator to iterate over all elements of a map whose elements exist for a certain livespan. The range where to iterate is given at construction.</para>
+<para>The range where to iterate is given at construction.</para>
 <para>It depends on key_t and val_t as map-parameters, container_t is the container to operate on and the function valid_f, that checks if an element is alive. </para>
     </detaileddescription>
     <inheritancegraph>

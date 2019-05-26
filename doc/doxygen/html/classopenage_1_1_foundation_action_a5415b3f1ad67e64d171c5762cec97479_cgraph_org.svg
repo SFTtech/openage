@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-149.5 691,-149.5 691,4 -4,4"/>
 <!-- Node20 -->
 <g id="node1" class="node"><title>Node20</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="action to perform when popped from a units action stack">
 <polygon fill="#bfbfbf" stroke="black" points="0,-66 0,-96 135,-96 135,-66 0,-66"/>
 <text text-anchor="start" x="8" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">openage::FoundationAction</text>
 <text text-anchor="middle" x="67.5" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">::on_completion</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node21 -->
 <g id="node2" class="node"><title>Node21</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title="returns attribute based on templated value">
 <polygon fill="white" stroke="black" points="175,-115 175,-145 271,-145 271,-115 175,-115"/>
 <text text-anchor="start" x="183" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::get</text>
 <text text-anchor="middle" x="223" y="-122" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node23 -->
 <g id="node4" class="node"><title>Node23</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title="returns whether attribute is available">
 <polygon fill="white" stroke="black" points="174,-66 174,-96 272,-96 272,-66 174,-66"/>
 <text text-anchor="start" x="182" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::has</text>
 <text text-anchor="middle" x="223" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node25 -->
 <g id="node6" class="node"><title>Node25</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_unit.xhtml#aecd686fafc67487f4df4d3637f2621f4" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_unit.xhtml#aecd686fafc67487f4df4d3637f2621f4" target="_top" xlink:title="adds a new action on top of the action stack will be performed immediately">
 <polygon fill="white" stroke="black" points="171,-17 171,-47 275,-47 275,-17 171,-17"/>
 <text text-anchor="start" x="179" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::push</text>
 <text text-anchor="middle" x="223" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">_action</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node22 -->
 <g id="node3" class="node"><title>Node22</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title="Get the attribute based on the type.">
 <polygon fill="white" stroke="black" points="312,-120.5 312,-139.5 433,-139.5 433,-120.5 312,-120.5"/>
 <text text-anchor="middle" x="372.5" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::get</text>
 </a>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node24 -->
 <g id="node5" class="node"><title>Node24</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title="Check if the attribute of the given type exists.">
 <polygon fill="white" stroke="black" points="311,-71.5 311,-90.5 434,-90.5 434,-71.5 311,-71.5"/>
 <text text-anchor="middle" x="372.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::has</text>
 </a>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node26 -->
 <g id="node7" class="node"><title>Node26</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_unit.xhtml#a21542f7813db482fd36799cf12971979" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_unit.xhtml#a21542f7813db482fd36799cf12971979" target="_top" xlink:title="true when the unit is alive and able to add new actions">
 <polygon fill="white" stroke="black" points="316.5,-17 316.5,-47 428.5,-47 428.5,-17 316.5,-17"/>
 <text text-anchor="start" x="324.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::accept</text>
 <text text-anchor="middle" x="372.5" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">_commands</text>
@@ -102,7 +102,7 @@
 </g>
 <!-- Node27 -->
 <g id="node8" class="node"><title>Node27</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_unit.xhtml#a257ef8a7aeceb306d372ef745b40ef90" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_unit.xhtml#a257ef8a7aeceb306d372ef745b40ef90" target="_top" xlink:title="checks the entity has an action, if it has no action it should be removed from the game">
 <polygon fill="white" stroke="black" points="470,-39 470,-69 568,-69 568,-39 470,-39"/>
 <text text-anchor="start" x="478" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::has</text>
 <text text-anchor="middle" x="519" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_action</text>
@@ -116,7 +116,7 @@
 </g>
 <!-- Node28 -->
 <g id="node9" class="node"><title>Node28</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" target="_top" xlink:title="returns the current action on top of the stack">
 <polygon fill="white" stroke="black" points="471,-0.5 471,-19.5 567,-19.5 567,-0.5 471,-0.5"/>
 <text text-anchor="middle" x="519" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::top</text>
 </a>

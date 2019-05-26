@@ -19,7 +19,7 @@
 </g>
 <!-- Node21 -->
 <g id="node2" class="node"><title>Node21</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" target="_top" xlink:title="returns and removes the smallest item on the heap.">
 <polygon fill="white" stroke="black" points="193,-49.5 193,-79.5 309,-79.5 309,-49.5 193,-49.5"/>
 <text text-anchor="start" x="201" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="251" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::pop</text>

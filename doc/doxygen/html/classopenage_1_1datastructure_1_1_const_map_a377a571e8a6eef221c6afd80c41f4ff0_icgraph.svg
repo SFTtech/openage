@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 425,-133 425,4 -4,4"/>
 <!-- Node58 -->
 <g id="node1" class="node"><title>Node58</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Abort when the map uses the same key more than once.">
 <polygon fill="#bfbfbf" stroke="black" points="305,-44 305,-85 421,-85 421,-44 305,-44"/>
 <text text-anchor="start" x="313" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="313" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::verify_no</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node59 -->
 <g id="node2" class="node"><title>Node59</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#a3caa562639c438a7c2bc63ad69d34f49" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#a3caa562639c438a7c2bc63ad69d34f49" target="_top" xlink:title="Tests if the given key is in this map.">
 <polygon fill="white" stroke="black" points="153,-98.5 153,-128.5 269,-128.5 269,-98.5 153,-98.5"/>
 <text text-anchor="start" x="161" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="211" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::contains</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node60 -->
 <g id="node3" class="node"><title>Node60</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#ab6ec9131d56e40ca60eb7d6a62d28fff" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#ab6ec9131d56e40ca60eb7d6a62d28fff" target="_top" xlink:title="Return the stored value for the given key.">
 <polygon fill="white" stroke="black" points="153,-49.5 153,-79.5 269,-79.5 269,-49.5 153,-49.5"/>
 <text text-anchor="start" x="161" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="211" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::get</text>
@@ -49,7 +49,7 @@
 </g>
 <!-- Node62 -->
 <g id="node5" class="node"><title>Node62</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#ae822962367b642bfa68c99e252d291c7" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#ae822962367b642bfa68c99e252d291c7" target="_top" xlink:title="Return the number of entries in this map.">
 <polygon fill="white" stroke="black" points="153,-0.5 153,-30.5 269,-30.5 269,-0.5 153,-0.5"/>
 <text text-anchor="start" x="161" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="211" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::size</text>
@@ -63,7 +63,7 @@
 </g>
 <!-- Node61 -->
 <g id="node4" class="node"><title>Node61</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#ad8f8c677660172db066e684daf334754" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#ad8f8c677660172db066e684daf334754" target="_top" xlink:title="Access entries by map[key].">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 117,-79.5 117,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="58.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::operator []</text>

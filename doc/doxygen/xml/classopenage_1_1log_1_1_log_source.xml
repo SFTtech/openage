@@ -13,9 +13,9 @@
         <argsstring></argsstring>
         <name>logger_id</name>
         <briefdescription>
+<para>Initialized during the <ref refid="classopenage_1_1log_1_1_log_source" kindref="compound">LogSource</ref> constructor, guaranteed to be unique. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initialized during the <ref refid="classopenage_1_1log_1_1_log_source" kindref="compound">LogSource</ref> constructor, guaranteed to be unique. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -60,9 +60,9 @@
           <declname>msg</declname>
         </param>
         <briefdescription>
+<para>Logs a message (get one via <ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG(level)</ref>). </para>
         </briefdescription>
         <detaileddescription>
-<para>Logs a message (get one via <ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG(level)</ref>). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -122,9 +122,9 @@
         <argsstring>()</argsstring>
         <name>get_unique_logger_id</name>
         <briefdescription>
+<para>Provides unique logger ids. </para>
         </briefdescription>
         <detaileddescription>
-<para>Provides unique logger ids. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -133,9 +133,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Any class that wants to provide .<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log()</ref> shall inherit from this. </para>
     </briefdescription>
     <detaileddescription>
-<para>Any class that wants to provide .<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log()</ref> shall inherit from this. Examples: <ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref>, <ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref>, ...</para>
+<para>Examples: <ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref>, <ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref>, ...</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="classopenage_1_1log_1_1_log_source" kindref="compound">LogSource</ref>: void log(message msg) except + const size_t logger_id string <ref refid="classopenage_1_1log_1_1_log_source_1a7f4d82915a2298899da93d55ab92e7dc" kindref="member">logsource_name()</ref> except + </para>
     </detaileddescription>

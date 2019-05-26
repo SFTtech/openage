@@ -1,5 +1,5 @@
 <map id="openage::TerrainSearch" name="openage::TerrainSearch">
-<area shape="rect" id="node1" title=" " alt="" coords="5,389,164,599"/>
+<area shape="rect" id="node1" title="searches outward from a point and returns nearby objects The state of the search is kept within the c..." alt="" coords="5,389,164,599"/>
 <area shape="rect" id="node2" href="$structopenage_1_1coord_1_1tile.xhtml" title=" " alt="" coords="9,161,160,327"/>
 <area shape="rect" id="node3" title=" " alt="" coords="11,5,158,112"/>
 </map>

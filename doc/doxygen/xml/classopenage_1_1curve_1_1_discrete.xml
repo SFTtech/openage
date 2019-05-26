@@ -23,9 +23,9 @@
           <declname>t</declname>
         </param>
         <briefdescription>
+<para>Does not interpolate anything, just returns gives the raw value of the last keyframe with time &lt;= t. </para>
         </briefdescription>
         <detaileddescription>
-<para>Does not interpolate anything, just returns gives the raw value of the last keyframe with time &lt;= t. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -43,9 +43,9 @@
           <declname>t</declname>
         </param>
         <briefdescription>
+<para>Return the last time and keyframe with time &lt;= t. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the last time and keyframe with time &lt;= t. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -62,9 +62,9 @@
           <declname>t</declname>
         </param>
         <briefdescription>
+<para>Return, if existing, the time and value of keyframe with time &lt; t. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return, if existing, the time and value of keyframe with time &lt; t </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -73,9 +73,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Does not interpolate between values. </para>
     </briefdescription>
     <detaileddescription>
-<para>Does not interpolate between values. The template type does only need to implement <computeroutput>operator=</computeroutput> and copy ctor. </para>
+<para>The template type does only need to implement <computeroutput>operator=</computeroutput> and copy ctor. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1862">

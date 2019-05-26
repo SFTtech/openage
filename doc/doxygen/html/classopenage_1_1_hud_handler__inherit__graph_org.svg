@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-376 645.5,-376 645.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="superclass for all possible drawing operations in the game.">
 <polygon fill="#bfbfbf" stroke="black" points="271,-303.5 271,-371.5 381,-371.5 381,-303.5 271,-303.5"/>
 <text text-anchor="middle" x="326" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HudHandler</text>
 <polyline fill="none" stroke="black" points="271,-352.5 381,-352.5 "/>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_control.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_control.xhtml" target="_top" xlink:title="connects the gui system with the game engine switches between contexts such as editor mode and action...">
 <polygon fill="white" stroke="black" points="152,-17 152,-250 322,-250 322,-17 152,-17"/>
 <text text-anchor="middle" x="237" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameControl</text>
 <polyline fill="none" stroke="black" points="152,-231 322,-231 "/>
@@ -93,7 +93,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1gui_1_1_g_u_i.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1gui_1_1_g_u_i.xhtml" target="_top" xlink:title="Main entry point for the openage Qt&#45;based user interface.">
 <polygon fill="white" stroke="black" points="340,-6 340,-261 492,-261 492,-6 340,-6"/>
 <text text-anchor="middle" x="416" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GUI</text>
 <polyline fill="none" stroke="black" points="340,-242 492,-242 "/>
@@ -128,7 +128,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_unit_selection.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_unit_selection.xhtml" target="_top" xlink:title="a user interface component allowing control of a selected group">
 <polygon fill="white" stroke="black" points="510.5,-6 510.5,-261 641.5,-261 641.5,-6 510.5,-6"/>
 <text text-anchor="middle" x="576" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <polyline fill="none" stroke="black" points="510.5,-242 641.5,-242 "/>

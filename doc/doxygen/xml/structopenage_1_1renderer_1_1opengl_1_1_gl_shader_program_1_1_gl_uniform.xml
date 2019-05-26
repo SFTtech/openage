@@ -22,9 +22,10 @@
         <argsstring></argsstring>
         <name>location</name>
         <briefdescription>
+<para>Location of the uniform for use with glUniform and glGetUniform. </para>
         </briefdescription>
         <detaileddescription>
-<para>Location of the uniform for use with glUniform and glGetUniform. NOT the same as the uniform index. </para>
+<para>NOT the same as the uniform index. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

@@ -69,9 +69,10 @@
           <defname>surf</defname>
         </param>
         <briefdescription>
+<para>Given a physical device and a surface, checks whether the device is capable of presenting to the surface. </para>
         </briefdescription>
         <detaileddescription>
-<para>Given a physical device and a surface, checks whether the device is capable of presenting to the surface. If it is, returns information about its presentation capabilities, otherwise returns an empty optional. </para>
+<para>If it is, returns information about its presentation capabilities, otherwise returns an empty optional. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -102,9 +103,10 @@
           <declname>q_fams</declname>
         </param>
         <briefdescription>
+<para>Given a physical device and a list of queue family indices in that device, instantiates a logical device with a queue per each of the families. </para>
         </briefdescription>
         <detaileddescription>
-<para>Given a physical device and a list of queue family indices in that device, instantiates a logical device with a queue per each of the families. The device has to support the swapchain extension. </para>
+<para>The device has to support the swapchain extension. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

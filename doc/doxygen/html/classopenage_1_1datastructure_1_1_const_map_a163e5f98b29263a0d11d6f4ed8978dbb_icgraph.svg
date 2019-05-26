@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 272,-35 272,4 -4,4"/>
 <!-- Node30 -->
 <g id="node1" class="node"><title>Node30</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Test if if the given key is stored in this element or in following elements.">
 <polygon fill="#bfbfbf" stroke="black" points="152,-0.5 152,-30.5 268,-30.5 268,-0.5 152,-0.5"/>
 <text text-anchor="start" x="160" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="210" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::has_entry</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node31 -->
 <g id="node2" class="node"><title>Node31</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#a3caa562639c438a7c2bc63ad69d34f49" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#a3caa562639c438a7c2bc63ad69d34f49" target="_top" xlink:title="Tests if the given key is in this map.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 116,-30.5 116,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::contains</text>

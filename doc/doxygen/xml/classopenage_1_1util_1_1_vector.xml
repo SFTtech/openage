@@ -39,9 +39,9 @@
         <name>default_eps</name>
         <initializer>= 1e-4</initializer>
         <briefdescription>
+<para>Default comparison epsilon. </para>
         </briefdescription>
         <detaileddescription>
-<para>Default comparison epsilon. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -55,9 +55,9 @@
         <argsstring>()</argsstring>
         <name>Vector</name>
         <briefdescription>
+<para>Default, random-value constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Default, random-value constructor. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -93,9 +93,9 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Constructor for initialisation with N T values. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructor for initialisation with N T values </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -116,9 +116,9 @@
           <defval><ref refid="classopenage_1_1util_1_1_vector_1ab843994301eeadb19467f7cbb131fc0b" kindref="member">default_eps</ref></defval>
         </param>
         <briefdescription>
+<para>Equality test with given precision. </para>
         </briefdescription>
         <detaileddescription>
-<para>Equality test with given precision. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -137,9 +137,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> addition with assignment. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> addition with assignment </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -155,9 +155,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> addition. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> addition </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -173,9 +173,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> subtraction with assignment. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> subtraction with assignment </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -191,9 +191,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> subtraction. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> subtraction </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -209,9 +209,9 @@
           <declname>a</declname>
         </param>
         <briefdescription>
+<para>Scalar multiplication with assignment. </para>
         </briefdescription>
         <detaileddescription>
-<para>Scalar multiplication with assignment </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -227,9 +227,9 @@
           <declname>a</declname>
         </param>
         <briefdescription>
+<para>Scalar multiplication. </para>
         </briefdescription>
         <detaileddescription>
-<para>Scalar multiplication </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -245,9 +245,9 @@
           <declname>a</declname>
         </param>
         <briefdescription>
+<para>Scalar division with assignment. </para>
         </briefdescription>
         <detaileddescription>
-<para>Scalar division with assignment </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -263,9 +263,9 @@
           <declname>a</declname>
         </param>
         <briefdescription>
+<para>Scalar division. </para>
         </briefdescription>
         <detaileddescription>
-<para>Scalar division </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -281,9 +281,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Dot product of two Vectors. </para>
         </briefdescription>
         <detaileddescription>
-<para>Dot product of two Vectors </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -297,9 +297,9 @@
         <argsstring>() const</argsstring>
         <name>norm</name>
         <briefdescription>
+<para>Euclidian norm aka length. </para>
         </briefdescription>
         <detaileddescription>
-<para>Euclidian norm aka length </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -314,9 +314,9 @@
         <argsstring>()</argsstring>
         <name>normalize</name>
         <briefdescription>
+<para>Scales the <ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> so that its norm is 1. </para>
         </briefdescription>
         <detaileddescription>
-<para>Scales the <ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> so that its norm is 1 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -339,9 +339,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Cross-product of two 3-dimensional vectors. </para>
         </briefdescription>
         <detaileddescription>
-<para>Cross-product of two 3-dimensional vectors </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -365,9 +365,9 @@
           <declname>v</declname>
         </param>
         <briefdescription>
+<para>Scalar multiplication with swapped arguments. </para>
         </briefdescription>
         <detaileddescription>
-<para>Scalar multiplication with swapped arguments </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -387,9 +387,9 @@
           <declname>v</declname>
         </param>
         <briefdescription>
+<para>Print to output stream using &apos;&lt;&lt;&apos;. </para>
         </briefdescription>
         <detaileddescription>
-<para>Print to output stream using &apos;&lt;&lt;&apos; </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -397,9 +397,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> class with arithmetic. </para>
     </briefdescription>
     <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> class with arithmetic.</para>
 <para>N = dimensions T = underlying single value type (double, float, ...) </para>
     </detaileddescription>
     <inheritancegraph>

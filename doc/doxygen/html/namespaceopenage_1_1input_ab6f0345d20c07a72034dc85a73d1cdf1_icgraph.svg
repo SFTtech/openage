@@ -20,7 +20,7 @@
 </g>
 <!-- Node43 -->
 <g id="node2" class="node"><title>Node43</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title="When a SDL event happens, this is called.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 145,-30.5 145,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_input</text>

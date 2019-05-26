@@ -156,7 +156,7 @@
         <references refid="classopenage_1_1gui_1_1_game_saver_1a0cd18304cc55f98bc91a2148c1daa81d" compoundref="game__saver_8h" startline="18">game</references>
         <references refid="classopenage_1_1gui_1_1_game_saver_1a6fc1d8d4c28f24d58df098f26f4238ba" compoundref="game__saver_8h" startline="41">generator_parameters</references>
         <references refid="classopenage_1_1gui_1_1_game_saver_1a363f735228bdac37f9bb2d9a4c99ea9f" compoundref="game__saver_8cpp" startline="86" endline="89">on_processed</references>
-        <references refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</references>
+        <references refid="namespaceopenage_1_1gameio_1afc1134c3c633c8bddb614ecb3da48eb2" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_game_saver_1afb402f4d3d3d1d53f2d20956e425d0cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Q_INVOKABLE void</type>

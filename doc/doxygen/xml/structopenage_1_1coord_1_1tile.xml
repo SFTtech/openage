@@ -20,9 +20,10 @@
           <defval>0</defval>
         </param>
         <briefdescription>
+<para>adds an UP component to the coordinate. </para>
         </briefdescription>
         <detaileddescription>
-<para>adds an UP component to the coordinate. the resulting UP component will be &apos;altitude&apos; tiles above ground elevation. </para>
+<para>the resulting UP component will be &apos;altitude&apos; tiles above ground elevation. </para>
         </detaileddescription>
         <inbodydescription>
 <para><xrefsect id="todo_1_todo000007"><xreftitle>Todo</xreftitle><xrefdescription><para>once terrain elevations have been implemented, query the terrain elevation at {ne, se}. </para>

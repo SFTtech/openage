@@ -20,7 +20,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#a7ae88934bf1fc3c90e397441657718d2" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#a7ae88934bf1fc3c90e397441657718d2" target="_top" xlink:title="Emit a qt signal to notify for changes in a running game.">
 <polygon fill="white" stroke="black" points="176,-98.5 176,-128.5 313,-128.5 313,-98.5 176,-98.5"/>
 <text text-anchor="start" x="184" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMainHandle</text>
 <text text-anchor="middle" x="244.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce_running</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#aa8b508b3c91e58ba2f6b34ab22759c85" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#aa8b508b3c91e58ba2f6b34ab22759c85" target="_top" xlink:title="End the game and delete the game handle.">
 <polygon fill="white" stroke="black" points="0,-122.5 0,-152.5 137,-152.5 137,-122.5 0,-122.5"/>
 <text text-anchor="start" x="8" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMainHandle</text>
 <text text-anchor="middle" x="68.5" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::clear</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#afbd62856de4f1e4cf749eaef6b87c50d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#afbd62856de4f1e4cf749eaef6b87c50d" target="_top" xlink:title="Pass the given game to the engine and start it.">
 <polygon fill="white" stroke="black" points="0,-73.5 0,-103.5 137,-103.5 137,-73.5 0,-73.5"/>
 <text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMainHandle</text>
 <text text-anchor="middle" x="68.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game</text>

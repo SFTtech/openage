@@ -34,7 +34,7 @@
 </g>
 <!-- Node35 -->
 <g id="node3" class="node"><title>Node35</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a7dab02972c0d0fa8ef5b3fd387966855" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a7dab02972c0d0fa8ef5b3fd387966855" target="_top" xlink:title="resolve the path to an actually usable one.">
 <polygon fill="white" stroke="black" points="192.5,-0.5 192.5,-30.5 293.5,-30.5 293.5,-0.5 192.5,-0.5"/>
 <text text-anchor="start" x="200.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="243" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Directory::resolve</text>

@@ -25,9 +25,9 @@
         <argsstring></argsstring>
         <name>map</name>
         <briefdescription>
+<para>Data storage. </para>
         </briefdescription>
         <detaileddescription>
-<para>Data storage. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -108,9 +108,10 @@
           <defval>T()</defval>
         </param>
         <briefdescription>
+<para>Returns the value, if it exists and is the right type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the value, if it exists and is the right type. defaultval if not. </para>
+<para>defaultval if not. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -128,9 +129,9 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Check if the map contains the given key. </para>
         </briefdescription>
         <detaileddescription>
-<para>Check if the map contains the given key. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -153,9 +154,9 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Check if the type of a map entry is correct. </para>
         </briefdescription>
         <detaileddescription>
-<para>Check if the type of a map entry is correct. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -189,9 +190,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Storage for parameters for an event class. </para>
     </briefdescription>
     <detaileddescription>
-<para>Storage for parameters for an event class. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="2236">

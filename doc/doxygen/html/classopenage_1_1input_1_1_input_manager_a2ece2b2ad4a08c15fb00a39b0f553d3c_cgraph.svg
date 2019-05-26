@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 326,-35 326,4 -4,4"/>
 <!-- Node147 -->
 <g id="node1" class="node"><title>Node147</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="register a hotkey context by pushing it onto the stack.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 145,-30.5 145,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::push_context</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node148 -->
 <g id="node2" class="node"><title>Node148</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" target="_top" xlink:title="Called by the InputManager where this context shall be registered to.">
 <polygon fill="white" stroke="black" points="181,-0.5 181,-30.5 322,-30.5 322,-0.5 181,-0.5"/>
 <text text-anchor="start" x="189" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="251.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to</text>

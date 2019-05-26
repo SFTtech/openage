@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-122.5 779,-122.5 779,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Register that a given event must be reevaluated at a time, this usually happens because this event de...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-61 0,-91 109,-91 109,-61 0,-61"/>
 <text text-anchor="start" x="8" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="54.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">::create_change</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#a7115692628b99b277fead8b39603c885" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#a7115692628b99b277fead8b39603c885" target="_top" xlink:title="An event target has changed, and the event shall be retriggered.">
 <polygon fill="white" stroke="black" points="145,-83 145,-113 285,-113 285,-83 145,-83"/>
 <text text-anchor="start" x="153" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="215" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00">::add_change</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="321,-66.5 321,-85.5 412,-85.5 412,-66.5 321,-66.5"/>
 <text text-anchor="middle" x="366.5" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -52,7 +52,7 @@
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="464.5,-83 464.5,-113 574.5,-113 574.5,-83 464.5,-83"/>
 <text text-anchor="start" x="472.5" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="519.5" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -66,7 +66,7 @@
 </g>
 <!-- Node6 -->
 <g id="node5" class="node"><title>Node6</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="448,-44.5 448,-63.5 591,-63.5 591,-44.5 448,-44.5"/>
 <text text-anchor="middle" x="519.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -79,7 +79,7 @@
 </g>
 <!-- Node7 -->
 <g id="node6" class="node"><title>Node7</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="649,-88 649,-118 753,-118 753,-88 649,-88"/>
 <text text-anchor="start" x="657" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="701" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>

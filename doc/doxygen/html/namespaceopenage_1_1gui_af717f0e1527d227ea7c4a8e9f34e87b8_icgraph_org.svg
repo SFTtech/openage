@@ -74,7 +74,7 @@
 </g>
 <!-- Node33 -->
 <g id="node6" class="node"><title>Node33</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title="The sourceSize property of the Image QML element ends up here for checking.">
 <polygon fill="white" stroke="black" points="930.5,-36 930.5,-66 1037.5,-66 1037.5,-36 930.5,-36"/>
 <text text-anchor="start" x="938.5" y="-54" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::aspect</text>
 <text text-anchor="middle" x="984" y="-43" font-family="Helvetica,sans-Serif" font-size="10.00">_fit_size</text>
@@ -103,7 +103,7 @@
 </g>
 <!-- Node35 -->
 <g id="node8" class="node"><title>Node35</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" target="_top" xlink:title="Change the already produced texture handles to use new source.">
 <polygon fill="white" stroke="black" points="558,-60.5 558,-101.5 700,-101.5 700,-60.5 558,-60.5"/>
 <text text-anchor="start" x="566" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="566" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::migrate</text>
@@ -118,7 +118,7 @@
 </g>
 <!-- Node39 -->
 <g id="node12" class="node"><title>Node39</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a183dbf9c55bb6ce603654585a92db3b1" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a183dbf9c55bb6ce603654585a92db3b1" target="_top" xlink:title="Fills in the provided handle object.">
 <polygon fill="white" stroke="black" points="558,-0.5 558,-41.5 700,-41.5 700,-0.5 558,-0.5"/>
 <text text-anchor="start" x="566" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="566" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::fill</text>
@@ -133,7 +133,7 @@
 </g>
 <!-- Node36 -->
 <g id="node9" class="node"><title>Node36</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" target="_top" xlink:title="Unblocks the provider.">
 <polygon fill="white" stroke="black" points="380,-60.5 380,-101.5 522,-101.5 522,-60.5 380,-60.5"/>
 <text text-anchor="start" x="388" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="388" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::on_game</text>
@@ -148,7 +148,7 @@
 </g>
 <!-- Node37 -->
 <g id="node10" class="node"><title>Node37</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" target="_top" xlink:title="Sets the game spec to load textures from.">
 <polygon fill="white" stroke="black" points="0,-66 0,-96 154,-96 154,-66 0,-66"/>
 <text text-anchor="start" x="8" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="77" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">Link::set_game_spec</text>
@@ -162,7 +162,7 @@
 </g>
 <!-- Node38 -->
 <g id="node11" class="node"><title>Node38</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" target="_top" xlink:title="Pass loaded assets to the image provider.">
 <polygon fill="white" stroke="black" points="190,-44 190,-74 344,-74 344,-44 190,-44"/>
 <text text-anchor="start" x="198" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="267" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00">Link::on_game_spec_loaded</text>

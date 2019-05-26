@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 288,-35 288,4 -4,4"/>
 <!-- Node640 -->
 <g id="node1" class="node"><title>Node640</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns the number of whitespace characters on the right of the string.">
 <polygon fill="#bfbfbf" stroke="black" points="184,-6 184,-25 284,-25 284,-6 184,-6"/>
 <text text-anchor="middle" x="234" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::rstrip</text>
 </a>

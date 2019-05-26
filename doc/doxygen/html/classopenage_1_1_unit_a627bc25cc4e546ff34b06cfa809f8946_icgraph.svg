@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 258,-35 258,4 -4,4"/>
 <!-- Node51 -->
 <g id="node1" class="node"><title>Node51</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="applies new commands as part of the units update process">
 <polygon fill="#bfbfbf" stroke="black" points="148,-0.5 148,-30.5 254,-30.5 254,-0.5 148,-0.5"/>
 <text text-anchor="start" x="156" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::apply</text>
 <text text-anchor="middle" x="201" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_all_cmds</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node52 -->
 <g id="node2" class="node"><title>Node52</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" target="_top" xlink:title="update this object using the action currently on top of the stack">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 112,-25 112,-6 0,-6"/>
 <text text-anchor="middle" x="56" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::update</text>
 </a>

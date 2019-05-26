@@ -217,7 +217,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node72 -->
 <g id="node29" class="node"><title>Node72</title>
-<g id="a_node29"><a xlink:href="producer_8cpp.xhtml" target="_top" xlink:title=" ">
+<g id="a_node29"><a xlink:href="producer_8cpp.xhtml" target="_top" xlink:title="Many values in this file are hardcoded, due to limited understanding of how the original game files w...">
 <polygon fill="white" stroke="black" points="2492,-156.5 2492,-197.5 2649,-197.5 2649,-156.5 2492,-156.5"/>
 <text text-anchor="start" x="2500" y="-185.5" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="2500" y="-174.5" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>
@@ -262,7 +262,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node95 -->
 <g id="node45" class="node"><title>Node95</title>
-<g id="a_node45"><a xlink:href="a__star_8cpp.xhtml" target="_top" xlink:title=" ">
+<g id="a_node45"><a xlink:href="a__star_8cpp.xhtml" target="_top" xlink:title="This file implements the A* search algorithm for openage.">
 <polygon fill="white" stroke="black" points="2577,-501.5 2577,-542.5 2734,-542.5 2734,-501.5 2577,-501.5"/>
 <text text-anchor="start" x="2585" y="-530.5" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="2585" y="-519.5" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>

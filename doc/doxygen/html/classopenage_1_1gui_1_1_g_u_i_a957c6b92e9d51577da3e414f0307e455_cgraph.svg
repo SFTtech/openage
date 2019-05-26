@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 261,-35 261,4 -4,4"/>
 <!-- Node8 -->
 <g id="node1" class="node"><title>Node8</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="execute the input handler.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 101,-30.5 101,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GUI::</text>
 <text text-anchor="middle" x="50.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">on_input</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node9 -->
 <g id="node2" class="node"><title>Node9</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_input.xhtml#ae7fdec19c83d1cd4dd0bb2d06fa1a8ae" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_input.xhtml#ae7fdec19c83d1cd4dd0bb2d06fa1a8ae" target="_top" xlink:title="Returns true if the event was accepted.">
 <polygon fill="white" stroke="black" points="137,-6 137,-25 257,-25 257,-6 137,-6"/>
 <text text-anchor="middle" x="197" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiInput::process</text>
 </a>

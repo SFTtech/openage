@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 254,-84 254,4 -4,4"/>
 <!-- Node62 -->
 <g id="node1" class="node"><title>Node62</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="obj[key]">
 <polygon fill="#bfbfbf" stroke="black" points="143,-24.5 143,-54.5 250,-54.5 250,-24.5 143,-24.5"/>
 <text text-anchor="start" x="151" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="196.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node63 -->
 <g id="node2" class="node"><title>Node63</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aaff2674b9d1b7ffcf0a67f8ecba9f1b6" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aaff2674b9d1b7ffcf0a67f8ecba9f1b6" target="_top" xlink:title="obj[key]">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 107,-79.5 107,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="53.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get</text>

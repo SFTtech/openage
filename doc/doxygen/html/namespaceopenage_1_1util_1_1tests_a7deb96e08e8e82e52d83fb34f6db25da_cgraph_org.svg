@@ -20,7 +20,7 @@
 </g>
 <!-- Node76 -->
 <g id="node2" class="node"><title>Node76</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#ab33cee057269a707f1f8a5f58944a5a4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#ab33cee057269a707f1f8a5f58944a5a4" target="_top" xlink:title="Cross&#45;product of two 3&#45;dimensional vectors.">
 <polygon fill="white" stroke="black" points="145.5,-112.5 145.5,-142.5 252.5,-142.5 252.5,-112.5 145.5,-112.5"/>
 <text text-anchor="start" x="153.5" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="199" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">::cross_product</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node77 -->
 <g id="node3" class="node"><title>Node77</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#ab534732ef33d7e047d612bdf8bc98322" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#ab534732ef33d7e047d612bdf8bc98322" target="_top" xlink:title="Dot product of two Vectors.">
 <polygon fill="white" stroke="black" points="136,-74 136,-93 262,-93 262,-74 136,-74"/>
 <text text-anchor="middle" x="199" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector::dot</text>
 </a>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node78 -->
 <g id="node4" class="node"><title>Node78</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#adb9d43a588f0d7044f201a2dff2db844" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#adb9d43a588f0d7044f201a2dff2db844" target="_top" xlink:title="Equality test with given precision.">
 <polygon fill="white" stroke="black" points="145.5,-24.5 145.5,-54.5 252.5,-54.5 252.5,-24.5 145.5,-24.5"/>
 <text text-anchor="start" x="153.5" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="199" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::equals</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node80 -->
 <g id="node6" class="node"><title>Node80</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="386,-49.5 386,-79.5 511,-79.5 511,-49.5 386,-49.5"/>
 <text text-anchor="start" x="394" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="448.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node81 -->
 <g id="node7" class="node"><title>Node81</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="386,-0.5 386,-30.5 511,-30.5 511,-0.5 386,-0.5"/>
 <text text-anchor="start" x="394" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="448.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

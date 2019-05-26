@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 297,-46 297,4 -4,4"/>
 <!-- Node13 -->
 <g id="node1" class="node"><title>Node13</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Call this whenever some data in the target changes.">
 <polygon fill="#bfbfbf" stroke="black" points="154,-6 154,-36 293,-36 293,-6 154,-6"/>
 <text text-anchor="start" x="162" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventTarget</text>
 <text text-anchor="middle" x="223.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">::changes</text>

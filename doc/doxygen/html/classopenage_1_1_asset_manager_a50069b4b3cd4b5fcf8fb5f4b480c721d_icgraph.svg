@@ -57,7 +57,7 @@ var sectionId = 'dynsection-6';
 <polygon fill="white" stroke="none" points="-4,4 -4,-868 829,-868 829,4 -4,4"/>
 <!-- Node29 -->
 <g id="node1" class="node"><title>Node29</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Return the engine responsible for this asset manager.">
 <polygon fill="#bfbfbf" stroke="black" points="703,-441.5 703,-471.5 825,-471.5 825,-441.5 703,-441.5"/>
 <text text-anchor="start" x="711" y="-459.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="764" y="-448.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_engine</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node30 -->
 <g id="node2" class="node"><title>Node30</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title="Invoked when the gamedata has been loaded.">
 <polygon fill="white" stroke="black" points="541,-659.5 541,-689.5 655,-689.5 655,-659.5 541,-659.5"/>
 <text text-anchor="start" x="549" y="-677.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="598" y="-666.5" font-family="Helvetica,sans-Serif" font-size="10.00">on_gamedata_loaded</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node50 -->
 <g id="node22" class="node"><title>Node50</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" target="_top" xlink:title="Actually dispatch the loading job to the job manager.">
 <polygon fill="white" stroke="black" points="529,-223.5 529,-253.5 667,-253.5 667,-223.5 529,-223.5"/>
 <text text-anchor="start" x="537" y="-241.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="598" y="-230.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_load_job</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node31 -->
 <g id="node3" class="node"><title>Node31</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="367,-833.5 367,-863.5 481,-863.5 481,-833.5 367,-833.5"/>
 <text text-anchor="start" x="375" y="-851.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="424" y="-840.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node33 -->
 <g id="node5" class="node"><title>Node33</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="369.5,-784.5 369.5,-814.5 478.5,-814.5 478.5,-784.5 369.5,-784.5"/>
 <text text-anchor="start" x="377.5" y="-802.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAbility</text>
 <text text-anchor="middle" x="424" y="-791.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node34 -->
 <g id="node6" class="node"><title>Node34</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_garrison_ability.xhtml#afbd9de019824dcf92b3b5dd4e5e1aea7" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_garrison_ability.xhtml#afbd9de019824dcf92b3b5dd4e5e1aea7" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="362.5,-735.5 362.5,-765.5 485.5,-765.5 485.5,-735.5 362.5,-735.5"/>
 <text text-anchor="start" x="370.5" y="-753.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GarrisonAbility</text>
 <text text-anchor="middle" x="424" y="-742.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -149,7 +149,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node35 -->
 <g id="node7" class="node"><title>Node35</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="357.5,-686.5 357.5,-716.5 490.5,-716.5 490.5,-686.5 357.5,-686.5"/>
 <text text-anchor="start" x="365.5" y="-704.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UngarrisonAbility</text>
 <text text-anchor="middle" x="424" y="-693.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -163,7 +163,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node36 -->
 <g id="node8" class="node"><title>Node36</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_train_ability.xhtml#af4ea7db282a8000eb59e8edc540d40c4" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_train_ability.xhtml#af4ea7db282a8000eb59e8edc540d40c4" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="370.5,-637.5 370.5,-667.5 477.5,-667.5 477.5,-637.5 370.5,-637.5"/>
 <text text-anchor="start" x="378.5" y="-655.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TrainAbility</text>
 <text text-anchor="middle" x="424" y="-644.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -177,7 +177,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node37 -->
 <g id="node9" class="node"><title>Node37</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_research_ability.xhtml#a47bc3b71628ece52bceeafdae473d039" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_research_ability.xhtml#a47bc3b71628ece52bceeafdae473d039" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="360,-588.5 360,-618.5 488,-618.5 488,-588.5 360,-588.5"/>
 <text text-anchor="start" x="368" y="-606.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchAbility</text>
 <text text-anchor="middle" x="424" y="-595.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -191,7 +191,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node38 -->
 <g id="node10" class="node"><title>Node38</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_build_ability.xhtml#acf4dba9dcd9ed37efcbec8f14da3c3a2" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_build_ability.xhtml#acf4dba9dcd9ed37efcbec8f14da3c3a2" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="370,-539.5 370,-569.5 478,-569.5 478,-539.5 370,-539.5"/>
 <text text-anchor="start" x="378" y="-557.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAbility</text>
 <text text-anchor="middle" x="424" y="-546.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -205,7 +205,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node39 -->
 <g id="node11" class="node"><title>Node39</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_gather_ability.xhtml#a24e201b13152f9cc654d2b69ec95940e" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_gather_ability.xhtml#a24e201b13152f9cc654d2b69ec95940e" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="366,-490.5 366,-520.5 482,-520.5 482,-490.5 366,-490.5"/>
 <text text-anchor="start" x="374" y="-508.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAbility</text>
 <text text-anchor="middle" x="424" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -219,7 +219,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node40 -->
 <g id="node12" class="node"><title>Node40</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_attack_ability.xhtml#ab607828e9d6469ea9405cfc5f1ab2735" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_attack_ability.xhtml#ab607828e9d6469ea9405cfc5f1ab2735" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="366.5,-441.5 366.5,-471.5 481.5,-471.5 481.5,-441.5 366.5,-441.5"/>
 <text text-anchor="start" x="374.5" y="-459.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAbility</text>
 <text text-anchor="middle" x="424" y="-448.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -233,7 +233,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node41 -->
 <g id="node13" class="node"><title>Node41</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_repair_ability.xhtml#aac321a378657813f98a938df9be7256d" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_repair_ability.xhtml#aac321a378657813f98a938df9be7256d" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="367,-392.5 367,-422.5 481,-422.5 481,-392.5 367,-392.5"/>
 <text text-anchor="start" x="375" y="-410.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RepairAbility</text>
 <text text-anchor="middle" x="424" y="-399.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -247,7 +247,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node42 -->
 <g id="node14" class="node"><title>Node42</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_heal_ability.xhtml#a7da7aca0fca2b96e24874441df1a016e" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_heal_ability.xhtml#a7da7aca0fca2b96e24874441df1a016e" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="371,-343.5 371,-373.5 477,-373.5 477,-343.5 371,-343.5"/>
 <text text-anchor="start" x="379" y="-361.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HealAbility</text>
 <text text-anchor="middle" x="424" y="-350.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -261,7 +261,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node43 -->
 <g id="node15" class="node"><title>Node43</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_patrol_ability.xhtml#ad0b338306b2825e24536dc95bf4ae3d1" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_patrol_ability.xhtml#ad0b338306b2825e24536dc95bf4ae3d1" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="368,-294.5 368,-324.5 480,-324.5 480,-294.5 368,-294.5"/>
 <text text-anchor="start" x="376" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PatrolAbility</text>
 <text text-anchor="middle" x="424" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -275,7 +275,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node44 -->
 <g id="node16" class="node"><title>Node44</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1_convert_ability.xhtml#a3ed81fd0cceaa364654c89803c3b0e48" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1_convert_ability.xhtml#a3ed81fd0cceaa364654c89803c3b0e48" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="364.5,-245.5 364.5,-275.5 483.5,-275.5 483.5,-245.5 364.5,-245.5"/>
 <text text-anchor="start" x="372.5" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ConvertAbility</text>
 <text text-anchor="middle" x="424" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -289,7 +289,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node45 -->
 <g id="node17" class="node"><title>Node45</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="360.5,-196.5 360.5,-226.5 487.5,-226.5 487.5,-196.5 360.5,-196.5"/>
 <text text-anchor="start" x="368.5" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="424" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -303,7 +303,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node48 -->
 <g id="node20" class="node"><title>Node48</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="357.5,-147.5 357.5,-177.5 490.5,-177.5 490.5,-147.5 357.5,-147.5"/>
 <text text-anchor="start" x="365.5" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <text text-anchor="middle" x="424" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -317,7 +317,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node49 -->
 <g id="node21" class="node"><title>Node49</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title="draw object with direction">
 <polygon fill="white" stroke="black" points="369.5,-98.5 369.5,-128.5 478.5,-128.5 478.5,-98.5 369.5,-98.5"/>
 <text text-anchor="start" x="377.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="424" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>
@@ -331,7 +331,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node46 -->
 <g id="node18" class="node"><title>Node46</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="183,-196.5 183,-226.5 317,-226.5 317,-196.5 183,-196.5"/>
 <text text-anchor="start" x="191" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="250" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -345,7 +345,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node47 -->
 <g id="node19" class="node"><title>Node47</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="11.5,-196.5 11.5,-226.5 133.5,-226.5 133.5,-196.5 11.5,-196.5"/>
 <text text-anchor="start" x="19.5" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="72.5" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -359,7 +359,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node51 -->
 <g id="node23" class="node"><title>Node51</title>
-<g id="a_node23"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" target="_top" xlink:title="load the game specification if not already present.">
 <polygon fill="white" stroke="black" points="355,-49.5 355,-79.5 493,-79.5 493,-49.5 355,-49.5"/>
 <text text-anchor="start" x="363" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="424" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_loading_if_needed</text>
@@ -373,7 +373,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node52 -->
 <g id="node24" class="node"><title>Node52</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" target="_top" xlink:title="Control whether this specification can be loaded (=true) or will not be loaded (=false).">
 <polygon fill="white" stroke="black" points="181,-98.5 181,-128.5 319,-128.5 319,-98.5 181,-98.5"/>
 <text text-anchor="start" x="189" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="250" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_active</text>
@@ -387,7 +387,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node54 -->
 <g id="node26" class="node"><title>Node54</title>
-<g id="a_node26"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ad9c03812749a8ac9b21960e0f5bb462e" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ad9c03812749a8ac9b21960e0f5bb462e" target="_top" xlink:title="invoked from qml when the asset_manager member is set.">
 <polygon fill="white" stroke="black" points="181,-49.5 181,-79.5 319,-79.5 319,-49.5 181,-49.5"/>
 <text text-anchor="start" x="189" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="250" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_asset_manager</text>
@@ -401,7 +401,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node56 -->
 <g id="node28" class="node"><title>Node56</title>
-<g id="a_node28"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#a019a81d88722206e82c7b5c87ddfe04f" target="_top" xlink:title=" ">
+<g id="a_node28"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#a019a81d88722206e82c7b5c87ddfe04f" target="_top" xlink:title="forget everything about the specification and reload it with start_loading_if_needed.">
 <polygon fill="white" stroke="black" points="181,-0.5 181,-30.5 319,-30.5 319,-0.5 181,-0.5"/>
 <text text-anchor="start" x="189" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="250" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invalidate</text>

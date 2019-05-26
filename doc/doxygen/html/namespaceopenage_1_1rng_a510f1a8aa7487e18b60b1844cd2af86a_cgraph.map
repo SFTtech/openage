@@ -1,7 +1,7 @@
 <map id="openage::rng::random_seed" name="openage::rng::random_seed">
-<area shape="rect" id="node1" title=" " alt="" coords="5,46,188,73"/>
+<area shape="rect" id="node1" title="Returns a seed based on time since epoch as well as data from std::random_device if available." alt="" coords="5,46,188,73"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1rng.xhtml#a4bdd2cc5c7f7f5d81ff514287f65eef0" title=" " alt="" coords="236,46,401,73"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" title=" " alt="" coords="465,5,605,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" title="returns the number of nanoseconds since the UNIX epoch." alt="" coords="465,5,605,47"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1rng.xhtml#a924b85bc82578378e68818dab9a247b6" title=" " alt="" coords="449,71,620,112"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="668,78,779,105"/>
 </map>

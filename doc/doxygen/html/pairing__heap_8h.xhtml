@@ -96,6 +96,9 @@ $(document).ready(function(){initNavTree('pairing__heap_8h.xhtml','');});
 <div class="title">pairing_heap.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file contains the implementation of a pairing heap.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;type_traits&gt;</code><br />
@@ -107,14 +110,16 @@ $(document).ready(function(){initNavTree('pairing__heap_8h.xhtml','');});
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="pairing__heap_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="pairing__heap_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="pairing__heap_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="pairing__heap_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div>
 <p><a href="pairing__heap_8h_source.xhtml">Go to the source code of this file.</a></p>
@@ -122,15 +127,18 @@ $(document).ready(function(){initNavTree('pairing__heap_8h.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Quite) efficient heap implementation.  <a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap_node.xhtml">openage::datastructure::PairingHeapNode&lt; T, compare &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Quite) efficient heap implementation.  <a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1datastructure"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1datastructure.xhtml">openage::datastructure</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,7 +149,8 @@ Macros</h2></td></tr>
 <tr class="separator:ac4f5862bbb243cacbe53df34654f1ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file contains the implementation of a pairing heap. It is a priority queue with near-optimal runtime.</p>
+<div class="textblock"><p>This file contains the implementation of a pairing heap. </p>
+<p>It is a priority queue with near-optimal runtime.</p>
 <p>The main advantage over the STL heap is the presence of the decrease_key operation.</p>
 <p>Literature:</p>
 <p>Fredman, Michael L., Robert Sedgewick, Daniel D. Sleator, and Robert E. Tarjan. "The pairing heap: A new form of self-adjusting heap." Algorithmica 1, no. 1-4 (1986): 111-129. </p>

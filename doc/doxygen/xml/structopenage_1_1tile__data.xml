@@ -157,9 +157,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>storage data for a single terrain tile. </para>
     </briefdescription>
     <detaileddescription>
-<para>storage data for a single terrain tile. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5262">

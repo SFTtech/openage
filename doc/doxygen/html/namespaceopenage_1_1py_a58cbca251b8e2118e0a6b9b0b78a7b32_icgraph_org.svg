@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1388.5 1102,-1388.5 1102,4 -4,4"/>
 <!-- Node56 -->
 <g id="node1" class="node"><title>Node56</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="list()">
 <polygon fill="#bfbfbf" stroke="black" points="1009,-668 1009,-687 1098,-687 1098,-668 1009,-668"/>
 <text text-anchor="middle" x="1053.5" y="-675" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::list</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node63 -->
 <g id="node8" class="node"><title>Node63</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_game_spec.xhtml#ad72bef762bb38fb93c944d490bf5c113" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_game_spec.xhtml#ad72bef762bb38fb93c944d490bf5c113" target="_top" xlink:title="create unit abilities from game data">
 <polygon fill="white" stroke="black" points="822.5,-1296.5 822.5,-1326.5 936.5,-1326.5 936.5,-1296.5 822.5,-1296.5"/>
 <text text-anchor="start" x="830.5" y="-1314.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="879.5" y="-1303.5" font-family="Helvetica,sans-Serif" font-size="10.00">create_abilities</text>
@@ -272,7 +272,7 @@
 </g>
 <!-- Node86 -->
 <g id="node31" class="node"><title>Node86</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1_game_spec.xhtml#acbe30bd72e3a9ef46c461e497d726711" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1_game_spec.xhtml#acbe30bd72e3a9ef46c461e497d726711" target="_top" xlink:title="loads required assets to construct a buildings.">
 <polygon fill="white" stroke="black" points="822.5,-439.5 822.5,-469.5 936.5,-469.5 936.5,-439.5 822.5,-439.5"/>
 <text text-anchor="start" x="830.5" y="-457.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="879.5" y="-446.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_building</text>
@@ -286,7 +286,7 @@
 </g>
 <!-- Node89 -->
 <g id="node34" class="node"><title>Node89</title>
-<g id="a_node34"><a xlink:href="classopenage_1_1_game_spec.xhtml#a51a1664688173a588e6ead16703f8e82" target="_top" xlink:title=" ">
+<g id="a_node34"><a xlink:href="classopenage_1_1_game_spec.xhtml#a51a1664688173a588e6ead16703f8e82" target="_top" xlink:title="loads assets for living things.">
 <polygon fill="white" stroke="black" points="822.5,-390.5 822.5,-420.5 936.5,-420.5 936.5,-390.5 822.5,-390.5"/>
 <text text-anchor="start" x="830.5" y="-408.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="879.5" y="-397.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_living</text>
@@ -300,7 +300,7 @@
 </g>
 <!-- Node90 -->
 <g id="node35" class="node"><title>Node90</title>
-<g id="a_node35"><a xlink:href="classopenage_1_1_game_spec.xhtml#a67579e89ee667f00dc301433a23458af" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classopenage_1_1_game_spec.xhtml#a67579e89ee667f00dc301433a23458af" target="_top" xlink:title="load missile assets.">
 <polygon fill="white" stroke="black" points="822.5,-341.5 822.5,-371.5 936.5,-371.5 936.5,-341.5 822.5,-341.5"/>
 <text text-anchor="start" x="830.5" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="879.5" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_missile</text>
@@ -314,7 +314,7 @@
 </g>
 <!-- Node91 -->
 <g id="node36" class="node"><title>Node91</title>
-<g id="a_node36"><a xlink:href="classopenage_1_1_game_spec.xhtml#af210d4508dea9f8f87aa98c3fc0e3359" target="_top" xlink:title=" ">
+<g id="a_node36"><a xlink:href="classopenage_1_1_game_spec.xhtml#af210d4508dea9f8f87aa98c3fc0e3359" target="_top" xlink:title="load assets for other game objects (not building and living).">
 <polygon fill="white" stroke="black" points="822.5,-292.5 822.5,-322.5 936.5,-322.5 936.5,-292.5 822.5,-292.5"/>
 <text text-anchor="start" x="830.5" y="-310.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="879.5" y="-299.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_object</text>
@@ -483,7 +483,7 @@
 </g>
 <!-- Node64 -->
 <g id="node9" class="node"><title>Node64</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title="Invoked when the gamedata has been loaded.">
 <polygon fill="white" stroke="black" points="604.5,-1275.5 604.5,-1305.5 718.5,-1305.5 718.5,-1275.5 604.5,-1275.5"/>
 <text text-anchor="start" x="612.5" y="-1293.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="661.5" y="-1282.5" font-family="Helvetica,sans-Serif" font-size="10.00">on_gamedata_loaded</text>
@@ -497,7 +497,7 @@
 </g>
 <!-- Node65 -->
 <g id="node10" class="node"><title>Node65</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="393.5,-1273.5 393.5,-1303.5 507.5,-1303.5 507.5,-1273.5 393.5,-1273.5"/>
 <text text-anchor="start" x="401.5" y="-1291.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="450.5" y="-1280.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>
@@ -574,7 +574,7 @@
 </g>
 <!-- Node87 -->
 <g id="node32" class="node"><title>Node87</title>
-<g id="a_node32"><a xlink:href="classopenage_1_1_game_spec.xhtml#ab009229f56624608b53820adf2895cbc" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="classopenage_1_1_game_spec.xhtml#ab009229f56624608b53820adf2895cbc" target="_top" xlink:title="makes initial unit types for a particular civ id">
 <polygon fill="white" stroke="black" points="604.5,-366.5 604.5,-396.5 718.5,-396.5 718.5,-366.5 604.5,-366.5"/>
 <text text-anchor="start" x="612.5" y="-384.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="661.5" y="-373.5" font-family="Helvetica,sans-Serif" font-size="10.00">create_unit_types</text>
@@ -588,7 +588,7 @@
 </g>
 <!-- Node88 -->
 <g id="node33" class="node"><title>Node88</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403" target="_top" xlink:title="initialise the unit meta data">
 <polygon fill="white" stroke="black" points="396.5,-366.5 396.5,-396.5 504.5,-396.5 504.5,-366.5 396.5,-366.5"/>
 <text text-anchor="start" x="404.5" y="-384.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Civilisation</text>
 <text text-anchor="middle" x="450.5" y="-373.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise_unit_types</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 301,-35 301,4 -4,4"/>
 <!-- Node19 -->
 <g id="node1" class="node"><title>Node19</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Prints an entire Backtrace object.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-6 0,-25 132,-25 132,-6 0,-6"/>
 <text text-anchor="middle" x="66" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::operator&lt;&lt;</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node20 -->
 <g id="node2" class="node"><title>Node20</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_backtrace.xhtml#ad4e4e82a65ad250f048f66667d810440" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_backtrace.xhtml#ad4e4e82a65ad250f048f66667d810440" target="_top" xlink:title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge.">
 <polygon fill="white" stroke="black" points="168,-0.5 168,-30.5 297,-30.5 297,-0.5 168,-0.5"/>
 <text text-anchor="start" x="176" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Backtrace</text>
 <text text-anchor="middle" x="232.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_symbols</text>

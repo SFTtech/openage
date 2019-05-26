@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 350,-35 350,4 -4,4"/>
 <!-- Node12 -->
 <g id="node1" class="node"><title>Node12</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Get the value behind the iterator.">
 <polygon fill="#bfbfbf" stroke="black" points="218,-0.5 218,-30.5 346,-30.5 346,-0.5 218,-0.5"/>
 <text text-anchor="start" x="226" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::MapFilter</text>
 <text text-anchor="middle" x="282" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Iterator::value</text>

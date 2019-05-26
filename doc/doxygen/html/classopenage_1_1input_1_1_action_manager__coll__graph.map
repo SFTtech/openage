@@ -1,10 +1,10 @@
 <map id="openage::input::ActionManager" name="openage::input::ActionManager">
-<area shape="rect" id="node1" title=" " alt="" coords="535,535,738,700"/>
-<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_manager.xhtml" title=" " alt="" coords="288,763,481,1075"/>
-<area shape="rect" id="node2" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml" title=" " alt="" coords="542,321,731,472"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_path.xhtml" title=" " alt="" coords="571,5,702,259"/>
-<area shape="rect" id="node8" href="$classopenage_1_1input_1_1_input_context.xhtml" title=" " alt="" coords="291,1137,479,1391"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_input_handler.xhtml" title=" " alt="" coords="5,571,156,663"/>
+<area shape="rect" id="node1" title="The action manager manages all the actions allow creation, access information and equality." alt="" coords="535,535,738,700"/>
+<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_manager.xhtml" title="The input manager manages all input layers (hud, game, ...) and triggers the registered actions depen..." alt="" coords="288,763,481,1075"/>
+<area shape="rect" id="node2" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml" title="Configuration manager." alt="" coords="542,321,731,472"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_path.xhtml" title="C++ pendant to the python util.fslike.path.Path." alt="" coords="571,5,702,259"/>
+<area shape="rect" id="node8" href="$classopenage_1_1input_1_1_input_context.xhtml" title="An input context contains all keybindings and actions active in e.g." alt="" coords="291,1137,479,1391"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_input_handler.xhtml" title="superclass for handling any input event." alt="" coords="5,571,156,663"/>
 <area shape="rect" id="node6" href="$structopenage_1_1coord_1_1input.xhtml" title=" " alt="" coords="181,564,327,671"/>
 <area shape="rect" id="node7" title=" " alt="" coords="170,351,333,443"/>
 <area shape="rect" id="node9" href="$structopenage_1_1coord_1_1input__delta.xhtml" title=" " alt="" coords="355,557,502,678"/>

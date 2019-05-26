@@ -1,6 +1,6 @@
 <map id="openage::RadialObject::contains" name="openage::RadialObject::contains">
-<area shape="rect" id="node1" title=" " alt="" coords="5,71,159,112"/>
+<area shape="rect" id="node1" title="does this space contain a given point" alt="" coords="5,71,159,112"/>
 <area shape="rect" id="node2" href="$structopenage_1_1coord_1_1phys2.xhtml#a759b5a67a3faf43208cfb35712f26451" title=" " alt="" coords="213,5,367,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" title=" " alt="" coords="207,71,373,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" title="Converter to retrieve the number as double." alt="" coords="207,71,373,112"/>
 <area shape="rect" id="node4" href="$structopenage_1_1coord_1_1phys3.xhtml#a24ddc021570223779a5ffad9e3a575b4" title=" " alt="" coords="213,136,367,177"/>
 </map>

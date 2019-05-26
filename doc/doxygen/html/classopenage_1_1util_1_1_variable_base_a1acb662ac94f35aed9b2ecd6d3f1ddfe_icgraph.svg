@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 320,-35 320,4 -4,4"/>
 <!-- Node12 -->
 <g id="node1" class="node"><title>Node12</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="sets the type and value">
 <polygon fill="#bfbfbf" stroke="black" points="161,-6 161,-25 316,-25 316,-6 161,-6"/>
 <text text-anchor="middle" x="238.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::VariableBase::set</text>
 </a>

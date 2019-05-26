@@ -101,9 +101,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Emits a signal when anything changes in the directories. </para>
     </briefdescription>
     <detaileddescription>
-<para>Emits a signal when anything changes in the directories. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6554">

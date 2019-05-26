@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-426 296,-426 296,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A templated job state base class, that implements basic functionality of job states.">
 <polygon fill="#bfbfbf" stroke="black" points="72.5,-127.5 72.5,-294.5 215.5,-294.5 215.5,-127.5 72.5,-127.5"/>
 <text text-anchor="start" x="80.5" y="-282.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::TypedJobState</text>
 <text text-anchor="middle" x="144" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00">Base&lt; T &gt;</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_abortable_job_state.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_abortable_job_state.xhtml" target="_top" xlink:title="An abortable job state supports job that can be aborted.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-90.5 134,-90.5 134,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::AbortableJob</text>
 <text text-anchor="middle" x="67" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">State&lt; T &gt;</text>
@@ -53,7 +53,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1job_1_1_job_state.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1job_1_1_job_state.xhtml" target="_top" xlink:title="A job state supports simple job&#39;s with functions that return a single result.">
 <polygon fill="white" stroke="black" points="152,-6 152,-85 292,-85 292,-6 152,-6"/>
 <text text-anchor="middle" x="222" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobState&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="152,-66 292,-66 "/>
@@ -72,7 +72,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_state_base.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_state_base.xhtml" target="_top" xlink:title="An abstract base class for a shared state of a job.">
 <polygon fill="white" stroke="black" points="74.5,-331.5 74.5,-421.5 213.5,-421.5 213.5,-331.5 74.5,-331.5"/>
 <text text-anchor="middle" x="144" y="-409.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobStateBase</text>
 <polyline fill="none" stroke="black" points="74.5,-402.5 213.5,-402.5 "/>

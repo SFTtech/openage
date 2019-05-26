@@ -1,4 +1,4 @@
 <map id="openage::renderer::resources::Texture2dData::get_info" name="openage::renderer::resources::Texture2dData::get_info">
 <area shape="rect" id="node1" title="Returns the information describing this texture data." alt="" coords="192,5,363,61"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#aa521e75b491d72b51afade86d6c18ad4" title=" " alt="" coords="5,5,144,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#aa521e75b491d72b51afade86d6c18ad4" title="Uploads the provided data into the GPU texture storage." alt="" coords="5,5,144,61"/>
 </map>

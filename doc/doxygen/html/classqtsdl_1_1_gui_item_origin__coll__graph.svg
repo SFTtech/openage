@@ -91,7 +91,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node25 -->
 <g id="node3" class="node"><title>Node25</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_persistent_core_holder_base.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_persistent_core_holder_base.xhtml" target="_top" xlink:title="Helper to hide the type of the core.">
 <polygon fill="white" stroke="black" points="6,-382.5 6,-450.5 164,-450.5 164,-382.5 6,-382.5"/>
 <text text-anchor="middle" x="85" y="-438.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::PersistentCoreHolderBase</text>
 <polyline fill="none" stroke="black" points="6,-431.5 164,-431.5 "/>

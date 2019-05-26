@@ -1,10 +1,10 @@
 <map id="openage::ResourceBundle::has" name="openage::ResourceBundle::has">
 <area shape="rect" id="node1" title=" " alt="" coords="656,78,859,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a5511f9f158fdeabca07be9d5314d7c38" title=" " alt="" coords="448,5,593,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_player.xhtml#a7afa6e6f2c511235e1aa58a40b16eaf5" title=" " alt="" coords="448,71,593,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_resource_bundle.xhtml#ae324ee7f007981e5f9629f6ed30b8641" title=" " alt="" coords="433,136,608,177"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" title=" " alt="" coords="201,13,385,39"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_player.xhtml#a3ff378e505d9036c74204730b53d9fba" title=" " alt="" coords="212,143,375,170"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" title=" " alt="" coords="5,118,153,145"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" title=" " alt="" coords="6,169,153,195"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a5511f9f158fdeabca07be9d5314d7c38" title="Check if the player has enough resources to deduct the given amount." alt="" coords="448,5,593,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_player.xhtml#a7afa6e6f2c511235e1aa58a40b16eaf5" title="Check if can add to stockpile." alt="" coords="448,71,593,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_resource_bundle.xhtml#ae324ee7f007981e5f9629f6ed30b8641" title="If amount can&#39;t be deducted return false, else deduct the given amount and return true." alt="" coords="433,136,608,177"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" title="Check if the player can make a new unit of the given type." alt="" coords="201,13,385,39"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_player.xhtml#a3ff378e505d9036c74204730b53d9fba" title="remove from stockpile if available" alt="" coords="212,143,375,170"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" title="The given player buys the given resource with gold." alt="" coords="5,118,153,145"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" title="The given player sells the given resource for gold." alt="" coords="6,169,153,195"/>
 </map>

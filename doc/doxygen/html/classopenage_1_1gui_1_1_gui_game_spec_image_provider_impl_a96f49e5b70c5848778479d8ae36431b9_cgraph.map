@@ -1,12 +1,12 @@
 <map id="openage::gui::GuiGameSpecImageProviderImpl::on_game_spec_loaded" name="openage::gui::GuiGameSpecImageProviderImpl::on_game_spec_loaded">
-<area shape="rect" id="node1" title=" " alt="" coords="5,24,195,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" title=" " alt="" coords="243,24,432,80"/>
+<area shape="rect" id="node1" title="Unblocks the provider." alt="" coords="5,24,195,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" title="Change the already produced texture handles to use new source." alt="" coords="243,24,432,80"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1renderer.xhtml#a00b1f2873c9bbd71a19b3a26bd11d03e" title="Make this vertex array object the current one." alt="" coords="495,5,654,32"/>
 <area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac4c74475a47396d2e1824d2625e9d666" title=" " alt="" coords="480,56,669,112"/>
 <area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a28738ee06bd6ef675a723b0db02433c2" title=" " alt="" coords="717,19,907,75"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" title=" " alt="" coords="741,99,883,141"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" title="The sourceSize property of the Image QML element ends up here for checking." alt="" coords="741,99,883,141"/>
 <area shape="rect" id="node7" href="$namespaceopenage_1_1gui.xhtml#a4f415900a4d4e55b09b0be3c2ba60d54" title=" " alt="" coords="955,107,1123,133"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title=" " alt="" coords="1190,70,1338,111"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title="Get the subtexture coordinates by its id." alt="" coords="1190,70,1338,111"/>
 <area shape="rect" id="node9" href="$namespaceopenage_1_1gui.xhtml#af717f0e1527d227ea7c4a8e9f34e87b8" title=" " alt="" coords="1171,136,1357,163"/>
 <area shape="rect" id="node10" href="$classopenage_1_1_texture.xhtml#a4548b2bc3eb5310a97deee94ab536035" title=" " alt="" coords="1405,129,1553,170"/>
 </map>

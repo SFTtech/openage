@@ -99,13 +99,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1datastructure_1_1_cons
 </div><!--header-->
 <div class="contents">
 
+<p>Compiletime generic lookup map.  
+ <a href="classopenage_1_1datastructure_1_1_const_map.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::datastructure::ConstMap&lt; K, V, pos &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map__coll__graph.svg" width="179" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map__coll__graph.svg" width="179" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -114,44 +118,56 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aee73d4e17e38feb41141d985d82082e0"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#aee73d4e17e38feb41141d985d82082e0">ConstMap</a> (Head head, Tail... <a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>)</td></tr>
 <tr class="separator:aee73d4e17e38feb41141d985d82082e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae822962367b642bfa68c99e252d291c7"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#ae822962367b642bfa68c99e252d291c7">size</a> () const</td></tr>
+<tr class="memdesc:ae822962367b642bfa68c99e252d291c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of entries in this map.  <a href="#ae822962367b642bfa68c99e252d291c7">More...</a><br /></td></tr>
 <tr class="separator:ae822962367b642bfa68c99e252d291c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3caa562639c438a7c2bc63ad69d34f49"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a3caa562639c438a7c2bc63ad69d34f49">contains</a> (const K &amp;key) const</td></tr>
+<tr class="memdesc:a3caa562639c438a7c2bc63ad69d34f49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests if the given key is in this map.  <a href="#a3caa562639c438a7c2bc63ad69d34f49">More...</a><br /></td></tr>
 <tr class="separator:a3caa562639c438a7c2bc63ad69d34f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6ec9131d56e40ca60eb7d6a62d28fff"><td class="memItemLeft" align="right" valign="top">constexpr const V &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#ab6ec9131d56e40ca60eb7d6a62d28fff">get</a> (const K &amp;key) const</td></tr>
+<tr class="memdesc:ab6ec9131d56e40ca60eb7d6a62d28fff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the stored value for the given key.  <a href="#ab6ec9131d56e40ca60eb7d6a62d28fff">More...</a><br /></td></tr>
 <tr class="separator:ab6ec9131d56e40ca60eb7d6a62d28fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8f8c677660172db066e684daf334754"><td class="memItemLeft" align="right" valign="top">constexpr const V &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#ad8f8c677660172db066e684daf334754">operator []</a> (const K &amp;key) const</td></tr>
+<tr class="memdesc:ad8f8c677660172db066e684daf334754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access entries by map[key].  <a href="#ad8f8c677660172db066e684daf334754">More...</a><br /></td></tr>
 <tr class="separator:ad8f8c677660172db066e684daf334754"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a163e5f98b29263a0d11d6f4ed8978dbb"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a163e5f98b29263a0d11d6f4ed8978dbb">has_entry</a> (const K &amp;key) const</td></tr>
+<tr class="memdesc:a163e5f98b29263a0d11d6f4ed8978dbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if if the given key is stored in this element or in following elements.  <a href="#a163e5f98b29263a0d11d6f4ed8978dbb">More...</a><br /></td></tr>
 <tr class="separator:a163e5f98b29263a0d11d6f4ed8978dbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27798ebcadd576dcbf80e83173a84983"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a27798ebcadd576dcbf80e83173a84983">is_unique</a> () const</td></tr>
+<tr class="memdesc:a27798ebcadd576dcbf80e83173a84983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if the key of this entry is not used in following entries.  <a href="#a27798ebcadd576dcbf80e83173a84983">More...</a><br /></td></tr>
 <tr class="separator:a27798ebcadd576dcbf80e83173a84983"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade3ec69b783f998f0da241d4bcdec1e1"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1">all_are_unique</a> () const</td></tr>
+<tr class="memdesc:ade3ec69b783f998f0da241d4bcdec1e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies that this entry's key is not used in following entries, then continues checking with the next entry checking for the same.  <a href="#ade3ec69b783f998f0da241d4bcdec1e1">More...</a><br /></td></tr>
 <tr class="separator:ade3ec69b783f998f0da241d4bcdec1e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a377a571e8a6eef221c6afd80c41f4ff0"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">verify_no_duplicates</a> () const</td></tr>
+<tr class="memdesc:a377a571e8a6eef221c6afd80c41f4ff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abort when the map uses the same key more than once.  <a href="#a377a571e8a6eef221c6afd80c41f4ff0">More...</a><br /></td></tr>
 <tr class="separator:a377a571e8a6eef221c6afd80c41f4ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31591e877042691c20fc2ac1d6101a3c"><td class="memItemLeft" align="right" valign="top">constexpr const V &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a31591e877042691c20fc2ac1d6101a3c">fetch</a> (const K &amp;key) const</td></tr>
+<tr class="memdesc:a31591e877042691c20fc2ac1d6101a3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value matching key from this or following elements.  <a href="#a31591e877042691c20fc2ac1d6101a3c">More...</a><br /></td></tr>
 <tr class="separator:a31591e877042691c20fc2ac1d6101a3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a145666bbad8588137c89f01cdbd67752"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classopenage_1_1datastructure_1_1_const_map_entry.xhtml">ConstMapEntry</a>&lt; K, V &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a></td></tr>
+<tr class="memdesc:a145666bbad8588137c89f01cdbd67752"><td class="mdescLeft">&#160;</td><td class="mdescRight">The entry associated with this map position.  <a href="#a145666bbad8588137c89f01cdbd67752">More...</a><br /></td></tr>
 <tr class="separator:a145666bbad8588137c89f01cdbd67752"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59f99daf1ea8470168ddae0856917186"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml">ConstMap</a>&lt; K, V, pos - 1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a></td></tr>
+<tr class="memdesc:a59f99daf1ea8470168ddae0856917186"><td class="mdescLeft">&#160;</td><td class="mdescRight">The remaining map entries.  <a href="#a59f99daf1ea8470168ddae0856917186">More...</a><br /></td></tr>
 <tr class="separator:a59f99daf1ea8470168ddae0856917186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:aad5ae1836ffe3c7edde4660643b5e07e"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml#aad5ae1836ffe3c7edde4660643b5e07e">ConstMap&lt; K, V, pos+1 &gt;</a></td></tr>
+<tr class="memdesc:aad5ae1836ffe3c7edde4660643b5e07e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The previous entry is our friend.  <a href="#aad5ae1836ffe3c7edde4660643b5e07e">More...</a><br /></td></tr>
 <tr class="separator:aad5ae1836ffe3c7edde4660643b5e07e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename K, typename V, size_t pos&gt;<br />
 class openage::datastructure::ConstMap&lt; K, V, pos &gt;</h3>
 
-<p>Compiletime generic lookup map.</p>
+<p>Compiletime generic lookup map. </p>
 <p>This is a recursive template that decreases <code>pos</code> which each iteration step. Each <code>pos</code> stores one map entry. The lookup recursively descends those entries down to the zero-element.</p>
 <p>If you experience compiler errors, make sure you request <em>existing</em> keys. We intentionally trigger compiler failures when a key doesn't exist.</p>
 <p>Messages include: "error: ‘*0u’ is not a constant expression" -&gt; nonexistant key </p>
@@ -197,8 +213,8 @@ template&lt;class Head , class... Tail&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00063">63</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        :</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a>{head},</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>{<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>...} {}</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a145666bbad8588137c89f01cdbd67752"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">openage::datastructure::ConstMap::value</a></div><div class="ttdeci">const ConstMapEntry&lt; K, V &gt; value</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00147">constexpr_map.h:147</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a59f99daf1ea8470168ddae0856917186"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">openage::datastructure::ConstMap::tail</a></div><div class="ttdeci">const ConstMap&lt; K, V, pos - 1 &gt; tail</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00152">constexpr_map.h:152</a></div></div>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        :</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a>{head},</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>{<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>...} {}</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a145666bbad8588137c89f01cdbd67752"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">openage::datastructure::ConstMap::value</a></div><div class="ttdeci">const ConstMapEntry&lt; K, V &gt; value</div><div class="ttdoc">The entry associated with this map position.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00147">constexpr_map.h:147</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a59f99daf1ea8470168ddae0856917186"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">openage::datastructure::ConstMap::tail</a></div><div class="ttdeci">const ConstMap&lt; K, V, pos - 1 &gt; tail</div><div class="ttdoc">The remaining map entries.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00152">constexpr_map.h:152</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -227,12 +243,13 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Verifies that this entry's key is not used in following entries, then continues checking with the next entry checking for the same. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00115">115</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                                 {</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a27798ebcadd576dcbf80e83173a84983">is_unique</a>() and this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>.<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1">all_are_unique</a>();</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_ade3ec69b783f998f0da241d4bcdec1e1"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1">openage::datastructure::ConstMap::all_are_unique</a></div><div class="ttdeci">constexpr bool all_are_unique() const</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00115">constexpr_map.h:115</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a27798ebcadd576dcbf80e83173a84983"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a27798ebcadd576dcbf80e83173a84983">openage::datastructure::ConstMap::is_unique</a></div><div class="ttdeci">constexpr bool is_unique() const</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00107">constexpr_map.h:107</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a59f99daf1ea8470168ddae0856917186"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">openage::datastructure::ConstMap::tail</a></div><div class="ttdeci">const ConstMap&lt; K, V, pos - 1 &gt; tail</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00152">constexpr_map.h:152</a></div></div>
+<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                                 {</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a27798ebcadd576dcbf80e83173a84983">is_unique</a>() and this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>.<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1">all_are_unique</a>();</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_ade3ec69b783f998f0da241d4bcdec1e1"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1">openage::datastructure::ConstMap::all_are_unique</a></div><div class="ttdeci">constexpr bool all_are_unique() const</div><div class="ttdoc">Verifies that this entry's key is not used in following entries, then continues checking with the nex...</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00115">constexpr_map.h:115</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a27798ebcadd576dcbf80e83173a84983"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a27798ebcadd576dcbf80e83173a84983">openage::datastructure::ConstMap::is_unique</a></div><div class="ttdeci">constexpr bool is_unique() const</div><div class="ttdoc">Test if the key of this entry is not used in following entries.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00107">constexpr_map.h:107</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a59f99daf1ea8470168ddae0856917186"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">openage::datastructure::ConstMap::tail</a></div><div class="ttdeci">const ConstMap&lt; K, V, pos - 1 &gt; tail</div><div class="ttdoc">The remaining map entries.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00152">constexpr_map.h:152</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="constexpr__map_8h_source.xhtml#l00107">openage::datastructure::ConstMap&lt; K, V, pos &gt;::is_unique()</a>, and <a class="el" href="constexpr__map_8h_source.xhtml#l00152">openage::datastructure::ConstMap&lt; K, V, pos &gt;::tail</a>.</p>
 
@@ -242,14 +259,16 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ade3ec69b783f998f0da241d4bcdec1e1_cgraph.svg" width="394" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ade3ec69b783f998f0da241d4bcdec1e1_cgraph.svg" width="394" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ade3ec69b783f998f0da241d4bcdec1e1_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ade3ec69b783f998f0da241d4bcdec1e1_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -279,11 +298,12 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Tests if the given key is in this map. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00078">78</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                                       {</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">verify_no_duplicates</a>(), this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a163e5f98b29263a0d11d6f4ed8978dbb">has_entry</a>(key);</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a377a571e8a6eef221c6afd80c41f4ff0"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">openage::datastructure::ConstMap::verify_no_duplicates</a></div><div class="ttdeci">constexpr bool verify_no_duplicates() const</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00122">constexpr_map.h:122</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a163e5f98b29263a0d11d6f4ed8978dbb"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a163e5f98b29263a0d11d6f4ed8978dbb">openage::datastructure::ConstMap::has_entry</a></div><div class="ttdeci">constexpr bool has_entry(const K &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00100">constexpr_map.h:100</a></div></div>
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                                       {</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">verify_no_duplicates</a>(), this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a163e5f98b29263a0d11d6f4ed8978dbb">has_entry</a>(key);</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a377a571e8a6eef221c6afd80c41f4ff0"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">openage::datastructure::ConstMap::verify_no_duplicates</a></div><div class="ttdeci">constexpr bool verify_no_duplicates() const</div><div class="ttdoc">Abort when the map uses the same key more than once.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00122">constexpr_map.h:122</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a163e5f98b29263a0d11d6f4ed8978dbb"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a163e5f98b29263a0d11d6f4ed8978dbb">openage::datastructure::ConstMap::has_entry</a></div><div class="ttdeci">constexpr bool has_entry(const K &amp;key) const</div><div class="ttdoc">Test if if the given key is stored in this element or in following elements.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00100">constexpr_map.h:100</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="constexpr__map_8h_source.xhtml#l00100">openage::datastructure::ConstMap&lt; K, V, pos &gt;::has_entry()</a>, and <a class="el" href="constexpr__map_8h_source.xhtml#l00122">openage::datastructure::ConstMap&lt; K, V, pos &gt;::verify_no_duplicates()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -291,7 +311,8 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a3caa562639c438a7c2bc63ad69d34f49_cgraph.svg" width="100%" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a3caa562639c438a7c2bc63ad69d34f49_cgraph.svg" width="100%" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -321,10 +342,11 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Returns the value matching key from this or following elements. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00133">133</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                                        {</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">return</span></div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">// if we found the key</span></div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        (this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a>.key == key) ?</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="comment">// return the value</span></div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a>.value</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        :</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="comment">// else try the lookup on the remaining elements</span></div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            this-&gt;tail.fetch(key);</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a145666bbad8588137c89f01cdbd67752"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">openage::datastructure::ConstMap::value</a></div><div class="ttdeci">const ConstMapEntry&lt; K, V &gt; value</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00147">constexpr_map.h:147</a></div></div>
+<div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                                        {</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">return</span></div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">// if we found the key</span></div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        (this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a>.key == key) ?</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="comment">// return the value</span></div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a>.value</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        :</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="comment">// else try the lookup on the remaining elements</span></div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            this-&gt;tail.fetch(key);</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a145666bbad8588137c89f01cdbd67752"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">openage::datastructure::ConstMap::value</a></div><div class="ttdeci">const ConstMapEntry&lt; K, V &gt; value</div><div class="ttdoc">The entry associated with this map position.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00147">constexpr_map.h:147</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="constexpr__map_8h_source.xhtml#l00147">openage::datastructure::ConstMap&lt; K, V, pos &gt;::value</a>.</p>
 
@@ -334,7 +356,8 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a31591e877042691c20fc2ac1d6101a3c_icgraph.svg" width="572" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a31591e877042691c20fc2ac1d6101a3c_icgraph.svg" width="572" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -364,11 +387,12 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Return the stored value for the given key. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00085">85</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                                      {</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">verify_no_duplicates</a>(), this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a31591e877042691c20fc2ac1d6101a3c">fetch</a>(key);</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a31591e877042691c20fc2ac1d6101a3c"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a31591e877042691c20fc2ac1d6101a3c">openage::datastructure::ConstMap::fetch</a></div><div class="ttdeci">constexpr const V &amp; fetch(const K &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00133">constexpr_map.h:133</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a377a571e8a6eef221c6afd80c41f4ff0"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">openage::datastructure::ConstMap::verify_no_duplicates</a></div><div class="ttdeci">constexpr bool verify_no_duplicates() const</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00122">constexpr_map.h:122</a></div></div>
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                                      {</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">verify_no_duplicates</a>(), this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a31591e877042691c20fc2ac1d6101a3c">fetch</a>(key);</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a31591e877042691c20fc2ac1d6101a3c"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a31591e877042691c20fc2ac1d6101a3c">openage::datastructure::ConstMap::fetch</a></div><div class="ttdeci">constexpr const V &amp; fetch(const K &amp;key) const</div><div class="ttdoc">Returns the value matching key from this or following elements.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00133">constexpr_map.h:133</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a377a571e8a6eef221c6afd80c41f4ff0"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">openage::datastructure::ConstMap::verify_no_duplicates</a></div><div class="ttdeci">constexpr bool verify_no_duplicates() const</div><div class="ttdoc">Abort when the map uses the same key more than once.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00122">constexpr_map.h:122</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="constexpr__map_8h_source.xhtml#l00133">openage::datastructure::ConstMap&lt; K, V, pos &gt;::fetch()</a>, and <a class="el" href="constexpr__map_8h_source.xhtml#l00122">openage::datastructure::ConstMap&lt; K, V, pos &gt;::verify_no_duplicates()</a>.</p>
 
@@ -378,14 +402,16 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ab6ec9131d56e40ca60eb7d6a62d28fff_cgraph.svg" width="100%" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ab6ec9131d56e40ca60eb7d6a62d28fff_cgraph.svg" width="100%" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ab6ec9131d56e40ca60eb7d6a62d28fff_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ab6ec9131d56e40ca60eb7d6a62d28fff_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -415,11 +441,12 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Test if if the given key is stored in this element or in following elements. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00100">100</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                                        {</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> (this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a>.key == key) or this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>.has_entry(key);</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a145666bbad8588137c89f01cdbd67752"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">openage::datastructure::ConstMap::value</a></div><div class="ttdeci">const ConstMapEntry&lt; K, V &gt; value</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00147">constexpr_map.h:147</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a59f99daf1ea8470168ddae0856917186"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">openage::datastructure::ConstMap::tail</a></div><div class="ttdeci">const ConstMap&lt; K, V, pos - 1 &gt; tail</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00152">constexpr_map.h:152</a></div></div>
+<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                                        {</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> (this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a>.key == key) or this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>.has_entry(key);</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a145666bbad8588137c89f01cdbd67752"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">openage::datastructure::ConstMap::value</a></div><div class="ttdeci">const ConstMapEntry&lt; K, V &gt; value</div><div class="ttdoc">The entry associated with this map position.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00147">constexpr_map.h:147</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a59f99daf1ea8470168ddae0856917186"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">openage::datastructure::ConstMap::tail</a></div><div class="ttdeci">const ConstMap&lt; K, V, pos - 1 &gt; tail</div><div class="ttdoc">The remaining map entries.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00152">constexpr_map.h:152</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="constexpr__map_8h_source.xhtml#l00152">openage::datastructure::ConstMap&lt; K, V, pos &gt;::tail</a>, and <a class="el" href="constexpr__map_8h_source.xhtml#l00147">openage::datastructure::ConstMap&lt; K, V, pos &gt;::value</a>.</p>
 
@@ -429,7 +456,8 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a163e5f98b29263a0d11d6f4ed8978dbb_icgraph.svg" width="368" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a163e5f98b29263a0d11d6f4ed8978dbb_icgraph.svg" width="368" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -458,11 +486,12 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Test if the key of this entry is not used in following entries. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00107">107</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                            {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> not this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>.has_entry(this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a>.key);</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a145666bbad8588137c89f01cdbd67752"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">openage::datastructure::ConstMap::value</a></div><div class="ttdeci">const ConstMapEntry&lt; K, V &gt; value</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00147">constexpr_map.h:147</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a59f99daf1ea8470168ddae0856917186"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">openage::datastructure::ConstMap::tail</a></div><div class="ttdeci">const ConstMap&lt; K, V, pos - 1 &gt; tail</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00152">constexpr_map.h:152</a></div></div>
+<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                            {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> not this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">tail</a>.has_entry(this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">value</a>.key);</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a145666bbad8588137c89f01cdbd67752"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a145666bbad8588137c89f01cdbd67752">openage::datastructure::ConstMap::value</a></div><div class="ttdeci">const ConstMapEntry&lt; K, V &gt; value</div><div class="ttdoc">The entry associated with this map position.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00147">constexpr_map.h:147</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a59f99daf1ea8470168ddae0856917186"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a59f99daf1ea8470168ddae0856917186">openage::datastructure::ConstMap::tail</a></div><div class="ttdeci">const ConstMap&lt; K, V, pos - 1 &gt; tail</div><div class="ttdoc">The remaining map entries.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00152">constexpr_map.h:152</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="constexpr__map_8h_source.xhtml#l00152">openage::datastructure::ConstMap&lt; K, V, pos &gt;::tail</a>, and <a class="el" href="constexpr__map_8h_source.xhtml#l00147">openage::datastructure::ConstMap&lt; K, V, pos &gt;::value</a>.</p>
 
@@ -472,7 +501,8 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a27798ebcadd576dcbf80e83173a84983_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a27798ebcadd576dcbf80e83173a84983_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -502,10 +532,11 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Access entries by map[key]. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00092">92</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                                              {</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#ab6ec9131d56e40ca60eb7d6a62d28fff">get</a>(key);</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_ab6ec9131d56e40ca60eb7d6a62d28fff"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#ab6ec9131d56e40ca60eb7d6a62d28fff">openage::datastructure::ConstMap::get</a></div><div class="ttdeci">constexpr const V &amp; get(const K &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00085">constexpr_map.h:85</a></div></div>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                                              {</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#ab6ec9131d56e40ca60eb7d6a62d28fff">get</a>(key);</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_ab6ec9131d56e40ca60eb7d6a62d28fff"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#ab6ec9131d56e40ca60eb7d6a62d28fff">openage::datastructure::ConstMap::get</a></div><div class="ttdeci">constexpr const V &amp; get(const K &amp;key) const</div><div class="ttdoc">Return the stored value for the given key.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00085">constexpr_map.h:85</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="constexpr__map_8h_source.xhtml#l00085">openage::datastructure::ConstMap&lt; K, V, pos &gt;::get()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -513,7 +544,8 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ad8f8c677660172db066e684daf334754_cgraph.svg" width="100%" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ad8f8c677660172db066e684daf334754_cgraph.svg" width="100%" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -542,10 +574,11 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Return the number of entries in this map. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00071">71</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                      {</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">verify_no_duplicates</a>(), pos;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a377a571e8a6eef221c6afd80c41f4ff0"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">openage::datastructure::ConstMap::verify_no_duplicates</a></div><div class="ttdeci">constexpr bool verify_no_duplicates() const</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00122">constexpr_map.h:122</a></div></div>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                      {</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">verify_no_duplicates</a>(), pos;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_a377a571e8a6eef221c6afd80c41f4ff0"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0">openage::datastructure::ConstMap::verify_no_duplicates</a></div><div class="ttdeci">constexpr bool verify_no_duplicates() const</div><div class="ttdoc">Abort when the map uses the same key more than once.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00122">constexpr_map.h:122</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="constexpr__map_8h_source.xhtml#l00122">openage::datastructure::ConstMap&lt; K, V, pos &gt;::verify_no_duplicates()</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -553,7 +586,8 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ae822962367b642bfa68c99e252d291c7_cgraph.svg" width="100%" height="378"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_ae822962367b642bfa68c99e252d291c7_cgraph.svg" width="100%" height="378"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -582,12 +616,13 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Abort when the map uses the same key more than once. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00122">122</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                                       {</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">return</span></div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1">all_are_unique</a>() ?</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            true</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        :</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;There is a duplicate key in the map.&quot;</span>);</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_ade3ec69b783f998f0da241d4bcdec1e1"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1">openage::datastructure::ConstMap::all_are_unique</a></div><div class="ttdeci">constexpr bool all_are_unique() const</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00115">constexpr_map.h:115</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_const_map_xhtml_ade3ec69b783f998f0da241d4bcdec1e1"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1">openage::datastructure::ConstMap::all_are_unique</a></div><div class="ttdeci">constexpr bool all_are_unique() const</div><div class="ttdoc">Verifies that this entry's key is not used in following entries, then continues checking with the nex...</div><div class="ttdef"><b>Definition:</b> <a href="constexpr__map_8h_source.xhtml#l00115">constexpr_map.h:115</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="constexpr__map_8h_source.xhtml#l00115">openage::datastructure::ConstMap&lt; K, V, pos &gt;::all_are_unique()</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, and <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>.</p>
 
@@ -597,14 +632,16 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a377a571e8a6eef221c6afd80c41f4ff0_cgraph.svg" width="596" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a377a571e8a6eef221c6afd80c41f4ff0_cgraph.svg" width="596" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a377a571e8a6eef221c6afd80c41f4ff0_icgraph.svg" width="572" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_a377a571e8a6eef221c6afd80c41f4ff0_icgraph.svg" width="572" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -631,6 +668,7 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>The previous entry is our friend. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00157">157</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
@@ -659,6 +697,7 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>The remaining map entries. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00152">152</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
@@ -688,6 +727,7 @@ template&lt;typename K , typename V , size_t pos&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>The entry associated with this map position. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00147">147</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>

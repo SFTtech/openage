@@ -122,7 +122,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node96 -->
 <g id="node5" class="node"><title>Node96</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title="render text with the at a position with specified font size">
 <polygon fill="white" stroke="black" points="479,-55 479,-74 623,-74 623,-55 479,-55"/>
 <text text-anchor="middle" x="551" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::render_text</text>
 </a>
@@ -162,7 +162,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node100 -->
 <g id="node9" class="node"><title>Node100</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="659,-11 659,-30 773,-30 773,-11 659,-11"/>
 <text text-anchor="middle" x="716" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>
@@ -190,7 +190,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node102 -->
 <g id="node11" class="node"><title>Node102</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="502.5,-6 502.5,-25 599.5,-25 599.5,-6 502.5,-6"/>
 <text text-anchor="middle" x="551" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

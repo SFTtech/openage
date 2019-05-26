@@ -29,9 +29,9 @@
         <name>pre_render</name>
         <reimplements refid="classqtsdl_1_1_ctx_extraction_mode_1a5a078af4f1b11cf1091496bfc8559b0c">pre_render</reimplements>
         <briefdescription>
+<para>Function that must be called before rendering the GUI. </para>
         </briefdescription>
         <detaileddescription>
-<para>Function that must be called before rendering the GUI. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -44,9 +44,9 @@
         <name>post_render</name>
         <reimplements refid="classqtsdl_1_1_ctx_extraction_mode_1a314f77f4b5e33b76316e4184b4c4f505">post_render</reimplements>
         <briefdescription>
+<para>Function that must be called after rendering the GUI. </para>
         </briefdescription>
         <detaileddescription>
-<para>Function that must be called after rendering the GUI. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -54,9 +54,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Use the same context to render the GUI. </para>
     </briefdescription>
     <detaileddescription>
-<para>Use the same context to render the GUI. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6504">

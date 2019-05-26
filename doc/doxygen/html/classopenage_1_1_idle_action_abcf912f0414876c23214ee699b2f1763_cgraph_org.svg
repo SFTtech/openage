@@ -20,7 +20,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_ability.xhtml#a282f5d02a2a6912670b27aedb7f4f337" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_ability.xhtml#a282f5d02a2a6912670b27aedb7f4f337" target="_top" xlink:title="set bits corresponding to abilities, useful for initialising an ability_set using a brace enclosed li...">
 <polygon fill="white" stroke="black" points="138,-0.5 138,-30.5 242,-30.5 242,-0.5 138,-0.5"/>
 <text text-anchor="start" x="146" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAbility</text>
 <text text-anchor="middle" x="190" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_from_list</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="459,-6 459,-25 554,-25 554,-6 459,-6"/>
 <text text-anchor="middle" x="506.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -35,7 +35,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="structopenage_1_1console_1_1buf__char.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="structopenage_1_1console_1_1buf__char.xhtml" target="_top" xlink:title="a single character in the buffer">
 <polygon fill="white" stroke="black" points="0,-270.5 0,-393.5 136,-393.5 136,-270.5 0,-270.5"/>
 <text text-anchor="middle" x="68" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::buf_char</text>
 <polyline fill="none" stroke="black" points="0,-374.5 136,-374.5 "/>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="structopenage_1_1console_1_1buf__line.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="structopenage_1_1console_1_1buf__line.xhtml" target="_top" xlink:title="metadata for a single line in the buffer">
 <polygon fill="white" stroke="black" points="154,-303.5 154,-360.5 286,-360.5 286,-303.5 154,-303.5"/>
 <text text-anchor="middle" x="220" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::buf_line</text>
 <polyline fill="none" stroke="black" points="154,-341.5 286,-341.5 "/>

@@ -1,6 +1,6 @@
 <map id="openage::rng::RNG::real" name="openage::rng::RNG::real">
-<area shape="rect" id="node1" title=" " alt="" coords="369,35,532,61"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1rng.xhtml#aadfcdd4f8b418047382e29828d81b157" title=" " alt="" coords="187,5,314,32"/>
-<area shape="rect" id="node3" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec" title=" " alt="" coords="180,57,321,98"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1rng.xhtml#a459eb99bb9ad49587a1cbb0bb3de8750" title=" " alt="" coords="5,57,132,98"/>
+<area shape="rect" id="node1" title="Retrieves a double in [0, 1)" alt="" coords="369,35,532,61"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1rng.xhtml#aadfcdd4f8b418047382e29828d81b157" title="Returns a double in [0, 1) from the global rng." alt="" coords="187,5,314,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec" title="Returns a double in the range [min, max)" alt="" coords="180,57,321,98"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1rng.xhtml#a459eb99bb9ad49587a1cbb0bb3de8750" title="Returns a double in [lower, upper) from the global rng." alt="" coords="5,57,132,98"/>
 </map>

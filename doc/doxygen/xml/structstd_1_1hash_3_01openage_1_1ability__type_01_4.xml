@@ -40,9 +40,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>hasher for ability type enum </para>
     </briefdescription>
     <detaileddescription>
-<para>hasher for ability type enum </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6623">

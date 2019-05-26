@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>number_of_workers</name>
         <briefdescription>
+<para>The number of internal worker threads. </para>
         </briefdescription>
         <detaileddescription>
-<para>The number of internal worker threads. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -25,9 +25,9 @@
         <argsstring></argsstring>
         <name>group_index</name>
         <briefdescription>
+<para>The index of the worker thread, that is used for the next returned job group. </para>
         </briefdescription>
         <detaileddescription>
-<para>The index of the worker thread, that is used for the next returned job group. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -40,9 +40,9 @@
         <argsstring></argsstring>
         <name>workers</name>
         <briefdescription>
+<para>A vector of all worker threads. </para>
         </briefdescription>
         <detaileddescription>
-<para>A vector of all worker threads. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -58,9 +58,9 @@
         <argsstring></argsstring>
         <name>pending_jobs_mutex</name>
         <briefdescription>
+<para>A mutex to synchronize accesses to the internal job queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>A mutex to synchronize accesses to the internal job queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -75,9 +75,9 @@
         <argsstring></argsstring>
         <name>pending_jobs</name>
         <briefdescription>
+<para>A queue of jobs that are to be executed. </para>
         </briefdescription>
         <detaileddescription>
-<para>A queue of jobs that are to be executed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -92,9 +92,9 @@
         <argsstring></argsstring>
         <name>finished_jobs_mutex</name>
         <briefdescription>
+<para>A mutex to synchronize the finished job map. </para>
         </briefdescription>
         <detaileddescription>
-<para>A mutex to synchronize the finished job map. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -108,9 +108,9 @@
         <argsstring></argsstring>
         <name>finished_jobs</name>
         <briefdescription>
+<para>Mapping from thread id&apos;s to a list of jobs, that have been created by the corresponding thread and have finished. </para>
         </briefdescription>
         <detaileddescription>
-<para>Mapping from thread id&apos;s to a list of jobs, that have been created by the corresponding thread and have finished. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -124,9 +124,9 @@
         <argsstring></argsstring>
         <name>is_running</name>
         <briefdescription>
+<para>Whether the job manager is currently running. </para>
         </briefdescription>
         <detaileddescription>
-<para>Whether the job manager is currently running. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -142,9 +142,9 @@
         <argsstring></argsstring>
         <name>Worker</name>
         <briefdescription>
+<para>A worker has to be a friend of the job manager in order to call the private finish_job method. </para>
         </briefdescription>
         <detaileddescription>
-<para>A worker has to be a friend of the job manager in order to call the private finish_job method. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -162,9 +162,9 @@
           <declname>number_of_workers</declname>
         </param>
         <briefdescription>
+<para>Create a new job manager with a specified number of worker threads. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a new job manager with a specified number of worker threads. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -177,9 +177,9 @@
         <argsstring>()</argsstring>
         <name>~JobManager</name>
         <briefdescription>
+<para>Destructor that stops the job manager if it is still running. </para>
         </briefdescription>
         <detaileddescription>
-<para>Destructor that stops the job manager if it is still running. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -256,9 +256,9 @@
         <argsstring>()</argsstring>
         <name>start</name>
         <briefdescription>
+<para>Start the job manager&apos;s worker threads. </para>
         </briefdescription>
         <detaileddescription>
-<para>Start the job manager&apos;s worker threads. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -278,9 +278,10 @@
         <argsstring>()</argsstring>
         <name>stop</name>
         <briefdescription>
+<para>Stop the job manager&apos;s worker threads. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stop the job manager&apos;s worker threads. This method blocks until all currently working threads have finished. </para>
+<para>This method blocks until all currently working threads have finished. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -314,9 +315,10 @@
           <defval>{}</defval>
         </param>
         <briefdescription>
+<para>Enqueues the given function into the job manager&apos;s queue, so that it will be dispatched by one of the worker threads. </para>
         </briefdescription>
         <detaileddescription>
-<para>Enqueues the given function into the job manager&apos;s queue, so that it will be dispatched by one of the worker threads. A lightweight <ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref> object is returned, that allows to keep track of the job&apos;s state.</para>
+<para>A lightweight <ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref> object is returned, that allows to keep track of the job&apos;s state.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>function</parametername>
@@ -362,9 +364,10 @@
           <defval>{}</defval>
         </param>
         <briefdescription>
+<para>Enqueues the given function into the job manager&apos;s queue, so that it will be dispatched by one of the worker threads. </para>
         </briefdescription>
         <detaileddescription>
-<para>Enqueues the given function into the job manager&apos;s queue, so that it will be dispatched by one of the worker threads. A lightweight job object is returned, that allows to keep track of the job&apos;s state. The passed function must accept a function object that returns, whether the job should be aborted at any time. Further it must accept a function that can be used to abort the execution of the function.</para>
+<para>A lightweight job object is returned, that allows to keep track of the job&apos;s state. The passed function must accept a function object that returns, whether the job should be aborted at any time. Further it must accept a function that can be used to abort the execution of the function.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>function</parametername>
@@ -394,9 +397,9 @@
         <argsstring>()</argsstring>
         <name>create_job_group</name>
         <briefdescription>
+<para>Creates a job group, in order to be able to execute multiple jobs on the same worker thread. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a job group, in order to be able to execute multiple jobs on the same worker thread. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -411,9 +414,9 @@
         <argsstring>()</argsstring>
         <name>execute_callbacks</name>
         <briefdescription>
+<para>Executes callbacks for all job&apos;s, that were created by the current thread and have finished. </para>
         </briefdescription>
         <detaileddescription>
-<para>Executes callbacks for all job&apos;s, that were created by the current thread and have finished. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -436,9 +439,9 @@
           <declname>state</declname>
         </param>
         <briefdescription>
+<para>Enqueues the given job into the internal job queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>Enqueues the given job into the internal job queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -455,9 +458,10 @@
         <argsstring>()</argsstring>
         <name>fetch_job</name>
         <briefdescription>
+<para>Returns a job from the internal job queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a job from the internal job queue. If the queue is empty, a nullptr is returned. </para>
+<para>If the queue is empty, a nullptr is returned. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -473,9 +477,9 @@
         <argsstring>()</argsstring>
         <name>has_job</name>
         <briefdescription>
+<para>Returns whether there are jobs to be executed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns whether there are jobs to be executed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -495,9 +499,9 @@
           <declname>job</declname>
         </param>
         <briefdescription>
+<para>Adds a finished job to the internal finished job map. </para>
         </briefdescription>
         <detaileddescription>
-<para>Adds a finished job to the internal finished job map. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -509,9 +513,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A job manager can be used to execute functions within separate worker threads. </para>
     </briefdescription>
     <detaileddescription>
-<para>A job manager can be used to execute functions within separate worker threads. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3889">

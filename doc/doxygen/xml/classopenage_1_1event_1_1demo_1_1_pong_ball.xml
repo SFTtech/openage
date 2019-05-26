@@ -76,9 +76,9 @@
         <name>id</name>
         <reimplements refid="classopenage_1_1event_1_1_event_target_1ac33e23507125a3a248eb8d031e8f39ed">id</reimplements>
         <briefdescription>
+<para>Give a unique event system identifier for the entity. </para>
         </briefdescription>
         <detaileddescription>
-<para>Give a unique event system identifier for the entity </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

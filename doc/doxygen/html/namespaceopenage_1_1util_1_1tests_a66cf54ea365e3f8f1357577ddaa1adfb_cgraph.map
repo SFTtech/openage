@@ -1,21 +1,21 @@
 <map id="openage::util::tests::fixed_point" name="openage::util::tests::fixed_point">
 <area shape="rect" id="node1" title=" " alt="" coords="5,373,139,414"/>
 <area shape="rect" id="node2" href="$namespacestd.xhtml#a6af851cc1249a970adde4dc422ff824a" title=" " alt="" coords="235,5,305,32"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="415,99,582,141"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" title=" " alt="" coords="187,209,353,250"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a7cc8c2bd1dad2337630abf6f6e42aef3" title=" " alt="" coords="187,274,353,315"/>
-<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" title=" " alt="" coords="187,339,353,381"/>
-<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a41ce8a71883f18088e7876aa8e2600e4" title=" " alt="" coords="187,405,353,446"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="415,99,582,141"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" title="Factory function to get a fixed&#45;point number from a double." alt="" coords="187,209,353,250"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a7cc8c2bd1dad2337630abf6f6e42aef3" title="Factory function to get a fixed&#45;point number from a float." alt="" coords="187,274,353,315"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" title="Factory function to get a fixed&#45;point number from an integer." alt="" coords="187,339,353,381"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a41ce8a71883f18088e7876aa8e2600e4" title="Converter to retrieve the fractional (post&#45;decimal) part of the number." alt="" coords="187,405,353,446"/>
 <area shape="rect" id="node9" href="$namespacestd.xhtml#a8058d6b15a78f7a977945ee4d62de903" title=" " alt="" coords="230,471,310,497"/>
 <area shape="rect" id="node11" href="$namespacestd.xhtml#a1c0bc145caf5f0b2af8d16d29d952180" title=" " alt="" coords="233,56,307,83"/>
 <area shape="rect" id="node12" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="235,107,305,133"/>
 <area shape="rect" id="node13" href="$classopenage_1_1util_1_1_f_string.xhtml#a262d81155e6d17ead2d4851faf6bec03" title=" " alt="" coords="197,522,343,563"/>
 <area shape="rect" id="node15" href="$namespacestd.xhtml#a0fc492a11cf74e80f976b24bea2a2eb2" title=" " alt="" coords="235,588,305,615"/>
-<area shape="rect" id="node17" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" title=" " alt="" coords="187,639,353,681"/>
-<area shape="rect" id="node18" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a07a0fa1c13f5aff3f184a2d82574e7e7" title=" " alt="" coords="187,705,353,746"/>
-<area shape="rect" id="node19" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a12dc86de2b985fdaff044ed9ab38e453" title=" " alt="" coords="187,770,353,811"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="415,34,582,75"/>
+<area shape="rect" id="node17" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" title="Converter to retrieve the number as double." alt="" coords="187,639,353,681"/>
+<area shape="rect" id="node18" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a07a0fa1c13f5aff3f184a2d82574e7e7" title="Converter to retrieve the number as float." alt="" coords="187,705,353,746"/>
+<area shape="rect" id="node19" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a12dc86de2b985fdaff044ed9ab38e453" title="Converter to retrieve the int (pre&#45;decimal) part of the number." alt="" coords="187,770,353,811"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="415,34,582,75"/>
 <area shape="rect" id="node10" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa0eb736578910b123ea19652c670daab" title=" " alt="" coords="415,457,582,498"/>
-<area shape="rect" id="node14" href="$classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" title=" " alt="" coords="401,522,596,563"/>
+<area shape="rect" id="node14" href="$classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" title="Clears the underlying stream object&#39;s flags, if such a stream object exists." alt="" coords="401,522,596,563"/>
 <area shape="rect" id="node16" href="$classopenage_1_1util_1_1_fixed_point.xhtml#ae963a0d669b00ec8a65da1bf0041172a" title=" " alt="" coords="415,587,582,629"/>
 </map>

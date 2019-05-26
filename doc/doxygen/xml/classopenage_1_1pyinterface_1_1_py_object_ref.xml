@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>ref</name>
         <briefdescription>
+<para>Internal PyObject * for obj. </para>
         </briefdescription>
         <detaileddescription>
-<para>Internal PyObject * for obj. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -53,9 +53,9 @@
         <argsstring>() noexcept</argsstring>
         <name>PyObjectRef</name>
         <briefdescription>
+<para>Initializes reference with nullptr. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes reference with nullptr. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -71,9 +71,9 @@
           <declname>ref</declname>
         </param>
         <briefdescription>
+<para>Wraps a raw PyObject * pointer (calls Py_INCREF). </para>
         </briefdescription>
         <detaileddescription>
-<para>Wraps a raw PyObject * pointer (calls Py_INCREF). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -90,9 +90,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Clones a <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> (calls Py_INCREF). </para>
         </briefdescription>
         <detaileddescription>
-<para>Clones a <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> (calls Py_INCREF). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -109,9 +109,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Move-constructs from an other <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Move-constructs from an other <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -127,9 +127,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Assigns from an other <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> (calls Py_XDECREF on the old value, and Py_XINCREF on the new one). </para>
         </briefdescription>
         <detaileddescription>
-<para>Assigns from an other <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> (calls Py_XDECREF on the old value, and Py_XINCREF on the new one). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -148,9 +148,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Move-assigns from an other PyObject (calls Py_XDECREF on the old value). </para>
         </briefdescription>
         <detaileddescription>
-<para>Move-assigns from an other PyObject (calls Py_XDECREF on the old value). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -164,9 +164,9 @@
         <argsstring>()</argsstring>
         <name>~PyObjectRef</name>
         <briefdescription>
+<para>Destroys the object, calls Py_XDECREF. </para>
         </briefdescription>
         <detaileddescription>
-<para>Destroys the object, calls Py_XDECREF. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -180,9 +180,9 @@
         <argsstring>() const</argsstring>
         <name>str</name>
         <briefdescription>
+<para>str(obj) </para>
         </briefdescription>
         <detaileddescription>
-<para>str(obj) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -198,9 +198,9 @@
         <argsstring>() const</argsstring>
         <name>repr</name>
         <briefdescription>
+<para>repr(obj) </para>
         </briefdescription>
         <detaileddescription>
-<para>repr(obj) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -215,9 +215,9 @@
         <argsstring>() const</argsstring>
         <name>bytes</name>
         <briefdescription>
+<para>bytes(obj) </para>
         </briefdescription>
         <detaileddescription>
-<para>bytes(obj) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -233,9 +233,9 @@
         <argsstring>() const</argsstring>
         <name>len</name>
         <briefdescription>
+<para>len(obj) </para>
         </briefdescription>
         <detaileddescription>
-<para>len(obj) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -250,9 +250,9 @@
         <argsstring>() const</argsstring>
         <name>callable</name>
         <briefdescription>
+<para>callable(obj) </para>
         </briefdescription>
         <detaileddescription>
-<para>callable(obj) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -278,9 +278,9 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>obj(args...) </para>
         </briefdescription>
         <detaileddescription>
-<para>obj(args...) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -298,9 +298,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>getattr(obj, name) </para>
         </briefdescription>
         <detaileddescription>
-<para>getattr(obj, name) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -320,9 +320,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>hasattr(obj, name) </para>
         </briefdescription>
         <detaileddescription>
-<para>hasattr(obj, name) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -345,9 +345,9 @@
           <declname>attr</declname>
         </param>
         <briefdescription>
+<para>setattr(obj, name) </para>
         </briefdescription>
         <detaileddescription>
-<para>setattr(obj, name) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -367,9 +367,9 @@
           <declname>type</declname>
         </param>
         <briefdescription>
+<para>isinstance(obj, type) </para>
         </briefdescription>
         <detaileddescription>
-<para>isinstance(obj, type) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -385,9 +385,9 @@
         <argsstring>() const</argsstring>
         <name>to_bool</name>
         <briefdescription>
+<para>bool(obj) </para>
         </briefdescription>
         <detaileddescription>
-<para>bool(obj) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -402,9 +402,9 @@
         <argsstring>() const</argsstring>
         <name>to_int</name>
         <briefdescription>
+<para>int(obj) </para>
         </briefdescription>
         <detaileddescription>
-<para>int(obj) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -423,9 +423,9 @@
           <declname>callback</declname>
         </param>
         <briefdescription>
+<para>for elem in dir(obj): callback(elem) </para>
         </briefdescription>
         <detaileddescription>
-<para>for elem in dir(obj): callback(elem) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -443,9 +443,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>obj is other </para>
         </briefdescription>
         <detaileddescription>
-<para>obj is other </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -465,9 +465,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>obj == other </para>
         </briefdescription>
         <detaileddescription>
-<para>obj == other </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -487,9 +487,9 @@
           <declname>expression</declname>
         </param>
         <briefdescription>
+<para>eval(expression, obj) </para>
         </briefdescription>
         <detaileddescription>
-<para>eval(expression, obj) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -510,9 +510,9 @@
           <declname>statement</declname>
         </param>
         <briefdescription>
+<para>exec(statement, obj) </para>
         </briefdescription>
         <detaileddescription>
-<para>exec(statement, obj) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -532,9 +532,9 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>obj[key] </para>
         </briefdescription>
         <detaileddescription>
-<para>obj[key] </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -556,9 +556,9 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>obj[key] </para>
         </briefdescription>
         <detaileddescription>
-<para>obj[key] </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -576,9 +576,9 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>obj[key] </para>
         </briefdescription>
         <detaileddescription>
-<para>obj[key] </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -596,9 +596,9 @@
           <declname>container</declname>
         </param>
         <briefdescription>
+<para>obj in container </para>
         </briefdescription>
         <detaileddescription>
-<para>obj in container </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -613,9 +613,9 @@
         <argsstring>() const</argsstring>
         <name>type</name>
         <briefdescription>
+<para>type(obj) </para>
         </briefdescription>
         <detaileddescription>
-<para>type(obj) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -631,9 +631,9 @@
         <argsstring>() const</argsstring>
         <name>modulename</name>
         <briefdescription>
+<para>type(obj).__module__ </para>
         </briefdescription>
         <detaileddescription>
-<para>type(obj).__module__ </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -649,9 +649,9 @@
         <argsstring>() const</argsstring>
         <name>classname</name>
         <briefdescription>
+<para>type(obj).__name__ </para>
         </briefdescription>
         <detaileddescription>
-<para>type(obj).__name__ </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -667,9 +667,9 @@
         <argsstring>() const noexcept</argsstring>
         <name>get_ref</name>
         <briefdescription>
+<para>Provide the internal PyObject *. </para>
         </briefdescription>
         <detaileddescription>
-<para>Provide the internal PyObject *. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -690,9 +690,10 @@
         <argsstring>() const noexcept</argsstring>
         <name>operator()</name>
         <briefdescription>
+<para>Implicit conversion to PyObject *. </para>
         </briefdescription>
         <detaileddescription>
-<para>Implicit conversion to PyObject *. Mainly for convenience to avoid all the <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" kindref="member">get_ref()</ref> calls. </para>
+<para>Mainly for convenience to avoid all the <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" kindref="member">get_ref()</ref> calls. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -709,9 +710,9 @@
           <declname>ref</declname>
         </param>
         <briefdescription>
+<para>Like <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a1c1b91b6056f0e370402678645129d8a" kindref="member">operator =(const PyObjectRef &amp;other)</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Like <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a1c1b91b6056f0e370402678645129d8a" kindref="member">operator =(const PyObjectRef &amp;other)</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -731,9 +732,10 @@
           <declname>ref</declname>
         </param>
         <briefdescription>
+<para>Like set_ref, but does <emphasis>NOT</emphasis> call PY_XINCREF. </para>
         </briefdescription>
         <detaileddescription>
-<para>Like set_ref, but does <emphasis>NOT</emphasis> call PY_XINCREF. Only use in special cases, if you know exactly what you&apos;re doing. </para>
+<para>Only use in special cases, if you know exactly what you&apos;re doing. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -748,9 +750,10 @@
         <argsstring>() noexcept</argsstring>
         <name>clear_ref_without_decrementing</name>
         <briefdescription>
+<para>Clears the internal reference, but does <emphasis>NOT</emphasis> call PY_XDECREF. </para>
         </briefdescription>
         <detaileddescription>
-<para>Clears the internal reference, but does <emphasis>NOT</emphasis> call PY_XDECREF. Only use in special cases, if you know exactly what you&apos;re doing. </para>
+<para>Only use in special cases, if you know exactly what you&apos;re doing. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -768,9 +771,9 @@
           <declname>number</declname>
         </param>
         <briefdescription>
+<para>Integer conversion. </para>
         </briefdescription>
         <detaileddescription>
-<para>Integer conversion. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -788,9 +791,9 @@
           <declname>data</declname>
         </param>
         <briefdescription>
+<para>Bytes conversion. </para>
         </briefdescription>
         <detaileddescription>
-<para>Bytes conversion. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -808,9 +811,9 @@
           <declname>txt</declname>
         </param>
         <briefdescription>
+<para>String conversion. </para>
         </briefdescription>
         <detaileddescription>
-<para>String conversion. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -828,9 +831,9 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>obj(args) </para>
         </briefdescription>
         <detaileddescription>
-<para>obj(args) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -856,9 +859,9 @@
           <declname>arg</declname>
         </param>
         <briefdescription>
+<para>Primary template for <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> conversions. </para>
         </briefdescription>
         <detaileddescription>
-<para>Primary template for <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> conversions. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -866,9 +869,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Holds a Python object, as a PyObject * pointer. </para>
     </briefdescription>
     <detaileddescription>
-<para>Holds a Python object, as a PyObject * pointer.</para>
 <para>Reference counting (Py_INCREF and Py_DECREF) is correctly performed in the various copy/move constructors/operators.</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref>: <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a780793e26a1e574fda456f688e8d2f11" kindref="member">PyObjectRef()</ref> noexcept <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0c2f2bd7dfd4f04b439793b220e02db9" kindref="member">PyObjectRef(PyObject *ref)</ref> except +</para>

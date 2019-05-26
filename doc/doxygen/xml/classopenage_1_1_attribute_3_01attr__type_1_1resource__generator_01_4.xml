@@ -65,9 +65,9 @@
         <name>copy</name>
         <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
         <briefdescription>
+<para>Produces an copy of the attribute. </para>
         </briefdescription>
         <detaileddescription>
-<para>Produces an copy of the attribute. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -75,9 +75,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para><ref refid="classopenage_1_1_resource" kindref="compound">Resource</ref> generator eg. </para>
     </briefdescription>
     <detaileddescription>
-<para><ref refid="classopenage_1_1_resource" kindref="compound">Resource</ref> generator eg. relic. While a unit is idle and contains this attribute, it will generate resources for its owner.</para>
+<para>relic. While a unit is idle and contains this attribute, it will generate resources for its owner.</para>
 <para>A rate of zero means that the generation is continuously and not in intervals. </para>
     </detaileddescription>
     <inheritancegraph>

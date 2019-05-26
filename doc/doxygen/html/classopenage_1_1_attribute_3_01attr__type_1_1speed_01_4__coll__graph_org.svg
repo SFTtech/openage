@@ -25,7 +25,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_shared_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_shared_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated shared attribute.">
 <polygon fill="white" stroke="black" points="0,-265 0,-344 140,-344 140,-265 0,-265"/>
 <text text-anchor="start" x="8" y="-332" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SharedAttribute</text>
 <text text-anchor="middle" x="70" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00">Container</text>
@@ -44,7 +44,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated attribute.">
 <polygon fill="white" stroke="black" points="1.5,-661.5 1.5,-762.5 138.5,-762.5 138.5,-661.5 1.5,-661.5"/>
 <text text-anchor="middle" x="70" y="-750.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttributeContainer</text>
 <polyline fill="none" stroke="black" points="1.5,-743.5 138.5,-743.5 "/>
@@ -110,7 +110,7 @@
 </g>
 <!-- Node7 -->
 <g id="node5" class="node"><title>Node7</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml" target="_top" xlink:title="Fixed&#45;point integer class;.">
 <polygon fill="white" stroke="black" points="163.5,-540.5 163.5,-883.5 298.5,-883.5 298.5,-540.5 163.5,-540.5"/>
 <text text-anchor="start" x="171.5" y="-871.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="231" y="-860.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int_type, fractional_bits &gt;</text>

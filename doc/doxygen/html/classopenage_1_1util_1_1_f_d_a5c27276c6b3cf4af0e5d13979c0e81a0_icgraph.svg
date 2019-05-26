@@ -57,7 +57,7 @@ var sectionId = 'dynsection-9';
 <polygon fill="white" stroke="none" points="-4,4 -4,-157 565,-157 565,4 -4,4"/>
 <!-- Node50 -->
 <g id="node1" class="node"><title>Node50</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="writes the string (excluding the null terminator)">
 <polygon fill="#bfbfbf" stroke="black" points="445,-72 445,-91 561,-91 561,-72 445,-72"/>
 <text text-anchor="middle" x="503" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::puts</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node52 -->
 <g id="node3" class="node"><title>Node52</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" target="_top" xlink:title="guess what this does.">
 <polygon fill="white" stroke="black" points="312,-88.5 312,-118.5 409,-118.5 409,-88.5 312,-88.5"/>
 <text text-anchor="start" x="320" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="360.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">printf</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node53 -->
 <g id="node4" class="node"><title>Node53</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" target="_top" xlink:title="very early and inefficient printing of the console to a pty.">
 <polygon fill="white" stroke="black" points="157,-54.5 157,-84.5 276,-84.5 276,-54.5 157,-54.5"/>
 <text text-anchor="start" x="165" y="-72.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="216.5" y="-61.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_terminal</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node55 -->
 <g id="node6" class="node"><title>Node55</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title="writes the unicode codepoint, as utf&#45;8">
 <polygon fill="white" stroke="black" points="312,-0.5 312,-30.5 409,-30.5 409,-0.5 312,-0.5"/>
 <text text-anchor="start" x="320" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="360.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">putcp</text>

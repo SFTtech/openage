@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-734 158,-734 158,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="UI mode to provide an interface for map editing.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-277.5 154,-277.5 154,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="77" y="-265.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <polyline fill="none" stroke="black" points="0,-258.5 154,-258.5 "/>
@@ -89,7 +89,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_output_mode.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_output_mode.xhtml" target="_top" xlink:title="A target for input handling and gui rendering.">
 <polygon fill="white" stroke="black" points="14.5,-314.5 14.5,-492.5 139.5,-492.5 139.5,-314.5 14.5,-314.5"/>
 <text text-anchor="middle" x="77" y="-480.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <polyline fill="none" stroke="black" points="14.5,-473.5 139.5,-473.5 "/>
@@ -117,7 +117,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml" target="_top" xlink:title="An input context contains all keybindings and actions active in e.g.">
 <polygon fill="white" stroke="black" points="6.5,-529.5 6.5,-729.5 147.5,-729.5 147.5,-529.5 6.5,-529.5"/>
 <text text-anchor="middle" x="77" y="-717.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <polyline fill="none" stroke="black" points="6.5,-710.5 147.5,-710.5 "/>

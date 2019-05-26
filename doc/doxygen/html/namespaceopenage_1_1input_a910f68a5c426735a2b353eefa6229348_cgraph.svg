@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 240,-62 240,4 -4,4"/>
 <!-- Node44 -->
 <g id="node1" class="node"><title>Node44</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Convert a string to an event, throw if the string is not a valid event.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-14 0,-44 103,-44 103,-14 0,-14"/>
 <text text-anchor="start" x="8" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::text</text>
 <text text-anchor="middle" x="51.5" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">_to_event</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node46 -->
 <g id="node3" class="node"><title>Node46</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="139,-0.5 139,-19.5 236,-19.5 236,-0.5 139,-0.5"/>
 <text text-anchor="middle" x="187.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

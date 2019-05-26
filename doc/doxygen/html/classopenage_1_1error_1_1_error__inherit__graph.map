@@ -1,7 +1,7 @@
 <map id="openage::error::Error" name="openage::error::Error">
-<area shape="rect" id="node1" title=" " alt="" coords="158,131,338,340"/>
+<area shape="rect" id="node1" title="Openage base exception type; the constructor usage is analogous to log::log()." alt="" coords="158,131,338,340"/>
 <area shape="rect" id="node3" href="$classopenage_1_1audio_1_1_error.xhtml" title=" " alt="" coords="5,403,152,480"/>
-<area shape="rect" id="node4" href="$classopenage_1_1pyinterface_1_1_py_exception.xhtml" title=" " alt="" coords="177,388,319,495"/>
-<area shape="rect" id="node5" href="$classopenage_1_1testing_1_1_test_error.xhtml" title=" " alt="" coords="344,403,523,480"/>
+<area shape="rect" id="node4" href="$classopenage_1_1pyinterface_1_1_py_exception.xhtml" title="Thrown by translate_exc_py_to_cpp() from exctranslate.h." alt="" coords="177,388,319,495"/>
+<area shape="rect" id="node5" href="$classopenage_1_1testing_1_1_test_error.xhtml" title="To be used by all tests to indicate an error condition." alt="" coords="344,403,523,480"/>
 <area shape="rect" id="node2" title=" " alt="" coords="199,5,297,83"/>
 </map>

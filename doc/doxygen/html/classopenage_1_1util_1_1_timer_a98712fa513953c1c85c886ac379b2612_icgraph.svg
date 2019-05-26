@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 400,-73.5 400,4 -4,4"/>
 <!-- Node24 -->
 <g id="node1" class="node"><title>Node24</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="resets the timer, in either stopped or running state.">
 <polygon fill="#bfbfbf" stroke="black" points="294,-22.5 294,-52.5 396,-52.5 396,-22.5 294,-22.5"/>
 <text text-anchor="start" x="302" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="345" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reset</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node25 -->
 <g id="node2" class="node"><title>Node25</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="145,-50 145,-69 258,-69 258,-50 145,-50"/>
 <text text-anchor="middle" x="201.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node27 -->
 <g id="node4" class="node"><title>Node27</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a1b3d27ae06020bc54ea6cb6f0d7bc72d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a1b3d27ae06020bc54ea6cb6f0d7bc72d" target="_top" xlink:title="creates the timer, in either stopped or running state.">
 <polygon fill="white" stroke="black" points="150.5,-0.5 150.5,-30.5 252.5,-30.5 252.5,-0.5 150.5,-0.5"/>
 <text text-anchor="start" x="158.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="201.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Timer</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node26 -->
 <g id="node3" class="node"><title>Node26</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="0,-50 0,-69 109,-69 109,-50 0,-50"/>
 <text text-anchor="middle" x="54.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>

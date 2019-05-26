@@ -1,3 +1,3 @@
 <map id="openage::DrawHandler" name="openage::DrawHandler">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,157,97"/>
+<area shape="rect" id="node1" title="superclass for all possible drawing operations in the game." alt="" coords="5,5,157,97"/>
 </map>

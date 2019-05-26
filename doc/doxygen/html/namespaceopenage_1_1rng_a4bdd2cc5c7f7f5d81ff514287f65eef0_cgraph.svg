@@ -19,7 +19,7 @@
 </g>
 <!-- Node120 -->
 <g id="node2" class="node"><title>Node120</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title="returns the number of nanoseconds since the UNIX epoch.">
 <polygon fill="white" stroke="black" points="171.5,-49.5 171.5,-79.5 276.5,-79.5 276.5,-49.5 171.5,-49.5"/>
 <text text-anchor="start" x="179.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="224" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_real_time</text>

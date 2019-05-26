@@ -125,8 +125,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af798beba5997d99d6cd882ac4451cc25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of this geometry.  <a href="#af798beba5997d99d6cd882ac4451cc25">More...</a><br /></td></tr>
 <tr class="separator:af798beba5997d99d6cd882ac4451cc25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb295fcb36abc50ddc3925caf0fb5d03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml#afb295fcb36abc50ddc3925caf0fb5d03">update_verts</a> (std::vector&lt; uint8_t &gt; const &amp;verts)</td></tr>
+<tr class="memdesc:afb295fcb36abc50ddc3925caf0fb5d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">In a meshed geometry, updates the vertex data.  <a href="#afb295fcb36abc50ddc3925caf0fb5d03">More...</a><br /></td></tr>
 <tr class="separator:afb295fcb36abc50ddc3925caf0fb5d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37b4e546a79628294086815a670b3376"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml#a37b4e546a79628294086815a670b3376">update_verts_offset</a> (std::vector&lt; uint8_t &gt; const &amp;verts, size_t offset)=0</td></tr>
+<tr class="memdesc:a37b4e546a79628294086815a670b3376"><td class="mdescLeft">&#160;</td><td class="mdescRight">In a meshed geometry, updates the vertex data starting from the offset-th vertex.  <a href="#a37b4e546a79628294086815a670b3376">More...</a><br /></td></tr>
 <tr class="separator:a37b4e546a79628294086815a670b3376"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -230,7 +232,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_geometry_af798beba5997d99d6cd882ac4451cc25_icgraph.svg" width="588" height="140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_geometry_af798beba5997d99d6cd882ac4451cc25_icgraph.svg" width="588" height="140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -250,7 +253,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>In a meshed geometry, updates the vertex data. The size and type of the vertex data has to be the same as before. If the mesh is indexed, indices will stay the same. </p><dl class="exception"><dt>Exceptions</dt><dd>
+
+<p>In a meshed geometry, updates the vertex data. </p>
+<p>The size and type of the vertex data has to be the same as before. If the mesh is indexed, indices will stay the same. </p><dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">if</td><td>there is a size mismatch between the new and old vertex data </td></tr>
   </table>
@@ -258,7 +263,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.xhtml#l00016">16</a> of file <a class="el" href="geometry_8cpp_source.xhtml">geometry.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                                           {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_geometry.xhtml#a37b4e546a79628294086815a670b3376">update_verts_offset</a>(verts, 0);</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_geometry_xhtml_a37b4e546a79628294086815a670b3376"><div class="ttname"><a href="classopenage_1_1renderer_1_1_geometry.xhtml#a37b4e546a79628294086815a670b3376">openage::renderer::Geometry::update_verts_offset</a></div><div class="ttdeci">virtual void update_verts_offset(std::vector&lt; uint8_t &gt; const &amp;verts, size_t offset)=0</div></div>
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                                           {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_geometry.xhtml#a37b4e546a79628294086815a670b3376">update_verts_offset</a>(verts, 0);</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_geometry_xhtml_a37b4e546a79628294086815a670b3376"><div class="ttname"><a href="classopenage_1_1renderer_1_1_geometry.xhtml#a37b4e546a79628294086815a670b3376">openage::renderer::Geometry::update_verts_offset</a></div><div class="ttdeci">virtual void update_verts_offset(std::vector&lt; uint8_t &gt; const &amp;verts, size_t offset)=0</div><div class="ttdoc">In a meshed geometry, updates the vertex data starting from the offset-th vertex.</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml#a37b4e546a79628294086815a670b3376">update_verts_offset()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -266,7 +271,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_geometry_afb295fcb36abc50ddc3925caf0fb5d03_cgraph.svg" width="379" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_geometry_afb295fcb36abc50ddc3925caf0fb5d03_cgraph.svg" width="379" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -304,7 +310,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>In a meshed geometry, updates the vertex data starting from the offset-th vertex. The type of the vertex data has to be the same as it was on initializing the geometry. The size plus the offset cannot exceed the previous size of the vertex data. If the mesh is indexed, indices will stay the same. </p><dl class="exception"><dt>Exceptions</dt><dd>
+
+<p>In a meshed geometry, updates the vertex data starting from the offset-th vertex. </p>
+<p>The type of the vertex data has to be the same as it was on initializing the geometry. The size plus the offset cannot exceed the previous size of the vertex data. If the mesh is indexed, indices will stay the same. </p><dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">if</td><td>there is a size mismatch between the new and old vertex data </td></tr>
   </table>
@@ -319,7 +327,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_geometry_a37b4e546a79628294086815a670b3376_icgraph.svg" width="379" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_geometry_a37b4e546a79628294086815a670b3376_icgraph.svg" width="379" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

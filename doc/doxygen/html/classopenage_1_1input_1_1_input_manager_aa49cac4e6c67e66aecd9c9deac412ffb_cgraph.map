@@ -1,12 +1,12 @@
 <map id="openage::input::InputManager::set_state" name="openage::input::InputManager::set_state">
-<area shape="rect" id="node1" title=" " alt="" coords="5,64,199,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" title=" " alt="" coords="488,35,681,76"/>
-<area shape="rect" id="node8" href="$classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" title=" " alt="" coords="247,64,440,105"/>
-<area shape="rect" id="node9" href="$classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" title=" " alt="" coords="247,129,440,171"/>
-<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" title=" " alt="" coords="729,5,923,47"/>
+<area shape="rect" id="node1" title="sets the state of a specific key" alt="" coords="5,64,199,105"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" title="true if the given event type is being ignored" alt="" coords="488,35,681,76"/>
+<area shape="rect" id="node8" href="$classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" title="Query stored pressing stat for a key." alt="" coords="247,64,440,105"/>
+<area shape="rect" id="node9" href="$classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" title="manages the pressing of an input event (key, mouse, ...)." alt="" coords="247,129,440,171"/>
+<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" title="Returns the context on top." alt="" coords="729,5,923,47"/>
 <area shape="rect" id="node4" href="$classopenage_1_1input_1_1_class_code.xhtml#a164160fc35b66ea9f4bf6ba5211c48e5" title=" " alt="" coords="737,71,915,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" title=" " alt="" coords="971,100,1149,141"/>
+<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" title="classes ordered with most specific first" alt="" coords="971,100,1149,141"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="1197,107,1391,134"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="1439,107,1565,134"/>
-<area shape="rect" id="node10" href="$classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461" title=" " alt="" coords="491,129,679,171"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="1439,107,1565,134"/>
+<area shape="rect" id="node10" href="$classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461" title="lookup an action." alt="" coords="491,129,679,171"/>
 </map>

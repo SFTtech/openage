@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 609,-84 609,4 -4,4"/>
 <!-- Node74 -->
 <g id="node1" class="node"><title>Node74</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="a sample drawing for hud">
 <polygon fill="#bfbfbf" stroke="black" points="0,-24.5 0,-54.5 109,-54.5 109,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="54.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::sample</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node75 -->
 <g id="node2" class="node"><title>Node75</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" target="_top" xlink:title="test method for the base CoordXY* classes.">
 <polygon fill="white" stroke="black" points="148.5,-47.5 148.5,-77.5 259.5,-77.5 259.5,-47.5 148.5,-47.5"/>
 <text text-anchor="start" x="156.5" y="-65.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::tests</text>
 <text text-anchor="middle" x="204" y="-54.5" font-family="Helvetica,sans-Serif" font-size="10.00">::coord</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node78 -->
 <g id="node5" class="node"><title>Node78</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" target="_top" xlink:title="Draws the texture at hud coordinates.">
 <polygon fill="white" stroke="black" points="145,-8 145,-27 263,-27 263,-8 145,-8"/>
 <text text-anchor="middle" x="204" y="-15" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node77 -->
 <g id="node4" class="node"><title>Node77</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" target="_top" xlink:title="Clears the underlying stream object&#39;s flags, if such a stream object exists.">
 <polygon fill="white" stroke="black" points="459,-49.5 459,-79.5 605,-79.5 605,-49.5 459,-49.5"/>
 <text text-anchor="start" x="467" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="532" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; FString &gt;::reset_flags</text>

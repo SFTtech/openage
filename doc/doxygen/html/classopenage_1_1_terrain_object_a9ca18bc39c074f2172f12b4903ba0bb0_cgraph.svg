@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-53 274,-53 274,4 -4,4"/>
 <!-- Node19 -->
 <g id="node1" class="node"><title>Node19</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="should this object be tested for collisions, which decides whether another object is allowed to overl...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 117,-30.5 117,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="58.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::check_collisions</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node20 -->
 <g id="node2" class="node"><title>Node20</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_object.xhtml#ad4fa56a3ee5387e217fa8d9297acda7b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_object.xhtml#ad4fa56a3ee5387e217fa8d9297acda7b" target="_top" xlink:title="returns true if this object has been placed.">
 <polygon fill="white" stroke="black" points="153,-0.5 153,-30.5 270,-30.5 270,-0.5 153,-0.5"/>
 <text text-anchor="start" x="161" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="211.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::is_placed</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 471,-35 471,4 -4,4"/>
 <!-- Node27 -->
 <g id="node1" class="node"><title>Node27</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="reads a symlink">
 <polygon fill="#bfbfbf" stroke="black" points="333,-6 333,-25 467,-25 467,-6 333,-6"/>
 <text text-anchor="middle" x="400" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::read_symlink</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node28 -->
 <g id="node2" class="node"><title>Node28</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1os.xhtml#aaa0a892b4d5cf0b41684c5f31c6cf86b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1os.xhtml#aaa0a892b4d5cf0b41684c5f31c6cf86b" target="_top" xlink:title="returns openage&#39;s executable name">
 <polygon fill="white" stroke="black" points="180,-0.5 180,-30.5 297,-30.5 297,-0.5 180,-0.5"/>
 <text text-anchor="start" x="188" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::self_exec</text>
 <text text-anchor="middle" x="238.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_filename</text>

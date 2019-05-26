@@ -1,8 +1,8 @@
 <map id="openage::rng::real_range" name="openage::rng::real_range">
-<area shape="rect" id="node1" title=" " alt="" coords="5,35,132,76"/>
-<area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec" title=" " alt="" coords="180,35,321,76"/>
-<area shape="rect" id="node3" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a2d906c2de63a31a89589a34bac2a3dd8" title=" " alt="" coords="369,42,532,69"/>
-<area shape="rect" id="node4" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" title=" " alt="" coords="593,5,734,47"/>
+<area shape="rect" id="node1" title="Returns a double in [lower, upper) from the global rng." alt="" coords="5,35,132,76"/>
+<area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec" title="Returns a double in the range [min, max)" alt="" coords="180,35,321,76"/>
+<area shape="rect" id="node3" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a2d906c2de63a31a89589a34bac2a3dd8" title="Retrieves a double in [0, 1)" alt="" coords="369,42,532,69"/>
+<area shape="rect" id="node4" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" title="Retrieves a random value from the generator." alt="" coords="593,5,734,47"/>
 <area shape="rect" id="node6" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#accd55f47ffd4049900e96f032f0a9375" title=" " alt="" coords="580,71,747,98"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1rng.xhtml#af7d90437e58aaa4fe1d816ad7b62dc07" title=" " alt="" coords="795,13,939,39"/>
 </map>

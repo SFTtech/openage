@@ -57,7 +57,7 @@ var sectionId = 'dynsection-2';
 <polygon fill="white" stroke="none" points="-4,4 -4,-173.165 587,-173.165 587,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="#bfbfbf" stroke="black" points="0,-71 0,-101 108,-101 108,-71 0,-71"/>
 <text text-anchor="start" x="8" y="-89" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAbility</text>
 <text text-anchor="middle" x="54" y="-78" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title="returns attribute based on templated value">
 <polygon fill="white" stroke="black" points="327,-137 327,-167 423,-167 423,-137 327,-137"/>
 <text text-anchor="start" x="335" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::get</text>
 <text text-anchor="middle" x="375" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title="returns whether attribute is available">
 <polygon fill="white" stroke="black" points="326,-72 326,-102 424,-102 424,-72 326,-72"/>
 <text text-anchor="start" x="334" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::has</text>
 <text text-anchor="middle" x="375" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -134,7 +134,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title="Get the attribute based on the type.">
 <polygon fill="white" stroke="black" points="461,-142.5 461,-161.5 582,-161.5 582,-142.5 461,-142.5"/>
 <text text-anchor="middle" x="521.5" y="-149.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::get</text>
 </a>
@@ -147,7 +147,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node6 -->
 <g id="node5" class="node"><title>Node6</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title="Check if the attribute of the given type exists.">
 <polygon fill="white" stroke="black" points="460,-77.5 460,-96.5 583,-96.5 583,-77.5 460,-77.5"/>
 <text text-anchor="middle" x="521.5" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::has</text>
 </a>

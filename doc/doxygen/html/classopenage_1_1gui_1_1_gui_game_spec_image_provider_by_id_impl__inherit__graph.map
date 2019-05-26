@@ -1,8 +1,8 @@
 <map id="openage::gui::GuiGameSpecImageProviderByIdImpl" name="openage::gui::GuiGameSpecImageProviderByIdImpl">
-<area shape="rect" id="node1" title=" " alt="" coords="121,704,329,869"/>
-<area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl.xhtml" title=" " alt="" coords="5,917,213,1097"/>
-<area shape="rect" id="node6" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl.xhtml" title=" " alt="" coords="237,917,445,1097"/>
-<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" title=" " alt="" coords="105,329,345,656"/>
+<area shape="rect" id="node1" title="Base for providers that expose textures to the Qt by their id." alt="" coords="121,704,329,869"/>
+<area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl.xhtml" title="Exposes game textures to the Qt by their id." alt="" coords="5,917,213,1097"/>
+<area shape="rect" id="node6" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl.xhtml" title="Exposes terrain textures to the Qt by their id." alt="" coords="237,917,445,1097"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" title="Exposes game textures to the Qt." alt="" coords="105,329,345,656"/>
 <area shape="rect" id="node3" href="$classqtsdl_1_1_gui_image_provider_impl.xhtml" title=" " alt="" coords="134,131,317,281"/>
 <area shape="rect" id="node4" title=" " alt="" coords="152,5,299,83"/>
 </map>

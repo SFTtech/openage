@@ -113,7 +113,8 @@ $(document).ready(function(){initNavTree('terrain__object_8h.xhtml','');});
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="terrain__object_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="terrain__object_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div>
 <p><a href="terrain__object_8h_source.xhtml">Go to the source code of this file.</a></p>
@@ -121,17 +122,22 @@ $(document).ready(function(){initNavTree('terrain__object_8h.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1tile__range.xhtml">openage::tile_range</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A rectangle or square of tiles which is the minimim space to fit the units foundation or radius the end tile will have ne and se values greater or equal to the start tile.  <a href="structopenage_1_1tile__range.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_terrain_object.xhtml">openage::TerrainObject</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for map location types which include square tile aligned positions and radial positions This enables two inheriting classes <a class="el" href="classopenage_1_1_square_object.xhtml" title="terrain object class represents one immobile object on the map (building, trees, fish,...">SquareObject</a> and <a class="el" href="classopenage_1_1_radial_object.xhtml" title="Represents circular shaped objects (movable game units) can only be constructed by unit-&gt;make_locatio...">RadialObject</a> to specify different areas of the map.  <a href="classopenage_1_1_terrain_object.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_square_object.xhtml">openage::SquareObject</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">terrain object class represents one immobile object on the map (building, trees, fish, ...).  <a href="classopenage_1_1_square_object.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_radial_object.xhtml">openage::RadialObject</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents circular shaped objects (movable game units) can only be constructed by unit-&gt;make_location&lt;RadialObject&gt;(...)  <a href="classopenage_1_1_radial_object.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -141,16 +147,20 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2">openage::object_state::placed</a>, 
 <a class="el" href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465eac693ee9f8e776555e9625dd624ad5fa3">openage::object_state::placed_no_collision</a>
  }</td></tr>
+<tr class="memdesc:a1df3032ec46d1407f95723ad6fc5465e"><td class="mdescLeft">&#160;</td><td class="mdescRight">only placed will enable collision checks  <a href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465e">More...</a><br /></td></tr>
 <tr class="separator:a1df3032ec46d1407f95723ad6fc5465e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3a0d4d7c2bc234c442c13758d306f60c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; coord::tile &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c">openage::tile_list</a> (const tile_range &amp;rng)</td></tr>
+<tr class="memdesc:a3a0d4d7c2bc234c442c13758d306f60c"><td class="mdescLeft">&#160;</td><td class="mdescRight">get all tiles in the tile range &ndash; useful for iterating returns a flat list of tiles between the rectangle enclosed by the <a class="el" href="structopenage_1_1tile__range.xhtml" title="A rectangle or square of tiles which is the minimim space to fit the units foundation or radius the e...">tile_range</a> start and end tiles  <a href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c">More...</a><br /></td></tr>
 <tr class="separator:a3a0d4d7c2bc234c442c13758d306f60c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a231617a72c3e699877ee6eacb76850de"><td class="memItemLeft" align="right" valign="top">tile_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de">openage::building_center</a> (coord::phys3 west, coord::tile_delta size, const Terrain &amp;terrain)</td></tr>
+<tr class="memdesc:a231617a72c3e699877ee6eacb76850de"><td class="mdescLeft">&#160;</td><td class="mdescRight">given the west most point of a building foundation and the tile_delta size of the foundation, this will return the tile range covered by the base, which includes start and end tiles, and phys3 center point (used for drawing)  <a href="namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de">More...</a><br /></td></tr>
 <tr class="separator:a231617a72c3e699877ee6eacb76850de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23f086d83373aef776a1031dbbcbe975"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml#a23f086d83373aef776a1031dbbcbe975">openage::complete_building</a> (Unit &amp;u)</td></tr>
-<tr class="separator:a23f086d83373aef776a1031dbbcbe975"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c248986ac22a8251e1f27a6cef087eb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml#a8c248986ac22a8251e1f27a6cef087eb">openage::complete_building</a> (Unit &amp;)</td></tr>
+<tr class="memdesc:a8c248986ac22a8251e1f27a6cef087eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets a building to a fully completed state  <a href="namespaceopenage.xhtml#a8c248986ac22a8251e1f27a6cef087eb">More...</a><br /></td></tr>
+<tr class="separator:a8c248986ac22a8251e1f27a6cef087eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

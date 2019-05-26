@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-504 507.5,-504 507.5,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="One navigation waypoint in a path.">
 <polygon fill="#bfbfbf" stroke="black" points="185.5,-0.5 185.5,-211.5 302.5,-211.5 302.5,-0.5 185.5,-0.5"/>
 <text text-anchor="middle" x="244" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::Node</text>
 <polyline fill="none" stroke="black" points="185.5,-192.5 302.5,-192.5 "/>

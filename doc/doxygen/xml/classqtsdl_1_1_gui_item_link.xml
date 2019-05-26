@@ -22,9 +22,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Base for QObject wrapper of the domain-specific classes. </para>
     </briefdescription>
     <detaileddescription>
-<para>Base for QObject wrapper of the domain-specific classes. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6321">

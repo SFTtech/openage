@@ -146,9 +146,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Houses gui logic event queue. </para>
     </briefdescription>
     <detaileddescription>
-<para>Houses gui logic event queue.</para>
 <para>To launch it in a dedicated thread, use <ref refid="classqtsdl_1_1_gui_dedicated_thread" kindref="compound">qtsdl::GuiDedicatedThread</ref> instead. </para>
     </detaileddescription>
     <collaborationgraph>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-1342 683,-1342 683,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Adaptor for the contents of a category of the Civilisation.">
 <polygon fill="#bfbfbf" stroke="black" points="122,-0.5 122,-222.5 280,-222.5 280,-0.5 122,-0.5"/>
 <text text-anchor="start" x="130" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::CategoryContents</text>
 <text text-anchor="middle" x="201" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">ListModel</text>
@@ -194,7 +194,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node8 -->
 <g id="node7" class="node"><title>Node8</title>
-<g id="a_node7"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title="Shadows inherited member functions.">
 <polygon fill="white" stroke="black" points="106.5,-856 106.5,-957 207.5,-957 207.5,-856 106.5,-856"/>
 <text text-anchor="middle" x="157" y="-945" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Shadow&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="106.5,-938 207.5,-938 "/>
@@ -216,7 +216,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node14 -->
 <g id="node13" class="node"><title>Node14</title>
-<g id="a_node13"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title="Switches the factory to production of the instances of the derived class.">
 <polygon fill="white" stroke="black" points="247.5,-712.5 247.5,-780.5 358.5,-780.5 358.5,-712.5 247.5,-712.5"/>
 <text text-anchor="middle" x="303" y="-768.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Inherits&lt; T, P &gt;</text>
 <polyline fill="none" stroke="black" points="247.5,-761.5 358.5,-761.5 "/>
@@ -298,7 +298,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node12 -->
 <g id="node11" class="node"><title>Node12</title>
-<g id="a_node11"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="white" stroke="black" points="373,-1203.5 373,-1337.5 511,-1337.5 511,-1203.5 373,-1203.5"/>
 <text text-anchor="middle" x="442" y="-1325.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="373,-1318.5 511,-1318.5 "/>

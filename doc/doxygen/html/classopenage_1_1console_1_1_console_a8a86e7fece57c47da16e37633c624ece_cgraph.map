@@ -1,8 +1,8 @@
 <map id="openage::console::Console::set_visible" name="openage::console::Console::set_visible">
 <area shape="rect" id="node1" title=" " alt="" coords="5,71,184,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" title=" " alt="" coords="256,5,401,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2ece2b2ad4a08c15fb00a39b0f553d3c" title=" " alt="" coords="232,71,425,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_manager.xhtml#a469024c2b2ac7769e0fa578c73fde160" title=" " alt="" coords="232,136,425,177"/>
-<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" title=" " alt="" coords="473,71,661,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1input_1_1_input_context.xhtml#a12ae83daa8c6bfefef320a07377a9246" title=" " alt="" coords="473,136,661,177"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" title="return this engine&#39;s keybind manager." alt="" coords="256,5,401,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2ece2b2ad4a08c15fb00a39b0f553d3c" title="register a hotkey context by pushing it onto the stack." alt="" coords="232,71,425,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_manager.xhtml#a469024c2b2ac7769e0fa578c73fde160" title="removes any matching registered context from the stack." alt="" coords="232,136,425,177"/>
+<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" title="Called by the InputManager where this context shall be registered to." alt="" coords="473,71,661,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1input_1_1_input_context.xhtml#a12ae83daa8c6bfefef320a07377a9246" title="Remove the registration to an input manager." alt="" coords="473,136,661,177"/>
 </map>

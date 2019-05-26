@@ -10,9 +10,10 @@
         <argsstring></argsstring>
         <name>part_t</name>
         <briefdescription>
+<para>Storage type for a part of a path access. </para>
         </briefdescription>
         <detaileddescription>
-<para>Storage type for a part of a path access. Basically this is the name of a file or directory. </para>
+<para>Basically this is the name of a file or directory. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -24,9 +25,9 @@
         <argsstring></argsstring>
         <name>parts_t</name>
         <briefdescription>
+<para>Storage type for the filesystem access parts this is basically a list/of/elements/in/a/path. </para>
         </briefdescription>
         <detaileddescription>
-<para>Storage type for the filesystem access parts this is basically a list/of/elements/in/a/path. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,9 +157,10 @@
         <argsstring>()</argsstring>
         <name>Path</name>
         <briefdescription>
+<para>Nullary constructor, pls don&apos;t use. </para>
         </briefdescription>
         <detaileddescription>
-<para>Nullary constructor, pls don&apos;t use. It only exists because Cython can&apos;t RAII. It should be just friend of cython. </para>
+<para>It only exists because Cython can&apos;t RAII. It should be just friend of cython. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -179,9 +181,10 @@
           <defval>{}</defval>
         </param>
         <briefdescription>
+<para>Construct a path object from a python fslike object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Construct a path object from a python fslike object. This is called from Cython.</para>
+<para>This is called from Cython.</para>
 <para>You will probably never call that manually. </para>
         </detaileddescription>
         <inbodydescription>
@@ -203,9 +206,9 @@
           <defval>{}</defval>
         </param>
         <briefdescription>
+<para>Construct a path from a fslike pointer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Construct a path from a fslike pointer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -453,9 +456,10 @@
           <defval>&quot;r&quot;</defval>
         </param>
         <briefdescription>
+<para>Resolve the native path by flattening all underlying filesystem objects (like unions). </para>
         </briefdescription>
         <detaileddescription>
-<para>Resolve the native path by flattening all underlying filesystem objects (like unions). Returns the /native/path/on/disk. Throws up if there is no native path.</para>
+<para>Returns the /native/path/on/disk. Throws up if there is no native path.</para>
 <para>This basically is the same as resolve_*().<ref refid="classopenage_1_1util_1_1_path_1a53047699ec64680d09c2c7db87ae99c5" kindref="member">get_native_path()</ref>. </para>
         </detaileddescription>
         <inbodydescription>
@@ -623,8 +627,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><xrefsect id="todo_1_todo000051"><xreftitle>Todo</xreftitle><xrefdescription><para>watching of path with inotify or similar this should get a Watcher*, which manages the multiple events otherwise, each file would require an inotify fd. =&gt; see the <ref refid="classopenage_1_1_asset_manager" kindref="compound">AssetManager</ref> and move functionality from there. </para>
-</xrefdescription></xrefsect></para>
+<para><xrefsect id="todo_1_todo000051"><xreftitle>Todo</xreftitle><xrefdescription><para>watching of path with inotify or similar this should get a Watcher*, which manages the multiple events otherwise, each file would require an inotify fd.</para>
+</xrefdescription></xrefsect>=&gt; see the <ref refid="classopenage_1_1_asset_manager" kindref="compound">AssetManager</ref> and move functionality from there. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -739,7 +743,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="138" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="303" bodyend="305"/>
         <references refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" compoundref="util_2path_8cpp" startline="293" endline="301">joinpath</references>
-        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+        <references refid="namespaceopenage_1_1util_1a9556b8562574e2c6ad102d8fd87569c6" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af3d064f84b10f3baca839c4490ff6cd3" compoundref="path_8py" startline="310" endline="312">openage.util.fslike.path.Path.__getitem__</referencedby>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2fe104e5eec859814a5192501d7069d7" compoundref="path_8py" startline="314" endline="316">openage.util.fslike.path.Path.__truediv__</referencedby>
       </memberdef>
@@ -909,9 +913,10 @@
         <argsstring>() const</argsstring>
         <name>get_native_path</name>
         <briefdescription>
+<para>Return the native path (something like /your/folder/with/file) for this path. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the native path (something like /your/folder/with/file) for this path. returns emptystring (&quot;&quot;) if there is no native path.</para>
+<para>returns emptystring (&quot;&quot;) if there is no native path.</para>
 <para>This does <emphasis>not</emphasis> minimize/flatten (= &quot;resolve&quot;) the path!</para>
 <para>You probably want to use <computeroutput>resolve_native_path</computeroutput> instead. </para>
         </detaileddescription>
@@ -945,9 +950,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>C++ pendant to the python <ref refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path" kindref="compound">util.fslike.path.Path</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>C++ pendant to the python <ref refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path" kindref="compound">util.fslike.path.Path</ref></para>
 <para>Contains a filesystem-like object and path-parts.</para>
 <para>pxd: cppclass <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref>: ctypedef string part_t ctypedef vector[string] parts_t</para>
 <para><ref refid="classopenage_1_1util_1_1_path_1ade26ce7a38a05b1e46dca7f839240988" kindref="member">Path()</ref> noexcept Path(PyObj, const vector[string]&amp;) except +</para>

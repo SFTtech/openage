@@ -1,9 +1,9 @@
 <map id="openage::input::action_arg_t" name="openage::input::action_arg_t">
-<area shape="rect" id="node1" title=" " alt="" coords="195,417,346,509"/>
+<area shape="rect" id="node1" title="Contains information about a triggered event." alt="" coords="195,417,346,509"/>
 <area shape="rect" id="node2" href="$structopenage_1_1coord_1_1input.xhtml" title=" " alt="" coords="20,219,167,325"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,20,168,112"/>
 <area shape="rect" id="node4" href="$structopenage_1_1coord_1_1input__delta.xhtml" title=" " alt="" coords="197,211,344,333"/>
 <area shape="rect" id="node5" title=" " alt="" coords="193,20,349,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1input_1_1_event.xhtml" title=" " alt="" coords="379,189,525,355"/>
-<area shape="rect" id="node7" href="$classopenage_1_1input_1_1_class_code.xhtml" title=" " alt="" coords="373,5,552,127"/>
+<area shape="rect" id="node6" href="$classopenage_1_1input_1_1_event.xhtml" title="Input event, as triggered by some input device like mouse, kezb, joystick, tablet,..." alt="" coords="379,189,525,355"/>
+<area shape="rect" id="node7" href="$classopenage_1_1input_1_1_class_code.xhtml" title="base event type containing event class and event code" alt="" coords="373,5,552,127"/>
 </map>

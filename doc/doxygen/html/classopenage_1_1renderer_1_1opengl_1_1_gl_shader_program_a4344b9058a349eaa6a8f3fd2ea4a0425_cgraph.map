@@ -1,6 +1,6 @@
 <map id="openage::renderer::opengl::GlShaderProgram::execute_with" name="openage::renderer::opengl::GlShaderProgram::execute_with">
-<area shape="rect" id="node1" title=" " alt="" coords="5,86,176,142"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_geometry.xhtml#a99c9999b09c6cf8916a8f8bc82dcdee5" title=" " alt="" coords="237,34,411,76"/>
+<area shape="rect" id="node1" title="Does what the description of Renderable specifies &#45; updates the uniform values and draws the Geometry..." alt="" coords="5,86,176,142"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_geometry.xhtml#a99c9999b09c6cf8916a8f8bc82dcdee5" title="Executes a draw command for the geometry on the currently active context." alt="" coords="237,34,411,76"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="677,100,788,127"/>
 <area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#aadce87ffc66b0d5fb4a4ab08fb50a545" title="Bind this program as the currently used one in the OpenGL context." alt="" coords="224,154,424,196"/>
 <area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1_geometry.xhtml#af798beba5997d99d6cd882ac4451cc25" title="Returns the type of this geometry." alt="" coords="482,34,619,76"/>

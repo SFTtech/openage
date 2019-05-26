@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 288,-84 288,4 -4,4"/>
 <!-- Node8 -->
 <g id="node1" class="node"><title>Node8</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns the type name of py_obj.">
 <polygon fill="#bfbfbf" stroke="black" points="152,-24.5 152,-54.5 284,-54.5 284,-24.5 152,-24.5"/>
 <text text-anchor="start" x="160" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="218" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyException::type_name</text>

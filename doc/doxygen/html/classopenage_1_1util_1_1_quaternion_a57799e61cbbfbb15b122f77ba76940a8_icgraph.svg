@@ -57,7 +57,7 @@ var sectionId = 'dynsection-5';
 <polygon fill="white" stroke="none" points="-4,4 -4,-211 768,-211 768,4 -4,4"/>
 <!-- Node28 -->
 <g id="node1" class="node"><title>Node28</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Perform a dot product with another quaternion.">
 <polygon fill="#bfbfbf" stroke="black" points="619,-79 619,-98 764,-98 764,-79 619,-79"/>
 <text text-anchor="middle" x="691.5" y="-86" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion::dot</text>
 </a>
@@ -65,7 +65,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node29 -->
 <g id="node2" class="node"><title>Node29</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aa3f586260959ed4c65c62a3ec93f6a6e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aa3f586260959ed4c65c62a3ec93f6a6e" target="_top" xlink:title="Test if the rotation of both quaternions is the same.">
 <polygon fill="white" stroke="black" points="136,-176.5 136,-206.5 261,-206.5 261,-176.5 136,-176.5"/>
 <text text-anchor="start" x="144" y="-194.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="198.5" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00">::equals</text>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node31 -->
 <g id="node4" class="node"><title>Node31</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" target="_top" xlink:title="Test rotation equality with another quaternion with given precision in radians.">
 <polygon fill="white" stroke="black" points="297,-98.5 297,-128.5 422,-128.5 422,-98.5 297,-98.5"/>
 <text text-anchor="start" x="305" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="359.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::equals_rad</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node33 -->
 <g id="node6" class="node"><title>Node33</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a61731d4de80ddb267346159ea173511b" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a61731d4de80ddb267346159ea173511b" target="_top" xlink:title="Inverted the quaternion: Flip the rotation axes and scale by inverse sum of all components squared.">
 <polygon fill="white" stroke="black" points="458,-51.5 458,-81.5 583,-81.5 583,-51.5 458,-51.5"/>
 <text text-anchor="start" x="466" y="-69.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="520.5" y="-58.5" font-family="Helvetica,sans-Serif" font-size="10.00">::inverse</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node35 -->
 <g id="node8" class="node"><title>Node35</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" target="_top" xlink:title="Calculate the length of the quaternion.">
 <polygon fill="white" stroke="black" points="458,-1.5 458,-31.5 583,-31.5 583,-1.5 458,-1.5"/>
 <text text-anchor="start" x="466" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="520.5" y="-8.5" font-family="Helvetica,sans-Serif" font-size="10.00">::norm</text>
@@ -140,7 +140,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node32 -->
 <g id="node5" class="node"><title>Node32</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a2e1d1f1785181562048952f28858bea9" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a2e1d1f1785181562048952f28858bea9" target="_top" xlink:title="Test rotation equality with another quaternion with given precision in degree.">
 <polygon fill="white" stroke="black" points="136,-88.5 136,-118.5 261,-118.5 261,-88.5 136,-88.5"/>
 <text text-anchor="start" x="144" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="198.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">::equals_deg</text>
@@ -159,7 +159,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node34 -->
 <g id="node7" class="node"><title>Node34</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#ab7cebbaf133b69d0122980f73416ddf6" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#ab7cebbaf133b69d0122980f73416ddf6" target="_top" xlink:title="Return the inverted quaternion.">
 <polygon fill="white" stroke="black" points="297,-49.5 297,-79.5 422,-79.5 422,-49.5 297,-49.5"/>
 <text text-anchor="start" x="305" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="359.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::inversed</text>
@@ -178,7 +178,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node36 -->
 <g id="node9" class="node"><title>Node36</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a1ea971d2f39920e062b0b91971296b65" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a1ea971d2f39920e062b0b91971296b65" target="_top" xlink:title="Ensure that the quaternion&#39;s length equals 1.">
 <polygon fill="white" stroke="black" points="297,-0.5 297,-30.5 422,-30.5 422,-0.5 297,-0.5"/>
 <text text-anchor="start" x="305" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="359.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalize</text>
@@ -192,7 +192,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node37 -->
 <g id="node10" class="node"><title>Node37</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#adaf56c826ceec78d0f4980148ce498fa" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#adaf56c826ceec78d0f4980148ce498fa" target="_top" xlink:title="Return the normalized version of this quaternion.">
 <polygon fill="white" stroke="black" points="136,-0.5 136,-30.5 261,-30.5 261,-0.5 136,-0.5"/>
 <text text-anchor="start" x="144" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="198.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalized</text>

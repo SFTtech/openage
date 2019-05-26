@@ -19,7 +19,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" target="_top" xlink:title="Tests the distribution of the boolean generation.">
 <polygon fill="white" stroke="black" points="323.5,-127 323.5,-157 424.5,-157 424.5,-127 323.5,-127"/>
 <text text-anchor="start" x="331.5" y="-145" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="374" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00">::bool_dist</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" target="_top" xlink:title="Chebyshev distance cost estimation.">
 <polygon fill="white" stroke="black" points="297,-410.5 297,-429.5 451,-429.5 451,-410.5 297,-410.5"/>
 <text text-anchor="middle" x="374" y="-417.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::chebyshev_cost</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node7 -->
 <g id="node5" class="node"><title>Node7</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" target="_top" xlink:title="create the drawing instruction data.">
 <polygon fill="white" stroke="black" points="313,-450 313,-480 435,-480 435,-450 313,-450"/>
 <text text-anchor="start" x="321" y="-468" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::create</text>
 <text text-anchor="middle" x="374" y="-457" font-family="Helvetica,sans-Serif" font-size="10.00">_draw_advice</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node9 -->
 <g id="node7" class="node"><title>Node9</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#adb9d43a588f0d7044f201a2dff2db844" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#adb9d43a588f0d7044f201a2dff2db844" target="_top" xlink:title="Equality test with given precision.">
 <polygon fill="white" stroke="black" points="320.5,-323 320.5,-353 427.5,-353 427.5,-323 320.5,-323"/>
 <text text-anchor="start" x="328.5" y="-341" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="374" y="-330" font-family="Helvetica,sans-Serif" font-size="10.00">::equals</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node12 -->
 <g id="node10" class="node"><title>Node12</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_matrix.xhtml#ac1bc212dbfd151ce922ba27cad25a074" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_matrix.xhtml#ac1bc212dbfd151ce922ba27cad25a074" target="_top" xlink:title="Test if both matrices contain the same values within epsilon.">
 <polygon fill="white" stroke="black" points="146,-409 146,-439 251,-439 251,-409 146,-409"/>
 <text text-anchor="start" x="154" y="-427" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Matrix</text>
 <text text-anchor="middle" x="198.5" y="-416" font-family="Helvetica,sans-Serif" font-size="10.00">::equals</text>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node13 -->
 <g id="node11" class="node"><title>Node13</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" target="_top" xlink:title="Test rotation equality with another quaternion with given precision in radians.">
 <polygon fill="white" stroke="black" points="311.5,-274 311.5,-304 436.5,-304 436.5,-274 311.5,-274"/>
 <text text-anchor="start" x="319.5" y="-292" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="374" y="-281" font-family="Helvetica,sans-Serif" font-size="10.00">::equals_rad</text>
@@ -116,7 +116,7 @@
 </g>
 <!-- Node16 -->
 <g id="node14" class="node"><title>Node16</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#acad40865d58b96a35f6f453e04642f00" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#acad40865d58b96a35f6f453e04642f00" target="_top" xlink:title="Tests the distribution of the bit generator.">
 <polygon fill="white" stroke="black" points="323.5,-39 323.5,-69 424.5,-69 424.5,-39 323.5,-39"/>
 <text text-anchor="start" x="331.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="374" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::freq_dist</text>
@@ -130,7 +130,7 @@
 </g>
 <!-- Node17 -->
 <g id="node15" class="node"><title>Node17</title>
-<g id="a_node15"><a xlink:href="namespaceopenage_1_1path.xhtml#a825dde52e9d0fd7fe6fa6970a1ec58e0" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="namespaceopenage_1_1path.xhtml#a825dde52e9d0fd7fe6fa6970a1ec58e0" target="_top" xlink:title="Manhattan distance cost estimation.">
 <polygon fill="white" stroke="black" points="297,-88.5 297,-107.5 451,-107.5 451,-88.5 297,-88.5"/>
 <text text-anchor="middle" x="374" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::manhattan_cost</text>
 </a>
@@ -143,7 +143,7 @@
 </g>
 <!-- Node18 -->
 <g id="node16" class="node"><title>Node18</title>
-<g id="a_node16"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a1270464ae98991431da5e3fa6ee60ab5" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a1270464ae98991431da5e3fa6ee60ab5" target="_top" xlink:title="Tests the distribution of the floating point numbers.">
 <polygon fill="white" stroke="black" points="323.5,-225 323.5,-255 424.5,-255 424.5,-225 323.5,-225"/>
 <text text-anchor="start" x="331.5" y="-243" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="374" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00">::real_dist</text>
@@ -157,7 +157,7 @@
 </g>
 <!-- Node19 -->
 <g id="node17" class="node"><title>Node19</title>
-<g id="a_node17"><a xlink:href="namespaceopenage.xhtml#a8f7c4c46ae7b03cd0cc8ceae47ae7139" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="namespaceopenage.xhtml#a8f7c4c46ae7b03cd0cc8ceae47ae7139" target="_top" xlink:title="Generate a isometric square outline texture.">
 <polygon fill="white" stroke="black" points="313,-0.5 313,-19.5 435,-19.5 435,-0.5 313,-0.5"/>
 <text text-anchor="middle" x="374" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::square_outline</text>
 </a>
@@ -183,7 +183,7 @@
 </g>
 <!-- Node8 -->
 <g id="node6" class="node"><title>Node8</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" target="_top" xlink:title="draw the currently visible terrain area on screen.">
 <polygon fill="white" stroke="black" points="141,-458.5 141,-477.5 256,-477.5 256,-458.5 141,-458.5"/>
 <text text-anchor="middle" x="198.5" y="-465.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::draw</text>
 </a>
@@ -234,7 +234,7 @@
 </g>
 <!-- Node14 -->
 <g id="node12" class="node"><title>Node14</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a2e1d1f1785181562048952f28858bea9" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a2e1d1f1785181562048952f28858bea9" target="_top" xlink:title="Test rotation equality with another quaternion with given precision in degree.">
 <polygon fill="white" stroke="black" points="136,-272 136,-302 261,-302 261,-272 136,-272"/>
 <text text-anchor="start" x="144" y="-290" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="198.5" y="-279" font-family="Helvetica,sans-Serif" font-size="10.00">::equals_deg</text>

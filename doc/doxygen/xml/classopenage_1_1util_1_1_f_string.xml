@@ -177,9 +177,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A self-formatting string! Get yours today! </para>
     </briefdescription>
     <detaileddescription>
-<para>A self-formatting string! Get yours today!</para>
 <para>Use like this:</para>
 <para>std::string stuff() { <ref refid="classopenage_1_1util_1_1_f_string" kindref="compound">FString</ref> s; s &lt;&lt; &quot;test: &quot; &lt;&lt; 5 &lt;&lt; std::cout; return s; }</para>
 <para>Use as a faster, care-free replacement for stringstream:</para>

@@ -11,6 +11,6 @@ var terrain__object_8h =
       [ "placed_no_collision", "terrain__object_8h.xhtml#a1df3032ec46d1407f95723ad6fc5465eac693ee9f8e776555e9625dd624ad5fa3", null ]
     ] ],
     [ "building_center", "terrain__object_8h.xhtml#a231617a72c3e699877ee6eacb76850de", null ],
-    [ "complete_building", "terrain__object_8h.xhtml#a23f086d83373aef776a1031dbbcbe975", null ],
+    [ "complete_building", "terrain__object_8h.xhtml#a8c248986ac22a8251e1f27a6cef087eb", null ],
     [ "tile_list", "terrain__object_8h.xhtml#a3a0d4d7c2bc234c442c13758d306f60c", null ]
 ];

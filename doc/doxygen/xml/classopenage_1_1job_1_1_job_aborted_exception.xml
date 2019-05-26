@@ -20,9 +20,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>An exception that is thrown when a job wants to abort itself. </para>
     </briefdescription>
     <detaileddescription>
-<para>An exception that is thrown when a job wants to abort itself. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3881">

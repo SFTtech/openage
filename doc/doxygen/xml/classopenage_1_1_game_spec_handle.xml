@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>spec</name>
         <briefdescription>
+<para>The real game specification. </para>
         </briefdescription>
         <detaileddescription>
-<para>The real game specification. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -30,9 +30,9 @@
         <argsstring></argsstring>
         <name>active</name>
         <briefdescription>
+<para>enables the loading of the game specification. </para>
         </briefdescription>
         <detaileddescription>
-<para>enables the loading of the game specification. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -116,9 +116,9 @@
           <declname>active</declname>
         </param>
         <briefdescription>
+<para>Control whether this specification can be loaded (=true) or will not be loaded (=false). </para>
         </briefdescription>
         <detaileddescription>
-<para>Control whether this specification can be loaded (=true) or will not be loaded (=false). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -137,9 +137,9 @@
           <declname>asset_manager</declname>
         </param>
         <briefdescription>
+<para>invoked from qml when the asset_manager member is set. </para>
         </briefdescription>
         <detaileddescription>
-<para>invoked from qml when the asset_manager member is set. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -154,9 +154,9 @@
         <argsstring>() const</argsstring>
         <name>is_ready</name>
         <briefdescription>
+<para>Return if the specification was fully loaded. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return if the specification was fully loaded. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -169,9 +169,9 @@
         <argsstring>()</argsstring>
         <name>invalidate</name>
         <briefdescription>
+<para>forget everything about the specification and reload it with <computeroutput>start_loading_if_needed</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
-<para>forget everything about the specification and reload it with <computeroutput>start_loading_if_needed</computeroutput>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -187,9 +187,9 @@
         <argsstring>()</argsstring>
         <name>announce_spec</name>
         <briefdescription>
+<para>signal about a loaded spec if any </para>
         </briefdescription>
         <detaileddescription>
-<para>signal about a loaded spec if any </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -203,9 +203,9 @@
         <argsstring>()</argsstring>
         <name>get_spec</name>
         <briefdescription>
+<para>Return the contained game specification. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the contained game specification. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -220,9 +220,9 @@
         <argsstring>()</argsstring>
         <name>start_loading_if_needed</name>
         <briefdescription>
+<para>load the game specification if not already present. </para>
         </briefdescription>
         <detaileddescription>
-<para>load the game specification if not already present. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -241,9 +241,9 @@
         <argsstring>()</argsstring>
         <name>start_load_job</name>
         <briefdescription>
+<para>Actually dispatch the loading job to the job manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>Actually dispatch the loading job to the job manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -268,9 +268,9 @@
           <declname>result</declname>
         </param>
         <briefdescription>
+<para>called from the job manager when the loading job finished. </para>
         </briefdescription>
         <detaileddescription>
-<para>called from the job manager when the loading job finished. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -278,9 +278,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Game specification instanciated in QML. </para>
     </briefdescription>
     <detaileddescription>
-<para>Game specification instanciated in QML. Linked to the &quot;GameSpec&quot; QML type.</para>
+<para>Linked to the &quot;GameSpec&quot; QML type.</para>
 <para>Wraps the &quot;GameSpec&quot; C++ class from above. </para>
     </detaileddescription>
     <collaborationgraph>

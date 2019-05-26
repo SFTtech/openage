@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-415 1519.5,-415 1519.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Wraps a templated shared attribute.">
 <polygon fill="#bfbfbf" stroke="black" points="685,-193.5 685,-272.5 825,-272.5 825,-193.5 685,-193.5"/>
 <text text-anchor="start" x="693" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SharedAttribute</text>
 <text text-anchor="middle" x="755" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container</text>
@@ -116,7 +116,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4.xhtml" target="_top" xlink:title="The resources that are accepted to be dropped.">
 <polygon fill="white" stroke="black" points="246,-33.5 246,-123.5 362,-123.5 362,-33.5 246,-33.5"/>
 <text text-anchor="start" x="254" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="304" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::dropsite &gt;</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4.xhtml" target="_top" xlink:title="Healing capabilities.">
 <polygon fill="white" stroke="black" points="380.5,-28 380.5,-129 477.5,-129 477.5,-28 380.5,-28"/>
 <text text-anchor="start" x="388.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="429" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::heal &gt;</text>
@@ -157,7 +157,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1hitpoints_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1hitpoints_01_4.xhtml" target="_top" xlink:title="The max hitpoints and health bar information.">
 <polygon fill="white" stroke="black" points="496,-33.5 496,-123.5 612,-123.5 612,-33.5 496,-33.5"/>
 <text text-anchor="start" x="504" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="554" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::hitpoints &gt;</text>
@@ -177,7 +177,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1multitype_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1multitype_01_4.xhtml" target="_top" xlink:title="Stores the collection of unit types based on a unit class.">
 <polygon fill="white" stroke="black" points="630.5,-33.5 630.5,-123.5 749.5,-123.5 749.5,-33.5 630.5,-33.5"/>
 <text text-anchor="start" x="638.5" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="690" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::multitype &gt;</text>
@@ -216,7 +216,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node9 -->
 <g id="node10" class="node"><title>Node9</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4.xhtml" target="_top" xlink:title="The population capacity and the population demand.">
 <polygon fill="white" stroke="black" points="890.5,-33.5 890.5,-123.5 1013.5,-123.5 1013.5,-33.5 890.5,-33.5"/>
 <text text-anchor="start" x="898.5" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="952" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::population &gt;</text>
@@ -236,7 +236,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node10 -->
 <g id="node11" class="node"><title>Node10</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1resource__generator_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1resource__generator_01_4.xhtml" target="_top" xlink:title="Resource generator eg.">
 <polygon fill="white" stroke="black" points="1031.5,-28 1031.5,-129 1138.5,-129 1138.5,-28 1031.5,-28"/>
 <text text-anchor="start" x="1039.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="start" x="1039.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::resource</text>
@@ -276,7 +276,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node12 -->
 <g id="node13" class="node"><title>Node12</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1storage_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1storage_01_4.xhtml" target="_top" xlink:title="The worker&#39;s capacity and gather rates.">
 <polygon fill="white" stroke="black" points="1279.5,-39 1279.5,-118 1390.5,-118 1390.5,-39 1279.5,-39"/>
 <text text-anchor="start" x="1287.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="1335" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::storage &gt;</text>
@@ -295,7 +295,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node13 -->
 <g id="node14" class="node"><title>Node13</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4.xhtml" target="_top" xlink:title="The worker&#39;s capacity and gather rates.">
 <polygon fill="white" stroke="black" points="1408.5,-33.5 1408.5,-123.5 1515.5,-123.5 1515.5,-33.5 1408.5,-33.5"/>
 <text text-anchor="start" x="1416.5" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="1462" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::worker &gt;</text>
@@ -315,7 +315,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated attribute.">
 <polygon fill="white" stroke="black" points="686.5,-309.5 686.5,-410.5 823.5,-410.5 823.5,-309.5 686.5,-309.5"/>
 <text text-anchor="middle" x="755" y="-398.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttributeContainer</text>
 <polyline fill="none" stroke="black" points="686.5,-391.5 823.5,-391.5 "/>

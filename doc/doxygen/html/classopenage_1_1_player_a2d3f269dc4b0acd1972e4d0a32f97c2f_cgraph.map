@@ -1,10 +1,10 @@
 <map id="openage::Player::killed_unit" name="openage::Player::killed_unit">
-<area shape="rect" id="node1" title=" " alt="" coords="5,78,188,105"/>
+<area shape="rect" id="node1" title="Called when a unit is killed by this player." alt="" coords="5,78,188,105"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_score.xhtml#ab03c4138b0129edb062c498f4393b8ba" title=" " alt="" coords="268,12,411,53"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" title=" " alt="" coords="246,78,433,105"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" title=" " alt="" coords="236,133,443,159"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" title="Returns the cost." alt="" coords="246,78,433,105"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" title="Returns the sum of all the resources." alt="" coords="236,133,443,159"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_resource_bundle.xhtml#aec4c3c3cae1b78ff42a0bc533929e51c" title=" " alt="" coords="503,5,678,47"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" title=" " alt="" coords="519,71,662,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" title="odo remove, here for backwards compatibility" alt="" coords="739,5,913,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" title="The number of units considered part of the workforce." alt="" coords="519,71,662,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" title=" " alt="" coords="739,5,913,47"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_resource_bundle.xhtml#a85c59861409e505a3c5fb020a73ef1c2" title=" " alt="" coords="491,137,691,163"/>
 </map>

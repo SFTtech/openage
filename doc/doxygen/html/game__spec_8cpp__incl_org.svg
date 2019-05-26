@@ -192,7 +192,7 @@
 </g>
 <!-- Node135 -->
 <g id="node48" class="node"><title>Node135</title>
-<g id="a_node48"><a xlink:href="global__rng_8h.xhtml" target="_top" xlink:title=" ">
+<g id="a_node48"><a xlink:href="global__rng_8h.xhtml" target="_top" xlink:title="This file contains functions for the global random number generator.">
 <polygon fill="white" stroke="black" points="2016.52,-286 2016.52,-305 2111.52,-305 2111.52,-286 2016.52,-286"/>
 <text text-anchor="middle" x="2064.02" y="-293" font-family="Helvetica,sans-Serif" font-size="10.00">../rng/global_rng.h</text>
 </a>

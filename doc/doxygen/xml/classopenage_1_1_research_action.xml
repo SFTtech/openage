@@ -99,9 +99,9 @@
           <declname>time</declname>
         </param>
         <briefdescription>
+<para>each action has its own update functionality which gets called when this is the active action </para>
         </briefdescription>
         <detaileddescription>
-<para>each action has its own update functionality which gets called when this is the active action </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -120,9 +120,9 @@
         <name>on_completion</name>
         <reimplements refid="classopenage_1_1_unit_action_1ac84d3cbfa3c489b3975952af157929cb">on_completion</reimplements>
         <briefdescription>
+<para>action to perform when popped from a units action stack </para>
         </briefdescription>
         <detaileddescription>
-<para>action to perform when popped from a units action stack </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -138,9 +138,10 @@
         <name>completed</name>
         <reimplements refid="classopenage_1_1_unit_action_1a7814554a94e930595ed5dad9b0f03255">completed</reimplements>
         <briefdescription>
+<para>gets called for all actions on stack each update cycle </para>
         </briefdescription>
         <detaileddescription>
-<para>gets called for all actions on stack each update cycle <simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
+<para><simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -156,9 +157,9 @@
         <name>allow_interupt</name>
         <reimplements refid="classopenage_1_1_unit_action_1a622cf307ee5d3f8f4581d9a7ec7ecfbf">allow_interupt</reimplements>
         <briefdescription>
+<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
         </briefdescription>
         <detaileddescription>
-<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -171,9 +172,9 @@
         <name>allow_control</name>
         <reimplements refid="classopenage_1_1_unit_action_1a3e222303072f926fa7c925163b8ac10c">allow_control</reimplements>
         <briefdescription>
+<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top </para>
         </briefdescription>
         <detaileddescription>
-<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top</para>
 <para>if true this action must complete and will not allow new actions to be pushed while it is active and also does not update the secondary actions </para>
         </detaileddescription>
         <inbodydescription>
@@ -187,9 +188,9 @@
         <name>name</name>
         <reimplements refid="classopenage_1_1_unit_action_1a67647c63a20cec9714a6463b1c823a70">name</reimplements>
         <briefdescription>
+<para>debug string to identify action types </para>
         </briefdescription>
         <detaileddescription>
-<para>debug string to identify action types </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -229,9 +230,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>trains a new unit </para>
     </briefdescription>
     <detaileddescription>
-<para>trains a new unit </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4977">

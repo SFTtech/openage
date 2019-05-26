@@ -135,9 +135,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Available logging levels. </para>
     </briefdescription>
     <detaileddescription>
-<para>Available logging levels.</para>
 <para>pxd:</para>
 <para>cppclass level(Enum[level_value]): pass</para>
 <para>level MIN &quot;::openage::log::level::MIN&quot; level spam &quot;::openage::log::level::spam&quot; level dbg &quot;::openage::log::level::dbg&quot; level info &quot;::openage::log::level::info&quot; level warn &quot;::openage::log::level::warn&quot; level err &quot;::openage::log::level::err&quot; level crit &quot;::openage::log::level::crit&quot; level MAX &quot;::openage::log::level::MAX&quot; </para>

@@ -5,9 +5,9 @@
     <basecompoundref refid="classopenage_1_1util_1_1_string_formatter" prot="public" virt="non-virtual">openage::util::StringFormatter&lt; Formatter &gt;</basecompoundref>
     <includes refid="stringformatter_8h" local="no">stringformatter.h</includes>
     <briefdescription>
+<para>Allows simple direct usage of <ref refid="classopenage_1_1util_1_1_string_formatter" kindref="compound">StringFormatter</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>Allows simple direct usage of <ref refid="classopenage_1_1util_1_1_string_formatter" kindref="compound">StringFormatter</ref>. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="5804">

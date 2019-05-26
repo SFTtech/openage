@@ -32,9 +32,9 @@
           <declname>ref</declname>
         </param>
         <briefdescription>
+<para>ref is a raw reference to the associated PyObject. </para>
         </briefdescription>
         <detaileddescription>
-<para>ref is a raw reference to the associated PyObject. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -55,9 +55,9 @@
           <declname>reversed</declname>
         </param>
         <briefdescription>
+<para>Accesses the associated Python exception object to translate the traceback as needed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Accesses the associated Python exception object to translate the traceback as needed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -67,9 +67,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>An implementation of the abstract Backtrace class that does not collect Backtrace information itself, but instead determines the data on the fly from a Python Exception object. </para>
     </briefdescription>
     <detaileddescription>
-<para>An implementation of the abstract Backtrace class that does not collect Backtrace information itself, but instead determines the data on the fly from a Python Exception object. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4557">

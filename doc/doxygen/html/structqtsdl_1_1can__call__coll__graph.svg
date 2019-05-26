@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-178 115,-178 115,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Evaluates to true if callable can be called with given argument types.">
 <polygon fill="#bfbfbf" stroke="black" points="6.5,-0.5 6.5,-68.5 104.5,-68.5 104.5,-0.5 6.5,-0.5"/>
 <text text-anchor="start" x="14.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::can_call&lt; F,</text>
 <text text-anchor="middle" x="55.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00"> Args &gt;</text>

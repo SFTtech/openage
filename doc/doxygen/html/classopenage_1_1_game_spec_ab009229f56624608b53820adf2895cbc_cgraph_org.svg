@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-231 730,-231 730,4 -4,4"/>
 <!-- Node11 -->
 <g id="node1" class="node"><title>Node11</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="makes initial unit types for a particular civ id">
 <polygon fill="#bfbfbf" stroke="black" points="0,-98.5 0,-128.5 114,-128.5 114,-98.5 0,-98.5"/>
 <text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="57" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">create_unit_types</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node12 -->
 <g id="node2" class="node"><title>Node12</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#acbe30bd72e3a9ef46c461e497d726711" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#acbe30bd72e3a9ef46c461e497d726711" target="_top" xlink:title="loads required assets to construct a buildings.">
 <polygon fill="white" stroke="black" points="150,-147.5 150,-177.5 264,-177.5 264,-147.5 150,-147.5"/>
 <text text-anchor="start" x="158" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_building</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node17 -->
 <g id="node7" class="node"><title>Node17</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_game_spec.xhtml#a19adf3ebe5c03a18675ef8dcd0a3c0d5" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_game_spec.xhtml#a19adf3ebe5c03a18675ef8dcd0a3c0d5" target="_top" xlink:title="Check if loading has been completed, a load percent would be nice.">
 <polygon fill="white" stroke="black" points="150,-0.5 150,-30.5 264,-30.5 264,-0.5 150,-0.5"/>
 <text text-anchor="start" x="158" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_complete</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node18 -->
 <g id="node8" class="node"><title>Node18</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_game_spec.xhtml#a51a1664688173a588e6ead16703f8e82" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_game_spec.xhtml#a51a1664688173a588e6ead16703f8e82" target="_top" xlink:title="loads assets for living things.">
 <polygon fill="white" stroke="black" points="150,-98.5 150,-128.5 264,-128.5 264,-98.5 150,-98.5"/>
 <text text-anchor="start" x="158" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_living</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node19 -->
 <g id="node9" class="node"><title>Node19</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_game_spec.xhtml#a67579e89ee667f00dc301433a23458af" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_game_spec.xhtml#a67579e89ee667f00dc301433a23458af" target="_top" xlink:title="load missile assets.">
 <polygon fill="white" stroke="black" points="150,-49.5 150,-79.5 264,-79.5 264,-49.5 150,-49.5"/>
 <text text-anchor="start" x="158" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_missile</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node20 -->
 <g id="node10" class="node"><title>Node20</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_game_spec.xhtml#af210d4508dea9f8f87aa98c3fc0e3359" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_game_spec.xhtml#af210d4508dea9f8f87aa98c3fc0e3359" target="_top" xlink:title="load assets for other game objects (not building and living).">
 <polygon fill="white" stroke="black" points="150,-196.5 150,-226.5 264,-226.5 264,-196.5 150,-196.5"/>
 <text text-anchor="start" x="158" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_object</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node13 -->
 <g id="node3" class="node"><title>Node13</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4183e5b82dd51fd66629d287026b5daa" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4183e5b82dd51fd66629d287026b5daa" target="_top" xlink:title="check graphic id is valid">
 <polygon fill="white" stroke="black" points="300,-145.5 300,-175.5 414,-175.5 414,-145.5 300,-145.5"/>
 <text text-anchor="start" x="308" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="357" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00">valid_graphic_id</text>
@@ -104,7 +104,7 @@
 </g>
 <!-- Node14 -->
 <g id="node4" class="node"><title>Node14</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title="list()">
 <polygon fill="white" stroke="black" points="312.5,-105 312.5,-124 401.5,-124 401.5,-105 312.5,-105"/>
 <text text-anchor="middle" x="357" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::list</text>
 </a>
@@ -130,7 +130,7 @@
 </g>
 <!-- Node16 -->
 <g id="node6" class="node"><title>Node16</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="631,-105 631,-124 726,-124 726,-105 631,-105"/>
 <text text-anchor="middle" x="678.5" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

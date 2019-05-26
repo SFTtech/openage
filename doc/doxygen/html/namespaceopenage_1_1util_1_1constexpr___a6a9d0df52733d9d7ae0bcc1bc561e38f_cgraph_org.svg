@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-182.358 883,-182.358 883,4 -4,4"/>
 <!-- Node31 -->
 <g id="node1" class="node"><title>Node31</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Strips a prefix, given as const char *, from a given string literal.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-82.5 0,-112.5 121,-112.5 121,-82.5 0,-82.5"/>
 <text text-anchor="start" x="8" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="60.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strip_prefix</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node32 -->
 <g id="node2" class="node"><title>Node32</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a671299bb61bb30cecb3fa42de25333b0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a671299bb61bb30cecb3fa42de25333b0" target="_top" xlink:title="Creates a truncated_string_literal from a regular string literal.">
 <polygon fill="white" stroke="black" points="157,-126 157,-167 287,-167 287,-126 157,-126"/>
 <text text-anchor="start" x="165" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="start" x="165" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">_::create_truncated_string</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node33 -->
 <g id="node3" class="node"><title>Node33</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="480,-88 480,-107 567,-107 567,-88 480,-88"/>
 <text text-anchor="middle" x="523.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node37 -->
 <g id="node7" class="node"><title>Node37</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#ae2139acfbb2a838e378d0652e23943b8" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#ae2139acfbb2a838e378d0652e23943b8" target="_top" xlink:title="Strips a prefix from a given string literal.">
 <polygon fill="white" stroke="black" points="161.5,-38.5 161.5,-68.5 282.5,-68.5 282.5,-38.5 161.5,-38.5"/>
 <text text-anchor="start" x="169.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="222" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strip_prefix</text>
@@ -67,7 +67,7 @@
 </g>
 <!-- Node36 -->
 <g id="node6" class="node"><title>Node36</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title="Returns the length of the string literal, excluding the terminating NULL byte.">
 <polygon fill="white" stroke="black" points="323,-126.5 323,-156.5 444,-156.5 444,-126.5 323,-126.5"/>
 <text text-anchor="start" x="331" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="383.5" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strlen</text>
@@ -94,7 +94,7 @@
 </g>
 <!-- Node35 -->
 <g id="node5" class="node"><title>Node35</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="784,-88 784,-107 879,-107 879,-88 784,-88"/>
 <text text-anchor="middle" x="831.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -122,7 +122,7 @@
 </g>
 <!-- Node38 -->
 <g id="node8" class="node"><title>Node38</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#aa4f041b85b8ae3df628165f73397d1fa" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#aa4f041b85b8ae3df628165f73397d1fa" target="_top" xlink:title="Tests whether a string literal starts with the given prefix.">
 <polygon fill="white" stroke="black" points="323,-0.5 323,-30.5 444,-30.5 444,-0.5 323,-0.5"/>
 <text text-anchor="start" x="331" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="383.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::has_prefix</text>

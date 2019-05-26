@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 252,-35 252,4 -4,4"/>
 <!-- Node11 -->
 <g id="node1" class="node"><title>Node11</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="This function tests Node&#45;&gt;cost_to.">
 <polygon fill="#bfbfbf" stroke="black" points="142,-0.5 142,-30.5 248,-30.5 248,-0.5 142,-0.5"/>
 <text text-anchor="start" x="150" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="195" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::node_cost_to_1</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node12 -->
 <g id="node2" class="node"><title>Node12</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a5d1515cb353ed8a23c4d644dc3642e73" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a5d1515cb353ed8a23c4d644dc3642e73" target="_top" xlink:title="Top level node test.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 106,-30.5 106,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="53" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::path_node</text>

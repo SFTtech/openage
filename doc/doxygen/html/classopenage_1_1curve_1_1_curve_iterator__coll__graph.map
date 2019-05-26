@@ -1,7 +1,7 @@
 <map id="openage::curve::CurveIterator&lt; val_t, container_t, iterator_t &gt;" name="openage::curve::CurveIterator&lt; val_t, container_t, iterator_t &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="147,1217,350,1515"/>
+<area shape="rect" id="node1" title="Default interface for curve containers." alt="" coords="147,1217,350,1515"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1_fixed_point.xhtml" title=" " alt="" coords="9,667,181,1140"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml" title=" " alt="" coords="5,145,185,604"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml" title="Fixed&#45;point integer class;." alt="" coords="5,145,185,604"/>
 <area shape="rect" id="node4" title=" " alt="" coords="61,5,129,83"/>
 <area shape="rect" id="node5" title=" " alt="" coords="205,865,292,942"/>
 <area shape="rect" id="node6" title=" " alt="" coords="316,865,389,942"/>

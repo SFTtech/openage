@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-138 783,-138 783,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Adds a Python interface component.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-71 0,-101 117,-101 117,-71 0,-71"/>
 <text text-anchor="start" x="8" y="-89" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="58.5" y="-78" font-family="Helvetica,sans-Serif" font-size="10.00">::add_py_if_component</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#ae411a50a0e24d32ab564979b2df6ed24" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#ae411a50a0e24d32ab564979b2df6ed24" target="_top" xlink:title="Returns true if the address is the (exact) address of a symbol.">
 <polygon fill="white" stroke="black" points="161.5,-76.5 161.5,-95.5 283.5,-95.5 283.5,-76.5 161.5,-76.5"/>
 <text text-anchor="middle" x="222.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::is_symbol</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8" target="_top" xlink:title="Returns the (demangled) symbol name for a given address.">
 <polygon fill="white" stroke="black" points="153,-38.5 153,-57.5 292,-57.5 292,-38.5 153,-38.5"/>
 <text text-anchor="middle" x="222.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::symbol_name</text>
 </a>
@@ -73,7 +73,7 @@
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" target="_top" xlink:title="printf&#45;style to&#45;string formatting.">
 <polygon fill="white" stroke="black" points="501.5,-60.5 501.5,-79.5 611.5,-79.5 611.5,-60.5 501.5,-60.5"/>
 <text text-anchor="middle" x="556.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::sformat</text>
 </a>
@@ -86,7 +86,7 @@
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title="Demangles a symbol name.">
 <polygon fill="white" stroke="black" points="328,-0.5 328,-19.5 448,-19.5 448,-0.5 328,-0.5"/>
 <text text-anchor="middle" x="388" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::demangle</text>
 </a>
@@ -104,7 +104,7 @@
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="665,-60.5 665,-79.5 779,-79.5 779,-60.5 665,-60.5"/>
 <text text-anchor="middle" x="722" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>
@@ -130,7 +130,7 @@
 </g>
 <!-- Node9 -->
 <g id="node10" class="node"><title>Node9</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="674.5,-0.5 674.5,-19.5 769.5,-19.5 769.5,-0.5 674.5,-0.5"/>
 <text text-anchor="middle" x="722" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-37';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 561,-35 561,4 -4,4"/>
 <!-- Node395 -->
 <g id="node1" class="node"><title>Node395</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="removes all actions above and including the first interuptable action this will stop any of the units...">
 <polygon fill="#bfbfbf" stroke="black" points="456,-0.5 456,-30.5 557,-30.5 557,-0.5 456,-0.5"/>
 <text text-anchor="start" x="464" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::stop</text>
 <text text-anchor="middle" x="506.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_actions</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-37';
 </g>
 <!-- Node396 -->
 <g id="node2" class="node"><title>Node396</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#aef7363eab8f805124114c4967470379d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#aef7363eab8f805124114c4967470379d" target="_top" xlink:title="applies one command using a chosen ability locks the command queue mutex while operating">
 <polygon fill="white" stroke="black" points="290,-6 290,-25 420,-25 420,-6 290,-6"/>
 <text text-anchor="middle" x="355" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::apply_cmd</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-37';
 </g>
 <!-- Node397 -->
 <g id="node3" class="node"><title>Node397</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#a627bc25cc4e546ff34b06cfa809f8946" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#a627bc25cc4e546ff34b06cfa809f8946" target="_top" xlink:title="applies new commands as part of the units update process">
 <polygon fill="white" stroke="black" points="148,-0.5 148,-30.5 254,-30.5 254,-0.5 148,-0.5"/>
 <text text-anchor="start" x="156" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::apply</text>
 <text text-anchor="middle" x="201" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_all_cmds</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-37';
 </g>
 <!-- Node398 -->
 <g id="node4" class="node"><title>Node398</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" target="_top" xlink:title="update this object using the action currently on top of the stack">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 112,-25 112,-6 0,-6"/>
 <text text-anchor="middle" x="56" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::update</text>
 </a>

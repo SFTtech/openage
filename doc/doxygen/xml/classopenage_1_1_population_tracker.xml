@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>demand</name>
         <briefdescription>
+<para>The population demand. </para>
         </briefdescription>
         <detaileddescription>
-<para>The population demand </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -29,9 +29,9 @@
         <argsstring></argsstring>
         <name>capacity_static</name>
         <briefdescription>
+<para>The population capacity given by civ bonuses. </para>
         </briefdescription>
         <detaileddescription>
-<para>The population capacity given by civ bonuses </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -46,9 +46,9 @@
         <argsstring></argsstring>
         <name>capacity_real</name>
         <briefdescription>
+<para>The population capacity given by units. </para>
         </briefdescription>
         <detaileddescription>
-<para>The population capacity given by units </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -64,9 +64,9 @@
         <argsstring></argsstring>
         <name>capacity_max</name>
         <briefdescription>
+<para>The max population capacity. </para>
         </briefdescription>
         <detaileddescription>
-<para>The max population capacity </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -82,9 +82,9 @@
         <argsstring></argsstring>
         <name>capacity_total</name>
         <briefdescription>
+<para>All the population capacity without the limitation. </para>
         </briefdescription>
         <detaileddescription>
-<para>All the population capacity without the limitation </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -98,9 +98,9 @@
         <argsstring></argsstring>
         <name>capacity</name>
         <briefdescription>
+<para>All the population capacity with the limitation. </para>
         </briefdescription>
         <detaileddescription>
-<para>All the population capacity with the limitation </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -149,9 +149,9 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>Add to the population demand. </para>
         </briefdescription>
         <detaileddescription>
-<para>Add to the population demand </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -169,9 +169,9 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>Remove from the population demand. </para>
         </briefdescription>
         <detaileddescription>
-<para>Remove from the population demand </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -189,9 +189,9 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>Changes the capacity given by civ bonuses. </para>
         </briefdescription>
         <detaileddescription>
-<para>Changes the capacity given by civ bonuses </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -209,9 +209,9 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>Add to the capacity given by units. </para>
         </briefdescription>
         <detaileddescription>
-<para>Add to the capacity given by units </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -230,9 +230,9 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>Remove from the capacity given by units. </para>
         </briefdescription>
         <detaileddescription>
-<para>Remove from the capacity given by units </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -251,9 +251,9 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>Changes the max capacity given by civ bonuses. </para>
         </briefdescription>
         <detaileddescription>
-<para>Changes the max capacity given by civ bonuses </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -295,9 +295,9 @@
         <argsstring>() const</argsstring>
         <name>get_space</name>
         <briefdescription>
+<para>Returns the available population capacity for new units. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the available population capacity for new units. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -311,9 +311,9 @@
         <argsstring>() const</argsstring>
         <name>get_capacity_overflow</name>
         <briefdescription>
+<para>Returns the population capacity over the max limit. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the population capacity over the max limit. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -327,9 +327,9 @@
         <argsstring>() const</argsstring>
         <name>is_capacity_maxed</name>
         <briefdescription>
+<para>Check if the population capacity has reached the max limit. </para>
         </briefdescription>
         <detaileddescription>
-<para>Check if the population capacity has reached the max limit. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -345,9 +345,10 @@
         <argsstring>()</argsstring>
         <name>update_capacity</name>
         <briefdescription>
+<para>Calculates the capacity values based on the limits. </para>
         </briefdescription>
         <detaileddescription>
-<para>Calculates the capacity values based on the limits. Must be called when a capacity variable changes. </para>
+<para>Must be called when a capacity variable changes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -365,9 +366,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Keeps track of the population size and capacity. </para>
     </briefdescription>
     <detaileddescription>
-<para>Keeps track of the population size and capacity. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4500">

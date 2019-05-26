@@ -1,4 +1,4 @@
 <map id="openage::audio::AudioManager::remove_sound" name="openage::audio::AudioManager::remove_sound">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,207,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#acd8f5a72ed6227f640eda13229878c6f" title=" " alt="" coords="255,5,393,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#acd8f5a72ed6227f640eda13229878c6f" title="Remove the given element index in the vector." alt="" coords="255,5,393,47"/>
 </map>

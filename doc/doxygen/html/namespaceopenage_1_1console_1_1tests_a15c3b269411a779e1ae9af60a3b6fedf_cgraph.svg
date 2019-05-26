@@ -66,7 +66,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node102 -->
 <g id="node2" class="node"><title>Node102</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" target="_top" xlink:title="very early and inefficient printing of the console to a pty.">
 <polygon fill="white" stroke="black" points="157,-93.5 157,-123.5 276,-123.5 276,-93.5 157,-93.5"/>
 <text text-anchor="start" x="165" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="216.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_terminal</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node115 -->
 <g id="node15" class="node"><title>Node115</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a3db6d160e44c8db825a37c0cfbc143ea" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a3db6d160e44c8db825a37c0cfbc143ea" target="_top" xlink:title="write a byte string to the buffer">
 <polygon fill="white" stroke="black" points="160,-44.5 160,-74.5 273,-74.5 273,-44.5 160,-44.5"/>
 <text text-anchor="start" x="168" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="216.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::write</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node103 -->
 <g id="node3" class="node"><title>Node103</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title="returns a valid pointer to the character info for the character designated by pos">
 <polygon fill="white" stroke="black" points="446.5,-181.5 446.5,-211.5 559.5,-211.5 559.5,-181.5 446.5,-181.5"/>
 <text text-anchor="start" x="454.5" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="503" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">::chrdataptr</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node106 -->
 <g id="node6" class="node"><title>Node106</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" target="_top" xlink:title="guess what this does.">
 <polygon fill="white" stroke="black" points="312,-137.5 312,-167.5 409,-167.5 409,-137.5 312,-137.5"/>
 <text text-anchor="start" x="320" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="360.5" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">printf</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node107 -->
 <g id="node7" class="node"><title>Node107</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" target="_top" xlink:title="writes the string (excluding the null terminator)">
 <polygon fill="white" stroke="black" points="445,-99 445,-118 561,-118 561,-99 445,-99"/>
 <text text-anchor="middle" x="503" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::puts</text>
 </a>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node112 -->
 <g id="node12" class="node"><title>Node112</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#aa7042077eda5413ddddf0075a1a66761" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#aa7042077eda5413ddddf0075a1a66761" target="_top" xlink:title="writes the char">
 <polygon fill="white" stroke="black" points="312,-0.5 312,-30.5 409,-30.5 409,-0.5 312,-0.5"/>
 <text text-anchor="start" x="320" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="360.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">putbyte</text>
@@ -149,7 +149,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node113 -->
 <g id="node13" class="node"><title>Node113</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title="writes the unicode codepoint, as utf&#45;8">
 <polygon fill="white" stroke="black" points="312,-49.5 312,-79.5 409,-79.5 409,-49.5 312,-49.5"/>
 <text text-anchor="start" x="320" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="360.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">putcp</text>
@@ -176,7 +176,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node105 -->
 <g id="node5" class="node"><title>Node105</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1071,-121 1071,-140 1166,-140 1166,-121 1071,-121"/>
 <text text-anchor="middle" x="1118.5" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -204,7 +204,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node108 -->
 <g id="node8" class="node"><title>Node108</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15" target="_top" xlink:title="writes &#39;bytes&#39; bytes from buf">
 <polygon fill="white" stroke="black" points="609,-5.5 609,-35.5 706,-35.5 706,-5.5 609,-5.5"/>
 <text text-anchor="start" x="617" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="657.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">write</text>
@@ -218,7 +218,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node110 -->
 <g id="node10" class="node"><title>Node110</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title="Returns the length of the string literal, excluding the terminating NULL byte.">
 <polygon fill="white" stroke="black" points="597,-93.5 597,-123.5 718,-123.5 718,-93.5 597,-93.5"/>
 <text text-anchor="start" x="605" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="657.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strlen</text>
@@ -232,7 +232,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node111 -->
 <g id="node11" class="node"><title>Node111</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="760.5,-99 760.5,-118 847.5,-118 847.5,-99 760.5,-99"/>
 <text text-anchor="middle" x="804" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -245,7 +245,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node109 -->
 <g id="node9" class="node"><title>Node109</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" target="_top" xlink:title="bytes(value)">
 <polygon fill="white" stroke="black" points="754,-36 754,-55 854,-55 854,-36 754,-36"/>
 <text text-anchor="middle" x="804" y="-43" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::bytes</text>
 </a>
@@ -283,7 +283,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node114 -->
 <g id="node14" class="node"><title>Node114</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671" target="_top" xlink:title="encodes one Unicode codepoint to a null&#45;terminated UTF&#45;8 character string.">
 <polygon fill="white" stroke="black" points="456,-49.5 456,-79.5 550,-79.5 550,-49.5 456,-49.5"/>
 <text text-anchor="start" x="464" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::utf8</text>
 <text text-anchor="middle" x="503" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_encode</text>

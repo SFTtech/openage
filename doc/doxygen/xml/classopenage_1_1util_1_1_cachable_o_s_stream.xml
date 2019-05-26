@@ -31,9 +31,10 @@
         <name>flag</name>
         <initializer>= ATOMIC_FLAG_INIT</initializer>
         <briefdescription>
+<para>true if all of the following are true: </para>
         </briefdescription>
         <detaileddescription>
-<para>true if all of the following are true:<itemizedlist>
+<para><itemizedlist>
 <listitem><para>object is part of a larger cache</para>
 </listitem><listitem><para>object is currently in use (-&gt; unavailable) <ulink url="http://en.cppreference.com/w/cpp/atomic/ATOMIC_FLAG_INIT">http://en.cppreference.com/w/cpp/atomic/ATOMIC_FLAG_INIT</ulink> <ulink url="https://stackoverflow.com/questions/24437396/stdatomic-flag-as-member-variable">https://stackoverflow.com/questions/24437396/stdatomic-flag-as-member-variable</ulink> </para>
 </listitem></itemizedlist>
@@ -69,9 +70,9 @@
           <declname>output</declname>
         </param>
         <briefdescription>
+<para>Calls stream.use_with(output); for use by heap objects. </para>
         </briefdescription>
         <detaileddescription>
-<para>Calls stream.use_with(output); for use by heap objects. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -89,9 +90,10 @@
           <declname>output</declname>
         </param>
         <briefdescription>
+<para>Returns a brand-new(*) <ref refid="classopenage_1_1util_1_1_cachable_o_s_stream" kindref="compound">CachableOSStream</ref> object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a brand-new(*) <ref refid="classopenage_1_1util_1_1_cachable_o_s_stream" kindref="compound">CachableOSStream</ref> object. Origin may vary (static internal cache, heap allocation).</para>
+<para>Origin may vary (static internal cache, heap allocation).</para>
 <para>After you&apos;re done, pass the pointer to <ref refid="classopenage_1_1util_1_1_cachable_o_s_stream_1ad770ce91fe372bb8069e06ea06293f85" kindref="member">release()</ref>.</para>
 <para>(*) Disclaimer: Object might not actually be brand-new.</para>
 <para><parameterlist kind="param"><parameteritem>
@@ -122,9 +124,9 @@
           <declname>cs</declname>
         </param>
         <briefdescription>
+<para>Resets the stream to a brand-new state, and clears the flag. </para>
         </briefdescription>
         <detaileddescription>
-<para>Resets the stream to a brand-new state, and clears the flag.</para>
 <para>no-op if cs is nullptr. </para>
         </detaileddescription>
         <inbodydescription>
@@ -136,9 +138,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Designed for usage by <ref refid="classopenage_1_1util_1_1_string_formatter" kindref="compound">StringFormatter</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>Designed for usage by <ref refid="classopenage_1_1util_1_1_string_formatter" kindref="compound">StringFormatter</ref>.</para>
 <para>The problem with iostreams, including <ref refid="classopenage_1_1util_1_1_external_o_string_stream" kindref="compound">ExternalOStringStream</ref>, is that they use lots of memory, and are quite slow to construct, due to some pesky implementation details.</para>
 <para>This class fixes this by keeping a reservoir of such objects, and providing access to them via <ref refid="classopenage_1_1util_1_1_cachable_o_s_stream_1a9d7710f8703f4dbba1b65d8b02e84036" kindref="member">acquire()</ref>, in a thread-safe manner. If the cache is exhausted, new objects are constructed on the heap as needed.</para>
 <para><ref refid="classopenage_1_1util_1_1_cachable_o_s_stream_1ad770ce91fe372bb8069e06ea06293f85" kindref="member">release()</ref> makes a cached object available for acquiring again (cache) or destroys it (heap). </para>

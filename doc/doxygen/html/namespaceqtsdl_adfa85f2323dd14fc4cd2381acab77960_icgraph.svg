@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 305,-35 305,4 -4,4"/>
 <!-- Node25 -->
 <g id="node1" class="node"><title>Node25</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Cleans a text from unneeded content like &quot;qtsdl&quot;.">
 <polygon fill="#bfbfbf" stroke="black" points="207,-6 207,-25 301,-25 301,-6 207,-6"/>
 <text text-anchor="middle" x="254" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::name_tidier</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node26 -->
 <g id="node2" class="node"><title>Node26</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_core_instantiator.xhtml#a2069f6020034faeaae197821519fb732" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_core_instantiator.xhtml#a2069f6020034faeaae197821519fb732" target="_top" xlink:title="Attaches to a core object.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 171,-30.5 171,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemCoreInstantiator</text>
 <text text-anchor="middle" x="85.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; GameSpecLink &gt;::do_adopt_core</text>

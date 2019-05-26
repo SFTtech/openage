@@ -20,7 +20,7 @@
 </g>
 <!-- Node6 -->
 <g id="node2" class="node"><title>Node6</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title="point unit selection">
 <polygon fill="white" stroke="black" points="471.5,-179 471.5,-209 588.5,-209 588.5,-179 471.5,-179"/>
 <text text-anchor="start" x="479.5" y="-197" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="530" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00">::select_point</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node8 -->
 <g id="node4" class="node"><title>Node8</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="152,-159 152,-189 268,-189 268,-159 152,-159"/>
 <text text-anchor="start" x="160" y="-177" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="210" y="-166" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -118,7 +118,7 @@
 </g>
 <!-- Node11 -->
 <g id="node7" class="node"><title>Node11</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-63 0,-93 116,-93 116,-63 0,-63"/>
 <text text-anchor="start" x="8" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="58" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -165,7 +165,7 @@
 </g>
 <!-- Node16 -->
 <g id="node12" class="node"><title>Node16</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" target="_top" xlink:title="draw the currently visible terrain area on screen.">
 <polygon fill="white" stroke="black" points="152.5,-0.5 152.5,-19.5 267.5,-19.5 267.5,-0.5 152.5,-0.5"/>
 <text text-anchor="middle" x="210" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::draw</text>
 </a>

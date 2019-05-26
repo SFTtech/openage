@@ -95,9 +95,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Exposes game textures to the Qt by their file name. </para>
     </briefdescription>
     <detaileddescription>
-<para>Exposes game textures to the Qt by their file name.</para>
 <para>Id has a form of &lt;filename&gt;.&lt;subid&gt; where &lt;subid&gt; is an integer. </para>
     </detaileddescription>
     <inheritancegraph>

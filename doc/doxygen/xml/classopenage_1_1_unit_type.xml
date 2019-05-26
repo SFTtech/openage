@@ -42,9 +42,9 @@
         <argsstring></argsstring>
         <name>owner</name>
         <briefdescription>
+<para>the player who owns this unit type </para>
         </briefdescription>
         <detaileddescription>
-<para>the player who owns this unit type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -64,9 +64,9 @@
         <argsstring></argsstring>
         <name>instances</name>
         <briefdescription>
+<para>all instances of units made from this unit type this could allow all units of a type to be upgraded </para>
         </briefdescription>
         <detaileddescription>
-<para>all instances of units made from this unit type this could allow all units of a type to be upgraded </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -78,9 +78,9 @@
         <argsstring></argsstring>
         <name>type_abilities</name>
         <briefdescription>
+<para>abilities given to all instances </para>
         </briefdescription>
         <detaileddescription>
-<para>abilities given to all instances </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -96,9 +96,9 @@
         <argsstring></argsstring>
         <name>default_attributes</name>
         <briefdescription>
+<para>default attributes which get copied to new units </para>
         </briefdescription>
         <detaileddescription>
-<para>default attributes which get copied to new units </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -113,9 +113,9 @@
         <argsstring></argsstring>
         <name>cost</name>
         <briefdescription>
+<para>The cost of the unit. </para>
         </briefdescription>
         <detaileddescription>
-<para>The cost of the unit. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -132,9 +132,10 @@
         <argsstring></argsstring>
         <name>have_limit</name>
         <briefdescription>
+<para>The max number of units of this type that a player can have at an instance. </para>
         </briefdescription>
         <detaileddescription>
-<para>The max number of units of this type that a player can have at an instance. Use negative values for special cases. </para>
+<para>Use negative values for special cases. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -148,9 +149,10 @@
         <argsstring></argsstring>
         <name>had_limit</name>
         <briefdescription>
+<para>The max number of units of this type that a player can create. </para>
         </briefdescription>
         <detaileddescription>
-<para>The max number of units of this type that a player can create. Use negative values for special cases. </para>
+<para>Use negative values for special cases. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -163,9 +165,9 @@
         <argsstring></argsstring>
         <name>graphics</name>
         <briefdescription>
+<para>The set of graphics used for this type. </para>
         </briefdescription>
         <detaileddescription>
-<para>The set of graphics used for this type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -180,9 +182,9 @@
         <argsstring></argsstring>
         <name>foundation_size</name>
         <briefdescription>
+<para>the square dimensions of the placement </para>
         </briefdescription>
         <detaileddescription>
-<para>the square dimensions of the placement </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -197,9 +199,9 @@
         <argsstring></argsstring>
         <name>unit_class</name>
         <briefdescription>
+<para>raw game data class of this unit instance </para>
         </briefdescription>
         <detaileddescription>
-<para>raw game data class of this unit instance </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -229,9 +231,9 @@
           <type>class <ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
         </param>
         <briefdescription>
+<para>the unit must have either same class or id as this </para>
         </briefdescription>
         <detaileddescription>
-<para>the unit must have either same class or id as this </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -279,9 +281,9 @@
         <reimplementedby refid="classopenage_1_1_projectile_producer_1a680a3cc3e75719a92ca5e529f840cef5">id</reimplementedby>
         <reimplementedby refid="classopenage_1_1_nyan_type_1af95692295537f3525bf7343cb0887b44">id</reimplementedby>
         <briefdescription>
+<para>gets the unique id of this unit type </para>
         </briefdescription>
         <detaileddescription>
-<para>gets the unique id of this unit type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -302,9 +304,9 @@
         <reimplementedby refid="classopenage_1_1_projectile_producer_1ac8b3e0a4998857470cae7fb38c618bd0">parent_id</reimplementedby>
         <reimplementedby refid="classopenage_1_1_nyan_type_1a82c113bb1212048d1dee4b5aac83c8ec">parent_id</reimplementedby>
         <briefdescription>
+<para>gets the parent id of this unit type which is used for village base and gather types </para>
         </briefdescription>
         <detaileddescription>
-<para>gets the parent id of this unit type which is used for village base and gather types </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -321,9 +323,9 @@
         <reimplementedby refid="classopenage_1_1_projectile_producer_1afd4025733132150438a1c2e116e61427">name</reimplementedby>
         <reimplementedby refid="classopenage_1_1_nyan_type_1a305c61d06b1dcca1719a1802b78a6b5a">name</reimplementedby>
         <briefdescription>
+<para>gets the name of the unit type being produced </para>
         </briefdescription>
         <detaileddescription>
-<para>gets the name of the unit type being produced </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -351,9 +353,9 @@
           <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
         </param>
         <briefdescription>
+<para>Initialize units attributes to this type spec. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initialize units attributes to this type spec</para>
 <para>This can be called using existing units to modify type Ensure that the unit has been placed before seting the units type</para>
 <para><xrefsect id="todo_1_todo000045"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
 </xrefdescription></xrefsect></para>
@@ -379,9 +381,9 @@
           <defname>player</defname>
         </param>
         <briefdescription>
+<para>Initialize units shared attributes only to this type spec. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initialize units shared attributes only to this type spec</para>
 <para>This can be called using existing units to modify type if the type Ensure that the unit has been placed before seting the units type</para>
 <para><xrefsect id="todo_1_todo000046"><xreftitle>Todo</xreftitle><xrefdescription><para>define if pure vitrual or not / should be in nyan? </para>
 </xrefdescription></xrefsect></para>
@@ -414,9 +416,9 @@
           <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
         </param>
         <briefdescription>
+<para>set unit in place <ndash/> return if placement was successful </para>
         </briefdescription>
         <detaileddescription>
-<para>set unit in place <ndash/> return if placement was successful</para>
 <para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object <xrefsect id="todo_1_todo000047"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
@@ -436,9 +438,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>compare if two types are the same </para>
         </briefdescription>
         <detaileddescription>
-<para>compare if two types are the same </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -468,9 +470,9 @@
         <argsstring>()</argsstring>
         <name>default_texture</name>
         <briefdescription>
+<para>Get a default texture for HUD drawing. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get a default texture for HUD drawing </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -493,9 +495,9 @@
           <defname>other</defname>
         </param>
         <briefdescription>
+<para>similar to place but places adjacent to an existing object </para>
         </briefdescription>
         <detaileddescription>
-<para>similar to place but places adjacent to an existing object </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -520,9 +522,9 @@
           <declname>unit</declname>
         </param>
         <briefdescription>
+<para>copy attributes of this unit type to a new unit instance </para>
         </briefdescription>
         <detaileddescription>
-<para>copy attributes of this unit type to a new unit instance </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -541,9 +543,9 @@
           <declname>attr</declname>
         </param>
         <briefdescription>
+<para>upgrades one attribute of this unit type </para>
         </briefdescription>
         <detaileddescription>
-<para>upgrades one attribute of this unit type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -557,9 +559,9 @@
         <argsstring>() const</argsstring>
         <name>parent_type</name>
         <briefdescription>
+<para>returns type matching <ref refid="classopenage_1_1_unit_type_1a69f5e92f70063ab01c3096de2d98479f" kindref="member">parent_id()</ref> </para>
         </briefdescription>
         <detaileddescription>
-<para>returns type matching <ref refid="classopenage_1_1_unit_type_1a69f5e92f70063ab01c3096de2d98479f" kindref="member">parent_id()</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -571,9 +573,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>units in aoc have a class and a type </para>
     </briefdescription>
     <detaileddescription>
-<para>units in aoc have a class and a type</para>
 <para><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> has to main roles:</para>
 <para>initialise(unit, player) should be called on a unit to give it a type and the required attributes, abilities and initial actions of that type</para>
 <para>place(unit, terrain, initial position) is called to customise how the unit gets added to the world <ndash/> used to setup the <ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> location</para>

@@ -71,7 +71,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1options_1_1_var.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1options_1_1_var.xhtml" target="_top" xlink:title="A interaface variable which gets monitored by an option node allowing reflection, while also being di...">
 <polygon fill="white" stroke="black" points="0,-133 0,-190 135,-190 135,-133 0,-133"/>
 <text text-anchor="middle" x="67.5" y="-178" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Var&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="0,-171 135,-171 "/>
@@ -109,7 +109,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml" target="_top" xlink:title="A typed value holder.">
 <polygon fill="white" stroke="black" points="42.5,-371.5 42.5,-450.5 178.5,-450.5 178.5,-371.5 42.5,-371.5"/>
 <text text-anchor="middle" x="110.5" y="-438.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::VariableBase</text>
 <polyline fill="none" stroke="black" points="42.5,-431.5 178.5,-431.5 "/>

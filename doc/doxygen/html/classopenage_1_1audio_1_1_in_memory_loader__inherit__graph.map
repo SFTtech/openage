@@ -1,4 +1,4 @@
 <map id="openage::audio::InMemoryLoader" name="openage::audio::InMemoryLoader">
-<area shape="rect" id="node1" title=" " alt="" coords="21,5,196,141"/>
-<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml" title=" " alt="" coords="5,189,212,311"/>
+<area shape="rect" id="node1" title="A InMemoryLoader loads a audio file into memory and converts it into 16 bit signed integer pcm data." alt="" coords="21,5,196,141"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml" title="A OpusInMemoryLoader load&#39;s opus encoded data from opus files." alt="" coords="5,189,212,311"/>
 </map>

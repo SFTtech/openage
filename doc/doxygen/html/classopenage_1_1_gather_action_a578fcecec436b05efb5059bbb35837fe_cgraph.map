@@ -1,24 +1,24 @@
 <map id="openage::GatherAction::nearest_dropsite" name="openage::GatherAction::nearest_dropsite">
 <area shape="rect" id="node1" title=" " alt="" coords="5,279,160,320"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_target_action.xhtml#acd97248a087415b6d08fa3e97e90397d" title=" " alt="" coords="227,85,379,127"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_target_action.xhtml#acd97248a087415b6d08fa3e97e90397d" title="gets called for all actions on stack each update cycle" alt="" coords="227,85,379,127"/>
 <area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="245,235,362,262"/>
 <area shape="rect" id="node8" href="$namespaceopenage.xhtml#abf30260a65f6b06163a5dad881836523" title=" " alt="" coords="238,286,369,313"/>
-<area shape="rect" id="node18" href="$classopenage_1_1_unit.xhtml#adfea298b04684ab09dd8f499dabb8715" title=" " alt="" coords="229,337,378,363"/>
-<area shape="rect" id="node19" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="208,481,399,507"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_unit.xhtml#adfea298b04684ab09dd8f499dabb8715" title="get a reference which can check against the container to ensure this object still exists" alt="" coords="229,337,378,363"/>
+<area shape="rect" id="node19" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level))." alt="" coords="208,481,399,507"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac" title=" " alt="" coords="709,5,869,47"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8" title=" " alt="" coords="452,63,639,90"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_target_action.xhtml#a43bd7367738e16d715df0a1bfbd080cf" title=" " alt="" coords="469,115,621,156"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="733,71,844,98"/>
 <area shape="rect" id="node9" href="$classopenage_1_1_terrain_object.xhtml#a170289794bdd31d673ffb3aca873bb1d" title=" " alt="" coords="467,180,623,221"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" title=" " alt="" coords="466,245,625,287"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" title="returns all objects on the next tile" alt="" coords="466,245,625,287"/>
 <area shape="rect" id="node16" href="$structopenage_1_1coord_1_1tile3.xhtml#af828e2ee284deb35ce13d30b57b14ad0" title=" " alt="" coords="474,311,617,352"/>
 <area shape="rect" id="node17" href="$structopenage_1_1coord_1_1phys3.xhtml#a8ed61fb85a083922af8fbbabd087ae31" title=" " alt="" coords="468,376,623,417"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_terrain_search.xhtml#a0db543b44fe51d0f1403bedba1f575a8" title=" " alt="" coords="709,187,868,228"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_terrain_search.xhtml#a0db543b44fe51d0f1403bedba1f575a8" title="restarts the search from the start tile" alt="" coords="709,187,868,228"/>
 <area shape="rect" id="node12" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="692,253,885,279"/>
 <area shape="rect" id="node14" href="$namespacestd.xhtml#a8058d6b15a78f7a977945ee4d62de903" title=" " alt="" coords="749,307,829,334"/>
-<area shape="rect" id="node13" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="953,253,1080,279"/>
+<area shape="rect" id="node13" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="953,253,1080,279"/>
 <area shape="rect" id="node15" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa0eb736578910b123ea19652c670daab" title=" " alt="" coords="933,304,1100,345"/>
-<area shape="rect" id="node20" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="476,441,615,483"/>
+<area shape="rect" id="node20" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title="Returns a reference to the global stdout logsink object; Initializes the object if needed." alt="" coords="476,441,615,483"/>
 <area shape="rect" id="node21" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="459,507,631,548"/>
 <area shape="rect" id="node22" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="447,573,644,599"/>
 </map>

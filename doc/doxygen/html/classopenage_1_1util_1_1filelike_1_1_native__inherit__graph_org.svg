@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-497 109,-497 109,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="File&#45;like class that uses native stdlib functions to access data.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-233.5 105,-233.5 105,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::filelike</text>
 <text text-anchor="middle" x="52.5" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Native</text>
@@ -39,7 +39,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml" target="_top" xlink:title="File&#45;like class that has the standard operations like read, seek, write etc.">
 <polygon fill="white" stroke="black" points="0,-270.5 0,-492.5 105,-492.5 105,-270.5 0,-270.5"/>
 <text text-anchor="start" x="8" y="-480.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::filelike</text>
 <text text-anchor="middle" x="52.5" y="-469.5" font-family="Helvetica,sans-Serif" font-size="10.00">::FileLike</text>

@@ -32,9 +32,9 @@
     <innernamespace refid="namespaceopenage">openage</innernamespace>
     <innernamespace refid="namespaceopenage_1_1rng">openage::rng</innernamespace>
     <briefdescription>
+<para>This file contains functions for the global random number generator. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file contains functions for the global random number generator.</para>
 <para>Please avoid using it, instead, create rng objects for your current class as members. </para>
     </detaileddescription>
     <programlisting>

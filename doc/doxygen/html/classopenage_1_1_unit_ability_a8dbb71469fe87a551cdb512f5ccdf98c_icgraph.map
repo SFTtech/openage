@@ -1,4 +1,4 @@
 <map id="openage::UnitAbility::is_same_player" name="openage::UnitAbility::is_same_player">
 <area shape="rect" id="node1" title=" " alt="" coords="197,5,336,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_build_ability.xhtml#abe9ac45166f48d9a53467f17d0c4efdc" title=" " alt="" coords="5,5,149,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_build_ability.xhtml#abe9ac45166f48d9a53467f17d0c4efdc" title="true if the paramaters allow an action to be performed" alt="" coords="5,5,149,47"/>
 </map>

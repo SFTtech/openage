@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 264,-35 264,4 -4,4"/>
 <!-- Node18 -->
 <g id="node1" class="node"><title>Node18</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Add copies of all the attributes from the given Attributes.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 101,-30.5 101,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes</text>
 <text text-anchor="middle" x="50.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_copies</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node19 -->
 <g id="node2" class="node"><title>Node19</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f" target="_top" xlink:title="Add an attribute or replace any attribute of the same type.">
 <polygon fill="white" stroke="black" points="137,-6 137,-25 260,-25 260,-6 137,-6"/>
 <text text-anchor="middle" x="198.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::add</text>
 </a>

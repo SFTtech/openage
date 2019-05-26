@@ -94,9 +94,9 @@ $(document).ready(function(){initNavTree('todo.xhtml','');});
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>Namespace <a class="el" href="namespaceopenage.xhtml">openage</a>  </dt>
-<dd><a class="anchor" id="_todo000049"></a>make general transformation from iterator algorithm to container algorithm. so much metaprogramming...  </dd>
+<dd><a class="anchor" id="_todo000049"></a>make general transformation from iterator algorithm to container algorithm. </dd>
 <dt>Member <a class="el" href="classopenage_1_1_action_mode.xhtml#a6807ef371160b0d49b5d1154ec9c6701">openage::ActionMode::mousepos_phys3</a>  </dt>
-<dd><a class="anchor" id="_todo000010"></a>these shouldn't be here. remove them ASAP. they are used to carry over mouse information into some of the game control lambda functions  </dd>
+<dd><a class="anchor" id="_todo000010"></a>these shouldn't be here. </dd>
 <dt>Class <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4.xhtml">openage::Attribute&lt; attr_type::attack &gt;</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000035"></a>can a unit have multiple attacks such as villagers hunting map target classes onto attacks </p>
 <p class="enddd">remove the first constructor and the default values after (keep for now for compatibility)  </p>
@@ -123,18 +123,18 @@ $(document).ready(function(){initNavTree('todo.xhtml','');});
 <dd><p class="startdd"><a class="anchor" id="_todo000002"></a>copy line by line, considering the value stored in old_linedata_pos-&gt;auto_wrapped. start with the first line of the scrollback buffer, and stop with the last line of the screen buffer. do not copy empty characters, unless they are followed by filled characters in the same line, or a continued wrapped line. store in term_t variables the locations in the new buffer of the first/last line of the old scrollback buffer the first/last line of the old screen buffer these variables need to take into account events where upmost lines of a buffer are overwritten by new lines. commented out for now </p>
 <p class="enddd"><a class="anchor" id="_todo000003"></a> depending on the variables defined in the previous section, decide which line is the first line of the screen buffer int new_chrbuf, and which parts of new_chrbuf must be cleared.  </p>
 </dd>
-<dt>Member <a class="el" href="classopenage_1_1console_1_1_console.xhtml#a0e1f861a8f19ed84b00c580d50d9f49f">openage::console::Console::Console</a>  (<a class="el" href="classopenage_1_1_engine.xhtml">Engine</a> *engine)</dt>
+<dt>Member <a class="el" href="classopenage_1_1console_1_1_console.xhtml#a0e1f861a8f19ed84b00c580d50d9f49f">openage::console::Console::Console</a>  (<a class="el" href="classopenage_1_1_engine.xhtml" title="main engine container.">Engine</a> *engine)</dt>
 <dd><a class="anchor" id="_todo000004"></a>multiple terminals on screen resizable terminals scrollbars console input log console, command console  </dd>
-<dt>Member <a class="el" href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44">openage::coord::camgame::to_viewport</a>  (const <a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml">CoordManager</a> &amp;mgr) const</dt>
+<dt>Member <a class="el" href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44">openage::coord::camgame::to_viewport</a>  (const <a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml" title="Holds all coordinate-related state and metadata.">CoordManager</a> &amp;mgr) const</dt>
 <dd><a class="anchor" id="_todo000006"></a>Once we have terrain elevation, 'up' will not mean the absolute elevation, but instead the returned <a class="el" href="structopenage_1_1coord_1_1phys3.xhtml">phys3</a> coordinate will be the intersection between the camgame line and the 3d terrain + up altitude.  </dd>
-<dt>Member <a class="el" href="structopenage_1_1coord_1_1phys2.xhtml#a2cbf9e4669fb9702e6b086de22ac5eac">openage::coord::phys2::to_phys3</a>  (const <a class="el" href="classopenage_1_1_terrain.xhtml">Terrain</a> &amp;terrain, phys_t altitude=0) const</dt>
+<dt>Member <a class="el" href="structopenage_1_1coord_1_1phys2.xhtml#a2cbf9e4669fb9702e6b086de22ac5eac">openage::coord::phys2::to_phys3</a>  (const <a class="el" href="classopenage_1_1_terrain.xhtml" title="the terrain class is the main top-management interface for dealing with cost-benefit analysis to maxi...">Terrain</a> &amp;terrain, phys_t altitude=0) const</dt>
 <dd><a class="anchor" id="_todo000005"></a>once terrain elevations have been implemented, query the terrain elevation at {ne, se}.  </dd>
-<dt>Member <a class="el" href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b">openage::coord::tile::to_tile3</a>  (const <a class="el" href="classopenage_1_1_terrain.xhtml">Terrain</a> &amp;terrain, tile_t altitude=0) const</dt>
+<dt>Member <a class="el" href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b">openage::coord::tile::to_tile3</a>  (const <a class="el" href="classopenage_1_1_terrain.xhtml" title="the terrain class is the main top-management interface for dealing with cost-benefit analysis to maxi...">Terrain</a> &amp;terrain, tile_t altitude=0) const</dt>
 <dd><a class="anchor" id="_todo000007"></a>once terrain elevations have been implemented, query the terrain elevation at {ne, se}.  </dd>
 <dt>Member <a class="el" href="namespaceopenage.xhtml#abda3971a8397f9204b2ad873b645251c">openage::cost_type</a>  </dt>
 <dd><a class="anchor" id="_todo000012"></a>use in TimeCost  </dd>
-<dt>Member <a class="el" href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a3ffa6f71c0489532547ba12a56fd97bc">openage::curve::KeyframeContainer&lt; T &gt;::insert</a>  (const <a class="el" href="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe.xhtml">Keyframe</a> &amp;value)</dt>
-<dd><a class="anchor" id="_todo000008"></a>add something like <code>previous</code> that returns element with e-&gt;time &lt; time probably just calls <code>last</code> and walks back one element if that is not at <a class="el" href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a4469b92a601c321c3353c663853d9851">begin()</a> already  </dd>
+<dt>Member <a class="el" href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a3ffa6f71c0489532547ba12a56fd97bc">openage::curve::KeyframeContainer&lt; T &gt;::insert</a>  (const <a class="el" href="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe.xhtml" title="A element of the curvecontainer.">Keyframe</a> &amp;value)</dt>
+<dd><a class="anchor" id="_todo000008"></a>add something like <code>previous</code> that returns element with e-&gt;time &lt; time probably just calls <code>last</code> and walks back one element if that is not at <a class="el" href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a4469b92a601c321c3353c663853d9851" title="Obtain an iterator to the first value with the smallest timestamp.">begin()</a> already  </dd>
 <dt>Member <a class="el" href="classopenage_1_1event_1_1_event_queue.xhtml#a42433f50adffb7e0a20c43889292e54c">openage::event::EventQueue::remove</a>  (const std::shared_ptr&lt; Event &gt; &amp;evnt)</dt>
 <dd><a class="anchor" id="_todo000009"></a>remove the event from the other storages. this would require changes to dependent events and triggers. (to stop being a dependent event or allow being triggered)  </dd>
 <dt>Class <a class="el" href="classopenage_1_1_game_main.xhtml">openage::GameMain</a>  </dt>
@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('todo.xhtml','');});
 <dt>Class <a class="el" href="classopenage_1_1_interval_timer.xhtml">openage::IntervalTimer</a>  </dt>
 <dd><a class="anchor" id="_todo000031"></a>find a better name for triggers  </dd>
 <dt>Member <a class="el" href="classopenage_1_1log_1_1_log_sink.xhtml#ac795e3966c4816c4c09fab3a68642cca">openage::log::LogSink::set_loglevel</a>  (level loglevel)</dt>
-<dd><a class="anchor" id="_todo000024"></a>Add iptables-like chains that decide whether a message will be logged, depending on msg.info, logger id, thread id, etc. This member variable is only a make-shift solution with obvious limitations.  </dd>
+<dd><a class="anchor" id="_todo000024"></a>Add iptables-like chains that decide whether a message will be logged, depending on msg.info, logger id, thread id, etc. </dd>
 <dt>Member <a class="el" href="classopenage_1_1_nyan_type.xhtml#a63ce8cdf7fd596318a61c0c20628b88b">openage::NyanType::NyanType</a>  (const <a class="el" href="classopenage_1_1_player.xhtml">Player</a> &amp;owner)</dt>
 <dd><a class="anchor" id="_todo000048"></a>give the parsed nyan attributes to the constructor  </dd>
 <dt>Member <a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a>  </dt>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('todo.xhtml','');});
 <dt>Member <a class="el" href="classopenage_1_1_player.xhtml#a377bd0846efc82274d555e1f1069215c">openage::Player::available_objects</a>  </dt>
 <dd><a class="anchor" id="_todo000016"></a>revisit, can be simplified?  </dd>
 <dt>Class <a class="el" href="classopenage_1_1_projectile_producer.xhtml">openage::ProjectileProducer</a>  </dt>
-<dd><a class="anchor" id="_todo000042"></a>use <a class="el" href="classopenage_1_1_movable_producer.xhtml">MovableProducer</a> as base class  </dd>
+<dd><a class="anchor" id="_todo000042"></a>use <a class="el" href="classopenage_1_1_movable_producer.xhtml" title="movable unit types">MovableProducer</a> as base class  </dd>
 <dt>Class <a class="el" href="classopenage_1_1_render_options.xhtml">openage::RenderOptions</a>  </dt>
 <dd><a class="anchor" id="_todo000011"></a>include fog drawing etc  </dd>
 <dt>Class <a class="el" href="classopenage_1_1_resource_bundle.xhtml">openage::ResourceBundle</a>  </dt>
@@ -183,16 +183,16 @@ $(document).ready(function(){initNavTree('todo.xhtml','');});
 <dd><a class="anchor" id="_todo000044"></a>make private field  </dd>
 <dt>Member <a class="el" href="classopenage_1_1_unit.xhtml#a00fd6387097ed12ae6f6b6ec2ab2939e">openage::Unit::selected</a>  </dt>
 <dd><a class="anchor" id="_todo000043"></a>should be a pointer to selection to be updated when unit is removed, or null if not selected  </dd>
-<dt>Member <a class="el" href="classopenage_1_1_unit_type.xhtml#a810c763e421cd95a9c64ab4c3e351140">openage::UnitType::initialise</a>  (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *, <a class="el" href="classopenage_1_1_player.xhtml">Player</a> &amp;)=0</dt>
+<dt>Member <a class="el" href="classopenage_1_1_unit_type.xhtml#a810c763e421cd95a9c64ab4c3e351140">openage::UnitType::initialise</a>  (<a class="el" href="classopenage_1_1_unit.xhtml" title="A game object with current state represented by a stack of actions since this class represents both u...">Unit</a> *, <a class="el" href="classopenage_1_1_player.xhtml">Player</a> &amp;)=0</dt>
 <dd><a class="anchor" id="_todo000045"></a>make const  </dd>
-<dt>Member <a class="el" href="classopenage_1_1_unit_type.xhtml#a51facc71929fe2d425bc6bec06e0dc48">openage::UnitType::place</a>  (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *, std::shared_ptr&lt; Terrain &gt;, <a class="el" href="structopenage_1_1coord_1_1phys3.xhtml">coord::phys3</a>) const =0</dt>
+<dt>Member <a class="el" href="classopenage_1_1_unit_type.xhtml#a51facc71929fe2d425bc6bec06e0dc48">openage::UnitType::place</a>  (<a class="el" href="classopenage_1_1_unit.xhtml" title="A game object with current state represented by a stack of actions since this class represents both u...">Unit</a> *, std::shared_ptr&lt; Terrain &gt;, <a class="el" href="structopenage_1_1coord_1_1phys3.xhtml">coord::phys3</a>) const =0</dt>
 <dd><a class="anchor" id="_todo000047"></a>make const  </dd>
-<dt>Member <a class="el" href="classopenage_1_1_unit_type.xhtml#a05d515d0c9b380bd9cb426b3bf3852f8">openage::UnitType::reinitialise</a>  (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *, <a class="el" href="classopenage_1_1_player.xhtml">Player</a> &amp;)</dt>
+<dt>Member <a class="el" href="classopenage_1_1_unit_type.xhtml#a05d515d0c9b380bd9cb426b3bf3852f8">openage::UnitType::reinitialise</a>  (<a class="el" href="classopenage_1_1_unit.xhtml" title="A game object with current state represented by a stack of actions since this class represents both u...">Unit</a> *, <a class="el" href="classopenage_1_1_player.xhtml">Player</a> &amp;)</dt>
 <dd><a class="anchor" id="_todo000046"></a>define if pure vitrual or not / should be in nyan?  </dd>
 <dt>Member <a class="el" href="classopenage_1_1util_1_1_file.xhtml#a4712008e4434f121e00ba41a29789db9">openage::util::File::get_lines</a>  ()</dt>
 <dd><a class="anchor" id="_todo000050"></a>relay the get_lines to the underlaying filelike which may do a better job in getting the lines. instead, we read everything and then split up into lines.  </dd>
 <dt>Member <a class="el" href="classopenage_1_1util_1_1_path.xhtml#a3fc6528c66f6d83e122e753f73511a3d">openage::util::Path::get_parent</a>  () const</dt>
-<dd><a class="anchor" id="_todo000051"></a>watching of path with inotify or similar this should get a Watcher*, which manages the multiple events otherwise, each file would require an inotify fd. =&gt; see the <a class="el" href="classopenage_1_1_asset_manager.xhtml">AssetManager</a> and move functionality from there.  </dd>
+<dd><a class="anchor" id="_todo000051"></a>watching of path with inotify or similar this should get a Watcher*, which manages the multiple events otherwise, each file would require an inotify fd. </dd>
 <dt>Member <a class="el" href="classqtsdl_1_1_gui_input_impl.xhtml#abd1c5fe1c24e2b0bdd09d5b63229be13">qtsdl::GuiInputImpl::relay_input_event</a>  (QEvent *ev, bool only_if_grabbed=false)</dt>
 <dd><a class="anchor" id="_todo000022"></a>if/when the logic thread or input thread of the main game is made separate, give mutex or queue to the gui in order to replace this busy wait.  </dd>
 <dt>Class <a class="el" href="structstd_1_1hash_3_01openage_1_1score__category_01_4.xhtml">std::hash&lt; openage::score_category &gt;</a>  </dt>

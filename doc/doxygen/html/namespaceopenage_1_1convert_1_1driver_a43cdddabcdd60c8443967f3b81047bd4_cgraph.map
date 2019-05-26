@@ -5,10 +5,10 @@
 <area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1interface_1_1rename.xhtml#a045e4e1a64322c77bfee10f24e8613e7" title="Renaming interface assets and splitting into directories." alt="" coords="519,57,760,98"/>
 <area shape="rect" id="node9" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a3a28ebc76c4e7841f81931892db4849a" title="Returns a human&#45;readable name if it&#39;s in the map." alt="" coords="554,122,725,163"/>
 <area shape="rect" id="node10" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a6dce2cf04f6cf53afeba4c3dc859a3f0" title=" " alt="" coords="531,188,748,215"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title=" " alt="" coords="889,5,1005,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title="str(value);" alt="" coords="889,5,1005,32"/>
 <area shape="rect" id="node7" href="$namespaceopenage_1_1convert_1_1interface_1_1hardcoded.xhtml#a5269bff8c865ba582e87918dd9e28d0d" title="Index in the hardcoded list of the known ingame hud backgrounds to match the civ." alt="" coords="808,57,1087,98"/>
 <area shape="rect" id="node8" href="$namespaceopenage_1_1convert_1_1interface_1_1rename.xhtml#ac64b3950e30561002141b4459599afb0" title="Rename a slp asset path by the lookup map above." alt="" coords="821,122,1073,163"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="1135,97,1328,124"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="1376,97,1503,124"/>
-<area shape="rect" id="node11" href="$namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" title=" " alt="" coords="888,188,1007,215"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="1376,97,1503,124"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" title="list()" alt="" coords="888,188,1007,215"/>
 </map>

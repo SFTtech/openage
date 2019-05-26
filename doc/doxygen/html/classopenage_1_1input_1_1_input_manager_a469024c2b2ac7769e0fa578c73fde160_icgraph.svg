@@ -57,7 +57,7 @@ var sectionId = 'dynsection-24';
 <polygon fill="white" stroke="none" points="-4,4 -4,-253 661,-253 661,4 -4,4"/>
 <!-- Node163 -->
 <g id="node1" class="node"><title>Node163</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="removes any matching registered context from the stack.">
 <polygon fill="#bfbfbf" stroke="black" points="512,-120.5 512,-150.5 657,-150.5 657,-120.5 512,-120.5"/>
 <text text-anchor="start" x="520" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="584.5" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove_context</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node164 -->
 <g id="node2" class="node"><title>Node164</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" target="_top" xlink:title="Called when the mode is left.">
 <polygon fill="white" stroke="black" points="353.5,-169.5 353.5,-199.5 464.5,-199.5 464.5,-169.5 353.5,-169.5"/>
 <text text-anchor="start" x="361.5" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="409" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_exit</text>
@@ -206,7 +206,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node174 -->
 <g id="node12" class="node"><title>Node174</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a4e0359f0f3cbbf66da045ba1a33ffa57" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a4e0359f0f3cbbf66da045ba1a33ffa57" target="_top" xlink:title="a temporary console command interpreter">
 <polygon fill="white" stroke="black" points="171.5,-22.5 171.5,-52.5 305.5,-52.5 305.5,-22.5 171.5,-22.5"/>
 <text text-anchor="start" x="179.5" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="238.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::interpret</text>
@@ -220,7 +220,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node175 -->
 <g id="node13" class="node"><title>Node175</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title="register this console to the engine.">
 <polygon fill="white" stroke="black" points="0.5,-0.5 0.5,-30.5 134.5,-30.5 134.5,-0.5 0.5,-0.5"/>
 <text text-anchor="start" x="8.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="67.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to_engine</text>

@@ -1,7 +1,7 @@
 <map id="openage::Texture::load_in_glthread" name="openage::Texture::load_in_glthread">
-<area shape="rect" id="node1" title=" " alt="" coords="631,27,785,69"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#a6b4128fc6fd1856fbfc6ece4165fd505" title=" " alt="" coords="225,5,382,32"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490" title=" " alt="" coords="435,57,583,98"/>
+<area shape="rect" id="node1" title="The texture loadin must occur on the thread that manages the gl context." alt="" coords="631,27,785,69"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#a6b4128fc6fd1856fbfc6ece4165fd505" title="Draws the texture at window coordinates." alt="" coords="225,5,382,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490" title="returns the opengl texture id of this texture." alt="" coords="435,57,583,98"/>
 <area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_texture.xhtml#aae0bd80c66326d89472b98043e40ce4f" title=" " alt="" coords="220,57,387,98"/>
 <area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_texture.xhtml#a627ea5f09fd50329525003cd235dea0d" title=" " alt="" coords="5,23,172,65"/>
 <area shape="rect" id="node6" href="$classopenage_1_1gui_1_1_gui_texture.xhtml#acabd4037e0b47cda554ae353c2c3be3e" title=" " alt="" coords="5,89,172,130"/>

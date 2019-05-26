@@ -20,7 +20,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#a1b83c8dcc455fd32056c418a993eb506" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#a1b83c8dcc455fd32056c418a993eb506" target="_top" xlink:title="get sound by sound id">
 <polygon fill="white" stroke="black" points="170,-80 170,-110 284,-110 284,-80 170,-80"/>
 <text text-anchor="start" x="178" y="-98" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="227" y="-87" font-family="Helvetica,sans-Serif" font-size="10.00">get_sound</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="320,-66.5 320,-85.5 411,-85.5 411,-66.5 320,-66.5"/>
 <text text-anchor="middle" x="365.5" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="463.5,-83 463.5,-113 573.5,-113 573.5,-83 463.5,-83"/>
 <text text-anchor="start" x="471.5" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="518.5" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="447,-44.5 447,-63.5 590,-63.5 590,-44.5 447,-44.5"/>
 <text text-anchor="middle" x="518.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="648,-88 648,-118 752,-118 752,-88 648,-88"/>
 <text text-anchor="start" x="656" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="700" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>

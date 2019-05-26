@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-97.5 437,-97.5 437,4 -4,4"/>
 <!-- Node102 -->
 <g id="node1" class="node"><title>Node102</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns the opengl texture id of this texture.">
 <polygon fill="#bfbfbf" stroke="black" points="322,-46.5 322,-76.5 433,-76.5 433,-46.5 322,-46.5"/>
 <text text-anchor="start" x="330" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="377.5" y="-53.5" font-family="Helvetica,sans-Serif" font-size="10.00">_texture_id</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node103 -->
 <g id="node2" class="node"><title>Node103</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a6b4128fc6fd1856fbfc6ece4165fd505" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a6b4128fc6fd1856fbfc6ece4165fd505" target="_top" xlink:title="Draws the texture at window coordinates.">
 <polygon fill="white" stroke="black" points="164.5,-74 164.5,-93 282.5,-93 282.5,-74 164.5,-74"/>
 <text text-anchor="middle" x="223.5" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>

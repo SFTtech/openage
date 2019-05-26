@@ -1,5 +1,5 @@
 <map id="openage::job::JobGroup" name="openage::job::JobGroup">
-<area shape="rect" id="node1" title=" " alt="" coords="13,784,172,905"/>
-<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_worker.xhtml" title=" " alt="" coords="18,468,167,721"/>
-<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_job_manager.xhtml" title=" " alt="" coords="5,5,180,405"/>
+<area shape="rect" id="node1" title="A job group is a proxy object that forwards job&#39;s to a single worker thread." alt="" coords="13,784,172,905"/>
+<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_worker.xhtml" title="A worker encapsulates the execution of multiple jobs in a single background thread." alt="" coords="18,468,167,721"/>
+<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_job_manager.xhtml" title="A job manager can be used to execute functions within separate worker threads." alt="" coords="5,5,180,405"/>
 </map>

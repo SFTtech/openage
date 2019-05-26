@@ -1,9 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1event_1_1_event_target.xhtml" title=" " alt="" coords="5,123,191,149"/>
+<area shape="rect" id="node1" href="$classopenage_1_1event_1_1_event_target.xhtml" title="Every Object in the gameworld that wants to be targeted by events or as dependency for events,..." alt="" coords="5,123,191,149"/>
 <area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_value_container.xhtml" title=" " alt="" coords="239,31,475,57"/>
 <area shape="rect" id="node5" href="$classopenage_1_1event_1_1demo_1_1_pong_ball.xhtml" title=" " alt="" coords="282,82,431,123"/>
 <area shape="rect" id="node6" href="$classopenage_1_1event_1_1demo_1_1_pong_player.xhtml" title=" " alt="" coords="282,147,431,189"/>
 <area shape="rect" id="node7" href="$classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object.xhtml" title=" " alt="" coords="278,213,435,254"/>
-<area shape="rect" id="node3" href="$classopenage_1_1curve_1_1_continuous.xhtml" title=" " alt="" coords="523,5,736,32"/>
-<area shape="rect" id="node4" href="$classopenage_1_1curve_1_1_discrete.xhtml" title=" " alt="" coords="531,56,727,83"/>
+<area shape="rect" id="node3" href="$classopenage_1_1curve_1_1_continuous.xhtml" title="Continuous Datatype." alt="" coords="523,5,736,32"/>
+<area shape="rect" id="node4" href="$classopenage_1_1curve_1_1_discrete.xhtml" title="Does not interpolate between values." alt="" coords="531,56,727,83"/>
 </map>

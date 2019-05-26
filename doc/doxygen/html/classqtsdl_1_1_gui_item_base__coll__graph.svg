@@ -30,7 +30,7 @@
 </g>
 <!-- Node11 -->
 <g id="node2" class="node"><title>Node11</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" target="_top" xlink:title="Stores static properties during initialization to be able to assign them after all &#39;liveReloadTag&#39; pr...">
 <polygon fill="white" stroke="black" points="0,-182.5 0,-327.5 160,-327.5 160,-182.5 0,-182.5"/>
 <text text-anchor="start" x="8" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::DeferredInitialConstant</text>
 <text text-anchor="middle" x="80" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00">PropertyValues</text>
@@ -55,7 +55,7 @@
 </g>
 <!-- Node12 -->
 <g id="node3" class="node"><title>Node12</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml" target="_top" xlink:title="Attaches to the GuiCallbackImpl.">
 <polygon fill="white" stroke="black" points="178.5,-221 178.5,-289 319.5,-289 319.5,-221 178.5,-221"/>
 <text text-anchor="middle" x="249" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 <polyline fill="none" stroke="black" points="178.5,-270 319.5,-270 "/>

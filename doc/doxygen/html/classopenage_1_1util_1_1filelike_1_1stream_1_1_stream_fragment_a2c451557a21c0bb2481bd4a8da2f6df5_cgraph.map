@@ -4,14 +4,14 @@
 <area shape="rect" id="node7" href="$classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object.xhtml#a2312775f74be5a112a1ab18f0f581173" title="Seeks to a given position." alt="" coords="233,503,488,544"/>
 <area shape="rect" id="node3" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="599,78,668,105"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="536,237,731,263"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="809,5,976,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="809,71,976,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="809,5,976,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="809,71,976,112"/>
 <area shape="rect" id="node8" href="$classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a248471b44bfea2faad6d97d9dd07eb00" title="Helper function for use by implementations of seek()." alt="" coords="540,609,727,651"/>
 <area shape="rect" id="node9" href="$classopenage_1_1renderer_1_1_window.xhtml#a1bf53e4db756c04ed522a975573b36a6" title="Returns the dimensions of this window." alt="" coords="825,136,960,177"/>
 <area shape="rect" id="node10" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_buffer.xhtml#a6b6867a9bcc96e5d36923ce98bd7a635" title="The size in bytes of this buffer." alt="" coords="807,201,978,243"/>
 <area shape="rect" id="node11" href="$classopenage_1_1util_1_1filelike_1_1_native.xhtml#ac4dd2bd1f87b66cc3de59abd1672d606" title=" " alt="" coords="823,267,963,308"/>
 <area shape="rect" id="node12" href="$classopenage_1_1util_1_1filelike_1_1_python.xhtml#aa2723a9836cd17708e0341691d5ca5dd" title=" " alt="" coords="823,332,963,373"/>
-<area shape="rect" id="node13" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title=" " alt="" coords="811,398,975,454"/>
+<area shape="rect" id="node13" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title="Returns the dimensions of the whole texture bitmap." alt="" coords="811,398,975,454"/>
 <area shape="rect" id="node14" href="$classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream.xhtml#ab3cbec4d52b33409ea1569d92496b50b" title=" " alt="" coords="789,479,997,520"/>
 <area shape="rect" id="node15" href="$classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a212820ce88cf538a4099f14f622e569b" title=" " alt="" coords="823,544,963,585"/>
 <area shape="rect" id="node16" href="$classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a402459217e8204b8242829b019ad85a7" title=" " alt="" coords="799,609,986,651"/>

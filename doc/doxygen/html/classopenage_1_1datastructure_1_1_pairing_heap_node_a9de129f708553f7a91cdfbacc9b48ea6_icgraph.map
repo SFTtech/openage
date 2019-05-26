@@ -1,4 +1,4 @@
 <map id="openage::datastructure::PairingHeapNode::link_with" name="openage::datastructure::PairingHeapNode::link_with">
-<area shape="rect" id="node1" title=" " alt="" coords="212,13,400,54"/>
-<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap_node.xhtml#a6227d9be8c7b75e3456c25850e324327" title=" " alt="" coords="5,5,164,61"/>
+<area shape="rect" id="node1" title="This method decides which node becomes the new root node by comparing this with node." alt="" coords="212,13,400,54"/>
+<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap_node.xhtml#a6227d9be8c7b75e3456c25850e324327" title="Link all siblings backwards from right to left." alt="" coords="5,5,164,61"/>
 </map>

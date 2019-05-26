@@ -1,9 +1,9 @@
 <map id="openage::util::Path::get_parent" name="openage::util::Path::get_parent">
 <area shape="rect" id="node1" title=" " alt="" coords="859,50,989,91"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a54659e7f41b37d889bba34111bb003d0" title=" " alt="" coords="640,5,811,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a54659e7f41b37d889bba34111bb003d0" title="Create a texture from an image file." alt="" coords="640,5,811,61"/>
 <area shape="rect" id="node4" href="$classopenage_1_1util_1_1_path.xhtml#a6e86298c20b5fd4596b791de4115b8b9" title=" " alt="" coords="660,86,791,127"/>
-<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" title=" " alt="" coords="421,5,592,61"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" title="Flips the texture along the Y&#45;axis and returns the flipped data with the same info." alt="" coords="421,5,592,61"/>
 <area shape="rect" id="node5" href="$classopenage_1_1util_1_1_path.xhtml#aa7993e64af5227c5949074566deadbf6" title=" " alt="" coords="441,86,572,127"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_texture.xhtml#a1fba0cda4b2ce8306d8f6278e936681a" title=" " alt="" coords="219,93,373,120"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43" title=" " alt="" coords="5,93,171,120"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43" title="Reload the image file." alt="" coords="5,93,171,120"/>
 </map>

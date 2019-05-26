@@ -1,9 +1,9 @@
 <map id="openage::console::Buf::clear" name="openage::console::Buf::clear">
-<area shape="rect" id="node1" title=" " alt="" coords="5,104,156,145"/>
-<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#a1108eb4031232054e271e3c7321b24ef" title=" " alt="" coords="204,5,355,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" title=" " alt="" coords="204,71,355,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1console_1_1_buf.xhtml#a76d65b492fdef7853b939598235881e2" title=" " alt="" coords="204,136,355,177"/>
-<area shape="rect" id="node7" href="$classopenage_1_1console_1_1_buf.xhtml#a4c48f84f2a29ae7472c54bce03fcbd65" title=" " alt="" coords="204,201,355,243"/>
+<area shape="rect" id="node1" title="clears the screen character and line buffers." alt="" coords="5,104,156,145"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#a1108eb4031232054e271e3c7321b24ef" title="clears a range of the data buffer." alt="" coords="204,5,355,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" title="returns a valid pointer to the character info for the character designated by pos" alt="" coords="204,71,355,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1console_1_1_buf.xhtml#a76d65b492fdef7853b939598235881e2" title="clears a range of the linedata buffer." alt="" coords="204,136,355,177"/>
+<area shape="rect" id="node7" href="$classopenage_1_1console_1_1_buf.xhtml#a4c48f84f2a29ae7472c54bce03fcbd65" title="returns a valid pointer to the line info for the line designated by lineno" alt="" coords="204,201,355,243"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="403,143,596,170"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="644,143,771,170"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="644,143,771,170"/>
 </map>

@@ -317,9 +317,9 @@
         <name>on_drawhud</name>
         <reimplements refid="classopenage_1_1_hud_handler_1a52d98b171b853a47609d924e1d1fca48">on_drawhud</reimplements>
         <briefdescription>
+<para>execute the drawing action. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the drawing action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -383,9 +383,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>connects the gui system with the game engine switches between contexts such as editor mode and action mode </para>
     </briefdescription>
     <detaileddescription>
-<para>connects the gui system with the game engine switches between contexts such as editor mode and action mode</para>
 <para>hud rendering and input handling is redirected to the active mode </para>
     </detaileddescription>
     <inheritancegraph>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-30';
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 509,-73.5 509,4 -4,4"/>
 <!-- Node349 -->
 <g id="node1" class="node"><title>Node349</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="adds a new action on top of the action stack will be performed immediately">
 <polygon fill="#bfbfbf" stroke="black" points="0,-17 0,-47 104,-47 104,-17 0,-17"/>
 <text text-anchor="start" x="8" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::push</text>
 <text text-anchor="middle" x="52" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">_action</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node350 -->
 <g id="node2" class="node"><title>Node350</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a21542f7813db482fd36799cf12971979" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a21542f7813db482fd36799cf12971979" target="_top" xlink:title="true when the unit is alive and able to add new actions">
 <polygon fill="white" stroke="black" points="140,-17 140,-47 252,-47 252,-17 140,-17"/>
 <text text-anchor="start" x="148" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::accept</text>
 <text text-anchor="middle" x="196" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">_commands</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node351 -->
 <g id="node3" class="node"><title>Node351</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#a257ef8a7aeceb306d372ef745b40ef90" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#a257ef8a7aeceb306d372ef745b40ef90" target="_top" xlink:title="checks the entity has an action, if it has no action it should be removed from the game">
 <polygon fill="white" stroke="black" points="288,-39 288,-69 386,-69 386,-39 288,-39"/>
 <text text-anchor="start" x="296" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::has</text>
 <text text-anchor="middle" x="337" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_action</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node352 -->
 <g id="node4" class="node"><title>Node352</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" target="_top" xlink:title="returns the current action on top of the stack">
 <polygon fill="white" stroke="black" points="289,-0.5 289,-19.5 385,-19.5 385,-0.5 289,-0.5"/>
 <text text-anchor="middle" x="337" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::top</text>
 </a>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 262,-35 262,4 -4,4"/>
 <!-- Node91 -->
 <g id="node1" class="node"><title>Node91</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Called when the GameControl is set in QML.">
 <polygon fill="#bfbfbf" stroke="black" points="145,-0.5 145,-30.5 258,-30.5 258,-0.5 145,-0.5"/>
 <text text-anchor="start" x="153" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="201.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_control</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node92 -->
 <g id="node2" class="node"><title>Node92</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" target="_top" xlink:title="Called when the GameControl is set in QML.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 109,-30.5 109,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="54.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_control</text>

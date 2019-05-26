@@ -42,9 +42,9 @@
         <argsstring>()</argsstring>
         <name>Keyframe</name>
         <briefdescription>
+<para>New default object at numericlimits&lt;time&gt;::min. </para>
         </briefdescription>
         <detaileddescription>
-<para>New default object at numericlimits&lt;time&gt;::min. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -60,9 +60,9 @@
           <declname>time</declname>
         </param>
         <briefdescription>
+<para>New, default-constructed element at the given time. </para>
         </briefdescription>
         <detaileddescription>
-<para>New, default-constructed element at the given time </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -83,9 +83,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>New element fron time and value. </para>
         </briefdescription>
         <detaileddescription>
-<para>New element fron time and value </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -94,9 +94,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A element of the curvecontainer. </para>
     </briefdescription>
     <detaileddescription>
-<para>A element of the curvecontainer. This is especially used to keep track of the value-timing. </para>
+<para>This is especially used to keep track of the value-timing. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="1875">

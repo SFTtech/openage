@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>handle</name>
         <briefdescription>
+<para>The opusfile handle, with a custom deleter that frees the opusfile memory. </para>
         </briefdescription>
         <detaileddescription>
-<para>The opusfile handle, with a custom deleter that frees the opusfile memory. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -27,9 +27,10 @@
         <argsstring></argsstring>
         <name>file</name>
         <briefdescription>
+<para>File used to supply the data. </para>
         </briefdescription>
         <detaileddescription>
-<para>File used to supply the data. This is unused if the file is a real file. </para>
+<para>This is unused if the file is a real file. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -38,9 +39,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>opusfile handle storage. </para>
     </briefdescription>
     <detaileddescription>
-<para>opusfile handle storage. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="508">

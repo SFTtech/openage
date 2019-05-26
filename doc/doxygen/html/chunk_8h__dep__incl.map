@@ -10,10 +10,10 @@
 <area shape="rect" id="node18" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="2861,673,3071,729"/>
 <area shape="rect" id="node19" href="$game__main_8cpp.xhtml" title=" " alt="" coords="2343,673,2552,729"/>
 <area shape="rect" id="node28" href="$unit_2action_8cpp.xhtml" title=" " alt="" coords="3095,673,3304,729"/>
-<area shape="rect" id="node29" href="$producer_8cpp.xhtml" title=" " alt="" coords="3328,673,3537,729"/>
+<area shape="rect" id="node29" href="$producer_8cpp.xhtml" title="Many values in this file are hardcoded, due to limited understanding of how the original game files w..." alt="" coords="3328,673,3537,729"/>
 <area shape="rect" id="node30" href="$selection_8cpp.xhtml" title=" " alt="" coords="3561,673,3771,729"/>
 <area shape="rect" id="node31" href="$unit_8cpp.xhtml" title=" " alt="" coords="3795,673,4004,729"/>
-<area shape="rect" id="node45" href="$a__star_8cpp.xhtml" title=" " alt="" coords="3441,213,3651,269"/>
+<area shape="rect" id="node45" href="$a__star_8cpp.xhtml" title="This file implements the A* search algorithm for openage." alt="" coords="3441,213,3651,269"/>
 <area shape="rect" id="node46" href="$pathfinding_2path_8cpp.xhtml" title=" " alt="" coords="3675,213,3884,269"/>
 <area shape="rect" id="node48" href="$terrain__chunk_8cpp.xhtml" title=" " alt="" coords="3908,213,4117,269"/>
 <area shape="rect" id="node49" href="$terrain__object_8cpp.xhtml" title=" " alt="" coords="4141,213,4351,269"/>

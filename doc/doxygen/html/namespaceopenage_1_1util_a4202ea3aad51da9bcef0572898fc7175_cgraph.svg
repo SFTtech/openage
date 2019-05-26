@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 284,-84 284,4 -4,4"/>
 <!-- Node270 -->
 <g id="node1" class="node"><title>Node270</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="FixedPoint + FixedPoint.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-30 0,-49 119,-49 119,-30 0,-30"/>
 <text text-anchor="middle" x="59.5" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::operator+</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node271 -->
 <g id="node2" class="node"><title>Node271</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="155,-49.5 155,-79.5 280,-79.5 280,-49.5 155,-49.5"/>
 <text text-anchor="start" x="163" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="217.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node272 -->
 <g id="node3" class="node"><title>Node272</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="155,-0.5 155,-30.5 280,-30.5 280,-0.5 155,-0.5"/>
 <text text-anchor="start" x="163" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="217.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

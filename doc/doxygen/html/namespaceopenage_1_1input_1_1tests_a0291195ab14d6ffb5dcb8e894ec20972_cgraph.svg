@@ -79,7 +79,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1input.xhtml#a910f68a5c426735a2b353eefa6229348" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1input.xhtml#a910f68a5c426735a2b353eefa6229348" target="_top" xlink:title="Convert a string to an event, throw if the string is not a valid event.">
 <polygon fill="white" stroke="black" points="154,-11 154,-41 257,-41 257,-11 154,-11"/>
 <text text-anchor="start" x="162" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::text</text>
 <text text-anchor="middle" x="205.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">_to_event</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="327,-38.5 327,-57.5 424,-57.5 424,-38.5 327,-38.5"/>
 <text text-anchor="middle" x="375.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>
@@ -119,7 +119,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="484,-76.5 484,-95.5 579,-95.5 579,-76.5 484,-76.5"/>
 <text text-anchor="middle" x="531.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

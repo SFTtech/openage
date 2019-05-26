@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 280,-46 280,4 -4,4"/>
 <!-- Node9 -->
 <g id="node1" class="node"><title>Node9</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="In a meshed geometry, updates the vertex data.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-6 0,-36 120,-36 120,-6 0,-6"/>
 <text text-anchor="start" x="8" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="60" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">Geometry::update_verts</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node10 -->
 <g id="node2" class="node"><title>Node10</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_geometry.xhtml#a37b4e546a79628294086815a670b3376" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_geometry.xhtml#a37b4e546a79628294086815a670b3376" target="_top" xlink:title="In a meshed geometry, updates the vertex data starting from the offset&#45;th vertex.">
 <polygon fill="white" stroke="black" points="156,-0.5 156,-41.5 276,-41.5 276,-0.5 156,-0.5"/>
 <text text-anchor="start" x="164" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="164" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">Geometry::update_verts</text>

@@ -1,3 +1,3 @@
 <map id="openage::util::OnInit" name="openage::util::OnInit">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,144,156"/>
+<area shape="rect" id="node1" title="Runs code() on construction." alt="" coords="5,5,144,156"/>
 </map>

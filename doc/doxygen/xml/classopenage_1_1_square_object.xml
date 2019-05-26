@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>size</name>
         <briefdescription>
+<para>tile size of this objects base </para>
         </briefdescription>
         <detaileddescription>
-<para>tile size of this objects base </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -84,9 +84,9 @@
           <declname>terrain</declname>
         </param>
         <briefdescription>
+<para>calculate object start and end positions. </para>
         </briefdescription>
         <detaileddescription>
-<para>calculate object start and end positions.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>pos</parametername>
@@ -118,9 +118,9 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
           <declname>point</declname>
         </param>
         <briefdescription>
+<para>how far is a point from the edge of this object </para>
         </briefdescription>
         <detaileddescription>
-<para>how far is a point from the edge of this object </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -149,9 +149,9 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
           <defval>0</defval>
         </param>
         <briefdescription>
+<para>get a position on the edge of this object </para>
         </briefdescription>
         <detaileddescription>
-<para>get a position on the edge of this object </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -174,9 +174,9 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>does this space contain a given point </para>
         </briefdescription>
         <detaileddescription>
-<para>does this space contain a given point </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -201,9 +201,9 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>would this intersect with another object if it were positioned at the given point </para>
         </briefdescription>
         <detaileddescription>
-<para>would this intersect with another object if it were positioned at the given point </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -226,9 +226,9 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         <name>min_axis</name>
         <reimplements refid="classopenage_1_1_terrain_object_1a6b82e5577be0620a320954e13d0f5f08">min_axis</reimplements>
         <briefdescription>
+<para>the shortest line that can be placed across the objects center </para>
         </briefdescription>
         <detaileddescription>
-<para>the shortest line that can be placed across the objects center </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -287,9 +287,10 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>terrain object class represents one immobile object on the map (building, trees, fish, ...). </para>
     </briefdescription>
     <detaileddescription>
-<para>terrain object class represents one immobile object on the map (building, trees, fish, ...). can only be constructed by unit-&gt;make_location&lt;SquareObject&gt;(...) </para>
+<para>can only be constructed by unit-&gt;make_location&lt;SquareObject&gt;(...) </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="5112">

@@ -27,9 +27,9 @@
         <argsstring></argsstring>
         <name>params</name>
         <briefdescription>
+<para>Parameters for the event (determined by its <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref>) </para>
         </briefdescription>
         <detaileddescription>
-<para>Parameters for the event (determined by its <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref>) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -42,9 +42,9 @@
         <argsstring></argsstring>
         <name>target</name>
         <briefdescription>
+<para>The actor that has the event. </para>
         </briefdescription>
         <detaileddescription>
-<para>The actor that has the event </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -58,9 +58,9 @@
         <argsstring></argsstring>
         <name>eventclass</name>
         <briefdescription>
+<para>Type of this event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type of this event. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -73,9 +73,9 @@
         <argsstring></argsstring>
         <name>time</name>
         <briefdescription>
+<para>Time this event occurs/occured. </para>
         </briefdescription>
         <detaileddescription>
-<para>Time this event occurs/occured </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -90,9 +90,9 @@
         <argsstring></argsstring>
         <name>myhash</name>
         <briefdescription>
+<para>Precalculated std::hash for the event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Precalculated std::hash for the event </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -166,9 +166,9 @@
           <declname>reference_time</declname>
         </param>
         <briefdescription>
+<para>Reschedule will call the predict_invoke_time method to initiate a reschedule for the event it uses the reference_time as base for its calculation. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reschedule will call the predict_invoke_time method to initiate a reschedule for the event it uses the reference_time as base for its calculation </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -244,9 +244,10 @@
           <declname>dependency</declname>
         </param>
         <briefdescription>
+<para>Let this event depend on another an event target. </para>
         </briefdescription>
         <detaileddescription>
-<para>Let this event depend on another an event target. When this target is changes, the event is reevaluated.</para>
+<para>When this target is changes, the event is reevaluated.</para>
 <para>To be called in the EventClass::setup function. </para>
         </detaileddescription>
         <inbodydescription>
@@ -266,9 +267,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>For sorting events by their trigger time. </para>
         </briefdescription>
         <detaileddescription>
-<para>For sorting events by their trigger time. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -277,9 +278,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The actual one event that may be called - it is used to manage the event itself. </para>
     </briefdescription>
     <detaileddescription>
-<para>The actual one event that may be called - it is used to manage the event itself. It does not need to be stored. </para>
+<para>It does not need to be stored. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2215">

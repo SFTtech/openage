@@ -1,5 +1,5 @@
 <map id="openage::TerrainObject::get_children" name="openage::TerrainObject::get_children">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,161,47"/>
+<area shape="rect" id="node1" title="Returns a list of child objects, this is the inverse of the get_parent() function." alt="" coords="5,5,161,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="209,13,403,39"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="451,13,577,39"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="451,13,577,39"/>
 </map>

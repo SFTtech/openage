@@ -1,5 +1,5 @@
 <map id="openage::log::message::init" name="openage::log::message::init">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,163,80"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f" title=" " alt="" coords="216,5,345,47"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" title=" " alt="" coords="211,71,351,112"/>
+<area shape="rect" id="node1" title="Sets all members except for filename, lineno, functionname and level." alt="" coords="5,39,163,80"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f" title="Returns the unique identifier of the current thread." alt="" coords="216,5,345,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" title="returns the number of nanoseconds since the UNIX epoch." alt="" coords="211,71,351,112"/>
 </map>

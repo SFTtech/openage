@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 426,-133 426,4 -4,4"/>
 <!-- Node5 -->
 <g id="node1" class="node"><title>Node5</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Used for displaying the current mode.">
 <polygon fill="#bfbfbf" stroke="black" points="310,-49.5 310,-79.5 422,-79.5 422,-49.5 310,-49.5"/>
 <text text-anchor="start" x="318" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::CreateMode</text>
 <text text-anchor="middle" x="366" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>

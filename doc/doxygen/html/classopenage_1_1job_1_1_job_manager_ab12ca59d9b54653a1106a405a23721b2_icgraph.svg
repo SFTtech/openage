@@ -57,7 +57,7 @@ var sectionId = 'dynsection-3';
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 846,-133 846,4 -4,4"/>
 <!-- Node19 -->
 <g id="node1" class="node"><title>Node19</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Enqueues the given function into the job manager&#39;s queue, so that it will be dispatched by one of the...">
 <polygon fill="#bfbfbf" stroke="black" points="711,-73.5 711,-103.5 842,-103.5 842,-73.5 711,-73.5"/>
 <text text-anchor="start" x="719" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="776.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::enqueue</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node20 -->
 <g id="node2" class="node"><title>Node20</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" target="_top" xlink:title="To be called to save a screenshot.">
 <polygon fill="white" stroke="black" points="529,-98.5 529,-128.5 675,-128.5 675,-98.5 529,-98.5"/>
 <text text-anchor="start" x="537" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ScreenshotManager</text>
 <text text-anchor="middle" x="602" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::save_screenshot</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node21 -->
 <g id="node3" class="node"><title>Node21</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" target="_top" xlink:title="Actually dispatch the loading job to the job manager.">
 <polygon fill="white" stroke="black" points="533,-49.5 533,-79.5 671,-79.5 671,-49.5 533,-49.5"/>
 <text text-anchor="start" x="541" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="602" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_load_job</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node22 -->
 <g id="node4" class="node"><title>Node22</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" target="_top" xlink:title="load the game specification if not already present.">
 <polygon fill="white" stroke="black" points="355,-49.5 355,-79.5 493,-79.5 493,-49.5 355,-49.5"/>
 <text text-anchor="start" x="363" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="424" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_loading_if_needed</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node23 -->
 <g id="node5" class="node"><title>Node23</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#a019a81d88722206e82c7b5c87ddfe04f" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#a019a81d88722206e82c7b5c87ddfe04f" target="_top" xlink:title="forget everything about the specification and reload it with start_loading_if_needed.">
 <polygon fill="white" stroke="black" points="181,-98.5 181,-128.5 319,-128.5 319,-98.5 181,-98.5"/>
 <text text-anchor="start" x="189" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="250" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invalidate</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node24 -->
 <g id="node6" class="node"><title>Node24</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" target="_top" xlink:title="Control whether this specification can be loaded (=true) or will not be loaded (=false).">
 <polygon fill="white" stroke="black" points="181,-49.5 181,-79.5 319,-79.5 319,-49.5 181,-49.5"/>
 <text text-anchor="start" x="189" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="250" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_active</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node26 -->
 <g id="node8" class="node"><title>Node26</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ad9c03812749a8ac9b21960e0f5bb462e" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ad9c03812749a8ac9b21960e0f5bb462e" target="_top" xlink:title="invoked from qml when the asset_manager member is set.">
 <polygon fill="white" stroke="black" points="181,-0.5 181,-30.5 319,-30.5 319,-0.5 181,-0.5"/>
 <text text-anchor="start" x="189" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="250" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_asset_manager</text>

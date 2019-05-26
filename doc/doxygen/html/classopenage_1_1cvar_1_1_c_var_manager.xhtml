@@ -97,13 +97,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1cvar_1_1_c_var_manager
 </div><!--header-->
 <div class="contents">
 
+<p>Configuration manager.  
+ <a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="cvar_8h_source.xhtml">cvar.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::cvar::CVarManager:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager__coll__graph.svg" width="200" height="478"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager__coll__graph.svg" width="200" height="478"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -111,28 +115,35 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae47e10a45c7b6d8376d153937651ce34"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#ae47e10a45c7b6d8376d153937651ce34">CVarManager</a> (const <a class="el" href="classopenage_1_1util_1_1_path.xhtml">util::Path</a> &amp;<a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a>)</td></tr>
 <tr class="separator:ae47e10a45c7b6d8376d153937651ce34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a093074d20bdce055fac654ba01733f36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a093074d20bdce055fac654ba01733f36">create</a> (const std::string &amp;name, const std::pair&lt; <a class="el" href="namespaceopenage_1_1cvar.xhtml#aebb2850e226c43da630c2dc95802f4ee">get_func</a>, <a class="el" href="namespaceopenage_1_1cvar.xhtml#a9da0b79349923d4b334b76da9ea8828f">set_func</a> &gt; &amp;accessors)</td></tr>
+<tr class="memdesc:a093074d20bdce055fac654ba01733f36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a configuration entry.  <a href="#a093074d20bdce055fac654ba01733f36">More...</a><br /></td></tr>
 <tr class="separator:a093074d20bdce055fac654ba01733f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf47769212763bbf43146a97443779da"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#abf47769212763bbf43146a97443779da">get</a> (const std::string &amp;name) const</td></tr>
+<tr class="memdesc:abf47769212763bbf43146a97443779da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of a config entry.  <a href="#abf47769212763bbf43146a97443779da">More...</a><br /></td></tr>
 <tr class="separator:abf47769212763bbf43146a97443779da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a972739b7927c488b0761a10319653e8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a972739b7927c488b0761a10319653e8a">set</a> (const std::string &amp;name, const std::string &amp;value) const</td></tr>
+<tr class="memdesc:a972739b7927c488b0761a10319653e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the config entry value.  <a href="#a972739b7927c488b0761a10319653e8a">More...</a><br /></td></tr>
 <tr class="separator:a972739b7927c488b0761a10319653e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7fcfc7c5b2700e1ed0feba06fc57a63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#af7fcfc7c5b2700e1ed0feba06fc57a63">load_config</a> (const <a class="el" href="classopenage_1_1util_1_1_path.xhtml">util::Path</a> &amp;<a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a>)</td></tr>
+<tr class="memdesc:af7fcfc7c5b2700e1ed0feba06fc57a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the loading of a configuration file via the Python implementation.  <a href="#af7fcfc7c5b2700e1ed0feba06fc57a63">More...</a><br /></td></tr>
 <tr class="separator:af7fcfc7c5b2700e1ed0feba06fc57a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fcaa20636cab773dc70db2c74a4308e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a8fcaa20636cab773dc70db2c74a4308e">load_all</a> ()</td></tr>
+<tr class="memdesc:a8fcaa20636cab773dc70db2c74a4308e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the load of the default config files.  <a href="#a8fcaa20636cab773dc70db2c74a4308e">More...</a><br /></td></tr>
 <tr class="separator:a8fcaa20636cab773dc70db2c74a4308e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a200171b969c1254dc7c3258af7be3ce2"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::pair&lt; <a class="el" href="namespaceopenage_1_1cvar.xhtml#aebb2850e226c43da630c2dc95802f4ee">get_func</a>, <a class="el" href="namespaceopenage_1_1cvar.xhtml#a9da0b79349923d4b334b76da9ea8828f">set_func</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a></td></tr>
+<tr class="memdesc:a200171b969c1254dc7c3258af7be3ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store the key-value pair of config options.  <a href="#a200171b969c1254dc7c3258af7be3ce2">More...</a><br /></td></tr>
 <tr class="separator:a200171b969c1254dc7c3258af7be3ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0aa073ffda4e894c0f62a108da465a89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1util_1_1_path.xhtml">util::Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a></td></tr>
+<tr class="memdesc:a0aa073ffda4e894c0f62a108da465a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Magic path that stores config files.  <a href="#a0aa073ffda4e894c0f62a108da465a89">More...</a><br /></td></tr>
 <tr class="separator:a0aa073ffda4e894c0f62a108da465a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Configuration manager.</p>
+<div class="textblock"><p>Configuration manager. </p>
 <p>Stores key-value pairs of config data. Actually it doesn't store data, instead functions that perform/fetch the configuration at the appropriate place.</p>
 <p>pxd:</p>
-<p>cppclass <a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml">CVarManager</a>: string get(string name) except + void set(string name, string value) except + void load_config(Path path) except + </p>
+<p>cppclass <a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml" title="Configuration manager.">CVarManager</a>: string get(string name) except + void set(string name, string value) except + void load_config(Path path) except + </p>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8h_source.xhtml#l00042">42</a> of file <a class="el" href="cvar_8h_source.xhtml">cvar.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -153,7 +164,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="cvar_8cpp_source.xhtml#l00011">11</a> of file <a class="el" href="cvar_8cpp_source.xhtml">cvar.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    :</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a>{<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a>} {}</div><div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a0aa073ffda4e894c0f62a108da465a89"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">openage::cvar::CVarManager::path</a></div><div class="ttdeci">util::Path path</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00091">cvar.h:91</a></div></div>
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    :</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a>{<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a>} {}</div><div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a0aa073ffda4e894c0f62a108da465a89"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">openage::cvar::CVarManager::path</a></div><div class="ttdeci">util::Path path</div><div class="ttdoc">Magic path that stores config files.</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00091">cvar.h:91</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="cvar_8h_source.xhtml#l00091">path</a>.</p>
 
@@ -185,10 +196,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a configuration entry </p><dl class="section return"><dt>Returns</dt><dd>if the entry name was successful. It won't be if the name was used before. </dd></dl>
+
+<p>Creates a configuration entry. </p>
+<dl class="section return"><dt>Returns</dt><dd>if the entry name was successful. It won't be if the name was used before. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8cpp_source.xhtml#l00016">16</a> of file <a class="el" href="cvar_8cpp_source.xhtml">cvar.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                                                       {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">auto</span> it = this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.find(name);</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">if</span> (it == this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.end()) {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>[name] = accessors;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div><div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a200171b969c1254dc7c3258af7be3ce2"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">openage::cvar::CVarManager::store</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::pair&lt; get_func, set_func &gt; &gt; store</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00084">cvar.h:84</a></div></div>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                                                       {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">auto</span> it = this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.find(name);</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">if</span> (it == this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.end()) {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>[name] = accessors;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div><div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a200171b969c1254dc7c3258af7be3ce2"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">openage::cvar::CVarManager::store</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::pair&lt; get_func, set_func &gt; &gt; store</div><div class="ttdoc">Store the key-value pair of config options.</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00084">cvar.h:84</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="cvar_8h_source.xhtml#l00084">store</a>.</p>
 
@@ -198,7 +211,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager_a093074d20bdce055fac654ba01733f36_icgraph.svg" width="451" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager_a093074d20bdce055fac654ba01733f36_icgraph.svg" width="451" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -218,10 +232,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Gets the value of a config entry. Internally calls the stored get function. </p>
+
+<p>Gets the value of a config entry. </p>
+<p>Internally calls the stored get function. </p>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8cpp_source.xhtml#l00027">27</a> of file <a class="el" href="cvar_8cpp_source.xhtml">cvar.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                                                      {</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">auto</span> it = this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.find(name);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span> (it != this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.end()) {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">return</span> it-&gt;second.first();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a200171b969c1254dc7c3258af7be3ce2"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">openage::cvar::CVarManager::store</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::pair&lt; get_func, set_func &gt; &gt; store</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00084">cvar.h:84</a></div></div>
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                                                      {</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">auto</span> it = this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.find(name);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span> (it != this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.end()) {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">return</span> it-&gt;second.first();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a200171b969c1254dc7c3258af7be3ce2"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">openage::cvar::CVarManager::store</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::pair&lt; get_func, set_func &gt; &gt; store</div><div class="ttdoc">Store the key-value pair of config options.</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00084">cvar.h:84</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="cvar_8h_source.xhtml#l00084">store</a>.</p>
 
@@ -231,7 +247,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager_abf47769212763bbf43146a97443779da_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager_abf47769212763bbf43146a97443779da_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -250,13 +267,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Perform the load of the default config files. </p>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="cvar_8cpp_source.xhtml">cvar.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                           {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a> &lt;&lt; <span class="stringliteral">&quot;loading configuration files...&quot;</span>);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#af7fcfc7c5b2700e1ed0feba06fc57a63">load_config</a>(this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a>[<span class="stringliteral">&quot;keybinds.oac&quot;</span>]);</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                           {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a> &lt;&lt; <span class="stringliteral">&quot;loading configuration files...&quot;</span>);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#af7fcfc7c5b2700e1ed0feba06fc57a63">load_config</a>(this-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a>[<span class="stringliteral">&quot;keybinds.oac&quot;</span>]);</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdoc">Convenience method that makes use of the 'general' LogSource.</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
 <div class="ttc" id="message_8h_xhtml_ae1103fea1e1b3c41ca3322d5389f7162"><div class="ttname"><a href="message_8h.xhtml#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a></div><div class="ttdeci">#define INFO</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00177">message.h:177</a></div></div>
-<div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a0aa073ffda4e894c0f62a108da465a89"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">openage::cvar::CVarManager::path</a></div><div class="ttdeci">util::Path path</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00091">cvar.h:91</a></div></div>
-<div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_af7fcfc7c5b2700e1ed0feba06fc57a63"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#af7fcfc7c5b2700e1ed0feba06fc57a63">openage::cvar::CVarManager::load_config</a></div><div class="ttdeci">void load_config(const util::Path &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8cpp_source.xhtml#l00044">cvar.cpp:44</a></div></div>
+<div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a0aa073ffda4e894c0f62a108da465a89"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">openage::cvar::CVarManager::path</a></div><div class="ttdeci">util::Path path</div><div class="ttdoc">Magic path that stores config files.</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00091">cvar.h:91</a></div></div>
+<div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_af7fcfc7c5b2700e1ed0feba06fc57a63"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#af7fcfc7c5b2700e1ed0feba06fc57a63">openage::cvar::CVarManager::load_config</a></div><div class="ttdeci">void load_config(const util::Path &amp;path)</div><div class="ttdoc">Performs the loading of a configuration file via the Python implementation.</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8cpp_source.xhtml#l00044">cvar.cpp:44</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="message_8h_source.xhtml#l00177">INFO</a>, <a class="el" href="cvar_8cpp_source.xhtml#l00044">load_config()</a>, <a class="el" href="log_8cpp_source.xhtml#l00013">openage::log::log()</a>, and <a class="el" href="cvar_8h_source.xhtml#l00091">path</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -264,7 +282,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager_a8fcaa20636cab773dc70db2c74a4308e_cgraph.svg" width="100%" height="444"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager_a8fcaa20636cab773dc70db2c74a4308e_cgraph.svg" width="100%" height="444"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -284,11 +303,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Performs the loading of a configuration file via the Python implementation. </p>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8cpp_source.xhtml#l00044">44</a> of file <a class="el" href="cvar_8cpp_source.xhtml">cvar.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                  {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="namespaceopenage_1_1cvar.xhtml#a8f14b711d03e0856c0753a9b330ff5cb">pyx_load_config_file</a>.call(<span class="keyword">this</span>, <a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a>);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div><div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a0aa073ffda4e894c0f62a108da465a89"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">openage::cvar::CVarManager::path</a></div><div class="ttdeci">util::Path path</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00091">cvar.h:91</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1cvar_xhtml_a8f14b711d03e0856c0753a9b330ff5cb"><div class="ttname"><a href="namespaceopenage_1_1cvar.xhtml#a8f14b711d03e0856c0753a9b330ff5cb">openage::cvar::pyx_load_config_file</a></div><div class="ttdeci">pyinterface::PyIfFunc&lt; void, CVarManager *, const util::Path &amp; &gt; pyx_load_config_file</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8cpp_source.xhtml#l00054">cvar.cpp:54</a></div></div>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                  {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="namespaceopenage_1_1cvar.xhtml#a8f14b711d03e0856c0753a9b330ff5cb">pyx_load_config_file</a>.call(<span class="keyword">this</span>, <a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">path</a>);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div><div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a0aa073ffda4e894c0f62a108da465a89"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a0aa073ffda4e894c0f62a108da465a89">openage::cvar::CVarManager::path</a></div><div class="ttdeci">util::Path path</div><div class="ttdoc">Magic path that stores config files.</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00091">cvar.h:91</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1cvar_xhtml_a8f14b711d03e0856c0753a9b330ff5cb"><div class="ttname"><a href="namespaceopenage_1_1cvar.xhtml#a8f14b711d03e0856c0753a9b330ff5cb">openage::cvar::pyx_load_config_file</a></div><div class="ttdeci">pyinterface::PyIfFunc&lt; void, CVarManager *, const util::Path &amp; &gt; pyx_load_config_file</div><div class="ttdoc">Python function to load a configuration file.</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8cpp_source.xhtml#l00054">cvar.cpp:54</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="cvar_8h_source.xhtml#l00091">path</a>, and <a class="el" href="cvar_8cpp_source.xhtml#l00054">openage::cvar::pyx_load_config_file</a>.</p>
 
@@ -298,7 +318,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager_af7fcfc7c5b2700e1ed0feba06fc57a63_icgraph.svg" width="438" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager_af7fcfc7c5b2700e1ed0feba06fc57a63_icgraph.svg" width="438" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -328,10 +349,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Sets the config entry value. </p>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8cpp_source.xhtml#l00036">36</a> of file <a class="el" href="cvar_8cpp_source.xhtml">cvar.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                                         {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">auto</span> it = <a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.find(name);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> (it != <a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.end()) {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        it-&gt;second.second(value);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div><div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a200171b969c1254dc7c3258af7be3ce2"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">openage::cvar::CVarManager::store</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::pair&lt; get_func, set_func &gt; &gt; store</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00084">cvar.h:84</a></div></div>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                                         {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">auto</span> it = <a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.find(name);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> (it != <a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">store</a>.end()) {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        it-&gt;second.second(value);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div><div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a200171b969c1254dc7c3258af7be3ce2"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a200171b969c1254dc7c3258af7be3ce2">openage::cvar::CVarManager::store</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::pair&lt; get_func, set_func &gt; &gt; store</div><div class="ttdoc">Store the key-value pair of config options.</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8h_source.xhtml#l00084">cvar.h:84</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="cvar_8h_source.xhtml#l00084">store</a>.</p>
 
@@ -341,7 +363,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager_a972739b7927c488b0761a10319653e8a_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cvar_1_1_c_var_manager_a972739b7927c488b0761a10319653e8a_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -366,7 +389,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Magic path that stores config files. Auto-redirects to the default and write paths in the home folder. It is set up in <a class="el" href="location_8py.xhtml">openage/cvar/location.py</a> and <a class="el" href="game_2main_8py.xhtml">openage/game/main.py</a> </p>
+
+<p>Magic path that stores config files. </p>
+<p>Auto-redirects to the default and write paths in the home folder. It is set up in <a class="el" href="location_8py.xhtml">openage/cvar/location.py</a> and <a class="el" href="game_2main_8py.xhtml">openage/game/main.py</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8h_source.xhtml#l00091">91</a> of file <a class="el" href="cvar_8h_source.xhtml">cvar.h</a>.</p>
 
@@ -393,7 +418,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Store the key-value pair of config options. The clue is to store the "what does the config do", not the actual value. That way the system is universal. </p>
+
+<p>Store the key-value pair of config options. </p>
+<p>The clue is to store the "what does the config do", not the actual value. That way the system is universal. </p>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8h_source.xhtml#l00084">84</a> of file <a class="el" href="cvar_8h_source.xhtml">cvar.h</a>.</p>
 

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 275,-62 275,4 -4,4"/>
 <!-- Node33 -->
 <g id="node1" class="node"><title>Node33</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Reads the rng state from a stream.">
 <polygon fill="#bfbfbf" stroke="black" points="165,-14 165,-44 271,-44 271,-14 165,-14"/>
 <text text-anchor="start" x="173" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="218" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">from_stream</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node34 -->
 <g id="node2" class="node"><title>Node34</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng.xhtml#ace26b663b1fa6bbbaeec1f5903bbc70c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng.xhtml#ace26b663b1fa6bbbaeec1f5903bbc70c" target="_top" xlink:title="Reads the rng from a stream.">
 <polygon fill="white" stroke="black" points="0,-38.5 0,-57.5 129,-57.5 129,-38.5 0,-38.5"/>
 <text text-anchor="middle" x="64.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::operator &gt;&gt;</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node35 -->
 <g id="node3" class="node"><title>Node35</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a7d14a4486213742ed28bcdd360cf0dc9" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a7d14a4486213742ed28bcdd360cf0dc9" target="_top" xlink:title="Reads the rng in from the passed std::istream.">
 <polygon fill="white" stroke="black" points="1,-0.5 1,-19.5 128,-19.5 128,-0.5 1,-0.5"/>
 <text text-anchor="middle" x="64.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::RNG</text>
 </a>

@@ -71,9 +71,10 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>Create a texture from an image file. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a texture from an image file. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">use_metafile</parametername>
 </parameternamelist>
@@ -132,9 +133,10 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
         <argsstring>()</argsstring>
         <name>flip_y</name>
         <briefdescription>
+<para>Flips the texture along the Y-axis and returns the flipped data with the same info. </para>
         </briefdescription>
         <detaileddescription>
-<para>Flips the texture along the Y-axis and returns the flipped data with the same info. Sometimes necessary when converting between storage modes. </para>
+<para>Sometimes necessary when converting between storage modes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -198,9 +200,10 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
           <declname>y</declname>
         </param>
         <briefdescription>
+<para>Reads the pixel at the given position and casts it to the given type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reads the pixel at the given position and casts it to the given type. The texture is <emphasis>not</emphasis> read as if it consisted of pixels of the given type, but rather according to its original pixel format, so the coordinates have to be specified according to that. </para>
+<para>The texture is <emphasis>not</emphasis> read as if it consisted of pixels of the given type, but rather according to its original pixel format, so the coordinates have to be specified according to that. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -245,9 +248,10 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Stores 2D texture data in a CPU-accessible byte buffer. </para>
     </briefdescription>
     <detaileddescription>
-<para>Stores 2D texture data in a CPU-accessible byte buffer. Provides methods for loading from and storing onto disk, as well as sending to and receiving from graphics hardware. </para>
+<para>Provides methods for loading from and storing onto disk, as well as sending to and receiving from graphics hardware. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4761">

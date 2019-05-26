@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('namespaceopenage_1_1console.xhtml','')
 <div class="title">openage::console Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>In-game console subsystem.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -111,8 +114,10 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1console_1_1_buf.xhtml">Buf</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1console_1_1buf__char.xhtml">buf_char</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a single character in the buffer  <a href="structopenage_1_1console_1_1buf__char.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1console_1_1buf__line.xhtml">buf_line</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">metadata for a single line in the buffer  <a href="structopenage_1_1console_1_1buf__line.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1console_1_1_console.xhtml">Console</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,6 +127,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a539b2831ec0229a23f97127d1f5ef9f6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#a539b2831ec0229a23f97127d1f5ef9f6">chrcol_t</a> = uint8_t</td></tr>
+<tr class="memdesc:a539b2831ec0229a23f97127d1f5ef9f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the length of the escape sequence buffer, and thus the maximum length of any escape sequence that will be successfully processed.  <a href="#a539b2831ec0229a23f97127d1f5ef9f6">More...</a><br /></td></tr>
 <tr class="separator:a539b2831ec0229a23f97127d1f5ef9f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a479e54c460cae4bbd6f585ca55324d24"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#a479e54c460cae4bbd6f585ca55324d24">chrflags_t</a> = uint16_t</td></tr>
 <tr class="separator:a479e54c460cae4bbd6f585ca55324d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,16 +174,20 @@ Variables</h2></td></tr>
 <tr class="memitem:a2fdcdc91078a83eb1c89e268f9b45426"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceopenage_1_1console.xhtml#a479e54c460cae4bbd6f585ca55324d24">chrflags_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#a2fdcdc91078a83eb1c89e268f9b45426">CHR_STRESS_IDEOGRAM</a> = (1 &lt;&lt; 15)</td></tr>
 <tr class="separator:a2fdcdc91078a83eb1c89e268f9b45426"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa09a20fff5c3fe6f00987bb27d28c3ff"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceopenage_1_1console.xhtml#a20fab25100c8456b19801314577b2470">linetype_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#aa09a20fff5c3fe6f00987bb27d28c3ff">LINE_EMPTY</a> = 0</td></tr>
+<tr class="memdesc:aa09a20fff5c3fe6f00987bb27d28c3ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">the line has not been written yet (or cleared in between)  <a href="#aa09a20fff5c3fe6f00987bb27d28c3ff">More...</a><br /></td></tr>
 <tr class="separator:aa09a20fff5c3fe6f00987bb27d28c3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f8b6f12c1655f3259fbdc6873ccb0a2"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceopenage_1_1console.xhtml#a20fab25100c8456b19801314577b2470">linetype_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#a2f8b6f12c1655f3259fbdc6873ccb0a2">LINE_REGULAR</a> = 1</td></tr>
+<tr class="memdesc:a2f8b6f12c1655f3259fbdc6873ccb0a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the line has some contents  <a href="#a2f8b6f12c1655f3259fbdc6873ccb0a2">More...</a><br /></td></tr>
 <tr class="separator:a2f8b6f12c1655f3259fbdc6873ccb0a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5dcef92c8c76cebffd40c925cb209cd"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceopenage_1_1console.xhtml#a20fab25100c8456b19801314577b2470">linetype_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#ae5dcef92c8c76cebffd40c925cb209cd">LINE_WRAPPED</a> = 2</td></tr>
+<tr class="memdesc:ae5dcef92c8c76cebffd40c925cb209cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the line has been written to until it auto-wrapped; its continuation can be found in the next line  <a href="#ae5dcef92c8c76cebffd40c925cb209cd">More...</a><br /></td></tr>
 <tr class="separator:ae5dcef92c8c76cebffd40c925cb209cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84a7cb454b1e8ee8221d2099833547ae"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structopenage_1_1console_1_1buf__line.xhtml">buf_line</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#a84a7cb454b1e8ee8221d2099833547ae">BUF_LINE_DEFAULT</a> {<a class="el" href="namespaceopenage_1_1console.xhtml#aa09a20fff5c3fe6f00987bb27d28c3ff">LINE_EMPTY</a>}</td></tr>
 <tr class="separator:a84a7cb454b1e8ee8221d2099833547ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>In-game console subsystem. Featuring a full terminal emulator. </p>
+<div class="textblock"><p>In-game console subsystem. </p>
+<p>Featuring a full terminal emulator. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a539b2831ec0229a23f97127d1f5ef9f6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a539b2831ec0229a23f97127d1f5ef9f6">&#9670;&nbsp;</a></span>chrcol_t</h2>
@@ -190,7 +200,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the length of the escape sequence buffer, and thus the maximum length of any escape sequence that will be successfully processed.</p>
+
+<p>the length of the escape sequence buffer, and thus the maximum length of any escape sequence that will be successfully processed. </p>
 <p>longer escape sequences will be ignored. </p>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00027">27</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
@@ -264,7 +275,8 @@ Variables</h2></td></tr>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1console_ac6af4ff8acdecaf3ebf91c57e2c20953_icgraph.svg" width="100%" height="479"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1console_ac6af4ff8acdecaf3ebf91c57e2c20953_icgraph.svg" width="100%" height="479"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -587,6 +599,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>the line has not been written yet (or cleared in between) </p>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00099">99</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
@@ -606,6 +619,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>the line has some contents </p>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00103">103</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
@@ -625,7 +639,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the line has been written to until it auto-wrapped; its continuation can be found in the next line</p>
+
+<p>the line has been written to until it auto-wrapped; its continuation can be found in the next line </p>
 <p>this value is required for re-calculating the buffer on resize </p>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00110">110</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>

@@ -20,7 +20,7 @@
 </g>
 <!-- Node16 -->
 <g id="node2" class="node"><title>Node16</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" target="_top" xlink:title="Change the already produced texture handles to use new source.">
 <polygon fill="white" stroke="black" points="1086,-128 1086,-169 1228,-169 1228,-128 1086,-128"/>
 <text text-anchor="start" x="1094" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="1094" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::migrate</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node20 -->
 <g id="node6" class="node"><title>Node20</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a42ec51b02960edb6ef405251a640bd5f" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a42ec51b02960edb6ef405251a640bd5f" target="_top" xlink:title="Set to every sprite the &#39;missing texture&#39; from current spec.">
 <polygon fill="white" stroke="black" points="908,-74 908,-115 1050,-115 1050,-74 908,-74"/>
 <text text-anchor="start" x="916" y="-103" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="916" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::on_game</text>
@@ -50,7 +50,7 @@
 </g>
 <!-- Node21 -->
 <g id="node7" class="node"><title>Node21</title>
-<g id="a_node7"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="1091,-30.5 1091,-60.5 1223,-60.5 1223,-30.5 1091,-30.5"/>
 <text text-anchor="start" x="1099" y="-48.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 <text text-anchor="middle" x="1157" y="-37.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>
@@ -64,7 +64,7 @@
 </g>
 <!-- Node17 -->
 <g id="node3" class="node"><title>Node17</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" target="_top" xlink:title="Unblocks the provider.">
 <polygon fill="white" stroke="black" points="908,-134 908,-175 1050,-175 1050,-134 908,-134"/>
 <text text-anchor="start" x="916" y="-163" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="916" y="-152" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::on_game</text>
@@ -79,7 +79,7 @@
 </g>
 <!-- Node18 -->
 <g id="node4" class="node"><title>Node18</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" target="_top" xlink:title="Pass loaded assets to the image provider.">
 <polygon fill="white" stroke="black" points="718,-161.5 718,-191.5 872,-191.5 872,-161.5 718,-161.5"/>
 <text text-anchor="start" x="726" y="-179.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="795" y="-168.5" font-family="Helvetica,sans-Serif" font-size="10.00">Link::on_game_spec_loaded</text>
@@ -93,7 +93,7 @@
 </g>
 <!-- Node19 -->
 <g id="node5" class="node"><title>Node19</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" target="_top" xlink:title="Sets the game spec to load textures from.">
 <polygon fill="white" stroke="black" points="528,-117.5 528,-147.5 682,-147.5 682,-117.5 528,-117.5"/>
 <text text-anchor="start" x="536" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="605" y="-124.5" font-family="Helvetica,sans-Serif" font-size="10.00">Link::set_game_spec</text>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node22 -->
 <g id="node8" class="node"><title>Node22</title>
-<g id="a_node8"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="913,-24.5 913,-54.5 1045,-54.5 1045,-24.5 913,-24.5"/>
 <text text-anchor="start" x="921" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemBase</text>
 <text text-anchor="middle" x="979" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>

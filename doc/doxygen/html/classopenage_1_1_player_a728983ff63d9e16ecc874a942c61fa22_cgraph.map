@@ -1,12 +1,12 @@
 <map id="openage::Player::receive" name="openage::Player::receive">
-<area shape="rect" id="node1" title=" " alt="" coords="5,44,169,71"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#ac7283a82ddfcc4a556ca4aa4f9277bbc" title=" " alt="" coords="217,5,384,32"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" title=" " alt="" coords="231,74,370,115"/>
+<area shape="rect" id="node1" title="add to stockpile" alt="" coords="5,44,169,71"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#ac7283a82ddfcc4a556ca4aa4f9277bbc" title="current stockpile amount" alt="" coords="217,5,384,32"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" title="Called when the resources amounts change." alt="" coords="231,74,370,115"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_resource_bundle.xhtml#a85c59861409e505a3c5fb020a73ef1c2" title=" " alt="" coords="909,37,1109,64"/>
 <area shape="rect" id="node5" href="$classopenage_1_1_resource_bundle.xhtml#aa3e1dfb21fe065f769a21a13f667984b" title=" " alt="" coords="432,74,607,115"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" title=" " alt="" coords="439,169,599,210"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" title="Updates resource based sub&#45;scores." alt="" coords="439,169,599,210"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_resource_bundle.xhtml#a7c6e69b4cd066ccceb01e89687057090" title=" " alt="" coords="671,89,845,130"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_score.xhtml#a7867975c457c1de476f8d5ecd1ae452f" title=" " alt="" coords="677,154,839,195"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" title=" " alt="" coords="655,220,861,247"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" title="Returns the sum of all the resources." alt="" coords="655,220,861,247"/>
 <area shape="rect" id="node10" href="$classopenage_1_1_score.xhtml#ab03c4138b0129edb062c498f4393b8ba" title=" " alt="" coords="687,271,829,313"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-172 561,-172 561,4 -4,4"/>
 <!-- Node191 -->
 <g id="node1" class="node"><title>Node191</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="return tile data for the given position.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-72 0,-91 132,-91 132,-72 0,-72"/>
 <text text-anchor="middle" x="66" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get_data</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node192 -->
 <g id="node2" class="node"><title>Node192</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" target="_top" xlink:title="get a terrain chunk by a given chunk position.">
 <polygon fill="white" stroke="black" points="172,-137.5 172,-167.5 280,-167.5 280,-137.5 172,-137.5"/>
 <text text-anchor="start" x="180" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="226" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node193 -->
 <g id="node3" class="node"><title>Node193</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title="get tile data by absolute coordinates.">
 <polygon fill="white" stroke="black" points="168,-88.5 168,-118.5 284,-118.5 284,-88.5 168,-88.5"/>
 <text text-anchor="start" x="176" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="226" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -80,7 +80,7 @@
 </g>
 <!-- Node195 -->
 <g id="node5" class="node"><title>Node195</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="460,-72 460,-91 557,-91 557,-72 460,-72"/>
 <text text-anchor="middle" x="508.5" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>
@@ -93,7 +93,7 @@
 </g>
 <!-- Node197 -->
 <g id="node7" class="node"><title>Node197</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8" target="_top" xlink:title="implements the &#39;correct&#39; version of the division operator, which always rounds to &#45;inf">
 <polygon fill="white" stroke="black" points="327.5,-6 327.5,-25 416.5,-25 416.5,-6 327.5,-6"/>
 <text text-anchor="middle" x="372" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::div</text>
 </a>

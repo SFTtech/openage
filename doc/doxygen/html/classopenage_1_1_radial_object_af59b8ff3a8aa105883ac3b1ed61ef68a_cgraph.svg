@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-123 432,-123 432,4 -4,4"/>
 <!-- Node11 -->
 <g id="node1" class="node"><title>Node11</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="how far is a point from the edge of this object">
 <polygon fill="#bfbfbf" stroke="black" points="0,-44.5 0,-74.5 115,-74.5 115,-44.5 0,-44.5"/>
 <text text-anchor="start" x="8" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RadialObject</text>
 <text text-anchor="middle" x="57.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_edge</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node14 -->
 <g id="node4" class="node"><title>Node14</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="303,-69.5 303,-99.5 428,-99.5 428,-69.5 303,-69.5"/>
 <text text-anchor="start" x="311" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="365.5" y="-76.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node15 -->
 <g id="node5" class="node"><title>Node15</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="303,-20.5 303,-50.5 428,-50.5 428,-20.5 303,-20.5"/>
 <text text-anchor="start" x="311" y="-38.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="365.5" y="-27.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

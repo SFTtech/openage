@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 366,-73.5 366,4 -4,4"/>
 <!-- Node69 -->
 <g id="node1" class="node"><title>Node69</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="draws this action by taking the graphic type of the top action the graphic is found from the current ...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-22.5 0,-41.5 103,-41.5 103,-22.5 0,-22.5"/>
 <text text-anchor="middle" x="51.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::draw</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node70 -->
 <g id="node2" class="node"><title>Node70</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b" target="_top" xlink:title="determines which graphic should be used for drawing this unit finds the default graphic using the uni...">
 <polygon fill="white" stroke="black" points="139,-39 139,-69 243,-69 243,-39 139,-39"/>
 <text text-anchor="start" x="147" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAction</text>
 <text text-anchor="middle" x="191" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::current_graphics</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node71 -->
 <g id="node3" class="node"><title>Node71</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" target="_top" xlink:title="returns the current action on top of the stack">
 <polygon fill="white" stroke="black" points="143,-0.5 143,-19.5 239,-19.5 239,-0.5 143,-0.5"/>
 <text text-anchor="middle" x="191" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::top</text>
 </a>

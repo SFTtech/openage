@@ -1,3 +1,3 @@
 <map id="openage::UnitContainer" name="openage::UnitContainer">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,163,288"/>
+<area shape="rect" id="node1" title="the list of units that are currently in use will also give a view of the current game state for netwo..." alt="" coords="5,5,163,288"/>
 </map>

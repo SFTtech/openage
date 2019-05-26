@@ -1,9 +1,9 @@
 <map id="openage::Terrain::get_data" name="openage::Terrain::get_data">
-<area shape="rect" id="node1" title=" " alt="" coords="808,78,984,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" title=" " alt="" coords="616,5,760,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" title=" " alt="" coords="617,71,759,112"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title=" " alt="" coords="412,133,568,175"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title=" " alt="" coords="412,68,568,109"/>
+<area shape="rect" id="node1" title="return tile data for the given position." alt="" coords="808,78,984,105"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" title="gather neighbors of a given base tile." alt="" coords="616,5,760,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" title="an object which contains the given point, null otherwise" alt="" coords="617,71,759,112"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title="boxed unit selection" alt="" coords="412,133,568,175"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title="point unit selection" alt="" coords="412,68,568,109"/>
 <area shape="rect" id="node5" href="$classopenage_1_1_unit_selection.xhtml#a6b4a0b9275c8ebf623d50a7509487623" title=" " alt="" coords="208,101,364,143"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,101,160,143"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,101,160,143"/>
 </map>

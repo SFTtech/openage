@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>editor_current_terrain</name>
         <briefdescription>
+<para>currently selected terrain id </para>
         </briefdescription>
         <detaileddescription>
-<para>currently selected terrain id </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -55,9 +55,9 @@
         <argsstring></argsstring>
         <name>paint_terrain</name>
         <briefdescription>
+<para>mouse click mode: true = terrain painting, false = unit placement </para>
         </briefdescription>
         <detaileddescription>
-<para>mouse click mode: true = terrain painting, false = unit placement </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -110,9 +110,9 @@
         <name>available</name>
         <reimplements refid="classopenage_1_1_output_mode_1a608ac27650e10c5e3ce4c047abb1845d">available</reimplements>
         <briefdescription>
+<para>Is this mode able to be used? </para>
         </briefdescription>
         <detaileddescription>
-<para>Is this mode able to be used? </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -131,9 +131,9 @@
         <name>on_enter</name>
         <reimplements refid="classopenage_1_1_output_mode_1a84beca51250156148fe4af178ed87c22">on_enter</reimplements>
         <briefdescription>
+<para>Called when switching to this mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when switching to this mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -146,9 +146,9 @@
         <name>on_exit</name>
         <reimplements refid="classopenage_1_1_output_mode_1ac4731437d730c75e214f7fda4c218da1">on_exit</reimplements>
         <briefdescription>
+<para>Called when the mode is left. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when the mode is left. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -161,9 +161,9 @@
         <name>render</name>
         <reimplements refid="classopenage_1_1_output_mode_1a3ee7e90a18de82e81b02e429fb392694">render</reimplements>
         <briefdescription>
+<para>Display this mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Display this mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -176,9 +176,9 @@
         <name>name</name>
         <reimplements refid="classopenage_1_1_output_mode_1a088f019691b4233408a7d230b0a5604b">name</reimplements>
         <briefdescription>
+<para>Used for displaying the current mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Used for displaying the current mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -194,9 +194,9 @@
         <name>on_game_control_set</name>
         <reimplements refid="classopenage_1_1_output_mode_1aa9737f66ac8869d475df2d22d073017e">on_game_control_set</reimplements>
         <briefdescription>
+<para>Called after <ref refid="classopenage_1_1_game_control" kindref="compound">GameControl</ref> has been set by QML from <computeroutput>set_game_control</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called after <ref refid="classopenage_1_1_game_control" kindref="compound">GameControl</ref> has been set by QML from <computeroutput>set_game_control</computeroutput>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -354,9 +354,9 @@
         <name>announce</name>
         <reimplements refid="classopenage_1_1_output_mode_1aafb84951c6575c14b5517312c5cfe191">announce</reimplements>
         <briefdescription>
+<para>Emit the &quot;announced&quot; signal with (name, InputContext::active_binds). </para>
         </briefdescription>
         <detaileddescription>
-<para>Emit the &quot;announced&quot; signal with (name, InputContext::active_binds). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -375,9 +375,9 @@
           <declname>game_control</declname>
         </param>
         <briefdescription>
+<para>Called when the <ref refid="classopenage_1_1_game_control" kindref="compound">GameControl</ref> is set in QML. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when the <ref refid="classopenage_1_1_game_control" kindref="compound">GameControl</ref> is set in QML. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -455,9 +455,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>UI mode to provide an interface for map editing. </para>
     </briefdescription>
     <detaileddescription>
-<para>UI mode to provide an interface for map editing. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1985">

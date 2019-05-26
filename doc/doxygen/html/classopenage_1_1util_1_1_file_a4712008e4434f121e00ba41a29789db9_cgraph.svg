@@ -20,7 +20,7 @@
 </g>
 <!-- Node21 -->
 <g id="node2" class="node"><title>Node21</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885" target="_top" xlink:title="Read data from the file and return a string.">
 <polygon fill="white" stroke="black" points="155.5,-39 155.5,-69 249.5,-69 249.5,-39 155.5,-39"/>
 <text text-anchor="start" x="163.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::File</text>
 <text text-anchor="middle" x="202.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::read</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node23 -->
 <g id="node4" class="node"><title>Node23</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="311,-0.5 311,-19.5 406,-19.5 406,-0.5 311,-0.5"/>
 <text text-anchor="middle" x="358.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 133,-46 133,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass.xhtml" target="_top" xlink:title="A single text draw request containing the text and position.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-41.5 129,-41.5 129,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::text_render</text>

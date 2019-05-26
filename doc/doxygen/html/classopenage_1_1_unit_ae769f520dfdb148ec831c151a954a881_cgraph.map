@@ -1,4 +1,4 @@
 <map id="openage::Unit::logsource_name" name="openage::Unit::logsource_name">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,211,32"/>
+<area shape="rect" id="node1" title="Returns the unit&#39;s name as the LogSource name." alt="" coords="5,5,211,32"/>
 <area shape="rect" id="node2" href="$namespacestd.xhtml#a26aa0f4be3a77ac5cc3ce0cabb545042" title=" " alt="" coords="259,5,357,32"/>
 </map>

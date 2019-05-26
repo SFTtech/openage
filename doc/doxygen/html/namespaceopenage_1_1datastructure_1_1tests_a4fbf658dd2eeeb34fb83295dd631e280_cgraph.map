@@ -1,4 +1,4 @@
 <map id="openage::datastructure::tests::pairing_heap_2" name="openage::datastructure::tests::pairing_heap_2">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,160,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" title=" " alt="" coords="208,5,363,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" title="adds the given item to the heap." alt="" coords="208,5,363,47"/>
 </map>

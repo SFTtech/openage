@@ -1,4 +1,4 @@
 <map id="openage::error::Error::trim_backtrace" name="openage::error::Error::trim_backtrace">
-<area shape="rect" id="node1" title=" " alt="" coords="199,5,340,47"/>
+<area shape="rect" id="node1" title="Calls this&#45;&gt;backtrace&#45;&gt;trim_to_current_stack_frame(), if this&#45;&gt;backtrace is not nullptr." alt="" coords="199,5,340,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1error.xhtml#a036babcdd58261ba26288431876e7b02" title=" " alt="" coords="5,13,151,39"/>
 </map>

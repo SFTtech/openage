@@ -100,9 +100,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>simple sound object </para>
     </briefdescription>
     <detaileddescription>
-<para>simple sound object <xrefsect id="todo_1_todo000014"><xreftitle>Todo</xreftitle><xrefdescription><para>move to assetmanager </para>
+<para><xrefsect id="todo_1_todo000014"><xreftitle>Todo</xreftitle><xrefdescription><para>move to assetmanager </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <collaborationgraph>

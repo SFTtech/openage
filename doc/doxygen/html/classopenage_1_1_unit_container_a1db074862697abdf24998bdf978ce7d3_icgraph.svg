@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 271,-35 271,4 -4,4"/>
 <!-- Node49 -->
 <g id="node1" class="node"><title>Node49</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="update dispatched by the game engine on each physics tick.">
 <polygon fill="#bfbfbf" stroke="black" points="149,-0.5 149,-30.5 267,-30.5 267,-0.5 149,-0.5"/>
 <text text-anchor="start" x="157" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitContainer</text>
 <text text-anchor="middle" x="208" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_all</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node50 -->
 <g id="node2" class="node"><title>Node50</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_main.xhtml#a0bec5982fb6c7685722b204ce199e458" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_main.xhtml#a0bec5982fb6c7685722b204ce199e458" target="_top" xlink:title="updates the game by one frame">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 113,-30.5 113,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMain::</text>
 <text text-anchor="middle" x="56.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">update</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-673 160,-673 160,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Bitstream that is stored in 16&#45;bit little&#45;endian numbers.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-358.5 0,-668.5 156,-668.5 156,-358.5 0,-358.5"/>
 <text text-anchor="start" x="8" y="-656.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="78" y="-645.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream&lt; inbuf_size &gt;</text>

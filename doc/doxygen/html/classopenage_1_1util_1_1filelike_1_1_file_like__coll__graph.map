@@ -1,3 +1,3 @@
 <map id="openage::util::filelike::FileLike" name="openage::util::filelike::FileLike">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,145,303"/>
+<area shape="rect" id="node1" title="File&#45;like class that has the standard operations like read, seek, write etc." alt="" coords="5,5,145,303"/>
 </map>

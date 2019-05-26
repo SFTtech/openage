@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-647 150,-647 150,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A self&#45;formatting string! Get yours today!">
 <polygon fill="#bfbfbf" stroke="black" points="11.5,-0.5 11.5,-156.5 134.5,-156.5 134.5,-0.5 11.5,-0.5"/>
 <text text-anchor="middle" x="73" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FString</text>
 <polyline fill="none" stroke="black" points="11.5,-137.5 134.5,-137.5 "/>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml" target="_top" xlink:title="Wraps an output string stream, and provides all sorts of overloads for operator &lt;&lt;,...">
 <polygon fill="white" stroke="black" points="0,-442.5 0,-642.5 146,-642.5 146,-442.5 0,-442.5"/>
 <text text-anchor="start" x="8" y="-630.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="73" y="-619.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; ChildType &gt;</text>

@@ -1,4 +1,4 @@
 <map id="openage::cvar::CVarManager::create" name="openage::cvar::CVarManager::create">
-<area shape="rect" id="node1" title=" " alt="" coords="256,5,445,47"/>
+<area shape="rect" id="node1" title="Creates a configuration entry." alt="" coords="256,5,445,47"/>
 <area shape="rect" id="node2" href="$classopenage_1_1input_1_1_action_manager.xhtml#a172292484fa92f4c391479d6e656808a" title=" " alt="" coords="5,5,208,47"/>
 </map>

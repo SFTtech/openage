@@ -1,4 +1,4 @@
 <map id="openage::EngineSignals::global_binds_changed" name="openage::EngineSignals::global_binds_changed">
 <area shape="rect" id="node1" title=" " alt="" coords="236,5,399,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_engine.xhtml#a0592aec2fe0da923bfc337154341cfa2" title=" " alt="" coords="5,5,188,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_engine.xhtml#a0592aec2fe0da923bfc337154341cfa2" title="send keybindings help string to gui." alt="" coords="5,5,188,47"/>
 </map>

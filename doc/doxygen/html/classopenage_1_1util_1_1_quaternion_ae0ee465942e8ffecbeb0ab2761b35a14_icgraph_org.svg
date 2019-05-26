@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 587,-35 587,4 -4,4"/>
 <!-- Node23 -->
 <g id="node1" class="node"><title>Node23</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Return the conjugated quaternion.">
 <polygon fill="#bfbfbf" stroke="black" points="458,-0.5 458,-30.5 583,-30.5 583,-0.5 458,-0.5"/>
 <text text-anchor="start" x="466" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="520.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::conjugated</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node24 -->
 <g id="node2" class="node"><title>Node24</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a61731d4de80ddb267346159ea173511b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a61731d4de80ddb267346159ea173511b" target="_top" xlink:title="Inverted the quaternion: Flip the rotation axes and scale by inverse sum of all components squared.">
 <polygon fill="white" stroke="black" points="297,-0.5 297,-30.5 422,-30.5 422,-0.5 297,-0.5"/>
 <text text-anchor="start" x="305" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="359.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::inverse</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node25 -->
 <g id="node3" class="node"><title>Node25</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#ab7cebbaf133b69d0122980f73416ddf6" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#ab7cebbaf133b69d0122980f73416ddf6" target="_top" xlink:title="Return the inverted quaternion.">
 <polygon fill="white" stroke="black" points="136,-0.5 136,-30.5 261,-30.5 261,-0.5 136,-0.5"/>
 <text text-anchor="start" x="144" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="198.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::inversed</text>

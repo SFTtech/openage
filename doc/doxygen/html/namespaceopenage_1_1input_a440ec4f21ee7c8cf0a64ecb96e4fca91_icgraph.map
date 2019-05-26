@@ -6,6 +6,6 @@
 <area shape="rect" id="node7" href="$namespaceopenage_1_1input.xhtml#abae2435eecb13af4c06e9449299ceb41" title=" " alt="" coords="277,136,409,177"/>
 <area shape="rect" id="node8" href="$namespaceopenage_1_1input.xhtml#ad3082ad89eabf77fdae7da9f72f26910" title=" " alt="" coords="277,201,409,243"/>
 <area shape="rect" id="node9" href="$namespaceopenage_1_1input.xhtml#ab6f0345d20c07a72034dc85a73d1cdf1" title=" " alt="" coords="277,267,409,308"/>
-<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" title=" " alt="" coords="5,201,199,243"/>
-<area shape="rect" id="node6" href="$classopenage_1_1input_1_1_input_manager.xhtml#aaadc3f3ef245e361c4179a082b22d690" title=" " alt="" coords="5,325,199,367"/>
+<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" title="When a SDL event happens, this is called." alt="" coords="5,201,199,243"/>
+<area shape="rect" id="node6" href="$classopenage_1_1input_1_1_input_manager.xhtml#aaadc3f3ef245e361c4179a082b22d690" title="Most cases should use above is_down(class, code) instead to avoid relying on sdl types." alt="" coords="5,325,199,367"/>
 </map>

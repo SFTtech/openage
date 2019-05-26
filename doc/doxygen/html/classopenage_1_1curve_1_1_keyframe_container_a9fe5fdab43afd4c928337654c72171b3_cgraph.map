@@ -1,6 +1,6 @@
 <map id="openage::curve::KeyframeContainer::last" name="openage::curve::KeyframeContainer::last">
-<area shape="rect" id="node1" title=" " alt="" coords="5,180,177,221"/>
-<area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_keyframe_container.xhtml#a675d4e01acc9d9d063cfd38b2b557752" title=" " alt="" coords="225,180,397,221"/>
+<area shape="rect" id="node1" title="Get the last element with e&#45;&gt;time &lt;= time, without a hint where to start searching." alt="" coords="5,180,177,221"/>
+<area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_keyframe_container.xhtml#a675d4e01acc9d9d063cfd38b2b557752" title="Get the last element with e&#45;&gt;time &lt;= time, given a hint where to start the search." alt="" coords="225,180,397,221"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1curve_1_1tests.xhtml#afc4e799a037edab37e1e35a74da593b7" title=" " alt="" coords="445,180,592,221"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1curve_1_1tests.xhtml#aafe8d47259322a390c43cae62d308296" title=" " alt="" coords="640,5,787,47"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1curve_1_1tests.xhtml#a994d019a14acd704605a0ccff85558c8" title=" " alt="" coords="640,71,787,112"/>

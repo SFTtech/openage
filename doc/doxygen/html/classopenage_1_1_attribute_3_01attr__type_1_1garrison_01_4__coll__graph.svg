@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-338 155,-338 155,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Units put inside a building.">
 <polygon fill="#bfbfbf" stroke="black" points="19,-0.5 19,-79.5 132,-79.5 132,-0.5 19,-0.5"/>
 <text text-anchor="start" x="27" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="75.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::garrison &gt;</text>
@@ -25,7 +25,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unshared_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unshared_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated unshared attribute.">
 <polygon fill="white" stroke="black" points="0,-116.5 0,-195.5 151,-195.5 151,-116.5 0,-116.5"/>
 <text text-anchor="start" x="8" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnsharedAttribute</text>
 <text text-anchor="middle" x="75.5" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container</text>
@@ -44,7 +44,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated attribute.">
 <polygon fill="white" stroke="black" points="7,-232.5 7,-333.5 144,-333.5 144,-232.5 7,-232.5"/>
 <text text-anchor="middle" x="75.5" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttributeContainer</text>
 <polyline fill="none" stroke="black" points="7,-314.5 144,-314.5 "/>

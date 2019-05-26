@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 273,-35 273,4 -4,4"/>
 <!-- Node15 -->
 <g id="node1" class="node"><title>Node15</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Discards num_discard numbers from the generator.">
 <polygon fill="#bfbfbf" stroke="black" points="163,-0.5 163,-30.5 269,-30.5 269,-0.5 163,-0.5"/>
 <text text-anchor="start" x="171" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="216" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">discard</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node16 -->
 <g id="node2" class="node"><title>Node16</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a196e215960939e55ac626c9c75a451e0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a196e215960939e55ac626c9c75a451e0" target="_top" xlink:title="Initializes the rng using bits from the buffer pointed to by data.">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 127,-25 127,-6 0,-6"/>
 <text text-anchor="middle" x="63.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::seed</text>
 </a>

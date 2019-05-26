@@ -63,9 +63,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>influences for one tile. </para>
     </briefdescription>
     <detaileddescription>
-<para>influences for one tile. as a tile has 8 adjacent and diagonal neighbors, the maximum number of influences is 8. </para>
+<para>as a tile has 8 adjacent and diagonal neighbors, the maximum number of influences is 8. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3804">

@@ -115,13 +115,16 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1testing_1_1_test_error.xhtml">TestError</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">To be used by all tests to indicate an error condition.  <a href="classopenage_1_1testing_1_1_test_error.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab47bedd0a44345aab4aadb8378800e45"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1testing.xhtml#ab47bedd0a44345aab4aadb8378800e45">fail</a> (const <a class="el" href="structopenage_1_1log_1_1message.xhtml">log::message</a> &amp;msg)</td></tr>
+<tr class="memdesc:ab47bedd0a44345aab4aadb8378800e45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises <a class="el" href="classopenage_1_1testing_1_1_test_error.xhtml" title="To be used by all tests to indicate an error condition.">TestError</a> with the message msg.  <a href="#ab47bedd0a44345aab4aadb8378800e45">More...</a><br /></td></tr>
 <tr class="separator:ab47bedd0a44345aab4aadb8378800e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a416af96b7ec2fb61d466c63325456e2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="compiler_8h.xhtml#aea581b919984cda327632efe3d11f8b3">OAAPI</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1testing.xhtml#a416af96b7ec2fb61d466c63325456e2b">run_method</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a416af96b7ec2fb61d466c63325456e2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes the test or demo with the given name.  <a href="#a416af96b7ec2fb61d466c63325456e2b">More...</a><br /></td></tr>
 <tr class="separator:a416af96b7ec2fb61d466c63325456e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -140,7 +143,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Raises <a class="el" href="classopenage_1_1testing_1_1_test_error.xhtml">TestError</a> with the message msg. Mostly designed for usage with the TESTFAIL macro. </p>
+
+<p>Raises <a class="el" href="classopenage_1_1testing_1_1_test_error.xhtml" title="To be used by all tests to indicate an error condition.">TestError</a> with the message msg. </p>
+<p>Mostly designed for usage with the TESTFAIL macro. </p>
 
 <p class="definition">Definition at line <a class="el" href="testing_8cpp_source.xhtml#l00009">9</a> of file <a class="el" href="testing_8cpp_source.xhtml">testing.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;                                 {</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordflow">throw</span> TestError{msg};</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div></div><!-- fragment -->
@@ -150,7 +155,8 @@ Functions</h2></td></tr>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1testing_ab47bedd0a44345aab4aadb8378800e45_icgraph.svg" width="563" height="154"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1testing_ab47bedd0a44345aab4aadb8378800e45_icgraph.svg" width="563" height="154"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -170,7 +176,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Invokes the test or demo with the given name.</p>
+
+<p>Invokes the test or demo with the given name. </p>
 <p>pxd: void run_method(string name) except + </p>
 
 </div>

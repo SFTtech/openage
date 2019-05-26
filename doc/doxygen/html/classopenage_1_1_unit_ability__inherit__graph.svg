@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-299 1737,-299 1737,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Abilities create an action when given a target some abilities target positions such as moving or patr...">
 <polygon fill="#bfbfbf" stroke="black" points="799.5,-127.5 799.5,-294.5 903.5,-294.5 903.5,-127.5 799.5,-127.5"/>
 <text text-anchor="middle" x="851.5" y="-282.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAbility</text>
 <polyline fill="none" stroke="black" points="799.5,-275.5 903.5,-275.5 "/>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attack_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attack_ability.xhtml" target="_top" xlink:title="initiates an attack action when given a valid target">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-90.5 115,-90.5 115,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="57.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAbility</text>
 <polyline fill="none" stroke="black" points="0,-71.5 115,-71.5 "/>
@@ -99,7 +99,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_build_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_build_ability.xhtml" target="_top" xlink:title="villagers build new buildings">
 <polygon fill="white" stroke="black" points="133.5,-0.5 133.5,-90.5 241.5,-90.5 241.5,-0.5 133.5,-0.5"/>
 <text text-anchor="middle" x="187.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAbility</text>
 <polyline fill="none" stroke="black" points="133.5,-71.5 241.5,-71.5 "/>
@@ -119,7 +119,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_convert_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_convert_ability.xhtml" target="_top" xlink:title="initiates a convert action when given a valid target">
 <polygon fill="white" stroke="black" points="260,-0.5 260,-90.5 379,-90.5 379,-0.5 260,-0.5"/>
 <text text-anchor="middle" x="319.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ConvertAbility</text>
 <polyline fill="none" stroke="black" points="260,-71.5 379,-71.5 "/>
@@ -139,7 +139,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_garrison_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_garrison_ability.xhtml" target="_top" xlink:title="ability to garrision inside a building">
 <polygon fill="white" stroke="black" points="397,-0.5 397,-90.5 520,-90.5 520,-0.5 397,-0.5"/>
 <text text-anchor="middle" x="458.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GarrisonAbility</text>
 <polyline fill="none" stroke="black" points="397,-71.5 520,-71.5 "/>
@@ -159,7 +159,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_gather_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_gather_ability.xhtml" target="_top" xlink:title="initiates an gather resource action when given a valid target">
 <polygon fill="white" stroke="black" points="538.5,-0.5 538.5,-90.5 654.5,-90.5 654.5,-0.5 538.5,-0.5"/>
 <text text-anchor="middle" x="596.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAbility</text>
 <polyline fill="none" stroke="black" points="538.5,-71.5 654.5,-71.5 "/>
@@ -179,7 +179,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_heal_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_heal_ability.xhtml" target="_top" xlink:title="initiates a heal action when given a valid target">
 <polygon fill="white" stroke="black" points="672.5,-0.5 672.5,-90.5 778.5,-90.5 778.5,-0.5 672.5,-0.5"/>
 <text text-anchor="middle" x="725.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HealAbility</text>
 <polyline fill="none" stroke="black" points="672.5,-71.5 778.5,-71.5 "/>
@@ -199,7 +199,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_move_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_move_ability.xhtml" target="_top" xlink:title="initiates a move action when given a valid target">
 <polygon fill="white" stroke="black" points="797,-0.5 797,-90.5 906,-90.5 906,-0.5 797,-0.5"/>
 <text text-anchor="middle" x="851.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAbility</text>
 <polyline fill="none" stroke="black" points="797,-71.5 906,-71.5 "/>
@@ -219,7 +219,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node8 -->
 <g id="node9" class="node"><title>Node8</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_patrol_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_patrol_ability.xhtml" target="_top" xlink:title="initiates a patrol action when given a valid target">
 <polygon fill="white" stroke="black" points="924.5,-0.5 924.5,-90.5 1036.5,-90.5 1036.5,-0.5 924.5,-0.5"/>
 <text text-anchor="middle" x="980.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PatrolAbility</text>
 <polyline fill="none" stroke="black" points="924.5,-71.5 1036.5,-71.5 "/>
@@ -239,7 +239,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node9 -->
 <g id="node10" class="node"><title>Node9</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_repair_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_repair_ability.xhtml" target="_top" xlink:title="initiates a repair action when given a valid target">
 <polygon fill="white" stroke="black" points="1054.5,-0.5 1054.5,-90.5 1168.5,-90.5 1168.5,-0.5 1054.5,-0.5"/>
 <text text-anchor="middle" x="1111.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RepairAbility</text>
 <polyline fill="none" stroke="black" points="1054.5,-71.5 1168.5,-71.5 "/>
@@ -259,7 +259,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node10 -->
 <g id="node11" class="node"><title>Node10</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_research_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_research_ability.xhtml" target="_top" xlink:title="initiates a research">
 <polygon fill="white" stroke="black" points="1186.5,-0.5 1186.5,-90.5 1314.5,-90.5 1314.5,-0.5 1186.5,-0.5"/>
 <text text-anchor="middle" x="1250.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchAbility</text>
 <polyline fill="none" stroke="black" points="1186.5,-71.5 1314.5,-71.5 "/>
@@ -279,7 +279,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node11 -->
 <g id="node12" class="node"><title>Node11</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_set_point_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_set_point_ability.xhtml" target="_top" xlink:title="sets the gather point on buildings">
 <polygon fill="white" stroke="black" points="1332.5,-0.5 1332.5,-90.5 1456.5,-90.5 1456.5,-0.5 1332.5,-0.5"/>
 <text text-anchor="middle" x="1394.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SetPointAbility</text>
 <polyline fill="none" stroke="black" points="1332.5,-71.5 1456.5,-71.5 "/>
@@ -299,7 +299,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node12 -->
 <g id="node13" class="node"><title>Node12</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_train_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_train_ability.xhtml" target="_top" xlink:title="buildings train new objects">
 <polygon fill="white" stroke="black" points="1475,-0.5 1475,-90.5 1582,-90.5 1582,-0.5 1475,-0.5"/>
 <text text-anchor="middle" x="1528.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TrainAbility</text>
 <polyline fill="none" stroke="black" points="1475,-71.5 1582,-71.5 "/>
@@ -319,7 +319,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node13 -->
 <g id="node14" class="node"><title>Node13</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_ungarrison_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_ungarrison_ability.xhtml" target="_top" xlink:title="ability to ungarrision a building">
 <polygon fill="white" stroke="black" points="1600,-0.5 1600,-90.5 1733,-90.5 1733,-0.5 1600,-0.5"/>
 <text text-anchor="middle" x="1666.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UngarrisonAbility</text>
 <polyline fill="none" stroke="black" points="1600,-71.5 1733,-71.5 "/>

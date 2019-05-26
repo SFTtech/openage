@@ -1,4 +1,4 @@
 <map id="openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;" name="openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,187,516"/>
+<area shape="rect" id="node1" title="(Quite) efficient heap implementation." alt="" coords="5,145,187,516"/>
 <area shape="rect" id="node2" title=" " alt="" coords="60,5,132,83"/>
 </map>

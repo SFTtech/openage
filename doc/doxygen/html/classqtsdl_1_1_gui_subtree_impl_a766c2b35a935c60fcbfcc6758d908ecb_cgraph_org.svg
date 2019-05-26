@@ -48,7 +48,7 @@
 </g>
 <!-- Node79 -->
 <g id="node14" class="node"><title>Node79</title>
-<g id="a_node14"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="159,-64.5 159,-94.5 291,-94.5 291,-64.5 159,-64.5"/>
 <text text-anchor="start" x="167" y="-82.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemBase</text>
 <text text-anchor="middle" x="225" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node69 -->
 <g id="node4" class="node"><title>Node69</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title="std::for_each except just on containers.">
 <polygon fill="white" stroke="black" points="345.5,-119 345.5,-138 460.5,-138 460.5,-119 345.5,-119"/>
 <text text-anchor="middle" x="403" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>
@@ -229,7 +229,7 @@
 </g>
 <!-- Node80 -->
 <g id="node15" class="node"><title>Node80</title>
-<g id="a_node15"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="337,-64.5 337,-94.5 469,-94.5 469,-64.5 337,-64.5"/>
 <text text-anchor="start" x="345" y="-82.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 <text text-anchor="middle" x="403" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>

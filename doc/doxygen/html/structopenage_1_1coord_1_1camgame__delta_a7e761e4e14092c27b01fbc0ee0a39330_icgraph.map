@@ -1,5 +1,5 @@
 <map id="openage::coord::camgame_delta::to_phys3" name="openage::coord::camgame_delta::to_phys3">
-<area shape="rect" id="node1" title=" " alt="" coords="219,39,395,80"/>
+<area shape="rect" id="node1" title="There are infinite solutions to this conversion problem because a 2D coordinate is converted into a 3..." alt="" coords="219,39,395,80"/>
 <area shape="rect" id="node2" href="$structopenage_1_1coord_1_1viewport__delta.xhtml#afae32b811af22b8689e65490ee0bd6ad" title=" " alt="" coords="5,5,171,47"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1input__delta.xhtml#a508c2df08f42b8754cc07ed1e4c6f309" title=" " alt="" coords="15,71,161,112"/>
 </map>

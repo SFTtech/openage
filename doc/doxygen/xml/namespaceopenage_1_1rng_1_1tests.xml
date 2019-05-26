@@ -10,9 +10,9 @@
         <name>num_rand</name>
         <initializer>= (1 &lt;&lt; 18)</initializer>
         <briefdescription>
+<para>This is the number of generation repetitions. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is the number of generation repetitions </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -32,9 +32,9 @@
         <name>difference_factor</name>
         <initializer>= 0.1</initializer>
         <briefdescription>
+<para>Allow the result to be in this range of the expected perfect distribution. </para>
         </briefdescription>
         <detaileddescription>
-<para>Allow the result to be in this range of the expected perfect distribution. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -51,9 +51,9 @@
         <argsstring>()</argsstring>
         <name>freq_dist</name>
         <briefdescription>
+<para>Tests the distribution of the bit generator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests the distribution of the bit generator.</para>
 <para>We generate many many random numbers, and select a bucket by it. After n random numbers, each bucket should have been selected n/bucket_count times. </para>
         </detaileddescription>
         <inbodydescription>
@@ -73,9 +73,9 @@
         <argsstring>()</argsstring>
         <name>bool_dist</name>
         <briefdescription>
+<para>Tests the distribution of the boolean generation. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests the distribution of the boolean generation.</para>
 <para>For n draws it should result in n/2 trues and n/2 falses. </para>
         </detaileddescription>
         <inbodydescription>
@@ -94,9 +94,9 @@
         <argsstring>()</argsstring>
         <name>real_dist</name>
         <briefdescription>
+<para>Tests the distribution of the floating point numbers. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests the distribution of the floating point numbers.</para>
 <para>Perform the test by placing the [0, 1] range into buckets. each bucket should be drawn n/bucket_count times.</para>
 <para>Also, the sum of all numbers drawn should be n/2. </para>
         </detaileddescription>
@@ -117,9 +117,9 @@
         <argsstring>()</argsstring>
         <name>reproduce</name>
         <briefdescription>
+<para>Tests reproducibility. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests reproducibility. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -137,9 +137,9 @@
         <argsstring>()</argsstring>
         <name>serialize</name>
         <briefdescription>
+<para>Tests the serializing functionality. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests the serializing functionality. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,9 +156,9 @@
         <argsstring>()</argsstring>
         <name>fill</name>
         <briefdescription>
+<para>Tests filling integers. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests filling integers. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -176,9 +176,9 @@
         <argsstring>()</argsstring>
         <name>fill_real</name>
         <briefdescription>
+<para>Tests filling doubles. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests filling doubles. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

@@ -1,3 +1,3 @@
 <map id="openage::PopulationTracker" name="openage::PopulationTracker">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,188,332"/>
+<area shape="rect" id="node1" title="Keeps track of the population size and capacity." alt="" coords="5,5,188,332"/>
 </map>

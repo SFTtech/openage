@@ -1,4 +1,4 @@
 <map id="openage::util::VariableBase::get" name="openage::util::VariableBase::get">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,212,32"/>
+<area shape="rect" id="node1" title="returns the stored value throws an exception if the template does not match the set type" alt="" coords="5,5,212,32"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1_variable.xhtml#aa25af78b5870a920fb9a2ea04173881b" title=" " alt="" coords="260,5,437,32"/>
 </map>

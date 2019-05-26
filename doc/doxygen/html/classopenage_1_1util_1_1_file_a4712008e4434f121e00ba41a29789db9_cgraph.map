@@ -1,6 +1,6 @@
 <map id="openage::util::File::get_lines" name="openage::util::File::get_lines">
 <area shape="rect" id="node1" title=" " alt="" coords="5,35,131,76"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885" title=" " alt="" coords="213,5,338,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885" title="Read data from the file and return a string." alt="" coords="213,5,338,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="179,71,372,98"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="420,71,547,98"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="420,71,547,98"/>
 </map>

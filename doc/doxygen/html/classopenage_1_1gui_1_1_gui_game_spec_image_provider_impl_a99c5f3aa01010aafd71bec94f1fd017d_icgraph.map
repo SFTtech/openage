@@ -2,6 +2,6 @@
 <area shape="rect" id="node1" title=" " alt="" coords="503,85,692,141"/>
 <area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml#a42715118777dc5a4228e3bed2bb9d5cd" title=" " alt="" coords="262,5,451,61"/>
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl.xhtml#ad8530c9e494933db31e465f6947574d5" title=" " alt="" coords="259,85,455,141"/>
-<area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a42ec51b02960edb6ef405251a640bd5f" title=" " alt="" coords="262,165,451,221"/>
-<area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" title=" " alt="" coords="5,173,211,214"/>
+<area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a42ec51b02960edb6ef405251a640bd5f" title="Set to every sprite the &#39;missing texture&#39; from current spec." alt="" coords="262,165,451,221"/>
+<area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" title="Sets the game spec to load textures from." alt="" coords="5,173,211,214"/>
 </map>

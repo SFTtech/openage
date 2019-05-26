@@ -1,4 +1,4 @@
 <map id="openage::GameControl" name="openage::GameControl">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,232,457"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_hud_handler.xhtml" title=" " alt="" coords="45,5,192,97"/>
+<area shape="rect" id="node1" title="connects the gui system with the game engine switches between contexts such as editor mode and action..." alt="" coords="5,145,232,457"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_hud_handler.xhtml" title="superclass for all possible drawing operations in the game." alt="" coords="45,5,192,97"/>
 </map>

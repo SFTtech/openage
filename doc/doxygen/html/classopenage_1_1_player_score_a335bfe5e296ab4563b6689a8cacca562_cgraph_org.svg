@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 558,-84 558,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Calculates the total score from the sub&#45;scores.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-27.5 0,-57.5 113,-57.5 113,-27.5 0,-27.5"/>
 <text text-anchor="start" x="8" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PlayerScore</text>
 <text text-anchor="middle" x="56.5" y="-34.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_score</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd" target="_top" xlink:title="Calculates the total score from the sub&#45;scores.">
 <polygon fill="white" stroke="black" points="294,-49.5 294,-79.5 414,-79.5 414,-49.5 294,-49.5"/>
 <text text-anchor="start" x="302" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score::update</text>
 <text text-anchor="middle" x="354" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_score</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_team_score.xhtml#ad1af15c7921ffc8ffc57c04b3c8084ff" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_team_score.xhtml#ad1af15c7921ffc8ffc57c04b3c8084ff" target="_top" xlink:title="Calculates the total score from the sub&#45;scores.">
 <polygon fill="white" stroke="black" points="149,-5.5 149,-35.5 258,-35.5 258,-5.5 149,-5.5"/>
 <text text-anchor="start" x="157" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TeamScore</text>
 <text text-anchor="middle" x="203.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_score</text>

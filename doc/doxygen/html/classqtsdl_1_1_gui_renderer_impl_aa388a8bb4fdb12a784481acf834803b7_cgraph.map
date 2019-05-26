@@ -1,4 +1,4 @@
 <map id="qtsdl::GuiRendererImpl::reinit_fbo_if_needed" name="qtsdl::GuiRendererImpl::reinit_fbo_if_needed">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node1" title="If size changes, then create a new FBO for GUI rendering." alt="" coords="5,5,160,47"/>
 <area shape="rect" id="node2" href="$classqtsdl_1_1_gui_rendering_setup_routines.xhtml#aa429b17e8b2687c755e3db6de5840515" title=" " alt="" coords="208,5,379,47"/>
 </map>

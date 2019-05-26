@@ -86,7 +86,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title="Data associated with a log level.">
 <polygon fill="white" stroke="black" points="15.5,-0.5 15.5,-68.5 112.5,-68.5 112.5,-0.5 15.5,-0.5"/>
 <text text-anchor="start" x="23.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <text text-anchor="middle" x="64" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">_value</text>
@@ -104,7 +104,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="structopenage_1_1util_1_1tests_1_1testenum__value.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="structopenage_1_1util_1_1tests_1_1testenum__value.xhtml" target="_top" xlink:title="pxd:">
 <polygon fill="white" stroke="black" points="160,-0.5 160,-68.5 260,-68.5 260,-0.5 160,-0.5"/>
 <text text-anchor="start" x="168" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::tests</text>
 <text text-anchor="middle" x="210" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">::testenum_value</text>

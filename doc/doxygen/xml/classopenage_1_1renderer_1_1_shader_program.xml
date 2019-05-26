@@ -372,9 +372,10 @@
           <declname>vals</declname>
         </param>
         <briefdescription>
+<para>Creates a new uniform input (a binding of uniform names to values) for this shader and optionally sets some uniform values. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a new uniform input (a binding of uniform names to values) for this shader and optionally sets some uniform values. To do that, just pass two arguments -<itemizedlist>
+<para>To do that, just pass two arguments -<itemizedlist>
 <listitem><para>a string literal and the value for that uniform for any uniform you want to set. For example new_uniform_input(&quot;color&quot;, { 0.5, 0.5, 0.5, 1.0 }, &quot;num&quot;, 5) will set &quot;color&quot; to { 0.5, 0.5, 0.5, 0.5 } and &quot;num&quot; to 5. Types are important here and a type mismatch between the uniform variable and the input might result in an error. </para>
 </listitem></itemizedlist>
 </para>
@@ -417,9 +418,10 @@
           <declname>vals</declname>
         </param>
         <briefdescription>
+<para>Updates the given uniform input with new uniform values similarly to new_uniform_input. </para>
         </briefdescription>
         <detaileddescription>
-<para>Updates the given uniform input with new uniform values similarly to new_uniform_input. For example, update_uniform_input(in, &quot;awesome&quot;, true) will set the &quot;awesome&quot; uniform in addition to whatever values were in the uniform input before. </para>
+<para>For example, update_uniform_input(in, &quot;awesome&quot;, true) will set the &quot;awesome&quot; uniform in addition to whatever values were in the uniform input before. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -434,9 +436,10 @@
         <name>vertex_attributes</name>
         <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a9a35d65a5b9222e45bb82d4d7f5c4af4">vertex_attributes</reimplementedby>
         <briefdescription>
+<para>Returns a list of <emphasis>active</emphasis> vertex attributes in the shader program. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a list of <emphasis>active</emphasis> vertex attributes in the shader program. Active attributes are those which have an effect on the shader output, meaning they are included in the output calculation and are not unused. Inactive attributes may or may not be present in the list - in particular, in the OpenGL implementation they will most likely be missing. The returned value is a map from the attribute location to its type. Locations need not be consecutive. </para>
+<para>Active attributes are those which have an effect on the shader output, meaning they are included in the output calculation and are not unused. Inactive attributes may or may not be present in the list - in particular, in the OpenGL implementation they will most likely be missing. The returned value is a map from the attribute location to its type. Locations need not be consecutive. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

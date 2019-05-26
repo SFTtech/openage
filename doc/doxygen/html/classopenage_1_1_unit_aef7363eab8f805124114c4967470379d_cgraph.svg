@@ -57,7 +57,7 @@ var sectionId = 'dynsection-11';
 <polygon fill="white" stroke="none" points="-4,4 -4,-106 612,-106 612,4 -4,4"/>
 <!-- Node53 -->
 <g id="node1" class="node"><title>Node53</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="applies one command using a chosen ability locks the command queue mutex while operating">
 <polygon fill="#bfbfbf" stroke="black" points="0,-50 0,-69 130,-69 130,-50 0,-50"/>
 <text text-anchor="middle" x="65" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::apply_cmd</text>
 </a>
@@ -65,7 +65,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node54 -->
 <g id="node2" class="node"><title>Node54</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_command.xhtml#acbb97472983c470bf9ba48fa9297c970" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_command.xhtml#acbb97472983c470bf9ba48fa9297c970" target="_top" xlink:title="read the range setting">
 <polygon fill="white" stroke="black" points="166,-72 166,-91 312,-91 312,-72 166,-72"/>
 <text text-anchor="middle" x="239" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Command::has_flag</text>
 </a>
@@ -78,7 +78,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node55 -->
 <g id="node3" class="node"><title>Node55</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#a9f53ef015fca7c42ff3bf9d0779145a3" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#a9f53ef015fca7c42ff3bf9d0779145a3" target="_top" xlink:title="removes all actions above and including the first interuptable action this will stop any of the units...">
 <polygon fill="white" stroke="black" points="188.5,-22.5 188.5,-52.5 289.5,-52.5 289.5,-22.5 188.5,-22.5"/>
 <text text-anchor="start" x="196.5" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::stop</text>
 <text text-anchor="middle" x="239" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">_actions</text>
@@ -92,7 +92,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node56 -->
 <g id="node4" class="node"><title>Node56</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title="returns whether attribute is available">
 <polygon fill="white" stroke="black" points="349.5,-71.5 349.5,-101.5 447.5,-101.5 447.5,-71.5 349.5,-71.5"/>
 <text text-anchor="start" x="357.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::has</text>
 <text text-anchor="middle" x="398.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node58 -->
 <g id="node6" class="node"><title>Node58</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_unit.xhtml#a238fb029bd4cc32e393506533facd976" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_unit.xhtml#a238fb029bd4cc32e393506533facd976" target="_top" xlink:title="removes all gather actions without calling their on_complete actions this cancels the gathering actio...">
 <polygon fill="white" stroke="black" points="348,-22.5 348,-52.5 449,-52.5 449,-22.5 348,-22.5"/>
 <text text-anchor="start" x="356" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::stop</text>
 <text text-anchor="middle" x="398.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">_gather</text>
@@ -120,7 +120,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node59 -->
 <g id="node7" class="node"><title>Node59</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_unit.xhtml#aae0b3f53cb1d75823391322876d199ef" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_unit.xhtml#aae0b3f53cb1d75823391322876d199ef" target="_top" xlink:title="erase from action specified by func to the end of the stack all actions erased will have the on_compl...">
 <polygon fill="white" stroke="black" points="493,-0.5 493,-30.5 600,-30.5 600,-0.5 493,-0.5"/>
 <text text-anchor="start" x="501" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::erase</text>
 <text text-anchor="middle" x="546.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_after</text>
@@ -134,7 +134,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node57 -->
 <g id="node5" class="node"><title>Node57</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title="Check if the attribute of the given type exists.">
 <polygon fill="white" stroke="black" points="485,-77 485,-96 608,-96 608,-77 485,-77"/>
 <text text-anchor="middle" x="546.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::has</text>
 </a>

@@ -82,9 +82,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A root item that loads its code from source url. </para>
     </briefdescription>
     <detaileddescription>
-<para>A root item that loads its code from source url.</para>
 <para>rootdir is the qml file root folder which is watched for changes. </para>
     </detaileddescription>
     <collaborationgraph>

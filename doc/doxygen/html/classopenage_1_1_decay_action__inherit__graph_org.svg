@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-475 119,-475 119,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="plays a fixed number of frames for the units dying animation">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-134.5 115,-134.5 115,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="57.5" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::DecayAction</text>
 <polyline fill="none" stroke="black" points="0,-115.5 115,-115.5 "/>
@@ -30,7 +30,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_action.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_action.xhtml" target="_top" xlink:title="Actions can be pushed onto any units action stack.">
 <polygon fill="white" stroke="black" points="3.5,-171.5 3.5,-470.5 111.5,-470.5 111.5,-171.5 3.5,-171.5"/>
 <text text-anchor="middle" x="57.5" y="-458.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAction</text>
 <polyline fill="none" stroke="black" points="3.5,-451.5 111.5,-451.5 "/>

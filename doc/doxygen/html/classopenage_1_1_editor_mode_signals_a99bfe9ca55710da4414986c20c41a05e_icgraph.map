@@ -1,4 +1,4 @@
 <map id="openage::EditorModeSignals::on_current_player_name_changed" name="openage::EditorModeSignals::on_current_player_name_changed">
 <area shape="rect" id="node1" title=" " alt="" coords="199,5,387,61"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" title=" " alt="" coords="5,13,151,54"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" title="Called when the GameControl is set in QML." alt="" coords="5,13,151,54"/>
 </map>

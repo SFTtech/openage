@@ -98,13 +98,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1compress_1_1_l
 </div><!--header-->
 <div class="contents">
 
+<p>Wraps a <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml">LZXDStream</a> object by reference; exposing <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml">LZXDStream</a> directly would cause too much header pollution due to its many member objects, and their member objects.  
+ <a href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="lzxd_8h_source.xhtml">lzxd.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::compress::LZXDecompressor:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -112,8 +116,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abfa293c286465cc46f6a84bda5a8f908"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#abfa293c286465cc46f6a84bda5a8f908">LZXDecompressor</a> (<a class="el" href="namespaceopenage_1_1util_1_1compress.xhtml#a129fc036a27a40e60785ce5bb1aa5627">read_callback_t</a> read_callback, unsigned int window_bits=21, unsigned int reset_interval=0)</td></tr>
 <tr class="separator:abfa293c286465cc46f6a84bda5a8f908"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e8124b4f83027be7526c7fc25fd801d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#a6e8124b4f83027be7526c7fc25fd801d">~LZXDecompressor</a> ()</td></tr>
+<tr class="memdesc:a6e8124b4f83027be7526c7fc25fd801d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the internally-allocated <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml">LZXDStream</a> object.  <a href="#a6e8124b4f83027be7526c7fc25fd801d">More...</a><br /></td></tr>
 <tr class="separator:a6e8124b4f83027be7526c7fc25fd801d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad03ce7fd20c3abe824f61dd382bab43c"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c">decompress_next_frame</a> (unsigned char *output_buf)</td></tr>
+<tr class="memdesc:ad03ce7fd20c3abe824f61dd382bab43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decompresses a single 32-KiB frame.  <a href="#ad03ce7fd20c3abe824f61dd382bab43c">More...</a><br /></td></tr>
 <tr class="separator:ad03ce7fd20c3abe824f61dd382bab43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
@@ -133,10 +139,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a476d05993567d0c02d6ced2e6216795e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Wraps a <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml">LZXDStream</a> object by reference; exposing <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml">LZXDStream</a> directly would cause too much header pollution due to its many member objects, and their member objects.</p>
+<div class="textblock"><p>Wraps a <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml">LZXDStream</a> object by reference; exposing <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml">LZXDStream</a> directly would cause too much header pollution due to its many member objects, and their member objects. </p>
 <p>pxd:</p>
-<p>cppclass <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml">LZXDecompressor</a>: <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml">LZXDecompressor</a>( Func2[size_t, unsigned char *, size_t], unsigned int window_bits, unsigned int reset_interval ) except +</p>
-<p>unsigned <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c">decompress_next_frame(unsigned char *out_buf)</a> except + </p>
+<p>cppclass <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml" title="Wraps a LZXDStream object by reference; exposing LZXDStream directly would cause too much header poll...">LZXDecompressor</a>: <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml" title="Wraps a LZXDStream object by reference; exposing LZXDStream directly would cause too much header poll...">LZXDecompressor</a>( Func2[size_t, unsigned char *, size_t], unsigned int window_bits, unsigned int reset_interval ) except +</p>
+<p>unsigned <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" title="Decompresses a single 32-KiB frame.">decompress_next_frame(unsigned char *out_buf)</a> except + </p>
 
 <p class="definition">Definition at line <a class="el" href="lzxd_8h_source.xhtml#l00035">35</a> of file <a class="el" href="lzxd_8h_source.xhtml">lzxd.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -191,6 +197,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Frees the internally-allocated <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml">LZXDStream</a> object. </p>
 
 <p class="definition">Definition at line <a class="el" href="lzxd_8cpp_source.xhtml#l00923">923</a> of file <a class="el" href="lzxd_8cpp_source.xhtml">lzxd.cpp</a>.</p>
@@ -268,13 +275,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Decompresses a single 32-KiB frame. Data from the input stream is read as required from read_callback. The decoded frame is written to output_buf. output_buf must be at least LZX_FRAME_SIZE (32768) bytes in size.</p>
+
+<p>Decompresses a single 32-KiB frame. </p>
+<p>Data from the input stream is read as required from read_callback. The decoded frame is written to output_buf. output_buf must be at least LZX_FRAME_SIZE (32768) bytes in size.</p>
 <p>Returns 0 in case of EOF, and the size of the frame otherwise.</p>
 <p>On error, an exception is thrown. After that, the object shall be destroyed; every other operation on it may invoke undefined behavior. </p>
 
 <p class="definition">Definition at line <a class="el" href="lzxd_8cpp_source.xhtml#l00928">928</a> of file <a class="el" href="lzxd_8cpp_source.xhtml">lzxd.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;                                                                         {</div><div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#a476d05993567d0c02d6ced2e6216795e">stream</a>-&gt;<a class="code" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724">decompress_next_frame</a>(output_buf);</div><div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_xhtml_a476d05993567d0c02d6ced2e6216795e"><div class="ttname"><a href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#a476d05993567d0c02d6ced2e6216795e">openage::util::compress::LZXDecompressor::stream</a></div><div class="ttdeci">class LZXDStream * stream</div><div class="ttdef"><b>Definition:</b> <a href="lzxd_8h_source.xhtml#l00080">lzxd.h:80</a></div></div>
-<div class="ttc" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_xhtml_a12047565515e79d8fa7ae56c1459a724"><div class="ttname"><a href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724">openage::util::compress::LZXDStream::decompress_next_frame</a></div><div class="ttdeci">unsigned decompress_next_frame(unsigned char *output_buf)</div><div class="ttdef"><b>Definition:</b> <a href="lzxd_8cpp_source.xhtml#l00740">lzxd.cpp:740</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_xhtml_a12047565515e79d8fa7ae56c1459a724"><div class="ttname"><a href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724">openage::util::compress::LZXDStream::decompress_next_frame</a></div><div class="ttdeci">unsigned decompress_next_frame(unsigned char *output_buf)</div><div class="ttdoc">See the doc for LZXDecompressor::decompress_next_frame in lzxd.h.</div><div class="ttdef"><b>Definition:</b> <a href="lzxd_8cpp_source.xhtml#l00740">lzxd.cpp:740</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="lzxd_8cpp_source.xhtml#l00740">openage::util::compress::LZXDStream::decompress_next_frame()</a>, and <a class="el" href="lzxd_8h_source.xhtml#l00080">stream</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -282,7 +291,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_ad03ce7fd20c3abe824f61dd382bab43c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_ad03ce7fd20c3abe824f61dd382bab43c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>

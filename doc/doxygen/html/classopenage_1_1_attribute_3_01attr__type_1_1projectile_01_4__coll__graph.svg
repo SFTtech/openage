@@ -26,7 +26,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unshared_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unshared_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated unshared attribute.">
 <polygon fill="white" stroke="black" points="0,-144 0,-223 151,-223 151,-144 0,-144"/>
 <text text-anchor="start" x="8" y="-211" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnsharedAttribute</text>
 <text text-anchor="middle" x="75.5" y="-200" font-family="Helvetica,sans-Serif" font-size="10.00">Container</text>
@@ -45,7 +45,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated attribute.">
 <polygon fill="white" stroke="black" points="7,-266.5 7,-367.5 144,-367.5 144,-266.5 7,-266.5"/>
 <text text-anchor="middle" x="75.5" y="-355.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttributeContainer</text>
 <polyline fill="none" stroke="black" points="7,-348.5 144,-348.5 "/>
@@ -66,7 +66,7 @@
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit_reference.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit_reference.xhtml" target="_top" xlink:title="Reference to a single unit, which may have been removed from the game, check is_valid() before callin...">
 <polygon fill="white" stroke="black" points="169.5,-138.5 169.5,-228.5 289.5,-228.5 289.5,-138.5 169.5,-138.5"/>
 <text text-anchor="middle" x="229.5" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitReference</text>
 <polyline fill="none" stroke="black" points="169.5,-209.5 289.5,-209.5 "/>

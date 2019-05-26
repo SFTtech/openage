@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-548 150,-548 150,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Allows simple direct usage of StringFormatter.">
 <polygon fill="#bfbfbf" stroke="black" points="13,-0.5 13,-57.5 133,-57.5 133,-0.5 13,-0.5"/>
 <text text-anchor="middle" x="73" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Formatter</text>
 <polyline fill="none" stroke="black" points="13,-38.5 133,-38.5 "/>
@@ -53,7 +53,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml" target="_top" xlink:title="Wraps an output string stream, and provides all sorts of overloads for operator &lt;&lt;,...">
 <polygon fill="white" stroke="black" points="0,-343.5 0,-543.5 146,-543.5 146,-343.5 0,-343.5"/>
 <text text-anchor="start" x="8" y="-531.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="73" y="-520.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; ChildType &gt;</text>

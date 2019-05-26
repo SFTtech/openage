@@ -57,7 +57,7 @@ var sectionId = 'dynsection-3';
 <polygon fill="white" stroke="none" points="-4,4 -4,-111.5 815,-111.5 815,4 -4,4"/>
 <!-- Node6 -->
 <g id="node1" class="node"><title>Node6</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-33 0,-63 149,-63 149,-33 0,-33"/>
 <text text-anchor="start" x="8" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::StackAnalyzer</text>
 <text text-anchor="middle" x="74.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">::get_symbols</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8" target="_top" xlink:title="Returns the (demangled) symbol name for a given address.">
 <polygon fill="white" stroke="black" points="185,-38.5 185,-57.5 324,-57.5 324,-38.5 185,-38.5"/>
 <text text-anchor="middle" x="254.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::symbol_name</text>
 </a>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node9 -->
 <g id="node4" class="node"><title>Node9</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" target="_top" xlink:title="printf&#45;style to&#45;string formatting.">
 <polygon fill="white" stroke="black" points="533.5,-60.5 533.5,-79.5 643.5,-79.5 643.5,-60.5 533.5,-60.5"/>
 <text text-anchor="middle" x="588.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::sformat</text>
 </a>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node11 -->
 <g id="node6" class="node"><title>Node11</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title="Demangles a symbol name.">
 <polygon fill="white" stroke="black" points="360,-0.5 360,-19.5 480,-19.5 480,-0.5 360,-0.5"/>
 <text text-anchor="middle" x="420" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::demangle</text>
 </a>
@@ -124,7 +124,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node10 -->
 <g id="node5" class="node"><title>Node10</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="697,-60.5 697,-79.5 811,-79.5 811,-60.5 697,-60.5"/>
 <text text-anchor="middle" x="754" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>
@@ -150,7 +150,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node13 -->
 <g id="node8" class="node"><title>Node13</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="706.5,-0.5 706.5,-19.5 801.5,-19.5 801.5,-0.5 706.5,-0.5"/>
 <text text-anchor="middle" x="754" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

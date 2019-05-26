@@ -73,7 +73,7 @@
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="940.5,-32 940.5,-51 1027.5,-51 1027.5,-32 940.5,-32"/>
 <text text-anchor="middle" x="984" y="-39" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -99,7 +99,7 @@
 </g>
 <!-- Node7 -->
 <g id="node6" class="node"><title>Node7</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1277.5,-157 1277.5,-176 1372.5,-176 1372.5,-157 1277.5,-157"/>
 <text text-anchor="middle" x="1325" y="-164" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -157,7 +157,7 @@
 </g>
 <!-- Node12 -->
 <g id="node11" class="node"><title>Node12</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" target="_top" xlink:title="Checks whether all objects that have been registered via add_py_if_component have been properly initi...">
 <polygon fill="white" stroke="black" points="591,-195.5 591,-225.5 698,-225.5 698,-195.5 591,-195.5"/>
 <text text-anchor="start" x="599" y="-213.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="644.5" y="-202.5" font-family="Helvetica,sans-Serif" font-size="10.00">::check</text>
@@ -197,7 +197,7 @@
 </g>
 <!-- Node14 -->
 <g id="node13" class="node"><title>Node14</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8" target="_top" xlink:title="Returns the (demangled) symbol name for a given address.">
 <polygon fill="white" stroke="black" points="749,-201 749,-220 888,-220 888,-201 749,-201"/>
 <text text-anchor="middle" x="818.5" y="-208" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::symbol_name</text>
 </a>
@@ -224,7 +224,7 @@
 </g>
 <!-- Node16 -->
 <g id="node15" class="node"><title>Node16</title>
-<g id="a_node15"><a xlink:href="namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" target="_top" xlink:title="printf&#45;style to&#45;string formatting.">
 <polygon fill="white" stroke="black" points="1101,-223 1101,-242 1211,-242 1211,-223 1101,-223"/>
 <text text-anchor="middle" x="1156" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::sformat</text>
 </a>
@@ -237,7 +237,7 @@
 </g>
 <!-- Node18 -->
 <g id="node17" class="node"><title>Node18</title>
-<g id="a_node17"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title="Demangles a symbol name.">
 <polygon fill="white" stroke="black" points="924,-157 924,-176 1044,-176 1044,-157 924,-157"/>
 <text text-anchor="middle" x="984" y="-164" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::demangle</text>
 </a>
@@ -255,7 +255,7 @@
 </g>
 <!-- Node17 -->
 <g id="node16" class="node"><title>Node17</title>
-<g id="a_node16"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="1268,-223 1268,-242 1382,-242 1382,-223 1268,-223"/>
 <text text-anchor="middle" x="1325" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>

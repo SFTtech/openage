@@ -57,7 +57,7 @@ var sectionId = 'dynsection-9';
 <polygon fill="white" stroke="none" points="-4,4 -4,-222.5 1545,-222.5 1545,4 -4,4"/>
 <!-- Node44 -->
 <g id="node1" class="node"><title>Node44</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Sets the game spec to load textures from.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-108 0,-138 154,-138 154,-108 0,-108"/>
 <text text-anchor="start" x="8" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="77" y="-115" font-family="Helvetica,sans-Serif" font-size="10.00">Link::set_game_spec</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node46 -->
 <g id="node3" class="node"><title>Node46</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a42ec51b02960edb6ef405251a640bd5f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a42ec51b02960edb6ef405251a640bd5f" target="_top" xlink:title="Set to every sprite the &#39;missing texture&#39; from current spec.">
 <polygon fill="white" stroke="black" points="196,-127.5 196,-168.5 338,-168.5 338,-127.5 196,-127.5"/>
 <text text-anchor="start" x="204" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="204" y="-145.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::on_game</text>
@@ -95,7 +95,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node48 -->
 <g id="node5" class="node"><title>Node48</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" target="_top" xlink:title="Unblocks the provider.">
 <polygon fill="white" stroke="black" points="380,-51.5 380,-92.5 522,-92.5 522,-51.5 380,-51.5"/>
 <text text-anchor="start" x="388" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="388" y="-69.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::on_game</text>
@@ -110,7 +110,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node58 -->
 <g id="node15" class="node"><title>Node58</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" target="_top" xlink:title="Pass loaded assets to the image provider.">
 <polygon fill="white" stroke="black" points="190,-40 190,-70 344,-70 344,-40 190,-40"/>
 <text text-anchor="start" x="198" y="-58" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="267" y="-47" font-family="Helvetica,sans-Serif" font-size="10.00">Link::on_game_spec_loaded</text>
@@ -139,7 +139,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node49 -->
 <g id="node6" class="node"><title>Node49</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" target="_top" xlink:title="Change the already produced texture handles to use new source.">
 <polygon fill="white" stroke="black" points="558,-51.5 558,-92.5 700,-92.5 700,-51.5 558,-51.5"/>
 <text text-anchor="start" x="566" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="566" y="-69.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::migrate</text>
@@ -182,7 +182,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node52 -->
 <g id="node9" class="node"><title>Node52</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title="The sourceSize property of the Image QML element ends up here for checking.">
 <polygon fill="white" stroke="black" points="931.5,-61 931.5,-91 1038.5,-91 1038.5,-61 931.5,-61"/>
 <text text-anchor="start" x="939.5" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::aspect</text>
 <text text-anchor="middle" x="985" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">_fit_size</text>
@@ -224,7 +224,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node54 -->
 <g id="node11" class="node"><title>Node54</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title="Get the subtexture coordinates by its id.">
 <polygon fill="white" stroke="black" points="1268.5,-83 1268.5,-113 1379.5,-113 1379.5,-83 1268.5,-83"/>
 <text text-anchor="start" x="1276.5" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="1324" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00">_subtexture</text>

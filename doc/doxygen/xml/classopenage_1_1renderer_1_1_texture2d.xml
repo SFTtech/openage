@@ -59,9 +59,9 @@
         <name>into_data</name>
         <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1ab2038754e208bb1929a244dbf29f2b6b">into_data</reimplementedby>
         <briefdescription>
+<para>Copies this texture&apos;s data from graphics hardware into a CPU-accessible Texture2dData buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Copies this texture&apos;s data from graphics hardware into a CPU-accessible Texture2dData buffer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -77,9 +77,10 @@
           <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref> const &amp;</type>
         </param>
         <briefdescription>
+<para>Uploads the provided data into the GPU texture storage. </para>
         </briefdescription>
         <detaileddescription>
-<para>Uploads the provided data into the GPU texture storage. The format has to match the format this <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> was originally created with. </para>
+<para>The format has to match the format this <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> was originally created with. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -107,9 +108,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>An abstract base for a handle to a texture buffer allocated in graphics hardware. </para>
     </briefdescription>
     <detaileddescription>
-<para>An abstract base for a handle to a texture buffer allocated in graphics hardware. Can be obtained by passing texture data to the renderer. </para>
+<para>Can be obtained by passing texture data to the renderer. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4793">

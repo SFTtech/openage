@@ -64,9 +64,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Simple pure log source class with a string name. </para>
     </briefdescription>
     <detaileddescription>
-<para>Simple pure log source class with a string name.</para>
 <para>pxd:</para>
 <para>cppclass NamedLogSource(LogSource): NamedLogSource(string name) except + </para>
     </detaileddescription>

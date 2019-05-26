@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 376,-35 376,4 -4,4"/>
 <!-- Node17 -->
 <g id="node1" class="node"><title>Node17</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Start to load audio chunks beginning at the given chunk index.">
 <polygon fill="#bfbfbf" stroke="black" points="204,-0.5 204,-30.5 372,-30.5 372,-0.5 204,-0.5"/>
 <text text-anchor="start" x="212" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicResource</text>
 <text text-anchor="middle" x="288" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_preloading</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node18 -->
 <g id="node2" class="node"><title>Node18</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml#a92355342f8790b7d89431544dd0c5ac0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml#a92355342f8790b7d89431544dd0c5ac0" target="_top" xlink:title="Returns a pointer to the sample buffer at the given position and the number of int16_t values that ar...">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 168,-30.5 168,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicResource</text>
 <text text-anchor="middle" x="84" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-227 135,-227 135,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A set of amounts of game resources.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-222.5 131,-222.5 131,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="65.5" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <polyline fill="none" stroke="black" points="0,-203.5 131,-203.5 "/>

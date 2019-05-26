@@ -313,9 +313,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Contains the filesystem-like object abstraction for C++. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains the filesystem-like object abstraction for C++. With that, filesystem access can be dispatched for transparent archive access, union mounts and more. </para>
+<para>With that, filesystem access can be dispatched for transparent archive access, union mounts and more. </para>
     </detaileddescription>
     <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/directory.cpp" line="42" column="1"/>
   </compounddef>

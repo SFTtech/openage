@@ -1,6 +1,6 @@
 <map id="openage.util.fslike.test.test_append" name="openage.util.fslike.test.test_append">
 <area shape="rect" id="node1" title="Test the content append modes." alt="" coords="5,5,184,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1testing.xhtml#a2800c6619c18337197b7ad519bbad072" title=" " alt="" coords="232,5,429,47"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="477,13,604,39"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="477,13,604,39"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="652,13,845,39"/>
 </map>

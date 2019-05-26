@@ -1,12 +1,12 @@
 <map id="openage::Player::can_make" name="openage::Player::can_make">
-<area shape="rect" id="node1" title=" " alt="" coords="5,130,189,157"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a5511f9f158fdeabca07be9d5314d7c38" title=" " alt="" coords="258,5,403,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" title=" " alt="" coords="237,71,424,98"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_player.xhtml#a03454af8fd68e803804e2619b62b7231" title=" " alt="" coords="259,123,402,164"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_player.xhtml#a2befde4e71e0efad0e77bf8525311a79" title=" " alt="" coords="259,188,402,229"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" title=" " alt="" coords="257,254,405,281"/>
+<area shape="rect" id="node1" title="Check if the player can make a new unit of the given type." alt="" coords="5,130,189,157"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a5511f9f158fdeabca07be9d5314d7c38" title="Check if the player has enough resources to deduct the given amount." alt="" coords="258,5,403,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" title="Returns the cost." alt="" coords="237,71,424,98"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_player.xhtml#a03454af8fd68e803804e2619b62b7231" title="Get the number of units the player has for each unit type id." alt="" coords="259,123,402,164"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_player.xhtml#a2befde4e71e0efad0e77bf8525311a79" title="Get the number of units the player has being made for each unit type id." alt="" coords="259,188,402,229"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" title="gets the unique id of this unit type" alt="" coords="257,254,405,281"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_resource_bundle.xhtml#a386ff157dd71560a8c9b1578fe5386e6" title=" " alt="" coords="472,13,675,39"/>
 <area shape="rect" id="node5" href="$classopenage_1_1_resource_bundle.xhtml#aec4c3c3cae1b78ff42a0bc533929e51c" title=" " alt="" coords="486,64,661,105"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" title=" " alt="" coords="502,129,645,171"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" title="odo remove, here for backwards compatibility" alt="" coords="723,64,897,105"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" title="The number of units considered part of the workforce." alt="" coords="502,129,645,171"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" title=" " alt="" coords="723,64,897,105"/>
 </map>

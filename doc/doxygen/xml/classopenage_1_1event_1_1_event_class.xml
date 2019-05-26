@@ -19,47 +19,50 @@
         <enumvalue id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a46e158d5ce615a4f0057515b9a242188" prot="public">
           <name>DEPENDENCY</name>
           <briefdescription>
+<para>Such events are emitted when a modification is done on a target. </para>
           </briefdescription>
           <detaileddescription>
-<para>Such events are emitted when a modification is done on a target. The execution time is calculated from the modification time and custom code. </para>
+<para>The execution time is calculated from the modification time and custom code. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a66ce7f5b73a0a164407078b598f45e09" prot="public">
           <name>DEPENDENCY_IMMEDIATELY</name>
           <briefdescription>
+<para>Like DEPENDENCY, but does not use a recalculated time, instead uses the change-time only. </para>
           </briefdescription>
           <detaileddescription>
-<para>Like DEPENDENCY, but does not use a recalculated time, instead uses the change-time only. Behaves exactly like DEPENDENCY, if the DEPENDENCY-event is in the same execution frame. </para>
+<para>Behaves exactly like DEPENDENCY, if the DEPENDENCY-event is in the same execution frame. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717ab8cd801b107a9a8f62c5b61ea5646620" prot="public">
           <name>TRIGGER</name>
           <briefdescription>
+<para>Will be executed when the target trigger() function is called. </para>
           </briefdescription>
           <detaileddescription>
-<para>Will be executed when the target trigger() function is called. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a5be68175be14dfaa080165456c2e9555" prot="public">
           <name>REPEAT</name>
           <briefdescription>
+<para>Will be triggered unconditionally at the set time, &quot;at&quot; is the time that was set as return of predict_invoke_time. </para>
           </briefdescription>
           <detaileddescription>
-<para>Will be triggered unconditionally at the set time, &quot;at&quot; is the time that was set as return of predict_invoke_time. This event will be issued again until predict_invoke_time returns <ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">min()</ref>. To execute Something only once (i.E. triggered somewhere from the logic and not based on time, use ONCE </para>
+<para>This event will be issued again until predict_invoke_time returns <ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">min()</ref>. To execute Something only once (i.E. triggered somewhere from the logic and not based on time, use ONCE </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717aa32d16355630f112473d1ae254519c24" prot="public">
           <name>ONCE</name>
           <briefdescription>
+<para>Will be triggered only once, but until it is triggered the time, when this should happen can be recalculated again and again using the predict_invoke_time method. </para>
           </briefdescription>
           <detaileddescription>
-<para>Will be triggered only once, but until it is triggered the time, when this should happen can be recalculated again and again using the predict_invoke_time method. </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Available types for the event class: These decide when an event of this event class will be executed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Available types for the event class: These decide when an event of this event class will be executed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -73,9 +76,9 @@
         <argsstring></argsstring>
         <name>type</name>
         <briefdescription>
+<para>The event type this event class represents. </para>
         </briefdescription>
         <detaileddescription>
-<para>The event type this event class represents. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -91,9 +94,9 @@
         <argsstring></argsstring>
         <name>_id</name>
         <briefdescription>
+<para>String identifier for this event class. </para>
         </briefdescription>
         <detaileddescription>
-<para>String identifier for this event class. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -116,9 +119,9 @@
           <declname>type</declname>
         </param>
         <briefdescription>
+<para>Constructor to be constructed with the unique identifier. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructor to be constructed with the unique identifier </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -144,9 +147,9 @@
         <argsstring>()</argsstring>
         <name>id</name>
         <briefdescription>
+<para>Return a unique identifier. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return a unique identifier. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -173,9 +176,10 @@
           <declname>state</declname>
         </param>
         <briefdescription>
+<para>Called for each event that is created for this <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called for each event that is created for this <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref>. The job of the setup function is to add all dependencies with other event targets found in state. </para>
+<para>The job of the setup function is to add all dependencies with other event targets found in state. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -213,9 +217,10 @@
           <declname>params</declname>
         </param>
         <briefdescription>
+<para>This method implements the effects of the event. </para>
         </briefdescription>
         <detaileddescription>
-<para>This method implements the effects of the event. It will be called at the time that was determined by <computeroutput>predict_invoke_time</computeroutput>.</para>
+<para>It will be called at the time that was determined by <computeroutput>predict_invoke_time</computeroutput>.</para>
 <para>Called from the <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref>. </para>
         </detaileddescription>
         <inbodydescription>
@@ -246,9 +251,10 @@
           <declname>at</declname>
         </param>
         <briefdescription>
+<para>Is called to calculate the execution time for an event of this eventclass. </para>
         </briefdescription>
         <detaileddescription>
-<para>Is called to calculate the execution time for an event of this eventclass. This is called whenever one of the set up dependencies was changed, or when a REPEAT event was executed.</para>
+<para>This is called whenever one of the set up dependencies was changed, or when a REPEAT event was executed.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>target</parametername>
@@ -283,9 +289,10 @@ If the event is obsolete, return &lt;time_t&gt;<ref refid="namespacestd_1a34591a
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A eventclass has to be implemented for every type of event that exists. </para>
     </briefdescription>
     <detaileddescription>
-<para>A eventclass has to be implemented for every type of event that exists. It determines what the event means and how it is handled. </para>
+<para>It determines what the event means and how it is handled. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2224">

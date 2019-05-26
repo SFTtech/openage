@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1556 585,-1556 585,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Wrapper around a log message that allows appending to the message with operator &lt;&lt;.">
 <polygon fill="#bfbfbf" stroke="black" points="241.5,-0.5 241.5,-90.5 389.5,-90.5 389.5,-0.5 241.5,-0.5"/>
 <text text-anchor="middle" x="315.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::MessageBuilder</text>
 <polyline fill="none" stroke="black" points="241.5,-71.5 389.5,-71.5 "/>
@@ -55,7 +55,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_cachable_o_s_stream.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_cachable_o_s_stream.xhtml" target="_top" xlink:title="Designed for usage by StringFormatter.">
 <polygon fill="white" stroke="black" points="5.5,-667.5 5.5,-757.5 169.5,-757.5 169.5,-667.5 5.5,-667.5"/>
 <text text-anchor="middle" x="87.5" y="-745.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CachableOSStream</text>
 <polyline fill="none" stroke="black" points="5.5,-738.5 169.5,-738.5 "/>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node10 -->
 <g id="node8" class="node"><title>Node10</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml" target="_top" xlink:title="Wraps an output string stream, and provides all sorts of overloads for operator &lt;&lt;,...">
 <polygon fill="white" stroke="black" points="157.5,-375.5 157.5,-564.5 303.5,-564.5 303.5,-375.5 157.5,-375.5"/>
 <text text-anchor="start" x="165.5" y="-552.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="230.5" y="-541.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; ChildType &gt;</text>
@@ -106,7 +106,7 @@
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_external_o_string_stream.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_external_o_string_stream.xhtml" target="_top" xlink:title="Similar to std::ostringstream, but data is written to an external string object.">
 <polygon fill="white" stroke="black" points="14,-915.5 14,-994.5 161,-994.5 161,-915.5 14,-915.5"/>
 <text text-anchor="start" x="22" y="-982.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalOString</text>
 <text text-anchor="middle" x="87.5" y="-971.5" font-family="Helvetica,sans-Serif" font-size="10.00">Stream</text>
@@ -143,7 +143,7 @@
 </g>
 <!-- Node8 -->
 <g id="node6" class="node"><title>Node8</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_external_string_buf.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_external_string_buf.xhtml" target="_top" xlink:title="Used by ExternalOStringStream; data is written to the external accumulator.">
 <polygon fill="white" stroke="black" points="89.5,-1141.5 89.5,-1209.5 243.5,-1209.5 243.5,-1141.5 89.5,-1141.5"/>
 <text text-anchor="middle" x="166.5" y="-1197.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalStringBuf</text>
 <polyline fill="none" stroke="black" points="89.5,-1190.5 243.5,-1190.5 "/>
@@ -185,7 +185,7 @@
 </g>
 <!-- Node11 -->
 <g id="node9" class="node"><title>Node11</title>
-<g id="a_node9"><a xlink:href="structopenage_1_1log_1_1message.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="structopenage_1_1log_1_1message.xhtml" target="_top" xlink:title="A complete log/exception message, containing a text message and metadata.">
 <polygon fill="white" stroke="black" points="311,-171.5 311,-294.5 450,-294.5 450,-171.5 311,-171.5"/>
 <text text-anchor="middle" x="380.5" y="-282.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::message</text>
 <polyline fill="none" stroke="black" points="311,-275.5 450,-275.5 "/>
@@ -209,7 +209,7 @@
 </g>
 <!-- Node12 -->
 <g id="node10" class="node"><title>Node12</title>
-<g id="a_node10"><a xlink:href="structopenage_1_1log_1_1level.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="structopenage_1_1log_1_1level.xhtml" target="_top" xlink:title="Available logging levels.">
 <polygon fill="white" stroke="black" points="332,-441.5 332,-498.5 429,-498.5 429,-441.5 332,-441.5"/>
 <text text-anchor="middle" x="380.5" y="-486.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <polyline fill="none" stroke="black" points="332,-479.5 429,-479.5 "/>
@@ -257,7 +257,7 @@
 </g>
 <!-- Node14 -->
 <g id="node12" class="node"><title>Node14</title>
-<g id="a_node12"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title="Data associated with a log level.">
 <polygon fill="white" stroke="black" points="307,-921 307,-989 404,-989 404,-921 307,-921"/>
 <text text-anchor="start" x="315" y="-977" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <text text-anchor="middle" x="355.5" y="-966" font-family="Helvetica,sans-Serif" font-size="10.00">_value</text>
@@ -352,7 +352,7 @@
 </g>
 <!-- Node18 -->
 <g id="node16" class="node"><title>Node18</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title="Container for possible enum values.">
 <polygon fill="white" stroke="black" points="422,-860.5 422,-1049.5 581,-1049.5 581,-860.5 422,-860.5"/>
 <text text-anchor="start" x="430" y="-1037.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Enum</text>
 <text text-anchor="middle" x="501.5" y="-1026.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; DerivedType &gt;</text>

@@ -34,7 +34,7 @@
 </g>
 <!-- Node60 -->
 <g id="node3" class="node"><title>Node60</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event.xhtml" target="_top" xlink:title="The actual one event that may be called &#45; it is used to manage the event itself.">
 <polygon fill="white" stroke="black" points="163.5,-175 163.5,-194 275.5,-194 275.5,-175 163.5,-175"/>
 <text text-anchor="middle" x="219.5" y="-182" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Event</text>
 </a>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node61 -->
 <g id="node4" class="node"><title>Node61</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1path_1_1_node.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1path_1_1_node.xhtml" target="_top" xlink:title="One navigation waypoint in a path.">
 <polygon fill="white" stroke="black" points="166,-137 166,-156 273,-156 273,-137 166,-137"/>
 <text text-anchor="middle" x="219.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::Node</text>
 </a>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node62 -->
 <g id="node5" class="node"><title>Node62</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_terrain_object.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_terrain_object.xhtml" target="_top" xlink:title="Base class for map location types which include square tile aligned positions and radial positions Th...">
 <polygon fill="white" stroke="black" points="161,-99 161,-118 278,-118 278,-99 161,-99"/>
 <text text-anchor="middle" x="219.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 </a>
@@ -73,7 +73,7 @@
 </g>
 <!-- Node65 -->
 <g id="node8" class="node"><title>Node65</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_f_s_like.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_f_s_like.xhtml" target="_top" xlink:title="Base class for possible path implementations.">
 <polygon fill="white" stroke="black" points="169,-49.5 169,-79.5 270,-79.5 270,-49.5 169,-49.5"/>
 <text text-anchor="start" x="177" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="219.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::FSLike</text>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node63 -->
 <g id="node6" class="node"><title>Node63</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_radial_object.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_radial_object.xhtml" target="_top" xlink:title="Represents circular shaped objects (movable game units) can only be constructed by unit&#45;&gt;make_locatio...">
 <polygon fill="white" stroke="black" points="316,-137 316,-156 431,-156 431,-137 316,-137"/>
 <text text-anchor="middle" x="373.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RadialObject</text>
 </a>
@@ -100,7 +100,7 @@
 </g>
 <!-- Node64 -->
 <g id="node7" class="node"><title>Node64</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_square_object.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_square_object.xhtml" target="_top" xlink:title="terrain object class represents one immobile object on the map (building, trees, fish,...">
 <polygon fill="white" stroke="black" points="314,-99 314,-118 433,-118 433,-99 314,-99"/>
 <text text-anchor="middle" x="373.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 </a>
@@ -113,7 +113,7 @@
 </g>
 <!-- Node66 -->
 <g id="node9" class="node"><title>Node66</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_directory.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_directory.xhtml" target="_top" xlink:title="Filesystem&#45;like object which uses native libc calls.">
 <polygon fill="white" stroke="black" points="323,-49.5 323,-79.5 424,-79.5 424,-49.5 323,-49.5"/>
 <text text-anchor="start" x="331" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="373.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Directory</text>
@@ -127,7 +127,7 @@
 </g>
 <!-- Node67 -->
 <g id="node10" class="node"><title>Node67</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_python.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_python.xhtml" target="_top" xlink:title="Filesystem&#45;like object that wraps a filesystem&#45;like object from Python.">
 <polygon fill="white" stroke="black" points="323,-0.5 323,-30.5 424,-30.5 424,-0.5 323,-0.5"/>
 <text text-anchor="start" x="331" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="373.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Python</text>

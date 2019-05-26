@@ -1,6 +1,6 @@
 <map id="openage::datastructure::PairingHeap::pop_node" name="openage::datastructure::PairingHeap::pop_node">
-<area shape="rect" id="node1" title=" " alt="" coords="272,115,436,156"/>
-<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" title=" " alt="" coords="5,5,224,76"/>
-<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" title=" " alt="" coords="5,100,224,171"/>
-<area shape="rect" id="node4" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" title=" " alt="" coords="5,195,224,265"/>
+<area shape="rect" id="node1" title="returns the smallest item on the heap and deletes it." alt="" coords="272,115,436,156"/>
+<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" title="returns and removes the smallest item on the heap." alt="" coords="5,5,224,76"/>
+<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" title="Unlink a node from the heap." alt="" coords="5,100,224,171"/>
+<area shape="rect" id="node4" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" title="After a change, call this to reorganize the given node." alt="" coords="5,195,224,265"/>
 </map>

@@ -32,7 +32,7 @@
 </g>
 <!-- Node1 -->
 <g id="node3" class="node"><title>Node1</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" target="_top" xlink:title="Exposes game textures to the Qt.">
 <polygon fill="white" stroke="black" points="319,-48.5 319,-78.5 461,-78.5 461,-48.5 319,-48.5"/>
 <text text-anchor="start" x="327" y="-66.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="390" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl</text>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node2 -->
 <g id="node4" class="node"><title>Node2</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl.xhtml" target="_top" xlink:title="Exposes game textures to the Qt by their file name.">
 <polygon fill="white" stroke="black" points="497,-73.5 497,-103.5 644,-103.5 644,-73.5 497,-73.5"/>
 <text text-anchor="start" x="505" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="570.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderByFilenameImpl</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node3 -->
 <g id="node5" class="node"><title>Node3</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml" target="_top" xlink:title="Base for providers that expose textures to the Qt by their id.">
 <polygon fill="white" stroke="black" points="499.5,-24.5 499.5,-54.5 641.5,-54.5 641.5,-24.5 499.5,-24.5"/>
 <text text-anchor="start" x="507.5" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="570.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderByIdImpl</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node4 -->
 <g id="node6" class="node"><title>Node4</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl.xhtml" target="_top" xlink:title="Exposes game textures to the Qt by their id.">
 <polygon fill="white" stroke="black" points="680,-49.5 680,-79.5 829,-79.5 829,-49.5 680,-49.5"/>
 <text text-anchor="start" x="688" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="754.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderByGraphicIdImpl</text>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node5 -->
 <g id="node7" class="node"><title>Node5</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl.xhtml" target="_top" xlink:title="Exposes terrain textures to the Qt by their id.">
 <polygon fill="white" stroke="black" points="682.5,-0.5 682.5,-30.5 826.5,-30.5 826.5,-0.5 682.5,-0.5"/>
 <text text-anchor="start" x="690.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="754.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderByTerrainIdImpl</text>

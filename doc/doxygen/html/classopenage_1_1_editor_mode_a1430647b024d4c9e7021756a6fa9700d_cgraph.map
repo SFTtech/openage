@@ -1,13 +1,13 @@
 <map id="openage::EditorMode::paint_entity_at" name="openage::EditorMode::paint_entity_at">
 <area shape="rect" id="node1" title=" " alt="" coords="5,652,151,693"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1curve_1_1tests.xhtml#afc4e799a037edab37e1e35a74da593b7" title=" " alt="" coords="213,177,359,219"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" title=" " alt="" coords="214,455,358,496"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" title="get or create a terrain chunk for a given chunk position." alt="" coords="214,455,358,496"/>
 <area shape="rect" id="node23" href="$classopenage_1_1_game_control.xhtml#aa7c61c3caafc810355005e83c8f234e2" title=" " alt="" coords="209,623,363,664"/>
-<area shape="rect" id="node24" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title=" " alt="" coords="421,622,605,649"/>
-<area shape="rect" id="node25" href="$classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" title=" " alt="" coords="436,673,591,715"/>
+<area shape="rect" id="node24" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title="return currently running game or null if a game is not currently running" alt="" coords="421,622,605,649"/>
+<area shape="rect" id="node25" href="$classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" title="get tile data by absolute coordinates." alt="" coords="436,673,591,715"/>
 <area shape="rect" id="node28" href="$classopenage_1_1_game_control.xhtml#aed1e983dee9b075a3343b72aed5678bd" title=" " alt="" coords="209,824,363,865"/>
-<area shape="rect" id="node30" href="$classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" title=" " alt="" coords="199,521,373,547"/>
-<area shape="rect" id="node32" href="$classopenage_1_1_terrain_object.xhtml#af24e842fc429a5dbb73c12abcb9c3378" title=" " alt="" coords="208,740,364,781"/>
+<area shape="rect" id="node30" href="$classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" title="unit types by aoe gamedata unit ids – the unit type which corresponds to an aoe unit id" alt="" coords="199,521,373,547"/>
+<area shape="rect" id="node32" href="$classopenage_1_1_terrain_object.xhtml#af24e842fc429a5dbb73c12abcb9c3378" title="remove this TerrainObject from the terrain chunks." alt="" coords="208,740,364,781"/>
 <area shape="rect" id="node35" href="$structopenage_1_1coord_1_1viewport.xhtml#ae8aa028a39351652937d97680ff11afd" title=" " alt="" coords="203,908,369,949"/>
 <area shape="rect" id="node38" href="$structopenage_1_1coord_1_1phys3.xhtml#aa8aa4b7a7a76ddb625b8770ba12484d6" title=" " alt="" coords="209,1039,363,1080"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1curve_1_1tests.xhtml#aafe8d47259322a390c43cae62d308296" title=" " alt="" coords="440,207,587,248"/>
@@ -17,23 +17,23 @@
 <area shape="rect" id="node8" href="$classopenage_1_1curve_1_1_queue.xhtml#acbff846f0aad39b82c1dbffe83f80fba" title=" " alt="" coords="668,5,823,47"/>
 <area shape="rect" id="node9" href="$classopenage_1_1curve_1_1_queue.xhtml#a3ba35a56fa550d939d0d16c71c63e56c" title=" " alt="" coords="668,123,823,164"/>
 <area shape="rect" id="node10" href="$classopenage_1_1curve_1_1_queue.xhtml#a3a60297cec80ae6d759ea3567922db8e" title=" " alt="" coords="653,71,837,98"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title="odo: move to util" alt="" coords="885,71,1080,98"/>
-<area shape="rect" id="node12" href="$classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" title=" " alt="" coords="441,389,585,431"/>
-<area shape="rect" id="node13" href="$classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" title=" " alt="" coords="432,455,595,496"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="885,71,1080,98"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" title="get a terrain chunk by a given chunk position." alt="" coords="441,389,585,431"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" title="Attach a chunk to the terrain, to a given position." alt="" coords="432,455,595,496"/>
 <area shape="rect" id="node14" href="$classopenage_1_1_terrain_chunk.xhtml#ae77efc0ad732593eddaeb1f34a1452ac" title=" " alt="" coords="668,337,823,379"/>
-<area shape="rect" id="node15" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="685,521,806,547"/>
+<area shape="rect" id="node15" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title="Convenience method that makes use of the &#39;general&#39; LogSource." alt="" coords="685,521,806,547"/>
 <area shape="rect" id="node21" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="687,403,804,430"/>
-<area shape="rect" id="node22" href="$classopenage_1_1_terrain.xhtml#a9ce94c372f7e86310506844b352fb20c" title=" " alt="" coords="673,455,817,496"/>
-<area shape="rect" id="node16" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="909,484,1056,525"/>
-<area shape="rect" id="node17" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="887,550,1078,577"/>
-<area shape="rect" id="node18" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="1157,477,1296,519"/>
+<area shape="rect" id="node22" href="$classopenage_1_1_terrain.xhtml#a9ce94c372f7e86310506844b352fb20c" title="get the neighbor chunks of a given chunk." alt="" coords="673,455,817,496"/>
+<area shape="rect" id="node16" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title="Returns a reference to a general named log source, for use by log::log()." alt="" coords="909,484,1056,525"/>
+<area shape="rect" id="node17" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level))." alt="" coords="887,550,1078,577"/>
+<area shape="rect" id="node18" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title="Returns a reference to the global stdout logsink object; Initializes the object if needed." alt="" coords="1157,477,1296,519"/>
 <area shape="rect" id="node19" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="1141,543,1313,584"/>
 <area shape="rect" id="node20" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="1128,609,1325,635"/>
 <area shape="rect" id="node26" href="$structopenage_1_1coord_1_1tile.xhtml#ab4811e492cabe885d33e85df51ceff83" title=" " alt="" coords="676,673,815,715"/>
-<area shape="rect" id="node27" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title=" " alt="" coords="918,681,1047,707"/>
+<area shape="rect" id="node27" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title="modulo operation that guarantees to return positive values." alt="" coords="918,681,1047,707"/>
 <area shape="rect" id="node29" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="458,857,569,883"/>
 <area shape="rect" id="node31" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="455,571,571,598"/>
-<area shape="rect" id="node33" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title=" " alt="" coords="453,739,573,766"/>
+<area shape="rect" id="node33" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta..." alt="" coords="453,739,573,766"/>
 <area shape="rect" id="node34" href="$classopenage_1_1_terrain_object.xhtml#a170289794bdd31d673ffb3aca873bb1d" title=" " alt="" coords="435,791,591,832"/>
 <area shape="rect" id="node36" href="$structopenage_1_1coord_1_1viewport.xhtml#ab5b83e1486c0898fcb68f163fe49904f" title=" " alt="" coords="431,908,596,949"/>
 <area shape="rect" id="node37" href="$structopenage_1_1coord_1_1camgame.xhtml#a0b8e17b9f35af0cb50dbd56e8d6ff243" title=" " alt="" coords="425,973,601,1015"/>

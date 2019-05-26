@@ -47,9 +47,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>many effects in aoc use a pair structure such as attack bonuses, armour and selection commands </para>
     </briefdescription>
     <detaileddescription>
-<para>many effects in aoc use a pair structure such as attack bonuses, armour and selection commands </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5344">

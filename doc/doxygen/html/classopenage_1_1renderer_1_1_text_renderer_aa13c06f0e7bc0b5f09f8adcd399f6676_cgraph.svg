@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 395,-46 395,4 -4,4"/>
 <!-- Node37 -->
 <g id="node1" class="node"><title>Node37</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Set the font to be used for the future text draw calls.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-6 0,-36 115,-36 115,-6 0,-6"/>
 <text text-anchor="start" x="8" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="57.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::set_font</text>

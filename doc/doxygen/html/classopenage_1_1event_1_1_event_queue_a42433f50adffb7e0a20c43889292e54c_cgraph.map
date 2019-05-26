@@ -1,5 +1,5 @@
 <map id="openage::event::EventQueue::remove" name="openage::event::EventQueue::remove">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,192,47"/>
+<area shape="rect" id="node1" title="Remove the given event from the queue." alt="" coords="5,5,192,47"/>
 <area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_store.xhtml#acf182eb2f89c80bb6c790a24d192398f" title=" " alt="" coords="240,5,420,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" title=" " alt="" coords="468,5,645,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" title="Unlink a node from the heap." alt="" coords="468,5,645,47"/>
 </map>

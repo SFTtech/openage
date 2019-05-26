@@ -20,7 +20,7 @@
 </g>
 <!-- Node54 -->
 <g id="node2" class="node"><title>Node54</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" target="_top" xlink:title="After a change, call this to reorganize the given node.">
 <polygon fill="white" stroke="black" points="171,-0.5 171,-30.5 287,-30.5 287,-0.5 171,-0.5"/>
 <text text-anchor="start" x="179" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="229" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::update</text>

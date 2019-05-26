@@ -130,9 +130,10 @@
         <argsstring></argsstring>
         <name>pcm_data_t</name>
         <briefdescription>
+<para>pcm_data_t is a vector consisting of signed 16 bit integer samples. </para>
         </briefdescription>
         <detaileddescription>
-<para>pcm_data_t is a vector consisting of signed 16 bit integer samples. It is used to represent one complete audio resource&apos;s buffer. </para>
+<para>It is used to represent one complete audio resource&apos;s buffer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -144,9 +145,10 @@
         <argsstring></argsstring>
         <name>pcm_chunk_t</name>
         <briefdescription>
+<para>pcm_chunk_t is a vector consisting of signed 16 bit integer samples. </para>
         </briefdescription>
         <detaileddescription>
-<para>pcm_chunk_t is a vector consisting of signed 16 bit integer samples. It is used to represent a chunk of a audio resource&apos;s buffer with a fixed size. </para>
+<para>It is used to represent a chunk of a audio resource&apos;s buffer with a fixed size. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -403,9 +405,10 @@
           <declname>path</declname>
         </param>
         <briefdescription>
+<para>Opens a opus file. </para>
         </briefdescription>
         <detaileddescription>
-<para>Opens a opus file. Its location is specified by the path stored in the <ref refid="classopenage_1_1audio_1_1_dynamic_loader" kindref="compound">DynamicLoader</ref>. </para>
+<para>Its location is specified by the path stored in the <ref refid="classopenage_1_1audio_1_1_dynamic_loader" kindref="compound">DynamicLoader</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

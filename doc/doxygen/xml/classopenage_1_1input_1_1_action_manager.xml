@@ -199,9 +199,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The action manager manages all the actions allow creation, access information and equality. </para>
     </briefdescription>
     <detaileddescription>
-<para>The action manager manages all the actions allow creation, access information and equality. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3817">

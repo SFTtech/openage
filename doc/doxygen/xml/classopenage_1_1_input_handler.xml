@@ -33,9 +33,9 @@
           <declname>event</declname>
         </param>
         <briefdescription>
+<para>execute the input handler. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the input handler. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -43,9 +43,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>superclass for handling any input event. </para>
     </briefdescription>
     <detaileddescription>
-<para>superclass for handling any input event. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3867">

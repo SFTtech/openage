@@ -1,4 +1,4 @@
 <map id="openage::gui::GuiGameSpecImageProviderImpl::on_game_spec_invalidated" name="openage::gui::GuiGameSpecImageProviderImpl::on_game_spec_invalidated">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,195,61"/>
+<area shape="rect" id="node1" title="Set to every sprite the &#39;missing texture&#39; from current spec." alt="" coords="5,5,195,61"/>
 <area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a99c5f3aa01010aafd71bec94f1fd017d" title=" " alt="" coords="243,5,432,61"/>
 </map>

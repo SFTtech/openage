@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 430,-133 430,4 -4,4"/>
 <!-- Node62 -->
 <g id="node1" class="node"><title>Node62</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="debug string to identify action types">
 <polygon fill="#bfbfbf" stroke="black" points="310,-49.5 310,-79.5 426,-79.5 426,-49.5 310,-49.5"/>
 <text text-anchor="start" x="318" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="368" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>

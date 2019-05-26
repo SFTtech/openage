@@ -1,22 +1,22 @@
 <map id="std::max" name="std::max">
 <area shape="rect" id="node1" title=" " alt="" coords="869,407,943,433"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" title=" " alt="" coords="616,5,821,32"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" title="Chebyshev distance cost estimation." alt="" coords="616,5,821,32"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_generator.xhtml#ae221973cf4125fbf62af6f9626609b4a" title=" " alt="" coords="651,57,787,98"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1util_1_1tests.xhtml#a66cf54ea365e3f8f1357577ddaa1adfb" title=" " alt="" coords="652,122,785,163"/>
 <area shape="rect" id="node6" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a2858e0798bf7e033c56f6ec653180588" title=" " alt="" coords="635,188,802,244"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" title=" " alt="" coords="639,269,798,310"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" title=" " alt="" coords="642,334,795,375"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title=" " alt="" coords="639,399,798,441"/>
-<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" title=" " alt="" coords="631,465,807,506"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" title=" " alt="" coords="639,530,798,571"/>
-<area shape="rect" id="node12" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title=" " alt="" coords="412,611,568,653"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" title="how far is a point from the edge of this object" alt="" coords="639,269,798,310"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" title="how far is a point from the edge of this object" alt="" coords="642,334,795,375"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title="would this intersect with another object if it were positioned at the given point" alt="" coords="639,399,798,441"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" title="The maximum possible value of this type." alt="" coords="631,465,807,506"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" title="get a position on the edge of this object" alt="" coords="639,530,798,571"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title="boxed unit selection" alt="" coords="412,611,568,653"/>
 <area shape="rect" id="node15" href="$namespaceopenage.xhtml#ac00e0eb95e4253ba49dcc06a9f7f65be" title=" " alt="" coords="639,647,798,673"/>
 <area shape="rect" id="node16" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#aa24165b0ea4cee5ea03cec1e0609499c" title=" " alt="" coords="620,698,817,739"/>
 <area shape="rect" id="node20" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display.xhtml#ac140c8357daa5298ed6f04821a936ccb" title=" " alt="" coords="628,764,809,820"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" title=" " alt="" coords="422,57,558,98"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" title="Create a game from a specification." alt="" coords="422,57,558,98"/>
 <area shape="rect" id="node13" href="$classopenage_1_1_unit_selection.xhtml#a6b4a0b9275c8ebf623d50a7509487623" title=" " alt="" coords="208,611,364,653"/>
-<area shape="rect" id="node14" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,611,160,653"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,611,160,653"/>
 <area shape="rect" id="node17" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#aa029b621d32aec3deda5ba7231e42a33" title=" " alt="" coords="423,698,557,739"/>
-<area shape="rect" id="node18" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" title=" " alt="" coords="219,698,353,739"/>
-<area shape="rect" id="node19" href="$classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" title=" " alt="" coords="11,698,154,739"/>
+<area shape="rect" id="node18" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" title="Retrieves the atlas entry for a specified font and glyph." alt="" coords="219,698,353,739"/>
+<area shape="rect" id="node19" href="$classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" title="Render all the text draw requests made during the frame." alt="" coords="11,698,154,739"/>
 </map>

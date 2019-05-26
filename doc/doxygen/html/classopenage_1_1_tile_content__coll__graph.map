@@ -1,3 +1,3 @@
 <map id="openage::TileContent" name="openage::TileContent">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,149,112"/>
+<area shape="rect" id="node1" title="describes the properties of one terrain tile." alt="" coords="5,5,149,112"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="openage::util::CachableOSStream::release" name="openage::util::CachableOSStream::release">
-<area shape="rect" id="node1" title=" " alt="" coords="261,5,480,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_string_formatter.xhtml#aa55bdace86e9b1eda7b225b694c5a165" title=" " alt="" coords="5,5,213,47"/>
+<area shape="rect" id="node1" title="Resets the stream to a brand&#45;new state, and clears the flag." alt="" coords="261,5,480,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_string_formatter.xhtml#aa55bdace86e9b1eda7b225b694c5a165" title="Releases the CachableOSStream object (if it was acquired)." alt="" coords="5,5,213,47"/>
 </map>

@@ -66,9 +66,10 @@
           <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref> const &amp;</type>
         </param>
         <briefdescription>
+<para>Uploads the given texture data into the specified layer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Uploads the given texture data into the specified layer. <computeroutput>layer</computeroutput> must be strictly less than the size of the array and the data format must match the format this array was originally created with. </para>
+<para><computeroutput>layer</computeroutput> must be strictly less than the size of the array and the data format must match the format this array was originally created with. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -96,9 +97,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A texture array, where individual elements are 2D textures. </para>
     </briefdescription>
     <detaileddescription>
-<para>A texture array, where individual elements are 2D textures. The array elements are referred to as &quot;layers&quot;, and every layer must have the same format (size, pixel format, etc). </para>
+<para>The array elements are referred to as &quot;layers&quot;, and every layer must have the same format (size, pixel format, etc). </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4798">

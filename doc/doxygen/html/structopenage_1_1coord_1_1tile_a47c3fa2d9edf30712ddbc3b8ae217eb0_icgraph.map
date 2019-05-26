@@ -1,12 +1,12 @@
 <map id="openage::coord::tile::to_chunk" name="openage::coord::tile::to_chunk">
 <area shape="rect" id="node1" title=" " alt="" coords="1032,71,1168,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#a3c3153682d7a70b539ff15f492e0f06b" title=" " alt="" coords="824,5,968,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#a9fc8a00464422b06cd5ea0dbda4c7d2f" title=" " alt="" coords="824,71,968,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_terrain.xhtml#a437d04e21933a02a08861b50a585135e" title=" " alt="" coords="808,137,984,163"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" title=" " alt="" coords="616,64,760,105"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" title=" " alt="" coords="617,129,759,171"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title=" " alt="" coords="412,192,568,233"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title=" " alt="" coords="412,127,568,168"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#a3c3153682d7a70b539ff15f492e0f06b" title="get a terrain chunk by a given tile position." alt="" coords="824,5,968,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#a9fc8a00464422b06cd5ea0dbda4c7d2f" title="get or create a terrain chunk for a given tile position." alt="" coords="824,71,968,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_terrain.xhtml#a437d04e21933a02a08861b50a585135e" title="return tile data for the given position." alt="" coords="808,137,984,163"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" title="gather neighbors of a given base tile." alt="" coords="616,64,760,105"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" title="an object which contains the given point, null otherwise" alt="" coords="617,129,759,171"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title="boxed unit selection" alt="" coords="412,192,568,233"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title="point unit selection" alt="" coords="412,127,568,168"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_unit_selection.xhtml#a6b4a0b9275c8ebf623d50a7509487623" title=" " alt="" coords="208,160,364,201"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,160,160,201"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,160,160,201"/>
 </map>

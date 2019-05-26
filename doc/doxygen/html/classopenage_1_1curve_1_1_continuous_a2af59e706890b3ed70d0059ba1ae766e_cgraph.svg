@@ -57,7 +57,7 @@ var sectionId = 'dynsection-2';
 <polygon fill="white" stroke="none" points="-4,4 -4,-279 823,-279 823,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="will interpolate between the keyframes linearly based on the time.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-94 0,-113 156,-113 156,-94 0,-94"/>
 <text text-anchor="middle" x="78" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Continuous::get</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node10 -->
 <g id="node11" class="node"><title>Node10</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title="Converter to retrieve the number as double.">
 <polygon fill="white" stroke="black" points="192,-64.5 192,-94.5 317,-94.5 317,-64.5 192,-64.5"/>
 <text text-anchor="start" x="200" y="-82.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="254.5" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_double</text>

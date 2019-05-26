@@ -99,13 +99,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1_civilisation.xhtml','
 </div><!--header-->
 <div class="contents">
 
+<p>contains the initial tech structure for one civilisation  
+ <a href="classopenage_1_1_civilisation.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="civilisation_8h_source.xhtml">civilisation.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::Civilisation:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_civilisation__coll__graph.svg" width="170" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_civilisation__coll__graph.svg" width="170" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -113,37 +117,49 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad42026f252bdf28b9d48b39a8535e2a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#ad42026f252bdf28b9d48b39a8535e2a3">Civilisation</a> (const <a class="el" href="classopenage_1_1_game_spec.xhtml">GameSpec</a> &amp;spec, int id)</td></tr>
 <tr class="separator:ad42026f252bdf28b9d48b39a8535e2a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc3a4d02c42d7f8eda5b9b87175f4613"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classopenage_1_1_unit_type_meta.xhtml">UnitTypeMeta</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#acc3a4d02c42d7f8eda5b9b87175f4613">object_meta</a> () const</td></tr>
+<tr class="memdesc:acc3a4d02c42d7f8eda5b9b87175f4613"><td class="mdescLeft">&#160;</td><td class="mdescRight">return all the objects available to this civ  <a href="#acc3a4d02c42d7f8eda5b9b87175f4613">More...</a><br /></td></tr>
 <tr class="separator:acc3a4d02c42d7f8eda5b9b87175f4613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8c2247f2c5b183fc77ae550307ef426"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespaceopenage.xhtml#a8f00ffffd7d8386f3c406ec373e100bf">index_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#aa8c2247f2c5b183fc77ae550307ef426">get_category</a> (const std::string &amp;c) const</td></tr>
+<tr class="memdesc:aa8c2247f2c5b183fc77ae550307ef426"><td class="mdescLeft">&#160;</td><td class="mdescRight">return all types in a particular named category  <a href="#aa8c2247f2c5b183fc77ae550307ef426">More...</a><br /></td></tr>
 <tr class="separator:aa8c2247f2c5b183fc77ae550307ef426"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55ec689e9aed7d40b9d0aa7e2c478d96"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#a55ec689e9aed7d40b9d0aa7e2c478d96">get_type_categories</a> () const</td></tr>
+<tr class="memdesc:a55ec689e9aed7d40b9d0aa7e2c478d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">return all used categories, such as living, building or projectile  <a href="#a55ec689e9aed7d40b9d0aa7e2c478d96">More...</a><br /></td></tr>
 <tr class="separator:a55ec689e9aed7d40b9d0aa7e2c478d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac6dfa467902f19637b13afcbe2c927b"><td class="memItemLeft" align="right" valign="top">const gamedata::building_unit *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#aac6dfa467902f19637b13afcbe2c927b">get_building_data</a> (<a class="el" href="namespaceopenage.xhtml#a8f00ffffd7d8386f3c406ec373e100bf">index_t</a> unit_id) const</td></tr>
+<tr class="memdesc:aac6dfa467902f19637b13afcbe2c927b"><td class="mdescLeft">&#160;</td><td class="mdescRight">gamedata for a building  <a href="#aac6dfa467902f19637b13afcbe2c927b">More...</a><br /></td></tr>
 <tr class="separator:aac6dfa467902f19637b13afcbe2c927b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdf1eb9f96df9f35741f8f6bb763c403"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403">initialise_unit_types</a> (const <a class="el" href="classopenage_1_1_game_spec.xhtml">GameSpec</a> &amp;spec)</td></tr>
+<tr class="memdesc:abdf1eb9f96df9f35741f8f6bb763c403"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise the unit meta data  <a href="#abdf1eb9f96df9f35741f8f6bb763c403">More...</a><br /></td></tr>
 <tr class="separator:abdf1eb9f96df9f35741f8f6bb763c403"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a2f86a0247609bab4d68b2d918b96c49a"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#a2f86a0247609bab4d68b2d918b96c49a">civ_id</a></td></tr>
+<tr class="memdesc:a2f86a0247609bab4d68b2d918b96c49a"><td class="mdescLeft">&#160;</td><td class="mdescRight">civ index  <a href="#a2f86a0247609bab4d68b2d918b96c49a">More...</a><br /></td></tr>
 <tr class="separator:a2f86a0247609bab4d68b2d918b96c49a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfe7c1fb0da5297fe076417bda22e711"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#abfe7c1fb0da5297fe076417bda22e711">civ_name</a></td></tr>
+<tr class="memdesc:abfe7c1fb0da5297fe076417bda22e711"><td class="mdescLeft">&#160;</td><td class="mdescRight">civ name  <a href="#abfe7c1fb0da5297fe076417bda22e711">More...</a><br /></td></tr>
 <tr class="separator:abfe7c1fb0da5297fe076417bda22e711"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a7ea9f34ae76ff29cbcce2ce4cb7da55f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#a7ea9f34ae76ff29cbcce2ce4cb7da55f">add_to_category</a> (const std::string &amp;c, <a class="el" href="namespaceopenage.xhtml#a8f00ffffd7d8386f3c406ec373e100bf">index_t</a> type)</td></tr>
+<tr class="memdesc:a7ea9f34ae76ff29cbcce2ce4cb7da55f"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates and adds items to categories  <a href="#a7ea9f34ae76ff29cbcce2ce4cb7da55f">More...</a><br /></td></tr>
 <tr class="separator:a7ea9f34ae76ff29cbcce2ce4cb7da55f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a12246fe137d4a5cccb044eb2f1c6932b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classopenage_1_1_unit_type_meta.xhtml">UnitTypeMeta</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#a12246fe137d4a5cccb044eb2f1c6932b">civ_objects</a></td></tr>
+<tr class="memdesc:a12246fe137d4a5cccb044eb2f1c6932b"><td class="mdescLeft">&#160;</td><td class="mdescRight">unit types which can be produced by this civilisation.  <a href="#a12246fe137d4a5cccb044eb2f1c6932b">More...</a><br /></td></tr>
 <tr class="separator:a12246fe137d4a5cccb044eb2f1c6932b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade8432645da979f0ca6cb1c53ef030d9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#ade8432645da979f0ca6cb1c53ef030d9">all_categories</a></td></tr>
+<tr class="memdesc:ade8432645da979f0ca6cb1c53ef030d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">all available categories of units  <a href="#ade8432645da979f0ca6cb1c53ef030d9">More...</a><br /></td></tr>
 <tr class="separator:ade8432645da979f0ca6cb1c53ef030d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0472503729127b8d20d0f3708491952f"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::vector&lt; <a class="el" href="namespaceopenage.xhtml#a8f00ffffd7d8386f3c406ec373e100bf">index_t</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a></td></tr>
+<tr class="memdesc:a0472503729127b8d20d0f3708491952f"><td class="mdescLeft">&#160;</td><td class="mdescRight">category lists  <a href="#a0472503729127b8d20d0f3708491952f">More...</a><br /></td></tr>
 <tr class="separator:a0472503729127b8d20d0f3708491952f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc0e6636a587343c1e728e4a374eaed8"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="namespaceopenage.xhtml#a8f00ffffd7d8386f3c406ec373e100bf">index_t</a>, const gamedata::building_unit * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_civilisation.xhtml#adc0e6636a587343c1e728e4a374eaed8">buildings</a></td></tr>
+<tr class="memdesc:adc0e6636a587343c1e728e4a374eaed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">used for annex creation  <a href="#adc0e6636a587343c1e728e4a374eaed8">More...</a><br /></td></tr>
 <tr class="separator:adc0e6636a587343c1e728e4a374eaed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -178,9 +194,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8cpp_source.xhtml#l00011">11</a> of file <a class="el" href="civilisation_8cpp_source.xhtml">civilisation.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    :</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classopenage_1_1_civilisation.xhtml#a2f86a0247609bab4d68b2d918b96c49a">civ_id</a>{<span class="keywordtype">id</span>},</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classopenage_1_1_civilisation.xhtml#abfe7c1fb0da5297fe076417bda22e711">civ_name</a>{spec.get_civ_name(<span class="keywordtype">id</span>)} {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403">initialise_unit_types</a>(spec);</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div><div class="ttc" id="classopenage_1_1_civilisation_xhtml_a2f86a0247609bab4d68b2d918b96c49a"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a2f86a0247609bab4d68b2d918b96c49a">openage::Civilisation::civ_id</a></div><div class="ttdeci">const int civ_id</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00024">civilisation.h:24</a></div></div>
-<div class="ttc" id="classopenage_1_1_civilisation_xhtml_abdf1eb9f96df9f35741f8f6bb763c403"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403">openage::Civilisation::initialise_unit_types</a></div><div class="ttdeci">void initialise_unit_types(const GameSpec &amp;spec)</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8cpp_source.xhtml#l00047">civilisation.cpp:47</a></div></div>
-<div class="ttc" id="classopenage_1_1_civilisation_xhtml_abfe7c1fb0da5297fe076417bda22e711"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#abfe7c1fb0da5297fe076417bda22e711">openage::Civilisation::civ_name</a></div><div class="ttdeci">const std::string civ_name</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00029">civilisation.h:29</a></div></div>
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    :</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classopenage_1_1_civilisation.xhtml#a2f86a0247609bab4d68b2d918b96c49a">civ_id</a>{<span class="keywordtype">id</span>},</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classopenage_1_1_civilisation.xhtml#abfe7c1fb0da5297fe076417bda22e711">civ_name</a>{spec.get_civ_name(<span class="keywordtype">id</span>)} {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403">initialise_unit_types</a>(spec);</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div><div class="ttc" id="classopenage_1_1_civilisation_xhtml_a2f86a0247609bab4d68b2d918b96c49a"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a2f86a0247609bab4d68b2d918b96c49a">openage::Civilisation::civ_id</a></div><div class="ttdeci">const int civ_id</div><div class="ttdoc">civ index</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00024">civilisation.h:24</a></div></div>
+<div class="ttc" id="classopenage_1_1_civilisation_xhtml_abdf1eb9f96df9f35741f8f6bb763c403"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403">openage::Civilisation::initialise_unit_types</a></div><div class="ttdeci">void initialise_unit_types(const GameSpec &amp;spec)</div><div class="ttdoc">initialise the unit meta data</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8cpp_source.xhtml#l00047">civilisation.cpp:47</a></div></div>
+<div class="ttc" id="classopenage_1_1_civilisation_xhtml_abfe7c1fb0da5297fe076417bda22e711"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#abfe7c1fb0da5297fe076417bda22e711">openage::Civilisation::civ_name</a></div><div class="ttdeci">const std::string civ_name</div><div class="ttdoc">civ name</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00029">civilisation.h:29</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -218,11 +234,12 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>creates and adds items to categories </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8cpp_source.xhtml#l00056">56</a> of file <a class="el" href="civilisation_8cpp_source.xhtml">civilisation.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                                   {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a>.count(c) == 0) {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#ade8432645da979f0ca6cb1c53ef030d9">all_categories</a>.push_back(c);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a>[c] = std::vector&lt;index_t&gt;();</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a>[c].push_back(type);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div><div class="ttc" id="classopenage_1_1_civilisation_xhtml_ade8432645da979f0ca6cb1c53ef030d9"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#ade8432645da979f0ca6cb1c53ef030d9">openage::Civilisation::all_categories</a></div><div class="ttdeci">std::vector&lt; std::string &gt; all_categories</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00071">civilisation.h:71</a></div></div>
-<div class="ttc" id="classopenage_1_1_civilisation_xhtml_a0472503729127b8d20d0f3708491952f"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">openage::Civilisation::categories</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::vector&lt; index_t &gt; &gt; categories</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00076">civilisation.h:76</a></div></div>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                                   {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a>.count(c) == 0) {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#ade8432645da979f0ca6cb1c53ef030d9">all_categories</a>.push_back(c);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a>[c] = std::vector&lt;index_t&gt;();</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a>[c].push_back(type);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div><div class="ttc" id="classopenage_1_1_civilisation_xhtml_ade8432645da979f0ca6cb1c53ef030d9"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#ade8432645da979f0ca6cb1c53ef030d9">openage::Civilisation::all_categories</a></div><div class="ttdeci">std::vector&lt; std::string &gt; all_categories</div><div class="ttdoc">all available categories of units</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00071">civilisation.h:71</a></div></div>
+<div class="ttc" id="classopenage_1_1_civilisation_xhtml_a0472503729127b8d20d0f3708491952f"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">openage::Civilisation::categories</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::vector&lt; index_t &gt; &gt; categories</div><div class="ttdoc">category lists</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00076">civilisation.h:76</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="civilisation_8h_source.xhtml#l00071">all_categories</a>, and <a class="el" href="civilisation_8h_source.xhtml#l00076">categories</a>.</p>
 
@@ -232,7 +249,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_civilisation_a7ea9f34ae76ff29cbcce2ce4cb7da55f_icgraph.svg" width="343" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_civilisation_a7ea9f34ae76ff29cbcce2ce4cb7da55f_icgraph.svg" width="343" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -252,12 +270,13 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>gamedata for a building </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8cpp_source.xhtml#l00038">38</a> of file <a class="el" href="civilisation_8cpp_source.xhtml">civilisation.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                                                                  {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#adc0e6636a587343c1e728e4a374eaed8">buildings</a>.count(unit_id) == 0) {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a>) &lt;&lt; <span class="stringliteral">&quot;  -&gt; ignoring unit_id: &quot;</span> &lt;&lt; unit_id);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#adc0e6636a587343c1e728e4a374eaed8">buildings</a>.at(unit_id);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
-<div class="ttc" id="classopenage_1_1_civilisation_xhtml_adc0e6636a587343c1e728e4a374eaed8"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#adc0e6636a587343c1e728e4a374eaed8">openage::Civilisation::buildings</a></div><div class="ttdeci">std::unordered_map&lt; index_t, const gamedata::building_unit * &gt; buildings</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00081">civilisation.h:81</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdoc">Convenience method that makes use of the 'general' LogSource.</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="classopenage_1_1_civilisation_xhtml_adc0e6636a587343c1e728e4a374eaed8"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#adc0e6636a587343c1e728e4a374eaed8">openage::Civilisation::buildings</a></div><div class="ttdeci">std::unordered_map&lt; index_t, const gamedata::building_unit * &gt; buildings</div><div class="ttdoc">used for annex creation</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00081">civilisation.h:81</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1log_xhtml_a3f1815b698faf5786fc5e20bcac7704b"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">openage::log.info</a></div><div class="ttdeci">def info(msg, *args, **kwargs)</div><div class="ttdoc">info message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00114">__init__.py:114</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="civilisation_8h_source.xhtml#l00081">buildings</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00114">openage::log::info()</a>, <a class="el" href="log_8cpp_source.xhtml#l00013">openage::log::log()</a>, and <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>.</p>
@@ -266,7 +285,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_civilisation_aac6dfa467902f19637b13afcbe2c927b_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_civilisation_aac6dfa467902f19637b13afcbe2c927b_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -286,10 +306,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>return all types in a particular named category </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8cpp_source.xhtml#l00024">24</a> of file <a class="el" href="civilisation_8cpp_source.xhtml">civilisation.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                                                      {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">auto</span> cat = this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a>.find(c);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">if</span> (cat == this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a>.end()) {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> std::vector&lt;index_t&gt;();</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">return</span> cat-&gt;second;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="ttc" id="classopenage_1_1_civilisation_xhtml_a0472503729127b8d20d0f3708491952f"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">openage::Civilisation::categories</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::vector&lt; index_t &gt; &gt; categories</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00076">civilisation.h:76</a></div></div>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                                                      {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">auto</span> cat = this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a>.find(c);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">if</span> (cat == this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">categories</a>.end()) {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> std::vector&lt;index_t&gt;();</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">return</span> cat-&gt;second;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="ttc" id="classopenage_1_1_civilisation_xhtml_a0472503729127b8d20d0f3708491952f"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a0472503729127b8d20d0f3708491952f">openage::Civilisation::categories</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::vector&lt; index_t &gt; &gt; categories</div><div class="ttdoc">category lists</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00076">civilisation.h:76</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="civilisation_8h_source.xhtml#l00076">categories</a>.</p>
 
@@ -309,10 +330,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>return all used categories, such as living, building or projectile </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8cpp_source.xhtml#l00033">33</a> of file <a class="el" href="civilisation_8cpp_source.xhtml">civilisation.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                                             {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#ade8432645da979f0ca6cb1c53ef030d9">all_categories</a>;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div><div class="ttc" id="classopenage_1_1_civilisation_xhtml_ade8432645da979f0ca6cb1c53ef030d9"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#ade8432645da979f0ca6cb1c53ef030d9">openage::Civilisation::all_categories</a></div><div class="ttdeci">std::vector&lt; std::string &gt; all_categories</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00071">civilisation.h:71</a></div></div>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                                             {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#ade8432645da979f0ca6cb1c53ef030d9">all_categories</a>;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div><div class="ttc" id="classopenage_1_1_civilisation_xhtml_ade8432645da979f0ca6cb1c53ef030d9"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#ade8432645da979f0ca6cb1c53ef030d9">openage::Civilisation::all_categories</a></div><div class="ttdeci">std::vector&lt; std::string &gt; all_categories</div><div class="ttdoc">all available categories of units</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00071">civilisation.h:71</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="civilisation_8h_source.xhtml#l00071">all_categories</a>.</p>
 
@@ -333,16 +355,17 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>initialise the unit meta data </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="civilisation_8cpp_source.xhtml">civilisation.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                             {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">dbg</a>) &lt;&lt; <span class="stringliteral">&quot;Init units of civilisation &quot;</span> &lt;&lt; <a class="code" href="classopenage_1_1_civilisation.xhtml#abfe7c1fb0da5297fe076417bda22e711">civ_name</a>);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    spec.create_unit_types(this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a12246fe137d4a5cccb044eb2f1c6932b">civ_objects</a>, this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a2f86a0247609bab4d68b2d918b96c49a">civ_id</a>);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;type : this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a12246fe137d4a5cccb044eb2f1c6932b">civ_objects</a>) {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_civilisation.xhtml#a7ea9f34ae76ff29cbcce2ce4cb7da55f">add_to_category</a>(type-&gt;name(), type-&gt;id());</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
-<div class="ttc" id="classopenage_1_1_civilisation_xhtml_a2f86a0247609bab4d68b2d918b96c49a"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a2f86a0247609bab4d68b2d918b96c49a">openage::Civilisation::civ_id</a></div><div class="ttdeci">const int civ_id</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00024">civilisation.h:24</a></div></div>
+<div class="ttc" id="classopenage_1_1_civilisation_xhtml_a2f86a0247609bab4d68b2d918b96c49a"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a2f86a0247609bab4d68b2d918b96c49a">openage::Civilisation::civ_id</a></div><div class="ttdeci">const int civ_id</div><div class="ttdoc">civ index</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00024">civilisation.h:24</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1log_xhtml_aad3d76b2466dbc4f81552935f2d84faa"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">openage::log.dbg</a></div><div class="ttdeci">def dbg(msg, *args, **kwargs)</div><div class="ttdoc">debug message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00109">__init__.py:109</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
-<div class="ttc" id="classopenage_1_1_civilisation_xhtml_abfe7c1fb0da5297fe076417bda22e711"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#abfe7c1fb0da5297fe076417bda22e711">openage::Civilisation::civ_name</a></div><div class="ttdeci">const std::string civ_name</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00029">civilisation.h:29</a></div></div>
-<div class="ttc" id="classopenage_1_1_civilisation_xhtml_a12246fe137d4a5cccb044eb2f1c6932b"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a12246fe137d4a5cccb044eb2f1c6932b">openage::Civilisation::civ_objects</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; UnitTypeMeta &gt; &gt; civ_objects</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00066">civilisation.h:66</a></div></div>
-<div class="ttc" id="classopenage_1_1_civilisation_xhtml_a7ea9f34ae76ff29cbcce2ce4cb7da55f"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a7ea9f34ae76ff29cbcce2ce4cb7da55f">openage::Civilisation::add_to_category</a></div><div class="ttdeci">void add_to_category(const std::string &amp;c, index_t type)</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8cpp_source.xhtml#l00056">civilisation.cpp:56</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdoc">Convenience method that makes use of the 'general' LogSource.</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="classopenage_1_1_civilisation_xhtml_abfe7c1fb0da5297fe076417bda22e711"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#abfe7c1fb0da5297fe076417bda22e711">openage::Civilisation::civ_name</a></div><div class="ttdeci">const std::string civ_name</div><div class="ttdoc">civ name</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00029">civilisation.h:29</a></div></div>
+<div class="ttc" id="classopenage_1_1_civilisation_xhtml_a12246fe137d4a5cccb044eb2f1c6932b"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a12246fe137d4a5cccb044eb2f1c6932b">openage::Civilisation::civ_objects</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; UnitTypeMeta &gt; &gt; civ_objects</div><div class="ttdoc">unit types which can be produced by this civilisation.</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00066">civilisation.h:66</a></div></div>
+<div class="ttc" id="classopenage_1_1_civilisation_xhtml_a7ea9f34ae76ff29cbcce2ce4cb7da55f"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a7ea9f34ae76ff29cbcce2ce4cb7da55f">openage::Civilisation::add_to_category</a></div><div class="ttdeci">void add_to_category(const std::string &amp;c, index_t type)</div><div class="ttdoc">creates and adds items to categories</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8cpp_source.xhtml#l00056">civilisation.cpp:56</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="civilisation_8cpp_source.xhtml#l00056">add_to_category()</a>, <a class="el" href="civilisation_8h_source.xhtml#l00024">civ_id</a>, <a class="el" href="civilisation_8h_source.xhtml#l00029">civ_name</a>, <a class="el" href="civilisation_8h_source.xhtml#l00066">civ_objects</a>, <a class="el" href="game__spec_8cpp_source.xhtml#l00155">openage::GameSpec::create_unit_types()</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00109">openage::log::dbg()</a>, <a class="el" href="log_8cpp_source.xhtml#l00013">openage::log::log()</a>, and <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -350,7 +373,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_civilisation_abdf1eb9f96df9f35741f8f6bb763c403_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_civilisation_abdf1eb9f96df9f35741f8f6bb763c403_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -369,10 +393,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>return all the objects available to this civ </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8cpp_source.xhtml#l00019">19</a> of file <a class="el" href="civilisation_8cpp_source.xhtml">civilisation.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                                                       {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1_civilisation.xhtml#a12246fe137d4a5cccb044eb2f1c6932b">civ_objects</a>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div><div class="ttc" id="classopenage_1_1_civilisation_xhtml_a12246fe137d4a5cccb044eb2f1c6932b"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a12246fe137d4a5cccb044eb2f1c6932b">openage::Civilisation::civ_objects</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; UnitTypeMeta &gt; &gt; civ_objects</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00066">civilisation.h:66</a></div></div>
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                                                       {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1_civilisation.xhtml#a12246fe137d4a5cccb044eb2f1c6932b">civ_objects</a>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div><div class="ttc" id="classopenage_1_1_civilisation_xhtml_a12246fe137d4a5cccb044eb2f1c6932b"><div class="ttname"><a href="classopenage_1_1_civilisation.xhtml#a12246fe137d4a5cccb044eb2f1c6932b">openage::Civilisation::civ_objects</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; UnitTypeMeta &gt; &gt; civ_objects</div><div class="ttdoc">unit types which can be produced by this civilisation.</div><div class="ttdef"><b>Definition:</b> <a href="civilisation_8h_source.xhtml#l00066">civilisation.h:66</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="civilisation_8h_source.xhtml#l00066">civ_objects</a>.</p>
 
@@ -382,7 +407,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_civilisation_acc3a4d02c42d7f8eda5b9b87175f4613_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_civilisation_acc3a4d02c42d7f8eda5b9b87175f4613_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -407,6 +433,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>all available categories of units </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8h_source.xhtml#l00071">71</a> of file <a class="el" href="civilisation_8h_source.xhtml">civilisation.h</a>.</p>
@@ -434,6 +461,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>used for annex creation </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8h_source.xhtml#l00081">81</a> of file <a class="el" href="civilisation_8h_source.xhtml">civilisation.h</a>.</p>
@@ -461,6 +489,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>category lists </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8h_source.xhtml#l00076">76</a> of file <a class="el" href="civilisation_8h_source.xhtml">civilisation.h</a>.</p>
@@ -480,6 +509,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>civ index </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8h_source.xhtml#l00024">24</a> of file <a class="el" href="civilisation_8h_source.xhtml">civilisation.h</a>.</p>
@@ -499,6 +529,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>civ name </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8h_source.xhtml#l00029">29</a> of file <a class="el" href="civilisation_8h_source.xhtml">civilisation.h</a>.</p>
@@ -526,6 +557,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>unit types which can be produced by this civilisation. </p>
 
 <p class="definition">Definition at line <a class="el" href="civilisation_8h_source.xhtml#l00066">66</a> of file <a class="el" href="civilisation_8h_source.xhtml">civilisation.h</a>.</p>

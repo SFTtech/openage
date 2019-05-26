@@ -1,6 +1,6 @@
 <map id="openage::util::Profiler::duration_to_percentage" name="openage::util::Profiler::duration_to_percentage">
 <area shape="rect" id="node1" title=" " alt="" coords="592,5,757,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_profiler.xhtml#aaf65afbb05a6aa408a7aff89e74e93dd" title=" " alt="" coords="397,5,544,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title=" " alt="" coords="199,13,349,39"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title=" " alt="" coords="5,13,151,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_profiler.xhtml#aaf65afbb05a6aa408a7aff89e74e93dd" title="sets the end point for the reference time used to compute the portions of the components." alt="" coords="397,5,544,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title="main engine loop function." alt="" coords="199,13,349,39"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title="starts the engine loop." alt="" coords="5,13,151,39"/>
 </map>

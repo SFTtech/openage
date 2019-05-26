@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 96,-62 96,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="If the core &#39;MyClass&#39; has a shell &#39;MyClassLink&#39; then &#39;Wrap&lt;MyClass&gt;&#39; must have a &#39;using Type = MyClas...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-57.5 92,-57.5 92,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="46" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Wrap&lt; U &gt;</text>
 <polyline fill="none" stroke="black" points="0,-38.5 92,-38.5 "/>

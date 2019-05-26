@@ -86,9 +86,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Datastructure for a single atlas entry. </para>
     </briefdescription>
     <detaileddescription>
-<para>Datastructure for a single atlas entry </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4648">

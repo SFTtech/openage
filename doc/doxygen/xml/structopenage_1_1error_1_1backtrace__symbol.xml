@@ -66,9 +66,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A single symbol, as determined from a program counter, and returned by <ref refid="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440" kindref="member">Backtrace::get_symbols()</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>A single symbol, as determined from a program counter, and returned by <ref refid="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440" kindref="member">Backtrace::get_symbols()</ref>.</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">backtrace_symbol</ref>: string filename int lineno string functionname void *pc</para>
 <para>ctypedef const <ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">backtrace_symbol</ref> *backtrace_symbol_constptr </para>

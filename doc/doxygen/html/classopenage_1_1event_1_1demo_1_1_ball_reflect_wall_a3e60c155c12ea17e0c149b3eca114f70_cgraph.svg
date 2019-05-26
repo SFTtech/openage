@@ -57,7 +57,7 @@ var sectionId = 'dynsection-3';
 <polygon fill="white" stroke="none" points="-4,4 -4,-161 622,-161 622,4 -4,4"/>
 <!-- Node6 -->
 <g id="node1" class="node"><title>Node6</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Is called to calculate the execution time for an event of this eventclass.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-58 0,-99 124,-99 124,-58 0,-58"/>
 <text text-anchor="start" x="8" y="-87" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::demo</text>
 <text text-anchor="start" x="8" y="-76" font-family="Helvetica,sans-Serif" font-size="10.00">::BallReflectWall::predict</text>
@@ -67,7 +67,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title="Factory function to get a fixed&#45;point number from a double.">
 <polygon fill="white" stroke="black" points="163.5,-126.5 163.5,-156.5 302.5,-156.5 302.5,-126.5 163.5,-126.5"/>
 <text text-anchor="start" x="171.5" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="233" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::from_double</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node9 -->
 <g id="node4" class="node"><title>Node9</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="189.5,-50 189.5,-69 276.5,-69 276.5,-50 189.5,-50"/>
 <text text-anchor="middle" x="233" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node12 -->
 <g id="node7" class="node"><title>Node12</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title="Converter to retrieve the number as double.">
 <polygon fill="white" stroke="black" points="170.5,-0.5 170.5,-30.5 295.5,-30.5 295.5,-0.5 170.5,-0.5"/>
 <text text-anchor="start" x="178.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="233" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_double</text>
@@ -134,7 +134,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node11 -->
 <g id="node6" class="node"><title>Node11</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="523,-50 523,-69 618,-69 618,-50 523,-50"/>
 <text text-anchor="middle" x="570.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

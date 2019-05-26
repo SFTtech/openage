@@ -1,4 +1,4 @@
 <map id="qtsdl::GameLogicCaller" name="qtsdl::GameLogicCaller">
-<area shape="rect" id="node1" title=" " alt="" coords="5,131,193,223"/>
+<area shape="rect" id="node1" title="Attaches to the GuiCallbackImpl." alt="" coords="5,131,193,223"/>
 <area shape="rect" id="node2" title=" " alt="" coords="64,5,135,83"/>
 </map>

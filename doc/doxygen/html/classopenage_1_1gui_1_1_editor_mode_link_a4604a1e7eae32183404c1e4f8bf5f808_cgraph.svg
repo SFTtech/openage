@@ -96,7 +96,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node6 -->
 <g id="node3" class="node"><title>Node6</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title="std::for_each except just on containers.">
 <polygon fill="white" stroke="black" points="340.5,-119 340.5,-138 455.5,-138 455.5,-119 340.5,-119"/>
 <text text-anchor="middle" x="398" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>
@@ -277,7 +277,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node17 -->
 <g id="node14" class="node"><title>Node17</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title="return currently running game or null if a game is not currently running">
 <polygon fill="white" stroke="black" points="492,-75 492,-94 630,-94 630,-75 492,-75"/>
 <text text-anchor="middle" x="561" y="-82" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get_game</text>
 </a>

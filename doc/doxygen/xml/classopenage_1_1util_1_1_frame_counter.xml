@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>fps</name>
         <briefdescription>
+<para>auto-updated to always contain the current FPS value </para>
         </briefdescription>
         <detaileddescription>
-<para>auto-updated to always contain the current FPS value </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -26,9 +26,9 @@
         <argsstring></argsstring>
         <name>count</name>
         <briefdescription>
+<para>contains the number of completed frames </para>
         </briefdescription>
         <detaileddescription>
-<para>contains the number of completed frames </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -41,9 +41,9 @@
         <argsstring></argsstring>
         <name>nsec_lastframe</name>
         <briefdescription>
+<para>nanoseconds used for the last frame </para>
         </briefdescription>
         <detaileddescription>
-<para>nanoseconds used for the last frame </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -129,9 +129,9 @@
         <argsstring>()</argsstring>
         <name>frame</name>
         <briefdescription>
+<para>to be called each time a frame has been completed </para>
         </briefdescription>
         <detaileddescription>
-<para>to be called each time a frame has been completed </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

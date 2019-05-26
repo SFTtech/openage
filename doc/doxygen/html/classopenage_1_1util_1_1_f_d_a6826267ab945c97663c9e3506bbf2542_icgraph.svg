@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 413,-84 413,4 -4,4"/>
 <!-- Node39 -->
 <g id="node1" class="node"><title>Node39</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="writes the unicode codepoint, as utf&#45;8">
 <polygon fill="#bfbfbf" stroke="black" points="312,-24.5 312,-54.5 409,-54.5 409,-24.5 312,-24.5"/>
 <text text-anchor="start" x="320" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="360.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">putcp</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node40 -->
 <g id="node2" class="node"><title>Node40</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" target="_top" xlink:title="very early and inefficient printing of the console to a pty.">
 <polygon fill="white" stroke="black" points="157,-24.5 157,-54.5 276,-54.5 276,-24.5 157,-24.5"/>
 <text text-anchor="start" x="165" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="216.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_terminal</text>

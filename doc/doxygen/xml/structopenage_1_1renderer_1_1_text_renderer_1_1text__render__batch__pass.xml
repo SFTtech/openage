@@ -73,9 +73,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A single text draw request containing the text and position. </para>
     </briefdescription>
     <detaileddescription>
-<para>A single text draw request containing the text and position. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4792">

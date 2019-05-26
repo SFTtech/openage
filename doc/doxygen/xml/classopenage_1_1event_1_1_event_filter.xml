@@ -59,9 +59,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Store a filter function that can then be applied on an event target. </para>
     </briefdescription>
     <detaileddescription>
-<para>Store a filter function that can then be applied on an event target. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="2238">

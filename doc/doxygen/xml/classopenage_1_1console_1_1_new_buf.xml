@@ -341,9 +341,9 @@
           <declname>part_of_screen_buf</declname>
         </param>
         <briefdescription>
+<para>starts a new line (as by newline character) </para>
         </briefdescription>
         <detaileddescription>
-<para>starts a new line (as by newline character) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -361,9 +361,9 @@
           <declname>c</declname>
         </param>
         <briefdescription>
+<para>writes a char </para>
         </briefdescription>
         <detaileddescription>
-<para>writes a char </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

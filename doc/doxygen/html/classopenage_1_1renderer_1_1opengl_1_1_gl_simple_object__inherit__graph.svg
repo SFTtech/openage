@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-475 900,-475 900,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A base class for all classes representing OpenGL Objects to inherit from.">
 <polygon fill="#bfbfbf" stroke="black" points="374,-325.5 374,-470.5 493,-470.5 493,-325.5 374,-325.5"/>
 <text text-anchor="start" x="382" y="-458.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="433.5" y="-447.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlSimpleObject</text>
@@ -77,7 +77,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer.xhtml" target="_top" xlink:title="Represents an OpenGL buffer of memory allocated on the GPU.">
 <polygon fill="white" stroke="black" points="0,-88.5 0,-200.5 101,-200.5 101,-88.5 0,-88.5"/>
 <text text-anchor="start" x="8" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="50.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlBuffer</text>
@@ -99,7 +99,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer.xhtml" target="_top" xlink:title="Represents an OpenGL Framebuffer Object.">
 <polygon fill="white" stroke="black" points="119.5,-99.5 119.5,-189.5 231.5,-189.5 231.5,-99.5 119.5,-99.5"/>
 <text text-anchor="start" x="127.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="175.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlFramebuffer</text>
@@ -217,7 +217,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array.xhtml" target="_top" xlink:title="An OpenGL Vertex Array Object.">
 <polygon fill="white" stroke="black" points="783,-110.5 783,-178.5 896,-178.5 896,-110.5 783,-110.5"/>
 <text text-anchor="start" x="791" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="839.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlVertexArray</text>

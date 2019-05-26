@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 415,-62 415,4 -4,4"/>
 <!-- Node61 -->
 <g id="node1" class="node"><title>Node61</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Writes the rng state to a stream.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-19.5 0,-38.5 126,-38.5 126,-19.5 0,-19.5"/>
 <text text-anchor="middle" x="63" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::operator&lt;&lt;</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node62 -->
 <g id="node2" class="node"><title>Node62</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a144e524ab2720b65d7369fdfaf6f3136" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a144e524ab2720b65d7369fdfaf6f3136" target="_top" xlink:title="Outputs the rng state to a stream.">
 <polygon fill="white" stroke="black" points="162,-14 162,-44 268,-44 268,-14 162,-14"/>
 <text text-anchor="start" x="170" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="215" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">to_stream</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node63 -->
 <g id="node3" class="node"><title>Node63</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1testing.xhtml#ab47bedd0a44345aab4aadb8378800e45" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1testing.xhtml#ab47bedd0a44345aab4aadb8378800e45" target="_top" xlink:title="Raises TestError with the message msg.">
 <polygon fill="white" stroke="black" points="304,-38.5 304,-57.5 411,-57.5 411,-38.5 304,-38.5"/>
 <text text-anchor="middle" x="357.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::testing::fail</text>
 </a>

@@ -1,8 +1,8 @@
 <map id="openage::util::Quaternion::equals_deg" name="openage::util::Quaternion::equals_deg">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,172,65"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" title=" " alt="" coords="220,23,387,65"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" title=" " alt="" coords="435,5,628,32"/>
+<area shape="rect" id="node1" title="Test rotation equality with another quaternion with given precision in degree." alt="" coords="5,23,172,65"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" title="Test rotation equality with another quaternion with given precision in radians." alt="" coords="220,23,387,65"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" title="Perform a dot product with another quaternion." alt="" coords="435,5,628,32"/>
 <area shape="rect" id="node4" href="$namespacestd.xhtml#a6af851cc1249a970adde4dc422ff824a" title=" " alt="" coords="497,56,566,83"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="676,15,843,57"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="676,81,843,122"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="676,15,843,57"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="676,81,843,122"/>
 </map>

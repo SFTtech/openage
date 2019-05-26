@@ -1,4 +1,4 @@
 <map id="openage::console::Buf::get_dims" name="openage::console::Buf::get_dims">
-<area shape="rect" id="node1" title=" " alt="" coords="232,5,383,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_console.xhtml#a9e8a7d06ccbf4e5bf402e87cf4726ffb" title=" " alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node1" title="Return the dimensions of the visible console area." alt="" coords="232,5,383,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_console.xhtml#a9e8a7d06ccbf4e5bf402e87cf4726ffb" title="execute the resize handler." alt="" coords="5,5,184,47"/>
 </map>

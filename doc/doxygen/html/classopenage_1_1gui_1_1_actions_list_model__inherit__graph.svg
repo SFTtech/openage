@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-398 147,-398 147,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Model used for the Action Buttons to render (e.g.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-299.5 143,-299.5 143,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::ActionsList</text>
 <text text-anchor="middle" x="71.5" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00">Model</text>

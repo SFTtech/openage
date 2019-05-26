@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-508 152,-508 152,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Contains information for a single game This information must be synced across network clients.">
 <polygon fill="#bfbfbf" stroke="black" points="20.5,-0.5 20.5,-211.5 127.5,-211.5 127.5,-0.5 20.5,-0.5"/>
 <text text-anchor="middle" x="74" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMain</text>
 <polyline fill="none" stroke="black" points="20.5,-192.5 127.5,-192.5 "/>
@@ -37,7 +37,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1options_1_1_option_node.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1options_1_1_option_node.xhtml" target="_top" xlink:title="Allows objects to expose customisable features.">
 <polygon fill="white" stroke="black" points="0,-248.5 0,-503.5 148,-503.5 148,-248.5 0,-248.5"/>
 <text text-anchor="middle" x="74" y="-491.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::OptionNode</text>
 <polyline fill="none" stroke="black" points="0,-484.5 148,-484.5 "/>

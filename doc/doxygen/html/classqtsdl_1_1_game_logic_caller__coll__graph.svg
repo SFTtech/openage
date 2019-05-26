@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-167 145,-167 145,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Attaches to the GuiCallbackImpl.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-68.5 141,-68.5 141,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="70.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 <polyline fill="none" stroke="black" points="0,-49.5 141,-49.5 "/>

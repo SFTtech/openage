@@ -57,7 +57,7 @@ var sectionId = 'dynsection-12';
 <polygon fill="white" stroke="none" points="-4,4 -4,-92.5 609,-92.5 609,4 -4,4"/>
 <!-- Node73 -->
 <g id="node1" class="node"><title>Node73</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Stop the job manager&#39;s worker threads.">
 <polygon fill="#bfbfbf" stroke="black" points="474,-44.5 474,-74.5 605,-74.5 605,-44.5 474,-44.5"/>
 <text text-anchor="start" x="482" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="539.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::stop</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-12';
 </g>
 <!-- Node74 -->
 <g id="node2" class="node"><title>Node74</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="0,-69 0,-88 109,-88 109,-69 0,-69"/>
 <text text-anchor="middle" x="54.5" y="-76" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-12';
 </g>
 <!-- Node75 -->
 <g id="node3" class="node"><title>Node75</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#a7c6184d63bc3af2171d83b8941eb9204" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#a7c6184d63bc3af2171d83b8941eb9204" target="_top" xlink:title="enqueues the stop of the main loop.">
 <polygon fill="white" stroke="black" points="315.5,-50 315.5,-69 429.5,-69 429.5,-50 315.5,-50"/>
 <text text-anchor="middle" x="372.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::stop</text>
 </a>
@@ -92,7 +92,7 @@ var sectionId = 'dynsection-12';
 </g>
 <!-- Node78 -->
 <g id="node6" class="node"><title>Node78</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#a4478894f90499d1f560284a194e83a4f" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#a4478894f90499d1f560284a194e83a4f" target="_top" xlink:title="Destructor that stops the job manager if it is still running.">
 <polygon fill="white" stroke="black" points="307,-0.5 307,-30.5 438,-30.5 438,-0.5 307,-0.5"/>
 <text text-anchor="start" x="315" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="372.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::~JobManager</text>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-12';
 </g>
 <!-- Node76 -->
 <g id="node4" class="node"><title>Node76</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="151.5,-50 151.5,-69 264.5,-69 264.5,-50 151.5,-50"/>
 <text text-anchor="middle" x="208" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>

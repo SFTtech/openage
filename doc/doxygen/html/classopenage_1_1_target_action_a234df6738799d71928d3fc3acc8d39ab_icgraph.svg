@@ -20,7 +20,7 @@
 </g>
 <!-- Node29 -->
 <g id="node2" class="node"><title>Node29</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title="action to perform when popped from a units action stack">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 109,-30.5 109,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAction</text>
 <text text-anchor="middle" x="54.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_completion</text>

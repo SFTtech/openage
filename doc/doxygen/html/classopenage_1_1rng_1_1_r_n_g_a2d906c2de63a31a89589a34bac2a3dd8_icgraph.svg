@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 399,-73.5 399,4 -4,4"/>
 <!-- Node138 -->
 <g id="node1" class="node"><title>Node138</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Retrieves a double in [0, 1)">
 <polygon fill="#bfbfbf" stroke="black" points="273,-28 273,-47 395,-47 395,-28 273,-28"/>
 <text text-anchor="middle" x="334" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::real</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node139 -->
 <g id="node2" class="node"><title>Node139</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng.xhtml#aadfcdd4f8b418047382e29828d81b157" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng.xhtml#aadfcdd4f8b418047382e29828d81b157" target="_top" xlink:title="Returns a double in [0, 1) from the global rng.">
 <polygon fill="white" stroke="black" points="136.5,-50 136.5,-69 231.5,-69 231.5,-50 136.5,-50"/>
 <text text-anchor="middle" x="184" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::real</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node140 -->
 <g id="node3" class="node"><title>Node140</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec" target="_top" xlink:title="Returns a double in the range [min, max)">
 <polygon fill="white" stroke="black" points="131,-0.5 131,-30.5 237,-30.5 237,-0.5 131,-0.5"/>
 <text text-anchor="start" x="139" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="184" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">real_range</text>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node141 -->
 <g id="node4" class="node"><title>Node141</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1rng.xhtml#a459eb99bb9ad49587a1cbb0bb3de8750" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1rng.xhtml#a459eb99bb9ad49587a1cbb0bb3de8750" target="_top" xlink:title="Returns a double in [lower, upper) from the global rng.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 95,-30.5 95,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::real</text>
 <text text-anchor="middle" x="47.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_range</text>

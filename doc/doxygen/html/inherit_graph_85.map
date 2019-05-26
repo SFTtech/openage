@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1error_1_1_backtrace.xhtml" title=" " alt="" coords="5,35,177,61"/>
-<area shape="rect" id="node2" href="$classopenage_1_1error_1_1_stack_analyzer.xhtml" title=" " alt="" coords="225,5,424,32"/>
-<area shape="rect" id="node3" href="$classopenage_1_1pyinterface_1_1_py_exception_backtrace.xhtml" title=" " alt="" coords="243,57,406,98"/>
+<area shape="rect" id="node1" href="$classopenage_1_1error_1_1_backtrace.xhtml" title="Abstract class for objects that provide backtrave information through get_symbols()." alt="" coords="5,35,177,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1error_1_1_stack_analyzer.xhtml" title="Implementation of the Backtrace interface that analyzes the current C++ stack." alt="" coords="225,5,424,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1pyinterface_1_1_py_exception_backtrace.xhtml" title="An implementation of the abstract Backtrace class that does not collect Backtrace information itself,..." alt="" coords="243,57,406,98"/>
 </map>

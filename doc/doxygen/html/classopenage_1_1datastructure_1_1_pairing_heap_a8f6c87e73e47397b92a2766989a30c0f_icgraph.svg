@@ -57,7 +57,7 @@ var sectionId = 'dynsection-12';
 <polygon fill="white" stroke="none" points="-4,4 -4,-106 803,-106 803,4 -4,4"/>
 <!-- Node109 -->
 <g id="node1" class="node"><title>Node109</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Unlink a node from the heap.">
 <polygon fill="#bfbfbf" stroke="black" points="666,-41.5 666,-71.5 799,-71.5 799,-41.5 666,-41.5"/>
 <text text-anchor="start" x="674" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="732.5" y="-48.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::unlink_node</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-12';
 </g>
 <!-- Node114 -->
 <g id="node6" class="node"><title>Node114</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" target="_top" xlink:title="After a change, call this to reorganize the given node.">
 <polygon fill="white" stroke="black" points="466,-0.5 466,-52.5 630,-52.5 630,-0.5 466,-0.5"/>
 <text text-anchor="start" x="474" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="474" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap&lt; std::shared</text>
@@ -96,7 +96,7 @@ var sectionId = 'dynsection-12';
 </g>
 <!-- Node111 -->
 <g id="node3" class="node"><title>Node111</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#a42433f50adffb7e0a20c43889292e54c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#a42433f50adffb7e0a20c43889292e54c" target="_top" xlink:title="Remove the given event from the queue.">
 <polygon fill="white" stroke="black" points="290,-71.5 290,-101.5 430,-101.5 430,-71.5 290,-71.5"/>
 <text text-anchor="start" x="298" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="360" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove</text>
@@ -110,7 +110,7 @@ var sectionId = 'dynsection-12';
 </g>
 <!-- Node112 -->
 <g id="node4" class="node"><title>Node112</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" target="_top" xlink:title="Call all the time change functions.">
 <polygon fill="white" stroke="black" points="145,-71.5 145,-101.5 254,-101.5 254,-71.5 145,-71.5"/>
 <text text-anchor="start" x="153" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="199.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_changes</text>
@@ -124,7 +124,7 @@ var sectionId = 'dynsection-12';
 </g>
 <!-- Node113 -->
 <g id="node5" class="node"><title>Node113</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" target="_top" xlink:title="Execute all events that are registered until a certain point in time.">
 <polygon fill="white" stroke="black" points="0,-71.5 0,-101.5 109,-101.5 109,-71.5 0,-71.5"/>
 <text text-anchor="start" x="8" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="54.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reach_time</text>

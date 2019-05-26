@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 435,-35 435,4 -4,4"/>
 <!-- Node177 -->
 <g id="node1" class="node"><title>Node177</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="the specified player is an enemy of this player">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 101,-30.5 101,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::is</text>
 <text text-anchor="middle" x="50.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_enemy</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node178 -->
 <g id="node2" class="node"><title>Node178</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a1bc0f7b97c57e7c016d3d5df3de5223a" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a1bc0f7b97c57e7c016d3d5df3de5223a" target="_top" xlink:title="the specified player is an ally of this player">
 <polygon fill="white" stroke="black" points="137,-6 137,-25 258,-25 258,-6 137,-6"/>
 <text text-anchor="middle" x="197.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::is_ally</text>
 </a>

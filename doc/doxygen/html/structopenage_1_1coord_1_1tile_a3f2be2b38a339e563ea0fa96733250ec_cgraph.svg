@@ -80,7 +80,7 @@ var sectionId = 'dynsection-12';
 </g>
 <!-- Node88 -->
 <g id="node7" class="node"><title>Node88</title>
-<g id="a_node7"><a xlink:href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" target="_top" xlink:title="See the comments for camgame_delta::to_phys3.">
 <polygon fill="white" stroke="black" points="138,-0.5 138,-30.5 270,-30.5 270,-0.5 138,-0.5"/>
 <text text-anchor="start" x="146" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::camgame</text>
 <text text-anchor="middle" x="204" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_viewport</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-12';
 </g>
 <!-- Node87 -->
 <g id="node6" class="node"><title>Node87</title>
-<g id="a_node6"><a xlink:href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b" target="_top" xlink:title="adds an UP component to the coordinate.">
 <polygon fill="white" stroke="black" points="460.5,-0.5 460.5,-30.5 562.5,-30.5 562.5,-0.5 460.5,-0.5"/>
 <text text-anchor="start" x="468.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::tile</text>
 <text text-anchor="middle" x="511.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_tile3</text>

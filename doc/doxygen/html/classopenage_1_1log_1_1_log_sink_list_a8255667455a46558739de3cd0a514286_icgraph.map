@@ -1,4 +1,4 @@
 <map id="openage::log::LogSinkList::supports_loglevel" name="openage::log::LogSinkList::supports_loglevel">
 <area shape="rect" id="node1" title=" " alt="" coords="251,5,423,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1log_1_1_message_builder.xhtml#a79661ed4ee53415c549c95a765c7b4bf" title=" " alt="" coords="5,5,203,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1log_1_1_message_builder.xhtml#a79661ed4ee53415c549c95a765c7b4bf" title="Returns if formatting should actually occur." alt="" coords="5,5,203,47"/>
 </map>

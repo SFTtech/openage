@@ -1,9 +1,9 @@
 <map id="openage::random_tile" name="openage::random_tile">
-<area shape="rect" id="node1" title=" " alt="" coords="1005,42,1152,69"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_region.xhtml#a01b77dd370f14a109a1691702244bb15" title=" " alt="" coords="573,13,743,39"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_region.xhtml#aab907d7f645bc78647dd204ba136b5d4" title=" " alt="" coords="791,67,957,94"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_region.xhtml#a365efd8b6f0199a7cb270af90291a662" title=" " alt="" coords="373,5,525,47"/>
+<area shape="rect" id="node1" title="picks a random tile from a set" alt="" coords="1005,42,1152,69"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_region.xhtml#a01b77dd370f14a109a1691702244bb15" title="picks a random tile from this subset" alt="" coords="573,13,743,39"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_region.xhtml#aab907d7f645bc78647dd204ba136b5d4" title="find a group of tiles inside this region, number is the number of tiles to be contained in the subset..." alt="" coords="791,67,957,94"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_region.xhtml#a365efd8b6f0199a7cb270af90291a662" title="similiar to take_tiles, but takes a random group of tiles" alt="" coords="373,5,525,47"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_generator.xhtml#ae221973cf4125fbf62af6f9626609b4a" title=" " alt="" coords="189,35,325,76"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" title=" " alt="" coords="5,35,141,76"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_region.xhtml#a268c678dfa97caf1cd17b632ca74de40" title=" " alt="" coords="582,64,734,105"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" title="Create a game from a specification." alt="" coords="5,35,141,76"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_region.xhtml#a268c678dfa97caf1cd17b632ca74de40" title="removes the given set of tiles from this region, which get split of as a new child region" alt="" coords="582,64,734,105"/>
 </map>

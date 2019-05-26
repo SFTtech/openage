@@ -1,5 +1,5 @@
 <map id="qtsdl::GuiSeparateRenderingContext::~GuiSeparateRenderingContext" name="qtsdl::GuiSeparateRenderingContext::~GuiSeparateRenderingContext">
 <area shape="rect" id="node1" title=" " alt="" coords="5,39,264,80"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_separate_rendering_context.xhtml#ad60bc0dd243b8c3ab105f33cdd605dae" title=" " alt="" coords="312,5,500,47"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_separate_rendering_context.xhtml#a47ae13e05fbce6703f7b3329512b5a5f" title=" " alt="" coords="312,71,500,112"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_separate_rendering_context.xhtml#ad60bc0dd243b8c3ab105f33cdd605dae" title="Function that must be called after rendering the GUI." alt="" coords="312,5,500,47"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_separate_rendering_context.xhtml#a47ae13e05fbce6703f7b3329512b5a5f" title="Function that must be called before rendering the GUI." alt="" coords="312,71,500,112"/>
 </map>

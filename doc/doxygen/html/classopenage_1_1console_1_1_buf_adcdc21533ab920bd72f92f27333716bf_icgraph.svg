@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 266,-35 266,4 -4,4"/>
 <!-- Node146 -->
 <g id="node1" class="node"><title>Node146</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="processes one unicode codepoint internally called by write(char) after feeding the char into streamde...">
 <polygon fill="#bfbfbf" stroke="black" points="149,-0.5 149,-30.5 262,-30.5 262,-0.5 149,-0.5"/>
 <text text-anchor="start" x="157" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="205.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::process_codepoint</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node147 -->
 <g id="node2" class="node"><title>Node147</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" target="_top" xlink:title="write a single byte to the buffer.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 113,-30.5 113,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="56.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::write</text>

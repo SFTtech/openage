@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 259,-35 259,4 -4,4"/>
 <!-- Node9 -->
 <g id="node1" class="node"><title>Node9</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="some common functions">
 <polygon fill="#bfbfbf" stroke="black" points="151,-0.5 151,-30.5 255,-30.5 255,-0.5 151,-0.5"/>
 <text text-anchor="start" x="159" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAbility</text>
 <text text-anchor="middle" x="203" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::has_hitpoints</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node10 -->
 <g id="node2" class="node"><title>Node10</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attack_ability.xhtml#aed325cf408ccfcfc099dfad62aa1dbbd" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attack_ability.xhtml#aed325cf408ccfcfc099dfad62aa1dbbd" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 115,-30.5 115,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAbility</text>
 <text text-anchor="middle" x="57.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>

@@ -37,9 +37,9 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Seek reference point. </para>
         </briefdescription>
         <detaileddescription>
-<para>Seek reference point.</para>
 <para>Don&apos;t change the numbers, they&apos;re used from Cython. </para>
         </detaileddescription>
         <inbodydescription>
@@ -90,9 +90,9 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref> access mode. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref> access mode.</para>
 <para>Sync the numbers with the fslike/cpp.pyx because Cython can&apos;t enum class yet. </para>
         </detaileddescription>
         <inbodydescription>
@@ -352,9 +352,9 @@
           <type>std::ostream &amp;</type>
         </param>
         <briefdescription>
+<para>string representation of the filelike </para>
         </briefdescription>
         <detaileddescription>
-<para>string representation of the filelike </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -362,9 +362,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>File-like class that has the standard operations like read, seek, write etc. </para>
     </briefdescription>
     <detaileddescription>
-<para>File-like class that has the standard operations like read, seek, write etc.</para>
 <para>pxd: ctypedef enum seek_t &quot;openage::util::filelike::FileLike::seek_t&quot;: seek_t_SET &quot;::openage::util::filelike::FileLike::seek_t::SET&quot; = 0 seek_t_CUR &quot;::openage::util::filelike::FileLike::seek_t::CUR&quot; = 1 seek_t_END &quot;::openage::util::filelike::FileLike::seek_t::END&quot; = 2</para>
 <para>cppclass <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like" kindref="compound">FileLike</ref>: string <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1adad657901714de4743f7d5a5ad8defdb" kindref="member">read(ssize_t max)</ref> except + bool <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab19a9a6b411c3d8c6b454dea5156d623" kindref="member">readable()</ref> except + void write(const string &amp;data) except + bool <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a6e4789631c0c095dea467c5ea5a06ccd" kindref="member">writable()</ref> except + void <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ad8d4e18577a61f840ec2bc4288578985" kindref="member">seek(ssize_t offset, seek_t how)</ref> except + bool <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a3299251289e5621fdf1da016a96ea78d" kindref="member">seekable()</ref> except + size_t <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a30eeb9b647177a0aaf06ca241e347196" kindref="member">tell()</ref> except + void <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a7ad98df2b552e013bce31d81a5e36d23" kindref="member">close()</ref> except + void <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a8ab61e519a946d3426334e19307eb35a" kindref="member">flush()</ref> except + ssize_t <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a212820ce88cf538a4099f14f622e569b" kindref="member">get_size()</ref> except +</para>
 <para>bool <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a022ae3fc69734c3c81cf5de6cfba35e7" kindref="member">is_python_native()</ref> noexcept </para>

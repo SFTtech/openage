@@ -1,5 +1,5 @@
 <map id="openage::GameMainHandle::clear" name="openage::GameMainHandle::clear">
-<area shape="rect" id="node1" title=" " alt="" coords="5,35,188,76"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_game_main_handle.xhtml#a7ae88934bf1fc3c90e397441657718d2" title=" " alt="" coords="238,5,421,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#ad14908046077033490111f941fbc408f" title=" " alt="" coords="236,71,423,98"/>
+<area shape="rect" id="node1" title="End the game and delete the game handle." alt="" coords="5,35,188,76"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_main_handle.xhtml#a7ae88934bf1fc3c90e397441657718d2" title="Emit a qt signal to notify for changes in a running game." alt="" coords="238,5,421,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#ad14908046077033490111f941fbc408f" title="Stop the running game." alt="" coords="236,71,423,98"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="openage::util::utf8_decoder::feed" name="openage::util::utf8_decoder::feed">
-<area shape="rect" id="node1" title=" " alt="" coords="204,5,329,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" title=" " alt="" coords="5,5,156,47"/>
+<area shape="rect" id="node1" title="feeds one char to the decoder state machine returns false on decoding error, true else" alt="" coords="204,5,329,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" title="write a single byte to the buffer." alt="" coords="5,5,156,47"/>
 </map>

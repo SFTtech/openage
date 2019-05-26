@@ -72,9 +72,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>immutable reference data </para>
     </briefdescription>
     <detaileddescription>
-<para>immutable reference data </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4604">

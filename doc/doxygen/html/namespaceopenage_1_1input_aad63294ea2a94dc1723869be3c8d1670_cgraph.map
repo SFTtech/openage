@@ -1,7 +1,7 @@
 <map id="openage::input::sdl_key" name="openage::input::sdl_key">
 <area shape="rect" id="node1" title=" " alt="" coords="5,31,165,57"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title=" " alt="" coords="457,5,587,32"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title="modulo operation that guarantees to return positive values." alt="" coords="457,5,587,32"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1input.xhtml#a440ec4f21ee7c8cf0a64ecb96e4fca91" title=" " alt="" coords="213,56,377,83"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="425,56,619,83"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="667,56,793,83"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="667,56,793,83"/>
 </map>

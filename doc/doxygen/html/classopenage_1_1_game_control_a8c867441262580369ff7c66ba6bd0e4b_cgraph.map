@@ -1,11 +1,11 @@
 <map id="openage::GameControl::announce_mode" name="openage::GameControl::announce_mode">
 <area shape="rect" id="node1" title=" " alt="" coords="5,39,160,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml#aafb84951c6575c14b5517312c5cfe191" title=" " alt="" coords="208,39,359,80"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_output_mode.xhtml#a088f019691b4233408a7d230b0a5604b" title=" " alt="" coords="425,5,576,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_context.xhtml#ab79e2d06d4aab199d3fb9c5dc5b6ff3f" title=" " alt="" coords="407,71,595,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53" title=" " alt="" coords="643,71,836,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml#aafb84951c6575c14b5517312c5cfe191" title="Emit the &quot;announced&quot; signal with (name, InputContext::active_binds)." alt="" coords="208,39,359,80"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_output_mode.xhtml#a088f019691b4233408a7d230b0a5604b" title="Used for displaying the current mode." alt="" coords="425,5,576,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_context.xhtml#ab79e2d06d4aab199d3fb9c5dc5b6ff3f" title="a list of all keys of this context which are bound currently in the active context." alt="" coords="407,71,595,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53" title="Return a string representation of active key bindings from the given context." alt="" coords="643,71,836,112"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="889,19,1082,46"/>
-<area shape="rect" id="node8" href="$classopenage_1_1input_1_1_input_manager.xhtml#aa0777d6b8ecc513c2a90ae8273d1938c" title=" " alt="" coords="889,71,1082,112"/>
+<area shape="rect" id="node8" href="$classopenage_1_1input_1_1_input_manager.xhtml#aa0777d6b8ecc513c2a90ae8273d1938c" title="Get the action manager attached to this input manager." alt="" coords="889,71,1082,112"/>
 <area shape="rect" id="node9" href="$classopenage_1_1input_1_1_action_manager.xhtml#a44e53d5edb2092424df17b709b743358" title=" " alt="" coords="884,136,1087,177"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="1135,19,1261,46"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="1135,19,1261,46"/>
 </map>

@@ -99,43 +99,54 @@ $(document).ready(function(){initNavTree('classopenage_1_1job_1_1_job_group.xhtm
 </div><!--header-->
 <div class="contents">
 
+<p>A job group is a proxy object that forwards job's to a single worker thread.  
+ <a href="classopenage_1_1job_1_1_job_group.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="job__group_8h_source.xhtml">job_group.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::job::JobGroup:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_group__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_group__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa837e1d54351d5250163e288afd605bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1job_1_1_job_group.xhtml#aa837e1d54351d5250163e288afd605bf">JobGroup</a> ()</td></tr>
+<tr class="memdesc:aa837e1d54351d5250163e288afd605bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new empty job group with no parent worker.  <a href="#aa837e1d54351d5250163e288afd605bf">More...</a><br /></td></tr>
 <tr class="separator:aa837e1d54351d5250163e288afd605bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a793449eefa0dcc327cd2dc8bdd4144bc"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:a793449eefa0dcc327cd2dc8bdd4144bc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1job_1_1_job.xhtml">Job</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenage_1_1job_1_1_job_group.xhtml#a793449eefa0dcc327cd2dc8bdd4144bc">enqueue</a> (<a class="el" href="namespaceopenage_1_1job.xhtml#a3e3a23d8e117aba5577c273f75ed630e">job_function_t</a>&lt; T &gt; function, <a class="el" href="namespaceopenage_1_1job.xhtml#a9e457e59ab065783dbb679ab82cfdfa4">callback_function_t</a>&lt; T &gt; callback={})</td></tr>
+<tr class="memdesc:a793449eefa0dcc327cd2dc8bdd4144bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues the given function into the job group's worker thread.  <a href="#a793449eefa0dcc327cd2dc8bdd4144bc">More...</a><br /></td></tr>
 <tr class="separator:a793449eefa0dcc327cd2dc8bdd4144bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a347b8e3abb874668f5c5bd8a5468a0b2"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:a347b8e3abb874668f5c5bd8a5468a0b2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1job_1_1_job.xhtml">Job</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenage_1_1job_1_1_job_group.xhtml#a347b8e3abb874668f5c5bd8a5468a0b2">enqueue</a> (<a class="el" href="namespaceopenage_1_1job.xhtml#aae93538aa9f8440cd9bbd3fe67d88e75">abortable_function_t</a>&lt; T &gt; function, <a class="el" href="namespaceopenage_1_1job.xhtml#a9e457e59ab065783dbb679ab82cfdfa4">callback_function_t</a>&lt; T &gt; callback={})</td></tr>
+<tr class="memdesc:a347b8e3abb874668f5c5bd8a5468a0b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues the given function into the job group's worker thread.  <a href="#a347b8e3abb874668f5c5bd8a5468a0b2">More...</a><br /></td></tr>
 <tr class="separator:a347b8e3abb874668f5c5bd8a5468a0b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a2c8b676ea02ea4cbe16121a393c1903a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1job_1_1_job_group.xhtml#a2c8b676ea02ea4cbe16121a393c1903a">JobGroup</a> (<a class="el" href="classopenage_1_1job_1_1_worker.xhtml">Worker</a> *<a class="el" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>)</td></tr>
+<tr class="memdesc:a2c8b676ea02ea4cbe16121a393c1903a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new job group with the given parent worker.  <a href="#a2c8b676ea02ea4cbe16121a393c1903a">More...</a><br /></td></tr>
 <tr class="separator:a2c8b676ea02ea4cbe16121a393c1903a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:af6a7632ccf4dbd8da7fc9360ead870ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1job_1_1_worker.xhtml">Worker</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a></td></tr>
+<tr class="memdesc:af6a7632ccf4dbd8da7fc9360ead870ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parent worker that executes all jobs from this job group.  <a href="#af6a7632ccf4dbd8da7fc9360ead870ef">More...</a><br /></td></tr>
 <tr class="separator:af6a7632ccf4dbd8da7fc9360ead870ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a22d5e96819bc7c0bff8d135a21e67b42"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1job_1_1_job_group.xhtml#a22d5e96819bc7c0bff8d135a21e67b42">JobManager</a></td></tr>
+<tr class="memdesc:a22d5e96819bc7c0bff8d135a21e67b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">The job manager must be a friend of the worker in order to call the private constructor.  <a href="#a22d5e96819bc7c0bff8d135a21e67b42">More...</a><br /></td></tr>
 <tr class="separator:a22d5e96819bc7c0bff8d135a21e67b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A job group is a proxy object that forwards job's to a single worker thread. It can be used the assure that multiple jobs are executed on the same background thread. </p>
+<div class="textblock"><p>A job group is a proxy object that forwards job's to a single worker thread. </p>
+<p>It can be used the assure that multiple jobs are executed on the same background thread. </p>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8h_source.xhtml#l00024">24</a> of file <a class="el" href="job__group_8h_source.xhtml">job_group.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -153,10 +164,12 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a new empty job group with no parent worker. Should only be used as dummy object. </p>
+
+<p>Creates a new empty job group with no parent worker. </p>
+<p>Should only be used as dummy object. </p>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8cpp_source.xhtml#l00008">8</a> of file <a class="el" href="job__group_8cpp_source.xhtml">job_group.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    :</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#aa837e1d54351d5250163e288afd605bf">JobGroup</a>{<span class="keyword">nullptr</span>} {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_aa837e1d54351d5250163e288afd605bf"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#aa837e1d54351d5250163e288afd605bf">openage::job::JobGroup::JobGroup</a></div><div class="ttdeci">JobGroup()</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8cpp_source.xhtml#l00008">job_group.cpp:8</a></div></div>
+<div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    :</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#aa837e1d54351d5250163e288afd605bf">JobGroup</a>{<span class="keyword">nullptr</span>} {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_aa837e1d54351d5250163e288afd605bf"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#aa837e1d54351d5250163e288afd605bf">openage::job::JobGroup::JobGroup</a></div><div class="ttdeci">JobGroup()</div><div class="ttdoc">Creates a new empty job group with no parent worker.</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8cpp_source.xhtml#l00008">job_group.cpp:8</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -183,10 +196,11 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Creates a new job group with the given parent worker. </p>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8cpp_source.xhtml#l00013">13</a> of file <a class="el" href="job__group_8cpp_source.xhtml">job_group.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    :</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>{<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>} {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_af6a7632ccf4dbd8da7fc9360ead870ef"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">openage::job::JobGroup::parent_worker</a></div><div class="ttdeci">Worker * parent_worker</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8h_source.xhtml#l00027">job_group.h:27</a></div></div>
+<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    :</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>{<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>} {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_af6a7632ccf4dbd8da7fc9360ead870ef"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">openage::job::JobGroup::parent_worker</a></div><div class="ttdeci">Worker * parent_worker</div><div class="ttdoc">The parent worker that executes all jobs from this job group.</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8h_source.xhtml#l00027">job_group.h:27</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="job__group_8h_source.xhtml#l00027">parent_worker</a>.</p>
 
@@ -228,7 +242,9 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Enqueues the given function into the job group's worker thread. A lightweight job object is returned, that allows to keep track of the job's state.</p>
+
+<p>Enqueues the given function into the job group's worker thread. </p>
+<p>A lightweight job object is returned, that allows to keep track of the job's state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">function</td><td>the function that is executed as background job </td></tr>
@@ -238,9 +254,9 @@ template&lt;class T &gt; </div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8h_source.xhtml#l00046">46</a> of file <a class="el" href="job__group_8h_source.xhtml">job_group.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                   {}) {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>, <span class="stringliteral">&quot;job group has no worker thread associated&quot;</span>);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">auto</span> state = std::make_shared&lt;JobState&lt;T&gt;&gt;(<span class="keyword">function</span>, callback);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">enqueue</a>(state);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> Job&lt;T&gt;{state};</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_af6a7632ccf4dbd8da7fc9360ead870ef"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">openage::job::JobGroup::parent_worker</a></div><div class="ttdeci">Worker * parent_worker</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8h_source.xhtml#l00027">job_group.h:27</a></div></div>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                   {}) {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>, <span class="stringliteral">&quot;job group has no worker thread associated&quot;</span>);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">auto</span> state = std::make_shared&lt;JobState&lt;T&gt;&gt;(<span class="keyword">function</span>, callback);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">enqueue</a>(state);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> Job&lt;T&gt;{state};</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_af6a7632ccf4dbd8da7fc9360ead870ef"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">openage::job::JobGroup::parent_worker</a></div><div class="ttdeci">Worker * parent_worker</div><div class="ttdoc">The parent worker that executes all jobs from this job group.</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8h_source.xhtml#l00027">job_group.h:27</a></div></div>
 <div class="ttc" id="error_2error_8h_xhtml_ae20e8a0a86b80f8211fdf87477524f87"><div class="ttname"><a href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a></div><div class="ttdeci">#define ENSURE(...)</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00155">error.h:155</a></div></div>
-<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ace257fda681faf0b5c87e9296da18b7c"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">openage::job::Worker::enqueue</a></div><div class="ttdeci">void enqueue(std::shared_ptr&lt; JobStateBase &gt; job)</div><div class="ttdef"><b>Definition:</b> <a href="worker_8cpp_source.xhtml#l00033">worker.cpp:33</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ace257fda681faf0b5c87e9296da18b7c"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">openage::job::Worker::enqueue</a></div><div class="ttdeci">void enqueue(std::shared_ptr&lt; JobStateBase &gt; job)</div><div class="ttdoc">Adds the given job to the internal pending job queue.</div><div class="ttdef"><b>Definition:</b> <a href="worker_8cpp_source.xhtml#l00033">worker.cpp:33</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="dynamic__resource_8cpp_source.xhtml#l00173">openage::audio::DynamicResource::load_chunk_async()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -248,7 +264,8 @@ template&lt;class T &gt; </div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_group_a793449eefa0dcc327cd2dc8bdd4144bc_icgraph.svg" width="100%" height="361"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_group_a793449eefa0dcc327cd2dc8bdd4144bc_icgraph.svg" width="100%" height="361"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -288,7 +305,9 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Enqueues the given function into the job group's worker thread. A lightweight job object is returned, that allows to keep track of the job's state.The passed function must accept a function object that returns, whether the job should be aborted at any time. Further it must accept a function that can be used to abort the execution of the function.</p>
+
+<p>Enqueues the given function into the job group's worker thread. </p>
+<p>A lightweight job object is returned, that allows to keep track of the job's state.The passed function must accept a function object that returns, whether the job should be aborted at any time. Further it must accept a function that can be used to abort the execution of the function.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">function</td><td>the function that is executed as background job </td></tr>
@@ -298,9 +317,9 @@ template&lt;class T &gt; </div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8h_source.xhtml#l00067">67</a> of file <a class="el" href="job__group_8h_source.xhtml">job_group.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                   {}) {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>, <span class="stringliteral">&quot;job group has no worker thread associated&quot;</span>);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">auto</span> state = std::make_shared&lt;AbortableJobState&lt;T&gt;&gt;(<span class="keyword">function</span>, callback);</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">enqueue</a>(state);</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> Job&lt;T&gt;{state};</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_af6a7632ccf4dbd8da7fc9360ead870ef"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">openage::job::JobGroup::parent_worker</a></div><div class="ttdeci">Worker * parent_worker</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8h_source.xhtml#l00027">job_group.h:27</a></div></div>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                   {}) {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>, <span class="stringliteral">&quot;job group has no worker thread associated&quot;</span>);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">auto</span> state = std::make_shared&lt;AbortableJobState&lt;T&gt;&gt;(<span class="keyword">function</span>, callback);</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">enqueue</a>(state);</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> Job&lt;T&gt;{state};</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_af6a7632ccf4dbd8da7fc9360ead870ef"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">openage::job::JobGroup::parent_worker</a></div><div class="ttdeci">Worker * parent_worker</div><div class="ttdoc">The parent worker that executes all jobs from this job group.</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8h_source.xhtml#l00027">job_group.h:27</a></div></div>
 <div class="ttc" id="error_2error_8h_xhtml_ae20e8a0a86b80f8211fdf87477524f87"><div class="ttname"><a href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a></div><div class="ttdeci">#define ENSURE(...)</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00155">error.h:155</a></div></div>
-<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ace257fda681faf0b5c87e9296da18b7c"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">openage::job::Worker::enqueue</a></div><div class="ttdeci">void enqueue(std::shared_ptr&lt; JobStateBase &gt; job)</div><div class="ttdef"><b>Definition:</b> <a href="worker_8cpp_source.xhtml#l00033">worker.cpp:33</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ace257fda681faf0b5c87e9296da18b7c"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">openage::job::Worker::enqueue</a></div><div class="ttdeci">void enqueue(std::shared_ptr&lt; JobStateBase &gt; job)</div><div class="ttdoc">Adds the given job to the internal pending job queue.</div><div class="ttdef"><b>Definition:</b> <a href="worker_8cpp_source.xhtml#l00033">worker.cpp:33</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -324,6 +343,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>The job manager must be a friend of the worker in order to call the private constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8h_source.xhtml#l00083">83</a> of file <a class="el" href="job__group_8h_source.xhtml">job_group.h</a>.</p>
@@ -350,6 +370,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>The parent worker that executes all jobs from this job group. </p>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8h_source.xhtml#l00027">27</a> of file <a class="el" href="job__group_8h_source.xhtml">job_group.h</a>.</p>

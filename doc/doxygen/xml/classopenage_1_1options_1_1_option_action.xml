@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>name</name>
         <briefdescription>
+<para>name of this action </para>
         </briefdescription>
         <detaileddescription>
-<para>name of this action </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -72,9 +72,9 @@
         <argsstring>()</argsstring>
         <name>do_action</name>
         <briefdescription>
+<para>pass mouse position </para>
         </briefdescription>
         <detaileddescription>
-<para>pass mouse position </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

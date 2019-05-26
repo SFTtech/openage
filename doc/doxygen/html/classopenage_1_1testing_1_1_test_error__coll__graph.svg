@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-1498 350.5,-1498 350.5,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="To be used by all tests to indicate an error condition.">
 <polygon fill="#bfbfbf" stroke="black" points="9,-0.5 9,-57.5 143,-57.5 143,-0.5 9,-0.5"/>
 <text text-anchor="middle" x="76" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::testing::TestError</text>
 <polyline fill="none" stroke="black" points="9,-38.5 143,-38.5 "/>
@@ -69,7 +69,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_error.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_error.xhtml" target="_top" xlink:title="Openage base exception type; the constructor usage is analogous to log::log().">
 <polygon fill="white" stroke="black" points="8.5,-95.5 8.5,-240.5 143.5,-240.5 143.5,-95.5 8.5,-95.5"/>
 <text text-anchor="middle" x="76" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 <polyline fill="none" stroke="black" points="8.5,-221.5 143.5,-221.5 "/>
@@ -111,7 +111,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="structopenage_1_1log_1_1message.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="structopenage_1_1log_1_1message.xhtml" target="_top" xlink:title="A complete log/exception message, containing a text message and metadata.">
 <polygon fill="white" stroke="black" points="92.5,-288.5 92.5,-411.5 231.5,-411.5 231.5,-288.5 92.5,-288.5"/>
 <text text-anchor="middle" x="162" y="-399.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::message</text>
 <polyline fill="none" stroke="black" points="92.5,-392.5 231.5,-392.5 "/>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node7 -->
 <g id="node5" class="node"><title>Node7</title>
-<g id="a_node5"><a xlink:href="structopenage_1_1log_1_1level.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="structopenage_1_1log_1_1level.xhtml" target="_top" xlink:title="Available logging levels.">
 <polygon fill="white" stroke="black" points="113.5,-459.5 113.5,-516.5 210.5,-516.5 210.5,-459.5 113.5,-459.5"/>
 <text text-anchor="middle" x="162" y="-504.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <polyline fill="none" stroke="black" points="113.5,-497.5 210.5,-497.5 "/>
@@ -183,7 +183,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node9 -->
 <g id="node7" class="node"><title>Node9</title>
-<g id="a_node7"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title="Data associated with a log level.">
 <polygon fill="white" stroke="black" points="72.5,-863 72.5,-931 169.5,-931 169.5,-863 72.5,-863"/>
 <text text-anchor="start" x="80.5" y="-919" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <text text-anchor="middle" x="121" y="-908" font-family="Helvetica,sans-Serif" font-size="10.00">_value</text>
@@ -278,7 +278,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node13 -->
 <g id="node11" class="node"><title>Node13</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title="Container for possible enum values.">
 <polygon fill="white" stroke="black" points="187.5,-802.5 187.5,-991.5 346.5,-991.5 346.5,-802.5 187.5,-802.5"/>
 <text text-anchor="start" x="195.5" y="-979.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Enum</text>
 <text text-anchor="middle" x="267" y="-968.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; DerivedType &gt;</text>

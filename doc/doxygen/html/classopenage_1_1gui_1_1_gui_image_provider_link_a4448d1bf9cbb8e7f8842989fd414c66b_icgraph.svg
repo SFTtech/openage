@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 348,-35 348,4 -4,4"/>
 <!-- Node17 -->
 <g id="node1" class="node"><title>Node17</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Pass loaded assets to the image provider.">
 <polygon fill="#bfbfbf" stroke="black" points="190,-0.5 190,-30.5 344,-30.5 344,-0.5 190,-0.5"/>
 <text text-anchor="start" x="198" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="267" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Link::on_game_spec_loaded</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node18 -->
 <g id="node2" class="node"><title>Node18</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" target="_top" xlink:title="Sets the game spec to load textures from.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 154,-30.5 154,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="77" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Link::set_game_spec</text>

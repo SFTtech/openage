@@ -1,4 +1,4 @@
 <map id="openage::Unit::stop_gather" name="openage::Unit::stop_gather">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,140,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#aae0b3f53cb1d75823391322876d199ef" title=" " alt="" coords="188,5,331,47"/>
+<area shape="rect" id="node1" title="removes all gather actions without calling their on_complete actions this cancels the gathering actio..." alt="" coords="5,5,140,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#aae0b3f53cb1d75823391322876d199ef" title="erase from action specified by func to the end of the stack all actions erased will have the on_compl..." alt="" coords="188,5,331,47"/>
 </map>

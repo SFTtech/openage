@@ -1,4 +1,4 @@
 <map id="openage::gui::GuiImageProviderLink::on_game_spec_loaded" name="openage::gui::GuiImageProviderLink::on_game_spec_loaded">
-<area shape="rect" id="node1" title=" " alt="" coords="259,5,464,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" title=" " alt="" coords="5,5,211,47"/>
+<area shape="rect" id="node1" title="Pass loaded assets to the image provider." alt="" coords="259,5,464,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" title="Sets the game spec to load textures from." alt="" coords="5,5,211,47"/>
 </map>

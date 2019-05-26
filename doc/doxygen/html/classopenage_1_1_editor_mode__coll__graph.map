@@ -1,52 +1,52 @@
 <map id="openage::EditorMode" name="openage::EditorMode">
-<area shape="rect" id="node1" title=" " alt="" coords="3372,3101,3577,3457"/>
+<area shape="rect" id="node1" title="UI mode to provide an interface for map editing." alt="" coords="3372,3101,3577,3457"/>
 <area shape="rect" id="node50" href="$classopenage_1_1_editor_mode_signals.xhtml" title=" " alt="" coords="3491,3520,3679,3627"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml" title=" " alt="" coords="3219,2843,3386,3052"/>
-<area shape="rect" id="node13" href="$classopenage_1_1_game_control.xhtml" title=" " alt="" coords="3019,2541,3245,2780"/>
-<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_context.xhtml" title=" " alt="" coords="185,161,373,415"/>
-<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_manager.xhtml" title=" " alt="" coords="434,521,627,833"/>
-<area shape="rect" id="node10" href="$classopenage_1_1input_1_1_action_manager.xhtml" title="odo this whole class seems rather obsolete..." alt="" coords="656,1072,859,1237"/>
-<area shape="rect" id="node17" href="$classopenage_1_1_engine.xhtml" title=" " alt="" coords="1967,1480,2102,1953"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_input_handler.xhtml" title=" " alt="" coords="569,242,719,334"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml" title="A target for input handling and gui rendering." alt="" coords="3219,2843,3386,3052"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_game_control.xhtml" title="connects the gui system with the game engine switches between contexts such as editor mode and action..." alt="" coords="3019,2541,3245,2780"/>
+<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_context.xhtml" title="An input context contains all keybindings and actions active in e.g." alt="" coords="185,161,373,415"/>
+<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_manager.xhtml" title="The input manager manages all input layers (hud, game, ...) and triggers the registered actions depen..." alt="" coords="434,521,627,833"/>
+<area shape="rect" id="node10" href="$classopenage_1_1input_1_1_action_manager.xhtml" title="The action manager manages all the actions allow creation, access information and equality." alt="" coords="656,1072,859,1237"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_engine.xhtml" title="main engine container." alt="" coords="1967,1480,2102,1953"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_input_handler.xhtml" title="superclass for handling any input event." alt="" coords="569,242,719,334"/>
 <area shape="rect" id="node6" href="$structopenage_1_1coord_1_1input.xhtml" title=" " alt="" coords="13,235,160,341"/>
 <area shape="rect" id="node7" title=" " alt="" coords="5,13,168,105"/>
 <area shape="rect" id="node8" href="$structopenage_1_1coord_1_1input__delta.xhtml" title=" " alt="" coords="397,227,544,349"/>
 <area shape="rect" id="node9" title=" " alt="" coords="393,13,549,105"/>
-<area shape="rect" id="node11" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml" title=" " alt="" coords="1993,602,2183,753"/>
-<area shape="rect" id="node12" href="$classopenage_1_1util_1_1_path.xhtml" title=" " alt="" coords="2155,161,2285,415"/>
-<area shape="rect" id="node34" href="$classopenage_1_1gui_1_1_engine_q_m_l_info.xhtml" title=" " alt="" coords="2104,2240,2296,2317"/>
+<area shape="rect" id="node11" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml" title="Configuration manager." alt="" coords="1993,602,2183,753"/>
+<area shape="rect" id="node12" href="$classopenage_1_1util_1_1_path.xhtml" title="C++ pendant to the python util.fslike.path.Path." alt="" coords="2155,161,2285,415"/>
+<area shape="rect" id="node34" href="$classopenage_1_1gui_1_1_engine_q_m_l_info.xhtml" title="This container is attached to the QML engine." alt="" coords="2104,2240,2296,2317"/>
 <area shape="rect" id="node15" href="$classopenage_1_1_game_control_signals.xhtml" title=" " alt="" coords="3135,2233,3334,2325"/>
-<area shape="rect" id="node14" href="$classopenage_1_1_hud_handler.xhtml" title=" " alt="" coords="1693,2233,1840,2325"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_hud_handler.xhtml" title="superclass for all possible drawing operations in the game." alt="" coords="1693,2233,1840,2325"/>
 <area shape="rect" id="node16" title=" " alt="" coords="3429,639,3499,716"/>
-<area shape="rect" id="node26" href="$classopenage_1_1_engine_signals.xhtml" title=" " alt="" coords="2473,1116,2636,1193"/>
+<area shape="rect" id="node26" href="$classopenage_1_1_engine_signals.xhtml" title="Qt signals for the engine." alt="" coords="2473,1116,2636,1193"/>
 <area shape="rect" id="node45" href="$classopenage_1_1_game_main_signals.xhtml" title=" " alt="" coords="3258,1379,3443,1456"/>
-<area shape="rect" id="node49" href="$classopenage_1_1_output_mode_signals.xhtml" title=" " alt="" coords="3471,1977,3665,2055"/>
+<area shape="rect" id="node49" href="$classopenage_1_1_output_mode_signals.xhtml" title="Signals for a gui mode." alt="" coords="3471,1977,3665,2055"/>
 <area shape="rect" id="node25" href="$classopenage_1_1util_1_1_profiler.xhtml" title=" " alt="" coords="1865,2079,2079,2479"/>
-<area shape="rect" id="node44" href="$classopenage_1_1_game_main_handle.xhtml" title=" " alt="" coords="2929,2196,3111,2361"/>
-<area shape="rect" id="node18" href="$classopenage_1_1_resize_handler.xhtml" title=" " alt="" coords="888,1109,1051,1201"/>
-<area shape="rect" id="node19" href="$classopenage_1_1options_1_1_option_node.xhtml" title=" " alt="" coords="2773,991,2971,1318"/>
-<area shape="rect" id="node46" href="$classopenage_1_1_game_main.xhtml" title=" " alt="" coords="2965,1590,3107,1843"/>
+<area shape="rect" id="node44" href="$classopenage_1_1_game_main_handle.xhtml" title="Class linked to the QML object &quot;GameMain&quot; via GameMainLink." alt="" coords="2929,2196,3111,2361"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_resize_handler.xhtml" title="superclass for handling a window resize event." alt="" coords="888,1109,1051,1201"/>
+<area shape="rect" id="node19" href="$classopenage_1_1options_1_1_option_node.xhtml" title="Allows objects to expose customisable features." alt="" coords="2773,991,2971,1318"/>
+<area shape="rect" id="node46" href="$classopenage_1_1_game_main.xhtml" title="Contains information for a single game This information must be synced across network clients." alt="" coords="2965,1590,3107,1843"/>
 <area shape="rect" id="node20" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="1075,1109,1224,1201"/>
 <area shape="rect" id="node21" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="651,617,802,738"/>
-<area shape="rect" id="node22" href="$classopenage_1_1util_1_1_variable_base.xhtml" title=" " alt="" coords="840,5,1021,112"/>
+<area shape="rect" id="node22" href="$classopenage_1_1util_1_1_variable_base.xhtml" title="A typed value holder." alt="" coords="840,5,1021,112"/>
 <area shape="rect" id="node23" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="743,235,926,341"/>
-<area shape="rect" id="node24" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="826,639,1006,716"/>
+<area shape="rect" id="node24" href="$classopenage_1_1options_1_1_var.xhtml" title="A interaface variable which gets monitored by an option node allowing reflection, while also being di..." alt="" coords="826,639,1006,716"/>
 <area shape="rect" id="node27" href="$classopenage_1_1_screenshot_manager.xhtml" title=" " alt="" coords="1493,1079,1688,1230"/>
-<area shape="rect" id="node28" href="$classopenage_1_1job_1_1_job_manager.xhtml" title=" " alt="" coords="1789,477,1963,877"/>
-<area shape="rect" id="node42" href="$classopenage_1_1audio_1_1_audio_manager.xhtml" title=" " alt="" coords="1843,955,2045,1355"/>
+<area shape="rect" id="node28" href="$classopenage_1_1job_1_1_job_manager.xhtml" title="A job manager can be used to execute functions within separate worker threads." alt="" coords="1789,477,1963,877"/>
+<area shape="rect" id="node42" href="$classopenage_1_1audio_1_1_audio_manager.xhtml" title="This class provides audio functionality for openage." alt="" coords="1843,955,2045,1355"/>
 <area shape="rect" id="node29" href="$structopenage_1_1coord_1_1viewport__delta.xhtml" title=" " alt="" coords="1599,617,1764,738"/>
-<area shape="rect" id="node36" href="$classopenage_1_1coord_1_1_coord_manager.xhtml" title=" " alt="" coords="1251,1116,1453,1193"/>
+<area shape="rect" id="node36" href="$classopenage_1_1coord_1_1_coord_manager.xhtml" title="Holds all coordinate&#45;related state and metadata." alt="" coords="1251,1116,1453,1193"/>
 <area shape="rect" id="node30" title=" " alt="" coords="1603,235,1759,341"/>
 <area shape="rect" id="node31" href="$classopenage_1_1util_1_1_frame_counter.xhtml" title=" " alt="" coords="268,1072,463,1237"/>
-<area shape="rect" id="node32" href="$classopenage_1_1util_1_1_timer.xhtml" title=" " alt="" coords="273,573,409,782"/>
+<area shape="rect" id="node32" href="$classopenage_1_1util_1_1_timer.xhtml" title="Time measurement class." alt="" coords="273,573,409,782"/>
 <area shape="rect" id="node33" href="$classopenage_1_1util_1_1_external_profiler.xhtml" title=" " alt="" coords="2257,1072,2449,1237"/>
-<area shape="rect" id="node35" href="$classqtsdl_1_1_gui_singleton_items_info.xhtml" title=" " alt="" coords="1759,1678,1943,1755"/>
+<area shape="rect" id="node35" href="$classqtsdl_1_1_gui_singleton_items_info.xhtml" title="Accessible during creation of any singleton QML item." alt="" coords="1759,1678,1943,1755"/>
 <area shape="rect" id="node37" href="$structopenage_1_1coord_1_1viewport.xhtml" title=" " alt="" coords="1031,617,1196,738"/>
 <area shape="rect" id="node38" title=" " alt="" coords="1032,235,1195,341"/>
 <area shape="rect" id="node39" href="$structopenage_1_1coord_1_1phys3.xhtml" title=" " alt="" coords="1420,602,1575,753"/>
 <area shape="rect" id="node40" title=" " alt="" coords="1418,235,1577,341"/>
 <area shape="rect" id="node41" href="$structopenage_1_1coord_1_1camgame__delta.xhtml" title=" " alt="" coords="1220,624,1396,731"/>
-<area shape="rect" id="node43" href="$classqtsdl_1_1_gui_item_link.xhtml" title=" " alt="" coords="3387,1678,3514,1755"/>
-<area shape="rect" id="node47" href="$classopenage_1_1_market.xhtml" title=" " alt="" coords="3245,1072,3376,1237"/>
-<area shape="rect" id="node48" href="$classopenage_1_1_unit_container.xhtml" title=" " alt="" coords="3064,1013,3221,1296"/>
+<area shape="rect" id="node43" href="$classqtsdl_1_1_gui_item_link.xhtml" title="Base for QObject wrapper of the domain&#45;specific classes." alt="" coords="3387,1678,3514,1755"/>
+<area shape="rect" id="node47" href="$classopenage_1_1_market.xhtml" title="The global market prices." alt="" coords="3245,1072,3376,1237"/>
+<area shape="rect" id="node48" href="$classopenage_1_1_unit_container.xhtml" title="the list of units that are currently in use will also give a view of the current game state for netwo..." alt="" coords="3064,1013,3221,1296"/>
 </map>

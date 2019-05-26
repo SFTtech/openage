@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-211 135,-211 135,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="An implementation of the abstract Backtrace class that does not collect Backtrace information itself,...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-79.5 131,-79.5 131,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="65.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyExceptionBacktrace</text>
@@ -25,7 +25,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_backtrace.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_backtrace.xhtml" target="_top" xlink:title="Abstract class for objects that provide backtrave information through get_symbols().">
 <polygon fill="white" stroke="black" points="1,-116.5 1,-206.5 130,-206.5 130,-116.5 1,-116.5"/>
 <text text-anchor="middle" x="65.5" y="-194.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Backtrace</text>
 <polyline fill="none" stroke="black" points="1,-187.5 130,-187.5 "/>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 459,-35 459,4 -4,4"/>
 <!-- Node26 -->
 <g id="node1" class="node"><title>Node26</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="#bfbfbf" stroke="black" points="328,-0.5 328,-30.5 455,-30.5 455,-0.5 328,-0.5"/>
 <text text-anchor="start" x="336" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="391.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node27 -->
 <g id="node2" class="node"><title>Node27</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="158,-0.5 158,-30.5 292,-30.5 292,-0.5 158,-0.5"/>
 <text text-anchor="start" x="166" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="225" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node28 -->
 <g id="node3" class="node"><title>Node28</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 122,-30.5 122,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="61" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>

@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>is_debug</name>
         <briefdescription>
+<para>True if the GL context is a debug context. </para>
         </briefdescription>
         <detaileddescription>
-<para>True if the GL context is a debug context </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -25,9 +25,9 @@
         <argsstring></argsstring>
         <name>callback</name>
         <briefdescription>
+<para>Function that GL context uses to report debug messages. </para>
         </briefdescription>
         <detaileddescription>
-<para>Function that GL context uses to report debug messages </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -40,9 +40,9 @@
         <argsstring></argsstring>
         <name>synchronous</name>
         <briefdescription>
+<para>True if debug callback calling method is chosen to be synchronous. </para>
         </briefdescription>
         <detaileddescription>
-<para>True if debug callback calling method is chosen to be synchronous </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

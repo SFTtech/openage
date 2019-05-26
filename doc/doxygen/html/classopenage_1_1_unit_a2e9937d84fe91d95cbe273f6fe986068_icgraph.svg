@@ -57,7 +57,7 @@ var sectionId = 'dynsection-20';
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 556,-84 556,4 -4,4"/>
 <!-- Node189 -->
 <g id="node1" class="node"><title>Node189</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="the container used when constructing this unit">
 <polygon fill="#bfbfbf" stroke="black" points="456,-24.5 456,-54.5 552,-54.5 552,-24.5 456,-24.5"/>
 <text text-anchor="start" x="464" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::get</text>
 <text text-anchor="middle" x="504" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">_container</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node190 -->
 <g id="node2" class="node"><title>Node190</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attack_action.xhtml#a1a76ce122961d9e09c526b8d0f2f513f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attack_action.xhtml#a1a76ce122961d9e09c526b8d0f2f513f" target="_top" xlink:title="add a projectile game object which moves towards the target">
 <polygon fill="white" stroke="black" points="304,-49.5 304,-79.5 420,-79.5 420,-49.5 304,-49.5"/>
 <text text-anchor="start" x="312" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="362" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::fire_projectile</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node193 -->
 <g id="node5" class="node"><title>Node193</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_train_action.xhtml#af5515a9c445b00f4dd69348e7177c94c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_train_action.xhtml#af5515a9c445b00f4dd69348e7177c94c" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="308,-0.5 308,-30.5 416,-30.5 416,-0.5 308,-0.5"/>
 <text text-anchor="start" x="316" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TrainAction</text>
 <text text-anchor="middle" x="362" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node191 -->
 <g id="node3" class="node"><title>Node191</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" target="_top" xlink:title="use attack action">
 <polygon fill="white" stroke="black" points="152,-49.5 152,-79.5 268,-79.5 268,-49.5 152,-49.5"/>
 <text text-anchor="start" x="160" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="210" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::attack</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node192 -->
 <g id="node4" class="node"><title>Node192</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 116,-79.5 116,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="58" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>

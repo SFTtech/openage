@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-211 407,-211 407,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Abstract base for classes that &#45; in one way or an other &#45; print log messages.">
 <polygon fill="#bfbfbf" stroke="black" points="142,-116.5 142,-206.5 261,-206.5 261,-116.5 142,-116.5"/>
 <text text-anchor="middle" x="201.5" y="-194.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSink</text>
 <polyline fill="none" stroke="black" points="142,-187.5 261,-187.5 "/>
@@ -44,7 +44,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1log_1_1_std_out_sink.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1log_1_1_std_out_sink.xhtml" target="_top" xlink:title="Simple logsink that prints messages to stdout (via std::cout).">
 <polygon fill="white" stroke="black" points="137.5,-6 137.5,-74 265.5,-74 265.5,-6 137.5,-6"/>
 <text text-anchor="middle" x="201.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::StdOutSink</text>
 <polyline fill="none" stroke="black" points="137.5,-55 265.5,-55 "/>

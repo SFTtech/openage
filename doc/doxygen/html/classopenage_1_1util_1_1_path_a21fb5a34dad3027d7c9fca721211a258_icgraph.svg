@@ -178,7 +178,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node91 -->
 <g id="node5" class="node"><title>Node91</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a54659e7f41b37d889bba34111bb003d0" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a54659e7f41b37d889bba34111bb003d0" target="_top" xlink:title="Create a texture from an image file.">
 <polygon fill="white" stroke="black" points="476,-197 476,-238 604,-238 604,-197 476,-197"/>
 <text text-anchor="start" x="484" y="-226" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="484" y="-215" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dData</text>
@@ -198,7 +198,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node92 -->
 <g id="node6" class="node"><title>Node92</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" target="_top" xlink:title="Flips the texture along the Y&#45;axis and returns the flipped data with the same info.">
 <polygon fill="white" stroke="black" points="312,-197 312,-238 440,-238 440,-197 312,-197"/>
 <text text-anchor="start" x="320" y="-226" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="320" y="-215" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dData</text>
@@ -240,7 +240,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node96 -->
 <g id="node10" class="node"><title>Node96</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43" target="_top" xlink:title="Reload the image file.">
 <polygon fill="white" stroke="black" points="0,-153 0,-172 124,-172 124,-153 0,-153"/>
 <text text-anchor="middle" x="62" y="-160" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::reload</text>
 </a>

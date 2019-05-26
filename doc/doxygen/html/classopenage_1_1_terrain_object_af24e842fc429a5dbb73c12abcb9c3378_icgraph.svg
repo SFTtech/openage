@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 426,-133 426,4 -4,4"/>
 <!-- Node155 -->
 <g id="node1" class="node"><title>Node155</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="remove this TerrainObject from the terrain chunks.">
 <polygon fill="#bfbfbf" stroke="black" points="305,-49.5 305,-79.5 422,-79.5 422,-49.5 305,-49.5"/>
 <text text-anchor="start" x="313" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="363.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node156 -->
 <g id="node2" class="node"><title>Node156</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_object.xhtml#aed04f7dfb2a4836107796fd3598accc3" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_object.xhtml#aed04f7dfb2a4836107796fd3598accc3" target="_top" xlink:title="moves the object – returns false if object cannot be moved here">
 <polygon fill="white" stroke="black" points="152,-98.5 152,-128.5 269,-128.5 269,-98.5 152,-98.5"/>
 <text text-anchor="start" x="160" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="210.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::move</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node158 -->
 <g id="node4" class="node"><title>Node158</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 116,-79.5 116,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="58" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

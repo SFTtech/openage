@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>civ_id</name>
         <briefdescription>
+<para>civ index </para>
         </briefdescription>
         <detaileddescription>
-<para>civ index </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -25,9 +25,9 @@
         <argsstring></argsstring>
         <name>civ_name</name>
         <briefdescription>
+<para>civ name </para>
         </briefdescription>
         <detaileddescription>
-<para>civ name </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -43,9 +43,9 @@
         <argsstring></argsstring>
         <name>civ_objects</name>
         <briefdescription>
+<para>unit types which can be produced by this civilisation. </para>
         </briefdescription>
         <detaileddescription>
-<para>unit types which can be produced by this civilisation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -59,9 +59,9 @@
         <argsstring></argsstring>
         <name>all_categories</name>
         <briefdescription>
+<para>all available categories of units </para>
         </briefdescription>
         <detaileddescription>
-<para>all available categories of units </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -75,9 +75,9 @@
         <argsstring></argsstring>
         <name>categories</name>
         <briefdescription>
+<para>category lists </para>
         </briefdescription>
         <detaileddescription>
-<para>category lists </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -91,9 +91,9 @@
         <argsstring></argsstring>
         <name>buildings</name>
         <briefdescription>
+<para>used for annex creation </para>
         </briefdescription>
         <detaileddescription>
-<para>used for annex creation </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -129,9 +129,9 @@
         <argsstring>() const</argsstring>
         <name>object_meta</name>
         <briefdescription>
+<para>return all the objects available to this civ </para>
         </briefdescription>
         <detaileddescription>
-<para>return all the objects available to this civ </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -149,9 +149,9 @@
           <declname>c</declname>
         </param>
         <briefdescription>
+<para>return all types in a particular named category </para>
         </briefdescription>
         <detaileddescription>
-<para>return all types in a particular named category </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -164,9 +164,9 @@
         <argsstring>() const</argsstring>
         <name>get_type_categories</name>
         <briefdescription>
+<para>return all used categories, such as living, building or projectile </para>
         </briefdescription>
         <detaileddescription>
-<para>return all used categories, such as living, building or projectile </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -183,9 +183,9 @@
           <declname>unit_id</declname>
         </param>
         <briefdescription>
+<para>gamedata for a building </para>
         </briefdescription>
         <detaileddescription>
-<para>gamedata for a building </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -205,9 +205,9 @@
           <declname>spec</declname>
         </param>
         <briefdescription>
+<para>initialise the unit meta data </para>
         </briefdescription>
         <detaileddescription>
-<para>initialise the unit meta data </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -237,9 +237,9 @@
           <declname>type</declname>
         </param>
         <briefdescription>
+<para>creates and adds items to categories </para>
         </briefdescription>
         <detaileddescription>
-<para>creates and adds items to categories </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -250,9 +250,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>contains the initial tech structure for one civilisation </para>
     </briefdescription>
     <detaileddescription>
-<para>contains the initial tech structure for one civilisation </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="774">

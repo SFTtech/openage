@@ -118,9 +118,9 @@
         <argsstring></argsstring>
         <name>engine</name>
         <briefdescription>
+<para><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> where this selection is attached to. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> where this selection is attached to. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,9 +156,9 @@
         <name>on_drawhud</name>
         <reimplements refid="classopenage_1_1_hud_handler_1a52d98b171b853a47609d924e1d1fca48">on_drawhud</reimplements>
         <briefdescription>
+<para>execute the drawing action. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the drawing action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -395,9 +395,9 @@
           <declname>player</declname>
         </param>
         <briefdescription>
+<para>kill a single unit in the selection </para>
         </briefdescription>
         <detaileddescription>
-<para>kill a single unit in the selection </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -422,9 +422,9 @@
           <declname>player</declname>
         </param>
         <briefdescription>
+<para>checks whether there are any builders in the selection </para>
         </briefdescription>
         <detaileddescription>
-<para>checks whether there are any builders in the selection </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -443,9 +443,10 @@
           <declname>player</declname>
         </param>
         <briefdescription>
+<para>checks whether there are any military units (i.e. </para>
         </briefdescription>
         <detaileddescription>
-<para>checks whether there are any military units (i.e. non-builders) in the selection </para>
+<para>non-builders) in the selection </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -478,9 +479,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>point unit selection </para>
         </briefdescription>
         <detaileddescription>
-<para>point unit selection </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -521,9 +522,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>boxed unit selection </para>
         </briefdescription>
         <detaileddescription>
-<para>boxed unit selection </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -550,9 +551,9 @@
           <declname>cmd</declname>
         </param>
         <briefdescription>
+<para>uses command on every selected unit </para>
         </briefdescription>
         <detaileddescription>
-<para>uses command on every selected unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -574,9 +575,9 @@
           <defname>u</defname>
         </param>
         <briefdescription>
+<para>Must be given a valid unit to display text attribute indicators. </para>
         </briefdescription>
         <detaileddescription>
-<para>Must be given a valid unit to display text attribute indicators. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -614,9 +615,9 @@
           <defname>u</defname>
         </param>
         <briefdescription>
+<para>Check whether the currently selected units may be selected at the same time If not, deselect some units This is the order in which the checks occur: Own units &gt; own <ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6" kindref="member">building(s)</ref> &gt; enemy unit &gt; enemy building &gt; any object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Check whether the currently selected units may be selected at the same time If not, deselect some units This is the order in which the checks occur: Own units &gt; own <ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6" kindref="member">building(s)</ref> &gt; enemy unit &gt; enemy building &gt; any object</para>
 <para>So you can select a group of units, or a building (or multiple if append is on) Enemy units, enemy buildings and other objects may only be selected one at a time </para>
         </detaileddescription>
         <inbodydescription>
@@ -633,9 +634,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>a user interface component allowing control of a selected group </para>
     </briefdescription>
     <detaileddescription>
-<para>a user interface component allowing control of a selected group </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="5501">

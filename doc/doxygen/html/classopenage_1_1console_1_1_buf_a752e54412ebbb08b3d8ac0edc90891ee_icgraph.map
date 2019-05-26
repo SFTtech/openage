@@ -1,7 +1,7 @@
 <map id="openage::console::Buf::advance" name="openage::console::Buf::advance">
-<area shape="rect" id="node1" title=" " alt="" coords="800,5,951,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#ab2dd3bbdbc82ae2a4276a433b40aac91" title=" " alt="" coords="601,5,752,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1console_1_1_buf.xhtml#adcdc21533ab920bd72f92f27333716bf" title=" " alt="" coords="204,5,355,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1console_1_1_buf.xhtml#a83a7e7db654360cff1c6796b169efc22" title=" " alt="" coords="403,30,553,86"/>
-<area shape="rect" id="node4" href="$classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" title=" " alt="" coords="5,5,156,47"/>
+<area shape="rect" id="node1" title="advances the buffer by the specified number of lines." alt="" coords="800,5,951,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#ab2dd3bbdbc82ae2a4276a433b40aac91" title="prints one unicode codepoint interally called by process_codepoint(int cp) after sorting out escape s..." alt="" coords="601,5,752,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1console_1_1_buf.xhtml#adcdc21533ab920bd72f92f27333716bf" title="processes one unicode codepoint internally called by write(char) after feeding the char into streamde..." alt="" coords="204,5,355,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1console_1_1_buf.xhtml#a83a7e7db654360cff1c6796b169efc22" title="processes the CSI escape sequence currently stored in escape_sequence." alt="" coords="403,30,553,86"/>
+<area shape="rect" id="node4" href="$classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" title="write a single byte to the buffer." alt="" coords="5,5,156,47"/>
 </map>

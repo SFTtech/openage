@@ -1,4 +1,4 @@
 <map id="openage::audio::InMemoryLoader" name="openage::audio::InMemoryLoader">
-<area shape="rect" id="node1" title=" " alt="" coords="5,321,180,457"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_path.xhtml" title=" " alt="" coords="27,5,158,259"/>
+<area shape="rect" id="node1" title="A InMemoryLoader loads a audio file into memory and converts it into 16 bit signed integer pcm data." alt="" coords="5,321,180,457"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_path.xhtml" title="C++ pendant to the python util.fslike.path.Path." alt="" coords="27,5,158,259"/>
 </map>

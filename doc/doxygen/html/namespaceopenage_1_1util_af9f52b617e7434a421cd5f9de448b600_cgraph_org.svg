@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-57 566,-57 566,4 -4,4"/>
 <!-- Node18 -->
 <g id="node1" class="node"><title>Node18</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Convert a C&#45;style array of uint64_t to a std::vector of uint8_t.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-22.5 0,-52.5 110,-52.5 110,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array64</text>
 <text text-anchor="middle" x="55" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array8</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node21 -->
 <g id="node4" class="node"><title>Node21</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0" target="_top" xlink:title="Convert a uint64_t to an array of uint8_t.">
 <polygon fill="white" stroke="black" points="146,-0.5 146,-30.5 250,-30.5 250,-0.5 146,-0.5"/>
 <text text-anchor="start" x="154" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::uint64</text>
 <text text-anchor="middle" x="198" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array8</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node20 -->
 <g id="node3" class="node"><title>Node20</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="467,-28 467,-47 562,-47 562,-28 467,-28"/>
 <text text-anchor="middle" x="514.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

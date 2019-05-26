@@ -95,6 +95,9 @@ $(document).ready(function(){initNavTree('a__star_8cpp.xhtml','');});
 <div class="title">a_star.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file implements the A* search algorithm for openage.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="a__star_8h_source.xhtml">a_star.h</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &quot;<a class="el" href="pairing__heap_8h_source.xhtml">../datastructure/pairing_heap.h</a>&quot;</code><br />
@@ -109,7 +112,8 @@ $(document).ready(function(){initNavTree('a__star_8cpp.xhtml','');});
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="a__star_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="a__star_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div>
 <p><a href="a__star_8cpp_source.xhtml">Go to the source code of this file.</a></p>
@@ -117,6 +121,7 @@ $(document).ready(function(){initNavTree('a__star_8cpp.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1path"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml">openage::path</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,16 +129,20 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a4699fb2dbfd8178b2234b9fbb935179f"><td class="memItemLeft" align="right" valign="top">Path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#a4699fb2dbfd8178b2234b9fbb935179f">openage::path::to_point</a> (coord::phys3 start, coord::phys3 end, std::function&lt; bool(const coord::phys3 &amp;)&gt; passable)</td></tr>
+<tr class="memdesc:a4699fb2dbfd8178b2234b9fbb935179f"><td class="mdescLeft">&#160;</td><td class="mdescRight">path between two static points  <a href="namespaceopenage_1_1path.xhtml#a4699fb2dbfd8178b2234b9fbb935179f">More...</a><br /></td></tr>
 <tr class="separator:a4699fb2dbfd8178b2234b9fbb935179f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a248264f0c87ce0cc7cf00adaf5312934"><td class="memItemLeft" align="right" valign="top">Path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#a248264f0c87ce0cc7cf00adaf5312934">openage::path::to_object</a> (<a class="el" href="classopenage_1_1_terrain_object.xhtml">openage::TerrainObject</a> *to_move, <a class="el" href="classopenage_1_1_terrain_object.xhtml">openage::TerrainObject</a> *end, coord::phys_t rad)</td></tr>
-<tr class="separator:a248264f0c87ce0cc7cf00adaf5312934"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a047e97b9a81a866f064ad6d6f8dddfd6"><td class="memItemLeft" align="right" valign="top">Path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#a047e97b9a81a866f064ad6d6f8dddfd6">openage::path::to_object</a> (TerrainObject *to_move, TerrainObject *end, coord::phys_t rad)</td></tr>
+<tr class="memdesc:a047e97b9a81a866f064ad6d6f8dddfd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">path between 2 objects, with how close to come to end point  <a href="namespaceopenage_1_1path.xhtml#a047e97b9a81a866f064ad6d6f8dddfd6">More...</a><br /></td></tr>
+<tr class="separator:a047e97b9a81a866f064ad6d6f8dddfd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4382f59f9523f9dd89a6689336cc353a"><td class="memItemLeft" align="right" valign="top">Path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#a4382f59f9523f9dd89a6689336cc353a">openage::path::find_nearest</a> (coord::phys3 start, std::function&lt; bool(const coord::phys3 &amp;)&gt; valid_end, std::function&lt; bool(const coord::phys3 &amp;)&gt; passable)</td></tr>
+<tr class="memdesc:a4382f59f9523f9dd89a6689336cc353a"><td class="mdescLeft">&#160;</td><td class="mdescRight">path to nearest object with lambda  <a href="namespaceopenage_1_1path.xhtml#a4382f59f9523f9dd89a6689336cc353a">More...</a><br /></td></tr>
 <tr class="separator:a4382f59f9523f9dd89a6689336cc353a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acafe3c2e0b6cef7750a14663eab6c883"><td class="memItemLeft" align="right" valign="top">Path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#acafe3c2e0b6cef7750a14663eab6c883">openage::path::a_star</a> (coord::phys3 start, std::function&lt; bool(const coord::phys3 &amp;)&gt; valid_end, std::function&lt; cost_t(const coord::phys3 &amp;)&gt; heuristic, std::function&lt; bool(const coord::phys3 &amp;)&gt; passable)</td></tr>
+<tr class="memdesc:acafe3c2e0b6cef7750a14663eab6c883"><td class="mdescLeft">&#160;</td><td class="mdescRight">finds a path between two endpoints  <a href="namespaceopenage_1_1path.xhtml#acafe3c2e0b6cef7750a14663eab6c883">More...</a><br /></td></tr>
 <tr class="separator:acafe3c2e0b6cef7750a14663eab6c883"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file implements the A* search algorithm for openage.</p>
+<div class="textblock"><p>This file implements the A* search algorithm for openage. </p>
 <p>Literature: Hart, Peter E., Nils J. Nilsson, and Bertram Raphael. "A formal basis for
 the heuristic determination of minimum cost paths." Systems Science and Cybernetics, IEEE Transactions on 4, no. 2 (1968): 100-107. </p>
 

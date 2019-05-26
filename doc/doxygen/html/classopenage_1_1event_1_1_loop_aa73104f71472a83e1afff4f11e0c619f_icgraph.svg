@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 258,-35 258,4 -4,4"/>
 <!-- Node68 -->
 <g id="node1" class="node"><title>Node68</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Execute the events.">
 <polygon fill="#bfbfbf" stroke="black" points="145,-0.5 145,-30.5 254,-30.5 254,-0.5 145,-0.5"/>
 <text text-anchor="start" x="153" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="199.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_events</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node69 -->
 <g id="node2" class="node"><title>Node69</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" target="_top" xlink:title="Execute all events that are registered until a certain point in time.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 109,-30.5 109,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="54.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reach_time</text>

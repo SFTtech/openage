@@ -57,7 +57,7 @@ var sectionId = 'dynsection-20';
 <polygon fill="white" stroke="none" points="-4,4 -4,-494.5 1355,-494.5 1355,4 -4,4"/>
 <!-- Node124 -->
 <g id="node1" class="node"><title>Node124</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="When a SDL event happens, this is called.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-225 0,-255 145,-255 145,-225 0,-225"/>
 <text text-anchor="start" x="8" y="-243" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00">::on_input</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node134 -->
 <g id="node11" class="node"><title>Node134</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa51d0f61b2b3d3859067fa75e187d39d" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa51d0f61b2b3d3859067fa75e187d39d" target="_top" xlink:title="updates mouse motion only">
 <polygon fill="white" stroke="black" points="181,-137 181,-167 326,-167 326,-137 181,-137"/>
 <text text-anchor="start" x="189" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">::set_motion</text>
@@ -149,7 +149,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node135 -->
 <g id="node12" class="node"><title>Node135</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a4fd1b0eb5adbdb5a04ebb22cd01a42e2" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a4fd1b0eb5adbdb5a04ebb22cd01a42e2" target="_top" xlink:title="updates mouse position state and motion">
 <polygon fill="white" stroke="black" points="181,-88 181,-118 326,-118 326,-88 181,-88"/>
 <text text-anchor="start" x="189" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::set_mouse</text>
@@ -163,7 +163,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node136 -->
 <g id="node13" class="node"><title>Node136</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#abedf603b902412de66c56b0eb8aed4da" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#abedf603b902412de66c56b0eb8aed4da" target="_top" xlink:title="enable relative mouse mode">
 <polygon fill="white" stroke="black" points="181,-39 181,-69 326,-69 326,-39 181,-39"/>
 <text text-anchor="start" x="189" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::set_relative</text>
@@ -177,7 +177,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node137 -->
 <g id="node14" class="node"><title>Node137</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" target="_top" xlink:title="sets the state of a specific key">
 <polygon fill="white" stroke="black" points="181,-225 181,-255 326,-255 326,-225 181,-225"/>
 <text text-anchor="start" x="189" y="-243" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00">::set_state</text>
@@ -191,7 +191,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node143 -->
 <g id="node20" class="node"><title>Node143</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" target="_top" xlink:title="manages the pressing of an input event (key, mouse, ...).">
 <polygon fill="white" stroke="black" points="362,-147 362,-177 507,-177 507,-147 362,-147"/>
 <text text-anchor="start" x="370" y="-165" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="434.5" y="-154" font-family="Helvetica,sans-Serif" font-size="10.00">::trigger</text>
@@ -218,7 +218,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node126 -->
 <g id="node3" class="node"><title>Node126</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="567,-379.5 567,-398.5 664,-398.5 664,-379.5 567,-379.5"/>
 <text text-anchor="middle" x="615.5" y="-386.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>
@@ -262,7 +262,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node129 -->
 <g id="node6" class="node"><title>Node129</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1256,-277.5 1256,-296.5 1351,-296.5 1351,-277.5 1256,-277.5"/>
 <text text-anchor="middle" x="1303.5" y="-284.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -320,7 +320,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node138 -->
 <g id="node15" class="node"><title>Node138</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" target="_top" xlink:title="true if the given event type is being ignored">
 <polygon fill="white" stroke="black" points="543,-192 543,-222 688,-222 688,-192 543,-192"/>
 <text text-anchor="start" x="551" y="-210" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="615.5" y="-199" font-family="Helvetica,sans-Serif" font-size="10.00">::ignored</text>
@@ -334,7 +334,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node142 -->
 <g id="node19" class="node"><title>Node142</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title="Query stored pressing stat for a key.">
 <polygon fill="white" stroke="black" points="362,-235 362,-265 507,-265 507,-235 362,-235"/>
 <text text-anchor="start" x="370" y="-253" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="434.5" y="-242" font-family="Helvetica,sans-Serif" font-size="10.00">::is_down</text>
@@ -353,7 +353,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node139 -->
 <g id="node16" class="node"><title>Node139</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" target="_top" xlink:title="Returns the context on top.">
 <polygon fill="white" stroke="black" points="724,-194 724,-224 869,-224 869,-194 724,-194"/>
 <text text-anchor="start" x="732" y="-212" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="796.5" y="-201" font-family="Helvetica,sans-Serif" font-size="10.00">::get_top_context</text>
@@ -381,7 +381,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node141 -->
 <g id="node18" class="node"><title>Node141</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" target="_top" xlink:title="classes ordered with most specific first">
 <polygon fill="white" stroke="black" points="905,-243 905,-273 1039,-273 1039,-243 905,-243"/>
 <text text-anchor="start" x="913" y="-261" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ClassCode</text>
 <text text-anchor="middle" x="972" y="-250" font-family="Helvetica,sans-Serif" font-size="10.00">::get_classes</text>
@@ -405,7 +405,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node144 -->
 <g id="node21" class="node"><title>Node144</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461" target="_top" xlink:title="lookup an action.">
 <polygon fill="white" stroke="black" points="726,-145 726,-175 867,-175 867,-145 726,-145"/>
 <text text-anchor="start" x="734" y="-163" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="796.5" y="-152" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_if_bound</text>

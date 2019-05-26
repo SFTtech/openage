@@ -1,9 +1,9 @@
 <map id="openage::util::fslike::Directory::writable" name="openage::util::fslike::Directory::writable">
 <area shape="rect" id="node1" title=" " alt="" coords="5,71,140,112"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#ac5dced8dddac80ad98b3804a64a36af0" title=" " alt="" coords="188,5,323,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a7dab02972c0d0fa8ef5b3fd387966855" title=" " alt="" coords="583,129,717,171"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a7dab02972c0d0fa8ef5b3fd387966855" title="resolve the path to an actually usable one." alt="" coords="583,129,717,171"/>
 <area shape="rect" id="node7" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a36e4b63f3b31b1de2370ebe081484159" title=" " alt="" coords="188,71,323,112"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a2c5d51674da6c9c62ae8753f3a8a6cd0" title=" " alt="" coords="371,71,505,112"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="553,78,747,105"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="795,78,921,105"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="795,78,921,105"/>
 </map>

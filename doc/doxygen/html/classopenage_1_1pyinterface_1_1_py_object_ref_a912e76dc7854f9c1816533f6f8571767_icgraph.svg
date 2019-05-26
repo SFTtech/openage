@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-108 455,-108 455,4 -4,4"/>
 <!-- Node35 -->
 <g id="node1" class="node"><title>Node35</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="type(obj).__name__">
 <polygon fill="#bfbfbf" stroke="black" points="320,-48.5 320,-78.5 451,-78.5 451,-48.5 320,-48.5"/>
 <text text-anchor="start" x="328" y="-66.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="385.5" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::classname</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node37 -->
 <g id="node3" class="node"><title>Node37</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#a1352d1476e7824c11aca00df918879e1" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#a1352d1476e7824c11aca00df918879e1" target="_top" xlink:title="Returns the type name of py_obj.">
 <polygon fill="white" stroke="black" points="152,-24.5 152,-54.5 284,-54.5 284,-24.5 152,-24.5"/>
 <text text-anchor="start" x="160" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="218" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyException::type_name</text>

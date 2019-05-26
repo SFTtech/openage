@@ -19,7 +19,7 @@
 </g>
 <!-- Node0 -->
 <g id="node2" class="node"><title>Node0</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml" target="_top" xlink:title="The Qml Engine used by openage.">
 <polygon fill="white" stroke="black" points="108,-0.5 108,-30.5 260,-30.5 260,-0.5 108,-0.5"/>
 <text text-anchor="start" x="116" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::QmlEngineWithSingleton</text>
 <text text-anchor="middle" x="184" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">ItemsInfo</text>

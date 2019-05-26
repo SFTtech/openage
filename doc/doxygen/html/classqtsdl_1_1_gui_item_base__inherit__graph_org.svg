@@ -48,7 +48,7 @@
 </g>
 <!-- Node8 -->
 <g id="node9" class="node"><title>Node8</title>
-<g id="a_node9"><a xlink:href="classqtsdl_1_1_gui_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classqtsdl_1_1_gui_list_model.xhtml" target="_top" xlink:title="Adapts core that uses a property map to QAbstractListModel interface.">
 <polygon fill="white" stroke="black" points="751,-501.5 751,-635.5 876,-635.5 876,-501.5 751,-501.5"/>
 <text text-anchor="middle" x="813.5" y="-623.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiListModel</text>
 <polyline fill="none" stroke="black" points="751,-616.5 876,-616.5 "/>
@@ -72,7 +72,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" target="_top" xlink:title="Stores static properties during initialization to be able to assign them after all &#39;liveReloadTag&#39; pr...">
 <polygon fill="white" stroke="black" points="488.5,-854.5 488.5,-999.5 648.5,-999.5 648.5,-854.5 488.5,-854.5"/>
 <text text-anchor="start" x="496.5" y="-987.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::DeferredInitialConstant</text>
 <text text-anchor="middle" x="568.5" y="-976.5" font-family="Helvetica,sans-Serif" font-size="10.00">PropertyValues</text>

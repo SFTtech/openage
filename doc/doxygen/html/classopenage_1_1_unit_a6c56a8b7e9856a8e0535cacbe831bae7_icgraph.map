@@ -1,52 +1,52 @@
 <map id="openage::Unit::has_attribute" name="openage::Unit::has_attribute">
-<area shape="rect" id="node1" title=" " alt="" coords="669,1311,800,1352"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" title=" " alt="" coords="221,20,379,62"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" title=" " alt="" coords="221,111,379,152"/>
+<area shape="rect" id="node1" title="returns whether attribute is available" alt="" coords="669,1311,800,1352"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" title="Called when a unit is created and active." alt="" coords="221,20,379,62"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" title="Called when a unit is destroyed." alt="" coords="221,111,379,152"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_unit_selection.xhtml#ac7668d88460dbf57f79a75cbe55e34f3" title=" " alt="" coords="222,206,378,247"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_set_point_ability.xhtml#a859198e39e096b2a72b5be664166f29e" title=" " alt="" coords="447,299,613,340"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_garrison_ability.xhtml#a9fb1408b1820a14dedf69ca911110727" title=" " alt="" coords="218,387,382,428"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_ungarrison_ability.xhtml#af388756108b7d397bf1fd1523f07198c" title=" " alt="" coords="441,482,619,523"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_train_ability.xhtml#a283fc7f2b511dff98f13027148710a36" title=" " alt="" coords="459,547,601,588"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_research_ability.xhtml#a10da07c40e39d110a9f2afdf26f0fb2f" title=" " alt="" coords="445,612,615,654"/>
-<area shape="rect" id="node12" href="$classopenage_1_1_build_ability.xhtml#abe9ac45166f48d9a53467f17d0c4efdc" title=" " alt="" coords="228,700,372,742"/>
-<area shape="rect" id="node13" href="$classopenage_1_1_gather_ability.xhtml#a1cd4ba56c06ddf86a3c07c9da73b831d" title=" " alt="" coords="223,818,377,859"/>
-<area shape="rect" id="node14" href="$classopenage_1_1_attack_ability.xhtml#aed325cf408ccfcfc099dfad62aa1dbbd" title=" " alt="" coords="223,935,377,976"/>
-<area shape="rect" id="node15" href="$namespaceopenage.xhtml#a23f086d83373aef776a1031dbbcbe975" title=" " alt="" coords="439,1096,621,1122"/>
-<area shape="rect" id="node18" href="$classopenage_1_1_dead_action.xhtml#ad89ee79aa618b974b24f76e54e81ec29" title=" " alt="" coords="457,1147,603,1188"/>
-<area shape="rect" id="node19" href="$classopenage_1_1_foundation_action.xhtml#acb94c9f36774fdf9f94c7a6fc2ce9df9" title=" " alt="" coords="440,1212,620,1254"/>
-<area shape="rect" id="node20" href="$classopenage_1_1_idle_action.xhtml#af276ff712d523244b3094e091ba576e5" title=" " alt="" coords="462,1278,598,1319"/>
-<area shape="rect" id="node21" href="$classopenage_1_1_unit_action.xhtml#a7beffb7ad454cf467d7a6b843df939c7" title=" " alt="" coords="461,1343,599,1384"/>
-<area shape="rect" id="node23" href="$classopenage_1_1_unit.xhtml#af8b821f1e22d782134986784fd94dbe3" title=" " alt="" coords="461,1409,599,1436"/>
-<area shape="rect" id="node24" href="$classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d" title=" " alt="" coords="461,1460,599,1502"/>
-<area shape="rect" id="node25" href="$classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17" title=" " alt="" coords="461,1526,599,1567"/>
-<area shape="rect" id="node26" href="$classopenage_1_1_unit_action.xhtml#a40320d4e1be2a48373f5b9b0f6bef2ef" title=" " alt="" coords="461,1591,599,1632"/>
-<area shape="rect" id="node27" href="$classopenage_1_1_unit_selection.xhtml#a9ec8fd5cfcfa451cce1123ff87894719" title=" " alt="" coords="447,234,613,275"/>
-<area shape="rect" id="node28" href="$classopenage_1_1_unit_ability.xhtml#a462d1ece390e2508e943f2d1a1f8d64e" title=" " alt="" coords="461,964,599,1006"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_set_point_ability.xhtml#a859198e39e096b2a72b5be664166f29e" title="true if the paramaters allow an action to be performed" alt="" coords="447,299,613,340"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_garrison_ability.xhtml#a9fb1408b1820a14dedf69ca911110727" title="true if the paramaters allow an action to be performed" alt="" coords="218,387,382,428"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_ungarrison_ability.xhtml#af388756108b7d397bf1fd1523f07198c" title="true if the paramaters allow an action to be performed" alt="" coords="441,482,619,523"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_train_ability.xhtml#a283fc7f2b511dff98f13027148710a36" title="true if the paramaters allow an action to be performed" alt="" coords="459,547,601,588"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_research_ability.xhtml#a10da07c40e39d110a9f2afdf26f0fb2f" title="true if the paramaters allow an action to be performed" alt="" coords="445,612,615,654"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_build_ability.xhtml#abe9ac45166f48d9a53467f17d0c4efdc" title="true if the paramaters allow an action to be performed" alt="" coords="228,700,372,742"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_gather_ability.xhtml#a1cd4ba56c06ddf86a3c07c9da73b831d" title="true if the paramaters allow an action to be performed" alt="" coords="223,818,377,859"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_attack_ability.xhtml#aed325cf408ccfcfc099dfad62aa1dbbd" title="true if the paramaters allow an action to be performed" alt="" coords="223,935,377,976"/>
+<area shape="rect" id="node15" href="$namespaceopenage.xhtml#a8c248986ac22a8251e1f27a6cef087eb" title="sets a building to a fully completed state" alt="" coords="439,1096,621,1122"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_dead_action.xhtml#ad89ee79aa618b974b24f76e54e81ec29" title="gets called for all actions on stack each update cycle" alt="" coords="457,1147,603,1188"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_foundation_action.xhtml#acb94c9f36774fdf9f94c7a6fc2ce9df9" title="gets called for all actions on stack each update cycle" alt="" coords="440,1212,620,1254"/>
+<area shape="rect" id="node20" href="$classopenage_1_1_idle_action.xhtml#af276ff712d523244b3094e091ba576e5" title="gets called for all actions on stack each update cycle" alt="" coords="462,1278,598,1319"/>
+<area shape="rect" id="node21" href="$classopenage_1_1_unit_action.xhtml#a7beffb7ad454cf467d7a6b843df939c7" title="Damage a unit, returns true if the unit was killed in the process." alt="" coords="461,1343,599,1384"/>
+<area shape="rect" id="node23" href="$classopenage_1_1_unit.xhtml#af8b821f1e22d782134986784fd94dbe3" title="draws with a specific graphic and frame" alt="" coords="461,1409,599,1436"/>
+<area shape="rect" id="node24" href="$classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d" title="common functions for actions" alt="" coords="461,1460,599,1502"/>
+<area shape="rect" id="node25" href="$classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17" title="looks at an ranged attributes on the unit otherwise returns same as adjacent_range()" alt="" coords="461,1526,599,1567"/>
+<area shape="rect" id="node26" href="$classopenage_1_1_unit_action.xhtml#a40320d4e1be2a48373f5b9b0f6bef2ef" title="looks at heal attribute on the unit otherwise returns same as adjacent_range()" alt="" coords="461,1591,599,1632"/>
+<area shape="rect" id="node27" href="$classopenage_1_1_unit_selection.xhtml#a9ec8fd5cfcfa451cce1123ff87894719" title="Check whether the currently selected units may be selected at the same time If not,..." alt="" coords="447,234,613,275"/>
+<area shape="rect" id="node28" href="$classopenage_1_1_unit_ability.xhtml#a462d1ece390e2508e943f2d1a1f8d64e" title="some common functions" alt="" coords="461,964,599,1006"/>
 <area shape="rect" id="node29" href="$classopenage_1_1_unit_ability.xhtml#ae5e064045861e1c9ca9ba94b7b05b7d8" title=" " alt="" coords="461,847,599,888"/>
-<area shape="rect" id="node30" href="$classopenage_1_1_heal_action.xhtml#abae1711c61d9c124d6ab2d1acdc4efeb" title=" " alt="" coords="459,1656,601,1698"/>
-<area shape="rect" id="node31" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title=" " alt="" coords="441,1722,619,1763"/>
+<area shape="rect" id="node30" href="$classopenage_1_1_heal_action.xhtml#abae1711c61d9c124d6ab2d1acdc4efeb" title="use heal action" alt="" coords="459,1656,601,1698"/>
+<area shape="rect" id="node31" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title="Initialize units attributes to this type spec." alt="" coords="441,1722,619,1763"/>
 <area shape="rect" id="node32" href="$classopenage_1_1_move_action.xhtml#a1b34ceffe821a5ef2afd3c3fc08ae3d1" title=" " alt="" coords="457,1787,603,1828"/>
-<area shape="rect" id="node33" href="$classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" title=" " alt="" coords="457,1852,603,1894"/>
+<area shape="rect" id="node33" href="$classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" title="applies command to a given unit" alt="" coords="457,1852,603,1894"/>
 <area shape="rect" id="node34" href="$classopenage_1_1_unit_ability.xhtml#ab4303a776324d428e74a9af7fd966556" title=" " alt="" coords="461,416,599,458"/>
 <area shape="rect" id="node35" href="$classopenage_1_1_unit_ability.xhtml#a7bb29b6621a1baa056218ec14774f0f5" title=" " alt="" coords="461,1918,599,1959"/>
 <area shape="rect" id="node36" href="$classopenage_1_1_unit_ability.xhtml#abec7dd778de809e475630a0ec2204ef0" title=" " alt="" coords="461,1030,599,1071"/>
 <area shape="rect" id="node37" href="$classopenage_1_1_unit_ability.xhtml#a8dbb71469fe87a551cdb512f5ccdf98c" title=" " alt="" coords="461,730,599,771"/>
 <area shape="rect" id="node38" href="$classopenage_1_1_player.xhtml#a5b26a30f3d83b7455b70fac759b07ae6" title=" " alt="" coords="463,66,597,107"/>
-<area shape="rect" id="node39" href="$classopenage_1_1_dead_action.xhtml#a27ffe695020847a2bb58018a1133a342" title=" " alt="" coords="457,1983,603,2024"/>
-<area shape="rect" id="node40" href="$classopenage_1_1_foundation_action.xhtml#a5415b3f1ad67e64d171c5762cec97479" title=" " alt="" coords="440,2048,620,2090"/>
-<area shape="rect" id="node41" href="$classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" title=" " alt="" coords="222,2136,378,2178"/>
-<area shape="rect" id="node42" href="$classopenage_1_1_player.xhtml#aefd20341c814fc53919cac8761bad38b" title=" " alt="" coords="453,2232,607,2258"/>
+<area shape="rect" id="node39" href="$classopenage_1_1_dead_action.xhtml#a27ffe695020847a2bb58018a1133a342" title="action to perform when popped from a units action stack" alt="" coords="457,1983,603,2024"/>
+<area shape="rect" id="node40" href="$classopenage_1_1_foundation_action.xhtml#a5415b3f1ad67e64d171c5762cec97479" title="action to perform when popped from a units action stack" alt="" coords="440,2048,620,2090"/>
+<area shape="rect" id="node41" href="$classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" title="execute the drawing action." alt="" coords="222,2136,378,2178"/>
+<area shape="rect" id="node42" href="$classopenage_1_1_player.xhtml#aefd20341c814fc53919cac8761bad38b" title="this player owns the specified unit" alt="" coords="453,2232,607,2258"/>
 <area shape="rect" id="node43" href="$namespaceopenage_1_1gameio.xhtml#a644610ec4e114bf5109a4a46847f3762" title=" " alt="" coords="439,2282,621,2309"/>
-<area shape="rect" id="node44" href="$classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" title=" " alt="" coords="452,2166,608,2207"/>
-<area shape="rect" id="node45" href="$classopenage_1_1_unit.xhtml#a9f53ef015fca7c42ff3bf9d0779145a3" title=" " alt="" coords="463,2334,597,2375"/>
-<area shape="rect" id="node46" href="$classopenage_1_1_dead_action.xhtml#aed142b3043beef29d27b16b06887c701" title=" " alt="" coords="457,2399,603,2440"/>
-<area shape="rect" id="node47" href="$classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" title=" " alt="" coords="462,2464,598,2506"/>
-<area shape="rect" id="node48" href="$classopenage_1_1_train_action.xhtml#af5515a9c445b00f4dd69348e7177c94c" title=" " alt="" coords="458,2530,602,2571"/>
-<area shape="rect" id="node49" href="$classopenage_1_1_build_action.xhtml#a808f1932658b9bbdb98849c406e1d426" title=" " alt="" coords="457,2595,603,2636"/>
-<area shape="rect" id="node50" href="$classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" title=" " alt="" coords="453,2660,607,2702"/>
+<area shape="rect" id="node44" href="$classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" title="Must be given a valid unit to display text attribute indicators." alt="" coords="452,2166,608,2207"/>
+<area shape="rect" id="node45" href="$classopenage_1_1_unit.xhtml#a9f53ef015fca7c42ff3bf9d0779145a3" title="removes all actions above and including the first interuptable action this will stop any of the units..." alt="" coords="463,2334,597,2375"/>
+<area shape="rect" id="node46" href="$classopenage_1_1_dead_action.xhtml#aed142b3043beef29d27b16b06887c701" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="457,2399,603,2440"/>
+<area shape="rect" id="node47" href="$classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="462,2464,598,2506"/>
+<area shape="rect" id="node48" href="$classopenage_1_1_train_action.xhtml#af5515a9c445b00f4dd69348e7177c94c" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="458,2530,602,2571"/>
+<area shape="rect" id="node49" href="$classopenage_1_1_build_action.xhtml#a808f1932658b9bbdb98849c406e1d426" title="Control units action when in range of the target." alt="" coords="457,2595,603,2636"/>
+<area shape="rect" id="node50" href="$classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" title="Control units action when in range of the target." alt="" coords="453,2660,607,2702"/>
 <area shape="rect" id="node5" href="$classopenage_1_1_unit_selection.xhtml#ae76387eeee60f994b678d79ca4a198e8" title=" " alt="" coords="5,172,161,214"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title=" " alt="" coords="5,238,161,279"/>
-<area shape="rect" id="node16" href="$classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" title=" " alt="" coords="232,1059,368,1100"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title="boxed unit selection" alt="" coords="5,238,161,279"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" title="places all initial objects" alt="" coords="232,1059,368,1100"/>
 <area shape="rect" id="node17" href="$namespaceopenage_1_1gameio.xhtml#ac86e0756708907f826cb04e6f13d588d" title=" " alt="" coords="209,1125,391,1152"/>
-<area shape="rect" id="node22" href="$classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" title=" " alt="" coords="223,1343,377,1384"/>
+<area shape="rect" id="node22" href="$classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" title="use attack action" alt="" coords="223,1343,377,1384"/>
 </map>

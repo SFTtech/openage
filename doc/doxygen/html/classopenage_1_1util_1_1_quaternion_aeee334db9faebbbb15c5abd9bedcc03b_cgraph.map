@@ -1,4 +1,4 @@
 <map id="openage::util::Quaternion::from_deg" name="openage::util::Quaternion::from_deg">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,172,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#a49239acad85282d401d7d56f3c96959d" title=" " alt="" coords="220,5,387,47"/>
+<area shape="rect" id="node1" title="Create a quaternion from a rotation in degree around a given axis." alt="" coords="5,5,172,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#a49239acad85282d401d7d56f3c96959d" title="Create a quaternion from a rotation in radians around a given axis." alt="" coords="220,5,387,47"/>
 </map>

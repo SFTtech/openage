@@ -116,8 +116,10 @@ $(document).ready(function(){initNavTree('rng_8cpp.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1rng"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1rng.xhtml">openage::rng</a></td></tr>
+<tr class="memdesc:namespaceopenage_1_1rng"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains an easy to use and fast random number generator. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -128,16 +130,20 @@ Functions</h2></td></tr>
 <tr class="memitem:acffdd6abc0140eac8c12d879172f8566"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1rng.xhtml#acffdd6abc0140eac8c12d879172f8566">openage::rng::act_fill</a> (T *dat, uint64_t *state, size_t len, const Lambda &amp;op)</td></tr>
 <tr class="separator:acffdd6abc0140eac8c12d879172f8566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb0200a44ab02cc735041096cad88fbe"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1rng.xhtml#acb0200a44ab02cc735041096cad88fbe">openage::rng::operator&lt;&lt;</a> (std::ostream &amp;ostream, const RNG &amp;inrng)</td></tr>
+<tr class="memdesc:acb0200a44ab02cc735041096cad88fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the rng state to a stream.  <a href="namespaceopenage_1_1rng.xhtml#acb0200a44ab02cc735041096cad88fbe">More...</a><br /></td></tr>
 <tr class="separator:acb0200a44ab02cc735041096cad88fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace26b663b1fa6bbbaeec1f5903bbc70c"><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1rng.xhtml#ace26b663b1fa6bbbaeec1f5903bbc70c">openage::rng::operator &gt;&gt;</a> (std::istream &amp;instream, RNG &amp;inrng)</td></tr>
+<tr class="memdesc:ace26b663b1fa6bbbaeec1f5903bbc70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the rng from a stream.  <a href="namespaceopenage_1_1rng.xhtml#ace26b663b1fa6bbbaeec1f5903bbc70c">More...</a><br /></td></tr>
 <tr class="separator:ace26b663b1fa6bbbaeec1f5903bbc70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a924b85bc82578378e68818dab9a247b6"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1rng.xhtml#a924b85bc82578378e68818dab9a247b6">openage::rng::try_random_device</a> ()</td></tr>
 <tr class="separator:a924b85bc82578378e68818dab9a247b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bdd2cc5c7f7f5d81ff514287f65eef0"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1rng.xhtml#a4bdd2cc5c7f7f5d81ff514287f65eef0">openage::rng::time_seed</a> (bool randomize)</td></tr>
 <tr class="separator:a4bdd2cc5c7f7f5d81ff514287f65eef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adde6a014119705e9ea92a28bae96f385"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1rng.xhtml#adde6a014119705e9ea92a28bae96f385">openage::rng::time_seed</a> ()</td></tr>
+<tr class="memdesc:adde6a014119705e9ea92a28bae96f385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a seed based on time since epoch.  <a href="namespaceopenage_1_1rng.xhtml#adde6a014119705e9ea92a28bae96f385">More...</a><br /></td></tr>
 <tr class="separator:adde6a014119705e9ea92a28bae96f385"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a510f1a8aa7487e18b60b1844cd2af86a"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a">openage::rng::random_seed</a> ()</td></tr>
+<tr class="memdesc:a510f1a8aa7487e18b60b1844cd2af86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a seed based on time since epoch as well as data from std::random_device if available.  <a href="namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a">More...</a><br /></td></tr>
 <tr class="separator:a510f1a8aa7487e18b60b1844cd2af86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>

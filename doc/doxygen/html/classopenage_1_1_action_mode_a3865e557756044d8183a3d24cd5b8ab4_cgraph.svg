@@ -57,7 +57,7 @@ var sectionId = 'dynsection-14';
 <polygon fill="white" stroke="none" points="-4,4 -4,-608.503 821,-608.503 821,4 -4,4"/>
 <!-- Node214 -->
 <g id="node1" class="node"><title>Node214</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="places hovering building">
 <polygon fill="#bfbfbf" stroke="black" points="0,-181.5 0,-211.5 111,-211.5 111,-181.5 0,-181.5"/>
 <text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="55.5" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place_selection</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node215 -->
 <g id="node2" class="node"><title>Node215</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0ad857ab54207bdaa9719fc01410f101" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0ad857ab54207bdaa9719fc01410f101" target="_top" xlink:title="uses command on every selected unit">
 <polygon fill="white" stroke="black" points="158.5,-454.5 158.5,-484.5 275.5,-484.5 275.5,-454.5 158.5,-454.5"/>
 <text text-anchor="start" x="166.5" y="-472.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="217" y="-461.5" font-family="Helvetica,sans-Serif" font-size="10.00">::all_invoke</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node225 -->
 <g id="node12" class="node"><title>Node225</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title="Returns the cost.">
 <polygon fill="white" stroke="black" points="147,-263 147,-282 287,-282 287,-263 147,-263"/>
 <text text-anchor="middle" x="217" y="-270" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceCost::get</text>
 </a>
@@ -148,7 +148,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node233 -->
 <g id="node20" class="node"><title>Node233</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title="return currently running game or null if a game is not currently running">
 <polygon fill="white" stroke="black" points="323,-72 323,-91 461,-91 461,-72 323,-72"/>
 <text text-anchor="middle" x="392" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get_game</text>
 </a>
@@ -175,7 +175,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node235 -->
 <g id="node22" class="node"><title>Node235</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1_command.xhtml#a5783c26abcea9f286be58aa29de1e548" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1_command.xhtml#a5783c26abcea9f286be58aa29de1e548" target="_top" xlink:title="sets invoked ability type, no other type may be used if this gets set">
 <polygon fill="white" stroke="black" points="155.5,-0.5 155.5,-30.5 278.5,-30.5 278.5,-0.5 155.5,-0.5"/>
 <text text-anchor="start" x="163.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Command::set</text>
 <text text-anchor="middle" x="217" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_ability</text>
@@ -291,7 +291,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node221 -->
 <g id="node8" class="node"><title>Node221</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title="odo: move to util">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="671,-446 671,-465 817,-465 817,-446 671,-446"/>
 <text text-anchor="middle" x="744" y="-453" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::tests::max</text>
 </a>
@@ -343,7 +343,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node228 -->
 <g id="node15" class="node"><title>Node228</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" target="_top" xlink:title="The number of units considered part of the workforce.">
 <polygon fill="white" stroke="black" points="338.5,-230.5 338.5,-260.5 445.5,-260.5 445.5,-230.5 338.5,-230.5"/>
 <text text-anchor="start" x="346.5" y="-248.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get</text>
 <text text-anchor="middle" x="392" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00">_workforce_count</text>
@@ -357,7 +357,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node227 -->
 <g id="node14" class="node"><title>Node227</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title="odo remove, here for backwards compatibility">
+<g id="a_node14"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="500.5,-279.5 500.5,-309.5 631.5,-309.5 631.5,-279.5 500.5,-279.5"/>
 <text text-anchor="start" x="508.5" y="-297.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <text text-anchor="middle" x="566" y="-286.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ResourceBundle</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 364,-133 364,4 -4,4"/>
 <!-- Node30 -->
 <g id="node1" class="node"><title>Node30</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="access the value of the iterator">
 <polygon fill="#bfbfbf" stroke="black" points="218,-49.5 218,-79.5 360,-79.5 360,-49.5 218,-49.5"/>
 <text text-anchor="start" x="226" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::CurveIterator</text>
 <text text-anchor="middle" x="289" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::value</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node32 -->
 <g id="node3" class="node"><title>Node32</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1curve_1_1_curve_iterator.xhtml#a9b701b5027187bea44a9f02dbf254912" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1curve_1_1_curve_iterator.xhtml#a9b701b5027187bea44a9f02dbf254912" target="_top" xlink:title="Dereference will call the virtual function.">
 <polygon fill="white" stroke="black" points="13,-49.5 13,-79.5 169,-79.5 169,-49.5 13,-49.5"/>
 <text text-anchor="start" x="21" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::CurveIterator</text>
 <text text-anchor="middle" x="91" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; val_t, container_t &gt;::operator *</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node33 -->
 <g id="node4" class="node"><title>Node33</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1curve_1_1_curve_iterator.xhtml#a33bad08eacbb20caa76fab3deca68ce8" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1curve_1_1_curve_iterator.xhtml#a33bad08eacbb20caa76fab3deca68ce8" target="_top" xlink:title="Dereference will call the virutal function.">
 <polygon fill="white" stroke="black" points="10.5,-0.5 10.5,-30.5 171.5,-30.5 171.5,-0.5 10.5,-0.5"/>
 <text text-anchor="start" x="18.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::CurveIterator</text>
 <text text-anchor="middle" x="91" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; val_t, container_t &gt;::operator &#45;&gt;</text>

@@ -1,4 +1,4 @@
 <map id="openage::GameMain::update" name="openage::GameMain::update">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,156,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_container.xhtml#a1db074862697abdf24998bdf978ce7d3" title=" " alt="" coords="204,5,361,47"/>
+<area shape="rect" id="node1" title="updates the game by one frame" alt="" coords="5,5,156,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_container.xhtml#a1db074862697abdf24998bdf978ce7d3" title="update dispatched by the game engine on each physics tick." alt="" coords="204,5,361,47"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="openage::renderer::Renderable" name="openage::renderer::Renderable">
-<area shape="rect" id="node1" title=" " alt="" coords="89,219,224,325"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_uniform_input.xhtml" title=" " alt="" coords="5,27,140,134"/>
+<area shape="rect" id="node1" title="A renderable is a set of shader uniform inputs and a possible draw call." alt="" coords="89,219,224,325"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_uniform_input.xhtml" title="The abstract base for uniform input." alt="" coords="5,27,140,134"/>
 <area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1_geometry.xhtml" title="A class representing geometry to be passed to a draw call." alt="" coords="164,5,317,156"/>
 </map>

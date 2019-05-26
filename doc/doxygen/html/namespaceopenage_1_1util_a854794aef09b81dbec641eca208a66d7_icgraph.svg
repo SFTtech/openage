@@ -57,7 +57,7 @@ var sectionId = 'dynsection-10';
 <polygon fill="white" stroke="none" points="-4,4 -4,-135.5 1151,-135.5 1151,4 -4,4"/>
 <!-- Node58 -->
 <g id="node1" class="node"><title>Node58</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Copies the given string to the returned unique_ptr, including 0 byte.">
 <polygon fill="#bfbfbf" stroke="black" points="1048,-68.5 1048,-98.5 1147,-98.5 1147,-68.5 1048,-68.5"/>
 <text text-anchor="start" x="1056" y="-86.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::copy</text>
 <text text-anchor="middle" x="1097.5" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00">_string</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node59 -->
 <g id="node2" class="node"><title>Node59</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" target="_top" xlink:title="finds the path to an executable by evaluating env[PATH]">
 <polygon fill="white" stroke="black" points="902,-68.5 902,-98.5 1012,-98.5 1012,-68.5 902,-68.5"/>
 <text text-anchor="start" x="910" y="-86.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::subprocess</text>
 <text text-anchor="middle" x="957" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00">::which</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node60 -->
 <g id="node3" class="node"><title>Node60</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1os.xhtml#a5d72e5b58b3036f2298e474c4e9ed9b6" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1os.xhtml#a0c239b26dbfdae2443aa511e31619917" target="_top" xlink:title="tries to xdg&#45;open the file">
 <polygon fill="white" stroke="black" points="731,-112 731,-131 859,-131 859,-112 731,-112"/>
 <text text-anchor="middle" x="795" y="-119" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::execute_file</text>
 </a>

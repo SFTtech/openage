@@ -19,7 +19,7 @@
 </g>
 <!-- Node0 -->
 <g id="node2" class="node"><title>Node0</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_aborted_exception.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_aborted_exception.xhtml" target="_top" xlink:title="An exception that is thrown when a job wants to abort itself.">
 <polygon fill="white" stroke="black" points="95,-0.5 95,-30.5 222,-30.5 222,-0.5 95,-0.5"/>
 <text text-anchor="start" x="103" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobAborted</text>
 <text text-anchor="middle" x="158.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Exception</text>

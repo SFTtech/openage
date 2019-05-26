@@ -1,5 +1,5 @@
 <map id="openage::util::compress::LZXDecompressor" name="openage::util::compress::LZXDecompressor">
-<area shape="rect" id="node1" title=" " alt="" coords="5,1511,189,1691"/>
+<area shape="rect" id="node1" title="Wraps a LZXDStream object by reference; exposing LZXDStream directly would cause too much header poll..." alt="" coords="5,1511,189,1691"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml" title=" " alt="" coords="464,960,675,1419"/>
 <area shape="rect" id="node5" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="130,1819,435,2058"/>
 <area shape="rect" id="node6" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="617,1481,815,1720"/>
@@ -7,5 +7,5 @@
 <area shape="rect" id="node8" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="1157,1812,1379,2065"/>
 <area shape="rect" id="node9" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="1403,1819,1703,2058"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="465,483,673,897"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="465,5,673,420"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title="Bitstream that is stored in 16&#45;bit little&#45;endian numbers." alt="" coords="465,5,673,420"/>
 </map>

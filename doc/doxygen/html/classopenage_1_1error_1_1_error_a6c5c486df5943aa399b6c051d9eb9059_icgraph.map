@@ -1,4 +1,4 @@
 <map id="openage::error::Error::type_name" name="openage::error::Error::type_name">
-<area shape="rect" id="node1" title=" " alt="" coords="229,5,371,47"/>
+<area shape="rect" id="node1" title="The type name of the exception (for pretty&#45;printing in case the exception hierarchy is used)." alt="" coords="229,5,371,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1error.xhtml#a902be6cbbea4f6485907cc5e15406b3a" title=" " alt="" coords="5,13,181,39"/>
 </map>

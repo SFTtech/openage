@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-127.5 1165,-127.5 1165,4 -4,4"/>
 <!-- Node48 -->
 <g id="node1" class="node"><title>Node48</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Unblocks the provider.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-68 0,-109 142,-109 142,-68 0,-68"/>
 <text text-anchor="start" x="8" y="-97" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="8" y="-86" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::on_game</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node49 -->
 <g id="node2" class="node"><title>Node49</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" target="_top" xlink:title="Change the already produced texture handles to use new source.">
 <polygon fill="white" stroke="black" points="178,-68 178,-109 320,-109 320,-68 178,-68"/>
 <text text-anchor="start" x="186" y="-97" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="186" y="-86" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::migrate</text>
@@ -79,7 +79,7 @@
 </g>
 <!-- Node53 -->
 <g id="node6" class="node"><title>Node53</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title="The sourceSize property of the Image QML element ends up here for checking.">
 <polygon fill="white" stroke="black" points="551.5,-22.5 551.5,-52.5 658.5,-52.5 658.5,-22.5 551.5,-22.5"/>
 <text text-anchor="start" x="559.5" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::aspect</text>
 <text text-anchor="middle" x="605" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">_fit_size</text>
@@ -106,7 +106,7 @@
 </g>
 <!-- Node55 -->
 <g id="node8" class="node"><title>Node55</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title="Get the subtexture coordinates by its id.">
 <polygon fill="white" stroke="black" points="888.5,-44.5 888.5,-74.5 999.5,-74.5 999.5,-44.5 888.5,-44.5"/>
 <text text-anchor="start" x="896.5" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="944" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">_subtexture</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 287,-35 287,4 -4,4"/>
 <!-- Node41 -->
 <g id="node1" class="node"><title>Node41</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="execute the resize handler.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 134,-30.5 134,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="67" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_resize</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node42 -->
 <g id="node2" class="node"><title>Node42</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ae0e0cf2f6bb5e5c324ff9f4554ec2852" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ae0e0cf2f6bb5e5c324ff9f4554ec2852" target="_top" xlink:title="Return the dimensions of the visible console area.">
 <polygon fill="white" stroke="black" points="170,-0.5 170,-30.5 283,-30.5 283,-0.5 170,-0.5"/>
 <text text-anchor="start" x="178" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="226.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_dims</text>

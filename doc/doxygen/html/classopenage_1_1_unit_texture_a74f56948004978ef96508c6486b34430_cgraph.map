@@ -1,17 +1,17 @@
 <map id="openage::UnitTexture::initialise" name="openage::UnitTexture::initialise">
-<area shape="rect" id="node1" title=" " alt="" coords="5,212,151,253"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_game_spec.xhtml#aa1f8784ca6aab9da489457d22b386443" title=" " alt="" coords="199,147,351,188"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_game_spec.xhtml#a1b83c8dcc455fd32056c418a993eb506" title=" " alt="" coords="199,81,351,123"/>
+<area shape="rect" id="node1" title="initialise graphic data" alt="" coords="5,212,151,253"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_spec.xhtml#aa1f8784ca6aab9da489457d22b386443" title="gamedata for a graphic nyan will have to replace this somehow" alt="" coords="199,147,351,188"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_game_spec.xhtml#a1b83c8dcc455fd32056c418a993eb506" title="get sound by sound id" alt="" coords="199,81,351,123"/>
 <area shape="rect" id="node11" href="$classopenage_1_1_texture.xhtml#a4548b2bc3eb5310a97deee94ab536035" title=" " alt="" coords="201,277,349,319"/>
-<area shape="rect" id="node12" href="$classopenage_1_1_game_spec.xhtml#a949e9f7d9b1017a7f399c55a2bd60c9a" title=" " alt="" coords="199,212,351,253"/>
-<area shape="rect" id="node15" href="$classopenage_1_1_unit_texture.xhtml#a6aa00a6381fb4b555f989f1bfcfd9c7a" title=" " alt="" coords="202,343,347,384"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_game_spec.xhtml#a949e9f7d9b1017a7f399c55a2bd60c9a" title="lookup using a texture id, this specifically avoids returning the missing placeholder texture" alt="" coords="199,212,351,253"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_unit_texture.xhtml#a6aa00a6381fb4b555f989f1bfcfd9c7a" title="invalid unit textures will cause errors if drawn" alt="" coords="202,343,347,384"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="413,162,531,189"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="411,111,533,138"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="615,129,762,171"/>
-<area shape="rect" id="node6" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="593,78,784,105"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="861,5,1000,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title="Convenience method that makes use of the &#39;general&#39; LogSource." alt="" coords="411,111,533,138"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title="Returns a reference to a general named log source, for use by log::log()." alt="" coords="615,129,762,171"/>
+<area shape="rect" id="node6" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level))." alt="" coords="593,78,784,105"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title="Returns a reference to the global stdout logsink object; Initializes the object if needed." alt="" coords="861,5,1000,47"/>
 <area shape="rect" id="node8" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="845,71,1017,112"/>
 <area shape="rect" id="node9" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="832,137,1029,163"/>
-<area shape="rect" id="node13" href="$namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" title=" " alt="" coords="399,219,545,246"/>
-<area shape="rect" id="node14" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title=" " alt="" coords="613,219,765,246"/>
+<area shape="rect" id="node13" href="$namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" title="printf&#45;style to&#45;string formatting." alt="" coords="399,219,545,246"/>
+<area shape="rect" id="node14" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output." alt="" coords="613,219,765,246"/>
 </map>

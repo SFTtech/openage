@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 254,-35 254,4 -4,4"/>
 <!-- Node19 -->
 <g id="node1" class="node"><title>Node19</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="use heal action">
 <polygon fill="#bfbfbf" stroke="black" points="143,-0.5 143,-30.5 250,-30.5 250,-0.5 143,-0.5"/>
 <text text-anchor="start" x="151" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HealAction</text>
 <text text-anchor="middle" x="196.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::heal</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node20 -->
 <g id="node2" class="node"><title>Node20</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_heal_action.xhtml#a95b9324fe05d86e7528f3a5334b6fc7c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_heal_action.xhtml#a95b9324fe05d86e7528f3a5334b6fc7c" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 107,-30.5 107,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HealAction</text>
 <text text-anchor="middle" x="53.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>

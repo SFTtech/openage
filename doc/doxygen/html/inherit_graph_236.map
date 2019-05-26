@@ -1,3 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml" title=" " alt="" coords="5,5,167,47"/>
+<area shape="rect" id="node1" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml" title="Wraps a LZXDStream object by reference; exposing LZXDStream directly would cause too much header poll..." alt="" coords="5,5,167,47"/>
 </map>

@@ -121,9 +121,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Holds info about a single glyph. </para>
     </briefdescription>
     <detaileddescription>
-<para>Holds info about a single glyph. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4641">

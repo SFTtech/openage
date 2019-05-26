@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-138 605,-138 605,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="classopenage_1_1_unit_type.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="classopenage_1_1_unit_type.xhtml" target="_top" xlink:title="units in aoc have a class and a type">
 <polygon fill="white" stroke="black" points="0,-57.5 0,-76.5 98,-76.5 98,-57.5 0,-57.5"/>
 <text text-anchor="middle" x="49" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_building_producer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_building_producer.xhtml" target="_top" xlink:title="Stores graphics and attributes for a building type Will be replaced with nyan system in future in aoe...">
 <polygon fill="white" stroke="black" points="137,-114.5 137,-133.5 270,-133.5 270,-114.5 137,-114.5"/>
 <text text-anchor="middle" x="203.5" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_nyan_type.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_nyan_type.xhtml" target="_top" xlink:title="An example of how nyan can work with the type system.">
 <polygon fill="white" stroke="black" points="152,-76.5 152,-95.5 255,-95.5 255,-76.5 152,-76.5"/>
 <text text-anchor="middle" x="203.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::NyanType</text>
 </a>
@@ -45,7 +45,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_object_producer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_object_producer.xhtml" target="_top" xlink:title="base game data unit type">
 <polygon fill="white" stroke="black" points="140,-38.5 140,-57.5 267,-57.5 267,-38.5 140,-38.5"/>
 <text text-anchor="middle" x="203.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 </a>
@@ -58,7 +58,7 @@
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_projectile_producer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_projectile_producer.xhtml" target="_top" xlink:title="creates projectiles">
 <polygon fill="white" stroke="black" points="134,-0.5 134,-19.5 273,-19.5 273,-0.5 134,-0.5"/>
 <text text-anchor="middle" x="203.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ProjectileProducer</text>
 </a>
@@ -71,7 +71,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_movable_producer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_movable_producer.xhtml" target="_top" xlink:title="movable unit types">
 <polygon fill="white" stroke="black" points="309,-38.5 309,-57.5 443,-57.5 443,-38.5 309,-38.5"/>
 <text text-anchor="middle" x="376" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 </a>
@@ -84,7 +84,7 @@
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_living_producer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_living_producer.xhtml" target="_top" xlink:title="temporary class – will be replaced with nyan system in future Stores graphics and attributes for a si...">
 <polygon fill="white" stroke="black" points="479,-38.5 479,-57.5 601,-57.5 601,-38.5 479,-38.5"/>
 <text text-anchor="middle" x="540" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 </a>

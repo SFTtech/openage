@@ -57,7 +57,7 @@ var sectionId = 'dynsection-22';
 <polygon fill="white" stroke="none" points="-4,4 -4,-172 730,-172 730,4 -4,4"/>
 <!-- Node147 -->
 <g id="node1" class="node"><title>Node147</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="get the neighbor chunks of a given chunk.">
 <polygon fill="#bfbfbf" stroke="black" points="618,-66.5 618,-96.5 726,-96.5 726,-66.5 618,-66.5"/>
 <text text-anchor="start" x="626" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="672" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk_neighbors</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node148 -->
 <g id="node2" class="node"><title>Node148</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" target="_top" xlink:title="Attach a chunk to the terrain, to a given position.">
 <polygon fill="white" stroke="black" points="460,-66.5 460,-96.5 582,-96.5 582,-66.5 460,-66.5"/>
 <text text-anchor="start" x="468" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::attach</text>
 <text text-anchor="middle" x="521" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node149 -->
 <g id="node3" class="node"><title>Node149</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" target="_top" xlink:title="get or create a terrain chunk for a given chunk position.">
 <polygon fill="white" stroke="black" points="316,-66.5 316,-96.5 424,-96.5 424,-66.5 316,-66.5"/>
 <text text-anchor="start" x="324" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="370" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">_create_chunk</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node153 -->
 <g id="node7" class="node"><title>Node153</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title="fill the terrain with given terrain_id values.">
 <polygon fill="white" stroke="black" points="173.5,-50 173.5,-69 277.5,-69 277.5,-50 173.5,-50"/>
 <text text-anchor="middle" x="225.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::fill</text>
 </a>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node155 -->
 <g id="node9" class="node"><title>Node155</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_terrain.xhtml#a9fc8a00464422b06cd5ea0dbda4c7d2f" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_terrain.xhtml#a9fc8a00464422b06cd5ea0dbda4c7d2f" target="_top" xlink:title="get or create a terrain chunk for a given tile position.">
 <polygon fill="white" stroke="black" points="171.5,-0.5 171.5,-30.5 279.5,-30.5 279.5,-0.5 171.5,-0.5"/>
 <text text-anchor="start" x="179.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="225.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_create_chunk</text>
@@ -149,7 +149,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node151 -->
 <g id="node5" class="node"><title>Node151</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="9.5,-115.5 9.5,-145.5 125.5,-145.5 125.5,-115.5 9.5,-115.5"/>
 <text text-anchor="start" x="17.5" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="67.5" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

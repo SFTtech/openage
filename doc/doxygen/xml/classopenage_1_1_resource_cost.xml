@@ -43,9 +43,9 @@
         <argsstring>()</argsstring>
         <name>ResourceCost</name>
         <briefdescription>
+<para>Constant zero cost. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constant zero cost </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -62,9 +62,9 @@
           <declname>resources</declname>
         </param>
         <briefdescription>
+<para>Constant cost. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constant cost </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -85,9 +85,9 @@
           <declname>multiplier</declname>
         </param>
         <briefdescription>
+<para>Dynamic cost. </para>
         </briefdescription>
         <detaileddescription>
-<para>Dynamic cost </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -141,9 +141,9 @@
           <declname>player</declname>
         </param>
         <briefdescription>
+<para>Returns the cost. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the cost. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -162,9 +162,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A container for a constant or dynamic <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> representing the cost. </para>
     </briefdescription>
     <detaileddescription>
-<para>A container for a constant or dynamic <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> representing the cost. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5022">

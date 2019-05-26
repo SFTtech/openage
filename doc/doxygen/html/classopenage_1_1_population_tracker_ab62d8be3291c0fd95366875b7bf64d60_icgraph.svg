@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-231 468,-231 468,4 -4,4"/>
 <!-- Node34 -->
 <g id="node1" class="node"><title>Node34</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Calculates the capacity values based on the limits.">
 <polygon fill="#bfbfbf" stroke="black" points="327,-98.5 327,-128.5 464,-128.5 464,-98.5 327,-98.5"/>
 <text text-anchor="start" x="335" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="395.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_capacity</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node35 -->
 <g id="node2" class="node"><title>Node35</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_population_tracker.xhtml#a4549680d186b62bb096efd831b2f59f4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_population_tracker.xhtml#a4549680d186b62bb096efd831b2f59f4" target="_top" xlink:title="Add to the capacity given by units.">
 <polygon fill="white" stroke="black" points="154,-196.5 154,-226.5 291,-226.5 291,-196.5 154,-196.5"/>
 <text text-anchor="start" x="162" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="222.5" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_capacity</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node37 -->
 <g id="node4" class="node"><title>Node37</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_population_tracker.xhtml#ad45edecbeb9e2c4d5556358553987e74" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_population_tracker.xhtml#ad45edecbeb9e2c4d5556358553987e74" target="_top" xlink:title="Changes the max capacity given by civ bonuses.">
 <polygon fill="white" stroke="black" points="154,-147.5 154,-177.5 291,-177.5 291,-147.5 154,-147.5"/>
 <text text-anchor="start" x="162" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="222.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_capacity_max</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node38 -->
 <g id="node5" class="node"><title>Node38</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_population_tracker.xhtml#a39173054a05e8a7e0112a3e04af12b05" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_population_tracker.xhtml#a39173054a05e8a7e0112a3e04af12b05" target="_top" xlink:title="Changes the capacity given by civ bonuses.">
 <polygon fill="white" stroke="black" points="154,-98.5 154,-128.5 291,-128.5 291,-98.5 154,-98.5"/>
 <text text-anchor="start" x="162" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="222.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_capacity_static</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node40 -->
 <g id="node7" class="node"><title>Node40</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_population_tracker.xhtml#a665c07f6c453a6117c514a56eda96f36" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_population_tracker.xhtml#a665c07f6c453a6117c514a56eda96f36" target="_top" xlink:title="Remove from the capacity given by units.">
 <polygon fill="white" stroke="black" points="154,-0.5 154,-30.5 291,-30.5 291,-0.5 154,-0.5"/>
 <text text-anchor="start" x="162" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="222.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove_capacity</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node36 -->
 <g id="node3" class="node"><title>Node36</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" target="_top" xlink:title="Called when a unit is created and active.">
 <polygon fill="white" stroke="black" points="0,-196.5 0,-226.5 118,-226.5 118,-196.5 0,-196.5"/>
 <text text-anchor="start" x="8" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::active</text>
 <text text-anchor="middle" x="59" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_added</text>
@@ -104,7 +104,7 @@
 </g>
 <!-- Node41 -->
 <g id="node8" class="node"><title>Node41</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" target="_top" xlink:title="Called when a unit is destroyed.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 118,-30.5 118,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::active</text>
 <text text-anchor="middle" x="59" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_removed</text>

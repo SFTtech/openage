@@ -57,7 +57,7 @@ var sectionId = 'dynsection-15';
 <polygon fill="white" stroke="none" points="-4,4 -4,-101 847,-101 847,4 -4,4"/>
 <!-- Node65 -->
 <g id="node1" class="node"><title>Node65</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns true with the passed probability.">
 <polygon fill="#bfbfbf" stroke="black" points="737,-44.5 737,-74.5 843,-74.5 843,-44.5 737,-44.5"/>
 <text text-anchor="start" x="745" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="790" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">probability</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node66 -->
 <g id="node2" class="node"><title>Node66</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="580.5,-66.5 580.5,-96.5 696.5,-96.5 696.5,-66.5 580.5,-66.5"/>
 <text text-anchor="start" x="588.5" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="638.5" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node67 -->
 <g id="node3" class="node"><title>Node67</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_region.xhtml#aab907d7f645bc78647dd204ba136b5d4" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_region.xhtml#aab907d7f645bc78647dd204ba136b5d4" target="_top" xlink:title="find a group of tiles inside this region, number is the number of tiles to be contained in the subset...">
 <polygon fill="white" stroke="black" points="576,-28 576,-47 701,-47 701,-28 576,-28"/>
 <text text-anchor="middle" x="638.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Region::subset</text>
 </a>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node68 -->
 <g id="node4" class="node"><title>Node68</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_region.xhtml#a268c678dfa97caf1cd17b632ca74de40" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_region.xhtml#a268c678dfa97caf1cd17b632ca74de40" target="_top" xlink:title="removes the given set of tiles from this region, which get split of as a new child region">
 <polygon fill="white" stroke="black" points="426,-22.5 426,-52.5 540,-52.5 540,-22.5 426,-22.5"/>
 <text text-anchor="start" x="434" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Region::take</text>
 <text text-anchor="middle" x="483" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">_tiles</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node71 -->
 <g id="node7" class="node"><title>Node71</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_region.xhtml#a365efd8b6f0199a7cb270af90291a662" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_region.xhtml#a365efd8b6f0199a7cb270af90291a662" target="_top" xlink:title="similiar to take_tiles, but takes a random group of tiles">
 <polygon fill="white" stroke="black" points="276,-0.5 276,-30.5 390,-30.5 390,-0.5 276,-0.5"/>
 <text text-anchor="start" x="284" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Region::take</text>
 <text text-anchor="middle" x="333" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_random</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node70 -->
 <g id="node6" class="node"><title>Node70</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title="Create a game from a specification.">
 <polygon fill="white" stroke="black" points="0,-22.5 0,-52.5 102,-52.5 102,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="51" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>

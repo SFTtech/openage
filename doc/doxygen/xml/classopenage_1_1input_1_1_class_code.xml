@@ -70,9 +70,9 @@
         <argsstring>() const</argsstring>
         <name>get_classes</name>
         <briefdescription>
+<para>classes ordered with most specific first </para>
         </briefdescription>
         <detaileddescription>
-<para>classes ordered with most specific first </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -104,9 +104,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>base event type containing event class and event code </para>
     </briefdescription>
     <detaileddescription>
-<para>base event type containing event class and event code </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3828">

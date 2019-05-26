@@ -1,7 +1,7 @@
 <map id="openage::Generator::player_names" name="openage::Generator::player_names">
-<area shape="rect" id="node1" title=" " alt="" coords="5,35,141,76"/>
+<area shape="rect" id="node1" title="return the list of player names" alt="" coords="5,35,141,76"/>
 <area shape="rect" id="node2" href="$structqtsdl_1_1_gui_property_map.xhtml#a88e34211690a34ab7dda78ffa4f760f0" title=" " alt="" coords="210,5,362,47"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="189,71,383,98"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" title=" " alt="" coords="431,13,559,39"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="431,71,558,98"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6" title="Split a string at a delimiter into a vector." alt="" coords="431,13,559,39"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="431,71,558,98"/>
 </map>

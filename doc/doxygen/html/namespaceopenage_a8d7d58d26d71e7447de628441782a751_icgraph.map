@@ -1,4 +1,4 @@
 <map id="openage::find_in_radius" name="openage::find_in_radius">
 <area shape="rect" id="node1" title=" " alt="" coords="199,13,357,39"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title=" " alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title="action to perform when popped from a units action stack" alt="" coords="5,5,151,47"/>
 </map>

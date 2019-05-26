@@ -1,5 +1,5 @@
 <map id="openage::audio::OpusInMemoryLoader" name="openage::audio::OpusInMemoryLoader">
-<area shape="rect" id="node1" title=" " alt="" coords="5,507,212,628"/>
-<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_in_memory_loader.xhtml" title=" " alt="" coords="21,321,196,457"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_path.xhtml" title=" " alt="" coords="43,5,174,259"/>
+<area shape="rect" id="node1" title="A OpusInMemoryLoader load&#39;s opus encoded data from opus files." alt="" coords="5,507,212,628"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_in_memory_loader.xhtml" title="A InMemoryLoader loads a audio file into memory and converts it into 16 bit signed integer pcm data." alt="" coords="21,321,196,457"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_path.xhtml" title="C++ pendant to the python util.fslike.path.Path." alt="" coords="43,5,174,259"/>
 </map>

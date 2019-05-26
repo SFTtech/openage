@@ -13,9 +13,9 @@
         <argsstring></argsstring>
         <name>hp</name>
         <briefdescription>
+<para>The current hitpoint. </para>
         </briefdescription>
         <detaileddescription>
-<para>The current hitpoint </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -48,9 +48,9 @@
         <name>copy</name>
         <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
         <briefdescription>
+<para>Produces an copy of the attribute. </para>
         </briefdescription>
         <detaileddescription>
-<para>Produces an copy of the attribute. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -58,9 +58,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The current hitpoints. </para>
     </briefdescription>
     <detaileddescription>
-<para>The current hitpoints. <xrefsect id="todo_1_todo000034"><xreftitle>Todo</xreftitle><xrefdescription><para>add last damage taken timestamp </para>
+<para><xrefsect id="todo_1_todo000034"><xreftitle>Todo</xreftitle><xrefdescription><para>add last damage taken timestamp </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>

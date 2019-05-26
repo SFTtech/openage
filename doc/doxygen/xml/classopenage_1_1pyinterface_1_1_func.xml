@@ -214,9 +214,9 @@
         <argsstring>() const</argsstring>
         <name>check_fptr</name>
         <briefdescription>
+<para>raises an Error if this-&gt;fptr is still uninitialized. </para>
         </briefdescription>
         <detaileddescription>
-<para>raises an Error if this-&gt;fptr is still uninitialized. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -235,9 +235,9 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>for direct usage (mostly from Cython) </para>
         </briefdescription>
         <detaileddescription>
-<para>for direct usage (mostly from Cython) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -252,9 +252,9 @@
           <type>ArgTypes ...</type>
         </param>
         <briefdescription>
+<para>for implicit conversion to std::function, for usage in a context where std::function would be expected. </para>
         </briefdescription>
         <detaileddescription>
-<para>for implicit conversion to std::function, for usage in a context where std::function would be expected. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -266,9 +266,9 @@
         <argsstring>() const</argsstring>
         <name>get</name>
         <briefdescription>
+<para>for explicit conversion to std::function. </para>
         </briefdescription>
         <detaileddescription>
-<para>for explicit conversion to std::function. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -295,9 +295,9 @@
           <declname>bound_args</declname>
         </param>
         <briefdescription>
+<para>For manual binding of function pointers and arguments (from Cython; in C++, assign lambdas). </para>
         </briefdescription>
         <detaileddescription>
-<para>For manual binding of function pointers and arguments (from Cython; in C++, assign lambdas).</para>
 <para>Adds additional code that catches and converts Python exceptions to C++ exceptions.</para>
 <para>The &apos;<ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr</ref>&apos; argument is due to <ulink url="http://stackoverflow.com/questions/31040075">http://stackoverflow.com/questions/31040075</ulink>. Note that with clang, it&apos;s possible to directly pass function pointers, while with gcc they need to be explicitly converted. Meh. </para>
         </detaileddescription>
@@ -326,9 +326,9 @@
           <declname>bound_args</declname>
         </param>
         <briefdescription>
+<para>Like bind, but does <emphasis>not</emphasis> add an exception checker. </para>
         </briefdescription>
         <detaileddescription>
-<para>Like bind, but does <emphasis>not</emphasis> add an exception checker. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -594,9 +594,9 @@
           <declname>bound_args</declname>
         </param>
         <briefdescription>
+<para>Specialization for <ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind()</ref> with void return types. </para>
         </briefdescription>
         <detaileddescription>
-<para>Specialization for <ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind()</ref> with void return types. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -628,9 +628,9 @@
           <declname>bound_args</declname>
         </param>
         <briefdescription>
+<para>Specialization for <ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind()</ref> with non-void return types. </para>
         </briefdescription>
         <detaileddescription>
-<para>Specialization for <ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind()</ref> with non-void return types. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -638,9 +638,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Holds a function pointer, with bound arguments. </para>
     </briefdescription>
     <detaileddescription>
-<para>Holds a function pointer, with bound arguments.</para>
 <para>Can be filled via its implicit copy constructor, operator = or <ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind()</ref>.</para>
 <para>operator = is designed for usage from C++, and accepts set() sets it to an existing std::function object one of its <ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind()</ref> members.</para>
 <para>It&apos;s auto-converted to std::function, and can be called via <ref refid="classopenage_1_1pyinterface_1_1_func_1a6f751ca999eabb5bd65e5bc73acc50b1" kindref="member">call()</ref>.</para>

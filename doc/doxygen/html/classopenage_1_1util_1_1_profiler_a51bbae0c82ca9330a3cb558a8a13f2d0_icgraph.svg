@@ -66,7 +66,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node61 -->
 <g id="node2" class="node"><title>Node61</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aaf65afbb05a6aa408a7aff89e74e93dd" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aaf65afbb05a6aa408a7aff89e74e93dd" target="_top" xlink:title="sets the end point for the reference time used to compute the portions of the components.">
 <polygon fill="white" stroke="black" points="296,-147.5 296,-177.5 406,-177.5 406,-147.5 296,-147.5"/>
 <text text-anchor="start" x="304" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="351" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::end_frame_measure</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node65 -->
 <g id="node6" class="node"><title>Node65</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a0d8b52ef4078807189fd457e658270cb" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a0d8b52ef4078807189fd457e658270cb" target="_top" xlink:title="sets the start point for the actual frame which is used as a reference value for the registered compo...">
 <polygon fill="white" stroke="black" points="294,-49.5 294,-79.5 408,-79.5 408,-49.5 294,-49.5"/>
 <text text-anchor="start" x="302" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="351" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_frame_measure</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node62 -->
 <g id="node3" class="node"><title>Node62</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="145,-79 145,-98 258,-98 258,-79 145,-79"/>
 <text text-anchor="middle" x="201.5" y="-86" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node63 -->
 <g id="node4" class="node"><title>Node63</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="0,-79 0,-98 109,-98 109,-79 0,-79"/>
 <text text-anchor="middle" x="54.5" y="-86" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>

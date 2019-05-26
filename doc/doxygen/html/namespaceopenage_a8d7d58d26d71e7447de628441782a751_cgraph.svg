@@ -79,7 +79,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node45 -->
 <g id="node3" class="node"><title>Node45</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" target="_top" xlink:title="returns all objects on the next tile">
 <polygon fill="white" stroke="black" points="155,-98.5 155,-128.5 274,-128.5 274,-98.5 155,-98.5"/>
 <text text-anchor="start" x="163" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainSearch</text>
 <text text-anchor="middle" x="214.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::next_tile</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node46 -->
 <g id="node4" class="node"><title>Node46</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a0db543b44fe51d0f1403bedba1f575a8" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a0db543b44fe51d0f1403bedba1f575a8" target="_top" xlink:title="restarts the search from the start tile">
 <polygon fill="white" stroke="black" points="323,-142.5 323,-172.5 442,-172.5 442,-142.5 323,-142.5"/>
 <text text-anchor="start" x="331" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainSearch</text>
 <text text-anchor="middle" x="382.5" y="-149.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reset</text>
@@ -161,7 +161,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node48 -->
 <g id="node6" class="node"><title>Node48</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="506,-104 506,-123 601,-123 601,-104 506,-104"/>
 <text text-anchor="middle" x="553.5" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

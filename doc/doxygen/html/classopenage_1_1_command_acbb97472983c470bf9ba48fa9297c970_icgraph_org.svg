@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-128 606,-128 606,4 -4,4"/>
 <!-- Node30 -->
 <g id="node1" class="node"><title>Node30</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="read the range setting">
 <polygon fill="#bfbfbf" stroke="black" points="456,-55 456,-74 602,-74 602,-55 456,-55"/>
 <text text-anchor="middle" x="529" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Command::has_flag</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node31 -->
 <g id="node2" class="node"><title>Node31</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#aef7363eab8f805124114c4967470379d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#aef7363eab8f805124114c4967470379d" target="_top" xlink:title="applies one command using a chosen ability locks the command queue mutex while operating">
 <polygon fill="white" stroke="black" points="290,-99 290,-118 420,-118 420,-99 290,-99"/>
 <text text-anchor="middle" x="355" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::apply_cmd</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node34 -->
 <g id="node5" class="node"><title>Node34</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_attack_ability.xhtml#aed325cf408ccfcfc099dfad62aa1dbbd" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_attack_ability.xhtml#aed325cf408ccfcfc099dfad62aa1dbbd" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="297.5,-49.5 297.5,-79.5 412.5,-79.5 412.5,-49.5 297.5,-49.5"/>
 <text text-anchor="start" x="305.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAbility</text>
 <text text-anchor="middle" x="355" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node35 -->
 <g id="node6" class="node"><title>Node35</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="300.5,-0.5 300.5,-30.5 409.5,-30.5 409.5,-0.5 300.5,-0.5"/>
 <text text-anchor="start" x="308.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAbility</text>
 <text text-anchor="middle" x="355" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node32 -->
 <g id="node3" class="node"><title>Node32</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#a627bc25cc4e546ff34b06cfa809f8946" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#a627bc25cc4e546ff34b06cfa809f8946" target="_top" xlink:title="applies new commands as part of the units update process">
 <polygon fill="white" stroke="black" points="148,-93.5 148,-123.5 254,-123.5 254,-93.5 148,-93.5"/>
 <text text-anchor="start" x="156" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::apply</text>
 <text text-anchor="middle" x="201" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">_all_cmds</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node33 -->
 <g id="node4" class="node"><title>Node33</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" target="_top" xlink:title="update this object using the action currently on top of the stack">
 <polygon fill="white" stroke="black" points="0,-99 0,-118 112,-118 112,-99 0,-99"/>
 <text text-anchor="middle" x="56" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::update</text>
 </a>

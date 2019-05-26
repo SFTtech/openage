@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 455,-35 455,4 -4,4"/>
 <!-- Node86 -->
 <g id="node1" class="node"><title>Node86</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Loads all audio resources, that are specified in the sound_files vector.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 151,-30.5 151,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <text text-anchor="middle" x="75.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::load_resources</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node87 -->
 <g id="node2" class="node"><title>Node87</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_resource.xhtml#a01dfa61156a48fe06ea5e3c22978f378" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_resource.xhtml#a01dfa61156a48fe06ea5e3c22978f378" target="_top" xlink:title="create an audio resource, this produces a DynamicResource or a InMemoryResource">
 <polygon fill="white" stroke="black" points="187,-0.5 187,-30.5 317,-30.5 317,-0.5 187,-0.5"/>
 <text text-anchor="start" x="195" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Resource</text>
 <text text-anchor="middle" x="252" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_resource</text>

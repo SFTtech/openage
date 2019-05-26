@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-124 498,-124 498,4 -4,4"/>
 <!-- Node27 -->
 <g id="node1" class="node"><title>Node27</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Read data from the file and return a string.">
 <polygon fill="#bfbfbf" stroke="black" points="400,-22.5 400,-52.5 494,-52.5 494,-22.5 400,-22.5"/>
 <text text-anchor="start" x="408" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::File</text>
 <text text-anchor="middle" x="447" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::read</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node29 -->
 <g id="node3" class="node"><title>Node29</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a16ef0fe69558a29af4a8d568f2b5b518" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a16ef0fe69558a29af4a8d568f2b5b518" target="_top" xlink:title="read a single csv file.">
 <polygon fill="white" stroke="black" points="22,-89.5 22,-119.5 119,-119.5 119,-89.5 22,-89.5"/>
 <text text-anchor="start" x="30" y="-107.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::read</text>
 <text text-anchor="middle" x="70.5" y="-96.5" font-family="Helvetica,sans-Serif" font-size="10.00">_csv_file</text>

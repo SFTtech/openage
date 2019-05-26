@@ -66,7 +66,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node34 -->
 <g id="node2" class="node"><title>Node34</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1shader_1_1_program.xhtml#ae0fd13dc3273cf93aa6330973c478e66" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1shader_1_1_program.xhtml#ae0fd13dc3273cf93aa6330973c478e66" target="_top" xlink:title="checks a given status for this program.">
 <polygon fill="white" stroke="black" points="167,-93.5 167,-123.5 298,-123.5 298,-93.5 167,-93.5"/>
 <text text-anchor="start" x="175" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::shader::Program</text>
 <text text-anchor="middle" x="232.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">::check</text>

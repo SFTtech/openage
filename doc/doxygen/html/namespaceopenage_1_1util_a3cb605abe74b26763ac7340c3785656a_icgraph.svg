@@ -57,7 +57,7 @@ var sectionId = 'dynsection-22';
 <polygon fill="white" stroke="none" points="-4,4 -4,-291.5 590,-291.5 590,4 -4,4"/>
 <!-- Node177 -->
 <g id="node1" class="node"><title>Node177</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Siphash implementation.">
 <polygon fill="#bfbfbf" stroke="black" points="487,-139.5 487,-158.5 586,-158.5 586,-139.5 487,-139.5"/>
 <text text-anchor="middle" x="536.5" y="-146.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::hash</text>
 </a>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node181 -->
 <g id="node5" class="node"><title>Node181</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_siphash.xhtml#a59bdccc7e794fe057e4777031a177650" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_siphash.xhtml#a59bdccc7e794fe057e4777031a177650" target="_top" xlink:title="Hashes the input data as uint8_t array and returns the result.">
 <polygon fill="white" stroke="black" points="309,-110 309,-140 422,-140 422,-110 309,-110"/>
 <text text-anchor="start" x="317" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Siphash</text>
 <text text-anchor="middle" x="365.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">::digest</text>
@@ -150,7 +150,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node183 -->
 <g id="node7" class="node"><title>Node183</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title="Retrieves the atlas entry for a specified font and glyph.">
 <polygon fill="white" stroke="black" points="143,-61 143,-91 244,-91 244,-61 143,-61"/>
 <text text-anchor="start" x="151" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="193.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">GlyphAtlas::get</text>
@@ -164,7 +164,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node184 -->
 <g id="node8" class="node"><title>Node184</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title="Render all the text draw requests made during the frame.">
 <polygon fill="white" stroke="black" points="0,-61 0,-91 107,-91 107,-61 0,-61"/>
 <text text-anchor="start" x="8" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="53.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::render</text>

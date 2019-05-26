@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-122.5 296,-122.5 296,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Apply the modifications to the owner player.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-49.5 0,-79.5 107,-79.5 107,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Research::</text>
 <text text-anchor="middle" x="53.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">apply</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe" target="_top" xlink:title="Advance to next age;.">
 <polygon fill="white" stroke="black" points="143,-99 143,-118 292,-118 292,-99 143,-99"/>
 <text text-anchor="middle" x="217.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::advance_age</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83" target="_top" xlink:title="Performs the modifications (eg.">
 <polygon fill="white" stroke="black" points="156.5,-49.5 156.5,-79.5 278.5,-79.5 278.5,-49.5 156.5,-49.5"/>
 <text text-anchor="start" x="164.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchType</text>
 <text text-anchor="middle" x="217.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::apply</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92" target="_top" xlink:title="Gets the research category of the research.">
 <polygon fill="white" stroke="black" points="156.5,-0.5 156.5,-30.5 278.5,-30.5 278.5,-0.5 156.5,-0.5"/>
 <text text-anchor="start" x="164.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchType</text>
 <text text-anchor="middle" x="217.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::category</text>

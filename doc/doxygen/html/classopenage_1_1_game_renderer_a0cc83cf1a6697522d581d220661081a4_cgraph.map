@@ -1,7 +1,7 @@
 <map id="openage::GameRenderer::on_draw" name="openage::GameRenderer::on_draw">
-<area shape="rect" id="node1" title=" " alt="" coords="5,64,172,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" title=" " alt="" coords="225,13,382,39"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_game_renderer.xhtml#a1824b69c5f78ed1db93b6fa6417fdf83" title=" " alt="" coords="220,64,387,105"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title=" " alt="" coords="435,101,619,127"/>
+<area shape="rect" id="node1" title="execute the drawing action." alt="" coords="5,64,172,105"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" title="Draws the texture at hud coordinates." alt="" coords="225,13,382,39"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_game_renderer.xhtml#a1824b69c5f78ed1db93b6fa6417fdf83" title="the game this renderer is using" alt="" coords="220,64,387,105"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title="return currently running game or null if a game is not currently running" alt="" coords="435,101,619,127"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1camhud.xhtml#abbbebb0d15c032c20f0db6dd6f9c4911" title=" " alt="" coords="444,5,609,47"/>
 </map>

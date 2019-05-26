@@ -105,7 +105,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node1027 -->
 <g id="node4" class="node"><title>Node1027</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="487,-57 487,-87 612,-87 612,-57 487,-57"/>
 <text text-anchor="start" x="495" y="-75" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="549.5" y="-64" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -119,7 +119,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node1028 -->
 <g id="node5" class="node"><title>Node1028</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="487,-8 487,-38 612,-38 612,-8 487,-8"/>
 <text text-anchor="start" x="495" y="-26" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="549.5" y="-15" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

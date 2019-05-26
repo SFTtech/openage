@@ -29,9 +29,9 @@
         <argsstring></argsstring>
         <name>filename</name>
         <briefdescription>
+<para>The filename where the message has been constructed. </para>
         </briefdescription>
         <detaileddescription>
-<para>The filename where the message has been constructed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -47,9 +47,9 @@
         <argsstring></argsstring>
         <name>lineno</name>
         <briefdescription>
+<para>The line number where the message has been constructed. </para>
         </briefdescription>
         <detaileddescription>
-<para>The line number where the message has been constructed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -64,9 +64,9 @@
         <argsstring></argsstring>
         <name>functionname</name>
         <briefdescription>
+<para>The (pretty) function name where the message has been constructed. </para>
         </briefdescription>
         <detaileddescription>
-<para>The (pretty) function name where the message has been constructed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -82,9 +82,9 @@
         <argsstring></argsstring>
         <name>lvl</name>
         <briefdescription>
+<para>The log level. </para>
         </briefdescription>
         <detaileddescription>
-<para>The log level. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -100,9 +100,9 @@
         <argsstring></argsstring>
         <name>thread_id</name>
         <briefdescription>
+<para>A unique id for the thread where the message has been constructed. </para>
         </briefdescription>
         <detaileddescription>
-<para>A unique id for the thread where the message has been constructed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -118,9 +118,9 @@
         <argsstring></argsstring>
         <name>timestamp</name>
         <briefdescription>
+<para>A (nanosecond-resolution) timestamp of the message construction. </para>
         </briefdescription>
         <detaileddescription>
-<para>A (nanosecond-resolution) timestamp of the message construction. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -136,9 +136,9 @@
         <argsstring>()</argsstring>
         <name>init</name>
         <briefdescription>
+<para>Sets all members except for filename, lineno, functionname and level. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets all members except for filename, lineno, functionname and level. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -163,9 +163,9 @@
           <declname>functionname</declname>
         </param>
         <briefdescription>
+<para>Sets all members except for lineno and level. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets all members except for lineno and level.</para>
 <para>filename and functionname are copied to an internal cache.</para>
 <para>Designed to be used when filename and functionname are temporary objects (e.g. from Python). </para>
         </detaileddescription>
@@ -179,9 +179,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A complete log/exception message, containing a text message and metadata. </para>
     </briefdescription>
     <detaileddescription>
-<para>A complete log/exception message, containing a text message and metadata.</para>
 <para>The preferred way of creating a <computeroutput>message</computeroutput> object is to use <ref refid="classopenage_1_1log_1_1_message_builder" kindref="compound">MessageBuilder</ref> via the MSG macro. <ref refid="classopenage_1_1log_1_1_message_builder" kindref="compound">MessageBuilder</ref> is auto-converted to message when needed.</para>
 <para>pxd:</para>
 <para>cppclass message: string text char *filename unsigned lineno const char *functionname level lvl size_t thread_id int64_t timestamp</para>

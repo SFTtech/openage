@@ -111,7 +111,7 @@
 </g>
 <!-- Node7 -->
 <g id="node6" class="node"><title>Node7</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_texture.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_texture.xhtml" target="_top" xlink:title="A texture for rendering graphically.">
 <polygon fill="white" stroke="black" points="117,-542.5 117,-797.5 218,-797.5 218,-542.5 117,-542.5"/>
 <text text-anchor="middle" x="167.5" y="-785.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture</text>
 <polyline fill="none" stroke="black" points="117,-778.5 218,-778.5 "/>
@@ -147,7 +147,7 @@
 </g>
 <!-- Node8 -->
 <g id="node7" class="node"><title>Node8</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title="C++ pendant to the python util.fslike.path.Path.">
 <polygon fill="white" stroke="black" points="118.5,-845.5 118.5,-1034.5 216.5,-1034.5 216.5,-845.5 118.5,-845.5"/>
 <text text-anchor="middle" x="167.5" y="-1022.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <polyline fill="none" stroke="black" points="118.5,-1015.5 216.5,-1015.5 "/>

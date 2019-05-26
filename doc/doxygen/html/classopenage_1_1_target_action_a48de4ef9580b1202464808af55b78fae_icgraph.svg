@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 270,-35 270,4 -4,4"/>
 <!-- Node49 -->
 <g id="node1" class="node"><title>Node49</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="changes target, ending action when new target is invalid">
 <polygon fill="#bfbfbf" stroke="black" points="152,-0.5 152,-30.5 266,-30.5 266,-0.5 152,-0.5"/>
 <text text-anchor="start" x="160" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TargetAction</text>
 <text text-anchor="middle" x="209" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_target</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node50 -->
 <g id="node2" class="node"><title>Node50</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 116,-30.5 116,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAction</text>
 <text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>

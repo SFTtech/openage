@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-132 848,-132 848,4 -4,4"/>
 <!-- Node994 -->
 <g id="node1" class="node"><title>Node994</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Sets the log level of the global stdout sink.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-78 0,-97 116,-97 116,-78 0,-78"/>
 <text text-anchor="middle" x="58" y="-85" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::set_level</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node995 -->
 <g id="node2" class="node"><title>Node995</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="156.5,-97.5 156.5,-127.5 260.5,-127.5 260.5,-97.5 156.5,-97.5"/>
 <text text-anchor="start" x="164.5" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="208.5" y="-104.5" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -102,7 +102,7 @@
 </g>
 <!-- Node1001 -->
 <g id="node8" class="node"><title>Node1001</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="719,-49.5 719,-79.5 844,-79.5 844,-49.5 719,-49.5"/>
 <text text-anchor="start" x="727" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="781.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -116,7 +116,7 @@
 </g>
 <!-- Node1002 -->
 <g id="node9" class="node"><title>Node1002</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="719,-0.5 719,-30.5 844,-30.5 844,-0.5 719,-0.5"/>
 <text text-anchor="start" x="727" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="781.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

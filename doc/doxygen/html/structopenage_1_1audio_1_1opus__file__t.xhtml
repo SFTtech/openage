@@ -96,20 +96,26 @@ $(document).ready(function(){initNavTree('structopenage_1_1audio_1_1opus__file__
 </div><!--header-->
 <div class="contents">
 
+<p>opusfile handle storage.  
+ <a href="structopenage_1_1audio_1_1opus__file__t.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="opus__loading_8h_source.xhtml">opus_loading.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::audio::opus_file_t:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1audio_1_1opus__file__t__coll__graph.svg" width="158" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1audio_1_1opus__file__t__coll__graph.svg" width="158" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a581840588795e9b90c6546ff24b8e189"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; OggOpusFile, std::function&lt; void(OggOpusFile *)&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1audio_1_1opus__file__t.xhtml#a581840588795e9b90c6546ff24b8e189">handle</a></td></tr>
+<tr class="memdesc:a581840588795e9b90c6546ff24b8e189"><td class="mdescLeft">&#160;</td><td class="mdescRight">The opusfile handle, with a custom deleter that frees the opusfile memory.  <a href="#a581840588795e9b90c6546ff24b8e189">More...</a><br /></td></tr>
 <tr class="separator:a581840588795e9b90c6546ff24b8e189"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a249e11933a2c73d85513f0c38f07cfa8"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classopenage_1_1util_1_1_file.xhtml">util::File</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1audio_1_1opus__file__t.xhtml#a249e11933a2c73d85513f0c38f07cfa8">file</a></td></tr>
+<tr class="memdesc:a249e11933a2c73d85513f0c38f07cfa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">File used to supply the data.  <a href="#a249e11933a2c73d85513f0c38f07cfa8">More...</a><br /></td></tr>
 <tr class="separator:a249e11933a2c73d85513f0c38f07cfa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -128,7 +134,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>File used to supply the data. This is unused if the file is a real file. </p>
+
+<p>File used to supply the data. </p>
+<p>This is unused if the file is a real file. </p>
 
 <p class="definition">Definition at line <a class="el" href="opus__loading_8h_source.xhtml#l00030">30</a> of file <a class="el" href="opus__loading_8h_source.xhtml">opus_loading.h</a>.</p>
 
@@ -147,6 +155,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>The opusfile handle, with a custom deleter that frees the opusfile memory. </p>
 
 <p class="definition">Definition at line <a class="el" href="opus__loading_8h_source.xhtml#l00024">24</a> of file <a class="el" href="opus__loading_8h_source.xhtml">opus_loading.h</a>.</p>

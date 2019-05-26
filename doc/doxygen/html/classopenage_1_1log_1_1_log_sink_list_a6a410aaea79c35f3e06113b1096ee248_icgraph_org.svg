@@ -108,7 +108,7 @@
 </g>
 <!-- Node429 -->
 <g id="node6" class="node"><title>Node429</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1log.xhtml#ac8660073c35f9900e8c1169f2899b7d2" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1log.xhtml#ac8660073c35f9900e8c1169f2899b7d2" target="_top" xlink:title="Sets the log level of the global stdout sink.">
 <polygon fill="white" stroke="black" points="0,-104 0,-123 116,-123 116,-104 0,-104"/>
 <text text-anchor="middle" x="58" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::set_level</text>
 </a>

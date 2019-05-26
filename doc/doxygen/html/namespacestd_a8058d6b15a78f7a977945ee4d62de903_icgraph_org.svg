@@ -19,7 +19,7 @@
 </g>
 <!-- Node23 -->
 <g id="node2" class="node"><title>Node23</title>
-<g id="a_node2"><a xlink:href="namespaceopenage.xhtml#af8871290d3c97a11b6761d12827ab9e3" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage.xhtml#ad019d95177e6ab646a2d239e4ec3daa7" target="_top" xlink:title="the set of images to used based on unit direction, usually 8 directions to draw for each unit (3 are ...">
 <polygon fill="white" stroke="black" points="484,-427 484,-446 583,-446 583,-427 484,-427"/>
 <text text-anchor="middle" x="533.5" y="-434" font-family="Helvetica,sans-Serif" font-size="10.00">openage::dir_group</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node26 -->
 <g id="node5" class="node"><title>Node26</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title="how far is a point from the edge of this object">
 <polygon fill="white" stroke="black" points="474,-328.5 474,-358.5 593,-358.5 593,-328.5 474,-328.5"/>
 <text text-anchor="start" x="482" y="-346.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="533.5" y="-335.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_edge</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node28 -->
 <g id="node7" class="node"><title>Node28</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="white" stroke="black" points="474,-230.5 474,-260.5 593,-260.5 593,-230.5 474,-230.5"/>
 <text text-anchor="start" x="482" y="-248.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="533.5" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>
@@ -102,7 +102,7 @@
 </g>
 <!-- Node31 -->
 <g id="node10" class="node"><title>Node31</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" target="_top" xlink:title="returns all objects on the next tile">
 <polygon fill="white" stroke="black" points="474,-132.5 474,-162.5 593,-162.5 593,-132.5 474,-132.5"/>
 <text text-anchor="start" x="482" y="-150.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainSearch</text>
 <text text-anchor="middle" x="533.5" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00">::next_tile</text>
@@ -116,7 +116,7 @@
 </g>
 <!-- Node38 -->
 <g id="node17" class="node"><title>Node38</title>
-<g id="a_node17"><a xlink:href="namespaceopenage.xhtml#ae2e68c0049a3b6c5671c8006c6a74f84" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="namespaceopenage.xhtml#ae2e68c0049a3b6c5671c8006c6a74f84" target="_top" xlink:title="Generate a isometric circle outline texture.">
 <polygon fill="white" stroke="black" points="475.5,-94 475.5,-113 591.5,-113 591.5,-94 475.5,-94"/>
 <text text-anchor="middle" x="533.5" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">openage::radial_outline</text>
 </a>
@@ -129,7 +129,7 @@
 </g>
 <!-- Node39 -->
 <g id="node18" class="node"><title>Node39</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1_move_action.xhtml#a87eb54704dff471c3401ec7c7a88b044" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1_move_action.xhtml#a87eb54704dff471c3401ec7c7a88b044" target="_top" xlink:title="updates the distance_to_target value">
 <polygon fill="white" stroke="black" points="478.5,-44.5 478.5,-74.5 588.5,-74.5 588.5,-44.5 478.5,-44.5"/>
 <text text-anchor="start" x="486.5" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAction</text>
 <text text-anchor="middle" x="533.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_distance</text>
@@ -143,7 +143,7 @@
 </g>
 <!-- Node41 -->
 <g id="node20" class="node"><title>Node41</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="320.5,-0.5 320.5,-30.5 430.5,-30.5 430.5,-0.5 320.5,-0.5"/>
 <text text-anchor="start" x="328.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAction</text>
 <text text-anchor="middle" x="375.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -157,7 +157,7 @@
 </g>
 <!-- Node24 -->
 <g id="node3" class="node"><title>Node24</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title="draw object with direction">
 <polygon fill="white" stroke="black" points="321,-421.5 321,-451.5 430,-451.5 430,-421.5 321,-421.5"/>
 <text text-anchor="start" x="329" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="375.5" y="-428.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>
@@ -211,7 +211,7 @@
 </g>
 <!-- Node33 -->
 <g id="node12" class="node"><title>Node33</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title="action to perform when popped from a units action stack">
 <polygon fill="white" stroke="black" points="161.5,-145.5 161.5,-175.5 270.5,-175.5 270.5,-145.5 161.5,-145.5"/>
 <text text-anchor="start" x="169.5" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAction</text>
 <text text-anchor="middle" x="216" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_completion</text>
@@ -253,7 +253,7 @@
 </g>
 <!-- Node36 -->
 <g id="node15" class="node"><title>Node36</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="0,-96.5 0,-126.5 116,-126.5 116,-96.5 0,-96.5"/>
 <text text-anchor="start" x="8" y="-114.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAction</text>
 <text text-anchor="middle" x="58" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>

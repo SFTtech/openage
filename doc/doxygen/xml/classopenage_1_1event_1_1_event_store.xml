@@ -253,9 +253,10 @@
         <argsstring>() const</argsstring>
         <name>get_sorted_events</name>
         <briefdescription>
+<para>Helper function that should not be called &apos;in production&apos;. </para>
         </briefdescription>
         <detaileddescription>
-<para>Helper function that should not be called &apos;in production&apos;. It returns the events in the store sorted by time. Use the <ref refid="classopenage_1_1event_1_1_event_store_1a6758260ffbc439c15c70590979acb2f9" kindref="member">pop()</ref> method instead (but with that you can&apos;t iterate). </para>
+<para>It returns the events in the store sorted by time. Use the <ref refid="classopenage_1_1event_1_1_event_store_1a6758260ffbc439c15c70590979acb2f9" kindref="member">pop()</ref> method instead (but with that you can&apos;t iterate). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -265,9 +266,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Sorted storage for events. </para>
     </briefdescription>
     <detaileddescription>
-<para>Sorted storage for events. Implemented through a heap that automatically provides the newest event. </para>
+<para>Implemented through a heap that automatically provides the newest event. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="2261">

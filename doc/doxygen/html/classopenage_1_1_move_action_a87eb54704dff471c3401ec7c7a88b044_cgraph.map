@@ -1,5 +1,5 @@
 <map id="openage::MoveAction::set_distance" name="openage::MoveAction::set_distance">
-<area shape="rect" id="node1" title=" " alt="" coords="5,63,152,104"/>
+<area shape="rect" id="node1" title="updates the distance_to_target value" alt="" coords="5,63,152,104"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8" title=" " alt="" coords="200,70,387,97"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac" title=" " alt="" coords="438,5,598,47"/>
 <area shape="rect" id="node5" href="$namespacestd.xhtml#a8058d6b15a78f7a977945ee4d62de903" title=" " alt="" coords="253,125,333,151"/>

@@ -9,9 +9,9 @@
         <argsstring>()</argsstring>
         <name>get_real_time</name>
         <briefdescription>
+<para>returns the number of nanoseconds since the UNIX epoch. </para>
         </briefdescription>
         <detaileddescription>
-<para>returns the number of nanoseconds since the UNIX epoch. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -25,9 +25,9 @@
         <argsstring>()</argsstring>
         <name>get_monotonic_time</name>
         <briefdescription>
+<para>returns a monotonically-increasing time that returns the number of nanoseconds since an unspecified event. </para>
         </briefdescription>
         <detaileddescription>
-<para>returns a monotonically-increasing time that returns the number of nanoseconds since an unspecified event.</para>
 <para>not influenced by system time changes. </para>
         </detaileddescription>
         <inbodydescription>

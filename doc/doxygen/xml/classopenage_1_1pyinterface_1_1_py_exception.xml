@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>py_obj</name>
         <briefdescription>
+<para>Reference to the Python exception object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reference to the Python exception object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -30,9 +30,9 @@
         <name>type_name</name>
         <reimplements refid="classopenage_1_1error_1_1_error_1a6c5c486df5943aa399b6c051d9eb9059">type_name</reimplements>
         <briefdescription>
+<para>Returns the type name of py_obj. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the type name of py_obj. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -50,9 +50,9 @@
         <argsstring>()</argsstring>
         <name>init_backtrace</name>
         <briefdescription>
+<para>Initializes this-&gt;backtrace with a <ref refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace" kindref="compound">PyExceptionBacktrace</ref> object that points at this-&gt;py_obj-&gt;get_ref(). </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes this-&gt;backtrace with a <ref refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace" kindref="compound">PyExceptionBacktrace</ref> object that points at this-&gt;py_obj-&gt;get_ref(). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -63,9 +63,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Thrown by <ref refid="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" kindref="member">translate_exc_py_to_cpp()</ref> from <ref refid="exctranslate_8h" kindref="compound">exctranslate.h</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>Thrown by <ref refid="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" kindref="member">translate_exc_py_to_cpp()</ref> from <ref refid="exctranslate_8h" kindref="compound">exctranslate.h</ref>.</para>
 <para>These objects are constructed entirely empty, and designed to be filled from <ref refid="namespaceopenage_1_1pyinterface_1a29e783fc0db24c266caed883f5781e96" kindref="member">describe_py_exception()</ref>.</para>
 <para>pxd:</para>
 <para>cppclass PyException(Error): <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> py_obj void <ref refid="classopenage_1_1pyinterface_1_1_py_exception_1aa8b1811a748a3b9098ecea916a925393" kindref="member">init_backtrace()</ref> except + </para>

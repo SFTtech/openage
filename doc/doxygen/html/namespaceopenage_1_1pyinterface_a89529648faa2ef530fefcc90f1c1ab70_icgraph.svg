@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 321,-46 321,4 -4,4"/>
 <!-- Node46 -->
 <g id="node1" class="node"><title>Node46</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Analyzes the current Python exception, and creates and throws an analogous C++ PyException object.">
 <polygon fill="#bfbfbf" stroke="black" points="186,-6 186,-36 317,-36 317,-6 186,-6"/>
 <text text-anchor="start" x="194" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="251.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">::translate_exc_py_to_cpp</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node47 -->
 <g id="node2" class="node"><title>Node47</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_func.xhtml#acea6cb67bc0e8ea78d513f6db4e2e477" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_func.xhtml#acea6cb67bc0e8ea78d513f6db4e2e477" target="_top" xlink:title="Specialization for bind() with void return types.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-41.5 150,-41.5 150,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Func&lt; ReturnType, ArgTypes</text>

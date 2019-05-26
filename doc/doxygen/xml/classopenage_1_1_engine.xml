@@ -27,9 +27,10 @@
         <argsstring></argsstring>
         <name>running</name>
         <briefdescription>
+<para>current engine state variable. </para>
         </briefdescription>
         <detaileddescription>
-<para>current engine state variable. to be set to false to stop the engine loop. </para>
+<para>to be set to false to stop the engine loop. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -44,9 +45,9 @@
         <argsstring></argsstring>
         <name>drawing_debug_overlay</name>
         <briefdescription>
+<para>FPS and game version are drawn when this is true. </para>
         </briefdescription>
         <detaileddescription>
-<para>FPS and game version are drawn when this is true. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -60,9 +61,9 @@
         <argsstring></argsstring>
         <name>drawing_huds</name>
         <briefdescription>
+<para>this allows to disable drawing of every registered hud. </para>
         </briefdescription>
         <detaileddescription>
-<para>this allows to disable drawing of every registered hud. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -75,9 +76,9 @@
         <argsstring></argsstring>
         <name>external_profiler</name>
         <briefdescription>
+<para>profiler used by the engine </para>
         </briefdescription>
         <detaileddescription>
-<para>profiler used by the engine </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -89,9 +90,9 @@
         <argsstring></argsstring>
         <name>coord</name>
         <briefdescription>
+<para>this engine&apos;s coordinate manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>this engine&apos;s coordinate manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -117,9 +118,9 @@
         <argsstring></argsstring>
         <name>gui_signals</name>
         <briefdescription>
+<para>Signal emitting capability for the engine. </para>
         </briefdescription>
         <detaileddescription>
-<para>Signal emitting capability for the engine. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -132,9 +133,9 @@
         <argsstring></argsstring>
         <name>gui_link</name>
         <briefdescription>
+<para>Link to the Qt GUI. </para>
         </briefdescription>
         <detaileddescription>
-<para>Link to the Qt GUI. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -148,9 +149,10 @@
         <argsstring></argsstring>
         <name>root_dir</name>
         <briefdescription>
+<para>The engine root directory. </para>
         </briefdescription>
         <detaileddescription>
-<para>The engine root directory. Uses the openage fslike path abstraction that can mount paths into one.</para>
+<para>Uses the openage fslike path abstraction that can mount paths into one.</para>
 <para>This means that this path does simulataneously lead to global assets, home-folder-assets, settings, and basically the whole filesystem access. </para>
         </detaileddescription>
         <inbodydescription>
@@ -164,9 +166,10 @@
         <argsstring></argsstring>
         <name>ns_per_frame</name>
         <briefdescription>
+<para>how many nanoseconds are in a frame (1e9 / fps_limit). </para>
         </briefdescription>
         <detaileddescription>
-<para>how many nanoseconds are in a frame (1e9 / fps_limit). 0 if there is no fps limit. </para>
+<para>0 if there is no fps limit. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -179,9 +182,10 @@
         <argsstring></argsstring>
         <name>on_input_event</name>
         <briefdescription>
+<para>input event processor objects. </para>
         </briefdescription>
         <detaileddescription>
-<para>input event processor objects. called for each captured sdl input event. </para>
+<para>called for each captured sdl input event. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -195,9 +199,9 @@
         <argsstring></argsstring>
         <name>on_engine_tick</name>
         <briefdescription>
+<para>run on every engine tick, after input handling, before rendering </para>
         </briefdescription>
         <detaileddescription>
-<para>run on every engine tick, after input handling, before rendering </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -211,9 +215,9 @@
         <argsstring></argsstring>
         <name>on_drawgame</name>
         <briefdescription>
+<para>run every time the game is being drawn, with the renderer set to the camgame system </para>
         </briefdescription>
         <detaileddescription>
-<para>run every time the game is being drawn, with the renderer set to the camgame system </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -227,9 +231,9 @@
         <argsstring></argsstring>
         <name>on_drawhud</name>
         <briefdescription>
+<para>run every time the hud is being drawn, with the renderer set to the camhud system </para>
         </briefdescription>
         <detaileddescription>
-<para>run every time the hud is being drawn, with the renderer set to the camhud system </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -243,9 +247,9 @@
         <argsstring></argsstring>
         <name>on_resize_handler</name>
         <briefdescription>
+<para>list of handlers that are executed upon a resize event. </para>
         </briefdescription>
         <detaileddescription>
-<para>list of handlers that are executed upon a resize event. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -259,9 +263,9 @@
         <argsstring></argsstring>
         <name>game</name>
         <briefdescription>
+<para>the currently running game </para>
         </briefdescription>
         <detaileddescription>
-<para>the currently running game </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -277,9 +281,9 @@
         <argsstring></argsstring>
         <name>job_manager</name>
         <briefdescription>
+<para>the engine&apos;s job manager, for asynchronous background task queuing. </para>
         </briefdescription>
         <detaileddescription>
-<para>the engine&apos;s job manager, for asynchronous background task queuing. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -295,9 +299,9 @@
         <argsstring></argsstring>
         <name>qml_info</name>
         <briefdescription>
+<para>This stores information to be accessible from the QML engine. </para>
         </briefdescription>
         <detaileddescription>
-<para>This stores information to be accessible from the QML engine.</para>
 <para>Information in there (such as a pointer to the this engine) is then usable from within qml files, after some additional magic. </para>
         </detaileddescription>
         <inbodydescription>
@@ -310,9 +314,9 @@
         <argsstring></argsstring>
         <name>fps_counter</name>
         <briefdescription>
+<para>the frame counter measuring fps. </para>
         </briefdescription>
         <detaileddescription>
-<para>the frame counter measuring fps. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -327,9 +331,9 @@
         <argsstring></argsstring>
         <name>screenshot_manager</name>
         <briefdescription>
+<para>the engine&apos;s screenshot manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>the engine&apos;s screenshot manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -342,9 +346,9 @@
         <argsstring></argsstring>
         <name>cvar_manager</name>
         <briefdescription>
+<para>the engine&apos;s cvar manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>the engine&apos;s cvar manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -357,9 +361,9 @@
         <argsstring></argsstring>
         <name>action_manager</name>
         <briefdescription>
+<para>the engine&apos;s action manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>the engine&apos;s action manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -372,9 +376,9 @@
         <argsstring></argsstring>
         <name>audio_manager</name>
         <briefdescription>
+<para>the engine&apos;s audio manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>the engine&apos;s audio manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -387,9 +391,9 @@
         <argsstring></argsstring>
         <name>input_manager</name>
         <briefdescription>
+<para>the engine&apos;s keybind manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>the engine&apos;s keybind manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -402,9 +406,9 @@
         <argsstring></argsstring>
         <name>unit_selection</name>
         <briefdescription>
+<para>the engine&apos;s unit selection. </para>
         </briefdescription>
         <detaileddescription>
-<para>the engine&apos;s unit selection. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -418,9 +422,10 @@
         <argsstring></argsstring>
         <name>fonts</name>
         <briefdescription>
+<para>the text fonts to be used for (can you believe it?) texts. </para>
         </briefdescription>
         <detaileddescription>
-<para>the text fonts to be used for (can you believe it?) texts. maps fontsize -&gt; font </para>
+<para>maps fontsize -&gt; font </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -433,9 +438,9 @@
         <argsstring></argsstring>
         <name>window</name>
         <briefdescription>
+<para>SDL window where everything is displayed within. </para>
         </briefdescription>
         <detaileddescription>
-<para>SDL window where everything is displayed within. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -449,9 +454,9 @@
         <argsstring></argsstring>
         <name>glcontext</name>
         <briefdescription>
+<para>SDL OpenGL context, we&apos;ll only have one, but it would allow having multiple ones. </para>
         </briefdescription>
         <detaileddescription>
-<para>SDL OpenGL context, we&apos;ll only have one, but it would allow having multiple ones.</para>
 <para>This is actually a void * but sdl2 thought it was a good idea to name it like a differently. </para>
         </detaileddescription>
         <inbodydescription>
@@ -465,9 +470,9 @@
         <argsstring></argsstring>
         <name>gui</name>
         <briefdescription>
+<para>the gui binding </para>
         </briefdescription>
         <detaileddescription>
-<para>the gui binding </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -481,9 +486,9 @@
         <argsstring></argsstring>
         <name>profiler</name>
         <briefdescription>
+<para>the engines profiler </para>
         </briefdescription>
         <detaileddescription>
-<para>the engines profiler </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -498,9 +503,9 @@
         <argsstring></argsstring>
         <name>font_manager</name>
         <briefdescription>
+<para>ttf font loading manager </para>
         </briefdescription>
         <detaileddescription>
-<para>ttf font loading manager </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -512,9 +517,9 @@
         <argsstring></argsstring>
         <name>text_renderer</name>
         <briefdescription>
+<para>2d text renderer </para>
         </briefdescription>
         <detaileddescription>
-<para>2d text renderer </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -529,9 +534,9 @@
         <argsstring></argsstring>
         <name>logsink_file</name>
         <briefdescription>
+<para>Logsink to store messages to the filesystem. </para>
         </briefdescription>
         <detaileddescription>
-<para>Logsink to store messages to the filesystem. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -561,9 +566,10 @@
           <declname>windowtitle</declname>
         </param>
         <briefdescription>
+<para>engine initialization method. </para>
         </briefdescription>
         <detaileddescription>
-<para>engine initialization method. opens a window and initializes the OpenGL context. </para>
+<para>opens a window and initializes the OpenGL context. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -579,9 +585,9 @@
           <declname>copy</declname>
         </param>
         <briefdescription>
+<para>engine copy constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>engine copy constructor. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -597,9 +603,9 @@
           <declname>copy</declname>
         </param>
         <briefdescription>
+<para>engine assignment operator. </para>
         </briefdescription>
         <detaileddescription>
-<para>engine assignment operator. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -615,9 +621,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>engine move constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>engine move constructor. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -633,9 +639,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>engine move operator. </para>
         </briefdescription>
         <detaileddescription>
-<para>engine move operator. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -647,9 +653,10 @@
         <argsstring>()</argsstring>
         <name>~Engine</name>
         <briefdescription>
+<para>engine destructor, cleans up memory etc. </para>
         </briefdescription>
         <detaileddescription>
-<para>engine destructor, cleans up memory etc. deletes opengl context, the SDL window, and engine variables. </para>
+<para>deletes opengl context, the SDL window, and engine variables. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -666,9 +673,9 @@
         <argsstring>()</argsstring>
         <name>run</name>
         <briefdescription>
+<para>starts the engine loop. </para>
         </briefdescription>
         <detaileddescription>
-<para>starts the engine loop. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -685,9 +692,9 @@
         <argsstring>()</argsstring>
         <name>stop</name>
         <briefdescription>
+<para>enqueues the stop of the main loop. </para>
         </briefdescription>
         <detaileddescription>
-<para>enqueues the stop of the main loop. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -709,9 +716,10 @@
           <declname>new_size</declname>
         </param>
         <briefdescription>
+<para>window resize handler function. </para>
         </briefdescription>
         <detaileddescription>
-<para>window resize handler function. recalculates opengl settings like viewport and projection matrices. </para>
+<para>recalculates opengl settings like viewport and projection matrices. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -734,9 +742,9 @@
           <declname>generator</declname>
         </param>
         <briefdescription>
+<para>Start a game with the given game generator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Start a game with the given game generator. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -754,9 +762,9 @@
           <declname>game</declname>
         </param>
         <briefdescription>
+<para>Start a game with the given initialized game. </para>
         </briefdescription>
         <detaileddescription>
-<para>Start a game with the given initialized game. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -771,9 +779,9 @@
         <argsstring>()</argsstring>
         <name>end_game</name>
         <briefdescription>
+<para>Stop the running game. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stop the running game. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -792,9 +800,10 @@
           <declname>filename</declname>
         </param>
         <briefdescription>
+<para>draw the current frames per second number on screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>draw the current frames per second number on screen. save the current framebuffer to a given png file. <parameterlist kind="param"><parameteritem>
+<para>save the current framebuffer to a given png file. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>filename</parametername>
 </parameternamelist>
@@ -815,9 +824,9 @@
         <argsstring>()</argsstring>
         <name>draw_debug_overlay</name>
         <briefdescription>
+<para>Draw the game version and the current FPS on screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>Draw the game version and the current FPS on screen. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -842,9 +851,9 @@
           <declname>handler</declname>
         </param>
         <briefdescription>
+<para>register a new input event handler, run for each input event. </para>
         </briefdescription>
         <detaileddescription>
-<para>register a new input event handler, run for each input event. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -862,9 +871,9 @@
           <declname>handler</declname>
         </param>
         <briefdescription>
+<para>register a tick action, executed upon engine tick. </para>
         </briefdescription>
         <detaileddescription>
-<para>register a tick action, executed upon engine tick. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -882,9 +891,9 @@
           <declname>handler</declname>
         </param>
         <briefdescription>
+<para>register a hud drawing handler, drawn in hud coordinates. </para>
         </briefdescription>
         <detaileddescription>
-<para>register a hud drawing handler, drawn in hud coordinates. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -903,9 +912,9 @@
           <declname>handler</declname>
         </param>
         <briefdescription>
+<para>register a draw handler, run in game coordinates. </para>
         </briefdescription>
         <detaileddescription>
-<para>register a draw handler, run in game coordinates. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -922,9 +931,9 @@
           <declname>handler</declname>
         </param>
         <briefdescription>
+<para>register a resize handler, run when the window size changes. </para>
         </briefdescription>
         <detaileddescription>
-<para>register a resize handler, run when the window size changes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -938,9 +947,9 @@
         <argsstring>()</argsstring>
         <name>get_root_dir</name>
         <briefdescription>
+<para>return the data directory where the engine was started from. </para>
         </briefdescription>
         <detaileddescription>
-<para>return the data directory where the engine was started from. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -953,9 +962,9 @@
         <argsstring>()</argsstring>
         <name>get_game</name>
         <briefdescription>
+<para>return currently running game or null if a game is not currently running </para>
         </briefdescription>
         <detaileddescription>
-<para>return currently running game or null if a game is not currently running </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -979,9 +988,9 @@
         <argsstring>()</argsstring>
         <name>get_job_manager</name>
         <briefdescription>
+<para>return this engine&apos;s job manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>return this engine&apos;s job manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -995,9 +1004,9 @@
         <argsstring>()</argsstring>
         <name>get_audio_manager</name>
         <briefdescription>
+<para>return this engine&apos;s audio manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>return this engine&apos;s audio manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1012,9 +1021,9 @@
         <argsstring>()</argsstring>
         <name>get_screenshot_manager</name>
         <briefdescription>
+<para>return this engine&apos;s screenshot manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>return this engine&apos;s screenshot manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1027,9 +1036,9 @@
         <argsstring>()</argsstring>
         <name>get_action_manager</name>
         <briefdescription>
+<para>return this engine&apos;s action manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>return this engine&apos;s action manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1046,9 +1055,9 @@
         <argsstring>()</argsstring>
         <name>get_cvar_manager</name>
         <briefdescription>
+<para>return this engine&apos;s cvar manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>return this engine&apos;s cvar manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1062,9 +1071,9 @@
         <argsstring>()</argsstring>
         <name>get_input_manager</name>
         <briefdescription>
+<para>return this engine&apos;s keybind manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>return this engine&apos;s keybind manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1088,9 +1097,9 @@
         <argsstring>()</argsstring>
         <name>get_unit_selection</name>
         <briefdescription>
+<para>return this engine&apos;s unit selection. </para>
         </briefdescription>
         <detaileddescription>
-<para>return this engine&apos;s unit selection. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1104,9 +1113,9 @@
         <argsstring>()</argsstring>
         <name>announce_global_binds</name>
         <briefdescription>
+<para>send keybindings help string to gui. </para>
         </briefdescription>
         <detaileddescription>
-<para>send keybindings help string to gui. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1121,9 +1130,9 @@
         <argsstring>()</argsstring>
         <name>get_text_renderer</name>
         <briefdescription>
+<para>return this engine&apos;s text renderer. </para>
         </briefdescription>
         <detaileddescription>
-<para>return this engine&apos;s text renderer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1137,9 +1146,9 @@
         <argsstring>() const</argsstring>
         <name>lastframe_duration_nsec</name>
         <briefdescription>
+<para>return the number of nanoseconds that have passed for rendering the last frame. </para>
         </briefdescription>
         <detaileddescription>
-<para>return the number of nanoseconds that have passed for rendering the last frame.</para>
 <para>use that for fps-independent input actions. </para>
         </detaileddescription>
         <inbodydescription>
@@ -1170,9 +1179,9 @@
           <type>...</type>
         </param>
         <briefdescription>
+<para>render text with the at a position with specified font size </para>
         </briefdescription>
         <detaileddescription>
-<para>render text with the at a position with specified font size </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1207,9 +1216,9 @@
           <defval>1.0</defval>
         </param>
         <briefdescription>
+<para>move the phys3 camera incorporated in the engine </para>
         </briefdescription>
         <detaileddescription>
-<para>move the phys3 camera incorporated in the engine </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1226,9 +1235,10 @@
         <argsstring>()</argsstring>
         <name>loop</name>
         <briefdescription>
+<para>main engine loop function. </para>
         </briefdescription>
         <detaileddescription>
-<para>main engine loop function. this will be looped once per frame when the game is running.</para>
+<para>this will be looped once per frame when the game is running.</para>
 <para>the loop invokes fps counting, SDL event handling, view translation, and calling the main draw_method. </para>
         </detaileddescription>
         <inbodydescription>
@@ -1273,9 +1283,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>main engine container. </para>
     </briefdescription>
     <detaileddescription>
-<para>main engine container.</para>
 <para>central foundation for everything the openage engine is capable of.</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref>: <verbatim>InputManager &amp;get_input_manager() except +

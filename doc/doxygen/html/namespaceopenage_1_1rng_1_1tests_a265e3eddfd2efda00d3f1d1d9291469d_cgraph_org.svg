@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-104 721,-104 721,4 -4,4"/>
 <!-- Node82 -->
 <g id="node1" class="node"><title>Node82</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Tests the serializing functionality.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-22.5 0,-52.5 101,-52.5 101,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="50.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::serialize</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node83 -->
 <g id="node2" class="node"><title>Node83</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a" target="_top" xlink:title="Returns a seed based on time since epoch as well as data from std::random_device if available.">
 <polygon fill="white" stroke="black" points="137,-50 137,-69 274,-69 274,-50 137,-50"/>
 <text text-anchor="middle" x="205.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::random_seed</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node88 -->
 <g id="node7" class="node"><title>Node88</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a3d2fc24293e9eb420a93a696b544d812" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a3d2fc24293e9eb420a93a696b544d812" target="_top" xlink:title="Writes the rng state to a string.">
 <polygon fill="white" stroke="black" points="152.5,-0.5 152.5,-30.5 258.5,-30.5 258.5,-0.5 152.5,-0.5"/>
 <text text-anchor="start" x="160.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="205.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">to_string</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node85 -->
 <g id="node4" class="node"><title>Node85</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title="returns the number of nanoseconds since the UNIX epoch.">
 <polygon fill="white" stroke="black" points="481.5,-69.5 481.5,-99.5 586.5,-99.5 586.5,-69.5 481.5,-69.5"/>
 <text text-anchor="start" x="489.5" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="534" y="-76.5" font-family="Helvetica,sans-Serif" font-size="10.00">_real_time</text>

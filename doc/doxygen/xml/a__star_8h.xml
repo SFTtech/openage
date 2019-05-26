@@ -390,7 +390,7 @@
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord::phys3<sp/>end,</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>coord::phys3<sp/>&amp;)&gt;<sp/>passable);</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal">Path<sp/><ref refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" kindref="member">to_object</ref>(TerrainObject<sp/>*to_move,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">Path<sp/><ref refid="namespaceopenage_1_1path_1a047e97b9a81a866f064ad6d6f8dddfd6" kindref="member">to_object</ref>(TerrainObject<sp/>*to_move,</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TerrainObject<sp/>*end,</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref><sp/>rad);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-757 309.5,-757 309.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Default interface for curve containers.">
 <polygon fill="#bfbfbf" stroke="black" points="82.5,-497.5 82.5,-752.5 234.5,-752.5 234.5,-497.5 82.5,-497.5"/>
 <text text-anchor="start" x="90.5" y="-740.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::CurveIterator</text>
 <text text-anchor="middle" x="158.5" y="-729.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; val_t, container_t, iterator_t &gt;</text>
@@ -116,7 +116,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1curve_1_1_queue_filter_iterator.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1curve_1_1_queue_filter_iterator.xhtml" target="_top" xlink:title="A filtering operator to iterate over all elements of a queue whose elements exist at exactly one poin...">
 <polygon fill="white" stroke="black" points="3.5,-17 3.5,-107 141.5,-107 141.5,-17 3.5,-17"/>
 <text text-anchor="start" x="11.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::QueueFilter</text>
 <text text-anchor="middle" x="72.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">Iterator&lt; val_t, container_t &gt;</text>
@@ -136,7 +136,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1curve_1_1_map_filter_iterator.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1curve_1_1_map_filter_iterator.xhtml" target="_top" xlink:title="A filtering operator to iterate over all elements of a map whose elements exist for a certain livespa...">
 <polygon fill="white" stroke="black" points="170.5,-0.5 170.5,-123.5 298.5,-123.5 298.5,-0.5 170.5,-0.5"/>
 <text text-anchor="start" x="178.5" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::MapFilter</text>
 <text text-anchor="start" x="178.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">Iterator&lt; key_t, val_t,</text>

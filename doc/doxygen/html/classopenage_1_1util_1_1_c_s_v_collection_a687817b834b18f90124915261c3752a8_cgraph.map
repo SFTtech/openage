@@ -1,8 +1,8 @@
 <map id="openage::util::CSVCollection::read" name="openage::util::CSVCollection::read">
-<area shape="rect" id="node1" title=" " alt="" coords="5,74,193,115"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a954be5116f7af5633dbbc50bac26b0a8" title=" " alt="" coords="263,5,413,32"/>
+<area shape="rect" id="node1" title="This function is the entry point to load the whole file tree recursively." alt="" coords="5,74,193,115"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a954be5116f7af5633dbbc50bac26b0a8" title="return the head (dirname) part of a path." alt="" coords="263,5,413,32"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="283,56,393,83"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title=" " alt="" coords="262,107,414,133"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title="get the filename (last part) of a given path" alt="" coords="262,107,414,133"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="241,157,435,184"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="483,157,609,184"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="483,157,609,184"/>
 </map>

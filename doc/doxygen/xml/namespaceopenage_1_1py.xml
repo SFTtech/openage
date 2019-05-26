@@ -9,9 +9,9 @@
         <argsstring></argsstring>
         <name>Obj</name>
         <briefdescription>
+<para>Python object reference. </para>
         </briefdescription>
         <detaileddescription>
-<para>Python object reference. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -29,9 +29,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>getattr(importlib.import_module(&quot;builtins&quot;), name) </para>
         </briefdescription>
         <detaileddescription>
-<para>getattr(importlib.import_module(&quot;builtins&quot;), name) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -50,9 +50,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>importlib.import_module(name) </para>
         </briefdescription>
         <detaileddescription>
-<para>importlib.import_module(name) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -71,9 +71,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>str(value); </para>
         </briefdescription>
         <detaileddescription>
-<para>str(value); </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -122,9 +122,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>bytes(value) </para>
         </briefdescription>
         <detaileddescription>
-<para>bytes(value) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -146,9 +146,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>int(value) </para>
         </briefdescription>
         <detaileddescription>
-<para>int(value) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -164,9 +164,9 @@
         <argsstring>()</argsstring>
         <name>dict</name>
         <briefdescription>
+<para><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict()</ref> </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict()</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -189,9 +189,9 @@
         <argsstring>()</argsstring>
         <name>list</name>
         <briefdescription>
+<para><ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list()</ref> </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list()</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -229,9 +229,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Convenience functions and types for the python interface. </para>
     </briefdescription>
     <detaileddescription>
-<para>Convenience functions and types for the python interface. </para>
     </detaileddescription>
     <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="313" column="1"/>
   </compounddef>

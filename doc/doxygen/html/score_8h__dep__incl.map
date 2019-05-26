@@ -32,7 +32,7 @@
 <area shape="rect" id="node20" href="$game__main__link_8cpp.xhtml" title=" " alt="" coords="1080,421,1289,477"/>
 <area shape="rect" id="node23" href="$game__spec_8cpp.xhtml" title=" " alt="" coords="3089,317,3299,373"/>
 <area shape="rect" id="node24" href="$unit_2action_8cpp.xhtml" title=" " alt="" coords="3323,317,3532,373"/>
-<area shape="rect" id="node25" href="$producer_8cpp.xhtml" title=" " alt="" coords="3556,317,3765,373"/>
+<area shape="rect" id="node25" href="$producer_8cpp.xhtml" title="Many values in this file are hardcoded, due to limited understanding of how the original game files w..." alt="" coords="3556,317,3765,373"/>
 <area shape="rect" id="node26" href="$selection_8cpp.xhtml" title=" " alt="" coords="2389,317,2599,373"/>
 <area shape="rect" id="node27" href="$unit_8cpp.xhtml" title=" " alt="" coords="2623,317,2832,373"/>
 <area shape="rect" id="node28" href="$unit__container_8cpp.xhtml" title=" " alt="" coords="2856,317,3065,373"/>

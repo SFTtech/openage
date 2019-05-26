@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1039 304.5,-1039 304.5,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Available logging levels.">
 <polygon fill="#bfbfbf" stroke="black" points="67.5,-0.5 67.5,-57.5 164.5,-57.5 164.5,-0.5 67.5,-0.5"/>
 <text text-anchor="middle" x="116" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <polyline fill="none" stroke="black" points="67.5,-38.5 164.5,-38.5 "/>
@@ -53,7 +53,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title="Data associated with a log level.">
 <polygon fill="white" stroke="black" points="26.5,-404 26.5,-472 123.5,-472 123.5,-404 26.5,-404"/>
 <text text-anchor="start" x="34.5" y="-460" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <text text-anchor="middle" x="75" y="-449" font-family="Helvetica,sans-Serif" font-size="10.00">_value</text>
@@ -148,7 +148,7 @@
 </g>
 <!-- Node9 -->
 <g id="node7" class="node"><title>Node9</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title="Container for possible enum values.">
 <polygon fill="white" stroke="black" points="141.5,-343.5 141.5,-532.5 300.5,-532.5 300.5,-343.5 141.5,-343.5"/>
 <text text-anchor="start" x="149.5" y="-520.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Enum</text>
 <text text-anchor="middle" x="221" y="-509.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; DerivedType &gt;</text>

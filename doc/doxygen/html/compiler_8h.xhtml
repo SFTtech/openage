@@ -111,7 +111,8 @@ $(document).ready(function(){initNavTree('compiler_8h.xhtml','');});
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="compiler_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="compiler_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div>
 <p><a href="compiler_8h_source.xhtml">Go to the source code of this file.</a></p>
@@ -119,6 +120,7 @@ $(document).ready(function(){initNavTree('compiler_8h.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1util"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml">openage::util</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,23 +128,29 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:aea581b919984cda327632efe3d11f8b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8h.xhtml#aea581b919984cda327632efe3d11f8b3">OAAPI</a></td></tr>
+<tr class="memdesc:aea581b919984cda327632efe3d11f8b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">DLL entry-point decorations.  <a href="#aea581b919984cda327632efe3d11f8b3">More...</a><br /></td></tr>
 <tr class="separator:aea581b919984cda327632efe3d11f8b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a217a0bd562b98ae8c2ffce44935351e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8h.xhtml#a217a0bd562b98ae8c2ffce44935351e1">likely</a>(x)&#160;&#160;&#160;(x)</td></tr>
 <tr class="separator:a217a0bd562b98ae8c2ffce44935351e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6c45889010c1bd68631771b64f18101"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a>(x)&#160;&#160;&#160;(x)</td></tr>
 <tr class="separator:ac6c45889010c1bd68631771b64f18101"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0409e98ff9aade482fcfc9e67e762a86"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8h.xhtml#a0409e98ff9aade482fcfc9e67e762a86">BREAKPOINT</a>&#160;&#160;&#160;raise(SIGTRAP)</td></tr>
+<tr class="memdesc:a0409e98ff9aade482fcfc9e67e762a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Software breakpoint if you're too lazy to add it in gdb but instead wanna add it into the code directly.  <a href="#a0409e98ff9aade482fcfc9e67e762a86">More...</a><br /></td></tr>
 <tr class="separator:a0409e98ff9aade482fcfc9e67e762a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfaed458bffc7554768bc825f3c91853"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8h.xhtml#acfaed458bffc7554768bc825f3c91853">TYPEINFO</a>(var)&#160;&#160;&#160;printf(&quot;%d&quot;, var)</td></tr>
+<tr class="memdesc:acfaed458bffc7554768bc825f3c91853"><td class="mdescLeft">&#160;</td><td class="mdescRight">As C++ is such a shit language, we found this awesome way to display a type of some variable as a warning.  <a href="#acfaed458bffc7554768bc825f3c91853">More...</a><br /></td></tr>
 <tr class="separator:acfaed458bffc7554768bc825f3c91853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aebed129b2a0773520cdd8d40b0f70318"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318">openage::util::demangle</a> (const char *symbol)</td></tr>
+<tr class="memdesc:aebed129b2a0773520cdd8d40b0f70318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Demangles a symbol name.  <a href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318">More...</a><br /></td></tr>
 <tr class="separator:aebed129b2a0773520cdd8d40b0f70318"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6219374623d05b075782ea1adb09c0c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c">openage::util::symbol_name</a> (const void *addr, bool require_exact_addr, bool no_pure_addrs)</td></tr>
-<tr class="separator:ac6219374623d05b075782ea1adb09c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff957b2c0c7a7eb98cf68468cc04c1d8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8">openage::util::symbol_name</a> (const void *addr, bool require_exact_addr=true, bool no_pure_addrs=false)</td></tr>
+<tr class="memdesc:aff957b2c0c7a7eb98cf68468cc04c1d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the (demangled) symbol name for a given address.  <a href="namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8">More...</a><br /></td></tr>
+<tr class="separator:aff957b2c0c7a7eb98cf68468cc04c1d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae411a50a0e24d32ab564979b2df6ed24"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#ae411a50a0e24d32ab564979b2df6ed24">openage::util::is_symbol</a> (const void *addr)</td></tr>
+<tr class="memdesc:ae411a50a0e24d32ab564979b2df6ed24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the address is the (exact) address of a symbol.  <a href="namespaceopenage_1_1util.xhtml#ae411a50a0e24d32ab564979b2df6ed24">More...</a><br /></td></tr>
 <tr class="separator:ae411a50a0e24d32ab564979b2df6ed24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -157,6 +165,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Software breakpoint if you're too lazy to add it in gdb but instead wanna add it into the code directly. </p>
 
 <p class="definition">Definition at line <a class="el" href="compiler_8h_source.xhtml#l00065">65</a> of file <a class="el" href="compiler_8h_source.xhtml">compiler.h</a>.</p>
@@ -194,6 +203,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>DLL entry-point decorations. </p>
 
 <p class="definition">Definition at line <a class="el" href="compiler_8h_source.xhtml#l00026">26</a> of file <a class="el" href="compiler_8h_source.xhtml">compiler.h</a>.</p>
@@ -215,7 +225,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>As C++ is such a shit language, we found this awesome way to display a type of some variable as a warning.</p>
+
+<p>As C++ is such a shit language, we found this awesome way to display a type of some variable as a warning. </p>
 <p>Other hacks like wrong assignments work as well, but crash the compilation by error. </p>
 
 <p class="definition">Definition at line <a class="el" href="compiler_8h_source.xhtml#l00076">76</a> of file <a class="el" href="compiler_8h_source.xhtml">compiler.h</a>.</p>

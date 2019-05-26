@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-654 295.5,-654 295.5,4 -4,4"/>
 <!-- Node6 -->
 <g id="node1" class="node"><title>Node6</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Base for providers that expose textures to the Qt by their id.">
 <polygon fill="#bfbfbf" stroke="black" points="70.5,-0.5 70.5,-123.5 226.5,-123.5 226.5,-0.5 70.5,-0.5"/>
 <text text-anchor="start" x="78.5" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="148.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderByIdImpl</text>
@@ -75,7 +75,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" target="_top" xlink:title="Exposes game textures to the Qt.">
 <polygon fill="white" stroke="black" points="58.5,-161.5 58.5,-394.5 238.5,-394.5 238.5,-161.5 58.5,-161.5"/>
 <text text-anchor="start" x="66.5" y="-382.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="148.5" y="-371.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl</text>

@@ -79,9 +79,9 @@
           <declname>event</declname>
         </param>
         <briefdescription>
+<para>Returns true if the event was accepted. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns true if the event was accepted. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -91,9 +91,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Converts SDL input events into Qt events. </para>
     </briefdescription>
     <detaileddescription>
-<para>Converts SDL input events into Qt events. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6229">

@@ -577,7 +577,7 @@
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref>{<ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref>}<sp/>{</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>load<sp/>the<sp/>texture<sp/>upon<sp/>creation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" kindref="member">load</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="namespaceopenage_1_1gameio_1ae6761d88280466d1d1b5c638e7c7a042" kindref="member">load</ref>();</highlight></codeline>
 <codeline lineno="59"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61" refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" kindref="member">Texture::load</ref>()<sp/>{</highlight></codeline>

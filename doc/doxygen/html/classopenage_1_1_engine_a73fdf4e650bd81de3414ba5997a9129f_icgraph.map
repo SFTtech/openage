@@ -1,4 +1,4 @@
 <map id="openage::Engine::register_input_action" name="openage::Engine::register_input_action">
-<area shape="rect" id="node1" title=" " alt="" coords="232,5,403,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" title=" " alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node1" title="register a new input event handler, run for each input event." alt="" coords="232,5,403,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" title="register this console to the engine." alt="" coords="5,5,184,47"/>
 </map>

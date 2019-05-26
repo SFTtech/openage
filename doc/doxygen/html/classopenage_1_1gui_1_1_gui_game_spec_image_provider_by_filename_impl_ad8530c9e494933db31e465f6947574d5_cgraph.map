@@ -1,6 +1,6 @@
 <map id="openage::gui::GuiGameSpecImageProviderByFilenameImpl::get_texture_handle" name="openage::gui::GuiGameSpecImageProviderByFilenameImpl::get_texture_handle">
 <area shape="rect" id="node1" title=" " alt="" coords="5,56,201,112"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title=" " alt="" coords="271,5,423,32"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title="get the filename (last part) of a given path" alt="" coords="271,5,423,32"/>
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl.xhtml#a64c6bb0b6f235504eadf5b6dc90143d2" title=" " alt="" coords="249,56,445,112"/>
 <area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a99c5f3aa01010aafd71bec94f1fd017d" title=" " alt="" coords="253,136,442,192"/>
 <area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl.xhtml#a1d48a1b142023a067b5d20a23d4e9e16" title=" " alt="" coords="493,63,708,105"/>

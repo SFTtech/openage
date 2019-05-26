@@ -1,52 +1,52 @@
 <map id="openage::log::LogSource::log" name="openage::log::LogSource::log">
-<area shape="rect" id="node1" title=" " alt="" coords="699,783,889,810"/>
+<area shape="rect" id="node1" title="Logs a message (get one via MSG(level))." alt="" coords="699,783,889,810"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1log_1_1tests.xhtml#a10013d742153bb6a37a94e50e5249f7c" title=" " alt="" coords="495,5,629,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#af4499be2634985e11b0c10f895978b85" title=" " alt="" coords="493,71,631,98"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_attack_action.xhtml#a1a76ce122961d9e09c526b8d0f2f513f" title=" " alt="" coords="485,123,639,164"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title=" " alt="" coords="477,188,647,229"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title=" " alt="" coords="473,253,651,295"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" title=" " alt="" coords="489,319,635,360"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_garrison_ability.xhtml#afbd9de019824dcf92b3b5dd4e5e1aea7" title=" " alt="" coords="480,384,644,425"/>
-<area shape="rect" id="node12" href="$classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" title=" " alt="" coords="473,449,651,491"/>
-<area shape="rect" id="node13" href="$classopenage_1_1_train_ability.xhtml#af4ea7db282a8000eb59e8edc540d40c4" title=" " alt="" coords="491,515,633,556"/>
-<area shape="rect" id="node14" href="$classopenage_1_1_build_ability.xhtml#acf4dba9dcd9ed37efcbec8f14da3c3a2" title=" " alt="" coords="490,580,634,621"/>
-<area shape="rect" id="node15" href="$classopenage_1_1_gather_ability.xhtml#a24e201b13152f9cc654d2b69ec95940e" title=" " alt="" coords="485,645,639,687"/>
-<area shape="rect" id="node16" href="$classopenage_1_1_attack_ability.xhtml#ab607828e9d6469ea9405cfc5f1ab2735" title=" " alt="" coords="485,711,639,752"/>
-<area shape="rect" id="node17" href="$classopenage_1_1_repair_ability.xhtml#aac321a378657813f98a938df9be7256d" title=" " alt="" coords="486,776,638,817"/>
-<area shape="rect" id="node18" href="$classopenage_1_1_heal_ability.xhtml#a7da7aca0fca2b96e24874441df1a016e" title=" " alt="" coords="491,841,633,883"/>
-<area shape="rect" id="node19" href="$classopenage_1_1_patrol_ability.xhtml#ad0b338306b2825e24536dc95bf4ae3d1" title=" " alt="" coords="487,907,637,948"/>
-<area shape="rect" id="node20" href="$classopenage_1_1_convert_ability.xhtml#a3ed81fd0cceaa364654c89803c3b0e48" title=" " alt="" coords="483,972,641,1013"/>
-<area shape="rect" id="node21" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="501,1038,623,1065"/>
-<area shape="rect" id="node26" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title=" " alt="" coords="5,1001,175,1043"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#af4499be2634985e11b0c10f895978b85" title="an generalized draw function which is useful for drawing annexes" alt="" coords="493,71,631,98"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_attack_action.xhtml#a1a76ce122961d9e09c526b8d0f2f513f" title="add a projectile game object which moves towards the target" alt="" coords="485,123,639,164"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title="Initialize units attributes to this type spec." alt="" coords="477,188,647,229"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title="Initialize units attributes to this type spec." alt="" coords="473,253,651,295"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" title="applies command to a given unit" alt="" coords="489,319,635,360"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_garrison_ability.xhtml#afbd9de019824dcf92b3b5dd4e5e1aea7" title="applies command to a given unit" alt="" coords="480,384,644,425"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" title="applies command to a given unit" alt="" coords="473,449,651,491"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_train_ability.xhtml#af4ea7db282a8000eb59e8edc540d40c4" title="applies command to a given unit" alt="" coords="491,515,633,556"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_build_ability.xhtml#acf4dba9dcd9ed37efcbec8f14da3c3a2" title="applies command to a given unit" alt="" coords="490,580,634,621"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_gather_ability.xhtml#a24e201b13152f9cc654d2b69ec95940e" title="applies command to a given unit" alt="" coords="485,645,639,687"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_attack_ability.xhtml#ab607828e9d6469ea9405cfc5f1ab2735" title="applies command to a given unit" alt="" coords="485,711,639,752"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_repair_ability.xhtml#aac321a378657813f98a938df9be7256d" title="applies command to a given unit" alt="" coords="486,776,638,817"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_heal_ability.xhtml#a7da7aca0fca2b96e24874441df1a016e" title="applies command to a given unit" alt="" coords="491,841,633,883"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_patrol_ability.xhtml#ad0b338306b2825e24536dc95bf4ae3d1" title="applies command to a given unit" alt="" coords="487,907,637,948"/>
+<area shape="rect" id="node20" href="$classopenage_1_1_convert_ability.xhtml#a3ed81fd0cceaa364654c89803c3b0e48" title="applies command to a given unit" alt="" coords="483,972,641,1013"/>
+<area shape="rect" id="node21" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title="Convenience method that makes use of the &#39;general&#39; LogSource." alt="" coords="501,1038,623,1065"/>
+<area shape="rect" id="node26" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title="set unit in place – return if placement was successful" alt="" coords="5,1001,175,1043"/>
 <area shape="rect" id="node44" href="$classopenage_1_1_building_producer.xhtml#a4aeeaaaef4924780b6ee886ea8ffe98e" title=" " alt="" coords="473,1140,651,1181"/>
 <area shape="rect" id="node45" href="$classopenage_1_1_gather_action.xhtml#a578fcecec436b05efb5059bbb35837fe" title=" " alt="" coords="485,1205,639,1247"/>
-<area shape="rect" id="node46" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title=" " alt="" coords="489,1271,635,1312"/>
+<area shape="rect" id="node46" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title="action to perform when popped from a units action stack" alt="" coords="489,1271,635,1312"/>
 <area shape="rect" id="node47" href="$classopenage_1_1_gather_action.xhtml#ab76d756df9989badfa91e272f85dee9c" title=" " alt="" coords="477,1336,647,1377"/>
-<area shape="rect" id="node48" href="$classopenage_1_1_nyan_type.xhtml#ae2f61064a00875267824a0bdfba63085" title=" " alt="" coords="489,1401,635,1443"/>
-<area shape="rect" id="node49" href="$classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" title=" " alt="" coords="489,1467,635,1508"/>
+<area shape="rect" id="node48" href="$classopenage_1_1_nyan_type.xhtml#ae2f61064a00875267824a0bdfba63085" title="set unit in place – return if placement was successful" alt="" coords="489,1401,635,1443"/>
+<area shape="rect" id="node49" href="$classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="489,1467,635,1508"/>
 <area shape="rect" id="node50" href="$classopenage_1_1_terrain_object.xhtml#accf1000738bfedfae052b9257509ef97" title=" " alt="" coords="484,1532,640,1573"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1log_1_1tests.xhtml#a9ca6bf494467589807a56e954b8b3bb3" title="Demonstrates the Python logging facility." alt="" coords="243,13,405,39"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" title=" " alt="" coords="247,123,401,164"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title=" " alt="" coords="235,188,413,229"/>
-<area shape="rect" id="node22" href="$namespaceopenage_1_1path.xhtml#acafe3c2e0b6cef7750a14663eab6c883" title=" " alt="" coords="250,289,398,315"/>
-<area shape="rect" id="node23" href="$classopenage_1_1event_1_1_event_queue.xhtml#a7115692628b99b277fead8b39603c885" title=" " alt="" coords="231,340,417,381"/>
-<area shape="rect" id="node24" href="$classopenage_1_1event_1_1_loop.xhtml#adde017808ad3b24a4a95c6cad4fcd2db" title=" " alt="" coords="17,369,163,411"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" title="use attack action" alt="" coords="247,123,401,164"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title="Initialize units attributes to this type spec." alt="" coords="235,188,413,229"/>
+<area shape="rect" id="node22" href="$namespaceopenage_1_1path.xhtml#acafe3c2e0b6cef7750a14663eab6c883" title="finds a path between two endpoints" alt="" coords="250,289,398,315"/>
+<area shape="rect" id="node23" href="$classopenage_1_1event_1_1_event_queue.xhtml#a7115692628b99b277fead8b39603c885" title="An event target has changed, and the event shall be retriggered." alt="" coords="231,340,417,381"/>
+<area shape="rect" id="node24" href="$classopenage_1_1event_1_1_loop.xhtml#adde017808ad3b24a4a95c6cad4fcd2db" title="Register that a given event must be reevaluated at a time, this usually happens because this event de..." alt="" coords="17,369,163,411"/>
 <area shape="rect" id="node25" href="$namespaceopenage.xhtml#a012c2c0bdd9534a3d648ada6c608ebf2" title=" " alt="" coords="238,457,410,483"/>
-<area shape="rect" id="node27" href="$classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" title=" " alt="" coords="243,508,405,549"/>
-<area shape="rect" id="node28" href="$classopenage_1_1_action_mode.xhtml#afeb7fd105b03e822ff4ebe205cff3265" title=" " alt="" coords="250,573,398,615"/>
-<area shape="rect" id="node29" href="$classopenage_1_1_editor_mode.xhtml#a51ca65c9475aa6b8b94e217d08a03bab" title=" " alt="" coords="251,639,397,680"/>
-<area shape="rect" id="node30" href="$namespaceopenage_1_1subprocess.xhtml#a0a0bbc382a5c765c627d6f79d8aeaf59" title=" " alt="" coords="251,704,397,745"/>
-<area shape="rect" id="node31" href="$classopenage_1_1event_1_1_event_target.xhtml#a6da66e1f05d92d87ce931d06204b6d9b" title=" " alt="" coords="231,769,417,811"/>
-<area shape="rect" id="node32" href="$classopenage_1_1_asset_manager.xhtml#add18a1e0933affe40c982f62c88f4c05" title=" " alt="" coords="243,835,405,876"/>
+<area shape="rect" id="node27" href="$classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" title="Attach a chunk to the terrain, to a given position." alt="" coords="243,508,405,549"/>
+<area shape="rect" id="node28" href="$classopenage_1_1_action_mode.xhtml#afeb7fd105b03e822ff4ebe205cff3265" title="Is this mode able to be used?" alt="" coords="250,573,398,615"/>
+<area shape="rect" id="node29" href="$classopenage_1_1_editor_mode.xhtml#a51ca65c9475aa6b8b94e217d08a03bab" title="Is this mode able to be used?" alt="" coords="251,639,397,680"/>
+<area shape="rect" id="node30" href="$namespaceopenage_1_1subprocess.xhtml#a9433d1215dbd3b40cd1c0981b84a8541" title="starts the process at argv[0] passes argv as argv" alt="" coords="251,704,397,745"/>
+<area shape="rect" id="node31" href="$classopenage_1_1event_1_1_event_target.xhtml#a6da66e1f05d92d87ce931d06204b6d9b" title="Call this whenever some data in the target changes." alt="" coords="231,769,417,811"/>
+<area shape="rect" id="node32" href="$classopenage_1_1_asset_manager.xhtml#add18a1e0933affe40c982f62c88f4c05" title="Ask the kernel whether there were updates to watched files." alt="" coords="243,835,405,876"/>
 <area shape="rect" id="node33" href="$classopenage_1_1_asset_manager.xhtml#afee91926bb4d9b763527a7aa28ec95d4" title=" " alt="" coords="243,900,405,941"/>
 <area shape="rect" id="node34" href="$classopenage_1_1input_1_1_action_manager.xhtml#a172292484fa92f4c391479d6e656808a" title=" " alt="" coords="223,965,425,1007"/>
-<area shape="rect" id="node35" href="$classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" title=" " alt="" coords="231,1031,417,1072"/>
+<area shape="rect" id="node35" href="$classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" title="Add an event for a specified target." alt="" coords="231,1031,417,1072"/>
 <area shape="rect" id="node36" href="$classopenage_1_1_generator.xhtml#ae221973cf4125fbf62af6f9626609b4a" title=" " alt="" coords="256,1096,392,1137"/>
-<area shape="rect" id="node37" href="$classopenage_1_1util_1_1_c_s_v_collection.xhtml#aae99478db7d16d650eff5dd34a2194ca" title=" " alt="" coords="230,1161,418,1203"/>
+<area shape="rect" id="node37" href="$classopenage_1_1util_1_1_c_s_v_collection.xhtml#aae99478db7d16d650eff5dd34a2194ca" title="Initialize the collection by reading the given file." alt="" coords="230,1161,418,1203"/>
 <area shape="rect" id="node38" href="$namespaceopenage_1_1curve_1_1tests.xhtml#aa6290e10c0af22b4a5bcbcf4ad20eb88" title=" " alt="" coords="251,1227,397,1268"/>
 <area shape="rect" id="node39" href="$namespaceopenage_1_1error.xhtml#a036babcdd58261ba26288431876e7b02" title=" " alt="" coords="251,1293,397,1319"/>
-<area shape="rect" id="node40" href="$classopenage_1_1event_1_1_event.xhtml#a8a965360b4fcaa417ffebc7e10c9d8d1" title=" " alt="" coords="249,1344,399,1385"/>
-<area shape="rect" id="node41" href="$classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" title=" " alt="" coords="227,1409,421,1451"/>
+<area shape="rect" id="node40" href="$classopenage_1_1event_1_1_event.xhtml#a8a965360b4fcaa417ffebc7e10c9d8d1" title="Let this event depend on another an event target." alt="" coords="249,1344,399,1385"/>
+<area shape="rect" id="node41" href="$classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" title="To be called by the job manager." alt="" coords="227,1409,421,1451"/>
 <area shape="rect" id="node42" href="$namespaceopenage_1_1pyinterface_1_1tests.xhtml#a6ae6b85d3f959e3cec4f7990e76b9c2b" title=" " alt="" coords="230,1475,418,1516"/>
 <area shape="rect" id="node43" href="$namespaceopenage_1_1event_1_1tests.xhtml#ab950ba5156aefba0f5ecaab970fcc1aa" title=" " alt="" coords="251,1540,397,1581"/>
 </map>

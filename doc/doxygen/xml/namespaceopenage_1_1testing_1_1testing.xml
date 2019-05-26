@@ -115,7 +115,7 @@
         <referencedby refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" compoundref="pyexception_8cpp" startline="35" endline="43">openage::pyinterface::PyException::type_name</referencedby>
         <referencedby refid="namespaceopenage_1_1util_1ae9d6c19aadc0f6a1d502f42852172de0" compoundref="misc_8h" startline="145" endline="159">openage::util::uint64_to_array8</referencedby>
         <referencedby refid="classopenage_1_1_terrain_1a143090daace4caa26b8f0e9af5b4b69c" compoundref="terrain_8cpp" startline="56" endline="62">openage::Terrain::used_chunks</referencedby>
-        <referencedby refid="namespaceopenage_1_1util_1a3e9f9bfa57d843330bd6d4bf85397433" compoundref="unicode_8cpp" startline="72" endline="118">openage::util::utf8_decode</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a63f7f7718f8133a37ac2e63dca01afb7" compoundref="unicode_8cpp" startline="72" endline="118">openage::util::utf8_decode</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>

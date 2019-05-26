@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-57 735,-57 735,4 -4,4"/>
 <!-- Node5 -->
 <g id="node1" class="node"><title>Node5</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Enqueues the given function into the job group&#39;s worker thread.">
 <polygon fill="#bfbfbf" stroke="black" points="612,-22.5 612,-52.5 731,-52.5 731,-22.5 612,-22.5"/>
 <text text-anchor="start" x="620" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobGroup</text>
 <text text-anchor="middle" x="671.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::enqueue</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node6 -->
 <g id="node2" class="node"><title>Node6</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml#a9541b40c31cd35aba1e736383e8c6424" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml#a9541b40c31cd35aba1e736383e8c6424" target="_top" xlink:title="Load a single chunk in the background (through the job manager).">
 <polygon fill="white" stroke="black" points="408,-22.5 408,-52.5 576,-52.5 576,-22.5 408,-22.5"/>
 <text text-anchor="start" x="416" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicResource</text>
 <text text-anchor="middle" x="492" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::load_chunk_async</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node7 -->
 <g id="node3" class="node"><title>Node7</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml#a92355342f8790b7d89431544dd0c5ac0" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml#a92355342f8790b7d89431544dd0c5ac0" target="_top" xlink:title="Returns a pointer to the sample buffer at the given position and the number of int16_t values that ar...">
 <polygon fill="white" stroke="black" points="0,-22.5 0,-52.5 168,-52.5 168,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicResource</text>
 <text text-anchor="middle" x="84" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node8 -->
 <g id="node4" class="node"><title>Node8</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml#a14623118dce385ac89884b64ba1bf2fb" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml#a14623118dce385ac89884b64ba1bf2fb" target="_top" xlink:title="Start to load audio chunks beginning at the given chunk index.">
 <polygon fill="white" stroke="black" points="204,-0.5 204,-30.5 372,-30.5 372,-0.5 204,-0.5"/>
 <text text-anchor="start" x="212" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicResource</text>
 <text text-anchor="middle" x="288" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_preloading</text>

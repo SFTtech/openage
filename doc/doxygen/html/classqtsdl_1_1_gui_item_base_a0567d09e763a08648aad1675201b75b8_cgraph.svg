@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 436,-35 436,4 -4,4"/>
 <!-- Node14 -->
 <g id="node1" class="node"><title>Node14</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 132,-30.5 132,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemBase</text>
 <text text-anchor="middle" x="66" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node15 -->
 <g id="node2" class="node"><title>Node15</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="168,-0.5 168,-30.5 300,-30.5 300,-0.5 168,-0.5"/>
 <text text-anchor="start" x="176" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 <text text-anchor="middle" x="234" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>

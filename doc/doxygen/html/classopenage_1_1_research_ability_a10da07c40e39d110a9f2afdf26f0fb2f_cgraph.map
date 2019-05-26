@@ -1,9 +1,9 @@
 <map id="openage::ResearchAbility::can_invoke" name="openage::ResearchAbility::can_invoke">
-<area shape="rect" id="node1" title=" " alt="" coords="5,104,176,145"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="258,5,386,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="257,71,387,112"/>
+<area shape="rect" id="node1" title="true if the paramaters allow an action to be performed" alt="" coords="5,104,176,145"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title="returns attribute based on templated value" alt="" coords="258,5,386,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title="returns whether attribute is available" alt="" coords="257,71,387,112"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_command.xhtml#a89af2ef719ed9b6ab8af575f6cca7c56" title=" " alt="" coords="239,136,405,177"/>
 <area shape="rect" id="node7" href="$classopenage_1_1_command.xhtml#a5ebdc58347691acf314beb4e6de9b57c" title=" " alt="" coords="224,202,420,229"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="469,13,631,39"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="468,78,632,105"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title="Get the attribute based on the type." alt="" coords="469,13,631,39"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title="Check if the attribute of the given type exists." alt="" coords="468,78,632,105"/>
 </map>

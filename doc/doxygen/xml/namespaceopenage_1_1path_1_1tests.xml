@@ -9,9 +9,10 @@
         <argsstring>()</argsstring>
         <name>node_0</name>
         <briefdescription>
+<para>This function tests setting up basic nodes that point to a previous node. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function tests setting up basic nodes that point to a previous node. Tests that direction is set correctly and that factor is set correctly. </para>
+<para>Tests that direction is set correctly and that factor is set correctly. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -25,9 +26,10 @@
         <argsstring>()</argsstring>
         <name>node_cost_to_0</name>
         <briefdescription>
+<para>This function tests Node-&gt;cost_to. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function tests Node-&gt;cost_to. The testing is done on 2 unrelated nodes (They have no previous node) to test the basic cost without adding the cost from node-&gt;factor. </para>
+<para>The testing is done on 2 unrelated nodes (They have no previous node) to test the basic cost without adding the cost from node-&gt;factor. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -41,9 +43,10 @@
         <argsstring>()</argsstring>
         <name>node_cost_to_1</name>
         <briefdescription>
+<para>This function tests Node-&gt;cost_to. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function tests Node-&gt;cost_to. The testing is done on the neighbor nodes to test how the directional factor effects the cost. </para>
+<para>The testing is done on the neighbor nodes to test how the directional factor effects the cost. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -57,9 +60,9 @@
         <argsstring>()</argsstring>
         <name>node_generate_backtrace_0</name>
         <briefdescription>
+<para>This function does a basic test of generating a backtrace from the last node in a path. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function does a basic test of generating a backtrace from the last node in a path. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -74,9 +77,9 @@
         <argsstring>()</argsstring>
         <name>node_get_neighbors_0</name>
         <briefdescription>
+<para>This function tests Node-&gt;get_neighbors and how the scale effects the neighbors given. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function tests Node-&gt;get_neighbors and how the scale effects the neighbors given. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -95,9 +98,9 @@
           <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
         </param>
         <briefdescription>
+<para>This is a helper passable function that alwalys returns true. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is a helper passable function that alwalys returns true. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -113,9 +116,9 @@
           <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
         </param>
         <briefdescription>
+<para>This is a helper passable function that always returns false. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is a helper passable function that always returns false. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -132,9 +135,9 @@
           <declname>pos</declname>
         </param>
         <briefdescription>
+<para>This is a helper passable function that only returns true when pos.ne == 20. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is a helper passable function that only returns true when pos.ne == 20. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -147,16 +150,17 @@
         <argsstring>()</argsstring>
         <name>node_passable_line_0</name>
         <briefdescription>
+<para>This function tests passable_line. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function tests passable_line. Tests with always false, always true, and position dependant functions being passed in as args. </para>
+<para>Tests with always false, always true, and position dependant functions being passed in as args. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/tests.cpp" line="286" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/tests.cpp" bodystart="286" bodyend="300"/>
         <references refid="namespaceopenage_1_1path_1_1tests_1a324ebb21684cd1e29b46c01160ad4287" compoundref="pathfinding_2tests_8cpp" startline="259" endline="261">always_passable</references>
         <references refid="namespaceopenage_1_1path_1_1tests_1acebd36a125f535d815cd34536e4f1f1f" compoundref="pathfinding_2tests_8cpp" startline="266" endline="268">not_passable</references>
-        <references refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" compoundref="pathfinding_2path_8cpp" startline="100" endline="115">openage::path::passable_line</references>
+        <references refid="namespaceopenage_1_1path_1a4fb2450790038eed534dfe29ad57d350" compoundref="pathfinding_2path_8cpp" startline="100" endline="115">openage::path::passable_line</references>
         <references refid="namespaceopenage_1_1path_1_1tests_1ab0beb56de41e9380fbf8abf6b50759af" compoundref="pathfinding_2tests_8cpp" startline="274" endline="280">sometimes_passable</references>
         <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
         <referencedby refid="namespaceopenage_1_1path_1_1tests_1a5d1515cb353ed8a23c4d644dc3642e73" compoundref="pathfinding_2tests_8cpp" startline="305" endline="312">path_node</referencedby>
@@ -167,9 +171,9 @@
         <argsstring>()</argsstring>
         <name>path_node</name>
         <briefdescription>
+<para>Top level node test. </para>
         </briefdescription>
         <detaileddescription>
-<para>Top level node test. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

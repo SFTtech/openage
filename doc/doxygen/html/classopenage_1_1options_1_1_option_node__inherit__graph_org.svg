@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-662 396.5,-662 396.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Allows objects to expose customisable features.">
 <polygon fill="#bfbfbf" stroke="black" points="122.5,-402.5 122.5,-657.5 270.5,-657.5 270.5,-402.5 122.5,-402.5"/>
 <text text-anchor="middle" x="196.5" y="-645.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::OptionNode</text>
 <polyline fill="none" stroke="black" points="122.5,-638.5 270.5,-638.5 "/>
@@ -41,7 +41,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml" target="_top" xlink:title="main engine container.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-365.5 125,-365.5 125,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="62.5" y="-353.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine</text>
 <polyline fill="none" stroke="black" points="0,-346.5 125,-346.5 "/>
@@ -86,7 +86,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_main.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_main.xhtml" target="_top" xlink:title="Contains information for a single game This information must be synced across network clients.">
 <polygon fill="white" stroke="black" points="143,-77.5 143,-288.5 250,-288.5 250,-77.5 143,-77.5"/>
 <text text-anchor="middle" x="196.5" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMain</text>
 <polyline fill="none" stroke="black" points="143,-269.5 250,-269.5 "/>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_render_options.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_render_options.xhtml" target="_top" xlink:title="Options for the renderer.">
 <polygon fill="white" stroke="black" points="268.5,-149 268.5,-217 392.5,-217 392.5,-149 268.5,-149"/>
 <text text-anchor="middle" x="330.5" y="-205" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RenderOptions</text>
 <polyline fill="none" stroke="black" points="268.5,-198 392.5,-198 "/>

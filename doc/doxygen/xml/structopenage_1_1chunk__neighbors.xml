@@ -22,9 +22,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>adjacent neighbors of a chunk. </para>
     </briefdescription>
     <detaileddescription>
-<para>adjacent neighbors of a chunk.</para>
 <para>neighbor ids: 0 7 1 6 @ 2 5 3 4 </para>
     </detaileddescription>
     <collaborationgraph>

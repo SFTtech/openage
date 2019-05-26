@@ -1,6 +1,6 @@
 <map id="openage::gui::GuiGameSpecImageProviderByFilenameImpl" name="openage::gui::GuiGameSpecImageProviderByFilenameImpl">
-<area shape="rect" id="node1" title=" " alt="" coords="99,707,307,887"/>
-<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" title=" " alt="" coords="83,345,323,657"/>
+<area shape="rect" id="node1" title="Exposes game textures to the Qt by their file name." alt="" coords="99,707,307,887"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" title="Exposes game textures to the Qt." alt="" coords="83,345,323,657"/>
 <area shape="rect" id="node3" href="$classqtsdl_1_1_gui_image_provider_impl.xhtml" title=" " alt="" coords="5,132,188,283"/>
 <area shape="rect" id="node4" title=" " alt="" coords="23,5,170,83"/>
 <area shape="rect" id="node5" href="$classqtsdl_1_1_gui_callback.xhtml" title=" " alt="" coords="213,154,341,261"/>

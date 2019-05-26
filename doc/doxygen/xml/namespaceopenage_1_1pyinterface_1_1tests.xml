@@ -9,9 +9,10 @@
         <argsstring></argsstring>
         <name>err_py_to_cpp_helper</name>
         <briefdescription>
+<para>Part of pyinterface::demo_py_to_cpp. </para>
         </briefdescription>
         <detaileddescription>
-<para>Part of pyinterface::demo_py_to_cpp. Shall throw some exceptions, which we then translate to C++.</para>
+<para>Shall throw some exceptions, which we then translate to C++.</para>
 <para>pxd: PyIfFunc0[void] err_py_to_cpp_helper </para>
         </detaileddescription>
         <inbodydescription>
@@ -26,9 +27,9 @@
         <argsstring></argsstring>
         <name>bounce_call_py</name>
         <briefdescription>
+<para>Called by <ref refid="namespaceopenage_1_1pyinterface_1_1tests_1ad62ace68d6946aec2ca53e5269bb9946" kindref="member">bounce_call()</ref> to bounce back to Python. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called by <ref refid="namespaceopenage_1_1pyinterface_1_1tests_1ad62ace68d6946aec2ca53e5269bb9946" kindref="member">bounce_call()</ref> to bounce back to Python.</para>
 <para>pxd: PyIfFunc2[void, Func0[void], int] bounce_call_py </para>
         </detaileddescription>
         <inbodydescription>
@@ -83,9 +84,10 @@
         <argsstring>()</argsstring>
         <name>err_cpp_to_py_helper</name>
         <briefdescription>
+<para>Called by cppinterface.demo_cpp_to_py. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called by cppinterface.demo_cpp_to_py. Throws some exceptions, for translation to Python.</para>
+<para>Throws some exceptions, for translation to Python.</para>
 <para>pxd: void <ref refid="namespaceopenage_1_1pyinterface_1_1tests_1ac5cb0834a41caf9f84ee192cc307f24d" kindref="member">err_cpp_to_py_helper()</ref> except + </para>
         </detaileddescription>
         <inbodydescription>
@@ -147,9 +149,9 @@
           <declname>times</declname>
         </param>
         <briefdescription>
+<para>See the doc in exctranslate_tests.pyx. </para>
         </briefdescription>
         <detaileddescription>
-<para>See the doc in exctranslate_tests.pyx.</para>
 <para>pxd: void bounce_call(Func0[void], int) except + </para>
         </detaileddescription>
         <inbodydescription>
@@ -172,7 +174,7 @@
         <references refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" compoundref="pyobject_8cpp" startline="317" endline="321">openage::py::builtin</references>
         <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a76e2c7f1e3147d1d726d5c277daff1f8" compoundref="pyobject_8cpp" startline="132" endline="134">openage::pyinterface::PyObjectRef::bytes</references>
         <references refid="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" compoundref="pyobject_8cpp" startline="338" endline="342">openage::py::bytes</references>
-        <references refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" compoundref="subprocess_8cpp" startline="72" endline="240">openage::subprocess::call</references>
+        <references refid="namespaceopenage_1_1subprocess_1a9433d1215dbd3b40cd1c0981b84a8541" compoundref="subprocess_8cpp" startline="72" endline="240">openage::subprocess::call</references>
         <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a54af3d98bf36729efd5a013bc124a2e9" compoundref="pyobject_8h" startline="120" endline="127">openage::pyinterface::PyObjectRef::call</references>
         <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a2790fe7f033dc93a820a13535421aa98" compoundref="pyobject_8cpp" startline="142" endline="144">openage::pyinterface::PyObjectRef::callable</references>
         <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a912e76dc7854f9c1816533f6f8571767" compoundref="pyobject_8cpp" startline="256" endline="258">openage::pyinterface::PyObjectRef::classname</references>

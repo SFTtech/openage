@@ -23,9 +23,9 @@
           <declname>item_base</declname>
         </param>
         <briefdescription>
+<para>Sets up a factory for the type T. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets up a factory for the type T. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -39,9 +39,9 @@
         <argsstring>()</argsstring>
         <name>instantiate_core</name>
         <briefdescription>
+<para>Creates and returns a core object of type Unwrap&lt;T&gt;::Type inside a holder. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates and returns a core object of type Unwrap&lt;T&gt;::Type inside a holder. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -61,9 +61,9 @@
           <declname>tag</declname>
         </param>
         <briefdescription>
+<para>Attaches to a core object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Attaches to a core object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

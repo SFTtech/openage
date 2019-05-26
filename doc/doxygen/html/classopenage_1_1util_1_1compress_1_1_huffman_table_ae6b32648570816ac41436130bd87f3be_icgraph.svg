@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-106 690,-106 690,4 -4,4"/>
 <!-- Node13 -->
 <g id="node1" class="node"><title>Node13</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Decodes the next huffman symbol from the input bitstream, and returns it.">
 <polygon fill="#bfbfbf" stroke="black" points="556,-36 556,-66 686,-66 686,-36 556,-36"/>
 <text text-anchor="start" x="564" y="-54" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="621" y="-43" font-family="Helvetica,sans-Serif" font-size="10.00">::HuffmanTable::read_sym</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node14 -->
 <g id="node2" class="node"><title>Node14</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a0ced870a816503c5ae2c42756dc0adb2" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a0ced870a816503c5ae2c42756dc0adb2" target="_top" xlink:title="Decodes one symbol from the current aligned block.">
 <polygon fill="white" stroke="black" points="369,-60.5 369,-101.5 520,-101.5 520,-60.5 369,-60.5"/>
 <text text-anchor="start" x="377" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="377" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDStream::decode_symbol</text>
@@ -81,7 +81,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node17 -->
 <g id="node5" class="node"><title>Node17</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a2830bc244fc83678fc56f6e44c057e7c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a2830bc244fc83678fc56f6e44c057e7c" target="_top" xlink:title="Decodes one symbol from the current verbatim block.">
 <polygon fill="white" stroke="black" points="369,-0.5 369,-41.5 520,-41.5 520,-0.5 369,-0.5"/>
 <text text-anchor="start" x="377" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="377" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDStream::decode_symbol</text>
@@ -96,7 +96,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node15 -->
 <g id="node3" class="node"><title>Node15</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" target="_top" xlink:title="See the doc for LZXDecompressor::decompress_next_frame in lzxd.h.">
 <polygon fill="white" stroke="black" points="197,-30.5 197,-71.5 333,-71.5 333,-30.5 197,-30.5"/>
 <text text-anchor="start" x="205" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="205" y="-48.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDStream::decompress</text>
@@ -111,7 +111,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node16 -->
 <g id="node4" class="node"><title>Node16</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" target="_top" xlink:title="Decompresses a single 32&#45;KiB frame.">
 <polygon fill="white" stroke="black" points="0,-30.5 0,-71.5 161,-71.5 161,-30.5 0,-30.5"/>
 <text text-anchor="start" x="8" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="8" y="-48.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDecompressor::decompress</text>

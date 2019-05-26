@@ -83,9 +83,9 @@
         <argsstring></argsstring>
         <name>dist_to_target</name>
         <briefdescription>
+<para>tracks distance to target from last update </para>
         </briefdescription>
         <detaileddescription>
-<para>tracks distance to target from last update </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -131,9 +131,9 @@
           <declname>action_rad</declname>
         </param>
         <briefdescription>
+<para>action_rad is how close a unit must come to another unit to be considered to touch the other, for example in gathering resource and melee attack </para>
         </briefdescription>
         <detaileddescription>
-<para>action_rad is how close a unit must come to another unit to be considered to touch the other, for example in gathering resource and melee attack </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -157,9 +157,9 @@
           <declname>r</declname>
         </param>
         <briefdescription>
+<para>this constructor uses the default action radius formula which will bring the object as near to the target as the pathing grid will allow. </para>
         </briefdescription>
         <detaileddescription>
-<para>this constructor uses the default action radius formula which will bring the object as near to the target as the pathing grid will allow. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -189,9 +189,9 @@
           <declname>time</declname>
         </param>
         <briefdescription>
+<para>each action has its own update functionality which gets called when this is the active action </para>
         </briefdescription>
         <detaileddescription>
-<para>each action has its own update functionality which gets called when this is the active action </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -212,9 +212,9 @@
         <reimplements refid="classopenage_1_1_unit_action_1ac84d3cbfa3c489b3975952af157929cb">on_completion</reimplements>
         <reimplementedby refid="classopenage_1_1_build_action_1a9f64ee829cfb671065dcfc7c876c346e">on_completion</reimplementedby>
         <briefdescription>
+<para>action to perform when popped from a units action stack </para>
         </briefdescription>
         <detaileddescription>
-<para>action to perform when popped from a units action stack </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -232,9 +232,10 @@
         <name>completed</name>
         <reimplements refid="classopenage_1_1_unit_action_1a7814554a94e930595ed5dad9b0f03255">completed</reimplements>
         <briefdescription>
+<para>gets called for all actions on stack each update cycle </para>
         </briefdescription>
         <detaileddescription>
-<para>gets called for all actions on stack each update cycle <simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
+<para><simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -257,9 +258,9 @@
         <name>allow_interupt</name>
         <reimplements refid="classopenage_1_1_unit_action_1a622cf307ee5d3f8f4581d9a7ec7ecfbf">allow_interupt</reimplements>
         <briefdescription>
+<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
         </briefdescription>
         <detaileddescription>
-<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -272,9 +273,9 @@
         <name>allow_control</name>
         <reimplements refid="classopenage_1_1_unit_action_1a3e222303072f926fa7c925163b8ac10c">allow_control</reimplements>
         <briefdescription>
+<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top </para>
         </briefdescription>
         <detaileddescription>
-<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top</para>
 <para>if true this action must complete and will not allow new actions to be pushed while it is active and also does not update the secondary actions </para>
         </detaileddescription>
         <inbodydescription>
@@ -295,9 +296,9 @@
         <reimplementedby refid="classopenage_1_1_heal_action_1ad4da9c08bcfd22e4287aa508730e02e2">name</reimplementedby>
         <reimplementedby refid="classopenage_1_1_convert_action_1ace65fad3f2004e467446b03fdf1f12bb">name</reimplementedby>
         <briefdescription>
+<para>debug string to identify action types </para>
         </briefdescription>
         <detaileddescription>
-<para>debug string to identify action types </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -325,9 +326,9 @@
           <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
         </param>
         <briefdescription>
+<para>Control units action when in range of the target. </para>
         </briefdescription>
         <detaileddescription>
-<para>Control units action when in range of the target </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -457,9 +458,9 @@
           <declname>new_target</declname>
         </param>
         <briefdescription>
+<para>changes target, ending action when new target is invalid </para>
         </briefdescription>
         <detaileddescription>
-<para>changes target, ending action when new target is invalid </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -472,9 +473,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Base class for actions which target another unit such as gather, attack, heal and convert. </para>
     </briefdescription>
     <detaileddescription>
-<para>Base class for actions which target another unit such as gather, attack, heal and convert <xrefsect id="todo_1_todo000032"><xreftitle>Todo</xreftitle><xrefdescription><para>implement min range </para>
+<para><xrefsect id="todo_1_todo000032"><xreftitle>Todo</xreftitle><xrefdescription><para>implement min range </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>

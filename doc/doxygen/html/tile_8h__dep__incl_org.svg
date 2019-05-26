@@ -519,7 +519,7 @@
 </g>
 <!-- Node96 -->
 <g id="node16" class="node"><title>Node96</title>
-<g id="a_node16"><a xlink:href="a__star_8cpp.xhtml" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="a__star_8cpp.xhtml" target="_top" xlink:title="This file implements the A* search algorithm for openage.">
 <polygon fill="white" stroke="black" points="1333,-156.5 1333,-197.5 1490,-197.5 1490,-156.5 1333,-156.5"/>
 <text text-anchor="start" x="1341" y="-185.5" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="1341" y="-174.5" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>
@@ -594,7 +594,7 @@
 </g>
 <!-- Node73 -->
 <g id="node23" class="node"><title>Node73</title>
-<g id="a_node23"><a xlink:href="producer_8cpp.xhtml" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="producer_8cpp.xhtml" target="_top" xlink:title="Many values in this file are hardcoded, due to limited understanding of how the original game files w...">
 <polygon fill="white" stroke="black" points="1700,-0.5 1700,-41.5 1857,-41.5 1857,-0.5 1700,-0.5"/>
 <text text-anchor="start" x="1708" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="1708" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>

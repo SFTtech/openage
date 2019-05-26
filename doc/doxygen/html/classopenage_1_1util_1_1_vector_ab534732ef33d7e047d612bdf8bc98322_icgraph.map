@@ -1,6 +1,6 @@
 <map id="openage::util::Vector::dot" name="openage::util::Vector::dot">
-<area shape="rect" id="node1" title=" " alt="" coords="387,46,555,73"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_vector.xhtml#a5b3b46a13e28d59eaefacf1549269f9b" title=" " alt="" coords="196,5,339,47"/>
+<area shape="rect" id="node1" title="Dot product of two Vectors." alt="" coords="387,46,555,73"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_vector.xhtml#a5b3b46a13e28d59eaefacf1549269f9b" title="Euclidian norm aka length." alt="" coords="196,5,339,47"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1util_1_1tests.xhtml#a7deb96e08e8e82e52d83fb34f6db25da" title=" " alt="" coords="201,71,334,112"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_vector.xhtml#aae6e40b885d6cdf296bd2568bd2b5e49" title=" " alt="" coords="5,5,148,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_vector.xhtml#aae6e40b885d6cdf296bd2568bd2b5e49" title="Scales the Vector so that its norm is 1." alt="" coords="5,5,148,47"/>
 </map>

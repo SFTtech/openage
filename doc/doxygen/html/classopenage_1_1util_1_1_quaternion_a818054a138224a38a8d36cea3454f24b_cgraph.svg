@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 272,-35 272,4 -4,4"/>
 <!-- Node112 -->
 <g id="node1" class="node"><title>Node112</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Transforms a vector by this quaternion.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 125,-30.5 125,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="62.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::operator *</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node113 -->
 <g id="node2" class="node"><title>Node113</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#ab33cee057269a707f1f8a5f58944a5a4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#ab33cee057269a707f1f8a5f58944a5a4" target="_top" xlink:title="Cross&#45;product of two 3&#45;dimensional vectors.">
 <polygon fill="white" stroke="black" points="161,-0.5 161,-30.5 268,-30.5 268,-0.5 161,-0.5"/>
 <text text-anchor="start" x="169" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="214.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::cross_product</text>

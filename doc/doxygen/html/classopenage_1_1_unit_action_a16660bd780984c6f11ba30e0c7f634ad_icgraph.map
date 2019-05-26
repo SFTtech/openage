@@ -1,4 +1,4 @@
 <map id="openage::UnitAction::move_to" name="openage::UnitAction::move_to">
 <area shape="rect" id="node1" title=" " alt="" coords="205,5,344,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92" title=" " alt="" coords="5,5,157,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="5,5,157,47"/>
 </map>

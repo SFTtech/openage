@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-526.5 818,-526.5 818,4 -4,4"/>
 <!-- Node14 -->
 <g id="node1" class="node"><title>Node14</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="action to perform when popped from a units action stack">
 <polygon fill="#bfbfbf" stroke="black" points="0,-182 0,-212 109,-212 109,-182 0,-182"/>
 <text text-anchor="start" x="8" y="-200" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAction</text>
 <text text-anchor="middle" x="54.5" y="-189" font-family="Helvetica,sans-Serif" font-size="10.00">::on_completion</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node15 -->
 <g id="node2" class="node"><title>Node15</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_target_action.xhtml#acd97248a087415b6d08fa3e97e90397d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_target_action.xhtml#acd97248a087415b6d08fa3e97e90397d" target="_top" xlink:title="gets called for all actions on stack each update cycle">
 <polygon fill="white" stroke="black" points="159.5,-432 159.5,-462 273.5,-462 273.5,-432 159.5,-432"/>
 <text text-anchor="start" x="167.5" y="-450" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TargetAction</text>
 <text text-anchor="middle" x="216.5" y="-439" font-family="Helvetica,sans-Serif" font-size="10.00">::completed</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node31 -->
 <g id="node18" class="node"><title>Node31</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title="returns attribute based on templated value">
 <polygon fill="white" stroke="black" points="168.5,-182 168.5,-212 264.5,-212 264.5,-182 168.5,-182"/>
 <text text-anchor="start" x="176.5" y="-200" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::get</text>
 <text text-anchor="middle" x="216.5" y="-189" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node34 -->
 <g id="node21" class="node"><title>Node34</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="145,-94.5 145,-113.5 288,-113.5 288,-94.5 145,-94.5"/>
 <text text-anchor="middle" x="216.5" y="-101.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -101,7 +101,7 @@
 </g>
 <!-- Node38 -->
 <g id="node25" class="node"><title>Node38</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1_unit.xhtml#ac5dcdf3180dcd4bdce67b765d8ef2134" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1_unit.xhtml#ac5dcdf3180dcd4bdce67b765d8ef2134" target="_top" xlink:title="queues a command to be applied to this unit on the next update">
 <polygon fill="white" stroke="black" points="150,-34.5 150,-53.5 283,-53.5 283,-34.5 150,-34.5"/>
 <text text-anchor="middle" x="216.5" y="-41.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::queue_cmd</text>
 </a>
@@ -187,7 +187,7 @@
 </g>
 <!-- Node23 -->
 <g id="node10" class="node"><title>Node23</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" target="_top" xlink:title="returns all objects on the next tile">
 <polygon fill="white" stroke="black" points="338.5,-312 338.5,-342 457.5,-342 457.5,-312 338.5,-312"/>
 <text text-anchor="start" x="346.5" y="-330" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainSearch</text>
 <text text-anchor="middle" x="398" y="-319" font-family="Helvetica,sans-Serif" font-size="10.00">::next_tile</text>
@@ -229,7 +229,7 @@
 </g>
 <!-- Node24 -->
 <g id="node11" class="node"><title>Node24</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a0db543b44fe51d0f1403bedba1f575a8" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a0db543b44fe51d0f1403bedba1f575a8" target="_top" xlink:title="restarts the search from the start tile">
 <polygon fill="white" stroke="black" points="521,-356 521,-386 640,-386 640,-356 521,-356"/>
 <text text-anchor="start" x="529" y="-374" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainSearch</text>
 <text text-anchor="middle" x="580.5" y="-363" font-family="Helvetica,sans-Serif" font-size="10.00">::reset</text>
@@ -269,7 +269,7 @@
 </g>
 <!-- Node26 -->
 <g id="node13" class="node"><title>Node26</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="704,-317.5 704,-336.5 799,-336.5 799,-317.5 704,-317.5"/>
 <text text-anchor="middle" x="751.5" y="-324.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -301,7 +301,7 @@
 </g>
 <!-- Node32 -->
 <g id="node19" class="node"><title>Node32</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title="Get the attribute based on the type.">
 <polygon fill="white" stroke="black" points="337.5,-175.5 337.5,-194.5 458.5,-194.5 458.5,-175.5 337.5,-175.5"/>
 <text text-anchor="middle" x="398" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::get</text>
 </a>
@@ -314,7 +314,7 @@
 </g>
 <!-- Node35 -->
 <g id="node22" class="node"><title>Node35</title>
-<g id="a_node22"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="346,-126 346,-156 450,-156 450,-126 346,-126"/>
 <text text-anchor="start" x="354" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="398" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -355,7 +355,7 @@
 </g>
 <!-- Node39 -->
 <g id="node26" class="node"><title>Node39</title>
-<g id="a_node26"><a xlink:href="classopenage_1_1_command.xhtml#afbc0a60d82b9608e375c38c5e3fdf758" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="classopenage_1_1_command.xhtml#afbc0a60d82b9608e375c38c5e3fdf758" target="_top" xlink:title="the ability types allowed to use this command">
 <polygon fill="white" stroke="black" points="330.5,-0.5 330.5,-19.5 465.5,-19.5 465.5,-0.5 330.5,-0.5"/>
 <text text-anchor="middle" x="398" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Command::ability</text>
 </a>

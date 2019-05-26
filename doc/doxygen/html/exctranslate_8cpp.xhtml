@@ -121,19 +121,24 @@ $(document).ready(function(){initNavTree('exctranslate_8cpp.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1pyinterface"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1pyinterface.xhtml">openage::pyinterface</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad8166ad0c6228bd8ad488cb2648ef2f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1pyinterface.xhtml#ad8166ad0c6228bd8ad488cb2648ef2f6">openage::pyinterface::set_exc_translation_funcs</a> (void(*raise_cpp_error_impl)(Error *), void(*raise_cpp_pyexception_impl)(PyException *), bool(*check_for_py_exception_impl)(), void(*describe_py_exception_impl)(PyException *))</td></tr>
-<tr class="separator:ad8166ad0c6228bd8ad488cb2648ef2f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e67cfae25169883a59e6d15324decfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1pyinterface.xhtml#a1e67cfae25169883a59e6d15324decfb">openage::pyinterface::set_exc_translation_funcs</a> (void(*raise_cpp_error)(Error *), void(*raise_cpp_pyexception)(PyException *), bool(*check_for_py_exception)(), void(*describe_py_exception)(PyException *))</td></tr>
+<tr class="memdesc:a1e67cfae25169883a59e6d15324decfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Installs the basic interface functions that are used for exception translation.  <a href="namespaceopenage_1_1pyinterface.xhtml#a1e67cfae25169883a59e6d15324decfb">More...</a><br /></td></tr>
+<tr class="separator:a1e67cfae25169883a59e6d15324decfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17ffe36150248f6802ac372166798637"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1pyinterface.xhtml#a17ffe36150248f6802ac372166798637">openage::pyinterface::translate_exc_cpp_to_py</a> ()</td></tr>
+<tr class="memdesc:a17ffe36150248f6802ac372166798637"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analyzes the current C++ exception, and creates and raises an analogous Python CPPException object.  <a href="namespaceopenage_1_1pyinterface.xhtml#a17ffe36150248f6802ac372166798637">More...</a><br /></td></tr>
 <tr class="separator:a17ffe36150248f6802ac372166798637"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89529648faa2ef530fefcc90f1c1ab70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1pyinterface.xhtml#a89529648faa2ef530fefcc90f1c1ab70">openage::pyinterface::translate_exc_py_to_cpp</a> ()</td></tr>
+<tr class="memdesc:a89529648faa2ef530fefcc90f1c1ab70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analyzes the current Python exception, and creates and throws an analogous C++ <a class="el" href="classopenage_1_1pyinterface_1_1_py_exception.xhtml" title="Thrown by translate_exc_py_to_cpp() from exctranslate.h.">PyException</a> object.  <a href="namespaceopenage_1_1pyinterface.xhtml#a89529648faa2ef530fefcc90f1c1ab70">More...</a><br /></td></tr>
 <tr class="separator:a89529648faa2ef530fefcc90f1c1ab70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a942ae5fea51139bab5bdc29ac244125d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1pyinterface.xhtml#a942ae5fea51139bab5bdc29ac244125d">openage::pyinterface::init_exc_message</a> (log::message *msg, const std::string &amp;filename, unsigned int lineno, const std::string &amp;functionname) noexcept</td></tr>
+<tr class="memdesc:a942ae5fea51139bab5bdc29ac244125d"><td class="mdescLeft">&#160;</td><td class="mdescRight">For use by Python, to initialize a message's meta data.  <a href="namespaceopenage_1_1pyinterface.xhtml#a942ae5fea51139bab5bdc29ac244125d">More...</a><br /></td></tr>
 <tr class="separator:a942ae5fea51139bab5bdc29ac244125d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-25';
 <polygon fill="white" stroke="none" points="-4,4 -4,-324.5 599,-324.5 599,4 -4,4"/>
 <!-- Node217 -->
 <g id="node1" class="node"><title>Node217</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Must be given a valid unit to display text attribute indicators.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-137 0,-167 117,-167 117,-137 0,-137"/>
 <text text-anchor="start" x="8" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="58.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">::show_attributes</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-25';
 </g>
 <!-- Node218 -->
 <g id="node2" class="node"><title>Node218</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title="returns attribute based on templated value">
 <polygon fill="white" stroke="black" points="177,-290 177,-320 273,-320 273,-290 177,-290"/>
 <text text-anchor="start" x="185" y="-308" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::get</text>
 <text text-anchor="middle" x="225" y="-297" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-25';
 </g>
 <!-- Node220 -->
 <g id="node4" class="node"><title>Node220</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title="returns whether attribute is available">
 <polygon fill="white" stroke="black" points="176,-241 176,-271 274,-271 274,-241 176,-241"/>
 <text text-anchor="start" x="184" y="-259" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::has</text>
 <text text-anchor="middle" x="225" y="-248" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-25';
 </g>
 <!-- Node222 -->
 <g id="node6" class="node"><title>Node222</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" target="_top" xlink:title="gets the unique id of this unit type">
 <polygon fill="white" stroke="black" points="169.5,-202.5 169.5,-221.5 280.5,-221.5 280.5,-202.5 169.5,-202.5"/>
 <text text-anchor="middle" x="225" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::id</text>
 </a>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-25';
 </g>
 <!-- Node223 -->
 <g id="node7" class="node"><title>Node223</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_unit_type.xhtml#afadac353590f8c7d7a590f41420fa32c" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_unit_type.xhtml#afadac353590f8c7d7a590f41420fa32c" target="_top" xlink:title="gets the name of the unit type being produced">
 <polygon fill="white" stroke="black" points="161,-164.5 161,-183.5 289,-183.5 289,-164.5 161,-164.5"/>
 <text text-anchor="middle" x="225" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::name</text>
 </a>
@@ -120,7 +120,7 @@ var sectionId = 'dynsection-25';
 </g>
 <!-- Node224 -->
 <g id="node8" class="node"><title>Node224</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_unit_action.xhtml#a67647c63a20cec9714a6463b1c823a70" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_unit_action.xhtml#a67647c63a20cec9714a6463b1c823a70" target="_top" xlink:title="debug string to identify action types">
 <polygon fill="white" stroke="black" points="173,-115 173,-145 277,-145 277,-115 173,-115"/>
 <text text-anchor="start" x="181" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAction</text>
 <text text-anchor="middle" x="225" y="-122" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>
@@ -134,7 +134,7 @@ var sectionId = 'dynsection-25';
 </g>
 <!-- Node225 -->
 <g id="node9" class="node"><title>Node225</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title="render text with the at a position with specified font size">
 <polygon fill="white" stroke="black" points="153,-76.5 153,-95.5 297,-95.5 297,-76.5 153,-76.5"/>
 <text text-anchor="middle" x="225" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::render_text</text>
 </a>
@@ -160,7 +160,7 @@ var sectionId = 'dynsection-25';
 </g>
 <!-- Node231 -->
 <g id="node15" class="node"><title>Node231</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" target="_top" xlink:title="returns the current action on top of the stack">
 <polygon fill="white" stroke="black" points="177,-0.5 177,-19.5 273,-19.5 273,-0.5 177,-0.5"/>
 <text text-anchor="middle" x="225" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::top</text>
 </a>
@@ -173,7 +173,7 @@ var sectionId = 'dynsection-25';
 </g>
 <!-- Node219 -->
 <g id="node3" class="node"><title>Node219</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title="Get the attribute based on the type.">
 <polygon fill="white" stroke="black" points="334,-295.5 334,-314.5 455,-314.5 455,-295.5 334,-295.5"/>
 <text text-anchor="middle" x="394.5" y="-302.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::get</text>
 </a>
@@ -186,7 +186,7 @@ var sectionId = 'dynsection-25';
 </g>
 <!-- Node221 -->
 <g id="node5" class="node"><title>Node221</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title="Check if the attribute of the given type exists.">
 <polygon fill="white" stroke="black" points="333,-246.5 333,-265.5 456,-265.5 456,-246.5 333,-246.5"/>
 <text text-anchor="middle" x="394.5" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::has</text>
 </a>
@@ -226,7 +226,7 @@ var sectionId = 'dynsection-25';
 </g>
 <!-- Node229 -->
 <g id="node13" class="node"><title>Node229</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="337.5,-66.5 337.5,-85.5 451.5,-85.5 451.5,-66.5 337.5,-66.5"/>
 <text text-anchor="middle" x="394.5" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>

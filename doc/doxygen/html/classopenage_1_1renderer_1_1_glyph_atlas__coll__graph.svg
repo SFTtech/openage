@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-354 115,-354 115,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A glyph atlas is used to pack and manage several font glyphs in to a single OpenGL texture.">
 <polygon fill="#bfbfbf" stroke="black" points="2.5,-0.5 2.5,-200.5 108.5,-200.5 108.5,-0.5 2.5,-0.5"/>
 <text text-anchor="start" x="10.5" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="55.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">GlyphAtlas</text>

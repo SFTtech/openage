@@ -1,4 +1,4 @@
 <map id="openage::renderer::UniformInput" name="openage::renderer::UniformInput">
-<area shape="rect" id="node1" title=" " alt="" coords="15,5,149,112"/>
+<area shape="rect" id="node1" title="The abstract base for uniform input." alt="" coords="15,5,149,112"/>
 <area shape="rect" id="node2" href="$structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input.xhtml" title="Describes OpenGL&#45;specific uniform valuations." alt="" coords="5,160,159,281"/>
 </map>

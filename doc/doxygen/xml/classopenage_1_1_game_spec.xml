@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>assetmanager</name>
         <briefdescription>
+<para>Asset management entity that is responsible for textures, sounds, etc. </para>
         </briefdescription>
         <detaileddescription>
-<para>Asset management entity that is responsible for textures, sounds, etc. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -29,9 +29,9 @@
         <argsstring></argsstring>
         <name>gamedata</name>
         <briefdescription>
+<para>The full original gamedata tree. </para>
         </briefdescription>
         <detaileddescription>
-<para>The full original gamedata tree. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -49,9 +49,9 @@
         <argsstring></argsstring>
         <name>terrain_data</name>
         <briefdescription>
+<para>data used for constructing terrain objects </para>
         </briefdescription>
         <detaileddescription>
-<para>data used for constructing terrain objects </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -65,9 +65,9 @@
         <argsstring></argsstring>
         <name>slp_to_graphic</name>
         <briefdescription>
+<para>slp to graphic id reverse lookup </para>
         </briefdescription>
         <detaileddescription>
-<para>slp to graphic id reverse lookup </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -81,9 +81,9 @@
         <argsstring></argsstring>
         <name>graphics</name>
         <briefdescription>
+<para>map graphic id to gamedata graphic. </para>
         </briefdescription>
         <detaileddescription>
-<para>map graphic id to gamedata graphic. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -99,9 +99,9 @@
         <argsstring></argsstring>
         <name>commands</name>
         <briefdescription>
+<para>commands available for each unit id </para>
         </briefdescription>
         <detaileddescription>
-<para>commands available for each unit id </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -115,9 +115,9 @@
         <argsstring></argsstring>
         <name>unit_textures</name>
         <briefdescription>
+<para>graphic ids -&gt; unit texture for that id </para>
         </briefdescription>
         <detaileddescription>
-<para>graphic ids -&gt; unit texture for that id </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -131,9 +131,9 @@
         <argsstring></argsstring>
         <name>available_sounds</name>
         <briefdescription>
+<para>sound ids mapped to playable sounds for all available sounds. </para>
         </briefdescription>
         <detaileddescription>
-<para>sound ids mapped to playable sounds for all available sounds. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -147,9 +147,9 @@
         <argsstring></argsstring>
         <name>gamedata_loaded</name>
         <briefdescription>
+<para>has game data been load yet </para>
         </briefdescription>
         <detaileddescription>
-<para>has game data been load yet </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -195,9 +195,10 @@
         <argsstring>()</argsstring>
         <name>initialize</name>
         <briefdescription>
+<para>perform the main loading job. </para>
         </briefdescription>
         <detaileddescription>
-<para>perform the main loading job. this loads all the data into the storage. </para>
+<para>this loads all the data into the storage. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -222,9 +223,9 @@
         <argsstring>() const</argsstring>
         <name>load_complete</name>
         <briefdescription>
+<para>Check if loading has been completed, a load percent would be nice. </para>
         </briefdescription>
         <detaileddescription>
-<para>Check if loading has been completed, a load percent would be nice </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -238,9 +239,9 @@
         <argsstring>()</argsstring>
         <name>get_terrain_meta</name>
         <briefdescription>
+<para>return data used for constructing terrain objects </para>
         </briefdescription>
         <detaileddescription>
-<para>return data used for constructing terrain objects </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -257,9 +258,9 @@
           <declname>slp</declname>
         </param>
         <briefdescription>
+<para>reverse lookup of slp </para>
         </briefdescription>
         <detaileddescription>
-<para>reverse lookup of slp </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -276,9 +277,9 @@
           <declname>graphic_id</declname>
         </param>
         <briefdescription>
+<para>lookup using a texture id, this specifically avoids returning the missing placeholder texture </para>
         </briefdescription>
         <detaileddescription>
-<para>lookup using a texture id, this specifically avoids returning the missing placeholder texture </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -287,7 +288,7 @@
         <references refid="classopenage_1_1_game_spec_1a6e01d394f1d6b8c85ee0922f4cee072b" compoundref="game__spec_8h" startline="213">graphics</references>
         <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
-        <references refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
+        <references refid="namespaceopenage_1_1util_1afd23b015922ec41eec0165f8d88bf430" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
         <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">openage::UnitTexture::initialise</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_game_spec_1a0d9bb7cf5c16889a6eab13c714b39ae1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -305,9 +306,9 @@
           <defval>true</defval>
         </param>
         <briefdescription>
+<para>lookup using a texture file name </para>
         </briefdescription>
         <detaileddescription>
-<para>lookup using a texture file name </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -325,9 +326,9 @@
           <declname>graphic_id</declname>
         </param>
         <briefdescription>
+<para>get unit texture by graphic id <ndash/> this is an directional texture which also includes graphic deltas </para>
         </briefdescription>
         <detaileddescription>
-<para>get unit texture by graphic id <ndash/> this is an directional texture which also includes graphic deltas </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -347,9 +348,9 @@
           <declname>sound_id</declname>
         </param>
         <briefdescription>
+<para>get sound by sound id </para>
         </briefdescription>
         <detaileddescription>
-<para>get sound by sound id </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -371,9 +372,9 @@
           <declname>grp_id</declname>
         </param>
         <briefdescription>
+<para>gamedata for a graphic nyan will have to replace this somehow </para>
         </briefdescription>
         <detaileddescription>
-<para>gamedata for a graphic nyan will have to replace this somehow </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -395,9 +396,9 @@
           <declname>unit_id</declname>
         </param>
         <briefdescription>
+<para>get available commands for a unit id nyan will have to replace this somehow </para>
         </briefdescription>
         <detaileddescription>
-<para>get available commands for a unit id nyan will have to replace this somehow </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -414,9 +415,9 @@
           <declname>civ_id</declname>
         </param>
         <briefdescription>
+<para>returns the name of a civ by index </para>
         </briefdescription>
         <detaileddescription>
-<para>returns the name of a civ by index </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -437,9 +438,9 @@
           <declname>civ_id</declname>
         </param>
         <briefdescription>
+<para>makes initial unit types for a particular civ id </para>
         </briefdescription>
         <detaileddescription>
-<para>makes initial unit types for a particular civ id </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -459,9 +460,9 @@
         <argsstring>() const</argsstring>
         <name>get_asset_manager</name>
         <briefdescription>
+<para>Return the asset manager used for loading resources of this game specification. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the asset manager used for loading resources of this game specification. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -481,9 +482,9 @@
           <defname>graphic_id</defname>
         </param>
         <briefdescription>
+<para>check graphic id is valid </para>
         </briefdescription>
         <detaileddescription>
-<para>check graphic id is valid </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -504,9 +505,9 @@
           <declname>gamedata</declname>
         </param>
         <briefdescription>
+<para>create unit abilities from game data </para>
         </briefdescription>
         <detaileddescription>
-<para>create unit abilities from game data </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -530,9 +531,10 @@
           <defname>list</defname>
         </param>
         <briefdescription>
+<para>loads required assets to construct a buildings. </para>
         </briefdescription>
         <detaileddescription>
-<para>loads required assets to construct a buildings. adds to the type list if the object can be created safely. </para>
+<para>adds to the type list if the object can be created safely. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -557,9 +559,9 @@
           <defname>list</defname>
         </param>
         <briefdescription>
+<para>loads assets for living things. </para>
         </briefdescription>
         <detaileddescription>
-<para>loads assets for living things. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -583,9 +585,9 @@
           <defname>list</defname>
         </param>
         <briefdescription>
+<para>load assets for other game objects (not building and living). </para>
         </briefdescription>
         <detaileddescription>
-<para>load assets for other game objects (not building and living). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -609,9 +611,9 @@
           <defname>list</defname>
         </param>
         <briefdescription>
+<para>load missile assets. </para>
         </briefdescription>
         <detaileddescription>
-<para>load missile assets. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -631,9 +633,9 @@
           <declname>gamedata</declname>
         </param>
         <briefdescription>
+<para>fill in the terrain_data attribute of this </para>
         </briefdescription>
         <detaileddescription>
-<para>fill in the terrain_data attribute of this </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -649,7 +651,7 @@
         <references refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">openage::line</references>
         <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
-        <references refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
+        <references refid="namespaceopenage_1_1util_1afd23b015922ec41eec0165f8d88bf430" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
         <references refid="classopenage_1_1_game_spec_1a7fc2fe6626e99e9bab20b66287e5f58a" compoundref="game__spec_8h" startline="203">terrain_data</references>
         <references refid="structopenage_1_1terrain__meta_1ad4721fb504831e4c6797380603f3c734" compoundref="terrain_8h" startline="164">openage::terrain_meta::terrain_id_blendmode_map</references>
         <references refid="structopenage_1_1terrain__meta_1adac0256f3bb43b543864aba0079d84a8" compoundref="terrain_8h" startline="157">openage::terrain_meta::terrain_id_count</references>
@@ -667,9 +669,9 @@
           <declname>gamedata</declname>
         </param>
         <briefdescription>
+<para>Invoked when the gamedata has been loaded. </para>
         </briefdescription>
         <detaileddescription>
-<para>Invoked when the gamedata has been loaded. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -691,7 +693,7 @@
         <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
         <references refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dba4c2223596711a6a941bc19e8067ceef9">openage::audio::OPUS</references>
         <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">openage::resource</references>
-        <references refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
+        <references refid="namespaceopenage_1_1util_1afd23b015922ec41eec0165f8d88bf430" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
         <references refid="classopenage_1_1_game_spec_1a7cefb930be58e9a11ab308c2c1fca351" compoundref="game__spec_8h" startline="208">slp_to_graphic</references>
         <references refid="message_8h_1a2978637cb3650f636d3c199b1fc09592" compoundref="message_8h" startline="175">SPAM</references>
         <references refid="classopenage_1_1_game_spec_1ad3367d0a1791303b8198e31fd5b4a22d" compoundref="game__spec_8h" startline="223">unit_textures</references>
@@ -699,9 +701,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> gives a collection of all game elements this currently includes unit types and terrain types This provides a system which can easily allow game modding. </para>
     </briefdescription>
     <detaileddescription>
-<para><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> gives a collection of all game elements this currently includes unit types and terrain types This provides a system which can easily allow game modding</para>
 <para>uses the <ref refid="classopenage_1_1_asset_manager" kindref="compound">AssetManager</ref> to gather graphic data, composite textures and sounds.</para>
 <para>all types are sorted and stored by id values, each data object is referenced by a type and id pair</para>
 <para>dealing directly with files done by asset manager <xrefsect id="todo_1_todo000015"><xreftitle>Todo</xreftitle><xrefdescription><para>should the audio loading should be moved there? </para>

@@ -1,8 +1,8 @@
 <map id="openage::Score::get_score" name="openage::Score::get_score">
 <area shape="rect" id="node1" title=" " alt="" coords="623,100,761,141"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd" title=" " alt="" coords="415,100,575,141"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd" title="Calculates the total score from the sub&#45;scores." alt="" coords="415,100,575,141"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_score.xhtml#aeac024481d04808435d7a31fa3eb2d0e" title=" " alt="" coords="214,5,357,47"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_score.xhtml#aa5c379cb015205d10950f61b40a51f10" title=" " alt="" coords="204,71,367,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_player_score.xhtml#a335bfe5e296ab4563b6689a8cacca562" title=" " alt="" coords="5,159,156,200"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_team_score.xhtml#ad1af15c7921ffc8ffc57c04b3c8084ff" title=" " alt="" coords="213,188,358,229"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_player_score.xhtml#a335bfe5e296ab4563b6689a8cacca562" title="Calculates the total score from the sub&#45;scores." alt="" coords="5,159,156,200"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_team_score.xhtml#ad1af15c7921ffc8ffc57c04b3c8084ff" title="Calculates the total score from the sub&#45;scores." alt="" coords="213,188,358,229"/>
 </map>

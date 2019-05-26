@@ -10,9 +10,10 @@
         <argsstring></argsstring>
         <name>description</name>
         <briefdescription>
+<para>The description of the font. </para>
         </briefdescription>
         <detaileddescription>
-<para>The description of the font. <simplesect kind="see"><para><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> </para>
+<para><simplesect kind="see"><para><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -74,9 +75,9 @@
           <declname>description</declname>
         </param>
         <briefdescription>
+<para>Create a font instance from the description. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a font instance from the description.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>description</parametername>
@@ -107,9 +108,9 @@
           <declname>description</declname>
         </param>
         <briefdescription>
+<para>This constructor is used by the font manager to create a new font instance from the description. </para>
         </briefdescription>
         <detaileddescription>
-<para>This constructor is used by the font manager to create a new font instance from the description.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>font_manager</parametername>
@@ -154,9 +155,9 @@
         <argsstring>() const</argsstring>
         <name>get_ascender</name>
         <briefdescription>
+<para>Get the typographic ascender of font. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the typographic ascender of font.</para>
 <para><simplesect kind="return"><para>The ascender of font. </para>
 </simplesect>
 </para>
@@ -174,9 +175,9 @@
         <argsstring>() const</argsstring>
         <name>get_descender</name>
         <briefdescription>
+<para>Get the typographic descender of font. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the typographic descender of font.</para>
 <para><simplesect kind="return"><para>The descender of font. </para>
 </simplesect>
 </para>
@@ -193,9 +194,9 @@
         <argsstring>() const</argsstring>
         <name>get_line_height</name>
         <briefdescription>
+<para>Get the line spacing of font. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the line spacing of font.</para>
 <para><simplesect kind="return"><para>The font&apos;s line height. </para>
 </simplesect>
 </para>
@@ -220,9 +221,9 @@
           <declname>right_glyph</declname>
         </param>
         <briefdescription>
+<para>Get the kerning adjustment between two glyphs. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the kerning adjustment between two glyphs.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>left_glyph</parametername>
@@ -261,9 +262,9 @@
           <declname>text</declname>
         </param>
         <briefdescription>
+<para>Get the advance width of a particular string. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the advance width of a particular string.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>text</parametername>
@@ -298,9 +299,9 @@
           <declname>text</declname>
         </param>
         <briefdescription>
+<para>Get the list of glyphs for a particular string. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the list of glyphs for a particular string.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>text</parametername>
@@ -337,9 +338,9 @@
           <declname>glyph</declname>
         </param>
         <briefdescription>
+<para>Load a particular glyph&apos;s info and retrieves the glyph&apos;s bitmap data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Load a particular glyph&apos;s info and retrieves the glyph&apos;s bitmap data.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>codepoint</parametername>
@@ -387,9 +388,9 @@
           <declname>ft_library</declname>
         </param>
         <briefdescription>
+<para>Initializes the font&apos;s face and creates a harfbuzz font instance. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes the font&apos;s face and creates a harfbuzz font instance.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>ft_library</parametername>

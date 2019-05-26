@@ -65,7 +65,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node95 -->
 <g id="node2" class="node"><title>Node95</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1gameio.xhtml#a2c4db428aa6da2185b33a86508fb49a8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1gameio.xhtml#afc1134c3c633c8bddb614ecb3da48eb2" target="_top" xlink:title="a game save function that sometimes works">
 <polygon fill="white" stroke="black" points="365,-55 365,-74 481,-74 481,-55 365,-55"/>
 <text text-anchor="middle" x="423" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gameio::save</text>
 </a>

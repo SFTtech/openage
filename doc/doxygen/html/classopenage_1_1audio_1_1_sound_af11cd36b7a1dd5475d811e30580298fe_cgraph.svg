@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 447,-35 447,4 -4,4"/>
 <!-- Node45 -->
 <g id="node1" class="node"><title>Node45</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Resets the sound to it&#39;s beginning and stops playing it.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 116,-30.5 116,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Sound</text>
 <text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::stop</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node47 -->
 <g id="node3" class="node"><title>Node47</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#acd8f5a72ed6227f640eda13229878c6f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#acd8f5a72ed6227f640eda13229878c6f" target="_top" xlink:title="Remove the given element index in the vector.">
 <polygon fill="white" stroke="black" points="339,-0.5 339,-30.5 443,-30.5 443,-0.5 339,-0.5"/>
 <text text-anchor="start" x="347" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vector</text>
 <text text-anchor="middle" x="391" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_remove_swap_end</text>

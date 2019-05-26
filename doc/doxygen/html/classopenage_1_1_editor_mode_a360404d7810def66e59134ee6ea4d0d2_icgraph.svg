@@ -20,7 +20,7 @@
 </g>
 <!-- Node19 -->
 <g id="node2" class="node"><title>Node19</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_editor_mode.xhtml#aeac3794a1c9c6b6492413573d3670133" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_editor_mode.xhtml#aeac3794a1c9c6b6492413573d3670133" target="_top" xlink:title="Emit the &quot;announced&quot; signal with (name, InputContext::active_binds).">
 <polygon fill="white" stroke="black" points="161,-80.5 161,-110.5 270,-110.5 270,-80.5 161,-80.5"/>
 <text text-anchor="start" x="169" y="-98.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="215.5" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce</text>
@@ -49,7 +49,7 @@
 </g>
 <!-- Node21 -->
 <g id="node4" class="node"><title>Node21</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" target="_top" xlink:title="Called when the GameControl is set in QML.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 109,-30.5 109,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="54.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_control</text>

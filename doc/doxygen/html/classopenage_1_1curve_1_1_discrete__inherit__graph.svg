@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-470 181,-470 181,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Does not interpolate between values.">
 <polygon fill="#bfbfbf" stroke="black" points="15,-0.5 15,-79.5 162,-79.5 162,-0.5 15,-0.5"/>
 <text text-anchor="middle" x="88.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Discrete&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="15,-60.5 162,-60.5 "/>
@@ -98,7 +98,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_target.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_target.xhtml" target="_top" xlink:title="Every Object in the gameworld that wants to be targeted by events or as dependency for events,...">
 <polygon fill="white" stroke="black" points="19,-320.5 19,-465.5 158,-465.5 158,-320.5 19,-320.5"/>
 <text text-anchor="middle" x="88.5" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventTarget</text>
 <polyline fill="none" stroke="black" points="19,-446.5 158,-446.5 "/>

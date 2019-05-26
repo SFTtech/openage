@@ -20,7 +20,7 @@
 </g>
 <!-- Node435 -->
 <g id="node2" class="node"><title>Node435</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_message_builder.xhtml#a79661ed4ee53415c549c95a765c7b4bf" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_message_builder.xhtml#a79661ed4ee53415c549c95a765c7b4bf" target="_top" xlink:title="Returns if formatting should actually occur.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 148,-30.5 148,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::MessageBuilder</text>
 <text text-anchor="middle" x="74" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::should_format</text>

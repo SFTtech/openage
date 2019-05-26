@@ -47,9 +47,9 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>list of possible value types </para>
         </briefdescription>
         <detaileddescription>
-<para>list of possible value types </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -63,9 +63,9 @@
         <argsstring></argsstring>
         <name>option_list</name>
         <briefdescription>
+<para>set the container used for lists </para>
         </briefdescription>
         <detaileddescription>
-<para>set the container used for lists </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

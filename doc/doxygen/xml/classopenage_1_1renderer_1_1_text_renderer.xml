@@ -119,9 +119,9 @@
         <argsstring>()</argsstring>
         <name>TextRenderer</name>
         <briefdescription>
+<para>Requires a working OpenGL context to create buffer objects. </para>
         </briefdescription>
         <detaileddescription>
-<para>Requires a working OpenGL context to create buffer objects. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -152,9 +152,9 @@
           <declname>font</declname>
         </param>
         <briefdescription>
+<para>Set the font to be used for the future text draw calls. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the font to be used for the future text draw calls.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>font</parametername>
@@ -184,9 +184,9 @@
           <declname>color</declname>
         </param>
         <briefdescription>
+<para>Set the color to be used for the future text draw calls. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the color to be used for the future text draw calls.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>color</parametername>
@@ -222,9 +222,9 @@
           <type>...</type>
         </param>
         <briefdescription>
+<para>Draw a formatted string at the specified position. </para>
         </briefdescription>
         <detaileddescription>
-<para>Draw a formatted string at the specified position.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>position</parametername>
@@ -264,9 +264,9 @@
           <declname>text</declname>
         </param>
         <briefdescription>
+<para>Draw text at the specified position. </para>
         </briefdescription>
         <detaileddescription>
-<para>Draw text at the specified position.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>position</parametername>
@@ -309,9 +309,9 @@
           <declname>text</declname>
         </param>
         <briefdescription>
+<para>Draw text at the specified position. </para>
         </briefdescription>
         <detaileddescription>
-<para>Draw text at the specified position.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>x</parametername>
@@ -353,9 +353,9 @@
         <argsstring>()</argsstring>
         <name>render</name>
         <briefdescription>
+<para>Render all the text draw requests made during the frame. </para>
         </briefdescription>
         <detaileddescription>
-<para>Render all the text draw requests made during the frame. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

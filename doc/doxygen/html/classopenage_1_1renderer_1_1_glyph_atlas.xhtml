@@ -99,13 +99,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1_glyph_atl
 </div><!--header-->
 <div class="contents">
 
+<p>A glyph atlas is used to pack and manage several font glyphs in to a single OpenGL texture.  
+ <a href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="glyph__atlas_8h_source.xhtml">glyph_atlas.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::GlyphAtlas:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas__coll__graph.svg" width="159" height="478"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas__coll__graph.svg" width="159" height="478"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -113,6 +117,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect.xhtml">dirty_rect</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry.xhtml">Entry</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Datastructure for a single atlas entry.  <a href="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf.xhtml">Shelf</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,12 +125,15 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5ead730efc92a30d19f57760e7b962ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#a5ead730efc92a30d19f57760e7b962ba">GlyphAtlas</a> (int <a class="el" href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#aefccdcf9e9d8e549d3a0747de1ecdc5f">width</a>=1024, int <a class="el" href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#a48a8755d31f5b2c6a6656f1fb03752d0">height</a>=1024)</td></tr>
+<tr class="memdesc:a5ead730efc92a30d19f57760e7b962ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a glyph atlas with the specified width and height.  <a href="#a5ead730efc92a30d19f57760e7b962ba">More...</a><br /></td></tr>
 <tr class="separator:a5ead730efc92a30d19f57760e7b962ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe4401951e1bd4d55e0e89b93396e6f9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#afe4401951e1bd4d55e0e89b93396e6f9">~GlyphAtlas</a> ()</td></tr>
 <tr class="separator:afe4401951e1bd4d55e0e89b93396e6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2dd04418a0db610c8c007993ecfdd22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae2dd04418a0db610c8c007993ecfdd22">bind</a> (int unit=0)</td></tr>
+<tr class="memdesc:ae2dd04418a0db610c8c007993ecfdd22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the OpenGL texture of this glyph atlas at the specified unit.  <a href="#ae2dd04418a0db610c8c007993ecfdd22">More...</a><br /></td></tr>
 <tr class="separator:ae2dd04418a0db610c8c007993ecfdd22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5ac0cf0b966e3636c0f9a950e3f1870"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry.xhtml">GlyphAtlas::Entry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870">get</a> (<a class="el" href="classopenage_1_1renderer_1_1_font.xhtml">Font</a> *font, <a class="el" href="namespaceopenage_1_1renderer.xhtml#ad1ef0d75510a667bb392b7f7f464b435">codepoint_t</a> codepoint)</td></tr>
+<tr class="memdesc:ae5ac0cf0b966e3636c0f9a950e3f1870"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the atlas entry for a specified font and glyph.  <a href="#ae5ac0cf0b966e3636c0f9a950e3f1870">More...</a><br /></td></tr>
 <tr class="separator:ae5ac0cf0b966e3636c0f9a950e3f1870"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
@@ -157,7 +165,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1e6b92f493cd85c845a3f7c58e73fa1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A glyph atlas is used to pack and manage several font glyphs in to a single OpenGL texture.</p>
+<div class="textblock"><p>A glyph atlas is used to pack and manage several font glyphs in to a single OpenGL texture. </p>
 <p>A single glyph atlas can be used to stored glyphs from multiple fonts.</p>
 <p>Currently, the glyph atlas uses a naive "Shelf First-Fit" algorithm based on the article "A Thousand Ways to Pack the Bin - A Practical Approach to Two-Dimensional Rectangle Bin Packing" by Jukka Jylänki. The article can be found at <a href="http://clb.demon.fi/files/RectangleBinPack.pdf">http://clb.demon.fi/files/RectangleBinPack.pdf</a></p>
 <p>This is a very basic algorithm. If there is a need for a more complex packing requirement, the glyph atlas can be easily modified. </p>
@@ -189,7 +197,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a glyph atlas with the specified width and height.</p>
+
+<p>Creates a glyph atlas with the specified width and height. </p>
 <p>Also, creates a OpenGL texture of the same width and height. The contents of this glyph atlas is automatically synchronized to the texture (when you bind the texture).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -257,7 +266,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Binds the OpenGL texture of this glyph atlas at the specified unit.</p>
+
+<p>Binds the OpenGL texture of this glyph atlas at the specified unit. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">unit</td><td>the texture unit. </td></tr>
@@ -281,7 +291,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_ae2dd04418a0db610c8c007993ecfdd22_icgraph.svg" width="336" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_ae2dd04418a0db610c8c007993ecfdd22_icgraph.svg" width="336" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -311,7 +322,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Retrieves the atlas entry for a specified font and glyph.</p>
+
+<p>Retrieves the atlas entry for a specified font and glyph. </p>
 <p>If the particular entry does not exist in the atlas, the glyph atlas requests the font to provide the glyph info. The provided info along with the glyph's bitmap data is used to create a new cached entry. This entry is then returned.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -336,14 +348,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_ae5ac0cf0b966e3636c0f9a950e3f1870_cgraph.svg" width="100%" height="566"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_ae5ac0cf0b966e3636c0f9a950e3f1870_cgraph.svg" width="100%" height="566"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_ae5ac0cf0b966e3636c0f9a950e3f1870_icgraph.svg" width="336" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_ae5ac0cf0b966e3636c0f9a950e3f1870_icgraph.svg" width="336" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -383,10 +397,10 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="glyph__atlas_8cpp_source.xhtml#l00093">93</a> of file <a class="el" href="glyph__atlas_8cpp_source.xhtml">glyph_atlas.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                                        {</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a> = std::hash&lt;std::type_index&gt;()(std::type_index(<span class="keyword">typeid</span>(<a class="code" href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml">openage::renderer::GlyphAtlas</a>)));</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a> = <a class="code" href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4">openage::util::hash_combine</a>(<a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>, std::hash&lt;font_description&gt;()(<a class="code" href="namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c">font</a>-&gt;description));</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a> = <a class="code" href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4">openage::util::hash_combine</a>(<a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>, std::hash&lt;codepoint_t&gt;()(codepoint));</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a5cfc0e84830b5945b5731d2148eea3b4"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4">openage::util::hash_combine</a></div><div class="ttdeci">size_t hash_combine(size_t hash1, size_t hash2)</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00012">hash.cpp:12</a></div></div>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                                        {</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a> = std::hash&lt;std::type_index&gt;()(std::type_index(<span class="keyword">typeid</span>(<a class="code" href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml">openage::renderer::GlyphAtlas</a>)));</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a> = <a class="code" href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4">openage::util::hash_combine</a>(<a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>, std::hash&lt;font_description&gt;()(<a class="code" href="namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c">font</a>-&gt;description));</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a> = <a class="code" href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4">openage::util::hash_combine</a>(<a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>, std::hash&lt;codepoint_t&gt;()(codepoint));</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a5cfc0e84830b5945b5731d2148eea3b4"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4">openage::util::hash_combine</a></div><div class="ttdeci">size_t hash_combine(size_t hash1, size_t hash2)</div><div class="ttdoc">Creates a hash value as a combination of two other hashes.</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00012">hash.cpp:12</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1renderer_1_1tests_xhtml_aa4bbd5ddb9f2591224c8b05fff9d945c"><div class="ttname"><a href="namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c">openage::renderer::tests::font</a></div><div class="ttdeci">void font()</div><div class="ttdef"><b>Definition:</b> <a href="renderer_2font_2tests_8cpp_source.xhtml#l00059">tests.cpp:59</a></div></div>
-<div class="ttc" id="classopenage_1_1renderer_1_1_glyph_atlas_xhtml"><div class="ttname"><a href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml">openage::renderer::GlyphAtlas</a></div><div class="ttdef"><b>Definition:</b> <a href="glyph__atlas_8h_source.xhtml#l00026">glyph_atlas.h:26</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1util_xhtml_a3cb605abe74b26763ac7340c3785656a"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">openage::util::hash</a></div><div class="ttdeci">uint64_t hash(const uint64_t key[2], const uint8_t *data, size_t len_data)</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00036">hash.cpp:36</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_glyph_atlas_xhtml"><div class="ttname"><a href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml">openage::renderer::GlyphAtlas</a></div><div class="ttdoc">A glyph atlas is used to pack and manage several font glyphs in to a single OpenGL texture.</div><div class="ttdef"><b>Definition:</b> <a href="glyph__atlas_8h_source.xhtml#l00026">glyph_atlas.h:26</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_a3cb605abe74b26763ac7340c3785656a"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">openage::util::hash</a></div><div class="ttdeci">uint64_t hash(const uint64_t key[2], const uint8_t *data, size_t len_data)</div><div class="ttdoc">Siphash implementation.</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00036">hash.cpp:36</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="renderer_2font_2tests_8cpp_source.xhtml#l00059">openage::renderer::tests::font()</a>, <a class="el" href="hash_8cpp_source.xhtml#l00036">openage::util::hash()</a>, and <a class="el" href="hash_8cpp_source.xhtml#l00012">openage::util::hash_combine()</a>.</p>
 
@@ -396,14 +410,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_a936adb09a68c1fc46e9572cd2866d961_cgraph.svg" width="100%" height="439"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_a936adb09a68c1fc46e9572cd2866d961_cgraph.svg" width="100%" height="439"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_a936adb09a68c1fc46e9572cd2866d961_icgraph.svg" width="567" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_a936adb09a68c1fc46e9572cd2866d961_icgraph.svg" width="567" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -467,14 +483,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_aa029b621d32aec3deda5ba7231e42a33_cgraph.svg" width="100%" height="402"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_aa029b621d32aec3deda5ba7231e42a33_cgraph.svg" width="100%" height="402"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_aa029b621d32aec3deda5ba7231e42a33_icgraph.svg" width="519" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_aa029b621d32aec3deda5ba7231e42a33_icgraph.svg" width="519" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -545,14 +563,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_aa24165b0ea4cee5ea03cec1e0609499c_cgraph.svg" width="544" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_aa24165b0ea4cee5ea03cec1e0609499c_cgraph.svg" width="544" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_aa24165b0ea4cee5ea03cec1e0609499c_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_glyph_atlas_aa24165b0ea4cee5ea03cec1e0609499c_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>

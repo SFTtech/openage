@@ -57,7 +57,7 @@ var sectionId = 'dynsection-5';
 <polygon fill="white" stroke="none" points="-4,4 -4,-195.518 557,-195.518 557,4 -4,4"/>
 <!-- Node47 -->
 <g id="node1" class="node"><title>Node47</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Return the string representation of the bind assignated to an action.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-98.5 0,-128.5 145,-128.5 145,-98.5 0,-98.5"/>
 <text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_bind</text>
@@ -92,7 +92,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node50 -->
 <g id="node4" class="node"><title>Node50</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2f44a9836b240db76767fe04584a36b4" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2f44a9836b240db76767fe04584a36b4" target="_top" xlink:title="Return the string representation of the key event.">
 <polygon fill="white" stroke="black" points="191,-98.5 191,-128.5 336,-128.5 336,-98.5 191,-98.5"/>
 <text text-anchor="start" x="199" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="263.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::key_bind_to_string</text>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node51 -->
 <g id="node5" class="node"><title>Node51</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a0ba02d8e086457a659747b154facab7a" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a0ba02d8e086457a659747b154facab7a" target="_top" xlink:title="Return the string representation of the mouse event.">
 <polygon fill="white" stroke="black" points="191,-49.5 191,-79.5 336,-79.5 336,-49.5 191,-49.5"/>
 <text text-anchor="start" x="199" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="263.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::mouse_bind_to_string</text>
@@ -120,7 +120,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node53 -->
 <g id="node7" class="node"><title>Node53</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ae8d78a246ac5d178588ef79b9e380b89" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ae8d78a246ac5d178588ef79b9e380b89" target="_top" xlink:title="Return the key representation of the event.">
 <polygon fill="white" stroke="black" points="191,-0.5 191,-30.5 336,-30.5 336,-0.5 191,-0.5"/>
 <text text-anchor="start" x="199" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="263.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::wheel_bind_to_string</text>

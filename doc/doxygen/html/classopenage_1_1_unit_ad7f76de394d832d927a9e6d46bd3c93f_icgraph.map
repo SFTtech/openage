@@ -1,5 +1,5 @@
 <map id="openage::Unit::delete_unit" name="openage::Unit::delete_unit">
-<area shape="rect" id="node1" title=" " alt="" coords="412,13,585,39"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" title=" " alt="" coords="208,5,364,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node1" title="begins unit removal by popping some actions" alt="" coords="412,13,585,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" title="kill a single unit in the selection" alt="" coords="208,5,364,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,5,160,47"/>
 </map>

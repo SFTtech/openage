@@ -1,5 +1,5 @@
 <map id="openage::curve::Discrete::get_time" name="openage::curve::Discrete::get_time">
-<area shape="rect" id="node1" title=" " alt="" coords="5,180,171,221"/>
+<area shape="rect" id="node1" title="Return the last time and keyframe with time &lt;= t." alt="" coords="5,180,171,221"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1curve_1_1tests.xhtml#afc4e799a037edab37e1e35a74da593b7" title=" " alt="" coords="219,180,365,221"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1curve_1_1tests.xhtml#aafe8d47259322a390c43cae62d308296" title=" " alt="" coords="413,5,560,47"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1curve_1_1tests.xhtml#a994d019a14acd704605a0ccff85558c8" title=" " alt="" coords="413,71,560,112"/>

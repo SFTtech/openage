@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-299 113,-299 113,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="initiates a move action when given a valid target">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-90.5 109,-90.5 109,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="54.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAbility</text>
 <polyline fill="none" stroke="black" points="0,-71.5 109,-71.5 "/>
@@ -26,7 +26,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_ability.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_ability.xhtml" target="_top" xlink:title="Abilities create an action when given a target some abilities target positions such as moving or patr...">
 <polygon fill="white" stroke="black" points="2.5,-127.5 2.5,-294.5 106.5,-294.5 106.5,-127.5 2.5,-127.5"/>
 <text text-anchor="middle" x="54.5" y="-282.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAbility</text>
 <polyline fill="none" stroke="black" points="2.5,-275.5 106.5,-275.5 "/>

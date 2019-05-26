@@ -102,9 +102,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Runs code() on construction. </para>
     </briefdescription>
     <detaileddescription>
-<para>Runs code() on construction.</para>
 <para>Designed for use as a global object. Note that your regular dynamic initialization order concerns apply.</para>
 <para>Example:</para>
 <para>// anonymous namespace as container for these global objects namespace { <ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">util::OnInit</ref> stuff_to_be_done_on_initialization([]() { do_stuff(1 * 2 + 3); }); } </para>

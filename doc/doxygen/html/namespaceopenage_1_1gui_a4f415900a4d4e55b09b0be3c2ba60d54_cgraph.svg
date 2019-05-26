@@ -19,7 +19,7 @@
 </g>
 <!-- Node45 -->
 <g id="node2" class="node"><title>Node45</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title="Get the subtexture coordinates by its id.">
 <polygon fill="white" stroke="black" points="176.5,-44.5 176.5,-74.5 287.5,-74.5 287.5,-44.5 176.5,-44.5"/>
 <text text-anchor="start" x="184.5" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="232" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">_subtexture</text>

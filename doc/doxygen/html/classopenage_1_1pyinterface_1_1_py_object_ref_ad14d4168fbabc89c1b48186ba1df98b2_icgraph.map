@@ -1,4 +1,4 @@
 <map id="openage::pyinterface::PyObjectRef::equals" name="openage::pyinterface::PyObjectRef::equals">
-<area shape="rect" id="node1" title=" " alt="" coords="196,5,345,47"/>
+<area shape="rect" id="node1" title="obj == other" alt="" coords="196,5,345,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1pyinterface_1_1tests.xhtml#ad69d94519ba25682897d8da53beb86df" title=" " alt="" coords="5,5,148,47"/>
 </map>

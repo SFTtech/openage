@@ -1,6 +1,6 @@
 <map id="openage::Unit::stop_actions" name="openage::Unit::stop_actions">
-<area shape="rect" id="node1" title=" " alt="" coords="613,5,748,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#aef7363eab8f805124114c4967470379d" title=" " alt="" coords="392,13,565,39"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#a627bc25cc4e546ff34b06cfa809f8946" title=" " alt="" coords="203,5,344,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" title=" " alt="" coords="5,13,155,39"/>
+<area shape="rect" id="node1" title="removes all actions above and including the first interuptable action this will stop any of the units..." alt="" coords="613,5,748,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#aef7363eab8f805124114c4967470379d" title="applies one command using a chosen ability locks the command queue mutex while operating" alt="" coords="392,13,565,39"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#a627bc25cc4e546ff34b06cfa809f8946" title="applies new commands as part of the units update process" alt="" coords="203,5,344,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" title="update this object using the action currently on top of the stack" alt="" coords="5,13,155,39"/>
 </map>

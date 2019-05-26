@@ -1,6 +1,6 @@
 <map id="openage::renderer::opengl::GlGeometry::GlMesh" name="openage::renderer::opengl::GlGeometry::GlMesh">
 <area shape="rect" id="node1" title="All the pieces of OpenGL state that represent a mesh." alt="" coords="63,463,210,613"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_buffer.xhtml" title=" " alt="" coords="5,249,140,400"/>
-<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" title=" " alt="" coords="93,5,252,200"/>
-<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array.xhtml" title=" " alt="" coords="164,279,315,371"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_buffer.xhtml" title="Represents an OpenGL buffer of memory allocated on the GPU." alt="" coords="5,249,140,400"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" title="A base class for all classes representing OpenGL Objects to inherit from." alt="" coords="93,5,252,200"/>
+<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array.xhtml" title="An OpenGL Vertex Array Object." alt="" coords="164,279,315,371"/>
 </map>

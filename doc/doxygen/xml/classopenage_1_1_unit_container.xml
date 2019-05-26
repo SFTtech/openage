@@ -24,9 +24,9 @@
         <argsstring></argsstring>
         <name>live_units</name>
         <briefdescription>
+<para>mapping unit ids to unit objects </para>
         </briefdescription>
         <detaileddescription>
-<para>mapping unit ids to unit objects </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -44,9 +44,9 @@
         <argsstring></argsstring>
         <name>terrain</name>
         <briefdescription>
+<para><ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> for initialising new units. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> for initialising new units </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -95,7 +95,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.cpp" bodystart="58" bodyend="60"/>
         <references refid="classopenage_1_1_unit_container_1a124e91ee902b8ad8c4f59a239e0eacb2" compoundref="unit__container_8h" startline="140">live_units</references>
-        <referencedby refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1ae6761d88280466d1d1b5c638e7c7a042" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_container_1a92cc414be8c128d27d1cd27326d05c7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -107,9 +107,9 @@
           <declname>t</declname>
         </param>
         <briefdescription>
+<para>sets terrain to initialise units on </para>
         </briefdescription>
         <detaileddescription>
-<para>sets terrain to initialise units on </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -122,9 +122,9 @@
         <argsstring>() const</argsstring>
         <name>get_terrain</name>
         <briefdescription>
+<para>returns the terrain which units are placed on </para>
         </briefdescription>
         <detaileddescription>
-<para>returns the terrain which units are placed on </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -144,9 +144,9 @@
           <declname>id</declname>
         </param>
         <briefdescription>
+<para>checks the id is valid </para>
         </briefdescription>
         <detaileddescription>
-<para>checks the id is valid </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -164,9 +164,9 @@
           <declname>id</declname>
         </param>
         <briefdescription>
+<para>returns a reference to a unit </para>
         </briefdescription>
         <detaileddescription>
-<para>returns a reference to a unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -180,9 +180,9 @@
         <argsstring>()</argsstring>
         <name>new_unit</name>
         <briefdescription>
+<para>creates a new unit without initialising </para>
         </briefdescription>
         <detaileddescription>
-<para>creates a new unit without initialising </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -211,9 +211,9 @@
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>adds a new unit to the container and initialises using a unit type </para>
         </briefdescription>
         <detaileddescription>
-<para>adds a new unit to the container and initialises using a unit type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -245,9 +245,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>adds a new unit to the container and initialises using a unit type places outside an existing object using the player of that object </para>
         </briefdescription>
         <detaileddescription>
-<para>adds a new unit to the container and initialises using a unit type places outside an existing object using the player of that object </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -274,9 +274,9 @@
           <declname>cmd</declname>
         </param>
         <briefdescription>
+<para>give a command to a unit <ndash/> unit creation and deletion should be done as commands </para>
         </briefdescription>
         <detaileddescription>
-<para>give a command to a unit <ndash/> unit creation and deletion should be done as commands </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -292,9 +292,10 @@
           <declname>lastframe_duration</declname>
         </param>
         <briefdescription>
+<para>update dispatched by the game engine on each physics tick. </para>
         </briefdescription>
         <detaileddescription>
-<para>update dispatched by the game engine on each physics tick. this will update all game objects. </para>
+<para>this will update all game objects. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -308,22 +309,22 @@
         <argsstring>()</argsstring>
         <name>all_units</name>
         <briefdescription>
+<para>gets a list of all units in the container </para>
         </briefdescription>
         <detaileddescription>
-<para>gets a list of all units in the container </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.h" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.cpp" bodystart="164" bodyend="170"/>
         <references refid="classopenage_1_1_unit_container_1a124e91ee902b8ad8c4f59a239e0eacb2" compoundref="unit__container_8h" startline="140">live_units</references>
         <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
-        <referencedby refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1afc1134c3c633c8bddb614ecb3da48eb2" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>the list of units that are currently in use will also give a view of the current game state for networking in later milestones </para>
     </briefdescription>
     <detaileddescription>
-<para>the list of units that are currently in use will also give a view of the current game state for networking in later milestones </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5497">

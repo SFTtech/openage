@@ -97,20 +97,26 @@ $(document).ready(function(){initNavTree('structopenage_1_1log_1_1message.xhtml'
 </div><!--header-->
 <div class="contents">
 
+<p>A complete log/exception message, containing a text message and metadata.  
+ <a href="structopenage_1_1log_1_1message.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="message_8h_source.xhtml">message.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::log::message:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a45dd1bfdd4fc1c55af0c093dac14b624"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624">init</a> ()</td></tr>
+<tr class="memdesc:a45dd1bfdd4fc1c55af0c093dac14b624"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all members except for filename, lineno, functionname and level.  <a href="#a45dd1bfdd4fc1c55af0c093dac14b624">More...</a><br /></td></tr>
 <tr class="separator:a45dd1bfdd4fc1c55af0c093dac14b624"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f25c53eaa48cd37d1d5753e53db9549"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1log_1_1message.xhtml#a9f25c53eaa48cd37d1d5753e53db9549">init_with_metadata_copy</a> (const std::string &amp;<a class="el" href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">filename</a>, const std::string &amp;<a class="el" href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">functionname</a>)</td></tr>
+<tr class="memdesc:a9f25c53eaa48cd37d1d5753e53db9549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all members except for lineno and level.  <a href="#a9f25c53eaa48cd37d1d5753e53db9549">More...</a><br /></td></tr>
 <tr class="separator:a9f25c53eaa48cd37d1d5753e53db9549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -118,24 +124,30 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a8c610dd442b678978bf3414c61a69695"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1log_1_1message.xhtml#a8c610dd442b678978bf3414c61a69695">text</a></td></tr>
 <tr class="separator:a8c610dd442b678978bf3414c61a69695"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3ad82d38502272df446a781982b4fc0"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">filename</a></td></tr>
+<tr class="memdesc:ac3ad82d38502272df446a781982b4fc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The filename where the message has been constructed.  <a href="#ac3ad82d38502272df446a781982b4fc0">More...</a><br /></td></tr>
 <tr class="separator:ac3ad82d38502272df446a781982b4fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae21f5b04f1658aa09f0cf00eaf3b482e"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1log_1_1message.xhtml#ae21f5b04f1658aa09f0cf00eaf3b482e">lineno</a></td></tr>
+<tr class="memdesc:ae21f5b04f1658aa09f0cf00eaf3b482e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The line number where the message has been constructed.  <a href="#ae21f5b04f1658aa09f0cf00eaf3b482e">More...</a><br /></td></tr>
 <tr class="separator:ae21f5b04f1658aa09f0cf00eaf3b482e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45eb775bf38f7423cd7fb27895d17e06"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">functionname</a></td></tr>
+<tr class="memdesc:a45eb775bf38f7423cd7fb27895d17e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">The (pretty) function name where the message has been constructed.  <a href="#a45eb775bf38f7423cd7fb27895d17e06">More...</a><br /></td></tr>
 <tr class="separator:a45eb775bf38f7423cd7fb27895d17e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bfced2ea9be3c5943d269dcb2094b96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenage_1_1log_1_1level.xhtml">level</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1log_1_1message.xhtml#a6bfced2ea9be3c5943d269dcb2094b96">lvl</a></td></tr>
+<tr class="memdesc:a6bfced2ea9be3c5943d269dcb2094b96"><td class="mdescLeft">&#160;</td><td class="mdescRight">The log level.  <a href="#a6bfced2ea9be3c5943d269dcb2094b96">More...</a><br /></td></tr>
 <tr class="separator:a6bfced2ea9be3c5943d269dcb2094b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5042e9fbcd8e802dcd75346ce1fc03c7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1log_1_1message.xhtml#a5042e9fbcd8e802dcd75346ce1fc03c7">thread_id</a></td></tr>
+<tr class="memdesc:a5042e9fbcd8e802dcd75346ce1fc03c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A unique id for the thread where the message has been constructed.  <a href="#a5042e9fbcd8e802dcd75346ce1fc03c7">More...</a><br /></td></tr>
 <tr class="separator:a5042e9fbcd8e802dcd75346ce1fc03c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4a1ced68cb228cfb824b5d185be726d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1log_1_1message.xhtml#ad4a1ced68cb228cfb824b5d185be726d">timestamp</a></td></tr>
+<tr class="memdesc:ad4a1ced68cb228cfb824b5d185be726d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A (nanosecond-resolution) timestamp of the message construction.  <a href="#ad4a1ced68cb228cfb824b5d185be726d">More...</a><br /></td></tr>
 <tr class="separator:ad4a1ced68cb228cfb824b5d185be726d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A complete log/exception message, containing a text message and metadata.</p>
-<p>The preferred way of creating a <code>message</code> object is to use <a class="el" href="classopenage_1_1log_1_1_message_builder.xhtml">MessageBuilder</a> via the MSG macro. <a class="el" href="classopenage_1_1log_1_1_message_builder.xhtml">MessageBuilder</a> is auto-converted to message when needed.</p>
+<div class="textblock"><p>A complete log/exception message, containing a text message and metadata. </p>
+<p>The preferred way of creating a <code>message</code> object is to use <a class="el" href="classopenage_1_1log_1_1_message_builder.xhtml" title="Wrapper around a log message that allows appending to the message with operator &lt;&lt;.">MessageBuilder</a> via the MSG macro. <a class="el" href="classopenage_1_1log_1_1_message_builder.xhtml" title="Wrapper around a log message that allows appending to the message with operator &lt;&lt;.">MessageBuilder</a> is auto-converted to message when needed.</p>
 <p>pxd:</p>
 <p>cppclass message: string text char *filename unsigned lineno const char *functionname level lvl size_t thread_id int64_t timestamp</p>
-<p>void <a class="el" href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624">init()</a> except + void init_with_metadata_copy(string filename, string functionname) except + </p>
+<p>void <a class="el" href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624" title="Sets all members except for filename, lineno, functionname and level.">init()</a> except + void init_with_metadata_copy(string filename, string functionname) except + </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00057">57</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -153,13 +165,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Sets all members except for filename, lineno, functionname and level. </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8cpp_source.xhtml#l00017">17</a> of file <a class="el" href="message_8cpp_source.xhtml">message.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                   {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#a5042e9fbcd8e802dcd75346ce1fc03c7">thread_id</a> = <a class="code" href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f">util::get_current_thread_id</a>();</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#ad4a1ced68cb228cfb824b5d185be726d">timestamp</a> = <a class="code" href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb">timing::get_real_time</a>();</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="ttc" id="structopenage_1_1log_1_1message_xhtml_a5042e9fbcd8e802dcd75346ce1fc03c7"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#a5042e9fbcd8e802dcd75346ce1fc03c7">openage::log::message::thread_id</a></div><div class="ttdeci">size_t thread_id</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00083">message.h:83</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1util_xhtml_ac99f61e1d0c06d9b83650a71cff2f02f"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f">openage::util::get_current_thread_id</a></div><div class="ttdeci">size_t get_current_thread_id()</div><div class="ttdef"><b>Definition:</b> <a href="thread__id_8cpp_source.xhtml#l00044">thread_id.cpp:44</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1timing_xhtml_aea51f4c8e71a8c326e3dd9dcc05c00eb"><div class="ttname"><a href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb">openage::timing::get_real_time</a></div><div class="ttdeci">time_nsec_t get_real_time()</div><div class="ttdef"><b>Definition:</b> <a href="timing_8cpp_source.xhtml#l00013">timing.cpp:13</a></div></div>
-<div class="ttc" id="structopenage_1_1log_1_1message_xhtml_ad4a1ced68cb228cfb824b5d185be726d"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#ad4a1ced68cb228cfb824b5d185be726d">openage::log::message::timestamp</a></div><div class="ttdeci">int64_t timestamp</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00088">message.h:88</a></div></div>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                   {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#a5042e9fbcd8e802dcd75346ce1fc03c7">thread_id</a> = <a class="code" href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f">util::get_current_thread_id</a>();</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#ad4a1ced68cb228cfb824b5d185be726d">timestamp</a> = <a class="code" href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb">timing::get_real_time</a>();</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="ttc" id="structopenage_1_1log_1_1message_xhtml_a5042e9fbcd8e802dcd75346ce1fc03c7"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#a5042e9fbcd8e802dcd75346ce1fc03c7">openage::log::message::thread_id</a></div><div class="ttdeci">size_t thread_id</div><div class="ttdoc">A unique id for the thread where the message has been constructed.</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00083">message.h:83</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_ac99f61e1d0c06d9b83650a71cff2f02f"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f">openage::util::get_current_thread_id</a></div><div class="ttdeci">size_t get_current_thread_id()</div><div class="ttdoc">Returns the unique identifier of the current thread.</div><div class="ttdef"><b>Definition:</b> <a href="thread__id_8cpp_source.xhtml#l00044">thread_id.cpp:44</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1timing_xhtml_aea51f4c8e71a8c326e3dd9dcc05c00eb"><div class="ttname"><a href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb">openage::timing::get_real_time</a></div><div class="ttdeci">time_nsec_t get_real_time()</div><div class="ttdoc">returns the number of nanoseconds since the UNIX epoch.</div><div class="ttdef"><b>Definition:</b> <a href="timing_8cpp_source.xhtml#l00013">timing.cpp:13</a></div></div>
+<div class="ttc" id="structopenage_1_1log_1_1message_xhtml_ad4a1ced68cb228cfb824b5d185be726d"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#ad4a1ced68cb228cfb824b5d185be726d">openage::log::message::timestamp</a></div><div class="ttdeci">int64_t timestamp</div><div class="ttdoc">A (nanosecond-resolution) timestamp of the message construction.</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00088">message.h:88</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="thread__id_8cpp_source.xhtml#l00044">openage::util::get_current_thread_id()</a>, <a class="el" href="timing_8cpp_source.xhtml#l00013">openage::timing::get_real_time()</a>, <a class="el" href="message_8h_source.xhtml#l00083">thread_id</a>, and <a class="el" href="message_8h_source.xhtml#l00088">timestamp</a>.</p>
 
@@ -169,14 +182,16 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message_a45dd1bfdd4fc1c55af0c093dac14b624_cgraph.svg" width="356" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message_a45dd1bfdd4fc1c55af0c093dac14b624_cgraph.svg" width="356" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message_a45dd1bfdd4fc1c55af0c093dac14b624_icgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message_a45dd1bfdd4fc1c55af0c093dac14b624_icgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -206,15 +221,16 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets all members except for lineno and level.</p>
+
+<p>Sets all members except for lineno and level. </p>
 <p>filename and functionname are copied to an internal cache.</p>
 <p>Designed to be used when filename and functionname are temporary objects (e.g. from Python). </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8cpp_source.xhtml#l00023">23</a> of file <a class="el" href="message_8cpp_source.xhtml">message.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                                                              {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">static</span> std::unordered_set&lt;std::string&gt; stringconstants;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">static</span> std::mutex stringconstants_mutex;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::lock_guard&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{stringconstants_mutex};</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624">init</a>();</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">filename</a> = stringconstants.insert(<a class="code" href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">filename</a>).first-&gt;c_str();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">functionname</a> = stringconstants.insert(<a class="code" href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">functionname</a>).first-&gt;c_str();</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="structopenage_1_1log_1_1message_xhtml_ac3ad82d38502272df446a781982b4fc0"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">openage::log::message::filename</a></div><div class="ttdeci">const char * filename</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00063">message.h:63</a></div></div>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                                                              {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">static</span> std::unordered_set&lt;std::string&gt; stringconstants;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">static</span> std::mutex stringconstants_mutex;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::lock_guard&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{stringconstants_mutex};</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624">init</a>();</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">filename</a> = stringconstants.insert(<a class="code" href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">filename</a>).first-&gt;c_str();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">functionname</a> = stringconstants.insert(<a class="code" href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">functionname</a>).first-&gt;c_str();</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="structopenage_1_1log_1_1message_xhtml_ac3ad82d38502272df446a781982b4fc0"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">openage::log::message::filename</a></div><div class="ttdeci">const char * filename</div><div class="ttdoc">The filename where the message has been constructed.</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00063">message.h:63</a></div></div>
 <div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
-<div class="ttc" id="structopenage_1_1log_1_1message_xhtml_a45dd1bfdd4fc1c55af0c093dac14b624"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624">openage::log::message::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="message_8cpp_source.xhtml#l00017">message.cpp:17</a></div></div>
-<div class="ttc" id="structopenage_1_1log_1_1message_xhtml_a45eb775bf38f7423cd7fb27895d17e06"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">openage::log::message::functionname</a></div><div class="ttdeci">const char * functionname</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00073">message.h:73</a></div></div>
+<div class="ttc" id="structopenage_1_1log_1_1message_xhtml_a45dd1bfdd4fc1c55af0c093dac14b624"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624">openage::log::message::init</a></div><div class="ttdeci">void init()</div><div class="ttdoc">Sets all members except for filename, lineno, functionname and level.</div><div class="ttdef"><b>Definition:</b> <a href="message_8cpp_source.xhtml#l00017">message.cpp:17</a></div></div>
+<div class="ttc" id="structopenage_1_1log_1_1message_xhtml_a45eb775bf38f7423cd7fb27895d17e06"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">openage::log::message::functionname</a></div><div class="ttdeci">const char * functionname</div><div class="ttdoc">The (pretty) function name where the message has been constructed.</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00073">message.h:73</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="message_8h_source.xhtml#l00063">filename</a>, <a class="el" href="message_8h_source.xhtml#l00073">functionname</a>, <a class="el" href="message_8cpp_source.xhtml#l00017">init()</a>, and <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -222,7 +238,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message_a9f25c53eaa48cd37d1d5753e53db9549_cgraph.svg" width="578" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message_a9f25c53eaa48cd37d1d5753e53db9549_cgraph.svg" width="578" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -239,6 +256,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>The filename where the message has been constructed. </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00063">63</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
@@ -258,6 +276,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>The (pretty) function name where the message has been constructed. </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00073">73</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
@@ -277,6 +296,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>The line number where the message has been constructed. </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00068">68</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
@@ -296,6 +316,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>The log level. </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00078">78</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
@@ -333,6 +354,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>A unique id for the thread where the message has been constructed. </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00083">83</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
@@ -352,6 +374,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>A (nanosecond-resolution) timestamp of the message construction. </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00088">88</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>

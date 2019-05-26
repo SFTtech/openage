@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 279,-73.5 279,4 -4,4"/>
 <!-- Node140 -->
 <g id="node1" class="node"><title>Node140</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="unregisters all remaining components">
 <polygon fill="#bfbfbf" stroke="black" points="167,-22.5 167,-52.5 275,-52.5 275,-22.5 167,-22.5"/>
 <text text-anchor="start" x="175" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="221" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister_all</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node141 -->
 <g id="node2" class="node"><title>Node141</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#a659dbbf399baf90582f4d8c5b497babc" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#a659dbbf399baf90582f4d8c5b497babc" target="_top" xlink:title="engine destructor, cleans up memory etc.">
 <polygon fill="white" stroke="black" points="0,-50 0,-69 131,-69 131,-50 0,-50"/>
 <text text-anchor="middle" x="65.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::~Engine</text>
 </a>

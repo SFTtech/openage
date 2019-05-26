@@ -1,10 +1,10 @@
 <map id="openage::util::read_csv_file" name="openage::util::read_csv_file">
-<area shape="rect" id="node1" title=" " alt="" coords="5,122,135,163"/>
+<area shape="rect" id="node1" title="read a single csv file." alt="" coords="5,122,135,163"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1_file.xhtml#a4712008e4434f121e00ba41a29789db9" title=" " alt="" coords="185,57,311,98"/>
 <area shape="rect" id="node6" href="$classopenage_1_1util_1_1_path.xhtml#a5b429e300ae4a048dbbd1a733bc1452a" title=" " alt="" coords="183,187,313,229"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="361,5,555,32"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885" title=" " alt="" coords="395,57,521,98"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="603,5,729,32"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885" title="Read data from the file and return a string." alt="" coords="395,57,521,98"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="603,5,729,32"/>
 <area shape="rect" id="node7" href="$classopenage_1_1util_1_1_path.xhtml#a5a01e1d52b588996b036fb52b81f3d8a" title=" " alt="" coords="393,122,523,163"/>
 <area shape="rect" id="node8" href="$classopenage_1_1util_1_1_path.xhtml#aa490b4ca4f053611b439d4b3956b2451" title=" " alt="" coords="393,187,523,229"/>
 <area shape="rect" id="node9" href="$classopenage_1_1util_1_1_path.xhtml#ab7d7932d536db76983f9770016f724f2" title=" " alt="" coords="393,253,523,294"/>

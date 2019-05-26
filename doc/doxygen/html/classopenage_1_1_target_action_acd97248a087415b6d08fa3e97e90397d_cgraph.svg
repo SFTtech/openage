@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-117.5 450,-117.5 450,4 -4,4"/>
 <!-- Node10 -->
 <g id="node1" class="node"><title>Node10</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="gets called for all actions on stack each update cycle">
 <polygon fill="#bfbfbf" stroke="black" points="0,-39 0,-69 114,-69 114,-39 0,-39"/>
 <text text-anchor="start" x="8" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TargetAction</text>
 <text text-anchor="middle" x="57" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::completed</text>

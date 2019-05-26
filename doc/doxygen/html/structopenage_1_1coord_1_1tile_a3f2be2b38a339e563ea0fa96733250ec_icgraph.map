@@ -1,4 +1,4 @@
 <map id="openage::coord::tile::to_viewport" name="openage::coord::tile::to_viewport">
 <area shape="rect" id="node1" title=" " alt="" coords="211,5,347,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" title=" " alt="" coords="5,13,163,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" title="Draws the texture at tile coordinates." alt="" coords="5,13,163,39"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-171.5 466,-171.5 466,4 -4,4"/>
 <!-- Node24 -->
 <g id="node1" class="node"><title>Node24</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="#bfbfbf" stroke="black" points="0,-49.5 0,-79.5 128,-79.5 128,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchAction</text>
 <text text-anchor="middle" x="64" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node25 -->
 <g id="node2" class="node"><title>Node25</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_research.xhtml#a51f059ce7313e37d3848481309b1dbd4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_research.xhtml#a51f059ce7313e37d3848481309b1dbd4" target="_top" xlink:title="Apply the modifications to the owner player.">
 <polygon fill="white" stroke="black" points="167,-98.5 167,-128.5 274,-128.5 274,-98.5 167,-98.5"/>
 <text text-anchor="start" x="175" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Research::</text>
 <text text-anchor="middle" x="220.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">apply</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node29 -->
 <g id="node6" class="node"><title>Node29</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_research.xhtml#a856a40cfbef178effe2753a2348280d9" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_research.xhtml#a856a40cfbef178effe2753a2348280d9" target="_top" xlink:title="Called when a unit completed researching this research.">
 <polygon fill="white" stroke="black" points="167,-49.5 167,-79.5 274,-79.5 274,-49.5 167,-49.5"/>
 <text text-anchor="start" x="175" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Research::</text>
 <text text-anchor="middle" x="220.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">completed</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node26 -->
 <g id="node3" class="node"><title>Node26</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe" target="_top" xlink:title="Advance to next age;.">
 <polygon fill="white" stroke="black" points="313,-148 313,-167 462,-167 462,-148 313,-148"/>
 <text text-anchor="middle" x="387.5" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::advance_age</text>
 </a>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node27 -->
 <g id="node4" class="node"><title>Node27</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83" target="_top" xlink:title="Performs the modifications (eg.">
 <polygon fill="white" stroke="black" points="326.5,-98.5 326.5,-128.5 448.5,-128.5 448.5,-98.5 326.5,-98.5"/>
 <text text-anchor="start" x="334.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchType</text>
 <text text-anchor="middle" x="387.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::apply</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node28 -->
 <g id="node5" class="node"><title>Node28</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92" target="_top" xlink:title="Gets the research category of the research.">
 <polygon fill="white" stroke="black" points="326.5,-49.5 326.5,-79.5 448.5,-79.5 448.5,-49.5 326.5,-49.5"/>
 <text text-anchor="start" x="334.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchType</text>
 <text text-anchor="middle" x="387.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::category</text>

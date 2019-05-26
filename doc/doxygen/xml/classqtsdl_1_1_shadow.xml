@@ -97,9 +97,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Shadows inherited member functions. </para>
     </briefdescription>
     <detaileddescription>
-<para>Shadows inherited member functions. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6562">

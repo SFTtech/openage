@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1struct_1_1_fla
 </div><!--header-->
 <div class="contents">
 
-<p>Designed to be inherited from, similar to <a class="el" href="classopenage_1_1util_1_1_enum.xhtml">Enum</a>.  
+<p>Designed to be inherited from, similar to <a class="el" href="classopenage_1_1util_1_1_enum.xhtml" title="Container for possible enum values.">Enum</a>.  
  <a href="classopenage_1_1util_1_1struct_1_1_flags.xhtml#details">More...</a></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.util.struct.Flags:</div>
@@ -136,7 +136,7 @@ Static Private Attributes</h2></td></tr>
 <tr class="separator:a8a170009d09cddd227fda40f8a9e0bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Designed to be inherited from, similar to <a class="el" href="classopenage_1_1util_1_1_enum.xhtml">Enum</a>. </p>
+<div class="textblock"><p>Designed to be inherited from, similar to <a class="el" href="classopenage_1_1util_1_1_enum.xhtml" title="Container for possible enum values.">Enum</a>. </p>
 <p>Used to generate flag parsers (for boolean flags that are stored in an integer value).</p>
 <p>Specify the bit numbers of all possible flags as attributes, e.g.:</p>
 <p>class MyFlags(Flags): thisflag = 0 thatflag = 1</p>
@@ -171,7 +171,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="struct_8py_source.xhtml#l00291">291</a> of file <a class="el" href="struct_8py_source.xhtml">struct.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="stringliteral">&quot;unknown flag values: &quot;</span> + bin(unknownflags) + <span class="stringliteral">&quot; &quot;</span></div><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="stringliteral">&quot;in addition to existing flags: &quot;</span> + <a class="code" href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">str</a>(self.as_dict()))</div><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keyword">def </span>as_dict(self):</div><div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="stringliteral">        Returns a key-value dict for all flags.</span></div><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div><div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="keywordflow">return</span> {flagname: getattr(self, flagname)</div><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                <span class="keywordflow">for</span> flagname <span class="keywordflow">in</span> self._flags.values()}</div><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keyword">def </span>__repr__(self):</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a4d2bbe46a5d10404c658b54f3b199551"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">openage::py::str</a></div><div class="ttdeci">Obj str(const std::string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00331">pyobject.cpp:331</a></div></div>
+<div class="fragment"><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="stringliteral">&quot;unknown flag values: &quot;</span> + bin(unknownflags) + <span class="stringliteral">&quot; &quot;</span></div><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="stringliteral">&quot;in addition to existing flags: &quot;</span> + <a class="code" href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">str</a>(self.as_dict()))</div><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keyword">def </span>as_dict(self):</div><div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="stringliteral">        Returns a key-value dict for all flags.</span></div><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div><div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="keywordflow">return</span> {flagname: getattr(self, flagname)</div><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                <span class="keywordflow">for</span> flagname <span class="keywordflow">in</span> self._flags.values()}</div><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keyword">def </span>__repr__(self):</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a4d2bbe46a5d10404c658b54f3b199551"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">openage::py::str</a></div><div class="ttdeci">Obj str(const std::string &amp;value)</div><div class="ttdoc">str(value);</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00331">pyobject.cpp:331</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="struct_8py_source.xhtml#l00289">openage.util.struct.Flags._flags</a>, and <a class="el" href="struct_8py_source.xhtml#l00305">openage.util.struct.Flags.unknown()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -179,7 +179,8 @@ Static Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_a3407f22b41e48ab3863a9f593435933e_cgraph.svg" width="100%" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_a3407f22b41e48ab3863a9f593435933e_cgraph.svg" width="100%" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -209,7 +210,8 @@ Static Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_a9f6a718342072c143f8d66ebf9f5ff53_cgraph.svg" width="100%" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_a9f6a718342072c143f8d66ebf9f5ff53_cgraph.svg" width="100%" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -286,7 +288,8 @@ Static Private Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_aff72d5cb5a508e186cc5ff6fe122b165_cgraph.svg" width="100%" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_aff72d5cb5a508e186cc5ff6fe122b165_cgraph.svg" width="100%" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>

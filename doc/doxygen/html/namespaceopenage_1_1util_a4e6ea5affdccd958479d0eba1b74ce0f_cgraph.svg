@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-122.5 281,-122.5 281,4 -4,4"/>
 <!-- Node277 -->
 <g id="node1" class="node"><title>Node277</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="FixedPoint / N.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-55 0,-74 116,-74 116,-55 0,-55"/>
 <text text-anchor="middle" x="58" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::operator/</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node278 -->
 <g id="node2" class="node"><title>Node278</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8" target="_top" xlink:title="implements the &#39;correct&#39; version of the division operator, which always rounds to &#45;inf">
 <polygon fill="white" stroke="black" points="170,-99 170,-118 259,-118 259,-99 170,-99"/>
 <text text-anchor="middle" x="214.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::div</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node279 -->
 <g id="node3" class="node"><title>Node279</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="152,-49.5 152,-79.5 277,-79.5 277,-49.5 152,-49.5"/>
 <text text-anchor="start" x="160" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="214.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node280 -->
 <g id="node4" class="node"><title>Node280</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="152,-0.5 152,-30.5 277,-30.5 277,-0.5 152,-0.5"/>
 <text text-anchor="start" x="160" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="214.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

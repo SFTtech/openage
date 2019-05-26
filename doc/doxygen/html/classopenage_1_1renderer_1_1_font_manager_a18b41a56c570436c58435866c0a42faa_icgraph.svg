@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-95.5 268,-95.5 268,4 -4,4"/>
 <!-- Node24 -->
 <g id="node1" class="node"><title>Node24</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Gets the filepath of a particular font family and style.">
 <polygon fill="#bfbfbf" stroke="black" points="150,-22 150,-63 264,-63 264,-22 150,-22"/>
 <text text-anchor="start" x="158" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="158" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">FontManager::get_font</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node25 -->
 <g id="node2" class="node"><title>Node25</title>
-<g id="a_node2"><a xlink:href="structopenage_1_1renderer_1_1font__description.xhtml#a9b6afa901b4a5a7b433aa014ce4b6929" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="structopenage_1_1renderer_1_1font__description.xhtml#a9b6afa901b4a5a7b433aa014ce4b6929" target="_top" xlink:title="Constructs a font_description instance.">
 <polygon fill="white" stroke="black" points="3.5,-50 3.5,-91 110.5,-91 110.5,-50 3.5,-50"/>
 <text text-anchor="start" x="11.5" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="11.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">font_description::font</text>
@@ -36,7 +36,7 @@
 </g>
 <!-- Node26 -->
 <g id="node3" class="node"><title>Node26</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_font_manager.xhtml#a099c7a53ec483208d26f1d33c52dcbef" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_font_manager.xhtml#a099c7a53ec483208d26f1d33c52dcbef" target="_top" xlink:title="Retrieves a font.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 114,-30.5 114,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="57" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">FontManager::get_font</text>

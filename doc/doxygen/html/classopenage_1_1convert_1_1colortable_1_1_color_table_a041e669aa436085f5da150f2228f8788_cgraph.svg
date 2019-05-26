@@ -20,7 +20,7 @@
 </g>
 <!-- Node43 -->
 <g id="node2" class="node"><title>Node43</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6" target="_top" xlink:title="Split a string at a delimiter into a vector.">
 <polygon fill="white" stroke="black" points="171,-6 171,-25 267,-25 267,-6 171,-6"/>
 <text text-anchor="middle" x="219" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::split</text>
 </a>

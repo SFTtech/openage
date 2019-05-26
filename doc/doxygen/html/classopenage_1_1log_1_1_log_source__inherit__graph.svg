@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-475 418.5,-475 418.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Any class that wants to provide .log() shall inherit from this.">
 <polygon fill="#bfbfbf" stroke="black" points="162,-369.5 162,-470.5 287,-470.5 287,-369.5 162,-369.5"/>
 <text text-anchor="middle" x="224.5" y="-458.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource</text>
 <polyline fill="none" stroke="black" points="162,-451.5 287,-451.5 "/>
@@ -73,7 +73,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_named_log_source.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_named_log_source.xhtml" target="_top" xlink:title="Simple pure log source class with a string name.">
 <polygon fill="white" stroke="black" points="0,-132.5 0,-200.5 155,-200.5 155,-132.5 0,-132.5"/>
 <text text-anchor="middle" x="77.5" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::NamedLogSource</text>
 <polyline fill="none" stroke="black" points="0,-181.5 155,-181.5 "/>
@@ -109,7 +109,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml" target="_top" xlink:title="A game object with current state represented by a stack of actions since this class represents both u...">
 <polygon fill="white" stroke="black" points="294.5,-0.5 294.5,-332.5 414.5,-332.5 414.5,-0.5 294.5,-0.5"/>
 <text text-anchor="middle" x="354.5" y="-320.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit</text>
 <polyline fill="none" stroke="black" points="294.5,-313.5 414.5,-313.5 "/>

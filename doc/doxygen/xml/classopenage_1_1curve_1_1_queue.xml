@@ -244,9 +244,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A container that manages events on a timeline. </para>
     </briefdescription>
     <detaileddescription>
-<para>A container that manages events on a timeline. Every event has exactly one time it will happen. This container can be used to store interactions </para>
+<para>Every event has exactly one time it will happen. This container can be used to store interactions </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="1888">

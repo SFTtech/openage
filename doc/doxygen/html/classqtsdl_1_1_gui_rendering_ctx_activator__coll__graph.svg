@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-277 199,-277 199,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Prepares the context for rendering the GUI for one frame.">
 <polygon fill="#bfbfbf" stroke="black" points="2.5,-0.5 2.5,-112.5 157.5,-112.5 157.5,-0.5 2.5,-0.5"/>
 <text text-anchor="middle" x="80" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRenderingCtxActivator</text>
 <polyline fill="none" stroke="black" points="2.5,-93.5 157.5,-93.5 "/>
@@ -28,7 +28,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_rendering_setup_routines.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_rendering_setup_routines.xhtml" target="_top" xlink:title="Returns a GL context usable by Qt classes.">
 <polygon fill="white" stroke="black" points="0,-160.5 0,-272.5 160,-272.5 160,-160.5 0,-160.5"/>
 <text text-anchor="start" x="8" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRenderingSetup</text>
 <text text-anchor="middle" x="80" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00">Routines</text>

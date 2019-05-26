@@ -27,9 +27,9 @@
         <argsstring></argsstring>
         <name>meta</name>
         <briefdescription>
+<para>terrain meta data </para>
         </briefdescription>
         <detaileddescription>
-<para>terrain meta data </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -47,9 +47,9 @@
         <argsstring></argsstring>
         <name>chunks</name>
         <briefdescription>
+<para>maps chunk coordinates to chunks. </para>
         </briefdescription>
         <detaileddescription>
-<para>maps chunk coordinates to chunks. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -105,9 +105,9 @@
         <argsstring>() const</argsstring>
         <name>used_chunks</name>
         <briefdescription>
+<para>returns a list of all referenced chunks </para>
         </briefdescription>
         <detaileddescription>
-<para>returns a list of all referenced chunks </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -129,9 +129,10 @@
           <declname>size</declname>
         </param>
         <briefdescription>
+<para>fill the terrain with given terrain_id values. </para>
         </briefdescription>
         <detaileddescription>
-<para>fill the terrain with given terrain_id values. <simplesect kind="return"><para>whether the data filled on the terrain was cut because of the terrains size limit. </para>
+<para><simplesect kind="return"><para>whether the data filled on the terrain was cut because of the terrains size limit. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -164,9 +165,9 @@
           <defval>true</defval>
         </param>
         <briefdescription>
+<para>Attach a chunk to the terrain, to a given position. </para>
         </briefdescription>
         <detaileddescription>
-<para>Attach a chunk to the terrain, to a given position.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>new_chunk</parametername>
@@ -218,9 +219,9 @@
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>get a terrain chunk by a given chunk position. </para>
         </briefdescription>
         <detaileddescription>
-<para>get a terrain chunk by a given chunk position.</para>
 <para><simplesect kind="return"><para>the chunk if exists, nullptr else </para>
 </simplesect>
 </para>
@@ -244,9 +245,9 @@
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>get a terrain chunk by a given tile position. </para>
         </briefdescription>
         <detaileddescription>
-<para>get a terrain chunk by a given tile position.</para>
 <para><simplesect kind="return"><para>the chunk it exists, nullptr else </para>
 </simplesect>
 </para>
@@ -267,9 +268,9 @@
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>get or create a terrain chunk for a given chunk position. </para>
         </briefdescription>
         <detaileddescription>
-<para>get or create a terrain chunk for a given chunk position.</para>
 <para><simplesect kind="return"><para>the (maybe newly created) chunk </para>
 </simplesect>
 </para>
@@ -294,9 +295,9 @@
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>get or create a terrain chunk for a given tile position. </para>
         </briefdescription>
         <detaileddescription>
-<para>get or create a terrain chunk for a given tile position.</para>
 <para><simplesect kind="return"><para>the (maybe newly created) chunk </para>
 </simplesect>
 </para>
@@ -317,9 +318,9 @@
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>return tile data for the given position. </para>
         </briefdescription>
         <detaileddescription>
-<para>return tile data for the given position.</para>
 <para>the only reason the chunks exist, is because of this data. </para>
         </detaileddescription>
         <inbodydescription>
@@ -343,9 +344,9 @@
           <declname>point</declname>
         </param>
         <briefdescription>
+<para>an object which contains the given point, null otherwise </para>
         </briefdescription>
         <detaileddescription>
-<para>an object which contains the given point, null otherwise </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -366,9 +367,9 @@
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>get the neighbor chunks of a given chunk. </para>
         </briefdescription>
         <detaileddescription>
-<para>get the neighbor chunks of a given chunk.</para>
 <para>chunk neighbor ids: 0 / &lt;- ne 7 1 6 @ 2 5 3 4 \ &lt;- se</para>
 <para>ne se 0: 1 -1 1: 1 0 2: 1 1 3: 0 1 4: -1 1 5: -1 0 6: -1 -1 7: 0 -1</para>
 <para><parameterlist kind="param"><parameteritem>
@@ -403,9 +404,10 @@
           <declname>atlas_size</declname>
         </param>
         <briefdescription>
+<para>return the subtexture offset id for a given tile position. </para>
         </briefdescription>
         <detaileddescription>
-<para>return the subtexture offset id for a given tile position. the maximum offset is determined by the atlas size.</para>
+<para>the maximum offset is determined by the atlas size.</para>
 <para>this function returns always the right value, so that neighbor tiles of the same terrain (like grass-grass) are matching (without blendomatic). -&gt; e.g. grass only map. </para>
         </detaileddescription>
         <inbodydescription>
@@ -424,9 +426,9 @@
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>checks the creation state and premissions of a given tile position. </para>
         </briefdescription>
         <detaileddescription>
-<para>checks the creation state and premissions of a given tile position. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -448,9 +450,9 @@
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>checks whether the given tile position is allowed to exist on this terrain. </para>
         </briefdescription>
         <detaileddescription>
-<para>checks whether the given tile position is allowed to exist on this terrain. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -469,9 +471,9 @@
           <declname>terrain_id</declname>
         </param>
         <briefdescription>
+<para>validate whether the given terrain id is available. </para>
         </briefdescription>
         <detaileddescription>
-<para>validate whether the given terrain id is available. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -494,9 +496,9 @@
           <declname>mask_id</declname>
         </param>
         <briefdescription>
+<para>validate whether the given mask id is available. </para>
         </briefdescription>
         <detaileddescription>
-<para>validate whether the given mask id is available. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -517,9 +519,9 @@
           <declname>terrain_id</declname>
         </param>
         <briefdescription>
+<para>return the blending priority for a given terrain id. </para>
         </briefdescription>
         <detaileddescription>
-<para>return the blending priority for a given terrain id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -539,9 +541,9 @@
           <declname>terrain_id</declname>
         </param>
         <briefdescription>
+<para>return the blending mode/blendomatic mask set for a given terrain id. </para>
         </briefdescription>
         <detaileddescription>
-<para>return the blending mode/blendomatic mask set for a given terrain id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -561,9 +563,9 @@
           <declname>terrain_id</declname>
         </param>
         <briefdescription>
+<para>get the terrain texture for a given terrain id. </para>
         </briefdescription>
         <detaileddescription>
-<para>get the terrain texture for a given terrain id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -584,9 +586,9 @@
           <declname>mask_id</declname>
         </param>
         <briefdescription>
+<para>get the blendomatic mask with the given mask id. </para>
         </briefdescription>
         <detaileddescription>
-<para>get the blendomatic mask with the given mask id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -610,9 +612,9 @@
           <declname>neighbor_id</declname>
         </param>
         <briefdescription>
+<para>return the blending mode id for two given neighbor ids. </para>
         </briefdescription>
         <detaileddescription>
-<para>return the blending mode id for two given neighbor ids. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -634,9 +636,10 @@
           <declname>settings</declname>
         </param>
         <briefdescription>
+<para>draw the currently visible terrain area on screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>draw the currently visible terrain area on screen. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>engine</parametername>
 </parameternamelist>
@@ -692,9 +695,9 @@
           <declname>blending_enabled</declname>
         </param>
         <briefdescription>
+<para>create the drawing instruction data. </para>
         </briefdescription>
         <detaileddescription>
-<para>create the drawing instruction data.</para>
 <para>created draw data according to the given tile boundaries.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -756,9 +759,9 @@
           <declname>blending_enabled</declname>
         </param>
         <briefdescription>
+<para>create rendering and blending information for a single tile on the terrain. </para>
         </briefdescription>
         <detaileddescription>
-<para>create rendering and blending information for a single tile on the terrain. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -798,9 +801,9 @@
           <declname>influences_by_terrain_id</declname>
         </param>
         <briefdescription>
+<para>gather neighbors of a given base tile. </para>
         </briefdescription>
         <detaileddescription>
-<para>gather neighbors of a given base tile.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>basepos</parametername>
@@ -857,9 +860,9 @@
           <declname>influences_by_terrain_id</declname>
         </param>
         <briefdescription>
+<para>look at neighbor tiles around the base_tile, and store the influence bits. </para>
         </briefdescription>
         <detaileddescription>
-<para>look at neighbor tiles around the base_tile, and store the influence bits.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>base_tile</parametername>
@@ -918,9 +921,9 @@
           <declname>influences</declname>
         </param>
         <briefdescription>
+<para>calculate blending masks for a given tile position. </para>
         </briefdescription>
         <detaileddescription>
-<para>calculate blending masks for a given tile position.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>position</parametername>
@@ -975,9 +978,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>the terrain class is the main top-management interface for dealing with cost-benefit analysis to maximize company profits. </para>
     </briefdescription>
     <detaileddescription>
-<para>the terrain class is the main top-management interface for dealing with cost-benefit analysis to maximize company profits.</para>
 <para>actually this is just the entrypoint and container for the terrain chunks. </para>
     </detaileddescription>
     <collaborationgraph>

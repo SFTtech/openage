@@ -66,7 +66,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8" target="_top" xlink:title="Returns the (demangled) symbol name for a given address.">
 <polygon fill="white" stroke="black" points="762,-95.5 762,-114.5 901,-114.5 901,-95.5 762,-95.5"/>
 <text text-anchor="middle" x="831.5" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::symbol_name</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1error_1_1_stack_analyzer.xhtml#ab807f0825ce961e84c901c715cc79976" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1error_1_1_stack_analyzer.xhtml#ab807f0825ce961e84c901c715cc79976" target="_top" xlink:title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge.">
 <polygon fill="white" stroke="black" points="576.5,-173 576.5,-203 725.5,-203 725.5,-173 576.5,-173"/>
 <text text-anchor="start" x="584.5" y="-191" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::StackAnalyzer</text>
 <text text-anchor="middle" x="651" y="-180" font-family="Helvetica,sans-Serif" font-size="10.00">::get_symbols</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1pyinterface_1_1_func.xhtml#a83b9691db46167c2637c86f5a71cb40f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1pyinterface_1_1_func.xhtml#a83b9691db46167c2637c86f5a71cb40f" target="_top" xlink:title="raises an Error if this&#45;&gt;fptr is still uninitialized.">
 <polygon fill="white" stroke="black" points="576,-112.5 576,-153.5 726,-153.5 726,-112.5 576,-112.5"/>
 <text text-anchor="start" x="584" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="start" x="584" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Func&lt; ReturnType, ArgTypes</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node7 -->
 <g id="node5" class="node"><title>Node7</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a591d9bd55fa1f9904547f3f2dcb3796d" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a591d9bd55fa1f9904547f3f2dcb3796d" target="_top" xlink:title="Adds a Python interface component.">
 <polygon fill="white" stroke="black" points="592.5,-63 592.5,-93 709.5,-93 709.5,-63 592.5,-63"/>
 <text text-anchor="start" x="600.5" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="651" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::add_py_if_component</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node9 -->
 <g id="node7" class="node"><title>Node9</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" target="_top" xlink:title="Checks whether all objects that have been registered via add_py_if_component have been properly initi...">
 <polygon fill="white" stroke="black" points="597.5,-14 597.5,-44 704.5,-44 704.5,-14 597.5,-14"/>
 <text text-anchor="start" x="605.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="651" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">::check</text>

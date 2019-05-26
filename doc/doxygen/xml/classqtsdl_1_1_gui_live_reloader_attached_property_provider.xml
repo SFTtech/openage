@@ -24,9 +24,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Non-instantiable type that is needed to use a &apos;LR.tag&apos; attached property. </para>
     </briefdescription>
     <detaileddescription>
-<para>Non-instantiable type that is needed to use a &apos;LR.tag&apos; attached property. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6451">

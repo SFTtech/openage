@@ -317,9 +317,9 @@
           <type>std::ostream &amp;</type>
         </param>
         <briefdescription>
+<para>string representation of the filelike </para>
         </briefdescription>
         <detaileddescription>
-<para>string representation of the filelike </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -328,9 +328,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>File-like class that uses native stdlib functions to access data. </para>
     </briefdescription>
     <detaileddescription>
-<para>File-like class that uses native stdlib functions to access data. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="5747">

@@ -1,5 +1,5 @@
 <map id="openage::util::FixedPoint::to_int" name="openage::util::FixedPoint::to_int">
-<area shape="rect" id="node1" title=" " alt="" coords="233,39,400,80"/>
+<area shape="rect" id="node1" title="Converter to retrieve the int (pre&#45;decimal) part of the number." alt="" coords="233,39,400,80"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1util_1_1tests.xhtml#a66cf54ea365e3f8f1357577ddaa1adfb" title=" " alt="" coords="29,5,162,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a8adbb099a4f7a0db820f923e8ffc1a02" title=" " alt="" coords="5,71,185,112"/>
 </map>

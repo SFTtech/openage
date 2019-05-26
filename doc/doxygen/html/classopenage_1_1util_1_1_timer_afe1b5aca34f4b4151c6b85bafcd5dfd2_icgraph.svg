@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 420,-73.5 420,4 -4,4"/>
 <!-- Node30 -->
 <g id="node1" class="node"><title>Node30</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="starts/unpauses the timer.">
 <polygon fill="#bfbfbf" stroke="black" points="314,-17 314,-47 416,-47 416,-17 314,-17"/>
 <text text-anchor="start" x="322" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="365" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::start</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node31 -->
 <g id="node2" class="node"><title>Node31</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="164,-39 164,-69 278,-69 278,-39 164,-39"/>
 <text text-anchor="start" x="172" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="221" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node32 -->
 <g id="node3" class="node"><title>Node32</title>
-<g id="a_node3"><a xlink:href="namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" target="_top" xlink:title="runs the game.">
 <polygon fill="white" stroke="black" points="170,-0.5 170,-19.5 272,-19.5 272,-0.5 170,-0.5"/>
 <text text-anchor="middle" x="221" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::run_game</text>
 </a>

@@ -20,9 +20,10 @@
           <declname>msg</declname>
         </param>
         <briefdescription>
+<para>Raises <ref refid="classopenage_1_1testing_1_1_test_error" kindref="compound">TestError</ref> with the message msg. </para>
         </briefdescription>
         <detaileddescription>
-<para>Raises <ref refid="classopenage_1_1testing_1_1_test_error" kindref="compound">TestError</ref> with the message msg. Mostly designed for usage with the TESTFAIL macro. </para>
+<para>Mostly designed for usage with the TESTFAIL macro. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -40,9 +41,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>Invokes the test or demo with the given name. </para>
         </briefdescription>
         <detaileddescription>
-<para>Invokes the test or demo with the given name.</para>
 <para>pxd: void run_method(string name) except + </para>
         </detaileddescription>
         <inbodydescription>

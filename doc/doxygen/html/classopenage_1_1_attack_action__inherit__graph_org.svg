@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-734 141,-734 141,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="attacks another unit">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-134.5 137,-134.5 137,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="68.5" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <polyline fill="none" stroke="black" points="0,-115.5 137,-115.5 "/>
@@ -30,7 +30,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_target_action.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_target_action.xhtml" target="_top" xlink:title="Base class for actions which target another unit such as gather, attack, heal and convert.">
 <polygon fill="white" stroke="black" points="11.5,-171.5 11.5,-393.5 125.5,-393.5 125.5,-171.5 11.5,-171.5"/>
 <text text-anchor="middle" x="68.5" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TargetAction</text>
 <polyline fill="none" stroke="black" points="11.5,-374.5 125.5,-374.5 "/>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_action.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_action.xhtml" target="_top" xlink:title="Actions can be pushed onto any units action stack.">
 <polygon fill="white" stroke="black" points="14.5,-430.5 14.5,-729.5 122.5,-729.5 122.5,-430.5 14.5,-430.5"/>
 <text text-anchor="middle" x="68.5" y="-717.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAction</text>
 <polyline fill="none" stroke="black" points="14.5,-710.5 122.5,-710.5 "/>

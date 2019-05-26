@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-453 156,-453 156,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Stores 2D texture data in a CPU&#45;accessible byte buffer.">
 <polygon fill="#bfbfbf" stroke="black" points="12,-0.5 12,-134.5 140,-134.5 140,-0.5 12,-0.5"/>
 <text text-anchor="start" x="20" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="76" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dData</text>
@@ -30,7 +30,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml" target="_top" xlink:title="Contains information about a 2D texture surface, without actual texture data.">
 <polygon fill="white" stroke="black" points="0,-182.5 0,-448.5 152,-448.5 152,-182.5 0,-182.5"/>
 <text text-anchor="start" x="8" y="-436.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="76" y="-425.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>

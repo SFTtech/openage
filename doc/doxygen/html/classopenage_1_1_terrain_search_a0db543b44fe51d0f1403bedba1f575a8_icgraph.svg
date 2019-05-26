@@ -57,7 +57,7 @@ var sectionId = 'dynsection-3';
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 749,-133 749,4 -4,4"/>
 <!-- Node20 -->
 <g id="node1" class="node"><title>Node20</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="restarts the search from the start tile">
 <polygon fill="#bfbfbf" stroke="black" points="626,-70.5 626,-100.5 745,-100.5 745,-70.5 626,-70.5"/>
 <text text-anchor="start" x="634" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainSearch</text>
 <text text-anchor="middle" x="685.5" y="-77.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reset</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node21 -->
 <g id="node2" class="node"><title>Node21</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" target="_top" xlink:title="returns all objects on the next tile">
 <polygon fill="white" stroke="black" points="471,-70.5 471,-100.5 590,-100.5 590,-70.5 471,-70.5"/>
 <text text-anchor="start" x="479" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainSearch</text>
 <text text-anchor="middle" x="530.5" y="-77.5" font-family="Helvetica,sans-Serif" font-size="10.00">::next_tile</text>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node23 -->
 <g id="node4" class="node"><title>Node23</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title="action to perform when popped from a units action stack">
 <polygon fill="white" stroke="black" points="161.5,-98.5 161.5,-128.5 270.5,-128.5 270.5,-98.5 161.5,-98.5"/>
 <text text-anchor="start" x="169.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAction</text>
 <text text-anchor="middle" x="216" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_completion</text>
@@ -148,7 +148,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node26 -->
 <g id="node7" class="node"><title>Node26</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 116,-79.5 116,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAction</text>
 <text text-anchor="middle" x="58" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>

@@ -1,4 +1,4 @@
 <map id="openage::util::safe_shift" name="openage::util::safe_shift">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,133,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a1f37c9c7cfd9dbe87e3ce104476bbda4" title=" " alt="" coords="181,5,309,47"/>
+<area shape="rect" id="node1" title="Helper function that performs either a safe shift&#45;right (amount &gt; 0), or a safe shift&#45;left (amount &lt; ..." alt="" coords="5,5,133,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a1f37c9c7cfd9dbe87e3ce104476bbda4" title="Helper function that performs a right shift without causing undefined behavior." alt="" coords="181,5,309,47"/>
 </map>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-2';
 <polygon fill="white" stroke="none" points="-4,4 -4,-117.5 987,-117.5 987,4 -4,4"/>
 <!-- Node4 -->
 <g id="node1" class="node"><title>Node4</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Fills in the provided handle object.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-44 0,-85 142,-85 142,-44 0,-44"/>
 <text text-anchor="start" x="8" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="8" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::fill</text>
@@ -97,7 +97,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node7 -->
 <g id="node4" class="node"><title>Node7</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title="The sourceSize property of the Image QML element ends up here for checking.">
 <polygon fill="white" stroke="black" points="373.5,-22.5 373.5,-52.5 480.5,-52.5 480.5,-22.5 373.5,-22.5"/>
 <text text-anchor="start" x="381.5" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::aspect</text>
 <text text-anchor="middle" x="427" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">_fit_size</text>
@@ -124,7 +124,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node9 -->
 <g id="node6" class="node"><title>Node9</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title="Get the subtexture coordinates by its id.">
 <polygon fill="white" stroke="black" points="710.5,-44.5 710.5,-74.5 821.5,-74.5 821.5,-44.5 710.5,-44.5"/>
 <text text-anchor="start" x="718.5" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="766" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">_subtexture</text>

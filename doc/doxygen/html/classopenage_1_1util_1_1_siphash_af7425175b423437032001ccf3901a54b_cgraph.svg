@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 570,-62 570,4 -4,4"/>
 <!-- Node22 -->
 <g id="node1" class="node"><title>Node22</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Set the key for subsequent hashes.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-14 0,-44 113,-44 113,-14 0,-14"/>
 <text text-anchor="start" x="8" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Siphash</text>
 <text text-anchor="middle" x="56.5" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">::set_key</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node23 -->
 <g id="node2" class="node"><title>Node23</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a uint64_t.">
 <polygon fill="white" stroke="black" points="149,-14 149,-44 254,-44 254,-14 149,-14"/>
 <text text-anchor="start" x="157" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="201.5" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">_to_uint64</text>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node26 -->
 <g id="node5" class="node"><title>Node26</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="471,-0.5 471,-19.5 566,-19.5 566,-0.5 471,-0.5"/>
 <text text-anchor="middle" x="518.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

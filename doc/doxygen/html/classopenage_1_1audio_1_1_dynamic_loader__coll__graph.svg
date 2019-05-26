@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-332 160,-332 160,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A DynamicLoader loads pcm chunks without loading the whole resource.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-90.5 156,-90.5 156,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="78" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicLoader</text>
 <polyline fill="none" stroke="black" points="0,-71.5 156,-71.5 "/>
@@ -26,7 +26,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title="C++ pendant to the python util.fslike.path.Path.">
 <polygon fill="white" stroke="black" points="29,-138.5 29,-327.5 127,-327.5 127,-138.5 29,-138.5"/>
 <text text-anchor="middle" x="78" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <polyline fill="none" stroke="black" points="29,-308.5 127,-308.5 "/>

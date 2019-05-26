@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1501 1889,-1501 1889,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="#bfbfbf" stroke="black" points="886.5,-1362.5 886.5,-1496.5 1024.5,-1496.5 1024.5,-1362.5 886.5,-1362.5"/>
 <text text-anchor="middle" x="955.5" y="-1484.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="886.5,-1477.5 1024.5,-1477.5 "/>
@@ -327,7 +327,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item.xhtml" target="_top" xlink:title="Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads.">
 <polygon fill="white" stroke="black" points="496,-1037 496,-1094 597,-1094 597,-1037 496,-1037"/>
 <text text-anchor="middle" x="546.5" y="-1082" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItem&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="496,-1075 597,-1075 "/>
@@ -550,7 +550,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classqtsdl_1_1_gui_item_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classqtsdl_1_1_gui_item_list_model.xhtml" target="_top" xlink:title="A shell object fir cores inherited from GuiPropertyMap.">
 <polygon fill="white" stroke="black" points="477,-827.5 477,-939.5 632,-939.5 632,-827.5 477,-827.5"/>
 <text text-anchor="middle" x="554.5" y="-927.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemListModel&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="477,-920.5 632,-920.5 "/>
@@ -923,7 +923,7 @@
 </g>
 <!-- Node21 -->
 <g id="node22" class="node"><title>Node21</title>
-<g id="a_node22"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title="Switches the factory to production of the instances of the derived class.">
 <polygon fill="white" stroke="black" points="1156,-849.5 1156,-917.5 1267,-917.5 1267,-849.5 1156,-849.5"/>
 <text text-anchor="middle" x="1211.5" y="-905.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Inherits&lt; T, P &gt;</text>
 <polyline fill="none" stroke="black" points="1156,-898.5 1267,-898.5 "/>

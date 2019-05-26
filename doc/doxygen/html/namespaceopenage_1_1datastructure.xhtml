@@ -105,14 +105,19 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml">ConcurrentQueue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A threadsafe queue.  <a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml">ConstMap</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiletime generic lookup map.  <a href="classopenage_1_1datastructure_1_1_const_map.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4.xhtml">ConstMap&lt; K, V, 0 &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">constexpr map end container.  <a href="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_const_map_entry.xhtml">ConstMapEntry</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">One entry in the lookup map.  <a href="classopenage_1_1datastructure_1_1_const_map_entry.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml">PairingHeap</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Quite) efficient heap implementation.  <a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap_node.xhtml">PairingHeapNode</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,6 +126,7 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ae593f8bdacc9b189c6918bc7b3597b80"><td class="memTemplParams" colspan="2">template&lt;typename K , typename V , typename... Entries&gt; </td></tr>
 <tr class="memitem:ae593f8bdacc9b189c6918bc7b3597b80"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classopenage_1_1datastructure_1_1_const_map.xhtml">ConstMap</a>&lt; K, V, sizeof...(Entries)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1datastructure.xhtml#ae593f8bdacc9b189c6918bc7b3597b80">create_const_map</a> (Entries &amp;&amp;... entry)</td></tr>
+<tr class="memdesc:ae593f8bdacc9b189c6918bc7b3597b80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a compiletime lookup table from K to V, where all entries of K must be unique.  <a href="#ae593f8bdacc9b189c6918bc7b3597b80">More...</a><br /></td></tr>
 <tr class="separator:ae593f8bdacc9b189c6918bc7b3597b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -141,7 +147,8 @@ template&lt;typename K , typename V , typename... Entries&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a compiletime lookup table from K to V, where all entries of K must be unique.</p>
+
+<p>Creates a compiletime lookup table from K to V, where all entries of K must be unique. </p>
 <p>usage: constexpr auto bla = create_const_map&lt;type0, type1&gt;(entry0, entry1, ...); </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00226">226</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>

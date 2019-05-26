@@ -57,7 +57,7 @@ var sectionId = 'dynsection-9';
 <polygon fill="white" stroke="none" points="-4,4 -4,-57 544,-57 544,4 -4,4"/>
 <!-- Node76 -->
 <g id="node1" class="node"><title>Node76</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="removes the given set of tiles from this region, which get split of as a new child region">
 <polygon fill="#bfbfbf" stroke="black" points="426,-22.5 426,-52.5 540,-52.5 540,-22.5 426,-22.5"/>
 <text text-anchor="start" x="434" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Region::take</text>
 <text text-anchor="middle" x="483" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">_tiles</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node79 -->
 <g id="node4" class="node"><title>Node79</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_region.xhtml#a365efd8b6f0199a7cb270af90291a662" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_region.xhtml#a365efd8b6f0199a7cb270af90291a662" target="_top" xlink:title="similiar to take_tiles, but takes a random group of tiles">
 <polygon fill="white" stroke="black" points="276,-0.5 276,-30.5 390,-30.5 390,-0.5 276,-0.5"/>
 <text text-anchor="start" x="284" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Region::take</text>
 <text text-anchor="middle" x="333" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_random</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node78 -->
 <g id="node3" class="node"><title>Node78</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title="Create a game from a specification.">
 <polygon fill="white" stroke="black" points="0,-22.5 0,-52.5 102,-52.5 102,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="51" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>

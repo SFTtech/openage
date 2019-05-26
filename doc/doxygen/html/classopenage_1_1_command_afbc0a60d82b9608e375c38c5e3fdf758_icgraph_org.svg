@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-231 622,-231 622,4 -4,4"/>
 <!-- Node17 -->
 <g id="node1" class="node"><title>Node17</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="the ability types allowed to use this command">
 <polygon fill="#bfbfbf" stroke="black" points="483,-104 483,-123 618,-123 618,-104 483,-104"/>
 <text text-anchor="middle" x="550.5" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Command::ability</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node18 -->
 <g id="node2" class="node"><title>Node18</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#ac5dcdf3180dcd4bdce67b765d8ef2134" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#ac5dcdf3180dcd4bdce67b765d8ef2134" target="_top" xlink:title="queues a command to be applied to this unit on the next update">
 <polygon fill="white" stroke="black" points="314,-104 314,-123 447,-123 447,-104 314,-104"/>
 <text text-anchor="middle" x="380.5" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::queue_cmd</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node21 -->
 <g id="node5" class="node"><title>Node21</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="163,-147.5 163,-177.5 265,-177.5 265,-147.5 163,-147.5"/>
 <text text-anchor="start" x="171" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::IdleAction</text>
 <text text-anchor="middle" x="214" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node22 -->
 <g id="node6" class="node"><title>Node22</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title="action to perform when popped from a units action stack">
 <polygon fill="white" stroke="black" points="159.5,-98.5 159.5,-128.5 268.5,-128.5 268.5,-98.5 159.5,-98.5"/>
 <text text-anchor="start" x="167.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAction</text>
 <text text-anchor="middle" x="214" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_completion</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node23 -->
 <g id="node7" class="node"><title>Node23</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="156,-49.5 156,-79.5 272,-79.5 272,-49.5 156,-49.5"/>
 <text text-anchor="start" x="164" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAction</text>
 <text text-anchor="middle" x="214" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>
@@ -102,7 +102,7 @@
 </g>
 <!-- Node20 -->
 <g id="node4" class="node"><title>Node20</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="0,-196.5 0,-226.5 114,-226.5 114,-196.5 0,-196.5"/>
 <text text-anchor="start" x="8" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TargetAction</text>
 <text text-anchor="middle" x="57" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>

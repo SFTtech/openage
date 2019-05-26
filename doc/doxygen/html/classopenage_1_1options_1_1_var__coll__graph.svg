@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-306 190.5,-306 190.5,4 -4,4"/>
 <!-- Node4 -->
 <g id="node1" class="node"><title>Node4</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A interaface variable which gets monitored by an option node allowing reflection, while also being di...">
 <polygon fill="#bfbfbf" stroke="black" points="50.5,-0.5 50.5,-57.5 185.5,-57.5 185.5,-0.5 50.5,-0.5"/>
 <text text-anchor="middle" x="118" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Var&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="50.5,-38.5 185.5,-38.5 "/>
@@ -42,7 +42,7 @@
 </g>
 <!-- Node6 -->
 <g id="node3" class="node"><title>Node6</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml" target="_top" xlink:title="A typed value holder.">
 <polygon fill="white" stroke="black" points="0,-222.5 0,-301.5 136,-301.5 136,-222.5 0,-222.5"/>
 <text text-anchor="middle" x="68" y="-289.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::VariableBase</text>
 <polyline fill="none" stroke="black" points="0,-282.5 136,-282.5 "/>

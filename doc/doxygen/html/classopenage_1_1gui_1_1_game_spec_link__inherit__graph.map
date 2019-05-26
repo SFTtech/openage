@@ -3,15 +3,15 @@
 <area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_q_object.xhtml" title=" " alt="" coords="171,770,321,847"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,564,76,641"/>
 <area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_base.xhtml" title=" " alt="" coords="101,505,285,700"/>
-<area shape="rect" id="node5" href="$classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" title=" " alt="" coords="86,248,299,443"/>
-<area shape="rect" id="node6" href="$classqtsdl_1_1_gui_item_link.xhtml" title=" " alt="" coords="309,564,436,641"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" title="Stores static properties during initialization to be able to assign them after all &#39;liveReloadTag&#39; pr..." alt="" coords="86,248,299,443"/>
+<area shape="rect" id="node6" href="$classqtsdl_1_1_gui_item_link.xhtml" title="Base for QObject wrapper of the domain&#45;specific classes." alt="" coords="309,564,436,641"/>
 <area shape="rect" id="node7" title=" " alt="" coords="369,770,501,847"/>
 <area shape="rect" id="node8" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="537,763,717,855"/>
 <area shape="rect" id="node9" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="460,557,597,649"/>
 <area shape="rect" id="node10" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="445,307,613,384"/>
-<area shape="rect" id="node15" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="621,564,756,641"/>
+<area shape="rect" id="node15" href="$classqtsdl_1_1_gui_item.xhtml" title="Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads." alt="" coords="621,564,756,641"/>
 <area shape="rect" id="node11" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="781,527,975,678"/>
 <area shape="rect" id="node12" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="887,248,1066,443"/>
-<area shape="rect" id="node13" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="793,5,977,185"/>
+<area shape="rect" id="node13" href="$classqtsdl_1_1_gui_item_methods.xhtml" title="Member function of the GuiPersistentItem." alt="" coords="793,5,977,185"/>
 <area shape="rect" id="node14" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="637,277,863,413"/>
 </map>

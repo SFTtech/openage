@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-215 770,-215 770,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Add an attribute or replace any attribute of the same type.">
 <polygon fill="#bfbfbf" stroke="black" points="643,-55 643,-74 766,-74 766,-55 643,-55"/>
 <text text-anchor="middle" x="704.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::add</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#ab74b08bb7725863fc63839d798f6aedb" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#ab74b08bb7725863fc63839d798f6aedb" target="_top" xlink:title="give a new attribute this this unit this is used to set things like color, hitpoints and speed">
 <polygon fill="white" stroke="black" points="506,-98.5 506,-128.5 604,-128.5 604,-98.5 506,-98.5"/>
 <text text-anchor="start" x="514" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::add</text>
 <text text-anchor="middle" x="555" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node10 -->
 <g id="node8" class="node"><title>Node10</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_attributes.xhtml#ae27a84788906e6fd8786f950e8177704" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_attributes.xhtml#ae27a84788906e6fd8786f950e8177704" target="_top" xlink:title="Add copies of all the attributes from the given Attributes.">
 <polygon fill="white" stroke="black" points="504.5,-49.5 504.5,-79.5 605.5,-79.5 605.5,-49.5 504.5,-49.5"/>
 <text text-anchor="start" x="512.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes</text>
 <text text-anchor="middle" x="555" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_copies</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node11 -->
 <g id="node9" class="node"><title>Node11</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_unit_type.xhtml#ad468f1258da7e164a0bc175ebdd11b2a" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_unit_type.xhtml#ad468f1258da7e164a0bc175ebdd11b2a" target="_top" xlink:title="upgrades one attribute of this unit type">
 <polygon fill="white" stroke="black" points="503,-0.5 503,-30.5 607,-30.5 607,-0.5 503,-0.5"/>
 <text text-anchor="start" x="511" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="555" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">upgrade</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="334,-180.5 334,-210.5 461,-210.5 461,-180.5 334,-180.5"/>
 <text text-anchor="start" x="342" y="-198.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="397.5" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="158,-142.5 158,-172.5 292,-172.5 292,-142.5 158,-142.5"/>
 <text text-anchor="start" x="166" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="225" y="-149.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node7 -->
 <g id="node5" class="node"><title>Node7</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="0,-120.5 0,-150.5 122,-150.5 122,-120.5 0,-120.5"/>
 <text text-anchor="start" x="8" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="61" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -103,7 +103,7 @@
 </g>
 <!-- Node8 -->
 <g id="node6" class="node"><title>Node8</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="331,-54.5 331,-84.5 464,-84.5 464,-54.5 331,-54.5"/>
 <text text-anchor="start" x="339" y="-72.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <text text-anchor="middle" x="397.5" y="-61.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node9 -->
 <g id="node7" class="node"><title>Node9</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_projectile_producer.xhtml#aa865d0028f76dfeb134b32c24dc63619" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_projectile_producer.xhtml#aa865d0028f76dfeb134b32c24dc63619" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="328,-5.5 328,-35.5 467,-35.5 467,-5.5 328,-5.5"/>
 <text text-anchor="start" x="336" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ProjectileProducer</text>
 <text text-anchor="middle" x="397.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>

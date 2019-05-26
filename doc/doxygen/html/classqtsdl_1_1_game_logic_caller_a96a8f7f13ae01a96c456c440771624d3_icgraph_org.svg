@@ -20,7 +20,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173" target="_top" xlink:title="Static QML properties assignments during the init phase are stored for a batch assignment at the end ...">
 <polygon fill="white" stroke="black" points="1026,-122.5 1026,-174.5 1162,-174.5 1162,-122.5 1026,-122.5"/>
 <text text-anchor="start" x="1034" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods</text>
 <text text-anchor="start" x="1034" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; GameSpecLink &gt;::assign</text>
@@ -36,7 +36,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774" target="_top" xlink:title="Invoke a function in the logic thread (the thread of the core of this object).">
 <polygon fill="white" stroke="black" points="1036.5,-73.5 1036.5,-103.5 1151.5,-103.5 1151.5,-73.5 1036.5,-73.5"/>
 <text text-anchor="start" x="1044.5" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods</text>
 <text text-anchor="middle" x="1094" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; GameSpecLink &gt;::i</text>
@@ -50,7 +50,7 @@
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="1028,-24.5 1028,-54.5 1160,-54.5 1160,-24.5 1028,-24.5"/>
 <text text-anchor="start" x="1036" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 <text text-anchor="middle" x="1094" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>
@@ -64,7 +64,7 @@
 </g>
 <!-- Node7 -->
 <g id="node5" class="node"><title>Node7</title>
-<g id="a_node5"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="858,-24.5 858,-54.5 990,-54.5 990,-24.5 858,-24.5"/>
 <text text-anchor="start" x="866" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemBase</text>
 <text text-anchor="middle" x="924" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-3';
 <polygon fill="white" stroke="none" points="-4,4 -4,-707 969,-707 969,4 -4,4"/>
 <!-- Node20 -->
 <g id="node1" class="node"><title>Node20</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="draw object with direction">
 <polygon fill="#bfbfbf" stroke="black" points="0,-558.5 0,-588.5 109,-588.5 109,-558.5 0,-558.5"/>
 <text text-anchor="start" x="8" y="-576.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="54.5" y="-565.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node21 -->
 <g id="node2" class="node"><title>Node21</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" target="_top" xlink:title="test method for the base CoordXY* classes.">
 <polygon fill="white" stroke="black" points="148.5,-668.5 148.5,-698.5 259.5,-698.5 259.5,-668.5 148.5,-668.5"/>
 <text text-anchor="start" x="156.5" y="-686.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::tests</text>
 <text text-anchor="middle" x="204" y="-675.5" font-family="Helvetica,sans-Serif" font-size="10.00">::coord</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node24 -->
 <g id="node5" class="node"><title>Node24</title>
-<g id="a_node5"><a xlink:href="namespaceopenage.xhtml#af8871290d3c97a11b6761d12827ab9e3" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage.xhtml#ad019d95177e6ab646a2d239e4ec3daa7" target="_top" xlink:title="the set of images to used based on unit direction, usually 8 directions to draw for each unit (3 are ...">
 <polygon fill="white" stroke="black" points="154.5,-627 154.5,-646 253.5,-646 253.5,-627 154.5,-627"/>
 <text text-anchor="middle" x="204" y="-634" font-family="Helvetica,sans-Serif" font-size="10.00">openage::dir_group</text>
 </a>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node27 -->
 <g id="node8" class="node"><title>Node27</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" target="_top" xlink:title="Draws the texture at hud coordinates.">
 <polygon fill="white" stroke="black" points="145,-585 145,-604 263,-604 263,-585 145,-585"/>
 <text text-anchor="middle" x="204" y="-592" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -132,7 +132,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node52 -->
 <g id="node33" class="node"><title>Node52</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a7fad704b779a60bf744ee6b91ba6d6a2" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a7fad704b779a60bf744ee6b91ba6d6a2" target="_top" xlink:title="find which subtexture should be used for drawing this texture">
 <polygon fill="white" stroke="black" points="149.5,-97.5 149.5,-127.5 258.5,-127.5 258.5,-97.5 149.5,-97.5"/>
 <text text-anchor="start" x="157.5" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="204" y="-104.5" font-family="Helvetica,sans-Serif" font-size="10.00">::subtexture</text>
@@ -160,7 +160,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node23 -->
 <g id="node4" class="node"><title>Node23</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" target="_top" xlink:title="Clears the underlying stream object&#39;s flags, if such a stream object exists.">
 <polygon fill="white" stroke="black" points="488.5,-672.5 488.5,-702.5 634.5,-702.5 634.5,-672.5 488.5,-672.5"/>
 <text text-anchor="start" x="496.5" y="-690.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="561.5" y="-679.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; FString &gt;::reset_flags</text>
@@ -242,7 +242,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node33 -->
 <g id="node14" class="node"><title>Node33</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_game_spec.xhtml#a3a21c92c49ec4d0add95e8aacd83ebe0" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_game_spec.xhtml#a3a21c92c49ec4d0add95e8aacd83ebe0" target="_top" xlink:title="Return the asset manager used for loading resources of this game specification.">
 <polygon fill="white" stroke="black" points="317.5,-307.5 317.5,-337.5 431.5,-337.5 431.5,-307.5 317.5,-307.5"/>
 <text text-anchor="start" x="325.5" y="-325.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="374.5" y="-314.5" font-family="Helvetica,sans-Serif" font-size="10.00">get_asset_manager</text>
@@ -256,7 +256,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node34 -->
 <g id="node15" class="node"><title>Node34</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_engine.xhtml#ad925a7a6258d1382edd274ee4ceafdbd" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_engine.xhtml#ad925a7a6258d1382edd274ee4ceafdbd" target="_top" xlink:title="return this engine&#39;s audio manager.">
 <polygon fill="white" stroke="black" points="320,-258.5 320,-288.5 429,-288.5 429,-258.5 320,-258.5"/>
 <text text-anchor="start" x="328" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="374.5" y="-265.5" font-family="Helvetica,sans-Serif" font-size="10.00">_audio_manager</text>
@@ -270,7 +270,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node35 -->
 <g id="node16" class="node"><title>Node35</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title="Return the engine responsible for this asset manager.">
 <polygon fill="white" stroke="black" points="313.5,-209.5 313.5,-239.5 435.5,-239.5 435.5,-209.5 313.5,-209.5"/>
 <text text-anchor="start" x="321.5" y="-227.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="374.5" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_engine</text>
@@ -284,7 +284,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node36 -->
 <g id="node17" class="node"><title>Node36</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a4fcd0ea2e63f5035df72bdceb0ac22f2" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a4fcd0ea2e63f5035df72bdceb0ac22f2" target="_top" xlink:title="Returns a sound object with the given category and the given id.">
 <polygon fill="white" stroke="black" points="299,-160.5 299,-190.5 450,-190.5 450,-160.5 299,-160.5"/>
 <text text-anchor="start" x="307" y="-178.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <text text-anchor="middle" x="374.5" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_sound</text>
@@ -298,7 +298,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node38 -->
 <g id="node19" class="node"><title>Node38</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a6df7195e7f02f6959a9a241037e48657" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a6df7195e7f02f6959a9a241037e48657" target="_top" xlink:title="If this audio manager is available.">
 <polygon fill="white" stroke="black" points="299,-444.5 299,-474.5 450,-474.5 450,-444.5 299,-444.5"/>
 <text text-anchor="start" x="307" y="-462.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <text text-anchor="middle" x="374.5" y="-451.5" font-family="Helvetica,sans-Serif" font-size="10.00">::is_available</text>
@@ -312,7 +312,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node39 -->
 <g id="node20" class="node"><title>Node39</title>
-<g id="a_node20"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="329,-84 329,-103 420,-103 420,-84 329,-84"/>
 <text text-anchor="middle" x="374.5" y="-91" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -325,7 +325,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node45 -->
 <g id="node26" class="node"><title>Node45</title>
-<g id="a_node26"><a xlink:href="classopenage_1_1audio_1_1_sound.xhtml#a7e4854e55386f2498a332eed36e374d4" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="classopenage_1_1audio_1_1_sound.xhtml#a7e4854e55386f2498a332eed36e374d4" target="_top" xlink:title="Resets the sound to it&#39;s beginning and starts playing it.">
 <polygon fill="white" stroke="black" points="316.5,-493.5 316.5,-523.5 432.5,-523.5 432.5,-493.5 316.5,-493.5"/>
 <text text-anchor="start" x="324.5" y="-511.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Sound</text>
 <text text-anchor="middle" x="374.5" y="-500.5" font-family="Helvetica,sans-Serif" font-size="10.00">::play</text>
@@ -339,7 +339,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node47 -->
 <g id="node28" class="node"><title>Node47</title>
-<g id="a_node28"><a xlink:href="namespaceopenage_1_1rng.xhtml#a398e36f7942536cd461ca212dfee6cb5" target="_top" xlink:title=" ">
+<g id="a_node28"><a xlink:href="namespaceopenage_1_1rng.xhtml#a398e36f7942536cd461ca212dfee6cb5" target="_top" xlink:title="Returns a random number n [lower, upper) from the global rng.">
 <polygon fill="white" stroke="black" points="319,-395.5 319,-425.5 430,-425.5 430,-395.5 319,-395.5"/>
 <text text-anchor="start" x="327" y="-413.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::random</text>
 <text text-anchor="middle" x="374.5" y="-402.5" font-family="Helvetica,sans-Serif" font-size="10.00">_range</text>
@@ -379,7 +379,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node40 -->
 <g id="node21" class="node"><title>Node40</title>
-<g id="a_node21"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="506.5,-88.5 506.5,-118.5 616.5,-118.5 616.5,-88.5 506.5,-88.5"/>
 <text text-anchor="start" x="514.5" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="561.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -393,7 +393,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node41 -->
 <g id="node22" class="node"><title>Node41</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="490,-50 490,-69 633,-69 633,-50 490,-50"/>
 <text text-anchor="middle" x="561.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -406,7 +406,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node42 -->
 <g id="node23" class="node"><title>Node42</title>
-<g id="a_node23"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="695,-0.5 695,-30.5 799,-30.5 799,-0.5 695,-0.5"/>
 <text text-anchor="start" x="703" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="747" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -461,7 +461,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node48 -->
 <g id="node29" class="node"><title>Node48</title>
-<g id="a_node29"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ad7b2ba8c495b7ee100b7708b633bc060" target="_top" xlink:title=" ">
+<g id="a_node29"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ad7b2ba8c495b7ee100b7708b633bc060" target="_top" xlink:title="Returns a random integer in the range [lower, upper].">
 <polygon fill="white" stroke="black" points="508.5,-395.5 508.5,-425.5 614.5,-425.5 614.5,-395.5 508.5,-395.5"/>
 <text text-anchor="start" x="516.5" y="-413.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="561.5" y="-402.5" font-family="Helvetica,sans-Serif" font-size="10.00">random_range</text>
@@ -475,7 +475,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node49 -->
 <g id="node30" class="node"><title>Node49</title>
-<g id="a_node30"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" target="_top" xlink:title=" ">
+<g id="a_node30"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" target="_top" xlink:title="Retrieves a random value from the generator.">
 <polygon fill="white" stroke="black" points="694,-395.5 694,-425.5 800,-425.5 800,-395.5 694,-395.5"/>
 <text text-anchor="start" x="702" y="-413.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="747" y="-402.5" font-family="Helvetica,sans-Serif" font-size="10.00">random</text>

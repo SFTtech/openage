@@ -1,7 +1,7 @@
 <map id="openage::TargetAction::completed_in_range" name="openage::TargetAction::completed_in_range">
 <area shape="rect" id="node1" title=" " alt="" coords="611,39,763,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_target_action.xhtml#acd97248a087415b6d08fa3e97e90397d" title=" " alt="" coords="411,39,563,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_target_action.xhtml#acd97248a087415b6d08fa3e97e90397d" title="gets called for all actions on stack each update cycle" alt="" coords="411,39,563,80"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_gather_action.xhtml#a578fcecec436b05efb5059bbb35837fe" title=" " alt="" coords="208,5,363,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title=" " alt="" coords="213,71,358,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title="action to perform when popped from a units action stack" alt="" coords="213,71,358,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" title="Control units action when in range of the target." alt="" coords="5,5,160,47"/>
 </map>

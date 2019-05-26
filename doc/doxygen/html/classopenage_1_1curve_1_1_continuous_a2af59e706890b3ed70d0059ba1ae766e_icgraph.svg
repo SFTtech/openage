@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 306,-35 306,4 -4,4"/>
 <!-- Node11 -->
 <g id="node1" class="node"><title>Node11</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="will interpolate between the keyframes linearly based on the time.">
 <polygon fill="#bfbfbf" stroke="black" points="146,-6 146,-25 302,-25 302,-6 146,-6"/>
 <text text-anchor="middle" x="224" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Continuous::get</text>
 </a>

@@ -15,9 +15,9 @@
         <argsstring></argsstring>
         <name>state</name>
         <briefdescription>
+<para>A shared pointer to the job&apos;s shared state. </para>
         </briefdescription>
         <detaileddescription>
-<para>A shared pointer to the job&apos;s shared state. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -60,9 +60,10 @@
         <argsstring>()=default</argsstring>
         <name>Job</name>
         <briefdescription>
+<para>Creates an empty job object that is not bound to any state. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates an empty job object that is not bound to any state. Should only be used as dummy object. </para>
+<para>Should only be used as dummy object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -74,9 +75,10 @@
         <argsstring>() const</argsstring>
         <name>is_finished</name>
         <briefdescription>
+<para>Returns whether this job has finished. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns whether this job has finished. If this job wrapper has no assigned background job, true will be returned. </para>
+<para>If this job wrapper has no assigned background job, true will be returned. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -88,9 +90,10 @@
         <argsstring>()</argsstring>
         <name>get_result</name>
         <briefdescription>
+<para>Returns this job&apos;s result if the background execution was successful. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns this job&apos;s result if the background execution was successful. If an exception has happened, it will be rethrown. This method must not be called, if the job&apos;s execution has not yet finished. </para>
+<para>If an exception has happened, it will be rethrown. This method must not be called, if the job&apos;s execution has not yet finished. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -110,9 +113,10 @@
           <declname>state</declname>
         </param>
         <briefdescription>
+<para>Creates a job with the given shared state. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a job with the given shared state. This method may only be called by the job manager. </para>
+<para>This method may only be called by the job manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -121,9 +125,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A job is a wrapper around a shared job state object and is returned by the job manager. </para>
     </briefdescription>
     <detaileddescription>
-<para>A job is a wrapper around a shared job state object and is returned by the job manager. It can be used to retrieve the current state of the job and its result. A job is a lightweight object which only contains a pointer to its internal shared state. Thus it can be copied around without worrying about performance. Further it is not necessary to create or pass pointers to job objects.</para>
+<para>It can be used to retrieve the current state of the job and its result. A job is a lightweight object which only contains a pointer to its internal shared state. Thus it can be copied around without worrying about performance. Further it is not necessary to create or pass pointers to job objects.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>T</parametername>

@@ -1,7 +1,7 @@
 <map id="openage::curve::CurveIterator&lt; val_t, container_t, iterator_t &gt;" name="openage::curve::CurveIterator&lt; val_t, container_t, iterator_t &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="115,5,318,347"/>
+<area shape="rect" id="node1" title="Default interface for curve containers." alt="" coords="115,5,318,347"/>
 <area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_curve_iterator.xhtml" title=" " alt="" coords="5,439,199,795"/>
 <area shape="rect" id="node4" href="$classopenage_1_1curve_1_1_curve_iterator.xhtml" title=" " alt="" coords="223,446,413,787"/>
-<area shape="rect" id="node3" href="$classopenage_1_1curve_1_1_queue_filter_iterator.xhtml" title=" " alt="" coords="10,866,194,987"/>
-<area shape="rect" id="node5" href="$classopenage_1_1curve_1_1_map_filter_iterator.xhtml" title=" " alt="" coords="233,844,403,1009"/>
+<area shape="rect" id="node3" href="$classopenage_1_1curve_1_1_queue_filter_iterator.xhtml" title="A filtering operator to iterate over all elements of a queue whose elements exist at exactly one poin..." alt="" coords="10,866,194,987"/>
+<area shape="rect" id="node5" href="$classopenage_1_1curve_1_1_map_filter_iterator.xhtml" title="A filtering operator to iterate over all elements of a map whose elements exist for a certain livespa..." alt="" coords="233,844,403,1009"/>
 </map>

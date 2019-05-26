@@ -1,11 +1,11 @@
 <map id="openage::rng::tests::fill_real" name="openage::rng::tests::fill_real">
-<area shape="rect" id="node1" title=" " alt="" coords="5,78,140,119"/>
-<area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#ab7dbd0bef0c06a30b6724f2352af833c" title=" " alt="" coords="200,49,341,90"/>
+<area shape="rect" id="node1" title="Tests filling doubles." alt="" coords="5,78,140,119"/>
+<area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#ab7dbd0bef0c06a30b6724f2352af833c" title="Fills an array of doubles with values in [0, 1) Gives identical results as real() but more effecientl..." alt="" coords="200,49,341,90"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1rng.xhtml#a4bdd2cc5c7f7f5d81ff514287f65eef0" title=" " alt="" coords="188,115,353,141"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1rng.xhtml#acffdd6abc0140eac8c12d879172f8566" title=" " alt="" coords="415,5,558,32"/>
 <area shape="rect" id="node5" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#accd55f47ffd4049900e96f032f0a9375" title=" " alt="" coords="403,56,570,83"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1rng.xhtml#af7d90437e58aaa4fe1d816ad7b62dc07" title=" " alt="" coords="620,5,764,32"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" title=" " alt="" coords="417,107,557,149"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" title="returns the number of nanoseconds since the UNIX epoch." alt="" coords="417,107,557,149"/>
 <area shape="rect" id="node8" href="$namespaceopenage_1_1rng.xhtml#a924b85bc82578378e68818dab9a247b6" title=" " alt="" coords="401,173,572,214"/>
 <area shape="rect" id="node9" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="637,180,747,207"/>
 </map>

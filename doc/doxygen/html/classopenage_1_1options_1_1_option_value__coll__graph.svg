@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-343 140,-343 140,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="stores a type and value">
 <polygon fill="#bfbfbf" stroke="black" points="5.5,-0.5 5.5,-211.5 130.5,-211.5 130.5,-0.5 5.5,-0.5"/>
 <text text-anchor="start" x="13.5" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="68" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">Value</text>
@@ -37,7 +37,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml" target="_top" xlink:title="A typed value holder.">
 <polygon fill="white" stroke="black" points="0,-259.5 0,-338.5 136,-338.5 136,-259.5 0,-259.5"/>
 <text text-anchor="middle" x="68" y="-326.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::VariableBase</text>
 <polyline fill="none" stroke="black" points="0,-319.5 136,-319.5 "/>

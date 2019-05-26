@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>data</name>
         <briefdescription>
+<para>The default copy constructor and assignment will just copy the shared pointer. </para>
         </briefdescription>
         <detaileddescription>
-<para>The default copy constructor and assignment will just copy the shared pointer </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -41,9 +41,9 @@
         <argsstring>()</argsstring>
         <name>UnitReference</name>
         <briefdescription>
+<para>create an invalid reference </para>
         </briefdescription>
         <detaileddescription>
-<para>create an invalid reference </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -67,9 +67,9 @@
           <defname>u</defname>
         </param>
         <briefdescription>
+<para>create referece by unit id </para>
         </briefdescription>
         <detaileddescription>
-<para>create referece by unit id </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -124,9 +124,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Reference to a single unit, which may have been removed from the game, check <ref refid="classopenage_1_1_unit_reference_1a55afff48cc1901715f3c29383969d2ac" kindref="member">is_valid()</ref> before calling <ref refid="classopenage_1_1_unit_reference_1a6303ff3facc18acf10aa335ee9d318d8" kindref="member">get()</ref> </para>
     </briefdescription>
     <detaileddescription>
-<para>Reference to a single unit, which may have been removed from the game, check <ref refid="classopenage_1_1_unit_reference_1a55afff48cc1901715f3c29383969d2ac" kindref="member">is_valid()</ref> before calling <ref refid="classopenage_1_1_unit_reference_1a6303ff3facc18acf10aa335ee9d318d8" kindref="member">get()</ref> </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5499">

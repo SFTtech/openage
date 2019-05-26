@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-481 288,-481 288,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A OpusDynamicLoader load&#39;s opus encoded data.">
 <polygon fill="#bfbfbf" stroke="black" points="116,-0.5 116,-101.5 266,-101.5 266,-0.5 116,-0.5"/>
 <text text-anchor="start" x="124" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::OpusDynamic</text>
 <text text-anchor="middle" x="191" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">Loader</text>
@@ -27,7 +27,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_loader.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_loader.xhtml" target="_top" xlink:title="A DynamicLoader loads pcm chunks without loading the whole resource.">
 <polygon fill="white" stroke="black" points="0,-149.5 0,-239.5 156,-239.5 156,-149.5 0,-149.5"/>
 <text text-anchor="middle" x="78" y="-227.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicLoader</text>
 <polyline fill="none" stroke="black" points="0,-220.5 156,-220.5 "/>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title="C++ pendant to the python util.fslike.path.Path.">
 <polygon fill="white" stroke="black" points="29,-287.5 29,-476.5 127,-476.5 127,-287.5 29,-287.5"/>
 <text text-anchor="middle" x="78" y="-464.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <polyline fill="none" stroke="black" points="29,-457.5 127,-457.5 "/>
@@ -77,7 +77,7 @@
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="structopenage_1_1audio_1_1opus__file__t.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="structopenage_1_1audio_1_1opus__file__t.xhtml" target="_top" xlink:title="opusfile handle storage.">
 <polygon fill="white" stroke="black" points="174,-155 174,-234 284,-234 284,-155 174,-155"/>
 <text text-anchor="start" x="182" y="-222" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::opus</text>
 <text text-anchor="middle" x="229" y="-211" font-family="Helvetica,sans-Serif" font-size="10.00">_file_t</text>

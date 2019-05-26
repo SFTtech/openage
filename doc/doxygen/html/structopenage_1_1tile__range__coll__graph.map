@@ -1,5 +1,5 @@
 <map id="openage::tile_range" name="openage::tile_range">
-<area shape="rect" id="node1" title=" " alt="" coords="119,404,253,481"/>
+<area shape="rect" id="node1" title="A rectangle or square of tiles which is the minimim space to fit the units foundation or radius the e..." alt="" coords="119,404,253,481"/>
 <area shape="rect" id="node2" href="$structopenage_1_1coord_1_1phys3.xhtml" title=" " alt="" coords="7,169,162,319"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,5,164,112"/>
 <area shape="rect" id="node4" href="$structopenage_1_1coord_1_1tile.xhtml" title=" " alt="" coords="187,161,337,327"/>

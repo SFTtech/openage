@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-239.5 1261,-239.5 1261,4 -4,4"/>
 <!-- Node144 -->
 <g id="node1" class="node"><title>Node144</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="std::for_each except just on containers.">
 <polygon fill="#bfbfbf" stroke="black" points="1142,-93.5 1142,-112.5 1257,-112.5 1257,-93.5 1142,-93.5"/>
 <text text-anchor="middle" x="1199.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>

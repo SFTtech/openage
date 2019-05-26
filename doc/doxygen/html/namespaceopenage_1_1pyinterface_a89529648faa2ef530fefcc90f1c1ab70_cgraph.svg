@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 277,-73.5 277,4 -4,4"/>
 <!-- Node43 -->
 <g id="node1" class="node"><title>Node43</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Analyzes the current Python exception, and creates and throws an analogous C++ PyException object.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-22.5 0,-52.5 131,-52.5 131,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="65.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::translate_exc_py_to_cpp</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node45 -->
 <g id="node3" class="node"><title>Node45</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1error_1_1_error.xhtml#a27cbe56bc7dbab4d399072ef87fe2014" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1error_1_1_error.xhtml#a27cbe56bc7dbab4d399072ef87fe2014" target="_top" xlink:title="Stores a pointer to the currently&#45;handled exception in this&#45;&gt;cause.">
 <polygon fill="white" stroke="black" points="167,-0.5 167,-30.5 273,-30.5 273,-0.5 167,-0.5"/>
 <text text-anchor="start" x="175" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 <text text-anchor="middle" x="220" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::store_cause</text>

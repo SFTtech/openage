@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-122.5 448,-122.5 448,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns the type name of py_obj.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-39 0,-69 132,-69 132,-39 0,-39"/>
 <text text-anchor="start" x="8" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="66" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::PyException::type_name</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a912e76dc7854f9c1816533f6f8571767" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a912e76dc7854f9c1816533f6f8571767" target="_top" xlink:title="type(obj).__name__">
 <polygon fill="white" stroke="black" points="175,-88 175,-118 306,-118 306,-88 175,-88"/>
 <text text-anchor="start" x="183" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="240.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::classname</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#afd545e1817cad9ab9f5c84934d83e428" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#afd545e1817cad9ab9f5c84934d83e428" target="_top" xlink:title="type(obj).__module__">
 <polygon fill="white" stroke="black" points="171,-39 171,-69 310,-69 310,-39 171,-39"/>
 <text text-anchor="start" x="179" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="240.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::modulename</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node7 -->
 <g id="node5" class="node"><title>Node7</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="349,-0.5 349,-19.5 444,-19.5 444,-0.5 349,-0.5"/>
 <text text-anchor="middle" x="396.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

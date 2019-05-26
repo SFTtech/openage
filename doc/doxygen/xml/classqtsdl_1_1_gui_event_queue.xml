@@ -80,9 +80,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Provides synchronization with some game thread. </para>
     </briefdescription>
     <detaileddescription>
-<para>Provides synchronization with some game thread. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6213">

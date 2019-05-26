@@ -1,7 +1,7 @@
 <map id="openage::util::hash_combine" name="openage::util::hash_combine">
-<area shape="rect" id="node1" title=" " alt="" coords="609,43,741,84"/>
+<area shape="rect" id="node1" title="Creates a hash value as a combination of two other hashes." alt="" coords="609,43,741,84"/>
 <area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#a936adb09a68c1fc46e9572cd2866d961" title=" " alt="" coords="379,5,561,47"/>
 <area shape="rect" id="node5" href="$structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4.xhtml#a69356bbc9713e82eb3c678c45181c760" title=" " alt="" coords="382,71,558,127"/>
-<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" title=" " alt="" coords="196,5,331,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" title=" " alt="" coords="5,5,148,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" title="Retrieves the atlas entry for a specified font and glyph." alt="" coords="196,5,331,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" title="Render all the text draw requests made during the frame." alt="" coords="5,5,148,47"/>
 </map>

@@ -122,7 +122,7 @@
         <references refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a8de1ca95f9c32bf2c0df4e9010aeb372" compoundref="texture__subinfo_8h" startline="23">h</references>
         <references refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">openage::line</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
-        <references refid="namespaceopenage_1_1util_1aa7f8fe5c3426ea9e4968ef9aa21660ae" compoundref="strings_8cpp" startline="144" endline="212">openage::util::split_escape</references>
+        <references refid="namespaceopenage_1_1util_1a34e437da5fb7314c04d0af249dbd8bd1" compoundref="strings_8cpp" startline="144" endline="212">openage::util::split_escape</references>
         <references refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a594735c3b72fc7c68fd7cdfc489b6714" compoundref="texture__subinfo_8h" startline="23">w</references>
         <references refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a4d0a8eec81bd5eac58e3c7846100ee78" compoundref="texture__subinfo_8h" startline="20">x</references>
         <references refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1aeedd2e9b3c6b03efa5d3b0daf37f79d9" compoundref="texture__subinfo_8h" startline="20">y</references>
@@ -202,9 +202,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Describes a position of a (sub)texture within a larger texture. </para>
     </briefdescription>
     <detaileddescription>
-<para>Describes a position of a (sub)texture within a larger texture. Used for texture atlases and animations where all frames are within one texture file. </para>
+<para>Used for texture atlases and animations where all frames are within one texture file. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4766">

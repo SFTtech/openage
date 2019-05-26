@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 444,-133 444,4 -4,4"/>
 <!-- Node24 -->
 <g id="node1" class="node"><title>Node24</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Draws the texture at phys coordinates.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-78 0,-97 118,-97 118,-78 0,-78"/>
 <text text-anchor="middle" x="59" y="-85" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node25 -->
 <g id="node2" class="node"><title>Node25</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" target="_top" xlink:title="Draws the texture at hud coordinates.">
 <polygon fill="white" stroke="black" points="154,-101 154,-120 272,-120 272,-101 154,-101"/>
 <text text-anchor="middle" x="213" y="-108" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node29 -->
 <g id="node6" class="node"><title>Node29</title>
-<g id="a_node6"><a xlink:href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" target="_top" xlink:title="See the comments for camgame_delta::to_phys3.">
 <polygon fill="white" stroke="black" points="308,-0.5 308,-30.5 440,-30.5 440,-0.5 308,-0.5"/>
 <text text-anchor="start" x="316" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::camgame</text>
 <text text-anchor="middle" x="374" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_viewport</text>

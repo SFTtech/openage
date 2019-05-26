@@ -1,8 +1,8 @@
 <map id="openage::input::InputManager::ignored" name="openage::input::InputManager::ignored">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,199,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" title=" " alt="" coords="247,5,440,47"/>
+<area shape="rect" id="node1" title="true if the given event type is being ignored" alt="" coords="5,39,199,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" title="Returns the context on top." alt="" coords="247,5,440,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1input_1_1_class_code.xhtml#a164160fc35b66ea9f4bf6ba5211c48e5" title=" " alt="" coords="254,71,433,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" title=" " alt="" coords="488,71,667,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" title="classes ordered with most specific first" alt="" coords="488,71,667,112"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="715,78,908,105"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="956,78,1083,105"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="956,78,1083,105"/>
 </map>

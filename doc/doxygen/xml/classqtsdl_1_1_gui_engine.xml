@@ -76,9 +76,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Represents one QML execution environment. </para>
     </briefdescription>
     <detaileddescription>
-<para>Represents one QML execution environment. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6188">

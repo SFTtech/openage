@@ -66,7 +66,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node43 -->
 <g id="node2" class="node"><title>Node43</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_square_object.xhtml#a0deacb1dd962cd1729e6765e8dea01de" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_square_object.xhtml#a0deacb1dd962cd1729e6765e8dea01de" target="_top" xlink:title="does this space contain a given point">
 <polygon fill="white" stroke="black" points="639.5,-351 639.5,-381 758.5,-381 758.5,-351 639.5,-351"/>
 <text text-anchor="start" x="647.5" y="-369" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="699" y="-358" font-family="Helvetica,sans-Serif" font-size="10.00">::contains</text>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node50 -->
 <g id="node9" class="node"><title>Node50</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_radial_object.xhtml#a92c40d889a2877bc6b8aba7523ab7dfe" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_radial_object.xhtml#a92c40d889a2877bc6b8aba7523ab7dfe" target="_top" xlink:title="finds the range covered if the object was in a position">
 <polygon fill="white" stroke="black" points="641.5,-225 641.5,-255 756.5,-255 756.5,-225 641.5,-225"/>
 <text text-anchor="start" x="649.5" y="-243" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RadialObject</text>
 <text text-anchor="middle" x="699" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00">::get_range</text>
@@ -134,7 +134,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node66 -->
 <g id="node25" class="node"><title>Node66</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1_projectile_action.xhtml#a5be4d6d237bbb52a036d368af97956b6" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1_projectile_action.xhtml#a5be4d6d237bbb52a036d368af97956b6" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="635,-127 635,-157 763,-157 763,-127 635,-127"/>
 <text text-anchor="start" x="643" y="-145" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ProjectileAction</text>
 <text text-anchor="middle" x="699" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -148,7 +148,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node45 -->
 <g id="node4" class="node"><title>Node45</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title="action to perform when popped from a units action stack">
 <polygon fill="white" stroke="black" points="478.5,-367 478.5,-397 587.5,-397 587.5,-367 478.5,-367"/>
 <text text-anchor="start" x="486.5" y="-385" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAction</text>
 <text text-anchor="middle" x="533" y="-374" font-family="Helvetica,sans-Serif" font-size="10.00">::on_completion</text>
@@ -190,7 +190,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node48 -->
 <g id="node7" class="node"><title>Node48</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="311,-323 311,-353 427,-353 427,-323 311,-323"/>
 <text text-anchor="start" x="319" y="-341" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAction</text>
 <text text-anchor="middle" x="369" y="-330" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>
@@ -204,7 +204,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node52 -->
 <g id="node11" class="node"><title>Node52</title>
-<g id="a_node11"><a xlink:href="namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" target="_top" xlink:title="given the west most point of a building foundation and the tile_delta size of the foundation,...">
 <polygon fill="white" stroke="black" points="470.5,-230.5 470.5,-249.5 595.5,-249.5 595.5,-230.5 470.5,-230.5"/>
 <text text-anchor="middle" x="533" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::building_center</text>
 </a>
@@ -217,7 +217,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node56 -->
 <g id="node15" class="node"><title>Node56</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" target="_top" xlink:title="an object which contains the given point, null otherwise">
 <polygon fill="white" stroke="black" points="479.5,-176 479.5,-206 586.5,-206 586.5,-176 479.5,-176"/>
 <text text-anchor="start" x="487.5" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::obj</text>
 <text text-anchor="middle" x="533" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">_at_point</text>
@@ -231,7 +231,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node59 -->
 <g id="node18" class="node"><title>Node59</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-145 0,-175 116,-175 116,-145 0,-145"/>
 <text text-anchor="start" x="8" y="-163" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-152" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -273,7 +273,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node53 -->
 <g id="node12" class="node"><title>Node53</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" target="_top" xlink:title="calculate object start and end positions.">
 <polygon fill="white" stroke="black" points="309.5,-274 309.5,-304 428.5,-304 428.5,-274 309.5,-274"/>
 <text text-anchor="start" x="317.5" y="-292" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="369" y="-281" font-family="Helvetica,sans-Serif" font-size="10.00">::get_range</text>
@@ -287,7 +287,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node55 -->
 <g id="node14" class="node"><title>Node55</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title="Display this mode.">
 <polygon fill="white" stroke="black" points="313.5,-225 313.5,-255 424.5,-255 424.5,-225 313.5,-225"/>
 <text text-anchor="start" x="321.5" y="-243" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="369" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00">::render</text>
@@ -301,7 +301,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node54 -->
 <g id="node13" class="node"><title>Node54</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="white" stroke="black" points="152,-274 152,-304 271,-304 271,-274 152,-274"/>
 <text text-anchor="start" x="160" y="-292" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="211.5" y="-281" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>
@@ -315,7 +315,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node57 -->
 <g id="node16" class="node"><title>Node57</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title="point unit selection">
 <polygon fill="white" stroke="black" points="310.5,-176 310.5,-206 427.5,-206 427.5,-176 310.5,-176"/>
 <text text-anchor="start" x="318.5" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="369" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">::select_point</text>
@@ -348,7 +348,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node61 -->
 <g id="node20" class="node"><title>Node61</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-74 0,-104 116,-104 116,-74 0,-74"/>
 <text text-anchor="start" x="8" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="58" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -390,7 +390,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node65 -->
 <g id="node24" class="node"><title>Node65</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" target="_top" xlink:title="draw the currently visible terrain area on screen.">
 <polygon fill="white" stroke="black" points="154,-0.5 154,-19.5 269,-19.5 269,-0.5 154,-0.5"/>
 <text text-anchor="middle" x="211.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::draw</text>
 </a>

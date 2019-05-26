@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 395,-133 395,4 -4,4"/>
 <!-- Node29 -->
 <g id="node1" class="node"><title>Node29</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="adds a new unit to the container and initialises using a unit type">
 <polygon fill="#bfbfbf" stroke="black" points="0,-49.5 0,-79.5 118,-79.5 118,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitContainer</text>
 <text text-anchor="middle" x="59" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::new_unit</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node30 -->
 <g id="node2" class="node"><title>Node30</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_container.xhtml#ad2ac232d0592daa1ecb4749081f33582" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_container.xhtml#ad2ac232d0592daa1ecb4749081f33582" target="_top" xlink:title="returns the terrain which units are placed on">
 <polygon fill="white" stroke="black" points="154,-98.5 154,-128.5 272,-128.5 272,-98.5 154,-98.5"/>
 <text text-anchor="start" x="162" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitContainer</text>
 <text text-anchor="middle" x="213" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_terrain</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node32 -->
 <g id="node4" class="node"><title>Node32</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit_type.xhtml#a810c763e421cd95a9c64ab4c3e351140" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit_type.xhtml#a810c763e421cd95a9c64ab4c3e351140" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="161,-49.5 161,-79.5 265,-79.5 265,-49.5 161,-49.5"/>
 <text text-anchor="start" x="169" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="213" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialise</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node33 -->
 <g id="node5" class="node"><title>Node33</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_unit_type.xhtml#a51facc71929fe2d425bc6bec06e0dc48" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_unit_type.xhtml#a51facc71929fe2d425bc6bec06e0dc48" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="161,-0.5 161,-30.5 265,-30.5 265,-0.5 161,-0.5"/>
 <text text-anchor="start" x="169" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="213" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">place</text>

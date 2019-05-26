@@ -57,7 +57,7 @@ var sectionId = 'dynsection-45';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 541,-35 541,4 -4,4"/>
 <!-- Node708 -->
 <g id="node1" class="node"><title>Node708</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns true if str matches the basic globbing pattern in the pattern, &#39;*&#39; matches any number of char...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 102,-30.5 102,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::string</text>
 <text text-anchor="middle" x="51" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_matches_pattern</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-45';
 </g>
 <!-- Node709 -->
 <g id="node2" class="node"><title>Node709</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="138,-6 138,-25 225,-25 225,-6 138,-6"/>
 <text text-anchor="middle" x="181.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -92,7 +92,7 @@ var sectionId = 'dynsection-45';
 </g>
 <!-- Node711 -->
 <g id="node4" class="node"><title>Node711</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="442,-6 442,-25 537,-25 537,-6 442,-6"/>
 <text text-anchor="middle" x="489.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

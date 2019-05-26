@@ -1,7 +1,7 @@
 <map id="openage::util::constexpr_::create_truncated_string_literal" name="openage::util::constexpr_::create_truncated_string_literal">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,179,61"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title=" " alt="" coords="436,20,552,47"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" title=" " alt="" coords="227,42,388,83"/>
+<area shape="rect" id="node1" title="Creates a truncated_string_literal from a regular string literal." alt="" coords="5,5,179,61"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title="str(value);" alt="" coords="436,20,552,47"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" title="Returns the length of the string literal, excluding the terminating NULL byte." alt="" coords="227,42,388,83"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="600,20,793,47"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="841,20,968,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="841,20,968,47"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="openage::console::Console::load_colors" name="openage::console::Console::load_colors">
-<area shape="rect" id="node1" title=" " alt="" coords="408,5,587,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" title=" " alt="" coords="224,13,360,39"/>
+<area shape="rect" id="node1" title="load the consoles color table" alt="" coords="408,5,587,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" title="runs the game." alt="" coords="224,13,360,39"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1game_1_1main.xhtml#ae53287c14640e82b47c8b3af1e85c4ca" title=" " alt="" coords="5,13,176,39"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 650,-84 650,4 -4,4"/>
 <!-- Node21 -->
 <g id="node1" class="node"><title>Node21</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="shortcut for get_variable(name).value&lt;T&gt;()">
 <polygon fill="#bfbfbf" stroke="black" points="0,-24.5 0,-54.5 125,-54.5 125,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="62.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">Node::getv</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node23 -->
 <g id="node3" class="node"><title>Node23</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1options_1_1_option_value.xhtml#a594d9e00991ab3ad365ac200463dad3b" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1options_1_1_option_value.xhtml#a594d9e00991ab3ad365ac200463dad3b" target="_top" xlink:title="read inner type &#45; the templated type must match">
 <polygon fill="white" stroke="black" points="161,-0.5 161,-30.5 286,-30.5 286,-0.5 161,-0.5"/>
 <text text-anchor="start" x="169" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="223.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Value::value</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node24 -->
 <g id="node4" class="node"><title>Node24</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml#a2fc1503a41c5e241e6c2af106115bf82" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml#a2fc1503a41c5e241e6c2af106115bf82" target="_top" xlink:title="returns the stored value throws an exception if the template does not match the set type">
 <polygon fill="white" stroke="black" points="322,-6 322,-25 477,-25 477,-6 322,-6"/>
 <text text-anchor="middle" x="399.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::VariableBase::get</text>
 </a>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-172 463,-172 463,4 -4,4"/>
 <!-- Node19 -->
 <g id="node1" class="node"><title>Node19</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="This function tests passable_line.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-66.5 0,-96.5 119,-96.5 119,-66.5 0,-66.5"/>
 <text text-anchor="start" x="8" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="59.5" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">::node_passable_line_0</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node20 -->
 <g id="node2" class="node"><title>Node20</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a324ebb21684cd1e29b46c01160ad4287" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a324ebb21684cd1e29b46c01160ad4287" target="_top" xlink:title="This is a helper passable function that alwalys returns true.">
 <polygon fill="white" stroke="black" points="173.5,-137.5 173.5,-167.5 279.5,-167.5 279.5,-137.5 173.5,-137.5"/>
 <text text-anchor="start" x="181.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="226.5" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">::always_passable</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node21 -->
 <g id="node3" class="node"><title>Node21</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#acebd36a125f535d815cd34536e4f1f1f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#acebd36a125f535d815cd34536e4f1f1f" target="_top" xlink:title="This is a helper passable function that always returns false.">
 <polygon fill="white" stroke="black" points="173.5,-88.5 173.5,-118.5 279.5,-118.5 279.5,-88.5 173.5,-88.5"/>
 <text text-anchor="start" x="181.5" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="226.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">::not_passable</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node22 -->
 <g id="node4" class="node"><title>Node22</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1path.xhtml#a2752186f11f3e1a26c7a72c647e7ccdd" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1path.xhtml#a4fb2450790038eed534dfe29ad57d350" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="155,-50 155,-69 298,-69 298,-50 155,-50"/>
 <text text-anchor="middle" x="226.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::passable_line</text>
 </a>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node24 -->
 <g id="node6" class="node"><title>Node24</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#ab0beb56de41e9380fbf8abf6b50759af" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#ab0beb56de41e9380fbf8abf6b50759af" target="_top" xlink:title="This is a helper passable function that only returns true when pos.ne == 20.">
 <polygon fill="white" stroke="black" points="169,-0.5 169,-30.5 284,-30.5 284,-0.5 169,-0.5"/>
 <text text-anchor="start" x="177" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="226.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::sometimes_passable</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node23 -->
 <g id="node5" class="node"><title>Node23</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title="Converter to retrieve the number as double.">
 <polygon fill="white" stroke="black" points="334,-44.5 334,-74.5 459,-74.5 459,-44.5 334,-44.5"/>
 <text text-anchor="start" x="342" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="396.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_double</text>

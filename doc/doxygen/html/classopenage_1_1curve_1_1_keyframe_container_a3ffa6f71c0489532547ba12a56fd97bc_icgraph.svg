@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 298,-84 298,4 -4,4"/>
 <!-- Node37 -->
 <g id="node1" class="node"><title>Node37</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Insert a new element without a hint.">
 <polygon fill="#bfbfbf" stroke="black" points="165,-24.5 165,-54.5 294,-54.5 294,-24.5 165,-24.5"/>
 <text text-anchor="start" x="173" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="229.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::insert</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node39 -->
 <g id="node3" class="node"><title>Node39</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a2b7e8c72aad9a88a990aea0c90dc65e3" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a2b7e8c72aad9a88a990aea0c90dc65e3" target="_top" xlink:title="Create and insert a new element without submitting a hint.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 129,-30.5 129,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="64.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::insert</text>

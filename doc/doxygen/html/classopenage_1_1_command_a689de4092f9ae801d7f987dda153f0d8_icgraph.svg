@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 302,-84 302,4 -4,4"/>
 <!-- Node26 -->
 <g id="node1" class="node"><title>Node26</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="add addition option to this command">
 <polygon fill="#bfbfbf" stroke="black" points="152,-30 152,-49 298,-49 298,-30 152,-30"/>
 <text text-anchor="middle" x="225" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Command::add_flag</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node27 -->
 <g id="node2" class="node"><title>Node27</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 116,-79.5 116,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node28 -->
 <g id="node3" class="node"><title>Node28</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 116,-30.5 116,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAction</text>
 <text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>

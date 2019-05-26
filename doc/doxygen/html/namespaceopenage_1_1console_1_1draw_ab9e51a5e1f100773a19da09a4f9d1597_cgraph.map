@@ -1,0 +1,15 @@
+<map id="openage::console::draw::to_terminal" name="openage::console::draw::to_terminal">
+<area shape="rect" id="node1" title="very early and inefficient printing of the console to a pty." alt="" coords="5,123,164,164"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" title="returns a valid pointer to the character info for the character designated by pos" alt="" coords="391,5,542,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" title="guess what this does." alt="" coords="212,64,341,105"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" title="writes the string (excluding the null terminator)" alt="" coords="389,130,544,157"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1_f_d.xhtml#aa7042077eda5413ddddf0075a1a66761" title="writes the char" alt="" coords="212,247,341,288"/>
+<area shape="rect" id="node12" href="$classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" title="writes the unicode codepoint, as utf&#45;8" alt="" coords="212,181,341,223"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="983,101,1176,127"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="1224,101,1351,127"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15" title="writes &#39;bytes&#39; bytes from buf" alt="" coords="608,240,737,281"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" title="Returns the length of the string literal, excluding the terminating NULL byte." alt="" coords="592,123,753,164"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title="str(value);" alt="" coords="810,130,926,157"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" title="bytes(value)" alt="" coords="801,214,935,241"/>
+<area shape="rect" id="node13" href="$namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671" title="encodes one Unicode codepoint to a null&#45;terminated UTF&#45;8 character string." alt="" coords="404,181,529,223"/>
+</map>

@@ -9,9 +9,9 @@
         <argsstring>()</argsstring>
         <name>coord</name>
         <briefdescription>
+<para>test method for the base CoordXY* classes. </para>
         </briefdescription>
         <detaileddescription>
-<para>test method for the base CoordXY* classes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

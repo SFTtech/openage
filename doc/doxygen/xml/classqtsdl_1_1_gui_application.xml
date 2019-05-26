@@ -84,9 +84,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Houses gui logic event queue. </para>
     </briefdescription>
     <detaileddescription>
-<para>Houses gui logic event queue. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6176">

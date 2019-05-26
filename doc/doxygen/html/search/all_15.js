@@ -125,7 +125,7 @@ var searchData=
   ['used',['used',['../classopenage_1_1convert_1_1binpack_1_1_packer_node.xhtml#a881c0aca0e458fcc6401e373f34ce81c',1,'openage::convert::binpack::PackerNode']]],
   ['used_5fchunks',['used_chunks',['../classopenage_1_1_terrain.xhtml#a143090daace4caa26b8f0e9af5b4b69c',1,'openage::Terrain']]],
   ['utf8',['utf8',['../classopenage_1_1input_1_1_event.xhtml#a0b02a6e43b8ce3aec0ab4c99d54e33ac',1,'openage::input::Event::utf8()'],['../namespaceopenage_1_1input.xhtml#a278a7af94e412aa285e58d870c64a849aeb7ee0fb585e2ac64fdc086466c474b1',1,'openage::input::UTF8()'],['../namespaceopenage_1_1input.xhtml#a66c182e7a6c17284f918dd401d6fded3',1,'openage::input::utf8(const std::string &amp;text)']]],
-  ['utf8_5fdecode',['utf8_decode',['../namespaceopenage_1_1util.xhtml#a3e9f9bfa57d843330bd6d4bf85397433',1,'openage::util']]],
+  ['utf8_5fdecode',['utf8_decode',['../namespaceopenage_1_1util.xhtml#a63f7f7718f8133a37ac2e63dca01afb7',1,'openage::util']]],
   ['utf8_5fdecoder',['utf8_decoder',['../classopenage_1_1util_1_1utf8__decoder.xhtml',1,'openage::util::utf8_decoder'],['../classopenage_1_1util_1_1utf8__decoder.xhtml#ae33f30385d0dd3708f7465705c9a73de',1,'openage::util::utf8_decoder::utf8_decoder()']]],
   ['utf8_5fencode',['utf8_encode',['../namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671',1,'openage::util']]],
   ['utf8_5flast_5fchar_5fsize',['utf8_last_char_size',['../namespaceopenage_1_1util.xhtml#a5519d25810f698275993214ce79016c7',1,'openage::util']]],

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-668 236,-668 236,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="storage data for a single terrain tile.">
 <polygon fill="#bfbfbf" stroke="black" points="79.5,-0.5 79.5,-112.5 175.5,-112.5 175.5,-0.5 79.5,-0.5"/>
 <text text-anchor="middle" x="127.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::tile_data</text>
 <polyline fill="none" stroke="black" points="79.5,-93.5 175.5,-93.5 "/>
@@ -117,7 +117,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_texture.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_texture.xhtml" target="_top" xlink:title="A texture for rendering graphically.">
 <polygon fill="white" stroke="black" points="131,-171.5 131,-426.5 232,-426.5 232,-171.5 131,-171.5"/>
 <text text-anchor="middle" x="181.5" y="-414.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture</text>
 <polyline fill="none" stroke="black" points="131,-407.5 232,-407.5 "/>
@@ -154,7 +154,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title="C++ pendant to the python util.fslike.path.Path.">
 <polygon fill="white" stroke="black" points="132.5,-474.5 132.5,-663.5 230.5,-663.5 230.5,-474.5 132.5,-474.5"/>
 <text text-anchor="middle" x="181.5" y="-651.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <polyline fill="none" stroke="black" points="132.5,-644.5 230.5,-644.5 "/>

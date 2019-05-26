@@ -1,8 +1,8 @@
 <map id="openage::testing::fail" name="openage::testing::fail">
-<area shape="rect" id="node1" title=" " alt="" coords="415,81,557,108"/>
-<area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#ae7d9467b4f3d76c68a9a7f85a78510cd" title=" " alt="" coords="225,41,367,82"/>
-<area shape="rect" id="node5" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a144e524ab2720b65d7369fdfaf6f3136" title=" " alt="" coords="225,106,367,147"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1rng.xhtml#ace26b663b1fa6bbbaeec1f5903bbc70c" title=" " alt="" coords="5,5,177,32"/>
-<area shape="rect" id="node4" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a7d14a4486213742ed28bcdd360cf0dc9" title=" " alt="" coords="7,56,176,83"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1rng.xhtml#acb0200a44ab02cc735041096cad88fbe" title=" " alt="" coords="7,113,175,140"/>
+<area shape="rect" id="node1" title="Raises TestError with the message msg." alt="" coords="415,81,557,108"/>
+<area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#ae7d9467b4f3d76c68a9a7f85a78510cd" title="Reads the rng state from a stream." alt="" coords="225,41,367,82"/>
+<area shape="rect" id="node5" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a144e524ab2720b65d7369fdfaf6f3136" title="Outputs the rng state to a stream." alt="" coords="225,106,367,147"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1rng.xhtml#ace26b663b1fa6bbbaeec1f5903bbc70c" title="Reads the rng from a stream." alt="" coords="5,5,177,32"/>
+<area shape="rect" id="node4" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a7d14a4486213742ed28bcdd360cf0dc9" title="Reads the rng in from the passed std::istream." alt="" coords="7,56,176,83"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1rng.xhtml#acb0200a44ab02cc735041096cad88fbe" title="Writes the rng state to a stream." alt="" coords="7,113,175,140"/>
 </map>

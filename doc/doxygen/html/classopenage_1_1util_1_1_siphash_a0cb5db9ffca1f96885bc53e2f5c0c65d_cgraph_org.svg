@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 705,-84 705,4 -4,4"/>
 <!-- Node14 -->
 <g id="node1" class="node"><title>Node14</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Hashes a single uint64_t number and returns the result.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-25.5 0,-55.5 113,-55.5 113,-25.5 0,-25.5"/>
 <text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Siphash</text>
 <text text-anchor="middle" x="56.5" y="-32.5" font-family="Helvetica,sans-Serif" font-size="10.00">::digest</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node15 -->
 <g id="node2" class="node"><title>Node15</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" target="_top" xlink:title="Siphash implementation.">
 <polygon fill="white" stroke="black" points="149,-52 149,-71 248,-71 248,-52 149,-52"/>
 <text text-anchor="middle" x="198.5" y="-59" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::hash</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node20 -->
 <g id="node7" class="node"><title>Node20</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0" target="_top" xlink:title="Convert a uint64_t to an array of uint8_t.">
 <polygon fill="white" stroke="black" points="284.5,-0.5 284.5,-30.5 388.5,-30.5 388.5,-0.5 284.5,-0.5"/>
 <text text-anchor="start" x="292.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::uint64</text>
 <text text-anchor="middle" x="336.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array8</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node16 -->
 <g id="node3" class="node"><title>Node16</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a uint64_t.">
 <polygon fill="white" stroke="black" points="284,-49.5 284,-79.5 389,-79.5 389,-49.5 284,-49.5"/>
 <text text-anchor="start" x="292" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="336.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_uint64</text>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node19 -->
 <g id="node6" class="node"><title>Node19</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="606,-12 606,-31 701,-31 701,-12 606,-12"/>
 <text text-anchor="middle" x="653.5" y="-19" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

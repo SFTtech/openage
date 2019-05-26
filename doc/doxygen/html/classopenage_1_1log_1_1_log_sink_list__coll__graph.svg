@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-1254 304.5,-1254 304.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Holds a list of all registered log sinks; Maintained from the LogSink constructors/destructors.">
 <polygon fill="#bfbfbf" stroke="black" points="51.5,-0.5 51.5,-167.5 180.5,-167.5 180.5,-0.5 51.5,-0.5"/>
 <text text-anchor="middle" x="116" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSinkList</text>
 <polyline fill="none" stroke="black" points="51.5,-148.5 180.5,-148.5 "/>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="structopenage_1_1log_1_1level.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="structopenage_1_1log_1_1level.xhtml" target="_top" xlink:title="Available logging levels.">
 <polygon fill="white" stroke="black" points="67.5,-215.5 67.5,-272.5 164.5,-272.5 164.5,-215.5 67.5,-215.5"/>
 <text text-anchor="middle" x="116" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <polyline fill="none" stroke="black" points="67.5,-253.5 164.5,-253.5 "/>
@@ -127,7 +127,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title="Data associated with a log level.">
 <polygon fill="white" stroke="black" points="26.5,-619 26.5,-687 123.5,-687 123.5,-619 26.5,-619"/>
 <text text-anchor="start" x="34.5" y="-675" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <text text-anchor="middle" x="75" y="-664" font-family="Helvetica,sans-Serif" font-size="10.00">_value</text>
@@ -222,7 +222,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node8 -->
 <g id="node8" class="node"><title>Node8</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title="Container for possible enum values.">
 <polygon fill="white" stroke="black" points="141.5,-558.5 141.5,-747.5 300.5,-747.5 300.5,-558.5 141.5,-558.5"/>
 <text text-anchor="start" x="149.5" y="-735.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Enum</text>
 <text text-anchor="middle" x="221" y="-724.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; DerivedType &gt;</text>

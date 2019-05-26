@@ -1,5 +1,5 @@
 <map id="openage::console::Buf::chrdataptr" name="openage::console::Buf::chrdataptr">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,156,47"/>
+<area shape="rect" id="node1" title="returns a valid pointer to the character info for the character designated by pos" alt="" coords="5,5,156,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="204,13,397,39"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="445,13,572,39"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="445,13,572,39"/>
 </map>

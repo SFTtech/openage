@@ -20,7 +20,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" target="_top" xlink:title="Called when a unit is created and active.">
 <polygon fill="white" stroke="black" points="149.5,-135.5 149.5,-165.5 267.5,-165.5 267.5,-135.5 149.5,-135.5"/>
 <text text-anchor="start" x="157.5" y="-153.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::active</text>
 <text text-anchor="middle" x="208.5" y="-142.5" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_added</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_player.xhtml#a2d3f269dc4b0acd1972e4d0a32f97c2f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_player.xhtml#a2d3f269dc4b0acd1972e4d0a32f97c2f" target="_top" xlink:title="Called when a unit is killed by this player.">
 <polygon fill="white" stroke="black" points="446,-50 446,-69 583,-69 583,-50 446,-50"/>
 <text text-anchor="middle" x="514.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::killed_unit</text>
 </a>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_score.xhtml#a6a66aa42a2fc87950c5b26ed4a4ce6fb" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_score.xhtml#a6a66aa42a2fc87950c5b26ed4a4ce6fb" target="_top" xlink:title="Updates map exploration precentance based sub&#45;scores.">
 <polygon fill="white" stroke="black" points="454.5,-0.5 454.5,-30.5 574.5,-30.5 574.5,-0.5 454.5,-0.5"/>
 <text text-anchor="start" x="462.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score::update</text>
 <text text-anchor="middle" x="514.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_map_explored</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node7 -->
 <g id="node5" class="node"><title>Node7</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title="Updates resource based sub&#45;scores.">
 <polygon fill="white" stroke="black" points="454.5,-88.5 454.5,-118.5 574.5,-118.5 574.5,-88.5 454.5,-88.5"/>
 <text text-anchor="start" x="462.5" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score::update</text>
 <text text-anchor="middle" x="514.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">_resources</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node8 -->
 <g id="node6" class="node"><title>Node8</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" target="_top" xlink:title="Called when the resources amounts change.">
 <polygon fill="white" stroke="black" points="306,-86.5 306,-116.5 410,-116.5 410,-86.5 306,-86.5"/>
 <text text-anchor="start" x="314" y="-104.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::on</text>
 <text text-anchor="middle" x="358" y="-93.5" font-family="Helvetica,sans-Serif" font-size="10.00">_resources_change</text>
@@ -94,7 +94,7 @@
 </g>
 <!-- Node9 -->
 <g id="node7" class="node"><title>Node9</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" target="_top" xlink:title="Called when a unit is destroyed.">
 <polygon fill="white" stroke="black" points="149.5,-86.5 149.5,-116.5 267.5,-116.5 267.5,-86.5 149.5,-86.5"/>
 <text text-anchor="start" x="157.5" y="-104.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::active</text>
 <text text-anchor="middle" x="208.5" y="-93.5" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_removed</text>
@@ -108,7 +108,7 @@
 </g>
 <!-- Node10 -->
 <g id="node8" class="node"><title>Node10</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_player.xhtml#a3ff378e505d9036c74204730b53d9fba" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_player.xhtml#a3ff378e505d9036c74204730b53d9fba" target="_top" xlink:title="remove from stockpile if available">
 <polygon fill="white" stroke="black" points="147.5,-48 147.5,-67 269.5,-67 269.5,-48 147.5,-48"/>
 <text text-anchor="middle" x="208.5" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::deduct</text>
 </a>
@@ -121,7 +121,7 @@
 </g>
 <!-- Node13 -->
 <g id="node11" class="node"><title>Node13</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_player.xhtml#a728983ff63d9e16ecc874a942c61fa22" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_player.xhtml#a728983ff63d9e16ecc874a942c61fa22" target="_top" xlink:title="add to stockpile">
 <polygon fill="white" stroke="black" points="147,-10 147,-29 270,-29 270,-10 147,-10"/>
 <text text-anchor="middle" x="208.5" y="-17" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::receive</text>
 </a>
@@ -134,7 +134,7 @@
 </g>
 <!-- Node11 -->
 <g id="node9" class="node"><title>Node11</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" target="_top" xlink:title="The given player buys the given resource with gold.">
 <polygon fill="white" stroke="black" points="0,-48 0,-67 111,-67 111,-48 0,-48"/>
 <text text-anchor="middle" x="55.5" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::buy</text>
 </a>
@@ -147,7 +147,7 @@
 </g>
 <!-- Node12 -->
 <g id="node10" class="node"><title>Node12</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title="The given player sells the given resource for gold.">
 <polygon fill="white" stroke="black" points="0.5,-10 0.5,-29 110.5,-29 110.5,-10 0.5,-10"/>
 <text text-anchor="middle" x="55.5" y="-17" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::sell</text>
 </a>

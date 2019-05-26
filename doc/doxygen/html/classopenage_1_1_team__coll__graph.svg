@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-321 277.5,-321 277.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A team of players.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-127.5 0,-305.5 128,-305.5 128,-127.5 0,-127.5"/>
 <text text-anchor="middle" x="64" y="-293.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Team</text>
 <polyline fill="none" stroke="black" points="0,-286.5 128,-286.5 "/>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_team_score.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_team_score.xhtml" target="_top" xlink:title="The score of a team.">
 <polygon fill="white" stroke="black" points="60.5,-0.5 60.5,-68.5 169.5,-68.5 169.5,-0.5 60.5,-0.5"/>
 <text text-anchor="middle" x="115" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TeamScore</text>
 <polyline fill="none" stroke="black" points="60.5,-49.5 169.5,-49.5 "/>
@@ -59,7 +59,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_score.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_score.xhtml" target="_top" xlink:title="Keeps track of a score and all the sub&#45;scores.">
 <polygon fill="white" stroke="black" points="146.5,-116.5 146.5,-316.5 273.5,-316.5 273.5,-116.5 146.5,-116.5"/>
 <text text-anchor="middle" x="210" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score</text>
 <polyline fill="none" stroke="black" points="146.5,-297.5 273.5,-297.5 "/>

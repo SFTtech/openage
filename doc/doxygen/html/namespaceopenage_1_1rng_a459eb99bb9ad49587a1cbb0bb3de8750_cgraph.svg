@@ -57,7 +57,7 @@ var sectionId = 'dynsection-13';
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 704,-73.5 704,4 -4,4"/>
 <!-- Node112 -->
 <g id="node1" class="node"><title>Node112</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns a double in [lower, upper) from the global rng.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-17 0,-47 95,-47 95,-17 0,-17"/>
 <text text-anchor="start" x="8" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::real</text>
 <text text-anchor="middle" x="47.5" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">_range</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node113 -->
 <g id="node2" class="node"><title>Node113</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec" target="_top" xlink:title="Returns a double in the range [min, max)">
 <polygon fill="white" stroke="black" points="131,-17 131,-47 237,-47 237,-17 131,-17"/>
 <text text-anchor="start" x="139" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="184" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">real_range</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node114 -->
 <g id="node3" class="node"><title>Node114</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a2d906c2de63a31a89589a34bac2a3dd8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a2d906c2de63a31a89589a34bac2a3dd8" target="_top" xlink:title="Retrieves a double in [0, 1)">
 <polygon fill="white" stroke="black" points="273,-22.5 273,-41.5 395,-41.5 395,-22.5 273,-22.5"/>
 <text text-anchor="middle" x="334" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::real</text>
 </a>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node115 -->
 <g id="node4" class="node"><title>Node115</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" target="_top" xlink:title="Retrieves a random value from the generator.">
 <polygon fill="white" stroke="black" points="440.5,-39 440.5,-69 546.5,-69 546.5,-39 440.5,-39"/>
 <text text-anchor="start" x="448.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="493.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">random</text>

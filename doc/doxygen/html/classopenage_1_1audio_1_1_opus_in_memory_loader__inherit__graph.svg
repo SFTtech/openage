@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-233 159,-233 159,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A OpusInMemoryLoader load&#39;s opus encoded data from opus files.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-90.5 155,-90.5 155,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::OpusInMemory</text>
 <text text-anchor="middle" x="77.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">Loader</text>
@@ -26,7 +26,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_in_memory_loader.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_in_memory_loader.xhtml" target="_top" xlink:title="A InMemoryLoader loads a audio file into memory and converts it into 16 bit signed integer pcm data.">
 <polygon fill="white" stroke="black" points="12,-127.5 12,-228.5 143,-228.5 143,-127.5 12,-127.5"/>
 <text text-anchor="start" x="20" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::InMemory</text>
 <text text-anchor="middle" x="77.5" y="-205.5" font-family="Helvetica,sans-Serif" font-size="10.00">Loader</text>

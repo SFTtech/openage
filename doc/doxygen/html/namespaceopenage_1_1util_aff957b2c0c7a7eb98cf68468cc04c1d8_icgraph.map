@@ -1,0 +1,12 @@
+<map id="openage::util::symbol_name" name="openage::util::symbol_name">
+<area shape="rect" id="node1" title="Returns the (demangled) symbol name for a given address." alt="" coords="1021,115,1207,142"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1pyinterface.xhtml#a591d9bd55fa1f9904547f3f2dcb3796d" title="Adds a Python interface component." alt="" coords="795,5,951,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" title="Checks whether all objects that have been registered via add_py_if_component have been properly initi..." alt="" coords="802,71,945,112"/>
+<area shape="rect" id="node9" href="$classopenage_1_1pyinterface_1_1_func.xhtml#a83b9691db46167c2637c86f5a71cb40f" title="raises an Error if this&#45;&gt;fptr is still uninitialized." alt="" coords="773,137,973,193"/>
+<area shape="rect" id="node10" href="$classopenage_1_1error_1_1_stack_analyzer.xhtml#ab807f0825ce961e84c901c715cc79976" title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge." alt="" coords="774,217,973,259"/>
+<area shape="rect" id="node3" href="$classopenage_1_1pyinterface_1_1_py_if_func.xhtml#a151c2faee8d91169645204f1eb3a6a22" title=" " alt="" coords="545,5,688,47"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1cppinterface_1_1setup.xhtml#ae1c256c521da867c4f2ee7e9a7460ad3" title="After a call to setup(), the C++ interface is in a usable state." alt="" coords="508,78,725,105"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1convert_1_1main.xhtml#ab4e998cdda52db3b3cae6efbcd2eda23" title="CLI entry point." alt="" coords="256,53,436,79"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1testing_1_1main.xhtml#a346b6762051aaadb5cc302e1adbf5f1e" title="Processes the given args, detecting errors." alt="" coords="232,103,460,130"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1testing_1_1main.xhtml#a22daa2dd4990bc8d016d850a9d9fc5fb" title="CLI main method." alt="" coords="5,103,184,130"/>
+</map>

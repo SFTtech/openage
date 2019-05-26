@@ -57,7 +57,7 @@ var sectionId = 'dynsection-6';
 <polygon fill="white" stroke="none" points="-4,4 -4,-280 764,-280 764,4 -4,4"/>
 <!-- Node26 -->
 <g id="node1" class="node"><title>Node26</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="execute the drawing action.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-122.5 0,-152.5 134,-152.5 134,-122.5 0,-122.5"/>
 <text text-anchor="start" x="8" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="67" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_drawhud</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node27 -->
 <g id="node2" class="node"><title>Node27</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" target="_top" xlink:title="experimental and totally inefficient opengl draw of a terminal buffer.">
 <polygon fill="white" stroke="black" points="170,-122.5 170,-152.5 289,-152.5 289,-122.5 170,-122.5"/>
 <text text-anchor="start" x="178" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="229.5" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_opengl</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node28 -->
 <g id="node3" class="node"><title>Node28</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_font.xhtml#a20d9c92be7d85c08a3877b476f479440" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_font.xhtml#a20d9c92be7d85c08a3877b476f479440" target="_top" xlink:title="Get the typographic ascender of font.">
 <polygon fill="white" stroke="black" points="332,-245.5 332,-275.5 433,-275.5 433,-245.5 332,-245.5"/>
 <text text-anchor="start" x="340" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="382.5" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">Font::get_ascender</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node29 -->
 <g id="node4" class="node"><title>Node29</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a5684ab06d65ff2afe5e3b8551809d668" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a5684ab06d65ff2afe5e3b8551809d668" target="_top" xlink:title="return this engine&#39;s text renderer.">
 <polygon fill="white" stroke="black" points="328,-196.5 328,-226.5 437,-226.5 437,-196.5 328,-196.5"/>
 <text text-anchor="start" x="336" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="382.5" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">_text_renderer</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node30 -->
 <g id="node5" class="node"><title>Node30</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#aa13c06f0e7bc0b5f09f8adcd399f6676" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#aa13c06f0e7bc0b5f09f8adcd399f6676" target="_top" xlink:title="Set the font to be used for the future text draw calls.">
 <polygon fill="white" stroke="black" points="325,-147.5 325,-177.5 440,-177.5 440,-147.5 325,-147.5"/>
 <text text-anchor="start" x="333" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="382.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::set_font</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node33 -->
 <g id="node8" class="node"><title>Node33</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" target="_top" xlink:title="returns a monotonically&#45;increasing time that returns the number of nanoseconds since an unspecified e...">
 <polygon fill="white" stroke="black" points="330,-98.5 330,-128.5 435,-128.5 435,-98.5 330,-98.5"/>
 <text text-anchor="start" x="338" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="382.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">_monotonic_time</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node34 -->
 <g id="node9" class="node"><title>Node34</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title="returns a valid pointer to the character info for the character designated by pos">
 <polygon fill="white" stroke="black" points="326,-49.5 326,-79.5 439,-79.5 439,-49.5 326,-49.5"/>
 <text text-anchor="start" x="334" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="382.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::chrdataptr</text>
@@ -150,7 +150,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node37 -->
 <g id="node12" class="node"><title>Node37</title>
-<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671" target="_top" xlink:title="encodes one Unicode codepoint to a null&#45;terminated UTF&#45;8 character string.">
 <polygon fill="white" stroke="black" points="335.5,-0.5 335.5,-30.5 429.5,-30.5 429.5,-0.5 335.5,-0.5"/>
 <text text-anchor="start" x="343.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::utf8</text>
 <text text-anchor="middle" x="382.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_encode</text>
@@ -206,7 +206,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node36 -->
 <g id="node11" class="node"><title>Node36</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="661,-55 661,-74 756,-74 756,-55 661,-55"/>
 <text text-anchor="middle" x="708.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

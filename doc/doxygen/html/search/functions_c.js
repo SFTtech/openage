@@ -20,7 +20,7 @@ var searchData=
   ['list_5ftargets_5fpy',['list_targets_py',['../namespaceopenage_1_1testing_1_1list__processor.xhtml#aa7fa94692d5000c384c9820a0a4edddc',1,'openage::testing::list_processor']]],
   ['list_5fvariables',['list_variables',['../classopenage_1_1options_1_1_option_node.xhtml#a922dfcd1bf96406142c868eaf6407550',1,'openage::options::OptionNode']]],
   ['livingproducer',['LivingProducer',['../classopenage_1_1_living_producer.xhtml#aecea48fcba32740492d9ca55dfdb594c',1,'openage::LivingProducer']]],
-  ['load',['load',['../classopenage_1_1_texture.xhtml#a1fba0cda4b2ce8306d8f6278e936681a',1,'openage::Texture::load()'],['../namespaceopenage_1_1gameio.xhtml#a75b0984fd51cdc53616318d3f5a0d50f',1,'openage::gameio::load()']]],
+  ['load',['load',['../classopenage_1_1_texture.xhtml#a1fba0cda4b2ce8306d8f6278e936681a',1,'openage::Texture::load()'],['../namespaceopenage_1_1gameio.xhtml#ae6761d88280466d1d1b5c638e7c7a042',1,'openage::gameio::load()']]],
   ['load_5fall',['load_all',['../classopenage_1_1cvar_1_1_c_var_manager.xhtml#a8fcaa20636cab773dc70db2c74a4308e',1,'openage::cvar::CVarManager']]],
   ['load_5fbuilding',['load_building',['../classopenage_1_1_game_spec.xhtml#acbe30bd72e3a9ef46c461e497d726711',1,'openage::GameSpec']]],
   ['load_5fchunk',['load_chunk',['../classopenage_1_1audio_1_1_dynamic_loader.xhtml#a3b691e2596c617e3ccbd0bc6595109db',1,'openage::audio::DynamicLoader::load_chunk()'],['../classopenage_1_1audio_1_1_opus_dynamic_loader.xhtml#a4e5604664bb038018600653c7b6300fc',1,'openage::audio::OpusDynamicLoader::load_chunk()']]],

@@ -70,9 +70,9 @@
           <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
         </param>
         <briefdescription>
+<para>Control units action when in range of the target. </para>
         </briefdescription>
         <detaileddescription>
-<para>Control units action when in range of the target </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -129,9 +129,9 @@
         <name>name</name>
         <reimplements refid="classopenage_1_1_target_action_1ab57d1777fed0ced4ee1e6788ee5e445d">name</reimplements>
         <briefdescription>
+<para>debug string to identify action types </para>
         </briefdescription>
         <detaileddescription>
-<para>debug string to identify action types </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -152,9 +152,9 @@
           <declname>target</declname>
         </param>
         <briefdescription>
+<para>use attack action </para>
         </briefdescription>
         <detaileddescription>
-<para>use attack action </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -181,9 +181,9 @@
           <declname>target</declname>
         </param>
         <briefdescription>
+<para>add a projectile game object which moves towards the target </para>
         </briefdescription>
         <detaileddescription>
-<para>add a projectile game object which moves towards the target </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -206,9 +206,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>attacks another unit </para>
     </briefdescription>
     <detaileddescription>
-<para>attacks another unit </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="241">

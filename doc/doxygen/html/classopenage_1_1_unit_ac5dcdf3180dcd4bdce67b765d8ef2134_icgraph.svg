@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-231 451,-231 451,4 -4,4"/>
 <!-- Node374 -->
 <g id="node1" class="node"><title>Node374</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="queues a command to be applied to this unit on the next update">
 <polygon fill="#bfbfbf" stroke="black" points="314,-104 314,-123 447,-123 447,-104 314,-104"/>
 <text text-anchor="middle" x="380.5" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::queue_cmd</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node377 -->
 <g id="node4" class="node"><title>Node377</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title="action to perform when popped from a units action stack">
 <polygon fill="white" stroke="black" points="159.5,-147.5 159.5,-177.5 268.5,-177.5 268.5,-147.5 159.5,-147.5"/>
 <text text-anchor="start" x="167.5" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAction</text>
 <text text-anchor="middle" x="214" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_completion</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node379 -->
 <g id="node6" class="node"><title>Node379</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_idle_action.xhtml#a90d182b9575459830744488f776a2f4e" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="163,-49.5 163,-79.5 265,-79.5 265,-49.5 163,-49.5"/>
 <text text-anchor="start" x="171" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::IdleAction</text>
 <text text-anchor="middle" x="214" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node380 -->
 <g id="node7" class="node"><title>Node380</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="156,-0.5 156,-30.5 272,-30.5 272,-0.5 156,-0.5"/>
 <text text-anchor="start" x="164" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAction</text>
 <text text-anchor="middle" x="214" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node376 -->
 <g id="node3" class="node"><title>Node376</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="0,-196.5 0,-226.5 114,-226.5 114,-196.5 0,-196.5"/>
 <text text-anchor="start" x="8" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TargetAction</text>
 <text text-anchor="middle" x="57" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>

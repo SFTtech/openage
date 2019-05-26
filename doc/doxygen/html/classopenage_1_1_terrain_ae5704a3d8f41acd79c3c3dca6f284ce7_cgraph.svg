@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 428,-35 428,4 -4,4"/>
 <!-- Node34 -->
 <g id="node1" class="node"><title>Node34</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="return the blending mode/blendomatic mask set for a given terrain id.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-6 0,-25 142,-25 142,-6 0,-6"/>
 <text text-anchor="middle" x="71" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::blendmode</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node35 -->
 <g id="node2" class="node"><title>Node35</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" target="_top" xlink:title="validate whether the given terrain id is available.">
 <polygon fill="white" stroke="black" points="178,-0.5 178,-30.5 305,-30.5 305,-0.5 178,-0.5"/>
 <text text-anchor="start" x="186" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::validate</text>
 <text text-anchor="middle" x="241.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_terrain</text>

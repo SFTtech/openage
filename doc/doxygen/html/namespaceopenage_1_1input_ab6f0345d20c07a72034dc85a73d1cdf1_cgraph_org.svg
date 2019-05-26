@@ -20,7 +20,7 @@
 </g>
 <!-- Node38 -->
 <g id="node2" class="node"><title>Node38</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="318,-38.5 318,-57.5 415,-57.5 415,-38.5 318,-38.5"/>
 <text text-anchor="middle" x="366.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>
@@ -64,7 +64,7 @@
 </g>
 <!-- Node41 -->
 <g id="node5" class="node"><title>Node41</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="475,-0.5 475,-19.5 570,-19.5 570,-0.5 475,-0.5"/>
 <text text-anchor="middle" x="522.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

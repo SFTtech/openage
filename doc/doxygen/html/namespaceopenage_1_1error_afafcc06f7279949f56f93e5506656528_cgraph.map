@@ -1,8 +1,8 @@
 <map id="openage::error::sigsegv_handler" name="openage::error::sigsegv_handler">
 <area shape="rect" id="node1" title=" " alt="" coords="5,39,161,80"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a8cb190d6ba8c160e1453ff4379dd2dcb" title=" " alt="" coords="221,5,359,47"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" title=" " alt="" coords="209,71,371,112"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title=" " alt="" coords="419,78,535,105"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a8cb190d6ba8c160e1453ff4379dd2dcb" title="Wrapping a function call with ignore_result makes it more clear to readers, compilers and linters tha..." alt="" coords="221,5,359,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" title="Returns the length of the string literal, excluding the terminating NULL byte." alt="" coords="209,71,371,112"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title="str(value);" alt="" coords="419,78,535,105"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="583,78,776,105"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="824,78,951,105"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="824,78,951,105"/>
 </map>

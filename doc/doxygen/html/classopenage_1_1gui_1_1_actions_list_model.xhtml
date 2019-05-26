@@ -102,20 +102,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1gui_1_1_actions_list_m
 </div><!--header-->
 <div class="contents">
 
+<p>Model used for the Action Buttons to render (e.g.  
+ <a href="classopenage_1_1gui_1_1_actions_list_model.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="actions__list__model_8h_source.xhtml">actions_list_model.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::gui::ActionsListModel:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model__inherit__graph.svg" width="202" height="536"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model__inherit__graph.svg" width="202" height="536"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::gui::ActionsListModel:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -182,10 +187,13 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:afe9f1288a1072b465fcab14cbbbe054a"><td class="memItemLeft" align="right" valign="top">virtual QMap&lt; int, QVariant &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#afe9f1288a1072b465fcab14cbbbe054a">itemData</a> (const QModelIndex &amp;index) const override</td></tr>
 <tr class="separator:afe9f1288a1072b465fcab14cbbbe054a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ee0f271abba58e0488bfa698aeff161"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a9ee0f271abba58e0488bfa698aeff161">set_icons_source</a> (const std::string <a class="el" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a95241b68edbb6d1d1b01ba6b997abdcd">icons_source</a>)</td></tr>
+<tr class="memdesc:a9ee0f271abba58e0488bfa698aeff161"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function to create a QUrl from a string and set it as iconsSource.  <a href="#a9ee0f271abba58e0488bfa698aeff161">More...</a><br /></td></tr>
 <tr class="separator:a9ee0f271abba58e0488bfa698aeff161"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b430f1462ad2aeb117adca82132267a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a6b430f1462ad2aeb117adca82132267a">clear_buttons</a> ()</td></tr>
+<tr class="memdesc:a6b430f1462ad2aeb117adca82132267a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all buttons.  <a href="#a6b430f1462ad2aeb117adca82132267a">More...</a><br /></td></tr>
 <tr class="separator:a6b430f1462ad2aeb117adca82132267a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb65037ff7b6122307177e96d27637ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#afb65037ff7b6122307177e96d27637ab">add_button</a> (int ico, int ico_chk, int grp_id, const char *name)</td></tr>
+<tr class="memdesc:afb65037ff7b6122307177e96d27637ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shortcut to creating a QMap for a button.  <a href="#afb65037ff7b6122307177e96d27637ab">More...</a><br /></td></tr>
 <tr class="separator:afb65037ff7b6122307177e96d27637ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -198,7 +206,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a22cbf622419369966708ff3dfc189339"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Model used for the Action Buttons to render (e.g. for civilian units, military units, buildings etc.) </p>
+<div class="textblock"><p>Model used for the Action Buttons to render (e.g. </p>
+<p>for civilian units, military units, buildings etc.) </p>
 
 <p class="definition">Definition at line <a class="el" href="actions__list__model_8h_source.xhtml#l00020">20</a> of file <a class="el" href="actions__list__model_8h_source.xhtml">actions_list_model.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
@@ -355,7 +364,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Shortcut to creating a QMap for a button </p>
+
+<p>Shortcut to creating a QMap for a button. </p>
 
 <p class="definition">Definition at line <a class="el" href="actions__list__model_8cpp_source.xhtml#l00190">190</a> of file <a class="el" href="actions__list__model_8cpp_source.xhtml">actions_list_model.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                                                                    {</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    QMap&lt;int, QVariant&gt; <a class="code" href="setup_8cpp.xhtml#a96dd93a55be2a0953e454b56d83f65da">map</a>;</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="setup_8cpp.xhtml#a96dd93a55be2a0953e454b56d83f65da">map</a>[static_cast&lt;int&gt;(<a class="code" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#acfbf05bd3ffe1cfd512b3cc7e0868e40a3591143a2e41630676ea59ebd87fb4eb">ActionsRoles::IconRole</a>)] = QVariant(ico);</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="setup_8cpp.xhtml#a96dd93a55be2a0953e454b56d83f65da">map</a>[static_cast&lt;int&gt;(<a class="code" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#acfbf05bd3ffe1cfd512b3cc7e0868e40aa0b694a5e7a4cd02a259f98e288f76d9">ActionsRoles::IconCheckedRole</a>)] = QVariant(ico_chk);</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="setup_8cpp.xhtml#a96dd93a55be2a0953e454b56d83f65da">map</a>[static_cast&lt;int&gt;(<a class="code" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#acfbf05bd3ffe1cfd512b3cc7e0868e40a9045638ba88b0858225c1bb7a62ffcb8">ActionsRoles::GroupIDRole</a>)] = QVariant(grp_id);</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <a class="code" href="setup_8cpp.xhtml#a96dd93a55be2a0953e454b56d83f65da">map</a>[static_cast&lt;int&gt;(<a class="code" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#acfbf05bd3ffe1cfd512b3cc7e0868e40aebc5ac2a302d88834d27e146f5ca8b70">ActionsRoles::NameRole</a>)] = QVariant(name);</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a22cbf622419369966708ff3dfc189339">buttons</a>.push_back(map);</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div><div class="ttc" id="setup_8cpp_xhtml_a96dd93a55be2a0953e454b56d83f65da"><div class="ttname"><a href="setup_8cpp.xhtml#a96dd93a55be2a0953e454b56d83f65da">map</a></div><div class="ttdeci">std::map&lt; void *, std::function&lt; bool()&gt; &gt; map</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00025">setup.cpp:25</a></div></div>
@@ -373,7 +383,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_afb65037ff7b6122307177e96d27637ab_icgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_afb65037ff7b6122307177e96d27637ab_icgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -400,7 +411,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Clears all buttons </p>
+
+<p>Clears all buttons. </p>
 
 <p class="definition">Definition at line <a class="el" href="actions__list__model_8cpp_source.xhtml#l00184">184</a> of file <a class="el" href="actions__list__model_8cpp_source.xhtml">actions_list_model.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                     {</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    this-&gt;beginResetModel();</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a22cbf622419369966708ff3dfc189339">buttons</a>.clear();</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    this-&gt;endResetModel();</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_actions_list_model_xhtml_a22cbf622419369966708ff3dfc189339"><div class="ttname"><a href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a22cbf622419369966708ff3dfc189339">openage::gui::ActionsListModel::buttons</a></div><div class="ttdeci">std::vector&lt; QMap&lt; int, QVariant &gt; &gt; buttons</div><div class="ttdef"><b>Definition:</b> <a href="actions__list__model_8h_source.xhtml#l00084">actions_list_model.h:84</a></div></div>
@@ -413,7 +425,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_a6b430f1462ad2aeb117adca82132267a_icgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_a6b430f1462ad2aeb117adca82132267a_icgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -564,7 +577,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_ad84503f513414c76726db8b3def08205_icgraph.svg" width="427" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_ad84503f513414c76726db8b3def08205_icgraph.svg" width="427" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -635,7 +649,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_abd55b596dfde20d00900d9d7ed7d2e87_cgraph.svg" width="100%" height="542"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_abd55b596dfde20d00900d9d7ed7d2e87_cgraph.svg" width="100%" height="542"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -738,7 +753,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_a94429f228732ddf86c34e76edbc8ab8c_cgraph.svg" width="100%" height="542"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_a94429f228732ddf86c34e76edbc8ab8c_cgraph.svg" width="100%" height="542"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -766,12 +782,12 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="namespaceopenage_xhtml_afdbe6bcd8b7f61f9654a9736d9414ee5a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespaceopenage.xhtml#afdbe6bcd8b7f61f9654a9736d9414ee5a6adf97f83acf6453d4a6a4b1070f3754">openage::ActionButtonsType::None</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_afdbe6bcd8b7f61f9654a9736d9414ee5a70e748773cd746ae58fc3e9cdd9d49d1"><div class="ttname"><a href="namespaceopenage.xhtml#afdbe6bcd8b7f61f9654a9736d9414ee5a70e748773cd746ae58fc3e9cdd9d49d1">openage::ActionButtonsType::BuildMenu</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_afdbe6bcd8b7f61f9654a9736d9414ee5a4469cd896299cc6ea6ea2054d1e5a777"><div class="ttname"><a href="namespaceopenage.xhtml#afdbe6bcd8b7f61f9654a9736d9414ee5a4469cd896299cc6ea6ea2054d1e5a777">openage::ActionButtonsType::MilitaryUnits</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
-<div class="ttc" id="classopenage_1_1gui_1_1_actions_list_model_xhtml_a6b430f1462ad2aeb117adca82132267a"><div class="ttname"><a href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a6b430f1462ad2aeb117adca82132267a">openage::gui::ActionsListModel::clear_buttons</a></div><div class="ttdeci">void clear_buttons()</div><div class="ttdef"><b>Definition:</b> <a href="actions__list__model_8cpp_source.xhtml#l00184">actions_list_model.cpp:184</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdoc">Convenience method that makes use of the 'general' LogSource.</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_actions_list_model_xhtml_a6b430f1462ad2aeb117adca82132267a"><div class="ttname"><a href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a6b430f1462ad2aeb117adca82132267a">openage::gui::ActionsListModel::clear_buttons</a></div><div class="ttdeci">void clear_buttons()</div><div class="ttdoc">Clears all buttons.</div><div class="ttdef"><b>Definition:</b> <a href="actions__list__model_8cpp_source.xhtml#l00184">actions_list_model.cpp:184</a></div></div>
 <div class="ttc" id="classopenage_1_1gui_1_1_actions_list_model_xhtml_a3c8dcae05fa3d0f7e989bc30425a92fc"><div class="ttname"><a href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a3c8dcae05fa3d0f7e989bc30425a92fc">openage::gui::ActionsListModel::active_buttons</a></div><div class="ttdeci">ActionButtonsType active_buttons</div><div class="ttdef"><b>Definition:</b> <a href="actions__list__model_8h_source.xhtml#l00023">actions_list_model.h:23</a></div></div>
 <div class="ttc" id="classopenage_1_1gui_1_1_actions_list_model_xhtml_a42d71414cd9318116fed7bed86062d2ea1376f00ab284ba3f8a30bf11b9c56ebd"><div class="ttname"><a href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a42d71414cd9318116fed7bed86062d2ea1376f00ab284ba3f8a30bf11b9c56ebd">openage::gui::ActionsListModel::GroupIDs::StanceGroup</a></div></div>
 <div class="ttc" id="classopenage_1_1gui_1_1_actions_list_model_xhtml_a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f"><div class="ttname"><a href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f">openage::gui::ActionsListModel::GroupIDs::NoGroup</a></div></div>
-<div class="ttc" id="classopenage_1_1gui_1_1_actions_list_model_xhtml_afb65037ff7b6122307177e96d27637ab"><div class="ttname"><a href="classopenage_1_1gui_1_1_actions_list_model.xhtml#afb65037ff7b6122307177e96d27637ab">openage::gui::ActionsListModel::add_button</a></div><div class="ttdeci">void add_button(int ico, int ico_chk, int grp_id, const char *name)</div><div class="ttdef"><b>Definition:</b> <a href="actions__list__model_8cpp_source.xhtml#l00190">actions_list_model.cpp:190</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_actions_list_model_xhtml_afb65037ff7b6122307177e96d27637ab"><div class="ttname"><a href="classopenage_1_1gui_1_1_actions_list_model.xhtml#afb65037ff7b6122307177e96d27637ab">openage::gui::ActionsListModel::add_button</a></div><div class="ttdeci">void add_button(int ico, int ico_chk, int grp_id, const char *name)</div><div class="ttdoc">Shortcut to creating a QMap for a button.</div><div class="ttdef"><b>Definition:</b> <a href="actions__list__model_8cpp_source.xhtml#l00190">actions_list_model.cpp:190</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1log_xhtml_a7ca418e1b1fcf210ff91cd25dc8e6a36"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36">openage::log.warn</a></div><div class="ttdeci">def warn(msg, *args, **kwargs)</div><div class="ttdoc">warning message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00119">__init__.py:119</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_afdbe6bcd8b7f61f9654a9736d9414ee5a408c62a4830f43cc283514da6fbe7acc"><div class="ttname"><a href="namespaceopenage.xhtml#afdbe6bcd8b7f61f9654a9736d9414ee5a408c62a4830f43cc283514da6fbe7acc">openage::ActionButtonsType::MilBuildMenu</a></div></div>
 </div><!-- fragment -->
@@ -783,7 +799,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_a916eb7b63f0daf57e3d90eedf0690200_cgraph.svg" width="100%" height="515"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_a916eb7b63f0daf57e3d90eedf0690200_cgraph.svg" width="100%" height="515"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -850,7 +867,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Utility function to create a QUrl from a string and set it as iconsSource </p>
+
+<p>Utility function to create a QUrl from a string and set it as iconsSource. </p>
 
 <p class="definition">Definition at line <a class="el" href="actions__list__model_8cpp_source.xhtml#l00150">150</a> of file <a class="el" href="actions__list__model_8cpp_source.xhtml">actions_list_model.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                                              {</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a95241b68edbb6d1d1b01ba6b997abdcd">icons_source</a> = QUrl(<a class="code" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a95241b68edbb6d1d1b01ba6b997abdcd">icons_source</a>.c_str());</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    emit this-&gt;<a class="code" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#ad84503f513414c76726db8b3def08205">icons_source_changed</a>(this-&gt;<a class="code" href="classopenage_1_1gui_1_1_actions_list_model.xhtml#a95241b68edbb6d1d1b01ba6b997abdcd">icons_source</a>);</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_actions_list_model_xhtml_ad84503f513414c76726db8b3def08205"><div class="ttname"><a href="classopenage_1_1gui_1_1_actions_list_model.xhtml#ad84503f513414c76726db8b3def08205">openage::gui::ActionsListModel::icons_source_changed</a></div><div class="ttdeci">void icons_source_changed(const QUrl icons_source)</div></div>
@@ -885,7 +903,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_af519bfab0685982fed954d1dbf0b7e7c_cgraph.svg" width="100%" height="515"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_actions_list_model_af519bfab0685982fed954d1dbf0b7e7c_cgraph.svg" width="100%" height="515"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 431,-73.5 431,4 -4,4"/>
 <!-- Node134 -->
 <g id="node1" class="node"><title>Node134</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Retrieves a double in [0, 1)">
 <polygon fill="#bfbfbf" stroke="black" points="0,-28 0,-47 122,-47 122,-28 0,-28"/>
 <text text-anchor="middle" x="61" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::real</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node136 -->
 <g id="node3" class="node"><title>Node136</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" target="_top" xlink:title="Retrieves a random value from the generator.">
 <polygon fill="white" stroke="black" points="167.5,-0.5 167.5,-30.5 273.5,-30.5 273.5,-0.5 167.5,-0.5"/>
 <text text-anchor="start" x="175.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="220.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">random</text>

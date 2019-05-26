@@ -1,5 +1,5 @@
 <map id="openage::os::read_symlink" name="openage::os::read_symlink">
-<area shape="rect" id="node1" title=" " alt="" coords="449,13,628,39"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1os.xhtml#aaa0a892b4d5cf0b41684c5f31c6cf86b" title=" " alt="" coords="245,5,401,47"/>
+<area shape="rect" id="node1" title="reads a symlink" alt="" coords="449,13,628,39"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1os.xhtml#aaa0a892b4d5cf0b41684c5f31c6cf86b" title="returns openage&#39;s executable name" alt="" coords="245,5,401,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1_external_profiler.xhtml#add3055482caaf197842cc1661b463ac8" title=" " alt="" coords="5,5,197,47"/>
 </map>

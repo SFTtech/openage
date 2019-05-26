@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title="Renaming interface assets and splitting into directories." alt="" coords="5,71,247,112"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1interface_1_1rename.xhtml#ac64b3950e30561002141b4459599afb0" title="Rename a slp asset path by the lookup map above." alt="" coords="308,5,560,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1interface_1_1hardcoded.xhtml#a5269bff8c865ba582e87918dd9e28d0d" title="Index in the hardcoded list of the known ingame hud backgrounds to match the civ." alt="" coords="295,71,573,112"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title=" " alt="" coords="376,137,492,163"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title="str(value);" alt="" coords="376,137,492,163"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="621,137,815,163"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="863,137,989,163"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="863,137,989,163"/>
 </map>

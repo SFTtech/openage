@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-398 135,-398 135,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="The global market prices.">
 <polygon fill="#bfbfbf" stroke="black" points="16.5,-0.5 16.5,-123.5 114.5,-123.5 114.5,-0.5 16.5,-0.5"/>
 <text text-anchor="middle" x="65.5" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market</text>
 <polyline fill="none" stroke="black" points="16.5,-104.5 114.5,-104.5 "/>
@@ -29,7 +29,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_resource_bundle.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_resource_bundle.xhtml" target="_top" xlink:title="A set of amounts of game resources.">
 <polygon fill="white" stroke="black" points="0,-171.5 0,-393.5 131,-393.5 131,-171.5 0,-171.5"/>
 <text text-anchor="middle" x="65.5" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <polyline fill="none" stroke="black" points="0,-374.5 131,-374.5 "/>

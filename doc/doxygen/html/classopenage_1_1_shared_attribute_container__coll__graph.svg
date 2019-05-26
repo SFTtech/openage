@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-222 144,-222 144,4 -4,4"/>
 <!-- Node14 -->
 <g id="node1" class="node"><title>Node14</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Wraps a templated shared attribute.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-79.5 140,-79.5 140,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SharedAttribute</text>
 <text text-anchor="middle" x="70" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container</text>
@@ -25,7 +25,7 @@
 </g>
 <!-- Node15 -->
 <g id="node2" class="node"><title>Node15</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated attribute.">
 <polygon fill="white" stroke="black" points="1.5,-116.5 1.5,-217.5 138.5,-217.5 138.5,-116.5 1.5,-116.5"/>
 <text text-anchor="middle" x="70" y="-205.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttributeContainer</text>
 <polyline fill="none" stroke="black" points="1.5,-198.5 138.5,-198.5 "/>

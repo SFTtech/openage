@@ -19,7 +19,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title="draw object with direction">
 <polygon fill="white" stroke="black" points="155.5,-49.5 155.5,-79.5 264.5,-79.5 264.5,-49.5 155.5,-49.5"/>
 <text text-anchor="start" x="163.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="210" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>

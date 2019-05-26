@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 271,-84 271,4 -4,4"/>
 <!-- Node24 -->
 <g id="node1" class="node"><title>Node24</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="#bfbfbf" stroke="black" points="0,-24.5 0,-54.5 115,-54.5 115,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RadialObject</text>
 <text text-anchor="middle" x="57.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>

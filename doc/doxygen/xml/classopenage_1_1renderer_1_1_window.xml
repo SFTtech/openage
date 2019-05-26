@@ -298,9 +298,10 @@
           <declname>height</declname>
         </param>
         <briefdescription>
+<para>Force the window to the given size. </para>
         </briefdescription>
         <detaileddescription>
-<para>Force the window to the given size. It&apos;s generally not a good idea to use this, as it makes the window jump around wierdly. </para>
+<para>It&apos;s generally not a good idea to use this, as it makes the window jump around wierdly. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -313,9 +314,10 @@
         <name>update</name>
         <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aae47c67c2194f86ad609762a371eef87">update</reimplementedby>
         <briefdescription>
+<para>Polls for window events, calls callbacks for these events, swaps front and back framebuffers to present graphics onto screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>Polls for window events, calls callbacks for these events, swaps front and back framebuffers to present graphics onto screen. This has to be called at the end of every graphics frame. </para>
+<para>This has to be called at the end of every graphics frame. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

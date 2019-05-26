@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1578 989,-1578 989,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A game object with current state represented by a stack of actions since this class represents both u...">
 <polygon fill="#bfbfbf" stroke="black" points="144.5,-0.5 144.5,-299.5 264.5,-299.5 264.5,-0.5 144.5,-0.5"/>
 <text text-anchor="middle" x="204.5" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit</text>
 <polyline fill="none" stroke="black" points="144.5,-280.5 264.5,-280.5 "/>
@@ -45,7 +45,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml" target="_top" xlink:title="Any class that wants to provide .log() shall inherit from this.">
 <polygon fill="white" stroke="black" points="0,-419 0,-520 125,-520 125,-419 0,-419"/>
 <text text-anchor="middle" x="62.5" y="-508" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource</text>
 <polyline fill="none" stroke="black" points="0,-501 125,-501 "/>
@@ -66,7 +66,7 @@
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_type.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_type.xhtml" target="_top" xlink:title="units in aoc have a class and a type">
 <polygon fill="white" stroke="black" points="252.5,-347.5 252.5,-591.5 350.5,-591.5 350.5,-347.5 252.5,-347.5"/>
 <text text-anchor="middle" x="301.5" y="-579.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType</text>
 <polyline fill="none" stroke="black" points="252.5,-572.5 350.5,-572.5 "/>
@@ -139,7 +139,7 @@
 </g>
 <!-- Node7 -->
 <g id="node6" class="node"><title>Node7</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_attributes.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_attributes.xhtml" target="_top" xlink:title="Contains a group of attributes.">
 <polygon fill="white" stroke="black" points="111,-711 111,-845 212,-845 212,-711 111,-711"/>
 <text text-anchor="middle" x="161.5" y="-833" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes</text>
 <polyline fill="none" stroke="black" points="111,-826 212,-826 "/>
@@ -170,7 +170,7 @@
 </g>
 <!-- Node8 -->
 <g id="node7" class="node"><title>Node8</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_resource_cost.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_resource_cost.xhtml" target="_top" xlink:title="A container for a constant or dynamic ResourceBundle representing the cost.">
 <polygon fill="white" stroke="black" points="351,-722 351,-834 472,-834 472,-722 351,-722"/>
 <text text-anchor="middle" x="411.5" y="-822" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceCost</text>
 <polyline fill="none" stroke="black" points="351,-815 472,-815 "/>
@@ -193,7 +193,7 @@
 </g>
 <!-- Node9 -->
 <g id="node8" class="node"><title>Node9</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_resource_bundle.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_resource_bundle.xhtml" target="_top" xlink:title="A set of amounts of game resources.">
 <polygon fill="white" stroke="black" points="351,-986.5 351,-1208.5 482,-1208.5 482,-986.5 351,-986.5"/>
 <text text-anchor="middle" x="416.5" y="-1196.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <polyline fill="none" stroke="black" points="351,-1189.5 482,-1189.5 "/>
@@ -271,7 +271,7 @@
 </g>
 <!-- Node11 -->
 <g id="node10" class="node"><title>Node11</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_player_score.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_player_score.xhtml" target="_top" xlink:title="The score of a player.">
 <polygon fill="white" stroke="black" points="491,-435.5 491,-503.5 604,-503.5 604,-435.5 491,-435.5"/>
 <text text-anchor="middle" x="547.5" y="-491.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PlayerScore</text>
 <polyline fill="none" stroke="black" points="491,-484.5 604,-484.5 "/>
@@ -296,7 +296,7 @@
 </g>
 <!-- Node12 -->
 <g id="node11" class="node"><title>Node12</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_score.xhtml" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_score.xhtml" target="_top" xlink:title="Keeps track of a score and all the sub&#45;scores.">
 <polygon fill="white" stroke="black" points="858,-1373.5 858,-1573.5 985,-1573.5 985,-1373.5 858,-1373.5"/>
 <text text-anchor="middle" x="921.5" y="-1561.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score</text>
 <polyline fill="none" stroke="black" points="858,-1554.5 985,-1554.5 "/>
@@ -326,7 +326,7 @@
 </g>
 <!-- Node14 -->
 <g id="node13" class="node"><title>Node14</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_team_score.xhtml" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_team_score.xhtml" target="_top" xlink:title="The score of a team.">
 <polygon fill="white" stroke="black" points="811,-1267.5 811,-1335.5 920,-1335.5 920,-1267.5 811,-1267.5"/>
 <text text-anchor="middle" x="865.5" y="-1323.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TeamScore</text>
 <polyline fill="none" stroke="black" points="811,-1316.5 920,-1316.5 "/>
@@ -344,7 +344,7 @@
 </g>
 <!-- Node13 -->
 <g id="node12" class="node"><title>Node13</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_team.xhtml" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_team.xhtml" target="_top" xlink:title="A team of players.">
 <polygon fill="white" stroke="black" points="792.5,-1008.5 792.5,-1186.5 920.5,-1186.5 920.5,-1008.5 792.5,-1008.5"/>
 <text text-anchor="middle" x="856.5" y="-1174.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Team</text>
 <polyline fill="none" stroke="black" points="792.5,-1167.5 920.5,-1167.5 "/>
@@ -385,7 +385,7 @@
 </g>
 <!-- Node15 -->
 <g id="node14" class="node"><title>Node15</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_population_tracker.xhtml" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_population_tracker.xhtml" target="_top" xlink:title="Keeps track of the population size and capacity.">
 <polygon fill="white" stroke="black" points="500,-975.5 500,-1219.5 637,-1219.5 637,-975.5 500,-975.5"/>
 <text text-anchor="middle" x="568.5" y="-1207.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <polyline fill="none" stroke="black" points="500,-1200.5 637,-1200.5 "/>
@@ -420,7 +420,7 @@
 </g>
 <!-- Node16 -->
 <g id="node15" class="node"><title>Node16</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_civilisation.xhtml" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_civilisation.xhtml" target="_top" xlink:title="contains the initial tech structure for one civilisation">
 <polygon fill="white" stroke="black" points="655,-1008.5 655,-1186.5 774,-1186.5 774,-1008.5 655,-1008.5"/>
 <text text-anchor="middle" x="714.5" y="-1174.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Civilisation</text>
 <polyline fill="none" stroke="black" points="655,-1167.5 774,-1167.5 "/>
@@ -449,7 +449,7 @@
 </g>
 <!-- Node17 -->
 <g id="node16" class="node"><title>Node17</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1_unit_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1_unit_container.xhtml" target="_top" xlink:title="the list of units that are currently in use will also give a view of the current game state for netwo...">
 <polygon fill="white" stroke="black" points="622.5,-364 622.5,-575 740.5,-575 740.5,-364 622.5,-364"/>
 <text text-anchor="middle" x="681.5" y="-563" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitContainer</text>
 <polyline fill="none" stroke="black" points="622.5,-556 740.5,-556 "/>

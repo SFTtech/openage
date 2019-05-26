@@ -1,16 +1,16 @@
 <map id="openage::gui::ActionsListModel" name="openage::gui::ActionsListModel">
-<area shape="rect" id="node1" title=" " alt="" coords="181,1404,371,1775"/>
+<area shape="rect" id="node1" title="Model used for the Action Buttons to render (e.g." alt="" coords="181,1404,371,1775"/>
 <area shape="rect" id="node2" title=" " alt="" coords="149,1183,286,1261"/>
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_action_mode_link.xhtml" title=" " alt="" coords="311,1103,508,1341"/>
 <area shape="rect" id="node4" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="318,947,501,1053"/>
 <area shape="rect" id="node5" href="$classqtsdl_1_1_shadow.xhtml" title=" " alt="" coords="121,719,308,869"/>
 <area shape="rect" id="node6" title=" " alt="" coords="5,542,123,619"/>
-<area shape="rect" id="node7" href="$classqtsdl_1_1_shadow.xhtml" title=" " alt="" coords="147,513,282,649"/>
-<area shape="rect" id="node13" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="335,748,483,840"/>
+<area shape="rect" id="node7" href="$classqtsdl_1_1_shadow.xhtml" title="Shadows inherited member functions." alt="" coords="147,513,282,649"/>
+<area shape="rect" id="node13" href="$classqtsdl_1_1_inherits.xhtml" title="Switches the factory to production of the instances of the derived class." alt="" coords="335,748,483,840"/>
 <area shape="rect" id="node8" title=" " alt="" coords="195,307,234,384"/>
 <area shape="rect" id="node9" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="557,505,752,656"/>
 <area shape="rect" id="node10" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="732,248,911,443"/>
-<area shape="rect" id="node11" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="503,5,687,185"/>
+<area shape="rect" id="node11" href="$classqtsdl_1_1_gui_item_methods.xhtml" title="Member function of the GuiPersistentItem." alt="" coords="503,5,687,185"/>
 <area shape="rect" id="node12" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="482,277,707,413"/>
 <area shape="rect" id="node15" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="271,255,457,435"/>
 <area shape="rect" id="node14" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="307,513,533,649"/>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-18';
 <polygon fill="white" stroke="none" points="-4,4 -4,-77.7215 841,-77.7215 841,4 -4,4"/>
 <!-- Node96 -->
 <g id="node1" class="node"><title>Node96</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="erase from action specified by func to the end of the stack all actions erased will have the on_compl...">
 <polygon fill="#bfbfbf" stroke="black" points="730,-29 730,-59 837,-59 837,-29 730,-29"/>
 <text text-anchor="start" x="738" y="-47" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::erase</text>
 <text text-anchor="middle" x="783.5" y="-36" font-family="Helvetica,sans-Serif" font-size="10.00">_after</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node97 -->
 <g id="node2" class="node"><title>Node97</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a9f53ef015fca7c42ff3bf9d0779145a3" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a9f53ef015fca7c42ff3bf9d0779145a3" target="_top" xlink:title="removes all actions above and including the first interuptable action this will stop any of the units...">
 <polygon fill="white" stroke="black" points="456,-29 456,-59 557,-59 557,-29 456,-29"/>
 <text text-anchor="start" x="464" y="-47" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::stop</text>
 <text text-anchor="middle" x="506.5" y="-36" font-family="Helvetica,sans-Serif" font-size="10.00">_actions</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node100 -->
 <g id="node5" class="node"><title>Node100</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" target="_top" xlink:title="update this object using the action currently on top of the stack">
 <polygon fill="white" stroke="black" points="0,-12.5 0,-31.5 112,-31.5 112,-12.5 0,-12.5"/>
 <text text-anchor="middle" x="56" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::update</text>
 </a>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node101 -->
 <g id="node6" class="node"><title>Node101</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_unit.xhtml#a238fb029bd4cc32e393506533facd976" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_unit.xhtml#a238fb029bd4cc32e393506533facd976" target="_top" xlink:title="removes all gather actions without calling their on_complete actions this cancels the gathering actio...">
 <polygon fill="white" stroke="black" points="593,-29 593,-59 694,-59 694,-29 593,-29"/>
 <text text-anchor="start" x="601" y="-47" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::stop</text>
 <text text-anchor="middle" x="643.5" y="-36" font-family="Helvetica,sans-Serif" font-size="10.00">_gather</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node98 -->
 <g id="node3" class="node"><title>Node98</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#aef7363eab8f805124114c4967470379d" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit.xhtml#aef7363eab8f805124114c4967470379d" target="_top" xlink:title="applies one command using a chosen ability locks the command queue mutex while operating">
 <polygon fill="white" stroke="black" points="290,-34.5 290,-53.5 420,-53.5 420,-34.5 290,-34.5"/>
 <text text-anchor="middle" x="355" y="-41.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::apply_cmd</text>
 </a>
@@ -120,7 +120,7 @@ var sectionId = 'dynsection-18';
 </g>
 <!-- Node99 -->
 <g id="node4" class="node"><title>Node99</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a627bc25cc4e546ff34b06cfa809f8946" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a627bc25cc4e546ff34b06cfa809f8946" target="_top" xlink:title="applies new commands as part of the units update process">
 <polygon fill="white" stroke="black" points="148,-29 148,-59 254,-59 254,-29 148,-29"/>
 <text text-anchor="start" x="156" y="-47" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::apply</text>
 <text text-anchor="middle" x="201" y="-36" font-family="Helvetica,sans-Serif" font-size="10.00">_all_cmds</text>

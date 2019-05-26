@@ -28,7 +28,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_event_target.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_event_target.xhtml" target="_top" xlink:title="Every Object in the gameworld that wants to be targeted by events or as dependency for events,...">
 <polygon fill="white" stroke="black" points="0,-149.5 0,-294.5 139,-294.5 139,-149.5 0,-149.5"/>
 <text text-anchor="middle" x="69.5" y="-282.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventTarget</text>
 <polyline fill="none" stroke="black" points="0,-275.5 139,-275.5 "/>

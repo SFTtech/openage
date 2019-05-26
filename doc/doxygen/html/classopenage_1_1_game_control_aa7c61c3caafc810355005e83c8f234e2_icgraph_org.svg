@@ -63,7 +63,7 @@
 </g>
 <!-- Node48 -->
 <g id="node17" class="node"><title>Node48</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1_action_mode.xhtml#a0c428b739f584f369deaa02914537814" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1_action_mode.xhtml#a0c428b739f584f369deaa02914537814" target="_top" xlink:title="sends to gui the amounts of resources">
 <polygon fill="white" stroke="black" points="593,-216.5 593,-246.5 706,-246.5 706,-216.5 593,-216.5"/>
 <text text-anchor="start" x="601" y="-234.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="649.5" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce_resources</text>
@@ -77,7 +77,7 @@
 </g>
 <!-- Node52 -->
 <g id="node21" class="node"><title>Node52</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="20,-109.5 20,-139.5 136,-139.5 136,-109.5 20,-109.5"/>
 <text text-anchor="start" x="28" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="78" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -91,7 +91,7 @@
 </g>
 <!-- Node53 -->
 <g id="node22" class="node"><title>Node53</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title="Display this mode.">
 <polygon fill="white" stroke="black" points="403,-175.5 403,-205.5 514,-205.5 514,-175.5 403,-175.5"/>
 <text text-anchor="start" x="411" y="-193.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="458.5" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">::render</text>
@@ -105,7 +105,7 @@
 </g>
 <!-- Node54 -->
 <g id="node23" class="node"><title>Node54</title>
-<g id="a_node23"><a xlink:href="classopenage_1_1_action_mode.xhtml#a7b0a0d95b032af2e9bf2ede80bca03c8" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="classopenage_1_1_action_mode.xhtml#a7b0a0d95b032af2e9bf2ede80bca03c8" target="_top" xlink:title="decides which type of right mouse click command to issue based on position.">
 <polygon fill="white" stroke="black" points="214.5,-87.5 214.5,-117.5 325.5,-117.5 325.5,-87.5 214.5,-87.5"/>
 <text text-anchor="start" x="222.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="270" y="-94.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_action</text>
@@ -133,7 +133,7 @@
 </g>
 <!-- Node57 -->
 <g id="node26" class="node"><title>Node57</title>
-<g id="a_node26"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title="places hovering building">
 <polygon fill="white" stroke="black" points="594,-0.5 594,-30.5 705,-30.5 705,-0.5 594,-0.5"/>
 <text text-anchor="start" x="602" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="649.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place_selection</text>
@@ -147,7 +147,7 @@
 </g>
 <!-- Node34 -->
 <g id="node3" class="node"><title>Node34</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_editor_mode.xhtml#aeac3794a1c9c6b6492413573d3670133" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_editor_mode.xhtml#aeac3794a1c9c6b6492413573d3670133" target="_top" xlink:title="Emit the &quot;announced&quot; signal with (name, InputContext::active_binds).">
 <polygon fill="white" stroke="black" points="404,-530.5 404,-560.5 513,-560.5 513,-530.5 404,-530.5"/>
 <text text-anchor="start" x="412" y="-548.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="458.5" y="-537.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce</text>
@@ -176,7 +176,7 @@
 </g>
 <!-- Node36 -->
 <g id="node5" class="node"><title>Node36</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" target="_top" xlink:title="Called when the GameControl is set in QML.">
 <polygon fill="white" stroke="black" points="215.5,-453.5 215.5,-483.5 324.5,-483.5 324.5,-453.5 215.5,-453.5"/>
 <text text-anchor="start" x="223.5" y="-471.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="270" y="-460.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_control</text>
@@ -323,7 +323,7 @@
 </g>
 <!-- Node49 -->
 <g id="node18" class="node"><title>Node49</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1_action_mode.xhtml#a6288ce1c7b45e988f140ace30845bc69" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1_action_mode.xhtml#a6288ce1c7b45e988f140ace30845bc69" target="_top" xlink:title="sends to gui the properties that it needs">
 <polygon fill="white" stroke="black" points="403,-224.5 403,-254.5 514,-254.5 514,-224.5 403,-224.5"/>
 <text text-anchor="start" x="411" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="458.5" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce</text>
@@ -342,7 +342,7 @@
 </g>
 <!-- Node50 -->
 <g id="node19" class="node"><title>Node50</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" target="_top" xlink:title="sends to gui the buttons it should use for the action buttons (if changed)">
 <polygon fill="white" stroke="black" points="207,-200.5 207,-230.5 333,-230.5 333,-200.5 207,-200.5"/>
 <text text-anchor="start" x="215" y="-218.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="270" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce_buttons_type</text>
@@ -356,7 +356,7 @@
 </g>
 <!-- Node51 -->
 <g id="node20" class="node"><title>Node51</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" target="_top" xlink:title="Called when the mode is left.">
 <polygon fill="white" stroke="black" points="22.5,-200.5 22.5,-230.5 133.5,-230.5 133.5,-200.5 22.5,-200.5"/>
 <text text-anchor="start" x="30.5" y="-218.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="78" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_exit</text>
@@ -380,7 +380,7 @@
 </g>
 <!-- Node56 -->
 <g id="node25" class="node"><title>Node56</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="400.5,-49.5 400.5,-79.5 516.5,-79.5 516.5,-49.5 400.5,-49.5"/>
 <text text-anchor="start" x="408.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="458.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

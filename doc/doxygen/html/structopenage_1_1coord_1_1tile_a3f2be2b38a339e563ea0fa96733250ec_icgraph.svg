@@ -20,7 +20,7 @@
 </g>
 <!-- Node90 -->
 <g id="node2" class="node"><title>Node90</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" target="_top" xlink:title="Draws the texture at tile coordinates.">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 118,-25 118,-6 0,-6"/>
 <text text-anchor="middle" x="59" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>

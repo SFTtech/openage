@@ -1,4 +1,4 @@
 <map id="openage::Unit" name="openage::Unit">
-<area shape="rect" id="node1" title=" " alt="" coords="9,189,169,633"/>
-<area shape="rect" id="node2" href="$classopenage_1_1log_1_1_log_source.xhtml" title=" " alt="" coords="5,5,172,141"/>
+<area shape="rect" id="node1" title="A game object with current state represented by a stack of actions since this class represents both u..." alt="" coords="9,189,169,633"/>
+<area shape="rect" id="node2" href="$classopenage_1_1log_1_1_log_source.xhtml" title="Any class that wants to provide .log() shall inherit from this." alt="" coords="5,5,172,141"/>
 </map>

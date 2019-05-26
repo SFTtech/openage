@@ -23,7 +23,7 @@
         <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
         <references refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" compoundref="logsource_8cpp" startline="19" endline="25">openage::log::LogSource::log</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
-        <references refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
+        <references refid="namespaceopenage_1_1util_1afd23b015922ec41eec0165f8d88bf430" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
         <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
         <referencedby refid="namespaceopenage_1_1log_1_1tests_1a9ca6bf494467589807a56e954b8b3bb3" compoundref="tests_8py" startline="15" endline="49">demo</referencedby>
       </memberdef>

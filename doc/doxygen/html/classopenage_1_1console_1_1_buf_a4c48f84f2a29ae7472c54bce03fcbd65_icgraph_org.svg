@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-268 1034,-268 1034,4 -4,4"/>
 <!-- Node94 -->
 <g id="node1" class="node"><title>Node94</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns a valid pointer to the line info for the line designated by lineno">
 <polygon fill="#bfbfbf" stroke="black" points="917,-71.5 917,-101.5 1030,-101.5 1030,-71.5 917,-71.5"/>
 <text text-anchor="start" x="925" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="973.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::linedataptr</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node95 -->
 <g id="node2" class="node"><title>Node95</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#af6b49e0178333e01a08fd61ca2006219" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#af6b49e0178333e01a08fd61ca2006219" target="_top" xlink:title="clears the screen character and line buffers.">
 <polygon fill="white" stroke="black" points="768,-159.5 768,-189.5 881,-189.5 881,-159.5 768,-159.5"/>
 <text text-anchor="start" x="776" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="824.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">::clear</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node97 -->
 <g id="node4" class="node"><title>Node97</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ab2dd3bbdbc82ae2a4276a433b40aac91" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ab2dd3bbdbc82ae2a4276a433b40aac91" target="_top" xlink:title="prints one unicode codepoint interally called by process_codepoint(int cp) after sorting out escape s...">
 <polygon fill="white" stroke="black" points="449,-133.5 449,-163.5 562,-163.5 562,-133.5 449,-133.5"/>
 <text text-anchor="start" x="457" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="505.5" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">::print_codepoint</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node103 -->
 <g id="node10" class="node"><title>Node103</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a698e2cce3ee2d13637bc55da38232a95" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a698e2cce3ee2d13637bc55da38232a95" target="_top" xlink:title="Pop the last char of the current line.">
 <polygon fill="white" stroke="black" points="768,-49.5 768,-79.5 881,-79.5 881,-49.5 768,-49.5"/>
 <text text-anchor="start" x="776" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="824.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::pop_last_char</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node105 -->
 <g id="node12" class="node"><title>Node105</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a7060ca85ba5a820b0c8e55870a9919c8" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a7060ca85ba5a820b0c8e55870a9919c8" target="_top" xlink:title="resizes the screen buffer">
 <polygon fill="white" stroke="black" points="768,-0.5 768,-30.5 881,-30.5 881,-0.5 768,-0.5"/>
 <text text-anchor="start" x="776" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="824.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::resize</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node96 -->
 <g id="node3" class="node"><title>Node96</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a752e54412ebbb08b3d8ac0edc90891ee" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a752e54412ebbb08b3d8ac0edc90891ee" target="_top" xlink:title="advances the buffer by the specified number of lines.">
 <polygon fill="white" stroke="black" points="608.5,-137.5 608.5,-167.5 721.5,-167.5 721.5,-137.5 608.5,-137.5"/>
 <text text-anchor="start" x="616.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="665" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">::advance</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node100 -->
 <g id="node7" class="node"><title>Node100</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a83a7e7db654360cff1c6796b169efc22" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a83a7e7db654360cff1c6796b169efc22" target="_top" xlink:title="processes the CSI escape sequence currently stored in escape_sequence.">
 <polygon fill="white" stroke="black" points="299,-173 299,-214 412,-214 412,-173 299,-173"/>
 <text text-anchor="start" x="307" y="-202" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="start" x="307" y="-191" font-family="Helvetica,sans-Serif" font-size="10.00">::process_csi_escape</text>
@@ -105,7 +105,7 @@
 </g>
 <!-- Node101 -->
 <g id="node8" class="node"><title>Node101</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a23267e4cb18a2921f14406e6307cbb95" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a23267e4cb18a2921f14406e6307cbb95" target="_top" xlink:title="resets the buffer to its constructor defaults">
 <polygon fill="white" stroke="black" points="449,-230.5 449,-260.5 562,-260.5 562,-230.5 449,-230.5"/>
 <text text-anchor="start" x="457" y="-248.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="505.5" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reset</text>
@@ -124,7 +124,7 @@
 </g>
 <!-- Node98 -->
 <g id="node5" class="node"><title>Node98</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#adcdc21533ab920bd72f92f27333716bf" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#adcdc21533ab920bd72f92f27333716bf" target="_top" xlink:title="processes one unicode codepoint internally called by write(char) after feeding the char into streamde...">
 <polygon fill="white" stroke="black" points="149,-178.5 149,-208.5 262,-208.5 262,-178.5 149,-178.5"/>
 <text text-anchor="start" x="157" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="205.5" y="-185.5" font-family="Helvetica,sans-Serif" font-size="10.00">::process_codepoint</text>
@@ -143,7 +143,7 @@
 </g>
 <!-- Node99 -->
 <g id="node6" class="node"><title>Node99</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" target="_top" xlink:title="write a single byte to the buffer.">
 <polygon fill="white" stroke="black" points="0,-178.5 0,-208.5 113,-208.5 113,-178.5 0,-178.5"/>
 <text text-anchor="start" x="8" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="56.5" y="-185.5" font-family="Helvetica,sans-Serif" font-size="10.00">::write</text>
@@ -162,7 +162,7 @@
 </g>
 <!-- Node102 -->
 <g id="node9" class="node"><title>Node102</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a809f4a27cd3bf92c2458a5b3176fae43" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a809f4a27cd3bf92c2458a5b3176fae43" target="_top" xlink:title="processes a single&#45;codepoint escape sequence.">
 <polygon fill="white" stroke="black" points="298,-233.5 298,-263.5 413,-263.5 413,-233.5 298,-233.5"/>
 <text text-anchor="start" x="306" y="-251.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="355.5" y="-240.5" font-family="Helvetica,sans-Serif" font-size="10.00">::process_escaped_cp</text>
@@ -181,7 +181,7 @@
 </g>
 <!-- Node104 -->
 <g id="node11" class="node"><title>Node104</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title="register this console to the engine.">
 <polygon fill="white" stroke="black" points="598,-49.5 598,-79.5 732,-79.5 732,-49.5 598,-49.5"/>
 <text text-anchor="start" x="606" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="665" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to_engine</text>

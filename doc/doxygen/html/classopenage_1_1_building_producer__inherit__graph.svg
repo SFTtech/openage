@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-563 139,-563 139,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Stores graphics and attributes for a building type Will be replaced with nyan system in future in aoe...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-233.5 135,-233.5 135,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="67.5" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <polyline fill="none" stroke="black" points="0,-214.5 135,-214.5 "/>
@@ -85,7 +85,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_type.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_type.xhtml" target="_top" xlink:title="units in aoc have a class and a type">
 <polygon fill="white" stroke="black" points="17.5,-270.5 17.5,-558.5 117.5,-558.5 117.5,-270.5 17.5,-270.5"/>
 <text text-anchor="middle" x="67.5" y="-546.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType</text>
 <polyline fill="none" stroke="black" points="17.5,-539.5 117.5,-539.5 "/>

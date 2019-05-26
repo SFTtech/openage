@@ -4,6 +4,6 @@
 <area shape="rect" id="node3" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a1ab4e5d0b202df164509a5174809685e" title=" " alt="" coords="204,71,376,112"/>
 <area shape="rect" id="node4" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248" title=" " alt="" coords="424,71,596,112"/>
 <area shape="rect" id="node5" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="644,78,713,105"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="761,37,928,79"/>
-<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="761,103,928,144"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="761,37,928,79"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="761,103,928,144"/>
 </map>

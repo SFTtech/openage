@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 259,-35 259,4 -4,4"/>
 <!-- Node42 -->
 <g id="node1" class="node"><title>Node42</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Get the buying prices for a given player.">
 <polygon fill="#bfbfbf" stroke="black" points="146,-0.5 146,-30.5 255,-30.5 255,-0.5 146,-0.5"/>
 <text text-anchor="start" x="154" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="200.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_sell_prices</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node43 -->
 <g id="node2" class="node"><title>Node43</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title="The given player sells the given resource for gold.">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 110,-25 110,-6 0,-6"/>
 <text text-anchor="middle" x="55" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::sell</text>
 </a>

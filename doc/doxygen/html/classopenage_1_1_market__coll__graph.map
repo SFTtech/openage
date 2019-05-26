@@ -1,4 +1,4 @@
 <map id="openage::Market" name="openage::Market">
-<area shape="rect" id="node1" title=" " alt="" coords="27,365,158,531"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_resource_bundle.xhtml" title=" " alt="" coords="5,5,180,303"/>
+<area shape="rect" id="node1" title="The global market prices." alt="" coords="27,365,158,531"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_resource_bundle.xhtml" title="A set of amounts of game resources." alt="" coords="5,5,180,303"/>
 </map>

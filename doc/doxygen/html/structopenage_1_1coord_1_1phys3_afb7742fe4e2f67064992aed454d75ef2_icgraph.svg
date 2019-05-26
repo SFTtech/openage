@@ -20,7 +20,7 @@
 </g>
 <!-- Node71 -->
 <g id="node2" class="node"><title>Node71</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a67031aa8a376335fe775cf819b22900c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a67031aa8a376335fe775cf819b22900c" target="_top" xlink:title="Draws the texture at phys coordinates.">
 <polygon fill="white" stroke="black" points="147,-99 147,-118 265,-118 265,-99 147,-99"/>
 <text text-anchor="middle" x="206" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node72 -->
 <g id="node3" class="node"><title>Node72</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" target="_top" xlink:title="execute the drawing action.">
 <polygon fill="white" stroke="black" points="147.5,-49.5 147.5,-79.5 264.5,-79.5 264.5,-49.5 147.5,-49.5"/>
 <text text-anchor="start" x="155.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="206" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_drawhud</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node73 -->
 <g id="node4" class="node"><title>Node73</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title="Display this mode.">
 <polygon fill="white" stroke="black" points="0,-24.5 0,-54.5 111,-54.5 111,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="55.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::render</text>

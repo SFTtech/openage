@@ -98,13 +98,17 @@ $(document).ready(function(){initNavTree('structopenage_1_1audio_1_1chunk__info_
 </div><!--header-->
 <div class="contents">
 
+<p>information storage about a piece of raw audio data.  
+ <a href="structopenage_1_1audio_1_1chunk__info__t.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dynamic__resource_8h_source.xhtml">dynamic_resource.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::audio::chunk_info_t:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1audio_1_1chunk__info__t__coll__graph.svg" width="164" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1audio_1_1chunk__info__t__coll__graph.svg" width="164" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -125,10 +129,13 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a8c50391414193ae31ae32932523af14a"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; <a class="el" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a85132b53a08a06ef901432b2f27d9d27">state_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a8c50391414193ae31ae32932523af14a">state</a></td></tr>
+<tr class="memdesc:a8c50391414193ae31ae32932523af14a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The chunk's current state.  <a href="#a8c50391414193ae31ae32932523af14a">More...</a><br /></td></tr>
 <tr class="separator:a8c50391414193ae31ae32932523af14a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6b571d065a12504c13760da870db08b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#aa6b571d065a12504c13760da870db08b">size</a></td></tr>
+<tr class="memdesc:aa6b571d065a12504c13760da870db08b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The chunk's actual size.  <a href="#aa6b571d065a12504c13760da870db08b">More...</a><br /></td></tr>
 <tr class="separator:aa6b571d065a12504c13760da870db08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7728761a793ca0d396acc2d39652ec73"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; int16_t[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a7728761a793ca0d396acc2d39652ec73">buffer</a></td></tr>
+<tr class="memdesc:a7728761a793ca0d396acc2d39652ec73"><td class="mdescLeft">&#160;</td><td class="mdescRight">The chunk's buffer.  <a href="#a7728761a793ca0d396acc2d39652ec73">More...</a><br /></td></tr>
 <tr class="separator:a7728761a793ca0d396acc2d39652ec73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -196,9 +203,9 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="dynamic__resource_8cpp_source.xhtml#l00014">14</a> of file <a class="el" href="dynamic__resource_8cpp_source.xhtml">dynamic_resource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    :</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a8c50391414193ae31ae32932523af14a">state</a>{<a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a8c50391414193ae31ae32932523af14a">state</a>},</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#aa6b571d065a12504c13760da870db08b">size</a>{0},</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a7728761a793ca0d396acc2d39652ec73">buffer</a>{std::make_unique&lt;int16_t[]&gt;(buffer_size)} {}</div><div class="ttc" id="structopenage_1_1audio_1_1chunk__info__t_xhtml_a8c50391414193ae31ae32932523af14a"><div class="ttname"><a href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a8c50391414193ae31ae32932523af14a">openage::audio::chunk_info_t::state</a></div><div class="ttdeci">std::atomic&lt; state_t &gt; state</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__resource_8h_source.xhtml#l00040">dynamic_resource.h:40</a></div></div>
-<div class="ttc" id="structopenage_1_1audio_1_1chunk__info__t_xhtml_aa6b571d065a12504c13760da870db08b"><div class="ttname"><a href="structopenage_1_1audio_1_1chunk__info__t.xhtml#aa6b571d065a12504c13760da870db08b">openage::audio::chunk_info_t::size</a></div><div class="ttdeci">size_t size</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__resource_8h_source.xhtml#l00043">dynamic_resource.h:43</a></div></div>
-<div class="ttc" id="structopenage_1_1audio_1_1chunk__info__t_xhtml_a7728761a793ca0d396acc2d39652ec73"><div class="ttname"><a href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a7728761a793ca0d396acc2d39652ec73">openage::audio::chunk_info_t::buffer</a></div><div class="ttdeci">std::unique_ptr&lt; int16_t[]&gt; buffer</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__resource_8h_source.xhtml#l00046">dynamic_resource.h:46</a></div></div>
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    :</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a8c50391414193ae31ae32932523af14a">state</a>{<a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a8c50391414193ae31ae32932523af14a">state</a>},</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#aa6b571d065a12504c13760da870db08b">size</a>{0},</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a7728761a793ca0d396acc2d39652ec73">buffer</a>{std::make_unique&lt;int16_t[]&gt;(buffer_size)} {}</div><div class="ttc" id="structopenage_1_1audio_1_1chunk__info__t_xhtml_a8c50391414193ae31ae32932523af14a"><div class="ttname"><a href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a8c50391414193ae31ae32932523af14a">openage::audio::chunk_info_t::state</a></div><div class="ttdeci">std::atomic&lt; state_t &gt; state</div><div class="ttdoc">The chunk's current state.</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__resource_8h_source.xhtml#l00040">dynamic_resource.h:40</a></div></div>
+<div class="ttc" id="structopenage_1_1audio_1_1chunk__info__t_xhtml_aa6b571d065a12504c13760da870db08b"><div class="ttname"><a href="structopenage_1_1audio_1_1chunk__info__t.xhtml#aa6b571d065a12504c13760da870db08b">openage::audio::chunk_info_t::size</a></div><div class="ttdeci">size_t size</div><div class="ttdoc">The chunk's actual size.</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__resource_8h_source.xhtml#l00043">dynamic_resource.h:43</a></div></div>
+<div class="ttc" id="structopenage_1_1audio_1_1chunk__info__t_xhtml_a7728761a793ca0d396acc2d39652ec73"><div class="ttname"><a href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a7728761a793ca0d396acc2d39652ec73">openage::audio::chunk_info_t::buffer</a></div><div class="ttdeci">std::unique_ptr&lt; int16_t[]&gt; buffer</div><div class="ttdoc">The chunk's buffer.</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__resource_8h_source.xhtml#l00046">dynamic_resource.h:46</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dynamic__resource_8h_source.xhtml#l00040">state</a>.</p>
 
@@ -241,6 +248,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>The chunk's buffer. </p>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__resource_8h_source.xhtml#l00046">46</a> of file <a class="el" href="dynamic__resource_8h_source.xhtml">dynamic_resource.h</a>.</p>
@@ -258,6 +266,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>The chunk's actual size. </p>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__resource_8h_source.xhtml#l00043">43</a> of file <a class="el" href="dynamic__resource_8h_source.xhtml">dynamic_resource.h</a>.</p>
@@ -277,6 +286,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>The chunk's current state. </p>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__resource_8h_source.xhtml#l00040">40</a> of file <a class="el" href="dynamic__resource_8h_source.xhtml">dynamic_resource.h</a>.</p>

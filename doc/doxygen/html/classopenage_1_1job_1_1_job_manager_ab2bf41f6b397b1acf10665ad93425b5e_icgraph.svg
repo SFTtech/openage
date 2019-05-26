@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-134 420,-134 420,4 -4,4"/>
 <!-- Node61 -->
 <g id="node1" class="node"><title>Node61</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Start the job manager&#39;s worker threads.">
 <polygon fill="#bfbfbf" stroke="black" points="285,-61 285,-91 416,-91 416,-61 285,-61"/>
 <text text-anchor="start" x="293" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="350.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">::start</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node62 -->
 <g id="node2" class="node"><title>Node62</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="138,-110.5 138,-129.5 247,-129.5 247,-110.5 138,-110.5"/>
 <text text-anchor="middle" x="192.5" y="-117.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>

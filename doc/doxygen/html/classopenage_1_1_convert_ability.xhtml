@@ -97,20 +97,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1_convert_ability.xhtml
 </div><!--header-->
 <div class="contents">
 
+<p>initiates a convert action when given a valid target  
+ <a href="classopenage_1_1_convert_ability.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ability_8h_source.xhtml">ability.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::ConvertAbility:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_convert_ability__inherit__graph.svg" width="170" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_convert_ability__inherit__graph.svg" width="170" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::ConvertAbility:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_convert_ability__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_convert_ability__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -120,13 +125,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad5901a3d1bb0d4f016987477feedc0d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828">ability_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_convert_ability.xhtml#ad5901a3d1bb0d4f016987477feedc0d3">type</a> () override</td></tr>
 <tr class="separator:ad5901a3d1bb0d4f016987477feedc0d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1d57e75684c4f50b285a7d8fbeefadb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_convert_ability.xhtml#ab1d57e75684c4f50b285a7d8fbeefadb">can_invoke</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;to_modify, const <a class="el" href="classopenage_1_1_command.xhtml">Command</a> &amp;cmd) override</td></tr>
+<tr class="memdesc:ab1d57e75684c4f50b285a7d8fbeefadb"><td class="mdescLeft">&#160;</td><td class="mdescRight">true if the paramaters allow an action to be performed  <a href="#ab1d57e75684c4f50b285a7d8fbeefadb">More...</a><br /></td></tr>
 <tr class="separator:ab1d57e75684c4f50b285a7d8fbeefadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ed81fd0cceaa364654c89803c3b0e48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_convert_ability.xhtml#a3ed81fd0cceaa364654c89803c3b0e48">invoke</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;to_modify, const <a class="el" href="classopenage_1_1_command.xhtml">Command</a> &amp;cmd, bool play_sound=false) override</td></tr>
+<tr class="memdesc:a3ed81fd0cceaa364654c89803c3b0e48"><td class="mdescLeft">&#160;</td><td class="mdescRight">applies command to a given unit  <a href="#a3ed81fd0cceaa364654c89803c3b0e48">More...</a><br /></td></tr>
 <tr class="separator:a3ed81fd0cceaa364654c89803c3b0e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classopenage_1_1_unit_ability"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classopenage_1_1_unit_ability')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classopenage_1_1_unit_ability.xhtml">openage::UnitAbility</a></td></tr>
 <tr class="memitem:ab960e128b4048ecdacfd8a80a9de67ab inherit pub_methods_classopenage_1_1_unit_ability"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_ability.xhtml#ab960e128b4048ecdacfd8a80a9de67ab">~UnitAbility</a> ()</td></tr>
 <tr class="separator:ab960e128b4048ecdacfd8a80a9de67ab inherit pub_methods_classopenage_1_1_unit_ability"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a462d1ece390e2508e943f2d1a1f8d64e inherit pub_methods_classopenage_1_1_unit_ability"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_ability.xhtml#a462d1ece390e2508e943f2d1a1f8d64e">has_hitpoints</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;target)</td></tr>
+<tr class="memdesc:a462d1ece390e2508e943f2d1a1f8d64e inherit pub_methods_classopenage_1_1_unit_ability"><td class="mdescLeft">&#160;</td><td class="mdescRight">some common functions  <a href="classopenage_1_1_unit_ability.xhtml#a462d1ece390e2508e943f2d1a1f8d64e">More...</a><br /></td></tr>
 <tr class="separator:a462d1ece390e2508e943f2d1a1f8d64e inherit pub_methods_classopenage_1_1_unit_ability"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bb29b6621a1baa056218ec14774f0f5 inherit pub_methods_classopenage_1_1_unit_ability"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_ability.xhtml#a7bb29b6621a1baa056218ec14774f0f5">is_damaged</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;target)</td></tr>
 <tr class="separator:a7bb29b6621a1baa056218ec14774f0f5 inherit pub_methods_classopenage_1_1_unit_ability"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,6 +156,7 @@ Private Attributes</h2></td></tr>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_classopenage_1_1_unit_ability"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classopenage_1_1_unit_ability')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classopenage_1_1_unit_ability.xhtml">openage::UnitAbility</a></td></tr>
 <tr class="memitem:a282f5d02a2a6912670b27aedb7f4f337 inherit pub_static_methods_classopenage_1_1_unit_ability"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceopenage.xhtml#ae960c566d0da147b055f619d8cca9300">ability_set</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_ability.xhtml#a282f5d02a2a6912670b27aedb7f4f337">set_from_list</a> (const std::vector&lt; <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828">ability_type</a> &gt; &amp;items)</td></tr>
+<tr class="memdesc:a282f5d02a2a6912670b27aedb7f4f337 inherit pub_static_methods_classopenage_1_1_unit_ability"><td class="mdescLeft">&#160;</td><td class="mdescRight">set bits corresponding to abilities, useful for initialising an ability_set using a brace enclosed list  <a href="classopenage_1_1_unit_ability.xhtml#a282f5d02a2a6912670b27aedb7f4f337">More...</a><br /></td></tr>
 <tr class="separator:a282f5d02a2a6912670b27aedb7f4f337 inherit pub_static_methods_classopenage_1_1_unit_ability"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -210,6 +219,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>true if the paramaters allow an action to be performed </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_ability.xhtml#a68b5f695172d6ebb6ce4381b3b94eb34">openage::UnitAbility</a>.</p>
@@ -223,7 +233,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_convert_ability_ab1d57e75684c4f50b285a7d8fbeefadb_cgraph.svg" width="100%" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_convert_ability_ab1d57e75684c4f50b285a7d8fbeefadb_cgraph.svg" width="100%" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -267,6 +278,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>applies command to a given unit </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_ability.xhtml#a63afa7eff4171d24a312b0c05be4aa41">openage::UnitAbility</a>.</p>
@@ -283,7 +295,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_convert_ability_a3ed81fd0cceaa364654c89803c3b0e48_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_convert_ability_a3ed81fd0cceaa364654c89803c3b0e48_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>

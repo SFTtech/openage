@@ -20,7 +20,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title="std::for_each except just on containers.">
 <polygon fill="white" stroke="black" points="149,-119 149,-138 264,-138 264,-119 149,-119"/>
 <text text-anchor="middle" x="206.5" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>

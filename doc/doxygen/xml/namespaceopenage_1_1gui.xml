@@ -186,9 +186,9 @@
           <declname>requested_size</declname>
         </param>
         <briefdescription>
+<para>The sourceSize property of the Image QML element ends up here for checking. </para>
         </briefdescription>
         <detaileddescription>
-<para>The sourceSize property of the Image QML element ends up here for checking.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>requested_size</parametername>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-160.5 573,-160.5 573,4 -4,4"/>
 <!-- Node21 -->
 <g id="node1" class="node"><title>Node21</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Tests filling doubles.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-71.5 0,-101.5 101,-101.5 101,-71.5 0,-71.5"/>
 <text text-anchor="start" x="8" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="50.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::fill_real</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node22 -->
 <g id="node2" class="node"><title>Node22</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab7dbd0bef0c06a30b6724f2352af833c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab7dbd0bef0c06a30b6724f2352af833c" target="_top" xlink:title="Fills an array of doubles with values in [0, 1) Gives identical results as real() but more effecientl...">
 <polygon fill="white" stroke="black" points="146,-93.5 146,-123.5 252,-123.5 252,-93.5 146,-93.5"/>
 <text text-anchor="start" x="154" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="199" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">fill_real</text>
@@ -132,7 +132,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node27 -->
 <g id="node7" class="node"><title>Node27</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title="returns the number of nanoseconds since the UNIX epoch.">
 <polygon fill="white" stroke="black" points="308.5,-49.5 308.5,-79.5 413.5,-79.5 413.5,-49.5 308.5,-49.5"/>
 <text text-anchor="start" x="316.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="361" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_real_time</text>

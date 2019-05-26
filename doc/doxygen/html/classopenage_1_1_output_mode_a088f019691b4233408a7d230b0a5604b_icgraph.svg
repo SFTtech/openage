@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-353 931,-353 931,4 -4,4"/>
 <!-- Node32 -->
 <g id="node1" class="node"><title>Node32</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Used for displaying the current mode.">
 <polygon fill="#bfbfbf" stroke="black" points="814,-73.5 814,-103.5 927,-103.5 927,-73.5 814,-73.5"/>
 <text text-anchor="start" x="822" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="870.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node33 -->
 <g id="node2" class="node"><title>Node33</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_output_mode.xhtml#aafb84951c6575c14b5517312c5cfe191" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_output_mode.xhtml#aafb84951c6575c14b5517312c5cfe191" target="_top" xlink:title="Emit the &quot;announced&quot; signal with (name, InputContext::active_binds).">
 <polygon fill="white" stroke="black" points="662,-171.5 662,-201.5 775,-201.5 775,-171.5 662,-171.5"/>
 <text text-anchor="start" x="670" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="718.5" y="-178.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node34 -->
 <g id="node3" class="node"><title>Node34</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml#a6288ce1c7b45e988f140ace30845bc69" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml#a6288ce1c7b45e988f140ace30845bc69" target="_top" xlink:title="sends to gui the properties that it needs">
 <polygon fill="white" stroke="black" points="508,-269.5 508,-299.5 619,-299.5 619,-269.5 508,-269.5"/>
 <text text-anchor="start" x="516" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="563.5" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node38 -->
 <g id="node7" class="node"><title>Node38</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_editor_mode.xhtml#aeac3794a1c9c6b6492413573d3670133" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_editor_mode.xhtml#aeac3794a1c9c6b6492413573d3670133" target="_top" xlink:title="Emit the &quot;announced&quot; signal with (name, InputContext::active_binds).">
 <polygon fill="white" stroke="black" points="509,-220.5 509,-250.5 618,-250.5 618,-220.5 509,-220.5"/>
 <text text-anchor="start" x="517" y="-238.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="563.5" y="-227.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce</text>
@@ -164,7 +164,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node48 -->
 <g id="node17" class="node"><title>Node48</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1_output_mode.xhtml#a56daba2d7cbace8b99ca51015d2f76df" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1_output_mode.xhtml#a56daba2d7cbace8b99ca51015d2f76df" target="_top" xlink:title="Called when the GameControl is set in QML.">
 <polygon fill="white" stroke="black" points="507,-122.5 507,-152.5 620,-152.5 620,-122.5 507,-122.5"/>
 <text text-anchor="start" x="515" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="563.5" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_control</text>
@@ -178,7 +178,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node35 -->
 <g id="node4" class="node"><title>Node35</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" target="_top" xlink:title="sends to gui the buttons it should use for the action buttons (if changed)">
 <polygon fill="white" stroke="black" points="342,-269.5 342,-299.5 468,-299.5 468,-269.5 342,-269.5"/>
 <text text-anchor="start" x="350" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="405" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce_buttons_type</text>
@@ -192,7 +192,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node36 -->
 <g id="node5" class="node"><title>Node36</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" target="_top" xlink:title="Called when the mode is left.">
 <polygon fill="white" stroke="black" points="183,-318.5 183,-348.5 294,-348.5 294,-318.5 183,-318.5"/>
 <text text-anchor="start" x="191" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="238.5" y="-325.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_exit</text>
@@ -206,7 +206,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node37 -->
 <g id="node6" class="node"><title>Node37</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="180.5,-269.5 180.5,-299.5 296.5,-299.5 296.5,-269.5 180.5,-269.5"/>
 <text text-anchor="start" x="188.5" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="238.5" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -332,7 +332,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node49 -->
 <g id="node18" class="node"><title>Node49</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" target="_top" xlink:title="Called when the GameControl is set in QML.">
 <polygon fill="white" stroke="black" points="350.5,-122.5 350.5,-152.5 459.5,-152.5 459.5,-122.5 350.5,-122.5"/>
 <text text-anchor="start" x="358.5" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="405" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_control</text>

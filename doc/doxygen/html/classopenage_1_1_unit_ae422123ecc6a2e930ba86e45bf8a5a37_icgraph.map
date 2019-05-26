@@ -1,8 +1,8 @@
 <map id="openage::Unit::draw" name="openage::Unit::draw">
-<area shape="rect" id="node1" title=" " alt="" coords="668,64,805,91"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#af4499be2634985e11b0c10f895978b85" title=" " alt="" coords="463,5,600,32"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title=" " alt="" coords="447,57,616,98"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title=" " alt="" coords="443,122,620,163"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title=" " alt="" coords="216,57,395,98"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title=" " alt="" coords="5,57,168,98"/>
+<area shape="rect" id="node1" title="draws this action by taking the graphic type of the top action the graphic is found from the current ..." alt="" coords="668,64,805,91"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#af4499be2634985e11b0c10f895978b85" title="an generalized draw function which is useful for drawing annexes" alt="" coords="463,5,600,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title="set unit in place – return if placement was successful" alt="" coords="447,57,616,98"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title="set unit in place – return if placement was successful" alt="" coords="443,122,620,163"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title="set unit in place – return if placement was successful" alt="" coords="216,57,395,98"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title="set unit in place – return if placement was successful" alt="" coords="5,57,168,98"/>
 </map>

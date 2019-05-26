@@ -1,7 +1,7 @@
 <map id="openage::input::InputContext" name="openage::input::InputContext">
-<area shape="rect" id="node1" title=" " alt="" coords="195,5,383,273"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml" title=" " alt="" coords="206,321,373,560"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml" title=" " alt="" coords="5,608,181,1052"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_create_mode.xhtml" title=" " alt="" coords="206,747,373,913"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_editor_mode.xhtml" title=" " alt="" coords="397,645,603,1015"/>
+<area shape="rect" id="node1" title="An input context contains all keybindings and actions active in e.g." alt="" coords="195,5,383,273"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml" title="A target for input handling and gui rendering." alt="" coords="206,321,373,560"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml" title="This is the main game UI." alt="" coords="5,608,181,1052"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_create_mode.xhtml" title="This is mainly the game editor." alt="" coords="206,747,373,913"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_editor_mode.xhtml" title="UI mode to provide an interface for map editing." alt="" coords="397,645,603,1015"/>
 </map>

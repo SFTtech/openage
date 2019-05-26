@@ -1,6 +1,6 @@
 <map id="openage::util::FD::putbyte" name="openage::util::FD::putbyte">
-<area shape="rect" id="node1" title=" " alt="" coords="421,39,551,80"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" title=" " alt="" coords="215,39,373,80"/>
+<area shape="rect" id="node1" title="writes the char" alt="" coords="421,39,551,80"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" title="very early and inefficient printing of the console to a pty." alt="" coords="215,39,373,80"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1console_1_1tests.xhtml#a4a108e620e3fead2c08ff14841552186" title=" " alt="" coords="5,5,167,47"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1console_1_1tests.xhtml#a15c3b269411a779e1ae9af60a3b6fedf" title=" " alt="" coords="5,71,167,112"/>
 </map>

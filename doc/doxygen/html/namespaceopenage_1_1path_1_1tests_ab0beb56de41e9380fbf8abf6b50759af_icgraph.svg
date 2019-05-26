@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 416,-35 416,4 -4,4"/>
 <!-- Node45 -->
 <g id="node1" class="node"><title>Node45</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="This is a helper passable function that only returns true when pos.ne == 20.">
 <polygon fill="#bfbfbf" stroke="black" points="297,-0.5 297,-30.5 412,-30.5 412,-0.5 297,-0.5"/>
 <text text-anchor="start" x="305" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="354.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::sometimes_passable</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node46 -->
 <g id="node2" class="node"><title>Node46</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a22de95f3450a22cac036677b4e01ad63" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a22de95f3450a22cac036677b4e01ad63" target="_top" xlink:title="This function tests passable_line.">
 <polygon fill="white" stroke="black" points="142,-0.5 142,-30.5 261,-30.5 261,-0.5 142,-0.5"/>
 <text text-anchor="start" x="150" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="201.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::node_passable_line_0</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node47 -->
 <g id="node3" class="node"><title>Node47</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a5d1515cb353ed8a23c4d644dc3642e73" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a5d1515cb353ed8a23c4d644dc3642e73" target="_top" xlink:title="Top level node test.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 106,-30.5 106,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="53" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::path_node</text>

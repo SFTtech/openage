@@ -118,7 +118,7 @@
 </g>
 <!-- Node108 -->
 <g id="node16" class="node"><title>Node108</title>
-<g id="a_node16"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="496,-211.5 496,-241.5 628,-241.5 628,-211.5 496,-211.5"/>
 <text text-anchor="start" x="504" y="-229.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemBase</text>
 <text text-anchor="middle" x="562" y="-218.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>
@@ -132,7 +132,7 @@
 </g>
 <!-- Node98 -->
 <g id="node6" class="node"><title>Node98</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title="std::for_each except just on containers.">
 <polygon fill="white" stroke="black" points="682.5,-119 682.5,-138 797.5,-138 797.5,-119 682.5,-119"/>
 <text text-anchor="middle" x="740" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>
@@ -299,7 +299,7 @@
 </g>
 <!-- Node109 -->
 <g id="node17" class="node"><title>Node109</title>
-<g id="a_node17"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="674,-211.5 674,-241.5 806,-241.5 806,-211.5 674,-211.5"/>
 <text text-anchor="start" x="682" y="-229.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 <text text-anchor="middle" x="740" y="-218.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>

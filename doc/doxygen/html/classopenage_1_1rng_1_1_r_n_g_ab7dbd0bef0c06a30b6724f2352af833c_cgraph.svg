@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 415,-62 415,4 -4,4"/>
 <!-- Node23 -->
 <g id="node1" class="node"><title>Node23</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Fills an array of doubles with values in [0, 1) Gives identical results as real() but more effecientl...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-14 0,-44 106,-44 106,-14 0,-14"/>
 <text text-anchor="start" x="8" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="53" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">fill_real</text>

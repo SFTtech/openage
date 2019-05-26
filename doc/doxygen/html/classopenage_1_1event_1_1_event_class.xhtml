@@ -100,25 +100,31 @@ $(document).ready(function(){initNavTree('classopenage_1_1event_1_1_event_class.
 </div><!--header-->
 <div class="contents">
 
+<p>A eventclass has to be implemented for every type of event that exists.  
+ <a href="classopenage_1_1event_1_1_event_class.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="eventclass_8h_source.xhtml">eventclass.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::event::EventClass:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1_event_class__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1_event_class__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::event::EventClass:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1_event_class__coll__graph.svg" width="194" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1_event_class__coll__graph.svg" width="194" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1event_1_1_event_class_1_1param__map.xhtml">param_map</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage for parameters for an event class.  <a href="classopenage_1_1event_1_1_event_class_1_1param__map.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -132,35 +138,44 @@ Public Types</h2></td></tr>
 &#160;&#160;<a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#a911de25538d1280c375a90ed694bb717aa32d16355630f112473d1ae254519c24">trigger_type::ONCE</a>
 <br />
  }</td></tr>
+<tr class="memdesc:a911de25538d1280c375a90ed694bb717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available types for the event class: These decide when an event of this event class will be executed.  <a href="classopenage_1_1event_1_1_event_class.xhtml#a911de25538d1280c375a90ed694bb717">More...</a><br /></td></tr>
 <tr class="separator:a911de25538d1280c375a90ed694bb717"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab0c2bcad30599b017efabe0078d8f1f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#ab0c2bcad30599b017efabe0078d8f1f8">EventClass</a> (const std::string &amp;name, const <a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#a911de25538d1280c375a90ed694bb717">trigger_type</a> &amp;<a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#a8a540e9ae9989e2fdeaa9139e00370fa">type</a>)</td></tr>
+<tr class="memdesc:ab0c2bcad30599b017efabe0078d8f1f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to be constructed with the unique identifier.  <a href="#ab0c2bcad30599b017efabe0078d8f1f8">More...</a><br /></td></tr>
 <tr class="separator:ab0c2bcad30599b017efabe0078d8f1f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a852a361912677c956069048d2fa2d025"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#a852a361912677c956069048d2fa2d025">~EventClass</a> ()=default</td></tr>
 <tr class="separator:a852a361912677c956069048d2fa2d025"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af88d224fea9820027ac3ebfb314537d0"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#af88d224fea9820027ac3ebfb314537d0">id</a> ()</td></tr>
+<tr class="memdesc:af88d224fea9820027ac3ebfb314537d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a unique identifier.  <a href="#af88d224fea9820027ac3ebfb314537d0">More...</a><br /></td></tr>
 <tr class="separator:af88d224fea9820027ac3ebfb314537d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e">setup_event</a> (const std::shared_ptr&lt; <a class="el" href="classopenage_1_1event_1_1_event.xhtml">Event</a> &gt; &amp;event, const std::shared_ptr&lt; <a class="el" href="classopenage_1_1event_1_1_state.xhtml">State</a> &gt; &amp;state)=0</td></tr>
+<tr class="memdesc:ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called for each event that is created for this <a class="el" href="classopenage_1_1event_1_1_event_class.xhtml" title="A eventclass has to be implemented for every type of event that exists.">EventClass</a>.  <a href="#ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e">More...</a><br /></td></tr>
 <tr class="separator:ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb3503ac98625390fa0c1a122f14394c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#abb3503ac98625390fa0c1a122f14394c">invoke</a> (<a class="el" href="classopenage_1_1event_1_1_loop.xhtml">Loop</a> &amp;loop, const std::shared_ptr&lt; <a class="el" href="classopenage_1_1event_1_1_event_target.xhtml">EventTarget</a> &gt; &amp;target, const std::shared_ptr&lt; <a class="el" href="classopenage_1_1event_1_1_state.xhtml">State</a> &gt; &amp;state, const <a class="el" href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">curve::time_t</a> &amp;time, const <a class="el" href="classopenage_1_1event_1_1_event_class_1_1param__map.xhtml">param_map</a> &amp;params)=0</td></tr>
+<tr class="memdesc:abb3503ac98625390fa0c1a122f14394c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method implements the effects of the event.  <a href="#abb3503ac98625390fa0c1a122f14394c">More...</a><br /></td></tr>
 <tr class="separator:abb3503ac98625390fa0c1a122f14394c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e0d15e8a433ef4a08a5b8a4fccae41b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">curve::time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#a0e0d15e8a433ef4a08a5b8a4fccae41b">predict_invoke_time</a> (const std::shared_ptr&lt; <a class="el" href="classopenage_1_1event_1_1_event_target.xhtml">EventTarget</a> &gt; &amp;target, const std::shared_ptr&lt; <a class="el" href="classopenage_1_1event_1_1_state.xhtml">State</a> &gt; &amp;state, const <a class="el" href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">curve::time_t</a> &amp;at)=0</td></tr>
+<tr class="memdesc:a0e0d15e8a433ef4a08a5b8a4fccae41b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called to calculate the execution time for an event of this eventclass.  <a href="#a0e0d15e8a433ef4a08a5b8a4fccae41b">More...</a><br /></td></tr>
 <tr class="separator:a0e0d15e8a433ef4a08a5b8a4fccae41b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a8a540e9ae9989e2fdeaa9139e00370fa"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#a911de25538d1280c375a90ed694bb717">trigger_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#a8a540e9ae9989e2fdeaa9139e00370fa">type</a></td></tr>
+<tr class="memdesc:a8a540e9ae9989e2fdeaa9139e00370fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">The event type this event class represents.  <a href="#a8a540e9ae9989e2fdeaa9139e00370fa">More...</a><br /></td></tr>
 <tr class="separator:a8a540e9ae9989e2fdeaa9139e00370fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a449b3d84bef5678e9311af50be21514e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#a449b3d84bef5678e9311af50be21514e">_id</a></td></tr>
+<tr class="memdesc:a449b3d84bef5678e9311af50be21514e"><td class="mdescLeft">&#160;</td><td class="mdescRight">String identifier for this event class.  <a href="#a449b3d84bef5678e9311af50be21514e">More...</a><br /></td></tr>
 <tr class="separator:a449b3d84bef5678e9311af50be21514e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A eventclass has to be implemented for every type of event that exists. It determines what the event means and how it is handled. </p>
+<div class="textblock"><p>A eventclass has to be implemented for every type of event that exists. </p>
+<p>It determines what the event means and how it is handled. </p>
 
 <p class="definition">Definition at line <a class="el" href="eventclass_8h_source.xhtml#l00026">26</a> of file <a class="el" href="eventclass_8h_source.xhtml">eventclass.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
@@ -183,15 +198,19 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Available types for the event class: These decide when an event of this event class will be executed. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a911de25538d1280c375a90ed694bb717a46e158d5ce615a4f0057515b9a242188"></a>DEPENDENCY&#160;</td><td class="fielddoc"><p>Such events are emitted when a modification is done on a target. The execution time is calculated from the modification time and custom code. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a911de25538d1280c375a90ed694bb717a46e158d5ce615a4f0057515b9a242188"></a>DEPENDENCY&#160;</td><td class="fielddoc"><p>Such events are emitted when a modification is done on a target. </p>
+<p>The execution time is calculated from the modification time and custom code. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a911de25538d1280c375a90ed694bb717a66ce7f5b73a0a164407078b598f45e09"></a>DEPENDENCY_IMMEDIATELY&#160;</td><td class="fielddoc"><p>Like DEPENDENCY, but does not use a recalculated time, instead uses the change-time only. Behaves exactly like DEPENDENCY, if the DEPENDENCY-event is in the same execution frame. </p>
+<tr><td class="fieldname"><a id="a911de25538d1280c375a90ed694bb717a66ce7f5b73a0a164407078b598f45e09"></a>DEPENDENCY_IMMEDIATELY&#160;</td><td class="fielddoc"><p>Like DEPENDENCY, but does not use a recalculated time, instead uses the change-time only. </p>
+<p>Behaves exactly like DEPENDENCY, if the DEPENDENCY-event is in the same execution frame. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a911de25538d1280c375a90ed694bb717ab8cd801b107a9a8f62c5b61ea5646620"></a>TRIGGER&#160;</td><td class="fielddoc"><p>Will be executed when the target trigger() function is called. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a911de25538d1280c375a90ed694bb717a5be68175be14dfaa080165456c2e9555"></a>REPEAT&#160;</td><td class="fielddoc"><p>Will be triggered unconditionally at the set time, "at" is the time that was set as return of predict_invoke_time. This event will be issued again until predict_invoke_time returns <a class="el" href="namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16">min()</a>. To execute Something only once (i.E. triggered somewhere from the logic and not based on time, use ONCE </p>
+<tr><td class="fieldname"><a id="a911de25538d1280c375a90ed694bb717a5be68175be14dfaa080165456c2e9555"></a>REPEAT&#160;</td><td class="fielddoc"><p>Will be triggered unconditionally at the set time, "at" is the time that was set as return of predict_invoke_time. </p>
+<p>This event will be issued again until predict_invoke_time returns <a class="el" href="namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16">min()</a>. To execute Something only once (i.E. triggered somewhere from the logic and not based on time, use ONCE </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a911de25538d1280c375a90ed694bb717aa32d16355630f112473d1ae254519c24"></a>ONCE&#160;</td><td class="fielddoc"><p>Will be triggered only once, but until it is triggered the time, when this should happen can be recalculated again and again using the predict_invoke_time method. </p>
 </td></tr>
@@ -227,11 +246,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor to be constructed with the unique identifier </p>
+
+<p>Constructor to be constructed with the unique identifier. </p>
 
 <p class="definition">Definition at line <a class="el" href="eventclass_8cpp_source.xhtml#l00013">13</a> of file <a class="el" href="eventclass_8cpp_source.xhtml">eventclass.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                                                                :</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classopenage_1_1event_1_1_event_class.xhtml#a8a540e9ae9989e2fdeaa9139e00370fa">type</a>{<a class="code" href="classopenage_1_1event_1_1_event_class.xhtml#a8a540e9ae9989e2fdeaa9139e00370fa">type</a>},</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classopenage_1_1event_1_1_event_class.xhtml#a449b3d84bef5678e9311af50be21514e">_id</a>{name} {}</div><div class="ttc" id="classopenage_1_1event_1_1_event_class_xhtml_a449b3d84bef5678e9311af50be21514e"><div class="ttname"><a href="classopenage_1_1event_1_1_event_class.xhtml#a449b3d84bef5678e9311af50be21514e">openage::event::EventClass::_id</a></div><div class="ttdeci">std::string _id</div><div class="ttdef"><b>Definition:</b> <a href="eventclass_8h_source.xhtml#l00186">eventclass.h:186</a></div></div>
-<div class="ttc" id="classopenage_1_1event_1_1_event_class_xhtml_a8a540e9ae9989e2fdeaa9139e00370fa"><div class="ttname"><a href="classopenage_1_1event_1_1_event_class.xhtml#a8a540e9ae9989e2fdeaa9139e00370fa">openage::event::EventClass::type</a></div><div class="ttdeci">const trigger_type type</div><div class="ttdef"><b>Definition:</b> <a href="eventclass_8h_source.xhtml#l00135">eventclass.h:135</a></div></div>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                                                                :</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classopenage_1_1event_1_1_event_class.xhtml#a8a540e9ae9989e2fdeaa9139e00370fa">type</a>{<a class="code" href="classopenage_1_1event_1_1_event_class.xhtml#a8a540e9ae9989e2fdeaa9139e00370fa">type</a>},</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classopenage_1_1event_1_1_event_class.xhtml#a449b3d84bef5678e9311af50be21514e">_id</a>{name} {}</div><div class="ttc" id="classopenage_1_1event_1_1_event_class_xhtml_a449b3d84bef5678e9311af50be21514e"><div class="ttname"><a href="classopenage_1_1event_1_1_event_class.xhtml#a449b3d84bef5678e9311af50be21514e">openage::event::EventClass::_id</a></div><div class="ttdeci">std::string _id</div><div class="ttdoc">String identifier for this event class.</div><div class="ttdef"><b>Definition:</b> <a href="eventclass_8h_source.xhtml#l00186">eventclass.h:186</a></div></div>
+<div class="ttc" id="classopenage_1_1event_1_1_event_class_xhtml_a8a540e9ae9989e2fdeaa9139e00370fa"><div class="ttname"><a href="classopenage_1_1event_1_1_event_class.xhtml#a8a540e9ae9989e2fdeaa9139e00370fa">openage::event::EventClass::type</a></div><div class="ttdeci">const trigger_type type</div><div class="ttdoc">The event type this event class represents.</div><div class="ttdef"><b>Definition:</b> <a href="eventclass_8h_source.xhtml#l00135">eventclass.h:135</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="eventclass_8h_source.xhtml#l00135">type</a>.</p>
 
@@ -277,10 +297,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Return a unique identifier. </p>
 
 <p class="definition">Definition at line <a class="el" href="eventclass_8cpp_source.xhtml#l00018">18</a> of file <a class="el" href="eventclass_8cpp_source.xhtml">eventclass.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1event_1_1_event_class.xhtml#a449b3d84bef5678e9311af50be21514e">_id</a>;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="ttc" id="classopenage_1_1event_1_1_event_class_xhtml_a449b3d84bef5678e9311af50be21514e"><div class="ttname"><a href="classopenage_1_1event_1_1_event_class.xhtml#a449b3d84bef5678e9311af50be21514e">openage::event::EventClass::_id</a></div><div class="ttdeci">std::string _id</div><div class="ttdef"><b>Definition:</b> <a href="eventclass_8h_source.xhtml#l00186">eventclass.h:186</a></div></div>
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1event_1_1_event_class.xhtml#a449b3d84bef5678e9311af50be21514e">_id</a>;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="ttc" id="classopenage_1_1event_1_1_event_class_xhtml_a449b3d84bef5678e9311af50be21514e"><div class="ttname"><a href="classopenage_1_1event_1_1_event_class.xhtml#a449b3d84bef5678e9311af50be21514e">openage::event::EventClass::_id</a></div><div class="ttdeci">std::string _id</div><div class="ttdoc">String identifier for this event class.</div><div class="ttdef"><b>Definition:</b> <a href="eventclass_8h_source.xhtml#l00186">eventclass.h:186</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="eventclass_8h_source.xhtml#l00186">_id</a>.</p>
 
@@ -337,8 +358,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This method implements the effects of the event. It will be called at the time that was determined by <code>predict_invoke_time</code>.</p>
-<p>Called from the <a class="el" href="classopenage_1_1event_1_1_loop.xhtml">Loop</a>. </p>
+
+<p>This method implements the effects of the event. </p>
+<p>It will be called at the time that was determined by <code>predict_invoke_time</code>.</p>
+<p>Called from the <a class="el" href="classopenage_1_1event_1_1_loop.xhtml" title="The core class to manage event class and targets.">Loop</a>. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1event_1_1demo_1_1_reset_game.xhtml#a0fa6b84fb64f30f1edd75d465876a2b3">openage::event::demo::ResetGame</a>, <a class="el" href="classopenage_1_1event_1_1tests_1_1_event_type_test_class.xhtml#ac71424a13be1323a33f6f538a4d8a3e7">openage::event::tests::EventTypeTestClass</a>, <a class="el" href="classopenage_1_1event_1_1tests_1_1_test_event_class_two.xhtml#af47dbc011710ba5e6986493b63dead0e">openage::event::tests::TestEventClassTwo</a>, <a class="el" href="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70">openage::event::demo::BallReflectPanel</a>, <a class="el" href="classopenage_1_1event_1_1tests_1_1_test_event_class.xhtml#a6d3145302d7a6910d0e8e30d42380cc5">openage::event::tests::TestEventClass</a>, and <a class="el" href="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall.xhtml#a215ab77e1d0c301cf5ee7c79da4ffd4a">openage::event::demo::BallReflectWall</a>.</p>
 
@@ -383,7 +406,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Is called to calculate the execution time for an event of this eventclass. This is called whenever one of the set up dependencies was changed, or when a REPEAT event was executed.</p>
+
+<p>Is called to calculate the execution time for an event of this eventclass. </p>
+<p>This is called whenever one of the set up dependencies was changed, or when a REPEAT event was executed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">target</td><td>the target the event was created for </td></tr>
@@ -432,7 +457,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Called for each event that is created for this <a class="el" href="classopenage_1_1event_1_1_event_class.xhtml">EventClass</a>. The job of the setup function is to add all dependencies with other event targets found in state. </p>
+
+<p>Called for each event that is created for this <a class="el" href="classopenage_1_1event_1_1_event_class.xhtml" title="A eventclass has to be implemented for every type of event that exists.">EventClass</a>. </p>
+<p>The job of the setup function is to add all dependencies with other event targets found in state. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1event_1_1demo_1_1_reset_game.xhtml#a3f85b39bd4cd0b45ec66c681f5a3553e">openage::event::demo::ResetGame</a>, <a class="el" href="classopenage_1_1event_1_1tests_1_1_event_type_test_class.xhtml#acadce4dd71ef75305e148c0a98b42163">openage::event::tests::EventTypeTestClass</a>, <a class="el" href="classopenage_1_1event_1_1tests_1_1_test_event_class_two.xhtml#a1d8b2054cc30b622db08b26bc12e9b46">openage::event::tests::TestEventClassTwo</a>, <a class="el" href="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#a031ec32c576b33298fdb75dee692de8b">openage::event::demo::BallReflectPanel</a>, <a class="el" href="classopenage_1_1event_1_1tests_1_1_test_event_class.xhtml#a40a7e1ee67df51d9bc9ffb297b13d9dd">openage::event::tests::TestEventClass</a>, and <a class="el" href="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall.xhtml#a096aec2cf4cef743c6abc12e4a99240f">openage::event::demo::BallReflectWall</a>.</p>
 
@@ -458,6 +485,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>String identifier for this event class. </p>
 
 <p class="definition">Definition at line <a class="el" href="eventclass_8h_source.xhtml#l00186">186</a> of file <a class="el" href="eventclass_8h_source.xhtml">eventclass.h</a>.</p>
@@ -477,6 +505,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>The event type this event class represents. </p>
 
 <p class="definition">Definition at line <a class="el" href="eventclass_8h_source.xhtml#l00135">135</a> of file <a class="el" href="eventclass_8h_source.xhtml">eventclass.h</a>.</p>

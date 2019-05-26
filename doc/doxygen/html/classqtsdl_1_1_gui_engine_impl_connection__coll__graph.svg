@@ -152,7 +152,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="classqtsdl_1_1_recursive_directory_watcher.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classqtsdl_1_1_recursive_directory_watcher.xhtml" target="_top" xlink:title="Emits a signal when anything changes in the directories.">
 <polygon fill="white" stroke="black" points="129.5,-841 129.5,-920 284.5,-920 284.5,-841 129.5,-841"/>
 <text text-anchor="start" x="137.5" y="-908" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::RecursiveDirectory</text>
 <text text-anchor="middle" x="207" y="-897" font-family="Helvetica,sans-Serif" font-size="10.00">Watcher</text>
@@ -171,7 +171,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="classqtsdl_1_1_gui_renderer_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classqtsdl_1_1_gui_renderer_impl.xhtml" target="_top" xlink:title="Passes the native graphic context to Qt.">
 <polygon fill="white" stroke="black" points="303,-714.5 303,-1046.5 441,-1046.5 441,-714.5 303,-714.5"/>
 <text text-anchor="middle" x="372" y="-1034.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRendererImpl</text>
 <polyline fill="none" stroke="black" points="303,-1027.5 441,-1027.5 "/>
@@ -255,7 +255,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_rendering_setup_routines.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_rendering_setup_routines.xhtml" target="_top" xlink:title="Returns a GL context usable by Qt classes.">
 <polygon fill="white" stroke="black" points="292,-1105.5 292,-1217.5 452,-1217.5 452,-1105.5 292,-1105.5"/>
 <text text-anchor="start" x="300" y="-1205.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRenderingSetup</text>
 <text text-anchor="middle" x="372" y="-1194.5" font-family="Helvetica,sans-Serif" font-size="10.00">Routines</text>
@@ -279,7 +279,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node7" class="node"><title>Node7</title>
-<g id="a_node7"><a xlink:href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml" target="_top" xlink:title="The Qml Engine used by openage.">
 <polygon fill="white" stroke="black" points="459.5,-824.5 459.5,-936.5 644.5,-936.5 644.5,-824.5 459.5,-824.5"/>
 <text text-anchor="start" x="467.5" y="-924.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::QmlEngineWithSingleton</text>
 <text text-anchor="middle" x="552" y="-913.5" font-family="Helvetica,sans-Serif" font-size="10.00">ItemsInfo</text>
@@ -319,7 +319,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node9 -->
 <g id="node9" class="node"><title>Node9</title>
-<g id="a_node9"><a xlink:href="classqtsdl_1_1_gui_singleton_items_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classqtsdl_1_1_gui_singleton_items_info.xhtml" target="_top" xlink:title="Accessible during creation of any singleton QML item.">
 <polygon fill="white" stroke="black" points="583,-1133 583,-1190 721,-1190 721,-1133 583,-1133"/>
 <text text-anchor="middle" x="652" y="-1178" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSingletonItemsInfo</text>
 <polyline fill="none" stroke="black" points="583,-1171 721,-1171 "/>
@@ -349,7 +349,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node12 -->
 <g id="node12" class="node"><title>Node12</title>
-<g id="a_node12"><a xlink:href="classqtsdl_1_1_gui_live_reloader.xhtml" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classqtsdl_1_1_gui_live_reloader.xhtml" target="_top" xlink:title="Stores objects that need to be kept alive across GUI reloads.">
 <polygon fill="white" stroke="black" points="355,-303.5 355,-360.5 477,-360.5 477,-303.5 355,-303.5"/>
 <text text-anchor="middle" x="416" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiLiveReloader</text>
 <polyline fill="none" stroke="black" points="355,-341.5 477,-341.5 "/>

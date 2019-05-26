@@ -1,30 +1,30 @@
 <map id="openage::AssetManager::get_engine" name="openage::AssetManager::get_engine">
-<area shape="rect" id="node1" title=" " alt="" coords="943,528,1105,569"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" title=" " alt="" coords="727,237,879,279"/>
+<area shape="rect" id="node1" title="Return the engine responsible for this asset manager." alt="" coords="943,528,1105,569"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" title="Invoked when the gamedata has been loaded." alt="" coords="727,237,879,279"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_sound.xhtml#a526acd600cd69f6f421a253fc169398b" title=" " alt="" coords="729,535,877,562"/>
-<area shape="rect" id="node22" href="$classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" title=" " alt="" coords="711,819,895,860"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title=" " alt="" coords="495,5,647,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" title=" " alt="" coords="498,71,643,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_garrison_ability.xhtml#afbd9de019824dcf92b3b5dd4e5e1aea7" title=" " alt="" coords="489,136,653,177"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" title=" " alt="" coords="482,201,659,243"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_train_ability.xhtml#af4ea7db282a8000eb59e8edc540d40c4" title=" " alt="" coords="499,267,642,308"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_research_ability.xhtml#a47bc3b71628ece52bceeafdae473d039" title=" " alt="" coords="485,332,656,373"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_build_ability.xhtml#acf4dba9dcd9ed37efcbec8f14da3c3a2" title=" " alt="" coords="499,397,643,439"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_gather_ability.xhtml#a24e201b13152f9cc654d2b69ec95940e" title=" " alt="" coords="493,463,648,504"/>
-<area shape="rect" id="node12" href="$classopenage_1_1_attack_ability.xhtml#ab607828e9d6469ea9405cfc5f1ab2735" title=" " alt="" coords="494,528,647,569"/>
-<area shape="rect" id="node13" href="$classopenage_1_1_repair_ability.xhtml#aac321a378657813f98a938df9be7256d" title=" " alt="" coords="495,593,647,635"/>
-<area shape="rect" id="node14" href="$classopenage_1_1_heal_ability.xhtml#a7da7aca0fca2b96e24874441df1a016e" title=" " alt="" coords="500,659,641,700"/>
-<area shape="rect" id="node15" href="$classopenage_1_1_patrol_ability.xhtml#ad0b338306b2825e24536dc95bf4ae3d1" title=" " alt="" coords="496,724,645,765"/>
-<area shape="rect" id="node16" href="$classopenage_1_1_convert_ability.xhtml#a3ed81fd0cceaa364654c89803c3b0e48" title=" " alt="" coords="491,789,650,831"/>
-<area shape="rect" id="node17" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title=" " alt="" coords="486,855,655,896"/>
-<area shape="rect" id="node20" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title=" " alt="" coords="482,920,659,961"/>
-<area shape="rect" id="node21" href="$classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" title=" " alt="" coords="498,985,643,1027"/>
-<area shape="rect" id="node18" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title=" " alt="" coords="249,855,428,896"/>
-<area shape="rect" id="node19" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title=" " alt="" coords="21,855,183,896"/>
-<area shape="rect" id="node23" href="$classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" title=" " alt="" coords="479,1051,663,1092"/>
-<area shape="rect" id="node24" href="$classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" title=" " alt="" coords="247,985,431,1027"/>
-<area shape="rect" id="node26" href="$classopenage_1_1_game_spec_handle.xhtml#ad9c03812749a8ac9b21960e0f5bb462e" title=" " alt="" coords="247,1051,431,1092"/>
-<area shape="rect" id="node28" href="$classopenage_1_1_game_spec_handle.xhtml#a019a81d88722206e82c7b5c87ddfe04f" title=" " alt="" coords="247,1116,431,1157"/>
+<area shape="rect" id="node22" href="$classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" title="Actually dispatch the loading job to the job manager." alt="" coords="711,819,895,860"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title="perform the main loading job." alt="" coords="495,5,647,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" title="applies command to a given unit" alt="" coords="498,71,643,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_garrison_ability.xhtml#afbd9de019824dcf92b3b5dd4e5e1aea7" title="applies command to a given unit" alt="" coords="489,136,653,177"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" title="applies command to a given unit" alt="" coords="482,201,659,243"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_train_ability.xhtml#af4ea7db282a8000eb59e8edc540d40c4" title="applies command to a given unit" alt="" coords="499,267,642,308"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_research_ability.xhtml#a47bc3b71628ece52bceeafdae473d039" title="applies command to a given unit" alt="" coords="485,332,656,373"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_build_ability.xhtml#acf4dba9dcd9ed37efcbec8f14da3c3a2" title="applies command to a given unit" alt="" coords="499,397,643,439"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_gather_ability.xhtml#a24e201b13152f9cc654d2b69ec95940e" title="applies command to a given unit" alt="" coords="493,463,648,504"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_attack_ability.xhtml#ab607828e9d6469ea9405cfc5f1ab2735" title="applies command to a given unit" alt="" coords="494,528,647,569"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_repair_ability.xhtml#aac321a378657813f98a938df9be7256d" title="applies command to a given unit" alt="" coords="495,593,647,635"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_heal_ability.xhtml#a7da7aca0fca2b96e24874441df1a016e" title="applies command to a given unit" alt="" coords="500,659,641,700"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_patrol_ability.xhtml#ad0b338306b2825e24536dc95bf4ae3d1" title="applies command to a given unit" alt="" coords="496,724,645,765"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_convert_ability.xhtml#a3ed81fd0cceaa364654c89803c3b0e48" title="applies command to a given unit" alt="" coords="491,789,650,831"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title="set unit in place – return if placement was successful" alt="" coords="486,855,655,896"/>
+<area shape="rect" id="node20" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title="set unit in place – return if placement was successful" alt="" coords="482,920,659,961"/>
+<area shape="rect" id="node21" href="$classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" title="draw object with direction" alt="" coords="498,985,643,1027"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title="set unit in place – return if placement was successful" alt="" coords="249,855,428,896"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title="set unit in place – return if placement was successful" alt="" coords="21,855,183,896"/>
+<area shape="rect" id="node23" href="$classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" title="load the game specification if not already present." alt="" coords="479,1051,663,1092"/>
+<area shape="rect" id="node24" href="$classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" title="Control whether this specification can be loaded (=true) or will not be loaded (=false)." alt="" coords="247,985,431,1027"/>
+<area shape="rect" id="node26" href="$classopenage_1_1_game_spec_handle.xhtml#ad9c03812749a8ac9b21960e0f5bb462e" title="invoked from qml when the asset_manager member is set." alt="" coords="247,1051,431,1092"/>
+<area shape="rect" id="node28" href="$classopenage_1_1_game_spec_handle.xhtml#a019a81d88722206e82c7b5c87ddfe04f" title="forget everything about the specification and reload it with start_loading_if_needed." alt="" coords="247,1116,431,1157"/>
 <area shape="rect" id="node25" href="$classopenage_1_1gui_1_1_game_spec_link.xhtml#a65d2c73c99d6724ead9ca41556253c56" title=" " alt="" coords="5,985,199,1027"/>
 <area shape="rect" id="node27" href="$classopenage_1_1gui_1_1_game_spec_link.xhtml#acee4b3764eaa0e07144e164b8b7bdca0" title=" " alt="" coords="5,1051,199,1092"/>
 </map>

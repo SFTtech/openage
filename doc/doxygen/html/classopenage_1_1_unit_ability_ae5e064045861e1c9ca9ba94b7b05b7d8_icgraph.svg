@@ -20,7 +20,7 @@
 </g>
 <!-- Node17 -->
 <g id="node2" class="node"><title>Node17</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_gather_ability.xhtml#a1cd4ba56c06ddf86a3c07c9da73b831d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_gather_ability.xhtml#a1cd4ba56c06ddf86a3c07c9da73b831d" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 116,-79.5 116,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAbility</text>
 <text text-anchor="middle" x="58" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node18 -->
 <g id="node3" class="node"><title>Node18</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attack_ability.xhtml#aed325cf408ccfcfc099dfad62aa1dbbd" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attack_ability.xhtml#aed325cf408ccfcfc099dfad62aa1dbbd" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="0.5,-0.5 0.5,-30.5 115.5,-30.5 115.5,-0.5 0.5,-0.5"/>
 <text text-anchor="start" x="8.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAbility</text>
 <text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>

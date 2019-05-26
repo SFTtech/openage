@@ -1,5 +1,5 @@
 <map id="openage::pyinterface::PyException" name="openage::pyinterface::PyException">
-<area shape="rect" id="node1" title=" " alt="" coords="24,388,167,495"/>
-<area shape="rect" id="node2" href="$classopenage_1_1error_1_1_error.xhtml" title=" " alt="" coords="5,131,185,340"/>
+<area shape="rect" id="node1" title="Thrown by translate_exc_py_to_cpp() from exctranslate.h." alt="" coords="24,388,167,495"/>
+<area shape="rect" id="node2" href="$classopenage_1_1error_1_1_error.xhtml" title="Openage base exception type; the constructor usage is analogous to log::log()." alt="" coords="5,131,185,340"/>
 <area shape="rect" id="node3" title=" " alt="" coords="46,5,145,83"/>
 </map>

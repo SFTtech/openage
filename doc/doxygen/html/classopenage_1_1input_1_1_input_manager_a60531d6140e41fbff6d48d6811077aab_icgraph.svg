@@ -57,7 +57,7 @@ var sectionId = 'dynsection-13';
 <polygon fill="white" stroke="none" points="-4,4 -4,-172 511,-172 511,4 -4,4"/>
 <!-- Node91 -->
 <g id="node1" class="node"><title>Node91</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Query stored pressing stat for a key.">
 <polygon fill="#bfbfbf" stroke="black" points="362,-71.5 362,-101.5 507,-101.5 507,-71.5 362,-71.5"/>
 <text text-anchor="start" x="370" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="434.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::is_down</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node93 -->
 <g id="node3" class="node"><title>Node93</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="197,-99 197,-118 310,-118 310,-99 197,-99"/>
 <text text-anchor="middle" x="253.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node95 -->
 <g id="node5" class="node"><title>Node95</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="195.5,-49.5 195.5,-79.5 311.5,-79.5 311.5,-49.5 195.5,-49.5"/>
 <text text-anchor="start" x="203.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="253.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node96 -->
 <g id="node6" class="node"><title>Node96</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" target="_top" xlink:title="sets the state of a specific key">
 <polygon fill="white" stroke="black" points="181,-0.5 181,-30.5 326,-30.5 326,-0.5 181,-0.5"/>
 <text text-anchor="start" x="189" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_state</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node94 -->
 <g id="node4" class="node"><title>Node94</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="18,-99 18,-118 127,-118 127,-99 18,-99"/>
 <text text-anchor="middle" x="72.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>
@@ -134,7 +134,7 @@ var sectionId = 'dynsection-13';
 </g>
 <!-- Node97 -->
 <g id="node7" class="node"><title>Node97</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title="When a SDL event happens, this is called.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 145,-30.5 145,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_input</text>

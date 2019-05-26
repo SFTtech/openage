@@ -1,4 +1,4 @@
 <map id="openage::renderer::resources::Texture2dData::Texture2dData" name="openage::renderer::resources::Texture2dData::Texture2dData">
-<area shape="rect" id="node1" title=" " alt="" coords="224,5,395,61"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" title=" " alt="" coords="5,5,176,61"/>
+<area shape="rect" id="node1" title="Create a texture from an image file." alt="" coords="224,5,395,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" title="Flips the texture along the Y&#45;axis and returns the flipped data with the same info." alt="" coords="5,5,176,61"/>
 </map>

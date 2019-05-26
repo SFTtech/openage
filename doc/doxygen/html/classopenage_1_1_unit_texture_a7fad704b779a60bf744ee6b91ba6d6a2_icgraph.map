@@ -1,4 +1,4 @@
 <map id="openage::UnitTexture::subtexture" name="openage::UnitTexture::subtexture">
-<area shape="rect" id="node1" title=" " alt="" coords="199,5,344,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" title=" " alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node1" title="find which subtexture should be used for drawing this texture" alt="" coords="199,5,344,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" title="draw object with direction" alt="" coords="5,5,151,47"/>
 </map>

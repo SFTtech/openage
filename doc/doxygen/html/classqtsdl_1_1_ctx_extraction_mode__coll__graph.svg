@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-95 131,-95 131,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Abstract base for the method of getting a Qt&#45;usable context.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-90.5 127,-90.5 127,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="63.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::CtxExtractionMode</text>
 <polyline fill="none" stroke="black" points="0,-71.5 127,-71.5 "/>

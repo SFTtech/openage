@@ -46,9 +46,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>To be used by all tests to indicate an error condition. </para>
     </briefdescription>
     <detaileddescription>
-<para>To be used by all tests to indicate an error condition.</para>
 <para>An optional error message may be passed as part of the message, but the file name and line number are of primary concern. </para>
     </detaileddescription>
     <inheritancegraph>

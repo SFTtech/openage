@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-525 224,-525 224,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Base class for possible path implementations.">
 <polygon fill="#bfbfbf" stroke="black" points="59,-237.5 59,-415.5 160,-415.5 160,-237.5 59,-237.5"/>
 <text text-anchor="start" x="67" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="109.5" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00">::FSLike</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_directory.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_directory.xhtml" target="_top" xlink:title="Filesystem&#45;like object which uses native libc calls.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-200.5 101,-200.5 101,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="50.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Directory</text>
@@ -64,7 +64,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_python.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_python.xhtml" target="_top" xlink:title="Filesystem&#45;like object that wraps a filesystem&#45;like object from Python.">
 <polygon fill="white" stroke="black" points="119,-11.5 119,-189.5 220,-189.5 220,-11.5 119,-11.5"/>
 <text text-anchor="start" x="127" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="169.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Python</text>

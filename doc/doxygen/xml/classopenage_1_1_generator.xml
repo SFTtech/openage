@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>spec</name>
         <briefdescription>
+<para>data version used to create a game </para>
         </briefdescription>
         <detaileddescription>
-<para>data version used to create a game </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -28,9 +28,9 @@
         <argsstring></argsstring>
         <name>regions</name>
         <briefdescription>
+<para>the generated data </para>
         </briefdescription>
         <detaileddescription>
-<para>the generated data </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -82,9 +82,9 @@
         <argsstring>() const</argsstring>
         <name>get_spec</name>
         <briefdescription>
+<para>game spec used by this generator </para>
         </briefdescription>
         <detaileddescription>
-<para>game spec used by this generator </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -97,9 +97,9 @@
         <argsstring>() const</argsstring>
         <name>player_names</name>
         <briefdescription>
+<para>return the list of player names </para>
         </briefdescription>
         <detaileddescription>
-<para>return the list of player names </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -114,9 +114,9 @@
         <argsstring>() const</argsstring>
         <name>terrain</name>
         <briefdescription>
+<para>returns the generated terrain </para>
         </briefdescription>
         <detaileddescription>
-<para>returns the generated terrain </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -136,14 +136,14 @@
           <declname>m</declname>
         </param>
         <briefdescription>
+<para>places all initial objects </para>
         </briefdescription>
         <detaileddescription>
-<para>places all initial objects </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="155" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" bodystart="252" bodyend="301"/>
-        <references refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</references>
+        <references refid="namespaceopenage_1a8c248986ac22a8251e1f27a6cef087eb" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</references>
         <references refid="classopenage_1_1_game_main_1ace86de3be7238212c0b49ecc1247e8a4" compoundref="game__main_8cpp" startline="47" endline="49">openage::GameMain::get_player</references>
         <references refid="classopenage_1_1_player_1a67c7f6853d4be5c38d2456169af3d5a1" compoundref="player_8cpp" startline="119" endline="127">openage::Player::get_type</references>
         <references refid="classopenage_1_1_unit_container_1a39947500d16e9d67eb72458f3df7c796" compoundref="unit__container_8cpp" startline="88" endline="94">openage::UnitContainer::new_unit</references>
@@ -163,16 +163,16 @@
           <declname>spec</declname>
         </param>
         <briefdescription>
+<para>Create a game from a specification. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a game from a specification. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="160" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" bodystart="303" bodyend="320"/>
         <references refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" compoundref="generator_8cpp" startline="153" endline="234">create_regions</references>
         <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
-        <references refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</references>
+        <references refid="namespaceopenage_1_1gameio_1ae6761d88280466d1d1b5c638e7c7a042" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</references>
         <references refid="classopenage_1_1_generator_1aaf04e63cb2d8426871af63193dd1f7bf" compoundref="generator_8h" startline="173">regions</references>
         <references refid="classopenage_1_1_generator_1ab9df64698f3ac44a5cb501eb518b4e09" compoundref="generator_8h" startline="168">spec</references>
       </memberdef>
@@ -209,9 +209,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Manages creation and setup of new games. </para>
     </briefdescription>
     <detaileddescription>
-<para>Manages creation and setup of new games</para>
 <para>required values used to construct a game this includes game spec and players</para>
 <para>this will be identical for each networked player in a game </para>
     </detaileddescription>

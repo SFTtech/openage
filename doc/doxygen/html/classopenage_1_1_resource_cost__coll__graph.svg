@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-387 135,-387 135,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A container for a constant or dynamic ResourceBundle representing the cost.">
 <polygon fill="#bfbfbf" stroke="black" points="5,-0.5 5,-112.5 126,-112.5 126,-0.5 5,-0.5"/>
 <text text-anchor="middle" x="65.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceCost</text>
 <polyline fill="none" stroke="black" points="5,-93.5 126,-93.5 "/>
@@ -28,7 +28,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_resource_bundle.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_resource_bundle.xhtml" target="_top" xlink:title="A set of amounts of game resources.">
 <polygon fill="white" stroke="black" points="0,-160.5 0,-382.5 131,-382.5 131,-160.5 0,-160.5"/>
 <text text-anchor="middle" x="65.5" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <polyline fill="none" stroke="black" points="0,-363.5 131,-363.5 "/>

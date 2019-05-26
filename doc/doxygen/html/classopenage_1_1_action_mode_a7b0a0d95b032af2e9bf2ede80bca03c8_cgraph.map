@@ -1,8 +1,8 @@
 <map id="openage::ActionMode::get_action" name="openage::ActionMode::get_action">
-<area shape="rect" id="node1" title=" " alt="" coords="5,93,153,135"/>
+<area shape="rect" id="node1" title="decides which type of right mouse click command to issue based on position." alt="" coords="5,93,153,135"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_game_control.xhtml#aa7c61c3caafc810355005e83c8f234e2" title=" " alt="" coords="206,5,361,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title=" " alt="" coords="413,42,597,69"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title="return currently running game or null if a game is not currently running" alt="" coords="413,42,597,69"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_game_control.xhtml#aed1e983dee9b075a3343b72aed5678bd" title=" " alt="" coords="206,123,361,164"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_command.xhtml#a5783c26abcea9f286be58aa29de1e548" title=" " alt="" coords="201,188,365,229"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_command.xhtml#a5783c26abcea9f286be58aa29de1e548" title="sets invoked ability type, no other type may be used if this gets set" alt="" coords="201,188,365,229"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="450,130,561,157"/>
 </map>

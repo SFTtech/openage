@@ -1,5 +1,5 @@
 <map id="openage::UnitSelection::select_space" name="openage::UnitSelection::select_space">
-<area shape="rect" id="node1" title=" " alt="" coords="412,5,568,47"/>
+<area shape="rect" id="node1" title="boxed unit selection" alt="" coords="412,5,568,47"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_unit_selection.xhtml#a6b4a0b9275c8ebf623d50a7509487623" title=" " alt="" coords="208,5,364,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,5,160,47"/>
 </map>

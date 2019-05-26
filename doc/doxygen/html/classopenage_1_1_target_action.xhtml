@@ -97,43 +97,57 @@ $(document).ready(function(){initNavTree('classopenage_1_1_target_action.xhtml',
 </div><!--header-->
 <div class="contents">
 
+<p>Base class for actions which target another unit such as gather, attack, heal and convert.  
+ <a href="classopenage_1_1_target_action.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="unit_2action_8h_source.xhtml">action.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::TargetAction:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::TargetAction:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:adc56f07dc94e70968fb02276f1a3ae57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#adc56f07dc94e70968fb02276f1a3ae57">TargetAction</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *e, <a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3b">graphic_type</a> gt, <a class="el" href="classopenage_1_1_unit_reference.xhtml">UnitReference</a> r, <a class="el" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a> action_rad)</td></tr>
+<tr class="memdesc:adc56f07dc94e70968fb02276f1a3ae57"><td class="mdescLeft">&#160;</td><td class="mdescRight">action_rad is how close a unit must come to another unit to be considered to touch the other, for example in gathering resource and melee attack  <a href="#adc56f07dc94e70968fb02276f1a3ae57">More...</a><br /></td></tr>
 <tr class="separator:adc56f07dc94e70968fb02276f1a3ae57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ac661518fe44bcbdca2f97212d90bf7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#a8ac661518fe44bcbdca2f97212d90bf7">TargetAction</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *e, <a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3b">graphic_type</a> gt, <a class="el" href="classopenage_1_1_unit_reference.xhtml">UnitReference</a> r)</td></tr>
+<tr class="memdesc:a8ac661518fe44bcbdca2f97212d90bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">this constructor uses the default action radius formula which will bring the object as near to the target as the pathing grid will allow.  <a href="#a8ac661518fe44bcbdca2f97212d90bf7">More...</a><br /></td></tr>
 <tr class="separator:a8ac661518fe44bcbdca2f97212d90bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18396367c24eafefd498e141875fed8a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#a18396367c24eafefd498e141875fed8a">~TargetAction</a> ()</td></tr>
 <tr class="separator:a18396367c24eafefd498e141875fed8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af63a55c8043382d2648815d46e2c4c92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92">update</a> (unsigned int time) override</td></tr>
+<tr class="memdesc:af63a55c8043382d2648815d46e2c4c92"><td class="mdescLeft">&#160;</td><td class="mdescRight">each action has its own update functionality which gets called when this is the active action  <a href="#af63a55c8043382d2648815d46e2c4c92">More...</a><br /></td></tr>
 <tr class="separator:af63a55c8043382d2648815d46e2c4c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac489c70f995ea358f685676e403df8cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#ac489c70f995ea358f685676e403df8cc">on_completion</a> () override</td></tr>
+<tr class="memdesc:ac489c70f995ea358f685676e403df8cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">action to perform when popped from a units action stack  <a href="#ac489c70f995ea358f685676e403df8cc">More...</a><br /></td></tr>
 <tr class="separator:ac489c70f995ea358f685676e403df8cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd97248a087415b6d08fa3e97e90397d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#acd97248a087415b6d08fa3e97e90397d">completed</a> () const override</td></tr>
+<tr class="memdesc:acd97248a087415b6d08fa3e97e90397d"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets called for all actions on stack each update cycle  <a href="#acd97248a087415b6d08fa3e97e90397d">More...</a><br /></td></tr>
 <tr class="separator:acd97248a087415b6d08fa3e97e90397d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50d20cedc299a1257f5a8dc2c0396b72"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#a50d20cedc299a1257f5a8dc2c0396b72">allow_interupt</a> () const override</td></tr>
+<tr class="memdesc:a50d20cedc299a1257f5a8dc2c0396b72"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded  <a href="#a50d20cedc299a1257f5a8dc2c0396b72">More...</a><br /></td></tr>
 <tr class="separator:a50d20cedc299a1257f5a8dc2c0396b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1152581f6979e3fd89a6ce4e6a4eded2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#a1152581f6979e3fd89a6ce4e6a4eded2">allow_control</a> () const override</td></tr>
+<tr class="memdesc:a1152581f6979e3fd89a6ce4e6a4eded2"><td class="mdescLeft">&#160;</td><td class="mdescRight">control whether stack can discard the action automatically and should the stack be modifiable when this action is on top  <a href="#a1152581f6979e3fd89a6ce4e6a4eded2">More...</a><br /></td></tr>
 <tr class="separator:a1152581f6979e3fd89a6ce4e6a4eded2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab57d1777fed0ced4ee1e6788ee5e445d"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#ab57d1777fed0ced4ee1e6788ee5e445d">name</a> () const override=0</td></tr>
+<tr class="memdesc:ab57d1777fed0ced4ee1e6788ee5e445d"><td class="mdescLeft">&#160;</td><td class="mdescRight">debug string to identify action types  <a href="#ab57d1777fed0ced4ee1e6788ee5e445d">More...</a><br /></td></tr>
 <tr class="separator:ab57d1777fed0ced4ee1e6788ee5e445d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0689cb2d55ae8ad82e704c79b4596bca"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#a0689cb2d55ae8ad82e704c79b4596bca">update_in_range</a> (unsigned int, <a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *)=0</td></tr>
+<tr class="memdesc:a0689cb2d55ae8ad82e704c79b4596bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control units action when in range of the target.  <a href="#a0689cb2d55ae8ad82e704c79b4596bca">More...</a><br /></td></tr>
 <tr class="separator:a0689cb2d55ae8ad82e704c79b4596bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32fc1723b0f6ce5e3bdb76794ff1ccf1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#a32fc1723b0f6ce5e3bdb76794ff1ccf1">on_completion_in_range</a> (int target_type)=0</td></tr>
 <tr class="separator:a32fc1723b0f6ce5e3bdb76794ff1ccf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,23 +162,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4f8c4aca219e96e7e0f2e8439385d7b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#a4f8c4aca219e96e7e0f2e8439385d7b1">get_target_type_id</a> () const</td></tr>
 <tr class="separator:a4f8c4aca219e96e7e0f2e8439385d7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48de4ef9580b1202464808af55b78fae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#a48de4ef9580b1202464808af55b78fae">set_target</a> (<a class="el" href="classopenage_1_1_unit_reference.xhtml">UnitReference</a> new_target)</td></tr>
+<tr class="memdesc:a48de4ef9580b1202464808af55b78fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">changes target, ending action when new target is invalid  <a href="#a48de4ef9580b1202464808af55b78fae">More...</a><br /></td></tr>
 <tr class="separator:a48de4ef9580b1202464808af55b78fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classopenage_1_1_unit_action"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classopenage_1_1_unit_action')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classopenage_1_1_unit_action.xhtml">openage::UnitAction</a></td></tr>
 <tr class="memitem:a3fd3dd936ea6a850726bcfce9664909a inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">UnitAction</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *u, <a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3b">graphic_type</a> initial_gt)</td></tr>
+<tr class="memdesc:a3fd3dd936ea6a850726bcfce9664909a inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">Require unit to be updated and an initial graphic type.  <a href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">More...</a><br /></td></tr>
 <tr class="separator:a3fd3dd936ea6a850726bcfce9664909a inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e4ff108bc1f10e40777ae36710e7a65 inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a6e4ff108bc1f10e40777ae36710e7a65">~UnitAction</a> ()</td></tr>
 <tr class="separator:a6e4ff108bc1f10e40777ae36710e7a65 inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbadd90ff8cee12d01aa9fd490501c1a inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3b">graphic_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#acbadd90ff8cee12d01aa9fd490501c1a">type</a> () const</td></tr>
+<tr class="memdesc:acbadd90ff8cee12d01aa9fd490501c1a inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">type of graphic this action should use  <a href="classopenage_1_1_unit_action.xhtml#acbadd90ff8cee12d01aa9fd490501c1a">More...</a><br /></td></tr>
 <tr class="separator:acbadd90ff8cee12d01aa9fd490501c1a inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfdd7e2764fd795c02ce0a5471563508 inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#abfdd7e2764fd795c02ce0a5471563508">current_frame</a> () const</td></tr>
+<tr class="memdesc:abfdd7e2764fd795c02ce0a5471563508 inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">frame number to use on the current graphic  <a href="classopenage_1_1_unit_action.xhtml#abfdd7e2764fd795c02ce0a5471563508">More...</a><br /></td></tr>
 <tr class="separator:abfdd7e2764fd795c02ce0a5471563508 inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cd7405af72dd0cf3994cee74608cf8b inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="namespaceopenage.xhtml#a905fde9cff5779781eb779ca95d80cf1">graphic_set</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b">current_graphics</a> () const</td></tr>
+<tr class="memdesc:a6cd7405af72dd0cf3994cee74608cf8b inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">determines which graphic should be used for drawing this unit finds the default graphic using the units type, used by most actions  <a href="classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b">More...</a><br /></td></tr>
 <tr class="separator:a6cd7405af72dd0cf3994cee74608cf8b inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef5ad04daa194a06790b4f36ed8a3e83 inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#aef5ad04daa194a06790b4f36ed8a3e83">draw_debug</a> (const <a class="el" href="classopenage_1_1_engine.xhtml">Engine</a> &amp;engine)</td></tr>
 <tr class="separator:aef5ad04daa194a06790b4f36ed8a3e83 inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ab11130480adc3cfe156af7cfb7a58d inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d">face_towards</a> (const <a class="el" href="structopenage_1_1coord_1_1phys3.xhtml">coord::phys3</a> pos)</td></tr>
+<tr class="memdesc:a3ab11130480adc3cfe156af7cfb7a58d inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">common functions for actions  <a href="classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d">More...</a><br /></td></tr>
 <tr class="separator:a3ab11130480adc3cfe156af7cfb7a58d inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7beffb7ad454cf467d7a6b843df939c7 inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a7beffb7ad454cf467d7a6b843df939c7">damage_unit</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;target)</td></tr>
+<tr class="memdesc:a7beffb7ad454cf467d7a6b843df939c7 inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">Damage a unit, returns true if the unit was killed in the process.  <a href="classopenage_1_1_unit_action.xhtml#a7beffb7ad454cf467d7a6b843df939c7">More...</a><br /></td></tr>
 <tr class="separator:a7beffb7ad454cf467d7a6b843df939c7 inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16660bd780984c6f11ba30e0c7f634ad inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a16660bd780984c6f11ba30e0c7f634ad">move_to</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;target, bool <a class="el" href="namespaceopenage.xhtml#a355391982e6c1257c3fc4de3b6402b3aa0f99c9f01a52f21f547acbeb2bb67dc5">use_range</a>=true)</td></tr>
 <tr class="separator:a16660bd780984c6f11ba30e0c7f634ad inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,6 +201,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ace49b8e31592f2e8671dff1d681e8a59"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">end_action</a></td></tr>
 <tr class="separator:ace49b8e31592f2e8671dff1d681e8a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a440df45773b6e3b6e2a0b60f1ba6ca98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">dist_to_target</a></td></tr>
+<tr class="memdesc:a440df45773b6e3b6e2a0b60f1ba6ca98"><td class="mdescLeft">&#160;</td><td class="mdescRight">tracks distance to target from last update  <a href="#a440df45773b6e3b6e2a0b60f1ba6ca98">More...</a><br /></td></tr>
 <tr class="separator:a440df45773b6e3b6e2a0b60f1ba6ca98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf5a6940a40fea92b70b36482c1d1ee0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_target_action.xhtml#abf5a6940a40fea92b70b36482c1d1ee0">radius</a></td></tr>
 <tr class="separator:abf5a6940a40fea92b70b36482c1d1ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,28 +210,36 @@ Private Attributes</h2></td></tr>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_classopenage_1_1_unit_action"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classopenage_1_1_unit_action')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classopenage_1_1_unit_action.xhtml">openage::UnitAction</a></td></tr>
 <tr class="memitem:a6a13e1e645b744982544ae65ef1addf3 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3">adjacent_range</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *u)</td></tr>
+<tr class="memdesc:a6a13e1e645b744982544ae65ef1addf3 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">a small distance to which units are considered touching when within this distance  <a href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3">More...</a><br /></td></tr>
 <tr class="separator:a6a13e1e645b744982544ae65ef1addf3 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e508baa62ec19cd81bea7fce1721e17 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17">get_attack_range</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *u)</td></tr>
+<tr class="memdesc:a6e508baa62ec19cd81bea7fce1721e17 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks at an ranged attributes on the unit otherwise returns same as <a class="el" href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3" title="a small distance to which units are considered touching when within this distance">adjacent_range()</a>  <a href="classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17">More...</a><br /></td></tr>
 <tr class="separator:a6e508baa62ec19cd81bea7fce1721e17 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40320d4e1be2a48373f5b9b0f6bef2ef inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a40320d4e1be2a48373f5b9b0f6bef2ef">get_heal_range</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *u)</td></tr>
+<tr class="memdesc:a40320d4e1be2a48373f5b9b0f6bef2ef inherit pub_static_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks at heal attribute on the unit otherwise returns same as <a class="el" href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3" title="a small distance to which units are considered touching when within this distance">adjacent_range()</a>  <a href="classopenage_1_1_unit_action.xhtml#a40320d4e1be2a48373f5b9b0f6bef2ef">More...</a><br /></td></tr>
 <tr class="separator:a40320d4e1be2a48373f5b9b0f6bef2ef inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_classopenage_1_1_unit_action"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classopenage_1_1_unit_action')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classopenage_1_1_unit_action.xhtml">openage::UnitAction</a></td></tr>
 <tr class="memitem:a0a84fac6b39ee42340f67905dd631956 inherit pub_static_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a0a84fac6b39ee42340f67905dd631956">show_debug</a> = false</td></tr>
+<tr class="memdesc:a0a84fac6b39ee42340f67905dd631956 inherit pub_static_attribs_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">produce debug info such as visualising paths  <a href="classopenage_1_1_unit_action.xhtml#a0a84fac6b39ee42340f67905dd631956">More...</a><br /></td></tr>
 <tr class="separator:a0a84fac6b39ee42340f67905dd631956 inherit pub_static_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classopenage_1_1_unit_action"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classopenage_1_1_unit_action')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classopenage_1_1_unit_action.xhtml">openage::UnitAction</a></td></tr>
 <tr class="memitem:a5d47af0412db504ab95c58b12418d55c inherit pro_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a></td></tr>
+<tr class="memdesc:a5d47af0412db504ab95c58b12418d55c inherit pro_attribs_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">the entity being updated  <a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">More...</a><br /></td></tr>
 <tr class="separator:a5d47af0412db504ab95c58b12418d55c inherit pro_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe08a940aa0b7040c3a59d816de00fed inherit pro_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3b">graphic_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#afe08a940aa0b7040c3a59d816de00fed">graphic</a></td></tr>
+<tr class="memdesc:afe08a940aa0b7040c3a59d816de00fed inherit pro_attribs_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">common graphic controls  <a href="classopenage_1_1_unit_action.xhtml#afe08a940aa0b7040c3a59d816de00fed">More...</a><br /></td></tr>
 <tr class="separator:afe08a940aa0b7040c3a59d816de00fed inherit pro_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f995b745da73c4e95ec83d8b14c38c6 inherit pro_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a8f995b745da73c4e95ec83d8b14c38c6">frame</a></td></tr>
 <tr class="separator:a8f995b745da73c4e95ec83d8b14c38c6 inherit pro_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d0154b413ca914966b9796bc37193b8 inherit pro_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a5d0154b413ca914966b9796bc37193b8">frame_rate</a></td></tr>
 <tr class="separator:a5d0154b413ca914966b9796bc37193b8 inherit pro_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bbcb9637ce725b95cbe818204921e4f inherit pro_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const <a class="el" href="classopenage_1_1_engine.xhtml">Engine</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a0bbcb9637ce725b95cbe818204921e4f">debug_draw_action</a></td></tr>
+<tr class="memdesc:a0bbcb9637ce725b95cbe818204921e4f inherit pro_attribs_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">additional drawing for debug purposes  <a href="classopenage_1_1_unit_action.xhtml#a0bbcb9637ce725b95cbe818204921e4f">More...</a><br /></td></tr>
 <tr class="separator:a0bbcb9637ce725b95cbe818204921e4f inherit pro_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base class for actions which target another unit such as gather, attack, heal and convert </p><dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo:</a></b></dt><dd>implement min range </dd></dl>
+<div class="textblock"><p>Base class for actions which target another unit such as gather, attack, heal and convert. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo:</a></b></dt><dd>implement min range </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00217">217</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -250,6 +280,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>action_rad is how close a unit must come to another unit to be considered to touch the other, for example in gathering resource and melee attack </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00218">218</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
@@ -261,7 +292,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_ace49b8e31592f2e8671dff1d681e8a59"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">openage::TargetAction::end_action</a></div><div class="ttdeci">bool end_action</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00263">action.h:263</a></div></div>
 <div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a6303ff3facc18acf10aa335ee9d318d8"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">openage::UnitReference::get</a></div><div class="ttdeci">Unit * get() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00042">unit_container.cpp:42</a></div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_a5b6ca88d9b6aec08b4d03697f0cd03a1"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">openage::TargetAction::repath_attempts</a></div><div class="ttdeci">int repath_attempts</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00262">action.h:262</a></div></div>
-<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a3fd3dd936ea6a850726bcfce9664909a"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">openage::UnitAction::UnitAction</a></div><div class="ttdeci">UnitAction(Unit *u, graphic_type initial_gt)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00089">action.cpp:89</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a3fd3dd936ea6a850726bcfce9664909a"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">openage::UnitAction::UnitAction</a></div><div class="ttdeci">UnitAction(Unit *u, graphic_type initial_gt)</div><div class="ttdoc">Require unit to be updated and an initial graphic type.</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00089">action.cpp:89</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -296,11 +327,12 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>this constructor uses the default action radius formula which will bring the object as near to the target as the pathing grid will allow. </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00237">237</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    :</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="classopenage_1_1_target_action.xhtml#adc56f07dc94e70968fb02276f1a3ae57">TargetAction</a>(u, gt, r, <a class="code" href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3">adjacent_range</a>(u)) {</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_action_xhtml_a6a13e1e645b744982544ae65ef1addf3"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3">openage::UnitAction::adjacent_range</a></div><div class="ttdeci">static coord::phys_t adjacent_range(Unit *u)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00067">action.cpp:67</a></div></div>
-<div class="ttc" id="classopenage_1_1_target_action_xhtml_adc56f07dc94e70968fb02276f1a3ae57"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#adc56f07dc94e70968fb02276f1a3ae57">openage::TargetAction::TargetAction</a></div><div class="ttdeci">TargetAction(Unit *e, graphic_type gt, UnitReference r, coord::phys_t action_rad)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00218">action.cpp:218</a></div></div>
+<div class="fragment"><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    :</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="classopenage_1_1_target_action.xhtml#adc56f07dc94e70968fb02276f1a3ae57">TargetAction</a>(u, gt, r, <a class="code" href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3">adjacent_range</a>(u)) {</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_action_xhtml_a6a13e1e645b744982544ae65ef1addf3"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3">openage::UnitAction::adjacent_range</a></div><div class="ttdeci">static coord::phys_t adjacent_range(Unit *u)</div><div class="ttdoc">a small distance to which units are considered touching when within this distance</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00067">action.cpp:67</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_adc56f07dc94e70968fb02276f1a3ae57"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#adc56f07dc94e70968fb02276f1a3ae57">openage::TargetAction::TargetAction</a></div><div class="ttdeci">TargetAction(Unit *e, graphic_type gt, UnitReference r, coord::phys_t action_rad)</div><div class="ttdoc">action_rad is how close a unit must come to another unit to be considered to touch the other,...</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00218">action.cpp:218</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -354,7 +386,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top</p>
+
+<p>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top </p>
 <p>if true this action must complete and will not allow new actions to be pushed while it is active and also does not update the secondary actions </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a3e222303072f926fa7c925163b8ac10c">openage::UnitAction</a>.</p>
@@ -385,6 +418,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a622cf307ee5d3f8f4581d9a7ec7ecfbf">openage::UnitAction</a>.</p>
@@ -415,13 +449,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>gets called for all actions on stack each update cycle </p><dl class="section return"><dt>Returns</dt><dd>true when action is completed so it and everything above it can be popped </dd></dl>
+
+<p>gets called for all actions on stack each update cycle </p>
+<dl class="section return"><dt>Returns</dt><dd>true when action is completed so it and everything above it can be popped </dd></dl>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a7814554a94e930595ed5dad9b0f03255">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00290">290</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                                   {</div><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">end_action</a> ||</div><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        !this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">is_valid</a>() ||</div><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        !this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">get</a>()-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>) {</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    }</div><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a43bd7367738e16d715df0a1bfbd080cf">completed_in_range</a>(this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">get</a>());</div><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_af0c0298b57d0752f89b4e732f7446f78"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">openage::TargetAction::target</a></div><div class="ttdeci">UnitReference target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00260">action.h:260</a></div></div>
-<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdoc">space on the map used by this unit null if the object is not yet placed or garrisoned</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_a43bd7367738e16d715df0a1bfbd080cf"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a43bd7367738e16d715df0a1bfbd080cf">openage::TargetAction::completed_in_range</a></div><div class="ttdeci">virtual bool completed_in_range(Unit *) const =0</div></div>
 <div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a55afff48cc1901715f3c29383969d2ac"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">openage::UnitReference::is_valid</a></div><div class="ttdeci">bool is_valid() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00036">unit_container.cpp:36</a></div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_ace49b8e31592f2e8671dff1d681e8a59"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">openage::TargetAction::end_action</a></div><div class="ttdeci">bool end_action</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00263">action.h:263</a></div></div>
@@ -435,14 +471,16 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_acd97248a087415b6d08fa3e97e90397d_cgraph.svg" width="606" height="163"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_acd97248a087415b6d08fa3e97e90397d_cgraph.svg" width="606" height="163"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_acd97248a087415b6d08fa3e97e90397d_icgraph.svg" width="568" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_acd97248a087415b6d08fa3e97e90397d_icgraph.svg" width="568" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -479,7 +517,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a43bd7367738e16d715df0a1bfbd080cf_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a43bd7367738e16d715df0a1bfbd080cf_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -500,7 +539,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00299">299</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                             {</div><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">dist_to_target</a>;</div><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_a440df45773b6e3b6e2a0b60f1ba6ca98"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">openage::TargetAction::dist_to_target</a></div><div class="ttdeci">coord::phys_t dist_to_target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00268">action.h:268</a></div></div>
+<div class="fragment"><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                             {</div><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">dist_to_target</a>;</div><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_a440df45773b6e3b6e2a0b60f1ba6ca98"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">openage::TargetAction::dist_to_target</a></div><div class="ttdeci">coord::phys_t dist_to_target</div><div class="ttdoc">tracks distance to target from last update</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00268">action.h:268</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00268">dist_to_target</a>.</p>
 
@@ -532,7 +571,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a234df6738799d71928d3fc3acc8d39ab_icgraph.svg" width="356" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a234df6738799d71928d3fc3acc8d39ab_icgraph.svg" width="356" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -581,6 +621,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>debug string to identify action types </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a67647c63a20cec9714a6463b1c823a70">openage::UnitAction</a>.</p>
@@ -593,7 +634,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_ab57d1777fed0ced4ee1e6788ee5e445d_icgraph.svg" width="576" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_ab57d1777fed0ced4ee1e6788ee5e445d_icgraph.svg" width="576" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -620,6 +662,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>action to perform when popped from a units action stack </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#ac84d3cbfa3c489b3975952af157929cb">openage::UnitAction</a>.</p>
@@ -628,9 +671,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00277">277</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                 {</div><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="comment">// do not retask if action is forced to end</span></div><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">end_action</a> ||</div><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        !this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>) {</div><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordflow">return</span>;</div><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="comment">// retask units on nearby objects</span></div><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="comment">// such as gathers targeting a new resource</span></div><div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="comment">// when the current target expires</span></div><div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a32fc1723b0f6ce5e3bdb76794ff1ccf1">on_completion_in_range</a>(this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ab11cdd208c9eb76eb88bfdea0c0d054a">target_type_id</a>);</div><div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_a32fc1723b0f6ce5e3bdb76794ff1ccf1"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a32fc1723b0f6ce5e3bdb76794ff1ccf1">openage::TargetAction::on_completion_in_range</a></div><div class="ttdeci">virtual void on_completion_in_range(int target_type)=0</div></div>
-<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdoc">the entity being updated</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_ab11cdd208c9eb76eb88bfdea0c0d054a"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ab11cdd208c9eb76eb88bfdea0c0d054a">openage::TargetAction::target_type_id</a></div><div class="ttdeci">int target_type_id</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00261">action.h:261</a></div></div>
-<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdoc">space on the map used by this unit null if the object is not yet placed or garrisoned</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_ace49b8e31592f2e8671dff1d681e8a59"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">openage::TargetAction::end_action</a></div><div class="ttdeci">bool end_action</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00263">action.h:263</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00263">end_action</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00197">openage::UnitAction::entity</a>, <a class="el" href="unit_8h_source.xhtml#l00068">openage::Unit::location</a>, <a class="el" href="classopenage_1_1_target_action.xhtml#a32fc1723b0f6ce5e3bdb76794ff1ccf1">on_completion_in_range()</a>, and <a class="el" href="unit_2action_8h_source.xhtml#l00261">target_type_id</a>.</p>
@@ -639,7 +682,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_ac489c70f995ea358f685676e403df8cc_cgraph.svg" width="382" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_ac489c70f995ea358f685676e403df8cc_cgraph.svg" width="382" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -676,7 +720,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a32fc1723b0f6ce5e3bdb76794ff1ccf1_icgraph.svg" width="382" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a32fc1723b0f6ce5e3bdb76794ff1ccf1_icgraph.svg" width="382" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -696,6 +741,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>changes target, ending action when new target is invalid </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00329">329</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
@@ -711,14 +757,16 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a48de4ef9580b1202464808af55b78fae_cgraph.svg" width="100%" height="391"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a48de4ef9580b1202464808af55b78fae_cgraph.svg" width="100%" height="391"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a48de4ef9580b1202464808af55b78fae_icgraph.svg" width="366" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a48de4ef9580b1202464808af55b78fae_icgraph.svg" width="366" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -746,16 +794,17 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>each action has its own update functionality which gets called when this is the active action </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a0196263da38bfa208d50c2241809cd62">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00242">242</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                           {</div><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keyword">auto</span> target_ptr = this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a2ad32343ebe475f1f3c1477f659314db">update_distance</a>();</div><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">if</span> (!target_ptr) {</div><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="keywordflow">return</span>; <span class="comment">// target has become invalid</span></div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="comment">// this update moves a unit within radius of the target</span></div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="comment">// once within the radius the update gets passed to the class</span></div><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="comment">// derived from TargetAction</span></div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="comment">// set direction unit should face</span></div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d">face_towards</a>(target_ptr-&gt;location-&gt;pos.draw);</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="comment">// move to within the set radius</span></div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">if</span> (this-&gt;dist_to_target &lt;= this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#abf5a6940a40fea92b70b36482c1d1ee0">radius</a>) {</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="comment">// the derived class controls what to</span></div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="comment">// do when in range of the target</span></div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a0689cb2d55ae8ad82e704c79b4596bca">update_in_range</a>(time, target_ptr);</div><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">repath_attempts</a> = 10;</div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    }</div><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">repath_attempts</a>) {</div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="comment">// out of range so try move towards</span></div><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="comment">// if this unit has a move ability</span></div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a16660bd780984c6f11ba30e0c7f634ad">move_to</a>(*target_ptr);</div><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">repath_attempts</a> -= 1;</div><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div><div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="comment">// unit is stuck</span></div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">end_action</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    }</div><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_action_xhtml_a16660bd780984c6f11ba30e0c7f634ad"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a16660bd780984c6f11ba30e0c7f634ad">openage::UnitAction::move_to</a></div><div class="ttdeci">void move_to(Unit &amp;target, bool use_range=true)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00208">action.cpp:208</a></div></div>
-<div class="ttc" id="classopenage_1_1_target_action_xhtml_a0689cb2d55ae8ad82e704c79b4596bca"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a0689cb2d55ae8ad82e704c79b4596bca">openage::TargetAction::update_in_range</a></div><div class="ttdeci">virtual void update_in_range(unsigned int, Unit *)=0</div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_a0689cb2d55ae8ad82e704c79b4596bca"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a0689cb2d55ae8ad82e704c79b4596bca">openage::TargetAction::update_in_range</a></div><div class="ttdeci">virtual void update_in_range(unsigned int, Unit *)=0</div><div class="ttdoc">Control units action when in range of the target.</div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_a2ad32343ebe475f1f3c1477f659314db"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a2ad32343ebe475f1f3c1477f659314db">openage::TargetAction::update_distance</a></div><div class="ttdeci">Unit * update_distance()</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00303">action.cpp:303</a></div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_abf5a6940a40fea92b70b36482c1d1ee0"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#abf5a6940a40fea92b70b36482c1d1ee0">openage::TargetAction::radius</a></div><div class="ttdeci">coord::phys_t radius</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00268">action.h:268</a></div></div>
-<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a3ab11130480adc3cfe156af7cfb7a58d"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d">openage::UnitAction::face_towards</a></div><div class="ttdeci">void face_towards(const coord::phys3 pos)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00140">action.cpp:140</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a3ab11130480adc3cfe156af7cfb7a58d"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d">openage::UnitAction::face_towards</a></div><div class="ttdeci">void face_towards(const coord::phys3 pos)</div><div class="ttdoc">common functions for actions</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00140">action.cpp:140</a></div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_ace49b8e31592f2e8671dff1d681e8a59"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">openage::TargetAction::end_action</a></div><div class="ttdeci">bool end_action</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00263">action.h:263</a></div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_a5b6ca88d9b6aec08b4d03697f0cd03a1"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">openage::TargetAction::repath_attempts</a></div><div class="ttdeci">int repath_attempts</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00262">action.h:262</a></div></div>
 </div><!-- fragment -->
@@ -765,7 +814,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_af63a55c8043382d2648815d46e2c4c92_cgraph.svg" width="100%" height="528"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_af63a55c8043382d2648815d46e2c4c92_cgraph.svg" width="100%" height="528"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -786,10 +836,10 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00303">303</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                                    {</div><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">is_valid</a>()) {</div><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div><div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="comment">// make sure object is not garrisoned</span></div><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">auto</span> target_ptr = this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">get</a>();</div><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">if</span> (!target_ptr-&gt;location) {</div><div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    }</div><div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="comment">// update distance</span></div><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">dist_to_target</a> = target_ptr-&gt;location-&gt;from_edge(this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>-&gt;pos.draw);</div><div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="comment">// return the targeted unit</span></div><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordflow">return</span> target_ptr;</div><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_a440df45773b6e3b6e2a0b60f1ba6ca98"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">openage::TargetAction::dist_to_target</a></div><div class="ttdeci">coord::phys_t dist_to_target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00268">action.h:268</a></div></div>
+<div class="fragment"><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                                    {</div><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">is_valid</a>()) {</div><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div><div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="comment">// make sure object is not garrisoned</span></div><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">auto</span> target_ptr = this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">get</a>();</div><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">if</span> (!target_ptr-&gt;location) {</div><div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    }</div><div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="comment">// update distance</span></div><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">dist_to_target</a> = target_ptr-&gt;location-&gt;from_edge(this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>-&gt;pos.draw);</div><div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="comment">// return the targeted unit</span></div><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordflow">return</span> target_ptr;</div><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_a440df45773b6e3b6e2a0b60f1ba6ca98"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">openage::TargetAction::dist_to_target</a></div><div class="ttdeci">coord::phys_t dist_to_target</div><div class="ttdoc">tracks distance to target from last update</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00268">action.h:268</a></div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_af0c0298b57d0752f89b4e732f7446f78"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">openage::TargetAction::target</a></div><div class="ttdeci">UnitReference target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00260">action.h:260</a></div></div>
-<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
-<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdoc">the entity being updated</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdoc">space on the map used by this unit null if the object is not yet placed or garrisoned</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
 <div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a55afff48cc1901715f3c29383969d2ac"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">openage::UnitReference::is_valid</a></div><div class="ttdeci">bool is_valid() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00036">unit_container.cpp:36</a></div></div>
 <div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a6303ff3facc18acf10aa335ee9d318d8"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">openage::UnitReference::get</a></div><div class="ttdeci">Unit * get() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00042">unit_container.cpp:42</a></div></div>
 </div><!-- fragment -->
@@ -808,7 +858,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a2ad32343ebe475f1f3c1477f659314db_icgraph.svg" width="566" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a2ad32343ebe475f1f3c1477f659314db_icgraph.svg" width="566" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -846,7 +897,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Control units action when in range of the target </p>
+
+<p>Control units action when in range of the target. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1_convert_action.xhtml#a55db575cd964d3900afde6969e93dcfe">openage::ConvertAction</a>, <a class="el" href="classopenage_1_1_heal_action.xhtml#a95b9324fe05d86e7528f3a5334b6fc7c">openage::HealAction</a>, <a class="el" href="classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c">openage::AttackAction</a>, <a class="el" href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858">openage::GatherAction</a>, <a class="el" href="classopenage_1_1_repair_action.xhtml#ae093970227ea03a75f1ee278770640f0">openage::RepairAction</a>, <a class="el" href="classopenage_1_1_build_action.xhtml#a808f1932658b9bbdb98849c406e1d426">openage::BuildAction</a>, and <a class="el" href="classopenage_1_1_garrison_action.xhtml#ae38a294e107776e93a2a4198fed82b9e">openage::GarrisonAction</a>.</p>
 
@@ -856,7 +908,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a0689cb2d55ae8ad82e704c79b4596bca_icgraph.svg" width="363" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a0689cb2d55ae8ad82e704c79b4596bca_icgraph.svg" width="363" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -881,6 +934,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>tracks distance to target from last update </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00268">268</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>

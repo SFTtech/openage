@@ -1,4 +1,4 @@
 <map id="openage::GatherAbility" name="openage::GatherAbility">
-<area shape="rect" id="node1" title=" " alt="" coords="5,277,160,399"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_ability.xhtml" title=" " alt="" coords="13,5,152,229"/>
+<area shape="rect" id="node1" title="initiates an gather resource action when given a valid target" alt="" coords="5,277,160,399"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_ability.xhtml" title="Abilities create an action when given a target some abilities target positions such as moving or patr..." alt="" coords="13,5,152,229"/>
 </map>

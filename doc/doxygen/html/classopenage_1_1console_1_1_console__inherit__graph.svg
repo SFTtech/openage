@@ -88,7 +88,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title="superclass for handling any input event.">
 <polygon fill="white" stroke="black" points="0,-303.5 0,-371.5 113,-371.5 113,-303.5 0,-303.5"/>
 <text text-anchor="middle" x="56.5" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::InputHandler</text>
 <polyline fill="none" stroke="black" points="0,-352.5 113,-352.5 "/>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_tick_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_tick_handler.xhtml" target="_top" xlink:title="superclass for all calculations being done on engine tick.">
 <polygon fill="white" stroke="black" points="131.5,-303.5 131.5,-371.5 241.5,-371.5 241.5,-303.5 131.5,-303.5"/>
 <text text-anchor="middle" x="186.5" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TickHandler</text>
 <polyline fill="none" stroke="black" points="131.5,-352.5 241.5,-352.5 "/>
@@ -124,7 +124,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_hud_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_hud_handler.xhtml" target="_top" xlink:title="superclass for all possible drawing operations in the game.">
 <polygon fill="white" stroke="black" points="259.5,-303.5 259.5,-371.5 369.5,-371.5 369.5,-303.5 259.5,-303.5"/>
 <text text-anchor="middle" x="314.5" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HudHandler</text>
 <polyline fill="none" stroke="black" points="259.5,-352.5 369.5,-352.5 "/>
@@ -142,7 +142,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_resize_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_resize_handler.xhtml" target="_top" xlink:title="superclass for handling a window resize event.">
 <polygon fill="white" stroke="black" points="387.5,-303.5 387.5,-371.5 509.5,-371.5 509.5,-303.5 387.5,-303.5"/>
 <text text-anchor="middle" x="448.5" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResizeHandler</text>
 <polyline fill="none" stroke="black" points="387.5,-352.5 509.5,-352.5 "/>

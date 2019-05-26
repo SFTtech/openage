@@ -1,20 +1,20 @@
 <map id="openage::tile_list" name="openage::tile_list">
-<area shape="rect" id="node1" title=" " alt="" coords="691,229,811,255"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_square_object.xhtml#a0deacb1dd962cd1729e6765e8dea01de" title=" " alt="" coords="471,5,629,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title=" " alt="" coords="465,71,635,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title=" " alt="" coords="5,163,183,204"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_terrain_object.xhtml#a227f50f827d1ae7791f06e323c581bbd" title=" " alt="" coords="472,188,628,229"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_projectile_producer.xhtml#a02c2dedff8bebf9d036393d8e35b37b3" title=" " alt="" coords="457,253,643,295"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_unit_type.xhtml#a0649efd34fdb53589135167493f66633" title=" " alt="" coords="481,319,619,360"/>
-<area shape="rect" id="node12" href="$classopenage_1_1_terrain_object.xhtml#af781d73de8772dfe4454e75eb96d104c" title=" " alt="" coords="472,384,628,425"/>
-<area shape="rect" id="node15" href="$classopenage_1_1_terrain_object.xhtml#af24e842fc429a5dbb73c12abcb9c3378" title=" " alt="" coords="472,465,628,507"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title=" " alt="" coords="231,71,409,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title=" " alt="" coords="13,71,175,112"/>
+<area shape="rect" id="node1" title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta..." alt="" coords="691,229,811,255"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_square_object.xhtml#a0deacb1dd962cd1729e6765e8dea01de" title="does this space contain a given point" alt="" coords="471,5,629,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title="set unit in place – return if placement was successful" alt="" coords="465,71,635,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title="set unit in place – return if placement was successful" alt="" coords="5,163,183,204"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_terrain_object.xhtml#a227f50f827d1ae7791f06e323c581bbd" title="changes the placement state of this object keeping the existing position." alt="" coords="472,188,628,229"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_projectile_producer.xhtml#a02c2dedff8bebf9d036393d8e35b37b3" title="set unit in place – return if placement was successful" alt="" coords="457,253,643,295"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_unit_type.xhtml#a0649efd34fdb53589135167493f66633" title="similar to place but places adjacent to an existing object" alt="" coords="481,319,619,360"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_terrain_object.xhtml#af781d73de8772dfe4454e75eb96d104c" title="placement function which does not check passibility used only when passibilty is already checked othe..." alt="" coords="472,384,628,425"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_terrain_object.xhtml#af24e842fc429a5dbb73c12abcb9c3378" title="remove this TerrainObject from the terrain chunks." alt="" coords="472,465,628,507"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title="set unit in place – return if placement was successful" alt="" coords="231,71,409,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title="set unit in place – return if placement was successful" alt="" coords="13,71,175,112"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_building_producer.xhtml#a4aeeaaaef4924780b6ee886ea8ffe98e" title=" " alt="" coords="231,188,409,229"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_unit_container.xhtml#a0730d85fce9d5bec6b2bc76450b7dfa9" title=" " alt="" coords="241,285,399,327"/>
-<area shape="rect" id="node13" href="$classopenage_1_1_terrain_object.xhtml#a90235fcc91847da15129ce77ffcb53a8" title=" " alt="" coords="242,351,398,392"/>
-<area shape="rect" id="node14" href="$classopenage_1_1_terrain_object.xhtml#aed04f7dfb2a4836107796fd3598accc3" title=" " alt="" coords="242,416,398,457"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_unit_container.xhtml#a0730d85fce9d5bec6b2bc76450b7dfa9" title="adds a new unit to the container and initialises using a unit type places outside an existing object ..." alt="" coords="241,285,399,327"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_terrain_object.xhtml#a90235fcc91847da15129ce77ffcb53a8" title="binds the TerrainObject to a certain TerrainChunk." alt="" coords="242,351,398,392"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_terrain_object.xhtml#aed04f7dfb2a4836107796fd3598accc3" title="moves the object – returns false if object cannot be moved here" alt="" coords="242,416,398,457"/>
 <area shape="rect" id="node16" href="$classopenage_1_1_editor_mode.xhtml#a1430647b024d4c9e7021756a6fa9700d" title=" " alt="" coords="247,481,393,523"/>
 <area shape="rect" id="node18" href="$classopenage_1_1_terrain_object.xhtml#accf1000738bfedfae052b9257509ef97" title=" " alt="" coords="242,547,398,588"/>
-<area shape="rect" id="node17" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title=" " alt="" coords="17,481,171,523"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="17,481,171,523"/>
 </map>

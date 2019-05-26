@@ -10,25 +10,25 @@
         <enumvalue id="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27aba2b45bdc11e2a4a6e86aab2ac693cbb" prot="public">
           <name>EMPTY</name>
           <briefdescription>
+<para>The chunk is currently empty and unused. </para>
           </briefdescription>
           <detaileddescription>
-<para>The chunk is currently empty and unused. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27af9f6955ebca09a484157c05f80acd65e" prot="public">
           <name>LOADING</name>
           <briefdescription>
+<para>The chunk is currently loading. </para>
           </briefdescription>
           <detaileddescription>
-<para>The chunk is currently loading. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27a2baa69eafc7204f3bd8648eba580c489" prot="public">
           <name>READY</name>
           <briefdescription>
+<para>The chunk is loaded and ready to be used. </para>
           </briefdescription>
           <detaileddescription>
-<para>The chunk is loaded and ready to be used. </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -47,9 +47,9 @@
         <argsstring></argsstring>
         <name>state</name>
         <briefdescription>
+<para>The chunk&apos;s current state. </para>
         </briefdescription>
         <detaileddescription>
-<para>The chunk&apos;s current state. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -62,9 +62,9 @@
         <argsstring></argsstring>
         <name>size</name>
         <briefdescription>
+<para>The chunk&apos;s actual size. </para>
         </briefdescription>
         <detaileddescription>
-<para>The chunk&apos;s actual size. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -81,9 +81,9 @@
         <argsstring></argsstring>
         <name>buffer</name>
         <briefdescription>
+<para>The chunk&apos;s buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>The chunk&apos;s buffer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -128,9 +128,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>information storage about a piece of raw audio data. </para>
     </briefdescription>
     <detaileddescription>
-<para>information storage about a piece of raw audio data. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="466">

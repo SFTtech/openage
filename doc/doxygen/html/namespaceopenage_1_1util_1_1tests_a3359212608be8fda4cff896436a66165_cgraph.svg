@@ -34,7 +34,7 @@
 </g>
 <!-- Node15 -->
 <g id="node3" class="node"><title>Node15</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_const_init_vector.xhtml#a2453ffb8432511227127c0e6df561a43" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_const_init_vector.xhtml#a2453ffb8432511227127c0e6df561a43" target="_top" xlink:title="Returns the number of elements that have been pushed back.">
 <polygon fill="white" stroke="black" points="136,-0.5 136,-30.5 252,-30.5 252,-0.5 136,-0.5"/>
 <text text-anchor="start" x="144" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ConstInit</text>
 <text text-anchor="middle" x="194" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Vector::size</text>

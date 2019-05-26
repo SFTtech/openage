@@ -57,7 +57,7 @@ var sectionId = 'dynsection-2';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 552,-35 552,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Resets the stream&#39;s flags, and sets ptr as the internally&#45;used accumulator.">
 <polygon fill="#bfbfbf" stroke="black" points="401,-0.5 401,-30.5 548,-30.5 548,-0.5 401,-0.5"/>
 <text text-anchor="start" x="409" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalOString</text>
 <text text-anchor="middle" x="474.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Stream::use_with</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_cachable_o_s_stream.xhtml#a9d7710f8703f4dbba1b65d8b02e84036" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_cachable_o_s_stream.xhtml#a9d7710f8703f4dbba1b65d8b02e84036" target="_top" xlink:title="Returns a brand&#45;new(*) CachableOSStream object.">
 <polygon fill="white" stroke="black" points="201,-0.5 201,-30.5 365,-30.5 365,-0.5 201,-0.5"/>
 <text text-anchor="start" x="209" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CachableOSStream</text>
 <text text-anchor="middle" x="283" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::acquire</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#a9a56b87b8c33c7e76cb717cbf2e3dd16" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml#a9a56b87b8c33c7e76cb717cbf2e3dd16" target="_top" xlink:title="Ensures that we have a valid CachableOSStream object in stream_ptr.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 165,-30.5 165,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="82.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; Formatter &gt;::ensure_stream_obj</text>

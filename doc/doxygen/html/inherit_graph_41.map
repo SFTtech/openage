@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1audio_1_1_dynamic_loader.xhtml" title=" " alt="" coords="5,13,213,39"/>
-<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_opus_dynamic_loader.xhtml" title=" " alt="" coords="261,5,461,47"/>
+<area shape="rect" id="node1" href="$classopenage_1_1audio_1_1_dynamic_loader.xhtml" title="A DynamicLoader loads pcm chunks without loading the whole resource." alt="" coords="5,13,213,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_opus_dynamic_loader.xhtml" title="A OpusDynamicLoader load&#39;s opus encoded data." alt="" coords="261,5,461,47"/>
 </map>

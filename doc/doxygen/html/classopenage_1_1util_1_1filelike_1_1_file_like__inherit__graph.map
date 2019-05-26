@@ -1,5 +1,5 @@
 <map id="openage::util::filelike::FileLike" name="openage::util::filelike::FileLike">
-<area shape="rect" id="node1" title=" " alt="" coords="87,5,227,303"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1filelike_1_1_native.xhtml" title=" " alt="" coords="5,351,145,663"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1filelike_1_1_python.xhtml" title=" " alt="" coords="169,358,309,655"/>
+<area shape="rect" id="node1" title="File&#45;like class that has the standard operations like read, seek, write etc." alt="" coords="87,5,227,303"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1filelike_1_1_native.xhtml" title="File&#45;like class that uses native stdlib functions to access data." alt="" coords="5,351,145,663"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1filelike_1_1_python.xhtml" title="File&#45;like class that wraps a python open() file&#45;like object." alt="" coords="169,358,309,655"/>
 </map>

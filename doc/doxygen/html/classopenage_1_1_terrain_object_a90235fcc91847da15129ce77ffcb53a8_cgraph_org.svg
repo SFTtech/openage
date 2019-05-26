@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-172 700,-172 700,4 -4,4"/>
 <!-- Node129 -->
 <g id="node1" class="node"><title>Node129</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="binds the TerrainObject to a certain TerrainChunk.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-93.5 0,-123.5 117,-123.5 117,-93.5 0,-93.5"/>
 <text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="58.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node131 -->
 <g id="node3" class="node"><title>Node131</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af781d73de8772dfe4454e75eb96d104c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af781d73de8772dfe4454e75eb96d104c" target="_top" xlink:title="placement function which does not check passibility used only when passibilty is already checked othe...">
 <polygon fill="white" stroke="black" points="153,-71.5 153,-101.5 270,-101.5 270,-71.5 153,-71.5"/>
 <text text-anchor="start" x="161" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="211.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place_unchecked</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node132 -->
 <g id="node4" class="node"><title>Node132</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a1fc44d40095260aca43dd9582c61de97" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a1fc44d40095260aca43dd9582c61de97" target="_top" xlink:title="returns the range of tiles covered if the object was in the given pos">
 <polygon fill="white" stroke="black" points="306,-137.5 306,-167.5 423,-167.5 423,-137.5 306,-137.5"/>
 <text text-anchor="start" x="314" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="364.5" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_range</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node133 -->
 <g id="node5" class="node"><title>Node133</title>
-<g id="a_node5"><a xlink:href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" target="_top" xlink:title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta...">
 <polygon fill="white" stroke="black" points="319.5,-99 319.5,-118 409.5,-118 409.5,-99 319.5,-99"/>
 <text text-anchor="middle" x="364.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::tile_list</text>
 </a>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node135 -->
 <g id="node7" class="node"><title>Node135</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title="get tile data by absolute coordinates.">
 <polygon fill="white" stroke="black" points="306.5,-0.5 306.5,-30.5 422.5,-30.5 422.5,-0.5 306.5,-0.5"/>
 <text text-anchor="start" x="314.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="364.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -116,7 +116,7 @@
 </g>
 <!-- Node137 -->
 <g id="node9" class="node"><title>Node137</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="599,-6 599,-25 696,-25 696,-6 599,-6"/>
 <text text-anchor="middle" x="647.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

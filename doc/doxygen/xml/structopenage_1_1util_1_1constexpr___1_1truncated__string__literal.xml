@@ -43,9 +43,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Stores a string literal plus a &quot;length specifier&quot;. </para>
     </briefdescription>
     <detaileddescription>
-<para>Stores a string literal plus a &quot;length specifier&quot;.</para>
 <para>Due to the nature of C strings, parts can only be cut off at the start of the string; this struct represents a string literal that has parts cut off at its end.</para>
 <para>length represents the remaining length of the string; Functions using an object of this type SHALL NOT access memory locations beyond &amp;literal[length]. </para>
     </detaileddescription>

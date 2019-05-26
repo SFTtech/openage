@@ -88,9 +88,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A shell object fir cores inherited from <ref refid="structqtsdl_1_1_gui_property_map" kindref="compound">GuiPropertyMap</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>A shell object fir cores inherited from <ref refid="structqtsdl_1_1_gui_property_map" kindref="compound">GuiPropertyMap</ref></para>
 <para>Core can use a key-value interface while in QML it looks like a ListModel. </para>
     </detaileddescription>
     <inheritancegraph>

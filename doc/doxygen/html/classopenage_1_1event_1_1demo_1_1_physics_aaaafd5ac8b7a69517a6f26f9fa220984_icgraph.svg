@@ -20,7 +20,7 @@
 </g>
 <!-- Node45 -->
 <g id="node2" class="node"><title>Node45</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" target="_top" xlink:title="This method implements the effects of the event.">
 <polygon fill="white" stroke="black" points="148,-49.5 148,-79.5 275,-79.5 275,-49.5 148,-49.5"/>
 <text text-anchor="start" x="156" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::demo</text>
 <text text-anchor="middle" x="211.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BallReflectPanel::invoke</text>

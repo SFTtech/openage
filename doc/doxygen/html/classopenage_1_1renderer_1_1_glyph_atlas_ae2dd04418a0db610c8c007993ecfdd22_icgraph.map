@@ -1,4 +1,4 @@
 <map id="openage::renderer::GlyphAtlas::bind" name="openage::renderer::GlyphAtlas::bind">
-<area shape="rect" id="node1" title=" " alt="" coords="196,5,331,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" title=" " alt="" coords="5,5,148,47"/>
+<area shape="rect" id="node1" title="Binds the OpenGL texture of this glyph atlas at the specified unit." alt="" coords="196,5,331,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" title="Render all the text draw requests made during the frame." alt="" coords="5,5,148,47"/>
 </map>

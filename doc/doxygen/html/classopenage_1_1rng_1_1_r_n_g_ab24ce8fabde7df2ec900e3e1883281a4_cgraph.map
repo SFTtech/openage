@@ -1,6 +1,6 @@
 <map id="openage::rng::RNG::probability" name="openage::rng::RNG::probability">
-<area shape="rect" id="node1" title=" " alt="" coords="5,27,147,69"/>
+<area shape="rect" id="node1" title="Returns true with the passed probability." alt="" coords="5,27,147,69"/>
 <area shape="rect" id="node2" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#accd55f47ffd4049900e96f032f0a9375" title=" " alt="" coords="195,5,361,32"/>
-<area shape="rect" id="node3" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" title=" " alt="" coords="207,57,349,98"/>
+<area shape="rect" id="node3" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" title="Retrieves a random value from the generator." alt="" coords="207,57,349,98"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1rng.xhtml#af7d90437e58aaa4fe1d816ad7b62dc07" title=" " alt="" coords="409,64,553,91"/>
 </map>

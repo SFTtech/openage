@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 389,-35 389,4 -4,4"/>
 <!-- Node5 -->
 <g id="node1" class="node"><title>Node5</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="the center point of the region">
 <polygon fill="#bfbfbf" stroke="black" points="276,-0.5 276,-30.5 385,-30.5 385,-0.5 276,-0.5"/>
 <text text-anchor="start" x="284" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Region::get</text>
 <text text-anchor="middle" x="330.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_center</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node7 -->
 <g id="node3" class="node"><title>Node7</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title="Create a game from a specification.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 102,-30.5 102,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="51" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>

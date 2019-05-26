@@ -101,20 +101,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1options_1_1_option_nod
 </div><!--header-->
 <div class="contents">
 
+<p>Allows objects to expose customisable features.  
+ <a href="classopenage_1_1options_1_1_option_node.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="options_8h_source.xhtml">options.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::options::OptionNode:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::options::OptionNode:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node__coll__graph.svg" width="278" height="338"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node__coll__graph.svg" width="278" height="338"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -124,10 +129,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1db44d7380fed8fa3525104dcc5c6840"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a1db44d7380fed8fa3525104dcc5c6840">~OptionNode</a> ()</td></tr>
 <tr class="separator:a1db44d7380fed8fa3525104dcc5c6840"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39b02a21c2c4b5693dba2e515a81dd2d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a39b02a21c2c4b5693dba2e515a81dd2d">list_options</a> (bool recurse=false, std::string indent=&quot;&quot;)</td></tr>
+<tr class="memdesc:a39b02a21c2c4b5693dba2e515a81dd2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">lists all available options in a readable format  <a href="#a39b02a21c2c4b5693dba2e515a81dd2d">More...</a><br /></td></tr>
 <tr class="separator:a39b02a21c2c4b5693dba2e515a81dd2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a922dfcd1bf96406142c868eaf6407550"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a922dfcd1bf96406142c868eaf6407550">list_variables</a> () const</td></tr>
+<tr class="memdesc:a922dfcd1bf96406142c868eaf6407550"><td class="mdescLeft">&#160;</td><td class="mdescRight">shows all available variable names  <a href="#a922dfcd1bf96406142c868eaf6407550">More...</a><br /></td></tr>
 <tr class="separator:a922dfcd1bf96406142c868eaf6407550"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae516506e6ddeac33956e5e8ba71668c8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#ae516506e6ddeac33956e5e8ba71668c8">list_functions</a> () const</td></tr>
+<tr class="memdesc:ae516506e6ddeac33956e5e8ba71668c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">shows all the available function names  <a href="#ae516506e6ddeac33956e5e8ba71668c8">More...</a><br /></td></tr>
 <tr class="separator:ae516506e6ddeac33956e5e8ba71668c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c973221dd02e35c7cf6ecbd2a3c677a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1options_1_1_option_value.xhtml">OptionValue</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a4c973221dd02e35c7cf6ecbd2a3c677a">get_variable_rw</a> (const std::string &amp;<a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>)</td></tr>
 <tr class="separator:a4c973221dd02e35c7cf6ecbd2a3c677a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,22 +143,28 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad125b54608d277acbe6c66c572cbdbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3caf0f35390dcb01054beb14a4c20819"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:a3caf0f35390dcb01054beb14a4c20819"><td class="memTemplItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a3caf0f35390dcb01054beb14a4c20819">getv</a> (const std::string &amp;<a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>)</td></tr>
+<tr class="memdesc:a3caf0f35390dcb01054beb14a4c20819"><td class="mdescLeft">&#160;</td><td class="mdescRight">shortcut for get_variable(name).value&lt;T&gt;()  <a href="#a3caf0f35390dcb01054beb14a4c20819">More...</a><br /></td></tr>
 <tr class="separator:a3caf0f35390dcb01054beb14a4c20819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae22a4fe4b21f2c39e808a29a03e79d04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml">OptionNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#ae22a4fe4b21f2c39e808a29a03e79d04">get_child</a> (const std::string &amp;<a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>) const</td></tr>
+<tr class="memdesc:ae22a4fe4b21f2c39e808a29a03e79d04"><td class="mdescLeft">&#160;</td><td class="mdescRight">return a child by name, or null if not available  <a href="#ae22a4fe4b21f2c39e808a29a03e79d04">More...</a><br /></td></tr>
 <tr class="separator:ae22a4fe4b21f2c39e808a29a03e79d04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a079876f216961d551413c7c0d73e9a06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a079876f216961d551413c7c0d73e9a06">set_parent</a> (<a class="el" href="classopenage_1_1options_1_1_option_node.xhtml">OptionNode</a> *<a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>)</td></tr>
+<tr class="memdesc:a079876f216961d551413c7c0d73e9a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a parent panel which implies adding a child to the parent.  <a href="#a079876f216961d551413c7c0d73e9a06">More...</a><br /></td></tr>
 <tr class="separator:a079876f216961d551413c7c0d73e9a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5775b31044dc13690cd51bd6215afac8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1options_1_1_option_value.xhtml">OptionValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a5775b31044dc13690cd51bd6215afac8">do_action</a> (const std::string &amp;aname)</td></tr>
+<tr class="memdesc:a5775b31044dc13690cd51bd6215afac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">performs the named action returning the actions response  <a href="#a5775b31044dc13690cd51bd6215afac8">More...</a><br /></td></tr>
 <tr class="separator:a5775b31044dc13690cd51bd6215afac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aa016978791629312b59e2f4ec64471c5"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a></td></tr>
+<tr class="memdesc:aa016978791629312b59e2f4ec64471c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">name of this node  <a href="#aa016978791629312b59e2f4ec64471c5">More...</a><br /></td></tr>
 <tr class="separator:aa016978791629312b59e2f4ec64471c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a1b4855d85ec0476c9cb0a960c026c519"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a1b4855d85ec0476c9cb0a960c026c519">add</a> (const std::string &amp;vname, const <a class="el" href="classopenage_1_1options_1_1_option_value.xhtml">OptionValue</a> &amp;value)</td></tr>
+<tr class="memdesc:a1b4855d85ec0476c9cb0a960c026c519"><td class="mdescLeft">&#160;</td><td class="mdescRight">add types to the interface  <a href="#a1b4855d85ec0476c9cb0a960c026c519">More...</a><br /></td></tr>
 <tr class="separator:a1b4855d85ec0476c9cb0a960c026c519"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa11c77b98eb54e58b103c04047b82141"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#aa11c77b98eb54e58b103c04047b82141">add_action</a> (const <a class="el" href="classopenage_1_1options_1_1_option_action.xhtml">OptionAction</a> &amp;action)</td></tr>
 <tr class="separator:aa11c77b98eb54e58b103c04047b82141"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,19 +172,24 @@ Protected Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ac202efde6818473f10cbb96bcc4d84d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#ac202efde6818473f10cbb96bcc4d84d3">add_panel</a> (<a class="el" href="classopenage_1_1options_1_1_option_node.xhtml">OptionNode</a> *child)</td></tr>
+<tr class="memdesc:ac202efde6818473f10cbb96bcc4d84d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">add child nodes  <a href="#ac202efde6818473f10cbb96bcc4d84d3">More...</a><br /></td></tr>
 <tr class="separator:ac202efde6818473f10cbb96bcc4d84d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaa942ca2c4207d5960ade2e54099f98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#acaa942ca2c4207d5960ade2e54099f98">remove_panel</a> (<a class="el" href="classopenage_1_1options_1_1_option_node.xhtml">OptionNode</a> *child)</td></tr>
+<tr class="memdesc:acaa942ca2c4207d5960ade2e54099f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove child nodes  <a href="#acaa942ca2c4207d5960ade2e54099f98">More...</a><br /></td></tr>
 <tr class="separator:acaa942ca2c4207d5960ade2e54099f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a609ae10fb729920475b15c83a7edeaf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml">OptionNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a></td></tr>
+<tr class="memdesc:a609ae10fb729920475b15c83a7edeaf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">parent of this node  <a href="#a609ae10fb729920475b15c83a7edeaf7">More...</a><br /></td></tr>
 <tr class="separator:a609ae10fb729920475b15c83a7edeaf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a965533f59ae5fb52213d3ade08520cd2"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="classopenage_1_1options_1_1_option_value.xhtml">OptionValue</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a></td></tr>
+<tr class="memdesc:a965533f59ae5fb52213d3ade08520cd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variables which can be used.  <a href="#a965533f59ae5fb52213d3ade08520cd2">More...</a><br /></td></tr>
 <tr class="separator:a965533f59ae5fb52213d3ade08520cd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53b30acee78e9f4ddaea40dc96c7d3c3"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="classopenage_1_1options_1_1_option_action.xhtml">OptionAction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a53b30acee78e9f4ddaea40dc96c7d3c3">actions</a></td></tr>
 <tr class="separator:a53b30acee78e9f4ddaea40dc96c7d3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23ef51f6627fe05ea7b9027548e417d6"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="classopenage_1_1options_1_1_option_node.xhtml">OptionNode</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a></td></tr>
+<tr class="memdesc:a23ef51f6627fe05ea7b9027548e417d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">children of this node  <a href="#a23ef51f6627fe05ea7b9027548e417d6">More...</a><br /></td></tr>
 <tr class="separator:a23ef51f6627fe05ea7b9027548e417d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -180,7 +199,7 @@ Friends</h2></td></tr>
 <tr class="separator:ad7de03ef305d9c8aa94b4c3c0b4c987e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Allows objects to expose customisable features</p>
+<div class="textblock"><p>Allows objects to expose customisable features. </p>
 <p>This is used to bind inner game classes with console interaction or gui elements </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8h_source.xhtml#l00163">163</a> of file <a class="el" href="options_8h_source.xhtml">options.h</a>.</p>
@@ -202,8 +221,8 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00231">231</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    :</div><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>{panel_name},</div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>{<span class="keyword">nullptr</span>} {</div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a609ae10fb729920475b15c83a7edeaf7"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">openage::options::OptionNode::parent</a></div><div class="ttdeci">OptionNode * parent</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00242">options.h:242</a></div></div>
-<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
+<div class="fragment"><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    :</div><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>{panel_name},</div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>{<span class="keyword">nullptr</span>} {</div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a609ae10fb729920475b15c83a7edeaf7"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">openage::options::OptionNode::parent</a></div><div class="ttdeci">OptionNode * parent</div><div class="ttdoc">parent of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00242">options.h:242</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdoc">name of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -231,8 +250,8 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00238">238</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        {</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>) {</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#acaa942ca2c4207d5960ade2e54099f98">remove_panel</a>(<span class="keyword">this</span>);</div><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a609ae10fb729920475b15c83a7edeaf7"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">openage::options::OptionNode::parent</a></div><div class="ttdeci">OptionNode * parent</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00242">options.h:242</a></div></div>
-<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_acaa942ca2c4207d5960ade2e54099f98"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#acaa942ca2c4207d5960ade2e54099f98">openage::options::OptionNode::remove_panel</a></div><div class="ttdeci">void remove_panel(OptionNode *child)</div><div class="ttdef"><b>Definition:</b> <a href="options_8cpp_source.xhtml#l00335">options.cpp:335</a></div></div>
+<div class="fragment"><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        {</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>) {</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#acaa942ca2c4207d5960ade2e54099f98">remove_panel</a>(<span class="keyword">this</span>);</div><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a609ae10fb729920475b15c83a7edeaf7"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">openage::options::OptionNode::parent</a></div><div class="ttdeci">OptionNode * parent</div><div class="ttdoc">parent of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00242">options.h:242</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_acaa942ca2c4207d5960ade2e54099f98"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#acaa942ca2c4207d5960ade2e54099f98">openage::options::OptionNode::remove_panel</a></div><div class="ttdeci">void remove_panel(OptionNode *child)</div><div class="ttdoc">remove child nodes</div><div class="ttdef"><b>Definition:</b> <a href="options_8cpp_source.xhtml#l00335">options.cpp:335</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="options_8h_source.xhtml#l00242">parent</a>, and <a class="el" href="options_8cpp_source.xhtml#l00335">remove_panel()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -240,7 +259,8 @@ Friends</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a1db44d7380fed8fa3525104dcc5c6840_cgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a1db44d7380fed8fa3525104dcc5c6840_cgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -279,10 +299,11 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>add types to the interface </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00320">320</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                                                                     {</div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a>.emplace(std::make_pair(vname, value));</div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a965533f59ae5fb52213d3ade08520cd2"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionValue &gt; varmap</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00248">options.h:248</a></div></div>
+<div class="fragment"><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                                                                     {</div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a>.emplace(std::make_pair(vname, value));</div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a965533f59ae5fb52213d3ade08520cd2"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionValue &gt; varmap</div><div class="ttdoc">Variables which can be used.</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00248">options.h:248</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="options_8h_source.xhtml#l00248">varmap</a>.</p>
 
@@ -342,10 +363,11 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>add child nodes </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00330">330</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                                            {</div><div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a>.emplace(std::make_pair(child-&gt;name, child));</div><div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a23ef51f6627fe05ea7b9027548e417d6"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">openage::options::OptionNode::children</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionNode * &gt; children</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00257">options.h:257</a></div></div>
+<div class="fragment"><div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                                            {</div><div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a>.emplace(std::make_pair(child-&gt;name, child));</div><div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a23ef51f6627fe05ea7b9027548e417d6"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">openage::options::OptionNode::children</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionNode * &gt; children</div><div class="ttdoc">children of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00257">options.h:257</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="options_8h_source.xhtml#l00257">children</a>, and <a class="el" href="options_8h_source.xhtml#l00216">name</a>.</p>
 
@@ -355,7 +377,8 @@ Friends</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_ac202efde6818473f10cbb96bcc4d84d3_icgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_ac202efde6818473f10cbb96bcc4d84d3_icgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -375,6 +398,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>performs the named action returning the actions response </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00311">311</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
@@ -399,11 +423,12 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>return a child by name, or null if not available </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00293">293</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                                             {</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keyword">auto</span> child = this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a>.find(<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>);</div><div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">if</span> (child == this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a>.end()) {</div><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    }</div><div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">return</span> child-&gt;second;</div><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a23ef51f6627fe05ea7b9027548e417d6"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">openage::options::OptionNode::children</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionNode * &gt; children</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00257">options.h:257</a></div></div>
-<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
+<div class="fragment"><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                                             {</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keyword">auto</span> child = this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a>.find(<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>);</div><div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">if</span> (child == this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a>.end()) {</div><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    }</div><div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">return</span> child-&gt;second;</div><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a23ef51f6627fe05ea7b9027548e417d6"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">openage::options::OptionNode::children</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionNode * &gt; children</div><div class="ttdoc">children of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00257">options.h:257</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdoc">name of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="options_8h_source.xhtml#l00257">children</a>.</p>
 
@@ -426,8 +451,8 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00288">288</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                                                       {</div><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a>.at(<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>);</div><div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a965533f59ae5fb52213d3ade08520cd2"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionValue &gt; varmap</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00248">options.h:248</a></div></div>
-<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
+<div class="fragment"><div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                                                       {</div><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a>.at(<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>);</div><div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a965533f59ae5fb52213d3ade08520cd2"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionValue &gt; varmap</div><div class="ttdoc">Variables which can be used.</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00248">options.h:248</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdoc">name of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="options_8h_source.xhtml#l00248">varmap</a>.</p>
 
@@ -437,7 +462,8 @@ Friends</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_ad125b54608d277acbe6c66c572cbdbee_icgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_ad125b54608d277acbe6c66c572cbdbee_icgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -459,8 +485,8 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00283">283</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                                                              {</div><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a>.at(<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>);</div><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a965533f59ae5fb52213d3ade08520cd2"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionValue &gt; varmap</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00248">options.h:248</a></div></div>
-<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
+<div class="fragment"><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                                                              {</div><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a>.at(<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>);</div><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a965533f59ae5fb52213d3ade08520cd2"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionValue &gt; varmap</div><div class="ttdoc">Variables which can be used.</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00248">options.h:248</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdoc">name of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="options_8h_source.xhtml#l00248">varmap</a>.</p>
 
@@ -491,12 +517,13 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>shortcut for get_variable(name).value&lt;T&gt;() </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8h_source.xhtml#l00192">192</a> of file <a class="el" href="options_8h_source.xhtml">options.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                         {</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#ad125b54608d277acbe6c66c572cbdbee">get_variable</a>(<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>).<a class="code" href="classopenage_1_1options_1_1_option_value.xhtml#a594d9e00991ab3ad365ac200463dad3b">value</a>&lt;T&gt;();</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    }</div><div class="ttc" id="classopenage_1_1options_1_1_option_value_xhtml_a594d9e00991ab3ad365ac200463dad3b"><div class="ttname"><a href="classopenage_1_1options_1_1_option_value.xhtml#a594d9e00991ab3ad365ac200463dad3b">openage::options::OptionValue::value</a></div><div class="ttdeci">const T &amp; value() const</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00090">options.h:90</a></div></div>
+<div class="fragment"><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                         {</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#ad125b54608d277acbe6c66c572cbdbee">get_variable</a>(<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>).<a class="code" href="classopenage_1_1options_1_1_option_value.xhtml#a594d9e00991ab3ad365ac200463dad3b">value</a>&lt;T&gt;();</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    }</div><div class="ttc" id="classopenage_1_1options_1_1_option_value_xhtml_a594d9e00991ab3ad365ac200463dad3b"><div class="ttname"><a href="classopenage_1_1options_1_1_option_value.xhtml#a594d9e00991ab3ad365ac200463dad3b">openage::options::OptionValue::value</a></div><div class="ttdeci">const T &amp; value() const</div><div class="ttdoc">read inner type - the templated type must match</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00090">options.h:90</a></div></div>
 <div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_ad125b54608d277acbe6c66c572cbdbee"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#ad125b54608d277acbe6c66c572cbdbee">openage::options::OptionNode::get_variable</a></div><div class="ttdeci">const OptionValue &amp; get_variable(const std::string &amp;name) const</div><div class="ttdef"><b>Definition:</b> <a href="options_8cpp_source.xhtml#l00288">options.cpp:288</a></div></div>
-<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdoc">name of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="options_8cpp_source.xhtml#l00288">get_variable()</a>, and <a class="el" href="options_8h_source.xhtml#l00090">openage::options::OptionValue::value()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -504,7 +531,8 @@ template&lt;class T &gt; </div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a3caf0f35390dcb01054beb14a4c20819_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a3caf0f35390dcb01054beb14a4c20819_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -523,6 +551,7 @@ template&lt;class T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>shows all the available function names </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00274">274</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
@@ -535,7 +564,8 @@ template&lt;class T &gt; </div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_ae516506e6ddeac33956e5e8ba71668c8_cgraph.svg" width="594" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_ae516506e6ddeac33956e5e8ba71668c8_cgraph.svg" width="594" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -565,14 +595,15 @@ template&lt;class T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>lists all available options in a readable format </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00245">245</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                                                            {</div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(indent + <span class="stringliteral">&quot;node &quot;</span> + this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a> + <span class="stringliteral">&quot; {&quot;</span>);</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    std::string inner_indent = indent + <span class="stringliteral">&quot;\t&quot;</span>;</div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;v : <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a>) {</div><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(inner_indent + <span class="stringliteral">&quot;var &quot;</span> + v.first + <span class="stringliteral">&quot; = &quot;</span> + v.second.str_value());</div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    }</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;f : <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a53b30acee78e9f4ddaea40dc96c7d3c3">actions</a>) {</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(inner_indent + <span class="stringliteral">&quot;func &quot;</span> + f.first + <span class="stringliteral">&quot;()&quot;</span>);</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a>) {</div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;line : p.second-&gt;list_options(recurse, inner_indent)) {</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(line);</div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        }</div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(indent + <span class="stringliteral">&quot;}&quot;</span>);</div><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a965533f59ae5fb52213d3ade08520cd2"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionValue &gt; varmap</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00248">options.h:248</a></div></div>
+<div class="fragment"><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                                                            {</div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(indent + <span class="stringliteral">&quot;node &quot;</span> + this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a> + <span class="stringliteral">&quot; {&quot;</span>);</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    std::string inner_indent = indent + <span class="stringliteral">&quot;\t&quot;</span>;</div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;v : <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a>) {</div><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(inner_indent + <span class="stringliteral">&quot;var &quot;</span> + v.first + <span class="stringliteral">&quot; = &quot;</span> + v.second.str_value());</div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    }</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;f : <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a53b30acee78e9f4ddaea40dc96c7d3c3">actions</a>) {</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(inner_indent + <span class="stringliteral">&quot;func &quot;</span> + f.first + <span class="stringliteral">&quot;()&quot;</span>);</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a>) {</div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;line : p.second-&gt;list_options(recurse, inner_indent)) {</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(line);</div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        }</div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(indent + <span class="stringliteral">&quot;}&quot;</span>);</div><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a965533f59ae5fb52213d3ade08520cd2"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionValue &gt; varmap</div><div class="ttdoc">Variables which can be used.</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00248">options.h:248</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
 <div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a53b30acee78e9f4ddaea40dc96c7d3c3"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a53b30acee78e9f4ddaea40dc96c7d3c3">openage::options::OptionNode::actions</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionAction &gt; actions</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00252">options.h:252</a></div></div>
-<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a23ef51f6627fe05ea7b9027548e417d6"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">openage::options::OptionNode::children</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionNode * &gt; children</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00257">options.h:257</a></div></div>
-<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a23ef51f6627fe05ea7b9027548e417d6"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">openage::options::OptionNode::children</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionNode * &gt; children</div><div class="ttdoc">children of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00257">options.h:257</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdoc">name of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="options_8h_source.xhtml#l00252">actions</a>, <a class="el" href="options_8h_source.xhtml#l00257">children</a>, <a class="el" href="namespaceopenage.xhtml#a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">openage::line</a>, <a class="el" href="options_8h_source.xhtml#l00216">name</a>, <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>, and <a class="el" href="options_8h_source.xhtml#l00248">varmap</a>.</p>
 
@@ -582,14 +613,16 @@ template&lt;class T &gt; </div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a39b02a21c2c4b5693dba2e515a81dd2d_cgraph.svg" width="594" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a39b02a21c2c4b5693dba2e515a81dd2d_cgraph.svg" width="594" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a39b02a21c2c4b5693dba2e515a81dd2d_icgraph.svg" width="631" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a39b02a21c2c4b5693dba2e515a81dd2d_icgraph.svg" width="631" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -608,10 +641,11 @@ template&lt;class T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>shows all available variable names </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00265">265</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                                      {</div><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;v : this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a>) {</div><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        result.push_back(v.first);</div><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div><div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a965533f59ae5fb52213d3ade08520cd2"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionValue &gt; varmap</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00248">options.h:248</a></div></div>
+<div class="fragment"><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                                      {</div><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;v : this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">varmap</a>) {</div><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        result.push_back(v.first);</div><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div><div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a965533f59ae5fb52213d3ade08520cd2"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a965533f59ae5fb52213d3ade08520cd2">openage::options::OptionNode::varmap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionValue &gt; varmap</div><div class="ttdoc">Variables which can be used.</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00248">options.h:248</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>, and <a class="el" href="options_8h_source.xhtml#l00248">varmap</a>.</p>
@@ -620,7 +654,8 @@ template&lt;class T &gt; </div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a922dfcd1bf96406142c868eaf6407550_cgraph.svg" width="594" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a922dfcd1bf96406142c868eaf6407550_cgraph.svg" width="594" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -648,10 +683,11 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>remove child nodes </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00335">335</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                                               {</div><div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a>.erase(child-&gt;name);</div><div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a23ef51f6627fe05ea7b9027548e417d6"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">openage::options::OptionNode::children</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionNode * &gt; children</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00257">options.h:257</a></div></div>
+<div class="fragment"><div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                                               {</div><div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">children</a>.erase(child-&gt;name);</div><div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a23ef51f6627fe05ea7b9027548e417d6"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a23ef51f6627fe05ea7b9027548e417d6">openage::options::OptionNode::children</a></div><div class="ttdeci">std::unordered_map&lt; std::string, OptionNode * &gt; children</div><div class="ttdoc">children of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00257">options.h:257</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="options_8h_source.xhtml#l00257">children</a>, and <a class="el" href="options_8h_source.xhtml#l00216">name</a>.</p>
 
@@ -661,7 +697,8 @@ template&lt;class T &gt; </div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_acaa942ca2c4207d5960ade2e54099f98_icgraph.svg" width="392" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_acaa942ca2c4207d5960ade2e54099f98_icgraph.svg" width="392" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -681,12 +718,13 @@ template&lt;class T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set a parent panel which implies adding a child to the parent </p>
+
+<p>Set a parent panel which implies adding a child to the parent. </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00302">302</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                                                  {</div><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>) {</div><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#acaa942ca2c4207d5960ade2e54099f98">remove_panel</a>(<span class="keyword">this</span>);</div><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    }</div><div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a> = new_parent;</div><div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    new_parent-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#ac202efde6818473f10cbb96bcc4d84d3">add_panel</a>(<span class="keyword">this</span>);</div><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a609ae10fb729920475b15c83a7edeaf7"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">openage::options::OptionNode::parent</a></div><div class="ttdeci">OptionNode * parent</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00242">options.h:242</a></div></div>
-<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_acaa942ca2c4207d5960ade2e54099f98"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#acaa942ca2c4207d5960ade2e54099f98">openage::options::OptionNode::remove_panel</a></div><div class="ttdeci">void remove_panel(OptionNode *child)</div><div class="ttdef"><b>Definition:</b> <a href="options_8cpp_source.xhtml#l00335">options.cpp:335</a></div></div>
-<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_ac202efde6818473f10cbb96bcc4d84d3"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#ac202efde6818473f10cbb96bcc4d84d3">openage::options::OptionNode::add_panel</a></div><div class="ttdeci">void add_panel(OptionNode *child)</div><div class="ttdef"><b>Definition:</b> <a href="options_8cpp_source.xhtml#l00330">options.cpp:330</a></div></div>
+<div class="fragment"><div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                                                  {</div><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>) {</div><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a>-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#acaa942ca2c4207d5960ade2e54099f98">remove_panel</a>(<span class="keyword">this</span>);</div><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    }</div><div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">parent</a> = new_parent;</div><div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    new_parent-&gt;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#ac202efde6818473f10cbb96bcc4d84d3">add_panel</a>(<span class="keyword">this</span>);</div><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a609ae10fb729920475b15c83a7edeaf7"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a609ae10fb729920475b15c83a7edeaf7">openage::options::OptionNode::parent</a></div><div class="ttdeci">OptionNode * parent</div><div class="ttdoc">parent of this node</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00242">options.h:242</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_acaa942ca2c4207d5960ade2e54099f98"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#acaa942ca2c4207d5960ade2e54099f98">openage::options::OptionNode::remove_panel</a></div><div class="ttdeci">void remove_panel(OptionNode *child)</div><div class="ttdoc">remove child nodes</div><div class="ttdef"><b>Definition:</b> <a href="options_8cpp_source.xhtml#l00335">options.cpp:335</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_ac202efde6818473f10cbb96bcc4d84d3"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#ac202efde6818473f10cbb96bcc4d84d3">openage::options::OptionNode::add_panel</a></div><div class="ttdeci">void add_panel(OptionNode *child)</div><div class="ttdoc">add child nodes</div><div class="ttdef"><b>Definition:</b> <a href="options_8cpp_source.xhtml#l00330">options.cpp:330</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="options_8cpp_source.xhtml#l00330">add_panel()</a>, <a class="el" href="options_8h_source.xhtml#l00242">parent</a>, and <a class="el" href="options_8cpp_source.xhtml#l00335">remove_panel()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -694,7 +732,8 @@ template&lt;class T &gt; </div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a079876f216961d551413c7c0d73e9a06_cgraph.svg" width="392" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1options_1_1_option_node_a079876f216961d551413c7c0d73e9a06_cgraph.svg" width="392" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -772,6 +811,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>children of this node </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8h_source.xhtml#l00257">257</a> of file <a class="el" href="options_8h_source.xhtml">options.h</a>.</p>
@@ -791,6 +831,7 @@ template&lt;class T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>name of this node </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8h_source.xhtml#l00216">216</a> of file <a class="el" href="options_8h_source.xhtml">options.h</a>.</p>
@@ -818,6 +859,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>parent of this node </p>
 
 <p class="definition">Definition at line <a class="el" href="options_8h_source.xhtml#l00242">242</a> of file <a class="el" href="options_8h_source.xhtml">options.h</a>.</p>
@@ -845,7 +887,9 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Variables which can be used </p><dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo:</a></b></dt><dd>read only variables </dd></dl>
+
+<p>Variables which can be used. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo:</a></b></dt><dd>read only variables </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="options_8h_source.xhtml#l00248">248</a> of file <a class="el" href="options_8h_source.xhtml">options.h</a>.</p>
 

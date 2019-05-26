@@ -96,35 +96,45 @@ $(document).ready(function(){initNavTree('classopenage_1_1job_1_1_job_state_base
 </div><!--header-->
 <div class="contents">
 
+<p>An abstract base class for a shared state of a job.  
+ <a href="classopenage_1_1job_1_1_job_state_base.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="job__state__base_8h_source.xhtml">job_state_base.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::job::JobStateBase:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_state_base__inherit__graph.svg" width="400" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_state_base__inherit__graph.svg" width="400" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::job::JobStateBase:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_state_base__coll__graph.svg" width="196" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_state_base__coll__graph.svg" width="196" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a95e1cb836c2404c1166803684c5997de"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1job_1_1_job_state_base.xhtml#a95e1cb836c2404c1166803684c5997de">~JobStateBase</a> ()=default</td></tr>
+<tr class="memdesc:a95e1cb836c2404c1166803684c5997de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a95e1cb836c2404c1166803684c5997de">More...</a><br /></td></tr>
 <tr class="separator:a95e1cb836c2404c1166803684c5997de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a031e479cce5b10af52a28ccb5301b588"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1job_1_1_job_state_base.xhtml#a031e479cce5b10af52a28ccb5301b588">execute</a> (<a class="el" href="namespaceopenage_1_1job.xhtml#aa67062d8c4a001038067eb490177604b">should_abort_t</a> should_abort)=0</td></tr>
+<tr class="memdesc:a031e479cce5b10af52a28ccb5301b588"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function executes the job.  <a href="#a031e479cce5b10af52a28ccb5301b588">More...</a><br /></td></tr>
 <tr class="separator:a031e479cce5b10af52a28ccb5301b588"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5c8164b998e8a1ba780c3114e4492b4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1job_1_1_job_state_base.xhtml#ae5c8164b998e8a1ba780c3114e4492b4">execute_callback</a> ()=0</td></tr>
+<tr class="memdesc:ae5c8164b998e8a1ba780c3114e4492b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the job's callback, if a callback function has been provided while constructing this job.  <a href="#ae5c8164b998e8a1ba780c3114e4492b4">More...</a><br /></td></tr>
 <tr class="separator:ae5c8164b998e8a1ba780c3114e4492b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee0926a562a65f87308e1eda7d14040c"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1job_1_1_job_state_base.xhtml#aee0926a562a65f87308e1eda7d14040c">get_thread_id</a> ()=0</td></tr>
+<tr class="memdesc:aee0926a562a65f87308e1eda7d14040c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the id of the thread that has created this job.  <a href="#aee0926a562a65f87308e1eda7d14040c">More...</a><br /></td></tr>
 <tr class="separator:aee0926a562a65f87308e1eda7d14040c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An abstract base class for a shared state of a job. A job state keeps track of its execution state and store's the job's result. Further it keeps track of exceptions that occurred during the job's execution. The real shared state implementation is done in templated subclasses. This is necessary to support arbitrary result types. </p>
+<div class="textblock"><p>An abstract base class for a shared state of a job. </p>
+<p>A job state keeps track of its execution state and store's the job's result. Further it keeps track of exceptions that occurred during the job's execution. The real shared state implementation is done in templated subclasses. This is necessary to support arbitrary result types. </p>
 
 <p class="definition">Definition at line <a class="el" href="job__state__base_8h_source.xhtml#l00019">19</a> of file <a class="el" href="job__state__base_8h_source.xhtml">job_state_base.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -150,6 +160,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Default constructor. </p>
 
 </div>
@@ -178,7 +189,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This function executes the job. It returns whether the job has been aborted. </p>
+
+<p>This function executes the job. </p>
+<p>It returns whether the job has been aborted. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a417161d234770ebadb0f98ecf1fece50">openage::job::TypedJobStateBase&lt; T &gt;</a>.</p>
 
@@ -206,7 +219,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Executes the job's callback, if a callback function has been provided while constructing this job. This function may only be called if the job has already finished. </p>
+
+<p>Executes the job's callback, if a callback function has been provided while constructing this job. </p>
+<p>This function may only be called if the job has already finished. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a4c8a6b1c64e615799feafc50842dd93c">openage::job::TypedJobStateBase&lt; T &gt;</a>.</p>
 
@@ -234,6 +249,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Returns the id of the thread that has created this job. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#abae19bb907d061aa9707b6ba619fe631">openage::job::TypedJobStateBase&lt; T &gt;</a>.</p>

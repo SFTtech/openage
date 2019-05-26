@@ -20,7 +20,7 @@
 </g>
 <!-- Node134 -->
 <g id="node2" class="node"><title>Node134</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="145,-6 145,-25 258,-25 258,-6 145,-6"/>
 <text text-anchor="middle" x="201.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node135 -->
 <g id="node3" class="node"><title>Node135</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 109,-25 109,-6 0,-6"/>
 <text text-anchor="middle" x="54.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>

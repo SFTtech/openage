@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-98.4601 426,-98.4601 426,4 -4,4"/>
 <!-- Node24 -->
 <g id="node1" class="node"><title>Node24</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Return the path where assets are found in.">
 <polygon fill="#bfbfbf" stroke="black" points="300,-49.5 300,-79.5 422,-79.5 422,-49.5 300,-49.5"/>
 <text text-anchor="start" x="308" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="361" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_asset_dir</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node25 -->
 <g id="node2" class="node"><title>Node25</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 114,-79.5 114,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="57" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node26 -->
 <g id="node3" class="node"><title>Node26</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title="fill in the terrain_data attribute of this">
 <polygon fill="white" stroke="black" points="150,-49.5 150,-79.5 264,-79.5 264,-49.5 150,-49.5"/>
 <text text-anchor="start" x="158" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_terrain</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node27 -->
 <g id="node4" class="node"><title>Node27</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title="Invoked when the gamedata has been loaded.">
 <polygon fill="white" stroke="black" points="150,-0.5 150,-30.5 264,-30.5 264,-0.5 150,-0.5"/>
 <text text-anchor="start" x="158" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">on_gamedata_loaded</text>

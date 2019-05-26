@@ -1,3 +1,3 @@
 <map id="openage::neighbor_tile" name="openage::neighbor_tile">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,157,112"/>
+<area shape="rect" id="node1" title="one influence on another tile." alt="" coords="5,5,157,112"/>
 </map>

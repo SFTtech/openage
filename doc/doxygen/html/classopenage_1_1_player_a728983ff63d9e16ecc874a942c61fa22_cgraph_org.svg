@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-234.5 832,-234.5 832,4 -4,4"/>
 <!-- Node230 -->
 <g id="node1" class="node"><title>Node230</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="add to stockpile">
 <polygon fill="#bfbfbf" stroke="black" points="0,-182 0,-201 123,-201 123,-182 0,-182"/>
 <text text-anchor="middle" x="61.5" y="-189" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::receive</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node231 -->
 <g id="node2" class="node"><title>Node231</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#ac7283a82ddfcc4a556ca4aa4f9277bbc" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#ac7283a82ddfcc4a556ca4aa4f9277bbc" target="_top" xlink:title="current stockpile amount">
 <polygon fill="white" stroke="black" points="159,-211 159,-230 284,-230 284,-211 159,-211"/>
 <text text-anchor="middle" x="221.5" y="-218" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::amount</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node233 -->
 <g id="node4" class="node"><title>Node233</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" target="_top" xlink:title="Called when the resources amounts change.">
 <polygon fill="white" stroke="black" points="169.5,-148.5 169.5,-178.5 273.5,-178.5 273.5,-148.5 169.5,-148.5"/>
 <text text-anchor="start" x="177.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::on</text>
 <text text-anchor="middle" x="221.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">_resources_change</text>
@@ -73,7 +73,7 @@
 </g>
 <!-- Node236 -->
 <g id="node7" class="node"><title>Node236</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title="Updates resource based sub&#45;scores.">
 <polygon fill="white" stroke="black" points="325.5,-77.5 325.5,-107.5 445.5,-107.5 445.5,-77.5 325.5,-77.5"/>
 <text text-anchor="start" x="333.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score::update</text>
 <text text-anchor="middle" x="385.5" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">_resources</text>
@@ -120,7 +120,7 @@
 </g>
 <!-- Node238 -->
 <g id="node9" class="node"><title>Node238</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title="Returns the sum of all the resources.">
 <polygon fill="white" stroke="black" points="487,-50 487,-69 642,-69 642,-50 487,-50"/>
 <text text-anchor="middle" x="564.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle::sum</text>
 </a>

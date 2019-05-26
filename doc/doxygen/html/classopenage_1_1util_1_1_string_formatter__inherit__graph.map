@@ -1,9 +1,9 @@
 <map id="openage::util::StringFormatter&lt; ChildType &gt;" name="openage::util::StringFormatter&lt; ChildType &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="225,5,420,273"/>
+<area shape="rect" id="node1" title="Wraps an output string stream, and provides all sorts of overloads for operator &lt;&lt;,..." alt="" coords="225,5,420,273"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1_string_formatter.xhtml" title=" " alt="" coords="7,336,201,604"/>
 <area shape="rect" id="node4" href="$classopenage_1_1util_1_1_string_formatter.xhtml" title=" " alt="" coords="225,336,420,604"/>
 <area shape="rect" id="node6" href="$classopenage_1_1util_1_1_string_formatter.xhtml" title=" " alt="" coords="444,336,639,604"/>
-<area shape="rect" id="node3" href="$classopenage_1_1log_1_1_message_builder.xhtml" title=" " alt="" coords="5,697,203,819"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_f_string.xhtml" title=" " alt="" coords="241,653,405,863"/>
-<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_formatter.xhtml" title=" " alt="" coords="461,719,621,797"/>
+<area shape="rect" id="node3" href="$classopenage_1_1log_1_1_message_builder.xhtml" title="Wrapper around a log message that allows appending to the message with operator &lt;&lt;." alt="" coords="5,697,203,819"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_f_string.xhtml" title="A self&#45;formatting string! Get yours today!" alt="" coords="241,653,405,863"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_formatter.xhtml" title="Allows simple direct usage of StringFormatter." alt="" coords="461,719,621,797"/>
 </map>

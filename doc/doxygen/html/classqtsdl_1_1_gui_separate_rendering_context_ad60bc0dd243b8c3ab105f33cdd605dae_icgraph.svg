@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 375,-35 375,4 -4,4"/>
 <!-- Node7 -->
 <g id="node1" class="node"><title>Node7</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Function that must be called after rendering the GUI.">
 <polygon fill="#bfbfbf" stroke="black" points="230,-0.5 230,-30.5 371,-30.5 371,-0.5 230,-0.5"/>
 <text text-anchor="start" x="238" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSeparateRendering</text>
 <text text-anchor="middle" x="300.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Context::post_render</text>

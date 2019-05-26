@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 274,-84 274,4 -4,4"/>
 <!-- Node19 -->
 <g id="node1" class="node"><title>Node19</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="bytes(obj)">
 <polygon fill="#bfbfbf" stroke="black" points="163,-24.5 163,-54.5 270,-54.5 270,-24.5 163,-24.5"/>
 <text text-anchor="start" x="171" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="216.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::bytes</text>

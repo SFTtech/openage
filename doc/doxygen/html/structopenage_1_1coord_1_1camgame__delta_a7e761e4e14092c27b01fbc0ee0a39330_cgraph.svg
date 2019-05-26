@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 448,-84 448,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="There are infinite solutions to this conversion problem because a 2D coordinate is converted into a 3...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-19 0,-49 132,-49 132,-19 0,-19"/>
 <text text-anchor="start" x="8" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::camgame</text>
 <text text-anchor="middle" x="66" y="-26" font-family="Helvetica,sans-Serif" font-size="10.00">_delta::to_phys3</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" target="_top" xlink:title="Factory function to get a fixed&#45;point number from an integer.">
 <polygon fill="white" stroke="black" points="178,-38.5 178,-79.5 303,-79.5 303,-38.5 178,-38.5"/>
 <text text-anchor="start" x="186" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="start" x="186" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, phys_t_radix</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="349,-0.5 349,-19.5 444,-19.5 444,-0.5 349,-0.5"/>
 <text text-anchor="middle" x="396.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

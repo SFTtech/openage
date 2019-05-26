@@ -20,7 +20,7 @@
 </g>
 <!-- Node29 -->
 <g id="node2" class="node"><title>Node29</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a345332e87684e73eeef16da46255882f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a345332e87684e73eeef16da46255882f" target="_top" xlink:title="Add a new Event to the queue.">
 <polygon fill="white" stroke="black" points="148,-100.5 148,-130.5 257,-130.5 257,-100.5 148,-100.5"/>
 <text text-anchor="start" x="156" y="-118.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="202.5" y="-107.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_event</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node30 -->
 <g id="node3" class="node"><title>Node30</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" target="_top" xlink:title="Add an event for a specified target.">
 <polygon fill="white" stroke="black" points="293,-122.5 293,-152.5 433,-152.5 433,-122.5 293,-122.5"/>
 <text text-anchor="start" x="301" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="363" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_event</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node31 -->
 <g id="node4" class="node"><title>Node31</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="491,-197 491,-216 582,-216 582,-197 491,-197"/>
 <text text-anchor="middle" x="536.5" y="-204" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -101,7 +101,7 @@
 </g>
 <!-- Node32 -->
 <g id="node5" class="node"><title>Node32</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="656.5,-235.5 656.5,-265.5 766.5,-265.5 766.5,-235.5 656.5,-235.5"/>
 <text text-anchor="start" x="664.5" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="711.5" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -115,7 +115,7 @@
 </g>
 <!-- Node33 -->
 <g id="node6" class="node"><title>Node33</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="640,-197 640,-216 783,-216 783,-197 640,-197"/>
 <text text-anchor="middle" x="711.5" y="-204" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -128,7 +128,7 @@
 </g>
 <!-- Node34 -->
 <g id="node7" class="node"><title>Node34</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="841,-240.5 841,-270.5 945,-270.5 945,-240.5 841,-240.5"/>
 <text text-anchor="start" x="849" y="-258.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="893" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -169,7 +169,7 @@
 </g>
 <!-- Node38 -->
 <g id="node11" class="node"><title>Node38</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="649,-147.5 649,-177.5 774,-177.5 774,-147.5 649,-147.5"/>
 <text text-anchor="start" x="657" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="711.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -183,7 +183,7 @@
 </g>
 <!-- Node39 -->
 <g id="node12" class="node"><title>Node39</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="649,-98.5 649,-128.5 774,-128.5 774,-98.5 649,-98.5"/>
 <text text-anchor="start" x="657" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="711.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>
@@ -197,7 +197,7 @@
 </g>
 <!-- Node41 -->
 <g id="node14" class="node"><title>Node41</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" target="_top" xlink:title="adds the given item to the heap.">
 <polygon fill="white" stroke="black" points="653.5,-49.5 653.5,-79.5 769.5,-79.5 769.5,-49.5 653.5,-49.5"/>
 <text text-anchor="start" x="661.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="711.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::push</text>

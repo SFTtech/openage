@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-109.908 673,-109.908 673,4 -4,4"/>
 <!-- Node24 -->
 <g id="node1" class="node"><title>Node24</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="This function is the entry point to load the whole file tree recursively.">
 <polygon fill="#bfbfbf" stroke="black" points="528,-16.4081 528,-46.4081 669,-46.4081 669,-16.4081 528,-16.4081"/>
 <text text-anchor="start" x="536" y="-34.4081" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CSVCollection</text>
 <text text-anchor="middle" x="598.5" y="-23.4081" font-family="Helvetica,sans-Serif" font-size="10.00">::read</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node25 -->
 <g id="node2" class="node"><title>Node25</title>
-<g id="a_node2"><a xlink:href="structopenage_1_1util_1_1csv__subdata.xhtml#a24b1327a670ab69e55c089234bdcbfec" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="structopenage_1_1util_1_1csv__subdata.xhtml#a24b1327a670ab69e55c089234bdcbfec" target="_top" xlink:title="Read the data of the lineformat from the collection.">
 <polygon fill="white" stroke="black" points="400,-16.4081 400,-46.4081 492,-46.4081 492,-16.4081 400,-16.4081"/>
 <text text-anchor="start" x="408" y="-34.4081" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::csv</text>
 <text text-anchor="middle" x="446" y="-23.4081" font-family="Helvetica,sans-Serif" font-size="10.00">_subdata::read</text>

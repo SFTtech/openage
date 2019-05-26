@@ -1,5 +1,5 @@
 <map id="openage::job::JobState&lt; T &gt;" name="openage::job::JobState&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="7,447,194,553"/>
-<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_typed_job_state_base.xhtml" title=" " alt="" coords="5,175,196,399"/>
-<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_job_state_base.xhtml" title=" " alt="" coords="8,5,193,127"/>
+<area shape="rect" id="node1" title="A job state supports simple job&#39;s with functions that return a single result." alt="" coords="7,447,194,553"/>
+<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_typed_job_state_base.xhtml" title="A templated job state base class, that implements basic functionality of job states." alt="" coords="5,175,196,399"/>
+<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_job_state_base.xhtml" title="An abstract base class for a shared state of a job." alt="" coords="8,5,193,127"/>
 </map>

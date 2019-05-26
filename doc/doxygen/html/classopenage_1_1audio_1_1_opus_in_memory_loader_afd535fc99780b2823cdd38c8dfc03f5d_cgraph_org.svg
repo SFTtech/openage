@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-157 603,-157 603,4 -4,4"/>
 <!-- Node4 -->
 <g id="node1" class="node"><title>Node4</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns the resource as pcm data buffer.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-73.5 0,-103.5 155,-103.5 155,-73.5 0,-73.5"/>
 <text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::OpusInMemory</text>
 <text text-anchor="middle" x="77.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">Loader::get_resource</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node5 -->
 <g id="node2" class="node"><title>Node5</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1audio.xhtml#a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1audio.xhtml#a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" target="_top" xlink:title="Opens a opus file.">
 <polygon fill="white" stroke="black" points="191,-73.5 191,-103.5 301,-103.5 301,-73.5 191,-73.5"/>
 <text text-anchor="start" x="199" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::open</text>
 <text text-anchor="middle" x="246" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">_opus_file</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node8 -->
 <g id="node5" class="node"><title>Node8</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" target="_top" xlink:title="Resolve the native path by flattening all underlying filesystem objects (like unions).">
 <polygon fill="white" stroke="black" points="337,-24.5 337,-54.5 444,-54.5 444,-24.5 337,-24.5"/>
 <text text-anchor="start" x="345" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <text text-anchor="middle" x="390.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::resolve_native_path</text>

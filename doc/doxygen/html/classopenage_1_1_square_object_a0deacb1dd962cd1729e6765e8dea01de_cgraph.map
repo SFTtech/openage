@@ -1,6 +1,6 @@
 <map id="openage::SquareObject::contains" name="openage::SquareObject::contains">
-<area shape="rect" id="node1" title=" " alt="" coords="5,57,164,98"/>
-<area shape="rect" id="node2" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title=" " alt="" coords="229,5,349,32"/>
+<area shape="rect" id="node1" title="does this space contain a given point" alt="" coords="5,57,164,98"/>
+<area shape="rect" id="node2" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta..." alt="" coords="229,5,349,32"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1tile3.xhtml#af828e2ee284deb35ce13d30b57b14ad0" title=" " alt="" coords="218,57,361,98"/>
 <area shape="rect" id="node4" href="$structopenage_1_1coord_1_1phys3.xhtml#a8ed61fb85a083922af8fbbabd087ae31" title=" " alt="" coords="212,122,367,163"/>
 </map>

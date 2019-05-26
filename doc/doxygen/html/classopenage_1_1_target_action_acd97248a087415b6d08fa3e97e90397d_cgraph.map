@@ -1,5 +1,5 @@
 <map id="openage::TargetAction::completed" name="openage::TargetAction::completed">
-<area shape="rect" id="node1" title=" " alt="" coords="5,64,157,105"/>
+<area shape="rect" id="node1" title="gets called for all actions on stack each update cycle" alt="" coords="5,64,157,105"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_target_action.xhtml#a43bd7367738e16d715df0a1bfbd080cf" title=" " alt="" coords="223,5,375,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8" title=" " alt="" coords="205,122,392,149"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac" title=" " alt="" coords="440,64,600,105"/>

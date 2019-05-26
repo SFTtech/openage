@@ -95,9 +95,9 @@
         <name>on_draw</name>
         <reimplements refid="classopenage_1_1_draw_handler_1a95c62d6a9b360af162a7506b96b6aa46">on_draw</reimplements>
         <briefdescription>
+<para>execute the drawing action. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the drawing action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -117,9 +117,9 @@
         <argsstring>() const</argsstring>
         <name>game</name>
         <briefdescription>
+<para>the game this renderer is using </para>
         </briefdescription>
         <detaileddescription>
-<para>the game this renderer is using </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -135,9 +135,9 @@
         <argsstring>() const</argsstring>
         <name>game_spec</name>
         <briefdescription>
+<para><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> used by this renderer. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> used by this renderer </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -147,9 +147,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>renders the editor and action views </para>
     </briefdescription>
     <detaileddescription>
-<para>renders the editor and action views </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2507">

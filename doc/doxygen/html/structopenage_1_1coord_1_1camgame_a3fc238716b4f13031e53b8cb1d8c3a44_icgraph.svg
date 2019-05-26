@@ -57,7 +57,7 @@ var sectionId = 'dynsection-6';
 <polygon fill="white" stroke="none" points="-4,4 -4,-252 605,-252 605,4 -4,4"/>
 <!-- Node28 -->
 <g id="node1" class="node"><title>Node28</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="See the comments for camgame_delta::to_phys3.">
 <polygon fill="#bfbfbf" stroke="black" points="469,-130 469,-160 601,-160 601,-130 469,-130"/>
 <text text-anchor="start" x="477" y="-148" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::camgame</text>
 <text text-anchor="middle" x="535" y="-137" font-family="Helvetica,sans-Serif" font-size="10.00">::to_viewport</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node29 -->
 <g id="node2" class="node"><title>Node29</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a6537758244bbe7b99bda2de4a337fb4d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a6537758244bbe7b99bda2de4a337fb4d" target="_top" xlink:title="Draws the texture at game coordinates.">
 <polygon fill="white" stroke="black" points="308,-228.5 308,-247.5 426,-247.5 426,-228.5 308,-228.5"/>
 <text text-anchor="middle" x="367" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node30 -->
 <g id="node3" class="node"><title>Node30</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" target="_top" xlink:title="execute the drawing action.">
 <polygon fill="white" stroke="black" points="147.5,-88 147.5,-118 264.5,-118 264.5,-88 147.5,-88"/>
 <text text-anchor="start" x="155.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="206" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::on_drawhud</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node31 -->
 <g id="node4" class="node"><title>Node31</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title="Display this mode.">
 <polygon fill="white" stroke="black" points="0,-63 0,-93 111,-93 111,-63 0,-63"/>
 <text text-anchor="start" x="8" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="55.5" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::render</text>
@@ -149,7 +149,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node34 -->
 <g id="node7" class="node"><title>Node34</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" target="_top" xlink:title="Draws the texture at tile coordinates.">
 <polygon fill="white" stroke="black" points="147,-184.5 147,-203.5 265,-203.5 265,-184.5 147,-184.5"/>
 <text text-anchor="middle" x="206" y="-191.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -181,7 +181,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node37 -->
 <g id="node10" class="node"><title>Node37</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_texture.xhtml#a67031aa8a376335fe775cf819b22900c" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_texture.xhtml#a67031aa8a376335fe775cf819b22900c" target="_top" xlink:title="Draws the texture at phys coordinates.">
 <polygon fill="white" stroke="black" points="147,-0.5 147,-19.5 265,-19.5 265,-0.5 147,-0.5"/>
 <text text-anchor="middle" x="206" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>

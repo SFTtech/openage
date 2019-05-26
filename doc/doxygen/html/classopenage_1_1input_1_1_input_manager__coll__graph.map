@@ -1,12 +1,12 @@
 <map id="openage::input::InputManager" name="openage::input::InputManager">
-<area shape="rect" id="node1" title=" " alt="" coords="361,463,554,775"/>
-<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_context.xhtml" title=" " alt="" coords="443,837,631,1091"/>
-<area shape="rect" id="node8" href="$classopenage_1_1input_1_1_action_manager.xhtml" title=" " alt="" coords="119,881,321,1047"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_input_handler.xhtml" title=" " alt="" coords="209,227,359,319"/>
+<area shape="rect" id="node1" title="The input manager manages all input layers (hud, game, ...) and triggers the registered actions depen..." alt="" coords="361,463,554,775"/>
+<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_context.xhtml" title="An input context contains all keybindings and actions active in e.g." alt="" coords="443,837,631,1091"/>
+<area shape="rect" id="node8" href="$classopenage_1_1input_1_1_action_manager.xhtml" title="The action manager manages all the actions allow creation, access information and equality." alt="" coords="119,881,321,1047"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_input_handler.xhtml" title="superclass for handling any input event." alt="" coords="209,227,359,319"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1input.xhtml" title=" " alt="" coords="384,220,531,327"/>
 <area shape="rect" id="node4" title=" " alt="" coords="372,5,535,97"/>
 <area shape="rect" id="node6" href="$structopenage_1_1coord_1_1input__delta.xhtml" title=" " alt="" coords="561,213,708,334"/>
 <area shape="rect" id="node7" title=" " alt="" coords="559,5,715,97"/>
-<area shape="rect" id="node9" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml" title=" " alt="" coords="5,543,195,694"/>
-<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_path.xhtml" title=" " alt="" coords="35,147,165,400"/>
+<area shape="rect" id="node9" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml" title="Configuration manager." alt="" coords="5,543,195,694"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_path.xhtml" title="C++ pendant to the python util.fslike.path.Path." alt="" coords="35,147,165,400"/>
 </map>

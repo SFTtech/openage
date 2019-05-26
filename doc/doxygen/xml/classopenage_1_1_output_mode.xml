@@ -46,9 +46,9 @@
         <argsstring></argsstring>
         <name>gui_signals</name>
         <briefdescription>
+<para>Signals to be triggered when the mode canges. </para>
         </briefdescription>
         <detaileddescription>
-<para>Signals to be triggered when the mode canges. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -112,9 +112,9 @@
         <reimplementedby refid="classopenage_1_1_action_mode_1afeb7fd105b03e822ff4ebe205cff3265">available</reimplementedby>
         <reimplementedby refid="classopenage_1_1_editor_mode_1a51ca65c9475aa6b8b94e217d08a03bab">available</reimplementedby>
         <briefdescription>
+<para>Is this mode able to be used? </para>
         </briefdescription>
         <detaileddescription>
-<para>Is this mode able to be used? </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -129,9 +129,9 @@
         <reimplementedby refid="classopenage_1_1_action_mode_1a46e7067671510d05f6d0d4c15ce2410c">on_enter</reimplementedby>
         <reimplementedby refid="classopenage_1_1_editor_mode_1a916d57d8f109641c110929dcd3015eb5">on_enter</reimplementedby>
         <briefdescription>
+<para>Called when switching to this mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when switching to this mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -147,9 +147,9 @@
         <reimplementedby refid="classopenage_1_1_action_mode_1a9c7d1f16c862692b1172079402ac0f18">on_exit</reimplementedby>
         <reimplementedby refid="classopenage_1_1_editor_mode_1a2da25d932915bc2c5423fa4ee7d849f6">on_exit</reimplementedby>
         <briefdescription>
+<para>Called when the mode is left. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when the mode is left. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -165,9 +165,9 @@
         <reimplementedby refid="classopenage_1_1_action_mode_1aab55848d4a5495b982df54fe1d41865b">render</reimplementedby>
         <reimplementedby refid="classopenage_1_1_editor_mode_1a53d8b41fde0cc0e5144d43c23318a0a5">render</reimplementedby>
         <briefdescription>
+<para>Display this mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Display this mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -183,9 +183,9 @@
         <reimplementedby refid="classopenage_1_1_action_mode_1adfc392ec340fa406b3bebe296f07ec21">name</reimplementedby>
         <reimplementedby refid="classopenage_1_1_editor_mode_1a194b8b0abaa8a8e908fcd170f0a5d382">name</reimplementedby>
         <briefdescription>
+<para>Used for displaying the current mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Used for displaying the current mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -203,9 +203,9 @@
         <reimplementedby refid="classopenage_1_1_action_mode_1a6288ce1c7b45e988f140ace30845bc69">announce</reimplementedby>
         <reimplementedby refid="classopenage_1_1_editor_mode_1aeac3794a1c9c6b6492413573d3670133">announce</reimplementedby>
         <briefdescription>
+<para>Emit the &quot;announced&quot; signal with (name, InputContext::active_binds). </para>
         </briefdescription>
         <detaileddescription>
-<para>Emit the &quot;announced&quot; signal with (name, InputContext::active_binds). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -231,9 +231,9 @@
           <declname>game_control</declname>
         </param>
         <briefdescription>
+<para>Called when the <ref refid="classopenage_1_1_game_control" kindref="compound">GameControl</ref> is set in QML. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when the <ref refid="classopenage_1_1_game_control" kindref="compound">GameControl</ref> is set in QML. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -252,9 +252,9 @@
         <reimplementedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8">on_game_control_set</reimplementedby>
         <reimplementedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f">on_game_control_set</reimplementedby>
         <briefdescription>
+<para>Called after <ref refid="classopenage_1_1_game_control" kindref="compound">GameControl</ref> has been set by QML from <computeroutput>set_game_control</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called after <ref refid="classopenage_1_1_game_control" kindref="compound">GameControl</ref> has been set by QML from <computeroutput>set_game_control</computeroutput>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -263,9 +263,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A target for input handling and gui rendering. </para>
     </briefdescription>
     <detaileddescription>
-<para>A target for input handling and gui rendering. This allows to switch to different display UIs. </para>
+<para>This allows to switch to different display UIs. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4362">

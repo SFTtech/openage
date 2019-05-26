@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 595,-73.5 595,4 -4,4"/>
 <!-- Node48 -->
 <g id="node1" class="node"><title>Node48</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Return the number of entries in this map.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-17 0,-47 116,-47 116,-17 0,-17"/>
 <text text-anchor="start" x="8" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="58" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::size</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node49 -->
 <g id="node2" class="node"><title>Node49</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0" target="_top" xlink:title="Abort when the map uses the same key more than once.">
 <polygon fill="white" stroke="black" points="152,-11.5 152,-52.5 268,-52.5 268,-11.5 152,-11.5"/>
 <text text-anchor="start" x="160" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="160" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::verify_no</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node50 -->
 <g id="node3" class="node"><title>Node50</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1" target="_top" xlink:title="Verifies that this entry&#39;s key is not used in following entries, then continues checking with the nex...">
 <polygon fill="white" stroke="black" points="304,-39 304,-69 439,-69 439,-39 304,-39"/>
 <text text-anchor="start" x="312" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="371.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::all_are_unique</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node51 -->
 <g id="node4" class="node"><title>Node51</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#a27798ebcadd576dcbf80e83173a84983" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1datastructure_1_1_const_map.xhtml#a27798ebcadd576dcbf80e83173a84983" target="_top" xlink:title="Test if the key of this entry is not used in following entries.">
 <polygon fill="white" stroke="black" points="475,-39 475,-69 591,-69 591,-39 475,-39"/>
 <text text-anchor="start" x="483" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="533" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::ConstMap::is_unique</text>

@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>cp</name>
         <briefdescription>
+<para>unicode codepoint of the character </para>
         </briefdescription>
         <detaileddescription>
-<para>unicode codepoint of the character </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -22,7 +22,7 @@
         <referencedby refid="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" compoundref="buf_8cpp" startline="393" endline="414">openage::console::Buf::pop_last_char</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" compoundref="buf_8cpp" startline="479" endline="597">openage::console::Buf::print_codepoint</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1console_1_1buf__char_1a205c87e5042f1bdeb3bb60580196620d" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1console_1a539b2831ec0229a23f97127d1f5ef9f6" kindref="member">chrcol_t</ref></type>
@@ -30,9 +30,9 @@
         <argsstring></argsstring>
         <name>fgcol</name>
         <briefdescription>
+<para>(256-col) color of the character </para>
         </briefdescription>
         <detaileddescription>
-<para>(256-col) color of the character </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -40,7 +40,7 @@
         <referencedby refid="structopenage_1_1console_1_1buf__char_1ad5cefd7a1f326dc098b3142f04c63b80" compoundref="buf_8h" startline="81" endline="87">operator==</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="919" endline="1076">openage::console::Buf::process_sgr_code</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1console_1_1buf__char_1ad268cc5e0d42a2c6c533805f2749c3ac" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1console_1a539b2831ec0229a23f97127d1f5ef9f6" kindref="member">chrcol_t</ref></type>
@@ -48,9 +48,9 @@
         <argsstring></argsstring>
         <name>bgcol</name>
         <briefdescription>
+<para>(256-col) background color </para>
         </briefdescription>
         <detaileddescription>
-<para>(256-col) background color </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -58,7 +58,7 @@
         <referencedby refid="structopenage_1_1console_1_1buf__char_1ad5cefd7a1f326dc098b3142f04c63b80" compoundref="buf_8h" startline="81" endline="87">operator==</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="919" endline="1076">openage::console::Buf::process_sgr_code</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1console_1_1buf__char_1a4488bd83177a49837fcc93128d18c5cb" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -66,9 +66,9 @@
         <argsstring></argsstring>
         <name>flags</name>
         <briefdescription>
+<para>flags of the character </para>
         </briefdescription>
         <detaileddescription>
-<para>flags of the character </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -76,7 +76,7 @@
         <referencedby refid="structopenage_1_1console_1_1buf__char_1ad5cefd7a1f326dc098b3142f04c63b80" compoundref="buf_8h" startline="81" endline="87">operator==</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="919" endline="1076">openage::console::Buf::process_sgr_code</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -102,9 +102,9 @@
           <declname>flags</declname>
         </param>
         <briefdescription>
+<para>Default copy constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Default copy constructor </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -164,9 +164,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>a single character in the buffer </para>
     </briefdescription>
     <detaileddescription>
-<para>a single character in the buffer </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="833">

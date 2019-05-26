@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 549,-35 549,4 -4,4"/>
 <!-- Node61 -->
 <g id="node1" class="node"><title>Node61</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="writes &#39;bytes&#39; bytes from buf">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 97,-30.5 97,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="48.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">write</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node62 -->
 <g id="node2" class="node"><title>Node62</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" target="_top" xlink:title="bytes(value)">
 <polygon fill="white" stroke="black" points="133,-6 133,-25 233,-25 233,-6 133,-6"/>
 <text text-anchor="middle" x="183" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::bytes</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node64 -->
 <g id="node4" class="node"><title>Node64</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="450,-6 450,-25 545,-25 545,-6 450,-6"/>
 <text text-anchor="middle" x="497.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

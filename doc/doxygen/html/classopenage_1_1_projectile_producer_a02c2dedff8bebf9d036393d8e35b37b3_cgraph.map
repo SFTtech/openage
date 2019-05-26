@@ -1,7 +1,7 @@
 <map id="openage::ProjectileProducer::place" name="openage::ProjectileProducer::place">
-<area shape="rect" id="node1" title=" " alt="" coords="5,71,191,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="246,5,374,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a76a10b9ab26e62d7b712a6c796052ee3" title=" " alt="" coords="239,71,381,112"/>
-<area shape="rect" id="node5" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title=" " alt="" coords="250,137,370,163"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="429,13,591,39"/>
+<area shape="rect" id="node1" title="set unit in place – return if placement was successful" alt="" coords="5,71,191,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title="returns attribute based on templated value" alt="" coords="246,5,374,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a76a10b9ab26e62d7b712a6c796052ee3" title="constructs a new location for this unit replacing any existing locatio" alt="" coords="239,71,381,112"/>
+<area shape="rect" id="node5" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta..." alt="" coords="250,137,370,163"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title="Get the attribute based on the type." alt="" coords="429,13,591,39"/>
 </map>

@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>classstore</name>
         <briefdescription>
+<para>Here we do the bookkeeping of registered event classes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Here we do the bookkeeping of registered event classes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -26,9 +26,9 @@
         <argsstring></argsstring>
         <name>filters</name>
         <briefdescription>
+<para>Here we store all running filters that shall be applied whenever a new obejct is added to our objectstore. </para>
         </briefdescription>
         <detaileddescription>
-<para>Here we store all running filters that shall be applied whenever a new obejct is added to our objectstore </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -40,9 +40,9 @@
         <argsstring></argsstring>
         <name>queue</name>
         <briefdescription>
+<para>All events are enqueued here. </para>
         </briefdescription>
         <detaileddescription>
-<para>All events are enqueued here. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -65,9 +65,10 @@
         <argsstring></argsstring>
         <name>active_event</name>
         <briefdescription>
+<para>The currently processed event. </para>
         </briefdescription>
         <detaileddescription>
-<para>The currently processed event. This is useful for event cancelations (so one can&apos;t cancel itself). </para>
+<para>This is useful for event cancelations (so one can&apos;t cancel itself). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -114,9 +115,9 @@
           <declname>cls</declname>
         </param>
         <briefdescription>
+<para>register a new event class </para>
         </briefdescription>
         <detaileddescription>
-<para>register a new event class </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -150,9 +151,10 @@
           <defval><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref>({})</defval>
         </param>
         <briefdescription>
+<para>Add a new <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> to the queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>Add a new <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> to the queue. The event is from the given class (name) and is invoked for a target in a state.</para>
+<para>The event is from the given class (name) and is invoked for a target in a state.</para>
 <para>The <computeroutput>reference_time</computeroutput> is used to calculate the actual event time. </para>
         </detaileddescription>
         <inbodydescription>
@@ -192,9 +194,9 @@
           <defval><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref>({})</defval>
         </param>
         <briefdescription>
+<para>This will generate a new randomly named eventclass for this specific element. </para>
         </briefdescription>
         <detaileddescription>
-<para>This will generate a new randomly named eventclass for this specific element</para>
 <para>The <computeroutput>reference_time</computeroutput> is used to determine the actual event trigger time. </para>
         </detaileddescription>
         <inbodydescription>
@@ -279,9 +281,9 @@
           <declname>state</declname>
         </param>
         <briefdescription>
+<para>Execute all events that are registered until a certain point in time. </para>
         </briefdescription>
         <detaileddescription>
-<para>Execute all events that are registered until a certain point in time. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -317,9 +319,10 @@
           <declname>new_value</declname>
         </param>
         <briefdescription>
+<para>Register that a given event must be reevaluated at a time, this usually happens because this event depended on an eventtarget that got changed at this time. </para>
         </briefdescription>
         <detaileddescription>
-<para>Register that a given event must be reevaluated at a time, this usually happens because this event depended on an eventtarget that got changed at this time. This inserts the event into the changes queue so it will be evaluated in the next loop iteration. </para>
+<para>This inserts the event into the changes queue so it will be evaluated in the next loop iteration. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -359,9 +362,9 @@
           <declname>state</declname>
         </param>
         <briefdescription>
+<para>Execute the events. </para>
         </briefdescription>
         <detaileddescription>
-<para>Execute the events</para>
 <para><simplesect kind="return"><para>number of events processed </para>
 </simplesect>
 </para>
@@ -392,9 +395,10 @@
           <declname>state</declname>
         </param>
         <briefdescription>
+<para>Call all the time change functions. </para>
         </briefdescription>
         <detaileddescription>
-<para>Call all the time change functions. This is constant on the state! </para>
+<para>This is constant on the state! </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -416,9 +420,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The core class to manage event class and targets. </para>
     </briefdescription>
     <detaileddescription>
-<para>The core class to manage event class and targets. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="2278">

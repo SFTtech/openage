@@ -36,9 +36,9 @@
         <name>shared</name>
         <reimplements refid="classopenage_1_1_attribute_container_1a6e8b1a74ffd097ae82dd7b1bc0d6e6a2">shared</reimplements>
         <briefdescription>
+<para>shared attributes are common across all units of one type, such as max hp, and gather rates </para>
         </briefdescription>
         <detaileddescription>
-<para>shared attributes are common across all units of one type, such as max hp, and gather rates</para>
 <para>non shared attributes include a units current hp, and the amount a villager is carrying </para>
         </detaileddescription>
         <inbodydescription>
@@ -47,9 +47,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Wraps a templated unshared attribute. </para>
     </briefdescription>
     <detaileddescription>
-<para>Wraps a templated unshared attribute</para>
 <para>Shared attributes are copied for each unit of one type </para>
     </detaileddescription>
     <inheritancegraph>

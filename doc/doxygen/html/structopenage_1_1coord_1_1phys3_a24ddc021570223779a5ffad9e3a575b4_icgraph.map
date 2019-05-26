@@ -1,6 +1,6 @@
 <map id="openage::coord::phys3::to_phys2" name="openage::coord::phys3::to_phys2">
 <area shape="rect" id="node1" title=" " alt="" coords="207,71,361,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_radial_object.xhtml#a8df3ce8c1bc15cc827e7de59f2a39f5a" title=" " alt="" coords="5,5,159,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" title=" " alt="" coords="5,71,159,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_radial_object.xhtml#adef472de61d9336b562db89eb8ac28a7" title=" " alt="" coords="5,136,159,177"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_radial_object.xhtml#a8df3ce8c1bc15cc827e7de59f2a39f5a" title="does this space contain a given point" alt="" coords="5,5,159,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" title="how far is a point from the edge of this object" alt="" coords="5,71,159,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_radial_object.xhtml#adef472de61d9336b562db89eb8ac28a7" title="would this intersect with another object if it were positioned at the given point" alt="" coords="5,136,159,177"/>
 </map>

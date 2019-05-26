@@ -1,8 +1,8 @@
 <map id="openage::TerrainChunk::get_data_neigh" name="openage::TerrainChunk::get_data_neigh">
-<area shape="rect" id="node1" title=" " alt="" coords="5,71,160,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" title=" " alt="" coords="208,5,363,47"/>
+<area shape="rect" id="node1" title="get the tile data a given tile position relative to this chunk." alt="" coords="5,71,160,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" title="get tile data by absolute coordinates." alt="" coords="208,5,363,47"/>
 <area shape="rect" id="node5" href="$classopenage_1_1_terrain_chunk.xhtml#a75e4bde3d50f5af6b946a08ba5e50dbb" title=" " alt="" coords="208,71,363,112"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_terrain_chunk.xhtml#a87b39afb17262f5239f3cc5fbed48dc2" title=" " alt="" coords="208,136,363,177"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1tile.xhtml#ab4811e492cabe885d33e85df51ceff83" title=" " alt="" coords="411,5,549,47"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title=" " alt="" coords="597,13,727,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title="modulo operation that guarantees to return positive values." alt="" coords="597,13,727,39"/>
 </map>

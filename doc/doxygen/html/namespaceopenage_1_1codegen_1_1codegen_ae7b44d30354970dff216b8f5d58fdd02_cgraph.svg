@@ -176,7 +176,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title="list()">
 <polygon fill="white" stroke="black" points="661,-181 661,-200 750,-200 750,-181 661,-181"/>
 <text text-anchor="middle" x="705.5" y="-188" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::list</text>
 </a>
@@ -216,7 +216,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node9 -->
 <g id="node10" class="node"><title>Node9</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="991,-162 991,-181 1086,-181 1086,-162 991,-162"/>
 <text text-anchor="middle" x="1038.5" y="-169" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -234,7 +234,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node11 -->
 <g id="node12" class="node"><title>Node11</title>
-<g id="a_node12"><a xlink:href="namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9" target="_top" xlink:title="dict()">
 <polygon fill="white" stroke="black" points="659.5,-143 659.5,-162 751.5,-162 751.5,-143 659.5,-143"/>
 <text text-anchor="middle" x="705.5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::dict</text>
 </a>
@@ -266,7 +266,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node15 -->
 <g id="node16" class="node"><title>Node15</title>
-<g id="a_node16"><a xlink:href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6" target="_top" xlink:title="Split a string at a delimiter into a vector.">
 <polygon fill="white" stroke="black" points="469.5,-50 469.5,-69 565.5,-69 565.5,-50 469.5,-50"/>
 <text text-anchor="middle" x="517.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::split</text>
 </a>

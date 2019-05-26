@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 268,-35 268,4 -4,4"/>
 <!-- Node197 -->
 <g id="node1" class="node"><title>Node197</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="fill in the terrain_data attribute of this">
 <polygon fill="#bfbfbf" stroke="black" points="150,-0.5 150,-30.5 264,-30.5 264,-0.5 150,-0.5"/>
 <text text-anchor="start" x="158" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_terrain</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node198 -->
 <g id="node2" class="node"><title>Node198</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 114,-30.5 114,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="57" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>

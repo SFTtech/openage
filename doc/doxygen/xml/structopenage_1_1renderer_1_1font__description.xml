@@ -131,9 +131,9 @@
           <defval>&quot;Latn&quot;</defval>
         </param>
         <briefdescription>
+<para>Constructs a <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> instance. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructs a <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> instance.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>font_file</parametername>
@@ -200,9 +200,9 @@
           <declname>size</declname>
         </param>
         <briefdescription>
+<para>Constructs a <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> instance. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructs a <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> instance.</para>
 <para>This constructor uses fontconfig to determine a font file for the specified font family and style.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -318,9 +318,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Description for a font. </para>
     </briefdescription>
     <detaileddescription>
-<para>Description for a font.</para>
 <para>An instance of <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> is capable of uniquely distinguishing a font. </para>
     </detaileddescription>
     <collaborationgraph>

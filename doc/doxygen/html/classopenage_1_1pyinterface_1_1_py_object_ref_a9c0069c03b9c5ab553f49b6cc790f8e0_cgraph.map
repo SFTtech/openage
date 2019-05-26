@@ -1,4 +1,4 @@
 <map id="openage::pyinterface::PyObjectRef::setattr" name="openage::pyinterface::PyObjectRef::setattr">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,153,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639" title=" " alt="" coords="201,5,352,47"/>
+<area shape="rect" id="node1" title="setattr(obj, name)" alt="" coords="5,5,153,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639" title="Provide the internal PyObject *." alt="" coords="201,5,352,47"/>
 </map>

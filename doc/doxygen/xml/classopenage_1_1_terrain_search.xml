@@ -108,9 +108,9 @@
           <declname>s</declname>
         </param>
         <briefdescription>
+<para>next_tile will cover all tiles on the map </para>
         </briefdescription>
         <detaileddescription>
-<para>next_tile will cover all tiles on the map </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -134,9 +134,9 @@
           <declname>radius</declname>
         </param>
         <briefdescription>
+<para>next_tile will iterate over a range of tiles within a radius </para>
         </briefdescription>
         <detaileddescription>
-<para>next_tile will iterate over a range of tiles within a radius </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -161,9 +161,9 @@
         <argsstring>() const</argsstring>
         <name>start_tile</name>
         <briefdescription>
+<para>the tile the search began on </para>
         </briefdescription>
         <detaileddescription>
-<para>the tile the search began on </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -176,9 +176,9 @@
         <argsstring>()</argsstring>
         <name>reset</name>
         <briefdescription>
+<para>restarts the search from the start tile </para>
         </briefdescription>
         <detaileddescription>
-<para>restarts the search from the start tile </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -193,9 +193,9 @@
         <argsstring>()</argsstring>
         <name>next_tile</name>
         <briefdescription>
+<para>returns all objects on the next tile </para>
         </briefdescription>
         <detaileddescription>
-<para>returns all objects on the next tile </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -215,9 +215,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>searches outward from a point and returns nearby objects The state of the search is kept within the class, which allows a user to look at a limited number of tiles per update cycle </para>
     </briefdescription>
     <detaileddescription>
-<para>searches outward from a point and returns nearby objects The state of the search is kept within the class, which allows a user to look at a limited number of tiles per update cycle </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5229">

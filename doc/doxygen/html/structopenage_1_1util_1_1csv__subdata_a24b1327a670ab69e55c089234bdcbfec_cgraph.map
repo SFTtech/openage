@@ -1,9 +1,9 @@
 <map id="openage::util::csv_subdata::read" name="openage::util::csv_subdata::read">
-<area shape="rect" id="node1" title=" " alt="" coords="5,74,128,115"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_c_s_v_collection.xhtml#a687817b834b18f90124915261c3752a8" title=" " alt="" coords="176,74,364,115"/>
+<area shape="rect" id="node1" title="Read the data of the lineformat from the collection." alt="" coords="5,74,128,115"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_c_s_v_collection.xhtml#a687817b834b18f90124915261c3752a8" title="This function is the entry point to load the whole file tree recursively." alt="" coords="176,74,364,115"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="412,5,605,32"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title=" " alt="" coords="433,56,585,83"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a954be5116f7af5633dbbc50bac26b0a8" title=" " alt="" coords="433,107,584,133"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title="get the filename (last part) of a given path" alt="" coords="433,56,585,83"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a954be5116f7af5633dbbc50bac26b0a8" title="return the head (dirname) part of a path." alt="" coords="433,107,584,133"/>
 <area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="453,157,564,184"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="653,5,780,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="653,5,780,32"/>
 </map>

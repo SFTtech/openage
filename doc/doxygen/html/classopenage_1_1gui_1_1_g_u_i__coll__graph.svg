@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-471 1297,-471 1297,4 -4,4"/>
 <!-- Node4 -->
 <g id="node1" class="node"><title>Node4</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Main entry point for the openage Qt&#45;based user interface.">
 <polygon fill="#bfbfbf" stroke="black" points="625,-0.5 625,-145.5 744,-145.5 744,-0.5 625,-0.5"/>
 <text text-anchor="middle" x="684.5" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GUI</text>
 <polyline fill="none" stroke="black" points="625,-126.5 744,-126.5 "/>
@@ -77,7 +77,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node5 -->
 <g id="node2" class="node"><title>Node5</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title="superclass for handling any input event.">
 <polygon fill="white" stroke="black" points="0,-259.5 0,-327.5 113,-327.5 113,-259.5 0,-259.5"/>
 <text text-anchor="middle" x="56.5" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::InputHandler</text>
 <polyline fill="none" stroke="black" points="0,-308.5 113,-308.5 "/>
@@ -95,7 +95,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node3" class="node"><title>Node6</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_resize_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_resize_handler.xhtml" target="_top" xlink:title="superclass for handling a window resize event.">
 <polygon fill="white" stroke="black" points="131.5,-259.5 131.5,-327.5 253.5,-327.5 253.5,-259.5 131.5,-259.5"/>
 <text text-anchor="middle" x="192.5" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResizeHandler</text>
 <polyline fill="none" stroke="black" points="131.5,-308.5 253.5,-308.5 "/>
@@ -113,7 +113,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node7 -->
 <g id="node4" class="node"><title>Node7</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_hud_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_hud_handler.xhtml" target="_top" xlink:title="superclass for all possible drawing operations in the game.">
 <polygon fill="white" stroke="black" points="271.5,-259.5 271.5,-327.5 381.5,-327.5 381.5,-259.5 271.5,-259.5"/>
 <text text-anchor="middle" x="326.5" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HudHandler</text>
 <polyline fill="none" stroke="black" points="271.5,-308.5 381.5,-308.5 "/>
@@ -174,7 +174,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node10 -->
 <g id="node7" class="node"><title>Node10</title>
-<g id="a_node7"><a xlink:href="classqtsdl_1_1_gui_renderer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classqtsdl_1_1_gui_renderer.xhtml" target="_top" xlink:title="Passes the native graphic context to Qt.">
 <polygon fill="white" stroke="black" points="579.5,-248.5 579.5,-338.5 677.5,-338.5 677.5,-248.5 579.5,-248.5"/>
 <text text-anchor="middle" x="628.5" y="-326.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRenderer</text>
 <polyline fill="none" stroke="black" points="579.5,-319.5 677.5,-319.5 "/>
@@ -195,7 +195,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node11 -->
 <g id="node8" class="node"><title>Node11</title>
-<g id="a_node8"><a xlink:href="classqtsdl_1_1_gui_subtree.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classqtsdl_1_1_gui_subtree.xhtml" target="_top" xlink:title="A root item that loads its code from source url.">
 <polygon fill="white" stroke="black" points="695.5,-259.5 695.5,-327.5 787.5,-327.5 787.5,-259.5 695.5,-259.5"/>
 <text text-anchor="middle" x="741.5" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSubtree</text>
 <polyline fill="none" stroke="black" points="695.5,-308.5 787.5,-308.5 "/>
@@ -214,7 +214,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node12 -->
 <g id="node9" class="node"><title>Node12</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1gui_1_1_gui_application_with_logger.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1gui_1_1_gui_application_with_logger.xhtml" target="_top" xlink:title="Houses gui logic event queue and attaches to game logger.">
 <polygon fill="white" stroke="black" points="805.5,-254 805.5,-333 955.5,-333 955.5,-254 805.5,-254"/>
 <text text-anchor="start" x="813.5" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiApplication</text>
 <text text-anchor="middle" x="880.5" y="-310" font-family="Helvetica,sans-Serif" font-size="10.00">WithLogger</text>
@@ -234,7 +234,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node13 -->
 <g id="node10" class="node"><title>Node13</title>
-<g id="a_node10"><a xlink:href="classqtsdl_1_1_gui_application.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classqtsdl_1_1_gui_application.xhtml" target="_top" xlink:title="Houses gui logic event queue.">
 <polygon fill="white" stroke="black" points="827,-376.5 827,-466.5 934,-466.5 934,-376.5 827,-376.5"/>
 <text text-anchor="middle" x="880.5" y="-454.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiApplication</text>
 <polyline fill="none" stroke="black" points="827,-447.5 934,-447.5 "/>
@@ -254,7 +254,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node14 -->
 <g id="node11" class="node"><title>Node14</title>
-<g id="a_node11"><a xlink:href="classqtsdl_1_1_gui_event_queue.xhtml" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classqtsdl_1_1_gui_event_queue.xhtml" target="_top" xlink:title="Provides synchronization with some game thread.">
 <polygon fill="white" stroke="black" points="974,-254 974,-333 1087,-333 1087,-254 974,-254"/>
 <text text-anchor="middle" x="1030.5" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiEventQueue</text>
 <polyline fill="none" stroke="black" points="974,-314 1087,-314 "/>
@@ -275,7 +275,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node15 -->
 <g id="node12" class="node"><title>Node15</title>
-<g id="a_node12"><a xlink:href="classqtsdl_1_1_gui_input.xhtml" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classqtsdl_1_1_gui_input.xhtml" target="_top" xlink:title="Converts SDL input events into Qt events.">
 <polygon fill="white" stroke="black" points="1105.5,-254 1105.5,-333 1185.5,-333 1185.5,-254 1105.5,-254"/>
 <text text-anchor="middle" x="1145.5" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiInput</text>
 <polyline fill="none" stroke="black" points="1105.5,-314 1185.5,-314 "/>
@@ -295,7 +295,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node16 -->
 <g id="node13" class="node"><title>Node16</title>
-<g id="a_node13"><a xlink:href="classqtsdl_1_1_gui_engine.xhtml" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classqtsdl_1_1_gui_engine.xhtml" target="_top" xlink:title="Represents one QML execution environment.">
 <polygon fill="white" stroke="black" points="1204,-259.5 1204,-327.5 1293,-327.5 1293,-259.5 1204,-259.5"/>
 <text text-anchor="middle" x="1248.5" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiEngine</text>
 <polyline fill="none" stroke="black" points="1204,-308.5 1293,-308.5 "/>

@@ -1,4 +1,4 @@
 <map id="openage::event::EventTarget::changes" name="openage::event::EventTarget::changes">
-<area shape="rect" id="node1" title=" " alt="" coords="211,13,396,54"/>
+<area shape="rect" id="node1" title="Call this whenever some data in the target changes." alt="" coords="211,13,396,54"/>
 <area shape="rect" id="node2" href="$classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object.xhtml#aa34202033ff483893bb1f253acea5cb5" title=" " alt="" coords="5,5,163,61"/>
 </map>

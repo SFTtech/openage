@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-332 153,-332 153,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Implements Quaternions to represent 3d rotations.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-189.5 149,-189.5 149,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="74.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="0,-170.5 149,-170.5 "/>

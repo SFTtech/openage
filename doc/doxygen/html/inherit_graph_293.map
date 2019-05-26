@@ -1,7 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" title=" " alt="" coords="79,5,118,32"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_shadow.xhtml" title=" " alt="" coords="286,5,421,32"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="515,31,663,57"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_shadow.xhtml" title="Shadows inherited member functions." alt="" coords="286,5,421,32"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_inherits.xhtml" title="Switches the factory to production of the instances of the derived class." alt="" coords="515,31,663,57"/>
 <area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="5,56,192,83"/>
 <area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="240,56,467,83"/>
 </map>

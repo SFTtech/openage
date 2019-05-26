@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 427,-35 427,4 -4,4"/>
 <!-- Node38 -->
 <g id="node1" class="node"><title>Node38</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns a job from the internal job queue.">
 <polygon fill="#bfbfbf" stroke="black" points="292,-0.5 292,-30.5 423,-30.5 423,-0.5 292,-0.5"/>
 <text text-anchor="start" x="300" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="357.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::fetch_job</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node39 -->
 <g id="node2" class="node"><title>Node39</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" target="_top" xlink:title="Fetches pending jobs from the parent job manager and from the internal pending job queue and executes...">
 <polygon fill="white" stroke="black" points="146,-0.5 146,-30.5 256,-30.5 256,-0.5 146,-0.5"/>
 <text text-anchor="start" x="154" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <text text-anchor="middle" x="201" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::process</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node40 -->
 <g id="node3" class="node"><title>Node40</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#a3a0d1ce7031d428efce6c42b083ffd05" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#a3a0d1ce7031d428efce6c42b083ffd05" target="_top" xlink:title="Starts this worker.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 110,-30.5 110,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <text text-anchor="middle" x="55" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start</text>

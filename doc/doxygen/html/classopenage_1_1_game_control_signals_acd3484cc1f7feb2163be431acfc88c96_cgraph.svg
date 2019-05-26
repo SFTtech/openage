@@ -107,7 +107,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node40 -->
 <g id="node4" class="node"><title>Node40</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title="return currently running game or null if a game is not currently running">
 <polygon fill="white" stroke="black" points="534,-44.5 534,-63.5 672,-63.5 672,-44.5 534,-44.5"/>
 <text text-anchor="middle" x="603" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get_game</text>
 </a>

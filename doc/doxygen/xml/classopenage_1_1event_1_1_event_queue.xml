@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>change_set</name>
         <briefdescription>
+<para>Type for the set to store changes to track. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type for the set to store changes to track. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -85,9 +85,9 @@
         <argsstring></argsstring>
         <name>dependency_events</name>
         <briefdescription>
+<para>Stores events that sleep until their dependency changes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stores events that sleep until their dependency changes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -100,9 +100,9 @@
         <argsstring></argsstring>
         <name>dependency_immediately_events</name>
         <briefdescription>
+<para>Stores events that sleep until their dependency changes, but they trigger instantly when their dependency changes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stores events that sleep until their dependency changes, but they trigger instantly when their dependency changes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -115,9 +115,9 @@
         <argsstring></argsstring>
         <name>trigger_events</name>
         <briefdescription>
+<para>Events that fire only when triggered. </para>
         </briefdescription>
         <detaileddescription>
-<para>Events that fire only when triggered. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -130,9 +130,10 @@
         <argsstring></argsstring>
         <name>event_queue</name>
         <briefdescription>
+<para>The universe timeline processes through this queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>The universe timeline processes through this queue. Type::ONCE is only inserted into the queue. </para>
+<para>Type::ONCE is only inserted into the queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -185,9 +186,9 @@
           <declname>params</declname>
         </param>
         <briefdescription>
+<para>Add an event for a specified target. </para>
         </briefdescription>
         <detaileddescription>
-<para>Add an event for a specified target</para>
 <para>A target is every single unit in the game world - so best add these events in the constructor of the game objects.</para>
 <para>The <computeroutput>insertion_time</computeroutput> is the time used to calculate when the actual event time will happen! </para>
         </detaileddescription>
@@ -219,9 +220,9 @@
           <declname>evnt</declname>
         </param>
         <briefdescription>
+<para>Remove the given event from the queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>Remove the given event from the queue. </para>
         </detaileddescription>
         <inbodydescription>
 <para><xrefsect id="todo_1_todo000009"><xreftitle>Todo</xreftitle><xrefdescription><para>remove the event from the other storages. this would require changes to dependent events and triggers. (to stop being a dependent event or allow being triggered) </para>
@@ -242,9 +243,10 @@
           <declname>event</declname>
         </param>
         <briefdescription>
+<para>An update to existing events has to be applied. </para>
         </briefdescription>
         <detaileddescription>
-<para>An update to existing events has to be applied. The execution time of this event may have changed or it is newly created. This updates/inserts the given event in the main queue. </para>
+<para>The execution time of this event may have changed or it is newly created. This updates/inserts the given event in the main queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -265,9 +267,10 @@
           <declname>event</declname>
         </param>
         <briefdescription>
+<para>The event was just removed, add it again. </para>
         </briefdescription>
         <detaileddescription>
-<para>The event was just removed, add it again. This is used for REPEAT events so that they are repeated. </para>
+<para>This is used for REPEAT events so that they are repeated. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -290,9 +293,9 @@
           <declname>changed_at</declname>
         </param>
         <briefdescription>
+<para>An event target has changed, and the event shall be retriggered. </para>
         </briefdescription>
         <detaileddescription>
-<para>An event target has changed, and the event shall be retriggered </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -310,9 +313,9 @@
         <argsstring>() const</argsstring>
         <name>get_event_queue</name>
         <briefdescription>
+<para>Get an accessor to the running queue for state output purpose. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get an accessor to the running queue for state output purpose. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -330,9 +333,9 @@
           <declname>max_time</declname>
         </param>
         <briefdescription>
+<para>Obtain the next event from the <computeroutput>event_queue</computeroutput> that happens before <computeroutput>&lt;= max_time</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Obtain the next event from the <computeroutput>event_queue</computeroutput> that happens before <computeroutput>&lt;= max_time</computeroutput>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -349,9 +352,9 @@
         <argsstring>() const</argsstring>
         <name>get_changes</name>
         <briefdescription>
+<para>Get the change_set to process changes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the change_set to process changes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -365,9 +368,9 @@
         <argsstring>()</argsstring>
         <name>clear_changes</name>
         <briefdescription>
+<para>All changes (fetched with <computeroutput>get_changes</computeroutput>) have been processed, so we can clear the change_set. </para>
         </briefdescription>
         <detaileddescription>
-<para>All changes (fetched with <computeroutput>get_changes</computeroutput>) have been processed, so we can clear the change_set. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -381,9 +384,9 @@
         <argsstring>()</argsstring>
         <name>swap_changesets</name>
         <briefdescription>
+<para>Swap the <computeroutput>changes</computeroutput> and <computeroutput>future_changes</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Swap the <computeroutput>changes</computeroutput> and <computeroutput>future_changes</computeroutput>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -394,9 +397,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The core event class for execution and execution dependencies. </para>
     </briefdescription>
     <detaileddescription>
-<para>The core event class for execution and execution dependencies. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="2245">

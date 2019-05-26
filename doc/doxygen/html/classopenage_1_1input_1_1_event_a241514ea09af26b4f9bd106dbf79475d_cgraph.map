@@ -1,7 +1,7 @@
 <map id="openage::input::Event::info" name="openage::input::Event::info">
-<area shape="rect" id="node1" title=" " alt="" coords="5,64,152,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_event.xhtml#a99740091e0cdf50a32f93b70967df361" title=" " alt="" coords="223,5,370,47"/>
+<area shape="rect" id="node1" title="logable debug info" alt="" coords="5,64,152,105"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_event.xhtml#a99740091e0cdf50a32f93b70967df361" title="Return keyboard text as char returns 0 for non&#45;text events." alt="" coords="223,5,370,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="200,71,393,98"/>
 <area shape="rect" id="node5" href="$namespacestd.xhtml#a26aa0f4be3a77ac5cc3ce0cabb545042" title=" " alt="" coords="247,122,346,149"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="441,71,568,98"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="441,71,568,98"/>
 </map>

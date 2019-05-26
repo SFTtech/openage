@@ -24,9 +24,9 @@
         <argsstring></argsstring>
         <name>build_menu_context</name>
         <briefdescription>
+<para>used after opening the build menu </para>
         </briefdescription>
         <detaileddescription>
-<para>used after opening the build menu </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -40,9 +40,9 @@
         <argsstring></argsstring>
         <name>build_menu_mil_context</name>
         <briefdescription>
+<para>used after opening the military build menu </para>
         </briefdescription>
         <detaileddescription>
-<para>used after opening the military build menu </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -56,9 +56,9 @@
         <argsstring></argsstring>
         <name>building_context</name>
         <briefdescription>
+<para>used when selecting the building placement </para>
         </briefdescription>
         <detaileddescription>
-<para>used when selecting the building placement </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -143,8 +143,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><xrefsect id="todo_1_todo000010"><xreftitle>Todo</xreftitle><xrefdescription><para>these shouldn&apos;t be here. remove them ASAP. they are used to carry over mouse information into some of the game control lambda functions </para>
-</xrefdescription></xrefsect></para>
+<para><xrefsect id="todo_1_todo000010"><xreftitle>Todo</xreftitle><xrefdescription><para>these shouldn&apos;t be here.</para>
+</xrefdescription></xrefsect>remove them ASAP. they are used to carry over mouse information into some of the game control lambda functions </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -256,9 +256,9 @@
         <name>available</name>
         <reimplements refid="classopenage_1_1_output_mode_1a608ac27650e10c5e3ce4c047abb1845d">available</reimplements>
         <briefdescription>
+<para>Is this mode able to be used? </para>
         </briefdescription>
         <detaileddescription>
-<para>Is this mode able to be used? </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -277,9 +277,9 @@
         <name>on_enter</name>
         <reimplements refid="classopenage_1_1_output_mode_1a84beca51250156148fe4af178ed87c22">on_enter</reimplements>
         <briefdescription>
+<para>Called when switching to this mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when switching to this mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -292,9 +292,9 @@
         <name>on_exit</name>
         <reimplements refid="classopenage_1_1_output_mode_1ac4731437d730c75e214f7fda4c218da1">on_exit</reimplements>
         <briefdescription>
+<para>Called when the mode is left. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called when the mode is left. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -319,9 +319,9 @@
         <name>render</name>
         <reimplements refid="classopenage_1_1_output_mode_1a3ee7e90a18de82e81b02e429fb392694">render</reimplements>
         <briefdescription>
+<para>Display this mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Display this mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -352,9 +352,9 @@
         <name>name</name>
         <reimplements refid="classopenage_1_1_output_mode_1a088f019691b4233408a7d230b0a5604b">name</reimplements>
         <briefdescription>
+<para>Used for displaying the current mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Used for displaying the current mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -370,9 +370,9 @@
         <name>on_game_control_set</name>
         <reimplements refid="classopenage_1_1_output_mode_1aa9737f66ac8869d475df2d22d073017e">on_game_control_set</reimplements>
         <briefdescription>
+<para>Called after <ref refid="classopenage_1_1_game_control" kindref="compound">GameControl</ref> has been set by QML from <computeroutput>set_game_control</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called after <ref refid="classopenage_1_1_game_control" kindref="compound">GameControl</ref> has been set by QML from <computeroutput>set_game_control</computeroutput>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -448,9 +448,9 @@
         <name>announce</name>
         <reimplements refid="classopenage_1_1_output_mode_1aafb84951c6575c14b5517312c5cfe191">announce</reimplements>
         <briefdescription>
+<para>sends to gui the properties that it needs </para>
         </briefdescription>
         <detaileddescription>
-<para>sends to gui the properties that it needs </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -470,9 +470,9 @@
         <argsstring>()</argsstring>
         <name>announce_resources</name>
         <briefdescription>
+<para>sends to gui the amounts of resources </para>
         </briefdescription>
         <detaileddescription>
-<para>sends to gui the amounts of resources </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -492,9 +492,9 @@
         <argsstring>()</argsstring>
         <name>announce_buttons_type</name>
         <briefdescription>
+<para>sends to gui the buttons it should use for the action buttons (if changed) </para>
         </briefdescription>
         <detaileddescription>
-<para>sends to gui the buttons it should use for the action buttons (if changed) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -533,9 +533,9 @@
           <declname>pos</declname>
         </param>
         <briefdescription>
+<para>decides which type of right mouse click command to issue based on position. </para>
         </briefdescription>
         <detaileddescription>
-<para>decides which type of right mouse click command to issue based on position.</para>
 <para>if a unit is at the position the command should target the unit, otherwise target ground position </para>
         </detaileddescription>
         <inbodydescription>
@@ -557,9 +557,9 @@
         <argsstring>()</argsstring>
         <name>create_binds</name>
         <briefdescription>
+<para>Register the keybindings. </para>
         </briefdescription>
         <detaileddescription>
-<para>Register the keybindings. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -575,9 +575,9 @@
           <declname>point</declname>
         </param>
         <briefdescription>
+<para>places hovering building </para>
         </briefdescription>
         <detaileddescription>
-<para>places hovering building </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -602,9 +602,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>This is the main game UI. </para>
     </briefdescription>
     <detaileddescription>
-<para>This is the main game UI.</para>
 <para>Used to control units, issue commands, basically this is where you sink your time in when playing. </para>
     </detaileddescription>
     <inheritancegraph>

@@ -61,9 +61,9 @@
         <reimplementedby refid="classqtsdl_1_1_gui_unique_rendering_context_1a613f69bdb73c8cdf25e1efa32a4f53ec">pre_render</reimplementedby>
         <reimplementedby refid="classqtsdl_1_1_gui_separate_rendering_context_1a47ae13e05fbce6703f7b3329512b5a5f">pre_render</reimplementedby>
         <briefdescription>
+<para>Function that must be called before rendering the GUI. </para>
         </briefdescription>
         <detaileddescription>
-<para>Function that must be called before rendering the GUI. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -77,9 +77,9 @@
         <reimplementedby refid="classqtsdl_1_1_gui_unique_rendering_context_1aeb11eab34c89a558f778848bd714530f">post_render</reimplementedby>
         <reimplementedby refid="classqtsdl_1_1_gui_separate_rendering_context_1ad60bc0dd243b8c3ab105f33cdd605dae">post_render</reimplementedby>
         <briefdescription>
+<para>Function that must be called after rendering the GUI. </para>
         </briefdescription>
         <detaileddescription>
-<para>Function that must be called after rendering the GUI. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -87,9 +87,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Abstract base for the method of getting a Qt-usable context. </para>
     </briefdescription>
     <detaileddescription>
-<para>Abstract base for the method of getting a Qt-usable context. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6152">

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-8';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 531,-35 531,4 -4,4"/>
 <!-- Node110 -->
 <g id="node1" class="node"><title>Node110</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns the generated terrain">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 102,-30.5 102,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="51" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::terrain</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node111 -->
 <g id="node2" class="node"><title>Node111</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title="get tile data by absolute coordinates.">
 <polygon fill="white" stroke="black" points="138,-0.5 138,-30.5 254,-30.5 254,-0.5 138,-0.5"/>
 <text text-anchor="start" x="146" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="196" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node113 -->
 <g id="node4" class="node"><title>Node113</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="430,-6 430,-25 527,-25 527,-6 430,-6"/>
 <text text-anchor="middle" x="478.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

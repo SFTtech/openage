@@ -1,4 +1,4 @@
 <map id="openage::audio::DynamicLoader::create" name="openage::audio::DynamicLoader::create">
-<area shape="rect" id="node1" title=" " alt="" coords="307,5,515,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_dynamic_resource.xhtml#ac1ffb9fa48d2665e4452b644fbcb972c" title=" " alt="" coords="5,13,259,39"/>
+<area shape="rect" id="node1" title="Creates a DynamicLoader instance that supports the given format." alt="" coords="307,5,515,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_dynamic_resource.xhtml#ac1ffb9fa48d2665e4452b644fbcb972c" title="Tells the resource, that it will be used by a sound object, so it can preload some pcm samples." alt="" coords="5,13,259,39"/>
 </map>

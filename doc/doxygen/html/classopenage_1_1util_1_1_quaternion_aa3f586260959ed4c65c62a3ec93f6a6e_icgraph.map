@@ -1,4 +1,4 @@
 <map id="openage::util::Quaternion::equals" name="openage::util::Quaternion::equals">
-<area shape="rect" id="node1" title=" " alt="" coords="187,5,353,47"/>
+<area shape="rect" id="node1" title="Test if the rotation of both quaternions is the same." alt="" coords="187,5,353,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1util_1_1tests.xhtml#ab3f1d081c603b383598beeee8e4429df" title=" " alt="" coords="5,5,139,47"/>
 </map>

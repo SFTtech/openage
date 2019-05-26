@@ -1,3 +1,3 @@
 <map id="openage::IntervalTimer" name="openage::IntervalTimer">
-<area shape="rect" id="node1" title="odo use a type instead of unsigned int for time" alt="" coords="5,5,156,273"/>
+<area shape="rect" id="node1" title="A interval triggering timer used in actions." alt="" coords="5,5,156,273"/>
 </map>

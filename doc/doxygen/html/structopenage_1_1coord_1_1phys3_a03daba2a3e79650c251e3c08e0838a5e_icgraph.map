@@ -1,12 +1,12 @@
 <map id="openage::coord::phys3::to_camgame" name="openage::coord::phys3::to_camgame">
 <area shape="rect" id="node1" title=" " alt="" coords="619,57,773,98"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#af8b821f1e22d782134986784fd94dbe3" title=" " alt="" coords="425,5,562,32"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#af8b821f1e22d782134986784fd94dbe3" title="draws with a specific graphic and frame" alt="" coords="425,5,562,32"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1tile.xhtml#a81cb5eb0d3404e8433ffbc3a484160dc" title=" " alt="" coords="425,57,561,98"/>
 <area shape="rect" id="node6" href="$structopenage_1_1coord_1_1phys3.xhtml#afb7742fe4e2f67064992aed454d75ef2" title=" " alt="" coords="416,151,571,193"/>
 <area shape="rect" id="node4" href="$structopenage_1_1coord_1_1tile.xhtml#a3f2be2b38a339e563ea0fa96733250ec" title=" " alt="" coords="221,42,357,83"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" title=" " alt="" coords="5,49,163,76"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" title="Draws the texture at tile coordinates." alt="" coords="5,49,163,76"/>
 <area shape="rect" id="node7" href="$structopenage_1_1coord_1_1phys3.xhtml#a851739e9304a9ed9f55f51ef99c814e7" title=" " alt="" coords="212,107,367,149"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_texture.xhtml#a67031aa8a376335fe775cf819b22900c" title=" " alt="" coords="211,173,368,200"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" title=" " alt="" coords="211,225,367,266"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title=" " alt="" coords="10,166,158,207"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_texture.xhtml#a67031aa8a376335fe775cf819b22900c" title="Draws the texture at phys coordinates." alt="" coords="211,173,368,200"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" title="execute the drawing action." alt="" coords="211,225,367,266"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title="Display this mode." alt="" coords="10,166,158,207"/>
 </map>

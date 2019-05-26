@@ -34,7 +34,7 @@
 </g>
 <!-- Node144 -->
 <g id="node3" class="node"><title>Node144</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#aae99478db7d16d650eff5dd34a2194ca" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#aae99478db7d16d650eff5dd34a2194ca" target="_top" xlink:title="Initialize the collection by reading the given file.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 141,-79.5 141,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CSVCollection</text>
 <text text-anchor="middle" x="70.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::CSVCollection</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node145 -->
 <g id="node4" class="node"><title>Node145</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a16ef0fe69558a29af4a8d568f2b5b518" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a16ef0fe69558a29af4a8d568f2b5b518" target="_top" xlink:title="read a single csv file.">
 <polygon fill="white" stroke="black" points="22,-0.5 22,-30.5 119,-30.5 119,-0.5 22,-0.5"/>
 <text text-anchor="start" x="30" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::read</text>
 <text text-anchor="middle" x="70.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_csv_file</text>

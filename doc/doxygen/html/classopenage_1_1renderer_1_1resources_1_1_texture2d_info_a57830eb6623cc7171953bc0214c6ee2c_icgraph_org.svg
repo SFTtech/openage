@@ -21,7 +21,7 @@
 </g>
 <!-- Node19 -->
 <g id="node2" class="node"><title>Node19</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array.xhtml#a780b276d8b13fa2b8e2e1258e32e4199" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array.xhtml#a780b276d8b13fa2b8e2e1258e32e4199" target="_top" xlink:title="Constructs an array of the same number of layers as the size of the given vector, and fills the layer...">
 <polygon fill="white" stroke="black" points="300.5,-300.5 300.5,-341.5 427.5,-341.5 427.5,-300.5 300.5,-300.5"/>
 <text text-anchor="start" x="308.5" y="-329.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="308.5" y="-318.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlTexture2dArray</text>
@@ -36,7 +36,7 @@
 </g>
 <!-- Node20 -->
 <g id="node3" class="node"><title>Node20</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#ab2038754e208bb1929a244dbf29f2b6b" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#ab2038754e208bb1929a244dbf29f2b6b" target="_top" xlink:title="Copies this texture&#39;s data from graphics hardware into a CPU&#45;accessible Texture2dData buffer.">
 <polygon fill="white" stroke="black" points="312,-240.5 312,-281.5 416,-281.5 416,-240.5 312,-240.5"/>
 <text text-anchor="start" x="320" y="-269.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="320" y="-258.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlTexture2d</text>
@@ -51,7 +51,7 @@
 </g>
 <!-- Node21 -->
 <g id="node4" class="node"><title>Node21</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#ad1afa8d4edac82bbb12a3bf371149a41" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#ad1afa8d4edac82bbb12a3bf371149a41" target="_top" xlink:title="Reads the pixel at the given position and casts it to the given type.">
 <polygon fill="white" stroke="black" points="300,-180.5 300,-221.5 428,-221.5 428,-180.5 300,-180.5"/>
 <text text-anchor="start" x="308" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="308" y="-198.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dData</text>
@@ -81,7 +81,7 @@
 </g>
 <!-- Node25 -->
 <g id="node8" class="node"><title>Node25</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#aa521e75b491d72b51afade86d6c18ad4" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#aa521e75b491d72b51afade86d6c18ad4" target="_top" xlink:title="Uploads the provided data into the GPU texture storage.">
 <polygon fill="white" stroke="black" points="312,-60.5 312,-101.5 416,-101.5 416,-60.5 312,-60.5"/>
 <text text-anchor="start" x="320" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="320" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlTexture2d</text>
@@ -96,7 +96,7 @@
 </g>
 <!-- Node26 -->
 <g id="node9" class="node"><title>Node26</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array.xhtml#a2c8d96d2ec74e7ab4b744aebb19cf31d" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array.xhtml#a2c8d96d2ec74e7ab4b744aebb19cf31d" target="_top" xlink:title="Uploads the given texture data into the specified layer.">
 <polygon fill="white" stroke="black" points="300.5,-0.5 300.5,-41.5 427.5,-41.5 427.5,-0.5 300.5,-0.5"/>
 <text text-anchor="start" x="308.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="308.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlTexture2dArray</text>

@@ -1,9 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" title=" " alt="" coords="5,46,152,73"/>
 <area shape="rect" id="node2" href="$classqtsdl_1_1_gui_image_provider_impl.xhtml" title=" " alt="" coords="200,46,383,73"/>
-<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" title=" " alt="" coords="431,39,620,80"/>
-<area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl.xhtml" title=" " alt="" coords="668,5,864,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml" title=" " alt="" coords="671,71,861,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl.xhtml" title=" " alt="" coords="912,37,1111,79"/>
-<area shape="rect" id="node7" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl.xhtml" title=" " alt="" coords="915,103,1107,144"/>
+<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" title="Exposes game textures to the Qt." alt="" coords="431,39,620,80"/>
+<area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl.xhtml" title="Exposes game textures to the Qt by their file name." alt="" coords="668,5,864,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml" title="Base for providers that expose textures to the Qt by their id." alt="" coords="671,71,861,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl.xhtml" title="Exposes game textures to the Qt by their id." alt="" coords="912,37,1111,79"/>
+<area shape="rect" id="node7" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl.xhtml" title="Exposes terrain textures to the Qt by their id." alt="" coords="915,103,1107,144"/>
 </map>

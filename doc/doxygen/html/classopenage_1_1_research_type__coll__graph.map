@@ -1,11 +1,11 @@
 <map id="openage::ResearchType" name="openage::ResearchType">
-<area shape="rect" id="node1" title=" " alt="" coords="330,1315,493,1509"/>
+<area shape="rect" id="node1" title="Describes a research for a single player." alt="" coords="330,1315,493,1509"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml" title=" " alt="" coords="291,881,457,1252"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_player_score.xhtml" title=" " alt="" coords="155,1366,305,1458"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_score.xhtml" title=" " alt="" coords="5,5,175,273"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_team_score.xhtml" title=" " alt="" coords="92,323,237,415"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_team.xhtml" title=" " alt="" coords="91,521,262,760"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_resource_bundle.xhtml" title=" " alt="" coords="287,492,461,789"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_population_tracker.xhtml" title=" " alt="" coords="485,477,668,804"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_civilisation.xhtml" title=" " alt="" coords="692,521,851,760"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_player_score.xhtml" title="The score of a player." alt="" coords="155,1366,305,1458"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_score.xhtml" title="Keeps track of a score and all the sub&#45;scores." alt="" coords="5,5,175,273"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_team_score.xhtml" title="The score of a team." alt="" coords="92,323,237,415"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_team.xhtml" title="A team of players." alt="" coords="91,521,262,760"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_resource_bundle.xhtml" title="A set of amounts of game resources." alt="" coords="287,492,461,789"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_population_tracker.xhtml" title="Keeps track of the population size and capacity." alt="" coords="485,477,668,804"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_civilisation.xhtml" title="contains the initial tech structure for one civilisation" alt="" coords="692,521,851,760"/>
 </map>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-1567 343.01,-1567 343.01,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A filtering operator to iterate over all elements of a map whose elements exist for a certain livespa...">
 <polygon fill="#bfbfbf" stroke="black" points="96.5102,-0.5 96.5102,-123.5 224.51,-123.5 224.51,-0.5 96.5102,-0.5"/>
 <text text-anchor="start" x="104.51" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::MapFilter</text>
 <text text-anchor="start" x="104.51" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">Iterator&lt; key_t, val_t,</text>
@@ -153,7 +153,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node9 -->
 <g id="node7" class="node"><title>Node9</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1curve_1_1_curve_iterator.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1curve_1_1_curve_iterator.xhtml" target="_top" xlink:title="Default interface for curve containers.">
 <polygon fill="white" stroke="black" points="84.5102,-431.5 84.5102,-653.5 236.51,-653.5 236.51,-431.5 84.5102,-431.5"/>
 <text text-anchor="start" x="92.5102" y="-641.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::CurveIterator</text>
 <text text-anchor="middle" x="160.51" y="-630.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; val_t, container_t, iterator_t &gt;</text>
@@ -187,7 +187,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml" target="_top" xlink:title="Fixed&#45;point integer class;.">
 <polygon fill="white" stroke="black" points="204.01,-1114.5 204.01,-1457.5 339.01,-1457.5 339.01,-1114.5 204.01,-1114.5"/>
 <text text-anchor="start" x="212.01" y="-1445.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="271.51" y="-1434.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int_type, fractional_bits &gt;</text>

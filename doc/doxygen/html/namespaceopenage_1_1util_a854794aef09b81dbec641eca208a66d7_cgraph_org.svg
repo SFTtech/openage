@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 695,-35 695,4 -4,4"/>
 <!-- Node53 -->
 <g id="node1" class="node"><title>Node53</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Copies the given string to the returned unique_ptr, including 0 byte.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 99,-30.5 99,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::copy</text>
 <text text-anchor="middle" x="49.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_string</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node54 -->
 <g id="node2" class="node"><title>Node54</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title="Returns the length of the string literal, excluding the terminating NULL byte.">
 <polygon fill="white" stroke="black" points="135,-0.5 135,-30.5 256,-30.5 256,-0.5 135,-0.5"/>
 <text text-anchor="start" x="143" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="195.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strlen</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node55 -->
 <g id="node3" class="node"><title>Node55</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="292,-6 292,-25 379,-25 379,-6 292,-6"/>
 <text text-anchor="middle" x="335.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node57 -->
 <g id="node5" class="node"><title>Node57</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="596,-6 596,-25 691,-25 691,-6 596,-6"/>
 <text text-anchor="middle" x="643.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

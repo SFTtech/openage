@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 278,-35 278,4 -4,4"/>
 <!-- Node13 -->
 <g id="node1" class="node"><title>Node13</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="the spec in this games settings">
 <polygon fill="#bfbfbf" stroke="black" points="161,-0.5 161,-30.5 274,-30.5 274,-0.5 161,-0.5"/>
 <text text-anchor="start" x="169" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMain::</text>
 <text text-anchor="middle" x="217.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">get_spec</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node14 -->
 <g id="node2" class="node"><title>Node14</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_renderer.xhtml#a5c385f1939e1c4a4ca3feb6813f68b06" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_renderer.xhtml#a5c385f1939e1c4a4ca3feb6813f68b06" target="_top" xlink:title="GameSpec used by this renderer.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 125,-30.5 125,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameRenderer</text>
 <text text-anchor="middle" x="62.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::game_spec</text>

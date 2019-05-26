@@ -1,7 +1,7 @@
 <map id="openage::renderer::opengl::GlTexture2dArray::upload" name="openage::renderer::opengl::GlTexture2dArray::upload">
-<area shape="rect" id="node1" title=" " alt="" coords="5,96,175,152"/>
+<area shape="rect" id="node1" title="Uploads the given texture data into the specified layer." alt="" coords="5,96,175,152"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="253,5,363,32"/>
 <area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a04a2df204bf7d3f7029b2e74ee417fec" title="Returns a pointer to the raw texture data, in row&#45;major order." alt="" coords="223,56,393,112"/>
 <area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a57830eb6623cc7171953bc0214c6ee2c" title=" " alt="" coords="226,136,390,192"/>
-<area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title=" " alt="" coords="226,216,390,272"/>
+<area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title="Returns the dimensions of the whole texture bitmap." alt="" coords="226,216,390,272"/>
 </map>

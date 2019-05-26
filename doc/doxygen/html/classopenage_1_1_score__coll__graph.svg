@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-205 131,-205 131,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Keeps track of a score and all the sub&#45;scores.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-200.5 127,-200.5 127,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="63.5" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score</text>
 <polyline fill="none" stroke="black" points="0,-181.5 127,-181.5 "/>

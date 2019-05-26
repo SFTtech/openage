@@ -1,8 +1,8 @@
 <map id="qtsdl::GuiListModel" name="qtsdl::GuiListModel">
-<area shape="rect" id="node1" title=" " alt="" coords="176,491,343,671"/>
+<area shape="rect" id="node1" title="Adapts core that uses a property map to QAbstractListModel interface." alt="" coords="176,491,343,671"/>
 <area shape="rect" id="node6" href="$classopenage_1_1gui_1_1_generator_link.xhtml" title=" " alt="" coords="167,719,352,811"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,307,143,384"/>
 <area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_base.xhtml" title=" " alt="" coords="167,248,351,443"/>
-<area shape="rect" id="node4" href="$classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" title=" " alt="" coords="153,5,366,200"/>
-<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_link.xhtml" title=" " alt="" coords="376,307,503,384"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" title="Stores static properties during initialization to be able to assign them after all &#39;liveReloadTag&#39; pr..." alt="" coords="153,5,366,200"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_link.xhtml" title="Base for QObject wrapper of the domain&#45;specific classes." alt="" coords="376,307,503,384"/>
 </map>

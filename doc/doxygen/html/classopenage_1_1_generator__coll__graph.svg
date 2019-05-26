@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-354 231.5,-354 231.5,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Manages creation and setup of new games.">
 <polygon fill="#bfbfbf" stroke="black" points="67,-0.5 67,-134.5 169,-134.5 169,-0.5 67,-0.5"/>
 <text text-anchor="middle" x="118" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <polyline fill="none" stroke="black" points="67,-115.5 169,-115.5 "/>
@@ -57,7 +57,7 @@
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title="Base for QObject wrapper of the domain&#45;specific classes.">
 <polygon fill="white" stroke="black" points="132.5,-237.5 132.5,-294.5 227.5,-294.5 227.5,-237.5 132.5,-237.5"/>
 <text text-anchor="middle" x="180" y="-282.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemLink</text>
 <polyline fill="none" stroke="black" points="132.5,-275.5 227.5,-275.5 "/>

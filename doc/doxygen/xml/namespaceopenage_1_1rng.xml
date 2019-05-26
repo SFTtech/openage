@@ -65,9 +65,9 @@
         <argsstring>()</argsstring>
         <name>global_seed</name>
         <briefdescription>
+<para>Returns the value of the global seed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the value of the global seed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -80,9 +80,9 @@
         <argsstring>()</argsstring>
         <name>random</name>
         <briefdescription>
+<para>Returns a random number from the global rng. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a random number from the global rng. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -106,9 +106,9 @@
           <declname>upper</declname>
         </param>
         <briefdescription>
+<para>Returns a random number n [lower, upper) from the global rng. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a random number n [lower, upper) from the global rng. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -124,9 +124,9 @@
         <argsstring>()</argsstring>
         <name>real</name>
         <briefdescription>
+<para>Returns a double in [0, 1) from the global rng. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a double in [0, 1) from the global rng. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -149,9 +149,9 @@
           <declname>upper</declname>
         </param>
         <briefdescription>
+<para>Returns a double in [lower, upper) from the global rng. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a double in [lower, upper) from the global rng. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -236,9 +236,10 @@
           <declname>inrng</declname>
         </param>
         <briefdescription>
+<para>Writes the rng state to a stream. </para>
         </briefdescription>
         <detaileddescription>
-<para>Writes the rng state to a stream <parameterlist kind="exception"><parameteritem>
+<para><parameterlist kind="exception"><parameteritem>
 <parameternamelist>
 <parametername>Error</parametername>
 </parameternamelist>
@@ -268,9 +269,10 @@
           <declname>inrng</declname>
         </param>
         <briefdescription>
+<para>Reads the rng from a stream. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reads the rng from a stream <parameterlist kind="exception"><parameteritem>
+<para><parameterlist kind="exception"><parameteritem>
 <parameternamelist>
 <parametername>Error</parametername>
 </parameternamelist>
@@ -333,9 +335,9 @@
         <argsstring>()</argsstring>
         <name>time_seed</name>
         <briefdescription>
+<para>Returns a seed based on time since epoch. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a seed based on time since epoch </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -348,9 +350,9 @@
         <argsstring>()</argsstring>
         <name>random_seed</name>
         <briefdescription>
+<para>Returns a seed based on time since epoch as well as data from std::random_device if available. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a seed based on time since epoch as well as data from std::random_device if available </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -363,9 +365,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Contains an easy to use and fast random number generator. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains an easy to use and fast random number generator.</para>
 <para>This was never designed or intended as a cryptographic-quality, <ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref>, so don&apos;t use it as one. If you do, I&apos;ll tell my mom. </para>
     </detaileddescription>
     <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="20" column="1"/>

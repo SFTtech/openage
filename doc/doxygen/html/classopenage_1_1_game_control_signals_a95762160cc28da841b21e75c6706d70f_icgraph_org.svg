@@ -48,7 +48,7 @@
 </g>
 <!-- Node20 -->
 <g id="node9" class="node"><title>Node20</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" target="_top" xlink:title="Called when the GameControl is set in QML.">
 <polygon fill="white" stroke="black" points="553,-0.5 553,-30.5 662,-30.5 662,-0.5 553,-0.5"/>
 <text text-anchor="start" x="561" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="607.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_control</text>

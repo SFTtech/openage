@@ -20,7 +20,7 @@
 </g>
 <!-- Node97 -->
 <g id="node2" class="node"><title>Node97</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#acd8f5a72ed6227f640eda13229878c6f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#acd8f5a72ed6227f640eda13229878c6f" target="_top" xlink:title="Remove the given element index in the vector.">
 <polygon fill="white" stroke="black" points="187,-0.5 187,-30.5 291,-30.5 291,-0.5 187,-0.5"/>
 <text text-anchor="start" x="195" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vector</text>
 <text text-anchor="middle" x="239" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_remove_swap_end</text>

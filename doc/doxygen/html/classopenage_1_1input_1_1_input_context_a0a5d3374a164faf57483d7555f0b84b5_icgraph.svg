@@ -57,7 +57,7 @@ var sectionId = 'dynsection-8';
 <polygon fill="white" stroke="none" points="-4,4 -4,-270 838,-270 838,4 -4,4"/>
 <!-- Node55 -->
 <g id="node1" class="node"><title>Node55</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Called by the InputManager where this context shall be registered to.">
 <polygon fill="#bfbfbf" stroke="black" points="693,-144.5 693,-174.5 834,-174.5 834,-144.5 693,-144.5"/>
 <text text-anchor="start" x="701" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="763.5" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node56 -->
 <g id="node2" class="node"><title>Node56</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2ece2b2ad4a08c15fb00a39b0f553d3c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2ece2b2ad4a08c15fb00a39b0f553d3c" target="_top" xlink:title="register a hotkey context by pushing it onto the stack.">
 <polygon fill="white" stroke="black" points="512,-144.5 512,-174.5 657,-174.5 657,-144.5 512,-144.5"/>
 <text text-anchor="start" x="520" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="584.5" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">::push_context</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node58 -->
 <g id="node4" class="node"><title>Node58</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a4e0359f0f3cbbf66da045ba1a33ffa57" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a4e0359f0f3cbbf66da045ba1a33ffa57" target="_top" xlink:title="a temporary console command interpreter">
 <polygon fill="white" stroke="black" points="171.5,-235.5 171.5,-265.5 305.5,-265.5 305.5,-235.5 171.5,-235.5"/>
 <text text-anchor="start" x="179.5" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="238.5" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">::interpret</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-8';
 </g>
 <!-- Node59 -->
 <g id="node5" class="node"><title>Node59</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title="register this console to the engine.">
 <polygon fill="white" stroke="black" points="0.5,-215.5 0.5,-245.5 134.5,-245.5 134.5,-215.5 0.5,-215.5"/>
 <text text-anchor="start" x="8.5" y="-233.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="67.5" y="-222.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to_engine</text>

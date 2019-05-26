@@ -20,7 +20,7 @@
 </g>
 <!-- Node185 -->
 <g id="node2" class="node"><title>Node185</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" target="_top" xlink:title="Resolve the native path by flattening all underlying filesystem objects (like unions).">
 <polygon fill="white" stroke="black" points="663.5,-85 663.5,-115 770.5,-115 770.5,-85 663.5,-85"/>
 <text text-anchor="start" x="671.5" y="-103" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <text text-anchor="middle" x="717" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00">::resolve_native_path</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node188 -->
 <g id="node5" class="node"><title>Node188</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" target="_top" xlink:title="Create an internal texture handle.">
 <polygon fill="white" stroke="black" points="494,-110 494,-140 616,-140 616,-110 494,-110"/>
 <text text-anchor="start" x="502" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="555" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">::load_texture</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node193 -->
 <g id="node10" class="node"><title>Node193</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1audio.xhtml#a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1audio.xhtml#a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" target="_top" xlink:title="Opens a opus file.">
 <polygon fill="white" stroke="black" points="500,-61 500,-91 610,-91 610,-61 500,-61"/>
 <text text-anchor="start" x="508" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::open</text>
 <text text-anchor="middle" x="555" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">_opus_file</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node195 -->
 <g id="node12" class="node"><title>Node195</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a54659e7f41b37d889bba34111bb003d0" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a54659e7f41b37d889bba34111bb003d0" target="_top" xlink:title="Create a texture from an image file.">
 <polygon fill="white" stroke="black" points="491,-0.5 491,-41.5 619,-41.5 619,-0.5 491,-0.5"/>
 <text text-anchor="start" x="499" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="499" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dData</text>
@@ -104,7 +104,7 @@
 </g>
 <!-- Node187 -->
 <g id="node4" class="node"><title>Node187</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43" target="_top" xlink:title="Reload the image file.">
 <polygon fill="white" stroke="black" points="315.5,-159.5 315.5,-178.5 439.5,-178.5 439.5,-159.5 315.5,-159.5"/>
 <text text-anchor="middle" x="377.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::reload</text>
 </a>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node189 -->
 <g id="node6" class="node"><title>Node189</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" target="_top" xlink:title="Query the Texture for a given filename.">
 <polygon fill="white" stroke="black" points="316.5,-110 316.5,-140 438.5,-140 438.5,-110 316.5,-110"/>
 <text text-anchor="start" x="324.5" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="377.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">::get_texture</text>
@@ -131,7 +131,7 @@
 </g>
 <!-- Node190 -->
 <g id="node7" class="node"><title>Node190</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_game_spec.xhtml#a0d9bb7cf5c16889a6eab13c714b39ae1" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_game_spec.xhtml#a0d9bb7cf5c16889a6eab13c714b39ae1" target="_top" xlink:title="lookup using a texture file name">
 <polygon fill="white" stroke="black" points="150,-135 150,-165 264,-165 264,-135 150,-135"/>
 <text text-anchor="start" x="158" y="-153" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-142" font-family="Helvetica,sans-Serif" font-size="10.00">get_texture</text>
@@ -145,7 +145,7 @@
 </g>
 <!-- Node191 -->
 <g id="node8" class="node"><title>Node191</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title="fill in the terrain_data attribute of this">
 <polygon fill="white" stroke="black" points="150,-86 150,-116 264,-116 264,-86 150,-86"/>
 <text text-anchor="start" x="158" y="-104" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-93" font-family="Helvetica,sans-Serif" font-size="10.00">load_terrain</text>
@@ -159,7 +159,7 @@
 </g>
 <!-- Node192 -->
 <g id="node9" class="node"><title>Node192</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="0,-86 0,-116 114,-116 114,-86 0,-86"/>
 <text text-anchor="start" x="8" y="-104" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="57" y="-93" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>
@@ -173,7 +173,7 @@
 </g>
 <!-- Node194 -->
 <g id="node11" class="node"><title>Node194</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml#afd535fc99780b2823cdd38c8dfc03f5d" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml#afd535fc99780b2823cdd38c8dfc03f5d" target="_top" xlink:title="Returns the resource as pcm data buffer.">
 <polygon fill="white" stroke="black" points="300,-61 300,-91 455,-91 455,-61 300,-61"/>
 <text text-anchor="start" x="308" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::OpusInMemory</text>
 <text text-anchor="middle" x="377.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">Loader::get_resource</text>
@@ -187,7 +187,7 @@
 </g>
 <!-- Node196 -->
 <g id="node13" class="node"><title>Node196</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" target="_top" xlink:title="Flips the texture along the Y&#45;axis and returns the flipped data with the same info.">
 <polygon fill="white" stroke="black" points="313.5,-0.5 313.5,-41.5 441.5,-41.5 441.5,-0.5 313.5,-0.5"/>
 <text text-anchor="start" x="321.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="321.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dData</text>

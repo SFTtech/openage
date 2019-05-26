@@ -67,9 +67,10 @@
         <argsstring>()</argsstring>
         <name>File</name>
         <briefdescription>
+<para>Empty constructor, pls don&apos;t use. </para>
         </briefdescription>
         <detaileddescription>
-<para>Empty constructor, pls don&apos;t use. It only exists because Cython needs it. </para>
+<para>It only exists because Cython needs it. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -89,9 +90,10 @@
           <declname>mode</declname>
         </param>
         <briefdescription>
+<para>Open a filesystem path, int version. </para>
         </briefdescription>
         <detaileddescription>
-<para>Open a filesystem path, int version. this is just the integer value of the mode_t, because Cython... </para>
+<para>this is just the integer value of the mode_t, because Cython... </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -112,9 +114,9 @@
           <defval><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1ae1e1d3d40573127e9ee0480caf1283d6" kindref="member">mode_t::R</ref></defval>
         </param>
         <briefdescription>
+<para>Open a filesystem path. </para>
         </briefdescription>
         <detaileddescription>
-<para>Open a filesystem path. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -131,9 +133,9 @@
           <declname>filelike</declname>
         </param>
         <briefdescription>
+<para>Create a file from an already created filelike. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a file from an already created filelike. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -150,9 +152,10 @@
           <declname>filelike</declname>
         </param>
         <briefdescription>
+<para>Wraps a python filelike object that is already open. </para>
         </briefdescription>
         <detaileddescription>
-<para>Wraps a python filelike object that is already open. This is called from Cython.</para>
+<para>This is called from Cython.</para>
 <para>You will probably never call that manually. </para>
         </detaileddescription>
         <inbodydescription>
@@ -184,9 +187,10 @@
           <defval>-1</defval>
         </param>
         <briefdescription>
+<para>Read data from the file and return a string. </para>
         </briefdescription>
         <detaileddescription>
-<para>Read data from the file and return a string. If max is negative, return the full remaining file. </para>
+<para>If max is negative, return the full remaining file. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -211,9 +215,10 @@
           <defval>-1</defval>
         </param>
         <briefdescription>
+<para>Read data from the file into a buffer, which has to be large enough to fit max bytes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Read data from the file into a buffer, which has to be large enough to fit max bytes. If max is negative, read the full remaining file, so buf has to be as big as the remaining file size.</para>
+<para>If max is negative, read the full remaining file, so buf has to be as big as the remaining file size.</para>
 <para>Returns the number of bytes that were read. </para>
         </detaileddescription>
         <inbodydescription>
@@ -424,9 +429,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Generic <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref> implementation, used in our filesystem-like and file-like abtraction system. </para>
     </briefdescription>
     <detaileddescription>
-<para>Generic <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref> implementation, used in our filesystem-like and file-like abtraction system. Can be created from Python :)</para>
+<para>Can be created from Python :)</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>: <ref refid="classopenage_1_1util_1_1_file_1abd4ad67daa864e123cfb9516e2d971fc" kindref="member">File()</ref> noexcept File(const string &amp;path, int mode) except + File(PyObj) except +</para>
 <para>shared_ptr[FileLike] <ref refid="classopenage_1_1util_1_1_file_1a7a1e89595deb28915427dbe3b011fe8a" kindref="member">get_fileobj()</ref> except + </para>

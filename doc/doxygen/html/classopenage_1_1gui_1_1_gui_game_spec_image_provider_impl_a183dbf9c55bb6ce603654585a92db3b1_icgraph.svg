@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 318,-46 318,4 -4,4"/>
 <!-- Node12 -->
 <g id="node1" class="node"><title>Node12</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Fills in the provided handle object.">
 <polygon fill="#bfbfbf" stroke="black" points="172,-0.5 172,-41.5 314,-41.5 314,-0.5 172,-0.5"/>
 <text text-anchor="start" x="180" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="180" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::fill</text>

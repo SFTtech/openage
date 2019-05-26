@@ -22,9 +22,9 @@
           <defval>true</defval>
         </param>
         <briefdescription>
+<para>Returns (via the callback) symbolic names for all stack frames, to its best knowledge. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns (via the callback) symbolic names for all stack frames, to its best knowledge.</para>
 <para>The most recent call is returned last (alike Python).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -57,9 +57,9 @@
         <name>trim_to_current_stack_frame</name>
         <reimplementedby refid="classopenage_1_1error_1_1_stack_analyzer_1a5630036766dda80a645cdfbcfc010348">trim_to_current_stack_frame</reimplementedby>
         <briefdescription>
+<para>Removes all the lower frames that are also present in the current stack. </para>
         </briefdescription>
         <detaileddescription>
-<para>Removes all the lower frames that are also present in the current stack.</para>
 <para>Designed to be used in catch clauses, to simulate stack trace collection from throw to catch, instead of from throw to the process entry point.</para>
 <para>Defaults to no-op. </para>
         </detaileddescription>
@@ -82,9 +82,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Abstract class for objects that provide backtrave information through <ref refid="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440" kindref="member">get_symbols()</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>Abstract class for objects that provide backtrave information through <ref refid="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440" kindref="member">get_symbols()</ref>. For a non-abstract implementation, see <ref refid="stackanalyzer_8h" kindref="compound">stackanalyzer.h</ref>.</para>
+<para>For a non-abstract implementation, see <ref refid="stackanalyzer_8h" kindref="compound">stackanalyzer.h</ref>.</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref>: void get_symbols(Func1[void, backtrace_symbol *] callback, cppbool reversed) except + </para>
     </detaileddescription>

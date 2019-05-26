@@ -20,7 +20,7 @@
 </g>
 <!-- Node92 -->
 <g id="node2" class="node"><title>Node92</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#aa27071b50ca9d928ef1a9ce1af5b8328" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#aa27071b50ca9d928ef1a9ce1af5b8328" target="_top" xlink:title="get the tile data a given tile position relative to this chunk.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 116,-30.5 116,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data_neigh</text>

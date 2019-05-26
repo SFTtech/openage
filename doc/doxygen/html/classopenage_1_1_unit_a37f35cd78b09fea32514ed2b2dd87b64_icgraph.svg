@@ -57,7 +57,7 @@ var sectionId = 'dynsection-22';
 <polygon fill="white" stroke="none" points="-4,4 -4,-172 600,-172 600,4 -4,4"/>
 <!-- Node217 -->
 <g id="node1" class="node"><title>Node217</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="adds an available ability to this unit this turns targeted objects into actions which are pushed onto...">
 <polygon fill="#bfbfbf" stroke="black" points="497,-71.5 497,-101.5 596,-101.5 596,-71.5 497,-71.5"/>
 <text text-anchor="start" x="505" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::give</text>
 <text text-anchor="middle" x="546.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">_ability</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node218 -->
 <g id="node2" class="node"><title>Node218</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="331,-137.5 331,-167.5 458,-167.5 458,-137.5 331,-137.5"/>
 <text text-anchor="start" x="339" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="394.5" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node220 -->
 <g id="node4" class="node"><title>Node220</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="0,-115.5 0,-145.5 122,-145.5 122,-115.5 0,-115.5"/>
 <text text-anchor="start" x="8" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="61" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node221 -->
 <g id="node5" class="node"><title>Node221</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="328,-49.5 328,-79.5 461,-79.5 461,-49.5 328,-49.5"/>
 <text text-anchor="start" x="336" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <text text-anchor="middle" x="394.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node222 -->
 <g id="node6" class="node"><title>Node222</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_nyan_type.xhtml#ad058ecef5e52cd4da37dc7d2f10e4255" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_nyan_type.xhtml#ad058ecef5e52cd4da37dc7d2f10e4255" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="340,-0.5 340,-30.5 449,-30.5 449,-0.5 340,-0.5"/>
 <text text-anchor="start" x="348" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::NyanType::</text>
 <text text-anchor="middle" x="394.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialise</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-22';
 </g>
 <!-- Node219 -->
 <g id="node3" class="node"><title>Node219</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="158,-137.5 158,-167.5 292,-167.5 292,-137.5 158,-137.5"/>
 <text text-anchor="start" x="166" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="225" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>

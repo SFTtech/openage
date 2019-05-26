@@ -20,7 +20,7 @@
 </g>
 <!-- Node55 -->
 <g id="node2" class="node"><title>Node55</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a6b4128fc6fd1856fbfc6ece4165fd505" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a6b4128fc6fd1856fbfc6ece4165fd505" target="_top" xlink:title="Draws the texture at window coordinates.">
 <polygon fill="white" stroke="black" points="0,-50 0,-69 118,-69 118,-50 0,-50"/>
 <text text-anchor="middle" x="59" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node56 -->
 <g id="node3" class="node"><title>Node56</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title="Render all the text draw requests made during the frame.">
 <polygon fill="white" stroke="black" points="5.5,-0.5 5.5,-30.5 112.5,-30.5 112.5,-0.5 5.5,-0.5"/>
 <text text-anchor="start" x="13.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="59" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::render</text>

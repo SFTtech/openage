@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>window_size</name>
         <briefdescription>
+<para>size of the game window, in coord_sdl </para>
         </briefdescription>
         <detaileddescription>
-<para>size of the game window, in coord_sdl </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -26,9 +26,9 @@
         <argsstring></argsstring>
         <name>count</name>
         <briefdescription>
+<para>contains the number to be in the next screenshot filename </para>
         </briefdescription>
         <detaileddescription>
-<para>contains the number to be in the next screenshot filename </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -41,9 +41,9 @@
         <argsstring></argsstring>
         <name>last_time</name>
         <briefdescription>
+<para>contains the last time when a screenshot was taken </para>
         </briefdescription>
         <detaileddescription>
-<para>contains the last time when a screenshot was taken </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -56,9 +56,9 @@
         <argsstring></argsstring>
         <name>job_manager</name>
         <briefdescription>
+<para>the job manager this screenshot manager uses </para>
         </briefdescription>
         <detaileddescription>
-<para>the job manager this screenshot manager uses </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -77,9 +77,9 @@
           <declname>job_mgr</declname>
         </param>
         <briefdescription>
+<para>Initializes the screenshot manager with the given job manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes the screenshot manager with the given job manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -108,9 +108,9 @@
           <declname>size</declname>
         </param>
         <briefdescription>
+<para>To be called to save a screenshot. </para>
         </briefdescription>
         <detaileddescription>
-<para>To be called to save a screenshot. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -133,9 +133,10 @@
           <declname>size</declname>
         </param>
         <briefdescription>
+<para>To be called by the job manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>To be called by the job manager. Returns true on success, false otherwise. </para>
+<para>Returns true on success, false otherwise. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,16 +157,16 @@
         <argsstring>()</argsstring>
         <name>gen_next_filename</name>
         <briefdescription>
+<para>to be called to get the next screenshot filename into the array </para>
         </briefdescription>
         <detaileddescription>
-<para>to be called to get the next screenshot filename into the array </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp" bodystart="32" bodyend="48"/>
         <references refid="classopenage_1_1_screenshot_manager_1a8fbe887bb624f7d6a60711ab953aadb4" compoundref="screenshot_8h" startline="42">count</references>
         <references refid="classopenage_1_1_screenshot_manager_1ae6c92d1757aa0e9a49b996ed4fd610fa" compoundref="screenshot_8h" startline="45">last_time</references>
-        <references refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
+        <references refid="namespaceopenage_1_1util_1afd23b015922ec41eec0165f8d88bf430" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
         <referencedby refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" compoundref="screenshot_8cpp" startline="65" endline="130">encode_png</referencedby>
       </memberdef>
       </sectiondef>

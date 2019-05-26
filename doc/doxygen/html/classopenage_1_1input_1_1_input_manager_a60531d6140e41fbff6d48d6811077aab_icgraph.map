@@ -1,9 +1,9 @@
 <map id="openage::input::InputManager::is_down" name="openage::input::InputManager::is_down">
-<area shape="rect" id="node1" title=" " alt="" coords="488,93,681,135"/>
+<area shape="rect" id="node1" title="Query stored pressing stat for a key." alt="" coords="488,93,681,135"/>
 <area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a4b46e70d0aeb78687f2cc12d331f4088" title=" " alt="" coords="247,5,440,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title=" " alt="" coords="268,71,419,98"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title=" " alt="" coords="266,123,421,164"/>
-<area shape="rect" id="node6" href="$classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" title=" " alt="" coords="247,188,440,229"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title=" " alt="" coords="29,71,175,98"/>
-<area shape="rect" id="node7" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" title=" " alt="" coords="5,188,199,229"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title="main engine loop function." alt="" coords="268,71,419,98"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="266,123,421,164"/>
+<area shape="rect" id="node6" href="$classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" title="sets the state of a specific key" alt="" coords="247,188,440,229"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title="starts the engine loop." alt="" coords="29,71,175,98"/>
+<area shape="rect" id="node7" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" title="When a SDL event happens, this is called." alt="" coords="5,188,199,229"/>
 </map>

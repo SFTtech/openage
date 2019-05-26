@@ -80,7 +80,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node8 -->
 <g id="node3" class="node"><title>Node8</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_generator.xhtml#af11850ef5723aa275de62da0964e8da7" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_generator.xhtml#af11850ef5723aa275de62da0964e8da7" target="_top" xlink:title="return the list of player names">
 <polygon fill="white" stroke="black" points="282,-0.5 282,-30.5 384,-30.5 384,-0.5 282,-0.5"/>
 <text text-anchor="start" x="290" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="333" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::player_names</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node10 -->
 <g id="node5" class="node"><title>Node10</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title="Create a game from a specification.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 102,-30.5 102,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="51" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>

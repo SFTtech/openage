@@ -1,11 +1,11 @@
 <map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/pathfinding/a_star.cpp" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/pathfinding/a_star.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="1121,5,1330,61"/>
+<area shape="rect" id="node1" title="This file implements the A* search algorithm for openage." alt="" coords="1121,5,1330,61"/>
 <area shape="rect" id="node2" href="$a__star_8h.xhtml" title=" " alt="" coords="1191,109,1260,136"/>
 <area shape="rect" id="node4" href="$heuristics_8h.xhtml" title=" " alt="" coords="1263,184,1353,211"/>
 <area shape="rect" id="node5" href="$pathfinding_2path_8h.xhtml" title=" " alt="" coords="1280,266,1339,293"/>
 <area shape="rect" id="node11" title=" " alt="" coords="2107,512,2165,539"/>
 <area shape="rect" id="node25" href="$strings_8h.xhtml" title=" " alt="" coords="1104,736,1176,763"/>
-<area shape="rect" id="node36" href="$pairing__heap_8h.xhtml" title=" " alt="" coords="827,423,979,464"/>
+<area shape="rect" id="node36" href="$pairing__heap_8h.xhtml" title="This file contains the implementation of a pairing heap." alt="" coords="827,423,979,464"/>
 <area shape="rect" id="node38" href="$log_8h.xhtml" title=" " alt="" coords="529,512,612,539"/>
 <area shape="rect" id="node39" href="$terrain_8h.xhtml" title=" " alt="" coords="1901,184,2022,211"/>
 <area shape="rect" id="node50" href="$terrain__object_8h.xhtml" title=" " alt="" coords="1698,259,1809,300"/>

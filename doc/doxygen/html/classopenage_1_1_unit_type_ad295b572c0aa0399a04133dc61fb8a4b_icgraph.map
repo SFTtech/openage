@@ -1,15 +1,15 @@
 <map id="openage::UnitType::id" name="openage::UnitType::id">
-<area shape="rect" id="node1" title=" " alt="" coords="928,137,1076,163"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" title=" " alt="" coords="709,5,867,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" title=" " alt="" coords="709,71,867,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" title=" " alt="" coords="696,137,880,163"/>
+<area shape="rect" id="node1" title="gets the unique id of this unit type" alt="" coords="928,137,1076,163"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" title="Called when a unit is created and active." alt="" coords="709,5,867,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" title="Called when a unit is destroyed." alt="" coords="709,71,867,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" title="Check if the player can make a new unit of the given type." alt="" coords="696,137,880,163"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1gameio.xhtml#a644610ec4e114bf5109a4a46847f3762" title=" " alt="" coords="697,187,879,214"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" title=" " alt="" coords="710,240,866,281"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1gameio.xhtml#a2c4db428aa6da2185b33a86508fb49a8" title=" " alt="" coords="493,185,647,211"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" title="Must be given a valid unit to display text attribute indicators." alt="" coords="710,240,866,281"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1gameio.xhtml#afc1134c3c633c8bddb614ecb3da48eb2" title="a game save function that sometimes works" alt="" coords="493,185,647,211"/>
 <area shape="rect" id="node7" href="$classopenage_1_1gui_1_1_game_saver.xhtml#a8d88b6621b60cfc359cbeaae88475686" title=" " alt="" coords="253,79,424,120"/>
 <area shape="rect" id="node8" href="$namespaceopenage_1_1convert_1_1main.xhtml#a4973f96b5a25450372f6d09c153284bf" title=" " alt="" coords="233,144,444,185"/>
 <area shape="rect" id="node10" href="$classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml#aeea5aabc465e55e3b8a519049bbcb623" title=" " alt="" coords="243,209,434,251"/>
 <area shape="rect" id="node9" href="$namespaceopenage_1_1convert_1_1main.xhtml#ab4e998cdda52db3b3cae6efbcd2eda23" title="CLI entry point." alt="" coords="5,151,185,178"/>
-<area shape="rect" id="node12" href="$classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" title=" " alt="" coords="492,241,648,283"/>
-<area shape="rect" id="node13" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title=" " alt="" coords="265,275,413,316"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" title="execute the drawing action." alt="" coords="492,241,648,283"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title="Display this mode." alt="" coords="265,275,413,316"/>
 </map>

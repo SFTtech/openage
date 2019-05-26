@@ -17,9 +17,9 @@
         <argsstring></argsstring>
         <name>eof</name>
         <briefdescription>
+<para>true if the read callback has returned EOF. </para>
         </briefdescription>
         <detaileddescription>
-<para>true if the read callback has returned EOF. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -38,9 +38,9 @@
         <argsstring></argsstring>
         <name>read_callback</name>
         <briefdescription>
+<para>read callback function; invoked whenever the input buffer is empty. </para>
         </briefdescription>
         <detaileddescription>
-<para>read callback function; invoked whenever the input buffer is empty. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -53,9 +53,10 @@
         <argsstring>[inbuf_size]</argsstring>
         <name>inbuf</name>
         <briefdescription>
+<para>Input byte buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Input byte buffer. Used by both modes (via ensure_bits and read_bytes). </para>
+<para>Used by both modes (via ensure_bits and read_bytes). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -68,9 +69,9 @@
         <argsstring></argsstring>
         <name>i_ptr</name>
         <briefdescription>
+<para>Pointer to current position in inbuf. </para>
         </briefdescription>
         <detaileddescription>
-<para>Pointer to current position in inbuf. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -84,9 +85,9 @@
         <argsstring></argsstring>
         <name>i_end</name>
         <briefdescription>
+<para>Pointer to end of valid data in inbuf. </para>
         </briefdescription>
         <detaileddescription>
-<para>Pointer to end of valid data in inbuf. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -98,9 +99,10 @@
         <argsstring></argsstring>
         <name>bit_buffer</name>
         <briefdescription>
+<para>Bit buffer; used in bitstream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Bit buffer; used in bitstream mode. Filled by via get_next_byte() via <ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" kindref="member">ensure_bits()</ref>, read by peak_bits(), cleared by <ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" kindref="member">remove_bits()</ref>. </para>
+<para>Filled by via get_next_byte() via <ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" kindref="member">ensure_bits()</ref>, read by peak_bits(), cleared by <ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" kindref="member">remove_bits()</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -115,9 +117,10 @@
         <argsstring></argsstring>
         <name>bits_left</name>
         <briefdescription>
+<para>The number of valid bits in bit_buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>The number of valid bits in bit_buffer. If e.g. the value is 2, only the two most significant bits of bit_buffer are set. </para>
+<para>If e.g. the value is 2, only the two most significant bits of bit_buffer are set. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -132,9 +135,9 @@
         <argsstring></argsstring>
         <name>stream_position</name>
         <briefdescription>
+<para>counts the number of bits (in bitstream mode) or bytes (in bytestream mode), for determining the correct number of bits/bytes to discard. </para>
         </briefdescription>
         <detaileddescription>
-<para>counts the number of bits (in bitstream mode) or bytes (in bytestream mode), for determining the correct number of bits/bytes to discard. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -146,9 +149,9 @@
         <argsstring></argsstring>
         <name>bitstream_mode</name>
         <briefdescription>
+<para>If set, the bitstream is currently in bytestream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>If set, the bitstream is currently in bytestream mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -194,9 +197,9 @@
         <argsstring>()</argsstring>
         <name>input_bytes_available</name>
         <briefdescription>
+<para>returns the number of bytes that are available in the input byte buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>returns the number of bytes that are available in the input byte buffer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -210,9 +213,9 @@
         <argsstring>()</argsstring>
         <name>ensure_input_bytes</name>
         <briefdescription>
+<para>ensures that at least one byte is available in the input byte buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>ensures that at least one byte is available in the input byte buffer.</para>
 <para>returns the amount of available bytes. </para>
         </detaileddescription>
         <inbodydescription>
@@ -227,9 +230,9 @@
         <argsstring>()</argsstring>
         <name>load_next_16_bits</name>
         <briefdescription>
+<para>for use in bitstream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>for use in bitstream mode.</para>
 <para>loads the next 16-bit value into the bitstream. </para>
         </detaileddescription>
         <inbodydescription>
@@ -247,9 +250,9 @@
           <declname>nbits</declname>
         </param>
         <briefdescription>
+<para>for use in bitstream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>for use in bitstream mode.</para>
 <para>ensures there are at least nbits bits in the bit buffer. </para>
         </detaileddescription>
         <inbodydescription>
@@ -268,9 +271,9 @@
           <declname>nbits</declname>
         </param>
         <briefdescription>
+<para>for use in bitstream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>for use in bitstream mode.</para>
 <para>returns nbits bits from the bit buffer, without removing them. </para>
         </detaileddescription>
         <inbodydescription>
@@ -289,9 +292,9 @@
           <declname>nbits</declname>
         </param>
         <briefdescription>
+<para>for use in bitstream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>for use in bitstream mode.</para>
 <para>removes nbits bits from the bit buffer. </para>
         </detaileddescription>
         <inbodydescription>
@@ -311,9 +314,9 @@
           <defval>0</defval>
         </param>
         <briefdescription>
+<para>for use in bitstream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>for use in bitstream mode.</para>
 <para>Aligns the bitstream to the next multiple of 2 bytes.</para>
 <para>If min_discard is given, at least that amount of bits is discarded. </para>
         </detaileddescription>
@@ -352,9 +355,9 @@
           <declname>nbits</declname>
         </param>
         <briefdescription>
+<para>for use in bitstream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>for use in bitstream mode.</para>
 <para>takes nbits bits from the bit buffer and returns them. </para>
         </detaileddescription>
         <inbodydescription>
@@ -379,9 +382,9 @@
           <declname>count</declname>
         </param>
         <briefdescription>
+<para>for use in bytestream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>for use in bytestream mode.</para>
 <para>reads up to count verbatim bytes from the input byte buffer, and writes them to *buf.</para>
 <para>reads at least 1 and at most count bytes. </para>
         </detaileddescription>
@@ -398,9 +401,9 @@
         <argsstring>()</argsstring>
         <name>read_single_byte</name>
         <briefdescription>
+<para>for use in bytestream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>for use in bytestream mode.</para>
 <para>reads a single verbatim byte from the input byte buffer, and returns it. </para>
         </detaileddescription>
         <inbodydescription>
@@ -415,9 +418,9 @@
         <argsstring>()</argsstring>
         <name>read_4bytes_le</name>
         <briefdescription>
+<para>for use in bytestream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>for use in bytestream mode.</para>
 <para>reads a little-endian-encoded 4-byte number and returns it. </para>
         </detaileddescription>
         <inbodydescription>
@@ -431,9 +434,9 @@
         <argsstring>()</argsstring>
         <name>switch_to_bitstream_mode</name>
         <briefdescription>
+<para>Switches to bitstream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Switches to bitstream mode.</para>
 <para>If the previous bytestream had an odd size, one byte is discarded first. </para>
         </detaileddescription>
         <inbodydescription>
@@ -447,9 +450,9 @@
         <argsstring>()</argsstring>
         <name>switch_to_bytestream_mode</name>
         <briefdescription>
+<para>Switches to bytestream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Switches to bytestream mode.</para>
 <para>Discards 1 to 16 bits to align the bitstream first. </para>
         </detaileddescription>
         <inbodydescription>
@@ -463,9 +466,9 @@
         <argsstring>()</argsstring>
         <name>align_if_in_bitstream_mode</name>
         <briefdescription>
+<para>Aligns the bitstream - that is, <emphasis>if</emphasis> we&apos;re currenlty in bitstream mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Aligns the bitstream - that is, <emphasis>if</emphasis> we&apos;re currenlty in bitstream mode.</para>
 <para>Otherwise, a no-op. </para>
         </detaileddescription>
         <inbodydescription>
@@ -475,9 +478,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Bitstream that is stored in 16-bit little-endian numbers. </para>
     </briefdescription>
     <detaileddescription>
-<para>Bitstream that is stored in 16-bit little-endian numbers. There are two modes:</para>
+<para>There are two modes:</para>
 <para><heading level="2">Bit stream </heading>
 </para>
 <para>This is the default mode. Bits may be retrieved via <ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af4522bbae0ee989e1f5b45606fb2e673" kindref="member">read_bits()</ref>.</para>

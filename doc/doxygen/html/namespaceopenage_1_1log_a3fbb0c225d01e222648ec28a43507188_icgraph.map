@@ -1,52 +1,52 @@
 <map id="openage::log::general_source" name="openage::log::general_source">
-<area shape="rect" id="node1" title=" " alt="" coords="661,1551,808,1592"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="467,1529,589,1555"/>
+<area shape="rect" id="node1" title="Returns a reference to a general named log source, for use by log::log()." alt="" coords="661,1551,808,1592"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title="Convenience method that makes use of the &#39;general&#39; LogSource." alt="" coords="467,1529,589,1555"/>
 <area shape="rect" id="node50" href="$classopenage_1_1log_1_1_std_out_sink.xhtml#a4d3e8a8a430304e81ba004a45b58df0c" title=" " alt="" coords="443,1580,613,1621"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" title=" " alt="" coords="219,5,381,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_asset_manager.xhtml#add18a1e0933affe40c982f62c88f4c05" title=" " alt="" coords="219,71,381,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" title="Create an internal texture handle." alt="" coords="219,5,381,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_asset_manager.xhtml#add18a1e0933affe40c982f62c88f4c05" title="Ask the kernel whether there were updates to watched files." alt="" coords="219,71,381,112"/>
 <area shape="rect" id="node5" href="$classopenage_1_1_asset_manager.xhtml#afee91926bb4d9b763527a7aa28ec95d4" title=" " alt="" coords="219,136,381,177"/>
 <area shape="rect" id="node6" href="$classopenage_1_1event_1_1tests_1_1_test_state.xhtml#ae1464903f08fcc8b86ab86fcc995334e" title=" " alt="" coords="227,201,373,243"/>
-<area shape="rect" id="node7" href="$classopenage_1_1event_1_1tests_1_1_test_event_class.xhtml#a6d3145302d7a6910d0e8e30d42380cc5" title=" " alt="" coords="218,267,382,308"/>
-<area shape="rect" id="node8" href="$classopenage_1_1event_1_1tests_1_1_test_event_class_two.xhtml#af47dbc011710ba5e6986493b63dead0e" title=" " alt="" coords="225,333,375,389"/>
-<area shape="rect" id="node9" href="$classopenage_1_1event_1_1tests_1_1_event_type_test_class.xhtml#acadce4dd71ef75305e148c0a98b42163" title=" " alt="" coords="226,413,374,469"/>
-<area shape="rect" id="node10" href="$classopenage_1_1event_1_1tests_1_1_event_type_test_class.xhtml#ac71424a13be1323a33f6f538a4d8a3e7" title=" " alt="" coords="226,493,374,549"/>
+<area shape="rect" id="node7" href="$classopenage_1_1event_1_1tests_1_1_test_event_class.xhtml#a6d3145302d7a6910d0e8e30d42380cc5" title="This method implements the effects of the event." alt="" coords="218,267,382,308"/>
+<area shape="rect" id="node8" href="$classopenage_1_1event_1_1tests_1_1_test_event_class_two.xhtml#af47dbc011710ba5e6986493b63dead0e" title="This method implements the effects of the event." alt="" coords="225,333,375,389"/>
+<area shape="rect" id="node9" href="$classopenage_1_1event_1_1tests_1_1_event_type_test_class.xhtml#acadce4dd71ef75305e148c0a98b42163" title="Called for each event that is created for this EventClass." alt="" coords="226,413,374,469"/>
+<area shape="rect" id="node10" href="$classopenage_1_1event_1_1tests_1_1_event_type_test_class.xhtml#ac71424a13be1323a33f6f538a4d8a3e7" title="This method implements the effects of the event." alt="" coords="226,493,374,549"/>
 <area shape="rect" id="node11" href="$namespaceopenage_1_1event_1_1tests.xhtml#ab950ba5156aefba0f5ecaab970fcc1aa" title=" " alt="" coords="227,573,373,615"/>
 <area shape="rect" id="node12" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#a6f980e5dd40ec0b730e586e2484233d2" title=" " alt="" coords="221,639,379,680"/>
 <area shape="rect" id="node13" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#ac2256044717a0f7f7aafbb1f2be3a1eb" title=" " alt="" coords="9,668,154,709"/>
 <area shape="rect" id="node14" href="$namespaceopenage_1_1curve_1_1tests.xhtml#aa6290e10c0af22b4a5bcbcf4ad20eb88" title=" " alt="" coords="227,756,373,797"/>
-<area shape="rect" id="node15" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml#a8fcaa20636cab773dc70db2c74a4308e" title=" " alt="" coords="205,821,395,863"/>
-<area shape="rect" id="node16" href="$classopenage_1_1_engine.xhtml#ae0d4c0fbfaa2b1bb13cc71456880e08c" title=" " alt="" coords="229,887,371,928"/>
+<area shape="rect" id="node15" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml#a8fcaa20636cab773dc70db2c74a4308e" title="Perform the load of the default config files." alt="" coords="205,821,395,863"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_engine.xhtml#ae0d4c0fbfaa2b1bb13cc71456880e08c" title="window resize handler function." alt="" coords="229,887,371,928"/>
 <area shape="rect" id="node17" href="$namespaceopenage_1_1error.xhtml#a036babcdd58261ba26288431876e7b02" title=" " alt="" coords="227,953,373,979"/>
-<area shape="rect" id="node18" href="$namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" title=" " alt="" coords="232,1003,368,1030"/>
-<area shape="rect" id="node19" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" title=" " alt="" coords="215,1055,385,1096"/>
-<area shape="rect" id="node20" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#a81a50b0cb9bf2c5148a355f02829c992" title=" " alt="" coords="214,1121,386,1177"/>
-<area shape="rect" id="node21" href="$classopenage_1_1event_1_1demo_1_1_reset_game.xhtml#a0fa6b84fb64f30f1edd75d465876a2b3" title=" " alt="" coords="225,1201,375,1243"/>
+<area shape="rect" id="node18" href="$namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" title="runs the game." alt="" coords="232,1003,368,1030"/>
+<area shape="rect" id="node19" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" title="This method implements the effects of the event." alt="" coords="215,1055,385,1096"/>
+<area shape="rect" id="node20" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#a81a50b0cb9bf2c5148a355f02829c992" title="Is called to calculate the execution time for an event of this eventclass." alt="" coords="214,1121,386,1177"/>
+<area shape="rect" id="node21" href="$classopenage_1_1event_1_1demo_1_1_reset_game.xhtml#a0fa6b84fb64f30f1edd75d465876a2b3" title="This method implements the effects of the event." alt="" coords="225,1201,375,1243"/>
 <area shape="rect" id="node22" href="$classopenage_1_1event_1_1demo_1_1_physics.xhtml#a8667e80722a83c0f0ff29835d5d54baf" title=" " alt="" coords="225,1267,375,1308"/>
-<area shape="rect" id="node23" href="$classopenage_1_1event_1_1_event.xhtml#a8a965360b4fcaa417ffebc7e10c9d8d1" title=" " alt="" coords="225,1332,375,1373"/>
-<area shape="rect" id="node24" href="$classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" title=" " alt="" coords="207,1397,393,1439"/>
-<area shape="rect" id="node25" href="$classopenage_1_1event_1_1_event_queue.xhtml#a7115692628b99b277fead8b39603c885" title=" " alt="" coords="207,1463,393,1504"/>
-<area shape="rect" id="node26" href="$classopenage_1_1event_1_1_loop.xhtml#adde017808ad3b24a4a95c6cad4fcd2db" title=" " alt="" coords="9,1492,154,1533"/>
-<area shape="rect" id="node27" href="$classopenage_1_1event_1_1_event_target.xhtml#a6da66e1f05d92d87ce931d06204b6d9b" title=" " alt="" coords="207,1580,393,1621"/>
-<area shape="rect" id="node28" href="$classopenage_1_1event_1_1_event_target.xhtml#a69453fddcf70ac72c863f61e25bfb786" title=" " alt="" coords="207,1645,393,1687"/>
-<area shape="rect" id="node29" href="$classopenage_1_1event_1_1_event_target.xhtml#a0d2724ee9749bd54f75bfe5fa05a6512" title=" " alt="" coords="207,1711,393,1752"/>
-<area shape="rect" id="node30" href="$classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" title=" " alt="" coords="9,1828,154,1869"/>
-<area shape="rect" id="node31" href="$classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" title=" " alt="" coords="227,1828,373,1869"/>
-<area shape="rect" id="node32" href="$classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" title=" " alt="" coords="227,1893,373,1935"/>
-<area shape="rect" id="node33" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="223,1959,377,2000"/>
-<area shape="rect" id="node34" href="$classopenage_1_1_action_mode.xhtml#afeb7fd105b03e822ff4ebe205cff3265" title=" " alt="" coords="226,2024,374,2065"/>
-<area shape="rect" id="node35" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title=" " alt="" coords="223,2089,377,2131"/>
-<area shape="rect" id="node36" href="$classopenage_1_1_editor_mode.xhtml#a51ca65c9475aa6b8b94e217d08a03bab" title=" " alt="" coords="227,2155,373,2196"/>
+<area shape="rect" id="node23" href="$classopenage_1_1event_1_1_event.xhtml#a8a965360b4fcaa417ffebc7e10c9d8d1" title="Let this event depend on another an event target." alt="" coords="225,1332,375,1373"/>
+<area shape="rect" id="node24" href="$classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" title="Add an event for a specified target." alt="" coords="207,1397,393,1439"/>
+<area shape="rect" id="node25" href="$classopenage_1_1event_1_1_event_queue.xhtml#a7115692628b99b277fead8b39603c885" title="An event target has changed, and the event shall be retriggered." alt="" coords="207,1463,393,1504"/>
+<area shape="rect" id="node26" href="$classopenage_1_1event_1_1_loop.xhtml#adde017808ad3b24a4a95c6cad4fcd2db" title="Register that a given event must be reevaluated at a time, this usually happens because this event de..." alt="" coords="9,1492,154,1533"/>
+<area shape="rect" id="node27" href="$classopenage_1_1event_1_1_event_target.xhtml#a6da66e1f05d92d87ce931d06204b6d9b" title="Call this whenever some data in the target changes." alt="" coords="207,1580,393,1621"/>
+<area shape="rect" id="node28" href="$classopenage_1_1event_1_1_event_target.xhtml#a69453fddcf70ac72c863f61e25bfb786" title="Call this when a keyframe in the underlying container was passed by in time." alt="" coords="207,1645,393,1687"/>
+<area shape="rect" id="node29" href="$classopenage_1_1event_1_1_event_target.xhtml#a0d2724ee9749bd54f75bfe5fa05a6512" title="For debugging: print the dependent eventclass ids as log messages." alt="" coords="207,1711,393,1752"/>
+<area shape="rect" id="node30" href="$classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" title="Execute all events that are registered until a certain point in time." alt="" coords="9,1828,154,1869"/>
+<area shape="rect" id="node31" href="$classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" title="Execute the events." alt="" coords="227,1828,373,1869"/>
+<area shape="rect" id="node32" href="$classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" title="Call all the time change functions." alt="" coords="227,1893,373,1935"/>
+<area shape="rect" id="node33" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="223,1959,377,2000"/>
+<area shape="rect" id="node34" href="$classopenage_1_1_action_mode.xhtml#afeb7fd105b03e822ff4ebe205cff3265" title="Is this mode able to be used?" alt="" coords="226,2024,374,2065"/>
+<area shape="rect" id="node35" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="223,2089,377,2131"/>
+<area shape="rect" id="node36" href="$classopenage_1_1_editor_mode.xhtml#a51ca65c9475aa6b8b94e217d08a03bab" title="Is this mode able to be used?" alt="" coords="227,2155,373,2196"/>
 <area shape="rect" id="node37" href="$classopenage_1_1_game_control.xhtml#aa44a60840b738c202e328902943d8162" title=" " alt="" coords="223,2220,377,2261"/>
-<area shape="rect" id="node38" href="$classopenage_1_1_civilisation.xhtml#aac6dfa467902f19637b13afcbe2c927b" title=" " alt="" coords="230,2285,370,2327"/>
-<area shape="rect" id="node39" href="$classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403" title=" " alt="" coords="228,2351,372,2392"/>
-<area shape="rect" id="node40" href="$namespaceopenage_1_1gameio.xhtml#a2c4db428aa6da2185b33a86508fb49a8" title=" " alt="" coords="223,2417,377,2443"/>
-<area shape="rect" id="node41" href="$namespaceopenage_1_1gameio.xhtml#a75b0984fd51cdc53616318d3f5a0d50f" title=" " alt="" coords="223,2467,377,2494"/>
-<area shape="rect" id="node42" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title=" " alt="" coords="5,2831,157,2872"/>
-<area shape="rect" id="node43" href="$classopenage_1_1_game_spec.xhtml#a949e9f7d9b1017a7f399c55a2bd60c9a" title=" " alt="" coords="224,2569,376,2611"/>
-<area shape="rect" id="node44" href="$classopenage_1_1_game_spec.xhtml#a7ac1e52c333dbceea615911bd705fb88" title=" " alt="" coords="224,2635,376,2676"/>
-<area shape="rect" id="node45" href="$classopenage_1_1_game_spec.xhtml#a1b83c8dcc455fd32056c418a993eb506" title=" " alt="" coords="224,2700,376,2741"/>
-<area shape="rect" id="node46" href="$classopenage_1_1_game_spec.xhtml#aa1f8784ca6aab9da489457d22b386443" title=" " alt="" coords="224,2765,376,2807"/>
-<area shape="rect" id="node47" href="$classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" title=" " alt="" coords="224,2831,376,2872"/>
-<area shape="rect" id="node48" href="$classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" title=" " alt="" coords="224,2896,376,2937"/>
+<area shape="rect" id="node38" href="$classopenage_1_1_civilisation.xhtml#aac6dfa467902f19637b13afcbe2c927b" title="gamedata for a building" alt="" coords="230,2285,370,2327"/>
+<area shape="rect" id="node39" href="$classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403" title="initialise the unit meta data" alt="" coords="228,2351,372,2392"/>
+<area shape="rect" id="node40" href="$namespaceopenage_1_1gameio.xhtml#afc1134c3c633c8bddb614ecb3da48eb2" title="a game save function that sometimes works" alt="" coords="223,2417,377,2443"/>
+<area shape="rect" id="node41" href="$namespaceopenage_1_1gameio.xhtml#ae6761d88280466d1d1b5c638e7c7a042" title="a game load function that sometimes works" alt="" coords="223,2467,377,2494"/>
+<area shape="rect" id="node42" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title="perform the main loading job." alt="" coords="5,2831,157,2872"/>
+<area shape="rect" id="node43" href="$classopenage_1_1_game_spec.xhtml#a949e9f7d9b1017a7f399c55a2bd60c9a" title="lookup using a texture id, this specifically avoids returning the missing placeholder texture" alt="" coords="224,2569,376,2611"/>
+<area shape="rect" id="node44" href="$classopenage_1_1_game_spec.xhtml#a7ac1e52c333dbceea615911bd705fb88" title="get unit texture by graphic id – this is an directional texture which also includes graphic deltas" alt="" coords="224,2635,376,2676"/>
+<area shape="rect" id="node45" href="$classopenage_1_1_game_spec.xhtml#a1b83c8dcc455fd32056c418a993eb506" title="get sound by sound id" alt="" coords="224,2700,376,2741"/>
+<area shape="rect" id="node46" href="$classopenage_1_1_game_spec.xhtml#aa1f8784ca6aab9da489457d22b386443" title="gamedata for a graphic nyan will have to replace this somehow" alt="" coords="224,2765,376,2807"/>
+<area shape="rect" id="node47" href="$classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" title="Invoked when the gamedata has been loaded." alt="" coords="224,2831,376,2872"/>
+<area shape="rect" id="node48" href="$classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" title="fill in the terrain_data attribute of this" alt="" coords="224,2896,376,2937"/>
 <area shape="rect" id="node49" href="$classopenage_1_1_sound.xhtml#a526acd600cd69f6f421a253fc169398b" title=" " alt="" coords="226,2962,374,2989"/>
 </map>

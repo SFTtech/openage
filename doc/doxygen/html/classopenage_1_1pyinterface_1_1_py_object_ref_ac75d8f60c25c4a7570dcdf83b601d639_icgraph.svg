@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-378 461,-378 461,4 -4,4"/>
 <!-- Node80 -->
 <g id="node1" class="node"><title>Node80</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Provide the internal PyObject *.">
 <polygon fill="#bfbfbf" stroke="black" points="344,-171.5 344,-201.5 457,-201.5 457,-171.5 344,-171.5"/>
 <text text-anchor="start" x="352" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="400.5" y="-178.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get_ref</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node81 -->
 <g id="node2" class="node"><title>Node81</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aaacc1330b0393004944477d15e9d82b0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aaacc1330b0393004944477d15e9d82b0" target="_top" xlink:title="obj(args)">
 <polygon fill="white" stroke="black" points="174.5,-343.5 174.5,-373.5 296.5,-373.5 296.5,-343.5 174.5,-343.5"/>
 <text text-anchor="start" x="182.5" y="-361.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="235.5" y="-350.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::call_impl</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node82 -->
 <g id="node3" class="node"><title>Node82</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ad14d4168fbabc89c1b48186ba1df98b2" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ad14d4168fbabc89c1b48186ba1df98b2" target="_top" xlink:title="obj == other">
 <polygon fill="white" stroke="black" points="179.5,-245.5 179.5,-275.5 291.5,-275.5 291.5,-245.5 179.5,-245.5"/>
 <text text-anchor="start" x="187.5" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="235.5" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::equals</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node84 -->
 <g id="node5" class="node"><title>Node84</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a853f15a5d55d1143418e208fac044119" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a853f15a5d55d1143418e208fac044119" target="_top" xlink:title="obj[key]">
 <polygon fill="white" stroke="black" points="182,-294.5 182,-324.5 289,-324.5 289,-294.5 182,-294.5"/>
 <text text-anchor="start" x="190" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="235.5" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node86 -->
 <g id="node7" class="node"><title>Node86</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aae0a4f1161486c40b41b7f47e5b9fb96" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aae0a4f1161486c40b41b7f47e5b9fb96" target="_top" xlink:title="obj in container">
 <polygon fill="white" stroke="black" points="182,-196.5 182,-226.5 289,-226.5 289,-196.5 182,-196.5"/>
 <text text-anchor="start" x="190" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="235.5" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::in</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node87 -->
 <g id="node8" class="node"><title>Node87</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#aa8b1811a748a3b9098ecea916a925393" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#aa8b1811a748a3b9098ecea916a925393" target="_top" xlink:title="Initializes this&#45;&gt;backtrace with a PyExceptionBacktrace object that points at this&#45;&gt;py_obj&#45;&gt;get_ref()...">
 <polygon fill="white" stroke="black" points="163,-147.5 163,-177.5 308,-177.5 308,-147.5 163,-147.5"/>
 <text text-anchor="start" x="171" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="235.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyException::init_backtrace</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node88 -->
 <g id="node9" class="node"><title>Node88</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a078ffdebeb6488c9b045d8d49f0f47de" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a078ffdebeb6488c9b045d8d49f0f47de" target="_top" xlink:title="obj is other">
 <polygon fill="white" stroke="black" points="182,-0.5 182,-30.5 289,-30.5 289,-0.5 182,-0.5"/>
 <text text-anchor="start" x="190" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="235.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::is</text>
@@ -104,7 +104,7 @@
 </g>
 <!-- Node90 -->
 <g id="node11" class="node"><title>Node90</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a2b5e4fb00fdfa866cf3cf0abf78e07e1" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a2b5e4fb00fdfa866cf3cf0abf78e07e1" target="_top" xlink:title="isinstance(obj, type)">
 <polygon fill="white" stroke="black" points="171.5,-98.5 171.5,-128.5 299.5,-128.5 299.5,-98.5 171.5,-98.5"/>
 <text text-anchor="start" x="179.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="235.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::isinstance</text>
@@ -118,7 +118,7 @@
 </g>
 <!-- Node91 -->
 <g id="node12" class="node"><title>Node91</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a9c0069c03b9c5ab553f49b6cc790f8e0" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a9c0069c03b9c5ab553f49b6cc790f8e0" target="_top" xlink:title="setattr(obj, name)">
 <polygon fill="white" stroke="black" points="180,-49.5 180,-79.5 291,-79.5 291,-49.5 180,-49.5"/>
 <text text-anchor="start" x="188" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="235.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::setattr</text>
@@ -151,7 +151,7 @@
 </g>
 <!-- Node85 -->
 <g id="node6" class="node"><title>Node85</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aaff2674b9d1b7ffcf0a67f8ecba9f1b6" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aaff2674b9d1b7ffcf0a67f8ecba9f1b6" target="_top" xlink:title="obj[key]">
 <polygon fill="white" stroke="black" points="10,-294.5 10,-324.5 117,-324.5 117,-294.5 10,-294.5"/>
 <text text-anchor="start" x="18" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="63.5" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get</text>

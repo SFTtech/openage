@@ -1,5 +1,5 @@
 <map id="openage::renderer::Font::get_glyphs" name="openage::renderer::Font::get_glyphs">
-<area shape="rect" id="node1" title=" " alt="" coords="5,71,140,112"/>
+<area shape="rect" id="node1" title="Get the list of glyphs for a particular string." alt="" coords="5,71,140,112"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1renderer.xhtml#a233b952107a09f725a9c2dac55874819" title=" " alt="" coords="189,5,335,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1renderer.xhtml#a9a3fdbe0aa35e12ed4279f4c183977d4" title=" " alt="" coords="188,71,336,112"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1renderer.xhtml#ab2140e3e546fd699e5d7f52ca03fd8eb" title=" " alt="" coords="195,136,329,177"/>

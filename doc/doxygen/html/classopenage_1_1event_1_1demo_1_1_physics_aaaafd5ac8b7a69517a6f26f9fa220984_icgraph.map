@@ -1,6 +1,6 @@
 <map id="openage::event::demo::Physics::reset" name="openage::event::demo::Physics::reset">
 <area shape="rect" id="node1" title=" " alt="" coords="420,39,569,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" title=" " alt="" coords="203,5,372,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" title="This method implements the effects of the event." alt="" coords="203,5,372,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1event_1_1demo_1_1_physics.xhtml#a808f9e14e491c56f818471417ea08396" title=" " alt="" coords="204,71,371,112"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1event_1_1demo.xhtml#a941b2bcbd6e44b20cc352eb1c2b64068" title=" " alt="" coords="5,71,155,112"/>
 </map>

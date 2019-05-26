@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 473,-84 473,4 -4,4"/>
 <!-- Node216 -->
 <g id="node1" class="node"><title>Node216</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="register a hud drawing handler, drawn in hud coordinates.">
 <polygon fill="#bfbfbf" stroke="black" points="341,-24.5 341,-54.5 469,-54.5 469,-24.5 341,-24.5"/>
 <text text-anchor="start" x="349" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::register</text>
 <text text-anchor="middle" x="405" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">_drawhud_action</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node217 -->
 <g id="node2" class="node"><title>Node217</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title="register this console to the engine.">
 <polygon fill="white" stroke="black" points="171,-49.5 171,-79.5 305,-79.5 305,-49.5 171,-49.5"/>
 <text text-anchor="start" x="179" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="238" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to_engine</text>

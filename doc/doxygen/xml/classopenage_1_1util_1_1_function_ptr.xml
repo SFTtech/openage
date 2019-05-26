@@ -44,9 +44,9 @@
           <declname>ptr</declname>
         </param>
         <briefdescription>
+<para>Implicit conversion from raw type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Implicit conversion from raw type. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -55,9 +55,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Simple wrapper type that contains a function pointer. </para>
     </briefdescription>
     <detaileddescription>
-<para>Simple wrapper type that contains a function pointer. Needed as workaround for <ulink url="http://stackoverflow.com/questions/31040075">http://stackoverflow.com/questions/31040075</ulink> </para>
+<para>Needed as workaround for <ulink url="http://stackoverflow.com/questions/31040075">http://stackoverflow.com/questions/31040075</ulink> </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5953">

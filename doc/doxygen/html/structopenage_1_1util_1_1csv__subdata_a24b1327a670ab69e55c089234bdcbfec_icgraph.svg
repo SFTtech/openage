@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-75 496,-75 496,4 -4,4"/>
 <!-- Node9 -->
 <g id="node1" class="node"><title>Node9</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Read the data of the lineformat from the collection.">
 <polygon fill="#bfbfbf" stroke="black" points="400,-0.5 400,-30.5 492,-30.5 492,-0.5 400,-0.5"/>
 <text text-anchor="start" x="408" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::csv</text>
 <text text-anchor="middle" x="446" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_subdata::read</text>

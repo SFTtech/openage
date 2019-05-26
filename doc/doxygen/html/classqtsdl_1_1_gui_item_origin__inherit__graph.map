@@ -1,6 +1,6 @@
 <map id="qtsdl::GuiItemOrigin&lt; T &gt;" name="qtsdl::GuiItemOrigin&lt; T &gt;">
 <area shape="rect" id="node1" title=" " alt="" coords="765,5,933,83"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="491,153,625,230"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item.xhtml" title="Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads." alt="" coords="491,153,625,230"/>
 <area shape="rect" id="node15" href="$classqtsdl_1_1_gui_item_interface.xhtml" title=" " alt="" coords="1369,153,1552,230"/>
 <area shape="rect" id="node18" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="60,145,197,237"/>
 <area shape="rect" id="node19" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="292,145,429,237"/>
@@ -8,7 +8,7 @@
 <area shape="rect" id="node21" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="862,145,1017,237"/>
 <area shape="rect" id="node22" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="1203,145,1345,237"/>
 <area shape="rect" id="node23" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="1041,145,1179,237"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_list_model.xhtml" title=" " alt="" coords="411,300,617,451"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_list_model.xhtml" title="A shell object fir cores inherited from GuiPropertyMap." alt="" coords="411,300,617,451"/>
 <area shape="rect" id="node6" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="11,329,190,421"/>
 <area shape="rect" id="node8" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="215,329,387,421"/>
 <area shape="rect" id="node9" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="641,329,832,421"/>

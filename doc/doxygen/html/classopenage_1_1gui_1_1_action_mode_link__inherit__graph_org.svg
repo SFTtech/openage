@@ -92,7 +92,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title="Shadows inherited member functions.">
 <polygon fill="white" stroke="black" points="106.5,-520 106.5,-621 207.5,-621 207.5,-520 106.5,-520"/>
 <text text-anchor="middle" x="157" y="-609" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Shadow&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="106.5,-602 207.5,-602 "/>
@@ -114,7 +114,7 @@
 </g>
 <!-- Node10 -->
 <g id="node11" class="node"><title>Node10</title>
-<g id="a_node11"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title="Switches the factory to production of the instances of the derived class.">
 <polygon fill="white" stroke="black" points="247.5,-376.5 247.5,-444.5 358.5,-444.5 358.5,-376.5 247.5,-376.5"/>
 <text text-anchor="middle" x="303" y="-432.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Inherits&lt; T, P &gt;</text>
 <polyline fill="none" stroke="black" points="247.5,-425.5 358.5,-425.5 "/>
@@ -196,7 +196,7 @@
 </g>
 <!-- Node8 -->
 <g id="node9" class="node"><title>Node8</title>
-<g id="a_node9"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="white" stroke="black" points="373,-867.5 373,-1001.5 511,-1001.5 511,-867.5 373,-867.5"/>
 <text text-anchor="middle" x="442" y="-989.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="373,-982.5 511,-982.5 "/>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 273,-62 273,4 -4,4"/>
 <!-- Node98 -->
 <g id="node1" class="node"><title>Node98</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="remove from stockpile if available">
 <polygon fill="#bfbfbf" stroke="black" points="147,-19.5 147,-38.5 269,-38.5 269,-19.5 147,-19.5"/>
 <text text-anchor="middle" x="208" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::deduct</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node99 -->
 <g id="node2" class="node"><title>Node99</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" target="_top" xlink:title="The given player buys the given resource with gold.">
 <polygon fill="white" stroke="black" points="0,-38.5 0,-57.5 111,-57.5 111,-38.5 0,-38.5"/>
 <text text-anchor="middle" x="55.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::buy</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node100 -->
 <g id="node3" class="node"><title>Node100</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title="The given player sells the given resource for gold.">
 <polygon fill="white" stroke="black" points="0.5,-0.5 0.5,-19.5 110.5,-19.5 110.5,-0.5 0.5,-0.5"/>
 <text text-anchor="middle" x="55.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::sell</text>
 </a>

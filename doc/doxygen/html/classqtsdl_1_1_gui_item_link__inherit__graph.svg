@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-734 1140.5,-734 1140.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Base for QObject wrapper of the domain&#45;specific classes.">
 <polygon fill="#bfbfbf" stroke="black" points="861,-672.5 861,-729.5 956,-729.5 956,-672.5 861,-672.5"/>
 <text text-anchor="middle" x="908.5" y="-717.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemLink</text>
 <polyline fill="none" stroke="black" points="861,-710.5 956,-710.5 "/>
@@ -86,7 +86,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="classqtsdl_1_1_gui_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classqtsdl_1_1_gui_list_model.xhtml" target="_top" xlink:title="Adapts core that uses a property map to QAbstractListModel interface.">
 <polygon fill="white" stroke="black" points="846,-501.5 846,-635.5 971,-635.5 971,-501.5 846,-501.5"/>
 <text text-anchor="middle" x="908.5" y="-623.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiListModel</text>
 <polyline fill="none" stroke="black" points="846,-616.5 971,-616.5 "/>

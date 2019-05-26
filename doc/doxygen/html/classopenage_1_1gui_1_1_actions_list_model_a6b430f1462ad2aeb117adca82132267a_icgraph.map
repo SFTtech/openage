@@ -1,5 +1,5 @@
 <map id="openage::gui::ActionsListModel::clear_buttons" name="openage::gui::ActionsListModel::clear_buttons">
-<area shape="rect" id="node1" title=" " alt="" coords="663,43,832,84"/>
+<area shape="rect" id="node1" title="Clears all buttons." alt="" coords="663,43,832,84"/>
 <area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_actions_list_model.xhtml#a916eb7b63f0daf57e3d90eedf0690200" title=" " alt="" coords="441,43,615,84"/>
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_actions_list_model.xhtml#af519bfab0685982fed954d1dbf0b7e7c" title=" " alt="" coords="223,5,393,47"/>
 <area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_actions_list_model.xhtml#abd55b596dfde20d00900d9d7ed7d2e87" title=" " alt="" coords="223,71,393,127"/>

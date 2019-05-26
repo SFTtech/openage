@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-172 128,-172 128,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="The renderer.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-167.5 124,-167.5 124,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="62" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">Renderer</text>

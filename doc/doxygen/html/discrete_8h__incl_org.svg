@@ -825,7 +825,7 @@
 </g>
 <!-- Node52 -->
 <g id="node47" class="node"><title>Node52</title>
-<g id="a_node47"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title=" ">
+<g id="a_node47"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title="This file contains the implementation of a pairing heap.">
 <polygon fill="white" stroke="black" points="655,-504.952 655,-534.952 769,-534.952 769,-504.952 655,-504.952"/>
 <text text-anchor="start" x="663" y="-522.952" font-family="Helvetica,sans-Serif" font-size="10.00">../datastructure/pairing</text>
 <text text-anchor="middle" x="712" y="-511.952" font-family="Helvetica,sans-Serif" font-size="10.00">_heap.h</text>

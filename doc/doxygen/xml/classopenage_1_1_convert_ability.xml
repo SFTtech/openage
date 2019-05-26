@@ -69,9 +69,9 @@
           <declname>cmd</declname>
         </param>
         <briefdescription>
+<para>true if the paramaters allow an action to be performed </para>
         </briefdescription>
         <detaileddescription>
-<para>true if the paramaters allow an action to be performed </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -101,9 +101,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>applies command to a given unit </para>
         </briefdescription>
         <detaileddescription>
-<para>applies command to a given unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -119,9 +119,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>initiates a convert action when given a valid target </para>
     </briefdescription>
     <detaileddescription>
-<para>initiates a convert action when given a valid target </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1616">

@@ -1,6 +1,6 @@
 <map id="openage::pyinterface::Func::check_fptr" name="openage::pyinterface::Func::check_fptr">
-<area shape="rect" id="node1" title=" " alt="" coords="253,93,396,134"/>
-<area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_func.xhtml#a6f751ca999eabb5bd65e5bc73acc50b1" title=" " alt="" coords="5,5,205,61"/>
-<area shape="rect" id="node3" href="$classopenage_1_1pyinterface_1_1_func.xhtml#a523f9e78c668fd6192a81cab5e6c72cb" title=" " alt="" coords="5,85,205,141"/>
-<area shape="rect" id="node4" href="$classopenage_1_1pyinterface_1_1_func.xhtml#aaed99bb0f4d5ec8a33f23db333df3fce" title=" " alt="" coords="5,165,205,221"/>
+<area shape="rect" id="node1" title="raises an Error if this&#45;&gt;fptr is still uninitialized." alt="" coords="253,93,396,134"/>
+<area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_func.xhtml#a6f751ca999eabb5bd65e5bc73acc50b1" title="for direct usage (mostly from Cython)" alt="" coords="5,5,205,61"/>
+<area shape="rect" id="node3" href="$classopenage_1_1pyinterface_1_1_func.xhtml#a523f9e78c668fd6192a81cab5e6c72cb" title="for explicit conversion to std::function." alt="" coords="5,85,205,141"/>
+<area shape="rect" id="node4" href="$classopenage_1_1pyinterface_1_1_func.xhtml#aaed99bb0f4d5ec8a33f23db333df3fce" title="for implicit conversion to std::function, for usage in a context where std::function would be expecte..." alt="" coords="5,165,205,221"/>
 </map>

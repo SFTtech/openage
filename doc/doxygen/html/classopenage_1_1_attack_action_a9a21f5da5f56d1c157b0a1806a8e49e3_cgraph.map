@@ -1,5 +1,5 @@
 <map id="openage::AttackAction::completed_in_range" name="openage::AttackAction::completed_in_range">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,160,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="208,5,336,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="384,13,545,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title="returns attribute based on templated value" alt="" coords="208,5,336,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title="Get the attribute based on the type." alt="" coords="384,13,545,39"/>
 </map>

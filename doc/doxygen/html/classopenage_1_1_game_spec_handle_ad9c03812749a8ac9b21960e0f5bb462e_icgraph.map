@@ -1,4 +1,4 @@
 <map id="openage::GameSpecHandle::set_asset_manager" name="openage::GameSpecHandle::set_asset_manager">
-<area shape="rect" id="node1" title=" " alt="" coords="247,5,431,47"/>
+<area shape="rect" id="node1" title="invoked from qml when the asset_manager member is set." alt="" coords="247,5,431,47"/>
 <area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_game_spec_link.xhtml#acee4b3764eaa0e07144e164b8b7bdca0" title=" " alt="" coords="5,5,199,47"/>
 </map>

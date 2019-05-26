@@ -96,27 +96,34 @@ $(document).ready(function(){initNavTree('classopenage_1_1_output_mode_signals.x
 </div><!--header-->
 <div class="contents">
 
+<p>Signals for a gui mode.  
+ <a href="classopenage_1_1_output_mode_signals.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="game__control_8h_source.xhtml">game_control.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::OutputModeSignals:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_output_mode_signals__inherit__graph.svg" width="204" height="214"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_output_mode_signals__inherit__graph.svg" width="204" height="214"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::OutputModeSignals:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_output_mode_signals__coll__graph.svg" width="204" height="214"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_output_mode_signals__coll__graph.svg" width="204" height="214"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:a5789bb37fcce9236340a67c62124efe4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_output_mode_signals.xhtml#a5789bb37fcce9236340a67c62124efe4">announced</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a5789bb37fcce9236340a67c62124efe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal is triggered to anounce a new output mode.  <a href="#a5789bb37fcce9236340a67c62124efe4">More...</a><br /></td></tr>
 <tr class="separator:a5789bb37fcce9236340a67c62124efe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a7461c5308d407e9e2284efa3c7f90d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_output_mode_signals.xhtml#a6a7461c5308d407e9e2284efa3c7f90d">binds_changed</a> (const std::vector&lt; std::string &gt; &amp;binds)</td></tr>
+<tr class="memdesc:a6a7461c5308d407e9e2284efa3c7f90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal is triggered when the bindings of the mode change.  <a href="#a6a7461c5308d407e9e2284efa3c7f90d">More...</a><br /></td></tr>
 <tr class="separator:a6a7461c5308d407e9e2284efa3c7f90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -147,7 +154,9 @@ Signals</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Signal is triggered to anounce a new output mode. name: name of the gui mode. </p>
+
+<p>Signal is triggered to anounce a new output mode. </p>
+<p>name: name of the gui mode. </p>
 
 <p class="reference">Referenced by <a class="el" href="game__control_8cpp_source.xhtml#l00030">openage::OutputMode::announce()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00073">openage::gui::OutputModeLink::on_core_adopted()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -155,7 +164,8 @@ Signals</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_output_mode_signals_a5789bb37fcce9236340a67c62124efe4_icgraph.svg" width="100%" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_output_mode_signals_a5789bb37fcce9236340a67c62124efe4_icgraph.svg" width="100%" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -183,7 +193,9 @@ Signals</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Signal is triggered when the bindings of the mode change. binds: list of strings that describe keybindings. </p>
+
+<p>Signal is triggered when the bindings of the mode change. </p>
+<p>binds: list of strings that describe keybindings. </p>
 
 <p class="reference">Referenced by <a class="el" href="game__control_8cpp_source.xhtml#l00030">openage::OutputMode::announce()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00073">openage::gui::OutputModeLink::on_core_adopted()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -191,7 +203,8 @@ Signals</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_output_mode_signals_a6a7461c5308d407e9e2284efa3c7f90d_icgraph.svg" width="100%" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_output_mode_signals_a6a7461c5308d407e9e2284efa3c7f90d_icgraph.svg" width="100%" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>

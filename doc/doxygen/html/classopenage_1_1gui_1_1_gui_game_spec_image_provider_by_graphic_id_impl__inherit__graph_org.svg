@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-823 184,-823 184,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Exposes game textures to the Qt by their id.">
 <polygon fill="#bfbfbf" stroke="black" points="12,-0.5 12,-134.5 168,-134.5 168,-0.5 12,-0.5"/>
 <text text-anchor="start" x="20" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="90" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderByGraphicIdImpl</text>
@@ -30,7 +30,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml" target="_top" xlink:title="Base for providers that expose textures to the Qt by their id.">
 <polygon fill="white" stroke="black" points="12,-171.5 12,-294.5 168,-294.5 168,-171.5 12,-171.5"/>
 <text text-anchor="start" x="20" y="-282.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="90" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderByIdImpl</text>
@@ -53,7 +53,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" target="_top" xlink:title="Exposes game textures to the Qt.">
 <polygon fill="white" stroke="black" points="0,-331.5 0,-575.5 180,-575.5 180,-331.5 0,-331.5"/>
 <text text-anchor="start" x="8" y="-563.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="90" y="-552.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl</text>

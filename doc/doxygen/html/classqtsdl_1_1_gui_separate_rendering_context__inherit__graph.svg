@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-266 173,-266 173,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Create a separate context to render the GUI, make it shared with the main context.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-134.5 169,-134.5 169,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSeparateRendering</text>
 <text text-anchor="middle" x="84.5" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">Context</text>
@@ -30,7 +30,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_ctx_extraction_mode.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_ctx_extraction_mode.xhtml" target="_top" xlink:title="Abstract base for the method of getting a Qt&#45;usable context.">
 <polygon fill="white" stroke="black" points="21,-171.5 21,-261.5 148,-261.5 148,-171.5 21,-171.5"/>
 <text text-anchor="middle" x="84.5" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::CtxExtractionMode</text>
 <polyline fill="none" stroke="black" points="21,-242.5 148,-242.5 "/>

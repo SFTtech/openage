@@ -1,6 +1,6 @@
 <map id="openage.convert.dataformat.generated_file.GeneratedFile.generate" name="openage.convert.dataformat.generated_file.GeneratedFile.generate">
 <area shape="rect" id="node1" title="actually generate the content for this file." alt="" coords="5,23,248,65"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" title=" " alt="" coords="296,5,415,32"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="704,5,831,32"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" title="list()" alt="" coords="296,5,415,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="704,5,831,32"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="463,5,656,32"/>
 </map>

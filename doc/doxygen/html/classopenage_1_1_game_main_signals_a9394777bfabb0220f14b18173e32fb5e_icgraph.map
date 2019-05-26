@@ -1,9 +1,9 @@
 <map id="openage::GameMainSignals::game_running" name="openage::GameMainSignals::game_running">
 <area shape="rect" id="node1" title=" " alt="" coords="475,103,660,144"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_game_main_handle.xhtml#a7ae88934bf1fc3c90e397441657718d2" title=" " alt="" coords="240,37,423,79"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_main_handle.xhtml#a7ae88934bf1fc3c90e397441657718d2" title="Emit a qt signal to notify for changes in a running game." alt="" coords="240,37,423,79"/>
 <area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_game_main_link.xhtml#a360f50de98c75d538bf46a03c3731874" title=" " alt="" coords="236,103,427,144"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_game_control.xhtml#ae6ce3ec10ca18afc9cb7235c88ac7113" title=" " alt="" coords="254,168,409,209"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_game_main_handle.xhtml#aa8b508b3c91e58ba2f6b34ab22759c85" title=" " alt="" coords="5,5,188,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_game_main_handle.xhtml#afbd62856de4f1e4cf749eaef6b87c50d" title=" " alt="" coords="5,71,188,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_game_main_handle.xhtml#aa8b508b3c91e58ba2f6b34ab22759c85" title="End the game and delete the game handle." alt="" coords="5,5,188,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_game_main_handle.xhtml#afbd62856de4f1e4cf749eaef6b87c50d" title="Pass the given game to the engine and start it." alt="" coords="5,71,188,112"/>
 <area shape="rect" id="node7" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#ae7ae95345cce7b97f5cbab741589808a" title=" " alt="" coords="7,168,187,209"/>
 </map>

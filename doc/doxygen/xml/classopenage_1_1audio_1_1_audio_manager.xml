@@ -25,9 +25,9 @@
         <argsstring></argsstring>
         <name>available</name>
         <briefdescription>
+<para>If no audio device was found, this audio manager will be unavailable. </para>
         </briefdescription>
         <detaileddescription>
-<para>If no audio device was found, this audio manager will be unavailable. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -42,9 +42,9 @@
         <argsstring></argsstring>
         <name>job_manager</name>
         <briefdescription>
+<para>The job manager used in this audio manager for job queuing. </para>
         </briefdescription>
         <detaileddescription>
-<para>The job manager used in this audio manager for job queuing. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -57,9 +57,9 @@
         <argsstring></argsstring>
         <name>device_name</name>
         <briefdescription>
+<para>the used audio device&apos;s name </para>
         </briefdescription>
         <detaileddescription>
-<para>the used audio device&apos;s name </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -71,9 +71,9 @@
         <argsstring></argsstring>
         <name>device_spec</name>
         <briefdescription>
+<para>the audio output format </para>
         </briefdescription>
         <detaileddescription>
-<para>the audio output format </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -86,9 +86,9 @@
         <argsstring></argsstring>
         <name>device_id</name>
         <briefdescription>
+<para>the used audio device&apos;s id </para>
         </briefdescription>
         <detaileddescription>
-<para>the used audio device&apos;s id </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -103,9 +103,9 @@
         <argsstring></argsstring>
         <name>mix_buffer</name>
         <briefdescription>
+<para>Buffer used for mixing audio to one stream. </para>
         </briefdescription>
         <detaileddescription>
-<para>Buffer used for mixing audio to one stream. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -160,9 +160,10 @@
           <defval>&quot;&quot;</defval>
         </param>
         <briefdescription>
+<para>Initializes the audio manager with the given device name. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes the audio manager with the given device name. If the name is empty, the default device is used. </para>
+<para>If the name is empty, the default device is used. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -256,9 +257,10 @@
           <declname>sound_files</declname>
         </param>
         <briefdescription>
+<para>Loads all audio resources, that are specified in the sound_files vector. </para>
         </briefdescription>
         <detaileddescription>
-<para>Loads all audio resources, that are specified in the sound_files vector. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>sound_files</parametername>
 </parameternamelist>
@@ -292,9 +294,10 @@
           <declname>id</declname>
         </param>
         <briefdescription>
+<para>Returns a sound object with the given category and the given id. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a sound object with the given category and the given id. If no such sound exists an <ref refid="classopenage_1_1audio_1_1_error" kindref="compound">Error</ref> will be thrown. <parameterlist kind="param"><parameteritem>
+<para>If no such sound exists an <ref refid="classopenage_1_1audio_1_1_error" kindref="compound">Error</ref> will be thrown. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>category</parametername>
 </parameternamelist>
@@ -337,9 +340,9 @@
           <declname>length</declname>
         </param>
         <briefdescription>
+<para>Called from the audio system once to request new data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called from the audio system once to request new data. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -354,9 +357,9 @@
         <argsstring>() const</argsstring>
         <name>get_device_spec</name>
         <briefdescription>
+<para>Returns the currently used audio output format. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the currently used audio output format. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -369,9 +372,9 @@
         <argsstring>() const</argsstring>
         <name>get_job_manager</name>
         <briefdescription>
+<para>Return the game engine the audio manager is attached to. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the game engine the audio manager is attached to. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -385,9 +388,10 @@
         <argsstring>() const</argsstring>
         <name>is_available</name>
         <briefdescription>
+<para>If this audio manager is available. </para>
         </briefdescription>
         <detaileddescription>
-<para>If this audio manager is available. It&apos;s not available if </para>
+<para>It&apos;s not available if </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -451,9 +455,9 @@
         <argsstring>()</argsstring>
         <name>get_devices</name>
         <briefdescription>
+<para>Returns a vector of all available device names. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a vector of all available device names. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -465,9 +469,9 @@
         <argsstring>()</argsstring>
         <name>get_drivers</name>
         <briefdescription>
+<para>Returns a vector of all available driver names. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a vector of all available driver names. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -479,9 +483,9 @@
         <argsstring>()</argsstring>
         <name>get_current_driver</name>
         <briefdescription>
+<para>Returns the name of the currently used driver. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the name of the currently used driver. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -489,9 +493,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>This class provides audio functionality for openage. </para>
     </briefdescription>
     <detaileddescription>
-<para>This class provides audio functionality for openage. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="464">

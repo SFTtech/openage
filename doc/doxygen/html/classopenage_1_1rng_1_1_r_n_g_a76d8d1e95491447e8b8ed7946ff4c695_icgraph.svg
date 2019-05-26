@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-24 294,-24 294,4 -4,4"/>
 <!-- Node150 -->
 <g id="node1" class="node"><title>Node150</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Seeds with the 64 bit seed.">
 <polygon fill="#bfbfbf" stroke="black" points="163,-0.5 163,-19.5 290,-19.5 290,-0.5 163,-0.5"/>
 <text text-anchor="middle" x="226.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::seed</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node151 -->
 <g id="node2" class="node"><title>Node151</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ade1468036c9d6dcb19a7d32b500e049b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ade1468036c9d6dcb19a7d32b500e049b" target="_top" xlink:title="Creates an rng and seeds it with the 64 bit seed.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-19.5 127,-19.5 127,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="63.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::RNG</text>
 </a>

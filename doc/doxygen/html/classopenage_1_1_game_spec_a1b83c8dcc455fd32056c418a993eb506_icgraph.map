@@ -1,5 +1,5 @@
 <map id="openage::GameSpec::get_sound" name="openage::GameSpec::get_sound">
-<area shape="rect" id="node1" title=" " alt="" coords="232,39,384,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" title=" " alt="" coords="22,5,167,47"/>
+<area shape="rect" id="node1" title="get sound by sound id" alt="" coords="232,39,384,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" title="initialise graphic data" alt="" coords="22,5,167,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_movable_producer.xhtml#ad4f66cd3cb729ceb9c15d7d9f8e00764" title=" " alt="" coords="5,71,184,112"/>
 </map>

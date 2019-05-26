@@ -13,9 +13,9 @@
         <argsstring></argsstring>
         <name>types</name>
         <briefdescription>
+<para>The collection of unit class to unit type pairs. </para>
         </briefdescription>
         <detaileddescription>
-<para>The collection of unit class to unit type pairs </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -44,9 +44,9 @@
         <name>copy</name>
         <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
         <briefdescription>
+<para>Produces an copy of the attribute. </para>
         </briefdescription>
         <detaileddescription>
-<para>Produces an copy of the attribute. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -66,9 +66,9 @@
           <declname>unit</declname>
         </param>
         <briefdescription>
+<para>Switch the type of a unit based on a given unit class. </para>
         </briefdescription>
         <detaileddescription>
-<para>Switch the type of a unit based on a given unit class </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -78,9 +78,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Stores the collection of unit types based on a unit class. </para>
     </briefdescription>
     <detaileddescription>
-<para>Stores the collection of unit types based on a unit class. It is used mostly for units with multiple graphics (villagers, trebuchets). </para>
+<para>It is used mostly for units with multiple graphics (villagers, trebuchets). </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="367">

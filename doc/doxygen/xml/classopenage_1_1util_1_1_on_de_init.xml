@@ -121,9 +121,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Runs <ref refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" kindref="member">code()</ref> on destruction. </para>
     </briefdescription>
     <detaileddescription>
-<para>Runs <ref refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" kindref="member">code()</ref> on destruction.</para>
 <para>Designed mostly for use as a global object, though theoretically it might be useful as a stack-allocated object in some circumstances. </para>
     </detaileddescription>
     <collaborationgraph>

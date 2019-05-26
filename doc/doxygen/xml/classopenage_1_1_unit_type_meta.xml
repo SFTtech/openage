@@ -38,9 +38,9 @@
         <argsstring></argsstring>
         <name>init</name>
         <briefdescription>
+<para>creates the base unit type for a player </para>
         </briefdescription>
         <detaileddescription>
-<para>creates the base unit type for a player </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -146,9 +146,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>an abstract unit type which is not yet owned by any player </para>
     </briefdescription>
     <detaileddescription>
-<para>an abstract unit type which is not yet owned by any player </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5613">

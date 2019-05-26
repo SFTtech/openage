@@ -128,9 +128,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>All the resources. </para>
     </briefdescription>
     <detaileddescription>
-<para>All the resources.</para>
 <para>The the ids of the resources must be inside [0, count).</para>
 <para>The static variables wood, food, gold, stone are the ids of the representing resource. Any extension of <ref refid="classopenage_1_1_resources" kindref="compound">Resources</ref> must use this ids as they are an engine dependency (at the moment). </para>
     </detaileddescription>

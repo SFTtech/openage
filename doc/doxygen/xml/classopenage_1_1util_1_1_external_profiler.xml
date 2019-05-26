@@ -137,12 +137,12 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.cpp" bodystart="72" bodyend="121"/>
-        <references refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" compoundref="subprocess_8cpp" startline="72" endline="240">openage::subprocess::call</references>
+        <references refid="namespaceopenage_1_1subprocess_1a9433d1215dbd3b40cd1c0981b84a8541" compoundref="subprocess_8cpp" startline="72" endline="240">openage::subprocess::call</references>
         <references refid="classopenage_1_1util_1_1_external_profiler_1ae316c40618407f53238a0e3b1f6eb236" compoundref="externalprofiler_8h" startline="16">can_profile</references>
         <references refid="classopenage_1_1util_1_1_external_profiler_1a169ccda24ecef26a0585803b6d94db74" compoundref="externalprofiler_8h" startline="15">currently_profiling</references>
         <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
         <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
-        <references refid="namespaceopenage_1_1os_1a5d72e5b58b3036f2298e474c4e9ed9b6" compoundref="os_8cpp" startline="102" endline="124">openage::os::execute_file</references>
+        <references refid="namespaceopenage_1_1os_1a0c239b26dbfdae2443aa511e31619917" compoundref="os_8cpp" startline="102" endline="124">openage::os::execute_file</references>
         <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
         <references refid="classopenage_1_1util_1_1_external_profiler_1aae28f5426db6de7f5cf259e952f2d0ef" compoundref="externalprofiler_8h" startline="12">profiling_filename</references>

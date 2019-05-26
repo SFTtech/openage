@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 594,-73.5 594,4 -4,4"/>
 <!-- Node4 -->
 <g id="node1" class="node"><title>Node4</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="to be called each time a frame has been completed">
 <polygon fill="#bfbfbf" stroke="black" points="0,-22.5 0,-52.5 140,-52.5 140,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FrameCounter</text>
 <text text-anchor="middle" x="70" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::frame</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node5 -->
 <g id="node2" class="node"><title>Node5</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a0f4aca6841c138900f29816c0d7decf3" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a0f4aca6841c138900f29816c0d7decf3" target="_top" xlink:title="reads the current timer value, in nanoseconds, and resets the timer to zero (preserving started/stopp...">
 <polygon fill="white" stroke="black" points="176,-22.5 176,-52.5 278,-52.5 278,-22.5 176,-22.5"/>
 <text text-anchor="start" x="184" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="227" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::getandresetval</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node8 -->
 <g id="node5" class="node"><title>Node8</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" target="_top" xlink:title="returns a monotonically&#45;increasing time that returns the number of nanoseconds since an unspecified e...">
 <polygon fill="white" stroke="black" points="334,-0.5 334,-30.5 439,-30.5 439,-0.5 334,-0.5"/>
 <text text-anchor="start" x="342" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="386.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_monotonic_time</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node7 -->
 <g id="node4" class="node"><title>Node7</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="495,-50 495,-69 590,-69 590,-50 495,-50"/>
 <text text-anchor="middle" x="542.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

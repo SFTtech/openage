@@ -97,33 +97,42 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1_siphash.xhtml
 </div><!--header-->
 <div class="contents">
 
+<p>Contains a <a class="el" href="classopenage_1_1util_1_1_siphash.xhtml" title="Contains a Siphash implementration.">Siphash</a> implementration.  
+ <a href="classopenage_1_1util_1_1_siphash.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="hash_8h_source.xhtml">hash.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::Siphash:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash__coll__graph.svg" width="162" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash__coll__graph.svg" width="162" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0d9e67468bcba15f9f14f6affc3b9711"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_siphash.xhtml#a0d9e67468bcba15f9f14f6affc3b9711">Siphash</a> (std::array&lt; uint8_t, 16 &gt; <a class="el" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>)</td></tr>
+<tr class="memdesc:a0d9e67468bcba15f9f14f6affc3b9711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a hash generator.  <a href="#a0d9e67468bcba15f9f14f6affc3b9711">More...</a><br /></td></tr>
 <tr class="separator:a0d9e67468bcba15f9f14f6affc3b9711"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7425175b423437032001ccf3901a54b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1util_1_1_siphash.xhtml">Siphash</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_siphash.xhtml#af7425175b423437032001ccf3901a54b">set_key</a> (std::array&lt; uint8_t, 16 &gt; <a class="el" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>)</td></tr>
+<tr class="memdesc:af7425175b423437032001ccf3901a54b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the key for subsequent hashes.  <a href="#af7425175b423437032001ccf3901a54b">More...</a><br /></td></tr>
 <tr class="separator:af7425175b423437032001ccf3901a54b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59bdccc7e794fe057e4777031a177650"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_siphash.xhtml#a59bdccc7e794fe057e4777031a177650">digest</a> (const uint8_t *data, size_t len_data)</td></tr>
+<tr class="memdesc:a59bdccc7e794fe057e4777031a177650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hashes the input data as uint8_t array and returns the result.  <a href="#a59bdccc7e794fe057e4777031a177650">More...</a><br /></td></tr>
 <tr class="separator:a59bdccc7e794fe057e4777031a177650"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cb5db9ffca1f96885bc53e2f5c0c65d"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_siphash.xhtml#a0cb5db9ffca1f96885bc53e2f5c0c65d">digest</a> (const uint64_t)</td></tr>
+<tr class="memdesc:a0cb5db9ffca1f96885bc53e2f5c0c65d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hashes a single uint64_t number and returns the result.  <a href="#a0cb5db9ffca1f96885bc53e2f5c0c65d">More...</a><br /></td></tr>
 <tr class="separator:a0cb5db9ffca1f96885bc53e2f5c0c65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a35cc6948b9a2b8bed1cb3d100b85c5d9"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a> [2]</td></tr>
+<tr class="memdesc:a35cc6948b9a2b8bed1cb3d100b85c5d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The key to use for hashing.  <a href="#a35cc6948b9a2b8bed1cb3d100b85c5d9">More...</a><br /></td></tr>
 <tr class="separator:a35cc6948b9a2b8bed1cb3d100b85c5d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains a <a class="el" href="classopenage_1_1util_1_1_siphash.xhtml">Siphash</a> implementration.</p>
+<div class="textblock"><p>Contains a <a class="el" href="classopenage_1_1util_1_1_siphash.xhtml" title="Contains a Siphash implementration.">Siphash</a> implementration. </p>
 <p><a href="https://131002.net/siphash/">https://131002.net/siphash/</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="hash_8h_source.xhtml#l00023">23</a> of file <a class="el" href="hash_8h_source.xhtml">hash.h</a>.</p>
@@ -143,7 +152,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a hash generator. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Creates a hash generator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>Key to use with this hasher. </td></tr>
   </table>
@@ -151,8 +162,8 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="hash_8cpp_source.xhtml#l00018">18</a> of file <a class="el" href="hash_8cpp_source.xhtml">hash.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                          {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#af7425175b423437032001ccf3901a54b">set_key</a>(<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_siphash_xhtml_af7425175b423437032001ccf3901a54b"><div class="ttname"><a href="classopenage_1_1util_1_1_siphash.xhtml#af7425175b423437032001ccf3901a54b">openage::util::Siphash::set_key</a></div><div class="ttdeci">Siphash &amp; set_key(std::array&lt; uint8_t, 16 &gt; key)</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00023">hash.cpp:23</a></div></div>
-<div class="ttc" id="classopenage_1_1util_1_1_siphash_xhtml_a35cc6948b9a2b8bed1cb3d100b85c5d9"><div class="ttname"><a href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">openage::util::Siphash::key</a></div><div class="ttdeci">uint64_t key[2]</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.xhtml#l00065">hash.h:65</a></div></div>
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                          {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#af7425175b423437032001ccf3901a54b">set_key</a>(<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_siphash_xhtml_af7425175b423437032001ccf3901a54b"><div class="ttname"><a href="classopenage_1_1util_1_1_siphash.xhtml#af7425175b423437032001ccf3901a54b">openage::util::Siphash::set_key</a></div><div class="ttdeci">Siphash &amp; set_key(std::array&lt; uint8_t, 16 &gt; key)</div><div class="ttdoc">Set the key for subsequent hashes.</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00023">hash.cpp:23</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_siphash_xhtml_a35cc6948b9a2b8bed1cb3d100b85c5d9"><div class="ttname"><a href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">openage::util::Siphash::key</a></div><div class="ttdeci">uint64_t key[2]</div><div class="ttdoc">The key to use for hashing.</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.xhtml#l00065">hash.h:65</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="hash_8h_source.xhtml#l00065">key</a>, and <a class="el" href="hash_8cpp_source.xhtml#l00023">set_key()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -160,7 +171,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash_a0d9e67468bcba15f9f14f6affc3b9711_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash_a0d9e67468bcba15f9f14f6affc3b9711_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -191,7 +203,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Hashes the input data as uint8_t array and returns the result. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Hashes the input data as uint8_t array and returns the result. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>Start of the input data. </td></tr>
     <tr><td class="paramname">len_data</td><td>Number of bytes to read. </td></tr>
@@ -201,8 +215,8 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Hash. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="hash_8cpp_source.xhtml#l00107">107</a> of file <a class="el" href="hash_8cpp_source.xhtml">hash.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                                          {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>(<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>, data, count);</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a3cb605abe74b26763ac7340c3785656a"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">openage::util::hash</a></div><div class="ttdeci">uint64_t hash(const uint64_t key[2], const uint8_t *data, size_t len_data)</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00036">hash.cpp:36</a></div></div>
-<div class="ttc" id="classopenage_1_1util_1_1_siphash_xhtml_a35cc6948b9a2b8bed1cb3d100b85c5d9"><div class="ttname"><a href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">openage::util::Siphash::key</a></div><div class="ttdeci">uint64_t key[2]</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.xhtml#l00065">hash.h:65</a></div></div>
+<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                                          {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>(<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>, data, count);</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a3cb605abe74b26763ac7340c3785656a"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">openage::util::hash</a></div><div class="ttdeci">uint64_t hash(const uint64_t key[2], const uint8_t *data, size_t len_data)</div><div class="ttdoc">Siphash implementation.</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00036">hash.cpp:36</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_siphash_xhtml_a35cc6948b9a2b8bed1cb3d100b85c5d9"><div class="ttname"><a href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">openage::util::Siphash::key</a></div><div class="ttdeci">uint64_t key[2]</div><div class="ttdoc">The key to use for hashing.</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.xhtml#l00065">hash.h:65</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="hash_8cpp_source.xhtml#l00036">openage::util::hash()</a>, and <a class="el" href="hash_8h_source.xhtml#l00065">key</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -210,7 +224,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash_a59bdccc7e794fe057e4777031a177650_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash_a59bdccc7e794fe057e4777031a177650_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -230,7 +245,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Hashes a single uint64_t number and returns the result.</p>
+
+<p>Hashes a single uint64_t number and returns the result. </p>
 <p>The 64-bit word is interpreted as big-endian. e.g. 0x0123456789abcdef -&gt; {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -241,9 +257,9 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Hash. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="hash_8cpp_source.xhtml#l00112">112</a> of file <a class="el" href="hash_8cpp_source.xhtml">hash.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                       {</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    std::vector&lt;uint8_t&gt; data = <a class="code" href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0">uint64_to_array8</a>(value, <span class="keyword">true</span>);</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>(<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>, data.data(), 8);</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_ae9d6c19aadc0f6a1d502f42852172de0"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0">openage::util::uint64_to_array8</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; uint64_to_array8(const uint64_t value, bool big_endian=false)</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.xhtml#l00145">misc.h:145</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1util_xhtml_a3cb605abe74b26763ac7340c3785656a"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">openage::util::hash</a></div><div class="ttdeci">uint64_t hash(const uint64_t key[2], const uint8_t *data, size_t len_data)</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00036">hash.cpp:36</a></div></div>
-<div class="ttc" id="classopenage_1_1util_1_1_siphash_xhtml_a35cc6948b9a2b8bed1cb3d100b85c5d9"><div class="ttname"><a href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">openage::util::Siphash::key</a></div><div class="ttdeci">uint64_t key[2]</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.xhtml#l00065">hash.h:65</a></div></div>
+<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                       {</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    std::vector&lt;uint8_t&gt; data = <a class="code" href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0">uint64_to_array8</a>(value, <span class="keyword">true</span>);</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>(<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>, data.data(), 8);</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_ae9d6c19aadc0f6a1d502f42852172de0"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0">openage::util::uint64_to_array8</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; uint64_to_array8(const uint64_t value, bool big_endian=false)</div><div class="ttdoc">Convert a uint64_t to an array of uint8_t.</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.xhtml#l00145">misc.h:145</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_a3cb605abe74b26763ac7340c3785656a"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">openage::util::hash</a></div><div class="ttdeci">uint64_t hash(const uint64_t key[2], const uint8_t *data, size_t len_data)</div><div class="ttdoc">Siphash implementation.</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00036">hash.cpp:36</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_siphash_xhtml_a35cc6948b9a2b8bed1cb3d100b85c5d9"><div class="ttname"><a href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">openage::util::Siphash::key</a></div><div class="ttdeci">uint64_t key[2]</div><div class="ttdoc">The key to use for hashing.</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.xhtml#l00065">hash.h:65</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="hash_8cpp_source.xhtml#l00036">openage::util::hash()</a>, <a class="el" href="hash_8h_source.xhtml#l00065">key</a>, and <a class="el" href="misc_8h_source.xhtml#l00145">openage::util::uint64_to_array8()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -251,7 +267,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash_a0cb5db9ffca1f96885bc53e2f5c0c65d_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash_a0cb5db9ffca1f96885bc53e2f5c0c65d_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -271,7 +288,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set the key for subsequent hashes. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Set the key for subsequent hashes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">k</td><td>Key to use with this hasher. </td></tr>
   </table>
@@ -280,8 +299,8 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Reference to itself, for method chaining. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="hash_8cpp_source.xhtml#l00023">23</a> of file <a class="el" href="hash_8cpp_source.xhtml">hash.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                   {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>[0] = <a class="code" href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c">array8_to_uint64</a>(<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>.data(), 8, <span class="keyword">false</span>);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>[1] = <a class="code" href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c">array8_to_uint64</a>(key.data() + 8, 8, <span class="keyword">false</span>);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a69b6ecf2b5119f11c33d2b5b89cec86c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c">openage::util::array8_to_uint64</a></div><div class="ttdeci">uint64_t array8_to_uint64(const uint8_t *start, size_t count, bool big_endian=false)</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.xhtml#l00111">misc.h:111</a></div></div>
-<div class="ttc" id="classopenage_1_1util_1_1_siphash_xhtml_a35cc6948b9a2b8bed1cb3d100b85c5d9"><div class="ttname"><a href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">openage::util::Siphash::key</a></div><div class="ttdeci">uint64_t key[2]</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.xhtml#l00065">hash.h:65</a></div></div>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                   {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>[0] = <a class="code" href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c">array8_to_uint64</a>(<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>.data(), 8, <span class="keyword">false</span>);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">key</a>[1] = <a class="code" href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c">array8_to_uint64</a>(key.data() + 8, 8, <span class="keyword">false</span>);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a69b6ecf2b5119f11c33d2b5b89cec86c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c">openage::util::array8_to_uint64</a></div><div class="ttdeci">uint64_t array8_to_uint64(const uint8_t *start, size_t count, bool big_endian=false)</div><div class="ttdoc">Convert a C-style array of uint8_t to a uint64_t.</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.xhtml#l00111">misc.h:111</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_siphash_xhtml_a35cc6948b9a2b8bed1cb3d100b85c5d9"><div class="ttname"><a href="classopenage_1_1util_1_1_siphash.xhtml#a35cc6948b9a2b8bed1cb3d100b85c5d9">openage::util::Siphash::key</a></div><div class="ttdeci">uint64_t key[2]</div><div class="ttdoc">The key to use for hashing.</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.xhtml#l00065">hash.h:65</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="misc_8h_source.xhtml#l00111">openage::util::array8_to_uint64()</a>, and <a class="el" href="hash_8h_source.xhtml#l00065">key</a>.</p>
 
@@ -291,14 +310,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash_af7425175b423437032001ccf3901a54b_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash_af7425175b423437032001ccf3901a54b_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash_af7425175b423437032001ccf3901a54b_icgraph.svg" width="360" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_siphash_af7425175b423437032001ccf3901a54b_icgraph.svg" width="360" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -323,7 +344,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The key to use for hashing. As two 64-bit little-endian words. </p>
+
+<p>The key to use for hashing. </p>
+<p>As two 64-bit little-endian words. </p>
 
 <p class="definition">Definition at line <a class="el" href="hash_8h_source.xhtml#l00065">65</a> of file <a class="el" href="hash_8h_source.xhtml">hash.h</a>.</p>
 

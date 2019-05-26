@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-171.5 454,-171.5 454,4 -4,4"/>
 <!-- Node46 -->
 <g id="node1" class="node"><title>Node46</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Actually dispatch the loading job to the job manager.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-63 0,-93 138,-93 138,-63 0,-63"/>
 <text text-anchor="start" x="8" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="69" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::start_load_job</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node47 -->
 <g id="node2" class="node"><title>Node47</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" target="_top" xlink:title="Enqueues the given function into the job manager&#39;s queue, so that it will be dispatched by one of the...">
 <polygon fill="white" stroke="black" points="181,-137 181,-167 312,-167 312,-137 181,-137"/>
 <text text-anchor="start" x="189" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="246.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">::enqueue</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node48 -->
 <g id="node3" class="node"><title>Node48</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title="Return the engine responsible for this asset manager.">
 <polygon fill="white" stroke="black" points="185.5,-88 185.5,-118 307.5,-118 307.5,-88 185.5,-88"/>
 <text text-anchor="start" x="193.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="246.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::get_engine</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node49 -->
 <g id="node4" class="node"><title>Node49</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" target="_top" xlink:title="return this engine&#39;s job manager.">
 <polygon fill="white" stroke="black" points="192,-39 192,-69 301,-69 301,-39 192,-39"/>
 <text text-anchor="start" x="200" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="246.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_job_manager</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node51 -->
 <g id="node6" class="node"><title>Node51</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="355,-0.5 355,-19.5 450,-19.5 450,-0.5 355,-0.5"/>
 <text text-anchor="middle" x="402.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

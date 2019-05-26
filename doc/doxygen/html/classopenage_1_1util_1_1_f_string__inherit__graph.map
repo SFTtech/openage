@@ -1,5 +1,5 @@
 <map id="openage::util::FString" name="openage::util::FString">
-<area shape="rect" id="node1" title=" " alt="" coords="21,653,185,863"/>
+<area shape="rect" id="node1" title="A self&#45;formatting string! Get yours today!" alt="" coords="21,653,185,863"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1_string_formatter.xhtml" title=" " alt="" coords="5,336,200,604"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_string_formatter.xhtml" title=" " alt="" coords="5,5,200,273"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_string_formatter.xhtml" title="Wraps an output string stream, and provides all sorts of overloads for operator &lt;&lt;,..." alt="" coords="5,5,200,273"/>
 </map>

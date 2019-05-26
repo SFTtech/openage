@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-279 776,-279 776,4 -4,4"/>
 <!-- Node12 -->
 <g id="node1" class="node"><title>Node12</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Return, if existing, the time and value of keyframe with time &lt; t.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-113.5 0,-143.5 124,-143.5 124,-113.5 0,-113.5"/>
 <text text-anchor="start" x="8" y="-131.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Discrete</text>
 <text text-anchor="middle" x="62" y="-120.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_previous</text>

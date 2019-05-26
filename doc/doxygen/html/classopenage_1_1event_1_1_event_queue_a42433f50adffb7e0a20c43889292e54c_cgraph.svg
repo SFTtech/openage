@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 484,-35 484,4 -4,4"/>
 <!-- Node59 -->
 <g id="node1" class="node"><title>Node59</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Remove the given event from the queue.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 140,-30.5 140,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="70" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node61 -->
 <g id="node3" class="node"><title>Node61</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" target="_top" xlink:title="Unlink a node from the heap.">
 <polygon fill="white" stroke="black" points="347,-0.5 347,-30.5 480,-30.5 480,-0.5 347,-0.5"/>
 <text text-anchor="start" x="355" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="413.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::unlink_node</text>

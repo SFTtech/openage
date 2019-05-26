@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-95.5 464,-95.5 464,4 -4,4"/>
 <!-- Node14 -->
 <g id="node1" class="node"><title>Node14</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="execute the drawing action.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-17 0,-47 125,-47 125,-17 0,-17"/>
 <text text-anchor="start" x="8" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameRenderer</text>
 <text text-anchor="middle" x="62.5" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::on_draw</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node15 -->
 <g id="node2" class="node"><title>Node15</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" target="_top" xlink:title="Draws the texture at hud coordinates.">
 <polygon fill="white" stroke="black" points="164.5,-66.5 164.5,-85.5 282.5,-85.5 282.5,-66.5 164.5,-66.5"/>
 <text text-anchor="middle" x="223.5" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node17 -->
 <g id="node4" class="node"><title>Node17</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_game_renderer.xhtml#a1824b69c5f78ed1db93b6fa6417fdf83" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_game_renderer.xhtml#a1824b69c5f78ed1db93b6fa6417fdf83" target="_top" xlink:title="the game this renderer is using">
 <polygon fill="white" stroke="black" points="161,-17 161,-47 286,-47 286,-17 161,-17"/>
 <text text-anchor="start" x="169" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameRenderer</text>
 <text text-anchor="middle" x="223.5" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::game</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node18 -->
 <g id="node5" class="node"><title>Node18</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title="return currently running game or null if a game is not currently running">
 <polygon fill="white" stroke="black" points="322,-0.5 322,-19.5 460,-19.5 460,-0.5 322,-0.5"/>
 <text text-anchor="middle" x="391" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get_game</text>
 </a>

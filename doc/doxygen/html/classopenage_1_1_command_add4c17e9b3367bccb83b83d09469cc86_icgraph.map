@@ -1,6 +1,6 @@
 <map id="openage::Command::position" name="openage::Command::position">
 <area shape="rect" id="node1" title=" " alt="" coords="231,78,421,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" title=" " alt="" coords="21,5,167,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_set_point_ability.xhtml#ab72dac58be9e34d88bd517b3dbd864dc" title=" " alt="" coords="11,71,177,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" title=" " alt="" coords="5,136,183,177"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" title="applies command to a given unit" alt="" coords="21,5,167,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_set_point_ability.xhtml#ab72dac58be9e34d88bd517b3dbd864dc" title="applies command to a given unit" alt="" coords="11,71,177,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" title="applies command to a given unit" alt="" coords="5,136,183,177"/>
 </map>

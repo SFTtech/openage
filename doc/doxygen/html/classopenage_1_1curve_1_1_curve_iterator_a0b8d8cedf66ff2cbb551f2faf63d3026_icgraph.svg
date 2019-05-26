@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 343,-35 343,4 -4,4"/>
 <!-- Node27 -->
 <g id="node1" class="node"><title>Node27</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Check if the iterator is still valid (this breaks from the stl &#45; in the best way)">
 <polygon fill="#bfbfbf" stroke="black" points="197,-0.5 197,-30.5 339,-30.5 339,-0.5 197,-0.5"/>
 <text text-anchor="start" x="205" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::CurveIterator</text>
 <text text-anchor="middle" x="268" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::valid</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node28 -->
 <g id="node2" class="node"><title>Node28</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1curve_1_1_curve_iterator.xhtml#ab14912b85502c78be50c1f1153910a04" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1curve_1_1_curve_iterator.xhtml#ab14912b85502c78be50c1f1153910a04" target="_top" xlink:title="Advance to the next valid element.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 161,-30.5 161,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::CurveIterator</text>
 <text text-anchor="middle" x="80.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; val_t, container_t &gt;::operator++</text>

@@ -100,29 +100,38 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1_path.xhtml','
 </div><!--header-->
 <div class="contents">
 
+<p>C++ pendant to the python <a class="el" href="classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml">util.fslike.path.Path</a>.  
+ <a href="classopenage_1_1util_1_1_path.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="util_2path_8h_source.xhtml">path.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::Path:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path__coll__graph.svg" width="142" height="264"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path__coll__graph.svg" width="142" height="264"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a01b9e1b6d2f1e72e14265f1b23e102c2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_path.xhtml#a01b9e1b6d2f1e72e14265f1b23e102c2">part_t</a> = std::string</td></tr>
+<tr class="memdesc:a01b9e1b6d2f1e72e14265f1b23e102c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage type for a part of a path access.  <a href="#a01b9e1b6d2f1e72e14265f1b23e102c2">More...</a><br /></td></tr>
 <tr class="separator:a01b9e1b6d2f1e72e14265f1b23e102c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45bb33ddb21332a423a5788fc9ee8462"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_path.xhtml#a45bb33ddb21332a423a5788fc9ee8462">parts_t</a> = std::vector&lt; <a class="el" href="classopenage_1_1util_1_1_path.xhtml#a01b9e1b6d2f1e72e14265f1b23e102c2">part_t</a> &gt;</td></tr>
+<tr class="memdesc:a45bb33ddb21332a423a5788fc9ee8462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage type for the filesystem access parts this is basically a list/of/elements/in/a/path.  <a href="#a45bb33ddb21332a423a5788fc9ee8462">More...</a><br /></td></tr>
 <tr class="separator:a45bb33ddb21332a423a5788fc9ee8462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ade26ce7a38a05b1e46dca7f839240988"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_path.xhtml#ade26ce7a38a05b1e46dca7f839240988">Path</a> ()</td></tr>
+<tr class="memdesc:ade26ce7a38a05b1e46dca7f839240988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nullary constructor, pls don't use.  <a href="#ade26ce7a38a05b1e46dca7f839240988">More...</a><br /></td></tr>
 <tr class="separator:ade26ce7a38a05b1e46dca7f839240988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42f3bcd766fbdb0a4de3ccd36fa65b62"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_path.xhtml#a42f3bcd766fbdb0a4de3ccd36fa65b62">Path</a> (<a class="el" href="namespaceopenage_1_1py.xhtml#aba3b73f5f4dff0e8b09683628705ea44">py::Obj</a> fslike, const <a class="el" href="classopenage_1_1util_1_1_path.xhtml#a45bb33ddb21332a423a5788fc9ee8462">parts_t</a> &amp;<a class="el" href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">parts</a>={})</td></tr>
+<tr class="memdesc:a42f3bcd766fbdb0a4de3ccd36fa65b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a path object from a python fslike object.  <a href="#a42f3bcd766fbdb0a4de3ccd36fa65b62">More...</a><br /></td></tr>
 <tr class="separator:a42f3bcd766fbdb0a4de3ccd36fa65b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94d1c79106d647738cc12de1dfedf4b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_path.xhtml#a94d1c79106d647738cc12de1dfedf4b5">Path</a> (const std::shared_ptr&lt; <a class="el" href="classopenage_1_1util_1_1fslike_1_1_f_s_like.xhtml">fslike::FSLike</a> &gt; &amp;fslike, const <a class="el" href="classopenage_1_1util_1_1_path.xhtml#a45bb33ddb21332a423a5788fc9ee8462">parts_t</a> &amp;<a class="el" href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">parts</a>={})</td></tr>
+<tr class="memdesc:a94d1c79106d647738cc12de1dfedf4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a path from a fslike pointer.  <a href="#a94d1c79106d647738cc12de1dfedf4b5">More...</a><br /></td></tr>
 <tr class="separator:a94d1c79106d647738cc12de1dfedf4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfbb432696700abc731097771deb4f94"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_path.xhtml#acfbb432696700abc731097771deb4f94">~Path</a> ()=default</td></tr>
 <tr class="separator:acfbb432696700abc731097771deb4f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,6 +162,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a483f9f4a7f9758fb98d8d457d53e1616"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1util_1_1_file.xhtml">File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_path.xhtml#a483f9f4a7f9758fb98d8d457d53e1616">open_ar</a> () const</td></tr>
 <tr class="separator:a483f9f4a7f9758fb98d8d457d53e1616"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ca4da6e9e2d8adadb02373ff2be8ebe"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe">resolve_native_path</a> (const std::string &amp;mode=&quot;r&quot;) const</td></tr>
+<tr class="memdesc:a4ca4da6e9e2d8adadb02373ff2be8ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolve the native path by flattening all underlying filesystem objects (like unions).  <a href="#a4ca4da6e9e2d8adadb02373ff2be8ebe">More...</a><br /></td></tr>
 <tr class="separator:a4ca4da6e9e2d8adadb02373ff2be8ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a919083912ceb465d8b3c28e4766161fe"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_path.xhtml#a919083912ceb465d8b3c28e4766161fe">resolve_native_path_r</a> () const</td></tr>
 <tr class="separator:a919083912ceb465d8b3c28e4766161fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,6 +225,7 @@ Protected Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a53047699ec64680d09c2c7db87ae99c5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_path.xhtml#a53047699ec64680d09c2c7db87ae99c5">get_native_path</a> () const</td></tr>
+<tr class="memdesc:a53047699ec64680d09c2c7db87ae99c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the native path (something like /your/folder/with/file) for this path.  <a href="#a53047699ec64680d09c2c7db87ae99c5">More...</a><br /></td></tr>
 <tr class="separator:a53047699ec64680d09c2c7db87ae99c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -223,10 +234,10 @@ Friends</h2></td></tr>
 <tr class="separator:a2ec9a8258175592b62eb0df607badc6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>C++ pendant to the python <a class="el" href="classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml">util.fslike.path.Path</a></p>
+<div class="textblock"><p>C++ pendant to the python <a class="el" href="classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml">util.fslike.path.Path</a>. </p>
 <p>Contains a filesystem-like object and path-parts.</p>
-<p>pxd: cppclass <a class="el" href="classopenage_1_1util_1_1_path.xhtml">Path</a>: ctypedef string part_t ctypedef vector[string] parts_t</p>
-<p><a class="el" href="classopenage_1_1util_1_1_path.xhtml#ade26ce7a38a05b1e46dca7f839240988">Path()</a> noexcept Path(PyObj, const vector[string]&amp;) except +</p>
+<p>pxd: cppclass <a class="el" href="classopenage_1_1util_1_1_path.xhtml" title="C++ pendant to the python util.fslike.path.Path.">Path</a>: ctypedef string part_t ctypedef vector[string] parts_t</p>
+<p><a class="el" href="classopenage_1_1util_1_1_path.xhtml#ade26ce7a38a05b1e46dca7f839240988" title="Nullary constructor, pls don&#39;t use.">Path()</a> noexcept Path(PyObj, const vector[string]&amp;) except +</p>
 <p>FSLike *get_fsobj() except + const vector[string] &amp;<a class="el" href="classopenage_1_1util_1_1_path.xhtml#a16c0ed912bc74f019752253aff81de71">get_parts()</a> except + </p>
 
 <p class="definition">Definition at line <a class="el" href="util_2path_8h_source.xhtml#l00046">46</a> of file <a class="el" href="util_2path_8h_source.xhtml">path.h</a>.</p>
@@ -242,7 +253,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Storage type for a part of a path access. Basically this is the name of a file or directory. </p>
+
+<p>Storage type for a part of a path access. </p>
+<p>Basically this is the name of a file or directory. </p>
 
 <p class="definition">Definition at line <a class="el" href="util_2path_8h_source.xhtml#l00053">53</a> of file <a class="el" href="util_2path_8h_source.xhtml">path.h</a>.</p>
 
@@ -259,6 +272,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Storage type for the filesystem access parts this is basically a list/of/elements/in/a/path. </p>
 
 <p class="definition">Definition at line <a class="el" href="util_2path_8h_source.xhtml#l00059">59</a> of file <a class="el" href="util_2path_8h_source.xhtml">path.h</a>.</p>
@@ -280,7 +294,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Nullary constructor, pls don't use. It only exists because Cython can't RAII. It should be just friend of cython. </p>
+
+<p>Nullary constructor, pls don't use. </p>
+<p>It only exists because Cython can't RAII. It should be just friend of cython. </p>
 
 <p class="definition">Definition at line <a class="el" href="util_2path_8cpp_source.xhtml#l00041">41</a> of file <a class="el" href="util_2path_8cpp_source.xhtml">path.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{}</div></div><!-- fragment -->
@@ -311,7 +327,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Construct a path object from a python fslike object. This is called from Cython.</p>
+
+<p>Construct a path object from a python fslike object. </p>
+<p>This is called from Cython.</p>
 <p>You will probably never call that manually. </p>
 
 </div>
@@ -341,12 +359,13 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Construct a path from a fslike pointer. </p>
 
 <p class="definition">Definition at line <a class="el" href="util_2path_8cpp_source.xhtml#l00067">67</a> of file <a class="el" href="util_2path_8cpp_source.xhtml">path.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    :</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classopenage_1_1util_1_1_path.xhtml#a288d8a3dd8a8a7a377f672d9c88b6ca2">fsobj</a>{<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a288d8a3dd8a8a7a377f672d9c88b6ca2">fsobj</a>} {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="namespaceopenage_1_1util.xhtml#aa9a3ed91bb7f5c0fa51acf99e8bcba64">path_normalizer</a>(this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">parts</a>, <a class="code" href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">parts</a>);</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a288d8a3dd8a8a7a377f672d9c88b6ca2"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a288d8a3dd8a8a7a377f672d9c88b6ca2">openage::util::Path::fsobj</a></div><div class="ttdeci">std::shared_ptr&lt; fslike::FSLike &gt; fsobj</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8h_source.xhtml#l00167">path.h:167</a></div></div>
 <div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a42a892625a98126a36cb9c12f4b017f8"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">openage::util::Path::parts</a></div><div class="ttdeci">parts_t parts</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8h_source.xhtml#l00169">path.h:169</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1util_xhtml_aa9a3ed91bb7f5c0fa51acf99e8bcba64"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#aa9a3ed91bb7f5c0fa51acf99e8bcba64">openage::util::path_normalizer</a></div><div class="ttdeci">void path_normalizer(Path::parts_t &amp;output, const Path::parts_t &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00021">path.cpp:21</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_aa9a3ed91bb7f5c0fa51acf99e8bcba64"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#aa9a3ed91bb7f5c0fa51acf99e8bcba64">openage::util::path_normalizer</a></div><div class="ttdeci">void path_normalizer(Path::parts_t &amp;output, const Path::parts_t &amp;input)</div><div class="ttdoc">Strip out ../ etc.</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00021">path.cpp:21</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="util_2path_8h_source.xhtml#l00167">fsobj</a>.</p>
 
@@ -501,7 +520,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="util_2path_8cpp_source.xhtml#l00252">252</a> of file <a class="el" href="util_2path_8cpp_source.xhtml">path.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                      {</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">parts</a>.size() &gt; 0) {</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">parts</a>.back();</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a5f6ab09d105c3dfecc8de7dfd7be7ca2">util::empty_string</a>;</div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a5f6ab09d105c3dfecc8de7dfd7be7ca2"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a5f6ab09d105c3dfecc8de7dfd7be7ca2">openage::util::empty_string</a></div><div class="ttdeci">std::string empty_string</div><div class="ttdef"><b>Definition:</b> <a href="misc_8cpp_source.xhtml#l00008">misc.cpp:8</a></div></div>
+<div class="fragment"><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                      {</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">parts</a>.size() &gt; 0) {</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">parts</a>.back();</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a5f6ab09d105c3dfecc8de7dfd7be7ca2">util::empty_string</a>;</div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a5f6ab09d105c3dfecc8de7dfd7be7ca2"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a5f6ab09d105c3dfecc8de7dfd7be7ca2">openage::util::empty_string</a></div><div class="ttdeci">std::string empty_string</div><div class="ttdoc">global empty string, sometimes needed as return value in some std::string &amp;function() return values.</div><div class="ttdef"><b>Definition:</b> <a href="misc_8cpp_source.xhtml#l00008">misc.cpp:8</a></div></div>
 <div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a42a892625a98126a36cb9c12f4b017f8"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">openage::util::Path::parts</a></div><div class="ttdeci">parts_t parts</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8h_source.xhtml#l00169">path.h:169</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="misc_8cpp_source.xhtml#l00008">openage::util::empty_string</a>.</p>
@@ -512,7 +531,8 @@ Friends</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a20819ad3bd985841f0538e3adac52cf6_icgraph.svg" width="100%" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a20819ad3bd985841f0538e3adac52cf6_icgraph.svg" width="100%" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -539,7 +559,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Return the native path (something like /your/folder/with/file) for this path. returns emptystring ("") if there is no native path.</p>
+
+<p>Return the native path (something like /your/folder/with/file) for this path. </p>
+<p>returns emptystring ("") if there is no native path.</p>
 <p>This does <em>not</em> minimize/flatten (= "resolve") the path!</p>
 <p>You probably want to use <code>resolve_native_path</code> instead. </p>
 
@@ -565,7 +587,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000051">Todo:</a></b></dt><dd>watching of path with inotify or similar this should get a Watcher*, which manages the multiple events otherwise, each file would require an inotify fd. =&gt; see the <a class="el" href="classopenage_1_1_asset_manager.xhtml">AssetManager</a> and move functionality from there. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000051">Todo:</a></b></dt><dd>watching of path with inotify or similar this should get a Watcher*, which manages the multiple events otherwise, each file would require an inotify fd.</dd></dl>
+<p>=&gt; see the <a class="el" href="classopenage_1_1_asset_manager.xhtml" title="Container class for all available assets.">AssetManager</a> and move functionality from there. </p>
 
 <p class="definition">Definition at line <a class="el" href="util_2path_8cpp_source.xhtml#l00247">247</a> of file <a class="el" href="util_2path_8cpp_source.xhtml">path.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                            {</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a21fb5a34dad3027d7c9fca721211a258">joinpath</a>(<span class="stringliteral">&quot;..&quot;</span>);</div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a21fb5a34dad3027d7c9fca721211a258"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a21fb5a34dad3027d7c9fca721211a258">openage::util::Path::joinpath</a></div><div class="ttdeci">Path joinpath(const parts_t &amp;subpaths) const</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00293">path.cpp:293</a></div></div>
@@ -578,8 +601,7 @@ Friends</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a3fc6528c66f6d83e122e753f73511a3d_cgraph.svg" width="320" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a3fc6528c66f6d83e122e753f73511a3d_cgraph.svg" width="320" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -647,7 +669,8 @@ Friends</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_afed5e82e9f515fc2d8e2cdc291edebca_icgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_afed5e82e9f515fc2d8e2cdc291edebca_icgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -769,7 +792,8 @@ Friends</h2></td></tr>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_aacfbbb9dd2e0ec286b5581690f9a83aa_icgraph.svg" width="100%" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_aacfbbb9dd2e0ec286b5581690f9a83aa_icgraph.svg" width="100%" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -833,8 +857,8 @@ Friends</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                                 {</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <a class="code" href="classopenage_1_1util_1_1_path.xhtml#a45bb33ddb21332a423a5788fc9ee8462">parts_t</a> new_parts = this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">parts</a>;</div><div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;part : subpaths) {</div><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#a217a0bd562b98ae8c2ffce44935351e1">likely</a>(part.size() &gt; 0)) {</div><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            new_parts.push_back(part);</div><div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1util_1_1_path.xhtml#ade26ce7a38a05b1e46dca7f839240988">Path</a>{this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a288d8a3dd8a8a7a377f672d9c88b6ca2">fsobj</a>, new_parts};</div><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a288d8a3dd8a8a7a377f672d9c88b6ca2"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a288d8a3dd8a8a7a377f672d9c88b6ca2">openage::util::Path::fsobj</a></div><div class="ttdeci">std::shared_ptr&lt; fslike::FSLike &gt; fsobj</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8h_source.xhtml#l00167">path.h:167</a></div></div>
 <div class="ttc" id="compiler_8h_xhtml_a217a0bd562b98ae8c2ffce44935351e1"><div class="ttname"><a href="compiler_8h.xhtml#a217a0bd562b98ae8c2ffce44935351e1">likely</a></div><div class="ttdeci">#define likely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00052">compiler.h:52</a></div></div>
 <div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a42a892625a98126a36cb9c12f4b017f8"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a42a892625a98126a36cb9c12f4b017f8">openage::util::Path::parts</a></div><div class="ttdeci">parts_t parts</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8h_source.xhtml#l00169">path.h:169</a></div></div>
-<div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a45bb33ddb21332a423a5788fc9ee8462"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a45bb33ddb21332a423a5788fc9ee8462">openage::util::Path::parts_t</a></div><div class="ttdeci">std::vector&lt; part_t &gt; parts_t</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8h_source.xhtml#l00059">path.h:59</a></div></div>
-<div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_ade26ce7a38a05b1e46dca7f839240988"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#ade26ce7a38a05b1e46dca7f839240988">openage::util::Path::Path</a></div><div class="ttdeci">Path()</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00041">path.cpp:41</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a45bb33ddb21332a423a5788fc9ee8462"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a45bb33ddb21332a423a5788fc9ee8462">openage::util::Path::parts_t</a></div><div class="ttdeci">std::vector&lt; part_t &gt; parts_t</div><div class="ttdoc">Storage type for the filesystem access parts this is basically a list/of/elements/in/a/path.</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8h_source.xhtml#l00059">path.h:59</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_ade26ce7a38a05b1e46dca7f839240988"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#ade26ce7a38a05b1e46dca7f839240988">openage::util::Path::Path</a></div><div class="ttdeci">Path()</div><div class="ttdoc">Nullary constructor, pls don't use.</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00041">path.cpp:41</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="util_2path_8h_source.xhtml#l00167">fsobj</a>, <a class="el" href="compiler_8h_source.xhtml#l00052">likely</a>, and <a class="el" href="util_2path_8h_source.xhtml#l00169">parts</a>.</p>
 
@@ -867,7 +891,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="util_2path_8cpp_source.xhtml#l00303">303</a> of file <a class="el" href="util_2path_8cpp_source.xhtml">path.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                                               {</div><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a21fb5a34dad3027d7c9fca721211a258">joinpath</a>(<a class="code" href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0">util::split</a>(subpath, <span class="charliteral">&#39;/&#39;</span>));</div><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_af74fec80080f6c627e5539bb20493ba0"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0">openage::util::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;txt, char delimiter)</div><div class="ttdef"><b>Definition:</b> <a href="strings_8cpp_source.xhtml#l00136">strings.cpp:136</a></div></div>
+<div class="fragment"><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                                               {</div><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a21fb5a34dad3027d7c9fca721211a258">joinpath</a>(<a class="code" href="namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6">util::split</a>(subpath, <span class="charliteral">&#39;/&#39;</span>));</div><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a9556b8562574e2c6ad102d8fd87569c6"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6">openage::util::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;txt, char delimiter)</div><div class="ttdoc">Split a string at a delimiter into a vector.</div><div class="ttdef"><b>Definition:</b> <a href="strings_8cpp_source.xhtml#l00136">strings.cpp:136</a></div></div>
 <div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a21fb5a34dad3027d7c9fca721211a258"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a21fb5a34dad3027d7c9fca721211a258">openage::util::Path::joinpath</a></div><div class="ttdeci">Path joinpath(const parts_t &amp;subpaths) const</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00293">path.cpp:293</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="util_2path_8cpp_source.xhtml#l00293">joinpath()</a>, and <a class="el" href="strings_8cpp_source.xhtml#l00136">openage::util::split()</a>.</p>
@@ -878,7 +902,8 @@ Friends</h2></td></tr>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_af2aa900d03797c9f65b6ba484892139d_cgraph.svg" width="320" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_af2aa900d03797c9f65b6ba484892139d_cgraph.svg" width="320" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -983,7 +1008,8 @@ Friends</h2></td></tr>
 <div id="dynsection-19-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-19-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a5b429e300ae4a048dbbd1a733bc1452a_icgraph.svg" width="378" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a5b429e300ae4a048dbbd1a733bc1452a_icgraph.svg" width="378" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1015,7 +1041,8 @@ Friends</h2></td></tr>
 <div id="dynsection-20-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-20-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_ab7d7932d536db76983f9770016f724f2_icgraph.svg" width="556" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_ab7d7932d536db76983f9770016f724f2_icgraph.svg" width="556" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1047,7 +1074,8 @@ Friends</h2></td></tr>
 <div id="dynsection-21-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-21-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a483f9f4a7f9758fb98d8d457d53e1616_icgraph.svg" width="556" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a483f9f4a7f9758fb98d8d457d53e1616_icgraph.svg" width="556" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1079,7 +1107,8 @@ Friends</h2></td></tr>
 <div id="dynsection-22-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-22-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a5a01e1d52b588996b036fb52b81f3d8a_icgraph.svg" width="591" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a5a01e1d52b588996b036fb52b81f3d8a_icgraph.svg" width="591" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1134,7 +1163,8 @@ Friends</h2></td></tr>
 <div id="dynsection-23-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-23-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_aa490b4ca4f053611b439d4b3956b2451_icgraph.svg" width="556" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_aa490b4ca4f053611b439d4b3956b2451_icgraph.svg" width="556" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1344,8 +1374,10 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resolve the native path by flattening all underlying filesystem objects (like unions). Returns the /native/path/on/disk. Throws up if there is no native path.</p>
-<p>This basically is the same as resolve_*().<a class="el" href="classopenage_1_1util_1_1_path.xhtml#a53047699ec64680d09c2c7db87ae99c5">get_native_path()</a>. </p>
+
+<p>Resolve the native path by flattening all underlying filesystem objects (like unions). </p>
+<p>Returns the /native/path/on/disk. Throws up if there is no native path.</p>
+<p>This basically is the same as resolve_*().<a class="el" href="classopenage_1_1util_1_1_path.xhtml#a53047699ec64680d09c2c7db87ae99c5" title="Return the native path (something like /your/folder/with/file) for this path.">get_native_path()</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="util_2path_8cpp_source.xhtml#l00163">163</a> of file <a class="el" href="util_2path_8cpp_source.xhtml">path.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                                               {</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">if</span> (mode == <span class="stringliteral">&quot;r&quot;</span>) {</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a919083912ceb465d8b3c28e4766161fe">resolve_native_path_r</a>();</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (mode == <span class="stringliteral">&quot;w&quot;</span>) {</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_path.xhtml#a1175be01a6df63d066ca6f2d3e2c4d3c">resolve_native_path_w</a>();</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">throw</span> Error{<a class="code" href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a> &lt;&lt; <span class="stringliteral">&quot;unsupported resolve mode: &quot;</span> &lt;&lt; mode};</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_path_xhtml_a919083912ceb465d8b3c28e4766161fe"><div class="ttname"><a href="classopenage_1_1util_1_1_path.xhtml#a919083912ceb465d8b3c28e4766161fe">openage::util::Path::resolve_native_path_r</a></div><div class="ttdeci">std::string resolve_native_path_r() const</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00176">path.cpp:176</a></div></div>
@@ -1360,14 +1392,16 @@ Friends</h2></td></tr>
 <div id="dynsection-28-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-28-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a4ca4da6e9e2d8adadb02373ff2be8ebe_cgraph.svg" width="360" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a4ca4da6e9e2d8adadb02373ff2be8ebe_cgraph.svg" width="360" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-29" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-29-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-29-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-29-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a4ca4da6e9e2d8adadb02373ff2be8ebe_icgraph.svg" width="100%" height="487"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a4ca4da6e9e2d8adadb02373ff2be8ebe_icgraph.svg" width="100%" height="487"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -1400,7 +1434,8 @@ Friends</h2></td></tr>
 <div id="dynsection-30-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-30-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a919083912ceb465d8b3c28e4766161fe_icgraph.svg" width="100%" height="487"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a919083912ceb465d8b3c28e4766161fe_icgraph.svg" width="100%" height="487"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -1433,7 +1468,8 @@ Friends</h2></td></tr>
 <div id="dynsection-31-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-31-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a1175be01a6df63d066ca6f2d3e2c4d3c_icgraph.svg" width="100%" height="511"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a1175be01a6df63d066ca6f2d3e2c4d3c_icgraph.svg" width="100%" height="511"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -1553,15 +1589,15 @@ Friends</h2></td></tr>
 <div id="dynsection-34-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-34-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a6e86298c20b5fd4596b791de4115b8b9_cgraph.svg" width="499" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a6e86298c20b5fd4596b791de4115b8b9_cgraph.svg" width="499" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-35" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-35-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-35-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-35-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a6e86298c20b5fd4596b791de4115b8b9_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_a6e86298c20b5fd4596b791de4115b8b9_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -1594,15 +1630,15 @@ Friends</h2></td></tr>
 <div id="dynsection-36-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-36-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_aa7993e64af5227c5949074566deadbf6_cgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_aa7993e64af5227c5949074566deadbf6_cgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-37" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-37-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-37-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-37-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_aa7993e64af5227c5949074566deadbf6_icgraph.svg" width="558" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_path_aa7993e64af5227c5949074566deadbf6_icgraph.svg" width="558" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

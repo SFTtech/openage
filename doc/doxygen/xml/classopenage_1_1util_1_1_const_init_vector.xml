@@ -112,9 +112,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Copying this is not supported. </para>
         </briefdescription>
         <detaileddescription>
-<para>Copying this is not supported. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -203,9 +203,10 @@
           <declname>idx</declname>
         </param>
         <briefdescription>
+<para>The returned reference is invalid if n &gt;= this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a2453ffb8432511227127c0e6df561a43" kindref="member">size()</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>The returned reference is invalid if n &gt;= this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a2453ffb8432511227127c0e6df561a43" kindref="member">size()</ref>. It may be invalidated by a call to <ref refid="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" kindref="member">push_back()</ref>. </para>
+<para>It may be invalidated by a call to <ref refid="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" kindref="member">push_back()</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -218,9 +219,9 @@
         <argsstring>()</argsstring>
         <name>size</name>
         <briefdescription>
+<para>Returns the number of elements that have been pushed back. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the number of elements that have been pushed back. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -230,9 +231,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A std::vector-like object that has a constexpr constructor, and thus can be initialized during the const- or zero-initialization phase, before any dynamic initialization happens. </para>
     </briefdescription>
     <detaileddescription>
-<para>A std::vector-like object that has a constexpr constructor, and thus can be initialized during the const- or zero-initialization phase, before any dynamic initialization happens.</para>
 <para>Use this class if and only if you need that functionality (that should be pretty uncommon; there generally are better ways of guaranteeing dynamic initialization order, such as static function variables). </para>
     </detaileddescription>
     <collaborationgraph>

@@ -1,4 +1,4 @@
 <map id="openage::Generator" name="openage::Generator">
-<area shape="rect" id="node1" title=" " alt="" coords="13,277,149,472"/>
+<area shape="rect" id="node1" title="Manages creation and setup of new games." alt="" coords="13,277,149,472"/>
 <area shape="rect" id="node2" href="$structqtsdl_1_1_gui_property_map.xhtml" title=" " alt="" coords="5,5,157,229"/>
 </map>

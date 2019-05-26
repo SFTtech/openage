@@ -1,8 +1,8 @@
 <map id="openage::datastructure::PairingHeap::unlink_node" name="openage::datastructure::PairingHeap::unlink_node">
-<area shape="rect" id="node1" title=" " alt="" coords="893,45,1071,87"/>
+<area shape="rect" id="node1" title="Unlink a node from the heap." alt="" coords="893,45,1071,87"/>
 <area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_store.xhtml#acf182eb2f89c80bb6c790a24d192398f" title=" " alt="" coords="646,5,826,47"/>
-<area shape="rect" id="node6" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" title=" " alt="" coords="627,71,845,141"/>
-<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_event_queue.xhtml#a42433f50adffb7e0a20c43889292e54c" title=" " alt="" coords="392,5,579,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" title=" " alt="" coords="199,5,344,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" title=" " alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" title="After a change, call this to reorganize the given node." alt="" coords="627,71,845,141"/>
+<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_event_queue.xhtml#a42433f50adffb7e0a20c43889292e54c" title="Remove the given event from the queue." alt="" coords="392,5,579,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" title="Call all the time change functions." alt="" coords="199,5,344,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" title="Execute all events that are registered until a certain point in time." alt="" coords="5,5,151,47"/>
 </map>

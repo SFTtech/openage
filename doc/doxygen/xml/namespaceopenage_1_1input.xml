@@ -123,9 +123,9 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>highest level classes of input </para>
         </briefdescription>
         <detaileddescription>
-<para>highest level classes of input </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,9 +156,9 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>mods set on an event </para>
         </briefdescription>
         <detaileddescription>
-<para>mods set on an event </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -172,9 +172,9 @@
         <argsstring></argsstring>
         <name>action_t</name>
         <briefdescription>
+<para>Used to identify actions. </para>
         </briefdescription>
         <detaileddescription>
-<para>Used to identify actions. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -199,9 +199,9 @@
         <argsstring></argsstring>
         <name>action_func_t</name>
         <briefdescription>
+<para>Performs the effect of an action. </para>
         </briefdescription>
         <detaileddescription>
-<para>Performs the effect of an action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -213,9 +213,9 @@
         <argsstring></argsstring>
         <name>action_check_t</name>
         <briefdescription>
+<para>For receivers of sets of events a bool is returned to indicate if the event was used. </para>
         </briefdescription>
         <detaileddescription>
-<para>For receivers of sets of events a bool is returned to indicate if the event was used. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -227,9 +227,9 @@
         <argsstring></argsstring>
         <name>code_t</name>
         <briefdescription>
+<para>types used by events </para>
         </briefdescription>
         <detaileddescription>
-<para>types used by events </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -267,9 +267,9 @@
         <argsstring></argsstring>
         <name>binding_map_t</name>
         <briefdescription>
+<para>maps actions to events. </para>
         </briefdescription>
         <detaileddescription>
-<para>maps actions to events. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -297,9 +297,9 @@
 	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a6a52684199a74ef0bd3415fe6a76da4f" kindref="member">event_class::MOUSE_MOTION</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a2ec2be318cc86a1224c0e9dcc71321e4" kindref="member">event_class::MOUSE</ref>},
 }</initializer>
         <briefdescription>
+<para>each event type mapped to parent type </para>
         </briefdescription>
         <detaileddescription>
-<para>each event type mapped to parent type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -500,9 +500,9 @@
           <declname>event_str</declname>
         </param>
         <briefdescription>
+<para>Convert a string to an event, throw if the string is not a valid event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Convert a string to an event, throw if the string is not a valid event. </para>
         </detaileddescription>
         <inbodydescription>
 <para>First element is the entire match, so search from the second.</para>
@@ -517,9 +517,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The openage input layer. </para>
     </briefdescription>
     <detaileddescription>
-<para>The openage input layer. It gets all the events and processes them accordingly. </para>
+<para>It gets all the events and processes them accordingly. </para>
     </detaileddescription>
     <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.cpp" line="14" column="1"/>
   </compounddef>

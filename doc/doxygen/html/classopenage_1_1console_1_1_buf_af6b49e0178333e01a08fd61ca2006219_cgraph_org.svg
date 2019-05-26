@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-182 578,-182 578,4 -4,4"/>
 <!-- Node49 -->
 <g id="node1" class="node"><title>Node49</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="clears the screen character and line buffers.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-73.5 0,-103.5 113,-103.5 113,-73.5 0,-73.5"/>
 <text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="56.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::clear</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node50 -->
 <g id="node2" class="node"><title>Node50</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a1108eb4031232054e271e3c7321b24ef" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a1108eb4031232054e271e3c7321b24ef" target="_top" xlink:title="clears a range of the data buffer.">
 <polygon fill="white" stroke="black" points="149,-147.5 149,-177.5 262,-177.5 262,-147.5 149,-147.5"/>
 <text text-anchor="start" x="157" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="205.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::chrdata_clear</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node51 -->
 <g id="node3" class="node"><title>Node51</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title="returns a valid pointer to the character info for the character designated by pos">
 <polygon fill="white" stroke="black" points="149,-98.5 149,-128.5 262,-128.5 262,-98.5 149,-98.5"/>
 <text text-anchor="start" x="157" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="205.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::chrdataptr</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node54 -->
 <g id="node6" class="node"><title>Node54</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a76d65b492fdef7853b939598235881e2" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a76d65b492fdef7853b939598235881e2" target="_top" xlink:title="clears a range of the linedata buffer.">
 <polygon fill="white" stroke="black" points="149,-49.5 149,-79.5 262,-79.5 262,-49.5 149,-49.5"/>
 <text text-anchor="start" x="157" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="205.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::linedata_clear</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node55 -->
 <g id="node7" class="node"><title>Node55</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a4c48f84f2a29ae7472c54bce03fcbd65" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a4c48f84f2a29ae7472c54bce03fcbd65" target="_top" xlink:title="returns a valid pointer to the line info for the line designated by lineno">
 <polygon fill="white" stroke="black" points="149,-0.5 149,-30.5 262,-30.5 262,-0.5 149,-0.5"/>
 <text text-anchor="start" x="157" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="205.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::linedataptr</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node53 -->
 <g id="node5" class="node"><title>Node53</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="479,-55 479,-74 574,-74 574,-55 479,-55"/>
 <text text-anchor="middle" x="526.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -335,9 +335,9 @@
           <declname>loaded_game_spec</declname>
         </param>
         <briefdescription>
+<para>Pass loaded assets to the image provider. </para>
         </briefdescription>
         <detaileddescription>
-<para>Pass loaded assets to the image provider.</para>
 <para>Provider will check if it&apos;s still attached to that spec. Also it may be invalidated in the meantime, so share the ownership. </para>
         </detaileddescription>
         <inbodydescription>

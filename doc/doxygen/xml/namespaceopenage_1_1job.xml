@@ -24,9 +24,9 @@
         <argsstring></argsstring>
         <name>job_function_t</name>
         <briefdescription>
+<para>Type of a function that is executed by a job and returns a result. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type of a function that is executed by a job and returns a result.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>T</parametername>
@@ -53,9 +53,10 @@
         <argsstring></argsstring>
         <name>abortable_function_t</name>
         <briefdescription>
+<para>Type of a function that is executed by a job and returns a result. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type of a function that is executed by a job and returns a result. It can be aborted using the two passed function objects.</para>
+<para>It can be aborted using the two passed function objects.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>T</parametername>
@@ -82,9 +83,10 @@
         <argsstring></argsstring>
         <name>result_function_t</name>
         <briefdescription>
+<para>Type of a function to retrieve the result of a job. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type of a function to retrieve the result of a job. If the job threw an exception, it is rethrown by this function.</para>
+<para>If the job threw an exception, it is rethrown by this function.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>T</parametername>
@@ -111,9 +113,10 @@
         <argsstring></argsstring>
         <name>callback_function_t</name>
         <briefdescription>
+<para>Type of a job&apos;s callback function, which is called, when a job has finished. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type of a job&apos;s callback function, which is called, when a job has finished. The passed result function object is used to retrieve the job&apos;s result.</para>
+<para>The passed result function object is used to retrieve the job&apos;s result.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>T</parametername>
@@ -135,9 +138,9 @@
         <argsstring></argsstring>
         <name>should_abort_t</name>
         <briefdescription>
+<para>Type of a function that returns whether a job should be aborted. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type of a function that returns whether a job should be aborted. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -149,9 +152,9 @@
         <argsstring></argsstring>
         <name>abort_t</name>
         <briefdescription>
+<para>Type of a function that aborts a job. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type of a function that aborts a job. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

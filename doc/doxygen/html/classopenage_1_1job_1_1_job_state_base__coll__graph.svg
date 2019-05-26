@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-95 143,-95 143,4 -4,4"/>
 <!-- Node4 -->
 <g id="node1" class="node"><title>Node4</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="An abstract base class for a shared state of a job.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-90.5 139,-90.5 139,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="69.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobStateBase</text>
 <polyline fill="none" stroke="black" points="0,-71.5 139,-71.5 "/>

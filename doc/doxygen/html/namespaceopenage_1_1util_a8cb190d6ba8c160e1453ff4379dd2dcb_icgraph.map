@@ -1,4 +1,4 @@
 <map id="openage::util::ignore_result" name="openage::util::ignore_result">
-<area shape="rect" id="node1" title=" " alt="" coords="209,5,348,47"/>
+<area shape="rect" id="node1" title="Wrapping a function call with ignore_result makes it more clear to readers, compilers and linters tha..." alt="" coords="209,5,348,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1error.xhtml#afafcc06f7279949f56f93e5506656528" title=" " alt="" coords="5,5,161,47"/>
 </map>

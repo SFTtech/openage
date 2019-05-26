@@ -1,6 +1,6 @@
 <map id="openage::curve::KeyframeContainer::KeyframeContainer" name="openage::curve::KeyframeContainer::KeyframeContainer">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,200,80"/>
+<area shape="rect" id="node1" title="need the datamanger for change management" alt="" coords="5,39,200,80"/>
 <area shape="rect" id="node2" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="248,46,317,73"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="365,5,532,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="365,71,532,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="365,5,532,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="365,71,532,112"/>
 </map>

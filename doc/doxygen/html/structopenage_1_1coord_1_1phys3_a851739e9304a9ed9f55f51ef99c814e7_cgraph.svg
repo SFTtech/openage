@@ -62,7 +62,7 @@
 </g>
 <!-- Node15 -->
 <g id="node5" class="node"><title>Node15</title>
-<g id="a_node5"><a xlink:href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" target="_top" xlink:title="See the comments for camgame_delta::to_phys3.">
 <polygon fill="white" stroke="black" points="312,-0.5 312,-30.5 444,-30.5 444,-0.5 312,-0.5"/>
 <text text-anchor="start" x="320" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::camgame</text>
 <text text-anchor="middle" x="378" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_viewport</text>

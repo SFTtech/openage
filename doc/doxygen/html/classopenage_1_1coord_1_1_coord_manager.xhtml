@@ -97,13 +97,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1coord_1_1_coord_manage
 </div><!--header-->
 <div class="contents">
 
+<p>Holds all coordinate-related state and metadata.  
+ <a href="classopenage_1_1coord_1_1_coord_manager.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::coord::CoordManager:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1coord_1_1_coord_manager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1coord_1_1_coord_manager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -114,18 +118,23 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a5dae949d1b16387cee8ea1d865884507"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenage_1_1coord_1_1viewport__delta.xhtml">viewport_delta</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml#a5dae949d1b16387cee8ea1d865884507">viewport_size</a> {800, 600}</td></tr>
+<tr class="memdesc:a5dae949d1b16387cee8ea1d865884507"><td class="mdescLeft">&#160;</td><td class="mdescRight">What's the current size of the viewport? (what's the coordinate of the top right pixel + (1, 1)?)  <a href="#a5dae949d1b16387cee8ea1d865884507">More...</a><br /></td></tr>
 <tr class="separator:a5dae949d1b16387cee8ea1d865884507"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d3d2a6a960c82fa5dcec0e43e3e7c9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenage_1_1coord_1_1phys3.xhtml">phys3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml#a7d3d2a6a960c82fa5dcec0e43e3e7c9a">camgame_phys</a> {10, 10, 0}</td></tr>
+<tr class="memdesc:a7d3d2a6a960c82fa5dcec0e43e3e7c9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">What place (in Phys3) is the origin of the CamGame coordinate system looking at?  <a href="#a7d3d2a6a960c82fa5dcec0e43e3e7c9a">More...</a><br /></td></tr>
 <tr class="separator:a7d3d2a6a960c82fa5dcec0e43e3e7c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a366cc992363b8e417679d6a8f54574c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenage_1_1coord_1_1viewport.xhtml">viewport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml#a366cc992363b8e417679d6a8f54574c6">camgame_viewport</a> {400, 300}</td></tr>
+<tr class="memdesc:a366cc992363b8e417679d6a8f54574c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Where in the viewport is the origin of the CamGame coordinate system? (this is usually the center of the viewport).  <a href="#a366cc992363b8e417679d6a8f54574c6">More...</a><br /></td></tr>
 <tr class="separator:a366cc992363b8e417679d6a8f54574c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6e2147894fc653dd8fe9c057afc1794"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenage_1_1coord_1_1viewport.xhtml">viewport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml#ae6e2147894fc653dd8fe9c057afc1794">camhud_viewport</a> {0, 0}</td></tr>
+<tr class="memdesc:ae6e2147894fc653dd8fe9c057afc1794"><td class="mdescLeft">&#160;</td><td class="mdescRight">Where in the viewport is the origin of the CamHUD coordinate system? (this is usually the bottom left corner of the viewport)  <a href="#ae6e2147894fc653dd8fe9c057afc1794">More...</a><br /></td></tr>
 <tr class="separator:ae6e2147894fc653dd8fe9c057afc1794"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd45c3c2cf20f76ac980e18bba3128e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenage_1_1coord_1_1camgame__delta.xhtml">camgame_delta</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1coord_1_1_coord_manager.xhtml#abd45c3c2cf20f76ac980e18bba3128e3">tile_size</a> {96, 48}</td></tr>
+<tr class="memdesc:abd45c3c2cf20f76ac980e18bba3128e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of a terrain tile, in pixels.  <a href="#abd45c3c2cf20f76ac980e18bba3128e3">More...</a><br /></td></tr>
 <tr class="separator:abd45c3c2cf20f76ac980e18bba3128e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Holds all coordinate-related state and metadata.</p>
+<div class="textblock"><p>Holds all coordinate-related state and metadata. </p>
 <p>Among other things, this stores the camera positions. </p>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00018">18</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
@@ -169,6 +178,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>What place (in Phys3) is the origin of the CamGame coordinate system looking at? </p>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00031">31</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
@@ -188,6 +198,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Where in the viewport is the origin of the CamGame coordinate system? (this is usually the center of the viewport). </p>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00037">37</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
@@ -207,6 +218,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Where in the viewport is the origin of the CamHUD coordinate system? (this is usually the bottom left corner of the viewport) </p>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00043">43</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
@@ -226,7 +238,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The size of a terrain tile, in pixels. Rile diamonds are 96 pixels wide and 48 pixels high. The area of each tile is 96 * 48 * 0.5 square pixels. </p>
+
+<p>The size of a terrain tile, in pixels. </p>
+<p>Rile diamonds are 96 pixels wide and 48 pixels high. The area of each tile is 96 * 48 * 0.5 square pixels. </p>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00051">51</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
 
@@ -245,6 +259,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>What's the current size of the viewport? (what's the coordinate of the top right pixel + (1, 1)?) </p>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00026">26</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>

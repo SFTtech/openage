@@ -2,6 +2,6 @@
 <area shape="rect" id="node1" title=" " alt="" coords="5,39,175,80"/>
 <area shape="rect" id="node2" href="$classopenage_1_1convert_1_1binpack_1_1_best_packer.xhtml#a94a5247cf3049d7b95b2937858d0db31" title=" " alt="" coords="223,39,392,80"/>
 <area shape="rect" id="node3" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="440,46,509,73"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="557,5,724,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="557,71,724,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="557,5,724,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="557,71,724,112"/>
 </map>

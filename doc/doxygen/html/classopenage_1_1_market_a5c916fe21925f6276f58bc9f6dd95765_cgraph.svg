@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 403,-35 403,4 -4,4"/>
 <!-- Node39 -->
 <g id="node1" class="node"><title>Node39</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Get the buying prices for a given player.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 109,-30.5 109,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="54.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_sell_prices</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node40 -->
 <g id="node2" class="node"><title>Node40</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_market.xhtml#aefa96adaadd93ab08349621e01a1b65f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_market.xhtml#aefa96adaadd93ab08349621e01a1b65f" target="_top" xlink:title="The getBuyPrices and getSellPrices are redirected here.">
 <polygon fill="white" stroke="black" points="145,-0.5 145,-30.5 254,-30.5 254,-0.5 145,-0.5"/>
 <text text-anchor="start" x="153" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="199.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_prices</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node41 -->
 <g id="node3" class="node"><title>Node41</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_market.xhtml#adb430db2e1ce5828a1bc6b273994b9dc" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_market.xhtml#adb430db2e1ce5828a1bc6b273994b9dc" target="_top" xlink:title="Get the multiplier for the base prices.">
 <polygon fill="white" stroke="black" points="290,-0.5 290,-30.5 399,-30.5 399,-0.5 290,-0.5"/>
 <text text-anchor="start" x="298" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="344.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_multiplier</text>

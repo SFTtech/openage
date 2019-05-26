@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 261,-35 261,4 -4,4"/>
 <!-- Node27 -->
 <g id="node1" class="node"><title>Node27</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="give a new attribute this this unit this is used to set things like color, hitpoints and speed">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 98,-30.5 98,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::add</text>
 <text text-anchor="middle" x="49" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node28 -->
 <g id="node2" class="node"><title>Node28</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f" target="_top" xlink:title="Add an attribute or replace any attribute of the same type.">
 <polygon fill="white" stroke="black" points="134,-6 134,-25 257,-25 257,-6 134,-6"/>
 <text text-anchor="middle" x="195.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::add</text>
 </a>

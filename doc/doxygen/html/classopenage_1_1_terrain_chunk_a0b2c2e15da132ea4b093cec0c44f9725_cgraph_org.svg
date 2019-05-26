@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-122.5 557,-122.5 557,4 -4,4"/>
 <!-- Node41 -->
 <g id="node1" class="node"><title>Node41</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="get tile data by coordinates that are releative to this chunk.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-63 0,-93 116,-93 116,-63 0,-63"/>
 <text text-anchor="start" x="8" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="58" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node42 -->
 <g id="node2" class="node"><title>Node42</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title="get tile data by absolute coordinates.">
 <polygon fill="white" stroke="black" points="152,-88 152,-118 268,-118 268,-88 152,-88"/>
 <text text-anchor="start" x="160" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="210" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node44 -->
 <g id="node4" class="node"><title>Node44</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="456,-93.5 456,-112.5 553,-112.5 553,-93.5 456,-93.5"/>
 <text text-anchor="middle" x="504.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

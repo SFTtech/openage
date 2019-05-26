@@ -15,9 +15,10 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>Signal is triggered to anounce a new output mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>Signal is triggered to anounce a new output mode. name: name of the gui mode. </para>
+<para>name: name of the gui mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -35,9 +36,10 @@
           <declname>binds</declname>
         </param>
         <briefdescription>
+<para>Signal is triggered when the bindings of the mode change. </para>
         </briefdescription>
         <detaileddescription>
-<para>Signal is triggered when the bindings of the mode change. binds: list of strings that describe keybindings. </para>
+<para>binds: list of strings that describe keybindings. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -47,9 +49,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Signals for a gui mode. </para>
     </briefdescription>
     <detaileddescription>
-<para>Signals for a gui mode. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4415">

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 300,-46 300,4 -4,4"/>
 <!-- Node16 -->
 <g id="node1" class="node"><title>Node16</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="This method decides which node becomes the new root node by comparing this with node.">
 <polygon fill="#bfbfbf" stroke="black" points="155,-6 155,-36 296,-36 296,-6 155,-6"/>
 <text text-anchor="start" x="163" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="225.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeapNode::link_with</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node17 -->
 <g id="node2" class="node"><title>Node17</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap_node.xhtml#a6227d9be8c7b75e3456c25850e324327" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap_node.xhtml#a6227d9be8c7b75e3456c25850e324327" target="_top" xlink:title="Link all siblings backwards from right to left.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-41.5 119,-41.5 119,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeapNode::link</text>

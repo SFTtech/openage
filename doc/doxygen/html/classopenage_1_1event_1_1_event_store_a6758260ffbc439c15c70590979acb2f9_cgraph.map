@@ -1,5 +1,5 @@
 <map id="openage::event::EventStore::pop" name="openage::event::EventStore::pop">
 <area shape="rect" id="node1" title=" " alt="" coords="5,46,215,73"/>
-<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" title=" " alt="" coords="263,5,417,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" title="returns and removes the smallest item on the heap." alt="" coords="263,5,417,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a45599db3b89b27ad5c53ca900a67df85" title=" " alt="" coords="263,71,417,112"/>
 </map>

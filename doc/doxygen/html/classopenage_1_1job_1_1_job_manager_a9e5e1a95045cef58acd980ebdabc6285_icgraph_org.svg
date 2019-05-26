@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 573,-35 573,4 -4,4"/>
 <!-- Node42 -->
 <g id="node1" class="node"><title>Node42</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Adds a finished job to the internal finished job map.">
 <polygon fill="#bfbfbf" stroke="black" points="438,-0.5 438,-30.5 569,-30.5 569,-0.5 438,-0.5"/>
 <text text-anchor="start" x="446" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="503.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::finish_job</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node43 -->
 <g id="node2" class="node"><title>Node43</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#a2546565a41969f4bb1d62773239e20c4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#a2546565a41969f4bb1d62773239e20c4" target="_top" xlink:title="Executes the given job and tells the parent job manager, when it has finished.">
 <polygon fill="white" stroke="black" points="292,-0.5 292,-30.5 402,-30.5 402,-0.5 292,-0.5"/>
 <text text-anchor="start" x="300" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <text text-anchor="middle" x="347" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_job</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node44 -->
 <g id="node3" class="node"><title>Node44</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" target="_top" xlink:title="Fetches pending jobs from the parent job manager and from the internal pending job queue and executes...">
 <polygon fill="white" stroke="black" points="146,-0.5 146,-30.5 256,-30.5 256,-0.5 146,-0.5"/>
 <text text-anchor="start" x="154" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <text text-anchor="middle" x="201" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::process</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node45 -->
 <g id="node4" class="node"><title>Node45</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#a3a0d1ce7031d428efce6c42b083ffd05" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#a3a0d1ce7031d428efce6c42b083ffd05" target="_top" xlink:title="Starts this worker.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 110,-30.5 110,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <text text-anchor="middle" x="55" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start</text>

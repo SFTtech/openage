@@ -97,20 +97,25 @@ $(document).ready(function(){initNavTree('classqtsdl_1_1_ctx_extraction_mode.xht
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract base for the method of getting a Qt-usable context.  
+ <a href="classqtsdl_1_1_ctx_extraction_mode.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gui__ctx__setup_8h_source.xhtml">gui_ctx_setup.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for qtsdl::CtxExtractionMode:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_ctx_extraction_mode__inherit__graph.svg" width="467" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_ctx_extraction_mode__inherit__graph.svg" width="467" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for qtsdl::CtxExtractionMode:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_ctx_extraction_mode__coll__graph.svg" width="180" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_ctx_extraction_mode__coll__graph.svg" width="180" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -120,8 +125,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab032d2eb6589f543aa1ebce385ce2d17"><td class="memItemLeft" align="right" valign="top">QOpenGLContext *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#ab032d2eb6589f543aa1ebce385ce2d17">get_ctx</a> ()</td></tr>
 <tr class="separator:ab032d2eb6589f543aa1ebce385ce2d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a078af4f1b11cf1091496bfc8559b0c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#a5a078af4f1b11cf1091496bfc8559b0c">pre_render</a> ()=0</td></tr>
+<tr class="memdesc:a5a078af4f1b11cf1091496bfc8559b0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that must be called before rendering the GUI.  <a href="#a5a078af4f1b11cf1091496bfc8559b0c">More...</a><br /></td></tr>
 <tr class="separator:a5a078af4f1b11cf1091496bfc8559b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a314f77f4b5e33b76316e4184b4c4f505"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#a314f77f4b5e33b76316e4184b4c4f505">post_render</a> ()=0</td></tr>
+<tr class="memdesc:a314f77f4b5e33b76316e4184b4c4f505"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that must be called after rendering the GUI.  <a href="#a314f77f4b5e33b76316e4184b4c4f505">More...</a><br /></td></tr>
 <tr class="separator:a314f77f4b5e33b76316e4184b4c4f505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -207,6 +214,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Function that must be called after rendering the GUI. </p>
 
 <p>Implemented in <a class="el" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#ad60bc0dd243b8c3ab105f33cdd605dae">qtsdl::GuiSeparateRenderingContext</a>, and <a class="el" href="classqtsdl_1_1_gui_unique_rendering_context.xhtml#aeb11eab34c89a558f778848bd714530f">qtsdl::GuiUniqueRenderingContext</a>.</p>
@@ -235,6 +243,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Function that must be called before rendering the GUI. </p>
 
 <p>Implemented in <a class="el" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a47ae13e05fbce6703f7b3329512b5a5f">qtsdl::GuiSeparateRenderingContext</a>, and <a class="el" href="classqtsdl_1_1_gui_unique_rendering_context.xhtml#a613f69bdb73c8cdf25e1efa32a4f53ec">qtsdl::GuiUniqueRenderingContext</a>.</p>

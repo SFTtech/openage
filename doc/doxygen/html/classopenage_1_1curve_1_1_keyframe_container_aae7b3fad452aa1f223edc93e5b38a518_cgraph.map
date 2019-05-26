@@ -1,5 +1,5 @@
 <map id="openage::curve::KeyframeContainer::erase_after" name="openage::curve::KeyframeContainer::erase_after">
-<area shape="rect" id="node1" title=" " alt="" coords="5,180,177,221"/>
+<area shape="rect" id="node1" title="Erase all elements that come after this last valid element." alt="" coords="5,180,177,221"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1curve_1_1tests.xhtml#afc4e799a037edab37e1e35a74da593b7" title=" " alt="" coords="225,180,372,221"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1curve_1_1tests.xhtml#aafe8d47259322a390c43cae62d308296" title=" " alt="" coords="420,5,567,47"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1curve_1_1tests.xhtml#a994d019a14acd704605a0ccff85558c8" title=" " alt="" coords="420,71,567,112"/>

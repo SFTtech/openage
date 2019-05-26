@@ -57,7 +57,7 @@ var sectionId = 'dynsection-5';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 578,-35 578,4 -4,4"/>
 <!-- Node17 -->
 <g id="node1" class="node"><title>Node17</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="The type name of the exception (for pretty&#45;printing in case the exception hierarchy is used).">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 106,-30.5 106,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 <text text-anchor="middle" x="53" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::type_name</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node18 -->
 <g id="node2" class="node"><title>Node18</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title="Demangles a symbol name.">
 <polygon fill="white" stroke="black" points="142,-6 142,-25 262,-25 262,-6 142,-6"/>
 <text text-anchor="middle" x="202" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::demangle</text>
 </a>
@@ -92,7 +92,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node20 -->
 <g id="node4" class="node"><title>Node20</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="479,-6 479,-25 574,-25 574,-6 479,-6"/>
 <text text-anchor="middle" x="526.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

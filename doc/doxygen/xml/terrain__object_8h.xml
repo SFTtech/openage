@@ -638,7 +638,7 @@
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal">tile_range<sp/><ref refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" kindref="member">building_center</ref>(coord::phys3<sp/>west,<sp/>coord::tile_delta<sp/>size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Terrain<sp/>&amp;terrain);</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" kindref="member">complete_building</ref>(Unit<sp/>&amp;);</highlight></codeline>
+<codeline lineno="58"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a8c248986ac22a8251e1f27a6cef087eb" kindref="member">complete_building</ref>(Unit<sp/>&amp;);</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="75" refid="classopenage_1_1_terrain_object" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::enable_shared_from_this&lt;TerrainObject&gt;<sp/>{</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>

@@ -46,7 +46,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" target="_top" xlink:title="writes the string (excluding the null terminator)">
 <polygon fill="white" stroke="black" points="472,-99 472,-118 588,-118 588,-99 472,-99"/>
 <text text-anchor="middle" x="530" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::puts</text>
 </a>
@@ -59,7 +59,7 @@
 </g>
 <!-- Node10 -->
 <g id="node11" class="node"><title>Node10</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" target="_top" xlink:title="very early and inefficient printing of the console to a pty.">
 <polygon fill="white" stroke="black" points="170.5,-87.5 170.5,-117.5 289.5,-117.5 289.5,-87.5 170.5,-87.5"/>
 <text text-anchor="start" x="178.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="230" y="-94.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_terminal</text>
@@ -73,7 +73,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15" target="_top" xlink:title="writes &#39;bytes&#39; bytes from buf">
 <polygon fill="white" stroke="black" points="636,-44.5 636,-74.5 733,-74.5 733,-44.5 636,-44.5"/>
 <text text-anchor="start" x="644" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="684.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">write</text>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node8 -->
 <g id="node9" class="node"><title>Node8</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title="Returns the length of the string literal, excluding the terminating NULL byte.">
 <polygon fill="white" stroke="black" points="624,-93.5 624,-123.5 745,-123.5 745,-93.5 624,-93.5"/>
 <text text-anchor="start" x="632" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="684.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strlen</text>
@@ -101,7 +101,7 @@
 </g>
 <!-- Node9 -->
 <g id="node10" class="node"><title>Node9</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="787.5,-143 787.5,-162 874.5,-162 874.5,-143 787.5,-143"/>
 <text text-anchor="middle" x="831" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -114,7 +114,7 @@
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" target="_top" xlink:title="bytes(value)">
 <polygon fill="white" stroke="black" points="781,-78 781,-97 881,-97 881,-78 781,-78"/>
 <text text-anchor="middle" x="831" y="-85" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::bytes</text>
 </a>
@@ -140,7 +140,7 @@
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1098,-162 1098,-181 1193,-181 1193,-162 1098,-162"/>
 <text text-anchor="middle" x="1145.5" y="-169" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -173,7 +173,7 @@
 </g>
 <!-- Node11 -->
 <g id="node12" class="node"><title>Node11</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title="returns a valid pointer to the character info for the character designated by pos">
 <polygon fill="white" stroke="black" points="473.5,-219.5 473.5,-249.5 586.5,-249.5 586.5,-219.5 473.5,-219.5"/>
 <text text-anchor="start" x="481.5" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="530" y="-226.5" font-family="Helvetica,sans-Serif" font-size="10.00">::chrdataptr</text>
@@ -187,7 +187,7 @@
 </g>
 <!-- Node12 -->
 <g id="node13" class="node"><title>Node12</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" target="_top" xlink:title="guess what this does.">
 <polygon fill="white" stroke="black" points="339,-175.5 339,-205.5 436,-205.5 436,-175.5 339,-175.5"/>
 <text text-anchor="start" x="347" y="-193.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="387.5" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">printf</text>
@@ -201,7 +201,7 @@
 </g>
 <!-- Node13 -->
 <g id="node14" class="node"><title>Node13</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#aa7042077eda5413ddddf0075a1a66761" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#aa7042077eda5413ddddf0075a1a66761" target="_top" xlink:title="writes the char">
 <polygon fill="white" stroke="black" points="339,-0.5 339,-30.5 436,-30.5 436,-0.5 339,-0.5"/>
 <text text-anchor="start" x="347" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="387.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">putbyte</text>
@@ -215,7 +215,7 @@
 </g>
 <!-- Node14 -->
 <g id="node15" class="node"><title>Node14</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title="writes the unicode codepoint, as utf&#45;8">
 <polygon fill="white" stroke="black" points="339,-49.5 339,-79.5 436,-79.5 436,-49.5 339,-49.5"/>
 <text text-anchor="start" x="347" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="387.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">putcp</text>
@@ -254,7 +254,7 @@
 </g>
 <!-- Node15 -->
 <g id="node16" class="node"><title>Node15</title>
-<g id="a_node16"><a xlink:href="namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671" target="_top" xlink:title="encodes one Unicode codepoint to a null&#45;terminated UTF&#45;8 character string.">
 <polygon fill="white" stroke="black" points="483,-49.5 483,-79.5 577,-79.5 577,-49.5 483,-49.5"/>
 <text text-anchor="start" x="491" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::utf8</text>
 <text text-anchor="middle" x="530" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_encode</text>

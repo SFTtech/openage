@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 323,-35 323,4 -4,4"/>
 <!-- Node34 -->
 <g id="node1" class="node"><title>Node34</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Control whether this specification can be loaded (=true) or will not be loaded (=false).">
 <polygon fill="#bfbfbf" stroke="black" points="181,-0.5 181,-30.5 319,-30.5 319,-0.5 181,-0.5"/>
 <text text-anchor="start" x="189" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="250" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_active</text>

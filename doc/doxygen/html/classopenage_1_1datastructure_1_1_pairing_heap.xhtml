@@ -99,20 +99,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1datastructure_1_1_pair
 </div><!--header-->
 <div class="contents">
 
+<p>(Quite) efficient heap implementation.  
+ <a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap__coll__graph.svg" width="192" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap__coll__graph.svg" width="192" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -129,28 +134,39 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2087411c07ffe7d5d0762a700ee4e34e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a2087411c07ffe7d5d0762a700ee4e34e">PairingHeap</a> ()</td></tr>
+<tr class="memdesc:a2087411c07ffe7d5d0762a700ee4e34e"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a empty heap.  <a href="#a2087411c07ffe7d5d0762a700ee4e34e">More...</a><br /></td></tr>
 <tr class="separator:a2087411c07ffe7d5d0762a700ee4e34e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa219dc574937f546b210dd0c04836219"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aa219dc574937f546b210dd0c04836219">~PairingHeap</a> ()=default</td></tr>
 <tr class="separator:aa219dc574937f546b210dd0c04836219"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75e9e7602b59aeee47a2fd84a10c8f74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74">push</a> (const T &amp;item)</td></tr>
+<tr class="memdesc:a75e9e7602b59aeee47a2fd84a10c8f74"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds the given item to the heap.  <a href="#a75e9e7602b59aeee47a2fd84a10c8f74">More...</a><br /></td></tr>
 <tr class="separator:a75e9e7602b59aeee47a2fd84a10c8f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a684440bcb0466bd64164e9fe7e9df954"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a684440bcb0466bd64164e9fe7e9df954">push</a> (T &amp;&amp;item)</td></tr>
+<tr class="memdesc:a684440bcb0466bd64164e9fe7e9df954"><td class="mdescLeft">&#160;</td><td class="mdescRight">moves the given item to the heap.  <a href="#a684440bcb0466bd64164e9fe7e9df954">More...</a><br /></td></tr>
 <tr class="separator:a684440bcb0466bd64164e9fe7e9df954"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6bcfcb890dd8d546b1b4c466cf09009"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009">pop</a> ()</td></tr>
+<tr class="memdesc:ac6bcfcb890dd8d546b1b4c466cf09009"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns and removes the smallest item on the heap.  <a href="#ac6bcfcb890dd8d546b1b4c466cf09009">More...</a><br /></td></tr>
 <tr class="separator:ac6bcfcb890dd8d546b1b4c466cf09009"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17677ec830613746e38124b2eac7d2e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">pop_node</a> ()</td></tr>
+<tr class="memdesc:a17677ec830613746e38124b2eac7d2e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the smallest item on the heap and deletes it.  <a href="#a17677ec830613746e38124b2eac7d2e6">More...</a><br /></td></tr>
 <tr class="separator:a17677ec830613746e38124b2eac7d2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f6c87e73e47397b92a2766989a30c0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f">unlink_node</a> (const <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> &amp;node)</td></tr>
+<tr class="memdesc:a8f6c87e73e47397b92a2766989a30c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlink a node from the heap.  <a href="#a8f6c87e73e47397b92a2766989a30c0f">More...</a><br /></td></tr>
 <tr class="separator:a8f6c87e73e47397b92a2766989a30c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad22ca21f8e7319ea14cd3e14cf5274c4"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ad22ca21f8e7319ea14cd3e14cf5274c4">top</a> () const</td></tr>
+<tr class="memdesc:ad22ca21f8e7319ea14cd3e14cf5274c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the smallest item on the heap.  <a href="#ad22ca21f8e7319ea14cd3e14cf5274c4">More...</a><br /></td></tr>
 <tr class="separator:ad22ca21f8e7319ea14cd3e14cf5274c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74c5545ea2c581782effc648a0ecefab"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a74c5545ea2c581782effc648a0ecefab">top_node</a> () const</td></tr>
+<tr class="memdesc:a74c5545ea2c581782effc648a0ecefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the smallest node on the heap.  <a href="#a74c5545ea2c581782effc648a0ecefab">More...</a><br /></td></tr>
 <tr class="separator:a74c5545ea2c581782effc648a0ecefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab94d37206816a45bcfe49f8631cc82a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ab94d37206816a45bcfe49f8631cc82a9">decrease</a> (const <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> &amp;node)</td></tr>
+<tr class="memdesc:ab94d37206816a45bcfe49f8631cc82a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">You must call this after the node data decreased.  <a href="#ab94d37206816a45bcfe49f8631cc82a9">More...</a><br /></td></tr>
 <tr class="separator:ab94d37206816a45bcfe49f8631cc82a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab81daeebac3d236ced4a85117483d76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76">update</a> (const <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> &amp;node)</td></tr>
+<tr class="memdesc:aab81daeebac3d236ced4a85117483d76"><td class="mdescLeft">&#160;</td><td class="mdescRight">After a change, call this to reorganize the given node.  <a href="#aab81daeebac3d236ced4a85117483d76">More...</a><br /></td></tr>
 <tr class="separator:aab81daeebac3d236ced4a85117483d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a012519defd709aacae622b276c3f85eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a012519defd709aacae622b276c3f85eb">clear</a> ()</td></tr>
+<tr class="memdesc:a012519defd709aacae622b276c3f85eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">erase all elements on the heap.  <a href="#a012519defd709aacae622b276c3f85eb">More...</a><br /></td></tr>
 <tr class="separator:a012519defd709aacae622b276c3f85eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45599db3b89b27ad5c53ca900a67df85"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a45599db3b89b27ad5c53ca900a67df85">size</a> () const</td></tr>
 <tr class="separator:a45599db3b89b27ad5c53ca900a67df85"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,8 +180,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a95fa745e6a81de8caae638621137d504"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a95fa745e6a81de8caae638621137d504">walk_tree</a> (const <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> &amp;root, const std::function&lt; void(const <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> &amp;)&gt; &amp;func) const</td></tr>
 <tr class="separator:a95fa745e6a81de8caae638621137d504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a493b9b6b7e82fe0633df628a2aa248e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">push_node</a> (const <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> &amp;node)</td></tr>
+<tr class="memdesc:a493b9b6b7e82fe0633df628a2aa248e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds the given node to the heap.  <a href="#a493b9b6b7e82fe0633df628a2aa248e7">More...</a><br /></td></tr>
 <tr class="separator:a493b9b6b7e82fe0633df628a2aa248e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0b5d27df523155450ae777c9aa40f20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af0b5d27df523155450ae777c9aa40f20">root_insert</a> (const <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> &amp;node)</td></tr>
+<tr class="memdesc:af0b5d27df523155450ae777c9aa40f20"><td class="mdescLeft">&#160;</td><td class="mdescRight">insert a node into the heap.  <a href="#af0b5d27df523155450ae777c9aa40f20">More...</a><br /></td></tr>
 <tr class="separator:af0b5d27df523155450ae777c9aa40f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -282,6 +300,7 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>create a empty heap. </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00205">205</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
@@ -342,6 +361,7 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>erase all elements on the heap. </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00411">411</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
@@ -354,7 +374,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a012519defd709aacae622b276c3f85eb_icgraph.svg" width="394" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a012519defd709aacae622b276c3f85eb_icgraph.svg" width="394" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -384,7 +405,9 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
-<p>You must call this after the node data decreased. This cuts the subtree and links the subtree again. If the node value <em>increased</em> and you call this, the heap is corrupted. Also known as the decrease_key operation.</p>
+
+<p>You must call this after the node data decreased. </p>
+<p>This cuts the subtree and links the subtree again. If the node value <em>increased</em> and you call this, the heap is corrupted. Also known as the decrease_key operation.</p>
 <p>O(1) </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00380">380</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
@@ -397,7 +420,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_ab94d37206816a45bcfe49f8631cc82a9_icgraph.svg" width="100%" height="446"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_ab94d37206816a45bcfe49f8631cc82a9_icgraph.svg" width="100%" height="446"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -437,7 +461,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a7a529d5ee64fa5002f6487d3821df5f6_icgraph.svg" width="100%" height="446"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a7a529d5ee64fa5002f6487d3821df5f6_icgraph.svg" width="100%" height="446"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -498,11 +523,12 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>returns and removes the smallest item on the heap. </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00236">236</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            {</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">pop_node</a>()-&gt;data);</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    }</div><div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a17677ec830613746e38124b2eac7d2e6"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">openage::datastructure::PairingHeap::pop_node</a></div><div class="ttdeci">element_t pop_node()</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00246">pairing_heap.h:246</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a17677ec830613746e38124b2eac7d2e6"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">openage::datastructure::PairingHeap::pop_node</a></div><div class="ttdeci">element_t pop_node()</div><div class="ttdoc">returns the smallest item on the heap and deletes it.</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00246">pairing_heap.h:246</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="a__star_8cpp_source.xhtml#l00066">openage::path::a_star()</a>, and <a class="el" href="eventstore_8cpp_source.xhtml#l00028">openage::event::EventStore::pop()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -510,7 +536,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_ac6bcfcb890dd8d546b1b4c466cf09009_icgraph.svg" width="100%" height="494"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_ac6bcfcb890dd8d546b1b4c466cf09009_icgraph.svg" width="100%" height="494"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -539,7 +566,9 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
-<p>returns the smallest item on the heap and deletes it. also known as delete_min.</p>
+
+<p>returns the smallest item on the heap and deletes it. </p>
+<p>also known as delete_min.</p>
 <hr/>
 <p> Ω(log log n), O(2^(2*√log log n')) </p>
 
@@ -558,7 +587,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a17677ec830613746e38124b2eac7d2e6_icgraph.svg" width="442" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a17677ec830613746e38124b2eac7d2e6_icgraph.svg" width="442" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -588,11 +618,13 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
-<p>adds the given item to the heap. O(1) </p>
+
+<p>adds the given item to the heap. </p>
+<p>O(1) </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00217">217</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                  {</div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> new_node = std::make_shared&lt;node_t&gt;(item);</div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">push_node</a>(new_node);</div><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">return</span> new_node;</div><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_af89a07b90150d0d4606787f0ac202242"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">openage::datastructure::PairingHeap::element_t</a></div><div class="ttdeci">std::shared_ptr&lt; node_t &gt; element_t</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00198">pairing_heap.h:198</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a493b9b6b7e82fe0633df628a2aa248e7"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">openage::datastructure::PairingHeap::push_node</a></div><div class="ttdeci">void push_node(const element_t &amp;node)</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00613">pairing_heap.h:613</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a493b9b6b7e82fe0633df628a2aa248e7"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">openage::datastructure::PairingHeap::push_node</a></div><div class="ttdeci">void push_node(const element_t &amp;node)</div><div class="ttdoc">adds the given node to the heap.</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00613">pairing_heap.h:613</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="a__star_8cpp_source.xhtml#l00066">openage::path::a_star()</a>, <a class="el" href="datastructure_2tests_8cpp_source.xhtml#l00065">openage::datastructure::tests::pairing_heap_1()</a>, <a class="el" href="datastructure_2tests_8cpp_source.xhtml#l00112">openage::datastructure::tests::pairing_heap_2()</a>, <a class="el" href="datastructure_2tests_8cpp_source.xhtml#l00127">openage::datastructure::tests::pairing_heap_3()</a>, and <a class="el" href="eventstore_8cpp_source.xhtml#l00015">openage::event::EventStore::push()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -600,7 +632,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a75e9e7602b59aeee47a2fd84a10c8f74_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a75e9e7602b59aeee47a2fd84a10c8f74_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -630,12 +663,14 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
-<p>moves the given item to the heap. O(1) </p>
+
+<p>moves the given item to the heap. </p>
+<p>O(1) </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00227">227</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                             {</div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> new_node = std::make_shared&lt;node_t&gt;(<a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(item));</div><div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">push_node</a>(new_node);</div><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keywordflow">return</span> new_node;</div><div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_af89a07b90150d0d4606787f0ac202242"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">openage::datastructure::PairingHeap::element_t</a></div><div class="ttdeci">std::shared_ptr&lt; node_t &gt; element_t</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00198">pairing_heap.h:198</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a493b9b6b7e82fe0633df628a2aa248e7"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">openage::datastructure::PairingHeap::push_node</a></div><div class="ttdeci">void push_node(const element_t &amp;node)</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00613">pairing_heap.h:613</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a493b9b6b7e82fe0633df628a2aa248e7"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">openage::datastructure::PairingHeap::push_node</a></div><div class="ttdeci">void push_node(const element_t &amp;node)</div><div class="ttdoc">adds the given node to the heap.</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00613">pairing_heap.h:613</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -664,10 +699,12 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
-<p>adds the given node to the heap. use this if the node was not in the heap before. O(1) </p>
+
+<p>adds the given node to the heap. </p>
+<p>use this if the node was not in the heap before. O(1) </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00613">613</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;                                          {</div><div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af0b5d27df523155450ae777c9aa40f20">root_insert</a>(node);</div><div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;</div><div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;<span class="preprocessor">#if OPENAGE_PAIRINGHEAP_DEBUG</span></div><div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;        <span class="keyword">auto</span> ins = this-&gt;nodes.insert(node);</div><div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        <span class="keywordflow">if</span> (not ins.second) {</div><div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;            <span class="keywordflow">throw</span> Error{<a class="code" href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a> &lt;&lt; <span class="stringliteral">&quot;node already known&quot;</span>};</div><div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;        }</div><div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;</div><div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a42a1379cfdaf1a7f2a5ff4da9544d9f7">node_count</a> += 1;</div><div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_af0b5d27df523155450ae777c9aa40f20"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af0b5d27df523155450ae777c9aa40f20">openage::datastructure::PairingHeap::root_insert</a></div><div class="ttdeci">void root_insert(const element_t &amp;node)</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00629">pairing_heap.h:629</a></div></div>
+<div class="fragment"><div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;                                          {</div><div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af0b5d27df523155450ae777c9aa40f20">root_insert</a>(node);</div><div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;</div><div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;<span class="preprocessor">#if OPENAGE_PAIRINGHEAP_DEBUG</span></div><div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;        <span class="keyword">auto</span> ins = this-&gt;nodes.insert(node);</div><div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        <span class="keywordflow">if</span> (not ins.second) {</div><div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;            <span class="keywordflow">throw</span> Error{<a class="code" href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a> &lt;&lt; <span class="stringliteral">&quot;node already known&quot;</span>};</div><div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;        }</div><div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;</div><div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a42a1379cfdaf1a7f2a5ff4da9544d9f7">node_count</a> += 1;</div><div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_af0b5d27df523155450ae777c9aa40f20"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af0b5d27df523155450ae777c9aa40f20">openage::datastructure::PairingHeap::root_insert</a></div><div class="ttdeci">void root_insert(const element_t &amp;node)</div><div class="ttdoc">insert a node into the heap.</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00629">pairing_heap.h:629</a></div></div>
 <div class="ttc" id="message_8h_xhtml_a735563036dced0b7d6cc98f97ea4978b"><div class="ttname"><a href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a></div><div class="ttdeci">#define ERR</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00179">message.h:179</a></div></div>
 <div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a42a1379cfdaf1a7f2a5ff4da9544d9f7"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a42a1379cfdaf1a7f2a5ff4da9544d9f7">openage::datastructure::PairingHeap::node_count</a></div><div class="ttdeci">size_t node_count</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00639">pairing_heap.h:639</a></div></div>
 </div><!-- fragment -->
@@ -677,7 +714,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a493b9b6b7e82fe0633df628a2aa248e7_icgraph.svg" width="448" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a493b9b6b7e82fe0633df628a2aa248e7_icgraph.svg" width="448" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -707,6 +745,7 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>insert a node into the heap. </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00629">629</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
@@ -719,7 +758,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_af0b5d27df523155450ae777c9aa40f20_icgraph.svg" width="447" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_af0b5d27df523155450ae777c9aa40f20_icgraph.svg" width="447" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -759,7 +799,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a45599db3b89b27ad5c53ca900a67df85_icgraph.svg" width="100%" height="510"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a45599db3b89b27ad5c53ca900a67df85_icgraph.svg" width="100%" height="510"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -788,7 +829,9 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the smallest item on the heap. O(1) </p>
+
+<p>Returns the smallest item on the heap. </p>
+<p>O(1) </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00358">358</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                         {</div><div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">root_node</a>-&gt;get_data();</div><div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a850aad20a2be9bfe164499a4462965b4"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">openage::datastructure::PairingHeap::root_node</a></div><div class="ttdeci">element_t root_node</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00640">pairing_heap.h:640</a></div></div>
@@ -799,7 +842,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_ad22ca21f8e7319ea14cd3e14cf5274c4_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_ad22ca21f8e7319ea14cd3e14cf5274c4_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -828,7 +872,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the smallest node on the heap.</p>
+
+<p>Returns the smallest node on the heap. </p>
 <p>O(1) </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00367">367</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
@@ -861,14 +906,15 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Unlink a node from the heap.</p>
-<p>If the item is the current root, just <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009">pop()</a>. else, cut the node from its parent, <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009">pop()</a> that subtree and merge these trees.</p>
+
+<p>Unlink a node from the heap. </p>
+<p>If the item is the current root, just <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" title="returns and removes the smallest item on the heap.">pop()</a>. else, cut the node from its parent, <a class="el" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" title="returns and removes the smallest item on the heap.">pop()</a> that subtree and merge these trees.</p>
 <p>O(pop_node) </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00334">334</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                                            {</div><div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordflow">if</span> (node == this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">root_node</a>) {</div><div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">pop_node</a>();</div><div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        }</div><div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        <span class="keywordflow">else</span> {</div><div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            node-&gt;loosen();</div><div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div><div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            <a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> real_root = this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">root_node</a>;</div><div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">root_node</a> = node;</div><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">pop_node</a>();</div><div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div><div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">element_t</a> new_root = this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">root_node</a>;</div><div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">root_node</a> = real_root;</div><div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div><div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">if</span> (new_root != <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af0b5d27df523155450ae777c9aa40f20">root_insert</a>(new_root);</div><div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            }</div><div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        }</div><div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_af89a07b90150d0d4606787f0ac202242"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af89a07b90150d0d4606787f0ac202242">openage::datastructure::PairingHeap::element_t</a></div><div class="ttdeci">std::shared_ptr&lt; node_t &gt; element_t</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00198">pairing_heap.h:198</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_af0b5d27df523155450ae777c9aa40f20"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af0b5d27df523155450ae777c9aa40f20">openage::datastructure::PairingHeap::root_insert</a></div><div class="ttdeci">void root_insert(const element_t &amp;node)</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00629">pairing_heap.h:629</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a17677ec830613746e38124b2eac7d2e6"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">openage::datastructure::PairingHeap::pop_node</a></div><div class="ttdeci">element_t pop_node()</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00246">pairing_heap.h:246</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_af0b5d27df523155450ae777c9aa40f20"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#af0b5d27df523155450ae777c9aa40f20">openage::datastructure::PairingHeap::root_insert</a></div><div class="ttdeci">void root_insert(const element_t &amp;node)</div><div class="ttdoc">insert a node into the heap.</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00629">pairing_heap.h:629</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a17677ec830613746e38124b2eac7d2e6"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">openage::datastructure::PairingHeap::pop_node</a></div><div class="ttdeci">element_t pop_node()</div><div class="ttdoc">returns the smallest item on the heap and deletes it.</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00246">pairing_heap.h:246</a></div></div>
 <div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a850aad20a2be9bfe164499a4462965b4"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">openage::datastructure::PairingHeap::root_node</a></div><div class="ttdeci">element_t root_node</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00640">pairing_heap.h:640</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="eventstore_8cpp_source.xhtml#l00054">openage::event::EventStore::erase()</a>, and <a class="el" href="pairing__heap_8h_source.xhtml#l00397">openage::datastructure::PairingHeap&lt; std::shared_ptr&lt; Event &gt;, util::SharedPtrLess&lt; Event &gt; &gt;::update()</a>.</p>
@@ -877,7 +923,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a8f6c87e73e47397b92a2766989a30c0f_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_a8f6c87e73e47397b92a2766989a30c0f_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -907,16 +954,18 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
   </tr>
 </table>
 </div><div class="memdoc">
-<p>After a change, call this to reorganize the given node. Support increase and decrease of values.</p>
+
+<p>After a change, call this to reorganize the given node. </p>
+<p>Support increase and decrease of values.</p>
 <p>Use <code>decrease</code> instead when you know the value decreased.</p>
 <p>O(1) (but slower than decrease), and O(pop) when node is the root. </p>
 
 <p class="definition">Definition at line <a class="el" href="pairing__heap_8h_source.xhtml#l00397">397</a> of file <a class="el" href="pairing__heap_8h_source.xhtml">pairing_heap.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                                       {</div><div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#a217a0bd562b98ae8c2ffce44935351e1">likely</a>(node != this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">root_node</a>)) {</div><div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f">unlink_node</a>(node);</div><div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">push_node</a>(node);</div><div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        }</div><div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keywordflow">else</span> {</div><div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            <span class="comment">// it&#39;s the root node, so we just pop and push it.</span></div><div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">push_node</a>(this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">pop_node</a>());</div><div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        }</div><div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a8f6c87e73e47397b92a2766989a30c0f"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f">openage::datastructure::PairingHeap::unlink_node</a></div><div class="ttdeci">void unlink_node(const element_t &amp;node)</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00334">pairing_heap.h:334</a></div></div>
+<div class="fragment"><div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                                       {</div><div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#a217a0bd562b98ae8c2ffce44935351e1">likely</a>(node != this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">root_node</a>)) {</div><div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f">unlink_node</a>(node);</div><div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">push_node</a>(node);</div><div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        }</div><div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keywordflow">else</span> {</div><div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            <span class="comment">// it&#39;s the root node, so we just pop and push it.</span></div><div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">push_node</a>(this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">pop_node</a>());</div><div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        }</div><div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a8f6c87e73e47397b92a2766989a30c0f"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f">openage::datastructure::PairingHeap::unlink_node</a></div><div class="ttdeci">void unlink_node(const element_t &amp;node)</div><div class="ttdoc">Unlink a node from the heap.</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00334">pairing_heap.h:334</a></div></div>
 <div class="ttc" id="compiler_8h_xhtml_a217a0bd562b98ae8c2ffce44935351e1"><div class="ttname"><a href="compiler_8h.xhtml#a217a0bd562b98ae8c2ffce44935351e1">likely</a></div><div class="ttdeci">#define likely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00052">compiler.h:52</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a17677ec830613746e38124b2eac7d2e6"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">openage::datastructure::PairingHeap::pop_node</a></div><div class="ttdeci">element_t pop_node()</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00246">pairing_heap.h:246</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a17677ec830613746e38124b2eac7d2e6"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a17677ec830613746e38124b2eac7d2e6">openage::datastructure::PairingHeap::pop_node</a></div><div class="ttdeci">element_t pop_node()</div><div class="ttdoc">returns the smallest item on the heap and deletes it.</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00246">pairing_heap.h:246</a></div></div>
 <div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a850aad20a2be9bfe164499a4462965b4"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a850aad20a2be9bfe164499a4462965b4">openage::datastructure::PairingHeap::root_node</a></div><div class="ttdeci">element_t root_node</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00640">pairing_heap.h:640</a></div></div>
-<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a493b9b6b7e82fe0633df628a2aa248e7"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">openage::datastructure::PairingHeap::push_node</a></div><div class="ttdeci">void push_node(const element_t &amp;node)</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00613">pairing_heap.h:613</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_pairing_heap_xhtml_a493b9b6b7e82fe0633df628a2aa248e7"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7">openage::datastructure::PairingHeap::push_node</a></div><div class="ttdeci">void push_node(const element_t &amp;node)</div><div class="ttdoc">adds the given node to the heap.</div><div class="ttdef"><b>Definition:</b> <a href="pairing__heap_8h_source.xhtml#l00613">pairing_heap.h:613</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="eventstore_8cpp_source.xhtml#l00067">openage::event::EventStore::update()</a>.</p>
 <div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -924,7 +973,8 @@ template&lt;typename T, typename compare = std::less&lt;T&gt;, typename heapnode
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_aab81daeebac3d236ced4a85117483d76_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_pairing_heap_aab81daeebac3d236ced4a85117483d76_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>

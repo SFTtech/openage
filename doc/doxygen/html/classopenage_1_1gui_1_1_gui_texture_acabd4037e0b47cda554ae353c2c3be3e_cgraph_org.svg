@@ -20,7 +20,7 @@
 </g>
 <!-- Node27 -->
 <g id="node2" class="node"><title>Node27</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title="Get the subtexture coordinates by its id.">
 <polygon fill="white" stroke="black" points="168,-147.5 168,-177.5 279,-177.5 279,-147.5 168,-147.5"/>
 <text text-anchor="start" x="176" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="223.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">_subtexture</text>
@@ -103,7 +103,7 @@
 </g>
 <!-- Node33 -->
 <g id="node8" class="node"><title>Node33</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490" target="_top" xlink:title="returns the opengl texture id of this texture.">
 <polygon fill="white" stroke="black" points="336.5,-0.5 336.5,-30.5 447.5,-30.5 447.5,-0.5 336.5,-0.5"/>
 <text text-anchor="start" x="344.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="392" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_texture_id</text>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node34 -->
 <g id="node9" class="node"><title>Node34</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b" target="_top" xlink:title="The texture loadin must occur on the thread that manages the gl context.">
 <polygon fill="white" stroke="black" points="498,-0.5 498,-30.5 614,-30.5 614,-0.5 498,-0.5"/>
 <text text-anchor="start" x="506" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::load</text>
 <text text-anchor="middle" x="556" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_in_glthread</text>

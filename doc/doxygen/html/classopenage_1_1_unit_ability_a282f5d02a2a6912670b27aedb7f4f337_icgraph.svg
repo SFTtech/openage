@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 246,-35 246,4 -4,4"/>
 <!-- Node56 -->
 <g id="node1" class="node"><title>Node56</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="set bits corresponding to abilities, useful for initialising an ability_set using a brace enclosed li...">
 <polygon fill="#bfbfbf" stroke="black" points="138,-0.5 138,-30.5 242,-30.5 242,-0.5 138,-0.5"/>
 <text text-anchor="start" x="146" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAbility</text>
 <text text-anchor="middle" x="190" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_from_list</text>

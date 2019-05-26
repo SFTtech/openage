@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 298,-35 298,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Initializes this&#45;&gt;backtrace with a PyExceptionBacktrace object that points at this&#45;&gt;py_obj&#45;&gt;get_ref()...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 145,-30.5 145,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="72.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyException::init_backtrace</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639" target="_top" xlink:title="Provide the internal PyObject *.">
 <polygon fill="white" stroke="black" points="181,-0.5 181,-30.5 294,-30.5 294,-0.5 181,-0.5"/>
 <text text-anchor="start" x="189" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="237.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get_ref</text>

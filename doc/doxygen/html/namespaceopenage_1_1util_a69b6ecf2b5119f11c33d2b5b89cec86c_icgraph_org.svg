@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-390 745,-390 745,4 -4,4"/>
 <!-- Node39 -->
 <g id="node1" class="node"><title>Node39</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Convert a C&#45;style array of uint8_t to a uint64_t.">
 <polygon fill="#bfbfbf" stroke="black" points="636,-234.5 636,-264.5 741,-264.5 741,-234.5 636,-234.5"/>
 <text text-anchor="start" x="644" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="688.5" y="-241.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_uint64</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node40 -->
 <g id="node2" class="node"><title>Node40</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a std::vector of uint64_t.">
 <polygon fill="white" stroke="black" points="491,-335.5 491,-365.5 596,-365.5 596,-335.5 491,-335.5"/>
 <text text-anchor="start" x="499" y="-353.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="543.5" y="-342.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array64</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node42 -->
 <g id="node4" class="node"><title>Node42</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" target="_top" xlink:title="Siphash implementation.">
 <polygon fill="white" stroke="black" points="494,-202 494,-221 593,-221 593,-202 494,-202"/>
 <text text-anchor="middle" x="543.5" y="-209" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::hash</text>
 </a>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node51 -->
 <g id="node13" class="node"><title>Node51</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_siphash.xhtml#af7425175b423437032001ccf3901a54b" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_siphash.xhtml#af7425175b423437032001ccf3901a54b" target="_top" xlink:title="Set the key for subsequent hashes.">
 <polygon fill="white" stroke="black" points="487,-76.5 487,-106.5 600,-106.5 600,-76.5 487,-76.5"/>
 <text text-anchor="start" x="495" y="-94.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Siphash</text>
 <text text-anchor="middle" x="543.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_key</text>
@@ -109,7 +109,7 @@
 </g>
 <!-- Node47 -->
 <g id="node9" class="node"><title>Node47</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_siphash.xhtml#a59bdccc7e794fe057e4777031a177650" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_siphash.xhtml#a59bdccc7e794fe057e4777031a177650" target="_top" xlink:title="Hashes the input data as uint8_t array and returns the result.">
 <polygon fill="white" stroke="black" points="309,-196.5 309,-226.5 422,-226.5 422,-196.5 309,-196.5"/>
 <text text-anchor="start" x="317" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Siphash</text>
 <text text-anchor="middle" x="365.5" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::digest</text>
@@ -165,7 +165,7 @@
 </g>
 <!-- Node45 -->
 <g id="node7" class="node"><title>Node45</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title="Retrieves the atlas entry for a specified font and glyph.">
 <polygon fill="white" stroke="black" points="143,-245.5 143,-275.5 244,-275.5 244,-245.5 143,-245.5"/>
 <text text-anchor="start" x="151" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="193.5" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">GlyphAtlas::get</text>
@@ -179,7 +179,7 @@
 </g>
 <!-- Node46 -->
 <g id="node8" class="node"><title>Node46</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title="Render all the text draw requests made during the frame.">
 <polygon fill="white" stroke="black" points="0,-245.5 0,-275.5 107,-275.5 107,-245.5 0,-245.5"/>
 <text text-anchor="start" x="8" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="53.5" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::render</text>
@@ -193,7 +193,7 @@
 </g>
 <!-- Node52 -->
 <g id="node14" class="node"><title>Node52</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_siphash.xhtml#a0d9e67468bcba15f9f14f6affc3b9711" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_siphash.xhtml#a0d9e67468bcba15f9f14f6affc3b9711" target="_top" xlink:title="Creates a hash generator.">
 <polygon fill="white" stroke="black" points="309,-0.5 309,-30.5 422,-30.5 422,-0.5 309,-0.5"/>
 <text text-anchor="start" x="317" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Siphash</text>
 <text text-anchor="middle" x="365.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Siphash</text>

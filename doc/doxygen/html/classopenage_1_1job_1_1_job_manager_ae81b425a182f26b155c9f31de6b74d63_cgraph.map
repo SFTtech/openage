@@ -1,4 +1,4 @@
 <map id="openage::job::JobManager::execute_callbacks" name="openage::job::JobManager::execute_callbacks">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,180,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f" title=" " alt="" coords="228,5,357,47"/>
+<area shape="rect" id="node1" title="Executes callbacks for all job&#39;s, that were created by the current thread and have finished." alt="" coords="5,5,180,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f" title="Returns the unique identifier of the current thread." alt="" coords="228,5,357,47"/>
 </map>

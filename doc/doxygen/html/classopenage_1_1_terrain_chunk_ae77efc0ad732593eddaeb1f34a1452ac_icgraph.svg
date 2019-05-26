@@ -66,7 +66,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node77 -->
 <g id="node2" class="node"><title>Node77</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" target="_top" xlink:title="Attach a chunk to the terrain, to a given position.">
 <polygon fill="white" stroke="black" points="460,-73.5 460,-103.5 582,-103.5 582,-73.5 460,-73.5"/>
 <text text-anchor="start" x="468" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::attach</text>
 <text text-anchor="middle" x="521" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node78 -->
 <g id="node3" class="node"><title>Node78</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" target="_top" xlink:title="get or create a terrain chunk for a given chunk position.">
 <polygon fill="white" stroke="black" points="316,-73.5 316,-103.5 424,-103.5 424,-73.5 316,-73.5"/>
 <text text-anchor="start" x="324" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="370" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">_create_chunk</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node79 -->
 <g id="node4" class="node"><title>Node79</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title="fill the terrain with given terrain_id values.">
 <polygon fill="white" stroke="black" points="173.5,-148 173.5,-167 277.5,-167 277.5,-148 173.5,-148"/>
 <text text-anchor="middle" x="225.5" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::fill</text>
 </a>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node81 -->
 <g id="node6" class="node"><title>Node81</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_terrain.xhtml#a9fc8a00464422b06cd5ea0dbda4c7d2f" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_terrain.xhtml#a9fc8a00464422b06cd5ea0dbda4c7d2f" target="_top" xlink:title="get or create a terrain chunk for a given tile position.">
 <polygon fill="white" stroke="black" points="171.5,-98.5 171.5,-128.5 279.5,-128.5 279.5,-98.5 171.5,-98.5"/>
 <text text-anchor="start" x="179.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="225.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">_create_chunk</text>
@@ -163,7 +163,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node83 -->
 <g id="node8" class="node"><title>Node83</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="9.5,-25.5 9.5,-55.5 125.5,-55.5 125.5,-25.5 9.5,-25.5"/>
 <text text-anchor="start" x="17.5" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="67.5" y="-32.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

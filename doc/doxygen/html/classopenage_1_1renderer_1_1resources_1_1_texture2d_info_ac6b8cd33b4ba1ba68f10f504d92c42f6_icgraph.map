@@ -1,5 +1,5 @@
 <map id="openage::renderer::resources::Texture2dInfo::get_subtexture" name="openage::renderer::resources::Texture2dInfo::get_subtexture">
 <area shape="rect" id="node1" title="Returns the coordinates of the subtexture with the given ID." alt="" coords="244,45,408,101"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aeb376e40e3da8cadee1848fa1ea28226" title=" " alt="" coords="5,5,196,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aeb376e40e3da8cadee1848fa1ea28226" title="Returns atlas subtexture coordinates." alt="" coords="5,5,196,61"/>
 <area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad2a2f302bd53b1aee538de9c21c896c3" title="Returns the size of the subtexture with the given ID." alt="" coords="19,85,183,141"/>
 </map>

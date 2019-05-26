@@ -1,4 +1,4 @@
 <map id="openage::renderer::opengl::GlRenderer" name="openage::renderer::opengl::GlRenderer">
 <area shape="rect" id="node1" title="The OpenGL specialization of the rendering interface." alt="" coords="5,277,171,516"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_renderer.xhtml" title=" " alt="" coords="5,5,171,229"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_renderer.xhtml" title="The renderer." alt="" coords="5,5,171,229"/>
 </map>

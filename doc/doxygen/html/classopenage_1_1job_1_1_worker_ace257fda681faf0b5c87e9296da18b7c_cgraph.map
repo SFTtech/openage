@@ -1,4 +1,4 @@
 <map id="openage::job::Worker::enqueue" name="openage::job::Worker::enqueue">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,152,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_worker.xhtml#a3a1cffa81bce40320896181ac63205cb" title=" " alt="" coords="200,5,347,47"/>
+<area shape="rect" id="node1" title="Adds the given job to the internal pending job queue." alt="" coords="5,5,152,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_worker.xhtml#a3a1cffa81bce40320896181ac63205cb" title="Notifies this worker, that new jobs are available." alt="" coords="200,5,347,47"/>
 </map>

@@ -1,7 +1,7 @@
 <map id="openage::gui::GuiGameSpecImageProviderByGraphicIdImpl" name="openage::gui::GuiGameSpecImageProviderByGraphicIdImpl">
-<area shape="rect" id="node1" title=" " alt="" coords="21,917,229,1097"/>
-<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml" title=" " alt="" coords="21,704,229,869"/>
-<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" title=" " alt="" coords="5,329,245,656"/>
+<area shape="rect" id="node1" title="Exposes game textures to the Qt by their id." alt="" coords="21,917,229,1097"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml" title="Base for providers that expose textures to the Qt by their id." alt="" coords="21,704,229,869"/>
+<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" title="Exposes game textures to the Qt." alt="" coords="5,329,245,656"/>
 <area shape="rect" id="node4" href="$classqtsdl_1_1_gui_image_provider_impl.xhtml" title=" " alt="" coords="34,131,217,281"/>
 <area shape="rect" id="node5" title=" " alt="" coords="52,5,199,83"/>
 </map>

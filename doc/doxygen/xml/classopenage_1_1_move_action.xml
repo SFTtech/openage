@@ -141,9 +141,9 @@
           <defval>true</defval>
         </param>
         <briefdescription>
+<para>moves unit to a given fixed location </para>
         </briefdescription>
         <detaileddescription>
-<para>moves unit to a given fixed location </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -168,9 +168,9 @@
           <declname>within_range</declname>
         </param>
         <briefdescription>
+<para>moves a unit to within a distance to another unit </para>
         </briefdescription>
         <detaileddescription>
-<para>moves a unit to within a distance to another unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -201,9 +201,9 @@
           <declname>time</declname>
         </param>
         <briefdescription>
+<para>each action has its own update functionality which gets called when this is the active action </para>
         </briefdescription>
         <detaileddescription>
-<para>each action has its own update functionality which gets called when this is the active action </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -238,9 +238,9 @@
         <name>on_completion</name>
         <reimplements refid="classopenage_1_1_unit_action_1ac84d3cbfa3c489b3975952af157929cb">on_completion</reimplements>
         <briefdescription>
+<para>action to perform when popped from a units action stack </para>
         </briefdescription>
         <detaileddescription>
-<para>action to perform when popped from a units action stack </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -253,9 +253,10 @@
         <name>completed</name>
         <reimplements refid="classopenage_1_1_unit_action_1a7814554a94e930595ed5dad9b0f03255">completed</reimplements>
         <briefdescription>
+<para>gets called for all actions on stack each update cycle </para>
         </briefdescription>
         <detaileddescription>
-<para>gets called for all actions on stack each update cycle <simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
+<para><simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -276,9 +277,9 @@
         <name>allow_interupt</name>
         <reimplements refid="classopenage_1_1_unit_action_1a622cf307ee5d3f8f4581d9a7ec7ecfbf">allow_interupt</reimplements>
         <briefdescription>
+<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
         </briefdescription>
         <detaileddescription>
-<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -291,9 +292,9 @@
         <name>allow_control</name>
         <reimplements refid="classopenage_1_1_unit_action_1a3e222303072f926fa7c925163b8ac10c">allow_control</reimplements>
         <briefdescription>
+<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top </para>
         </briefdescription>
         <detaileddescription>
-<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top</para>
 <para>if true this action must complete and will not allow new actions to be pushed while it is active and also does not update the secondary actions </para>
         </detaileddescription>
         <inbodydescription>
@@ -307,9 +308,9 @@
         <name>name</name>
         <reimplements refid="classopenage_1_1_unit_action_1a67647c63a20cec9714a6463b1c823a70">name</reimplements>
         <briefdescription>
+<para>debug string to identify action types </para>
         </briefdescription>
         <detaileddescription>
-<para>debug string to identify action types </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -369,9 +370,9 @@
         <argsstring>()</argsstring>
         <name>set_path</name>
         <briefdescription>
+<para>use a star to find a path to target </para>
         </briefdescription>
         <detaileddescription>
-<para>use a star to find a path to target </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -383,7 +384,7 @@
         <references refid="classopenage_1_1_move_action_1a0b53b70c09f569929f40a4b870e4e42d" compoundref="unit_2action_8h" startline="387">path</references>
         <references refid="classopenage_1_1_move_action_1a1a236e7248c0cf631c4d00ed2697343e" compoundref="unit_2action_8h" startline="385">radius</references>
         <references refid="classopenage_1_1_move_action_1ac5ccdee0d4b64c28e7c5c051d8d6623c" compoundref="unit_2action_8h" startline="382">target</references>
-        <references refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" compoundref="a__star_8cpp" startline="44" endline="55">openage::path::to_object</references>
+        <references refid="namespaceopenage_1_1path_1a047e97b9a81a866f064ad6d6f8dddfd6" compoundref="a__star_8cpp" startline="44" endline="55">openage::path::to_object</references>
         <references refid="namespaceopenage_1_1path_1a4699fb2dbfd8178b2234b9fbb935179f" compoundref="a__star_8cpp" startline="30" endline="41">openage::path::to_point</references>
         <references refid="classopenage_1_1_move_action_1aabb973a7a6b6a983d101569c7020c038" compoundref="unit_2action_8h" startline="381">unit_target</references>
         <referencedby refid="classopenage_1_1_move_action_1a1b34ceffe821a5ef2afd3c3fc08ae3d1" compoundref="unit_2action_8cpp" startline="570" endline="587">initialise</referencedby>
@@ -395,9 +396,9 @@
         <argsstring>()</argsstring>
         <name>set_distance</name>
         <briefdescription>
+<para>updates the distance_to_target value </para>
         </briefdescription>
         <detaileddescription>
-<para>updates the distance_to_target value </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -415,9 +416,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>moves an entity to another location </para>
     </briefdescription>
     <detaileddescription>
-<para>moves an entity to another location </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4219">

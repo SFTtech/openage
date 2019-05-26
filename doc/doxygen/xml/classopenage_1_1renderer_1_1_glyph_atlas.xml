@@ -150,9 +150,9 @@
           <defval>1024</defval>
         </param>
         <briefdescription>
+<para>Creates a glyph atlas with the specified width and height. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a glyph atlas with the specified width and height.</para>
 <para>Also, creates a OpenGL texture of the same width and height. The contents of this glyph atlas is automatically synchronized to the texture (when you bind the texture).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -203,9 +203,9 @@
           <defval>0</defval>
         </param>
         <briefdescription>
+<para>Binds the OpenGL texture of this glyph atlas at the specified unit. </para>
         </briefdescription>
         <detaileddescription>
-<para>Binds the OpenGL texture of this glyph atlas at the specified unit.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>unit</parametername>
@@ -242,9 +242,9 @@
           <declname>codepoint</declname>
         </param>
         <briefdescription>
+<para>Retrieves the atlas entry for a specified font and glyph. </para>
         </briefdescription>
         <detaileddescription>
-<para>Retrieves the atlas entry for a specified font and glyph.</para>
 <para>If the particular entry does not exist in the atlas, the glyph atlas requests the font to provide the glyph info. The provided info along with the glyph&apos;s bitmap data is used to create a new cached entry. This entry is then returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -388,9 +388,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A glyph atlas is used to pack and manage several font glyphs in to a single OpenGL texture. </para>
     </briefdescription>
     <detaileddescription>
-<para>A glyph atlas is used to pack and manage several font glyphs in to a single OpenGL texture.</para>
 <para>A single glyph atlas can be used to stored glyphs from multiple fonts.</para>
 <para>Currently, the glyph atlas uses a naive &quot;Shelf First-Fit&quot; algorithm based on the article &quot;A Thousand Ways to Pack the Bin - A Practical Approach to Two-Dimensional Rectangle Bin Packing&quot; by Jukka Jylänki. The article can be found at <ulink url="http://clb.demon.fi/files/RectangleBinPack.pdf">http://clb.demon.fi/files/RectangleBinPack.pdf</ulink></para>
 <para>This is a very basic algorithm. If there is a need for a more complex packing requirement, the glyph atlas can be easily modified. </para>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-161.5 728,-161.5 728,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="test method for the base CoordXY* classes.">
 <polygon fill="#bfbfbf" stroke="black" points="613,-61 613,-91 724,-91 724,-61 613,-61"/>
 <text text-anchor="start" x="621" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::tests</text>
 <text text-anchor="middle" x="668.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">::coord</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_texture.xhtml#acd15e688a5bce0b7e7268e90bb9affdd" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_texture.xhtml#acd15e688a5bce0b7e7268e90bb9affdd" target="_top" xlink:title="draw object with no direction">
 <polygon fill="white" stroke="black" points="463,-127 463,-157 572,-157 572,-127 463,-127"/>
 <text text-anchor="start" x="471" y="-145" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="517.5" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-50 0,-80 116,-80 116,-50 0,-50"/>
 <text text-anchor="start" x="8" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit_texture.xhtml#abcd138ff9ca2160f57812da8d48a39a7" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit_texture.xhtml#abcd138ff9ca2160f57812da8d48a39a7" target="_top" xlink:title="a sample drawing for hud">
 <polygon fill="white" stroke="black" points="463,-39 463,-69 572,-69 572,-39 463,-39"/>
 <text text-anchor="start" x="471" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="517.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::sample</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node8 -->
 <g id="node6" class="node"><title>Node8</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="black" points="305,-6 305,-36 422,-36 422,-6 305,-6"/>
 <text text-anchor="start" x="313" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>

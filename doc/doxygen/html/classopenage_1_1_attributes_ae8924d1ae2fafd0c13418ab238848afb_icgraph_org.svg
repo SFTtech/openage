@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 530,-84 530,4 -4,4"/>
 <!-- Node13 -->
 <g id="node1" class="node"><title>Node13</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Add copies of all the attributes from the given Attributes.">
 <polygon fill="#bfbfbf" stroke="black" points="425,-24.5 425,-54.5 526,-54.5 526,-24.5 425,-24.5"/>
 <text text-anchor="start" x="433" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes</text>
 <text text-anchor="middle" x="475.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_copies</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node14 -->
 <g id="node2" class="node"><title>Node14</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#af46fb7ca65071c68a85f492a8235302e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#af46fb7ca65071c68a85f492a8235302e" target="_top" xlink:title="Give new attributes to this unit.">
 <polygon fill="white" stroke="black" points="288,-49.5 288,-79.5 386,-79.5 386,-49.5 288,-49.5"/>
 <text text-anchor="start" x="296" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::add</text>
 <text text-anchor="middle" x="337" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attributes</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node17 -->
 <g id="node5" class="node"><title>Node17</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_unit_type.xhtml#a05d515d0c9b380bd9cb426b3bf3852f8" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_unit_type.xhtml#a05d515d0c9b380bd9cb426b3bf3852f8" target="_top" xlink:title="Initialize units shared attributes only to this type spec.">
 <polygon fill="white" stroke="black" points="285,-0.5 285,-30.5 389,-30.5 389,-0.5 285,-0.5"/>
 <text text-anchor="start" x="293" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="337" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">reinitialise</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node15 -->
 <g id="node3" class="node"><title>Node15</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_type.xhtml#acf200f0f7321ae1e074bae39bc437b53" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_type.xhtml#acf200f0f7321ae1e074bae39bc437b53" target="_top" xlink:title="copy attributes of this unit type to a new unit instance">
 <polygon fill="white" stroke="black" points="145,-49.5 145,-79.5 249,-79.5 249,-49.5 145,-49.5"/>
 <text text-anchor="start" x="153" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="197" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">copy_attributes</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node16 -->
 <g id="node4" class="node"><title>Node16</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_nyan_type.xhtml#ad058ecef5e52cd4da37dc7d2f10e4255" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_nyan_type.xhtml#ad058ecef5e52cd4da37dc7d2f10e4255" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 109,-79.5 109,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::NyanType::</text>
 <text text-anchor="middle" x="54.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialise</text>

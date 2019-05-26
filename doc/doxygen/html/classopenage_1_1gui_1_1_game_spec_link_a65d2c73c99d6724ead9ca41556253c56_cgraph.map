@@ -1,13 +1,13 @@
 <map id="openage::gui::GameSpecLink::set_active" name="openage::gui::GameSpecLink::set_active">
 <area shape="rect" id="node1" title=" " alt="" coords="5,104,199,145"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361" title=" " alt="" coords="267,39,420,80"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" title=" " alt="" coords="251,104,435,145"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361" title="Set property." alt="" coords="267,39,420,80"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" title="Control whether this specification can be loaded (=true) or will not be loaded (=false)." alt="" coords="251,104,435,145"/>
 <area shape="rect" id="node11" href="$classopenage_1_1gui_1_1_game_spec_link.xhtml#ab53e294931ed276b40c9ebb791c79e98" title=" " alt="" coords="247,169,440,211"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" title=" " alt="" coords="488,104,672,145"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" title=" " alt="" coords="720,104,904,145"/>
-<area shape="rect" id="node6" href="$classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" title=" " alt="" coords="961,5,1136,47"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" title=" " alt="" coords="967,71,1130,112"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" title=" " alt="" coords="976,136,1121,177"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" title="load the game specification if not already present." alt="" coords="488,104,672,145"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" title="Actually dispatch the loading job to the job manager." alt="" coords="720,104,904,145"/>
+<area shape="rect" id="node6" href="$classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" title="Enqueues the given function into the job manager&#39;s queue, so that it will be dispatched by one of the..." alt="" coords="961,5,1136,47"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" title="Return the engine responsible for this asset manager." alt="" coords="967,71,1130,112"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" title="return this engine&#39;s job manager." alt="" coords="976,136,1121,177"/>
 <area shape="rect" id="node9" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="952,202,1145,229"/>
-<area shape="rect" id="node10" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="1193,202,1320,229"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="1193,202,1320,229"/>
 </map>

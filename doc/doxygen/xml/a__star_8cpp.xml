@@ -605,9 +605,9 @@
     <innernamespace refid="namespaceopenage">openage</innernamespace>
     <innernamespace refid="namespaceopenage_1_1path">openage::path</innernamespace>
     <briefdescription>
+<para>This file implements the A* search algorithm for openage. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file implements the A* search algorithm for openage.</para>
 <para>Literature: Hart, Peter E., Nils J. Nilsson, and Bertram Raphael. &quot;A formal basis for
 the heuristic determination of minimum cost paths.&quot; Systems Science and Cybernetics, IEEE Transactions on 4, no. 2 (1968): 100-107. </para>
     </detaileddescription>
@@ -645,7 +645,7 @@ the heuristic determination of minimum cost paths.&quot; Systems Science and Cyb
 <codeline lineno="41"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44" refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref><sp/><ref refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" kindref="member">to_object</ref>(<ref refid="classopenage_1_1_terrain_object" kindref="compound">openage::TerrainObject</ref><sp/>*to_move,</highlight></codeline>
+<codeline lineno="44" refid="namespaceopenage_1_1path_1a047e97b9a81a866f064ad6d6f8dddfd6" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref><sp/><ref refid="namespaceopenage_1_1path_1a047e97b9a81a866f064ad6d6f8dddfd6" kindref="member">to_object</ref>(<ref refid="classopenage_1_1_terrain_object" kindref="compound">openage::TerrainObject</ref><sp/>*to_move,</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_terrain_object" kindref="compound">openage::TerrainObject</ref><sp/>*end,</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">coord::phys_t</ref><sp/>rad)<sp/>{</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>start<sp/>=<sp/>to_move-&gt;<ref refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" kindref="member">pos</ref>.<ref refid="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" kindref="member">draw</ref>;</highlight></codeline>
@@ -714,7 +714,7 @@ the heuristic determination of minimum cost paths.&quot; Systems Science and Cyb
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(neighbor-&gt;was_best)<sp/>{</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/><ref refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" kindref="member">passable_line</ref>(best_candidate,<sp/>neighbor,<sp/>passable))<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/><ref refid="namespaceopenage_1_1path_1a4fb2450790038eed534dfe29ad57d350" kindref="member">passable_line</ref>(best_candidate,<sp/>neighbor,<sp/>passable))<sp/>{</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>

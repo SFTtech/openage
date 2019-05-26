@@ -1,4 +1,4 @@
 <map id="openage::Texture::load_in_glthread" name="openage::Texture::load_in_glthread">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node1" title="The texture loadin must occur on the thread that manages the gl context." alt="" coords="5,5,160,47"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#a210c36d673ca296a040fdb72da5ee89f" title=" " alt="" coords="208,5,371,47"/>
 </map>

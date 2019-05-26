@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>count</name>
         <briefdescription>
+<para>The number of resources. </para>
         </briefdescription>
         <detaileddescription>
-<para>The number of resources </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -233,9 +233,10 @@
         <argsstring>()</argsstring>
         <name>round</name>
         <briefdescription>
+<para>Round each value to the nearest integer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Round each value to the nearest integer. Returns itself. </para>
+<para>Returns itself. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -296,9 +297,9 @@
           <declname>amount</declname>
         </param>
         <briefdescription>
+<para>If amount can&apos;t be deducted return false, else deduct the given amount and return true. </para>
         </briefdescription>
         <detaileddescription>
-<para>If amount can&apos;t be deducted return false, else deduct the given amount and return true. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -457,9 +458,9 @@
         <argsstring>() const</argsstring>
         <name>sum</name>
         <briefdescription>
+<para>Returns the sum of all the resources. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the sum of all the resources. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -477,9 +478,9 @@
         <argsstring>() const</argsstring>
         <name>get_count</name>
         <briefdescription>
+<para>The number of resources. </para>
         </briefdescription>
         <detaileddescription>
-<para>The number of resources </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -567,9 +568,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A set of amounts of game resources. </para>
     </briefdescription>
     <detaileddescription>
-<para>A set of amounts of game resources.</para>
 <para>Can be also used to store other information about the resources.</para>
 <para><xrefsect id="todo_1_todo000018"><xreftitle>Todo</xreftitle><xrefdescription><para>change amounts from doubles to integers </para>
 </xrefdescription></xrefsect></para>

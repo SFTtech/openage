@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1700.5 686,-1700.5 686,4 -4,4"/>
 <!-- Node314 -->
 <g id="node1" class="node"><title>Node314</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="#bfbfbf" stroke="black" points="587,-813.5 587,-832.5 682,-832.5 682,-813.5 587,-813.5"/>
 <text text-anchor="middle" x="634.5" y="-820.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -688,7 +688,7 @@
 </g>
 <!-- Node361 -->
 <g id="node46" class="node"><title>Node361</title>
-<g id="a_node46"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53" target="_top" xlink:title=" ">
+<g id="a_node46"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53" target="_top" xlink:title="Return a string representation of active key bindings from the given context.">
 <polygon fill="white" stroke="red" points="176.5,-245 176.5,-275 321.5,-275 321.5,-245 176.5,-245"/>
 <text text-anchor="start" x="184.5" y="-263" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="249" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00">::active_binds</text>
@@ -702,7 +702,7 @@
 </g>
 <!-- Node380 -->
 <g id="node47" class="node"><title>Node380</title>
-<g id="a_node47"><a xlink:href="classopenage_1_1_unit_container.xhtml#a38b39ded603419425f1b5a38f188cc17" target="_top" xlink:title=" ">
+<g id="a_node47"><a xlink:href="classopenage_1_1_unit_container.xhtml#a38b39ded603419425f1b5a38f188cc17" target="_top" xlink:title="gets a list of all units in the container">
 <polygon fill="white" stroke="red" points="190,-196 190,-226 308,-226 308,-196 190,-196"/>
 <text text-anchor="start" x="198" y="-214" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitContainer</text>
 <text text-anchor="middle" x="249" y="-203" font-family="Helvetica,sans-Serif" font-size="10.00">::all_units</text>
@@ -716,7 +716,7 @@
 </g>
 <!-- Node386 -->
 <g id="node48" class="node"><title>Node386</title>
-<g id="a_node48"><a xlink:href="namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600" target="_top" xlink:title=" ">
+<g id="a_node48"><a xlink:href="namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600" target="_top" xlink:title="Convert a C&#45;style array of uint64_t to a std::vector of uint8_t.">
 <polygon fill="white" stroke="red" points="194,-343 194,-373 304,-373 304,-343 194,-343"/>
 <text text-anchor="start" x="202" y="-361" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array64</text>
 <text text-anchor="middle" x="249" y="-350" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array8</text>
@@ -730,7 +730,7 @@
 </g>
 <!-- Node388 -->
 <g id="node49" class="node"><title>Node388</title>
-<g id="a_node49"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title=" ">
+<g id="a_node49"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a std::vector of uint64_t.">
 <polygon fill="white" stroke="red" points="196.5,-294 196.5,-324 301.5,-324 301.5,-294 196.5,-294"/>
 <text text-anchor="start" x="204.5" y="-312" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="249" y="-301" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array64</text>

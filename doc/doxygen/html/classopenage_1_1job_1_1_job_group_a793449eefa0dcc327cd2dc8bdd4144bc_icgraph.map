@@ -1,6 +1,6 @@
 <map id="openage::job::JobGroup::enqueue" name="openage::job::JobGroup::enqueue">
-<area shape="rect" id="node1" title=" " alt="" coords="821,5,980,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_dynamic_resource.xhtml#a9541b40c31cd35aba1e736383e8c6424" title=" " alt="" coords="549,5,773,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1audio_1_1_dynamic_resource.xhtml#a92355342f8790b7d89431544dd0c5ac0" title=" " alt="" coords="5,5,229,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1audio_1_1_dynamic_resource.xhtml#a14623118dce385ac89884b64ba1bf2fb" title=" " alt="" coords="277,35,501,76"/>
+<area shape="rect" id="node1" title="Enqueues the given function into the job group&#39;s worker thread." alt="" coords="821,5,980,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_dynamic_resource.xhtml#a9541b40c31cd35aba1e736383e8c6424" title="Load a single chunk in the background (through the job manager)." alt="" coords="549,5,773,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1audio_1_1_dynamic_resource.xhtml#a92355342f8790b7d89431544dd0c5ac0" title="Returns a pointer to the sample buffer at the given position and the number of int16_t values that ar..." alt="" coords="5,5,229,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1audio_1_1_dynamic_resource.xhtml#a14623118dce385ac89884b64ba1bf2fb" title="Start to load audio chunks beginning at the given chunk index." alt="" coords="277,35,501,76"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 438,-35 438,4 -4,4"/>
 <!-- Node137 -->
 <g id="node1" class="node"><title>Node137</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="return this engine&#39;s text renderer.">
 <polygon fill="#bfbfbf" stroke="black" points="325,-0.5 325,-30.5 434,-30.5 434,-0.5 325,-0.5"/>
 <text text-anchor="start" x="333" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="379.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_text_renderer</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node138 -->
 <g id="node2" class="node"><title>Node138</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" target="_top" xlink:title="experimental and totally inefficient opengl draw of a terminal buffer.">
 <polygon fill="white" stroke="black" points="170,-0.5 170,-30.5 289,-30.5 289,-0.5 170,-0.5"/>
 <text text-anchor="start" x="178" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="229.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_opengl</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node139 -->
 <g id="node3" class="node"><title>Node139</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a1ce3c30cdc768559e11fc548cbcbddd8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a1ce3c30cdc768559e11fc548cbcbddd8" target="_top" xlink:title="execute the drawing action.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 134,-30.5 134,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="67" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_drawhud</text>

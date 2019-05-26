@@ -31,9 +31,9 @@
         <reimplementedby refid="classopenage_1_1console_1_1_console_1a1ce3c30cdc768559e11fc548cbcbddd8">on_drawhud</reimplementedby>
         <reimplementedby refid="classopenage_1_1_game_control_1a56eadb260ee512fa9034f25f67308e61">on_drawhud</reimplementedby>
         <briefdescription>
+<para>execute the drawing action. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the drawing action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -41,9 +41,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>superclass for all possible drawing operations in the game. </para>
     </briefdescription>
     <detaileddescription>
-<para>superclass for all possible drawing operations in the game. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3777">

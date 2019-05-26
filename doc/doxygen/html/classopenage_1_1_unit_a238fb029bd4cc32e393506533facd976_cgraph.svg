@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 248,-35 248,4 -4,4"/>
 <!-- Node399 -->
 <g id="node1" class="node"><title>Node399</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="removes all gather actions without calling their on_complete actions this cancels the gathering actio...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 101,-30.5 101,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::stop</text>
 <text text-anchor="middle" x="50.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_gather</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node400 -->
 <g id="node2" class="node"><title>Node400</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#aae0b3f53cb1d75823391322876d199ef" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#aae0b3f53cb1d75823391322876d199ef" target="_top" xlink:title="erase from action specified by func to the end of the stack all actions erased will have the on_compl...">
 <polygon fill="white" stroke="black" points="137,-0.5 137,-30.5 244,-30.5 244,-0.5 137,-0.5"/>
 <text text-anchor="start" x="145" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::erase</text>
 <text text-anchor="middle" x="190.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_after</text>

@@ -20,7 +20,7 @@
 </g>
 <!-- Node44 -->
 <g id="node2" class="node"><title>Node44</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_research_ability.xhtml#a10da07c40e39d110a9f2afdf26f0fb2f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_research_ability.xhtml#a10da07c40e39d110a9f2afdf26f0fb2f" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 128,-30.5 128,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchAbility</text>
 <text text-anchor="middle" x="64" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>

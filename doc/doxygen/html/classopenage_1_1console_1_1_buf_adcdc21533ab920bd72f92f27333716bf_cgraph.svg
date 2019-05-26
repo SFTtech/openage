@@ -57,7 +57,7 @@ var sectionId = 'dynsection-19';
 <polygon fill="white" stroke="none" points="-4,4 -4,-298 1242,-298 1242,4 -4,4"/>
 <!-- Node128 -->
 <g id="node1" class="node"><title>Node128</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="processes one unicode codepoint internally called by write(char) after feeding the char into streamde...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-170.5 0,-200.5 113,-200.5 113,-170.5 0,-170.5"/>
 <text text-anchor="start" x="8" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="56.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">::process_codepoint</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node129 -->
 <g id="node2" class="node"><title>Node129</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ac59a20dcbdcb3aaffaedc8d9d21d0ec9" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ac59a20dcbdcb3aaffaedc8d9d21d0ec9" target="_top" xlink:title="aborts the current escape sequence (e.g.">
 <polygon fill="white" stroke="black" points="307.5,-219.5 307.5,-249.5 446.5,-249.5 446.5,-219.5 307.5,-219.5"/>
 <text text-anchor="start" x="315.5" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="377" y="-226.5" font-family="Helvetica,sans-Serif" font-size="10.00">::escape_sequence_aborted</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node131 -->
 <g id="node4" class="node"><title>Node131</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ab2dd3bbdbc82ae2a4276a433b40aac91" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ab2dd3bbdbc82ae2a4276a433b40aac91" target="_top" xlink:title="prints one unicode codepoint interally called by process_codepoint(int cp) after sorting out escape s...">
 <polygon fill="white" stroke="black" points="320.5,-33.5 320.5,-63.5 433.5,-63.5 433.5,-33.5 320.5,-33.5"/>
 <text text-anchor="start" x="328.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="377" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">::print_codepoint</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node140 -->
 <g id="node13" class="node"><title>Node140</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a83a7e7db654360cff1c6796b169efc22" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a83a7e7db654360cff1c6796b169efc22" target="_top" xlink:title="processes the CSI escape sequence currently stored in escape_sequence.">
 <polygon fill="white" stroke="black" points="150.5,-105 150.5,-146 263.5,-146 263.5,-105 150.5,-105"/>
 <text text-anchor="start" x="158.5" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="start" x="158.5" y="-123" font-family="Helvetica,sans-Serif" font-size="10.00">::process_csi_escape</text>
@@ -109,7 +109,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node143 -->
 <g id="node16" class="node"><title>Node143</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a809f4a27cd3bf92c2458a5b3176fae43" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a809f4a27cd3bf92c2458a5b3176fae43" target="_top" xlink:title="processes a single&#45;codepoint escape sequence.">
 <polygon fill="white" stroke="black" points="149.5,-263.5 149.5,-293.5 264.5,-293.5 264.5,-263.5 149.5,-263.5"/>
 <text text-anchor="start" x="157.5" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="207" y="-270.5" font-family="Helvetica,sans-Serif" font-size="10.00">::process_escaped_cp</text>
@@ -123,7 +123,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node145 -->
 <g id="node18" class="node"><title>Node145</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#aa6ae8933e3c2bbaafa8d81cf1c405406" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#aa6ae8933e3c2bbaafa8d81cf1c405406" target="_top" xlink:title="processes a text escape sequence that is one of OSC, DCS, APC or PM">
 <polygon fill="white" stroke="black" points="149,-165 149,-206 265,-206 265,-165 149,-165"/>
 <text text-anchor="start" x="157" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="start" x="157" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">::process_text_escape</text>
@@ -151,7 +151,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node132 -->
 <g id="node5" class="node"><title>Node132</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a752e54412ebbb08b3d8ac0edc90891ee" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a752e54412ebbb08b3d8ac0edc90891ee" target="_top" xlink:title="advances the buffer by the specified number of lines.">
 <polygon fill="white" stroke="black" points="502,-82.5 502,-112.5 615,-112.5 615,-82.5 502,-82.5"/>
 <text text-anchor="start" x="510" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="558.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">::advance</text>
@@ -165,7 +165,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node135 -->
 <g id="node8" class="node"><title>Node135</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" target="_top" xlink:title="returns a valid pointer to the character info for the character designated by pos">
 <polygon fill="white" stroke="black" points="813,-49.5 813,-79.5 926,-79.5 926,-49.5 813,-49.5"/>
 <text text-anchor="start" x="821" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="869.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::chrdataptr</text>
@@ -179,7 +179,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node139 -->
 <g id="node12" class="node"><title>Node139</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a4c48f84f2a29ae7472c54bce03fcbd65" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a4c48f84f2a29ae7472c54bce03fcbd65" target="_top" xlink:title="returns a valid pointer to the line info for the line designated by lineno">
 <polygon fill="white" stroke="black" points="813,-0.5 813,-30.5 926,-30.5 926,-0.5 813,-0.5"/>
 <text text-anchor="start" x="821" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="869.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::linedataptr</text>
@@ -193,7 +193,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node133 -->
 <g id="node6" class="node"><title>Node133</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#af6b49e0178333e01a08fd61ca2006219" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#af6b49e0178333e01a08fd61ca2006219" target="_top" xlink:title="clears the screen character and line buffers.">
 <polygon fill="white" stroke="black" points="664,-98.5 664,-128.5 777,-128.5 777,-98.5 664,-98.5"/>
 <text text-anchor="start" x="672" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="720.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::clear</text>
@@ -207,7 +207,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node134 -->
 <g id="node7" class="node"><title>Node134</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a1108eb4031232054e271e3c7321b24ef" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a1108eb4031232054e271e3c7321b24ef" target="_top" xlink:title="clears a range of the data buffer.">
 <polygon fill="white" stroke="black" points="813,-147.5 813,-177.5 926,-177.5 926,-147.5 813,-147.5"/>
 <text text-anchor="start" x="821" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="869.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::chrdata_clear</text>
@@ -226,7 +226,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node138 -->
 <g id="node11" class="node"><title>Node138</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a76d65b492fdef7853b939598235881e2" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a76d65b492fdef7853b939598235881e2" target="_top" xlink:title="clears a range of the linedata buffer.">
 <polygon fill="white" stroke="black" points="813,-98.5 813,-128.5 926,-128.5 926,-98.5 813,-98.5"/>
 <text text-anchor="start" x="821" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="869.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::linedata_clear</text>
@@ -258,7 +258,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node137 -->
 <g id="node10" class="node"><title>Node137</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1143,-30 1143,-49 1238,-49 1238,-30 1143,-30"/>
 <text text-anchor="middle" x="1190.5" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -296,7 +296,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node141 -->
 <g id="node14" class="node"><title>Node141</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a9320618afe1ebdf770518ab69cc72271" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a9320618afe1ebdf770518ab69cc72271" target="_top" xlink:title="sets graphics rendition parameters; called by process_escape_sequence">
 <polygon fill="white" stroke="black" points="320.5,-82.5 320.5,-112.5 433.5,-112.5 433.5,-82.5 320.5,-82.5"/>
 <text text-anchor="start" x="328.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="377" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">::process_sgr_code</text>
@@ -310,7 +310,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node142 -->
 <g id="node15" class="node"><title>Node142</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a3e924482fd0e3524e44b20acc316fb19" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a3e924482fd0e3524e44b20acc316fb19" target="_top" xlink:title="called when a escape sequence has been successfully processed, clears the sequence.">
 <polygon fill="white" stroke="black" points="301,-170.5 301,-200.5 453,-200.5 453,-170.5 301,-170.5"/>
 <text text-anchor="start" x="309" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="377" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">::escape_sequence_processed</text>
@@ -329,7 +329,7 @@ var sectionId = 'dynsection-19';
 </g>
 <!-- Node144 -->
 <g id="node17" class="node"><title>Node144</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a23267e4cb18a2921f14406e6307cbb95" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1console_1_1_buf.xhtml#a23267e4cb18a2921f14406e6307cbb95" target="_top" xlink:title="resets the buffer to its constructor defaults">
 <polygon fill="white" stroke="black" points="502,-263.5 502,-293.5 615,-293.5 615,-263.5 502,-263.5"/>
 <text text-anchor="start" x="510" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Buf</text>
 <text text-anchor="middle" x="558.5" y="-270.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reset</text>

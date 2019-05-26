@@ -47,7 +47,7 @@
 </g>
 <!-- Node14 -->
 <g id="node4" class="node"><title>Node14</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6" target="_top" xlink:title="Split a string at a delimiter into a vector.">
 <polygon fill="white" stroke="black" points="418,-0.5 418,-19.5 514,-19.5 514,-0.5 418,-0.5"/>
 <text text-anchor="middle" x="466" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::split</text>
 </a>

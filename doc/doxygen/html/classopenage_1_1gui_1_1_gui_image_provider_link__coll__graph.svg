@@ -114,7 +114,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" target="_top" xlink:title="Exposes game textures to the Qt.">
 <polygon fill="white" stroke="black" points="77,-204.5 77,-437.5 257,-437.5 257,-204.5 77,-204.5"/>
 <text text-anchor="start" x="85" y="-425.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="middle" x="167" y="-414.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl</text>

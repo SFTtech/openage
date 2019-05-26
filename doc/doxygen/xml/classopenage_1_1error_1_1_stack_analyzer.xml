@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>stack_addrs</name>
         <briefdescription>
+<para>All program counters of this backtrace. </para>
         </briefdescription>
         <detaileddescription>
-<para>All program counters of this backtrace. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -28,9 +28,9 @@
         <argsstring>()=default</argsstring>
         <name>StackAnalyzer</name>
         <briefdescription>
+<para>Creates an empty <ref refid="classopenage_1_1error_1_1_stack_analyzer" kindref="compound">StackAnalyzer</ref> object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates an empty <ref refid="classopenage_1_1error_1_1_stack_analyzer" kindref="compound">StackAnalyzer</ref> object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -68,9 +68,9 @@
           <declname>reversed</declname>
         </param>
         <briefdescription>
+<para>Returns (via the callback) symbolic names for all stack frames, to its best knowledge. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns (via the callback) symbolic names for all stack frames, to its best knowledge.</para>
 <para>The most recent call is returned last (alike Python).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -98,7 +98,7 @@
         <references refid="structopenage_1_1error_1_1backtrace__symbol_1a0c86f0d485e213632b187f92a41af855" compoundref="backtrace_8h" startline="37">openage::error::backtrace_symbol::functionname</references>
         <references refid="structopenage_1_1error_1_1backtrace__symbol_1a4397241806d661bcc788a840b4e76492" compoundref="backtrace_8h" startline="36">openage::error::backtrace_symbol::lineno</references>
         <references refid="structopenage_1_1error_1_1backtrace__symbol_1a5d15b8690b9644243452f21449e00fa2" compoundref="backtrace_8h" startline="38">openage::error::backtrace_symbol::pc</references>
-        <references refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" compoundref="compiler_8cpp" startline="98" endline="133">openage::util::symbol_name</references>
+        <references refid="namespaceopenage_1_1util_1aff957b2c0c7a7eb98cf68468cc04c1d8" compoundref="compiler_8cpp" startline="98" endline="133">openage::util::symbol_name</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_stack_analyzer_1a5630036766dda80a645cdfbcfc010348" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -107,9 +107,9 @@
         <name>trim_to_current_stack_frame</name>
         <reimplements refid="classopenage_1_1error_1_1_backtrace_1a08fdb69045e972de1323464a09daad42">trim_to_current_stack_frame</reimplements>
         <briefdescription>
+<para>Removes all the lower frames that are also present in the current stack. </para>
         </briefdescription>
         <detaileddescription>
-<para>Removes all the lower frames that are also present in the current stack.</para>
 <para>Designed to be used in catch clauses, to simulate stack trace collection from throw to catch, instead of from throw to the process entry point.</para>
 <para>Defaults to no-op. </para>
         </detaileddescription>
@@ -121,9 +121,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Implementation of the <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> interface that analyzes the current C++ stack. </para>
     </briefdescription>
     <detaileddescription>
-<para>Implementation of the <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> interface that analyzes the current C++ stack.</para>
 <para>The Usage is:</para>
 <para><ref refid="classopenage_1_1error_1_1_stack_analyzer" kindref="compound">StackAnalyzer</ref> sa; sa.analyze();</para>
 <para>Integrating <ref refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" kindref="member">analyze()</ref> into the constructor would be a bad idea because then, all sorts of allocators and other gory constructor internals might be visible in the <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref>.</para>

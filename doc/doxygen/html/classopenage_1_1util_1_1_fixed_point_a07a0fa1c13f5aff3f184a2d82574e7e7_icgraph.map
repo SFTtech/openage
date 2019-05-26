@@ -1,9 +1,9 @@
 <map id="openage::util::FixedPoint::to_float" name="openage::util::FixedPoint::to_float">
-<area shape="rect" id="node1" title=" " alt="" coords="633,71,800,112"/>
+<area shape="rect" id="node1" title="Converter to retrieve the number as float." alt="" coords="633,71,800,112"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1util_1_1tests.xhtml#a66cf54ea365e3f8f1357577ddaa1adfb" title=" " alt="" coords="423,5,557,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a132f65f53a2a87b36f880fc567ec857f" title=" " alt="" coords="395,71,585,112"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1path.xhtml#a4699fb2dbfd8178b2234b9fbb935179f" title=" " alt="" coords="411,137,569,163"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_move_action.xhtml#a4e56fc82672dfaf3c62f846afbd6df69" title=" " alt="" coords="200,129,347,171"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1path.xhtml#a4699fb2dbfd8178b2234b9fbb935179f" title="path between two static points" alt="" coords="411,137,569,163"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_move_action.xhtml#a4e56fc82672dfaf3c62f846afbd6df69" title="use a star to find a path to target" alt="" coords="200,129,347,171"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_move_action.xhtml#a1b34ceffe821a5ef2afd3c3fc08ae3d1" title=" " alt="" coords="5,96,152,137"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" title=" " alt="" coords="5,161,152,203"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="5,161,152,203"/>
 </map>

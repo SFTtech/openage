@@ -66,7 +66,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node77 -->
 <g id="node2" class="node"><title>Node77</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#a72f81eb7623d4ade8272f8163bfcb4d9" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#a72f81eb7623d4ade8272f8163bfcb4d9" target="_top" xlink:title="calculate blending masks for a given tile position.">
 <polygon fill="white" stroke="black" points="1255,-235.5 1255,-265.5 1389,-265.5 1389,-235.5 1255,-235.5"/>
 <text text-anchor="start" x="1263" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::calculate</text>
 <text text-anchor="middle" x="1322" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">_masks</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node78 -->
 <g id="node3" class="node"><title>Node78</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a16e91ba2a775715dc81088e47e508786" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a16e91ba2a775715dc81088e47e508786" target="_top" xlink:title="create rendering and blending information for a single tile on the terrain.">
 <polygon fill="white" stroke="black" points="1261,-186.5 1261,-216.5 1383,-216.5 1383,-186.5 1261,-186.5"/>
 <text text-anchor="start" x="1269" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::create</text>
 <text text-anchor="middle" x="1322" y="-193.5" font-family="Helvetica,sans-Serif" font-size="10.00">_tile_advice</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node79 -->
 <g id="node4" class="node"><title>Node79</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit_texture.xhtml#acd15e688a5bce0b7e7268e90bb9affdd" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit_texture.xhtml#acd15e688a5bce0b7e7268e90bb9affdd" target="_top" xlink:title="draw object with no direction">
 <polygon fill="white" stroke="black" points="1267.5,-137.5 1267.5,-167.5 1376.5,-167.5 1376.5,-137.5 1267.5,-137.5"/>
 <text text-anchor="start" x="1275.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="1322" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node80 -->
 <g id="node5" class="node"><title>Node80</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" target="_top" xlink:title="initialise graphic data">
 <polygon fill="white" stroke="black" points="1267.5,-88.5 1267.5,-118.5 1376.5,-118.5 1376.5,-88.5 1267.5,-88.5"/>
 <text text-anchor="start" x="1275.5" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="1322" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node94 -->
 <g id="node19" class="node"><title>Node94</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a7fad704b779a60bf744ee6b91ba6d6a2" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a7fad704b779a60bf744ee6b91ba6d6a2" target="_top" xlink:title="find which subtexture should be used for drawing this texture">
 <polygon fill="white" stroke="black" points="1267.5,-0.5 1267.5,-30.5 1376.5,-30.5 1376.5,-0.5 1267.5,-0.5"/>
 <text text-anchor="start" x="1275.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="1322" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::subtexture</text>
@@ -204,7 +204,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node86 -->
 <g id="node11" class="node"><title>Node86</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title="The sourceSize property of the Image QML element ends up here for checking.">
 <polygon fill="white" stroke="black" points="930.5,-42.5 930.5,-72.5 1037.5,-72.5 1037.5,-42.5 930.5,-42.5"/>
 <text text-anchor="start" x="938.5" y="-60.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::aspect</text>
 <text text-anchor="middle" x="984" y="-49.5" font-family="Helvetica,sans-Serif" font-size="10.00">_fit_size</text>
@@ -233,7 +233,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node88 -->
 <g id="node13" class="node"><title>Node88</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" target="_top" xlink:title="Change the already produced texture handles to use new source.">
 <polygon fill="white" stroke="black" points="558,-67 558,-108 700,-108 700,-67 558,-67"/>
 <text text-anchor="start" x="566" y="-96" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="566" y="-85" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::migrate</text>
@@ -248,7 +248,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node92 -->
 <g id="node17" class="node"><title>Node92</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a183dbf9c55bb6ce603654585a92db3b1" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a183dbf9c55bb6ce603654585a92db3b1" target="_top" xlink:title="Fills in the provided handle object.">
 <polygon fill="white" stroke="black" points="558,-7 558,-48 700,-48 700,-7 558,-7"/>
 <text text-anchor="start" x="566" y="-36" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="566" y="-25" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::fill</text>
@@ -263,7 +263,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node89 -->
 <g id="node14" class="node"><title>Node89</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" target="_top" xlink:title="Unblocks the provider.">
 <polygon fill="white" stroke="black" points="380,-67 380,-108 522,-108 522,-67 380,-67"/>
 <text text-anchor="start" x="388" y="-96" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="388" y="-85" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::on_game</text>
@@ -278,7 +278,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node90 -->
 <g id="node15" class="node"><title>Node90</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" target="_top" xlink:title="Sets the game spec to load textures from.">
 <polygon fill="white" stroke="black" points="0,-72.5 0,-102.5 154,-102.5 154,-72.5 0,-72.5"/>
 <text text-anchor="start" x="8" y="-90.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="77" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00">Link::set_game_spec</text>
@@ -292,7 +292,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node91 -->
 <g id="node16" class="node"><title>Node91</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" target="_top" xlink:title="Pass loaded assets to the image provider.">
 <polygon fill="white" stroke="black" points="190,-50.5 190,-80.5 344,-80.5 344,-50.5 190,-50.5"/>
 <text text-anchor="start" x="198" y="-68.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="267" y="-57.5" font-family="Helvetica,sans-Serif" font-size="10.00">Link::on_game_spec_loaded</text>
@@ -325,7 +325,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node95 -->
 <g id="node20" class="node"><title>Node95</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title="draw object with direction">
 <polygon fill="white" stroke="black" points="1098.5,-0.5 1098.5,-30.5 1207.5,-30.5 1207.5,-0.5 1098.5,-0.5"/>
 <text text-anchor="start" x="1106.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="1153" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>

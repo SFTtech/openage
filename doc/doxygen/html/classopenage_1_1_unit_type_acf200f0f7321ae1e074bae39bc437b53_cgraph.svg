@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 379,-35 379,4 -4,4"/>
 <!-- Node6 -->
 <g id="node1" class="node"><title>Node6</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="copy attributes of this unit type to a new unit instance">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 104,-30.5 104,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="52" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">copy_attributes</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#af46fb7ca65071c68a85f492a8235302e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#af46fb7ca65071c68a85f492a8235302e" target="_top" xlink:title="Give new attributes to this unit.">
 <polygon fill="white" stroke="black" points="140,-0.5 140,-30.5 238,-30.5 238,-0.5 140,-0.5"/>
 <text text-anchor="start" x="148" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::add</text>
 <text text-anchor="middle" x="189" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attributes</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node8 -->
 <g id="node3" class="node"><title>Node8</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#ae8924d1ae2fafd0c13418ab238848afb" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#ae8924d1ae2fafd0c13418ab238848afb" target="_top" xlink:title="Add copies of all the attributes from the given Attributes.">
 <polygon fill="white" stroke="black" points="274,-0.5 274,-30.5 375,-30.5 375,-0.5 274,-0.5"/>
 <text text-anchor="start" x="282" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes</text>
 <text text-anchor="middle" x="324.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_copies</text>

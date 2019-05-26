@@ -1,9 +1,9 @@
 <map id="openage::util::get_current_thread_id" name="openage::util::get_current_thread_id">
-<area shape="rect" id="node1" title=" " alt="" coords="659,71,788,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_job_manager.xhtml#ae81b425a182f26b155c9f31de6b74d63" title=" " alt="" coords="428,5,603,47"/>
-<area shape="rect" id="node5" href="$structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624" title=" " alt="" coords="437,71,594,112"/>
-<area shape="rect" id="node7" href="$classopenage_1_1job_1_1_typed_job_state_base.xhtml#a8e29b857a4d99759518b542746a02936" title=" " alt="" coords="420,136,611,177"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title=" " alt="" coords="210,13,361,39"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title=" " alt="" coords="5,13,151,39"/>
-<area shape="rect" id="node6" href="$structopenage_1_1log_1_1message.xhtml#a9f25c53eaa48cd37d1d5753e53db9549" title=" " alt="" coords="199,71,372,112"/>
+<area shape="rect" id="node1" title="Returns the unique identifier of the current thread." alt="" coords="659,71,788,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_job_manager.xhtml#ae81b425a182f26b155c9f31de6b74d63" title="Executes callbacks for all job&#39;s, that were created by the current thread and have finished." alt="" coords="428,5,603,47"/>
+<area shape="rect" id="node5" href="$structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624" title="Sets all members except for filename, lineno, functionname and level." alt="" coords="437,71,594,112"/>
+<area shape="rect" id="node7" href="$classopenage_1_1job_1_1_typed_job_state_base.xhtml#a8e29b857a4d99759518b542746a02936" title="Creates a new typed job with the given callback." alt="" coords="420,136,611,177"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title="main engine loop function." alt="" coords="210,13,361,39"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title="starts the engine loop." alt="" coords="5,13,151,39"/>
+<area shape="rect" id="node6" href="$structopenage_1_1log_1_1message.xhtml#a9f25c53eaa48cd37d1d5753e53db9549" title="Sets all members except for lineno and level." alt="" coords="199,71,372,112"/>
 </map>

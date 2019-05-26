@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-111.5 471,-111.5 471,4 -4,4"/>
 <!-- Node70 -->
 <g id="node1" class="node"><title>Node70</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Inverted the quaternion: Flip the rotation axes and scale by inverse sum of all components squared.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-33 0,-63 125,-63 125,-33 0,-33"/>
 <text text-anchor="start" x="8" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="62.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">::inverse</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node71 -->
 <g id="node2" class="node"><title>Node71</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#ae0ee465942e8ffecbeb0ab2761b35a14" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#ae0ee465942e8ffecbeb0ab2761b35a14" target="_top" xlink:title="Return the conjugated quaternion.">
 <polygon fill="white" stroke="black" points="171,-77 171,-107 296,-107 296,-77 171,-77"/>
 <text text-anchor="start" x="179" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="233.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">::conjugated</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node73 -->
 <g id="node4" class="node"><title>Node73</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" target="_top" xlink:title="Perform a dot product with another quaternion.">
 <polygon fill="white" stroke="black" points="161,-38.5 161,-57.5 306,-57.5 306,-38.5 161,-38.5"/>
 <text text-anchor="middle" x="233.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion::dot</text>
 </a>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node72 -->
 <g id="node3" class="node"><title>Node72</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#ae341b5335f94b2390fb75e2833e2e8bf" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#ae341b5335f94b2390fb75e2833e2e8bf" target="_top" xlink:title="Conjugate the quaternion by additive inverting the x, y and z components.">
 <polygon fill="white" stroke="black" points="342,-77 342,-107 467,-107 467,-77 342,-77"/>
 <text text-anchor="start" x="350" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="404.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">::conjugate</text>

@@ -1,11 +1,11 @@
 <map id="openage::TargetAction" name="openage::TargetAction">
-<area shape="rect" id="node1" title=" " alt="" coords="641,453,793,751"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_attack_action.xhtml" title=" " alt="" coords="5,813,188,993"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_build_action.xhtml" title=" " alt="" coords="212,799,395,1008"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_convert_action.xhtml" title=" " alt="" coords="419,828,601,979"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_garrison_action.xhtml" title=" " alt="" coords="625,828,808,979"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_gather_action.xhtml" title=" " alt="" coords="832,799,1015,1008"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_heal_action.xhtml" title=" " alt="" coords="1039,821,1221,986"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_repair_action.xhtml" title=" " alt="" coords="1245,813,1428,993"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml" title=" " alt="" coords="645,5,789,405"/>
+<area shape="rect" id="node1" title="Base class for actions which target another unit such as gather, attack, heal and convert." alt="" coords="641,453,793,751"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attack_action.xhtml" title="attacks another unit" alt="" coords="5,813,188,993"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_build_action.xhtml" title="builds a building" alt="" coords="212,799,395,1008"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_convert_action.xhtml" title="convert an object" alt="" coords="419,828,601,979"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_garrison_action.xhtml" title="garrison inside a building" alt="" coords="625,828,808,979"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_gather_action.xhtml" title="gathers resource from another object" alt="" coords="832,799,1015,1008"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_heal_action.xhtml" title="heals another unit" alt="" coords="1039,821,1221,986"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_repair_action.xhtml" title="repairs a unit" alt="" coords="1245,813,1428,993"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml" title="Actions can be pushed onto any units action stack." alt="" coords="645,5,789,405"/>
 </map>

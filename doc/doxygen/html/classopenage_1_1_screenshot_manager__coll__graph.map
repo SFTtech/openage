@@ -1,6 +1,6 @@
 <map id="openage::ScreenshotManager" name="openage::ScreenshotManager">
 <area shape="rect" id="node1" title=" " alt="" coords="71,624,266,775"/>
-<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_job_manager.xhtml" title=" " alt="" coords="5,161,180,561"/>
+<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_job_manager.xhtml" title="A job manager can be used to execute functions within separate worker threads." alt="" coords="5,161,180,561"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1viewport__delta.xhtml" title=" " alt="" coords="205,301,370,422"/>
 <area shape="rect" id="node4" title=" " alt="" coords="209,5,365,112"/>
 </map>

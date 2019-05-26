@@ -1,8 +1,8 @@
 <map id="openage::error::operator&lt;&lt;" name="openage::error::operator&lt;&lt;">
 <area shape="rect" id="node1" title=" " alt="" coords="5,32,181,58"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" title=" " alt="" coords="419,36,579,62"/>
-<area shape="rect" id="node5" href="$classopenage_1_1error_1_1_error.xhtml#a2eac361ac1550421b68e453b9a710d4b" title=" " alt="" coords="229,24,371,66"/>
-<area shape="rect" id="node6" href="$classopenage_1_1error_1_1_error.xhtml#a6c5c486df5943aa399b6c051d9eb9059" title=" " alt="" coords="229,90,371,131"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" title="Demangles a symbol name." alt="" coords="419,36,579,62"/>
+<area shape="rect" id="node5" href="$classopenage_1_1error_1_1_error.xhtml#a2eac361ac1550421b68e453b9a710d4b" title="Re&#45;throws the exception cause, if the exception has one." alt="" coords="229,24,371,66"/>
+<area shape="rect" id="node6" href="$classopenage_1_1error_1_1_error.xhtml#a6c5c486df5943aa399b6c051d9eb9059" title="The type name of the exception (for pretty&#45;printing in case the exception hierarchy is used)." alt="" coords="229,90,371,131"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="627,36,820,62"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="868,36,995,62"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="868,36,995,62"/>
 </map>

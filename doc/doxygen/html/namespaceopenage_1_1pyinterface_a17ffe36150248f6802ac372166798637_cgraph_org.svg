@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 603,-62 603,4 -4,4"/>
 <!-- Node37 -->
 <g id="node1" class="node"><title>Node37</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Analyzes the current C++ exception, and creates and raises an analogous Python CPPException object.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-14 0,-44 131,-44 131,-14 0,-14"/>
 <text text-anchor="start" x="8" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="65.5" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">::translate_exc_cpp_to_py</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node38 -->
 <g id="node2" class="node"><title>Node38</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title="Demangles a symbol name.">
 <polygon fill="white" stroke="black" points="167,-38.5 167,-57.5 287,-57.5 287,-38.5 167,-38.5"/>
 <text text-anchor="middle" x="227" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::demangle</text>
 </a>
@@ -59,7 +59,7 @@
 </g>
 <!-- Node40 -->
 <g id="node4" class="node"><title>Node40</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="504,-38.5 504,-57.5 599,-57.5 599,-38.5 504,-38.5"/>
 <text text-anchor="middle" x="551.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

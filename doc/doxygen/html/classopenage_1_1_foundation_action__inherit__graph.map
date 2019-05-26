@@ -1,4 +1,4 @@
 <map id="openage::FoundationAction" name="openage::FoundationAction">
-<area shape="rect" id="node1" title=" " alt="" coords="5,453,185,648"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml" title=" " alt="" coords="23,5,167,405"/>
+<area shape="rect" id="node1" title="places an idle action on the stack once building is complete" alt="" coords="5,453,185,648"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml" title="Actions can be pushed onto any units action stack." alt="" coords="23,5,167,405"/>
 </map>

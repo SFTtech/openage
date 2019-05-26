@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-100 442,-100 442,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml" target="_top" xlink:title="An input context contains all keybindings and actions active in e.g.">
 <polygon fill="white" stroke="black" points="0,-38.5 0,-57.5 141,-57.5 141,-38.5 0,-38.5"/>
 <text text-anchor="middle" x="70.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_output_mode.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_output_mode.xhtml" target="_top" xlink:title="A target for input handling and gui rendering.">
 <polygon fill="white" stroke="black" points="177,-38.5 177,-57.5 290,-57.5 290,-38.5 177,-38.5"/>
 <text text-anchor="middle" x="233.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml" target="_top" xlink:title="This is the main game UI.">
 <polygon fill="white" stroke="black" points="326.5,-76.5 326.5,-95.5 437.5,-95.5 437.5,-76.5 326.5,-76.5"/>
 <text text-anchor="middle" x="382" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 </a>
@@ -45,7 +45,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_create_mode.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_create_mode.xhtml" target="_top" xlink:title="This is mainly the game editor.">
 <polygon fill="white" stroke="black" points="326,-38.5 326,-57.5 438,-57.5 438,-38.5 326,-38.5"/>
 <text text-anchor="middle" x="382" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::CreateMode</text>
 </a>
@@ -58,7 +58,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_editor_mode.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_editor_mode.xhtml" target="_top" xlink:title="UI mode to provide an interface for map editing.">
 <polygon fill="white" stroke="black" points="327.5,-0.5 327.5,-19.5 436.5,-19.5 436.5,-0.5 327.5,-0.5"/>
 <text text-anchor="middle" x="382" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 </a>

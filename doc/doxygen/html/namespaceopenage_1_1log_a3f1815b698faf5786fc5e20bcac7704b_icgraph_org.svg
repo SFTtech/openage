@@ -184,7 +184,7 @@
 </g>
 <!-- Node764 -->
 <g id="node20" class="node"><title>Node764</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" target="_top" xlink:title="To be called by the job manager.">
 <polygon fill="white" stroke="black" points="554.5,-962.5 554.5,-992.5 700.5,-992.5 700.5,-962.5 554.5,-962.5"/>
 <text text-anchor="start" x="562.5" y="-980.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ScreenshotManager</text>
 <text text-anchor="middle" x="627.5" y="-969.5" font-family="Helvetica,sans-Serif" font-size="10.00">::encode_png</text>
@@ -212,7 +212,7 @@
 </g>
 <!-- Node767 -->
 <g id="node23" class="node"><title>Node767</title>
-<g id="a_node23"><a xlink:href="classopenage_1_1_civilisation.xhtml#aac6dfa467902f19637b13afcbe2c927b" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="classopenage_1_1_civilisation.xhtml#aac6dfa467902f19637b13afcbe2c927b" target="_top" xlink:title="gamedata for a building">
 <polygon fill="white" stroke="black" points="575,-864.5 575,-894.5 680,-894.5 680,-864.5 575,-864.5"/>
 <text text-anchor="start" x="583" y="-882.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Civilisation</text>
 <text text-anchor="middle" x="627.5" y="-871.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_building_data</text>
@@ -226,7 +226,7 @@
 </g>
 <!-- Node768 -->
 <g id="node24" class="node"><title>Node768</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" target="_top" xlink:title="unit types by aoe gamedata unit ids – the unit type which corresponds to an aoe unit id">
 <polygon fill="white" stroke="red" points="562,-826 562,-845 693,-845 693,-826 562,-826"/>
 <text text-anchor="middle" x="627.5" y="-833" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get_type</text>
 </a>
@@ -239,7 +239,7 @@
 </g>
 <!-- Node783 -->
 <g id="node31" class="node"><title>Node783</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1_player.xhtml#ab1e818cc3361bbadd96add4cd83c86da" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1_player.xhtml#ab1e818cc3361bbadd96add4cd83c86da" target="_top" xlink:title="unit types by list index – a continuous array of all types probably not a useful function / can be re...">
 <polygon fill="white" stroke="black" points="574,-776.5 574,-806.5 681,-806.5 681,-776.5 574,-776.5"/>
 <text text-anchor="start" x="582" y="-794.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get</text>
 <text text-anchor="middle" x="627.5" y="-783.5" font-family="Helvetica,sans-Serif" font-size="10.00">_type_index</text>
@@ -309,7 +309,7 @@
 </g>
 <!-- Node788 -->
 <g id="node36" class="node"><title>Node788</title>
-<g id="a_node36"><a xlink:href="classopenage_1_1_player.xhtml#a95a450855aec639900bf4b5d24e98521" target="_top" xlink:title=" ">
+<g id="a_node36"><a xlink:href="classopenage_1_1_player.xhtml#a95a450855aec639900bf4b5d24e98521" target="_top" xlink:title="initialise with the base tech level">
 <polygon fill="white" stroke="black" points="563.5,-529.5 563.5,-559.5 691.5,-559.5 691.5,-529.5 563.5,-529.5"/>
 <text text-anchor="start" x="571.5" y="-547.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::initialise</text>
 <text text-anchor="middle" x="627.5" y="-536.5" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_types</text>
@@ -323,7 +323,7 @@
 </g>
 <!-- Node789 -->
 <g id="node37" class="node"><title>Node789</title>
-<g id="a_node37"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node37"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="570.5,-480.5 570.5,-510.5 684.5,-510.5 684.5,-480.5 570.5,-480.5"/>
 <text text-anchor="start" x="578.5" y="-498.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="627.5" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>
@@ -420,7 +420,7 @@
 </g>
 <!-- Node799 -->
 <g id="node44" class="node"><title>Node799</title>
-<g id="a_node44"><a xlink:href="classopenage_1_1gui_1_1_main_args_link.xhtml#a27313ca71bc497664ab7a4ade01323e4" target="_top" xlink:title=" ">
+<g id="a_node44"><a xlink:href="classopenage_1_1gui_1_1_main_args_link.xhtml#a27313ca71bc497664ab7a4ade01323e4" target="_top" xlink:title="Generates the MainArgsLink object which is then used within QML.">
 <polygon fill="white" stroke="black" points="559,-245.5 559,-275.5 696,-275.5 696,-245.5 559,-245.5"/>
 <text text-anchor="start" x="567" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::MainArgsLink</text>
 <text text-anchor="middle" x="627.5" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">::provider</text>
@@ -448,7 +448,7 @@
 </g>
 <!-- Node801 -->
 <g id="node46" class="node"><title>Node801</title>
-<g id="a_node46"><a xlink:href="namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" target="_top" xlink:title=" ">
+<g id="a_node46"><a xlink:href="namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" target="_top" xlink:title="runs the game.">
 <polygon fill="white" stroke="black" points="358,-1498 358,-1517 460,-1517 460,-1498 358,-1498"/>
 <text text-anchor="middle" x="409" y="-1505" font-family="Helvetica,sans-Serif" font-size="10.00">openage::run_game</text>
 </a>
@@ -624,7 +624,7 @@
 </g>
 <!-- Node765 -->
 <g id="node21" class="node"><title>Node765</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" target="_top" xlink:title="To be called to save a screenshot.">
 <polygon fill="white" stroke="black" points="336,-962.5 336,-992.5 482,-992.5 482,-962.5 336,-962.5"/>
 <text text-anchor="start" x="344" y="-980.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ScreenshotManager</text>
 <text text-anchor="middle" x="409" y="-969.5" font-family="Helvetica,sans-Serif" font-size="10.00">::save_screenshot</text>
@@ -638,7 +638,7 @@
 </g>
 <!-- Node769 -->
 <g id="node25" class="node"><title>Node769</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" target="_top" xlink:title="places all initial objects">
 <polygon fill="white" stroke="black" points="358,-908.5 358,-938.5 460,-938.5 460,-908.5 358,-908.5"/>
 <text text-anchor="start" x="366" y="-926.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="409" y="-915.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_units</text>
@@ -652,7 +652,7 @@
 </g>
 <!-- Node770 -->
 <g id="node26" class="node"><title>Node770</title>
-<g id="a_node26"><a xlink:href="classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="345.5,-782.5 345.5,-812.5 472.5,-812.5 472.5,-782.5 345.5,-782.5"/>
 <text text-anchor="start" x="353.5" y="-800.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="409" y="-789.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -666,7 +666,7 @@
 </g>
 <!-- Node771 -->
 <g id="node27" class="node"><title>Node771</title>
-<g id="a_node27"><a xlink:href="classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" target="_top" xlink:title=" ">
+<g id="a_node27"><a xlink:href="classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="158.5,-820.5 158.5,-850.5 292.5,-850.5 292.5,-820.5 158.5,-820.5"/>
 <text text-anchor="start" x="166.5" y="-838.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="225.5" y="-827.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -680,7 +680,7 @@
 </g>
 <!-- Node772 -->
 <g id="node28" class="node"><title>Node772</title>
-<g id="a_node28"><a xlink:href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" target="_top" xlink:title=" ">
+<g id="a_node28"><a xlink:href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="0,-842.5 0,-872.5 122,-872.5 122,-842.5 0,-842.5"/>
 <text text-anchor="start" x="8" y="-860.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="61" y="-849.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -694,7 +694,7 @@
 </g>
 <!-- Node773 -->
 <g id="node29" class="node"><title>Node773</title>
-<g id="a_node29"><a xlink:href="classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" target="_top" xlink:title=" ">
+<g id="a_node29"><a xlink:href="classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="342.5,-733.5 342.5,-763.5 475.5,-763.5 475.5,-733.5 342.5,-733.5"/>
 <text text-anchor="start" x="350.5" y="-751.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <text text-anchor="middle" x="409" y="-740.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>

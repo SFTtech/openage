@@ -1,4 +1,4 @@
 <map id="openage::util::CachableOSStream::acquire" name="openage::util::CachableOSStream::acquire">
-<area shape="rect" id="node1" title=" " alt="" coords="273,5,492,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_string_formatter.xhtml#a9a56b87b8c33c7e76cb717cbf2e3dd16" title=" " alt="" coords="5,5,225,47"/>
+<area shape="rect" id="node1" title="Returns a brand&#45;new(*) CachableOSStream object." alt="" coords="273,5,492,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_string_formatter.xhtml#a9a56b87b8c33c7e76cb717cbf2e3dd16" title="Ensures that we have a valid CachableOSStream object in stream_ptr." alt="" coords="5,5,225,47"/>
 </map>

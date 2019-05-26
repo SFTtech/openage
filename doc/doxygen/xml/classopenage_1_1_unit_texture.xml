@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>id</name>
         <briefdescription>
+<para>const attributes of the graphic </para>
         </briefdescription>
         <detaileddescription>
-<para>const attributes of the graphic </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -94,9 +94,9 @@
         <argsstring></argsstring>
         <name>use_up_angles</name>
         <briefdescription>
+<para>draw object with vertical orientation (arrows) adding an addtion degree of orientation </para>
         </briefdescription>
         <detaileddescription>
-<para>draw object with vertical orientation (arrows) adding an addtion degree of orientation </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -109,9 +109,9 @@
         <argsstring></argsstring>
         <name>use_deltas</name>
         <briefdescription>
+<para>use delta information </para>
         </briefdescription>
         <detaileddescription>
-<para>use delta information </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -126,9 +126,9 @@
         <argsstring></argsstring>
         <name>texture</name>
         <briefdescription>
+<para>use a regular texture for drawing </para>
         </briefdescription>
         <detaileddescription>
-<para>use a regular texture for drawing </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -145,9 +145,9 @@
         <argsstring></argsstring>
         <name>safe_frame_count</name>
         <briefdescription>
+<para>the above frame count covers the entire graphic (with deltas) the actual number in the base texture may be different </para>
         </briefdescription>
         <detaileddescription>
-<para>the above frame count covers the entire graphic (with deltas) the actual number in the base texture may be different </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -281,9 +281,9 @@
           <defval>true</defval>
         </param>
         <briefdescription>
+<para>Delta option specifies whether the delta graphics are included. </para>
         </briefdescription>
         <detaileddescription>
-<para>Delta option specifies whether the delta graphics are included.</para>
 <para>Note that the game data contains loops in delta links which mean recursive loading should be avoided </para>
         </detaileddescription>
         <inbodydescription>
@@ -323,9 +323,9 @@
         <argsstring>() const</argsstring>
         <name>is_valid</name>
         <briefdescription>
+<para>invalid unit textures will cause errors if drawn </para>
         </briefdescription>
         <detaileddescription>
-<para>invalid unit textures will cause errors if drawn </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -339,9 +339,9 @@
         <argsstring>() const</argsstring>
         <name>size</name>
         <briefdescription>
+<para>pixel size of this texture </para>
         </briefdescription>
         <detaileddescription>
-<para>pixel size of this texture </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -369,9 +369,9 @@
           <defval>1</defval>
         </param>
         <briefdescription>
+<para>a sample drawing for hud </para>
         </briefdescription>
         <detaileddescription>
-<para>a sample drawing for hud </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -406,9 +406,9 @@
           <declname>color</declname>
         </param>
         <briefdescription>
+<para>draw object with no direction </para>
         </briefdescription>
         <detaileddescription>
-<para>draw object with no direction </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -448,9 +448,9 @@
           <declname>color</declname>
         </param>
         <briefdescription>
+<para>draw object with direction </para>
         </briefdescription>
         <detaileddescription>
-<para>draw object with direction </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -460,7 +460,7 @@
         <references refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" compoundref="text_8cpp" startline="16">openage::texturefont_shader::color</references>
         <references refid="namespaceopenage_1_1coord_1_1tests_1ab5f6aa805a24bd58eb365e5af294d807" compoundref="coord__test_8cpp" startline="36" endline="90">openage::coord::tests::coord</references>
         <references refid="classopenage_1_1_unit_texture_1a46b37c628ef85eb1b8471510b15c9aee" compoundref="unit__texture_8h" startline="111">deltas</references>
-        <references refid="namespaceopenage_1af8871290d3c97a11b6761d12827ab9e3" compoundref="unit__texture_8cpp" startline="162" endline="175">openage::dir_group</references>
+        <references refid="namespaceopenage_1ad019d95177e6ab646a2d239e4ec3daa7" compoundref="unit__texture_8cpp" startline="162" endline="175">openage::dir_group</references>
         <references refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" compoundref="texture_8cpp" startline="198" endline="202">openage::Texture::draw</references>
         <references refid="classopenage_1_1_unit_texture_1ab73fc25e6c0bf70e46bfa1367cfa8214" compoundref="unit__texture_8h" startline="104">draw_this</references>
         <references refid="classopenage_1_1_unit_texture_1a5d5ceeca83c640f1965341eb304d2dbe" compoundref="unit__texture_8h" startline="42">frame_count</references>
@@ -483,9 +483,9 @@
           <declname>spec</declname>
         </param>
         <briefdescription>
+<para>initialise graphic data </para>
         </briefdescription>
         <detaileddescription>
-<para>initialise graphic data </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -530,9 +530,9 @@
           <declname>frame</declname>
         </param>
         <briefdescription>
+<para>find which subtexture should be used for drawing this texture </para>
         </briefdescription>
         <detaileddescription>
-<para>find which subtexture should be used for drawing this texture </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -546,9 +546,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Handling animated and directional textures based on the game graphics data. </para>
     </briefdescription>
     <detaileddescription>
-<para>Handling animated and directional textures based on the game graphics data.</para>
 <para>These objects handle the drawing of regular textures to use a unit&apos;s direction and include delta graphics.</para>
 <para>This type can also deal with playing position based game sounds. </para>
     </detaileddescription>

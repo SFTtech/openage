@@ -1,7 +1,7 @@
 <map id="openage::ActionModeSignals::buttons_type_changed" name="openage::ActionModeSignals::buttons_type_changed">
 <area shape="rect" id="node1" title=" " alt="" coords="429,71,620,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" title=" " alt="" coords="211,37,379,79"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" title="sends to gui the buttons it should use for the action buttons (if changed)" alt="" coords="211,37,379,79"/>
 <area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_action_mode_link.xhtml#a7f40baae6dc5feed6abebaa5eae2f2d6" title=" " alt="" coords="208,103,381,144"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title=" " alt="" coords="9,5,157,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,71,160,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title="Called when the mode is left." alt="" coords="9,5,157,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,71,160,112"/>
 </map>

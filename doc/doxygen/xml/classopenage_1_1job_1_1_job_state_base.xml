@@ -11,9 +11,9 @@
         <argsstring>()=default</argsstring>
         <name>~JobStateBase</name>
         <briefdescription>
+<para>Default constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Default constructor. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -30,9 +30,10 @@
           <declname>should_abort</declname>
         </param>
         <briefdescription>
+<para>This function executes the job. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function executes the job. It returns whether the job has been aborted. </para>
+<para>It returns whether the job has been aborted. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -45,9 +46,10 @@
         <name>execute_callback</name>
         <reimplementedby refid="classopenage_1_1job_1_1_typed_job_state_base_1a4c8a6b1c64e615799feafc50842dd93c">execute_callback</reimplementedby>
         <briefdescription>
+<para>Executes the job&apos;s callback, if a callback function has been provided while constructing this job. </para>
         </briefdescription>
         <detaileddescription>
-<para>Executes the job&apos;s callback, if a callback function has been provided while constructing this job. This function may only be called if the job has already finished. </para>
+<para>This function may only be called if the job has already finished. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -60,9 +62,9 @@
         <name>get_thread_id</name>
         <reimplementedby refid="classopenage_1_1job_1_1_typed_job_state_base_1abae19bb907d061aa9707b6ba619fe631">get_thread_id</reimplementedby>
         <briefdescription>
+<para>Returns the id of the thread that has created this job. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the id of the thread that has created this job. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -70,9 +72,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>An abstract base class for a shared state of a job. </para>
     </briefdescription>
     <detaileddescription>
-<para>An abstract base class for a shared state of a job. A job state keeps track of its execution state and store&apos;s the job&apos;s result. Further it keeps track of exceptions that occurred during the job&apos;s execution. The real shared state implementation is done in templated subclasses. This is necessary to support arbitrary result types. </para>
+<para>A job state keeps track of its execution state and store&apos;s the job&apos;s result. Further it keeps track of exceptions that occurred during the job&apos;s execution. The real shared state implementation is done in templated subclasses. This is necessary to support arbitrary result types. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3899">

@@ -119,7 +119,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node9 -->
 <g id="node4" class="node"><title>Node9</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="603,-845.5 603,-875.5 728,-875.5 728,-845.5 603,-845.5"/>
 <text text-anchor="start" x="611" y="-863.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="665.5" y="-852.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -133,7 +133,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node10 -->
 <g id="node5" class="node"><title>Node10</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="603,-796.5 603,-826.5 728,-826.5 728,-796.5 603,-796.5"/>
 <text text-anchor="start" x="611" y="-814.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="665.5" y="-803.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>
@@ -217,7 +217,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node18 -->
 <g id="node13" class="node"><title>Node18</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" target="_top" xlink:title="Returns the dimensions of the whole texture bitmap.">
 <polygon fill="white" stroke="black" points="604,-540 604,-581 727,-581 727,-540 604,-540"/>
 <text text-anchor="start" x="612" y="-569" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="612" y="-558" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>

@@ -97,19 +97,23 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1resources_
 </div><!--header-->
 <div class="contents">
 
+<p>Contains information about a 2D texture surface, without actual texture data.  
+ <a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="texture__info_8h_source.xhtml">texture_info.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::resources::Texture2dInfo:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info__coll__graph.svg" width="214" height="367"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info__coll__graph.svg" width="214" height="367"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a36c4a4a6cf0c80587df4a4fe5b9d77b1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a36c4a4a6cf0c80587df4a4fe5b9d77b1">Texture2dInfo</a> (size_t width, size_t height, <a class="el" href="namespaceopenage_1_1renderer_1_1resources.xhtml#a9c043ffb36fb67c86e45c74d0e83426e">pixel_format</a>, size_t <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">row_alignment</a>=1, std::vector&lt; <a class="el" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml">Texture2dSubInfo</a> &gt; &amp;&amp;=std::vector&lt; <a class="el" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml">Texture2dSubInfo</a> &gt;())</td></tr>
-<tr class="memdesc:a36c4a4a6cf0c80587df4a4fe5b9d77b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml">Texture2dInfo</a> with the given information.  <a href="#a36c4a4a6cf0c80587df4a4fe5b9d77b1">More...</a><br /></td></tr>
+<tr class="memdesc:a36c4a4a6cf0c80587df4a4fe5b9d77b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml" title="Contains information about a 2D texture surface, without actual texture data.">Texture2dInfo</a> with the given information.  <a href="#a36c4a4a6cf0c80587df4a4fe5b9d77b1">More...</a><br /></td></tr>
 <tr class="separator:a36c4a4a6cf0c80587df4a4fe5b9d77b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21576236d6837b2d3d19d9d3a8429c4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a21576236d6837b2d3d19d9d3a8429c4f">Texture2dInfo</a> ()=default</td></tr>
 <tr class="separator:a21576236d6837b2d3d19d9d3a8429c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,11 +122,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aba844ce34d032c1f8512bfa0b3029e27"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aba844ce34d032c1f8512bfa0b3029e27">~Texture2dInfo</a> ()=default</td></tr>
 <tr class="separator:aba844ce34d032c1f8512bfa0b3029e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade47ab8302168c26da6ac96b2ffca2b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ade47ab8302168c26da6ac96b2ffca2b6">operator==</a> (<a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml">Texture2dInfo</a> const &amp;)</td></tr>
+<tr class="memdesc:ade47ab8302168c26da6ac96b2ffca2b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares the texture parameters <em>excluding</em> the subtexture information and returns true if they're equal, false otherwise.  <a href="#ade47ab8302168c26da6ac96b2ffca2b6">More...</a><br /></td></tr>
 <tr class="separator:ade47ab8302168c26da6ac96b2ffca2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a887af57038df9ce8406e1ba6fff27cc8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a887af57038df9ce8406e1ba6fff27cc8">operator!=</a> (<a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml">Texture2dInfo</a> const &amp;)</td></tr>
 <tr class="memdesc:a887af57038df9ce8406e1ba6fff27cc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">See operator==.  <a href="#a887af57038df9ce8406e1ba6fff27cc8">More...</a><br /></td></tr>
 <tr class="separator:a887af57038df9ce8406e1ba6fff27cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bd462432c63a67c1b199c3f717bce50"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int32_t, int32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50">get_size</a> () const</td></tr>
+<tr class="memdesc:a3bd462432c63a67c1b199c3f717bce50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the dimensions of the whole texture bitmap.  <a href="#a3bd462432c63a67c1b199c3f717bce50">More...</a><br /></td></tr>
 <tr class="separator:a3bd462432c63a67c1b199c3f717bce50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57830eb6623cc7171953bc0214c6ee2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceopenage_1_1renderer_1_1resources.xhtml#a9c043ffb36fb67c86e45c74d0e83426e">pixel_format</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a57830eb6623cc7171953bc0214c6ee2c">get_format</a> () const</td></tr>
 <tr class="separator:a57830eb6623cc7171953bc0214c6ee2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,8 +136,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af981ae334cc8a2499278fd15af4d21fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the alignment of texture rows to byte boundaries.  <a href="#af981ae334cc8a2499278fd15af4d21fc">More...</a><br /></td></tr>
 <tr class="separator:af981ae334cc8a2499278fd15af4d21fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d87c131a3e1f175ce29d3ec146c2790"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790">get_row_size</a> () const</td></tr>
+<tr class="memdesc:a2d87c131a3e1f175ce29d3ec146c2790"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size in bytes of a single row, including possible padding at its end.  <a href="#a2d87c131a3e1f175ce29d3ec146c2790">More...</a><br /></td></tr>
 <tr class="separator:a2d87c131a3e1f175ce29d3ec146c2790"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09329202a589131b1c723fbffb1f806b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a09329202a589131b1c723fbffb1f806b">get_data_size</a> () const</td></tr>
+<tr class="memdesc:a09329202a589131b1c723fbffb1f806b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size in bytes of the raw pixel data.  <a href="#a09329202a589131b1c723fbffb1f806b">More...</a><br /></td></tr>
 <tr class="separator:a09329202a589131b1c723fbffb1f806b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaa2fb4684682990cde06485dc8b514d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#abaa2fb4684682990cde06485dc8b514d">get_subtexture_count</a> () const</td></tr>
 <tr class="memdesc:abaa2fb4684682990cde06485dc8b514d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of available subtextures.  <a href="#abaa2fb4684682990cde06485dc8b514d">More...</a><br /></td></tr>
@@ -143,6 +151,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad2a2f302bd53b1aee538de9c21c896c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the subtexture with the given ID.  <a href="#ad2a2f302bd53b1aee538de9c21c896c3">More...</a><br /></td></tr>
 <tr class="separator:ad2a2f302bd53b1aee538de9c21c896c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb376e40e3da8cadee1848fa1ea28226"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; float, float, float, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aeb376e40e3da8cadee1848fa1ea28226">get_subtexture_coordinates</a> (size_t subid) const</td></tr>
+<tr class="memdesc:aeb376e40e3da8cadee1848fa1ea28226"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns atlas subtexture coordinates.  <a href="#aeb376e40e3da8cadee1848fa1ea28226">More...</a><br /></td></tr>
 <tr class="separator:aeb376e40e3da8cadee1848fa1ea28226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -156,12 +165,15 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:a525eb2ee4e7e27c1950c89b196216745"><td class="mdescLeft">&#160;</td><td class="mdescRight">The pixel format of this texture.  <a href="#a525eb2ee4e7e27c1950c89b196216745">More...</a><br /></td></tr>
 <tr class="separator:a525eb2ee4e7e27c1950c89b196216745"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2616b266e8ff20d318bf6bc2e075f089"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">row_alignment</a></td></tr>
+<tr class="memdesc:a2616b266e8ff20d318bf6bc2e075f089"><td class="mdescLeft">&#160;</td><td class="mdescRight">The alignment of texture rows to byte boundaries.  <a href="#a2616b266e8ff20d318bf6bc2e075f089">More...</a><br /></td></tr>
 <tr class="separator:a2616b266e8ff20d318bf6bc2e075f089"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad287ca6248fd2444a8953737456a0198"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml">Texture2dSubInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">subtextures</a></td></tr>
+<tr class="memdesc:ad287ca6248fd2444a8953737456a0198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Some textures are merged together into texture atlases, large images which contain more than one individual texture.  <a href="#ad287ca6248fd2444a8953737456a0198">More...</a><br /></td></tr>
 <tr class="separator:ad287ca6248fd2444a8953737456a0198"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains information about a 2D texture surface, without actual texture data. The class supports subtextures, so that one big texture ("texture atlas") can contain several smaller images, which can be extracted for rendering one-by-one. </p>
+<div class="textblock"><p>Contains information about a 2D texture surface, without actual texture data. </p>
+<p>The class supports subtextures, so that one big texture ("texture atlas") can contain several smaller images, which can be extracted for rendering one-by-one. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8h_source.xhtml#l00054">54</a> of file <a class="el" href="texture__info_8h_source.xhtml">texture_info.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -209,14 +221,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml">Texture2dInfo</a> with the given information. </p>
+<p>Constructs a <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml" title="Contains information about a 2D texture surface, without actual texture data.">Texture2dInfo</a> with the given information. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8cpp_source.xhtml#l00010">10</a> of file <a class="el" href="texture__info_8cpp_source.xhtml">texture_info.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    : <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aa5a45cabdac647582d3f5bea32dbfc39">w</a>(width)</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    , <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#afc16ec7911794145e6aef3fd89904f58">h</a>(height)</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    , <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a525eb2ee4e7e27c1950c89b196216745">format</a>(fmt)</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    , <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">row_alignment</a>(<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">row_alignment</a>)</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    , <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">subtextures</a>(<a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(subs)) {}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a525eb2ee4e7e27c1950c89b196216745"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a525eb2ee4e7e27c1950c89b196216745">openage::renderer::resources::Texture2dInfo::format</a></div><div class="ttdeci">pixel_format format</div><div class="ttdoc">The pixel format of this texture.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00109">texture_info.h:109</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
 <div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_afc16ec7911794145e6aef3fd89904f58"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#afc16ec7911794145e6aef3fd89904f58">openage::renderer::resources::Texture2dInfo::h</a></div><div class="ttdeci">int32_t h</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00106">texture_info.h:106</a></div></div>
-<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a2616b266e8ff20d318bf6bc2e075f089"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">openage::renderer::resources::Texture2dInfo::row_alignment</a></div><div class="ttdeci">size_t row_alignment</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00114">texture_info.h:114</a></div></div>
-<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_ad287ca6248fd2444a8953737456a0198"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">openage::renderer::resources::Texture2dInfo::subtextures</a></div><div class="ttdeci">std::vector&lt; Texture2dSubInfo &gt; subtextures</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00118">texture_info.h:118</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a2616b266e8ff20d318bf6bc2e075f089"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">openage::renderer::resources::Texture2dInfo::row_alignment</a></div><div class="ttdeci">size_t row_alignment</div><div class="ttdoc">The alignment of texture rows to byte boundaries.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00114">texture_info.h:114</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_ad287ca6248fd2444a8953737456a0198"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">openage::renderer::resources::Texture2dInfo::subtextures</a></div><div class="ttdeci">std::vector&lt; Texture2dSubInfo &gt; subtextures</div><div class="ttdoc">Some textures are merged together into texture atlases, large images which contain more than one indi...</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00118">texture_info.h:118</a></div></div>
 <div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_aa5a45cabdac647582d3f5bea32dbfc39"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aa5a45cabdac647582d3f5bea32dbfc39">openage::renderer::resources::Texture2dInfo::w</a></div><div class="ttdeci">int32_t w</div><div class="ttdoc">Width and height of this texture.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00106">texture_info.h:106</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</a>.</p>
@@ -314,11 +326,13 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the size in bytes of the raw pixel data. It is equal to <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790">get_row_size()</a> * <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50">get_size()</a>.second. </p>
+
+<p>Returns the size in bytes of the raw pixel data. </p>
+<p>It is equal to <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" title="Returns the size in bytes of a single row, including possible padding at its end.">get_row_size()</a> * <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title="Returns the dimensions of the whole texture bitmap.">get_size()</a>.second. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="texture__info_8cpp_source.xhtml">texture_info.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                          {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790">get_row_size</a>() * this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#afc16ec7911794145e6aef3fd89904f58">h</a>;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_afc16ec7911794145e6aef3fd89904f58"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#afc16ec7911794145e6aef3fd89904f58">openage::renderer::resources::Texture2dInfo::h</a></div><div class="ttdeci">int32_t h</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00106">texture_info.h:106</a></div></div>
-<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a2d87c131a3e1f175ce29d3ec146c2790"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790">openage::renderer::resources::Texture2dInfo::get_row_size</a></div><div class="ttdeci">size_t get_row_size() const</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8cpp_source.xhtml#l00040">texture_info.cpp:40</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a2d87c131a3e1f175ce29d3ec146c2790"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790">openage::renderer::resources::Texture2dInfo::get_row_size</a></div><div class="ttdeci">size_t get_row_size() const</div><div class="ttdoc">Returns the size in bytes of a single row, including possible padding at its end.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8cpp_source.xhtml#l00040">texture_info.cpp:40</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture__info_8cpp_source.xhtml#l00040">get_row_size()</a>, and <a class="el" href="texture__info_8h_source.xhtml#l00106">h</a>.</p>
 
@@ -328,14 +342,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a09329202a589131b1c723fbffb1f806b_cgraph.svg" width="580" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a09329202a589131b1c723fbffb1f806b_cgraph.svg" width="580" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a09329202a589131b1c723fbffb1f806b_icgraph.svg" width="100%" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a09329202a589131b1c723fbffb1f806b_icgraph.svg" width="100%" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -367,7 +383,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a57830eb6623cc7171953bc0214c6ee2c_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a57830eb6623cc7171953bc0214c6ee2c_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -390,7 +407,7 @@ Private Attributes</h2></td></tr>
 <p>Returns the alignment of texture rows to byte boundaries. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8cpp_source.xhtml#l00036">36</a> of file <a class="el" href="texture__info_8cpp_source.xhtml">texture_info.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                              {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">row_alignment</a>;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a2616b266e8ff20d318bf6bc2e075f089"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">openage::renderer::resources::Texture2dInfo::row_alignment</a></div><div class="ttdeci">size_t row_alignment</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00114">texture_info.h:114</a></div></div>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                              {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">row_alignment</a>;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a2616b266e8ff20d318bf6bc2e075f089"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">openage::renderer::resources::Texture2dInfo::row_alignment</a></div><div class="ttdeci">size_t row_alignment</div><div class="ttdoc">The alignment of texture rows to byte boundaries.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00114">texture_info.h:114</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture__info_8h_source.xhtml#l00114">row_alignment</a>.</p>
 
@@ -400,7 +417,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_af981ae334cc8a2499278fd15af4d21fc_icgraph.svg" width="362" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_af981ae334cc8a2499278fd15af4d21fc_icgraph.svg" width="362" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -419,12 +437,13 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Returns the size in bytes of a single row, including possible padding at its end. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8cpp_source.xhtml#l00040">40</a> of file <a class="el" href="texture__info_8cpp_source.xhtml">texture_info.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                         {</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">size_t</span> px_size = <a class="code" href="namespaceopenage_1_1renderer_1_1resources.xhtml#aa8bc42c345504717eba7d38b39d278c2">pixel_size</a>(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a525eb2ee4e7e27c1950c89b196216745">format</a>);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">size_t</span> row_size = this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aa5a45cabdac647582d3f5bea32dbfc39">w</a> * px_size;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> (row_size % this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">row_alignment</a> != 0) {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// Unaligned rows, have to add padding.</span></div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">size_t</span> padding = this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">row_alignment</a> - (row_size % this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">row_alignment</a>);</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        row_size += padding;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> row_size;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a525eb2ee4e7e27c1950c89b196216745"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a525eb2ee4e7e27c1950c89b196216745">openage::renderer::resources::Texture2dInfo::format</a></div><div class="ttdeci">pixel_format format</div><div class="ttdoc">The pixel format of this texture.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00109">texture_info.h:109</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1renderer_1_1resources_xhtml_aa8bc42c345504717eba7d38b39d278c2"><div class="ttname"><a href="namespaceopenage_1_1renderer_1_1resources.xhtml#aa8bc42c345504717eba7d38b39d278c2">openage::renderer::resources::pixel_size</a></div><div class="ttdeci">constexpr size_t pixel_size(pixel_format fmt)</div><div class="ttdoc">Returns the size in bytes of a single pixel of the specified format.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00036">texture_info.h:36</a></div></div>
-<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a2616b266e8ff20d318bf6bc2e075f089"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">openage::renderer::resources::Texture2dInfo::row_alignment</a></div><div class="ttdeci">size_t row_alignment</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00114">texture_info.h:114</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a2616b266e8ff20d318bf6bc2e075f089"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">openage::renderer::resources::Texture2dInfo::row_alignment</a></div><div class="ttdeci">size_t row_alignment</div><div class="ttdoc">The alignment of texture rows to byte boundaries.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00114">texture_info.h:114</a></div></div>
 <div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_aa5a45cabdac647582d3f5bea32dbfc39"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aa5a45cabdac647582d3f5bea32dbfc39">openage::renderer::resources::Texture2dInfo::w</a></div><div class="ttdeci">int32_t w</div><div class="ttdoc">Width and height of this texture.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00106">texture_info.h:106</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture__info_8h_source.xhtml#l00109">format</a>, <a class="el" href="texture__info_8h_source.xhtml#l00036">openage::renderer::resources::pixel_size()</a>, <a class="el" href="texture__info_8h_source.xhtml#l00114">row_alignment</a>, and <a class="el" href="texture__info_8h_source.xhtml#l00106">w</a>.</p>
@@ -435,14 +454,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a2d87c131a3e1f175ce29d3ec146c2790_cgraph.svg" width="368" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a2d87c131a3e1f175ce29d3ec146c2790_cgraph.svg" width="368" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a2d87c131a3e1f175ce29d3ec146c2790_icgraph.svg" width="100%" height="513"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a2d87c131a3e1f175ce29d3ec146c2790_icgraph.svg" width="100%" height="513"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -461,7 +482,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the dimensions of the whole texture bitmap </p><dl class="section return"><dt>Returns</dt><dd>tuple(width, height) </dd></dl>
+
+<p>Returns the dimensions of the whole texture bitmap. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple(width, height) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8cpp_source.xhtml#l00028">28</a> of file <a class="el" href="texture__info_8cpp_source.xhtml">texture_info.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                                        {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">return</span> std::make_pair(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aa5a45cabdac647582d3f5bea32dbfc39">w</a>, this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#afc16ec7911794145e6aef3fd89904f58">h</a>);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_afc16ec7911794145e6aef3fd89904f58"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#afc16ec7911794145e6aef3fd89904f58">openage::renderer::resources::Texture2dInfo::h</a></div><div class="ttdeci">int32_t h</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00106">texture_info.h:106</a></div></div>
@@ -475,7 +498,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a3bd462432c63a67c1b199c3f717bce50_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_a3bd462432c63a67c1b199c3f717bce50_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -501,7 +525,7 @@ Private Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="texture__info_8cpp_source.xhtml#l00061">61</a> of file <a class="el" href="texture__info_8cpp_source.xhtml">texture_info.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                                                        {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (subid &lt; this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">subtextures</a>.size()) {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">subtextures</a>[subid];</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Unknown subtexture requested: &quot;</span> &lt;&lt; subid);</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
-<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_ad287ca6248fd2444a8953737456a0198"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">openage::renderer::resources::Texture2dInfo::subtextures</a></div><div class="ttdeci">std::vector&lt; Texture2dSubInfo &gt; subtextures</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00118">texture_info.h:118</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_ad287ca6248fd2444a8953737456a0198"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">openage::renderer::resources::Texture2dInfo::subtextures</a></div><div class="ttdeci">std::vector&lt; Texture2dSubInfo &gt; subtextures</div><div class="ttdoc">Some textures are merged together into texture atlases, large images which contain more than one indi...</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00118">texture_info.h:118</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, and <a class="el" href="texture__info_8h_source.xhtml#l00118">subtextures</a>.</p>
 
@@ -518,7 +542,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_ac6b8cd33b4ba1ba68f10f504d92c42f6_icgraph.svg" width="414" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_ac6b8cd33b4ba1ba68f10f504d92c42f6_icgraph.svg" width="414" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -538,7 +563,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns atlas subtexture coordinates.</p>
+
+<p>Returns atlas subtexture coordinates. </p>
 <dl class="section return"><dt>Returns</dt><dd>left, right, top and bottom bounds as coordinates these pick the requested area out of the big texture. returned as floats in range 0.0 to 1.0, relative to the whole surface size. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8cpp_source.xhtml#l00074">74</a> of file <a class="el" href="texture__info_8cpp_source.xhtml">texture_info.cpp</a>.</p>
@@ -550,7 +576,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_aeb376e40e3da8cadee1848fa1ea28226_cgraph.svg" width="572" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_aeb376e40e3da8cadee1848fa1ea28226_cgraph.svg" width="572" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -573,7 +600,7 @@ Private Attributes</h2></td></tr>
 <p>Returns the number of available subtextures. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8cpp_source.xhtml#l00057">57</a> of file <a class="el" href="texture__info_8cpp_source.xhtml">texture_info.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                 {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">subtextures</a>.size();</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_ad287ca6248fd2444a8953737456a0198"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">openage::renderer::resources::Texture2dInfo::subtextures</a></div><div class="ttdeci">std::vector&lt; Texture2dSubInfo &gt; subtextures</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00118">texture_info.h:118</a></div></div>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                 {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">subtextures</a>.size();</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_ad287ca6248fd2444a8953737456a0198"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#ad287ca6248fd2444a8953737456a0198">openage::renderer::resources::Texture2dInfo::subtextures</a></div><div class="ttdeci">std::vector&lt; Texture2dSubInfo &gt; subtextures</div><div class="ttdoc">Some textures are merged together into texture atlases, large images which contain more than one indi...</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00118">texture_info.h:118</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture__info_8h_source.xhtml#l00118">subtextures</a>.</p>
 
@@ -648,12 +675,13 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Compares the texture parameters <em>excluding</em> the subtexture information and returns true if they're equal, false otherwise. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8cpp_source.xhtml#l00017">17</a> of file <a class="el" href="texture__info_8cpp_source.xhtml">texture_info.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                                         {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">return</span> other.w == this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aa5a45cabdac647582d3f5bea32dbfc39">w</a></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    and other.h == this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#afc16ec7911794145e6aef3fd89904f58">h</a></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    and other.format == this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a525eb2ee4e7e27c1950c89b196216745">format</a></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    and other.row_alignment == this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">row_alignment</a>;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a525eb2ee4e7e27c1950c89b196216745"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a525eb2ee4e7e27c1950c89b196216745">openage::renderer::resources::Texture2dInfo::format</a></div><div class="ttdeci">pixel_format format</div><div class="ttdoc">The pixel format of this texture.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00109">texture_info.h:109</a></div></div>
 <div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_afc16ec7911794145e6aef3fd89904f58"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#afc16ec7911794145e6aef3fd89904f58">openage::renderer::resources::Texture2dInfo::h</a></div><div class="ttdeci">int32_t h</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00106">texture_info.h:106</a></div></div>
-<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a2616b266e8ff20d318bf6bc2e075f089"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">openage::renderer::resources::Texture2dInfo::row_alignment</a></div><div class="ttdeci">size_t row_alignment</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00114">texture_info.h:114</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_a2616b266e8ff20d318bf6bc2e075f089"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2616b266e8ff20d318bf6bc2e075f089">openage::renderer::resources::Texture2dInfo::row_alignment</a></div><div class="ttdeci">size_t row_alignment</div><div class="ttdoc">The alignment of texture rows to byte boundaries.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00114">texture_info.h:114</a></div></div>
 <div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_xhtml_aa5a45cabdac647582d3f5bea32dbfc39"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#aa5a45cabdac647582d3f5bea32dbfc39">openage::renderer::resources::Texture2dInfo::w</a></div><div class="ttdeci">int32_t w</div><div class="ttdoc">Width and height of this texture.</div><div class="ttdef"><b>Definition:</b> <a href="texture__info_8h_source.xhtml#l00106">texture_info.h:106</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="texture__info_8h_source.xhtml#l00109">format</a>, <a class="el" href="texture__info_8h_source.xhtml#l00106">h</a>, <a class="el" href="texture__info_8h_source.xhtml#l00114">row_alignment</a>, and <a class="el" href="texture__info_8h_source.xhtml#l00106">w</a>.</p>
@@ -734,7 +762,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The alignment of texture rows to byte boundaries. Can be 1, 2, 4 or 8. There is padding at the end of each row to match the alignment if the row size is not a multiple of the alignment. </p>
+
+<p>The alignment of texture rows to byte boundaries. </p>
+<p>Can be 1, 2, 4 or 8. There is padding at the end of each row to match the alignment if the row size is not a multiple of the alignment. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8h_source.xhtml#l00114">114</a> of file <a class="el" href="texture__info_8h_source.xhtml">texture_info.h</a>.</p>
 
@@ -761,7 +791,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Some textures are merged together into texture atlases, large images which contain more than one individual texture. These are their positions in the atlas. </p>
+
+<p>Some textures are merged together into texture atlases, large images which contain more than one individual texture. </p>
+<p>These are their positions in the atlas. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__info_8h_source.xhtml#l00118">118</a> of file <a class="el" href="texture__info_8h_source.xhtml">texture_info.h</a>.</p>
 

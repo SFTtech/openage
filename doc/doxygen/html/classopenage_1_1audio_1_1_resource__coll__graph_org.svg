@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-888 155,-888 155,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A Resource contains 16 bit signed integer pcm data, that can be played by sounds.">
 <polygon fill="#bfbfbf" stroke="black" points="10.5,-0.5 10.5,-189.5 140.5,-189.5 140.5,-0.5 10.5,-0.5"/>
 <text text-anchor="middle" x="75.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Resource</text>
 <polyline fill="none" stroke="black" points="10.5,-170.5 140.5,-170.5 "/>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml" target="_top" xlink:title="This class provides audio functionality for openage.">
 <polygon fill="white" stroke="black" points="0,-237.5 0,-536.5 151,-536.5 151,-237.5 0,-237.5"/>
 <text text-anchor="middle" x="75.5" y="-524.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <polyline fill="none" stroke="black" points="0,-517.5 151,-517.5 "/>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title="A job manager can be used to execute functions within separate worker threads.">
 <polygon fill="white" stroke="black" points="10,-584.5 10,-883.5 141,-883.5 141,-584.5 10,-584.5"/>
 <text text-anchor="middle" x="75.5" y="-871.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <polyline fill="none" stroke="black" points="10,-864.5 141,-864.5 "/>

@@ -1,9 +1,9 @@
 <map id="openage::gui::GuiGameSpecImageProviderImpl::overwrite_texture_handle" name="openage::gui::GuiGameSpecImageProviderImpl::overwrite_texture_handle">
 <area shape="rect" id="node1" title=" " alt="" coords="5,65,195,121"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" title=" " alt="" coords="266,35,409,76"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" title="The sourceSize property of the Image QML element ends up here for checking." alt="" coords="266,35,409,76"/>
 <area shape="rect" id="node7" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a28738ee06bd6ef675a723b0db02433c2" title=" " alt="" coords="243,101,432,157"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1gui.xhtml#a4f415900a4d4e55b09b0be3c2ba60d54" title=" " alt="" coords="480,42,648,69"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title=" " alt="" coords="715,5,863,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title="Get the subtexture coordinates by its id." alt="" coords="715,5,863,47"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1gui.xhtml#af717f0e1527d227ea7c4a8e9f34e87b8" title=" " alt="" coords="696,71,883,98"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_texture.xhtml#a4548b2bc3eb5310a97deee94ab536035" title=" " alt="" coords="931,64,1079,105"/>
 </map>

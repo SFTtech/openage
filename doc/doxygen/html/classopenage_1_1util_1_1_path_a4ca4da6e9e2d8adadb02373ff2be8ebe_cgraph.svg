@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 266,-84 266,4 -4,4"/>
 <!-- Node168 -->
 <g id="node1" class="node"><title>Node168</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Resolve the native path by flattening all underlying filesystem objects (like unions).">
 <polygon fill="#bfbfbf" stroke="black" points="0,-24.5 0,-54.5 107,-54.5 107,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <text text-anchor="middle" x="53.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::resolve_native_path</text>

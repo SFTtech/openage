@@ -234,7 +234,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory.xhtml#a253b1ff3205942dcc69e2fd8dc14f6eb">openage.util.fslike.directory.CaseIgnoringDirectory</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="directory_8py_source.xhtml#l00025">25</a> of file <a class="el" href="directory_8py_source.xhtml">directory.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            path = <a class="code" href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">bytes</a>(path_)</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">elif</span> isinstance(path_, str):</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            path = path_.encode()</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">elif</span> isinstance(path_, bytes):</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            path = path_</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;incompatible type for path: %s&quot;</span> % type(path_))</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> os.path.isdir(path):</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">if</span> create_if_missing:</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                os.makedirs(path)</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">else</span>:</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordflow">raise</span> FileNotFoundError(path)</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        self.path = path</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">def </span>__repr__(self):</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;Directory({})&quot;</span>.format(self.path.decode(errors=<span class="stringliteral">&#39;replace&#39;</span>))</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a5108334e805e942718d59b97160775d1"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">openage::py::bytes</a></div><div class="ttdeci">Obj bytes(const std::string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00338">pyobject.cpp:338</a></div></div>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            path = <a class="code" href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">bytes</a>(path_)</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">elif</span> isinstance(path_, str):</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            path = path_.encode()</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">elif</span> isinstance(path_, bytes):</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            path = path_</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;incompatible type for path: %s&quot;</span> % type(path_))</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> os.path.isdir(path):</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">if</span> create_if_missing:</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                os.makedirs(path)</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">else</span>:</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordflow">raise</span> FileNotFoundError(path)</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        self.path = path</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">def </span>__repr__(self):</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;Directory({})&quot;</span>.format(self.path.decode(errors=<span class="stringliteral">&#39;replace&#39;</span>))</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a5108334e805e942718d59b97160775d1"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">openage::py::bytes</a></div><div class="ttdeci">Obj bytes(const std::string &amp;value)</div><div class="ttdoc">bytes(value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00338">pyobject.cpp:338</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00338">openage::py.bytes()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -242,7 +242,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a0aba1574a0d51aa0b8d4bd14f1174177_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a0aba1574a0d51aa0b8d4bd14f1174177_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -308,7 +309,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a4ac25f156e1e61aaf181aeac4a8ed536_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a4ac25f156e1e61aaf181aeac4a8ed536_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -342,7 +344,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a7f9d7aa25e089cfea369bdd7d9683a57">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="directory_8py_source.xhtml#l00065">65</a> of file <a class="el" href="directory_8py_source.xhtml">directory.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">def </span><a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>(self, parts):</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment"># TODO migrate to scandir, once we&#39;re on py 3.5.</span></div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a58cbca251b8e2118e0a6b9b0b78a7b32"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">openage::py::list</a></div><div class="ttdeci">Obj list()</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00359">pyobject.cpp:359</a></div></div>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">def </span><a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>(self, parts):</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment"># TODO migrate to scandir, once we&#39;re on py 3.5.</span></div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a58cbca251b8e2118e0a6b9b0b78a7b32"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">openage::py::list</a></div><div class="ttdeci">Obj list()</div><div class="ttdoc">list()</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00359">pyobject.cpp:359</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="directory_8py_source.xhtml#l00047">openage.util.fslike.directory.Directory.resolve()</a>, and <a class="el" href="directory_8cpp_source.xhtml#l00059">openage::util::fslike::Directory.resolve()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -350,7 +352,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a4b6007750c576514ea97305cd10299b1_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a4b6007750c576514ea97305cd10299b1_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -384,7 +387,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a336d8d1597189253f24703641c7fd436">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="directory_8py_source.xhtml#l00099">99</a> of file <a class="el" href="directory_8py_source.xhtml">directory.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">def </span>writable(self, parts):</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        parts = <a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>(parts)</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a58cbca251b8e2118e0a6b9b0b78a7b32"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">openage::py::list</a></div><div class="ttdeci">Obj list()</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00359">pyobject.cpp:359</a></div></div>
+<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">def </span>writable(self, parts):</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        parts = <a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>(parts)</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a58cbca251b8e2118e0a6b9b0b78a7b32"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">openage::py::list</a></div><div class="ttdeci">Obj list()</div><div class="ttdoc">list()</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00359">pyobject.cpp:359</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="directory_8py_source.xhtml#l00047">openage.util.fslike.directory.Directory.resolve()</a>, and <a class="el" href="directory_8cpp_source.xhtml#l00059">openage::util::fslike::Directory.resolve()</a>.</p>
 
@@ -394,7 +397,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a2cd6e092ef3d99243d60ba7d05ff10c5_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a2cd6e092ef3d99243d60ba7d05ff10c5_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -442,7 +446,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_aaf5c2b924c92a941b7a0bb5044bad272_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_aaf5c2b924c92a941b7a0bb5044bad272_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -489,7 +494,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a25898fdc286da3d08b1a8010c96fca6b_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a25898fdc286da3d08b1a8010c96fca6b_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -539,7 +545,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_afcf06147cea96c5b86d105ec9c02af92_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_afcf06147cea96c5b86d105ec9c02af92_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -580,7 +587,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_ad8d226499167ea30f6e47638ea498987_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_ad8d226499167ea30f6e47638ea498987_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -623,7 +631,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_adc68385f8c0a0bb2e2bef0f10436574d_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_adc68385f8c0a0bb2e2bef0f10436574d_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -666,7 +675,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_ad6e7f48b2d5c8f010c9c1088e6341559_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_ad6e7f48b2d5c8f010c9c1088e6341559_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -709,7 +719,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a3dfe1315b1f3db58f58c0bcd5febe499_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a3dfe1315b1f3db58f58c0bcd5febe499_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -752,7 +763,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a250151bde89bbed4e41d7d203bc10fc4_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a250151bde89bbed4e41d7d203bc10fc4_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -795,7 +807,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a99e770abe2bcbff7b472b348de2bf67c_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a99e770abe2bcbff7b472b348de2bf67c_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -866,7 +879,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-17-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a3d1559d9fd9d3b3d7b8802b35865b734_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a3d1559d9fd9d3b3d7b8802b35865b734_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -956,7 +970,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-19-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-19-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a26b80b14c729ade6d012864fc94423d7_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a26b80b14c729ade6d012864fc94423d7_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-20-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -1006,7 +1021,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-21-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-21-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_aad6df15589e4b45b0b4ff322c5ae49a2_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_aad6df15589e4b45b0b4ff322c5ae49a2_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1051,7 +1067,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-22-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-22-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a31bd13c783048d9480ee5c3cb1e7687b_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a31bd13c783048d9480ee5c3cb1e7687b_cgraph.svg" width="427" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-23-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -1137,7 +1154,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-24-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-24-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a593147786283242dd86370ad6f97e068_cgraph.svg" width="659" height="131"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_a593147786283242dd86370ad6f97e068_cgraph.svg" width="659" height="131"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

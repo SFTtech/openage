@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-155.213 591,-155.213 591,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Does what the description of Renderable specifies &#45; updates the uniform values and draws the Geometry...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-49.5 0,-90.5 128,-90.5 128,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlShaderProgram</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry.xhtml#a99c9999b09c6cf8916a8f8bc82dcdee5" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry.xhtml#a99c9999b09c6cf8916a8f8bc82dcdee5" target="_top" xlink:title="Executes a draw command for the geometry on the currently active context.">
 <polygon fill="white" stroke="black" points="174,-99 174,-129 304,-129 304,-99 174,-99"/>
 <text text-anchor="start" x="182" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="239" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlGeometry::draw</text>

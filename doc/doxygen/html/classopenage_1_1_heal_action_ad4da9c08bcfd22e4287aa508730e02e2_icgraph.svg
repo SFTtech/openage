@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 421,-133 421,4 -4,4"/>
 <!-- Node22 -->
 <g id="node1" class="node"><title>Node22</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="debug string to identify action types">
 <polygon fill="#bfbfbf" stroke="black" points="310,-49.5 310,-79.5 417,-79.5 417,-49.5 310,-49.5"/>
 <text text-anchor="start" x="318" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HealAction</text>
 <text text-anchor="middle" x="363.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>

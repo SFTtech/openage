@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-122.5 501,-122.5 501,4 -4,4"/>
 <!-- Node48 -->
 <g id="node1" class="node"><title>Node48</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Updates resource based sub&#45;scores.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-39 0,-69 120,-69 120,-39 0,-39"/>
 <text text-anchor="start" x="8" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score::update</text>
 <text text-anchor="middle" x="60" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_resources</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node51 -->
 <g id="node4" class="node"><title>Node51</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title="Returns the sum of all the resources.">
 <polygon fill="white" stroke="black" points="156,-0.5 156,-19.5 311,-19.5 311,-0.5 156,-0.5"/>
 <text text-anchor="middle" x="233.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle::sum</text>
 </a>

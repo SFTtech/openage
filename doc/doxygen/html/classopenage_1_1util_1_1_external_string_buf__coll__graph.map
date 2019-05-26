@@ -1,4 +1,4 @@
 <map id="openage::util::ExternalStringBuf" name="openage::util::ExternalStringBuf">
-<area shape="rect" id="node1" title=" " alt="" coords="5,131,211,223"/>
+<area shape="rect" id="node1" title="Used by ExternalOStringStream; data is written to the external accumulator." alt="" coords="5,131,211,223"/>
 <area shape="rect" id="node2" title=" " alt="" coords="55,5,161,83"/>
 </map>

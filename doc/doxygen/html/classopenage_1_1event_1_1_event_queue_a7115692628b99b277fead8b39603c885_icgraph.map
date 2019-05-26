@@ -1,4 +1,4 @@
 <map id="openage::event::EventQueue::add_change" name="openage::event::EventQueue::add_change">
-<area shape="rect" id="node1" title=" " alt="" coords="199,5,385,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_loop.xhtml#adde017808ad3b24a4a95c6cad4fcd2db" title=" " alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node1" title="An event target has changed, and the event shall be retriggered." alt="" coords="199,5,385,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_loop.xhtml#adde017808ad3b24a4a95c6cad4fcd2db" title="Register that a given event must be reevaluated at a time, this usually happens because this event de..." alt="" coords="5,5,151,47"/>
 </map>

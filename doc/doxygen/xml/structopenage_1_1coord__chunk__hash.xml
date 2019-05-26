@@ -23,9 +23,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>hashing for chunk coordinates. </para>
     </briefdescription>
     <detaileddescription>
-<para>hashing for chunk coordinates.</para>
 <para>this allows storage of chunk coords as keys in an unordered map. </para>
     </detaileddescription>
     <collaborationgraph>

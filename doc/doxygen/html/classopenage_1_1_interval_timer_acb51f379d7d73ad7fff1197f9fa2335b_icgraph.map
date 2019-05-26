@@ -1,8 +1,8 @@
 <map id="openage::IntervalTimer::update" name="openage::IntervalTimer::update">
 <area shape="rect" id="node1" title=" " alt="" coords="224,136,375,177"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_train_action.xhtml#af5515a9c445b00f4dd69348e7177c94c" title=" " alt="" coords="19,5,163,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_research_action.xhtml#a79f88ea810c2112e5f79a4749c3ef872" title=" " alt="" coords="5,71,176,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_repair_action.xhtml#ae093970227ea03a75f1ee278770640f0" title=" " alt="" coords="14,136,167,177"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" title=" " alt="" coords="13,201,168,243"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_heal_action.xhtml#a95b9324fe05d86e7528f3a5334b6fc7c" title=" " alt="" coords="19,267,162,308"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_train_action.xhtml#af5515a9c445b00f4dd69348e7177c94c" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="19,5,163,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_research_action.xhtml#a79f88ea810c2112e5f79a4749c3ef872" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="5,71,176,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_repair_action.xhtml#ae093970227ea03a75f1ee278770640f0" title="Control units action when in range of the target." alt="" coords="14,136,167,177"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" title="Control units action when in range of the target." alt="" coords="13,201,168,243"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_heal_action.xhtml#a95b9324fe05d86e7528f3a5334b6fc7c" title="Control units action when in range of the target." alt="" coords="19,267,162,308"/>
 </map>

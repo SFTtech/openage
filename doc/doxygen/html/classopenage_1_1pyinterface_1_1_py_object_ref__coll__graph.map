@@ -1,3 +1,3 @@
 <map id="openage::pyinterface::PyObjectRef" name="openage::pyinterface::PyObjectRef">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,148,273"/>
+<area shape="rect" id="node1" title="Holds a Python object, as a PyObject * pointer." alt="" coords="5,5,148,273"/>
 </map>

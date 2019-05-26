@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-1180 585.5,-1180 585.5,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Audio data that is loaded dynamically when used.">
 <polygon fill="#bfbfbf" stroke="black" points="208.5,-0.5 208.5,-222.5 376.5,-222.5 376.5,-0.5 208.5,-0.5"/>
 <text text-anchor="middle" x="292.5" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicResource</text>
 <polyline fill="none" stroke="black" points="208.5,-203.5 376.5,-203.5 "/>
@@ -84,7 +84,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_resource.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_resource.xhtml" target="_top" xlink:title="A Resource contains 16 bit signed integer pcm data, that can be played by sounds.">
 <polygon fill="white" stroke="black" points="14.5,-270.5 14.5,-459.5 144.5,-459.5 144.5,-270.5 14.5,-270.5"/>
 <text text-anchor="middle" x="79.5" y="-447.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Resource</text>
 <polyline fill="none" stroke="black" points="14.5,-440.5 144.5,-440.5 "/>
@@ -113,7 +113,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml" target="_top" xlink:title="This class provides audio functionality for openage.">
 <polygon fill="white" stroke="black" points="0,-529.5 0,-828.5 151,-828.5 151,-529.5 0,-529.5"/>
 <text text-anchor="middle" x="75.5" y="-816.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <polyline fill="none" stroke="black" points="0,-809.5 151,-809.5 "/>
@@ -153,7 +153,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title="A job manager can be used to execute functions within separate worker threads.">
 <polygon fill="white" stroke="black" points="92,-876.5 92,-1175.5 223,-1175.5 223,-876.5 92,-876.5"/>
 <text text-anchor="middle" x="157.5" y="-1163.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <polyline fill="none" stroke="black" points="92,-1156.5 223,-1156.5 "/>
@@ -193,7 +193,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node10 -->
 <g id="node9" class="node"><title>Node10</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml" target="_top" xlink:title="A worker encapsulates the execution of multiple jobs in a single background thread.">
 <polygon fill="white" stroke="black" points="169.5,-584.5 169.5,-773.5 281.5,-773.5 281.5,-584.5 169.5,-584.5"/>
 <text text-anchor="middle" x="225.5" y="-761.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <polyline fill="none" stroke="black" points="169.5,-754.5 281.5,-754.5 "/>
@@ -223,7 +223,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node5" class="node"><title>Node6</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title="C++ pendant to the python util.fslike.path.Path.">
 <polygon fill="white" stroke="black" points="302.5,-270.5 302.5,-459.5 400.5,-459.5 400.5,-270.5 302.5,-270.5"/>
 <text text-anchor="middle" x="351.5" y="-447.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <polyline fill="none" stroke="black" points="302.5,-440.5 400.5,-440.5 "/>
@@ -281,7 +281,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node8 -->
 <g id="node7" class="node"><title>Node8</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml" target="_top" xlink:title="A threadsafe queue.">
 <polygon fill="white" stroke="black" points="418.5,-606.5 418.5,-751.5 540.5,-751.5 540.5,-606.5 418.5,-606.5"/>
 <text text-anchor="start" x="426.5" y="-739.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="479.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConcurrentQueue&lt; T &gt;</text>
@@ -309,7 +309,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node9 -->
 <g id="node8" class="node"><title>Node9</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1job_1_1_job_group.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1job_1_1_job_group.xhtml" target="_top" xlink:title="A job group is a proxy object that forwards job&#39;s to a single worker thread.">
 <polygon fill="white" stroke="black" points="165,-320 165,-410 284,-410 284,-320 165,-320"/>
 <text text-anchor="middle" x="224.5" y="-398" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobGroup</text>
 <polyline fill="none" stroke="black" points="165,-391 284,-391 "/>

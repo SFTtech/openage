@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-216 133,-216 133,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A timely ordered list with several management functions.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-211.5 129,-211.5 129,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="64.5" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container&lt; T &gt;</text>

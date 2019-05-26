@@ -1,10 +1,10 @@
 <map id="openage::input::InputManager::trigger" name="openage::input::InputManager::trigger">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,199,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461" title=" " alt="" coords="249,5,437,47"/>
-<area shape="rect" id="node6" href="$classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" title=" " alt="" coords="247,71,440,112"/>
-<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" title=" " alt="" coords="729,68,908,109"/>
+<area shape="rect" id="node1" title="manages the pressing of an input event (key, mouse, ...)." alt="" coords="5,39,199,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461" title="lookup an action." alt="" coords="249,5,437,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" title="true if the given event type is being ignored" alt="" coords="247,71,440,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" title="classes ordered with most specific first" alt="" coords="729,68,908,109"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="956,75,1149,102"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="1197,75,1324,102"/>
-<area shape="rect" id="node7" href="$classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" title=" " alt="" coords="488,64,681,105"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="1197,75,1324,102"/>
+<area shape="rect" id="node7" href="$classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" title="Returns the context on top." alt="" coords="488,64,681,105"/>
 <area shape="rect" id="node8" href="$classopenage_1_1input_1_1_class_code.xhtml#a164160fc35b66ea9f4bf6ba5211c48e5" title=" " alt="" coords="495,129,674,171"/>
 </map>

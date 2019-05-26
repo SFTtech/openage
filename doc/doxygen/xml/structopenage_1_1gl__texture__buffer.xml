@@ -97,9 +97,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>enables transfer of data to opengl </para>
     </briefdescription>
     <detaileddescription>
-<para>enables transfer of data to opengl </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="2796">

@@ -204,7 +204,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="39" bodyend="70"/>
-        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+        <references refid="namespaceopenage_1_1util_1a9556b8562574e2c6ad102d8fd87569c6" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
         <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a5223d2c9c8019307e1c81e31b9b5124e" compoundref="colortable_8py" startline="28" endline="35">openage.convert.colortable.ColorTable.__init__</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1ac83e6de3e8c5efa26a91c9355799e002" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -338,7 +338,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="146" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="146" bodyend="148"/>
         <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a117e184527bb7a1a371a8c53bf7f61ff" compoundref="colortable_8py" startline="86" endline="145">openage.convert.colortable.ColorTable.gen_image</references>
-        <references refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</references>
+        <references refid="namespaceopenage_1_1gameio_1afc1134c3c633c8bddb614ecb3da48eb2" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae898e30caff083194c651a9ad9938db3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>

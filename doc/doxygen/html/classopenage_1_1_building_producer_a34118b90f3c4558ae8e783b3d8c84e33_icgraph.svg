@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 447,-133 447,4 -4,4"/>
 <!-- Node55 -->
 <g id="node1" class="node"><title>Node55</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="gets the name of the unit type being produced">
 <polygon fill="#bfbfbf" stroke="black" points="310,-49.5 310,-79.5 443,-79.5 443,-49.5 310,-49.5"/>
 <text text-anchor="start" x="318" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <text text-anchor="middle" x="376.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>

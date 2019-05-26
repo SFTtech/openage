@@ -33,7 +33,7 @@ var searchData=
   ['dict',['dict',['../namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9',1,'openage::py']]],
   ['digest',['digest',['../classopenage_1_1util_1_1_siphash.xhtml#a59bdccc7e794fe057e4777031a177650',1,'openage::util::Siphash::digest(const uint8_t *data, size_t len_data)'],['../classopenage_1_1util_1_1_siphash.xhtml#a0cb5db9ffca1f96885bc53e2f5c0c65d',1,'openage::util::Siphash::digest(const uint64_t)']]],
   ['dir',['dir',['../classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a9a0172d320ad1f5f696dfe04d35570d5',1,'openage::pyinterface::PyObjectRef']]],
-  ['dir_5fgroup',['dir_group',['../namespaceopenage.xhtml#af8871290d3c97a11b6761d12827ab9e3',1,'openage']]],
+  ['dir_5fgroup',['dir_group',['../namespaceopenage.xhtml#ad019d95177e6ab646a2d239e4ec3daa7',1,'openage']]],
   ['directory',['Directory',['../classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a2bef103b4ee6cf8dda2c55ada35ae060',1,'openage::util::fslike::Directory']]],
   ['dirname',['dirname',['../namespaceopenage_1_1util.xhtml#a954be5116f7af5633dbbc50bac26b0a8',1,'openage::util']]],
   ['disable',['disable',['../classopenage_1_1util_1_1profiler_1_1_profiler.xhtml#a088f6572280b95451dd31a44fa3c6054',1,'openage::util::profiler::Profiler']]],

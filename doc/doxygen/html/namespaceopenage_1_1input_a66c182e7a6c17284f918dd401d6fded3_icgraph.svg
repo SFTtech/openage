@@ -19,7 +19,7 @@
 </g>
 <!-- Node53 -->
 <g id="node2" class="node"><title>Node53</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title="When a SDL event happens, this is called.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 145,-79.5 145,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_input</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node54 -->
 <g id="node3" class="node"><title>Node54</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title="register this console to the engine.">
 <polygon fill="white" stroke="black" points="5.5,-0.5 5.5,-30.5 139.5,-30.5 139.5,-0.5 5.5,-0.5"/>
 <text text-anchor="start" x="13.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="72.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to_engine</text>

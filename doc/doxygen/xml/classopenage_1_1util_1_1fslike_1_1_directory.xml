@@ -153,7 +153,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/directory.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/directory.cpp" bodystart="148" bodyend="182"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac5f0417c9e573584edfedfe386f05c2f" compoundref="directory_8h" startline="60">basepath</references>
         <references refid="namespaceopenage_1_1util_1_1fslike_1a670007c84e8b0cf3c4f0dfd74e0f6399" compoundref="fslike_2native_8h" startline="13">openage::util::fslike::PATHSEP</references>
-        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+        <references refid="namespaceopenage_1_1util_1a9556b8562574e2c6ad102d8fd87569c6" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
         <references refid="namespaceopenage_1_1util_1af88424f642ef1ba4e6b2eb1c05ad8e3c" compoundref="misc_8h" startline="239" endline="242">openage::util::vector_extend</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator_1a28d7d207993972a0b61bf2abef7c8417" compoundref="wrapper_8py" startline="214" endline="217">openage.util.fslike.wrapper.DirectoryCreator.open_w</referencedby>
       </memberdef>
@@ -430,9 +430,10 @@
           <declname>parts</declname>
         </param>
         <briefdescription>
+<para>resolve the path to an actually usable one. </para>
         </briefdescription>
         <detaileddescription>
-<para>resolve the path to an actually usable one. basically basepath + &quot;/&quot;.join(parts) </para>
+<para>basically basepath + &quot;/&quot;.join(parts) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -495,9 +496,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Filesystem-like object which uses native libc calls. </para>
     </briefdescription>
     <detaileddescription>
-<para>Filesystem-like object which uses native libc calls. It is used to directly access your real filesystem that the kernel mounted for you. </para>
+<para>It is used to directly access your real filesystem that the kernel mounted for you. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="5841">

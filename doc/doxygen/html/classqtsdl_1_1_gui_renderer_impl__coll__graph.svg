@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-508 235.5,-508 235.5,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Passes the native graphic context to Qt.">
 <polygon fill="#bfbfbf" stroke="black" points="19.5,-0.5 19.5,-332.5 157.5,-332.5 157.5,-0.5 19.5,-0.5"/>
 <text text-anchor="middle" x="88.5" y="-320.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRendererImpl</text>
 <polyline fill="none" stroke="black" points="19.5,-313.5 157.5,-313.5 "/>
@@ -111,7 +111,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_rendering_setup_routines.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_rendering_setup_routines.xhtml" target="_top" xlink:title="Returns a GL context usable by Qt classes.">
 <polygon fill="white" stroke="black" points="71.5,-391.5 71.5,-503.5 231.5,-503.5 231.5,-391.5 71.5,-391.5"/>
 <text text-anchor="start" x="79.5" y="-491.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRenderingSetup</text>
 <text text-anchor="middle" x="151.5" y="-480.5" font-family="Helvetica,sans-Serif" font-size="10.00">Routines</text>

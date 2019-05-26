@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-627 322.5,-627 322.5,4 -4,4"/>
 <!-- Node16 -->
 <g id="node1" class="node"><title>Node16</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads.">
 <polygon fill="#bfbfbf" stroke="black" points="117.5,-0.5 117.5,-57.5 218.5,-57.5 218.5,-0.5 117.5,-0.5"/>
 <text text-anchor="middle" x="168" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItem&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="117.5,-38.5 218.5,-38.5 "/>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node19 -->
 <g id="node4" class="node"><title>Node19</title>
-<g id="a_node4"><a xlink:href="classqtsdl_1_1_persistent_core_holder_base.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classqtsdl_1_1_persistent_core_holder_base.xhtml" target="_top" xlink:title="Helper to hide the type of the core.">
 <polygon fill="white" stroke="black" points="6,-554.5 6,-622.5 164,-622.5 164,-554.5 6,-554.5"/>
 <text text-anchor="middle" x="85" y="-610.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::PersistentCoreHolderBase</text>
 <polyline fill="none" stroke="black" points="6,-603.5 164,-603.5 "/>
@@ -173,7 +173,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node22 -->
 <g id="node7" class="node"><title>Node22</title>
-<g id="a_node7"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="white" stroke="black" points="165,-244.5 165,-378.5 303,-378.5 303,-244.5 165,-244.5"/>
 <text text-anchor="middle" x="234" y="-366.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="165,-359.5 303,-359.5 "/>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-647 479,-647 479,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Wraps an output string stream, and provides all sorts of overloads for operator &lt;&lt;,...">
 <polygon fill="#bfbfbf" stroke="black" points="165,-442.5 165,-642.5 311,-642.5 311,-442.5 165,-442.5"/>
 <text text-anchor="start" x="173" y="-630.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="238" y="-619.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; ChildType &gt;</text>
@@ -129,7 +129,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1log_1_1_message_builder.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1log_1_1_message_builder.xhtml" target="_top" xlink:title="Wrapper around a log message that allows appending to the message with operator &lt;&lt;.">
 <polygon fill="white" stroke="black" points="0,-33.5 0,-123.5 148,-123.5 148,-33.5 0,-33.5"/>
 <text text-anchor="middle" x="74" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::MessageBuilder</text>
 <polyline fill="none" stroke="black" points="0,-104.5 148,-104.5 "/>
@@ -149,7 +149,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_f_string.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_f_string.xhtml" target="_top" xlink:title="A self&#45;formatting string! Get yours today!">
 <polygon fill="white" stroke="black" points="176.5,-0.5 176.5,-156.5 299.5,-156.5 299.5,-0.5 176.5,-0.5"/>
 <text text-anchor="middle" x="238" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FString</text>
 <polyline fill="none" stroke="black" points="176.5,-137.5 299.5,-137.5 "/>
@@ -175,7 +175,7 @@
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_formatter.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_formatter.xhtml" target="_top" xlink:title="Allows simple direct usage of StringFormatter.">
 <polygon fill="white" stroke="black" points="342,-50 342,-107 462,-107 462,-50 342,-50"/>
 <text text-anchor="middle" x="402" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Formatter</text>
 <polyline fill="none" stroke="black" points="342,-88 462,-88 "/>

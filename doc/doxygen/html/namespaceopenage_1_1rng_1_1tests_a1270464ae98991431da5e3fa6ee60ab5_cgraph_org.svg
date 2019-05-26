@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-182 548,-182 548,4 -4,4"/>
 <!-- Node43 -->
 <g id="node1" class="node"><title>Node43</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Tests the distribution of the floating point numbers.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-73.5 0,-103.5 101,-103.5 101,-73.5 0,-73.5"/>
 <text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="50.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::real_dist</text>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node45 -->
 <g id="node3" class="node"><title>Node45</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="298.5,-147.5 298.5,-177.5 423.5,-177.5 423.5,-147.5 298.5,-147.5"/>
 <text text-anchor="start" x="306.5" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="361" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node46 -->
 <g id="node4" class="node"><title>Node46</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="298.5,-98.5 298.5,-128.5 423.5,-128.5 423.5,-98.5 298.5,-98.5"/>
 <text text-anchor="start" x="306.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="361" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node48 -->
 <g id="node6" class="node"><title>Node48</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title="returns the number of nanoseconds since the UNIX epoch.">
 <polygon fill="white" stroke="black" points="308.5,-49.5 308.5,-79.5 413.5,-79.5 413.5,-49.5 308.5,-49.5"/>
 <text text-anchor="start" x="316.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="361" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_real_time</text>

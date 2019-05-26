@@ -1,4 +1,4 @@
 <map id="openage::Player::get_units_have" name="openage::Player::get_units_have">
-<area shape="rect" id="node1" title=" " alt="" coords="237,5,380,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" title=" " alt="" coords="5,13,189,39"/>
+<area shape="rect" id="node1" title="Get the number of units the player has for each unit type id." alt="" coords="237,5,380,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" title="Check if the player can make a new unit of the given type." alt="" coords="5,13,189,39"/>
 </map>

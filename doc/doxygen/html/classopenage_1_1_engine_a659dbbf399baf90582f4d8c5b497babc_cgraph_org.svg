@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 583,-84 583,4 -4,4"/>
 <!-- Node6 -->
 <g id="node1" class="node"><title>Node6</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="engine destructor, cleans up memory etc.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-30 0,-49 131,-49 131,-30 0,-30"/>
 <text text-anchor="middle" x="65.5" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::~Engine</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a68f01b02f0824fe2e41e508a75946793" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a68f01b02f0824fe2e41e508a75946793" target="_top" xlink:title="unregisters all remaining components">
 <polygon fill="white" stroke="black" points="167,-24.5 167,-54.5 275,-54.5 275,-24.5 167,-24.5"/>
 <text text-anchor="start" x="175" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="221" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister_all</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node8 -->
 <g id="node3" class="node"><title>Node8</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a93cf3b3b79fc2f3be34a2e1b095198a6" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a93cf3b3b79fc2f3be34a2e1b095198a6" target="_top" xlink:title="returns a vector of registered component names">
 <polygon fill="white" stroke="black" points="311,-49.5 311,-79.5 435,-79.5 435,-49.5 311,-49.5"/>
 <text text-anchor="start" x="319" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="373" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::registered_components</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node9 -->
 <g id="node4" class="node"><title>Node9</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aa2cd0e4084f70dec7bff926afbc7e0de" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aa2cd0e4084f70dec7bff926afbc7e0de" target="_top" xlink:title="unregisters an individual component">
 <polygon fill="white" stroke="black" points="313.5,-0.5 313.5,-30.5 432.5,-30.5 432.5,-0.5 313.5,-0.5"/>
 <text text-anchor="start" x="321.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="373" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister_component</text>

@@ -96,20 +96,25 @@ $(document).ready(function(){initNavTree('classqtsdl_1_1_persistent_core_holder_
 </div><!--header-->
 <div class="contents">
 
+<p>Helper to hide the type of the core.  
+ <a href="classqtsdl_1_1_persistent_core_holder_base.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for qtsdl::PersistentCoreHolderBase:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_persistent_core_holder_base__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_persistent_core_holder_base__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for qtsdl::PersistentCoreHolderBase:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_persistent_core_holder_base__coll__graph.svg" width="222" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_persistent_core_holder_base__coll__graph.svg" width="222" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -117,6 +122,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a589b08c027d9b78aabb97972f6e95557"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqtsdl_1_1_persistent_core_holder_base.xhtml#a589b08c027d9b78aabb97972f6e95557">~PersistentCoreHolderBase</a> ()</td></tr>
 <tr class="separator:a589b08c027d9b78aabb97972f6e95557"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9325679eda318e5ea9cfa3700fae428a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqtsdl_1_1_persistent_core_holder_base.xhtml#a9325679eda318e5ea9cfa3700fae428a">adopt_shell</a> (<a class="el" href="classqtsdl_1_1_gui_item_link.xhtml">GuiItemLink</a> *link)=0</td></tr>
+<tr class="memdesc:a9325679eda318e5ea9cfa3700fae428a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establish link from the core to the shell.  <a href="#a9325679eda318e5ea9cfa3700fae428a">More...</a><br /></td></tr>
 <tr class="separator:a9325679eda318e5ea9cfa3700fae428a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -175,7 +181,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Establish link from the core to the shell. Core must have a public 'gui::GuiItemLink *gui_link` member. </p>
+
+<p>Establish link from the core to the shell. </p>
+<p>Core must have a public 'gui::GuiItemLink *gui_link` member. </p>
 
 <p>Implemented in <a class="el" href="classqtsdl_1_1_persistent_core_holder.xhtml#a0c0dd7fa44ec292a103049f5fd74fd56">qtsdl::PersistentCoreHolder&lt; T &gt;</a>, <a class="el" href="classqtsdl_1_1_persistent_core_holder.xhtml#a0c0dd7fa44ec292a103049f5fd74fd56">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameMainLink &gt;::Type &gt;</a>, <a class="el" href="classqtsdl_1_1_persistent_core_holder.xhtml#a0c0dd7fa44ec292a103049f5fd74fd56">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; AssetManagerLink &gt;::Type &gt;</a>, <a class="el" href="classqtsdl_1_1_persistent_core_holder.xhtml#a0c0dd7fa44ec292a103049f5fd74fd56">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameControlLink &gt;::Type &gt;</a>, <a class="el" href="classqtsdl_1_1_persistent_core_holder.xhtml#a0c0dd7fa44ec292a103049f5fd74fd56">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GeneratorLink &gt;::Type &gt;</a>, <a class="el" href="classqtsdl_1_1_persistent_core_holder.xhtml#a0c0dd7fa44ec292a103049f5fd74fd56">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameSpecLink &gt;::Type &gt;</a>, <a class="el" href="classqtsdl_1_1_persistent_core_holder.xhtml#a0c0dd7fa44ec292a103049f5fd74fd56">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</a>, and <a class="el" href="classqtsdl_1_1_persistent_core_holder.xhtml#a0c0dd7fa44ec292a103049f5fd74fd56">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; OutputModeLink &gt;::Type &gt;</a>.</p>
 

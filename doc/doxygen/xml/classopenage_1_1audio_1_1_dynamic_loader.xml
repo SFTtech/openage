@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>path</name>
         <briefdescription>
+<para>the resource&apos;s location in the filesystem </para>
         </briefdescription>
         <detaileddescription>
-<para>the resource&apos;s location in the filesystem </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -41,9 +41,10 @@
           <declname>path</declname>
         </param>
         <briefdescription>
+<para>Initializes a new <ref refid="classopenage_1_1audio_1_1_dynamic_loader" kindref="compound">DynamicLoader</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes a new <ref refid="classopenage_1_1audio_1_1_dynamic_loader" kindref="compound">DynamicLoader</ref>. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>path</parametername>
 </parameternamelist>
@@ -91,9 +92,10 @@
           <declname>chunk_size</declname>
         </param>
         <briefdescription>
+<para>Loads a chunk of stereo pcm data from the resource. </para>
         </briefdescription>
         <detaileddescription>
-<para>Loads a chunk of stereo pcm data from the resource. The chunk of data begins at the given offset from the beginning of the resource. The actual read number of int16_t values is returned. <xrefsect id="todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>Returns zero if the end of resource is reached.</para>
+<para>The chunk of data begins at the given offset from the beginning of the resource. The actual read number of int16_t values is returned. <xrefsect id="todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>Returns zero if the end of resource is reached.</para>
 </xrefdescription></xrefsect></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -142,9 +144,10 @@
           <declname>format</declname>
         </param>
         <briefdescription>
+<para>Creates a <ref refid="classopenage_1_1audio_1_1_dynamic_loader" kindref="compound">DynamicLoader</ref> instance that supports the given format. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a <ref refid="classopenage_1_1audio_1_1_dynamic_loader" kindref="compound">DynamicLoader</ref> instance that supports the given format. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>path</parametername>
 </parameternamelist>
@@ -173,9 +176,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A <ref refid="classopenage_1_1audio_1_1_dynamic_loader" kindref="compound">DynamicLoader</ref> loads pcm chunks without loading the whole resource. </para>
     </briefdescription>
     <detaileddescription>
-<para>A <ref refid="classopenage_1_1audio_1_1_dynamic_loader" kindref="compound">DynamicLoader</ref> loads pcm chunks without loading the whole resource. A chunk is a int16_t buffer with a fixed size that contains 16 bit signed integer pcm data. </para>
+<para>A chunk is a int16_t buffer with a fixed size that contains 16 bit signed integer pcm data. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="468">

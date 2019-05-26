@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-931.301 1473,-931.301 1473,4 -4,4"/>
 <!-- Node244 -->
 <g id="node1" class="node"><title>Node244</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="starts the engine loop.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-699.801 0,-718.801 109,-718.801 109,-699.801 0,-699.801"/>
 <text text-anchor="middle" x="54.5" y="-706.801" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node245 -->
 <g id="node2" class="node"><title>Node245</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="154,-382.801 154,-401.801 267,-401.801 267,-382.801 154,-382.801"/>
 <text text-anchor="middle" x="210.5" y="-389.801" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node285 -->
 <g id="node42" class="node"><title>Node285</title>
-<g id="a_node42"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ac2cd8aa519595a5b0f50e796d5d00208" target="_top" xlink:title=" ">
+<g id="a_node42"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ac2cd8aa519595a5b0f50e796d5d00208" target="_top" xlink:title="Stop the job manager&#39;s worker threads.">
 <polygon fill="white" stroke="black" points="493,-694.301 493,-724.301 624,-724.301 624,-694.301 493,-694.301"/>
 <text text-anchor="start" x="501" y="-712.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="558.5" y="-701.301" font-family="Helvetica,sans-Serif" font-size="10.00">::stop</text>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node292 -->
 <g id="node49" class="node"><title>Node292</title>
-<g id="a_node49"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ab2bf41f6b397b1acf10665ad93425b5e" target="_top" xlink:title=" ">
+<g id="a_node49"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ab2bf41f6b397b1acf10665ad93425b5e" target="_top" xlink:title="Start the job manager&#39;s worker threads.">
 <polygon fill="white" stroke="black" points="145,-738.301 145,-768.301 276,-768.301 276,-738.301 145,-738.301"/>
 <text text-anchor="start" x="153" y="-756.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="210.5" y="-745.301" font-family="Helvetica,sans-Serif" font-size="10.00">::start</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node246 -->
 <g id="node3" class="node"><title>Node246</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#ae7f43b96e5e097cebfd9c102676cf2c8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#ae7f43b96e5e097cebfd9c102676cf2c8" target="_top" xlink:title="Draw the game version and the current FPS on screen.">
 <polygon fill="white" stroke="black" points="326.5,-801.301 326.5,-831.301 442.5,-831.301 442.5,-801.301 326.5,-801.301"/>
 <text text-anchor="start" x="334.5" y="-819.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::draw</text>
 <text text-anchor="middle" x="384.5" y="-808.301" font-family="Helvetica,sans-Serif" font-size="10.00">_debug_overlay</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node259 -->
 <g id="node16" class="node"><title>Node259</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aaf65afbb05a6aa408a7aff89e74e93dd" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aaf65afbb05a6aa408a7aff89e74e93dd" target="_top" xlink:title="sets the end point for the reference time used to compute the portions of the components.">
 <polygon fill="white" stroke="black" points="329.5,-377.301 329.5,-407.301 439.5,-407.301 439.5,-377.301 329.5,-377.301"/>
 <text text-anchor="start" x="337.5" y="-395.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="384.5" y="-384.301" font-family="Helvetica,sans-Serif" font-size="10.00">::end_frame_measure</text>
@@ -102,7 +102,7 @@
 </g>
 <!-- Node266 -->
 <g id="node23" class="node"><title>Node266</title>
-<g id="a_node23"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ae81b425a182f26b155c9f31de6b74d63" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ae81b425a182f26b155c9f31de6b74d63" target="_top" xlink:title="Executes callbacks for all job&#39;s, that were created by the current thread and have finished.">
 <polygon fill="white" stroke="black" points="319,-328.301 319,-358.301 450,-358.301 450,-328.301 319,-328.301"/>
 <text text-anchor="start" x="327" y="-346.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="384.5" y="-335.301" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_callbacks</text>
@@ -116,7 +116,7 @@
 </g>
 <!-- Node268 -->
 <g id="node25" class="node"><title>Node268</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1util_1_1_frame_counter.xhtml#a9dd54183a6ebd91c10bbc51abcb57f2d" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1util_1_1_frame_counter.xhtml#a9dd54183a6ebd91c10bbc51abcb57f2d" target="_top" xlink:title="to be called each time a frame has been completed">
 <polygon fill="white" stroke="black" points="314.5,-279.301 314.5,-309.301 454.5,-309.301 454.5,-279.301 314.5,-279.301"/>
 <text text-anchor="start" x="322.5" y="-297.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FrameCounter</text>
 <text text-anchor="middle" x="384.5" y="-286.301" font-family="Helvetica,sans-Serif" font-size="10.00">::frame</text>
@@ -130,7 +130,7 @@
 </g>
 <!-- Node273 -->
 <g id="node30" class="node"><title>Node273</title>
-<g id="a_node30"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title=" ">
+<g id="a_node30"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title="return this engine&#39;s keybind manager.">
 <polygon fill="white" stroke="black" points="330,-230.301 330,-260.301 439,-260.301 439,-230.301 330,-230.301"/>
 <text text-anchor="start" x="338" y="-248.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="384.5" y="-237.301" font-family="Helvetica,sans-Serif" font-size="10.00">_input_manager</text>
@@ -144,7 +144,7 @@
 </g>
 <!-- Node274 -->
 <g id="node31" class="node"><title>Node274</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#ad764a82c4de3f85c379ccc39c068f229" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#ad764a82c4de3f85c379ccc39c068f229" target="_top" xlink:title="reads the current timer value, in nanoseconds.">
 <polygon fill="white" stroke="black" points="507.5,-1.30088 507.5,-31.3009 609.5,-31.3009 609.5,-1.30088 507.5,-1.30088"/>
 <text text-anchor="start" x="515.5" y="-19.3009" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="558.5" y="-8.30088" font-family="Helvetica,sans-Serif" font-size="10.00">::getval</text>
@@ -158,7 +158,7 @@
 </g>
 <!-- Node275 -->
 <g id="node32" class="node"><title>Node275</title>
-<g id="a_node32"><a xlink:href="namespaceopenage_1_1util.xhtml#a72bef8f3b092e74cf890a38611b9bbc0" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="namespaceopenage_1_1util.xhtml#a72bef8f3b092e74cf890a38611b9bbc0" target="_top" xlink:title="query the current opengl context for any errors.">
 <polygon fill="white" stroke="black" points="674,-596.301 674,-626.301 791,-626.301 791,-596.301 674,-596.301"/>
 <text text-anchor="start" x="682" y="-614.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::gl_check</text>
 <text text-anchor="middle" x="732.5" y="-603.301" font-family="Helvetica,sans-Serif" font-size="10.00">_error</text>
@@ -172,7 +172,7 @@
 </g>
 <!-- Node276 -->
 <g id="node33" class="node"><title>Node276</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title="Query stored pressing stat for a key.">
 <polygon fill="white" stroke="black" points="312,-181.301 312,-211.301 457,-211.301 457,-181.301 312,-181.301"/>
 <text text-anchor="start" x="320" y="-199.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="384.5" y="-188.301" font-family="Helvetica,sans-Serif" font-size="10.00">::is_down</text>
@@ -186,7 +186,7 @@
 </g>
 <!-- Node277 -->
 <g id="node34" class="node"><title>Node277</title>
-<g id="a_node34"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aee8d9369313ee81d552ea4fe97f6165c" target="_top" xlink:title=" ">
+<g id="a_node34"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aee8d9369313ee81d552ea4fe97f6165c" target="_top" xlink:title="Query whether cursor is at edgo of screen.">
 <polygon fill="white" stroke="black" points="312,-132.301 312,-162.301 457,-162.301 457,-132.301 312,-132.301"/>
 <text text-anchor="start" x="320" y="-150.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="384.5" y="-139.301" font-family="Helvetica,sans-Serif" font-size="10.00">::is_mouse_at_edge</text>
@@ -200,7 +200,7 @@
 </g>
 <!-- Node278 -->
 <g id="node35" class="node"><title>Node278</title>
-<g id="a_node35"><a xlink:href="classopenage_1_1_engine.xhtml#a9315ef7e9b79a311f67421640f1b43c4" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classopenage_1_1_engine.xhtml#a9315ef7e9b79a311f67421640f1b43c4" target="_top" xlink:title="return the number of nanoseconds that have passed for rendering the last frame.">
 <polygon fill="white" stroke="black" points="317,-83.3009 317,-113.301 452,-113.301 452,-83.3009 317,-83.3009"/>
 <text text-anchor="start" x="325" y="-101.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::lastframe</text>
 <text text-anchor="middle" x="384.5" y="-90.3009" font-family="Helvetica,sans-Serif" font-size="10.00">_duration_nsec</text>
@@ -214,7 +214,7 @@
 </g>
 <!-- Node279 -->
 <g id="node36" class="node"><title>Node279</title>
-<g id="a_node36"><a xlink:href="classopenage_1_1_engine.xhtml#a33f2433fb9ecb617c48d1b64d7f2cf27" target="_top" xlink:title=" ">
+<g id="a_node36"><a xlink:href="classopenage_1_1_engine.xhtml#a33f2433fb9ecb617c48d1b64d7f2cf27" target="_top" xlink:title="move the phys3 camera incorporated in the engine">
 <polygon fill="white" stroke="black" points="325.5,-612.301 325.5,-642.301 443.5,-642.301 443.5,-612.301 325.5,-612.301"/>
 <text text-anchor="start" x="333.5" y="-630.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::move</text>
 <text text-anchor="middle" x="384.5" y="-619.301" font-family="Helvetica,sans-Serif" font-size="10.00">_phys_camera</text>
@@ -228,7 +228,7 @@
 </g>
 <!-- Node280 -->
 <g id="node37" class="node"><title>Node280</title>
-<g id="a_node37"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a98712fa513953c1c85c886ac379b2612" target="_top" xlink:title=" ">
+<g id="a_node37"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a98712fa513953c1c85c886ac379b2612" target="_top" xlink:title="resets the timer, in either stopped or running state.">
 <polygon fill="white" stroke="black" points="507.5,-50.3009 507.5,-80.3009 609.5,-80.3009 609.5,-50.3009 507.5,-50.3009"/>
 <text text-anchor="start" x="515.5" y="-68.3009" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="558.5" y="-57.3009" font-family="Helvetica,sans-Serif" font-size="10.00">::reset</text>
@@ -242,7 +242,7 @@
 </g>
 <!-- Node281 -->
 <g id="node38" class="node"><title>Node281</title>
-<g id="a_node38"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a0d8b52ef4078807189fd457e658270cb" target="_top" xlink:title=" ">
+<g id="a_node38"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a0d8b52ef4078807189fd457e658270cb" target="_top" xlink:title="sets the start point for the actual frame which is used as a reference value for the registered compo...">
 <polygon fill="white" stroke="black" points="327.5,-426.301 327.5,-456.301 441.5,-456.301 441.5,-426.301 327.5,-426.301"/>
 <text text-anchor="start" x="335.5" y="-444.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="384.5" y="-433.301" font-family="Helvetica,sans-Serif" font-size="10.00">::start_frame_measure</text>
@@ -270,7 +270,7 @@
 </g>
 <!-- Node284 -->
 <g id="node41" class="node"><title>Node284</title>
-<g id="a_node41"><a xlink:href="classopenage_1_1_engine.xhtml#a7c6184d63bc3af2171d83b8941eb9204" target="_top" xlink:title=" ">
+<g id="a_node41"><a xlink:href="classopenage_1_1_engine.xhtml#a7c6184d63bc3af2171d83b8941eb9204" target="_top" xlink:title="enqueues the stop of the main loop.">
 <polygon fill="white" stroke="black" points="327.5,-661.801 327.5,-680.801 441.5,-680.801 441.5,-661.801 327.5,-661.801"/>
 <text text-anchor="middle" x="384.5" y="-668.801" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::stop</text>
 </a>
@@ -283,7 +283,7 @@
 </g>
 <!-- Node247 -->
 <g id="node4" class="node"><title>Node247</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title="render text with the at a position with specified font size">
 <polygon fill="white" stroke="black" points="1034,-874.801 1034,-893.801 1178,-893.801 1178,-874.801 1034,-874.801"/>
 <text text-anchor="middle" x="1106" y="-881.801" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::render_text</text>
 </a>
@@ -350,7 +350,7 @@
 </g>
 <!-- Node251 -->
 <g id="node8" class="node"><title>Node251</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="1216,-852.801 1216,-871.801 1330,-871.801 1330,-852.801 1216,-852.801"/>
 <text text-anchor="middle" x="1273" y="-859.801" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>
@@ -439,7 +439,7 @@
 </g>
 <!-- Node257 -->
 <g id="node14" class="node"><title>Node257</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="1057.5,-776.801 1057.5,-795.801 1154.5,-795.801 1154.5,-776.801 1057.5,-776.801"/>
 <text text-anchor="middle" x="1106" y="-783.801" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>
@@ -466,7 +466,7 @@
 </g>
 <!-- Node261 -->
 <g id="node18" class="node"><title>Node261</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a93cf3b3b79fc2f3be34a2e1b095198a6" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a93cf3b3b79fc2f3be34a2e1b095198a6" target="_top" xlink:title="returns a vector of registered component names">
 <polygon fill="white" stroke="black" points="496.5,-377.301 496.5,-407.301 620.5,-407.301 620.5,-377.301 496.5,-377.301"/>
 <text text-anchor="start" x="504.5" y="-395.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="558.5" y="-384.301" font-family="Helvetica,sans-Serif" font-size="10.00">::registered_components</text>
@@ -527,7 +527,7 @@
 </g>
 <!-- Node267 -->
 <g id="node24" class="node"><title>Node267</title>
-<g id="a_node24"><a xlink:href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f" target="_top" xlink:title="Returns the unique identifier of the current thread.">
 <polygon fill="white" stroke="black" points="510,-230.301 510,-260.301 607,-260.301 607,-230.301 510,-230.301"/>
 <text text-anchor="start" x="518" y="-248.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::get</text>
 <text text-anchor="middle" x="558.5" y="-237.301" font-family="Helvetica,sans-Serif" font-size="10.00">_current_thread_id</text>
@@ -541,7 +541,7 @@
 </g>
 <!-- Node269 -->
 <g id="node26" class="node"><title>Node269</title>
-<g id="a_node26"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a0f4aca6841c138900f29816c0d7decf3" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a0f4aca6841c138900f29816c0d7decf3" target="_top" xlink:title="reads the current timer value, in nanoseconds, and resets the timer to zero (preserving started/stopp...">
 <polygon fill="white" stroke="black" points="507.5,-140.301 507.5,-170.301 609.5,-170.301 609.5,-140.301 507.5,-140.301"/>
 <text text-anchor="start" x="515.5" y="-158.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="558.5" y="-147.301" font-family="Helvetica,sans-Serif" font-size="10.00">::getandresetval</text>
@@ -568,7 +568,7 @@
 </g>
 <!-- Node272 -->
 <g id="node29" class="node"><title>Node272</title>
-<g id="a_node29"><a xlink:href="namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" target="_top" xlink:title=" ">
+<g id="a_node29"><a xlink:href="namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" target="_top" xlink:title="returns a monotonically&#45;increasing time that returns the number of nanoseconds since an unspecified e...">
 <polygon fill="white" stroke="black" points="680,-50.3009 680,-80.3009 785,-80.3009 785,-50.3009 680,-50.3009"/>
 <text text-anchor="start" x="688" y="-68.3009" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="732.5" y="-57.3009" font-family="Helvetica,sans-Serif" font-size="10.00">_monotonic_time</text>
@@ -582,7 +582,7 @@
 </g>
 <!-- Node271 -->
 <g id="node28" class="node"><title>Node271</title>
-<g id="a_node28"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node28"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="871,-145.801 871,-164.801 966,-164.801 966,-145.801 871,-145.801"/>
 <text text-anchor="middle" x="918.5" y="-152.801" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -630,7 +630,7 @@
 </g>
 <!-- Node283 -->
 <g id="node40" class="node"><title>Node283</title>
-<g id="a_node40"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a376d760c88323c5d4f32db08e302a4de" target="_top" xlink:title=" ">
+<g id="a_node40"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a376d760c88323c5d4f32db08e302a4de" target="_top" xlink:title="registers a component">
 <polygon fill="white" stroke="black" points="504.5,-514.301 504.5,-544.301 612.5,-544.301 612.5,-514.301 504.5,-514.301"/>
 <text text-anchor="start" x="512.5" y="-532.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="558.5" y="-521.301" font-family="Helvetica,sans-Serif" font-size="10.00">::register_component</text>
@@ -654,7 +654,7 @@
 </g>
 <!-- Node286 -->
 <g id="node43" class="node"><title>Node286</title>
-<g id="a_node43"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node43"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="687,-713.801 687,-732.801 778,-732.801 778,-713.801 687,-713.801"/>
 <text text-anchor="middle" x="732.5" y="-720.801" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -667,7 +667,7 @@
 </g>
 <!-- Node287 -->
 <g id="node44" class="node"><title>Node287</title>
-<g id="a_node44"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node44"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="863.5,-722.301 863.5,-752.301 973.5,-752.301 973.5,-722.301 863.5,-722.301"/>
 <text text-anchor="start" x="871.5" y="-740.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="918.5" y="-729.301" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -681,7 +681,7 @@
 </g>
 <!-- Node288 -->
 <g id="node45" class="node"><title>Node288</title>
-<g id="a_node45"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node45"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="847,-683.801 847,-702.801 990,-702.801 990,-683.801 847,-683.801"/>
 <text text-anchor="middle" x="918.5" y="-690.801" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -694,7 +694,7 @@
 </g>
 <!-- Node289 -->
 <g id="node46" class="node"><title>Node289</title>
-<g id="a_node46"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node46"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="1054,-727.301 1054,-757.301 1158,-757.301 1158,-727.301 1054,-727.301"/>
 <text text-anchor="start" x="1062" y="-745.301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="1106" y="-734.301" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>

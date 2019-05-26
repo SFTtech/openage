@@ -1,4 +1,4 @@
 <map id="openage::Unit::add_attributes" name="openage::Unit::add_attributes">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,136,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_attributes.xhtml#ae8924d1ae2fafd0c13418ab238848afb" title=" " alt="" coords="184,5,319,47"/>
+<area shape="rect" id="node1" title="Give new attributes to this unit." alt="" coords="5,5,136,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_attributes.xhtml#ae8924d1ae2fafd0c13418ab238848afb" title="Add copies of all the attributes from the given Attributes." alt="" coords="184,5,319,47"/>
 </map>

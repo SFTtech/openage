@@ -1433,9 +1433,9 @@
     </incdepgraph>
     <innernamespace refid="namespaceopenage">openage</innernamespace>
     <briefdescription>
+<para>Many values in this file are hardcoded, due to limited understanding of how the original game files work <ndash/> as more becomes known these will be removed. </para>
     </briefdescription>
     <detaileddescription>
-<para>Many values in this file are hardcoded, due to limited understanding of how the original game files work <ndash/> as more becomes known these will be removed.</para>
 <para>It is likely the conversion from gamedata to openage units will be done by the nyan system in future </para>
     </detaileddescription>
     <programlisting>

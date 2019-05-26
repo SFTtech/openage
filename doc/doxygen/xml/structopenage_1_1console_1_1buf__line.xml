@@ -22,9 +22,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>metadata for a single line in the buffer </para>
     </briefdescription>
     <detaileddescription>
-<para>metadata for a single line in the buffer </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="835">

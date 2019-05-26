@@ -1,8 +1,8 @@
 <map id="openage::UnitTexture::sample" name="openage::UnitTexture::sample">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,151,80"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" title=" " alt="" coords="203,8,351,49"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" title=" " alt="" coords="199,75,356,102"/>
+<area shape="rect" id="node1" title="a sample drawing for hud" alt="" coords="5,39,151,80"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" title="test method for the base CoordXY* classes." alt="" coords="203,8,351,49"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" title="Draws the texture at hud coordinates." alt="" coords="199,75,356,102"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1_f_string.xhtml#a262d81155e6d17ead2d4851faf6bec03" title=" " alt="" coords="413,5,560,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" title=" " alt="" coords="617,5,812,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" title="Clears the underlying stream object&#39;s flags, if such a stream object exists." alt="" coords="617,5,812,47"/>
 <area shape="rect" id="node6" href="$structopenage_1_1coord_1_1camhud.xhtml#abbbebb0d15c032c20f0db6dd6f9c4911" title=" " alt="" coords="404,71,569,112"/>
 </map>

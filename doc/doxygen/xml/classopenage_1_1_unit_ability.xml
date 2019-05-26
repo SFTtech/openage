@@ -83,9 +83,9 @@
           <declname>cmd</declname>
         </param>
         <briefdescription>
+<para>true if the paramaters allow an action to be performed </para>
         </briefdescription>
         <detaileddescription>
-<para>true if the paramaters allow an action to be performed </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -123,9 +123,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>applies command to a given unit </para>
         </briefdescription>
         <detaileddescription>
-<para>applies command to a given unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -141,9 +141,9 @@
           <declname>target</declname>
         </param>
         <briefdescription>
+<para>some common functions </para>
         </briefdescription>
         <detaileddescription>
-<para>some common functions </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -289,9 +289,9 @@
           <declname>items</declname>
         </param>
         <briefdescription>
+<para>set bits corresponding to abilities, useful for initialising an ability_set using a brace enclosed list </para>
         </briefdescription>
         <detaileddescription>
-<para>set bits corresponding to abilities, useful for initialising an ability_set using a brace enclosed list </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -301,9 +301,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Abilities create an action when given a target some abilities target positions such as moving or patroling others target other game objects, such as attacking or collecting relics. </para>
     </briefdescription>
     <detaileddescription>
-<para>Abilities create an action when given a target some abilities target positions such as moving or patroling others target other game objects, such as attacking or collecting relics</para>
 <para>Abilities are constructed with a default unit texture, but allow the texture to be specified with the invoke function </para>
     </detaileddescription>
     <inheritancegraph>

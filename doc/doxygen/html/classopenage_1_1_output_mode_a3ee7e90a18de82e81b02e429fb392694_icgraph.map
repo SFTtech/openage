@@ -1,4 +1,4 @@
 <map id="openage::OutputMode::render" name="openage::OutputMode::render">
-<area shape="rect" id="node1" title=" " alt="" coords="208,5,359,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_game_control.xhtml#a56eadb260ee512fa9034f25f67308e61" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node1" title="Display this mode." alt="" coords="208,5,359,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_control.xhtml#a56eadb260ee512fa9034f25f67308e61" title="execute the drawing action." alt="" coords="5,5,160,47"/>
 </map>

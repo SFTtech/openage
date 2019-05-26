@@ -26,9 +26,9 @@
         <argsstring></argsstring>
         <name>shader_input_map</name>
         <briefdescription>
+<para>An optional attribute specifying how vertex inputs in the mesh map to vertex inputs in a given shader, for example to reorder inputs of the form (pos, uv) into a shader that takes in (uv, pos) inputs. </para>
         </briefdescription>
         <detaileddescription>
-<para>An optional attribute specifying how vertex inputs in the mesh map to vertex inputs in a given shader, for example to reorder inputs of the form (pos, uv) into a shader that takes in (uv, pos) inputs. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -151,9 +151,10 @@
           <defname>in_map</defname>
         </param>
         <briefdescription>
+<para>Adds a mesh-&gt;shader input mapping to the info. </para>
         </briefdescription>
         <detaileddescription>
-<para>Adds a mesh-&gt;shader input mapping to the info. By default, attributes are mapped one-to-one according to their order in the input vector, e.g. (vec2 pos, vec2 uv) maps into (0: vec2 pos, 1: vec2 uv) in the shader. However, if a shader skips indices in the layout or takes its inputs in a different order, this can be specified using the map. The map entries must have the format (index_in_vector, index_in_shader) and will overwrite the default mapping. If an entry for a given index in the vector is missing, that attribute and its data will be skipped. </para>
+<para>By default, attributes are mapped one-to-one according to their order in the input vector, e.g. (vec2 pos, vec2 uv) maps into (0: vec2 pos, 1: vec2 uv) in the shader. However, if a shader skips indices in the layout or takes its inputs in a different order, this can be specified using the map. The map entries must have the format (index_in_vector, index_in_shader) and will overwrite the default mapping. If an entry for a given index in the vector is missing, that attribute and its data will be skipped. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -246,9 +247,9 @@
         <argsstring>() const</argsstring>
         <name>get_index_type</name>
         <briefdescription>
+<para>Returns the type of indices used for indexed drawing, which may not be present if array drawing is used. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the type of indices used for indexed drawing, which may not be present if array drawing is used. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -257,9 +258,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Information about vertex input data - which components a vertex contains and how vertices are laid out in memory. </para>
     </briefdescription>
     <detaileddescription>
-<para>Information about vertex input data - which components a vertex contains and how vertices are laid out in memory. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4768">

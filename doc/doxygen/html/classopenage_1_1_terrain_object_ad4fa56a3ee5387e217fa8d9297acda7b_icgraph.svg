@@ -57,7 +57,7 @@ var sectionId = 'dynsection-15';
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 765,-84 765,4 -4,4"/>
 <!-- Node86 -->
 <g id="node1" class="node"><title>Node86</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns true if this object has been placed.">
 <polygon fill="#bfbfbf" stroke="black" points="644,-24.5 644,-54.5 761,-54.5 761,-24.5 644,-24.5"/>
 <text text-anchor="start" x="652" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="702.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::is_placed</text>
@@ -71,7 +71,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node87 -->
 <g id="node2" class="node"><title>Node87</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a9ca18bc39c074f2172f12b4903ba0bb0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a9ca18bc39c074f2172f12b4903ba0bb0" target="_top" xlink:title="should this object be tested for collisions, which decides whether another object is allowed to overl...">
 <polygon fill="white" stroke="black" points="491,-49.5 491,-79.5 608,-79.5 608,-49.5 491,-49.5"/>
 <text text-anchor="start" x="499" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="549.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::check_collisions</text>
@@ -85,7 +85,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node91 -->
 <g id="node6" class="node"><title>Node91</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a2ad9a9df0f058487a4ec66b68ee390ed" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a2ad9a9df0f058487a4ec66b68ee390ed" target="_top" xlink:title="sets all the ground below the object to a terrain id.">
 <polygon fill="white" stroke="black" points="491,-0.5 491,-30.5 608,-30.5 608,-0.5 491,-0.5"/>
 <text text-anchor="start" x="499" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="549.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_ground</text>
@@ -99,7 +99,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node88 -->
 <g id="node3" class="node"><title>Node88</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="328,-49.5 328,-79.5 455,-79.5 455,-49.5 328,-49.5"/>
 <text text-anchor="start" x="336" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="391.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -113,7 +113,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node89 -->
 <g id="node4" class="node"><title>Node89</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="158,-49.5 158,-79.5 292,-79.5 292,-49.5 158,-49.5"/>
 <text text-anchor="start" x="166" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="225" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -127,7 +127,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node90 -->
 <g id="node5" class="node"><title>Node90</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 122,-79.5 122,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="61" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>

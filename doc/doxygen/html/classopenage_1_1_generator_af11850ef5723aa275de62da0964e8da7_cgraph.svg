@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 419,-73.5 419,4 -4,4"/>
 <!-- Node102 -->
 <g id="node1" class="node"><title>Node102</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="return the list of player names">
 <polygon fill="#bfbfbf" stroke="black" points="0,-17 0,-47 102,-47 102,-17 0,-17"/>
 <text text-anchor="start" x="8" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="51" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::player_names</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node104 -->
 <g id="node3" class="node"><title>Node104</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6" target="_top" xlink:title="Split a string at a delimiter into a vector.">
 <polygon fill="white" stroke="black" points="319,-44.5 319,-63.5 415,-63.5 415,-44.5 319,-44.5"/>
 <text text-anchor="middle" x="367" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::split</text>
 </a>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node106 -->
 <g id="node5" class="node"><title>Node106</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="319.5,-0.5 319.5,-19.5 414.5,-19.5 414.5,-0.5 319.5,-0.5"/>
 <text text-anchor="middle" x="367" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -1,6 +1,6 @@
 <map id="openage::Unit::draw" name="openage::Unit::draw">
-<area shape="rect" id="node1" title=" " alt="" coords="5,42,143,69"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b" title=" " alt="" coords="191,5,329,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" title=" " alt="" coords="196,71,324,98"/>
+<area shape="rect" id="node1" title="draws this action by taking the graphic type of the top action the graphic is found from the current ..." alt="" coords="5,42,143,69"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b" title="determines which graphic should be used for drawing this unit finds the default graphic using the uni..." alt="" coords="191,5,329,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" title="returns the current action on top of the stack" alt="" coords="196,71,324,98"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="377,71,488,98"/>
 </map>

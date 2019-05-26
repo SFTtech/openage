@@ -1,5 +1,5 @@
 <map id="openage::renderer::resources::Texture2dSubInfo::Texture2dSubInfo" name="openage::renderer::resources::Texture2dSubInfo::Texture2dSubInfo">
 <area shape="rect" id="node1" title="Initializes the info from a CSV line containing its members." alt="" coords="5,20,192,76"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="249,5,359,32"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#aa7f8fe5c3426ea9e4968ef9aa21660ae" title=" " alt="" coords="240,57,368,98"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a34e437da5fb7314c04d0af249dbd8bd1" title="Split a string at a delimiter into a vector." alt="" coords="240,57,368,98"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="openage::subprocess::is_executable" name="openage::subprocess::is_executable">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,152,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title=" " alt="" coords="200,13,352,39"/>
+<area shape="rect" id="node1" title="returns true IFF the file is executable" alt="" coords="5,5,152,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title="get the filename (last part) of a given path" alt="" coords="200,13,352,39"/>
 </map>

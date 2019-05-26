@@ -39,9 +39,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A interaface variable which gets monitored by an option node allowing reflection, while also being directly accessable as a typed member. </para>
     </briefdescription>
     <detaileddescription>
-<para>A interaface variable which gets monitored by an option node allowing reflection, while also being directly accessable as a typed member </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4352">

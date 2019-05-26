@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 687,-62 687,4 -4,4"/>
 <!-- Node21 -->
 <g id="node1" class="node"><title>Node21</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Checks whether all objects that have been registered via add_py_if_component have been properly initi...">
 <polygon fill="#bfbfbf" stroke="black" points="576,-14 576,-44 683,-44 683,-14 576,-14"/>
 <text text-anchor="start" x="584" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="629.5" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">::check</text>

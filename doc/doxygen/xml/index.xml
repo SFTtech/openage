@@ -7062,7 +7062,7 @@
     <member refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" kind="function"><name>run_game</name></member>
     <member refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" kind="function"><name>tile_list</name></member>
     <member refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" kind="function"><name>building_center</name></member>
-    <member refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" kind="function"><name>complete_building</name></member>
+    <member refid="namespaceopenage_1a8c248986ac22a8251e1f27a6cef087eb" kind="function"><name>complete_building</name></member>
     <member refid="namespaceopenage_1a8f7c4c46ae7b03cd0cc8ceae47ae7139" kind="function"><name>square_outline</name></member>
     <member refid="namespaceopenage_1ae2e68c0049a3b6c5671c8006c6a74f84" kind="function"><name>radial_outline</name></member>
     <member refid="namespaceopenage_1abf30260a65f6b06163a5dad881836523" kind="function"><name>find_near</name></member>
@@ -7071,7 +7071,7 @@
     <member refid="namespaceopenage_1a51da621433dabf064cd41efc49641d51" kind="function"><name>create_resource_cost</name></member>
     <member refid="namespaceopenage_1ac00e0eb95e4253ba49dcc06a9f7f65be" kind="function"><name>tiles_in_range</name></member>
     <member refid="namespaceopenage_1a43b3cc127b88b97e81a2ce9160e5b5a2" kind="function"><name>dispatch_command</name></member>
-    <member refid="namespaceopenage_1af8871290d3c97a11b6761d12827ab9e3" kind="function"><name>dir_group</name></member>
+    <member refid="namespaceopenage_1ad019d95177e6ab646a2d239e4ec3daa7" kind="function"><name>dir_group</name></member>
   </compound>
   <compound refid="namespaceopenage_1_1____main____" kind="namespace"><name>openage::__main__</name>
     <member refid="namespaceopenage_1_1____main_____1a2cf9c123d48ac683e5cf594b0114e5e3" kind="function"><name>main</name></member>
@@ -7185,7 +7185,7 @@
   </compound>
   <compound refid="namespaceopenage_1_1console_1_1draw" kind="namespace"><name>openage::console::draw</name>
     <member refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" kind="function"><name>to_opengl</name></member>
-    <member refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" kind="function"><name>to_terminal</name></member>
+    <member refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" kind="function"><name>to_terminal</name></member>
   </compound>
   <compound refid="namespaceopenage_1_1console_1_1tests" kind="namespace"><name>openage::console::tests</name>
     <member refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kind="function"><name>max</name></member>
@@ -7504,8 +7504,8 @@
     <member refid="namespaceopenage_1_1gameio_1ac86e0756708907f826cb04e6f13d588d" kind="function"><name>load_unit</name></member>
     <member refid="namespaceopenage_1_1gameio_1a3dbc6f4b94629a296a514691fb34a470" kind="function"><name>save_tile_content</name></member>
     <member refid="namespaceopenage_1_1gameio_1a4141acb6d3c777a66792c1f02a8678bc" kind="function"><name>load_tile_content</name></member>
-    <member refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" kind="function"><name>save</name></member>
-    <member refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" kind="function"><name>load</name></member>
+    <member refid="namespaceopenage_1_1gameio_1afc1134c3c633c8bddb614ecb3da48eb2" kind="function"><name>save</name></member>
+    <member refid="namespaceopenage_1_1gameio_1ae6761d88280466d1d1b5c638e7c7a042" kind="function"><name>load</name></member>
   </compound>
   <compound refid="namespaceopenage_1_1gui" kind="namespace"><name>openage::gui</name>
     <member refid="namespaceopenage_1_1gui_1aab12594ba4e08cbab511c42d2b7ebef9" kind="variable"><name>reg_path</name></member>
@@ -7677,7 +7677,7 @@
   <compound refid="namespaceopenage_1_1os" kind="namespace"><name>openage::os</name>
     <member refid="namespaceopenage_1_1os_1a2ff2ec43cb1353b31db1f7cae31b13be" kind="function"><name>read_symlink</name></member>
     <member refid="namespaceopenage_1_1os_1aaa0a892b4d5cf0b41684c5f31c6cf86b" kind="function"><name>self_exec_filename</name></member>
-    <member refid="namespaceopenage_1_1os_1a5d72e5b58b3036f2298e474c4e9ed9b6" kind="function"><name>execute_file</name></member>
+    <member refid="namespaceopenage_1_1os_1a0c239b26dbfdae2443aa511e31619917" kind="function"><name>execute_file</name></member>
   </compound>
   <compound refid="namespaceopenage_1_1path" kind="namespace"><name>openage::path</name>
     <member refid="namespaceopenage_1_1path_1a42b919491ef91151284bc4c1cb3223a0" kind="typedef"><name>heuristic_t</name></member>
@@ -7688,7 +7688,7 @@
     <member refid="namespaceopenage_1_1path_1a7e49ca629b6fed008584d7752dc98e9a" kind="variable"><name>path_grid_size</name></member>
     <member refid="namespaceopenage_1_1path_1aec9efa004e47a51d7525a0959ebdfb83" kind="variable"><name>neigh_phys</name></member>
     <member refid="namespaceopenage_1_1path_1a4699fb2dbfd8178b2234b9fbb935179f" kind="function"><name>to_point</name></member>
-    <member refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" kind="function"><name>to_object</name></member>
+    <member refid="namespaceopenage_1_1path_1a047e97b9a81a866f064ad6d6f8dddfd6" kind="function"><name>to_object</name></member>
     <member refid="namespaceopenage_1_1path_1a4382f59f9523f9dd89a6689336cc353a" kind="function"><name>find_nearest</name></member>
     <member refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" kind="function"><name>a_star</name></member>
     <member refid="namespaceopenage_1_1path_1a825dde52e9d0fd7fe6fa6970a1ec58e0" kind="function"><name>manhattan_cost</name></member>
@@ -7696,7 +7696,7 @@
     <member refid="namespaceopenage_1_1path_1a18aa96b43da6809c7796eaa4214a3420" kind="function"><name>euclidean_cost</name></member>
     <member refid="namespaceopenage_1_1path_1a64affc7c4a103a4ffabfd72c454962cf" kind="function"><name>euclidean_squared_cost</name></member>
     <member refid="namespaceopenage_1_1path_1a4dca43db0e959d455ac0d5c7c8cb26fb" kind="function"><name>euclidean_squared_to_euclidean_cost</name></member>
-    <member refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" kind="function"><name>passable_line</name></member>
+    <member refid="namespaceopenage_1_1path_1a4fb2450790038eed534dfe29ad57d350" kind="function"><name>passable_line</name></member>
   </compound>
   <compound refid="namespaceopenage_1_1path_1_1tests" kind="namespace"><name>openage::path::tests</name>
     <member refid="namespaceopenage_1_1path_1_1tests_1ae71248e3b41e24e07f376124cfe95f41" kind="function"><name>node_0</name></member>
@@ -7767,7 +7767,7 @@
     <member refid="namespaceopenage_1_1pyinterface_1a71a44ad87b997a932215fa57c7643a19" kind="variable"><name>None</name></member>
     <member refid="namespaceopenage_1_1pyinterface_1a09953e7373020e0af78c70ea155754ee" kind="variable"><name>True</name></member>
     <member refid="namespaceopenage_1_1pyinterface_1ad71d6296abe650b46217af0efb0725a2" kind="variable"><name>False</name></member>
-    <member refid="namespaceopenage_1_1pyinterface_1ad8166ad0c6228bd8ad488cb2648ef2f6" kind="function"><name>set_exc_translation_funcs</name></member>
+    <member refid="namespaceopenage_1_1pyinterface_1a1e67cfae25169883a59e6d15324decfb" kind="function"><name>set_exc_translation_funcs</name></member>
     <member refid="namespaceopenage_1_1pyinterface_1a17ffe36150248f6802ac372166798637" kind="function"><name>translate_exc_cpp_to_py</name></member>
     <member refid="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" kind="function"><name>translate_exc_py_to_cpp</name></member>
     <member refid="namespaceopenage_1_1pyinterface_1a942ae5fea51139bab5bdc29ac244125d" kind="function"><name>init_exc_message</name></member>
@@ -7868,7 +7868,7 @@
     <member refid="namespaceopenage_1_1renderer_1_1resources_1a51463bbd68af13770e97e0867de4d6d6" kind="variable"><name>vin_count</name></member>
     <member refid="namespaceopenage_1_1renderer_1_1resources_1a735d6d55173355397ad37c31956361ee" kind="variable"><name>QUAD_DATA</name></member>
     <member refid="namespaceopenage_1_1renderer_1_1resources_1a11c3247d50ab63967293c59f92c47368" kind="function"><name>vertex_input_size</name></member>
-    <member refid="namespaceopenage_1_1renderer_1_1resources_1ae21e0e1ee561f05a999f3f4f680ea2af" kind="function"><name>vertex_input_count</name></member>
+    <member refid="namespaceopenage_1_1renderer_1_1resources_1ae2c96fa36c9fe77b871ff86b3fedc4b2" kind="function"><name>vertex_input_count</name></member>
     <member refid="namespaceopenage_1_1renderer_1_1resources_1a62ad4c6594b8ad6f357a9e5b18575bc4" kind="function"><name>guess_row_alignment</name></member>
     <member refid="namespaceopenage_1_1renderer_1_1resources_1aa8bc42c345504717eba7d38b39d278c2" kind="function"><name>pixel_size</name></member>
   </compound>
@@ -7924,7 +7924,7 @@
   <compound refid="namespaceopenage_1_1subprocess" kind="namespace"><name>openage::subprocess</name>
     <member refid="namespaceopenage_1_1subprocess_1af8b5d87acaf3d044fdd924ef68a1cec8" kind="function"><name>is_executable</name></member>
     <member refid="namespaceopenage_1_1subprocess_1aea6af6d7d8e5290e58dfafd50a96a069" kind="function"><name>which</name></member>
-    <member refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" kind="function"><name>call</name></member>
+    <member refid="namespaceopenage_1_1subprocess_1a9433d1215dbd3b40cd1c0981b84a8541" kind="function"><name>call</name></member>
   </compound>
   <compound refid="namespaceopenage_1_1teamcolor__shader" kind="namespace"><name>openage::teamcolor_shader</name>
     <member refid="namespaceopenage_1_1teamcolor__shader_1a290de9c73d125cfbdbf583ee24cee3c8" kind="variable"><name>program</name></member>
@@ -8022,7 +8022,7 @@
     <member refid="namespaceopenage_1_1util_1a1f21bbbe0a2bfda459aa086ee71f1abd" kind="function"><name>remove_from</name></member>
     <member refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" kind="function"><name>demangle</name></member>
     <member refid="namespaceopenage_1_1util_1abe26c67b0463cb53c33b0659ebb89370" kind="function"><name>addr_to_string</name></member>
-    <member refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" kind="function"><name>symbol_name</name></member>
+    <member refid="namespaceopenage_1_1util_1aff957b2c0c7a7eb98cf68468cc04c1d8" kind="function"><name>symbol_name</name></member>
     <member refid="namespaceopenage_1_1util_1ae411a50a0e24d32ab564979b2df6ed24" kind="function"><name>is_symbol</name></member>
     <member refid="namespaceopenage_1_1util_1a16ef0fe69558a29af4a8d568f2b5b518" kind="function"><name>read_csv_file</name></member>
     <member refid="namespaceopenage_1_1util_1abe7e29a3d1ac620fb9d0eb6830be84cf" kind="function"><name>operator&lt;&lt;</name></member>
@@ -8060,17 +8060,17 @@
     <member refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kind="function"><name>filename</name></member>
     <member refid="namespaceopenage_1_1util_1a954be5116f7af5633dbbc50bac26b0a8" kind="function"><name>dirname</name></member>
     <member refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" kind="function"><name>repr</name></member>
-    <member refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" kind="function"><name>sformat</name></member>
+    <member refid="namespaceopenage_1_1util_1afd23b015922ec41eec0165f8d88bf430" kind="function"><name>sformat</name></member>
     <member refid="namespaceopenage_1_1util_1a042594ac67e652c429fba1eeb1bec6fa" kind="function"><name>vsformat</name></member>
     <member refid="namespaceopenage_1_1util_1a854794aef09b81dbec641eca208a66d7" kind="function"><name>copy_string</name></member>
     <member refid="namespaceopenage_1_1util_1abeb6a94572d93a14498661545b8332ec" kind="function"><name>rstrip</name></member>
     <member refid="namespaceopenage_1_1util_1aae9cd09351bc11ad2c9fcf701786340a" kind="function"><name>string_matches_pattern</name></member>
-    <member refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" kind="function"><name>split</name></member>
-    <member refid="namespaceopenage_1_1util_1aa7f8fe5c3426ea9e4968ef9aa21660ae" kind="function"><name>split_escape</name></member>
+    <member refid="namespaceopenage_1_1util_1a9556b8562574e2c6ad102d8fd87569c6" kind="function"><name>split</name></member>
+    <member refid="namespaceopenage_1_1util_1a34e437da5fb7314c04d0af249dbd8bd1" kind="function"><name>split_escape</name></member>
     <member refid="namespaceopenage_1_1util_1a08c4ca36b7f1f7b60da3629f01635167" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="namespaceopenage_1_1util_1abfc839970f77edd26fe675758a6ca1b8" kind="function"><name>split</name></member>
     <member refid="namespaceopenage_1_1util_1ac99f61e1d0c06d9b83650a71cff2f02f" kind="function"><name>get_current_thread_id</name></member>
-    <member refid="namespaceopenage_1_1util_1a3e9f9bfa57d843330bd6d4bf85397433" kind="function"><name>utf8_decode</name></member>
+    <member refid="namespaceopenage_1_1util_1a63f7f7718f8133a37ac2e63dca01afb7" kind="function"><name>utf8_decode</name></member>
     <member refid="namespaceopenage_1_1util_1aed7ef0b5ccf0d22a6329396d9a59f671" kind="function"><name>utf8_encode</name></member>
     <member refid="namespaceopenage_1_1util_1a5519d25810f698275993214ce79016c7" kind="function"><name>utf8_last_char_size</name></member>
     <member refid="namespaceopenage_1_1util_1a82a1e7bf14b6f49be2d5fe4ec89f920e" kind="function"><name>utf8_pop_back</name></member>

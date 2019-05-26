@@ -1,5 +1,5 @@
 <map id="openage::Unit::add_attributes" name="openage::Unit::add_attributes">
-<area shape="rect" id="node1" title=" " alt="" coords="385,5,516,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_type.xhtml#acf200f0f7321ae1e074bae39bc437b53" title=" " alt="" coords="199,5,337,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_nyan_type.xhtml#ad058ecef5e52cd4da37dc7d2f10e4255" title=" " alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node1" title="Give new attributes to this unit." alt="" coords="385,5,516,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_type.xhtml#acf200f0f7321ae1e074bae39bc437b53" title="copy attributes of this unit type to a new unit instance" alt="" coords="199,5,337,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_nyan_type.xhtml#ad058ecef5e52cd4da37dc7d2f10e4255" title="Initialize units attributes to this type spec." alt="" coords="5,5,151,47"/>
 </map>

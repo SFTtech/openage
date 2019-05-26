@@ -1,8 +1,8 @@
 <map id="openage::Attribute&lt; attr_type::heal &gt;" name="openage::Attribute&lt; attr_type::heal &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="162,1217,291,1339"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_shared_attribute_container.xhtml" title=" " alt="" coords="5,865,192,971"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_attribute_container.xhtml" title=" " alt="" coords="7,307,190,443"/>
+<area shape="rect" id="node1" title="Healing capabilities." alt="" coords="162,1217,291,1339"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_shared_attribute_container.xhtml" title="Wraps a templated shared attribute." alt="" coords="5,865,192,971"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attribute_container.xhtml" title="Wraps a templated attribute." alt="" coords="7,307,190,443"/>
 <area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml" title=" " alt="" coords="216,681,411,1155"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml" title=" " alt="" coords="223,145,403,604"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml" title="Fixed&#45;point integer class;." alt="" coords="223,145,403,604"/>
 <area shape="rect" id="node6" title=" " alt="" coords="279,5,347,83"/>
 </map>

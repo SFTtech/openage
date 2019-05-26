@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 275,-35 275,4 -4,4"/>
 <!-- Node110 -->
 <g id="node1" class="node"><title>Node110</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="isinstance(obj, type)">
 <polygon fill="#bfbfbf" stroke="black" points="143,-0.5 143,-30.5 271,-30.5 271,-0.5 143,-0.5"/>
 <text text-anchor="start" x="151" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="207" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::isinstance</text>

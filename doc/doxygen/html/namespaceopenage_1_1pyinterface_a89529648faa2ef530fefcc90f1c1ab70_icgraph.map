@@ -1,4 +1,4 @@
 <map id="openage::pyinterface::translate_exc_py_to_cpp" name="openage::pyinterface::translate_exc_py_to_cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="253,13,428,54"/>
-<area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_func.xhtml#acea6cb67bc0e8ea78d513f6db4e2e477" title=" " alt="" coords="5,5,205,61"/>
+<area shape="rect" id="node1" title="Analyzes the current Python exception, and creates and throws an analogous C++ PyException object." alt="" coords="253,13,428,54"/>
+<area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_func.xhtml#acea6cb67bc0e8ea78d513f6db4e2e477" title="Specialization for bind() with void return types." alt="" coords="5,5,205,61"/>
 </map>

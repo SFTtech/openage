@@ -96,35 +96,43 @@ $(document).ready(function(){initNavTree('classopenage_1_1error_1_1_backtrace.xh
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract class for objects that provide backtrave information through <a class="el" href="classopenage_1_1error_1_1_backtrace.xhtml#ad4e4e82a65ad250f048f66667d810440" title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge.">get_symbols()</a>.  
+ <a href="classopenage_1_1error_1_1_backtrace.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="backtrace_8h_source.xhtml">backtrace.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::error::Backtrace:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1error_1_1_backtrace__inherit__graph.svg" width="408" height="316"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1error_1_1_backtrace__inherit__graph.svg" width="408" height="316"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::error::Backtrace:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1error_1_1_backtrace__coll__graph.svg" width="183" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1error_1_1_backtrace__coll__graph.svg" width="183" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad4e4e82a65ad250f048f66667d810440"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_backtrace.xhtml#ad4e4e82a65ad250f048f66667d810440">get_symbols</a> (std::function&lt; void(const <a class="el" href="structopenage_1_1error_1_1backtrace__symbol.xhtml">backtrace_symbol</a> *)&gt; cb, bool reversed=true) const =0</td></tr>
+<tr class="memdesc:ad4e4e82a65ad250f048f66667d810440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns (via the callback) symbolic names for all stack frames, to its best knowledge.  <a href="#ad4e4e82a65ad250f048f66667d810440">More...</a><br /></td></tr>
 <tr class="separator:ad4e4e82a65ad250f048f66667d810440"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08fdb69045e972de1323464a09daad42"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_backtrace.xhtml#a08fdb69045e972de1323464a09daad42">trim_to_current_stack_frame</a> ()</td></tr>
+<tr class="memdesc:a08fdb69045e972de1323464a09daad42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all the lower frames that are also present in the current stack.  <a href="#a08fdb69045e972de1323464a09daad42">More...</a><br /></td></tr>
 <tr class="separator:a08fdb69045e972de1323464a09daad42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb0eb435370a245c3d5b73f083852d93"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1error_1_1_backtrace.xhtml#abb0eb435370a245c3d5b73f083852d93">~Backtrace</a> ()=default</td></tr>
 <tr class="separator:abb0eb435370a245c3d5b73f083852d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract class for objects that provide backtrave information through <a class="el" href="classopenage_1_1error_1_1_backtrace.xhtml#ad4e4e82a65ad250f048f66667d810440">get_symbols()</a>. For a non-abstract implementation, see <a class="el" href="stackanalyzer_8h.xhtml">stackanalyzer.h</a>.</p>
+<div class="textblock"><p>Abstract class for objects that provide backtrave information through <a class="el" href="classopenage_1_1error_1_1_backtrace.xhtml#ad4e4e82a65ad250f048f66667d810440" title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge.">get_symbols()</a>. </p>
+<p>For a non-abstract implementation, see <a class="el" href="stackanalyzer_8h.xhtml">stackanalyzer.h</a>.</p>
 <p>pxd:</p>
-<p>cppclass <a class="el" href="classopenage_1_1error_1_1_backtrace.xhtml">Backtrace</a>: void get_symbols(Func1[void, backtrace_symbol *] callback, cppbool reversed) except + </p>
+<p>cppclass <a class="el" href="classopenage_1_1error_1_1_backtrace.xhtml" title="Abstract class for objects that provide backtrave information through get_symbols().">Backtrace</a>: void get_symbols(Func1[void, backtrace_symbol *] callback, cppbool reversed) except + </p>
 
 <p class="definition">Definition at line <a class="el" href="backtrace_8h_source.xhtml#l00055">55</a> of file <a class="el" href="backtrace_8h_source.xhtml">backtrace.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -187,7 +195,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns (via the callback) symbolic names for all stack frames, to its best knowledge.</p>
+
+<p>Returns (via the callback) symbolic names for all stack frames, to its best knowledge. </p>
 <p>The most recent call is returned last (alike Python).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -205,7 +214,8 @@ Public Member Functions</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1error_1_1_backtrace_ad4e4e82a65ad250f048f66667d810440_icgraph.svg" width="407" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1error_1_1_backtrace_ad4e4e82a65ad250f048f66667d810440_icgraph.svg" width="407" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -232,7 +242,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Removes all the lower frames that are also present in the current stack.</p>
+
+<p>Removes all the lower frames that are also present in the current stack. </p>
 <p>Designed to be used in catch clauses, to simulate stack trace collection from throw to catch, instead of from throw to the process entry point.</p>
 <p>Defaults to no-op. </p>
 

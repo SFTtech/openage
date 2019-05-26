@@ -1,8 +1,8 @@
 <map id="openage::util::Quaternion::normalized" name="openage::util::Quaternion::normalized">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,172,65"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#a1ea971d2f39920e062b0b91971296b65" title=" " alt="" coords="220,23,387,65"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" title=" " alt="" coords="435,23,601,65"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" title=" " alt="" coords="649,5,843,32"/>
+<area shape="rect" id="node1" title="Return the normalized version of this quaternion." alt="" coords="5,23,172,65"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#a1ea971d2f39920e062b0b91971296b65" title="Ensure that the quaternion&#39;s length equals 1." alt="" coords="220,23,387,65"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" title="Calculate the length of the quaternion." alt="" coords="435,23,601,65"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" title="Perform a dot product with another quaternion." alt="" coords="649,5,843,32"/>
 <area shape="rect" id="node5" href="$namespacestd.xhtml#a0fc492a11cf74e80f976b24bea2a2eb2" title=" " alt="" coords="711,56,781,83"/>
 <area shape="rect" id="node6" href="$classopenage_1_1util_1_1_fixed_point.xhtml#ae963a0d669b00ec8a65da1bf0041172a" title=" " alt="" coords="891,49,1057,90"/>
 </map>

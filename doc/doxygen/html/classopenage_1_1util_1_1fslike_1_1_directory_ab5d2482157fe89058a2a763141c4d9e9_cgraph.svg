@@ -20,7 +20,7 @@
 </g>
 <!-- Node133 -->
 <g id="node2" class="node"><title>Node133</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a7dab02972c0d0fa8ef5b3fd387966855" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a7dab02972c0d0fa8ef5b3fd387966855" target="_top" xlink:title="resolve the path to an actually usable one.">
 <polygon fill="white" stroke="black" points="159,-39 159,-69 260,-69 260,-39 159,-39"/>
 <text text-anchor="start" x="167" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="209.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::Directory::resolve</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node135 -->
 <g id="node4" class="node"><title>Node135</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="318,-0.5 318,-19.5 413,-19.5 413,-0.5 318,-0.5"/>
 <text text-anchor="middle" x="365.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

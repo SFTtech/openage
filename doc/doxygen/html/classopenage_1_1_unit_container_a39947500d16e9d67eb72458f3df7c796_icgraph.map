@@ -1,8 +1,8 @@
 <map id="openage::UnitContainer::new_unit" name="openage::UnitContainer::new_unit">
-<area shape="rect" id="node1" title=" " alt="" coords="620,64,777,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" title=" " alt="" coords="413,5,549,47"/>
+<area shape="rect" id="node1" title="creates a new unit without initialising" alt="" coords="620,64,777,105"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" title="places all initial objects" alt="" coords="413,5,549,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1gameio.xhtml#ac86e0756708907f826cb04e6f13d588d" title=" " alt="" coords="391,71,572,98"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="404,123,559,164"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1gameio.xhtml#a75b0984fd51cdc53616318d3f5a0d50f" title=" " alt="" coords="189,71,343,98"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" title=" " alt="" coords="5,64,141,105"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="404,123,559,164"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1gameio.xhtml#ae6761d88280466d1d1b5c638e7c7a042" title="a game load function that sometimes works" alt="" coords="189,71,343,98"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" title="Create a game from a specification." alt="" coords="5,64,141,105"/>
 </map>

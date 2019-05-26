@@ -1,12 +1,12 @@
 <map id="openage::util::Quaternion::dot" name="openage::util::Quaternion::dot">
-<area shape="rect" id="node1" title=" " alt="" coords="831,150,1024,177"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#aa3f586260959ed4c65c62a3ec93f6a6e" title=" " alt="" coords="187,5,353,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" title=" " alt="" coords="401,109,568,151"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_quaternion.xhtml#a61731d4de80ddb267346159ea173511b" title=" " alt="" coords="616,172,783,213"/>
-<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" title=" " alt="" coords="616,239,783,280"/>
+<area shape="rect" id="node1" title="Perform a dot product with another quaternion." alt="" coords="831,150,1024,177"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#aa3f586260959ed4c65c62a3ec93f6a6e" title="Test if the rotation of both quaternions is the same." alt="" coords="187,5,353,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" title="Test rotation equality with another quaternion with given precision in radians." alt="" coords="401,109,568,151"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_quaternion.xhtml#a61731d4de80ddb267346159ea173511b" title="Inverted the quaternion: Flip the rotation axes and scale by inverse sum of all components squared." alt="" coords="616,172,783,213"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" title="Calculate the length of the quaternion." alt="" coords="616,239,783,280"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1util_1_1tests.xhtml#ab3f1d081c603b383598beeee8e4429df" title=" " alt="" coords="5,123,139,164"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_quaternion.xhtml#a2e1d1f1785181562048952f28858bea9" title=" " alt="" coords="187,123,353,164"/>
-<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_quaternion.xhtml#ab7cebbaf133b69d0122980f73416ddf6" title=" " alt="" coords="401,175,568,216"/>
-<area shape="rect" id="node9" href="$classopenage_1_1util_1_1_quaternion.xhtml#a1ea971d2f39920e062b0b91971296b65" title=" " alt="" coords="401,240,568,281"/>
-<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_quaternion.xhtml#adaf56c826ceec78d0f4980148ce498fa" title=" " alt="" coords="187,240,353,281"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_quaternion.xhtml#a2e1d1f1785181562048952f28858bea9" title="Test rotation equality with another quaternion with given precision in degree." alt="" coords="187,123,353,164"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_quaternion.xhtml#ab7cebbaf133b69d0122980f73416ddf6" title="Return the inverted quaternion." alt="" coords="401,175,568,216"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1_quaternion.xhtml#a1ea971d2f39920e062b0b91971296b65" title="Ensure that the quaternion&#39;s length equals 1." alt="" coords="401,240,568,281"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_quaternion.xhtml#adaf56c826ceec78d0f4980148ce498fa" title="Return the normalized version of this quaternion." alt="" coords="187,240,353,281"/>
 </map>

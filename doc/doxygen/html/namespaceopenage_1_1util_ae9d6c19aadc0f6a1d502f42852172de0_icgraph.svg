@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-123 393,-123 393,4 -4,4"/>
 <!-- Node733 -->
 <g id="node1" class="node"><title>Node733</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Convert a uint64_t to an array of uint8_t.">
 <polygon fill="#bfbfbf" stroke="black" points="285,-44.5 285,-74.5 389,-74.5 389,-44.5 285,-44.5"/>
 <text text-anchor="start" x="293" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::uint64</text>
 <text text-anchor="middle" x="337" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array8</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node734 -->
 <g id="node2" class="node"><title>Node734</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600" target="_top" xlink:title="Convert a C&#45;style array of uint64_t to a std::vector of uint8_t.">
 <polygon fill="white" stroke="black" points="137.5,-88.5 137.5,-118.5 247.5,-118.5 247.5,-88.5 137.5,-88.5"/>
 <text text-anchor="start" x="145.5" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array64</text>
 <text text-anchor="middle" x="192.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array8</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node736 -->
 <g id="node4" class="node"><title>Node736</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_siphash.xhtml#a0cb5db9ffca1f96885bc53e2f5c0c65d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_siphash.xhtml#a0cb5db9ffca1f96885bc53e2f5c0c65d" target="_top" xlink:title="Hashes a single uint64_t number and returns the result.">
 <polygon fill="white" stroke="black" points="136,-0.5 136,-30.5 249,-30.5 249,-0.5 136,-0.5"/>
 <text text-anchor="start" x="144" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Siphash</text>
 <text text-anchor="middle" x="192.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::digest</text>

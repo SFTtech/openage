@@ -20,7 +20,7 @@
 </g>
 <!-- Node5 -->
 <g id="node2" class="node"><title>Node5</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_building_producer.xhtml#a98e04052b3c7522684bf1cd2e9c7e56f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_building_producer.xhtml#a98e04052b3c7522684bf1cd2e9c7e56f" target="_top" xlink:title="gets the unique id of this unit type">
 <polygon fill="white" stroke="black" points="169,-6 169,-25 315,-25 315,-6 169,-6"/>
 <text text-anchor="middle" x="242" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer::id</text>
 </a>

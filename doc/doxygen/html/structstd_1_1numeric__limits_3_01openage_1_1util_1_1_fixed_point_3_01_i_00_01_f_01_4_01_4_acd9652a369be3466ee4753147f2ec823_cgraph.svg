@@ -21,7 +21,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" target="_top" xlink:title="The maximum possible value of this type.">
 <polygon fill="white" stroke="black" points="170,-6 170,-36 295,-36 295,-6 170,-6"/>
 <text text-anchor="start" x="178" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="232.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">::max_value</text>

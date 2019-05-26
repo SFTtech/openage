@@ -60,9 +60,9 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Enumeration of the possible font directions. </para>
         </briefdescription>
         <detaileddescription>
-<para>Enumeration of the possible font directions. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -74,9 +74,10 @@
         <enumvalue id="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8ccaf8abdf5b19a729759024275eaeb19a6a" prot="public">
           <name>bufferless_quad</name>
           <briefdescription>
+<para>This passes 4 vertices with undefined positions to the shader. </para>
           </briefdescription>
           <detaileddescription>
-<para>This passes 4 vertices with undefined positions to the shader. The shader has to set the positions itself (e.g. using gl_VertexID in OpenGL). </para>
+<para>The shader has to set the positions itself (e.g. using gl_VertexID in OpenGL). </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cca09bc81c3aa886b690f84c5aba4109e20" prot="public">
@@ -256,9 +257,10 @@
         <argsstring>()</argsstring>
         <name>GlVertexArray</name>
         <briefdescription>
+<para>The default constructor initializes an empty VAO with no attributes. </para>
         </briefdescription>
         <detaileddescription>
-<para>The default constructor initializes an empty VAO with no attributes. This is useful for bufferless drawing. </para>
+<para>This is useful for bufferless drawing. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -285,9 +287,9 @@
         <argsstring>()</argsstring>
         <name>make_sdl_available</name>
         <briefdescription>
+<para>Lazily initializes the global <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref> singleton if it isn&apos;t yet available, otherwise does nothing. </para>
         </briefdescription>
         <detaileddescription>
-<para>Lazily initializes the global <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref> singleton if it isn&apos;t yet available, otherwise does nothing. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

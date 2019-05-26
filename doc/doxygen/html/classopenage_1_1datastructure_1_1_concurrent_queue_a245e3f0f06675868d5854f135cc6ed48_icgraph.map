@@ -1,8 +1,8 @@
 <map id="openage::datastructure::ConcurrentQueue::lock" name="openage::datastructure::ConcurrentQueue::lock">
-<area shape="rect" id="node1" title=" " alt="" coords="256,209,419,251"/>
-<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#af9b0d0bc8cea20b87178f1be1d9fc005" title=" " alt="" coords="9,5,204,76"/>
-<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#aa78ec939e767d66a811046c3165e63c5" title=" " alt="" coords="5,100,208,171"/>
-<area shape="rect" id="node4" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#ac425a78bff1d289707da09d6a14922dc" title=" " alt="" coords="11,195,202,265"/>
-<area shape="rect" id="node5" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#aec749002b655d28b0aa5f99a802a0008" title=" " alt="" coords="13,289,200,360"/>
-<area shape="rect" id="node6" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a1c71a5b5a99e60590130d2afe866137c" title=" " alt="" coords="9,384,204,455"/>
+<area shape="rect" id="node1" title="Return a lock to the queue so multiple of the above operations can be done sequentially." alt="" coords="256,209,419,251"/>
+<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#af9b0d0bc8cea20b87178f1be1d9fc005" title="Removes all elements from the queue." alt="" coords="9,5,204,76"/>
+<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#aa78ec939e767d66a811046c3165e63c5" title="Returns whether the queue is empty." alt="" coords="5,100,208,171"/>
+<area shape="rect" id="node4" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#ac425a78bff1d289707da09d6a14922dc" title="Returns the front item of the queue without removing it." alt="" coords="11,195,202,265"/>
+<area shape="rect" id="node5" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#aec749002b655d28b0aa5f99a802a0008" title="Removes the front item of the queue and returns it." alt="" coords="13,289,200,360"/>
+<area shape="rect" id="node6" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a1c71a5b5a99e60590130d2afe866137c" title="Appends the given item to the queue." alt="" coords="9,384,204,455"/>
 </map>

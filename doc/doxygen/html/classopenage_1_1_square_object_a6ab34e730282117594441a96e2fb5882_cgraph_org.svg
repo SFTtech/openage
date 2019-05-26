@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-247.5 772,-247.5 772,4 -4,4"/>
 <!-- Node30 -->
 <g id="node1" class="node"><title>Node30</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="#bfbfbf" stroke="black" points="0,-82.5 0,-112.5 119,-112.5 119,-82.5 0,-82.5"/>
 <text text-anchor="start" x="8" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="59.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node31 -->
 <g id="node2" class="node"><title>Node31</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" target="_top" xlink:title="calculate object start and end positions.">
 <polygon fill="white" stroke="black" points="155,-172.5 155,-202.5 274,-202.5 274,-172.5 155,-172.5"/>
 <text text-anchor="start" x="163" y="-190.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="214.5" y="-179.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_range</text>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node32 -->
 <g id="node3" class="node"><title>Node32</title>
-<g id="a_node3"><a xlink:href="namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" target="_top" xlink:title="given the west most point of a building foundation and the tile_delta size of the foundation,...">
 <polygon fill="white" stroke="black" points="310,-180 310,-199 435,-199 435,-180 310,-180"/>
 <text text-anchor="middle" x="372.5" y="-187" font-family="Helvetica,sans-Serif" font-size="10.00">openage::building_center</text>
 </a>
@@ -141,7 +141,7 @@
 </g>
 <!-- Node34 -->
 <g id="node5" class="node"><title>Node34</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="662.5,-224 662.5,-243 757.5,-243 757.5,-224 662.5,-224"/>
 <text text-anchor="middle" x="710" y="-231" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -201,7 +201,7 @@
 </g>
 <!-- Node42 -->
 <g id="node13" class="node"><title>Node42</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="310,-81.5 310,-111.5 435,-111.5 435,-81.5 310,-81.5"/>
 <text text-anchor="start" x="318" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="372.5" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -215,7 +215,7 @@
 </g>
 <!-- Node43 -->
 <g id="node14" class="node"><title>Node43</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="310,-32.5 310,-62.5 435,-62.5 435,-32.5 310,-32.5"/>
 <text text-anchor="start" x="318" y="-50.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="372.5" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

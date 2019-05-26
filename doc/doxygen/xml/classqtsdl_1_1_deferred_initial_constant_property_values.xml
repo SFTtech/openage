@@ -58,9 +58,9 @@
         <argsstring>()</argsstring>
         <name>~DeferredInitialConstantPropertyValues</name>
         <briefdescription>
+<para>Is virtual to be able to catch the error when non-persistent item uses liveReloadTag. </para>
         </briefdescription>
         <detaileddescription>
-<para>Is virtual to be able to catch the error when non-persistent item uses liveReloadTag. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -72,9 +72,9 @@
         <argsstring>()</argsstring>
         <name>apply_static_properties</name>
         <briefdescription>
+<para>Execute saved static properties assignments (for newly created cores). </para>
         </briefdescription>
         <detaileddescription>
-<para>Execute saved static properties assignments (for newly created cores). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -89,9 +89,9 @@
         <argsstring>()</argsstring>
         <name>clear_static_properties</name>
         <briefdescription>
+<para>Clear saved static properties assignments (for cores that existed before the GUI reload). </para>
         </briefdescription>
         <detaileddescription>
-<para>Clear saved static properties assignments (for cores that existed before the GUI reload). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -115,9 +115,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Stores static properties during initialization to be able to assign them after all &apos;liveReloadTag&apos; properties are set. </para>
     </briefdescription>
     <detaileddescription>
-<para>Stores static properties during initialization to be able to assign them after all &apos;liveReloadTag&apos; properties are set. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6161">

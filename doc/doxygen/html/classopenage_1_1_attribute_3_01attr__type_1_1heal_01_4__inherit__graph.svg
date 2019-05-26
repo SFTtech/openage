@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-360 144,-360 144,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Healing capabilities.">
 <polygon fill="#bfbfbf" stroke="black" points="21.5,-0.5 21.5,-101.5 118.5,-101.5 118.5,-0.5 21.5,-0.5"/>
 <text text-anchor="start" x="29.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="70" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::heal &gt;</text>
@@ -27,7 +27,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_shared_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_shared_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated shared attribute.">
 <polygon fill="white" stroke="black" points="0,-138.5 0,-217.5 140,-217.5 140,-138.5 0,-138.5"/>
 <text text-anchor="start" x="8" y="-205.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SharedAttribute</text>
 <text text-anchor="middle" x="70" y="-194.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container</text>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated attribute.">
 <polygon fill="white" stroke="black" points="1.5,-254.5 1.5,-355.5 138.5,-355.5 138.5,-254.5 1.5,-254.5"/>
 <text text-anchor="middle" x="70" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttributeContainer</text>
 <polyline fill="none" stroke="black" points="1.5,-336.5 138.5,-336.5 "/>

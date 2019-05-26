@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-2348 2402,-2348 2402,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="simple sound object">
 <polygon fill="#bfbfbf" stroke="black" points="184,-0.5 184,-68.5 271,-68.5 271,-0.5 184,-0.5"/>
 <text text-anchor="middle" x="227.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Sound</text>
 <polyline fill="none" stroke="black" points="184,-49.5 271,-49.5 "/>
@@ -70,7 +70,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec.xhtml" target="_top" xlink:title="GameSpec gives a collection of all game elements this currently includes unit types and terrain types...">
 <polygon fill="white" stroke="black" points="167,-116.5 167,-481.5 288,-481.5 288,-116.5 167,-116.5"/>
 <text text-anchor="middle" x="227.5" y="-469.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec</text>
 <polyline fill="none" stroke="black" points="167,-462.5 288,-462.5 "/>
@@ -116,7 +116,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_asset_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_asset_manager.xhtml" target="_top" xlink:title="Container class for all available assets.">
 <polygon fill="white" stroke="black" points="62.5,-595.5 62.5,-762.5 184.5,-762.5 184.5,-595.5 62.5,-595.5"/>
 <text text-anchor="middle" x="123.5" y="-750.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <polyline fill="none" stroke="black" points="62.5,-743.5 184.5,-743.5 "/>
@@ -144,7 +144,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title="C++ pendant to the python util.fslike.path.Path.">
 <polygon fill="white" stroke="black" points="580.5,-2154.5 580.5,-2343.5 678.5,-2343.5 678.5,-2154.5 580.5,-2154.5"/>
 <text text-anchor="middle" x="629.5" y="-2331.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <polyline fill="none" stroke="black" points="580.5,-2324.5 678.5,-2324.5 "/>
@@ -174,7 +174,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml" target="_top" xlink:title="main engine container.">
 <polygon fill="white" stroke="black" points="1019,-876.5 1019,-1230.5 1120,-1230.5 1120,-876.5 1019,-876.5"/>
 <text text-anchor="middle" x="1069.5" y="-1218.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine</text>
 <polyline fill="none" stroke="black" points="1019,-1211.5 1120,-1211.5 "/>
@@ -219,7 +219,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node17 -->
 <g id="node17" class="node"><title>Node17</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1cvar_1_1_c_var_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1cvar_1_1_c_var_manager.xhtml" target="_top" xlink:title="Configuration manager.">
 <polygon fill="white" stroke="black" points="1510.5,-1994.5 1510.5,-2106.5 1652.5,-2106.5 1652.5,-1994.5 1510.5,-1994.5"/>
 <text text-anchor="middle" x="1581.5" y="-2094.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::cvar::CVarManager</text>
 <polyline fill="none" stroke="black" points="1510.5,-2087.5 1652.5,-2087.5 "/>
@@ -242,7 +242,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node33 -->
 <g id="node33" class="node"><title>Node33</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1gui_1_1_engine_q_m_l_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1gui_1_1_engine_q_m_l_info.xhtml" target="_top" xlink:title="This container is attached to the QML engine.">
 <polygon fill="white" stroke="black" points="570.5,-650.5 570.5,-707.5 714.5,-707.5 714.5,-650.5 570.5,-650.5"/>
 <text text-anchor="middle" x="642.5" y="-695.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::EngineQMLInfo</text>
 <polyline fill="none" stroke="black" points="570.5,-688.5 714.5,-688.5 "/>
@@ -312,7 +312,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_resize_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_resize_handler.xhtml" target="_top" xlink:title="superclass for handling a window resize event.">
 <polygon fill="white" stroke="black" points="1368.5,-1405 1368.5,-1473 1490.5,-1473 1490.5,-1405 1368.5,-1405"/>
 <text text-anchor="middle" x="1429.5" y="-1461" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResizeHandler</text>
 <polyline fill="none" stroke="black" points="1368.5,-1454 1490.5,-1454 "/>
@@ -330,7 +330,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node7" class="node"><title>Node7</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1options_1_1_option_node.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1options_1_1_option_node.xhtml" target="_top" xlink:title="Allows objects to expose customisable features.">
 <polygon fill="white" stroke="black" points="1658.5,-1317 1658.5,-1561 1806.5,-1561 1806.5,-1317 1658.5,-1317"/>
 <text text-anchor="middle" x="1732.5" y="-1549" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::OptionNode</text>
 <polyline fill="none" stroke="black" points="1658.5,-1542 1806.5,-1542 "/>
@@ -410,7 +410,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node10 -->
 <g id="node10" class="node"><title>Node10</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml" target="_top" xlink:title="A typed value holder.">
 <polygon fill="white" stroke="black" points="1623.5,-2209.5 1623.5,-2288.5 1759.5,-2288.5 1759.5,-2209.5 1623.5,-2209.5"/>
 <text text-anchor="middle" x="1691.5" y="-2276.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::VariableBase</text>
 <polyline fill="none" stroke="black" points="1623.5,-2269.5 1759.5,-2269.5 "/>
@@ -454,7 +454,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node13 -->
 <g id="node13" class="node"><title>Node13</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1options_1_1_var.xhtml" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1options_1_1_var.xhtml" target="_top" xlink:title="A interaface variable which gets monitored by an option node allowing reflection, while also being di...">
 <polygon fill="white" stroke="black" points="1871,-1768.5 1871,-1825.5 2006,-1825.5 2006,-1768.5 1871,-1768.5"/>
 <text text-anchor="middle" x="1938.5" y="-1813.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Var&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="1871,-1806.5 2006,-1806.5 "/>
@@ -501,7 +501,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node15 -->
 <g id="node15" class="node"><title>Node15</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_engine_signals.xhtml" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_engine_signals.xhtml" target="_top" xlink:title="Qt signals for the engine.">
 <polygon fill="white" stroke="black" points="262.5,-1410.5 262.5,-1467.5 384.5,-1467.5 384.5,-1410.5 262.5,-1410.5"/>
 <text text-anchor="middle" x="323.5" y="-1455.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EngineSignals</text>
 <polyline fill="none" stroke="black" points="262.5,-1448.5 384.5,-1448.5 "/>
@@ -542,7 +542,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node32 -->
 <g id="node32" class="node"><title>Node32</title>
-<g id="a_node32"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title="The action manager manages all the actions allow creation, access information and equality.">
 <polygon fill="white" stroke="black" points="1700.5,-1735.5 1700.5,-1858.5 1852.5,-1858.5 1852.5,-1735.5 1700.5,-1735.5"/>
 <text text-anchor="middle" x="1776.5" y="-1846.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ActionManager</text>
 <polyline fill="none" stroke="black" points="1700.5,-1839.5 1852.5,-1839.5 "/>
@@ -589,7 +589,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node19 -->
 <g id="node19" class="node"><title>Node19</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title="A job manager can be used to execute functions within separate worker threads.">
 <polygon fill="white" stroke="black" points="525,-1647.5 525,-1946.5 656,-1946.5 656,-1647.5 525,-1647.5"/>
 <text text-anchor="middle" x="590.5" y="-1934.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <polyline fill="none" stroke="black" points="525,-1927.5 656,-1927.5 "/>
@@ -635,7 +635,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node42 -->
 <g id="node42" class="node"><title>Node42</title>
-<g id="a_node42"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node42"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml" target="_top" xlink:title="This class provides audio functionality for openage.">
 <polygon fill="white" stroke="black" points="403,-1289.5 403,-1588.5 554,-1588.5 554,-1289.5 403,-1289.5"/>
 <text text-anchor="middle" x="478.5" y="-1576.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <polyline fill="none" stroke="black" points="403,-1569.5 554,-1569.5 "/>
@@ -696,7 +696,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node35 -->
 <g id="node35" class="node"><title>Node35</title>
-<g id="a_node35"><a xlink:href="classopenage_1_1coord_1_1_coord_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classopenage_1_1coord_1_1_coord_manager.xhtml" target="_top" xlink:title="Holds all coordinate&#45;related state and metadata.">
 <polygon fill="white" stroke="black" points="1198.5,-1410.5 1198.5,-1467.5 1350.5,-1467.5 1350.5,-1410.5 1198.5,-1410.5"/>
 <text text-anchor="middle" x="1274.5" y="-1455.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::CoordManager</text>
 <polyline fill="none" stroke="black" points="1198.5,-1448.5 1350.5,-1448.5 "/>
@@ -757,7 +757,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node23 -->
 <g id="node23" class="node"><title>Node23</title>
-<g id="a_node23"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml" target="_top" xlink:title="Time measurement class.">
 <polygon fill="white" stroke="black" points="745.5,-1719 745.5,-1875 847.5,-1875 847.5,-1719 745.5,-1719"/>
 <text text-anchor="middle" x="796.5" y="-1863" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <polyline fill="none" stroke="black" points="745.5,-1856 847.5,-1856 "/>
@@ -808,7 +808,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node25 -->
 <g id="node25" class="node"><title>Node25</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml" target="_top" xlink:title="The input manager manages all input layers (hud, game, ...) and triggers the registered actions depen...">
 <polygon fill="white" stroke="black" points="2014,-1322.5 2014,-1555.5 2159,-1555.5 2159,-1322.5 2014,-1322.5"/>
 <text text-anchor="middle" x="2086.5" y="-1543.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <polyline fill="none" stroke="black" points="2014,-1536.5 2159,-1536.5 "/>
@@ -842,7 +842,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node29 -->
 <g id="node29" class="node"><title>Node29</title>
-<g id="a_node29"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml" target="_top" xlink:title=" ">
+<g id="a_node29"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml" target="_top" xlink:title="An input context contains all keybindings and actions active in e.g.">
 <polygon fill="white" stroke="black" points="2015,-959 2015,-1148 2156,-1148 2156,-959 2015,-959"/>
 <text text-anchor="middle" x="2085.5" y="-1136" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <polyline fill="none" stroke="black" points="2015,-1129 2156,-1129 "/>
@@ -878,7 +878,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node26 -->
 <g id="node26" class="node"><title>Node26</title>
-<g id="a_node26"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title="superclass for handling any input event.">
 <polygon fill="white" stroke="black" points="2153,-1763 2153,-1831 2266,-1831 2266,-1763 2153,-1763"/>
 <text text-anchor="middle" x="2209.5" y="-1819" font-family="Helvetica,sans-Serif" font-size="10.00">openage::InputHandler</text>
 <polyline fill="none" stroke="black" points="2153,-1812 2266,-1812 "/>
@@ -997,7 +997,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node34 -->
 <g id="node34" class="node"><title>Node34</title>
-<g id="a_node34"><a xlink:href="classqtsdl_1_1_gui_singleton_items_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node34"><a xlink:href="classqtsdl_1_1_gui_singleton_items_info.xhtml" target="_top" xlink:title="Accessible during creation of any singleton QML item.">
 <polygon fill="white" stroke="black" points="151.5,-1025 151.5,-1082 289.5,-1082 289.5,-1025 151.5,-1025"/>
 <text text-anchor="middle" x="220.5" y="-1070" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSingletonItemsInfo</text>
 <polyline fill="none" stroke="black" points="151.5,-1063 289.5,-1063 "/>
@@ -1147,7 +1147,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node43 -->
 <g id="node43" class="node"><title>Node43</title>
-<g id="a_node43"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title=" ">
+<g id="a_node43"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title="Base for QObject wrapper of the domain&#45;specific classes.">
 <polygon fill="white" stroke="black" points="0,-1025 0,-1082 95,-1082 95,-1025 0,-1025"/>
 <text text-anchor="middle" x="47.5" y="-1070" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemLink</text>
 <polyline fill="none" stroke="black" points="0,-1063 95,-1063 "/>
@@ -1165,7 +1165,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node44 -->
 <g id="node44" class="node"><title>Node44</title>
-<g id="a_node44"><a xlink:href="structopenage_1_1terrain__meta.xhtml" target="_top" xlink:title=" ">
+<g id="a_node44"><a xlink:href="structopenage_1_1terrain__meta.xhtml" target="_top" xlink:title="specification for all available tile types and blending data">
 <polygon fill="white" stroke="black" points="202.5,-617.5 202.5,-740.5 344.5,-740.5 344.5,-617.5 202.5,-617.5"/>
 <text text-anchor="middle" x="273.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::terrain_meta</text>
 <polyline fill="none" stroke="black" points="202.5,-721.5 344.5,-721.5 "/>

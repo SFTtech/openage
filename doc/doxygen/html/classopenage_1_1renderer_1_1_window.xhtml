@@ -105,8 +105,7 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1_window.xh
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_window__inherit__graph.svg" width="342" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_window__inherit__graph.svg" width="342" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::Window:</div>
@@ -146,8 +145,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad63c0200f828c7134ddc81ce711c171b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_window.xhtml#ad63c0200f828c7134ddc81ce711c171b">add_resize_callback</a> (const <a class="el" href="classopenage_1_1renderer_1_1_window.xhtml#ab856fe913343bbc5ce12cc45cec0e144">resize_cb_t</a> &amp;)</td></tr>
 <tr class="separator:ad63c0200f828c7134ddc81ce711c171b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9c94c1eb6ec43c5891c210e0eff2a6c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_window.xhtml#af9c94c1eb6ec43c5891c210e0eff2a6c">set_size</a> (size_t width, size_t height)=0</td></tr>
+<tr class="memdesc:af9c94c1eb6ec43c5891c210e0eff2a6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force the window to the given size.  <a href="#af9c94c1eb6ec43c5891c210e0eff2a6c">More...</a><br /></td></tr>
 <tr class="separator:af9c94c1eb6ec43c5891c210e0eff2a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a6722e3c0459b2caa86e8f819ff5e3f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_window.xhtml#a2a6722e3c0459b2caa86e8f819ff5e3f">update</a> ()=0</td></tr>
+<tr class="memdesc:a2a6722e3c0459b2caa86e8f819ff5e3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls for window events, calls callbacks for these events, swaps front and back framebuffers to present graphics onto screen.  <a href="#a2a6722e3c0459b2caa86e8f819ff5e3f">More...</a><br /></td></tr>
 <tr class="separator:a2a6722e3c0459b2caa86e8f819ff5e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5a85c89ebe4c6f9426ca989bc8aa305"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classopenage_1_1renderer_1_1_renderer.xhtml">Renderer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_window.xhtml#ab5a85c89ebe4c6f9426ca989bc8aa305">make_renderer</a> ()=0</td></tr>
 <tr class="memdesc:ab5a85c89ebe4c6f9426ca989bc8aa305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a renderer which uses the window's graphics API and targets the window.  <a href="#ab5a85c89ebe4c6f9426ca989bc8aa305">More...</a><br /></td></tr>
@@ -513,7 +514,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Force the window to the given size. It's generally not a good idea to use this, as it makes the window jump around wierdly. </p>
+
+<p>Force the window to the given size. </p>
+<p>It's generally not a good idea to use this, as it makes the window jump around wierdly. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#ad74b6ed2d5495dd39ccc7d21c88bac1f">openage::renderer::opengl::GlWindow</a>.</p>
 
@@ -574,7 +577,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Polls for window events, calls callbacks for these events, swaps front and back framebuffers to present graphics onto screen. This has to be called at the end of every graphics frame. </p>
+
+<p>Polls for window events, calls callbacks for these events, swaps front and back framebuffers to present graphics onto screen. </p>
+<p>This has to be called at the end of every graphics frame. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aae47c67c2194f86ad609762a371eef87">openage::renderer::opengl::GlWindow</a>.</p>
 

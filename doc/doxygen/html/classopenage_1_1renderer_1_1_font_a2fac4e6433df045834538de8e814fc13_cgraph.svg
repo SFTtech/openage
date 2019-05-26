@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-193.5 275,-193.5 275,4 -4,4"/>
 <!-- Node6 -->
 <g id="node1" class="node"><title>Node6</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Get the advance width of a particular string.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-85 0,-115 124,-115 124,-85 0,-85"/>
 <text text-anchor="start" x="8" y="-103" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="62" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00">Font::get_advance_width</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node10 -->
 <g id="node5" class="node"><title>Node10</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1_font.xhtml#a34cbc0674513e4759c7778fe63e671c4" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1_font.xhtml#a34cbc0674513e4759c7778fe63e671c4" target="_top" xlink:title="Get the kerning adjustment between two glyphs.">
 <polygon fill="white" stroke="black" points="164,-0.5 164,-41.5 267,-41.5 267,-0.5 164,-0.5"/>
 <text text-anchor="start" x="172" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="172" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">Font::get_horizontal</text>

@@ -80,7 +80,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node6 -->
 <g id="node3" class="node"><title>Node6</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490" target="_top" xlink:title="returns the opengl texture id of this texture.">
 <polygon fill="white" stroke="black" points="322,-0.5 322,-30.5 433,-30.5 433,-0.5 322,-0.5"/>
 <text text-anchor="start" x="330" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="377.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_texture_id</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node7 -->
 <g id="node4" class="node"><title>Node7</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b" target="_top" xlink:title="The texture loadin must occur on the thread that manages the gl context.">
 <polygon fill="white" stroke="black" points="469,-0.5 469,-30.5 585,-30.5 585,-0.5 469,-0.5"/>
 <text text-anchor="start" x="477" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::load</text>
 <text text-anchor="middle" x="527" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_in_glthread</text>

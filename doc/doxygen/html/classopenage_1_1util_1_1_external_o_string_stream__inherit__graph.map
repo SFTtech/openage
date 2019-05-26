@@ -1,4 +1,4 @@
 <map id="openage::util::ExternalOStringStream" name="openage::util::ExternalOStringStream">
-<area shape="rect" id="node1" title=" " alt="" coords="5,131,201,237"/>
+<area shape="rect" id="node1" title="Similar to std::ostringstream, but data is written to an external string object." alt="" coords="5,131,201,237"/>
 <area shape="rect" id="node2" title=" " alt="" coords="56,5,151,83"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="openage::BuildingProducer::get_accepted_resources" name="openage::BuildingProducer::get_accepted_resources">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,183,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_building_producer.xhtml#a98e04052b3c7522684bf1cd2e9c7e56f" title=" " alt="" coords="231,13,425,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_building_producer.xhtml#a98e04052b3c7522684bf1cd2e9c7e56f" title="gets the unique id of this unit type" alt="" coords="231,13,425,39"/>
 </map>

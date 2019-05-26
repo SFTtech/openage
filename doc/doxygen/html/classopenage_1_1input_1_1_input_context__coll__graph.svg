@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-752 655.5,-752 655.5,4 -4,4"/>
 <!-- Node5 -->
 <g id="node1" class="node"><title>Node5</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="An input context contains all keybindings and actions active in e.g.">
 <polygon fill="#bfbfbf" stroke="black" points="378.5,-452.5 378.5,-641.5 519.5,-641.5 519.5,-452.5 378.5,-452.5"/>
 <text text-anchor="middle" x="449" y="-629.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <polyline fill="none" stroke="black" points="378.5,-622.5 519.5,-622.5 "/>
@@ -81,7 +81,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node2" class="node"><title>Node6</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml" target="_top" xlink:title="The input manager manages all input layers (hud, game, ...) and triggers the registered actions depen...">
 <polygon fill="white" stroke="black" points="247.5,-171.5 247.5,-404.5 392.5,-404.5 392.5,-171.5 247.5,-171.5"/>
 <text text-anchor="middle" x="320" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <polyline fill="none" stroke="black" points="247.5,-385.5 392.5,-385.5 "/>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node12 -->
 <g id="node8" class="node"><title>Node12</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title="The action manager manages all the actions allow creation, access information and equality.">
 <polygon fill="white" stroke="black" points="145,-0.5 145,-123.5 297,-123.5 297,-0.5 145,-0.5"/>
 <text text-anchor="middle" x="221" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ActionManager</text>
 <polyline fill="none" stroke="black" points="145,-104.5 297,-104.5 "/>
@@ -145,7 +145,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node7 -->
 <g id="node3" class="node"><title>Node7</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title="superclass for handling any input event.">
 <polygon fill="white" stroke="black" points="118.5,-513 118.5,-581 231.5,-581 231.5,-513 118.5,-513"/>
 <text text-anchor="middle" x="175" y="-569" font-family="Helvetica,sans-Serif" font-size="10.00">openage::InputHandler</text>
 <polyline fill="none" stroke="black" points="118.5,-562 231.5,-562 "/>
@@ -246,7 +246,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node13 -->
 <g id="node9" class="node"><title>Node13</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1cvar_1_1_c_var_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1cvar_1_1_c_var_manager.xhtml" target="_top" xlink:title="Configuration manager.">
 <polygon fill="white" stroke="black" points="0,-232 0,-344 142,-344 142,-232 0,-232"/>
 <text text-anchor="middle" x="71" y="-332" font-family="Helvetica,sans-Serif" font-size="10.00">openage::cvar::CVarManager</text>
 <polyline fill="none" stroke="black" points="0,-325 142,-325 "/>
@@ -269,7 +269,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node14 -->
 <g id="node10" class="node"><title>Node14</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title="C++ pendant to the python util.fslike.path.Path.">
 <polygon fill="white" stroke="black" points="2,-452.5 2,-641.5 100,-641.5 100,-452.5 2,-452.5"/>
 <text text-anchor="middle" x="51" y="-629.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <polyline fill="none" stroke="black" points="2,-622.5 100,-622.5 "/>

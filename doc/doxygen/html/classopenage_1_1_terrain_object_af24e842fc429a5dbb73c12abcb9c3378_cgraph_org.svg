@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-122.5 547,-122.5 547,4 -4,4"/>
 <!-- Node149 -->
 <g id="node1" class="node"><title>Node149</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="remove this TerrainObject from the terrain chunks.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-39 0,-69 117,-69 117,-39 0,-39"/>
 <text text-anchor="start" x="8" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="58.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::remove</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node150 -->
 <g id="node2" class="node"><title>Node150</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title="get tile data by absolute coordinates.">
 <polygon fill="white" stroke="black" points="153.5,-88 153.5,-118 269.5,-118 269.5,-88 153.5,-88"/>
 <text text-anchor="start" x="161.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="211.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node154 -->
 <g id="node6" class="node"><title>Node154</title>
-<g id="a_node6"><a xlink:href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" target="_top" xlink:title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta...">
 <polygon fill="white" stroke="black" points="166.5,-0.5 166.5,-19.5 256.5,-19.5 256.5,-0.5 166.5,-0.5"/>
 <text text-anchor="middle" x="211.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::tile_list</text>
 </a>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node152 -->
 <g id="node4" class="node"><title>Node152</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="446,-93.5 446,-112.5 543,-112.5 543,-93.5 446,-93.5"/>
 <text text-anchor="middle" x="494.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

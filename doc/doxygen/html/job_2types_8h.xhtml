@@ -108,7 +108,8 @@ $(document).ready(function(){initNavTree('job_2types_8h.xhtml','');});
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="job_2types_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="job_2types_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div>
 <p><a href="job_2types_8h_source.xhtml">Go to the source code of this file.</a></p>
@@ -116,6 +117,7 @@ $(document).ready(function(){initNavTree('job_2types_8h.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1job"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1job.xhtml">openage::job</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,19 +126,25 @@ Namespaces</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a3e3a23d8e117aba5577c273f75ed630e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a3e3a23d8e117aba5577c273f75ed630e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1job.xhtml#a3e3a23d8e117aba5577c273f75ed630e">openage::job::job_function_t</a> = std::function&lt; T()&gt;</td></tr>
+<tr class="memdesc:a3e3a23d8e117aba5577c273f75ed630e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a function that is executed by a job and returns a result.  <a href="namespaceopenage_1_1job.xhtml#a3e3a23d8e117aba5577c273f75ed630e">More...</a><br /></td></tr>
 <tr class="separator:a3e3a23d8e117aba5577c273f75ed630e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae93538aa9f8440cd9bbd3fe67d88e75"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aae93538aa9f8440cd9bbd3fe67d88e75"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1job.xhtml#aae93538aa9f8440cd9bbd3fe67d88e75">openage::job::abortable_function_t</a> = std::function&lt; T(std::function&lt; bool()&gt;, std::function&lt; void()&gt;)&gt;</td></tr>
+<tr class="memdesc:aae93538aa9f8440cd9bbd3fe67d88e75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a function that is executed by a job and returns a result.  <a href="namespaceopenage_1_1job.xhtml#aae93538aa9f8440cd9bbd3fe67d88e75">More...</a><br /></td></tr>
 <tr class="separator:aae93538aa9f8440cd9bbd3fe67d88e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7f614139b9f8585d91285475c260c2f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aa7f614139b9f8585d91285475c260c2f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1job.xhtml#aa7f614139b9f8585d91285475c260c2f">openage::job::result_function_t</a> = std::function&lt; T()&gt;</td></tr>
+<tr class="memdesc:aa7f614139b9f8585d91285475c260c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a function to retrieve the result of a job.  <a href="namespaceopenage_1_1job.xhtml#aa7f614139b9f8585d91285475c260c2f">More...</a><br /></td></tr>
 <tr class="separator:aa7f614139b9f8585d91285475c260c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e457e59ab065783dbb679ab82cfdfa4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a9e457e59ab065783dbb679ab82cfdfa4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1job.xhtml#a9e457e59ab065783dbb679ab82cfdfa4">openage::job::callback_function_t</a> = std::function&lt; void(result_function_t&lt; T &gt;)&gt;</td></tr>
+<tr class="memdesc:a9e457e59ab065783dbb679ab82cfdfa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a job's callback function, which is called, when a job has finished.  <a href="namespaceopenage_1_1job.xhtml#a9e457e59ab065783dbb679ab82cfdfa4">More...</a><br /></td></tr>
 <tr class="separator:a9e457e59ab065783dbb679ab82cfdfa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa67062d8c4a001038067eb490177604b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1job.xhtml#aa67062d8c4a001038067eb490177604b">openage::job::should_abort_t</a> = std::function&lt; bool()&gt;</td></tr>
+<tr class="memdesc:aa67062d8c4a001038067eb490177604b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a function that returns whether a job should be aborted.  <a href="namespaceopenage_1_1job.xhtml#aa67062d8c4a001038067eb490177604b">More...</a><br /></td></tr>
 <tr class="separator:aa67062d8c4a001038067eb490177604b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e43d5cc58984baa7a8d4f3ea294cee8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1job.xhtml#a8e43d5cc58984baa7a8d4f3ea294cee8">openage::job::abort_t</a> = std::function&lt; void()&gt;</td></tr>
+<tr class="memdesc:a8e43d5cc58984baa7a8d4f3ea294cee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a function that aborts a job.  <a href="namespaceopenage_1_1job.xhtml#a8e43d5cc58984baa7a8d4f3ea294cee8">More...</a><br /></td></tr>
 <tr class="separator:a8e43d5cc58984baa7a8d4f3ea294cee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

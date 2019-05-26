@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-112 437,-112 437,4 -4,4"/>
 <!-- Node229 -->
 <g id="node1" class="node"><title>Node229</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="render text with the at a position with specified font size">
 <polygon fill="#bfbfbf" stroke="black" points="0,-44.5 0,-63.5 144,-63.5 144,-44.5 0,-44.5"/>
 <text text-anchor="middle" x="72" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::render_text</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node233 -->
 <g id="node5" class="node"><title>Node233</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="180,-0.5 180,-19.5 294,-19.5 294,-0.5 180,-0.5"/>
 <text text-anchor="middle" x="237" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>

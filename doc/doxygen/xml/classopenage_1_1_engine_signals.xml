@@ -25,9 +25,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Qt signals for the engine. </para>
     </briefdescription>
     <detaileddescription>
-<para>Qt signals for the engine. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2138">

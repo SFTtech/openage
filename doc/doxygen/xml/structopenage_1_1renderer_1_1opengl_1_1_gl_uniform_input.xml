@@ -26,9 +26,10 @@
         <argsstring></argsstring>
         <name>update_offs</name>
         <briefdescription>
+<para>We store uniform updates lazily. </para>
         </briefdescription>
         <detaileddescription>
-<para>We store uniform updates lazily. They are only actually uploaded to GPU when a draw call is made. Update_offs maps the uniform names to where their value is in update_data in terms of a byte-wise offset. This is only a partial valuation, so not all uniforms have to be present here. </para>
+<para>They are only actually uploaded to GPU when a draw call is made. Update_offs maps the uniform names to where their value is in update_data in terms of a byte-wise offset. This is only a partial valuation, so not all uniforms have to be present here. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

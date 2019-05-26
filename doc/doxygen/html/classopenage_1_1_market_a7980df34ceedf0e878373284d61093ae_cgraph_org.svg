@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-329.21 1005,-329.21 1005,4 -4,4"/>
 <!-- Node44 -->
 <g id="node1" class="node"><title>Node44</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="The given player sells the given resource for gold.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-58.7103 0,-77.7103 110,-77.7103 110,-58.7103 0,-58.7103"/>
 <text text-anchor="middle" x="55" y="-65.7103" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::sell</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node45 -->
 <g id="node2" class="node"><title>Node45</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a3ff378e505d9036c74204730b53d9fba" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a3ff378e505d9036c74204730b53d9fba" target="_top" xlink:title="remove from stockpile if available">
 <polygon fill="white" stroke="black" points="146.5,-143.71 146.5,-162.71 268.5,-162.71 268.5,-143.71 146.5,-143.71"/>
 <text text-anchor="middle" x="207.5" y="-150.71" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::deduct</text>
 </a>
@@ -45,7 +45,7 @@
 </g>
 <!-- Node56 -->
 <g id="node13" class="node"><title>Node56</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_market.xhtml#a5c916fe21925f6276f58bc9f6dd95765" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_market.xhtml#a5c916fe21925f6276f58bc9f6dd95765" target="_top" xlink:title="Get the buying prices for a given player.">
 <polygon fill="white" stroke="black" points="153,-31.2103 153,-61.2103 262,-61.2103 262,-31.2103 153,-31.2103"/>
 <text text-anchor="start" x="161" y="-49.2103" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="207.5" y="-38.2103" font-family="Helvetica,sans-Serif" font-size="10.00">_sell_prices</text>
@@ -59,7 +59,7 @@
 </g>
 <!-- Node59 -->
 <g id="node16" class="node"><title>Node59</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1_player.xhtml#a728983ff63d9e16ecc874a942c61fa22" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1_player.xhtml#a728983ff63d9e16ecc874a942c61fa22" target="_top" xlink:title="add to stockpile">
 <polygon fill="white" stroke="black" points="146,-80.7103 146,-99.7103 269,-99.7103 269,-80.7103 146,-80.7103"/>
 <text text-anchor="middle" x="207.5" y="-87.7103" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::receive</text>
 </a>
@@ -72,7 +72,7 @@
 </g>
 <!-- Node46 -->
 <g id="node3" class="node"><title>Node46</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#ae324ee7f007981e5f9629f6ed30b8641" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#ae324ee7f007981e5f9629f6ed30b8641" target="_top" xlink:title="If amount can&#39;t be deducted return false, else deduct the given amount and return true.">
 <polygon fill="white" stroke="black" points="305,-219.21 305,-249.21 436,-249.21 436,-219.21 305,-219.21"/>
 <text text-anchor="start" x="313" y="-237.21" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <text text-anchor="middle" x="370.5" y="-226.21" font-family="Helvetica,sans-Serif" font-size="10.00">::deduct</text>
@@ -86,7 +86,7 @@
 </g>
 <!-- Node48 -->
 <g id="node5" class="node"><title>Node48</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_player.xhtml#a2a7b7334922d4cdf68236f8684cbfe38" target="_top" xlink:title="Called when the resources amounts change.">
 <polygon fill="white" stroke="black" points="318.5,-138.21 318.5,-168.21 422.5,-168.21 422.5,-138.21 318.5,-138.21"/>
 <text text-anchor="start" x="326.5" y="-156.21" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::on</text>
 <text text-anchor="middle" x="370.5" y="-145.21" font-family="Helvetica,sans-Serif" font-size="10.00">_resources_change</text>
@@ -127,7 +127,7 @@
 </g>
 <!-- Node52 -->
 <g id="node9" class="node"><title>Node52</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" target="_top" xlink:title="Updates resource based sub&#45;scores.">
 <polygon fill="white" stroke="black" points="488,-207.21 488,-237.21 608,-237.21 608,-207.21 488,-207.21"/>
 <text text-anchor="start" x="496" y="-225.21" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score::update</text>
 <text text-anchor="middle" x="548" y="-214.21" font-family="Helvetica,sans-Serif" font-size="10.00">_resources</text>
@@ -174,7 +174,7 @@
 </g>
 <!-- Node54 -->
 <g id="node11" class="node"><title>Node54</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title="Returns the sum of all the resources.">
 <polygon fill="white" stroke="black" points="660,-305.71 660,-324.71 815,-324.71 815,-305.71 660,-305.71"/>
 <text text-anchor="middle" x="737.5" y="-312.71" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle::sum</text>
 </a>
@@ -206,7 +206,7 @@
 </g>
 <!-- Node57 -->
 <g id="node14" class="node"><title>Node57</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_market.xhtml#aefa96adaadd93ab08349621e01a1b65f" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_market.xhtml#aefa96adaadd93ab08349621e01a1b65f" target="_top" xlink:title="The getBuyPrices and getSellPrices are redirected here.">
 <polygon fill="white" stroke="black" points="316,-31.2103 316,-61.2103 425,-61.2103 425,-31.2103 316,-31.2103"/>
 <text text-anchor="start" x="324" y="-49.2103" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="370.5" y="-38.2103" font-family="Helvetica,sans-Serif" font-size="10.00">_prices</text>
@@ -220,7 +220,7 @@
 </g>
 <!-- Node58 -->
 <g id="node15" class="node"><title>Node58</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_market.xhtml#adb430db2e1ce5828a1bc6b273994b9dc" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_market.xhtml#adb430db2e1ce5828a1bc6b273994b9dc" target="_top" xlink:title="Get the multiplier for the base prices.">
 <polygon fill="white" stroke="black" points="493.5,-31.2103 493.5,-61.2103 602.5,-61.2103 602.5,-31.2103 493.5,-31.2103"/>
 <text text-anchor="start" x="501.5" y="-49.2103" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="548" y="-38.2103" font-family="Helvetica,sans-Serif" font-size="10.00">_multiplier</text>
@@ -239,7 +239,7 @@
 </g>
 <!-- Node60 -->
 <g id="node17" class="node"><title>Node60</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1_player.xhtml#ac7283a82ddfcc4a556ca4aa4f9277bbc" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1_player.xhtml#ac7283a82ddfcc4a556ca4aa4f9277bbc" target="_top" xlink:title="current stockpile amount">
 <polygon fill="white" stroke="black" points="308,-80.7103 308,-99.7103 433,-99.7103 433,-80.7103 308,-80.7103"/>
 <text text-anchor="middle" x="370.5" y="-87.7103" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::amount</text>
 </a>

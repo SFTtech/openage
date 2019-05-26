@@ -1,4 +1,4 @@
 <map id="openage::ResearchAction" name="openage::ResearchAction">
-<area shape="rect" id="node1" title=" " alt="" coords="5,453,176,692"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml" title=" " alt="" coords="19,5,163,405"/>
+<area shape="rect" id="node1" title="trains a new unit" alt="" coords="5,453,176,692"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml" title="Actions can be pushed onto any units action stack." alt="" coords="19,5,163,405"/>
 </map>

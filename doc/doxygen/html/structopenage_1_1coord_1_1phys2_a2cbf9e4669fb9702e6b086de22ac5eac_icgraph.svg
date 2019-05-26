@@ -66,7 +66,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" target="_top" xlink:title="given the west most point of a building foundation and the tile_delta size of the foundation,...">
 <polygon fill="white" stroke="black" points="310,-30 310,-49 435,-49 435,-30 310,-30"/>
 <text text-anchor="middle" x="372.5" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::building_center</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node8 -->
 <g id="node3" class="node"><title>Node8</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" target="_top" xlink:title="calculate object start and end positions.">
 <polygon fill="white" stroke="black" points="155,-49.5 155,-79.5 274,-79.5 274,-49.5 155,-49.5"/>
 <text text-anchor="start" x="163" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="214.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_range</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node10 -->
 <g id="node5" class="node"><title>Node10</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title="Display this mode.">
 <polygon fill="white" stroke="black" points="159,-0.5 159,-30.5 270,-30.5 270,-0.5 159,-0.5"/>
 <text text-anchor="start" x="167" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="214.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::render</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node9 -->
 <g id="node4" class="node"><title>Node9</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 119,-79.5 119,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="59.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>

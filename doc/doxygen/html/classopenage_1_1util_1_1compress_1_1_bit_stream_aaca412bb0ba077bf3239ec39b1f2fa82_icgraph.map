@@ -1,4 +1,4 @@
 <map id="openage::util::compress::BitStream::load_next_16_bits" name="openage::util::compress::BitStream::load_next_16_bits">
-<area shape="rect" id="node1" title=" " alt="" coords="268,5,429,61"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a5a9875f4e718027a319d43a5939d9d95" title=" " alt="" coords="5,13,220,54"/>
+<area shape="rect" id="node1" title="for use in bitstream mode." alt="" coords="268,5,429,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a5a9875f4e718027a319d43a5939d9d95" title="for use in bitstream mode." alt="" coords="5,13,220,54"/>
 </map>

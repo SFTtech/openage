@@ -12,9 +12,9 @@
         <name>DEFAULT_PRELOAD_AMOUNT</name>
         <initializer>= 10</initializer>
         <briefdescription>
+<para>The number of chunks that have to be loaded, before a sound actually starts playing. </para>
         </briefdescription>
         <detaileddescription>
-<para>The number of chunks that have to be loaded, before a sound actually starts playing. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -27,9 +27,9 @@
         <name>DEFAULT_CHUNK_SIZE</name>
         <initializer>= 9600*2</initializer>
         <briefdescription>
+<para>The default used chunk size in bytes (100ms). </para>
         </briefdescription>
         <detaileddescription>
-<para>The default used chunk size in bytes (100ms). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -42,9 +42,9 @@
         <name>DEFAULT_MAX_CHUNKS</name>
         <initializer>= 100</initializer>
         <briefdescription>
+<para>The default number of chunks, that can be loaded at the same time. </para>
         </briefdescription>
         <detaileddescription>
-<para>The default number of chunks, that can be loaded at the same time. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -58,9 +58,9 @@
         <argsstring></argsstring>
         <name>path</name>
         <briefdescription>
+<para>The resource&apos;s path. </para>
         </briefdescription>
         <detaileddescription>
-<para>The resource&apos;s path. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -79,9 +79,9 @@
         <argsstring></argsstring>
         <name>format</name>
         <briefdescription>
+<para>The resource&apos;s audio format. </para>
         </briefdescription>
         <detaileddescription>
-<para>The resource&apos;s audio format. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -94,9 +94,9 @@
         <argsstring></argsstring>
         <name>preload_amount</name>
         <briefdescription>
+<para>The number of chunks that should be preloaded. </para>
         </briefdescription>
         <detaileddescription>
-<para>The number of chunks that should be preloaded. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -109,9 +109,9 @@
         <argsstring></argsstring>
         <name>chunk_size</name>
         <briefdescription>
+<para>The size of one audio chunk in bytes. </para>
         </briefdescription>
         <detaileddescription>
-<para>The size of one audio chunk in bytes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -127,9 +127,10 @@
         <argsstring></argsstring>
         <name>max_chunks</name>
         <briefdescription>
+<para>The maximum number of chunks that are used to store audio data. </para>
         </briefdescription>
         <detaileddescription>
-<para>The maximum number of chunks that are used to store audio data. This is the maximum amount stored in the <computeroutput>chunks</computeroutput> map. </para>
+<para>This is the maximum amount stored in the <computeroutput>chunks</computeroutput> map. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -142,9 +143,9 @@
         <argsstring></argsstring>
         <name>use_count</name>
         <briefdescription>
+<para>The number of sounds that currently use this resource. </para>
         </briefdescription>
         <detaileddescription>
-<para>The number of sounds that currently use this resource. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -158,9 +159,9 @@
         <argsstring></argsstring>
         <name>loader</name>
         <briefdescription>
+<para>The background audio loader. </para>
         </briefdescription>
         <detaileddescription>
-<para>The background audio loader. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -174,9 +175,9 @@
         <argsstring></argsstring>
         <name>decay_queue</name>
         <briefdescription>
+<para>Queue of audio chunk information that manages the decay of buffer data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Queue of audio chunk information that manages the decay of buffer data.</para>
 <para>This implements &quot;forget least-recently-used chunks&quot; when a new one shall be loaded. This <emphasis>must</emphasis> never run empty! Otherwise the audio system will lock up. </para>
         </detaileddescription>
         <inbodydescription>
@@ -194,9 +195,10 @@
         <argsstring></argsstring>
         <name>chunks</name>
         <briefdescription>
+<para><ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> chunk index to chunk mapping. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> chunk index to chunk mapping. Loading and usage state is reached through this. </para>
+<para>Loading and usage state is reached through this. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -211,9 +213,9 @@
         <argsstring></argsstring>
         <name>loading_job_group</name>
         <briefdescription>
+<para>The background loading job group. </para>
         </briefdescription>
         <detaileddescription>
-<para>The background loading job group. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -294,9 +296,9 @@
         <name>use</name>
         <reimplements refid="classopenage_1_1audio_1_1_resource_1a0ad2666c3d7c85d9ca17a2eb9c7887cb">use</reimplements>
         <briefdescription>
+<para>Tells the resource, that it will be used by a sound object, so it can preload some pcm samples. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tells the resource, that it will be used by a sound object, so it can preload some pcm samples. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -322,9 +324,9 @@
         <name>stop_using</name>
         <reimplements refid="classopenage_1_1audio_1_1_resource_1aaa6342dfe81f25de870d35018db5934c">stop_using</reimplements>
         <briefdescription>
+<para>Tells the resource, that one sound object does not use this resource any longer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tells the resource, that one sound object does not use this resource any longer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -348,9 +350,10 @@
           <declname>data_length</declname>
         </param>
         <briefdescription>
+<para>Returns a pointer to the sample buffer at the given position and the number of int16_t values that are actually available. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a pointer to the sample buffer at the given position and the number of int16_t values that are actually available. If the end of the resource is reached, 0 will be returned. If the resource is not ready yet, a nullptr with a length, different to zero, will be returned.</para>
+<para>If the end of the resource is reached, 0 will be returned. If the resource is not ready yet, a nullptr with a length, different to zero, will be returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>position</parametername>
@@ -403,9 +406,10 @@
           <declname>resource_chunk_index</declname>
         </param>
         <briefdescription>
+<para>Start to load audio chunks beginning at the given chunk index. </para>
         </briefdescription>
         <detaileddescription>
-<para>Start to load audio chunks beginning at the given chunk index. Continues to do so until the <computeroutput>preload_amount</computeroutput> is reached. </para>
+<para>Continues to do so until the <computeroutput>preload_amount</computeroutput> is reached. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -432,9 +436,10 @@
           <declname>resource_chunk_offset</declname>
         </param>
         <briefdescription>
+<para>Load a single chunk in the background (through the job manager). </para>
         </briefdescription>
         <detaileddescription>
-<para>Load a single chunk in the background (through the job manager). First, the given <computeroutput>chunk_info</computeroutput> is invalidated. Then, after loading, it&apos;s pushed into the <computeroutput>decay_queue</computeroutput> so it can decay again. </para>
+<para>First, the given <computeroutput>chunk_info</computeroutput> is invalidated. Then, after loading, it&apos;s pushed into the <computeroutput>decay_queue</computeroutput> so it can decay again. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -453,9 +458,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Audio data that is loaded dynamically when used. </para>
     </briefdescription>
     <detaileddescription>
-<para>Audio data that is loaded dynamically when used. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="471">

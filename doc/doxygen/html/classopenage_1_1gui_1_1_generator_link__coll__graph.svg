@@ -70,7 +70,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node17 -->
 <g id="node2" class="node"><title>Node17</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_list_model.xhtml" target="_top" xlink:title="Adapts core that uses a property map to QAbstractListModel interface.">
 <polygon fill="white" stroke="black" points="249.5,-106.5 249.5,-240.5 374.5,-240.5 374.5,-106.5 249.5,-106.5"/>
 <text text-anchor="middle" x="312" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiListModel</text>
 <polyline fill="none" stroke="black" points="249.5,-221.5 374.5,-221.5 "/>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node20 -->
 <g id="node5" class="node"><title>Node20</title>
-<g id="a_node5"><a xlink:href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" target="_top" xlink:title="Stores static properties during initialization to be able to assign them after all &#39;liveReloadTag&#39; pr...">
 <polygon fill="white" stroke="black" points="0,-470.5 0,-615.5 160,-615.5 160,-470.5 0,-470.5"/>
 <text text-anchor="start" x="8" y="-603.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::DeferredInitialConstant</text>
 <text text-anchor="middle" x="80" y="-592.5" font-family="Helvetica,sans-Serif" font-size="10.00">PropertyValues</text>
@@ -160,7 +160,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node21 -->
 <g id="node6" class="node"><title>Node21</title>
-<g id="a_node6"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml" target="_top" xlink:title="Attaches to the GuiCallbackImpl.">
 <polygon fill="white" stroke="black" points="178.5,-509 178.5,-577 319.5,-577 319.5,-509 178.5,-509"/>
 <text text-anchor="middle" x="249" y="-565" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 <polyline fill="none" stroke="black" points="178.5,-558 319.5,-558 "/>
@@ -196,7 +196,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node23 -->
 <g id="node8" class="node"><title>Node23</title>
-<g id="a_node8"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title="Base for QObject wrapper of the domain&#45;specific classes.">
 <polygon fill="white" stroke="black" points="234.5,-327 234.5,-384 329.5,-384 329.5,-327 234.5,-327"/>
 <text text-anchor="middle" x="282" y="-372" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemLink</text>
 <polyline fill="none" stroke="black" points="234.5,-365 329.5,-365 "/>
@@ -294,7 +294,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node28 -->
 <g id="node13" class="node"><title>Node28</title>
-<g id="a_node13"><a xlink:href="classqtsdl_1_1_persistent_core_holder_base.xhtml" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classqtsdl_1_1_persistent_core_holder_base.xhtml" target="_top" xlink:title="Helper to hide the type of the core.">
 <polygon fill="white" stroke="black" points="763,-1166.5 763,-1234.5 921,-1234.5 921,-1166.5 763,-1166.5"/>
 <text text-anchor="middle" x="842" y="-1222.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::PersistentCoreHolderBase</text>
 <polyline fill="none" stroke="black" points="763,-1215.5 921,-1215.5 "/>
@@ -384,7 +384,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node36 -->
 <g id="node21" class="node"><title>Node36</title>
-<g id="a_node21"><a xlink:href="classqtsdl_1_1_gui_item.xhtml" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classqtsdl_1_1_gui_item.xhtml" target="_top" xlink:title="Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads.">
 <polygon fill="white" stroke="black" points="624.5,-514.5 624.5,-571.5 725.5,-571.5 725.5,-514.5 624.5,-514.5"/>
 <text text-anchor="middle" x="675" y="-559.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItem&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="624.5,-552.5 725.5,-552.5 "/>
@@ -454,7 +454,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node34 -->
 <g id="node19" class="node"><title>Node34</title>
-<g id="a_node19"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="white" stroke="black" points="449,-856.5 449,-990.5 587,-990.5 587,-856.5 449,-856.5"/>
 <text text-anchor="middle" x="518" y="-978.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="449,-971.5 587,-971.5 "/>
@@ -517,7 +517,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node37 -->
 <g id="node22" class="node"><title>Node37</title>
-<g id="a_node22"><a xlink:href="classqtsdl_1_1_gui_item_list_model.xhtml" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classqtsdl_1_1_gui_item_list_model.xhtml" target="_top" xlink:title="A shell object fir cores inherited from GuiPropertyMap.">
 <polygon fill="white" stroke="black" points="468.5,-299.5 468.5,-411.5 623.5,-411.5 623.5,-299.5 468.5,-299.5"/>
 <text text-anchor="middle" x="546" y="-399.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemListModel&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="468.5,-392.5 623.5,-392.5 "/>

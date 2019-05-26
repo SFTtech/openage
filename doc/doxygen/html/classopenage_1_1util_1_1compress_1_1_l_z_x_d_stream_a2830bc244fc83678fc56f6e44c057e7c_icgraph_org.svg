@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 524,-46 524,4 -4,4"/>
 <!-- Node19 -->
 <g id="node1" class="node"><title>Node19</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Decodes one symbol from the current verbatim block.">
 <polygon fill="#bfbfbf" stroke="black" points="369,-0.5 369,-41.5 520,-41.5 520,-0.5 369,-0.5"/>
 <text text-anchor="start" x="377" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="377" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDStream::decode_symbol</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node20 -->
 <g id="node2" class="node"><title>Node20</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" target="_top" xlink:title="See the doc for LZXDecompressor::decompress_next_frame in lzxd.h.">
 <polygon fill="white" stroke="black" points="197,-0.5 197,-41.5 333,-41.5 333,-0.5 197,-0.5"/>
 <text text-anchor="start" x="205" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="205" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDStream::decompress</text>
@@ -36,7 +36,7 @@
 </g>
 <!-- Node21 -->
 <g id="node3" class="node"><title>Node21</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" target="_top" xlink:title="Decompresses a single 32&#45;KiB frame.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-41.5 161,-41.5 161,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDecompressor::decompress</text>

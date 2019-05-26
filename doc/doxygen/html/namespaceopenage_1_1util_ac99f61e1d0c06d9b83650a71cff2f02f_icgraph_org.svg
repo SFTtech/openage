@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 591,-133 591,4 -4,4"/>
 <!-- Node160 -->
 <g id="node1" class="node"><title>Node160</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns the unique identifier of the current thread.">
 <polygon fill="#bfbfbf" stroke="black" points="490,-49.5 490,-79.5 587,-79.5 587,-49.5 490,-49.5"/>
 <text text-anchor="start" x="498" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::get</text>
 <text text-anchor="middle" x="538.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_current_thread_id</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node161 -->
 <g id="node2" class="node"><title>Node161</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ae81b425a182f26b155c9f31de6b74d63" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ae81b425a182f26b155c9f31de6b74d63" target="_top" xlink:title="Executes callbacks for all job&#39;s, that were created by the current thread and have finished.">
 <polygon fill="white" stroke="black" points="317,-98.5 317,-128.5 448,-128.5 448,-98.5 317,-98.5"/>
 <text text-anchor="start" x="325" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="382.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_callbacks</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node164 -->
 <g id="node5" class="node"><title>Node164</title>
-<g id="a_node5"><a xlink:href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624" target="_top" xlink:title="Sets all members except for filename, lineno, functionname and level.">
 <polygon fill="white" stroke="black" points="323.5,-49.5 323.5,-79.5 441.5,-79.5 441.5,-49.5 323.5,-49.5"/>
 <text text-anchor="start" x="331.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::message</text>
 <text text-anchor="middle" x="382.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::init</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node166 -->
 <g id="node7" class="node"><title>Node166</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a8e29b857a4d99759518b542746a02936" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a8e29b857a4d99759518b542746a02936" target="_top" xlink:title="Creates a new typed job with the given callback.">
 <polygon fill="white" stroke="black" points="311,-0.5 311,-30.5 454,-30.5 454,-0.5 311,-0.5"/>
 <text text-anchor="start" x="319" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::TypedJobState</text>
 <text text-anchor="middle" x="382.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Base::TypedJobStateBase</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node162 -->
 <g id="node3" class="node"><title>Node162</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="153.5,-104 153.5,-123 266.5,-123 266.5,-104 153.5,-104"/>
 <text text-anchor="middle" x="210" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node163 -->
 <g id="node4" class="node"><title>Node163</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="0,-104 0,-123 109,-123 109,-104 0,-104"/>
 <text text-anchor="middle" x="54.5" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node165 -->
 <g id="node6" class="node"><title>Node165</title>
-<g id="a_node6"><a xlink:href="structopenage_1_1log_1_1message.xhtml#a9f25c53eaa48cd37d1d5753e53db9549" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="structopenage_1_1log_1_1message.xhtml#a9f25c53eaa48cd37d1d5753e53db9549" target="_top" xlink:title="Sets all members except for lineno and level.">
 <polygon fill="white" stroke="black" points="145,-49.5 145,-79.5 275,-79.5 275,-49.5 145,-49.5"/>
 <text text-anchor="start" x="153" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::message</text>
 <text text-anchor="middle" x="210" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::init_with_metadata_copy</text>

@@ -1,10 +1,10 @@
 <map id="openage::util::addr_to_string" name="openage::util::addr_to_string">
 <area shape="rect" id="node1" title=" " alt="" coords="1255,116,1384,157"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c" title=" " alt="" coords="1021,123,1207,150"/>
-<area shape="rect" id="node3" href="$classopenage_1_1error_1_1_stack_analyzer.xhtml#ab807f0825ce961e84c901c715cc79976" title=" " alt="" coords="774,5,973,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1pyinterface_1_1_func.xhtml#a83b9691db46167c2637c86f5a71cb40f" title=" " alt="" coords="773,71,973,127"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1pyinterface.xhtml#a591d9bd55fa1f9904547f3f2dcb3796d" title=" " alt="" coords="795,152,951,193"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" title=" " alt="" coords="802,217,945,259"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8" title="Returns the (demangled) symbol name for a given address." alt="" coords="1021,123,1207,150"/>
+<area shape="rect" id="node3" href="$classopenage_1_1error_1_1_stack_analyzer.xhtml#ab807f0825ce961e84c901c715cc79976" title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge." alt="" coords="774,5,973,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1pyinterface_1_1_func.xhtml#a83b9691db46167c2637c86f5a71cb40f" title="raises an Error if this&#45;&gt;fptr is still uninitialized." alt="" coords="773,71,973,127"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1pyinterface.xhtml#a591d9bd55fa1f9904547f3f2dcb3796d" title="Adds a Python interface component." alt="" coords="795,152,951,193"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" title="Checks whether all objects that have been registered via add_py_if_component have been properly initi..." alt="" coords="802,217,945,259"/>
 <area shape="rect" id="node6" href="$classopenage_1_1pyinterface_1_1_py_if_func.xhtml#a151c2faee8d91169645204f1eb3a6a22" title=" " alt="" coords="545,152,688,193"/>
 <area shape="rect" id="node8" href="$namespaceopenage_1_1cppinterface_1_1setup.xhtml#ae1c256c521da867c4f2ee7e9a7460ad3" title="After a call to setup(), the C++ interface is in a usable state." alt="" coords="508,225,725,251"/>
 <area shape="rect" id="node9" href="$namespaceopenage_1_1convert_1_1main.xhtml#ab4e998cdda52db3b3cae6efbcd2eda23" title="CLI entry point." alt="" coords="256,199,436,226"/>

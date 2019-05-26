@@ -38,9 +38,10 @@
         <argsstring></argsstring>
         <name>ids</name>
         <briefdescription>
+<para>The indices of vertices to be drawn if the mesh is indexed. </para>
         </briefdescription>
         <detaileddescription>
-<para>The indices of vertices to be drawn if the mesh is indexed. For array drawing, empty optional. </para>
+<para>For array drawing, empty optional. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -53,9 +54,10 @@
         <argsstring></argsstring>
         <name>info</name>
         <briefdescription>
+<para>Information about how to interpret the data to make vertices. </para>
         </briefdescription>
         <detaileddescription>
-<para>Information about how to interpret the data to make vertices. This is optional because initialization is deferred until the constructor obtains the mesh data e.g. from disk, but it should always be present after construction. </para>
+<para>This is optional because initialization is deferred until the constructor obtains the mesh data e.g. from disk, but it should always be present after construction. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -186,9 +188,9 @@
         <argsstring>()</argsstring>
         <name>make_quad</name>
         <briefdescription>
+<para>Initializes the mesh data with a simple quadrilateral spanning the whole window space, with (vec2 pos, vec2 uv) vertex format. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes the mesh data with a simple quadrilateral spanning the whole window space, with (vec2 pos, vec2 uv) vertex format. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

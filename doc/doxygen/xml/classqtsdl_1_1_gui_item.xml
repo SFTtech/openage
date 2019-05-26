@@ -24,9 +24,9 @@
           <declname>item_base</declname>
         </param>
         <briefdescription>
+<para>Creates an empty QObject shell for a core that is wrappable into a type *T. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates an empty QObject shell for a core that is wrappable into a type *T. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -34,9 +34,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads. </para>
     </briefdescription>
     <detaileddescription>
-<para>Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads.</para>
 <para>These shell objects are destroyed by Qt during GUI reload. Their cores are adopted by new shells identified by the &apos;LR.tag&apos; in QML code.</para>
 <para>For each descendant the specializations of <ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap</ref> and <ref refid="structqtsdl_1_1_unwrap" kindref="compound">Unwrap</ref> must be provided. Corresponding cores must have public &apos;gui::GuiItemLink *gui_link` members.</para>
 <para><parameterlist kind="templateparam"><parameteritem>

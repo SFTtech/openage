@@ -57,7 +57,7 @@ var sectionId = 'dynsection-14';
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 566,-73.5 566,4 -4,4"/>
 <!-- Node72 -->
 <g id="node1" class="node"><title>Node72</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="obj[key]">
 <polygon fill="#bfbfbf" stroke="black" points="0,-17 0,-47 107,-47 107,-17 0,-17"/>
 <text text-anchor="start" x="8" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="53.5" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node73 -->
 <g id="node2" class="node"><title>Node73</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a853f15a5d55d1143418e208fac044119" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a853f15a5d55d1143418e208fac044119" target="_top" xlink:title="obj[key]">
 <polygon fill="white" stroke="black" points="143,-39 143,-69 250,-69 250,-39 143,-39"/>
 <text text-anchor="start" x="151" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="196.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node77 -->
 <g id="node6" class="node"><title>Node77</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1py.xhtml#a1f03713cea0d4ee15fc445111404e7d7" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1py.xhtml#a1f03713cea0d4ee15fc445111404e7d7" target="_top" xlink:title="int(value)">
 <polygon fill="white" stroke="black" points="144,-0.5 144,-19.5 249,-19.5 249,-0.5 144,-0.5"/>
 <text text-anchor="middle" x="196.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::integer</text>
 </a>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node74 -->
 <g id="node3" class="node"><title>Node74</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639" target="_top" xlink:title="Provide the internal PyObject *.">
 <polygon fill="white" stroke="black" points="302,-39 302,-69 415,-69 415,-39 302,-39"/>
 <text text-anchor="start" x="310" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="358.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get_ref</text>
@@ -120,7 +120,7 @@ var sectionId = 'dynsection-14';
 </g>
 <!-- Node76 -->
 <g id="node5" class="node"><title>Node76</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="467,-0.5 467,-19.5 562,-19.5 562,-0.5 467,-0.5"/>
 <text text-anchor="middle" x="514.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -19,7 +19,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_core_instantiator.xhtml#a2069f6020034faeaae197821519fb732" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_core_instantiator.xhtml#a2069f6020034faeaae197821519fb732" target="_top" xlink:title="Attaches to a core object.">
 <polygon fill="white" stroke="black" points="513,-61 513,-91 684,-91 684,-61 513,-61"/>
 <text text-anchor="start" x="521" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemCoreInstantiator</text>
 <text text-anchor="middle" x="598.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; GameSpecLink &gt;::do_adopt_core</text>

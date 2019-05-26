@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-503 114,-503 114,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Filesystem&#45;like object that wraps a filesystem&#45;like object from Python.">
 <polygon fill="#bfbfbf" stroke="black" points="4.5,-0.5 4.5,-178.5 105.5,-178.5 105.5,-0.5 4.5,-0.5"/>
 <text text-anchor="start" x="12.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="55" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Python</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_f_s_like.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1fslike_1_1_f_s_like.xhtml" target="_top" xlink:title="Base class for possible path implementations.">
 <polygon fill="white" stroke="black" points="4.5,-215.5 4.5,-393.5 105.5,-393.5 105.5,-215.5 4.5,-215.5"/>
 <text text-anchor="start" x="12.5" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="55" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">::FSLike</text>

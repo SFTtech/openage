@@ -1,5 +1,5 @@
 <map id="openage::job::AbortableJobState&lt; T &gt;" name="openage::job::AbortableJobState&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="11,447,190,568"/>
-<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_typed_job_state_base.xhtml" title=" " alt="" coords="5,175,196,399"/>
-<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_job_state_base.xhtml" title=" " alt="" coords="8,5,193,127"/>
+<area shape="rect" id="node1" title="An abortable job state supports job that can be aborted." alt="" coords="11,447,190,568"/>
+<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_typed_job_state_base.xhtml" title="A templated job state base class, that implements basic functionality of job states." alt="" coords="5,175,196,399"/>
+<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_job_state_base.xhtml" title="An abstract base class for a shared state of a job." alt="" coords="8,5,193,127"/>
 </map>

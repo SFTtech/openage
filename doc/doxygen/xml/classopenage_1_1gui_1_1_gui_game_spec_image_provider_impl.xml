@@ -35,9 +35,9 @@
         <argsstring></argsstring>
         <name>invalidated</name>
         <briefdescription>
+<para>When true, still uses the old source but shows the &apos;missing texture&apos;. </para>
         </briefdescription>
         <detaileddescription>
-<para>When true, still uses the old source but shows the &apos;missing texture&apos;. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -53,9 +53,9 @@
         <argsstring></argsstring>
         <name>filled_handles</name>
         <briefdescription>
+<para>Changing the texture handles underneath the QSGTexture to reflect the reload of the <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Changing the texture handles underneath the QSGTexture to reflect the reload of the <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref>.</para>
 <para>It&apos;s not a proper Qt usage, so the live reload of the game assets for the gui may break in future Qt releases. When it breaks, this feature should be implemented via the recreation of the qml engine. </para>
         </detaileddescription>
         <inbodydescription>
@@ -170,9 +170,9 @@
           <declname>loaded_game_spec</declname>
         </param>
         <briefdescription>
+<para>Unblocks the provider. </para>
         </briefdescription>
         <detaileddescription>
-<para>Unblocks the provider.</para>
 <para>Refreshes already loaded assets (if this-&gt;loaded_game_spec wasn&apos;t null before the call).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -203,9 +203,9 @@
         <argsstring>()</argsstring>
         <name>on_game_spec_invalidated</name>
         <briefdescription>
+<para>Set to every sprite the &apos;missing texture&apos; from current spec. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set to every sprite the &apos;missing texture&apos; from current spec.</para>
 <para>Needed as a visible reaction to setting the property to null. We can&apos;t unload the textures without recreating the engine, so we keep the old source. </para>
         </detaileddescription>
         <inbodydescription>
@@ -238,9 +238,9 @@
           <declname>filled_handle</declname>
         </param>
         <briefdescription>
+<para>Fills in the provided handle object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Fills in the provided handle object.</para>
 <para>Memorizes pointer to it in order to update it if the source changes.</para>
 <para><simplesect kind="return"><para>pointer to all memorized handles, so the client can unsubscribe. </para>
 </simplesect>
@@ -351,9 +351,9 @@
           <declname>loaded_game_spec</declname>
         </param>
         <briefdescription>
+<para>Change the already produced texture handles to use new source. </para>
         </briefdescription>
         <detaileddescription>
-<para>Change the already produced texture handles to use new source. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -398,9 +398,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Exposes game textures to the Qt. </para>
     </briefdescription>
     <detaileddescription>
-<para>Exposes game textures to the Qt. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3600">

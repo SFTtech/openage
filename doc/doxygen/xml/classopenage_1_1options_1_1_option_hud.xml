@@ -19,9 +19,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A thing for drawing OptionNodes. </para>
     </briefdescription>
     <detaileddescription>
-<para>A thing for drawing OptionNodes</para>
 <para>generates required gui elements for each variable on a panel </para>
     </detaileddescription>
     <collaborationgraph>

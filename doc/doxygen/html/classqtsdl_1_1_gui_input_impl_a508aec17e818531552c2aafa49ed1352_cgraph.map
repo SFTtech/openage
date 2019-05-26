@@ -1,5 +1,5 @@
 <map id="qtsdl::GuiInputImpl::process" name="qtsdl::GuiInputImpl::process">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,136,80"/>
+<area shape="rect" id="node1" title="Returns true if the event was accepted." alt="" coords="5,39,136,80"/>
 <area shape="rect" id="node2" href="$classqtsdl_1_1_gui_input_impl.xhtml#abd1c5fe1c24e2b0bdd09d5b63229be13" title=" " alt="" coords="184,39,315,80"/>
 <area shape="rect" id="node3" href="$classqtsdl_1_1_gui_event_queue_impl.xhtml#ad445b8604c39eddf25837572c4dda508" title=" " alt="" coords="363,5,535,47"/>
 <area shape="rect" id="node4" href="$classqtsdl_1_1_gui_event_queue_impl.xhtml#a44943ac7ab0b6cbefb4390201020ddd6" title=" " alt="" coords="363,71,535,112"/>

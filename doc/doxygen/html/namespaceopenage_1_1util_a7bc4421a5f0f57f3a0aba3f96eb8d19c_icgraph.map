@@ -1,5 +1,5 @@
 <map id="openage::util::repr" name="openage::util::repr">
-<area shape="rect" id="node1" title=" " alt="" coords="788,1157,915,1183"/>
+<area shape="rect" id="node1" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="788,1157,915,1183"/>
 <area shape="rect" id="node2" href="$classopenage_1_1convert_1_1texture_1_1_texture.xhtml#ad67d62c0af627d1b83389ed9dc09b213" title=" " alt="" coords="533,5,697,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file.xhtml#a17b11fd7e416e7e4bac798af10470d54" title=" " alt="" coords="507,71,724,112"/>
 <area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet.xhtml#a22298fb54ac07968189e0f917d48250f" title="comparison of two snippets for their ordering" alt="" coords="501,136,729,177"/>
@@ -45,8 +45,8 @@
 <area shape="rect" id="node34" href="$namespaceopenage_1_1util_1_1fslike_1_1test.xhtml#acb02a5c9b3b2064338f1e207ea4491cb" title="Union functionality testing." alt="" coords="248,1704,427,1745"/>
 <area shape="rect" id="node41" href="$namespaceopenage_1_1testing_1_1list__processor.xhtml#a9702d9a71efd1d06569d1488b7c05666" title="Reads the Python and C++ testspec." alt="" coords="250,2031,425,2072"/>
 <area shape="rect" id="node44" href="$classopenage_1_1convert_1_1peresource_1_1_string_literal.xhtml#afe54133fe4a7d4cb75352a250a11a024" title="In addition to the static data, reads the string." alt="" coords="243,2175,431,2216"/>
-<area shape="rect" id="node46" href="$classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53" title=" " alt="" coords="241,1900,434,1941"/>
-<area shape="rect" id="node47" href="$classopenage_1_1_unit_container.xhtml#a38b39ded603419425f1b5a38f188cc17" title=" " alt="" coords="259,1965,416,2007"/>
-<area shape="rect" id="node48" href="$namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600" title=" " alt="" coords="264,1769,411,1811"/>
-<area shape="rect" id="node49" href="$namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" title=" " alt="" coords="267,1835,407,1876"/>
+<area shape="rect" id="node46" href="$classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53" title="Return a string representation of active key bindings from the given context." alt="" coords="241,1900,434,1941"/>
+<area shape="rect" id="node47" href="$classopenage_1_1_unit_container.xhtml#a38b39ded603419425f1b5a38f188cc17" title="gets a list of all units in the container" alt="" coords="259,1965,416,2007"/>
+<area shape="rect" id="node48" href="$namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600" title="Convert a C&#45;style array of uint64_t to a std::vector of uint8_t." alt="" coords="264,1769,411,1811"/>
+<area shape="rect" id="node49" href="$namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" title="Convert a C&#45;style array of uint8_t to a std::vector of uint64_t." alt="" coords="267,1835,407,1876"/>
 </map>

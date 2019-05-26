@@ -13,9 +13,9 @@
         <argsstring></argsstring>
         <name>read_callback_t</name>
         <briefdescription>
+<para>Type of the &apos;read&apos; callback function. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type of the &apos;read&apos; callback function.</para>
 <para>See <ref refid="lzxd_8h" kindref="compound">lzxd.h</ref> for documentation. </para>
         </detaileddescription>
         <inbodydescription>

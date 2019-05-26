@@ -57,9 +57,9 @@
         <argsstring></argsstring>
         <name>holder</name>
         <briefdescription>
+<para>Implementation object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Implementation object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

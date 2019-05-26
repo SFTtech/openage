@@ -1,5 +1,5 @@
 <map id="openage::Region" name="openage::Region">
-<area shape="rect" id="node1" title=" " alt="" coords="21,389,140,613"/>
+<area shape="rect" id="node1" title="A region is a set of tiles around a starting point, including functions to create child regions." alt="" coords="21,389,140,613"/>
 <area shape="rect" id="node2" href="$structopenage_1_1coord_1_1tile.xhtml" title=" " alt="" coords="5,161,156,327"/>
 <area shape="rect" id="node3" title=" " alt="" coords="7,5,154,112"/>
 </map>

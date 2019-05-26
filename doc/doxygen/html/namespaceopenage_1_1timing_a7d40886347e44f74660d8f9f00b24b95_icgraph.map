@@ -1,17 +1,17 @@
 <map id="openage::timing::get_monotonic_time" name="openage::timing::get_monotonic_time">
-<area shape="rect" id="node1" title=" " alt="" coords="859,220,999,261"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_timer.xhtml#a0f4aca6841c138900f29816c0d7decf3" title=" " alt="" coords="663,35,799,76"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_timer.xhtml#ad764a82c4de3f85c379ccc39c068f229" title=" " alt="" coords="663,187,799,228"/>
-<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_timer.xhtml#a98712fa513953c1c85c886ac379b2612" title=" " alt="" coords="663,121,799,163"/>
-<area shape="rect" id="node12" href="$classopenage_1_1util_1_1_timer.xhtml#afe1b5aca34f4b4151c6b85bafcd5dfd2" title=" " alt="" coords="663,252,799,293"/>
-<area shape="rect" id="node13" href="$classopenage_1_1util_1_1_timer.xhtml#aec63a1026df32a5f119d2138a01e40e2" title=" " alt="" coords="663,317,799,359"/>
-<area shape="rect" id="node14" href="$namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" title=" " alt="" coords="652,383,811,424"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_frame_counter.xhtml#a9dd54183a6ebd91c10bbc51abcb57f2d" title=" " alt="" coords="417,5,604,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title=" " alt="" coords="209,137,359,163"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title=" " alt="" coords="5,137,151,163"/>
-<area shape="rect" id="node7" href="$namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" title=" " alt="" coords="443,305,579,331"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title=" " alt="" coords="435,239,587,280"/>
+<area shape="rect" id="node1" title="returns a monotonically&#45;increasing time that returns the number of nanoseconds since an unspecified e..." alt="" coords="859,220,999,261"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_timer.xhtml#a0f4aca6841c138900f29816c0d7decf3" title="reads the current timer value, in nanoseconds, and resets the timer to zero (preserving started/stopp..." alt="" coords="663,35,799,76"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_timer.xhtml#ad764a82c4de3f85c379ccc39c068f229" title="reads the current timer value, in nanoseconds." alt="" coords="663,187,799,228"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_timer.xhtml#a98712fa513953c1c85c886ac379b2612" title="resets the timer, in either stopped or running state." alt="" coords="663,121,799,163"/>
+<area shape="rect" id="node12" href="$classopenage_1_1util_1_1_timer.xhtml#afe1b5aca34f4b4151c6b85bafcd5dfd2" title="starts/unpauses the timer." alt="" coords="663,252,799,293"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1_timer.xhtml#aec63a1026df32a5f119d2138a01e40e2" title="stops/pauses the timer." alt="" coords="663,317,799,359"/>
+<area shape="rect" id="node14" href="$namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" title="experimental and totally inefficient opengl draw of a terminal buffer." alt="" coords="652,383,811,424"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_frame_counter.xhtml#a9dd54183a6ebd91c10bbc51abcb57f2d" title="to be called each time a frame has been completed" alt="" coords="417,5,604,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title="main engine loop function." alt="" coords="209,137,359,163"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title="starts the engine loop." alt="" coords="5,137,151,163"/>
+<area shape="rect" id="node7" href="$namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" title="runs the game." alt="" coords="443,305,579,331"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title="perform the main loading job." alt="" coords="435,239,587,280"/>
 <area shape="rect" id="node8" href="$namespaceopenage_1_1game_1_1main.xhtml#ae53287c14640e82b47c8b3af1e85c4ca" title=" " alt="" coords="199,305,369,331"/>
-<area shape="rect" id="node11" href="$classopenage_1_1util_1_1_timer.xhtml#a1b3d27ae06020bc54ea6cb6f0d7bc72d" title=" " alt="" coords="443,71,579,112"/>
-<area shape="rect" id="node15" href="$classopenage_1_1console_1_1_console.xhtml#a1ce3c30cdc768559e11fc548cbcbddd8" title=" " alt="" coords="421,383,600,424"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1_timer.xhtml#a1b3d27ae06020bc54ea6cb6f0d7bc72d" title="creates the timer, in either stopped or running state." alt="" coords="443,71,579,112"/>
+<area shape="rect" id="node15" href="$classopenage_1_1console_1_1_console.xhtml#a1ce3c30cdc768559e11fc548cbcbddd8" title="execute the drawing action." alt="" coords="421,383,600,424"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-190.5 552,-190.5 552,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="classopenage_1_1event_1_1_event_target.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="classopenage_1_1event_1_1_event_target.xhtml" target="_top" xlink:title="Every Object in the gameworld that wants to be targeted by events or as dependency for events,...">
 <polygon fill="white" stroke="black" points="0,-79 0,-98 139,-98 139,-79 0,-79"/>
 <text text-anchor="middle" x="69.5" y="-86" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventTarget</text>
 </a>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1curve_1_1_continuous.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1curve_1_1_continuous.xhtml" target="_top" xlink:title="Continuous Datatype.">
 <polygon fill="white" stroke="black" points="388,-167 388,-186 548,-186 548,-167 388,-167"/>
 <text text-anchor="middle" x="468" y="-174" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Continuous&lt; T &gt;</text>
 </a>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml" target="_top" xlink:title="Does not interpolate between values.">
 <polygon fill="white" stroke="black" points="394.5,-129 394.5,-148 541.5,-148 541.5,-129 394.5,-129"/>
 <text text-anchor="middle" x="468" y="-136" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Discrete&lt; T &gt;</text>
 </a>

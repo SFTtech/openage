@@ -124,8 +124,10 @@ $(document).ready(function(){initNavTree('buf_8h.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1console_1_1buf__char.xhtml">openage::console::buf_char</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a single character in the buffer  <a href="structopenage_1_1console_1_1buf__char.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1console_1_1buf__line.xhtml">openage::console::buf_line</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">metadata for a single line in the buffer  <a href="structopenage_1_1console_1_1buf__line.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1console_1_1_buf.xhtml">openage::console::Buf</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,13 +135,16 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1console"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml">openage::console</a></td></tr>
+<tr class="memdesc:namespaceopenage_1_1console"><td class="mdescLeft">&#160;</td><td class="mdescRight">In-game console subsystem. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a539b2831ec0229a23f97127d1f5ef9f6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#a539b2831ec0229a23f97127d1f5ef9f6">openage::console::chrcol_t</a> = uint8_t</td></tr>
+<tr class="memdesc:a539b2831ec0229a23f97127d1f5ef9f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the length of the escape sequence buffer, and thus the maximum length of any escape sequence that will be successfully processed.  <a href="namespaceopenage_1_1console.xhtml#a539b2831ec0229a23f97127d1f5ef9f6">More...</a><br /></td></tr>
 <tr class="separator:a539b2831ec0229a23f97127d1f5ef9f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a479e54c460cae4bbd6f585ca55324d24"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#a479e54c460cae4bbd6f585ca55324d24">openage::console::chrflags_t</a> = uint16_t</td></tr>
 <tr class="separator:a479e54c460cae4bbd6f585ca55324d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,10 +186,13 @@ Variables</h2></td></tr>
 <tr class="memitem:a2fdcdc91078a83eb1c89e268f9b45426"><td class="memItemLeft" align="right" valign="top">constexpr chrflags_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#a2fdcdc91078a83eb1c89e268f9b45426">openage::console::CHR_STRESS_IDEOGRAM</a> = (1 &lt;&lt; 15)</td></tr>
 <tr class="separator:a2fdcdc91078a83eb1c89e268f9b45426"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa09a20fff5c3fe6f00987bb27d28c3ff"><td class="memItemLeft" align="right" valign="top">constexpr linetype_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#aa09a20fff5c3fe6f00987bb27d28c3ff">openage::console::LINE_EMPTY</a> = 0</td></tr>
+<tr class="memdesc:aa09a20fff5c3fe6f00987bb27d28c3ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">the line has not been written yet (or cleared in between)  <a href="namespaceopenage_1_1console.xhtml#aa09a20fff5c3fe6f00987bb27d28c3ff">More...</a><br /></td></tr>
 <tr class="separator:aa09a20fff5c3fe6f00987bb27d28c3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f8b6f12c1655f3259fbdc6873ccb0a2"><td class="memItemLeft" align="right" valign="top">constexpr linetype_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#a2f8b6f12c1655f3259fbdc6873ccb0a2">openage::console::LINE_REGULAR</a> = 1</td></tr>
+<tr class="memdesc:a2f8b6f12c1655f3259fbdc6873ccb0a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the line has some contents  <a href="namespaceopenage_1_1console.xhtml#a2f8b6f12c1655f3259fbdc6873ccb0a2">More...</a><br /></td></tr>
 <tr class="separator:a2f8b6f12c1655f3259fbdc6873ccb0a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5dcef92c8c76cebffd40c925cb209cd"><td class="memItemLeft" align="right" valign="top">constexpr linetype_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#ae5dcef92c8c76cebffd40c925cb209cd">openage::console::LINE_WRAPPED</a> = 2</td></tr>
+<tr class="memdesc:ae5dcef92c8c76cebffd40c925cb209cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the line has been written to until it auto-wrapped; its continuation can be found in the next line  <a href="namespaceopenage_1_1console.xhtml#ae5dcef92c8c76cebffd40c925cb209cd">More...</a><br /></td></tr>
 <tr class="separator:ae5dcef92c8c76cebffd40c925cb209cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84a7cb454b1e8ee8221d2099833547ae"><td class="memItemLeft" align="right" valign="top">constexpr buf_line&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1console.xhtml#a84a7cb454b1e8ee8221d2099833547ae">openage::console::BUF_LINE_DEFAULT</a> {LINE_EMPTY}</td></tr>
 <tr class="separator:a84a7cb454b1e8ee8221d2099833547ae"><td class="memSeparator" colspan="2">&#160;</td></tr>

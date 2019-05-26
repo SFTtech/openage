@@ -98,13 +98,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1_research.xhtml','');}
 </div><!--header-->
 <div class="contents">
 
+<p>At most one <a class="el" href="classopenage_1_1_research.xhtml" title="At most one Research must exist for each ResearchType.">Research</a> must exist for each <a class="el" href="classopenage_1_1_research_type.xhtml" title="Describes a research for a single player.">ResearchType</a>.  
+ <a href="classopenage_1_1_research.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="research_8h_source.xhtml">research.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::Research:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -112,18 +116,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2d6b10c4a424b6a3d688c4d0d96bb232"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research.xhtml#a2d6b10c4a424b6a3d688c4d0d96bb232">Research</a> (const <a class="el" href="classopenage_1_1_research_type.xhtml">ResearchType</a> *<a class="el" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>)</td></tr>
 <tr class="separator:a2d6b10c4a424b6a3d688c4d0d96bb232"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae7972075b9f90f16c0bad595f03f0b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research.xhtml#aae7972075b9f90f16c0bad595f03f0b2">started</a> ()</td></tr>
+<tr class="memdesc:aae7972075b9f90f16c0bad595f03f0b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a unit started researching this research.  <a href="#aae7972075b9f90f16c0bad595f03f0b2">More...</a><br /></td></tr>
 <tr class="separator:aae7972075b9f90f16c0bad595f03f0b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9027c73c78b0334b11e48a9fd3ffafd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research.xhtml#a9027c73c78b0334b11e48a9fd3ffafd2">stopped</a> ()</td></tr>
+<tr class="memdesc:a9027c73c78b0334b11e48a9fd3ffafd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a unit stopped researching this research before completing it.  <a href="#a9027c73c78b0334b11e48a9fd3ffafd2">More...</a><br /></td></tr>
 <tr class="separator:a9027c73c78b0334b11e48a9fd3ffafd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a856a40cfbef178effe2753a2348280d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research.xhtml#a856a40cfbef178effe2753a2348280d9">completed</a> ()</td></tr>
+<tr class="memdesc:a856a40cfbef178effe2753a2348280d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a unit completed researching this research.  <a href="#a856a40cfbef178effe2753a2348280d9">More...</a><br /></td></tr>
 <tr class="separator:a856a40cfbef178effe2753a2348280d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d51cbba6f525d77aef2055ade6e36e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research.xhtml#a5d51cbba6f525d77aef2055ade6e36e6">can_start</a> () const</td></tr>
+<tr class="memdesc:a5d51cbba6f525d77aef2055ade6e36e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if a unit can start researching this research.  <a href="#a5d51cbba6f525d77aef2055ade6e36e6">More...</a><br /></td></tr>
 <tr class="separator:a5d51cbba6f525d77aef2055ade6e36e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a812a48338aefc4b5562b33d918030757"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research.xhtml#a812a48338aefc4b5562b33d918030757">is_active</a> () const</td></tr>
+<tr class="memdesc:a812a48338aefc4b5562b33d918030757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if any unit is researching this research.  <a href="#a812a48338aefc4b5562b33d918030757">More...</a><br /></td></tr>
 <tr class="separator:a812a48338aefc4b5562b33d918030757"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfc56f1ccdd12a99f4582cfc89ac80f3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research.xhtml#abfc56f1ccdd12a99f4582cfc89ac80f3">is_researched</a> () const</td></tr>
+<tr class="memdesc:abfc56f1ccdd12a99f4582cfc89ac80f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if it has nothing more to offer (reached max repeats).  <a href="#abfc56f1ccdd12a99f4582cfc89ac80f3">More...</a><br /></td></tr>
 <tr class="separator:abfc56f1ccdd12a99f4582cfc89ac80f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51f059ce7313e37d3848481309b1dbd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research.xhtml#a51f059ce7313e37d3848481309b1dbd4">apply</a> ()</td></tr>
+<tr class="memdesc:a51f059ce7313e37d3848481309b1dbd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply the modifications to the owner player.  <a href="#a51f059ce7313e37d3848481309b1dbd4">More...</a><br /></td></tr>
 <tr class="separator:a51f059ce7313e37d3848481309b1dbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -134,12 +145,14 @@ Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a34e8610a4996704028e9b165e96138f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a></td></tr>
+<tr class="memdesc:a34e8610a4996704028e9b165e96138f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of units that are researching this research.  <a href="#a34e8610a4996704028e9b165e96138f5">More...</a><br /></td></tr>
 <tr class="separator:a34e8610a4996704028e9b165e96138f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3448555d603c10091d70125817fa78c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">completed_count</a></td></tr>
+<tr class="memdesc:ae3448555d603c10091d70125817fa78c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of times this research has been completed.  <a href="#ae3448555d603c10091d70125817fa78c">More...</a><br /></td></tr>
 <tr class="separator:ae3448555d603c10091d70125817fa78c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>At most one <a class="el" href="classopenage_1_1_research.xhtml">Research</a> must exist for each <a class="el" href="classopenage_1_1_research_type.xhtml">ResearchType</a>.</p>
+<div class="textblock"><p>At most one <a class="el" href="classopenage_1_1_research.xhtml" title="At most one Research must exist for each ResearchType.">Research</a> must exist for each <a class="el" href="classopenage_1_1_research_type.xhtml" title="Describes a research for a single player.">ResearchType</a>. </p>
 <p>A research represents how many times the research type has been completed (completed count) and also how many unit are researching it now (active count). </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8h_source.xhtml#l00104">104</a> of file <a class="el" href="research_8h_source.xhtml">research.h</a>.</p>
@@ -162,8 +175,8 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00018">18</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    :</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>{<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>},</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a>{0},</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">completed_count</a>{0} {</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a8421d74f06cac747352a260624ac3721"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">openage::Research::type</a></div><div class="ttdeci">const ResearchType * type</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00109">research.h:109</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_xhtml_ae3448555d603c10091d70125817fa78c"><div class="ttname"><a href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">openage::Research::completed_count</a></div><div class="ttdeci">int completed_count</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00156">research.h:156</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdoc">The number of units that are researching this research.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_xhtml_ae3448555d603c10091d70125817fa78c"><div class="ttname"><a href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">openage::Research::completed_count</a></div><div class="ttdeci">int completed_count</div><div class="ttdoc">The number of times this research has been completed.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00156">research.h:156</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="research_8h_source.xhtml#l00109">type</a>.</p>
 
@@ -184,16 +197,17 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Apply the modifications to the owner player. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                     {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// apply the patch</span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83">apply</a>();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// perform category based actions</span></div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">category</a>() == <a class="code" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce">research_category::age_advance</a>) {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">owner</a>.<a class="code" href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe">advance_age</a>();</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">category</a>() == <a class="code" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9">research_category::generic</a>) {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// \todo implement a way to handle this category</span></div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_type_xhtml_adb394897aa588ce3b6399adb8b53b4ec"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">openage::ResearchType::owner</a></div><div class="ttdeci">Player &amp; owner</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00068">research.h:68</a></div></div>
-<div class="ttc" id="classopenage_1_1_player_xhtml_ab5854d681fef5b4a8327097c8ea19bbe"><div class="ttname"><a href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe">openage::Player::advance_age</a></div><div class="ttdeci">void advance_age()</div><div class="ttdef"><b>Definition:</b> <a href="player_8cpp_source.xhtml#l00238">player.cpp:238</a></div></div>
-<div class="ttc" id="namespaceopenage_xhtml_ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce"><div class="ttname"><a href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce">openage::research_category::age_advance</a></div></div>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                     {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// apply the patch</span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83">apply</a>();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// perform category based actions</span></div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">category</a>() == <a class="code" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce">research_category::age_advance</a>) {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">owner</a>.<a class="code" href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe">advance_age</a>();</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">category</a>() == <a class="code" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9">research_category::generic</a>) {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// \todo implement a way to handle this category</span></div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_type_xhtml_adb394897aa588ce3b6399adb8b53b4ec"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">openage::ResearchType::owner</a></div><div class="ttdeci">Player &amp; owner</div><div class="ttdoc">The player who owns this research type.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00068">research.h:68</a></div></div>
+<div class="ttc" id="classopenage_1_1_player_xhtml_ab5854d681fef5b4a8327097c8ea19bbe"><div class="ttname"><a href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe">openage::Player::advance_age</a></div><div class="ttdeci">void advance_age()</div><div class="ttdoc">Advance to next age;.</div><div class="ttdef"><b>Definition:</b> <a href="player_8cpp_source.xhtml#l00238">player.cpp:238</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce"><div class="ttname"><a href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce">openage::research_category::age_advance</a></div><div class="ttdoc">Research which modify unit type data and also progresses the next age.</div></div>
 <div class="ttc" id="classopenage_1_1_research_xhtml_a8421d74f06cac747352a260624ac3721"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">openage::Research::type</a></div><div class="ttdeci">const ResearchType * type</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00109">research.h:109</a></div></div>
-<div class="ttc" id="namespaceopenage_xhtml_ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9"><div class="ttname"><a href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9">openage::research_category::generic</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_type_xhtml_a76a5bd220674135f0bf93eed3f1bce92"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">openage::ResearchType::category</a></div><div class="ttdeci">virtual research_category category() const =0</div></div>
-<div class="ttc" id="classopenage_1_1_research_type_xhtml_af58948dd42b8d8a97233d2fdd9885e83"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83">openage::ResearchType::apply</a></div><div class="ttdeci">virtual void apply() const =0</div></div>
+<div class="ttc" id="namespaceopenage_xhtml_ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9"><div class="ttname"><a href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9">openage::research_category::generic</a></div><div class="ttdoc">Research which modify unit type data and something else.</div></div>
+<div class="ttc" id="classopenage_1_1_research_type_xhtml_a76a5bd220674135f0bf93eed3f1bce92"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">openage::ResearchType::category</a></div><div class="ttdeci">virtual research_category category() const =0</div><div class="ttdoc">Gets the research category of the research.</div></div>
+<div class="ttc" id="classopenage_1_1_research_type_xhtml_af58948dd42b8d8a97233d2fdd9885e83"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83">openage::ResearchType::apply</a></div><div class="ttdeci">virtual void apply() const =0</div><div class="ttdoc">Performs the modifications (eg.</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="player_8cpp_source.xhtml#l00238">openage::Player::advance_age()</a>, <a class="el" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce">openage::age_advance</a>, <a class="el" href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83">openage::ResearchType::apply()</a>, <a class="el" href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">openage::ResearchType::category()</a>, <a class="el" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9">openage::generic</a>, <a class="el" href="research_8h_source.xhtml#l00068">openage::ResearchType::owner</a>, and <a class="el" href="research_8h_source.xhtml#l00109">type</a>.</p>
 
@@ -203,14 +217,16 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a51f059ce7313e37d3848481309b1dbd4_cgraph.svg" width="400" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a51f059ce7313e37d3848481309b1dbd4_cgraph.svg" width="400" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a51f059ce7313e37d3848481309b1dbd4_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a51f059ce7313e37d3848481309b1dbd4_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -229,13 +245,14 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Returns true if a unit can start researching this research. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00038">38</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                               {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a> + this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">completed_count</a> &lt; this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#aca6b37a0f8d31b9646a97ee0bf2f2228">get_max_repeats</a>();</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a8421d74f06cac747352a260624ac3721"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">openage::Research::type</a></div><div class="ttdeci">const ResearchType * type</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00109">research.h:109</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_xhtml_ae3448555d603c10091d70125817fa78c"><div class="ttname"><a href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">openage::Research::completed_count</a></div><div class="ttdeci">int completed_count</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00156">research.h:156</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_type_xhtml_aca6b37a0f8d31b9646a97ee0bf2f2228"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#aca6b37a0f8d31b9646a97ee0bf2f2228">openage::ResearchType::get_max_repeats</a></div><div class="ttdeci">int get_max_repeats() const</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00074">research.h:74</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdoc">The number of units that are researching this research.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_xhtml_ae3448555d603c10091d70125817fa78c"><div class="ttname"><a href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">openage::Research::completed_count</a></div><div class="ttdeci">int completed_count</div><div class="ttdoc">The number of times this research has been completed.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00156">research.h:156</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_type_xhtml_aca6b37a0f8d31b9646a97ee0bf2f2228"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#aca6b37a0f8d31b9646a97ee0bf2f2228">openage::ResearchType::get_max_repeats</a></div><div class="ttdeci">int get_max_repeats() const</div><div class="ttdoc">How many times it can be researched.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00074">research.h:74</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="research_8h_source.xhtml#l00151">active_count</a>, <a class="el" href="research_8h_source.xhtml#l00156">completed_count</a>, <a class="el" href="research_8h_source.xhtml#l00074">openage::ResearchType::get_max_repeats()</a>, and <a class="el" href="research_8h_source.xhtml#l00109">type</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -243,7 +260,8 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a5d51cbba6f525d77aef2055ade6e36e6_cgraph.svg" width="364" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a5d51cbba6f525d77aef2055ade6e36e6_cgraph.svg" width="364" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -262,11 +280,12 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Called when a unit completed researching this research. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00033">33</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                         {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a> -= 1;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">completed_count</a> += 1;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_xhtml_ae3448555d603c10091d70125817fa78c"><div class="ttname"><a href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">openage::Research::completed_count</a></div><div class="ttdeci">int completed_count</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00156">research.h:156</a></div></div>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                         {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a> -= 1;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">completed_count</a> += 1;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdoc">The number of units that are researching this research.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_xhtml_ae3448555d603c10091d70125817fa78c"><div class="ttname"><a href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">openage::Research::completed_count</a></div><div class="ttdeci">int completed_count</div><div class="ttdoc">The number of times this research has been completed.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00156">research.h:156</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="research_8h_source.xhtml#l00151">active_count</a>, and <a class="el" href="research_8h_source.xhtml#l00156">completed_count</a>.</p>
 
@@ -276,7 +295,8 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a856a40cfbef178effe2753a2348280d9_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a856a40cfbef178effe2753a2348280d9_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -295,10 +315,11 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Returns true if any unit is researching this research. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00042">42</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                               {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a> &gt; 0;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                               {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a> &gt; 0;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdoc">The number of units that are researching this research.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="research_8h_source.xhtml#l00151">active_count</a>.</p>
 
@@ -318,12 +339,13 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Returns true if it has nothing more to offer (reached max repeats). </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                   {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">completed_count</a> == this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#aca6b37a0f8d31b9646a97ee0bf2f2228">get_max_repeats</a>();</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a8421d74f06cac747352a260624ac3721"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">openage::Research::type</a></div><div class="ttdeci">const ResearchType * type</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00109">research.h:109</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_xhtml_ae3448555d603c10091d70125817fa78c"><div class="ttname"><a href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">openage::Research::completed_count</a></div><div class="ttdeci">int completed_count</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00156">research.h:156</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_type_xhtml_aca6b37a0f8d31b9646a97ee0bf2f2228"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#aca6b37a0f8d31b9646a97ee0bf2f2228">openage::ResearchType::get_max_repeats</a></div><div class="ttdeci">int get_max_repeats() const</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00074">research.h:74</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_xhtml_ae3448555d603c10091d70125817fa78c"><div class="ttname"><a href="classopenage_1_1_research.xhtml#ae3448555d603c10091d70125817fa78c">openage::Research::completed_count</a></div><div class="ttdeci">int completed_count</div><div class="ttdoc">The number of times this research has been completed.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00156">research.h:156</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_type_xhtml_aca6b37a0f8d31b9646a97ee0bf2f2228"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#aca6b37a0f8d31b9646a97ee0bf2f2228">openage::ResearchType::get_max_repeats</a></div><div class="ttdeci">int get_max_repeats() const</div><div class="ttdoc">How many times it can be researched.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00074">research.h:74</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="research_8h_source.xhtml#l00156">completed_count</a>, <a class="el" href="research_8h_source.xhtml#l00074">openage::ResearchType::get_max_repeats()</a>, and <a class="el" href="research_8h_source.xhtml#l00109">type</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -331,7 +353,8 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_abfc56f1ccdd12a99f4582cfc89ac80f3_cgraph.svg" width="364" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_abfc56f1ccdd12a99f4582cfc89ac80f3_cgraph.svg" width="364" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -350,10 +373,11 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Called when a unit started researching this research. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00025">25</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                       {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a> += 1;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                       {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a> += 1;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdoc">The number of units that are researching this research.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="research_8h_source.xhtml#l00151">active_count</a>.</p>
 
@@ -373,10 +397,11 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Called when a unit stopped researching this research before completing it. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00029">29</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                       {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a> -= 1;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                       {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">active_count</a> -= 1;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_xhtml_a34e8610a4996704028e9b165e96138f5"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a34e8610a4996704028e9b165e96138f5">openage::Research::active_count</a></div><div class="ttdeci">int active_count</div><div class="ttdoc">The number of units that are researching this research.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00151">research.h:151</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="research_8h_source.xhtml#l00151">active_count</a>.</p>
 
@@ -386,7 +411,8 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a9027c73c78b0334b11e48a9fd3ffafd2_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a9027c73c78b0334b11e48a9fd3ffafd2_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -411,7 +437,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The number of units that are researching this research </p>
+
+<p>The number of units that are researching this research. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8h_source.xhtml#l00151">151</a> of file <a class="el" href="research_8h_source.xhtml">research.h</a>.</p>
 
@@ -438,7 +465,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The number of times this research has been completed </p>
+
+<p>The number of times this research has been completed. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8h_source.xhtml#l00156">156</a> of file <a class="el" href="research_8h_source.xhtml">research.h</a>.</p>
 

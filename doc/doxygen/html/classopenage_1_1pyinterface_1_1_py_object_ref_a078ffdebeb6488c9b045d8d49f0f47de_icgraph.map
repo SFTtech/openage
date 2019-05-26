@@ -1,5 +1,5 @@
 <map id="openage::pyinterface::PyObjectRef::is" name="openage::pyinterface::PyObjectRef::is">
-<area shape="rect" id="node1" title=" " alt="" coords="223,39,365,80"/>
+<area shape="rect" id="node1" title="obj is other" alt="" coords="223,39,365,80"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1_python.xhtml#a0602b597585db95c4a27cb2d114b8f22" title=" " alt="" coords="5,5,175,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1pyinterface_1_1tests.xhtml#ad69d94519ba25682897d8da53beb86df" title=" " alt="" coords="19,71,161,112"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 310,-35 310,4 -4,4"/>
 <!-- Node38 -->
 <g id="node1" class="node"><title>Node38</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Test if the rotation of both quaternions is the same.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 125,-30.5 125,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="62.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::equals</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node39 -->
 <g id="node2" class="node"><title>Node39</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a57799e61cbbfbb15b122f77ba76940a8" target="_top" xlink:title="Perform a dot product with another quaternion.">
 <polygon fill="white" stroke="black" points="161,-6 161,-25 306,-25 306,-6 161,-6"/>
 <text text-anchor="middle" x="233.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion::dot</text>
 </a>

@@ -19,9 +19,10 @@
         <argsstring></argsstring>
         <name>time_t</name>
         <briefdescription>
+<para>Defines the type that is used as time index. </para>
         </briefdescription>
         <detaileddescription>
-<para>Defines the type that is used as time index. it has to implement all basic mathematically operations. </para>
+<para>it has to implement all basic mathematically operations. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

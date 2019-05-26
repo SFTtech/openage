@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-112 320,-112 320,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml" target="_top" xlink:title="Any class that wants to provide .log() shall inherit from this.">
 <polygon fill="white" stroke="black" points="0,-44.5 0,-63.5 125,-63.5 125,-44.5 0,-44.5"/>
 <text text-anchor="middle" x="62.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_named_log_source.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_named_log_source.xhtml" target="_top" xlink:title="Simple pure log source class with a string name.">
 <polygon fill="white" stroke="black" points="161,-88.5 161,-107.5 316,-107.5 316,-88.5 161,-88.5"/>
 <text text-anchor="middle" x="238.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::NamedLogSource</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml" target="_top" xlink:title="A game object with current state represented by a stack of actions since this class represents both u...">
 <polygon fill="white" stroke="black" points="200,-0.5 200,-19.5 277,-19.5 277,-0.5 200,-0.5"/>
 <text text-anchor="middle" x="238.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit</text>
 </a>

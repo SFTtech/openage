@@ -38,9 +38,10 @@
         <argsstring></argsstring>
         <name>container</name>
         <briefdescription>
+<para>Data holder. </para>
         </briefdescription>
         <detaileddescription>
-<para>Data holder. Maps keys to map elements. Map elements themselves store when they are valid. </para>
+<para>Maps keys to map elements. Map elements themselves store when they are valid. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -312,9 +313,9 @@
         <argsstring>()</argsstring>
         <name>dump</name>
         <briefdescription>
+<para>gdb helper method. </para>
         </briefdescription>
         <detaileddescription>
-<para>gdb helper method. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -324,9 +325,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Map that keeps track of the lifetime of the contained elements. </para>
     </briefdescription>
     <detaileddescription>
-<para>Map that keeps track of the lifetime of the contained elements. Make sure that no key is reused. </para>
+<para>Make sure that no key is reused. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="1908">

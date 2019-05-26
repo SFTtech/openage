@@ -97,20 +97,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1_player_score.xhtml','
 </div><!--header-->
 <div class="contents">
 
+<p>The score of a player.  
+ <a href="classopenage_1_1_player_score.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="score_8h_source.xhtml">score.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::PlayerScore:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_player_score__inherit__graph.svg" width="180" height="419"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_player_score__inherit__graph.svg" width="180" height="419"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::PlayerScore:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_player_score__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_player_score__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -118,6 +123,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6fa8471a97c4835b863dbef852b7d6c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_player_score.xhtml#a6fa8471a97c4835b863dbef852b7d6c8">PlayerScore</a> (<a class="el" href="classopenage_1_1_player.xhtml">Player</a> *<a class="el" href="classopenage_1_1_player_score.xhtml#a1af42313b91c4bb428b1c98864f7401f">player</a>)</td></tr>
 <tr class="separator:a6fa8471a97c4835b863dbef852b7d6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a335bfe5e296ab4563b6689a8cacca562"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_player_score.xhtml#a335bfe5e296ab4563b6689a8cacca562">update_score</a> () override</td></tr>
+<tr class="memdesc:a335bfe5e296ab4563b6689a8cacca562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the total score from the sub-scores.  <a href="#a335bfe5e296ab4563b6689a8cacca562">More...</a><br /></td></tr>
 <tr class="separator:a335bfe5e296ab4563b6689a8cacca562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classopenage_1_1_score"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classopenage_1_1_score')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classopenage_1_1_score.xhtml">openage::Score</a></td></tr>
 <tr class="memitem:a016dd90c78d38ec3009b61b49a937960 inherit pub_methods_classopenage_1_1_score"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_score.xhtml#a016dd90c78d38ec3009b61b49a937960">Score</a> ()</td></tr>
@@ -131,8 +137,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa5c379cb015205d10950f61b40a51f10 inherit pub_methods_classopenage_1_1_score"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_score.xhtml#aa5c379cb015205d10950f61b40a51f10">remove_score</a> (const <a class="el" href="namespaceopenage.xhtml#a80d0d6e3a322272f55f01ca5cb372830">score_category</a> cat, int value)</td></tr>
 <tr class="separator:aa5c379cb015205d10950f61b40a51f10 inherit pub_methods_classopenage_1_1_score"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a66aa42a2fc87950c5b26ed4a4ce6fb inherit pub_methods_classopenage_1_1_score"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_score.xhtml#a6a66aa42a2fc87950c5b26ed4a4ce6fb">update_map_explored</a> (double progress)</td></tr>
+<tr class="memdesc:a6a66aa42a2fc87950c5b26ed4a4ce6fb inherit pub_methods_classopenage_1_1_score"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates map exploration precentance based sub-scores.  <a href="classopenage_1_1_score.xhtml#a6a66aa42a2fc87950c5b26ed4a4ce6fb">More...</a><br /></td></tr>
 <tr class="separator:a6a66aa42a2fc87950c5b26ed4a4ce6fb inherit pub_methods_classopenage_1_1_score"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a692b0ccf6ec945e3cb5e8540b6b9abc6 inherit pub_methods_classopenage_1_1_score"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6">update_resources</a> (const <a class="el" href="classopenage_1_1_resource_bundle.xhtml">ResourceBundle</a> &amp;resources)</td></tr>
+<tr class="memdesc:a692b0ccf6ec945e3cb5e8540b6b9abc6 inherit pub_methods_classopenage_1_1_score"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates resource based sub-scores.  <a href="classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6">More...</a><br /></td></tr>
 <tr class="separator:a692b0ccf6ec945e3cb5e8540b6b9abc6 inherit pub_methods_classopenage_1_1_score"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a544fc32ebabe81bb0122dcd4ea9c7931 inherit pub_methods_classopenage_1_1_score"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_score.xhtml#a544fc32ebabe81bb0122dcd4ea9c7931">get_score</a> (const <a class="el" href="namespaceopenage.xhtml#a80d0d6e3a322272f55f01ca5cb372830">score_category</a> cat) const</td></tr>
 <tr class="separator:a544fc32ebabe81bb0122dcd4ea9c7931 inherit pub_methods_classopenage_1_1_score"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,7 +163,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a88422345732818ee036e2f25898c08ef inherit pro_attribs_classopenage_1_1_score"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The score of a player </p>
+<div class="textblock"><p>The score of a player. </p>
 
 <p class="definition">Definition at line <a class="el" href="score_8h_source.xhtml#l00088">88</a> of file <a class="el" href="score_8h_source.xhtml">score.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -206,16 +214,18 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Calculates the total score from the sub-scores. </p><dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd>update gui here </dd></dl>
+
+<p>Calculates the total score from the sub-scores. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd>update gui here </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd">openage::Score</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="score_8cpp_source.xhtml#l00063">63</a> of file <a class="el" href="score_8cpp_source.xhtml">score.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                               {</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd">Score::update_score</a>();</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// update team score</span></div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_player_score.xhtml#a1af42313b91c4bb428b1c98864f7401f">player</a>-&gt;<a class="code" href="classopenage_1_1_player.xhtml#a49e6eb4d6794785417435205a53ae5cb">team</a>) {</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_player_score.xhtml#a1af42313b91c4bb428b1c98864f7401f">player</a>-&gt;<a class="code" href="classopenage_1_1_player.xhtml#a49e6eb4d6794785417435205a53ae5cb">team</a>-&gt;<a class="code" href="classopenage_1_1_team.xhtml#ac579ae1a33f33dfe6e53b738a9cfe160">score</a>.<a class="code" href="classopenage_1_1_team_score.xhtml#ad1af15c7921ffc8ffc57c04b3c8084ff">update_score</a>();</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div><div class="ttc" id="classopenage_1_1_player_score_xhtml_a1af42313b91c4bb428b1c98864f7401f"><div class="ttname"><a href="classopenage_1_1_player_score.xhtml#a1af42313b91c4bb428b1c98864f7401f">openage::PlayerScore::player</a></div><div class="ttdeci">Player * player</div><div class="ttdef"><b>Definition:</b> <a href="score_8h_source.xhtml#l00099">score.h:99</a></div></div>
-<div class="ttc" id="classopenage_1_1_score_xhtml_ad71b795068636d35bd174acde2e080fd"><div class="ttname"><a href="classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd">openage::Score::update_score</a></div><div class="ttdeci">virtual void update_score()</div><div class="ttdef"><b>Definition:</b> <a href="score_8cpp_source.xhtml#l00050">score.cpp:50</a></div></div>
-<div class="ttc" id="classopenage_1_1_team_score_xhtml_ad1af15c7921ffc8ffc57c04b3c8084ff"><div class="ttname"><a href="classopenage_1_1_team_score.xhtml#ad1af15c7921ffc8ffc57c04b3c8084ff">openage::TeamScore::update_score</a></div><div class="ttdeci">virtual void update_score() override</div><div class="ttdef"><b>Definition:</b> <a href="score_8cpp_source.xhtml#l00077">score.cpp:77</a></div></div>
-<div class="ttc" id="classopenage_1_1_player_xhtml_a49e6eb4d6794785417435205a53ae5cb"><div class="ttname"><a href="classopenage_1_1_player.xhtml#a49e6eb4d6794785417435205a53ae5cb">openage::Player::team</a></div><div class="ttdeci">Team * team</div><div class="ttdef"><b>Definition:</b> <a href="player_8h_source.xhtml#l00048">player.h:48</a></div></div>
-<div class="ttc" id="classopenage_1_1_team_xhtml_ac579ae1a33f33dfe6e53b738a9cfe160"><div class="ttname"><a href="classopenage_1_1_team.xhtml#ac579ae1a33f33dfe6e53b738a9cfe160">openage::Team::score</a></div><div class="ttdeci">TeamScore score</div><div class="ttdef"><b>Definition:</b> <a href="team_8h_source.xhtml#l00067">team.h:67</a></div></div>
+<div class="ttc" id="classopenage_1_1_score_xhtml_ad71b795068636d35bd174acde2e080fd"><div class="ttname"><a href="classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd">openage::Score::update_score</a></div><div class="ttdeci">virtual void update_score()</div><div class="ttdoc">Calculates the total score from the sub-scores.</div><div class="ttdef"><b>Definition:</b> <a href="score_8cpp_source.xhtml#l00050">score.cpp:50</a></div></div>
+<div class="ttc" id="classopenage_1_1_team_score_xhtml_ad1af15c7921ffc8ffc57c04b3c8084ff"><div class="ttname"><a href="classopenage_1_1_team_score.xhtml#ad1af15c7921ffc8ffc57c04b3c8084ff">openage::TeamScore::update_score</a></div><div class="ttdeci">virtual void update_score() override</div><div class="ttdoc">Calculates the total score from the sub-scores.</div><div class="ttdef"><b>Definition:</b> <a href="score_8cpp_source.xhtml#l00077">score.cpp:77</a></div></div>
+<div class="ttc" id="classopenage_1_1_player_xhtml_a49e6eb4d6794785417435205a53ae5cb"><div class="ttname"><a href="classopenage_1_1_player.xhtml#a49e6eb4d6794785417435205a53ae5cb">openage::Player::team</a></div><div class="ttdeci">Team * team</div><div class="ttdoc">the team of this player nullptr if member of no team</div><div class="ttdef"><b>Definition:</b> <a href="player_8h_source.xhtml#l00048">player.h:48</a></div></div>
+<div class="ttc" id="classopenage_1_1_team_xhtml_ac579ae1a33f33dfe6e53b738a9cfe160"><div class="ttname"><a href="classopenage_1_1_team.xhtml#ac579ae1a33f33dfe6e53b738a9cfe160">openage::Team::score</a></div><div class="ttdeci">TeamScore score</div><div class="ttdoc">The score of the team, based on the team's players score.</div><div class="ttdef"><b>Definition:</b> <a href="team_8h_source.xhtml#l00067">team.h:67</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="score_8h_source.xhtml#l00099">player</a>, <a class="el" href="team_8h_source.xhtml#l00067">openage::Team::score</a>, <a class="el" href="player_8h_source.xhtml#l00048">openage::Player::team</a>, <a class="el" href="score_8cpp_source.xhtml#l00050">openage::Score::update_score()</a>, and <a class="el" href="score_8cpp_source.xhtml#l00077">openage::TeamScore::update_score()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -223,7 +233,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_player_score_a335bfe5e296ab4563b6689a8cacca562_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_player_score_a335bfe5e296ab4563b6689a8cacca562_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>

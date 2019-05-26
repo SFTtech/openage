@@ -1,4 +1,4 @@
 <map id="openage::path::Node" name="openage::path::Node">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,161,472"/>
+<area shape="rect" id="node1" title="One navigation waypoint in a path." alt="" coords="5,145,161,472"/>
 <area shape="rect" id="node2" title=" " alt="" coords="15,5,151,97"/>
 </map>

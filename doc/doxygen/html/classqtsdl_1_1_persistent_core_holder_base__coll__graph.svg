@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73 162,-73 162,4 -4,4"/>
 <!-- Node9 -->
 <g id="node1" class="node"><title>Node9</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Helper to hide the type of the core.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-68.5 158,-68.5 158,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="79" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::PersistentCoreHolderBase</text>
 <polyline fill="none" stroke="black" points="0,-49.5 158,-49.5 "/>

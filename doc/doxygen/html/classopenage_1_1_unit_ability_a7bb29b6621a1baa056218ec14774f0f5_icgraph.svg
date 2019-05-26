@@ -20,7 +20,7 @@
 </g>
 <!-- Node36 -->
 <g id="node2" class="node"><title>Node36</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_repair_ability.xhtml#ace3c32d3f619cdc28abfca9fa684b3e2" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_repair_ability.xhtml#ace3c32d3f619cdc28abfca9fa684b3e2" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 114,-79.5 114,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RepairAbility</text>
 <text text-anchor="middle" x="57" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node37 -->
 <g id="node3" class="node"><title>Node37</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_heal_ability.xhtml#a9940045e67d852476cf73aec89895218" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_heal_ability.xhtml#a9940045e67d852476cf73aec89895218" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="4,-0.5 4,-30.5 110,-30.5 110,-0.5 4,-0.5"/>
 <text text-anchor="start" x="12" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HealAbility</text>
 <text text-anchor="middle" x="57" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>

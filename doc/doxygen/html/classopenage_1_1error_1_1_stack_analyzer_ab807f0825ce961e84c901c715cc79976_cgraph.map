@@ -1,10 +1,10 @@
 <map id="openage::error::StackAnalyzer::get_symbols" name="openage::error::StackAnalyzer::get_symbols">
-<area shape="rect" id="node1" title=" " alt="" coords="5,64,204,105"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c" title=" " alt="" coords="252,71,437,98"/>
+<area shape="rect" id="node1" title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge." alt="" coords="5,64,204,105"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8" title="Returns the (demangled) symbol name for a given address." alt="" coords="252,71,437,98"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#abe26c67b0463cb53c33b0659ebb89370" title=" " alt="" coords="501,5,630,47"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" title=" " alt="" coords="717,42,863,69"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" title=" " alt="" coords="485,122,645,149"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title=" " alt="" coords="935,42,1087,69"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" title="printf&#45;style to&#45;string formatting." alt="" coords="717,42,863,69"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" title="Demangles a symbol name." alt="" coords="485,122,645,149"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output." alt="" coords="935,42,1087,69"/>
 <area shape="rect" id="node7" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="693,122,887,149"/>
-<area shape="rect" id="node8" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="947,122,1074,149"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="947,122,1074,149"/>
 </map>

@@ -32,9 +32,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>generic callable, that compares any types for creating a total order. </para>
     </briefdescription>
     <detaileddescription>
-<para>generic callable, that compares any types for creating a total order.</para>
 <para>use for stdlib structures like std::set. the template parameter has to be a pointer type. </para>
     </detaileddescription>
     <collaborationgraph>

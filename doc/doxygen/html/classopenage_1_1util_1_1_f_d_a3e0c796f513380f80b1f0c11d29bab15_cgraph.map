@@ -1,6 +1,6 @@
 <map id="openage::util::FD::write" name="openage::util::FD::write">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,135,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" title=" " alt="" coords="183,13,316,39"/>
+<area shape="rect" id="node1" title="writes &#39;bytes&#39; bytes from buf" alt="" coords="5,5,135,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" title="bytes(value)" alt="" coords="183,13,316,39"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="364,13,557,39"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="605,13,732,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="605,13,732,39"/>
 </map>

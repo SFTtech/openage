@@ -57,7 +57,7 @@ var sectionId = 'dynsection-6';
 <polygon fill="white" stroke="none" points="-4,4 -4,-123 583,-123 583,4 -4,4"/>
 <!-- Node23 -->
 <g id="node1" class="node"><title>Node23</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="creates a new unit without initialising">
 <polygon fill="#bfbfbf" stroke="black" points="461,-44.5 461,-74.5 579,-74.5 579,-44.5 461,-44.5"/>
 <text text-anchor="start" x="469" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitContainer</text>
 <text text-anchor="middle" x="520" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::new_unit</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node24 -->
 <g id="node2" class="node"><title>Node24</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" target="_top" xlink:title="places all initial objects">
 <polygon fill="white" stroke="black" points="306,-88.5 306,-118.5 408,-118.5 408,-88.5 306,-88.5"/>
 <text text-anchor="start" x="314" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="357" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_units</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node28 -->
 <g id="node6" class="node"><title>Node28</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="299,-0.5 299,-30.5 415,-30.5 415,-0.5 299,-0.5"/>
 <text text-anchor="start" x="307" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="357" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node26 -->
 <g id="node4" class="node"><title>Node26</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1gameio.xhtml#a75b0984fd51cdc53616318d3f5a0d50f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1gameio.xhtml#ae6761d88280466d1d1b5c638e7c7a042" target="_top" xlink:title="a game load function that sometimes works">
 <polygon fill="white" stroke="black" points="138,-50 138,-69 253,-69 253,-50 138,-50"/>
 <text text-anchor="middle" x="195.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gameio::load</text>
 </a>
@@ -120,7 +120,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node27 -->
 <g id="node5" class="node"><title>Node27</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title="Create a game from a specification.">
 <polygon fill="white" stroke="black" points="0,-44.5 0,-74.5 102,-74.5 102,-44.5 0,-44.5"/>
 <text text-anchor="start" x="8" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="51" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>

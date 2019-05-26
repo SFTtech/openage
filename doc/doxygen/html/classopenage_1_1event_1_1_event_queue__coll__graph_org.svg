@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1252 308,-1252 308,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="The core event class for execution and execution dependencies.">
 <polygon fill="#bfbfbf" stroke="black" points="76,-0.5 76,-244.5 216,-244.5 216,-0.5 76,-0.5"/>
 <text text-anchor="middle" x="146" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <polyline fill="none" stroke="black" points="76,-225.5 216,-225.5 "/>
@@ -40,7 +40,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_event_store.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_event_store.xhtml" target="_top" xlink:title="Sorted storage for events.">
 <polygon fill="white" stroke="black" points="78.5,-292.5 78.5,-448.5 213.5,-448.5 213.5,-292.5 78.5,-292.5"/>
 <text text-anchor="middle" x="146" y="-436.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventStore</text>
 <polyline fill="none" stroke="black" points="78.5,-429.5 213.5,-429.5 "/>
@@ -125,7 +125,7 @@
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="structopenage_1_1util_1_1_shared_ptr_less.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="structopenage_1_1util_1_1_shared_ptr_less.xhtml" target="_top" xlink:title="Comparator that returns true if the contained value of the left sharedptr is &lt; than the value contain...">
 <polygon fill="white" stroke="black" points="0,-1179.5 0,-1247.5 122,-1247.5 122,-1179.5 0,-1179.5"/>
 <text text-anchor="start" x="8" y="-1235.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::SharedPtr</text>
 <text text-anchor="middle" x="61" y="-1224.5" font-family="Helvetica,sans-Serif" font-size="10.00">Less&lt; T &gt;</text>
@@ -144,7 +144,7 @@
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml" target="_top" xlink:title="(Quite) efficient heap implementation.">
 <polygon fill="white" stroke="black" points="140,-854.5 140,-1131.5 276,-1131.5 276,-854.5 140,-854.5"/>
 <text text-anchor="start" x="148" y="-1119.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="148" y="-1108.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap&lt; T, compare,</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 518,-35 518,4 -4,4"/>
 <!-- Node217 -->
 <g id="node1" class="node"><title>Node217</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Return the key representation of the event.">
 <polygon fill="#bfbfbf" stroke="black" points="369,-0.5 369,-30.5 514,-30.5 514,-0.5 369,-0.5"/>
 <text text-anchor="start" x="377" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="441.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::wheel_bind_to_string</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node218 -->
 <g id="node2" class="node"><title>Node218</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011" target="_top" xlink:title="Return the string representation of the bind assignated to an action.">
 <polygon fill="white" stroke="black" points="188,-0.5 188,-30.5 333,-30.5 333,-0.5 188,-0.5"/>
 <text text-anchor="start" x="196" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="260.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_bind</text>

@@ -20,7 +20,7 @@
 </g>
 <!-- Node67 -->
 <g id="node2" class="node"><title>Node67</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_resource.xhtml#a01dfa61156a48fe06ea5e3c22978f378" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_resource.xhtml#a01dfa61156a48fe06ea5e3c22978f378" target="_top" xlink:title="create an audio resource, this produces a DynamicResource or a InMemoryResource">
 <polygon fill="white" stroke="black" points="494,-235.5 494,-265.5 624,-265.5 624,-235.5 494,-235.5"/>
 <text text-anchor="start" x="502" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Resource</text>
 <text text-anchor="middle" x="559" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_resource</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node69 -->
 <g id="node4" class="node"><title>Node69</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title="Invoked when the gamedata has been loaded.">
 <polygon fill="white" stroke="black" points="150,-216.5 150,-246.5 264,-246.5 264,-216.5 150,-216.5"/>
 <text text-anchor="start" x="158" y="-234.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00">on_gamedata_loaded</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node75 -->
 <g id="node10" class="node"><title>Node75</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" target="_top" xlink:title="Create an internal texture handle.">
 <polygon fill="white" stroke="black" points="498,-147.5 498,-177.5 620,-177.5 620,-147.5 498,-147.5"/>
 <text text-anchor="start" x="506" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="559" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::load_texture</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node79 -->
 <g id="node14" class="node"><title>Node79</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1audio.xhtml#a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1audio.xhtml#a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" target="_top" xlink:title="Opens a opus file.">
 <polygon fill="white" stroke="black" points="504,-0.5 504,-30.5 614,-30.5 614,-0.5 504,-0.5"/>
 <text text-anchor="start" x="512" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::open</text>
 <text text-anchor="middle" x="559" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_opus_file</text>
@@ -104,7 +104,7 @@
 </g>
 <!-- Node68 -->
 <g id="node3" class="node"><title>Node68</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a7d1dc28dded852d3eadf34771ee8f6b0" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a7d1dc28dded852d3eadf34771ee8f6b0" target="_top" xlink:title="Loads all audio resources, that are specified in the sound_files vector.">
 <polygon fill="white" stroke="black" points="302,-235.5 302,-265.5 453,-265.5 453,-235.5 302,-235.5"/>
 <text text-anchor="start" x="310" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <text text-anchor="middle" x="377.5" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">::load_resources</text>
@@ -123,7 +123,7 @@
 </g>
 <!-- Node70 -->
 <g id="node5" class="node"><title>Node70</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="0,-167.5 0,-197.5 114,-197.5 114,-167.5 0,-167.5"/>
 <text text-anchor="start" x="8" y="-185.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="57" y="-174.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>
@@ -175,7 +175,7 @@
 </g>
 <!-- Node76 -->
 <g id="node11" class="node"><title>Node76</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" target="_top" xlink:title="Query the Texture for a given filename.">
 <polygon fill="white" stroke="black" points="316.5,-147.5 316.5,-177.5 438.5,-177.5 438.5,-147.5 316.5,-147.5"/>
 <text text-anchor="start" x="324.5" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="377.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_texture</text>
@@ -189,7 +189,7 @@
 </g>
 <!-- Node77 -->
 <g id="node12" class="node"><title>Node77</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_game_spec.xhtml#a0d9bb7cf5c16889a6eab13c714b39ae1" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_game_spec.xhtml#a0d9bb7cf5c16889a6eab13c714b39ae1" target="_top" xlink:title="lookup using a texture file name">
 <polygon fill="white" stroke="black" points="150,-167.5 150,-197.5 264,-197.5 264,-167.5 150,-167.5"/>
 <text text-anchor="start" x="158" y="-185.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-174.5" font-family="Helvetica,sans-Serif" font-size="10.00">get_texture</text>
@@ -203,7 +203,7 @@
 </g>
 <!-- Node78 -->
 <g id="node13" class="node"><title>Node78</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title="fill in the terrain_data attribute of this">
 <polygon fill="white" stroke="black" points="150,-118.5 150,-148.5 264,-148.5 264,-118.5 150,-118.5"/>
 <text text-anchor="start" x="158" y="-136.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-125.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_terrain</text>
@@ -222,7 +222,7 @@
 </g>
 <!-- Node80 -->
 <g id="node15" class="node"><title>Node80</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml#afd535fc99780b2823cdd38c8dfc03f5d" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml#afd535fc99780b2823cdd38c8dfc03f5d" target="_top" xlink:title="Returns the resource as pcm data buffer.">
 <polygon fill="white" stroke="black" points="300,-0.5 300,-30.5 455,-30.5 455,-0.5 300,-0.5"/>
 <text text-anchor="start" x="308" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::OpusInMemory</text>
 <text text-anchor="middle" x="377.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Loader::get_resource</text>

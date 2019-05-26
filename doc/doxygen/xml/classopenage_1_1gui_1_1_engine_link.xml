@@ -12,9 +12,10 @@
         <name>globalBinds</name>
         <read>get_global_binds</read>
         <briefdescription>
+<para>The text list of global key bindings. </para>
         </briefdescription>
         <detaileddescription>
-<para>The text list of global key bindings. displayed so one can see what keys are active. </para>
+<para>displayed so one can see what keys are active. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

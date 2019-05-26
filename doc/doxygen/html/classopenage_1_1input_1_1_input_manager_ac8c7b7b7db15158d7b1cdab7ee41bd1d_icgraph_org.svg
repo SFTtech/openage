@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-57 511,-57 511,4 -4,4"/>
 <!-- Node213 -->
 <g id="node1" class="node"><title>Node213</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="manages the pressing of an input event (key, mouse, ...).">
 <polygon fill="#bfbfbf" stroke="black" points="362,-22.5 362,-52.5 507,-52.5 507,-22.5 362,-22.5"/>
 <text text-anchor="start" x="370" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="434.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::trigger</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node214 -->
 <g id="node2" class="node"><title>Node214</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title="When a SDL event happens, this is called.">
 <polygon fill="white" stroke="black" points="0,-22.5 0,-52.5 145,-52.5 145,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_input</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node215 -->
 <g id="node3" class="node"><title>Node215</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" target="_top" xlink:title="sets the state of a specific key">
 <polygon fill="white" stroke="black" points="181,-0.5 181,-30.5 326,-30.5 326,-0.5 181,-0.5"/>
 <text text-anchor="start" x="189" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_state</text>

@@ -12,9 +12,10 @@
         <argsstring></argsstring>
         <name>mesh</name>
         <briefdescription>
+<para>Data managing GPU memory and interpretation of mesh data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Data managing GPU memory and interpretation of mesh data. Only present if the type is a mesh. </para>
+<para>Only present if the type is a mesh. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -69,9 +70,10 @@
         <argsstring>() const</argsstring>
         <name>draw</name>
         <briefdescription>
+<para>Executes a draw command for the geometry on the currently active context. </para>
         </briefdescription>
         <detaileddescription>
-<para>Executes a draw command for the geometry on the currently active context. Assumes bound and valid shader program and all other necessary state. </para>
+<para>Assumes bound and valid shader program and all other necessary state. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -99,9 +101,10 @@
           <declname>offset</declname>
         </param>
         <briefdescription>
+<para>In a meshed geometry, updates the vertex data starting from the offset-th vertex. </para>
         </briefdescription>
         <detaileddescription>
-<para>In a meshed geometry, updates the vertex data starting from the offset-th vertex. The type of the vertex data has to be the same as it was on initializing the geometry. The size plus the offset cannot exceed the previous size of the vertex data. If the mesh is indexed, indices will stay the same. <parameterlist kind="exception"><parameteritem>
+<para>The type of the vertex data has to be the same as it was on initializing the geometry. The size plus the offset cannot exceed the previous size of the vertex data. If the mesh is indexed, indices will stay the same. <parameterlist kind="exception"><parameteritem>
 <parameternamelist>
 <parametername>if</parametername>
 </parameternamelist>

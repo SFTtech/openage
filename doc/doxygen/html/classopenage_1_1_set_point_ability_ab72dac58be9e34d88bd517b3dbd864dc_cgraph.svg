@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 464,-73.5 464,4 -4,4"/>
 <!-- Node7 -->
 <g id="node1" class="node"><title>Node7</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="applies command to a given unit">
 <polygon fill="#bfbfbf" stroke="black" points="0,-17 0,-47 124,-47 124,-17 0,-17"/>
 <text text-anchor="start" x="8" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SetPointAbility</text>
 <text text-anchor="middle" x="62" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node8 -->
 <g id="node2" class="node"><title>Node8</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title="returns attribute based on templated value">
 <polygon fill="white" stroke="black" points="183.5,-39 183.5,-69 279.5,-69 279.5,-39 183.5,-39"/>
 <text text-anchor="start" x="191.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::get</text>
 <text text-anchor="middle" x="231.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node9 -->
 <g id="node3" class="node"><title>Node9</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title="Get the attribute based on the type.">
 <polygon fill="white" stroke="black" points="339,-44.5 339,-63.5 460,-63.5 460,-44.5 339,-44.5"/>
 <text text-anchor="middle" x="399.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::get</text>
 </a>

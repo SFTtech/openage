@@ -1,11 +1,11 @@
 <map id="openage::util::array8_to_array64" name="openage::util::array8_to_array64">
-<area shape="rect" id="node1" title=" " alt="" coords="5,86,145,127"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#abab1bbea3efd69cf8087a807b5b5f8f2" title=" " alt="" coords="193,5,372,32"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" title=" " alt="" coords="213,57,353,98"/>
+<area shape="rect" id="node1" title="Convert a C&#45;style array of uint8_t to a std::vector of uint64_t." alt="" coords="5,86,145,127"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#abab1bbea3efd69cf8087a807b5b5f8f2" title="Get the number of uint64&#45;elements that result from converting a count&#45;sized uint8_t array." alt="" coords="193,5,372,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" title="Convert a C&#45;style array of uint8_t to a uint64_t." alt="" coords="213,57,353,98"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="420,115,613,141"/>
 <area shape="rect" id="node7" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="248,173,317,200"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="461,64,572,91"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="661,115,788,141"/>
-<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="433,166,600,207"/>
-<area shape="rect" id="node9" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="433,231,600,273"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="661,115,788,141"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="433,166,600,207"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="433,231,600,273"/>
 </map>

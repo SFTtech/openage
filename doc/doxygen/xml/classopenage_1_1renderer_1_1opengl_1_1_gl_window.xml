@@ -30,9 +30,10 @@
         <argsstring></argsstring>
         <name>context</name>
         <briefdescription>
+<para>The window&apos;s OpenGL context. </para>
         </briefdescription>
         <detaileddescription>
-<para>The window&apos;s OpenGL context. It&apos;s optional because it can&apos;t be constructed immediately, but after the constructor runs it&apos;s guaranteed to be available. </para>
+<para>It&apos;s optional because it can&apos;t be constructed immediately, but after the constructor runs it&apos;s guaranteed to be available. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -107,9 +108,10 @@
           <declname>height</declname>
         </param>
         <briefdescription>
+<para>Force the window to the given size. </para>
         </briefdescription>
         <detaileddescription>
-<para>Force the window to the given size. It&apos;s generally not a good idea to use this, as it makes the window jump around wierdly. </para>
+<para>It&apos;s generally not a good idea to use this, as it makes the window jump around wierdly. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -125,9 +127,10 @@
         <name>update</name>
         <reimplements refid="classopenage_1_1renderer_1_1_window_1a2a6722e3c0459b2caa86e8f819ff5e3f">update</reimplements>
         <briefdescription>
+<para>Polls for window events, calls callbacks for these events, swaps front and back framebuffers to present graphics onto screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>Polls for window events, calls callbacks for these events, swaps front and back framebuffers to present graphics onto screen. This has to be called at the end of every graphics frame. </para>
+<para>This has to be called at the end of every graphics frame. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -166,9 +169,10 @@
         <argsstring>()</argsstring>
         <name>make_context_current</name>
         <briefdescription>
+<para>Make this window&apos;s context the current rendering context of the current thread. </para>
         </briefdescription>
         <detaileddescription>
-<para>Make this window&apos;s context the current rendering context of the current thread. Only use this and most other GL functions on a dedicated window thread. </para>
+<para>Only use this and most other GL functions on a dedicated window thread. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

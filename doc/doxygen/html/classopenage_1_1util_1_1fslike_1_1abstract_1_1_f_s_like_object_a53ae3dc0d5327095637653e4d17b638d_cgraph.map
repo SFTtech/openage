@@ -1,6 +1,6 @@
 <map id="openage.util.fslike.abstract.FSLikeObject.pretty" name="openage.util.fslike.abstract.FSLikeObject.pretty">
 <area shape="rect" id="node1" title="pretty&#45;format a path in this filesystem like object." alt="" coords="5,5,187,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title=" " alt="" coords="235,13,351,39"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title="str(value);" alt="" coords="235,13,351,39"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="399,13,592,39"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="640,13,767,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="640,13,767,39"/>
 </map>

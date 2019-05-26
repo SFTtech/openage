@@ -1,5 +1,5 @@
 <map id="openage::datastructure::PairingHeap::push_node" name="openage::datastructure::PairingHeap::push_node">
-<area shape="rect" id="node1" title=" " alt="" coords="272,68,443,109"/>
-<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" title=" " alt="" coords="5,5,224,76"/>
-<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" title=" " alt="" coords="5,100,224,171"/>
+<area shape="rect" id="node1" title="adds the given node to the heap." alt="" coords="272,68,443,109"/>
+<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" title="adds the given item to the heap." alt="" coords="5,5,224,76"/>
+<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" title="After a change, call this to reorganize the given node." alt="" coords="5,100,224,171"/>
 </map>

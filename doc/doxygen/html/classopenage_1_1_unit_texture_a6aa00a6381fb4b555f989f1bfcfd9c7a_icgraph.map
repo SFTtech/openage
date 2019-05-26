@@ -1,4 +1,4 @@
 <map id="openage::UnitTexture::is_valid" name="openage::UnitTexture::is_valid">
-<area shape="rect" id="node1" title=" " alt="" coords="199,5,344,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" title=" " alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node1" title="invalid unit textures will cause errors if drawn" alt="" coords="199,5,344,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" title="initialise graphic data" alt="" coords="5,5,151,47"/>
 </map>

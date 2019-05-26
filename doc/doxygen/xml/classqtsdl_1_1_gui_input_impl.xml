@@ -79,9 +79,9 @@
           <declname>e</declname>
         </param>
         <briefdescription>
+<para>Returns true if the event was accepted. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns true if the event was accepted. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

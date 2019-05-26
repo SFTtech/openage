@@ -57,7 +57,7 @@ var sectionId = 'dynsection-30';
 <polygon fill="white" stroke="none" points="-4,4 -4,-128 1174,-128 1174,4 -4,4"/>
 <!-- Node193 -->
 <g id="node1" class="node"><title>Node193</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="sets the state of a specific key">
 <polygon fill="#bfbfbf" stroke="black" points="0,-49.5 0,-79.5 145,-79.5 145,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_state</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node194 -->
 <g id="node2" class="node"><title>Node194</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" target="_top" xlink:title="true if the given event type is being ignored">
 <polygon fill="white" stroke="black" points="362,-71.5 362,-101.5 507,-101.5 507,-71.5 362,-71.5"/>
 <text text-anchor="start" x="370" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="434.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ignored</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node200 -->
 <g id="node8" class="node"><title>Node200</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title="Query stored pressing stat for a key.">
 <polygon fill="white" stroke="black" points="181,-49.5 181,-79.5 326,-79.5 326,-49.5 181,-49.5"/>
 <text text-anchor="start" x="189" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::is_down</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node201 -->
 <g id="node9" class="node"><title>Node201</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" target="_top" xlink:title="manages the pressing of an input event (key, mouse, ...).">
 <polygon fill="white" stroke="black" points="181,-0.5 181,-30.5 326,-30.5 326,-0.5 181,-0.5"/>
 <text text-anchor="start" x="189" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::trigger</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node195 -->
 <g id="node3" class="node"><title>Node195</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" target="_top" xlink:title="Returns the context on top.">
 <polygon fill="white" stroke="black" points="543,-93.5 543,-123.5 688,-123.5 688,-93.5 543,-93.5"/>
 <text text-anchor="start" x="551" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="615.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_top_context</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node197 -->
 <g id="node5" class="node"><title>Node197</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" target="_top" xlink:title="classes ordered with most specific first">
 <polygon fill="white" stroke="black" points="724,-22.5 724,-52.5 858,-52.5 858,-22.5 724,-22.5"/>
 <text text-anchor="start" x="732" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ClassCode</text>
 <text text-anchor="middle" x="791" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_classes</text>
@@ -163,7 +163,7 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node199 -->
 <g id="node7" class="node"><title>Node199</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1075,-28 1075,-47 1170,-47 1170,-28 1075,-28"/>
 <text text-anchor="middle" x="1122.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -186,7 +186,7 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node202 -->
 <g id="node10" class="node"><title>Node202</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461" target="_top" xlink:title="lookup an action.">
 <polygon fill="white" stroke="black" points="364,-0.5 364,-30.5 505,-30.5 505,-0.5 364,-0.5"/>
 <text text-anchor="start" x="372" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="434.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_if_bound</text>

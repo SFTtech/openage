@@ -118,7 +118,8 @@ $(document).ready(function(){initNavTree('misc_8h.xhtml','');});
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="misc_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="misc_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div>
 <p><a href="misc_8h_source.xhtml">Go to the source code of this file.</a></p>
@@ -126,13 +127,16 @@ $(document).ready(function(){initNavTree('misc_8h.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1util_1_1less.xhtml">openage::util::less&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">generic callable, that compares any types for creating a total order.  <a href="structopenage_1_1util_1_1less.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1util_1_1_shared_ptr_less.xhtml">openage::util::SharedPtrLess&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparator that returns true if the contained value of the left sharedptr is <code>&lt;</code> than the value contained in the right sharedptr.  <a href="structopenage_1_1util_1_1_shared_ptr_less.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1util"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml">openage::util</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,34 +145,45 @@ Namespaces</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a7e483e123bf554b630319eb3dd012c02"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a7e483e123bf554b630319eb3dd012c02"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">openage::util::mod</a> (T x, T m)</td></tr>
+<tr class="memdesc:a7e483e123bf554b630319eb3dd012c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">modulo operation that guarantees to return positive values.  <a href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">More...</a><br /></td></tr>
 <tr class="separator:a7e483e123bf554b630319eb3dd012c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebb1428f079400b957bd2ce2fb8ad583"><td class="memTemplParams" colspan="2">template&lt;typename T , unsigned int modulo&gt; </td></tr>
 <tr class="memitem:aebb1428f079400b957bd2ce2fb8ad583"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#aebb1428f079400b957bd2ce2fb8ad583">openage::util::mod</a> (T x)</td></tr>
+<tr class="memdesc:aebb1428f079400b957bd2ce2fb8ad583"><td class="mdescLeft">&#160;</td><td class="mdescRight">compiletime defined modulo function.  <a href="namespaceopenage_1_1util.xhtml#aebb1428f079400b957bd2ce2fb8ad583">More...</a><br /></td></tr>
 <tr class="separator:aebb1428f079400b957bd2ce2fb8ad583"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a656c9d55c02d291f899cdae14b356d7a"><td class="memTemplParams" colspan="2">template&lt;typename T , int amount&gt; </td></tr>
 <tr class="memitem:a656c9d55c02d291f899cdae14b356d7a"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#a656c9d55c02d291f899cdae14b356d7a">openage::util::rol</a> (T x)</td></tr>
+<tr class="memdesc:a656c9d55c02d291f899cdae14b356d7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">compiletime defined rotate left function  <a href="namespaceopenage_1_1util.xhtml#a656c9d55c02d291f899cdae14b356d7a">More...</a><br /></td></tr>
 <tr class="separator:a656c9d55c02d291f899cdae14b356d7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34ba6f7abd32acb48dfc6ad6efdc1bc8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a34ba6f7abd32acb48dfc6ad6efdc1bc8"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">openage::util::div</a> (T x, T m)</td></tr>
+<tr class="memdesc:a34ba6f7abd32acb48dfc6ad6efdc1bc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">implements the 'correct' version of the division operator, which always rounds to -inf  <a href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">More...</a><br /></td></tr>
 <tr class="separator:a34ba6f7abd32acb48dfc6ad6efdc1bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69b6ecf2b5119f11c33d2b5b89cec86c"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c">openage::util::array8_to_uint64</a> (const uint8_t *start, size_t count, bool big_endian=false)</td></tr>
+<tr class="memdesc:a69b6ecf2b5119f11c33d2b5b89cec86c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C-style array of uint8_t to a uint64_t.  <a href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c">More...</a><br /></td></tr>
 <tr class="separator:a69b6ecf2b5119f11c33d2b5b89cec86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9d6c19aadc0f6a1d502f42852172de0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0">openage::util::uint64_to_array8</a> (const uint64_t value, bool big_endian=false)</td></tr>
+<tr class="memdesc:ae9d6c19aadc0f6a1d502f42852172de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a uint64_t to an array of uint8_t.  <a href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0">More...</a><br /></td></tr>
 <tr class="separator:ae9d6c19aadc0f6a1d502f42852172de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abab1bbea3efd69cf8087a807b5b5f8f2"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#abab1bbea3efd69cf8087a807b5b5f8f2">openage::util::array64_size</a> (size_t count)</td></tr>
+<tr class="memdesc:abab1bbea3efd69cf8087a807b5b5f8f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of uint64-elements that result from converting a count-sized uint8_t array.  <a href="namespaceopenage_1_1util.xhtml#abab1bbea3efd69cf8087a807b5b5f8f2">More...</a><br /></td></tr>
 <tr class="separator:abab1bbea3efd69cf8087a807b5b5f8f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa30219231e1ac7a89ef5d1fb44894e9e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e">openage::util::array8_to_array64</a> (const uint8_t *start, size_t count, bool big_endian=false)</td></tr>
+<tr class="memdesc:aa30219231e1ac7a89ef5d1fb44894e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C-style array of uint8_t to a std::vector of uint64_t.  <a href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e">More...</a><br /></td></tr>
 <tr class="separator:aa30219231e1ac7a89ef5d1fb44894e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9f52b617e7434a421cd5f9de448b600"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600">openage::util::array64_to_array8</a> (const uint64_t *start, size_t count, bool big_endian=false)</td></tr>
+<tr class="memdesc:af9f52b617e7434a421cd5f9de448b600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C-style array of uint64_t to a std::vector of uint8_t.  <a href="namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600">More...</a><br /></td></tr>
 <tr class="separator:af9f52b617e7434a421cd5f9de448b600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af88424f642ef1ba4e6b2eb1c05ad8e3c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:af88424f642ef1ba4e6b2eb1c05ad8e3c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#af88424f642ef1ba4e6b2eb1c05ad8e3c">openage::util::vector_extend</a> (std::vector&lt; T &gt; &amp;vec, const std::vector&lt; T &gt; &amp;ext)</td></tr>
+<tr class="memdesc:af88424f642ef1ba4e6b2eb1c05ad8e3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extend a vector with elements, without destroying source one.  <a href="namespaceopenage_1_1util.xhtml#af88424f642ef1ba4e6b2eb1c05ad8e3c">More...</a><br /></td></tr>
 <tr class="separator:af88424f642ef1ba4e6b2eb1c05ad8e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fb1a345070c4a9dd714eb2e8ac2951c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a9fb1a345070c4a9dd714eb2e8ac2951c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#a9fb1a345070c4a9dd714eb2e8ac2951c">openage::util::vector_extend</a> (std::vector&lt; T &gt; &amp;vec, std::vector&lt; T &gt; &amp;&amp;ext)</td></tr>
 <tr class="separator:a9fb1a345070c4a9dd714eb2e8ac2951c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd8f5a72ed6227f640eda13229878c6f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:acd8f5a72ed6227f640eda13229878c6f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1util.xhtml#acd8f5a72ed6227f640eda13229878c6f">openage::util::vector_remove_swap_end</a> (std::vector&lt; T &gt; &amp;vec, size_t idx)</td></tr>
+<tr class="memdesc:acd8f5a72ed6227f640eda13229878c6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the given element index in the vector.  <a href="namespaceopenage_1_1util.xhtml#acd8f5a72ed6227f640eda13229878c6f">More...</a><br /></td></tr>
 <tr class="separator:acd8f5a72ed6227f640eda13229878c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>

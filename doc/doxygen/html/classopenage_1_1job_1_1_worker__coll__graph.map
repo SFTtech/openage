@@ -1,4 +1,4 @@
 <map id="openage::job::Worker" name="openage::job::Worker">
-<area shape="rect" id="node1" title=" " alt="" coords="18,468,167,721"/>
-<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_job_manager.xhtml" title=" " alt="" coords="5,5,180,405"/>
+<area shape="rect" id="node1" title="A worker encapsulates the execution of multiple jobs in a single background thread." alt="" coords="18,468,167,721"/>
+<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_job_manager.xhtml" title="A job manager can be used to execute functions within separate worker threads." alt="" coords="5,5,180,405"/>
 </map>

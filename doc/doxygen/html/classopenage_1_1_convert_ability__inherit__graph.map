@@ -1,4 +1,4 @@
 <map id="openage::ConvertAbility" name="openage::ConvertAbility">
-<area shape="rect" id="node1" title=" " alt="" coords="5,277,164,399"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_ability.xhtml" title=" " alt="" coords="15,5,154,229"/>
+<area shape="rect" id="node1" title="initiates a convert action when given a valid target" alt="" coords="5,277,164,399"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_ability.xhtml" title="Abilities create an action when given a target some abilities target positions such as moving or patr..." alt="" coords="15,5,154,229"/>
 </map>

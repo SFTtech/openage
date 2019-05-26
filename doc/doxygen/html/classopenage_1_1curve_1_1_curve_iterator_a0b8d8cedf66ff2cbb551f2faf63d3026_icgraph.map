@@ -1,4 +1,4 @@
 <map id="openage::curve::CurveIterator::valid" name="openage::curve::CurveIterator::valid">
-<area shape="rect" id="node1" title=" " alt="" coords="268,5,457,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_curve_iterator.xhtml#ab14912b85502c78be50c1f1153910a04" title=" " alt="" coords="5,5,220,47"/>
+<area shape="rect" id="node1" title="Check if the iterator is still valid (this breaks from the stl &#45; in the best way)" alt="" coords="268,5,457,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_curve_iterator.xhtml#ab14912b85502c78be50c1f1153910a04" title="Advance to the next valid element." alt="" coords="5,5,220,47"/>
 </map>

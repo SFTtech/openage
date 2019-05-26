@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>csv_file_map_t</name>
         <briefdescription>
+<para>Type for storing csv data: {filename: [line, ...]}. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type for storing csv data: {filename: [line, ...]}. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -60,9 +60,10 @@
           <declname>entryfile</declname>
         </param>
         <briefdescription>
+<para>Initialize the collection by reading the given file. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initialize the collection by reading the given file. This file must contain the data that this collection is made up of. </para>
+<para>This file must contain the data that this collection is made up of. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -104,9 +105,9 @@
           <declname>filename</declname>
         </param>
         <briefdescription>
+<para>This function is the entry point to load the whole file tree recursively. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function is the entry point to load the whole file tree recursively.</para>
 <para>Should be called again from the .recurse() method of the struct.</para>
 <para>The internal flow is as follows:<itemizedlist>
 <listitem><para>read entries of the given files (call to the generated field parsers (the fill function))</para>
@@ -142,9 +143,9 @@
           <declname>filename</declname>
         </param>
         <briefdescription>
+<para>Parse the data from one file in the map. </para>
         </briefdescription>
         <detaileddescription>
-<para>Parse the data from one file in the map. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,9 +157,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Collection of multiple csv files. </para>
     </briefdescription>
     <detaileddescription>
-<para>Collection of multiple csv files. Read from a packed csv that contains all the data.</para>
+<para>Read from a packed csv that contains all the data.</para>
 <para>Then, data can be read recursively. </para>
     </detaileddescription>
     <collaborationgraph>

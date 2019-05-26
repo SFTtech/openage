@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 278,-73.5 278,4 -4,4"/>
 <!-- Node7 -->
 <g id="node1" class="node"><title>Node7</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Re&#45;throws the exception cause, if the exception has one.">
 <polygon fill="#bfbfbf" stroke="black" points="168,-17 168,-47 274,-47 274,-17 168,-17"/>
 <text text-anchor="start" x="176" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 <text text-anchor="middle" x="221" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::rethrow_cause</text>

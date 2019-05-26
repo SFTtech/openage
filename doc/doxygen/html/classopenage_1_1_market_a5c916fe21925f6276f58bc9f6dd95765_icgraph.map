@@ -1,4 +1,4 @@
 <map id="openage::Market::get_sell_prices" name="openage::Market::get_sell_prices">
-<area shape="rect" id="node1" title=" " alt="" coords="200,5,345,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" title=" " alt="" coords="5,13,152,39"/>
+<area shape="rect" id="node1" title="Get the buying prices for a given player." alt="" coords="200,5,345,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" title="The given player sells the given resource for gold." alt="" coords="5,13,152,39"/>
 </map>

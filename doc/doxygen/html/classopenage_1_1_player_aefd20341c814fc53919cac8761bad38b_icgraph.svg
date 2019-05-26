@@ -57,7 +57,7 @@ var sectionId = 'dynsection-31';
 <polygon fill="white" stroke="none" points="-4,4 -4,-128 1215,-128 1215,4 -4,4"/>
 <!-- Node220 -->
 <g id="node1" class="node"><title>Node220</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="this player owns the specified unit">
 <polygon fill="#bfbfbf" stroke="black" points="1095,-74 1095,-93 1211,-93 1211,-74 1095,-74"/>
 <text text-anchor="middle" x="1153" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::owns</text>
 </a>
@@ -65,7 +65,7 @@ var sectionId = 'dynsection-31';
 </g>
 <!-- Node221 -->
 <g id="node2" class="node"><title>Node221</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#aba4a16068cf5a6b218a4c78f499874b0" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#aba4a16068cf5a6b218a4c78f499874b0" target="_top" xlink:title="checks whether the current player is the owner of this unit">
 <polygon fill="white" stroke="black" points="925,-74 925,-93 1059,-93 1059,-74 925,-74"/>
 <text text-anchor="middle" x="992" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::is_own_unit</text>
 </a>
@@ -78,7 +78,7 @@ var sectionId = 'dynsection-31';
 </g>
 <!-- Node222 -->
 <g id="node3" class="node"><title>Node222</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" target="_top" xlink:title="kill a single unit in the selection">
 <polygon fill="white" stroke="black" points="611,-93.5 611,-123.5 728,-123.5 728,-93.5 611,-93.5"/>
 <text text-anchor="start" x="619" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="669.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">::kill_unit</text>
@@ -92,7 +92,7 @@ var sectionId = 'dynsection-31';
 </g>
 <!-- Node224 -->
 <g id="node5" class="node"><title>Node224</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a9ec8fd5cfcfa451cce1123ff87894719" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a9ec8fd5cfcfa451cce1123ff87894719" target="_top" xlink:title="Check whether the currently selected units may be selected at the same time If not,...">
 <polygon fill="white" stroke="black" points="764,-46.5 764,-76.5 889,-76.5 889,-46.5 764,-46.5"/>
 <text text-anchor="start" x="772" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="826.5" y="-53.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_unit_selection_type</text>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-31';
 </g>
 <!-- Node223 -->
 <g id="node4" class="node"><title>Node223</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-71.5 0,-101.5 116,-101.5 116,-71.5 0,-71.5"/>
 <text text-anchor="start" x="8" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -148,7 +148,7 @@ var sectionId = 'dynsection-31';
 </g>
 <!-- Node229 -->
 <g id="node10" class="node"><title>Node229</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="black" points="305,-0.5 305,-30.5 422,-30.5 422,-0.5 305,-0.5"/>
 <text text-anchor="start" x="313" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>
@@ -162,7 +162,7 @@ var sectionId = 'dynsection-31';
 </g>
 <!-- Node227 -->
 <g id="node8" class="node"><title>Node227</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title="point unit selection">
 <polygon fill="white" stroke="black" points="305,-49.5 305,-79.5 422,-79.5 422,-49.5 305,-49.5"/>
 <text text-anchor="start" x="313" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_point</text>

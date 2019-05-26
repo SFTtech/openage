@@ -18,9 +18,9 @@
           <declname>b</declname>
         </param>
         <briefdescription>
+<para>Returns true IFF the string literals have equal content. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns true IFF the string literals have equal content. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -37,9 +37,9 @@
           <declname>str</declname>
         </param>
         <briefdescription>
+<para>Returns the length of the string literal, excluding the terminating NULL byte. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the length of the string literal, excluding the terminating NULL byte. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -67,9 +67,9 @@
           <declname>suffix</declname>
         </param>
         <briefdescription>
+<para>Truncates a suffix from a string literal. </para>
         </briefdescription>
         <detaileddescription>
-<para>Truncates a suffix from a string literal.</para>
 <para>Raises &apos;false&apos; if str doesn&apos;t end in the given suffix. </para>
         </detaileddescription>
         <inbodydescription>
@@ -89,9 +89,9 @@
           <declname>str</declname>
         </param>
         <briefdescription>
+<para>Creates a <ref refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal" kindref="compound">truncated_string_literal</ref> from a regular string literal. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a <ref refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal" kindref="compound">truncated_string_literal</ref> from a regular string literal. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -114,9 +114,9 @@
           <declname>prefix</declname>
         </param>
         <briefdescription>
+<para>Tests whether a string literal starts with the given prefix. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests whether a string literal starts with the given prefix. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -140,9 +140,9 @@
           <declname>prefix</declname>
         </param>
         <briefdescription>
+<para>Strips a prefix from a given string literal. </para>
         </briefdescription>
         <detaileddescription>
-<para>Strips a prefix from a given string literal.</para>
 <para>If the string literal doesn&apos;t have that prefix, returns the string literal itself. </para>
         </detaileddescription>
         <inbodydescription>
@@ -167,9 +167,9 @@
           <declname>prefix</declname>
         </param>
         <briefdescription>
+<para>Strips a prefix, given as const char *, from a given string literal. </para>
         </briefdescription>
         <detaileddescription>
-<para>Strips a prefix, given as const char *, from a given string literal.</para>
 <para>If the string literal doesn&apos;t have that prefix, returns the string literal itself. </para>
         </detaileddescription>
         <inbodydescription>

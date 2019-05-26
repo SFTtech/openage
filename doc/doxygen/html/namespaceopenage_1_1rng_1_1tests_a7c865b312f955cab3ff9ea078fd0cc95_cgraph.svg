@@ -57,7 +57,7 @@ var sectionId = 'dynsection-2';
 <polygon fill="white" stroke="none" points="-4,4 -4,-91.5 721,-91.5 721,4 -4,4"/>
 <!-- Node11 -->
 <g id="node1" class="node"><title>Node11</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Tests filling integers.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-43.5 0,-73.5 101,-73.5 101,-43.5 0,-43.5"/>
 <text text-anchor="start" x="8" y="-61.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="50.5" y="-50.5" font-family="Helvetica,sans-Serif" font-size="10.00">::fill</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node12 -->
 <g id="node2" class="node"><title>Node12</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a77a4af9133abbcd242c9adf3921bbd89" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a77a4af9133abbcd242c9adf3921bbd89" target="_top" xlink:title="Effeciently fills a chunk of 64 bit integers.">
 <polygon fill="white" stroke="black" points="148,-68 148,-87 263,-87 263,-68 148,-68"/>
 <text text-anchor="middle" x="205.5" y="-75" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::fill</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node13 -->
 <g id="node3" class="node"><title>Node13</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a" target="_top" xlink:title="Returns a seed based on time since epoch as well as data from std::random_device if available.">
 <polygon fill="white" stroke="black" points="137,-30 137,-49 274,-49 274,-30 137,-30"/>
 <text text-anchor="middle" x="205.5" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::random_seed</text>
 </a>
@@ -105,7 +105,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node15 -->
 <g id="node5" class="node"><title>Node15</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title="returns the number of nanoseconds since the UNIX epoch.">
 <polygon fill="white" stroke="black" points="481.5,-49.5 481.5,-79.5 586.5,-79.5 586.5,-49.5 481.5,-49.5"/>
 <text text-anchor="start" x="489.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="534" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_real_time</text>

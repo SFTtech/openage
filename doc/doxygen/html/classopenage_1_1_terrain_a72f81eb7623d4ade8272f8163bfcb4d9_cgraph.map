@@ -1,16 +1,16 @@
 <map id="openage::Terrain::calculate_masks" name="openage::Terrain::calculate_masks">
-<area shape="rect" id="node1" title=" " alt="" coords="5,152,184,193"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#a30da324d9ca8573bb3ac45bb12166298" title=" " alt="" coords="232,305,445,331"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_terrain.xhtml#aac2534a0373a7bbd8efdcf659977a881" title=" " alt="" coords="267,53,411,95"/>
+<area shape="rect" id="node1" title="calculate blending masks for a given tile position." alt="" coords="5,152,184,193"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#a30da324d9ca8573bb3ac45bb12166298" title="get the blendomatic mask with the given mask id." alt="" coords="232,305,445,331"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_terrain.xhtml#aac2534a0373a7bbd8efdcf659977a881" title="return the blending mode id for two given neighbor ids." alt="" coords="267,53,411,95"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_texture.xhtml#a4548b2bc3eb5310a97deee94ab536035" title=" " alt="" coords="265,119,413,160"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_terrain.xhtml#a88ec2ee796cfe5d6c97570ad73db43cc" title=" " alt="" coords="267,184,411,225"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_terrain.xhtml#a88ec2ee796cfe5d6c97570ad73db43cc" title="return the subtexture offset id for a given tile position." alt="" coords="267,184,411,225"/>
 <area shape="rect" id="node12" href="$namespacestd.xhtml#a0fc492a11cf74e80f976b24bea2a2eb2" title=" " alt="" coords="303,250,374,277"/>
-<area shape="rect" id="node14" href="$classopenage_1_1_terrain.xhtml#a6e394fadeb8534aef0c7098939f25b23" title=" " alt="" coords="507,6,673,33"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#adfa825aeaadbb2ce0a8dd13c335ffee1" title=" " alt="" coords="735,273,943,299"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_terrain.xhtml#a6e394fadeb8534aef0c7098939f25b23" title="get the terrain texture for a given terrain id." alt="" coords="507,6,673,33"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#adfa825aeaadbb2ce0a8dd13c335ffee1" title="validate whether the given mask id is available." alt="" coords="735,273,943,299"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="991,167,1101,194"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_terrain.xhtml#ae5704a3d8f41acd79c3c3dca6f284ce7" title=" " alt="" coords="495,61,685,87"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" title=" " alt="" coords="754,53,923,95"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_terrain.xhtml#ae5704a3d8f41acd79c3c3dca6f284ce7" title="return the blending mode/blendomatic mask set for a given terrain id." alt="" coords="495,61,685,87"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" title="validate whether the given terrain id is available." alt="" coords="754,53,923,95"/>
 <area shape="rect" id="node10" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="493,189,687,215"/>
-<area shape="rect" id="node11" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="775,189,902,215"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="775,189,902,215"/>
 <area shape="rect" id="node13" href="$classopenage_1_1util_1_1_fixed_point.xhtml#ae963a0d669b00ec8a65da1bf0041172a" title=" " alt="" coords="507,240,673,281"/>
 </map>

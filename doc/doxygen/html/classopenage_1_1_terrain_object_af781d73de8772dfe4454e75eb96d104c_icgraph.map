@@ -1,5 +1,5 @@
 <map id="openage::TerrainObject::place_unchecked" name="openage::TerrainObject::place_unchecked">
-<area shape="rect" id="node1" title=" " alt="" coords="209,39,365,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain_object.xhtml#aed04f7dfb2a4836107796fd3598accc3" title=" " alt="" coords="5,5,161,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_terrain_object.xhtml#a90235fcc91847da15129ce77ffcb53a8" title=" " alt="" coords="5,71,161,112"/>
+<area shape="rect" id="node1" title="placement function which does not check passibility used only when passibilty is already checked othe..." alt="" coords="209,39,365,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_object.xhtml#aed04f7dfb2a4836107796fd3598accc3" title="moves the object – returns false if object cannot be moved here" alt="" coords="5,5,161,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_terrain_object.xhtml#a90235fcc91847da15129ce77ffcb53a8" title="binds the TerrainObject to a certain TerrainChunk." alt="" coords="5,71,161,112"/>
 </map>

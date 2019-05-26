@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1002 287,-1002 287,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Allows simple direct usage of StringFormatter.">
 <polygon fill="#bfbfbf" stroke="black" points="50,-0.5 50,-57.5 170,-57.5 170,-0.5 50,-0.5"/>
 <text text-anchor="middle" x="110" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Formatter</text>
 <polyline fill="none" stroke="black" points="50,-38.5 170,-38.5 "/>
@@ -52,7 +52,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_cachable_o_s_stream.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_cachable_o_s_stream.xhtml" target="_top" xlink:title="Designed for usage by StringFormatter.">
 <polygon fill="white" stroke="black" points="0,-569.5 0,-659.5 164,-659.5 164,-569.5 0,-569.5"/>
 <text text-anchor="middle" x="82" y="-647.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CachableOSStream</text>
 <polyline fill="none" stroke="black" points="0,-640.5 164,-640.5 "/>
@@ -73,7 +73,7 @@
 </g>
 <!-- Node10 -->
 <g id="node8" class="node"><title>Node10</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml" target="_top" xlink:title="Wraps an output string stream, and provides all sorts of overloads for operator &lt;&lt;,...">
 <polygon fill="white" stroke="black" points="137,-332.5 137,-521.5 283,-521.5 283,-332.5 137,-332.5"/>
 <text text-anchor="start" x="145" y="-509.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="210" y="-498.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; ChildType &gt;</text>
@@ -103,7 +103,7 @@
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_external_o_string_stream.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_external_o_string_stream.xhtml" target="_top" xlink:title="Similar to std::ostringstream, but data is written to an external string object.">
 <polygon fill="white" stroke="black" points="8.5,-707.5 8.5,-786.5 155.5,-786.5 155.5,-707.5 8.5,-707.5"/>
 <text text-anchor="start" x="16.5" y="-774.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalOString</text>
 <text text-anchor="middle" x="82" y="-763.5" font-family="Helvetica,sans-Serif" font-size="10.00">Stream</text>
@@ -140,7 +140,7 @@
 </g>
 <!-- Node8 -->
 <g id="node6" class="node"><title>Node8</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_external_string_buf.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_external_string_buf.xhtml" target="_top" xlink:title="Used by ExternalOStringStream; data is written to the external accumulator.">
 <polygon fill="white" stroke="black" points="95,-834.5 95,-902.5 249,-902.5 249,-834.5 95,-834.5"/>
 <text text-anchor="middle" x="172" y="-890.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalStringBuf</text>
 <polyline fill="none" stroke="black" points="95,-883.5 249,-883.5 "/>

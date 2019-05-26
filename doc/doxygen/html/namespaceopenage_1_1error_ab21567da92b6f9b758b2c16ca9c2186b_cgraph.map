@@ -1,4 +1,4 @@
 <map id="openage::error::operator&lt;&lt;" name="openage::error::operator&lt;&lt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,181,39"/>
-<area shape="rect" id="node2" href="$classopenage_1_1error_1_1_backtrace.xhtml#ad4e4e82a65ad250f048f66667d810440" title=" " alt="" coords="229,5,401,47"/>
+<area shape="rect" id="node1" title="Prints an entire Backtrace object." alt="" coords="5,13,181,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1error_1_1_backtrace.xhtml#ad4e4e82a65ad250f048f66667d810440" title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge." alt="" coords="229,5,401,47"/>
 </map>

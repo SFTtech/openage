@@ -1,5 +1,5 @@
 <map id="openage::error::Error::rethrow_cause" name="openage::error::Error::rethrow_cause">
-<area shape="rect" id="node1" title=" " alt="" coords="229,35,371,76"/>
+<area shape="rect" id="node1" title="Re&#45;throws the exception cause, if the exception has one." alt="" coords="229,35,371,76"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1pyinterface_1_1tests.xhtml#a1e06395c26a8fbab8f488d6e573cde6b" title=" " alt="" coords="19,5,168,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1error.xhtml#a902be6cbbea4f6485907cc5e15406b3a" title=" " alt="" coords="5,71,181,98"/>
 </map>

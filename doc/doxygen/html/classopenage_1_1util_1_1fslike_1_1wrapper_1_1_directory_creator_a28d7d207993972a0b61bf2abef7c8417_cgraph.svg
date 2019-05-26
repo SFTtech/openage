@@ -90,7 +90,7 @@
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6" target="_top" xlink:title="Split a string at a delimiter into a vector.">
 <polygon fill="white" stroke="black" points="346,-224 346,-243 442,-243 442,-224 346,-224"/>
 <text text-anchor="middle" x="394" y="-231" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::split</text>
 </a>
@@ -103,7 +103,7 @@
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#af88424f642ef1ba4e6b2eb1c05ad8e3c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#af88424f642ef1ba4e6b2eb1c05ad8e3c" target="_top" xlink:title="Extend a vector with elements, without destroying source one.">
 <polygon fill="white" stroke="black" points="342,-174.5 342,-204.5 446,-204.5 446,-174.5 342,-174.5"/>
 <text text-anchor="start" x="350" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vector</text>
 <text text-anchor="middle" x="394" y="-181.5" font-family="Helvetica,sans-Serif" font-size="10.00">_extend</text>

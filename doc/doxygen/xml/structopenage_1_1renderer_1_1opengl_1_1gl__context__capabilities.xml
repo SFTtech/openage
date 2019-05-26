@@ -54,9 +54,9 @@
         <argsstring></argsstring>
         <name>max_uniform_buffer_bindings</name>
         <briefdescription>
+<para>The maximum number of binding points for uniform blocks in a single shader. </para>
         </briefdescription>
         <detaileddescription>
-<para>The maximum number of binding points for uniform blocks in a single shader. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

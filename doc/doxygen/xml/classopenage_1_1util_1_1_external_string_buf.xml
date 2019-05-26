@@ -65,9 +65,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Used by <ref refid="classopenage_1_1util_1_1_external_o_string_stream" kindref="compound">ExternalOStringStream</ref>; data is written to the external accumulator. </para>
     </briefdescription>
     <detaileddescription>
-<para>Used by <ref refid="classopenage_1_1util_1_1_external_o_string_stream" kindref="compound">ExternalOStringStream</ref>; data is written to the external accumulator.</para>
 <para>If this object&apos;s write functionality is accessed before output has been manually set to a valid std::string object, or if the lifetime of that object has been exceeded, undefined behavior will result. </para>
     </detaileddescription>
     <inheritancegraph>

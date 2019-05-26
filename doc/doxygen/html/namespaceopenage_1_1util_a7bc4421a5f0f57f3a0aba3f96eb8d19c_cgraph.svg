@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-24 280,-24 280,4 -4,4"/>
 <!-- Node312 -->
 <g id="node1" class="node"><title>Node312</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-19.5 95,-19.5 95,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="47.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

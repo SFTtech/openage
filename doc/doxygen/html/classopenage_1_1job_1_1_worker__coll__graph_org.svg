@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-541 135,-541 135,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A worker encapsulates the execution of multiple jobs in a single background thread.">
 <polygon fill="#bfbfbf" stroke="black" points="9.5,-0.5 9.5,-189.5 121.5,-189.5 121.5,-0.5 9.5,-0.5"/>
 <text text-anchor="middle" x="65.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <polyline fill="none" stroke="black" points="9.5,-170.5 121.5,-170.5 "/>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title="A job manager can be used to execute functions within separate worker threads.">
 <polygon fill="white" stroke="black" points="0,-237.5 0,-536.5 131,-536.5 131,-237.5 0,-237.5"/>
 <text text-anchor="middle" x="65.5" y="-524.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <polyline fill="none" stroke="black" points="0,-517.5 131,-517.5 "/>

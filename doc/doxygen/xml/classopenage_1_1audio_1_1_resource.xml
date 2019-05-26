@@ -12,9 +12,9 @@
         <argsstring></argsstring>
         <name>manager</name>
         <briefdescription>
+<para>Audiomanager in charge of this resource. </para>
         </briefdescription>
         <detaileddescription>
-<para>Audiomanager in charge of this resource. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -33,9 +33,9 @@
         <argsstring></argsstring>
         <name>category</name>
         <briefdescription>
+<para>The resource&apos;s category. </para>
         </briefdescription>
         <detaileddescription>
-<para>The resource&apos;s category. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -50,9 +50,9 @@
         <argsstring></argsstring>
         <name>id</name>
         <briefdescription>
+<para>The resource&apos;s id. </para>
         </briefdescription>
         <detaileddescription>
-<para>The resource&apos;s id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -200,9 +200,9 @@
         <reimplementedby refid="classopenage_1_1audio_1_1_in_memory_resource_1aadc80441d22bfd356c36d8dbacc45d64">use</reimplementedby>
         <reimplementedby refid="classopenage_1_1audio_1_1_dynamic_resource_1ac1ffb9fa48d2665e4452b644fbcb972c">use</reimplementedby>
         <briefdescription>
+<para>Tells the resource, that it will be used by a sound object, so it can preload some pcm samples. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tells the resource, that it will be used by a sound object, so it can preload some pcm samples. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -216,9 +216,9 @@
         <reimplementedby refid="classopenage_1_1audio_1_1_in_memory_resource_1ae8f4953554d1e2d18d1bddadd4a024fa">stop_using</reimplementedby>
         <reimplementedby refid="classopenage_1_1audio_1_1_dynamic_resource_1a88db624f8f5f392e8845719c37327904">stop_using</reimplementedby>
         <briefdescription>
+<para>Tells the resource, that one sound object does not use this resource any longer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tells the resource, that one sound object does not use this resource any longer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -240,9 +240,10 @@
           <declname>data_length</declname>
         </param>
         <briefdescription>
+<para>Returns a pointer to the sample buffer at the given position and the number of int16_t values that are actually available. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a pointer to the sample buffer at the given position and the number of int16_t values that are actually available. If the end of the resource is reached, 0 will be returned. If the resource is not ready yet, a nullptr with a length, different to zero, will be returned.</para>
+<para>If the end of the resource is reached, 0 will be returned. If the resource is not ready yet, a nullptr with a length, different to zero, will be returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>position</parametername>
@@ -290,9 +291,9 @@
           <declname>def</declname>
         </param>
         <briefdescription>
+<para>create an audio resource, this produces a <ref refid="classopenage_1_1audio_1_1_dynamic_resource" kindref="compound">DynamicResource</ref> or a <ref refid="classopenage_1_1audio_1_1_in_memory_resource" kindref="compound">InMemoryResource</ref> </para>
         </briefdescription>
         <detaileddescription>
-<para>create an audio resource, this produces a <ref refid="classopenage_1_1audio_1_1_dynamic_resource" kindref="compound">DynamicResource</ref> or a <ref refid="classopenage_1_1audio_1_1_in_memory_resource" kindref="compound">InMemoryResource</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -312,9 +313,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> contains 16 bit signed integer pcm data, that can be played by sounds. </para>
     </briefdescription>
     <detaileddescription>
-<para>A <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> contains 16 bit signed integer pcm data, that can be played by sounds. Each <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> has an unique id within it&apos;s category. The category specifies the type of sound, e. g. game sounds, background music, etc. The id is a unique integer value. </para>
+<para>Each <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> has an unique id within it&apos;s category. The category specifies the type of sound, e. g. game sounds, background music, etc. The id is a unique integer value. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="522">

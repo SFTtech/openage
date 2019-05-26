@@ -16,9 +16,9 @@
         <argsstring></argsstring>
         <name>chrcol_t</name>
         <briefdescription>
+<para>the length of the escape sequence buffer, and thus the maximum length of any escape sequence that will be successfully processed. </para>
         </briefdescription>
         <detaileddescription>
-<para>the length of the escape sequence buffer, and thus the maximum length of any escape sequence that will be successfully processed.</para>
 <para>longer escape sequences will be ignored. </para>
         </detaileddescription>
         <inbodydescription>
@@ -67,7 +67,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="30" bodyend="-1"/>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="919" endline="1076">openage::console::Buf::process_sgr_code</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a8344de72e80fee53e75bb2d8ed0d05fa" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -114,7 +114,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="33" bodyend="-1"/>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="919" endline="1076">openage::console::Buf::process_sgr_code</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a4c87ac281f12c1a70ce7a42e994b1f4e" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -192,7 +192,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="38" bodyend="-1"/>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="919" endline="1076">openage::console::Buf::process_sgr_code</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1afb42dd8609458df8845f0fcfe1369a02" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -307,9 +307,9 @@
         <name>LINE_EMPTY</name>
         <initializer>= 0</initializer>
         <briefdescription>
+<para>the line has not been written yet (or cleared in between) </para>
         </briefdescription>
         <detaileddescription>
-<para>the line has not been written yet (or cleared in between) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -324,9 +324,9 @@
         <name>LINE_REGULAR</name>
         <initializer>= 1</initializer>
         <briefdescription>
+<para>the line has some contents </para>
         </briefdescription>
         <detaileddescription>
-<para>the line has some contents </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -342,9 +342,9 @@
         <name>LINE_WRAPPED</name>
         <initializer>= 2</initializer>
         <briefdescription>
+<para>the line has been written to until it auto-wrapped; its continuation can be found in the next line </para>
         </briefdescription>
         <detaileddescription>
-<para>the line has been written to until it auto-wrapped; its continuation can be found in the next line</para>
 <para>this value is required for re-calculating the buffer on resize </para>
         </detaileddescription>
         <inbodydescription>
@@ -396,9 +396,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>In-game console subsystem. </para>
     </briefdescription>
     <detaileddescription>
-<para>In-game console subsystem. Featuring a full terminal emulator. </para>
+<para>Featuring a full terminal emulator. </para>
     </detaileddescription>
     <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.cpp" line="10" column="1"/>
   </compounddef>

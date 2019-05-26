@@ -1,10 +1,10 @@
 <map id="openage::RenderOptions" name="openage::RenderOptions">
-<area shape="rect" id="node1" title=" " alt="" coords="181,932,347,1009"/>
-<area shape="rect" id="node2" href="$classopenage_1_1options_1_1_option_node.xhtml" title=" " alt="" coords="5,528,203,855"/>
+<area shape="rect" id="node1" title="Options for the renderer." alt="" coords="181,932,347,1009"/>
+<area shape="rect" id="node2" href="$classopenage_1_1options_1_1_option_node.xhtml" title="Allows objects to expose customisable features." alt="" coords="5,528,203,855"/>
 <area shape="rect" id="node3" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="296,645,445,737"/>
 <area shape="rect" id="node4" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="183,344,334,465"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_variable_base.xhtml" title=" " alt="" coords="168,5,349,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_variable_base.xhtml" title="A typed value holder." alt="" coords="168,5,349,112"/>
 <area shape="rect" id="node6" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="299,175,482,281"/>
-<area shape="rect" id="node8" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="358,366,538,443"/>
+<area shape="rect" id="node8" href="$classopenage_1_1options_1_1_var.xhtml" title="A interaface variable which gets monitored by an option node allowing reflection, while also being di..." alt="" coords="358,366,538,443"/>
 <area shape="rect" id="node7" title=" " alt="" coords="374,20,413,97"/>
 </map>

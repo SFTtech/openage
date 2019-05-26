@@ -1,5 +1,5 @@
 <map id="openage::renderer::RenderTarget" name="openage::renderer::RenderTarget">
 <area shape="rect" id="node1" title="The abstract base for a render target." alt="" coords="107,5,241,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_render_target.xhtml" title=" " alt="" coords="5,160,164,311"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_render_target.xhtml" title="Represents an OpenGL target that can be drawn into." alt="" coords="5,160,164,311"/>
 <area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer.xhtml" title=" " alt="" coords="188,175,341,296"/>
 </map>

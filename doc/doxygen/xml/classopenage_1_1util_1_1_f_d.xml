@@ -29,9 +29,10 @@
         <name>close_on_destroy</name>
         <initializer>= false</initializer>
         <briefdescription>
+<para>if this is set to true, the destructor will close the fd. </para>
         </briefdescription>
         <detaileddescription>
-<para>if this is set to true, the destructor will close the fd. will be set to true by the constructor iff the fd was duped. </para>
+<para>will be set to true by the constructor iff the fd was duped. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -46,9 +47,10 @@
         <name>restore_input_mode_on_destroy</name>
         <initializer>= false</initializer>
         <briefdescription>
+<para>if this is set to true, the destructor will restore the input mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>if this is set to true, the destructor will restore the input mode. will be set on <ref refid="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" kindref="member">setinputmodecanon()</ref>. </para>
+<para>will be set on <ref refid="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" kindref="member">setinputmodecanon()</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -84,9 +86,9 @@
           <declname>fd</declname>
         </param>
         <briefdescription>
+<para>wraps an existing <ref refid="classopenage_1_1util_1_1_f_d" kindref="compound">FD</ref> </para>
         </briefdescription>
         <detaileddescription>
-<para>wraps an existing <ref refid="classopenage_1_1util_1_1_f_d" kindref="compound">FD</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -107,9 +109,9 @@
           <declname>set_nonblocking</declname>
         </param>
         <briefdescription>
+<para>duplicates an existing <ref refid="classopenage_1_1util_1_1_f_d" kindref="compound">FD</ref>, and optionally sets it to non-blocking mode </para>
         </briefdescription>
         <detaileddescription>
-<para>duplicates an existing <ref refid="classopenage_1_1util_1_1_f_d" kindref="compound">FD</ref>, and optionally sets it to non-blocking mode </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -170,9 +172,9 @@
           <declname>bytes</declname>
         </param>
         <briefdescription>
+<para>writes &apos;bytes&apos; bytes from buf </para>
         </briefdescription>
         <detaileddescription>
-<para>writes &apos;bytes&apos; bytes from buf </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -192,9 +194,9 @@
           <declname>str</declname>
         </param>
         <briefdescription>
+<para>writes the string (excluding the null terminator) </para>
         </briefdescription>
         <detaileddescription>
-<para>writes the string (excluding the null terminator) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -205,7 +207,7 @@
         <referencedby refid="namespaceopenage_1_1console_1_1tests_1a4a108e620e3fead2c08ff14841552186" compoundref="console_2tests_8cpp" startline="55" endline="181">openage::console::tests::interactive</referencedby>
         <referencedby refid="classopenage_1_1util_1_1_f_d_1ac3b4a14cfa134355f0890c1d9ea608f4" compoundref="fds_8cpp" startline="75" endline="110">printf</referencedby>
         <referencedby refid="classopenage_1_1util_1_1_f_d_1a6826267ab945c97663c9e3506bbf2542" compoundref="fds_8cpp" startline="65" endline="73">putcp</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1aa7042077eda5413ddddf0075a1a66761" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -217,15 +219,15 @@
           <declname>c</declname>
         </param>
         <briefdescription>
+<para>writes the char </para>
         </briefdescription>
         <detaileddescription>
-<para>writes the char </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="61" bodyend="63"/>
         <references refid="classopenage_1_1util_1_1_f_d_1a3e0c796f513380f80b1f0c11d29bab15" compoundref="fds_8cpp" startline="53" endline="55">write</references>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a6826267ab945c97663c9e3506bbf2542" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -237,16 +239,16 @@
           <declname>cp</declname>
         </param>
         <briefdescription>
+<para>writes the unicode codepoint, as utf-8 </para>
         </briefdescription>
         <detaileddescription>
-<para>writes the unicode codepoint, as utf-8 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="65" bodyend="73"/>
         <references refid="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" compoundref="fds_8cpp" startline="57" endline="59">puts</references>
         <references refid="namespaceopenage_1_1util_1aed7ef0b5ccf0d22a6329396d9a59f671" compoundref="unicode_8cpp" startline="120" endline="152">openage::util::utf8_encode</references>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1ac3b4a14cfa134355f0890c1d9ea608f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -261,16 +263,17 @@
           <type>...</type>
         </param>
         <briefdescription>
+<para>guess what this does. </para>
         </briefdescription>
         <detaileddescription>
-<para>guess what this does. because I won&apos;t tell you. </para>
+<para>because I won&apos;t tell you. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="75" bodyend="110"/>
         <references refid="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" compoundref="fds_8cpp" startline="57" endline="59">puts</references>
         <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -278,9 +281,10 @@
         <argsstring>()</argsstring>
         <name>setinputmodecanon</name>
         <briefdescription>
+<para>sets input to canonical mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>sets input to canonical mode. this includes:<itemizedlist>
+<para>this includes:<itemizedlist>
 <listitem><para>disabling ECHO</para>
 </listitem><listitem><para>non-buffered input</para>
 </listitem><listitem><para>no generation of signals on ^C, ^Z, ... </para>
@@ -300,9 +304,9 @@
         <argsstring>()</argsstring>
         <name>restoreinputmode</name>
         <briefdescription>
+<para>restores the input mode to the mode that was backed up during the last <ref refid="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" kindref="member">setinputmodecanon()</ref> mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>restores the input mode to the mode that was backed up during the last <ref refid="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" kindref="member">setinputmodecanon()</ref> mode. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -314,9 +318,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>wraps a POSIX file descriptor </para>
     </briefdescription>
     <detaileddescription>
-<para>wraps a POSIX file descriptor </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5719">

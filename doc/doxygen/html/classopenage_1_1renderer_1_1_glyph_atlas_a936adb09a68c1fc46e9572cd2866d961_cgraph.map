@@ -1,11 +1,11 @@
 <map id="openage::renderer::GlyphAtlas::get_cache_key" name="openage::renderer::GlyphAtlas::get_cache_key">
 <area shape="rect" id="node1" title=" " alt="" coords="5,79,188,121"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c" title=" " alt="" coords="236,17,371,58"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" title=" " alt="" coords="237,87,369,113"/>
-<area shape="rect" id="node9" href="$namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4" title=" " alt="" coords="237,138,369,179"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" title="Siphash implementation." alt="" coords="237,87,369,113"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4" title="Creates a hash value as a combination of two other hashes." alt="" coords="237,138,369,179"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#a4d5611a559a9c63bcb0865c8a0829d4a" title=" " alt="" coords="420,5,557,61"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" title=" " alt="" coords="419,86,559,127"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" title="Convert a C&#45;style array of uint8_t to a uint64_t." alt="" coords="419,86,559,127"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="648,68,759,95"/>
 <area shape="rect" id="node7" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="607,119,800,145"/>
-<area shape="rect" id="node8" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="848,119,975,145"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="848,119,975,145"/>
 </map>

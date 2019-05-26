@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 431,-46 431,4 -4,4"/>
 <!-- Node8 -->
 <g id="node1" class="node"><title>Node8</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns the size in bytes of the raw pixel data.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-41.5 123,-41.5 123,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node9 -->
 <g id="node2" class="node"><title>Node9</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" target="_top" xlink:title="Returns the size in bytes of a single row, including possible padding at its end.">
 <polygon fill="white" stroke="black" points="159,-0.5 159,-41.5 282,-41.5 282,-0.5 159,-0.5"/>
 <text text-anchor="start" x="167" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="167" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>

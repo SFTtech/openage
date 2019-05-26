@@ -1,4 +1,4 @@
 <map id="openage::coord::tile::get_pos_on_chunk" name="openage::coord::tile::get_pos_on_chunk">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,144,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title=" " alt="" coords="192,13,321,39"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title="modulo operation that guarantees to return positive values." alt="" coords="192,13,321,39"/>
 </map>

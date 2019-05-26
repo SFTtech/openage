@@ -110,9 +110,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>specification for all available tile types and blending data </para>
     </briefdescription>
     <detaileddescription>
-<para>specification for all available tile types and blending data </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5187">

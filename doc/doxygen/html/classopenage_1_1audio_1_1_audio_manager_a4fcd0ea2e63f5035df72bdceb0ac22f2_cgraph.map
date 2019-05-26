@@ -1,4 +1,4 @@
 <map id="openage::audio::AudioManager::get_sound" name="openage::audio::AudioManager::get_sound">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,207,47"/>
+<area shape="rect" id="node1" title="Returns a sound object with the given category and the given id." alt="" coords="5,5,207,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="255,13,365,39"/>
 </map>

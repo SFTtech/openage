@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-95.5 350,-95.5 350,4 -4,4"/>
 <!-- Node7 -->
 <g id="node1" class="node"><title>Node7</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Creates a new uniform input (a binding of uniform names to values) for this shader and optionally set...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-33 0,-63 170,-63 170,-33 0,-33"/>
 <text text-anchor="start" x="8" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="85" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">ShaderProgram::new_uniform_input</text>

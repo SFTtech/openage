@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-679 136.5,-679 136.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A job group is a proxy object that forwards job&#39;s to a single worker thread.">
 <polygon fill="#bfbfbf" stroke="black" points="6,-0.5 6,-90.5 125,-90.5 125,-0.5 6,-0.5"/>
 <text text-anchor="middle" x="65.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobGroup</text>
 <polyline fill="none" stroke="black" points="6,-71.5 125,-71.5 "/>
@@ -72,7 +72,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml" target="_top" xlink:title="A worker encapsulates the execution of multiple jobs in a single background thread.">
 <polygon fill="white" stroke="black" points="9.5,-138.5 9.5,-327.5 121.5,-327.5 121.5,-138.5 9.5,-138.5"/>
 <text text-anchor="middle" x="65.5" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <polyline fill="none" stroke="black" points="9.5,-308.5 121.5,-308.5 "/>
@@ -102,7 +102,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title="A job manager can be used to execute functions within separate worker threads.">
 <polygon fill="white" stroke="black" points="0,-375.5 0,-674.5 131,-674.5 131,-375.5 0,-375.5"/>
 <text text-anchor="middle" x="65.5" y="-662.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <polyline fill="none" stroke="black" points="0,-655.5 131,-655.5 "/>

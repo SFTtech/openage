@@ -26,9 +26,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Hash function for path nodes. </para>
     </briefdescription>
     <detaileddescription>
-<para>Hash function for path nodes. Just uses their position. </para>
+<para>Just uses their position. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6637">

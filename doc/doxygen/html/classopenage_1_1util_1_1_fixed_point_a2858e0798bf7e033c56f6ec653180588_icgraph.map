@@ -1,4 +1,4 @@
 <map id="openage::util::FixedPoint::fractional_part_bitmask" name="openage::util::FixedPoint::fractional_part_bitmask">
 <area shape="rect" id="node1" title=" " alt="" coords="275,5,441,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a41ce8a71883f18088e7876aa8e2600e4" title=" " alt="" coords="5,5,227,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a41ce8a71883f18088e7876aa8e2600e4" title="Converter to retrieve the fractional (post&#45;decimal) part of the number." alt="" coords="5,5,227,47"/>
 </map>

@@ -1,6 +1,6 @@
 <map id="openage.codegen.coord.generate_coord_basetypes" name="openage.codegen.coord.generate_coord_basetypes">
 <area shape="rect" id="node1" title="Generates the test/demo method symbol lookup file from tests_cpp." alt="" coords="5,5,220,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9" title=" " alt="" coords="268,13,391,39"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9" title="dict()" alt="" coords="268,13,391,39"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="439,13,632,39"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="680,13,807,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="680,13,807,39"/>
 </map>

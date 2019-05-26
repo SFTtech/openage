@@ -20,9 +20,9 @@
           <defval><ref refid="classopenage_1_1util_1_1_fixed_point_1ac15c9eac48a2d30284089c642f7176b5" kindref="member">phys_t::zero</ref>()</defval>
         </param>
         <briefdescription>
+<para>There are infinite solutions to this conversion problem because a 2D coordinate is converted into a 3D coordinate. </para>
         </briefdescription>
         <detaileddescription>
-<para>There are infinite solutions to this conversion problem because a 2D coordinate is converted into a 3D coordinate.</para>
 <para>The user needs to manually give the &apos;up&apos; value of the <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref> result. </para>
         </detaileddescription>
         <inbodydescription>

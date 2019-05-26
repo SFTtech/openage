@@ -53,9 +53,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A piece of raw audio data. </para>
     </briefdescription>
     <detaileddescription>
-<para>A piece of raw audio data.</para>
 <para>special values: (nullptr, *) no data in the chunk (*, 0) end of stream </para>
     </detaileddescription>
     <collaborationgraph>

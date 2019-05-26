@@ -20,7 +20,7 @@
 </g>
 <!-- Node15 -->
 <g id="node2" class="node"><title>Node15</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd" target="_top" xlink:title="Calculates the total score from the sub&#45;scores.">
 <polygon fill="white" stroke="black" points="143,-0.5 143,-30.5 263,-30.5 263,-0.5 143,-0.5"/>
 <text text-anchor="start" x="151" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Score::update</text>
 <text text-anchor="middle" x="203" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_score</text>

@@ -151,7 +151,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node5" class="node"><title>Node6</title>
-<g id="a_node5"><a xlink:href="classqtsdl_1_1_recursive_directory_watcher.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classqtsdl_1_1_recursive_directory_watcher.xhtml" target="_top" xlink:title="Emits a signal when anything changes in the directories.">
 <polygon fill="white" stroke="black" points="512.521,-590 512.521,-669 667.521,-669 667.521,-590 512.521,-590"/>
 <text text-anchor="start" x="520.521" y="-657" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::RecursiveDirectory</text>
 <text text-anchor="middle" x="590.021" y="-646" font-family="Helvetica,sans-Serif" font-size="10.00">Watcher</text>
@@ -170,7 +170,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node7 -->
 <g id="node6" class="node"><title>Node7</title>
-<g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_renderer_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_renderer_impl.xhtml" target="_top" xlink:title="Passes the native graphic context to Qt.">
 <polygon fill="white" stroke="black" points="356.021,-463.5 356.021,-795.5 494.021,-795.5 494.021,-463.5 356.021,-463.5"/>
 <text text-anchor="middle" x="425.021" y="-783.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRendererImpl</text>
 <polyline fill="none" stroke="black" points="356.021,-776.5 494.021,-776.5 "/>
@@ -261,7 +261,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node8 -->
 <g id="node7" class="node"><title>Node8</title>
-<g id="a_node7"><a xlink:href="classqtsdl_1_1_gui_rendering_setup_routines.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classqtsdl_1_1_gui_rendering_setup_routines.xhtml" target="_top" xlink:title="Returns a GL context usable by Qt classes.">
 <polygon fill="white" stroke="black" points="360.021,-854.5 360.021,-966.5 520.021,-966.5 520.021,-854.5 360.021,-854.5"/>
 <text text-anchor="start" x="368.021" y="-954.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRenderingSetup</text>
 <text text-anchor="middle" x="440.021" y="-943.5" font-family="Helvetica,sans-Serif" font-size="10.00">Routines</text>
@@ -285,7 +285,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node9 -->
 <g id="node8" class="node"><title>Node9</title>
-<g id="a_node8"><a xlink:href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml" target="_top" xlink:title="The Qml Engine used by openage.">
 <polygon fill="white" stroke="black" points="685.521,-573.5 685.521,-685.5 870.521,-685.5 870.521,-573.5 685.521,-573.5"/>
 <text text-anchor="start" x="693.521" y="-673.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::QmlEngineWithSingleton</text>
 <text text-anchor="middle" x="778.021" y="-662.5" font-family="Helvetica,sans-Serif" font-size="10.00">ItemsInfo</text>
@@ -325,7 +325,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node11 -->
 <g id="node10" class="node"><title>Node11</title>
-<g id="a_node10"><a xlink:href="classqtsdl_1_1_gui_singleton_items_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classqtsdl_1_1_gui_singleton_items_info.xhtml" target="_top" xlink:title="Accessible during creation of any singleton QML item.">
 <polygon fill="white" stroke="black" points="770.021,-882 770.021,-939 908.021,-939 908.021,-882 770.021,-882"/>
 <text text-anchor="middle" x="839.021" y="-927" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSingletonItemsInfo</text>
 <polyline fill="none" stroke="black" points="770.021,-920 908.021,-920 "/>
@@ -349,7 +349,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node13 -->
 <g id="node12" class="node"><title>Node13</title>
-<g id="a_node12"><a xlink:href="classqtsdl_1_1_gui_live_reloader.xhtml" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classqtsdl_1_1_gui_live_reloader.xhtml" target="_top" xlink:title="Stores objects that need to be kept alive across GUI reloads.">
 <polygon fill="white" stroke="black" points="178.021,-601 178.021,-658 300.021,-658 300.021,-601 178.021,-601"/>
 <text text-anchor="middle" x="239.021" y="-646" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiLiveReloader</text>
 <polyline fill="none" stroke="black" points="178.021,-639 300.021,-639 "/>

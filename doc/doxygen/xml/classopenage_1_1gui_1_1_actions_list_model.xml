@@ -460,9 +460,9 @@
           <declname>icons_source</declname>
         </param>
         <briefdescription>
+<para>Utility function to create a QUrl from a string and set it as iconsSource. </para>
         </briefdescription>
         <detaileddescription>
-<para>Utility function to create a QUrl from a string and set it as iconsSource </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -476,9 +476,9 @@
         <argsstring>()</argsstring>
         <name>clear_buttons</name>
         <briefdescription>
+<para>Clears all buttons. </para>
         </briefdescription>
         <detaileddescription>
-<para>Clears all buttons </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -508,9 +508,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>Shortcut to creating a QMap for a button. </para>
         </briefdescription>
         <detaileddescription>
-<para>Shortcut to creating a QMap for a button </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -525,9 +525,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Model used for the Action Buttons to render (e.g. </para>
     </briefdescription>
     <detaileddescription>
-<para>Model used for the Action Buttons to render (e.g. for civilian units, military units, buildings etc.) </para>
+<para>for civilian units, military units, buildings etc.) </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2823">

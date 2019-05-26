@@ -34,7 +34,7 @@
 </g>
 <!-- Node82 -->
 <g id="node6" class="node"><title>Node82</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a32c669bab23aa04b6d17309b21486ffa" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a32c669bab23aa04b6d17309b21486ffa" target="_top" xlink:title="bind a specific action idetifier this is the highest matching priority">
 <polygon fill="white" stroke="black" points="162,-457.5 162,-487.5 303,-487.5 303,-457.5 162,-457.5"/>
 <text text-anchor="start" x="170" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="232.5" y="-464.5" font-family="Helvetica,sans-Serif" font-size="10.00">::bind</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node83 -->
 <g id="node7" class="node"><title>Node83</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#a8d01ae4e890d5a889f45c06182f9bdc3" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#a8d01ae4e890d5a889f45c06182f9bdc3" target="_top" xlink:title="Return the game.">
 <polygon fill="white" stroke="black" points="164,-408.5 164,-438.5 301,-438.5 301,-408.5 164,-408.5"/>
 <text text-anchor="start" x="172" y="-426.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMainHandle</text>
 <text text-anchor="middle" x="232.5" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_game</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node84 -->
 <g id="node8" class="node"><title>Node84</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a06819b1b5f717d9fbf45bc098e7fd457" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a06819b1b5f717d9fbf45bc098e7fd457" target="_top" xlink:title="returns the global keybind context.">
 <polygon fill="white" stroke="black" points="160,-359.5 160,-389.5 305,-389.5 305,-359.5 160,-359.5"/>
 <text text-anchor="start" x="168" y="-377.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="232.5" y="-366.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_global_context</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node85 -->
 <g id="node9" class="node"><title>Node85</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title="return this engine&#39;s keybind manager.">
 <polygon fill="white" stroke="black" points="367,-318.5 367,-348.5 476,-348.5 476,-318.5 367,-318.5"/>
 <text text-anchor="start" x="375" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="421.5" y="-325.5" font-family="Helvetica,sans-Serif" font-size="10.00">_input_manager</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node86 -->
 <g id="node10" class="node"><title>Node86</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_engine.xhtml#a28cf66f139dbd94097277d64984154db" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_engine.xhtml#a28cf66f139dbd94097277d64984154db" target="_top" xlink:title="register a hud drawing handler, drawn in hud coordinates.">
 <polygon fill="white" stroke="black" points="168.5,-271.5 168.5,-301.5 296.5,-301.5 296.5,-271.5 168.5,-271.5"/>
 <text text-anchor="start" x="176.5" y="-289.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::register</text>
 <text text-anchor="middle" x="232.5" y="-278.5" font-family="Helvetica,sans-Serif" font-size="10.00">_drawhud_action</text>
@@ -145,7 +145,7 @@
 </g>
 <!-- Node80 -->
 <g id="node4" class="node"><title>Node80</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title="return currently running game or null if a game is not currently running">
 <polygon fill="white" stroke="black" points="531.5,-534 531.5,-553 669.5,-553 669.5,-534 531.5,-534"/>
 <text text-anchor="middle" x="600.5" y="-541" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get_game</text>
 </a>
@@ -163,7 +163,7 @@
 </g>
 <!-- Node88 -->
 <g id="node12" class="node"><title>Node88</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a469024c2b2ac7769e0fa578c73fde160" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a469024c2b2ac7769e0fa578c73fde160" target="_top" xlink:title="removes any matching registered context from the stack.">
 <polygon fill="white" stroke="black" points="349,-269.5 349,-299.5 494,-299.5 494,-269.5 349,-269.5"/>
 <text text-anchor="start" x="357" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="421.5" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove_context</text>
@@ -177,7 +177,7 @@
 </g>
 <!-- Node90 -->
 <g id="node14" class="node"><title>Node90</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_output_mode.xhtml#ac4731437d730c75e214f7fda4c218da1" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_output_mode.xhtml#ac4731437d730c75e214f7fda4c218da1" target="_top" xlink:title="Called when the mode is left.">
 <polygon fill="white" stroke="black" points="365,-220.5 365,-250.5 478,-250.5 478,-220.5 365,-220.5"/>
 <text text-anchor="start" x="373" y="-238.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="421.5" y="-227.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_exit</text>
@@ -191,7 +191,7 @@
 </g>
 <!-- Node91 -->
 <g id="node15" class="node"><title>Node91</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_output_mode.xhtml#a84beca51250156148fe4af178ed87c22" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_output_mode.xhtml#a84beca51250156148fe4af178ed87c22" target="_top" xlink:title="Called when switching to this mode.">
 <polygon fill="white" stroke="black" points="365,-171.5 365,-201.5 478,-201.5 478,-171.5 365,-171.5"/>
 <text text-anchor="start" x="373" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="421.5" y="-178.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_enter</text>
@@ -205,7 +205,7 @@
 </g>
 <!-- Node92 -->
 <g id="node16" class="node"><title>Node92</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2ece2b2ad4a08c15fb00a39b0f553d3c" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2ece2b2ad4a08c15fb00a39b0f553d3c" target="_top" xlink:title="register a hotkey context by pushing it onto the stack.">
 <polygon fill="white" stroke="black" points="349,-122.5 349,-152.5 494,-152.5 494,-122.5 349,-122.5"/>
 <text text-anchor="start" x="357" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="421.5" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::push_context</text>
@@ -233,7 +233,7 @@
 </g>
 <!-- Node89 -->
 <g id="node13" class="node"><title>Node89</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a12ae83daa8c6bfefef320a07377a9246" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a12ae83daa8c6bfefef320a07377a9246" target="_top" xlink:title="Remove the registration to an input manager.">
 <polygon fill="white" stroke="black" points="530,-269.5 530,-299.5 671,-299.5 671,-269.5 530,-269.5"/>
 <text text-anchor="start" x="538" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="600.5" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister</text>
@@ -247,7 +247,7 @@
 </g>
 <!-- Node93 -->
 <g id="node17" class="node"><title>Node93</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" target="_top" xlink:title="Called by the InputManager where this context shall be registered to.">
 <polygon fill="white" stroke="black" points="530,-122.5 530,-152.5 671,-152.5 671,-122.5 530,-122.5"/>
 <text text-anchor="start" x="538" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="600.5" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to</text>
@@ -261,7 +261,7 @@
 </g>
 <!-- Node95 -->
 <g id="node19" class="node"><title>Node95</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1_output_mode.xhtml#aafb84951c6575c14b5517312c5cfe191" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1_output_mode.xhtml#aafb84951c6575c14b5517312c5cfe191" target="_top" xlink:title="Emit the &quot;announced&quot; signal with (name, InputContext::active_binds).">
 <polygon fill="white" stroke="black" points="544,-73.5 544,-103.5 657,-103.5 657,-73.5 544,-73.5"/>
 <text text-anchor="start" x="552" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="600.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce</text>
@@ -275,7 +275,7 @@
 </g>
 <!-- Node96 -->
 <g id="node20" class="node"><title>Node96</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_output_mode.xhtml#a088f019691b4233408a7d230b0a5604b" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_output_mode.xhtml#a088f019691b4233408a7d230b0a5604b" target="_top" xlink:title="Used for displaying the current mode.">
 <polygon fill="white" stroke="black" points="721,-98.5 721,-128.5 834,-128.5 834,-98.5 721,-98.5"/>
 <text text-anchor="start" x="729" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="777.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>
@@ -289,7 +289,7 @@
 </g>
 <!-- Node97 -->
 <g id="node21" class="node"><title>Node97</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#ab79e2d06d4aab199d3fb9c5dc5b6ff3f" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#ab79e2d06d4aab199d3fb9c5dc5b6ff3f" target="_top" xlink:title="a list of all keys of this context which are bound currently in the active context.">
 <polygon fill="white" stroke="black" points="707,-49.5 707,-79.5 848,-79.5 848,-49.5 707,-49.5"/>
 <text text-anchor="start" x="715" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="777.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::active_binds</text>
@@ -303,7 +303,7 @@
 </g>
 <!-- Node98 -->
 <g id="node22" class="node"><title>Node98</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53" target="_top" xlink:title="Return a string representation of active key bindings from the given context.">
 <polygon fill="white" stroke="black" points="884,-49.5 884,-79.5 1029,-79.5 1029,-49.5 884,-49.5"/>
 <text text-anchor="start" x="892" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="956.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::active_binds</text>
@@ -330,7 +330,7 @@
 </g>
 <!-- Node101 -->
 <g id="node25" class="node"><title>Node101</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa0777d6b8ecc513c2a90ae8273d1938c" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa0777d6b8ecc513c2a90ae8273d1938c" target="_top" xlink:title="Get the action manager attached to this input manager.">
 <polygon fill="white" stroke="black" points="1068.5,-49.5 1068.5,-79.5 1213.5,-79.5 1213.5,-49.5 1068.5,-49.5"/>
 <text text-anchor="start" x="1076.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="1141" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_action_manager</text>
@@ -358,7 +358,7 @@
 </g>
 <!-- Node100 -->
 <g id="node24" class="node"><title>Node100</title>
-<g id="a_node24"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1253,-99 1253,-118 1348,-118 1348,-99 1253,-99"/>
 <text text-anchor="middle" x="1300.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

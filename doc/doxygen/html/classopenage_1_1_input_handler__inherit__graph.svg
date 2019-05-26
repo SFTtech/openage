@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-387 471.5,-387 471.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="superclass for handling any input event.">
 <polygon fill="#bfbfbf" stroke="black" points="171.5,-314.5 171.5,-382.5 284.5,-382.5 284.5,-314.5 171.5,-314.5"/>
 <text text-anchor="middle" x="228" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::InputHandler</text>
 <polyline fill="none" stroke="black" points="171.5,-363.5 284.5,-363.5 "/>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_g_u_i.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1gui_1_1_g_u_i.xhtml" target="_top" xlink:title="Main entry point for the openage Qt&#45;based user interface.">
 <polygon fill="white" stroke="black" points="152,-11.5 152,-266.5 304,-266.5 304,-11.5 152,-11.5"/>
 <text text-anchor="middle" x="228" y="-254.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GUI</text>
 <polyline fill="none" stroke="black" points="152,-247.5 304,-247.5 "/>
@@ -95,7 +95,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml" target="_top" xlink:title="The input manager manages all input layers (hud, game, ...) and triggers the registered actions depen...">
 <polygon fill="white" stroke="black" points="322.5,-0.5 322.5,-277.5 467.5,-277.5 467.5,-0.5 322.5,-0.5"/>
 <text text-anchor="middle" x="395" y="-265.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <polyline fill="none" stroke="black" points="322.5,-258.5 467.5,-258.5 "/>

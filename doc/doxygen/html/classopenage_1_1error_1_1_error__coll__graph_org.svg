@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1403 350.5,-1403 350.5,4 -4,4"/>
 <!-- Node5 -->
 <g id="node1" class="node"><title>Node5</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Openage base exception type; the constructor usage is analogous to log::log().">
 <polygon fill="#bfbfbf" stroke="black" points="8.5,-0.5 8.5,-145.5 143.5,-145.5 143.5,-0.5 8.5,-0.5"/>
 <text text-anchor="middle" x="76" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 <polyline fill="none" stroke="black" points="8.5,-126.5 143.5,-126.5 "/>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node7 -->
 <g id="node3" class="node"><title>Node7</title>
-<g id="a_node3"><a xlink:href="structopenage_1_1log_1_1message.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="structopenage_1_1log_1_1message.xhtml" target="_top" xlink:title="A complete log/exception message, containing a text message and metadata.">
 <polygon fill="white" stroke="black" points="92.5,-193.5 92.5,-316.5 231.5,-316.5 231.5,-193.5 92.5,-193.5"/>
 <text text-anchor="middle" x="162" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::message</text>
 <polyline fill="none" stroke="black" points="92.5,-297.5 231.5,-297.5 "/>
@@ -72,7 +72,7 @@
 </g>
 <!-- Node8 -->
 <g id="node4" class="node"><title>Node8</title>
-<g id="a_node4"><a xlink:href="structopenage_1_1log_1_1level.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="structopenage_1_1log_1_1level.xhtml" target="_top" xlink:title="Available logging levels.">
 <polygon fill="white" stroke="black" points="113.5,-364.5 113.5,-421.5 210.5,-421.5 210.5,-364.5 113.5,-364.5"/>
 <text text-anchor="middle" x="162" y="-409.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <polyline fill="none" stroke="black" points="113.5,-402.5 210.5,-402.5 "/>
@@ -120,7 +120,7 @@
 </g>
 <!-- Node10 -->
 <g id="node6" class="node"><title>Node10</title>
-<g id="a_node6"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title="Data associated with a log level.">
 <polygon fill="white" stroke="black" points="72.5,-768 72.5,-836 169.5,-836 169.5,-768 72.5,-768"/>
 <text text-anchor="start" x="80.5" y="-824" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <text text-anchor="middle" x="121" y="-813" font-family="Helvetica,sans-Serif" font-size="10.00">_value</text>
@@ -215,7 +215,7 @@
 </g>
 <!-- Node14 -->
 <g id="node10" class="node"><title>Node14</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title="Container for possible enum values.">
 <polygon fill="white" stroke="black" points="187.5,-707.5 187.5,-896.5 346.5,-896.5 346.5,-707.5 187.5,-707.5"/>
 <text text-anchor="start" x="195.5" y="-884.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Enum</text>
 <text text-anchor="middle" x="267" y="-873.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; DerivedType &gt;</text>

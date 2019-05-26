@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 612,-133 612,4 -4,4"/>
 <!-- Node50 -->
 <g id="node1" class="node"><title>Node50</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns the range of tiles covered if the object was in the given pos">
 <polygon fill="#bfbfbf" stroke="black" points="491,-73.5 491,-103.5 608,-103.5 608,-73.5 491,-73.5"/>
 <text text-anchor="start" x="499" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="549.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_range</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node51 -->
 <g id="node2" class="node"><title>Node51</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="328,-98.5 328,-128.5 455,-128.5 455,-98.5 328,-98.5"/>
 <text text-anchor="start" x="336" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="391.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node54 -->
 <g id="node5" class="node"><title>Node54</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af781d73de8772dfe4454e75eb96d104c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af781d73de8772dfe4454e75eb96d104c" target="_top" xlink:title="placement function which does not check passibility used only when passibilty is already checked othe...">
 <polygon fill="white" stroke="black" points="333,-49.5 333,-79.5 450,-79.5 450,-49.5 333,-49.5"/>
 <text text-anchor="start" x="341" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="391.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place_unchecked</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node52 -->
 <g id="node3" class="node"><title>Node52</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="158,-98.5 158,-128.5 292,-128.5 292,-98.5 158,-98.5"/>
 <text text-anchor="start" x="166" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="225" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node53 -->
 <g id="node4" class="node"><title>Node53</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="0,-98.5 0,-128.5 122,-128.5 122,-98.5 0,-98.5"/>
 <text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="61" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node55 -->
 <g id="node6" class="node"><title>Node55</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a90235fcc91847da15129ce77ffcb53a8" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_terrain_object.xhtml#a90235fcc91847da15129ce77ffcb53a8" target="_top" xlink:title="binds the TerrainObject to a certain TerrainChunk.">
 <polygon fill="white" stroke="black" points="166.5,-49.5 166.5,-79.5 283.5,-79.5 283.5,-49.5 166.5,-49.5"/>
 <text text-anchor="start" x="174.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="225" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node56 -->
 <g id="node7" class="node"><title>Node56</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_terrain_object.xhtml#aed04f7dfb2a4836107796fd3598accc3" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_terrain_object.xhtml#aed04f7dfb2a4836107796fd3598accc3" target="_top" xlink:title="moves the object – returns false if object cannot be moved here">
 <polygon fill="white" stroke="black" points="166.5,-0.5 166.5,-30.5 283.5,-30.5 283.5,-0.5 166.5,-0.5"/>
 <text text-anchor="start" x="174.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="225" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::move</text>

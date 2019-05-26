@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 411,-35 411,4 -4,4"/>
 <!-- Node243 -->
 <g id="node1" class="node"><title>Node243</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="get the terrain texture for a given terrain id.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-6 0,-25 125,-25 125,-6 0,-6"/>
 <text text-anchor="middle" x="62.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::texture</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node244 -->
 <g id="node2" class="node"><title>Node244</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" target="_top" xlink:title="validate whether the given terrain id is available.">
 <polygon fill="white" stroke="black" points="161,-0.5 161,-30.5 288,-30.5 288,-0.5 161,-0.5"/>
 <text text-anchor="start" x="169" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::validate</text>
 <text text-anchor="middle" x="224.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_terrain</text>

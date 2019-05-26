@@ -65,7 +65,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab7dbd0bef0c06a30b6724f2352af833c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab7dbd0bef0c06a30b6724f2352af833c" target="_top" xlink:title="Fills an array of doubles with values in [0, 1) Gives identical results as real() but more effecientl...">
 <polygon fill="white" stroke="black" points="293,-0.5 293,-30.5 399,-30.5 399,-0.5 293,-0.5"/>
 <text text-anchor="start" x="301" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="346" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">fill_real</text>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a3b24c3f995bfb45b9d833030720bd88f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a3b24c3f995bfb45b9d833030720bd88f" target="_top" xlink:title="Tests filling doubles.">
 <polygon fill="white" stroke="black" points="156,-0.5 156,-30.5 257,-30.5 257,-0.5 156,-0.5"/>
 <text text-anchor="start" x="164" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="206.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::fill_real</text>

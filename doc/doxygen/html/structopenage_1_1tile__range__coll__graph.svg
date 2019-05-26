@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-361 253,-361 253,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A rectangle or square of tiles which is the minimim space to fit the units foundation or radius the e...">
 <polygon fill="#bfbfbf" stroke="black" points="85,-0.5 85,-57.5 186,-57.5 186,-0.5 85,-0.5"/>
 <text text-anchor="middle" x="135.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::tile_range</text>
 <polyline fill="none" stroke="black" points="85,-38.5 186,-38.5 "/>

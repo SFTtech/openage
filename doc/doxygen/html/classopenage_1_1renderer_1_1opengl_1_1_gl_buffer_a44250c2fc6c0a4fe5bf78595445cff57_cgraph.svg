@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-57 413,-57 413,4 -4,4"/>
 <!-- Node18 -->
 <g id="node1" class="node"><title>Node18</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Uploads size bytes of new data starting at offset.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 144,-30.5 144,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="72" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlBuffer::upload_data</text>

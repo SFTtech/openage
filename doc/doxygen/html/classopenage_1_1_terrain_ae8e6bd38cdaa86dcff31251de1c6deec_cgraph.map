@@ -1,14 +1,14 @@
 <map id="openage::Terrain::draw" name="openage::Terrain::draw">
-<area shape="rect" id="node1" title=" " alt="" coords="5,139,159,166"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" title=" " alt="" coords="209,40,371,81"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" title=" " alt="" coords="211,110,369,137"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_terrain.xhtml#a6e394fadeb8534aef0c7098939f25b23" title=" " alt="" coords="207,167,373,194"/>
+<area shape="rect" id="node1" title="draw the currently visible terrain area on screen." alt="" coords="5,139,159,166"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" title="create the drawing instruction data." alt="" coords="209,40,371,81"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" title="Draws the texture at hud coordinates." alt="" coords="211,110,369,137"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_terrain.xhtml#a6e394fadeb8534aef0c7098939f25b23" title="get the terrain texture for a given terrain id." alt="" coords="207,167,373,194"/>
 <area shape="rect" id="node11" href="$structopenage_1_1coord_1_1viewport.xhtml#ad78ba1b1f9b64caa7b6eda78aaf7513a" title=" " alt="" coords="207,227,373,268"/>
 <area shape="rect" id="node3" href="$namespacestd.xhtml#a6af851cc1249a970adde4dc422ff824a" title=" " alt="" coords="475,45,544,71"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="650,5,817,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="650,71,817,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="650,5,817,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="650,71,817,112"/>
 <area shape="rect" id="node7" href="$structopenage_1_1coord_1_1camhud.xhtml#abbbebb0d15c032c20f0db6dd6f9c4911" title=" " alt="" coords="427,96,592,137"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" title=" " alt="" coords="425,161,594,203"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" title="validate whether the given terrain id is available." alt="" coords="425,161,594,203"/>
 <area shape="rect" id="node10" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="678,169,789,195"/>
 <area shape="rect" id="node12" href="$structopenage_1_1coord_1_1viewport.xhtml#ab5b83e1486c0898fcb68f163fe49904f" title=" " alt="" coords="427,227,592,268"/>
 <area shape="rect" id="node13" href="$structopenage_1_1coord_1_1camgame.xhtml#a323da0da625f2160938843dc8a248e6c" title=" " alt="" coords="421,292,597,333"/>

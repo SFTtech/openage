@@ -19,7 +19,7 @@
 </g>
 <!-- Node0 -->
 <g id="node2" class="node"><title>Node0</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_error.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_error.xhtml" target="_top" xlink:title="Openage base exception type; the constructor usage is analogous to log::log().">
 <polygon fill="white" stroke="black" points="130,-44.5 130,-63.5 236,-63.5 236,-44.5 130,-44.5"/>
 <text text-anchor="middle" x="183" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 </a>
@@ -58,7 +58,7 @@
 </g>
 <!-- Node2 -->
 <g id="node4" class="node"><title>Node2</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1pyinterface_1_1_py_exception.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1pyinterface_1_1_py_exception.xhtml" target="_top" xlink:title="Thrown by translate_exc_py_to_cpp() from exctranslate.h.">
 <polygon fill="white" stroke="black" points="305.5,-39 305.5,-69 412.5,-69 412.5,-39 305.5,-39"/>
 <text text-anchor="start" x="313.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="359" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::PyException</text>
@@ -72,7 +72,7 @@
 </g>
 <!-- Node3 -->
 <g id="node5" class="node"><title>Node3</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1testing_1_1_test_error.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1testing_1_1_test_error.xhtml" target="_top" xlink:title="To be used by all tests to indicate an error condition.">
 <polygon fill="white" stroke="black" points="292,-0.5 292,-19.5 426,-19.5 426,-0.5 292,-0.5"/>
 <text text-anchor="middle" x="359" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::testing::TestError</text>
 </a>

@@ -98,13 +98,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1input_1_1_input_contex
 </div><!--header-->
 <div class="contents">
 
+<p>An input context contains all keybindings and actions active in e.g.  
+ <a href="classopenage_1_1input_1_1_input_context.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="input__context_8h_source.xhtml">input_context.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::input::InputContext:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::input::InputContext:</div>
@@ -118,44 +122,59 @@ $(document).ready(function(){initNavTree('classopenage_1_1input_1_1_input_contex
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a717f49ae6be59bee9eee3b2544156e10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#a717f49ae6be59bee9eee3b2544156e10">InputContext</a> ()</td></tr>
+<tr class="memdesc:a717f49ae6be59bee9eee3b2544156e10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an unbound input context.  <a href="#a717f49ae6be59bee9eee3b2544156e10">More...</a><br /></td></tr>
 <tr class="separator:a717f49ae6be59bee9eee3b2544156e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4def561465e157c135bba80d7345fc4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#aa4def561465e157c135bba80d7345fc4">InputContext</a> (<a class="el" href="classopenage_1_1input_1_1_input_manager.xhtml">InputManager</a> *manager)</td></tr>
+<tr class="memdesc:aa4def561465e157c135bba80d7345fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a bound context, assigned to its manager.  <a href="#aa4def561465e157c135bba80d7345fc4">More...</a><br /></td></tr>
 <tr class="separator:aa4def561465e157c135bba80d7345fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9cbb44149a877bfeaaf2633ee505615"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#aa9cbb44149a877bfeaaf2633ee505615">~InputContext</a> ()=default</td></tr>
 <tr class="separator:aa9cbb44149a877bfeaaf2633ee505615"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab79e2d06d4aab199d3fb9c5dc5b6ff3f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#ab79e2d06d4aab199d3fb9c5dc5b6ff3f">active_binds</a> () const</td></tr>
+<tr class="memdesc:ab79e2d06d4aab199d3fb9c5dc5b6ff3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">a list of all keys of this context which are bound currently in the active context.  <a href="#ab79e2d06d4aab199d3fb9c5dc5b6ff3f">More...</a><br /></td></tr>
 <tr class="separator:ab79e2d06d4aab199d3fb9c5dc5b6ff3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32c669bab23aa04b6d17309b21486ffa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#a32c669bab23aa04b6d17309b21486ffa">bind</a> (<a class="el" href="namespaceopenage_1_1input.xhtml#afc78129c41b8dce77d2b9c52d7619d74">action_t</a> type, const <a class="el" href="namespaceopenage_1_1input.xhtml#a20e943c4e2c674bd2fbc51cc1aa95f4e">action_func_t</a> act)</td></tr>
+<tr class="memdesc:a32c669bab23aa04b6d17309b21486ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind a specific action idetifier this is the highest matching priority  <a href="#a32c669bab23aa04b6d17309b21486ffa">More...</a><br /></td></tr>
 <tr class="separator:a32c669bab23aa04b6d17309b21486ffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2240a3e1b80bdf0432f31e7fed692da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#ad2240a3e1b80bdf0432f31e7fed692da">bind</a> (const <a class="el" href="classopenage_1_1input_1_1_event.xhtml">Event</a> &amp;ev, const <a class="el" href="namespaceopenage_1_1input.xhtml#a20e943c4e2c674bd2fbc51cc1aa95f4e">action_func_t</a> act)</td></tr>
+<tr class="memdesc:ad2240a3e1b80bdf0432f31e7fed692da"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind a specific event this is the second matching priority  <a href="#ad2240a3e1b80bdf0432f31e7fed692da">More...</a><br /></td></tr>
 <tr class="separator:ad2240a3e1b80bdf0432f31e7fed692da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a225d2dfdd4224c77ce2692ffa1fadf10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#a225d2dfdd4224c77ce2692ffa1fadf10">bind</a> (<a class="el" href="namespaceopenage_1_1input.xhtml#a278a7af94e412aa285e58d870c64a849">event_class</a> ec, const <a class="el" href="namespaceopenage_1_1input.xhtml#a749551c9ca7f855abac1a48f51a3f1bf">action_check_t</a> act)</td></tr>
+<tr class="memdesc:a225d2dfdd4224c77ce2692ffa1fadf10"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind all events of a specific class this is the lowest matching priority  <a href="#a225d2dfdd4224c77ce2692ffa1fadf10">More...</a><br /></td></tr>
 <tr class="separator:a225d2dfdd4224c77ce2692ffa1fadf10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97804df5309a2fd7773b02568c8ca461"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461">execute_if_bound</a> (const <a class="el" href="structopenage_1_1input_1_1action__arg__t.xhtml">action_arg_t</a> &amp;e)</td></tr>
+<tr class="memdesc:a97804df5309a2fd7773b02568c8ca461"><td class="mdescLeft">&#160;</td><td class="mdescRight">lookup an action.  <a href="#a97804df5309a2fd7773b02568c8ca461">More...</a><br /></td></tr>
 <tr class="separator:a97804df5309a2fd7773b02568c8ca461"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a5d3374a164faf57483d7555f0b84b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5">register_to</a> (<a class="el" href="classopenage_1_1input_1_1_input_manager.xhtml">InputManager</a> *manager)</td></tr>
+<tr class="memdesc:a0a5d3374a164faf57483d7555f0b84b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by the <a class="el" href="classopenage_1_1input_1_1_input_manager.xhtml" title="The input manager manages all input layers (hud, game, ...) and triggers the registered actions depen...">InputManager</a> where this context shall be registered to.  <a href="#a0a5d3374a164faf57483d7555f0b84b5">More...</a><br /></td></tr>
 <tr class="separator:a0a5d3374a164faf57483d7555f0b84b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12ae83daa8c6bfefef320a07377a9246"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#a12ae83daa8c6bfefef320a07377a9246">unregister</a> ()</td></tr>
+<tr class="memdesc:a12ae83daa8c6bfefef320a07377a9246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the registration to an input manager.  <a href="#a12ae83daa8c6bfefef320a07377a9246">More...</a><br /></td></tr>
 <tr class="separator:a12ae83daa8c6bfefef320a07377a9246"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a190c561c895ffc95c2f3092e47509737"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#a190c561c895ffc95c2f3092e47509737">utf8_mode</a></td></tr>
+<tr class="memdesc:a190c561c895ffc95c2f3092e47509737"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affects which keyboard events are received: true to accpet utf8 text events, false to receive regular char events.  <a href="#a190c561c895ffc95c2f3092e47509737">More...</a><br /></td></tr>
 <tr class="separator:a190c561c895ffc95c2f3092e47509737"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:af84dd2cdfe2d8655ed796b94e99ad199"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1input_1_1_input_manager.xhtml">InputManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">input_manager</a></td></tr>
+<tr class="memdesc:af84dd2cdfe2d8655ed796b94e99ad199"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input manager this context is bound to.  <a href="#af84dd2cdfe2d8655ed796b94e99ad199">More...</a><br /></td></tr>
 <tr class="separator:af84dd2cdfe2d8655ed796b94e99ad199"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f1d87566bbd4aaa60900399d3d0dc35"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="namespaceopenage_1_1input.xhtml#afc78129c41b8dce77d2b9c52d7619d74">action_t</a>, <a class="el" href="namespaceopenage_1_1input.xhtml#a20e943c4e2c674bd2fbc51cc1aa95f4e">action_func_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">by_type</a></td></tr>
+<tr class="memdesc:a6f1d87566bbd4aaa60900399d3d0dc35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps an action id to a event execution function.  <a href="#a6f1d87566bbd4aaa60900399d3d0dc35">More...</a><br /></td></tr>
 <tr class="separator:a6f1d87566bbd4aaa60900399d3d0dc35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a755cbd02d0d4e05a8cde3d1c0db912b2"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="classopenage_1_1input_1_1_event.xhtml">Event</a>, <a class="el" href="namespaceopenage_1_1input.xhtml#a20e943c4e2c674bd2fbc51cc1aa95f4e">action_func_t</a>, <a class="el" href="structopenage_1_1input_1_1event__hash.xhtml">event_hash</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">by_event</a></td></tr>
+<tr class="memdesc:a755cbd02d0d4e05a8cde3d1c0db912b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">map specific overriding events  <a href="#a755cbd02d0d4e05a8cde3d1c0db912b2">More...</a><br /></td></tr>
 <tr class="separator:a755cbd02d0d4e05a8cde3d1c0db912b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c3e329f64016a032e5fdf49247d84d8"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="namespaceopenage_1_1input.xhtml#a278a7af94e412aa285e58d870c64a849">event_class</a>, <a class="el" href="namespaceopenage_1_1input.xhtml#a749551c9ca7f855abac1a48f51a3f1bf">action_check_t</a>, <a class="el" href="structopenage_1_1input_1_1event__class__hash.xhtml">event_class_hash</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">by_class</a></td></tr>
+<tr class="memdesc:a3c3e329f64016a032e5fdf49247d84d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">event to action map event_class as key, to ensure all events can be mapped  <a href="#a3c3e329f64016a032e5fdf49247d84d8">More...</a><br /></td></tr>
 <tr class="separator:a3c3e329f64016a032e5fdf49247d84d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An input context contains all keybindings and actions active in e.g. the HUD only. For the console, there's a different input context. That way, each context can have the same keys assigned to different actions, the active context decides, which one to trigger. </p>
+<div class="textblock"><p>An input context contains all keybindings and actions active in e.g. </p>
+<p>the HUD only. For the console, there's a different input context. That way, each context can have the same keys assigned to different actions, the active context decides, which one to trigger. </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8h_source.xhtml#l00027">27</a> of file <a class="el" href="input__context_8h_source.xhtml">input_context.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -173,10 +192,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Create an unbound input context. </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8cpp_source.xhtml#l00012">12</a> of file <a class="el" href="input__context_8cpp_source.xhtml">input_context.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    :</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a717f49ae6be59bee9eee3b2544156e10">InputContext</a>{<span class="keyword">nullptr</span>} {}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a717f49ae6be59bee9eee3b2544156e10"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a717f49ae6be59bee9eee3b2544156e10">openage::input::InputContext::InputContext</a></div><div class="ttdeci">InputContext()</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8cpp_source.xhtml#l00012">input_context.cpp:12</a></div></div>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    :</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a717f49ae6be59bee9eee3b2544156e10">InputContext</a>{<span class="keyword">nullptr</span>} {}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a717f49ae6be59bee9eee3b2544156e10"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a717f49ae6be59bee9eee3b2544156e10">openage::input::InputContext::InputContext</a></div><div class="ttdeci">InputContext()</div><div class="ttdoc">Create an unbound input context.</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8cpp_source.xhtml#l00012">input_context.cpp:12</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="game__control_8cpp_source.xhtml#l00503">openage::ActionMode::announce_buttons_type()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00374">openage::ActionMode::on_exit()</a>, and <a class="el" href="game__control_8cpp_source.xhtml#l00102">openage::ActionMode::on_game_control_set()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -184,7 +204,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a717f49ae6be59bee9eee3b2544156e10_icgraph.svg" width="618" height="131"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a717f49ae6be59bee9eee3b2544156e10_icgraph.svg" width="618" height="131"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -204,11 +225,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Create a bound context, assigned to its manager. </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8cpp_source.xhtml#l00017">17</a> of file <a class="el" href="input__context_8cpp_source.xhtml">input_context.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    :</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a190c561c895ffc95c2f3092e47509737">utf8_mode</a>{<span class="keyword">false</span>} {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5">register_to</a>(manager);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a190c561c895ffc95c2f3092e47509737"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a190c561c895ffc95c2f3092e47509737">openage::input::InputContext::utf8_mode</a></div><div class="ttdeci">bool utf8_mode</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00092">input_context.h:92</a></div></div>
-<div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a0a5d3374a164faf57483d7555f0b84b5"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5">openage::input::InputContext::register_to</a></div><div class="ttdeci">void register_to(InputManager *manager)</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8cpp_source.xhtml#l00077">input_context.cpp:77</a></div></div>
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    :</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a190c561c895ffc95c2f3092e47509737">utf8_mode</a>{<span class="keyword">false</span>} {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5">register_to</a>(manager);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a190c561c895ffc95c2f3092e47509737"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a190c561c895ffc95c2f3092e47509737">openage::input::InputContext::utf8_mode</a></div><div class="ttdeci">bool utf8_mode</div><div class="ttdoc">Affects which keyboard events are received: true to accpet utf8 text events, false to receive regular...</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00092">input_context.h:92</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a0a5d3374a164faf57483d7555f0b84b5"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5">openage::input::InputContext::register_to</a></div><div class="ttdeci">void register_to(InputManager *manager)</div><div class="ttdoc">Called by the InputManager where this context shall be registered to.</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8cpp_source.xhtml#l00077">input_context.cpp:77</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -252,13 +274,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a list of all keys of this context which are bound currently in the active context.</p>
+
+<p>a list of all keys of this context which are bound currently in the active context. </p>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000023">Todo:</a></b></dt><dd>move this method to the input manager. as InputManager::active_binds(const InputContext &amp;) const; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8cpp_source.xhtml#l00025">25</a> of file <a class="el" href="input__context_8cpp_source.xhtml">input_context.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                                      {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">input_manager</a> == <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> {};</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// \todo try to purge this backpointer to the input manager.</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">input_manager</a>-&gt;<a class="code" href="classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53">active_binds</a>(this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">by_type</a>);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_manager_xhtml_ac5b6bbe740edcca81b63996a22472a53"><div class="ttname"><a href="classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53">openage::input::InputManager::active_binds</a></div><div class="ttdeci">std::vector&lt; std::string &gt; active_binds(const std::unordered_map&lt; action_t, action_func_t &gt; &amp;ctx_actions) const</div><div class="ttdef"><b>Definition:</b> <a href="input__manager_8cpp_source.xhtml#l00384">input_manager.cpp:384</a></div></div>
-<div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_af84dd2cdfe2d8655ed796b94e99ad199"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">openage::input::InputContext::input_manager</a></div><div class="ttdeci">InputManager * input_manager</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00099">input_context.h:99</a></div></div>
-<div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a6f1d87566bbd4aaa60900399d3d0dc35"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">openage::input::InputContext::by_type</a></div><div class="ttdeci">std::unordered_map&lt; action_t, action_func_t &gt; by_type</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00104">input_context.h:104</a></div></div>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                                      {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">input_manager</a> == <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> {};</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// \todo try to purge this backpointer to the input manager.</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">input_manager</a>-&gt;<a class="code" href="classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53">active_binds</a>(this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">by_type</a>);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_manager_xhtml_ac5b6bbe740edcca81b63996a22472a53"><div class="ttname"><a href="classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53">openage::input::InputManager::active_binds</a></div><div class="ttdeci">std::vector&lt; std::string &gt; active_binds(const std::unordered_map&lt; action_t, action_func_t &gt; &amp;ctx_actions) const</div><div class="ttdoc">Return a string representation of active key bindings from the given context.</div><div class="ttdef"><b>Definition:</b> <a href="input__manager_8cpp_source.xhtml#l00384">input_manager.cpp:384</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_af84dd2cdfe2d8655ed796b94e99ad199"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">openage::input::InputContext::input_manager</a></div><div class="ttdeci">InputManager * input_manager</div><div class="ttdoc">Input manager this context is bound to.</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00099">input_context.h:99</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a6f1d87566bbd4aaa60900399d3d0dc35"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">openage::input::InputContext::by_type</a></div><div class="ttdeci">std::unordered_map&lt; action_t, action_func_t &gt; by_type</div><div class="ttdoc">Maps an action id to a event execution function.</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00104">input_context.h:104</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="input__manager_8cpp_source.xhtml#l00384">openage::input::InputManager::active_binds()</a>, <a class="el" href="input__context_8h_source.xhtml#l00104">by_type</a>, and <a class="el" href="input__context_8h_source.xhtml#l00099">input_manager</a>.</p>
 
@@ -268,14 +291,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_ab79e2d06d4aab199d3fb9c5dc5b6ff3f_cgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_ab79e2d06d4aab199d3fb9c5dc5b6ff3f_cgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_ab79e2d06d4aab199d3fb9c5dc5b6ff3f_icgraph.svg" width="100%" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_ab79e2d06d4aab199d3fb9c5dc5b6ff3f_icgraph.svg" width="100%" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -305,10 +330,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>bind a specific action idetifier this is the highest matching priority </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8cpp_source.xhtml#l00034">34</a> of file <a class="el" href="input__context_8cpp_source.xhtml">input_context.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                              {</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">by_type</a>.emplace(std::make_pair(type, act));</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a6f1d87566bbd4aaa60900399d3d0dc35"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">openage::input::InputContext::by_type</a></div><div class="ttdeci">std::unordered_map&lt; action_t, action_func_t &gt; by_type</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00104">input_context.h:104</a></div></div>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                              {</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">by_type</a>.emplace(std::make_pair(type, act));</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a6f1d87566bbd4aaa60900399d3d0dc35"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">openage::input::InputContext::by_type</a></div><div class="ttdeci">std::unordered_map&lt; action_t, action_func_t &gt; by_type</div><div class="ttdoc">Maps an action id to a event execution function.</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00104">input_context.h:104</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="input__context_8h_source.xhtml#l00104">by_type</a>.</p>
 
@@ -318,7 +344,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a32c669bab23aa04b6d17309b21486ffa_icgraph.svg" width="654" height="248"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a32c669bab23aa04b6d17309b21486ffa_icgraph.svg" width="654" height="248"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -348,10 +375,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>bind a specific event this is the second matching priority </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8cpp_source.xhtml#l00038">38</a> of file <a class="el" href="input__context_8cpp_source.xhtml">input_context.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                                                {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">by_event</a>.emplace(std::make_pair(ev, act));</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a755cbd02d0d4e05a8cde3d1c0db912b2"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">openage::input::InputContext::by_event</a></div><div class="ttdeci">std::unordered_map&lt; Event, action_func_t, event_hash &gt; by_event</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00109">input_context.h:109</a></div></div>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                                                {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">by_event</a>.emplace(std::make_pair(ev, act));</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a755cbd02d0d4e05a8cde3d1c0db912b2"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">openage::input::InputContext::by_event</a></div><div class="ttdeci">std::unordered_map&lt; Event, action_func_t, event_hash &gt; by_event</div><div class="ttdoc">map specific overriding events</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00109">input_context.h:109</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="input__context_8h_source.xhtml#l00109">by_event</a>.</p>
 
@@ -382,10 +410,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>bind all events of a specific class this is the lowest matching priority </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8cpp_source.xhtml#l00042">42</a> of file <a class="el" href="input__context_8cpp_source.xhtml">input_context.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                                {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">by_class</a>.emplace(std::make_pair(ec, act));</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a3c3e329f64016a032e5fdf49247d84d8"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">openage::input::InputContext::by_class</a></div><div class="ttdeci">std::unordered_map&lt; event_class, action_check_t, event_class_hash &gt; by_class</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00115">input_context.h:115</a></div></div>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                                {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">by_class</a>.emplace(std::make_pair(ec, act));</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a3c3e329f64016a032e5fdf49247d84d8"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">openage::input::InputContext::by_class</a></div><div class="ttdeci">std::unordered_map&lt; event_class, action_check_t, event_class_hash &gt; by_class</div><div class="ttdoc">event to action map event_class as key, to ensure all events can be mapped</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00115">input_context.h:115</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="input__context_8h_source.xhtml#l00115">by_class</a>.</p>
 
@@ -406,12 +435,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>lookup an action. If it is bound, execute it. </p><dl class="section return"><dt>Returns</dt><dd>true when the action is executed, false else. </dd></dl>
+
+<p>lookup an action. </p>
+<p>If it is bound, execute it. </p><dl class="section return"><dt>Returns</dt><dd>true when the action is executed, false else. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="input__context_8cpp_source.xhtml">input_context.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                                           {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// arg type hints are highest priority</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;h : arg.hints) {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">auto</span> action = this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">by_type</a>.find(h);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (action != this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">by_type</a>.end()) {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            action-&gt;second(arg);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// specific event mappings</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">auto</span> action = this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">by_event</a>.find(arg.e);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (action != this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">by_event</a>.end()) {</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        action-&gt;second(arg);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// check all possible class mappings</span></div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;c : arg.e.cc.get_classes()) {</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">auto</span> action = this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">by_class</a>.find(c);</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (action != this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">by_class</a>.end() &amp;&amp;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            action-&gt;second(arg)) {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a3c3e329f64016a032e5fdf49247d84d8"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">openage::input::InputContext::by_class</a></div><div class="ttdeci">std::unordered_map&lt; event_class, action_check_t, event_class_hash &gt; by_class</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00115">input_context.h:115</a></div></div>
-<div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a755cbd02d0d4e05a8cde3d1c0db912b2"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">openage::input::InputContext::by_event</a></div><div class="ttdeci">std::unordered_map&lt; Event, action_func_t, event_hash &gt; by_event</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00109">input_context.h:109</a></div></div>
-<div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a6f1d87566bbd4aaa60900399d3d0dc35"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">openage::input::InputContext::by_type</a></div><div class="ttdeci">std::unordered_map&lt; action_t, action_func_t &gt; by_type</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00104">input_context.h:104</a></div></div>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                                           {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// arg type hints are highest priority</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;h : arg.hints) {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">auto</span> action = this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">by_type</a>.find(h);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (action != this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">by_type</a>.end()) {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            action-&gt;second(arg);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// specific event mappings</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">auto</span> action = this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">by_event</a>.find(arg.e);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (action != this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">by_event</a>.end()) {</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        action-&gt;second(arg);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// check all possible class mappings</span></div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;c : arg.e.cc.get_classes()) {</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">auto</span> action = this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">by_class</a>.find(c);</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (action != this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">by_class</a>.end() &amp;&amp;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            action-&gt;second(arg)) {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a3c3e329f64016a032e5fdf49247d84d8"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a3c3e329f64016a032e5fdf49247d84d8">openage::input::InputContext::by_class</a></div><div class="ttdeci">std::unordered_map&lt; event_class, action_check_t, event_class_hash &gt; by_class</div><div class="ttdoc">event to action map event_class as key, to ensure all events can be mapped</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00115">input_context.h:115</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a755cbd02d0d4e05a8cde3d1c0db912b2"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a755cbd02d0d4e05a8cde3d1c0db912b2">openage::input::InputContext::by_event</a></div><div class="ttdeci">std::unordered_map&lt; Event, action_func_t, event_hash &gt; by_event</div><div class="ttdoc">map specific overriding events</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00109">input_context.h:109</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_a6f1d87566bbd4aaa60900399d3d0dc35"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#a6f1d87566bbd4aaa60900399d3d0dc35">openage::input::InputContext::by_type</a></div><div class="ttdeci">std::unordered_map&lt; action_t, action_func_t &gt; by_type</div><div class="ttdoc">Maps an action id to a event execution function.</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00104">input_context.h:104</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="input__context_8h_source.xhtml#l00115">by_class</a>, <a class="el" href="input__context_8h_source.xhtml#l00109">by_event</a>, <a class="el" href="input__context_8h_source.xhtml#l00104">by_type</a>, <a class="el" href="input_2event_8h_source.xhtml#l00137">openage::input::Event::cc</a>, <a class="el" href="input_2action_8h_source.xhtml#l00074">openage::input::action_arg_t::e</a>, <a class="el" href="input_2event_8cpp_source.xhtml#l00017">openage::input::ClassCode::get_classes()</a>, and <a class="el" href="input_2action_8h_source.xhtml#l00082">openage::input::action_arg_t::hints</a>.</p>
 
@@ -421,14 +452,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a97804df5309a2fd7773b02568c8ca461_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a97804df5309a2fd7773b02568c8ca461_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a97804df5309a2fd7773b02568c8ca461_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a97804df5309a2fd7773b02568c8ca461_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -448,10 +481,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Called by the <a class="el" href="classopenage_1_1input_1_1_input_manager.xhtml">InputManager</a> where this context shall be registered to. </p>
+
+<p>Called by the <a class="el" href="classopenage_1_1input_1_1_input_manager.xhtml" title="The input manager manages all input layers (hud, game, ...) and triggers the registered actions depen...">InputManager</a> where this context shall be registered to. </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8cpp_source.xhtml#l00077">77</a> of file <a class="el" href="input__context_8cpp_source.xhtml">input_context.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                                    {</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">input_manager</a> = manager;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_af84dd2cdfe2d8655ed796b94e99ad199"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">openage::input::InputContext::input_manager</a></div><div class="ttdeci">InputManager * input_manager</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00099">input_context.h:99</a></div></div>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                                    {</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">input_manager</a> = manager;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_af84dd2cdfe2d8655ed796b94e99ad199"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">openage::input::InputContext::input_manager</a></div><div class="ttdeci">InputManager * input_manager</div><div class="ttdoc">Input manager this context is bound to.</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00099">input_context.h:99</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="input__context_8h_source.xhtml#l00099">input_manager</a>.</p>
 
@@ -461,7 +495,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a0a5d3374a164faf57483d7555f0b84b5_icgraph.svg" width="100%" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a0a5d3374a164faf57483d7555f0b84b5_icgraph.svg" width="100%" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -480,10 +515,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Remove the registration to an input manager. </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8cpp_source.xhtml#l00082">82</a> of file <a class="el" href="input__context_8cpp_source.xhtml">input_context.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                              {</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">input_manager</a> = <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_af84dd2cdfe2d8655ed796b94e99ad199"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">openage::input::InputContext::input_manager</a></div><div class="ttdeci">InputManager * input_manager</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00099">input_context.h:99</a></div></div>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                              {</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">input_manager</a> = <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_context_xhtml_af84dd2cdfe2d8655ed796b94e99ad199"><div class="ttname"><a href="classopenage_1_1input_1_1_input_context.xhtml#af84dd2cdfe2d8655ed796b94e99ad199">openage::input::InputContext::input_manager</a></div><div class="ttdeci">InputManager * input_manager</div><div class="ttdoc">Input manager this context is bound to.</div><div class="ttdef"><b>Definition:</b> <a href="input__context_8h_source.xhtml#l00099">input_context.h:99</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="input__context_8h_source.xhtml#l00099">input_manager</a>.</p>
 
@@ -493,7 +529,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a12ae83daa8c6bfefef320a07377a9246_icgraph.svg" width="100%" height="576"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_input_context_a12ae83daa8c6bfefef320a07377a9246_icgraph.svg" width="100%" height="576"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -518,6 +555,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>event to action map event_class as key, to ensure all events can be mapped </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8h_source.xhtml#l00115">115</a> of file <a class="el" href="input__context_8h_source.xhtml">input_context.h</a>.</p>
@@ -545,6 +583,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>map specific overriding events </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8h_source.xhtml#l00109">109</a> of file <a class="el" href="input__context_8h_source.xhtml">input_context.h</a>.</p>
@@ -572,6 +611,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Maps an action id to a event execution function. </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8h_source.xhtml#l00104">104</a> of file <a class="el" href="input__context_8h_source.xhtml">input_context.h</a>.</p>
@@ -599,6 +639,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Input manager this context is bound to. </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8h_source.xhtml#l00099">99</a> of file <a class="el" href="input__context_8h_source.xhtml">input_context.h</a>.</p>
@@ -618,7 +659,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Affects which keyboard events are received: true to accpet utf8 text events, false to receive regular char events </p>
+
+<p>Affects which keyboard events are received: true to accpet utf8 text events, false to receive regular char events. </p>
 
 <p class="definition">Definition at line <a class="el" href="input__context_8h_source.xhtml#l00092">92</a> of file <a class="el" href="input__context_8h_source.xhtml">input_context.h</a>.</p>
 

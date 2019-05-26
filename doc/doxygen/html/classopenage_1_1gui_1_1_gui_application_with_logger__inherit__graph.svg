@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-211 154,-211 154,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Houses gui logic event queue and attaches to game logger.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-79.5 150,-79.5 150,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiApplication</text>
 <text text-anchor="middle" x="75" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">WithLogger</text>
@@ -25,7 +25,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_application.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_application.xhtml" target="_top" xlink:title="Houses gui logic event queue.">
 <polygon fill="white" stroke="black" points="21.5,-116.5 21.5,-206.5 128.5,-206.5 128.5,-116.5 21.5,-116.5"/>
 <text text-anchor="middle" x="75" y="-194.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiApplication</text>
 <polyline fill="none" stroke="black" points="21.5,-187.5 128.5,-187.5 "/>

@@ -1,5 +1,5 @@
 <map id="openage::ScreenshotManager::gen_next_filename" name="openage::ScreenshotManager::gen_next_filename">
-<area shape="rect" id="node1" title=" " alt="" coords="491,5,685,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" title=" " alt="" coords="248,5,443,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" title=" " alt="" coords="5,5,200,47"/>
+<area shape="rect" id="node1" title="to be called to get the next screenshot filename into the array" alt="" coords="491,5,685,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" title="To be called by the job manager." alt="" coords="248,5,443,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" title="To be called to save a screenshot." alt="" coords="5,5,200,47"/>
 </map>

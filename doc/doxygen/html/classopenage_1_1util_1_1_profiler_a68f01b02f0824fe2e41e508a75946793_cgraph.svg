@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 416,-84 416,4 -4,4"/>
 <!-- Node136 -->
 <g id="node1" class="node"><title>Node136</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="unregisters all remaining components">
 <polygon fill="#bfbfbf" stroke="black" points="0,-24.5 0,-54.5 108,-54.5 108,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="54" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister_all</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node137 -->
 <g id="node2" class="node"><title>Node137</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a93cf3b3b79fc2f3be34a2e1b095198a6" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a93cf3b3b79fc2f3be34a2e1b095198a6" target="_top" xlink:title="returns a vector of registered component names">
 <polygon fill="white" stroke="black" points="144,-49.5 144,-79.5 268,-79.5 268,-49.5 144,-49.5"/>
 <text text-anchor="start" x="152" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="206" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::registered_components</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node138 -->
 <g id="node3" class="node"><title>Node138</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aa2cd0e4084f70dec7bff926afbc7e0de" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aa2cd0e4084f70dec7bff926afbc7e0de" target="_top" xlink:title="unregisters an individual component">
 <polygon fill="white" stroke="black" points="146.5,-0.5 146.5,-30.5 265.5,-30.5 265.5,-0.5 146.5,-0.5"/>
 <text text-anchor="start" x="154.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="206" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister_component</text>

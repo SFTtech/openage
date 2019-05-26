@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>main_ctx</name>
         <briefdescription>
+<para>GL context of the game. </para>
         </briefdescription>
         <detaileddescription>
-<para>GL context of the game </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -25,9 +25,9 @@
         <argsstring></argsstring>
         <name>ctx_logger</name>
         <briefdescription>
+<para>GL debug logger of the GL context of the GUI. </para>
         </briefdescription>
         <detaileddescription>
-<para>GL debug logger of the GL context of the GUI </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -40,9 +40,9 @@
         <argsstring></argsstring>
         <name>make_current_back</name>
         <briefdescription>
+<para>Function to make the game context current. </para>
         </briefdescription>
         <detaileddescription>
-<para>Function to make the game context current </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -55,9 +55,9 @@
         <argsstring></argsstring>
         <name>offscreen_surface</name>
         <briefdescription>
+<para>Surface that is needed to make the GUI context current. </para>
         </briefdescription>
         <detaileddescription>
-<para>Surface that is needed to make the GUI context current </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -105,9 +105,9 @@
         <name>pre_render</name>
         <reimplements refid="classqtsdl_1_1_ctx_extraction_mode_1a5a078af4f1b11cf1091496bfc8559b0c">pre_render</reimplements>
         <briefdescription>
+<para>Function that must be called before rendering the GUI. </para>
         </briefdescription>
         <detaileddescription>
-<para>Function that must be called before rendering the GUI. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -122,9 +122,9 @@
         <name>post_render</name>
         <reimplements refid="classqtsdl_1_1_ctx_extraction_mode_1a314f77f4b5e33b76316e4184b4c4f505">post_render</reimplements>
         <briefdescription>
+<para>Function that must be called after rendering the GUI. </para>
         </briefdescription>
         <detaileddescription>
-<para>Function that must be called after rendering the GUI. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -134,9 +134,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Create a separate context to render the GUI, make it shared with the main context. </para>
     </briefdescription>
     <detaileddescription>
-<para>Create a separate context to render the GUI, make it shared with the main context. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6473">

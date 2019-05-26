@@ -1,6 +1,6 @@
 <map id="openage::UnitType::place_beside" name="openage::UnitType::place_beside">
-<area shape="rect" id="node1" title=" " alt="" coords="5,71,144,112"/>
+<area shape="rect" id="node1" title="similar to place but places adjacent to an existing object" alt="" coords="5,71,144,112"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_terrain_object.xhtml#a170289794bdd31d673ffb3aca873bb1d" title=" " alt="" coords="192,5,348,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_unit_type.xhtml#a51facc71929fe2d425bc6bec06e0dc48" title=" " alt="" coords="201,71,339,112"/>
-<area shape="rect" id="node4" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title=" " alt="" coords="210,137,330,163"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit_type.xhtml#a51facc71929fe2d425bc6bec06e0dc48" title="set unit in place – return if placement was successful" alt="" coords="201,71,339,112"/>
+<area shape="rect" id="node4" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta..." alt="" coords="210,137,330,163"/>
 </map>

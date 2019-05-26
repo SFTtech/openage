@@ -34,7 +34,7 @@
 </g>
 <!-- Node131 -->
 <g id="node3" class="node"><title>Node131</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a376d760c88323c5d4f32db08e302a4de" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a376d760c88323c5d4f32db08e302a4de" target="_top" xlink:title="registers a component">
 <polygon fill="white" stroke="black" points="152.5,-22.5 152.5,-52.5 260.5,-52.5 260.5,-22.5 152.5,-22.5"/>
 <text text-anchor="start" x="160.5" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="206.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_component</text>

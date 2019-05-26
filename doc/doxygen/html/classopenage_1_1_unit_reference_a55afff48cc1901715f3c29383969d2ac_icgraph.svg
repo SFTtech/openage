@@ -66,7 +66,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node23 -->
 <g id="node2" class="node"><title>Node23</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_target_action.xhtml#acd97248a087415b6d08fa3e97e90397d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_target_action.xhtml#acd97248a087415b6d08fa3e97e90397d" target="_top" xlink:title="gets called for all actions on stack each update cycle">
 <polygon fill="white" stroke="black" points="304,-179.5 304,-209.5 418,-209.5 418,-179.5 304,-179.5"/>
 <text text-anchor="start" x="312" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TargetAction</text>
 <text text-anchor="middle" x="361" y="-186.5" font-family="Helvetica,sans-Serif" font-size="10.00">::completed</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node27 -->
 <g id="node6" class="node"><title>Node27</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_move_action.xhtml#acaa3211217665c07e59aa7b994e57b6f" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_move_action.xhtml#acaa3211217665c07e59aa7b994e57b6f" target="_top" xlink:title="gets called for all actions on stack each update cycle">
 <polygon fill="white" stroke="black" points="469,-349.5 469,-379.5 579,-379.5 579,-349.5 469,-349.5"/>
 <text text-anchor="start" x="477" y="-367.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAction</text>
 <text text-anchor="middle" x="524" y="-356.5" font-family="Helvetica,sans-Serif" font-size="10.00">::completed</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node29 -->
 <g id="node8" class="node"><title>Node29</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title="places hovering building">
 <polygon fill="white" stroke="black" points="305.5,-42.5 305.5,-72.5 416.5,-72.5 416.5,-42.5 305.5,-42.5"/>
 <text text-anchor="start" x="313.5" y="-60.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="361" y="-49.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place_selection</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node31 -->
 <g id="node10" class="node"><title>Node31</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_move_action.xhtml#a87eb54704dff471c3401ec7c7a88b044" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_move_action.xhtml#a87eb54704dff471c3401ec7c7a88b044" target="_top" xlink:title="updates the distance_to_target value">
 <polygon fill="white" stroke="black" points="306,-355.5 306,-385.5 416,-385.5 416,-355.5 306,-355.5"/>
 <text text-anchor="start" x="314" y="-373.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAction</text>
 <text text-anchor="middle" x="361" y="-362.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_distance</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node33 -->
 <g id="node12" class="node"><title>Node33</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_move_action.xhtml#afa4e4983c00b0207af76c7b717e81a05" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="155,-291.5 155,-321.5 265,-321.5 265,-291.5 155,-291.5"/>
 <text text-anchor="start" x="163" y="-309.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAction</text>
 <text text-anchor="middle" x="210" y="-298.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -149,7 +149,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node34 -->
 <g id="node13" class="node"><title>Node34</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_move_action.xhtml#a4e56fc82672dfaf3c62f846afbd6df69" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_move_action.xhtml#a4e56fc82672dfaf3c62f846afbd6df69" target="_top" xlink:title="use a star to find a path to target">
 <polygon fill="white" stroke="black" points="306,-267.5 306,-297.5 416,-297.5 416,-267.5 306,-267.5"/>
 <text text-anchor="start" x="314" y="-285.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAction</text>
 <text text-anchor="middle" x="361" y="-274.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_path</text>
@@ -177,7 +177,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node36 -->
 <g id="node15" class="node"><title>Node36</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_target_action.xhtml#a48de4ef9580b1202464808af55b78fae" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_target_action.xhtml#a48de4ef9580b1202464808af55b78fae" target="_top" xlink:title="changes target, ending action when new target is invalid">
 <polygon fill="white" stroke="black" points="153,-81.5 153,-111.5 267,-111.5 267,-81.5 153,-81.5"/>
 <text text-anchor="start" x="161" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TargetAction</text>
 <text text-anchor="middle" x="210" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_target</text>
@@ -191,7 +191,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node38 -->
 <g id="node17" class="node"><title>Node38</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" target="_top" xlink:title="kill a single unit in the selection">
 <polygon fill="white" stroke="black" points="465.5,-0.5 465.5,-30.5 582.5,-30.5 582.5,-0.5 465.5,-0.5"/>
 <text text-anchor="start" x="473.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="524" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::kill_unit</text>
@@ -219,7 +219,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node26 -->
 <g id="node5" class="node"><title>Node26</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" target="_top" xlink:title="action to perform when popped from a units action stack">
 <polygon fill="white" stroke="black" points="155.5,-179.5 155.5,-209.5 264.5,-209.5 264.5,-179.5 155.5,-179.5"/>
 <text text-anchor="start" x="163.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildAction</text>
 <text text-anchor="middle" x="210" y="-186.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_completion</text>
@@ -233,7 +233,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node25 -->
 <g id="node4" class="node"><title>Node25</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="0,-154.5 0,-184.5 116,-184.5 116,-154.5 0,-154.5"/>
 <text text-anchor="start" x="8" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAction</text>
 <text text-anchor="middle" x="58" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>
@@ -277,7 +277,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node30 -->
 <g id="node9" class="node"><title>Node30</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="152,-15.5 152,-45.5 268,-45.5 268,-15.5 152,-15.5"/>
 <text text-anchor="start" x="160" y="-33.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="210" y="-22.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -325,7 +325,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node37 -->
 <g id="node16" class="node"><title>Node37</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1_target_action.xhtml#af63a55c8043382d2648815d46e2c4c92" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="153,-130.5 153,-160.5 267,-160.5 267,-130.5 153,-130.5"/>
 <text text-anchor="start" x="161" y="-148.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TargetAction</text>
 <text text-anchor="middle" x="210" y="-137.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>

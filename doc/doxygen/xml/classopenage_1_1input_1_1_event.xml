@@ -119,9 +119,9 @@
         <argsstring>() const</argsstring>
         <name>as_char</name>
         <briefdescription>
+<para>Return keyboard text as char returns 0 for non-text events. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return keyboard text as char returns 0 for non-text events </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -137,9 +137,9 @@
         <argsstring>() const</argsstring>
         <name>as_utf8</name>
         <briefdescription>
+<para>Returns a utf encoded char or an empty string for non-utf8 events. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a utf encoded char or an empty string for non-utf8 events </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -153,9 +153,9 @@
         <argsstring>() const</argsstring>
         <name>info</name>
         <briefdescription>
+<para>logable debug info </para>
         </briefdescription>
         <detaileddescription>
-<para>logable debug info </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -190,9 +190,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Input event, as triggered by some input device like mouse, kezb, joystick, tablet, microwave or dildo. </para>
     </briefdescription>
     <detaileddescription>
-<para>Input event, as triggered by some input device like mouse, kezb, joystick, tablet, microwave or dildo. Some modifier keys may also be pressed during the event. </para>
+<para>Some modifier keys may also be pressed during the event. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3830">

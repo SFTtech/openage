@@ -70,9 +70,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The set of text draw requests with the same font and color. </para>
     </briefdescription>
     <detaileddescription>
-<para>The set of text draw requests with the same font and color. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4790">

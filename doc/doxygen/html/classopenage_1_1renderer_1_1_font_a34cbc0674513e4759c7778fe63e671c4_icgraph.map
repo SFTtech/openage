@@ -1,4 +1,4 @@
 <map id="openage::renderer::Font::get_horizontal_kerning" name="openage::renderer::Font::get_horizontal_kerning">
-<area shape="rect" id="node1" title=" " alt="" coords="219,5,356,61"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_font.xhtml#a2fac4e6433df045834538de8e814fc13" title=" " alt="" coords="5,13,171,54"/>
+<area shape="rect" id="node1" title="Get the kerning adjustment between two glyphs." alt="" coords="219,5,356,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_font.xhtml#a2fac4e6433df045834538de8e814fc13" title="Get the advance width of a particular string." alt="" coords="5,13,171,54"/>
 </map>

@@ -1,17 +1,17 @@
 <map id="openage::coord::phys3::to_tile" name="openage::coord::phys3::to_tile">
 <area shape="rect" id="node1" title=" " alt="" coords="852,195,1007,236"/>
-<area shape="rect" id="node2" href="$namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" title=" " alt="" coords="633,78,799,105"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" title=" " alt="" coords="645,136,787,177"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,179,160,220"/>
+<area shape="rect" id="node2" href="$namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" title="given the west most point of a building foundation and the tile_delta size of the foundation,..." alt="" coords="633,78,799,105"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" title="an object which contains the given point, null otherwise" alt="" coords="645,136,787,177"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,179,160,220"/>
 <area shape="rect" id="node10" href="$classopenage_1_1_editor_mode.xhtml#a1430647b024d4c9e7021756a6fa9700d" title=" " alt="" coords="643,253,789,295"/>
 <area shape="rect" id="node12" href="$structopenage_1_1coord_1_1camgame.xhtml#a323da0da625f2160938843dc8a248e6c" title=" " alt="" coords="628,319,804,360"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" title=" " alt="" coords="418,5,577,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title=" " alt="" coords="423,71,571,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title=" " alt="" coords="208,5,367,47"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title=" " alt="" coords="419,136,575,177"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" title="calculate object start and end positions." alt="" coords="418,5,577,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title="Display this mode." alt="" coords="423,71,571,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title="would this intersect with another object if it were positioned at the given point" alt="" coords="208,5,367,47"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title="point unit selection" alt="" coords="419,136,575,177"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_unit_selection.xhtml#a6b4a0b9275c8ebf623d50a7509487623" title=" " alt="" coords="209,136,365,177"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title=" " alt="" coords="5,269,160,311"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,269,160,311"/>
 <area shape="rect" id="node13" href="$structopenage_1_1coord_1_1viewport.xhtml#ad78ba1b1f9b64caa7b6eda78aaf7513a" title=" " alt="" coords="415,319,580,360"/>
 <area shape="rect" id="node14" href="$classopenage_1_1_editor_mode.xhtml#a1f47d053e9c09aaf9bc6ec3a85f4a49e" title=" " alt="" coords="215,312,360,353"/>
-<area shape="rect" id="node15" href="$classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" title=" " alt="" coords="211,378,364,405"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" title="draw the currently visible terrain area on screen." alt="" coords="211,378,364,405"/>
 </map>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-15';
 <polygon fill="white" stroke="none" points="-4,4 -4,-498.266 1430,-498.266 1430,4 -4,4"/>
 <!-- Node110 -->
 <g id="node1" class="node"><title>Node110</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="get the filename (last part) of a given path">
 <polygon fill="#bfbfbf" stroke="black" points="1312,-267.266 1312,-286.266 1426,-286.266 1426,-267.266 1312,-267.266"/>
 <text text-anchor="middle" x="1369" y="-274.266" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::filename</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node112 -->
 <g id="node3" class="node"><title>Node112</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" target="_top" xlink:title="To be called by the job manager.">
 <polygon fill="white" stroke="black" points="1129.5,-414.766 1129.5,-444.766 1275.5,-444.766 1275.5,-414.766 1129.5,-414.766"/>
 <text text-anchor="start" x="1137.5" y="-432.766" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ScreenshotManager</text>
 <text text-anchor="middle" x="1202.5" y="-421.766" font-family="Helvetica,sans-Serif" font-size="10.00">::encode_png</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node115 -->
 <g id="node6" class="node"><title>Node115</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#abd8690a2db783f6d55a7ef374f6db782" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#abd8690a2db783f6d55a7ef374f6db782" target="_top" xlink:title="Parse the data from one file in the map.">
 <polygon fill="white" stroke="black" points="1132,-316.766 1132,-346.766 1273,-346.766 1273,-316.766 1132,-316.766"/>
 <text text-anchor="start" x="1140" y="-334.766" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CSVCollection</text>
 <text text-anchor="middle" x="1202.5" y="-323.766" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node117 -->
 <g id="node8" class="node"><title>Node117</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a942ae5fea51139bab5bdc29ac244125d" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a942ae5fea51139bab5bdc29ac244125d" target="_top" xlink:title="For use by Python, to initialize a message&#39;s meta data.">
 <polygon fill="white" stroke="black" points="1149,-206.766 1149,-236.766 1256,-236.766 1256,-206.766 1149,-206.766"/>
 <text text-anchor="start" x="1157" y="-224.766" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="1202.5" y="-213.766" font-family="Helvetica,sans-Serif" font-size="10.00">::init_exc_message</text>
@@ -150,7 +150,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node118 -->
 <g id="node9" class="node"><title>Node118</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#af8b5d87acaf3d044fdd924ef68a1cec8" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#af8b5d87acaf3d044fdd924ef68a1cec8" target="_top" xlink:title="returns true IFF the file is executable">
 <polygon fill="white" stroke="black" points="1147.5,-118.766 1147.5,-148.766 1257.5,-148.766 1257.5,-118.766 1147.5,-118.766"/>
 <text text-anchor="start" x="1155.5" y="-136.766" font-family="Helvetica,sans-Serif" font-size="10.00">openage::subprocess</text>
 <text text-anchor="middle" x="1202.5" y="-125.766" font-family="Helvetica,sans-Serif" font-size="10.00">::is_executable</text>
@@ -164,7 +164,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node119 -->
 <g id="node10" class="node"><title>Node119</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" target="_top" xlink:title="finds the path to an executable by evaluating env[PATH]">
 <polygon fill="white" stroke="black" points="965,-162.766 965,-192.766 1075,-192.766 1075,-162.766 965,-162.766"/>
 <text text-anchor="start" x="973" y="-180.766" font-family="Helvetica,sans-Serif" font-size="10.00">openage::subprocess</text>
 <text text-anchor="middle" x="1020" y="-169.766" font-family="Helvetica,sans-Serif" font-size="10.00">::which</text>
@@ -178,7 +178,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node130 -->
 <g id="node21" class="node"><title>Node130</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#a687817b834b18f90124915261c3752a8" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#a687817b834b18f90124915261c3752a8" target="_top" xlink:title="This function is the entry point to load the whole file tree recursively.">
 <polygon fill="white" stroke="black" points="1132,-47.7657 1132,-77.7657 1273,-77.7657 1273,-47.7657 1132,-47.7657"/>
 <text text-anchor="start" x="1140" y="-65.7657" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CSVCollection</text>
 <text text-anchor="middle" x="1202.5" y="-54.7657" font-family="Helvetica,sans-Serif" font-size="10.00">::read</text>
@@ -192,7 +192,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node113 -->
 <g id="node4" class="node"><title>Node113</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" target="_top" xlink:title="To be called to save a screenshot.">
 <polygon fill="white" stroke="black" points="947,-414.766 947,-444.766 1093,-444.766 1093,-414.766 947,-414.766"/>
 <text text-anchor="start" x="955" y="-432.766" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ScreenshotManager</text>
 <text text-anchor="middle" x="1020" y="-421.766" font-family="Helvetica,sans-Serif" font-size="10.00">::save_screenshot</text>
@@ -224,7 +224,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node120 -->
 <g id="node11" class="node"><title>Node120</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1os.xhtml#a5d72e5b58b3036f2298e474c4e9ed9b6" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1os.xhtml#a0c239b26dbfdae2443aa511e31619917" target="_top" xlink:title="tries to xdg&#45;open the file">
 <polygon fill="white" stroke="black" points="753.5,-218.266 753.5,-237.266 881.5,-237.266 881.5,-218.266 753.5,-218.266"/>
 <text text-anchor="middle" x="817.5" y="-225.266" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::execute_file</text>
 </a>
@@ -357,7 +357,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node131 -->
 <g id="node22" class="node"><title>Node131</title>
-<g id="a_node22"><a xlink:href="structopenage_1_1util_1_1csv__subdata.xhtml#a24b1327a670ab69e55c089234bdcbfec" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="structopenage_1_1util_1_1csv__subdata.xhtml#a24b1327a670ab69e55c089234bdcbfec" target="_top" xlink:title="Read the data of the lineformat from the collection.">
 <polygon fill="white" stroke="black" points="974,-25.7657 974,-55.7657 1066,-55.7657 1066,-25.7657 974,-25.7657"/>
 <text text-anchor="start" x="982" y="-43.7657" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::csv</text>
 <text text-anchor="middle" x="1020" y="-32.7657" font-family="Helvetica,sans-Serif" font-size="10.00">_subdata::read</text>

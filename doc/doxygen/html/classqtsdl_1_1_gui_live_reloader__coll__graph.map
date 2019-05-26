@@ -1,3 +1,3 @@
 <map id="qtsdl::GuiLiveReloader" name="qtsdl::GuiLiveReloader">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,168,83"/>
+<area shape="rect" id="node1" title="Stores objects that need to be kept alive across GUI reloads." alt="" coords="5,5,168,83"/>
 </map>

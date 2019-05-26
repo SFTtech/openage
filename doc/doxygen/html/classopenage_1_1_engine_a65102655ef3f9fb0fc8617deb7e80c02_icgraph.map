@@ -1,10 +1,10 @@
 <map id="openage::Engine::get_job_manager" name="openage::Engine::get_job_manager">
-<area shape="rect" id="node1" title=" " alt="" coords="943,71,1088,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" title=" " alt="" coords="711,71,895,112"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" title=" " alt="" coords="479,71,663,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" title=" " alt="" coords="247,5,431,47"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_game_spec_handle.xhtml#ad9c03812749a8ac9b21960e0f5bb462e" title=" " alt="" coords="247,71,431,112"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_game_spec_handle.xhtml#a019a81d88722206e82c7b5c87ddfe04f" title=" " alt="" coords="247,136,431,177"/>
+<area shape="rect" id="node1" title="return this engine&#39;s job manager." alt="" coords="943,71,1088,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" title="Actually dispatch the loading job to the job manager." alt="" coords="711,71,895,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" title="load the game specification if not already present." alt="" coords="479,71,663,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" title="Control whether this specification can be loaded (=true) or will not be loaded (=false)." alt="" coords="247,5,431,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_game_spec_handle.xhtml#ad9c03812749a8ac9b21960e0f5bb462e" title="invoked from qml when the asset_manager member is set." alt="" coords="247,71,431,112"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_game_spec_handle.xhtml#a019a81d88722206e82c7b5c87ddfe04f" title="forget everything about the specification and reload it with start_loading_if_needed." alt="" coords="247,136,431,177"/>
 <area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_game_spec_link.xhtml#a65d2c73c99d6724ead9ca41556253c56" title=" " alt="" coords="5,5,199,47"/>
 <area shape="rect" id="node7" href="$classopenage_1_1gui_1_1_game_spec_link.xhtml#acee4b3764eaa0e07144e164b8b7bdca0" title=" " alt="" coords="5,71,199,112"/>
 </map>

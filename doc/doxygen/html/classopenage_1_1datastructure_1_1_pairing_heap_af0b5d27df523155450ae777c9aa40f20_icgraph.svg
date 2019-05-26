@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-128 331,-128 331,4 -4,4"/>
 <!-- Node81 -->
 <g id="node1" class="node"><title>Node81</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="insert a node into the heap.">
 <polygon fill="#bfbfbf" stroke="black" points="200,-46.5 200,-76.5 327,-76.5 327,-46.5 200,-46.5"/>
 <text text-anchor="start" x="208" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="263.5" y="-53.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::root_insert</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node82 -->
 <g id="node2" class="node"><title>Node82</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a493b9b6b7e82fe0633df628a2aa248e7" target="_top" xlink:title="adds the given node to the heap.">
 <polygon fill="white" stroke="black" points="0,-71.5 0,-123.5 164,-123.5 164,-71.5 0,-71.5"/>
 <text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="8" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap&lt; std::shared</text>
@@ -36,7 +36,7 @@
 </g>
 <!-- Node83 -->
 <g id="node3" class="node"><title>Node83</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" target="_top" xlink:title="Unlink a node from the heap.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-52.5 164,-52.5 164,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap&lt; std::shared</text>

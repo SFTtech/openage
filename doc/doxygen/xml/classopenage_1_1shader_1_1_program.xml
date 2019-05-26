@@ -323,9 +323,9 @@
           <declname>what_to_check</declname>
         </param>
         <briefdescription>
+<para>checks a given status for this program. </para>
         </briefdescription>
         <detaileddescription>
-<para>checks a given status for this program.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>what_to_check</parametername>

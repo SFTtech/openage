@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 476,-84 476,4 -4,4"/>
 <!-- Node47 -->
 <g id="node1" class="node"><title>Node47</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Convert a string to an event, throw if the string is not a valid event.">
 <polygon fill="#bfbfbf" stroke="black" points="369,-24.5 369,-54.5 472,-54.5 472,-24.5 369,-24.5"/>
 <text text-anchor="start" x="377" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::text</text>
 <text text-anchor="middle" x="420.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_event</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node49 -->
 <g id="node3" class="node"><title>Node49</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#af93e6ca8bded1892c1c9d83332468e2d" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#af93e6ca8bded1892c1c9d83332468e2d" target="_top" xlink:title="Set the given action to be triggered by the given bind (key/mouse /wheel).">
 <polygon fill="white" stroke="black" points="188,-0.5 188,-30.5 333,-30.5 333,-0.5 188,-0.5"/>
 <text text-anchor="start" x="196" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="260.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_bind</text>

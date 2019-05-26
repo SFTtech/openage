@@ -20,7 +20,7 @@
 </g>
 <!-- Node6 -->
 <g id="node2" class="node"><title>Node6</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_g_u_i.xhtml#ac8c4bc112830f466957923bde0e65a6c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_g_u_i.xhtml#ac8c4bc112830f466957923bde0e65a6c" target="_top" xlink:title="execute the drawing action.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 101,-30.5 101,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GUI::</text>
 <text text-anchor="middle" x="50.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">on_drawhud</text>

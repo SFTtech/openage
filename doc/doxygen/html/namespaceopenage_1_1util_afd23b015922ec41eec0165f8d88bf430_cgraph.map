@@ -1,0 +1,4 @@
+<map id="openage::util::sformat" name="openage::util::sformat">
+<area shape="rect" id="node1" title="printf&#45;style to&#45;string formatting." alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output." alt="" coords="200,5,352,32"/>
+</map>

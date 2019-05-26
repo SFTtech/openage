@@ -20,7 +20,7 @@
 </g>
 <!-- Node12 -->
 <g id="node2" class="node"><title>Node12</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_font.xhtml#a2fac4e6433df045834538de8e814fc13" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_font.xhtml#a2fac4e6433df045834538de8e814fc13" target="_top" xlink:title="Get the advance width of a particular string.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 124,-79.5 124,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="62" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">Font::get_advance_width</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node13 -->
 <g id="node3" class="node"><title>Node13</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_font.xhtml#abe0cf25c28e35ade771dd1fda7ae1c5c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_font.xhtml#abe0cf25c28e35ade771dd1fda7ae1c5c" target="_top" xlink:title="Get the list of glyphs for a particular string.">
 <polygon fill="white" stroke="black" points="11.5,-0.5 11.5,-30.5 112.5,-30.5 112.5,-0.5 11.5,-0.5"/>
 <text text-anchor="start" x="19.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="62" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Font::get_glyphs</text>

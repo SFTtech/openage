@@ -108,18 +108,22 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml">CVarManager</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration manager.  <a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:aebb2850e226c43da630c2dc95802f4ee"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1cvar.xhtml#aebb2850e226c43da630c2dc95802f4ee">get_func</a> = std::function&lt; std::string()&gt;</td></tr>
+<tr class="memdesc:aebb2850e226c43da630c2dc95802f4ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">function type used to get a configuration value  <a href="#aebb2850e226c43da630c2dc95802f4ee">More...</a><br /></td></tr>
 <tr class="separator:aebb2850e226c43da630c2dc95802f4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9da0b79349923d4b334b76da9ea8828f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1cvar.xhtml#a9da0b79349923d4b334b76da9ea8828f">set_func</a> = std::function&lt; void(std::string)&gt;</td></tr>
+<tr class="memdesc:a9da0b79349923d4b334b76da9ea8828f"><td class="mdescLeft">&#160;</td><td class="mdescRight">function type to set the value of a config entry  <a href="#a9da0b79349923d4b334b76da9ea8828f">More...</a><br /></td></tr>
 <tr class="separator:a9da0b79349923d4b334b76da9ea8828f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a8f14b711d03e0856c0753a9b330ff5cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1pyinterface_1_1_py_if_func.xhtml">pyinterface::PyIfFunc</a>&lt; void, <a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml">CVarManager</a> *, const <a class="el" href="classopenage_1_1util_1_1_path.xhtml">util::Path</a> &amp; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1cvar.xhtml#a8f14b711d03e0856c0753a9b330ff5cb">pyx_load_config_file</a></td></tr>
+<tr class="memdesc:a8f14b711d03e0856c0753a9b330ff5cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python function to load a configuration file.  <a href="#a8f14b711d03e0856c0753a9b330ff5cb">More...</a><br /></td></tr>
 <tr class="separator:a8f14b711d03e0856c0753a9b330ff5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -134,6 +138,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>function type used to get a configuration value </p>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8h_source.xhtml#l00022">22</a> of file <a class="el" href="cvar_8h_source.xhtml">cvar.h</a>.</p>
@@ -151,6 +156,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>function type to set the value of a config entry </p>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8h_source.xhtml#l00025">25</a> of file <a class="el" href="cvar_8h_source.xhtml">cvar.h</a>.</p>
@@ -169,8 +175,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Python function to load a configuration file. The config manager is passed into it.</p>
-<p>pxd: ctypedef <a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml">CVarManager</a> * CVarManagerPtr PyIfFunc2[void, CVarManagerPtr, const Path&amp;] pyx_load_config_file </p>
+
+<p>Python function to load a configuration file. </p>
+<p>The config manager is passed into it.</p>
+<p>pxd: ctypedef <a class="el" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml" title="Configuration manager.">CVarManager</a> * CVarManagerPtr PyIfFunc2[void, CVarManagerPtr, const Path&amp;] pyx_load_config_file </p>
 
 <p class="definition">Definition at line <a class="el" href="cvar_8cpp_source.xhtml#l00054">54</a> of file <a class="el" href="cvar_8cpp_source.xhtml">cvar.cpp</a>.</p>
 

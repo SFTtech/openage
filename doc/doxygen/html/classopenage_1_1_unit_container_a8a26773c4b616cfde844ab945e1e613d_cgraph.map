@@ -1,4 +1,4 @@
 <map id="openage::UnitContainer::get_unit" name="openage::UnitContainer::get_unit">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,163,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_container.xhtml#a0878ffc113dac158174963680f368e5c" title=" " alt="" coords="211,5,368,47"/>
+<area shape="rect" id="node1" title="returns a reference to a unit" alt="" coords="5,5,163,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_container.xhtml#a0878ffc113dac158174963680f368e5c" title="checks the id is valid" alt="" coords="211,5,368,47"/>
 </map>

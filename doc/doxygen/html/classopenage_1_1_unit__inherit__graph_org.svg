@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-475 129,-475 129,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A game object with current state represented by a stack of actions since this class represents both u...">
 <polygon fill="#bfbfbf" stroke="black" points="2.5,-0.5 2.5,-332.5 122.5,-332.5 122.5,-0.5 2.5,-0.5"/>
 <text text-anchor="middle" x="62.5" y="-320.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit</text>
 <polyline fill="none" stroke="black" points="2.5,-313.5 122.5,-313.5 "/>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml" target="_top" xlink:title="Any class that wants to provide .log() shall inherit from this.">
 <polygon fill="white" stroke="black" points="0,-369.5 0,-470.5 125,-470.5 125,-369.5 0,-369.5"/>
 <text text-anchor="middle" x="62.5" y="-458.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource</text>
 <polyline fill="none" stroke="black" points="0,-451.5 125,-451.5 "/>

@@ -102,14 +102,16 @@ $(document).ready(function(){initNavTree('heuristics_8h.xhtml','');});
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="heuristics_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="heuristics_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="heuristics_8h__dep__incl.svg" width="100%" height="506"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="heuristics_8h__dep__incl.svg" width="100%" height="506"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div>
 <p><a href="heuristics_8h_source.xhtml">Go to the source code of this file.</a></p>
@@ -117,6 +119,7 @@ $(document).ready(function(){initNavTree('heuristics_8h.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1path"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml">openage::path</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,19 +127,25 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a42b919491ef91151284bc4c1cb3223a0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#a42b919491ef91151284bc4c1cb3223a0">openage::path::heuristic_t</a> = cost_t(*)(const coord::phys3 &amp;start, const coord::phys3 &amp;end)</td></tr>
+<tr class="memdesc:a42b919491ef91151284bc4c1cb3223a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">function pointer type for distance estimation functions.  <a href="namespaceopenage_1_1path.xhtml#a42b919491ef91151284bc4c1cb3223a0">More...</a><br /></td></tr>
 <tr class="separator:a42b919491ef91151284bc4c1cb3223a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a825dde52e9d0fd7fe6fa6970a1ec58e0"><td class="memItemLeft" align="right" valign="top">cost_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#a825dde52e9d0fd7fe6fa6970a1ec58e0">openage::path::manhattan_cost</a> (const coord::phys3 &amp;start, const coord::phys3 &amp;end)</td></tr>
+<tr class="memdesc:a825dde52e9d0fd7fe6fa6970a1ec58e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manhattan distance cost estimation.  <a href="namespaceopenage_1_1path.xhtml#a825dde52e9d0fd7fe6fa6970a1ec58e0">More...</a><br /></td></tr>
 <tr class="separator:a825dde52e9d0fd7fe6fa6970a1ec58e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d47462a02dd8b972acca24d5e05f179"><td class="memItemLeft" align="right" valign="top">cost_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179">openage::path::chebyshev_cost</a> (const coord::phys3 &amp;start, const coord::phys3 &amp;end)</td></tr>
+<tr class="memdesc:a7d47462a02dd8b972acca24d5e05f179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chebyshev distance cost estimation.  <a href="namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179">More...</a><br /></td></tr>
 <tr class="separator:a7d47462a02dd8b972acca24d5e05f179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18aa96b43da6809c7796eaa4214a3420"><td class="memItemLeft" align="right" valign="top">cost_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#a18aa96b43da6809c7796eaa4214a3420">openage::path::euclidean_cost</a> (const coord::phys3 &amp;start, const coord::phys3 &amp;end)</td></tr>
+<tr class="memdesc:a18aa96b43da6809c7796eaa4214a3420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Euclidean distance cost estimation.  <a href="namespaceopenage_1_1path.xhtml#a18aa96b43da6809c7796eaa4214a3420">More...</a><br /></td></tr>
 <tr class="separator:a18aa96b43da6809c7796eaa4214a3420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64affc7c4a103a4ffabfd72c454962cf"><td class="memItemLeft" align="right" valign="top">cost_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#a64affc7c4a103a4ffabfd72c454962cf">openage::path::euclidean_squared_cost</a> (const coord::phys3 &amp;start, const coord::phys3 &amp;end)</td></tr>
+<tr class="memdesc:a64affc7c4a103a4ffabfd72c454962cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Squared euclidean distance cost estimation.  <a href="namespaceopenage_1_1path.xhtml#a64affc7c4a103a4ffabfd72c454962cf">More...</a><br /></td></tr>
 <tr class="separator:a64affc7c4a103a4ffabfd72c454962cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dca43db0e959d455ac0d5c7c8cb26fb"><td class="memItemLeft" align="right" valign="top">cost_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1path.xhtml#a4dca43db0e959d455ac0d5c7c8cb26fb">openage::path::euclidean_squared_to_euclidean_cost</a> (const cost_t euclidean_squared_value)</td></tr>
+<tr class="memdesc:a4dca43db0e959d455ac0d5c7c8cb26fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate euclidean distance from a already calculated squared euclidean distance.  <a href="namespaceopenage_1_1path.xhtml#a4dca43db0e959d455ac0d5c7c8cb26fb">More...</a><br /></td></tr>
 <tr class="separator:a4dca43db0e959d455ac0d5c7c8cb26fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

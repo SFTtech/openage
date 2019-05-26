@@ -91,9 +91,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Exposes terrain textures to the Qt by their id. </para>
     </briefdescription>
     <detaileddescription>
-<para>Exposes terrain textures to the Qt by their id.</para>
 <para>Numeric id has a form of &lt;texture-id&gt;.&lt;subid&gt; where texture-id is the position in the <ref refid="structopenage_1_1terrain__meta" kindref="compound">terrain_meta</ref>. </para>
     </detaileddescription>
     <inheritancegraph>

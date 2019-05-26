@@ -1,6 +1,6 @@
 <map id="openage.util.fslike.test.test_path" name="openage.util.fslike.test.test_path">
 <area shape="rect" id="node1" title="Test basic functionality of fslike.Path." alt="" coords="5,13,216,39"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1testing.xhtml#a2800c6619c18337197b7ad519bbad072" title=" " alt="" coords="264,5,461,47"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="509,13,636,39"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="509,13,636,39"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="684,13,877,39"/>
 </map>

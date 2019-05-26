@@ -353,9 +353,9 @@
           <declname>reset_interval</declname>
         </param>
         <briefdescription>
+<para>See the doc for <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_1abfa293c286465cc46f6a84bda5a8f908" kindref="member">LZXDecompressor::LZXDecompressor</ref> in <ref refid="lzxd_8h" kindref="compound">lzxd.h</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>See the doc for <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_1abfa293c286465cc46f6a84bda5a8f908" kindref="member">LZXDecompressor::LZXDecompressor</ref> in <ref refid="lzxd_8h" kindref="compound">lzxd.h</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -453,9 +453,9 @@
           <declname>output_buf</declname>
         </param>
         <briefdescription>
+<para>See the doc for <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_1ad03ce7fd20c3abe824f61dd382bab43c" kindref="member">LZXDecompressor::decompress_next_frame</ref> in <ref refid="lzxd_8h" kindref="compound">lzxd.h</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>See the doc for <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_1ad03ce7fd20c3abe824f61dd382bab43c" kindref="member">LZXDecompressor::decompress_next_frame</ref> in <ref refid="lzxd_8h" kindref="compound">lzxd.h</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -525,9 +525,9 @@
         <argsstring>()</argsstring>
         <name>init_next_block</name>
         <briefdescription>
+<para>Initializes the next block. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initializes the next block. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -564,9 +564,10 @@
         <argsstring>()</argsstring>
         <name>decode_symbol_from_verbatim_block</name>
         <briefdescription>
+<para>Decodes one symbol from the current verbatim block. </para>
         </briefdescription>
         <detaileddescription>
-<para>Decodes one symbol from the current verbatim block. Returns the number of bytes that were decoded. The bytes are written to the window, and window_posn is advanced. </para>
+<para>Returns the number of bytes that were decoded. The bytes are written to the window, and window_posn is advanced. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -599,9 +600,10 @@
         <argsstring>()</argsstring>
         <name>decode_symbol_from_aligned_block</name>
         <briefdescription>
+<para>Decodes one symbol from the current aligned block. </para>
         </briefdescription>
         <detaileddescription>
-<para>Decodes one symbol from the current aligned block. Returns the number of bytes that were decoded. The bytes are written to the window, and window_posn is advanced. </para>
+<para>Returns the number of bytes that were decoded. The bytes are written to the window, and window_posn is advanced. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -639,9 +641,10 @@
           <declname>size</declname>
         </param>
         <briefdescription>
+<para>Reads the given amount of bytes from the current uncompressed block. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reads the given amount of bytes from the current uncompressed block. Returns its argument (the number of bytes that were read). The bytes are written to the window, and window_posn is advanced. </para>
+<para>Returns its argument (the number of bytes that were read). The bytes are written to the window, and window_posn is advanced. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -666,9 +669,9 @@
           <declname>frame_size</declname>
         </param>
         <briefdescription>
+<para>Postprocesses the a frame&apos;s decoded data with E8 decoding. </para>
         </briefdescription>
         <detaileddescription>
-<para>Postprocesses the a frame&apos;s decoded data with E8 decoding.</para>
 <para>Before compressing data, LZX pre-processes it by translating the four bytes following 0xE8-bytes; this optimizes intel x86 machine code.</para>
 <para>What the hell, Microsoft? </para>
         </detaileddescription>

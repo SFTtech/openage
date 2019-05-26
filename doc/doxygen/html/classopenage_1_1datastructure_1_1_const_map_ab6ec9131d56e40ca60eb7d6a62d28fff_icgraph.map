@@ -1,4 +1,4 @@
 <map id="openage::datastructure::ConstMap::get" name="openage::datastructure::ConstMap::get">
-<area shape="rect" id="node1" title=" " alt="" coords="209,5,364,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_const_map.xhtml#ad8f8c677660172db066e684daf334754" title=" " alt="" coords="5,5,161,47"/>
+<area shape="rect" id="node1" title="Return the stored value for the given key." alt="" coords="209,5,364,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_const_map.xhtml#ad8f8c677660172db066e684daf334754" title="Access entries by map[key]." alt="" coords="5,5,161,47"/>
 </map>

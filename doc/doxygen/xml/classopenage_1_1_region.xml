@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>owner</name>
         <briefdescription>
+<para>player id of the owner, 0 for none </para>
         </briefdescription>
         <detaileddescription>
-<para>player id of the owner, 0 for none </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -25,9 +25,9 @@
         <argsstring></argsstring>
         <name>object_id</name>
         <briefdescription>
+<para>the object to be placed on each tile of this region 0 for placing no object </para>
         </briefdescription>
         <detaileddescription>
-<para>the object to be placed on each tile of this region 0 for placing no object </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -40,9 +40,9 @@
         <argsstring></argsstring>
         <name>terrain_id</name>
         <briefdescription>
+<para>the base terrain for this region </para>
         </briefdescription>
         <detaileddescription>
-<para>the base terrain for this region </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -58,9 +58,9 @@
         <argsstring></argsstring>
         <name>center</name>
         <briefdescription>
+<para>the center tile of this region </para>
         </briefdescription>
         <detaileddescription>
-<para>the center tile of this region </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -73,9 +73,9 @@
         <argsstring></argsstring>
         <name>tiles</name>
         <briefdescription>
+<para>tiles in this region </para>
         </briefdescription>
         <detaileddescription>
-<para>tiles in this region </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -97,9 +97,9 @@
           <declname>size</declname>
         </param>
         <briefdescription>
+<para>a square of tiles ranging from {-size, -size} to {size, size} </para>
         </briefdescription>
         <detaileddescription>
-<para>a square of tiles ranging from {-size, -size} to {size, size} </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -120,9 +120,9 @@
           <declname>tiles</declname>
         </param>
         <briefdescription>
+<para>a specified set of tiles </para>
         </briefdescription>
         <detaileddescription>
-<para>a specified set of tiles </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -135,9 +135,9 @@
         <argsstring>() const</argsstring>
         <name>get_tiles</name>
         <briefdescription>
+<para>all tiles in this region </para>
         </briefdescription>
         <detaileddescription>
-<para>all tiles in this region </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -150,9 +150,9 @@
         <argsstring>() const</argsstring>
         <name>get_center</name>
         <briefdescription>
+<para>the center point of the region </para>
         </briefdescription>
         <detaileddescription>
-<para>the center point of the region </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -170,9 +170,9 @@
           <declname>rng</declname>
         </param>
         <briefdescription>
+<para>picks a random tile from this subset </para>
         </briefdescription>
         <detaileddescription>
-<para>picks a random tile from this subset </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -203,9 +203,10 @@
           <declname>p</declname>
         </param>
         <briefdescription>
+<para>find a group of tiles inside this region, number is the number of tiles to be contained in the subset, p is a probability between 0.0 and 1.0 which produces various shapes. </para>
         </briefdescription>
         <detaileddescription>
-<para>find a group of tiles inside this region, number is the number of tiles to be contained in the subset, p is a probability between 0.0 and 1.0 which produces various shapes. a value of 1.0 produces circular shapes, where as a low value produces more scattered shapes. a value of 0.0 should not be used, and will always return no tiles </para>
+<para>a value of 1.0 produces circular shapes, where as a low value produces more scattered shapes. a value of 0.0 should not be used, and will always return no tiles </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -238,9 +239,9 @@
           <declname>p</declname>
         </param>
         <briefdescription>
+<para>removes the given set of tiles from this region, which get split of as a new child region </para>
         </briefdescription>
         <detaileddescription>
-<para>removes the given set of tiles from this region, which get split of as a new child region </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -269,9 +270,9 @@
           <declname>p</declname>
         </param>
         <briefdescription>
+<para>similiar to take_tiles, but takes a random group of tiles </para>
         </briefdescription>
         <detaileddescription>
-<para>similiar to take_tiles, but takes a random group of tiles </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -282,9 +283,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A region is a set of tiles around a starting point, including functions to create child regions. </para>
     </briefdescription>
     <detaileddescription>
-<para>A region is a set of tiles around a starting point, including functions to create child regions </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4624">

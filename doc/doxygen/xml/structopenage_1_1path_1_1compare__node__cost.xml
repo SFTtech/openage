@@ -27,9 +27,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Cost comparison for node_pt. </para>
     </briefdescription>
     <detaileddescription>
-<para>Cost comparison for node_pt. Extracts the ptr from the shared_ptr. Calls operator &lt; on <ref refid="classopenage_1_1path_1_1_node" kindref="compound">Node</ref>. </para>
+<para>Extracts the ptr from the shared_ptr. Calls operator &lt; on <ref refid="classopenage_1_1path_1_1_node" kindref="compound">Node</ref>. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4419">

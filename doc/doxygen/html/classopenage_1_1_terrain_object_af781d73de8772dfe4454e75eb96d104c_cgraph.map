@@ -1,9 +1,9 @@
 <map id="openage::TerrainObject::place_unchecked" name="openage::TerrainObject::place_unchecked">
-<area shape="rect" id="node1" title=" " alt="" coords="5,104,161,145"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" title=" " alt="" coords="210,5,365,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_terrain_object.xhtml#a1fc44d40095260aca43dd9582c61de97" title=" " alt="" coords="209,71,365,112"/>
+<area shape="rect" id="node1" title="placement function which does not check passibility used only when passibilty is already checked othe..." alt="" coords="5,104,161,145"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" title="get tile data by absolute coordinates." alt="" coords="210,5,365,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_terrain_object.xhtml#a1fc44d40095260aca43dd9582c61de97" title="returns the range of tiles covered if the object was in the given pos" alt="" coords="209,71,365,112"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_terrain_object.xhtml#a170289794bdd31d673ffb3aca873bb1d" title=" " alt="" coords="209,136,365,177"/>
-<area shape="rect" id="node7" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title=" " alt="" coords="227,202,347,229"/>
+<area shape="rect" id="node7" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta..." alt="" coords="227,202,347,229"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1tile.xhtml#ab4811e492cabe885d33e85df51ceff83" title=" " alt="" coords="413,5,552,47"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title=" " alt="" coords="600,13,729,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title="modulo operation that guarantees to return positive values." alt="" coords="600,13,729,39"/>
 </map>

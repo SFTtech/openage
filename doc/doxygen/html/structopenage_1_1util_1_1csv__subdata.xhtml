@@ -97,34 +97,42 @@ $(document).ready(function(){initNavTree('structopenage_1_1util_1_1csv__subdata.
 </div><!--header-->
 <div class="contents">
 
+<p>Referenced file tree structure.  
+ <a href="structopenage_1_1util_1_1csv__subdata.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="csv_8h_source.xhtml">csv.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::csv_subdata&lt; lineformat &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1util_1_1csv__subdata__coll__graph.svg" width="166" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1util_1_1csv__subdata__coll__graph.svg" width="166" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a24b1327a670ab69e55c089234bdcbfec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1util_1_1csv__subdata.xhtml#a24b1327a670ab69e55c089234bdcbfec">read</a> (const <a class="el" href="classopenage_1_1util_1_1_c_s_v_collection.xhtml">CSVCollection</a> &amp;collection, const std::string &amp;basedir)</td></tr>
+<tr class="memdesc:a24b1327a670ab69e55c089234bdcbfec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the data of the lineformat from the collection.  <a href="#a24b1327a670ab69e55c089234bdcbfec">More...</a><br /></td></tr>
 <tr class="separator:a24b1327a670ab69e55c089234bdcbfec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedfc025e17cf7639d321aadf22c7866b"><td class="memItemLeft" align="right" valign="top">const lineformat &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1util_1_1csv__subdata.xhtml#aedfc025e17cf7639d321aadf22c7866b">operator []</a> (size_t idx) const</td></tr>
+<tr class="memdesc:aedfc025e17cf7639d321aadf22c7866b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience operator to access data.  <a href="#aedfc025e17cf7639d321aadf22c7866b">More...</a><br /></td></tr>
 <tr class="separator:aedfc025e17cf7639d321aadf22c7866b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a207c59f7f68302aa49789fca60fb6e93"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1util_1_1csv__subdata.xhtml#a207c59f7f68302aa49789fca60fb6e93">filename</a></td></tr>
+<tr class="memdesc:a207c59f7f68302aa49789fca60fb6e93"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classopenage_1_1util_1_1_file.xhtml" title="Generic File implementation, used in our filesystem-like and file-like abtraction system.">File</a> where to read subdata from.  <a href="#a207c59f7f68302aa49789fca60fb6e93">More...</a><br /></td></tr>
 <tr class="separator:a207c59f7f68302aa49789fca60fb6e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a1a85e2b3d2479aba87d487943cd63a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; lineformat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1util_1_1csv__subdata.xhtml#a4a1a85e2b3d2479aba87d487943cd63a">data</a></td></tr>
+<tr class="memdesc:a4a1a85e2b3d2479aba87d487943cd63a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data that was read from the file with this-&gt;filename.  <a href="#a4a1a85e2b3d2479aba87d487943cd63a">More...</a><br /></td></tr>
 <tr class="separator:a4a1a85e2b3d2479aba87d487943cd63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class lineformat&gt;<br />
 struct openage::util::csv_subdata&lt; lineformat &gt;</h3>
 
-<p>Referenced file tree structure.</p>
+<p>Referenced file tree structure. </p>
 <p>Used for storing information for subtype members that need to be recursed. </p>
 
 <p class="definition">Definition at line <a class="el" href="csv_8h_source.xhtml#l00141">141</a> of file <a class="el" href="csv_8h_source.xhtml">csv.h</a>.</p>
@@ -154,10 +162,11 @@ template&lt;class lineformat &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Convenience operator to access data </p>
+
+<p>Convenience operator to access data. </p>
 
 <p class="definition">Definition at line <a class="el" href="csv_8h_source.xhtml#l00171">171</a> of file <a class="el" href="csv_8h_source.xhtml">csv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                                    {</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="structopenage_1_1util_1_1csv__subdata.xhtml#a4a1a85e2b3d2479aba87d487943cd63a">data</a>[idx];</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    }</div><div class="ttc" id="structopenage_1_1util_1_1csv__subdata_xhtml_a4a1a85e2b3d2479aba87d487943cd63a"><div class="ttname"><a href="structopenage_1_1util_1_1csv__subdata.xhtml#a4a1a85e2b3d2479aba87d487943cd63a">openage::util::csv_subdata::data</a></div><div class="ttdeci">std::vector&lt; lineformat &gt; data</div><div class="ttdef"><b>Definition:</b> <a href="csv_8h_source.xhtml#l00151">csv.h:151</a></div></div>
+<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                                    {</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="structopenage_1_1util_1_1csv__subdata.xhtml#a4a1a85e2b3d2479aba87d487943cd63a">data</a>[idx];</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    }</div><div class="ttc" id="structopenage_1_1util_1_1csv__subdata_xhtml_a4a1a85e2b3d2479aba87d487943cd63a"><div class="ttname"><a href="structopenage_1_1util_1_1csv__subdata.xhtml#a4a1a85e2b3d2479aba87d487943cd63a">openage::util::csv_subdata::data</a></div><div class="ttdeci">std::vector&lt; lineformat &gt; data</div><div class="ttdoc">Data that was read from the file with this-&gt;filename.</div><div class="ttdef"><b>Definition:</b> <a href="csv_8h_source.xhtml#l00151">csv.h:151</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -196,11 +205,13 @@ template&lt;class lineformat &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Read the data of the lineformat from the collection. Can descend recursively into dependencies. </p>
+
+<p>Read the data of the lineformat from the collection. </p>
+<p>Can descend recursively into dependencies. </p>
 
 <p class="definition">Definition at line <a class="el" href="csv_8h_source.xhtml#l00157">157</a> of file <a class="el" href="csv_8h_source.xhtml">csv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                                                         {</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        std::string next_file = basedir;</div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span> (basedir.size() &gt; 0) {</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            next_file += <a class="code" href="namespaceopenage_1_1util_1_1fslike.xhtml#a670007c84e8b0cf3c4f0dfd74e0f6399">fslike::PATHSEP</a>;</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        next_file += this-&gt;<a class="code" href="structopenage_1_1util_1_1csv__subdata.xhtml#a207c59f7f68302aa49789fca60fb6e93">filename</a>;</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        this-&gt;<a class="code" href="structopenage_1_1util_1_1csv__subdata.xhtml#a4a1a85e2b3d2479aba87d487943cd63a">data</a> = collection.read&lt;lineformat&gt;(next_file);</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div><div class="ttc" id="structopenage_1_1util_1_1csv__subdata_xhtml_a207c59f7f68302aa49789fca60fb6e93"><div class="ttname"><a href="structopenage_1_1util_1_1csv__subdata.xhtml#a207c59f7f68302aa49789fca60fb6e93">openage::util::csv_subdata::filename</a></div><div class="ttdeci">std::string filename</div><div class="ttdef"><b>Definition:</b> <a href="csv_8h_source.xhtml#l00146">csv.h:146</a></div></div>
-<div class="ttc" id="structopenage_1_1util_1_1csv__subdata_xhtml_a4a1a85e2b3d2479aba87d487943cd63a"><div class="ttname"><a href="structopenage_1_1util_1_1csv__subdata.xhtml#a4a1a85e2b3d2479aba87d487943cd63a">openage::util::csv_subdata::data</a></div><div class="ttdeci">std::vector&lt; lineformat &gt; data</div><div class="ttdef"><b>Definition:</b> <a href="csv_8h_source.xhtml#l00151">csv.h:151</a></div></div>
+<div class="fragment"><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                                                         {</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        std::string next_file = basedir;</div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span> (basedir.size() &gt; 0) {</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            next_file += <a class="code" href="namespaceopenage_1_1util_1_1fslike.xhtml#a670007c84e8b0cf3c4f0dfd74e0f6399">fslike::PATHSEP</a>;</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        next_file += this-&gt;<a class="code" href="structopenage_1_1util_1_1csv__subdata.xhtml#a207c59f7f68302aa49789fca60fb6e93">filename</a>;</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        this-&gt;<a class="code" href="structopenage_1_1util_1_1csv__subdata.xhtml#a4a1a85e2b3d2479aba87d487943cd63a">data</a> = collection.read&lt;lineformat&gt;(next_file);</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div><div class="ttc" id="structopenage_1_1util_1_1csv__subdata_xhtml_a207c59f7f68302aa49789fca60fb6e93"><div class="ttname"><a href="structopenage_1_1util_1_1csv__subdata.xhtml#a207c59f7f68302aa49789fca60fb6e93">openage::util::csv_subdata::filename</a></div><div class="ttdeci">std::string filename</div><div class="ttdoc">File where to read subdata from.</div><div class="ttdef"><b>Definition:</b> <a href="csv_8h_source.xhtml#l00146">csv.h:146</a></div></div>
+<div class="ttc" id="structopenage_1_1util_1_1csv__subdata_xhtml_a4a1a85e2b3d2479aba87d487943cd63a"><div class="ttname"><a href="structopenage_1_1util_1_1csv__subdata.xhtml#a4a1a85e2b3d2479aba87d487943cd63a">openage::util::csv_subdata::data</a></div><div class="ttdeci">std::vector&lt; lineformat &gt; data</div><div class="ttdoc">Data that was read from the file with this-&gt;filename.</div><div class="ttdef"><b>Definition:</b> <a href="csv_8h_source.xhtml#l00151">csv.h:151</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1util_1_1fslike_xhtml_a670007c84e8b0cf3c4f0dfd74e0f6399"><div class="ttname"><a href="namespaceopenage_1_1util_1_1fslike.xhtml#a670007c84e8b0cf3c4f0dfd74e0f6399">openage::util::fslike::PATHSEP</a></div><div class="ttdeci">constexpr char PATHSEP</div><div class="ttdef"><b>Definition:</b> <a href="fslike_2native_8h_source.xhtml#l00013">native.h:13</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="csv_8h_source.xhtml#l00146">openage::util::csv_subdata&lt; lineformat &gt;::filename</a>, <a class="el" href="fslike_2native_8h_source.xhtml#l00013">openage::util::fslike::PATHSEP</a>, and <a class="el" href="csv_8h_source.xhtml#l00059">openage::util::CSVCollection::read()</a>.</p>
@@ -211,14 +222,16 @@ template&lt;class lineformat &gt; </div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1util_1_1csv__subdata_a24b1327a670ab69e55c089234bdcbfec_cgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1util_1_1csv__subdata_a24b1327a670ab69e55c089234bdcbfec_cgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1util_1_1csv__subdata_a24b1327a670ab69e55c089234bdcbfec_icgraph.svg" width="667" height="106"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1util_1_1csv__subdata_a24b1327a670ab69e55c089234bdcbfec_icgraph.svg" width="667" height="106"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -237,6 +250,7 @@ template&lt;class lineformat &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Data that was read from the file with this-&gt;filename. </p>
 
 <p class="definition">Definition at line <a class="el" href="csv_8h_source.xhtml#l00151">151</a> of file <a class="el" href="csv_8h_source.xhtml">csv.h</a>.</p>
@@ -258,7 +272,9 @@ template&lt;class lineformat &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p><a class="el" href="classopenage_1_1util_1_1_file.xhtml">File</a> where to read subdata from. This name is relative to the file that defined the subdata! </p>
+
+<p><a class="el" href="classopenage_1_1util_1_1_file.xhtml" title="Generic File implementation, used in our filesystem-like and file-like abtraction system.">File</a> where to read subdata from. </p>
+<p>This name is relative to the file that defined the subdata! </p>
 
 <p class="definition">Definition at line <a class="el" href="csv_8h_source.xhtml#l00146">146</a> of file <a class="el" href="csv_8h_source.xhtml">csv.h</a>.</p>
 

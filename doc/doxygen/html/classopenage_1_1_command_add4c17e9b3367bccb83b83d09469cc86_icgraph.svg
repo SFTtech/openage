@@ -19,7 +19,7 @@
 </g>
 <!-- Node62 -->
 <g id="node2" class="node"><title>Node62</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="12,-98.5 12,-128.5 121,-128.5 121,-98.5 12,-98.5"/>
 <text text-anchor="start" x="20" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAbility</text>
 <text text-anchor="middle" x="66.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node63 -->
 <g id="node3" class="node"><title>Node63</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_set_point_ability.xhtml#ab72dac58be9e34d88bd517b3dbd864dc" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_set_point_ability.xhtml#ab72dac58be9e34d88bd517b3dbd864dc" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="4.5,-49.5 4.5,-79.5 128.5,-79.5 128.5,-49.5 4.5,-49.5"/>
 <text text-anchor="start" x="12.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SetPointAbility</text>
 <text text-anchor="middle" x="66.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node64 -->
 <g id="node4" class="node"><title>Node64</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 133,-30.5 133,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UngarrisonAbility</text>
 <text text-anchor="middle" x="66.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>

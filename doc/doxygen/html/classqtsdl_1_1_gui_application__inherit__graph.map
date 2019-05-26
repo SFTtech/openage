@@ -1,4 +1,4 @@
 <map id="qtsdl::GuiApplication" name="qtsdl::GuiApplication">
-<area shape="rect" id="node1" title=" " alt="" coords="34,5,177,127"/>
-<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_application_with_logger.xhtml" title=" " alt="" coords="5,175,205,281"/>
+<area shape="rect" id="node1" title="Houses gui logic event queue." alt="" coords="34,5,177,127"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_application_with_logger.xhtml" title="Houses gui logic event queue and attaches to game logger." alt="" coords="5,175,205,281"/>
 </map>

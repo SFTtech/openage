@@ -81,9 +81,9 @@
         <argsstring>()</argsstring>
         <name>~StringFormatter</name>
         <briefdescription>
+<para>Releases the <ref refid="classopenage_1_1util_1_1_cachable_o_s_stream" kindref="compound">CachableOSStream</ref> object (if it was acquired). </para>
         </briefdescription>
         <detaileddescription>
-<para>Releases the <ref refid="classopenage_1_1util_1_1_cachable_o_s_stream" kindref="compound">CachableOSStream</ref> object (if it was acquired). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -329,9 +329,9 @@
         <argsstring>()</argsstring>
         <name>reset_flags</name>
         <briefdescription>
+<para>Clears the underlying stream object&apos;s flags, if such a stream object exists. </para>
         </briefdescription>
         <detaileddescription>
-<para>Clears the underlying stream object&apos;s flags, if such a stream object exists. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -344,9 +344,9 @@
         <name>should_format</name>
         <reimplementedby refid="classopenage_1_1log_1_1_message_builder_1a79661ed4ee53415c549c95a765c7b4bf">should_format</reimplementedby>
         <briefdescription>
+<para>Returns if formatting should actually occur. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns if formatting should actually occur. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -361,9 +361,9 @@
         <argsstring>()</argsstring>
         <name>ensure_stream_obj</name>
         <briefdescription>
+<para>Ensures that we have a valid <ref refid="classopenage_1_1util_1_1_cachable_o_s_stream" kindref="compound">CachableOSStream</ref> object in stream_ptr. </para>
         </briefdescription>
         <detaileddescription>
-<para>Ensures that we have a valid <ref refid="classopenage_1_1util_1_1_cachable_o_s_stream" kindref="compound">CachableOSStream</ref> object in stream_ptr. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -372,9 +372,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Wraps an output string stream, and provides all sorts of overloads for operator &lt;&lt;, plus some other formatting methods. </para>
     </briefdescription>
     <detaileddescription>
-<para>Wraps an output string stream, and provides all sorts of overloads for operator &lt;&lt;, plus some other formatting methods.</para>
 <para>Designed mainly for usage by the <ref refid="classopenage_1_1util_1_1_formatter" kindref="compound">Formatter</ref> / logging / MSG system.</para>
 <para>The operator &lt;&lt; methods return references to ChildType.</para>
 <para>If possible, input data is written directly to the buffer, but if needed, a <ref refid="classopenage_1_1util_1_1_cachable_o_s_stream" kindref="compound">CachableOSStream</ref> is acquired (and later released). As an optimization, instead of creating a new <ref refid="classopenage_1_1util_1_1_external_o_string_stream" kindref="compound">ExternalOStringStream</ref> object, <ref refid="classopenage_1_1util_1_1_cachable_o_s_stream_1a9d7710f8703f4dbba1b65d8b02e84036" kindref="member">CachableOSStream.acquire()</ref> is used internally. </para>

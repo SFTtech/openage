@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 639,-133 639,4 -4,4"/>
 <!-- Node7 -->
 <g id="node1" class="node"><title>Node7</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="gets a list of all units in the container">
 <polygon fill="#bfbfbf" stroke="black" points="517,-49.5 517,-79.5 635,-79.5 635,-49.5 517,-49.5"/>
 <text text-anchor="start" x="525" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitContainer</text>
 <text text-anchor="middle" x="576" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::all_units</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node8 -->
 <g id="node2" class="node"><title>Node8</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1gameio.xhtml#a2c4db428aa6da2185b33a86508fb49a8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1gameio.xhtml#afc1134c3c633c8bddb614ecb3da48eb2" target="_top" xlink:title="a game save function that sometimes works">
 <polygon fill="white" stroke="black" points="365,-55 365,-74 481,-74 481,-55 365,-55"/>
 <text text-anchor="middle" x="423" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gameio::save</text>
 </a>

@@ -1,4 +1,4 @@
 <map id="openage::TargetAction::on_completion" name="openage::TargetAction::on_completion">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,157,47"/>
+<area shape="rect" id="node1" title="action to perform when popped from a units action stack" alt="" coords="5,5,157,47"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_target_action.xhtml#a32fc1723b0f6ce5e3bdb76794ff1ccf1" title=" " alt="" coords="205,5,376,47"/>
 </map>

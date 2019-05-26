@@ -1,13 +1,13 @@
 <map id="openage::pyinterface::tests::pyobject_demo" name="openage::pyinterface::tests::pyobject_demo">
 <area shape="rect" id="node1" title=" " alt="" coords="5,156,160,197"/>
-<area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a54af3d98bf36729efd5a013bc124a2e9" title=" " alt="" coords="225,5,367,47"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9" title=" " alt="" coords="235,71,357,98"/>
-<area shape="rect" id="node6" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a17d24db4d17d8aba1a9b71c79fe3aa40" title=" " alt="" coords="225,123,367,164"/>
-<area shape="rect" id="node7" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a0d7ef968ad02a1d4a52251ccd16eb85f" title=" " alt="" coords="225,188,367,229"/>
-<area shape="rect" id="node8" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#acd17e87d491659af8fb3ac621f9f4732" title=" " alt="" coords="225,253,367,295"/>
-<area shape="rect" id="node9" href="$classopenage_1_1pyinterface_1_1_py_exception.xhtml#a1352d1476e7824c11aca00df918879e1" title=" " alt="" coords="208,319,384,360"/>
+<area shape="rect" id="node2" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a54af3d98bf36729efd5a013bc124a2e9" title="obj(args...)" alt="" coords="225,5,367,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9" title="dict()" alt="" coords="235,71,357,98"/>
+<area shape="rect" id="node6" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a17d24db4d17d8aba1a9b71c79fe3aa40" title="eval(expression, obj)" alt="" coords="225,123,367,164"/>
+<area shape="rect" id="node7" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a0d7ef968ad02a1d4a52251ccd16eb85f" title="exec(statement, obj)" alt="" coords="225,188,367,229"/>
+<area shape="rect" id="node8" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#acd17e87d491659af8fb3ac621f9f4732" title="str(obj)" alt="" coords="225,253,367,295"/>
+<area shape="rect" id="node9" href="$classopenage_1_1pyinterface_1_1_py_exception.xhtml#a1352d1476e7824c11aca00df918879e1" title="Returns the type name of py_obj." alt="" coords="208,319,384,360"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="432,130,625,157"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="673,130,800,157"/>
-<area shape="rect" id="node10" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a912e76dc7854f9c1816533f6f8571767" title=" " alt="" coords="441,285,616,327"/>
-<area shape="rect" id="node11" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#afd545e1817cad9ab9f5c84934d83e428" title=" " alt="" coords="436,351,621,392"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="673,130,800,157"/>
+<area shape="rect" id="node10" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a912e76dc7854f9c1816533f6f8571767" title="type(obj).__name__" alt="" coords="441,285,616,327"/>
+<area shape="rect" id="node11" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#afd545e1817cad9ab9f5c84934d83e428" title="type(obj).__module__" alt="" coords="436,351,621,392"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 260,-84 260,4 -4,4"/>
 <!-- Node15 -->
 <g id="node1" class="node"><title>Node15</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Notifies this worker, that new jobs are available.">
 <polygon fill="#bfbfbf" stroke="black" points="146,-24.5 146,-54.5 256,-54.5 256,-24.5 146,-24.5"/>
 <text text-anchor="start" x="154" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <text text-anchor="middle" x="201" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::notify</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node16 -->
 <g id="node2" class="node"><title>Node16</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c" target="_top" xlink:title="Adds the given job to the internal pending job queue.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 110,-79.5 110,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <text text-anchor="middle" x="55" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::enqueue</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node17 -->
 <g id="node3" class="node"><title>Node17</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#ab80cb2f4e936dc069dadf979b90bcfc6" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1job_1_1_worker.xhtml#ab80cb2f4e936dc069dadf979b90bcfc6" target="_top" xlink:title="Stops this worker.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 110,-30.5 110,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::Worker</text>
 <text text-anchor="middle" x="55" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::stop</text>

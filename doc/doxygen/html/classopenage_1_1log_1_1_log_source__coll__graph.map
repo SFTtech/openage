@@ -1,3 +1,3 @@
 <map id="openage::log::LogSource" name="openage::log::LogSource">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,172,141"/>
+<area shape="rect" id="node1" title="Any class that wants to provide .log() shall inherit from this." alt="" coords="5,5,172,141"/>
 </map>

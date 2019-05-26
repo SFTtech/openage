@@ -20,7 +20,7 @@
 </g>
 <!-- Node19 -->
 <g id="node2" class="node"><title>Node19</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" target="_top" xlink:title="test method for the base CoordXY* classes.">
 <polygon fill="white" stroke="black" points="613,-98.5 613,-128.5 724,-128.5 724,-98.5 613,-98.5"/>
 <text text-anchor="start" x="621" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::tests</text>
 <text text-anchor="middle" x="668.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::coord</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node20 -->
 <g id="node3" class="node"><title>Node20</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_texture.xhtml#acd15e688a5bce0b7e7268e90bb9affdd" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_texture.xhtml#acd15e688a5bce0b7e7268e90bb9affdd" target="_top" xlink:title="draw object with no direction">
 <polygon fill="white" stroke="black" points="463,-164.5 463,-194.5 572,-194.5 572,-164.5 463,-164.5"/>
 <text text-anchor="start" x="471" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="517.5" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node21 -->
 <g id="node4" class="node"><title>Node21</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-87.5 0,-117.5 116,-117.5 116,-87.5 0,-87.5"/>
 <text text-anchor="start" x="8" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-94.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node22 -->
 <g id="node5" class="node"><title>Node22</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_unit_texture.xhtml#abcd138ff9ca2160f57812da8d48a39a7" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_unit_texture.xhtml#abcd138ff9ca2160f57812da8d48a39a7" target="_top" xlink:title="a sample drawing for hud">
 <polygon fill="white" stroke="black" points="463,-76.5 463,-106.5 572,-106.5 572,-76.5 463,-76.5"/>
 <text text-anchor="start" x="471" y="-94.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="517.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">::sample</text>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node24 -->
 <g id="node7" class="node"><title>Node24</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="black" points="305,-43.5 305,-73.5 422,-73.5 422,-43.5 305,-43.5"/>
 <text text-anchor="start" x="313" y="-61.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-50.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>

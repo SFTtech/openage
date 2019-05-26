@@ -1,4 +1,4 @@
 <map id="openage::curve::ValueContainer&lt; T &gt;" name="openage::curve::ValueContainer&lt; T &gt;">
 <area shape="rect" id="node1" title=" " alt="" coords="5,248,241,472"/>
-<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_target.xhtml" title=" " alt="" coords="31,5,216,200"/>
+<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_target.xhtml" title="Every Object in the gameworld that wants to be targeted by events or as dependency for events,..." alt="" coords="31,5,216,200"/>
 </map>

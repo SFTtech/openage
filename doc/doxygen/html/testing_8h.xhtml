@@ -118,11 +118,13 @@ $(document).ready(function(){initNavTree('testing_8h.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1testing_1_1_test_error.xhtml">openage::testing::TestError</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">To be used by all tests to indicate an error condition.  <a href="classopenage_1_1testing_1_1_test_error.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1testing"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1testing.xhtml">openage::testing</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,21 +132,28 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a32253726c81e858197f39fbf0b56d17c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8h.xhtml#a32253726c81e858197f39fbf0b56d17c">TESTFAIL</a>&#160;&#160;&#160;::<a class="el" href="namespaceopenage_1_1testing.xhtml#ab47bedd0a44345aab4aadb8378800e45">openage::testing::fail</a>(<a class="el" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(err))</td></tr>
+<tr class="memdesc:a32253726c81e858197f39fbf0b56d17c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience macro, for usage in test functions:  <a href="#a32253726c81e858197f39fbf0b56d17c">More...</a><br /></td></tr>
 <tr class="separator:a32253726c81e858197f39fbf0b56d17c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8845e8951e253b5e94ada5be1e308503"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8h.xhtml#a8845e8951e253b5e94ada5be1e308503">TESTFAILMSG</a>(...)&#160;&#160;&#160;::<a class="el" href="namespaceopenage_1_1testing.xhtml#ab47bedd0a44345aab4aadb8378800e45">openage::testing::fail</a>(<a class="el" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(err) &lt;&lt; __VA_ARGS__)</td></tr>
+<tr class="memdesc:a8845e8951e253b5e94ada5be1e308503"><td class="mdescLeft">&#160;</td><td class="mdescRight">As above, but allows printing a message:  <a href="#a8845e8951e253b5e94ada5be1e308503">More...</a><br /></td></tr>
 <tr class="separator:a8845e8951e253b5e94ada5be1e308503"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57b089ad5d574fad716e3b140c80d0e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8h.xhtml#a57b089ad5d574fad716e3b140c80d0e5">TESTEQUALS</a>(left,  right)</td></tr>
+<tr class="memdesc:a57b089ad5d574fad716e3b140c80d0e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asserts that the left expression equals the right expression, and that no exception is thrown.  <a href="#a57b089ad5d574fad716e3b140c80d0e5">More...</a><br /></td></tr>
 <tr class="separator:a57b089ad5d574fad716e3b140c80d0e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae531a534fa7f4028ddf113ae72caa6aa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8h.xhtml#ae531a534fa7f4028ddf113ae72caa6aa">TESTEQUALS_FLOAT</a>(left,  right,  epsilon)</td></tr>
+<tr class="memdesc:ae531a534fa7f4028ddf113ae72caa6aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asserts that the left expression equals the right expression, within a margin of error epsilon, and that no exception is thrown.  <a href="#ae531a534fa7f4028ddf113ae72caa6aa">More...</a><br /></td></tr>
 <tr class="separator:ae531a534fa7f4028ddf113ae72caa6aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3ad66a2f3c40aa0744570ab803b903f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8h.xhtml#ad3ad66a2f3c40aa0744570ab803b903f">TESTTHROWS</a>(expression)</td></tr>
+<tr class="memdesc:ad3ad66a2f3c40aa0744570ab803b903f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asserts that the expression throws an exception.  <a href="#ad3ad66a2f3c40aa0744570ab803b903f">More...</a><br /></td></tr>
 <tr class="separator:ad3ad66a2f3c40aa0744570ab803b903f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83874b641b589d0a696a6a1a6f8e9fd5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8h.xhtml#a83874b641b589d0a696a6a1a6f8e9fd5">TESTNOEXCEPT</a>(expression)</td></tr>
+<tr class="memdesc:a83874b641b589d0a696a6a1a6f8e9fd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assets that the expression throws no exception (mostly for void expressions).  <a href="#a83874b641b589d0a696a6a1a6f8e9fd5">More...</a><br /></td></tr>
 <tr class="separator:a83874b641b589d0a696a6a1a6f8e9fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab47bedd0a44345aab4aadb8378800e45"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1testing.xhtml#ab47bedd0a44345aab4aadb8378800e45">openage::testing::fail</a> (const log::message &amp;msg)</td></tr>
+<tr class="memdesc:ab47bedd0a44345aab4aadb8378800e45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises <a class="el" href="classopenage_1_1testing_1_1_test_error.xhtml" title="To be used by all tests to indicate an error condition.">TestError</a> with the message msg.  <a href="namespaceopenage_1_1testing.xhtml#ab47bedd0a44345aab4aadb8378800e45">More...</a><br /></td></tr>
 <tr class="separator:ab47bedd0a44345aab4aadb8378800e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -173,9 +182,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">        try { \</div><div class="line">            auto &amp;&amp;test_result_left = (left); \</div><div class="line">            if (test_result_left != (right)) { \</div><div class="line">                TESTFAILMSG(<span class="stringliteral">&quot;unexpected value: &quot;</span> &lt;&lt; (test_result_left)); \</div><div class="line">            } \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1testing_1_1_test_error.xhtml">openage::testing::TestError</a> &amp;e) { \</div><div class="line">            throw; \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a> &amp;e) { \</div><div class="line">            TESTFAILMSG(<span class="stringliteral">&quot;unexpected exception: &quot;</span> &lt;&lt; e); \</div><div class="line">        } \</div><div class="line">    } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="classopenage_1_1error_1_1_error_xhtml"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a></div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00051">error.h:51</a></div></div>
-<div class="ttc" id="classopenage_1_1testing_1_1_test_error_xhtml"><div class="ttname"><a href="classopenage_1_1testing_1_1_test_error.xhtml">openage::testing::TestError</a></div><div class="ttdef"><b>Definition:</b> <a href="testing_8h_source.xhtml#l00017">testing.h:17</a></div></div>
-</div><!-- fragment --><p>Asserts that the left expression equals the right expression, and that no exception is thrown. </p>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">        try { \</div><div class="line">            auto &amp;&amp;test_result_left = (left); \</div><div class="line">            if (test_result_left != (right)) { \</div><div class="line">                TESTFAILMSG(<span class="stringliteral">&quot;unexpected value: &quot;</span> &lt;&lt; (test_result_left)); \</div><div class="line">            } \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1testing_1_1_test_error.xhtml">openage::testing::TestError</a> &amp;e) { \</div><div class="line">            throw; \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a> &amp;e) { \</div><div class="line">            TESTFAILMSG(<span class="stringliteral">&quot;unexpected exception: &quot;</span> &lt;&lt; e); \</div><div class="line">        } \</div><div class="line">    } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="classopenage_1_1error_1_1_error_xhtml"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a></div><div class="ttdoc">Openage base exception type; the constructor usage is analogous to log::log().</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00051">error.h:51</a></div></div>
+<div class="ttc" id="classopenage_1_1testing_1_1_test_error_xhtml"><div class="ttname"><a href="classopenage_1_1testing_1_1_test_error.xhtml">openage::testing::TestError</a></div><div class="ttdoc">To be used by all tests to indicate an error condition.</div><div class="ttdef"><b>Definition:</b> <a href="testing_8h_source.xhtml#l00017">testing.h:17</a></div></div>
+</div><!-- fragment -->
+<p>Asserts that the left expression equals the right expression, and that no exception is thrown. </p>
 
 <p class="definition">Definition at line <a class="el" href="testing_8h_source.xhtml#l00049">49</a> of file <a class="el" href="testing_8h_source.xhtml">testing.h</a>.</p>
 
@@ -212,9 +222,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">        try { \</div><div class="line">            auto &amp;&amp;test_result_left = (left); \</div><div class="line">            if ((test_result_left &lt; (right - epsilon)) or \</div><div class="line">                (test_result_left &gt; (right + epsilon))) { \</div><div class="line">                TESTFAILMSG(<span class="stringliteral">&quot;unexpected value: &quot;</span> &lt;&lt; (test_result_left)); \</div><div class="line">            } \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1testing_1_1_test_error.xhtml">openage::testing::TestError</a> &amp;e) { \</div><div class="line">            throw; \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a> &amp;e) { \</div><div class="line">            TESTFAILMSG(<span class="stringliteral">&quot;unexpected exception: &quot;</span> &lt;&lt; e); \</div><div class="line">        } \</div><div class="line">    } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="classopenage_1_1error_1_1_error_xhtml"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a></div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00051">error.h:51</a></div></div>
-<div class="ttc" id="classopenage_1_1testing_1_1_test_error_xhtml"><div class="ttname"><a href="classopenage_1_1testing_1_1_test_error.xhtml">openage::testing::TestError</a></div><div class="ttdef"><b>Definition:</b> <a href="testing_8h_source.xhtml#l00017">testing.h:17</a></div></div>
-</div><!-- fragment --><p>Asserts that the left expression equals the right expression, within a margin of error epsilon, and that no exception is thrown. </p>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">        try { \</div><div class="line">            auto &amp;&amp;test_result_left = (left); \</div><div class="line">            if ((test_result_left &lt; (right - epsilon)) or \</div><div class="line">                (test_result_left &gt; (right + epsilon))) { \</div><div class="line">                TESTFAILMSG(<span class="stringliteral">&quot;unexpected value: &quot;</span> &lt;&lt; (test_result_left)); \</div><div class="line">            } \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1testing_1_1_test_error.xhtml">openage::testing::TestError</a> &amp;e) { \</div><div class="line">            throw; \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a> &amp;e) { \</div><div class="line">            TESTFAILMSG(<span class="stringliteral">&quot;unexpected exception: &quot;</span> &lt;&lt; e); \</div><div class="line">        } \</div><div class="line">    } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="classopenage_1_1error_1_1_error_xhtml"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a></div><div class="ttdoc">Openage base exception type; the constructor usage is analogous to log::log().</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00051">error.h:51</a></div></div>
+<div class="ttc" id="classopenage_1_1testing_1_1_test_error_xhtml"><div class="ttname"><a href="classopenage_1_1testing_1_1_test_error.xhtml">openage::testing::TestError</a></div><div class="ttdoc">To be used by all tests to indicate an error condition.</div><div class="ttdef"><b>Definition:</b> <a href="testing_8h_source.xhtml#l00017">testing.h:17</a></div></div>
+</div><!-- fragment -->
+<p>Asserts that the left expression equals the right expression, within a margin of error epsilon, and that no exception is thrown. </p>
 
 <p class="definition">Definition at line <a class="el" href="testing_8h_source.xhtml#l00068">68</a> of file <a class="el" href="testing_8h_source.xhtml">testing.h</a>.</p>
 
@@ -231,7 +242,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Convenience macro, for usage in test functions:</p>
+
+<p>Convenience macro, for usage in test functions: </p>
 <p>test_stuff() or TESTFAIL; </p>
 
 <p class="definition">Definition at line <a class="el" href="testing_8h_source.xhtml#l00034">34</a> of file <a class="el" href="testing_8h_source.xhtml">testing.h</a>.</p>
@@ -253,7 +265,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>As above, but allows printing a message:</p>
+
+<p>As above, but allows printing a message: </p>
 <p>test_stuff() or TESTFAIL("lolnope"); </p>
 
 <p class="definition">Definition at line <a class="el" href="testing_8h_source.xhtml#l00042">42</a> of file <a class="el" href="testing_8h_source.xhtml">testing.h</a>.</p>
@@ -275,8 +288,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">        try { \</div><div class="line">            expression; \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a> &amp;e) { \</div><div class="line">            TESTFAILMSG(<span class="stringliteral">&quot;unexpected exception&quot;</span>); \</div><div class="line">        } \</div><div class="line">    } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="classopenage_1_1error_1_1_error_xhtml"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a></div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00051">error.h:51</a></div></div>
-</div><!-- fragment --><p>Assets that the expression throws no exception (mostly for void expressions). </p>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">        try { \</div><div class="line">            expression; \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a> &amp;e) { \</div><div class="line">            TESTFAILMSG(<span class="stringliteral">&quot;unexpected exception&quot;</span>); \</div><div class="line">        } \</div><div class="line">    } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="classopenage_1_1error_1_1_error_xhtml"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a></div><div class="ttdoc">Openage base exception type; the constructor usage is analogous to log::log().</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00051">error.h:51</a></div></div>
+</div><!-- fragment -->
+<p>Assets that the expression throws no exception (mostly for void expressions). </p>
 
 <p class="definition">Definition at line <a class="el" href="testing_8h_source.xhtml#l00104">104</a> of file <a class="el" href="testing_8h_source.xhtml">testing.h</a>.</p>
 
@@ -297,8 +311,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">        bool expr_has_thrown = <span class="keyword">false</span>; \</div><div class="line">        try { \</div><div class="line">            expression; \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a> &amp;e) { \</div><div class="line">            expr_has_thrown = <span class="keyword">true</span>; \</div><div class="line">        } \</div><div class="line">        if (not expr_has_thrown) { \</div><div class="line">            TESTFAILMSG(<span class="stringliteral">&quot;no exception&quot;</span>); \</div><div class="line">        } \</div><div class="line">    } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="classopenage_1_1error_1_1_error_xhtml"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a></div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00051">error.h:51</a></div></div>
-</div><!-- fragment --><p>Asserts that the expression throws an exception. </p>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">        bool expr_has_thrown = <span class="keyword">false</span>; \</div><div class="line">        try { \</div><div class="line">            expression; \</div><div class="line">        } <span class="keywordflow">catch</span> (::<a class="code" href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a> &amp;e) { \</div><div class="line">            expr_has_thrown = <span class="keyword">true</span>; \</div><div class="line">        } \</div><div class="line">        if (not expr_has_thrown) { \</div><div class="line">            TESTFAILMSG(<span class="stringliteral">&quot;no exception&quot;</span>); \</div><div class="line">        } \</div><div class="line">    } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="classopenage_1_1error_1_1_error_xhtml"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml">openage::error::Error</a></div><div class="ttdoc">Openage base exception type; the constructor usage is analogous to log::log().</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00051">error.h:51</a></div></div>
+</div><!-- fragment -->
+<p>Asserts that the expression throws an exception. </p>
 
 <p class="definition">Definition at line <a class="el" href="testing_8h_source.xhtml#l00087">87</a> of file <a class="el" href="testing_8h_source.xhtml">testing.h</a>.</p>
 

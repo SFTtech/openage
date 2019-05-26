@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-279 781,-279 781,4 -4,4"/>
 <!-- Node48 -->
 <g id="node1" class="node"><title>Node48</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Get the last element with e&#45;&gt;time &lt;= time, given a hint where to start the search.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-113.5 0,-143.5 129,-143.5 129,-113.5 0,-113.5"/>
 <text text-anchor="start" x="8" y="-131.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="64.5" y="-120.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::last</text>

@@ -93,7 +93,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node87 -->
 <g id="node3" class="node"><title>Node87</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#aec381e61d472643475de6fa50ae7b5d8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#aec381e61d472643475de6fa50ae7b5d8" target="_top" xlink:title="Obtain the next event from the event_queue that happens before &lt;= max_time.">
 <polygon fill="white" stroke="black" points="604,-171.5 604,-201.5 744,-201.5 744,-171.5 604,-171.5"/>
 <text text-anchor="start" x="612" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="674" y="-178.5" font-family="Helvetica,sans-Serif" font-size="10.00">::take_event</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node88 -->
 <g id="node4" class="node"><title>Node88</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" target="_top" xlink:title="Execute the events.">
 <polygon fill="white" stroke="black" points="459,-122.5 459,-152.5 568,-152.5 568,-122.5 459,-122.5"/>
 <text text-anchor="start" x="467" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="513.5" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_events</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node89 -->
 <g id="node5" class="node"><title>Node89</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" target="_top" xlink:title="Execute all events that are registered until a certain point in time.">
 <polygon fill="white" stroke="black" points="312.5,-97.5 312.5,-127.5 421.5,-127.5 421.5,-97.5 312.5,-97.5"/>
 <text text-anchor="start" x="320.5" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="367" y="-104.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reach_time</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node91 -->
 <g id="node7" class="node"><title>Node91</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" target="_top" xlink:title="Add an event for a specified target.">
 <polygon fill="white" stroke="black" points="604,-24.5 604,-54.5 744,-54.5 744,-24.5 604,-24.5"/>
 <text text-anchor="start" x="612" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="674" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_event</text>
@@ -149,7 +149,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node97 -->
 <g id="node13" class="node"><title>Node97</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#a8f45163ce661267cf80d811a776c8733" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#a8f45163ce661267cf80d811a776c8733" target="_top" xlink:title="An update to existing events has to be applied.">
 <polygon fill="white" stroke="black" points="604,-73.5 604,-103.5 744,-103.5 744,-73.5 604,-73.5"/>
 <text text-anchor="start" x="612" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="674" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::enqueue_change</text>
@@ -163,7 +163,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node99 -->
 <g id="node15" class="node"><title>Node99</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#ac4990fe7904f09c54158de776c6cb805" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#ac4990fe7904f09c54158de776c6cb805" target="_top" xlink:title="The event was just removed, add it again.">
 <polygon fill="white" stroke="black" points="604,-122.5 604,-152.5 744,-152.5 744,-122.5 604,-122.5"/>
 <text text-anchor="start" x="612" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="674" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reenqueue</text>
@@ -177,7 +177,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node92 -->
 <g id="node8" class="node"><title>Node92</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a345332e87684e73eeef16da46255882f" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a345332e87684e73eeef16da46255882f" target="_top" xlink:title="Add a new Event to the queue.">
 <polygon fill="white" stroke="black" points="459,-24.5 459,-54.5 568,-54.5 568,-24.5 459,-24.5"/>
 <text text-anchor="start" x="467" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="513.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_event</text>
@@ -205,7 +205,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node94 -->
 <g id="node10" class="node"><title>Node94</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" target="_top" xlink:title="This method implements the effects of the event.">
 <polygon fill="white" stroke="black" points="148,-49.5 148,-79.5 275,-79.5 275,-49.5 148,-49.5"/>
 <text text-anchor="start" x="156" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::demo</text>
 <text text-anchor="middle" x="211.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BallReflectPanel::invoke</text>
@@ -247,7 +247,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node98 -->
 <g id="node14" class="node"><title>Node98</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" target="_top" xlink:title="Call all the time change functions.">
 <polygon fill="white" stroke="black" points="459,-73.5 459,-103.5 568,-103.5 568,-73.5 459,-73.5"/>
 <text text-anchor="start" x="467" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="513.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_changes</text>

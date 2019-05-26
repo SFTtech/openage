@@ -27,7 +27,7 @@
 </g>
 <!-- Node32 -->
 <g id="node2" class="node"><title>Node32</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title="Member function of the GuiPersistentItem.">
 <polygon fill="white" stroke="black" points="15.5,-138.5 15.5,-272.5 153.5,-272.5 153.5,-138.5 15.5,-138.5"/>
 <text text-anchor="middle" x="84.5" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="15.5,-253.5 153.5,-253.5 "/>

@@ -136,7 +136,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node34 -->
 <g id="node4" class="node"><title>Node34</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a97804df5309a2fd7773b02568c8ca461" target="_top" xlink:title="lookup an action.">
 <polygon fill="white" stroke="black" points="360,-286 360,-316 501,-316 501,-286 360,-286"/>
 <text text-anchor="start" x="368" y="-304" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="430.5" y="-293" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_if_bound</text>
@@ -163,7 +163,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node39 -->
 <g id="node9" class="node"><title>Node39</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_engine.xhtml#ab6233b0bf461be4bb1633cd9f7e7f08b" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_engine.xhtml#ab6233b0bf461be4bb1633cd9f7e7f08b" target="_top" xlink:title="return this engine&#39;s action manager.">
 <polygon fill="white" stroke="black" points="376,-198 376,-228 485,-228 485,-198 376,-198"/>
 <text text-anchor="start" x="384" y="-216" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="430.5" y="-205" font-family="Helvetica,sans-Serif" font-size="10.00">_action_manager</text>
@@ -191,7 +191,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node42 -->
 <g id="node12" class="node"><title>Node42</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title="return this engine&#39;s keybind manager.">
 <polygon fill="white" stroke="black" points="376,-100 376,-130 485,-130 485,-100 376,-100"/>
 <text text-anchor="start" x="384" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="430.5" y="-107" font-family="Helvetica,sans-Serif" font-size="10.00">_input_manager</text>
@@ -205,7 +205,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node43 -->
 <g id="node13" class="node"><title>Node43</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" target="_top" xlink:title="Returns the context on top.">
 <polygon fill="white" stroke="black" points="358,-51 358,-81 503,-81 503,-51 358,-51"/>
 <text text-anchor="start" x="366" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="430.5" y="-58" font-family="Helvetica,sans-Serif" font-size="10.00">::get_top_context</text>
@@ -219,7 +219,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node35 -->
 <g id="node5" class="node"><title>Node35</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" target="_top" xlink:title="classes ordered with most specific first">
 <polygon fill="white" stroke="black" points="552,-286 552,-316 686,-316 686,-286 552,-286"/>
 <text text-anchor="start" x="560" y="-304" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ClassCode</text>
 <text text-anchor="middle" x="619" y="-293" font-family="Helvetica,sans-Serif" font-size="10.00">::get_classes</text>
@@ -246,7 +246,7 @@ var sectionId = 'dynsection-7';
 </g>
 <!-- Node37 -->
 <g id="node7" class="node"><title>Node37</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="903,-291.5 903,-310.5 998,-310.5 998,-291.5 903,-291.5"/>
 <text text-anchor="middle" x="950.5" y="-298.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

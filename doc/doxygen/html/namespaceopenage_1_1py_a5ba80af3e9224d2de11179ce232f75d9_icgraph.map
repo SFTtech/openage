@@ -1,5 +1,5 @@
 <map id="openage::py::dict" name="openage::py::dict">
-<area shape="rect" id="node1" title=" " alt="" coords="1127,267,1249,294"/>
+<area shape="rect" id="node1" title="dict()" alt="" coords="1127,267,1249,294"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1struct_1_1_named_struct_meta.xhtml#aa17dd52088b8ff6e9bf08cd1e49fc671" title=" " alt="" coords="854,5,1029,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#abd30175646af16d47c9024685a16e3e3" title="main data dumping function, the magic happens in here." alt="" coords="817,71,1066,112"/>
 <area shape="rect" id="node5" href="$classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter.xhtml#a5dd2ca6f27cffabc611a817c7ad69232" title="Generates files in the requested formats to projectdir." alt="" coords="836,136,1047,177"/>

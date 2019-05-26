@@ -1,3 +1,3 @@
 <map id="openage::renderer::vulkan::VlkDrawableDisplay" name="openage::renderer::vulkan::VlkDrawableDisplay">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,211,244"/>
+<area shape="rect" id="node1" title="A Vulkan representation of a display target that can be drawn onto directly, that is not by copying d..." alt="" coords="5,5,211,244"/>
 </map>

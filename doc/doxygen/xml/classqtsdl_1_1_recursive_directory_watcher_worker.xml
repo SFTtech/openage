@@ -11,9 +11,10 @@
         <argsstring></argsstring>
         <name>watcher</name>
         <briefdescription>
+<para>Actual watcher. </para>
         </briefdescription>
         <detaileddescription>
-<para>Actual watcher. Its event processing and destruction has to be in the same separate thread. </para>
+<para>Its event processing and destruction has to be in the same separate thread. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -26,9 +27,9 @@
         <argsstring></argsstring>
         <name>batching_timer</name>
         <briefdescription>
+<para>Waits to glue multiple changes into one event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Waits to glue multiple changes into one event. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,9 +157,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Emits a signal when anything changes in the directories. </para>
     </briefdescription>
     <detaileddescription>
-<para>Emits a signal when anything changes in the directories. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6558">

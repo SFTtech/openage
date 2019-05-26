@@ -99,20 +99,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1gui_1_1_main_args_link
 </div><!--header-->
 <div class="contents">
 
+<p>Used to make arguments of the game available in QML.  
+ <a href="classopenage_1_1gui_1_1_main_args_link.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="main__args__link_8h_source.xhtml">main_args_link.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::gui::MainArgsLink:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_main_args_link__inherit__graph.svg" width="194" height="258"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_main_args_link__inherit__graph.svg" width="194" height="258"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::gui::MainArgsLink:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_main_args_link__coll__graph.svg" width="238" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_main_args_link__coll__graph.svg" width="238" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -125,6 +130,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a27313ca71bc497664ab7a4ade01323e4"><td class="memItemLeft" align="right" valign="top">static QObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1gui_1_1_main_args_link.xhtml#a27313ca71bc497664ab7a4ade01323e4">provider</a> (QQmlEngine *, QJSEngine *)</td></tr>
+<tr class="memdesc:a27313ca71bc497664ab7a4ade01323e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the <a class="el" href="classopenage_1_1gui_1_1_main_args_link.xhtml" title="Used to make arguments of the game available in QML.">MainArgsLink</a> object which is then used within QML.  <a href="#a27313ca71bc497664ab7a4ade01323e4">More...</a><br /></td></tr>
 <tr class="separator:a27313ca71bc497664ab7a4ade01323e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
@@ -240,10 +246,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Generates the <a class="el" href="classopenage_1_1gui_1_1_main_args_link.xhtml">MainArgsLink</a> object which is then used within QML. </p>
+
+<p>Generates the <a class="el" href="classopenage_1_1gui_1_1_main_args_link.xhtml" title="Used to make arguments of the game available in QML.">MainArgsLink</a> object which is then used within QML. </p>
 
 <p class="definition">Definition at line <a class="el" href="main__args__link_8cpp_source.xhtml#l00030">30</a> of file <a class="el" href="main__args__link_8cpp_source.xhtml">main_args_link.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                                              {</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml">qtsdl::QmlEngineWithSingletonItemsInfo</a> *engine_with_singleton_items_info = qtsdl::checked_static_cast&lt;qtsdl::QmlEngineWithSingletonItemsInfo*&gt;(engine);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">auto</span> <a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a> = static_cast&lt;EngineQMLInfo*&gt;(engine_with_singleton_items_info-&gt;<a class="code" href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml#a75bfac02a613200f587f4f2e5d17ecb1">get_singleton_items_info</a>());</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a>, <span class="stringliteral">&quot;globals were lost or not passed to the gui subsystem&quot;</span>);</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// owned by the QML engine</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classopenage_1_1gui_1_1_main_args_link.xhtml#afae5cee025cfda20b2440abcbb01cef9">MainArgsLink</a>{<span class="keyword">nullptr</span>, <a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a>-&gt;asset_dir};</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_xhtml"><div class="ttname"><a href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml">qtsdl::QmlEngineWithSingletonItemsInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="qml__engine__with__singleton__items__info_8h_source.xhtml#l00025">qml_engine_with_singleton_items_info.h:25</a></div></div>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                                              {</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml">qtsdl::QmlEngineWithSingletonItemsInfo</a> *engine_with_singleton_items_info = qtsdl::checked_static_cast&lt;qtsdl::QmlEngineWithSingletonItemsInfo*&gt;(engine);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">auto</span> <a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a> = static_cast&lt;EngineQMLInfo*&gt;(engine_with_singleton_items_info-&gt;<a class="code" href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml#a75bfac02a613200f587f4f2e5d17ecb1">get_singleton_items_info</a>());</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a>, <span class="stringliteral">&quot;globals were lost or not passed to the gui subsystem&quot;</span>);</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// owned by the QML engine</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classopenage_1_1gui_1_1_main_args_link.xhtml#afae5cee025cfda20b2440abcbb01cef9">MainArgsLink</a>{<span class="keyword">nullptr</span>, <a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a>-&gt;asset_dir};</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_xhtml"><div class="ttname"><a href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml">qtsdl::QmlEngineWithSingletonItemsInfo</a></div><div class="ttdoc">The Qml Engine used by openage.</div><div class="ttdef"><b>Definition:</b> <a href="qml__engine__with__singleton__items__info_8h_source.xhtml#l00025">qml_engine_with_singleton_items_info.h:25</a></div></div>
 <div class="ttc" id="error_2error_8h_xhtml_ae20e8a0a86b80f8211fdf87477524f87"><div class="ttname"><a href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a></div><div class="ttdeci">#define ENSURE(...)</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00155">error.h:155</a></div></div>
 <div class="ttc" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_xhtml_a75bfac02a613200f587f4f2e5d17ecb1"><div class="ttname"><a href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml#a75bfac02a613200f587f4f2e5d17ecb1">qtsdl::QmlEngineWithSingletonItemsInfo::get_singleton_items_info</a></div><div class="ttdeci">GuiSingletonItemsInfo * get_singleton_items_info() const</div><div class="ttdef"><b>Definition:</b> <a href="qml__engine__with__singleton__items__info_8cpp_source.xhtml#l00037">qml_engine_with_singleton_items_info.cpp:37</a></div></div>
 <div class="ttc" id="classopenage_1_1gui_1_1_main_args_link_xhtml_afae5cee025cfda20b2440abcbb01cef9"><div class="ttname"><a href="classopenage_1_1gui_1_1_main_args_link.xhtml#afae5cee025cfda20b2440abcbb01cef9">openage::gui::MainArgsLink::MainArgsLink</a></div><div class="ttdeci">MainArgsLink(QObject *parent, const util::Path &amp;asset_dir)</div><div class="ttdef"><b>Definition:</b> <a href="main__args__link_8cpp_source.xhtml#l00022">main_args_link.cpp:22</a></div></div>
@@ -255,7 +262,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_main_args_link_a27313ca71bc497664ab7a4ade01323e4_cgraph.svg" width="444" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_main_args_link_a27313ca71bc497664ab7a4ade01323e4_cgraph.svg" width="444" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-95.5 361,-95.5 361,4 -4,4"/>
 <!-- Node18 -->
 <g id="node1" class="node"><title>Node18</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Tests filling integers.">
 <polygon fill="#bfbfbf" stroke="black" points="256,-38.5 256,-68.5 357,-68.5 357,-38.5 256,-38.5"/>
 <text text-anchor="start" x="264" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="306.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">::fill</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node20 -->
 <g id="node3" class="node"><title>Node20</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#af44253d3e7adef12c7a4c4371b97a2fd" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#af44253d3e7adef12c7a4c4371b97a2fd" target="_top" xlink:title="This function was originally coded by David Tritscher.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-52.5 220,-52.5 220,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::HuffmanTable&lt; LZX_PRETREE</text>

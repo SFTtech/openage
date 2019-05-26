@@ -1,11 +1,11 @@
 <map id="openage::audio::DynamicResource" name="openage::audio::DynamicResource">
-<area shape="rect" id="node1" title=" " alt="" coords="283,1276,507,1573"/>
-<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_resource.xhtml" title=" " alt="" coords="25,960,198,1213"/>
-<area shape="rect" id="node3" href="$classopenage_1_1audio_1_1_audio_manager.xhtml" title=" " alt="" coords="5,468,207,868"/>
-<area shape="rect" id="node4" href="$classopenage_1_1job_1_1_job_manager.xhtml" title=" " alt="" coords="128,5,303,405"/>
-<area shape="rect" id="node9" href="$classopenage_1_1job_1_1_worker.xhtml" title=" " alt="" coords="231,541,381,795"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_path.xhtml" title=" " alt="" coords="409,960,539,1213"/>
+<area shape="rect" id="node1" title="Audio data that is loaded dynamically when used." alt="" coords="283,1276,507,1573"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_resource.xhtml" title="A Resource contains 16 bit signed integer pcm data, that can be played by sounds." alt="" coords="25,960,198,1213"/>
+<area shape="rect" id="node3" href="$classopenage_1_1audio_1_1_audio_manager.xhtml" title="This class provides audio functionality for openage." alt="" coords="5,468,207,868"/>
+<area shape="rect" id="node4" href="$classopenage_1_1job_1_1_job_manager.xhtml" title="A job manager can be used to execute functions within separate worker threads." alt="" coords="128,5,303,405"/>
+<area shape="rect" id="node9" href="$classopenage_1_1job_1_1_worker.xhtml" title="A worker encapsulates the execution of multiple jobs in a single background thread." alt="" coords="231,541,381,795"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_path.xhtml" title="C++ pendant to the python util.fslike.path.Path." alt="" coords="409,960,539,1213"/>
 <area shape="rect" id="node6" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml" title=" " alt="" coords="564,975,725,1199"/>
-<area shape="rect" id="node7" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml" title=" " alt="" coords="563,571,726,765"/>
-<area shape="rect" id="node8" href="$classopenage_1_1job_1_1_job_group.xhtml" title=" " alt="" coords="225,1026,384,1147"/>
+<area shape="rect" id="node7" href="$classopenage_1_1datastructure_1_1_concurrent_queue.xhtml" title="A threadsafe queue." alt="" coords="563,571,726,765"/>
+<area shape="rect" id="node8" href="$classopenage_1_1job_1_1_job_group.xhtml" title="A job group is a proxy object that forwards job&#39;s to a single worker thread." alt="" coords="225,1026,384,1147"/>
 </map>

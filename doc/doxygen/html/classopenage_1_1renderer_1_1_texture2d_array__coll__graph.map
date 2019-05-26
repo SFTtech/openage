@@ -1,4 +1,4 @@
 <map id="openage::renderer::Texture2dArray" name="openage::renderer::Texture2dArray">
-<area shape="rect" id="node1" title=" " alt="" coords="37,424,176,560"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml" title=" " alt="" coords="5,5,208,361"/>
+<area shape="rect" id="node1" title="A texture array, where individual elements are 2D textures." alt="" coords="37,424,176,560"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml" title="Contains information about a 2D texture surface, without actual texture data." alt="" coords="5,5,208,361"/>
 </map>

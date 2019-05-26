@@ -97,20 +97,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1_move_ability.xhtml','
 </div><!--header-->
 <div class="contents">
 
+<p>initiates a move action when given a valid target  
+ <a href="classopenage_1_1_move_ability.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ability_8h_source.xhtml">ability.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::MoveAbility:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_move_ability__inherit__graph.svg" width="156" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_move_ability__inherit__graph.svg" width="156" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::MoveAbility:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_move_ability__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_move_ability__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -120,13 +125,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a26dc725a825979a0faefcb727a777ca1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828">ability_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_move_ability.xhtml#a26dc725a825979a0faefcb727a777ca1">type</a> () override</td></tr>
 <tr class="separator:a26dc725a825979a0faefcb727a777ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c5b9e7740f8636b4e04c077c2598b6e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_move_ability.xhtml#a5c5b9e7740f8636b4e04c077c2598b6e">can_invoke</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;to_modify, const <a class="el" href="classopenage_1_1_command.xhtml">Command</a> &amp;cmd) override</td></tr>
+<tr class="memdesc:a5c5b9e7740f8636b4e04c077c2598b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">true if the paramaters allow an action to be performed  <a href="#a5c5b9e7740f8636b4e04c077c2598b6e">More...</a><br /></td></tr>
 <tr class="separator:a5c5b9e7740f8636b4e04c077c2598b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d0ebbdd7b98efa293ebc91287a6dee4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4">invoke</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;to_modify, const <a class="el" href="classopenage_1_1_command.xhtml">Command</a> &amp;cmd, bool play_sound=false) override</td></tr>
+<tr class="memdesc:a1d0ebbdd7b98efa293ebc91287a6dee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">applies command to a given unit  <a href="#a1d0ebbdd7b98efa293ebc91287a6dee4">More...</a><br /></td></tr>
 <tr class="separator:a1d0ebbdd7b98efa293ebc91287a6dee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classopenage_1_1_unit_ability"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classopenage_1_1_unit_ability')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classopenage_1_1_unit_ability.xhtml">openage::UnitAbility</a></td></tr>
 <tr class="memitem:ab960e128b4048ecdacfd8a80a9de67ab inherit pub_methods_classopenage_1_1_unit_ability"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_ability.xhtml#ab960e128b4048ecdacfd8a80a9de67ab">~UnitAbility</a> ()</td></tr>
 <tr class="separator:ab960e128b4048ecdacfd8a80a9de67ab inherit pub_methods_classopenage_1_1_unit_ability"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a462d1ece390e2508e943f2d1a1f8d64e inherit pub_methods_classopenage_1_1_unit_ability"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_ability.xhtml#a462d1ece390e2508e943f2d1a1f8d64e">has_hitpoints</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;target)</td></tr>
+<tr class="memdesc:a462d1ece390e2508e943f2d1a1f8d64e inherit pub_methods_classopenage_1_1_unit_ability"><td class="mdescLeft">&#160;</td><td class="mdescRight">some common functions  <a href="classopenage_1_1_unit_ability.xhtml#a462d1ece390e2508e943f2d1a1f8d64e">More...</a><br /></td></tr>
 <tr class="separator:a462d1ece390e2508e943f2d1a1f8d64e inherit pub_methods_classopenage_1_1_unit_ability"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bb29b6621a1baa056218ec14774f0f5 inherit pub_methods_classopenage_1_1_unit_ability"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_ability.xhtml#a7bb29b6621a1baa056218ec14774f0f5">is_damaged</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;target)</td></tr>
 <tr class="separator:a7bb29b6621a1baa056218ec14774f0f5 inherit pub_methods_classopenage_1_1_unit_ability"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,6 +156,7 @@ Private Attributes</h2></td></tr>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_classopenage_1_1_unit_ability"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classopenage_1_1_unit_ability')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classopenage_1_1_unit_ability.xhtml">openage::UnitAbility</a></td></tr>
 <tr class="memitem:a282f5d02a2a6912670b27aedb7f4f337 inherit pub_static_methods_classopenage_1_1_unit_ability"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceopenage.xhtml#ae960c566d0da147b055f619d8cca9300">ability_set</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_ability.xhtml#a282f5d02a2a6912670b27aedb7f4f337">set_from_list</a> (const std::vector&lt; <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828">ability_type</a> &gt; &amp;items)</td></tr>
+<tr class="memdesc:a282f5d02a2a6912670b27aedb7f4f337 inherit pub_static_methods_classopenage_1_1_unit_ability"><td class="mdescLeft">&#160;</td><td class="mdescRight">set bits corresponding to abilities, useful for initialising an ability_set using a brace enclosed list  <a href="classopenage_1_1_unit_ability.xhtml#a282f5d02a2a6912670b27aedb7f4f337">More...</a><br /></td></tr>
 <tr class="separator:a282f5d02a2a6912670b27aedb7f4f337 inherit pub_static_methods_classopenage_1_1_unit_ability"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -210,6 +219,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>true if the paramaters allow an action to be performed </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_ability.xhtml#a68b5f695172d6ebb6ce4381b3b94eb34">openage::UnitAbility</a>.</p>
@@ -222,7 +232,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_move_ability_a5c5b9e7740f8636b4e04c077c2598b6e_cgraph.svg" width="399" height="155"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_move_ability_a5c5b9e7740f8636b4e04c077c2598b6e_cgraph.svg" width="399" height="155"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -266,13 +277,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>applies command to a given unit </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_ability.xhtml#a63afa7eff4171d24a312b0c05be4aa41">openage::UnitAbility</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ability_8cpp_source.xhtml#l00079">79</a> of file <a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                                                             {</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    to_modify.log(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">dbg</a>) &lt;&lt; <span class="stringliteral">&quot;invoke move action&quot;</span>);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (play_sound &amp;&amp; this-&gt;<a class="code" href="classopenage_1_1_move_ability.xhtml#a2ba0d448b879e7996e2fe70d3dbc79d9">sound</a>) {</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_move_ability.xhtml#a2ba0d448b879e7996e2fe70d3dbc79d9">sound</a>-&gt;<a class="code" href="classopenage_1_1_sound.xhtml#a526acd600cd69f6f421a253fc169398b">play</a>();</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (cmd.has_position()) {</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">auto</span> target = cmd.position();</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        to_modify.push_action(std::make_unique&lt;MoveAction&gt;(&amp;to_modify, target));</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmd.has_unit()) {</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">auto</span> target = cmd.unit();</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">// distance from the targets edge that is required to stop moving</span></div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a> radius = <a class="code" href="namespaceopenage_1_1path.xhtml#a7e49ca629b6fed008584d7752dc98e9a">path::path_grid_size</a> + (to_modify.location-&gt;min_axis() / 2L);</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="comment">// add the range of the unit if cmd indicator is set</span></div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">if</span> (cmd.has_flag(<a class="code" href="namespaceopenage.xhtml#a355391982e6c1257c3fc4de3b6402b3aa0f99c9f01a52f21f547acbeb2bb67dc5">command_flag::use_range</a>) &amp;&amp; to_modify.has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36afc7e987f23de5bd6562b7c0063cad659">attr_type::attack</a>)) {</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">auto</span> &amp;att = to_modify.get_attribute&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36afc7e987f23de5bd6562b7c0063cad659">attr_type::attack</a>&gt;();</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            radius += att.max_range;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        to_modify.push_action(std::make_unique&lt;MoveAction&gt;(&amp;to_modify, target-&gt;get_ref(), radius));</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1path_xhtml_a7e49ca629b6fed008584d7752dc98e9a"><div class="ttname"><a href="namespaceopenage_1_1path.xhtml#a7e49ca629b6fed008584d7752dc98e9a">openage::path::path_grid_size</a></div><div class="ttdeci">constexpr coord::phys_t path_grid_size</div><div class="ttdef"><b>Definition:</b> <a href="pathfinding_2path_8h_source.xhtml#l00060">path.h:60</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1path_xhtml_a7e49ca629b6fed008584d7752dc98e9a"><div class="ttname"><a href="namespaceopenage_1_1path.xhtml#a7e49ca629b6fed008584d7752dc98e9a">openage::path::path_grid_size</a></div><div class="ttdeci">constexpr coord::phys_t path_grid_size</div><div class="ttdoc">Size of phys-coord grid for path nodes.</div><div class="ttdef"><b>Definition:</b> <a href="pathfinding_2path_8h_source.xhtml#l00060">path.h:60</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36afc7e987f23de5bd6562b7c0063cad659"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36afc7e987f23de5bd6562b7c0063cad659">openage::attr_type::attack</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1log_xhtml_aad3d76b2466dbc4f81552935f2d84faa"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">openage::log.dbg</a></div><div class="ttdeci">def dbg(msg, *args, **kwargs)</div><div class="ttdoc">debug message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00109">__init__.py:109</a></div></div>
 <div class="ttc" id="classopenage_1_1_sound_xhtml_a526acd600cd69f6f421a253fc169398b"><div class="ttname"><a href="classopenage_1_1_sound.xhtml#a526acd600cd69f6f421a253fc169398b">openage::Sound::play</a></div><div class="ttdeci">void play() const</div><div class="ttdef"><b>Definition:</b> <a href="game__spec_8cpp_source.xhtml#l00431">game_spec.cpp:431</a></div></div>
@@ -286,7 +298,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_move_ability_a1d0ebbdd7b98efa293ebc91287a6dee4_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_move_ability_a1d0ebbdd7b98efa293ebc91287a6dee4_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>

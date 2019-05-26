@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 256,-35 256,4 -4,4"/>
 <!-- Node83 -->
 <g id="node1" class="node"><title>Node83</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="#bfbfbf" stroke="black" points="148,-0.5 148,-30.5 252,-30.5 252,-0.5 148,-0.5"/>
 <text text-anchor="start" x="156" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAction</text>
 <text text-anchor="middle" x="200" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node84 -->
 <g id="node2" class="node"><title>Node84</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a6090576402dce0bcc8f3f584ae0c1db5" target="_top" xlink:title="update this object using the action currently on top of the stack">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 112,-25 112,-6 0,-6"/>
 <text text-anchor="middle" x="56" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::update</text>
 </a>

@@ -303,7 +303,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="498" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="498" bodyend="500"/>
         <references refid="classopenage_1_1util_1_1_fixed_point_1aa0eb736578910b123ea19652c670daab" compoundref="fixed__point_8h" startline="338" endline="340">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::hypot</references>
-        <referencedby refid="namespaceopenage_1af8871290d3c97a11b6761d12827ab9e3" compoundref="unit__texture_8cpp" startline="162" endline="175">openage::dir_group</referencedby>
+        <referencedby refid="namespaceopenage_1ad019d95177e6ab646a2d239e4ec3daa7" compoundref="unit__texture_8cpp" startline="162" endline="175">openage::dir_group</referencedby>
         <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
         <referencedby refid="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" compoundref="terrain__object_8cpp" startline="311" endline="323">openage::SquareObject::from_edge</referencedby>
         <referencedby refid="classopenage_1_1util_1_1_fixed_point_1aa0eb736578910b123ea19652c670daab" compoundref="fixed__point_8h" startline="338" endline="340">openage::util::FixedPoint&lt; int64_t, 16 &gt;::hypot</referencedby>

@@ -97,13 +97,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1_research_action.xhtml
 </div><!--header-->
 <div class="contents">
 
+<p>trains a new unit  
+ <a href="classopenage_1_1_research_action.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="unit_2action_8h_source.xhtml">action.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::ResearchAction:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_action__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_action__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::ResearchAction:</div>
@@ -121,16 +125,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7367d10699046c60ca4a0bde3ffcab44"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_action.xhtml#a7367d10699046c60ca4a0bde3ffcab44">~ResearchAction</a> ()</td></tr>
 <tr class="separator:a7367d10699046c60ca4a0bde3ffcab44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79f88ea810c2112e5f79a4749c3ef872"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_action.xhtml#a79f88ea810c2112e5f79a4749c3ef872">update</a> (unsigned int time) override</td></tr>
+<tr class="memdesc:a79f88ea810c2112e5f79a4749c3ef872"><td class="mdescLeft">&#160;</td><td class="mdescRight">each action has its own update functionality which gets called when this is the active action  <a href="#a79f88ea810c2112e5f79a4749c3ef872">More...</a><br /></td></tr>
 <tr class="separator:a79f88ea810c2112e5f79a4749c3ef872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41118eb111143113dfb9cbcb1c0fbb30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_action.xhtml#a41118eb111143113dfb9cbcb1c0fbb30">on_completion</a> () override</td></tr>
+<tr class="memdesc:a41118eb111143113dfb9cbcb1c0fbb30"><td class="mdescLeft">&#160;</td><td class="mdescRight">action to perform when popped from a units action stack  <a href="#a41118eb111143113dfb9cbcb1c0fbb30">More...</a><br /></td></tr>
 <tr class="separator:a41118eb111143113dfb9cbcb1c0fbb30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e9716ed57a36c76e068b2c74e08be77"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_action.xhtml#a8e9716ed57a36c76e068b2c74e08be77">completed</a> () const override</td></tr>
+<tr class="memdesc:a8e9716ed57a36c76e068b2c74e08be77"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets called for all actions on stack each update cycle  <a href="#a8e9716ed57a36c76e068b2c74e08be77">More...</a><br /></td></tr>
 <tr class="separator:a8e9716ed57a36c76e068b2c74e08be77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae67de57f15acdca05250020361417b80"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_action.xhtml#ae67de57f15acdca05250020361417b80">allow_interupt</a> () const override</td></tr>
+<tr class="memdesc:ae67de57f15acdca05250020361417b80"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded  <a href="#ae67de57f15acdca05250020361417b80">More...</a><br /></td></tr>
 <tr class="separator:ae67de57f15acdca05250020361417b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52c0ba3db2b508e2f5def47cd2887c21"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_action.xhtml#a52c0ba3db2b508e2f5def47cd2887c21">allow_control</a> () const override</td></tr>
+<tr class="memdesc:a52c0ba3db2b508e2f5def47cd2887c21"><td class="mdescLeft">&#160;</td><td class="mdescRight">control whether stack can discard the action automatically and should the stack be modifiable when this action is on top  <a href="#a52c0ba3db2b508e2f5def47cd2887c21">More...</a><br /></td></tr>
 <tr class="separator:a52c0ba3db2b508e2f5def47cd2887c21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c40162adbb22a78f53194fe7e9983d8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_action.xhtml#a3c40162adbb22a78f53194fe7e9983d8">name</a> () const override</td></tr>
+<tr class="memdesc:a3c40162adbb22a78f53194fe7e9983d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">debug string to identify action types  <a href="#a3c40162adbb22a78f53194fe7e9983d8">More...</a><br /></td></tr>
 <tr class="separator:a3c40162adbb22a78f53194fe7e9983d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a862314be700562eb73c6346011fd7f9a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_action.xhtml#a862314be700562eb73c6346011fd7f9a">get_progress</a> () const</td></tr>
 <tr class="separator:a862314be700562eb73c6346011fd7f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,20 +148,26 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a963396a44e005a00698c717d1fd8cccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classopenage_1_1_unit_action"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classopenage_1_1_unit_action')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classopenage_1_1_unit_action.xhtml">openage::UnitAction</a></td></tr>
 <tr class="memitem:a3fd3dd936ea6a850726bcfce9664909a inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">UnitAction</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *u, <a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3b">graphic_type</a> initial_gt)</td></tr>
+<tr class="memdesc:a3fd3dd936ea6a850726bcfce9664909a inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">Require unit to be updated and an initial graphic type.  <a href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">More...</a><br /></td></tr>
 <tr class="separator:a3fd3dd936ea6a850726bcfce9664909a inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e4ff108bc1f10e40777ae36710e7a65 inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a6e4ff108bc1f10e40777ae36710e7a65">~UnitAction</a> ()</td></tr>
 <tr class="separator:a6e4ff108bc1f10e40777ae36710e7a65 inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbadd90ff8cee12d01aa9fd490501c1a inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3b">graphic_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#acbadd90ff8cee12d01aa9fd490501c1a">type</a> () const</td></tr>
+<tr class="memdesc:acbadd90ff8cee12d01aa9fd490501c1a inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">type of graphic this action should use  <a href="classopenage_1_1_unit_action.xhtml#acbadd90ff8cee12d01aa9fd490501c1a">More...</a><br /></td></tr>
 <tr class="separator:acbadd90ff8cee12d01aa9fd490501c1a inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfdd7e2764fd795c02ce0a5471563508 inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#abfdd7e2764fd795c02ce0a5471563508">current_frame</a> () const</td></tr>
+<tr class="memdesc:abfdd7e2764fd795c02ce0a5471563508 inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">frame number to use on the current graphic  <a href="classopenage_1_1_unit_action.xhtml#abfdd7e2764fd795c02ce0a5471563508">More...</a><br /></td></tr>
 <tr class="separator:abfdd7e2764fd795c02ce0a5471563508 inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cd7405af72dd0cf3994cee74608cf8b inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="namespaceopenage.xhtml#a905fde9cff5779781eb779ca95d80cf1">graphic_set</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b">current_graphics</a> () const</td></tr>
+<tr class="memdesc:a6cd7405af72dd0cf3994cee74608cf8b inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">determines which graphic should be used for drawing this unit finds the default graphic using the units type, used by most actions  <a href="classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b">More...</a><br /></td></tr>
 <tr class="separator:a6cd7405af72dd0cf3994cee74608cf8b inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef5ad04daa194a06790b4f36ed8a3e83 inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#aef5ad04daa194a06790b4f36ed8a3e83">draw_debug</a> (const <a class="el" href="classopenage_1_1_engine.xhtml">Engine</a> &amp;engine)</td></tr>
 <tr class="separator:aef5ad04daa194a06790b4f36ed8a3e83 inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ab11130480adc3cfe156af7cfb7a58d inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d">face_towards</a> (const <a class="el" href="structopenage_1_1coord_1_1phys3.xhtml">coord::phys3</a> pos)</td></tr>
+<tr class="memdesc:a3ab11130480adc3cfe156af7cfb7a58d inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">common functions for actions  <a href="classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d">More...</a><br /></td></tr>
 <tr class="separator:a3ab11130480adc3cfe156af7cfb7a58d inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7beffb7ad454cf467d7a6b843df939c7 inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a7beffb7ad454cf467d7a6b843df939c7">damage_unit</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;target)</td></tr>
+<tr class="memdesc:a7beffb7ad454cf467d7a6b843df939c7 inherit pub_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">Damage a unit, returns true if the unit was killed in the process.  <a href="classopenage_1_1_unit_action.xhtml#a7beffb7ad454cf467d7a6b843df939c7">More...</a><br /></td></tr>
 <tr class="separator:a7beffb7ad454cf467d7a6b843df939c7 inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16660bd780984c6f11ba30e0c7f634ad inherit pub_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a16660bd780984c6f11ba30e0c7f634ad">move_to</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> &amp;target, bool <a class="el" href="namespaceopenage.xhtml#a355391982e6c1257c3fc4de3b6402b3aa0f99c9f01a52f21f547acbeb2bb67dc5">use_range</a>=true)</td></tr>
 <tr class="separator:a16660bd780984c6f11ba30e0c7f634ad inherit pub_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,24 +185,31 @@ Private Attributes</h2></td></tr>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_classopenage_1_1_unit_action"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classopenage_1_1_unit_action')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classopenage_1_1_unit_action.xhtml">openage::UnitAction</a></td></tr>
 <tr class="memitem:a6a13e1e645b744982544ae65ef1addf3 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3">adjacent_range</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *u)</td></tr>
+<tr class="memdesc:a6a13e1e645b744982544ae65ef1addf3 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">a small distance to which units are considered touching when within this distance  <a href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3">More...</a><br /></td></tr>
 <tr class="separator:a6a13e1e645b744982544ae65ef1addf3 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e508baa62ec19cd81bea7fce1721e17 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17">get_attack_range</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *u)</td></tr>
+<tr class="memdesc:a6e508baa62ec19cd81bea7fce1721e17 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks at an ranged attributes on the unit otherwise returns same as <a class="el" href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3" title="a small distance to which units are considered touching when within this distance">adjacent_range()</a>  <a href="classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17">More...</a><br /></td></tr>
 <tr class="separator:a6e508baa62ec19cd81bea7fce1721e17 inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40320d4e1be2a48373f5b9b0f6bef2ef inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a40320d4e1be2a48373f5b9b0f6bef2ef">get_heal_range</a> (<a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *u)</td></tr>
+<tr class="memdesc:a40320d4e1be2a48373f5b9b0f6bef2ef inherit pub_static_methods_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks at heal attribute on the unit otherwise returns same as <a class="el" href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3" title="a small distance to which units are considered touching when within this distance">adjacent_range()</a>  <a href="classopenage_1_1_unit_action.xhtml#a40320d4e1be2a48373f5b9b0f6bef2ef">More...</a><br /></td></tr>
 <tr class="separator:a40320d4e1be2a48373f5b9b0f6bef2ef inherit pub_static_methods_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_classopenage_1_1_unit_action"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classopenage_1_1_unit_action')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classopenage_1_1_unit_action.xhtml">openage::UnitAction</a></td></tr>
 <tr class="memitem:a0a84fac6b39ee42340f67905dd631956 inherit pub_static_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a0a84fac6b39ee42340f67905dd631956">show_debug</a> = false</td></tr>
+<tr class="memdesc:a0a84fac6b39ee42340f67905dd631956 inherit pub_static_attribs_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">produce debug info such as visualising paths  <a href="classopenage_1_1_unit_action.xhtml#a0a84fac6b39ee42340f67905dd631956">More...</a><br /></td></tr>
 <tr class="separator:a0a84fac6b39ee42340f67905dd631956 inherit pub_static_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classopenage_1_1_unit_action"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classopenage_1_1_unit_action')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classopenage_1_1_unit_action.xhtml">openage::UnitAction</a></td></tr>
 <tr class="memitem:a5d47af0412db504ab95c58b12418d55c inherit pro_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1_unit.xhtml">Unit</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a></td></tr>
+<tr class="memdesc:a5d47af0412db504ab95c58b12418d55c inherit pro_attribs_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">the entity being updated  <a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">More...</a><br /></td></tr>
 <tr class="separator:a5d47af0412db504ab95c58b12418d55c inherit pro_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe08a940aa0b7040c3a59d816de00fed inherit pro_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3b">graphic_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#afe08a940aa0b7040c3a59d816de00fed">graphic</a></td></tr>
+<tr class="memdesc:afe08a940aa0b7040c3a59d816de00fed inherit pro_attribs_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">common graphic controls  <a href="classopenage_1_1_unit_action.xhtml#afe08a940aa0b7040c3a59d816de00fed">More...</a><br /></td></tr>
 <tr class="separator:afe08a940aa0b7040c3a59d816de00fed inherit pro_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f995b745da73c4e95ec83d8b14c38c6 inherit pro_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a8f995b745da73c4e95ec83d8b14c38c6">frame</a></td></tr>
 <tr class="separator:a8f995b745da73c4e95ec83d8b14c38c6 inherit pro_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d0154b413ca914966b9796bc37193b8 inherit pro_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a5d0154b413ca914966b9796bc37193b8">frame_rate</a></td></tr>
 <tr class="separator:a5d0154b413ca914966b9796bc37193b8 inherit pro_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bbcb9637ce725b95cbe818204921e4f inherit pro_attribs_classopenage_1_1_unit_action"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const <a class="el" href="classopenage_1_1_engine.xhtml">Engine</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_unit_action.xhtml#a0bbcb9637ce725b95cbe818204921e4f">debug_draw_action</a></td></tr>
+<tr class="memdesc:a0bbcb9637ce725b95cbe818204921e4f inherit pro_attribs_classopenage_1_1_unit_action"><td class="mdescLeft">&#160;</td><td class="mdescRight">additional drawing for debug purposes  <a href="classopenage_1_1_unit_action.xhtml#a0bbcb9637ce725b95cbe818204921e4f">More...</a><br /></td></tr>
 <tr class="separator:a0bbcb9637ce725b95cbe818204921e4f inherit pro_attribs_classopenage_1_1_unit_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -225,10 +248,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="classopenage_1_1_research_action_xhtml_ae0c785057daa83bb27ac725271511976"><div class="ttname"><a href="classopenage_1_1_research_action.xhtml#ae0c785057daa83bb27ac725271511976">openage::ResearchAction::timer</a></div><div class="ttdeci">IntervalTimer timer</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00489">action.h:489</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e"><div class="ttname"><a href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e">openage::graphic_type::standing</a></div></div>
 <div class="ttc" id="classopenage_1_1_research_xhtml_a8421d74f06cac747352a260624ac3721"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">openage::Research::type</a></div><div class="ttdeci">const ResearchType * type</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00109">research.h:109</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_xhtml_aae7972075b9f90f16c0bad595f03f0b2"><div class="ttname"><a href="classopenage_1_1_research.xhtml#aae7972075b9f90f16c0bad595f03f0b2">openage::Research::started</a></div><div class="ttdeci">void started()</div><div class="ttdef"><b>Definition:</b> <a href="research_8cpp_source.xhtml#l00025">research.cpp:25</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_xhtml_aae7972075b9f90f16c0bad595f03f0b2"><div class="ttname"><a href="classopenage_1_1_research.xhtml#aae7972075b9f90f16c0bad595f03f0b2">openage::Research::started</a></div><div class="ttdeci">void started()</div><div class="ttdoc">Called when a unit started researching this research.</div><div class="ttdef"><b>Definition:</b> <a href="research_8cpp_source.xhtml#l00025">research.cpp:25</a></div></div>
 <div class="ttc" id="classopenage_1_1_research_type_xhtml_a4a3186a0805b6d799dfc6abac2c9a404"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#a4a3186a0805b6d799dfc6abac2c9a404">openage::ResearchType::get_research_time</a></div><div class="ttdeci">virtual unsigned int get_research_time() const =0</div></div>
 <div class="ttc" id="classopenage_1_1_research_action_xhtml_a8ac60371849828add40d9eacded328d4"><div class="ttname"><a href="classopenage_1_1_research_action.xhtml#a8ac60371849828add40d9eacded328d4">openage::ResearchAction::research</a></div><div class="ttdeci">Research * research</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00487">action.h:487</a></div></div>
-<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a3fd3dd936ea6a850726bcfce9664909a"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">openage::UnitAction::UnitAction</a></div><div class="ttdeci">UnitAction(Unit *u, graphic_type initial_gt)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00089">action.cpp:89</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a3fd3dd936ea6a850726bcfce9664909a"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">openage::UnitAction::UnitAction</a></div><div class="ttdeci">UnitAction(Unit *u, graphic_type initial_gt)</div><div class="ttdoc">Require unit to be updated and an initial graphic type.</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00089">action.cpp:89</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e">openage::standing</a>.</p>
 
@@ -284,7 +307,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top</p>
+
+<p>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top </p>
 <p>if true this action must complete and will not allow new actions to be pushed while it is active and also does not update the secondary actions </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a3e222303072f926fa7c925163b8ac10c">openage::UnitAction</a>.</p>
@@ -315,6 +339,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a622cf307ee5d3f8f4581d9a7ec7ecfbf">openage::UnitAction</a>.</p>
@@ -345,7 +370,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>gets called for all actions on stack each update cycle </p><dl class="section return"><dt>Returns</dt><dd>true when action is completed so it and everything above it can be popped </dd></dl>
+
+<p>gets called for all actions on stack each update cycle </p>
+<dl class="section return"><dt>Returns</dt><dd>true when action is completed so it and everything above it can be popped </dd></dl>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a7814554a94e930595ed5dad9b0f03255">openage::UnitAction</a>.</p>
 
@@ -447,6 +474,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>debug string to identify action types </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a67647c63a20cec9714a6463b1c823a70">openage::UnitAction</a>.</p>
@@ -459,7 +487,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_action_a3c40162adbb22a78f53194fe7e9983d8_icgraph.svg" width="595" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_action_a3c40162adbb22a78f53194fe7e9983d8_icgraph.svg" width="595" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -486,13 +515,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>action to perform when popped from a units action stack </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#ac84d3cbfa3c489b3975952af157929cb">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00873">873</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;                                   {</div><div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="classopenage_1_1_research_action.xhtml#ac6a2f4242714cbdae38c1701d520b92c">complete</a>) {</div><div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_research_action.xhtml#a8ac60371849828add40d9eacded328d4">research</a>-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a9027c73c78b0334b11e48a9fd3ffafd2">stopped</a>();</div><div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;    }</div><div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_action_xhtml_ac6a2f4242714cbdae38c1701d520b92c"><div class="ttname"><a href="classopenage_1_1_research_action.xhtml#ac6a2f4242714cbdae38c1701d520b92c">openage::ResearchAction::complete</a></div><div class="ttdeci">bool complete</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00490">action.h:490</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_xhtml_a9027c73c78b0334b11e48a9fd3ffafd2"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a9027c73c78b0334b11e48a9fd3ffafd2">openage::Research::stopped</a></div><div class="ttdeci">void stopped()</div><div class="ttdef"><b>Definition:</b> <a href="research_8cpp_source.xhtml#l00029">research.cpp:29</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_xhtml_a9027c73c78b0334b11e48a9fd3ffafd2"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a9027c73c78b0334b11e48a9fd3ffafd2">openage::Research::stopped</a></div><div class="ttdeci">void stopped()</div><div class="ttdoc">Called when a unit stopped researching this research before completing it.</div><div class="ttdef"><b>Definition:</b> <a href="research_8cpp_source.xhtml#l00029">research.cpp:29</a></div></div>
 <div class="ttc" id="classopenage_1_1_research_action_xhtml_a8ac60371849828add40d9eacded328d4"><div class="ttname"><a href="classopenage_1_1_research_action.xhtml#a8ac60371849828add40d9eacded328d4">openage::ResearchAction::research</a></div><div class="ttdeci">Research * research</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00487">action.h:487</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00490">complete</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00487">research</a>, and <a class="el" href="research_8cpp_source.xhtml#l00029">openage::Research::stopped()</a>.</p>
@@ -501,7 +531,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_action_a41118eb111143113dfb9cbcb1c0fbb30_cgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_action_a41118eb111143113dfb9cbcb1c0fbb30_cgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -529,6 +560,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>each action has its own update functionality which gets called when this is the active action </p>
 
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a0196263da38bfa208d50c2241809cd62">openage::UnitAction</a>.</p>
@@ -538,8 +570,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="classopenage_1_1_research_action_xhtml_ae0c785057daa83bb27ac725271511976"><div class="ttname"><a href="classopenage_1_1_research_action.xhtml#ae0c785057daa83bb27ac725271511976">openage::ResearchAction::timer</a></div><div class="ttdeci">IntervalTimer timer</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00489">action.h:489</a></div></div>
 <div class="ttc" id="classopenage_1_1_interval_timer_xhtml_acb51f379d7d73ad7fff1197f9fa2335b"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#acb51f379d7d73ad7fff1197f9fa2335b">openage::IntervalTimer::update</a></div><div class="ttdeci">bool update(unsigned int time)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00036">action.cpp:36</a></div></div>
 <div class="ttc" id="classopenage_1_1_research_action_xhtml_a8ac60371849828add40d9eacded328d4"><div class="ttname"><a href="classopenage_1_1_research_action.xhtml#a8ac60371849828add40d9eacded328d4">openage::ResearchAction::research</a></div><div class="ttdeci">Research * research</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00487">action.h:487</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_xhtml_a856a40cfbef178effe2753a2348280d9"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a856a40cfbef178effe2753a2348280d9">openage::Research::completed</a></div><div class="ttdeci">void completed()</div><div class="ttdef"><b>Definition:</b> <a href="research_8cpp_source.xhtml#l00033">research.cpp:33</a></div></div>
-<div class="ttc" id="classopenage_1_1_research_xhtml_a51f059ce7313e37d3848481309b1dbd4"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a51f059ce7313e37d3848481309b1dbd4">openage::Research::apply</a></div><div class="ttdeci">void apply()</div><div class="ttdef"><b>Definition:</b> <a href="research_8cpp_source.xhtml#l00050">research.cpp:50</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_xhtml_a856a40cfbef178effe2753a2348280d9"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a856a40cfbef178effe2753a2348280d9">openage::Research::completed</a></div><div class="ttdeci">void completed()</div><div class="ttdoc">Called when a unit completed researching this research.</div><div class="ttdef"><b>Definition:</b> <a href="research_8cpp_source.xhtml#l00033">research.cpp:33</a></div></div>
+<div class="ttc" id="classopenage_1_1_research_xhtml_a51f059ce7313e37d3848481309b1dbd4"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a51f059ce7313e37d3848481309b1dbd4">openage::Research::apply</a></div><div class="ttdeci">void apply()</div><div class="ttdoc">Apply the modifications to the owner player.</div><div class="ttdef"><b>Definition:</b> <a href="research_8cpp_source.xhtml#l00050">research.cpp:50</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="research_8cpp_source.xhtml#l00050">openage::Research::apply()</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00490">complete</a>, <a class="el" href="research_8cpp_source.xhtml#l00033">openage::Research::completed()</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00487">research</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00489">timer</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00036">openage::IntervalTimer::update()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -547,7 +579,8 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_action_a79f88ea810c2112e5f79a4749c3ef872_cgraph.svg" width="627" height="235"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_action_a79f88ea810c2112e5f79a4749c3ef872_cgraph.svg" width="627" height="235"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

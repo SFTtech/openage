@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-781 521,-781 521,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Shadows inherited member functions.">
 <polygon fill="#bfbfbf" stroke="black" points="114.5,-580.5 114.5,-681.5 215.5,-681.5 215.5,-580.5 114.5,-580.5"/>
 <text text-anchor="middle" x="165" y="-669.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Shadow&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="114.5,-662.5 215.5,-662.5 "/>
@@ -27,7 +27,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title="Switches the factory to production of the instances of the derived class.">
 <polygon fill="white" stroke="black" points="221,-442.5 221,-510.5 319,-510.5 319,-442.5 221,-442.5"/>
 <text text-anchor="middle" x="270" y="-498.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Inherits&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="221,-491.5 319,-491.5 "/>

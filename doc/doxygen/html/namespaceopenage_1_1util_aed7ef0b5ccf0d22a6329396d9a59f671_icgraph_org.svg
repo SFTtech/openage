@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-108 580,-108 580,4 -4,4"/>
 <!-- Node742 -->
 <g id="node1" class="node"><title>Node742</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="encodes one Unicode codepoint to a null&#45;terminated UTF&#45;8 character string.">
 <polygon fill="#bfbfbf" stroke="black" points="482,-24.5 482,-54.5 576,-54.5 576,-24.5 482,-24.5"/>
 <text text-anchor="start" x="490" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::utf8</text>
 <text text-anchor="middle" x="529" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">_encode</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node743 -->
 <g id="node2" class="node"><title>Node743</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title="writes the unicode codepoint, as utf&#45;8">
 <polygon fill="white" stroke="black" points="338,-49.5 338,-79.5 435,-79.5 435,-49.5 338,-49.5"/>
 <text text-anchor="start" x="346" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="386.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">putcp</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node747 -->
 <g id="node6" class="node"><title>Node747</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" target="_top" xlink:title="experimental and totally inefficient opengl draw of a terminal buffer.">
 <polygon fill="white" stroke="black" points="327,-0.5 327,-30.5 446,-30.5 446,-0.5 327,-0.5"/>
 <text text-anchor="start" x="335" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="386.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_opengl</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node744 -->
 <g id="node3" class="node"><title>Node744</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" target="_top" xlink:title="very early and inefficient printing of the console to a pty.">
 <polygon fill="white" stroke="black" points="164.5,-49.5 164.5,-79.5 283.5,-79.5 283.5,-49.5 164.5,-49.5"/>
 <text text-anchor="start" x="172.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="224" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_terminal</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node748 -->
 <g id="node7" class="node"><title>Node748</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a1ce3c30cdc768559e11fc548cbcbddd8" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a1ce3c30cdc768559e11fc548cbcbddd8" target="_top" xlink:title="execute the drawing action.">
 <polygon fill="white" stroke="black" points="157,-0.5 157,-30.5 291,-30.5 291,-0.5 157,-0.5"/>
 <text text-anchor="start" x="165" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="224" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_drawhud</text>

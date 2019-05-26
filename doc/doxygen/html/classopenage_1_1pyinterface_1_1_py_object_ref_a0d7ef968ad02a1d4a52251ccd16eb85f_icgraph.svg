@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 263,-84 263,4 -4,4"/>
 <!-- Node55 -->
 <g id="node1" class="node"><title>Node55</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="exec(statement, obj)">
 <polygon fill="#bfbfbf" stroke="black" points="152,-24.5 152,-54.5 259,-54.5 259,-24.5 152,-24.5"/>
 <text text-anchor="start" x="160" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="205.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::exec</text>

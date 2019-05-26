@@ -1,5 +1,5 @@
 <map id="openage::CreateMode" name="openage::CreateMode">
-<area shape="rect" id="node1" title=" " alt="" coords="16,608,183,773"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml" title=" " alt="" coords="16,321,183,560"/>
-<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_context.xhtml" title=" " alt="" coords="5,5,193,273"/>
+<area shape="rect" id="node1" title="This is mainly the game editor." alt="" coords="16,608,183,773"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml" title="A target for input handling and gui rendering." alt="" coords="16,321,183,560"/>
+<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_context.xhtml" title="An input context contains all keybindings and actions active in e.g." alt="" coords="5,5,193,273"/>
 </map>

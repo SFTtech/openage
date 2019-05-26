@@ -1,3 +1,3 @@
 <map id="qtsdl::GuiDedicatedThread" name="qtsdl::GuiDedicatedThread">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,180,171"/>
+<area shape="rect" id="node1" title="Runs the gui logic in separate thread." alt="" coords="5,5,180,171"/>
 </map>

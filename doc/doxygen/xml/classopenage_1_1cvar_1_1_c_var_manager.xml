@@ -10,9 +10,10 @@
         <argsstring></argsstring>
         <name>store</name>
         <briefdescription>
+<para>Store the key-value pair of config options. </para>
         </briefdescription>
         <detaileddescription>
-<para>Store the key-value pair of config options. The clue is to store the &quot;what does the config do&quot;, not the actual value. That way the system is universal. </para>
+<para>The clue is to store the &quot;what does the config do&quot;, not the actual value. That way the system is universal. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -27,9 +28,10 @@
         <argsstring></argsstring>
         <name>path</name>
         <briefdescription>
+<para>Magic path that stores config files. </para>
         </briefdescription>
         <detaileddescription>
-<para>Magic path that stores config files. Auto-redirects to the default and write paths in the home folder. It is set up in <ref refid="location_8py" kindref="compound">openage/cvar/location.py</ref> and <ref refid="game_2main_8py" kindref="compound">openage/game/main.py</ref> </para>
+<para>Auto-redirects to the default and write paths in the home folder. It is set up in <ref refid="location_8py" kindref="compound">openage/cvar/location.py</ref> and <ref refid="game_2main_8py" kindref="compound">openage/game/main.py</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -78,9 +80,10 @@
           <declname>accessors</declname>
         </param>
         <briefdescription>
+<para>Creates a configuration entry. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a configuration entry <simplesect kind="return"><para>if the entry name was successful. It won&apos;t be if the name was used before. </para>
+<para><simplesect kind="return"><para>if the entry name was successful. It won&apos;t be if the name was used before. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -100,9 +103,10 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>Gets the value of a config entry. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the value of a config entry. Internally calls the stored get function. </para>
+<para>Internally calls the stored get function. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -124,9 +128,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>Sets the config entry value. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the config entry value. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -144,9 +148,9 @@
           <declname>path</declname>
         </param>
         <briefdescription>
+<para>Performs the loading of a configuration file via the Python implementation. </para>
         </briefdescription>
         <detaileddescription>
-<para>Performs the loading of a configuration file via the Python implementation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -161,9 +165,9 @@
         <argsstring>()</argsstring>
         <name>load_all</name>
         <briefdescription>
+<para>Perform the load of the default config files. </para>
         </briefdescription>
         <detaileddescription>
-<para>Perform the load of the default config files. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -175,9 +179,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Configuration manager. </para>
     </briefdescription>
     <detaileddescription>
-<para>Configuration manager.</para>
 <para>Stores key-value pairs of config data. Actually it doesn&apos;t store data, instead functions that perform/fetch the configuration at the appropriate place.</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="classopenage_1_1cvar_1_1_c_var_manager" kindref="compound">CVarManager</ref>: string get(string name) except + void set(string name, string value) except + void load_config(Path path) except + </para>

@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1audio_1_1_in_memory_loader.xhtml" title=" " alt="" coords="5,5,180,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml" title=" " alt="" coords="228,5,435,47"/>
+<area shape="rect" id="node1" href="$classopenage_1_1audio_1_1_in_memory_loader.xhtml" title="A InMemoryLoader loads a audio file into memory and converts it into 16 bit signed integer pcm data." alt="" coords="5,5,180,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml" title="A OpusInMemoryLoader load&#39;s opus encoded data from opus files." alt="" coords="228,5,435,47"/>
 </map>

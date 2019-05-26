@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-559 172.5,-559 172.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="pxd:">
 <polygon fill="#bfbfbf" stroke="black" points="29.5,-0.5 29.5,-79.5 129.5,-79.5 129.5,-0.5 29.5,-0.5"/>
 <text text-anchor="start" x="37.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::tests</text>
 <text text-anchor="middle" x="79.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::testenum</text>
@@ -101,7 +101,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title="Container for possible enum values.">
 <polygon fill="white" stroke="black" points="0,-365.5 0,-554.5 159,-554.5 159,-365.5 0,-365.5"/>
 <text text-anchor="start" x="8" y="-542.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Enum</text>
 <text text-anchor="middle" x="79.5" y="-531.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; DerivedType &gt;</text>

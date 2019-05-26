@@ -57,7 +57,7 @@ var sectionId = 'dynsection-11';
 <polygon fill="white" stroke="none" points="-4,4 -4,-172 564,-172 564,4 -4,4"/>
 <!-- Node99 -->
 <g id="node1" class="node"><title>Node99</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns a seed based on time since epoch as well as data from std::random_device if available.">
 <polygon fill="#bfbfbf" stroke="black" points="423,-72 423,-91 560,-91 560,-72 423,-72"/>
 <text text-anchor="middle" x="491.5" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::random_seed</text>
 </a>
@@ -65,7 +65,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node100 -->
 <g id="node2" class="node"><title>Node100</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" target="_top" xlink:title="Tests the distribution of the boolean generation.">
 <polygon fill="white" stroke="black" points="271,-137.5 271,-167.5 372,-167.5 372,-137.5 271,-137.5"/>
 <text text-anchor="start" x="279" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="321.5" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">::bool_dist</text>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node102 -->
 <g id="node4" class="node"><title>Node102</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a7c865b312f955cab3ff9ea078fd0cc95" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a7c865b312f955cab3ff9ea078fd0cc95" target="_top" xlink:title="Tests filling integers.">
 <polygon fill="white" stroke="black" points="271,-88.5 271,-118.5 372,-118.5 372,-88.5 271,-88.5"/>
 <text text-anchor="start" x="279" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="321.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">::fill</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node104 -->
 <g id="node6" class="node"><title>Node104</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1rng.xhtml#a595e7ab593687bbb092d69186c65c45a" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1rng.xhtml#a595e7ab593687bbb092d69186c65c45a" target="_top" xlink:title="Returns the value of the global seed.">
 <polygon fill="white" stroke="black" points="256,-50 256,-69 387,-69 387,-50 256,-50"/>
 <text text-anchor="middle" x="321.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::global_seed</text>
 </a>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node105 -->
 <g id="node7" class="node"><title>Node105</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a265e3eddfd2efda00d3f1d1d9291469d" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a265e3eddfd2efda00d3f1d1d9291469d" target="_top" xlink:title="Tests the serializing functionality.">
 <polygon fill="white" stroke="black" points="271,-0.5 271,-30.5 372,-30.5 372,-0.5 271,-0.5"/>
 <text text-anchor="start" x="279" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="321.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::serialize</text>
@@ -138,7 +138,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node103 -->
 <g id="node5" class="node"><title>Node103</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#af44253d3e7adef12c7a4c4371b97a2fd" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#af44253d3e7adef12c7a4c4371b97a2fd" target="_top" xlink:title="This function was originally coded by David Tritscher.">
 <polygon fill="white" stroke="black" points="0,-71.5 0,-123.5 220,-123.5 220,-71.5 0,-71.5"/>
 <text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="8" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">::HuffmanTable&lt; LZX_PRETREE</text>

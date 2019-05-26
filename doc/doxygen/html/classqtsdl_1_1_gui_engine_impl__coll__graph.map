@@ -1,10 +1,10 @@
 <map id="qtsdl::GuiEngineImpl" name="qtsdl::GuiEngineImpl">
 <area shape="rect" id="node1" title=" " alt="" coords="207,740,373,920"/>
 <area shape="rect" id="node2" title=" " alt="" coords="145,42,216,119"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_recursive_directory_watcher.xhtml" title=" " alt="" coords="77,402,284,509"/>
-<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_renderer_impl.xhtml" title=" " alt="" coords="309,233,493,677"/>
-<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_rendering_setup_routines.xhtml" title=" " alt="" coords="294,5,507,156"/>
-<area shape="rect" id="node6" href="$classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml" title=" " alt="" coords="517,380,764,531"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_recursive_directory_watcher.xhtml" title="Emits a signal when anything changes in the directories." alt="" coords="77,402,284,509"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_renderer_impl.xhtml" title="Passes the native graphic context to Qt." alt="" coords="309,233,493,677"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_rendering_setup_routines.xhtml" title="Returns a GL context usable by Qt classes." alt="" coords="294,5,507,156"/>
+<area shape="rect" id="node6" href="$classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml" title="The Qml Engine used by openage." alt="" coords="517,380,764,531"/>
 <area shape="rect" id="node7" title=" " alt="" coords="562,42,658,119"/>
-<area shape="rect" id="node8" href="$classqtsdl_1_1_gui_singleton_items_info.xhtml" title=" " alt="" coords="682,42,866,119"/>
+<area shape="rect" id="node8" href="$classqtsdl_1_1_gui_singleton_items_info.xhtml" title="Accessible during creation of any singleton QML item." alt="" coords="682,42,866,119"/>
 </map>

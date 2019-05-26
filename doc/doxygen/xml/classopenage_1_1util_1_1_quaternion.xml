@@ -59,9 +59,9 @@
         <argsstring></argsstring>
         <name>w</name>
         <briefdescription>
+<para>Stored quaternion number components. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stored quaternion number components. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -191,9 +191,9 @@
         <argsstring>()</argsstring>
         <name>Quaternion</name>
         <briefdescription>
+<para>Create a identity quaternion. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a identity quaternion. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -217,9 +217,10 @@
           <declname>mat</declname>
         </param>
         <briefdescription>
+<para>Constructs a quaternion from a rotation matrix. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructs a quaternion from a rotation matrix. mat is assumed to be a left-matrix: vec_transformed = mat * vec_orig.</para>
+<para>mat is assumed to be a left-matrix: vec_transformed = mat * vec_orig.</para>
 <para>mat can be 3x3 or 4x4.</para>
 <para>This tries to avoid float-fuckups in near-zero divides by using larger components first: w, then x, y, or z.</para>
 <para>trace(mat) &gt;= 0 =&gt; |w| &gt; 1/2 =&gt; as small as a largest component can be. else: max diagonal entry &lt;=&gt; max (|x|, |y|, |z|) which is larger than |w| and &gt;= 1/2 </para>
@@ -325,9 +326,9 @@
           <declname>o</declname>
         </param>
         <briefdescription>
+<para>Perform a dot product with another quaternion. </para>
         </briefdescription>
         <detaileddescription>
-<para>Perform a dot product with another quaternion. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -347,9 +348,9 @@
         <argsstring>() const</argsstring>
         <name>norm</name>
         <briefdescription>
+<para>Calculate the length of the quaternion. </para>
         </briefdescription>
         <detaileddescription>
-<para>Calculate the length of the quaternion. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -364,9 +365,9 @@
         <argsstring>()</argsstring>
         <name>normalize</name>
         <briefdescription>
+<para>Ensure that the quaternion&apos;s length equals 1. </para>
         </briefdescription>
         <detaileddescription>
-<para>Ensure that the quaternion&apos;s length equals 1. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -380,9 +381,9 @@
         <argsstring>() const</argsstring>
         <name>normalized</name>
         <briefdescription>
+<para>Return the normalized version of this quaternion. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the normalized version of this quaternion. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -396,9 +397,9 @@
         <argsstring>()</argsstring>
         <name>inverse</name>
         <briefdescription>
+<para>Inverted the quaternion: Flip the rotation axes and scale by inverse sum of all components squared. </para>
         </briefdescription>
         <detaileddescription>
-<para>Inverted the quaternion: Flip the rotation axes and scale by inverse sum of all components squared.</para>
 <para>inv(q)= conj(q)/(w*w + x*x + y*y + z*z) </para>
         </detaileddescription>
         <inbodydescription>
@@ -416,9 +417,9 @@
         <argsstring>() const</argsstring>
         <name>inversed</name>
         <briefdescription>
+<para>Return the inverted quaternion. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the inverted quaternion. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -432,9 +433,9 @@
         <argsstring>()</argsstring>
         <name>conjugate</name>
         <briefdescription>
+<para>Conjugate the quaternion by additive inverting the x, y and z components. </para>
         </briefdescription>
         <detaileddescription>
-<para>Conjugate the quaternion by additive inverting the x, y and z components. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -450,9 +451,9 @@
         <argsstring>() const</argsstring>
         <name>conjugated</name>
         <briefdescription>
+<para>Return the conjugated quaternion. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the conjugated quaternion. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -475,9 +476,9 @@
           <defval><ref refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" kindref="member">default_eps</ref></defval>
         </param>
         <briefdescription>
+<para>Test if the rotation of both quaternions is the same. </para>
         </briefdescription>
         <detaileddescription>
-<para>Test if the rotation of both quaternions is the same. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -500,9 +501,9 @@
           <defval><ref refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" kindref="member">default_eps</ref></defval>
         </param>
         <briefdescription>
+<para>Test if both quaternion store the same numbers. </para>
         </briefdescription>
         <detaileddescription>
-<para>Test if both quaternion store the same numbers. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -528,9 +529,9 @@
           <defval><ref refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" kindref="member">default_eps</ref></defval>
         </param>
         <briefdescription>
+<para>Test rotation equality with another quaternion with given precision in radians. </para>
         </briefdescription>
         <detaileddescription>
-<para>Test rotation equality with another quaternion with given precision in radians. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -555,9 +556,9 @@
           <defval><ref refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" kindref="member">default_eps</ref></defval>
         </param>
         <briefdescription>
+<para>Test rotation equality with another quaternion with given precision in degree. </para>
         </briefdescription>
         <detaileddescription>
-<para>Test rotation equality with another quaternion with given precision in degree. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -572,9 +573,9 @@
         <argsstring>() const</argsstring>
         <name>to_matrix</name>
         <briefdescription>
+<para>Generate the corresponding rotation matrix. </para>
         </briefdescription>
         <detaileddescription>
-<para>Generate the corresponding rotation matrix. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -594,9 +595,9 @@
           <declname>vec</declname>
         </param>
         <briefdescription>
+<para>Transforms a vector by this quaternion. </para>
         </briefdescription>
         <detaileddescription>
-<para>Transforms a vector by this quaternion. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -868,9 +869,9 @@
           <declname>axis</declname>
         </param>
         <briefdescription>
+<para>Create a quaternion from a rotation in radians around a given axis. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a quaternion from a rotation in radians around a given axis. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -892,9 +893,9 @@
           <declname>axis</declname>
         </param>
         <briefdescription>
+<para>Create a quaternion from a rotation in degree around a given axis. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a quaternion from a rotation in degree around a given axis. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -928,9 +929,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Implements Quaternions to represent 3d rotations. </para>
     </briefdescription>
     <detaileddescription>
-<para>Implements Quaternions to represent 3d rotations.</para>
 <para>The 4 components stores 3 components as rotation axis, and one component as the rotation amount.</para>
 <para>This is mainly Ken Shoemake stuff from: <ulink url="http://www.cs.ucr.edu/~vbz/resources/quatut.pdf">http://www.cs.ucr.edu/~vbz/resources/quatut.pdf</ulink></para>
 <para>Also: From <ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref> to <ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref> and Back J.M.P. van Waveren, id Software, 2005 </para>

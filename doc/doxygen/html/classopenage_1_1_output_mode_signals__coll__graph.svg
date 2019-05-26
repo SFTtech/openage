@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-156 149,-156 149,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Signals for a gui mode.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-57.5 145,-57.5 145,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="72.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputModeSignals</text>
 <polyline fill="none" stroke="black" points="0,-38.5 145,-38.5 "/>

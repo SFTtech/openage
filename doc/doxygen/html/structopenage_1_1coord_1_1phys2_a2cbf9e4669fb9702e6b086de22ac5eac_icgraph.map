@@ -1,7 +1,7 @@
 <map id="openage::coord::phys2::to_phys3" name="openage::coord::phys2::to_phys3">
 <area shape="rect" id="node1" title=" " alt="" coords="633,39,788,80"/>
-<area shape="rect" id="node2" href="$namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" title=" " alt="" coords="419,46,585,73"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" title=" " alt="" coords="212,5,371,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title=" " alt="" coords="217,71,365,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title=" " alt="" coords="5,5,164,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" title="given the west most point of a building foundation and the tile_delta size of the foundation,..." alt="" coords="419,46,585,73"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" title="calculate object start and end positions." alt="" coords="212,5,371,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title="Display this mode." alt="" coords="217,71,365,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title="would this intersect with another object if it were positioned at the given point" alt="" coords="5,5,164,47"/>
 </map>

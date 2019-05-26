@@ -1,45 +1,45 @@
 <map id="openage::py::str" name="openage::py::str">
-<area shape="rect" id="node1" title=" " alt="" coords="1193,894,1309,921"/>
+<area shape="rect" id="node1" title="str(value);" alt="" coords="1193,894,1309,921"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1struct_1_1_named_struct.xhtml#a9cdd6f3d9b9ba4ab07beb41d5021b83e" title=" " alt="" coords="934,5,1109,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition.xhtml#acf2c82022f9b36751161b85d5b1fc269" title=" " alt="" coords="916,71,1127,112"/>
 <area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet.xhtml#a2ac6a4c4c3a9f91347f396c3860d868d" title=" " alt="" coords="907,136,1135,177"/>
 <area shape="rect" id="node5" href="$classopenage_1_1util_1_1struct_1_1_named_struct.xhtml#ad7a89792617e8271fe2b025116d10794" title=" " alt="" coords="934,201,1109,243"/>
 <area shape="rect" id="node6" href="$classopenage_1_1convert_1_1blendomatic_1_1_blendomatic.xhtml#a31d656f8b2b72517f347404d7eba9e04" title=" " alt="" coords="924,267,1119,308"/>
 <area shape="rect" id="node7" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ac0a5dae7195fabd749cffb70a062a647" title=" " alt="" coords="924,333,1119,359"/>
-<area shape="rect" id="node8" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a671299bb61bb30cecb3fa42de25333b0" title=" " alt="" coords="653,339,827,395"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a671299bb61bb30cecb3fa42de25333b0" title="Creates a truncated_string_literal from a regular string literal." alt="" coords="653,339,827,395"/>
 <area shape="rect" id="node10" href="$namespaceopenage_1_1convert_1_1dataformat_1_1util.xhtml#a54a8af4c9c5573541a15c7660e862111" title=" " alt="" coords="897,821,1145,863"/>
 <area shape="rect" id="node11" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_lookup_member.xhtml#a4d654b6ba05da6a0aba27b9008fa38cb" title="perform lookup of raw data &#45;&gt; enum member name" alt="" coords="900,887,1143,928"/>
 <area shape="rect" id="node12" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member.xhtml#a9d61825e531ff63ac842efeb88376e8c" title="hash these member&#39;s settings." alt="" coords="900,952,1143,993"/>
 <area shape="rect" id="node13" href="$namespaceopenage_1_1util_1_1strings.xhtml#a16e727f3dbbdb651bec86f64231a2d54" title="Formats an &quot;x out of y&quot; string with fixed width." alt="" coords="934,1017,1109,1059"/>
 <area shape="rect" id="node16" href="$classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml#a117e184527bb7a1a371a8c53bf7f61ff" title="writes this color table (palette) to a png image." alt="" coords="931,1083,1111,1124"/>
-<area shape="rect" id="node18" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aaff2674b9d1b7ffcf0a67f8ecba9f1b6" title=" " alt="" coords="950,1148,1093,1189"/>
-<area shape="rect" id="node19" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a61c4b546903316ecf379bfe7bd9553f1" title=" " alt="" coords="659,603,821,644"/>
-<area shape="rect" id="node20" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#aa4f041b85b8ae3df628165f73397d1fa" title=" " alt="" coords="941,435,1102,476"/>
-<area shape="rect" id="node21" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#ae2139acfbb2a838e378d0652e23943b8" title=" " alt="" coords="659,273,821,315"/>
+<area shape="rect" id="node18" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aaff2674b9d1b7ffcf0a67f8ecba9f1b6" title="obj[key]" alt="" coords="950,1148,1093,1189"/>
+<area shape="rect" id="node19" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a61c4b546903316ecf379bfe7bd9553f1" title="Truncates a suffix from a string literal." alt="" coords="659,603,821,644"/>
+<area shape="rect" id="node20" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#aa4f041b85b8ae3df628165f73397d1fa" title="Tests whether a string literal starts with the given prefix." alt="" coords="941,435,1102,476"/>
+<area shape="rect" id="node21" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#ae2139acfbb2a838e378d0652e23943b8" title="Strips a prefix from a given string literal." alt="" coords="659,273,821,315"/>
 <area shape="rect" id="node22" href="$namespaceopenage_1_1convert_1_1interface_1_1rename.xhtml#a045e4e1a64322c77bfee10f24e8613e7" title="Renaming interface assets and splitting into directories." alt="" coords="901,1213,1142,1255"/>
-<area shape="rect" id="node24" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" title=" " alt="" coords="937,1279,1106,1320"/>
-<area shape="rect" id="node25" href="$classopenage_1_1event_1_1demo_1_1_reset_game.xhtml#a0fa6b84fb64f30f1edd75d465876a2b3" title=" " alt="" coords="947,1344,1096,1385"/>
-<area shape="rect" id="node26" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_wall.xhtml#a3e60c155c12ea17e0c149b3eca114f70" title=" " alt="" coords="939,1410,1104,1466"/>
-<area shape="rect" id="node27" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#a81a50b0cb9bf2c5148a355f02829c992" title=" " alt="" coords="935,1490,1107,1546"/>
+<area shape="rect" id="node24" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" title="This method implements the effects of the event." alt="" coords="937,1279,1106,1320"/>
+<area shape="rect" id="node25" href="$classopenage_1_1event_1_1demo_1_1_reset_game.xhtml#a0fa6b84fb64f30f1edd75d465876a2b3" title="This method implements the effects of the event." alt="" coords="947,1344,1096,1385"/>
+<area shape="rect" id="node26" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_wall.xhtml#a3e60c155c12ea17e0c149b3eca114f70" title="Is called to calculate the execution time for an event of this eventclass." alt="" coords="939,1410,1104,1466"/>
+<area shape="rect" id="node27" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#a81a50b0cb9bf2c5148a355f02829c992" title="Is called to calculate the execution time for an event of this eventclass." alt="" coords="935,1490,1107,1546"/>
 <area shape="rect" id="node28" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a53ae3dc0d5327095637653e4d17b638d" title="pretty&#45;format a path in this filesystem like object." alt="" coords="931,1571,1112,1612"/>
-<area shape="rect" id="node29" href="$classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" title=" " alt="" coords="663,669,817,695"/>
+<area shape="rect" id="node29" href="$classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" title="writes the string (excluding the null terminator)" alt="" coords="663,669,817,695"/>
 <area shape="rect" id="node34" href="$namespaceopenage_1_1pyinterface_1_1tests.xhtml#ad69d94519ba25682897d8da53beb86df" title=" " alt="" coords="950,1636,1093,1677"/>
 <area shape="rect" id="node35" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#a2e8e2035b251083880f7fe97d4090734" title="Helper method to be called from all other methods." alt="" coords="928,1702,1115,1758"/>
 <area shape="rect" id="node42" href="$classopenage_1_1convert_1_1drs_1_1_d_r_s.xhtml#ad2594ba2dd37d225f1a0f8b86df15c9a" title=" " alt="" coords="922,1783,1121,1824"/>
-<area shape="rect" id="node43" href="$namespaceopenage_1_1util.xhtml#aae9cd09351bc11ad2c9fcf701786340a" title=" " alt="" coords="953,1848,1089,1889"/>
-<area shape="rect" id="node44" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" title=" " alt="" coords="941,552,1102,593"/>
-<area shape="rect" id="node48" href="$namespaceopenage_1_1util.xhtml#a5519d25810f698275993214ce79016c7" title=" " alt="" coords="677,720,803,761"/>
-<area shape="rect" id="node49" href="$namespaceopenage_1_1util.xhtml#a82a1e7bf14b6f49be2d5fe4ec89f920e" title=" " alt="" coords="439,776,565,817"/>
+<area shape="rect" id="node43" href="$namespaceopenage_1_1util.xhtml#aae9cd09351bc11ad2c9fcf701786340a" title="returns true if str matches the basic globbing pattern in the pattern, &#39;*&#39; matches any number of char..." alt="" coords="953,1848,1089,1889"/>
+<area shape="rect" id="node44" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" title="Returns the length of the string literal, excluding the terminating NULL byte." alt="" coords="941,552,1102,593"/>
+<area shape="rect" id="node48" href="$namespaceopenage_1_1util.xhtml#a5519d25810f698275993214ce79016c7" title="computes the length of the last character in a given UTF&#45;8 string." alt="" coords="677,720,803,761"/>
+<area shape="rect" id="node49" href="$namespaceopenage_1_1util.xhtml#a82a1e7bf14b6f49be2d5fe4ec89f920e" title="pops back (deletes) the last UTF&#45;8 character in a std::string." alt="" coords="439,776,565,817"/>
 <area shape="rect" id="node50" href="$classopenage_1_1util_1_1struct_1_1_flags.xhtml#aff72d5cb5a508e186cc5ff6fe122b165" title="Default handler for any unknown bits." alt="" coords="911,1914,1131,1941"/>
-<area shape="rect" id="node9" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a6a9d0df52733d9d7ae0bcc1bc561e38f" title=" " alt="" coords="421,311,583,352"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a6a9d0df52733d9d7ae0bcc1bc561e38f" title="Strips a prefix, given as const char *, from a given string literal." alt="" coords="421,311,583,352"/>
 <area shape="rect" id="node14" href="$namespaceopenage_1_1convert_1_1main.xhtml#a06157ab72dcb855b2e993bf128e9faf1" title="Perform asset conversion." alt="" coords="643,1017,837,1059"/>
 <area shape="rect" id="node15" href="$namespaceopenage_1_1testing_1_1main.xhtml#a22daa2dd4990bc8d016d850a9d9fc5fb" title="CLI main method." alt="" coords="651,966,829,993"/>
 <area shape="rect" id="node17" href="$classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml#aeea5aabc465e55e3b8a519049bbcb623" title=" " alt="" coords="645,1083,835,1124"/>
 <area shape="rect" id="node23" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a7d1272350acf362f78ea6e0373880c59" title=" " alt="" coords="631,1221,849,1247"/>
-<area shape="rect" id="node30" href="$namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" title=" " alt="" coords="215,632,373,673"/>
+<area shape="rect" id="node30" href="$namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" title="very early and inefficient printing of the console to a pty." alt="" coords="215,632,373,673"/>
 <area shape="rect" id="node31" href="$namespaceopenage_1_1console_1_1tests.xhtml#a4a108e620e3fead2c08ff14841552186" title=" " alt="" coords="5,675,167,716"/>
-<area shape="rect" id="node32" href="$classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" title=" " alt="" coords="437,541,567,583"/>
-<area shape="rect" id="node33" href="$classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" title=" " alt="" coords="437,607,567,648"/>
+<area shape="rect" id="node32" href="$classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" title="writes the unicode codepoint, as utf&#45;8" alt="" coords="437,541,567,583"/>
+<area shape="rect" id="node33" href="$classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" title="guess what this does." alt="" coords="437,607,567,648"/>
 <area shape="rect" id="node36" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#ab8029eaad6e6319c24ab0cc751c5d616" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;wb&#39;&quot;)." alt="" coords="637,1741,843,1783"/>
 <area shape="rect" id="node37" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#a599de6a44e07de7953d470a52e73b5dd" title="Shall ensure that the directory exists." alt="" coords="639,1807,841,1848"/>
 <area shape="rect" id="node38" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#a050c6a9d4ffd3567d3632a11bacd8d75" title="Shall remove an empty directory." alt="" coords="645,1872,835,1913"/>
@@ -47,6 +47,6 @@
 <area shape="rect" id="node40" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#ac2dca332d04bf264b617d7f10f50a3f7" title="Shall create the file or update its timestamp." alt="" coords="643,1611,837,1652"/>
 <area shape="rect" id="node41" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#a4c0b6210f50093741463c86a97ae0002" title="Shall rename a file or directory to the target name." alt="" coords="637,1676,843,1717"/>
 <area shape="rect" id="node45" href="$namespaceopenage_1_1error.xhtml#afafcc06f7279949f56f93e5506656528" title=" " alt="" coords="662,420,818,461"/>
-<area shape="rect" id="node46" href="$namespaceopenage_1_1util.xhtml#a854794aef09b81dbec641eca208a66d7" title=" " alt="" coords="674,485,806,527"/>
-<area shape="rect" id="node47" href="$namespaceopenage_1_1util.xhtml#abeb6a94572d93a14498661545b8332ec" title=" " alt="" coords="673,551,807,578"/>
+<area shape="rect" id="node46" href="$namespaceopenage_1_1util.xhtml#a854794aef09b81dbec641eca208a66d7" title="Copies the given string to the returned unique_ptr, including 0 byte." alt="" coords="674,485,806,527"/>
+<area shape="rect" id="node47" href="$namespaceopenage_1_1util.xhtml#abeb6a94572d93a14498661545b8332ec" title="Returns the number of whitespace characters on the right of the string." alt="" coords="673,551,807,578"/>
 </map>

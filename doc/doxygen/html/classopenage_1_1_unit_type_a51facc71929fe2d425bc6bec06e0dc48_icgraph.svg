@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 416,-84 416,4 -4,4"/>
 <!-- Node67 -->
 <g id="node1" class="node"><title>Node67</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="set unit in place – return if placement was successful">
 <polygon fill="#bfbfbf" stroke="black" points="308,-24.5 308,-54.5 412,-54.5 412,-24.5 308,-24.5"/>
 <text text-anchor="start" x="316" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="360" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">place</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node68 -->
 <g id="node2" class="node"><title>Node68</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_container.xhtml#a9ef13f975890f222c360b8a5e3242939" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_container.xhtml#a9ef13f975890f222c360b8a5e3242939" target="_top" xlink:title="adds a new unit to the container and initialises using a unit type">
 <polygon fill="white" stroke="black" points="154,-49.5 154,-79.5 272,-79.5 272,-49.5 154,-49.5"/>
 <text text-anchor="start" x="162" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitContainer</text>
 <text text-anchor="middle" x="213" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::new_unit</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node69 -->
 <g id="node3" class="node"><title>Node69</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_type.xhtml#a0649efd34fdb53589135167493f66633" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_type.xhtml#a0649efd34fdb53589135167493f66633" target="_top" xlink:title="similar to place but places adjacent to an existing object">
 <polygon fill="white" stroke="black" points="161,-0.5 161,-30.5 265,-30.5 265,-0.5 161,-0.5"/>
 <text text-anchor="start" x="169" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="213" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">place_beside</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node70 -->
 <g id="node4" class="node"><title>Node70</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit_container.xhtml#a0730d85fce9d5bec6b2bc76450b7dfa9" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit_container.xhtml#a0730d85fce9d5bec6b2bc76450b7dfa9" target="_top" xlink:title="adds a new unit to the container and initialises using a unit type places outside an existing object ...">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 118,-30.5 118,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitContainer</text>
 <text text-anchor="middle" x="59" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::new_unit</text>

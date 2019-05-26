@@ -1,5 +1,5 @@
 <map id="openage::renderer::opengl::GlTexture2dArray::GlTexture2dArray" name="openage::renderer::opengl::GlTexture2dArray::GlTexture2dArray">
-<area shape="rect" id="node1" title=" " alt="" coords="5,45,175,101"/>
+<area shape="rect" id="node1" title="Constructs an array of the same number of layers as the size of the given vector, and fills the layer..." alt="" coords="5,45,175,101"/>
 <area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a57830eb6623cc7171953bc0214c6ee2c" title=" " alt="" coords="223,5,387,61"/>
-<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title=" " alt="" coords="223,85,387,141"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title="Returns the dimensions of the whole texture bitmap." alt="" coords="223,85,387,141"/>
 </map>

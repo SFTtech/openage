@@ -1,4 +1,4 @@
 <map id="openage::rng::RNG::to_stream" name="openage::rng::RNG::to_stream">
-<area shape="rect" id="node1" title=" " alt="" coords="221,5,363,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1rng.xhtml#acb0200a44ab02cc735041096cad88fbe" title=" " alt="" coords="5,13,173,39"/>
+<area shape="rect" id="node1" title="Outputs the rng state to a stream." alt="" coords="221,5,363,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1rng.xhtml#acb0200a44ab02cc735041096cad88fbe" title="Writes the rng state to a stream." alt="" coords="5,13,173,39"/>
 </map>

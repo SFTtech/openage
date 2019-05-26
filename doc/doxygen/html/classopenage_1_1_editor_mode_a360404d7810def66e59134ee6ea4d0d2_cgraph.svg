@@ -34,7 +34,7 @@
 </g>
 <!-- Node17 -->
 <g id="node3" class="node"><title>Node17</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title="return currently running game or null if a game is not currently running">
 <polygon fill="white" stroke="black" points="303,-6 303,-25 441,-25 441,-6 303,-6"/>
 <text text-anchor="middle" x="372" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get_game</text>
 </a>

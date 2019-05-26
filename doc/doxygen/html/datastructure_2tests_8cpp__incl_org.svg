@@ -73,7 +73,7 @@
 </g>
 <!-- Node35 -->
 <g id="node36" class="node"><title>Node35</title>
-<g id="a_node36"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title=" ">
+<g id="a_node36"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title="This file contains the implementation of a pairing heap.">
 <polygon fill="white" stroke="black" points="278.5,-392.952 278.5,-411.952 358.5,-411.952 358.5,-392.952 278.5,-392.952"/>
 <text text-anchor="middle" x="318.5" y="-399.952" font-family="Helvetica,sans-Serif" font-size="10.00">pairing_heap.h</text>
 </a>

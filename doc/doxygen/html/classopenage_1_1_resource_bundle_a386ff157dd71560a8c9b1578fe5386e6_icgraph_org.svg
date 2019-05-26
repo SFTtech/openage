@@ -19,7 +19,7 @@
 </g>
 <!-- Node74 -->
 <g id="node2" class="node"><title>Node74</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a5511f9f158fdeabca07be9d5314d7c38" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a5511f9f158fdeabca07be9d5314d7c38" target="_top" xlink:title="Check if the player has enough resources to deduct the given amount.">
 <polygon fill="white" stroke="black" points="332,-112 332,-142 441,-142 441,-112 332,-112"/>
 <text text-anchor="start" x="340" y="-130" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::can</text>
 <text text-anchor="middle" x="386.5" y="-119" font-family="Helvetica,sans-Serif" font-size="10.00">_deduct</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node76 -->
 <g id="node4" class="node"><title>Node76</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_player.xhtml#a7afa6e6f2c511235e1aa58a40b16eaf5" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_player.xhtml#a7afa6e6f2c511235e1aa58a40b16eaf5" target="_top" xlink:title="Check if can add to stockpile.">
 <polygon fill="white" stroke="black" points="332,-63 332,-93 441,-93 441,-63 332,-63"/>
 <text text-anchor="start" x="340" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::can</text>
 <text text-anchor="middle" x="386.5" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">_receive</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node77 -->
 <g id="node5" class="node"><title>Node77</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#ae324ee7f007981e5f9629f6ed30b8641" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#ae324ee7f007981e5f9629f6ed30b8641" target="_top" xlink:title="If amount can&#39;t be deducted return false, else deduct the given amount and return true.">
 <polygon fill="white" stroke="black" points="321,-14 321,-44 452,-44 452,-14 321,-14"/>
 <text text-anchor="start" x="329" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <text text-anchor="middle" x="386.5" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">::deduct</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node75 -->
 <g id="node3" class="node"><title>Node75</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" target="_top" xlink:title="Check if the player can make a new unit of the given type.">
 <polygon fill="white" stroke="black" points="147,-117.5 147,-136.5 285,-136.5 285,-117.5 147,-117.5"/>
 <text text-anchor="middle" x="216" y="-124.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::can_make</text>
 </a>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node78 -->
 <g id="node6" class="node"><title>Node78</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#a3ff378e505d9036c74204730b53d9fba" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#a3ff378e505d9036c74204730b53d9fba" target="_top" xlink:title="remove from stockpile if available">
 <polygon fill="white" stroke="black" points="155,-19.5 155,-38.5 277,-38.5 277,-19.5 155,-19.5"/>
 <text text-anchor="middle" x="216" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::deduct</text>
 </a>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node79 -->
 <g id="node7" class="node"><title>Node79</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" target="_top" xlink:title="The given player buys the given resource with gold.">
 <polygon fill="white" stroke="black" points="0,-38.5 0,-57.5 111,-57.5 111,-38.5 0,-38.5"/>
 <text text-anchor="middle" x="55.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::buy</text>
 </a>
@@ -100,7 +100,7 @@
 </g>
 <!-- Node80 -->
 <g id="node8" class="node"><title>Node80</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title="The given player sells the given resource for gold.">
 <polygon fill="white" stroke="black" points="0.5,-0.5 0.5,-19.5 110.5,-19.5 110.5,-0.5 0.5,-0.5"/>
 <text text-anchor="middle" x="55.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::sell</text>
 </a>

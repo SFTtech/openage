@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 748,-84 748,4 -4,4"/>
 <!-- Node28 -->
 <g id="node1" class="node"><title>Node28</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Add an event for a specified target.">
 <polygon fill="#bfbfbf" stroke="black" points="604,-24.5 604,-54.5 744,-54.5 744,-24.5 604,-24.5"/>
 <text text-anchor="start" x="612" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="674" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_event</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node29 -->
 <g id="node2" class="node"><title>Node29</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a345332e87684e73eeef16da46255882f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a345332e87684e73eeef16da46255882f" target="_top" xlink:title="Add a new Event to the queue.">
 <polygon fill="white" stroke="black" points="459,-24.5 459,-54.5 568,-54.5 568,-24.5 459,-24.5"/>
 <text text-anchor="start" x="467" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="513.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_event</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node31 -->
 <g id="node4" class="node"><title>Node31</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" target="_top" xlink:title="This method implements the effects of the event.">
 <polygon fill="white" stroke="black" points="148,-49.5 148,-79.5 275,-79.5 275,-49.5 148,-49.5"/>
 <text text-anchor="start" x="156" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::demo</text>
 <text text-anchor="middle" x="211.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BallReflectPanel::invoke</text>

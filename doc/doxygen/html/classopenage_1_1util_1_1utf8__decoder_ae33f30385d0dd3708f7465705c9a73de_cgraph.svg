@@ -20,7 +20,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1utf8__decoder.xhtml#acca7311eed2d83530c6ae78e73132d31" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1utf8__decoder.xhtml#acca7311eed2d83530c6ae78e73132d31" target="_top" xlink:title="resets the decoder to its initial state">
 <polygon fill="white" stroke="black" points="154,-0.5 154,-30.5 248,-30.5 248,-0.5 154,-0.5"/>
 <text text-anchor="start" x="162" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::utf8</text>
 <text text-anchor="middle" x="201" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_decoder::reset</text>

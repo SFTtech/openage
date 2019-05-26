@@ -221,9 +221,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Adapts core that uses a property map to QAbstractListModel interface. </para>
     </briefdescription>
     <detaileddescription>
-<para>Adapts core that uses a property map to QAbstractListModel interface. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6435">

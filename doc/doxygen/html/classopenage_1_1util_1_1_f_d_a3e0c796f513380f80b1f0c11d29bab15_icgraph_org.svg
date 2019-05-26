@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-178.534 698,-178.534 698,4 -4,4"/>
 <!-- Node65 -->
 <g id="node1" class="node"><title>Node65</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="writes &#39;bytes&#39; bytes from buf">
 <polygon fill="#bfbfbf" stroke="black" points="597,-112.034 597,-142.034 694,-142.034 694,-112.034 597,-112.034"/>
 <text text-anchor="start" x="605" y="-130.034" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="645.5" y="-119.034" font-family="Helvetica,sans-Serif" font-size="10.00">write</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node66 -->
 <g id="node2" class="node"><title>Node66</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#aa7042077eda5413ddddf0075a1a66761" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#aa7042077eda5413ddddf0075a1a66761" target="_top" xlink:title="writes the char">
 <polygon fill="white" stroke="black" points="454.5,-144.034 454.5,-174.034 551.5,-174.034 551.5,-144.034 454.5,-144.034"/>
 <text text-anchor="start" x="462.5" y="-162.034" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="503" y="-151.034" font-family="Helvetica,sans-Serif" font-size="10.00">putbyte</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node70 -->
 <g id="node6" class="node"><title>Node70</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" target="_top" xlink:title="writes the string (excluding the null terminator)">
 <polygon fill="white" stroke="black" points="445,-86.5342 445,-105.534 561,-105.534 561,-86.5342 445,-86.5342"/>
 <text text-anchor="middle" x="503" y="-93.5342" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::puts</text>
 </a>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node67 -->
 <g id="node3" class="node"><title>Node67</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" target="_top" xlink:title="very early and inefficient printing of the console to a pty.">
 <polygon fill="white" stroke="black" points="157,-81.0342 157,-111.034 276,-111.034 276,-81.0342 157,-81.0342"/>
 <text text-anchor="start" x="165" y="-99.0342" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="216.5" y="-88.0342" font-family="Helvetica,sans-Serif" font-size="10.00">::to_terminal</text>
@@ -99,7 +99,7 @@
 </g>
 <!-- Node71 -->
 <g id="node7" class="node"><title>Node71</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" target="_top" xlink:title="guess what this does.">
 <polygon fill="white" stroke="black" points="312,-81.0342 312,-111.034 409,-111.034 409,-81.0342 312,-81.0342"/>
 <text text-anchor="start" x="320" y="-99.0342" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="360.5" y="-88.0342" font-family="Helvetica,sans-Serif" font-size="10.00">printf</text>
@@ -113,7 +113,7 @@
 </g>
 <!-- Node72 -->
 <g id="node8" class="node"><title>Node72</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title="writes the unicode codepoint, as utf&#45;8">
 <polygon fill="white" stroke="black" points="312,-32.0342 312,-62.0342 409,-62.0342 409,-32.0342 312,-32.0342"/>
 <text text-anchor="start" x="320" y="-50.0342" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="360.5" y="-39.0342" font-family="Helvetica,sans-Serif" font-size="10.00">putcp</text>

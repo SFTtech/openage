@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-168.5 1073,-168.5 1073,4 -4,4"/>
 <!-- Node15 -->
 <g id="node1" class="node"><title>Node15</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Draw the game version and the current FPS on screen.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-74.5 0,-104.5 116,-104.5 116,-74.5 0,-74.5"/>
 <text text-anchor="start" x="8" y="-92.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::draw</text>
 <text text-anchor="middle" x="58" y="-81.5" font-family="Helvetica,sans-Serif" font-size="10.00">_debug_overlay</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node16 -->
 <g id="node2" class="node"><title>Node16</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title="render text with the at a position with specified font size">
 <polygon fill="white" stroke="black" points="636,-101 636,-120 780,-120 780,-101 636,-101"/>
 <text text-anchor="middle" x="708" y="-108" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::render_text</text>
 </a>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node20 -->
 <g id="node6" class="node"><title>Node20</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="816,-57 816,-76 930,-76 930,-57 816,-57"/>
 <text text-anchor="middle" x="873" y="-64" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>
@@ -176,7 +176,7 @@
 </g>
 <!-- Node26 -->
 <g id="node12" class="node"><title>Node26</title>
-<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="659.5,-6 659.5,-25 756.5,-25 756.5,-6 659.5,-6"/>
 <text text-anchor="middle" x="708" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

@@ -110,9 +110,10 @@
         <argsstring>() const</argsstring>
         <name>get_source</name>
         <briefdescription>
+<para>Returns a view of the shader source code. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a view of the shader source code. This might be text or binary data. </para>
+<para>This might be text or binary data. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

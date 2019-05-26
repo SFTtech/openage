@@ -15,9 +15,9 @@
       </param>
     </templateparamlist>
     <briefdescription>
+<para>Evaluates to true if callable can be called with given argument types. </para>
     </briefdescription>
     <detaileddescription>
-<para>Evaluates to true if callable can be called with given argument types.</para>
 <para><parameterlist kind="templateparam"><parameteritem>
 <parameternamelist>
 <parametername>F</parametername>

@@ -1,11 +1,11 @@
 <map id="openage::ResourceBundle::ResourceBundle" name="openage::ResourceBundle::ResourceBundle">
 <area shape="rect" id="node1" title=" " alt="" coords="897,123,1072,164"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_resource_bundle.xhtml#aec4c3c3cae1b78ff42a0bc533929e51c" title=" " alt="" coords="675,123,849,164"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" title=" " alt="" coords="440,130,627,157"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" title=" " alt="" coords="226,5,374,47"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" title=" " alt="" coords="208,71,392,98"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" title=" " alt="" coords="221,123,379,164"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" title=" " alt="" coords="221,188,379,229"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_player.xhtml#a2d3f269dc4b0acd1972e4d0a32f97c2f" title=" " alt="" coords="209,254,391,281"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" title="Returns the cost." alt="" coords="440,130,627,157"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" title="places hovering building" alt="" coords="226,5,374,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" title="Check if the player can make a new unit of the given type." alt="" coords="208,71,392,98"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" title="Called when a unit is created and active." alt="" coords="221,123,379,164"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" title="Called when a unit is destroyed." alt="" coords="221,188,379,229"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_player.xhtml#a2d3f269dc4b0acd1972e4d0a32f97c2f" title="Called when a unit is killed by this player." alt="" coords="209,254,391,281"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,5,160,47"/>
 </map>

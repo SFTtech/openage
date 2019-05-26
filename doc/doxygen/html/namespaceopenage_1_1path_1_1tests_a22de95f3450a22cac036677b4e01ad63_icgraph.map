@@ -1,4 +1,4 @@
 <map id="openage::path::tests::node_passable_line_0" name="openage::path::tests::node_passable_line_0">
-<area shape="rect" id="node1" title=" " alt="" coords="195,5,353,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1path_1_1tests.xhtml#a5d1515cb353ed8a23c4d644dc3642e73" title=" " alt="" coords="5,5,147,47"/>
+<area shape="rect" id="node1" title="This function tests passable_line." alt="" coords="195,5,353,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1path_1_1tests.xhtml#a5d1515cb353ed8a23c4d644dc3642e73" title="Top level node test." alt="" coords="5,5,147,47"/>
 </map>

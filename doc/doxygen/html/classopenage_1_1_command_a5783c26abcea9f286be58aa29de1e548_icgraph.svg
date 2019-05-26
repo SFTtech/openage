@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 431,-133 431,4 -4,4"/>
 <!-- Node70 -->
 <g id="node1" class="node"><title>Node70</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="sets invoked ability type, no other type may be used if this gets set">
 <polygon fill="#bfbfbf" stroke="black" points="304,-49.5 304,-79.5 427,-79.5 427,-49.5 304,-49.5"/>
 <text text-anchor="start" x="312" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Command::set</text>
 <text text-anchor="middle" x="365.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_ability</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node71 -->
 <g id="node2" class="node"><title>Node71</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_action_mode.xhtml#a7b0a0d95b032af2e9bf2ede80bca03c8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_action_mode.xhtml#a7b0a0d95b032af2e9bf2ede80bca03c8" target="_top" xlink:title="decides which type of right mouse click command to issue based on position.">
 <polygon fill="white" stroke="black" points="154.5,-98.5 154.5,-128.5 265.5,-128.5 265.5,-98.5 154.5,-98.5"/>
 <text text-anchor="start" x="162.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="210" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_action</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node73 -->
 <g id="node4" class="node"><title>Node73</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title="places hovering building">
 <polygon fill="white" stroke="black" points="154.5,-49.5 154.5,-79.5 265.5,-79.5 265.5,-49.5 154.5,-49.5"/>
 <text text-anchor="start" x="162.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="210" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place_selection</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node74 -->
 <g id="node5" class="node"><title>Node74</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="152,-0.5 152,-30.5 268,-30.5 268,-0.5 152,-0.5"/>
 <text text-anchor="start" x="160" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GatherAction</text>
 <text text-anchor="middle" x="210" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node72 -->
 <g id="node3" class="node"><title>Node72</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-73.5 0,-103.5 116,-103.5 116,-73.5 0,-73.5"/>
 <text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

@@ -80,7 +80,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node123 -->
 <g id="node11" class="node"><title>Node123</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title="return this engine&#39;s keybind manager.">
 <polygon fill="white" stroke="black" points="170,-196.5 170,-226.5 279,-226.5 279,-196.5 170,-196.5"/>
 <text text-anchor="start" x="178" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="224.5" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">_input_manager</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node124 -->
 <g id="node12" class="node"><title>Node124</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_output_mode.xhtml#a84beca51250156148fe4af178ed87c22" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_output_mode.xhtml#a84beca51250156148fe4af178ed87c22" target="_top" xlink:title="Called when switching to this mode.">
 <polygon fill="white" stroke="black" points="168,-147.5 168,-177.5 281,-177.5 281,-147.5 168,-147.5"/>
 <text text-anchor="start" x="176" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="224.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_enter</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node125 -->
 <g id="node13" class="node"><title>Node125</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_output_mode.xhtml#ac4731437d730c75e214f7fda4c218da1" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_output_mode.xhtml#ac4731437d730c75e214f7fda4c218da1" target="_top" xlink:title="Called when the mode is left.">
 <polygon fill="white" stroke="black" points="168,-98.5 168,-128.5 281,-128.5 281,-98.5 168,-98.5"/>
 <text text-anchor="start" x="176" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="224.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_exit</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node126 -->
 <g id="node14" class="node"><title>Node126</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2ece2b2ad4a08c15fb00a39b0f553d3c" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2ece2b2ad4a08c15fb00a39b0f553d3c" target="_top" xlink:title="register a hotkey context by pushing it onto the stack.">
 <polygon fill="white" stroke="black" points="152,-49.5 152,-79.5 297,-79.5 297,-49.5 152,-49.5"/>
 <text text-anchor="start" x="160" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="224.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::push_context</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node128 -->
 <g id="node16" class="node"><title>Node128</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a469024c2b2ac7769e0fa578c73fde160" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a469024c2b2ac7769e0fa578c73fde160" target="_top" xlink:title="removes any matching registered context from the stack.">
 <polygon fill="white" stroke="black" points="152,-0.5 152,-30.5 297,-30.5 297,-0.5 152,-0.5"/>
 <text text-anchor="start" x="160" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="224.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove_context</text>
@@ -150,7 +150,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node115 -->
 <g id="node3" class="node"><title>Node115</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_output_mode.xhtml#aafb84951c6575c14b5517312c5cfe191" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_output_mode.xhtml#aafb84951c6575c14b5517312c5cfe191" target="_top" xlink:title="Emit the &quot;announced&quot; signal with (name, InputContext::active_binds).">
 <polygon fill="white" stroke="black" points="347,-245.5 347,-275.5 460,-275.5 460,-245.5 347,-245.5"/>
 <text text-anchor="start" x="355" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="403.5" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce</text>
@@ -164,7 +164,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node116 -->
 <g id="node4" class="node"><title>Node116</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_output_mode.xhtml#a088f019691b4233408a7d230b0a5604b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_output_mode.xhtml#a088f019691b4233408a7d230b0a5604b" target="_top" xlink:title="Used for displaying the current mode.">
 <polygon fill="white" stroke="black" points="524,-270.5 524,-300.5 637,-300.5 637,-270.5 524,-270.5"/>
 <text text-anchor="start" x="532" y="-288.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::OutputMode</text>
 <text text-anchor="middle" x="580.5" y="-277.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>
@@ -178,7 +178,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node117 -->
 <g id="node5" class="node"><title>Node117</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#ab79e2d06d4aab199d3fb9c5dc5b6ff3f" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#ab79e2d06d4aab199d3fb9c5dc5b6ff3f" target="_top" xlink:title="a list of all keys of this context which are bound currently in the active context.">
 <polygon fill="white" stroke="black" points="510,-221.5 510,-251.5 651,-251.5 651,-221.5 510,-221.5"/>
 <text text-anchor="start" x="518" y="-239.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="580.5" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00">::active_binds</text>
@@ -192,7 +192,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node118 -->
 <g id="node6" class="node"><title>Node118</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac5b6bbe740edcca81b63996a22472a53" target="_top" xlink:title="Return a string representation of active key bindings from the given context.">
 <polygon fill="white" stroke="black" points="687,-221.5 687,-251.5 832,-251.5 832,-221.5 687,-221.5"/>
 <text text-anchor="start" x="695" y="-239.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="759.5" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00">::active_binds</text>
@@ -219,7 +219,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node121 -->
 <g id="node9" class="node"><title>Node121</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa0777d6b8ecc513c2a90ae8273d1938c" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa0777d6b8ecc513c2a90ae8273d1938c" target="_top" xlink:title="Get the action manager attached to this input manager.">
 <polygon fill="white" stroke="black" points="871.5,-221.5 871.5,-251.5 1016.5,-251.5 1016.5,-221.5 871.5,-221.5"/>
 <text text-anchor="start" x="879.5" y="-239.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="944" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_action_manager</text>
@@ -247,7 +247,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node120 -->
 <g id="node8" class="node"><title>Node120</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1056,-271 1056,-290 1151,-290 1151,-271 1056,-271"/>
 <text text-anchor="middle" x="1103.5" y="-278" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -265,7 +265,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node127 -->
 <g id="node15" class="node"><title>Node127</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" target="_top" xlink:title="Called by the InputManager where this context shall be registered to.">
 <polygon fill="white" stroke="black" points="333,-49.5 333,-79.5 474,-79.5 474,-49.5 333,-49.5"/>
 <text text-anchor="start" x="341" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="403.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to</text>
@@ -279,7 +279,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node129 -->
 <g id="node17" class="node"><title>Node129</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a12ae83daa8c6bfefef320a07377a9246" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a12ae83daa8c6bfefef320a07377a9246" target="_top" xlink:title="Remove the registration to an input manager.">
 <polygon fill="white" stroke="black" points="333,-0.5 333,-30.5 474,-30.5 474,-0.5 333,-0.5"/>
 <text text-anchor="start" x="341" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="403.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister</text>

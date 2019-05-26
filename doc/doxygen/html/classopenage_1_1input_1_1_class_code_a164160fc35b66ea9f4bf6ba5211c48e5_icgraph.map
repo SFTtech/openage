@@ -1,7 +1,7 @@
 <map id="openage::input::ClassCode::has_class" name="openage::input::ClassCode::has_class">
 <area shape="rect" id="node1" title=" " alt="" coords="971,35,1149,76"/>
-<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" title=" " alt="" coords="729,35,923,76"/>
-<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" title=" " alt="" coords="488,64,681,105"/>
-<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" title=" " alt="" coords="247,5,440,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" title=" " alt="" coords="5,35,199,76"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a564ccab7ee30da3ebaf97beb1fa2fcc0" title="true if the given event type is being ignored" alt="" coords="729,35,923,76"/>
+<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" title="manages the pressing of an input event (key, mouse, ...)." alt="" coords="488,64,681,105"/>
+<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" title="sets the state of a specific key" alt="" coords="247,5,440,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" title="When a SDL event happens, this is called." alt="" coords="5,35,199,76"/>
 </map>

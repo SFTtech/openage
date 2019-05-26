@@ -72,7 +72,7 @@
 </g>
 <!-- Node28 -->
 <g id="node6" class="node"><title>Node28</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="136,-76.5 136,-95.5 279,-95.5 279,-76.5 136,-76.5"/>
 <text text-anchor="middle" x="207.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -85,7 +85,7 @@
 </g>
 <!-- Node32 -->
 <g id="node10" class="node"><title>Node32</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" target="_top" xlink:title="printf&#45;style to&#45;string formatting.">
 <polygon fill="white" stroke="black" points="152.5,-38.5 152.5,-57.5 262.5,-57.5 262.5,-38.5 152.5,-38.5"/>
 <text text-anchor="middle" x="207.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::sformat</text>
 </a>
@@ -111,7 +111,7 @@
 </g>
 <!-- Node29 -->
 <g id="node7" class="node"><title>Node29</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="337,-142 337,-172 441,-172 441,-142 337,-142"/>
 <text text-anchor="start" x="345" y="-160" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="389" y="-149" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -152,7 +152,7 @@
 </g>
 <!-- Node33 -->
 <g id="node11" class="node"><title>Node33</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="332,-16.5 332,-35.5 446,-35.5 446,-16.5 332,-16.5"/>
 <text text-anchor="middle" x="389" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>

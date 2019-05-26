@@ -1,8 +1,8 @@
 <map id="openage::datastructure::ConstMap::get" name="openage::datastructure::ConstMap::get">
-<area shape="rect" id="node1" title=" " alt="" coords="5,43,160,84"/>
-<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_const_map.xhtml#a31591e877042691c20fc2ac1d6101a3c" title=" " alt="" coords="208,5,363,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0" title=" " alt="" coords="208,71,363,127"/>
-<area shape="rect" id="node4" href="$classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1" title=" " alt="" coords="411,49,591,91"/>
+<area shape="rect" id="node1" title="Return the stored value for the given key." alt="" coords="5,43,160,84"/>
+<area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_const_map.xhtml#a31591e877042691c20fc2ac1d6101a3c" title="Returns the value matching key from this or following elements." alt="" coords="208,5,363,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_const_map.xhtml#a377a571e8a6eef221c6afd80c41f4ff0" title="Abort when the map uses the same key more than once." alt="" coords="208,71,363,127"/>
+<area shape="rect" id="node4" href="$classopenage_1_1datastructure_1_1_const_map.xhtml#ade3ec69b783f998f0da241d4bcdec1e1" title="Verifies that this entry&#39;s key is not used in following entries, then continues checking with the nex..." alt="" coords="411,49,591,91"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="445,115,556,142"/>
-<area shape="rect" id="node5" href="$classopenage_1_1datastructure_1_1_const_map.xhtml#a27798ebcadd576dcbf80e83173a84983" title=" " alt="" coords="639,49,793,91"/>
+<area shape="rect" id="node5" href="$classopenage_1_1datastructure_1_1_const_map.xhtml#a27798ebcadd576dcbf80e83173a84983" title="Test if the key of this entry is not used in following entries." alt="" coords="639,49,793,91"/>
 </map>

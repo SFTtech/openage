@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 272,-35 272,4 -4,4"/>
 <!-- Node33 -->
 <g id="node1" class="node"><title>Node33</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="use attack action">
 <polygon fill="#bfbfbf" stroke="black" points="152,-0.5 152,-30.5 268,-30.5 268,-0.5 152,-0.5"/>
 <text text-anchor="start" x="160" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="210" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::attack</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node34 -->
 <g id="node2" class="node"><title>Node34</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 116,-30.5 116,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>

@@ -1,10 +1,10 @@
 <map id="openage::util::FD::write" name="openage::util::FD::write">
-<area shape="rect" id="node1" title=" " alt="" coords="801,48,931,89"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_f_d.xhtml#aa7042077eda5413ddddf0075a1a66761" title=" " alt="" coords="611,5,741,47"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" title=" " alt="" coords="599,97,753,123"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" title=" " alt="" coords="215,89,373,131"/>
+<area shape="rect" id="node1" title="writes &#39;bytes&#39; bytes from buf" alt="" coords="801,48,931,89"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_f_d.xhtml#aa7042077eda5413ddddf0075a1a66761" title="writes the char" alt="" coords="611,5,741,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" title="writes the string (excluding the null terminator)" alt="" coords="599,97,753,123"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" title="very early and inefficient printing of the console to a pty." alt="" coords="215,89,373,131"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1console_1_1tests.xhtml#a4a108e620e3fead2c08ff14841552186" title=" " alt="" coords="5,184,167,225"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1console_1_1tests.xhtml#a15c3b269411a779e1ae9af60a3b6fedf" title=" " alt="" coords="5,89,167,131"/>
-<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" title=" " alt="" coords="421,89,551,131"/>
-<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" title=" " alt="" coords="421,155,551,196"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" title="guess what this does." alt="" coords="421,89,551,131"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" title="writes the unicode codepoint, as utf&#45;8" alt="" coords="421,155,551,196"/>
 </map>

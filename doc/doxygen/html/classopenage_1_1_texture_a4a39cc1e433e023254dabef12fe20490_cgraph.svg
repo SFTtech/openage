@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 425,-35 425,4 -4,4"/>
 <!-- Node99 -->
 <g id="node1" class="node"><title>Node99</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns the opengl texture id of this texture.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 111,-30.5 111,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="55.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_texture_id</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node100 -->
 <g id="node2" class="node"><title>Node100</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b" target="_top" xlink:title="The texture loadin must occur on the thread that manages the gl context.">
 <polygon fill="white" stroke="black" points="147,-0.5 147,-30.5 263,-30.5 263,-0.5 147,-0.5"/>
 <text text-anchor="start" x="155" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::load</text>
 <text text-anchor="middle" x="205" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_in_glthread</text>

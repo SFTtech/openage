@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-387 149,-387 149,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="The input manager manages all input layers (hud, game, ...) and triggers the registered actions depen...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-277.5 145,-277.5 145,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="72.5" y="-265.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <polyline fill="none" stroke="black" points="0,-258.5 145,-258.5 "/>
@@ -43,7 +43,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title="superclass for handling any input event.">
 <polygon fill="white" stroke="black" points="16,-314.5 16,-382.5 129,-382.5 129,-314.5 16,-314.5"/>
 <text text-anchor="middle" x="72.5" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::InputHandler</text>
 <polyline fill="none" stroke="black" points="16,-363.5 129,-363.5 "/>

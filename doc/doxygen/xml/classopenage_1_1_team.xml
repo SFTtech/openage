@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>id</name>
         <briefdescription>
+<para>unique id of the team </para>
         </briefdescription>
         <detaileddescription>
-<para>unique id of the team </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -26,9 +26,9 @@
         <argsstring></argsstring>
         <name>name</name>
         <briefdescription>
+<para>visible name of this team </para>
         </briefdescription>
         <detaileddescription>
-<para>visible name of this team </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -48,9 +48,9 @@
         <argsstring></argsstring>
         <name>score</name>
         <briefdescription>
+<para>The score of the team, based on the team&apos;s players score. </para>
         </briefdescription>
         <detaileddescription>
-<para>The score of the team, based on the team&apos;s players score. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -290,9 +290,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A team of players. </para>
     </briefdescription>
     <detaileddescription>
-<para>A team of players </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5176">

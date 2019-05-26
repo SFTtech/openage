@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 292,-46 292,4 -4,4"/>
 <!-- Node10 -->
 <g id="node1" class="node"><title>Node10</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Is called to calculate the execution time for an event of this eventclass.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-41.5 113,-41.5 113,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::tests</text>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::TestEventClassTwo::</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node11 -->
 <g id="node2" class="node"><title>Node11</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title="Factory function to get a fixed&#45;point number from a double.">
 <polygon fill="white" stroke="black" points="149,-6 149,-36 288,-36 288,-6 149,-6"/>
 <text text-anchor="start" x="157" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="218.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::from_double</text>

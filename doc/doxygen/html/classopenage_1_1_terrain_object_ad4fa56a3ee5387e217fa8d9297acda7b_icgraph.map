@@ -1,8 +1,8 @@
 <map id="openage::TerrainObject::is_placed" name="openage::TerrainObject::is_placed">
-<area shape="rect" id="node1" title=" " alt="" coords="864,39,1020,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain_object.xhtml#a9ca18bc39c074f2172f12b4903ba0bb0" title=" " alt="" coords="660,5,816,47"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_terrain_object.xhtml#a2ad9a9df0f058487a4ec66b68ee390ed" title=" " alt="" coords="660,71,816,112"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title=" " alt="" coords="443,5,612,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title=" " alt="" coords="216,5,395,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title=" " alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node1" title="returns true if this object has been placed." alt="" coords="864,39,1020,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_object.xhtml#a9ca18bc39c074f2172f12b4903ba0bb0" title="should this object be tested for collisions, which decides whether another object is allowed to overl..." alt="" coords="660,5,816,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_terrain_object.xhtml#a2ad9a9df0f058487a4ec66b68ee390ed" title="sets all the ground below the object to a terrain id." alt="" coords="660,71,816,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title="set unit in place – return if placement was successful" alt="" coords="443,5,612,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title="set unit in place – return if placement was successful" alt="" coords="216,5,395,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title="set unit in place – return if placement was successful" alt="" coords="5,5,168,47"/>
 </map>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-486 109,-486 109,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="File&#45;like class that wraps a python open() file&#45;like object.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-222.5 105,-222.5 105,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::filelike</text>
 <text text-anchor="middle" x="52.5" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Python</text>
@@ -84,7 +84,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml" target="_top" xlink:title="File&#45;like class that has the standard operations like read, seek, write etc.">
 <polygon fill="white" stroke="black" points="0,-259.5 0,-481.5 105,-481.5 105,-259.5 0,-259.5"/>
 <text text-anchor="start" x="8" y="-469.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::filelike</text>
 <text text-anchor="middle" x="52.5" y="-458.5" font-family="Helvetica,sans-Serif" font-size="10.00">::FileLike</text>

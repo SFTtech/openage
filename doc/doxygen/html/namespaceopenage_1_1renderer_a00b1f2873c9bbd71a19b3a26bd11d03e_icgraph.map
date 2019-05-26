@@ -1,7 +1,7 @@
 <map id="openage::renderer::bind" name="openage::renderer::bind">
 <area shape="rect" id="node1" title="Make this vertex array object the current one." alt="" coords="987,42,1145,69"/>
-<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" title=" " alt="" coords="749,27,939,83"/>
-<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" title=" " alt="" coords="512,27,701,83"/>
-<area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" title=" " alt="" coords="259,5,464,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" title=" " alt="" coords="5,35,211,76"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a" title="Change the already produced texture handles to use new source." alt="" coords="749,27,939,83"/>
+<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a96f49e5b70c5848778479d8ae36431b9" title="Unblocks the provider." alt="" coords="512,27,701,83"/>
+<area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a4448d1bf9cbb8e7f8842989fd414c66b" title="Pass loaded assets to the image provider." alt="" coords="259,5,464,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" title="Sets the game spec to load textures from." alt="" coords="5,35,211,76"/>
 </map>

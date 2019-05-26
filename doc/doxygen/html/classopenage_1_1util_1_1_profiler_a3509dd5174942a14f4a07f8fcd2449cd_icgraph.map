@@ -1,12 +1,12 @@
 <map id="openage::util::Profiler::registered" name="openage::util::Profiler::registered">
 <area shape="rect" id="node1" title=" " alt="" coords="820,93,964,135"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1_profiler.xhtml#abb98ec218690fbc79d31967924118c45" title=" " alt="" coords="421,5,565,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_profiler.xhtml#a376d760c88323c5d4f32db08e302a4de" title=" " alt="" coords="621,64,765,105"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_profiler.xhtml#a376d760c88323c5d4f32db08e302a4de" title="registers a component" alt="" coords="621,64,765,105"/>
 <area shape="rect" id="node6" href="$classopenage_1_1util_1_1_profiler.xhtml#a25d95a667ba6b5d369e545ba517d8e46" title=" " alt="" coords="421,71,565,112"/>
-<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_profiler.xhtml#aa2cd0e4084f70dec7bff926afbc7e0de" title=" " alt="" coords="613,181,772,223"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title=" " alt="" coords="211,46,361,73"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title=" " alt="" coords="5,46,151,73"/>
-<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_profiler.xhtml#a68f01b02f0824fe2e41e508a75946793" title=" " alt="" coords="421,181,565,223"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_engine.xhtml#a659dbbf399baf90582f4d8c5b497babc" title=" " alt="" coords="199,159,373,186"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_profiler.xhtml#aa2cd0e4084f70dec7bff926afbc7e0de" title="unregisters an individual component" alt="" coords="613,181,772,223"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title="main engine loop function." alt="" coords="211,46,361,73"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title="starts the engine loop." alt="" coords="5,46,151,73"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_profiler.xhtml#a68f01b02f0824fe2e41e508a75946793" title="unregisters all remaining components" alt="" coords="421,181,565,223"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_engine.xhtml#a659dbbf399baf90582f4d8c5b497babc" title="engine destructor, cleans up memory etc." alt="" coords="199,159,373,186"/>
 <area shape="rect" id="node10" href="$classopenage_1_1util_1_1_profiler.xhtml#a1b4a2302000a4c497762567ce5d63379" title=" " alt="" coords="214,211,358,252"/>
 </map>

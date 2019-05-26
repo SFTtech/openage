@@ -462,9 +462,9 @@
         <argsstring></argsstring>
         <name>empty_string</name>
         <briefdescription>
+<para>global empty string, sometimes needed as return value in some <computeroutput>std::string &amp;function()</computeroutput> return values. </para>
         </briefdescription>
         <detaileddescription>
-<para>global empty string, sometimes needed as return value in some <computeroutput>std::string &amp;function()</computeroutput> return values. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -529,9 +529,9 @@
           <declname>func</declname>
         </param>
         <briefdescription>
+<para>std::for_each except just on containers. </para>
         </briefdescription>
         <detaileddescription>
-<para>std::for_each except just on containers. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -564,9 +564,9 @@
           <declname>func</declname>
         </param>
         <briefdescription>
+<para>Filters items from a container which satisfy a certain predicate. </para>
         </briefdescription>
         <detaileddescription>
-<para>Filters items from a container which satisfy a certain predicate. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -583,9 +583,9 @@
           <declname>symbol</declname>
         </param>
         <briefdescription>
+<para>Demangles a symbol name. </para>
         </briefdescription>
         <detaileddescription>
-<para>Demangles a symbol name.</para>
 <para>On failure, the mangled symbol name is returned. </para>
         </detaileddescription>
         <inbodydescription>
@@ -595,7 +595,7 @@
         <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a1e06395c26a8fbab8f488d6e573cde6b" compoundref="exctranslate__tests_8cpp" startline="42" endline="105">openage::pyinterface::tests::err_py_to_cpp</referencedby>
         <referencedby refid="classopenage_1_1_game_spec_1a4de64c8c4a5463dc086f082659147b02" compoundref="game__spec_8cpp" startline="34" endline="77">openage::GameSpec::initialize</referencedby>
         <referencedby refid="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" compoundref="error_2error_8cpp" startline="89" endline="128">openage::error::operator&lt;&lt;</referencedby>
-        <referencedby refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" compoundref="compiler_8cpp" startline="98" endline="133">symbol_name</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1aff957b2c0c7a7eb98cf68468cc04c1d8" compoundref="compiler_8cpp" startline="98" endline="133">symbol_name</referencedby>
         <referencedby refid="namespaceopenage_1_1error_1ae713528ccc0e378838c233a2a405026a" compoundref="error_2handlers_8cpp" startline="69" endline="104">openage::error::terminate_handler</referencedby>
         <referencedby refid="namespaceopenage_1_1pyinterface_1a17ffe36150248f6802ac372166798637" compoundref="exctranslate_8cpp" startline="47" endline="107">openage::pyinterface::translate_exc_cpp_to_py</referencedby>
         <referencedby refid="classopenage_1_1error_1_1_error_1a6c5c486df5943aa399b6c051d9eb9059" compoundref="error_2error_8cpp" startline="77" endline="79">openage::error::Error::type_name</referencedby>
@@ -616,13 +616,13 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" bodystart="46" bodyend="48"/>
-        <references refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">sformat</references>
-        <referencedby refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" compoundref="compiler_8cpp" startline="98" endline="133">symbol_name</referencedby>
+        <references refid="namespaceopenage_1_1util_1afd23b015922ec41eec0165f8d88bf430" compoundref="strings_8cpp" startline="20" endline="29">sformat</references>
+        <referencedby refid="namespaceopenage_1_1util_1aff957b2c0c7a7eb98cf68468cc04c1d8" compoundref="compiler_8cpp" startline="98" endline="133">symbol_name</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aff957b2c0c7a7eb98cf68468cc04c1d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
         <definition>OAAPI std::string openage::util::symbol_name</definition>
-        <argsstring>(const void *addr, bool require_exact_addr, bool no_pure_addrs)</argsstring>
+        <argsstring>(const void *addr, bool require_exact_addr=true, bool no_pure_addrs=false)</argsstring>
         <name>symbol_name</name>
         <param>
           <type>const void *</type>
@@ -639,9 +639,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>Returns the (demangled) symbol name for a given address. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the (demangled) symbol name for a given address.</para>
 <para>If no exact match can be found, if require_exact_addr == true (default): if no_pure_addrs == false (default): a pure hex address string is returned else: an empty string is returned if require_exact_addr == false: name of closest symbol + offset hex string is returned</para>
 <para>pxd: string symbol_name(const void *addr) except + </para>
         </detaileddescription>
@@ -650,7 +650,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" bodystart="98" bodyend="133"/>
         <references refid="namespaceopenage_1_1util_1abe26c67b0463cb53c33b0659ebb89370" compoundref="compiler_8cpp" startline="46" endline="48">addr_to_string</references>
         <references refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" compoundref="compiler_8cpp" startline="25" endline="43">demangle</references>
-        <references refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">sformat</references>
+        <references refid="namespaceopenage_1_1util_1afd23b015922ec41eec0165f8d88bf430" compoundref="strings_8cpp" startline="20" endline="29">sformat</references>
         <referencedby refid="namespaceopenage_1_1pyinterface_1a591d9bd55fa1f9904547f3f2dcb3796d" compoundref="setup_8cpp" startline="44" endline="60">openage::pyinterface::add_py_if_component</referencedby>
         <referencedby refid="namespaceopenage_1_1pyinterface_1a7c3f96bce0d4711ba04a941b5c460b17" compoundref="setup_8cpp" startline="73" endline="124">openage::pyinterface::check</referencedby>
         <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" compoundref="functional_8h" startline="111" endline="121">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::check_fptr</referencedby>
@@ -666,9 +666,9 @@
           <declname>addr</declname>
         </param>
         <briefdescription>
+<para>Returns true if the address is the (exact) address of a symbol. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns true if the address is the (exact) address of a symbol. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -690,9 +690,10 @@
           <declname>path</declname>
         </param>
         <briefdescription>
+<para>read a single csv file. </para>
         </briefdescription>
         <detaileddescription>
-<para>read a single csv file. call the destination struct .<ref refid="namespaceopenage_1_1rng_1_1tests_1a7c865b312f955cab3ff9ea078fd0cc95" kindref="member">fill()</ref> method for actually storing line data </para>
+<para>call the destination struct .<ref refid="namespaceopenage_1_1rng_1_1tests_1a7c865b312f955cab3ff9ea078fd0cc95" kindref="member">fill()</ref> method for actually storing line data </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -744,9 +745,10 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>Helper function that performs a left shift without causing undefined behavior. </para>
         </briefdescription>
         <detaileddescription>
-<para>Helper function that performs a left shift without causing undefined behavior. regular left-shift is undefined if amount &gt;= bitwidth, or amount &gt;= bitwidth - 1 for signed integers. </para>
+<para>regular left-shift is undefined if amount &gt;= bitwidth, or amount &gt;= bitwidth - 1 for signed integers. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -772,9 +774,10 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>Helper function that performs a right shift without causing undefined behavior. </para>
         </briefdescription>
         <detaileddescription>
-<para>Helper function that performs a right shift without causing undefined behavior. right-shift is usually undefined if amount &gt;= bit size. </para>
+<para>right-shift is usually undefined if amount &gt;= bit size. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -828,9 +831,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>Helper function that performs either a safe shift-right (amount &gt; 0), or a safe shift-left (amount &lt; 0). </para>
         </briefdescription>
         <detaileddescription>
-<para>Helper function that performs either a safe shift-right (amount &gt; 0), or a safe shift-left (amount &lt; 0). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -888,9 +891,9 @@
           <declname>rhs</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> + <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> + <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -922,9 +925,9 @@
           <declname>rhs</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> + double. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> + double </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -955,9 +958,9 @@
           <declname>rhs</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> - <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> - <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -989,9 +992,9 @@
           <declname>rhs</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> - double. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> - double </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1025,9 +1028,9 @@
           <declname>rhs</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> * N. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> * N </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1062,9 +1065,9 @@
           <declname>rhs</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> / N. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> / N </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1087,9 +1090,10 @@
           <declname>hash2</declname>
         </param>
         <briefdescription>
+<para>Creates a hash value as a combination of two other hashes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a hash value as a combination of two other hashes. Can be called incrementally to create hash value from several variables. </para>
+<para>Can be called incrementally to create hash value from several variables. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1116,9 +1120,9 @@
           <declname>len_data</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref> implementation. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref> implementation</para>
 <para><ulink url="https://131002.net/siphash/">https://131002.net/siphash/</ulink> </para>
         </detaileddescription>
         <inbodydescription>
@@ -1146,9 +1150,9 @@
           <type>T</type>
         </param>
         <briefdescription>
+<para>Wrapping a function call with ignore_result makes it more clear to readers, compilers and linters that you are, in fact, ignoring the function&apos;s return value on purpose. </para>
         </briefdescription>
         <detaileddescription>
-<para>Wrapping a function call with ignore_result makes it more clear to readers, compilers and linters that you are, in fact, ignoring the function&apos;s return value on purpose. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1184,9 +1188,9 @@
           <declname>mat</declname>
         </param>
         <briefdescription>
+<para>Scalar multiplication with swapped arguments. </para>
         </briefdescription>
         <detaileddescription>
-<para>Scalar multiplication with swapped arguments </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1221,9 +1225,10 @@
           <declname>mat</declname>
         </param>
         <briefdescription>
+<para>Scalar multiplication with swapped arguments for int. </para>
         </briefdescription>
         <detaileddescription>
-<para>Scalar multiplication with swapped arguments for int. This was just added because otherwise the above float-multiplication function might not match to the template deduction. </para>
+<para>This was just added because otherwise the above float-multiplication function might not match to the template deduction. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1248,9 +1253,9 @@
           <declname>m</declname>
         </param>
         <briefdescription>
+<para>modulo operation that guarantees to return positive values. </para>
         </briefdescription>
         <detaileddescription>
-<para>modulo operation that guarantees to return positive values. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1286,9 +1291,9 @@
           <declname>x</declname>
         </param>
         <briefdescription>
+<para>compiletime defined modulo function. </para>
         </briefdescription>
         <detaileddescription>
-<para>compiletime defined modulo function. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1314,9 +1319,9 @@
           <declname>x</declname>
         </param>
         <briefdescription>
+<para>compiletime defined rotate left function </para>
         </briefdescription>
         <detaileddescription>
-<para>compiletime defined rotate left function </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1341,9 +1346,9 @@
           <declname>m</declname>
         </param>
         <briefdescription>
+<para>implements the &apos;correct&apos; version of the division operator, which always rounds to -inf </para>
         </briefdescription>
         <detaileddescription>
-<para>implements the &apos;correct&apos; version of the division operator, which always rounds to -inf </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1371,9 +1376,10 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>Convert a C-style array of uint8_t to a uint64_t. </para>
         </briefdescription>
         <detaileddescription>
-<para>Convert a C-style array of uint8_t to a uint64_t. Uses little-endianness as default. Fills the remaining bytes with zeroes.</para>
+<para>Uses little-endianness as default. Fills the remaining bytes with zeroes.</para>
 <para>e.g (big-endian): {0x01, 0x23, 0x45, 0x67} -&gt; 0x0123456700000000 e.g (little-endian): {0x01, 0x23, 0x45, 0x67} -&gt; 0x0000000067452301</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1431,9 +1437,10 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>Convert a uint64_t to an array of uint8_t. </para>
         </briefdescription>
         <detaileddescription>
-<para>Convert a uint64_t to an array of uint8_t. Uses little-endianness as default.</para>
+<para>Uses little-endianness as default.</para>
 <para>e.g (big-endian): 0x0123456789abcdef -&gt; {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef} e.g (little-endian): 0x0123456789abcdef -&gt; {0xef, 0xcd, 0xab, 0x89, 0x67, 0x45, 0x23, 0x01}</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1475,9 +1482,9 @@
           <declname>count</declname>
         </param>
         <briefdescription>
+<para>Get the number of uint64-elements that result from converting a count-sized uint8_t array. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the number of uint64-elements that result from converting a count-sized uint8_t array.</para>
 <para>Used to determine the size for <ref refid="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" kindref="member">array8_to_array64()</ref></para>
 <para><simplesect kind="return"><para>ceil(count/8) </para>
 </simplesect>
@@ -1508,9 +1515,10 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>Convert a C-style array of uint8_t to a std::vector of uint64_t. </para>
         </briefdescription>
         <detaileddescription>
-<para>Convert a C-style array of uint8_t to a std::vector of uint64_t. Uses little-endianness as default. Fills the remaining bytes of the last uint64_t with zeroes.</para>
+<para>Uses little-endianness as default. Fills the remaining bytes of the last uint64_t with zeroes.</para>
 <para>e.g (big-endian): {0x01, 0x23, 0x45, 0x67} -&gt; 0x0123456700000000 e.g (little-endian): {0x01, 0x23, 0x45, 0x67} -&gt; 0x0000000067452301</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1570,9 +1578,10 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>Convert a C-style array of uint64_t to a std::vector of uint8_t. </para>
         </briefdescription>
         <detaileddescription>
-<para>Convert a C-style array of uint64_t to a std::vector of uint8_t. Uses little-endianness as default.</para>
+<para>Uses little-endianness as default.</para>
 <para>e.g (big-endian): 0x0123456789abcdef -&gt; {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef} e.g (little-endian): 0x0123456789abcdef -&gt; {0xef, 0xcd, 0xab, 0x89, 0x67, 0x45, 0x23, 0x01}</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1630,9 +1639,9 @@
           <declname>ext</declname>
         </param>
         <briefdescription>
+<para>Extend a vector with elements, without destroying source one. </para>
         </briefdescription>
         <detaileddescription>
-<para>Extend a vector with elements, without destroying source one. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1685,9 +1694,10 @@
           <declname>idx</declname>
         </param>
         <briefdescription>
+<para>Remove the given element index in the vector. </para>
         </briefdescription>
         <detaileddescription>
-<para>Remove the given element index in the vector. May swap with the end element for efficient removing.</para>
+<para>May swap with the end element for efficient removing.</para>
 <para>If the element is not in the vector, do nothing. </para>
         </detaileddescription>
         <inbodydescription>
@@ -1702,9 +1712,9 @@
         <argsstring>()</argsstring>
         <name>gl_check_error</name>
         <briefdescription>
+<para>query the current opengl context for any errors. </para>
         </briefdescription>
         <detaileddescription>
-<para>query the current opengl context for any errors.</para>
 <para>raises exceptions on any error. </para>
         </detaileddescription>
         <inbodydescription>
@@ -1728,9 +1738,9 @@
           <declname>input</declname>
         </param>
         <briefdescription>
+<para>Strip out ../ etc. </para>
         </briefdescription>
         <detaileddescription>
-<para>Strip out ../ etc </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1770,9 +1780,9 @@
           <declname>fullpath</declname>
         </param>
         <briefdescription>
+<para>get the filename (last part) of a given path </para>
         </briefdescription>
         <detaileddescription>
-<para>get the filename (last part) of a given path </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1798,9 +1808,9 @@
           <declname>fullpath</declname>
         </param>
         <briefdescription>
+<para>return the head (dirname) part of a path. </para>
         </briefdescription>
         <detaileddescription>
-<para>return the head (dirname) part of a path. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1818,9 +1828,10 @@
           <declname>arg</declname>
         </param>
         <briefdescription>
+<para>method that behaves similar to python&apos;s &quot;repr&quot;. </para>
         </briefdescription>
         <detaileddescription>
-<para>method that behaves similar to python&apos;s &quot;repr&quot;. puts the string in quotes and escapes all sorts of stuff inside. </para>
+<para>puts the string in quotes and escapes all sorts of stuff inside. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1863,10 +1874,10 @@
         <referencedby refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</referencedby>
         <referencedby refid="namespaceopenage_1_1util_1_1strings_1af1d14da687cbcc0bdf4ab1afbd5bc867" compoundref="strings_8py" startline="99" endline="107">openage.util.strings.rstrip_once</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1afd23b015922ec41eec0165f8d88bf430" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string openage::util::sformat</definition>
-        <argsstring>(const char *fmt,...)</argsstring>
+        <argsstring>(const char *fmt,...) ATTRIBUTE_FORMAT(1</argsstring>
         <name>sformat</name>
         <param>
           <type>const char *</type>
@@ -1876,9 +1887,9 @@
           <type>...</type>
         </param>
         <briefdescription>
+<para>printf-style to-string formatting. </para>
         </briefdescription>
         <detaileddescription>
-<para>printf-style to-string formatting. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1890,7 +1901,7 @@
         <referencedby refid="classopenage_1_1_game_spec_1a949e9f7d9b1017a7f399c55a2bd60c9a" compoundref="game__spec_8cpp" startline="91" endline="108">openage::GameSpec::get_texture</referencedby>
         <referencedby refid="classopenage_1_1_game_spec_1a6f6bbcfb3a4dd8586bbed00f62054bf1" compoundref="game__spec_8cpp" startline="329" endline="401">openage::GameSpec::load_terrain</referencedby>
         <referencedby refid="classopenage_1_1_game_spec_1a979c8104ad4832b1912e703f19558bc9" compoundref="game__spec_8cpp" startline="192" endline="270">openage::GameSpec::on_gamedata_loaded</referencedby>
-        <referencedby refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" compoundref="compiler_8cpp" startline="98" endline="133">symbol_name</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1aff957b2c0c7a7eb98cf68468cc04c1d8" compoundref="compiler_8cpp" startline="98" endline="133">symbol_name</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a042594ac67e652c429fba1eeb1bec6fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -1910,9 +1921,9 @@
           <declname>output</declname>
         </param>
         <briefdescription>
+<para>printf-style valist-to-string formatting; the result is appended to output. </para>
         </briefdescription>
         <detaileddescription>
-<para>printf-style valist-to-string formatting; the result is appended to output. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1920,7 +1931,7 @@
         <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
         <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" compoundref="text_8cpp" startline="87" endline="95">openage::renderer::TextRenderer::draw</referencedby>
         <referencedby refid="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" compoundref="engine_8cpp" startline="533" endline="549">openage::Engine::render_text</referencedby>
-        <referencedby refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">sformat</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1afd23b015922ec41eec0165f8d88bf430" compoundref="strings_8cpp" startline="20" endline="29">sformat</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a854794aef09b81dbec641eca208a66d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unique_ptr&lt; char[]&gt;</type>
@@ -1932,9 +1943,9 @@
           <declname>s</declname>
         </param>
         <briefdescription>
+<para>Copies the given string to the returned unique_ptr, including 0 byte. </para>
         </briefdescription>
         <detaileddescription>
-<para>Copies the given string to the returned unique_ptr, including 0 byte. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1952,9 +1963,9 @@
           <declname>s</declname>
         </param>
         <briefdescription>
+<para>Returns the number of whitespace characters on the right of the string. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the number of whitespace characters on the right of the string. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1976,19 +1987,19 @@
           <declname>pattern</declname>
         </param>
         <briefdescription>
+<para>returns true if str matches the basic globbing pattern in the pattern, &apos;*&apos; matches any number of characters, while all other characters are interpreted as literal. </para>
         </briefdescription>
         <detaileddescription>
-<para>returns true if str matches the basic globbing pattern in the pattern, &apos;*&apos; matches any number of characters, while all other characters are interpreted as literal. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" bodystart="92" bodyend="133"/>
         <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
       </memberdef>
-      <memberdef kind="function" id="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a9556b8562574e2c6ad102d8fd87569c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; openage::util::split</definition>
-        <argsstring>(const std::string &amp;txt, char delimiter)</argsstring>
+        <argsstring>(const std::string &amp;txt, char delim)</argsstring>
         <name>split</name>
         <param>
           <type>const std::string &amp;</type>
@@ -1999,9 +2010,10 @@
           <declname>delim</declname>
         </param>
         <briefdescription>
+<para>Split a string at a delimiter into a vector. </para>
         </briefdescription>
         <detaileddescription>
-<para>Split a string at a delimiter into a vector. Internally, uses the above iterator splitter. </para>
+<para>Internally, uses the above iterator splitter. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -2015,10 +2027,10 @@
         <referencedby refid="namespaceopenage_1_1convert_1_1hdlanguagefile_1acc46a3a14127905594fced841fdfb09b" compoundref="hdlanguagefile_8py" startline="101" endline="126">openage.convert.hdlanguagefile.read_hd_language_file</referencedby>
         <referencedby refid="namespaceopenage_1_1util_1_1files_1aefc9024dcd367647401c6682c2d0d7a5" compoundref="files_8py" startline="54" endline="74">openage.util.files.which</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespaceopenage_1_1util_1aa7f8fe5c3426ea9e4968ef9aa21660ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a34e437da5fb7314c04d0af249dbd8bd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; openage::util::split_escape</definition>
-        <argsstring>(const std::string &amp;txt, char delim, size_t size_hint)</argsstring>
+        <argsstring>(const std::string &amp;txt, char delim, size_t size_hint=0)</argsstring>
         <name>split_escape</name>
         <param>
           <type>const std::string &amp;</type>
@@ -2034,9 +2046,10 @@
           <defval>0</defval>
         </param>
         <briefdescription>
+<para>Split a string at a delimiter into a vector. </para>
         </briefdescription>
         <detaileddescription>
-<para>Split a string at a delimiter into a vector. size_hint is to give a predicted size of the vector already.</para>
+<para>size_hint is to give a predicted size of the vector already.</para>
 <para>tokenizes txt by splitting it up to substrings at the deliminiters. &quot;\n&quot; is evaluated to &apos;<linebreak/>
 &apos;; all other &apos;\X&apos; escape sequences are evaluated to literal X, including the deliminiter. </para>
         </detaileddescription>
@@ -2103,9 +2116,10 @@
           <declname>result</declname>
         </param>
         <briefdescription>
+<para>Split a string at a delimiter, push the result back in an iterator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Split a string at a delimiter, push the result back in an iterator. Why doesn&apos;t the fucking standard library have std::string::split(delimiter)? </para>
+<para>Why doesn&apos;t the fucking standard library have std::string::split(delimiter)? </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -2117,9 +2131,9 @@
         <argsstring>()</argsstring>
         <name>get_current_thread_id</name>
         <briefdescription>
+<para>Returns the unique identifier of the current thread. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the unique identifier of the current thread.</para>
 <para>For compilers with support for thread_local storage, the function also guarantees to return strictly monotonically increasing identifier (no collision). </para>
         </detaileddescription>
         <inbodydescription>
@@ -2129,10 +2143,10 @@
         <referencedby refid="structopenage_1_1log_1_1message_1a45dd1bfdd4fc1c55af0c093dac14b624" compoundref="message_8cpp" startline="17" endline="20">openage::log::message::init</referencedby>
         <referencedby refid="classopenage_1_1job_1_1_typed_job_state_base_1a8e29b857a4d99759518b542746a02936" compoundref="typed__job__state__base_8h" startline="51" endline="56">openage::job::TypedJobStateBase&lt; T &gt;::TypedJobStateBase</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespaceopenage_1_1util_1a3e9f9bfa57d843330bd6d4bf85397433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a63f7f7718f8133a37ac2e63dca01afb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
         <definition>size_t openage::util::utf8_decode</definition>
-        <argsstring>(const unsigned char *s, size_t len, int32_t *outbuf)</argsstring>
+        <argsstring>(const unsigned char *s, size_t len, codepoint_t *outbuf)</argsstring>
         <name>utf8_decode</name>
         <param>
           <type>const unsigned char *</type>
@@ -2147,9 +2161,9 @@
           <declname>outbuf</declname>
         </param>
         <briefdescription>
+<para>decodes a UTF-8 character string of given length </para>
         </briefdescription>
         <detaileddescription>
-<para>decodes a UTF-8 character string of given length</para>
 <para>the results are written to outbuf. no leading 0 is written to outbuf (nor is one expected at s). outbuf MUST be large enough to hold all characters. to ensure that outbuf is large enough, it SHOULD have a size of at least len.</para>
 <para>the number of actual unicode characters is returned. it might be anywhere in the range [len/4; len].</para>
 <para>in case of decoding errors, the special unicode character 0xfffd is written.</para>
@@ -2174,9 +2188,10 @@
           <declname>outbuf</declname>
         </param>
         <briefdescription>
+<para>encodes one Unicode codepoint to a null-terminated UTF-8 character string. </para>
         </briefdescription>
         <detaileddescription>
-<para>encodes one Unicode codepoint to a null-terminated UTF-8 character string. due to the nature of UTF-8, the result string is at most 4 bytes long. on error, the empty string is returned.</para>
+<para>due to the nature of UTF-8, the result string is at most 4 bytes long. on error, the empty string is returned.</para>
 <para>cp the codepoint outbuf a output char buffer. outbuf[0] to outbuf[4] MUST be writeable. outbuf[0] will ALWAYS be written to. returns the number of non-NULL bytes that have been written, i.e. strlen(outbuf) </para>
         </detaileddescription>
         <inbodydescription>
@@ -2195,9 +2210,9 @@
           <declname>str</declname>
         </param>
         <briefdescription>
+<para>computes the length of the last character in a given UTF-8 string. </para>
         </briefdescription>
         <detaileddescription>
-<para>computes the length of the last character in a given UTF-8 string.</para>
 <para>str the UTF-8 string returns the length of the last character in bytes </para>
         </detaileddescription>
         <inbodydescription>
@@ -2217,9 +2232,9 @@
           <declname>str</declname>
         </param>
         <briefdescription>
+<para>pops back (deletes) the last UTF-8 character in a std::string. </para>
         </briefdescription>
         <detaileddescription>
-<para>pops back (deletes) the last UTF-8 character in a std::string. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

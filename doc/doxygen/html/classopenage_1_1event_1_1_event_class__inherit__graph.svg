@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-404 1257,-404 1257,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A eventclass has to be implemented for every type of event that exists.">
 <polygon fill="#bfbfbf" stroke="black" points="620,-276.5 620,-399.5 757,-399.5 757,-276.5 620,-276.5"/>
 <text text-anchor="middle" x="688.5" y="-387.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventClass</text>
 <polyline fill="none" stroke="black" points="620,-380.5 757,-380.5 "/>

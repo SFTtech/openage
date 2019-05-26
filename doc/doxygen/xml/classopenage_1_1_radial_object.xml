@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>phys_radius</name>
         <briefdescription>
+<para>radius of this cirular space </para>
         </briefdescription>
         <detaileddescription>
-<para>radius of this cirular space </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -83,9 +83,9 @@
           <declname>terrain</declname>
         </param>
         <briefdescription>
+<para>finds the range covered if the object was in a position </para>
         </briefdescription>
         <detaileddescription>
-<para>finds the range covered if the object was in a position </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -108,9 +108,9 @@
           <declname>point</declname>
         </param>
         <briefdescription>
+<para>how far is a point from the edge of this object </para>
         </briefdescription>
         <detaileddescription>
-<para>how far is a point from the edge of this object </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -138,9 +138,9 @@
           <defval>0</defval>
         </param>
         <briefdescription>
+<para>get a position on the edge of this object </para>
         </briefdescription>
         <detaileddescription>
-<para>get a position on the edge of this object </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -160,9 +160,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>does this space contain a given point </para>
         </briefdescription>
         <detaileddescription>
-<para>does this space contain a given point </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -189,9 +189,9 @@
           <declname>position</declname>
         </param>
         <briefdescription>
+<para>would this intersect with another object if it were positioned at the given point </para>
         </briefdescription>
         <detaileddescription>
-<para>would this intersect with another object if it were positioned at the given point </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -207,9 +207,9 @@
         <name>min_axis</name>
         <reimplements refid="classopenage_1_1_terrain_object_1a6b82e5577be0620a320954e13d0f5f08">min_axis</reimplements>
         <briefdescription>
+<para>the shortest line that can be placed across the objects center </para>
         </briefdescription>
         <detaileddescription>
-<para>the shortest line that can be placed across the objects center </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -267,9 +267,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Represents circular shaped objects (movable game units) can only be constructed by unit-&gt;make_location&lt;RadialObject&gt;(...) </para>
     </briefdescription>
     <detaileddescription>
-<para>Represents circular shaped objects (movable game units) can only be constructed by unit-&gt;make_location&lt;RadialObject&gt;(...) </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4570">

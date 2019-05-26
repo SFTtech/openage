@@ -98,20 +98,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1log_1_1_log_source.xht
 </div><!--header-->
 <div class="contents">
 
+<p>Any class that wants to provide .<a class="el" href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level)).">log()</a> shall inherit from this.  
+ <a href="classopenage_1_1log_1_1_log_source.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="logsource_8h_source.xhtml">logsource.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::log::LogSource:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::log::LogSource:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source__coll__graph.svg" width="178" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source__coll__graph.svg" width="178" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -121,6 +126,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa74e829150dd523fea5173cd5d864285"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1log_1_1_log_source.xhtml#aa74e829150dd523fea5173cd5d864285">~LogSource</a> ()=default</td></tr>
 <tr class="separator:aa74e829150dd523fea5173cd5d864285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5640099e20af4cd368c767dbcef3a1df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df">log</a> (const <a class="el" href="structopenage_1_1log_1_1message.xhtml">message</a> &amp;msg)</td></tr>
+<tr class="memdesc:a5640099e20af4cd368c767dbcef3a1df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message (get one via <a class="el" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG(level)</a>).  <a href="#a5640099e20af4cd368c767dbcef3a1df">More...</a><br /></td></tr>
 <tr class="separator:a5640099e20af4cd368c767dbcef3a1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f4d82915a2298899da93d55ab92e7dc"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1log_1_1_log_source.xhtml#a7f4d82915a2298899da93d55ab92e7dc">logsource_name</a> ()=0</td></tr>
 <tr class="separator:a7f4d82915a2298899da93d55ab92e7dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,17 +134,20 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ae75ede4764f389add2e8a870584807bb"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1log_1_1_log_source.xhtml#ae75ede4764f389add2e8a870584807bb">logger_id</a></td></tr>
+<tr class="memdesc:ae75ede4764f389add2e8a870584807bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialized during the <a class="el" href="classopenage_1_1log_1_1_log_source.xhtml" title="Any class that wants to provide .log() shall inherit from this.">LogSource</a> constructor, guaranteed to be unique.  <a href="#ae75ede4764f389add2e8a870584807bb">More...</a><br /></td></tr>
 <tr class="separator:ae75ede4764f389add2e8a870584807bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a10cb7dc55a04eb782bbed1d4dbc688bf"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1log_1_1_log_source.xhtml#a10cb7dc55a04eb782bbed1d4dbc688bf">get_unique_logger_id</a> ()</td></tr>
+<tr class="memdesc:a10cb7dc55a04eb782bbed1d4dbc688bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides unique logger ids.  <a href="#a10cb7dc55a04eb782bbed1d4dbc688bf">More...</a><br /></td></tr>
 <tr class="separator:a10cb7dc55a04eb782bbed1d4dbc688bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Any class that wants to provide .<a class="el" href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df">log()</a> shall inherit from this. Examples: <a class="el" href="classopenage_1_1_engine.xhtml">Engine</a>, <a class="el" href="classopenage_1_1_unit.xhtml">Unit</a>, ...</p>
+<div class="textblock"><p>Any class that wants to provide .<a class="el" href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level)).">log()</a> shall inherit from this. </p>
+<p>Examples: <a class="el" href="classopenage_1_1_engine.xhtml" title="main engine container.">Engine</a>, <a class="el" href="classopenage_1_1_unit.xhtml" title="A game object with current state represented by a stack of actions since this class represents both u...">Unit</a>, ...</p>
 <p>pxd:</p>
-<p>cppclass <a class="el" href="classopenage_1_1log_1_1_log_source.xhtml">LogSource</a>: void log(message msg) except + const size_t logger_id string <a class="el" href="classopenage_1_1log_1_1_log_source.xhtml#a7f4d82915a2298899da93d55ab92e7dc">logsource_name()</a> except + </p>
+<p>cppclass <a class="el" href="classopenage_1_1log_1_1_log_source.xhtml" title="Any class that wants to provide .log() shall inherit from this.">LogSource</a>: void log(message msg) except + const size_t logger_id string <a class="el" href="classopenage_1_1log_1_1_log_source.xhtml#a7f4d82915a2298899da93d55ab92e7dc">logsource_name()</a> except + </p>
 
 <p class="definition">Definition at line <a class="el" href="logsource_8h_source.xhtml#l00027">27</a> of file <a class="el" href="logsource_8h_source.xhtml">logsource.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -158,8 +167,8 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="logsource_8cpp_source.xhtml#l00014">14</a> of file <a class="el" href="logsource_8cpp_source.xhtml">logsource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    :</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classopenage_1_1log_1_1_log_source.xhtml#ae75ede4764f389add2e8a870584807bb">logger_id</a>{<a class="code" href="classopenage_1_1log_1_1_log_source.xhtml#a10cb7dc55a04eb782bbed1d4dbc688bf">LogSource::get_unique_logger_id</a>()} {}</div><div class="ttc" id="classopenage_1_1log_1_1_log_source_xhtml_ae75ede4764f389add2e8a870584807bb"><div class="ttname"><a href="classopenage_1_1log_1_1_log_source.xhtml#ae75ede4764f389add2e8a870584807bb">openage::log::LogSource::logger_id</a></div><div class="ttdeci">const size_t logger_id</div><div class="ttdef"><b>Definition:</b> <a href="logsource_8h_source.xhtml#l00043">logsource.h:43</a></div></div>
-<div class="ttc" id="classopenage_1_1log_1_1_log_source_xhtml_a10cb7dc55a04eb782bbed1d4dbc688bf"><div class="ttname"><a href="classopenage_1_1log_1_1_log_source.xhtml#a10cb7dc55a04eb782bbed1d4dbc688bf">openage::log::LogSource::get_unique_logger_id</a></div><div class="ttdeci">static size_t get_unique_logger_id()</div><div class="ttdef"><b>Definition:</b> <a href="logsource_8cpp_source.xhtml#l00028">logsource.cpp:28</a></div></div>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    :</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classopenage_1_1log_1_1_log_source.xhtml#ae75ede4764f389add2e8a870584807bb">logger_id</a>{<a class="code" href="classopenage_1_1log_1_1_log_source.xhtml#a10cb7dc55a04eb782bbed1d4dbc688bf">LogSource::get_unique_logger_id</a>()} {}</div><div class="ttc" id="classopenage_1_1log_1_1_log_source_xhtml_ae75ede4764f389add2e8a870584807bb"><div class="ttname"><a href="classopenage_1_1log_1_1_log_source.xhtml#ae75ede4764f389add2e8a870584807bb">openage::log::LogSource::logger_id</a></div><div class="ttdeci">const size_t logger_id</div><div class="ttdoc">Initialized during the LogSource constructor, guaranteed to be unique.</div><div class="ttdef"><b>Definition:</b> <a href="logsource_8h_source.xhtml#l00043">logsource.h:43</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_source_xhtml_a10cb7dc55a04eb782bbed1d4dbc688bf"><div class="ttname"><a href="classopenage_1_1log_1_1_log_source.xhtml#a10cb7dc55a04eb782bbed1d4dbc688bf">openage::log::LogSource::get_unique_logger_id</a></div><div class="ttdeci">static size_t get_unique_logger_id()</div><div class="ttdoc">Provides unique logger ids.</div><div class="ttdef"><b>Definition:</b> <a href="logsource_8cpp_source.xhtml#l00028">logsource.cpp:28</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="logsource_8cpp_source.xhtml#l00028">get_unique_logger_id()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -167,7 +176,8 @@ Static Private Member Functions</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source_aa2ff50c079c20b6ff1dfa08f45080b0a_cgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source_aa2ff50c079c20b6ff1dfa08f45080b0a_cgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -220,6 +230,7 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Provides unique logger ids. </p>
 
 <p class="definition">Definition at line <a class="el" href="logsource_8cpp_source.xhtml#l00028">28</a> of file <a class="el" href="logsource_8cpp_source.xhtml">logsource.cpp</a>.</p>
@@ -230,7 +241,8 @@ Static Private Member Functions</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source_a10cb7dc55a04eb782bbed1d4dbc688bf_icgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source_a10cb7dc55a04eb782bbed1d4dbc688bf_icgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -250,11 +262,12 @@ Static Private Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Logs a message (get one via <a class="el" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG(level)</a>). </p>
 
 <p class="definition">Definition at line <a class="el" href="logsource_8cpp_source.xhtml#l00019">19</a> of file <a class="el" href="logsource_8cpp_source.xhtml">logsource.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                      {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// ensure that the global stdoutsink has been constructed</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">// (and thus at least one sink exists).</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39">global_stdoutsink</a>();</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84">LogSinkList::instance</a>().<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd">log</a>(msg, <span class="keyword">this</span>);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div><div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_a2d47416fab12651553b4b58c86fd6f84"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84">openage::log::LogSinkList::instance</a></div><div class="ttdeci">static LogSinkList &amp; instance()</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8cpp_source.xhtml#l00036">logsink.cpp:36</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1log_xhtml_a3d2885be9c3a09b9ff7ee8764b2e5f39"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39">openage::log::global_stdoutsink</a></div><div class="ttdeci">StdOutSink &amp; global_stdoutsink()</div><div class="ttdef"><b>Definition:</b> <a href="stdout__logsink_8cpp_source.xhtml#l00064">stdout_logsink.cpp:64</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a3d2885be9c3a09b9ff7ee8764b2e5f39"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39">openage::log::global_stdoutsink</a></div><div class="ttdeci">StdOutSink &amp; global_stdoutsink()</div><div class="ttdoc">Returns a reference to the global stdout logsink object; Initializes the object if needed.</div><div class="ttdef"><b>Definition:</b> <a href="stdout__logsink_8cpp_source.xhtml#l00064">stdout_logsink.cpp:64</a></div></div>
 <div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_a8456b84ab55e1fe151c51438c5bfebdd"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd">openage::log::LogSinkList::log</a></div><div class="ttdeci">void log(const message &amp;msg, class LogSource *source) const</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8cpp_source.xhtml#l00042">logsink.cpp:42</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="stdout__logsink_8cpp_source.xhtml#l00064">openage::log::global_stdoutsink()</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00036">openage::log::LogSinkList::instance()</a>, and <a class="el" href="logsink_8cpp_source.xhtml#l00042">openage::log::LogSinkList::log()</a>.</p>
@@ -265,14 +278,16 @@ Static Private Member Functions</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source_a5640099e20af4cd368c767dbcef3a1df_cgraph.svg" width="447" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source_a5640099e20af4cd368c767dbcef3a1df_cgraph.svg" width="447" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source_a5640099e20af4cd368c767dbcef3a1df_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_source_a5640099e20af4cd368c767dbcef3a1df_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -325,7 +340,8 @@ Static Private Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initialized during the <a class="el" href="classopenage_1_1log_1_1_log_source.xhtml">LogSource</a> constructor, guaranteed to be unique. </p>
+
+<p>Initialized during the <a class="el" href="classopenage_1_1log_1_1_log_source.xhtml" title="Any class that wants to provide .log() shall inherit from this.">LogSource</a> constructor, guaranteed to be unique. </p>
 
 <p class="definition">Definition at line <a class="el" href="logsource_8h_source.xhtml#l00043">43</a> of file <a class="el" href="logsource_8h_source.xhtml">logsource.h</a>.</p>
 

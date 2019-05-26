@@ -1,6 +1,6 @@
 <map id="openage::Terrain::get_blending_mode" name="openage::Terrain::get_blending_mode">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,149,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#ae5704a3d8f41acd79c3c3dca6f284ce7" title=" " alt="" coords="197,13,387,39"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" title=" " alt="" coords="435,5,604,47"/>
+<area shape="rect" id="node1" title="return the blending mode id for two given neighbor ids." alt="" coords="5,5,149,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#ae5704a3d8f41acd79c3c3dca6f284ce7" title="return the blending mode/blendomatic mask set for a given terrain id." alt="" coords="197,13,387,39"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" title="validate whether the given terrain id is available." alt="" coords="435,5,604,47"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="652,13,763,39"/>
 </map>

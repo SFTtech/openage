@@ -80,7 +80,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node28 -->
 <g id="node4" class="node"><title>Node28</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" target="_top" xlink:title="Siphash implementation.">
 <polygon fill="white" stroke="black" points="174,-50 174,-69 273,-69 273,-50 174,-50"/>
 <text text-anchor="middle" x="223.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::hash</text>
 </a>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node33 -->
 <g id="node9" class="node"><title>Node33</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4" target="_top" xlink:title="Creates a hash value as a combination of two other hashes.">
 <polygon fill="white" stroke="black" points="174,-0.5 174,-30.5 273,-30.5 273,-0.5 174,-0.5"/>
 <text text-anchor="start" x="182" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::hash</text>
 <text text-anchor="middle" x="223.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_combine</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node29 -->
 <g id="node5" class="node"><title>Node29</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a uint64_t.">
 <polygon fill="white" stroke="black" points="310,-39.5 310,-69.5 415,-69.5 415,-39.5 310,-39.5"/>
 <text text-anchor="start" x="318" y="-57.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="362.5" y="-46.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_uint64</text>
@@ -162,7 +162,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node32 -->
 <g id="node8" class="node"><title>Node32</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="632,-26 632,-45 727,-45 727,-26 632,-26"/>
 <text text-anchor="middle" x="679.5" y="-33" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -1,5 +1,5 @@
 <map id="openage::Terrain::texture" name="openage::Terrain::texture">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,172,39"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" title=" " alt="" coords="220,5,389,47"/>
+<area shape="rect" id="node1" title="get the terrain texture for a given terrain id." alt="" coords="5,13,172,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" title="validate whether the given terrain id is available." alt="" coords="220,5,389,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="437,13,548,39"/>
 </map>

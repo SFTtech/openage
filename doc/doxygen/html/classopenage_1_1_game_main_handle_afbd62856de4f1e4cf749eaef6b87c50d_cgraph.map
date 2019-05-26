@@ -1,5 +1,5 @@
 <map id="openage::GameMainHandle::set_game" name="openage::GameMainHandle::set_game">
-<area shape="rect" id="node1" title=" " alt="" coords="5,35,188,76"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_game_main_handle.xhtml#a7ae88934bf1fc3c90e397441657718d2" title=" " alt="" coords="241,5,423,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#a06eb9cde29e294b956187c88042ae8ea" title=" " alt="" coords="236,71,428,98"/>
+<area shape="rect" id="node1" title="Pass the given game to the engine and start it." alt="" coords="5,35,188,76"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_main_handle.xhtml#a7ae88934bf1fc3c90e397441657718d2" title="Emit a qt signal to notify for changes in a running game." alt="" coords="241,5,423,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#a06eb9cde29e294b956187c88042ae8ea" title="Start a game with the given game generator." alt="" coords="236,71,428,98"/>
 </map>

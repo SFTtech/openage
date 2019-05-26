@@ -1,3 +1,3 @@
 <map id="qtsdl::GuiInput" name="qtsdl::GuiInput">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,112,112"/>
+<area shape="rect" id="node1" title="Converts SDL input events into Qt events." alt="" coords="5,5,112,112"/>
 </map>

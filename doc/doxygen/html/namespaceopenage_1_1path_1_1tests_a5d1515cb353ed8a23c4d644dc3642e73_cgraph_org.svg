@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-346 631,-346 631,4 -4,4"/>
 <!-- Node31 -->
 <g id="node1" class="node"><title>Node31</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Top level node test.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-188.5 0,-218.5 106,-218.5 106,-188.5 0,-188.5"/>
 <text text-anchor="start" x="8" y="-206.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="53" y="-195.5" font-family="Helvetica,sans-Serif" font-size="10.00">::path_node</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node32 -->
 <g id="node2" class="node"><title>Node32</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#ae71248e3b41e24e07f376124cfe95f41" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#ae71248e3b41e24e07f376124cfe95f41" target="_top" xlink:title="This function tests setting up basic nodes that point to a previous node.">
 <polygon fill="white" stroke="black" points="161.5,-311.5 161.5,-341.5 267.5,-341.5 267.5,-311.5 161.5,-311.5"/>
 <text text-anchor="start" x="169.5" y="-329.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="214.5" y="-318.5" font-family="Helvetica,sans-Serif" font-size="10.00">::node_0</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node33 -->
 <g id="node3" class="node"><title>Node33</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#afb103e74376eeb1339fe6204a3f649fe" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#afb103e74376eeb1339fe6204a3f649fe" target="_top" xlink:title="This function tests Node&#45;&gt;cost_to.">
 <polygon fill="white" stroke="black" points="161.5,-262.5 161.5,-292.5 267.5,-292.5 267.5,-262.5 161.5,-262.5"/>
 <text text-anchor="start" x="169.5" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="214.5" y="-269.5" font-family="Helvetica,sans-Serif" font-size="10.00">::node_cost_to_0</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node34 -->
 <g id="node4" class="node"><title>Node34</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a0907c94ce28302c57452c65f7e218d48" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a0907c94ce28302c57452c65f7e218d48" target="_top" xlink:title="This function tests Node&#45;&gt;cost_to.">
 <polygon fill="white" stroke="black" points="161.5,-213.5 161.5,-243.5 267.5,-243.5 267.5,-213.5 161.5,-213.5"/>
 <text text-anchor="start" x="169.5" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="214.5" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00">::node_cost_to_1</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node35 -->
 <g id="node5" class="node"><title>Node35</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a58a788eb28351a5ceec44ce2b152d3a0" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a58a788eb28351a5ceec44ce2b152d3a0" target="_top" xlink:title="This function does a basic test of generating a backtrace from the last node in a path.">
 <polygon fill="white" stroke="black" points="142,-164.5 142,-194.5 287,-194.5 287,-164.5 142,-164.5"/>
 <text text-anchor="start" x="150" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="214.5" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00">::node_generate_backtrace_0</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node36 -->
 <g id="node6" class="node"><title>Node36</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a7279af6fded008ace86db25db0e7079d" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a7279af6fded008ace86db25db0e7079d" target="_top" xlink:title="This function tests Node&#45;&gt;get_neighbors and how the scale effects the neighbors given.">
 <polygon fill="white" stroke="black" points="154.5,-115.5 154.5,-145.5 274.5,-145.5 274.5,-115.5 154.5,-115.5"/>
 <text text-anchor="start" x="162.5" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="214.5" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">::node_get_neighbors_0</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node37 -->
 <g id="node7" class="node"><title>Node37</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a22de95f3450a22cac036677b4e01ad63" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a22de95f3450a22cac036677b4e01ad63" target="_top" xlink:title="This function tests passable_line.">
 <polygon fill="white" stroke="black" points="155,-66.5 155,-96.5 274,-96.5 274,-66.5 155,-66.5"/>
 <text text-anchor="start" x="163" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="214.5" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">::node_passable_line_0</text>
@@ -104,7 +104,7 @@
 </g>
 <!-- Node38 -->
 <g id="node8" class="node"><title>Node38</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a324ebb21684cd1e29b46c01160ad4287" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#a324ebb21684cd1e29b46c01160ad4287" target="_top" xlink:title="This is a helper passable function that alwalys returns true.">
 <polygon fill="white" stroke="black" points="341.5,-137.5 341.5,-167.5 447.5,-167.5 447.5,-137.5 341.5,-137.5"/>
 <text text-anchor="start" x="349.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="394.5" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">::always_passable</text>
@@ -118,7 +118,7 @@
 </g>
 <!-- Node39 -->
 <g id="node9" class="node"><title>Node39</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#acebd36a125f535d815cd34536e4f1f1f" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#acebd36a125f535d815cd34536e4f1f1f" target="_top" xlink:title="This is a helper passable function that always returns false.">
 <polygon fill="white" stroke="black" points="341.5,-88.5 341.5,-118.5 447.5,-118.5 447.5,-88.5 341.5,-88.5"/>
 <text text-anchor="start" x="349.5" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="394.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">::not_passable</text>
@@ -132,7 +132,7 @@
 </g>
 <!-- Node40 -->
 <g id="node10" class="node"><title>Node40</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1path.xhtml#a2752186f11f3e1a26c7a72c647e7ccdd" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1path.xhtml#a4fb2450790038eed534dfe29ad57d350" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="323,-50 323,-69 466,-69 466,-50 323,-50"/>
 <text text-anchor="middle" x="394.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::passable_line</text>
 </a>
@@ -145,7 +145,7 @@
 </g>
 <!-- Node42 -->
 <g id="node12" class="node"><title>Node42</title>
-<g id="a_node12"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#ab0beb56de41e9380fbf8abf6b50759af" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="namespaceopenage_1_1path_1_1tests.xhtml#ab0beb56de41e9380fbf8abf6b50759af" target="_top" xlink:title="This is a helper passable function that only returns true when pos.ne == 20.">
 <polygon fill="white" stroke="black" points="337,-0.5 337,-30.5 452,-30.5 452,-0.5 337,-0.5"/>
 <text text-anchor="start" x="345" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::tests</text>
 <text text-anchor="middle" x="394.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::sometimes_passable</text>
@@ -159,7 +159,7 @@
 </g>
 <!-- Node41 -->
 <g id="node11" class="node"><title>Node41</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title="Converter to retrieve the number as double.">
 <polygon fill="white" stroke="black" points="502,-44.5 502,-74.5 627,-74.5 627,-44.5 502,-44.5"/>
 <text text-anchor="start" x="510" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="564.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_double</text>

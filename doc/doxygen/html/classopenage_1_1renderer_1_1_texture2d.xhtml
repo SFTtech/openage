@@ -98,20 +98,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1_texture2d
 </div><!--header-->
 <div class="contents">
 
+<p>An abstract base for a handle to a texture buffer allocated in graphics hardware.  
+ <a href="classopenage_1_1renderer_1_1_texture2d.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="renderer_2texture_8h_source.xhtml">texture.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::renderer::Texture2d:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_texture2d__inherit__graph.svg" width="150" height="346"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_texture2d__inherit__graph.svg" width="150" height="346"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::Texture2d:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_texture2d__coll__graph.svg" width="214" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_texture2d__coll__graph.svg" width="214" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -122,8 +127,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a02024a11741bb5cd5dd9bb89fc5f34eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the texture information.  <a href="#a02024a11741bb5cd5dd9bb89fc5f34eb">More...</a><br /></td></tr>
 <tr class="separator:a02024a11741bb5cd5dd9bb89fc5f34eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab205bc4ec25fba3abedaff0098619793"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml">resources::Texture2dData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_texture2d.xhtml#ab205bc4ec25fba3abedaff0098619793">into_data</a> ()=0</td></tr>
+<tr class="memdesc:ab205bc4ec25fba3abedaff0098619793"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies this texture's data from graphics hardware into a CPU-accessible Texture2dData buffer.  <a href="#ab205bc4ec25fba3abedaff0098619793">More...</a><br /></td></tr>
 <tr class="separator:ab205bc4ec25fba3abedaff0098619793"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ecc8b475df90ca4708703ebbfd124a2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_texture2d.xhtml#a0ecc8b475df90ca4708703ebbfd124a2">upload</a> (<a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml">resources::Texture2dData</a> const &amp;)=0</td></tr>
+<tr class="memdesc:a0ecc8b475df90ca4708703ebbfd124a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uploads the provided data into the GPU texture storage.  <a href="#a0ecc8b475df90ca4708703ebbfd124a2">More...</a><br /></td></tr>
 <tr class="separator:a0ecc8b475df90ca4708703ebbfd124a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -139,7 +146,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ac747ef01febbb6e1f1931f8e07537204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An abstract base for a handle to a texture buffer allocated in graphics hardware. Can be obtained by passing texture data to the renderer. </p>
+<div class="textblock"><p>An abstract base for a handle to a texture buffer allocated in graphics hardware. </p>
+<p>Can be obtained by passing texture data to the renderer. </p>
 
 <p class="definition">Definition at line <a class="el" href="renderer_2texture_8h_source.xhtml#l00013">13</a> of file <a class="el" href="renderer_2texture_8h_source.xhtml">texture.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -246,6 +254,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Copies this texture's data from graphics hardware into a CPU-accessible Texture2dData buffer. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#ab2038754e208bb1929a244dbf29f2b6b">openage::renderer::opengl::GlTexture2d</a>.</p>
@@ -275,7 +284,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Uploads the provided data into the GPU texture storage. The format has to match the format this <a class="el" href="classopenage_1_1_texture.xhtml">Texture</a> was originally created with. </p>
+
+<p>Uploads the provided data into the GPU texture storage. </p>
+<p>The format has to match the format this <a class="el" href="classopenage_1_1_texture.xhtml" title="A texture for rendering graphically.">Texture</a> was originally created with. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#aa521e75b491d72b51afade86d6c18ad4">openage::renderer::opengl::GlTexture2d</a>.</p>
 

@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>gui_rendering_setup_routines</name>
         <briefdescription>
+<para>Contains rendering context Use <ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref> to enable it. </para>
         </briefdescription>
         <detaileddescription>
-<para>Contains rendering context Use <ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref> to enable it </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -27,9 +27,9 @@
         <argsstring></argsstring>
         <name>window</name>
         <briefdescription>
+<para>Contains scene graph of the GUI. </para>
         </briefdescription>
         <detaileddescription>
-<para>Contains scene graph of the GUI </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -44,9 +44,9 @@
         <argsstring></argsstring>
         <name>render_control</name>
         <briefdescription>
+<para>Object for sending render command to Qt. </para>
         </briefdescription>
         <detaileddescription>
-<para>Object for sending render command to Qt </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -62,9 +62,9 @@
         <argsstring></argsstring>
         <name>fbo</name>
         <briefdescription>
+<para>FBO where the GUI is rendered. </para>
         </briefdescription>
         <detaileddescription>
-<para>FBO where the GUI is rendered </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -307,9 +307,9 @@
         <argsstring>()</argsstring>
         <name>make_sure_render_thread_unlocked</name>
         <briefdescription>
+<para>When render thread is locked waiting for the gui thread to finish its current event and go to the high-priority &apos;freeze&apos; event; but the gui thread can&apos;t finish the current event because it&apos;s going to lock the game-logic thread that will lock the render thread somehow. </para>
         </briefdescription>
         <detaileddescription>
-<para>When render thread is locked waiting for the gui thread to finish its current event and go to the high-priority &apos;freeze&apos; event; but the gui thread can&apos;t finish the current event because it&apos;s going to lock the game-logic thread that will lock the render thread somehow.</para>
 <para>In this situation the gui thread should call this function to immediately process the &apos;freeze&apos; event handler inside current event and remove the event from the gui queue.</para>
 <para>&apos;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">GuiRendererImpl::need_sync</ref>&apos; is only set from the gui thread, so after the calling this function, we are fine for entire duration of the processing of the current event.</para>
 <para>If &apos;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">GuiRendererImpl::need_sync</ref>&apos; is set, this function blocks until the render thread comes around to do the &apos;QQuickRenderControl::sync()&apos;. If it&apos;s not good enough, it&apos;s possible to implement two separate functions to set &apos;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">GuiRendererImpl::need_sync</ref>&apos; to false and then back to true. </para>
@@ -329,9 +329,9 @@
         <argsstring>()</argsstring>
         <name>make_sure_render_thread_wont_sync</name>
         <briefdescription>
+<para>Assures that the render thread won&apos;t try to stop the gui thread for syncing. </para>
         </briefdescription>
         <detaileddescription>
-<para>Assures that the render thread won&apos;t try to stop the gui thread for syncing.</para>
 <para>Must be called from the gui thread.</para>
 <para><simplesect kind="return"><para>true if need_sync was set to false (you should restore it with the <ref refid="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" kindref="member">demand_sync()</ref>) </para>
 </simplesect>
@@ -352,9 +352,9 @@
         <argsstring>()</argsstring>
         <name>demand_sync</name>
         <briefdescription>
+<para>Sets &apos;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">GuiRendererImpl::need_sync</ref>&apos; to true. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets &apos;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">GuiRendererImpl::need_sync</ref>&apos; to true.</para>
 <para>Must be called from the gui thread. </para>
         </detaileddescription>
         <inbodydescription>
@@ -453,9 +453,9 @@
         <argsstring>()</argsstring>
         <name>reinit_fbo_if_needed</name>
         <briefdescription>
+<para>If size changes, then create a new FBO for GUI rendering. </para>
         </briefdescription>
         <detaileddescription>
-<para>If size changes, then create a new FBO for GUI rendering </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -489,9 +489,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Passes the native graphic context to Qt. </para>
     </briefdescription>
     <detaileddescription>
-<para>Passes the native graphic context to Qt. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6464">

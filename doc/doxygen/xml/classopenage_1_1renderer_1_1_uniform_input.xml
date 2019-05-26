@@ -35,9 +35,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The abstract base for uniform input. </para>
     </briefdescription>
     <detaileddescription>
-<para>The abstract base for uniform input. Besides the uniform values, it stores information about which shader program the input was created for. </para>
+<para>Besides the uniform values, it stores information about which shader program the input was created for. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4802">

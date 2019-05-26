@@ -84,9 +84,9 @@
           <type>QJSEngine *</type>
         </param>
         <briefdescription>
+<para>Generates the <ref refid="classopenage_1_1gui_1_1_main_args_link" kindref="compound">MainArgsLink</ref> object which is then used within QML. </para>
         </briefdescription>
         <detaileddescription>
-<para>Generates the <ref refid="classopenage_1_1gui_1_1_main_args_link" kindref="compound">MainArgsLink</ref> object which is then used within QML. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -97,9 +97,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Used to make arguments of the game available in QML. </para>
     </briefdescription>
     <detaileddescription>
-<para>Used to make arguments of the game available in QML. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3637">

@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>handles</name>
         <briefdescription>
+<para>Changing the texture handles underneath the QSGTexture to reflect the reload of the <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Changing the texture handles underneath the QSGTexture to reflect the reload of the <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref>.</para>
 <para>It&apos;s not a proper Qt usage, so the live reload of the game assets for the gui may break in future Qt releases. When it breaks, this feature should be implemented via the recreation of the qml engine. </para>
         </detaileddescription>
         <inbodydescription>
@@ -86,9 +86,9 @@
           <declname>filled_handle</declname>
         </param>
         <briefdescription>
+<para>Memorizes pointer to provided handle object in order to be able to update it if the source changes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Memorizes pointer to provided handle object in order to be able to update it if the source changes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -158,9 +158,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Stores pointers to game texture handlers given to the Qt. </para>
     </briefdescription>
     <detaileddescription>
-<para>Stores pointers to game texture handlers given to the Qt. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3538">

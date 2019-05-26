@@ -1,5 +1,5 @@
 <map id="openage::GameSpec::load_living" name="openage::GameSpec::load_living">
-<area shape="rect" id="node1" title=" " alt="" coords="397,5,549,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_game_spec.xhtml#ab009229f56624608b53820adf2895cbc" title=" " alt="" coords="197,5,349,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403" title=" " alt="" coords="5,5,149,47"/>
+<area shape="rect" id="node1" title="loads assets for living things." alt="" coords="397,5,549,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_spec.xhtml#ab009229f56624608b53820adf2895cbc" title="makes initial unit types for a particular civ id" alt="" coords="197,5,349,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403" title="initialise the unit meta data" alt="" coords="5,5,149,47"/>
 </map>

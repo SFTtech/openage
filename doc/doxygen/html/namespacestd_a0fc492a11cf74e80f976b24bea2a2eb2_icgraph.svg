@@ -65,7 +65,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node121 -->
 <g id="node2" class="node"><title>Node121</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#a72f81eb7623d4ade8272f8163bfcb4d9" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#a72f81eb7623d4ade8272f8163bfcb4d9" target="_top" xlink:title="calculate blending masks for a given tile position.">
 <polygon fill="white" stroke="black" points="458,-333.5 458,-363.5 592,-363.5 592,-333.5 458,-333.5"/>
 <text text-anchor="start" x="466" y="-351.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::calculate</text>
 <text text-anchor="middle" x="525" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00">_masks</text>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node122 -->
 <g id="node3" class="node"><title>Node122</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a16e91ba2a775715dc81088e47e508786" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a16e91ba2a775715dc81088e47e508786" target="_top" xlink:title="create rendering and blending information for a single tile on the terrain.">
 <polygon fill="white" stroke="black" points="464,-284.5 464,-314.5 586,-314.5 586,-284.5 464,-284.5"/>
 <text text-anchor="start" x="472" y="-302.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::create</text>
 <text text-anchor="middle" x="525" y="-291.5" font-family="Helvetica,sans-Serif" font-size="10.00">_tile_advice</text>
@@ -120,7 +120,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node128 -->
 <g id="node9" class="node"><title>Node128</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#a5b3b46a13e28d59eaefacf1549269f9b" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#a5b3b46a13e28d59eaefacf1549269f9b" target="_top" xlink:title="Euclidian norm aka length.">
 <polygon fill="white" stroke="black" points="471.5,-147.5 471.5,-177.5 578.5,-177.5 578.5,-147.5 471.5,-147.5"/>
 <text text-anchor="start" x="479.5" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="525" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::norm</text>
@@ -134,7 +134,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node130 -->
 <g id="node11" class="node"><title>Node130</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a82f95e1d240ee7f39982060a17fe37ec" target="_top" xlink:title="Calculate the length of the quaternion.">
 <polygon fill="white" stroke="black" points="462.5,-98.5 462.5,-128.5 587.5,-128.5 587.5,-98.5 462.5,-98.5"/>
 <text text-anchor="start" x="470.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="525" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::norm</text>
@@ -148,7 +148,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node134 -->
 <g id="node15" class="node"><title>Node134</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aa16fe3c08c498d69f102951ae67fc4ca" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aa16fe3c08c498d69f102951ae67fc4ca" target="_top" xlink:title="Constructs a quaternion from a rotation matrix.">
 <polygon fill="white" stroke="black" points="462.5,-49.5 462.5,-79.5 587.5,-79.5 587.5,-49.5 462.5,-49.5"/>
 <text text-anchor="start" x="470.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="525" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Quaternion</text>
@@ -176,7 +176,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node125 -->
 <g id="node6" class="node"><title>Node125</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" target="_top" xlink:title="draw object with direction">
 <polygon fill="white" stroke="black" points="305,-242.5 305,-272.5 414,-272.5 414,-242.5 305,-242.5"/>
 <text text-anchor="start" x="313" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="359.5" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw</text>
@@ -218,7 +218,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node129 -->
 <g id="node10" class="node"><title>Node129</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#aae6e40b885d6cdf296bd2568bd2b5e49" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#aae6e40b885d6cdf296bd2568bd2b5e49" target="_top" xlink:title="Scales the Vector so that its norm is 1.">
 <polygon fill="white" stroke="black" points="306,-144.5 306,-174.5 413,-174.5 413,-144.5 306,-144.5"/>
 <text text-anchor="start" x="314" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="359.5" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalize</text>
@@ -232,7 +232,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node131 -->
 <g id="node12" class="node"><title>Node131</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a1ea971d2f39920e062b0b91971296b65" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#a1ea971d2f39920e062b0b91971296b65" target="_top" xlink:title="Ensure that the quaternion&#39;s length equals 1.">
 <polygon fill="white" stroke="black" points="297,-95.5 297,-125.5 422,-125.5 422,-95.5 297,-95.5"/>
 <text text-anchor="start" x="305" y="-113.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="359.5" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalize</text>
@@ -246,7 +246,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node132 -->
 <g id="node13" class="node"><title>Node132</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#adaf56c826ceec78d0f4980148ce498fa" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#adaf56c826ceec78d0f4980148ce498fa" target="_top" xlink:title="Return the normalized version of this quaternion.">
 <polygon fill="white" stroke="black" points="136,-95.5 136,-125.5 261,-125.5 261,-95.5 136,-95.5"/>
 <text text-anchor="start" x="144" y="-113.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="198.5" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalized</text>

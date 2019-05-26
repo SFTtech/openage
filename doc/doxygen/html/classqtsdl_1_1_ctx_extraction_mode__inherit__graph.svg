@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-266 345.5,-266 345.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Abstract base for the method of getting a Qt&#45;usable context.">
 <polygon fill="#bfbfbf" stroke="black" points="111,-171.5 111,-261.5 238,-261.5 238,-171.5 111,-171.5"/>
 <text text-anchor="middle" x="174.5" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::CtxExtractionMode</text>
 <polyline fill="none" stroke="black" points="111,-242.5 238,-242.5 "/>
@@ -26,7 +26,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_separate_rendering_context.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_separate_rendering_context.xhtml" target="_top" xlink:title="Create a separate context to render the GUI, make it shared with the main context.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-134.5 169,-134.5 169,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSeparateRendering</text>
 <text text-anchor="middle" x="84.5" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">Context</text>
@@ -50,7 +50,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_unique_rendering_context.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_unique_rendering_context.xhtml" target="_top" xlink:title="Use the same context to render the GUI.">
 <polygon fill="white" stroke="black" points="187.5,-22.5 187.5,-112.5 341.5,-112.5 341.5,-22.5 187.5,-22.5"/>
 <text text-anchor="start" x="195.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiUniqueRendering</text>
 <text text-anchor="middle" x="264.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">Context</text>

@@ -10,9 +10,10 @@
         <argsstring></argsstring>
         <name>unif_in</name>
         <briefdescription>
+<para>Uniform values to be set in the appropriate shader. </para>
         </briefdescription>
         <detaileddescription>
-<para>Uniform values to be set in the appropriate shader. Contains a reference to the correct shader, and this is the shader that will be used for drawing if geometry is present. </para>
+<para>Contains a reference to the correct shader, and this is the shader that will be used for drawing if geometry is present. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -24,9 +25,10 @@
         <argsstring></argsstring>
         <name>geometry</name>
         <briefdescription>
+<para>The geometry. </para>
         </briefdescription>
         <detaileddescription>
-<para>The geometry. It can be a simple primitive or a complex mesh. Can be nullptr to only set uniforms but do not perform draw call. </para>
+<para>It can be a simple primitive or a complex mesh. Can be nullptr to only set uniforms but do not perform draw call. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -62,9 +64,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A renderable is a set of shader uniform inputs and a possible draw call. </para>
     </briefdescription>
     <detaileddescription>
-<para>A renderable is a set of shader uniform inputs and a possible draw call. When a renderable is parsed, the uniform inputs are first passed to the shader they were created with. Then, if the geometry is not nullptr, the shader is executed with the geometry and the specified settings and the results are written into the render target. If the geometry is nullptr, the uniform values are uploaded to the shader but no draw call is performed. This can be used to, for example, first set the values of uniforms that many objects have in common, and then only upload the uniforms that vary between them in each draw call. This works because uniform values in any given shader are preserved across a render pass. </para>
+<para>When a renderable is parsed, the uniform inputs are first passed to the shader they were created with. Then, if the geometry is not nullptr, the shader is executed with the geometry and the specified settings and the results are written into the render target. If the geometry is nullptr, the uniform values are uploaded to the shader but no draw call is performed. This can be used to, for example, first set the values of uniforms that many objects have in common, and then only upload the uniforms that vary between them in each draw call. This works because uniform values in any given shader are preserved across a render pass. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4743">

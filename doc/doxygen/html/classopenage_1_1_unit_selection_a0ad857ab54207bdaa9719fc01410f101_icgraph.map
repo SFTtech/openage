@@ -1,5 +1,5 @@
 <map id="openage::UnitSelection::all_invoke" name="openage::UnitSelection::all_invoke">
-<area shape="rect" id="node1" title=" " alt="" coords="404,5,560,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,5,160,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" title=" " alt="" coords="208,35,356,76"/>
+<area shape="rect" id="node1" title="uses command on every selected unit" alt="" coords="404,5,560,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" title="places hovering building" alt="" coords="208,35,356,76"/>
 </map>

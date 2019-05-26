@@ -1,5 +1,5 @@
 <map id="openage::util::array64_size" name="openage::util::array64_size">
-<area shape="rect" id="node1" title=" " alt="" coords="375,13,553,39"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" title=" " alt="" coords="187,5,327,47"/>
+<area shape="rect" id="node1" title="Get the number of uint64&#45;elements that result from converting a count&#45;sized uint8_t array." alt="" coords="375,13,553,39"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" title="Convert a C&#45;style array of uint8_t to a std::vector of uint64_t." alt="" coords="187,5,327,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1util_1_1tests.xhtml#a48fcf768166ffb9362daf1fdf19acf45" title=" " alt="" coords="5,5,139,47"/>
 </map>

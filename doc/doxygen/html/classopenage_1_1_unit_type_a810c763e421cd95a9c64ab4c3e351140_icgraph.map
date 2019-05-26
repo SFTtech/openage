@@ -1,8 +1,8 @@
 <map id="openage::UnitType::initialise" name="openage::UnitType::initialise">
-<area shape="rect" id="node1" title=" " alt="" coords="660,71,799,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title=" " alt="" coords="443,5,612,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_unit_container.xhtml#a9ef13f975890f222c360b8a5e3242939" title=" " alt="" coords="449,71,606,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_unit_type.xhtml#a05d515d0c9b380bd9cb426b3bf3852f8" title=" " alt="" coords="458,136,597,177"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title=" " alt="" coords="216,5,395,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title=" " alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node1" title="Initialize units attributes to this type spec." alt="" coords="660,71,799,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title="Initialize units attributes to this type spec." alt="" coords="443,5,612,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit_container.xhtml#a9ef13f975890f222c360b8a5e3242939" title="adds a new unit to the container and initialises using a unit type" alt="" coords="449,71,606,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit_type.xhtml#a05d515d0c9b380bd9cb426b3bf3852f8" title="Initialize units shared attributes only to this type spec." alt="" coords="458,136,597,177"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title="Initialize units attributes to this type spec." alt="" coords="216,5,395,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title="Initialize units attributes to this type spec." alt="" coords="5,5,168,47"/>
 </map>

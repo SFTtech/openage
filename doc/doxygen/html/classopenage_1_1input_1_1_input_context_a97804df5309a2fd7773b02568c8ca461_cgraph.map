@@ -1,6 +1,6 @@
 <map id="openage::input::InputContext::execute_if_bound" name="openage::input::InputContext::execute_if_bound">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,193,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" title=" " alt="" coords="241,5,420,47"/>
+<area shape="rect" id="node1" title="lookup an action." alt="" coords="5,5,193,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" title="classes ordered with most specific first" alt="" coords="241,5,420,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="468,13,661,39"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="709,13,836,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="709,13,836,39"/>
 </map>

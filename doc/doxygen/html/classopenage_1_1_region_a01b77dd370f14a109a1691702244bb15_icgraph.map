@@ -1,6 +1,6 @@
 <map id="openage::Region::get_tile" name="openage::Region::get_tile">
-<area shape="rect" id="node1" title=" " alt="" coords="573,13,743,39"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_region.xhtml#a365efd8b6f0199a7cb270af90291a662" title=" " alt="" coords="373,5,525,47"/>
+<area shape="rect" id="node1" title="picks a random tile from this subset" alt="" coords="573,13,743,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_region.xhtml#a365efd8b6f0199a7cb270af90291a662" title="similiar to take_tiles, but takes a random group of tiles" alt="" coords="373,5,525,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_generator.xhtml#ae221973cf4125fbf62af6f9626609b4a" title=" " alt="" coords="189,5,325,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" title=" " alt="" coords="5,5,141,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" title="Create a game from a specification." alt="" coords="5,5,141,47"/>
 </map>

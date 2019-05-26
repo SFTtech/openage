@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 261,-35 261,4 -4,4"/>
 <!-- Node245 -->
 <g id="node1" class="node"><title>Node245</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns whether attribute is available">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 98,-30.5 98,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::has</text>
 <text text-anchor="middle" x="49" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node246 -->
 <g id="node2" class="node"><title>Node246</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title="Check if the attribute of the given type exists.">
 <polygon fill="white" stroke="black" points="134,-6 134,-25 257,-25 257,-6 134,-6"/>
 <text text-anchor="middle" x="195.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::has</text>
 </a>

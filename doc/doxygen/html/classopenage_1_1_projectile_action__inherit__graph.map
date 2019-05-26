@@ -1,4 +1,4 @@
 <map id="openage::ProjectileAction" name="openage::ProjectileAction">
-<area shape="rect" id="node1" title=" " alt="" coords="5,453,176,648"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml" title=" " alt="" coords="19,5,163,405"/>
+<area shape="rect" id="node1" title="moves object to fly in a parabolic shape" alt="" coords="5,453,176,648"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml" title="Actions can be pushed onto any units action stack." alt="" coords="19,5,163,405"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-390.5 1377,-390.5 1377,4 -4,4"/>
 <!-- Node44 -->
 <g id="node1" class="node"><title>Node44</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns the length of the string literal, excluding the terminating NULL byte.">
 <polygon fill="#bfbfbf" stroke="black" points="1252,-145.5 1252,-175.5 1373,-175.5 1373,-145.5 1252,-145.5"/>
 <text text-anchor="start" x="1260" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="1312.5" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strlen</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node45 -->
 <g id="node2" class="node"><title>Node45</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a854794aef09b81dbec641eca208a66d7" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a854794aef09b81dbec641eca208a66d7" target="_top" xlink:title="Copies the given string to the returned unique_ptr, including 0 byte.">
 <polygon fill="white" stroke="black" points="1101.5,-319.5 1101.5,-349.5 1200.5,-349.5 1200.5,-319.5 1101.5,-319.5"/>
 <text text-anchor="start" x="1109.5" y="-337.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::copy</text>
 <text text-anchor="middle" x="1151" y="-326.5" font-family="Helvetica,sans-Serif" font-size="10.00">_string</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node56 -->
 <g id="node13" class="node"><title>Node56</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a671299bb61bb30cecb3fa42de25333b0" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a671299bb61bb30cecb3fa42de25333b0" target="_top" xlink:title="Creates a truncated_string_literal from a regular string literal.">
 <polygon fill="white" stroke="black" points="1086,-252 1086,-293 1216,-293 1216,-252 1086,-252"/>
 <text text-anchor="start" x="1094" y="-281" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="start" x="1094" y="-270" font-family="Helvetica,sans-Serif" font-size="10.00">_::create_truncated_string</text>
@@ -49,7 +49,7 @@
 </g>
 <!-- Node58 -->
 <g id="node15" class="node"><title>Node58</title>
-<g id="a_node15"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a61c4b546903316ecf379bfe7bd9553f1" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a61c4b546903316ecf379bfe7bd9553f1" target="_top" xlink:title="Truncates a suffix from a string literal.">
 <polygon fill="white" stroke="black" points="1090.5,-189.5 1090.5,-219.5 1211.5,-219.5 1211.5,-189.5 1090.5,-189.5"/>
 <text text-anchor="start" x="1098.5" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="1151" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::get_prefix</text>
@@ -63,7 +63,7 @@
 </g>
 <!-- Node59 -->
 <g id="node16" class="node"><title>Node59</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0" target="_top" xlink:title="writes the string (excluding the null terminator)">
 <polygon fill="white" stroke="black" points="1093,-151 1093,-170 1209,-170 1209,-151 1093,-151"/>
 <text text-anchor="middle" x="1151" y="-158" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::puts</text>
 </a>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node65 -->
 <g id="node22" class="node"><title>Node65</title>
-<g id="a_node22"><a xlink:href="namespaceopenage_1_1util.xhtml#abeb6a94572d93a14498661545b8332ec" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="namespaceopenage_1_1util.xhtml#abeb6a94572d93a14498661545b8332ec" target="_top" xlink:title="Returns the number of whitespace characters on the right of the string.">
 <polygon fill="white" stroke="black" points="1101,-113 1101,-132 1201,-132 1201,-113 1101,-113"/>
 <text text-anchor="middle" x="1151" y="-120" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::rstrip</text>
 </a>
@@ -103,7 +103,7 @@
 </g>
 <!-- Node68 -->
 <g id="node25" class="node"><title>Node68</title>
-<g id="a_node25"><a xlink:href="namespaceopenage_1_1util.xhtml#a5519d25810f698275993214ce79016c7" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="namespaceopenage_1_1util.xhtml#a5519d25810f698275993214ce79016c7" target="_top" xlink:title="computes the length of the last character in a given UTF&#45;8 string.">
 <polygon fill="white" stroke="black" points="1104,-9.5 1104,-39.5 1198,-39.5 1198,-9.5 1104,-9.5"/>
 <text text-anchor="start" x="1112" y="-27.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::utf8</text>
 <text text-anchor="middle" x="1151" y="-16.5" font-family="Helvetica,sans-Serif" font-size="10.00">_last_char_size</text>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node46 -->
 <g id="node3" class="node"><title>Node46</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" target="_top" xlink:title="finds the path to an executable by evaluating env[PATH]">
 <polygon fill="white" stroke="black" points="921,-323.5 921,-353.5 1031,-353.5 1031,-323.5 921,-323.5"/>
 <text text-anchor="start" x="929" y="-341.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::subprocess</text>
 <text text-anchor="middle" x="976" y="-330.5" font-family="Helvetica,sans-Serif" font-size="10.00">::which</text>
@@ -131,7 +131,7 @@
 </g>
 <!-- Node47 -->
 <g id="node4" class="node"><title>Node47</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1os.xhtml#a5d72e5b58b3036f2298e474c4e9ed9b6" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1os.xhtml#a0c239b26dbfdae2443aa511e31619917" target="_top" xlink:title="tries to xdg&#45;open the file">
 <polygon fill="white" stroke="black" points="731,-367 731,-386 859,-386 859,-367 731,-367"/>
 <text text-anchor="middle" x="795" y="-374" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::execute_file</text>
 </a>
@@ -264,7 +264,7 @@
 </g>
 <!-- Node57 -->
 <g id="node14" class="node"><title>Node57</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a6a9d0df52733d9d7ae0bcc1bc561e38f" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a6a9d0df52733d9d7ae0bcc1bc561e38f" target="_top" xlink:title="Strips a prefix, given as const char *, from a given string literal.">
 <polygon fill="white" stroke="black" points="915.5,-274.5 915.5,-304.5 1036.5,-304.5 1036.5,-274.5 915.5,-274.5"/>
 <text text-anchor="start" x="923.5" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="976" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strip_prefix</text>
@@ -292,7 +292,7 @@
 </g>
 <!-- Node61 -->
 <g id="node18" class="node"><title>Node61</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#ac3b4a14cfa134355f0890c1d9ea608f4" target="_top" xlink:title="guess what this does.">
 <polygon fill="white" stroke="black" points="927.5,-186.5 927.5,-216.5 1024.5,-216.5 1024.5,-186.5 927.5,-186.5"/>
 <text text-anchor="start" x="935.5" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="976" y="-193.5" font-family="Helvetica,sans-Serif" font-size="10.00">printf</text>
@@ -306,7 +306,7 @@
 </g>
 <!-- Node62 -->
 <g id="node19" class="node"><title>Node62</title>
-<g id="a_node19"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#a7375ee96f4d8df916d1b34cb806c3e67" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ab9e51a5e1f100773a19da09a4f9d1597" target="_top" xlink:title="very early and inefficient printing of the console to a pty.">
 <polygon fill="white" stroke="black" points="735.5,-152.5 735.5,-182.5 854.5,-182.5 854.5,-152.5 735.5,-152.5"/>
 <text text-anchor="start" x="743.5" y="-170.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="795" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_terminal</text>
@@ -320,7 +320,7 @@
 </g>
 <!-- Node64 -->
 <g id="node21" class="node"><title>Node64</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1util_1_1_f_d.xhtml#a6826267ab945c97663c9e3506bbf2542" target="_top" xlink:title="writes the unicode codepoint, as utf&#45;8">
 <polygon fill="white" stroke="black" points="927.5,-98.5 927.5,-128.5 1024.5,-128.5 1024.5,-98.5 927.5,-98.5"/>
 <text text-anchor="start" x="935.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="976" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">putcp</text>
@@ -377,7 +377,7 @@
 </g>
 <!-- Node69 -->
 <g id="node26" class="node"><title>Node69</title>
-<g id="a_node26"><a xlink:href="namespaceopenage_1_1util.xhtml#a82a1e7bf14b6f49be2d5fe4ec89f920e" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="namespaceopenage_1_1util.xhtml#a82a1e7bf14b6f49be2d5fe4ec89f920e" target="_top" xlink:title="pops back (deletes) the last UTF&#45;8 character in a std::string.">
 <polygon fill="white" stroke="black" points="929,-0.5 929,-30.5 1023,-30.5 1023,-0.5 929,-0.5"/>
 <text text-anchor="start" x="937" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::utf8</text>
 <text text-anchor="middle" x="976" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_pop_back</text>
@@ -391,7 +391,7 @@
 </g>
 <!-- Node70 -->
 <g id="node27" class="node"><title>Node70</title>
-<g id="a_node27"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title=" ">
+<g id="a_node27"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title="register this console to the engine.">
 <polygon fill="white" stroke="black" points="728,-0.5 728,-30.5 862,-30.5 862,-0.5 728,-0.5"/>
 <text text-anchor="start" x="736" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="795" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to_engine</text>

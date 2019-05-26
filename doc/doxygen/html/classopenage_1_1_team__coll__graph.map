@@ -1,5 +1,5 @@
 <map id="openage::Team" name="openage::Team">
-<area shape="rect" id="node1" title=" " alt="" coords="5,20,176,259"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_team_score.xhtml" title=" " alt="" coords="86,336,231,428"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_score.xhtml" title=" " alt="" coords="201,5,370,273"/>
+<area shape="rect" id="node1" title="A team of players." alt="" coords="5,20,176,259"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_team_score.xhtml" title="The score of a team." alt="" coords="86,336,231,428"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_score.xhtml" title="Keeps track of a score and all the sub&#45;scores." alt="" coords="201,5,370,273"/>
 </map>

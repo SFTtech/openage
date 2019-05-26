@@ -1,5 +1,5 @@
 <map id="openage::util::Vector::cross_product" name="openage::util::Vector::cross_product">
-<area shape="rect" id="node1" title=" " alt="" coords="220,39,363,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#a818054a138224a38a8d36cea3454f24b" title=" " alt="" coords="5,5,172,47"/>
+<area shape="rect" id="node1" title="Cross&#45;product of two 3&#45;dimensional vectors." alt="" coords="220,39,363,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#a818054a138224a38a8d36cea3454f24b" title="Transforms a vector by this quaternion." alt="" coords="5,5,172,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1util_1_1tests.xhtml#a7deb96e08e8e82e52d83fb34f6db25da" title=" " alt="" coords="22,71,155,112"/>
 </map>

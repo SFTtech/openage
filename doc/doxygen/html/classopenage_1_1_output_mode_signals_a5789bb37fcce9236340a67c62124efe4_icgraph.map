@@ -1,14 +1,14 @@
 <map id="openage::OutputModeSignals::announced" name="openage::OutputModeSignals::announced">
-<area shape="rect" id="node1" title=" " alt="" coords="1103,203,1296,244"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml#aafb84951c6575c14b5517312c5cfe191" title=" " alt="" coords="892,169,1043,211"/>
+<area shape="rect" id="node1" title="Signal is triggered to anounce a new output mode." alt="" coords="1103,203,1296,244"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml#aafb84951c6575c14b5517312c5cfe191" title="Emit the &quot;announced&quot; signal with (name, InputContext::active_binds)." alt="" coords="892,169,1043,211"/>
 <area shape="rect" id="node19" href="$classopenage_1_1gui_1_1_output_mode_link.xhtml#a075e25acd5ad18242e42fb428c3c8b09" title=" " alt="" coords="880,235,1055,276"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a6288ce1c7b45e988f140ace30845bc69" title=" " alt="" coords="681,71,829,112"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_editor_mode.xhtml#aeac3794a1c9c6b6492413573d3670133" title=" " alt="" coords="682,136,827,177"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a6288ce1c7b45e988f140ace30845bc69" title="sends to gui the properties that it needs" alt="" coords="681,71,829,112"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_editor_mode.xhtml#aeac3794a1c9c6b6492413573d3670133" title="Emit the &quot;announced&quot; signal with (name, InputContext::active_binds)." alt="" coords="682,136,827,177"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_game_control.xhtml#a8c867441262580369ff7c66ba6bd0e4b" title=" " alt="" coords="677,201,832,243"/>
-<area shape="rect" id="node17" href="$classopenage_1_1_output_mode.xhtml#a56daba2d7cbace8b99ca51015d2f76df" title=" " alt="" coords="679,267,830,308"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" title=" " alt="" coords="461,71,629,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title=" " alt="" coords="249,5,397,47"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="246,71,401,112"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_output_mode.xhtml#a56daba2d7cbace8b99ca51015d2f76df" title="Called when the GameControl is set in QML." alt="" coords="679,267,830,308"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" title="sends to gui the buttons it should use for the action buttons (if changed)" alt="" coords="461,71,629,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title="Called when the mode is left." alt="" coords="249,5,397,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="246,71,401,112"/>
 <area shape="rect" id="node9" href="$classopenage_1_1_game_control.xhtml#a1d0f073f844955000861e4c0d08b20e0" title=" " alt="" coords="468,201,623,243"/>
 <area shape="rect" id="node10" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#aef267067b8bc03f0df3bfdecce515cd6" title=" " alt="" coords="233,136,413,177"/>
 <area shape="rect" id="node12" href="$classopenage_1_1_game_control.xhtml#ad7c9d48df33f8f56ab5686c36648bfa5" title=" " alt="" coords="246,201,401,243"/>
@@ -17,5 +17,5 @@
 <area shape="rect" id="node11" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#ac65023c9d5f785efe775b1dd99111c42" title=" " alt="" coords="5,136,185,177"/>
 <area shape="rect" id="node13" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#a0a4bb8a5d7b2e5637d317fe51f02ad5f" title=" " alt="" coords="5,201,185,243"/>
 <area shape="rect" id="node16" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#a54ebef9560dd3607b61083b0f8ecb9ba" title=" " alt="" coords="5,332,185,373"/>
-<area shape="rect" id="node18" href="$classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" title=" " alt="" coords="473,267,618,308"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_editor_mode.xhtml#a4c17017408bec2740f3653123bd17660" title="Called when the GameControl is set in QML." alt="" coords="473,267,618,308"/>
 </map>

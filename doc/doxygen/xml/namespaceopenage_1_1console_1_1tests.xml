@@ -63,7 +63,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp" bodystart="39" bodyend="52"/>
-        <references refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</references>
+        <references refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</references>
         <references refid="classopenage_1_1console_1_1_buf_1a3db6d160e44c8db825a37c0cfbc143ea" compoundref="buf_8cpp" startline="309" endline="320">openage::console::Buf::write</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1console_1_1tests_1a4a108e620e3fead2c08ff14841552186" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -83,7 +83,7 @@
         <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">max</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
         <references refid="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" compoundref="fds_8cpp" startline="57" endline="59">openage::util::FD::puts</references>
-        <references refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</references>
+        <references refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</references>
       </memberdef>
       </sectiondef>
     <briefdescription>

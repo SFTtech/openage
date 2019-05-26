@@ -1,4 +1,4 @@
 <map id="qtsdl::GuiRendererImpl::make_sure_render_thread_wont_sync" name="qtsdl::GuiRendererImpl::make_sure_render_thread_wont_sync">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,185,61"/>
+<area shape="rect" id="node1" title="Assures that the render thread won&#39;t try to stop the gui thread for syncing." alt="" coords="5,5,185,61"/>
 <area shape="rect" id="node2" href="$classqtsdl_1_1_gui_renderer_impl.xhtml#a862caa0a5422a61ddfa59e0ee13f9405" title=" " alt="" coords="233,13,388,54"/>
 </map>

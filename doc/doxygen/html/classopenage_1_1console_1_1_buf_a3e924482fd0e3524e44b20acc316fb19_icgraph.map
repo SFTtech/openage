@@ -1,7 +1,7 @@
 <map id="openage::console::Buf::escape_sequence_processed" name="openage::console::Buf::escape_sequence_processed">
-<area shape="rect" id="node1" title=" " alt="" coords="605,53,808,94"/>
-<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#a83a7e7db654360cff1c6796b169efc22" title=" " alt="" coords="405,5,555,61"/>
-<area shape="rect" id="node5" href="$classopenage_1_1console_1_1_buf.xhtml#aa6ae8933e3c2bbaafa8d81cf1c405406" title=" " alt="" coords="403,85,557,141"/>
-<area shape="rect" id="node3" href="$classopenage_1_1console_1_1_buf.xhtml#adcdc21533ab920bd72f92f27333716bf" title=" " alt="" coords="204,53,355,94"/>
-<area shape="rect" id="node4" href="$classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" title=" " alt="" coords="5,53,156,94"/>
+<area shape="rect" id="node1" title="called when a escape sequence has been successfully processed, clears the sequence." alt="" coords="605,53,808,94"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#a83a7e7db654360cff1c6796b169efc22" title="processes the CSI escape sequence currently stored in escape_sequence." alt="" coords="405,5,555,61"/>
+<area shape="rect" id="node5" href="$classopenage_1_1console_1_1_buf.xhtml#aa6ae8933e3c2bbaafa8d81cf1c405406" title="processes a text escape sequence that is one of OSC, DCS, APC or PM" alt="" coords="403,85,557,141"/>
+<area shape="rect" id="node3" href="$classopenage_1_1console_1_1_buf.xhtml#adcdc21533ab920bd72f92f27333716bf" title="processes one unicode codepoint internally called by write(char) after feeding the char into streamde..." alt="" coords="204,53,355,94"/>
+<area shape="rect" id="node4" href="$classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" title="write a single byte to the buffer." alt="" coords="5,53,156,94"/>
 </map>

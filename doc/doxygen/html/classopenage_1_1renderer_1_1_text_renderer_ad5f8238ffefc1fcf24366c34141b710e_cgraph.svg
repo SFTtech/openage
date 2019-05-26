@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-314 1110,-314 1110,4 -4,4"/>
 <!-- Node14 -->
 <g id="node1" class="node"><title>Node14</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Render all the text draw requests made during the frame.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-191.5 0,-221.5 107,-221.5 107,-191.5 0,-191.5"/>
 <text text-anchor="start" x="8" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="53.5" y="-198.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::render</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node15 -->
 <g id="node2" class="node"><title>Node15</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae2dd04418a0db610c8c007993ecfdd22" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae2dd04418a0db610c8c007993ecfdd22" target="_top" xlink:title="Binds the OpenGL texture of this glyph atlas at the specified unit.">
 <polygon fill="white" stroke="black" points="169,-279.5 169,-309.5 270,-309.5 270,-279.5 169,-279.5"/>
 <text text-anchor="start" x="177" y="-297.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="219.5" y="-286.5" font-family="Helvetica,sans-Serif" font-size="10.00">GlyphAtlas::bind</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node18 -->
 <g id="node5" class="node"><title>Node18</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title="Retrieves the atlas entry for a specified font and glyph.">
 <polygon fill="white" stroke="black" points="169,-191.5 169,-221.5 270,-221.5 270,-191.5 169,-191.5"/>
 <text text-anchor="start" x="177" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="219.5" y="-198.5" font-family="Helvetica,sans-Serif" font-size="10.00">GlyphAtlas::get</text>
@@ -188,7 +188,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node20 -->
 <g id="node7" class="node"><title>Node20</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" target="_top" xlink:title="Siphash implementation.">
 <polygon fill="white" stroke="black" points="529.5,-178 529.5,-197 628.5,-197 628.5,-178 529.5,-178"/>
 <text text-anchor="middle" x="579" y="-185" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::hash</text>
 </a>
@@ -201,7 +201,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node25 -->
 <g id="node12" class="node"><title>Node25</title>
-<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4" target="_top" xlink:title="Creates a hash value as a combination of two other hashes.">
 <polygon fill="white" stroke="black" points="529.5,-128.5 529.5,-158.5 628.5,-158.5 628.5,-128.5 529.5,-128.5"/>
 <text text-anchor="start" x="537.5" y="-146.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::hash</text>
 <text text-anchor="middle" x="579" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00">_combine</text>
@@ -215,7 +215,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node21 -->
 <g id="node8" class="node"><title>Node21</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a uint64_t.">
 <polygon fill="white" stroke="black" points="689,-152.5 689,-182.5 794,-182.5 794,-152.5 689,-152.5"/>
 <text text-anchor="start" x="697" y="-170.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="741.5" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_uint64</text>
@@ -255,7 +255,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node24 -->
 <g id="node11" class="node"><title>Node24</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1011,-158 1011,-177 1106,-177 1106,-158 1011,-158"/>
 <text text-anchor="middle" x="1058.5" y="-165" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -318,7 +318,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node29 -->
 <g id="node16" class="node"><title>Node29</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="840,-49.5 840,-79.5 965,-79.5 965,-49.5 840,-49.5"/>
 <text text-anchor="start" x="848" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="902.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -332,7 +332,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node30 -->
 <g id="node17" class="node"><title>Node30</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="840,-0.5 840,-30.5 965,-30.5 965,-0.5 840,-0.5"/>
 <text text-anchor="start" x="848" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="902.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

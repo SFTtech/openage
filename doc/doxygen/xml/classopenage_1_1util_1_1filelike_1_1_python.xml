@@ -305,9 +305,9 @@
           <type>std::ostream &amp;</type>
         </param>
         <briefdescription>
+<para>string representation of the filelike </para>
         </briefdescription>
         <detaileddescription>
-<para>string representation of the filelike </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -316,9 +316,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>File-like class that wraps a python open() file-like object. </para>
     </briefdescription>
     <detaileddescription>
-<para>File-like class that wraps a python open() file-like object.</para>
 <para>pxd: cppclass <ref refid="classopenage_1_1util_1_1filelike_1_1_python" kindref="compound">Python</ref>: PyObj &amp;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1aab01dfa426d143c014c45e2fdf8a8041" kindref="member">get_py_fileobj()</ref> except + </para>
     </detaileddescription>
     <inheritancegraph>

@@ -20,7 +20,7 @@
 </g>
 <!-- Node25 -->
 <g id="node2" class="node"><title>Node25</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a16ef0fe69558a29af4a8d568f2b5b518" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a16ef0fe69558a29af4a8d568f2b5b518" target="_top" xlink:title="read a single csv file.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 97,-30.5 97,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::read</text>
 <text text-anchor="middle" x="48.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_csv_file</text>

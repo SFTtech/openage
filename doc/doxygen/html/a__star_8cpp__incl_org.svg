@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-740.452 2173,-740.452 2173,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="This file implements the A* search algorithm for openage.">
 <polygon fill="#bfbfbf" stroke="black" points="836.5,-694.952 836.5,-735.952 993.5,-735.952 993.5,-694.952 836.5,-694.952"/>
 <text text-anchor="start" x="844.5" y="-723.952" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="844.5" y="-712.952" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>
@@ -86,7 +86,7 @@
 </g>
 <!-- Node48 -->
 <g id="node36" class="node"><title>Node48</title>
-<g id="a_node36"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title=" ">
+<g id="a_node36"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title="This file contains the implementation of a pairing heap.">
 <polygon fill="white" stroke="black" points="616,-392.952 616,-422.952 730,-422.952 730,-392.952 616,-392.952"/>
 <text text-anchor="start" x="624" y="-410.952" font-family="Helvetica,sans-Serif" font-size="10.00">../datastructure/pairing</text>
 <text text-anchor="middle" x="673" y="-399.952" font-family="Helvetica,sans-Serif" font-size="10.00">_heap.h</text>

@@ -115,6 +115,7 @@ $(document).ready(function(){initNavTree('structopenage_1_1coord_1_1tile.xhtml',
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3b1cc7af8687d57f014cf86e57476b2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenage_1_1coord_1_1tile3.xhtml">tile3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b">to_tile3</a> (const <a class="el" href="classopenage_1_1_terrain.xhtml">Terrain</a> &amp;terrain, <a class="el" href="namespaceopenage_1_1coord.xhtml#a89337255daa472cb4631091a38bac268">tile_t</a> altitude=0) const</td></tr>
+<tr class="memdesc:a3b1cc7af8687d57f014cf86e57476b2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds an UP component to the coordinate.  <a href="#a3b1cc7af8687d57f014cf86e57476b2b">More...</a><br /></td></tr>
 <tr class="separator:a3b1cc7af8687d57f014cf86e57476b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26e7ddc05f99069e9df2f35f3338d037"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenage_1_1coord_1_1phys2.xhtml">phys2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1coord_1_1tile.xhtml#a26e7ddc05f99069e9df2f35f3338d037">to_phys2</a> () const</td></tr>
 <tr class="separator:a26e7ddc05f99069e9df2f35f3338d037"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,7 +150,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00070">70</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                        {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> tile_delta{</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">util::mod</a>(this-&gt;ne, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>),</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">util::mod</a>(this-&gt;se, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>)</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    };</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a7e483e123bf554b630319eb3dd012c02"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">openage::util::mod</a></div><div class="ttdeci">constexpr T mod(T x, T m)</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.xhtml#l00032">misc.h:32</a></div></div>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                        {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> tile_delta{</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">util::mod</a>(this-&gt;ne, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>),</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">util::mod</a>(this-&gt;se, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>)</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    };</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a7e483e123bf554b630319eb3dd012c02"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">openage::util::mod</a></div><div class="ttdeci">constexpr T mod(T x, T m)</div><div class="ttdoc">modulo operation that guarantees to return positive values.</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.xhtml#l00032">misc.h:32</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1coord_xhtml_a056453272e2aabdf7fcf4ecc3b5fe7f7"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">openage::coord::tiles_per_chunk</a></div><div class="ttdeci">constexpr tile_t tiles_per_chunk</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00032">declarations.h:32</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="misc_8h_source.xhtml#l00032">openage::util::mod()</a>, and <a class="el" href="declarations_8h_source.xhtml#l00032">openage::coord::tiles_per_chunk</a>.</p>
@@ -160,14 +161,16 @@ Public Member Functions</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ab4811e492cabe885d33e85df51ceff83_cgraph.svg" width="327" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ab4811e492cabe885d33e85df51ceff83_cgraph.svg" width="327" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ab4811e492cabe885d33e85df51ceff83_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ab4811e492cabe885d33e85df51ceff83_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -216,14 +219,16 @@ Public Member Functions</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a81cb5eb0d3404e8433ffbc3a484160dc_cgraph.svg" width="540" height="150"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a81cb5eb0d3404e8433ffbc3a484160dc_cgraph.svg" width="540" height="150"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a81cb5eb0d3404e8433ffbc3a484160dc_icgraph.svg" width="536" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a81cb5eb0d3404e8433ffbc3a484160dc_icgraph.svg" width="536" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -244,7 +249,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00062">62</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                           {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> chunk{</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        static_cast&lt;chunk::elem_t&gt;(<a class="code" href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">util::div</a>(this-&gt;ne, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>)),</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        static_cast&lt;chunk::elem_t&gt;(<a class="code" href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">util::div</a>(this-&gt;se, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>))</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    };</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a34ba6f7abd32acb48dfc6ad6efdc1bc8"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">openage::util::div</a></div><div class="ttdeci">constexpr T div(T x, T m)</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.xhtml#l00075">misc.h:75</a></div></div>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                           {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> chunk{</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        static_cast&lt;chunk::elem_t&gt;(<a class="code" href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">util::div</a>(this-&gt;ne, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>)),</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        static_cast&lt;chunk::elem_t&gt;(<a class="code" href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">util::div</a>(this-&gt;se, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>))</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    };</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a34ba6f7abd32acb48dfc6ad6efdc1bc8"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">openage::util::div</a></div><div class="ttdeci">constexpr T div(T x, T m)</div><div class="ttdoc">implements the 'correct' version of the division operator, which always rounds to -inf</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.xhtml#l00075">misc.h:75</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1coord_xhtml_a056453272e2aabdf7fcf4ecc3b5fe7f7"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">openage::coord::tiles_per_chunk</a></div><div class="ttdeci">constexpr tile_t tiles_per_chunk</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00032">declarations.h:32</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="misc_8h_source.xhtml#l00075">openage::util::div()</a>, and <a class="el" href="declarations_8h_source.xhtml#l00032">openage::coord::tiles_per_chunk</a>.</p>
@@ -255,14 +260,16 @@ Public Member Functions</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a47c3fa2d9edf30712ddbc3b8ae217eb0_cgraph.svg" width="314" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a47c3fa2d9edf30712ddbc3b8ae217eb0_cgraph.svg" width="314" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a47c3fa2d9edf30712ddbc3b8ae217eb0_icgraph.svg" width="100%" height="479"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a47c3fa2d9edf30712ddbc3b8ae217eb0_icgraph.svg" width="100%" height="479"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -290,7 +297,8 @@ Public Member Functions</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a26e7ddc05f99069e9df2f35f3338d037_icgraph.svg" width="354" height="248"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a26e7ddc05f99069e9df2f35f3338d037_icgraph.svg" width="354" height="248"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -323,7 +331,7 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00028">28</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                                                  {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b">to_tile3</a>(terrain, altitude).<a class="code" href="structopenage_1_1coord_1_1tile3.xhtml#a4c8cdcd73dd2d7d1e6109c8b4a82ba65">to_phys3</a>();</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="ttc" id="structopenage_1_1coord_1_1tile3_xhtml_a4c8cdcd73dd2d7d1e6109c8b4a82ba65"><div class="ttname"><a href="structopenage_1_1coord_1_1tile3.xhtml#a4c8cdcd73dd2d7d1e6109c8b4a82ba65">openage::coord::tile3::to_phys3</a></div><div class="ttdeci">phys3 to_phys3() const</div><div class="ttdef"><b>Definition:</b> <a href="tile_8cpp_source.xhtml#l00038">tile.cpp:38</a></div></div>
-<div class="ttc" id="structopenage_1_1coord_1_1tile_xhtml_a3b1cc7af8687d57f014cf86e57476b2b"><div class="ttname"><a href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b">openage::coord::tile::to_tile3</a></div><div class="ttdeci">tile3 to_tile3(const Terrain &amp;terrain, tile_t altitude=0) const</div><div class="ttdef"><b>Definition:</b> <a href="tile_8cpp_source.xhtml#l00012">tile.cpp:12</a></div></div>
+<div class="ttc" id="structopenage_1_1coord_1_1tile_xhtml_a3b1cc7af8687d57f014cf86e57476b2b"><div class="ttname"><a href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b">openage::coord::tile::to_tile3</a></div><div class="ttdeci">tile3 to_tile3(const Terrain &amp;terrain, tile_t altitude=0) const</div><div class="ttdoc">adds an UP component to the coordinate.</div><div class="ttdef"><b>Definition:</b> <a href="tile_8cpp_source.xhtml#l00012">tile.cpp:12</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tile_8cpp_source.xhtml#l00038">openage::coord::tile3::to_phys3()</a>, and <a class="el" href="tile_8cpp_source.xhtml#l00012">to_tile3()</a>.</p>
 
@@ -333,14 +341,16 @@ Public Member Functions</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ac306cc74c14e094567447277327b389a_cgraph.svg" width="338" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ac306cc74c14e094567447277327b389a_cgraph.svg" width="338" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ac306cc74c14e094567447277327b389a_icgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ac306cc74c14e094567447277327b389a_icgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -370,7 +380,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>adds an UP component to the coordinate. the resulting UP component will be 'altitude' tiles above ground elevation. </p>
+
+<p>adds an UP component to the coordinate. </p>
+<p>the resulting UP component will be 'altitude' tiles above ground elevation. </p>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000007">Todo:</a></b></dt><dd>once terrain elevations have been implemented, query the terrain elevation at {ne, se}. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00012">12</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
@@ -382,7 +394,8 @@ Public Member Functions</h2></td></tr>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a3b1cc7af8687d57f014cf86e57476b2b_icgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a3b1cc7af8687d57f014cf86e57476b2b_icgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -420,7 +433,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00055">55</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                  {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="structopenage_1_1coord_1_1tile.xhtml#a81cb5eb0d3404e8433ffbc3a484160dc">to_camgame</a>(mgr, terrain, altitude).<a class="code" href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44">to_viewport</a>(mgr);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="structopenage_1_1coord_1_1camgame_xhtml_a3fc238716b4f13031e53b8cb1d8c3a44"><div class="ttname"><a href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44">openage::coord::camgame::to_viewport</a></div><div class="ttdeci">viewport to_viewport(const CoordManager &amp;mgr) const</div><div class="ttdef"><b>Definition:</b> <a href="pixel_8cpp_source.xhtml#l00045">pixel.cpp:45</a></div></div>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                  {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="structopenage_1_1coord_1_1tile.xhtml#a81cb5eb0d3404e8433ffbc3a484160dc">to_camgame</a>(mgr, terrain, altitude).<a class="code" href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44">to_viewport</a>(mgr);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="structopenage_1_1coord_1_1camgame_xhtml_a3fc238716b4f13031e53b8cb1d8c3a44"><div class="ttname"><a href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44">openage::coord::camgame::to_viewport</a></div><div class="ttdeci">viewport to_viewport(const CoordManager &amp;mgr) const</div><div class="ttdoc">See the comments for camgame_delta::to_phys3.</div><div class="ttdef"><b>Definition:</b> <a href="pixel_8cpp_source.xhtml#l00045">pixel.cpp:45</a></div></div>
 <div class="ttc" id="structopenage_1_1coord_1_1tile_xhtml_a81cb5eb0d3404e8433ffbc3a484160dc"><div class="ttname"><a href="structopenage_1_1coord_1_1tile.xhtml#a81cb5eb0d3404e8433ffbc3a484160dc">openage::coord::tile::to_camgame</a></div><div class="ttdeci">camgame to_camgame(const CoordManager &amp;mgr, const Terrain &amp;terrain, tile_t altitude=0) const</div><div class="ttdef"><b>Definition:</b> <a href="tile_8cpp_source.xhtml#l00047">tile.cpp:47</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tile_8cpp_source.xhtml#l00047">to_camgame()</a>, and <a class="el" href="pixel_8cpp_source.xhtml#l00045">openage::coord::camgame::to_viewport()</a>.</p>
@@ -431,14 +444,16 @@ Public Member Functions</h2></td></tr>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a3f2be2b38a339e563ea0fa96733250ec_cgraph.svg" width="100%" height="412"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a3f2be2b38a339e563ea0fa96733250ec_cgraph.svg" width="100%" height="412"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a3f2be2b38a339e563ea0fa96733250ec_icgraph.svg" width="352" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a3f2be2b38a339e563ea0fa96733250ec_icgraph.svg" width="352" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

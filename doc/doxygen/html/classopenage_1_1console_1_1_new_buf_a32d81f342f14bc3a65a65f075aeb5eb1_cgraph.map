@@ -1,4 +1,4 @@
 <map id="openage::console::NewBuf::new_chr" name="openage::console::NewBuf::new_chr">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,181,47"/>
+<area shape="rect" id="node1" title="writes a char" alt="" coords="5,5,181,47"/>
 <area shape="rect" id="node2" href="$classopenage_1_1console_1_1_new_buf.xhtml#a5b5b1d0951916fee7948751eaf03228c" title=" " alt="" coords="229,5,405,47"/>
 </map>

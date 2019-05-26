@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-95.5 315,-95.5 315,4 -4,4"/>
 <!-- Node53 -->
 <g id="node1" class="node"><title>Node53</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="for use in bitstream mode.">
 <polygon fill="#bfbfbf" stroke="black" points="187,-27.5 187,-57.5 311,-57.5 311,-27.5 187,-27.5"/>
 <text text-anchor="start" x="195" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="249" y="-34.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream::remove_bits</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node54 -->
 <g id="node2" class="node"><title>Node54</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a29bf6b73c439be6e72434af82309bc54" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a29bf6b73c439be6e72434af82309bc54" target="_top" xlink:title="for use in bitstream mode.">
 <polygon fill="white" stroke="black" points="10,-50 10,-91 141,-91 141,-50 10,-50"/>
 <text text-anchor="start" x="18" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="18" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream&lt; 4096 &gt;::align</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node55 -->
 <g id="node3" class="node"><title>Node55</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af4522bbae0ee989e1f5b45606fb2e673" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af4522bbae0ee989e1f5b45606fb2e673" target="_top" xlink:title="for use in bitstream mode.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 151,-30.5 151,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="75.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream&lt; 4096 &gt;::read_bits</text>

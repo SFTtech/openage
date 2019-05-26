@@ -65,7 +65,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node26 -->
 <g id="node2" class="node"><title>Node26</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011" target="_top" xlink:title="Return the string representation of the bind assignated to an action.">
 <polygon fill="white" stroke="black" points="188,-109.5 188,-139.5 333,-139.5 333,-109.5 188,-109.5"/>
 <text text-anchor="start" x="196" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="260.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_bind</text>
@@ -92,7 +92,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node29 -->
 <g id="node5" class="node"><title>Node29</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#af93e6ca8bded1892c1c9d83332468e2d" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#af93e6ca8bded1892c1c9d83332468e2d" target="_top" xlink:title="Set the given action to be triggered by the given bind (key/mouse /wheel).">
 <polygon fill="white" stroke="black" points="188,-60.5 188,-90.5 333,-90.5 333,-60.5 188,-60.5"/>
 <text text-anchor="start" x="196" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="260.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_bind</text>

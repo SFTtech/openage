@@ -21,7 +21,7 @@
 </g>
 <!-- Node23 -->
 <g id="node2" class="node"><title>Node23</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title="std::for_each except just on containers.">
 <polygon fill="white" stroke="black" points="145.5,-119 145.5,-138 260.5,-138 260.5,-119 145.5,-119"/>
 <text text-anchor="middle" x="203" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>
@@ -164,7 +164,7 @@
 </g>
 <!-- Node29 -->
 <g id="node8" class="node"><title>Node29</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title="odo: move to util">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="791,-101 791,-120 937,-120 937,-101 791,-101"/>
 <text text-anchor="middle" x="864" y="-108" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::tests::max</text>
 </a>
@@ -202,7 +202,7 @@
 </g>
 <!-- Node34 -->
 <g id="node13" class="node"><title>Node34</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title="return currently running game or null if a game is not currently running">
 <polygon fill="white" stroke="black" points="297,-75 297,-94 435,-94 435,-75 297,-75"/>
 <text text-anchor="middle" x="366" y="-82" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get_game</text>
 </a>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-135.5 1016,-135.5 1016,4 -4,4"/>
 <!-- Node40 -->
 <g id="node1" class="node"><title>Node40</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="finds the path to an executable by evaluating env[PATH]">
 <polygon fill="#bfbfbf" stroke="black" points="902,-68.5 902,-98.5 1012,-98.5 1012,-68.5 902,-68.5"/>
 <text text-anchor="start" x="910" y="-86.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::subprocess</text>
 <text text-anchor="middle" x="957" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00">::which</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node41 -->
 <g id="node2" class="node"><title>Node41</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1os.xhtml#a5d72e5b58b3036f2298e474c4e9ed9b6" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1os.xhtml#a0c239b26dbfdae2443aa511e31619917" target="_top" xlink:title="tries to xdg&#45;open the file">
 <polygon fill="white" stroke="black" points="731,-112 731,-131 859,-131 859,-112 731,-112"/>
 <text text-anchor="middle" x="795" y="-119" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::execute_file</text>
 </a>

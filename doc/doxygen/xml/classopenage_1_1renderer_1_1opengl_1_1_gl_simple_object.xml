@@ -130,9 +130,9 @@
         <argsstring>()</argsstring>
         <name>~GlSimpleObject</name>
         <briefdescription>
+<para>Uses delete_fun to destroy the underlying object, but only if the handle is present (hasn&apos;t been moved out). </para>
         </briefdescription>
         <detaileddescription>
-<para>Uses delete_fun to destroy the underlying object, but only if the handle is present (hasn&apos;t been moved out). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -177,9 +177,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A base class for all classes representing OpenGL Objects to inherit from. </para>
     </briefdescription>
     <detaileddescription>
-<para>A base class for all classes representing OpenGL Objects to inherit from. It allows moving the object, but not copying it through the copy constructor. It has unique_ptr-like semantics. It is called &apos;simple&apos;, because in the future we might want to add collections of objects and similar more advanced features. </para>
+<para>It allows moving the object, but not copying it through the copy constructor. It has unique_ptr-like semantics. It is called &apos;simple&apos;, because in the future we might want to add collections of objects and similar more advanced features. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4704">

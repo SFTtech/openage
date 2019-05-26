@@ -99,20 +99,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1_enum.xhtml','
 </div><!--header-->
 <div class="contents">
 
+<p>Container for possible enum values.  
+ <a href="classopenage_1_1util_1_1_enum.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="enum_8h_source.xhtml">enum.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::util::Enum&lt; DerivedType &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_enum__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_enum__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::Enum&lt; DerivedType &gt;:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_enum__coll__graph.svg" width="223" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_enum__coll__graph.svg" width="223" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -161,13 +166,14 @@ Friends</h2></td></tr>
 <div class="textblock"><h3>template&lt;typename DerivedType&gt;<br />
 class openage::util::Enum&lt; DerivedType &gt;</h3>
 
-<p>Container for possible enum values. Inherit from this class with CRTP.</p>
+<p>Container for possible enum values. </p>
+<p>Inherit from this class with CRTP.</p>
 <p>This class should have the various values defined as <code>static constexpr</code> members. Due to the C++ standard, individual enum values must be declared as <code>static constexpr</code> members of a class. If they are declared as <code>static constexpr</code> constants in a namespace instead, the linker will place the constant in the ELF file once per object file instead of deduplicating it.</p>
 <p>Objects of this class contain a reference to a static constexpr value.</p>
 <p>The static constexpr values can be accessed through <code>operator -&gt;</code>.</p>
 <p>See the documentation for the <a class="el" href="classopenage_1_1util_1_1_enum_value.xhtml">EnumValue</a> class above.</p>
 <p>pxd:</p>
-<p>cppclass <a class="el" href="classopenage_1_1util_1_1_enum.xhtml">Enum</a>[DerivedType]: const DerivedType &amp;<a class="el" href="classopenage_1_1util_1_1_enum.xhtml#aedee70eaf15269cf90225d2e3628e31c">get()</a> except +</p>
+<p>cppclass <a class="el" href="classopenage_1_1util_1_1_enum.xhtml" title="Container for possible enum values.">Enum</a>[DerivedType]: const DerivedType &amp;<a class="el" href="classopenage_1_1util_1_1_enum.xhtml#aedee70eaf15269cf90225d2e3628e31c">get()</a> except +</p>
 <p>bool operator ==(Enum[DerivedType] other) except + bool operator !=(Enum[DerivedType] other) except +</p>
 <p>bool operator &lt;(Enum[DerivedType] other) except + bool operator &gt;(Enum[DerivedType] other) except + bool operator &lt;=(Enum[DerivedType] other) except + bool operator &gt;=(Enum[DerivedType] other) except + </p>
 

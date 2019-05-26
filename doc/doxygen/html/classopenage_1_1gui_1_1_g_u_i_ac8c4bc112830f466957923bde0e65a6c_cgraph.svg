@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 252,-84 252,4 -4,4"/>
 <!-- Node4 -->
 <g id="node1" class="node"><title>Node4</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="execute the drawing action.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-24.5 0,-54.5 101,-54.5 101,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GUI::</text>
 <text text-anchor="middle" x="50.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">on_drawhud</text>

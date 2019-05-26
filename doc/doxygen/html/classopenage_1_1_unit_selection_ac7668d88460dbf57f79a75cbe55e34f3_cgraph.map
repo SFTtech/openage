@@ -1,12 +1,12 @@
 <map id="openage::UnitSelection::add_unit" name="openage::UnitSelection::add_unit">
 <area shape="rect" id="node1" title=" " alt="" coords="5,115,161,156"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_unit_selection.xhtml#aa97b9724248f01b525488bbba21d6b59" title=" " alt="" coords="215,5,371,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="855,88,983,129"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#adfea298b04684ab09dd8f499dabb8715" title=" " alt="" coords="218,122,367,149"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_unit_selection.xhtml#a9ec8fd5cfcfa451cce1123ff87894719" title=" " alt="" coords="209,173,376,215"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="853,177,984,219"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="1033,95,1195,122"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_unit.xhtml#aba4a16068cf5a6b218a4c78f499874b0" title=" " alt="" coords="424,134,603,161"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="1032,185,1196,211"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_player.xhtml#aefd20341c814fc53919cac8761bad38b" title=" " alt="" coords="651,134,805,161"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title="returns attribute based on templated value" alt="" coords="855,88,983,129"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#adfea298b04684ab09dd8f499dabb8715" title="get a reference which can check against the container to ensure this object still exists" alt="" coords="218,122,367,149"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit_selection.xhtml#a9ec8fd5cfcfa451cce1123ff87894719" title="Check whether the currently selected units may be selected at the same time If not,..." alt="" coords="209,173,376,215"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title="returns whether attribute is available" alt="" coords="853,177,984,219"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title="Get the attribute based on the type." alt="" coords="1033,95,1195,122"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_unit.xhtml#aba4a16068cf5a6b218a4c78f499874b0" title="checks whether the current player is the owner of this unit" alt="" coords="424,134,603,161"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title="Check if the attribute of the given type exists." alt="" coords="1032,185,1196,211"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_player.xhtml#aefd20341c814fc53919cac8761bad38b" title="this player owns the specified unit" alt="" coords="651,134,805,161"/>
 </map>

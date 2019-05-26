@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-128 1063,-128 1063,4 -4,4"/>
 <!-- Node329 -->
 <g id="node1" class="node"><title>Node329</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="checks whether the current player is the owner of this unit">
 <polygon fill="#bfbfbf" stroke="black" points="925,-30 925,-49 1059,-49 1059,-30 925,-30"/>
 <text text-anchor="middle" x="992" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::is_own_unit</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node330 -->
 <g id="node2" class="node"><title>Node330</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a9ec8fd5cfcfa451cce1123ff87894719" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a9ec8fd5cfcfa451cce1123ff87894719" target="_top" xlink:title="Check whether the currently selected units may be selected at the same time If not,...">
 <polygon fill="white" stroke="black" points="764,-47.5 764,-77.5 889,-77.5 889,-47.5 764,-47.5"/>
 <text text-anchor="start" x="772" y="-65.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="826.5" y="-54.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_unit_selection_type</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node337 -->
 <g id="node9" class="node"><title>Node337</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" target="_top" xlink:title="kill a single unit in the selection">
 <polygon fill="white" stroke="black" points="611,-0.5 611,-30.5 728,-30.5 728,-0.5 611,-0.5"/>
 <text text-anchor="start" x="619" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="669.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::kill_unit</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node336 -->
 <g id="node8" class="node"><title>Node336</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="black" points="305,-44.5 305,-74.5 422,-74.5 422,-44.5 305,-44.5"/>
 <text text-anchor="start" x="313" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node333 -->
 <g id="node5" class="node"><title>Node333</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title="point unit selection">
 <polygon fill="white" stroke="black" points="305,-93.5 305,-123.5 422,-123.5 422,-93.5 305,-93.5"/>
 <text text-anchor="start" x="313" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_point</text>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node335 -->
 <g id="node7" class="node"><title>Node335</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-22.5 0,-52.5 116,-52.5 116,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

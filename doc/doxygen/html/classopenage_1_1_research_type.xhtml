@@ -97,20 +97,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1_research_type.xhtml',
 </div><!--header-->
 <div class="contents">
 
+<p>Describes a research for a single player.  
+ <a href="classopenage_1_1_research_type.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="research_8h_source.xhtml">research.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::ResearchType:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type__inherit__graph.svg" width="203" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type__inherit__graph.svg" width="203" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::ResearchType:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -118,29 +123,36 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad59b4d014b294022fef3a9ce5a9a5a53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_type.xhtml#ad59b4d014b294022fef3a9ce5a9a5a53">ResearchType</a> (<a class="el" href="classopenage_1_1_player.xhtml">Player</a> &amp;<a class="el" href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">owner</a>)</td></tr>
 <tr class="separator:ad59b4d014b294022fef3a9ce5a9a5a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36804d9b56a050b726d0c3e036ae0d89"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_type.xhtml#a36804d9b56a050b726d0c3e036ae0d89">id</a> () const =0</td></tr>
+<tr class="memdesc:a36804d9b56a050b726d0c3e036ae0d89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the unique id of this research type.  <a href="#a36804d9b56a050b726d0c3e036ae0d89">More...</a><br /></td></tr>
 <tr class="separator:a36804d9b56a050b726d0c3e036ae0d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46f438491a0104f174bdb54034f88288"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_type.xhtml#a46f438491a0104f174bdb54034f88288">name</a> () const =0</td></tr>
+<tr class="memdesc:a46f438491a0104f174bdb54034f88288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of the research.  <a href="#a46f438491a0104f174bdb54034f88288">More...</a><br /></td></tr>
 <tr class="separator:a46f438491a0104f174bdb54034f88288"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76a5bd220674135f0bf93eed3f1bce92"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082a">research_category</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">category</a> () const =0</td></tr>
+<tr class="memdesc:a76a5bd220674135f0bf93eed3f1bce92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the research category of the research.  <a href="#a76a5bd220674135f0bf93eed3f1bce92">More...</a><br /></td></tr>
 <tr class="separator:a76a5bd220674135f0bf93eed3f1bce92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52361828cbac190a167c20a3fc825490"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classopenage_1_1_research.xhtml">Research</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_type.xhtml#a52361828cbac190a167c20a3fc825490">initialise</a> () const</td></tr>
+<tr class="memdesc:a52361828cbac190a167c20a3fc825490"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a single <a class="el" href="classopenage_1_1_research.xhtml" title="At most one Research must exist for each ResearchType.">Research</a> object.  <a href="#a52361828cbac190a167c20a3fc825490">More...</a><br /></td></tr>
 <tr class="separator:a52361828cbac190a167c20a3fc825490"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca6b37a0f8d31b9646a97ee0bf2f2228"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_type.xhtml#aca6b37a0f8d31b9646a97ee0bf2f2228">get_max_repeats</a> () const</td></tr>
+<tr class="memdesc:aca6b37a0f8d31b9646a97ee0bf2f2228"><td class="mdescLeft">&#160;</td><td class="mdescRight">How many times it can be researched.  <a href="#aca6b37a0f8d31b9646a97ee0bf2f2228">More...</a><br /></td></tr>
 <tr class="separator:aca6b37a0f8d31b9646a97ee0bf2f2228"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a3186a0805b6d799dfc6abac2c9a404"><td class="memItemLeft" align="right" valign="top">virtual unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_type.xhtml#a4a3186a0805b6d799dfc6abac2c9a404">get_research_time</a> () const =0</td></tr>
 <tr class="separator:a4a3186a0805b6d799dfc6abac2c9a404"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b99e4ff298e19b86c6fa251802fcaf3"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classopenage_1_1_resource_cost.xhtml">ResourceCost</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_type.xhtml#a2b99e4ff298e19b86c6fa251802fcaf3">get_research_cost</a> () const =0</td></tr>
 <tr class="separator:a2b99e4ff298e19b86c6fa251802fcaf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af58948dd42b8d8a97233d2fdd9885e83"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83">apply</a> () const =0</td></tr>
+<tr class="memdesc:af58948dd42b8d8a97233d2fdd9885e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the modifications (eg.  <a href="#af58948dd42b8d8a97233d2fdd9885e83">More...</a><br /></td></tr>
 <tr class="separator:af58948dd42b8d8a97233d2fdd9885e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:adb394897aa588ce3b6399adb8b53b4ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1_player.xhtml">Player</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">owner</a></td></tr>
+<tr class="memdesc:adb394897aa588ce3b6399adb8b53b4ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">The player who owns this research type.  <a href="#adb394897aa588ce3b6399adb8b53b4ec">More...</a><br /></td></tr>
 <tr class="separator:adb394897aa588ce3b6399adb8b53b4ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Describes a research for a single player</p>
+<div class="textblock"><p>Describes a research for a single player. </p>
 <p>The get_max_repeats (with a default value of 1) can allow for a research to be performed multiple types </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8h_source.xhtml#l00039">39</a> of file <a class="el" href="research_8h_source.xhtml">research.h</a>.</p>
@@ -162,7 +174,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00009">9</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    :</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">owner</a>{<a class="code" href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">owner</a>} {</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_type_xhtml_adb394897aa588ce3b6399adb8b53b4ec"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">openage::ResearchType::owner</a></div><div class="ttdeci">Player &amp; owner</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00068">research.h:68</a></div></div>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    :</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">owner</a>{<a class="code" href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">owner</a>} {</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_type_xhtml_adb394897aa588ce3b6399adb8b53b4ec"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">openage::ResearchType::owner</a></div><div class="ttdeci">Player &amp; owner</div><div class="ttdoc">The player who owns this research type.</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00068">research.h:68</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::owner</a>, and <a class="el" href="research_8h_source.xhtml#l00068">owner</a>.</p>
 
@@ -191,7 +203,9 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Performs the modifications (eg. apply patch to the unit types) </p>
+
+<p>Performs the modifications (eg. </p>
+<p>apply patch to the unit types) </p>
 
 <p class="reference">Referenced by <a class="el" href="research_8cpp_source.xhtml#l00050">openage::Research::apply()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -199,7 +213,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type_af58948dd42b8d8a97233d2fdd9885e83_icgraph.svg" width="583" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type_af58948dd42b8d8a97233d2fdd9885e83_icgraph.svg" width="583" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -226,6 +241,7 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Gets the research category of the research. </p>
 
 <p class="reference">Referenced by <a class="el" href="research_8cpp_source.xhtml#l00050">openage::Research::apply()</a>.</p>
@@ -234,7 +250,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type_a76a5bd220674135f0bf93eed3f1bce92_icgraph.svg" width="583" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type_a76a5bd220674135f0bf93eed3f1bce92_icgraph.svg" width="583" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -261,7 +278,9 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>How many times it can be researched. All classic researches have a value of 1. </p>
+
+<p>How many times it can be researched. </p>
+<p>All classic researches have a value of 1. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8h_source.xhtml#l00074">74</a> of file <a class="el" href="research_8h_source.xhtml">research.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{ <span class="keywordflow">return</span> 1; }</div></div><!-- fragment -->
@@ -271,7 +290,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type_aca6b37a0f8d31b9646a97ee0bf2f2228_icgraph.svg" width="364" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type_aca6b37a0f8d31b9646a97ee0bf2f2228_icgraph.svg" width="364" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -348,6 +368,7 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Gets the unique id of this research type. </p>
 
 </div>
@@ -366,7 +387,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a single <a class="el" href="classopenage_1_1_research.xhtml">Research</a> object. Must be called only once. </p>
+
+<p>Creates a single <a class="el" href="classopenage_1_1_research.xhtml" title="At most one Research must exist for each ResearchType.">Research</a> object. </p>
+<p>Must be called only once. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00014">14</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                                                       {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> std::make_shared&lt;Research&gt;(<span class="keyword">this</span>);</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div></div><!-- fragment -->
@@ -394,6 +417,7 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Gets the name of the research. </p>
 
 <p class="reference">Referenced by <a class="el" href="path_8py_source.xhtml#l00291">openage.util.fslike.path.Path::stem()</a>, <a class="el" href="path_8py_source.xhtml#l00274">openage.util.fslike.path.Path::suffix()</a>, and <a class="el" href="path_8py_source.xhtml#l00283">openage.util.fslike.path.Path::suffixes()</a>.</p>
@@ -402,7 +426,8 @@ Public Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type_a46f438491a0104f174bdb54034f88288_icgraph.svg" width="587" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_type_a46f438491a0104f174bdb54034f88288_icgraph.svg" width="587" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -419,7 +444,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The player who owns this research type </p>
+
+<p>The player who owns this research type. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8h_source.xhtml#l00068">68</a> of file <a class="el" href="research_8h_source.xhtml">research.h</a>.</p>
 

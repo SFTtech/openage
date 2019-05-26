@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 296,-84 296,4 -4,4"/>
 <!-- Node4 -->
 <g id="node1" class="node"><title>Node4</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="There are infinite solutions to this conversion problem because a 2D coordinate is converted into a 3...">
 <polygon fill="#bfbfbf" stroke="black" points="160,-24.5 160,-54.5 292,-54.5 292,-24.5 160,-24.5"/>
 <text text-anchor="start" x="168" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::camgame</text>
 <text text-anchor="middle" x="226" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">_delta::to_phys3</text>

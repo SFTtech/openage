@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-79 434,-79 434,4 -4,4"/>
 <!-- Node74 -->
 <g id="node1" class="node"><title>Node74</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="create rendering and blending information for a single tile on the terrain.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-22.5 0,-52.5 122,-52.5 122,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::create</text>
 <text text-anchor="middle" x="61" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">_tile_advice</text>

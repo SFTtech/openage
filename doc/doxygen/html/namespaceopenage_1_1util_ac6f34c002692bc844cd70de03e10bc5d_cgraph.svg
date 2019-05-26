@@ -57,7 +57,7 @@ var sectionId = 'dynsection-16';
 <polygon fill="white" stroke="none" points="-4,4 -4,-279 767,-279 767,4 -4,4"/>
 <!-- Node134 -->
 <g id="node1" class="node"><title>Node134</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="std::for_each except just on containers.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-119 0,-138 115,-138 115,-119 0,-119"/>
 <text text-anchor="middle" x="57.5" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>

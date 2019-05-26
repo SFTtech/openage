@@ -34,9 +34,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Comparator that returns true if the contained value of the left sharedptr is <computeroutput>&lt;</computeroutput> than the value contained in the right sharedptr. </para>
     </briefdescription>
     <detaileddescription>
-<para>Comparator that returns true if the contained value of the left sharedptr is <computeroutput>&lt;</computeroutput> than the value contained in the right sharedptr. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6012">

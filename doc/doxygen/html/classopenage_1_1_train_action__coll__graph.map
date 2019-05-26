@@ -1,21 +1,21 @@
 <map id="openage::TrainAction" name="openage::TrainAction">
-<area shape="rect" id="node1" title=" " alt="" coords="306,2615,450,2824"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml" title=" " alt="" coords="306,2167,450,2552"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml" title=" " alt="" coords="302,1704,462,2104"/>
-<area shape="rect" id="node4" href="$classopenage_1_1log_1_1_log_source.xhtml" title=" " alt="" coords="716,1410,883,1546"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_unit_type.xhtml" title=" " alt="" coords="199,1315,330,1641"/>
+<area shape="rect" id="node1" title="trains a new unit" alt="" coords="306,2615,450,2824"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml" title="Actions can be pushed onto any units action stack." alt="" coords="306,2167,450,2552"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml" title="A game object with current state represented by a stack of actions since this class represents both u..." alt="" coords="302,1704,462,2104"/>
+<area shape="rect" id="node4" href="$classopenage_1_1log_1_1_log_source.xhtml" title="Any class that wants to provide .log() shall inherit from this." alt="" coords="716,1410,883,1546"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit_type.xhtml" title="units in aoc have a class and a type" alt="" coords="199,1315,330,1641"/>
 <area shape="rect" id="node6" href="$structopenage_1_1coord_1_1tile__delta.xhtml" title=" " alt="" coords="165,1021,301,1113"/>
 <area shape="rect" id="node7" title=" " alt="" coords="153,587,294,694"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_attributes.xhtml" title=" " alt="" coords="5,977,140,1157"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_resource_cost.xhtml" title=" " alt="" coords="325,991,487,1142"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_resource_bundle.xhtml" title=" " alt="" coords="319,492,493,789"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_attributes.xhtml" title="Contains a group of attributes." alt="" coords="5,977,140,1157"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_resource_cost.xhtml" title="A container for a constant or dynamic ResourceBundle representing the cost." alt="" coords="325,991,487,1142"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_resource_bundle.xhtml" title="A set of amounts of game resources." alt="" coords="319,492,493,789"/>
 <area shape="rect" id="node11" href="$classopenage_1_1_player.xhtml" title=" " alt="" coords="549,881,714,1252"/>
-<area shape="rect" id="node12" href="$classopenage_1_1_player_score.xhtml" title=" " alt="" coords="541,1432,692,1524"/>
-<area shape="rect" id="node13" href="$classopenage_1_1_score.xhtml" title=" " alt="" coords="995,5,1164,273"/>
-<area shape="rect" id="node15" href="$classopenage_1_1_team_score.xhtml" title=" " alt="" coords="932,323,1077,415"/>
-<area shape="rect" id="node14" href="$classopenage_1_1_team.xhtml" title=" " alt="" coords="907,521,1078,760"/>
-<area shape="rect" id="node16" href="$classopenage_1_1_population_tracker.xhtml" title=" " alt="" coords="517,477,700,804"/>
-<area shape="rect" id="node17" href="$classopenage_1_1_civilisation.xhtml" title=" " alt="" coords="724,521,883,760"/>
-<area shape="rect" id="node18" href="$classopenage_1_1_unit_container.xhtml" title=" " alt="" coords="354,1337,511,1619"/>
-<area shape="rect" id="node19" href="$classopenage_1_1_interval_timer.xhtml" title=" " alt="" coords="475,2225,625,2493"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_player_score.xhtml" title="The score of a player." alt="" coords="541,1432,692,1524"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_score.xhtml" title="Keeps track of a score and all the sub&#45;scores." alt="" coords="995,5,1164,273"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_team_score.xhtml" title="The score of a team." alt="" coords="932,323,1077,415"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_team.xhtml" title="A team of players." alt="" coords="907,521,1078,760"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_population_tracker.xhtml" title="Keeps track of the population size and capacity." alt="" coords="517,477,700,804"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_civilisation.xhtml" title="contains the initial tech structure for one civilisation" alt="" coords="724,521,883,760"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_unit_container.xhtml" title="the list of units that are currently in use will also give a view of the current game state for netwo..." alt="" coords="354,1337,511,1619"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_interval_timer.xhtml" title="A interval triggering timer used in actions." alt="" coords="475,2225,625,2493"/>
 </map>

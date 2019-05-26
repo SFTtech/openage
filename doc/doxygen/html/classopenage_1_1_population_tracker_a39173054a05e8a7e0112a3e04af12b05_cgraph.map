@@ -1,4 +1,4 @@
 <map id="openage::PopulationTracker::add_capacity_static" name="openage::PopulationTracker::add_capacity_static">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,188,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_population_tracker.xhtml#ab62d8be3291c0fd95366875b7bf64d60" title=" " alt="" coords="236,5,419,47"/>
+<area shape="rect" id="node1" title="Changes the capacity given by civ bonuses." alt="" coords="5,5,188,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_population_tracker.xhtml#ab62d8be3291c0fd95366875b7bf64d60" title="Calculates the capacity values based on the limits." alt="" coords="236,5,419,47"/>
 </map>

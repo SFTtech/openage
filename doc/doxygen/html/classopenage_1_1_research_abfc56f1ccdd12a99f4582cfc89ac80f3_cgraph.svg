@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 269,-35 269,4 -4,4"/>
 <!-- Node16 -->
 <g id="node1" class="node"><title>Node16</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns true if it has nothing more to offer (reached max repeats).">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 107,-30.5 107,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Research::</text>
 <text text-anchor="middle" x="53.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">is_researched</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node17 -->
 <g id="node2" class="node"><title>Node17</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_research_type.xhtml#aca6b37a0f8d31b9646a97ee0bf2f2228" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_research_type.xhtml#aca6b37a0f8d31b9646a97ee0bf2f2228" target="_top" xlink:title="How many times it can be researched.">
 <polygon fill="white" stroke="black" points="143,-0.5 143,-30.5 265,-30.5 265,-0.5 143,-0.5"/>
 <text text-anchor="start" x="151" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchType</text>
 <text text-anchor="middle" x="204" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_max_repeats</text>

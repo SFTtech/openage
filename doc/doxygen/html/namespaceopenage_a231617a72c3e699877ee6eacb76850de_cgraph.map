@@ -1,9 +1,9 @@
 <map id="openage::building_center" name="openage::building_center">
-<area shape="rect" id="node1" title=" " alt="" coords="5,64,172,91"/>
+<area shape="rect" id="node1" title="given the west most point of a building foundation and the tile_delta size of the foundation,..." alt="" coords="5,64,172,91"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="220,5,413,32"/>
 <area shape="rect" id="node4" href="$structopenage_1_1coord_1_1phys2.xhtml#a2cbf9e4669fb9702e6b086de22ac5eac" title=" " alt="" coords="239,57,394,98"/>
 <area shape="rect" id="node5" href="$structopenage_1_1coord_1_1phys3.xhtml#aa8aa4b7a7a76ddb625b8770ba12484d6" title=" " alt="" coords="239,122,394,163"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="475,5,602,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="475,5,602,32"/>
 <area shape="rect" id="node6" href="$structopenage_1_1coord_1_1phys3.xhtml#a8ed61fb85a083922af8fbbabd087ae31" title=" " alt="" coords="461,89,616,130"/>
 <area shape="rect" id="node7" href="$structopenage_1_1coord_1_1tile3.xhtml#af828e2ee284deb35ce13d30b57b14ad0" title=" " alt="" coords="467,154,610,195"/>
 </map>

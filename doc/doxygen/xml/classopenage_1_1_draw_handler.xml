@@ -25,9 +25,9 @@
         <name>on_draw</name>
         <reimplementedby refid="classopenage_1_1_game_renderer_1a0cc83cf1a6697522d581d220661081a4">on_draw</reimplementedby>
         <briefdescription>
+<para>execute the drawing action. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the drawing action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -35,9 +35,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>superclass for all possible drawing operations in the game. </para>
     </briefdescription>
     <detaileddescription>
-<para>superclass for all possible drawing operations in the game. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1982">

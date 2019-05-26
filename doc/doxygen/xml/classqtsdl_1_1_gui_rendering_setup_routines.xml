@@ -117,9 +117,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Returns a GL context usable by Qt classes. </para>
     </briefdescription>
     <detaileddescription>
-<para>Returns a GL context usable by Qt classes. Provides pre- and post-rendering functions to make the context usable for GUI rendering. </para>
+<para>Provides pre- and post-rendering functions to make the context usable for GUI rendering. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6472">

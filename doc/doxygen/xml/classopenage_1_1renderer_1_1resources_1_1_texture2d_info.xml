@@ -60,9 +60,10 @@
         <argsstring></argsstring>
         <name>row_alignment</name>
         <briefdescription>
+<para>The alignment of texture rows to byte boundaries. </para>
         </briefdescription>
         <detaileddescription>
-<para>The alignment of texture rows to byte boundaries. Can be 1, 2, 4 or 8. There is padding at the end of each row to match the alignment if the row size is not a multiple of the alignment. </para>
+<para>Can be 1, 2, 4 or 8. There is padding at the end of each row to match the alignment if the row size is not a multiple of the alignment. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -77,9 +78,10 @@
         <argsstring></argsstring>
         <name>subtextures</name>
         <briefdescription>
+<para>Some textures are merged together into texture atlases, large images which contain more than one individual texture. </para>
         </briefdescription>
         <detaileddescription>
-<para>Some textures are merged together into texture atlases, large images which contain more than one individual texture. These are their positions in the atlas. </para>
+<para>These are their positions in the atlas. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -178,9 +180,9 @@
           <defname>other</defname>
         </param>
         <briefdescription>
+<para>Compares the texture parameters <emphasis>excluding</emphasis> the subtexture information and returns true if they&apos;re equal, false otherwise. </para>
         </briefdescription>
         <detaileddescription>
-<para>Compares the texture parameters <emphasis>excluding</emphasis> the subtexture information and returns true if they&apos;re equal, false otherwise. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -214,9 +216,10 @@
         <argsstring>() const</argsstring>
         <name>get_size</name>
         <briefdescription>
+<para>Returns the dimensions of the whole texture bitmap. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the dimensions of the whole texture bitmap <simplesect kind="return"><para>tuple(width, height) </para>
+<para><simplesect kind="return"><para>tuple(width, height) </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -278,9 +281,9 @@
         <argsstring>() const</argsstring>
         <name>get_row_size</name>
         <briefdescription>
+<para>Returns the size in bytes of a single row, including possible padding at its end. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the size in bytes of a single row, including possible padding at its end. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -300,9 +303,10 @@
         <argsstring>() const</argsstring>
         <name>get_data_size</name>
         <briefdescription>
+<para>Returns the size in bytes of the raw pixel data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the size in bytes of the raw pixel data. It is equal to <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" kindref="member">get_row_size()</ref> * <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" kindref="member">get_size()</ref>.second. </para>
+<para>It is equal to <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" kindref="member">get_row_size()</ref> * <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" kindref="member">get_size()</ref>.second. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -380,9 +384,9 @@
           <declname>subid</declname>
         </param>
         <briefdescription>
+<para>Returns atlas subtexture coordinates. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns atlas subtexture coordinates.</para>
 <para><simplesect kind="return"><para>left, right, top and bottom bounds as coordinates these pick the requested area out of the big texture. returned as floats in range 0.0 to 1.0, relative to the whole surface size. </para>
 </simplesect>
 </para>
@@ -394,9 +398,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Contains information about a 2D texture surface, without actual texture data. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains information about a 2D texture surface, without actual texture data. The class supports subtextures, so that one big texture (&quot;texture atlas&quot;) can contain several smaller images, which can be extracted for rendering one-by-one. </para>
+<para>The class supports subtextures, so that one big texture (&quot;texture atlas&quot;) can contain several smaller images, which can be extracted for rendering one-by-one. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="4764">

@@ -48,9 +48,9 @@
           <declname>style</declname>
         </param>
         <briefdescription>
+<para>Gets the filepath of a particular font family and style. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the filepath of a particular font family and style.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>family</parametername>
@@ -115,9 +115,9 @@
         <argsstring>()</argsstring>
         <name>get_ft_library</name>
         <briefdescription>
+<para>Get the freetype library instance. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the freetype library instance. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -143,9 +143,9 @@
           <declname>size</declname>
         </param>
         <briefdescription>
+<para>Retrieves a font. </para>
         </briefdescription>
         <detaileddescription>
-<para>Retrieves a font.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>family</parametername>
@@ -194,9 +194,9 @@
           <declname>size</declname>
         </param>
         <briefdescription>
+<para>Retrieves a font. </para>
         </briefdescription>
         <detaileddescription>
-<para>Retrieves a font.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>font_file</parametername>

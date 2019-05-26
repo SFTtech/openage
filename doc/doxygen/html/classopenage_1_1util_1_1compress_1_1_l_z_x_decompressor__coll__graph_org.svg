@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1549 1277.5,-1549 1277.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Wraps a LZXDStream object by reference; exposing LZXDStream directly would cause too much header poll...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-281.5 0,-415.5 138,-415.5 138,-281.5 0,-281.5"/>
 <text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="69" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDecompressor</text>
@@ -262,7 +262,7 @@
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" target="_top" xlink:title="Bitstream that is stored in 16&#45;bit little&#45;endian numbers.">
 <polygon fill="white" stroke="black" points="345,-1234.5 345,-1544.5 501,-1544.5 501,-1234.5 345,-1234.5"/>
 <text text-anchor="start" x="353" y="-1532.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="423" y="-1521.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream&lt; inbuf_size &gt;</text>

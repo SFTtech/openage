@@ -1,4 +1,4 @@
 <map id="openage::util::CSVCollection::get_data" name="openage::util::CSVCollection::get_data">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,193,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title=" " alt="" coords="241,13,393,39"/>
+<area shape="rect" id="node1" title="Parse the data from one file in the map." alt="" coords="5,5,193,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" title="get the filename (last part) of a given path" alt="" coords="241,13,393,39"/>
 </map>

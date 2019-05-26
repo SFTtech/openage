@@ -51,9 +51,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Switches the factory to production of the instances of the derived class. </para>
     </briefdescription>
     <detaileddescription>
-<para>Switches the factory to production of the instances of the derived class. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6509">

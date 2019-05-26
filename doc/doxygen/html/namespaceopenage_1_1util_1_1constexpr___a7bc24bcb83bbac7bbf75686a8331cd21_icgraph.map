@@ -1,4 +1,4 @@
 <map id="openage::util::constexpr_::streq" name="openage::util::constexpr_::streq">
-<area shape="rect" id="node1" title=" " alt="" coords="215,5,376,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a61c4b546903316ecf379bfe7bd9553f1" title=" " alt="" coords="5,5,167,47"/>
+<area shape="rect" id="node1" title="Returns true IFF the string literals have equal content." alt="" coords="215,5,376,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a61c4b546903316ecf379bfe7bd9553f1" title="Truncates a suffix from a string literal." alt="" coords="5,5,167,47"/>
 </map>

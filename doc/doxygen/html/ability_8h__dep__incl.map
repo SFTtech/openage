@@ -1,7 +1,7 @@
 <map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/unit/ability.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/unit/ability.h">
 <area shape="rect" id="node1" title=" " alt="" coords="4475,5,4684,61"/>
 <area shape="rect" id="node2" href="$selection_8h.xhtml" title=" " alt="" coords="3620,213,3829,269"/>
-<area shape="rect" id="node22" href="$producer_8cpp.xhtml" title=" " alt="" coords="5009,421,5219,477"/>
+<area shape="rect" id="node22" href="$producer_8cpp.xhtml" title="Many values in this file are hardcoded, due to limited understanding of how the original game files w..." alt="" coords="5009,421,5219,477"/>
 <area shape="rect" id="node24" href="$unit_8cpp.xhtml" title=" " alt="" coords="4309,421,4519,477"/>
 <area shape="rect" id="node32" href="$command_8h.xhtml" title=" " alt="" coords="4261,109,4471,165"/>
 <area shape="rect" id="node33" href="$unit_8h.xhtml" title=" " alt="" coords="5044,213,5253,269"/>

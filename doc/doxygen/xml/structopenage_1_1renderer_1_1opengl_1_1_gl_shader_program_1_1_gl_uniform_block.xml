@@ -26,9 +26,10 @@
         <argsstring></argsstring>
         <name>data_size</name>
         <briefdescription>
+<para>Size of the entire block. </para>
         </briefdescription>
         <detaileddescription>
-<para>Size of the entire block. How uniforms are packed within depends on the block layout and is described in corresponding GlUniforms. </para>
+<para>How uniforms are packed within depends on the block layout and is described in corresponding GlUniforms. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

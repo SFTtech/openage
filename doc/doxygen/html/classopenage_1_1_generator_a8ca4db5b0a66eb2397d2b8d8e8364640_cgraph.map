@@ -1,6 +1,6 @@
 <map id="openage::Generator::terrain" name="openage::Generator::terrain">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,141,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" title=" " alt="" coords="189,5,344,47"/>
+<area shape="rect" id="node1" title="returns the generated terrain" alt="" coords="5,5,141,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" title="get tile data by absolute coordinates." alt="" coords="189,5,344,47"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1tile.xhtml#ab4811e492cabe885d33e85df51ceff83" title=" " alt="" coords="392,5,531,47"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title=" " alt="" coords="579,13,708,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title="modulo operation that guarantees to return positive values." alt="" coords="579,13,708,39"/>
 </map>

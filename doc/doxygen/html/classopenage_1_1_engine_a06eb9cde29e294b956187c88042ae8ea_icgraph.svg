@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 321,-35 321,4 -4,4"/>
 <!-- Node297 -->
 <g id="node1" class="node"><title>Node297</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Start a game with the given game generator.">
 <polygon fill="#bfbfbf" stroke="black" points="173,-6 173,-25 317,-25 317,-6 173,-6"/>
 <text text-anchor="middle" x="245" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::start_game</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node298 -->
 <g id="node2" class="node"><title>Node298</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#afbd62856de4f1e4cf749eaef6b87c50d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#afbd62856de4f1e4cf749eaef6b87c50d" target="_top" xlink:title="Pass the given game to the engine and start it.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 137,-30.5 137,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMainHandle</text>
 <text text-anchor="middle" x="68.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game</text>

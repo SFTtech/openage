@@ -1,5 +1,5 @@
 <map id="openage::TerrainObject::get_parent" name="openage::TerrainObject::get_parent">
-<area shape="rect" id="node1" title=" " alt="" coords="456,5,612,47"/>
+<area shape="rect" id="node1" title="Returns the parent terrain object, if null the object has no parent which is the case for most object..." alt="" coords="456,5,612,47"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_building_producer.xhtml#a4aeeaaaef4924780b6ee886ea8ffe98e" title=" " alt="" coords="231,5,408,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title=" " alt="" coords="5,5,183,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title="set unit in place – return if placement was successful" alt="" coords="5,5,183,47"/>
 </map>

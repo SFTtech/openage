@@ -45,7 +45,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_class.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_class.xhtml" target="_top" xlink:title="A eventclass has to be implemented for every type of event that exists.">
 <polygon fill="white" stroke="black" points="2.5,-243.5 2.5,-366.5 139.5,-366.5 139.5,-243.5 2.5,-243.5"/>
 <text text-anchor="middle" x="71" y="-354.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventClass</text>
 <polyline fill="none" stroke="black" points="2.5,-347.5 139.5,-347.5 "/>

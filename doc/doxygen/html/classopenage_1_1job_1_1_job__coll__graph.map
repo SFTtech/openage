@@ -1,3 +1,3 @@
 <map id="openage::job::Job&lt; T &gt;" name="openage::job::Job&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,160,127"/>
+<area shape="rect" id="node1" title="A job is a wrapper around a shared job state object and is returned by the job manager." alt="" coords="5,5,160,127"/>
 </map>

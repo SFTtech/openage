@@ -55,9 +55,9 @@
         <argsstring>()</argsstring>
         <name>~LZXDecompressor</name>
         <briefdescription>
+<para>Frees the internally-allocated <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Frees the internally-allocated <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -74,9 +74,10 @@
           <declname>output_buf</declname>
         </param>
         <briefdescription>
+<para>Decompresses a single 32-KiB frame. </para>
         </briefdescription>
         <detaileddescription>
-<para>Decompresses a single 32-KiB frame. Data from the input stream is read as required from read_callback. The decoded frame is written to output_buf. output_buf must be at least LZX_FRAME_SIZE (32768) bytes in size.</para>
+<para>Data from the input stream is read as required from read_callback. The decoded frame is written to output_buf. output_buf must be at least LZX_FRAME_SIZE (32768) bytes in size.</para>
 <para>Returns 0 in case of EOF, and the size of the frame otherwise.</para>
 <para>On error, an exception is thrown. After that, the object shall be destroyed; every other operation on it may invoke undefined behavior. </para>
         </detaileddescription>
@@ -158,9 +159,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Wraps a <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> object by reference; exposing <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> directly would cause too much header pollution due to its many member objects, and their member objects. </para>
     </briefdescription>
     <detaileddescription>
-<para>Wraps a <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> object by reference; exposing <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> directly would cause too much header pollution due to its many member objects, and their member objects.</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref>: <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref>( Func2[size_t, unsigned char *, size_t], unsigned int window_bits, unsigned int reset_interval ) except +</para>
 <para>unsigned <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_1ad03ce7fd20c3abe824f61dd382bab43c" kindref="member">decompress_next_frame(unsigned char *out_buf)</ref> except + </para>

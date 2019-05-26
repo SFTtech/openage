@@ -1,12 +1,12 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" title=" " alt="" coords="5,136,172,163"/>
 <area shape="rect" id="node2" href="$classopenage_1_1datastructure_1_1_pairing_heap_node.xhtml" title=" " alt="" coords="221,5,375,61"/>
-<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_event.xhtml" title=" " alt="" coords="223,85,373,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1path_1_1_node.xhtml" title=" " alt="" coords="227,136,369,163"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_terrain_object.xhtml" title=" " alt="" coords="220,187,376,213"/>
-<area shape="rect" id="node8" href="$classopenage_1_1util_1_1fslike_1_1_f_s_like.xhtml" title=" " alt="" coords="231,238,365,279"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_radial_object.xhtml" title=" " alt="" coords="427,136,580,163"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_square_object.xhtml" title=" " alt="" coords="424,187,583,213"/>
-<area shape="rect" id="node9" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml" title=" " alt="" coords="436,238,571,279"/>
-<area shape="rect" id="node10" href="$classopenage_1_1util_1_1fslike_1_1_python.xhtml" title=" " alt="" coords="436,303,571,345"/>
+<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_event.xhtml" title="The actual one event that may be called &#45; it is used to manage the event itself." alt="" coords="223,85,373,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1path_1_1_node.xhtml" title="One navigation waypoint in a path." alt="" coords="227,136,369,163"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_terrain_object.xhtml" title="Base class for map location types which include square tile aligned positions and radial positions Th..." alt="" coords="220,187,376,213"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1fslike_1_1_f_s_like.xhtml" title="Base class for possible path implementations." alt="" coords="231,238,365,279"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_radial_object.xhtml" title="Represents circular shaped objects (movable game units) can only be constructed by unit&#45;&gt;make_locatio..." alt="" coords="427,136,580,163"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_square_object.xhtml" title="terrain object class represents one immobile object on the map (building, trees, fish,..." alt="" coords="424,187,583,213"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml" title="Filesystem&#45;like object which uses native libc calls." alt="" coords="436,238,571,279"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1fslike_1_1_python.xhtml" title="Filesystem&#45;like object that wraps a filesystem&#45;like object from Python." alt="" coords="436,303,571,345"/>
 </map>

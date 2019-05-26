@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-160.5 630,-160.5 630,4 -4,4"/>
 <!-- Node260 -->
 <g id="node1" class="node"><title>Node260</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="validate whether the given terrain id is available.">
 <polygon fill="#bfbfbf" stroke="black" points="499,-77 499,-107 626,-107 626,-77 499,-77"/>
 <text text-anchor="start" x="507" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::validate</text>
 <text text-anchor="middle" x="562.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">_terrain</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node261 -->
 <g id="node2" class="node"><title>Node261</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#ae5704a3d8f41acd79c3c3dca6f284ce7" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#ae5704a3d8f41acd79c3c3dca6f284ce7" target="_top" xlink:title="return the blending mode/blendomatic mask set for a given terrain id.">
 <polygon fill="white" stroke="black" points="321,-125.5 321,-144.5 463,-144.5 463,-125.5 321,-125.5"/>
 <text text-anchor="middle" x="392" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::blendmode</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node264 -->
 <g id="node5" class="node"><title>Node264</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_terrain.xhtml#a0de0b286ad2d9129d42b4f64e3ed9ffd" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_terrain.xhtml#a0de0b286ad2d9129d42b4f64e3ed9ffd" target="_top" xlink:title="return the blending priority for a given terrain id.">
 <polygon fill="white" stroke="black" points="330,-82.5 330,-101.5 454,-101.5 454,-82.5 330,-82.5"/>
 <text text-anchor="middle" x="392" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::priority</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node266 -->
 <g id="node7" class="node"><title>Node266</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e394fadeb8534aef0c7098939f25b23" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e394fadeb8534aef0c7098939f25b23" target="_top" xlink:title="get the terrain texture for a given terrain id.">
 <polygon fill="white" stroke="black" points="329.5,-38.5 329.5,-57.5 454.5,-57.5 454.5,-38.5 329.5,-38.5"/>
 <text text-anchor="middle" x="392" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::texture</text>
 </a>
@@ -59,7 +59,7 @@
 </g>
 <!-- Node262 -->
 <g id="node3" class="node"><title>Node262</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#aac2534a0373a7bbd8efdcf659977a881" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#aac2534a0373a7bbd8efdcf659977a881" target="_top" xlink:title="return the blending mode id for two given neighbor ids.">
 <polygon fill="white" stroke="black" points="173.5,-126 173.5,-156 281.5,-156 281.5,-126 173.5,-126"/>
 <text text-anchor="start" x="181.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="227.5" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">_blending_mode</text>
@@ -73,7 +73,7 @@
 </g>
 <!-- Node263 -->
 <g id="node4" class="node"><title>Node263</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_terrain.xhtml#a72f81eb7623d4ade8272f8163bfcb4d9" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_terrain.xhtml#a72f81eb7623d4ade8272f8163bfcb4d9" target="_top" xlink:title="calculate blending masks for a given tile position.">
 <polygon fill="white" stroke="black" points="0,-79 0,-109 134,-109 134,-79 0,-79"/>
 <text text-anchor="start" x="8" y="-97" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::calculate</text>
 <text text-anchor="middle" x="67" y="-86" font-family="Helvetica,sans-Serif" font-size="10.00">_masks</text>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node265 -->
 <g id="node6" class="node"><title>Node265</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" target="_top" xlink:title="gather neighbors of a given base tile.">
 <polygon fill="white" stroke="black" points="173.5,-77 173.5,-107 281.5,-107 281.5,-77 173.5,-77"/>
 <text text-anchor="start" x="181.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="227.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">_neighbors</text>
@@ -106,7 +106,7 @@
 </g>
 <!-- Node267 -->
 <g id="node8" class="node"><title>Node267</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" target="_top" xlink:title="draw the currently visible terrain area on screen.">
 <polygon fill="white" stroke="black" points="170,-0.5 170,-19.5 285,-19.5 285,-0.5 170,-0.5"/>
 <text text-anchor="middle" x="227.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::draw</text>
 </a>

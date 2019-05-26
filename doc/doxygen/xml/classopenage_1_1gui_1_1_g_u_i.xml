@@ -261,9 +261,9 @@
           <declname>new_size</declname>
         </param>
         <briefdescription>
+<para>execute the resize handler. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the resize handler. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -282,9 +282,9 @@
           <declname>event</declname>
         </param>
         <briefdescription>
+<para>execute the input handler. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the input handler. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -299,9 +299,9 @@
         <name>on_drawhud</name>
         <reimplements refid="classopenage_1_1_hud_handler_1a52d98b171b853a47609d924e1d1fca48">on_drawhud</reimplements>
         <briefdescription>
+<para>execute the drawing action. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the drawing action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -315,9 +315,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Main entry point for the openage Qt-based user interface. </para>
     </briefdescription>
     <detaileddescription>
-<para>Main entry point for the openage Qt-based user interface. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3516">

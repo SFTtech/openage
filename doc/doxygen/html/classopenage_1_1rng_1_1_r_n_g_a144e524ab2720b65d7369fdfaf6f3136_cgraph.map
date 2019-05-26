@@ -1,5 +1,5 @@
 <map id="openage::rng::RNG::to_stream" name="openage::rng::RNG::to_stream">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,147,65"/>
+<area shape="rect" id="node1" title="Outputs the rng state to a stream." alt="" coords="5,23,147,65"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="211,5,321,32"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1testing.xhtml#ab47bedd0a44345aab4aadb8378800e45" title=" " alt="" coords="195,56,337,83"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing.xhtml#ab47bedd0a44345aab4aadb8378800e45" title="Raises TestError with the message msg." alt="" coords="195,56,337,83"/>
 </map>

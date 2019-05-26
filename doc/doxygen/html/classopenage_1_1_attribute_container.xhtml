@@ -97,20 +97,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1_attribute_container.x
 </div><!--header-->
 <div class="contents">
 
+<p>Wraps a templated attribute.  
+ <a href="classopenage_1_1_attribute_container.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="attribute_8h_source.xhtml">attribute.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::AttributeContainer:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attribute_container__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attribute_container__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::AttributeContainer:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attribute_container__coll__graph.svg" width="194" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attribute_container__coll__graph.svg" width="194" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -122,8 +127,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad8d0846852317e84c72ef466640bb8c9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_attribute_container.xhtml#ad8d0846852317e84c72ef466640bb8c9">~AttributeContainer</a> ()=default</td></tr>
 <tr class="separator:ad8d0846852317e84c72ef466640bb8c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e8b1a74ffd097ae82dd7b1bc0d6e6a2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_attribute_container.xhtml#a6e8b1a74ffd097ae82dd7b1bc0d6e6a2">shared</a> () const =0</td></tr>
+<tr class="memdesc:a6e8b1a74ffd097ae82dd7b1bc0d6e6a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">shared attributes are common across all units of one type, such as max hp, and gather rates  <a href="#a6e8b1a74ffd097ae82dd7b1bc0d6e6a2">More...</a><br /></td></tr>
 <tr class="separator:a6e8b1a74ffd097ae82dd7b1bc0d6e6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4afeb54d518cbf1b693c60444527f888"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classopenage_1_1_attribute_container.xhtml">AttributeContainer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1_attribute_container.xhtml#a4afeb54d518cbf1b693c60444527f888">copy</a> () const =0</td></tr>
+<tr class="memdesc:a4afeb54d518cbf1b693c60444527f888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces an copy of the attribute.  <a href="#a4afeb54d518cbf1b693c60444527f888">More...</a><br /></td></tr>
 <tr class="separator:a4afeb54d518cbf1b693c60444527f888"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -132,7 +139,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a646482939fc5fcdad2e71c63b6e854b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Wraps a templated attribute </p>
+<div class="textblock"><p>Wraps a templated attribute. </p>
 
 <p class="definition">Definition at line <a class="el" href="attribute_8h_source.xhtml#l00112">112</a> of file <a class="el" href="attribute_8h_source.xhtml">attribute.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -240,6 +247,7 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Produces an copy of the attribute. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4.xhtml#ad76c456f5d5cb131a697a00e075271f5">openage::Attribute&lt; attr_type::garrison &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1multitype_01_4.xhtml#a7e4a3b4e680d82e34a6274e04d9c9f68">openage::Attribute&lt; attr_type::multitype &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1storage_01_4.xhtml#af4834c0b1024fe1e9da9664d4643819d">openage::Attribute&lt; attr_type::storage &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4.xhtml#ac5fb8c0ef3bb392f05cb6365e940fd51">openage::Attribute&lt; attr_type::worker &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1resource__generator_01_4.xhtml#ab9544912ddca9b98ac5d303ccb7a2bba">openage::Attribute&lt; attr_type::resource_generator &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1resource_01_4.xhtml#a9c06a417042b4f8cda3a03913a3a8e88">openage::Attribute&lt; attr_type::resource &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4.xhtml#a4c35f9dc58f6fa9ba9f76a506a9dfebd">openage::Attribute&lt; attr_type::dropsite &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4.xhtml#ac1d1151929d175aa8d64c8401e184f06">openage::Attribute&lt; attr_type::building &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1projectile_01_4.xhtml#add7cb9307a64beb60b6b1a52b2b5cfa2">openage::Attribute&lt; attr_type::projectile &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4.xhtml#ac53cd250cbe66618e55ccd1a2c52ccdf">openage::Attribute&lt; attr_type::direction &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1speed_01_4.xhtml#aefa8e74f274bb7076cd16508f444c627">openage::Attribute&lt; attr_type::speed &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4.xhtml#aad8c1080ad6d11eef5936ea2a7332b81">openage::Attribute&lt; attr_type::heal &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4.xhtml#ac498ff8daa929890738cf6d637d077e1">openage::Attribute&lt; attr_type::formation &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4.xhtml#a7536c912ef7e06017e85379840715128">openage::Attribute&lt; attr_type::attack &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1armor_01_4.xhtml#a50f72b0b5242f0779c46970b6500d6c4">openage::Attribute&lt; attr_type::armor &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4.xhtml#a828ded50a9d53355d4bfe9eb8f327090">openage::Attribute&lt; attr_type::damaged &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4.xhtml#adec73cb79d383e4a0a61438419c065bb">openage::Attribute&lt; attr_type::population &gt;</a>, <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1hitpoints_01_4.xhtml#ad42f755729195de7674ac67e5573cda4">openage::Attribute&lt; attr_type::hitpoints &gt;</a>, and <a class="el" href="classopenage_1_1_attribute_3_01attr__type_1_1owner_01_4.xhtml#a12f62feeae5fc1362ea9bf267d9527bb">openage::Attribute&lt; attr_type::owner &gt;</a>.</p>
@@ -268,7 +276,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>shared attributes are common across all units of one type, such as max hp, and gather rates</p>
+
+<p>shared attributes are common across all units of one type, such as max hp, and gather rates </p>
 <p>non shared attributes include a units current hp, and the amount a villager is carrying </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1_unshared_attribute_container.xhtml#a37a9c89f4d60700087ac55df3bbf38d9">openage::UnsharedAttributeContainer</a>, and <a class="el" href="classopenage_1_1_shared_attribute_container.xhtml#a7fbb1dd2c3df6e5cd65cded8fac7c392">openage::SharedAttributeContainer</a>.</p>

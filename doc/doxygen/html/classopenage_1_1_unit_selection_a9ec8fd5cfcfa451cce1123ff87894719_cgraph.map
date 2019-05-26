@@ -1,9 +1,9 @@
 <map id="openage::UnitSelection::get_unit_selection_type" name="openage::UnitSelection::get_unit_selection_type">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,172,72"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="649,5,780,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#aba4a16068cf5a6b218a4c78f499874b0" title=" " alt="" coords="220,63,399,90"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="828,13,992,39"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_player.xhtml#aefd20341c814fc53919cac8761bad38b" title=" " alt="" coords="447,63,601,90"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="651,71,779,112"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="829,78,991,105"/>
+<area shape="rect" id="node1" title="Check whether the currently selected units may be selected at the same time If not,..." alt="" coords="5,31,172,72"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title="returns whether attribute is available" alt="" coords="649,5,780,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#aba4a16068cf5a6b218a4c78f499874b0" title="checks whether the current player is the owner of this unit" alt="" coords="220,63,399,90"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title="Check if the attribute of the given type exists." alt="" coords="828,13,992,39"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_player.xhtml#aefd20341c814fc53919cac8761bad38b" title="this player owns the specified unit" alt="" coords="447,63,601,90"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title="returns attribute based on templated value" alt="" coords="651,71,779,112"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title="Get the attribute based on the type." alt="" coords="829,78,991,105"/>
 </map>

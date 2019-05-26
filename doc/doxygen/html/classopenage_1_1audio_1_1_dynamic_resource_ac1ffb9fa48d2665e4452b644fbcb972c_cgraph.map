@@ -1,6 +1,6 @@
 <map id="openage::audio::DynamicResource::use" name="openage::audio::DynamicResource::use">
-<area shape="rect" id="node1" title=" " alt="" coords="5,78,259,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_dynamic_loader.xhtml#a112547e0d5b12a174840c036b80b9aad" title=" " alt="" coords="307,5,515,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_job_manager.xhtml#a26dd9d9c12b38ca0d7bf4c7e3c17ee36" title=" " alt="" coords="323,71,498,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1audio_1_1_audio_manager.xhtml#add5dcdf1895b883af210f102e4e64199" title=" " alt="" coords="310,136,511,177"/>
+<area shape="rect" id="node1" title="Tells the resource, that it will be used by a sound object, so it can preload some pcm samples." alt="" coords="5,78,259,105"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_dynamic_loader.xhtml#a112547e0d5b12a174840c036b80b9aad" title="Creates a DynamicLoader instance that supports the given format." alt="" coords="307,5,515,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_job_manager.xhtml#a26dd9d9c12b38ca0d7bf4c7e3c17ee36" title="Creates a job group, in order to be able to execute multiple jobs on the same worker thread." alt="" coords="323,71,498,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1audio_1_1_audio_manager.xhtml#add5dcdf1895b883af210f102e4e64199" title="Return the game engine the audio manager is attached to." alt="" coords="310,136,511,177"/>
 </map>

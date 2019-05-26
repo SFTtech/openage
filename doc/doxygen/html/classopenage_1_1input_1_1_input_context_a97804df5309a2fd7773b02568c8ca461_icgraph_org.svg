@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-106 688,-106 688,4 -4,4"/>
 <!-- Node48 -->
 <g id="node1" class="node"><title>Node48</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="lookup an action.">
 <polygon fill="#bfbfbf" stroke="black" points="543,-46.5 543,-76.5 684,-76.5 684,-46.5 543,-46.5"/>
 <text text-anchor="start" x="551" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="613.5" y="-53.5" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_if_bound</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node51 -->
 <g id="node4" class="node"><title>Node51</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#ac8c7b7b7db15158d7b1cdab7ee41bd1d" target="_top" xlink:title="manages the pressing of an input event (key, mouse, ...).">
 <polygon fill="white" stroke="black" points="362,-22.5 362,-52.5 507,-52.5 507,-22.5 362,-22.5"/>
 <text text-anchor="start" x="370" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="434.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::trigger</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node52 -->
 <g id="node5" class="node"><title>Node52</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" target="_top" xlink:title="sets the state of a specific key">
 <polygon fill="white" stroke="black" points="181,-22.5 181,-52.5 326,-52.5 326,-22.5 181,-22.5"/>
 <text text-anchor="start" x="189" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_state</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node53 -->
 <g id="node6" class="node"><title>Node53</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" target="_top" xlink:title="When a SDL event happens, this is called.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 145,-30.5 145,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_input</text>

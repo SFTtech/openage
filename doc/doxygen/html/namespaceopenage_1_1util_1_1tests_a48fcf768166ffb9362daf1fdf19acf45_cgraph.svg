@@ -66,7 +66,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600" target="_top" xlink:title="Convert a C&#45;style array of uint64_t to a std::vector of uint8_t.">
 <polygon fill="white" stroke="black" points="136,-226.5 136,-256.5 246,-256.5 246,-226.5 136,-226.5"/>
 <text text-anchor="start" x="144" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array64</text>
 <text text-anchor="middle" x="191" y="-233.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array8</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#ae9d6c19aadc0f6a1d502f42852172de0" target="_top" xlink:title="Convert a uint64_t to an array of uint8_t.">
 <polygon fill="white" stroke="black" points="297,-193.5 297,-223.5 401,-223.5 401,-193.5 297,-193.5"/>
 <text text-anchor="start" x="305" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::uint64</text>
 <text text-anchor="middle" x="349" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array8</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a std::vector of uint64_t.">
 <polygon fill="white" stroke="black" points="138.5,-100.5 138.5,-130.5 243.5,-130.5 243.5,-100.5 138.5,-100.5"/>
 <text text-anchor="start" x="146.5" y="-118.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="191" y="-107.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array64</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a uint64_t.">
 <polygon fill="white" stroke="black" points="296.5,-144.5 296.5,-174.5 401.5,-174.5 401.5,-144.5 296.5,-144.5"/>
 <text text-anchor="start" x="304.5" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="349" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_uint64</text>
@@ -140,7 +140,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="633,-193 633,-212 728,-212 728,-193 633,-193"/>
 <text text-anchor="middle" x="680.5" y="-200" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -168,7 +168,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#abab1bbea3efd69cf8087a807b5b5f8f2" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#abab1bbea3efd69cf8087a807b5b5f8f2" target="_top" xlink:title="Get the number of uint64&#45;elements that result from converting a count&#45;sized uint8_t array.">
 <polygon fill="white" stroke="black" points="282,-68 282,-87 416,-87 416,-68 282,-68"/>
 <text text-anchor="middle" x="349" y="-75" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array64_size</text>
 </a>
@@ -217,7 +217,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node10 -->
 <g id="node11" class="node"><title>Node10</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="462,-49.5 462,-79.5 587,-79.5 587,-49.5 462,-49.5"/>
 <text text-anchor="start" x="470" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="524.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -231,7 +231,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node11 -->
 <g id="node12" class="node"><title>Node11</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="462,-0.5 462,-30.5 587,-30.5 587,-0.5 462,-0.5"/>
 <text text-anchor="start" x="470" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="524.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>

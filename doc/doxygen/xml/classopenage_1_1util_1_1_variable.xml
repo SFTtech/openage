@@ -19,9 +19,9 @@
         <argsstring></argsstring>
         <name>value</name>
         <briefdescription>
+<para>accessable typed value </para>
         </briefdescription>
         <detaileddescription>
-<para>accessable typed value </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

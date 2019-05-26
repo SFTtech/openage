@@ -94,7 +94,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a77a4af9133abbcd242c9adf3921bbd89" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a77a4af9133abbcd242c9adf3921bbd89" target="_top" xlink:title="Effeciently fills a chunk of 64 bit integers.">
 <polygon fill="white" stroke="black" points="191,-131.5 191,-150.5 306,-150.5 306,-131.5 191,-131.5"/>
 <text text-anchor="middle" x="248.5" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::fill</text>
 </a>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title="fill the terrain with given terrain_id values.">
 <polygon fill="white" stroke="black" points="196.5,-93.5 196.5,-112.5 300.5,-112.5 300.5,-93.5 196.5,-93.5"/>
 <text text-anchor="middle" x="248.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::fill</text>
 </a>
@@ -149,7 +149,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6" target="_top" xlink:title="Split a string at a delimiter into a vector.">
 <polygon fill="white" stroke="black" points="384,-175.5 384,-194.5 480,-194.5 480,-175.5 384,-175.5"/>
 <text text-anchor="middle" x="432" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::split</text>
 </a>
@@ -162,7 +162,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_terrain.xhtml#ab9457472de4a25ef737684e27d1d5810" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_terrain.xhtml#ab9457472de4a25ef737684e27d1d5810" target="_top" xlink:title="checks the creation state and premissions of a given tile position.">
 <polygon fill="white" stroke="black" points="362.5,-137.5 362.5,-156.5 501.5,-156.5 501.5,-137.5 362.5,-137.5"/>
 <text text-anchor="middle" x="432" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::check_tile</text>
 </a>
@@ -175,7 +175,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node10 -->
 <g id="node11" class="node"><title>Node10</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" target="_top" xlink:title="get or create a terrain chunk for a given chunk position.">
 <polygon fill="white" stroke="black" points="378,-88 378,-118 486,-118 486,-88 378,-88"/>
 <text text-anchor="start" x="386" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="432" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">_create_chunk</text>
@@ -189,7 +189,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node21 -->
 <g id="node22" class="node"><title>Node21</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title="get tile data by absolute coordinates.">
 <polygon fill="white" stroke="black" points="374,-27 374,-57 490,-57 490,-27 374,-27"/>
 <text text-anchor="start" x="382" y="-45" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="432" y="-34" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -203,7 +203,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node8 -->
 <g id="node9" class="node"><title>Node8</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_terrain.xhtml#aa0e35745e96c0b263a74dcf2ec2abffb" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_terrain.xhtml#aa0e35745e96c0b263a74dcf2ec2abffb" target="_top" xlink:title="checks whether the given tile position is allowed to exist on this terrain.">
 <polygon fill="white" stroke="black" points="538.5,-181 538.5,-211 659.5,-211 659.5,-181 538.5,-181"/>
 <text text-anchor="start" x="546.5" y="-199" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::check</text>
 <text text-anchor="middle" x="599" y="-188" font-family="Helvetica,sans-Serif" font-size="10.00">_tile_position</text>
@@ -217,7 +217,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node9 -->
 <g id="node10" class="node"><title>Node9</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" target="_top" xlink:title="get a terrain chunk by a given chunk position.">
 <polygon fill="white" stroke="black" points="545,-132 545,-162 653,-162 653,-132 545,-132"/>
 <text text-anchor="start" x="553" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="599" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk</text>
@@ -236,7 +236,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node11 -->
 <g id="node12" class="node"><title>Node11</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_terrain.xhtml#af40a0b5e61397331f4efc9543f7fdd44" target="_top" xlink:title="Attach a chunk to the terrain, to a given position.">
 <polygon fill="white" stroke="black" points="538,-83 538,-113 660,-113 660,-83 538,-83"/>
 <text text-anchor="start" x="546" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::attach</text>
 <text text-anchor="middle" x="599" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk</text>
@@ -263,7 +263,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node13 -->
 <g id="node14" class="node"><title>Node13</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_terrain.xhtml#a9ce94c372f7e86310506844b352fb20c" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_terrain.xhtml#a9ce94c372f7e86310506844b352fb20c" target="_top" xlink:title="get the neighbor chunks of a given chunk.">
 <polygon fill="white" stroke="black" points="700,-127 700,-157 808,-157 808,-127 700,-127"/>
 <text text-anchor="start" x="708" y="-145" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="754" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk_neighbors</text>
@@ -277,7 +277,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node14 -->
 <g id="node15" class="node"><title>Node14</title>
-<g id="a_node15"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="708.5,-88.5 708.5,-107.5 799.5,-107.5 799.5,-88.5 708.5,-88.5"/>
 <text text-anchor="middle" x="754" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -304,7 +304,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node15 -->
 <g id="node16" class="node"><title>Node15</title>
-<g id="a_node16"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="864.5,-105 864.5,-135 974.5,-135 974.5,-105 864.5,-105"/>
 <text text-anchor="start" x="872.5" y="-123" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="919.5" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -318,7 +318,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node16 -->
 <g id="node17" class="node"><title>Node16</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="848,-66.5 848,-85.5 991,-85.5 991,-66.5 848,-66.5"/>
 <text text-anchor="middle" x="919.5" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -331,7 +331,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node17 -->
 <g id="node18" class="node"><title>Node17</title>
-<g id="a_node18"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="1049,-110 1049,-140 1153,-140 1153,-110 1049,-110"/>
 <text text-anchor="start" x="1057" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="1101" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -386,7 +386,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node23 -->
 <g id="node24" class="node"><title>Node23</title>
-<g id="a_node24"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="705.5,-0.5 705.5,-19.5 802.5,-19.5 802.5,-0.5 705.5,-0.5"/>
 <text text-anchor="middle" x="754" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

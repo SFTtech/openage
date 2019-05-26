@@ -57,7 +57,7 @@ var sectionId = 'dynsection-58';
 <polygon fill="white" stroke="none" points="-4,4 -4,-563 1424,-563 1424,4 -4,4"/>
 <!-- Node778 -->
 <g id="node1" class="node"><title>Node778</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="#bfbfbf" stroke="black" points="1306,-424 1306,-443 1420,-443 1420,-424 1306,-424"/>
 <text text-anchor="middle" x="1363" y="-431" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>
@@ -65,7 +65,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node779 -->
 <g id="node2" class="node"><title>Node779</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf" target="_top" xlink:title="Draw a formatted string at the specified position.">
 <polygon fill="white" stroke="black" points="1147.5,-506.5 1147.5,-536.5 1248.5,-536.5 1248.5,-506.5 1147.5,-506.5"/>
 <text text-anchor="start" x="1155.5" y="-524.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="1198" y="-513.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::draw</text>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node781 -->
 <g id="node4" class="node"><title>Node781</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title="render text with the at a position with specified font size">
 <polygon fill="white" stroke="black" points="1126,-424 1126,-443 1270,-443 1270,-424 1126,-424"/>
 <text text-anchor="middle" x="1198" y="-431" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::render_text</text>
 </a>
@@ -92,7 +92,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node791 -->
 <g id="node14" class="node"><title>Node791</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" target="_top" xlink:title="printf&#45;style to&#45;string formatting.">
 <polygon fill="white" stroke="black" points="1143,-178 1143,-197 1253,-197 1253,-178 1143,-178"/>
 <text text-anchor="middle" x="1198" y="-185" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::sformat</text>
 </a>
@@ -105,7 +105,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node780 -->
 <g id="node3" class="node"><title>Node780</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#a021938d1c8fb338a055a3a01d7f06214" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#a021938d1c8fb338a055a3a01d7f06214" target="_top" xlink:title="Draw text at the specified position.">
 <polygon fill="white" stroke="black" points="966.5,-528.5 966.5,-558.5 1067.5,-558.5 1067.5,-528.5 966.5,-528.5"/>
 <text text-anchor="start" x="974.5" y="-546.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="1017" y="-535.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::draw</text>
@@ -119,7 +119,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node782 -->
 <g id="node5" class="node"><title>Node782</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml#ae7f43b96e5e097cebfd9c102676cf2c8" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml#ae7f43b96e5e097cebfd9c102676cf2c8" target="_top" xlink:title="Draw the game version and the current FPS on screen.">
 <polygon fill="white" stroke="black" points="400.5,-462.5 400.5,-492.5 516.5,-492.5 516.5,-462.5 400.5,-462.5"/>
 <text text-anchor="start" x="408.5" y="-480.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::draw</text>
 <text text-anchor="middle" x="458.5" y="-469.5" font-family="Helvetica,sans-Serif" font-size="10.00">_debug_overlay</text>
@@ -147,7 +147,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node788 -->
 <g id="node11" class="node"><title>Node788</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title="Display this mode.">
 <polygon fill="white" stroke="black" points="595.5,-391.5 595.5,-421.5 706.5,-421.5 706.5,-391.5 595.5,-391.5"/>
 <text text-anchor="start" x="603.5" y="-409.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="651" y="-398.5" font-family="Helvetica,sans-Serif" font-size="10.00">::render</text>
@@ -161,7 +161,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node789 -->
 <g id="node12" class="node"><title>Node789</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" target="_top" xlink:title="Must be given a valid unit to display text attribute indicators.">
 <polygon fill="white" stroke="black" points="958.5,-352.5 958.5,-382.5 1075.5,-382.5 1075.5,-352.5 958.5,-352.5"/>
 <text text-anchor="start" x="966.5" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="1017" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">::show_attributes</text>
@@ -175,7 +175,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node783 -->
 <g id="node6" class="node"><title>Node783</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="199,-468 199,-487 312,-487 312,-468 199,-468"/>
 <text text-anchor="middle" x="255.5" y="-475" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>
@@ -188,7 +188,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node784 -->
 <g id="node7" class="node"><title>Node784</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="12.5,-468 12.5,-487 121.5,-487 121.5,-468 12.5,-468"/>
 <text text-anchor="middle" x="67" y="-475" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>
@@ -234,7 +234,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node790 -->
 <g id="node13" class="node"><title>Node790</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" target="_top" xlink:title="execute the drawing action.">
 <polygon fill="white" stroke="black" points="776.5,-352.5 776.5,-382.5 893.5,-382.5 893.5,-352.5 776.5,-352.5"/>
 <text text-anchor="start" x="784.5" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="835" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_drawhud</text>
@@ -267,7 +267,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node793 -->
 <g id="node16" class="node"><title>Node793</title>
-<g id="a_node16"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="namespaceopenage_1_1util.xhtml#aff957b2c0c7a7eb98cf68468cc04c1d8" target="_top" xlink:title="Returns the (demangled) symbol name for a given address.">
 <polygon fill="white" stroke="black" points="765.5,-260 765.5,-279 904.5,-279 904.5,-260 765.5,-260"/>
 <text text-anchor="middle" x="835" y="-267" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::symbol_name</text>
 </a>
@@ -294,7 +294,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node805 -->
 <g id="node28" class="node"><title>Node805</title>
-<g id="a_node28"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#ac4fdd57b37fe1bfae00abc167ccd6bbd" target="_top" xlink:title=" ">
+<g id="a_node28"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#ac4fdd57b37fe1bfae00abc167ccd6bbd" target="_top" xlink:title="to be called to get the next screenshot filename into the array">
 <polygon fill="white" stroke="black" points="944,-147.5 944,-177.5 1090,-177.5 1090,-147.5 944,-147.5"/>
 <text text-anchor="start" x="952" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ScreenshotManager</text>
 <text text-anchor="middle" x="1017" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::gen_next_filename</text>
@@ -308,7 +308,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node808 -->
 <g id="node31" class="node"><title>Node808</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1_game_spec.xhtml#a949e9f7d9b1017a7f399c55a2bd60c9a" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1_game_spec.xhtml#a949e9f7d9b1017a7f399c55a2bd60c9a" target="_top" xlink:title="lookup using a texture id, this specifically avoids returning the missing placeholder texture">
 <polygon fill="white" stroke="black" points="960,-98.5 960,-128.5 1074,-128.5 1074,-98.5 960,-98.5"/>
 <text text-anchor="start" x="968" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="1017" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">get_texture</text>
@@ -322,7 +322,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node810 -->
 <g id="node33" class="node"><title>Node810</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title="fill in the terrain_data attribute of this">
 <polygon fill="white" stroke="black" points="960,-49.5 960,-79.5 1074,-79.5 1074,-49.5 960,-49.5"/>
 <text text-anchor="start" x="968" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="1017" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_terrain</text>
@@ -336,7 +336,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node812 -->
 <g id="node35" class="node"><title>Node812</title>
-<g id="a_node35"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" target="_top" xlink:title="Invoked when the gamedata has been loaded.">
 <polygon fill="white" stroke="black" points="960,-0.5 960,-30.5 1074,-30.5 1074,-0.5 960,-0.5"/>
 <text text-anchor="start" x="968" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="1017" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">on_gamedata_loaded</text>
@@ -355,7 +355,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node794 -->
 <g id="node17" class="node"><title>Node794</title>
-<g id="a_node17"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a591d9bd55fa1f9904547f3f2dcb3796d" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a591d9bd55fa1f9904547f3f2dcb3796d" target="_top" xlink:title="Adds a Python interface component.">
 <polygon fill="white" stroke="black" points="592.5,-342.5 592.5,-372.5 709.5,-372.5 709.5,-342.5 592.5,-342.5"/>
 <text text-anchor="start" x="600.5" y="-360.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="651" y="-349.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_py_if_component</text>
@@ -369,7 +369,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node796 -->
 <g id="node19" class="node"><title>Node796</title>
-<g id="a_node19"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" target="_top" xlink:title="Checks whether all objects that have been registered via add_py_if_component have been properly initi...">
 <polygon fill="white" stroke="black" points="597.5,-293.5 597.5,-323.5 704.5,-323.5 704.5,-293.5 597.5,-293.5"/>
 <text text-anchor="start" x="605.5" y="-311.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="651" y="-300.5" font-family="Helvetica,sans-Serif" font-size="10.00">::check</text>
@@ -383,7 +383,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node801 -->
 <g id="node24" class="node"><title>Node801</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1pyinterface_1_1_func.xhtml#a83b9691db46167c2637c86f5a71cb40f" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1pyinterface_1_1_func.xhtml#a83b9691db46167c2637c86f5a71cb40f" target="_top" xlink:title="raises an Error if this&#45;&gt;fptr is still uninitialized.">
 <polygon fill="white" stroke="black" points="576,-233 576,-274 726,-274 726,-233 576,-233"/>
 <text text-anchor="start" x="584" y="-262" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="start" x="584" y="-251" font-family="Helvetica,sans-Serif" font-size="10.00">::Func&lt; ReturnType, ArgTypes</text>
@@ -398,7 +398,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node802 -->
 <g id="node25" class="node"><title>Node802</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1error_1_1_stack_analyzer.xhtml#ab807f0825ce961e84c901c715cc79976" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1error_1_1_stack_analyzer.xhtml#ab807f0825ce961e84c901c715cc79976" target="_top" xlink:title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge.">
 <polygon fill="white" stroke="black" points="576.5,-183.5 576.5,-213.5 725.5,-213.5 725.5,-183.5 576.5,-183.5"/>
 <text text-anchor="start" x="584.5" y="-201.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::StackAnalyzer</text>
 <text text-anchor="middle" x="651" y="-190.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_symbols</text>
@@ -491,7 +491,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node806 -->
 <g id="node29" class="node"><title>Node806</title>
-<g id="a_node29"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" target="_top" xlink:title=" ">
+<g id="a_node29"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" target="_top" xlink:title="To be called by the job manager.">
 <polygon fill="white" stroke="black" points="762,-147.5 762,-177.5 908,-177.5 908,-147.5 762,-147.5"/>
 <text text-anchor="start" x="770" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ScreenshotManager</text>
 <text text-anchor="middle" x="835" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::encode_png</text>
@@ -505,7 +505,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node807 -->
 <g id="node30" class="node"><title>Node807</title>
-<g id="a_node30"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" target="_top" xlink:title=" ">
+<g id="a_node30"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" target="_top" xlink:title="To be called to save a screenshot.">
 <polygon fill="white" stroke="black" points="578,-134.5 578,-164.5 724,-164.5 724,-134.5 578,-134.5"/>
 <text text-anchor="start" x="586" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ScreenshotManager</text>
 <text text-anchor="middle" x="651" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">::save_screenshot</text>
@@ -519,7 +519,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node809 -->
 <g id="node32" class="node"><title>Node809</title>
-<g id="a_node32"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" target="_top" xlink:title="initialise graphic data">
 <polygon fill="white" stroke="black" points="780.5,-98.5 780.5,-128.5 889.5,-128.5 889.5,-98.5 780.5,-98.5"/>
 <text text-anchor="start" x="788.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="835" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>
@@ -533,7 +533,7 @@ var sectionId = 'dynsection-58';
 </g>
 <!-- Node811 -->
 <g id="node34" class="node"><title>Node811</title>
-<g id="a_node34"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node34"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="778,-25.5 778,-55.5 892,-55.5 892,-25.5 778,-25.5"/>
 <text text-anchor="start" x="786" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="835" y="-32.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>

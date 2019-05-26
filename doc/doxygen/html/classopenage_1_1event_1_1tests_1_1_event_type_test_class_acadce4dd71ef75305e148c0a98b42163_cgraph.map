@@ -1,9 +1,9 @@
 <map id="openage::event::tests::EventTypeTestClass::setup_event" name="openage::event::tests::EventTypeTestClass::setup_event">
-<area shape="rect" id="node1" title=" " alt="" coords="5,34,153,90"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="201,49,323,75"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="393,12,539,53"/>
-<area shape="rect" id="node4" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="371,78,561,105"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="639,5,777,47"/>
+<area shape="rect" id="node1" title="Called for each event that is created for this EventClass." alt="" coords="5,34,153,90"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title="Convenience method that makes use of the &#39;general&#39; LogSource." alt="" coords="201,49,323,75"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title="Returns a reference to a general named log source, for use by log::log()." alt="" coords="393,12,539,53"/>
+<area shape="rect" id="node4" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level))." alt="" coords="371,78,561,105"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title="Returns a reference to the global stdout logsink object; Initializes the object if needed." alt="" coords="639,5,777,47"/>
 <area shape="rect" id="node6" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="622,71,794,112"/>
 <area shape="rect" id="node7" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="609,137,807,163"/>
 </map>

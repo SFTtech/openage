@@ -21,7 +21,7 @@
 </g>
 <!-- Node40 -->
 <g id="node2" class="node"><title>Node40</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_shader_program.xhtml#ab6dd8cc82461a8dd2e08087264f658bd" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_shader_program.xhtml#ab6dd8cc82461a8dd2e08087264f658bd" target="_top" xlink:title="Creates a new uniform input (a binding of uniform names to values) for this shader and optionally set...">
 <polygon fill="white" stroke="black" points="0,-61 0,-91 170,-91 170,-61 0,-61"/>
 <text text-anchor="start" x="8" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="85" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">ShaderProgram::new_uniform_input</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node41 -->
 <g id="node3" class="node"><title>Node41</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_shader_program.xhtml#a40d140c46c04de019b5081c5276bf201" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_shader_program.xhtml#a40d140c46c04de019b5081c5276bf201" target="_top" xlink:title="Updates the given uniform input with new uniform values similarly to new_uniform_input.">
 <polygon fill="white" stroke="black" points="25.5,-0.5 25.5,-41.5 144.5,-41.5 144.5,-0.5 25.5,-0.5"/>
 <text text-anchor="start" x="33.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="33.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">ShaderProgram::update</text>

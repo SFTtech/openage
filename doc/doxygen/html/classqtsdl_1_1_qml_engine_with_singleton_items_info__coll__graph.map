@@ -1,5 +1,5 @@
 <map id="qtsdl::QmlEngineWithSingletonItemsInfo" name="qtsdl::QmlEngineWithSingletonItemsInfo">
-<area shape="rect" id="node1" title=" " alt="" coords="11,145,258,296"/>
+<area shape="rect" id="node1" title="The Qml Engine used by openage." alt="" coords="11,145,258,296"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,101,83"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_singleton_items_info.xhtml" title=" " alt="" coords="125,5,309,83"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_singleton_items_info.xhtml" title="Accessible during creation of any singleton QML item." alt="" coords="125,5,309,83"/>
 </map>

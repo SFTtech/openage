@@ -1,6 +1,6 @@
 <map id="openage::GameRenderer::game_spec" name="openage::GameRenderer::game_spec">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,172,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_game_renderer.xhtml#a1824b69c5f78ed1db93b6fa6417fdf83" title=" " alt="" coords="220,5,387,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_game_main.xhtml#a9c18854cb18678045a149d3dba99eba1" title=" " alt="" coords="228,71,379,112"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title=" " alt="" coords="435,13,619,39"/>
+<area shape="rect" id="node1" title="GameSpec used by this renderer." alt="" coords="5,39,172,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_renderer.xhtml#a1824b69c5f78ed1db93b6fa6417fdf83" title="the game this renderer is using" alt="" coords="220,5,387,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_game_main.xhtml#a9c18854cb18678045a149d3dba99eba1" title="the spec in this games settings" alt="" coords="228,71,379,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title="return currently running game or null if a game is not currently running" alt="" coords="435,13,619,39"/>
 </map>

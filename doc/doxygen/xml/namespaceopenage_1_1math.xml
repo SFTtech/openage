@@ -138,7 +138,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="18" bodyend="-1"/>
-        <referencedby refid="namespaceopenage_1af8871290d3c97a11b6761d12827ab9e3" compoundref="unit__texture_8cpp" startline="162" endline="175">openage::dir_group</referencedby>
+        <referencedby refid="namespaceopenage_1ad019d95177e6ab646a2d239e4ec3daa7" compoundref="unit__texture_8cpp" startline="162" endline="175">openage::dir_group</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a1d21a4f60c5de2ddc1f06d624c7718fd" prot="public" static="no" mutable="no">
         <type>constexpr double</type>

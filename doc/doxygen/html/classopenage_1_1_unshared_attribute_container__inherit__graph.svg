@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-382 927,-382 927,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Wraps a templated unshared attribute.">
 <polygon fill="#bfbfbf" stroke="black" points="386.5,-160.5 386.5,-239.5 537.5,-239.5 537.5,-160.5 386.5,-160.5"/>
 <text text-anchor="start" x="394.5" y="-227.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnsharedAttribute</text>
 <text text-anchor="middle" x="462" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4.xhtml" target="_top" xlink:title="The current hitpoints.">
 <polygon fill="white" stroke="black" points="130.5,-22.5 130.5,-101.5 249.5,-101.5 249.5,-22.5 130.5,-22.5"/>
 <text text-anchor="start" x="138.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="190" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::damaged &gt;</text>
@@ -132,7 +132,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4.xhtml" target="_top" xlink:title="The attack stance and formation.">
 <polygon fill="white" stroke="black" points="402.5,-11.5 402.5,-112.5 521.5,-112.5 521.5,-11.5 402.5,-11.5"/>
 <text text-anchor="start" x="410.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="462" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::formation &gt;</text>
@@ -153,7 +153,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4.xhtml" target="_top" xlink:title="Units put inside a building.">
 <polygon fill="white" stroke="black" points="539.5,-22.5 539.5,-101.5 652.5,-101.5 652.5,-22.5 539.5,-22.5"/>
 <text text-anchor="start" x="547.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="596" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::garrison &gt;</text>
@@ -193,7 +193,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node8 -->
 <g id="node9" class="node"><title>Node8</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1resource_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1resource_01_4.xhtml" target="_top" xlink:title="Resource capacity of a trees, mines, animal, worker etc.">
 <polygon fill="white" stroke="black" points="807,-0.5 807,-123.5 923,-123.5 923,-0.5 807,-0.5"/>
 <text text-anchor="start" x="815" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="865" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::resource &gt;</text>
@@ -216,7 +216,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated attribute.">
 <polygon fill="white" stroke="black" points="393.5,-276.5 393.5,-377.5 530.5,-377.5 530.5,-276.5 393.5,-276.5"/>
 <text text-anchor="middle" x="462" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttributeContainer</text>
 <polyline fill="none" stroke="black" points="393.5,-358.5 530.5,-358.5 "/>

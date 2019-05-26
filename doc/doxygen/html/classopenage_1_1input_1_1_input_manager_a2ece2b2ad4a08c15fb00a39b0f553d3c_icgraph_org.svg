@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-253 661,-253 661,4 -4,4"/>
 <!-- Node149 -->
 <g id="node1" class="node"><title>Node149</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="register a hotkey context by pushing it onto the stack.">
 <polygon fill="#bfbfbf" stroke="black" points="512,-71.5 512,-101.5 657,-101.5 657,-71.5 512,-71.5"/>
 <text text-anchor="start" x="520" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="584.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::push_context</text>
@@ -146,7 +146,7 @@
 </g>
 <!-- Node159 -->
 <g id="node11" class="node"><title>Node159</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a4e0359f0f3cbbf66da045ba1a33ffa57" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a4e0359f0f3cbbf66da045ba1a33ffa57" target="_top" xlink:title="a temporary console command interpreter">
 <polygon fill="white" stroke="black" points="171.5,-22.5 171.5,-52.5 305.5,-52.5 305.5,-22.5 171.5,-22.5"/>
 <text text-anchor="start" x="179.5" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="238.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::interpret</text>
@@ -160,7 +160,7 @@
 </g>
 <!-- Node160 -->
 <g id="node12" class="node"><title>Node160</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" target="_top" xlink:title="register this console to the engine.">
 <polygon fill="white" stroke="black" points="0.5,-0.5 0.5,-30.5 134.5,-30.5 134.5,-0.5 0.5,-0.5"/>
 <text text-anchor="start" x="8.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="67.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::register_to_engine</text>

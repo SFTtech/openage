@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 272,-35 272,4 -4,4"/>
 <!-- Node241 -->
 <g id="node1" class="node"><title>Node241</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="return the blending priority for a given terrain id.">
 <polygon fill="#bfbfbf" stroke="black" points="144,-6 144,-25 268,-25 268,-6 144,-6"/>
 <text text-anchor="middle" x="206" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::priority</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node242 -->
 <g id="node2" class="node"><title>Node242</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#adf4e2cfb2010657a5384efc6c37a9748" target="_top" xlink:title="gather neighbors of a given base tile.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 108,-30.5 108,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="54" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_neighbors</text>

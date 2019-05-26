@@ -14,9 +14,9 @@
         <argsstring></argsstring>
         <name>msg</name>
         <briefdescription>
+<para>The error message. </para>
         </briefdescription>
         <detaileddescription>
-<para>The error message. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -30,9 +30,9 @@
         <argsstring></argsstring>
         <name>backtrace</name>
         <briefdescription>
+<para>The (optional) backtrace. </para>
         </briefdescription>
         <detaileddescription>
-<para>The (optional) backtrace. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -50,9 +50,9 @@
         <argsstring></argsstring>
         <name>cause</name>
         <briefdescription>
+<para>Re-throw this with <ref refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" kindref="member">rethrow_cause()</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Re-throw this with <ref refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" kindref="member">rethrow_cause()</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -122,9 +122,9 @@
         <argsstring>()</argsstring>
         <name>store_cause</name>
         <briefdescription>
+<para>Stores a pointer to the currently-handled exception in this-&gt;cause. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stores a pointer to the currently-handled exception in this-&gt;cause. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -139,9 +139,9 @@
         <argsstring>()</argsstring>
         <name>trim_backtrace</name>
         <briefdescription>
+<para>Calls this-&gt;backtrace-&gt;trim_to_current_stack_frame(), if this-&gt;backtrace is not nullptr. </para>
         </briefdescription>
         <detaileddescription>
-<para>Calls this-&gt;backtrace-&gt;trim_to_current_stack_frame(), if this-&gt;backtrace is not nullptr.</para>
 <para>Designed to be used in catch clauses, to strip away all those unneeded symbols from program init upwards.</para>
 <para>Automatically called for cause exceptions, and when storing cause exceptions, and by the to_py converter. </para>
         </detaileddescription>
@@ -157,9 +157,10 @@
         <argsstring>() const</argsstring>
         <name>rethrow_cause</name>
         <briefdescription>
+<para>Re-throws the exception cause, if the exception has one. </para>
         </briefdescription>
         <detaileddescription>
-<para>Re-throws the exception cause, if the exception has one. Otherwise, does nothing.</para>
+<para>Otherwise, does nothing.</para>
 <para>Use this when handling the exception, to handle the cause. </para>
         </detaileddescription>
         <inbodydescription>
@@ -176,9 +177,10 @@
         <name>type_name</name>
         <reimplementedby refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1">type_name</reimplementedby>
         <briefdescription>
+<para>The type name of the exception (for pretty-printing in case the exception hierarchy is used). </para>
         </briefdescription>
         <detaileddescription>
-<para>The type name of the exception (for pretty-printing in case the exception hierarchy is used). Uses typeid internally. </para>
+<para>Uses typeid internally. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -192,9 +194,9 @@
         <argsstring>() const noexcept override</argsstring>
         <name>what</name>
         <briefdescription>
+<para>Returns the message&apos;s content. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the message&apos;s content. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -215,9 +217,9 @@
           <declname>state</declname>
         </param>
         <briefdescription>
+<para>Turn on debug breaks in the constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Turn on debug breaks in the constructor </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -232,9 +234,10 @@
         <argsstring>()</argsstring>
         <name>Error</name>
         <briefdescription>
+<para>Constructs an empty error. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructs an empty error. For use by our friend, <ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">pyinterface::PyException</ref>. </para>
+<para>For use by our friend, <ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">pyinterface::PyException</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -243,9 +246,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Openage base exception type; the constructor usage is analogous to <ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log()</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>Openage base exception type; the constructor usage is analogous to <ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log()</ref>.</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>: message msg</para>
 <para>string <ref refid="classopenage_1_1error_1_1_error_1a6c5c486df5943aa399b6c051d9eb9059" kindref="member">type_name()</ref> except + const char *what() except + void <ref refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" kindref="member">rethrow_cause()</ref> except + void <ref refid="classopenage_1_1error_1_1_error_1a1a6de651093edf2d3673cd0d146992e4" kindref="member">trim_backtrace()</ref> except + @staticmethod void <ref refid="classopenage_1_1error_1_1_error_1ad7fc5249c96f6c6e2c3bfa55dfe8235b" kindref="member">debug_break_on_create(bool state)</ref> except +</para>

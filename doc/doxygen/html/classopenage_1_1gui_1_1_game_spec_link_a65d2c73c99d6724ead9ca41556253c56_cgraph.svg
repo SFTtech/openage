@@ -66,7 +66,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node45 -->
 <g id="node2" class="node"><title>Node45</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361" target="_top" xlink:title="Set property.">
 <polygon fill="white" stroke="black" points="196,-112 196,-142 311,-142 311,-112 196,-112"/>
 <text text-anchor="start" x="204" y="-130" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods</text>
 <text text-anchor="middle" x="253.5" y="-119" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; GameSpecLink &gt;::s</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node46 -->
 <g id="node3" class="node"><title>Node46</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab7fe02e9268aff99041da5e2684d2e4d" target="_top" xlink:title="Control whether this specification can be loaded (=true) or will not be loaded (=false).">
 <polygon fill="white" stroke="black" points="184.5,-63 184.5,-93 322.5,-93 322.5,-63 184.5,-63"/>
 <text text-anchor="start" x="192.5" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="253.5" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::set_active</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node47 -->
 <g id="node4" class="node"><title>Node47</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" target="_top" xlink:title="load the game specification if not already present.">
 <polygon fill="white" stroke="black" points="362,-63 362,-93 500,-93 500,-63 362,-63"/>
 <text text-anchor="start" x="370" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="431" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::start_loading_if_needed</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node48 -->
 <g id="node5" class="node"><title>Node48</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" target="_top" xlink:title="Actually dispatch the loading job to the job manager.">
 <polygon fill="white" stroke="black" points="536,-63 536,-93 674,-93 674,-63 536,-63"/>
 <text text-anchor="start" x="544" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="605" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">::start_load_job</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node49 -->
 <g id="node6" class="node"><title>Node49</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" target="_top" xlink:title="Enqueues the given function into the job manager&#39;s queue, so that it will be dispatched by one of the...">
 <polygon fill="white" stroke="black" points="717,-137 717,-167 848,-167 848,-137 717,-137"/>
 <text text-anchor="start" x="725" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="782.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">::enqueue</text>
@@ -150,7 +150,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node50 -->
 <g id="node7" class="node"><title>Node50</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title="Return the engine responsible for this asset manager.">
 <polygon fill="white" stroke="black" points="721.5,-88 721.5,-118 843.5,-118 843.5,-88 721.5,-88"/>
 <text text-anchor="start" x="729.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="782.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::get_engine</text>
@@ -164,7 +164,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node51 -->
 <g id="node8" class="node"><title>Node51</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" target="_top" xlink:title="return this engine&#39;s job manager.">
 <polygon fill="white" stroke="black" points="728,-39 728,-69 837,-69 837,-39 728,-39"/>
 <text text-anchor="start" x="736" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="782.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_job_manager</text>
@@ -191,7 +191,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node53 -->
 <g id="node10" class="node"><title>Node53</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="891,-0.5 891,-19.5 986,-19.5 986,-0.5 891,-0.5"/>
 <text text-anchor="middle" x="938.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

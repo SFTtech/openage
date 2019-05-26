@@ -1,4 +1,4 @@
 <map id="openage::util::FD" name="openage::util::FD">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,160,413"/>
+<area shape="rect" id="node1" title="wraps a POSIX file descriptor" alt="" coords="5,145,160,413"/>
 <area shape="rect" id="node2" title=" " alt="" coords="55,5,110,83"/>
 </map>

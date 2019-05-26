@@ -1,5 +1,5 @@
 <map id="openage::path::tests::not_passable" name="openage::path::tests::not_passable">
-<area shape="rect" id="node1" title=" " alt="" coords="401,5,543,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1path_1_1tests.xhtml#a22de95f3450a22cac036677b4e01ad63" title=" " alt="" coords="195,5,353,47"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1path_1_1tests.xhtml#a5d1515cb353ed8a23c4d644dc3642e73" title=" " alt="" coords="5,5,147,47"/>
+<area shape="rect" id="node1" title="This is a helper passable function that always returns false." alt="" coords="401,5,543,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1path_1_1tests.xhtml#a22de95f3450a22cac036677b4e01ad63" title="This function tests passable_line." alt="" coords="195,5,353,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1path_1_1tests.xhtml#a5d1515cb353ed8a23c4d644dc3642e73" title="Top level node test." alt="" coords="5,5,147,47"/>
 </map>

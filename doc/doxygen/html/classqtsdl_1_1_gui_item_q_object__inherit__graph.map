@@ -7,6 +7,6 @@
 <area shape="rect" id="node10" href="$classopenage_1_1gui_1_1_output_mode_link.xhtml" title=" " alt="" coords="901,821,1100,1031"/>
 <area shape="rect" id="node2" title=" " alt="" coords="377,307,448,384"/>
 <area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_base.xhtml" title=" " alt="" coords="473,248,657,443"/>
-<area shape="rect" id="node4" href="$classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" title=" " alt="" coords="458,5,671,200"/>
-<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_link.xhtml" title=" " alt="" coords="681,307,808,384"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" title="Stores static properties during initialization to be able to assign them after all &#39;liveReloadTag&#39; pr..." alt="" coords="458,5,671,200"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_link.xhtml" title="Base for QObject wrapper of the domain&#45;specific classes." alt="" coords="681,307,808,384"/>
 </map>

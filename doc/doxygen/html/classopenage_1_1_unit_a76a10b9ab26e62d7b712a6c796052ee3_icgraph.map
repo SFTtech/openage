@@ -1,9 +1,9 @@
 <map id="openage::Unit::make_location" name="openage::Unit::make_location">
-<area shape="rect" id="node1" title=" " alt="" coords="676,104,819,145"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title=" " alt="" coords="451,5,620,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title=" " alt="" coords="447,71,624,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_projectile_producer.xhtml#a02c2dedff8bebf9d036393d8e35b37b3" title=" " alt="" coords="443,136,628,177"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_nyan_type.xhtml#ae2f61064a00875267824a0bdfba63085" title=" " alt="" coords="463,201,608,243"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title=" " alt="" coords="216,5,395,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title=" " alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node1" title="constructs a new location for this unit replacing any existing locatio" alt="" coords="676,104,819,145"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title="set unit in place – return if placement was successful" alt="" coords="451,5,620,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title="set unit in place – return if placement was successful" alt="" coords="447,71,624,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_projectile_producer.xhtml#a02c2dedff8bebf9d036393d8e35b37b3" title="set unit in place – return if placement was successful" alt="" coords="443,136,628,177"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_nyan_type.xhtml#ae2f61064a00875267824a0bdfba63085" title="set unit in place – return if placement was successful" alt="" coords="463,201,608,243"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title="set unit in place – return if placement was successful" alt="" coords="216,5,395,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title="set unit in place – return if placement was successful" alt="" coords="5,5,168,47"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 288,-35 288,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Sets all members except for filename, lineno, functionname and level.">
 <polygon fill="#bfbfbf" stroke="black" points="166,-0.5 166,-30.5 284,-30.5 284,-0.5 166,-0.5"/>
 <text text-anchor="start" x="174" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::message</text>
 <text text-anchor="middle" x="225" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::init</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="structopenage_1_1log_1_1message.xhtml#a9f25c53eaa48cd37d1d5753e53db9549" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="structopenage_1_1log_1_1message.xhtml#a9f25c53eaa48cd37d1d5753e53db9549" target="_top" xlink:title="Sets all members except for lineno and level.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 130,-30.5 130,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::message</text>
 <text text-anchor="middle" x="65" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::init_with_metadata_copy</text>

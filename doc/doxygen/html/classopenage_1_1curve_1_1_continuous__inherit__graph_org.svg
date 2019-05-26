@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-448 181,-448 181,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Continuous Datatype.">
 <polygon fill="#bfbfbf" stroke="black" points="8.5,-0.5 8.5,-57.5 168.5,-57.5 168.5,-0.5 8.5,-0.5"/>
 <text text-anchor="middle" x="88.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Continuous&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="8.5,-38.5 168.5,-38.5 "/>
@@ -50,7 +50,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_target.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_target.xhtml" target="_top" xlink:title="Every Object in the gameworld that wants to be targeted by events or as dependency for events,...">
 <polygon fill="white" stroke="black" points="19,-298.5 19,-443.5 158,-443.5 158,-298.5 19,-298.5"/>
 <text text-anchor="middle" x="88.5" y="-431.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventTarget</text>
 <polyline fill="none" stroke="black" points="19,-424.5 158,-424.5 "/>

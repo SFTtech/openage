@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-128 140,-128 140,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="a single character in the buffer">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-123.5 136,-123.5 136,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="68" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::buf_char</text>
 <polyline fill="none" stroke="black" points="0,-104.5 136,-104.5 "/>

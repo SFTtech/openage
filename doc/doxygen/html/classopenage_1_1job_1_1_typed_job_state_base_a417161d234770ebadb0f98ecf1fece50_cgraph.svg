@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 326,-35 326,4 -4,4"/>
 <!-- Node5 -->
 <g id="node1" class="node"><title>Node5</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Executes the internal function object and stores its result.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 143,-30.5 143,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::TypedJobState</text>
 <text text-anchor="middle" x="71.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Base::execute</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node6 -->
 <g id="node2" class="node"><title>Node6</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6db4bc3757e40d5c04618c472ac75257" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6db4bc3757e40d5c04618c472ac75257" target="_top" xlink:title="Executes the job and returns the result.">
 <polygon fill="white" stroke="black" points="179,-0.5 179,-30.5 322,-30.5 322,-0.5 179,-0.5"/>
 <text text-anchor="start" x="187" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::TypedJobState</text>
 <text text-anchor="middle" x="250.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Base::execute_and_get</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-182 565,-182 565,4 -4,4"/>
 <!-- Node70 -->
 <g id="node1" class="node"><title>Node70</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="debug string to identify action types">
 <polygon fill="#bfbfbf" stroke="black" points="457,-73.5 457,-103.5 561,-103.5 561,-73.5 457,-73.5"/>
 <text text-anchor="start" x="465" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAction</text>
 <text text-anchor="middle" x="509" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node71 -->
 <g id="node2" class="node"><title>Node71</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" target="_top" xlink:title="Must be given a valid unit to display text attribute indicators.">
 <polygon fill="white" stroke="black" points="303,-147.5 303,-177.5 420,-177.5 420,-147.5 303,-147.5"/>
 <text text-anchor="start" x="311" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="361.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::show_attributes</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node72 -->
 <g id="node3" class="node"><title>Node72</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" target="_top" xlink:title="execute the drawing action.">
 <polygon fill="white" stroke="black" points="148,-147.5 148,-177.5 265,-177.5 265,-147.5 148,-147.5"/>
 <text text-anchor="start" x="156" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="206.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_drawhud</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node73 -->
 <g id="node4" class="node"><title>Node73</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" target="_top" xlink:title="Display this mode.">
 <polygon fill="white" stroke="black" points="0,-147.5 0,-177.5 111,-177.5 111,-147.5 0,-147.5"/>
 <text text-anchor="start" x="8" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="55.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::render</text>

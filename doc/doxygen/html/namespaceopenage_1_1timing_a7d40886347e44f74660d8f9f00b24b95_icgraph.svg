@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-318 749,-318 749,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns a monotonically&#45;increasing time that returns the number of nanoseconds since an unspecified e...">
 <polygon fill="#bfbfbf" stroke="black" points="640,-122.5 640,-152.5 745,-152.5 745,-122.5 640,-122.5"/>
 <text text-anchor="start" x="648" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="692.5" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">_monotonic_time</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a0f4aca6841c138900f29816c0d7decf3" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a0f4aca6841c138900f29816c0d7decf3" target="_top" xlink:title="reads the current timer value, in nanoseconds, and resets the timer to zero (preserving started/stopp...">
 <polygon fill="white" stroke="black" points="493.5,-261.5 493.5,-291.5 595.5,-291.5 595.5,-261.5 493.5,-261.5"/>
 <text text-anchor="start" x="501.5" y="-279.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="544.5" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00">::getandresetval</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#ad764a82c4de3f85c379ccc39c068f229" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#ad764a82c4de3f85c379ccc39c068f229" target="_top" xlink:title="reads the current timer value, in nanoseconds.">
 <polygon fill="white" stroke="black" points="493.5,-147.5 493.5,-177.5 595.5,-177.5 595.5,-147.5 493.5,-147.5"/>
 <text text-anchor="start" x="501.5" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="544.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::getval</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node10 -->
 <g id="node10" class="node"><title>Node10</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a98712fa513953c1c85c886ac379b2612" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a98712fa513953c1c85c886ac379b2612" target="_top" xlink:title="resets the timer, in either stopped or running state.">
 <polygon fill="white" stroke="black" points="493.5,-196.5 493.5,-226.5 595.5,-226.5 595.5,-196.5 493.5,-196.5"/>
 <text text-anchor="start" x="501.5" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="544.5" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reset</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node12 -->
 <g id="node12" class="node"><title>Node12</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#afe1b5aca34f4b4151c6b85bafcd5dfd2" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#afe1b5aca34f4b4151c6b85bafcd5dfd2" target="_top" xlink:title="starts/unpauses the timer.">
 <polygon fill="white" stroke="black" points="493.5,-98.5 493.5,-128.5 595.5,-128.5 595.5,-98.5 493.5,-98.5"/>
 <text text-anchor="start" x="501.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="544.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node13 -->
 <g id="node13" class="node"><title>Node13</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#aec63a1026df32a5f119d2138a01e40e2" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#aec63a1026df32a5f119d2138a01e40e2" target="_top" xlink:title="stops/pauses the timer.">
 <polygon fill="white" stroke="black" points="493.5,-49.5 493.5,-79.5 595.5,-79.5 595.5,-49.5 493.5,-49.5"/>
 <text text-anchor="start" x="501.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="544.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::stop</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node14 -->
 <g id="node14" class="node"><title>Node14</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1console_1_1draw.xhtml#ad603edf799bbe6017b89fd25a6ed4512" target="_top" xlink:title="experimental and totally inefficient opengl draw of a terminal buffer.">
 <polygon fill="white" stroke="black" points="485,-0.5 485,-30.5 604,-30.5 604,-0.5 485,-0.5"/>
 <text text-anchor="start" x="493" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::draw</text>
 <text text-anchor="middle" x="544.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_opengl</text>
@@ -150,7 +150,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_frame_counter.xhtml#a9dd54183a6ebd91c10bbc51abcb57f2d" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_frame_counter.xhtml#a9dd54183a6ebd91c10bbc51abcb57f2d" target="_top" xlink:title="to be called each time a frame has been completed">
 <polygon fill="white" stroke="black" points="309,-283.5 309,-313.5 449,-313.5 449,-283.5 309,-283.5"/>
 <text text-anchor="start" x="317" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FrameCounter</text>
 <text text-anchor="middle" x="379" y="-290.5" font-family="Helvetica,sans-Serif" font-size="10.00">::frame</text>
@@ -164,7 +164,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="152.5,-196 152.5,-215 265.5,-215 265.5,-196 152.5,-196"/>
 <text text-anchor="middle" x="209" y="-203" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>
@@ -177,7 +177,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="0,-196 0,-215 109,-215 109,-196 0,-196"/>
 <text text-anchor="middle" x="54.5" y="-203" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>
@@ -195,7 +195,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node7" class="node"><title>Node7</title>
-<g id="a_node7"><a xlink:href="namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" target="_top" xlink:title="runs the game.">
 <polygon fill="white" stroke="black" points="328,-70 328,-89 430,-89 430,-70 328,-70"/>
 <text text-anchor="middle" x="379" y="-77" font-family="Helvetica,sans-Serif" font-size="10.00">openage::run_game</text>
 </a>
@@ -208,7 +208,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node9 -->
 <g id="node9" class="node"><title>Node9</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="322,-108.5 322,-138.5 436,-138.5 436,-108.5 322,-108.5"/>
 <text text-anchor="start" x="330" y="-126.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="379" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>
@@ -240,7 +240,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node11 -->
 <g id="node11" class="node"><title>Node11</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a1b3d27ae06020bc54ea6cb6f0d7bc72d" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml#a1b3d27ae06020bc54ea6cb6f0d7bc72d" target="_top" xlink:title="creates the timer, in either stopped or running state.">
 <polygon fill="white" stroke="black" points="328,-234.5 328,-264.5 430,-264.5 430,-234.5 328,-234.5"/>
 <text text-anchor="start" x="336" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="379" y="-241.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Timer</text>
@@ -264,7 +264,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node15 -->
 <g id="node15" class="node"><title>Node15</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a1ce3c30cdc768559e11fc548cbcbddd8" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1console_1_1_console.xhtml#a1ce3c30cdc768559e11fc548cbcbddd8" target="_top" xlink:title="execute the drawing action.">
 <polygon fill="white" stroke="black" points="312,-0.5 312,-30.5 446,-30.5 446,-0.5 312,-0.5"/>
 <text text-anchor="start" x="320" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::Console</text>
 <text text-anchor="middle" x="379" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_drawhud</text>

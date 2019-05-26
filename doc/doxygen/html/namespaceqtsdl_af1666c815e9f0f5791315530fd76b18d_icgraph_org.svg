@@ -19,7 +19,7 @@
 </g>
 <!-- Node31 -->
 <g id="node2" class="node"><title>Node31</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173" target="_top" xlink:title="Static QML properties assignments during the init phase are stored for a batch assignment at the end ...">
 <polygon fill="white" stroke="black" points="4.5,-710.5 4.5,-762.5 140.5,-762.5 140.5,-710.5 4.5,-710.5"/>
 <text text-anchor="start" x="12.5" y="-750.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods</text>
 <text text-anchor="start" x="12.5" y="-739.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; GameSpecLink &gt;::assign</text>
@@ -80,7 +80,7 @@
 </g>
 <!-- Node35 -->
 <g id="node6" class="node"><title>Node35</title>
-<g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774" target="_top" xlink:title="Invoke a function in the logic thread (the thread of the core of this object).">
 <polygon fill="white" stroke="black" points="15,-480.5 15,-510.5 130,-510.5 130,-480.5 15,-480.5"/>
 <text text-anchor="start" x="23" y="-498.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods</text>
 <text text-anchor="middle" x="72.5" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; GameSpecLink &gt;::i</text>

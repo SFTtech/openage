@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-111.5 295,-111.5 295,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="#bfbfbf" stroke="black" points="0,-33 0,-63 109,-63 109,-33 0,-33"/>
 <text text-anchor="start" x="8" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAbility</text>
 <text text-anchor="middle" x="54.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>

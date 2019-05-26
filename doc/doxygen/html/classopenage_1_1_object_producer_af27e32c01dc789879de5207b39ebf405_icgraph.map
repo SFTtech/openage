@@ -1,4 +1,4 @@
 <map id="openage::ObjectProducer::parent_id" name="openage::ObjectProducer::parent_id">
-<area shape="rect" id="node1" title=" " alt="" coords="216,5,385,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title=" " alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node1" title="gets the parent id of this unit type which is used for village base and gather types" alt="" coords="216,5,385,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title="Initialize units attributes to this type spec." alt="" coords="5,5,168,47"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-95.5 556,-95.5 556,4 -4,4"/>
 <!-- Node187 -->
 <g id="node1" class="node"><title>Node187</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Creates a hash value as a combination of two other hashes.">
 <polygon fill="#bfbfbf" stroke="black" points="453,-33 453,-63 552,-63 552,-33 453,-33"/>
 <text text-anchor="start" x="461" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::hash</text>
 <text text-anchor="middle" x="502.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">_combine</text>
@@ -49,7 +49,7 @@
 </g>
 <!-- Node189 -->
 <g id="node3" class="node"><title>Node189</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title="Retrieves the atlas entry for a specified font and glyph.">
 <polygon fill="white" stroke="black" points="143,-61 143,-91 244,-91 244,-61 143,-61"/>
 <text text-anchor="start" x="151" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="193.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">GlyphAtlas::get</text>
@@ -63,7 +63,7 @@
 </g>
 <!-- Node190 -->
 <g id="node4" class="node"><title>Node190</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title="Render all the text draw requests made during the frame.">
 <polygon fill="white" stroke="black" points="0,-61 0,-91 107,-91 107,-61 0,-61"/>
 <text text-anchor="start" x="8" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="53.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::render</text>

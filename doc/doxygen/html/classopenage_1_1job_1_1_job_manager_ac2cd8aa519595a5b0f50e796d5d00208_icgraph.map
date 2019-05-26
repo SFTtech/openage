@@ -1,8 +1,8 @@
 <map id="openage::job::JobManager::stop" name="openage::job::JobManager::stop">
-<area shape="rect" id="node1" title=" " alt="" coords="637,23,812,65"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title=" " alt="" coords="5,5,151,32"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#a7c6184d63bc3af2171d83b8941eb9204" title=" " alt="" coords="426,31,578,57"/>
-<area shape="rect" id="node6" href="$classopenage_1_1job_1_1_job_manager.xhtml#a4478894f90499d1f560284a194e83a4f" title=" " alt="" coords="415,82,589,123"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title=" " alt="" coords="207,31,358,57"/>
+<area shape="rect" id="node1" title="Stop the job manager&#39;s worker threads." alt="" coords="637,23,812,65"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title="starts the engine loop." alt="" coords="5,5,151,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#a7c6184d63bc3af2171d83b8941eb9204" title="enqueues the stop of the main loop." alt="" coords="426,31,578,57"/>
+<area shape="rect" id="node6" href="$classopenage_1_1job_1_1_job_manager.xhtml#a4478894f90499d1f560284a194e83a4f" title="Destructor that stops the job manager if it is still running." alt="" coords="415,82,589,123"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title="main engine loop function." alt="" coords="207,31,358,57"/>
 <area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_engine_link.xhtml#a6435202dddbc3dfba7147944333329da" title=" " alt="" coords="199,82,367,123"/>
 </map>

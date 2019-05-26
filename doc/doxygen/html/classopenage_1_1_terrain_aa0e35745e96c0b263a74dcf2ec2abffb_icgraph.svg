@@ -57,7 +57,7 @@ var sectionId = 'dynsection-11';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 611,-35 611,4 -4,4"/>
 <!-- Node64 -->
 <g id="node1" class="node"><title>Node64</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="checks whether the given tile position is allowed to exist on this terrain.">
 <polygon fill="#bfbfbf" stroke="black" points="486,-0.5 486,-30.5 607,-30.5 607,-0.5 486,-0.5"/>
 <text text-anchor="start" x="494" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::check</text>
 <text text-anchor="middle" x="546.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_tile_position</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node65 -->
 <g id="node2" class="node"><title>Node65</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#ab9457472de4a25ef737684e27d1d5810" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#ab9457472de4a25ef737684e27d1d5810" target="_top" xlink:title="checks the creation state and premissions of a given tile position.">
 <polygon fill="white" stroke="black" points="311,-6 311,-25 450,-25 450,-6 311,-6"/>
 <text text-anchor="middle" x="380.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::check_tile</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node66 -->
 <g id="node3" class="node"><title>Node66</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" target="_top" xlink:title="fill the terrain with given terrain_id values.">
 <polygon fill="white" stroke="black" points="171,-6 171,-25 275,-25 275,-6 171,-6"/>
 <text text-anchor="middle" x="223" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::fill</text>
 </a>

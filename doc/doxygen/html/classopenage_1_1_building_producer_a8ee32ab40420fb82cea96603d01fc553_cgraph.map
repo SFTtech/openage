@@ -1,22 +1,22 @@
 <map id="openage::BuildingProducer::initialise" name="openage::BuildingProducer::initialise">
-<area shape="rect" id="node1" title=" " alt="" coords="5,181,183,223"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#ab74b08bb7725863fc63839d798f6aedb" title=" " alt="" coords="254,5,385,47"/>
+<area shape="rect" id="node1" title="Initialize units attributes to this type spec." alt="" coords="5,181,183,223"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#ab74b08bb7725863fc63839d798f6aedb" title="give a new attribute this this unit this is used to set things like color, hitpoints and speed" alt="" coords="254,5,385,47"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="261,71,378,98"/>
 <area shape="rect" id="node5" href="$classopenage_1_1_building_producer.xhtml#a3b9addd50944e9d3537b815b1a12a12d" title=" " alt="" coords="231,123,408,164"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" title=" " alt="" coords="232,189,407,215"/>
-<area shape="rect" id="node10" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="699,218,889,245"/>
-<area shape="rect" id="node15" href="$classopenage_1_1_unit.xhtml#a37f35cd78b09fea32514ed2b2dd87b64" title=" " alt="" coords="253,291,385,332"/>
-<area shape="rect" id="node16" href="$classopenage_1_1_unit.xhtml#aecd686fafc67487f4df4d3637f2621f4" title=" " alt="" coords="250,356,389,397"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f" title=" " alt="" coords="471,13,635,39"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_building_producer.xhtml#a98e04052b3c7522684bf1cd2e9c7e56f" title=" " alt="" coords="456,87,651,114"/>
-<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="493,138,614,165"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" title="unit types by aoe gamedata unit ids – the unit type which corresponds to an aoe unit id" alt="" coords="232,189,407,215"/>
+<area shape="rect" id="node10" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level))." alt="" coords="699,218,889,245"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_unit.xhtml#a37f35cd78b09fea32514ed2b2dd87b64" title="adds an available ability to this unit this turns targeted objects into actions which are pushed onto..." alt="" coords="253,291,385,332"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_unit.xhtml#aecd686fafc67487f4df4d3637f2621f4" title="adds a new action on top of the action stack will be performed immediately" alt="" coords="250,356,389,397"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f" title="Add an attribute or replace any attribute of the same type." alt="" coords="471,13,635,39"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_building_producer.xhtml#a98e04052b3c7522684bf1cd2e9c7e56f" title="gets the unique id of this unit type" alt="" coords="456,87,651,114"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title="Convenience method that makes use of the &#39;general&#39; LogSource." alt="" coords="493,138,614,165"/>
 <area shape="rect" id="node14" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="495,189,611,215"/>
-<area shape="rect" id="node9" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="721,131,867,172"/>
-<area shape="rect" id="node11" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="967,145,1105,187"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title="Returns a reference to a general named log source, for use by log::log()." alt="" coords="721,131,867,172"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title="Returns a reference to the global stdout logsink object; Initializes the object if needed." alt="" coords="967,145,1105,187"/>
 <area shape="rect" id="node12" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="950,211,1122,252"/>
 <area shape="rect" id="node13" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="937,277,1135,303"/>
-<area shape="rect" id="node17" href="$classopenage_1_1_unit.xhtml#a21542f7813db482fd36799cf12971979" title=" " alt="" coords="479,356,628,397"/>
-<area shape="rect" id="node18" href="$classopenage_1_1_unit.xhtml#a257ef8a7aeceb306d372ef745b40ef90" title=" " alt="" coords="729,327,859,368"/>
-<area shape="rect" id="node19" href="$classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" title=" " alt="" coords="730,393,858,419"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_unit.xhtml#a21542f7813db482fd36799cf12971979" title="true when the unit is alive and able to add new actions" alt="" coords="479,356,628,397"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_unit.xhtml#a257ef8a7aeceb306d372ef745b40ef90" title="checks the entity has an action, if it has no action it should be removed from the game" alt="" coords="729,327,859,368"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" title="returns the current action on top of the stack" alt="" coords="730,393,858,419"/>
 <area shape="rect" id="node20" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="981,393,1091,419"/>
 </map>

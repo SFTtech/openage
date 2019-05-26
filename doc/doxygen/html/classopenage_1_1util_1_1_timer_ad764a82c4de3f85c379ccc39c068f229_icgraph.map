@@ -1,8 +1,8 @@
 <map id="openage::util::Timer::getval" name="openage::util::Timer::getval">
-<area shape="rect" id="node1" title=" " alt="" coords="424,64,560,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title=" " alt="" coords="224,5,376,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title=" " alt="" coords="225,71,375,98"/>
-<area shape="rect" id="node5" href="$namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" title=" " alt="" coords="232,122,368,149"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title=" " alt="" coords="18,71,163,98"/>
+<area shape="rect" id="node1" title="reads the current timer value, in nanoseconds." alt="" coords="424,64,560,105"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title="perform the main loading job." alt="" coords="224,5,376,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title="main engine loop function." alt="" coords="225,71,375,98"/>
+<area shape="rect" id="node5" href="$namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" title="runs the game." alt="" coords="232,122,368,149"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title="starts the engine loop." alt="" coords="18,71,163,98"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1game_1_1main.xhtml#ae53287c14640e82b47c8b3af1e85c4ca" title=" " alt="" coords="5,122,176,149"/>
 </map>

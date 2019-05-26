@@ -20,7 +20,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a68f01b02f0824fe2e41e508a75946793" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a68f01b02f0824fe2e41e508a75946793" target="_top" xlink:title="unregisters all remaining components">
 <polygon fill="white" stroke="black" points="144,-24.5 144,-54.5 252,-54.5 252,-24.5 144,-24.5"/>
 <text text-anchor="start" x="152" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="198" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister_all</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a93cf3b3b79fc2f3be34a2e1b095198a6" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a93cf3b3b79fc2f3be34a2e1b095198a6" target="_top" xlink:title="returns a vector of registered component names">
 <polygon fill="white" stroke="black" points="288,-49.5 288,-79.5 412,-79.5 412,-49.5 288,-49.5"/>
 <text text-anchor="start" x="296" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="350" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::registered_components</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aa2cd0e4084f70dec7bff926afbc7e0de" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#aa2cd0e4084f70dec7bff926afbc7e0de" target="_top" xlink:title="unregisters an individual component">
 <polygon fill="white" stroke="black" points="290.5,-0.5 290.5,-30.5 409.5,-30.5 409.5,-0.5 290.5,-0.5"/>
 <text text-anchor="start" x="298.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="350" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::unregister_component</text>

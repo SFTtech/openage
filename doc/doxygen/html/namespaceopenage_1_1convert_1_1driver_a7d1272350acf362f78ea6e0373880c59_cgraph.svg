@@ -106,7 +106,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node103 -->
 <g id="node3" class="node"><title>Node103</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title="list()">
 <polygon fill="white" stroke="black" points="477,-137 477,-156 566,-156 566,-137 477,-137"/>
 <text text-anchor="middle" x="521.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::list</text>
 </a>
@@ -132,7 +132,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node105 -->
 <g id="node5" class="node"><title>Node105</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="843,-118 843,-137 938,-137 938,-118 843,-118"/>
 <text text-anchor="middle" x="890.5" y="-125" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -150,7 +150,7 @@ var sectionId = 'dynsection-9';
 </g>
 <!-- Node107 -->
 <g id="node7" class="node"><title>Node107</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="478,-99 478,-118 565,-118 565,-99 478,-99"/>
 <text text-anchor="middle" x="521.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>

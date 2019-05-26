@@ -1,4 +1,4 @@
 <map id="openage::Unit::top" name="openage::Unit::top">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,133,32"/>
+<area shape="rect" id="node1" title="returns the current action on top of the stack" alt="" coords="5,5,133,32"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="181,5,292,32"/>
 </map>

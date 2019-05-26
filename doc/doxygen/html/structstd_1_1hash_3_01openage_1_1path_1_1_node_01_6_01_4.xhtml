@@ -96,13 +96,17 @@ $(document).ready(function(){initNavTree('structstd_1_1hash_3_01openage_1_1path_
 </div><!--header-->
 <div class="contents">
 
+<p>Hash function for path nodes.  
+ <a href="structstd_1_1hash_3_01openage_1_1path_1_1_node_01_6_01_4.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pathfinding_2path_8h_source.xhtml">path.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for std::hash&lt; openage::path::Node &amp; &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1hash_3_01openage_1_1path_1_1_node_01_6_01_4__coll__graph.svg" width="148" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1hash_3_01openage_1_1path_1_1_node_01_6_01_4__coll__graph.svg" width="148" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -114,7 +118,8 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><h3>template&lt;&gt;<br />
 struct std::hash&lt; openage::path::Node &amp; &gt;</h3>
 
-<p>Hash function for path nodes. Just uses their position. </p>
+<p>Hash function for path nodes. </p>
+<p>Just uses their position. </p>
 
 <p class="definition">Definition at line <a class="el" href="pathfinding_2path_8h_source.xhtml#l00205">205</a> of file <a class="el" href="pathfinding_2path_8h_source.xhtml">path.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -143,7 +148,7 @@ struct std::hash&lt; openage::path::Node &amp; &gt;</h3>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pathfinding_2path_8h_source.xhtml#l00206">206</a> of file <a class="el" href="pathfinding_2path_8h_source.xhtml">path.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                                                       {</div><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <a class="code" href="structopenage_1_1coord_1_1phys3.xhtml">openage::coord::phys3</a> node_pos = x.<a class="code" href="classopenage_1_1path_1_1_node.xhtml#ab2a7dc59c9efb7f5baef572bbbb00228">position</a>;</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordtype">size_t</span> nehash = std::hash&lt;openage::coord::phys_t&gt;{}(node_pos.ne);</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordtype">size_t</span> sehash = std::hash&lt;openage::coord::phys_t&gt;{}(node_pos.se);</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">return</span> openage::util::rol&lt;size_t, 1&gt;(nehash) ^ sehash;</div><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div><div class="ttc" id="classopenage_1_1path_1_1_node_xhtml_ab2a7dc59c9efb7f5baef572bbbb00228"><div class="ttname"><a href="classopenage_1_1path_1_1_node.xhtml#ab2a7dc59c9efb7f5baef572bbbb00228">openage::path::Node::position</a></div><div class="ttdeci">coord::phys3 position</div><div class="ttdef"><b>Definition:</b> <a href="pathfinding_2path_8h_source.xhtml#l00119">path.h:119</a></div></div>
+<div class="fragment"><div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                                                       {</div><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <a class="code" href="structopenage_1_1coord_1_1phys3.xhtml">openage::coord::phys3</a> node_pos = x.<a class="code" href="classopenage_1_1path_1_1_node.xhtml#ab2a7dc59c9efb7f5baef572bbbb00228">position</a>;</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordtype">size_t</span> nehash = std::hash&lt;openage::coord::phys_t&gt;{}(node_pos.ne);</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordtype">size_t</span> sehash = std::hash&lt;openage::coord::phys_t&gt;{}(node_pos.se);</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">return</span> openage::util::rol&lt;size_t, 1&gt;(nehash) ^ sehash;</div><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div><div class="ttc" id="classopenage_1_1path_1_1_node_xhtml_ab2a7dc59c9efb7f5baef572bbbb00228"><div class="ttname"><a href="classopenage_1_1path_1_1_node.xhtml#ab2a7dc59c9efb7f5baef572bbbb00228">openage::path::Node::position</a></div><div class="ttdeci">coord::phys3 position</div><div class="ttdoc">The tile position this node is associated to.</div><div class="ttdef"><b>Definition:</b> <a href="pathfinding_2path_8h_source.xhtml#l00119">path.h:119</a></div></div>
 <div class="ttc" id="structopenage_1_1coord_1_1phys3_xhtml"><div class="ttname"><a href="structopenage_1_1coord_1_1phys3.xhtml">openage::coord::phys3</a></div><div class="ttdef"><b>Definition:</b> <a href="phys_8h_source.xhtml#l00056">phys.h:56</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="pathfinding_2path_8h_source.xhtml#l00119">openage::path::Node::position</a>.</p>

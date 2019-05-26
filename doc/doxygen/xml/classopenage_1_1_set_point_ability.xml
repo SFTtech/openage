@@ -48,9 +48,9 @@
           <declname>cmd</declname>
         </param>
         <briefdescription>
+<para>true if the paramaters allow an action to be performed </para>
         </briefdescription>
         <detaileddescription>
-<para>true if the paramaters allow an action to be performed </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -79,9 +79,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>applies command to a given unit </para>
         </briefdescription>
         <detaileddescription>
-<para>applies command to a given unit </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -92,9 +92,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>sets the gather point on buildings </para>
     </briefdescription>
     <detaileddescription>
-<para>sets the gather point on buildings </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="5041">

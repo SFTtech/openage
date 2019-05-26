@@ -1,4 +1,4 @@
 <map id="openage::gui::ActionsListModel" name="openage::gui::ActionsListModel">
-<area shape="rect" id="node1" title=" " alt="" coords="5,131,196,531"/>
+<area shape="rect" id="node1" title="Model used for the Action Buttons to render (e.g." alt="" coords="5,131,196,531"/>
 <area shape="rect" id="node2" title=" " alt="" coords="32,5,169,83"/>
 </map>

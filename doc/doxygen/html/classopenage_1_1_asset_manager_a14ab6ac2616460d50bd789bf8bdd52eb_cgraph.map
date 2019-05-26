@@ -1,15 +1,15 @@
 <map id="openage::AssetManager::get_texture" name="openage::AssetManager::get_texture">
-<area shape="rect" id="node1" title=" " alt="" coords="5,104,168,145"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" title=" " alt="" coords="216,104,379,145"/>
+<area shape="rect" id="node1" title="Query the Texture for a given filename." alt="" coords="5,104,168,145"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" title="Create an internal texture handle." alt="" coords="216,104,379,145"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1_path.xhtml#aacfbbb9dd2e0ec286b5581690f9a83aa" title=" " alt="" coords="443,5,573,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_asset_manager.xhtml#a20f0383ea39d88917bb5a02fbb239006" title=" " alt="" coords="427,71,589,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" title=" " alt="" coords="437,136,579,177"/>
-<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="447,209,569,235"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_asset_manager.xhtml#a20f0383ea39d88917bb5a02fbb239006" title="Retrieves the texture for missing textures." alt="" coords="427,71,589,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" title="Resolve the native path by flattening all underlying filesystem objects (like unions)." alt="" coords="437,136,579,177"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title="Convenience method that makes use of the &#39;general&#39; LogSource." alt="" coords="447,209,569,235"/>
 <area shape="rect" id="node6" href="$classopenage_1_1util_1_1_path.xhtml#a919083912ceb465d8b3c28e4766161fe" title=" " alt="" coords="656,71,809,112"/>
 <area shape="rect" id="node7" href="$classopenage_1_1util_1_1_path.xhtml#a1175be01a6df63d066ca6f2d3e2c4d3c" title=" " alt="" coords="653,136,812,177"/>
-<area shape="rect" id="node9" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="659,201,806,243"/>
-<area shape="rect" id="node10" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="637,267,828,294"/>
-<area shape="rect" id="node11" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="905,195,1044,236"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title="Returns a reference to a general named log source, for use by log::log()." alt="" coords="659,201,806,243"/>
+<area shape="rect" id="node10" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level))." alt="" coords="637,267,828,294"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title="Returns a reference to the global stdout logsink object; Initializes the object if needed." alt="" coords="905,195,1044,236"/>
 <area shape="rect" id="node12" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="889,260,1061,301"/>
 <area shape="rect" id="node13" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="876,326,1073,353"/>
 </map>

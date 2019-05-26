@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>owner</name>
         <briefdescription>
+<para>The player who owns this research type. </para>
         </briefdescription>
         <detaileddescription>
-<para>The player who owns this research type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -48,9 +48,9 @@
         <argsstring>() const =0</argsstring>
         <name>id</name>
         <briefdescription>
+<para>Gets the unique id of this research type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the unique id of this research type. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -62,9 +62,9 @@
         <argsstring>() const =0</argsstring>
         <name>name</name>
         <briefdescription>
+<para>Gets the name of the research. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the name of the research. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -79,9 +79,9 @@
         <argsstring>() const =0</argsstring>
         <name>category</name>
         <briefdescription>
+<para>Gets the research category of the research. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the research category of the research. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -94,9 +94,10 @@
         <argsstring>() const</argsstring>
         <name>initialise</name>
         <briefdescription>
+<para>Creates a single <ref refid="classopenage_1_1_research" kindref="compound">Research</ref> object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a single <ref refid="classopenage_1_1_research" kindref="compound">Research</ref> object. Must be called only once. </para>
+<para>Must be called only once. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -108,9 +109,10 @@
         <argsstring>() const</argsstring>
         <name>get_max_repeats</name>
         <briefdescription>
+<para>How many times it can be researched. </para>
         </briefdescription>
         <detaileddescription>
-<para>How many times it can be researched. All classic researches have a value of 1. </para>
+<para>All classic researches have a value of 1. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -150,9 +152,10 @@
         <argsstring>() const =0</argsstring>
         <name>apply</name>
         <briefdescription>
+<para>Performs the modifications (eg. </para>
         </briefdescription>
         <detaileddescription>
-<para>Performs the modifications (eg. apply patch to the unit types) </para>
+<para>apply patch to the unit types) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -161,9 +164,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Describes a research for a single player. </para>
     </briefdescription>
     <detaileddescription>
-<para>Describes a research for a single player</para>
 <para>The get_max_repeats (with a default value of 1) can allow for a research to be performed multiple types </para>
     </detaileddescription>
     <inheritancegraph>

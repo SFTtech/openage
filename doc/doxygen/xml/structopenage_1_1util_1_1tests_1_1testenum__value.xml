@@ -35,9 +35,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>pxd: </para>
     </briefdescription>
     <detaileddescription>
-<para>pxd:</para>
 <para>cppclass testenum_value(EnumValue[testenum_value, int]): int numeric const char *name const char *stuff </para>
     </detaileddescription>
     <inheritancegraph>

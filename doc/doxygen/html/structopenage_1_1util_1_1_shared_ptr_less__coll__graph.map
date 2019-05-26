@@ -1,3 +1,3 @@
 <map id="openage::util::SharedPtrLess&lt; T &gt;" name="openage::util::SharedPtrLess&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,168,97"/>
+<area shape="rect" id="node1" title="Comparator that returns true if the contained value of the left sharedptr is &lt; than the value contain..." alt="" coords="5,5,168,97"/>
 </map>

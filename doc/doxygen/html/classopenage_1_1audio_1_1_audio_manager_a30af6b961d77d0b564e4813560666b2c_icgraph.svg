@@ -20,7 +20,7 @@
 </g>
 <!-- Node99 -->
 <g id="node2" class="node"><title>Node99</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_sound.xhtml#a2974dc942136bfead20c8f7b988cb1ac" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_sound.xhtml#a2974dc942136bfead20c8f7b988cb1ac" target="_top" xlink:title="Pauses the sound at it&#39;s current playing offset.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 116,-79.5 116,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Sound</text>
 <text text-anchor="middle" x="58" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::pause</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node100 -->
 <g id="node3" class="node"><title>Node100</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1audio_1_1_sound.xhtml#af11cd36b7a1dd5475d811e30580298fe" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1audio_1_1_sound.xhtml#af11cd36b7a1dd5475d811e30580298fe" target="_top" xlink:title="Resets the sound to it&#39;s beginning and stops playing it.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 116,-30.5 116,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Sound</text>
 <text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::stop</text>

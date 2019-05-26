@@ -86,9 +86,9 @@
           <declname>time</declname>
         </param>
         <briefdescription>
+<para>each action has its own update functionality which gets called when this is the active action </para>
         </briefdescription>
         <detaileddescription>
-<para>each action has its own update functionality which gets called when this is the active action </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -111,7 +111,7 @@
         <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a07c8a39fbe04116af6aa6e9dfc13f488">openage::resource_generator</references>
         <references refid="classopenage_1_1_idle_action_1a0bffa20bbade5d23ee9769bab68e0487" compoundref="unit_2action_8h" startline="350">search</references>
         <references refid="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e">openage::standing</references>
-        <references refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" compoundref="a__star_8cpp" startline="44" endline="55">openage::path::to_object</references>
+        <references refid="namespaceopenage_1_1path_1a047e97b9a81a866f064ad6d6f8dddfd6" compoundref="a__star_8cpp" startline="44" endline="55">openage::path::to_object</references>
         <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134">openage::worker</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_idle_action_1a63b599599c1e5b1e0249b4ce11722dbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -121,9 +121,9 @@
         <name>on_completion</name>
         <reimplements refid="classopenage_1_1_unit_action_1ac84d3cbfa3c489b3975952af157929cb">on_completion</reimplements>
         <briefdescription>
+<para>action to perform when popped from a units action stack </para>
         </briefdescription>
         <detaileddescription>
-<para>action to perform when popped from a units action stack </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -136,9 +136,10 @@
         <name>completed</name>
         <reimplements refid="classopenage_1_1_unit_action_1a7814554a94e930595ed5dad9b0f03255">completed</reimplements>
         <briefdescription>
+<para>gets called for all actions on stack each update cycle </para>
         </briefdescription>
         <detaileddescription>
-<para>gets called for all actions on stack each update cycle <simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
+<para><simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -158,9 +159,9 @@
         <name>allow_interupt</name>
         <reimplements refid="classopenage_1_1_unit_action_1a622cf307ee5d3f8f4581d9a7ec7ecfbf">allow_interupt</reimplements>
         <briefdescription>
+<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
         </briefdescription>
         <detaileddescription>
-<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -173,9 +174,9 @@
         <name>allow_control</name>
         <reimplements refid="classopenage_1_1_unit_action_1a3e222303072f926fa7c925163b8ac10c">allow_control</reimplements>
         <briefdescription>
+<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top </para>
         </briefdescription>
         <detaileddescription>
-<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top</para>
 <para>if true this action must complete and will not allow new actions to be pushed while it is active and also does not update the secondary actions </para>
         </detaileddescription>
         <inbodydescription>
@@ -189,9 +190,9 @@
         <name>name</name>
         <reimplements refid="classopenage_1_1_unit_action_1a67647c63a20cec9714a6463b1c823a70">name</reimplements>
         <briefdescription>
+<para>debug string to identify action types </para>
         </briefdescription>
         <detaileddescription>
-<para>debug string to identify action types </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -202,9 +203,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>keeps an entity in a fixed position </para>
     </briefdescription>
     <detaileddescription>
-<para>keeps an entity in a fixed position </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3781">

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-108 447,-108 447,4 -4,4"/>
 <!-- Node772 -->
 <g id="node1" class="node"><title>Node772</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Remove the given element index in the vector.">
 <polygon fill="#bfbfbf" stroke="black" points="339,-48.5 339,-78.5 443,-78.5 443,-48.5 339,-48.5"/>
 <text text-anchor="start" x="347" y="-66.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vector</text>
 <text text-anchor="middle" x="391" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00">_remove_swap_end</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node773 -->
 <g id="node2" class="node"><title>Node773</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a4a4b32a5632f953c11696400487b1ef5" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml#a4a4b32a5632f953c11696400487b1ef5" target="_top" xlink:title="Called from the audio system once to request new data.">
 <polygon fill="white" stroke="black" points="152,-73.5 152,-103.5 303,-103.5 303,-73.5 152,-73.5"/>
 <text text-anchor="start" x="160" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <text text-anchor="middle" x="227.5" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::audio_callback</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node775 -->
 <g id="node4" class="node"><title>Node775</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1audio_1_1_sound.xhtml#a2974dc942136bfead20c8f7b988cb1ac" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1audio_1_1_sound.xhtml#a2974dc942136bfead20c8f7b988cb1ac" target="_top" xlink:title="Pauses the sound at it&#39;s current playing offset.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 116,-79.5 116,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Sound</text>
 <text text-anchor="middle" x="58" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::pause</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node776 -->
 <g id="node5" class="node"><title>Node776</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1audio_1_1_sound.xhtml#af11cd36b7a1dd5475d811e30580298fe" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1audio_1_1_sound.xhtml#af11cd36b7a1dd5475d811e30580298fe" target="_top" xlink:title="Resets the sound to it&#39;s beginning and stops playing it.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 116,-30.5 116,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Sound</text>
 <text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::stop</text>

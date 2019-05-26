@@ -20,7 +20,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a183dbf9c55bb6ce603654585a92db3b1" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a183dbf9c55bb6ce603654585a92db3b1" target="_top" xlink:title="Fills in the provided handle object.">
 <polygon fill="white" stroke="black" points="172,-27.5 172,-68.5 314,-68.5 314,-27.5 172,-27.5"/>
 <text text-anchor="start" x="180" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiGameSpec</text>
 <text text-anchor="start" x="180" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageProviderImpl::fill</text>
@@ -50,7 +50,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" target="_top" xlink:title="The sourceSize property of the Image QML element ends up here for checking.">
 <polygon fill="white" stroke="black" points="545.5,-61 545.5,-91 652.5,-91 652.5,-61 545.5,-61"/>
 <text text-anchor="start" x="553.5" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::aspect</text>
 <text text-anchor="middle" x="599" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">_fit_size</text>
@@ -92,7 +92,7 @@
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" target="_top" xlink:title="Get the subtexture coordinates by its id.">
 <polygon fill="white" stroke="black" points="882.5,-83 882.5,-113 993.5,-113 993.5,-83 882.5,-83"/>
 <text text-anchor="start" x="890.5" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::get</text>
 <text text-anchor="middle" x="938" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00">_subtexture</text>

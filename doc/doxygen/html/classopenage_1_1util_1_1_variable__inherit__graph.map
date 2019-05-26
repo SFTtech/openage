@@ -1,7 +1,7 @@
 <map id="openage::util::Variable&lt; T &gt;" name="openage::util::Variable&lt; T &gt;">
 <area shape="rect" id="node1" title=" " alt="" coords="61,161,244,268"/>
-<area shape="rect" id="node3" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="5,353,185,430"/>
+<area shape="rect" id="node3" href="$classopenage_1_1options_1_1_var.xhtml" title="A interaface variable which gets monitored by an option node allowing reflection, while also being di..." alt="" coords="5,353,185,430"/>
 <area shape="rect" id="node5" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="209,331,360,452"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_variable_base.xhtml" title=" " alt="" coords="62,5,243,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_variable_base.xhtml" title="A typed value holder." alt="" coords="62,5,243,112"/>
 <area shape="rect" id="node4" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="129,515,278,607"/>
 </map>

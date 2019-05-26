@@ -140,9 +140,10 @@
           <declname>component_color</declname>
         </param>
         <briefdescription>
+<para>registers a component </para>
         </briefdescription>
         <detaileddescription>
-<para>registers a component <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>com</parametername>
 </parameternamelist>
@@ -182,9 +183,10 @@
           <declname>com</declname>
         </param>
         <briefdescription>
+<para>unregisters an individual component </para>
         </briefdescription>
         <detaileddescription>
-<para>unregisters an individual component <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>com</parametername>
 </parameternamelist>
@@ -208,9 +210,9 @@
         <argsstring>()</argsstring>
         <name>unregister_all</name>
         <briefdescription>
+<para>unregisters all remaining components </para>
         </briefdescription>
         <detaileddescription>
-<para>unregisters all remaining components </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -226,9 +228,9 @@
         <argsstring>()</argsstring>
         <name>registered_components</name>
         <briefdescription>
+<para>returns a vector of registered component names </para>
         </briefdescription>
         <detaileddescription>
-<para>returns a vector of registered component names </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -364,9 +366,9 @@
         <argsstring>()</argsstring>
         <name>start_frame_measure</name>
         <briefdescription>
+<para>sets the start point for the actual frame which is used as a reference value for the registered components </para>
         </briefdescription>
         <detaileddescription>
-<para>sets the start point for the actual frame which is used as a reference value for the registered components </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -381,9 +383,10 @@
         <argsstring>()</argsstring>
         <name>end_frame_measure</name>
         <briefdescription>
+<para>sets the end point for the reference time used to compute the portions of the components. </para>
         </briefdescription>
         <detaileddescription>
-<para>sets the end point for the reference time used to compute the portions of the components. Each recorded measurement for the registered components get appended to their history complete the measurement. </para>
+<para>Each recorded measurement for the registered components get appended to their history complete the measurement. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

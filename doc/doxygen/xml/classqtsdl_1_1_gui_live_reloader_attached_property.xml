@@ -13,9 +13,9 @@
         <read>get_tag</read>
         <write>set_tag</write>
         <briefdescription>
+<para>Tag that allows to connect newly created shells to corresponding cores after GUI reload. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tag that allows to connect newly created shells to corresponding cores after GUI reload. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -107,9 +107,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The &apos;LR.tag&apos; attached property. </para>
     </briefdescription>
     <detaileddescription>
-<para>The &apos;LR.tag&apos; attached property. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6446">

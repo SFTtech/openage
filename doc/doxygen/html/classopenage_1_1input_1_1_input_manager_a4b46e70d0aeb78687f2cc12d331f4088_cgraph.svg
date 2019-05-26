@@ -20,7 +20,7 @@
 </g>
 <!-- Node99 -->
 <g id="node2" class="node"><title>Node99</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title="Query stored pressing stat for a key.">
 <polygon fill="white" stroke="black" points="181,-0.5 181,-30.5 326,-30.5 326,-0.5 181,-0.5"/>
 <text text-anchor="start" x="189" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::is_down</text>

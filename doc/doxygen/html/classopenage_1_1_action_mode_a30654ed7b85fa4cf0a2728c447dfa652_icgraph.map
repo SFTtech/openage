@@ -1,5 +1,5 @@
 <map id="openage::ActionMode::announce_buttons_type" name="openage::ActionMode::announce_buttons_type">
-<area shape="rect" id="node1" title=" " alt="" coords="208,39,376,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title=" " alt="" coords="9,5,157,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,71,160,112"/>
+<area shape="rect" id="node1" title="sends to gui the buttons it should use for the action buttons (if changed)" alt="" coords="208,39,376,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title="Called when the mode is left." alt="" coords="9,5,157,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="5,71,160,112"/>
 </map>

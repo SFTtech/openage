@@ -57,9 +57,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Stores objects that need to be kept alive across GUI reloads. </para>
     </briefdescription>
     <detaileddescription>
-<para>Stores objects that need to be kept alive across GUI reloads. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6445">

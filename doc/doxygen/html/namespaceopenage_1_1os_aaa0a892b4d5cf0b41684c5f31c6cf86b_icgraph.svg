@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 301,-35 301,4 -4,4"/>
 <!-- Node39 -->
 <g id="node1" class="node"><title>Node39</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="returns openage&#39;s executable name">
 <polygon fill="#bfbfbf" stroke="black" points="180,-0.5 180,-30.5 297,-30.5 297,-0.5 180,-0.5"/>
 <text text-anchor="start" x="188" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::self_exec</text>
 <text text-anchor="middle" x="238.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_filename</text>

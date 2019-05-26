@@ -1,5 +1,5 @@
 <map id="openage::OutputMode::on_enter" name="openage::OutputMode::on_enter">
-<area shape="rect" id="node1" title=" " alt="" coords="664,104,815,145"/>
+<area shape="rect" id="node1" title="Called when switching to this mode." alt="" coords="664,104,815,145"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_game_control.xhtml#a1d0f073f844955000861e4c0d08b20e0" title=" " alt="" coords="461,104,616,145"/>
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#aef267067b8bc03f0df3bfdecce515cd6" title=" " alt="" coords="233,5,413,47"/>
 <area shape="rect" id="node5" href="$classopenage_1_1_game_control.xhtml#ad7c9d48df33f8f56ab5686c36648bfa5" title=" " alt="" coords="246,71,401,112"/>

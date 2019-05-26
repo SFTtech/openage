@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 253,-35 253,4 -4,4"/>
 <!-- Node57 -->
 <g id="node1" class="node"><title>Node57</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="restores the input mode to the mode that was backed up during the last setinputmodecanon() mode.">
 <polygon fill="#bfbfbf" stroke="black" points="152,-0.5 152,-30.5 249,-30.5 249,-0.5 152,-0.5"/>
 <text text-anchor="start" x="160" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FD::</text>
 <text text-anchor="middle" x="200.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">restoreinputmode</text>

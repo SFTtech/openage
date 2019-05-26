@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-171.5 802,-171.5 802,4 -4,4"/>
 <!-- Node26 -->
 <g id="node1" class="node"><title>Node26</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Control whether this specification can be loaded (=true) or will not be loaded (=false).">
 <polygon fill="#bfbfbf" stroke="black" points="0,-73.5 0,-103.5 138,-103.5 138,-73.5 0,-73.5"/>
 <text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="69" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_active</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node27 -->
 <g id="node2" class="node"><title>Node27</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#ab95bd8daf4250f175a5ebb3c6753277d" target="_top" xlink:title="load the game specification if not already present.">
 <polygon fill="white" stroke="black" points="174,-73.5 174,-103.5 312,-103.5 312,-73.5 174,-73.5"/>
 <text text-anchor="start" x="182" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="243" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_loading_if_needed</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node28 -->
 <g id="node3" class="node"><title>Node28</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#afcf8867f4e0077e6a8a2a6fe6c0c98ff" target="_top" xlink:title="Actually dispatch the loading job to the job manager.">
 <polygon fill="white" stroke="black" points="348,-73.5 348,-103.5 486,-103.5 486,-73.5 348,-73.5"/>
 <text text-anchor="start" x="356" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="417" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_load_job</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node31 -->
 <g id="node6" class="node"><title>Node31</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" target="_top" xlink:title="Return the engine responsible for this asset manager.">
 <polygon fill="white" stroke="black" points="533.5,-98.5 533.5,-128.5 655.5,-128.5 655.5,-98.5 533.5,-98.5"/>
 <text text-anchor="start" x="541.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="594.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_engine</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node32 -->
 <g id="node7" class="node"><title>Node32</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" target="_top" xlink:title="return this engine&#39;s job manager.">
 <polygon fill="white" stroke="black" points="540,-49.5 540,-79.5 649,-79.5 649,-49.5 540,-49.5"/>
 <text text-anchor="start" x="548" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="594.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_job_manager</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node33 -->
 <g id="node8" class="node"><title>Node33</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" target="_top" xlink:title="Enqueues the given function into the job manager&#39;s queue, so that it will be dispatched by one of the...">
 <polygon fill="white" stroke="black" points="529,-0.5 529,-30.5 660,-30.5 660,-0.5 529,-0.5"/>
 <text text-anchor="start" x="537" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="594.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::enqueue</text>
@@ -103,7 +103,7 @@
 </g>
 <!-- Node30 -->
 <g id="node5" class="node"><title>Node30</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="703,-148 703,-167 798,-167 798,-148 703,-148"/>
 <text text-anchor="middle" x="750.5" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

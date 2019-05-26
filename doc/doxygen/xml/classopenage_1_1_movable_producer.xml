@@ -146,9 +146,9 @@
           <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
         </param>
         <briefdescription>
+<para>Initialize units attributes to this type spec. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initialize units attributes to this type spec</para>
 <para>This can be called using existing units to modify type Ensure that the unit has been placed before seting the units type</para>
 <para><xrefsect id="todo_1_todo000045"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
 </xrefdescription></xrefsect></para>
@@ -183,9 +183,9 @@
           <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
         </param>
         <briefdescription>
+<para>set unit in place <ndash/> return if placement was successful </para>
         </briefdescription>
         <detaileddescription>
-<para>set unit in place <ndash/> return if placement was successful</para>
 <para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object <xrefsect id="todo_1_todo000047"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
@@ -197,9 +197,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>movable unit types </para>
     </briefdescription>
     <detaileddescription>
-<para>movable unit types </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4106">

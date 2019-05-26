@@ -1,12 +1,12 @@
 <map id="openage::UnitType::parent_type" name="openage::UnitType::parent_type">
-<area shape="rect" id="node1" title=" " alt="" coords="5,53,144,94"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" title=" " alt="" coords="192,31,367,57"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_unit_type.xhtml#a69f5e92f70063ab01c3096de2d98479f" title=" " alt="" coords="210,82,349,123"/>
+<area shape="rect" id="node1" title="returns type matching parent_id()" alt="" coords="5,53,144,94"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" title="unit types by aoe gamedata unit ids – the unit type which corresponds to an aoe unit id" alt="" coords="192,31,367,57"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_unit_type.xhtml#a69f5e92f70063ab01c3096de2d98479f" title="gets the parent id of this unit type which is used for village base and gather types" alt="" coords="210,82,349,123"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="417,5,533,32"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="415,56,536,83"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="606,19,753,61"/>
-<area shape="rect" id="node6" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="584,85,775,112"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="852,13,991,54"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title="Convenience method that makes use of the &#39;general&#39; LogSource." alt="" coords="415,56,536,83"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title="Returns a reference to a general named log source, for use by log::log()." alt="" coords="606,19,753,61"/>
+<area shape="rect" id="node6" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level))." alt="" coords="584,85,775,112"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title="Returns a reference to the global stdout logsink object; Initializes the object if needed." alt="" coords="852,13,991,54"/>
 <area shape="rect" id="node8" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="835,78,1007,119"/>
 <area shape="rect" id="node9" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="823,144,1020,171"/>
 </map>

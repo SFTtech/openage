@@ -232,7 +232,7 @@
 </g>
 <!-- Node94 -->
 <g id="node15" class="node"><title>Node94</title>
-<g id="a_node15"><a xlink:href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="namespaceopenage_1_1util.xhtml#a9556b8562574e2c6ad102d8fd87569c6" target="_top" xlink:title="Split a string at a delimiter into a vector.">
 <polygon fill="white" stroke="black" points="821.5,-328 821.5,-347 917.5,-347 917.5,-328 821.5,-328"/>
 <text text-anchor="middle" x="869.5" y="-335" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::split</text>
 </a>
@@ -250,7 +250,7 @@
 </g>
 <!-- Node96 -->
 <g id="node17" class="node"><title>Node96</title>
-<g id="a_node17"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title="list()">
 <polygon fill="white" stroke="black" points="630,-377 630,-396 719,-396 719,-377 630,-377"/>
 <text text-anchor="middle" x="674.5" y="-384" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::list</text>
 </a>
@@ -276,7 +276,7 @@
 </g>
 <!-- Node98 -->
 <g id="node19" class="node"><title>Node98</title>
-<g id="a_node19"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="978,-377 978,-396 1073,-396 1073,-377 978,-377"/>
 <text text-anchor="middle" x="1025.5" y="-384" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-608 377,-608 377,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Adapts core that uses a property map to QAbstractListModel interface.">
 <polygon fill="#bfbfbf" stroke="black" points="128,-105.5 128,-239.5 253,-239.5 253,-105.5 128,-105.5"/>
 <text text-anchor="middle" x="190.5" y="-227.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiListModel</text>
 <polyline fill="none" stroke="black" points="128,-220.5 253,-220.5 "/>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" target="_top" xlink:title="Stores static properties during initialization to be able to assign them after all &#39;liveReloadTag&#39; pr...">
 <polygon fill="white" stroke="black" points="110.5,-458.5 110.5,-603.5 270.5,-603.5 270.5,-458.5 110.5,-458.5"/>
 <text text-anchor="start" x="118.5" y="-591.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::DeferredInitialConstant</text>
 <text text-anchor="middle" x="190.5" y="-580.5" font-family="Helvetica,sans-Serif" font-size="10.00">PropertyValues</text>
@@ -161,7 +161,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title="Base for QObject wrapper of the domain&#45;specific classes.">
 <polygon fill="white" stroke="black" points="278,-320.5 278,-377.5 373,-377.5 373,-320.5 278,-320.5"/>
 <text text-anchor="middle" x="325.5" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemLink</text>
 <polyline fill="none" stroke="black" points="278,-358.5 373,-358.5 "/>

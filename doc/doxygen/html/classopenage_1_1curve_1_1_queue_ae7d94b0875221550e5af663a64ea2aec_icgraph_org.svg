@@ -53,7 +53,7 @@
 </g>
 <!-- Node227 -->
 <g id="node4" class="node"><title>Node227</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1curve_1_1_continuous.xhtml#a2af59e706890b3ed70d0059ba1ae766e" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1curve_1_1_continuous.xhtml#a2af59e706890b3ed70d0059ba1ae766e" target="_top" xlink:title="will interpolate between the keyframes linearly based on the time.">
 <polygon fill="white" stroke="black" points="1142,-1053.5 1142,-1072.5 1298,-1072.5 1298,-1053.5 1142,-1053.5"/>
 <text text-anchor="middle" x="1220" y="-1060.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Continuous::get</text>
 </a>
@@ -66,7 +66,7 @@
 </g>
 <!-- Node229 -->
 <g id="node6" class="node"><title>Node229</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#ab4746bae3f4c7d01312e530b0e5150d5" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#ab4746bae3f4c7d01312e530b0e5150d5" target="_top" xlink:title="Does not interpolate anything, just returns gives the raw value of the last keyframe with time &lt;= t.">
 <polygon fill="white" stroke="black" points="1148.5,-1015.5 1148.5,-1034.5 1291.5,-1034.5 1291.5,-1015.5 1148.5,-1015.5"/>
 <text text-anchor="middle" x="1220" y="-1022.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Discrete::get</text>
 </a>
@@ -79,7 +79,7 @@
 </g>
 <!-- Node230 -->
 <g id="node7" class="node"><title>Node230</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#a4b2bddacdb81de7e9d1f207ca7cd15c2" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#a4b2bddacdb81de7e9d1f207ca7cd15c2" target="_top" xlink:title="Return the last time and keyframe with time &lt;= t.">
 <polygon fill="white" stroke="black" points="1158,-868 1158,-898 1282,-898 1282,-868 1158,-868"/>
 <text text-anchor="start" x="1166" y="-886" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Discrete</text>
 <text text-anchor="middle" x="1220" y="-875" font-family="Helvetica,sans-Serif" font-size="10.00">::get_time</text>
@@ -93,7 +93,7 @@
 </g>
 <!-- Node231 -->
 <g id="node8" class="node"><title>Node231</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#a9be982a0d41cb6b5f2968aafcf147c82" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#a9be982a0d41cb6b5f2968aafcf147c82" target="_top" xlink:title="Return, if existing, the time and value of keyframe with time &lt; t.">
 <polygon fill="white" stroke="black" points="1158,-819 1158,-849 1282,-849 1282,-819 1158,-819"/>
 <text text-anchor="start" x="1166" y="-837" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Discrete</text>
 <text text-anchor="middle" x="1220" y="-826" font-family="Helvetica,sans-Serif" font-size="10.00">::get_previous</text>
@@ -107,7 +107,7 @@
 </g>
 <!-- Node232 -->
 <g id="node9" class="node"><title>Node232</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a675d4e01acc9d9d063cfd38b2b557752" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a675d4e01acc9d9d063cfd38b2b557752" target="_top" xlink:title="Get the last element with e&#45;&gt;time &lt;= time, given a hint where to start the search.">
 <polygon fill="white" stroke="black" points="1155.5,-770 1155.5,-800 1284.5,-800 1284.5,-770 1155.5,-770"/>
 <text text-anchor="start" x="1163.5" y="-788" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="1220" y="-777" font-family="Helvetica,sans-Serif" font-size="10.00">Container::last</text>
@@ -121,7 +121,7 @@
 </g>
 <!-- Node234 -->
 <g id="node11" class="node"><title>Node234</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#aae7b3fad452aa1f223edc93e5b38a518" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#aae7b3fad452aa1f223edc93e5b38a518" target="_top" xlink:title="Erase all elements that come after this last valid element.">
 <polygon fill="white" stroke="black" points="1155.5,-721 1155.5,-751 1284.5,-751 1284.5,-721 1155.5,-721"/>
 <text text-anchor="start" x="1163.5" y="-739" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="1220" y="-728" font-family="Helvetica,sans-Serif" font-size="10.00">Container::erase_after</text>
@@ -135,7 +135,7 @@
 </g>
 <!-- Node235 -->
 <g id="node12" class="node"><title>Node235</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a4a18e067efb8d2a6aa4f738cb8b391b5" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a4a18e067efb8d2a6aa4f738cb8b391b5" target="_top" xlink:title="Erase a single element from the curve.">
 <polygon fill="white" stroke="black" points="1155.5,-672 1155.5,-702 1284.5,-702 1284.5,-672 1155.5,-672"/>
 <text text-anchor="start" x="1163.5" y="-690" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="1220" y="-679" font-family="Helvetica,sans-Serif" font-size="10.00">Container::erase</text>
@@ -302,7 +302,7 @@
 </g>
 <!-- Node247 -->
 <g id="node24" class="node"><title>Node247</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title="places hovering building">
 <polygon fill="white" stroke="black" points="1164.5,-329 1164.5,-359 1275.5,-359 1275.5,-329 1164.5,-329"/>
 <text text-anchor="start" x="1172.5" y="-347" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="1220" y="-336" font-family="Helvetica,sans-Serif" font-size="10.00">::place_selection</text>
@@ -330,7 +330,7 @@
 </g>
 <!-- Node251 -->
 <g id="node28" class="node"><title>Node251</title>
-<g id="a_node28"><a xlink:href="classopenage_1_1_train_action.xhtml#af5515a9c445b00f4dd69348e7177c94c" target="_top" xlink:title=" ">
+<g id="a_node28"><a xlink:href="classopenage_1_1_train_action.xhtml#af5515a9c445b00f4dd69348e7177c94c" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="1166,-231 1166,-261 1274,-261 1274,-231 1166,-231"/>
 <text text-anchor="start" x="1174" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TrainAction</text>
 <text text-anchor="middle" x="1220" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -344,7 +344,7 @@
 </g>
 <!-- Node252 -->
 <g id="node29" class="node"><title>Node252</title>
-<g id="a_node29"><a xlink:href="classopenage_1_1_attack_action.xhtml#a1a76ce122961d9e09c526b8d0f2f513f" target="_top" xlink:title=" ">
+<g id="a_node29"><a xlink:href="classopenage_1_1_attack_action.xhtml#a1a76ce122961d9e09c526b8d0f2f513f" target="_top" xlink:title="add a projectile game object which moves towards the target">
 <polygon fill="white" stroke="black" points="1162,-182 1162,-212 1278,-212 1278,-182 1162,-182"/>
 <text text-anchor="start" x="1170" y="-200" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="1220" y="-189" font-family="Helvetica,sans-Serif" font-size="10.00">::fire_projectile</text>
@@ -358,7 +358,7 @@
 </g>
 <!-- Node255 -->
 <g id="node32" class="node"><title>Node255</title>
-<g id="a_node32"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title="std::for_each except just on containers.">
 <polygon fill="white" stroke="black" points="1162.5,-143.5 1162.5,-162.5 1277.5,-162.5 1277.5,-143.5 1162.5,-143.5"/>
 <text text-anchor="middle" x="1220" y="-150.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>
@@ -371,7 +371,7 @@
 </g>
 <!-- Node270 -->
 <g id="node47" class="node"><title>Node270</title>
-<g id="a_node47"><a xlink:href="namespaceopenage_1_1util.xhtml#a1f21bbbe0a2bfda459aa086ee71f1abd" target="_top" xlink:title=" ">
+<g id="a_node47"><a xlink:href="namespaceopenage_1_1util.xhtml#a1f21bbbe0a2bfda459aa086ee71f1abd" target="_top" xlink:title="Filters items from a container which satisfy a certain predicate.">
 <polygon fill="white" stroke="black" points="1153.5,-105.5 1153.5,-124.5 1286.5,-124.5 1286.5,-105.5 1153.5,-105.5"/>
 <text text-anchor="middle" x="1220" y="-112.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::remove_from</text>
 </a>
@@ -403,7 +403,7 @@
 </g>
 <!-- Node233 -->
 <g id="node10" class="node"><title>Node233</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a9fe5fdab43afd4c928337654c72171b3" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a9fe5fdab43afd4c928337654c72171b3" target="_top" xlink:title="Get the last element with e&#45;&gt;time &lt;= time, without a hint where to start searching.">
 <polygon fill="white" stroke="black" points="953.5,-770 953.5,-800 1082.5,-800 1082.5,-770 953.5,-770"/>
 <text text-anchor="start" x="961.5" y="-788" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="1018" y="-777" font-family="Helvetica,sans-Serif" font-size="10.00">Container::last</text>
@@ -442,7 +442,7 @@
 </g>
 <!-- Node248 -->
 <g id="node25" class="node"><title>Node248</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="960,-329 960,-359 1076,-359 1076,-329 960,-329"/>
 <text text-anchor="start" x="968" y="-347" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="1018" y="-336" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -456,7 +456,7 @@
 </g>
 <!-- Node250 -->
 <g id="node27" class="node"><title>Node250</title>
-<g id="a_node27"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node27"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="960,-280 960,-310 1076,-310 1076,-280 960,-280"/>
 <text text-anchor="start" x="968" y="-298" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="1018" y="-287" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -470,7 +470,7 @@
 </g>
 <!-- Node253 -->
 <g id="node30" class="node"><title>Node253</title>
-<g id="a_node30"><a xlink:href="classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" target="_top" xlink:title=" ">
+<g id="a_node30"><a xlink:href="classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" target="_top" xlink:title="use attack action">
 <polygon fill="white" stroke="black" points="960,-231 960,-261 1076,-261 1076,-231 960,-231"/>
 <text text-anchor="start" x="968" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="1018" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">::attack</text>
@@ -484,7 +484,7 @@
 </g>
 <!-- Node254 -->
 <g id="node31" class="node"><title>Node254</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="772,-231 772,-261 888,-261 888,-231 772,-231"/>
 <text text-anchor="start" x="780" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="830" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>

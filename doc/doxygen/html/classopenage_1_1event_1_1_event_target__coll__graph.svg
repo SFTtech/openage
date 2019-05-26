@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-150 143,-150 143,4 -4,4"/>
 <!-- Node7 -->
 <g id="node1" class="node"><title>Node7</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Every Object in the gameworld that wants to be targeted by events or as dependency for events,...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-145.5 139,-145.5 139,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="69.5" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventTarget</text>
 <polyline fill="none" stroke="black" points="0,-126.5 139,-126.5 "/>

@@ -17,9 +17,9 @@
           <declname>console</declname>
         </param>
         <briefdescription>
+<para>experimental and totally inefficient opengl draw of a terminal buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>experimental and totally inefficient opengl draw of a terminal buffer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -49,10 +49,10 @@
         <references refid="namespaceopenage_1_1util_1aed7ef0b5ccf0d22a6329396d9a59f671" compoundref="unicode_8cpp" startline="120" endline="152">openage::util::utf8_encode</references>
         <referencedby refid="classopenage_1_1console_1_1_console_1a1ce3c30cdc768559e11fc548cbcbddd8" compoundref="console_8cpp" startline="162" endline="170">openage::console::Console::on_drawhud</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void openage::console::draw::to_terminal</definition>
-        <argsstring>(Buf *buf, util::FD *fd, bool clear)</argsstring>
+        <argsstring>(Buf *buf, util::FD *fd, bool clear=false)</argsstring>
         <name>to_terminal</name>
         <param>
           <type><ref refid="classopenage_1_1console_1_1_buf" kindref="compound">Buf</ref> *</type>
@@ -65,12 +65,11 @@
         <param>
           <type>bool</type>
           <declname>clear</declname>
-          <defval>false</defval>
         </param>
         <briefdescription>
+<para>very early and inefficient printing of the console to a pty. </para>
         </briefdescription>
         <detaileddescription>
-<para>very early and inefficient printing of the console to a pty. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

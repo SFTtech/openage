@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-387 167,-387 167,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A threadsafe queue.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-237.5 0,-382.5 122,-382.5 122,-237.5 0,-237.5"/>
 <text text-anchor="start" x="8" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="61" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ConcurrentQueue&lt; T &gt;</text>

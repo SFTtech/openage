@@ -1,12 +1,12 @@
 <map id="openage::renderer::resources::Texture2dInfo::get_size" name="openage::renderer::resources::Texture2dInfo::get_size">
-<area shape="rect" id="node1" title=" " alt="" coords="1904,239,2068,295"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" title=" " alt="" coords="1677,5,1848,61"/>
-<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array.xhtml#a780b276d8b13fa2b8e2e1258e32e4199" title=" " alt="" coords="1678,85,1847,141"/>
-<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#ad1afa8d4edac82bbb12a3bf371149a41" title=" " alt="" coords="1677,165,1848,221"/>
+<area shape="rect" id="node1" title="Returns the dimensions of the whole texture bitmap." alt="" coords="1904,239,2068,295"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" title="Flips the texture along the Y&#45;axis and returns the flipped data with the same info." alt="" coords="1677,5,1848,61"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array.xhtml#a780b276d8b13fa2b8e2e1258e32e4199" title="Constructs an array of the same number of layers as the size of the given vector, and fills the layer..." alt="" coords="1678,85,1847,141"/>
+<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#ad1afa8d4edac82bbb12a3bf371149a41" title="Reads the pixel at the given position and casts it to the given type." alt="" coords="1677,165,1848,221"/>
 <area shape="rect" id="node7" href="$classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a248471b44bfea2faad6d97d9dd07eb00" title="Helper function for use by implementations of seek()." alt="" coords="1669,246,1856,287"/>
 <area shape="rect" id="node15" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a3dceab170bbee853bcafd6fd924be208" title="Stores this texture data in the given file in the PNG format." alt="" coords="1677,312,1848,368"/>
-<area shape="rect" id="node16" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#aa521e75b491d72b51afade86d6c18ad4" title=" " alt="" coords="1693,392,1832,448"/>
-<area shape="rect" id="node17" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array.xhtml#a2c8d96d2ec74e7ab4b744aebb19cf31d" title=" " alt="" coords="1678,472,1847,528"/>
+<area shape="rect" id="node16" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#aa521e75b491d72b51afade86d6c18ad4" title="Uploads the provided data into the GPU texture storage." alt="" coords="1693,392,1832,448"/>
+<area shape="rect" id="node17" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array.xhtml#a2c8d96d2ec74e7ab4b744aebb19cf31d" title="Uploads the given texture data into the specified layer." alt="" coords="1678,472,1847,528"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#a6f980e5dd40ec0b730e586e2484233d2" title=" " alt="" coords="1415,173,1573,214"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#ac2256044717a0f7f7aafbb1f2be3a1eb" title=" " alt="" coords="1132,173,1277,214"/>
 <area shape="rect" id="node8" href="$classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object.xhtml#a2312775f74be5a112a1ab18f0f581173" title="Seeks to a given position." alt="" coords="1367,246,1621,287"/>

@@ -5,9 +5,9 @@
     <derivedcompoundref refid="classopenage_1_1gui_1_1_engine_q_m_l_info" prot="public" virt="non-virtual">openage::gui::EngineQMLInfo</derivedcompoundref>
     <includes refid="gui__singleton__items__info_8h" local="no">gui_singleton_items_info.h</includes>
     <briefdescription>
+<para>Accessible during creation of any singleton QML item. </para>
     </briefdescription>
     <detaileddescription>
-<para>Accessible during creation of any singleton QML item. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6484">

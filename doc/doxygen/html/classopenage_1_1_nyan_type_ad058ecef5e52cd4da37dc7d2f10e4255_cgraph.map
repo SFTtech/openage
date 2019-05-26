@@ -1,13 +1,13 @@
 <map id="openage::NyanType::initialise" name="openage::NyanType::initialise">
-<area shape="rect" id="node1" title=" " alt="" coords="5,104,151,145"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_type.xhtml#acf200f0f7321ae1e074bae39bc437b53" title=" " alt="" coords="199,5,337,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a37f35cd78b09fea32514ed2b2dd87b64" title=" " alt="" coords="202,71,334,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_unit.xhtml#aecd686fafc67487f4df4d3637f2621f4" title=" " alt="" coords="199,136,337,177"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_unit.xhtml#a24ad46b827d50be1c5af4eccc5111929" title=" " alt="" coords="199,202,337,229"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#af46fb7ca65071c68a85f492a8235302e" title=" " alt="" coords="395,5,525,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_attributes.xhtml#ae8924d1ae2fafd0c13418ab238848afb" title=" " alt="" coords="583,5,717,47"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_unit.xhtml#a21542f7813db482fd36799cf12971979" title=" " alt="" coords="385,136,535,177"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_unit.xhtml#a257ef8a7aeceb306d372ef745b40ef90" title=" " alt="" coords="585,107,715,148"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" title=" " alt="" coords="586,173,714,199"/>
+<area shape="rect" id="node1" title="Initialize units attributes to this type spec." alt="" coords="5,104,151,145"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_type.xhtml#acf200f0f7321ae1e074bae39bc437b53" title="copy attributes of this unit type to a new unit instance" alt="" coords="199,5,337,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a37f35cd78b09fea32514ed2b2dd87b64" title="adds an available ability to this unit this turns targeted objects into actions which are pushed onto..." alt="" coords="202,71,334,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit.xhtml#aecd686fafc67487f4df4d3637f2621f4" title="adds a new action on top of the action stack will be performed immediately" alt="" coords="199,136,337,177"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_unit.xhtml#a24ad46b827d50be1c5af4eccc5111929" title="removes all actions and abilities current attributes are kept" alt="" coords="199,202,337,229"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#af46fb7ca65071c68a85f492a8235302e" title="Give new attributes to this unit." alt="" coords="395,5,525,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_attributes.xhtml#ae8924d1ae2fafd0c13418ab238848afb" title="Add copies of all the attributes from the given Attributes." alt="" coords="583,5,717,47"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit.xhtml#a21542f7813db482fd36799cf12971979" title="true when the unit is alive and able to add new actions" alt="" coords="385,136,535,177"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_unit.xhtml#a257ef8a7aeceb306d372ef745b40ef90" title="checks the entity has an action, if it has no action it should be removed from the game" alt="" coords="585,107,715,148"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" title="returns the current action on top of the stack" alt="" coords="586,173,714,199"/>
 <area shape="rect" id="node10" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="765,173,876,199"/>
 </map>

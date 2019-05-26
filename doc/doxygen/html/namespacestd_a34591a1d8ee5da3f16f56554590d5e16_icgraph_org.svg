@@ -19,7 +19,7 @@
 </g>
 <!-- Node69 -->
 <g id="node2" class="node"><title>Node69</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a std::vector of uint64_t.">
 <polygon fill="white" stroke="black" points="724.5,-1081.5 724.5,-1111.5 829.5,-1111.5 829.5,-1081.5 724.5,-1081.5"/>
 <text text-anchor="start" x="732.5" y="-1099.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="777" y="-1088.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array64</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node80 -->
 <g id="node13" class="node"><title>Node80</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" target="_top" xlink:title="Add an event for a specified target.">
 <polygon fill="white" stroke="black" points="707,-871.5 707,-901.5 847,-901.5 847,-871.5 707,-871.5"/>
 <text text-anchor="start" x="715" y="-889.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="777" y="-878.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_event</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node86 -->
 <g id="node19" class="node"><title>Node86</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" target="_top" xlink:title="See the doc for LZXDecompressor::decompress_next_frame in lzxd.h.">
 <polygon fill="white" stroke="black" points="709,-811 709,-852 845,-852 845,-811 709,-811"/>
 <text text-anchor="start" x="717" y="-840" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="717" y="-829" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDStream::decompress</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node88 -->
 <g id="node21" class="node"><title>Node88</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" target="_top" xlink:title="Execute the events.">
 <polygon fill="white" stroke="black" points="722.5,-271.5 722.5,-301.5 831.5,-301.5 831.5,-271.5 722.5,-271.5"/>
 <text text-anchor="start" x="730.5" y="-289.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="777" y="-278.5" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_events</text>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node91 -->
 <g id="node24" class="node"><title>Node91</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title="how far is a point from the edge of this object">
 <polygon fill="white" stroke="black" points="717.5,-663.5 717.5,-693.5 836.5,-693.5 836.5,-663.5 717.5,-663.5"/>
 <text text-anchor="start" x="725.5" y="-681.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="777" y="-670.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_edge</text>
@@ -145,7 +145,7 @@
 </g>
 <!-- Node94 -->
 <g id="node27" class="node"><title>Node94</title>
-<g id="a_node27"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title=" ">
+<g id="a_node27"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="white" stroke="black" points="717.5,-565.5 717.5,-595.5 836.5,-595.5 836.5,-565.5 717.5,-565.5"/>
 <text text-anchor="start" x="725.5" y="-583.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="777" y="-572.5" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>
@@ -159,7 +159,7 @@
 </g>
 <!-- Node95 -->
 <g id="node28" class="node"><title>Node95</title>
-<g id="a_node28"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a5721f82c417b564e2adac32f2ef34492" target="_top" xlink:title=" ">
+<g id="a_node28"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a5721f82c417b564e2adac32f2ef34492" target="_top" xlink:title="need the datamanger for change management">
 <polygon fill="white" stroke="black" points="704,-516.5 704,-546.5 850,-546.5 850,-516.5 704,-516.5"/>
 <text text-anchor="start" x="712" y="-534.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="777" y="-523.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::KeyframeContainer</text>
@@ -187,7 +187,7 @@
 </g>
 <!-- Node97 -->
 <g id="node30" class="node"><title>Node97</title>
-<g id="a_node30"><a xlink:href="classopenage_1_1_square_object.xhtml#ac5232c53c071a31afb4be3f6ffe45b10" target="_top" xlink:title=" ">
+<g id="a_node30"><a xlink:href="classopenage_1_1_square_object.xhtml#ac5232c53c071a31afb4be3f6ffe45b10" target="_top" xlink:title="the shortest line that can be placed across the objects center">
 <polygon fill="white" stroke="black" points="717.5,-418.5 717.5,-448.5 836.5,-448.5 836.5,-418.5 717.5,-418.5"/>
 <text text-anchor="start" x="725.5" y="-436.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="777" y="-425.5" font-family="Helvetica,sans-Serif" font-size="10.00">::min_axis</text>
@@ -201,7 +201,7 @@
 </g>
 <!-- Node98 -->
 <g id="node31" class="node"><title>Node98</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a1432784032d62a4b43961b88de32ae86" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a1432784032d62a4b43961b88de32ae86" target="_top" xlink:title="The minimum possible value of this type.">
 <polygon fill="white" stroke="black" points="712.5,-369.5 712.5,-399.5 841.5,-399.5 841.5,-369.5 712.5,-369.5"/>
 <text text-anchor="start" x="720.5" y="-387.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="777" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::min_value</text>
@@ -215,7 +215,7 @@
 </g>
 <!-- Node99 -->
 <g id="node32" class="node"><title>Node99</title>
-<g id="a_node32"><a xlink:href="classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" target="_top" xlink:title="get a position on the edge of this object">
 <polygon fill="white" stroke="black" points="717.5,-320.5 717.5,-350.5 836.5,-350.5 836.5,-320.5 717.5,-320.5"/>
 <text text-anchor="start" x="725.5" y="-338.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="777" y="-327.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_edge</text>
@@ -229,7 +229,7 @@
 </g>
 <!-- Node100 -->
 <g id="node33" class="node"><title>Node100</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="black" points="520,-235.5 520,-265.5 637,-265.5 637,-235.5 520,-235.5"/>
 <text text-anchor="start" x="528" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="578.5" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>
@@ -270,7 +270,7 @@
 </g>
 <!-- Node113 -->
 <g id="node46" class="node"><title>Node113</title>
-<g id="a_node46"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" target="_top" xlink:title=" ">
+<g id="a_node46"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" target="_top" xlink:title="Call all the time change functions.">
 <polygon fill="white" stroke="black" points="722.5,-614.5 722.5,-644.5 831.5,-644.5 831.5,-614.5 722.5,-614.5"/>
 <text text-anchor="start" x="730.5" y="-632.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="777" y="-621.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_changes</text>
@@ -413,7 +413,7 @@
 </g>
 <!-- Node81 -->
 <g id="node14" class="node"><title>Node81</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a345332e87684e73eeef16da46255882f" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a345332e87684e73eeef16da46255882f" target="_top" xlink:title="Add a new Event to the queue.">
 <polygon fill="white" stroke="black" points="524,-856.5 524,-886.5 633,-886.5 633,-856.5 524,-856.5"/>
 <text text-anchor="start" x="532" y="-874.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="578.5" y="-863.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_event</text>
@@ -441,7 +441,7 @@
 </g>
 <!-- Node83 -->
 <g id="node16" class="node"><title>Node83</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml#aa56d9723c3d16a001d71bca91fd08c70" target="_top" xlink:title="This method implements the effects of the event.">
 <polygon fill="white" stroke="black" points="148,-880.5 148,-910.5 275,-910.5 275,-880.5 148,-880.5"/>
 <text text-anchor="start" x="156" y="-898.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::demo</text>
 <text text-anchor="middle" x="211.5" y="-887.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BallReflectPanel::invoke</text>
@@ -483,7 +483,7 @@
 </g>
 <!-- Node87 -->
 <g id="node20" class="node"><title>Node87</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" target="_top" xlink:title="Decompresses a single 32&#45;KiB frame.">
 <polygon fill="white" stroke="black" points="498,-796 498,-837 659,-837 659,-796 498,-796"/>
 <text text-anchor="start" x="506" y="-825" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="506" y="-814" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDecompressor::decompress</text>
@@ -498,7 +498,7 @@
 </g>
 <!-- Node89 -->
 <g id="node22" class="node"><title>Node89</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" target="_top" xlink:title="Execute all events that are registered until a certain point in time.">
 <polygon fill="white" stroke="black" points="524,-453.5 524,-483.5 633,-483.5 633,-453.5 524,-453.5"/>
 <text text-anchor="start" x="532" y="-471.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="578.5" y="-460.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reach_time</text>
@@ -540,7 +540,7 @@
 </g>
 <!-- Node102 -->
 <g id="node35" class="node"><title>Node102</title>
-<g id="a_node35"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="153.5,-235.5 153.5,-265.5 269.5,-265.5 269.5,-235.5 153.5,-235.5"/>
 <text text-anchor="start" x="161.5" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="211.5" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -642,7 +642,7 @@
 </g>
 <!-- Node108 -->
 <g id="node41" class="node"><title>Node108</title>
-<g id="a_node41"><a xlink:href="namespaceopenage_1_1log.xhtml#ac8660073c35f9900e8c1169f2899b7d2" target="_top" xlink:title=" ">
+<g id="a_node41"><a xlink:href="namespaceopenage_1_1log.xhtml#ac8660073c35f9900e8c1169f2899b7d2" target="_top" xlink:title="Sets the log level of the global stdout sink.">
 <polygon fill="white" stroke="black" points="153.5,-167 153.5,-186 269.5,-186 269.5,-167 153.5,-167"/>
 <text text-anchor="middle" x="211.5" y="-174" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::set_level</text>
 </a>
@@ -693,7 +693,7 @@
 </g>
 <!-- Node116 -->
 <g id="node49" class="node"><title>Node116</title>
-<g id="a_node49"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title=" ">
+<g id="a_node49"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" target="_top" xlink:title="Retrieves the atlas entry for a specified font and glyph.">
 <polygon fill="white" stroke="black" points="336,-0.5 336,-30.5 437,-30.5 437,-0.5 336,-0.5"/>
 <text text-anchor="start" x="344" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="386.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">GlyphAtlas::get</text>
@@ -707,7 +707,7 @@
 </g>
 <!-- Node117 -->
 <g id="node50" class="node"><title>Node117</title>
-<g id="a_node50"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title=" ">
+<g id="a_node50"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e" target="_top" xlink:title="Render all the text draw requests made during the frame.">
 <polygon fill="white" stroke="black" points="158,-0.5 158,-30.5 265,-30.5 265,-0.5 158,-0.5"/>
 <text text-anchor="start" x="166" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="211.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::render</text>

@@ -116,7 +116,8 @@ $(document).ready(function(){initNavTree('message_8h.xhtml','');});
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="message_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="message_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div>
 <p><a href="message_8h_source.xhtml">Go to the source code of this file.</a></p>
@@ -124,13 +125,16 @@ $(document).ready(function(){initNavTree('message_8h.xhtml','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1log_1_1message.xhtml">openage::log::message</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A complete log/exception message, containing a text message and metadata.  <a href="structopenage_1_1log_1_1message.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1log_1_1_message_builder.xhtml">openage::log::MessageBuilder</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper around a log message that allows appending to the message with operator &lt;&lt;.  <a href="classopenage_1_1log_1_1_message_builder.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceopenage"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage.xhtml">openage</a></td></tr>
+<tr class="memdesc:namespaceopenage"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file contains forward declarations for all the coordinate types, as well as their scalar types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceopenage_1_1error"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1error.xhtml">openage::error</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,6 +165,7 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae4bb73b8b2616017522132a64c52c756"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenage_1_1log.xhtml#ae4bb73b8b2616017522132a64c52c756">openage::log::operator&lt;&lt;</a> (std::ostream &amp;os, const message &amp;msg)</td></tr>
+<tr class="memdesc:ae4bb73b8b2616017522132a64c52c756"><td class="mdescLeft">&#160;</td><td class="mdescRight">prints message to a stream (with color codes and everything!)  <a href="namespaceopenage_1_1log.xhtml#ae4bb73b8b2616017522132a64c52c756">More...</a><br /></td></tr>
 <tr class="separator:ae4bb73b8b2616017522132a64c52c756"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -263,8 +268,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="classopenage_1_1log_1_1_message_builder.xhtml">::openage::log::MessageBuilder</a>( \</div><div class="line">    ::<a class="code" href="namespaceopenage_1_1util_1_1constexpr__.xhtml#ae2139acfbb2a838e378d0652e23943b8">openage::util::constexpr_::strip_prefix</a>( \</div><div class="line">        __FILE__, \</div><div class="line">        ::openage::config::buildsystem_sourcefile_dir), \</div><div class="line">    __LINE__, \</div><div class="line">    <a class="code" href="message_8h.xhtml#ae68db63949e5f98112bf095dfca33466">OPENAGE_FUNC_NAME</a>, \</div><div class="line">    LVLOBJ)</div><div class="ttc" id="namespaceopenage_1_1util_1_1constexpr___xhtml_ae2139acfbb2a838e378d0652e23943b8"><div class="ttname"><a href="namespaceopenage_1_1util_1_1constexpr__.xhtml#ae2139acfbb2a838e378d0652e23943b8">openage::util::constexpr_::strip_prefix</a></div><div class="ttdeci">constexpr const char * strip_prefix(const char *str, const truncated_string_literal prefix)</div><div class="ttdef"><b>Definition:</b> <a href="constexpr_8h_source.xhtml#l00097">constexpr.h:97</a></div></div>
-<div class="ttc" id="classopenage_1_1log_1_1_message_builder_xhtml"><div class="ttname"><a href="classopenage_1_1log_1_1_message_builder.xhtml">openage::log::MessageBuilder</a></div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00118">message.h:118</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="classopenage_1_1log_1_1_message_builder.xhtml">::openage::log::MessageBuilder</a>( \</div><div class="line">    ::<a class="code" href="namespaceopenage_1_1util_1_1constexpr__.xhtml#ae2139acfbb2a838e378d0652e23943b8">openage::util::constexpr_::strip_prefix</a>( \</div><div class="line">        __FILE__, \</div><div class="line">        ::openage::config::buildsystem_sourcefile_dir), \</div><div class="line">    __LINE__, \</div><div class="line">    <a class="code" href="message_8h.xhtml#ae68db63949e5f98112bf095dfca33466">OPENAGE_FUNC_NAME</a>, \</div><div class="line">    LVLOBJ)</div><div class="ttc" id="namespaceopenage_1_1util_1_1constexpr___xhtml_ae2139acfbb2a838e378d0652e23943b8"><div class="ttname"><a href="namespaceopenage_1_1util_1_1constexpr__.xhtml#ae2139acfbb2a838e378d0652e23943b8">openage::util::constexpr_::strip_prefix</a></div><div class="ttdeci">constexpr const char * strip_prefix(const char *str, const truncated_string_literal prefix)</div><div class="ttdoc">Strips a prefix from a given string literal.</div><div class="ttdef"><b>Definition:</b> <a href="constexpr_8h_source.xhtml#l00097">constexpr.h:97</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_message_builder_xhtml"><div class="ttname"><a href="classopenage_1_1log_1_1_message_builder.xhtml">openage::log::MessageBuilder</a></div><div class="ttdoc">Wrapper around a log message that allows appending to the message with operator &lt;&lt;.</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00118">message.h:118</a></div></div>
 <div class="ttc" id="message_8h_xhtml_ae68db63949e5f98112bf095dfca33466"><div class="ttname"><a href="message_8h.xhtml#ae68db63949e5f98112bf095dfca33466">OPENAGE_FUNC_NAME</a></div><div class="ttdeci">#define OPENAGE_FUNC_NAME</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00023">message.h:23</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00160">160</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>

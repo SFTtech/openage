@@ -23,9 +23,9 @@
         <argsstring></argsstring>
         <name>value</name>
         <briefdescription>
+<para>The entry associated with this map position. </para>
         </briefdescription>
         <detaileddescription>
-<para>The entry associated with this map position. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -41,9 +41,9 @@
         <argsstring></argsstring>
         <name>tail</name>
         <briefdescription>
+<para>The remaining map entries. </para>
         </briefdescription>
         <detaileddescription>
-<para>The remaining map entries. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -60,9 +60,9 @@
         <argsstring></argsstring>
         <name>ConstMap&lt; K, V, pos+1 &gt;</name>
         <briefdescription>
+<para>The previous entry is our friend. </para>
         </briefdescription>
         <detaileddescription>
-<para>The previous entry is our friend. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -107,9 +107,9 @@
         <argsstring>() const</argsstring>
         <name>size</name>
         <briefdescription>
+<para>Return the number of entries in this map. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the number of entries in this map. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -126,9 +126,9 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Tests if the given key is in this map. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests if the given key is in this map. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -146,9 +146,9 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Return the stored value for the given key. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the stored value for the given key. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -167,9 +167,9 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Access entries by map[key]. </para>
         </briefdescription>
         <detaileddescription>
-<para>Access entries by map[key]. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -188,9 +188,9 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Test if if the given key is stored in this element or in following elements. </para>
         </briefdescription>
         <detaileddescription>
-<para>Test if if the given key is stored in this element or in following elements. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -205,9 +205,9 @@
         <argsstring>() const</argsstring>
         <name>is_unique</name>
         <briefdescription>
+<para>Test if the key of this entry is not used in following entries. </para>
         </briefdescription>
         <detaileddescription>
-<para>Test if the key of this entry is not used in following entries. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -222,9 +222,9 @@
         <argsstring>() const</argsstring>
         <name>all_are_unique</name>
         <briefdescription>
+<para>Verifies that this entry&apos;s key is not used in following entries, then continues checking with the next entry checking for the same. </para>
         </briefdescription>
         <detaileddescription>
-<para>Verifies that this entry&apos;s key is not used in following entries, then continues checking with the next entry checking for the same. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -239,9 +239,9 @@
         <argsstring>() const</argsstring>
         <name>verify_no_duplicates</name>
         <briefdescription>
+<para>Abort when the map uses the same key more than once. </para>
         </briefdescription>
         <detaileddescription>
-<para>Abort when the map uses the same key more than once. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -263,9 +263,9 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Returns the value matching key from this or following elements. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the value matching key from this or following elements. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -275,9 +275,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Compiletime generic lookup map. </para>
     </briefdescription>
     <detaileddescription>
-<para>Compiletime generic lookup map.</para>
 <para>This is a recursive template that decreases <computeroutput>pos</computeroutput> which each iteration step. Each <computeroutput>pos</computeroutput> stores one map entry. The lookup recursively descends those entries down to the zero-element.</para>
 <para>If you experience compiler errors, make sure you request <emphasis>existing</emphasis> keys. We intentionally trigger compiler failures when a key doesn&apos;t exist.</para>
 <para>Messages include: &quot;error: ‘*0u’ is not a constant expression&quot; -&gt; nonexistant key </para>

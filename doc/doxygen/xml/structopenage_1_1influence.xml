@@ -54,9 +54,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>storage for influences by neighbor tiles. </para>
     </briefdescription>
     <detaileddescription>
-<para>storage for influences by neighbor tiles. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3802">

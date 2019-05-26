@@ -364,9 +364,9 @@
         <name>TESTFAIL</name>
         <initializer>::<ref refid="namespaceopenage_1_1testing_1ab47bedd0a44345aab4aadb8378800e45" kindref="member">openage::testing::fail</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err))</initializer>
         <briefdescription>
+<para>Convenience macro, for usage in test functions: </para>
         </briefdescription>
         <detaileddescription>
-<para>Convenience macro, for usage in test functions:</para>
 <para>test_stuff() or TESTFAIL; </para>
         </detaileddescription>
         <inbodydescription>
@@ -378,9 +378,9 @@
         <param><defname>...</defname></param>
         <initializer>::<ref refid="namespaceopenage_1_1testing_1ab47bedd0a44345aab4aadb8378800e45" kindref="member">openage::testing::fail</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err) &lt;&lt; __VA_ARGS__)</initializer>
         <briefdescription>
+<para>As above, but allows printing a message: </para>
         </briefdescription>
         <detaileddescription>
-<para>As above, but allows printing a message:</para>
 <para>test_stuff() or TESTFAIL(&quot;lolnope&quot;); </para>
         </detaileddescription>
         <inbodydescription>
@@ -404,9 +404,9 @@
 		} \
 	} while (0)</initializer>
         <briefdescription>
+<para>Asserts that the left expression equals the right expression, and that no exception is thrown. </para>
         </briefdescription>
         <detaileddescription>
-<para>Asserts that the left expression equals the right expression, and that no exception is thrown. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -431,9 +431,9 @@
 		} \
 	} while (0)</initializer>
         <briefdescription>
+<para>Asserts that the left expression equals the right expression, within a margin of error epsilon, and that no exception is thrown. </para>
         </briefdescription>
         <detaileddescription>
-<para>Asserts that the left expression equals the right expression, within a margin of error epsilon, and that no exception is thrown. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -454,9 +454,9 @@
 		} \
 	} while (0)</initializer>
         <briefdescription>
+<para>Asserts that the expression throws an exception. </para>
         </briefdescription>
         <detaileddescription>
-<para>Asserts that the expression throws an exception. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -473,9 +473,9 @@
 		} \
 	} while (0)</initializer>
         <briefdescription>
+<para>Assets that the expression throws no exception (mostly for void expressions). </para>
         </briefdescription>
         <detaileddescription>
-<para>Assets that the expression throws no exception (mostly for void expressions). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

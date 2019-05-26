@@ -1,5 +1,5 @@
 <map id="openage::util::operator+" name="openage::util::operator+">
-<area shape="rect" id="node1" title=" " alt="" coords="5,46,164,73"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="212,5,379,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="212,71,379,112"/>
+<area shape="rect" id="node1" title="FixedPoint + FixedPoint." alt="" coords="5,46,164,73"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="212,5,379,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="212,71,379,112"/>
 </map>

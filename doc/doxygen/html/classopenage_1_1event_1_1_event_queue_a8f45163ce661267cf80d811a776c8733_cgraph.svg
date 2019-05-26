@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 467,-133 467,4 -4,4"/>
 <!-- Node34 -->
 <g id="node1" class="node"><title>Node34</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="An update to existing events has to be applied.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-49.5 0,-79.5 140,-79.5 140,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="70" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::enqueue_change</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node37 -->
 <g id="node4" class="node"><title>Node37</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" target="_top" xlink:title="adds the given item to the heap.">
 <polygon fill="white" stroke="black" points="347,-98.5 347,-128.5 463,-128.5 463,-98.5 347,-98.5"/>
 <text text-anchor="start" x="355" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="405" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::push</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node40 -->
 <g id="node7" class="node"><title>Node40</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" target="_top" xlink:title="After a change, call this to reorganize the given node.">
 <polygon fill="white" stroke="black" points="347,-0.5 347,-30.5 463,-30.5 463,-0.5 347,-0.5"/>
 <text text-anchor="start" x="355" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="405" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::update</text>

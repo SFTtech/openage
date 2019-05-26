@@ -3,6 +3,6 @@
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1bytequeue_1_1_byte_buffer.xhtml#a609749224fa2bf063e6200c4bd6b09ed" title=" " alt="" coords="244,5,431,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="240,71,435,98"/>
 <area shape="rect" id="node4" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="303,122,372,149"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="483,81,649,123"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="483,147,649,188"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="483,81,649,123"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="483,147,649,188"/>
 </map>

@@ -532,9 +532,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Filesystem-like object that wraps a filesystem-like object from <ref refid="classopenage_1_1util_1_1fslike_1_1_python" kindref="compound">Python</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>Filesystem-like object that wraps a filesystem-like object from <ref refid="classopenage_1_1util_1_1fslike_1_1_python" kindref="compound">Python</ref>. Calls are relayed via Cython, which performs the data conversion.</para>
+<para>Calls are relayed via Cython, which performs the data conversion.</para>
 <para>pxd: cppclass Python(FSLike): PyObj &amp;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1af1a29b68853bfb3befa61da1137abd95" kindref="member">get_py_fsobj()</ref> except + </para>
     </detaileddescription>
     <inheritancegraph>

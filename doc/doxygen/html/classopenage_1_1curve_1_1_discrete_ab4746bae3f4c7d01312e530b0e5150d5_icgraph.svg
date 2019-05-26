@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 293,-35 293,4 -4,4"/>
 <!-- Node10 -->
 <g id="node1" class="node"><title>Node10</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Does not interpolate anything, just returns gives the raw value of the last keyframe with time &lt;= t.">
 <polygon fill="#bfbfbf" stroke="black" points="146,-6 146,-25 289,-25 289,-6 146,-6"/>
 <text text-anchor="middle" x="217.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Discrete::get</text>
 </a>

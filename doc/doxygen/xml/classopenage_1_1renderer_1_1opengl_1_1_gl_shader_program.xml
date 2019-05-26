@@ -16,9 +16,10 @@
         <argsstring></argsstring>
         <name>uniforms</name>
         <briefdescription>
+<para>Maps uniform names to their descriptions. </para>
         </briefdescription>
         <detaileddescription>
-<para>Maps uniform names to their descriptions. Contains only uniforms in the default block, i.e. not within named blocks. </para>
+<para>Contains only uniforms in the default block, i.e. not within named blocks. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -114,9 +115,10 @@
           <defname>caps</defname>
         </param>
         <briefdescription>
+<para>Tries to create a shader program from the given sources. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tries to create a shader program from the given sources. Throws an exception on compile/link errors. </para>
+<para>Throws an exception on compile/link errors. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -155,9 +157,10 @@
           <defname>geom</defname>
         </param>
         <briefdescription>
+<para>Does what the description of <ref refid="structopenage_1_1renderer_1_1_renderable" kindref="compound">Renderable</ref> specifies - updates the uniform values and draws the <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> if it&apos;s not nullptr. </para>
         </briefdescription>
         <detaileddescription>
-<para>Does what the description of <ref refid="structopenage_1_1renderer_1_1_renderable" kindref="compound">Renderable</ref> specifies - updates the uniform values and draws the <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> if it&apos;s not nullptr. If geometry is null, only the uniform values are updated. </para>
+<para>If geometry is null, only the uniform values are updated. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -199,9 +202,10 @@
         <name>vertex_attributes</name>
         <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1ad9c2c7e1dfa281b4109ef966309193b4">vertex_attributes</reimplements>
         <briefdescription>
+<para>Returns a list of <emphasis>active</emphasis> vertex attributes in the shader program. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a list of <emphasis>active</emphasis> vertex attributes in the shader program. Active attributes are those which have an effect on the shader output, meaning they are included in the output calculation and are not unused. Inactive attributes may or may not be present in the list - in particular, in the OpenGL implementation they will most likely be missing. The returned value is a map from the attribute location to its type. Locations need not be consecutive. </para>
+<para>Active attributes are those which have an effect on the shader output, meaning they are included in the output calculation and are not unused. Inactive attributes may or may not be present in the list - in particular, in the OpenGL implementation they will most likely be missing. The returned value is a map from the attribute location to its type. Locations need not be consecutive. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

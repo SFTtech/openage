@@ -1,6 +1,6 @@
 <map id="openage::util::Timer::reset" name="openage::util::Timer::reset">
-<area shape="rect" id="node1" title=" " alt="" coords="397,27,533,69"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title=" " alt="" coords="199,5,349,32"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_timer.xhtml#a1b3d27ae06020bc54ea6cb6f0d7bc72d" title=" " alt="" coords="206,57,342,98"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title=" " alt="" coords="5,5,151,32"/>
+<area shape="rect" id="node1" title="resets the timer, in either stopped or running state." alt="" coords="397,27,533,69"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title="main engine loop function." alt="" coords="199,5,349,32"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_timer.xhtml#a1b3d27ae06020bc54ea6cb6f0d7bc72d" title="creates the timer, in either stopped or running state." alt="" coords="206,57,342,98"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title="starts the engine loop." alt="" coords="5,5,151,32"/>
 </map>

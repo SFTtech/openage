@@ -57,7 +57,7 @@ var sectionId = 'dynsection-27';
 <polygon fill="white" stroke="none" points="-4,4 -4,-122.5 685,-122.5 685,4 -4,4"/>
 <!-- Node189 -->
 <g id="node1" class="node"><title>Node189</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Called when a unit is killed by this player.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-44.5 0,-63.5 137,-63.5 137,-44.5 0,-44.5"/>
 <text text-anchor="middle" x="68.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::killed_unit</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-27';
 </g>
 <!-- Node191 -->
 <g id="node3" class="node"><title>Node191</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title="Returns the cost.">
 <polygon fill="white" stroke="black" points="180.5,-44.5 180.5,-63.5 320.5,-63.5 320.5,-44.5 180.5,-44.5"/>
 <text text-anchor="middle" x="250.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceCost::get</text>
 </a>
@@ -92,7 +92,7 @@ var sectionId = 'dynsection-27';
 </g>
 <!-- Node195 -->
 <g id="node7" class="node"><title>Node195</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" target="_top" xlink:title="Returns the sum of all the resources.">
 <polygon fill="white" stroke="black" points="173,-3.5 173,-22.5 328,-22.5 328,-3.5 173,-3.5"/>
 <text text-anchor="middle" x="250.5" y="-10.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle::sum</text>
 </a>
@@ -119,7 +119,7 @@ var sectionId = 'dynsection-27';
 </g>
 <!-- Node194 -->
 <g id="node6" class="node"><title>Node194</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" target="_top" xlink:title="The number of units considered part of the workforce.">
 <polygon fill="white" stroke="black" points="385.5,-39 385.5,-69 492.5,-69 492.5,-39 385.5,-39"/>
 <text text-anchor="start" x="393.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get</text>
 <text text-anchor="middle" x="439" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_workforce_count</text>
@@ -133,7 +133,7 @@ var sectionId = 'dynsection-27';
 </g>
 <!-- Node193 -->
 <g id="node5" class="node"><title>Node193</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title="odo remove, here for backwards compatibility">
+<g id="a_node5"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="550,-88 550,-118 681,-118 681,-88 550,-88"/>
 <text text-anchor="start" x="558" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <text text-anchor="middle" x="615.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::ResourceBundle</text>

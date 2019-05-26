@@ -1,4 +1,4 @@
 <map id="openage::renderer::Font::initialize" name="openage::renderer::Font::initialize">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,140,47"/>
+<area shape="rect" id="node1" title="Initializes the font&#39;s face and creates a harfbuzz font instance." alt="" coords="5,5,140,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="188,13,299,39"/>
 </map>

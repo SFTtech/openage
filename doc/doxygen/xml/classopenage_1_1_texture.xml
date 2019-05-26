@@ -129,9 +129,10 @@
           <declname>data</declname>
         </param>
         <briefdescription>
+<para>Create a texture from a rgba8 array. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a texture from a rgba8 array. It will have w * h * 32bit storage. </para>
+<para>It will have w * h * 32bit storage. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -152,9 +153,10 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>Create a texture from a existing image file. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a texture from a existing image file. For supported image file types, see the SDL_Image initialization in the engine. </para>
+<para>For supported image file types, see the SDL_Image initialization in the engine. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -209,9 +211,9 @@
           <defval>0</defval>
         </param>
         <briefdescription>
+<para>Draws the texture at hud coordinates. </para>
         </briefdescription>
         <detaileddescription>
-<para>Draws the texture at hud coordinates. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -257,9 +259,9 @@
           <defval>0</defval>
         </param>
         <briefdescription>
+<para>Draws the texture at game coordinates. </para>
         </briefdescription>
         <detaileddescription>
-<para>Draws the texture at game coordinates. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -301,9 +303,9 @@
           <defval>0</defval>
         </param>
         <briefdescription>
+<para>Draws the texture at phys coordinates. </para>
         </briefdescription>
         <detaileddescription>
-<para>Draws the texture at phys coordinates. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -345,9 +347,9 @@
           <declname>alpha_subid</declname>
         </param>
         <briefdescription>
+<para>Draws the texture at tile coordinates. </para>
         </briefdescription>
         <detaileddescription>
-<para>Draws the texture at tile coordinates. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -389,9 +391,9 @@
           <declname>alpha_subid</declname>
         </param>
         <briefdescription>
+<para>Draws the texture at window coordinates. </para>
         </briefdescription>
         <detaileddescription>
-<para>Draws the texture at window coordinates. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -421,9 +423,10 @@
         <argsstring>()</argsstring>
         <name>reload</name>
         <briefdescription>
+<para>Reload the image file. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reload the image file. Used for inotify refreshing. </para>
+<para>Used for inotify refreshing. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -441,9 +444,9 @@
           <declname>subid</declname>
         </param>
         <briefdescription>
+<para>Get the subtexture coordinates by its id. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the subtexture coordinates by its id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -499,9 +502,10 @@
           <declname>h</declname>
         </param>
         <briefdescription>
+<para>Fetch the size of the given subtexture. </para>
         </briefdescription>
         <detaileddescription>
-<para>Fetch the size of the given subtexture. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>subid</parametername>
 </parameternamelist>
@@ -561,9 +565,9 @@
           <declname>txb</declname>
         </param>
         <briefdescription>
+<para>get atlas subtexture coordinates. </para>
         </briefdescription>
         <detaileddescription>
-<para>get atlas subtexture coordinates.</para>
 <para>left, right, top and bottom bounds as coordinates these pick the requested area out of the big texture. returned as floats in range 0.0 to 1.0 </para>
         </detaileddescription>
         <inbodydescription>
@@ -621,9 +625,10 @@
           <declname>y</declname>
         </param>
         <briefdescription>
+<para>fixes the hotspots of all subtextures to (x,y). </para>
         </briefdescription>
         <detaileddescription>
-<para>fixes the hotspots of all subtextures to (x,y). this is a temporary workaround; such fixes should actually be done in the convert script. </para>
+<para>this is a temporary workaround; such fixes should actually be done in the convert script. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -644,9 +649,9 @@
           <declname>subid</declname>
         </param>
         <briefdescription>
+<para>activates the influence of a given alpha mask to this texture. </para>
         </briefdescription>
         <detaileddescription>
-<para>activates the influence of a given alpha mask to this texture. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -658,9 +663,9 @@
         <argsstring>()</argsstring>
         <name>disable_alphamask</name>
         <briefdescription>
+<para>disable a previously activated alpha mask. </para>
         </briefdescription>
         <detaileddescription>
-<para>disable a previously activated alpha mask. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -672,9 +677,9 @@
         <argsstring>() const</argsstring>
         <name>get_texture_id</name>
         <briefdescription>
+<para>returns the opengl texture id of this texture. </para>
         </briefdescription>
         <detaileddescription>
-<para>returns the opengl texture id of this texture. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -718,9 +723,9 @@
         <argsstring>() const</argsstring>
         <name>load_in_glthread</name>
         <briefdescription>
+<para>The texture loadin must occur on the thread that manages the gl context. </para>
         </briefdescription>
         <detaileddescription>
-<para>The texture loadin must occur on the thread that manages the gl context. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -784,9 +789,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A texture for rendering graphically. </para>
     </briefdescription>
     <detaileddescription>
-<para>A texture for rendering graphically.</para>
 <para>You may believe it or not, but this class represents a single texture, which can be drawn on the screen.</para>
 <para>The class supports subtextures, so that one big texture can contain several small images. These are the ones actually to be rendered. </para>
     </detaileddescription>

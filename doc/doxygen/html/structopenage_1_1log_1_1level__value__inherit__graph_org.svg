@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-471 154,-471 154,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Data associated with a log level.">
 <polygon fill="#bfbfbf" stroke="black" points="26.5,-0.5 26.5,-68.5 123.5,-68.5 123.5,-0.5 26.5,-0.5"/>
 <text text-anchor="start" x="34.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <text text-anchor="middle" x="75" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">_value</text>

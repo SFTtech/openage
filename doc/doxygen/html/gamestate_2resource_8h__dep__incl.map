@@ -10,7 +10,7 @@
 <area shape="rect" id="node49" href="$gamestate_2resource_8cpp.xhtml" title=" " alt="" coords="4020,109,4229,165"/>
 <area shape="rect" id="node50" href="$resources__list__model_8h.xhtml" title=" " alt="" coords="3787,109,3996,165"/>
 <area shape="rect" id="node3" href="$selection_8h.xhtml" title=" " alt="" coords="900,317,1109,373"/>
-<area shape="rect" id="node13" href="$producer_8cpp.xhtml" title=" " alt="" coords="1639,525,1848,581"/>
+<area shape="rect" id="node13" href="$producer_8cpp.xhtml" title="Many values in this file are hardcoded, due to limited understanding of how the original game files w..." alt="" coords="1639,525,1848,581"/>
 <area shape="rect" id="node15" href="$unit_8cpp.xhtml" title=" " alt="" coords="239,525,448,581"/>
 <area shape="rect" id="node18" href="$command_8h.xhtml" title=" " alt="" coords="1391,213,1600,269"/>
 <area shape="rect" id="node19" href="$unit_8h.xhtml" title=" " alt="" coords="1808,317,2017,373"/>

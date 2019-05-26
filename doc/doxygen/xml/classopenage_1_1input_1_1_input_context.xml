@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>utf8_mode</name>
         <briefdescription>
+<para>Affects which keyboard events are received: true to accpet utf8 text events, false to receive regular char events. </para>
         </briefdescription>
         <detaileddescription>
-<para>Affects which keyboard events are received: true to accpet utf8 text events, false to receive regular char events </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -29,9 +29,9 @@
         <argsstring></argsstring>
         <name>input_manager</name>
         <briefdescription>
+<para>Input manager this context is bound to. </para>
         </briefdescription>
         <detaileddescription>
-<para>Input manager this context is bound to. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -47,9 +47,9 @@
         <argsstring></argsstring>
         <name>by_type</name>
         <briefdescription>
+<para>Maps an action id to a event execution function. </para>
         </briefdescription>
         <detaileddescription>
-<para>Maps an action id to a event execution function. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -64,9 +64,9 @@
         <argsstring></argsstring>
         <name>by_event</name>
         <briefdescription>
+<para>map specific overriding events </para>
         </briefdescription>
         <detaileddescription>
-<para>map specific overriding events </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -80,9 +80,9 @@
         <argsstring></argsstring>
         <name>by_class</name>
         <briefdescription>
+<para>event to action map event_class as key, to ensure all events can be mapped </para>
         </briefdescription>
         <detaileddescription>
-<para>event to action map event_class as key, to ensure all events can be mapped </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -98,9 +98,9 @@
         <argsstring>()</argsstring>
         <name>InputContext</name>
         <briefdescription>
+<para>Create an unbound input context. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create an unbound input context. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -119,9 +119,9 @@
           <declname>manager</declname>
         </param>
         <briefdescription>
+<para>Create a bound context, assigned to its manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a bound context, assigned to its manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -146,9 +146,9 @@
         <argsstring>() const</argsstring>
         <name>active_binds</name>
         <briefdescription>
+<para>a list of all keys of this context which are bound currently in the active context. </para>
         </briefdescription>
         <detaileddescription>
-<para>a list of all keys of this context which are bound currently in the active context.</para>
 <para><xrefsect id="todo_1_todo000023"><xreftitle>Todo</xreftitle><xrefdescription><para>move this method to the input manager. as InputManager::active_binds(const InputContext &amp;) const; </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
@@ -174,9 +174,9 @@
           <declname>act</declname>
         </param>
         <briefdescription>
+<para>bind a specific action idetifier this is the highest matching priority </para>
         </briefdescription>
         <detaileddescription>
-<para>bind a specific action idetifier this is the highest matching priority </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -201,9 +201,9 @@
           <declname>act</declname>
         </param>
         <briefdescription>
+<para>bind a specific event this is the second matching priority </para>
         </briefdescription>
         <detaileddescription>
-<para>bind a specific event this is the second matching priority </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -224,9 +224,9 @@
           <declname>act</declname>
         </param>
         <briefdescription>
+<para>bind all events of a specific class this is the lowest matching priority </para>
         </briefdescription>
         <detaileddescription>
-<para>bind all events of a specific class this is the lowest matching priority </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -243,9 +243,10 @@
           <declname>e</declname>
         </param>
         <briefdescription>
+<para>lookup an action. </para>
         </briefdescription>
         <detaileddescription>
-<para>lookup an action. If it is bound, execute it. <simplesect kind="return"><para>true when the action is executed, false else. </para>
+<para>If it is bound, execute it. <simplesect kind="return"><para>true when the action is executed, false else. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -272,9 +273,9 @@
           <declname>manager</declname>
         </param>
         <briefdescription>
+<para>Called by the <ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">InputManager</ref> where this context shall be registered to. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called by the <ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">InputManager</ref> where this context shall be registered to. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -288,9 +289,9 @@
         <argsstring>()</argsstring>
         <name>unregister</name>
         <briefdescription>
+<para>Remove the registration to an input manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>Remove the registration to an input manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -300,9 +301,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>An input context contains all keybindings and actions active in e.g. </para>
     </briefdescription>
     <detaileddescription>
-<para>An input context contains all keybindings and actions active in e.g. the HUD only. For the console, there&apos;s a different input context. That way, each context can have the same keys assigned to different actions, the active context decides, which one to trigger. </para>
+<para>the HUD only. For the console, there&apos;s a different input context. That way, each context can have the same keys assigned to different actions, the active context decides, which one to trigger. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3840">

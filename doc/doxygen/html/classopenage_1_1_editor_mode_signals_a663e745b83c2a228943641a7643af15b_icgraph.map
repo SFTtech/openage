@@ -1,5 +1,5 @@
 <map id="openage::EditorModeSignals::toggle" name="openage::EditorModeSignals::toggle">
 <area shape="rect" id="node1" title=" " alt="" coords="224,39,412,80"/>
 <area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_editor_mode_link.xhtml#ac1c41942ee1dda4e2774eddebc6e1104" title=" " alt="" coords="5,5,176,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title=" " alt="" coords="13,71,168,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="13,71,168,112"/>
 </map>

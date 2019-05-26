@@ -1,7 +1,7 @@
 <map id="openage::util::File::read" name="openage::util::File::read">
-<area shape="rect" id="node1" title=" " alt="" coords="539,95,664,136"/>
+<area shape="rect" id="node1" title="Read data from the file and return a string." alt="" coords="539,95,664,136"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1_file.xhtml#a4712008e4434f121e00ba41a29789db9" title=" " alt="" coords="303,5,429,47"/>
 <area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#aadb76e27d69a7a94abc320498c316efe" title="recursively read defined binary data from raw at given offset." alt="" coords="241,95,491,136"/>
 <area shape="rect" id="node5" href="$classopenage_1_1convert_1_1peresource_1_1_string_literal.xhtml#afe54133fe4a7d4cb75352a250a11a024" title="In addition to the static data, reads the string." alt="" coords="5,124,193,165"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a16ef0fe69558a29af4a8d568f2b5b518" title=" " alt="" coords="35,5,164,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a16ef0fe69558a29af4a8d568f2b5b518" title="read a single csv file." alt="" coords="35,5,164,47"/>
 </map>

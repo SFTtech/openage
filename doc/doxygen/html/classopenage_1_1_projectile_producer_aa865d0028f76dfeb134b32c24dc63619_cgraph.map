@@ -1,10 +1,10 @@
 <map id="openage::ProjectileProducer::initialise" name="openage::ProjectileProducer::initialise">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,191,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#ab74b08bb7725863fc63839d798f6aedb" title=" " alt="" coords="243,5,373,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#aecd686fafc67487f4df4d3637f2621f4" title=" " alt="" coords="239,71,377,112"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f" title=" " alt="" coords="425,13,589,39"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a21542f7813db482fd36799cf12971979" title=" " alt="" coords="433,71,582,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_unit.xhtml#a257ef8a7aeceb306d372ef745b40ef90" title=" " alt="" coords="637,41,768,83"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" title=" " alt="" coords="639,107,767,134"/>
+<area shape="rect" id="node1" title="Initialize units attributes to this type spec." alt="" coords="5,39,191,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#ab74b08bb7725863fc63839d798f6aedb" title="give a new attribute this this unit this is used to set things like color, hitpoints and speed" alt="" coords="243,5,373,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#aecd686fafc67487f4df4d3637f2621f4" title="adds a new action on top of the action stack will be performed immediately" alt="" coords="239,71,377,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f" title="Add an attribute or replace any attribute of the same type." alt="" coords="425,13,589,39"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a21542f7813db482fd36799cf12971979" title="true when the unit is alive and able to add new actions" alt="" coords="433,71,582,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit.xhtml#a257ef8a7aeceb306d372ef745b40ef90" title="checks the entity has an action, if it has no action it should be removed from the game" alt="" coords="637,41,768,83"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" title="returns the current action on top of the stack" alt="" coords="639,107,767,134"/>
 <area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="816,107,927,134"/>
 </map>

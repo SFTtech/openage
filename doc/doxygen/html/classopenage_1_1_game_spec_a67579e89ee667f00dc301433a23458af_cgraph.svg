@@ -57,7 +57,7 @@ var sectionId = 'dynsection-20';
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 580,-73.5 580,4 -4,4"/>
 <!-- Node163 -->
 <g id="node1" class="node"><title>Node163</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="load missile assets.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-22.5 0,-52.5 114,-52.5 114,-22.5 0,-22.5"/>
 <text text-anchor="start" x="8" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="57" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_missile</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node164 -->
 <g id="node2" class="node"><title>Node164</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title="list()">
 <polygon fill="white" stroke="black" points="162.5,-50 162.5,-69 251.5,-69 251.5,-50 162.5,-50"/>
 <text text-anchor="middle" x="207" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::list</text>
 </a>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node167 -->
 <g id="node5" class="node"><title>Node167</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4183e5b82dd51fd66629d287026b5daa" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4183e5b82dd51fd66629d287026b5daa" target="_top" xlink:title="check graphic id is valid">
 <polygon fill="white" stroke="black" points="150,-0.5 150,-30.5 264,-30.5 264,-0.5 150,-0.5"/>
 <text text-anchor="start" x="158" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">valid_graphic_id</text>
@@ -106,7 +106,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node166 -->
 <g id="node4" class="node"><title>Node166</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="481,-50 481,-69 576,-69 576,-50 481,-50"/>
 <text text-anchor="middle" x="528.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 433,-35 433,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Performs the modifications (eg.">
 <polygon fill="#bfbfbf" stroke="black" points="307,-0.5 307,-30.5 429,-30.5 429,-0.5 307,-0.5"/>
 <text text-anchor="start" x="315" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchType</text>
 <text text-anchor="middle" x="368" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::apply</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_research.xhtml#a51f059ce7313e37d3848481309b1dbd4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_research.xhtml#a51f059ce7313e37d3848481309b1dbd4" target="_top" xlink:title="Apply the modifications to the owner player.">
 <polygon fill="white" stroke="black" points="164,-0.5 164,-30.5 271,-30.5 271,-0.5 164,-0.5"/>
 <text text-anchor="start" x="172" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Research::</text>
 <text text-anchor="middle" x="217.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">apply</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_research_action.xhtml#a79f88ea810c2112e5f79a4749c3ef872" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_research_action.xhtml#a79f88ea810c2112e5f79a4749c3ef872" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 128,-30.5 128,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchAction</text>
 <text text-anchor="middle" x="64" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>

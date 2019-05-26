@@ -1,4 +1,4 @@
 <map id="openage::ResearchType" name="openage::ResearchType">
-<area shape="rect" id="node1" title=" " alt="" coords="20,5,183,200"/>
+<area shape="rect" id="node1" title="Describes a research for a single player." alt="" coords="20,5,183,200"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_nyan_research_type.xhtml" title=" " alt="" coords="5,248,197,325"/>
 </map>

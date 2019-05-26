@@ -20,7 +20,7 @@
 </g>
 <!-- Node40 -->
 <g id="node2" class="node"><title>Node40</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml#a1acb662ac94f35aed9b2ecd6d3f1ddfe" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml#a1acb662ac94f35aed9b2ecd6d3f1ddfe" target="_top" xlink:title="sets the type and value">
 <polygon fill="white" stroke="black" points="161,-50 161,-69 316,-69 316,-50 161,-50"/>
 <text text-anchor="middle" x="238.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::VariableBase::set</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node42 -->
 <g id="node4" class="node"><title>Node42</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1options_1_1_option_value.xhtml#a594d9e00991ab3ad365ac200463dad3b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1options_1_1_option_value.xhtml#a594d9e00991ab3ad365ac200463dad3b" target="_top" xlink:title="read inner type &#45; the templated type must match">
 <polygon fill="white" stroke="black" points="176,-0.5 176,-30.5 301,-30.5 301,-0.5 176,-0.5"/>
 <text text-anchor="start" x="184" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="238.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Value::value</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node43 -->
 <g id="node5" class="node"><title>Node43</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml#a2fc1503a41c5e241e6c2af106115bf82" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml#a2fc1503a41c5e241e6c2af106115bf82" target="_top" xlink:title="returns the stored value throws an exception if the template does not match the set type">
 <polygon fill="white" stroke="black" points="352,-6 352,-25 507,-25 507,-6 352,-6"/>
 <text text-anchor="middle" x="429.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::VariableBase::get</text>
 </a>

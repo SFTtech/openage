@@ -1,7 +1,7 @@
 <map id="openage::util::Vector::normalize" name="openage::util::Vector::normalize">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,148,65"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_vector.xhtml#a5b3b46a13e28d59eaefacf1549269f9b" title=" " alt="" coords="196,23,339,65"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_vector.xhtml#ab534732ef33d7e047d612bdf8bc98322" title=" " alt="" coords="387,5,555,32"/>
+<area shape="rect" id="node1" title="Scales the Vector so that its norm is 1." alt="" coords="5,23,148,65"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_vector.xhtml#a5b3b46a13e28d59eaefacf1549269f9b" title="Euclidian norm aka length." alt="" coords="196,23,339,65"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_vector.xhtml#ab534732ef33d7e047d612bdf8bc98322" title="Dot product of two Vectors." alt="" coords="387,5,555,32"/>
 <area shape="rect" id="node4" href="$namespacestd.xhtml#a0fc492a11cf74e80f976b24bea2a2eb2" title=" " alt="" coords="435,56,506,83"/>
 <area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#ae963a0d669b00ec8a65da1bf0041172a" title=" " alt="" coords="603,49,769,90"/>
 </map>

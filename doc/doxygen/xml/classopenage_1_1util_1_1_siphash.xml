@@ -10,9 +10,10 @@
         <argsstring>[2]</argsstring>
         <name>key</name>
         <briefdescription>
+<para>The key to use for hashing. </para>
         </briefdescription>
         <detaileddescription>
-<para>The key to use for hashing. As two 64-bit little-endian words. </para>
+<para>As two 64-bit little-endian words. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -33,9 +34,10 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Creates a hash generator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a hash generator. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>key</parametername>
 </parameternamelist>
@@ -62,9 +64,10 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Set the key for subsequent hashes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the key for subsequent hashes. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>k</parametername>
 </parameternamelist>
@@ -98,9 +101,10 @@
           <declname>len_data</declname>
         </param>
         <briefdescription>
+<para>Hashes the input data as uint8_t array and returns the result. </para>
         </briefdescription>
         <detaileddescription>
-<para>Hashes the input data as uint8_t array and returns the result. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -137,9 +141,9 @@
           <declname>uint64_t</declname>
         </param>
         <briefdescription>
+<para>Hashes a single uint64_t number and returns the result. </para>
         </briefdescription>
         <detaileddescription>
-<para>Hashes a single uint64_t number and returns the result.</para>
 <para>The 64-bit word is interpreted as big-endian. e.g. 0x0123456789abcdef -&gt; {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef}</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -163,9 +167,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Contains a <ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref> implementration. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains a <ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref> implementration.</para>
 <para><ulink url="https://131002.net/siphash/">https://131002.net/siphash/</ulink> </para>
     </detaileddescription>
     <collaborationgraph>

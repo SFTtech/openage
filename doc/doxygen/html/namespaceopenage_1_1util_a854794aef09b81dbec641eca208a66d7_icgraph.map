@@ -1,7 +1,7 @@
 <map id="openage::util::copy_string" name="openage::util::copy_string">
-<area shape="rect" id="node1" title=" " alt="" coords="1403,49,1535,90"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" title=" " alt="" coords="1208,49,1355,90"/>
-<area shape="rect" id="node3" href="$namespaceopenage_1_1os.xhtml#a5d72e5b58b3036f2298e474c4e9ed9b6" title=" " alt="" coords="980,5,1151,32"/>
+<area shape="rect" id="node1" title="Copies the given string to the returned unique_ptr, including 0 byte." alt="" coords="1403,49,1535,90"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" title="finds the path to an executable by evaluating env[PATH]" alt="" coords="1208,49,1355,90"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1os.xhtml#a0c239b26dbfdae2443aa511e31619917" title="tries to xdg&#45;open the file" alt="" coords="980,5,1151,32"/>
 <area shape="rect" id="node4" href="$classopenage_1_1util_1_1_external_profiler.xhtml#add3055482caaf197842cc1661b463ac8" title=" " alt="" coords="729,21,921,62"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1convert_1_1main.xhtml#a4a6e38f51a7b482ac175c932acd397e9" title=" " alt="" coords="971,107,1160,149"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1convert_1_1main.xhtml#a3974808f6a0e99b94c7dea8fdea4bceb" title="Acquires source dir for the asset conversion." alt="" coords="728,107,923,149"/>

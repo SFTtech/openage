@@ -48,7 +48,7 @@
 </g>
 <!-- Node8 -->
 <g id="node4" class="node"><title>Node8</title>
-<g id="a_node4"><a xlink:href="classqtsdl_1_1_gui_input_impl.xhtml#a508aec17e818531552c2aafa49ed1352" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classqtsdl_1_1_gui_input_impl.xhtml#a508aec17e818531552c2aafa49ed1352" target="_top" xlink:title="Returns true if the event was accepted.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 98,-30.5 98,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiInputImpl</text>
 <text text-anchor="middle" x="49" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::process</text>

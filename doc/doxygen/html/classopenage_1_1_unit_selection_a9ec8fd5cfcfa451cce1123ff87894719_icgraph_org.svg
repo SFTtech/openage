@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 893,-84 893,4 -4,4"/>
 <!-- Node104 -->
 <g id="node1" class="node"><title>Node104</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Check whether the currently selected units may be selected at the same time If not,...">
 <polygon fill="#bfbfbf" stroke="black" points="764,-24.5 764,-54.5 889,-54.5 889,-24.5 764,-24.5"/>
 <text text-anchor="start" x="772" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="826.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_unit_selection_type</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node106 -->
 <g id="node3" class="node"><title>Node106</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="black" points="305,-49.5 305,-79.5 422,-79.5 422,-49.5 305,-49.5"/>
 <text text-anchor="start" x="313" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node108 -->
 <g id="node5" class="node"><title>Node108</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-24.5 0,-54.5 116,-54.5 116,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node110 -->
 <g id="node7" class="node"><title>Node110</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title="point unit selection">
 <polygon fill="white" stroke="black" points="305,-0.5 305,-30.5 422,-30.5 422,-0.5 305,-0.5"/>
 <text text-anchor="start" x="313" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_point</text>

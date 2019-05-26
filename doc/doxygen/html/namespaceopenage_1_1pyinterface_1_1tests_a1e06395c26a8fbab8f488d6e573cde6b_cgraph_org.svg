@@ -20,7 +20,7 @@
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" target="_top" xlink:title="Demangles a symbol name.">
 <polygon fill="white" stroke="black" points="154,-148 154,-167 274,-167 274,-148 154,-148"/>
 <text text-anchor="middle" x="214" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::demangle</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node10 -->
 <g id="node5" class="node"><title>Node10</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1error_1_1_error.xhtml#a2eac361ac1550421b68e453b9a710d4b" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1error_1_1_error.xhtml#a2eac361ac1550421b68e453b9a710d4b" target="_top" xlink:title="Re&#45;throws the exception cause, if the exception has one.">
 <polygon fill="white" stroke="black" points="161,-98.5 161,-128.5 267,-128.5 267,-98.5 161,-98.5"/>
 <text text-anchor="start" x="169" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 <text text-anchor="middle" x="214" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::rethrow_cause</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node11 -->
 <g id="node6" class="node"><title>Node11</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#a1352d1476e7824c11aca00df918879e1" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#a1352d1476e7824c11aca00df918879e1" target="_top" xlink:title="Returns the type name of py_obj.">
 <polygon fill="white" stroke="black" points="148,-49.5 148,-79.5 280,-79.5 280,-49.5 148,-49.5"/>
 <text text-anchor="start" x="156" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="214" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyException::type_name</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node14 -->
 <g id="node9" class="node"><title>Node14</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1error_1_1_error.xhtml#aebb433114d67e8c71b37a3de18019571" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1error_1_1_error.xhtml#aebb433114d67e8c71b37a3de18019571" target="_top" xlink:title="Returns the message&#39;s content.">
 <polygon fill="white" stroke="black" points="161,-0.5 161,-30.5 267,-30.5 267,-0.5 161,-0.5"/>
 <text text-anchor="start" x="169" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 <text text-anchor="middle" x="214" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::what</text>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node9 -->
 <g id="node4" class="node"><title>Node9</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="497,-136 497,-155 592,-155 592,-136 497,-136"/>
 <text text-anchor="middle" x="544.5" y="-143" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -111,7 +111,7 @@
 </g>
 <!-- Node12 -->
 <g id="node7" class="node"><title>Node12</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a912e76dc7854f9c1816533f6f8571767" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a912e76dc7854f9c1816533f6f8571767" target="_top" xlink:title="type(obj).__name__">
 <polygon fill="white" stroke="black" points="323,-74.5 323,-104.5 454,-104.5 454,-74.5 323,-74.5"/>
 <text text-anchor="start" x="331" y="-92.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="388.5" y="-81.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::classname</text>
@@ -125,7 +125,7 @@
 </g>
 <!-- Node13 -->
 <g id="node8" class="node"><title>Node13</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#afd545e1817cad9ab9f5c84934d83e428" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#afd545e1817cad9ab9f5c84934d83e428" target="_top" xlink:title="type(obj).__module__">
 <polygon fill="white" stroke="black" points="319,-25.5 319,-55.5 458,-55.5 458,-25.5 319,-25.5"/>
 <text text-anchor="start" x="327" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="388.5" y="-32.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::modulename</text>

@@ -1,24 +1,24 @@
 <map id="openage::event::Loop::update_changes" name="openage::event::Loop::update_changes">
-<area shape="rect" id="node1" title=" " alt="" coords="5,231,151,272"/>
-<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_queue.xhtml#a2f04cadaa84a8629b94020cb26b999ad" title=" " alt="" coords="199,71,385,112"/>
-<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_event_queue.xhtml#a8f45163ce661267cf80d811a776c8733" title=" " alt="" coords="199,136,385,177"/>
-<area shape="rect" id="node10" href="$classopenage_1_1event_1_1_event_queue.xhtml#a501fe0a6571ddf1a97bf6d7a6328d924" title=" " alt="" coords="199,201,385,243"/>
-<area shape="rect" id="node11" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="231,267,353,294"/>
+<area shape="rect" id="node1" title="Call all the time change functions." alt="" coords="5,231,151,272"/>
+<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_queue.xhtml#a2f04cadaa84a8629b94020cb26b999ad" title="All changes (fetched with get_changes) have been processed, so we can clear the change_set." alt="" coords="199,71,385,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_event_queue.xhtml#a8f45163ce661267cf80d811a776c8733" title="An update to existing events has to be applied." alt="" coords="199,136,385,177"/>
+<area shape="rect" id="node10" href="$classopenage_1_1event_1_1_event_queue.xhtml#a501fe0a6571ddf1a97bf6d7a6328d924" title="Get the change_set to process changes." alt="" coords="199,201,385,243"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title="Convenience method that makes use of the &#39;general&#39; LogSource." alt="" coords="231,267,353,294"/>
 <area shape="rect" id="node17" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="257,326,327,353"/>
-<area shape="rect" id="node20" href="$classopenage_1_1event_1_1_event_queue.xhtml#a42433f50adffb7e0a20c43889292e54c" title=" " alt="" coords="199,413,385,455"/>
+<area shape="rect" id="node20" href="$classopenage_1_1event_1_1_event_queue.xhtml#a42433f50adffb7e0a20c43889292e54c" title="Remove the given event from the queue." alt="" coords="199,413,385,455"/>
 <area shape="rect" id="node4" href="$classopenage_1_1event_1_1_event_store.xhtml#a4be75c01219e59abd20b9f906c8b7154" title=" " alt="" coords="439,5,619,47"/>
 <area shape="rect" id="node5" href="$classopenage_1_1event_1_1_event_store.xhtml#ae17679f5da2da238bc0f423befda3850" title=" " alt="" coords="439,71,619,112"/>
 <area shape="rect" id="node8" href="$classopenage_1_1event_1_1_event_store.xhtml#ae8a67463b44b369d9402186cf332e247" title=" " alt="" coords="439,136,619,177"/>
-<area shape="rect" id="node6" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" title=" " alt="" coords="693,5,848,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" title="adds the given item to the heap." alt="" coords="693,5,848,47"/>
 <area shape="rect" id="node7" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a45599db3b89b27ad5c53ca900a67df85" title=" " alt="" coords="693,71,848,112"/>
-<area shape="rect" id="node9" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" title=" " alt="" coords="693,136,848,177"/>
-<area shape="rect" id="node12" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="455,201,602,243"/>
-<area shape="rect" id="node13" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="433,267,624,294"/>
-<area shape="rect" id="node14" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="701,201,840,243"/>
+<area shape="rect" id="node9" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#aab81daeebac3d236ced4a85117483d76" title="After a change, call this to reorganize the given node." alt="" coords="693,136,848,177"/>
+<area shape="rect" id="node12" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title="Returns a reference to a general named log source, for use by log::log()." alt="" coords="455,201,602,243"/>
+<area shape="rect" id="node13" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level))." alt="" coords="433,267,624,294"/>
+<area shape="rect" id="node14" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title="Returns a reference to the global stdout logsink object; Initializes the object if needed." alt="" coords="701,201,840,243"/>
 <area shape="rect" id="node15" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="685,267,857,308"/>
 <area shape="rect" id="node16" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="672,333,869,359"/>
-<area shape="rect" id="node18" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="445,319,612,360"/>
-<area shape="rect" id="node19" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="445,384,612,425"/>
+<area shape="rect" id="node18" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title="Factory function to construct a fixed&#45;point number with a given raw value." alt="" coords="445,319,612,360"/>
+<area shape="rect" id="node19" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title="Converter to retrieve the raw value of the fixed&#45;point number." alt="" coords="445,384,612,425"/>
 <area shape="rect" id="node21" href="$classopenage_1_1event_1_1_event_store.xhtml#acf182eb2f89c80bb6c790a24d192398f" title=" " alt="" coords="439,449,619,491"/>
-<area shape="rect" id="node22" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" title=" " alt="" coords="682,449,859,491"/>
+<area shape="rect" id="node22" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a8f6c87e73e47397b92a2766989a30c0f" title="Unlink a node from the heap." alt="" coords="682,449,859,491"/>
 </map>

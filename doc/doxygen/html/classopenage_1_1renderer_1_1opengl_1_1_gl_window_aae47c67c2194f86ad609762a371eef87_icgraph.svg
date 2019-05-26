@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 435,-35 435,4 -4,4"/>
 <!-- Node37 -->
 <g id="node1" class="node"><title>Node37</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Polls for window events, calls callbacks for these events, swaps front and back framebuffers to prese...">
 <polygon fill="#bfbfbf" stroke="black" points="300,-0.5 300,-30.5 431,-30.5 431,-0.5 300,-0.5"/>
 <text text-anchor="start" x="308" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="365.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlWindow::update</text>

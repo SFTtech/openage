@@ -1,4 +1,4 @@
 <map id="openage::gui::ActionsListModel::icons_source_changed" name="openage::gui::ActionsListModel::icons_source_changed">
 <area shape="rect" id="node1" title=" " alt="" coords="223,5,421,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_actions_list_model.xhtml#a9ee0f271abba58e0488bfa698aeff161" title=" " alt="" coords="5,5,175,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_actions_list_model.xhtml#a9ee0f271abba58e0488bfa698aeff161" title="Utility function to create a QUrl from a string and set it as iconsSource." alt="" coords="5,5,175,47"/>
 </map>

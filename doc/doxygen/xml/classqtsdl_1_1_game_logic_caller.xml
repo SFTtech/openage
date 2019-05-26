@@ -28,9 +28,9 @@
           <declname>game_logic_callback</declname>
         </param>
         <briefdescription>
+<para>Set up signal to be able to run code in the game logic thread. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set up signal to be able to run code in the game logic thread. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -83,9 +83,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Attaches to the GuiCallbackImpl. </para>
     </briefdescription>
     <detaileddescription>
-<para>Attaches to the GuiCallbackImpl. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6171">

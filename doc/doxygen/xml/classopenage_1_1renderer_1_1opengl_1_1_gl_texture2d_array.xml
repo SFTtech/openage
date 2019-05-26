@@ -33,9 +33,10 @@
           <defname>data</defname>
         </param>
         <briefdescription>
+<para>Constructs an array of the same number of layers as the size of the given vector, and fills the layers with the corresponding vector element. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructs an array of the same number of layers as the size of the given vector, and fills the layers with the corresponding vector element. The texture formats in all vector elements must be the same as defined by Textur2dInfo::operator==. </para>
+<para>The texture formats in all vector elements must be the same as defined by Textur2dInfo::operator==. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -59,9 +60,9 @@
           <declname>layer_info</declname>
         </param>
         <briefdescription>
+<para>Constructs an array of ln_layers empty layers, with the per-layer texture format specified in layer_info. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructs an array of ln_layers empty layers, with the per-layer texture format specified in layer_info. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -82,9 +83,10 @@
           <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref> const &amp;</type>
         </param>
         <briefdescription>
+<para>Uploads the given texture data into the specified layer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Uploads the given texture data into the specified layer. <computeroutput>layer</computeroutput> must be strictly less than the size of the array and the data format must match the format this array was originally created with. </para>
+<para><computeroutput>layer</computeroutput> must be strictly less than the size of the array and the data format must match the format this array was originally created with. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

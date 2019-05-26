@@ -76,9 +76,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Definition of a single sound resource file to load. </para>
     </briefdescription>
     <detaileddescription>
-<para>Definition of a single sound resource file to load. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="528">

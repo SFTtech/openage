@@ -46,7 +46,7 @@ var searchData=
   ['use_5fwith',['use_with',['../classopenage_1_1util_1_1_external_o_string_stream.xhtml#aa35d807fa9bc56758974bbe602bf1a8e',1,'openage::util::ExternalOStringStream']]],
   ['used_5fchunks',['used_chunks',['../classopenage_1_1_terrain.xhtml#a143090daace4caa26b8f0e9af5b4b69c',1,'openage::Terrain']]],
   ['utf8',['utf8',['../namespaceopenage_1_1input.xhtml#a66c182e7a6c17284f918dd401d6fded3',1,'openage::input']]],
-  ['utf8_5fdecode',['utf8_decode',['../namespaceopenage_1_1util.xhtml#a3e9f9bfa57d843330bd6d4bf85397433',1,'openage::util']]],
+  ['utf8_5fdecode',['utf8_decode',['../namespaceopenage_1_1util.xhtml#a63f7f7718f8133a37ac2e63dca01afb7',1,'openage::util']]],
   ['utf8_5fdecoder',['utf8_decoder',['../classopenage_1_1util_1_1utf8__decoder.xhtml#ae33f30385d0dd3708f7465705c9a73de',1,'openage::util::utf8_decoder']]],
   ['utf8_5fencode',['utf8_encode',['../namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671',1,'openage::util']]],
   ['utf8_5flast_5fchar_5fsize',['utf8_last_char_size',['../namespaceopenage_1_1util.xhtml#a5519d25810f698275993214ce79016c7',1,'openage::util']]],

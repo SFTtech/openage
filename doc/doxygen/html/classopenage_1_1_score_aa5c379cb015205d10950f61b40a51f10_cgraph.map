@@ -1,5 +1,5 @@
 <map id="openage::Score::remove_score" name="openage::Score::remove_score">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,168,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd" title=" " alt="" coords="216,5,376,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_score.xhtml#ad71b795068636d35bd174acde2e080fd" title="Calculates the total score from the sub&#45;scores." alt="" coords="216,5,376,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_score.xhtml#a544fc32ebabe81bb0122dcd4ea9c7931" title=" " alt="" coords="424,5,563,47"/>
 </map>

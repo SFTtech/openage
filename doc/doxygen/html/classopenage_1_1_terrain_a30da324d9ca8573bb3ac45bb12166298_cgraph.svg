@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-24 475,-24 475,4 -4,4"/>
 <!-- Node29 -->
 <g id="node1" class="node"><title>Node29</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="get the blendomatic mask with the given mask id.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-19.5 160,-19.5 160,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="80" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::blending_mask</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node30 -->
 <g id="node2" class="node"><title>Node30</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#adfa825aeaadbb2ce0a8dd13c335ffee1" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#adfa825aeaadbb2ce0a8dd13c335ffee1" target="_top" xlink:title="validate whether the given mask id is available.">
 <polygon fill="white" stroke="black" points="196,-0.5 196,-19.5 352,-19.5 352,-0.5 196,-0.5"/>
 <text text-anchor="middle" x="274" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::validate_mask</text>
 </a>

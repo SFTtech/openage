@@ -76,7 +76,7 @@
 </g>
 <!-- Node26 -->
 <g id="node6" class="node"><title>Node26</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a54659e7f41b37d889bba34111bb003d0" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a54659e7f41b37d889bba34111bb003d0" target="_top" xlink:title="Create a texture from an image file.">
 <polygon fill="white" stroke="black" points="324,-65 324,-106 452,-106 452,-65 324,-65"/>
 <text text-anchor="start" x="332" y="-94" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="332" y="-83" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dData</text>
@@ -104,7 +104,7 @@
 </g>
 <!-- Node25 -->
 <g id="node5" class="node"><title>Node25</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_texture.xhtml#ac02524c602d22cecd5a06199e113cc43" target="_top" xlink:title="Reload the image file.">
 <polygon fill="white" stroke="black" points="0,-131 0,-150 124,-150 124,-131 0,-131"/>
 <text text-anchor="middle" x="62" y="-138" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::reload</text>
 </a>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node27 -->
 <g id="node7" class="node"><title>Node27</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#a01acf205a4e2c76612af7d0e36123496" target="_top" xlink:title="Flips the texture along the Y&#45;axis and returns the flipped data with the same info.">
 <polygon fill="white" stroke="black" points="160,-65 160,-106 288,-106 288,-65 160,-65"/>
 <text text-anchor="start" x="168" y="-94" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="168" y="-83" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dData</text>

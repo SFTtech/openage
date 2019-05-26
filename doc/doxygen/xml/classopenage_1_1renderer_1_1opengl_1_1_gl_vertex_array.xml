@@ -5,9 +5,10 @@
     <basecompoundref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" prot="public" virt="non-virtual">openage::renderer::opengl::GlSimpleObject</basecompoundref>
     <includes refid="vertex__array_8h" local="no">vertex_array.h</includes>
     <briefdescription>
+<para>An OpenGL Vertex Array Object. </para>
     </briefdescription>
     <detaileddescription>
-<para>An OpenGL Vertex Array Object. It represents a mapping between a buffer that contains vertex data and a way for the context to interpret it. </para>
+<para>It represents a mapping between a buffer that contains vertex data and a way for the context to interpret it. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4735">

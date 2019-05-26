@@ -108,7 +108,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node39 -->
 <g id="node4" class="node"><title>Node39</title>
-<g id="a_node4"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="340,-162.5 340,-192.5 472,-192.5 472,-162.5 340,-162.5"/>
 <text text-anchor="start" x="348" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemBase</text>
 <text text-anchor="middle" x="406" y="-169.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>
@@ -136,7 +136,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node40 -->
 <g id="node5" class="node"><title>Node40</title>
-<g id="a_node5"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="518,-162.5 518,-192.5 650,-192.5 650,-162.5 518,-162.5"/>
 <text text-anchor="start" x="526" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 <text text-anchor="middle" x="584" y="-169.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>
@@ -164,7 +164,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node43 -->
 <g id="node8" class="node"><title>Node43</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title="std::for_each except just on containers.">
 <polygon fill="white" stroke="black" points="526.5,-119 526.5,-138 641.5,-138 641.5,-119 526.5,-119"/>
 <text text-anchor="middle" x="584" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>

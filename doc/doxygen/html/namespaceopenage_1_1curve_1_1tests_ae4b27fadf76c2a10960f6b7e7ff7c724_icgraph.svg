@@ -163,7 +163,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node201 -->
 <g id="node9" class="node"><title>Node201</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a4a18e067efb8d2a6aa4f738cb8b391b5" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a4a18e067efb8d2a6aa4f738cb8b391b5" target="_top" xlink:title="Erase a single element from the curve.">
 <polygon fill="white" stroke="black" points="1155.5,-284.5 1155.5,-314.5 1284.5,-314.5 1284.5,-284.5 1155.5,-284.5"/>
 <text text-anchor="start" x="1163.5" y="-302.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="1220" y="-291.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::erase</text>
@@ -177,7 +177,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node202 -->
 <g id="node10" class="node"><title>Node202</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#aae7b3fad452aa1f223edc93e5b38a518" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#aae7b3fad452aa1f223edc93e5b38a518" target="_top" xlink:title="Erase all elements that come after this last valid element.">
 <polygon fill="white" stroke="black" points="1155.5,-235.5 1155.5,-265.5 1284.5,-265.5 1284.5,-235.5 1155.5,-235.5"/>
 <text text-anchor="start" x="1163.5" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="1220" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::erase_after</text>
@@ -191,7 +191,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node203 -->
 <g id="node11" class="node"><title>Node203</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_attack_action.xhtml#a1a76ce122961d9e09c526b8d0f2f513f" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_attack_action.xhtml#a1a76ce122961d9e09c526b8d0f2f513f" target="_top" xlink:title="add a projectile game object which moves towards the target">
 <polygon fill="white" stroke="black" points="1162,-186.5 1162,-216.5 1278,-216.5 1278,-186.5 1162,-186.5"/>
 <text text-anchor="start" x="1170" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="1220" y="-193.5" font-family="Helvetica,sans-Serif" font-size="10.00">::fire_projectile</text>
@@ -205,7 +205,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node206 -->
 <g id="node14" class="node"><title>Node206</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title="std::for_each except just on containers.">
 <polygon fill="white" stroke="black" points="1162.5,-148 1162.5,-167 1277.5,-167 1277.5,-148 1162.5,-148"/>
 <text text-anchor="middle" x="1220" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>
@@ -246,7 +246,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node223 -->
 <g id="node31" class="node"><title>Node223</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1curve_1_1_continuous.xhtml#a2af59e706890b3ed70d0059ba1ae766e" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1curve_1_1_continuous.xhtml#a2af59e706890b3ed70d0059ba1ae766e" target="_top" xlink:title="will interpolate between the keyframes linearly based on the time.">
 <polygon fill="white" stroke="black" points="1142,-863 1142,-882 1298,-882 1298,-863 1142,-863"/>
 <text text-anchor="middle" x="1220" y="-870" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Continuous::get</text>
 </a>
@@ -259,7 +259,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node225 -->
 <g id="node33" class="node"><title>Node225</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#ab4746bae3f4c7d01312e530b0e5150d5" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#ab4746bae3f4c7d01312e530b0e5150d5" target="_top" xlink:title="Does not interpolate anything, just returns gives the raw value of the last keyframe with time &lt;= t.">
 <polygon fill="white" stroke="black" points="1148.5,-1000 1148.5,-1019 1291.5,-1019 1291.5,-1000 1148.5,-1000"/>
 <text text-anchor="middle" x="1220" y="-1007" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Discrete::get</text>
 </a>
@@ -272,7 +272,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node226 -->
 <g id="node34" class="node"><title>Node226</title>
-<g id="a_node34"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#a9be982a0d41cb6b5f2968aafcf147c82" target="_top" xlink:title=" ">
+<g id="a_node34"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#a9be982a0d41cb6b5f2968aafcf147c82" target="_top" xlink:title="Return, if existing, the time and value of keyframe with time &lt; t.">
 <polygon fill="white" stroke="black" points="1158,-813.5 1158,-843.5 1282,-843.5 1282,-813.5 1158,-813.5"/>
 <text text-anchor="start" x="1166" y="-831.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Discrete</text>
 <text text-anchor="middle" x="1220" y="-820.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_previous</text>
@@ -286,7 +286,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node227 -->
 <g id="node35" class="node"><title>Node227</title>
-<g id="a_node35"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#a4b2bddacdb81de7e9d1f207ca7cd15c2" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classopenage_1_1curve_1_1_discrete.xhtml#a4b2bddacdb81de7e9d1f207ca7cd15c2" target="_top" xlink:title="Return the last time and keyframe with time &lt;= t.">
 <polygon fill="white" stroke="black" points="1158,-764.5 1158,-794.5 1282,-794.5 1282,-764.5 1158,-764.5"/>
 <text text-anchor="start" x="1166" y="-782.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Discrete</text>
 <text text-anchor="middle" x="1220" y="-771.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_time</text>
@@ -314,7 +314,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node229 -->
 <g id="node37" class="node"><title>Node229</title>
-<g id="a_node37"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a675d4e01acc9d9d063cfd38b2b557752" target="_top" xlink:title=" ">
+<g id="a_node37"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a675d4e01acc9d9d063cfd38b2b557752" target="_top" xlink:title="Get the last element with e&#45;&gt;time &lt;= time, given a hint where to start the search.">
 <polygon fill="white" stroke="black" points="1155.5,-715.5 1155.5,-745.5 1284.5,-745.5 1284.5,-715.5 1155.5,-715.5"/>
 <text text-anchor="start" x="1163.5" y="-733.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="1220" y="-722.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::last</text>
@@ -356,7 +356,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node234 -->
 <g id="node42" class="node"><title>Node234</title>
-<g id="a_node42"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title=" ">
+<g id="a_node42"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title="places hovering building">
 <polygon fill="white" stroke="black" points="1164.5,-568.5 1164.5,-598.5 1275.5,-598.5 1275.5,-568.5 1164.5,-568.5"/>
 <text text-anchor="start" x="1172.5" y="-586.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="1220" y="-575.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place_selection</text>
@@ -370,7 +370,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node236 -->
 <g id="node44" class="node"><title>Node236</title>
-<g id="a_node44"><a xlink:href="namespaceopenage_1_1util.xhtml#a1f21bbbe0a2bfda459aa086ee71f1abd" target="_top" xlink:title=" ">
+<g id="a_node44"><a xlink:href="namespaceopenage_1_1util.xhtml#a1f21bbbe0a2bfda459aa086ee71f1abd" target="_top" xlink:title="Filters items from a container which satisfy a certain predicate.">
 <polygon fill="white" stroke="black" points="1153.5,-530 1153.5,-549 1286.5,-549 1286.5,-530 1153.5,-530"/>
 <text text-anchor="middle" x="1220" y="-537" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::remove_from</text>
 </a>
@@ -411,7 +411,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node239 -->
 <g id="node47" class="node"><title>Node239</title>
-<g id="a_node47"><a xlink:href="classopenage_1_1_train_action.xhtml#af5515a9c445b00f4dd69348e7177c94c" target="_top" xlink:title=" ">
+<g id="a_node47"><a xlink:href="classopenage_1_1_train_action.xhtml#af5515a9c445b00f4dd69348e7177c94c" target="_top" xlink:title="each action has its own update functionality which gets called when this is the active action">
 <polygon fill="white" stroke="black" points="1166,-480.5 1166,-510.5 1274,-510.5 1274,-480.5 1166,-480.5"/>
 <text text-anchor="start" x="1174" y="-498.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TrainAction</text>
 <text text-anchor="middle" x="1220" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update</text>
@@ -440,7 +440,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node204 -->
 <g id="node12" class="node"><title>Node204</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" target="_top" xlink:title="use attack action">
 <polygon fill="white" stroke="black" points="960,-252.5 960,-282.5 1076,-282.5 1076,-252.5 960,-252.5"/>
 <text text-anchor="start" x="968" y="-270.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="1018" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00">::attack</text>
@@ -454,7 +454,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node205 -->
 <g id="node13" class="node"><title>Node205</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" target="_top" xlink:title="Control units action when in range of the target.">
 <polygon fill="white" stroke="black" points="772,-252.5 772,-282.5 888,-282.5 888,-252.5 772,-252.5"/>
 <text text-anchor="start" x="780" y="-270.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttackAction</text>
 <text text-anchor="middle" x="830" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_in_range</text>
@@ -693,7 +693,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node230 -->
 <g id="node38" class="node"><title>Node230</title>
-<g id="a_node38"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a9fe5fdab43afd4c928337654c72171b3" target="_top" xlink:title=" ">
+<g id="a_node38"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a9fe5fdab43afd4c928337654c72171b3" target="_top" xlink:title="Get the last element with e&#45;&gt;time &lt;= time, without a hint where to start searching.">
 <polygon fill="white" stroke="black" points="953.5,-715.5 953.5,-745.5 1082.5,-745.5 1082.5,-715.5 953.5,-715.5"/>
 <text text-anchor="start" x="961.5" y="-733.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="1018" y="-722.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::last</text>
@@ -707,7 +707,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node233 -->
 <g id="node41" class="node"><title>Node233</title>
-<g id="a_node41"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title=" ">
+<g id="a_node41"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="960,-617.5 960,-647.5 1076,-647.5 1076,-617.5 960,-617.5"/>
 <text text-anchor="start" x="968" y="-635.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="1018" y="-624.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -721,7 +721,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node235 -->
 <g id="node43" class="node"><title>Node235</title>
-<g id="a_node43"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node43"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="960,-568.5 960,-598.5 1076,-598.5 1076,-568.5 960,-568.5"/>
 <text text-anchor="start" x="968" y="-586.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="1018" y="-575.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>

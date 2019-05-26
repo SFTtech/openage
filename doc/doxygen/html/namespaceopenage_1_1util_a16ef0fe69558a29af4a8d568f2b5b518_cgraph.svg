@@ -57,7 +57,7 @@ var sectionId = 'dynsection-33';
 <polygon fill="white" stroke="none" points="-4,4 -4,-269.5 547,-269.5 547,4 -4,4"/>
 <!-- Node290 -->
 <g id="node1" class="node"><title>Node290</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="read a single csv file.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-147.5 0,-177.5 97,-177.5 97,-147.5 0,-147.5"/>
 <text text-anchor="start" x="8" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::read</text>
 <text text-anchor="middle" x="48.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">_csv_file</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-33';
 </g>
 <!-- Node294 -->
 <g id="node5" class="node"><title>Node294</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885" target="_top" xlink:title="Read data from the file and return a string.">
 <polygon fill="white" stroke="black" points="292.5,-196.5 292.5,-226.5 386.5,-226.5 386.5,-196.5 292.5,-196.5"/>
 <text text-anchor="start" x="300.5" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::File</text>
 <text text-anchor="middle" x="339.5" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::read</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-33';
 </g>
 <!-- Node293 -->
 <g id="node4" class="node"><title>Node293</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="448,-246 448,-265 543,-265 543,-246 448,-246"/>
 <text text-anchor="middle" x="495.5" y="-253" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

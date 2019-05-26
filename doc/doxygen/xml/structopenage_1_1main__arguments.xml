@@ -48,9 +48,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Used for passing arguments to run_game. </para>
     </briefdescription>
     <detaileddescription>
-<para>Used for passing arguments to run_game.</para>
 <para>pxd:</para>
 <para>cppclass <ref refid="structopenage_1_1main__arguments" kindref="compound">main_arguments</ref>: Path root_path int32_t fps_limit bool gl_debug </para>
     </detaileddescription>

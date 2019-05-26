@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-194 102,-194 102,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="C++ pendant to the python util.fslike.path.Path.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-189.5 98,-189.5 98,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="49" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <polyline fill="none" stroke="black" points="0,-170.5 98,-170.5 "/>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 618,-84 618,4 -4,4"/>
 <!-- Node28 -->
 <g id="node1" class="node"><title>Node28</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="draws outline of this terrain space in current position">
 <polygon fill="#bfbfbf" stroke="black" points="497,-24.5 497,-54.5 614,-54.5 614,-24.5 497,-24.5"/>
 <text text-anchor="start" x="505" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="555.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::draw_outline</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node31 -->
 <g id="node4" class="node"><title>Node31</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="331,-0.5 331,-30.5 458,-30.5 458,-0.5 331,-0.5"/>
 <text text-anchor="start" x="339" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="394.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node30 -->
 <g id="node3" class="node"><title>Node30</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="158.5,-49.5 158.5,-79.5 291.5,-79.5 291.5,-49.5 158.5,-49.5"/>
 <text text-anchor="start" x="166.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <text text-anchor="middle" x="225" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node32 -->
 <g id="node5" class="node"><title>Node32</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="158,-0.5 158,-30.5 292,-30.5 292,-0.5 158,-0.5"/>
 <text text-anchor="start" x="166" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="225" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node33 -->
 <g id="node6" class="node"><title>Node33</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 122,-30.5 122,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="61" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>

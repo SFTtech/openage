@@ -33,9 +33,9 @@
           <declname>entry</declname>
         </param>
         <briefdescription>
+<para>Creates a compiletime lookup table from K to V, where all entries of K must be unique. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a compiletime lookup table from K to V, where all entries of K must be unique.</para>
 <para>usage: constexpr auto bla = create_const_map&lt;type0, type1&gt;(entry0, entry1, ...); </para>
         </detaileddescription>
         <inbodydescription>

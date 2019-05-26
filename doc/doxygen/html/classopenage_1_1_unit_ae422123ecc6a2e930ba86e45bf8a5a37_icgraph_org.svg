@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-122.5 604,-122.5 604,4 -4,4"/>
 <!-- Node73 -->
 <g id="node1" class="node"><title>Node73</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="draws this action by taking the graphic type of the top action the graphic is found from the current ...">
 <polygon fill="#bfbfbf" stroke="black" points="497,-55 497,-74 600,-74 600,-55 497,-55"/>
 <text text-anchor="middle" x="548.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::draw</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node74 -->
 <g id="node2" class="node"><title>Node74</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#af4499be2634985e11b0c10f895978b85" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#af4499be2634985e11b0c10f895978b85" target="_top" xlink:title="an generalized draw function which is useful for drawing annexes">
 <polygon fill="white" stroke="black" points="343,-99 343,-118 446,-118 446,-99 343,-99"/>
 <text text-anchor="middle" x="394.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::draw</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node75 -->
 <g id="node3" class="node"><title>Node75</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="331,-49.5 331,-79.5 458,-79.5 458,-49.5 331,-49.5"/>
 <text text-anchor="start" x="339" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <text text-anchor="middle" x="394.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node78 -->
 <g id="node6" class="node"><title>Node78</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="328,-0.5 328,-30.5 461,-30.5 461,-0.5 328,-0.5"/>
 <text text-anchor="start" x="336" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <text text-anchor="middle" x="394.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node76 -->
 <g id="node4" class="node"><title>Node76</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="158,-49.5 158,-79.5 292,-79.5 292,-49.5 158,-49.5"/>
 <text text-anchor="start" x="166" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <text text-anchor="middle" x="225" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node77 -->
 <g id="node5" class="node"><title>Node77</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" target="_top" xlink:title="set unit in place – return if placement was successful">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 122,-79.5 122,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <text text-anchor="middle" x="61" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place</text>

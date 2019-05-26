@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-279 946,-279 946,4 -4,4"/>
 <!-- Node60 -->
 <g id="node1" class="node"><title>Node60</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Get the last element with e&#45;&gt;time &lt;= time, without a hint where to start searching.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-113.5 0,-143.5 129,-143.5 129,-113.5 0,-113.5"/>
 <text text-anchor="start" x="8" y="-131.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="64.5" y="-120.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::last</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node61 -->
 <g id="node2" class="node"><title>Node61</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a675d4e01acc9d9d063cfd38b2b557752" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a675d4e01acc9d9d063cfd38b2b557752" target="_top" xlink:title="Get the last element with e&#45;&gt;time &lt;= time, given a hint where to start the search.">
 <polygon fill="white" stroke="black" points="165,-113.5 165,-143.5 294,-143.5 294,-113.5 165,-113.5"/>
 <text text-anchor="start" x="173" y="-131.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="229.5" y="-120.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::last</text>

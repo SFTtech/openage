@@ -34,7 +34,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1error_1_1_stack_analyzer.xhtml#a5630036766dda80a645cdfbcfc010348" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1error_1_1_stack_analyzer.xhtml#a5630036766dda80a645cdfbcfc010348" target="_top" xlink:title="Removes all the lower frames that are also present in the current stack.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 149,-30.5 149,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::StackAnalyzer</text>
 <text text-anchor="middle" x="74.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::trim_to_current_stack_frame</text>

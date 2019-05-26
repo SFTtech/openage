@@ -63,9 +63,10 @@
           <declname>textures</declname>
         </param>
         <briefdescription>
+<para>Construct a render target pointing at the given textures. </para>
         </briefdescription>
         <detaileddescription>
-<para>Construct a render target pointing at the given textures. <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> are attached to points specific to their pixel format, e.g. a depth texture will be set as the depth target. </para>
+<para><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> are attached to points specific to their pixel format, e.g. a depth texture will be set as the depth target. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -108,9 +109,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Represents an OpenGL target that can be drawn into. </para>
     </briefdescription>
     <detaileddescription>
-<para>Represents an OpenGL target that can be drawn into. It can be either a framebuffer or the display (the window). </para>
+<para>It can be either a framebuffer or the display (the window). </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4683">

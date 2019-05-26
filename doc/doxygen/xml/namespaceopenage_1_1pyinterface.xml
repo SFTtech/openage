@@ -168,9 +168,9 @@
         <argsstring></argsstring>
         <name>PyObj</name>
         <briefdescription>
+<para>convenience alias </para>
         </briefdescription>
         <detaileddescription>
-<para>convenience alias </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -191,7 +191,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp" bodystart="24" bodyend="-1"/>
-        <referencedby refid="namespaceopenage_1_1pyinterface_1ad8166ad0c6228bd8ad488cb2648ef2f6" compoundref="exctranslate_8cpp" startline="31" endline="41">set_exc_translation_funcs</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a1e67cfae25169883a59e6d15324decfb" compoundref="exctranslate_8cpp" startline="31" endline="41">set_exc_translation_funcs</referencedby>
         <referencedby refid="namespaceopenage_1_1pyinterface_1a17ffe36150248f6802ac372166798637" compoundref="exctranslate_8cpp" startline="47" endline="107">translate_exc_cpp_to_py</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a1ed950b8158655d0bcb54fbb36404873" prot="public" static="no" mutable="no">
@@ -207,7 +207,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp" bodystart="25" bodyend="-1"/>
-        <referencedby refid="namespaceopenage_1_1pyinterface_1ad8166ad0c6228bd8ad488cb2648ef2f6" compoundref="exctranslate_8cpp" startline="31" endline="41">set_exc_translation_funcs</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a1e67cfae25169883a59e6d15324decfb" compoundref="exctranslate_8cpp" startline="31" endline="41">set_exc_translation_funcs</referencedby>
         <referencedby refid="namespaceopenage_1_1pyinterface_1a17ffe36150248f6802ac372166798637" compoundref="exctranslate_8cpp" startline="47" endline="107">translate_exc_cpp_to_py</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a29e783fc0db24c266caed883f5781e96" prot="public" static="no" mutable="no">
@@ -223,7 +223,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp" bodystart="27" bodyend="-1"/>
-        <referencedby refid="namespaceopenage_1_1pyinterface_1ad8166ad0c6228bd8ad488cb2648ef2f6" compoundref="exctranslate_8cpp" startline="31" endline="41">set_exc_translation_funcs</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a1e67cfae25169883a59e6d15324decfb" compoundref="exctranslate_8cpp" startline="31" endline="41">set_exc_translation_funcs</referencedby>
         <referencedby refid="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" compoundref="exctranslate_8cpp" startline="110" endline="134">translate_exc_py_to_cpp</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1aa215bdc802dfaf2c82acb6b3acf3d6e6" prot="public" static="no" mutable="no">
@@ -239,7 +239,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp" bodystart="28" bodyend="-1"/>
-        <referencedby refid="namespaceopenage_1_1pyinterface_1ad8166ad0c6228bd8ad488cb2648ef2f6" compoundref="exctranslate_8cpp" startline="31" endline="41">set_exc_translation_funcs</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a1e67cfae25169883a59e6d15324decfb" compoundref="exctranslate_8cpp" startline="31" endline="41">set_exc_translation_funcs</referencedby>
         <referencedby refid="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" compoundref="exctranslate_8cpp" startline="110" endline="134">translate_exc_py_to_cpp</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1abd497e13d9c1d349faac93274a50dece" prot="public" static="no" mutable="no">
@@ -737,10 +737,10 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="namespaceopenage_1_1pyinterface_1ad8166ad0c6228bd8ad488cb2648ef2f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceopenage_1_1pyinterface_1a1e67cfae25169883a59e6d15324decfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>OAAPI void openage::pyinterface::set_exc_translation_funcs</definition>
-        <argsstring>(void(*raise_cpp_error_impl)(Error *), void(*raise_cpp_pyexception_impl)(PyException *), bool(*check_for_py_exception_impl)(), void(*describe_py_exception_impl)(PyException *))</argsstring>
+        <argsstring>(void(*raise_cpp_error)(Error *), void(*raise_cpp_pyexception)(PyException *), bool(*check_for_py_exception)(), void(*describe_py_exception)(PyException *))</argsstring>
         <name>set_exc_translation_funcs</name>
         <param>
           <type>void(*)(<ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref> *)</type>
@@ -759,9 +759,9 @@
           <declname>describe_py_exception</declname>
         </param>
         <briefdescription>
+<para>Installs the basic interface functions that are used for exception translation. </para>
         </briefdescription>
         <detaileddescription>
-<para>Installs the basic interface functions that are used for exception translation.</para>
 <para>No <ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref> wrappers can be used here, because those internally rely on exception translation themselves, which would lead to</para>
 <para><itemizedlist>
 <listitem><para>infinite loops</para>
@@ -826,9 +826,9 @@ Calls PyErr_Fetch and stores all sorts of information in the <ref refid="classop
         <argsstring>()</argsstring>
         <name>translate_exc_cpp_to_py</name>
         <briefdescription>
+<para>Analyzes the current C++ exception, and creates and raises an analogous Python CPPException object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Analyzes the current C++ exception, and creates and raises an analogous Python CPPException object.</para>
 <para>If there&apos;s no current C++ exception, this terminates the program non-gracefully (std::terminate).</para>
 <para>Designed to be called by auto-generated Cython code; Do not use in any other way. </para>
         </detaileddescription>
@@ -849,9 +849,9 @@ Calls PyErr_Fetch and stores all sorts of information in the <ref refid="classop
         <argsstring>()</argsstring>
         <name>translate_exc_py_to_cpp</name>
         <briefdescription>
+<para>Analyzes the current Python exception, and creates and throws an analogous C++ <ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref> object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Analyzes the current Python exception, and creates and throws an analogous C++ <ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref> object.</para>
 <para>Works, and is designed to be used in, situations where there is no current Python exception (it&apos;s a no-op then). </para>
         </detaileddescription>
         <inbodydescription>
@@ -888,9 +888,9 @@ Calls PyErr_Fetch and stores all sorts of information in the <ref refid="classop
           <declname>functionname</declname>
         </param>
         <briefdescription>
+<para>For use by Python, to initialize a message&apos;s meta data. </para>
         </briefdescription>
         <detaileddescription>
-<para>For use by Python, to initialize a message&apos;s meta data.</para>
 <para>Initializes all values.</para>
 <para>pxd: void init_exc_message(message *msg, string filename, unsigned int lineno, string functionname) noexcept </para>
         </detaileddescription>
@@ -914,9 +914,9 @@ Calls PyErr_Fetch and stores all sorts of information in the <ref refid="classop
           <declname>ref</declname>
         </param>
         <briefdescription>
+<para>Stream operator for printing PyObjects. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stream operator for printing PyObjects </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -938,9 +938,10 @@ Calls PyErr_Fetch and stores all sorts of information in the <ref refid="classop
           <declname>checker</declname>
         </param>
         <briefdescription>
+<para>Adds a Python interface component. </para>
         </briefdescription>
         <detaileddescription>
-<para>Adds a Python interface component. Usually, you&apos;d call this from a component&apos;s constructor.</para>
+<para>Usually, you&apos;d call this from a component&apos;s constructor.</para>
 <para>thisptr is a pointer to the component object.</para>
 <para>checker is a function that must have defined behavior until destroy_py_if_component has been called for thisptr. It shall return true if the object has been properly initialized, and shall not throw any exceptions. </para>
         </detaileddescription>
@@ -951,7 +952,7 @@ Calls PyErr_Fetch and stores all sorts of information in the <ref refid="classop
         <references refid="namespaceopenage_1_1util_1ae411a50a0e24d32ab564979b2df6ed24" compoundref="compiler_8cpp" startline="136" endline="154">openage::util::is_symbol</references>
         <references refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" compoundref="setup_8cpp" startline="22">lock</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
-        <references refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" compoundref="compiler_8cpp" startline="98" endline="133">openage::util::symbol_name</references>
+        <references refid="namespaceopenage_1_1util_1aff957b2c0c7a7eb98cf68468cc04c1d8" compoundref="compiler_8cpp" startline="98" endline="133">openage::util::symbol_name</references>
         <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
         <referencedby refid="classopenage_1_1pyinterface_1_1_py_if_func_1a151c2faee8d91169645204f1eb3a6a22" compoundref="functional_8h" startline="409" endline="418">openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;::PyIfFunc</referencedby>
       </memberdef>
@@ -965,9 +966,10 @@ Calls PyErr_Fetch and stores all sorts of information in the <ref refid="classop
           <declname>thisptr</declname>
         </param>
         <briefdescription>
+<para>Signals that an interface component that has been previously registered via add_py_if_component is no longer valid, e.g. </para>
         </briefdescription>
         <detaileddescription>
-<para>Signals that an interface component that has been previously registered via add_py_if_component is no longer valid, e.g. because its destructor has been invoked. Usually, you&apos;d call this from a component&apos;s destructor. </para>
+<para>because its destructor has been invoked. Usually, you&apos;d call this from a component&apos;s destructor. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -981,9 +983,9 @@ Calls PyErr_Fetch and stores all sorts of information in the <ref refid="classop
         <argsstring>()</argsstring>
         <name>check</name>
         <briefdescription>
+<para>Checks whether all objects that have been registered via add_py_if_component have been properly initialized. </para>
         </briefdescription>
         <detaileddescription>
-<para>Checks whether all objects that have been registered via add_py_if_component have been properly initialized.</para>
 <para>If not, or if components have been destroyed already, raises an exception that contains the component names.</para>
 <para>May be called only once.</para>
 <para>pxd: void <ref refid="namespaceopenage_1_1pyinterface_1a7c3f96bce0d4711ba04a941b5c460b17" kindref="member">check()</ref> except + </para>
@@ -994,7 +996,7 @@ Calls PyErr_Fetch and stores all sorts of information in the <ref refid="classop
         <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
         <references refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" compoundref="setup_8cpp" startline="22">lock</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
-        <references refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" compoundref="compiler_8cpp" startline="98" endline="133">openage::util::symbol_name</references>
+        <references refid="namespaceopenage_1_1util_1aff957b2c0c7a7eb98cf68468cc04c1d8" compoundref="compiler_8cpp" startline="98" endline="133">openage::util::symbol_name</references>
         <referencedby refid="namespaceopenage_1_1cppinterface_1_1setup_1ae1c256c521da867c4f2ee7e9a7460ad3" compoundref="setup_8py" startline="30" endline="59">openage.cppinterface.setup.setup</referencedby>
       </memberdef>
       </sectiondef>

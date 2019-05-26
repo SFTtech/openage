@@ -1,8 +1,8 @@
 <map id="openage::UnitAction::get_heal_range" name="openage::UnitAction::get_heal_range">
-<area shape="rect" id="node1" title=" " alt="" coords="5,71,144,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3" title=" " alt="" coords="192,5,331,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="197,71,325,112"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="196,136,327,177"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="380,78,541,105"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="379,143,543,170"/>
+<area shape="rect" id="node1" title="looks at heal attribute on the unit otherwise returns same as adjacent_range()" alt="" coords="5,71,144,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3" title="a small distance to which units are considered touching when within this distance" alt="" coords="192,5,331,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title="returns attribute based on templated value" alt="" coords="197,71,325,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title="returns whether attribute is available" alt="" coords="196,136,327,177"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title="Get the attribute based on the type." alt="" coords="380,78,541,105"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title="Check if the attribute of the given type exists." alt="" coords="379,143,543,170"/>
 </map>

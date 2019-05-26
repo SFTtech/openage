@@ -1,4 +1,4 @@
 <map id="openage::gui::MainArgsLink" name="openage::gui::MainArgsLink">
-<area shape="rect" id="node1" title=" " alt="" coords="5,131,188,252"/>
+<area shape="rect" id="node1" title="Used to make arguments of the game available in QML." alt="" coords="5,131,188,252"/>
 <area shape="rect" id="node2" title=" " alt="" coords="61,5,132,83"/>
 </map>

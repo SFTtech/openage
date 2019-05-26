@@ -1,6 +1,6 @@
 <map id="openage::UnitAbility::is_ally" name="openage::UnitAbility::is_ally">
 <area shape="rect" id="node1" title=" " alt="" coords="217,71,356,112"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_garrison_ability.xhtml#a9fb1408b1820a14dedf69ca911110727" title=" " alt="" coords="5,5,169,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_repair_ability.xhtml#ace3c32d3f619cdc28abfca9fa684b3e2" title=" " alt="" coords="11,71,163,112"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_heal_ability.xhtml#a9940045e67d852476cf73aec89895218" title=" " alt="" coords="17,136,158,177"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_garrison_ability.xhtml#a9fb1408b1820a14dedf69ca911110727" title="true if the paramaters allow an action to be performed" alt="" coords="5,5,169,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_repair_ability.xhtml#ace3c32d3f619cdc28abfca9fa684b3e2" title="true if the paramaters allow an action to be performed" alt="" coords="11,71,163,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_heal_ability.xhtml#a9940045e67d852476cf73aec89895218" title="true if the paramaters allow an action to be performed" alt="" coords="17,136,158,177"/>
 </map>

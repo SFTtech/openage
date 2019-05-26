@@ -57,7 +57,7 @@ var sectionId = 'dynsection-15';
 <polygon fill="white" stroke="none" points="-4,4 -4,-92.5 801,-92.5 801,4 -4,4"/>
 <!-- Node101 -->
 <g id="node1" class="node"><title>Node101</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Most cases should use above is_down(class, code) instead to avoid relying on sdl types.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-36 0,-66 145,-66 145,-36 0,-36"/>
 <text text-anchor="start" x="8" y="-54" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-43" font-family="Helvetica,sans-Serif" font-size="10.00">::is_down</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node102 -->
 <g id="node2" class="node"><title>Node102</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a60531d6140e41fbff6d48d6811077aab" target="_top" xlink:title="Query stored pressing stat for a key.">
 <polygon fill="white" stroke="black" points="181,-58 181,-88 326,-88 326,-58 181,-58"/>
 <text text-anchor="start" x="189" y="-76" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-65" font-family="Helvetica,sans-Serif" font-size="10.00">::is_down</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node104 -->
 <g id="node4" class="node"><title>Node104</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="545,-38.5 545,-57.5 642,-57.5 642,-38.5 545,-38.5"/>
 <text text-anchor="middle" x="593.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>
@@ -137,7 +137,7 @@ var sectionId = 'dynsection-15';
 </g>
 <!-- Node107 -->
 <g id="node7" class="node"><title>Node107</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="702,-0.5 702,-19.5 797,-19.5 797,-0.5 702,-0.5"/>
 <text text-anchor="middle" x="749.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

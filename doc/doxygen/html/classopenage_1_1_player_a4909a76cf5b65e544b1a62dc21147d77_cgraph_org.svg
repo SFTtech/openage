@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-210.5 673,-210.5 673,4 -4,4"/>
 <!-- Node69 -->
 <g id="node1" class="node"><title>Node69</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Check if the player can make a new unit of the given type.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-93.5 0,-112.5 138,-112.5 138,-93.5 0,-93.5"/>
 <text text-anchor="middle" x="69" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::can_make</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node70 -->
 <g id="node2" class="node"><title>Node70</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a5511f9f158fdeabca07be9d5314d7c38" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a5511f9f158fdeabca07be9d5314d7c38" target="_top" xlink:title="Check if the player has enough resources to deduct the given amount.">
 <polygon fill="white" stroke="black" points="189.5,-176 189.5,-206 298.5,-206 298.5,-176 189.5,-176"/>
 <text text-anchor="start" x="197.5" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::can</text>
 <text text-anchor="middle" x="244" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">_deduct</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node72 -->
 <g id="node4" class="node"><title>Node72</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title="Returns the cost.">
 <polygon fill="white" stroke="black" points="174,-137.5 174,-156.5 314,-156.5 314,-137.5 174,-137.5"/>
 <text text-anchor="middle" x="244" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceCost::get</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node76 -->
 <g id="node8" class="node"><title>Node76</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_player.xhtml#a03454af8fd68e803804e2619b62b7231" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_player.xhtml#a03454af8fd68e803804e2619b62b7231" target="_top" xlink:title="Get the number of units the player has for each unit type id.">
 <polygon fill="white" stroke="black" points="190.5,-88 190.5,-118 297.5,-118 297.5,-88 190.5,-88"/>
 <text text-anchor="start" x="198.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get</text>
 <text text-anchor="middle" x="244" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">_units_have</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node77 -->
 <g id="node9" class="node"><title>Node77</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_player.xhtml#a2befde4e71e0efad0e77bf8525311a79" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_player.xhtml#a2befde4e71e0efad0e77bf8525311a79" target="_top" xlink:title="Get the number of units the player has being made for each unit type id.">
 <polygon fill="white" stroke="black" points="190.5,-39 190.5,-69 297.5,-69 297.5,-39 190.5,-39"/>
 <text text-anchor="start" x="198.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get</text>
 <text text-anchor="middle" x="244" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_units_pending</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node78 -->
 <g id="node10" class="node"><title>Node78</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" target="_top" xlink:title="gets the unique id of this unit type">
 <polygon fill="white" stroke="black" points="188.5,-0.5 188.5,-19.5 299.5,-19.5 299.5,-0.5 188.5,-0.5"/>
 <text text-anchor="middle" x="244" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::id</text>
 </a>
@@ -114,7 +114,7 @@
 </g>
 <!-- Node75 -->
 <g id="node7" class="node"><title>Node75</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_player.xhtml#af95cd6a1823c78ef20a347369901830d" target="_top" xlink:title="The number of units considered part of the workforce.">
 <polygon fill="white" stroke="black" points="372.5,-83 372.5,-113 479.5,-113 479.5,-83 372.5,-83"/>
 <text text-anchor="start" x="380.5" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get</text>
 <text text-anchor="middle" x="426" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00">_workforce_count</text>
@@ -128,7 +128,7 @@
 </g>
 <!-- Node74 -->
 <g id="node6" class="node"><title>Node74</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title="odo remove, here for backwards compatibility">
+<g id="a_node6"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="538,-132 538,-162 669,-162 669,-132 538,-132"/>
 <text text-anchor="start" x="546" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <text text-anchor="middle" x="603.5" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00">::ResourceBundle</text>

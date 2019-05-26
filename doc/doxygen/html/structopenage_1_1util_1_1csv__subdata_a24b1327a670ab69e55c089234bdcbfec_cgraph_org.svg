@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-138 585,-138 585,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Read the data of the lineformat from the collection.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-52 0,-82 92,-82 92,-52 0,-52"/>
 <text text-anchor="start" x="8" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::csv</text>
 <text text-anchor="middle" x="46" y="-59" font-family="Helvetica,sans-Serif" font-size="10.00">_subdata::read</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#a687817b834b18f90124915261c3752a8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#a687817b834b18f90124915261c3752a8" target="_top" xlink:title="This function is the entry point to load the whole file tree recursively.">
 <polygon fill="white" stroke="black" points="128,-52 128,-82 269,-82 269,-52 128,-52"/>
 <text text-anchor="start" x="136" y="-70" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CSVCollection</text>
 <text text-anchor="middle" x="198.5" y="-59" font-family="Helvetica,sans-Serif" font-size="10.00">::read</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node6 -->
 <g id="node5" class="node"><title>Node6</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" target="_top" xlink:title="get the filename (last part) of a given path">
 <polygon fill="white" stroke="black" points="320.5,-76.5 320.5,-95.5 434.5,-95.5 434.5,-76.5 320.5,-76.5"/>
 <text text-anchor="middle" x="377.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::filename</text>
 </a>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node7 -->
 <g id="node6" class="node"><title>Node7</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a954be5116f7af5633dbbc50bac26b0a8" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a954be5116f7af5633dbbc50bac26b0a8" target="_top" xlink:title="return the head (dirname) part of a path.">
 <polygon fill="white" stroke="black" points="321,-38.5 321,-57.5 434,-57.5 434,-38.5 321,-38.5"/>
 <text text-anchor="middle" x="377.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::dirname</text>
 </a>
@@ -86,7 +86,7 @@
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="486,-114.5 486,-133.5 581,-133.5 581,-114.5 486,-114.5"/>
 <text text-anchor="middle" x="533.5" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-111.5 426,-111.5 426,4 -4,4"/>
 <!-- Node11 -->
 <g id="node1" class="node"><title>Node11</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="logable debug info">
 <polygon fill="#bfbfbf" stroke="black" points="0,-33 0,-63 110,-63 110,-33 0,-33"/>
 <text text-anchor="start" x="8" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::Event</text>
 <text text-anchor="middle" x="55" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">::info</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node12 -->
 <g id="node2" class="node"><title>Node12</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_event.xhtml#a99740091e0cdf50a32f93b70967df361" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_event.xhtml#a99740091e0cdf50a32f93b70967df361" target="_top" xlink:title="Return keyboard text as char returns 0 for non&#45;text events.">
 <polygon fill="white" stroke="black" points="163.5,-77 163.5,-107 273.5,-107 273.5,-77 163.5,-77"/>
 <text text-anchor="start" x="171.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::Event</text>
 <text text-anchor="middle" x="218.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">::as_char</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node14 -->
 <g id="node4" class="node"><title>Node14</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="327,-38.5 327,-57.5 422,-57.5 422,-38.5 327,-38.5"/>
 <text text-anchor="middle" x="374.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

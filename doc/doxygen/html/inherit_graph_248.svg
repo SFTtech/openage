@@ -19,7 +19,7 @@
 </g>
 <!-- Node0 -->
 <g id="node2" class="node"><title>Node0</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_external_o_string_stream.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_external_o_string_stream.xhtml" target="_top" xlink:title="Similar to std::ostringstream, but data is written to an external string object.">
 <polygon fill="white" stroke="black" points="88,-0.5 88,-30.5 235,-30.5 235,-0.5 88,-0.5"/>
 <text text-anchor="start" x="96" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalOString</text>
 <text text-anchor="middle" x="161.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Stream</text>

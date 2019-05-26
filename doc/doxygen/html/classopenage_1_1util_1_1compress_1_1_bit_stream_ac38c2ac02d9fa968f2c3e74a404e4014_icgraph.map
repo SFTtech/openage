@@ -1,8 +1,8 @@
 <map id="openage::util::compress::BitStream::read_bytes" name="openage::util::compress::BitStream::read_bytes">
-<area shape="rect" id="node1" title=" " alt="" coords="732,93,893,134"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a9acf1a67f1d14213c39e611068f8d435" title=" " alt="" coords="497,5,684,61"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#af408bfffcc2e2e086066e13e1f6b96b7" title=" " alt="" coords="499,85,683,141"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a32ee58040a10ca9b1b347f7d535d6439" title=" " alt="" coords="504,165,677,221"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" title=" " alt="" coords="268,85,449,141"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" title=" " alt="" coords="5,85,220,141"/>
+<area shape="rect" id="node1" title="for use in bytestream mode." alt="" coords="732,93,893,134"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a9acf1a67f1d14213c39e611068f8d435" title="ensures that at least one byte is available in the input byte buffer." alt="" coords="497,5,684,61"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#af408bfffcc2e2e086066e13e1f6b96b7" title="Reads the given amount of bytes from the current uncompressed block." alt="" coords="499,85,683,141"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a32ee58040a10ca9b1b347f7d535d6439" title="for use in bytestream mode." alt="" coords="504,165,677,221"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" title="See the doc for LZXDecompressor::decompress_next_frame in lzxd.h." alt="" coords="268,85,449,141"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#ad03ce7fd20c3abe824f61dd382bab43c" title="Decompresses a single 32&#45;KiB frame." alt="" coords="5,85,220,141"/>
 </map>

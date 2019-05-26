@@ -1,8 +1,8 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="5,31,189,57"/>
+<area shape="rect" id="node1" href="$classqtsdl_1_1_gui_item_methods.xhtml" title="Member function of the GuiPersistentItem." alt="" coords="5,31,189,57"/>
 <area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="237,5,463,32"/>
 <area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_interface.xhtml" title=" " alt="" coords="259,56,441,83"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="511,56,645,83"/>
-<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_list_model.xhtml" title=" " alt="" coords="693,56,884,83"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item.xhtml" title="Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads." alt="" coords="511,56,645,83"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_list_model.xhtml" title="A shell object fir cores inherited from GuiPropertyMap." alt="" coords="693,56,884,83"/>
 <area shape="rect" id="node6" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="13,81,181,108"/>
 </map>

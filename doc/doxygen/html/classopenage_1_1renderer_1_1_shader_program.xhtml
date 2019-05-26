@@ -147,11 +147,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7ba29dd859811e2c5e6019f6fa962e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6dd8cc82461a8dd2e08087264f658bd"><td class="memTemplParams" colspan="2">template&lt;typename... Ts&gt; </td></tr>
 <tr class="memitem:ab6dd8cc82461a8dd2e08087264f658bd"><td class="memTemplItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classopenage_1_1renderer_1_1_uniform_input.xhtml">UniformInput</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#ab6dd8cc82461a8dd2e08087264f658bd">new_uniform_input</a> (Ts... vals)</td></tr>
+<tr class="memdesc:ab6dd8cc82461a8dd2e08087264f658bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new uniform input (a binding of uniform names to values) for this shader and optionally sets some uniform values.  <a href="#ab6dd8cc82461a8dd2e08087264f658bd">More...</a><br /></td></tr>
 <tr class="separator:ab6dd8cc82461a8dd2e08087264f658bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40d140c46c04de019b5081c5276bf201"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Ts&gt; </td></tr>
 <tr class="memitem:a40d140c46c04de019b5081c5276bf201"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a40d140c46c04de019b5081c5276bf201">update_uniform_input</a> (<a class="el" href="classopenage_1_1renderer_1_1_uniform_input.xhtml">UniformInput</a> *input, const char *unif, T <a class="el" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>, Ts... vals)</td></tr>
+<tr class="memdesc:a40d140c46c04de019b5081c5276bf201"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the given uniform input with new uniform values similarly to new_uniform_input.  <a href="#a40d140c46c04de019b5081c5276bf201">More...</a><br /></td></tr>
 <tr class="separator:a40d140c46c04de019b5081c5276bf201"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9c2c7e1dfa281b4109ef966309193b4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="setup_8cpp.xhtml#a96dd93a55be2a0953e454b56d83f65da">std::map</a>&lt; size_t, <a class="el" href="namespaceopenage_1_1renderer_1_1resources.xhtml#a342b8db8dc29b5bddbb3b4ae987d1ff3">resources::vertex_input_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#ad9c2c7e1dfa281b4109ef966309193b4">vertex_attributes</a> () const =0</td></tr>
+<tr class="memdesc:ad9c2c7e1dfa281b4109ef966309193b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of <em>active</em> vertex attributes in the shader program.  <a href="#ad9c2c7e1dfa281b4109ef966309193b4">More...</a><br /></td></tr>
 <tr class="separator:ad9c2c7e1dfa281b4109ef966309193b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -268,7 +271,8 @@ Protected Member Functions</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_af13b539d6a4bc6b66152bdcd53a50815_icgraph.svg" width="472" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_af13b539d6a4bc6b66152bdcd53a50815_icgraph.svg" width="472" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -298,7 +302,9 @@ template&lt;typename... Ts&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Creates a new uniform input (a binding of uniform names to values) for this shader and optionally sets some uniform values. To do that, just pass two arguments -</p><ul>
+
+<p>Creates a new uniform input (a binding of uniform names to values) for this shader and optionally sets some uniform values. </p>
+<p>To do that, just pass two arguments -</p><ul>
 <li>a string literal and the value for that uniform for any uniform you want to set. For example new_uniform_input("color", { 0.5, 0.5, 0.5, 1.0 }, "num", 5) will set "color" to { 0.5, 0.5, 0.5, 0.5 } and "num" to 5. Types are important here and a type mismatch between the uniform variable and the input might result in an error. </li>
 </ul>
 
@@ -312,7 +318,8 @@ template&lt;typename... Ts&gt; </div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_ab6dd8cc82461a8dd2e08087264f658bd_cgraph.svg" width="472" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_ab6dd8cc82461a8dd2e08087264f658bd_cgraph.svg" width="472" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -826,7 +833,8 @@ template&lt;typename... Ts&gt; </div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a52b69e9c86264d23b4af619137e30f04_icgraph.svg" width="444" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a52b69e9c86264d23b4af619137e30f04_icgraph.svg" width="444" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1485,7 +1493,9 @@ template&lt;typename T , typename... Ts&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the given uniform input with new uniform values similarly to new_uniform_input. For example, update_uniform_input(in, "awesome", true) will set the "awesome" uniform in addition to whatever values were in the uniform input before. </p>
+
+<p>Updates the given uniform input with new uniform values similarly to new_uniform_input. </p>
+<p>For example, update_uniform_input(in, "awesome", true) will set the "awesome" uniform in addition to whatever values were in the uniform input before. </p>
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00093">93</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                                                        {</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a52b69e9c86264d23b4af619137e30f04">update_uniform_input</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a52b69e9c86264d23b4af619137e30f04">update_uniform_input</a>(input, vals...);</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div><div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
@@ -1497,7 +1507,8 @@ template&lt;typename T , typename... Ts&gt; </div>
 <div id="dynsection-25-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-25-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a40d140c46c04de019b5081c5276bf201_cgraph.svg" width="376" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a40d140c46c04de019b5081c5276bf201_cgraph.svg" width="376" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1524,7 +1535,9 @@ template&lt;typename T , typename... Ts&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns a list of <em>active</em> vertex attributes in the shader program. Active attributes are those which have an effect on the shader output, meaning they are included in the output calculation and are not unused. Inactive attributes may or may not be present in the list - in particular, in the OpenGL implementation they will most likely be missing. The returned value is a map from the attribute location to its type. Locations need not be consecutive. </p>
+
+<p>Returns a list of <em>active</em> vertex attributes in the shader program. </p>
+<p>Active attributes are those which have an effect on the shader output, meaning they are included in the output calculation and are not unused. Inactive attributes may or may not be present in the list - in particular, in the OpenGL implementation they will most likely be missing. The returned value is a map from the attribute location to its type. Locations need not be consecutive. </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#a9a35d65a5b9222e45bb82d4d7f5c4af4">openage::renderer::opengl::GlShaderProgram</a>.</p>
 

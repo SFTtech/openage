@@ -43,9 +43,10 @@
           <declname>link</declname>
         </param>
         <briefdescription>
+<para>Establish link from the core to the shell. </para>
         </briefdescription>
         <detaileddescription>
-<para>Establish link from the core to the shell. Core must have a public &apos;gui::GuiItemLink *gui_link` member. </para>
+<para>Core must have a public &apos;gui::GuiItemLink *gui_link` member. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -53,9 +54,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Helper to hide the type of the core. </para>
     </briefdescription>
     <detaileddescription>
-<para>Helper to hide the type of the core. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="6545">

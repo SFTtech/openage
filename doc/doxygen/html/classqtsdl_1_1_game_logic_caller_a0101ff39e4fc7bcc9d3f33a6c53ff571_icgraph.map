@@ -1,6 +1,6 @@
 <map id="qtsdl::GameLogicCaller::set_game_logic_callback" name="qtsdl::GameLogicCaller::set_game_logic_callback">
-<area shape="rect" id="node1" title=" " alt="" coords="1373,39,1549,80"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" title=" " alt="" coords="1149,39,1325,80"/>
+<area shape="rect" id="node1" title="Set up signal to be able to run code in the game logic thread." alt="" coords="1373,39,1549,80"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" title="Set up signal to be able to run code in the game logic thread." alt="" coords="1149,39,1325,80"/>
 <area shape="rect" id="node3" href="$classqtsdl_1_1_gui_subtree_impl.xhtml#a766c2b35a935c60fcbfcc6758d908ecb" title=" " alt="" coords="951,39,1101,80"/>
 <area shape="rect" id="node4" href="$classqtsdl_1_1_gui_subtree_impl.xhtml#aed216357736342148f86afb0d73f3fdd" title=" " alt="" coords="709,39,903,80"/>
 <area shape="rect" id="node5" href="$classqtsdl_1_1_gui_subtree_impl.xhtml#aea9b559c07846786ebcf6c41ef58ff78" title=" " alt="" coords="515,5,661,47"/>

@@ -130,9 +130,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>For usage by &quot;Py Interface Functions&quot;, i.e. </para>
     </briefdescription>
     <detaileddescription>
-<para>For usage by &quot;Py Interface Functions&quot;, i.e. empty global function pointers in libopenage that get filled by Cython at initialization time.</para>
+<para>empty global function pointers in libopenage that get filled by Cython at initialization time.</para>
 <para>Use only for global objects that have associated symbol names (this is enforced).</para>
 <para>The interface for <ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref> is identical to that of <ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>, so we&apos;ll simply typedef them to avoid the redundant pxd lines from above.</para>
 <para>pxd:</para>

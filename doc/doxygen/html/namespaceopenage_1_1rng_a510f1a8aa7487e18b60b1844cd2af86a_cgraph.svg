@@ -57,7 +57,7 @@ var sectionId = 'dynsection-10';
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 584,-84 584,4 -4,4"/>
 <!-- Node94 -->
 <g id="node1" class="node"><title>Node94</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns a seed based on time since epoch as well as data from std::random_device if available.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-30 0,-49 137,-49 137,-30 0,-30"/>
 <text text-anchor="middle" x="68.5" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::random_seed</text>
 </a>
@@ -78,7 +78,7 @@ var sectionId = 'dynsection-10';
 </g>
 <!-- Node96 -->
 <g id="node3" class="node"><title>Node96</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title="returns the number of nanoseconds since the UNIX epoch.">
 <polygon fill="white" stroke="black" points="344.5,-49.5 344.5,-79.5 449.5,-79.5 449.5,-49.5 344.5,-49.5"/>
 <text text-anchor="start" x="352.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="397" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_real_time</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 287,-46 287,4 -4,4"/>
 <!-- Node15 -->
 <g id="node1" class="node"><title>Node15</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Given a physical device and a surface, checks whether the device is capable of presenting to the surf...">
 <polygon fill="#bfbfbf" stroke="black" points="139,-0.5 139,-41.5 283,-41.5 283,-0.5 139,-0.5"/>
 <text text-anchor="start" x="147" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="147" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">vulkan::VlkGraphicsDevice</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 436,-133 436,4 -4,4"/>
 <!-- Node23 -->
 <g id="node1" class="node"><title>Node23</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Gets the name of the research.">
 <polygon fill="#bfbfbf" stroke="black" points="310,-49.5 310,-79.5 432,-79.5 432,-49.5 310,-49.5"/>
 <text text-anchor="start" x="318" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchType</text>
 <text text-anchor="middle" x="371" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>

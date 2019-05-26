@@ -73,7 +73,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_texture2d.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_texture2d.xhtml" target="_top" xlink:title="An abstract base for a handle to a texture buffer allocated in graphics hardware.">
 <polygon fill="white" stroke="black" points="25.5,-156 25.5,-268 126.5,-268 126.5,-156 25.5,-156"/>
 <text text-anchor="start" x="33.5" y="-256" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="76" y="-245" font-family="Helvetica,sans-Serif" font-size="10.00">Texture2d</text>
@@ -95,7 +95,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml" target="_top" xlink:title="Contains information about a 2D texture surface, without actual texture data.">
 <polygon fill="white" stroke="black" points="0,-332.5 0,-598.5 152,-598.5 152,-332.5 0,-332.5"/>
 <text text-anchor="start" x="8" y="-586.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="76" y="-575.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>
@@ -132,7 +132,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" target="_top" xlink:title="A base class for all classes representing OpenGL Objects to inherit from.">
 <polygon fill="white" stroke="black" points="144.5,-139.5 144.5,-284.5 263.5,-284.5 263.5,-139.5 144.5,-139.5"/>
 <text text-anchor="start" x="152.5" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="204" y="-261.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlSimpleObject</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 426,-35 426,4 -4,4"/>
 <!-- Node99 -->
 <g id="node1" class="node"><title>Node99</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Ensure that the quaternion&#39;s length equals 1.">
 <polygon fill="#bfbfbf" stroke="black" points="297,-0.5 297,-30.5 422,-30.5 422,-0.5 297,-0.5"/>
 <text text-anchor="start" x="305" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="359.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalize</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node100 -->
 <g id="node2" class="node"><title>Node100</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#adaf56c826ceec78d0f4980148ce498fa" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#adaf56c826ceec78d0f4980148ce498fa" target="_top" xlink:title="Return the normalized version of this quaternion.">
 <polygon fill="white" stroke="black" points="136,-0.5 136,-30.5 261,-30.5 261,-0.5 136,-0.5"/>
 <text text-anchor="start" x="144" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="198.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::normalized</text>

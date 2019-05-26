@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-350 1274.5,-350 1274.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Helper to hide the type of the core.">
 <polygon fill="#bfbfbf" stroke="black" points="398,-277.5 398,-345.5 556,-345.5 556,-277.5 398,-277.5"/>
 <text text-anchor="middle" x="477" y="-333.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::PersistentCoreHolderBase</text>
 <polyline fill="none" stroke="black" points="398,-326.5 556,-326.5 "/>

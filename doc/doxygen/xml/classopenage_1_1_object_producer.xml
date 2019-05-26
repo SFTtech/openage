@@ -43,9 +43,9 @@
         <argsstring></argsstring>
         <name>decay</name>
         <briefdescription>
+<para>decaying objects have a timed lifespan </para>
         </briefdescription>
         <detaileddescription>
-<para>decaying objects have a timed lifespan </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -59,9 +59,9 @@
         <argsstring></argsstring>
         <name>on_create</name>
         <briefdescription>
+<para><ref refid="classopenage_1_1_sound" kindref="compound">Sound</ref> id played when object is created or destroyed. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1_sound" kindref="compound">Sound</ref> id played when object is created or destroyed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -170,9 +170,9 @@
         <name>id</name>
         <reimplements refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b">id</reimplements>
         <briefdescription>
+<para>gets the unique id of this unit type </para>
         </briefdescription>
         <detaileddescription>
-<para>gets the unique id of this unit type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -186,9 +186,9 @@
         <name>parent_id</name>
         <reimplements refid="classopenage_1_1_unit_type_1a69f5e92f70063ab01c3096de2d98479f">parent_id</reimplements>
         <briefdescription>
+<para>gets the parent id of this unit type which is used for village base and gather types </para>
         </briefdescription>
         <detaileddescription>
-<para>gets the parent id of this unit type which is used for village base and gather types </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -203,9 +203,9 @@
         <name>name</name>
         <reimplements refid="classopenage_1_1_unit_type_1afadac353590f8c7d7a590f41420fa32c">name</reimplements>
         <briefdescription>
+<para>gets the name of the unit type being produced </para>
         </briefdescription>
         <detaileddescription>
-<para>gets the name of the unit type being produced </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -230,9 +230,9 @@
           <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
         </param>
         <briefdescription>
+<para>Initialize units attributes to this type spec. </para>
         </briefdescription>
         <detaileddescription>
-<para>Initialize units attributes to this type spec</para>
 <para>This can be called using existing units to modify type Ensure that the unit has been placed before seting the units type</para>
 <para><xrefsect id="todo_1_todo000045"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
 </xrefdescription></xrefsect></para>
@@ -282,9 +282,9 @@
           <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
         </param>
         <briefdescription>
+<para>set unit in place <ndash/> return if placement was successful </para>
         </briefdescription>
         <detaileddescription>
-<para>set unit in place <ndash/> return if placement was successful</para>
 <para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object <xrefsect id="todo_1_todo000047"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
@@ -318,9 +318,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>base game data unit type </para>
     </briefdescription>
     <detaileddescription>
-<para>base game data unit type </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4278">

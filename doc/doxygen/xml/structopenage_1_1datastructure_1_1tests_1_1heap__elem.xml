@@ -73,9 +73,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>simplest priority queue element that supports reordering. </para>
     </briefdescription>
     <detaileddescription>
-<para>simplest priority queue element that supports reordering. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="1941">

@@ -1,4 +1,4 @@
 <map id="openage::util::constexpr_::create_truncated_string_literal" name="openage::util::constexpr_::create_truncated_string_literal">
-<area shape="rect" id="node1" title=" " alt="" coords="215,5,388,61"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a6a9d0df52733d9d7ae0bcc1bc561e38f" title=" " alt="" coords="5,13,167,54"/>
+<area shape="rect" id="node1" title="Creates a truncated_string_literal from a regular string literal." alt="" coords="215,5,388,61"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a6a9d0df52733d9d7ae0bcc1bc561e38f" title="Strips a prefix, given as const char *, from a given string literal." alt="" coords="5,13,167,54"/>
 </map>

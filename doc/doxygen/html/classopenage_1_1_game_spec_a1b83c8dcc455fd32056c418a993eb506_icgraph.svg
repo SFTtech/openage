@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 288,-84 288,4 -4,4"/>
 <!-- Node68 -->
 <g id="node1" class="node"><title>Node68</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="get sound by sound id">
 <polygon fill="#bfbfbf" stroke="black" points="170,-24.5 170,-54.5 284,-54.5 284,-24.5 170,-24.5"/>
 <text text-anchor="start" x="178" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="227" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">get_sound</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node69 -->
 <g id="node2" class="node"><title>Node69</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" target="_top" xlink:title="initialise graphic data">
 <polygon fill="white" stroke="black" points="12.5,-49.5 12.5,-79.5 121.5,-79.5 121.5,-49.5 12.5,-49.5"/>
 <text text-anchor="start" x="20.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitTexture</text>
 <text text-anchor="middle" x="67" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::initialise</text>

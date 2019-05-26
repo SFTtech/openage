@@ -66,7 +66,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node146 -->
 <g id="node2" class="node"><title>Node146</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" target="_top" xlink:title="kill a single unit in the selection">
 <polygon fill="white" stroke="black" points="305,-49.5 305,-79.5 422,-79.5 422,-49.5 305,-49.5"/>
 <text text-anchor="start" x="313" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::kill_unit</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node147 -->
 <g id="node3" class="node"><title>Node147</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="0,-24.5 0,-54.5 116,-54.5 116,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -108,7 +108,7 @@ var sectionId = 'dynsection-20';
 </g>
 <!-- Node149 -->
 <g id="node5" class="node"><title>Node149</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title="point unit selection">
 <polygon fill="white" stroke="black" points="305,-0.5 305,-30.5 422,-30.5 422,-0.5 305,-0.5"/>
 <text text-anchor="start" x="313" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="363.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_point</text>

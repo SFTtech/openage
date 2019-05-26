@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1615 836,-1615 836,4 -4,4"/>
 <!-- Node108 -->
 <g id="node1" class="node"><title>Node108</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-655.5 0,-685.5 116,-685.5 116,-655.5 0,-655.5"/>
 <text text-anchor="start" x="8" y="-673.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="58" y="-662.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node109 -->
 <g id="node2" class="node"><title>Node109</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_command.xhtml#a689de4092f9ae801d7f987dda153f0d8" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_command.xhtml#a689de4092f9ae801d7f987dda153f0d8" target="_top" xlink:title="add addition option to this command">
 <polygon fill="white" stroke="black" points="152,-1529 152,-1548 298,-1548 298,-1529 152,-1529"/>
 <text text-anchor="middle" x="225" y="-1536" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Command::add_flag</text>
 </a>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node110 -->
 <g id="node3" class="node"><title>Node110</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0ad857ab54207bdaa9719fc01410f101" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a0ad857ab54207bdaa9719fc01410f101" target="_top" xlink:title="uses command on every selected unit">
 <polygon fill="white" stroke="black" points="348,-1416.5 348,-1446.5 465,-1446.5 465,-1416.5 348,-1416.5"/>
 <text text-anchor="start" x="356" y="-1434.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="406.5" y="-1423.5" font-family="Helvetica,sans-Serif" font-size="10.00">::all_invoke</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node111 -->
 <g id="node4" class="node"><title>Node111</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" target="_top" xlink:title="sends to gui the buttons it should use for the action buttons (if changed)">
 <polygon fill="white" stroke="black" points="162,-857.5 162,-887.5 288,-887.5 288,-857.5 162,-857.5"/>
 <text text-anchor="start" x="170" y="-875.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="225" y="-864.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce_buttons_type</text>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node125 -->
 <g id="node7" class="node"><title>Node125</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a07df9837a02027bf139d1cecfb541b4d" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a07df9837a02027bf139d1cecfb541b4d" target="_top" xlink:title="checks whether there are any military units (i.e.">
 <polygon fill="white" stroke="black" points="348,-939.5 348,-969.5 465,-969.5 465,-939.5 348,-939.5"/>
 <text text-anchor="start" x="356" y="-957.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="406.5" y="-946.5" font-family="Helvetica,sans-Serif" font-size="10.00">::contains_military</text>
@@ -102,7 +102,7 @@
 </g>
 <!-- Node128 -->
 <g id="node10" class="node"><title>Node128</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" target="_top" xlink:title="return this engine&#39;s keybind manager.">
 <polygon fill="white" stroke="black" points="352,-792.5 352,-822.5 461,-822.5 461,-792.5 352,-792.5"/>
 <text text-anchor="start" x="360" y="-810.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="406.5" y="-799.5" font-family="Helvetica,sans-Serif" font-size="10.00">_input_manager</text>
@@ -130,7 +130,7 @@
 </g>
 <!-- Node131 -->
 <g id="node13" class="node"><title>Node131</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a717f49ae6be59bee9eee3b2544156e10" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a717f49ae6be59bee9eee3b2544156e10" target="_top" xlink:title="Create an unbound input context.">
 <polygon fill="white" stroke="black" points="336,-694.5 336,-724.5 477,-724.5 477,-694.5 336,-694.5"/>
 <text text-anchor="start" x="344" y="-712.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="406.5" y="-701.5" font-family="Helvetica,sans-Serif" font-size="10.00">::InputContext</text>
@@ -144,7 +144,7 @@
 </g>
 <!-- Node132 -->
 <g id="node14" class="node"><title>Node132</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a32c669bab23aa04b6d17309b21486ffa" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml#a32c669bab23aa04b6d17309b21486ffa" target="_top" xlink:title="bind a specific action idetifier this is the highest matching priority">
 <polygon fill="white" stroke="black" points="154.5,-655.5 154.5,-685.5 295.5,-685.5 295.5,-655.5 154.5,-655.5"/>
 <text text-anchor="start" x="162.5" y="-673.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
 <text text-anchor="middle" x="225" y="-662.5" font-family="Helvetica,sans-Serif" font-size="10.00">::bind</text>
@@ -158,7 +158,7 @@
 </g>
 <!-- Node133 -->
 <g id="node15" class="node"><title>Node133</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a641ba956ba51e5ec47130cec3ffe9085" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a641ba956ba51e5ec47130cec3ffe9085" target="_top" xlink:title="checks whether there are any builders in the selection">
 <polygon fill="white" stroke="black" points="166.5,-606.5 166.5,-636.5 283.5,-636.5 283.5,-606.5 166.5,-606.5"/>
 <text text-anchor="start" x="174.5" y="-624.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="225" y="-613.5" font-family="Helvetica,sans-Serif" font-size="10.00">::contains_builders</text>
@@ -172,7 +172,7 @@
 </g>
 <!-- Node134 -->
 <g id="node16" class="node"><title>Node134</title>
-<g id="a_node16"><a xlink:href="namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" target="_top" xlink:title="test method for the base CoordXY* classes.">
 <polygon fill="white" stroke="black" points="169.5,-557.5 169.5,-587.5 280.5,-587.5 280.5,-557.5 169.5,-557.5"/>
 <text text-anchor="start" x="177.5" y="-575.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::tests</text>
 <text text-anchor="middle" x="225" y="-564.5" font-family="Helvetica,sans-Serif" font-size="10.00">::coord</text>
@@ -213,7 +213,7 @@
 </g>
 <!-- Node141 -->
 <g id="node21" class="node"><title>Node141</title>
-<g id="a_node21"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="538.5,-437 538.5,-456 629.5,-456 629.5,-437 538.5,-437"/>
 <text text-anchor="middle" x="584" y="-444" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -240,7 +240,7 @@
 </g>
 <!-- Node181 -->
 <g id="node27" class="node"><title>Node181</title>
-<g id="a_node27"><a xlink:href="classopenage_1_1_action_mode.xhtml#a7b0a0d95b032af2e9bf2ede80bca03c8" target="_top" xlink:title=" ">
+<g id="a_node27"><a xlink:href="classopenage_1_1_action_mode.xhtml#a7b0a0d95b032af2e9bf2ede80bca03c8" target="_top" xlink:title="decides which type of right mouse click command to issue based on position.">
 <polygon fill="white" stroke="black" points="169.5,-1071.5 169.5,-1101.5 280.5,-1101.5 280.5,-1071.5 169.5,-1071.5"/>
 <text text-anchor="start" x="177.5" y="-1089.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="225" y="-1078.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_action</text>
@@ -268,7 +268,7 @@
 </g>
 <!-- Node123 -->
 <g id="node29" class="node"><title>Node123</title>
-<g id="a_node29"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title=" ">
+<g id="a_node29"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title="return currently running game or null if a game is not currently running">
 <polygon fill="white" stroke="black" points="515,-1055 515,-1074 653,-1074 653,-1055 515,-1055"/>
 <text text-anchor="middle" x="584" y="-1062" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get_game</text>
 </a>
@@ -281,7 +281,7 @@
 </g>
 <!-- Node183 -->
 <g id="node31" class="node"><title>Node183</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1_engine.xhtml#ab6233b0bf461be4bb1633cd9f7e7f08b" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1_engine.xhtml#ab6233b0bf461be4bb1633cd9f7e7f08b" target="_top" xlink:title="return this engine&#39;s action manager.">
 <polygon fill="white" stroke="black" points="170.5,-294.5 170.5,-324.5 279.5,-324.5 279.5,-294.5 170.5,-294.5"/>
 <text text-anchor="start" x="178.5" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="225" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00">_action_manager</text>
@@ -295,7 +295,7 @@
 </g>
 <!-- Node184 -->
 <g id="node32" class="node"><title>Node184</title>
-<g id="a_node32"><a xlink:href="classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" target="_top" xlink:title="unit types by aoe gamedata unit ids – the unit type which corresponds to an aoe unit id">
 <polygon fill="white" stroke="black" points="159.5,-481 159.5,-500 290.5,-500 290.5,-481 159.5,-481"/>
 <text text-anchor="middle" x="225" y="-488" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get_type</text>
 </a>
@@ -308,7 +308,7 @@
 </g>
 <!-- Node186 -->
 <g id="node34" class="node"><title>Node186</title>
-<g id="a_node34"><a xlink:href="classopenage_1_1_engine.xhtml#a993ef0abb641566f661a99d288ae8e11" target="_top" xlink:title=" ">
+<g id="a_node34"><a xlink:href="classopenage_1_1_engine.xhtml#a993ef0abb641566f661a99d288ae8e11" target="_top" xlink:title="return this engine&#39;s unit selection.">
 <polygon fill="white" stroke="black" points="170.5,-245.5 170.5,-275.5 279.5,-275.5 279.5,-245.5 170.5,-245.5"/>
 <text text-anchor="start" x="178.5" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get</text>
 <text text-anchor="middle" x="225" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">_unit_selection</text>
@@ -322,7 +322,7 @@
 </g>
 <!-- Node187 -->
 <g id="node35" class="node"><title>Node187</title>
-<g id="a_node35"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" target="_top" xlink:title="kill a single unit in the selection">
 <polygon fill="white" stroke="black" points="166.5,-1479.5 166.5,-1509.5 283.5,-1509.5 283.5,-1479.5 166.5,-1479.5"/>
 <text text-anchor="start" x="174.5" y="-1497.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="225" y="-1486.5" font-family="Helvetica,sans-Serif" font-size="10.00">::kill_unit</text>
@@ -336,7 +336,7 @@
 </g>
 <!-- Node190 -->
 <g id="node40" class="node"><title>Node190</title>
-<g id="a_node40"><a xlink:href="classopenage_1_1_unit_container.xhtml#a39947500d16e9d67eb72458f3df7c796" target="_top" xlink:title=" ">
+<g id="a_node40"><a xlink:href="classopenage_1_1_unit_container.xhtml#a39947500d16e9d67eb72458f3df7c796" target="_top" xlink:title="creates a new unit without initialising">
 <polygon fill="white" stroke="black" points="166,-196.5 166,-226.5 284,-226.5 284,-196.5 166,-196.5"/>
 <text text-anchor="start" x="174" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitContainer</text>
 <text text-anchor="middle" x="225" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::new_unit</text>
@@ -350,7 +350,7 @@
 </g>
 <!-- Node191 -->
 <g id="node41" class="node"><title>Node191</title>
-<g id="a_node41"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title=" ">
+<g id="a_node41"><a xlink:href="classopenage_1_1_action_mode.xhtml#a3865e557756044d8183a3d24cd5b8ab4" target="_top" xlink:title="places hovering building">
 <polygon fill="white" stroke="black" points="169.5,-1230.5 169.5,-1260.5 280.5,-1260.5 280.5,-1230.5 169.5,-1230.5"/>
 <text text-anchor="start" x="177.5" y="-1248.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="225" y="-1237.5" font-family="Helvetica,sans-Serif" font-size="10.00">::place_selection</text>
@@ -364,7 +364,7 @@
 </g>
 <!-- Node205 -->
 <g id="node45" class="node"><title>Node205</title>
-<g id="a_node45"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab24ce8fabde7df2ec900e3e1883281a4" target="_top" xlink:title=" ">
+<g id="a_node45"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab24ce8fabde7df2ec900e3e1883281a4" target="_top" xlink:title="Returns true with the passed probability.">
 <polygon fill="white" stroke="black" points="172,-147.5 172,-177.5 278,-177.5 278,-147.5 172,-147.5"/>
 <text text-anchor="start" x="180" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="225" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">probability</text>
@@ -420,7 +420,7 @@
 </g>
 <!-- Node112 -->
 <g id="node5" class="node"><title>Node112</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_action_mode.xhtml#a6288ce1c7b45e988f140ace30845bc69" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_action_mode.xhtml#a6288ce1c7b45e988f140ace30845bc69" target="_top" xlink:title="sends to gui the properties that it needs">
 <polygon fill="white" stroke="red" points="351,-841.5 351,-871.5 462,-871.5 462,-841.5 351,-841.5"/>
 <text text-anchor="start" x="359" y="-859.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="406.5" y="-848.5" font-family="Helvetica,sans-Serif" font-size="10.00">::announce</text>
@@ -454,7 +454,7 @@
 </g>
 <!-- Node130 -->
 <g id="node12" class="node"><title>Node130</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" target="_top" xlink:title="Returns the context on top.">
 <polygon fill="white" stroke="black" points="334,-890.5 334,-920.5 479,-920.5 479,-890.5 334,-890.5"/>
 <text text-anchor="start" x="342" y="-908.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="406.5" y="-897.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_top_context</text>
@@ -505,7 +505,7 @@
 </g>
 <!-- Node139 -->
 <g id="node20" class="node"><title>Node139</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" target="_top" xlink:title="point unit selection">
 <polygon fill="white" stroke="red" points="348,-431.5 348,-461.5 465,-461.5 465,-431.5 348,-431.5"/>
 <text text-anchor="start" x="356" y="-449.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="406.5" y="-438.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_point</text>
@@ -519,7 +519,7 @@
 </g>
 <!-- Node172 -->
 <g id="node24" class="node"><title>Node172</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="red" points="348,-480.5 348,-510.5 465,-510.5 465,-480.5 348,-480.5"/>
 <text text-anchor="start" x="356" y="-498.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="406.5" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>
@@ -538,7 +538,7 @@
 </g>
 <!-- Node142 -->
 <g id="node22" class="node"><title>Node142</title>
-<g id="a_node22"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="705.5,-453.5 705.5,-483.5 815.5,-483.5 815.5,-453.5 705.5,-453.5"/>
 <text text-anchor="start" x="713.5" y="-471.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="760.5" y="-460.5" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -552,7 +552,7 @@
 </g>
 <!-- Node143 -->
 <g id="node23" class="node"><title>Node143</title>
-<g id="a_node23"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node23"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="red" points="689,-415 689,-434 832,-434 832,-415 689,-415"/>
 <text text-anchor="middle" x="760.5" y="-422" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -594,7 +594,7 @@
 </g>
 <!-- Node182 -->
 <g id="node30" class="node"><title>Node182</title>
-<g id="a_node30"><a xlink:href="classopenage_1_1_command.xhtml#a5783c26abcea9f286be58aa29de1e548" target="_top" xlink:title=" ">
+<g id="a_node30"><a xlink:href="classopenage_1_1_command.xhtml#a5783c26abcea9f286be58aa29de1e548" target="_top" xlink:title="sets invoked ability type, no other type may be used if this gets set">
 <polygon fill="white" stroke="black" points="345,-1164.5 345,-1194.5 468,-1194.5 468,-1164.5 345,-1164.5"/>
 <text text-anchor="start" x="353" y="-1182.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Command::set</text>
 <text text-anchor="middle" x="406.5" y="-1171.5" font-family="Helvetica,sans-Serif" font-size="10.00">_ability</text>
@@ -645,7 +645,7 @@
 </g>
 <!-- Node168 -->
 <g id="node37" class="node"><title>Node168</title>
-<g id="a_node37"><a xlink:href="classopenage_1_1_unit.xhtml#aba4a16068cf5a6b218a4c78f499874b0" target="_top" xlink:title=" ">
+<g id="a_node37"><a xlink:href="classopenage_1_1_unit.xhtml#aba4a16068cf5a6b218a4c78f499874b0" target="_top" xlink:title="checks whether the current player is the owner of this unit">
 <polygon fill="white" stroke="red" points="339.5,-1466 339.5,-1485 473.5,-1485 473.5,-1466 339.5,-1466"/>
 <text text-anchor="middle" x="406.5" y="-1473" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::is_own_unit</text>
 </a>
@@ -672,7 +672,7 @@
 </g>
 <!-- Node189 -->
 <g id="node39" class="node"><title>Node189</title>
-<g id="a_node39"><a xlink:href="classopenage_1_1_unit.xhtml#ad7f76de394d832d927a9e6d46bd3c93f" target="_top" xlink:title=" ">
+<g id="a_node39"><a xlink:href="classopenage_1_1_unit.xhtml#ad7f76de394d832d927a9e6d46bd3c93f" target="_top" xlink:title="begins unit removal by popping some actions">
 <polygon fill="white" stroke="black" points="341.5,-1542 341.5,-1561 471.5,-1561 471.5,-1542 341.5,-1542"/>
 <text text-anchor="middle" x="406.5" y="-1549" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::delete_unit</text>
 </a>
@@ -729,7 +729,7 @@
 </g>
 <!-- Node200 -->
 <g id="node43" class="node"><title>Node200</title>
-<g id="a_node43"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title=" ">
+<g id="a_node43"><a xlink:href="classopenage_1_1_resource_cost.xhtml#a916923be9959f675aadb992258068e32" target="_top" xlink:title="Returns the cost.">
 <polygon fill="white" stroke="red" points="336.5,-1214 336.5,-1233 476.5,-1233 476.5,-1214 336.5,-1214"/>
 <text text-anchor="middle" x="406.5" y="-1221" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceCost::get</text>
 </a>
@@ -765,7 +765,7 @@
 </g>
 <!-- Node206 -->
 <g id="node46" class="node"><title>Node206</title>
-<g id="a_node46"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" target="_top" xlink:title=" ">
+<g id="a_node46"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" target="_top" xlink:title="Retrieves a random value from the generator.">
 <polygon fill="white" stroke="red" points="353.5,-125.5 353.5,-155.5 459.5,-155.5 459.5,-125.5 353.5,-125.5"/>
 <text text-anchor="start" x="361.5" y="-143.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="406.5" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00">random</text>

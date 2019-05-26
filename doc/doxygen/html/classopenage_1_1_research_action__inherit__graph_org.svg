@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-519 132,-519 132,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="trains a new unit">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-178.5 128,-178.5 128,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="64" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResearchAction</text>
 <polyline fill="none" stroke="black" points="0,-159.5 128,-159.5 "/>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit_action.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit_action.xhtml" target="_top" xlink:title="Actions can be pushed onto any units action stack.">
 <polygon fill="white" stroke="black" points="10,-215.5 10,-514.5 118,-514.5 118,-215.5 10,-215.5"/>
 <text text-anchor="middle" x="64" y="-502.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitAction</text>
 <polyline fill="none" stroke="black" points="10,-495.5 118,-495.5 "/>

@@ -1,5 +1,5 @@
 <map id="openage::Market::get_buy_prices" name="openage::Market::get_buy_prices">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,151,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_market.xhtml#aefa96adaadd93ab08349621e01a1b65f" title=" " alt="" coords="199,5,344,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_market.xhtml#adb430db2e1ce5828a1bc6b273994b9dc" title=" " alt="" coords="392,5,537,47"/>
+<area shape="rect" id="node1" title="Get the selling prices for a given player." alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_market.xhtml#aefa96adaadd93ab08349621e01a1b65f" title="The getBuyPrices and getSellPrices are redirected here." alt="" coords="199,5,344,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_market.xhtml#adb430db2e1ce5828a1bc6b273994b9dc" title="Get the multiplier for the base prices." alt="" coords="392,5,537,47"/>
 </map>

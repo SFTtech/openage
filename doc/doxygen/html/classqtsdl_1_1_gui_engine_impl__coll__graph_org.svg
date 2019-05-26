@@ -47,7 +47,7 @@
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_recursive_directory_watcher.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_recursive_directory_watcher.xhtml" target="_top" xlink:title="Emits a signal when anything changes in the directories.">
 <polygon fill="white" stroke="black" points="54.1211,-309 54.1211,-388 209.121,-388 209.121,-309 54.1211,-309"/>
 <text text-anchor="start" x="62.1211" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::RecursiveDirectory</text>
 <text text-anchor="middle" x="131.621" y="-365" font-family="Helvetica,sans-Serif" font-size="10.00">Watcher</text>
@@ -66,7 +66,7 @@
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="classqtsdl_1_1_gui_renderer_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classqtsdl_1_1_gui_renderer_impl.xhtml" target="_top" xlink:title="Passes the native graphic context to Qt.">
 <polygon fill="white" stroke="black" points="227.621,-182.5 227.621,-514.5 365.621,-514.5 365.621,-182.5 227.621,-182.5"/>
 <text text-anchor="middle" x="296.621" y="-502.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRendererImpl</text>
 <polyline fill="none" stroke="black" points="227.621,-495.5 365.621,-495.5 "/>
@@ -120,7 +120,7 @@
 </g>
 <!-- Node6 -->
 <g id="node5" class="node"><title>Node6</title>
-<g id="a_node5"><a xlink:href="classqtsdl_1_1_gui_rendering_setup_routines.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classqtsdl_1_1_gui_rendering_setup_routines.xhtml" target="_top" xlink:title="Returns a GL context usable by Qt classes.">
 <polygon fill="white" stroke="black" points="216.621,-573.5 216.621,-685.5 376.621,-685.5 376.621,-573.5 216.621,-573.5"/>
 <text text-anchor="start" x="224.621" y="-673.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiRenderingSetup</text>
 <text text-anchor="middle" x="296.621" y="-662.5" font-family="Helvetica,sans-Serif" font-size="10.00">Routines</text>
@@ -144,7 +144,7 @@
 </g>
 <!-- Node7 -->
 <g id="node6" class="node"><title>Node7</title>
-<g id="a_node6"><a xlink:href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml" target="_top" xlink:title="The Qml Engine used by openage.">
 <polygon fill="white" stroke="black" points="384.121,-292.5 384.121,-404.5 569.121,-404.5 569.121,-292.5 384.121,-292.5"/>
 <text text-anchor="start" x="392.121" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::QmlEngineWithSingleton</text>
 <text text-anchor="middle" x="476.621" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00">ItemsInfo</text>
@@ -184,7 +184,7 @@
 </g>
 <!-- Node9 -->
 <g id="node8" class="node"><title>Node9</title>
-<g id="a_node8"><a xlink:href="classqtsdl_1_1_gui_singleton_items_info.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classqtsdl_1_1_gui_singleton_items_info.xhtml" target="_top" xlink:title="Accessible during creation of any singleton QML item.">
 <polygon fill="white" stroke="black" points="507.621,-601 507.621,-658 645.621,-658 645.621,-601 507.621,-601"/>
 <text text-anchor="middle" x="576.621" y="-646" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSingletonItemsInfo</text>
 <polyline fill="none" stroke="black" points="507.621,-639 645.621,-639 "/>

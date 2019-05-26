@@ -57,7 +57,7 @@ var sectionId = 'dynsection-11';
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 812,-84 812,4 -4,4"/>
 <!-- Node80 -->
 <g id="node1" class="node"><title>Node80</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="true if the given event type is being ignored">
 <polygon fill="#bfbfbf" stroke="black" points="0,-24.5 0,-54.5 145,-54.5 145,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="72.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ignored</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node81 -->
 <g id="node2" class="node"><title>Node81</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a9ccb8754431247dd05c56c445bda15bc" target="_top" xlink:title="Returns the context on top.">
 <polygon fill="white" stroke="black" points="181,-49.5 181,-79.5 326,-79.5 326,-49.5 181,-49.5"/>
 <text text-anchor="start" x="189" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="253.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_top_context</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node83 -->
 <g id="node4" class="node"><title>Node83</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_class_code.xhtml#a5d55c691be6f36279534fbfb91206e11" target="_top" xlink:title="classes ordered with most specific first">
 <polygon fill="white" stroke="black" points="362,-0.5 362,-30.5 496,-30.5 496,-0.5 362,-0.5"/>
 <text text-anchor="start" x="370" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ClassCode</text>
 <text text-anchor="middle" x="429" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_classes</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node85 -->
 <g id="node6" class="node"><title>Node85</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="713,-6 713,-25 808,-25 808,-6 713,-6"/>
 <text text-anchor="middle" x="760.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

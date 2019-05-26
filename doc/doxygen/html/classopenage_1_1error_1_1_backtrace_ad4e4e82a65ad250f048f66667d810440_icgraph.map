@@ -1,4 +1,4 @@
 <map id="openage::error::Backtrace::get_symbols" name="openage::error::Backtrace::get_symbols">
-<area shape="rect" id="node1" title=" " alt="" coords="229,5,401,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1error.xhtml#ab21567da92b6f9b758b2c16ca9c2186b" title=" " alt="" coords="5,13,181,39"/>
+<area shape="rect" id="node1" title="Returns (via the callback) symbolic names for all stack frames, to its best knowledge." alt="" coords="229,5,401,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1error.xhtml#ab21567da92b6f9b758b2c16ca9c2186b" title="Prints an entire Backtrace object." alt="" coords="5,13,181,39"/>
 </map>

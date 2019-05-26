@@ -1,5 +1,5 @@
 <map id="openage::audio::AudioManager::remove_sound" name="openage::audio::AudioManager::remove_sound">
 <area shape="rect" id="node1" title=" " alt="" coords="208,39,409,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_sound.xhtml#a2974dc942136bfead20c8f7b988cb1ac" title=" " alt="" coords="5,5,160,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1audio_1_1_sound.xhtml#af11cd36b7a1dd5475d811e30580298fe" title=" " alt="" coords="5,71,160,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_sound.xhtml#a2974dc942136bfead20c8f7b988cb1ac" title="Pauses the sound at it&#39;s current playing offset." alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1audio_1_1_sound.xhtml#af11cd36b7a1dd5475d811e30580298fe" title="Resets the sound to it&#39;s beginning and stops playing it." alt="" coords="5,71,160,112"/>
 </map>

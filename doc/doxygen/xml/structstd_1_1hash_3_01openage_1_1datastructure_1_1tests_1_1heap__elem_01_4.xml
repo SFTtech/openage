@@ -26,9 +26,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>hash function for the simple heap_elem </para>
     </briefdescription>
     <detaileddescription>
-<para>hash function for the simple heap_elem </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6631">

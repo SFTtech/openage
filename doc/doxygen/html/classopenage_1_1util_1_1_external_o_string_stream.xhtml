@@ -97,27 +97,34 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1_external_o_st
 </div><!--header-->
 <div class="contents">
 
+<p>Similar to std::ostringstream, but data is written to an external string object.  
+ <a href="classopenage_1_1util_1_1_external_o_string_stream.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="externalsstream_8h_source.xhtml">externalsstream.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::util::ExternalOStringStream:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream__inherit__graph.svg" width="207" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream__inherit__graph.svg" width="207" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::ExternalOStringStream:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream__coll__graph.svg" width="336" height="399"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream__coll__graph.svg" width="336" height="399"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8f6f16ed63c32ebe6cb3956048c157d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_external_o_string_stream.xhtml#a8f6f16ed63c32ebe6cb3956048c157d4">ExternalOStringStream</a> ()</td></tr>
+<tr class="memdesc:a8f6f16ed63c32ebe6cb3956048c157d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a stream without a valid accumulator.  <a href="#a8f6f16ed63c32ebe6cb3956048c157d4">More...</a><br /></td></tr>
 <tr class="separator:a8f6f16ed63c32ebe6cb3956048c157d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa35d807fa9bc56758974bbe602bf1a8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_external_o_string_stream.xhtml#aa35d807fa9bc56758974bbe602bf1a8e">use_with</a> (std::string &amp;output)</td></tr>
+<tr class="memdesc:aa35d807fa9bc56758974bbe602bf1a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the stream's flags, and sets ptr as the internally-used accumulator.  <a href="#aa35d807fa9bc56758974bbe602bf1a8e">More...</a><br /></td></tr>
 <tr class="separator:aa35d807fa9bc56758974bbe602bf1a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -126,7 +133,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:af185ce8ba6b25166cceaca7a2e55bacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Similar to std::ostringstream, but data is written to an external string object.</p>
+<div class="textblock"><p>Similar to std::ostringstream, but data is written to an external string object. </p>
 <p>Using this stream before calling use_with will result in undefined behavior. </p>
 
 <p class="definition">Definition at line <a class="el" href="externalsstream_8h_source.xhtml#l00041">41</a> of file <a class="el" href="externalsstream_8h_source.xhtml">externalsstream.h</a>.</p>
@@ -153,6 +160,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Creates a stream without a valid accumulator. </p>
 
 <p class="definition">Definition at line <a class="el" href="externalsstream_8h_source.xhtml#l00046">46</a> of file <a class="el" href="externalsstream_8h_source.xhtml">externalsstream.h</a>.</p>
@@ -186,6 +194,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Resets the stream's flags, and sets ptr as the internally-used accumulator. </p>
 
 <p class="definition">Definition at line <a class="el" href="externalsstream_8h_source.xhtml#l00054">54</a> of file <a class="el" href="externalsstream_8h_source.xhtml">externalsstream.h</a>.</p>
@@ -200,7 +209,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream_aa35d807fa9bc56758974bbe602bf1a8e_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream_aa35d807fa9bc56758974bbe602bf1a8e_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>

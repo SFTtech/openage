@@ -105,7 +105,7 @@ var searchData=
   ['digit',['DIGIT',['../namespaceopenage_1_1input.xhtml#a278a7af94e412aa285e58d870c64a849a999bbbf1d86bc7611397c77222e076db',1,'openage::input']]],
   ['dims',['dims',['../classopenage_1_1console_1_1_new_buf.xhtml#a0ded18ccacc09666f7655056895d40e1',1,'openage::console::NewBuf::dims()'],['../classopenage_1_1console_1_1_buf.xhtml#a06e75c551d4009e9976cd43dab18fb30',1,'openage::console::Buf::dims()']]],
   ['dir',['dir',['../classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a9a0172d320ad1f5f696dfe04d35570d5',1,'openage::pyinterface::PyObjectRef']]],
-  ['dir_5fgroup',['dir_group',['../namespaceopenage.xhtml#af8871290d3c97a11b6761d12827ab9e3',1,'openage']]],
+  ['dir_5fgroup',['dir_group',['../namespaceopenage.xhtml#ad019d95177e6ab646a2d239e4ec3daa7',1,'openage']]],
   ['direction',['direction',['../classopenage_1_1path_1_1_node.xhtml#aad8137f68110f1e82ff358e795092675',1,'openage::path::Node::direction()'],['../structopenage_1_1renderer_1_1font__description.xhtml#a09a6661c0b7b0bd1c0c8fa8c9c9d0ce1',1,'openage::renderer::font_description::direction()'],['../structopenage_1_1influence.xhtml#ae2f8c30c2afb451327be4a424c1d34a0',1,'openage::influence::direction()'],['../namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe',1,'openage::direction()']]],
   ['directory',['Directory',['../classopenage_1_1util_1_1fslike_1_1_directory.xhtml',1,'openage::util::fslike::Directory'],['../classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml',1,'openage.util.fslike.directory.Directory'],['../classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a2bef103b4ee6cf8dda2c55ada35ae060',1,'openage::util::fslike::Directory::Directory()']]],
   ['directory_2ecpp',['directory.cpp',['../directory_8cpp.xhtml',1,'']]],

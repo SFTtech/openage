@@ -1,5 +1,5 @@
 <map id="openage::util::Profiler::unregister_all" name="openage::util::Profiler::unregister_all">
-<area shape="rect" id="node1" title=" " alt="" coords="228,27,372,69"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_engine.xhtml#a659dbbf399baf90582f4d8c5b497babc" title=" " alt="" coords="5,5,180,32"/>
+<area shape="rect" id="node1" title="unregisters all remaining components" alt="" coords="228,27,372,69"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_engine.xhtml#a659dbbf399baf90582f4d8c5b497babc" title="engine destructor, cleans up memory etc." alt="" coords="5,5,180,32"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1_profiler.xhtml#a1b4a2302000a4c497762567ce5d63379" title=" " alt="" coords="21,57,165,98"/>
 </map>

@@ -344,7 +344,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="24" bodyend="-1"/>
-        <referencedby refid="namespaceopenage_1_1renderer_1_1resources_1ae21e0e1ee561f05a999f3f4f680ea2af" compoundref="mesh__data_8cpp" startline="35" endline="37">vertex_input_count</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1resources_1ae2c96fa36c9fe77b871ff86b3fedc4b2" compoundref="mesh__data_8cpp" startline="35" endline="37">vertex_input_count</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1resources_1a735d6d55173355397ad37c31956361ee" prot="public" static="yes" mutable="no">
         <type>constexpr const std::array&lt; float, 16 &gt;</type>
@@ -358,9 +358,10 @@
 		1.0f, -1.0f, 1.0f, 0.0f
 	} }</initializer>
         <briefdescription>
+<para>Vertices of a quadrilateral filling the whole screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>Vertices of a quadrilateral filling the whole screen. Format: (pos, tex_coords) = (x, y, u, v) </para>
+<para>Format: (pos, tex_coords) = (x, y, u, v) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -389,19 +390,20 @@
         <references refid="namespaceopenage_1_1renderer_1_1resources_1a977e4848365083e50e14907e94ceb00e" compoundref="mesh__data_8cpp" startline="17">vin_size</references>
         <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a32cc6408584ff4eecd6d43565eed9864" compoundref="mesh__data_8cpp" startline="60" endline="66">openage::renderer::resources::VertexInputInfo::vert_size</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1resources_1ae21e0e1ee561f05a999f3f4f680ea2af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1resources_1ae2c96fa36c9fe77b871ff86b3fedc4b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
         <definition>size_t openage::renderer::resources::vertex_input_count</definition>
-        <argsstring>(vertex_input_t in)</argsstring>
+        <argsstring>(vertex_input_t)</argsstring>
         <name>vertex_input_count</name>
         <param>
           <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">vertex_input_t</ref></type>
           <defname>in</defname>
         </param>
         <briefdescription>
+<para>Returns the number of elements of the underlying type in a given per-vertex input type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the number of elements of the underlying type in a given per-vertex input type. For example, V3F32 has 3 float elements, so the value is 3. </para>
+<para>For example, V3F32 has 3 float elements, so the value is 3. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -426,9 +428,10 @@
           <declname>row_size</declname>
         </param>
         <briefdescription>
+<para>Tries to guess the alignment of image rows based on image parameters. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tries to guess the alignment of image rows based on image parameters. Kinda black magic and might not actually work. <parameterlist kind="param"><parameteritem>
+<para>Kinda black magic and might not actually work. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>width</parametername>
 </parameternamelist>

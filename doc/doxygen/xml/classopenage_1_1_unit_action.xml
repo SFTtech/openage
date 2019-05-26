@@ -21,9 +21,9 @@
         <name>show_debug</name>
         <initializer>= false</initializer>
         <briefdescription>
+<para>produce debug info such as visualising paths </para>
         </briefdescription>
         <detaileddescription>
-<para>produce debug info such as visualising paths </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -38,9 +38,9 @@
         <argsstring></argsstring>
         <name>entity</name>
         <briefdescription>
+<para>the entity being updated </para>
         </briefdescription>
         <detaileddescription>
-<para>the entity being updated </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -84,9 +84,9 @@
         <argsstring></argsstring>
         <name>graphic</name>
         <briefdescription>
+<para>common graphic controls </para>
         </briefdescription>
         <detaileddescription>
-<para>common graphic controls </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -150,9 +150,9 @@
         <argsstring></argsstring>
         <name>debug_draw_action</name>
         <briefdescription>
+<para>additional drawing for debug purposes </para>
         </briefdescription>
         <detaileddescription>
-<para>additional drawing for debug purposes </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -176,9 +176,9 @@
           <declname>initial_gt</declname>
         </param>
         <briefdescription>
+<para>Require unit to be updated and an initial graphic type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Require unit to be updated and an initial graphic type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -203,9 +203,9 @@
         <argsstring>() const</argsstring>
         <name>type</name>
         <briefdescription>
+<para>type of graphic this action should use </para>
         </briefdescription>
         <detaileddescription>
-<para>type of graphic this action should use </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -218,9 +218,9 @@
         <argsstring>() const</argsstring>
         <name>current_frame</name>
         <briefdescription>
+<para>frame number to use on the current graphic </para>
         </briefdescription>
         <detaileddescription>
-<para>frame number to use on the current graphic </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -247,9 +247,9 @@
           <declname>time</declname>
         </param>
         <briefdescription>
+<para>each action has its own update functionality which gets called when this is the active action </para>
         </briefdescription>
         <detaileddescription>
-<para>each action has its own update functionality which gets called when this is the active action </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -273,9 +273,9 @@
         <reimplementedby refid="classopenage_1_1_build_action_1a9f64ee829cfb671065dcfc7c876c346e">on_completion</reimplementedby>
         <reimplementedby refid="classopenage_1_1_projectile_action_1aa44816da8dbffef6ea1c3b0832e1a804">on_completion</reimplementedby>
         <briefdescription>
+<para>action to perform when popped from a units action stack </para>
         </briefdescription>
         <detaileddescription>
-<para>action to perform when popped from a units action stack </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -297,9 +297,10 @@
         <reimplementedby refid="classopenage_1_1_research_action_1a8e9716ed57a36c76e068b2c74e08be77">completed</reimplementedby>
         <reimplementedby refid="classopenage_1_1_projectile_action_1a588ecb867716c22ac7a571274733ad7a">completed</reimplementedby>
         <briefdescription>
+<para>gets called for all actions on stack each update cycle </para>
         </briefdescription>
         <detaileddescription>
-<para>gets called for all actions on stack each update cycle <simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
+<para><simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -323,9 +324,9 @@
         <reimplementedby refid="classopenage_1_1_research_action_1ae67de57f15acdca05250020361417b80">allow_interupt</reimplementedby>
         <reimplementedby refid="classopenage_1_1_projectile_action_1ad24686b91c460987d438c67089d0c272">allow_interupt</reimplementedby>
         <briefdescription>
+<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
         </briefdescription>
         <detaileddescription>
-<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -347,9 +348,9 @@
         <reimplementedby refid="classopenage_1_1_research_action_1a52c0ba3db2b508e2f5def47cd2887c21">allow_control</reimplementedby>
         <reimplementedby refid="classopenage_1_1_projectile_action_1abb3922699170bda762eda2549534ffbd">allow_control</reimplementedby>
         <briefdescription>
+<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top </para>
         </briefdescription>
         <detaileddescription>
-<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top</para>
 <para>if true this action must complete and will not allow new actions to be pushed while it is active and also does not update the secondary actions </para>
         </detaileddescription>
         <inbodydescription>
@@ -379,9 +380,9 @@
         <reimplementedby refid="classopenage_1_1_convert_action_1ace65fad3f2004e467446b03fdf1f12bb">name</reimplementedby>
         <reimplementedby refid="classopenage_1_1_projectile_action_1a672c847571f694e108b2245c544e3952">name</reimplementedby>
         <briefdescription>
+<para>debug string to identify action types </para>
         </briefdescription>
         <detaileddescription>
-<para>debug string to identify action types </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -397,9 +398,9 @@
         <argsstring>() const</argsstring>
         <name>current_graphics</name>
         <briefdescription>
+<para>determines which graphic should be used for drawing this unit finds the default graphic using the units type, used by most actions </para>
         </briefdescription>
         <detaileddescription>
-<para>determines which graphic should be used for drawing this unit finds the default graphic using the units type, used by most actions</para>
 <para>this virtual function is overriden for special cases such as villager task graphics </para>
         </detaileddescription>
         <inbodydescription>
@@ -441,9 +442,9 @@
           <declname>pos</declname>
         </param>
         <briefdescription>
+<para>common functions for actions </para>
         </briefdescription>
         <detaileddescription>
-<para>common functions for actions </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -465,9 +466,9 @@
           <declname>target</declname>
         </param>
         <briefdescription>
+<para>Damage a unit, returns true if the unit was killed in the process. </para>
         </briefdescription>
         <detaileddescription>
-<para>Damage a unit, returns true if the unit was killed in the process </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -523,9 +524,9 @@
           <declname>u</declname>
         </param>
         <briefdescription>
+<para>a small distance to which units are considered touching when within this distance </para>
         </briefdescription>
         <detaileddescription>
-<para>a small distance to which units are considered touching when within this distance </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -545,9 +546,9 @@
           <declname>u</declname>
         </param>
         <briefdescription>
+<para>looks at an ranged attributes on the unit otherwise returns same as <ref refid="classopenage_1_1_unit_action_1a6a13e1e645b744982544ae65ef1addf3" kindref="member">adjacent_range()</ref> </para>
         </briefdescription>
         <detaileddescription>
-<para>looks at an ranged attributes on the unit otherwise returns same as <ref refid="classopenage_1_1_unit_action_1a6a13e1e645b744982544ae65ef1addf3" kindref="member">adjacent_range()</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -569,9 +570,9 @@
           <declname>u</declname>
         </param>
         <briefdescription>
+<para>looks at heal attribute on the unit otherwise returns same as <ref refid="classopenage_1_1_unit_action_1a6a13e1e645b744982544ae65ef1addf3" kindref="member">adjacent_range()</ref> </para>
         </briefdescription>
         <detaileddescription>
-<para>looks at heal attribute on the unit otherwise returns same as <ref refid="classopenage_1_1_unit_action_1a6a13e1e645b744982544ae65ef1addf3" kindref="member">adjacent_range()</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -583,9 +584,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Actions can be pushed onto any units action stack. </para>
     </briefdescription>
     <detaileddescription>
-<para>Actions can be pushed onto any units action stack</para>
 <para>Each update cycle will perform the update function of the action on top of this stack </para>
     </detaileddescription>
     <inheritancegraph>

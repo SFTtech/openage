@@ -57,7 +57,7 @@ var sectionId = 'dynsection-6';
 <polygon fill="white" stroke="none" points="-4,4 -4,-1713.5 687,-1713.5 687,4 -4,4"/>
 <!-- Node26 -->
 <g id="node1" class="node"><title>Node26</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="#bfbfbf" stroke="black" points="558,-800.5 558,-830.5 683,-830.5 683,-800.5 558,-800.5"/>
 <text text-anchor="start" x="566" y="-818.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="620.5" y="-807.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node44 -->
 <g id="node15" class="node"><title>Node44</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title="Factory function to get a fixed&#45;point number from a double.">
 <polygon fill="white" stroke="black" points="369.5,-1078.5 369.5,-1108.5 508.5,-1108.5 508.5,-1078.5 369.5,-1078.5"/>
 <text text-anchor="start" x="377.5" y="-1096.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="439" y="-1085.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::from_double</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node45 -->
 <g id="node16" class="node"><title>Node45</title>
-<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a6602fc6e0cf22db46a7a2c4d65bbf866" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a6602fc6e0cf22db46a7a2c4d65bbf866" target="_top" xlink:title="Factory function to get a fixed&#45;point number from a fixed&#45;point number of different type.">
 <polygon fill="white" stroke="black" points="363,-1029.5 363,-1059.5 515,-1059.5 515,-1029.5 363,-1029.5"/>
 <text text-anchor="start" x="371" y="-1047.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="439" y="-1036.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::from_fixedpoint</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node46 -->
 <g id="node17" class="node"><title>Node46</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a7cc8c2bd1dad2337630abf6f6e42aef3" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a7cc8c2bd1dad2337630abf6f6e42aef3" target="_top" xlink:title="Factory function to get a fixed&#45;point number from a float.">
 <polygon fill="white" stroke="black" points="375,-980.5 375,-1010.5 503,-1010.5 503,-980.5 375,-980.5"/>
 <text text-anchor="start" x="383" y="-998.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="439" y="-987.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::from_float</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node47 -->
 <g id="node18" class="node"><title>Node47</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" target="_top" xlink:title="Factory function to get a fixed&#45;point number from an integer.">
 <polygon fill="white" stroke="black" points="376.5,-931.5 376.5,-961.5 501.5,-961.5 501.5,-931.5 376.5,-931.5"/>
 <text text-anchor="start" x="384.5" y="-949.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="439" y="-938.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::from_int</text>
@@ -135,7 +135,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node48 -->
 <g id="node19" class="node"><title>Node48</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a41ce8a71883f18088e7876aa8e2600e4" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a41ce8a71883f18088e7876aa8e2600e4" target="_top" xlink:title="Converter to retrieve the fractional (post&#45;decimal) part of the number.">
 <polygon fill="white" stroke="black" points="356,-882.5 356,-912.5 522,-912.5 522,-882.5 356,-882.5"/>
 <text text-anchor="start" x="364" y="-900.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="439" y="-889.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::get_fractional_part</text>
@@ -162,7 +162,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node66 -->
 <g id="node31" class="node"><title>Node66</title>
-<g id="a_node31"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" target="_top" xlink:title="The maximum possible value of this type.">
 <polygon fill="white" stroke="black" points="172,-912.5 172,-942.5 304,-942.5 304,-912.5 172,-912.5"/>
 <text text-anchor="start" x="180" y="-930.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="238" y="-919.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::max_value</text>
@@ -189,7 +189,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node90 -->
 <g id="node40" class="node"><title>Node90</title>
-<g id="a_node40"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a1432784032d62a4b43961b88de32ae86" target="_top" xlink:title=" ">
+<g id="a_node40"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a1432784032d62a4b43961b88de32ae86" target="_top" xlink:title="The minimum possible value of this type.">
 <polygon fill="white" stroke="black" points="173.5,-0.5 173.5,-30.5 302.5,-30.5 302.5,-0.5 173.5,-0.5"/>
 <text text-anchor="start" x="181.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="238" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::min_value</text>
@@ -203,7 +203,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node105 -->
 <g id="node46" class="node"><title>Node105</title>
-<g id="a_node46"><a xlink:href="namespaceopenage_1_1util.xhtml#aa3949bf1d23f5c8446474135851399fc" target="_top" xlink:title=" ">
+<g id="a_node46"><a xlink:href="namespaceopenage_1_1util.xhtml#aa3949bf1d23f5c8446474135851399fc" target="_top" xlink:title="FixedPoint * N.">
 <polygon fill="white" stroke="black" points="379,-534 379,-553 499,-553 499,-534 379,-534"/>
 <text text-anchor="middle" x="439" y="-541" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::operator *</text>
 </a>
@@ -230,7 +230,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node107 -->
 <g id="node48" class="node"><title>Node107</title>
-<g id="a_node48"><a xlink:href="namespaceopenage_1_1util.xhtml#a976790c1ec88a9cce32a887ca49526db" target="_top" xlink:title=" ">
+<g id="a_node48"><a xlink:href="namespaceopenage_1_1util.xhtml#a976790c1ec88a9cce32a887ca49526db" target="_top" xlink:title="FixedPoint &#45; FixedPoint.">
 <polygon fill="white" stroke="black" points="379.5,-446 379.5,-465 498.5,-465 498.5,-446 379.5,-446"/>
 <text text-anchor="middle" x="439" y="-453" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::operator &#45;</text>
 </a>
@@ -243,7 +243,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node108 -->
 <g id="node49" class="node"><title>Node108</title>
-<g id="a_node49"><a xlink:href="namespaceopenage_1_1util.xhtml#a4202ea3aad51da9bcef0572898fc7175" target="_top" xlink:title=" ">
+<g id="a_node49"><a xlink:href="namespaceopenage_1_1util.xhtml#a4202ea3aad51da9bcef0572898fc7175" target="_top" xlink:title="FixedPoint + FixedPoint.">
 <polygon fill="white" stroke="black" points="379.5,-408 379.5,-427 498.5,-427 498.5,-408 379.5,-408"/>
 <text text-anchor="middle" x="439" y="-415" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::operator+</text>
 </a>
@@ -256,7 +256,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node109 -->
 <g id="node50" class="node"><title>Node109</title>
-<g id="a_node50"><a xlink:href="namespaceopenage_1_1util.xhtml#a4e6ea5affdccd958479d0eba1b74ce0f" target="_top" xlink:title=" ">
+<g id="a_node50"><a xlink:href="namespaceopenage_1_1util.xhtml#a4e6ea5affdccd958479d0eba1b74ce0f" target="_top" xlink:title="FixedPoint / N.">
 <polygon fill="white" stroke="black" points="381,-370 381,-389 497,-389 497,-370 381,-370"/>
 <text text-anchor="middle" x="439" y="-377" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::operator/</text>
 </a>
@@ -269,7 +269,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node28 -->
 <g id="node3" class="node"><title>Node28</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1path.xhtml#a825dde52e9d0fd7fe6fa6970a1ec58e0" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1path.xhtml#a825dde52e9d0fd7fe6fa6970a1ec58e0" target="_top" xlink:title="Manhattan distance cost estimation.">
 <polygon fill="white" stroke="black" points="161,-1690 161,-1709 315,-1709 315,-1690 161,-1690"/>
 <text text-anchor="middle" x="238" y="-1697" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::manhattan_cost</text>
 </a>
@@ -282,7 +282,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node29 -->
 <g id="node4" class="node"><title>Node29</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" target="_top" xlink:title="Chebyshev distance cost estimation.">
 <polygon fill="white" stroke="black" points="161,-1269 161,-1288 315,-1288 315,-1269 161,-1269"/>
 <text text-anchor="middle" x="238" y="-1276" font-family="Helvetica,sans-Serif" font-size="10.00">openage::path::chebyshev_cost</text>
 </a>
@@ -295,7 +295,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node30 -->
 <g id="node5" class="node"><title>Node30</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#acad40865d58b96a35f6f453e04642f00" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#acad40865d58b96a35f6f453e04642f00" target="_top" xlink:title="Tests the distribution of the bit generator.">
 <polygon fill="white" stroke="black" points="187.5,-1640.5 187.5,-1670.5 288.5,-1670.5 288.5,-1640.5 187.5,-1640.5"/>
 <text text-anchor="start" x="195.5" y="-1658.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="238" y="-1647.5" font-family="Helvetica,sans-Serif" font-size="10.00">::freq_dist</text>
@@ -309,7 +309,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node32 -->
 <g id="node7" class="node"><title>Node32</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" target="_top" xlink:title="Tests the distribution of the boolean generation.">
 <polygon fill="white" stroke="black" points="187.5,-1591.5 187.5,-1621.5 288.5,-1621.5 288.5,-1591.5 187.5,-1591.5"/>
 <text text-anchor="start" x="195.5" y="-1609.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="238" y="-1598.5" font-family="Helvetica,sans-Serif" font-size="10.00">::bool_dist</text>
@@ -323,7 +323,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node33 -->
 <g id="node8" class="node"><title>Node33</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a1270464ae98991431da5e3fa6ee60ab5" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a1270464ae98991431da5e3fa6ee60ab5" target="_top" xlink:title="Tests the distribution of the floating point numbers.">
 <polygon fill="white" stroke="black" points="187.5,-1542.5 187.5,-1572.5 288.5,-1572.5 288.5,-1542.5 187.5,-1542.5"/>
 <text text-anchor="start" x="195.5" y="-1560.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="238" y="-1549.5" font-family="Helvetica,sans-Serif" font-size="10.00">::real_dist</text>
@@ -337,7 +337,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node34 -->
 <g id="node9" class="node"><title>Node34</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" target="_top" xlink:title="create the drawing instruction data.">
 <polygon fill="white" stroke="red" points="177,-1493.5 177,-1523.5 299,-1523.5 299,-1493.5 177,-1493.5"/>
 <text text-anchor="start" x="185" y="-1511.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::create</text>
 <text text-anchor="middle" x="238" y="-1500.5" font-family="Helvetica,sans-Serif" font-size="10.00">_draw_advice</text>
@@ -351,7 +351,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node36 -->
 <g id="node10" class="node"><title>Node36</title>
-<g id="a_node10"><a xlink:href="namespaceopenage.xhtml#a8f7c4c46ae7b03cd0cc8ceae47ae7139" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage.xhtml#a8f7c4c46ae7b03cd0cc8ceae47ae7139" target="_top" xlink:title="Generate a isometric square outline texture.">
 <polygon fill="white" stroke="black" points="177,-1455 177,-1474 299,-1474 299,-1455 177,-1455"/>
 <text text-anchor="middle" x="238" y="-1462" font-family="Helvetica,sans-Serif" font-size="10.00">openage::square_outline</text>
 </a>
@@ -378,7 +378,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node38 -->
 <g id="node12" class="node"><title>Node38</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_matrix.xhtml#ac1bc212dbfd151ce922ba27cad25a074" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_matrix.xhtml#ac1bc212dbfd151ce922ba27cad25a074" target="_top" xlink:title="Test if both matrices contain the same values within epsilon.">
 <polygon fill="white" stroke="red" points="185.5,-1405.5 185.5,-1435.5 290.5,-1435.5 290.5,-1405.5 185.5,-1405.5"/>
 <text text-anchor="start" x="193.5" y="-1423.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Matrix</text>
 <text text-anchor="middle" x="238" y="-1412.5" font-family="Helvetica,sans-Serif" font-size="10.00">::equals</text>
@@ -392,7 +392,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node40 -->
 <g id="node13" class="node"><title>Node40</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" target="_top" xlink:title="Test rotation equality with another quaternion with given precision in radians.">
 <polygon fill="white" stroke="red" points="175.5,-1356.5 175.5,-1386.5 300.5,-1386.5 300.5,-1356.5 175.5,-1356.5"/>
 <text text-anchor="start" x="183.5" y="-1374.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="238" y="-1363.5" font-family="Helvetica,sans-Serif" font-size="10.00">::equals_rad</text>
@@ -406,7 +406,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node42 -->
 <g id="node14" class="node"><title>Node42</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#adb9d43a588f0d7044f201a2dff2db844" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml#adb9d43a588f0d7044f201a2dff2db844" target="_top" xlink:title="Equality test with given precision.">
 <polygon fill="white" stroke="red" points="184.5,-1307.5 184.5,-1337.5 291.5,-1337.5 291.5,-1307.5 184.5,-1307.5"/>
 <text text-anchor="start" x="192.5" y="-1325.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="238" y="-1314.5" font-family="Helvetica,sans-Serif" font-size="10.00">::equals</text>
@@ -496,7 +496,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node57 -->
 <g id="node24" class="node"><title>Node57</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" target="_top" xlink:title="how far is a point from the edge of this object">
 <polygon fill="white" stroke="black" points="178.5,-863.5 178.5,-893.5 297.5,-893.5 297.5,-863.5 178.5,-863.5"/>
 <text text-anchor="start" x="186.5" y="-881.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="238" y="-870.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_edge</text>
@@ -510,7 +510,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node58 -->
 <g id="node25" class="node"><title>Node58</title>
-<g id="a_node25"><a xlink:href="classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" target="_top" xlink:title=" ">
+<g id="a_node25"><a xlink:href="classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" target="_top" xlink:title="get a position on the edge of this object">
 <polygon fill="white" stroke="black" points="178.5,-814.5 178.5,-844.5 297.5,-844.5 297.5,-814.5 178.5,-814.5"/>
 <text text-anchor="start" x="186.5" y="-832.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="238" y="-821.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_edge</text>
@@ -524,7 +524,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node59 -->
 <g id="node26" class="node"><title>Node59</title>
-<g id="a_node26"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title=" ">
+<g id="a_node26"><a xlink:href="classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" target="_top" xlink:title="would this intersect with another object if it were positioned at the given point">
 <polygon fill="white" stroke="black" points="178.5,-765.5 178.5,-795.5 297.5,-795.5 297.5,-765.5 178.5,-765.5"/>
 <text text-anchor="start" x="186.5" y="-783.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="238" y="-772.5" font-family="Helvetica,sans-Serif" font-size="10.00">::intersects</text>
@@ -538,7 +538,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node60 -->
 <g id="node27" class="node"><title>Node60</title>
-<g id="a_node27"><a xlink:href="classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" target="_top" xlink:title=" ">
+<g id="a_node27"><a xlink:href="classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" target="_top" xlink:title="how far is a point from the edge of this object">
 <polygon fill="white" stroke="black" points="180.5,-1060.5 180.5,-1090.5 295.5,-1090.5 295.5,-1060.5 180.5,-1060.5"/>
 <text text-anchor="start" x="188.5" y="-1078.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RadialObject</text>
 <text text-anchor="middle" x="238" y="-1067.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_edge</text>
@@ -552,7 +552,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node61 -->
 <g id="node28" class="node"><title>Node61</title>
-<g id="a_node28"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title=" ">
+<g id="a_node28"><a xlink:href="classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" target="_top" xlink:title="boxed unit selection">
 <polygon fill="white" stroke="red" points="1.5,-721.5 1.5,-751.5 118.5,-751.5 118.5,-721.5 1.5,-721.5"/>
 <text text-anchor="start" x="9.5" y="-739.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <text text-anchor="middle" x="60" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00">::select_space</text>
@@ -639,7 +639,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node68 -->
 <g id="node33" class="node"><title>Node68</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a5721f82c417b564e2adac32f2ef34492" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1curve_1_1_keyframe_container.xhtml#a5721f82c417b564e2adac32f2ef34492" target="_top" xlink:title="need the datamanger for change management">
 <polygon fill="white" stroke="black" points="165,-404.5 165,-434.5 311,-434.5 311,-404.5 165,-404.5"/>
 <text text-anchor="start" x="173" y="-422.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Keyframe</text>
 <text text-anchor="middle" x="238" y="-411.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container::KeyframeContainer</text>
@@ -653,7 +653,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node69 -->
 <g id="node34" class="node"><title>Node69</title>
-<g id="a_node34"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" target="_top" xlink:title=" ">
+<g id="a_node34"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" target="_top" xlink:title="Add an event for a specified target.">
 <polygon fill="white" stroke="red" points="168,-355.5 168,-385.5 308,-385.5 308,-355.5 168,-355.5"/>
 <text text-anchor="start" x="176" y="-373.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="238" y="-362.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_event</text>
@@ -667,7 +667,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node75 -->
 <g id="node35" class="node"><title>Node75</title>
-<g id="a_node35"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" target="_top" xlink:title="Execute the events.">
 <polygon fill="white" stroke="red" points="183.5,-306.5 183.5,-336.5 292.5,-336.5 292.5,-306.5 183.5,-306.5"/>
 <text text-anchor="start" x="191.5" y="-324.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="238" y="-313.5" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_events</text>
@@ -681,7 +681,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node77 -->
 <g id="node36" class="node"><title>Node77</title>
-<g id="a_node36"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" target="_top" xlink:title=" ">
+<g id="a_node36"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" target="_top" xlink:title="Call all the time change functions.">
 <polygon fill="white" stroke="red" points="183.5,-257.5 183.5,-287.5 292.5,-287.5 292.5,-257.5 183.5,-257.5"/>
 <text text-anchor="start" x="191.5" y="-275.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="238" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_changes</text>
@@ -709,7 +709,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node87 -->
 <g id="node38" class="node"><title>Node87</title>
-<g id="a_node38"><a xlink:href="classopenage_1_1_square_object.xhtml#ac5232c53c071a31afb4be3f6ffe45b10" target="_top" xlink:title=" ">
+<g id="a_node38"><a xlink:href="classopenage_1_1_square_object.xhtml#ac5232c53c071a31afb4be3f6ffe45b10" target="_top" xlink:title="the shortest line that can be placed across the objects center">
 <polygon fill="white" stroke="black" points="178.5,-159.5 178.5,-189.5 297.5,-189.5 297.5,-159.5 178.5,-159.5"/>
 <text text-anchor="start" x="186.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <text text-anchor="middle" x="238" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">::min_axis</text>
@@ -723,7 +723,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node88 -->
 <g id="node39" class="node"><title>Node88</title>
-<g id="a_node39"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" target="_top" xlink:title=" ">
+<g id="a_node39"><a xlink:href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" target="_top" xlink:title="See the doc for LZXDecompressor::decompress_next_frame in lzxd.h.">
 <polygon fill="white" stroke="red" points="170,-99 170,-140 306,-140 306,-99 170,-99"/>
 <text text-anchor="start" x="178" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="178" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDStream::decompress</text>
@@ -743,7 +743,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node91 -->
 <g id="node41" class="node"><title>Node91</title>
-<g id="a_node41"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title=" ">
+<g id="a_node41"><a xlink:href="namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" target="_top" xlink:title="Convert a C&#45;style array of uint8_t to a std::vector of uint64_t.">
 <polygon fill="white" stroke="red" points="185.5,-49.5 185.5,-79.5 290.5,-79.5 290.5,-49.5 185.5,-49.5"/>
 <text text-anchor="start" x="193.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::array8</text>
 <text text-anchor="middle" x="238" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array64</text>

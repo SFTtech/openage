@@ -36,9 +36,10 @@
         <argsstring></argsstring>
         <name>size</name>
         <briefdescription>
+<para>The size in bytes of the whole uniform. </para>
         </briefdescription>
         <detaileddescription>
-<para>The size in bytes of the whole uniform. If the uniform is an array, the size of the whole array. </para>
+<para>If the uniform is an array, the size of the whole array. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -55,9 +56,10 @@
         <argsstring></argsstring>
         <name>stride</name>
         <briefdescription>
+<para>Only relevant for arrays and matrices. </para>
         </briefdescription>
         <detaileddescription>
-<para>Only relevant for arrays and matrices. In arrays, specifies the distance between the start of each element. In row-major matrices, specifies the distance between the start of each row. In column-major matrices, specifies the distance between the start of each column. </para>
+<para>In arrays, specifies the distance between the start of each element. In row-major matrices, specifies the distance between the start of each row. In column-major matrices, specifies the distance between the start of each column. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

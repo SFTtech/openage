@@ -19,7 +19,7 @@
 </g>
 <!-- Node750 -->
 <g id="node2" class="node"><title>Node750</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title="Shadows inherited member functions.">
 <polygon fill="white" stroke="black" points="210.5,-38.5 210.5,-57.5 311.5,-57.5 311.5,-38.5 210.5,-38.5"/>
 <text text-anchor="middle" x="261" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Shadow&lt; T &gt;</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_inherits.xhtml" target="_top" xlink:title="Switches the factory to production of the instances of the derived class.">
 <polygon fill="white" stroke="black" points="382,-19.5 382,-38.5 493,-38.5 493,-19.5 382,-19.5"/>
 <text text-anchor="middle" x="437.5" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Inherits&lt; T, P &gt;</text>
 </a>

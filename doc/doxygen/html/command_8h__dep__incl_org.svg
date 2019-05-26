@@ -296,7 +296,7 @@
 </g>
 <!-- Node63 -->
 <g id="node16" class="node"><title>Node63</title>
-<g id="a_node16"><a xlink:href="producer_8cpp.xhtml" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="producer_8cpp.xhtml" target="_top" xlink:title="Many values in this file are hardcoded, due to limited understanding of how the original game files w...">
 <polygon fill="white" stroke="black" points="1729,-78.5 1729,-119.5 1886,-119.5 1886,-78.5 1729,-78.5"/>
 <text text-anchor="start" x="1737" y="-107.5" font-family="Helvetica,sans-Serif" font-size="10.00">C:/Users/Jameson/Documents</text>
 <text text-anchor="start" x="1737" y="-96.5" font-family="Helvetica,sans-Serif" font-size="10.00">/git&#45;projects/openage/libopenage</text>

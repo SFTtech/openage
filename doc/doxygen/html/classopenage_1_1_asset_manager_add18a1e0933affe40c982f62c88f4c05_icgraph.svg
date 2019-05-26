@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 300,-35 300,4 -4,4"/>
 <!-- Node9 -->
 <g id="node1" class="node"><title>Node9</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Ask the kernel whether there were updates to watched files.">
 <polygon fill="#bfbfbf" stroke="black" points="174,-0.5 174,-30.5 296,-30.5 296,-0.5 174,-0.5"/>
 <text text-anchor="start" x="182" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="235" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::check_updates</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node10 -->
 <g id="node2" class="node"><title>Node10</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#a019a81d88722206e82c7b5c87ddfe04f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_spec_handle.xhtml#a019a81d88722206e82c7b5c87ddfe04f" target="_top" xlink:title="forget everything about the specification and reload it with start_loading_if_needed.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 138,-30.5 138,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpecHandle</text>
 <text text-anchor="middle" x="69" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invalidate</text>

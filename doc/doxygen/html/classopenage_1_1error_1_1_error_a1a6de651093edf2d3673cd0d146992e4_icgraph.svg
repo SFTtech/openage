@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 255,-35 255,4 -4,4"/>
 <!-- Node15 -->
 <g id="node1" class="node"><title>Node15</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Calls this&#45;&gt;backtrace&#45;&gt;trim_to_current_stack_frame(), if this&#45;&gt;backtrace is not nullptr.">
 <polygon fill="#bfbfbf" stroke="black" points="145,-0.5 145,-30.5 251,-30.5 251,-0.5 145,-0.5"/>
 <text text-anchor="start" x="153" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 <text text-anchor="middle" x="198" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::trim_backtrace</text>

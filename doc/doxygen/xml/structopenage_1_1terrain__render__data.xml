@@ -34,9 +34,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>the complete render instruction collection for the terrain. </para>
     </briefdescription>
     <detaileddescription>
-<para>the complete render instruction collection for the terrain. this is passed to the renderer and will be drawn on screen. </para>
+<para>this is passed to the renderer and will be drawn on screen. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5189">

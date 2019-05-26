@@ -134,9 +134,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The Qml Engine used by openage. </para>
     </briefdescription>
     <detaileddescription>
-<para>The Qml Engine used by openage.</para>
 <para>It&apos;s extended to contain the &quot;singleton items info&quot; and a list of image providers. The singleton item info is just a struct that allows to carry some variables in the qml-engine, namely the openage-engine.</para>
 <para>That way, the openage-engine and the qml-engine have a 1:1 relation and qml can access the main engine directly. </para>
     </detaileddescription>

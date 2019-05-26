@@ -1,6 +1,6 @@
 <map id="openage::util::Quaternion::Quaternion" name="openage::util::Quaternion::Quaternion">
-<area shape="rect" id="node1" title=" " alt="" coords="5,35,172,76"/>
+<area shape="rect" id="node1" title="Constructs a quaternion from a rotation matrix." alt="" coords="5,35,172,76"/>
 <area shape="rect" id="node2" href="$namespacestd.xhtml#a0fc492a11cf74e80f976b24bea2a2eb2" title=" " alt="" coords="255,13,325,39"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_matrix.xhtml#ae8e23f59ac0793b10d8487abac1e2edb" title=" " alt="" coords="220,64,360,105"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_matrix.xhtml#ae8e23f59ac0793b10d8487abac1e2edb" title="Matrix trace: the sum of all diagonal entries." alt="" coords="220,64,360,105"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#ae963a0d669b00ec8a65da1bf0041172a" title=" " alt="" coords="408,5,575,47"/>
 </map>

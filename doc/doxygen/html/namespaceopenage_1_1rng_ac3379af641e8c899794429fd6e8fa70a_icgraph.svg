@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 263,-35 263,4 -4,4"/>
 <!-- Node69 -->
 <g id="node1" class="node"><title>Node69</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns a random number from the global rng.">
 <polygon fill="#bfbfbf" stroke="black" points="148,-6 148,-25 259,-25 259,-6 148,-6"/>
 <text text-anchor="middle" x="203.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::random</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node70 -->
 <g id="node2" class="node"><title>Node70</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1demo_1_1_reset_game.xhtml#a0fa6b84fb64f30f1edd75d465876a2b3" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1demo_1_1_reset_game.xhtml#a0fa6b84fb64f30f1edd75d465876a2b3" target="_top" xlink:title="This method implements the effects of the event.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 112,-30.5 112,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::demo</text>
 <text text-anchor="middle" x="56" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ResetGame::invoke</text>

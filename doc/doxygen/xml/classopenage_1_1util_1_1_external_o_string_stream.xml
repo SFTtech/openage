@@ -31,9 +31,9 @@
         <argsstring>()</argsstring>
         <name>ExternalOStringStream</name>
         <briefdescription>
+<para>Creates a stream without a valid accumulator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a stream without a valid accumulator. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -50,9 +50,9 @@
           <declname>output</declname>
         </param>
         <briefdescription>
+<para>Resets the stream&apos;s flags, and sets ptr as the internally-used accumulator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Resets the stream&apos;s flags, and sets ptr as the internally-used accumulator. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -63,9 +63,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Similar to std::ostringstream, but data is written to an external string object. </para>
     </briefdescription>
     <detaileddescription>
-<para>Similar to std::ostringstream, but data is written to an external string object.</para>
 <para>Using this stream before calling use_with will result in undefined behavior. </para>
     </detaileddescription>
     <inheritancegraph>

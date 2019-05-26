@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 290,-84 290,4 -4,4"/>
 <!-- Node42 -->
 <g id="node1" class="node"><title>Node42</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="remove child nodes">
 <polygon fill="#bfbfbf" stroke="black" points="161,-24.5 161,-54.5 286,-54.5 286,-24.5 161,-24.5"/>
 <text text-anchor="start" x="169" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="223.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">Node::remove_panel</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node43 -->
 <g id="node2" class="node"><title>Node43</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1options_1_1_option_node.xhtml#a079876f216961d551413c7c0d73e9a06" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1options_1_1_option_node.xhtml#a079876f216961d551413c7c0d73e9a06" target="_top" xlink:title="Set a parent panel which implies adding a child to the parent.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 125,-79.5 125,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Option</text>
 <text text-anchor="middle" x="62.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">Node::set_parent</text>

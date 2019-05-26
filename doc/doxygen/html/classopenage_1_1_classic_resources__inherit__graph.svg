@@ -25,7 +25,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_resources.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_resources.xhtml" target="_top" xlink:title="All the resources.">
 <polygon fill="white" stroke="black" points="16,-116.5 16,-239.5 122,-239.5 122,-116.5 16,-116.5"/>
 <text text-anchor="middle" x="69" y="-227.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Resources</text>
 <polyline fill="none" stroke="black" points="16,-220.5 122,-220.5 "/>

@@ -33,9 +33,9 @@
         <argsstring></argsstring>
         <name>name</name>
         <briefdescription>
+<para>name of this node </para>
         </briefdescription>
         <detaileddescription>
-<para>name of this node </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -59,9 +59,9 @@
         <argsstring></argsstring>
         <name>parent</name>
         <briefdescription>
+<para>parent of this node </para>
         </briefdescription>
         <detaileddescription>
-<para>parent of this node </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -77,9 +77,10 @@
         <argsstring></argsstring>
         <name>varmap</name>
         <briefdescription>
+<para>Variables which can be used. </para>
         </briefdescription>
         <detaileddescription>
-<para>Variables which can be used <xrefsect id="todo_1_todo000025"><xreftitle>Todo</xreftitle><xrefdescription><para>read only variables </para>
+<para><xrefsect id="todo_1_todo000025"><xreftitle>Todo</xreftitle><xrefdescription><para>read only variables </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -114,9 +115,9 @@
         <argsstring></argsstring>
         <name>children</name>
         <briefdescription>
+<para>children of this node </para>
         </briefdescription>
         <detaileddescription>
-<para>children of this node </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -176,9 +177,9 @@
           <defval>&quot;&quot;</defval>
         </param>
         <briefdescription>
+<para>lists all available options in a readable format </para>
         </briefdescription>
         <detaileddescription>
-<para>lists all available options in a readable format </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -197,9 +198,9 @@
         <argsstring>() const</argsstring>
         <name>list_variables</name>
         <briefdescription>
+<para>shows all available variable names </para>
         </briefdescription>
         <detaileddescription>
-<para>shows all available variable names </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -213,9 +214,9 @@
         <argsstring>() const</argsstring>
         <name>list_functions</name>
         <briefdescription>
+<para>shows all the available function names </para>
         </briefdescription>
         <detaileddescription>
-<para>shows all the available function names </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -275,9 +276,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>shortcut for get_variable(name).value&lt;T&gt;() </para>
         </briefdescription>
         <detaileddescription>
-<para>shortcut for get_variable(name).value&lt;T&gt;() </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -295,9 +296,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>return a child by name, or null if not available </para>
         </briefdescription>
         <detaileddescription>
-<para>return a child by name, or null if not available </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -314,9 +315,9 @@
           <declname>parent</declname>
         </param>
         <briefdescription>
+<para>Set a parent panel which implies adding a child to the parent. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set a parent panel which implies adding a child to the parent </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -335,9 +336,9 @@
           <declname>aname</declname>
         </param>
         <briefdescription>
+<para>performs the named action returning the actions response </para>
         </briefdescription>
         <detaileddescription>
-<para>performs the named action returning the actions response </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -360,9 +361,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>add types to the interface </para>
         </briefdescription>
         <detaileddescription>
-<para>add types to the interface </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -400,9 +401,9 @@
           <declname>child</declname>
         </param>
         <briefdescription>
+<para>add child nodes </para>
         </briefdescription>
         <detaileddescription>
-<para>add child nodes </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -421,9 +422,9 @@
           <declname>child</declname>
         </param>
         <briefdescription>
+<para>remove child nodes </para>
         </briefdescription>
         <detaileddescription>
-<para>remove child nodes </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -435,9 +436,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Allows objects to expose customisable features. </para>
     </briefdescription>
     <detaileddescription>
-<para>Allows objects to expose customisable features</para>
 <para>This is used to bind inner game classes with console interaction or gui elements </para>
     </detaileddescription>
     <inheritancegraph>

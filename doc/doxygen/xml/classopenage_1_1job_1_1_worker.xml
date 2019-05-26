@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>manager</name>
         <briefdescription>
+<para>The parent job manager, this worker is fetching jobs from. </para>
         </briefdescription>
         <detaileddescription>
-<para>The parent job manager, this worker is fetching jobs from. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -27,9 +27,9 @@
         <argsstring></argsstring>
         <name>is_running</name>
         <briefdescription>
+<para>Whether this worker thread is still running. </para>
         </briefdescription>
         <detaileddescription>
-<para>Whether this worker thread is still running. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -45,9 +45,9 @@
         <argsstring></argsstring>
         <name>executor</name>
         <briefdescription>
+<para>The executing thread. </para>
         </briefdescription>
         <detaileddescription>
-<para>The executing thread. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -61,9 +61,9 @@
         <argsstring></argsstring>
         <name>pending_jobs_mutex</name>
         <briefdescription>
+<para>A mutex to synchronize the internal pending jobs queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>A mutex to synchronize the internal pending jobs queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -78,9 +78,9 @@
         <argsstring></argsstring>
         <name>pending_jobs</name>
         <briefdescription>
+<para>A queue of jobs that are to be executed. </para>
         </briefdescription>
         <detaileddescription>
-<para>A queue of jobs that are to be executed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -94,9 +94,9 @@
         <argsstring></argsstring>
         <name>jobs_available</name>
         <briefdescription>
+<para>A condition variable to wait for new jobs. </para>
         </briefdescription>
         <detaileddescription>
-<para>A condition variable to wait for new jobs. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -116,9 +116,9 @@
           <declname>manager</declname>
         </param>
         <briefdescription>
+<para>Constructs a new worker with the parent job manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructs a new worker with the parent job manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -131,9 +131,9 @@
         <argsstring>()=default</argsstring>
         <name>~Worker</name>
         <briefdescription>
+<para>Default destructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Default destructor. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -145,9 +145,9 @@
         <argsstring>()</argsstring>
         <name>start</name>
         <briefdescription>
+<para>Starts this worker. </para>
         </briefdescription>
         <detaileddescription>
-<para>Starts this worker. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -162,9 +162,9 @@
         <argsstring>()</argsstring>
         <name>stop</name>
         <briefdescription>
+<para>Stops this worker. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stops this worker. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -180,9 +180,9 @@
         <argsstring>()</argsstring>
         <name>join</name>
         <briefdescription>
+<para>Joins the internal executing thread. </para>
         </briefdescription>
         <detaileddescription>
-<para>Joins the internal executing thread. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -199,9 +199,9 @@
           <declname>job</declname>
         </param>
         <briefdescription>
+<para>Adds the given job to the internal pending job queue. </para>
         </briefdescription>
         <detaileddescription>
-<para>Adds the given job to the internal pending job queue. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -217,9 +217,10 @@
         <argsstring>()</argsstring>
         <name>notify</name>
         <briefdescription>
+<para>Notifies this worker, that new jobs are available. </para>
         </briefdescription>
         <detaileddescription>
-<para>Notifies this worker, that new jobs are available. This method is although called from the parent job manager. </para>
+<para>This method is although called from the parent job manager. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -240,9 +241,9 @@
           <declname>job</declname>
         </param>
         <briefdescription>
+<para>Executes the given job and tells the parent job manager, when it has finished. </para>
         </briefdescription>
         <detaileddescription>
-<para>Executes the given job and tells the parent job manager, when it has finished. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -258,9 +259,10 @@
         <argsstring>()</argsstring>
         <name>process</name>
         <briefdescription>
+<para>Fetches pending jobs from the parent job manager and from the internal pending job queue and executes them. </para>
         </briefdescription>
         <detaileddescription>
-<para>Fetches pending jobs from the parent job manager and from the internal pending job queue and executes them. If no jobs are available the internal execution thread is wait using a condition variable. </para>
+<para>If no jobs are available the internal execution thread is wait using a condition variable. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -278,9 +280,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A worker encapsulates the execution of multiple jobs in a single background thread. </para>
     </briefdescription>
     <detaileddescription>
-<para>A worker encapsulates the execution of multiple jobs in a single background thread. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3908">

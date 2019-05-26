@@ -25,9 +25,9 @@
         <argsstring></argsstring>
         <name>streamdecoder</name>
         <briefdescription>
+<para>utf-8 state-machine that reads input bytes and outputs unicode codepoints </para>
         </briefdescription>
         <detaileddescription>
-<para>utf-8 state-machine that reads input bytes and outputs unicode codepoints </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -40,9 +40,9 @@
         <argsstring></argsstring>
         <name>chrdata</name>
         <briefdescription>
+<para>the complete (2-dimensional) terminal output buffer content </para>
         </briefdescription>
         <detaileddescription>
-<para>the complete (2-dimensional) terminal output buffer content</para>
 <para>contains the screen buffer (where the cursor may move), and the scrollback buffer (which is invisible while not scrolled back)</para>
 <para>thus, its size is always screen buffer size + scrollback buffer size (dims.x * dims.y + dims.x * scrollback_lines)</para>
 <para>on resize, this buffer is completely re-created.</para>
@@ -63,9 +63,9 @@
         <argsstring></argsstring>
         <name>chrdata_size</name>
         <briefdescription>
+<para>stores the (array) size of data, for performance and convenience reasons. </para>
         </briefdescription>
         <detaileddescription>
-<para>stores the (array) size of data, for performance and convenience reasons.</para>
 <para>always has the value dims.x * (dims.y + scrollback_lines) </para>
         </detaileddescription>
         <inbodydescription>
@@ -81,9 +81,10 @@
         <argsstring></argsstring>
         <name>chrdata_end</name>
         <briefdescription>
+<para>stores the end of the region allocated for data, for performance and convenience reasons. </para>
         </briefdescription>
         <detaileddescription>
-<para>stores the end of the region allocated for data, for performance and convenience reasons. points to the first memory region outside the data buffer.</para>
+<para>points to the first memory region outside the data buffer.</para>
 <para>always has the value data + chrdata_size </para>
         </detaileddescription>
         <inbodydescription>
@@ -101,9 +102,10 @@
         <argsstring></argsstring>
         <name>screen_chrdata</name>
         <briefdescription>
+<para>points to the first character that belongs to the screen buffer, inside the data buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>points to the first character that belongs to the screen buffer, inside the data buffer. this pointer is changed when the terminal buffer advances one line.</para>
+<para>this pointer is changed when the terminal buffer advances one line.</para>
 <para>note that screen_chrdata may NOT be directly indexed, as *screen_chrdata[k] might be &gt;= chrdata_end. in this case, the correct memory location will be *screen_chrdata[k - chrdata_size].</para>
 <para>*screen_chrdata[0] always is the correct memory location of the screen buffer top left corner.</para>
 <para>*screen_chrdata[dims.x * dims.y] is the memory location of the scrollback buffer top left corner, but it might be neccesary to subtract chrdata_size to get an actually valid memory location. </para>
@@ -120,9 +122,10 @@
         <argsstring></argsstring>
         <name>linedata</name>
         <briefdescription>
+<para>similar to how data holds information about all characters, linedata holds information about all lines. </para>
         </briefdescription>
         <detaileddescription>
-<para>similar to how data holds information about all characters, linedata holds information about all lines. currently, the only held information is whether the line has been started by wrapping an existing line (and thus is not a &apos;real&apos; new line) </para>
+<para>currently, the only held information is whether the line has been started by wrapping an existing line (and thus is not a &apos;real&apos; new line) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -139,9 +142,9 @@
         <argsstring></argsstring>
         <name>linedata_size</name>
         <briefdescription>
+<para>see chrdata_size </para>
         </briefdescription>
         <detaileddescription>
-<para>see chrdata_size </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,9 +159,9 @@
         <argsstring></argsstring>
         <name>linedata_end</name>
         <briefdescription>
+<para>see chrdata_end </para>
         </briefdescription>
         <detaileddescription>
-<para>see chrdata_end </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -175,9 +178,9 @@
         <argsstring></argsstring>
         <name>screen_linedata</name>
         <briefdescription>
+<para>as an analog to screen_chrdata, this points to the entry in linedata that holds metadata about the top line of the screen buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>as an analog to screen_chrdata, this points to the entry in linedata that holds metadata about the top line of the screen buffer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -191,9 +194,9 @@
         <argsstring></argsstring>
         <name>min_width</name>
         <briefdescription>
+<para>minimum screen buffer width </para>
         </briefdescription>
         <detaileddescription>
-<para>minimum screen buffer width </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -206,9 +209,9 @@
         <argsstring></argsstring>
         <name>dims</name>
         <briefdescription>
+<para>screen buffer dimensions (in characters) </para>
         </briefdescription>
         <detaileddescription>
-<para>screen buffer dimensions (in characters) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -225,7 +228,7 @@
         <referencedby refid="classopenage_1_1console_1_1_buf_1a23267e4cb18a2921f14406e6307cbb95" compoundref="buf_8cpp" startline="52" endline="67">reset</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a7060ca85ba5a820b0c8e55870a9919c8" compoundref="buf_8cpp" startline="214" endline="307">resize</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a14f2cdfd24154571850ed8ca005d3efc" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">coord::term_t</ref></type>
@@ -233,9 +236,9 @@
         <argsstring></argsstring>
         <name>scrollback_lines</name>
         <briefdescription>
+<para>scrollback buffer height; scrollback buffer width is identical to screen buffer width. </para>
         </briefdescription>
         <detaileddescription>
-<para>scrollback buffer height; scrollback buffer width is identical to screen buffer width. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -250,9 +253,9 @@
         <argsstring></argsstring>
         <name>cursorpos</name>
         <briefdescription>
+<para>cursor position </para>
         </briefdescription>
         <detaileddescription>
-<para>cursor position </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -262,7 +265,7 @@
         <referencedby refid="classopenage_1_1console_1_1_buf_1a83a7e7db654360cff1c6796b169efc22" compoundref="buf_8cpp" startline="661" endline="917">process_csi_escape_sequence</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a23267e4cb18a2921f14406e6307cbb95" compoundref="buf_8cpp" startline="52" endline="67">reset</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a7d65c2c715635ae80a3362abc61abc22" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref></type>
@@ -270,9 +273,9 @@
         <argsstring></argsstring>
         <name>saved_cursorpos</name>
         <briefdescription>
+<para>saved cursor position </para>
         </briefdescription>
         <detaileddescription>
-<para>saved cursor position </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -286,9 +289,9 @@
         <argsstring></argsstring>
         <name>cursor_visible</name>
         <briefdescription>
+<para>true if the cursor is visible </para>
         </briefdescription>
         <detaileddescription>
-<para>true if the cursor is visible </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -296,7 +299,7 @@
         <referencedby refid="classopenage_1_1console_1_1_buf_1a83a7e7db654360cff1c6796b169efc22" compoundref="buf_8cpp" startline="661" endline="917">process_csi_escape_sequence</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a23267e4cb18a2921f14406e6307cbb95" compoundref="buf_8cpp" startline="52" endline="67">reset</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a53574615a1e2df75adad05bd27bf04d4" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -304,9 +307,10 @@
         <argsstring></argsstring>
         <name>cursor_special_lastcol</name>
         <briefdescription>
+<para>true if cursor is in the last column while whole line is filled this is very special. </para>
         </briefdescription>
         <detaileddescription>
-<para>true if cursor is in the last column while whole line is filled this is very special. this allows CR after fully-filled lines to return to the same line, instead of being in the next line. </para>
+<para>this allows CR after fully-filled lines to return to the same line, instead of being in the next line. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -321,9 +325,9 @@
         <argsstring></argsstring>
         <name>escaped</name>
         <briefdescription>
+<para>true if we are currently reading an escape sequence </para>
         </briefdescription>
         <detaileddescription>
-<para>true if we are currently reading an escape sequence </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -340,9 +344,9 @@
         <argsstring></argsstring>
         <name>escape_sequence</name>
         <briefdescription>
+<para>current escape sequence </para>
         </briefdescription>
         <detaileddescription>
-<para>current escape sequence </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -359,9 +363,9 @@
         <argsstring></argsstring>
         <name>bell</name>
         <briefdescription>
+<para>true if an bell (&apos;<emphasis></emphasis>&apos;) has been received, but not cleared </para>
         </briefdescription>
         <detaileddescription>
-<para>true if an bell (&apos;<emphasis></emphasis>&apos;) has been received, but not cleared </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -375,15 +379,15 @@
         <argsstring></argsstring>
         <name>title</name>
         <briefdescription>
+<para>window title </para>
         </briefdescription>
         <detaileddescription>
-<para>window title </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="473" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="473" bodyend="-1"/>
         <referencedby refid="classopenage_1_1console_1_1_buf_1aa6ae8933e3c2bbaafa8d81cf1c405406" compoundref="buf_8cpp" startline="633" endline="659">process_text_escape_sequence</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1af6fb637bfa9764b03b7e5c732b1628a6" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref></type>
@@ -391,9 +395,10 @@
         <argsstring></argsstring>
         <name>current_char_fmt</name>
         <briefdescription>
+<para>surrently selected formatting (colors, flags). </para>
         </briefdescription>
         <detaileddescription>
-<para>surrently selected formatting (colors, flags). all printed chars, as well as all buffer clearing, will use this until it is changed by an SGR escape sequence.</para>
+<para>all printed chars, as well as all buffer clearing, will use this until it is changed by an SGR escape sequence.</para>
 <para>the codepoint is the codepoint used for filling empty chars (e.g. 0x20 (&apos;space&apos;)) </para>
         </detaileddescription>
         <inbodydescription>
@@ -411,9 +416,10 @@
         <argsstring></argsstring>
         <name>default_char_fmt</name>
         <briefdescription>
+<para>the default buf char, which will be used for filling new lines, or determining whether a line is empty. </para>
         </briefdescription>
         <detaileddescription>
-<para>the default buf char, which will be used for filling new lines, or determining whether a line is empty. should have space (0x20) as its char, and the desired default values for fgcol and bgcol. </para>
+<para>should have space (0x20) as its char, and the desired default values for fgcol and bgcol. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -428,9 +434,10 @@
         <argsstring></argsstring>
         <name>scrollback_possible</name>
         <briefdescription>
+<para>how far it&apos;s currently possible to scroll back. </para>
         </briefdescription>
         <detaileddescription>
-<para>how far it&apos;s currently possible to scroll back. this value steadily increases when the buffer advances.</para>
+<para>this value steadily increases when the buffer advances.</para>
 <para>if this is 0, all lines outside the screen buffer are empty.</para>
 <para>must be &gt;= 0 and &lt;= scrollback_lines </para>
         </detaileddescription>
@@ -440,7 +447,7 @@
         <referencedby refid="classopenage_1_1console_1_1_buf_1a752e54412ebbb08b3d8ac0edc90891ee" compoundref="buf_8cpp" startline="341" endline="380">advance</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a23267e4cb18a2921f14406e6307cbb95" compoundref="buf_8cpp" startline="52" endline="67">reset</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a06f58f1b06e5aae9664b1d07d8607048" compoundref="buf_8cpp" startline="322" endline="339">scroll</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1aed68e2efd6dfa0dc6e4d2c6985965458" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">coord::term_t</ref></type>
@@ -448,9 +455,10 @@
         <argsstring></argsstring>
         <name>scrollback_pos</name>
         <briefdescription>
+<para>how many lines the buffer is currently scrolled back. </para>
         </briefdescription>
         <detaileddescription>
-<para>how many lines the buffer is currently scrolled back. if 0, the screen buffer is wholly rendered. if the terminal is being advanced, this stays 0. this makes the terminal follow newly printed text. if &gt; 0, the bottom lines of the screen buffer are not rendered, and the bottom lines of the scrollback buffer are rendered instead. if screen buffer advances, this is increased accordingly (unless it would become &gt;= scrollback_lines). this causes the currently scrolled-to position to remain scrolled-to even when new text is printed.</para>
+<para>if 0, the screen buffer is wholly rendered. if the terminal is being advanced, this stays 0. this makes the terminal follow newly printed text. if &gt; 0, the bottom lines of the screen buffer are not rendered, and the bottom lines of the scrollback buffer are rendered instead. if screen buffer advances, this is increased accordingly (unless it would become &gt;= scrollback_lines). this causes the currently scrolled-to position to remain scrolled-to even when new text is printed.</para>
 <para>must be &gt;= 0 and &lt;= scrollback_possible. </para>
         </detaileddescription>
         <inbodydescription>
@@ -460,7 +468,7 @@
         <referencedby refid="classopenage_1_1console_1_1_buf_1a23267e4cb18a2921f14406e6307cbb95" compoundref="buf_8cpp" startline="52" endline="67">reset</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a06f58f1b06e5aae9664b1d07d8607048" compoundref="buf_8cpp" startline="322" endline="339">scroll</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -548,9 +556,9 @@
         <argsstring>()</argsstring>
         <name>reset</name>
         <briefdescription>
+<para>resets the buffer to its constructor defaults </para>
         </briefdescription>
         <detaileddescription>
-<para>resets the buffer to its constructor defaults </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -585,9 +593,9 @@
           <defval>-1</defval>
         </param>
         <briefdescription>
+<para>write a byte string to the buffer </para>
         </briefdescription>
         <detaileddescription>
-<para>write a byte string to the buffer</para>
 <para>the string is assumed to be UTF-8 encoded.</para>
 <para>if len &gt;= 0, it describes the length of the string. otherwise, the string is assumed to be null-terminated. </para>
         </detaileddescription>
@@ -608,9 +616,9 @@
           <declname>c</declname>
         </param>
         <briefdescription>
+<para>write a single byte to the buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>write a single byte to the buffer.</para>
 <para>assumed to be UTF-8 encoded. </para>
         </detaileddescription>
         <inbodydescription>
@@ -628,9 +636,9 @@
         <argsstring>()</argsstring>
         <name>pop_last_char</name>
         <briefdescription>
+<para>Pop the last char of the current line. </para>
         </briefdescription>
         <detaileddescription>
-<para>Pop the last char of the current line</para>
 <para>Will correctly handle UTF-8 chars and wrapped lines. </para>
         </detaileddescription>
         <inbodydescription>
@@ -659,9 +667,9 @@
           <declname>new_dims</declname>
         </param>
         <briefdescription>
+<para>resizes the screen buffer </para>
         </briefdescription>
         <detaileddescription>
-<para>resizes the screen buffer </para>
         </detaileddescription>
         <inbodydescription>
 <para><xrefsect id="todo_1_todo000002"><xreftitle>Todo</xreftitle><xrefdescription><para>copy line by line, considering the value stored in old_linedata_pos-&gt;auto_wrapped. start with the first line of the scrollback buffer, and stop with the last line of the screen buffer. do not copy empty characters, unless they are followed by filled characters in the same line, or a continued wrapped line. store in term_t variables the locations in the new buffer of the first/last line of the old scrollback buffer the first/last line of the old screen buffer these variables need to take into account events where upmost lines of a buffer are overwritten by new lines. commented out for now </para>
@@ -691,9 +699,9 @@
           <declname>lines</declname>
         </param>
         <briefdescription>
+<para>scrolls up or down by the given number of lines </para>
         </briefdescription>
         <detaileddescription>
-<para>scrolls up or down by the given number of lines</para>
 <para>lines amount of lines to scroll up - may be negative if the upper or lower limit is reached, this is capped. </para>
         </detaileddescription>
         <inbodydescription>
@@ -712,9 +720,9 @@
           <declname>cp</declname>
         </param>
         <briefdescription>
+<para>processes one unicode codepoint internally called by <ref refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" kindref="member">write(char)</ref> after feeding the char into streamdecoder </para>
         </briefdescription>
         <detaileddescription>
-<para>processes one unicode codepoint internally called by <ref refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" kindref="member">write(char)</ref> after feeding the char into streamdecoder </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -738,9 +746,9 @@
           <declname>cp</declname>
         </param>
         <briefdescription>
+<para>prints one unicode codepoint interally called by <ref refid="classopenage_1_1console_1_1_buf_1adcdc21533ab920bd72f92f27333716bf" kindref="member">process_codepoint(int cp)</ref> after sorting out escape sequences, and by some escape sequences such as CSI @ </para>
         </briefdescription>
         <detaileddescription>
-<para>prints one unicode codepoint interally called by <ref refid="classopenage_1_1console_1_1_buf_1adcdc21533ab920bd72f92f27333716bf" kindref="member">process_codepoint(int cp)</ref> after sorting out escape sequences, and by some escape sequences such as CSI @ </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -768,9 +776,10 @@
         <argsstring>()</argsstring>
         <name>escape_sequence_aborted</name>
         <briefdescription>
+<para>aborts the current escape sequence (e.g. </para>
         </briefdescription>
         <detaileddescription>
-<para>aborts the current escape sequence (e.g. because it contained an illegal character, or is not implemented) </para>
+<para>because it contained an illegal character, or is not implemented) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -789,9 +798,10 @@
         <argsstring>()</argsstring>
         <name>escape_sequence_processed</name>
         <briefdescription>
+<para>called when a escape sequence has been successfully processed, clears the sequence. </para>
         </briefdescription>
         <detaileddescription>
-<para>called when a escape sequence has been successfully processed, clears the sequence. either this or abort_escape_sequence is called for each escape sequence. </para>
+<para>either this or abort_escape_sequence is called for each escape sequence. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -807,9 +817,10 @@
         <argsstring>()</argsstring>
         <name>process_csi_escape_sequence</name>
         <briefdescription>
+<para>processes the CSI escape sequence currently stored in escape_sequence. </para>
         </briefdescription>
         <detaileddescription>
-<para>processes the CSI escape sequence currently stored in escape_sequence. invalid sequences are ignored. </para>
+<para>invalid sequences are ignored. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -836,9 +847,10 @@
           <declname>cp</declname>
         </param>
         <briefdescription>
+<para>processes a single-codepoint escape sequence. </para>
         </briefdescription>
         <detaileddescription>
-<para>processes a single-codepoint escape sequence. invalid codepoints are ignored. </para>
+<para>invalid codepoints are ignored. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -853,9 +865,9 @@
         <argsstring>()</argsstring>
         <name>process_text_escape_sequence</name>
         <briefdescription>
+<para>processes a text escape sequence that is one of OSC, DCS, APC or PM </para>
         </briefdescription>
         <detaileddescription>
-<para>processes a text escape sequence that is one of OSC, DCS, APC or PM </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -876,9 +888,9 @@
           <declname>params</declname>
         </param>
         <briefdescription>
+<para>sets graphics rendition parameters; called by process_escape_sequence </para>
         </briefdescription>
         <detaileddescription>
-<para>sets graphics rendition parameters; called by process_escape_sequence</para>
 <para>params: numerical params list from escape sequence </para>
         </detaileddescription>
         <inbodydescription>
@@ -918,9 +930,9 @@
           <defval>1</defval>
         </param>
         <briefdescription>
+<para>advances the buffer by the specified number of lines. </para>
         </briefdescription>
         <detaileddescription>
-<para>advances the buffer by the specified number of lines.</para>
 <para>the top lines are moved to the scrollback buffer. the top lines of the scrollback buffer are discarded. the bottom lines of the buffer are empty after this. the cursor position is not changed by this.</para>
 <para>linecount: the number of lines to advance the buffer; defaults to one. may be &gt; buffer height. </para>
         </detaileddescription>
@@ -959,9 +971,10 @@
           <defval>false</defval>
         </param>
         <briefdescription>
+<para>clears the screen character and line buffers. </para>
         </briefdescription>
         <detaileddescription>
-<para>clears the screen character and line buffers. lines are cleared iff all of their characters are cleared.</para>
+<para>lines are cleared iff all of their characters are cleared.</para>
 <para>if start &gt;= end, nothing happens.</para>
 <para>inputs are not sanitized.</para>
 <para>start screen buffer coordinates of first character to be deleted negative values of y indicate scrollback buffer -scrollback_lines &lt;= y &lt; dims.y 0 &lt;= x &lt; dims.x end screen buffer coordinates of first character not to be deleted negative values of y indicate scrollback buffer -scrollback_lines &lt;= y &lt; dims.y 0 &lt;= x &lt; dims.x {x, y} = {0, dims.y} is allowed. clear_end if true, end is incremented by 1. this affects all constraints. </para>
@@ -991,9 +1004,10 @@
           <declname>end</declname>
         </param>
         <briefdescription>
+<para>clears a range of the data buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>clears a range of the data buffer. end is the first character that is not cleared. end and start both must be valid pointers within data. </para>
+<para>end is the first character that is not cleared. end and start both must be valid pointers within data. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1017,9 +1031,10 @@
           <declname>end</declname>
         </param>
         <briefdescription>
+<para>clears a range of the linedata buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>clears a range of the linedata buffer. end is the first line that is not cleared. end and start both must be valid pointers within data. </para>
+<para>end is the first line that is not cleared. end and start both must be valid pointers within data. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1039,9 +1054,9 @@
           <declname>pos</declname>
         </param>
         <briefdescription>
+<para>returns a valid pointer to the character info for the character designated by pos </para>
         </briefdescription>
         <detaileddescription>
-<para>returns a valid pointer to the character info for the character designated by pos</para>
 <para>pos screen buffer coordinates negative values of y indicate scrollback buffer -scrollback_lines &lt;= pos.y &lt;= dims.y 0 &lt;= pos.x &lt; dims.x if y == dims.y, the return ptr is not guaranteed to be valid. </para>
         </detaileddescription>
         <inbodydescription>
@@ -1058,7 +1073,7 @@
         <referencedby refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" compoundref="buf_8cpp" startline="479" endline="597">print_codepoint</referencedby>
         <referencedby refid="classopenage_1_1console_1_1_buf_1a7060ca85ba5a820b0c8e55870a9919c8" compoundref="buf_8cpp" startline="214" endline="307">resize</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
-        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ab9e51a5e1f100773a19da09a4f9d1597" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a4c48f84f2a29ae7472c54bce03fcbd65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref> *</type>
@@ -1070,9 +1085,9 @@
           <declname>lineno</declname>
         </param>
         <briefdescription>
+<para>returns a valid pointer to the line info for the line designated by lineno </para>
         </briefdescription>
         <detaileddescription>
-<para>returns a valid pointer to the line info for the line designated by lineno</para>
 <para>lineno number of line in screen buffer negative numbers indicate scrollback buffer -scrollback_lines &lt;= lineno &lt;= dims.y if lineno == dims.y, the return ptr is not guaranteed to be valid. </para>
         </detaileddescription>
         <inbodydescription>
@@ -1094,9 +1109,9 @@
         <argsstring>() const</argsstring>
         <name>get_dims</name>
         <briefdescription>
+<para>Return the dimensions of the visible console area. </para>
         </briefdescription>
         <detaileddescription>
-<para>Return the dimensions of the visible console area. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

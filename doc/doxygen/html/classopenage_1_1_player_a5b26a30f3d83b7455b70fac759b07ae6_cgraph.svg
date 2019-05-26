@@ -20,7 +20,7 @@
 </g>
 <!-- Node182 -->
 <g id="node2" class="node"><title>Node182</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" target="_top" xlink:title="returns attribute based on templated value">
 <polygon fill="white" stroke="black" points="138,-49.5 138,-79.5 234,-79.5 234,-49.5 138,-49.5"/>
 <text text-anchor="start" x="146" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::get</text>
 <text text-anchor="middle" x="186" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node184 -->
 <g id="node4" class="node"><title>Node184</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" target="_top" xlink:title="returns whether attribute is available">
 <polygon fill="white" stroke="black" points="137,-0.5 137,-30.5 235,-30.5 235,-0.5 137,-0.5"/>
 <text text-anchor="start" x="145" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Unit::has</text>
 <text text-anchor="middle" x="186" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_attribute</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node183 -->
 <g id="node3" class="node"><title>Node183</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" target="_top" xlink:title="Get the attribute based on the type.">
 <polygon fill="white" stroke="black" points="272,-55 272,-74 393,-74 393,-55 272,-55"/>
 <text text-anchor="middle" x="332.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::get</text>
 </a>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node185 -->
 <g id="node5" class="node"><title>Node185</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" target="_top" xlink:title="Check if the attribute of the given type exists.">
 <polygon fill="white" stroke="black" points="271,-6 271,-25 394,-25 394,-6 271,-6"/>
 <text text-anchor="middle" x="332.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes::has</text>
 </a>

@@ -1,8 +1,8 @@
 <map id="openage::event::Event" name="openage::event::Event">
-<area shape="rect" id="node1" title=" " alt="" coords="185,1217,335,1456"/>
+<area shape="rect" id="node1" title="The actual one event that may be called &#45; it is used to manage the event itself." alt="" coords="185,1217,335,1456"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,857,144,949"/>
-<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_event_class_1_1param__map.xhtml" title=" " alt="" coords="169,813,351,993"/>
+<area shape="rect" id="node3" href="$classopenage_1_1event_1_1_event_class_1_1param__map.xhtml" title="Storage for parameters for an event class." alt="" coords="169,813,351,993"/>
 <area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml" title=" " alt="" coords="375,667,547,1140"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml" title=" " alt="" coords="371,145,551,604"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml" title="Fixed&#45;point integer class;." alt="" coords="371,145,551,604"/>
 <area shape="rect" id="node6" title=" " alt="" coords="427,5,495,83"/>
 </map>

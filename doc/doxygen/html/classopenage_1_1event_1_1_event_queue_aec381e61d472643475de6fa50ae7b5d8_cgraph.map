@@ -1,9 +1,9 @@
 <map id="openage::event::EventQueue::take_event" name="openage::event::EventQueue::take_event">
-<area shape="rect" id="node1" title=" " alt="" coords="5,103,192,144"/>
+<area shape="rect" id="node1" title="Obtain the next event from the event_queue that happens before &lt;= max_time." alt="" coords="5,103,192,144"/>
 <area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_store.xhtml#a6758260ffbc439c15c70590979acb2f9" title=" " alt="" coords="240,51,449,78"/>
 <area shape="rect" id="node5" href="$classopenage_1_1event_1_1_event_store.xhtml#a895a291c20860520abba447e1cd48fd0" title=" " alt="" coords="255,103,435,144"/>
 <area shape="rect" id="node6" href="$classopenage_1_1event_1_1_event_store.xhtml#abbad60ac960f4020d813237260867dcb" title=" " alt="" coords="241,169,448,195"/>
 <area shape="rect" id="node3" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a45599db3b89b27ad5c53ca900a67df85" title=" " alt="" coords="497,5,652,47"/>
-<area shape="rect" id="node4" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" title=" " alt="" coords="497,71,652,112"/>
-<area shape="rect" id="node7" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ad22ca21f8e7319ea14cd3e14cf5274c4" title=" " alt="" coords="497,161,652,203"/>
+<area shape="rect" id="node4" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" title="returns and removes the smallest item on the heap." alt="" coords="497,71,652,112"/>
+<area shape="rect" id="node7" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ad22ca21f8e7319ea14cd3e14cf5274c4" title="Returns the smallest item on the heap." alt="" coords="497,161,652,203"/>
 </map>

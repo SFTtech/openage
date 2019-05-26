@@ -57,7 +57,7 @@ var sectionId = 'dynsection-4';
 <polygon fill="white" stroke="none" points="-4,4 -4,-133 545,-133 545,4 -4,4"/>
 <!-- Node51 -->
 <g id="node1" class="node"><title>Node51</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="get the tile data a given tile position relative to this chunk.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-49.5 0,-79.5 116,-79.5 116,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="58" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data_neigh</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node52 -->
 <g id="node2" class="node"><title>Node52</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title="get tile data by absolute coordinates.">
 <polygon fill="white" stroke="black" points="152,-98.5 152,-128.5 268,-128.5 268,-98.5 152,-98.5"/>
 <text text-anchor="start" x="160" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="210" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-4';
 </g>
 <!-- Node54 -->
 <g id="node4" class="node"><title>Node54</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="444,-104 444,-123 541,-123 541,-104 444,-104"/>
 <text text-anchor="middle" x="492.5" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

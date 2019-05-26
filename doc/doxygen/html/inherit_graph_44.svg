@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 338,-73.5 338,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="classopenage_1_1audio_1_1_resource.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="classopenage_1_1audio_1_1_resource.xhtml" target="_top" xlink:title="A Resource contains 16 bit signed integer pcm data, that can be played by sounds.">
 <polygon fill="white" stroke="black" points="0,-28 0,-47 130,-47 130,-28 0,-28"/>
 <text text-anchor="middle" x="65" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::Resource</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml" target="_top" xlink:title="Audio data that is loaded dynamically when used.">
 <polygon fill="white" stroke="black" points="166,-50 166,-69 334,-69 334,-50 166,-50"/>
 <text text-anchor="middle" x="250" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicResource</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1audio_1_1_in_memory_resource.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1audio_1_1_in_memory_resource.xhtml" target="_top" xlink:title="An InMemoryResource loads the whole pcm data into memory and keeps it there.">
 <polygon fill="white" stroke="black" points="184.5,-0.5 184.5,-30.5 315.5,-30.5 315.5,-0.5 184.5,-0.5"/>
 <text text-anchor="start" x="192.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::InMemory</text>
 <text text-anchor="middle" x="250" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Resource</text>

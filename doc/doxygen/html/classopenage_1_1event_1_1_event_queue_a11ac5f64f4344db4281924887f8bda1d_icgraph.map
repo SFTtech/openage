@@ -1,4 +1,4 @@
 <map id="openage::event::EventQueue::swap_changesets" name="openage::event::EventQueue::swap_changesets">
-<area shape="rect" id="node1" title=" " alt="" coords="199,5,385,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" title=" " alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node1" title="Swap the changes and future_changes." alt="" coords="199,5,385,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" title="Execute all events that are registered until a certain point in time." alt="" coords="5,5,151,47"/>
 </map>

@@ -1,6 +1,6 @@
 <map id="openage::renderer::resources::MeshData::MeshData" name="openage::renderer::resources::MeshData::MeshData">
 <area shape="rect" id="node1" title="Tries to load the mesh data from the specified file." alt="" coords="600,5,747,61"/>
-<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml#ad8928c08c9c05b7b7f7eae1a203e462b" title=" " alt="" coords="405,5,552,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml#ad8928c08c9c05b7b7f7eae1a203e462b" title="Initializes the mesh data with a simple quadrilateral spanning the whole window space,..." alt="" coords="405,5,552,61"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#a6f980e5dd40ec0b730e586e2484233d2" title=" " alt="" coords="199,13,357,54"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#ac2256044717a0f7f7aafbb1f2be3a1eb" title=" " alt="" coords="5,13,151,54"/>
 </map>

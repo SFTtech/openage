@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-150 144,-150 144,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A container that manages events on a timeline.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-145.5 140,-145.5 140,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="70" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::curve::Queue&lt; T &gt;</text>
 <polyline fill="none" stroke="black" points="0,-126.5 140,-126.5 "/>

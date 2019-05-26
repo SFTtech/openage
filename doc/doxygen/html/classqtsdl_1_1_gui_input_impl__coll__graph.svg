@@ -43,7 +43,7 @@
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_event_queue_impl.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_event_queue_impl.xhtml" target="_top" xlink:title="Provides synchronization with some game thread.">
 <polygon fill="white" stroke="black" points="71,-138.5 71,-250.5 200,-250.5 200,-138.5 71,-138.5"/>
 <text text-anchor="middle" x="135.5" y="-238.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiEventQueueImpl</text>
 <polyline fill="none" stroke="black" points="71,-231.5 200,-231.5 "/>

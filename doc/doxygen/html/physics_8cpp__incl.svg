@@ -145,7 +145,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node64 -->
 <g id="node50" class="node"><title>Node64</title>
-<g id="a_node50"><a xlink:href="global__rng_8h.xhtml" target="_top" xlink:title=" ">
+<g id="a_node50"><a xlink:href="global__rng_8h.xhtml" target="_top" xlink:title="This file contains functions for the global random number generator.">
 <polygon fill="white" stroke="black" points="936,-392.952 936,-411.952 1040,-411.952 1040,-392.952 936,-392.952"/>
 <text text-anchor="middle" x="988" y="-399.952" font-family="Helvetica,sans-Serif" font-size="10.00">../../rng/global_rng.h</text>
 </a>

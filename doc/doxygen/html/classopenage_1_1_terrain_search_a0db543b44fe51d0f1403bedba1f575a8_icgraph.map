@@ -1,10 +1,10 @@
 <map id="openage::TerrainSearch::reset" name="openage::TerrainSearch::reset">
-<area shape="rect" id="node1" title=" " alt="" coords="840,43,999,84"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" title=" " alt="" coords="633,43,792,84"/>
+<area shape="rect" id="node1" title="restarts the search from the start tile" alt="" coords="840,43,999,84"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" title="returns all objects on the next tile" alt="" coords="633,43,792,84"/>
 <area shape="rect" id="node3" href="$namespaceopenage.xhtml#a8d7d58d26d71e7447de628441782a751" title=" " alt="" coords="427,21,585,47"/>
 <area shape="rect" id="node5" href="$namespaceopenage.xhtml#abf30260a65f6b06163a5dad881836523" title=" " alt="" coords="441,78,571,105"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title=" " alt="" coords="221,5,366,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title="action to perform when popped from a units action stack" alt="" coords="221,5,366,47"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_gather_action.xhtml#a578fcecec436b05efb5059bbb35837fe" title=" " alt="" coords="216,71,371,112"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_gather_action.xhtml#ab76d756df9989badfa91e272f85dee9c" title=" " alt="" coords="208,136,379,177"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" title=" " alt="" coords="5,71,160,112"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" title="Control units action when in range of the target." alt="" coords="5,71,160,112"/>
 </map>

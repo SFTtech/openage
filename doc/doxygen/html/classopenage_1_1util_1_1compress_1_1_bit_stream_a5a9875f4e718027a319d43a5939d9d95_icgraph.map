@@ -1,5 +1,5 @@
 <map id="openage::util::compress::BitStream::ensure_bits" name="openage::util::compress::BitStream::ensure_bits">
-<area shape="rect" id="node1" title=" " alt="" coords="271,39,433,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a2bb87ab9b57a3a5ef8f492c4cbe12b40" title=" " alt="" coords="12,5,216,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a7a6ffb1cd9c139eeaf11f1bfec7bc444" title=" " alt="" coords="5,71,223,112"/>
+<area shape="rect" id="node1" title="for use in bitstream mode." alt="" coords="271,39,433,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a2bb87ab9b57a3a5ef8f492c4cbe12b40" title="for use in bitstream mode." alt="" coords="12,5,216,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a7a6ffb1cd9c139eeaf11f1bfec7bc444" title="for use in bitstream mode." alt="" coords="5,71,223,112"/>
 </map>

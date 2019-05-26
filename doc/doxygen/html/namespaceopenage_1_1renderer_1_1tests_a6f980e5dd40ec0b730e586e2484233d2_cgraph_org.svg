@@ -49,7 +49,7 @@
 </g>
 <!-- Node78 -->
 <g id="node4" class="node"><title>Node78</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_context.xhtml#a22414f75ba491ef266e3453259825a50" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_context.xhtml#a22414f75ba491ef266e3453259825a50" target="_top" xlink:title="Checks whether the current GL context on this thread reported any errors and throws an exception if i...">
 <polygon fill="white" stroke="black" points="155,-368.5 155,-398.5 307,-398.5 307,-368.5 155,-368.5"/>
 <text text-anchor="start" x="163" y="-386.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="231" y="-375.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlContext::check_error</text>
@@ -77,7 +77,7 @@
 </g>
 <!-- Node81 -->
 <g id="node7" class="node"><title>Node81</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="359,-192 359,-211 450,-211 450,-192 359,-192"/>
 <text text-anchor="middle" x="404.5" y="-199" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -90,7 +90,7 @@
 </g>
 <!-- Node87 -->
 <g id="node13" class="node"><title>Node87</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml#ad8928c08c9c05b7b7f7eae1a203e462b" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml#ad8928c08c9c05b7b7f7eae1a203e462b" target="_top" xlink:title="Initializes the mesh data with a simple quadrilateral spanning the whole window space,...">
 <polygon fill="white" stroke="black" points="176,-110 176,-151 286,-151 286,-110 176,-110"/>
 <text text-anchor="start" x="184" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="184" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">resources::MeshData</text>
@@ -120,7 +120,7 @@
 </g>
 <!-- Node91 -->
 <g id="node17" class="node"><title>Node91</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#ad1afa8d4edac82bbb12a3bf371149a41" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#ad1afa8d4edac82bbb12a3bf371149a41" target="_top" xlink:title="Reads the pixel at the given position and casts it to the given type.">
 <polygon fill="white" stroke="black" points="167,-308 167,-349 295,-349 295,-308 167,-308"/>
 <text text-anchor="start" x="175" y="-337" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="175" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dData</text>
@@ -149,7 +149,7 @@
 </g>
 <!-- Node98 -->
 <g id="node24" class="node"><title>Node98</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aae47c67c2194f86ad609762a371eef87" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aae47c67c2194f86ad609762a371eef87" target="_top" xlink:title="Polls for window events, calls callbacks for these events, swaps front and back framebuffers to prese...">
 <polygon fill="white" stroke="black" points="165.5,-170.5 165.5,-200.5 296.5,-200.5 296.5,-170.5 165.5,-170.5"/>
 <text text-anchor="start" x="173.5" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="231" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlWindow::update</text>
@@ -176,7 +176,7 @@
 </g>
 <!-- Node82 -->
 <g id="node8" class="node"><title>Node82</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="518.5,-208.5 518.5,-238.5 628.5,-238.5 628.5,-208.5 518.5,-208.5"/>
 <text text-anchor="start" x="526.5" y="-226.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="573.5" y="-215.5" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -190,7 +190,7 @@
 </g>
 <!-- Node83 -->
 <g id="node9" class="node"><title>Node83</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="502,-170 502,-189 645,-189 645,-170 502,-170"/>
 <text text-anchor="middle" x="573.5" y="-177" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -203,7 +203,7 @@
 </g>
 <!-- Node84 -->
 <g id="node10" class="node"><title>Node84</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="703,-213.5 703,-243.5 807,-243.5 807,-213.5 703,-213.5"/>
 <text text-anchor="start" x="711" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="755" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -279,7 +279,7 @@
 </g>
 <!-- Node92 -->
 <g id="node18" class="node"><title>Node92</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a09329202a589131b1c723fbffb1f806b" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a09329202a589131b1c723fbffb1f806b" target="_top" xlink:title="Returns the size in bytes of the raw pixel data.">
 <polygon fill="white" stroke="black" points="343,-350 343,-391 466,-391 466,-350 343,-350"/>
 <text text-anchor="start" x="351" y="-379" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="351" y="-368" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>
@@ -294,7 +294,7 @@
 </g>
 <!-- Node93 -->
 <g id="node19" class="node"><title>Node93</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" target="_top" xlink:title="Returns the size in bytes of a single row, including possible padding at its end.">
 <polygon fill="white" stroke="black" points="512,-388 512,-429 635,-429 635,-388 512,-388"/>
 <text text-anchor="start" x="520" y="-417" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="520" y="-406" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>
@@ -338,7 +338,7 @@
 </g>
 <!-- Node96 -->
 <g id="node22" class="node"><title>Node96</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" target="_top" xlink:title="Returns the dimensions of the whole texture bitmap.">
 <polygon fill="white" stroke="black" points="343,-230 343,-271 466,-271 466,-230 343,-230"/>
 <text text-anchor="start" x="351" y="-259" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="351" y="-248" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>

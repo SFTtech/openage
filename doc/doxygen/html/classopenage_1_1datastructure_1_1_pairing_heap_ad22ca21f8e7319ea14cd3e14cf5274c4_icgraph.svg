@@ -57,7 +57,7 @@ var sectionId = 'dynsection-11';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 777,-35 777,4 -4,4"/>
 <!-- Node101 -->
 <g id="node1" class="node"><title>Node101</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Returns the smallest item on the heap.">
 <polygon fill="#bfbfbf" stroke="black" points="657,-0.5 657,-30.5 773,-30.5 773,-0.5 657,-0.5"/>
 <text text-anchor="start" x="665" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="middle" x="715" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap::top</text>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node103 -->
 <g id="node3" class="node"><title>Node103</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#aec381e61d472643475de6fa50ae7b5d8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml#aec381e61d472643475de6fa50ae7b5d8" target="_top" xlink:title="Obtain the next event from the event_queue that happens before &lt;= max_time.">
 <polygon fill="white" stroke="black" points="290,-0.5 290,-30.5 430,-30.5 430,-0.5 290,-0.5"/>
 <text text-anchor="start" x="298" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <text text-anchor="middle" x="360" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::take_event</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node104 -->
 <g id="node4" class="node"><title>Node104</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" target="_top" xlink:title="Execute the events.">
 <polygon fill="white" stroke="black" points="145,-0.5 145,-30.5 254,-30.5 254,-0.5 145,-0.5"/>
 <text text-anchor="start" x="153" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="199.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::execute_events</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-11';
 </g>
 <!-- Node105 -->
 <g id="node5" class="node"><title>Node105</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1event_1_1_loop.xhtml#aeba9e515057a87d7fbfddb8585095de6" target="_top" xlink:title="Execute all events that are registered until a certain point in time.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 109,-30.5 109,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <text text-anchor="middle" x="54.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reach_time</text>

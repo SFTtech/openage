@@ -20,7 +20,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#a0a0bbc382a5c765c627d6f79d8aeaf59" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#a9433d1215dbd3b40cd1c0981b84a8541" target="_top" xlink:title="starts the process at argv[0] passes argv as argv">
 <polygon fill="white" stroke="black" points="356,-213.5 356,-243.5 466,-243.5 466,-213.5 356,-213.5"/>
 <text text-anchor="start" x="364" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::subprocess</text>
 <text text-anchor="middle" x="411" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00">::call</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node5 -->
 <g id="node4" class="node"><title>Node5</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="523.5,-137 523.5,-156 614.5,-156 614.5,-137 523.5,-137"/>
 <text text-anchor="middle" x="569" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node11 -->
 <g id="node10" class="node"><title>Node11</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1os.xhtml#a5d72e5b58b3036f2298e474c4e9ed9b6" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1os.xhtml#a0c239b26dbfdae2443aa511e31619917" target="_top" xlink:title="tries to xdg&#45;open the file">
 <polygon fill="white" stroke="black" points="180,-142 180,-161 308,-161 308,-142 180,-142"/>
 <text text-anchor="middle" x="244" y="-149" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::execute_file</text>
 </a>
@@ -73,7 +73,7 @@
 </g>
 <!-- Node12 -->
 <g id="node11" class="node"><title>Node12</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#aea6af6d7d8e5290e58dfafd50a96a069" target="_top" xlink:title="finds the path to an executable by evaluating env[PATH]">
 <polygon fill="white" stroke="black" points="356,-49.5 356,-79.5 466,-79.5 466,-49.5 356,-49.5"/>
 <text text-anchor="start" x="364" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::subprocess</text>
 <text text-anchor="middle" x="411" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::which</text>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node20 -->
 <g id="node19" class="node"><title>Node20</title>
-<g id="a_node19"><a xlink:href="namespaceopenage_1_1os.xhtml#aaa0a892b4d5cf0b41684c5f31c6cf86b" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="namespaceopenage_1_1os.xhtml#aaa0a892b4d5cf0b41684c5f31c6cf86b" target="_top" xlink:title="returns openage&#39;s executable name">
 <polygon fill="white" stroke="black" points="185.5,-246.5 185.5,-276.5 302.5,-276.5 302.5,-246.5 185.5,-246.5"/>
 <text text-anchor="start" x="193.5" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::self_exec</text>
 <text text-anchor="middle" x="244" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">_filename</text>
@@ -124,7 +124,7 @@
 </g>
 <!-- Node6 -->
 <g id="node5" class="node"><title>Node6</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="676.5,-156.5 676.5,-186.5 786.5,-186.5 786.5,-156.5 676.5,-156.5"/>
 <text text-anchor="start" x="684.5" y="-174.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="731.5" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -138,7 +138,7 @@
 </g>
 <!-- Node7 -->
 <g id="node6" class="node"><title>Node7</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="660,-118 660,-137 803,-137 803,-118 660,-118"/>
 <text text-anchor="middle" x="731.5" y="-125" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -151,7 +151,7 @@
 </g>
 <!-- Node8 -->
 <g id="node7" class="node"><title>Node8</title>
-<g id="a_node7"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="861,-112.5 861,-142.5 965,-142.5 965,-112.5 861,-112.5"/>
 <text text-anchor="start" x="869" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="913" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -217,7 +217,7 @@
 </g>
 <!-- Node13 -->
 <g id="node12" class="node"><title>Node13</title>
-<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a854794aef09b81dbec641eca208a66d7" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a854794aef09b81dbec641eca208a66d7" target="_top" xlink:title="Copies the given string to the returned unique_ptr, including 0 byte.">
 <polygon fill="white" stroke="black" points="519.5,-0.5 519.5,-30.5 618.5,-30.5 618.5,-0.5 519.5,-0.5"/>
 <text text-anchor="start" x="527.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::copy</text>
 <text text-anchor="middle" x="569" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_string</text>
@@ -231,7 +231,7 @@
 </g>
 <!-- Node18 -->
 <g id="node17" class="node"><title>Node18</title>
-<g id="a_node17"><a xlink:href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" target="_top" xlink:title="get the filename (last part) of a given path">
 <polygon fill="white" stroke="black" points="674.5,-58 674.5,-77 788.5,-77 788.5,-58 674.5,-58"/>
 <text text-anchor="middle" x="731.5" y="-65" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::filename</text>
 </a>
@@ -244,7 +244,7 @@
 </g>
 <!-- Node19 -->
 <g id="node18" class="node"><title>Node19</title>
-<g id="a_node18"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#af8b5d87acaf3d044fdd924ef68a1cec8" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="namespaceopenage_1_1subprocess.xhtml#af8b5d87acaf3d044fdd924ef68a1cec8" target="_top" xlink:title="returns true IFF the file is executable">
 <polygon fill="white" stroke="black" points="514,-49.5 514,-79.5 624,-79.5 624,-49.5 514,-49.5"/>
 <text text-anchor="start" x="522" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::subprocess</text>
 <text text-anchor="middle" x="569" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::is_executable</text>
@@ -258,7 +258,7 @@
 </g>
 <!-- Node14 -->
 <g id="node13" class="node"><title>Node14</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" target="_top" xlink:title="Returns the length of the string literal, excluding the terminating NULL byte.">
 <polygon fill="white" stroke="black" points="671,-0.5 671,-30.5 792,-30.5 792,-0.5 671,-0.5"/>
 <text text-anchor="start" x="679" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::constexpr</text>
 <text text-anchor="middle" x="731.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_::strlen</text>
@@ -272,7 +272,7 @@
 </g>
 <!-- Node15 -->
 <g id="node14" class="node"><title>Node15</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="869.5,-6 869.5,-25 956.5,-25 956.5,-6 869.5,-6"/>
 <text text-anchor="middle" x="913" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -298,7 +298,7 @@
 </g>
 <!-- Node17 -->
 <g id="node16" class="node"><title>Node17</title>
-<g id="a_node16"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="1204,-6 1204,-25 1299,-25 1299,-6 1204,-6"/>
 <text text-anchor="middle" x="1251.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -321,7 +321,7 @@
 </g>
 <!-- Node21 -->
 <g id="node20" class="node"><title>Node21</title>
-<g id="a_node20"><a xlink:href="namespaceopenage_1_1os.xhtml#a2ff2ec43cb1353b31db1f7cae31b13be" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="namespaceopenage_1_1os.xhtml#a2ff2ec43cb1353b31db1f7cae31b13be" target="_top" xlink:title="reads a symlink">
 <polygon fill="white" stroke="black" points="344,-263 344,-282 478,-282 478,-263 344,-263"/>
 <text text-anchor="middle" x="411" y="-270" font-family="Helvetica,sans-Serif" font-size="10.00">openage::os::read_symlink</text>
 </a>

@@ -1,6 +1,6 @@
 <map id="openage::gui::GuiFilledTextureHandles::fill_all_handles_with_texture" name="openage::gui::GuiFilledTextureHandles::fill_all_handles_with_texture">
 <area shape="rect" id="node1" title=" " alt="" coords="5,198,204,254"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" title=" " alt="" coords="261,187,414,214"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" title="std::for_each except just on containers." alt="" coords="261,187,414,214"/>
 <area shape="rect" id="node12" href="$namespaceopenage_1_1gui.xhtml#a1404eed030dfc77b51edc61cb3fbbbef" title=" " alt="" coords="252,238,423,265"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1curve_1_1tests.xhtml#afc4e799a037edab37e1e35a74da593b7" title=" " alt="" coords="471,180,617,221"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1curve_1_1tests.xhtml#a994d019a14acd704605a0ccff85558c8" title=" " alt="" coords="665,5,812,47"/>

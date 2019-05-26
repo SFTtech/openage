@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-581 169,-581 169,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Wrapper around a log message that allows appending to the message with operator &lt;&lt;.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-90.5 148,-90.5 148,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="74" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::MessageBuilder</text>
 <polyline fill="none" stroke="black" points="0,-71.5 148,-71.5 "/>
@@ -56,7 +56,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_string_formatter.xhtml" target="_top" xlink:title="Wraps an output string stream, and provides all sorts of overloads for operator &lt;&lt;,...">
 <polygon fill="white" stroke="black" points="1,-376.5 1,-576.5 147,-576.5 147,-376.5 1,-376.5"/>
 <text text-anchor="start" x="9" y="-564.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
 <text text-anchor="middle" x="74" y="-553.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; ChildType &gt;</text>

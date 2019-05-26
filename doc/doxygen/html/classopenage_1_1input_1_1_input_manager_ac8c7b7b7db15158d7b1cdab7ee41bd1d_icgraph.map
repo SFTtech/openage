@@ -1,5 +1,5 @@
 <map id="openage::input::InputManager::trigger" name="openage::input::InputManager::trigger">
-<area shape="rect" id="node1" title=" " alt="" coords="488,5,681,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" title=" " alt="" coords="5,5,199,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" title=" " alt="" coords="247,35,440,76"/>
+<area shape="rect" id="node1" title="manages the pressing of an input event (key, mouse, ...)." alt="" coords="488,5,681,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2e46dfc175d1fd66e92a8644d994e6ab" title="When a SDL event happens, this is called." alt="" coords="5,5,199,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#aa49cac4e6c67e66aecd9c9deac412ffb" title="sets the state of a specific key" alt="" coords="247,35,440,76"/>
 </map>

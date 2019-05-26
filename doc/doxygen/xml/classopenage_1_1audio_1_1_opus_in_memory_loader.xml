@@ -15,9 +15,10 @@
           <declname>path</declname>
         </param>
         <briefdescription>
+<para>Creates a new <ref refid="classopenage_1_1audio_1_1_opus_in_memory_loader" kindref="compound">OpusInMemoryLoader</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a new <ref refid="classopenage_1_1audio_1_1_opus_in_memory_loader" kindref="compound">OpusInMemoryLoader</ref>. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>path</parametername>
 </parameternamelist>
@@ -53,9 +54,9 @@
         <name>get_resource</name>
         <reimplements refid="classopenage_1_1audio_1_1_in_memory_loader_1a3e774f8c61f668dc217e5deb465a0cf5">get_resource</reimplements>
         <briefdescription>
+<para>Returns the resource as pcm data buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the resource as pcm data buffer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -67,9 +68,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A <ref refid="classopenage_1_1audio_1_1_opus_in_memory_loader" kindref="compound">OpusInMemoryLoader</ref> load&apos;s opus encoded data from opus files. </para>
     </briefdescription>
     <detaileddescription>
-<para>A <ref refid="classopenage_1_1audio_1_1_opus_in_memory_loader" kindref="compound">OpusInMemoryLoader</ref> load&apos;s opus encoded data from opus files. A opus file is loaded completely at once and the loaded data will be kept in memory. </para>
+<para>A opus file is loaded completely at once and the loaded data will be kept in memory. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="516">

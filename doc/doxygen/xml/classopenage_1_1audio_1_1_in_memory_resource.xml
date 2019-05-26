@@ -11,9 +11,9 @@
         <argsstring></argsstring>
         <name>buffer</name>
         <briefdescription>
+<para>The resource&apos;s internal buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>The resource&apos;s internal buffer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -78,9 +78,9 @@
         <name>use</name>
         <reimplements refid="classopenage_1_1audio_1_1_resource_1a0ad2666c3d7c85d9ca17a2eb9c7887cb">use</reimplements>
         <briefdescription>
+<para>Tells the resource, that it will be used by a sound object, so it can preload some pcm samples. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tells the resource, that it will be used by a sound object, so it can preload some pcm samples. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -93,9 +93,9 @@
         <name>stop_using</name>
         <reimplements refid="classopenage_1_1audio_1_1_resource_1aaa6342dfe81f25de870d35018db5934c">stop_using</reimplements>
         <briefdescription>
+<para>Tells the resource, that one sound object does not use this resource any longer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tells the resource, that one sound object does not use this resource any longer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -116,9 +116,10 @@
           <declname>data_length</declname>
         </param>
         <briefdescription>
+<para>Returns a pointer to the sample buffer at the given position and the number of int16_t values that are actually available. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a pointer to the sample buffer at the given position and the number of int16_t values that are actually available. If the end of the resource is reached, 0 will be returned. If the resource is not ready yet, a nullptr with a length, different to zero, will be returned.</para>
+<para>If the end of the resource is reached, 0 will be returned. If the resource is not ready yet, a nullptr with a length, different to zero, will be returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>position</parametername>
@@ -153,9 +154,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>An <ref refid="classopenage_1_1audio_1_1_in_memory_resource" kindref="compound">InMemoryResource</ref> loads the whole pcm data into memory and keeps it there. </para>
     </briefdescription>
     <detaileddescription>
-<para>An <ref refid="classopenage_1_1audio_1_1_in_memory_resource" kindref="compound">InMemoryResource</ref> loads the whole pcm data into memory and keeps it there. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="501">

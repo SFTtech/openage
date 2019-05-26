@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-122.5 331,-122.5 331,4 -4,4"/>
 <!-- Node8 -->
 <g id="node1" class="node"><title>Node8</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="#bfbfbf" stroke="black" points="0,-44.5 0,-63.5 143,-63.5 143,-44.5 0,-44.5"/>
 <text text-anchor="middle" x="71.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node9 -->
 <g id="node2" class="node"><title>Node9</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="201,-88 201,-118 305,-118 305,-88 201,-88"/>
 <text text-anchor="start" x="209" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="253" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>

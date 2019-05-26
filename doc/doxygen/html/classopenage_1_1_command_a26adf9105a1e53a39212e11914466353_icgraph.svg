@@ -20,7 +20,7 @@
 </g>
 <!-- Node38 -->
 <g id="node2" class="node"><title>Node38</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_move_ability.xhtml#a5c5b9e7740f8636b4e04c077c2598b6e" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_move_ability.xhtml#a5c5b9e7740f8636b4e04c077c2598b6e" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="12,-147.5 12,-177.5 121,-177.5 121,-147.5 12,-147.5"/>
 <text text-anchor="start" x="20" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAbility</text>
 <text text-anchor="middle" x="66.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node39 -->
 <g id="node3" class="node"><title>Node39</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_set_point_ability.xhtml#a859198e39e096b2a72b5be664166f29e" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_set_point_ability.xhtml#a859198e39e096b2a72b5be664166f29e" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="4.5,-98.5 4.5,-128.5 128.5,-128.5 128.5,-98.5 4.5,-98.5"/>
 <text text-anchor="start" x="12.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SetPointAbility</text>
 <text text-anchor="middle" x="66.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node40 -->
 <g id="node4" class="node"><title>Node40</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_ungarrison_ability.xhtml#af388756108b7d397bf1fd1523f07198c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_ungarrison_ability.xhtml#af388756108b7d397bf1fd1523f07198c" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 133,-79.5 133,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UngarrisonAbility</text>
 <text text-anchor="middle" x="66.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node41 -->
 <g id="node5" class="node"><title>Node41</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" target="_top" xlink:title="applies command to a given unit">
 <polygon fill="white" stroke="black" points="12,-0.5 12,-30.5 121,-30.5 121,-0.5 12,-0.5"/>
 <text text-anchor="start" x="20" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MoveAbility</text>
 <text text-anchor="middle" x="66.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::invoke</text>

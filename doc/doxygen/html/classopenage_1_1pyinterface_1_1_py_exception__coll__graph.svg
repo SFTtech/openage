@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-1585 394,-1585 394,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Thrown by translate_exc_py_to_cpp() from exctranslate.h.">
 <polygon fill="#bfbfbf" stroke="black" points="118,-0.5 118,-79.5 225,-79.5 225,-0.5 118,-0.5"/>
 <text text-anchor="start" x="126" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="171.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyException</text>
@@ -71,7 +71,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_error.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_error.xhtml" target="_top" xlink:title="Openage base exception type; the constructor usage is analogous to log::log().">
 <polygon fill="white" stroke="black" points="0,-155 0,-300 135,-300 135,-155 0,-155"/>
 <text text-anchor="middle" x="67.5" y="-288" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 <polyline fill="none" stroke="black" points="0,-281 135,-281 "/>
@@ -113,7 +113,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="structopenage_1_1log_1_1message.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="structopenage_1_1log_1_1message.xhtml" target="_top" xlink:title="A complete log/exception message, containing a text message and metadata.">
 <polygon fill="white" stroke="black" points="107,-375.5 107,-498.5 246,-498.5 246,-375.5 107,-375.5"/>
 <text text-anchor="middle" x="176.5" y="-486.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::message</text>
 <polyline fill="none" stroke="black" points="107,-479.5 246,-479.5 "/>
@@ -137,7 +137,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node7 -->
 <g id="node5" class="node"><title>Node7</title>
-<g id="a_node5"><a xlink:href="structopenage_1_1log_1_1level.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="structopenage_1_1log_1_1level.xhtml" target="_top" xlink:title="Available logging levels.">
 <polygon fill="white" stroke="black" points="128,-546.5 128,-603.5 225,-603.5 225,-546.5 128,-546.5"/>
 <text text-anchor="middle" x="176.5" y="-591.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <polyline fill="none" stroke="black" points="128,-584.5 225,-584.5 "/>
@@ -185,7 +185,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node9 -->
 <g id="node7" class="node"><title>Node9</title>
-<g id="a_node7"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="structopenage_1_1log_1_1level__value.xhtml" target="_top" xlink:title="Data associated with a log level.">
 <polygon fill="white" stroke="black" points="116,-950 116,-1018 213,-1018 213,-950 116,-950"/>
 <text text-anchor="start" x="124" y="-1006" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::level</text>
 <text text-anchor="middle" x="164.5" y="-995" font-family="Helvetica,sans-Serif" font-size="10.00">_value</text>
@@ -280,7 +280,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node13 -->
 <g id="node11" class="node"><title>Node13</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title="Container for possible enum values.">
 <polygon fill="white" stroke="black" points="231,-889.5 231,-1078.5 390,-1078.5 390,-889.5 231,-889.5"/>
 <text text-anchor="start" x="239" y="-1066.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Enum</text>
 <text text-anchor="middle" x="310.5" y="-1055.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; DerivedType &gt;</text>
@@ -328,7 +328,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node15 -->
 <g id="node13" class="node"><title>Node15</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml" target="_top" xlink:title="Holds a Python object, as a PyObject * pointer.">
 <polygon fill="white" stroke="black" points="153,-127.5 153,-327.5 260,-327.5 260,-127.5 153,-127.5"/>
 <text text-anchor="start" x="161" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="206.5" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef</text>

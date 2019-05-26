@@ -204,9 +204,9 @@
         <argsstring>() const</argsstring>
         <name>get_data</name>
         <briefdescription>
+<para>Get contained node data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get contained node data. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -223,9 +223,9 @@
           <declname>node</declname>
         </param>
         <briefdescription>
+<para>Let this node become a child of the given one. </para>
         </briefdescription>
         <detaileddescription>
-<para>Let this node become a child of the given one. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -241,9 +241,9 @@
           <declname>new_child</declname>
         </param>
         <briefdescription>
+<para>Add the given node as a child to this one. </para>
         </briefdescription>
         <detaileddescription>
-<para>Add the given node as a child to this one. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -260,9 +260,10 @@
           <declname>node</declname>
         </param>
         <briefdescription>
+<para>This method decides which node becomes the new root node by comparing <computeroutput>this</computeroutput> with <computeroutput>node</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
-<para>This method decides which node becomes the new root node by comparing <computeroutput>this</computeroutput> with <computeroutput>node</computeroutput>. The new root is returned, it has the other node as child. </para>
+<para>The new root is returned, it has the other node as child. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -276,9 +277,10 @@
         <argsstring>()</argsstring>
         <name>link_backwards</name>
         <briefdescription>
+<para>Link all siblings backwards from right to left. </para>
         </briefdescription>
         <detaileddescription>
-<para>Link all siblings backwards from right to left. Recursive call, one stage for each all childs of the root node. This results in the computation of the new subtree root. </para>
+<para>Recursive call, one stage for each all childs of the root node. This results in the computation of the new subtree root. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -293,9 +295,10 @@
         <argsstring>()</argsstring>
         <name>loosen</name>
         <briefdescription>
+<para>Cut this node from all parent and sibling connections, but keeps the child pointer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Cut this node from all parent and sibling connections, but keeps the child pointer. This effectively cuts out the subtree. </para>
+<para>This effectively cuts out the subtree. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

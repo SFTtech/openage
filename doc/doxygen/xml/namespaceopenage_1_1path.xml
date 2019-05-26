@@ -13,9 +13,9 @@
         <argsstring></argsstring>
         <name>heuristic_t</name>
         <briefdescription>
+<para>function pointer type for distance estimation functions. </para>
         </briefdescription>
         <detaileddescription>
-<para>function pointer type for distance estimation functions. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -27,9 +27,9 @@
         <argsstring></argsstring>
         <name>cost_t</name>
         <briefdescription>
+<para>The data type for movement cost. </para>
         </briefdescription>
         <detaileddescription>
-<para>The data type for movement cost </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -41,9 +41,9 @@
         <argsstring></argsstring>
         <name>node_pt</name>
         <briefdescription>
+<para>Type for storing navigation nodes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type for storing navigation nodes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -55,9 +55,9 @@
         <argsstring></argsstring>
         <name>nodemap_t</name>
         <briefdescription>
+<para>Type for mapping tiles to nodes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Type for mapping tiles to nodes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -69,9 +69,9 @@
         <argsstring></argsstring>
         <name>heap_t</name>
         <briefdescription>
+<para>Priority queue node item type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Priority queue node item type. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -86,9 +86,9 @@
         <name>path_grid_size</name>
         <initializer>{1.f/8}</initializer>
         <briefdescription>
+<para>Size of phys-coord grid for path nodes. </para>
         </briefdescription>
         <detaileddescription>
-<para>Size of phys-coord grid for path nodes. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -113,9 +113,9 @@
 	{<ref refid="namespaceopenage_1_1path_1a7e49ca629b6fed008584d7752dc98e9a" kindref="member">path_grid_size</ref> *  0, <ref refid="namespaceopenage_1_1path_1a7e49ca629b6fed008584d7752dc98e9a" kindref="member">path_grid_size</ref> * -1, 0}
 }</initializer>
         <briefdescription>
+<para>Phys3 delta coordinates to select for path neighbors. </para>
         </briefdescription>
         <detaileddescription>
-<para>Phys3 delta coordinates to select for path neighbors. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -142,9 +142,9 @@
           <declname>passable</declname>
         </param>
         <briefdescription>
+<para>path between two static points </para>
         </briefdescription>
         <detaileddescription>
-<para>path between two static points </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,17 +156,17 @@
         <references refid="classopenage_1_1util_1_1_fixed_point_1a07a0fa1c13f5aff3f184a2d82574e7e7" compoundref="fixed__point_8h" startline="252" endline="254">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_float</references>
         <referencedby refid="classopenage_1_1_move_action_1a4e56fc82672dfaf3c62f846afbd6df69" compoundref="unit_2action_8cpp" startline="715" endline="724">openage::MoveAction::set_path</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceopenage_1_1path_1a047e97b9a81a866f064ad6d6f8dddfd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref></type>
         <definition>Path openage::path::to_object</definition>
-        <argsstring>(openage::TerrainObject *to_move, openage::TerrainObject *end, coord::phys_t rad)</argsstring>
+        <argsstring>(TerrainObject *to_move, TerrainObject *end, coord::phys_t rad)</argsstring>
         <name>to_object</name>
         <param>
-          <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
+          <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">openage::TerrainObject</ref> *</type>
           <declname>to_move</declname>
         </param>
         <param>
-          <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
+          <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">openage::TerrainObject</ref> *</type>
           <declname>end</declname>
         </param>
         <param>
@@ -174,9 +174,9 @@
           <declname>rad</declname>
         </param>
         <briefdescription>
+<para>path between 2 objects, with how close to come to end point </para>
         </briefdescription>
         <detaileddescription>
-<para>path between 2 objects, with how close to come to end point </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -208,9 +208,9 @@
           <declname>passable</declname>
         </param>
         <briefdescription>
+<para>path to nearest object with lambda </para>
         </briefdescription>
         <detaileddescription>
-<para>path to nearest object with lambda </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -239,9 +239,10 @@
           <declname>passable</declname>
         </param>
         <briefdescription>
+<para>finds a path between two endpoints </para>
         </briefdescription>
         <detaileddescription>
-<para>finds a path between two endpoints <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>start</parametername>
 </parameternamelist>
@@ -286,11 +287,11 @@
         <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1a7a529d5ee64fa5002f6487d3821df5f6" compoundref="pairing__heap_8h" startline="429" endline="431">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::empty</references>
         <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
-        <references refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" compoundref="pathfinding_2path_8cpp" startline="100" endline="115">passable_line</references>
+        <references refid="namespaceopenage_1_1path_1a4fb2450790038eed534dfe29ad57d350" compoundref="pathfinding_2path_8cpp" startline="100" endline="115">passable_line</references>
         <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1ac6bcfcb890dd8d546b1b4c466cf09009" compoundref="pairing__heap_8h" startline="236" endline="238">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::pop</references>
         <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1a75e9e7602b59aeee47a2fd84a10c8f74" compoundref="pairing__heap_8h" startline="217" endline="221">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::push</references>
         <referencedby refid="namespaceopenage_1_1path_1a4382f59f9523f9dd89a6689336cc353a" compoundref="a__star_8cpp" startline="58" endline="64">find_nearest</referencedby>
-        <referencedby refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" compoundref="a__star_8cpp" startline="44" endline="55">to_object</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1a047e97b9a81a866f064ad6d6f8dddfd6" compoundref="a__star_8cpp" startline="44" endline="55">to_object</referencedby>
         <referencedby refid="namespaceopenage_1_1path_1a4699fb2dbfd8178b2234b9fbb935179f" compoundref="a__star_8cpp" startline="30" endline="41">to_point</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1path_1a825dde52e9d0fd7fe6fa6970a1ec58e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -307,9 +308,10 @@
           <declname>end</declname>
         </param>
         <briefdescription>
+<para>Manhattan distance cost estimation. </para>
         </briefdescription>
         <detaileddescription>
-<para>Manhattan distance cost estimation. <simplesect kind="return"><para>the sum of the x and y difference. </para>
+<para><simplesect kind="return"><para>the sum of the x and y difference. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -332,9 +334,10 @@
           <declname>end</declname>
         </param>
         <briefdescription>
+<para>Chebyshev distance cost estimation. </para>
         </briefdescription>
         <detaileddescription>
-<para>Chebyshev distance cost estimation. <simplesect kind="return"><para>y or x difference, whichever is higher. </para>
+<para><simplesect kind="return"><para>y or x difference, whichever is higher. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -358,9 +361,10 @@
           <declname>end</declname>
         </param>
         <briefdescription>
+<para>Euclidean distance cost estimation. </para>
         </briefdescription>
         <detaileddescription>
-<para>Euclidean distance cost estimation. <simplesect kind="return"><para>the hypotenuse length of the rectangular triangle formed. </para>
+<para><simplesect kind="return"><para>the hypotenuse length of the rectangular triangle formed. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -383,9 +387,10 @@
           <declname>end</declname>
         </param>
         <briefdescription>
+<para>Squared euclidean distance cost estimation. </para>
         </briefdescription>
         <detaileddescription>
-<para>Squared euclidean distance cost estimation. <simplesect kind="return"><para>the square of the hypotenuse length of the rectangular triangle formed. </para>
+<para><simplesect kind="return"><para>the square of the hypotenuse length of the rectangular triangle formed. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -404,18 +409,18 @@
           <declname>euclidean_squared_value</declname>
         </param>
         <briefdescription>
+<para>Calculate euclidean distance from a already calculated squared euclidean distance. </para>
         </briefdescription>
         <detaileddescription>
-<para>Calculate euclidean distance from a already calculated squared euclidean distance </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h" line="42" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceopenage_1_1path_1a4fb2450790038eed534dfe29ad57d350" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool openage::path::passable_line</definition>
-        <argsstring>(node_pt start, node_pt end, std::function&lt; bool(const coord::phys3 &amp;)&gt; passable, float samples)</argsstring>
+        <argsstring>(node_pt start, node_pt end, std::function&lt; bool(const coord::phys3 &amp;)&gt;passable, float samples=5.0f)</argsstring>
         <name>passable_line</name>
         <param>
           <type><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref></type>
@@ -432,7 +437,6 @@
         <param>
           <type>float</type>
           <declname>samples</declname>
-          <defval>5.0f</defval>
         </param>
         <briefdescription>
         </briefdescription>

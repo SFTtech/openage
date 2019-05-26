@@ -1,8 +1,8 @@
 <map id="openage::Unit::add_attribute" name="openage::Unit::add_attribute">
-<area shape="rect" id="node1" title=" " alt="" coords="676,115,807,156"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title=" " alt="" coords="451,5,620,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title=" " alt="" coords="216,56,395,97"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title=" " alt="" coords="5,85,168,127"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title=" " alt="" coords="447,173,624,215"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_projectile_producer.xhtml#aa865d0028f76dfeb134b32c24dc63619" title=" " alt="" coords="443,239,628,280"/>
+<area shape="rect" id="node1" title="give a new attribute this this unit this is used to set things like color, hitpoints and speed" alt="" coords="676,115,807,156"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title="Initialize units attributes to this type spec." alt="" coords="451,5,620,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title="Initialize units attributes to this type spec." alt="" coords="216,56,395,97"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title="Initialize units attributes to this type spec." alt="" coords="5,85,168,127"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title="Initialize units attributes to this type spec." alt="" coords="447,173,624,215"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_projectile_producer.xhtml#aa865d0028f76dfeb134b32c24dc63619" title="Initialize units attributes to this type spec." alt="" coords="443,239,628,280"/>
 </map>

@@ -34,7 +34,7 @@
 </g>
 <!-- Node137 -->
 <g id="node5" class="node"><title>Node137</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1audio.xhtml#a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1audio.xhtml#a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" target="_top" xlink:title="Opens a opus file.">
 <polygon fill="white" stroke="black" points="191,-0.5 191,-30.5 301,-30.5 301,-0.5 191,-0.5"/>
 <text text-anchor="start" x="199" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::open</text>
 <text text-anchor="middle" x="246" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_opus_file</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node135 -->
 <g id="node3" class="node"><title>Node135</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#aae99478db7d16d650eff5dd34a2194ca" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#aae99478db7d16d650eff5dd34a2194ca" target="_top" xlink:title="Initialize the collection by reading the given file.">
 <polygon fill="white" stroke="black" points="7,-98.5 7,-128.5 148,-128.5 148,-98.5 7,-98.5"/>
 <text text-anchor="start" x="15" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CSVCollection</text>
 <text text-anchor="middle" x="77.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::CSVCollection</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node136 -->
 <g id="node4" class="node"><title>Node136</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a16ef0fe69558a29af4a8d568f2b5b518" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a16ef0fe69558a29af4a8d568f2b5b518" target="_top" xlink:title="read a single csv file.">
 <polygon fill="white" stroke="black" points="29,-49.5 29,-79.5 126,-79.5 126,-49.5 29,-49.5"/>
 <text text-anchor="start" x="37" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::read</text>
 <text text-anchor="middle" x="77.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_csv_file</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node138 -->
 <g id="node6" class="node"><title>Node138</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml#afd535fc99780b2823cdd38c8dfc03f5d" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml#afd535fc99780b2823cdd38c8dfc03f5d" target="_top" xlink:title="Returns the resource as pcm data buffer.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 155,-30.5 155,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::OpusInMemory</text>
 <text text-anchor="middle" x="77.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Loader::get_resource</text>

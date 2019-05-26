@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-298 768,-298 768,4 -4,4"/>
 <!-- Node79 -->
 <g id="node1" class="node"><title>Node79</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="draw the currently visible terrain area on screen.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-174 0,-193 115,-193 115,-174 0,-174"/>
 <text text-anchor="middle" x="57.5" y="-181" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::draw</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node80 -->
 <g id="node2" class="node"><title>Node80</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" target="_top" xlink:title="create the drawing instruction data.">
 <polygon fill="white" stroke="black" points="152.5,-237.5 152.5,-267.5 274.5,-267.5 274.5,-237.5 152.5,-237.5"/>
 <text text-anchor="start" x="160.5" y="-255.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::create</text>
 <text text-anchor="middle" x="213.5" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00">_draw_advice</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node84 -->
 <g id="node6" class="node"><title>Node84</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" target="_top" xlink:title="Draws the texture at hud coordinates.">
 <polygon fill="white" stroke="black" points="154.5,-196 154.5,-215 272.5,-215 272.5,-196 154.5,-196"/>
 <text text-anchor="middle" x="213.5" y="-203" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node86 -->
 <g id="node8" class="node"><title>Node86</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e394fadeb8534aef0c7098939f25b23" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e394fadeb8534aef0c7098939f25b23" target="_top" xlink:title="get the terrain texture for a given terrain id.">
 <polygon fill="white" stroke="black" points="151,-153 151,-172 276,-172 276,-153 151,-153"/>
 <text text-anchor="middle" x="213.5" y="-160" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::texture</text>
 </a>
@@ -86,7 +86,7 @@
 </g>
 <!-- Node82 -->
 <g id="node4" class="node"><title>Node82</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="483.5,-263.5 483.5,-293.5 608.5,-293.5 608.5,-263.5 483.5,-263.5"/>
 <text text-anchor="start" x="491.5" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="546" y="-270.5" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -100,7 +100,7 @@
 </g>
 <!-- Node83 -->
 <g id="node5" class="node"><title>Node83</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="483.5,-214.5 483.5,-244.5 608.5,-244.5 608.5,-214.5 483.5,-214.5"/>
 <text text-anchor="start" x="491.5" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="546" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>
@@ -128,7 +128,7 @@
 </g>
 <!-- Node87 -->
 <g id="node9" class="node"><title>Node87</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_terrain.xhtml#a76cd02c887a27a6c91331573ecb84907" target="_top" xlink:title="validate whether the given terrain id is available.">
 <polygon fill="white" stroke="black" points="314.5,-146.5 314.5,-176.5 441.5,-176.5 441.5,-146.5 314.5,-146.5"/>
 <text text-anchor="start" x="322.5" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::validate</text>
 <text text-anchor="middle" x="378" y="-153.5" font-family="Helvetica,sans-Serif" font-size="10.00">_terrain</text>

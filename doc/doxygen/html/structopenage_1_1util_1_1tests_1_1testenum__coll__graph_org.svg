@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-1050 306.5,-1050 306.5,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="pxd:">
 <polygon fill="#bfbfbf" stroke="black" points="58,-0.5 58,-68.5 158,-68.5 158,-0.5 58,-0.5"/>
 <text text-anchor="start" x="66" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::tests</text>
 <text text-anchor="middle" x="108" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">::testenum</text>
@@ -54,7 +54,7 @@
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="structopenage_1_1util_1_1tests_1_1testenum__value.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="structopenage_1_1util_1_1tests_1_1testenum__value.xhtml" target="_top" xlink:title="pxd:">
 <polygon fill="white" stroke="black" points="25,-415 25,-483 125,-483 125,-415 25,-415"/>
 <text text-anchor="start" x="33" y="-471" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::tests</text>
 <text text-anchor="middle" x="75" y="-460" font-family="Helvetica,sans-Serif" font-size="10.00">::testenum_value</text>
@@ -150,7 +150,7 @@
 </g>
 <!-- Node9 -->
 <g id="node7" class="node"><title>Node9</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_enum.xhtml" target="_top" xlink:title="Container for possible enum values.">
 <polygon fill="white" stroke="black" points="143.5,-354.5 143.5,-543.5 302.5,-543.5 302.5,-354.5 143.5,-354.5"/>
 <text text-anchor="start" x="151.5" y="-531.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Enum</text>
 <text text-anchor="middle" x="223" y="-520.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; DerivedType &gt;</text>

@@ -13,9 +13,9 @@
         <argsstring></argsstring>
         <name>content</name>
         <briefdescription>
+<para>The units that are garrisoned. </para>
         </briefdescription>
         <detaileddescription>
-<para>The units that are garrisoned. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -44,9 +44,9 @@
         <name>copy</name>
         <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
         <briefdescription>
+<para>Produces an copy of the attribute. </para>
         </briefdescription>
         <detaileddescription>
-<para>Produces an copy of the attribute. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -54,9 +54,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Units put inside a building. </para>
     </briefdescription>
     <detaileddescription>
-<para>Units put inside a building. <xrefsect id="todo_1_todo000038"><xreftitle>Todo</xreftitle><xrefdescription><para>add capacity per type of unit </para>
+<para><xrefsect id="todo_1_todo000038"><xreftitle>Todo</xreftitle><xrefdescription><para>add capacity per type of unit </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>

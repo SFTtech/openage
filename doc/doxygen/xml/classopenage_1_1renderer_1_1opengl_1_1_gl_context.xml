@@ -213,9 +213,10 @@
         <argsstring>()</argsstring>
         <name>check_error</name>
         <briefdescription>
+<para>Checks whether the current GL context on this thread reported any errors and throws an exception if it did. </para>
         </briefdescription>
         <detaileddescription>
-<para>Checks whether the current GL context on this thread reported any errors and throws an exception if it did. Note that it&apos;s static. </para>
+<para>Note that it&apos;s static. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

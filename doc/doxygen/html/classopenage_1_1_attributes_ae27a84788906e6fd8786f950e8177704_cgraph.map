@@ -1,4 +1,4 @@
 <map id="openage::Attributes::add_copies" name="openage::Attributes::add_copies">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,140,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f" title=" " alt="" coords="188,13,352,39"/>
+<area shape="rect" id="node1" title="Add copies of all the attributes from the given Attributes." alt="" coords="5,5,140,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f" title="Add an attribute or replace any attribute of the same type." alt="" coords="188,13,352,39"/>
 </map>

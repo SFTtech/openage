@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-504 293.5,-504 293.5,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Resource generator eg.">
 <polygon fill="#bfbfbf" stroke="black" points="131.5,-0.5 131.5,-90.5 238.5,-90.5 238.5,-0.5 131.5,-0.5"/>
 <text text-anchor="start" x="139.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="start" x="139.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::resource</text>
@@ -72,7 +72,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node2" class="node"><title>Node4</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_shared_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_shared_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated shared attribute.">
 <polygon fill="white" stroke="black" points="0,-210 0,-289 140,-289 140,-210 0,-210"/>
 <text text-anchor="start" x="8" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SharedAttribute</text>
 <text text-anchor="middle" x="70" y="-266" font-family="Helvetica,sans-Serif" font-size="10.00">Container</text>
@@ -91,7 +91,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node5 -->
 <g id="node3" class="node"><title>Node5</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated attribute.">
 <polygon fill="white" stroke="black" points="1.5,-398.5 1.5,-499.5 138.5,-499.5 138.5,-398.5 1.5,-398.5"/>
 <text text-anchor="middle" x="70" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttributeContainer</text>
 <polyline fill="none" stroke="black" points="1.5,-480.5 138.5,-480.5 "/>
@@ -112,7 +112,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node4" class="node"><title>Node6</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_resource_bundle.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_resource_bundle.xhtml" target="_top" xlink:title="A set of amounts of game resources.">
 <polygon fill="white" stroke="black" points="158.5,-138.5 158.5,-360.5 289.5,-360.5 289.5,-138.5 158.5,-138.5"/>
 <text text-anchor="middle" x="224" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <polyline fill="none" stroke="black" points="158.5,-341.5 289.5,-341.5 "/>

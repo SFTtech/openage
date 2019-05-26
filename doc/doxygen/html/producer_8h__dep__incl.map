@@ -4,7 +4,7 @@
 <area shape="rect" id="node3" href="$game__save_8cpp.xhtml" title=" " alt="" coords="239,109,448,165"/>
 <area shape="rect" id="node4" href="$game__spec_8cpp.xhtml" title=" " alt="" coords="472,109,681,165"/>
 <area shape="rect" id="node5" href="$unit_2action_8cpp.xhtml" title=" " alt="" coords="705,109,915,165"/>
-<area shape="rect" id="node6" href="$producer_8cpp.xhtml" title=" " alt="" coords="939,109,1148,165"/>
+<area shape="rect" id="node6" href="$producer_8cpp.xhtml" title="Many values in this file are hardcoded, due to limited understanding of how the original game files w..." alt="" coords="939,109,1148,165"/>
 <area shape="rect" id="node7" href="$selection_8cpp.xhtml" title=" " alt="" coords="1172,109,1381,165"/>
 <area shape="rect" id="node8" href="$unit_8cpp.xhtml" title=" " alt="" coords="1405,109,1615,165"/>
 <area shape="rect" id="node9" href="$unit__container_8cpp.xhtml" title=" " alt="" coords="1639,109,1848,165"/>

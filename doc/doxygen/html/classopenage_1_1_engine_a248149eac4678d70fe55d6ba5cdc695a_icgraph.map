@@ -1,17 +1,17 @@
 <map id="openage::Engine::get_input_manager" name="openage::Engine::get_input_manager">
-<area shape="rect" id="node1" title=" " alt="" coords="700,292,845,333"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" title=" " alt="" coords="473,57,641,99"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title=" " alt="" coords="249,12,397,53"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="246,103,401,144"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_engine.xhtml#a0592aec2fe0da923bfc337154341cfa2" title=" " alt="" coords="465,175,648,216"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title=" " alt="" coords="481,241,632,267"/>
+<area shape="rect" id="node1" title="return this engine&#39;s keybind manager." alt="" coords="700,292,845,333"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" title="sends to gui the buttons it should use for the action buttons (if changed)" alt="" coords="473,57,641,99"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title="Called when the mode is left." alt="" coords="249,12,397,53"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="246,103,401,144"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_engine.xhtml#a0592aec2fe0da923bfc337154341cfa2" title="send keybindings help string to gui." alt="" coords="465,175,648,216"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" title="main engine loop function." alt="" coords="481,241,632,267"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_action_mode_signals.xhtml#a400a4674187d1ce007a206c5074390da" title=" " alt="" coords="461,292,652,333"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title=" " alt="" coords="479,357,634,399"/>
-<area shape="rect" id="node11" href="$classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" title=" " alt="" coords="6,671,185,712"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="479,357,634,399"/>
+<area shape="rect" id="node11" href="$classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" title="register this console to the engine." alt="" coords="6,671,185,712"/>
 <area shape="rect" id="node12" href="$classopenage_1_1_game_control.xhtml#ad7c9d48df33f8f56ab5686c36648bfa5" title=" " alt="" coords="246,357,401,399"/>
 <area shape="rect" id="node14" href="$classopenage_1_1_game_control.xhtml#a1d0f073f844955000861e4c0d08b20e0" title=" " alt="" coords="479,475,634,516"/>
 <area shape="rect" id="node20" href="$classopenage_1_1console_1_1_console.xhtml#a8a86e7fece57c47da16e37633c624ece" title=" " alt="" coords="467,612,646,653"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title=" " alt="" coords="251,241,396,267"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" title="starts the engine loop." alt="" coords="251,241,396,267"/>
 <area shape="rect" id="node9" href="$classopenage_1_1gui_1_1_action_mode_link.xhtml#a7f40baae6dc5feed6abebaa5eae2f2d6" title=" " alt="" coords="237,292,410,333"/>
 <area shape="rect" id="node13" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#a0a4bb8a5d7b2e5637d317fe51f02ad5f" title=" " alt="" coords="5,357,185,399"/>
 <area shape="rect" id="node15" href="$classopenage_1_1_game_control.xhtml#aa44a60840b738c202e328902943d8162" title=" " alt="" coords="246,553,401,595"/>
@@ -19,5 +19,5 @@
 <area shape="rect" id="node18" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#aef267067b8bc03f0df3bfdecce515cd6" title=" " alt="" coords="233,423,413,464"/>
 <area shape="rect" id="node16" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#a54ebef9560dd3607b61083b0f8ecb9ba" title=" " alt="" coords="5,553,185,595"/>
 <area shape="rect" id="node19" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#ac65023c9d5f785efe775b1dd99111c42" title=" " alt="" coords="5,423,185,464"/>
-<area shape="rect" id="node21" href="$classopenage_1_1console_1_1_console.xhtml#a4e0359f0f3cbbf66da045ba1a33ffa57" title=" " alt="" coords="234,671,413,712"/>
+<area shape="rect" id="node21" href="$classopenage_1_1console_1_1_console.xhtml#a4e0359f0f3cbbf66da045ba1a33ffa57" title="a temporary console command interpreter" alt="" coords="234,671,413,712"/>
 </map>

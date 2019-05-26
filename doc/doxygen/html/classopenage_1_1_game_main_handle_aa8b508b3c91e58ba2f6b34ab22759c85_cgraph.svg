@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 317,-73.5 317,4 -4,4"/>
 <!-- Node6 -->
 <g id="node1" class="node"><title>Node6</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="End the game and delete the game handle.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-17 0,-47 137,-47 137,-17 0,-17"/>
 <text text-anchor="start" x="8" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMainHandle</text>
 <text text-anchor="middle" x="68.5" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::clear</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#a7ae88934bf1fc3c90e397441657718d2" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_main_handle.xhtml#a7ae88934bf1fc3c90e397441657718d2" target="_top" xlink:title="Emit a qt signal to notify for changes in a running game.">
 <polygon fill="white" stroke="black" points="174.5,-39 174.5,-69 311.5,-69 311.5,-39 174.5,-39"/>
 <text text-anchor="start" x="182.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameMainHandle</text>
 <text text-anchor="middle" x="243" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::announce_running</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node8 -->
 <g id="node3" class="node"><title>Node8</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#ad14908046077033490111f941fbc408f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#ad14908046077033490111f941fbc408f" target="_top" xlink:title="Stop the running game.">
 <polygon fill="white" stroke="black" points="173,-0.5 173,-19.5 313,-19.5 313,-0.5 173,-0.5"/>
 <text text-anchor="middle" x="243" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::end_game</text>
 </a>

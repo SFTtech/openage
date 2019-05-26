@@ -784,7 +784,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node47 -->
 <g id="node39" class="node"><title>Node47</title>
-<g id="a_node39"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title=" ">
+<g id="a_node39"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title="This file contains the implementation of a pairing heap.">
 <polygon fill="white" stroke="black" points="598,-504.5 598,-534.5 712,-534.5 712,-504.5 598,-504.5"/>
 <text text-anchor="start" x="606" y="-522.5" font-family="Helvetica,sans-Serif" font-size="10.00">../datastructure/pairing</text>
 <text text-anchor="middle" x="655" y="-511.5" font-family="Helvetica,sans-Serif" font-size="10.00">_heap.h</text>

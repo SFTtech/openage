@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-182 275,-182 275,4 -4,4"/>
 <!-- Node45 -->
 <g id="node1" class="node"><title>Node45</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="sets the end point for the reference time used to compute the portions of the components.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-73.5 0,-103.5 110,-103.5 110,-73.5 0,-73.5"/>
 <text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="55" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">::end_frame_measure</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node49 -->
 <g id="node5" class="node"><title>Node49</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a93cf3b3b79fc2f3be34a2e1b095198a6" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml#a93cf3b3b79fc2f3be34a2e1b095198a6" target="_top" xlink:title="returns a vector of registered component names">
 <polygon fill="white" stroke="black" points="146.5,-0.5 146.5,-30.5 270.5,-30.5 270.5,-0.5 146.5,-0.5"/>
 <text text-anchor="start" x="154.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
 <text text-anchor="middle" x="208.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::registered_components</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 295,-35 295,4 -4,4"/>
 <!-- Node15 -->
 <g id="node1" class="node"><title>Node15</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Parse the data from one file in the map.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 141,-30.5 141,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CSVCollection</text>
 <text text-anchor="middle" x="70.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node16 -->
 <g id="node2" class="node"><title>Node16</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" target="_top" xlink:title="get the filename (last part) of a given path">
 <polygon fill="white" stroke="black" points="177,-6 177,-25 291,-25 291,-6 177,-6"/>
 <text text-anchor="middle" x="234" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::filename</text>
 </a>

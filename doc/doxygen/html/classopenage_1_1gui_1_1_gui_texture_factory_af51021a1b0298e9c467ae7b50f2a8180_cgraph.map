@@ -1,11 +1,11 @@
 <map id="openage::gui::GuiTextureFactory::GuiTextureFactory" name="openage::gui::GuiTextureFactory::GuiTextureFactory">
 <area shape="rect" id="node1" title=" " alt="" coords="5,72,187,113"/>
-<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a183dbf9c55bb6ce603654585a92db3b1" title=" " alt="" coords="235,65,424,121"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a183dbf9c55bb6ce603654585a92db3b1" title="Fills in the provided handle object." alt="" coords="235,65,424,121"/>
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac4c74475a47396d2e1824d2625e9d666" title=" " alt="" coords="472,65,661,121"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" title=" " alt="" coords="733,35,875,76"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" title="The sourceSize property of the Image QML element ends up here for checking." alt="" coords="733,35,875,76"/>
 <area shape="rect" id="node9" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a28738ee06bd6ef675a723b0db02433c2" title=" " alt="" coords="709,101,899,157"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1gui.xhtml#a4f415900a4d4e55b09b0be3c2ba60d54" title=" " alt="" coords="947,42,1115,69"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title=" " alt="" coords="1182,5,1330,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title="Get the subtexture coordinates by its id." alt="" coords="1182,5,1330,47"/>
 <area shape="rect" id="node7" href="$namespaceopenage_1_1gui.xhtml#af717f0e1527d227ea7c4a8e9f34e87b8" title=" " alt="" coords="1163,71,1349,98"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_texture.xhtml#a4548b2bc3eb5310a97deee94ab536035" title=" " alt="" coords="1397,64,1545,105"/>
 </map>

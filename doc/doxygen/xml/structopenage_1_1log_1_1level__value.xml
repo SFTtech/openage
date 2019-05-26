@@ -20,9 +20,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Data associated with a log level. </para>
     </briefdescription>
     <detaileddescription>
-<para>Data associated with a log level.</para>
 <para>pxd:</para>
 <para>cppclass level_value(EnumValue[level_value, int]): const char *colorcode </para>
     </detaileddescription>

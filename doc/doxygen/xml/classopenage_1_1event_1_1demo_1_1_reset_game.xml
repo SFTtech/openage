@@ -32,9 +32,10 @@
           <declname>state</declname>
         </param>
         <briefdescription>
+<para>Called for each event that is created for this <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Called for each event that is created for this <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref>. The job of the setup function is to add all dependencies with other event targets found in state. </para>
+<para>The job of the setup function is to add all dependencies with other event targets found in state. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -67,9 +68,10 @@
           <declname>params</declname>
         </param>
         <briefdescription>
+<para>This method implements the effects of the event. </para>
         </briefdescription>
         <detaileddescription>
-<para>This method implements the effects of the event. It will be called at the time that was determined by <computeroutput>predict_invoke_time</computeroutput>.</para>
+<para>It will be called at the time that was determined by <computeroutput>predict_invoke_time</computeroutput>.</para>
 <para>Called from the <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref>. </para>
         </detaileddescription>
         <inbodydescription>
@@ -101,9 +103,10 @@
           <declname>at</declname>
         </param>
         <briefdescription>
+<para>Is called to calculate the execution time for an event of this eventclass. </para>
         </briefdescription>
         <detaileddescription>
-<para>Is called to calculate the execution time for an event of this eventclass. This is called whenever one of the set up dependencies was changed, or when a REPEAT event was executed.</para>
+<para>This is called whenever one of the set up dependencies was changed, or when a REPEAT event was executed.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>target</parametername>

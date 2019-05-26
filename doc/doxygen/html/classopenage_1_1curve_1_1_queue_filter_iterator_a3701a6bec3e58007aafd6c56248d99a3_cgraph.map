@@ -1,4 +1,4 @@
 <map id="openage::curve::QueueFilterIterator::valid" name="openage::curve::QueueFilterIterator::valid">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,189,54"/>
-<area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_curve_iterator.xhtml#aa9fdd5bc51aff18de3955205eb89a4cb" title=" " alt="" coords="237,5,431,61"/>
+<area shape="rect" id="node1" title="Check if the iterator is still valid (this breaks from the stl &#45; in the best way)" alt="" coords="5,13,189,54"/>
+<area shape="rect" id="node2" href="$classopenage_1_1curve_1_1_curve_iterator.xhtml#aa9fdd5bc51aff18de3955205eb89a4cb" title="Access the underlying." alt="" coords="237,5,431,61"/>
 </map>

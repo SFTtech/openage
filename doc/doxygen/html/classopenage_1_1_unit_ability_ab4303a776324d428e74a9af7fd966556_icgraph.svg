@@ -20,7 +20,7 @@
 </g>
 <!-- Node27 -->
 <g id="node2" class="node"><title>Node27</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_garrison_ability.xhtml#a9fb1408b1820a14dedf69ca911110727" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_garrison_ability.xhtml#a9fb1408b1820a14dedf69ca911110727" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="0,-98.5 0,-128.5 123,-128.5 123,-98.5 0,-98.5"/>
 <text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GarrisonAbility</text>
 <text text-anchor="middle" x="61.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node28 -->
 <g id="node3" class="node"><title>Node28</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_repair_ability.xhtml#ace3c32d3f619cdc28abfca9fa684b3e2" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_repair_ability.xhtml#ace3c32d3f619cdc28abfca9fa684b3e2" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="4.5,-49.5 4.5,-79.5 118.5,-79.5 118.5,-49.5 4.5,-49.5"/>
 <text text-anchor="start" x="12.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::RepairAbility</text>
 <text text-anchor="middle" x="61.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node29 -->
 <g id="node4" class="node"><title>Node29</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_heal_ability.xhtml#a9940045e67d852476cf73aec89895218" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_heal_ability.xhtml#a9940045e67d852476cf73aec89895218" target="_top" xlink:title="true if the paramaters allow an action to be performed">
 <polygon fill="white" stroke="black" points="8.5,-0.5 8.5,-30.5 114.5,-30.5 114.5,-0.5 8.5,-0.5"/>
 <text text-anchor="start" x="16.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HealAbility</text>
 <text text-anchor="middle" x="61.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::can_invoke</text>

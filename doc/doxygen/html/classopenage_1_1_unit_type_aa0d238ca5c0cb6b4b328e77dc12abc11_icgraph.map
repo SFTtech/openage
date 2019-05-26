@@ -1,4 +1,4 @@
 <map id="openage::UnitType::default_texture" name="openage::UnitType::default_texture">
-<area shape="rect" id="node1" title=" " alt="" coords="201,5,340,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title=" " alt="" coords="5,5,153,47"/>
+<area shape="rect" id="node1" title="Get a default texture for HUD drawing." alt="" coords="201,5,340,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title="Display this mode." alt="" coords="5,5,153,47"/>
 </map>

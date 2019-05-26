@@ -1,4 +1,4 @@
 <map id="openage::os::self_exec_filename" name="openage::os::self_exec_filename">
-<area shape="rect" id="node1" title=" " alt="" coords="245,5,401,47"/>
+<area shape="rect" id="node1" title="returns openage&#39;s executable name" alt="" coords="245,5,401,47"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1_external_profiler.xhtml#add3055482caaf197842cc1661b463ac8" title=" " alt="" coords="5,5,197,47"/>
 </map>

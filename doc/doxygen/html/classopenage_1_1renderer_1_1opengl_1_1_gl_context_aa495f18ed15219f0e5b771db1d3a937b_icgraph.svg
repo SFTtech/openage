@@ -21,7 +21,7 @@
 </g>
 <!-- Node25 -->
 <g id="node2" class="node"><title>Node25</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#a5b9cd6e0294a1f4ea8e309badff46167" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#a5b9cd6e0294a1f4ea8e309badff46167" target="_top" xlink:title="Compiles the given shader source code into a shader program.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-41.5 106,-41.5 106,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlRenderer::</text>

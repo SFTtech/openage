@@ -1,22 +1,22 @@
 <map id="std::to_string" name="std::to_string">
 <area shape="rect" id="node1" title=" " alt="" coords="993,238,1092,265"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a6288ce1c7b45e988f140ace30845bc69" title=" " alt="" coords="764,19,912,60"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="257,71,412,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a6288ce1c7b45e988f140ace30845bc69" title="sends to gui the properties that it needs" alt="" coords="764,19,912,60"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title="Called after GameControl has been set by QML from set_game_control." alt="" coords="257,71,412,112"/>
 <area shape="rect" id="node6" href="$classopenage_1_1_game_control.xhtml#a3d4b9fbef261d19138ba87083e4083a5" title=" " alt="" coords="731,136,945,177"/>
-<area shape="rect" id="node12" href="$classopenage_1_1input_1_1_event.xhtml#a241514ea09af26b4f9bd106dbf79475d" title=" " alt="" coords="765,201,911,243"/>
-<area shape="rect" id="node13" href="$classopenage_1_1_unit.xhtml#ae769f520dfdb148ec831c151a954a881" title=" " alt="" coords="735,267,941,294"/>
-<area shape="rect" id="node14" href="$classopenage_1_1input_1_1_input_manager.xhtml#a0ba02d8e086457a659747b154facab7a" title=" " alt="" coords="741,319,935,360"/>
-<area shape="rect" id="node17" href="$classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" title=" " alt="" coords="760,384,916,425"/>
-<area shape="rect" id="node20" href="$classopenage_1_1options_1_1_option_value.xhtml#a22038d95a9d6f275c9c87f415a8295a5" title=" " alt="" coords="755,449,921,491"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" title=" " alt="" coords="499,19,667,60"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title=" " alt="" coords="261,5,409,47"/>
+<area shape="rect" id="node12" href="$classopenage_1_1input_1_1_event.xhtml#a241514ea09af26b4f9bd106dbf79475d" title="logable debug info" alt="" coords="765,201,911,243"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_unit.xhtml#ae769f520dfdb148ec831c151a954a881" title="Returns the unit&#39;s name as the LogSource name." alt="" coords="735,267,941,294"/>
+<area shape="rect" id="node14" href="$classopenage_1_1input_1_1_input_manager.xhtml#a0ba02d8e086457a659747b154facab7a" title="Return the string representation of the mouse event." alt="" coords="741,319,935,360"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" title="Must be given a valid unit to display text attribute indicators." alt="" coords="760,384,916,425"/>
+<area shape="rect" id="node20" href="$classopenage_1_1options_1_1_option_value.xhtml#a22038d95a9d6f275c9c87f415a8295a5" title="Value converted to a string." alt="" coords="755,449,921,491"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml#a30654ed7b85fa4cf0a2728c447dfa652" title="sends to gui the buttons it should use for the action buttons (if changed)" alt="" coords="499,19,667,60"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title="Called when the mode is left." alt="" coords="261,5,409,47"/>
 <area shape="rect" id="node7" href="$classopenage_1_1_game_control_signals.xhtml#acd3484cc1f7feb2163be431acfc88c96" title=" " alt="" coords="484,136,683,177"/>
 <area shape="rect" id="node10" href="$classopenage_1_1_game_control.xhtml#ad7c9d48df33f8f56ab5686c36648bfa5" title=" " alt="" coords="506,201,661,243"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_game_control.xhtml#ae6ce3ec10ca18afc9cb7235c88ac7113" title=" " alt="" coords="257,136,412,177"/>
 <area shape="rect" id="node9" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#ae7ae95345cce7b97f5cbab741589808a" title=" " alt="" coords="5,136,185,177"/>
 <area shape="rect" id="node11" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#a0a4bb8a5d7b2e5637d317fe51f02ad5f" title=" " alt="" coords="245,201,425,243"/>
-<area shape="rect" id="node15" href="$classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011" title=" " alt="" coords="487,319,680,360"/>
+<area shape="rect" id="node15" href="$classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011" title="Return the string representation of the bind assignated to an action." alt="" coords="487,319,680,360"/>
 <area shape="rect" id="node16" href="$classopenage_1_1input_1_1_action_manager.xhtml#a172292484fa92f4c391479d6e656808a" title=" " alt="" coords="233,319,436,360"/>
-<area shape="rect" id="node18" href="$classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" title=" " alt="" coords="505,384,661,425"/>
-<area shape="rect" id="node19" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title=" " alt="" coords="261,384,409,425"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_unit_selection.xhtml#a0a21b9382975a037b94a1331628b320c" title="execute the drawing action." alt="" coords="505,384,661,425"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title="Display this mode." alt="" coords="261,384,409,425"/>
 </map>

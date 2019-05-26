@@ -77,7 +77,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hdlanguagefile.py" line="101" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hdlanguagefile.py" bodystart="101" bodyend="126"/>
         <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
-        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+        <references refid="namespaceopenage_1_1util_1a9556b8562574e2c6ad102d8fd87569c6" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
         <referencedby refid="namespaceopenage_1_1convert_1_1hdlanguagefile_1a189674ed7c17e3398bf7e39919e3b641" compoundref="hdlanguagefile_8py" startline="59" endline="97">openage.convert.hdlanguagefile.read_age2_hd_3x_stringresources</referencedby>
         <referencedby refid="namespaceopenage_1_1convert_1_1hdlanguagefile_1a352b2dbd5b398f49f4f46dcca838cebd" compoundref="hdlanguagefile_8py" startline="22" endline="58">openage.convert.hdlanguagefile.read_age2_hd_fe_stringresources</referencedby>
       </memberdef>

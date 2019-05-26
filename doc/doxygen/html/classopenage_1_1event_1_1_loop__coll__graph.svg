@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-1500 308,-1500 308,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="The core class to manage event class and targets.">
 <polygon fill="#bfbfbf" stroke="black" points="91.5,-0.5 91.5,-200.5 200.5,-200.5 200.5,-0.5 91.5,-0.5"/>
 <text text-anchor="middle" x="146" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Loop</text>
 <polyline fill="none" stroke="black" points="91.5,-181.5 200.5,-181.5 "/>
@@ -82,7 +82,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1event_1_1_event_queue.xhtml" target="_top" xlink:title="The core event class for execution and execution dependencies.">
 <polygon fill="white" stroke="black" points="76,-248.5 76,-492.5 216,-492.5 216,-248.5 76,-248.5"/>
 <text text-anchor="middle" x="146" y="-480.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventQueue</text>
 <polyline fill="none" stroke="black" points="76,-473.5 216,-473.5 "/>
@@ -117,7 +117,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_store.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_store.xhtml" target="_top" xlink:title="Sorted storage for events.">
 <polygon fill="white" stroke="black" points="78.5,-540.5 78.5,-696.5 213.5,-696.5 213.5,-540.5 78.5,-540.5"/>
 <text text-anchor="middle" x="146" y="-684.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventStore</text>
 <polyline fill="none" stroke="black" points="78.5,-677.5 213.5,-677.5 "/>
@@ -202,7 +202,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="structopenage_1_1util_1_1_shared_ptr_less.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="structopenage_1_1util_1_1_shared_ptr_less.xhtml" target="_top" xlink:title="Comparator that returns true if the contained value of the left sharedptr is &lt; than the value contain...">
 <polygon fill="white" stroke="black" points="0,-1427.5 0,-1495.5 122,-1495.5 122,-1427.5 0,-1427.5"/>
 <text text-anchor="start" x="8" y="-1483.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::SharedPtr</text>
 <text text-anchor="middle" x="61" y="-1472.5" font-family="Helvetica,sans-Serif" font-size="10.00">Less&lt; T &gt;</text>
@@ -221,7 +221,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node7" class="node"><title>Node7</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml" target="_top" xlink:title="(Quite) efficient heap implementation.">
 <polygon fill="white" stroke="black" points="140,-1102.5 140,-1379.5 276,-1379.5 276,-1102.5 140,-1102.5"/>
 <text text-anchor="start" x="148" y="-1367.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="148" y="-1356.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap&lt; T, compare,</text>

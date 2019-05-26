@@ -99,13 +99,17 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1_file.xhtml','
 </div><!--header-->
 <div class="contents">
 
+<p>Generic <a class="el" href="classopenage_1_1util_1_1_file.xhtml" title="Generic File implementation, used in our filesystem-like and file-like abtraction system.">File</a> implementation, used in our filesystem-like and file-like abtraction system.  
+ <a href="classopenage_1_1util_1_1_file.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="file_8h_source.xhtml">file.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::File:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_file__coll__graph.svg" width="136" height="235"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_file__coll__graph.svg" width="136" height="235"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -118,20 +122,27 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abd4ad67daa864e123cfb9516e2d971fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_file.xhtml#abd4ad67daa864e123cfb9516e2d971fc">File</a> ()</td></tr>
+<tr class="memdesc:abd4ad67daa864e123cfb9516e2d971fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty constructor, pls don't use.  <a href="#abd4ad67daa864e123cfb9516e2d971fc">More...</a><br /></td></tr>
 <tr class="separator:abd4ad67daa864e123cfb9516e2d971fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18664086a7fa611860a6b083b341f498"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_file.xhtml#a18664086a7fa611860a6b083b341f498">File</a> (const std::string &amp;path, int mode)</td></tr>
+<tr class="memdesc:a18664086a7fa611860a6b083b341f498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a filesystem path, int version.  <a href="#a18664086a7fa611860a6b083b341f498">More...</a><br /></td></tr>
 <tr class="separator:a18664086a7fa611860a6b083b341f498"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a367bf653cb8be86795d9bbdab2786d4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_file.xhtml#a367bf653cb8be86795d9bbdab2786d4f">File</a> (const std::string &amp;path, <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#ab68557b264011908164b43b32a9f00b1">mode_t</a> mode=<a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#ab68557b264011908164b43b32a9f00b1ae1e1d3d40573127e9ee0480caf1283d6">mode_t::R</a>)</td></tr>
+<tr class="memdesc:a367bf653cb8be86795d9bbdab2786d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a filesystem path.  <a href="#a367bf653cb8be86795d9bbdab2786d4f">More...</a><br /></td></tr>
 <tr class="separator:a367bf653cb8be86795d9bbdab2786d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d233d6eae947fe6cf05c84c35fefbfb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_file.xhtml#a0d233d6eae947fe6cf05c84c35fefbfb">File</a> (std::shared_ptr&lt; <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml">filelike::FileLike</a> &gt; <a class="el" href="classopenage_1_1util_1_1_file.xhtml#a909061fe4f7083e2b59f2c0076bb562d">filelike</a>)</td></tr>
+<tr class="memdesc:a0d233d6eae947fe6cf05c84c35fefbfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a file from an already created filelike.  <a href="#a0d233d6eae947fe6cf05c84c35fefbfb">More...</a><br /></td></tr>
 <tr class="separator:a0d233d6eae947fe6cf05c84c35fefbfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a286c00c708ae659862efd1c2050e05d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_file.xhtml#a286c00c708ae659862efd1c2050e05d3">File</a> (<a class="el" href="namespaceopenage_1_1py.xhtml#aba3b73f5f4dff0e8b09683628705ea44">py::Obj</a> <a class="el" href="classopenage_1_1util_1_1_file.xhtml#a909061fe4f7083e2b59f2c0076bb562d">filelike</a>)</td></tr>
+<tr class="memdesc:a286c00c708ae659862efd1c2050e05d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wraps a python filelike object that is already open.  <a href="#a286c00c708ae659862efd1c2050e05d3">More...</a><br /></td></tr>
 <tr class="separator:a286c00c708ae659862efd1c2050e05d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d7fbc78b3b74b1015a8570724da59b7"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_file.xhtml#a8d7fbc78b3b74b1015a8570724da59b7">~File</a> ()=default</td></tr>
 <tr class="separator:a8d7fbc78b3b74b1015a8570724da59b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7c3188dd66e5b7aa84bc5a538c93885"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885">read</a> (ssize_t max=-1)</td></tr>
+<tr class="memdesc:ac7c3188dd66e5b7aa84bc5a538c93885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from the file and return a string.  <a href="#ac7c3188dd66e5b7aa84bc5a538c93885">More...</a><br /></td></tr>
 <tr class="separator:ac7c3188dd66e5b7aa84bc5a538c93885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed79a152572059372a4496e308bb9ee2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_file.xhtml#aed79a152572059372a4496e308bb9ee2">read_to</a> (void *buf, ssize_t max=-1)</td></tr>
+<tr class="memdesc:aed79a152572059372a4496e308bb9ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from the file into a buffer, which has to be large enough to fit max bytes.  <a href="#aed79a152572059372a4496e308bb9ee2">More...</a><br /></td></tr>
 <tr class="separator:aed79a152572059372a4496e308bb9ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6682ee05b430743452fbc42d3dcea800"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1_file.xhtml#a6682ee05b430743452fbc42d3dcea800">readable</a> ()</td></tr>
 <tr class="separator:a6682ee05b430743452fbc42d3dcea800"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,9 +178,10 @@ Friends</h2></td></tr>
 <tr class="separator:a5d71d8a71a32c9e3089e8e42c2783c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Generic <a class="el" href="classopenage_1_1util_1_1_file.xhtml">File</a> implementation, used in our filesystem-like and file-like abtraction system. Can be created from Python :)</p>
+<div class="textblock"><p>Generic <a class="el" href="classopenage_1_1util_1_1_file.xhtml" title="Generic File implementation, used in our filesystem-like and file-like abtraction system.">File</a> implementation, used in our filesystem-like and file-like abtraction system. </p>
+<p>Can be created from Python :)</p>
 <p>pxd:</p>
-<p>cppclass <a class="el" href="classopenage_1_1util_1_1_file.xhtml">File</a>: <a class="el" href="classopenage_1_1util_1_1_file.xhtml#abd4ad67daa864e123cfb9516e2d971fc">File()</a> noexcept File(const string &amp;path, int mode) except + File(PyObj) except +</p>
+<p>cppclass <a class="el" href="classopenage_1_1util_1_1_file.xhtml" title="Generic File implementation, used in our filesystem-like and file-like abtraction system.">File</a>: <a class="el" href="classopenage_1_1util_1_1_file.xhtml#abd4ad67daa864e123cfb9516e2d971fc" title="Empty constructor, pls don&#39;t use.">File()</a> noexcept File(const string &amp;path, int mode) except + File(PyObj) except +</p>
 <p>shared_ptr[FileLike] <a class="el" href="classopenage_1_1util_1_1_file.xhtml#a7a1e89595deb28915427dbe3b011fe8a">get_fileobj()</a> except + </p>
 
 <p class="definition">Definition at line <a class="el" href="file_8h_source.xhtml#l00041">41</a> of file <a class="el" href="file_8h_source.xhtml">file.h</a>.</p>
@@ -221,7 +233,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Empty constructor, pls don't use. It only exists because Cython needs it. </p>
+
+<p>Empty constructor, pls don't use. </p>
+<p>It only exists because Cython needs it. </p>
 
 <p class="definition">Definition at line <a class="el" href="file_8cpp_source.xhtml#l00022">22</a> of file <a class="el" href="file_8cpp_source.xhtml">file.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{}</div></div><!-- fragment -->
@@ -252,10 +266,12 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Open a filesystem path, int version. this is just the integer value of the mode_t, because Cython... </p>
+
+<p>Open a filesystem path, int version. </p>
+<p>this is just the integer value of the mode_t, because Cython... </p>
 
 <p class="definition">Definition at line <a class="el" href="file_8cpp_source.xhtml#l00026">26</a> of file <a class="el" href="file_8cpp_source.xhtml">file.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    :</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classopenage_1_1util_1_1_file.xhtml#abd4ad67daa864e123cfb9516e2d971fc">File</a>{path, static_cast&lt;mode_t&gt;(mode)} {}</div><div class="ttc" id="classopenage_1_1util_1_1_file_xhtml_abd4ad67daa864e123cfb9516e2d971fc"><div class="ttname"><a href="classopenage_1_1util_1_1_file.xhtml#abd4ad67daa864e123cfb9516e2d971fc">openage::util::File::File</a></div><div class="ttdeci">File()</div><div class="ttdef"><b>Definition:</b> <a href="file_8cpp_source.xhtml#l00022">file.cpp:22</a></div></div>
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    :</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classopenage_1_1util_1_1_file.xhtml#abd4ad67daa864e123cfb9516e2d971fc">File</a>{path, static_cast&lt;mode_t&gt;(mode)} {}</div><div class="ttc" id="classopenage_1_1util_1_1_file_xhtml_abd4ad67daa864e123cfb9516e2d971fc"><div class="ttname"><a href="classopenage_1_1util_1_1_file.xhtml#abd4ad67daa864e123cfb9516e2d971fc">openage::util::File::File</a></div><div class="ttdeci">File()</div><div class="ttdoc">Empty constructor, pls don't use.</div><div class="ttdef"><b>Definition:</b> <a href="file_8cpp_source.xhtml#l00022">file.cpp:22</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -284,6 +300,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Open a filesystem path. </p>
 
 <p class="definition">Definition at line <a class="el" href="file_8cpp_source.xhtml#l00031">31</a> of file <a class="el" href="file_8cpp_source.xhtml">file.cpp</a>.</p>
@@ -308,6 +325,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Create a file from an already created filelike. </p>
 
 <p class="definition">Definition at line <a class="el" href="file_8cpp_source.xhtml#l00036">36</a> of file <a class="el" href="file_8cpp_source.xhtml">file.cpp</a>.</p>
@@ -332,7 +350,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Wraps a python filelike object that is already open. This is called from Cython.</p>
+
+<p>Wraps a python filelike object that is already open. </p>
+<p>This is called from Cython.</p>
 <p>You will probably never call that manually. </p>
 
 <p class="definition">Definition at line <a class="el" href="file_8cpp_source.xhtml#l00041">41</a> of file <a class="el" href="file_8cpp_source.xhtml">file.cpp</a>.</p>
@@ -460,7 +480,7 @@ Friends</h2></td></tr>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000050">Todo:</a></b></dt><dd>relay the get_lines to the underlaying filelike which may do a better job in getting the lines. instead, we read everything and then split up into lines. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="file_8cpp_source.xhtml#l00101">101</a> of file <a class="el" href="file_8cpp_source.xhtml">file.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                     {</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    std::string <a class="code" href="namespaceopenage.xhtml#a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">line</a>;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>{};</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    std::istringstream content{this-&gt;<a class="code" href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885">read</a>()};</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">while</span> (std::getline(content, line)) {</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(line);</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_file_xhtml_ac7c3188dd66e5b7aa84bc5a538c93885"><div class="ttname"><a href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885">openage::util::File::read</a></div><div class="ttdeci">std::string read(ssize_t max=-1)</div><div class="ttdef"><b>Definition:</b> <a href="file_8cpp_source.xhtml#l00046">file.cpp:46</a></div></div>
+<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                     {</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    std::string <a class="code" href="namespaceopenage.xhtml#a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">line</a>;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>{};</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    std::istringstream content{this-&gt;<a class="code" href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885">read</a>()};</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">while</span> (std::getline(content, line)) {</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.push_back(line);</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_file_xhtml_ac7c3188dd66e5b7aa84bc5a538c93885"><div class="ttname"><a href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885">openage::util::File::read</a></div><div class="ttdeci">std::string read(ssize_t max=-1)</div><div class="ttdoc">Read data from the file and return a string.</div><div class="ttdef"><b>Definition:</b> <a href="file_8cpp_source.xhtml#l00046">file.cpp:46</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474"><div class="ttname"><a href="namespaceopenage.xhtml#a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">openage::attack_formation::line</a></div></div>
 </div><!-- fragment -->
@@ -472,14 +492,16 @@ Friends</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_file_a4712008e4434f121e00ba41a29789db9_cgraph.svg" width="552" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_file_a4712008e4434f121e00ba41a29789db9_cgraph.svg" width="552" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_file_a4712008e4434f121e00ba41a29789db9_icgraph.svg" width="314" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_file_a4712008e4434f121e00ba41a29789db9_icgraph.svg" width="314" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -499,7 +521,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Read data from the file and return a string. If max is negative, return the full remaining file. </p>
+
+<p>Read data from the file and return a string. </p>
+<p>If max is negative, return the full remaining file. </p>
 
 <p class="definition">Definition at line <a class="el" href="file_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="file_8cpp_source.xhtml">file.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_file.xhtml#a909061fe4f7083e2b59f2c0076bb562d">filelike</a>-&gt;read(<a class="code" href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117">max</a>);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_file_xhtml_a909061fe4f7083e2b59f2c0076bb562d"><div class="ttname"><a href="classopenage_1_1util_1_1_file.xhtml#a909061fe4f7083e2b59f2c0076bb562d">openage::util::File::filelike</a></div><div class="ttdeci">std::shared_ptr&lt; filelike::FileLike &gt; filelike</div><div class="ttdef"><b>Definition:</b> <a href="file_8h_source.xhtml#l00107">file.h:107</a></div></div>
@@ -513,7 +537,8 @@ Friends</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_file_ac7c3188dd66e5b7aa84bc5a538c93885_icgraph.svg" width="100%" height="428"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_file_ac7c3188dd66e5b7aa84bc5a538c93885_icgraph.svg" width="100%" height="428"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -543,7 +568,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Read data from the file into a buffer, which has to be large enough to fit max bytes. If max is negative, read the full remaining file, so buf has to be as big as the remaining file size.</p>
+
+<p>Read data from the file into a buffer, which has to be large enough to fit max bytes. </p>
+<p>If max is negative, read the full remaining file, so buf has to be as big as the remaining file size.</p>
 <p>Returns the number of bytes that were read. </p>
 
 <p class="definition">Definition at line <a class="el" href="file_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="file_8cpp_source.xhtml">file.cpp</a>.</p>

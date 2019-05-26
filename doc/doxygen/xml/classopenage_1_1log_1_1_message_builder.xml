@@ -59,9 +59,9 @@
           <defval>level::info</defval>
         </param>
         <briefdescription>
+<para>Don&apos;t use this constructor directly; instead use the MSG macro. </para>
         </briefdescription>
         <detaileddescription>
-<para>Don&apos;t use this constructor directly; instead use the MSG macro.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>filename</parametername>
@@ -129,9 +129,9 @@
         <name>should_format</name>
         <reimplements refid="classopenage_1_1util_1_1_string_formatter_1a9f4f8b039a336f8368ba3ab9f7464a60">should_format</reimplements>
         <briefdescription>
+<para>Returns if formatting should actually occur. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns if formatting should actually occur. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -141,9 +141,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Wrapper around a log message that allows appending to the message with operator &lt;&lt;. </para>
     </briefdescription>
     <detaileddescription>
-<para>Wrapper around a log message that allows appending to the message with operator &lt;&lt;.</para>
 <para>Auto-converts to message; via the MSG macro, this is the preferred way of creating log and exc messages. </para>
     </detaileddescription>
     <inheritancegraph>

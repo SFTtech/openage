@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 102,-84 102,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="storage for influences by neighbor tiles.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-79.5 98,-79.5 98,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="49" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::influence</text>
 <polyline fill="none" stroke="black" points="0,-60.5 98,-60.5 "/>

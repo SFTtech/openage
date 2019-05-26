@@ -160,7 +160,7 @@
 </g>
 <!-- Node45 -->
 <g id="node10" class="node"><title>Node45</title>
-<g id="a_node10"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classqtsdl_1_1_gui_item_base.xhtml#a0567d09e763a08648aad1675201b75b8" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="732,-15.5 732,-45.5 864,-45.5 864,-15.5 732,-15.5"/>
 <text text-anchor="start" x="740" y="-33.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemBase</text>
 <text text-anchor="middle" x="798" y="-22.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>
@@ -188,7 +188,7 @@
 </g>
 <!-- Node46 -->
 <g id="node11" class="node"><title>Node46</title>
-<g id="a_node11"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classqtsdl_1_1_game_logic_caller.xhtml#a0101ff39e4fc7bcc9d3f33a6c53ff571" target="_top" xlink:title="Set up signal to be able to run code in the game logic thread.">
 <polygon fill="white" stroke="black" points="910,-15.5 910,-45.5 1042,-45.5 1042,-15.5 910,-15.5"/>
 <text text-anchor="start" x="918" y="-33.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GameLogicCaller</text>
 <text text-anchor="middle" x="976" y="-22.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_game_logic_callback</text>
@@ -216,7 +216,7 @@
 </g>
 <!-- Node49 -->
 <g id="node14" class="node"><title>Node49</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" target="_top" xlink:title="std::for_each except just on containers.">
 <polygon fill="white" stroke="black" points="918.5,-119 918.5,-138 1033.5,-138 1033.5,-119 918.5,-119"/>
 <text text-anchor="middle" x="976" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::for_each</text>
 </a>

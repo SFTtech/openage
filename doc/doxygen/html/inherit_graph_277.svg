@@ -19,7 +19,7 @@
 </g>
 <!-- Node0 -->
 <g id="node2" class="node"><title>Node0</title>
-<g id="a_node2"><a xlink:href="structqtsdl_1_1can__call.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="structqtsdl_1_1can__call.xhtml" target="_top" xlink:title="Evaluates to true if callable can be called with given argument types.">
 <polygon fill="white" stroke="black" points="65,-0.5 65,-30.5 163,-30.5 163,-0.5 65,-0.5"/>
 <text text-anchor="start" x="73" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::can_call&lt; F,</text>
 <text text-anchor="middle" x="114" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00"> Args &gt;</text>

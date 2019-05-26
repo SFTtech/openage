@@ -1,3 +1,3 @@
 <map id="openage::util::ConstInitVector&lt; T &gt;" name="openage::util::ConstInitVector&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,160,244"/>
+<area shape="rect" id="node1" title="A std::vector&#45;like object that has a constexpr constructor, and thus can be initialized during the co..." alt="" coords="5,5,160,244"/>
 </map>

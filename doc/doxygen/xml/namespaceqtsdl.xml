@@ -89,9 +89,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>Cleans a text from unneeded content like &quot;qtsdl&quot;. </para>
         </briefdescription>
         <detaileddescription>
-<para>Cleans a text from unneeded content like &quot;qtsdl&quot;. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -348,9 +348,9 @@
         <argsstring>()</argsstring>
         <name>static_assert_about_unwrapping</name>
         <briefdescription>
+<para>To print our own error message that warns about possible cause of the argument mismatch. </para>
         </briefdescription>
         <detaileddescription>
-<para>To print our own error message that warns about possible cause of the argument mismatch.</para>
 <para>Unwrapping uses type trait &quot;Unwrap&quot; that is defined in the header with corresponding type. If the header is not included, then compiler considers it as a basic type and tries to pass it wrapped to a function that expects an unwrapped type.</para>
 <para><parameterlist kind="templateparam"><parameteritem>
 <parameternamelist>
@@ -412,9 +412,9 @@
           <declname>current_source_context</declname>
         </param>
         <briefdescription>
+<para>Get debugging settings of the current GL context. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get debugging settings of the current GL context</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>current_source_context</parametername>
@@ -446,9 +446,9 @@
           <declname>current_dest_context</declname>
         </param>
         <briefdescription>
+<para>Create a GL logger in the current GL context. </para>
         </briefdescription>
         <detaileddescription>
-<para>Create a GL logger in the current GL context</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>params</parametername>

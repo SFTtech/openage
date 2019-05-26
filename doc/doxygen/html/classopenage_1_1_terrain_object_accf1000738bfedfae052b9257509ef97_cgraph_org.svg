@@ -33,7 +33,7 @@
 </g>
 <!-- Node8 -->
 <g id="node3" class="node"><title>Node8</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="153,-149 153,-168 296,-168 296,-149 153,-149"/>
 <text text-anchor="middle" x="224.5" y="-156" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -46,7 +46,7 @@
 </g>
 <!-- Node12 -->
 <g id="node7" class="node"><title>Node12</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af24e842fc429a5dbb73c12abcb9c3378" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_terrain_object.xhtml#af24e842fc429a5dbb73c12abcb9c3378" target="_top" xlink:title="remove this TerrainObject from the terrain chunks.">
 <polygon fill="white" stroke="black" points="166,-80.5 166,-110.5 283,-110.5 283,-80.5 166,-80.5"/>
 <text text-anchor="start" x="174" y="-98.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <text text-anchor="middle" x="224.5" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00">::remove</text>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node9 -->
 <g id="node4" class="node"><title>Node9</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="354,-224.5 354,-254.5 458,-254.5 458,-224.5 354,-224.5"/>
 <text text-anchor="start" x="362" y="-242.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="406" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -101,7 +101,7 @@
 </g>
 <!-- Node13 -->
 <g id="node8" class="node"><title>Node13</title>
-<g id="a_node8"><a xlink:href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" target="_top" xlink:title="get all tiles in the tile range – useful for iterating returns a flat list of tiles between the recta...">
 <polygon fill="white" stroke="black" points="361,-99 361,-118 451,-118 451,-99 361,-99"/>
 <text text-anchor="middle" x="406" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::tile_list</text>
 </a>
@@ -128,7 +128,7 @@
 </g>
 <!-- Node15 -->
 <g id="node10" class="node"><title>Node15</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" target="_top" xlink:title="get tile data by absolute coordinates.">
 <polygon fill="white" stroke="black" points="348,-0.5 348,-30.5 464,-30.5 464,-0.5 348,-0.5"/>
 <text text-anchor="start" x="356" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainChunk</text>
 <text text-anchor="middle" x="406" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_data</text>
@@ -156,7 +156,7 @@
 </g>
 <!-- Node17 -->
 <g id="node12" class="node"><title>Node17</title>
-<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="656,-6 656,-25 753,-25 753,-6 656,-6"/>
 <text text-anchor="middle" x="704.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>

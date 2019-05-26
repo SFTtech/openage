@@ -21,7 +21,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml#ad8928c08c9c05b7b7f7eae1a203e462b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml#ad8928c08c9c05b7b7f7eae1a203e462b" target="_top" xlink:title="Initializes the mesh data with a simple quadrilateral spanning the whole window space,...">
 <polygon fill="white" stroke="black" points="300,-0.5 300,-41.5 410,-41.5 410,-0.5 300,-0.5"/>
 <text text-anchor="start" x="308" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="308" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">resources::MeshData</text>

@@ -1,6 +1,6 @@
 <map id="openage::error::Error::type_name" name="openage::error::Error::type_name">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,147,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" title=" " alt="" coords="195,13,355,39"/>
+<area shape="rect" id="node1" title="The type name of the exception (for pretty&#45;printing in case the exception hierarchy is used)." alt="" coords="5,5,147,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" title="Demangles a symbol name." alt="" coords="195,13,355,39"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="403,13,596,39"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="644,13,771,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="644,13,771,39"/>
 </map>

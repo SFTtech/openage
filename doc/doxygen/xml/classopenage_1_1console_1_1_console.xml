@@ -214,9 +214,9 @@
           <declname>colortable</declname>
         </param>
         <briefdescription>
+<para>load the consoles color table </para>
         </briefdescription>
         <detaileddescription>
-<para>load the consoles color table </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -232,9 +232,10 @@
         <argsstring>()</argsstring>
         <name>register_to_engine</name>
         <briefdescription>
+<para>register this console to the engine. </para>
         </briefdescription>
         <detaileddescription>
-<para>register this console to the engine. this leads to the drawing calls, and input handling. </para>
+<para>this leads to the drawing calls, and input handling. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -300,9 +301,9 @@
           <declname>text</declname>
         </param>
         <briefdescription>
+<para>prints the given text on the console. </para>
         </briefdescription>
         <detaileddescription>
-<para>prints the given text on the console. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -321,9 +322,9 @@
           <declname>command</declname>
         </param>
         <briefdescription>
+<para>a temporary console command interpreter </para>
         </briefdescription>
         <detaileddescription>
-<para>a temporary console command interpreter </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -346,9 +347,9 @@
         <name>on_drawhud</name>
         <reimplements refid="classopenage_1_1_hud_handler_1a52d98b171b853a47609d924e1d1fca48">on_drawhud</reimplements>
         <briefdescription>
+<para>execute the drawing action. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the drawing action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -364,9 +365,9 @@
         <name>on_tick</name>
         <reimplements refid="classopenage_1_1_tick_handler_1a1a30e127fd708cf29600b0aa0ff402f7">on_tick</reimplements>
         <briefdescription>
+<para>execute the tick action. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the tick action. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -384,9 +385,9 @@
           <declname>event</declname>
         </param>
         <briefdescription>
+<para>execute the input handler. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the input handler. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -404,9 +405,9 @@
           <declname>new_size</declname>
         </param>
         <briefdescription>
+<para>execute the resize handler. </para>
         </briefdescription>
         <detaileddescription>
-<para>execute the resize handler. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

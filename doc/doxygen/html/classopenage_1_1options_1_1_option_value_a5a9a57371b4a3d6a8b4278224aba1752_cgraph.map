@@ -1,8 +1,8 @@
 <map id="openage::options::OptionValue::set_value" name="openage::options::OptionValue::set_value">
 <area shape="rect" id="node1" title=" " alt="" coords="5,27,172,69"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_variable_base.xhtml#a1acb662ac94f35aed9b2ecd6d3f1ddfe" title=" " alt="" coords="220,5,427,32"/>
-<area shape="rect" id="node4" href="$classopenage_1_1options_1_1_option_value.xhtml#a594d9e00991ab3ad365ac200463dad3b" title=" " alt="" coords="240,57,407,98"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_variable_base.xhtml#a1acb662ac94f35aed9b2ecd6d3f1ddfe" title="sets the type and value" alt="" coords="220,5,427,32"/>
+<area shape="rect" id="node4" href="$classopenage_1_1options_1_1_option_value.xhtml#a594d9e00991ab3ad365ac200463dad3b" title="read inner type &#45; the templated type must match" alt="" coords="240,57,407,98"/>
 <area shape="rect" id="node3" href="$classopenage_1_1util_1_1_variable.xhtml#a572624d736175eba6d85c461fe2a430f" title=" " alt="" coords="489,5,667,32"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_variable_base.xhtml#a2fc1503a41c5e241e6c2af106115bf82" title=" " alt="" coords="475,64,681,91"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_variable_base.xhtml#a2fc1503a41c5e241e6c2af106115bf82" title="returns the stored value throws an exception if the template does not match the set type" alt="" coords="475,64,681,91"/>
 <area shape="rect" id="node6" href="$classopenage_1_1util_1_1_variable.xhtml#aa25af78b5870a920fb9a2ea04173881b" title=" " alt="" coords="729,64,907,91"/>
 </map>

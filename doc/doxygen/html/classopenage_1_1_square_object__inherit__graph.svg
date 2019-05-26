@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-580 141,-580 141,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="terrain object class represents one immobile object on the map (building, trees, fish,...">
 <polygon fill="#bfbfbf" stroke="black" points="9,-0.5 9,-145.5 128,-145.5 128,-0.5 9,-0.5"/>
 <text text-anchor="middle" x="68.5" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SquareObject</text>
 <polyline fill="none" stroke="black" points="9,-126.5 128,-126.5 "/>
@@ -77,7 +77,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_object.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain_object.xhtml" target="_top" xlink:title="Base class for map location types which include square tile aligned positions and radial positions Th...">
 <polygon fill="white" stroke="black" points="6,-182.5 6,-470.5 131,-470.5 131,-182.5 6,-182.5"/>
 <text text-anchor="middle" x="68.5" y="-458.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::TerrainObject</text>
 <polyline fill="none" stroke="black" points="6,-451.5 131,-451.5 "/>

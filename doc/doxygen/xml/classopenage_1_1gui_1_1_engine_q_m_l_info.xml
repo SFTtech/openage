@@ -11,9 +11,10 @@
         <argsstring></argsstring>
         <name>engine</name>
         <briefdescription>
+<para>The openage engine, so it can be &quot;used&quot; in QML as a &quot;QML Singleton&quot;. </para>
         </briefdescription>
         <detaileddescription>
-<para>The openage engine, so it can be &quot;used&quot; in QML as a &quot;QML Singleton&quot;. With this pointer, all of QML can find back to the engine. </para>
+<para>With this pointer, all of QML can find back to the engine. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -26,9 +27,9 @@
         <argsstring></argsstring>
         <name>asset_dir</name>
         <briefdescription>
+<para>Search path for finding assets n stuff. </para>
         </briefdescription>
         <detaileddescription>
-<para>Search path for finding assets n stuff. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -60,9 +61,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>This container is attached to the QML engine. </para>
     </briefdescription>
     <detaileddescription>
-<para>This container is attached to the QML engine.</para>
 <para>It allows that one can access the members in the qml engine context then. That also means the members accessible during creation of any singleton QML item.</para>
 <para>This struct is used to link the openage <ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> with QML in <ref refid="engine__link_8cpp" kindref="compound">engine_link.cpp</ref>. </para>
     </detaileddescription>

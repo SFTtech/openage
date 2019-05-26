@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 420,-35 420,4 -4,4"/>
 <!-- Node730 -->
 <g id="node1" class="node"><title>Node730</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Convert a uint64_t to an array of uint8_t.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 104,-30.5 104,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::uint64</text>
 <text text-anchor="middle" x="52" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_to_array8</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node732 -->
 <g id="node3" class="node"><title>Node732</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="321,-6 321,-25 416,-25 416,-6 321,-6"/>
 <text text-anchor="middle" x="368.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

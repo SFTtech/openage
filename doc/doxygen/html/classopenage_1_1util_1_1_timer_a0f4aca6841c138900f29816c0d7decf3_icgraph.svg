@@ -57,7 +57,7 @@ var sectionId = 'dynsection-3';
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 576,-35 576,4 -4,4"/>
 <!-- Node8 -->
 <g id="node1" class="node"><title>Node8</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="reads the current timer value, in nanoseconds, and resets the timer to zero (preserving started/stopp...">
 <polygon fill="#bfbfbf" stroke="black" points="470,-0.5 470,-30.5 572,-30.5 572,-0.5 470,-0.5"/>
 <text text-anchor="start" x="478" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <text text-anchor="middle" x="521" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::getandresetval</text>
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node9 -->
 <g id="node2" class="node"><title>Node9</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_frame_counter.xhtml#a9dd54183a6ebd91c10bbc51abcb57f2d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_frame_counter.xhtml#a9dd54183a6ebd91c10bbc51abcb57f2d" target="_top" xlink:title="to be called each time a frame has been completed">
 <polygon fill="white" stroke="black" points="294,-0.5 294,-30.5 434,-30.5 434,-0.5 294,-0.5"/>
 <text text-anchor="start" x="302" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FrameCounter</text>
 <text text-anchor="middle" x="364" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::frame</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node10 -->
 <g id="node3" class="node"><title>Node10</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#adc80abfebed9b4f30df3de15984431e8" target="_top" xlink:title="main engine loop function.">
 <polygon fill="white" stroke="black" points="145,-6 145,-25 258,-25 258,-6 145,-6"/>
 <text text-anchor="middle" x="201.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::loop</text>
 </a>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node11 -->
 <g id="node4" class="node"><title>Node11</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_engine.xhtml#a1f1b60bb90c738f6b64a6e19e49cde6d" target="_top" xlink:title="starts the engine loop.">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 109,-25 109,-6 0,-6"/>
 <text text-anchor="middle" x="54.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::run</text>
 </a>

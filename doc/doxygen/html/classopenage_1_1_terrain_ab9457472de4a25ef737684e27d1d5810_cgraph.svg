@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 300,-84 300,4 -4,4"/>
 <!-- Node57 -->
 <g id="node1" class="node"><title>Node57</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="checks the creation state and premissions of a given tile position.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-30 0,-49 139,-49 139,-30 0,-30"/>
 <text text-anchor="middle" x="69.5" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::check_tile</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node58 -->
 <g id="node2" class="node"><title>Node58</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#aa0e35745e96c0b263a74dcf2ec2abffb" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_terrain.xhtml#aa0e35745e96c0b263a74dcf2ec2abffb" target="_top" xlink:title="checks whether the given tile position is allowed to exist on this terrain.">
 <polygon fill="white" stroke="black" points="175,-49.5 175,-79.5 296,-79.5 296,-49.5 175,-49.5"/>
 <text text-anchor="start" x="183" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::check</text>
 <text text-anchor="middle" x="235.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_tile_position</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node59 -->
 <g id="node3" class="node"><title>Node59</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_terrain.xhtml#a6e0db07445c5dcc346c5e9d28458c516" target="_top" xlink:title="get a terrain chunk by a given chunk position.">
 <polygon fill="white" stroke="black" points="181.5,-0.5 181.5,-30.5 289.5,-30.5 289.5,-0.5 181.5,-0.5"/>
 <text text-anchor="start" x="189.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Terrain::get</text>
 <text text-anchor="middle" x="235.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_chunk</text>

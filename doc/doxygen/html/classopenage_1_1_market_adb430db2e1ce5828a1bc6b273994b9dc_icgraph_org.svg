@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 550,-84 550,4 -4,4"/>
 <!-- Node26 -->
 <g id="node1" class="node"><title>Node26</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Get the multiplier for the base prices.">
 <polygon fill="#bfbfbf" stroke="black" points="437,-24.5 437,-54.5 546,-54.5 546,-24.5 437,-24.5"/>
 <text text-anchor="start" x="445" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="491.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">_multiplier</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node27 -->
 <g id="node2" class="node"><title>Node27</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_market.xhtml#aefa96adaadd93ab08349621e01a1b65f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_market.xhtml#aefa96adaadd93ab08349621e01a1b65f" target="_top" xlink:title="The getBuyPrices and getSellPrices are redirected here.">
 <polygon fill="white" stroke="black" points="292,-24.5 292,-54.5 401,-54.5 401,-24.5 292,-24.5"/>
 <text text-anchor="start" x="300" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="346.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">_prices</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node28 -->
 <g id="node3" class="node"><title>Node28</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_market.xhtml#aef15aab0297f52df8675a3b71dc93a88" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_market.xhtml#aef15aab0297f52df8675a3b71dc93a88" target="_top" xlink:title="Get the selling prices for a given player.">
 <polygon fill="white" stroke="black" points="147,-49.5 147,-79.5 256,-79.5 256,-49.5 147,-49.5"/>
 <text text-anchor="start" x="155" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="201.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_buy_prices</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node30 -->
 <g id="node5" class="node"><title>Node30</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_market.xhtml#a5c916fe21925f6276f58bc9f6dd95765" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_market.xhtml#a5c916fe21925f6276f58bc9f6dd95765" target="_top" xlink:title="Get the buying prices for a given player.">
 <polygon fill="white" stroke="black" points="147,-0.5 147,-30.5 256,-30.5 256,-0.5 147,-0.5"/>
 <text text-anchor="start" x="155" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::get</text>
 <text text-anchor="middle" x="201.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_sell_prices</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node29 -->
 <g id="node4" class="node"><title>Node29</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_market.xhtml#a2d93c032e00528978844815b3f139260" target="_top" xlink:title="The given player buys the given resource with gold.">
 <polygon fill="white" stroke="black" points="0,-55 0,-74 111,-74 111,-55 0,-55"/>
 <text text-anchor="middle" x="55.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::buy</text>
 </a>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node31 -->
 <g id="node6" class="node"><title>Node31</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_market.xhtml#a7980df34ceedf0e878373284d61093ae" target="_top" xlink:title="The given player sells the given resource for gold.">
 <polygon fill="white" stroke="black" points="0.5,-6 0.5,-25 110.5,-25 110.5,-6 0.5,-6"/>
 <text text-anchor="middle" x="55.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Market::sell</text>
 </a>

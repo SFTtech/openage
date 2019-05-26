@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 248,-35 248,4 -4,4"/>
 <!-- Node3 -->
 <g id="node1" class="node"><title>Node3</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="getattr(importlib.import_module(&quot;builtins&quot;), name)">
 <polygon fill="#bfbfbf" stroke="black" points="143,-6 143,-25 244,-25 244,-6 143,-6"/>
 <text text-anchor="middle" x="193.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::builtin</text>
 </a>

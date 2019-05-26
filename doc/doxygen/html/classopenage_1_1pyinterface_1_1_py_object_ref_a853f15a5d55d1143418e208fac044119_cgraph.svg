@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-73.5 423,-73.5 423,4 -4,4"/>
 <!-- Node58 -->
 <g id="node1" class="node"><title>Node58</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="obj[key]">
 <polygon fill="#bfbfbf" stroke="black" points="0,-17 0,-47 107,-47 107,-17 0,-17"/>
 <text text-anchor="start" x="8" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="53.5" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node59 -->
 <g id="node2" class="node"><title>Node59</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639" target="_top" xlink:title="Provide the internal PyObject *.">
 <polygon fill="white" stroke="black" points="159,-39 159,-69 272,-69 272,-39 159,-39"/>
 <text text-anchor="start" x="167" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="215.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">::PyObjectRef::get_ref</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node61 -->
 <g id="node4" class="node"><title>Node61</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="324,-0.5 324,-19.5 419,-19.5 419,-0.5 324,-0.5"/>
 <text text-anchor="middle" x="371.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

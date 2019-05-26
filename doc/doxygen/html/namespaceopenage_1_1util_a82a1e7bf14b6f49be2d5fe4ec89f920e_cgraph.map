@@ -1,8 +1,8 @@
 <map id="openage::util::utf8_pop_back" name="openage::util::utf8_pop_back">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,131,47"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title=" " alt="" coords="561,34,677,61"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a5519d25810f698275993214ce79016c7" title=" " alt="" coords="179,35,304,76"/>
+<area shape="rect" id="node1" title="pops back (deletes) the last UTF&#45;8 character in a std::string." alt="" coords="5,5,131,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" title="str(value);" alt="" coords="561,34,677,61"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a5519d25810f698275993214ce79016c7" title="computes the length of the last character in a given UTF&#45;8 string." alt="" coords="179,35,304,76"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="725,34,919,61"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="967,34,1093,61"/>
-<area shape="rect" id="node6" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" title=" " alt="" coords="352,85,513,127"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="967,34,1093,61"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7" title="Returns the length of the string literal, excluding the terminating NULL byte." alt="" coords="352,85,513,127"/>
 </map>

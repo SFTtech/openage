@@ -43,9 +43,10 @@
           <defval>GL_STATIC_DRAW</defval>
         </param>
         <briefdescription>
+<para>Creates an empty buffer of the specified size. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates an empty buffer of the specified size. Binds the GL_COPY_WRITE_BUFFER target. </para>
+<para>Binds the GL_COPY_WRITE_BUFFER target. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -71,9 +72,10 @@
           <defval>GL_STATIC_DRAW</defval>
         </param>
         <briefdescription>
+<para>Creates a buffer of the specified size and fills it with the given data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a buffer of the specified size and fills it with the given data. Binds the GL_COPY_WRITE_BUFFER target. </para>
+<para>Binds the GL_COPY_WRITE_BUFFER target. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -114,9 +116,10 @@
           <declname>size</declname>
         </param>
         <briefdescription>
+<para>Uploads <computeroutput>size</computeroutput> bytes of new data starting at <computeroutput>offset</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Uploads <computeroutput>size</computeroutput> bytes of new data starting at <computeroutput>offset</computeroutput>. <computeroutput>offset + size</computeroutput> has to be less than or equal to <computeroutput><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a6b6867a9bcc96e5d36923ce98bd7a635" kindref="member">get_size()</ref></computeroutput>. Binds the GL_COPY_WRITE_BUFFER target. </para>
+<para><computeroutput>offset + size</computeroutput> has to be less than or equal to <computeroutput><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a6b6867a9bcc96e5d36923ce98bd7a635" kindref="member">get_size()</ref></computeroutput>. Binds the GL_COPY_WRITE_BUFFER target. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -152,9 +155,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Represents an OpenGL buffer of memory allocated on the GPU. </para>
     </briefdescription>
     <detaileddescription>
-<para>Represents an OpenGL buffer of memory allocated on the GPU. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4655">

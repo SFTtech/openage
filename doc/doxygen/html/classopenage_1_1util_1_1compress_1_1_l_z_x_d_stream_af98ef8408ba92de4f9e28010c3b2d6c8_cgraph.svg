@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-341 362,-341 362,4 -4,4"/>
 <!-- Node44 -->
 <g id="node1" class="node"><title>Node44</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Initializes the next block.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-170 0,-200 148,-200 148,-170 0,-170"/>
 <text text-anchor="start" x="8" y="-188" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="74" y="-177" font-family="Helvetica,sans-Serif" font-size="10.00">::LZXDStream::init_next_block</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node46 -->
 <g id="node3" class="node"><title>Node46</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#a1e2e81d74fd03fd894c4acf72227cc2d" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#a1e2e81d74fd03fd894c4acf72227cc2d" target="_top" xlink:title="calls try_make_decode_table, and, if allow_empty is false, raises an exception on failure.">
 <polygon fill="white" stroke="black" points="184,-268 184,-298 358,-298 358,-268 184,-268"/>
 <text text-anchor="start" x="192" y="-286" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="271" y="-275" font-family="Helvetica,sans-Serif" font-size="10.00">::HuffmanTable::make_decode_table</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node47 -->
 <g id="node4" class="node"><title>Node47</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a80c91d5b7ddc061dd9082827286f0e1e" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a80c91d5b7ddc061dd9082827286f0e1e" target="_top" xlink:title="for use in bytestream mode.">
 <polygon fill="white" stroke="black" points="202,-219 202,-249 340,-249 340,-219 202,-219"/>
 <text text-anchor="start" x="210" y="-237" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="271" y="-226" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream::read_4bytes_le</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node48 -->
 <g id="node5" class="node"><title>Node48</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af4522bbae0ee989e1f5b45606fb2e673" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af4522bbae0ee989e1f5b45606fb2e673" target="_top" xlink:title="for use in bitstream mode.">
 <polygon fill="white" stroke="black" points="210.5,-170 210.5,-200 331.5,-200 331.5,-170 210.5,-170"/>
 <text text-anchor="start" x="218.5" y="-188" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="271" y="-177" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream::read_bits</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node49 -->
 <g id="node6" class="node"><title>Node49</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#a281ecfaf32eb7102310771c48034e107" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#a281ecfaf32eb7102310771c48034e107" target="_top" xlink:title="reads in code lengths for symbols first to last in the given table.">
 <polygon fill="white" stroke="black" points="199.5,-121 199.5,-151 342.5,-151 342.5,-121 199.5,-121"/>
 <text text-anchor="start" x="207.5" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="271" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">::HuffmanTable::read_lengths</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node50 -->
 <g id="node7" class="node"><title>Node50</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a0a33a092ac1b0b664ecf4ced11e1a313" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a0a33a092ac1b0b664ecf4ced11e1a313" target="_top" xlink:title="Switches to bitstream mode.">
 <polygon fill="white" stroke="black" points="210.5,-60.5 210.5,-101.5 331.5,-101.5 331.5,-60.5 210.5,-60.5"/>
 <text text-anchor="start" x="218.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="218.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream::switch_to</text>
@@ -104,7 +104,7 @@
 </g>
 <!-- Node51 -->
 <g id="node8" class="node"><title>Node51</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af9c25fda38455fbfc348a777e109d03e" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af9c25fda38455fbfc348a777e109d03e" target="_top" xlink:title="Switches to bytestream mode.">
 <polygon fill="white" stroke="black" points="210.5,-0.5 210.5,-41.5 331.5,-41.5 331.5,-0.5 210.5,-0.5"/>
 <text text-anchor="start" x="218.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="218.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream::switch_to</text>

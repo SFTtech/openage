@@ -1,7 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1input_1_1_input_context.xhtml" title=" " alt="" coords="5,56,193,83"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml" title=" " alt="" coords="241,56,392,83"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml" title=" " alt="" coords="441,5,589,32"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_create_mode.xhtml" title=" " alt="" coords="440,56,589,83"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_editor_mode.xhtml" title=" " alt="" coords="442,107,587,133"/>
+<area shape="rect" id="node1" href="$classopenage_1_1input_1_1_input_context.xhtml" title="An input context contains all keybindings and actions active in e.g." alt="" coords="5,56,193,83"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_output_mode.xhtml" title="A target for input handling and gui rendering." alt="" coords="241,56,392,83"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_action_mode.xhtml" title="This is the main game UI." alt="" coords="441,5,589,32"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_create_mode.xhtml" title="This is mainly the game editor." alt="" coords="440,56,589,83"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_editor_mode.xhtml" title="UI mode to provide an interface for map editing." alt="" coords="442,107,587,133"/>
 </map>

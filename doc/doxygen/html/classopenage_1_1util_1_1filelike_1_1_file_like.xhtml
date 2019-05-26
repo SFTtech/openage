@@ -97,20 +97,25 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1filelike_1_1_f
 </div><!--header-->
 <div class="contents">
 
+<p>File-like class that has the standard operations like read, seek, write etc.  
+ <a href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="filelike_8h_source.xhtml">filelike.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::util::filelike::FileLike:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1_file_like__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1_file_like__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::filelike::FileLike:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1_file_like__coll__graph.svg" width="151" height="308"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1_file_like__coll__graph.svg" width="151" height="308"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -119,6 +124,7 @@ Public Types</h2></td></tr>
 <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#aa76486a78f59d7f073b158e048ea016aaf32924c53f864144ab34d1f7c12a0d4a">seek_t::CUR</a> = 1, 
 <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#aa76486a78f59d7f073b158e048ea016aab1a326c06d88bf042f73d70f50197905">seek_t::END</a> = 2
  }</td></tr>
+<tr class="memdesc:aa76486a78f59d7f073b158e048ea016a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek reference point.  <a href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#aa76486a78f59d7f073b158e048ea016a">More...</a><br /></td></tr>
 <tr class="separator:aa76486a78f59d7f073b158e048ea016a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab68557b264011908164b43b32a9f00b1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#ab68557b264011908164b43b32a9f00b1">mode_t</a> : int { <br />
 &#160;&#160;<a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#ab68557b264011908164b43b32a9f00b1ae1e1d3d40573127e9ee0480caf1283d6">mode_t::R</a> = 0, 
@@ -129,6 +135,7 @@ Public Types</h2></td></tr>
 &#160;&#160;<a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#ab68557b264011908164b43b32a9f00b1a5b61a1b298a0d06efa6933a97e68d763">mode_t::AR</a> = 4
 <br />
  }</td></tr>
+<tr class="memdesc:ab68557b264011908164b43b32a9f00b1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classopenage_1_1util_1_1_file.xhtml" title="Generic File implementation, used in our filesystem-like and file-like abtraction system.">File</a> access mode.  <a href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#ab68557b264011908164b43b32a9f00b1">More...</a><br /></td></tr>
 <tr class="separator:ab68557b264011908164b43b32a9f00b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -162,12 +169,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a022ae3fc69734c3c81cf5de6cfba35e7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a022ae3fc69734c3c81cf5de6cfba35e7">is_python_native</a> () const noexcept</td></tr>
 <tr class="separator:a022ae3fc69734c3c81cf5de6cfba35e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaba5c322eb2f3221a15471f2d546e761"><td class="memItemLeft" align="right" valign="top">virtual std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#aaba5c322eb2f3221a15471f2d546e761">repr</a> (std::ostream &amp;)=0</td></tr>
+<tr class="memdesc:aaba5c322eb2f3221a15471f2d546e761"><td class="mdescLeft">&#160;</td><td class="mdescRight">string representation of the filelike  <a href="#aaba5c322eb2f3221a15471f2d546e761">More...</a><br /></td></tr>
 <tr class="separator:aaba5c322eb2f3221a15471f2d546e761"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>File-like class that has the standard operations like read, seek, write etc.</p>
+<div class="textblock"><p>File-like class that has the standard operations like read, seek, write etc. </p>
 <p>pxd: ctypedef enum seek_t "openage::util::filelike::FileLike::seek_t": seek_t_SET "::openage::util::filelike::FileLike::seek_t::SET" = 0 seek_t_CUR "::openage::util::filelike::FileLike::seek_t::CUR" = 1 seek_t_END "::openage::util::filelike::FileLike::seek_t::END" = 2</p>
-<p>cppclass <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml">FileLike</a>: string <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#adad657901714de4743f7d5a5ad8defdb">read(ssize_t max)</a> except + bool <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#ab19a9a6b411c3d8c6b454dea5156d623">readable()</a> except + void write(const string &amp;data) except + bool <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a6e4789631c0c095dea467c5ea5a06ccd">writable()</a> except + void <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#ad8d4e18577a61f840ec2bc4288578985">seek(ssize_t offset, seek_t how)</a> except + bool <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a3299251289e5621fdf1da016a96ea78d">seekable()</a> except + size_t <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a30eeb9b647177a0aaf06ca241e347196">tell()</a> except + void <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a7ad98df2b552e013bce31d81a5e36d23">close()</a> except + void <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a8ab61e519a946d3426334e19307eb35a">flush()</a> except + ssize_t <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a212820ce88cf538a4099f14f622e569b">get_size()</a> except +</p>
+<p>cppclass <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml" title="File-like class that has the standard operations like read, seek, write etc.">FileLike</a>: string <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#adad657901714de4743f7d5a5ad8defdb">read(ssize_t max)</a> except + bool <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#ab19a9a6b411c3d8c6b454dea5156d623">readable()</a> except + void write(const string &amp;data) except + bool <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a6e4789631c0c095dea467c5ea5a06ccd">writable()</a> except + void <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#ad8d4e18577a61f840ec2bc4288578985">seek(ssize_t offset, seek_t how)</a> except + bool <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a3299251289e5621fdf1da016a96ea78d">seekable()</a> except + size_t <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a30eeb9b647177a0aaf06ca241e347196">tell()</a> except + void <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a7ad98df2b552e013bce31d81a5e36d23">close()</a> except + void <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a8ab61e519a946d3426334e19307eb35a">flush()</a> except + ssize_t <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a212820ce88cf538a4099f14f622e569b">get_size()</a> except +</p>
 <p>bool <a class="el" href="classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a022ae3fc69734c3c81cf5de6cfba35e7">is_python_native()</a> noexcept </p>
 
 <p class="definition">Definition at line <a class="el" href="filelike_8h_source.xhtml#l00041">41</a> of file <a class="el" href="filelike_8h_source.xhtml">filelike.h</a>.</p>
@@ -191,7 +199,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><a class="el" href="classopenage_1_1util_1_1_file.xhtml">File</a> access mode.</p>
+
+<p><a class="el" href="classopenage_1_1util_1_1_file.xhtml" title="Generic File implementation, used in our filesystem-like and file-like abtraction system.">File</a> access mode. </p>
 <p>Sync the numbers with the fslike/cpp.pyx because Cython can't enum class yet. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab68557b264011908164b43b32a9f00b1ae1e1d3d40573127e9ee0480caf1283d6"></a>R&#160;</td><td class="fielddoc"></td></tr>
@@ -224,7 +233,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Seek reference point.</p>
+
+<p>Seek reference point. </p>
 <p>Don't change the numbers, they're used from Cython. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa76486a78f59d7f073b158e048ea016aa8c52684db8f49511e9b44471716bf164"></a>SET&#160;</td><td class="fielddoc"><p>offset from file beginning </p>
@@ -538,6 +548,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>string representation of the filelike </p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1util_1_1filelike_1_1_python.xhtml#a3c8813eb52c9290f57331f787e6354ca">openage::util::filelike::Python</a>, and <a class="el" href="classopenage_1_1util_1_1filelike_1_1_native.xhtml#a4ae909d0614e929614647290e9418afb">openage::util::filelike::Native</a>.</p>

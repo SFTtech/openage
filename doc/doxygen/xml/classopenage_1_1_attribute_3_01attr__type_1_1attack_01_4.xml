@@ -13,9 +13,9 @@
         <argsstring></argsstring>
         <name>ptype</name>
         <briefdescription>
+<para>The projectile&apos;s unit type. </para>
         </briefdescription>
         <detaileddescription>
-<para>The projectile&apos;s unit type </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -28,9 +28,10 @@
         <argsstring></argsstring>
         <name>min_range</name>
         <briefdescription>
+<para>The min range of the attack. </para>
         </briefdescription>
         <detaileddescription>
-<para>The min range of the attack <xrefsect id="todo_1_todo000039"><xreftitle>Todo</xreftitle><xrefdescription><para>not used </para>
+<para><xrefsect id="todo_1_todo000039"><xreftitle>Todo</xreftitle><xrefdescription><para>not used </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -43,9 +44,9 @@
         <argsstring></argsstring>
         <name>max_range</name>
         <briefdescription>
+<para>The max range of the attack. </para>
         </briefdescription>
         <detaileddescription>
-<para>The max range of the attack </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -57,9 +58,9 @@
         <argsstring></argsstring>
         <name>init_height</name>
         <briefdescription>
+<para>The height from which the projectile starts. </para>
         </briefdescription>
         <detaileddescription>
-<para>The height from which the projectile starts </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -85,9 +86,10 @@
         <argsstring></argsstring>
         <name>friendly_fire</name>
         <briefdescription>
+<para>If the attack can damage allied (friendly) units. </para>
         </briefdescription>
         <detaileddescription>
-<para>If the attack can damage allied (friendly) units. <xrefsect id="todo_1_todo000040"><xreftitle>Todo</xreftitle><xrefdescription><para>not used </para>
+<para><xrefsect id="todo_1_todo000040"><xreftitle>Todo</xreftitle><xrefdescription><para>not used </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -100,9 +102,10 @@
         <argsstring></argsstring>
         <name>area_of_effect</name>
         <briefdescription>
+<para>The radius of the area of effect of the attack or 0 if there is no area_of_effect. </para>
         </briefdescription>
         <detaileddescription>
-<para>The radius of the area of effect of the attack or 0 if there is no area_of_effect. <xrefsect id="todo_1_todo000041"><xreftitle>Todo</xreftitle><xrefdescription><para>not used </para>
+<para><xrefsect id="todo_1_todo000041"><xreftitle>Todo</xreftitle><xrefdescription><para>not used </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -192,9 +195,9 @@
         <name>copy</name>
         <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
         <briefdescription>
+<para>Produces an copy of the attribute. </para>
         </briefdescription>
         <detaileddescription>
-<para>Produces an copy of the attribute. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

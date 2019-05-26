@@ -58,9 +58,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Checking that callable can be called with given argument types. </para>
     </briefdescription>
     <detaileddescription>
-<para>Checking that callable can be called with given argument types. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6146">

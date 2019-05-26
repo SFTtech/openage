@@ -106,14 +106,16 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1opengl_1_1
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer__inherit__graph.svg" width="176" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer__inherit__graph.svg" width="176" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::opengl::GlRenderer:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -121,19 +123,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a15f5acc6e4ee9c47809d7e73cb1aee42"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#a15f5acc6e4ee9c47809d7e73cb1aee42">GlRenderer</a> (<a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_context.xhtml">GlContext</a> *)</td></tr>
 <tr class="separator:a15f5acc6e4ee9c47809d7e73cb1aee42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb92e5d60d03ef91964ee7dc3871872b"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classopenage_1_1renderer_1_1_texture2d.xhtml">Texture2d</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#adb92e5d60d03ef91964ee7dc3871872b">add_texture</a> (<a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml">resources::Texture2dData</a> const &amp;) override</td></tr>
+<tr class="memdesc:adb92e5d60d03ef91964ee7dc3871872b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uploads the given texture data (usually loaded from disk) to graphics hardware and makes it available as a <a class="el" href="classopenage_1_1_texture.xhtml" title="A texture for rendering graphically.">Texture</a> object that can be used for various operations.  <a href="#adb92e5d60d03ef91964ee7dc3871872b">More...</a><br /></td></tr>
 <tr class="separator:adb92e5d60d03ef91964ee7dc3871872b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1f48c54d3dd40436e868607fb7283f7"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classopenage_1_1renderer_1_1_texture2d.xhtml">Texture2d</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#ad1f48c54d3dd40436e868607fb7283f7">add_texture</a> (<a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml">resources::Texture2dInfo</a> const &amp;) override</td></tr>
 <tr class="memdesc:ad1f48c54d3dd40436e868607fb7283f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new empty texture with the given parameters on the graphics hardware.  <a href="#ad1f48c54d3dd40436e868607fb7283f7">More...</a><br /></td></tr>
 <tr class="separator:ad1f48c54d3dd40436e868607fb7283f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b9cd6e0294a1f4ea8e309badff46167"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml">ShaderProgram</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#a5b9cd6e0294a1f4ea8e309badff46167">add_shader</a> (std::vector&lt; <a class="el" href="classopenage_1_1renderer_1_1resources_1_1_shader_source.xhtml">resources::ShaderSource</a> &gt; const &amp;) override</td></tr>
+<tr class="memdesc:a5b9cd6e0294a1f4ea8e309badff46167"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles the given shader source code into a shader program.  <a href="#a5b9cd6e0294a1f4ea8e309badff46167">More...</a><br /></td></tr>
 <tr class="separator:a5b9cd6e0294a1f4ea8e309badff46167"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa20ca113dfbb6d0087451ba6a2bca1e9"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml">Geometry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#aa20ca113dfbb6d0087451ba6a2bca1e9">add_mesh_geometry</a> (<a class="el" href="classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml">resources::MeshData</a> const &amp;) override</td></tr>
+<tr class="memdesc:aa20ca113dfbb6d0087451ba6a2bca1e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml" title="A class representing geometry to be passed to a draw call.">Geometry</a> object from the given mesh data, uploading it to the GPU by creating appropriate buffer.  <a href="#aa20ca113dfbb6d0087451ba6a2bca1e9">More...</a><br /></td></tr>
 <tr class="separator:aa20ca113dfbb6d0087451ba6a2bca1e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bfa7ca074b1a40804f2e20bcdaa833e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml">Geometry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#a9bfa7ca074b1a40804f2e20bcdaa833e">add_bufferless_quad</a> () override</td></tr>
+<tr class="memdesc:a9bfa7ca074b1a40804f2e20bcdaa833e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a <a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml" title="A class representing geometry to be passed to a draw call.">Geometry</a> object that passes a simple 4-vertex drawing command with no vertex attributes to the shader.  <a href="#a9bfa7ca074b1a40804f2e20bcdaa833e">More...</a><br /></td></tr>
 <tr class="separator:a9bfa7ca074b1a40804f2e20bcdaa833e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3af3b346279a744ca6330701543f71d"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classopenage_1_1renderer_1_1_render_target.xhtml">RenderTarget</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#ae3af3b346279a744ca6330701543f71d">create_texture_target</a> (std::vector&lt; <a class="el" href="classopenage_1_1renderer_1_1_texture2d.xhtml">Texture2d</a> * &gt;) override</td></tr>
+<tr class="memdesc:ae3af3b346279a744ca6330701543f71d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a render target from the given textures.  <a href="#ae3af3b346279a744ca6330701543f71d">More...</a><br /></td></tr>
 <tr class="separator:ae3af3b346279a744ca6330701543f71d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af731ce3a5d618782d7fcd6ffffd5a659"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1renderer_1_1_render_target.xhtml">RenderTarget</a> const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#af731ce3a5d618782d7fcd6ffffd5a659">get_display_target</a> () override</td></tr>
+<tr class="memdesc:af731ce3a5d618782d7fcd6ffffd5a659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the built-in display target that represents the window.  <a href="#af731ce3a5d618782d7fcd6ffffd5a659">More...</a><br /></td></tr>
 <tr class="separator:af731ce3a5d618782d7fcd6ffffd5a659"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5d4ec5b1523d89a23170beea4bf6525"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml">resources::Texture2dData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#ad5d4ec5b1523d89a23170beea4bf6525">display_into_data</a> () override</td></tr>
 <tr class="memdesc:ad5d4ec5b1523d89a23170beea4bf6525"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the display framebuffer into a CPU-accessible data object. Essentially, this takes a screenshot.  <a href="#ad5d4ec5b1523d89a23170beea4bf6525">More...</a><br /></td></tr>
@@ -177,7 +185,7 @@ Private Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="opengl_2renderer_8cpp_source.xhtml#l00017">17</a> of file <a class="el" href="opengl_2renderer_8cpp_source.xhtml">renderer.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    : <a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#a9910aaa76c6170c4c28652f50a8f4cf7">gl_context</a>(ctx)</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a>) &lt;&lt; <span class="stringliteral">&quot;Created OpenGL renderer&quot;</span>);</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_xhtml_a9910aaa76c6170c4c28652f50a8f4cf7"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#a9910aaa76c6170c4c28652f50a8f4cf7">openage::renderer::opengl::GlRenderer::gl_context</a></div><div class="ttdeci">GlContext * gl_context</div><div class="ttdoc">The GL context.</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2renderer_8h_source.xhtml#l00041">renderer.h:41</a></div></div>
 <div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdoc">Convenience method that makes use of the 'general' LogSource.</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1log_xhtml_a3f1815b698faf5786fc5e20bcac7704b"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">openage::log.info</a></div><div class="ttdeci">def info(msg, *args, **kwargs)</div><div class="ttdoc">info message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00114">__init__.py:114</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00114">openage::log::info()</a>, <a class="el" href="log_8cpp_source.xhtml#l00013">openage::log::log()</a>, and <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>.</p>
@@ -186,7 +194,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_a15f5acc6e4ee9c47809d7e73cb1aee42_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_a15f5acc6e4ee9c47809d7e73cb1aee42_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -214,7 +223,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Adds a <a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml" title="A class representing geometry to be passed to a draw call.">Geometry</a> object that passes a simple 4-vertex drawing command with no vertex attributes to the shader. Useful for generating positions in the vertex shader. </p>
+
+<p>Adds a <a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml" title="A class representing geometry to be passed to a draw call.">Geometry</a> object that passes a simple 4-vertex drawing command with no vertex attributes to the shader. </p>
+<p>Useful for generating positions in the vertex shader. </p>
 
 <p>Implements <a class="el" href="classopenage_1_1renderer_1_1_renderer.xhtml#a67a77e7702c68b2fa880f9c26f877eed">openage::renderer::Renderer</a>.</p>
 
@@ -245,7 +256,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Creates a <a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml" title="A class representing geometry to be passed to a draw call.">Geometry</a> object from the given mesh data, uploading it to the GPU by creating appropriate buffer. The vertex attributes will be passed to the shader as described in the mesh data. </p>
+
+<p>Creates a <a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml" title="A class representing geometry to be passed to a draw call.">Geometry</a> object from the given mesh data, uploading it to the GPU by creating appropriate buffer. </p>
+<p>The vertex attributes will be passed to the shader as described in the mesh data. </p>
 
 <p>Implements <a class="el" href="classopenage_1_1renderer_1_1_renderer.xhtml#ac7faabd63826f110062b7fbf5202c7c9">openage::renderer::Renderer</a>.</p>
 
@@ -278,7 +291,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Compiles the given shader source code into a shader program. A shader program is the main tool used for graphics rendering. </p>
+
+<p>Compiles the given shader source code into a shader program. </p>
+<p>A shader program is the main tool used for graphics rendering. </p>
 
 <p>Implements <a class="el" href="classopenage_1_1renderer_1_1_renderer.xhtml#a9371f6d9b258db3b287e5fcab73a4996">openage::renderer::Renderer</a>.</p>
 
@@ -292,7 +307,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_a5b9cd6e0294a1f4ea8e309badff46167_cgraph.svg" width="352" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_a5b9cd6e0294a1f4ea8e309badff46167_cgraph.svg" width="352" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -320,7 +336,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Uploads the given texture data (usually loaded from disk) to graphics hardware and makes it available as a <a class="el" href="classopenage_1_1_texture.xhtml">Texture</a> object that can be used for various operations. </p>
+
+<p>Uploads the given texture data (usually loaded from disk) to graphics hardware and makes it available as a <a class="el" href="classopenage_1_1_texture.xhtml" title="A texture for rendering graphically.">Texture</a> object that can be used for various operations. </p>
 
 <p>Implements <a class="el" href="classopenage_1_1renderer_1_1_renderer.xhtml#a07fe03ec7257b6dfa803988be4607740">openage::renderer::Renderer</a>.</p>
 
@@ -393,7 +410,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs a render target from the given textures. All subsequent drawing operations pointed at this target will write to these textures. Textures are attached to the target in the order in which they appear within the vector. Depth textures are attached as depth components. Textures of every other type are attached as color components. </p>
+
+<p>Constructs a render target from the given textures. </p>
+<p>All subsequent drawing operations pointed at this target will write to these textures. Textures are attached to the target in the order in which they appear within the vector. Depth textures are attached as depth components. Textures of every other type are attached as color components. </p>
 
 <p>Implements <a class="el" href="classopenage_1_1renderer_1_1_renderer.xhtml#aaf1729acc8160a03eca5b91cf6e7dc3a">openage::renderer::Renderer</a>.</p>
 
@@ -432,7 +451,7 @@ Private Attributes</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1renderer_1_1_renderer.xhtml#a9e2749c186084a43f41a77fb8c999647">openage::renderer::Renderer</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="opengl_2renderer_8cpp_source.xhtml#l00057">57</a> of file <a class="el" href="opengl_2renderer_8cpp_source.xhtml">renderer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                     {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    GLint params[4];</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    glGetIntegerv(GL_VIEWPORT, params);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    GLint width = params[2];</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    GLint height = params[3];</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    resources::Texture2dInfo tex_info(width, height, <a class="code" href="namespaceopenage_1_1renderer_1_1resources.xhtml#a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a">resources::pixel_format::rgba8</a>, 4);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::vector&lt;uint8_t&gt; data(tex_info.get_data_size());</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    static_cast&lt;GlRenderTarget const*&gt;(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#af731ce3a5d618782d7fcd6ffffd5a659">get_display_target</a>())-&gt;bind_read();</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    glPixelStorei(GL_PACK_ALIGNMENT, 4);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    glReadnPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, tex_info.get_data_size(), data.data());</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    resources::Texture2dData img(<a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(tex_info), <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(data));</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> img.flip_y();</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_xhtml_af731ce3a5d618782d7fcd6ffffd5a659"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#af731ce3a5d618782d7fcd6ffffd5a659">openage::renderer::opengl::GlRenderer::get_display_target</a></div><div class="ttdeci">RenderTarget const  * get_display_target() override</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2renderer_8cpp_source.xhtml#l00053">renderer.cpp:53</a></div></div>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                     {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    GLint params[4];</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    glGetIntegerv(GL_VIEWPORT, params);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    GLint width = params[2];</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    GLint height = params[3];</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    resources::Texture2dInfo tex_info(width, height, <a class="code" href="namespaceopenage_1_1renderer_1_1resources.xhtml#a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a">resources::pixel_format::rgba8</a>, 4);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::vector&lt;uint8_t&gt; data(tex_info.get_data_size());</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    static_cast&lt;GlRenderTarget const*&gt;(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#af731ce3a5d618782d7fcd6ffffd5a659">get_display_target</a>())-&gt;bind_read();</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    glPixelStorei(GL_PACK_ALIGNMENT, 4);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    glReadnPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, tex_info.get_data_size(), data.data());</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    resources::Texture2dData img(<a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(tex_info), <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(data));</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> img.flip_y();</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_xhtml_af731ce3a5d618782d7fcd6ffffd5a659"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#af731ce3a5d618782d7fcd6ffffd5a659">openage::renderer::opengl::GlRenderer::get_display_target</a></div><div class="ttdeci">RenderTarget const  * get_display_target() override</div><div class="ttdoc">Returns the built-in display target that represents the window.</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2renderer_8cpp_source.xhtml#l00053">renderer.cpp:53</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1renderer_1_1resources_xhtml_a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a"><div class="ttname"><a href="namespaceopenage_1_1renderer_1_1resources.xhtml#a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a">openage::renderer::resources::pixel_format::rgba8</a></div><div class="ttdoc">32 bits per pixel, float, alpha channel, RGBA order</div></div>
 </div><!-- fragment -->
@@ -442,7 +461,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_ad5d4ec5b1523d89a23170beea4bf6525_cgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_ad5d4ec5b1523d89a23170beea4bf6525_cgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -469,7 +489,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the built-in display target that represents the window. Passes pointed at this target will have their output visible on the screen. </p>
+
+<p>Returns the built-in display target that represents the window. </p>
+<p>Passes pointed at this target will have their output visible on the screen. </p>
 
 <p>Implements <a class="el" href="classopenage_1_1renderer_1_1_renderer.xhtml#a2a55ee0bda543175600d17b62d24dbf1">openage::renderer::Renderer</a>.</p>
 
@@ -484,7 +506,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_af731ce3a5d618782d7fcd6ffffd5a659_icgraph.svg" width="342" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_af731ce3a5d618782d7fcd6ffffd5a659_icgraph.svg" width="342" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

@@ -1,11 +1,11 @@
 <map id="openage::HealAbility::can_invoke" name="openage::HealAbility::can_invoke">
-<area shape="rect" id="node1" title=" " alt="" coords="5,90,147,131"/>
+<area shape="rect" id="node1" title="true if the paramaters allow an action to be performed" alt="" coords="5,90,147,131"/>
 <area shape="rect" id="node2" href="$classopenage_1_1_command.xhtml#a89702d889840a84d4f1cadd017b4e8c2" title=" " alt="" coords="195,5,389,32"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_unit_ability.xhtml#ab4303a776324d428e74a9af7fd966556" title=" " alt="" coords="223,57,361,98"/>
 <area shape="rect" id="node8" href="$classopenage_1_1_unit_ability.xhtml#a7bb29b6621a1baa056218ec14774f0f5" title=" " alt="" coords="223,122,361,163"/>
 <area shape="rect" id="node9" href="$classopenage_1_1_command.xhtml#aac8f87a8abd4c2ed97832d42c4954514" title=" " alt="" coords="209,188,375,215"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="437,57,568,98"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="439,122,567,163"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="616,64,780,91"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="617,129,779,156"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title="returns whether attribute is available" alt="" coords="437,57,568,98"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title="returns attribute based on templated value" alt="" coords="439,122,567,163"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title="Check if the attribute of the given type exists." alt="" coords="616,64,780,91"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title="Get the attribute based on the type." alt="" coords="617,129,779,156"/>
 </map>

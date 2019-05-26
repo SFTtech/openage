@@ -5,7 +5,7 @@
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_editor_mode_link.xhtml#a4604a1e7eae32183404c1e4f8bf5f808" title=" " alt="" coords="517,239,688,295"/>
 <area shape="rect" id="node4" href="$classopenage_1_1_editor_mode.xhtml#a8bc3906c89a7ecceff2c24512c5be24b" title=" " alt="" coords="757,202,902,258"/>
 <area shape="rect" id="node17" href="$classqtsdl_1_1_shadow.xhtml#a72190fd685d21b446fae24b92412b54f" title=" " alt="" coords="736,283,923,324"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" title=" " alt="" coords="971,187,1125,214"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#ac6f34c002692bc844cd70de03e10bc5d" title="std::for_each except just on containers." alt="" coords="971,187,1125,214"/>
 <area shape="rect" id="node15" href="$classopenage_1_1_game_control.xhtml#aa7c61c3caafc810355005e83c8f234e2" title=" " alt="" coords="971,239,1125,280"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1curve_1_1tests.xhtml#afc4e799a037edab37e1e35a74da593b7" title=" " alt="" coords="1192,180,1339,221"/>
 <area shape="rect" id="node7" href="$namespaceopenage_1_1curve_1_1tests.xhtml#a994d019a14acd704605a0ccff85558c8" title=" " alt="" coords="1405,5,1552,47"/>
@@ -16,5 +16,5 @@
 <area shape="rect" id="node13" href="$classopenage_1_1curve_1_1_queue.xhtml#a3a60297cec80ae6d759ea3567922db8e" title=" " alt="" coords="1600,205,1784,231"/>
 <area shape="rect" id="node14" href="$classopenage_1_1curve_1_1_queue.xhtml#ae7d94b0875221550e5af663a64ea2aec" title=" " alt="" coords="1615,256,1769,297"/>
 <area shape="rect" id="node11" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="1832,205,2027,231"/>
-<area shape="rect" id="node16" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title=" " alt="" coords="1173,246,1357,273"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title="return currently running game or null if a game is not currently running" alt="" coords="1173,246,1357,273"/>
 </map>

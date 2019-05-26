@@ -80,7 +80,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node9 -->
 <g id="node3" class="node"><title>Node9</title>
-<g id="a_node3"><a xlink:href="structopenage_1_1coord_1_1camgame__delta.xhtml#a7e761e4e14092c27b01fbc0ee0a39330" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="structopenage_1_1coord_1_1camgame__delta.xhtml#a7e761e4e14092c27b01fbc0ee0a39330" target="_top" xlink:title="There are infinite solutions to this conversion problem because a 2D coordinate is converted into a 3...">
 <polygon fill="white" stroke="black" points="160,-19 160,-49 292,-49 292,-19 160,-19"/>
 <text text-anchor="start" x="168" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::camgame</text>
 <text text-anchor="middle" x="226" y="-26" font-family="Helvetica,sans-Serif" font-size="10.00">_delta::to_phys3</text>
@@ -94,7 +94,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node10 -->
 <g id="node4" class="node"><title>Node10</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a703b41f0cb3fb93f1b5dcd20e6c968b4" target="_top" xlink:title="Factory function to get a fixed&#45;point number from an integer.">
 <polygon fill="white" stroke="black" points="338,-38.5 338,-79.5 463,-79.5 463,-38.5 338,-38.5"/>
 <text text-anchor="start" x="346" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="start" x="346" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, phys_t_radix</text>
@@ -122,7 +122,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node12 -->
 <g id="node6" class="node"><title>Node12</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="509,-0.5 509,-19.5 604,-19.5 604,-0.5 509,-0.5"/>
 <text text-anchor="middle" x="556.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

@@ -19,7 +19,7 @@
 </g>
 <!-- Node0 -->
 <g id="node2" class="node"><title>Node0</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_matrix.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_matrix.xhtml" target="_top" xlink:title="Matrix class with arithmetic.">
 <polygon fill="white" stroke="black" points="75,-49.5 75,-79.5 180,-79.5 180,-49.5 75,-49.5"/>
 <text text-anchor="start" x="83" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Matrix</text>
 <text text-anchor="middle" x="127.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; M, N, T &gt;</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node70 -->
 <g id="node3" class="node"><title>Node70</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_vector.xhtml" target="_top" xlink:title="Vector class with arithmetic.">
 <polygon fill="white" stroke="black" points="74,-0.5 74,-30.5 181,-30.5 181,-0.5 74,-0.5"/>
 <text text-anchor="start" x="82" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Vector</text>
 <text text-anchor="middle" x="127.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; N, T &gt;</text>

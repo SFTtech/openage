@@ -19,7 +19,7 @@
 </g>
 <!-- Node56 -->
 <g id="node2" class="node"><title>Node56</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011" target="_top" xlink:title="Return the string representation of the bind assignated to an action.">
 <polygon fill="white" stroke="black" points="188,-49.5 188,-79.5 333,-79.5 333,-49.5 188,-49.5"/>
 <text text-anchor="start" x="196" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="260.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_bind</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node58 -->
 <g id="node4" class="node"><title>Node58</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#af93e6ca8bded1892c1c9d83332468e2d" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml#af93e6ca8bded1892c1c9d83332468e2d" target="_top" xlink:title="Set the given action to be triggered by the given bind (key/mouse /wheel).">
 <polygon fill="white" stroke="black" points="188,-0.5 188,-30.5 333,-30.5 333,-0.5 188,-0.5"/>
 <text text-anchor="start" x="196" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
 <text text-anchor="middle" x="260.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_bind</text>

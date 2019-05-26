@@ -1,7 +1,7 @@
 <map id="openage::util::FrameCounter::frame" name="openage::util::FrameCounter::frame">
-<area shape="rect" id="node1" title=" " alt="" coords="5,27,192,69"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_timer.xhtml#a0f4aca6841c138900f29816c0d7decf3" title=" " alt="" coords="240,27,376,69"/>
+<area shape="rect" id="node1" title="to be called each time a frame has been completed" alt="" coords="5,27,192,69"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_timer.xhtml#a0f4aca6841c138900f29816c0d7decf3" title="reads the current timer value, in nanoseconds, and resets the timer to zero (preserving started/stopp..." alt="" coords="240,27,376,69"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="424,5,617,32"/>
-<area shape="rect" id="node5" href="$namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" title=" " alt="" coords="451,57,591,98"/>
-<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="665,5,792,32"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" title="returns a monotonically&#45;increasing time that returns the number of nanoseconds since an unspecified e..." alt="" coords="451,57,591,98"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title="method that behaves similar to python&#39;s &quot;repr&quot;." alt="" coords="665,5,792,32"/>
 </map>

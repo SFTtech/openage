@@ -1,4 +1,4 @@
 <map id="openage::AssetManager::set_asset_dir" name="openage::AssetManager::set_asset_dir">
-<area shape="rect" id="node1" title=" " alt="" coords="241,5,404,47"/>
+<area shape="rect" id="node1" title="Set the asset search path." alt="" coords="241,5,404,47"/>
 <area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_asset_manager_link.xhtml#a78cdab0ef894c100ba296a3fc56b9a96" title=" " alt="" coords="5,5,193,47"/>
 </map>

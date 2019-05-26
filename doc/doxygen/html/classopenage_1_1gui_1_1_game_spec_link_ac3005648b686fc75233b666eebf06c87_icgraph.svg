@@ -57,7 +57,7 @@ var sectionId = 'dynsection-3';
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 520,-84 520,4 -4,4"/>
 <!-- Node11 -->
 <g id="node1" class="node"><title>Node11</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Pass loaded assets to the image provider.">
 <polygon fill="#bfbfbf" stroke="black" points="371,-24.5 371,-54.5 516,-54.5 516,-24.5 371,-24.5"/>
 <text text-anchor="start" x="379" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GameSpecLink</text>
 <text text-anchor="middle" x="443.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::game_spec_loaded</text>
@@ -80,7 +80,7 @@ var sectionId = 'dynsection-3';
 </g>
 <!-- Node14 -->
 <g id="node4" class="node"><title>Node14</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#a545162ca0fa8e596f4a2afafda0e2b0f" target="_top" xlink:title="Sets the game spec to load textures from.">
 <polygon fill="white" stroke="black" points="181,-0.5 181,-30.5 335,-30.5 335,-0.5 181,-0.5"/>
 <text text-anchor="start" x="189" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GuiImageProvider</text>
 <text text-anchor="middle" x="258" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Link::set_game_spec</text>

@@ -104,33 +104,43 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1_text_rend
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch.xhtml">text_render_batch</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set of text draw requests with the same font and color.  <a href="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass.xhtml">text_render_batch_pass</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A single text draw request containing the text and position.  <a href="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abce6be4c1b901fb91a52e29829260eab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#abce6be4c1b901fb91a52e29829260eab">TextRenderer</a> ()</td></tr>
+<tr class="memdesc:abce6be4c1b901fb91a52e29829260eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires a working OpenGL context to create buffer objects.  <a href="#abce6be4c1b901fb91a52e29829260eab">More...</a><br /></td></tr>
 <tr class="separator:abce6be4c1b901fb91a52e29829260eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe8c2a17582e57d5244fa3414b57333b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#abe8c2a17582e57d5244fa3414b57333b">~TextRenderer</a> ()</td></tr>
 <tr class="separator:abe8c2a17582e57d5244fa3414b57333b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa13c06f0e7bc0b5f09f8adcd399f6676"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#aa13c06f0e7bc0b5f09f8adcd399f6676">set_font</a> (<a class="el" href="classopenage_1_1renderer_1_1_font.xhtml">Font</a> *font)</td></tr>
+<tr class="memdesc:aa13c06f0e7bc0b5f09f8adcd399f6676"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the font to be used for the future text draw calls.  <a href="#aa13c06f0e7bc0b5f09f8adcd399f6676">More...</a><br /></td></tr>
 <tr class="separator:aa13c06f0e7bc0b5f09f8adcd399f6676"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb1f0841f532f86ddb815e13fd77bca3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#adb1f0841f532f86ddb815e13fd77bca3">set_color</a> (const <a class="el" href="classopenage_1_1renderer_1_1_color.xhtml">Color</a> &amp;color)</td></tr>
+<tr class="memdesc:adb1f0841f532f86ddb815e13fd77bca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the color to be used for the future text draw calls.  <a href="#adb1f0841f532f86ddb815e13fd77bca3">More...</a><br /></td></tr>
 <tr class="separator:adb1f0841f532f86ddb815e13fd77bca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4f6173d90b1ecf5a918908172f44fbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf">draw</a> (<a class="el" href="structopenage_1_1coord_1_1viewport.xhtml">coord::viewport</a> position, const char *format,...)</td></tr>
+<tr class="memdesc:ad4f6173d90b1ecf5a918908172f44fbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a formatted string at the specified position.  <a href="#ad4f6173d90b1ecf5a918908172f44fbf">More...</a><br /></td></tr>
 <tr class="separator:ad4f6173d90b1ecf5a918908172f44fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a021938d1c8fb338a055a3a01d7f06214"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#a021938d1c8fb338a055a3a01d7f06214">draw</a> (<a class="el" href="structopenage_1_1coord_1_1viewport.xhtml">coord::viewport</a> position, const std::string &amp;text)</td></tr>
+<tr class="memdesc:a021938d1c8fb338a055a3a01d7f06214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw text at the specified position.  <a href="#a021938d1c8fb338a055a3a01d7f06214">More...</a><br /></td></tr>
 <tr class="separator:a021938d1c8fb338a055a3a01d7f06214"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e468eb149f70e240cba45046904eb61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#a9e468eb149f70e240cba45046904eb61">draw</a> (int x, int y, const std::string &amp;text)</td></tr>
+<tr class="memdesc:a9e468eb149f70e240cba45046904eb61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw text at the specified position.  <a href="#a9e468eb149f70e240cba45046904eb61">More...</a><br /></td></tr>
 <tr class="separator:a9e468eb149f70e240cba45046904eb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5f8238ffefc1fcf24366c34141b710e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad5f8238ffefc1fcf24366c34141b710e">render</a> ()</td></tr>
+<tr class="memdesc:ad5f8238ffefc1fcf24366c34141b710e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render all the text draw requests made during the frame.  <a href="#ad5f8238ffefc1fcf24366c34141b710e">More...</a><br /></td></tr>
 <tr class="separator:ad5f8238ffefc1fcf24366c34141b710e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -168,6 +178,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Requires a working OpenGL context to create buffer objects. </p>
 
 <p class="definition">Definition at line <a class="el" href="text_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="text_8cpp_source.xhtml">text.cpp</a>.</p>
@@ -242,7 +253,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Draw a formatted string at the specified position.</p>
+
+<p>Draw a formatted string at the specified position. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">position</td><td>where the text should be displayed. </td></tr>
@@ -252,8 +264,8 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="text_8cpp_source.xhtml#l00087">87</a> of file <a class="el" href="text_8cpp_source.xhtml">text.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                                                       {</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::string text;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    va_list vl;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    va_start(vl, format);</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa">util::vsformat</a>(format, vl, text);</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    va_end(vl);</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf">draw</a>(position.x, position.y, text);</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_text_renderer_xhtml_ad4f6173d90b1ecf5a918908172f44fbf"><div class="ttname"><a href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf">openage::renderer::TextRenderer::draw</a></div><div class="ttdeci">void draw(coord::viewport position, const char *format,...)</div><div class="ttdef"><b>Definition:</b> <a href="text_8cpp_source.xhtml#l00087">text.cpp:87</a></div></div>
-<div class="ttc" id="namespaceopenage_1_1util_xhtml_a042594ac67e652c429fba1eeb1bec6fa"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa">openage::util::vsformat</a></div><div class="ttdeci">size_t vsformat(const char *fmt, va_list ap, std::string &amp;output)</div><div class="ttdef"><b>Definition:</b> <a href="strings_8cpp_source.xhtml#l00032">strings.cpp:32</a></div></div>
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                                                       {</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::string text;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    va_list vl;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    va_start(vl, format);</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa">util::vsformat</a>(format, vl, text);</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    va_end(vl);</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf">draw</a>(position.x, position.y, text);</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_text_renderer_xhtml_ad4f6173d90b1ecf5a918908172f44fbf"><div class="ttname"><a href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf">openage::renderer::TextRenderer::draw</a></div><div class="ttdeci">void draw(coord::viewport position, const char *format,...)</div><div class="ttdoc">Draw a formatted string at the specified position.</div><div class="ttdef"><b>Definition:</b> <a href="text_8cpp_source.xhtml#l00087">text.cpp:87</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_a042594ac67e652c429fba1eeb1bec6fa"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa">openage::util::vsformat</a></div><div class="ttdeci">size_t vsformat(const char *fmt, va_list ap, std::string &amp;output)</div><div class="ttdoc">printf-style valist-to-string formatting; the result is appended to output.</div><div class="ttdef"><b>Definition:</b> <a href="strings_8cpp_source.xhtml#l00032">strings.cpp:32</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="strings_8cpp_source.xhtml#l00032">openage::util::vsformat()</a>.</p>
 
@@ -263,14 +275,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_ad4f6173d90b1ecf5a918908172f44fbf_cgraph.svg" width="346" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_ad4f6173d90b1ecf5a918908172f44fbf_cgraph.svg" width="346" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_ad4f6173d90b1ecf5a918908172f44fbf_icgraph.svg" width="328" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_ad4f6173d90b1ecf5a918908172f44fbf_icgraph.svg" width="328" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -300,7 +314,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Draw text at the specified position.</p>
+
+<p>Draw text at the specified position. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">position</td><td>where the text should be displayed. </td></tr>
@@ -310,7 +325,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="text_8cpp_source.xhtml#l00097">97</a> of file <a class="el" href="text_8cpp_source.xhtml">text.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                                                     {</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf">draw</a>(position.x, position.y, text);</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_text_renderer_xhtml_ad4f6173d90b1ecf5a918908172f44fbf"><div class="ttname"><a href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf">openage::renderer::TextRenderer::draw</a></div><div class="ttdeci">void draw(coord::viewport position, const char *format,...)</div><div class="ttdef"><b>Definition:</b> <a href="text_8cpp_source.xhtml#l00087">text.cpp:87</a></div></div>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                                                     {</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf">draw</a>(position.x, position.y, text);</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_text_renderer_xhtml_ad4f6173d90b1ecf5a918908172f44fbf"><div class="ttname"><a href="classopenage_1_1renderer_1_1_text_renderer.xhtml#ad4f6173d90b1ecf5a918908172f44fbf">openage::renderer::TextRenderer::draw</a></div><div class="ttdeci">void draw(coord::viewport position, const char *format,...)</div><div class="ttdoc">Draw a formatted string at the specified position.</div><div class="ttdef"><b>Definition:</b> <a href="text_8cpp_source.xhtml#l00087">text.cpp:87</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="text_8cpp_source.xhtml#l00087">draw()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -318,7 +333,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_a021938d1c8fb338a055a3a01d7f06214_cgraph.svg" width="528" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_a021938d1c8fb338a055a3a01d7f06214_cgraph.svg" width="528" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -354,7 +370,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Draw text at the specified position.</p>
+
+<p>Draw text at the specified position. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>the position in x-direction. </td></tr>
@@ -388,6 +405,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Render all the text draw requests made during the frame. </p>
 
 <p class="definition">Definition at line <a class="el" href="text_8cpp_source.xhtml#l00110">110</a> of file <a class="el" href="text_8cpp_source.xhtml">text.cpp</a>.</p>
@@ -396,7 +414,7 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="classopenage_1_1renderer_1_1_text_renderer_xhtml_aadc2e04e192e80822188952d141a9a35"><div class="ttname"><a href="classopenage_1_1renderer_1_1_text_renderer.xhtml#aadc2e04e192e80822188952d141a9a35">openage::renderer::TextRenderer::glyph_atlas</a></div><div class="ttdeci">GlyphAtlas glyph_atlas</div><div class="ttdef"><b>Definition:</b> <a href="text_8h_source.xhtml#l00114">text.h:114</a></div></div>
 <div class="ttc" id="classopenage_1_1renderer_1_1_text_renderer_xhtml_a6f0c64a89c8443226eaae7c86258a0e0"><div class="ttname"><a href="classopenage_1_1renderer_1_1_text_renderer.xhtml#a6f0c64a89c8443226eaae7c86258a0e0">openage::renderer::TextRenderer::ibo</a></div><div class="ttdeci">GLuint ibo</div><div class="ttdef"><b>Definition:</b> <a href="text_8h_source.xhtml#l00117">text.h:117</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
-<div class="ttc" id="classopenage_1_1renderer_1_1_glyph_atlas_xhtml_ae5ac0cf0b966e3636c0f9a950e3f1870"><div class="ttname"><a href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870">openage::renderer::GlyphAtlas::get</a></div><div class="ttdeci">GlyphAtlas::Entry get(Font *font, codepoint_t codepoint)</div><div class="ttdef"><b>Definition:</b> <a href="glyph__atlas_8cpp_source.xhtml#l00081">glyph_atlas.cpp:81</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_glyph_atlas_xhtml_ae5ac0cf0b966e3636c0f9a950e3f1870"><div class="ttname"><a href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870">openage::renderer::GlyphAtlas::get</a></div><div class="ttdeci">GlyphAtlas::Entry get(Font *font, codepoint_t codepoint)</div><div class="ttdoc">Retrieves the atlas entry for a specified font and glyph.</div><div class="ttdef"><b>Definition:</b> <a href="glyph__atlas_8cpp_source.xhtml#l00081">glyph_atlas.cpp:81</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1renderer_xhtml_ad1ef0d75510a667bb392b7f7f464b435"><div class="ttname"><a href="namespaceopenage_1_1renderer.xhtml#ad1ef0d75510a667bb392b7f7f464b435">openage::renderer::codepoint_t</a></div><div class="ttdeci">unsigned int codepoint_t</div><div class="ttdef"><b>Definition:</b> <a href="font_8h_source.xhtml#l00021">font.h:21</a></div></div>
 <div class="ttc" id="classopenage_1_1renderer_1_1_glyph_xhtml_a94e2543084eb7e2ac8fe13e4d015f7c8"><div class="ttname"><a href="classopenage_1_1renderer_1_1_glyph.xhtml#a94e2543084eb7e2ac8fe13e4d015f7c8">openage::renderer::Glyph::x_offset</a></div><div class="ttdeci">int x_offset</div><div class="ttdoc">Horizontal distance from origin (current pen position) to glyph's leftmost boundary.</div><div class="ttdef"><b>Definition:</b> <a href="font_8h_source.xhtml#l00029">font.h:29</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1texturefont__shader_xhtml_a9783220dab674cce458e30335942571e"><div class="ttname"><a href="namespaceopenage_1_1texturefont__shader.xhtml#a9783220dab674cce458e30335942571e">openage::texturefont_shader::tex_coord</a></div><div class="ttdeci">GLint tex_coord</div><div class="ttdef"><b>Definition:</b> <a href="text_8cpp_source.xhtml#l00016">text.cpp:16</a></div></div>
@@ -404,7 +422,7 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_xhtml_a06efbd8aa9ee41a146ec356bfdf35738"><div class="ttname"><a href="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry.xhtml#a06efbd8aa9ee41a146ec356bfdf35738">openage::renderer::GlyphAtlas::Entry::glyph</a></div><div class="ttdeci">Glyph glyph</div><div class="ttdoc">The Glyph.</div><div class="ttdef"><b>Definition:</b> <a href="glyph__atlas_8h_source.xhtml#l00034">glyph_atlas.h:34</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1texturefont__shader_xhtml_a82374b732aa3c4123fee88dc25508564"><div class="ttname"><a href="namespaceopenage_1_1texturefont__shader.xhtml#a82374b732aa3c4123fee88dc25508564">openage::texturefont_shader::color</a></div><div class="ttdeci">GLint color</div><div class="ttdef"><b>Definition:</b> <a href="text_8cpp_source.xhtml#l00016">text.cpp:16</a></div></div>
 <div class="ttc" id="namespaceopenage_1_1renderer_1_1tests_xhtml_aa4bbd5ddb9f2591224c8b05fff9d945c"><div class="ttname"><a href="namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c">openage::renderer::tests::font</a></div><div class="ttdeci">void font()</div><div class="ttdef"><b>Definition:</b> <a href="renderer_2font_2tests_8cpp_source.xhtml#l00059">tests.cpp:59</a></div></div>
-<div class="ttc" id="classopenage_1_1renderer_1_1_glyph_atlas_xhtml_ae2dd04418a0db610c8c007993ecfdd22"><div class="ttname"><a href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae2dd04418a0db610c8c007993ecfdd22">openage::renderer::GlyphAtlas::bind</a></div><div class="ttdeci">void bind(int unit=0)</div><div class="ttdef"><b>Definition:</b> <a href="glyph__atlas_8cpp_source.xhtml#l00066">glyph_atlas.cpp:66</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_glyph_atlas_xhtml_ae2dd04418a0db610c8c007993ecfdd22"><div class="ttname"><a href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae2dd04418a0db610c8c007993ecfdd22">openage::renderer::GlyphAtlas::bind</a></div><div class="ttdeci">void bind(int unit=0)</div><div class="ttdoc">Binds the OpenGL texture of this glyph atlas at the specified unit.</div><div class="ttdef"><b>Definition:</b> <a href="glyph__atlas_8cpp_source.xhtml#l00066">glyph_atlas.cpp:66</a></div></div>
 <div class="ttc" id="classopenage_1_1renderer_1_1_text_renderer_xhtml_a5d95de38db15ee1396952d2b951ce6e0"><div class="ttname"><a href="classopenage_1_1renderer_1_1_text_renderer.xhtml#a5d95de38db15ee1396952d2b951ce6e0">openage::renderer::TextRenderer::render_batches</a></div><div class="ttdeci">std::vector&lt; text_render_batch &gt; render_batches</div><div class="ttdef"><b>Definition:</b> <a href="text_8h_source.xhtml#l00112">text.h:112</a></div></div>
 <div class="ttc" id="classopenage_1_1renderer_1_1_text_renderer_xhtml_adb2415c3914c1ef7328c733021660b77"><div class="ttname"><a href="classopenage_1_1renderer_1_1_text_renderer.xhtml#adb2415c3914c1ef7328c733021660b77">openage::renderer::TextRenderer::vbo</a></div><div class="ttdeci">GLuint vbo</div><div class="ttdef"><b>Definition:</b> <a href="text_8h_source.xhtml#l00116">text.h:116</a></div></div>
 </div><!-- fragment -->
@@ -414,7 +432,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_ad5f8238ffefc1fcf24366c34141b710e_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_ad5f8238ffefc1fcf24366c34141b710e_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -434,7 +453,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set the color to be used for the future text draw calls.</p>
+
+<p>Set the color to be used for the future text draw calls. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">color</td><td>the color to be used. </td></tr>
@@ -466,7 +486,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set the font to be used for the future text draw calls.</p>
+
+<p>Set the font to be used for the future text draw calls. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">font</td><td>the font to be used. </td></tr>
@@ -487,14 +508,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_aa13c06f0e7bc0b5f09f8adcd399f6676_cgraph.svg" width="532" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_aa13c06f0e7bc0b5f09f8adcd399f6676_cgraph.svg" width="532" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_aa13c06f0e7bc0b5f09f8adcd399f6676_icgraph.svg" width="598" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_text_renderer_aa13c06f0e7bc0b5f09f8adcd399f6676_icgraph.svg" width="598" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

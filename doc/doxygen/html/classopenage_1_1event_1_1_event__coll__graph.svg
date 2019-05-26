@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <polygon fill="white" stroke="none" points="-4,4 -4,-1092 413.5,-1092 413.5,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="The actual one event that may be called &#45; it is used to manage the event itself.">
 <polygon fill="#bfbfbf" stroke="black" points="135,-0.5 135,-178.5 247,-178.5 247,-0.5 135,-0.5"/>
 <text text-anchor="middle" x="191" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::Event</text>
 <polyline fill="none" stroke="black" points="135,-159.5 247,-159.5 "/>
@@ -98,7 +98,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_class_1_1param__map.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1event_1_1_event_class_1_1param__map.xhtml" target="_top" xlink:title="Storage for parameters for an event class.">
 <polygon fill="white" stroke="black" points="122.5,-347.5 122.5,-481.5 259.5,-481.5 259.5,-347.5 122.5,-347.5"/>
 <text text-anchor="start" x="130.5" y="-469.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::EventClass</text>
 <text text-anchor="middle" x="191" y="-458.5" font-family="Helvetica,sans-Serif" font-size="10.00">::param_map</text>
@@ -169,7 +169,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node6 -->
 <g id="node5" class="node"><title>Node6</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml" target="_top" xlink:title="Fixed&#45;point integer class;.">
 <polygon fill="white" stroke="black" points="274.5,-639.5 274.5,-982.5 409.5,-982.5 409.5,-639.5 274.5,-639.5"/>
 <text text-anchor="start" x="282.5" y="-970.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="342" y="-959.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int_type, fractional_bits &gt;</text>

@@ -40,9 +40,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>hasher for score_category </para>
     </briefdescription>
     <detaileddescription>
-<para>hasher for score_category <xrefsect id="todo_1_todo000020"><xreftitle>Todo</xreftitle><xrefdescription><para>decide if needed, not used at the moment </para>
+<para><xrefsect id="todo_1_todo000020"><xreftitle>Todo</xreftitle><xrefdescription><para>decide if needed, not used at the moment </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <collaborationgraph>

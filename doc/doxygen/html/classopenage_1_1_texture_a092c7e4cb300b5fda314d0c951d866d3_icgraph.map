@@ -1,4 +1,4 @@
 <map id="openage::Texture::get_subtexture_coordinates" name="openage::Texture::get_subtexture_coordinates">
-<area shape="rect" id="node1" title=" " alt="" coords="211,5,375,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#a6b4128fc6fd1856fbfc6ece4165fd505" title=" " alt="" coords="5,13,163,39"/>
+<area shape="rect" id="node1" title="get atlas subtexture coordinates." alt="" coords="211,5,375,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#a6b4128fc6fd1856fbfc6ece4165fd505" title="Draws the texture at window coordinates." alt="" coords="5,13,163,39"/>
 </map>

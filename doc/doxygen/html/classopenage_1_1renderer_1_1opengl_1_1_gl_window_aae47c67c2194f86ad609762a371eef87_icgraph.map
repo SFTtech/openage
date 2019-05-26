@@ -1,5 +1,5 @@
 <map id="openage::renderer::opengl::GlWindow::update" name="openage::renderer::opengl::GlWindow::update">
-<area shape="rect" id="node1" title=" " alt="" coords="405,5,580,47"/>
+<area shape="rect" id="node1" title="Polls for window events, calls callbacks for these events, swaps front and back framebuffers to prese..." alt="" coords="405,5,580,47"/>
 <area shape="rect" id="node2" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#a6f980e5dd40ec0b730e586e2484233d2" title=" " alt="" coords="199,5,357,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#ac2256044717a0f7f7aafbb1f2be3a1eb" title=" " alt="" coords="5,5,151,47"/>
 </map>

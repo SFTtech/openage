@@ -1,4 +1,4 @@
 <map id="openage::event::tests::TestEventClassTwo" name="openage::event::tests::TestEventClassTwo">
 <area shape="rect" id="node1" title=" " alt="" coords="19,219,175,355"/>
-<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_class.xhtml" title=" " alt="" coords="5,5,188,171"/>
+<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_class.xhtml" title="A eventclass has to be implemented for every type of event that exists." alt="" coords="5,5,188,171"/>
 </map>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 314,-35 314,4 -4,4"/>
 <!-- Node7 -->
 <g id="node1" class="node"><title>Node7</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Changes the max capacity given by civ bonuses.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-30.5 137,-30.5 137,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="68.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_capacity_max</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node8 -->
 <g id="node2" class="node"><title>Node8</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_population_tracker.xhtml#ab62d8be3291c0fd95366875b7bf64d60" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_population_tracker.xhtml#ab62d8be3291c0fd95366875b7bf64d60" target="_top" xlink:title="Calculates the capacity values based on the limits.">
 <polygon fill="white" stroke="black" points="173,-0.5 173,-30.5 310,-30.5 310,-0.5 173,-0.5"/>
 <text text-anchor="start" x="181" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::PopulationTracker</text>
 <text text-anchor="middle" x="241.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::update_capacity</text>

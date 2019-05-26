@@ -1,23 +1,23 @@
 <map id="openage::audio::AudioManager::add_sound" name="openage::audio::AudioManager::add_sound">
 <area shape="rect" id="node1" title=" " alt="" coords="1067,496,1268,537"/>
-<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_sound.xhtml#a7e4854e55386f2498a332eed36e374d4" title=" " alt="" coords="864,463,1019,504"/>
-<area shape="rect" id="node21" href="$classopenage_1_1audio_1_1_sound.xhtml#a976abde72ad8a2328ef5d723d0fd7e75" title=" " alt="" coords="864,528,1019,569"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_sound.xhtml#a7e4854e55386f2498a332eed36e374d4" title="Resets the sound to it&#39;s beginning and starts playing it." alt="" coords="864,463,1019,504"/>
+<area shape="rect" id="node21" href="$classopenage_1_1audio_1_1_sound.xhtml#a976abde72ad8a2328ef5d723d0fd7e75" title="Resumes the sound at it&#39;s current playing offset." alt="" coords="864,528,1019,569"/>
 <area shape="rect" id="node3" href="$classopenage_1_1_sound.xhtml#a526acd600cd69f6f421a253fc169398b" title=" " alt="" coords="668,470,816,497"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" title=" " alt="" coords="459,5,604,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" title=" " alt="" coords="459,71,604,112"/>
-<area shape="rect" id="node6" href="$classopenage_1_1_garrison_ability.xhtml#afbd9de019824dcf92b3b5dd4e5e1aea7" title=" " alt="" coords="449,136,613,177"/>
-<area shape="rect" id="node7" href="$classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" title=" " alt="" coords="443,201,620,243"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_train_ability.xhtml#af4ea7db282a8000eb59e8edc540d40c4" title=" " alt="" coords="460,267,603,308"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_research_ability.xhtml#a47bc3b71628ece52bceeafdae473d039" title=" " alt="" coords="446,332,617,373"/>
-<area shape="rect" id="node10" href="$classopenage_1_1_build_ability.xhtml#acf4dba9dcd9ed37efcbec8f14da3c3a2" title=" " alt="" coords="459,397,603,439"/>
-<area shape="rect" id="node11" href="$classopenage_1_1_gather_ability.xhtml#a24e201b13152f9cc654d2b69ec95940e" title=" " alt="" coords="454,463,609,504"/>
-<area shape="rect" id="node12" href="$classopenage_1_1_attack_ability.xhtml#ab607828e9d6469ea9405cfc5f1ab2735" title=" " alt="" coords="455,528,608,569"/>
-<area shape="rect" id="node13" href="$classopenage_1_1_repair_ability.xhtml#aac321a378657813f98a938df9be7256d" title=" " alt="" coords="455,593,607,635"/>
-<area shape="rect" id="node14" href="$classopenage_1_1_heal_ability.xhtml#a7da7aca0fca2b96e24874441df1a016e" title=" " alt="" coords="461,659,602,700"/>
-<area shape="rect" id="node15" href="$classopenage_1_1_patrol_ability.xhtml#ad0b338306b2825e24536dc95bf4ae3d1" title=" " alt="" coords="457,724,606,765"/>
-<area shape="rect" id="node16" href="$classopenage_1_1_convert_ability.xhtml#a3ed81fd0cceaa364654c89803c3b0e48" title=" " alt="" coords="452,789,611,831"/>
-<area shape="rect" id="node17" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title=" " alt="" coords="447,855,616,896"/>
-<area shape="rect" id="node20" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title=" " alt="" coords="443,920,620,961"/>
-<area shape="rect" id="node18" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title=" " alt="" coords="216,855,395,896"/>
-<area shape="rect" id="node19" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title=" " alt="" coords="5,855,168,896"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit_texture.xhtml#ae0fe182788f2f7b1f346abf32cbac39a" title="draw object with direction" alt="" coords="459,5,604,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_move_ability.xhtml#a1d0ebbdd7b98efa293ebc91287a6dee4" title="applies command to a given unit" alt="" coords="459,71,604,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_garrison_ability.xhtml#afbd9de019824dcf92b3b5dd4e5e1aea7" title="applies command to a given unit" alt="" coords="449,136,613,177"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_ungarrison_ability.xhtml#a6ed7fdb59dc12befd1e0be6fbdd2b387" title="applies command to a given unit" alt="" coords="443,201,620,243"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_train_ability.xhtml#af4ea7db282a8000eb59e8edc540d40c4" title="applies command to a given unit" alt="" coords="460,267,603,308"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_research_ability.xhtml#a47bc3b71628ece52bceeafdae473d039" title="applies command to a given unit" alt="" coords="446,332,617,373"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_build_ability.xhtml#acf4dba9dcd9ed37efcbec8f14da3c3a2" title="applies command to a given unit" alt="" coords="459,397,603,439"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_gather_ability.xhtml#a24e201b13152f9cc654d2b69ec95940e" title="applies command to a given unit" alt="" coords="454,463,609,504"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_attack_ability.xhtml#ab607828e9d6469ea9405cfc5f1ab2735" title="applies command to a given unit" alt="" coords="455,528,608,569"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_repair_ability.xhtml#aac321a378657813f98a938df9be7256d" title="applies command to a given unit" alt="" coords="455,593,607,635"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_heal_ability.xhtml#a7da7aca0fca2b96e24874441df1a016e" title="applies command to a given unit" alt="" coords="461,659,602,700"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_patrol_ability.xhtml#ad0b338306b2825e24536dc95bf4ae3d1" title="applies command to a given unit" alt="" coords="457,724,606,765"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_convert_ability.xhtml#a3ed81fd0cceaa364654c89803c3b0e48" title="applies command to a given unit" alt="" coords="452,789,611,831"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e" title="set unit in place – return if placement was successful" alt="" coords="447,855,616,896"/>
+<area shape="rect" id="node20" href="$classopenage_1_1_building_producer.xhtml#a4ed90b69cb9398ae0cc40625a1fa36d3" title="set unit in place – return if placement was successful" alt="" coords="443,920,620,961"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_movable_producer.xhtml#ace952d53d7717d9db843391f49fbf76b" title="set unit in place – return if placement was successful" alt="" coords="216,855,395,896"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b" title="set unit in place – return if placement was successful" alt="" coords="5,855,168,896"/>
 </map>

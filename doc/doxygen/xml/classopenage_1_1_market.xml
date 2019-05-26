@@ -10,9 +10,9 @@
         <argsstring></argsstring>
         <name>base_prices</name>
         <briefdescription>
+<para>Stores the base price values of each resource. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stores the base price values of each resource.</para>
 <para>The <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> is used to represent the prices instead of the amounts for each resource. </para>
         </detaileddescription>
         <inbodydescription>
@@ -56,9 +56,10 @@
           <declname>res</declname>
         </param>
         <briefdescription>
+<para>The given player sells the given resource for gold. </para>
         </briefdescription>
         <detaileddescription>
-<para>The given player sells the given resource for gold. Returns true when the transaction is successful. </para>
+<para>Returns true when the transaction is successful. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -87,9 +88,10 @@
           <declname>res</declname>
         </param>
         <briefdescription>
+<para>The given player buys the given resource with gold. </para>
         </briefdescription>
         <detaileddescription>
-<para>The given player buys the given resource with gold. Returns true when the transaction is successful. </para>
+<para>Returns true when the transaction is successful. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -114,9 +116,9 @@
           <declname>player</declname>
         </param>
         <briefdescription>
+<para>Get the selling prices for a given player. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the selling prices for a given player. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -134,9 +136,9 @@
           <declname>player</declname>
         </param>
         <briefdescription>
+<para>Get the buying prices for a given player. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the buying prices for a given player. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -160,9 +162,9 @@
           <declname>is_buy</declname>
         </param>
         <briefdescription>
+<para>The getBuyPrices and getSellPrices are redirected here. </para>
         </briefdescription>
         <detaileddescription>
-<para>The getBuyPrices and getSellPrices are redirected here. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -186,9 +188,9 @@
           <declname>is_buy</declname>
         </param>
         <briefdescription>
+<para>Get the multiplier for the base prices. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the multiplier for the base prices </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -197,9 +199,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>The global market prices. </para>
     </briefdescription>
     <detaileddescription>
-<para>The global market prices.</para>
 <para>Price calculation is documented at doc/reverse_engineering/market.md#prices </para>
     </detaileddescription>
     <collaborationgraph>

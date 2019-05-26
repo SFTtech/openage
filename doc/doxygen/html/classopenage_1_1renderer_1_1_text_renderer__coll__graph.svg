@@ -109,7 +109,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="structopenage_1_1renderer_1_1font__description.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="structopenage_1_1renderer_1_1font__description.xhtml" target="_top" xlink:title="Description for a font.">
 <polygon fill="white" stroke="black" points="14,-474.5 14,-641.5 115,-641.5 115,-474.5 14,-474.5"/>
 <text text-anchor="start" x="22" y="-629.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="64.5" y="-618.5" font-family="Helvetica,sans-Serif" font-size="10.00">font_description</text>
@@ -162,7 +162,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1renderer_1_1_glyph_atlas.xhtml" target="_top" xlink:title="A glyph atlas is used to pack and manage several font glyphs in to a single OpenGL texture.">
 <polygon fill="white" stroke="black" points="266.5,-226.5 266.5,-426.5 372.5,-426.5 372.5,-226.5 266.5,-226.5"/>
 <text text-anchor="start" x="274.5" y="-414.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="319.5" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00">GlyphAtlas</text>

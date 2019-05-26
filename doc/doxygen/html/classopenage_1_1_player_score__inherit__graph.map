@@ -1,4 +1,4 @@
 <map id="openage::PlayerScore" name="openage::PlayerScore">
-<area shape="rect" id="node1" title=" " alt="" coords="15,321,165,413"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_score.xhtml" title=" " alt="" coords="5,5,175,273"/>
+<area shape="rect" id="node1" title="The score of a player." alt="" coords="15,321,165,413"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_score.xhtml" title="Keeps track of a score and all the sub&#45;scores." alt="" coords="5,5,175,273"/>
 </map>

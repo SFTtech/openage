@@ -1,5 +1,5 @@
 <map id="openage::util::Quaternion::equals_rad" name="openage::util::Quaternion::equals_rad">
-<area shape="rect" id="node1" title=" " alt="" coords="401,35,568,76"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#a2e1d1f1785181562048952f28858bea9" title=" " alt="" coords="187,5,353,47"/>
+<area shape="rect" id="node1" title="Test rotation equality with another quaternion with given precision in radians." alt="" coords="401,35,568,76"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_quaternion.xhtml#a2e1d1f1785181562048952f28858bea9" title="Test rotation equality with another quaternion with given precision in degree." alt="" coords="187,5,353,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1util_1_1tests.xhtml#ab3f1d081c603b383598beeee8e4429df" title=" " alt="" coords="5,35,139,76"/>
 </map>

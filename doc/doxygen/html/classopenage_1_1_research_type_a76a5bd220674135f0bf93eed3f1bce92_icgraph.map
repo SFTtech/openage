@@ -1,5 +1,5 @@
 <map id="openage::ResearchType::category" name="openage::ResearchType::category">
-<area shape="rect" id="node1" title=" " alt="" coords="415,5,577,47"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_research.xhtml#a51f059ce7313e37d3848481309b1dbd4" title=" " alt="" coords="224,5,367,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_research_action.xhtml#a79f88ea810c2112e5f79a4749c3ef872" title=" " alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node1" title="Gets the research category of the research." alt="" coords="415,5,577,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_research.xhtml#a51f059ce7313e37d3848481309b1dbd4" title="Apply the modifications to the owner player." alt="" coords="224,5,367,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_research_action.xhtml#a79f88ea810c2112e5f79a4749c3ef872" title="each action has its own update functionality which gets called when this is the active action" alt="" coords="5,5,176,47"/>
 </map>

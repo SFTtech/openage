@@ -11,9 +11,9 @@
       </param>
     </templateparamlist>
     <briefdescription>
+<para>this type gets specialized for each attribute </para>
     </briefdescription>
     <detaileddescription>
-<para>this type gets specialized for each attribute </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="269">

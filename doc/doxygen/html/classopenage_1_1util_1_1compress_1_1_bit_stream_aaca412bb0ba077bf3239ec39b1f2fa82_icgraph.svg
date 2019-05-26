@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 322,-46 322,4 -4,4"/>
 <!-- Node23 -->
 <g id="node1" class="node"><title>Node23</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="for use in bitstream mode.">
 <polygon fill="#bfbfbf" stroke="black" points="197,-0.5 197,-41.5 318,-41.5 318,-0.5 197,-0.5"/>
 <text text-anchor="start" x="205" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="start" x="205" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream::load_next</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node24 -->
 <g id="node2" class="node"><title>Node24</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a5a9875f4e718027a319d43a5939d9d95" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a5a9875f4e718027a319d43a5939d9d95" target="_top" xlink:title="for use in bitstream mode.">
 <polygon fill="white" stroke="black" points="0,-6 0,-36 161,-36 161,-6 0,-6"/>
 <text text-anchor="start" x="8" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="80.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream&lt; 4096 &gt;::ensure_bits</text>

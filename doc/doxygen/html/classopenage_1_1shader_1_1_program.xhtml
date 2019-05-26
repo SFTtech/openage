@@ -145,6 +145,7 @@ Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ae0fd13dc3273cf93aa6330973c478e66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1shader_1_1_program.xhtml#ae0fd13dc3273cf93aa6330973c478e66">check</a> (GLenum what_to_check)</td></tr>
+<tr class="memdesc:ae0fd13dc3273cf93aa6330973c478e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks a given status for this program.  <a href="#ae0fd13dc3273cf93aa6330973c478e66">More...</a><br /></td></tr>
 <tr class="separator:ae0fd13dc3273cf93aa6330973c478e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8e92cd237c6a29f495f7b80fd3d3337"><td class="memItemLeft" align="right" valign="top">GLint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenage_1_1shader_1_1_program.xhtml#ac8e92cd237c6a29f495f7b80fd3d3337">get_info</a> (GLenum pname)</td></tr>
 <tr class="separator:ac8e92cd237c6a29f495f7b80fd3d3337"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -291,7 +292,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>checks a given status for this program.</p>
+
+<p>checks a given status for this program. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">what_to_check</td><td>GL_LINK_STATUS GL_VALIDATE_STATUS GL_COMPILE_STATUS </td></tr>
@@ -311,14 +313,16 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1shader_1_1_program_ae0fd13dc3273cf93aa6330973c478e66_cgraph.svg" width="344" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1shader_1_1_program_ae0fd13dc3273cf93aa6330973c478e66_cgraph.svg" width="344" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1shader_1_1_program_ae0fd13dc3273cf93aa6330973c478e66_icgraph.svg" width="408" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1shader_1_1_program_ae0fd13dc3273cf93aa6330973c478e66_icgraph.svg" width="408" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -504,7 +508,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                   {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    glLinkProgram(this-&gt;<span class="keywordtype">id</span>);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1shader_1_1_program.xhtml#ae0fd13dc3273cf93aa6330973c478e66">check</a>(GL_LINK_STATUS);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    glValidateProgram(this-&gt;<span class="keywordtype">id</span>);</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1shader_1_1_program.xhtml#ae0fd13dc3273cf93aa6330973c478e66">check</a>(GL_VALIDATE_STATUS);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1shader_1_1_program.xhtml#a1c199fb97b3c0a139ed8d8950731823e">is_linked</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1shader_1_1_program.xhtml#a922c3cba1c006ebbed9cf81261ed79bf">post_link_hook</a>();</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1shader_1_1_program.xhtml#ae407c99119d5d6a7e726b57b33ab56c9">vert</a> != <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        glDetachShader(this-&gt;<span class="keywordtype">id</span>, this-&gt;<a class="code" href="classopenage_1_1shader_1_1_program.xhtml#ae407c99119d5d6a7e726b57b33ab56c9">vert</a>-&gt;<a class="code" href="classopenage_1_1shader_1_1_shader.xhtml#a63d479d4533ccab5ee9df02cb515a000">id</a>);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1shader_1_1_program.xhtml#a24b22da95e0ca9ace143180d39a19b91">frag</a> != <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        glDetachShader(this-&gt;<span class="keywordtype">id</span>, this-&gt;<a class="code" href="classopenage_1_1shader_1_1_program.xhtml#a24b22da95e0ca9ace143180d39a19b91">frag</a>-&gt;<a class="code" href="classopenage_1_1shader_1_1_shader.xhtml#a63d479d4533ccab5ee9df02cb515a000">id</a>);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1shader_1_1_program.xhtml#a2b7a73602a65071c281ae7299addcfbc">geom</a> != <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        glDetachShader(this-&gt;<span class="keywordtype">id</span>, this-&gt;<a class="code" href="classopenage_1_1shader_1_1_program.xhtml#a2b7a73602a65071c281ae7299addcfbc">geom</a>-&gt;<a class="code" href="classopenage_1_1shader_1_1_shader.xhtml#a63d479d4533ccab5ee9df02cb515a000">id</a>);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div><div class="ttc" id="classopenage_1_1shader_1_1_program_xhtml_a2b7a73602a65071c281ae7299addcfbc"><div class="ttname"><a href="classopenage_1_1shader_1_1_program.xhtml#a2b7a73602a65071c281ae7299addcfbc">openage::shader::Program::geom</a></div><div class="ttdeci">Shader * geom</div><div class="ttdef"><b>Definition:</b> <a href="program_8h_source.xhtml#l00037">program.h:37</a></div></div>
 <div class="ttc" id="classopenage_1_1shader_1_1_program_xhtml_ae407c99119d5d6a7e726b57b33ab56c9"><div class="ttname"><a href="classopenage_1_1shader_1_1_program.xhtml#ae407c99119d5d6a7e726b57b33ab56c9">openage::shader::Program::vert</a></div><div class="ttdeci">Shader * vert</div><div class="ttdef"><b>Definition:</b> <a href="program_8h_source.xhtml#l00037">program.h:37</a></div></div>
 <div class="ttc" id="classopenage_1_1shader_1_1_program_xhtml_a1c199fb97b3c0a139ed8d8950731823e"><div class="ttname"><a href="classopenage_1_1shader_1_1_program.xhtml#a1c199fb97b3c0a139ed8d8950731823e">openage::shader::Program::is_linked</a></div><div class="ttdeci">bool is_linked</div><div class="ttdef"><b>Definition:</b> <a href="program_8h_source.xhtml#l00036">program.h:36</a></div></div>
-<div class="ttc" id="classopenage_1_1shader_1_1_program_xhtml_ae0fd13dc3273cf93aa6330973c478e66"><div class="ttname"><a href="classopenage_1_1shader_1_1_program.xhtml#ae0fd13dc3273cf93aa6330973c478e66">openage::shader::Program::check</a></div><div class="ttdeci">void check(GLenum what_to_check)</div><div class="ttdef"><b>Definition:</b> <a href="program_8cpp_source.xhtml#l00072">program.cpp:72</a></div></div>
+<div class="ttc" id="classopenage_1_1shader_1_1_program_xhtml_ae0fd13dc3273cf93aa6330973c478e66"><div class="ttname"><a href="classopenage_1_1shader_1_1_program.xhtml#ae0fd13dc3273cf93aa6330973c478e66">openage::shader::Program::check</a></div><div class="ttdeci">void check(GLenum what_to_check)</div><div class="ttdoc">checks a given status for this program.</div><div class="ttdef"><b>Definition:</b> <a href="program_8cpp_source.xhtml#l00072">program.cpp:72</a></div></div>
 <div class="ttc" id="classopenage_1_1shader_1_1_program_xhtml_a922c3cba1c006ebbed9cf81261ed79bf"><div class="ttname"><a href="classopenage_1_1shader_1_1_program.xhtml#a922c3cba1c006ebbed9cf81261ed79bf">openage::shader::Program::post_link_hook</a></div><div class="ttdeci">void post_link_hook()</div><div class="ttdef"><b>Definition:</b> <a href="program_8cpp_source.xhtml#l00172">program.cpp:172</a></div></div>
 <div class="ttc" id="classopenage_1_1shader_1_1_shader_xhtml_a63d479d4533ccab5ee9df02cb515a000"><div class="ttname"><a href="classopenage_1_1shader_1_1_shader.xhtml#a63d479d4533ccab5ee9df02cb515a000">openage::shader::Shader::id</a></div><div class="ttdeci">GLuint id</div><div class="ttdef"><b>Definition:</b> <a href="shader_2shader_8h_source.xhtml#l00019">shader.h:19</a></div></div>
 <div class="ttc" id="classopenage_1_1shader_1_1_program_xhtml_a24b22da95e0ca9ace143180d39a19b91"><div class="ttname"><a href="classopenage_1_1shader_1_1_program.xhtml#a24b22da95e0ca9ace143180d39a19b91">openage::shader::Program::frag</a></div><div class="ttdeci">Shader * frag</div><div class="ttdef"><b>Definition:</b> <a href="program_8h_source.xhtml#l00037">program.h:37</a></div></div>
@@ -515,7 +519,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1shader_1_1_program_aa1776f13c5e6a6de8b21ecabee9962dc_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1shader_1_1_program_aa1776f13c5e6a6de8b21ecabee9962dc_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -634,7 +639,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1shader_1_1_program_abfd70a48ce216cf044f558328f8dfa4e_icgraph.svg" width="391" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1shader_1_1_program_abfd70a48ce216cf044f558328f8dfa4e_icgraph.svg" width="391" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -662,7 +668,8 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1shader_1_1_program_ab36b7c92db2a3e3ce76b79e0451b6978_icgraph.svg" width="420" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1shader_1_1_program_ab36b7c92db2a3e3ce76b79e0451b6978_icgraph.svg" width="420" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

@@ -1,5 +1,5 @@
 <map id="openage::GameSpec::get_graphic_data" name="openage::GameSpec::get_graphic_data">
-<area shape="rect" id="node1" title=" " alt="" coords="199,39,351,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" title=" " alt="" coords="5,5,151,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_unit_texture.xhtml#a1ebf9eb4f473f2980165d1fc8205aa55" title=" " alt="" coords="5,71,151,112"/>
+<area shape="rect" id="node1" title="gamedata for a graphic nyan will have to replace this somehow" alt="" coords="199,39,351,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_texture.xhtml#a74f56948004978ef96508c6486b34430" title="initialise graphic data" alt="" coords="5,5,151,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit_texture.xhtml#a1ebf9eb4f473f2980165d1fc8205aa55" title="Delta option specifies whether the delta graphics are included." alt="" coords="5,71,151,112"/>
 </map>

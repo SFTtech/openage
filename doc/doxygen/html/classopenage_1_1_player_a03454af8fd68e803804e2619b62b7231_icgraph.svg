@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 285,-35 285,4 -4,4"/>
 <!-- Node149 -->
 <g id="node1" class="node"><title>Node149</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Get the number of units the player has for each unit type id.">
 <polygon fill="#bfbfbf" stroke="black" points="174,-0.5 174,-30.5 281,-30.5 281,-0.5 174,-0.5"/>
 <text text-anchor="start" x="182" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::get</text>
 <text text-anchor="middle" x="227.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_units_have</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node150 -->
 <g id="node2" class="node"><title>Node150</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_player.xhtml#a4909a76cf5b65e544b1a62dc21147d77" target="_top" xlink:title="Check if the player can make a new unit of the given type.">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 138,-25 138,-6 0,-6"/>
 <text text-anchor="middle" x="69" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Player::can_make</text>
 </a>

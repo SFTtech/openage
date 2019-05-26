@@ -23,9 +23,9 @@
           <defname>time</defname>
         </param>
         <briefdescription>
+<para>will interpolate between the keyframes linearly based on the time. </para>
         </briefdescription>
         <detaileddescription>
-<para>will interpolate between the keyframes linearly based on the time. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -36,9 +36,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para><ref refid="classopenage_1_1curve_1_1_continuous" kindref="compound">Continuous</ref> Datatype. </para>
     </briefdescription>
     <detaileddescription>
-<para><ref refid="classopenage_1_1curve_1_1_continuous" kindref="compound">Continuous</ref> Datatype. Stores a value container with continuous access. The bound template type T has to implement <computeroutput>operator+(T)</computeroutput> and <computeroutput>operator*(time_t)</computeroutput>. </para>
+<para>Stores a value container with continuous access. The bound template type T has to implement <computeroutput>operator+(T)</computeroutput> and <computeroutput>operator*(time_t)</computeroutput>. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1845">

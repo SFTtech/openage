@@ -62,7 +62,7 @@
 </g>
 <!-- Node110 -->
 <g id="node4" class="node"><title>Node110</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" target="_top" xlink:title="modulo operation that guarantees to return positive values.">
 <polygon fill="white" stroke="black" points="358.5,-93.5 358.5,-112.5 455.5,-112.5 455.5,-93.5 358.5,-93.5"/>
 <text text-anchor="middle" x="407" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::mod</text>
 </a>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node112 -->
 <g id="node6" class="node"><title>Node112</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" target="_top" xlink:title="render text with the at a position with specified font size">
 <polygon fill="white" stroke="black" points="335,-44.5 335,-63.5 479,-63.5 479,-44.5 335,-44.5"/>
 <text text-anchor="middle" x="407" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::render_text</text>
 </a>
@@ -115,7 +115,7 @@
 </g>
 <!-- Node116 -->
 <g id="node10" class="node"><title>Node116</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="515,-0.5 515,-19.5 629,-19.5 629,-0.5 515,-0.5"/>
 <text text-anchor="middle" x="572" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>

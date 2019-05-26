@@ -122,7 +122,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node42 -->
 <g id="node6" class="node"><title>Node42</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" target="_top" xlink:title="Returns the dimensions of the whole texture bitmap.">
 <polygon fill="white" stroke="black" points="200,-540 200,-581 323,-581 323,-540 200,-540"/>
 <text text-anchor="start" x="208" y="-569" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="208" y="-558" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>

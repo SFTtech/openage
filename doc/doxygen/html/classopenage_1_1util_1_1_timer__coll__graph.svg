@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-161 106,-161 106,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Time measurement class.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-156.5 102,-156.5 102,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="51" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
 <polyline fill="none" stroke="black" points="0,-137.5 102,-137.5 "/>

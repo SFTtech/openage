@@ -1,7 +1,7 @@
 <map id="openage::console::Buf" name="openage::console::Buf">
 <area shape="rect" id="node1" title=" " alt="" coords="304,433,467,819"/>
-<area shape="rect" id="node2" href="$structopenage_1_1console_1_1buf__char.xhtml" title=" " alt="" coords="5,147,187,312"/>
-<area shape="rect" id="node3" href="$structopenage_1_1console_1_1buf__line.xhtml" title=" " alt="" coords="211,191,387,268"/>
+<area shape="rect" id="node2" href="$structopenage_1_1console_1_1buf__char.xhtml" title="a single character in the buffer" alt="" coords="5,147,187,312"/>
+<area shape="rect" id="node3" href="$structopenage_1_1console_1_1buf__line.xhtml" title="metadata for a single line in the buffer" alt="" coords="211,191,387,268"/>
 <area shape="rect" id="node4" href="$classopenage_1_1util_1_1utf8__decoder.xhtml" title=" " alt="" coords="411,161,536,297"/>
 <area shape="rect" id="node5" href="$structopenage_1_1coord_1_1term.xhtml" title=" " alt="" coords="561,191,706,268"/>
 <area shape="rect" id="node6" title=" " alt="" coords="553,5,714,97"/>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 140,-46 140,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="classopenage_1_1datastructure_1_1_pairing_heap.xhtml" target="_top" xlink:title="(Quite) efficient heap implementation.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-41.5 136,-41.5 136,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PairingHeap&lt; T, compare,</text>

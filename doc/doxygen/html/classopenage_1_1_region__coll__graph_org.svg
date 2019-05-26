@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-460 117,-460 117,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="A region is a set of tiles around a starting point, including functions to create child regions.">
 <polygon fill="#bfbfbf" stroke="black" points="12,-0.5 12,-167.5 101,-167.5 101,-0.5 12,-0.5"/>
 <text text-anchor="middle" x="56.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Region</text>
 <polyline fill="none" stroke="black" points="12,-148.5 101,-148.5 "/>

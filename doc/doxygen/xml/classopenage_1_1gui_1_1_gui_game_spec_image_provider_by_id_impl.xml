@@ -84,9 +84,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Base for providers that expose textures to the Qt by their id. </para>
     </briefdescription>
     <detaileddescription>
-<para>Base for providers that expose textures to the Qt by their id.</para>
 <para>Numeric id has a form of &lt;texture-id&gt;.&lt;subid&gt;. </para>
     </detaileddescription>
     <inheritancegraph>

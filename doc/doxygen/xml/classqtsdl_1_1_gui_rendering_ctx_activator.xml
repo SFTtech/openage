@@ -126,9 +126,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Prepares the context for rendering the GUI for one frame. </para>
     </briefdescription>
     <detaileddescription>
-<para>Prepares the context for rendering the GUI for one frame. Activator must be destroyed as soon as the GUI has executed its frame render call. </para>
+<para>Activator must be destroyed as soon as the GUI has executed its frame render call. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6470">

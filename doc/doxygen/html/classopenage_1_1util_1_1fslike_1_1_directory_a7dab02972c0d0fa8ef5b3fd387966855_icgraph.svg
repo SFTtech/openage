@@ -57,7 +57,7 @@ var sectionId = 'dynsection-20';
 <polygon fill="white" stroke="none" points="-4,4 -4,-1545 797,-1545 797,4 -4,4"/>
 <!-- Node87 -->
 <g id="node1" class="node"><title>Node87</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="resolve the path to an actually usable one.">
 <polygon fill="#bfbfbf" stroke="black" points="692,-710.5 692,-740.5 793,-740.5 793,-710.5 692,-710.5"/>
 <text text-anchor="start" x="700" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::fslike</text>
 <text text-anchor="middle" x="742.5" y="-717.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Directory::resolve</text>

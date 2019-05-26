@@ -1,5 +1,5 @@
 <map id="openage::Player::is_unit_pending" name="openage::Player::is_unit_pending">
 <area shape="rect" id="node1" title=" " alt="" coords="211,39,345,80"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" title=" " alt="" coords="5,5,163,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" title=" " alt="" coords="5,71,163,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_player.xhtml#a69c98ddc434aed6aceec5dbb4931f064" title="Called when a unit is created and active." alt="" coords="5,5,163,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_player.xhtml#ad3f9e5b486a9d6b07402596e3eabca82" title="Called when a unit is destroyed." alt="" coords="5,71,163,112"/>
 </map>

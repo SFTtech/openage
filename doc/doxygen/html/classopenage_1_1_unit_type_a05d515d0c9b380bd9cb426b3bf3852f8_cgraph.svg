@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 248,-84 248,4 -4,4"/>
 <!-- Node77 -->
 <g id="node1" class="node"><title>Node77</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Initialize units shared attributes only to this type spec.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-24.5 0,-54.5 104,-54.5 104,-24.5 0,-24.5"/>
 <text text-anchor="start" x="8" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="52" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">reinitialise</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node78 -->
 <g id="node2" class="node"><title>Node78</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_attributes.xhtml#ae8924d1ae2fafd0c13418ab238848afb" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_attributes.xhtml#ae8924d1ae2fafd0c13418ab238848afb" target="_top" xlink:title="Add copies of all the attributes from the given Attributes.">
 <polygon fill="white" stroke="black" points="141.5,-49.5 141.5,-79.5 242.5,-79.5 242.5,-49.5 141.5,-49.5"/>
 <text text-anchor="start" x="149.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attributes</text>
 <text text-anchor="middle" x="192" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_copies</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node79 -->
 <g id="node3" class="node"><title>Node79</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_unit_type.xhtml#a810c763e421cd95a9c64ab4c3e351140" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_unit_type.xhtml#a810c763e421cd95a9c64ab4c3e351140" target="_top" xlink:title="Initialize units attributes to this type spec.">
 <polygon fill="white" stroke="black" points="140,-0.5 140,-30.5 244,-30.5 244,-0.5 140,-0.5"/>
 <text text-anchor="start" x="148" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType::</text>
 <text text-anchor="middle" x="192" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialise</text>

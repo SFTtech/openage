@@ -20,7 +20,7 @@
 </g>
 <!-- Node21 -->
 <g id="node2" class="node"><title>Node21</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_asset_manager.xhtml#afe3aaab160ddd411afb365186d7deea4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_asset_manager.xhtml#afe3aaab160ddd411afb365186d7deea4" target="_top" xlink:title="Set the asset search path.">
 <polygon fill="white" stroke="black" points="177,-0.5 177,-30.5 299,-30.5 299,-0.5 177,-0.5"/>
 <text text-anchor="start" x="185" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="238" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_asset_dir</text>

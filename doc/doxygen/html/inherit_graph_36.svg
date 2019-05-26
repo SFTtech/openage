@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-929 473,-929 473,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="classopenage_1_1_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated attribute.">
 <polygon fill="white" stroke="black" points="0,-403 0,-422 137,-422 137,-403 0,-403"/>
 <text text-anchor="middle" x="68.5" y="-410" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AttributeContainer</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_shared_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_shared_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated shared attribute.">
 <polygon fill="white" stroke="black" points="178,-600.5 178,-630.5 305,-630.5 305,-600.5 178,-600.5"/>
 <text text-anchor="start" x="186" y="-618.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::SharedAttribute</text>
 <text text-anchor="middle" x="241.5" y="-607.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node14 -->
 <g id="node15" class="node"><title>Node14</title>
-<g id="a_node15"><a xlink:href="classopenage_1_1_unshared_attribute_container.xhtml" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="classopenage_1_1_unshared_attribute_container.xhtml" target="_top" xlink:title="Wraps a templated unshared attribute.">
 <polygon fill="white" stroke="black" points="173,-171.5 173,-201.5 310,-201.5 310,-171.5 173,-171.5"/>
 <text text-anchor="start" x="181" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnsharedAttribute</text>
 <text text-anchor="middle" x="241.5" y="-178.5" font-family="Helvetica,sans-Serif" font-size="10.00">Container</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4.xhtml" target="_top" xlink:title="The resources that are accepted to be dropped.">
 <polygon fill="white" stroke="black" points="351,-796.5 351,-826.5 464,-826.5 464,-796.5 351,-796.5"/>
 <text text-anchor="start" x="359" y="-814.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-803.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::dropsite &gt;</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4.xhtml" target="_top" xlink:title="Healing capabilities.">
 <polygon fill="white" stroke="black" points="359,-747.5 359,-777.5 456,-777.5 456,-747.5 359,-747.5"/>
 <text text-anchor="start" x="367" y="-765.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-754.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::heal &gt;</text>
@@ -103,7 +103,7 @@
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1hitpoints_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1hitpoints_01_4.xhtml" target="_top" xlink:title="The max hitpoints and health bar information.">
 <polygon fill="white" stroke="black" points="349.5,-698.5 349.5,-728.5 465.5,-728.5 465.5,-698.5 349.5,-698.5"/>
 <text text-anchor="start" x="357.5" y="-716.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-705.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::hitpoints &gt;</text>
@@ -117,7 +117,7 @@
 </g>
 <!-- Node7 -->
 <g id="node8" class="node"><title>Node7</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1multitype_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1multitype_01_4.xhtml" target="_top" xlink:title="Stores the collection of unit types based on a unit class.">
 <polygon fill="white" stroke="black" points="348,-649.5 348,-679.5 467,-679.5 467,-649.5 348,-649.5"/>
 <text text-anchor="start" x="356" y="-667.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-656.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::multitype &gt;</text>
@@ -145,7 +145,7 @@
 </g>
 <!-- Node9 -->
 <g id="node10" class="node"><title>Node9</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4.xhtml" target="_top" xlink:title="The population capacity and the population demand.">
 <polygon fill="white" stroke="black" points="346,-551.5 346,-581.5 469,-581.5 469,-551.5 346,-551.5"/>
 <text text-anchor="start" x="354" y="-569.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-558.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::population &gt;</text>
@@ -159,7 +159,7 @@
 </g>
 <!-- Node10 -->
 <g id="node11" class="node"><title>Node10</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1resource__generator_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1resource__generator_01_4.xhtml" target="_top" xlink:title="Resource generator eg.">
 <polygon fill="white" stroke="black" points="354,-491 354,-532 461,-532 461,-491 354,-491"/>
 <text text-anchor="start" x="362" y="-520" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="start" x="362" y="-509" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::resource</text>
@@ -188,7 +188,7 @@
 </g>
 <!-- Node12 -->
 <g id="node13" class="node"><title>Node12</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1storage_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1storage_01_4.xhtml" target="_top" xlink:title="The worker&#39;s capacity and gather rates.">
 <polygon fill="white" stroke="black" points="352,-392.5 352,-422.5 463,-422.5 463,-392.5 352,-392.5"/>
 <text text-anchor="start" x="360" y="-410.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-399.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::storage &gt;</text>
@@ -202,7 +202,7 @@
 </g>
 <!-- Node13 -->
 <g id="node14" class="node"><title>Node13</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4.xhtml" target="_top" xlink:title="The worker&#39;s capacity and gather rates.">
 <polygon fill="white" stroke="black" points="354,-343.5 354,-373.5 461,-373.5 461,-343.5 354,-343.5"/>
 <text text-anchor="start" x="362" y="-361.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-350.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::worker &gt;</text>
@@ -230,7 +230,7 @@
 </g>
 <!-- Node16 -->
 <g id="node17" class="node"><title>Node16</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4.xhtml" target="_top" xlink:title="The current hitpoints.">
 <polygon fill="white" stroke="black" points="348,-245.5 348,-275.5 467,-275.5 467,-245.5 348,-245.5"/>
 <text text-anchor="start" x="356" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::damaged &gt;</text>
@@ -258,7 +258,7 @@
 </g>
 <!-- Node18 -->
 <g id="node19" class="node"><title>Node18</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4.xhtml" target="_top" xlink:title="The attack stance and formation.">
 <polygon fill="white" stroke="black" points="348,-147.5 348,-177.5 467,-177.5 467,-147.5 348,-147.5"/>
 <text text-anchor="start" x="356" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::formation &gt;</text>
@@ -272,7 +272,7 @@
 </g>
 <!-- Node19 -->
 <g id="node20" class="node"><title>Node19</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4.xhtml" target="_top" xlink:title="Units put inside a building.">
 <polygon fill="white" stroke="black" points="351,-98.5 351,-128.5 464,-128.5 464,-98.5 351,-98.5"/>
 <text text-anchor="start" x="359" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::garrison &gt;</text>
@@ -300,7 +300,7 @@
 </g>
 <!-- Node21 -->
 <g id="node22" class="node"><title>Node21</title>
-<g id="a_node22"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1resource_01_4.xhtml" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="classopenage_1_1_attribute_3_01attr__type_1_1resource_01_4.xhtml" target="_top" xlink:title="Resource capacity of a trees, mines, animal, worker etc.">
 <polygon fill="white" stroke="black" points="349.5,-0.5 349.5,-30.5 465.5,-30.5 465.5,-0.5 349.5,-0.5"/>
 <text text-anchor="start" x="357.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Attribute</text>
 <text text-anchor="middle" x="407.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; attr_type::resource &gt;</text>

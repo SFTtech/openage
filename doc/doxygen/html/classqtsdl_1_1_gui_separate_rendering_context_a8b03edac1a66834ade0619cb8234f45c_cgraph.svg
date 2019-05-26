@@ -20,7 +20,7 @@
 </g>
 <!-- Node3 -->
 <g id="node2" class="node"><title>Node3</title>
-<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#ad60bc0dd243b8c3ab105f33cdd605dae" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#ad60bc0dd243b8c3ab105f33cdd605dae" target="_top" xlink:title="Function that must be called after rendering the GUI.">
 <polygon fill="white" stroke="black" points="230,-49.5 230,-79.5 371,-79.5 371,-49.5 230,-49.5"/>
 <text text-anchor="start" x="238" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSeparateRendering</text>
 <text text-anchor="middle" x="300.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">Context::post_render</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node4 -->
 <g id="node3" class="node"><title>Node4</title>
-<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a47ae13e05fbce6703f7b3329512b5a5f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a47ae13e05fbce6703f7b3329512b5a5f" target="_top" xlink:title="Function that must be called before rendering the GUI.">
 <polygon fill="white" stroke="black" points="230,-0.5 230,-30.5 371,-30.5 371,-0.5 230,-0.5"/>
 <text text-anchor="start" x="238" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSeparateRendering</text>
 <text text-anchor="middle" x="300.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Context::pre_render</text>

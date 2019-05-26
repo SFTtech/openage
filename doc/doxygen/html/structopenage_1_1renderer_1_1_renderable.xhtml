@@ -96,20 +96,26 @@ $(document).ready(function(){initNavTree('structopenage_1_1renderer_1_1_renderab
 </div><!--header-->
 <div class="contents">
 
+<p>A renderable is a set of shader uniform inputs and a possible draw call.  
+ <a href="structopenage_1_1renderer_1_1_renderable.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="renderer_8h_source.xhtml">renderer.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::Renderable:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1renderer_1_1_renderable__coll__graph.svg" width="323" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1renderer_1_1_renderable__coll__graph.svg" width="323" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a775e71a74952beb4e208fe5fb4b46668"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1renderer_1_1_uniform_input.xhtml">UniformInput</a> const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1renderer_1_1_renderable.xhtml#a775e71a74952beb4e208fe5fb4b46668">unif_in</a></td></tr>
+<tr class="memdesc:a775e71a74952beb4e208fe5fb4b46668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uniform values to be set in the appropriate shader.  <a href="#a775e71a74952beb4e208fe5fb4b46668">More...</a><br /></td></tr>
 <tr class="separator:a775e71a74952beb4e208fe5fb4b46668"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bf2064282bcd7c446d32832d4b4bee7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenage_1_1renderer_1_1_geometry.xhtml">Geometry</a> const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1renderer_1_1_renderable.xhtml#a3bf2064282bcd7c446d32832d4b4bee7">geometry</a></td></tr>
+<tr class="memdesc:a3bf2064282bcd7c446d32832d4b4bee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The geometry.  <a href="#a3bf2064282bcd7c446d32832d4b4bee7">More...</a><br /></td></tr>
 <tr class="separator:a3bf2064282bcd7c446d32832d4b4bee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f7cb774035e9d9445e5ec3aff4791e4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenage_1_1renderer_1_1_renderable.xhtml#a2f7cb774035e9d9445e5ec3aff4791e4">alpha_blending</a></td></tr>
 <tr class="memdesc:a2f7cb774035e9d9445e5ec3aff4791e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to perform alpha-based color blending with whatever was in the render target before.  <a href="#a2f7cb774035e9d9445e5ec3aff4791e4">More...</a><br /></td></tr>
@@ -119,7 +125,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a2876a554a04f54f329230e7239e4f0a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A renderable is a set of shader uniform inputs and a possible draw call. When a renderable is parsed, the uniform inputs are first passed to the shader they were created with. Then, if the geometry is not nullptr, the shader is executed with the geometry and the specified settings and the results are written into the render target. If the geometry is nullptr, the uniform values are uploaded to the shader but no draw call is performed. This can be used to, for example, first set the values of uniforms that many objects have in common, and then only upload the uniforms that vary between them in each draw call. This works because uniform values in any given shader are preserved across a render pass. </p>
+<div class="textblock"><p>A renderable is a set of shader uniform inputs and a possible draw call. </p>
+<p>When a renderable is parsed, the uniform inputs are first passed to the shader they were created with. Then, if the geometry is not nullptr, the shader is executed with the geometry and the specified settings and the results are written into the render target. If the geometry is nullptr, the uniform values are uploaded to the shader but no draw call is performed. This can be used to, for example, first set the values of uniforms that many objects have in common, and then only upload the uniforms that vary between them in each draw call. This works because uniform values in any given shader are preserved across a render pass. </p>
 
 <p class="definition">Definition at line <a class="el" href="renderer_8h_source.xhtml#l00049">49</a> of file <a class="el" href="renderer_8h_source.xhtml">renderer.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
@@ -170,7 +177,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The geometry. It can be a simple primitive or a complex mesh. Can be nullptr to only set uniforms but do not perform draw call. </p>
+
+<p>The geometry. </p>
+<p>It can be a simple primitive or a complex mesh. Can be nullptr to only set uniforms but do not perform draw call. </p>
 
 <p class="definition">Definition at line <a class="el" href="renderer_8h_source.xhtml#l00055">55</a> of file <a class="el" href="renderer_8h_source.xhtml">renderer.h</a>.</p>
 
@@ -187,7 +196,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Uniform values to be set in the appropriate shader. Contains a reference to the correct shader, and this is the shader that will be used for drawing if geometry is present. </p>
+
+<p>Uniform values to be set in the appropriate shader. </p>
+<p>Contains a reference to the correct shader, and this is the shader that will be used for drawing if geometry is present. </p>
 
 <p class="definition">Definition at line <a class="el" href="renderer_8h_source.xhtml#l00052">52</a> of file <a class="el" href="renderer_8h_source.xhtml">renderer.h</a>.</p>
 

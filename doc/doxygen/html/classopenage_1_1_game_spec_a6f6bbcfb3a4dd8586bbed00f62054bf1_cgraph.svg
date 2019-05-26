@@ -57,7 +57,7 @@ var sectionId = 'dynsection-24';
 <polygon fill="white" stroke="none" points="-4,4 -4,-237.5 955,-237.5 955,4 -4,4"/>
 <!-- Node179 -->
 <g id="node1" class="node"><title>Node179</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="fill in the terrain_data attribute of this">
 <polygon fill="#bfbfbf" stroke="black" points="0,-105 0,-135 114,-135 114,-105 0,-105"/>
 <text text-anchor="start" x="8" y="-123" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="57" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00">load_terrain</text>
@@ -79,7 +79,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node181 -->
 <g id="node3" class="node"><title>Node181</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_asset_manager.xhtml#ab32bf393ec81c214585922c1a4cc9698" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_asset_manager.xhtml#ab32bf393ec81c214585922c1a4cc9698" target="_top" xlink:title="Return the path where assets are found in.">
 <polygon fill="white" stroke="black" points="150,-154 150,-184 272,-184 272,-154 150,-154"/>
 <text text-anchor="start" x="158" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="211" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">::get_asset_dir</text>
@@ -93,7 +93,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node182 -->
 <g id="node4" class="node"><title>Node182</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" target="_top" xlink:title="Query the Texture for a given filename.">
 <polygon fill="white" stroke="black" points="150,-105 150,-135 272,-135 272,-105 150,-105"/>
 <text text-anchor="start" x="158" y="-123" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="211" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00">::get_texture</text>
@@ -107,7 +107,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node186 -->
 <g id="node8" class="node"><title>Node186</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="481.5,-66.5 481.5,-85.5 572.5,-85.5 572.5,-66.5 481.5,-66.5"/>
 <text text-anchor="middle" x="527" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -120,7 +120,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node195 -->
 <g id="node17" class="node"><title>Node195</title>
-<g id="a_node17"><a xlink:href="namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="namespaceopenage_1_1util.xhtml#afd23b015922ec41eec0165f8d88bf430" target="_top" xlink:title="printf&#45;style to&#45;string formatting.">
 <polygon fill="white" stroke="black" points="156,-28.5 156,-47.5 266,-47.5 266,-28.5 156,-28.5"/>
 <text text-anchor="middle" x="211" y="-35.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::sformat</text>
 </a>
@@ -133,7 +133,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node183 -->
 <g id="node5" class="node"><title>Node183</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" target="_top" xlink:title="Create an internal texture handle.">
 <polygon fill="white" stroke="black" points="308,-105 308,-135 430,-135 430,-105 308,-105"/>
 <text text-anchor="start" x="316" y="-123" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="369" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00">::load_texture</text>
@@ -147,7 +147,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node184 -->
 <g id="node6" class="node"><title>Node184</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a20f0383ea39d88917bb5a02fbb239006" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a20f0383ea39d88917bb5a02fbb239006" target="_top" xlink:title="Retrieves the texture for missing textures.">
 <polygon fill="white" stroke="black" points="466,-154 466,-184 588,-184 588,-154 466,-154"/>
 <text text-anchor="start" x="474" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="527" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">::get_missing_tex</text>
@@ -180,7 +180,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node192 -->
 <g id="node14" class="node"><title>Node192</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" target="_top" xlink:title="Resolve the native path by flattening all underlying filesystem objects (like unions).">
 <polygon fill="white" stroke="black" points="473.5,-203 473.5,-233 580.5,-233 580.5,-203 473.5,-203"/>
 <text text-anchor="start" x="481.5" y="-221" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
 <text text-anchor="middle" x="527" y="-210" font-family="Helvetica,sans-Serif" font-size="10.00">::resolve_native_path</text>
@@ -194,7 +194,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node187 -->
 <g id="node9" class="node"><title>Node187</title>
-<g id="a_node9"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="640.5,-83 640.5,-113 750.5,-113 750.5,-83 640.5,-83"/>
 <text text-anchor="start" x="648.5" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="695.5" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -208,7 +208,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node188 -->
 <g id="node10" class="node"><title>Node188</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="624,-44.5 624,-63.5 767,-63.5 767,-44.5 624,-44.5"/>
 <text text-anchor="middle" x="695.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -221,7 +221,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node189 -->
 <g id="node11" class="node"><title>Node189</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="825,-88 825,-118 929,-118 929,-88 825,-88"/>
 <text text-anchor="start" x="833" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="877" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -290,7 +290,7 @@ var sectionId = 'dynsection-24';
 </g>
 <!-- Node196 -->
 <g id="node18" class="node"><title>Node196</title>
-<g id="a_node18"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" target="_top" xlink:title="printf&#45;style valist&#45;to&#45;string formatting; the result is appended to output.">
 <polygon fill="white" stroke="black" points="312,-28.5 312,-47.5 426,-47.5 426,-28.5 312,-28.5"/>
 <text text-anchor="middle" x="369" y="-35.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::vsformat</text>
 </a>

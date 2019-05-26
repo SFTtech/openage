@@ -860,7 +860,7 @@
 </g>
 <!-- Node49 -->
 <g id="node47" class="node"><title>Node49</title>
-<g id="a_node47"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title=" ">
+<g id="a_node47"><a xlink:href="pairing__heap_8h.xhtml" target="_top" xlink:title="This file contains the implementation of a pairing heap.">
 <polygon fill="white" stroke="black" points="338,-392.952 338,-422.952 452,-422.952 452,-392.952 338,-392.952"/>
 <text text-anchor="start" x="346" y="-410.952" font-family="Helvetica,sans-Serif" font-size="10.00">../datastructure/pairing</text>
 <text text-anchor="middle" x="395" y="-399.952" font-family="Helvetica,sans-Serif" font-size="10.00">_heap.h</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 265,-35 265,4 -4,4"/>
 <!-- Node84 -->
 <g id="node1" class="node"><title>Node84</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Return the inverted quaternion.">
 <polygon fill="#bfbfbf" stroke="black" points="136,-0.5 136,-30.5 261,-30.5 261,-0.5 136,-0.5"/>
 <text text-anchor="start" x="144" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Quaternion</text>
 <text text-anchor="middle" x="198.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::inversed</text>

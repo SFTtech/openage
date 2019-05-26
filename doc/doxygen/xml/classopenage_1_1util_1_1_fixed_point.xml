@@ -76,9 +76,9 @@
         <argsstring></argsstring>
         <name>raw_value</name>
         <briefdescription>
+<para>Storage of the fixed point data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Storage of the fixed point data. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -302,9 +302,10 @@
         <argsstring>()</argsstring>
         <name>FixedPoint</name>
         <briefdescription>
+<para>Empty constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Empty constructor. Initializes the number to 0. </para>
+<para>Initializes the number to 0. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -320,9 +321,10 @@
           <declname>n</declname>
         </param>
         <briefdescription>
+<para>floating-point constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>floating-point constructor. Initializes the number from a double. </para>
+<para>Initializes the number from a double. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -334,9 +336,10 @@
         <argsstring>() const</argsstring>
         <name>get_raw_value</name>
         <briefdescription>
+<para>Converter to retrieve the raw value of the fixed-point number. </para>
         </briefdescription>
         <detaileddescription>
-<para>Converter to retrieve the raw value of the fixed-point number. Don&apos;t use this. </para>
+<para>Don&apos;t use this. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -357,9 +360,9 @@
         <argsstring>() const</argsstring>
         <name>to_int</name>
         <briefdescription>
+<para>Converter to retrieve the int (pre-decimal) part of the number. </para>
         </briefdescription>
         <detaileddescription>
-<para>Converter to retrieve the int (pre-decimal) part of the number. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -386,9 +389,9 @@
         <argsstring>() const</argsstring>
         <name>to_float</name>
         <briefdescription>
+<para>Converter to retrieve the number as float. </para>
         </briefdescription>
         <detaileddescription>
-<para>Converter to retrieve the number as float. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -416,9 +419,9 @@
         <argsstring>() const</argsstring>
         <name>to_double</name>
         <briefdescription>
+<para>Converter to retrieve the number as double. </para>
         </briefdescription>
         <detaileddescription>
-<para>Converter to retrieve the number as double. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -431,7 +434,7 @@
         <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1aa56d9723c3d16a001d71bca91fd08c70" compoundref="physics_8cpp" startline="138" endline="213">openage::event::demo::BallReflectPanel::invoke</referencedby>
         <referencedby refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a0fa6b84fb64f30f1edd75d465876a2b3" compoundref="physics_8cpp" startline="275" endline="352">openage::event::demo::ResetGame::invoke</referencedby>
         <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a0c4cacca4318bbc4f50a568b1fc1789c" compoundref="fixed__point_8h" startline="267" endline="269">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator double</referencedby>
-        <referencedby refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" compoundref="pathfinding_2path_8cpp" startline="100" endline="115">openage::path::passable_line</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1a4fb2450790038eed534dfe29ad57d350" compoundref="pathfinding_2path_8cpp" startline="100" endline="115">openage::path::passable_line</referencedby>
         <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall_1a3e60c155c12ea17e0c149b3eca114f70" compoundref="physics_8cpp" startline="82" endline="113">openage::event::demo::BallReflectWall::predict_invoke_time</referencedby>
         <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a81a50b0cb9bf2c5148a355f02829c992" compoundref="physics_8cpp" startline="215" endline="262">openage::event::demo::BallReflectPanel::predict_invoke_time</referencedby>
         <referencedby refid="classopenage_1_1util_1_1_fixed_point_1ae963a0d669b00ec8a65da1bf0041172a" compoundref="fixed__point_8h" startline="394" endline="396">openage::util::FixedPoint&lt; int64_t, 16 &gt;::sqrt</referencedby>
@@ -456,9 +459,10 @@
         <argsstring>() const</argsstring>
         <name>str</name>
         <briefdescription>
+<para>Show a string representation. </para>
         </briefdescription>
         <detaileddescription>
-<para>Show a string representation. Useful for debugging in gdb. </para>
+<para>Useful for debugging in gdb. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -470,9 +474,9 @@
         <argsstring>() const</argsstring>
         <name>get_fractional_part</name>
         <briefdescription>
+<para>Converter to retrieve the fractional (post-decimal) part of the number. </para>
         </briefdescription>
         <detaileddescription>
-<para>Converter to retrieve the fractional (post-decimal) part of the number. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -718,9 +722,9 @@
           <declname>rhs</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> *= N, where N is not a <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> *= N, where N is not a <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -741,9 +745,9 @@
           <declname>rhs</declname>
         </param>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> /= N. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> /= N </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -788,9 +792,9 @@
         <argsstring>()</argsstring>
         <name>zero</name>
         <briefdescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> value that is preinitialized to zero. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> value that is preinitialized to zero. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -806,9 +810,9 @@
           <declname>n</declname>
         </param>
         <briefdescription>
+<para>Factory function to get a fixed-point number from an integer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Factory function to get a fixed-point number from an integer. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -826,9 +830,9 @@
           <declname>n</declname>
         </param>
         <briefdescription>
+<para>Factory function to get a fixed-point number from a float. </para>
         </briefdescription>
         <detaileddescription>
-<para>Factory function to get a fixed-point number from a float. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -845,9 +849,9 @@
           <declname>n</declname>
         </param>
         <briefdescription>
+<para>Factory function to get a fixed-point number from a double. </para>
         </briefdescription>
         <detaileddescription>
-<para>Factory function to get a fixed-point number from a double. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -876,9 +880,9 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Factory function to get a fixed-point number from a fixed-point number of different type. </para>
         </briefdescription>
         <detaileddescription>
-<para>Factory function to get a fixed-point number from a fixed-point number of different type. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -890,9 +894,9 @@
         <argsstring>()</argsstring>
         <name>min_value</name>
         <briefdescription>
+<para>The minimum possible value of this type. </para>
         </briefdescription>
         <detaileddescription>
-<para>The minimum possible value of this type. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -905,9 +909,9 @@
         <argsstring>()</argsstring>
         <name>max_value</name>
         <briefdescription>
+<para>The maximum possible value of this type. </para>
         </briefdescription>
         <detaileddescription>
-<para>The maximum possible value of this type. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -924,9 +928,10 @@
           <declname>raw_value</declname>
         </param>
         <briefdescription>
+<para>Factory function to construct a fixed-point number with a given raw value. </para>
         </briefdescription>
         <detaileddescription>
-<para>Factory function to construct a fixed-point number with a given raw value. Don&apos;t use this. </para>
+<para>Don&apos;t use this. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -993,9 +998,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Fixed-point integer class;. </para>
     </briefdescription>
     <detaileddescription>
-<para>Fixed-point integer class;</para>
 <para>this is designed to be used instead of floats in places where guaranteed precision is required.</para>
 <para>For example, FixedPoint&lt;int64_t, 32&gt; can store values from -2**32 to +2**32 with a constant precision of 2**-32. </para>
     </detaileddescription>

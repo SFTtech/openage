@@ -1,5 +1,5 @@
 <map id="openage.util.fslike.directory.Directory.rmdir" name="openage.util.fslike.directory.Directory.rmdir">
 <area shape="rect" id="node1" title="Shall remove an empty directory." alt="" coords="5,39,189,80"/>
 <area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a64bdaf726aac07d4913107cc5ba9fe65" title="resolves parts to an actual path name." alt="" coords="237,5,421,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a7dab02972c0d0fa8ef5b3fd387966855" title=" " alt="" coords="262,71,397,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a7dab02972c0d0fa8ef5b3fd387966855" title="resolve the path to an actually usable one." alt="" coords="262,71,397,112"/>
 </map>

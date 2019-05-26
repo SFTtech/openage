@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 361,-35 361,4 -4,4"/>
 <!-- Node16 -->
 <g id="node1" class="node"><title>Node16</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Creates a job group, in order to be able to execute multiple jobs on the same worker thread.">
 <polygon fill="#bfbfbf" stroke="black" points="226,-0.5 226,-30.5 357,-30.5 357,-0.5 226,-0.5"/>
 <text text-anchor="start" x="234" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <text text-anchor="middle" x="291.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create_job_group</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node17 -->
 <g id="node2" class="node"><title>Node17</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml#ac1ffb9fa48d2665e4452b644fbcb972c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1audio_1_1_dynamic_resource.xhtml#ac1ffb9fa48d2665e4452b644fbcb972c" target="_top" xlink:title="Tells the resource, that it will be used by a sound object, so it can preload some pcm samples.">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 190,-25 190,-6 0,-6"/>
 <text text-anchor="middle" x="95" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::DynamicResource::use</text>
 </a>

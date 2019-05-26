@@ -1,4 +1,4 @@
 <map id="openage::Texture::draw" name="openage::Texture::draw">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,163,39"/>
+<area shape="rect" id="node1" title="Draws the texture at hud coordinates." alt="" coords="5,13,163,39"/>
 <area shape="rect" id="node2" href="$structopenage_1_1coord_1_1camhud.xhtml#abbbebb0d15c032c20f0db6dd6f9c4911" title=" " alt="" coords="211,5,376,47"/>
 </map>

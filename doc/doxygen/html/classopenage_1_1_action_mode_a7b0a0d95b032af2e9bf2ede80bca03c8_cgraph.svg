@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-172 448,-172 448,4 -4,4"/>
 <!-- Node66 -->
 <g id="node1" class="node"><title>Node66</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="decides which type of right mouse click command to issue based on position.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-71.5 0,-101.5 111,-101.5 111,-71.5 0,-71.5"/>
 <text text-anchor="start" x="8" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="55.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_action</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node68 -->
 <g id="node3" class="node"><title>Node68</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" target="_top" xlink:title="return currently running game or null if a game is not currently running">
 <polygon fill="white" stroke="black" points="306,-121 306,-140 444,-140 444,-121 306,-121"/>
 <text text-anchor="middle" x="375" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine::get_game</text>
 </a>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node71 -->
 <g id="node6" class="node"><title>Node71</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_command.xhtml#a5783c26abcea9f286be58aa29de1e548" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_command.xhtml#a5783c26abcea9f286be58aa29de1e548" target="_top" xlink:title="sets invoked ability type, no other type may be used if this gets set">
 <polygon fill="white" stroke="black" points="147,-0.5 147,-30.5 270,-30.5 270,-0.5 147,-0.5"/>
 <text text-anchor="start" x="155" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Command::set</text>
 <text text-anchor="middle" x="208.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_ability</text>

@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-365 135,-365 135,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="a user interface component allowing control of a selected group">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-255.5 131,-255.5 131,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="65.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitSelection</text>
 <polyline fill="none" stroke="black" points="0,-236.5 131,-236.5 "/>
@@ -41,7 +41,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_hud_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_hud_handler.xhtml" target="_top" xlink:title="superclass for all possible drawing operations in the game.">
 <polygon fill="white" stroke="black" points="10.5,-292.5 10.5,-360.5 120.5,-360.5 120.5,-292.5 10.5,-292.5"/>
 <text text-anchor="middle" x="65.5" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HudHandler</text>
 <polyline fill="none" stroke="black" points="10.5,-341.5 120.5,-341.5 "/>

@@ -195,9 +195,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para><ref refid="classopenage_1_1_resource" kindref="compound">Resource</ref> table for the gui. </para>
     </briefdescription>
     <detaileddescription>
-<para><ref refid="classopenage_1_1_resource" kindref="compound">Resource</ref> table for the gui. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3672">

@@ -391,7 +391,7 @@
         <references refid="namespaceopenage_1_1convert_1_1driver_1af79fabd89ea708bced76ef970ae9f413" compoundref="driver_8py" startline="136" endline="142">openage.convert.driver.get_palette</references>
         <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
         <references refid="namespaceopenage_1_1convert_1_1main_1a607817dd5809140455a8b393c9a68fdc" compoundref="convert_2main_8py" startline="98" endline="147">openage.convert.main.mount_input</references>
-        <references refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</references>
+        <references refid="namespaceopenage_1_1gameio_1afc1134c3c633c8bddb614ecb3da48eb2" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</references>
         <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
         <referencedby refid="namespaceopenage_1_1convert_1_1main_1ab4e998cdda52db3b3cae6efbcd2eda23" compoundref="convert_2main_8py" startline="624" endline="653">openage.convert.main.main</referencedby>
       </memberdef>

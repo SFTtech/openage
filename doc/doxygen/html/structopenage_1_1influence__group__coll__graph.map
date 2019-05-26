@@ -1,4 +1,4 @@
 <map id="openage::influence_group" name="openage::influence_group">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,136,252"/>
+<area shape="rect" id="node1" title="influences for one tile." alt="" coords="5,145,136,252"/>
 <area shape="rect" id="node2" title=" " alt="" coords="43,5,98,83"/>
 </map>

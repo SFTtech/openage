@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-371 139,-371 139,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Thrown by translate_exc_py_to_cpp() from exctranslate.h.">
 <polygon fill="#bfbfbf" stroke="black" points="14,-0.5 14,-79.5 121,-79.5 121,-0.5 14,-0.5"/>
 <text text-anchor="start" x="22" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::pyinterface</text>
 <text text-anchor="middle" x="67.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::PyException</text>
@@ -25,7 +25,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_error.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1error_1_1_error.xhtml" target="_top" xlink:title="Openage base exception type; the constructor usage is analogous to log::log().">
 <polygon fill="white" stroke="black" points="0,-116.5 0,-272.5 135,-272.5 135,-116.5 0,-116.5"/>
 <text text-anchor="middle" x="67.5" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::error::Error</text>
 <polyline fill="none" stroke="black" points="0,-253.5 135,-253.5 "/>

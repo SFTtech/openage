@@ -1,5 +1,5 @@
 <map id="openage::path::Node" name="openage::path::Node">
-<area shape="rect" id="node1" title=" " alt="" coords="253,389,409,672"/>
+<area shape="rect" id="node1" title="One navigation waypoint in a path." alt="" coords="253,389,409,672"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,198,141,290"/>
 <area shape="rect" id="node3" href="$structopenage_1_1coord_1_1phys3.xhtml" title=" " alt="" coords="165,169,320,319"/>
 <area shape="rect" id="node4" title=" " alt="" coords="163,5,322,112"/>

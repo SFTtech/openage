@@ -65,9 +65,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Contains information about a triggered event. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains information about a triggered event. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3807">

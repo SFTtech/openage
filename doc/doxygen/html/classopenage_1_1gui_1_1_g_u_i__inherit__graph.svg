@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-365 385.5,-365 385.5,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Main entry point for the openage Qt&#45;based user interface.">
 <polygon fill="#bfbfbf" stroke="black" points="116.5,-0.5 116.5,-255.5 268.5,-255.5 268.5,-0.5 116.5,-0.5"/>
 <text text-anchor="middle" x="192.5" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::GUI</text>
 <polyline fill="none" stroke="black" points="116.5,-236.5 268.5,-236.5 "/>
@@ -41,7 +41,7 @@
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title="superclass for handling any input event.">
 <polygon fill="white" stroke="black" points="0,-292.5 0,-360.5 113,-360.5 113,-292.5 0,-292.5"/>
 <text text-anchor="middle" x="56.5" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::InputHandler</text>
 <polyline fill="none" stroke="black" points="0,-341.5 113,-341.5 "/>
@@ -59,7 +59,7 @@
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_resize_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_resize_handler.xhtml" target="_top" xlink:title="superclass for handling a window resize event.">
 <polygon fill="white" stroke="black" points="131.5,-292.5 131.5,-360.5 253.5,-360.5 253.5,-292.5 131.5,-292.5"/>
 <text text-anchor="middle" x="192.5" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResizeHandler</text>
 <polyline fill="none" stroke="black" points="131.5,-341.5 253.5,-341.5 "/>
@@ -77,7 +77,7 @@
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_hud_handler.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_hud_handler.xhtml" target="_top" xlink:title="superclass for all possible drawing operations in the game.">
 <polygon fill="white" stroke="black" points="271.5,-292.5 271.5,-360.5 381.5,-360.5 381.5,-292.5 271.5,-292.5"/>
 <text text-anchor="middle" x="326.5" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::HudHandler</text>
 <polyline fill="none" stroke="black" points="271.5,-341.5 381.5,-341.5 "/>

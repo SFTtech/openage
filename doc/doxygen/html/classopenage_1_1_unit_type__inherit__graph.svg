@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-872 562,-872 562,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="units in aoc have a class and a type">
 <polygon fill="#bfbfbf" stroke="black" points="220.5,-579.5 220.5,-867.5 320.5,-867.5 320.5,-579.5 220.5,-579.5"/>
 <text text-anchor="middle" x="270.5" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::UnitType</text>
 <polyline fill="none" stroke="black" points="220.5,-848.5 320.5,-848.5 "/>
@@ -90,7 +90,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node1 -->
 <g id="node2" class="node"><title>Node1</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_building_producer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_building_producer.xhtml" target="_top" xlink:title="Stores graphics and attributes for a building type Will be replaced with nyan system in future in aoe...">
 <polygon fill="white" stroke="black" points="0,-309.5 0,-542.5 135,-542.5 135,-309.5 0,-309.5"/>
 <text text-anchor="middle" x="67.5" y="-530.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::BuildingProducer</text>
 <polyline fill="none" stroke="black" points="0,-523.5 135,-523.5 "/>
@@ -123,7 +123,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node3" class="node"><title>Node2</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_nyan_type.xhtml" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_nyan_type.xhtml" target="_top" xlink:title="An example of how nyan can work with the type system.">
 <polygon fill="white" stroke="black" points="153,-364.5 153,-487.5 256,-487.5 256,-364.5 153,-364.5"/>
 <text text-anchor="middle" x="204.5" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::NyanType</text>
 <polyline fill="none" stroke="black" points="153,-468.5 256,-468.5 "/>
@@ -146,7 +146,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node3 -->
 <g id="node4" class="node"><title>Node3</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_object_producer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_object_producer.xhtml" target="_top" xlink:title="base game data unit type">
 <polygon fill="white" stroke="black" points="274,-326 274,-526 401,-526 401,-326 274,-326"/>
 <text text-anchor="middle" x="337.5" y="-514" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ObjectProducer</text>
 <polyline fill="none" stroke="black" points="274,-507 401,-507 "/>
@@ -176,7 +176,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_projectile_producer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_projectile_producer.xhtml" target="_top" xlink:title="creates projectiles">
 <polygon fill="white" stroke="black" points="419,-342.5 419,-509.5 558,-509.5 558,-342.5 419,-342.5"/>
 <text text-anchor="middle" x="488.5" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ProjectileProducer</text>
 <polyline fill="none" stroke="black" points="419,-490.5 558,-490.5 "/>
@@ -203,7 +203,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node5" class="node"><title>Node4</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_movable_producer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_movable_producer.xhtml" target="_top" xlink:title="movable unit types">
 <polygon fill="white" stroke="black" points="270.5,-127.5 270.5,-272.5 404.5,-272.5 404.5,-127.5 270.5,-127.5"/>
 <text text-anchor="middle" x="337.5" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::MovableProducer</text>
 <polyline fill="none" stroke="black" points="270.5,-253.5 404.5,-253.5 "/>
@@ -228,7 +228,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node5 -->
 <g id="node6" class="node"><title>Node5</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_living_producer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_living_producer.xhtml" target="_top" xlink:title="temporary class – will be replaced with nyan system in future Stores graphics and attributes for a si...">
 <polygon fill="white" stroke="black" points="276.5,-0.5 276.5,-90.5 398.5,-90.5 398.5,-0.5 276.5,-0.5"/>
 <text text-anchor="middle" x="337.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::LivingProducer</text>
 <polyline fill="none" stroke="black" points="276.5,-71.5 398.5,-71.5 "/>

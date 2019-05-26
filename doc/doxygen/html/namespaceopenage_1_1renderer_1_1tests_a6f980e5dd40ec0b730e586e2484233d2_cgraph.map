@@ -2,26 +2,26 @@
 <area shape="rect" id="node1" title=" " alt="" coords="5,327,164,369"/>
 <area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_window.xhtml#ad5c7edd81a2909b1b75b70095f61d47c" title=" " alt="" coords="220,5,407,61"/>
 <area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1_window.xhtml#ad63c0200f828c7134ddc81ce711c171b" title=" " alt="" coords="216,86,411,127"/>
-<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_context.xhtml#a22414f75ba491ef266e3453259825a50" title=" " alt="" coords="212,151,415,193"/>
+<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_context.xhtml#a22414f75ba491ef266e3453259825a50" title="Checks whether the current GL context on this thread reported any errors and throws an exception if i..." alt="" coords="212,151,415,193"/>
 <area shape="rect" id="node6" href="$classopenage_1_1renderer_1_1_window.xhtml#a1bf53e4db756c04ed522a975573b36a6" title="Returns the dimensions of this window." alt="" coords="246,298,381,339"/>
-<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="484,401,605,428"/>
-<area shape="rect" id="node13" href="$classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml#ad8928c08c9c05b7b7f7eae1a203e462b" title=" " alt="" coords="240,481,387,537"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title="Convenience method that makes use of the &#39;general&#39; LogSource." alt="" coords="484,401,605,428"/>
+<area shape="rect" id="node13" href="$classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml#ad8928c08c9c05b7b7f7eae1a203e462b" title="Initializes the mesh data with a simple quadrilateral spanning the whole window space,..." alt="" coords="240,481,387,537"/>
 <area shape="rect" id="node15" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a45268949d2510860b3643bb7779f521b" title="Creates a renderer which uses the window&#39;s graphics API and targets the window." alt="" coords="230,561,397,617"/>
-<area shape="rect" id="node17" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#ad1afa8d4edac82bbb12a3bf371149a41" title=" " alt="" coords="228,217,399,273"/>
+<area shape="rect" id="node17" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_data.xhtml#ad1afa8d4edac82bbb12a3bf371149a41" title="Reads the pixel at the given position and casts it to the given type." alt="" coords="228,217,399,273"/>
 <area shape="rect" id="node23" href="$classopenage_1_1renderer_1_1_window.xhtml#a8fa5671d7e11d9797cd19d4258ddc69b" title="Returns true if this window should be closed." alt="" coords="237,642,389,683"/>
-<area shape="rect" id="node24" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aae47c67c2194f86ad609762a371eef87" title=" " alt="" coords="226,415,401,457"/>
+<area shape="rect" id="node24" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aae47c67c2194f86ad609762a371eef87" title="Polls for window events, calls callbacks for these events, swaps front and back framebuffers to prese..." alt="" coords="226,415,401,457"/>
 <area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="489,9,600,36"/>
-<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="697,365,843,406"/>
-<area shape="rect" id="node9" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="675,431,865,457"/>
-<area shape="rect" id="node10" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="943,358,1081,399"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title="Returns a reference to a general named log source, for use by log::log()." alt="" coords="697,365,843,406"/>
+<area shape="rect" id="node9" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title="Logs a message (get one via MSG(level))." alt="" coords="675,431,865,457"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title="Returns a reference to the global stdout logsink object; Initializes the object if needed." alt="" coords="943,358,1081,399"/>
 <area shape="rect" id="node11" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="926,423,1098,465"/>
 <area shape="rect" id="node12" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="913,489,1111,516"/>
 <area shape="rect" id="node14" href="$classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml#a8d18f2be596595fed8762920ca9bd7ec" title="Tries to load the mesh data from the specified file." alt="" coords="471,503,618,559"/>
 <area shape="rect" id="node16" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a7f074d1fa0eeebde4e417ee8d1154dee" title="Return a pointer to this window&#39;s GL context." alt="" coords="468,583,621,639"/>
-<area shape="rect" id="node18" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a09329202a589131b1c723fbffb1f806b" title=" " alt="" coords="463,161,627,217"/>
-<area shape="rect" id="node19" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" title=" " alt="" coords="688,111,852,167"/>
+<area shape="rect" id="node18" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a09329202a589131b1c723fbffb1f806b" title="Returns the size in bytes of the raw pixel data." alt="" coords="463,161,627,217"/>
+<area shape="rect" id="node19" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" title="Returns the size in bytes of a single row, including possible padding at its end." alt="" coords="688,111,852,167"/>
 <area shape="rect" id="node20" href="$namespaceopenage_1_1renderer_1_1resources.xhtml#aa8bc42c345504717eba7d38b39d278c2" title="Returns the size in bytes of a single pixel of the specified format." alt="" coords="939,86,1085,127"/>
 <area shape="rect" id="node21" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a57830eb6623cc7171953bc0214c6ee2c" title=" " alt="" coords="463,241,627,297"/>
-<area shape="rect" id="node22" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title=" " alt="" coords="463,321,627,377"/>
+<area shape="rect" id="node22" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title="Returns the dimensions of the whole texture bitmap." alt="" coords="463,321,627,377"/>
 <area shape="rect" id="node25" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="486,452,603,479"/>
 </map>

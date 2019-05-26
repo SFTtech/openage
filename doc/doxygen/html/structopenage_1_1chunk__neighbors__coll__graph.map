@@ -1,7 +1,7 @@
 <map id="openage::chunk_neighbors" name="openage::chunk_neighbors">
-<area shape="rect" id="node1" title=" " alt="" coords="5,314,183,391"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_terrain_chunk.xhtml" title=" " alt="" coords="158,535,315,832"/>
-<area shape="rect" id="node3" href="$classopenage_1_1_tile_content.xhtml" title=" " alt="" coords="211,299,355,406"/>
-<area shape="rect" id="node4" href="$classopenage_1_1_terrain.xhtml" title=" " alt="" coords="380,233,525,472"/>
-<area shape="rect" id="node5" href="$structopenage_1_1terrain__meta.xhtml" title=" " alt="" coords="358,5,547,171"/>
+<area shape="rect" id="node1" title="adjacent neighbors of a chunk." alt="" coords="5,314,183,391"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_chunk.xhtml" title="terrain chunk class represents one chunk of the the drawn terrain." alt="" coords="158,535,315,832"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_tile_content.xhtml" title="describes the properties of one terrain tile." alt="" coords="211,299,355,406"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_terrain.xhtml" title="the terrain class is the main top&#45;management interface for dealing with cost&#45;benefit analysis to maxi..." alt="" coords="380,233,525,472"/>
+<area shape="rect" id="node5" href="$structopenage_1_1terrain__meta.xhtml" title="specification for all available tile types and blending data" alt="" coords="358,5,547,171"/>
 </map>

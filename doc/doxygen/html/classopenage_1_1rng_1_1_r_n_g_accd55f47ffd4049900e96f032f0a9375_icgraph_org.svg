@@ -19,7 +19,7 @@
 </g>
 <!-- Node41 -->
 <g id="node2" class="node"><title>Node41</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab7dbd0bef0c06a30b6724f2352af833c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab7dbd0bef0c06a30b6724f2352af833c" target="_top" xlink:title="Fills an array of doubles with values in [0, 1) Gives identical results as real() but more effecientl...">
 <polygon fill="white" stroke="black" points="751,-165.5 751,-195.5 857,-195.5 857,-165.5 751,-165.5"/>
 <text text-anchor="start" x="759" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="804" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00">fill_real</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node44 -->
 <g id="node5" class="node"><title>Node44</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab24ce8fabde7df2ec900e3e1883281a4" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab24ce8fabde7df2ec900e3e1883281a4" target="_top" xlink:title="Returns true with the passed probability.">
 <polygon fill="white" stroke="black" points="751,-107.5 751,-137.5 857,-137.5 857,-107.5 751,-107.5"/>
 <text text-anchor="start" x="759" y="-125.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="804" y="-114.5" font-family="Helvetica,sans-Serif" font-size="10.00">probability</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node51 -->
 <g id="node12" class="node"><title>Node51</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a2d906c2de63a31a89589a34bac2a3dd8" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a2d906c2de63a31a89589a34bac2a3dd8" target="_top" xlink:title="Retrieves a double in [0, 1)">
 <polygon fill="white" stroke="black" points="743,-50 743,-69 865,-69 865,-50 743,-50"/>
 <text text-anchor="middle" x="804" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::real</text>
 </a>
@@ -60,7 +60,7 @@
 </g>
 <!-- Node42 -->
 <g id="node3" class="node"><title>Node42</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a3b24c3f995bfb45b9d833030720bd88f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a3b24c3f995bfb45b9d833030720bd88f" target="_top" xlink:title="Tests filling doubles.">
 <polygon fill="white" stroke="black" points="594,-175.5 594,-205.5 695,-205.5 695,-175.5 594,-175.5"/>
 <text text-anchor="start" x="602" y="-193.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="644.5" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">::fill_real</text>
@@ -87,7 +87,7 @@
 </g>
 <!-- Node45 -->
 <g id="node6" class="node"><title>Node45</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" target="_top" xlink:title="Called after GameControl has been set by QML from set_game_control.">
 <polygon fill="white" stroke="black" points="586.5,-126.5 586.5,-156.5 702.5,-156.5 702.5,-126.5 586.5,-126.5"/>
 <text text-anchor="start" x="594.5" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ActionMode</text>
 <text text-anchor="middle" x="644.5" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_game_control_set</text>
@@ -101,7 +101,7 @@
 </g>
 <!-- Node46 -->
 <g id="node7" class="node"><title>Node46</title>
-<g id="a_node7"><a xlink:href="classopenage_1_1_region.xhtml#aab907d7f645bc78647dd204ba136b5d4" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classopenage_1_1_region.xhtml#aab907d7f645bc78647dd204ba136b5d4" target="_top" xlink:title="find a group of tiles inside this region, number is the number of tiles to be contained in the subset...">
 <polygon fill="white" stroke="black" points="582,-88 582,-107 707,-107 707,-88 582,-88"/>
 <text text-anchor="middle" x="644.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Region::subset</text>
 </a>
@@ -114,7 +114,7 @@
 </g>
 <!-- Node47 -->
 <g id="node8" class="node"><title>Node47</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1_region.xhtml#a268c678dfa97caf1cd17b632ca74de40" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classopenage_1_1_region.xhtml#a268c678dfa97caf1cd17b632ca74de40" target="_top" xlink:title="removes the given set of tiles from this region, which get split of as a new child region">
 <polygon fill="white" stroke="black" points="429,-82.5 429,-112.5 543,-112.5 543,-82.5 429,-82.5"/>
 <text text-anchor="start" x="437" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Region::take</text>
 <text text-anchor="middle" x="486" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">_tiles</text>
@@ -142,7 +142,7 @@
 </g>
 <!-- Node50 -->
 <g id="node11" class="node"><title>Node50</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1_region.xhtml#a365efd8b6f0199a7cb270af90291a662" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1_region.xhtml#a365efd8b6f0199a7cb270af90291a662" target="_top" xlink:title="similiar to take_tiles, but takes a random group of tiles">
 <polygon fill="white" stroke="black" points="276,-60.5 276,-90.5 390,-90.5 390,-60.5 276,-60.5"/>
 <text text-anchor="start" x="284" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Region::take</text>
 <text text-anchor="middle" x="333" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">_random</text>
@@ -156,7 +156,7 @@
 </g>
 <!-- Node49 -->
 <g id="node10" class="node"><title>Node49</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title="Create a game from a specification.">
 <polygon fill="white" stroke="black" points="0,-82.5 0,-112.5 102,-112.5 102,-82.5 0,-82.5"/>
 <text text-anchor="start" x="8" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="51" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>
@@ -175,7 +175,7 @@
 </g>
 <!-- Node52 -->
 <g id="node13" class="node"><title>Node52</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1rng.xhtml#aadfcdd4f8b418047382e29828d81b157" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1rng.xhtml#aadfcdd4f8b418047382e29828d81b157" target="_top" xlink:title="Returns a double in [0, 1) from the global rng.">
 <polygon fill="white" stroke="black" points="597,-50 597,-69 692,-69 692,-50 597,-50"/>
 <text text-anchor="middle" x="644.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::real</text>
 </a>
@@ -188,7 +188,7 @@
 </g>
 <!-- Node53 -->
 <g id="node14" class="node"><title>Node53</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec" target="_top" xlink:title="Returns a double in the range [min, max)">
 <polygon fill="white" stroke="black" points="591.5,-0.5 591.5,-30.5 697.5,-30.5 697.5,-0.5 591.5,-0.5"/>
 <text text-anchor="start" x="599.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="644.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">real_range</text>
@@ -202,7 +202,7 @@
 </g>
 <!-- Node54 -->
 <g id="node15" class="node"><title>Node54</title>
-<g id="a_node15"><a xlink:href="namespaceopenage_1_1rng.xhtml#a459eb99bb9ad49587a1cbb0bb3de8750" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="namespaceopenage_1_1rng.xhtml#a459eb99bb9ad49587a1cbb0bb3de8750" target="_top" xlink:title="Returns a double in [lower, upper) from the global rng.">
 <polygon fill="white" stroke="black" points="438.5,-0.5 438.5,-30.5 533.5,-30.5 533.5,-0.5 438.5,-0.5"/>
 <text text-anchor="start" x="446.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::real</text>
 <text text-anchor="middle" x="486" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_range</text>

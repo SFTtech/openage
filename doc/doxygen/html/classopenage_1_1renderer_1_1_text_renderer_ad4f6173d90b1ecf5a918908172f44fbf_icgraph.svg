@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-35 242,-35 242,4 -4,4"/>
 <!-- Node6 -->
 <g id="node1" class="node"><title>Node6</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Draw a formatted string at the specified position.">
 <polygon fill="#bfbfbf" stroke="black" points="137,-0.5 137,-30.5 238,-30.5 238,-0.5 137,-0.5"/>
 <text text-anchor="start" x="145" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="187.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::draw</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#a021938d1c8fb338a055a3a01d7f06214" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1renderer_1_1_text_renderer.xhtml#a021938d1c8fb338a055a3a01d7f06214" target="_top" xlink:title="Draw text at the specified position.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 101,-30.5 101,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="middle" x="50.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextRenderer::draw</text>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <polygon fill="white" stroke="none" points="-4,4 -4,-651 155,-651 155,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="This class provides audio functionality for openage.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-299.5 151,-299.5 151,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="75.5" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
 <polyline fill="none" stroke="black" points="0,-280.5 151,-280.5 "/>
@@ -91,7 +91,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title="A job manager can be used to execute functions within separate worker threads.">
 <polygon fill="white" stroke="black" points="10,-347.5 10,-646.5 141,-646.5 141,-347.5 10,-347.5"/>
 <text text-anchor="middle" x="75.5" y="-634.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
 <polyline fill="none" stroke="black" points="10,-627.5 141,-627.5 "/>

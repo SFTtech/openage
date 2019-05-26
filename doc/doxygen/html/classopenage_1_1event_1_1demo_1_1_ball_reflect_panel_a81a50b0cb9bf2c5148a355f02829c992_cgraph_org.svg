@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-207 680,-207 680,4 -4,4"/>
 <!-- Node25 -->
 <g id="node1" class="node"><title>Node25</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Is called to calculate the execution time for an event of this eventclass.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-77 0,-118 129,-118 129,-77 0,-77"/>
 <text text-anchor="start" x="8" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::event::demo</text>
 <text text-anchor="start" x="8" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::BallReflectPanel::predict</text>
@@ -21,7 +21,7 @@
 </g>
 <!-- Node26 -->
 <g id="node2" class="node"><title>Node26</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" target="_top" xlink:title="Factory function to get a fixed&#45;point number from a double.">
 <polygon fill="white" stroke="black" points="168.5,-164.5 168.5,-194.5 307.5,-194.5 307.5,-164.5 168.5,-164.5"/>
 <text text-anchor="start" x="176.5" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="238" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int64_t, 16 &gt;::from_double</text>
@@ -35,7 +35,7 @@
 </g>
 <!-- Node27 -->
 <g id="node3" class="node"><title>Node27</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" target="_top" xlink:title="Convenience method that makes use of the &#39;general&#39; LogSource.">
 <polygon fill="white" stroke="black" points="192.5,-126 192.5,-145 283.5,-145 283.5,-126 192.5,-126"/>
 <text text-anchor="middle" x="238" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::log</text>
 </a>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node34 -->
 <g id="node10" class="node"><title>Node34</title>
-<g id="a_node10"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551" target="_top" xlink:title="str(value);">
 <polygon fill="white" stroke="black" points="194.5,-50 194.5,-69 281.5,-69 281.5,-50 194.5,-50"/>
 <text text-anchor="middle" x="238" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::str</text>
 </a>
@@ -74,7 +74,7 @@
 </g>
 <!-- Node37 -->
 <g id="node13" class="node"><title>Node37</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" target="_top" xlink:title="Converter to retrieve the number as double.">
 <polygon fill="white" stroke="black" points="175.5,-0.5 175.5,-30.5 300.5,-30.5 300.5,-0.5 175.5,-0.5"/>
 <text text-anchor="start" x="183.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="238" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_double</text>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node28 -->
 <g id="node4" class="node"><title>Node28</title>
-<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" target="_top" xlink:title="Returns a reference to a general named log source, for use by log::log().">
 <polygon fill="white" stroke="black" points="364.5,-164.5 364.5,-194.5 474.5,-194.5 474.5,-164.5 364.5,-164.5"/>
 <text text-anchor="start" x="372.5" y="-182.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::general</text>
 <text text-anchor="middle" x="419.5" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00">_source</text>
@@ -102,7 +102,7 @@
 </g>
 <!-- Node29 -->
 <g id="node5" class="node"><title>Node29</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" target="_top" xlink:title="Logs a message (get one via MSG(level)).">
 <polygon fill="white" stroke="black" points="348,-126 348,-145 491,-145 491,-126 348,-126"/>
 <text text-anchor="middle" x="419.5" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::LogSource::log</text>
 </a>
@@ -115,7 +115,7 @@
 </g>
 <!-- Node30 -->
 <g id="node6" class="node"><title>Node30</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" target="_top" xlink:title="Returns a reference to the global stdout logsink object; Initializes the object if needed.">
 <polygon fill="white" stroke="black" points="550,-172.5 550,-202.5 654,-202.5 654,-172.5 550,-172.5"/>
 <text text-anchor="start" x="558" y="-190.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::log::global</text>
 <text text-anchor="middle" x="602" y="-179.5" font-family="Helvetica,sans-Serif" font-size="10.00">_stdoutsink</text>
@@ -169,7 +169,7 @@
 </g>
 <!-- Node36 -->
 <g id="node12" class="node"><title>Node36</title>
-<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="554.5,-47 554.5,-66 649.5,-66 649.5,-47 554.5,-47"/>
 <text text-anchor="middle" x="602" y="-54" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>

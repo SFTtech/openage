@@ -8,7 +8,7 @@ var pathfinding_2path_8h =
     [ "heap_t", "pathfinding_2path_8h.xhtml#a9eb90c4259c8bbf5764d94d9e1710991", null ],
     [ "node_pt", "pathfinding_2path_8h.xhtml#adf2b15337cb3eec1712f18c17c75c325", null ],
     [ "nodemap_t", "pathfinding_2path_8h.xhtml#a2889597504b5f2d6987d132f1e5682f6", null ],
-    [ "passable_line", "pathfinding_2path_8h.xhtml#a2752186f11f3e1a26c7a72c647e7ccdd", null ],
+    [ "passable_line", "pathfinding_2path_8h.xhtml#a4fb2450790038eed534dfe29ad57d350", null ],
     [ "neigh_phys", "pathfinding_2path_8h.xhtml#aec9efa004e47a51d7525a0959ebdfb83", null ],
     [ "path_grid_size", "pathfinding_2path_8h.xhtml#a7e49ca629b6fed008584d7752dc98e9a", null ]
 ];

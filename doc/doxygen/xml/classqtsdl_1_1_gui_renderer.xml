@@ -107,9 +107,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Passes the native graphic context to Qt. </para>
     </briefdescription>
     <detaileddescription>
-<para>Passes the native graphic context to Qt. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6462">

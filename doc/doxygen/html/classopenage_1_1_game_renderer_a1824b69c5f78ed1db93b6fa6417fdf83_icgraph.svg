@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 290,-84 290,4 -4,4"/>
 <!-- Node6 -->
 <g id="node1" class="node"><title>Node6</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="the game this renderer is using">
 <polygon fill="#bfbfbf" stroke="black" points="161,-24.5 161,-54.5 286,-54.5 286,-24.5 161,-24.5"/>
 <text text-anchor="start" x="169" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameRenderer</text>
 <text text-anchor="middle" x="223.5" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::game</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node7 -->
 <g id="node2" class="node"><title>Node7</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_game_renderer.xhtml#a5c385f1939e1c4a4ca3feb6813f68b06" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_game_renderer.xhtml#a5c385f1939e1c4a4ca3feb6813f68b06" target="_top" xlink:title="GameSpec used by this renderer.">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 125,-79.5 125,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameRenderer</text>
 <text text-anchor="middle" x="62.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::game_spec</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node8 -->
 <g id="node3" class="node"><title>Node8</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_renderer.xhtml#a0cc83cf1a6697522d581d220661081a4" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_renderer.xhtml#a0cc83cf1a6697522d581d220661081a4" target="_top" xlink:title="execute the drawing action.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 125,-30.5 125,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameRenderer</text>
 <text text-anchor="middle" x="62.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::on_draw</text>

@@ -39,7 +39,7 @@
 </g>
 <!-- Node29 -->
 <g id="node3" class="node"><title>Node29</title>
-<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespaceopenage_1_1py.xhtml#a5ba80af3e9224d2de11179ce232f75d9" target="_top" xlink:title="dict()">
 <polygon fill="white" stroke="black" points="469.5,-753 469.5,-772 561.5,-772 561.5,-753 469.5,-753"/>
 <text text-anchor="middle" x="515.5" y="-760" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::dict</text>
 </a>
@@ -52,7 +52,7 @@
 </g>
 <!-- Node31 -->
 <g id="node5" class="node"><title>Node31</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" target="_top" xlink:title="method that behaves similar to python&#39;s &quot;repr&quot;.">
 <polygon fill="white" stroke="black" points="892,-772 892,-791 987,-791 987,-772 892,-772"/>
 <text text-anchor="middle" x="939.5" y="-779" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::repr</text>
 </a>
@@ -65,7 +65,7 @@
 </g>
 <!-- Node32 -->
 <g id="node6" class="node"><title>Node32</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" target="_top" xlink:title="list()">
 <polygon fill="white" stroke="black" points="471,-791 471,-810 560,-810 560,-791 471,-791"/>
 <text text-anchor="middle" x="515.5" y="-798" font-family="Helvetica,sans-Serif" font-size="10.00">openage::py::list</text>
 </a>
@@ -120,7 +120,7 @@
 </g>
 <!-- Node37 -->
 <g id="node11" class="node"><title>Node37</title>
-<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#a687817b834b18f90124915261c3752a8" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classopenage_1_1util_1_1_c_s_v_collection.xhtml#a687817b834b18f90124915261c3752a8" target="_top" xlink:title="This function is the entry point to load the whole file tree recursively.">
 <polygon fill="white" stroke="black" points="445,-556.5 445,-586.5 586,-586.5 586,-556.5 445,-556.5"/>
 <text text-anchor="start" x="453" y="-574.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CSVCollection</text>
 <text text-anchor="middle" x="515.5" y="-563.5" font-family="Helvetica,sans-Serif" font-size="10.00">::read</text>
@@ -162,7 +162,7 @@
 </g>
 <!-- Node43 -->
 <g id="node17" class="node"><title>Node43</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="classopenage_1_1util_1_1_file.xhtml#ac7c3188dd66e5b7aa84bc5a538c93885" target="_top" xlink:title="Read data from the file and return a string.">
 <polygon fill="white" stroke="black" points="261.5,-409.5 261.5,-439.5 355.5,-439.5 355.5,-409.5 261.5,-409.5"/>
 <text text-anchor="start" x="269.5" y="-427.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::File</text>
 <text text-anchor="middle" x="308.5" y="-416.5" font-family="Helvetica,sans-Serif" font-size="10.00">::read</text>
@@ -176,7 +176,7 @@
 </g>
 <!-- Node44 -->
 <g id="node18" class="node"><title>Node44</title>
-<g id="a_node18"><a xlink:href="structopenage_1_1util_1_1csv__subdata.xhtml#a24b1327a670ab69e55c089234bdcbfec" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="structopenage_1_1util_1_1csv__subdata.xhtml#a24b1327a670ab69e55c089234bdcbfec" target="_top" xlink:title="Read the data of the lineformat from the collection.">
 <polygon fill="white" stroke="black" points="262.5,-556.5 262.5,-586.5 354.5,-586.5 354.5,-556.5 262.5,-556.5"/>
 <text text-anchor="start" x="270.5" y="-574.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::csv</text>
 <text text-anchor="middle" x="308.5" y="-563.5" font-family="Helvetica,sans-Serif" font-size="10.00">_subdata::read</text>
@@ -255,7 +255,7 @@
 </g>
 <!-- Node38 -->
 <g id="node12" class="node"><title>Node38</title>
-<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1" target="_top" xlink:title="get the filename (last part) of a given path">
 <polygon fill="white" stroke="black" points="665.5,-600 665.5,-619 779.5,-619 779.5,-600 665.5,-600"/>
 <text text-anchor="middle" x="722.5" y="-607" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::filename</text>
 </a>
@@ -268,7 +268,7 @@
 </g>
 <!-- Node39 -->
 <g id="node13" class="node"><title>Node39</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1util.xhtml#a954be5116f7af5633dbbc50bac26b0a8" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1util.xhtml#a954be5116f7af5633dbbc50bac26b0a8" target="_top" xlink:title="return the head (dirname) part of a path.">
 <polygon fill="white" stroke="black" points="666,-562 666,-581 779,-581 779,-562 666,-562"/>
 <text text-anchor="middle" x="722.5" y="-569" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::dirname</text>
 </a>
@@ -481,7 +481,7 @@
 </g>
 <!-- Node59 -->
 <g id="node33" class="node"><title>Node59</title>
-<g id="a_node33"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" target="_top" xlink:title=" ">
+<g id="a_node33"><a xlink:href="classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" target="_top" xlink:title="Returns the dimensions of the whole texture bitmap.">
 <polygon fill="white" stroke="black" points="1271,-393 1271,-434 1394,-434 1394,-393 1271,-393"/>
 <text text-anchor="start" x="1279" y="-422" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="1279" y="-411" font-family="Helvetica,sans-Serif" font-size="10.00">resources::Texture2dInfo</text>

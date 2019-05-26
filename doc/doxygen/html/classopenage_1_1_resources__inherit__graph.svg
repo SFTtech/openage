@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-244 142,-244 142,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="All the resources.">
 <polygon fill="#bfbfbf" stroke="black" points="16,-116.5 16,-239.5 122,-239.5 122,-116.5 16,-116.5"/>
 <text text-anchor="middle" x="69" y="-227.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Resources</text>
 <polyline fill="none" stroke="black" points="16,-220.5 122,-220.5 "/>

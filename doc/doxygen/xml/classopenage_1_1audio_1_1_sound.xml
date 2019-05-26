@@ -25,9 +25,9 @@
         <argsstring></argsstring>
         <name>audio_manager</name>
         <briefdescription>
+<para>The audio manager that manages this sound. </para>
         </briefdescription>
         <detaileddescription>
-<para>The audio manager that manages this sound. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -45,9 +45,10 @@
         <argsstring></argsstring>
         <name>sound_impl</name>
         <briefdescription>
+<para>The internal sound implementation. </para>
         </briefdescription>
         <detaileddescription>
-<para>The internal sound implementation. This is where the internal state, e.g. current playing offset, volume, etc., is stored. </para>
+<para>This is where the internal state, e.g. current playing offset, volume, etc., is stored. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -96,9 +97,9 @@
         <argsstring>() const</argsstring>
         <name>get_category</name>
         <briefdescription>
+<para>Returns this sound&apos;s category. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns this sound&apos;s category. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -111,9 +112,9 @@
         <argsstring>() const</argsstring>
         <name>get_id</name>
         <briefdescription>
+<para>Returns this sound&apos;s id. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns this sound&apos;s id. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -130,9 +131,10 @@
           <declname>volume</declname>
         </param>
         <briefdescription>
+<para>Sets this sound&apos;s volume. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets this sound&apos;s volume. The volume should be a value in range [0,256], where 0 means silence and 256 the original pcm volume. A volume greater than 256 could lead to overmodulation. <parameterlist kind="param"><parameteritem>
+<para>The volume should be a value in range [0,256], where 0 means silence and 256 the original pcm volume. A volume greater than 256 could lead to overmodulation. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>volume</parametername>
 </parameternamelist>
@@ -154,9 +156,9 @@
         <argsstring>() const</argsstring>
         <name>get_volume</name>
         <briefdescription>
+<para>Returns this sound&apos;s volume. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns this sound&apos;s volume. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -173,9 +175,10 @@
           <declname>looping</declname>
         </param>
         <briefdescription>
+<para>Sets whether this sound should be looping or not. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets whether this sound should be looping or not. A looping sound restarts automatically after it has finishes. <parameterlist kind="param"><parameteritem>
+<para>A looping sound restarts automatically after it has finishes. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>looping</parametername>
 </parameternamelist>
@@ -197,9 +200,9 @@
         <argsstring>() const</argsstring>
         <name>is_looping</name>
         <briefdescription>
+<para>Returns whether this sound is looping. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns whether this sound is looping. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -212,9 +215,9 @@
         <argsstring>()</argsstring>
         <name>play</name>
         <briefdescription>
+<para>Resets the sound to it&apos;s beginning and starts playing it. </para>
         </briefdescription>
         <detaileddescription>
-<para>Resets the sound to it&apos;s beginning and starts playing it. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -230,9 +233,9 @@
         <argsstring>()</argsstring>
         <name>pause</name>
         <briefdescription>
+<para>Pauses the sound at it&apos;s current playing offset. </para>
         </briefdescription>
         <detaileddescription>
-<para>Pauses the sound at it&apos;s current playing offset. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -247,9 +250,9 @@
         <argsstring>()</argsstring>
         <name>resume</name>
         <briefdescription>
+<para>Resumes the sound at it&apos;s current playing offset. </para>
         </briefdescription>
         <detaileddescription>
-<para>Resumes the sound at it&apos;s current playing offset. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -264,9 +267,9 @@
         <argsstring>()</argsstring>
         <name>stop</name>
         <briefdescription>
+<para>Resets the sound to it&apos;s beginning and stops playing it. </para>
         </briefdescription>
         <detaileddescription>
-<para>Resets the sound to it&apos;s beginning and stops playing it. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -281,9 +284,9 @@
         <argsstring>() const</argsstring>
         <name>is_playing</name>
         <briefdescription>
+<para>Returns whether this sound is currently playing. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns whether this sound is currently playing. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -294,9 +297,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A sound object is the direct interface to the user. </para>
     </briefdescription>
     <detaileddescription>
-<para>A sound object is the direct interface to the user. It provides methods to control the sound, e.g. play, stop, etc. It is a lightweight object that stores a shared_ptr to its internal <ref refid="classopenage_1_1audio_1_1_sound_impl" kindref="compound">SoundImpl</ref> and a pointer to its <ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref>. </para>
+<para>It provides methods to control the sound, e.g. play, stop, etc. It is a lightweight object that stores a shared_ptr to its internal <ref refid="classopenage_1_1audio_1_1_sound_impl" kindref="compound">SoundImpl</ref> and a pointer to its <ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref>. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="532">

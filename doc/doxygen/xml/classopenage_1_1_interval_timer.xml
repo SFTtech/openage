@@ -83,9 +83,9 @@
           <declname>interval</declname>
         </param>
         <briefdescription>
+<para>Constructs a timer with a given interval. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructs a timer with a given interval </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -106,9 +106,9 @@
           <declname>max_triggers</declname>
         </param>
         <briefdescription>
+<para>Constructs a timer with a given interval which will stop after a given number of triggers. </para>
         </briefdescription>
         <detaileddescription>
-<para>Constructs a timer with a given interval which will stop after a given number of triggers. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -161,9 +161,9 @@
         <argsstring>() const</argsstring>
         <name>get_time_left</name>
         <briefdescription>
+<para>Returns the time until the next trigger. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the time until the next trigger </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -193,9 +193,9 @@
         <argsstring>() const</argsstring>
         <name>has_triggers</name>
         <briefdescription>
+<para>Returns true if at least one interval has passed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns true if at least one interval has passed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -208,9 +208,9 @@
         <argsstring>() const</argsstring>
         <name>finished</name>
         <briefdescription>
+<para>Returns true if the interval passed have reached the max. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns true if the interval passed have reached the max. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -225,9 +225,9 @@
         <argsstring>() const</argsstring>
         <name>get_triggers</name>
         <briefdescription>
+<para>Returns the number of intervals passed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the number of intervals passed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -270,9 +270,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A interval triggering timer used in actions. </para>
     </briefdescription>
     <detaileddescription>
-<para>A interval triggering timer used in actions. <xrefsect id="todo_1_todo000031"><xreftitle>Todo</xreftitle><xrefdescription><para>find a better name for triggers </para>
+<para><xrefsect id="todo_1_todo000031"><xreftitle>Todo</xreftitle><xrefdescription><para>find a better name for triggers </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <collaborationgraph>

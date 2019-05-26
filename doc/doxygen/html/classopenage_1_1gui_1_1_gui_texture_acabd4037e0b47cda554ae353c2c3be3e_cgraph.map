@@ -1,12 +1,12 @@
 <map id="openage::gui::GuiTexture::removedFromAtlas" name="openage::gui::GuiTexture::removedFromAtlas">
 <area shape="rect" id="node1" title=" " alt="" coords="5,104,172,145"/>
-<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title=" " alt="" coords="229,5,377,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title="Get the subtexture coordinates by its id." alt="" coords="229,5,377,47"/>
 <area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_texture.xhtml#aa857182d062f11dc1d300e5965596511" title=" " alt="" coords="220,71,387,112"/>
 <area shape="rect" id="node6" href="$namespaceopenage_1_1gui.xhtml#ad386ee98cd26c09c0e03fdc7f50ad6de" title=" " alt="" coords="223,136,383,177"/>
 <area shape="rect" id="node7" href="$classopenage_1_1gui_1_1_gui_texture.xhtml#aae0bd80c66326d89472b98043e40ce4f" title=" " alt="" coords="220,201,387,243"/>
 <area shape="rect" id="node4" href="$namespaceopenage_1_1gui.xhtml#af717f0e1527d227ea7c4a8e9f34e87b8" title=" " alt="" coords="435,78,621,105"/>
 <area shape="rect" id="node5" href="$classopenage_1_1_texture.xhtml#a4548b2bc3eb5310a97deee94ab536035" title=" " alt="" coords="673,71,821,112"/>
-<area shape="rect" id="node8" href="$classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490" title=" " alt="" coords="454,201,602,243"/>
-<area shape="rect" id="node9" href="$classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b" title=" " alt="" coords="669,201,824,243"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_texture.xhtml#a4a39cc1e433e023254dabef12fe20490" title="returns the opengl texture id of this texture." alt="" coords="454,201,602,243"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_texture.xhtml#a3360ead41cd7e078088ae3a5cdf4606b" title="The texture loadin must occur on the thread that manages the gl context." alt="" coords="669,201,824,243"/>
 <area shape="rect" id="node10" href="$classopenage_1_1_texture.xhtml#a210c36d673ca296a040fdb72da5ee89f" title=" " alt="" coords="872,201,1035,243"/>
 </map>

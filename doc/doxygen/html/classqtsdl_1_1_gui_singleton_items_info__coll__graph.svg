@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 142,-62 142,4 -4,4"/>
 <!-- Node2 -->
 <g id="node1" class="node"><title>Node2</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Accessible during creation of any singleton QML item.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-57.5 138,-57.5 138,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="69" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSingletonItemsInfo</text>
 <polyline fill="none" stroke="black" points="0,-38.5 138,-38.5 "/>

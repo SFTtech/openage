@@ -116,9 +116,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Wrapper class for the sdl audio device locking so the device doesn&apos;t deadlock because of funny exceptions. </para>
     </briefdescription>
     <detaileddescription>
-<para>Wrapper class for the sdl audio device locking so the device doesn&apos;t deadlock because of funny exceptions. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="530">

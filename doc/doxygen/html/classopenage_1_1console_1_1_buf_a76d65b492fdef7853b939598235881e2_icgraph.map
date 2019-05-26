@@ -1,11 +1,11 @@
 <map id="openage::console::Buf::linedata_clear" name="openage::console::Buf::linedata_clear">
-<area shape="rect" id="node1" title=" " alt="" coords="1200,64,1351,105"/>
-<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#af6b49e0178333e01a08fd61ca2006219" title=" " alt="" coords="1001,64,1152,105"/>
-<area shape="rect" id="node3" href="$classopenage_1_1console_1_1_buf.xhtml#a752e54412ebbb08b3d8ac0edc90891ee" title=" " alt="" coords="803,5,953,47"/>
-<area shape="rect" id="node7" href="$classopenage_1_1console_1_1_buf.xhtml#a83a7e7db654360cff1c6796b169efc22" title=" " alt="" coords="404,53,555,109"/>
-<area shape="rect" id="node8" href="$classopenage_1_1console_1_1_buf.xhtml#a23267e4cb18a2921f14406e6307cbb95" title=" " alt="" coords="604,129,755,171"/>
-<area shape="rect" id="node4" href="$classopenage_1_1console_1_1_buf.xhtml#ab2dd3bbdbc82ae2a4276a433b40aac91" title=" " alt="" coords="604,5,755,47"/>
-<area shape="rect" id="node5" href="$classopenage_1_1console_1_1_buf.xhtml#adcdc21533ab920bd72f92f27333716bf" title=" " alt="" coords="204,60,355,101"/>
-<area shape="rect" id="node6" href="$classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" title=" " alt="" coords="5,60,156,101"/>
-<area shape="rect" id="node9" href="$classopenage_1_1console_1_1_buf.xhtml#a809f4a27cd3bf92c2458a5b3176fae43" title=" " alt="" coords="403,133,556,175"/>
+<area shape="rect" id="node1" title="clears a range of the linedata buffer." alt="" coords="1200,64,1351,105"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#af6b49e0178333e01a08fd61ca2006219" title="clears the screen character and line buffers." alt="" coords="1001,64,1152,105"/>
+<area shape="rect" id="node3" href="$classopenage_1_1console_1_1_buf.xhtml#a752e54412ebbb08b3d8ac0edc90891ee" title="advances the buffer by the specified number of lines." alt="" coords="803,5,953,47"/>
+<area shape="rect" id="node7" href="$classopenage_1_1console_1_1_buf.xhtml#a83a7e7db654360cff1c6796b169efc22" title="processes the CSI escape sequence currently stored in escape_sequence." alt="" coords="404,53,555,109"/>
+<area shape="rect" id="node8" href="$classopenage_1_1console_1_1_buf.xhtml#a23267e4cb18a2921f14406e6307cbb95" title="resets the buffer to its constructor defaults" alt="" coords="604,129,755,171"/>
+<area shape="rect" id="node4" href="$classopenage_1_1console_1_1_buf.xhtml#ab2dd3bbdbc82ae2a4276a433b40aac91" title="prints one unicode codepoint interally called by process_codepoint(int cp) after sorting out escape s..." alt="" coords="604,5,755,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1console_1_1_buf.xhtml#adcdc21533ab920bd72f92f27333716bf" title="processes one unicode codepoint internally called by write(char) after feeding the char into streamde..." alt="" coords="204,60,355,101"/>
+<area shape="rect" id="node6" href="$classopenage_1_1console_1_1_buf.xhtml#a7f70c41ed91a5283fd2dd337b7493eaa" title="write a single byte to the buffer." alt="" coords="5,60,156,101"/>
+<area shape="rect" id="node9" href="$classopenage_1_1console_1_1_buf.xhtml#a809f4a27cd3bf92c2458a5b3176fae43" title="processes a single&#45;codepoint escape sequence." alt="" coords="403,133,556,175"/>
 </map>

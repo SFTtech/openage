@@ -1,6 +1,6 @@
 <map id="openage::util::uint64_to_array8" name="openage::util::uint64_to_array8">
-<area shape="rect" id="node1" title=" " alt="" coords="385,64,524,105"/>
-<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600" title=" " alt="" coords="189,5,335,47"/>
+<area shape="rect" id="node1" title="Convert a uint64_t to an array of uint8_t." alt="" coords="385,64,524,105"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#af9f52b617e7434a421cd5f9de448b600" title="Convert a C&#45;style array of uint64_t to a std::vector of uint8_t." alt="" coords="189,5,335,47"/>
 <area shape="rect" id="node3" href="$namespaceopenage_1_1util_1_1tests.xhtml#a48fcf768166ffb9362daf1fdf19acf45" title=" " alt="" coords="5,35,139,76"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_siphash.xhtml#a0cb5db9ffca1f96885bc53e2f5c0c65d" title=" " alt="" coords="187,123,337,164"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_siphash.xhtml#a0cb5db9ffca1f96885bc53e2f5c0c65d" title="Hashes a single uint64_t number and returns the result." alt="" coords="187,123,337,164"/>
 </map>

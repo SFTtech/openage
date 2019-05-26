@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-123 721,-123 721,4 -4,4"/>
 <!-- Node73 -->
 <g id="node1" class="node"><title>Node73</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="adds an UP component to the coordinate.">
 <polygon fill="#bfbfbf" stroke="black" points="615,-44.5 615,-74.5 717,-74.5 717,-44.5 615,-44.5"/>
 <text text-anchor="start" x="623" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::tile</text>
 <text text-anchor="middle" x="666" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::to_tile3</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node75 -->
 <g id="node3" class="node"><title>Node75</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" target="_top" xlink:title="places all initial objects">
 <polygon fill="white" stroke="black" points="322,-88.5 322,-118.5 424,-118.5 424,-88.5 322,-88.5"/>
 <text text-anchor="start" x="330" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="373" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">::add_units</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node77 -->
 <g id="node5" class="node"><title>Node77</title>
-<g id="a_node5"><a xlink:href="namespaceopenage_1_1gameio.xhtml#a75b0984fd51cdc53616318d3f5a0d50f" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="namespaceopenage_1_1gameio.xhtml#ae6761d88280466d1d1b5c638e7c7a042" target="_top" xlink:title="a game load function that sometimes works">
 <polygon fill="white" stroke="black" points="154,-50 154,-69 269,-69 269,-50 154,-50"/>
 <text text-anchor="middle" x="211.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gameio::load</text>
 </a>
@@ -88,7 +88,7 @@
 </g>
 <!-- Node78 -->
 <g id="node6" class="node"><title>Node78</title>
-<g id="a_node6"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" target="_top" xlink:title="Create a game from a specification.">
 <polygon fill="white" stroke="black" points="8,-44.5 8,-74.5 110,-74.5 110,-44.5 8,-44.5"/>
 <text text-anchor="start" x="16" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Generator</text>
 <text text-anchor="middle" x="59" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">::create</text>
@@ -116,7 +116,7 @@
 </g>
 <!-- Node81 -->
 <g id="node9" class="node"><title>Node81</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1_texture.xhtml#ac79ebb1a99e21faf9ed7faacdf0d68d5" target="_top" xlink:title="Draws the texture at tile coordinates.">
 <polygon fill="white" stroke="black" points="0,-6 0,-25 118,-25 118,-6 0,-6"/>
 <text text-anchor="middle" x="59" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Texture::draw</text>
 </a>

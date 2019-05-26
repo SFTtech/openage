@@ -47,9 +47,10 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>collection of drawing data for a single tile. </para>
     </briefdescription>
     <detaileddescription>
-<para>collection of drawing data for a single tile. because of influences, a maximum of 8+1 draws could be requested. </para>
+<para>because of influences, a maximum of 8+1 draws could be requested. </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5265">

@@ -266,7 +266,7 @@
 </g>
 <!-- Node8 -->
 <g id="node4" class="node"><title>Node8</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" target="_top" xlink:title="Bitstream that is stored in 16&#45;bit little&#45;endian numbers.">
 <polygon fill="white" stroke="black" points="0,-1019.5 0,-1329.5 156,-1329.5 156,-1019.5 0,-1019.5"/>
 <text text-anchor="start" x="8" y="-1317.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::compress</text>
 <text text-anchor="middle" x="78" y="-1306.5" font-family="Helvetica,sans-Serif" font-size="10.00">::BitStream&lt; inbuf_size &gt;</text>

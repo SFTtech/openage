@@ -9,9 +9,9 @@
       </param>
     </templateparamlist>
     <briefdescription>
+<para>If the core &apos;MyClass&apos; has a shell &apos;MyClassLink&apos; then &apos;Wrap&lt;MyClass&gt;&apos; must have a &apos;using Type = MyClassLink&apos;. </para>
     </briefdescription>
     <detaileddescription>
-<para>If the core &apos;MyClass&apos; has a shell &apos;MyClassLink&apos; then &apos;Wrap&lt;MyClass&gt;&apos; must have a &apos;using Type = MyClassLink&apos; </para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6601">

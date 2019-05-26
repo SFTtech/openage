@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 584,-84 584,4 -4,4"/>
 <!-- Node93 -->
 <g id="node1" class="node"><title>Node93</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Create an internal texture handle.">
 <polygon fill="#bfbfbf" stroke="black" points="458,-24.5 458,-54.5 580,-54.5 580,-24.5 458,-24.5"/>
 <text text-anchor="start" x="466" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="519" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::load_texture</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node94 -->
 <g id="node2" class="node"><title>Node94</title>
-<g id="a_node2"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" target="_top" xlink:title="Query the Texture for a given filename.">
 <polygon fill="white" stroke="black" points="300,-24.5 300,-54.5 422,-54.5 422,-24.5 300,-24.5"/>
 <text text-anchor="start" x="308" y="-42.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::AssetManager</text>
 <text text-anchor="middle" x="361" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00">::get_texture</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node95 -->
 <g id="node3" class="node"><title>Node95</title>
-<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec.xhtml#a0d9bb7cf5c16889a6eab13c714b39ae1" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classopenage_1_1_game_spec.xhtml#a0d9bb7cf5c16889a6eab13c714b39ae1" target="_top" xlink:title="lookup using a texture file name">
 <polygon fill="white" stroke="black" points="150,-49.5 150,-79.5 264,-79.5 264,-49.5 150,-49.5"/>
 <text text-anchor="start" x="158" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">get_texture</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node96 -->
 <g id="node4" class="node"><title>Node96</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" target="_top" xlink:title="fill in the terrain_data attribute of this">
 <polygon fill="white" stroke="black" points="150,-0.5 150,-30.5 264,-30.5 264,-0.5 150,-0.5"/>
 <text text-anchor="start" x="158" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="207" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_terrain</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node97 -->
 <g id="node5" class="node"><title>Node97</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" target="_top" xlink:title="perform the main loading job.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 114,-30.5 114,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::GameSpec::</text>
 <text text-anchor="middle" x="57" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">initialize</text>

@@ -19,7 +19,7 @@
 </g>
 <!-- Node61 -->
 <g id="node2" class="node"><title>Node61</title>
-<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" target="_top" xlink:title="Tests the distribution of the boolean generation.">
 <polygon fill="white" stroke="black" points="156,-195 156,-225 257,-225 257,-195 156,-195"/>
 <text text-anchor="start" x="164" y="-213" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="206.5" y="-202" font-family="Helvetica,sans-Serif" font-size="10.00">::bool_dist</text>
@@ -33,7 +33,7 @@
 </g>
 <!-- Node70 -->
 <g id="node11" class="node"><title>Node70</title>
-<g id="a_node11"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a7c865b312f955cab3ff9ea078fd0cc95" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a7c865b312f955cab3ff9ea078fd0cc95" target="_top" xlink:title="Tests filling integers.">
 <polygon fill="white" stroke="black" points="156,-146 156,-176 257,-176 257,-146 156,-146"/>
 <text text-anchor="start" x="164" y="-164" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="206.5" y="-153" font-family="Helvetica,sans-Serif" font-size="10.00">::fill</text>
@@ -47,7 +47,7 @@
 </g>
 <!-- Node72 -->
 <g id="node13" class="node"><title>Node72</title>
-<g id="a_node13"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a3b24c3f995bfb45b9d833030720bd88f" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a3b24c3f995bfb45b9d833030720bd88f" target="_top" xlink:title="Tests filling doubles.">
 <polygon fill="white" stroke="black" points="156,-58 156,-88 257,-88 257,-58 156,-58"/>
 <text text-anchor="start" x="164" y="-76" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="206.5" y="-65" font-family="Helvetica,sans-Serif" font-size="10.00">::fill_real</text>
@@ -61,7 +61,7 @@
 </g>
 <!-- Node77 -->
 <g id="node18" class="node"><title>Node77</title>
-<g id="a_node18"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#acad40865d58b96a35f6f453e04642f00" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#acad40865d58b96a35f6f453e04642f00" target="_top" xlink:title="Tests the distribution of the bit generator.">
 <polygon fill="white" stroke="black" points="156,-295 156,-325 257,-325 257,-295 156,-295"/>
 <text text-anchor="start" x="164" y="-313" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="206.5" y="-302" font-family="Helvetica,sans-Serif" font-size="10.00">::freq_dist</text>
@@ -75,7 +75,7 @@
 </g>
 <!-- Node79 -->
 <g id="node20" class="node"><title>Node79</title>
-<g id="a_node20"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a1270464ae98991431da5e3fa6ee60ab5" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#a1270464ae98991431da5e3fa6ee60ab5" target="_top" xlink:title="Tests the distribution of the floating point numbers.">
 <polygon fill="white" stroke="black" points="156,-244 156,-274 257,-274 257,-244 156,-244"/>
 <text text-anchor="start" x="164" y="-262" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="206.5" y="-251" font-family="Helvetica,sans-Serif" font-size="10.00">::real_dist</text>
@@ -89,7 +89,7 @@
 </g>
 <!-- Node80 -->
 <g id="node21" class="node"><title>Node80</title>
-<g id="a_node21"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#aa77427d76c14080c4993edd5b79a293e" target="_top" xlink:title=" ">
+<g id="a_node21"><a xlink:href="namespaceopenage_1_1rng_1_1tests.xhtml#aa77427d76c14080c4993edd5b79a293e" target="_top" xlink:title="Tests reproducibility.">
 <polygon fill="white" stroke="black" points="315.5,-102 315.5,-132 416.5,-132 416.5,-102 315.5,-102"/>
 <text text-anchor="start" x="323.5" y="-120" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::tests</text>
 <text text-anchor="middle" x="366" y="-109" font-family="Helvetica,sans-Serif" font-size="10.00">::reproduce</text>
@@ -116,7 +116,7 @@
 </g>
 <!-- Node65 -->
 <g id="node6" class="node"><title>Node65</title>
-<g id="a_node6"><a xlink:href="namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a" target="_top" xlink:title="Returns a seed based on time since epoch as well as data from std::random_device if available.">
 <polygon fill="white" stroke="black" points="297.5,-189.5 297.5,-208.5 434.5,-208.5 434.5,-189.5 297.5,-189.5"/>
 <text text-anchor="middle" x="366" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::random_seed</text>
 </a>
@@ -129,7 +129,7 @@
 </g>
 <!-- Node63 -->
 <g id="node4" class="node"><title>Node63</title>
-<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" target="_top" xlink:title="Factory function to construct a fixed&#45;point number with a given raw value.">
 <polygon fill="white" stroke="black" points="475,-244 475,-274 600,-274 600,-244 475,-244"/>
 <text text-anchor="start" x="483" y="-262" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="537.5" y="-251" font-family="Helvetica,sans-Serif" font-size="10.00">::from_raw_value</text>
@@ -143,7 +143,7 @@
 </g>
 <!-- Node64 -->
 <g id="node5" class="node"><title>Node64</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" target="_top" xlink:title="Converter to retrieve the raw value of the fixed&#45;point number.">
 <polygon fill="white" stroke="black" points="475,-293 475,-323 600,-323 600,-293 475,-293"/>
 <text text-anchor="start" x="483" y="-311" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FixedPoint</text>
 <text text-anchor="middle" x="537.5" y="-300" font-family="Helvetica,sans-Serif" font-size="10.00">::get_raw_value</text>
@@ -170,7 +170,7 @@
 </g>
 <!-- Node67 -->
 <g id="node8" class="node"><title>Node67</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb" target="_top" xlink:title="returns the number of nanoseconds since the UNIX epoch.">
 <polygon fill="white" stroke="black" points="647.5,-159 647.5,-189 752.5,-189 752.5,-159 647.5,-159"/>
 <text text-anchor="start" x="655.5" y="-177" font-family="Helvetica,sans-Serif" font-size="10.00">openage::timing::get</text>
 <text text-anchor="middle" x="700" y="-166" font-family="Helvetica,sans-Serif" font-size="10.00">_real_time</text>
@@ -216,7 +216,7 @@
 </g>
 <!-- Node71 -->
 <g id="node12" class="node"><title>Node71</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a77a4af9133abbcd242c9adf3921bbd89" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#a77a4af9133abbcd242c9adf3921bbd89" target="_top" xlink:title="Effeciently fills a chunk of 64 bit integers.">
 <polygon fill="white" stroke="black" points="308.5,-151.5 308.5,-170.5 423.5,-170.5 423.5,-151.5 308.5,-151.5"/>
 <text text-anchor="middle" x="366" y="-158.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::fill</text>
 </a>
@@ -234,7 +234,7 @@
 </g>
 <!-- Node73 -->
 <g id="node14" class="node"><title>Node73</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab7dbd0bef0c06a30b6724f2352af833c" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classopenage_1_1rng_1_1_r_n_g.xhtml#ab7dbd0bef0c06a30b6724f2352af833c" target="_top" xlink:title="Fills an array of doubles with values in [0, 1) Gives identical results as real() but more effecientl...">
 <polygon fill="white" stroke="black" points="313,-14 313,-44 419,-44 419,-14 313,-14"/>
 <text text-anchor="start" x="321" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">openage::rng::RNG::</text>
 <text text-anchor="middle" x="366" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">fill_real</text>

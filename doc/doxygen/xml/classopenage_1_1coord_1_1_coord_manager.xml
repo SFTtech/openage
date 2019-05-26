@@ -11,9 +11,9 @@
         <name>viewport_size</name>
         <initializer>{800, 600}</initializer>
         <briefdescription>
+<para>What&apos;s the current size of the viewport? (what&apos;s the coordinate of the top right pixel + (1, 1)?) </para>
         </briefdescription>
         <detaileddescription>
-<para>What&apos;s the current size of the viewport? (what&apos;s the coordinate of the top right pixel + (1, 1)?) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -31,9 +31,9 @@
         <name>camgame_phys</name>
         <initializer>{10, 10, 0}</initializer>
         <briefdescription>
+<para>What place (in Phys3) is the origin of the CamGame coordinate system looking at? </para>
         </briefdescription>
         <detaileddescription>
-<para>What place (in Phys3) is the origin of the CamGame coordinate system looking at? </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -49,9 +49,9 @@
         <name>camgame_viewport</name>
         <initializer>{400, 300}</initializer>
         <briefdescription>
+<para>Where in the viewport is the origin of the CamGame coordinate system? (this is usually the center of the viewport). </para>
         </briefdescription>
         <detaileddescription>
-<para>Where in the viewport is the origin of the CamGame coordinate system? (this is usually the center of the viewport). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -67,9 +67,9 @@
         <name>camhud_viewport</name>
         <initializer>{0, 0}</initializer>
         <briefdescription>
+<para>Where in the viewport is the origin of the CamHUD coordinate system? (this is usually the bottom left corner of the viewport) </para>
         </briefdescription>
         <detaileddescription>
-<para>Where in the viewport is the origin of the CamHUD coordinate system? (this is usually the bottom left corner of the viewport) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -85,9 +85,10 @@
         <name>tile_size</name>
         <initializer>{96, 48}</initializer>
         <briefdescription>
+<para>The size of a terrain tile, in pixels. </para>
         </briefdescription>
         <detaileddescription>
-<para>The size of a terrain tile, in pixels. Rile diamonds are 96 pixels wide and 48 pixels high. The area of each tile is 96 * 48 * 0.5 square pixels. </para>
+<para>Rile diamonds are 96 pixels wide and 48 pixels high. The area of each tile is 96 * 48 * 0.5 square pixels. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -112,9 +113,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Holds all coordinate-related state and metadata. </para>
     </briefdescription>
     <detaileddescription>
-<para>Holds all coordinate-related state and metadata.</para>
 <para>Among other things, this stores the camera positions. </para>
     </detaileddescription>
     <collaborationgraph>
