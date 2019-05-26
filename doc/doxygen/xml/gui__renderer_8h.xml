@@ -73,7 +73,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -97,7 +97,7 @@
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26" refid="classqtsdl_1_1_gui_renderer" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">GuiRenderer</ref><sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>allow<sp/>FBO<sp/>variant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>allow<sp/>FBO<sp/>variant</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_1ae2c33e2d2e98c0d479feb9e906db9dd6" kindref="member">GuiRenderer</ref>(SDL_Window<sp/>*window);</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_renderer_1a3331199a681cbf303d2f7aa6d8fe233b" kindref="member">~GuiRenderer</ref>();</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>

@@ -931,7 +931,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -1057,8 +1057,8 @@
 <codeline lineno="179"><highlight class="normal"></highlight></codeline>
 <codeline lineno="180" refid="classopenage_1_1_terrain_1a59ab681b936ea55851dcbffb4e90b7a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_1a59ab681b936ea55851dcbffb4e90b7a0" kindref="member">infinite</ref>;<sp/></highlight></codeline>
 <codeline lineno="181"><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>finite<sp/>terrain<sp/>limits</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>non-square<sp/>shaped<sp/>terrain<sp/>bounds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>finite<sp/>terrain<sp/>limits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>non-square<sp/>shaped<sp/>terrain<sp/>bounds</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="184"><highlight class="normal"></highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;coord::chunk&gt;<sp/><ref refid="classopenage_1_1_terrain_1a143090daace4caa26b8f0e9af5b4b69c" kindref="member">used_chunks</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"></highlight></codeline>
@@ -1084,7 +1084,7 @@
 <codeline lineno="280"><highlight class="normal"></highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a452923c63b865b21223a44ea86714b4a" kindref="member">tile_state</ref><sp/><ref refid="classopenage_1_1_terrain_1ab9457472de4a25ef737684e27d1d5810" kindref="member">check_tile</ref>(const<sp/>coord::tile<sp/>&amp;position);</highlight></codeline>
 <codeline lineno="285"><highlight class="normal"></highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>rename<sp/>to<sp/>is_tile_position_valid</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>rename<sp/>to<sp/>is_tile_position_valid</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/><ref refid="classopenage_1_1_terrain_1aa0e35745e96c0b263a74dcf2ec2abffb" kindref="member">check_tile_position</ref>(const<sp/>coord::tile<sp/>&amp;position);</highlight></codeline>
 <codeline lineno="291"><highlight class="normal"></highlight></codeline>
 <codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/><ref refid="classopenage_1_1_terrain_1a76cd02c887a27a6c91331573ecb84907" kindref="member">validate_terrain</ref>(terrain_t<sp/>terrain_id);</highlight></codeline>

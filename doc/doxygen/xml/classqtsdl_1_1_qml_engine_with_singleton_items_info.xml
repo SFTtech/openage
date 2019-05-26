@@ -96,7 +96,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="30" bodyend="35"/>
-        <references refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" compoundref="algorithm_8h" startline="17" endline="22">openage::util::for_each</references>
+        <references refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" compoundref="algorithm_8h" startline="18" endline="23">openage::util::for_each</references>
         <references refid="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e">qtsdl::GuiImageProviderImpl::get_id</references>
         <references refid="classqtsdl_1_1_gui_image_provider_impl_1ac13c4caf2c86355f2ae34c8c5c436f99">qtsdl::GuiImageProviderImpl::give_up</references>
         <references refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1ae6f386194ecace3b1d7239046c143e00" compoundref="qml__engine__with__singleton__items__info_8h" startline="37">image_providers</references>

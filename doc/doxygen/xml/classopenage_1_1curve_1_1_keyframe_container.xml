@@ -171,7 +171,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Insert a new element without a hint.</para>
+<para><xrefsect id="todo_1_todo000008"><xreftitle>Todo</xreftitle><xrefdescription><para>add something like <computeroutput>previous</computeroutput> that returns element with e-&gt;time &lt; time probably just calls <computeroutput>last</computeroutput> and walks back one element if that is not at <ref refid="classopenage_1_1curve_1_1_keyframe_container_1a4469b92a601c321c3353c663853d9851" kindref="member">begin()</ref> already </para>
+</xrefdescription></xrefsect>Insert a new element without a hint.</para>
 <para>This function is not recommended for use, whenever possible, keep a hint to insert the data. </para>
         </detaileddescription>
         <inbodydescription>

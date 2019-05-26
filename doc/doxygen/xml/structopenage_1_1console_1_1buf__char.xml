@@ -19,8 +19,8 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="67" bodyend="-1"/>
         <referencedby refid="structopenage_1_1console_1_1buf__char_1a97f99f1590d7076806f604323717db26" compoundref="buf_8h" startline="54" endline="60">buf_char</referencedby>
         <referencedby refid="structopenage_1_1console_1_1buf__char_1ad5cefd7a1f326dc098b3142f04c63b80" compoundref="buf_8h" startline="81" endline="87">operator==</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" compoundref="buf_8cpp" startline="392" endline="413">openage::console::Buf::pop_last_char</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" compoundref="buf_8cpp" startline="478" endline="596">openage::console::Buf::print_codepoint</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" compoundref="buf_8cpp" startline="393" endline="414">openage::console::Buf::pop_last_char</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" compoundref="buf_8cpp" startline="479" endline="597">openage::console::Buf::print_codepoint</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
@@ -38,7 +38,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="71" bodyend="-1"/>
         <referencedby refid="structopenage_1_1console_1_1buf__char_1ad5cefd7a1f326dc098b3142f04c63b80" compoundref="buf_8h" startline="81" endline="87">operator==</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="919" endline="1076">openage::console::Buf::process_sgr_code</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
@@ -56,7 +56,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="75" bodyend="-1"/>
         <referencedby refid="structopenage_1_1console_1_1buf__char_1ad5cefd7a1f326dc098b3142f04c63b80" compoundref="buf_8h" startline="81" endline="87">operator==</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="919" endline="1076">openage::console::Buf::process_sgr_code</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
@@ -74,7 +74,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="79" bodyend="-1"/>
         <referencedby refid="structopenage_1_1console_1_1buf__char_1ad5cefd7a1f326dc098b3142f04c63b80" compoundref="buf_8h" startline="81" endline="87">operator==</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="919" endline="1076">openage::console::Buf::process_sgr_code</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
         <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>

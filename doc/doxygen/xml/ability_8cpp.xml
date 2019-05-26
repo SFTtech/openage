@@ -939,7 +939,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -1302,7 +1302,7 @@
 <codeline lineno="361"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="362"><highlight class="normal"></highlight></codeline>
 <codeline lineno="363" refid="classopenage_1_1_patrol_ability_1aedf6e8959e211bd9682efe7f1c5da75a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_patrol_ability_1aedf6e8959e211bd9682efe7f1c5da75a" kindref="member">PatrolAbility::can_invoke</ref>(<ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref><sp/>&amp;</highlight><highlight class="comment">/*to_modify*/</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_command" kindref="compound">Command</ref><sp/>&amp;</highlight><highlight class="comment">/*cmd*/</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>implement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>implement</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="366"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="367"><highlight class="normal"></highlight></codeline>
@@ -1311,7 +1311,7 @@
 <codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(play_sound<sp/>&amp;&amp;<sp/>this-&gt;<ref refid="classopenage_1_1_patrol_ability_1adbba33dbde7561e3602f118f2274bece" kindref="member">sound</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_patrol_ability_1adbba33dbde7561e3602f118f2274bece" kindref="member">sound</ref>-&gt;<ref refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" kindref="member">play</ref>();</highlight></codeline>
 <codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>implement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>implement</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="374"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="375"><highlight class="normal"></highlight></codeline>
 <codeline lineno="376" refid="classopenage_1_1_convert_ability_1a7be4a1a5c6a013ce824647fdb8e03dec" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_convert_ability_1a7be4a1a5c6a013ce824647fdb8e03dec" kindref="member">ConvertAbility::ConvertAbility</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_sound" kindref="compound">Sound</ref><sp/>*s)</highlight></codeline>

@@ -344,7 +344,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math.h" bodystart="17" bodyend="19"/>
         <references refid="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" compoundref="fixed__point_8h" startline="470" endline="472">std::sqrt</references>
         <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">openage::UnitTexture::draw</referencedby>
-        <referencedby refid="structopenage_1_1coord_1_1phys3__delta_1af63b7f5b841ffab9004b2ffd3550ab9e" compoundref="phys_8cpp" startline="81" endline="83">openage::coord::phys3_delta::length</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1phys3__delta_1af63b7f5b841ffab9004b2ffd3550ab9e" compoundref="phys_8cpp" startline="83" endline="85">openage::coord::phys3_delta::length</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

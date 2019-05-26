@@ -133,7 +133,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.cpp" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.cpp" bodystart="20" bodyend="40"/>
         <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
-        <referencedby refid="namespaceopenage_1_1event_1_1demo_1a941b2bcbd6e44b20cc352eb1c2b64068" compoundref="event_2demo_2main_8cpp" startline="42" endline="206">openage::event::demo::curvepong</referencedby>
+        <referencedby refid="namespaceopenage_1_1event_1_1demo_1a941b2bcbd6e44b20cc352eb1c2b64068" compoundref="event_2demo_2main_8cpp" startline="42" endline="205">openage::event::demo::curvepong</referencedby>
         <referencedby refid="classopenage_1_1options_1_1_var_1af769e8f2fe94158c85c15ab60030ed06" compoundref="options_8h" startline="269" endline="274">openage::options::Var&lt; bool &gt;::Var</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a50e35d7087beb2351f2d2f591ba8c4b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

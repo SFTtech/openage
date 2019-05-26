@@ -93,7 +93,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Loads a chunk of stereo pcm data from the resource. The chunk of data begins at the given offset from the beginning of the resource. The actual read number of int16_t values is returned. TODO: Returns zero if the end of resource is reached.</para>
+<para>Loads a chunk of stereo pcm data from the resource. The chunk of data begins at the given offset from the beginning of the resource. The actual read number of int16_t values is returned. <xrefsect id="todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>Returns zero if the end of resource is reached.</para>
+</xrefdescription></xrefsect></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>chunk_buffer</parametername>

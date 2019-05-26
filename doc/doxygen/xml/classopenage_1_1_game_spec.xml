@@ -704,7 +704,8 @@
 <para><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> gives a collection of all game elements this currently includes unit types and terrain types This provides a system which can easily allow game modding</para>
 <para>uses the <ref refid="classopenage_1_1_asset_manager" kindref="compound">AssetManager</ref> to gather graphic data, composite textures and sounds.</para>
 <para>all types are sorted and stored by id values, each data object is referenced by a type and id pair</para>
-<para>dealing directly with files done by asset manager TODO: should the audio loading should be moved there? </para>
+<para>dealing directly with files done by asset manager <xrefsect id="todo_1_todo000015"><xreftitle>Todo</xreftitle><xrefdescription><para>should the audio loading should be moved there? </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <collaborationgraph>
       <node id="2589">

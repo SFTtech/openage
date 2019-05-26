@@ -407,7 +407,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.cpp" line="152" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.cpp" bodystart="152" bodyend="154"/>
         <references refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aeb7ee0fb585e2ac64fdc086466c474b1">UTF8</references>
         <referencedby refid="classopenage_1_1input_1_1_input_manager_1a2e46dfc175d1fd66e92a8644d994e6ab" compoundref="input__manager_8cpp" startline="315" endline="381">openage::input::InputManager::on_input</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="58" endline="106">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1input_1abae2435eecb13af4c06e9449299ceb41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref></type>

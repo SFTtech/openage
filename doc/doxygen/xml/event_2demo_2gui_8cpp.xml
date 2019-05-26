@@ -181,7 +181,7 @@
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref><sp/>&amp;</highlight><highlight class="comment">/*now*/</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>record<sp/>the<sp/>screen<sp/>dimensions<sp/>in<sp/>the<sp/>game<sp/>state</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>make<sp/>the<sp/>display_boundary<sp/>a<sp/>curve<sp/>as<sp/>well.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>make<sp/>the<sp/>display_boundary<sp/>a<sp/>curve<sp/>as<sp/>well.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>getmaxyx(stdscr,<sp/>state-&gt;display_boundary[1],<sp/>state-&gt;display_boundary[0]);</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;display_boundary[1]<sp/>-=<sp/>1;</highlight></codeline>
 <codeline lineno="160"><highlight class="normal">}</highlight></codeline>
@@ -265,7 +265,7 @@
 <codeline lineno="238"><highlight class="normal"></highlight></codeline>
 <codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>draw<sp/>the<sp/>ball</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>attron(COLOR_PAIR(COLOR_BALL));</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;draw_ball(state-&gt;ball-&gt;position-&gt;get(now),<sp/></highlight><highlight class="stringliteral">&quot;M&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>use<sp/>&quot;⚽&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;draw_ball(state-&gt;ball-&gt;position-&gt;get(now),<sp/></highlight><highlight class="stringliteral">&quot;M&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>use<sp/>&quot;⚽&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>attroff(COLOR_PAIR(COLOR_BALL));</highlight></codeline>
 <codeline lineno="243"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="244"><highlight class="normal"></highlight></codeline>

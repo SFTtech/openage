@@ -474,7 +474,8 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Base class for actions which target another unit such as gather, attack, heal and convert TODO implement min range </para>
+<para>Base class for actions which target another unit such as gather, attack, heal and convert <xrefsect id="todo_1_todo000032"><xreftitle>Todo</xreftitle><xrefdescription><para>implement min range </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="5145">

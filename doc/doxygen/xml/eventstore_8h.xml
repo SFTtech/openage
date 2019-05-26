@@ -432,7 +432,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2018-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2018-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -450,7 +450,7 @@
 <codeline lineno="20" refid="classopenage_1_1event_1_1_event_store" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1event_1_1_event_store" kindref="compound">EventStore</ref><sp/>{</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>don&apos;t<sp/>store<sp/>a<sp/>double-sharedpointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>don&apos;t<sp/>store<sp/>a<sp/>double-sharedpointer.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>instead,<sp/>use<sp/>the<sp/>event-sharedpointer<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_pairing_heap" kindref="compound">heap_t</ref><sp/>=<sp/><ref refid="classopenage_1_1datastructure_1_1_pairing_heap" kindref="compound">datastructure::PairingHeap&lt;std::shared_ptr&lt;Event&gt;</ref>,</highlight></codeline>
 <codeline lineno="26" refid="classopenage_1_1event_1_1_event_store_1afef869c8828b088e15582eec63ae79bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1_shared_ptr_less" kindref="compound">util::SharedPtrLess&lt;Event&gt;</ref>&gt;;</highlight></codeline>

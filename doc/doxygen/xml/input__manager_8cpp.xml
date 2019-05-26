@@ -394,7 +394,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -659,7 +659,7 @@
 <codeline lineno="263"><highlight class="normal"></highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Border<sp/>width<sp/>to<sp/>consider<sp/>screen<sp/>edges<sp/>for<sp/>scrolling.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>AoE<sp/>II<sp/>appears<sp/>to<sp/>be<sp/>approx<sp/>10px.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>make<sp/>configurable<sp/>through<sp/>cvar.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>make<sp/>configurable<sp/>through<sp/>cvar.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>edge_offset<sp/>=<sp/>10;</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"></highlight></codeline>
 <codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(edge<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7aa684d325a7303f52e64011467ff5c5758" kindref="member">Edge::LEFT</ref><sp/>&amp;&amp;<sp/>x<sp/>&lt;=<sp/>edge_offset)<sp/>{</highlight></codeline>
@@ -741,7 +741,7 @@
 <codeline lineno="345"><highlight class="normal"></highlight></codeline>
 <codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_MOUSEBUTTONDOWN:<sp/>{</highlight></codeline>
 <codeline lineno="347"><highlight class="normal"></highlight></codeline>
-<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>set<sp/>which<sp/>buttons</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>set<sp/>which<sp/>buttons</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e-&gt;button.button<sp/>==<sp/>2)<sp/>{</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1abedf603b902412de66c56b0eb8aed4da" kindref="member">set_relative</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -781,7 +781,7 @@
 <codeline lineno="385"><highlight class="normal"></highlight></codeline>
 <codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="387"><highlight class="normal"></highlight></codeline>
-<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>this<sp/>only<sp/>checks<sp/>the<sp/>by_type<sp/>mappings,<sp/>the<sp/>others<sp/>are<sp/>missing!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>this<sp/>only<sp/>checks<sp/>the<sp/>by_type<sp/>mappings,<sp/>the<sp/>others<sp/>are<sp/>missing!</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;action<sp/>:<sp/>ctx_actions)<sp/>{</highlight></codeline>
 <codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>keyboard_key;</highlight></codeline>
 <codeline lineno="391"><highlight class="normal"></highlight></codeline>
@@ -794,8 +794,8 @@
 <codeline lineno="398"><highlight class="normal"></highlight></codeline>
 <codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>only<sp/>possible<sp/>if<sp/>the<sp/>action<sp/>is<sp/>registered,</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>then<sp/>this-&gt;input_manager<sp/>!=<sp/>nullptr.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>try<sp/>to<sp/>purge<sp/>the<sp/>action<sp/>manager<sp/>access<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>get_name<sp/>takes<sp/>O(n)<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>try<sp/>to<sp/>purge<sp/>the<sp/>action<sp/>manager<sp/>access<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>get_name<sp/>takes<sp/>O(n)<sp/>time</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>action_type_str<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1aa0777d6b8ecc513c2a90ae8273d1938c" kindref="member">get_action_manager</ref>()-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a44e53d5edb2092424df17b709b743358" kindref="member">get_name</ref>(action.first);</highlight></codeline>
 <codeline lineno="404"><highlight class="normal"></highlight></codeline>
 <codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.push_back(keyboard_key<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>action_type_str);</highlight></codeline>

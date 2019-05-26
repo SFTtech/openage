@@ -99,8 +99,8 @@
         <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1a45599db3b89b27ad5c53ca900a67df85" compoundref="pairing__heap_8h" startline="422" endline="424">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::size</references>
         <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
         <referencedby refid="classopenage_1_1event_1_1_event_queue_1ac5abd71bf0167e4b7d36f19a29f4a611" compoundref="eventqueue_8cpp" startline="16" endline="73">openage::event::EventQueue::create_event</referencedby>
-        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" compoundref="eventqueue_8cpp" startline="137" endline="144">openage::event::EventQueue::enqueue_change</referencedby>
-        <referencedby refid="classopenage_1_1event_1_1_event_queue_1ac4990fe7904f09c54158de776c6cb805" compoundref="eventqueue_8cpp" startline="147" endline="149">openage::event::EventQueue::reenqueue</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" compoundref="eventqueue_8cpp" startline="138" endline="145">openage::event::EventQueue::enqueue_change</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1ac4990fe7904f09c54158de776c6cb805" compoundref="eventqueue_8cpp" startline="148" endline="150">openage::event::EventQueue::reenqueue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1a6758260ffbc439c15c70590979acb2f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
@@ -120,7 +120,7 @@
         <references refid="classopenage_1_1event_1_1_event_store_1a03483370a9104e396d014f7cba7caf1c" compoundref="eventstore_8h" startline="46">heap</references>
         <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1ac6bcfcb890dd8d546b1b4c466cf09009" compoundref="pairing__heap_8h" startline="236" endline="238">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::pop</references>
         <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1a45599db3b89b27ad5c53ca900a67df85" compoundref="pairing__heap_8h" startline="422" endline="424">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::size</references>
-        <referencedby refid="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" compoundref="eventqueue_8cpp" startline="157" endline="175">openage::event::EventQueue::take_event</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" compoundref="eventqueue_8cpp" startline="158" endline="176">openage::event::EventQueue::take_event</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1abbad60ac960f4020d813237260867dcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
@@ -136,7 +136,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.cpp" bodystart="49" bodyend="51"/>
         <references refid="classopenage_1_1event_1_1_event_store_1a03483370a9104e396d014f7cba7caf1c" compoundref="eventstore_8h" startline="46">heap</references>
         <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1ad22ca21f8e7319ea14cd3e14cf5274c4" compoundref="pairing__heap_8h" startline="358" endline="360">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::top</references>
-        <referencedby refid="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" compoundref="eventqueue_8cpp" startline="157" endline="175">openage::event::EventQueue::take_event</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" compoundref="eventqueue_8cpp" startline="158" endline="176">openage::event::EventQueue::take_event</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1acf182eb2f89c80bb6c790a24d192398f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -157,7 +157,7 @@
         <references refid="classopenage_1_1event_1_1_event_store_1abc046823b545ca825388800a22302ccd" compoundref="eventstore_8h" startline="47">events</references>
         <references refid="classopenage_1_1event_1_1_event_store_1a03483370a9104e396d014f7cba7caf1c" compoundref="eventstore_8h" startline="46">heap</references>
         <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1a8f6c87e73e47397b92a2766989a30c0f" compoundref="pairing__heap_8h" startline="334" endline="352">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::unlink_node</references>
-        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a42433f50adffb7e0a20c43889292e54c" compoundref="eventqueue_8cpp" startline="129" endline="134">openage::event::EventQueue::remove</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a42433f50adffb7e0a20c43889292e54c" compoundref="eventqueue_8cpp" startline="129" endline="135">openage::event::EventQueue::remove</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1ae8a67463b44b369d9402186cf332e247" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -180,7 +180,7 @@
         <references refid="classopenage_1_1event_1_1_event_store_1a03483370a9104e396d014f7cba7caf1c" compoundref="eventstore_8h" startline="46">heap</references>
         <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
         <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1aab81daeebac3d236ced4a85117483d76" compoundref="pairing__heap_8h" startline="397" endline="406">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::update</references>
-        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" compoundref="eventqueue_8cpp" startline="137" endline="144">openage::event::EventQueue::enqueue_change</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" compoundref="eventqueue_8cpp" startline="138" endline="145">openage::event::EventQueue::enqueue_change</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1a4be75c01219e59abd20b9f906c8b7154" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -199,7 +199,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.cpp" bodystart="78" bodyend="80"/>
         <references refid="classopenage_1_1event_1_1_event_store_1abc046823b545ca825388800a22302ccd" compoundref="eventstore_8h" startline="47">events</references>
-        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" compoundref="eventqueue_8cpp" startline="137" endline="144">openage::event::EventQueue::enqueue_change</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" compoundref="eventqueue_8cpp" startline="138" endline="145">openage::event::EventQueue::enqueue_change</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1a5085887950c62e1061fea8e2edaf76cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -231,7 +231,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.cpp" bodystart="89" bodyend="91"/>
         <references refid="classopenage_1_1event_1_1_event_store_1abc046823b545ca825388800a22302ccd" compoundref="eventstore_8h" startline="47">events</references>
         <referencedby refid="classopenage_1_1event_1_1_loop_1aa73104f71472a83e1afff4f11e0c619f" compoundref="loop_8cpp" startline="90" endline="155">openage::event::Loop::execute_events</referencedby>
-        <referencedby refid="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" compoundref="eventqueue_8cpp" startline="157" endline="175">openage::event::EventQueue::take_event</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" compoundref="eventqueue_8cpp" startline="158" endline="176">openage::event::EventQueue::take_event</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1ad91190c9873619a057d067282966d68c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>

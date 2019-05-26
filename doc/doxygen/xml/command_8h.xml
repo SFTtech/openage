@@ -544,7 +544,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -586,7 +586,7 @@
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
 <codeline lineno="48"><highlight class="comment"><sp/>*<sp/>Game<sp/>command<sp/>from<sp/>the<sp/>ui</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>TODO<sp/>reorganize<sp/>the<sp/>names<sp/>of<sp/>the<sp/>optional<sp/>variables<sp/>and<sp/>their<sp/>getters</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>\todo<sp/>reorganize<sp/>the<sp/>names<sp/>of<sp/>the<sp/>optional<sp/>variables<sp/>and<sp/>their<sp/>getters</highlight></codeline>
 <codeline lineno="50"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="51" refid="classopenage_1_1_command" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_command" kindref="compound">Command</ref><sp/>{</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
@@ -631,7 +631,7 @@
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
 <codeline lineno="135" refid="classopenage_1_1_command_1a58563daff1a76388ea2a310bc1b329c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_command_1a58563daff1a76388ea2a310bc1b329c7" kindref="member">has_pos</ref>;</highlight></codeline>
 <codeline lineno="136" refid="classopenage_1_1_command_1aee4e9b6d1d304fc73f40eee64a463ee6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref><sp/>*<ref refid="classopenage_1_1_command_1aee4e9b6d1d304fc73f40eee64a463ee6" kindref="member">u</ref>;</highlight></codeline>
-<codeline lineno="137" refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/><ref refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" kindref="member">pos</ref><sp/>=<sp/>{0,<sp/>0,<sp/>0};<sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>make<sp/>pos<sp/>a<sp/>c++17<sp/>optional</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/><ref refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" kindref="member">pos</ref><sp/>=<sp/>{0,<sp/>0,<sp/>0};<sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>make<sp/>pos<sp/>a<sp/>c++17<sp/>optional</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="138" refid="classopenage_1_1_command_1aaa56b25674639d4f59768ebbc9e60eb2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref><sp/>*<ref refid="classopenage_1_1_command_1aaa56b25674639d4f59768ebbc9e60eb2" kindref="member">unit_type</ref>;</highlight></codeline>
 <codeline lineno="139" refid="classopenage_1_1_command_1aa45b741a5b34a55bde6966849ad9da5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_research" kindref="compound">Research</ref><sp/>*<ref refid="classopenage_1_1_command_1aa45b741a5b34a55bde6966849ad9da5d" kindref="member">res</ref>;</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>

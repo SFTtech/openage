@@ -319,7 +319,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -412,7 +412,7 @@
 <codeline lineno="132"><highlight class="normal"></highlight></codeline>
 <codeline lineno="133" refid="namespaceopenage_1_1options_1a7019eef55db7ca0045a6480fe0bb22dd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a7019eef55db7ca0045a6480fe0bb22dd" kindref="member">opt_func_t</ref><sp/>=<sp/>std::function&lt;<ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref>()&gt;;</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TODO<sp/>string<sp/>description</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//<sp/>\todo<sp/>string<sp/>description</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>base<sp/>class<sp/>for<sp/>event_class,<sp/>event,<sp/>action_t<sp/>mapped<sp/>to<sp/>a<sp/>function</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>could<sp/>be<sp/>constructed<sp/>with<sp/>a<sp/>context<sp/>and<sp/>bind<sp/>itself<sp/>using<sp/>the<sp/>required<sp/>types</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="138" refid="classopenage_1_1options_1_1_option_action" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_action" kindref="compound">OptionAction</ref><sp/>{</highlight></codeline>

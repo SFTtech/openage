@@ -272,7 +272,8 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>A interval triggering timer used in actions. TODO find a better name for triggers </para>
+<para>A interval triggering timer used in actions. <xrefsect id="todo_1_todo000031"><xreftitle>Todo</xreftitle><xrefdescription><para>find a better name for triggers </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <collaborationgraph>
       <node id="3871">

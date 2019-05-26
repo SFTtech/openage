@@ -19,7 +19,7 @@
         <referencedby refid="classopenage_1_1input_1_1_input_context_1a97804df5309a2fd7773b02568c8ca461" compoundref="input__context_8cpp" startline="46" endline="74">openage::input::InputContext::execute_if_bound</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
         <referencedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f" compoundref="game__control_8cpp" startline="547" endline="577">openage::EditorMode::on_game_control_set</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="58" endline="106">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1input_1_1action__arg__t_1acb2429b802ec5c65f21c65a0181d3d14" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenage_1_1coord_1_1input" kindref="compound">coord::input</ref></type>

@@ -30,7 +30,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>The min range of the attack TODO not used </para>
+<para>The min range of the attack <xrefsect id="todo_1_todo000039"><xreftitle>Todo</xreftitle><xrefdescription><para>not used </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -86,7 +87,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>If the attack can damage allied (friendly) units. TODO not used </para>
+<para>If the attack can damage allied (friendly) units. <xrefsect id="todo_1_todo000040"><xreftitle>Todo</xreftitle><xrefdescription><para>not used </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -100,7 +102,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>The radius of the area of effect of the attack or 0 if there is no area_of_effect. TODO not used </para>
+<para>The radius of the area of effect of the attack or 0 if there is no area_of_effect. <xrefsect id="todo_1_todo000041"><xreftitle>Todo</xreftitle><xrefdescription><para>not used </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -201,7 +204,9 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>TODO can a unit have multiple attacks such as villagers hunting map target classes onto attacks TODO remove the first constructor and the default values after (keep for now for compatibility) </para>
+<para><xrefsect id="todo_1_todo000035"><xreftitle>Todo</xreftitle><xrefdescription><para>can a unit have multiple attacks such as villagers hunting map target classes onto attacks </para>
+<para>remove the first constructor and the default values after (keep for now for compatibility) </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="277">

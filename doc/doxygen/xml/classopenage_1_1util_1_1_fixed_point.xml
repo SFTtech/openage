@@ -423,7 +423,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="263" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="263" bodyend="265"/>
-        <referencedby refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" compoundref="terrain__object_8cpp" startline="426" endline="428">openage::RadialObject::contains</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" compoundref="terrain__object_8cpp" startline="427" endline="429">openage::RadialObject::contains</referencedby>
         <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
         <referencedby refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" compoundref="continuous_8h" startline="32" endline="61">openage::curve::Continuous&lt; T &gt;::get</referencedby>
         <referencedby refid="classopenage_1_1util_1_1_fixed_point_1aa0eb736578910b123ea19652c670daab" compoundref="fixed__point_8h" startline="338" endline="340">openage::util::FixedPoint&lt; int64_t, 16 &gt;::hypot</referencedby>

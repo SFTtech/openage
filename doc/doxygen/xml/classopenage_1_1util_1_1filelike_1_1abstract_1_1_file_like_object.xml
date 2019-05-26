@@ -355,8 +355,8 @@
         <references refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a157e465a75a721fa7b2f805ff57c4d5f" compoundref="slp__converter__pool_8py" startline="80" endline="87">openage.convert.slp_converter_pool.SLPConverterPool.close</references>
         <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a7ad98df2b552e013bce31d81a5e36d23">openage::util::filelike::FileLike::close</references>
         <references refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a007c0eefc1bd3165112c787fb5e70f75" compoundref="filelike_2abstract_8py" startline="90" endline="91">openage.util.filelike.abstract.FileLikeObject.close</references>
-        <references refid="classopenage_1_1util_1_1_file_1a529bcc6a1c3b4b68db36e6524340cc11" compoundref="file_8cpp" startline="86" endline="88">openage::util::File::close</references>
         <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1a0a78e07f80c2a50875e3d689df488e34" compoundref="lzxdstream_8py" startline="98" endline="102">openage.cabextract.lzxdstream.LZXDStream.close</references>
+        <references refid="classopenage_1_1util_1_1_file_1a529bcc6a1c3b4b68db36e6524340cc11" compoundref="file_8cpp" startline="86" endline="88">openage::util::File::close</references>
         <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ae5a7fefaa419877c7b44e69e7451c6f8" compoundref="cab_8py" startline="550" endline="555">openage.cabextract.cab.CABFolderStream.close</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

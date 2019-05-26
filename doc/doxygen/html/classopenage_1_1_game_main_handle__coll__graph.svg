@@ -614,7 +614,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node35 -->
 <g id="node35" class="node"><title>Node35</title>
-<g id="a_node35"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node35"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title="odo this whole class seems rather obsolete...">
 <polygon fill="white" stroke="black" points="2022.5,-1242.5 2022.5,-1365.5 2174.5,-1365.5 2174.5,-1242.5 2022.5,-1242.5"/>
 <text text-anchor="middle" x="2098.5" y="-1353.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ActionManager</text>
 <polyline fill="none" stroke="black" points="2022.5,-1346.5 2174.5,-1346.5 "/>

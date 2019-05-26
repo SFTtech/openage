@@ -13,7 +13,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>The tile position this node is associated to. todo make const </para>
+<para>The tile position this node is associated to. <xrefsect id="todo_1_todo000026"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

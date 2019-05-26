@@ -87,7 +87,7 @@
 </g>
 <!-- Node193 -->
 <g id="node5" class="node"><title>Node193</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title="odo remove, here for backwards compatibility">
 <polygon fill="white" stroke="black" points="550,-88 550,-118 681,-118 681,-88 550,-88"/>
 <text text-anchor="start" x="558" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <text text-anchor="middle" x="615.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::ResourceBundle</text>

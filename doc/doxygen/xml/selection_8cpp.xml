@@ -1423,7 +1423,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="selection_8h" kindref="compound">selection.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -1699,7 +1699,7 @@
 <codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(u.second.is_valid()<sp/>&amp;&amp;<sp/>u.second.get()-&gt;is_own_unit(cmd.<ref refid="classopenage_1_1_command_1a9aee3c6c48bb4f2b343dc2633389082c" kindref="member">player</ref>))<sp/>{</highlight></codeline>
 <codeline lineno="275"><highlight class="normal"></highlight></codeline>
 <codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>allow<sp/>unit<sp/>to<sp/>find<sp/>best<sp/>use<sp/>of<sp/>the<sp/>command</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>queue_cmd<sp/>returns<sp/>ability<sp/>which<sp/>allows<sp/>playing<sp/>of<sp/>sound</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>queue_cmd<sp/>returns<sp/>ability<sp/>which<sp/>allows<sp/>playing<sp/>of<sp/>sound</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u.second.get()-&gt;queue_cmd(cmd);</highlight></codeline>
 <codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -1745,7 +1745,7 @@
 <codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_building<sp/>=<sp/>u-&gt;<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6" kindref="member">attr_type::building</ref>);</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"></highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>owner</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>implement<sp/>allied<sp/>units</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>implement<sp/>allied<sp/>units</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(u-&gt;<ref refid="classopenage_1_1_unit_1aba4a16068cf5a6b218a4c78f499874b0" kindref="member">is_own_unit</ref>(player))<sp/>{</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is_building<sp/>?<sp/><ref refid="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cdacec576a55414cd51591ce1b0794dc1fa" kindref="member">selection_type_t::own_buildings</ref><sp/>:<sp/><ref refid="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cda05e717c9df8ba7e69bb8f3db541fcb7c" kindref="member">selection_type_t::own_units</ref>;</highlight></codeline>
 <codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>

@@ -20,9 +20,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="285" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" bodystart="285" bodyend="-1"/>
         <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" compoundref="bytequeue_8py" startline="43" endline="45">openage.util.bytequeue.ByteQueue.__len__</referencedby>
         <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
-        <referencedby refid="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" compoundref="terrain__object_8cpp" startline="306" endline="308">get_range</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" compoundref="terrain__object_8cpp" startline="307" endline="309">get_range</referencedby>
         <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
-        <referencedby refid="classopenage_1_1_square_object_1ac5232c53c071a31afb4be3f6ffe45b10" compoundref="terrain__object_8cpp" startline="380" endline="382">min_axis</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1ac5232c53c071a31afb4be3f6ffe45b10" compoundref="terrain__object_8cpp" startline="381" endline="383">min_axis</referencedby>
         <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
         <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
       </memberdef>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="279" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="304" bodyend="304"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="279" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="305" bodyend="305"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="structopenage_1_1tile__range" kindref="compound">tile_range</ref></type>
@@ -101,11 +101,11 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="304" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="306" bodyend="308"/>
-        <references refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="469" endline="484">openage::building_center</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="304" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="307" bodyend="309"/>
+        <references refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="470" endline="485">openage::building_center</references>
         <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
         <references refid="classopenage_1_1_square_object_1a3c42ee56a8eedf741695e75ef70faeb7" compoundref="terrain__object_8h" startline="285">size</references>
-        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="347" endline="378">intersects</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="348" endline="379">intersects</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
@@ -124,14 +124,14 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="306" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="310" bodyend="322"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="306" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="311" bodyend="323"/>
         <references refid="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" compoundref="terrain__object_8h" startline="37">openage::tile_range::end</references>
         <references refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" compoundref="fixed__point_8h" startline="498" endline="500">std::hypot</references>
         <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
         <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
         <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
         <references refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" compoundref="terrain__object_8h" startline="36">openage::tile_range::start</references>
-        <references refid="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" compoundref="tile_8cpp" startline="21" endline="23">openage::coord::tile::to_phys2</references>
+        <references refid="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" compoundref="tile_8cpp" startline="23" endline="25">openage::coord::tile::to_phys2</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1aaab1452776a2962c6ccb6bf3b55efecf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
@@ -155,13 +155,13 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="307" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="324" bodyend="334"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="307" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="325" bodyend="335"/>
         <references refid="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" compoundref="terrain__object_8h" startline="37">openage::tile_range::end</references>
         <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
         <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
         <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
         <references refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" compoundref="terrain__object_8h" startline="36">openage::tile_range::start</references>
-        <references refid="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" compoundref="tile_8cpp" startline="21" endline="23">openage::coord::tile::to_phys2</references>
+        <references refid="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" compoundref="tile_8cpp" startline="23" endline="25">openage::coord::tile::to_phys2</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1a0deacb1dd962cd1729e6765e8dea01de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -180,9 +180,9 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="308" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="336" bodyend="345"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="308" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="337" bodyend="346"/>
         <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
-        <references refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="444" endline="467">openage::tile_list</references>
+        <references refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="445" endline="468">openage::tile_list</references>
         <references refid="structopenage_1_1coord_1_1tile3_1af828e2ee284deb35ce13d30b57b14ad0" compoundref="tile_8h" startline="59" endline="61">openage::coord::tile3::to_tile</references>
         <references refid="structopenage_1_1coord_1_1phys3_1a8ed61fb85a083922af8fbbabd087ae31" compoundref="phys_8cpp" startline="16" endline="18">openage::coord::phys3::to_tile3</references>
       </memberdef>
@@ -207,17 +207,17 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="309" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="347" bodyend="378"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="309" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="348" bodyend="379"/>
         <references refid="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" compoundref="terrain__object_8h" startline="37">openage::tile_range::end</references>
         <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
-        <references refid="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" compoundref="terrain__object_8cpp" startline="306" endline="308">get_range</references>
+        <references refid="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" compoundref="terrain__object_8cpp" startline="307" endline="309">get_range</references>
         <references refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" compoundref="fixed__point_8h" startline="498" endline="500">std::hypot</references>
         <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
         <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
         <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
         <references refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" compoundref="terrain__object_8h" startline="36">openage::tile_range::start</references>
         <references refid="classopenage_1_1_terrain_object_1a8c5e009bd234e32fdcf21b51dde4061e" compoundref="terrain__object_8h" startline="248">openage::TerrainObject::terrain</references>
-        <references refid="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" compoundref="tile_8cpp" startline="21" endline="23">openage::coord::tile::to_phys2</references>
+        <references refid="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" compoundref="tile_8cpp" startline="23" endline="25">openage::coord::tile::to_phys2</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1ac5232c53c071a31afb4be3f6ffe45b10" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
@@ -232,7 +232,7 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="310" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="380" bodyend="382"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="310" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="381" bodyend="383"/>
         <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
         <references refid="classopenage_1_1_square_object_1a3c42ee56a8eedf741695e75ef70faeb7" compoundref="terrain__object_8h" startline="285">size</references>
       </memberdef>
@@ -257,7 +257,7 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="313" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="292" bodyend="295"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="313" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="293" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1a625e0ffb10a54ec8ed01d865a52bb2ce" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -282,7 +282,7 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="314" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="297" bodyend="302"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="314" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="298" bodyend="303"/>
         <references refid="classopenage_1_1_terrain_object_1a48b30f255fce4952271b5fd633daa488" compoundref="terrain__object_8h" startline="261">openage::TerrainObject::outline_texture</references>
       </memberdef>
       </sectiondef>

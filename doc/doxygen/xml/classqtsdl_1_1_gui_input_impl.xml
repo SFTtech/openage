@@ -31,7 +31,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.h" bodystart="36" bodyend="-1"/>
-        <referencedby refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" compoundref="gui__input__impl_8cpp" startline="159" endline="178">relay_input_event</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" compoundref="gui__input__impl_8cpp" startline="159" endline="179">relay_input_event</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -87,7 +87,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp" bodystart="88" bodyend="157"/>
         <references refid="classqtsdl_1_1_gui_input_impl_1a43f96d650c8992f83bdc89e18bd621ce" compoundref="gui__input__impl_8h" startline="35">mouse_buttons_state</references>
-        <references refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" compoundref="gui__input__impl_8cpp" startline="159" endline="178">relay_input_event</references>
+        <references refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" compoundref="gui__input__impl_8cpp" startline="159" endline="179">relay_input_event</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="signal">
@@ -116,7 +116,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.h" line="30" column="1"/>
-        <referencedby refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" compoundref="gui__input__impl_8cpp" startline="159" endline="178">relay_input_event</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" compoundref="gui__input__impl_8cpp" startline="159" endline="179">relay_input_event</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -139,8 +139,10 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
+<para><xrefsect id="todo_1_todo000022"><xreftitle>Todo</xreftitle><xrefdescription><para>if/when the logic thread or input thread of the main game is made separate, give mutex or queue to the gui in order to replace this busy wait. </para>
+</xrefdescription></xrefsect></para>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp" bodystart="159" bodyend="178"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp" bodystart="159" bodyend="179"/>
         <references refid="classqtsdl_1_1_gui_input_impl_1a9344b2a9d0e8556b73dc8533ea476890" compoundref="gui__input__impl_8h" startline="36">game_logic_updater</references>
         <references refid="classqtsdl_1_1_gui_event_queue_impl_1ad445b8604c39eddf25837572c4dda508" compoundref="gui__event__queue__impl_8cpp" startline="37" endline="39">qtsdl::GuiEventQueueImpl::get_thread</references>
         <references refid="classqtsdl_1_1_gui_input_impl_1a5ddcd3b5d19319607a7ada08ef8ec455">input_event</references>

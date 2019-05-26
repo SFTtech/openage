@@ -114,7 +114,8 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>initiates a patrol action when given a valid target TODO implement </para>
+<para>initiates a patrol action when given a valid target <xrefsect id="todo_1_todo000030"><xreftitle>Todo</xreftitle><xrefdescription><para>implement </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4433">

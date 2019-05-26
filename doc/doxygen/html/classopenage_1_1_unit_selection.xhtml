@@ -261,16 +261,14 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ac7668d88460dbf57f79a75cbe55e34f3_cgraph.svg" width="100%" height="502"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ac7668d88460dbf57f79a75cbe55e34f3_cgraph.svg" width="100%" height="502"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ac7668d88460dbf57f79a75cbe55e34f3_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ac7668d88460dbf57f79a75cbe55e34f3_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -293,7 +291,7 @@ Private Attributes</h2></td></tr>
 <p>uses command on every selected unit </p>
 
 <p class="definition">Definition at line <a class="el" href="selection_8cpp_source.xhtml#l00272">272</a> of file <a class="el" href="selection_8cpp_source.xhtml">selection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                           {</div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> u : this-&gt;<a class="code" href="classopenage_1_1_unit_selection.xhtml#abafc015ba5af4732d6b00ddec9517c31">units</a>) {</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">if</span> (u.second.is_valid() &amp;&amp; u.second.get()-&gt;is_own_unit(cmd.player)) {</div><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="comment">// allow unit to find best use of the command</span></div><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="comment">// TODO: queue_cmd returns ability which allows playing of sound</span></div><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            u.second.get()-&gt;queue_cmd(cmd);</div><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        }</div><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    }</div><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_selection_xhtml_abafc015ba5af4732d6b00ddec9517c31"><div class="ttname"><a href="classopenage_1_1_unit_selection.xhtml#abafc015ba5af4732d6b00ddec9517c31">openage::UnitSelection::units</a></div><div class="ttdeci">std::unordered_map&lt; id_t, UnitReference &gt; units</div><div class="ttdef"><b>Definition:</b> <a href="selection_8h_source.xhtml#l00102">selection.h:102</a></div></div>
+<div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                           {</div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> u : this-&gt;<a class="code" href="classopenage_1_1_unit_selection.xhtml#abafc015ba5af4732d6b00ddec9517c31">units</a>) {</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">if</span> (u.second.is_valid() &amp;&amp; u.second.get()-&gt;is_own_unit(cmd.player)) {</div><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="comment">// allow unit to find best use of the command</span></div><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="comment">// \todo queue_cmd returns ability which allows playing of sound</span></div><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            u.second.get()-&gt;queue_cmd(cmd);</div><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        }</div><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    }</div><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_selection_xhtml_abafc015ba5af4732d6b00ddec9517c31"><div class="ttname"><a href="classopenage_1_1_unit_selection.xhtml#abafc015ba5af4732d6b00ddec9517c31">openage::UnitSelection::units</a></div><div class="ttdeci">std::unordered_map&lt; id_t, UnitReference &gt; units</div><div class="ttdef"><b>Definition:</b> <a href="selection_8h_source.xhtml#l00102">selection.h:102</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="command_8h_source.xhtml#l00126">openage::Command::player</a>, and <a class="el" href="selection_8h_source.xhtml#l00102">units</a>.</p>
 
@@ -303,8 +301,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a0ad857ab54207bdaa9719fc01410f101_icgraph.svg" width="566" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a0ad857ab54207bdaa9719fc01410f101_icgraph.svg" width="566" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -337,8 +334,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_aa97b9724248f01b525488bbba21d6b59_icgraph.svg" width="100%" height="409"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_aa97b9724248f01b525488bbba21d6b59_icgraph.svg" width="100%" height="409"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -372,8 +368,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a641ba956ba51e5ec47130cec3ffe9085_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a641ba956ba51e5ec47130cec3ffe9085_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -407,8 +402,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a07df9837a02027bf139d1cecfb541b4d_icgraph.svg" width="586" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a07df9837a02027bf139d1cecfb541b4d_icgraph.svg" width="586" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -442,8 +436,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a100fae0b7f4993a90a984c57024ecfe2_icgraph.svg" width="574" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a100fae0b7f4993a90a984c57024ecfe2_icgraph.svg" width="574" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -503,8 +496,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a6b4a0b9275c8ebf623d50a7509487623_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a6b4a0b9275c8ebf623d50a7509487623_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -538,16 +530,14 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a35322bea7ad954fe4fefd8e2dfbac60f_cgraph.svg" width="371" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a35322bea7ad954fe4fefd8e2dfbac60f_cgraph.svg" width="371" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a35322bea7ad954fe4fefd8e2dfbac60f_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a35322bea7ad954fe4fefd8e2dfbac60f_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -578,8 +568,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ab7bbbd3ae208b61e3fae02eca886e134_icgraph.svg" width="586" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ab7bbbd3ae208b61e3fae02eca886e134_icgraph.svg" width="586" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -621,7 +610,7 @@ Private Attributes</h2></td></tr>
 <p>So you can select a group of units, or a building (or multiple if append is on) Enemy units, enemy buildings and other objects may only be selected one at a time </p>
 
 <p class="definition">Definition at line <a class="el" href="selection_8cpp_source.xhtml#l00319">319</a> of file <a class="el" href="selection_8cpp_source.xhtml">selection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                                                                                     {</div><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordtype">bool</span> is_building = u-&gt;has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">attr_type::building</a>);</div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="comment">// Check owner</span></div><div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="comment">// TODO implement allied units</span></div><div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keywordflow">if</span> (u-&gt;is_own_unit(player)) {</div><div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordflow">return</span> is_building ? <a class="code" href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cdacec576a55414cd51591ce1b0794dc1fa">selection_type_t::own_buildings</a> : <a class="code" href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cda05e717c9df8ba7e69bb8f3db541fcb7c">selection_type_t::own_units</a>;</div><div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="keywordflow">return</span> is_building ? <a class="code" href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cda1fd8e3998f23347bbf10bfcc892df706">selection_type_t::enemy_building</a> : <a class="code" href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cdacbd2ae7b84f0df28929ff9f16bffc43c">selection_type_t::enemy_unit</a>;</div><div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    }</div><div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div><div class="ttc" id="namespaceopenage_xhtml_a7174088e5b9a132b1bccacbee82a35cda05e717c9df8ba7e69bb8f3db541fcb7c"><div class="ttname"><a href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cda05e717c9df8ba7e69bb8f3db541fcb7c">openage::selection_type_t::own_units</a></div></div>
+<div class="fragment"><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                                                                                     {</div><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordtype">bool</span> is_building = u-&gt;has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">attr_type::building</a>);</div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="comment">// Check owner</span></div><div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="comment">// \todo implement allied units</span></div><div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keywordflow">if</span> (u-&gt;is_own_unit(player)) {</div><div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordflow">return</span> is_building ? <a class="code" href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cdacec576a55414cd51591ce1b0794dc1fa">selection_type_t::own_buildings</a> : <a class="code" href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cda05e717c9df8ba7e69bb8f3db541fcb7c">selection_type_t::own_units</a>;</div><div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="keywordflow">return</span> is_building ? <a class="code" href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cda1fd8e3998f23347bbf10bfcc892df706">selection_type_t::enemy_building</a> : <a class="code" href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cdacbd2ae7b84f0df28929ff9f16bffc43c">selection_type_t::enemy_unit</a>;</div><div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    }</div><div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div><div class="ttc" id="namespaceopenage_xhtml_a7174088e5b9a132b1bccacbee82a35cda05e717c9df8ba7e69bb8f3db541fcb7c"><div class="ttname"><a href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cda05e717c9df8ba7e69bb8f3db541fcb7c">openage::selection_type_t::own_units</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a7174088e5b9a132b1bccacbee82a35cdacec576a55414cd51591ce1b0794dc1fa"><div class="ttname"><a href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cdacec576a55414cd51591ce1b0794dc1fa">openage::selection_type_t::own_buildings</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">openage::attr_type::building</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a7174088e5b9a132b1bccacbee82a35cdacbd2ae7b84f0df28929ff9f16bffc43c"><div class="ttname"><a href="namespaceopenage.xhtml#a7174088e5b9a132b1bccacbee82a35cdacbd2ae7b84f0df28929ff9f16bffc43c">openage::selection_type_t::enemy_unit</a></div></div>
@@ -635,16 +624,14 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a9ec8fd5cfcfa451cce1123ff87894719_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a9ec8fd5cfcfa451cce1123ff87894719_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a9ec8fd5cfcfa451cce1123ff87894719_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a9ec8fd5cfcfa451cce1123ff87894719_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -681,16 +668,14 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a2cc48ccbea18ec579f9ad27a89b1d96a_cgraph.svg" width="100%" height="465"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a2cc48ccbea18ec579f9ad27a89b1d96a_cgraph.svg" width="100%" height="465"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-17-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a2cc48ccbea18ec579f9ad27a89b1d96a_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a2cc48ccbea18ec579f9ad27a89b1d96a_icgraph.svg" width="370" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -734,7 +719,7 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="classopenage_1_1_unit_selection_xhtml_ac96d0e9e50c7efe2810017f60aa7a6ce"><div class="ttname"><a href="classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce">openage::UnitSelection::show_attributes</a></div><div class="ttdeci">void show_attributes(Unit *)</div><div class="ttdef"><b>Definition:</b> <a href="selection_8cpp_source.xhtml#l00283">selection.cpp:283</a></div></div>
 <div class="ttc" id="constinit__vector_8cpp_xhtml_aad68795cb6d982f4dda0a4b91a8c1577"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aad68795cb6d982f4dda0a4b91a8c1577">ref</a></div><div class="ttdeci">int * ref</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00047">constinit_vector.cpp:47</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="engine_8h_source.xhtml#l00294">openage::Engine::coord</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">openage::damaged</a>, <a class="el" href="selection_8h_source.xhtml#l00105">drag_active</a>, <a class="el" href="selection_8h_source.xhtml#l00107">end</a>, <a class="el" href="selection_8h_source.xhtml#l00113">engine</a>, <a class="el" href="unit_8h_source.xhtml#l00199">openage::Unit::get_attribute()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00258">openage::Unit::has_attribute()</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ad5f6f6624aebf09a1c60464a76a96df1">openage::hitpoints</a>, <a class="el" href="unit_8h_source.xhtml#l00068">openage::Unit::location</a>, <a class="el" href="constinit__vector_8cpp_source.xhtml#l00047">ref</a>, <a class="el" href="selection_8cpp_source.xhtml#l00283">show_attributes()</a>, <a class="el" href="selection_8h_source.xhtml#l00107">start</a>, <a class="el" href="pixel_8cpp_source.xhtml#l00045">openage::coord::camgame::to_viewport()</a>, <a class="el" href="phys_8cpp_source.xhtml#l00096">openage::coord::phys3::to_viewport()</a>, and <a class="el" href="selection_8h_source.xhtml#l00102">units</a>.</p>
+<p class="reference">References <a class="el" href="engine_8h_source.xhtml#l00294">openage::Engine::coord</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">openage::damaged</a>, <a class="el" href="selection_8h_source.xhtml#l00105">drag_active</a>, <a class="el" href="selection_8h_source.xhtml#l00107">end</a>, <a class="el" href="selection_8h_source.xhtml#l00113">engine</a>, <a class="el" href="unit_8h_source.xhtml#l00199">openage::Unit::get_attribute()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00258">openage::Unit::has_attribute()</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ad5f6f6624aebf09a1c60464a76a96df1">openage::hitpoints</a>, <a class="el" href="unit_8h_source.xhtml#l00068">openage::Unit::location</a>, <a class="el" href="constinit__vector_8cpp_source.xhtml#l00047">ref</a>, <a class="el" href="selection_8cpp_source.xhtml#l00283">show_attributes()</a>, <a class="el" href="selection_8h_source.xhtml#l00107">start</a>, <a class="el" href="pixel_8cpp_source.xhtml#l00045">openage::coord::camgame::to_viewport()</a>, <a class="el" href="phys_8cpp_source.xhtml#l00098">openage::coord::phys3::to_viewport()</a>, and <a class="el" href="selection_8h_source.xhtml#l00102">units</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="game__control_8cpp_source.xhtml#l00445">openage::ActionMode::render()</a>.</p>
 <div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -742,16 +727,14 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-18-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a0a21b9382975a037b94a1331628b320c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a0a21b9382975a037b94a1331628b320c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-19-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-19-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a0a21b9382975a037b94a1331628b320c_icgraph.svg" width="363" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a0a21b9382975a037b94a1331628b320c_icgraph.svg" width="363" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -785,8 +768,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-20-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-20-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a55faa863da0461730ad3deed70b726c2_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a55faa863da0461730ad3deed70b726c2_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -845,16 +827,14 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-21-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-21-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ae351437c3a9fafc071961486f7eef075_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ae351437c3a9fafc071961486f7eef075_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-22-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-22-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ae351437c3a9fafc071961486f7eef075_icgraph.svg" width="574" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ae351437c3a9fafc071961486f7eef075_icgraph.svg" width="574" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -930,8 +910,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-24-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-24-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a1c3efeb8415c50094d66844e69402342_icgraph.svg" width="574" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_a1c3efeb8415c50094d66844e69402342_icgraph.svg" width="574" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -981,16 +960,14 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-25-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-25-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ac96d0e9e50c7efe2810017f60aa7a6ce_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ac96d0e9e50c7efe2810017f60aa7a6ce_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-26" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-26-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-26-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-26-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ac96d0e9e50c7efe2810017f60aa7a6ce_icgraph.svg" width="567" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ac96d0e9e50c7efe2810017f60aa7a6ce_icgraph.svg" width="567" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -1040,16 +1017,14 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-27-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-27-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ae76387eeee60f994b678d79ca4a198e8_cgraph.svg" width="100%" height="515"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ae76387eeee60f994b678d79ca4a198e8_cgraph.svg" width="100%" height="515"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-28" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-28-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-28-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-28-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ae76387eeee60f994b678d79ca4a198e8_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_selection_ae76387eeee60f994b678d79ca4a198e8_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>

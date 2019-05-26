@@ -63,11 +63,11 @@
         <referencedby refid="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" compoundref="misc_8h" startline="190" endline="204">openage::util::array8_to_array64</referencedby>
         <referencedby refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" compoundref="misc_8h" startline="111" endline="129">openage::util::array8_to_uint64</referencedby>
         <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a46b2a8ba15d152e0d0ef9110dbf7b3f2" compoundref="functional_8h" startline="180" endline="186">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::bind_catchexcept_impl</referencedby>
-        <referencedby refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="469" endline="484">openage::building_center</referencedby>
+        <referencedby refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="470" endline="485">openage::building_center</referencedby>
         <referencedby refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" compoundref="pyobject_8cpp" startline="317" endline="321">openage::py::builtin</referencedby>
         <referencedby refid="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" compoundref="pyobject_8cpp" startline="338" endline="342">openage::py::bytes</referencedby>
         <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aaacc1330b0393004944477d15e9d82b0" compoundref="pyobject_8cpp" startline="147" endline="158">openage::pyinterface::PyObjectRef::call_impl</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" compoundref="buf_8cpp" startline="1140" endline="1148">openage::console::Buf::chrdataptr</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" compoundref="buf_8cpp" startline="1141" endline="1149">openage::console::Buf::chrdataptr</referencedby>
         <referencedby refid="classopenage_1_1_asset_manager_1afee91926bb4d9b763527a7aa28ec95d4" compoundref="assetmanager_8cpp" startline="185" endline="197">openage::AssetManager::clear</referencedby>
         <referencedby refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" compoundref="compiler_8cpp" startline="25" endline="43">openage::util::demangle</referencedby>
         <referencedby refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" compoundref="pyobject_8cpp" startline="352" endline="356">openage::py::dict</referencedby>
@@ -77,17 +77,17 @@
         <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1ad74a496758770d9f1be27e9b3fec4dd0" compoundref="unicode_8cpp" startline="19" endline="70">openage::util::utf8_decoder::feed</referencedby>
         <referencedby refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" compoundref="fixed__point_8h" startline="224" endline="228">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_raw_value</referencedby>
         <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" compoundref="pyobject_8cpp" startline="220" endline="224">openage::pyinterface::PyObjectRef::get</referencedby>
-        <referencedby refid="classopenage_1_1_terrain_object_1a601a0aaa58d28c66540b8463662fab85" compoundref="terrain__object_8cpp" startline="216" endline="227">openage::TerrainObject::get_children</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1a601a0aaa58d28c66540b8463662fab85" compoundref="terrain__object_8cpp" startline="216" endline="228">openage::TerrainObject::get_children</referencedby>
         <referencedby refid="classopenage_1_1input_1_1_class_code_1a5d55c691be6f36279534fbfb91206e11" compoundref="input_2event_8cpp" startline="17" endline="28">openage::input::ClassCode::get_classes</referencedby>
-        <referencedby refid="classopenage_1_1util_1_1_file_1a4712008e4434f121e00ba41a29789db9" compoundref="file_8cpp" startline="101" endline="114">openage::util::File::get_lines</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" compoundref="terrain__object_8cpp" startline="398" endline="413">openage::RadialObject::get_range</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_file_1a4712008e4434f121e00ba41a29789db9" compoundref="file_8cpp" startline="101" endline="116">openage::util::File::get_lines</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" compoundref="terrain__object_8cpp" startline="399" endline="414">openage::RadialObject::get_range</referencedby>
         <referencedby refid="classopenage_1_1_terrain_1a88ec2ee796cfe5d6c97570ad73db43cc" compoundref="terrain_8cpp" startline="202" endline="210">openage::Terrain::get_subtexture_id</referencedby>
         <referencedby refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" compoundref="timer_8cpp" startline="45" endline="59">openage::util::Timer::getandresetval</referencedby>
         <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" compoundref="pyobject_8cpp" startline="166" endline="170">openage::pyinterface::PyObjectRef::getattr</referencedby>
         <referencedby refid="namespaceopenage_1_1py_1a74056a2f34d9bc9aed2a687a85794e7a" compoundref="pyobject_8cpp" startline="324" endline="328">openage::py::import</referencedby>
         <referencedby refid="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" compoundref="input_2event_8cpp" startline="69" endline="81">openage::input::Event::info</referencedby>
         <referencedby refid="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" compoundref="pyobject_8cpp" startline="345" endline="349">openage::py::integer</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1a4c48f84f2a29ae7472c54bce03fcbd65" compoundref="buf_8cpp" startline="1150" endline="1159">openage::console::Buf::linedataptr</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a4c48f84f2a29ae7472c54bce03fcbd65" compoundref="buf_8cpp" startline="1151" endline="1160">openage::console::Buf::linedataptr</referencedby>
         <referencedby refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</referencedby>
         <referencedby refid="classopenage_1_1options_1_1_option_node_1ae516506e6ddeac33956e5e8ba71668c8" compoundref="options_8cpp" startline="274" endline="280">openage::options::OptionNode::list_functions</referencedby>
         <referencedby refid="classopenage_1_1options_1_1_option_node_1a39b02a21c2c4b5693dba2e515a81dd2d" compoundref="options_8cpp" startline="245" endline="262">openage::options::OptionNode::list_options</referencedby>

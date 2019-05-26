@@ -1520,7 +1520,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="engine_8h" kindref="compound">engine.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -1681,7 +1681,7 @@
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>Error{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>find<sp/>main.qml<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>qml_root_file};</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>in<sp/>order<sp/>to<sp/>support<sp/>qml-mods,<sp/>the<sp/>fslike<sp/>and<sp/>filelike</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>in<sp/>order<sp/>to<sp/>support<sp/>qml-mods,<sp/>the<sp/>fslike<sp/>and<sp/>filelike</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>library<sp/>has<sp/>to<sp/>be<sp/>integrated<sp/>into<sp/>qt.<sp/>For<sp/>now,</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>figure<sp/>out<sp/>the<sp/>absolute<sp/>paths<sp/>here<sp/>and<sp/>pass<sp/>them<sp/>in.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
@@ -1754,7 +1754,7 @@
 <codeline lineno="240"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="241"><highlight class="normal"></highlight></codeline>
 <codeline lineno="242" refid="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" kindref="member">Engine::on_resize</ref>(<ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref><sp/>new_size)<sp/>{</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>move<sp/>all<sp/>this<sp/>to<sp/>the<sp/>renderer!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>move<sp/>all<sp/>this<sp/>to<sp/>the<sp/>renderer!</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="244"><highlight class="normal"></highlight></codeline>
 <codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;engine<sp/>window<sp/>resize<sp/>to<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>new_size.x<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>new_size.y);</highlight></codeline>
@@ -2074,7 +2074,7 @@
 <codeline lineno="560"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="561"><highlight class="normal"></highlight></codeline>
 <codeline lineno="562" refid="classopenage_1_1_engine_1a7fc2ea0de672369761ffe6ee251a1bcb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_engine_1a06eb9cde29e294b956187c88042ae8ea" kindref="member">Engine::start_game</ref>(std::unique_ptr&lt;GameMain&gt;<sp/>&amp;&amp;game)<sp/>{</highlight></codeline>
-<codeline lineno="563"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>maybe<sp/>implement<sp/>a<sp/>proper<sp/>1-to-1<sp/>connection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="563"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>maybe<sp/>implement<sp/>a<sp/>proper<sp/>1-to-1<sp/>connection</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="564"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(<ref refid="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" kindref="member">game</ref>,<sp/></highlight><highlight class="stringliteral">&quot;linking<sp/>game<sp/>to<sp/>engine<sp/>problem&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="565"><highlight class="normal"></highlight></codeline>
 <codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" kindref="member">game</ref><sp/>=<sp/><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(<ref refid="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" kindref="member">game</ref>);</highlight></codeline>

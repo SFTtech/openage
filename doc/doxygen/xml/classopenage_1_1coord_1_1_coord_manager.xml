@@ -39,7 +39,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" bodystart="31" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_engine_1a33f2433fb9ecb617c48d1b64d7f2cf27" compoundref="engine_8cpp" startline="551" endline="560">openage::Engine::move_phys_camera</referencedby>
-        <referencedby refid="structopenage_1_1coord_1_1phys3_1a03daba2a3e79650c251e3c08e0838a5e" compoundref="phys_8cpp" startline="91" endline="93">openage::coord::phys3::to_camgame</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1phys3_1a03daba2a3e79650c251e3c08e0838a5e" compoundref="phys_8cpp" startline="93" endline="95">openage::coord::phys3::to_camgame</referencedby>
         <referencedby refid="structopenage_1_1coord_1_1camgame_1a0b8e17b9f35af0cb50dbd56e8d6ff243" compoundref="pixel_8cpp" startline="40" endline="42">openage::coord::camgame::to_phys3</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1coord_1_1_coord_manager_1a366cc992363b8e417679d6a8f54574c6" prot="public" static="no" mutable="no">
@@ -92,7 +92,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" bodystart="51" bodyend="-1"/>
-        <referencedby refid="structopenage_1_1coord_1_1phys3__delta_1ace92b215378b122ce3fb17101986011f" compoundref="phys_8cpp" startline="60" endline="73">openage::coord::phys3_delta::to_camgame</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1phys3__delta_1ace92b215378b122ce3fb17101986011f" compoundref="phys_8cpp" startline="62" endline="75">openage::coord::phys3_delta::to_camgame</referencedby>
         <referencedby refid="structopenage_1_1coord_1_1camgame__delta_1a7e761e4e14092c27b01fbc0ee0a39330" compoundref="pixel_8cpp" startline="12" endline="37">openage::coord::camgame_delta::to_phys3</referencedby>
       </memberdef>
       </sectiondef>

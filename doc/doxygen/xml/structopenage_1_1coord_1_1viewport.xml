@@ -96,7 +96,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp" bodystart="87" bodyend="89"/>
         <references refid="classopenage_1_1coord_1_1_coord_manager_1ae6e2147894fc653dd8fe9c057afc1794" compoundref="coordmanager_8h" startline="43">openage::coord::CoordManager::camhud_viewport</references>
         <referencedby refid="structopenage_1_1coord_1_1camgame_1a91e45e5fd4f7ea2cb447d51a24543187" compoundref="pixel_8cpp" startline="56" endline="58">openage::coord::camgame::to_camhud</referencedby>
-        <referencedby refid="structopenage_1_1coord_1_1phys3_1a851739e9304a9ed9f55f51ef99c814e7" compoundref="phys_8cpp" startline="101" endline="103">openage::coord::phys3::to_camhud</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1phys3_1a851739e9304a9ed9f55f51ef99c814e7" compoundref="phys_8cpp" startline="103" endline="105">openage::coord::phys3::to_camhud</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

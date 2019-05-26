@@ -328,7 +328,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -522,7 +522,7 @@
 <codeline lineno="204"><highlight class="normal"></highlight></codeline>
 <codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
 <codeline lineno="206" refid="classopenage_1_1curve_1_1_unordered_map_1aa3f1194fff6065febbcacb5bf64e2d37" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1aa3f1194fff6065febbcacb5bf64e2d37" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::clean</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;)<sp/>{</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>save<sp/>everything<sp/>to<sp/>a<sp/>file<sp/>and<sp/>be<sp/>happy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>save<sp/>everything<sp/>to<sp/>a<sp/>file<sp/>and<sp/>be<sp/>happy.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="208"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"></highlight></codeline>
 <codeline lineno="210"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>

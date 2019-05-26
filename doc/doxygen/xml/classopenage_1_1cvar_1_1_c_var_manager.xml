@@ -108,7 +108,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.cpp" bodystart="27" bodyend="33"/>
         <references refid="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" compoundref="cvar_8h" startline="84">store</references>
-        <referencedby refid="classopenage_1_1console_1_1_console_1a4e0359f0f3cbbf66da045ba1a33ffa57" compoundref="console_8cpp" startline="126" endline="152">openage::console::Console::interpret</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a4e0359f0f3cbbf66da045ba1a33ffa57" compoundref="console_8cpp" startline="124" endline="150">openage::console::Console::interpret</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1cvar_1_1_c_var_manager_1a972739b7927c488b0761a10319653e8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -132,7 +132,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.h" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.cpp" bodystart="36" bodyend="41"/>
         <references refid="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" compoundref="cvar_8h" startline="84">store</references>
-        <referencedby refid="classopenage_1_1console_1_1_console_1a4e0359f0f3cbbf66da045ba1a33ffa57" compoundref="console_8cpp" startline="126" endline="152">openage::console::Console::interpret</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a4e0359f0f3cbbf66da045ba1a33ffa57" compoundref="console_8cpp" startline="124" endline="150">openage::console::Console::interpret</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1cvar_1_1_c_var_manager_1af7fcfc7c5b2700e1ed0feba06fc57a63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

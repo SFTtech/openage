@@ -355,7 +355,8 @@
         <detaileddescription>
 <para>Initialize units attributes to this type spec</para>
 <para>This can be called using existing units to modify type Ensure that the unit has been placed before seting the units type</para>
-<para>TODO: make const </para>
+<para><xrefsect id="todo_1_todo000045"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -382,7 +383,8 @@
         <detaileddescription>
 <para>Initialize units shared attributes only to this type spec</para>
 <para>This can be called using existing units to modify type if the type Ensure that the unit has been placed before seting the units type</para>
-<para>TODO define if pure vitrual or not / should be in nyan? </para>
+<para><xrefsect id="todo_1_todo000046"><xreftitle>Todo</xreftitle><xrefdescription><para>define if pure vitrual or not / should be in nyan? </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -415,7 +417,8 @@
         </briefdescription>
         <detaileddescription>
 <para>set unit in place <ndash/> return if placement was successful</para>
-<para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object TODO: make const </para>
+<para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object <xrefsect id="todo_1_todo000047"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -504,7 +507,7 @@
         <references refid="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2">openage::placed</references>
         <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
         <references refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" compoundref="terrain__object_8h" startline="36">openage::tile_range::start</references>
-        <references refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="444" endline="467">openage::tile_list</references>
+        <references refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="445" endline="468">openage::tile_list</references>
         <referencedby refid="classopenage_1_1_unit_container_1a0730d85fce9d5bec6b2bc76450b7dfa9" compoundref="unit__container_8cpp" startline="118" endline="136">openage::UnitContainer::new_unit</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_type_1acf200f0f7321ae1e074bae39bc437b53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">

@@ -86,14 +86,14 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_save.cpp" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_save.cpp" bodystart="33" bodyend="54"/>
-        <references refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="486" endline="500">openage::complete_building</references>
+        <references refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</references>
         <references refid="classopenage_1_1_game_main_1ace86de3be7238212c0b49ecc1247e8a4" compoundref="game__main_8cpp" startline="47" endline="49">openage::GameMain::get_player</references>
         <references refid="classopenage_1_1_player_1a67c7f6853d4be5c38d2456169af3d5a1" compoundref="player_8cpp" startline="119" endline="127">openage::Player::get_type</references>
         <references refid="classopenage_1_1_unit_container_1a39947500d16e9d67eb72458f3df7c796" compoundref="unit__container_8cpp" startline="88" endline="94">openage::UnitContainer::new_unit</references>
         <references refid="classopenage_1_1_game_main_1ac0651e2cfcbf6733dfe637b6b72eaefc" compoundref="game__main_8h" startline="87">openage::GameMain::placed_units</references>
         <references refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" compoundref="constinit__vector_8cpp" startline="47">ref</references>
         <references refid="classopenage_1_1_game_main_1a0a2423176e649f9865eb97fc0f187b63" compoundref="game__main_8h" startline="72">openage::GameMain::terrain</references>
-        <references refid="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" compoundref="tile_8cpp" startline="26" endline="28">openage::coord::tile::to_phys3</references>
+        <references refid="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" compoundref="tile_8cpp" startline="28" endline="30">openage::coord::tile::to_phys3</references>
         <referencedby refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">load</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1gameio_1a3dbc6f4b94629a296a514691fb34a470" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -75,7 +75,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_event_queue_impl.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_event_queue_impl.cpp" bodystart="28" bodyend="35"/>
         <references refid="classqtsdl_1_1_gui_event_queue_impl_1ad2f4e01bb05a5e5b2bc288bfc2a8cf9f" compoundref="gui__event__queue__impl_8h" startline="30">callback_processor</references>
         <references refid="classqtsdl_1_1_gui_event_queue_impl_1a8d10edd5156f1417efbed0e4ff6e7c4b" compoundref="gui__event__queue__impl_8h" startline="29">thread</references>
-        <referencedby refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" compoundref="gui__input__impl_8cpp" startline="159" endline="178">qtsdl::GuiInputImpl::relay_input_event</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" compoundref="gui__input__impl_8cpp" startline="159" endline="179">qtsdl::GuiInputImpl::relay_input_event</referencedby>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_event_queue_impl_1ad445b8604c39eddf25837572c4dda508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>QThread *</type>
@@ -91,7 +91,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_event_queue_impl.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_event_queue_impl.cpp" bodystart="37" bodyend="39"/>
         <references refid="classqtsdl_1_1_gui_event_queue_impl_1a8d10edd5156f1417efbed0e4ff6e7c4b" compoundref="gui__event__queue__impl_8h" startline="29">thread</references>
         <referencedby refid="classqtsdl_1_1_gui_subtree_impl_1a6252105d77f67bea57bdfaa0eab86aa1" compoundref="gui__subtree__impl_8cpp" startline="90" endline="92">qtsdl::GuiSubtreeImpl::attach_to</referencedby>
-        <referencedby refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" compoundref="gui__input__impl_8cpp" startline="159" endline="178">qtsdl::GuiInputImpl::relay_input_event</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" compoundref="gui__input__impl_8cpp" startline="159" endline="179">qtsdl::GuiInputImpl::relay_input_event</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">

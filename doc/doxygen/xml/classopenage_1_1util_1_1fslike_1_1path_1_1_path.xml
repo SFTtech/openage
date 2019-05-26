@@ -135,9 +135,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="70" bodyend="72"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a250e49c6abb64b66594cad8e7adc8792" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -157,9 +157,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="73" bodyend="78"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a3f26683d6ae00c9621fbfdf718748773" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -181,9 +181,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="80" bodyend="82"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a92def9ecadd3e44ce9308a04b98660c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -204,9 +204,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="84" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="84" bodyend="86"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7aa4c2db5a1b537edfac277335b4ee2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -228,9 +228,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="88" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="88" bodyend="90"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a327eac2a41d5787ad157d66a3274f489" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -251,9 +251,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="92" bodyend="94"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2c97a612473ab536fe4dc2be187a7e67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -274,9 +274,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="96" bodyend="98"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0793e491d4812db33fc0768e5f9c79cd" compoundref="path_8py" startline="100" endline="103">openage.util.fslike.path.Path.iterdir</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0793e491d4812db33fc0768e5f9c79cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -298,10 +298,10 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="100" bodyend="103"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2c97a612473ab536fe4dc2be187a7e67" compoundref="path_8py" startline="96" endline="98">openage.util.fslike.path.Path.list</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a4cedf04c581121ee8b5504e7a46abcb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -324,9 +324,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="105" bodyend="107"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a230fe30e41e3b2dd7d52150e61eae0d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -352,11 +352,11 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="109" bodyend="135"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a34706428ed6a37c8b4e2c1c51b6a0f7c" compoundref="path_8py" startline="137" endline="139">openage.util.fslike.path.Path.open_r</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af98927e10cee2c17109712106a06a4ea" compoundref="path_8py" startline="141" endline="143">openage.util.fslike.path.Path.open_w</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a34706428ed6a37c8b4e2c1c51b6a0f7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -377,9 +377,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="137" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="137" bodyend="139"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a230fe30e41e3b2dd7d52150e61eae0d4" compoundref="path_8py" startline="109" endline="135">openage.util.fslike.path.Path.open</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af98927e10cee2c17109712106a06a4ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -401,9 +401,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="141" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="141" bodyend="143"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a230fe30e41e3b2dd7d52150e61eae0d4" compoundref="path_8py" startline="109" endline="135">openage.util.fslike.path.Path.open</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a90158226c7166eca01f78bc52da33774" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -493,9 +493,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="211" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="211" bodyend="215"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1abc9109efa3d242497fe929fdc3189519" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -516,9 +516,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="217" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="217" bodyend="219"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aef7a580dd6fe84570a18f5533a2bfb75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -540,9 +540,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="221" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="221" bodyend="223"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a576b6588289279434c0b914a528d380c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -563,9 +563,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="225" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="225" bodyend="227"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -633,9 +633,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="239" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="239" bodyend="241"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a348a0396369473be6eac75943f19273a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -656,9 +656,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="244" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="244" bodyend="246"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a37d1f2685564c84f991482035133f885" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -682,9 +682,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="255" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="255" bodyend="257"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a55b9d625b2ad113a80ce6c88122c8912" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -705,7 +705,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="259" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="259" bodyend="261"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1afef5c9a94242cabc5c4d097ab636c1cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -727,9 +727,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="264" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="264" bodyend="266"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a52a13083c58dc34e41f3fff8984b8d9b" compoundref="path_8py" startline="322" endline="324">openage.util.fslike.path.Path.with_name</referencedby>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a3ab02f8ab30da2c239dc08a5bb463b58" compoundref="path_8py" startline="326" endline="331">openage.util.fslike.path.Path.with_suffix</referencedby>
       </memberdef>
@@ -751,7 +751,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="269" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="269" bodyend="271"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
@@ -800,8 +800,8 @@
         <references refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" compoundref="options_8h" startline="216">openage::options::OptionNode::name</references>
         <references refid="classopenage_1_1_target_action_1ab57d1777fed0ced4ee1e6788ee5e445d">openage::TargetAction::name</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1ae3a270686d78c16980549c5ebd7e8839" compoundref="path_8py" startline="269" endline="271">openage.util.fslike.path.Path.name</references>
-        <references refid="classopenage_1_1_editor_mode_1a194b8b0abaa8a8e908fcd170f0a5d382" compoundref="game__control_8cpp" startline="599" endline="601">openage::EditorMode::name</references>
         <references refid="classopenage_1_1_decay_action_1a33f1e3bafcbb958cd5b03292ab20e845" compoundref="unit_2action_8h" startline="285" endline="285">openage::DecayAction::name</references>
+        <references refid="classopenage_1_1_editor_mode_1a194b8b0abaa8a8e908fcd170f0a5d382" compoundref="game__control_8cpp" startline="599" endline="601">openage::EditorMode::name</references>
         <references refid="classopenage_1_1_dead_action_1a435c5c1651c2fd4c0652d4195615ee81" compoundref="unit_2action_8h" startline="305" endline="305">openage::DeadAction::name</references>
         <references refid="classopenage_1_1_foundation_action_1a46520a617fab6d4d7aa3dd8baeaf409e" compoundref="unit_2action_8h" startline="326" endline="326">openage::FoundationAction::name</references>
         <references refid="classopenage_1_1_idle_action_1ac692f25e1c232cb6ad9afd7dbbd1b49f" compoundref="unit_2action_8h" startline="346" endline="346">openage::IdleAction::name</references>
@@ -862,8 +862,8 @@
         <references refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" compoundref="options_8h" startline="216">openage::options::OptionNode::name</references>
         <references refid="classopenage_1_1_target_action_1ab57d1777fed0ced4ee1e6788ee5e445d">openage::TargetAction::name</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1ae3a270686d78c16980549c5ebd7e8839" compoundref="path_8py" startline="269" endline="271">openage.util.fslike.path.Path.name</references>
-        <references refid="classopenage_1_1_editor_mode_1a194b8b0abaa8a8e908fcd170f0a5d382" compoundref="game__control_8cpp" startline="599" endline="601">openage::EditorMode::name</references>
         <references refid="classopenage_1_1_decay_action_1a33f1e3bafcbb958cd5b03292ab20e845" compoundref="unit_2action_8h" startline="285" endline="285">openage::DecayAction::name</references>
+        <references refid="classopenage_1_1_editor_mode_1a194b8b0abaa8a8e908fcd170f0a5d382" compoundref="game__control_8cpp" startline="599" endline="601">openage::EditorMode::name</references>
         <references refid="classopenage_1_1_dead_action_1a435c5c1651c2fd4c0652d4195615ee81" compoundref="unit_2action_8h" startline="305" endline="305">openage::DeadAction::name</references>
         <references refid="classopenage_1_1_foundation_action_1a46520a617fab6d4d7aa3dd8baeaf409e" compoundref="unit_2action_8h" startline="326" endline="326">openage::FoundationAction::name</references>
         <references refid="classopenage_1_1_idle_action_1ac692f25e1c232cb6ad9afd7dbbd1b49f" compoundref="unit_2action_8h" startline="346" endline="346">openage::IdleAction::name</references>
@@ -924,8 +924,8 @@
         <references refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" compoundref="options_8h" startline="216">openage::options::OptionNode::name</references>
         <references refid="classopenage_1_1_target_action_1ab57d1777fed0ced4ee1e6788ee5e445d">openage::TargetAction::name</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1ae3a270686d78c16980549c5ebd7e8839" compoundref="path_8py" startline="269" endline="271">openage.util.fslike.path.Path.name</references>
-        <references refid="classopenage_1_1_editor_mode_1a194b8b0abaa8a8e908fcd170f0a5d382" compoundref="game__control_8cpp" startline="599" endline="601">openage::EditorMode::name</references>
         <references refid="classopenage_1_1_decay_action_1a33f1e3bafcbb958cd5b03292ab20e845" compoundref="unit_2action_8h" startline="285" endline="285">openage::DecayAction::name</references>
+        <references refid="classopenage_1_1_editor_mode_1a194b8b0abaa8a8e908fcd170f0a5d382" compoundref="game__control_8cpp" startline="599" endline="601">openage::EditorMode::name</references>
         <references refid="classopenage_1_1_dead_action_1a435c5c1651c2fd4c0652d4195615ee81" compoundref="unit_2action_8h" startline="305" endline="305">openage::DeadAction::name</references>
         <references refid="classopenage_1_1_foundation_action_1a46520a617fab6d4d7aa3dd8baeaf409e" compoundref="unit_2action_8h" startline="326" endline="326">openage::FoundationAction::name</references>
         <references refid="classopenage_1_1_idle_action_1ac692f25e1c232cb6ad9afd7dbbd1b49f" compoundref="unit_2action_8h" startline="346" endline="346">openage::IdleAction::name</references>
@@ -966,9 +966,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="300" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="300" bodyend="308"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af3d064f84b10f3baca839c4490ff6cd3" compoundref="path_8py" startline="310" endline="312">openage.util.fslike.path.Path.__getitem__</referencedby>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2fe104e5eec859814a5192501d7069d7" compoundref="path_8py" startline="314" endline="316">openage.util.fslike.path.Path.__truediv__</referencedby>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a52a13083c58dc34e41f3fff8984b8d9b" compoundref="path_8py" startline="322" endline="324">openage.util.fslike.path.Path.with_name</referencedby>
@@ -1045,9 +1045,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="318" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="318" bodyend="320"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a52a13083c58dc34e41f3fff8984b8d9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -1152,9 +1152,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="152" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="152" bodyend="154"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a83f936c961315f95bc4366cd6a4fc4a6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -1174,9 +1174,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="161" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="161" bodyend="163"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a532681cdea4bab8d2d6d4f8ad9f94bae" compoundref="path_8py" startline="191" endline="197">openage.util.fslike.path.Path.resolve_native_path_r</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a93d75129a9dd661125017028957b8ce5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1197,9 +1197,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" line="170" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/path.py" bodystart="170" bodyend="172"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1ae4bb1b804472fc1cd348770aec9db244" compoundref="path_8py" startline="203" endline="209">openage.util.fslike.path.Path.resolve_native_path_w</referencedby>
       </memberdef>
       </sectiondef>

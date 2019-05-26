@@ -81,7 +81,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -127,7 +127,7 @@
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>VkDevice<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>VkQueue<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a94443fbae944ba5163514c6ea7397099" kindref="member">get_queue</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>idx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>structure<sp/>isn&apos;t<sp/>ideal,<sp/>maybe<sp/>store<sp/>SurfaceSupportDetails<sp/>in<sp/>here?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>structure<sp/>isn&apos;t<sp/>ideal,<sp/>maybe<sp/>store<sp/>SurfaceSupportDetails<sp/>in<sp/>here?</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a8b09aa54c6f71565308faabdacc12f6c" kindref="member">~VlkGraphicsDevice</ref>();</highlight></codeline>
 <codeline lineno="69"><highlight class="normal">};</highlight></codeline>

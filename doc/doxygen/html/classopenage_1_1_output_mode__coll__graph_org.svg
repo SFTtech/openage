@@ -130,7 +130,7 @@
 </g>
 <!-- Node13 -->
 <g id="node9" class="node"><title>Node13</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title="odo this whole class seems rather obsolete...">
 <polygon fill="white" stroke="black" points="398.5,-1584.5 398.5,-1707.5 550.5,-1707.5 550.5,-1584.5 398.5,-1584.5"/>
 <text text-anchor="middle" x="474.5" y="-1695.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ActionManager</text>
 <polyline fill="none" stroke="black" points="398.5,-1688.5 550.5,-1688.5 "/>

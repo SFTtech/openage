@@ -494,7 +494,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="renderer_2opengl_2texture_8h" kindref="compound">texture.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -540,7 +540,7 @@
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>drawing<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>these<sp/>are<sp/>outdated,<sp/>use<sp/>sampler<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>these<sp/>are<sp/>outdated,<sp/>use<sp/>sampler<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>glTexParameteri(GL_TEXTURE_2D,<sp/>GL_TEXTURE_MIN_FILTER,<sp/>GL_NEAREST);</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>glTexParameteri(GL_TEXTURE_2D,<sp/>GL_TEXTURE_MAG_FILTER,<sp/>GL_LINEAR);</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
@@ -569,7 +569,7 @@
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::get&lt;1&gt;(fmt_in_out),<sp/>std::get&lt;2&gt;(fmt_in_out),<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>these<sp/>are<sp/>outdated,<sp/>use<sp/>sampler<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>these<sp/>are<sp/>outdated,<sp/>use<sp/>sampler<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>glTexParameteri(GL_TEXTURE_2D,<sp/>GL_TEXTURE_MIN_FILTER,<sp/>GL_NEAREST);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>glTexParameteri(GL_TEXTURE_2D,<sp/>GL_TEXTURE_MAG_FILTER,<sp/>GL_LINEAR);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
@@ -582,7 +582,7 @@
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>glPixelStorei(GL_PACK_ALIGNMENT,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_texture2d_1ac747ef01febbb6e1f1931f8e07537204" kindref="member">info</ref>.<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1af981ae334cc8a2499278fd15af4d21fc" kindref="member">get_row_alignment</ref>());</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindTexture(GL_TEXTURE_2D,<sp/>*this-&gt;handle);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>use<sp/>a<sp/>Pixel<sp/>Buffer<sp/>Object<sp/>instead</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>use<sp/>a<sp/>Pixel<sp/>Buffer<sp/>Object<sp/>instead</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetTexImage(GL_TEXTURE_2D,<sp/>0,<sp/>std::get&lt;1&gt;(fmt_in_out),<sp/>std::get&lt;2&gt;(fmt_in_out),<sp/>data.data());</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref>(<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">resources::Texture2dInfo</ref>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_texture2d_1ac747ef01febbb6e1f1931f8e07537204" kindref="member">info</ref>),<sp/><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(data));</highlight></codeline>

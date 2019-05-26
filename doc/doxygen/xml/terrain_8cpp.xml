@@ -1172,7 +1172,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="terrain_8h" kindref="compound">terrain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -1207,7 +1207,7 @@
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>infinite{is_infinite},</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>meta{meta}<sp/>{</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//this-&gt;limit_positive<sp/>=</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//this-&gt;limit_negative<sp/>=</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
@@ -1450,7 +1450,7 @@
 <codeline lineno="276"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="277"><highlight class="normal"></highlight></codeline>
 <codeline lineno="278" refid="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" kindref="member">Terrain::draw</ref>(<ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref><sp/>*engine,<sp/><ref refid="classopenage_1_1_render_options" kindref="compound">RenderOptions</ref><sp/>*settings)<sp/>{</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>move<sp/>this<sp/>draw<sp/>invokation<sp/>to<sp/>a<sp/>render<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>move<sp/>this<sp/>draw<sp/>invokation<sp/>to<sp/>a<sp/>render<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>can<sp/>reorder<sp/>the<sp/>draw<sp/>instructions<sp/>and<sp/>minimize<sp/>texture<sp/>switching.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="281"><highlight class="normal"></highlight></codeline>
 <codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>query<sp/>the<sp/>window<sp/>coordinates<sp/>from<sp/>the<sp/>engine<sp/>first</highlight><highlight class="normal"></highlight></codeline>
@@ -1470,7 +1470,7 @@
 <codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>main<sp/>terrain<sp/>calculation<sp/>call:<sp/>get<sp/>the<sp/>`terrain_render_data`</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>draw_data<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_terrain_1ab0736d57ce5014c9caea96125ad87b0d" kindref="member">create_draw_advice</ref>(tl,<sp/>tr,<sp/>br,<sp/>bl,<sp/>settings-&gt;<ref refid="classopenage_1_1_render_options_1afa9ff97e7c4c0d15f01e0765f9a05ce0" kindref="member">terrain_blending</ref>.<ref refid="classopenage_1_1util_1_1_variable_1a2a5e67f8f00e6d539210f496513633b5" kindref="member">value</ref>);</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>the<sp/>following<sp/>loop<sp/>is<sp/>totally<sp/>inefficient<sp/>and<sp/>shit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>the<sp/>following<sp/>loop<sp/>is<sp/>totally<sp/>inefficient<sp/>and<sp/>shit.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>reloads<sp/>the<sp/>drawing<sp/>texture<sp/>to<sp/>the<sp/>gpu<sp/>FOR<sp/>EACH<sp/>TILE!</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>nevertheless,<sp/>currently<sp/>it<sp/>works.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="302"><highlight class="normal"></highlight></codeline>
@@ -1493,7 +1493,7 @@
 <codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"></highlight></codeline>
-<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>drawing<sp/>buildings<sp/>can&apos;t<sp/>be<sp/>the<sp/>job<sp/>of<sp/>the<sp/>terrain..</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>drawing<sp/>buildings<sp/>can&apos;t<sp/>be<sp/>the<sp/>job<sp/>of<sp/>the<sp/>terrain..</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>draw<sp/>the<sp/>buildings</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>:<sp/>draw_data.objects)<sp/>{</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">-&gt;draw(*engine);</highlight></codeline>
@@ -1559,7 +1559,7 @@
 <codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1terrain__render__data_1ad5b2392d7b810a03e69bdfaa2819376b" kindref="member">tiles</ref>-&gt;push_back(tile);</highlight></codeline>
 <codeline lineno="386"><highlight class="normal"></highlight></codeline>
 <codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>object<sp/>standing<sp/>on<sp/>the<sp/>tile</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>make<sp/>the<sp/>terrain<sp/>independent<sp/>of<sp/>objects<sp/>standing<sp/>on<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>make<sp/>the<sp/>terrain<sp/>independent<sp/>of<sp/>objects<sp/>standing<sp/>on<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_tile_content" kindref="compound">TileContent</ref><sp/>*tile_content<sp/>=<sp/>this-&gt;get_data(tilepos);</highlight></codeline>
 <codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tile_content<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>obj_item<sp/>:<sp/>tile_content-&gt;<ref refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" kindref="member">obj</ref>)<sp/>{</highlight></codeline>

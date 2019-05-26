@@ -82,7 +82,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>TODO: Add iptables-like chains that decide whether a message will be logged, depending on msg.info, logger id, thread id, etc. This member variable is only a make-shift solution with obvious limitations. </para>
+<para><xrefsect id="todo_1_todo000024"><xreftitle>Todo</xreftitle><xrefdescription><para>Add iptables-like chains that decide whether a message will be logged, depending on msg.info, logger id, thread id, etc. This member variable is only a make-shift solution with obvious limitations. </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

@@ -32,7 +32,7 @@
         <references refid="namespaceopenage_1_1console_1a4c87ac281f12c1a70ce7a42e994b1f4e" compoundref="buf_8h" startline="34">openage::console::CHR_BLINKINGFAST</references>
         <references refid="namespaceopenage_1_1console_1afb42dd8609458df8845f0fcfe1369a02" compoundref="buf_8h" startline="39">openage::console::CHR_INVISIBLE</references>
         <references refid="namespaceopenage_1_1console_1a704887dfb1063ef039b3d0b3a47c8e3a" compoundref="buf_8h" startline="38">openage::console::CHR_NEGATIVE</references>
-        <references refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" compoundref="buf_8cpp" startline="1140" endline="1148">openage::console::Buf::chrdataptr</references>
+        <references refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" compoundref="buf_8cpp" startline="1141" endline="1149">openage::console::Buf::chrdataptr</references>
         <references refid="structopenage_1_1console_1_1buf__char_1a4b4588eb3c49f45c281f67a95ec58973" compoundref="buf_8h" startline="67">openage::console::buf_char::cp</references>
         <references refid="classopenage_1_1console_1_1_buf_1a3b4aca71e4891bd71a0c57ca5fa58e86" compoundref="buf_8h" startline="443">openage::console::Buf::cursor_visible</references>
         <references refid="classopenage_1_1console_1_1_buf_1a25719bddd1345d6b86e4373dfa474825" compoundref="buf_8h" startline="433">openage::console::Buf::cursorpos</references>
@@ -47,7 +47,7 @@
         <references refid="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" compoundref="text_8cpp" startline="69" endline="76">openage::renderer::TextRenderer::set_font</references>
         <references refid="classopenage_1_1console_1_1_console_1a6464555281f8b3e43de594460911737c" compoundref="console_8h" startline="67">openage::console::Console::termcolors</references>
         <references refid="namespaceopenage_1_1util_1aed7ef0b5ccf0d22a6329396d9a59f671" compoundref="unicode_8cpp" startline="120" endline="152">openage::util::utf8_encode</references>
-        <referencedby refid="classopenage_1_1console_1_1_console_1a1ce3c30cdc768559e11fc548cbcbddd8" compoundref="console_8cpp" startline="164" endline="172">openage::console::Console::on_drawhud</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a1ce3c30cdc768559e11fc548cbcbddd8" compoundref="console_8cpp" startline="162" endline="170">openage::console::Console::on_drawhud</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -79,7 +79,7 @@
         <references refid="namespaceopenage_1_1console_1af47bf3d97cd359c6c10f897202d86f6e" compoundref="buf_8h" startline="33">openage::console::CHR_BLINKING</references>
         <references refid="namespaceopenage_1_1console_1a9745bb286bb9090f6a1108ab396a7b8a" compoundref="buf_8h" startline="30">openage::console::CHR_BOLD</references>
         <references refid="namespaceopenage_1_1console_1a704887dfb1063ef039b3d0b3a47c8e3a" compoundref="buf_8h" startline="38">openage::console::CHR_NEGATIVE</references>
-        <references refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" compoundref="buf_8cpp" startline="1140" endline="1148">openage::console::Buf::chrdataptr</references>
+        <references refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" compoundref="buf_8cpp" startline="1141" endline="1149">openage::console::Buf::chrdataptr</references>
         <references refid="structopenage_1_1console_1_1buf__char_1a4b4588eb3c49f45c281f67a95ec58973" compoundref="buf_8h" startline="67">openage::console::buf_char::cp</references>
         <references refid="classopenage_1_1console_1_1_buf_1a3b4aca71e4891bd71a0c57ca5fa58e86" compoundref="buf_8h" startline="443">openage::console::Buf::cursor_visible</references>
         <references refid="classopenage_1_1console_1_1_buf_1a25719bddd1345d6b86e4373dfa474825" compoundref="buf_8h" startline="433">openage::console::Buf::cursorpos</references>

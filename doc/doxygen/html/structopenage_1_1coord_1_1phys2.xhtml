@@ -143,14 +143,13 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="phys_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="phys_8cpp_source.xhtml">phys.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                        {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> (*<span class="keyword">this</span> - other).length();</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div></div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="terrain__object_8cpp_source.xhtml#l00426">openage::RadialObject::contains()</a>, <a class="el" href="terrain__object_8cpp_source.xhtml#l00415">openage::RadialObject::from_edge()</a>, and <a class="el" href="terrain__object_8cpp_source.xhtml#l00430">openage::RadialObject::intersects()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="terrain__object_8cpp_source.xhtml#l00427">openage::RadialObject::contains()</a>, <a class="el" href="terrain__object_8cpp_source.xhtml#l00416">openage::RadialObject::from_edge()</a>, and <a class="el" href="terrain__object_8cpp_source.xhtml#l00431">openage::RadialObject::intersects()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1phys2_a759b5a67a3faf43208cfb35712f26451_icgraph.svg" width="367" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1phys2_a759b5a67a3faf43208cfb35712f26451_icgraph.svg" width="367" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -180,18 +179,18 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo:</a></b></dt><dd>once terrain elevations have been implemented, query the terrain elevation at {ne, se}. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="phys_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="phys_8cpp_source.xhtml">phys.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                             {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// TODO: once terrain elevations have been implemented,</span></div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">//       query the terrain elevation at {ne, se}.</span></div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">phys_t</a> elevation = 0;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> phys3{this-&gt;ne, this-&gt;se, elevation + altitude};</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1coord_xhtml_a257112db0574d981f4bd017656c687fe"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">openage::coord::phys_t</a></div><div class="ttdeci">util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt; phys_t</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00022">declarations.h:22</a></div></div>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                             {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">phys_t</a> elevation = 0;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> phys3{this-&gt;ne, this-&gt;se, elevation + altitude};</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1coord_xhtml_a257112db0574d981f4bd017656c687fe"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">openage::coord::phys_t</a></div><div class="ttdeci">util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt; phys_t</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00022">declarations.h:22</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="terrain__object_8cpp_source.xhtml#l00469">openage::building_center()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="terrain__object_8cpp_source.xhtml#l00470">openage::building_center()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1phys2_a2cbf9e4669fb9702e6b086de22ac5eac_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1phys2_a2cbf9e4669fb9702e6b086de22ac5eac_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>

@@ -52,7 +52,8 @@
     </briefdescription>
     <detaileddescription>
 <para>Options for the renderer. These will be included in the user interface via reflection, so adding new members will always be visible</para>
-<para>TODO include fog drawing etc </para>
+<para><xrefsect id="todo_1_todo000011"><xreftitle>Todo</xreftitle><xrefdescription><para>include fog drawing etc </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4832">

@@ -25,9 +25,11 @@
 <para>adds an UP component to the coordinate. the resulting UP component will be &apos;altitude&apos; tiles above ground elevation. </para>
         </detaileddescription>
         <inbodydescription>
+<para><xrefsect id="todo_1_todo000007"><xreftitle>Todo</xreftitle><xrefdescription><para>once terrain elevations have been implemented, query the terrain elevation at {ne, se}. </para>
+</xrefdescription></xrefsect></para>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="12" bodyend="18"/>
-        <referencedby refid="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" compoundref="tile_8cpp" startline="26" endline="28">to_phys3</referencedby>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="12" bodyend="20"/>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" compoundref="tile_8cpp" startline="28" endline="30">to_phys3</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1phys2" kindref="compound">phys2</ref></type>
@@ -40,11 +42,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="21" bodyend="23"/>
-        <referencedby refid="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" compoundref="terrain__object_8cpp" startline="310" endline="322">openage::SquareObject::from_edge</referencedby>
-        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="347" endline="378">openage::SquareObject::intersects</referencedby>
-        <referencedby refid="classopenage_1_1_square_object_1aaab1452776a2962c6ccb6bf3b55efecf" compoundref="terrain__object_8cpp" startline="324" endline="334">openage::SquareObject::on_edge</referencedby>
-        <referencedby refid="structopenage_1_1coord_1_1tile3_1a41375a0a27e652e560f0c0fb66fcc56d" compoundref="tile_8cpp" startline="31" endline="33">openage::coord::tile3::to_phys2</referencedby>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="23" bodyend="25"/>
+        <referencedby refid="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" compoundref="terrain__object_8cpp" startline="311" endline="323">openage::SquareObject::from_edge</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="348" endline="379">openage::SquareObject::intersects</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1aaab1452776a2962c6ccb6bf3b55efecf" compoundref="terrain__object_8cpp" startline="325" endline="335">openage::SquareObject::on_edge</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1tile3_1a41375a0a27e652e560f0c0fb66fcc56d" compoundref="tile_8cpp" startline="33" endline="35">openage::coord::tile3::to_phys2</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref></type>
@@ -66,12 +68,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="26" bodyend="28"/>
-        <references refid="structopenage_1_1coord_1_1tile3_1a4c8cdcd73dd2d7d1e6109c8b4a82ba65" compoundref="tile_8cpp" startline="36" endline="42">openage::coord::tile3::to_phys3</references>
-        <references refid="structopenage_1_1coord_1_1tile_1a3b1cc7af8687d57f014cf86e57476b2b" compoundref="tile_8cpp" startline="12" endline="18">to_tile3</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="28" bodyend="30"/>
+        <references refid="structopenage_1_1coord_1_1tile3_1a4c8cdcd73dd2d7d1e6109c8b4a82ba65" compoundref="tile_8cpp" startline="38" endline="44">openage::coord::tile3::to_phys3</references>
+        <references refid="structopenage_1_1coord_1_1tile_1a3b1cc7af8687d57f014cf86e57476b2b" compoundref="tile_8cpp" startline="12" endline="20">to_tile3</references>
         <referencedby refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" compoundref="generator_8cpp" startline="252" endline="301">openage::Generator::add_units</referencedby>
         <referencedby refid="namespaceopenage_1_1gameio_1ac86e0756708907f826cb04e6f13d588d" compoundref="game__save_8cpp" startline="33" endline="54">openage::gameio::load_unit</referencedby>
-        <referencedby refid="structopenage_1_1coord_1_1tile_1a81cb5eb0d3404e8433ffbc3a484160dc" compoundref="tile_8cpp" startline="45" endline="50">to_camgame</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1a81cb5eb0d3404e8433ffbc3a484160dc" compoundref="tile_8cpp" startline="47" endline="52">to_camgame</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1tile_1a81cb5eb0d3404e8433ffbc3a484160dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">camgame</ref></type>
@@ -97,10 +99,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="45" bodyend="50"/>
-        <references refid="structopenage_1_1coord_1_1phys3_1a03daba2a3e79650c251e3c08e0838a5e" compoundref="phys_8cpp" startline="91" endline="93">openage::coord::phys3::to_camgame</references>
-        <references refid="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" compoundref="tile_8cpp" startline="26" endline="28">to_phys3</references>
-        <referencedby refid="structopenage_1_1coord_1_1tile_1a3f2be2b38a339e563ea0fa96733250ec" compoundref="tile_8cpp" startline="53" endline="57">to_viewport</referencedby>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="47" bodyend="52"/>
+        <references refid="structopenage_1_1coord_1_1phys3_1a03daba2a3e79650c251e3c08e0838a5e" compoundref="phys_8cpp" startline="93" endline="95">openage::coord::phys3::to_camgame</references>
+        <references refid="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" compoundref="tile_8cpp" startline="28" endline="30">to_phys3</references>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1a3f2be2b38a339e563ea0fa96733250ec" compoundref="tile_8cpp" startline="55" endline="59">to_viewport</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1tile_1a3f2be2b38a339e563ea0fa96733250ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">viewport</ref></type>
@@ -126,8 +128,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="53" bodyend="57"/>
-        <references refid="structopenage_1_1coord_1_1tile_1a81cb5eb0d3404e8433ffbc3a484160dc" compoundref="tile_8cpp" startline="45" endline="50">to_camgame</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="55" bodyend="59"/>
+        <references refid="structopenage_1_1coord_1_1tile_1a81cb5eb0d3404e8433ffbc3a484160dc" compoundref="tile_8cpp" startline="47" endline="52">to_camgame</references>
         <references refid="structopenage_1_1coord_1_1camgame_1a3fc238716b4f13031e53b8cb1d8c3a44" compoundref="pixel_8cpp" startline="45" endline="48">openage::coord::camgame::to_viewport</references>
         <referencedby refid="classopenage_1_1_texture_1ac79ebb1a99e21faf9ed7faacdf0d68d5" compoundref="texture_8cpp" startline="219" endline="226">openage::Texture::draw</referencedby>
       </memberdef>
@@ -142,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="60" bodyend="65"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="62" bodyend="67"/>
         <references refid="namespaceopenage_1_1util_1a34ba6f7abd32acb48dfc6ad6efdc1bc8" compoundref="misc_8h" startline="75" endline="77">openage::util::div</references>
         <references refid="namespaceopenage_1_1coord_1a056453272e2aabdf7fcf4ecc3b5fe7f7" compoundref="declarations_8h" startline="32">openage::coord::tiles_per_chunk</references>
         <referencedby refid="classopenage_1_1_terrain_1a3c3153682d7a70b539ff15f492e0f06b" compoundref="terrain_8cpp" startline="120" endline="122">openage::Terrain::get_chunk</referencedby>
@@ -160,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="68" bodyend="73"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="70" bodyend="75"/>
         <references refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" compoundref="misc_8h" startline="32" endline="40">openage::util::mod</references>
         <references refid="namespaceopenage_1_1coord_1a056453272e2aabdf7fcf4ecc3b5fe7f7" compoundref="declarations_8h" startline="32">openage::coord::tiles_per_chunk</references>
         <referencedby refid="classopenage_1_1_terrain_chunk_1af163db3fba4ae99206de76666f8424df" compoundref="terrain__chunk_8cpp" startline="46" endline="48">openage::TerrainChunk::get_data</referencedby>

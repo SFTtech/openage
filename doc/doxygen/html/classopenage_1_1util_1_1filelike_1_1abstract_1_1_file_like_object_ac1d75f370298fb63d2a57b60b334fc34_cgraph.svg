@@ -105,31 +105,31 @@
 </g>
 <!-- Node11 -->
 <g id="node8" class="node"><title>Node11</title>
-<g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_file.xhtml#a529bcc6a1c3b4b68db36e6524340cc11" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="214.5,-98.5 214.5,-128.5 308.5,-128.5 308.5,-98.5 214.5,-98.5"/>
-<text text-anchor="start" x="222.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::File</text>
-<text text-anchor="middle" x="261.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::close</text>
+<g id="a_node8"><a xlink:href="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream.xhtml#a0a78e07f80c2a50875e3d689df488e34" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="183.5,-98.5 183.5,-128.5 339.5,-128.5 339.5,-98.5 183.5,-98.5"/>
+<text text-anchor="start" x="191.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage.cabextract.lzxdstream.</text>
+<text text-anchor="middle" x="261.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">LZXDStream.close</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node11 -->
 <g id="edge7" class="edge"><title>Node4&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M88.8516,-196.395C108.902,-180.097 142.976,-154.355 176,-138.5 184.999,-134.18 194.9,-130.438 204.659,-127.26"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="205.812,-130.567 214.332,-124.269 203.744,-123.879 205.812,-130.567"/>
+<path fill="none" stroke="midnightblue" d="M88.8516,-196.395C108.902,-180.097 142.976,-154.355 176,-138.5 180.827,-136.183 185.914,-134.032 191.099,-132.045"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="192.289,-135.336 200.503,-128.645 189.909,-128.753 192.289,-135.336"/>
 </g>
 <!-- Node12 -->
 <g id="node9" class="node"><title>Node12</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream.xhtml#a0a78e07f80c2a50875e3d689df488e34" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="183.5,-49.5 183.5,-79.5 339.5,-79.5 339.5,-49.5 183.5,-49.5"/>
-<text text-anchor="start" x="191.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage.cabextract.lzxdstream.</text>
-<text text-anchor="middle" x="261.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">LZXDStream.close</text>
+<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_file.xhtml#a529bcc6a1c3b4b68db36e6524340cc11" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="214.5,-49.5 214.5,-79.5 308.5,-79.5 308.5,-49.5 214.5,-49.5"/>
+<text text-anchor="start" x="222.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::File</text>
+<text text-anchor="middle" x="261.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::close</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node12 -->
 <g id="edge8" class="edge"><title>Node4&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M79.9508,-196.287C95.9343,-170.448 131.88,-118.023 176,-89.5 179.14,-87.4703 182.45,-85.6002 185.87,-83.8779"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="187.487,-86.9873 195.135,-79.6555 184.584,-80.6175 187.487,-86.9873"/>
+<path fill="none" stroke="midnightblue" d="M79.9508,-196.287C95.9343,-170.448 131.88,-118.023 176,-89.5 184.576,-83.9558 194.424,-79.6032 204.299,-76.1977"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="205.65,-79.4418 214.136,-73.0988 203.546,-72.7653 205.65,-79.4418"/>
 </g>
 <!-- Node13 -->
 <g id="node10" class="node"><title>Node13</title>

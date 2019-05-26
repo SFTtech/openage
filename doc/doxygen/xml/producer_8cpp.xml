@@ -1439,7 +1439,7 @@
 <para>It is likely the conversion from gamedata to openage units will be done by the nyan system in future </para>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;initializer_list&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -1613,7 +1613,7 @@
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>get<sp/>cost,<sp/>temp<sp/>fixed<sp/>cost<sp/>of<sp/>50<sp/>food</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>get<sp/>cost,<sp/>temp<sp/>fixed<sp/>cost<sp/>of<sp/>50<sp/>food</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;cost.set(<ref refid="namespaceopenage_1abda3971a8397f9204b2ad873b645251ca617ac08757d38a5a7ed91c224f0e90a0" kindref="member">cost_type::constant</ref>,<sp/><ref refid="namespaceopenage_1a51da621433dabf064cd41efc49641d51" kindref="member">create_resource_cost</ref>(<ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da62506be34d574da4a0d158a67253ea99" kindref="member">game_resource::food</ref>,<sp/>50));</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"></highlight></codeline>
 <codeline lineno="186"><highlight class="normal">}</highlight></codeline>
@@ -1907,7 +1907,7 @@
 <codeline lineno="474"><highlight class="normal"></highlight></codeline>
 <codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;multitype_attr<sp/>=<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" kindref="member">get_attribute</ref>&lt;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a360fa717125a1d694d8218ce0af98a51" kindref="member">attr_type::multitype</ref>&gt;();</highlight></codeline>
 <codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>currently<sp/>not<sp/>sure<sp/>where<sp/>the<sp/>game<sp/>data<sp/>keeps<sp/>these<sp/>values</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>todo<sp/>PREY_ANIMAL<sp/>SEA_FISH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>PREY_ANIMAL<sp/>SEA_FISH</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_object_producer_1af27e32c01dc789879de5207b39ebf405" kindref="member">parent_id</ref>()<sp/>==<sp/>83)<sp/>{</highlight></codeline>
 <codeline lineno="479"><highlight class="normal"></highlight></codeline>
 <codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>male<sp/>graphics</highlight><highlight class="normal"></highlight></codeline>
@@ -1997,7 +1997,7 @@
 <codeline lineno="564"><highlight class="normal"></highlight></codeline>
 <codeline lineno="565"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;terrain_outline<sp/>=<sp/><ref refid="namespaceopenage_1a8f7c4c46ae7b03cd0cc8ceae47ae7139" kindref="member">square_outline</ref>(this-&gt;foundation_size);</highlight></codeline>
 <codeline lineno="566"><highlight class="normal"></highlight></codeline>
-<codeline lineno="567"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>get<sp/>cost,<sp/>temp<sp/>fixed<sp/>cost<sp/>of<sp/>100<sp/>wood</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>get<sp/>cost,<sp/>temp<sp/>fixed<sp/>cost<sp/>of<sp/>100<sp/>wood</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="568"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;cost.set(<ref refid="namespaceopenage_1abda3971a8397f9204b2ad873b645251ca617ac08757d38a5a7ed91c224f0e90a0" kindref="member">cost_type::constant</ref>,<sp/><ref refid="namespaceopenage_1a51da621433dabf064cd41efc49641d51" kindref="member">create_resource_cost</ref>(<ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da22811dd94d65037ef86535740b98dec8" kindref="member">game_resource::wood</ref>,<sp/>100));</highlight></codeline>
 <codeline lineno="569"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="570"><highlight class="normal"></highlight></codeline>
@@ -2053,7 +2053,7 @@
 <codeline lineno="620"><highlight class="normal"></highlight></codeline>
 <codeline lineno="621"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>limits</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="622"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">()<sp/>==<sp/>109<sp/>||<sp/>this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">()<sp/>==<sp/>276)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>Town<sp/>center,<sp/>Wonder</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="623"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_unit_type_1a5ba08dd8da748f9a303a0f9f1266c112" kindref="member">have_limit</ref><sp/>=<sp/>2;<sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>change<sp/>to<sp/>1,<sp/>2<sp/>is<sp/>for<sp/>testing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="623"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_unit_type_1a5ba08dd8da748f9a303a0f9f1266c112" kindref="member">have_limit</ref><sp/>=<sp/>2;<sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>change<sp/>to<sp/>1,<sp/>2<sp/>is<sp/>for<sp/>testing</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="624"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="625"><highlight class="normal"></highlight></codeline>
 <codeline lineno="626"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>has_destruct_graphic<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_building_producer_1ac320243a0ec29d1f5252b6e49dbcd790" kindref="member">destroyed</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
@@ -2081,7 +2081,7 @@
 <codeline lineno="648"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="649"><highlight class="normal"></highlight></codeline>
 <codeline lineno="650" refid="classopenage_1_1_building_producer_1a3b9addd50944e9d3537b815b1a12a12d" refkind="member"><highlight class="normal">std::vector&lt;game_resource&gt;<sp/><ref refid="classopenage_1_1_building_producer_1a3b9addd50944e9d3537b815b1a12a12d" kindref="member">BuildingProducer::get_accepted_resources</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="651"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//TODO<sp/>use<sp/>a<sp/>more<sp/>general<sp/>approach<sp/>instead<sp/>of<sp/>hard<sp/>coded<sp/>ids</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="651"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>use<sp/>a<sp/>more<sp/>general<sp/>approach<sp/>instead<sp/>of<sp/>hard<sp/>coded<sp/>ids</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="652"><highlight class="normal"></highlight></codeline>
 <codeline lineno="653"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>id_in<sp/>=<sp/>[=](std::initializer_list&lt;int&gt;<sp/>ids)<sp/>{</highlight></codeline>
 <codeline lineno="654"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::any_of(ids.begin(),<sp/>ids.end(),<sp/>[=](</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>n<sp/>==<sp/>this-&gt;<ref refid="classopenage_1_1_building_producer_1a98e04052b3c7522684bf1cd2e9c7e56f" kindref="member">id</ref>();<sp/>});</highlight></codeline>
@@ -2172,7 +2172,7 @@
 <codeline lineno="739"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="740"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="741"><highlight class="normal"></highlight></codeline>
-<codeline lineno="742"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>play<sp/>sound<sp/>once<sp/>built</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="742"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>play<sp/>sound<sp/>once<sp/>built</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="743"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_building_producer_1a974f970953484730236c7f2579fd1c50" kindref="member">on_create</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="744"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_building_producer_1a974f970953484730236c7f2579fd1c50" kindref="member">on_create</ref>-&gt;<ref refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" kindref="member">play</ref>();</highlight></codeline>
 <codeline lineno="745"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

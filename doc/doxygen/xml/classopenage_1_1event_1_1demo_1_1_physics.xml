@@ -100,7 +100,7 @@
         <references refid="classopenage_1_1event_1_1demo_1_1_physics_1aaaafd5ac8b7a69517a6f26f9fa220984" compoundref="physics_8cpp" startline="489" endline="495">reset</references>
         <references refid="classopenage_1_1event_1_1demo_1_1_pong_event_1a9da408d681295db9e3f6632c4b673dcaa8b5086a6d55ac55b34228876b42a7a26" compoundref="gamestate_8h" startline="26">openage::event::demo::PongEvent::START</references>
         <references refid="classopenage_1_1event_1_1demo_1_1_pong_event_1a9da408d681295db9e3f6632c4b673dcaab9eff9ad1c50ede6bf15f9dc46da201a" compoundref="gamestate_8h" startline="26">openage::event::demo::PongEvent::UP</references>
-        <referencedby refid="namespaceopenage_1_1event_1_1demo_1a941b2bcbd6e44b20cc352eb1c2b64068" compoundref="event_2demo_2main_8cpp" startline="42" endline="206">openage::event::demo::curvepong</referencedby>
+        <referencedby refid="namespaceopenage_1_1event_1_1demo_1a941b2bcbd6e44b20cc352eb1c2b64068" compoundref="event_2demo_2main_8cpp" startline="42" endline="205">openage::event::demo::curvepong</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

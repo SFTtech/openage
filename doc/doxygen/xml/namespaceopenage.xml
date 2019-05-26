@@ -252,7 +252,8 @@
         </briefdescription>
         <detaileddescription>
 <para>Types of dynamic cost calculation (and one constant).</para>
-<para>Used in <ref refid="classopenage_1_1_resource_cost" kindref="compound">ResourceCost</ref> TODO use in TimeCost </para>
+<para>Used in <ref refid="classopenage_1_1_resource_cost" kindref="compound">ResourceCost</ref> <xrefsect id="todo_1_todo000012"><xreftitle>Todo</xreftitle><xrefdescription><para>use in TimeCost </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1089,7 +1090,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>type that for terrain ids. it&apos;s signed so that -1 can indicate a missing tile. TODO: get rid of the signedness. </para>
+<para>type that for terrain ids. it&apos;s signed so that -1 can indicate a missing tile. <xrefsect id="todo_1_todo000027"><xreftitle>Todo</xreftitle><xrefdescription><para>get rid of the signedness. </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1502,7 +1504,7 @@
         <references refid="structopenage_1_1main__arguments_1a67dc5127ba5bf3931c425699b2043c87" compoundref="main_8h" startline="30">openage::main_arguments::gl_debug</references>
         <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
         <references refid="message_8h_1ae1103fea1e1b3c41ca3322d5389f7162" compoundref="message_8h" startline="177">INFO</references>
-        <references refid="classopenage_1_1console_1_1_console_1a31dd3007762052acacdb2b1750bc3905" compoundref="console_8cpp" startline="50" endline="58">openage::console::Console::load_colors</references>
+        <references refid="classopenage_1_1console_1_1_console_1a31dd3007762052acacdb2b1750bc3905" compoundref="console_8cpp" startline="48" endline="56">openage::console::Console::load_colors</references>
         <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
         <references refid="structopenage_1_1main__arguments_1a7c445704c2f214b3534f5a468b4dd966" compoundref="main_8h" startline="28">openage::main_arguments::root_path</references>
@@ -1525,16 +1527,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" line="444" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="444" bodyend="467"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" line="445" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="445" bodyend="468"/>
         <references refid="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" compoundref="terrain__object_8h" startline="37">openage::tile_range::end</references>
         <references refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" compoundref="terrain__object_8h" startline="36">openage::tile_range::start</references>
-        <referencedby refid="classopenage_1_1_square_object_1a0deacb1dd962cd1729e6765e8dea01de" compoundref="terrain__object_8cpp" startline="336" endline="345">openage::SquareObject::contains</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1a0deacb1dd962cd1729e6765e8dea01de" compoundref="terrain__object_8cpp" startline="337" endline="346">openage::SquareObject::contains</referencedby>
         <referencedby refid="classopenage_1_1_object_producer_1a6063c50f0e551a3a5a1a4c08f555bf0e" compoundref="producer_8cpp" startline="294" endline="361">openage::ObjectProducer::place</referencedby>
         <referencedby refid="classopenage_1_1_building_producer_1a4ed90b69cb9398ae0cc40625a1fa36d3" compoundref="producer_8cpp" startline="682" endline="747">openage::BuildingProducer::place</referencedby>
         <referencedby refid="classopenage_1_1_terrain_object_1a227f50f827d1ae7791f06e323c581bbd" compoundref="terrain__object_8cpp" startline="71" endline="116">openage::TerrainObject::place</referencedby>
         <referencedby refid="classopenage_1_1_projectile_producer_1a02c2dedff8bebf9d036393d8e35b37b3" compoundref="producer_8cpp" startline="847" endline="903">openage::ProjectileProducer::place</referencedby>
         <referencedby refid="classopenage_1_1_unit_type_1a0649efd34fdb53589135167493f66633" compoundref="unit__type_8cpp" startline="59" endline="84">openage::UnitType::place_beside</referencedby>
-        <referencedby refid="classopenage_1_1_terrain_object_1af781d73de8772dfe4454e75eb96d104c" compoundref="terrain__object_8cpp" startline="257" endline="290">openage::TerrainObject::place_unchecked</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1af781d73de8772dfe4454e75eb96d104c" compoundref="terrain__object_8cpp" startline="258" endline="291">openage::TerrainObject::place_unchecked</referencedby>
         <referencedby refid="classopenage_1_1_terrain_object_1af24e842fc429a5dbb73c12abcb9c3378" compoundref="terrain__object_8cpp" startline="155" endline="186">openage::TerrainObject::remove</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1561,11 +1563,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" line="469" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="469" bodyend="484"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" line="470" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="470" bodyend="485"/>
         <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
-        <references refid="structopenage_1_1coord_1_1phys2_1a2cbf9e4669fb9702e6b086de22ac5eac" compoundref="phys_8cpp" startline="51" endline="57">openage::coord::phys2::to_phys3</references>
-        <references refid="structopenage_1_1coord_1_1phys3_1aa8aa4b7a7a76ddb625b8770ba12484d6" compoundref="phys_8cpp" startline="106" endline="108">openage::coord::phys3::to_tile</references>
-        <referencedby refid="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" compoundref="terrain__object_8cpp" startline="306" endline="308">openage::SquareObject::get_range</referencedby>
+        <references refid="structopenage_1_1coord_1_1phys2_1a2cbf9e4669fb9702e6b086de22ac5eac" compoundref="phys_8cpp" startline="51" endline="59">openage::coord::phys2::to_phys3</references>
+        <references refid="structopenage_1_1coord_1_1phys3_1aa8aa4b7a7a76ddb625b8770ba12484d6" compoundref="phys_8cpp" startline="108" endline="110">openage::coord::phys3::to_tile</references>
+        <referencedby refid="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" compoundref="terrain__object_8cpp" startline="307" endline="309">openage::SquareObject::get_range</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1aab55848d4a5495b982df54fe1d41865b" compoundref="game__control_8cpp" startline="445" endline="472">openage::ActionMode::render</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1584,7 +1586,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" line="486" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="486" bodyend="500"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" line="487" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="487" bodyend="501"/>
         <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828ab0da275520918e23dd615e2a747528f1">build</references>
         <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">building</references>
         <references refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" compoundref="unit_8h" startline="199" endline="203">openage::Unit::get_attribute</references>
@@ -1855,6 +1857,8 @@
 <para>It was created to escape circular-include hell.</para>
 <para>Main openage namespace to store all things that make the have to do with the game.</para>
 <para>Game entity management, graphics drawing, gui stuff, input handling etc. So basically everything that makes the game work lies in here...</para>
+<para><xrefsect id="todo_1_todo000049"><xreftitle>Todo</xreftitle><xrefdescription><para>make general transformation from iterator algorithm to container algorithm. so much metaprogramming... </para>
+</xrefdescription></xrefsect></para>
 <para>This namespace contains constexpr functions, i.e. C++14 functions that are designed to run at compile-time. </para>
     </detaileddescription>
     <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/assetmanager.cpp" line="18" column="1"/>

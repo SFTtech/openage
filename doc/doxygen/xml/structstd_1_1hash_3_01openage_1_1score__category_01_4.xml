@@ -42,7 +42,8 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>hasher for score_category TODO decide if needed, not used at the moment </para>
+<para>hasher for score_category <xrefsect id="todo_1_todo000020"><xreftitle>Todo</xreftitle><xrefdescription><para>decide if needed, not used at the moment </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <collaborationgraph>
       <node id="6641">

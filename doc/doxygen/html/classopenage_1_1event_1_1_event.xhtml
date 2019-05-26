@@ -111,8 +111,7 @@ $(document).ready(function(){initNavTree('classopenage_1_1event_1_1_event.xhtml'
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1_event__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1_event__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -224,7 +223,7 @@ Private Attributes</h2></td></tr>
 <p>To be called in the EventClass::setup function. </p>
 
 <p class="definition">Definition at line <a class="el" href="event_2event_8cpp_source.xhtml#l00026">26</a> of file <a class="el" href="event_2event_8cpp_source.xhtml">event.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                                                  {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// TODO: do REPEAT and TRIGGER listen to changes (i.e. have dependents)?</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// if not, exclude them here and return early.</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a49606be7356624568932ec81c0d429f4">DBG</a> &lt;&lt; <span class="stringliteral">&quot;Adding change listener for: &quot;</span> &lt;&lt; this-&gt;<a class="code" href="classopenage_1_1event_1_1_event.xhtml#a807c931102c8a12c02f1bca33a8f7818">get_eventclass</a>()-&gt;<span class="keywordtype">id</span>()</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;             &lt;&lt; <span class="stringliteral">&quot; to dependency with id=&quot;</span> &lt;&lt; dependency-&gt;id());</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    dependency-&gt;add_dependent(this-&gt;shared_from_this());</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                                                  {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// \todo do REPEAT and TRIGGER listen to changes (i.e. have dependents)?</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// if not, exclude them here and return early.</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a49606be7356624568932ec81c0d429f4">DBG</a> &lt;&lt; <span class="stringliteral">&quot;Adding change listener for: &quot;</span> &lt;&lt; this-&gt;<a class="code" href="classopenage_1_1event_1_1_event.xhtml#a807c931102c8a12c02f1bca33a8f7818">get_eventclass</a>()-&gt;<span class="keywordtype">id</span>()</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;             &lt;&lt; <span class="stringliteral">&quot; to dependency with id=&quot;</span> &lt;&lt; dependency-&gt;id());</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    dependency-&gt;add_dependent(this-&gt;shared_from_this());</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
 <div class="ttc" id="classopenage_1_1event_1_1_event_xhtml_a807c931102c8a12c02f1bca33a8f7818"><div class="ttname"><a href="classopenage_1_1event_1_1_event.xhtml#a807c931102c8a12c02f1bca33a8f7818">openage::event::Event::get_eventclass</a></div><div class="ttdeci">const std::shared_ptr&lt; EventClass &gt; &amp; get_eventclass() const</div><div class="ttdef"><b>Definition:</b> <a href="event_2event_8h_source.xhtml#l00029">event.h:29</a></div></div>
 <div class="ttc" id="message_8h_xhtml_a49606be7356624568932ec81c0d429f4"><div class="ttname"><a href="message_8h.xhtml#a49606be7356624568932ec81c0d429f4">DBG</a></div><div class="ttdeci">#define DBG</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00176">message.h:176</a></div></div>
 </div><!-- fragment -->
@@ -234,8 +233,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1_event_a8a965360b4fcaa417ffebc7e10c9d8d1_cgraph.svg" width="100%" height="444"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1_event_a8a965360b4fcaa417ffebc7e10c9d8d1_cgraph.svg" width="100%" height="444"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -274,8 +272,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1_event_a807c931102c8a12c02f1bca33a8f7818_icgraph.svg" width="358" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1_event_a807c931102c8a12c02f1bca33a8f7818_icgraph.svg" width="358" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

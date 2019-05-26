@@ -236,7 +236,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Calculates the total score from the sub-scores. TODO update gui here </para>
+<para>Calculates the total score from the sub-scores. <xrefsect id="todo_1_todo000019"><xreftitle>Todo</xreftitle><xrefdescription><para>update gui here </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

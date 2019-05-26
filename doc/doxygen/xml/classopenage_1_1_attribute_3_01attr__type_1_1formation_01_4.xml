@@ -86,7 +86,8 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>The attack stance and formation TODO store patrol and follow command information </para>
+<para>The attack stance and formation <xrefsect id="todo_1_todo000036"><xreftitle>Todo</xreftitle><xrefdescription><para>store patrol and follow command information </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="339">

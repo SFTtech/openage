@@ -79,7 +79,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Variables which can be used TODO: read only variables </para>
+<para>Variables which can be used <xrefsect id="todo_1_todo000025"><xreftitle>Todo</xreftitle><xrefdescription><para>read only variables </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -188,7 +189,7 @@
         <references refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" compoundref="options_8h" startline="216">name</references>
         <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
         <references refid="classopenage_1_1options_1_1_option_node_1a965533f59ae5fb52213d3ade08520cd2" compoundref="options_8h" startline="248">varmap</references>
-        <referencedby refid="classopenage_1_1console_1_1_console_1a4e0359f0f3cbbf66da045ba1a33ffa57" compoundref="console_8cpp" startline="126" endline="152">openage::console::Console::interpret</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a4e0359f0f3cbbf66da045ba1a33ffa57" compoundref="console_8cpp" startline="124" endline="150">openage::console::Console::interpret</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1a922dfcd1bf96406142c868eaf6407550" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>

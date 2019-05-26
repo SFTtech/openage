@@ -17,8 +17,8 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="116" bodyend="-1"/>
         <referencedby refid="classopenage_1_1console_1_1_new_buf_1a32d81f342f14bc3a65a65f075aeb5eb1" compoundref="buf_8cpp" startline="191" endline="210">openage::console::NewBuf::new_chr</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" compoundref="buf_8cpp" startline="392" endline="413">openage::console::Buf::pop_last_char</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" compoundref="buf_8cpp" startline="478" endline="596">openage::console::Buf::print_codepoint</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" compoundref="buf_8cpp" startline="393" endline="414">openage::console::Buf::pop_last_char</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" compoundref="buf_8cpp" startline="479" endline="597">openage::console::Buf::print_codepoint</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

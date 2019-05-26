@@ -131,7 +131,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="28" bodyend="34"/>
-        <references refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" compoundref="algorithm_8h" startline="17" endline="22">openage::util::for_each</references>
+        <references refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" compoundref="algorithm_8h" startline="18" endline="23">openage::util::for_each</references>
         <references refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a55206c306b7d1a8dd69901b86de8329d" compoundref="gui__filled__texture__handles_8h" startline="43">handles</references>
         <references refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a2a711dddb6ee87cae1eb651c9a28febd" compoundref="gui__filled__texture__handles_8h" startline="44">handles_mutex</references>
         <references refid="namespaceopenage_1_1texturefont__shader_1a80b2cb1e92b294620d32e9378f795083" compoundref="text_8cpp" startline="16">openage::texturefont_shader::texture</references>

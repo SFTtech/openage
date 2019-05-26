@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="370" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="370" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="372" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="372" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_game_control_1aa7c61c3caafc810355005e83c8f234e2" compoundref="game__control_8cpp" startline="848" endline="854">get_current_player</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1aed1e983dee9b075a3343b72aed5678bd" compoundref="game__control_8cpp" startline="919" endline="925">get_engine</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" compoundref="game__control_8cpp" startline="730" endline="773">set_engine</referencedby>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="371" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="371" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="373" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="373" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_game_control_1aa7c61c3caafc810355005e83c8f234e2" compoundref="game__control_8cpp" startline="848" endline="854">get_current_player</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" compoundref="game__control_8cpp" startline="730" endline="773">set_engine</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1ae6ce3ec10ca18afc9cb7235c88ac7113" compoundref="game__control_8cpp" startline="775" endline="791">set_game</referencedby>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="374" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="374" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="376" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="376" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" compoundref="game__control_8cpp" startline="730" endline="773">set_engine</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1a1d0f073f844955000861e4c0d08b20e0" compoundref="game__control_8cpp" startline="856" endline="917">set_mode</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1aa44a60840b738c202e328902943d8162" compoundref="game__control_8cpp" startline="793" endline="821">set_modes</referencedby>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="376" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="376" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="378" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="378" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_game_control_1a8c867441262580369ff7c66ba6bd0e4b" compoundref="game__control_8cpp" startline="823" endline="830">announce_mode</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1a56eadb260ee512fa9034f25f67308e61" compoundref="game__control_8cpp" startline="840" endline="846">on_drawhud</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1a1d0f073f844955000861e4c0d08b20e0" compoundref="game__control_8cpp" startline="856" endline="917">set_mode</referencedby>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="377" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="377" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="379" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="379" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_game_control_1a8c867441262580369ff7c66ba6bd0e4b" compoundref="game__control_8cpp" startline="823" endline="830">announce_mode</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" compoundref="game__control_8cpp" startline="730" endline="773">set_engine</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1a1d0f073f844955000861e4c0d08b20e0" compoundref="game__control_8cpp" startline="856" endline="917">set_mode</referencedby>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="379" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="379" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="381" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="381" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_game_control_1aa7c61c3caafc810355005e83c8f234e2" compoundref="game__control_8cpp" startline="848" endline="854">get_current_player</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" compoundref="game__control_8cpp" startline="730" endline="773">set_engine</referencedby>
       </memberdef>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="382" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="382" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="384" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="384" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_game_control_1a3d4b9fbef261d19138ba87083e4083a5" compoundref="game__control_8cpp" startline="832" endline="838">announce_current_player_name</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1a8c867441262580369ff7c66ba6bd0e4b" compoundref="game__control_8cpp" startline="823" endline="830">announce_mode</referencedby>
         <referencedby refid="classopenage_1_1_editor_mode_1a4c17017408bec2740f3653123bd17660" compoundref="game__control_8cpp" startline="680" endline="707">openage::EditorMode::set_game_control</referencedby>
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="383" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="383" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="385" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="385" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="353" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="719" bodyend="728"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="355" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="719" bodyend="728"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -169,18 +169,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="355" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="730" bodyend="773"/>
-        <references refid="classopenage_1_1_game_control_1a56a4b875fe0d5b2bad9013fd112118d6" compoundref="game__control_8h" startline="377">active_mode_index</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="357" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="730" bodyend="773"/>
+        <references refid="classopenage_1_1_game_control_1a56a4b875fe0d5b2bad9013fd112118d6" compoundref="game__control_8h" startline="379">active_mode_index</references>
         <references refid="classopenage_1_1_game_control_1a3d4b9fbef261d19138ba87083e4083a5" compoundref="game__control_8cpp" startline="832" endline="838">announce_current_player_name</references>
         <references refid="classopenage_1_1input_1_1_input_context_1a32c669bab23aa04b6d17309b21486ffa" compoundref="input__context_8cpp" startline="34" endline="36">openage::input::InputContext::bind</references>
-        <references refid="classopenage_1_1_game_control_1a42b20faac77a98d70096946a53f64bcc" compoundref="game__control_8h" startline="379">current_player</references>
-        <references refid="classopenage_1_1_game_control_1a91ef234e4c49b19b716ebd05f7bda0a7" compoundref="game__control_8h" startline="370">engine</references>
+        <references refid="classopenage_1_1_game_control_1a42b20faac77a98d70096946a53f64bcc" compoundref="game__control_8h" startline="381">current_player</references>
+        <references refid="classopenage_1_1_game_control_1a91ef234e4c49b19b716ebd05f7bda0a7" compoundref="game__control_8h" startline="372">engine</references>
         <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
-        <references refid="classopenage_1_1_game_control_1ac109fc6d1666c406f7f260f88053c947" compoundref="game__control_8h" startline="371">game</references>
+        <references refid="classopenage_1_1_game_control_1ac109fc6d1666c406f7f260f88053c947" compoundref="game__control_8h" startline="373">game</references>
         <references refid="classopenage_1_1_game_main_handle_1a8d01ae4e890d5a889f45c06182f9bdc3" compoundref="game__main_8cpp" startline="107" endline="109">openage::GameMainHandle::get_game</references>
         <references refid="classopenage_1_1input_1_1_input_manager_1a06819b1b5f717d9fbf45bc098e7fd457" compoundref="input__manager_8cpp" startline="142" endline="144">openage::input::InputManager::get_global_context</references>
         <references refid="classopenage_1_1_engine_1a248149eac4678d70fe55d6ba5cdc695a" compoundref="engine_8cpp" startline="511" endline="513">openage::Engine::get_input_manager</references>
-        <references refid="classopenage_1_1_game_control_1a3f7a5093f8773643b39a95e5bd47a9ef" compoundref="game__control_8h" startline="374">modes</references>
+        <references refid="classopenage_1_1_game_control_1a3f7a5093f8773643b39a95e5bd47a9ef" compoundref="game__control_8h" startline="376">modes</references>
         <references refid="classopenage_1_1_engine_1a28cf66f139dbd94097277d64984154db" compoundref="engine_8cpp" startline="471" endline="473">openage::Engine::register_drawhud_action</references>
         <references refid="classopenage_1_1_game_control_1a1d0f073f844955000861e4c0d08b20e0" compoundref="game__control_8cpp" startline="856" endline="917">set_mode</references>
         <referencedby refid="classopenage_1_1gui_1_1_game_control_link_1a0a4bb8a5d7b2e5637d317fe51f02ad5f" compoundref="game__control__link_8cpp" startline="309" endline="314">openage::gui::GameControlLink::set_engine</referencedby>
@@ -200,8 +200,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="356" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="775" bodyend="791"/>
-        <references refid="classopenage_1_1_game_control_1ac109fc6d1666c406f7f260f88053c947" compoundref="game__control_8h" startline="371">game</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="358" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="775" bodyend="791"/>
+        <references refid="classopenage_1_1_game_control_1ac109fc6d1666c406f7f260f88053c947" compoundref="game__control_8h" startline="373">game</references>
         <references refid="classopenage_1_1_game_main_signals_1a9394777bfabb0220f14b18173e32fb5e">openage::GameMainSignals::game_running</references>
         <references refid="classopenage_1_1_game_main_handle_1a655876099f3ef7ab5ee0aee5b08b9a9c" compoundref="game__main_8h" startline="175">openage::GameMainHandle::gui_signals</references>
         <references refid="classopenage_1_1_game_control_signals_1acd3484cc1f7feb2163be431acfc88c96" compoundref="game__control_8cpp" startline="714" endline="717">openage::GameControlSignals::on_game_running</references>
@@ -222,12 +222,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="358" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="793" bodyend="821"/>
-        <references refid="classopenage_1_1_game_control_1ab8ab8bdeb304d66b75541b1fd1b9695c" compoundref="game__control_8h" startline="376">active_mode</references>
-        <references refid="classopenage_1_1_game_control_1a56a4b875fe0d5b2bad9013fd112118d6" compoundref="game__control_8h" startline="377">active_mode_index</references>
-        <references refid="classopenage_1_1_game_control_1a8d395e91d09a84a64d370e5bac938433" compoundref="game__control_8h" startline="382">gui_signals</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="360" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="793" bodyend="821"/>
+        <references refid="classopenage_1_1_game_control_1ab8ab8bdeb304d66b75541b1fd1b9695c" compoundref="game__control_8h" startline="378">active_mode</references>
+        <references refid="classopenage_1_1_game_control_1a56a4b875fe0d5b2bad9013fd112118d6" compoundref="game__control_8h" startline="379">active_mode_index</references>
+        <references refid="classopenage_1_1_game_control_1a8d395e91d09a84a64d370e5bac938433" compoundref="game__control_8h" startline="384">gui_signals</references>
         <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
-        <references refid="classopenage_1_1_game_control_1a3f7a5093f8773643b39a95e5bd47a9ef" compoundref="game__control_8h" startline="374">modes</references>
+        <references refid="classopenage_1_1_game_control_1a3f7a5093f8773643b39a95e5bd47a9ef" compoundref="game__control_8h" startline="376">modes</references>
         <references refid="classopenage_1_1_game_control_signals_1a8a1d1930de8dacf259c1190f49e62b2b">openage::GameControlSignals::modes_changed</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
         <references refid="classopenage_1_1_game_control_1a1d0f073f844955000861e4c0d08b20e0" compoundref="game__control_8cpp" startline="856" endline="917">set_mode</references>
@@ -254,14 +254,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="360" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="856" bodyend="917"/>
-        <references refid="classopenage_1_1_game_control_1ab8ab8bdeb304d66b75541b1fd1b9695c" compoundref="game__control_8h" startline="376">active_mode</references>
-        <references refid="classopenage_1_1_game_control_1a56a4b875fe0d5b2bad9013fd112118d6" compoundref="game__control_8h" startline="377">active_mode_index</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="362" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="856" bodyend="917"/>
+        <references refid="classopenage_1_1_game_control_1ab8ab8bdeb304d66b75541b1fd1b9695c" compoundref="game__control_8h" startline="378">active_mode</references>
+        <references refid="classopenage_1_1_game_control_1a56a4b875fe0d5b2bad9013fd112118d6" compoundref="game__control_8h" startline="379">active_mode_index</references>
         <references refid="classopenage_1_1_game_control_1a8c867441262580369ff7c66ba6bd0e4b" compoundref="game__control_8cpp" startline="823" endline="830">announce_mode</references>
-        <references refid="classopenage_1_1_game_control_1a91ef234e4c49b19b716ebd05f7bda0a7" compoundref="game__control_8h" startline="370">engine</references>
+        <references refid="classopenage_1_1_game_control_1a91ef234e4c49b19b716ebd05f7bda0a7" compoundref="game__control_8h" startline="372">engine</references>
         <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
         <references refid="classopenage_1_1_engine_1a248149eac4678d70fe55d6ba5cdc695a" compoundref="engine_8cpp" startline="511" endline="513">openage::Engine::get_input_manager</references>
-        <references refid="classopenage_1_1_game_control_1a3f7a5093f8773643b39a95e5bd47a9ef" compoundref="game__control_8h" startline="374">modes</references>
+        <references refid="classopenage_1_1_game_control_1a3f7a5093f8773643b39a95e5bd47a9ef" compoundref="game__control_8h" startline="376">modes</references>
         <references refid="classopenage_1_1_output_mode_1a84beca51250156148fe4af178ed87c22">openage::OutputMode::on_enter</references>
         <references refid="classopenage_1_1_output_mode_1ac4731437d730c75e214f7fda4c218da1">openage::OutputMode::on_exit</references>
         <references refid="classopenage_1_1input_1_1_input_manager_1a2ece2b2ad4a08c15fb00a39b0f553d3c" compoundref="input__manager_8cpp" startline="155" endline="160">openage::input::InputManager::push_context</references>
@@ -282,11 +282,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="361" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="823" bodyend="830"/>
-        <references refid="classopenage_1_1_game_control_1ab8ab8bdeb304d66b75541b1fd1b9695c" compoundref="game__control_8h" startline="376">active_mode</references>
-        <references refid="classopenage_1_1_game_control_1a56a4b875fe0d5b2bad9013fd112118d6" compoundref="game__control_8h" startline="377">active_mode_index</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="363" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="823" bodyend="830"/>
+        <references refid="classopenage_1_1_game_control_1ab8ab8bdeb304d66b75541b1fd1b9695c" compoundref="game__control_8h" startline="378">active_mode</references>
+        <references refid="classopenage_1_1_game_control_1a56a4b875fe0d5b2bad9013fd112118d6" compoundref="game__control_8h" startline="379">active_mode_index</references>
         <references refid="classopenage_1_1_output_mode_1aafb84951c6575c14b5517312c5cfe191" compoundref="game__control_8cpp" startline="30" endline="34">openage::OutputMode::announce</references>
-        <references refid="classopenage_1_1_game_control_1a8d395e91d09a84a64d370e5bac938433" compoundref="game__control_8h" startline="382">gui_signals</references>
+        <references refid="classopenage_1_1_game_control_1a8d395e91d09a84a64d370e5bac938433" compoundref="game__control_8h" startline="384">gui_signals</references>
         <references refid="classopenage_1_1_game_control_signals_1a0455b47d2bf50224596f85e397a9c6ff">openage::GameControlSignals::mode_changed</references>
         <referencedby refid="classopenage_1_1_game_control_1a1d0f073f844955000861e4c0d08b20e0" compoundref="game__control_8cpp" startline="856" endline="917">set_mode</referencedby>
       </memberdef>
@@ -301,11 +301,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="362" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="832" bodyend="838"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="364" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="832" bodyend="838"/>
         <references refid="classopenage_1_1_game_control_signals_1a17501d8252313b0da13baee552034f6e">openage::GameControlSignals::current_civ_index_changed</references>
         <references refid="classopenage_1_1_game_control_signals_1a95762160cc28da841b21e75c6706d70f">openage::GameControlSignals::current_player_name_changed</references>
         <references refid="classopenage_1_1_game_control_1aa7c61c3caafc810355005e83c8f234e2" compoundref="game__control_8cpp" startline="848" endline="854">get_current_player</references>
-        <references refid="classopenage_1_1_game_control_1a8d395e91d09a84a64d370e5bac938433" compoundref="game__control_8h" startline="382">gui_signals</references>
+        <references refid="classopenage_1_1_game_control_1a8d395e91d09a84a64d370e5bac938433" compoundref="game__control_8h" startline="384">gui_signals</references>
         <references refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" compoundref="gamestate_2resource_8cpp" startline="193" endline="206">std::to_string</references>
         <referencedby refid="classopenage_1_1_game_control_signals_1acd3484cc1f7feb2163be431acfc88c96" compoundref="game__control_8cpp" startline="714" endline="717">openage::GameControlSignals::on_game_running</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" compoundref="game__control_8cpp" startline="730" endline="773">set_engine</referencedby>
@@ -323,8 +323,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="364" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="840" bodyend="846"/>
-        <references refid="classopenage_1_1_game_control_1ab8ab8bdeb304d66b75541b1fd1b9695c" compoundref="game__control_8h" startline="376">active_mode</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="366" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="840" bodyend="846"/>
+        <references refid="classopenage_1_1_game_control_1ab8ab8bdeb304d66b75541b1fd1b9695c" compoundref="game__control_8h" startline="378">active_mode</references>
         <references refid="classopenage_1_1_output_mode_1a3ee7e90a18de82e81b02e429fb392694">openage::OutputMode::render</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_game_control_1aa7c61c3caafc810355005e83c8f234e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -338,10 +338,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="366" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="848" bodyend="854"/>
-        <references refid="classopenage_1_1_game_control_1a42b20faac77a98d70096946a53f64bcc" compoundref="game__control_8h" startline="379">current_player</references>
-        <references refid="classopenage_1_1_game_control_1a91ef234e4c49b19b716ebd05f7bda0a7" compoundref="game__control_8h" startline="370">engine</references>
-        <references refid="classopenage_1_1_game_control_1ac109fc6d1666c406f7f260f88053c947" compoundref="game__control_8h" startline="371">game</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="368" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="848" bodyend="854"/>
+        <references refid="classopenage_1_1_game_control_1a42b20faac77a98d70096946a53f64bcc" compoundref="game__control_8h" startline="381">current_player</references>
+        <references refid="classopenage_1_1_game_control_1a91ef234e4c49b19b716ebd05f7bda0a7" compoundref="game__control_8h" startline="372">engine</references>
+        <references refid="classopenage_1_1_game_control_1ac109fc6d1666c406f7f260f88053c947" compoundref="game__control_8h" startline="373">game</references>
         <references refid="classopenage_1_1_engine_1a3e79c3919abbc3cab0716e4807f7c93e" compoundref="engine_8cpp" startline="487" endline="489">openage::Engine::get_game</references>
         <referencedby refid="classopenage_1_1_editor_mode_1a360404d7810def66e59134ee6ea4d0d2" compoundref="game__control_8cpp" startline="651" endline="657">openage::EditorMode::announce_categories</referencedby>
         <referencedby refid="classopenage_1_1_editor_mode_1a8bc3906c89a7ecceff2c24512c5be24b" compoundref="game__control_8cpp" startline="659" endline="673">openage::EditorMode::announce_category_content</referencedby>
@@ -364,8 +364,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="367" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="919" bodyend="925"/>
-        <references refid="classopenage_1_1_game_control_1a91ef234e4c49b19b716ebd05f7bda0a7" compoundref="game__control_8h" startline="370">engine</references>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="369" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="919" bodyend="925"/>
+        <references refid="classopenage_1_1_game_control_1a91ef234e4c49b19b716ebd05f7bda0a7" compoundref="game__control_8h" startline="372">engine</references>
         <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
         <referencedby refid="classopenage_1_1_action_mode_1a30654ed7b85fa4cf0a2728c447dfa652" compoundref="game__control_8cpp" startline="503" endline="527">openage::ActionMode::announce_buttons_type</referencedby>
@@ -801,7 +801,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="351" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="351" bodyend="384"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="353" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="353" bodyend="386"/>
     <listofallmembers>
       <member refid="classopenage_1_1_game_control_1ab8ab8bdeb304d66b75541b1fd1b9695c" prot="private" virt="non-virtual"><scope>openage::GameControl</scope><name>active_mode</name></member>
       <member refid="classopenage_1_1_game_control_1a56a4b875fe0d5b2bad9013fd112118d6" prot="private" virt="non-virtual"><scope>openage::GameControl</scope><name>active_mode_index</name></member>

@@ -288,7 +288,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="glyph__atlas_8h" kindref="compound">glyph_atlas.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -430,7 +430,7 @@
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" kindref="member">set</ref>(key,<sp/>glyph,<sp/>image);</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>figure<sp/>out<sp/>a<sp/>clean<sp/>way<sp/>to<sp/>resize<sp/>the<sp/>atlas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>figure<sp/>out<sp/>a<sp/>clean<sp/>way<sp/>to<sp/>resize<sp/>the<sp/>atlas</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>enough<sp/>space<sp/>in<sp/>the<sp/>atlas&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="145"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>

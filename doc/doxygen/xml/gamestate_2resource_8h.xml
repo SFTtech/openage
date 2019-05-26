@@ -582,7 +582,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -602,7 +602,7 @@
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classopenage_1_1_resource_1a5867567cf6c177472acd0d9f73cc9a89" kindref="member">name</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>add<sp/>images<sp/>and<sp/>icons</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>add<sp/>images<sp/>and<sp/>icons</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
@@ -635,7 +635,7 @@
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref><sp/><ref refid="classopenage_1_1_resources_1aef4b5371e4af7c303ca4d87d5970280c" kindref="member">create_bundle</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>remove<sp/>when<sp/>the<sp/>engine<sp/>is<sp/>fully<sp/>decupled<sp/>from<sp/>the<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>remove<sp/>when<sp/>the<sp/>engine<sp/>is<sp/>fully<sp/>decupled<sp/>from<sp/>the<sp/>data</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="66" refid="classopenage_1_1_resources_1a27ddc9d16912c2781fa62b4038f4c3c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_resources_1a27ddc9d16912c2781fa62b4038f4c3c3" kindref="member">wood</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="67" refid="classopenage_1_1_resources_1ad584e40009c2ea92442927cc374233dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_resources_1ad584e40009c2ea92442927cc374233dc" kindref="member">food</ref><sp/>=<sp/>1;</highlight></codeline>
 <codeline lineno="68" refid="classopenage_1_1_resources_1a945eff3d7ffb4da7c2edba3c92bcd86a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_resources_1a945eff3d7ffb4da7c2edba3c92bcd86a" kindref="member">gold</ref><sp/>=<sp/>2;</highlight></codeline>
@@ -663,7 +663,7 @@
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_resource_producer" kindref="compound">ResourceProducer</ref><sp/><ref refid="classopenage_1_1_classic_resources_1a5bf598b8490c8bd8c082cf70a1bec2cc" kindref="member">resources</ref>[4];</highlight></codeline>
 <codeline lineno="91"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TODO<sp/>remove,<sp/>here<sp/>for<sp/>backwards<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/>\todo<sp/>remove,<sp/>here<sp/>for<sp/>backwards<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="94" refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref><sp/>:<sp/>int<sp/>{</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da22811dd94d65037ef86535740b98dec8" kindref="member">wood</ref><sp/>=<sp/>0,</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da62506be34d574da4a0d158a67253ea99" kindref="member">food</ref><sp/>=<sp/>1,</highlight></codeline>
@@ -676,7 +676,7 @@
 <codeline lineno="110" refid="classopenage_1_1_resource_bundle" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref><sp/>{</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>remove,<sp/>here<sp/>for<sp/>backwards<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>remove,<sp/>here<sp/>for<sp/>backwards<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_resource_bundle_1acc8ae3310aa9478c9b4fee2cabc8134e" kindref="member">ResourceBundle</ref>();</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_resource_bundle_1acc8ae3310aa9478c9b4fee2cabc8134e" kindref="member">ResourceBundle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_resources" kindref="compound">Resources</ref>&amp;<sp/>resources);</highlight></codeline>

@@ -93,11 +93,11 @@
         </briefdescription>
         <detaileddescription>
 <para><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref> access mode.</para>
-<para>Sync the numbers with the fslike/cpp.pyx because Cython can&apos;t enum class yet. TODO: once cython can handle enum class, add pxd annotation. </para>
+<para>Sync the numbers with the fslike/cpp.pyx because Cython can&apos;t enum class yet. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" bodystart="61" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" bodystart="64" bodyend="70"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.cpp" bodystart="10" bodyend="10"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.cpp" bodystart="10" bodyend="10"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a6a711a3f80350e7ed5ff2569e23b68ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="71" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="74" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1adad657901714de4743f7d5a5ad8defdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="73" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="76" column="1"/>
         <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
         <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
       </memberdef>
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="74" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="77" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1ab19a9a6b411c3d8c6b454dea5156d623" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -186,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="76" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="79" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a24397c0d57a9b244b135ae3c72b92aef" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -205,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="78" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="81" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a6e4789631c0c095dea467c5ea5a06ccd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="80" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="83" column="1"/>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a9477182385b8db4a3b2874a9360b690f" compoundref="wrapper_8py" startline="71" endline="73">openage.util.fslike.wrapper.Wrapper.resolve_w</referencedby>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a255427aef3f55eea705114af7d7c107f" compoundref="fslike_2abstract_8py" startline="95" endline="97">openage.util.fslike.abstract.FSLikeObject.resolve_w</referencedby>
       </memberdef>
@@ -246,7 +246,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="82" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="85" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a3299251289e5621fdf1da016a96ea78d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -261,7 +261,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="83" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="86" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a30eeb9b647177a0aaf06ca241e347196" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>size_t</type>
@@ -276,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="84" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="87" column="1"/>
         <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" compoundref="filelike_2abstract_8py" startline="127" endline="146">openage.util.filelike.abstract.FileLikeObject.seek_helper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a7ad98df2b552e013bce31d81a5e36d23" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -292,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="85" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="88" column="1"/>
         <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" compoundref="filelike_2abstract_8py" startline="113" endline="117">openage.util.filelike.abstract.FileLikeObject.__exit__</referencedby>
         <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a39703847165efd7f5527553633bd9e91" compoundref="slp__converter__pool_8py" startline="127" endline="131">openage.convert.slp_converter_pool.SLPConverterPool.__exit__</referencedby>
       </memberdef>
@@ -309,7 +309,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="86" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="89" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a212820ce88cf538a4099f14f622e569b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>ssize_t</type>
@@ -324,7 +324,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="87" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="90" column="1"/>
         <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" compoundref="filelike_2abstract_8py" startline="127" endline="146">openage.util.filelike.abstract.FileLikeObject.seek_helper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a022ae3fc69734c3c81cf5de6cfba35e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -339,7 +339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.cpp" bodystart="12" bodyend="14"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.cpp" bodystart="12" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1aaba5c322eb2f3221a15471f2d546e761" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::ostream &amp;</type>
@@ -358,7 +358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="92" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="95" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -393,7 +393,7 @@
         <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
       </node>
     </collaborationgraph>
-    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" bodystart="41" bodyend="93"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.h" bodystart="41" bodyend="96"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a7ad98df2b552e013bce31d81a5e36d23" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>close</name></member>
       <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a81bef68967e2624ae644118719303934" prot="public" virt="non-virtual"><scope>openage::util::filelike::FileLike</scope><name>FileLike</name></member>

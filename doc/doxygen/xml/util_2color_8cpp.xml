@@ -33,7 +33,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2015<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="util_2color_8h" kindref="compound">color.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -50,7 +50,7 @@
 <codeline lineno="15"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17" refid="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" kindref="member">col::use</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//TODO<sp/>use<sp/>glColor4b</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//\todo<sp/>use<sp/>glColor4b</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>glColor4f(<ref refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" kindref="member">r</ref><sp/>/<sp/>255.f,<sp/><ref refid="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" kindref="member">g</ref><sp/>/<sp/>255.f,<sp/><ref refid="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" kindref="member">b</ref><sp/>/<sp/>255.f,<sp/><ref refid="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" kindref="member">a</ref><sp/>/<sp/>255.f);</highlight></codeline>
 <codeline lineno="20"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>

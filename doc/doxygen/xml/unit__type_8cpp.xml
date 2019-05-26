@@ -956,7 +956,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../gamestate/player.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../terrain/terrain_object.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -1056,7 +1056,7 @@
 <codeline lineno="98" refid="classopenage_1_1_nyan_type_1a63ce8cdf7fd596318a61c0c20628b88b" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_nyan_type_1a63ce8cdf7fd596318a61c0c20628b88b" kindref="member">NyanType::NyanType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>&amp;owner)</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>the<sp/>type<sp/>should<sp/>be<sp/>given<sp/>attributes<sp/>and<sp/>abilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>the<sp/>type<sp/>should<sp/>be<sp/>given<sp/>attributes<sp/>and<sp/>abilities</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
 <codeline lineno="104" refid="classopenage_1_1_nyan_type_1a22c0e00cbbef25bdbfd6cd02be70d6de" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_nyan_type_1a22c0e00cbbef25bdbfd6cd02be70d6de" kindref="member">NyanType::~NyanType</ref>()<sp/>{}</highlight></codeline>

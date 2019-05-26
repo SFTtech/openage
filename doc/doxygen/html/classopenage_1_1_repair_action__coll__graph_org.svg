@@ -707,7 +707,7 @@
 </g>
 <!-- Node26 -->
 <g id="node24" class="node"><title>Node26</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_interval_timer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_interval_timer.xhtml" target="_top" xlink:title="odo use a type instead of unsigned int for time">
 <polygon fill="white" stroke="black" points="360.469,-160.5 360.469,-360.5 473.469,-360.5 473.469,-160.5 360.469,-160.5"/>
 <text text-anchor="middle" x="416.969" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::IntervalTimer</text>
 <polyline fill="none" stroke="black" points="360.469,-341.5 473.469,-341.5 "/>

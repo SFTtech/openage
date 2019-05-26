@@ -186,7 +186,8 @@
         <detaileddescription>
 <para>Initialize units attributes to this type spec</para>
 <para>This can be called using existing units to modify type Ensure that the unit has been placed before seting the units type</para>
-<para>TODO: make const </para>
+<para><xrefsect id="todo_1_todo000045"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -218,7 +219,8 @@
         </briefdescription>
         <detaileddescription>
 <para>set unit in place <ndash/> return if placement was successful</para>
-<para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object TODO: make const </para>
+<para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object <xrefsect id="todo_1_todo000047"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -230,14 +232,15 @@
         <references refid="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465eac693ee9f8e776555e9625dd624ad5fa3">openage::placed_no_collision</references>
         <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36abdb3aea80363d8d4bded1ce9f3cdadf2">openage::projectile</references>
         <references refid="classopenage_1_1_projectile_producer_1a6adb3a694e881056589835540dff1a0c" compoundref="producer_8h" startline="162">terrain_outline</references>
-        <references refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="444" endline="467">openage::tile_list</references>
+        <references refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="445" endline="468">openage::tile_list</references>
         <references refid="classopenage_1_1_projectile_producer_1a5a3ae2ec44c6520240d958a78319de35" compoundref="producer_8h" startline="161">unit_data</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>creates projectiles todo use <ref refid="classopenage_1_1_movable_producer" kindref="compound">MovableProducer</ref> as base class </para>
+<para>creates projectiles <xrefsect id="todo_1_todo000042"><xreftitle>Todo</xreftitle><xrefdescription><para>use <ref refid="classopenage_1_1_movable_producer" kindref="compound">MovableProducer</ref> as base class </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="4522">

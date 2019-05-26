@@ -64,7 +64,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp" bodystart="39" bodyend="52"/>
         <references refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</references>
-        <references refid="classopenage_1_1console_1_1_buf_1a3db6d160e44c8db825a37c0cfbc143ea" compoundref="buf_8cpp" startline="308" endline="319">openage::console::Buf::write</references>
+        <references refid="classopenage_1_1console_1_1_buf_1a3db6d160e44c8db825a37c0cfbc143ea" compoundref="buf_8cpp" startline="309" endline="320">openage::console::Buf::write</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1console_1_1tests_1a4a108e620e3fead2c08ff14841552186" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

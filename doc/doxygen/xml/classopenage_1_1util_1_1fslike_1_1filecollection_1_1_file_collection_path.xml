@@ -46,9 +46,9 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/filecollection.py" line="230" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/filecollection.py" bodystart="230" bodyend="233"/>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
-        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="167">openage::util::Path::fsobj</references>
         <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
-        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="169">openage::util::Path::parts</references>
         <referencedby refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path_1a092f1eb73e0aa772c214a3e91ef73222" compoundref="filecollection_8py" startline="237" endline="244">openage.util.fslike.filecollection.FileCollectionPath.add_file_from_path</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path_1a092f1eb73e0aa772c214a3e91ef73222" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

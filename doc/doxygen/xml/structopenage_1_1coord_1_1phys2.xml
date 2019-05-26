@@ -37,9 +37,11 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
+<para><xrefsect id="todo_1_todo000005"><xreftitle>Todo</xreftitle><xrefdescription><para>once terrain elevations have been implemented, query the terrain elevation at {ne, se}. </para>
+</xrefdescription></xrefsect></para>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp" bodystart="51" bodyend="57"/>
-        <referencedby refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="469" endline="484">openage::building_center</referencedby>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp" bodystart="51" bodyend="59"/>
+        <referencedby refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="470" endline="485">openage::building_center</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1phys2_1a759b5a67a3faf43208cfb35712f26451" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -57,9 +59,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp" bodystart="46" bodyend="48"/>
-        <referencedby refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" compoundref="terrain__object_8cpp" startline="426" endline="428">openage::RadialObject::contains</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1af59b8ff3a8aa105883ac3b1ed61ef68a" compoundref="terrain__object_8cpp" startline="415" endline="420">openage::RadialObject::from_edge</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1adef472de61d9336b562db89eb8ac28a7" compoundref="terrain__object_8cpp" startline="430" endline="438">openage::RadialObject::intersects</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" compoundref="terrain__object_8cpp" startline="427" endline="429">openage::RadialObject::contains</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1af59b8ff3a8aa105883ac3b1ed61ef68a" compoundref="terrain__object_8cpp" startline="416" endline="421">openage::RadialObject::from_edge</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1adef472de61d9336b562db89eb8ac28a7" compoundref="terrain__object_8cpp" startline="431" endline="439">openage::RadialObject::intersects</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

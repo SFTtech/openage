@@ -503,7 +503,7 @@
 </g>
 <!-- Node33 -->
 <g id="node32" class="node"><title>Node33</title>
-<g id="a_node32"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title=" ">
+<g id="a_node32"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title="odo this whole class seems rather obsolete...">
 <polygon fill="white" stroke="black" points="1981.5,-1206.5 1981.5,-1329.5 2133.5,-1329.5 2133.5,-1206.5 1981.5,-1206.5"/>
 <text text-anchor="middle" x="2057.5" y="-1317.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ActionManager</text>
 <polyline fill="none" stroke="black" points="1981.5,-1310.5 2133.5,-1310.5 "/>

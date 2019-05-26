@@ -290,7 +290,7 @@
         <references refid="classopenage_1_1event_1_1_loop_1aa73104f71472a83e1afff4f11e0c619f" compoundref="loop_8cpp" startline="90" endline="155">execute_events</references>
         <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
         <references refid="classopenage_1_1event_1_1_loop_1aa3e92d18681ac0167d1b67e7ab147328" compoundref="event_2loop_8h" startline="124">queue</references>
-        <references refid="classopenage_1_1event_1_1_event_queue_1a11ac5f64f4344db4281924887f8bda1d" compoundref="eventqueue_8cpp" startline="188" endline="190">openage::event::EventQueue::swap_changesets</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a11ac5f64f4344db4281924887f8bda1d" compoundref="eventqueue_8cpp" startline="189" endline="191">openage::event::EventQueue::swap_changesets</references>
         <references refid="classopenage_1_1event_1_1_loop_1a3cb0ae638435b575fe689c550b27a823" compoundref="loop_8cpp" startline="158" endline="215">update_changes</references>
         <references refid="message_8h_1a271d8f7f52be750e5c744a394ec71344" compoundref="message_8h" startline="178">WARN</references>
       </memberdef>
@@ -371,15 +371,15 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.cpp" bodystart="90" bodyend="155"/>
         <references refid="classopenage_1_1event_1_1_loop_1a9f9201d7ad7a6dccf71e3a6502982963" compoundref="event_2loop_8h" startline="130">active_event</references>
         <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
-        <references refid="classopenage_1_1event_1_1_event_queue_1a7da54eb03b82d893e26af2af2749dd62" compoundref="eventqueue_8cpp" startline="152" endline="154">openage::event::EventQueue::get_event_queue</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a7da54eb03b82d893e26af2af2749dd62" compoundref="eventqueue_8cpp" startline="153" endline="155">openage::event::EventQueue::get_event_queue</references>
         <references refid="classopenage_1_1event_1_1_event_store_1af94747a58143a4d16b0f94bd184444be" compoundref="eventstore_8cpp" startline="99" endline="122">openage::event::EventStore::get_sorted_events</references>
         <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
         <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
         <references refid="classopenage_1_1event_1_1_loop_1aa3e92d18681ac0167d1b67e7ab147328" compoundref="event_2loop_8h" startline="124">queue</references>
-        <references refid="classopenage_1_1event_1_1_event_queue_1ac4990fe7904f09c54158de776c6cb805" compoundref="eventqueue_8cpp" startline="147" endline="149">openage::event::EventQueue::reenqueue</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1ac4990fe7904f09c54158de776c6cb805" compoundref="eventqueue_8cpp" startline="148" endline="150">openage::event::EventQueue::reenqueue</references>
         <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a5be68175be14dfaa080165456c2e9555">openage::event::EventClass::REPEAT</references>
         <references refid="classopenage_1_1event_1_1_event_store_1a895a291c20860520abba447e1cd48fd0" compoundref="eventstore_8cpp" startline="89" endline="91">openage::event::EventStore::size</references>
-        <references refid="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" compoundref="eventqueue_8cpp" startline="157" endline="175">openage::event::EventQueue::take_event</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" compoundref="eventqueue_8cpp" startline="158" endline="176">openage::event::EventQueue::take_event</references>
         <referencedby refid="classopenage_1_1event_1_1_loop_1aeba9e515057a87d7fbfddb8585095de6" compoundref="loop_8cpp" startline="56" endline="87">reach_time</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1a3cb0ae638435b575fe689c550b27a823" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -399,17 +399,17 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.h" line="108" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.cpp" bodystart="158" bodyend="215"/>
-        <references refid="classopenage_1_1event_1_1_event_queue_1a2f04cadaa84a8629b94020cb26b999ad" compoundref="eventqueue_8cpp" startline="183" endline="185">openage::event::EventQueue::clear_changes</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a2f04cadaa84a8629b94020cb26b999ad" compoundref="eventqueue_8cpp" startline="184" endline="186">openage::event::EventQueue::clear_changes</references>
         <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
         <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a46e158d5ce615a4f0057515b9a242188">openage::event::EventClass::DEPENDENCY</references>
         <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a66ce7f5b73a0a164407078b598f45e09">openage::event::EventClass::DEPENDENCY_IMMEDIATELY</references>
-        <references refid="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" compoundref="eventqueue_8cpp" startline="137" endline="144">openage::event::EventQueue::enqueue_change</references>
-        <references refid="classopenage_1_1event_1_1_event_queue_1a501fe0a6571ddf1a97bf6d7a6328d924" compoundref="eventqueue_8cpp" startline="178" endline="180">openage::event::EventQueue::get_changes</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" compoundref="eventqueue_8cpp" startline="138" endline="145">openage::event::EventQueue::enqueue_change</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a501fe0a6571ddf1a97bf6d7a6328d924" compoundref="eventqueue_8cpp" startline="179" endline="181">openage::event::EventQueue::get_changes</references>
         <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
         <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
         <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717aa32d16355630f112473d1ae254519c24">openage::event::EventClass::ONCE</references>
         <references refid="classopenage_1_1event_1_1_loop_1aa3e92d18681ac0167d1b67e7ab147328" compoundref="event_2loop_8h" startline="124">queue</references>
-        <references refid="classopenage_1_1event_1_1_event_queue_1a42433f50adffb7e0a20c43889292e54c" compoundref="eventqueue_8cpp" startline="129" endline="134">openage::event::EventQueue::remove</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a42433f50adffb7e0a20c43889292e54c" compoundref="eventqueue_8cpp" startline="129" endline="135">openage::event::EventQueue::remove</references>
         <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a5be68175be14dfaa080165456c2e9555">openage::event::EventClass::REPEAT</references>
         <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717ab8cd801b107a9a8f62c5b61ea5646620">openage::event::EventClass::TRIGGER</references>
         <referencedby refid="classopenage_1_1event_1_1_loop_1aeba9e515057a87d7fbfddb8585095de6" compoundref="loop_8cpp" startline="56" endline="87">reach_time</referencedby>

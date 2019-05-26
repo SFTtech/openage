@@ -783,7 +783,7 @@
 <codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref><sp/>id_texture_data<sp/>=<sp/>id_texture-&gt;into_data();</highlight></codeline>
 <codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>texture_data_valid<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="223"><highlight class="normal"></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(Vtec234):<sp/>move<sp/>these<sp/>into<sp/>the<sp/>renderer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>(Vtec234):<sp/>move<sp/>these<sp/>into<sp/>the<sp/>renderer</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>glDepthFunc(GL_LEQUAL);</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>glDepthRange(0.0,<sp/>1.0);</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>glBlendFunc(GL_SRC_ALPHA,<sp/>GL_ONE_MINUS_SRC_ALPHA);</highlight></codeline>

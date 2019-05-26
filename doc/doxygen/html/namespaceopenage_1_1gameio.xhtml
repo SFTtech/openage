@@ -171,16 +171,14 @@ Variables</h2></td></tr>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a75b0984fd51cdc53616318d3f5a0d50f_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a75b0984fd51cdc53616318d3f5a0d50f_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a75b0984fd51cdc53616318d3f5a0d50f_icgraph.svg" width="348" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a75b0984fd51cdc53616318d3f5a0d50f_icgraph.svg" width="348" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -213,8 +211,7 @@ Variables</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a4141acb6d3c777a66792c1f02a8678bc_icgraph.svg" width="550" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a4141acb6d3c777a66792c1f02a8678bc_icgraph.svg" width="550" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -247,10 +244,10 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__save_8cpp_source.xhtml#l00033">33</a> of file <a class="el" href="game__save_8cpp_source.xhtml">game_save.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                                  {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">int</span> pr_id;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> player_no;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="namespaceopenage_1_1coord.xhtml#a89337255daa472cb4631091a38bac268">coord::tile_t</a> ne, se;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    file &gt;&gt; pr_id;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    file &gt;&gt; player_no;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    file &gt;&gt; ne;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    file &gt;&gt; se;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    UnitType &amp;saved_type = *game-&gt;get_player(player_no)-&gt;get_type(pr_id);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">auto</span> <a class="code" href="constinit__vector_8cpp.xhtml#aad68795cb6d982f4dda0a4b91a8c1577">ref</a> = game-&gt;placed_units.new_unit(saved_type, *game-&gt;get_player(player_no), coord::tile{ne, se}.to_phys3(*game-&gt;terrain));</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">bool</span> has_building_attr;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    file &gt;&gt; has_building_attr;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span> (has_building_attr) {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">float</span> completed;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        file &gt;&gt; completed;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span> (completed &gt;= 1.0f &amp;&amp; <a class="code" href="constinit__vector_8cpp.xhtml#aad68795cb6d982f4dda0a4b91a8c1577">ref</a>.is_valid()) {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="namespaceopenage.xhtml#a23f086d83373aef776a1031dbbcbe975">complete_building</a>(*<a class="code" href="constinit__vector_8cpp.xhtml#aad68795cb6d982f4dda0a4b91a8c1577">ref</a>.get());</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1coord_xhtml_a89337255daa472cb4631091a38bac268"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#a89337255daa472cb4631091a38bac268">openage::coord::tile_t</a></div><div class="ttdeci">int64_t tile_t</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00030">declarations.h:30</a></div></div>
-<div class="ttc" id="namespaceopenage_xhtml_a23f086d83373aef776a1031dbbcbe975"><div class="ttname"><a href="namespaceopenage.xhtml#a23f086d83373aef776a1031dbbcbe975">openage::complete_building</a></div><div class="ttdeci">bool complete_building(Unit &amp;u)</div><div class="ttdef"><b>Definition:</b> <a href="terrain__object_8cpp_source.xhtml#l00486">terrain_object.cpp:486</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a23f086d83373aef776a1031dbbcbe975"><div class="ttname"><a href="namespaceopenage.xhtml#a23f086d83373aef776a1031dbbcbe975">openage::complete_building</a></div><div class="ttdeci">bool complete_building(Unit &amp;u)</div><div class="ttdef"><b>Definition:</b> <a href="terrain__object_8cpp_source.xhtml#l00487">terrain_object.cpp:487</a></div></div>
 <div class="ttc" id="constinit__vector_8cpp_xhtml_aad68795cb6d982f4dda0a4b91a8c1577"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aad68795cb6d982f4dda0a4b91a8c1577">ref</a></div><div class="ttdeci">int * ref</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00047">constinit_vector.cpp:47</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="terrain__object_8cpp_source.xhtml#l00486">openage::complete_building()</a>, <a class="el" href="game__main_8cpp_source.xhtml#l00047">openage::GameMain::get_player()</a>, <a class="el" href="player_8cpp_source.xhtml#l00119">openage::Player::get_type()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00088">openage::UnitContainer::new_unit()</a>, <a class="el" href="game__main_8h_source.xhtml#l00087">openage::GameMain::placed_units</a>, <a class="el" href="constinit__vector_8cpp_source.xhtml#l00047">ref</a>, <a class="el" href="game__main_8h_source.xhtml#l00072">openage::GameMain::terrain</a>, and <a class="el" href="tile_8cpp_source.xhtml#l00026">openage::coord::tile::to_phys3()</a>.</p>
+<p class="reference">References <a class="el" href="terrain__object_8cpp_source.xhtml#l00487">openage::complete_building()</a>, <a class="el" href="game__main_8cpp_source.xhtml#l00047">openage::GameMain::get_player()</a>, <a class="el" href="player_8cpp_source.xhtml#l00119">openage::Player::get_type()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00088">openage::UnitContainer::new_unit()</a>, <a class="el" href="game__main_8h_source.xhtml#l00087">openage::GameMain::placed_units</a>, <a class="el" href="constinit__vector_8cpp_source.xhtml#l00047">ref</a>, <a class="el" href="game__main_8h_source.xhtml#l00072">openage::GameMain::terrain</a>, and <a class="el" href="tile_8cpp_source.xhtml#l00028">openage::coord::tile::to_phys3()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="game__save_8cpp_source.xhtml#l00102">load()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -258,16 +255,14 @@ Variables</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_ac86e0756708907f826cb04e6f13d588d_cgraph.svg" width="100%" height="590"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_ac86e0756708907f826cb04e6f13d588d_cgraph.svg" width="100%" height="590"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_ac86e0756708907f826cb04e6f13d588d_icgraph.svg" width="578" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_ac86e0756708907f826cb04e6f13d588d_icgraph.svg" width="578" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -322,16 +317,14 @@ Variables</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a2c4db428aa6da2185b33a86508fb49a8_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a2c4db428aa6da2185b33a86508fb49a8_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a2c4db428aa6da2185b33a86508fb49a8_icgraph.svg" width="652" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a2c4db428aa6da2185b33a86508fb49a8_icgraph.svg" width="652" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -374,8 +367,7 @@ Variables</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a3dbc6f4b94629a296a514691fb34a470_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a3dbc6f4b94629a296a514691fb34a470_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -416,16 +408,14 @@ Variables</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a644610ec4e114bf5109a4a46847f3762_cgraph.svg" width="602" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a644610ec4e114bf5109a4a46847f3762_cgraph.svg" width="602" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a644610ec4e114bf5109a4a46847f3762_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1gameio_a644610ec4e114bf5109a4a46847f3762_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>

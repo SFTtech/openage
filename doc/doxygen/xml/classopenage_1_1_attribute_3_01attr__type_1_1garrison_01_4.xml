@@ -56,7 +56,8 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Units put inside a building. TODO add capacity per type of unit </para>
+<para>Units put inside a building. <xrefsect id="todo_1_todo000038"><xreftitle>Todo</xreftitle><xrefdescription><para>add capacity per type of unit </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="345">

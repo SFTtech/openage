@@ -1129,7 +1129,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -1420,7 +1420,7 @@
 <codeline lineno="289" refid="classopenage_1_1gui_1_1_game_control_link_1a90b26aa3eec1bd608bfecb9ef61d32af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>effective_mode_index;</highlight></codeline>
 <codeline lineno="290" refid="classopenage_1_1gui_1_1_game_control_link_1a02ffce95a7ef8178d40ab187461b125c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mode_index;</highlight></codeline>
 <codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>QVariantList<sp/>modes;</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>remove<sp/>engine<sp/>because<sp/>it&apos;s<sp/>already<sp/>accessible<sp/>through<sp/>the<sp/>game</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>remove<sp/>engine<sp/>because<sp/>it&apos;s<sp/>already<sp/>accessible<sp/>through<sp/>the<sp/>game</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="293" refid="classopenage_1_1gui_1_1_game_control_link_1a7f995a74035bc297a21ee23b5cd11b74" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref><sp/>*engine;</highlight></codeline>
 <codeline lineno="294" refid="classopenage_1_1gui_1_1_game_control_link_1aebff48a00aa54c3f19f650050ac390e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_game_main_link" kindref="compound">GameMainLink</ref><sp/>*game;</highlight></codeline>
 <codeline lineno="295" refid="classopenage_1_1gui_1_1_game_control_link_1a45ab40e9b57cb9ef84c280415fa6d226" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>current_player_name;</highlight></codeline>

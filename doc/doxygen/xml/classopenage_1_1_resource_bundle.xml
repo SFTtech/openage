@@ -571,7 +571,8 @@
     <detaileddescription>
 <para>A set of amounts of game resources.</para>
 <para>Can be also used to store other information about the resources.</para>
-<para>TODO change amounts from doubles to integers </para>
+<para><xrefsect id="todo_1_todo000018"><xreftitle>Todo</xreftitle><xrefdescription><para>change amounts from doubles to integers </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <collaborationgraph>
       <node id="5019">

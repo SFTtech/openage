@@ -677,7 +677,7 @@
         <referencedby refid="namespaceopenage_1_1console_1_1tests_1a4a108e620e3fead2c08ff14841552186" compoundref="console_2tests_8cpp" startline="55" endline="181">openage::console::tests::interactive</referencedby>
         <referencedby refid="classopenage_1_1util_1_1_quaternion_1a61731d4de80ddb267346159ea173511b" compoundref="quaternion_8h" startline="202" endline="210">openage::util::Quaternion&lt; T &gt;::inverse</referencedby>
         <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">openage::Texture::load</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_console_1a31dd3007762052acacdb2b1750bc3905" compoundref="console_8cpp" startline="50" endline="58">openage::console::Console::load_colors</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a31dd3007762052acacdb2b1750bc3905" compoundref="console_8cpp" startline="48" endline="56">openage::console::Console::load_colors</referencedby>
         <referencedby refid="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" compoundref="game_2main_8py" startline="29" endline="81">openage.game.main.main</referencedby>
         <referencedby refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" compoundref="sdl__global_8cpp" startline="15" endline="37">openage::renderer::SDL::make_available</referencedby>
         <referencedby refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1a1e2e81d74fd03fd894c4acf72227cc2d" compoundref="lzxd_8cpp" startline="259" endline="277">openage::util::compress::HuffmanTable&lt; LZX_PRETREE_MAXSYMBOLS, LZX_PRETREE_TABLEBITS &gt;::make_decode_table</referencedby>

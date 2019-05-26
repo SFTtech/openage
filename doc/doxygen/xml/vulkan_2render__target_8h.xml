@@ -73,7 +73,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -153,7 +153,7 @@
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>.currentExtent.width<sp/>!=<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;uint32_t&gt;::max</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;extent<sp/>=<sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>.currentExtent;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>choose<sp/>a<sp/>size<sp/>from<sp/>this-&gt;size<sp/>in<sp/>this<sp/>case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>choose<sp/>a<sp/>size<sp/>from<sp/>this-&gt;size<sp/>in<sp/>this<sp/>case</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Window<sp/>manager<sp/>does<sp/>not<sp/>provide<sp/>a<sp/>window<sp/>size.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
@@ -169,7 +169,7 @@
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageFormat<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" kindref="member">format</ref>;</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageColorSpace<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" kindref="member">format</ref>.colorSpace;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.presentMode<sp/>=<sp/>mode;</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>why<sp/>doesn&apos;t<sp/>validation<sp/>work?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>why<sp/>doesn&apos;t<sp/>validation<sp/>work?</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageExtent<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a0be5b64a0795218b3629e72cdc22b864" kindref="member">extent</ref>;</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageArrayLayers<sp/>=<sp/>1;</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>or<sp/>VK_IMAGE_USAGE_TRANSFER_DST_BIT<sp/>if<sp/>not<sp/>drawing<sp/>directly<sp/>(postprocess)</highlight><highlight class="normal"></highlight></codeline>
@@ -196,7 +196,7 @@
 <codeline lineno="123"><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;images<sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(vkGetSwapchainImagesKHR,<sp/>this-&gt;device,<sp/>this-&gt;swapchain);</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>move<sp/>out?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>move<sp/>out?</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>img<sp/>:<sp/>this-&gt;images)<sp/>{</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkImageViewCreateInfo<sp/>cr_view<sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;</highlight></codeline>

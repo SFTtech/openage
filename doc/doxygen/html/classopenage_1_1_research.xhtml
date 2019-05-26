@@ -187,7 +187,7 @@ Protected Attributes</h2></td></tr>
 <p>Apply the modifications to the owner player. </p>
 
 <p class="definition">Definition at line <a class="el" href="research_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="research_8cpp_source.xhtml">research.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                     {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// apply the patch</span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83">apply</a>();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// perform category based actions</span></div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">category</a>() == <a class="code" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce">research_category::age_advance</a>) {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">owner</a>.<a class="code" href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe">advance_age</a>();</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">category</a>() == <a class="code" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9">research_category::generic</a>) {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// TODO implement a way to handle this category</span></div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_type_xhtml_adb394897aa588ce3b6399adb8b53b4ec"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">openage::ResearchType::owner</a></div><div class="ttdeci">Player &amp; owner</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00068">research.h:68</a></div></div>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                     {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// apply the patch</span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83">apply</a>();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// perform category based actions</span></div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">category</a>() == <a class="code" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce">research_category::age_advance</a>) {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">owner</a>.<a class="code" href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe">advance_age</a>();</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">type</a>-&gt;<a class="code" href="classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92">category</a>() == <a class="code" href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9">research_category::generic</a>) {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// \todo implement a way to handle this category</span></div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div><div class="ttc" id="classopenage_1_1_research_type_xhtml_adb394897aa588ce3b6399adb8b53b4ec"><div class="ttname"><a href="classopenage_1_1_research_type.xhtml#adb394897aa588ce3b6399adb8b53b4ec">openage::ResearchType::owner</a></div><div class="ttdeci">Player &amp; owner</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00068">research.h:68</a></div></div>
 <div class="ttc" id="classopenage_1_1_player_xhtml_ab5854d681fef5b4a8327097c8ea19bbe"><div class="ttname"><a href="classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe">openage::Player::advance_age</a></div><div class="ttdeci">void advance_age()</div><div class="ttdef"><b>Definition:</b> <a href="player_8cpp_source.xhtml#l00238">player.cpp:238</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce"><div class="ttname"><a href="namespaceopenage.xhtml#ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce">openage::research_category::age_advance</a></div></div>
 <div class="ttc" id="classopenage_1_1_research_xhtml_a8421d74f06cac747352a260624ac3721"><div class="ttname"><a href="classopenage_1_1_research.xhtml#a8421d74f06cac747352a260624ac3721">openage::Research::type</a></div><div class="ttdeci">const ResearchType * type</div><div class="ttdef"><b>Definition:</b> <a href="research_8h_source.xhtml#l00109">research.h:109</a></div></div>
@@ -203,16 +203,14 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a51f059ce7313e37d3848481309b1dbd4_cgraph.svg" width="400" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a51f059ce7313e37d3848481309b1dbd4_cgraph.svg" width="400" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a51f059ce7313e37d3848481309b1dbd4_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a51f059ce7313e37d3848481309b1dbd4_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -245,8 +243,7 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a5d51cbba6f525d77aef2055ade6e36e6_cgraph.svg" width="364" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a5d51cbba6f525d77aef2055ade6e36e6_cgraph.svg" width="364" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -279,8 +276,7 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a856a40cfbef178effe2753a2348280d9_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a856a40cfbef178effe2753a2348280d9_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -335,8 +331,7 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_abfc56f1ccdd12a99f4582cfc89ac80f3_cgraph.svg" width="364" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_abfc56f1ccdd12a99f4582cfc89ac80f3_cgraph.svg" width="364" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -391,8 +386,7 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a9027c73c78b0334b11e48a9fd3ffafd2_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_research_a9027c73c78b0334b11e48a9fd3ffafd2_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

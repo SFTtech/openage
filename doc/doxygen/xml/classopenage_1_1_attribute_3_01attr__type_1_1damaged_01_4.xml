@@ -60,7 +60,8 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>The current hitpoints. TODO add last damage taken timestamp </para>
+<para>The current hitpoints. <xrefsect id="todo_1_todo000034"><xreftitle>Todo</xreftitle><xrefdescription><para>add last damage taken timestamp </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="319">

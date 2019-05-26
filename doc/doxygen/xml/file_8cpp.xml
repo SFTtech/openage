@@ -370,7 +370,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="file_8h" kindref="compound">file.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -471,36 +471,33 @@
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="101" refid="classopenage_1_1util_1_1_file_1a4712008e4434f121e00ba41a29789db9" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1util_1_1_file_1a4712008e4434f121e00ba41a29789db9" kindref="member">File::get_lines</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>relay<sp/>the<sp/>get_lines<sp/>to<sp/>the<sp/>underlaying<sp/>filelike</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>which<sp/>may<sp/>do<sp/>a<sp/>better<sp/>job<sp/>in<sp/>getting<sp/>the<sp/>lines.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>instead,<sp/>we<sp/>read<sp/>everything<sp/>and<sp/>then<sp/>split<sp/>up<sp/>into<sp/>lines.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>{};</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>std::istringstream<sp/>content{this-&gt;<ref refid="classopenage_1_1util_1_1_file_1ac7c3188dd66e5b7aa84bc5a538c93885" kindref="member">read</ref>()};</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(std::getline(content,<sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>))<sp/>{</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.push_back(<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>);</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
-<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117" refid="classopenage_1_1util_1_1_file_1a7a1e89595deb28915427dbe3b011fe8a" refkind="member"><highlight class="normal">std::shared_ptr&lt;filelike::FileLike&gt;<sp/><ref refid="classopenage_1_1util_1_1_file_1a7a1e89595deb28915427dbe3b011fe8a" kindref="member">File::get_fileobj</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_file_1a909061fe4f7083e2b59f2c0076bb562d" kindref="member">filelike</ref>;</highlight></codeline>
-<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122" refid="namespaceopenage_1_1util_1abe7e29a3d1ac620fb9d0eb6830be84cf" refkind="member"><highlight class="normal">std::ostream<sp/>&amp;<ref refid="namespaceopenage_1_1util_1abe7e29a3d1ac620fb9d0eb6830be84cf" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;stream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/>&amp;file)<sp/>{</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;File(&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>file.<ref refid="classopenage_1_1util_1_1_file_1a909061fe4f7083e2b59f2c0076bb562d" kindref="member">filelike</ref>-&gt;repr(stream);</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
-<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>{};</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>std::istringstream<sp/>content{this-&gt;<ref refid="classopenage_1_1util_1_1_file_1ac7c3188dd66e5b7aa84bc5a538c93885" kindref="member">read</ref>()};</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(std::getline(content,<sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.push_back(<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classopenage_1_1util_1_1_file_1a7a1e89595deb28915427dbe3b011fe8a" refkind="member"><highlight class="normal">std::shared_ptr&lt;filelike::FileLike&gt;<sp/><ref refid="classopenage_1_1util_1_1_file_1a7a1e89595deb28915427dbe3b011fe8a" kindref="member">File::get_fileobj</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_file_1a909061fe4f7083e2b59f2c0076bb562d" kindref="member">filelike</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="namespaceopenage_1_1util_1abe7e29a3d1ac620fb9d0eb6830be84cf" refkind="member"><highlight class="normal">std::ostream<sp/>&amp;<ref refid="namespaceopenage_1_1util_1abe7e29a3d1ac620fb9d0eb6830be84cf" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;stream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/>&amp;file)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;File(&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>file.<ref refid="classopenage_1_1util_1_1_file_1a909061fe4f7083e2b59f2c0076bb562d" kindref="member">filelike</ref>-&gt;repr(stream);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/file.cpp"/>
   </compounddef>

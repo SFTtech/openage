@@ -246,7 +246,8 @@
         <detaileddescription>
 <para>Initialize units attributes to this type spec</para>
 <para>This can be called using existing units to modify type Ensure that the unit has been placed before seting the units type</para>
-<para>TODO: make const </para>
+<para><xrefsect id="todo_1_todo000045"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -292,7 +293,8 @@
         </briefdescription>
         <detaileddescription>
 <para>set unit in place <ndash/> return if placement was successful</para>
-<para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object TODO: make const </para>
+<para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object <xrefsect id="todo_1_todo000047"><xreftitle>Todo</xreftitle><xrefdescription><para>make const </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -311,7 +313,7 @@
         <references refid="classopenage_1_1_unit_1a00fd6387097ed12ae6f6b6ec2ab2939e" compoundref="unit_8h" startline="61">openage::Unit::selected</references>
         <references refid="classopenage_1_1_tile_content_1ac370821023f0c2e78ef4ab0c27c7bf09" compoundref="terrain_8h" startline="58">openage::TileContent::terrain_id</references>
         <references refid="classopenage_1_1_building_producer_1a7121bba41c5812a7896847765ac31454" compoundref="producer_8h" startline="129">terrain_outline</references>
-        <references refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="444" endline="467">openage::tile_list</references>
+        <references refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="445" endline="468">openage::tile_list</references>
         <references refid="classopenage_1_1_building_producer_1a8874c490435c8094c093a9f2132c5e6e" compoundref="producer_8h" startline="122">unit_data</references>
       </memberdef>
       </sectiondef>

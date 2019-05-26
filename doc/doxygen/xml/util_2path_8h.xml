@@ -1511,7 +1511,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -1587,55 +1587,51 @@
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>get_mtime()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>get_filesize()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>watching<sp/>of<sp/>path<sp/>with<sp/>inotify<sp/>or<sp/>similar</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>this<sp/>should<sp/>get<sp/>a<sp/>Watcher*,<sp/>which<sp/>manages<sp/>the<sp/>multiple<sp/>events</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>otherwise,<sp/>each<sp/>file<sp/>would<sp/>require<sp/>an<sp/>inotify<sp/>fd.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=&gt;<sp/>see<sp/>the<sp/>AssetManager<sp/>and<sp/>move<sp/>functionality<sp/>from<sp/>there.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>int<sp/>watch(std::function&lt;&gt;<sp/>callback);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>void<sp/>poll_fs_watches();<sp/>//<sp/>call<sp/>triggered<sp/>callbacks</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>get_parent()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;get_name()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>get_suffix()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>get_suffixes()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>get_stem()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>joinpath(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>parts_t<sp/>&amp;subpaths)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>joinpath(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>part_t<sp/>&amp;subpath)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>operator<sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>parts_t<sp/>&amp;subpaths)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>operator<sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>part_t<sp/>&amp;subpath)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/><ref refid="namespaceopenage_1_1util_1a4e6ea5affdccd958479d0eba1b74ce0f" kindref="member">operator /</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>part_t<sp/>&amp;subpath)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>with_name(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>part_t<sp/>&amp;name)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>with_suffix(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>part_t<sp/>&amp;suffix)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"></highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1a1d09cb9758cee29027f1ddfea81cf1ac" kindref="member">operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path<sp/>&amp;other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator<sp/>!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path<sp/>&amp;other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>fslike::FSLike<sp/>*get_fsobj()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>parts_t<sp/>&amp;get_parts()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>get_native_path()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>int<sp/>watch(std::function&lt;&gt;<sp/>callback);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>void<sp/>poll_fs_watches();<sp/>//<sp/>call<sp/>triggered<sp/>callbacks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>get_parent()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;get_name()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>get_suffix()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>get_suffixes()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>get_stem()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>joinpath(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>parts_t<sp/>&amp;subpaths)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>joinpath(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>part_t<sp/>&amp;subpath)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>operator<sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>parts_t<sp/>&amp;subpaths)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>operator<sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>part_t<sp/>&amp;subpath)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/><ref refid="namespaceopenage_1_1util_1a4e6ea5affdccd958479d0eba1b74ce0f" kindref="member">operator /</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>part_t<sp/>&amp;subpath)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>with_name(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>part_t<sp/>&amp;name)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/>with_suffix(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>part_t<sp/>&amp;suffix)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1a1d09cb9758cee29027f1ddfea81cf1ac" kindref="member">operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path<sp/>&amp;other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator<sp/>!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path<sp/>&amp;other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>fslike::FSLike<sp/>*get_fsobj()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>parts_t<sp/>&amp;get_parts()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>get_native_path()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="166" refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;fslike::FSLike&gt;<sp/><ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168" refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" kindref="member">parts</ref>;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream<sp/>&amp;<ref refid="namespaceopenage_1_1util_1abe7e29a3d1ac620fb9d0eb6830be84cf" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;stream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/>&amp;path);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="167" refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;fslike::FSLike&gt;<sp/><ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" kindref="member">parts</ref>;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream<sp/>&amp;<ref refid="namespaceopenage_1_1util_1abe7e29a3d1ac620fb9d0eb6830be84cf" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;stream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/>&amp;path);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"></highlight><highlight class="comment">//<sp/>helper<sp/>functions,<sp/>needed<sp/>for<sp/>some<sp/>parts<sp/>of<sp/>convert/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal">std::string<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fullpath);</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"></highlight></codeline>
-<codeline lineno="184"><highlight class="normal">std::string<sp/><ref refid="namespaceopenage_1_1util_1a954be5116f7af5633dbbc50bac26b0a8" kindref="member">dirname</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fullpath);</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="comment">//<sp/>helper<sp/>functions,<sp/>needed<sp/>for<sp/>some<sp/>parts<sp/>of<sp/>convert/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal">std::string<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fullpath);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal">std::string<sp/><ref refid="namespaceopenage_1_1util_1a954be5116f7af5633dbbc50bac26b0a8" kindref="member">dirname</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fullpath);</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h"/>
   </compounddef>

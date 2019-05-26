@@ -19,7 +19,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="30" bodyend="-1"/>
         <referencedby refid="classopenage_1_1event_1_1_event_queue_1a7115692628b99b277fead8b39603c885" compoundref="eventqueue_8cpp" startline="82" endline="126">openage::event::EventQueue::add_change</referencedby>
-        <referencedby refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1ac61691a120de0baeb9bf3b3b99b25b18" compoundref="eventqueue_8cpp" startline="193" endline="198">OnChangeElement</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1ac61691a120de0baeb9bf3b3b99b25b18" compoundref="eventqueue_8cpp" startline="194" endline="199">OnChangeElement</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1ab2fdebca64d5b385157895e96aad229b" prot="public" static="no" mutable="no">
         <type>std::weak_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
@@ -33,7 +33,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="31" bodyend="-1"/>
-        <referencedby refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_equal_1a6a9bb790126b8e00d1e2e7b79950814c" compoundref="eventqueue_8cpp" startline="201" endline="218">openage::event::EventQueue::OnChangeElement::Equal::operator()</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_equal_1a6a9bb790126b8e00d1e2e7b79950814c" compoundref="eventqueue_8cpp" startline="202" endline="219">openage::event::EventQueue::OnChangeElement::Equal::operator()</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1a2ecd185040dfb65425159b2fe64c80b7" prot="public" static="no" mutable="no">
         <type>const size_t</type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="193" bodyend="198"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="194" bodyend="199"/>
         <references refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1a3983cb8a1cc4722919ee551aff1d9499" compoundref="eventqueue_8h" startline="30">time</references>
       </memberdef>
       </sectiondef>

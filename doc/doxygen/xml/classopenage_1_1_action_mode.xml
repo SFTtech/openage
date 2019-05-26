@@ -143,10 +143,12 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><xrefsect id="todo_1_todo000010"><xreftitle>Todo</xreftitle><xrefdescription><para>these shouldn&apos;t be here. remove them ASAP. they are used to carry over mouse information into some of the game control lambda functions </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="241" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="241" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="243" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="243" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">on_game_control_set</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1aab55848d4a5495b982df54fe1d41865b" compoundref="game__control_8cpp" startline="445" endline="472">render</referencedby>
       </memberdef>
@@ -162,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="242" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="242" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="244" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="244" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">on_game_control_set</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_action_mode_1a96ee042096ca3b85bf6f5a38cd18bc4d" prot="private" static="no" mutable="no">
@@ -176,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="243" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="243" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="245" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="245" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_action_mode_1a9c7d1f16c862692b1172079402ac0f18" compoundref="game__control_8cpp" startline="374" endline="388">on_exit</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">on_game_control_set</referencedby>
       </memberdef>
@@ -191,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="245" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="245" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="247" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="247" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_action_mode_1a30654ed7b85fa4cf0a2728c447dfa652" compoundref="game__control_8cpp" startline="503" endline="527">announce_buttons_type</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_action_mode_1a2343141ddc9aff4c17f8a45b935cad90" prot="private" static="no" mutable="no">
@@ -205,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="248" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="248" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="250" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="250" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">on_game_control_set</referencedby>
       </memberdef>
       </sectiondef>
@@ -221,7 +223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="251" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="251" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="253" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="253" bodyend="-1"/>
         <referencedby refid="classopenage_1_1_action_mode_1a6288ce1c7b45e988f140ace30845bc69" compoundref="game__control_8cpp" startline="478" endline="484">announce</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1a30654ed7b85fa4cf0a2728c447dfa652" compoundref="game__control_8cpp" startline="503" endline="527">announce_buttons_type</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1a0c428b739f584f369deaa02914537814" compoundref="game__control_8cpp" startline="486" endline="501">announce_resources</referencedby>
@@ -307,7 +309,7 @@
         <references refid="classopenage_1_1input_1_1_input_context_1af84dd2cdfe2d8655ed796b94e99ad199" compoundref="input__context_8h" startline="99">openage::input::InputContext::input_manager</references>
         <references refid="classopenage_1_1input_1_1_input_context_1a717f49ae6be59bee9eee3b2544156e10" compoundref="input__context_8cpp" startline="12" endline="14">openage::input::InputContext::InputContext</references>
         <references refid="classopenage_1_1input_1_1_input_manager_1a469024c2b2ac7769e0fa578c73fde160" compoundref="input__manager_8cpp" startline="163" endline="175">openage::input::InputManager::remove_context</references>
-        <references refid="classopenage_1_1_action_mode_1a96ee042096ca3b85bf6f5a38cd18bc4d" compoundref="game__control_8h" startline="243">selecting</references>
+        <references refid="classopenage_1_1_action_mode_1a96ee042096ca3b85bf6f5a38cd18bc4d" compoundref="game__control_8h" startline="245">selecting</references>
         <references refid="classopenage_1_1_action_mode_1ad2bac35b4c96122bf04b7e8c669a3c8f" compoundref="game__control_8h" startline="236">type_focus</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_action_mode_1aab55848d4a5495b982df54fe1d41865b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -325,7 +327,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="172" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="445" bodyend="472"/>
         <references refid="classopenage_1_1_action_mode_1a0c428b739f584f369deaa02914537814" compoundref="game__control_8cpp" startline="486" endline="501">announce_resources</references>
-        <references refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="469" endline="484">openage::building_center</references>
+        <references refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="470" endline="485">openage::building_center</references>
         <references refid="classopenage_1_1_player_1a4abf1f98ff6f6b42147646d13008475c" compoundref="player_8h" startline="32">openage::Player::color</references>
         <references refid="classopenage_1_1_engine_1ad5478f5f2e6dba3a8b4aab3fe828ef3c" compoundref="engine_8h" startline="294">openage::Engine::coord</references>
         <references refid="classopenage_1_1_unit_type_1aa0d238ca5c0cb6b4b328e77dc12abc11" compoundref="unit__type_8cpp" startline="55" endline="57">openage::UnitType::default_texture</references>
@@ -336,11 +338,11 @@
         <references refid="classopenage_1_1_game_control_1aa7c61c3caafc810355005e83c8f234e2" compoundref="game__control_8cpp" startline="848" endline="854">openage::GameControl::get_current_player</references>
         <references refid="classopenage_1_1_game_control_1aed1e983dee9b075a3343b72aed5678bd" compoundref="game__control_8cpp" startline="919" endline="925">openage::GameControl::get_engine</references>
         <references refid="classopenage_1_1_engine_1a3e79c3919abbc3cab0716e4807f7c93e" compoundref="engine_8cpp" startline="487" endline="489">openage::Engine::get_game</references>
-        <references refid="classopenage_1_1_action_mode_1a6807ef371160b0d49b5d1154ec9c6701" compoundref="game__control_8h" startline="241">mousepos_phys3</references>
+        <references refid="classopenage_1_1_action_mode_1a6807ef371160b0d49b5d1154ec9c6701" compoundref="game__control_8h" startline="243">mousepos_phys3</references>
         <references refid="classopenage_1_1_unit_selection_1a0a21b9382975a037b94a1331628b320c" compoundref="selection_8cpp" startline="28" endline="91">openage::UnitSelection::on_drawhud</references>
         <references refid="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" compoundref="engine_8cpp" startline="533" endline="549">openage::Engine::render_text</references>
         <references refid="classopenage_1_1_action_mode_1a3249c18e3bd6e2a4b38c3cd238aad6da" compoundref="game__control_8h" startline="229">selection</references>
-        <references refid="structopenage_1_1coord_1_1phys3_1a851739e9304a9ed9f55f51ef99c814e7" compoundref="phys_8cpp" startline="101" endline="103">openage::coord::phys3::to_camhud</references>
+        <references refid="structopenage_1_1coord_1_1phys3_1a851739e9304a9ed9f55f51ef99c814e7" compoundref="phys_8cpp" startline="103" endline="105">openage::coord::phys3::to_camhud</references>
         <references refid="classopenage_1_1_action_mode_1ad2bac35b4c96122bf04b7e8c669a3c8f" compoundref="game__control_8h" startline="236">type_focus</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_action_mode_1adfc392ec340fa406b3bebe296f07ec21" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -407,7 +409,7 @@
         <references refid="classopenage_1_1_unit_selection_1ab7bbbd3ae208b61e3fae02eca886e134" compoundref="selection_8cpp" startline="179" endline="181">openage::UnitSelection::get_selection_type</references>
         <references refid="classopenage_1_1_player_1a67c7f6853d4be5c38d2456169af3d5a1" compoundref="player_8cpp" startline="119" endline="127">openage::Player::get_type</references>
         <references refid="classopenage_1_1_engine_1a993ef0abb641566f661a99d288ae8e11" compoundref="engine_8cpp" startline="515" endline="517">openage::Engine::get_unit_selection</references>
-        <references refid="classopenage_1_1_action_mode_1ae9bd7c070717c2a7b4ff21aeaeb7d7f4" compoundref="game__control_8h" startline="251">gui_signals</references>
+        <references refid="classopenage_1_1_action_mode_1ae9bd7c070717c2a7b4ff21aeaeb7d7f4" compoundref="game__control_8h" startline="253">gui_signals</references>
         <references refid="classopenage_1_1input_1_1_input_context_1a717f49ae6be59bee9eee3b2544156e10" compoundref="input__context_8cpp" startline="12" endline="14">openage::input::InputContext::InputContext</references>
         <references refid="namespaceopenage_1a355391982e6c1257c3fc4de3b6402b3aa2414c252176310b2c04547257948c7b7">openage::interrupt</references>
         <references refid="classopenage_1_1_unit_selection_1a2cc48ccbea18ec579f9ad27a89b1d96a" compoundref="selection_8cpp" startline="183" endline="204">openage::UnitSelection::kill_unit</references>
@@ -415,8 +417,8 @@
         <references refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a2ec2be318cc86a1224c0e9dcc71321e4">openage::input::MOUSE</references>
         <references refid="structopenage_1_1input_1_1action__arg__t_1acb2429b802ec5c65f21c65a0181d3d14" compoundref="input_2action_8h" startline="77">openage::input::action_arg_t::mouse</references>
         <references refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a6a52684199a74ef0bd3415fe6a76da4f">openage::input::MOUSE_MOTION</references>
-        <references refid="classopenage_1_1_action_mode_1a6807ef371160b0d49b5d1154ec9c6701" compoundref="game__control_8h" startline="241">mousepos_phys3</references>
-        <references refid="classopenage_1_1_action_mode_1ac3305c70dea2722696aa1fe5db2cd42b" compoundref="game__control_8h" startline="242">mousepos_tile</references>
+        <references refid="classopenage_1_1_action_mode_1a6807ef371160b0d49b5d1154ec9c6701" compoundref="game__control_8h" startline="243">mousepos_phys3</references>
+        <references refid="classopenage_1_1_action_mode_1ac3305c70dea2722696aa1fe5db2cd42b" compoundref="game__control_8h" startline="244">mousepos_tile</references>
         <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
         <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
         <references refid="classopenage_1_1_unit_container_1a39947500d16e9d67eb72458f3df7c796" compoundref="unit__container_8cpp" startline="88" endline="94">openage::UnitContainer::new_unit</references>
@@ -426,14 +428,14 @@
         <references refid="classopenage_1_1_game_main_1ac0651e2cfcbf6733dfe637b6b72eaefc" compoundref="game__main_8h" startline="87">openage::GameMain::placed_units</references>
         <references refid="classopenage_1_1rng_1_1_r_n_g_1ab24ce8fabde7df2ec900e3e1883281a4" compoundref="rng_8h" startline="93" endline="95">openage::rng::RNG::probability</references>
         <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a9ab776b93b3c6bbb67f4545371814423">openage::repair</references>
-        <references refid="classopenage_1_1_action_mode_1a2343141ddc9aff4c17f8a45b935cad90" compoundref="game__control_8h" startline="248">rng</references>
-        <references refid="classopenage_1_1_action_mode_1a96ee042096ca3b85bf6f5a38cd18bc4d" compoundref="game__control_8h" startline="243">selecting</references>
+        <references refid="classopenage_1_1_action_mode_1a2343141ddc9aff4c17f8a45b935cad90" compoundref="game__control_8h" startline="250">rng</references>
+        <references refid="classopenage_1_1_action_mode_1a96ee042096ca3b85bf6f5a38cd18bc4d" compoundref="game__control_8h" startline="245">selecting</references>
         <references refid="classopenage_1_1_action_mode_1a3249c18e3bd6e2a4b38c3cd238aad6da" compoundref="game__control_8h" startline="229">selection</references>
         <references refid="classopenage_1_1_game_main_1a0a2423176e649f9865eb97fc0f187b63" compoundref="game__main_8h" startline="72">openage::GameMain::terrain</references>
         <references refid="structopenage_1_1coord_1_1input_1a36c619fe6d0f99917204848208285fef" compoundref="pixel_8cpp" startline="128" endline="130">openage::coord::input::to_camgame</references>
         <references refid="structopenage_1_1coord_1_1input_1a9eba1358725d529a26f871308794ab36" compoundref="pixel_8cpp" startline="133" endline="135">openage::coord::input::to_phys3</references>
         <references refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" compoundref="gamestate_2resource_8cpp" startline="193" endline="206">std::to_string</references>
-        <references refid="structopenage_1_1coord_1_1phys3_1aa8aa4b7a7a76ddb625b8770ba12484d6" compoundref="phys_8cpp" startline="106" endline="108">openage::coord::phys3::to_tile</references>
+        <references refid="structopenage_1_1coord_1_1phys3_1aa8aa4b7a7a76ddb625b8770ba12484d6" compoundref="phys_8cpp" startline="108" endline="110">openage::coord::phys3::to_tile</references>
         <references refid="classopenage_1_1_action_mode_1ad2bac35b4c96122bf04b7e8c669a3c8f" compoundref="game__control_8h" startline="236">type_focus</references>
         <references refid="classopenage_1_1_action_mode_1a52ce5a22e101153dd47febdd3095b63c" compoundref="game__control_8h" startline="232">use_set_ability</references>
       </memberdef>
@@ -457,7 +459,7 @@
         <references refid="classopenage_1_1_action_mode_signals_1a01cb90fdc3c3530ffa273437d9f03048">openage::ActionModeSignals::ability_changed</references>
         <references refid="classopenage_1_1_output_mode_1aafb84951c6575c14b5517312c5cfe191" compoundref="game__control_8cpp" startline="30" endline="34">openage::OutputMode::announce</references>
         <references refid="classopenage_1_1_action_mode_1a0c428b739f584f369deaa02914537814" compoundref="game__control_8cpp" startline="486" endline="501">announce_resources</references>
-        <references refid="classopenage_1_1_action_mode_1ae9bd7c070717c2a7b4ff21aeaeb7d7f4" compoundref="game__control_8h" startline="251">gui_signals</references>
+        <references refid="classopenage_1_1_action_mode_1ae9bd7c070717c2a7b4ff21aeaeb7d7f4" compoundref="game__control_8h" startline="253">gui_signals</references>
         <references refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" compoundref="gamestate_2resource_8cpp" startline="193" endline="206">std::to_string</references>
         <references refid="classopenage_1_1_action_mode_1a52ce5a22e101153dd47febdd3095b63c" compoundref="game__control_8h" startline="232">use_set_ability</references>
         <referencedby refid="classopenage_1_1_action_mode_1a30654ed7b85fa4cf0a2728c447dfa652" compoundref="game__control_8cpp" startline="503" endline="527">announce_buttons_type</referencedby>
@@ -477,7 +479,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="186" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="486" bodyend="501"/>
         <references refid="classopenage_1_1_output_mode_1a77d020596235f68a9650bdf7796b6834" compoundref="game__control_8h" startline="102">openage::OutputMode::game_control</references>
         <references refid="classopenage_1_1_game_control_1aa7c61c3caafc810355005e83c8f234e2" compoundref="game__control_8cpp" startline="848" endline="854">openage::GameControl::get_current_player</references>
-        <references refid="classopenage_1_1_action_mode_1ae9bd7c070717c2a7b4ff21aeaeb7d7f4" compoundref="game__control_8h" startline="251">gui_signals</references>
+        <references refid="classopenage_1_1_action_mode_1ae9bd7c070717c2a7b4ff21aeaeb7d7f4" compoundref="game__control_8h" startline="253">gui_signals</references>
         <references refid="classopenage_1_1_action_mode_signals_1af13facb512270e9d9c134aeabf4bd1a7">openage::ActionModeSignals::population_changed</references>
         <references refid="classopenage_1_1_action_mode_signals_1a5184e9ff66287616fc73fda928e7b762">openage::ActionModeSignals::resource_changed</references>
         <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da0e3189e54a778ef92b43939c27c234bb">openage::RESOURCE_TYPE_COUNT</references>
@@ -502,7 +504,7 @@
         <references refid="classopenage_1_1_action_mode_1a3a85a0b99795561711cb8dbda9a49a94" compoundref="game__control_8h" startline="216">build_menu_mil_context</references>
         <references refid="classopenage_1_1_action_mode_1a99b700f4bb44395f8d1225d646925083" compoundref="game__control_8h" startline="221">building_context</references>
         <references refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a70e748773cd746ae58fc3e9cdd9d49d1">openage::BuildMenu</references>
-        <references refid="classopenage_1_1_action_mode_1a4476d678af575bc6477e287b8ef498fb" compoundref="game__control_8h" startline="245">buttons_type</references>
+        <references refid="classopenage_1_1_action_mode_1a4476d678af575bc6477e287b8ef498fb" compoundref="game__control_8h" startline="247">buttons_type</references>
         <references refid="classopenage_1_1_action_mode_signals_1ad7a3ad25de355b8fea260dca15f56323">openage::ActionModeSignals::buttons_type_changed</references>
         <references refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a0cdbc629c6d54902fa05c83a9d1694a3">openage::CivilianUnits</references>
         <references refid="classopenage_1_1_unit_selection_1a07df9837a02027bf139d1cecfb541b4d" compoundref="selection_8cpp" startline="217" endline="226">openage::UnitSelection::contains_military</references>
@@ -511,7 +513,7 @@
         <references refid="classopenage_1_1_engine_1a248149eac4678d70fe55d6ba5cdc695a" compoundref="engine_8cpp" startline="511" endline="513">openage::Engine::get_input_manager</references>
         <references refid="classopenage_1_1_unit_selection_1ab7bbbd3ae208b61e3fae02eca886e134" compoundref="selection_8cpp" startline="179" endline="181">openage::UnitSelection::get_selection_type</references>
         <references refid="classopenage_1_1input_1_1_input_manager_1a9ccb8754431247dd05c56c445bda15bc" compoundref="input__manager_8cpp" startline="146" endline="153">openage::input::InputManager::get_top_context</references>
-        <references refid="classopenage_1_1_action_mode_1ae9bd7c070717c2a7b4ff21aeaeb7d7f4" compoundref="game__control_8h" startline="251">gui_signals</references>
+        <references refid="classopenage_1_1_action_mode_1ae9bd7c070717c2a7b4ff21aeaeb7d7f4" compoundref="game__control_8h" startline="253">gui_signals</references>
         <references refid="classopenage_1_1input_1_1_input_context_1a717f49ae6be59bee9eee3b2544156e10" compoundref="input__context_8cpp" startline="12" endline="14">openage::input::InputContext::InputContext</references>
         <references refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a408c62a4830f43cc283514da6fbe7acc">openage::MilBuildMenu</references>
         <references refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a4469cd896299cc6ea6ea2054d1e5a777">openage::MilitaryUnits</references>
@@ -1185,7 +1187,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="165" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="165" bodyend="252"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="165" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="165" bodyend="254"/>
     <listofallmembers>
       <member refid="classopenage_1_1_action_mode_1aa6a8f83256bb967d095e34517e4d357b" prot="private" virt="non-virtual"><scope>openage::ActionMode</scope><name>ability</name></member>
       <member refid="classopenage_1_1_action_mode_1ab7a28a2d45f303bcf0160ff65d0e1c52" prot="public" virt="non-virtual"><scope>openage::ActionMode</scope><name>ActionMode</name></member>

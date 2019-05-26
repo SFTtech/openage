@@ -210,7 +210,7 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node29 -->
 <g id="node8" class="node"><title>Node29</title>
-<g id="a_node8"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title="odo: move to util">
 <polygon fill="white" stroke="black" points="791,-101 791,-120 937,-120 937,-101 791,-101"/>
 <text text-anchor="middle" x="864" y="-108" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::tests::max</text>
 </a>

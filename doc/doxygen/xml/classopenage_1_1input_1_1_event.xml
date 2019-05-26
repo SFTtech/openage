@@ -129,7 +129,7 @@
         <references refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" compoundref="input_2event_8h" startline="137">cc</references>
         <references refid="classopenage_1_1input_1_1_class_code_1a48b950f4719c5452ce1feb6f48b83495" compoundref="input_2event_8h" startline="96">openage::input::ClassCode::code</references>
         <referencedby refid="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" compoundref="input_2event_8cpp" startline="69" endline="81">info</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="58" endline="106">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1input_1_1_event_1a1c423e3dac033838c02e10a69c521056" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -145,7 +145,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="128" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.cpp" bodystart="64" bodyend="66"/>
         <references refid="classopenage_1_1input_1_1_event_1a0b02a6e43b8ce3aec0ab4c99d54e33ac" compoundref="input_2event_8h" startline="139">utf8</references>
-        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="58" endline="106">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>

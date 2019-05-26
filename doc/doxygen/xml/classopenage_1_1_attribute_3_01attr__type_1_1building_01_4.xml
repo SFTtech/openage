@@ -120,7 +120,8 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>TODO revisit after unit training is improved </para>
+<para><xrefsect id="todo_1_todo000037"><xreftitle>Todo</xreftitle><xrefdescription><para>revisit after unit training is improved </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="298">

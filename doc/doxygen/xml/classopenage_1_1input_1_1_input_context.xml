@@ -19,7 +19,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_context.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_context.h" bodystart="92" bodyend="-1"/>
         <referencedby refid="classopenage_1_1input_1_1_input_manager_1a564ccab7ee30da3ebaf97beb1fa2fcc0" compoundref="input__manager_8cpp" startline="178" endline="185">openage::input::InputManager::ignored</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="58" endline="106">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -149,7 +149,8 @@
         </briefdescription>
         <detaileddescription>
 <para>a list of all keys of this context which are bound currently in the active context.</para>
-<para>TODO: move this method to the input manager. as InputManager::active_binds(const InputContext &amp;) const; </para>
+<para><xrefsect id="todo_1_todo000023"><xreftitle>Todo</xreftitle><xrefdescription><para>move this method to the input manager. as InputManager::active_binds(const InputContext &amp;) const; </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -183,7 +184,7 @@
         <references refid="classopenage_1_1input_1_1_input_context_1a6f1d87566bbd4aaa60900399d3d0dc35" compoundref="input__context_8h" startline="104">by_type</references>
         <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
         <referencedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f" compoundref="game__control_8cpp" startline="547" endline="577">openage::EditorMode::on_game_control_set</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="58" endline="106">openage::console::Console::register_to_engine</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" compoundref="game__control_8cpp" startline="730" endline="773">openage::GameControl::set_engine</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1ad2240a3e1b80bdf0432f31e7fed692da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -697,7 +697,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../gamestate/player.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="research_8h" kindref="compound">research.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -755,7 +755,7 @@
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_research_1a8421d74f06cac747352a260624ac3721" kindref="member">type</ref>-&gt;<ref refid="classopenage_1_1_research_type_1adb394897aa588ce3b6399adb8b53b4ec" kindref="member">owner</ref>.<ref refid="classopenage_1_1_player_1ab5854d681fef5b4a8327097c8ea19bbe" kindref="member">advance_age</ref>();</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1_research_1a8421d74f06cac747352a260624ac3721" kindref="member">type</ref>-&gt;<ref refid="classopenage_1_1_research_type_1a76a5bd220674135f0bf93eed3f1bce92" kindref="member">category</ref>()<sp/>==<sp/><ref refid="namespaceopenage_1ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9" kindref="member">research_category::generic</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>implement<sp/>a<sp/>way<sp/>to<sp/>handle<sp/>this<sp/>category</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>implement<sp/>a<sp/>way<sp/>to<sp/>handle<sp/>this<sp/>category</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="61"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>

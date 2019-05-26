@@ -490,7 +490,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -562,7 +562,7 @@
 <codeline lineno="95" refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib" kindref="compound">GlVertexAttrib</ref><sp/>{</highlight></codeline>
 <codeline lineno="96" refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1aab4a556ede58c6fb3a7b1726427e2f7c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLenum<sp/><ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1aab4a556ede58c6fb3a7b1726427e2f7c" kindref="member">type</ref>;</highlight></codeline>
 <codeline lineno="97" refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1a36c8e009ab2474d0d19ed6fd8de3dfda" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLint<sp/><ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1a36c8e009ab2474d0d19ed6fd8de3dfda" kindref="member">location</ref>;</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>what<sp/>is<sp/>this?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>what<sp/>is<sp/>this?</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="99" refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLint<sp/><ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" kindref="member">size</ref>;</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>

@@ -373,7 +373,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_manager.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_manager.cpp" bodystart="142" bodyend="144"/>
         <references refid="classopenage_1_1input_1_1_input_manager_1acc8f950721bd51f8d211f538cd6678eb" compoundref="input__manager_8h" startline="209">global_context</references>
         <referencedby refid="classopenage_1_1_action_mode_1a9c7d1f16c862692b1172079402ac0f18" compoundref="game__control_8cpp" startline="374" endline="388">openage::ActionMode::on_exit</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="58" endline="106">openage::console::Console::register_to_engine</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" compoundref="game__control_8cpp" startline="730" endline="773">openage::GameControl::set_engine</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1input_1_1_input_manager_1a9ccb8754431247dd05c56c445bda15bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -418,7 +418,7 @@
         <references refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" compoundref="input__manager_8h" startline="220">contexts</references>
         <references refid="classopenage_1_1input_1_1_input_context_1a0a5d3374a164faf57483d7555f0b84b5" compoundref="input__context_8cpp" startline="77" endline="79">openage::input::InputContext::register_to</references>
         <referencedby refid="classopenage_1_1_game_control_1a1d0f073f844955000861e4c0d08b20e0" compoundref="game__control_8cpp" startline="856" endline="917">openage::GameControl::set_mode</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_console_1a8a86e7fece57c47da16e37633c624ece" compoundref="console_8cpp" startline="110" endline="119">openage::console::Console::set_visible</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a8a86e7fece57c47da16e37633c624ece" compoundref="console_8cpp" startline="108" endline="117">openage::console::Console::set_visible</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1input_1_1_input_manager_1a469024c2b2ac7769e0fa578c73fde160" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -442,7 +442,7 @@
         <references refid="classopenage_1_1input_1_1_input_context_1a12ae83daa8c6bfefef320a07377a9246" compoundref="input__context_8cpp" startline="82" endline="84">openage::input::InputContext::unregister</references>
         <referencedby refid="classopenage_1_1_action_mode_1a9c7d1f16c862692b1172079402ac0f18" compoundref="game__control_8cpp" startline="374" endline="388">openage::ActionMode::on_exit</referencedby>
         <referencedby refid="classopenage_1_1_game_control_1a1d0f073f844955000861e4c0d08b20e0" compoundref="game__control_8cpp" startline="856" endline="917">openage::GameControl::set_mode</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_console_1a8a86e7fece57c47da16e37633c624ece" compoundref="console_8cpp" startline="110" endline="119">openage::console::Console::set_visible</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a8a86e7fece57c47da16e37633c624ece" compoundref="console_8cpp" startline="108" endline="117">openage::console::Console::set_visible</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1input_1_1_input_manager_1a564ccab7ee30da3ebaf97beb1fa2fcc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>

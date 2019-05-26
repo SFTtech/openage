@@ -231,7 +231,7 @@ var sectionId = 'dynsection-2';
 </g>
 <!-- Node29 -->
 <g id="node5" class="node"><title>Node29</title>
-<g id="a_node5"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classopenage_1_1_resource_bundle.xhtml#acc8ae3310aa9478c9b4fee2cabc8134e" target="_top" xlink:title="odo remove, here for backwards compatibility">
 <polygon fill="white" stroke="black" points="515,-430.5 515,-460.5 646,-460.5 646,-430.5 515,-430.5"/>
 <text text-anchor="start" x="523" y="-448.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResourceBundle</text>
 <text text-anchor="middle" x="580.5" y="-437.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ResourceBundle</text>

@@ -172,7 +172,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>unit types which can be produced by this player. TODO revisit, can be simplified? </para>
+<para>unit types which can be produced by this player. <xrefsect id="todo_1_todo000016"><xreftitle>Todo</xreftitle><xrefdescription><para>revisit, can be simplified? </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -188,7 +189,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>available objects mapped using type id unit ids -&gt; unit type for that id TODO revisit, can be simplified? </para>
+<para>available objects mapped using type id unit ids -&gt; unit type for that id <xrefsect id="todo_1_todo000017"><xreftitle>Todo</xreftitle><xrefdescription><para>revisit, can be simplified? </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

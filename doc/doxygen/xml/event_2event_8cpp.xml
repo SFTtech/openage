@@ -340,7 +340,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event_2event_8h" kindref="compound">event.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -366,7 +366,7 @@
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26" refid="classopenage_1_1event_1_1_event_1a8a965360b4fcaa417ffebc7e10c9d8d1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_1a8a965360b4fcaa417ffebc7e10c9d8d1" kindref="member">Event::depend_on</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;EventTarget&gt;<sp/>&amp;dependency)<sp/>{</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>do<sp/>REPEAT<sp/>and<sp/>TRIGGER<sp/>listen<sp/>to<sp/>changes<sp/>(i.e.<sp/>have<sp/>dependents)?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>do<sp/>REPEAT<sp/>and<sp/>TRIGGER<sp/>listen<sp/>to<sp/>changes<sp/>(i.e.<sp/>have<sp/>dependents)?</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>not,<sp/>exclude<sp/>them<sp/>here<sp/>and<sp/>return<sp/>early.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a49606be7356624568932ec81c0d429f4" kindref="member">DBG</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Adding<sp/>change<sp/>listener<sp/>for:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>this-&gt;<ref refid="classopenage_1_1event_1_1_event_1a807c931102c8a12c02f1bca33a8f7818" kindref="member">get_eventclass</ref>()-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">()</highlight></codeline>

@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="todo" kind="page">
+    <compoundname>todo</compoundname>
+    <title>Todo List</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Namespace <ref refid="namespaceopenage" kindref="compound">openage</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000049"/>make general transformation from iterator algorithm to container algorithm. so much metaprogramming...  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_action_mode_1a6807ef371160b0d49b5d1154ec9c6701" kindref="member">openage::ActionMode::mousepos_phys3</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000010"/>these shouldn&apos;t be here. remove them ASAP. they are used to carry over mouse information into some of the game control lambda functions  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4" kindref="compound">openage::Attribute&lt; attr_type::attack &gt;</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000035"/>can a unit have multiple attacks such as villagers hunting map target classes onto attacks </para>
+<para>remove the first constructor and the default values after (keep for now for compatibility)  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a3329c7fc3447ca0d6558742e01e9aa10" kindref="member">openage::Attribute&lt; attr_type::attack &gt;::area_of_effect</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000041"/>not used  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a4290748a1363b5517643b3d1791e2631" kindref="member">openage::Attribute&lt; attr_type::attack &gt;::friendly_fire</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000040"/>not used  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a75a9acf9af2825a2e24e178004e87066" kindref="member">openage::Attribute&lt; attr_type::attack &gt;::min_range</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000039"/>not used  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4" kindref="compound">openage::Attribute&lt; attr_type::building &gt;</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000037"/>revisit after unit training is improved  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4" kindref="compound">openage::Attribute&lt; attr_type::damaged &gt;</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000034"/>add last damage taken timestamp  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4" kindref="compound">openage::Attribute&lt; attr_type::formation &gt;</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000036"/>store patrol and follow command information  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4" kindref="compound">openage::Attribute&lt; attr_type::garrison &gt;</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000038"/>add capacity per type of unit  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_attribute_3_01attr__type_1_1hitpoints_01_4" kindref="compound">openage::Attribute&lt; attr_type::hitpoints &gt;</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000033"/>change bar information stucture  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1audio_1_1_dynamic_loader_1a3b691e2596c617e3ccbd0bc6595109db" kindref="member">openage::audio::DynamicLoader::load_chunk</ref>  (int16_t *chunk_buffer, size_t offset, size_t chunk_size)=0</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000001"/>Returns zero if the end of resource is reached. </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1console_1_1_buf_1a7060ca85ba5a820b0c8e55870a9919c8" kindref="member">openage::console::Buf::resize</ref>  (<ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref> new_dims)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000002"/>copy line by line, considering the value stored in old_linedata_pos-&gt;auto_wrapped. start with the first line of the scrollback buffer, and stop with the last line of the screen buffer. do not copy empty characters, unless they are followed by filled characters in the same line, or a continued wrapped line. store in term_t variables the locations in the new buffer of the first/last line of the old scrollback buffer the first/last line of the old screen buffer these variables need to take into account events where upmost lines of a buffer are overwritten by new lines. commented out for now </para>
+<para><anchor id="todo_1_todo000003"/> depending on the variables defined in the previous section, decide which line is the first line of the screen buffer int new_chrbuf, and which parts of new_chrbuf must be cleared.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1console_1_1_console_1a0e1f861a8f19ed84b00c580d50d9f49f" kindref="member">openage::console::Console::Console</ref>  (<ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> *engine)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000004"/>multiple terminals on screen resizable terminals scrollbars console input log console, command console  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="structopenage_1_1coord_1_1camgame_1a3fc238716b4f13031e53b8cb1d8c3a44" kindref="member">openage::coord::camgame::to_viewport</ref>  (const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref> &amp;mgr) const</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000006"/>Once we have terrain elevation, &apos;up&apos; will not mean the absolute elevation, but instead the returned <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref> coordinate will be the intersection between the camgame line and the 3d terrain + up altitude.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="structopenage_1_1coord_1_1phys2_1a2cbf9e4669fb9702e6b086de22ac5eac" kindref="member">openage::coord::phys2::to_phys3</ref>  (const <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &amp;terrain, phys_t altitude=0) const</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000005"/>once terrain elevations have been implemented, query the terrain elevation at {ne, se}.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="structopenage_1_1coord_1_1tile_1a3b1cc7af8687d57f014cf86e57476b2b" kindref="member">openage::coord::tile::to_tile3</ref>  (const <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &amp;terrain, tile_t altitude=0) const</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000007"/>once terrain elevations have been implemented, query the terrain elevation at {ne, se}.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="namespaceopenage_1abda3971a8397f9204b2ad873b645251c" kindref="member">openage::cost_type</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000012"/>use in TimeCost  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" kindref="member">openage::curve::KeyframeContainer&lt; T &gt;::insert</ref>  (const <ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">Keyframe</ref> &amp;value)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000008"/>add something like <computeroutput>previous</computeroutput> that returns element with e-&gt;time &lt; time probably just calls <computeroutput>last</computeroutput> and walks back one element if that is not at <ref refid="classopenage_1_1curve_1_1_keyframe_container_1a4469b92a601c321c3353c663853d9851" kindref="member">begin()</ref> already  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1event_1_1_event_queue_1a42433f50adffb7e0a20c43889292e54c" kindref="member">openage::event::EventQueue::remove</ref>  (const std::shared_ptr&lt; Event &gt; &amp;evnt)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000009"/>remove the event from the other storages. this would require changes to dependent events and triggers. (to stop being a dependent event or allow being triggered)  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_game_main" kindref="compound">openage::GameMain</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000013"/>include a list of actions to be saved as the game replay file  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_game_spec" kindref="compound">openage::GameSpec</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000015"/>should the audio loading should be moved there?  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1input_1_1_input_context_1ab79e2d06d4aab199d3fb9c5dc5b6ff3f" kindref="member">openage::input::InputContext::active_binds</ref>  () const</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000023"/>move this method to the input manager. as InputManager::active_binds(const InputContext &amp;) const;  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_interval_timer" kindref="compound">openage::IntervalTimer</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000031"/>find a better name for triggers  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1log_1_1_log_sink_1ac795e3966c4816c4c09fab3a68642cca" kindref="member">openage::log::LogSink::set_loglevel</ref>  (level loglevel)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000024"/>Add iptables-like chains that decide whether a message will be logged, depending on msg.info, logger id, thread id, etc. This member variable is only a make-shift solution with obvious limitations.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_nyan_type_1a63ce8cdf7fd596318a61c0c20628b88b" kindref="member">openage::NyanType::NyanType</ref>  (const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;owner)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000048"/>give the parsed nyan attributes to the constructor  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1options_1_1_option_node_1a965533f59ae5fb52213d3ade08520cd2" kindref="member">openage::options::OptionNode::varmap</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000025"/>read only variables  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1path_1_1_node_1ab2a7dc59c9efb7f5baef572bbbb00228" kindref="member">openage::path::Node::position</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000026"/>make const  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_patrol_ability" kindref="compound">openage::PatrolAbility</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000030"/>implement  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_player_1a3fd34994e4ac44efd89e567de46eb05f" kindref="member">openage::Player::available_ids</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000017"/>revisit, can be simplified?  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_player_1a377bd0846efc82274d555e1f1069215c" kindref="member">openage::Player::available_objects</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000016"/>revisit, can be simplified?  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_projectile_producer" kindref="compound">openage::ProjectileProducer</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000042"/>use <ref refid="classopenage_1_1_movable_producer" kindref="compound">MovableProducer</ref> as base class  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_render_options" kindref="compound">openage::RenderOptions</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000011"/>include fog drawing etc  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_resource_bundle" kindref="compound">openage::ResourceBundle</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000018"/>change amounts from doubles to integers  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_score_1ad71b795068636d35bd174acde2e080fd" kindref="member">openage::Score::update_score</ref>  ()</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000019"/>update gui here  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_sound" kindref="compound">openage::Sound</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000014"/>move to assetmanager  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="classopenage_1_1_target_action" kindref="compound">openage::TargetAction</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000032"/>implement min range  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_team_1aa066bf2eeff40da381503faa00507657" kindref="member">openage::Team::get_players</ref>  () const</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000021"/>find a better way to get all the players  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">openage::terrain_t</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000027"/>get rid of the signedness.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_terrain_object_1a601a0aaa58d28c66540b8463662fab85" kindref="member">openage::TerrainObject::get_children</ref>  () const</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000029"/>this does not perform optimally and is likely to change </para>
+<para><anchor id="todo_1_todo000028"/>a better performing way of doing this for example accept a lambda to use for each element or maintain a duplicate class field for raw pointers  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_unit_1a12811894b98383b4c3cfe6769bc3ff80" kindref="member">openage::Unit::location</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000044"/>make private field  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_unit_1a00fd6387097ed12ae6f6b6ec2ab2939e" kindref="member">openage::Unit::selected</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000043"/>should be a pointer to selection to be updated when unit is removed, or null if not selected  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_unit_type_1a810c763e421cd95a9c64ab4c3e351140" kindref="member">openage::UnitType::initialise</ref>  (<ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *, <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;)=0</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000045"/>make const  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_unit_type_1a51facc71929fe2d425bc6bec06e0dc48" kindref="member">openage::UnitType::place</ref>  (<ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *, std::shared_ptr&lt; Terrain &gt;, <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref>) const =0</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000047"/>make const  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1_unit_type_1a05d515d0c9b380bd9cb426b3bf3852f8" kindref="member">openage::UnitType::reinitialise</ref>  (<ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *, <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000046"/>define if pure vitrual or not / should be in nyan?  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1util_1_1_file_1a4712008e4434f121e00ba41a29789db9" kindref="member">openage::util::File::get_lines</ref>  ()</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000050"/>relay the get_lines to the underlaying filelike which may do a better job in getting the lines. instead, we read everything and then split up into lines.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" kindref="member">openage::util::Path::get_parent</ref>  () const</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000051"/>watching of path with inotify or similar this should get a Watcher*, which manages the multiple events otherwise, each file would require an inotify fd. =&gt; see the <ref refid="classopenage_1_1_asset_manager" kindref="compound">AssetManager</ref> and move functionality from there.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" kindref="member">qtsdl::GuiInputImpl::relay_input_event</ref>  (QEvent *ev, bool only_if_grabbed=false)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000022"/>if/when the logic thread or input thread of the main game is made separate, give mutex or queue to the gui in order to replace this busy wait.  </para>
+</listitem>
+<varlistentry><term>Class <ref refid="structstd_1_1hash_3_01openage_1_1score__category_01_4" kindref="compound">std::hash&lt; openage::score_category &gt;</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000020"/>decide if needed, not used at the moment </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

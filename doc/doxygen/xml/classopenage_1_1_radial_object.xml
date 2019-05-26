@@ -18,12 +18,12 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="332" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" bodystart="332" bodyend="-1"/>
-        <referencedby refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" compoundref="terrain__object_8cpp" startline="426" endline="428">contains</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1af59b8ff3a8aa105883ac3b1ed61ef68a" compoundref="terrain__object_8cpp" startline="415" endline="420">from_edge</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" compoundref="terrain__object_8cpp" startline="398" endline="413">get_range</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1adef472de61d9336b562db89eb8ac28a7" compoundref="terrain__object_8cpp" startline="430" endline="438">intersects</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1a3d04f4576d79ec1386283a37c357c3e3" compoundref="terrain__object_8cpp" startline="440" endline="442">min_axis</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1a49bdbb9c2e34b7fac95d8498adef1bc4" compoundref="terrain__object_8cpp" startline="422" endline="424">on_edge</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" compoundref="terrain__object_8cpp" startline="427" endline="429">contains</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1af59b8ff3a8aa105883ac3b1ed61ef68a" compoundref="terrain__object_8cpp" startline="416" endline="421">from_edge</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" compoundref="terrain__object_8cpp" startline="399" endline="414">get_range</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1adef472de61d9336b562db89eb8ac28a7" compoundref="terrain__object_8cpp" startline="431" endline="439">intersects</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a3d04f4576d79ec1386283a37c357c3e3" compoundref="terrain__object_8cpp" startline="441" endline="443">min_axis</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a49bdbb9c2e34b7fac95d8498adef1bc4" compoundref="terrain__object_8cpp" startline="423" endline="425">on_edge</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="327" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="396" bodyend="396"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="327" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="397" bodyend="397"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="structopenage_1_1tile__range" kindref="compound">tile_range</ref></type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="337" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="398" bodyend="413"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="337" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="399" bodyend="414"/>
         <references refid="classopenage_1_1_radial_object_1a1add8d71baff4386b468adb1c8f49323" compoundref="terrain__object_8h" startline="332">phys_radius</references>
         <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
         <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="339" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="415" bodyend="420"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="339" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="416" bodyend="421"/>
         <references refid="structopenage_1_1coord_1_1phys2_1a759b5a67a3faf43208cfb35712f26451" compoundref="phys_8cpp" startline="46" endline="48">openage::coord::phys2::distance</references>
         <references refid="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" compoundref="terrain__object_8h" startline="38">openage::tile_range::draw</references>
         <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="340" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="422" bodyend="424"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="340" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="423" bodyend="425"/>
         <references refid="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" compoundref="terrain__object_8h" startline="38">openage::tile_range::draw</references>
         <references refid="classopenage_1_1_radial_object_1a1add8d71baff4386b468adb1c8f49323" compoundref="terrain__object_8h" startline="332">phys_radius</references>
         <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="341" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="426" bodyend="428"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="341" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="427" bodyend="429"/>
         <references refid="structopenage_1_1coord_1_1phys2_1a759b5a67a3faf43208cfb35712f26451" compoundref="phys_8cpp" startline="46" endline="48">openage::coord::phys2::distance</references>
         <references refid="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" compoundref="terrain__object_8h" startline="38">openage::tile_range::draw</references>
         <references refid="classopenage_1_1_radial_object_1a1add8d71baff4386b468adb1c8f49323" compoundref="terrain__object_8h" startline="332">phys_radius</references>
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="342" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="430" bodyend="438"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="342" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="431" bodyend="439"/>
         <references refid="structopenage_1_1coord_1_1phys2_1a759b5a67a3faf43208cfb35712f26451" compoundref="phys_8cpp" startline="46" endline="48">openage::coord::phys2::distance</references>
         <references refid="classopenage_1_1_radial_object_1a1add8d71baff4386b468adb1c8f49323" compoundref="terrain__object_8h" startline="332">phys_radius</references>
         <references refid="structopenage_1_1coord_1_1phys3_1a24ddc021570223779a5ffad9e3a575b4" compoundref="phys_8cpp" startline="26" endline="28">openage::coord::phys3::to_phys2</references>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="343" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="440" bodyend="442"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="343" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="441" bodyend="443"/>
         <references refid="classopenage_1_1_radial_object_1a1add8d71baff4386b468adb1c8f49323" compoundref="terrain__object_8h" startline="332">phys_radius</references>
       </memberdef>
       </sectiondef>
@@ -237,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="346" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="384" bodyend="387"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="346" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="385" bodyend="388"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_radial_object_1a9eb807b0c54b975287c956eec1150941" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -262,7 +262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="347" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="389" bodyend="394"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="347" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="390" bodyend="395"/>
         <references refid="classopenage_1_1_terrain_object_1a48b30f255fce4952271b5fd633daa488" compoundref="terrain__object_8h" startline="261">openage::TerrainObject::outline_texture</references>
       </memberdef>
       </sectiondef>

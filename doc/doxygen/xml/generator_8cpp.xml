@@ -996,7 +996,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="generator_8h" kindref="compound">generator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -1291,7 +1291,7 @@
 <codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m.<ref refid="classopenage_1_1_game_main_1ac0651e2cfcbf6733dfe637b6b72eaefc" kindref="member">placed_units</ref>.<ref refid="classopenage_1_1_unit_container_1a39947500d16e9d67eb72458f3df7c796" kindref="member">new_unit</ref>(*mvtype,<sp/>*p,<sp/>tile.<ref refid="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" kindref="member">to_phys3</ref>(*m.<ref refid="classopenage_1_1_game_main_1a0a2423176e649f9865eb97fc0f187b63" kindref="member">terrain</ref>));</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tile.se<sp/>+=<sp/>1;</highlight></codeline>
 <codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m.<ref refid="classopenage_1_1_game_main_1ac0651e2cfcbf6733dfe637b6b72eaefc" kindref="member">placed_units</ref>.<ref refid="classopenage_1_1_unit_container_1a39947500d16e9d67eb72458f3df7c796" kindref="member">new_unit</ref>(*fvtype,<sp/>*p,<sp/>tile.<ref refid="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" kindref="member">to_phys3</ref>(*m.<ref refid="classopenage_1_1_game_main_1a0a2423176e649f9865eb97fc0f187b63" kindref="member">terrain</ref>));</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>uncomment<sp/>when<sp/>the<sp/>scout<sp/>looks<sp/>better</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>uncomment<sp/>when<sp/>the<sp/>scout<sp/>looks<sp/>better</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//tile.se<sp/>+=<sp/>2;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//m.placed_units.new_unit(*sctype,<sp/>*p,<sp/>tile.to_tile3().to_phys3());</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>

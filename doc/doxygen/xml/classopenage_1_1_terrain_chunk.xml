@@ -187,7 +187,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.cpp" bodystart="46" bodyend="48"/>
-        <references refid="structopenage_1_1coord_1_1tile_1ab4811e492cabe885d33e85df51ceff83" compoundref="tile_8cpp" startline="68" endline="73">openage::coord::tile::get_pos_on_chunk</references>
+        <references refid="structopenage_1_1coord_1_1tile_1ab4811e492cabe885d33e85df51ceff83" compoundref="tile_8cpp" startline="70" endline="75">openage::coord::tile::get_pos_on_chunk</references>
         <referencedby refid="classopenage_1_1_terrain_1ac5f73cac07115849392bb22598ae8fba" compoundref="terrain_8cpp" startline="64" endline="80">openage::Terrain::fill</referencedby>
         <referencedby refid="classopenage_1_1_terrain_chunk_1a0b2c2e15da132ea4b093cec0c44f9725" compoundref="terrain__chunk_8cpp" startline="50" endline="52">get_data</referencedby>
         <referencedby refid="classopenage_1_1_terrain_1a437d04e21933a02a08861b50a585135e" compoundref="terrain_8cpp" startline="137" endline="144">openage::Terrain::get_data</referencedby>
@@ -196,7 +196,7 @@
         <referencedby refid="classopenage_1_1_editor_mode_1a1430647b024d4c9e7021756a6fa9700d" compoundref="game__control_8cpp" startline="625" endline="649">openage::EditorMode::paint_entity_at</referencedby>
         <referencedby refid="classopenage_1_1_editor_mode_1a1f47d053e9c09aaf9bc6ec3a85f4a49e" compoundref="game__control_8cpp" startline="615" endline="623">openage::EditorMode::paint_terrain_at</referencedby>
         <referencedby refid="classopenage_1_1_terrain_object_1a227f50f827d1ae7791f06e323c581bbd" compoundref="terrain__object_8cpp" startline="71" endline="116">openage::TerrainObject::place</referencedby>
-        <referencedby refid="classopenage_1_1_terrain_object_1af781d73de8772dfe4454e75eb96d104c" compoundref="terrain__object_8cpp" startline="257" endline="290">openage::TerrainObject::place_unchecked</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1af781d73de8772dfe4454e75eb96d104c" compoundref="terrain__object_8cpp" startline="258" endline="291">openage::TerrainObject::place_unchecked</referencedby>
         <referencedby refid="classopenage_1_1_terrain_object_1af24e842fc429a5dbb73c12abcb9c3378" compoundref="terrain__object_8cpp" startline="155" endline="186">openage::TerrainObject::remove</referencedby>
         <referencedby refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
         <referencedby refid="classopenage_1_1_terrain_object_1a2ad9a9df0f058487a4ec66b68ee390ed" compoundref="terrain__object_8cpp" startline="188" endline="210">openage::TerrainObject::set_ground</referencedby>

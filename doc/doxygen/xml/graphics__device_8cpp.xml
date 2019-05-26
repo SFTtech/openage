@@ -244,7 +244,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics__device_8h" kindref="compound">graphics_device.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -385,7 +385,7 @@
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dev.ppEnabledExtensionNames<sp/>=<sp/>ext_names.data();</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPhysicalDeviceFeatures<sp/>features<sp/>{};</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>request<sp/>features</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>request<sp/>features</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dev.pEnabledFeatures<sp/>=<sp/>&amp;features;</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"></highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateDevice,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a77edd4a9a9a7eea1920c8fec848b25d8" kindref="member">phys_device</ref>,<sp/>&amp;create_dev,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1ae3ce45b1d6a9a7b759dd1d8800d9fe1d" kindref="member">device</ref>);</highlight></codeline>

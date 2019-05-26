@@ -479,7 +479,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vulkan_2renderer_8h" kindref="compound">renderer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -519,7 +519,7 @@
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>valid<sp/>Vulkan<sp/>device<sp/>available.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>rate<sp/>devices<sp/>based<sp/>on<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>rate<sp/>devices<sp/>based<sp/>on<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Given<sp/>an<sp/>instance<sp/>and<sp/>surface,<sp/>selects<sp/>the<sp/>best<sp/>(fastest,<sp/>most<sp/>capable,<sp/>etc.)<sp/>graphics<sp/>device</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>supports<sp/>rendering<sp/>onto<sp/>that<sp/>particular<sp/>surface<sp/>and<sp/>constructs<sp/>the<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
@@ -534,7 +534,7 @@
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display" kindref="compound">VlkDrawableDisplay</ref><sp/>display(dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>.second);</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>reinit<sp/>swapchain<sp/>on<sp/>window<sp/>resize</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>reinit<sp/>swapchain<sp/>on<sp/>window<sp/>resize</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>vert<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_shader_source" kindref="compound">resources::ShaderSource</ref>(</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96ca281026d966626615768589fa301ae6af" kindref="member">resources::shader_lang_t::spirv</ref>,</highlight></codeline>

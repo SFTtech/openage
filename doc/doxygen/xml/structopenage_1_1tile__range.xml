@@ -17,14 +17,14 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" bodystart="36" bodyend="-1"/>
-        <referencedby refid="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" compoundref="terrain__object_8cpp" startline="310" endline="322">openage::SquareObject::from_edge</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" compoundref="terrain__object_8cpp" startline="398" endline="413">openage::RadialObject::get_range</referencedby>
-        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="347" endline="378">openage::SquareObject::intersects</referencedby>
-        <referencedby refid="classopenage_1_1_square_object_1aaab1452776a2962c6ccb6bf3b55efecf" compoundref="terrain__object_8cpp" startline="324" endline="334">openage::SquareObject::on_edge</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" compoundref="terrain__object_8cpp" startline="311" endline="323">openage::SquareObject::from_edge</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" compoundref="terrain__object_8cpp" startline="399" endline="414">openage::RadialObject::get_range</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="348" endline="379">openage::SquareObject::intersects</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1aaab1452776a2962c6ccb6bf3b55efecf" compoundref="terrain__object_8cpp" startline="325" endline="335">openage::SquareObject::on_edge</referencedby>
         <referencedby refid="classopenage_1_1_unit_type_1a0649efd34fdb53589135167493f66633" compoundref="unit__type_8cpp" startline="59" endline="84">openage::UnitType::place_beside</referencedby>
         <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
         <referencedby refid="classopenage_1_1_terrain_object_1a2ad9a9df0f058487a4ec66b68ee390ed" compoundref="terrain__object_8cpp" startline="188" endline="210">openage::TerrainObject::set_ground</referencedby>
-        <referencedby refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="444" endline="467">openage::tile_list</referencedby>
+        <referencedby refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="445" endline="468">openage::tile_list</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
@@ -39,11 +39,11 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" bodystart="37" bodyend="-1"/>
-        <referencedby refid="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" compoundref="terrain__object_8cpp" startline="310" endline="322">openage::SquareObject::from_edge</referencedby>
-        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="347" endline="378">openage::SquareObject::intersects</referencedby>
-        <referencedby refid="classopenage_1_1_square_object_1aaab1452776a2962c6ccb6bf3b55efecf" compoundref="terrain__object_8cpp" startline="324" endline="334">openage::SquareObject::on_edge</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" compoundref="terrain__object_8cpp" startline="311" endline="323">openage::SquareObject::from_edge</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="348" endline="379">openage::SquareObject::intersects</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1aaab1452776a2962c6ccb6bf3b55efecf" compoundref="terrain__object_8cpp" startline="325" endline="335">openage::SquareObject::on_edge</referencedby>
         <referencedby refid="classopenage_1_1_unit_type_1a0649efd34fdb53589135167493f66633" compoundref="unit__type_8cpp" startline="59" endline="84">openage::UnitType::place_beside</referencedby>
-        <referencedby refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="444" endline="467">openage::tile_list</referencedby>
+        <referencedby refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="445" endline="468">openage::tile_list</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
@@ -58,14 +58,14 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" bodystart="38" bodyend="-1"/>
-        <referencedby refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" compoundref="terrain__object_8cpp" startline="426" endline="428">openage::RadialObject::contains</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" compoundref="terrain__object_8cpp" startline="427" endline="429">openage::RadialObject::contains</referencedby>
         <referencedby refid="classopenage_1_1_unit_1af4499be2634985e11b0c10f895978b85" compoundref="unit_8cpp" startline="163" endline="199">openage::Unit::draw</referencedby>
         <referencedby refid="classopenage_1_1_terrain_object_1a95d5633a7448be10a5e6274351aac959" compoundref="terrain__object_8cpp" startline="67" endline="69">openage::TerrainObject::draw_outline</referencedby>
         <referencedby refid="namespaceopenage_1a8d7d58d26d71e7447de628441782a751" compoundref="terrain__search_8cpp" startline="33" endline="54">openage::find_in_radius</referencedby>
         <referencedby refid="namespaceopenage_1abf30260a65f6b06163a5dad881836523" compoundref="terrain__search_8cpp" startline="11" endline="31">openage::find_near</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1af59b8ff3a8aa105883ac3b1ed61ef68a" compoundref="terrain__object_8cpp" startline="415" endline="420">openage::RadialObject::from_edge</referencedby>
-        <referencedby refid="classopenage_1_1_radial_object_1a49bdbb9c2e34b7fac95d8498adef1bc4" compoundref="terrain__object_8cpp" startline="422" endline="424">openage::RadialObject::on_edge</referencedby>
-        <referencedby refid="classopenage_1_1_terrain_object_1a70a6bf42cb9c63065a615cc91d05bc0f" compoundref="terrain__object_8cpp" startline="229" endline="255">openage::TerrainObject::operator&lt;</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1af59b8ff3a8aa105883ac3b1ed61ef68a" compoundref="terrain__object_8cpp" startline="416" endline="421">openage::RadialObject::from_edge</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a49bdbb9c2e34b7fac95d8498adef1bc4" compoundref="terrain__object_8cpp" startline="423" endline="425">openage::RadialObject::on_edge</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1a70a6bf42cb9c63065a615cc91d05bc0f" compoundref="terrain__object_8cpp" startline="230" endline="256">openage::TerrainObject::operator&lt;</referencedby>
         <referencedby refid="classopenage_1_1_unit_type_1a0649efd34fdb53589135167493f66633" compoundref="unit__type_8cpp" startline="59" endline="84">openage::UnitType::place_beside</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1aab55848d4a5495b982df54fe1d41865b" compoundref="game__control_8cpp" startline="445" endline="472">openage::ActionMode::render</referencedby>
         <referencedby refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" compoundref="a__star_8cpp" startline="44" endline="55">openage::path::to_object</referencedby>

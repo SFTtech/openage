@@ -580,7 +580,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -644,7 +644,7 @@
 <codeline lineno="103" refid="classopenage_1_1_unit_selection_1aa2054e5dfae57e3f3ca0636a2f317fbd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cd" kindref="member">selection_type_t</ref><sp/><ref refid="classopenage_1_1_unit_selection_1aa2054e5dfae57e3f3ca0636a2f317fbd" kindref="member">selection_type</ref>;</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105" refid="classopenage_1_1_unit_selection_1ab3a8ab0e359201269d72098c0c145d87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_selection_1ab3a8ab0e359201269d72098c0c145d87" kindref="member">drag_active</ref>;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>turn<sp/>these<sp/>into<sp/>a<sp/>C++17<sp/>optional</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>turn<sp/>these<sp/>into<sp/>a<sp/>C++17<sp/>optional</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="107" refid="classopenage_1_1_unit_selection_1a3605e8a7e9e8c75b869556cd4b8174ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref><sp/><ref refid="classopenage_1_1_unit_selection_1a3605e8a7e9e8c75b869556cd4b8174ac" kindref="member">start</ref><sp/>=<sp/>{0,<sp/>0},<sp/><ref refid="classopenage_1_1_unit_selection_1a9e6b650380d7ef95ba29850854ce5321" kindref="member">end</ref><sp/>=<sp/>{0,<sp/>0};</highlight></codeline>
 <codeline lineno="108" refid="classopenage_1_1_unit_selection_1a8ba5135a6b9c5a2d88ad2318c7f46952" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_selection_1a8ba5135a6b9c5a2d88ad2318c7f46952" kindref="member">font_size</ref>;</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight></codeline>

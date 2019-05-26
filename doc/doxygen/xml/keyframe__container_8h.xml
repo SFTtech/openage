@@ -528,7 +528,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -574,10 +574,6 @@
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a675d4e01acc9d9d063cfd38b2b557752" kindref="member">last</ref>(time,<sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" kindref="member">container</ref>.begin());</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>add<sp/>something<sp/>like<sp/>`previous`<sp/>that<sp/>returns<sp/>element<sp/>with<sp/>e-&gt;time<sp/>&lt;<sp/>time</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>probably<sp/>just<sp/>calls<sp/>`last`<sp/>and<sp/>walks<sp/>back<sp/>one<sp/>element</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>that<sp/>is<sp/>not<sp/>at<sp/>begin()<sp/>already</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
 <codeline lineno="101" refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" kindref="member">insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">Keyframe</ref><sp/>&amp;value)<sp/>{</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" kindref="member">insert</ref>(value,<sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" kindref="member">container</ref>.begin());</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

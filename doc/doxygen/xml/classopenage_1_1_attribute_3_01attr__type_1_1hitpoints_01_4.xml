@@ -73,7 +73,8 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>The max hitpoints and health bar information. TODO change bar information stucture </para>
+<para>The max hitpoints and health bar information. <xrefsect id="todo_1_todo000033"><xreftitle>Todo</xreftitle><xrefdescription><para>change bar information stucture </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="361">

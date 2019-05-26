@@ -123,7 +123,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -160,7 +160,7 @@
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_event_handling_quick_window_1a7d392ef80d0d1b74370d6188799e94d7" kindref="member">on_resized</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;size);</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>to<sp/>remove<sp/>when<sp/>the<sp/>proper<sp/>focus<sp/>for<sp/>the<sp/>foreign<sp/>(that<sp/>obtained<sp/>from<sp/>QWindow::fromWinId())<sp/>windows<sp/>is<sp/>implemented<sp/>(Qt<sp/>5.6).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>to<sp/>remove<sp/>when<sp/>the<sp/>proper<sp/>focus<sp/>for<sp/>the<sp/>foreign<sp/>(that<sp/>obtained<sp/>from<sp/>QWindow::fromWinId())<sp/>windows<sp/>is<sp/>implemented<sp/>(Qt<sp/>5.6).</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39" refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QQuickItem<sp/>*<ref refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" kindref="member">focused_item</ref>;</highlight></codeline>
 <codeline lineno="40"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>

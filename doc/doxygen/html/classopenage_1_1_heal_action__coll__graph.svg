@@ -748,7 +748,7 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node26 -->
 <g id="node24" class="node"><title>Node26</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1_interval_timer.xhtml" target="_top" xlink:title=" ">
+<g id="a_node24"><a xlink:href="classopenage_1_1_interval_timer.xhtml" target="_top" xlink:title="odo use a type instead of unsigned int for time">
 <polygon fill="white" stroke="black" points="545,-171.5 545,-371.5 658,-371.5 658,-171.5 545,-171.5"/>
 <text text-anchor="middle" x="601.5" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::IntervalTimer</text>
 <polyline fill="none" stroke="black" points="545,-352.5 658,-352.5 "/>

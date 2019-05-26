@@ -269,31 +269,31 @@
 </g>
 <!-- Node273 -->
 <g id="node20" class="node"><title>Node273</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a194b8b0abaa8a8e908fcd170f0a5d382" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="325.5,-784.5 325.5,-814.5 434.5,-814.5 434.5,-784.5 325.5,-784.5"/>
-<text text-anchor="start" x="333.5" y="-802.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
+<g id="a_node20"><a xlink:href="classopenage_1_1_decay_action.xhtml#a33f1e3bafcbb958cd5b03292ab20e845" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="322.5,-784.5 322.5,-814.5 437.5,-814.5 437.5,-784.5 322.5,-784.5"/>
+<text text-anchor="start" x="330.5" y="-802.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::DecayAction</text>
 <text text-anchor="middle" x="380" y="-791.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>
 </a>
 </g>
 </g>
 <!-- Node257&#45;&gt;Node273 -->
 <g id="edge19" class="edge"><title>Node257&#45;&gt;Node273</title>
-<path fill="none" stroke="midnightblue" d="M274.065,-783.455C287.428,-785.498 301.691,-787.679 315.258,-789.753"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="315.056,-793.263 325.47,-791.315 316.114,-786.344 315.056,-793.263"/>
+<path fill="none" stroke="midnightblue" d="M274.065,-783.455C286.501,-785.356 299.718,-787.377 312.427,-789.321"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="312.072,-792.807 322.486,-790.859 313.13,-785.887 312.072,-792.807"/>
 </g>
 <!-- Node274 -->
 <g id="node21" class="node"><title>Node274</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1_decay_action.xhtml#a33f1e3bafcbb958cd5b03292ab20e845" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="322.5,-735.5 322.5,-765.5 437.5,-765.5 437.5,-735.5 322.5,-735.5"/>
-<text text-anchor="start" x="330.5" y="-753.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::DecayAction</text>
+<g id="a_node21"><a xlink:href="classopenage_1_1_editor_mode.xhtml#a194b8b0abaa8a8e908fcd170f0a5d382" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="325.5,-735.5 325.5,-765.5 434.5,-765.5 434.5,-735.5 325.5,-735.5"/>
+<text text-anchor="start" x="333.5" y="-753.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EditorMode</text>
 <text text-anchor="middle" x="380" y="-742.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name</text>
 </a>
 </g>
 </g>
 <!-- Node257&#45;&gt;Node274 -->
 <g id="edge20" class="edge"><title>Node257&#45;&gt;Node274</title>
-<path fill="none" stroke="midnightblue" d="M274.065,-765.903C286.501,-764.078 299.718,-762.138 312.427,-760.272"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="313.1,-763.711 322.486,-758.796 312.083,-756.785 313.1,-763.711"/>
+<path fill="none" stroke="midnightblue" d="M274.065,-765.903C287.428,-763.942 301.691,-761.848 315.258,-759.857"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="316.085,-763.273 325.47,-758.358 315.068,-756.347 316.085,-763.273"/>
 </g>
 <!-- Node275 -->
 <g id="node22" class="node"><title>Node275</title>

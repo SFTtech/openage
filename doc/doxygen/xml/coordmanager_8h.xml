@@ -512,7 +512,7 @@
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43" refid="classopenage_1_1coord_1_1_coord_manager_1ae6e2147894fc653dd8fe9c057afc1794" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">viewport</ref><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager_1ae6e2147894fc653dd8fe9c057afc1794" kindref="member">camhud_viewport</ref>{0,<sp/>0};</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>dynamically<sp/>get<sp/>from<sp/>nyan<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>dynamically<sp/>get<sp/>from<sp/>nyan<sp/>data</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="51" refid="classopenage_1_1coord_1_1_coord_manager_1abd45c3c2cf20f76ac980e18bba3128e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1camgame__delta" kindref="compound">camgame_delta</ref><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager_1abd45c3c2cf20f76ac980e18bba3128e3" kindref="member">tile_size</ref>{96,<sp/>48};</highlight></codeline>
 <codeline lineno="52"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>

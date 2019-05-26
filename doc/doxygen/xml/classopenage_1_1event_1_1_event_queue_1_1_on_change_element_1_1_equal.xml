@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="201" bodyend="218"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="202" bodyend="219"/>
         <references refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1ab2fdebca64d5b385157895e96aad229b" compoundref="eventqueue_8h" startline="31">openage::event::EventQueue::OnChangeElement::evnt</references>
       </memberdef>
       </sectiondef>

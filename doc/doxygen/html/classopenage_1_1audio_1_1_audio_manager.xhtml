@@ -328,7 +328,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="audio__manager_8cpp_source.xhtml#l00194">194</a> of file <a class="el" href="audio__manager_8cpp_source.xhtml">audio_manager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                                                           {</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    SDLDeviceLock <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{this-&gt;<a class="code" href="classopenage_1_1audio_1_1_audio_manager.xhtml#aa5adbf540e742e17d2589ef3aa622230">device_id</a>};</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keyword">auto</span> category = sound-&gt;get_category();</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keyword">auto</span> &amp;playing_list = this-&gt;<a class="code" href="classopenage_1_1audio_1_1_audio_manager.xhtml#ae788e584b655a72126dba0087c149ac8">playing_sounds</a>.find(category)-&gt;second;</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="comment">// TODO probably check if sound already exists in playing list</span></div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    playing_list.push_back(sound);</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_audio_manager_xhtml_aa5adbf540e742e17d2589ef3aa622230"><div class="ttname"><a href="classopenage_1_1audio_1_1_audio_manager.xhtml#aa5adbf540e742e17d2589ef3aa622230">openage::audio::AudioManager::device_id</a></div><div class="ttdeci">SDL_AudioDeviceID device_id</div><div class="ttdef"><b>Definition:</b> <a href="audio__manager_8h_source.xhtml#l00116">audio_manager.h:116</a></div></div>
+<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                                                           {</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    SDLDeviceLock <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{this-&gt;<a class="code" href="classopenage_1_1audio_1_1_audio_manager.xhtml#aa5adbf540e742e17d2589ef3aa622230">device_id</a>};</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keyword">auto</span> category = sound-&gt;get_category();</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keyword">auto</span> &amp;playing_list = this-&gt;<a class="code" href="classopenage_1_1audio_1_1_audio_manager.xhtml#ae788e584b655a72126dba0087c149ac8">playing_sounds</a>.find(category)-&gt;second;</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="comment">// \todo probably check if sound already exists in playing list</span></div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    playing_list.push_back(sound);</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_audio_manager_xhtml_aa5adbf540e742e17d2589ef3aa622230"><div class="ttname"><a href="classopenage_1_1audio_1_1_audio_manager.xhtml#aa5adbf540e742e17d2589ef3aa622230">openage::audio::AudioManager::device_id</a></div><div class="ttdeci">SDL_AudioDeviceID device_id</div><div class="ttdef"><b>Definition:</b> <a href="audio__manager_8h_source.xhtml#l00116">audio_manager.h:116</a></div></div>
 <div class="ttc" id="classopenage_1_1audio_1_1_audio_manager_xhtml_ae788e584b655a72126dba0087c149ac8"><div class="ttname"><a href="classopenage_1_1audio_1_1_audio_manager.xhtml#ae788e584b655a72126dba0087c149ac8">openage::audio::AudioManager::playing_sounds</a></div><div class="ttdeci">std::unordered_map&lt; category_t, std::vector&lt; std::shared_ptr&lt; SoundImpl &gt; &gt; &gt; playing_sounds</div><div class="ttdef"><b>Definition:</b> <a href="audio__manager_8h_source.xhtml#l00125">audio_manager.h:125</a></div></div>
 <div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
 </div><!-- fragment -->
@@ -340,8 +340,7 @@ Friends</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a558810ebb9233d8f80da70d48b0bf282_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a558810ebb9233d8f80da70d48b0bf282_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -384,8 +383,7 @@ Friends</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a4a4b32a5632f953c11696400487b1ef5_cgraph.svg" width="399" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a4a4b32a5632f953c11696400487b1ef5_cgraph.svg" width="399" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -524,8 +522,7 @@ Friends</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_add5dcdf1895b883af210f102e4e64199_icgraph.svg" width="514" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_add5dcdf1895b883af210f102e4e64199_icgraph.svg" width="514" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -579,16 +576,14 @@ Friends</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a4fcd0ea2e63f5035df72bdceb0ac22f2_cgraph.svg" width="371" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a4fcd0ea2e63f5035df72bdceb0ac22f2_cgraph.svg" width="371" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a4fcd0ea2e63f5035df72bdceb0ac22f2_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a4fcd0ea2e63f5035df72bdceb0ac22f2_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -620,8 +615,7 @@ Friends</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a6df7195e7f02f6959a9a241037e48657_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a6df7195e7f02f6959a9a241037e48657_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -662,16 +656,14 @@ Friends</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a7d1dc28dded852d3eadf34771ee8f6b0_cgraph.svg" width="612" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a7d1dc28dded852d3eadf34771ee8f6b0_cgraph.svg" width="612" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a7d1dc28dded852d3eadf34771ee8f6b0_icgraph.svg" width="612" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a7d1dc28dded852d3eadf34771ee8f6b0_icgraph.svg" width="612" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -766,16 +758,14 @@ Friends</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a30af6b961d77d0b564e4813560666b2c_cgraph.svg" width="399" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a30af6b961d77d0b564e4813560666b2c_cgraph.svg" width="399" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a30af6b961d77d0b564e4813560666b2c_icgraph.svg" width="415" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_audio_manager_a30af6b961d77d0b564e4813560666b2c_icgraph.svg" width="415" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

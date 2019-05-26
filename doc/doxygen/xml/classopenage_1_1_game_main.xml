@@ -289,7 +289,8 @@
     </briefdescription>
     <detaileddescription>
 <para>Contains information for a single game This information must be synced across network clients</para>
-<para>TODO: include a list of actions to be saved as the game replay file </para>
+<para><xrefsect id="todo_1_todo000013"><xreftitle>Todo</xreftitle><xrefdescription><para>include a list of actions to be saved as the game replay file </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2448">

@@ -514,7 +514,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="screenshot_8h" kindref="compound">screenshot.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -635,7 +635,7 @@
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>png_set_rows(png_ptr,<sp/>info_ptr,<sp/>&amp;row_ptrs[0]);</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//TODO:<sp/>print<sp/>ingame<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//\todo<sp/>print<sp/>ingame<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Saving<sp/>screenshot<sp/>to<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>png_write_png(png_ptr,<sp/>info_ptr,<sp/>PNG_TRANSFORM_STRIP_FILLER_AFTER,<sp/>NULL);</highlight></codeline>

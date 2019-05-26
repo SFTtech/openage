@@ -20,7 +20,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" bodystart="28" bodyend="-1"/>
         <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1ad74a496758770d9f1be27e9b3fec4dd0" compoundref="unicode_8cpp" startline="19" endline="70">feed</referencedby>
         <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1acca7311eed2d83530c6ae78e73132d31" compoundref="unicode_8cpp" startline="14" endline="17">reset</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" compoundref="buf_8cpp" startline="381" endline="390">openage::console::Buf::write</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" compoundref="buf_8cpp" startline="382" endline="391">openage::console::Buf::write</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1utf8__decoder_1a55d64109af786e729e84a4da7d275c19" prot="public" static="no" mutable="no">
         <type>unsigned</type>
@@ -37,7 +37,7 @@
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" bodystart="33" bodyend="-1"/>
         <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1ad74a496758770d9f1be27e9b3fec4dd0" compoundref="unicode_8cpp" startline="19" endline="70">feed</referencedby>
         <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1acca7311eed2d83530c6ae78e73132d31" compoundref="unicode_8cpp" startline="14" endline="17">reset</referencedby>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" compoundref="buf_8cpp" startline="381" endline="390">openage::console::Buf::write</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" compoundref="buf_8cpp" startline="382" endline="391">openage::console::Buf::write</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -77,7 +77,7 @@
         <references refid="classopenage_1_1util_1_1utf8__decoder_1ac5e38c7efcc1e8d4b7f7668da156ba4b" compoundref="unicode_8h" startline="28">out</references>
         <references refid="classopenage_1_1util_1_1utf8__decoder_1a55d64109af786e729e84a4da7d275c19" compoundref="unicode_8h" startline="33">remaining</references>
         <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
-        <referencedby refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" compoundref="buf_8cpp" startline="381" endline="390">openage::console::Buf::write</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" compoundref="buf_8cpp" startline="382" endline="391">openage::console::Buf::write</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1utf8__decoder_1acca7311eed2d83530c6ae78e73132d31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

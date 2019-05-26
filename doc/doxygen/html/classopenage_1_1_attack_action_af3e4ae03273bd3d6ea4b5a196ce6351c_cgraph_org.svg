@@ -337,7 +337,7 @@
 </g>
 <!-- Node82 -->
 <g id="node14" class="node"><title>Node82</title>
-<g id="a_node14"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" target="_top" xlink:title="odo: move to util">
 <polygon fill="white" stroke="black" points="993,-207 993,-226 1139,-226 1139,-207 993,-207"/>
 <text text-anchor="middle" x="1066" y="-214" font-family="Helvetica,sans-Serif" font-size="10.00">openage::console::tests::max</text>
 </a>

@@ -18,7 +18,8 @@
         </briefdescription>
         <detaileddescription>
 <para>See the comments for <ref refid="structopenage_1_1coord_1_1camgame__delta_1a7e761e4e14092c27b01fbc0ee0a39330" kindref="member">camgame_delta::to_phys3</ref>.</para>
-<para>TODO: Once we have terrain elevation, &apos;up&apos; will not mean the absolute elevation, but instead the returned <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref> coordinate will be the intersection between the camgame line and the 3d terrain + up altitude. </para>
+<para><xrefsect id="todo_1_todo000006"><xreftitle>Todo</xreftitle><xrefdescription><para>Once we have terrain elevation, &apos;up&apos; will not mean the absolute elevation, but instead the returned <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref> coordinate will be the intersection between the camgame line and the 3d terrain + up altitude. </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -27,8 +28,8 @@
         <referencedby refid="classopenage_1_1_texture_1a6537758244bbe7b99bda2de4a337fb4d" compoundref="texture_8cpp" startline="205" endline="209">openage::Texture::draw</referencedby>
         <referencedby refid="classopenage_1_1_unit_selection_1a0a21b9382975a037b94a1331628b320c" compoundref="selection_8cpp" startline="28" endline="91">openage::UnitSelection::on_drawhud</referencedby>
         <referencedby refid="structopenage_1_1coord_1_1camgame_1a91e45e5fd4f7ea2cb447d51a24543187" compoundref="pixel_8cpp" startline="56" endline="58">to_camhud</referencedby>
-        <referencedby refid="structopenage_1_1coord_1_1tile_1a3f2be2b38a339e563ea0fa96733250ec" compoundref="tile_8cpp" startline="53" endline="57">openage::coord::tile::to_viewport</referencedby>
-        <referencedby refid="structopenage_1_1coord_1_1phys3_1afb7742fe4e2f67064992aed454d75ef2" compoundref="phys_8cpp" startline="96" endline="98">openage::coord::phys3::to_viewport</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1a3f2be2b38a339e563ea0fa96733250ec" compoundref="tile_8cpp" startline="55" endline="59">openage::coord::tile::to_viewport</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1phys3_1afb7742fe4e2f67064992aed454d75ef2" compoundref="phys_8cpp" startline="98" endline="100">openage::coord::phys3::to_viewport</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1camgame_1a91e45e5fd4f7ea2cb447d51a24543187" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">camhud</ref></type>
@@ -98,7 +99,7 @@
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp" bodystart="82" bodyend="84"/>
         <references refid="structopenage_1_1coord_1_1camgame_1a0b8e17b9f35af0cb50dbd56e8d6ff243" compoundref="pixel_8cpp" startline="40" endline="42">to_phys3</references>
-        <references refid="structopenage_1_1coord_1_1phys3_1aa8aa4b7a7a76ddb625b8770ba12484d6" compoundref="phys_8cpp" startline="106" endline="108">openage::coord::phys3::to_tile</references>
+        <references refid="structopenage_1_1coord_1_1phys3_1aa8aa4b7a7a76ddb625b8770ba12484d6" compoundref="phys_8cpp" startline="108" endline="110">openage::coord::phys3::to_tile</references>
         <referencedby refid="structopenage_1_1coord_1_1viewport_1ad78ba1b1f9b64caa7b6eda78aaf7513a" compoundref="pixel_8cpp" startline="77" endline="79">openage::coord::viewport::to_tile</referencedby>
       </memberdef>
       </sectiondef>

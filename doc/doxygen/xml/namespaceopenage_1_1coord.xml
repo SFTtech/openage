@@ -121,8 +121,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" bodystart="32" bodyend="-1"/>
-        <referencedby refid="structopenage_1_1coord_1_1tile_1ab4811e492cabe885d33e85df51ceff83" compoundref="tile_8cpp" startline="68" endline="73">openage::coord::tile::get_pos_on_chunk</referencedby>
-        <referencedby refid="structopenage_1_1coord_1_1tile_1a47c3fa2d9edf30712ddbc3b8ae217eb0" compoundref="tile_8cpp" startline="60" endline="65">openage::coord::tile::to_chunk</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1ab4811e492cabe885d33e85df51ceff83" compoundref="tile_8cpp" startline="70" endline="75">openage::coord::tile::get_pos_on_chunk</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1a47c3fa2d9edf30712ddbc3b8ae217eb0" compoundref="tile_8cpp" startline="62" endline="67">openage::coord::tile::to_chunk</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

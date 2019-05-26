@@ -600,7 +600,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="opengl_2shader__program_8h" kindref="compound">shader_program.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -873,7 +873,7 @@
 <codeline lineno="271"><highlight class="normal"></highlight></codeline>
 <codeline lineno="272" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aadce87ffc66b0d5fb4a4ab08fb50a545" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aadce87ffc66b0d5fb4a4ab08fb50a545" kindref="member">GlShaderProgram::use</ref>()<sp/>{</highlight></codeline>
 <codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a23caf208d074869ce8015e4722157b24" kindref="member">validated</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(Vtec234):<sp/>validation<sp/>depends<sp/>on<sp/>the<sp/>context<sp/>state,<sp/>so<sp/>this<sp/>might<sp/>be<sp/>worth<sp/>calling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>(Vtec234):<sp/>validation<sp/>depends<sp/>on<sp/>the<sp/>context<sp/>state,<sp/>so<sp/>this<sp/>might<sp/>be<sp/>worth<sp/>calling</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>more<sp/>than<sp/>once.<sp/>However,<sp/>once<sp/>per<sp/>frame<sp/>is<sp/>probably<sp/>too<sp/>much.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glValidateProgram(*this-&gt;handle);</highlight></codeline>
 <codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a870cc53f47bfd0a6398f23667fa2d2e3" kindref="member">check_program_status</ref>(*this-&gt;handle,<sp/>GL_VALIDATE_STATUS);</highlight></codeline>
@@ -895,7 +895,7 @@
 <codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>By<sp/>the<sp/>time<sp/>we<sp/>call<sp/>bind,<sp/>the<sp/>texture<sp/>may<sp/>have<sp/>been<sp/>deleted,<sp/>but<sp/>if<sp/>it&apos;s<sp/>fixed</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>afterwards<sp/>using<sp/>execute_with,<sp/>the<sp/>render<sp/>state<sp/>will<sp/>still<sp/>be<sp/>fine,<sp/>so<sp/>we<sp/>can<sp/>ignore</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>this<sp/>will<sp/>swallow<sp/>actual<sp/>errors<sp/>elsewhere,<sp/>and<sp/>should<sp/>be<sp/>avoided.<sp/>how?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>this<sp/>will<sp/>swallow<sp/>actual<sp/>errors<sp/>elsewhere,<sp/>and<sp/>should<sp/>be<sp/>avoided.<sp/>how?</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glGetError();</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="299"><highlight class="normal">}</highlight></codeline>
@@ -921,7 +921,7 @@
 <codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glUniform1f(loc,<sp/>*reinterpret_cast&lt;const<sp/>float*&gt;(ptr));</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_DOUBLE:</highlight></codeline>
-<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>requires<sp/>an<sp/>extension</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>requires<sp/>an<sp/>extension</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glUniform1d(loc,<sp/>*reinterpret_cast&lt;const<sp/>double*&gt;(ptr));</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_FLOAT_VEC2:</highlight></codeline>
@@ -950,7 +950,7 @@
 <codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLuint<sp/>tex<sp/>=<sp/>*reinterpret_cast&lt;const<sp/>GLuint*&gt;(ptr);</highlight></codeline>
 <codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glActiveTexture(GL_TEXTURE0<sp/>+<sp/>tex_unit);</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glBindTexture(GL_TEXTURE_2D,<sp/>tex);</highlight></codeline>
-<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>maybe<sp/>call<sp/>this<sp/>at<sp/>a<sp/>more<sp/>appropriate<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>maybe<sp/>call<sp/>this<sp/>at<sp/>a<sp/>more<sp/>appropriate<sp/>position</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glUniform1i(loc,<sp/>tex_unit);</highlight></codeline>
 <codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a586120e648ad9c41d5c0b4742615e40b" kindref="member">textures_per_texunits</ref>[tex_unit]<sp/>=<sp/>tex;</highlight></codeline>
 <codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
@@ -961,7 +961,7 @@
 <codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="360"><highlight class="normal"></highlight></codeline>
 <codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(geom<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>read<sp/>obj.blend<sp/>+<sp/>family</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>read<sp/>obj.blend<sp/>+<sp/>family</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>geom-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a99c9999b09c6cf8916a8f8bc82dcdee5" kindref="member">draw</ref>();</highlight></codeline>
 <codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="365"><highlight class="normal">}</highlight></codeline>
@@ -1028,7 +1028,7 @@
 <codeline lineno="426"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="427"><highlight class="normal"></highlight></codeline>
 <codeline lineno="428" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1afb9b54743349d81a09d78c7737d34cf8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1afb9b54743349d81a09d78c7737d34cf8" kindref="member">GlShaderProgram::set_f64</ref>(<ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref><sp/>*in,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*unif,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>requires<sp/>extension</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>\todo<sp/>requires<sp/>extension</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a109abb04920b505341184fc0a313dcbb" kindref="member">set_unif</ref>(in,<sp/>unif,<sp/>&amp;<ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>,<sp/>GL_DOUBLE);</highlight></codeline>
 <codeline lineno="431"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="432"><highlight class="normal"></highlight></codeline>

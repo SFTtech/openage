@@ -111,8 +111,7 @@ $(document).ready(function(){initNavTree('classopenage_1_1_heal_action.xhtml',''
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -256,8 +255,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_ae6c7160317b9b913429a0afd51a368c2_cgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_ae6c7160317b9b913429a0afd51a368c2_cgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -326,8 +324,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_ad6d47ca5bb338861aa787901f64aafe2_cgraph.svg" width="543" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_ad6d47ca5bb338861aa787901f64aafe2_cgraph.svg" width="543" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -358,7 +355,7 @@ Additional Inherited Members</h2></td></tr>
 <p>use heal action </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l01276">1276</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;                                  {</div><div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;    <span class="keyword">auto</span> &amp;<a class="code" href="classopenage_1_1_heal_action.xhtml#abae1711c61d9c124d6ab2d1acdc4efeb">heal</a> = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a214d940b5313897d9e25b3a2b3533770">attr_type::heal</a>&gt;();</div><div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;</div><div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;    <span class="comment">// TODO move to seperate function heal_unit (like damage_unit)?</span></div><div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;    <span class="comment">// heal object</span></div><div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ad5f6f6624aebf09a1c60464a76a96df1">attr_type::hitpoints</a>) &amp;&amp; <a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">attr_type::damaged</a>)) {</div><div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;        <span class="keyword">auto</span> &amp;hp = <a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.get_attribute&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ad5f6f6624aebf09a1c60464a76a96df1">attr_type::hitpoints</a>&gt;();</div><div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;        <span class="keyword">auto</span> &amp;dm = <a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.get_attribute&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">attr_type::damaged</a>&gt;();</div><div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;        <span class="keywordflow">if</span> ((dm.hp + <a class="code" href="classopenage_1_1_heal_action.xhtml#abae1711c61d9c124d6ab2d1acdc4efeb">heal</a>.life) &lt; hp.hp) {</div><div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;            dm.hp += <a class="code" href="classopenage_1_1_heal_action.xhtml#abae1711c61d9c124d6ab2d1acdc4efeb">heal</a>.life;</div><div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;        }</div><div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;        <span class="keywordflow">else</span> {</div><div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;            dm.hp = hp.hp;</div><div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;        }</div><div class="line"><a name="l01290"></a><span class="lineno"> 1290</span>&#160;    }</div><div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;</div><div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_xhtml_a3e12324401051119f44e212dae1a87ce"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">openage::Unit::get_attribute</a></div><div class="ttdeci">Attribute&lt; T &gt; &amp; get_attribute()</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00199">unit.h:199</a></div></div>
+<div class="fragment"><div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;                                  {</div><div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;    <span class="keyword">auto</span> &amp;<a class="code" href="classopenage_1_1_heal_action.xhtml#abae1711c61d9c124d6ab2d1acdc4efeb">heal</a> = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a214d940b5313897d9e25b3a2b3533770">attr_type::heal</a>&gt;();</div><div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;</div><div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;    <span class="comment">// \todo move to seperate function heal_unit (like damage_unit)?</span></div><div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;    <span class="comment">// heal object</span></div><div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ad5f6f6624aebf09a1c60464a76a96df1">attr_type::hitpoints</a>) &amp;&amp; <a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">attr_type::damaged</a>)) {</div><div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;        <span class="keyword">auto</span> &amp;hp = <a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.get_attribute&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ad5f6f6624aebf09a1c60464a76a96df1">attr_type::hitpoints</a>&gt;();</div><div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;        <span class="keyword">auto</span> &amp;dm = <a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.get_attribute&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">attr_type::damaged</a>&gt;();</div><div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;        <span class="keywordflow">if</span> ((dm.hp + <a class="code" href="classopenage_1_1_heal_action.xhtml#abae1711c61d9c124d6ab2d1acdc4efeb">heal</a>.life) &lt; hp.hp) {</div><div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;            dm.hp += <a class="code" href="classopenage_1_1_heal_action.xhtml#abae1711c61d9c124d6ab2d1acdc4efeb">heal</a>.life;</div><div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;        }</div><div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;        <span class="keywordflow">else</span> {</div><div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;            dm.hp = hp.hp;</div><div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;        }</div><div class="line"><a name="l01290"></a><span class="lineno"> 1290</span>&#160;    }</div><div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;</div><div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_xhtml_a3e12324401051119f44e212dae1a87ce"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">openage::Unit::get_attribute</a></div><div class="ttdeci">Attribute&lt; T &gt; &amp; get_attribute()</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00199">unit.h:199</a></div></div>
 <div class="ttc" id="classopenage_1_1_target_action_xhtml_af0c0298b57d0752f89b4e732f7446f78"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">openage::TargetAction::target</a></div><div class="ttdeci">UnitReference target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00260">action.h:260</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">openage::attr_type::damaged</a></div></div>
 <div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
@@ -374,16 +371,14 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_abae1711c61d9c124d6ab2d1acdc4efeb_cgraph.svg" width="544" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_abae1711c61d9c124d6ab2d1acdc4efeb_cgraph.svg" width="544" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_abae1711c61d9c124d6ab2d1acdc4efeb_icgraph.svg" width="344" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_abae1711c61d9c124d6ab2d1acdc4efeb_icgraph.svg" width="344" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -422,8 +417,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_ad4da9c08bcfd22e4287aa508730e02e2_icgraph.svg" width="567" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_ad4da9c08bcfd22e4287aa508730e02e2_icgraph.svg" width="567" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -510,8 +504,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_a95b9324fe05d86e7528f3a5334b6fc7c_cgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_heal_action_a95b9324fe05d86e7528f3a5334b6fc7c_cgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>

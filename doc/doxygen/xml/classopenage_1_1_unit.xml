@@ -54,7 +54,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>should selection features be drawn TODO: should be a pointer to selection to be updated when unit is removed, or null if not selected </para>
+<para>should selection features be drawn <xrefsect id="todo_1_todo000043"><xreftitle>Todo</xreftitle><xrefdescription><para>should be a pointer to selection to be updated when unit is removed, or null if not selected </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -72,7 +73,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>space on the map used by this unit null if the object is not yet placed or garrisoned TODO: make private field </para>
+<para>space on the map used by this unit null if the object is not yet placed or garrisoned <xrefsect id="todo_1_todo000044"><xreftitle>Todo</xreftitle><xrefdescription><para>make private field </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -87,7 +89,7 @@
         <referencedby refid="classopenage_1_1_repair_ability_1ace3c32d3f619cdc28abfca9fa684b3e2" compoundref="ability_8cpp" startline="307" endline="318">openage::RepairAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_heal_ability_1a9940045e67d852476cf73aec89895218" compoundref="ability_8cpp" startline="335" endline="346">openage::HealAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_convert_ability_1ab1d57e75684c4f50b285a7d8fbeefadb" compoundref="ability_8cpp" startline="381" endline="391">openage::ConvertAbility::can_invoke</referencedby>
-        <referencedby refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="486" endline="500">openage::complete_building</referencedby>
+        <referencedby refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</referencedby>
         <referencedby refid="classopenage_1_1_target_action_1acd97248a087415b6d08fa3e97e90397d" compoundref="unit_2action_8cpp" startline="290" endline="297">openage::TargetAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_projectile_action_1a588ecb867716c22ac7a571274733ad7a" compoundref="unit_2action_8cpp" startline="1378" endline="1380">openage::ProjectileAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_unit_1ae422123ecc6a2e930ba86e45bf8a5a37" compoundref="unit_8cpp" startline="156" endline="160">draw</referencedby>
@@ -566,7 +568,7 @@
         <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">openage::direction</references>
         <references refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" compoundref="unit_8cpp" startline="258" endline="260">has_attribute</references>
         <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::owner</references>
-        <references refid="structopenage_1_1coord_1_1phys3_1a03daba2a3e79650c251e3c08e0838a5e" compoundref="phys_8cpp" startline="91" endline="93">openage::coord::phys3::to_camgame</references>
+        <references refid="structopenage_1_1coord_1_1phys3_1a03daba2a3e79650c251e3c08e0838a5e" compoundref="phys_8cpp" startline="93" endline="95">openage::coord::phys3::to_camgame</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_1a37f35cd78b09fea32514ed2b2dd87b64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -777,7 +779,7 @@
         <referencedby refid="classopenage_1_1_build_ability_1abe9ac45166f48d9a53467f17d0c4efdc" compoundref="ability_8cpp" startline="219" endline="228">openage::BuildAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_gather_ability_1a1cd4ba56c06ddf86a3c07c9da73b831d" compoundref="ability_8cpp" startline="246" endline="255">openage::GatherAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_attack_ability_1aed325cf408ccfcfc099dfad62aa1dbbd" compoundref="ability_8cpp" startline="276" endline="290">openage::AttackAbility::can_invoke</referencedby>
-        <referencedby refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="486" endline="500">openage::complete_building</referencedby>
+        <referencedby refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</referencedby>
         <referencedby refid="classopenage_1_1_dead_action_1ad89ee79aa618b974b24f76e54e81ec29" compoundref="unit_2action_8cpp" startline="405" endline="413">openage::DeadAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_foundation_action_1acb94c9f36774fdf9f94c7a6fc2ce9df9" compoundref="unit_2action_8cpp" startline="447" endline="451">openage::FoundationAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_idle_action_1af276ff712d523244b3094e091ba576e5" compoundref="unit_2action_8cpp" startline="536" endline="546">openage::IdleAction::completed</referencedby>
@@ -842,7 +844,7 @@
         <referencedby refid="classopenage_1_1_train_ability_1a283fc7f2b511dff98f13027148710a36" compoundref="ability_8cpp" startline="176" endline="182">openage::TrainAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_research_ability_1a10da07c40e39d110a9f2afdf26f0fb2f" compoundref="ability_8cpp" startline="197" endline="205">openage::ResearchAbility::can_invoke</referencedby>
         <referencedby refid="classopenage_1_1_build_ability_1abe9ac45166f48d9a53467f17d0c4efdc" compoundref="ability_8cpp" startline="219" endline="228">openage::BuildAbility::can_invoke</referencedby>
-        <referencedby refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="486" endline="500">openage::complete_building</referencedby>
+        <referencedby refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="487" endline="501">openage::complete_building</referencedby>
         <referencedby refid="classopenage_1_1_dead_action_1ad89ee79aa618b974b24f76e54e81ec29" compoundref="unit_2action_8cpp" startline="405" endline="413">openage::DeadAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_foundation_action_1acb94c9f36774fdf9f94c7a6fc2ce9df9" compoundref="unit_2action_8cpp" startline="447" endline="451">openage::FoundationAction::completed</referencedby>
         <referencedby refid="classopenage_1_1_idle_action_1af276ff712d523244b3094e091ba576e5" compoundref="unit_2action_8cpp" startline="536" endline="546">openage::IdleAction::completed</referencedby>

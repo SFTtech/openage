@@ -125,7 +125,7 @@
         <referencedby refid="classopenage_1_1curve_1_1_keyframe_container_1a4a18e067efb8d2a6aa4f738cb8b391b5" compoundref="keyframe__container_8h" startline="267" endline="269">openage::curve::KeyframeContainer&lt; T &gt;::erase</referencedby>
         <referencedby refid="classopenage_1_1curve_1_1_keyframe_container_1aae7b3fad452aa1f223edc93e5b38a518" compoundref="keyframe__container_8h" startline="248" endline="260">openage::curve::KeyframeContainer&lt; T &gt;::erase_after</referencedby>
         <referencedby refid="classopenage_1_1_attack_action_1a1a76ce122961d9e09c526b8d0f2f513f" compoundref="unit_2action_8cpp" startline="1227" endline="1249">openage::AttackAction::fire_projectile</referencedby>
-        <referencedby refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" compoundref="algorithm_8h" startline="17" endline="22">openage::util::for_each</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" compoundref="algorithm_8h" startline="18" endline="23">openage::util::for_each</referencedby>
         <referencedby refid="classopenage_1_1curve_1_1_value_container_1af22c2d98ebfbec213ca2257869022e3e" compoundref="value__container_8h" startline="91" endline="94">openage::curve::ValueContainer&lt; T &gt;::frame</referencedby>
         <referencedby refid="classopenage_1_1curve_1_1_queue_1a7fe7c6b582f57ac867d198e9677a2156" compoundref="queue_8h" startline="73" endline="75">openage::curve::Queue&lt; T &gt;::front</referencedby>
         <referencedby refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" compoundref="continuous_8h" startline="32" endline="61">openage::curve::Continuous&lt; T &gt;::get</referencedby>
@@ -137,7 +137,7 @@
         <referencedby refid="classopenage_1_1curve_1_1_value_container_1a9af089eef9feb357fe0e36fad9397b8c" compoundref="value__container_8h" startline="98" endline="102">openage::curve::ValueContainer&lt; T &gt;::next_frame</referencedby>
         <referencedby refid="classopenage_1_1_editor_mode_1a1430647b024d4c9e7021756a6fa9700d" compoundref="game__control_8cpp" startline="625" endline="649">openage::EditorMode::paint_entity_at</referencedby>
         <referencedby refid="classopenage_1_1_action_mode_1a3865e557756044d8183a3d24cd5b8ab4" compoundref="game__control_8cpp" startline="411" endline="443">openage::ActionMode::place_selection</referencedby>
-        <referencedby refid="namespaceopenage_1_1util_1a1f21bbbe0a2bfda459aa086ee71f1abd" compoundref="algorithm_8h" startline="28" endline="33">openage::util::remove_from</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a1f21bbbe0a2bfda459aa086ee71f1abd" compoundref="algorithm_8h" startline="29" endline="34">openage::util::remove_from</referencedby>
         <referencedby refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" compoundref="value__container_8h" startline="84" endline="87">openage::curve::ValueContainer&lt; T &gt;::set_insert</referencedby>
         <referencedby refid="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" compoundref="value__container_8h" startline="63" endline="80">openage::curve::ValueContainer&lt; T &gt;::set_last</referencedby>
         <referencedby refid="classopenage_1_1_train_action_1af5515a9c445b00f4dd69348e7177c94c" compoundref="unit_2action_8cpp" startline="808" endline="848">openage::TrainAction::update</referencedby>

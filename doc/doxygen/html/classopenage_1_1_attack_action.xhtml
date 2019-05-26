@@ -111,8 +111,7 @@ $(document).ready(function(){initNavTree('classopenage_1_1_attack_action.xhtml',
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -244,7 +243,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l01181">1181</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;    :</div><div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;    <a class="code" href="classopenage_1_1_target_action.xhtml#adc56f07dc94e70968fb02276f1a3ae57">TargetAction</a>{e, <a class="code" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3bafc7e987f23de5bd6562b7c0063cad659">graphic_type::attack</a>, tar, <a class="code" href="classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17">get_attack_range</a>(e)},</div><div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;    <a class="code" href="classopenage_1_1_attack_action.xhtml#a4500f6947a8a421e29f9619e2505eb70">timer</a>{500} { <span class="comment">// TODO get fire rate from unit type</span></div><div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;</div><div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;    <span class="comment">// check if attacking a non resource unit</span></div><div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">has_attribute</a>(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134">attr_type::worker</a>) &amp;&amp;</div><div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;        (!tar.get()-&gt;has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">attr_type::resource</a>) || tar.get()-&gt;has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134">attr_type::worker</a>))) {</div><div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;        <span class="comment">// switch to default villager graphics</span></div><div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;        <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">has_attribute</a>(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a360fa717125a1d694d8218ce0af98a51">attr_type::multitype</a>)) {</div><div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a360fa717125a1d694d8218ce0af98a51">attr_type::multitype</a>&gt;().switchType(gamedata::unit_classes::CIVILIAN, this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>);</div><div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;        }</div><div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;    }</div><div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;</div><div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;    <span class="comment">// TODO rivit logic, a start inside the animation should be provided</span></div><div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_attack_action.xhtml#a4500f6947a8a421e29f9619e2505eb70">timer</a>.<a class="code" href="classopenage_1_1_interval_timer.xhtml#a0b8e2a356a40d6fcb2f3b2e0410a675b">skip_to_trigger</a>();</div><div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_action_xhtml_a6e508baa62ec19cd81bea7fce1721e17"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17">openage::UnitAction::get_attack_range</a></div><div class="ttdeci">static coord::phys_t get_attack_range(Unit *u)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00071">action.cpp:71</a></div></div>
+<div class="fragment"><div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;    :</div><div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;    <a class="code" href="classopenage_1_1_target_action.xhtml#adc56f07dc94e70968fb02276f1a3ae57">TargetAction</a>{e, <a class="code" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3bafc7e987f23de5bd6562b7c0063cad659">graphic_type::attack</a>, tar, <a class="code" href="classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17">get_attack_range</a>(e)},</div><div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;    <a class="code" href="classopenage_1_1_attack_action.xhtml#a4500f6947a8a421e29f9619e2505eb70">timer</a>{500} { <span class="comment">// \todo get fire rate from unit type</span></div><div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;</div><div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;    <span class="comment">// check if attacking a non resource unit</span></div><div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">has_attribute</a>(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134">attr_type::worker</a>) &amp;&amp;</div><div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;        (!tar.get()-&gt;has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">attr_type::resource</a>) || tar.get()-&gt;has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134">attr_type::worker</a>))) {</div><div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;        <span class="comment">// switch to default villager graphics</span></div><div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;        <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">has_attribute</a>(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a360fa717125a1d694d8218ce0af98a51">attr_type::multitype</a>)) {</div><div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a360fa717125a1d694d8218ce0af98a51">attr_type::multitype</a>&gt;().switchType(gamedata::unit_classes::CIVILIAN, this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>);</div><div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;        }</div><div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;    }</div><div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;</div><div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;    <span class="comment">// \todo rivit logic, a start inside the animation should be provided</span></div><div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_attack_action.xhtml#a4500f6947a8a421e29f9619e2505eb70">timer</a>.<a class="code" href="classopenage_1_1_interval_timer.xhtml#a0b8e2a356a40d6fcb2f3b2e0410a675b">skip_to_trigger</a>();</div><div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_action_xhtml_a6e508baa62ec19cd81bea7fce1721e17"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17">openage::UnitAction::get_attack_range</a></div><div class="ttdeci">static coord::phys_t get_attack_range(Unit *u)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00071">action.cpp:71</a></div></div>
 <div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36a360fa717125a1d694d8218ce0af98a51"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a360fa717125a1d694d8218ce0af98a51">openage::attr_type::multitype</a></div></div>
 <div class="ttc" id="classopenage_1_1_interval_timer_xhtml_a0b8e2a356a40d6fcb2f3b2e0410a675b"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#a0b8e2a356a40d6fcb2f3b2e0410a675b">openage::IntervalTimer::skip_to_trigger</a></div><div class="ttdeci">void skip_to_trigger()</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00032">action.cpp:32</a></div></div>
 <div class="ttc" id="classopenage_1_1_attack_action_xhtml_a4500f6947a8a421e29f9619e2505eb70"><div class="ttname"><a href="classopenage_1_1_attack_action.xhtml#a4500f6947a8a421e29f9619e2505eb70">openage::AttackAction::timer</a></div><div class="ttdeci">IntervalTimer timer</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00574">action.h:574</a></div></div>
@@ -262,8 +261,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_ab41b0edfc4a7e4927144b9caa87d7f46_cgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_ab41b0edfc4a7e4927144b9caa87d7f46_cgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -338,16 +336,14 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_ae6ce05cd88d0f3000950c6d39421c24c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_ae6ce05cd88d0f3000950c6d39421c24c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_ae6ce05cd88d0f3000950c6d39421c24c_icgraph.svg" width="368" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_ae6ce05cd88d0f3000950c6d39421c24c_icgraph.svg" width="368" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -387,8 +383,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_a9a21f5da5f56d1c157b0a1806a8e49e3_cgraph.svg" width="551" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_a9a21f5da5f56d1c157b0a1806a8e49e3_cgraph.svg" width="551" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -450,16 +445,14 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_a1a76ce122961d9e09c526b8d0f2f513f_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_a1a76ce122961d9e09c526b8d0f2f513f_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_a1a76ce122961d9e09c526b8d0f2f513f_icgraph.svg" width="571" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_a1a76ce122961d9e09c526b8d0f2f513f_icgraph.svg" width="571" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -498,8 +491,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_af9602b031e61a4bc8b06596b494ffa3a_icgraph.svg" width="579" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_af9602b031e61a4bc8b06596b494ffa3a_icgraph.svg" width="579" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -586,8 +578,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_af3e4ae03273bd3d6ea4b5a196ce6351c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_action_af3e4ae03273bd3d6ea4b5a196ce6351c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
