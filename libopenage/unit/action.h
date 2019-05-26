@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,11 +16,11 @@ namespace openage {
 
 class TerrainSearch;
 
-// TODO use a type instead of unsigned int for time
+// \todo use a type instead of unsigned int for time
 
 /**
  * A interval triggering timer used in actions.
- * TODO find a better name for triggers
+ * \todo find a better name for triggers
  */
 class IntervalTimer {
 public:
@@ -212,7 +212,7 @@ protected:
 /**
  * Base class for actions which target another unit such as
  * gather, attack, heal and convert
- * TODO implement min range
+ * \todo implement min range
  */
 class TargetAction: public UnitAction {
 public:

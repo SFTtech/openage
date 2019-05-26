@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_renderer_impl.h"
 
@@ -60,7 +60,7 @@ void EventHandlingQuickWindow::on_input_event(std::atomic<bool> *processed, QEve
 			// Normally, the QQuickWindow would handle keyboard focus automatically, but it can't because neither QQuickWindow nor
 			// its target QWindow respond to requestActivate(). Which means no focus event propagation when injecting mouse clicks.
 			// So, the workaround is to look specifically for TextFields and give them focus directly.
-			// TODO: to remove when the proper focus for the foreign (that obtained from QWindow::fromWinId()) windows is implemented (Qt 5.6).
+			// \todo to remove when the proper focus for the foreign (that obtained from QWindow::fromWinId()) windows is implemented (Qt 5.6).
 			if (this->mouseGrabberItem() && this->mouseGrabberItem()->metaObject()->superClass() && this->mouseGrabberItem()->metaObject()->superClass()->className() == QString("QQuickTextInput") && (event->type() == QEvent::MouseButtonPress))
 				change_focus(this->mouseGrabberItem());
 		}
@@ -129,7 +129,7 @@ void GuiRendererImpl::reinit_fbo_if_needed() {
 }
 
 GuiRendererImpl::~GuiRendererImpl() {
-	// TODO: MAYBE:
+	// \todo MAYBE:
 	//       the this->ctx member frees the
 	//       gl context even though that's SDL's job.
 	//

@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -63,7 +63,7 @@ public:
 	VkDevice get_device() const;
 	VkQueue get_queue(size_t idx) const;
 
-	// TODO structure isn't ideal, maybe store SurfaceSupportDetails in here?
+	// \todo structure isn't ideal, maybe store SurfaceSupportDetails in here?
 
 	~VlkGraphicsDevice();
 };

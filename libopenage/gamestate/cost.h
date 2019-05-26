@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,7 +13,7 @@ class Player;
  * Types of dynamic cost calculation (and one constant).
  *
  * Used in ResourceCost
- * TODO use in TimeCost
+ * \todo use in TimeCost
  */
 enum class cost_type : int {
 	/** Constant resources. */
@@ -60,6 +60,6 @@ private:
 
 };
 
-// TODO implement TimeCost
+// \todo implement TimeCost
 
 } // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "input_context.h"
 
@@ -27,7 +27,7 @@ std::vector<std::string> InputContext::active_binds() const {
 		return {};
 	}
 
-	// TODO: try to purge this backpointer to the input manager.
+	// \todo try to purge this backpointer to the input manager.
 	return this->input_manager->active_binds(this->by_type);
 }
 

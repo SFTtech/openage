@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "color.h"
 
@@ -15,7 +15,7 @@ col::col(gamedata::palette_color c) {
 }
 
 void col::use() {
-	//TODO use glColor4b
+	//\todo use glColor4b
 	glColor4f(r / 255.f, g / 255.f, b / 255.f, a / 255.f);
 }
 

@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -80,7 +80,7 @@ public:
 		if (details.surface_caps.currentExtent.width != std::numeric_limits<uint32_t>::max()) {
 			this->extent = details.surface_caps.currentExtent;
 		} else {
-			// TODO choose a size from this->size in this case
+			// \todo choose a size from this->size in this case
 			throw Error(MSG(err) << "Window manager does not provide a window size.");
 		}
 
@@ -96,7 +96,7 @@ public:
 		cr_swap.imageFormat = this->format;
 		cr_swap.imageColorSpace = format.colorSpace;
 		cr_swap.presentMode = mode;
-		// TODO why doesn't validation work?
+		// \todo why doesn't validation work?
 		cr_swap.imageExtent = this->extent;
 		cr_swap.imageArrayLayers = 1;
 		// or VK_IMAGE_USAGE_TRANSFER_DST_BIT if not drawing directly (postprocess)
@@ -123,7 +123,7 @@ public:
 
 		this->images = vk_do_ritual(vkGetSwapchainImagesKHR, this->device, this->swapchain);
 
-		// TODO move out?
+		// \todo move out?
 		for (auto img : this->images) {
 			VkImageViewCreateInfo cr_view = {};
 			cr_view.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;

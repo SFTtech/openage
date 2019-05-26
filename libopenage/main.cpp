@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
@@ -41,8 +41,8 @@ int run_game(const main_arguments &args) {
 		args.root_path["assets/converted/termcolors.docx"]
 	);
 
-	// TODO: move inside the engine
-	// TODO: support multiple consoles
+	// \todo move inside the engine
+	// \todo support multiple consoles
 	console::Console console{&engine};
 	console.load_colors(termcolors);
 	console.register_to_engine();

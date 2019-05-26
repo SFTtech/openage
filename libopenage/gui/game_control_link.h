@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -289,7 +289,7 @@ private:
 	int effective_mode_index;
 	int mode_index;
 	QVariantList modes;
-	// TODO: remove engine because it's already accessible through the game
+	// \todo remove engine because it's already accessible through the game
 	EngineLink *engine;
 	GameMainLink *game;
 	QString current_player_name;

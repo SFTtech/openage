@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <vector>
 #include <string>
@@ -27,13 +27,13 @@ namespace console {
 namespace tests {
 
 
-// TODO: move to util
+// \todo move to util
 int max(int a, int b) {
 	return (a > b) ? a : b;
 }
 
 
-// TODO: test for console coordinates and resizing
+// \todo test for console coordinates and resizing
 
 
 void render() {
@@ -130,7 +130,7 @@ void interactive() {
 					// error... probably EWOULDBLOCK. ignore.
 					break;
 				case 0:
-					// EOF on stdin... huh... well... that was unexpected... TODO
+					// EOF on stdin... huh... well... that was unexpected... \todo
 					break;
 				default:
 					if (ptyout.write(rdbuf, retval) != retval) {

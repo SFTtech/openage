@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "player.h"
 
@@ -18,13 +18,13 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	civ{civ},
 	name{name},
 	team{nullptr},
-	population{0, 200}, // TODO change, get population cap max from game options
+	population{0, 200}, // \todo change, get population cap max from game options
 	score{this},
-	age{1} { // TODO change, get starting age from game options
+	age{1} { // \todo change, get starting age from game options
 	// starting resources
-	// TODO change, get starting resources from game options
+	// \todo change, get starting resources from game options
 	this->resources.set_all(1000);
-	// TODO change, get starting resources capacity from game options or nyan
+	// \todo change, get starting resources capacity from game options or nyan
 	this->resources_capacity.set_all(math::DOUBLE_INF / 2); // half to avoid overflows
 	this->on_resources_change();
 }
@@ -158,7 +158,7 @@ void Player::active_unit_added(Unit *unit, bool from_pending) {
 
 	this->units_have[unit->unit_type->id()] += 1;
 	this->units_had[unit->unit_type->id()] += 1;
-	// TODO handle here building dependencies
+	// \todo handle here building dependencies
 
 	// population
 	if (unit->has_attribute(attr_type::population)) {
@@ -179,15 +179,15 @@ void Player::active_unit_added(Unit *unit, bool from_pending) {
 	}
 
 	// score
-	// TODO improve selectors
+	// \todo improve selectors
 	if (unit->unit_type->id() == 82 || unit->unit_type->id() == 276) { // Castle, Wonder
 		this->score.add_score(score_category::society, unit->unit_type->cost.get(*this).sum() * 0.2);
 	} else if (unit->has_attribute(attr_type::building) || unit->has_attribute(attr_type::population)) { // building, living
 		this->score.add_score(score_category::economy, unit->unit_type->cost.get(*this).sum() * 0.2);
 	}
 
-	// TODO handle here on create unit triggers
-	// TODO check for unit based win conditions
+	// \todo handle here on create unit triggers
+	// \todo check for unit based win conditions
 }
 
 void Player::active_unit_removed(Unit *unit) {
@@ -198,7 +198,7 @@ void Player::active_unit_removed(Unit *unit) {
 	}
 
 	this->units_have[unit->unit_type->id()] -= 1;
-	// TODO handle here building dependencies
+	// \todo handle here building dependencies
 
 	// population
 	if (unit->has_attribute(attr_type::population)) {
@@ -219,15 +219,15 @@ void Player::active_unit_removed(Unit *unit) {
 	}
 
 	// score
-	// TODO improve selectors
+	// \todo improve selectors
 	if (unit->unit_type->id() == 82 || unit->unit_type->id() == 276) { // Castle, Wonder
 		// nothing
 	} else if (unit->has_attribute(attr_type::building) || unit->has_attribute(attr_type::population)) { // building, living
 		this->score.remove_score(score_category::economy, unit->unit_type->cost.get(*this).sum() * 0.2);
 	}
 
-	// TODO handle here on death unit triggers
-	// TODO check for unit based win conditions
+	// \todo handle here on death unit triggers
+	// \todo check for unit based win conditions
 }
 
 void Player::killed_unit(const Unit & unit) {
@@ -249,7 +249,7 @@ void Player::on_resources_change() {
 	// score
 	this->score.update_resources(this->resources);
 
-	// TODO check for resource based win conditions
+	// \todo check for resource based win conditions
 }
 
 int Player::get_units_have(int type_id) const {
@@ -274,12 +274,12 @@ int Player::get_units_pending(int type_id) const {
 }
 
 bool Player::is_unit_pending(Unit *unit) const {
-	// TODO check aslo if unit is training
+	// \todo check aslo if unit is training
 	return unit->has_attribute(attr_type::building) && unit->get_attribute<attr_type::building>().completed < 1.0f;
 }
 
 int Player::get_workforce_count() const {
-	// TODO get all units tagged as work force
+	// \todo get all units tagged as work force
 	return this->units_have.at(83) + this->units_have.at(293) + // villagers
 	       this->units_have.at(13) + // fishing ship
 	       this->units_have.at(128) + // trade cart

@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "framebuffer.h"
 
@@ -7,7 +7,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-// TODO the validity of this object is contingent
+// \todo the validity of this object is contingent
 // on its texture existing. use shared_ptr?
 GlFramebuffer::GlFramebuffer(std::vector<const GlTexture2d*> textures)
 	: GlSimpleObject([] (GLuint handle) { glDeleteFramebuffers(1, &handle); } )
@@ -22,7 +22,7 @@ GlFramebuffer::GlFramebuffer(std::vector<const GlTexture2d*> textures)
 
 	size_t colorTextureCount = 0;
 	for (auto const& texture : textures) {
-		// TODO figure out attachment points from pixel formats
+		// \todo figure out attachment points from pixel formats
 		if (texture->get_info().get_format() == resources::pixel_format::depth24) {
 			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, texture->get_handle(), 0);
 		} else {

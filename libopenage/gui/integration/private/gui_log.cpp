@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "../../integration/private/gui_log.h"
 
@@ -40,8 +40,8 @@ void gui_log(QtMsgType type, const QMessageLogContext &context, const QString &m
 	        msg_lvl
 	};
 
-	// TODO: maybe it's not UTF-8
-	// TODO: Qt should become a LogSource
+	// \todo maybe it's not UTF-8
+	// \todo Qt should become a LogSource
 	log::log(builder << msg.toUtf8().data());
 
 	if (type == QtFatalMsg)

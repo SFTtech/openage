@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -25,7 +25,6 @@ class Path;
  * Generic File implementation, used in our filesystem-like and file-like
  * abtraction system. Can be created from Python :)
  *
- * TODO: maybe inherit from std::iostream so we can use it the c++-way
  *
  * pxd:
  *
@@ -36,6 +35,9 @@ class Path;
  *
  *     shared_ptr[FileLike] get_fileobj() except +
  */
+
+// \todo maybe inherit from std::iostream so we can use it the c++-way
+
 class OAAPI File {
 public:
 	using seek_t = filelike::FileLike::seek_t;

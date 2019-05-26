@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,7 +21,7 @@ public:
 
 	virtual std::string name() const = 0;
 
-	// TODO add images and icons
+	// \todo add images and icons
 
 };
 
@@ -62,7 +62,7 @@ public:
 
 	ResourceBundle create_bundle() const;
 
-	// TODO remove when the engine is fully decupled from the data
+	// \todo remove when the engine is fully decupled from the data
 	static const int wood = 0;
 	static const int food = 1;
 	static const int gold = 2;
@@ -90,7 +90,7 @@ private:
 	const ResourceProducer resources[4];
 };
 
-// TODO remove, here for backwards compatibility
+// \todo remove, here for backwards compatibility
 enum class game_resource : int {
 	wood = 0,
 	food = 1,
@@ -105,12 +105,12 @@ enum class game_resource : int {
  *
  * Can be also used to store other information about the resources.
  *
- * TODO change amounts from doubles to integers
+ * \todo change amounts from doubles to integers
  */
 class ResourceBundle {
 public:
 
-	// TODO remove, here for backwards compatibility
+	// \todo remove, here for backwards compatibility
 	ResourceBundle();
 
 	ResourceBundle(const Resources& resources);

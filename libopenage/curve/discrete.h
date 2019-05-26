@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -44,7 +44,7 @@ public:
 template <typename T>
 T Discrete<T>::get(const time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
-	this->last_element = e;   // TODO if Caching?
+	this->last_element = e;   // \todo if Caching?
 	return e->value;
 }
 

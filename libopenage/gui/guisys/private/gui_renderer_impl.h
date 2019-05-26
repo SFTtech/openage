@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -35,7 +35,7 @@ public slots:
 	void on_resized(const QSize &size);
 
 private:
-	// TODO: to remove when the proper focus for the foreign (that obtained from QWindow::fromWinId()) windows is implemented (Qt 5.6).
+	// \todo to remove when the proper focus for the foreign (that obtained from QWindow::fromWinId()) windows is implemented (Qt 5.6).
 	QQuickItem *focused_item;
 };
 

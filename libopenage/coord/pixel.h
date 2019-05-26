@@ -1,4 +1,4 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -35,10 +35,10 @@ struct camgame : CoordXYAbsolute<pixel_t, camgame, camgame_delta> {
 	/**
 	 * See the comments for camgame_delta::to_phys3.
 	 *
-	 * TODO: Once we have terrain elevation, 'up' will not mean the absolute
-	 *       elevation, but instead the returned phys3 coordinate will be
-	 *       the intersection between the camgame line and the 3d terrain +
-	 *       up altitude.
+	 * \todo Once we have terrain elevation, 'up' will not mean the absolute
+	 * elevation, but instead the returned phys3 coordinate will be
+	 * the intersection between the camgame line and the 3d terrain +
+	 * up altitude.
 	 */
 	viewport to_viewport(const CoordManager &mgr) const;
 	camhud to_camhud(const CoordManager &mgr) const;

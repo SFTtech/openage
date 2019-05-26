@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,7 +20,7 @@ namespace openage::curve {
  * non-accurate timing functionality, this means, that for getting a value, not
  * the exact timestamp has to be known, it will always return the one closest,
  * less or equal to the requested one.
- **/
+ */
 template <typename T>
 class KeyframeContainer {
 public:
@@ -88,9 +88,10 @@ public:
 		return this->last(time, this->container.begin());
 	}
 
-	// TODO: add something like `previous` that returns element with e->time < time
-	//       probably just calls `last` and walks back one element
-	//       if that is not at begin() already
+	/** \todo add something like `previous` that returns element with e->time < time
+	 *  probably just calls `last` and walks back one element
+	 *  if that is not at begin() already
+	 */
 
 	/**
 	 * Insert a new element without a hint.

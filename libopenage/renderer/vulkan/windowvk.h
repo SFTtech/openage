@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,11 +21,11 @@ struct vlk_capabilities {
 	/// Names of available layers.
 	std::set<std::string> layers;
 	/// Names of available extensions.
-	// TODO are these only available when the corresponding layer is active?
+	// \todo are these only available when the corresponding layer is active?
 	std::set<std::string> extensions;
 };
 
-// TODO dirty hack to graft vk functionality onto window.
+// \todo dirty hack to graft vk functionality onto window.
 // needs better structure (not inheritance! (?)) for proper support
 class VlkWindow : public openage::renderer::Window {
 	vlk_capabilities capabilities;

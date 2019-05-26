@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -46,7 +46,7 @@ class UnitType;
 
 /*
  * Game command from the ui
- * TODO reorganize the names of the optional variables and their getters
+ * \todo reorganize the names of the optional variables and their getters
  */
 class Command {
 public:
@@ -134,7 +134,7 @@ private:
 
 	bool has_pos;
 	Unit *u;
-	coord::phys3 pos = {0, 0, 0}; // TODO: make pos a c++17 optional
+	coord::phys3 pos = {0, 0, 0}; // \todo make pos a c++17 optional
 	UnitType *unit_type;
 	Research *res;
 

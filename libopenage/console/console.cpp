@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "console.h"
 
@@ -13,13 +13,11 @@
 namespace openage {
 namespace console {
 
-/*
- * TODO:
- * multiple terminals on screen
- * resizable terminals
- * scrollbars
- * console input
- * log console, command console
+/** \todo multiple terminals on screen
+ *  resizable terminals
+ *  scrollbars
+ * 	console input
+ * 	log console, command console
  */
 
 Console::Console(Engine *engine)
@@ -72,7 +70,7 @@ void Console::register_to_engine() {
 	});
 
 
-	// TODO: bind any needed input to InputContext
+	// \todo bind any needed input to InputContext
 
 	// toggle console will take highest priority
 	this->input_context.bind(action.get("TOGGLE_CONSOLE"), [this](const input::action_arg_t &) {
@@ -156,7 +154,7 @@ bool Console::on_tick() {
 		return true;
 	}
 
-	// TODO: handle stuff such as cursor blinking,
+	// \todo handle stuff such as cursor blinking,
 	// repeating held-down keys
 	return true;
 }
@@ -179,7 +177,7 @@ bool Console::on_input(SDL_Event *e) {
 
 	switch (e->type) {
 	case SDL_KEYDOWN:
-		//TODO handle key inputs
+		// \todo handle key inputs
 
 		//do not allow anyone else to handle this input
 		return false;

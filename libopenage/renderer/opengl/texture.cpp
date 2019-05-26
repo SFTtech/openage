@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "texture.h"
 
@@ -44,7 +44,7 @@ GlTexture2d::GlTexture2d(const resources::Texture2dData& data)
 	);
 
 	// drawing settings
-	// TODO these are outdated, use sampler settings
+	// \todo these are outdated, use sampler settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -73,7 +73,7 @@ GlTexture2d::GlTexture2d(const resources::Texture2dInfo &info)
 		std::get<1>(fmt_in_out), std::get<2>(fmt_in_out), nullptr
 	);
 
-	// TODO these are outdated, use sampler settings
+	// \todo these are outdated, use sampler settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -86,7 +86,7 @@ resources::Texture2dData GlTexture2d::into_data() {
 
 	glPixelStorei(GL_PACK_ALIGNMENT, this->info.get_row_alignment());
 	glBindTexture(GL_TEXTURE_2D, *this->handle);
-	// TODO use a Pixel Buffer Object instead
+	// \todo use a Pixel Buffer Object instead
 	glGetTexImage(GL_TEXTURE_2D, 0, std::get<1>(fmt_in_out), std::get<2>(fmt_in_out), data.data());
 
 	return resources::Texture2dData(resources::Texture2dInfo(this->info), std::move(data));

@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "audio_manager.h"
 
@@ -196,7 +196,7 @@ void AudioManager::add_sound(std::shared_ptr<SoundImpl> sound) {
 
 	auto category = sound->get_category();
 	auto &playing_list = this->playing_sounds.find(category)->second;
-	// TODO probably check if sound already exists in playing list
+	// \todo probably check if sound already exists in playing list
 	playing_list.push_back(sound);
 }
 

@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -191,7 +191,7 @@ public:
 	 * Returns a list of child objects, this is the inverse of the
 	 * get_parent() function
 	 *
-	 * TODO: this does not perform optimally and is likely to change
+	 * \todo this does not perform optimally and is likely to change
 	 */
 	std::vector<TerrainObject *> get_children() const;
 

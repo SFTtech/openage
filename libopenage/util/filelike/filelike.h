@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -56,8 +56,11 @@ public:
 	 *
 	 * Sync the numbers with the fslike/cpp.pyx
 	 * because Cython can't enum class yet.
-	 * TODO: once cython can handle enum class, add pxd annotation.
+	 *
 	 */
+
+	// \todo once cython can handle enum class, add pxd annotation.
+
 	enum class mode_t : int {
 		R = 0,
 		W = 1,

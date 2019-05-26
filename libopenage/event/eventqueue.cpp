@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "eventqueue.h"
 
@@ -127,9 +127,10 @@ void EventQueue::add_change(const std::shared_ptr<Event> &event,
 
 
 void EventQueue::remove(const std::shared_ptr<Event> &evnt) {
-	// TODO: remove the event from the other storages.
-	//       this would require changes to dependent events and triggers.
-	//       (to stop being a dependent event or allow being triggered)
+	/** \todo remove the event from the other storages.
+	 *  this would require changes to dependent events and triggers.
+	 *  (to stop being a dependent event or allow being triggered)
+	 */
 	this->event_queue.erase(evnt);
 }
 

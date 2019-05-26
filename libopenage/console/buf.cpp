@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "buf.h"
 
@@ -145,11 +145,11 @@ public:
 		b->chrdata_size = this->chrdata_size;
 		b->chrdata_end = this->chrdata_end;
 
-		// TODO set the following members of b:
+		// \todo set the following members of b:
 		// screen_chrdata, screen_linedata
 		// cursorpos, saved_cursorpos,
 		// scrollback_possible, scrollback_pos
-		// TODO call b->clear() with correct
+		// \todo call b->clear() with correct
 		// screen buffer part as arguments
 	}
 
@@ -195,10 +195,10 @@ public:
 			this->linedata_ptr->type = LINE_REGULAR;
 
 			if (this->current_line_is_screen_buf) {
-				//TODO write down somewhere the fact that this
+				// \todo write down somewhere the fact that this
 				//line constitutes a part of the screen buffer
 			} else {
-				//TODO write down somewhere the fact that this
+				// \todo write down somewhere the fact that this
 				//line constitutes a part of the scrollback buffer
 			}
 		}
@@ -210,7 +210,7 @@ public:
 	}
 };
 
-//TODO unfinished implementation
+// \todo unfinished implementation
 void Buf::resize(term new_dims) {
 	term old_dims = this->dims;
 
@@ -239,18 +239,19 @@ void Buf::resize(term new_dims) {
 	buf_line *old_linedata_pos = old_linedata_scrollbackstart;
 	buf_char *old_chrdata_pos = old_chrdata_scrollbackstart;
 
-	// copy line by line, considering the value stored in
-	// old_linedata_pos->auto_wrapped.
-	// start with the first line of the scrollback buffer, and stop with the
-	// last line of the screen buffer.
-	// do not copy empty characters, unless they are followed by filled
-	// characters in the same line, or a continued wrapped line.
-	// store in term_t variables the locations in the new buffer of
-	//   the first/last line of the old scrollback buffer
-	//   the first/last line of the old screen buffer
-	// these variables need to take into account events where upmost
-	// lines of a buffer are overwritten by new lines.
-	// commented out for now //TODO
+	/** \todo copy line by line, considering the value stored in
+	 * 	old_linedata_pos->auto_wrapped.
+	 * 	start with the first line of the scrollback buffer, and stop with the
+	 * 	last line of the screen buffer.
+	 * 	do not copy empty characters, unless they are followed by filled
+	 * 	characters in the same line, or a continued wrapped line.
+	 * 	store in term_t variables the locations in the new buffer of
+	 * 		the first/last line of the old scrollback buffer
+	 * 		the first/last line of the old screen buffer
+	 * 	these variables need to take into account events where upmost
+	 * 	lines of a buffer are overwritten by new lines.
+	 *	commented out for now
+	*/
 
 	// term_t scrollback_buf_start;
 	// term_t scrollback_buf_end;
@@ -263,7 +264,7 @@ void Buf::resize(term new_dims) {
 	while (old_linedata_pos != old_linedata_scrollbackstart) {
 		// should never be >, always ==
 		// also, both checks should always yield identical results
-		// (TODO do an ASSERT to assure this?)
+		// \todo do an ASSERT to assure this?)
 		if (old_linedata_pos >= this->linedata_end) {
 			old_linedata_pos = this->linedata;
 		}
@@ -272,7 +273,7 @@ void Buf::resize(term new_dims) {
 		}
 		// should never be >, always ==
 		// also, both checks should always yield identical results
-		// (TODO do an ASSERT to assure this?)
+		// \todo do an ASSERT to assure this?)
 		if (new_linedata_pos >= new_linedata_end) {
 			new_linedata_pos = new_linedata;
 		}
@@ -285,22 +286,22 @@ void Buf::resize(term new_dims) {
 				empty_chars++;
 			} else {
 				while (empty_chars > 0) {
-					// TODO write the empty chars
+					// \todo write the empty chars
 				}
-				// TODO write the char
+				// \todo write the char
 			}
 
 			old_chrdata_pos++;
 		}
 	}
 
-	// TODO
-	// depending on the variables defined in the previous section,
-	// decide which line is the first line of the screen buffer
-	// int new_chrbuf, and which parts of new_chrbuf must be cleared.
+	/** \todo
+	 * depending on the variables defined in the previous section,
+	 * decide which line is the first line of the screen buffer
+	 * int new_chrbuf, and which parts of new_chrbuf must be cleared.
+	*/
 
-	// TODO
-	// copy
+	// \todo copy
 
 	this->dims = new_dims;
 }

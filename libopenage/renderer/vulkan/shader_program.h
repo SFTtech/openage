@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -30,8 +30,8 @@ public:
 	std::vector<VkPipelineShaderStageCreateInfo> pipeline_stage_infos;
 
 	explicit VlkShaderProgram(VkDevice dev, std::vector<resources::ShaderSource> const& srcs) {
-		// TODO reflect with spirv-cross
-		// TODO if glsl, compile to spirv with libshaderc
+		// \todo reflect with spirv-cross
+		// \todo if glsl, compile to spirv with libshaderc
 
 		for (auto const& src : srcs) {
 			if (src.get_lang() != resources::shader_lang_t::spirv) {

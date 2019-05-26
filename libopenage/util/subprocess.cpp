@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "subprocess.h"
 
@@ -7,7 +7,7 @@
 #include <cerrno>
 
 #ifdef _WIN32
-// TODO not yet implemented
+// \todo not yet implemented
 #else
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -24,7 +24,7 @@ namespace subprocess {
 
 bool is_executable(const char *filename) {
 #ifdef _WIN32
-	// TODO not yet implemented
+	// \todo not yet implemented
 	return false;
 #else
 	struct stat sb;
@@ -36,7 +36,7 @@ bool is_executable(const char *filename) {
 
 std::string which(const char *name) {
 #ifdef _WIN32
-	// TODO not yet implemented
+	// \todo not yet implemented
 	return name;
 #else
 
@@ -71,7 +71,7 @@ std::string which(const char *name) {
 
 int call(const std::vector<const char *> &argv, bool wait, const char *redirect_stdout_to) {
 #ifdef _WIN32
-	// TODO not yet implemented
+	// \todo not yet implemented
 	return -1; // nope
 #else
 
@@ -223,7 +223,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 
 	if (!wait) {
 		// leave the child process to its fate
-		// TODO wait in thread to avoid zombification?
+		// \todo wait in thread to avoid zombification?
 		return 0;
 	}
 

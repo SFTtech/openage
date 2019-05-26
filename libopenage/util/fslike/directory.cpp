@@ -65,7 +65,7 @@ std::string Directory::resolve(const Path::parts_t &parts) const {
 }
 
 
-// TODO: use std::optional when available
+// \todo use std::optional when available
 std::tuple<struct stat, int> Directory::do_stat(const Path::parts_t &parts) const {
 	const std::string path = this->resolve(parts);
 	struct stat buf;

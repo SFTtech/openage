@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "mesh_data.h"
 
@@ -86,7 +86,7 @@ std::optional<index_t> VertexInputInfo::get_index_type() const {
 }
 
 MeshData::MeshData(const util::Path &/*path*/) {
-	// TODO implement mesh loaders
+	// \todo implement mesh loaders
 	throw "unimplemented lol";
 }
 

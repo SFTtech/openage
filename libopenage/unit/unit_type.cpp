@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "../gamestate/player.h"
 #include "../terrain/terrain_object.h"
@@ -98,7 +98,7 @@ UnitType *UnitType::parent_type() const {
 NyanType::NyanType(const Player &owner)
 	:
 	UnitType(owner) {
-	// TODO: the type should be given attributes and abilities
+	// \todo the type should be given attributes and abilities
 }
 
 NyanType::~NyanType() {}

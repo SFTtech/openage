@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,7 +24,7 @@ public:
 
 
 	/**
-	 * TODO: Add iptables-like chains that decide whether a message will be
+	 * \todo Add iptables-like chains that decide whether a message will be
 	 *       logged, depending on msg.info, logger id, thread id, etc.
 	 *       This member variable is only a make-shift solution with
 	 *       obvious limitations.

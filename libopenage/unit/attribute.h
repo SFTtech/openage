@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -200,7 +200,7 @@ public:
 
 /**
  * The max hitpoints and health bar information.
- * TODO change bar information stucture
+ * \todo change bar information stucture
  */
 template<> class Attribute<attr_type::hitpoints>: public SharedAttributeContainer {
 public:
@@ -241,7 +241,7 @@ public:
 
 /**
  * The current hitpoints.
- * TODO add last damage taken timestamp
+ * \todo add last damage taken timestamp
  */
 template<> class Attribute<attr_type::damaged>: public UnsharedAttributeContainer {
 public:
@@ -275,12 +275,12 @@ public:
 };
 
 /**
- * TODO can a unit have multiple attacks such as villagers hunting map target classes onto attacks
- * TODO remove the first constructor and the default values after (keep for now for compatibility)
+ * \todo can a unit have multiple attacks such as villagers hunting map target classes onto attacks
+ * \todo remove the first constructor and the default values after (keep for now for compatibility)
  */
 template<> class Attribute<attr_type::attack>: public SharedAttributeContainer {
 public:
-	// TODO remove (keep for testing)
+	// \todo remove (keep for testing)
 	// 4 = gamedata::hit_class::UNITS_MELEE (not exported at the moment)
 	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d)
 		:
@@ -310,7 +310,7 @@ public:
 
 	/**
 	 * The min range of the attack
-	 * TODO not used
+	 * \todo not used
 	 */
 	coord::phys_t min_range;
 
@@ -328,20 +328,20 @@ public:
 
 	/**
 	 * If the attack can damage allied (friendly) units.
-	 * TODO not used
+	 * \todo not used
 	 */
 	bool friendly_fire;
 
 	/**
 	 * The radius of the area of effect of the attack or 0 if there is no area_of_effect.
-	 * TODO not used
+	 * \todo not used
 	 */
 	coord::phys_t area_of_effect;
 };
 
 /**
  * The attack stance and formation
- * TODO store patrol and follow command information
+ * \todo store patrol and follow command information
  */
 template<> class Attribute<attr_type::formation>: public UnsharedAttributeContainer {
 public:
@@ -407,7 +407,7 @@ public:
 		return std::make_shared<Attribute<attr_type::speed>>(*this);
 	}
 
-	// TODO rename to default or normal
+	// \todo rename to default or normal
 	coord::phys_t unit_speed;
 };
 
@@ -443,7 +443,7 @@ public:
 };
 
 /**
- * TODO revisit after unit training is improved
+ * \todo revisit after unit training is improved
  */
 template<> class Attribute<attr_type::building>: public UnsharedAttributeContainer {
 public:
@@ -466,7 +466,7 @@ public:
 	// once building has been completed
 	object_state completion_state;
 
-	// TODO: list allowed trainable producers
+	// \todo list allowed trainable producers
 	UnitType *pp;
 
 	/**
@@ -629,7 +629,7 @@ public:
 
 /**
  * Units put inside a building.
- * TODO add capacity per type of unit
+ * \todo add capacity per type of unit
  */
 template<> class Attribute<attr_type::garrison>: public UnsharedAttributeContainer {
 public:

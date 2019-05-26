@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "game_control.h"
 
@@ -110,7 +110,7 @@ void ActionMode::on_game_control_set() {
 	auto input = &engine->get_input_manager();
 	coord::CoordManager &coord = engine->coord;
 
-	// TODO: the selection should not be used in here!
+	// \todo the selection should not be used in here!
 	this->selection = engine->get_unit_selection();
 	ENSURE(this->selection != nullptr, "selection must be fetched!");
 
@@ -172,7 +172,7 @@ void ActionMode::on_game_control_set() {
 		if (player->type_count() > 0) {
 			UnitType &type = *player->get_type(590);
 
-			// TODO tile position
+			// \todo tile position
 			engine->get_game()->placed_units.new_unit(type, *player, this->mousepos_phys3);
 		}
 	});
@@ -226,7 +226,7 @@ void ActionMode::on_game_control_set() {
 					}
 
 				} else {
-					// TODO show in game error message
+					// \todo show in game error message
 				}
 			}
 		});
@@ -237,7 +237,7 @@ void ActionMode::on_game_control_set() {
 	bind_building_key(action.get("BUILDING_MINE"),  584, &this->build_menu_context); // Mining Camp
 	bind_building_key(action.get("BUILDING_SMIL"),  562, &this->build_menu_context); // Lumber Camp
 	bind_building_key(action.get("BUILDING_DOCK"),  47,  &this->build_menu_context); // Dock
-	// TODO: Doesn't show until it is placed
+	// \todo Doesn't show until it is placed
 	bind_building_key(action.get("BUILDING_FARM"),  50,  &this->build_menu_context); // Farm
 	bind_building_key(action.get("BUILDING_BLAC"),  103, &this->build_menu_context); // Blacksmith
 	bind_building_key(action.get("BUILDING_MRKT"),  84,  &this->build_menu_context); // Market
@@ -251,15 +251,15 @@ void ActionMode::on_game_control_set() {
 	bind_building_key(action.get("BUILDING_STBL"),  101, &this->build_menu_mil_context); // Stable
 	bind_building_key(action.get("BUILDING_SIWS"),  49,  &this->build_menu_mil_context); // Siege Workshop
 	bind_building_key(action.get("BUILDING_WCTWX"), 598, &this->build_menu_mil_context); // Outpost
-	// TODO for palisade and stone wall: Drag walls, automatically adjust orientation
-	// TODO: This just cycles through all palisade textures
+	// \todo for palisade and stone wall: Drag walls, automatically adjust orientation
+	// \todo This just cycles through all palisade textures
 	bind_building_key(action.get("BUILDING_WALL"),  72,  &this->build_menu_mil_context); // Palisade Wall
-	// TODO: Fortified wall has a different ID
+	// \todo Fortified wall has a different ID
 	bind_building_key(action.get("BUILDING_WALL2"), 117, &this->build_menu_mil_context); // Stone Wall
-	// TODO: Upgraded versions have different IDs
+	// \todo Upgraded versions have different IDs
 	bind_building_key(action.get("BUILDING_WCTW"),  79,  &this->build_menu_mil_context); // Watch Tower
 	bind_building_key(action.get("BUILDING_WCTW4"), 236, &this->build_menu_mil_context); // Bombard Tower
-	// TODO: Gate placement - 659 is horizontal closed
+	// \todo Gate placement - 659 is horizontal closed
 	bind_building_key(action.get("BUILDING_GTCA2"), 659, &this->build_menu_mil_context); // Gate
 	bind_building_key(action.get("BUILDING_CSTL"),  82,  &this->build_menu_mil_context); // Castle
 
@@ -422,10 +422,10 @@ bool ActionMode::place_selection(coord::phys3 point) {
 			UnitReference new_building = container->new_unit(*this->type_focus, *player, point);
 
 			// task all selected villagers to build
-			// TODO: editor placed objects are completed already
+			// \todo editor placed objects are completed already
 			if (new_building.is_valid()) {
 
-				player->deduct(this->type_focus->cost.get(*player)); // TODO change, move elsewheres
+				player->deduct(this->type_focus->cost.get(*player)); // \todo change, move elsewheres
 
 				Command cmd(*player, new_building.get());
 				cmd.set_ability(ability_type::build);
@@ -435,7 +435,7 @@ bool ActionMode::place_selection(coord::phys3 point) {
 			}
 
 		} else {
-			// TODO show in game error message
+			// \todo show in game error message
 			return false;
 		}
 	}
@@ -631,7 +631,7 @@ void EditorMode::paint_entity_at(const coord::viewport &point, const bool del) {
 	auto mousepos_tile = mousepos_phys3.to_tile();
 
 	TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
-	// TODO : better detection of presence of unit
+	// \todo better detection of presence of unit
 	if (!chunk->get_data(mousepos_tile.get_pos_on_chunk())->obj.empty()) {
 		if (del) {
 			// delete first object currently standing at the clicked position
@@ -728,7 +728,7 @@ GameControl::GameControl(qtsdl::GuiItemLink *gui_link)
 }
 
 void GameControl::set_engine(Engine *engine) {
-	// TODO: decide to either go for a full Engine QML-singleton or for a regular object
+	// \todo decide to either go for a full Engine QML-singleton or for a regular object
 	ENSURE(!this->engine || this->engine == engine, "relinking GameControl to another engine is not supported and not caught properly");
 
 	if (not this->engine) {

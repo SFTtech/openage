@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_input_impl.h"
 
@@ -166,8 +166,9 @@ bool GuiInputImpl::relay_input_event(QEvent *ev, bool only_if_grabbed) {
 	// executing a getter that blocks the gui thread while doing something in the logic thread.
 	// So, if the logic thread is the same as the input thread, it should be running somehow.
 	//
-	// TODO: if/when the logic thread or input thread of the main game is made separate, give mutex or
-	// queue to the gui in order to replace this busy wait.
+	/** \todo if/when the logic thread or input thread of the main game is made separate, give mutex or
+	 * queue to the gui in order to replace this busy wait.
+	*/
 	if (!logic_diff_input)
 		while (!processed) {
 			this->game_logic_updater->process_callbacks();

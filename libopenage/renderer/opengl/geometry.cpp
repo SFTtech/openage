@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "geometry.h"
 
@@ -47,7 +47,7 @@ void GlGeometry::update_verts_offset(std::vector<uint8_t> const &verts, size_t o
 		throw Error(MSG(err) << "Size mismatch between old and new vertex data for GlGeometry.");
 	}
 
-	// TODO support offset updating
+	// \todo support offset updating
 	this->mesh->vertices.upload_data(verts.data(), offset, verts.size());
 }
 

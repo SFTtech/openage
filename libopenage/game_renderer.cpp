@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
@@ -166,7 +166,7 @@ GameRenderer::GameRenderer(Engine *e)
 	texturefont_shader::program->stopusing();
 
 	// Renderer keybinds
-	// TODO: a renderer settings struct
+	// \todo a renderer settings struct
 	// would allow these to be put somewher better
 	input::ActionManager &action = this->engine->get_action_manager();
 	auto &global_input_context = engine->get_input_manager().get_global_context();
@@ -178,7 +178,7 @@ GameRenderer::GameRenderer(Engine *e)
 
 		log::log(MSG(dbg) << "Toggle debug grid");
 
-		// TODO remove this hack, use render settings instead
+		// \todo remove this hack, use render settings instead
 		UnitAction::show_debug = !UnitAction::show_debug;
 	});
 
@@ -204,7 +204,7 @@ bool GameRenderer::on_draw() {
 		// draw gaben, our great and holy protector, bringer of the half-life 3.
 		gaben->draw(this->engine->coord, coord::camgame{0, 0});
 
-		// TODO move render code out of terrain
+		// \todo move render code out of terrain
 		if (game->terrain) {
 			game->terrain->draw(this->engine, &this->settings);
 		}

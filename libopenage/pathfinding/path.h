@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -114,7 +114,7 @@ public:
 
 	/**
 	 * The tile position this node is associated to.
-	 * todo make const
+	 * \todo make const
 	 */
 	coord::phys3 position;
 	coord::tile tile_position;

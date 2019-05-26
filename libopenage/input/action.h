@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,7 +27,7 @@ class InputManager;
 using action_t = unsigned int;
 
 
-// TODO this whole class seems rather obsolete...
+// \todo this whole class seems rather obsolete...
 //      remove it and instead provide a proper class for action_t?
 /**
  * The action manager manages all the actions allow creation, access
@@ -59,7 +59,7 @@ private:
 };
 
 
-// TODO: use action_hint_t = std::pair<action_t, int>
+// \todo use action_hint_t = std::pair<action_t, int>
 // for example a building command
 // std::make_pair(action_t::BUILD, 123)
 using action_id_t = action_t;

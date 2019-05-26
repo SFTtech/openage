@@ -1,11 +1,12 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <algorithm>
 
-// TODO: make general transformation from iterator algorithm to container
-// algorithm. so much metaprogramming...
+/** \todo make general transformation from iterator algorithm to container
+ *  algorithm. so much metaprogramming...
+ */
 
 namespace openage {
 namespace util {

@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "population_tracker.h"
 
@@ -14,12 +14,12 @@ PopulationTracker::PopulationTracker(int capacity_static, int capacity_max) {
 
 void PopulationTracker::demand_population(int i) {
 	this->demand += i;
-	// TODO triger gui update
+	// \todo triger gui update
 }
 
 void PopulationTracker::free_population(int i) {
 	this->demand -= i;
-	// TODO triger gui update
+	// \todo triger gui update
 }
 
 void PopulationTracker::add_capacity_static(int i) {
@@ -50,7 +50,7 @@ void PopulationTracker::update_capacity() {
 	} else {
 		this->capacity = this->capacity_total;
 	}
-	// TODO triger gui update
+	// \todo triger gui update
 }
 
 int PopulationTracker::get_demand() const {

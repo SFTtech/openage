@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "options.h"
 
@@ -208,7 +208,7 @@ OptionValue parse(option_type t, std::string s) {
 	case option_type::string_type:
 		return options::OptionValue(s);
 	case option_type::list_type:
-		// TODO:
+		// \todo add optionvalue?
 		return options::OptionValue(false);
 	}
 	return options::OptionValue(false);

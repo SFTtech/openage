@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "unit_container.h"
 
@@ -107,7 +107,7 @@ UnitReference UnitContainer::new_unit(UnitType &type,
 	auto placed = type.place(newobj.get(), terrain_shared, position);
 	if (placed) {
 		type.initialise(newobj.get(), owner);
-		owner.active_unit_added(newobj.get()); // TODO change, move elsewhere
+		owner.active_unit_added(newobj.get()); // \todo change, move elsewhere
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
 		return this->live_units[id]->get_ref();
@@ -127,7 +127,7 @@ UnitReference UnitContainer::new_unit(UnitType &type,
 	TerrainObject *placed = type.place_beside(newobj.get(), other);
 	if (placed) {
 		type.initialise(newobj.get(), owner);
-		owner.active_unit_added(newobj.get()); // TODO change, move elsewhere
+		owner.active_unit_added(newobj.get()); // \todo change, move elsewhere
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
 		return this->live_units[id]->get_ref();

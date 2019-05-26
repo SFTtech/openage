@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -43,7 +43,7 @@ public:
 	 * a list of all keys of this context
 	 * which are bound currently in the active context.
 	 *
-	 * TODO: move this method to the input manager.
+	 * \todo move this method to the input manager.
 	 *       as InputManager::active_binds(const InputContext &) const;
 	 */
 	std::vector<std::string> active_binds() const;

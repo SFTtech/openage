@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -120,10 +120,12 @@ public:
 	int get_mtime() const;
 	uint64_t get_filesize() const;
 
-	// TODO: watching of path with inotify or similar
-	//       this should get a Watcher*, which manages the multiple events
-	//       otherwise, each file would require an inotify fd.
-	//       => see the AssetManager and move functionality from there.
+	/** \todo watching of path with inotify or similar
+	 *  this should get a Watcher*, which manages the multiple events
+	 *  otherwise, each file would require an inotify fd.
+	 *  => see the AssetManager and move functionality from there.
+	 */
+
 	// int watch(std::function<> callback);
 	// void poll_fs_watches(); // call triggered callbacks
 

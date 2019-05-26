@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include <iostream>
 #include <cstring> // for strcmp
@@ -160,7 +160,7 @@ public:
 	curve::time_t predict_invoke_time(const std::shared_ptr<EventTarget> &/*target*/,
 	                                  const std::shared_ptr<State> &/*state*/,
 	                                  const curve::time_t &at) override {
-		// TODO recalculate a hit time
+		// \todo recalculate a hit time
 		return at + curve::time_t::from_double(1);
 	}
 };

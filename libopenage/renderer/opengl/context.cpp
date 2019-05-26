@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "context.h"
 
@@ -65,7 +65,7 @@ static gl_context_capabilities find_capabilities() {
 	GLint temp;
 	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &temp);
 	caps.max_texture_size = temp;
-	// TODO maybe GL_MAX_TEXTURE_IMAGE_UNITS or maybe GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS
+	// \todo maybe GL_MAX_TEXTURE_IMAGE_UNITS or maybe GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS
 	// lol opengl
 	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &temp);
 	caps.max_texture_slots = temp;

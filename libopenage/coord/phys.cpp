@@ -1,4 +1,4 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #include "phys.h"
 
@@ -49,8 +49,10 @@ double phys2::distance(phys2 other) const {
 
 
 phys3 phys2::to_phys3(const Terrain &/* terrain */, phys_t altitude) const {
-	// TODO: once terrain elevations have been implemented,
-	//       query the terrain elevation at {ne, se}.
+	/** \todo once terrain elevations have been implemented,
+	 *  query the terrain elevation at {ne, se}.
+	 */
+
 	phys_t elevation = 0;
 
 	return phys3{this->ne, this->se, elevation + altitude};

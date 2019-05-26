@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "event.h"
 
@@ -24,7 +24,7 @@ Event::Event(const std::shared_ptr<EventTarget> &target,
 
 
 void Event::depend_on(const std::shared_ptr<EventTarget> &dependency) {
-	// TODO: do REPEAT and TRIGGER listen to changes (i.e. have dependents)?
+	// \todo do REPEAT and TRIGGER listen to changes (i.e. have dependents)?
 	// if not, exclude them here and return early.
 
 	log::log(DBG << "Adding change listener for: " << this->get_eventclass()->id()
