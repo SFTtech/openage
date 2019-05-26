@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
@@ -91,7 +91,7 @@ bool Unit::update(time_nsec_t lastframe_duration) {
 	 * the active action is on top
 	 */
 	if (this->has_action()) {
-		// TODO: change the entire unit action timing
+		// \todo change the entire unit action timing
 		//       to a higher resolution like nsecs or usecs.
 
 		// time as float, in milliseconds.
@@ -187,7 +187,7 @@ void Unit::draw(TerrainObject *loc, const graphic_set &grpc, const Engine &engin
 		if (draw_shadow) {
 
 			// position without height component
-			// TODO: terrain elevation
+			// \todo terrain elevation
 			coord::phys3 shadow_pos = loc->pos.draw;
 			shadow_pos.up = 0;
 			this->draw(shadow_pos, draw_shadow, draw_frame, engine);

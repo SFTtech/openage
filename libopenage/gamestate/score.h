@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -53,7 +53,7 @@ public:
 
 	/**
 	 * Calculates the total score from the sub-scores.
-	 * TODO update gui here
+	 * \todo update gui here
 	 */
 	virtual void update_score();
 
@@ -125,7 +125,7 @@ std::string to_string(const openage::score_category &cat);
 
 /**
  * hasher for score_category
- * TODO decide if needed, not used at the moment
+ * \todo decide if needed, not used at the moment
  */
 template<>
 struct hash<openage::score_category> {

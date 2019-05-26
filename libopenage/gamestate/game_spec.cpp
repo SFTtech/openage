@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "game_spec.h"
 
@@ -257,7 +257,7 @@ void GameSpec::on_gamedata_loaded(const gamedata::empiresdat &gamedata) {
 		});
 	}
 
-	// TODO: move out the loading of the sound.
+	// \todo move out the loading of the sound.
 	//       this class only provides the names and locations
 
 	// load the requested sounds.
@@ -376,11 +376,11 @@ void GameSpec::load_terrain(const gamedata::empiresdat &gamedata) {
 
 		auto line = &terrain_meta[terrain_id];
 
-		// TODO: terrain double-define check?
+		// \todo terrain double-define check?
 		terrain_data.terrain_id_priority_map[terrain_id]  = line->blend_priority;
 		terrain_data.terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
-		// TODO: remove hardcoding and rely on nyan data
+		// \todo remove hardcoding and rely on nyan data
 		auto terraintex_filename = util::sformat("converted/terrain/%d.slp.png",
 		                                         line->slp_id);
 
@@ -393,7 +393,7 @@ void GameSpec::load_terrain(const gamedata::empiresdat &gamedata) {
 	for (size_t i = 0; i < terrain_data.blendmode_count; i++) {
 		auto line = &blending_meta[i];
 
-		// TODO: remove hardcodingn and use nyan data
+		// \todo remove hardcodingn and use nyan data
 		std::string mask_filename = util::sformat("converted/blendomatic/mode%02d.png",
 		                                          line->blend_mode);
 		terrain_data.blending_masks[i] = this->assetmanager->get_texture(mask_filename);
@@ -437,7 +437,7 @@ void Sound::play() const {
 	int sndid = this->sound_items.at(rand);
 
 	try {
-		// TODO: buhuuuu gnargghh this has to be moved to the asset loading subsystem hnnnng
+		// \todo buhuuuu gnargghh this has to be moved to the asset loading subsystem hnnnng
 		audio::AudioManager &am = this->game_spec->get_asset_manager()->get_engine()->get_audio_manager();
 
 		if (not am.is_available()) {
@@ -524,11 +524,11 @@ void GameSpecHandle::start_load_job() {
 			load_ok = result();
 		}
 		catch (Error &) {
-			// TODO: display that error in the ui.
+			// \todo display that error in the ui.
 			throw;
 		}
 		catch (std::exception &) {
-			// TODO: same here.
+			// \todo same here.
 			throw Error{ERR << "gamespec loading failed!"};
 		}
 

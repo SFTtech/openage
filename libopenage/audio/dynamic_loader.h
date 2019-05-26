@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -37,7 +37,7 @@ public:
 	 * Loads a chunk of stereo pcm data from the resource. The chunk of data
 	 * begins at the given offset from the beginning of the resource. The actual
 	 * read number of int16_t values is returned.
-	 * TODO: Returns zero if the end of resource is reached.
+	 * \todo Returns zero if the end of resource is reached.
 	 *
 	 * @param chunk_buffer the buffer to save the chunk into
 	 * @param offset the offset from the resource's beginning

@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,7 +19,7 @@ enum class gl_render_target_t {
 	display,
 	/// A bunch of textures
 	textures,
-	// TODO renderbuffers mixed with textures
+	// \todo renderbuffers mixed with textures
 };
 
 /// Represents an OpenGL target that can be drawn into.

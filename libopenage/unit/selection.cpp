@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "selection.h"
 
@@ -274,7 +274,7 @@ void UnitSelection::all_invoke(Command &cmd) {
 		if (u.second.is_valid() && u.second.get()->is_own_unit(cmd.player)) {
 
 			// allow unit to find best use of the command
-			// TODO: queue_cmd returns ability which allows playing of sound
+			// \todo queue_cmd returns ability which allows playing of sound
 			u.second.get()->queue_cmd(cmd);
 		}
 	}
@@ -320,7 +320,7 @@ selection_type_t UnitSelection::get_unit_selection_type(const Player &player, Un
 	bool is_building = u->has_attribute(attr_type::building);
 
 	// Check owner
-	// TODO implement allied units
+	// \todo implement allied units
 	if (u->is_own_unit(player)) {
 		return is_building ? selection_type_t::own_buildings : selection_type_t::own_units;
 	} else {

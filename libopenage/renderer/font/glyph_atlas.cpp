@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "glyph_atlas.h"
 
@@ -140,7 +140,7 @@ GlyphAtlas::Entry GlyphAtlas::set(size_t key, const Glyph &glyph, const unsigned
 		return this->set(key, glyph, image);
 	}
 
-	// TODO: figure out a clean way to resize the atlas
+	// \todo figure out a clean way to resize the atlas
 	throw Error(MSG(err) << "Not enough space in the atlas");
 }
 

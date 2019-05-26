@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "file.h"
 
@@ -99,9 +99,11 @@ ssize_t File::size() {
 
 
 std::vector<std::string> File::get_lines() {
-	// TODO: relay the get_lines to the underlaying filelike
-	//       which may do a better job in getting the lines.
-	//       instead, we read everything and then split up into lines.
+	/** \todo relay the get_lines to the underlaying filelike
+	*         which may do a better job in getting the lines.
+	*         instead, we read everything and then split up into lines.
+	*/
+
 	std::string line;
 	std::vector<std::string> result{};
 	std::istringstream content{this->read()};

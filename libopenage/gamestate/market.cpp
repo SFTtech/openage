@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "player.h"
 #include "market.h"
@@ -68,7 +68,7 @@ ResourceBundle Market::get_prices(const Player &player, const bool is_buy) const
 
 double Market::get_multiplier(const Player &/*player*/, const bool is_buy) const {
 	double base = 0.3;
-	// TODO change multiplier based on civ bonuses and player researched techs
+	// \todo change multiplier based on civ bonuses and player researched techs
 	double mult = base;
 
 	if (is_buy) {

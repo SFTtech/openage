@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -88,10 +88,10 @@ public:
 		return this->last(time, this->container.begin());
 	}
 
-	// TODO: add something like `previous` that returns element with e->time < time
-	//       probably just calls `last` and walks back one element
-	//       if that is not at begin() already
-
+	/** \todo add something like `previous` that returns element with e->time < time
+	 *      probably just calls `last` and walks back one element
+	 *       if that is not at begin() already
+	*/
 	/**
 	 * Insert a new element without a hint.
 	 *

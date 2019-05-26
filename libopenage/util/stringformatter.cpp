@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "stringformatter.h"
 
@@ -34,7 +34,7 @@ CachableOSStream *CachableOSStream::acquire(std::string &output) {
 	// your code is broken.
 
 	// Anyways, have fun with your dynamically-allocated object.
-	// TODO Print a warning debug message about this?
+	// \todo Print a warning debug message about this?
 	// then again, printing a log message about the logging system being
 	// overloaded might not be the most clever idea.
 	return new CachableOSStream{output};

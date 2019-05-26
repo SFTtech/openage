@@ -116,7 +116,7 @@ public:
 
 	/**
 	 * The tile position this node is associated to.
-	 * todo make const
+	 * \todo make const
 	 */
 	coord::phys3 position;
 	coord::tile tile_position;

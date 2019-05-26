@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "engine.h"
 
@@ -166,7 +166,7 @@ Engine::Engine(const util::Path &root_dir,
 		throw Error{ERR << "could not find main.qml file " << qml_root_file};
 	}
 
-	// TODO: in order to support qml-mods, the fslike and filelike
+	// \todo in order to support qml-mods, the fslike and filelike
 	//       library has to be integrated into qt. For now,
 	//       figure out the absolute paths here and pass them in.
 
@@ -240,7 +240,7 @@ Engine::~Engine() {
 }
 
 bool Engine::on_resize(coord::viewport_delta new_size) {
-	// TODO: move all this to the renderer!
+	// \todo move all this to the renderer!
 
 	log::log(MSG(dbg) << "engine window resize to "
 	         << new_size.x << "x" << new_size.y);
@@ -560,7 +560,7 @@ void Engine::move_phys_camera(float x, float y, float amount) {
 }
 
 void Engine::start_game(std::unique_ptr<GameMain> &&game) {
-	// TODO: maybe implement a proper 1-to-1 connection
+	// \todo maybe implement a proper 1-to-1 connection
 	ENSURE(game, "linking game to engine problem");
 
 	this->game = std::move(game);

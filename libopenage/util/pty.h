@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -10,7 +10,7 @@
 #  include <termios.h>
 #  include <libutil.h>
 #elif _WIN32
-// TODO not yet implemented
+// \todo not yet implemented
 #else
 #  include <pty.h>
 #endif

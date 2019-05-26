@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <cmath>
 
@@ -10,7 +10,7 @@ namespace path {
 
 
 bool compare_node_cost::operator ()(const node_pt &lhs, const node_pt &rhs) const {
-	// TODO: use node operator <
+	// \todo use node operator <
 	return lhs->future_cost < rhs->future_cost;
 }
 
@@ -29,7 +29,7 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 	if (prev) {
 		this->direction = (this->position - prev->position).normalize();
 
-		// TODO: add dot product to coord
+		// \todo add dot product to coord
 		cost_t similarity = ((this->direction.ne.to_float() *
 		                      prev->direction.ne.to_float()) +
 		                     (this->direction.se.to_float() *
@@ -101,7 +101,7 @@ bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::p
 	// interpolate between points and make passablity checks
 	// (dont check starting position)
 	for (int i = 1; i <= samples; ++i) {
-		// TODO: needs more fixed-point
+		// \todo needs more fixed-point
 		double percent = (double) i / samples;
 		coord::phys_t ne = (1.0 - percent) * start->position.ne.to_double() + percent * end->position.ne.to_double();
 		coord::phys_t se = (1.0 - percent) * start->position.se.to_double() + percent * end->position.se.to_double();

@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -83,7 +83,7 @@ public:
 	 * This can be called using existing units to modify type
 	 * Ensure that the unit has been placed before seting the units type
 	 *
-	 * TODO: make const
+	 * \todo make const
 	 */
 	virtual void initialise(Unit *, Player &) = 0;
 
@@ -93,7 +93,7 @@ public:
 	 * This can be called using existing units to modify type if the type
 	 * Ensure that the unit has been placed before seting the units type
 	 *
-	 * TODO define if pure vitrual or not / should be in nyan?
+	 * \todo define if pure vitrual or not / should be in nyan?
 	 */
 	virtual void reinitialise(Unit *, Player &);
 
@@ -102,7 +102,7 @@ public:
 	 *
 	 * This should be used when initially creating a unit or
 	 * when a unit is ungarrsioned from a building or object
-	 * TODO: make const
+	 * \todo make const
 	 */
 	virtual TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const = 0;
 
@@ -197,7 +197,7 @@ public:
 class NyanType: public UnitType {
 public:
 	/**
-	 * TODO: give the parsed nyan attributes
+	 * \todo give the parsed nyan attributes
 	 * to the constructor
 	 */
 	NyanType(const Player &owner);

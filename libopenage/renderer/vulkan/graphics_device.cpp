@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "graphics_device.h"
 
@@ -139,7 +139,7 @@ VlkGraphicsDevice::VlkGraphicsDevice(VkPhysicalDevice dev, std::vector<uint32_t>
 	create_dev.ppEnabledExtensionNames = ext_names.data();
 
 	VkPhysicalDeviceFeatures features {};
-	// TODO request features
+	// \todo request features
 	create_dev.pEnabledFeatures = &features;
 
 	VK_CALL_CHECKED(vkCreateDevice, this->phys_device, &create_dev, nullptr, &this->device);

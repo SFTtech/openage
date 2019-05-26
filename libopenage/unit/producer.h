@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -144,7 +144,7 @@ private:
 
 /**
  * creates projectiles
- * todo use MovableProducer as base class
+ * \todo use MovableProducer as base class
  */
 class ProjectileProducer: public UnitType {
 public:

@@ -1,4 +1,4 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2019 the openage authors. See copying.md for legal info.
 
 // Lookup tables for translating between OpenGL-specific values and generic renderer values,
 // as well as mapping things like type sizes within OpenGL.
@@ -17,7 +17,7 @@ namespace opengl {
 
 /// Input and output pixel formats from pixel_format.
 static constexpr auto GL_PIXEL_FORMAT = datastructure::create_const_map<resources::pixel_format, std::tuple<GLint, GLenum, GLenum>>(
-	// TODO check correctness of formats here
+	// \todo check correctness of formats here
 	std::pair(resources::pixel_format::r16ui, std::tuple(GL_R16UI, GL_RED_INTEGER, GL_UNSIGNED_INT)),
 	std::pair(resources::pixel_format::r32ui, std::tuple(GL_R32UI, GL_RED_INTEGER, GL_UNSIGNED_INT)),
 	std::pair(resources::pixel_format::rgb8, std::tuple(GL_RGB8, GL_RGB, GL_UNSIGNED_BYTE)),

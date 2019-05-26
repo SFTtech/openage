@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "assetmanager.h"
 
@@ -66,7 +66,7 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
 
 	// try to open the texture filename.
 	if (not tex_path.is_file()) {
-		// TODO: add/fetch inotify watch on the containing folder
+		// \todo add/fetch inotify watch on the containing folder
 		// to display the tex as soon at it exists.
 
 		if (null_if_missing) {
@@ -87,7 +87,7 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
 		if (native_path.size() > 0) {
 			// create inotify update trigger for the requested file
 
-			// TODO: let util::Path do the file watching
+			// \todo let util::Path do the file watching
 			int wd = inotify_add_watch(
 				this->inotify_fd,
 				native_path.c_str(),
@@ -158,7 +158,7 @@ void AssetManager::check_updates() {
 			struct inotify_event *event = (struct inotify_event *)ptr;
 
 			if (event->mask & IN_CLOSE_WRITE) {
-				// TODO: this should invoke callback functions
+				// \todo this should invoke callback functions
 				this->watch_fds[event->wd]->reload();
 			}
 

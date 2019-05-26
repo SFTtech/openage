@@ -151,8 +151,7 @@ void curvepong(bool disable_gui, bool no_human) {
 				// get the input after the current frame, because the get_inputs
 				// implicitly updates the screen. if this is done too early,
 				// the screen will be updated to be empty -> flickering.
-				// TODO: take terminal input without ncurses, if on tty?
-				//       e.g. 'q' to close it?
+				// \todo take terminal input without ncurses, if on tty? e.g. 'q' to close it?
 				inputs = gui->get_inputs(state->p1);
 			}
 #endif

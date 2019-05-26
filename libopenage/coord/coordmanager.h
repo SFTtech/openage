@@ -47,7 +47,7 @@ public:
 	 * Rile diamonds are 96 pixels wide and 48 pixels high.
 	 * The area of each tile is 96 * 48 * 0.5 square pixels.
 	 */
-	// TODO: dynamically get from nyan data
+	// \todo dynamically get from nyan data
 	camgame_delta tile_size{96, 48};
 };
 

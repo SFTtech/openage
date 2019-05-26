@@ -154,7 +154,7 @@ void Gui::get_display_size(const std::shared_ptr<PongState> &state,
                            const curve::time_t &/*now*/) {
 	// record the screen dimensions in the game state
 
-	// TODO: make the display_boundary a curve as well.
+	// \todo make the display_boundary a curve as well.
 	getmaxyx(stdscr, state->display_boundary[1], state->display_boundary[0]);
 	state->display_boundary[1] -= 1;
 }
@@ -238,7 +238,7 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 
 	// draw the ball
 	attron(COLOR_PAIR(COLOR_BALL));
-	this->draw_ball(state->ball->position->get(now), "M"); // TODO: use "⚽"
+	this->draw_ball(state->ball->position->get(now), "M"); // \todo use "⚽"
 	attroff(COLOR_PAIR(COLOR_BALL));
 }
 

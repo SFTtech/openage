@@ -221,7 +221,7 @@ void main() {
 	resources::Texture2dData id_texture_data = id_texture->into_data();
 	bool texture_data_valid = false;
 
-	// TODO(Vtec234): move these into the renderer
+	// \todo (Vtec234): move these into the renderer
 	glDepthFunc(GL_LEQUAL);
 	glDepthRange(0.0, 1.0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

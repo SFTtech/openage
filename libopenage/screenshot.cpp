@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "screenshot.h"
 
@@ -119,7 +119,7 @@ bool ScreenshotManager::encode_png(std::shared_ptr<uint8_t> pxdata,
 	}
 	png_set_rows(png_ptr, info_ptr, &row_ptrs[0]);
 
-	//TODO: print ingame message.
+	//\todo print ingame message.
 	log::log(MSG(info) << "Saving screenshot to '" << filename << "'.");
 
 	png_write_png(png_ptr, info_ptr, PNG_TRANSFORM_STRIP_FILLER_AFTER, NULL);

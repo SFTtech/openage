@@ -1,11 +1,11 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "os.h"
 
 #include <memory>
 
 #ifdef _WIN32
-// TODO not yet implemented
+// \todo not yet implemented
 #else
 #include <unistd.h>
 #endif
@@ -27,7 +27,7 @@ namespace os {
 
 std::string read_symlink(const char *path) {
 #ifdef _WIN32
-	// TODO not yet implemented
+	// \todo not yet implemented
 	return "";
 #else
 	size_t bufsize = 1024;
@@ -92,7 +92,7 @@ std::string self_exec_filename() {
 	}
 
 #elif _WIN32
-	// TODO not yet implemented
+	// \todo not yet implemented
 	return std::string("openage.exe"); // FIXME: wild guess though
 #else
 	static_assert(false, "subprocess::self_filename is not yet implemented for... whatever platform you're using right now.");
@@ -101,7 +101,7 @@ std::string self_exec_filename() {
 
 int execute_file(const char *path, bool background) {
 #ifdef _WIN32
-	// TODO some sort of shell-open, not yet implemented
+	// \todo some sort of shell-open, not yet implemented
 	return -1; // failure
 #else
 		std::string runner = "";

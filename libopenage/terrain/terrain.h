@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,7 +27,7 @@ class TerrainObject;
 /**
  * type that for terrain ids.
  * it's signed so that -1 can indicate a missing tile.
- * TODO: get rid of the signedness.
+ * \todo get rid of the signedness.
  */
 using terrain_t = int;
 
@@ -179,8 +179,8 @@ public:
 
 	bool infinite; //!< chunks are automagically created as soon as they are referenced
 
-	// TODO: finite terrain limits
-	// TODO: non-square shaped terrain bounds
+	// \todo finite terrain limits
+	// \todo non-square shaped terrain bounds
 
 	/**
 	 * returns a list of all referenced chunks
@@ -286,7 +286,7 @@ public:
 	/**
 	 * checks whether the given tile position is allowed to exist on this terrain.
 	 */
-	// TODO: rename to is_tile_position_valid
+	// \todo rename to is_tile_position_valid
 	bool check_tile_position(const coord::tile &position);
 
 	/**

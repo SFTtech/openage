@@ -1,4 +1,4 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,7 +20,7 @@ class Event;
 class EventStore {
 public:
 
-	// TODO: don't store a double-sharedpointer.
+	// \todo don't store a double-sharedpointer.
 	//       instead, use the event-sharedpointer directly.
 	using heap_t = datastructure::PairingHeap<std::shared_ptr<Event>,
 	                                          util::SharedPtrLess<Event>>;

@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -28,7 +28,7 @@ class Terrain;
  * Contains information for a single game
  * This information must be synced across network clients
  *
- * TODO: include a list of actions to be saved
+ * \todo include a list of actions to be saved
  *       as the game replay file
  */
 class GameMain : public options::OptionNode {

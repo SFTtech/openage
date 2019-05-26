@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "logsink.h"
 
@@ -42,7 +42,7 @@ LogSinkList &LogSinkList::instance() {
 void LogSinkList::log(const message &msg, class LogSource *source) const {
 	std::lock_guard<std::mutex> lock(this->sinks_mutex);
 	for (auto *sink : this->sinks) {
-		// TODO: more sophisticated filtering (iptables-chains-like)
+		// \todo more sophisticated filtering (iptables-chains-like)
 		if (msg.lvl >= sink->loglevel) {
 			sink->output_log_message(msg, source);
 		}

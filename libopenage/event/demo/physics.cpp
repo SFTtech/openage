@@ -37,7 +37,7 @@ public:
 		// triggers a change
 		evnt->depend_on(state->ball->position);
 		evnt->depend_on(state->ball->speed);
-		// TODO add dependency to size of game area
+		// \todo add dependency to size of game area
 
 		// FIXME: warn if it's not a dependency eventclass
 	}
@@ -131,7 +131,7 @@ public:
 		target->depend_on(state->ball->speed);
 		target->depend_on(state->p1->position);
 		target->depend_on(state->p2->position);
-		// TODO add dependency to size of game area
+		// \todo add dependency to size of game area
 	}
 
 	// FIXME we REALLY need dependencies to objects
@@ -416,7 +416,7 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 				if (not extend_previous_prediction) {
 					// create a keyframe for the new movement
 					player->position->set_last(now, current_pos);
-					// TODO: drop the intermediate keyframes
+					// \todo drop the intermediate keyframes
 					//       for position and speed.
 				}
 
@@ -435,7 +435,7 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 				curve::time_t move_stop_guess = now + predicted_movement_time;
 
 				// change the position by integrating the speed curve.
-				// TODO: add native integral to curves.
+				// \todo add native integral to curves.
 				float new_pos = current_pos +
 				                (((player->speed->get(move_stop_guess) +
 				                   player->speed->get(now)) / 2.0) *
@@ -443,7 +443,7 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 
 				// if paddle will get out-of-bounds, calculate the bound hit time
 
-				// TODO: add native key/value finding in range to curves
+				// \todo add native key/value finding in range to curves
 				if (new_pos < 0) {
 					move_stop_guess = now + (current_pos / movement_speed);
 					new_pos = 0;
@@ -459,7 +459,7 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 				player->speed->set_last(move_stop_guess, 0);
 				player->position->set_last(move_stop_guess, new_pos);
 
-				// TODO: predict_reflect_panel(state, queue, now);
+				// \todo predict_reflect_panel(state, queue, now);
 				break;
 			}
 

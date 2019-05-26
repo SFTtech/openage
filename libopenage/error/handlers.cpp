@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 /*
  * This file holds handlers for std::terminate and SIGSEGV.
@@ -98,7 +98,7 @@ util::OnDeInit restore_handlers([]() {
 
 	// die again to enable debugger functionality.
 	// that maybe print some additional useful info that we forgot about.
-	// TODO: we maybe want to prevent that for end-users.
+	// \todo we maybe want to prevent that for end-users.
 	std::cout << "\x1b[33mhanding over to the system...\x1b[m\n" << std::endl;
 	std::terminate();
 }

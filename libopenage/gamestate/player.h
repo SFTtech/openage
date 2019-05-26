@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -205,14 +205,14 @@ private:
 
 	/**
 	 * unit types which can be produced by this player.
-	 * TODO revisit, can be simplified?
+	 * \todo revisit, can be simplified?
 	 */
 	unit_type_list available_objects;
 
 	/**
 	 * available objects mapped using type id
 	 * unit ids -> unit type for that id
-	 * TODO revisit, can be simplified?
+	 * \todo revisit, can be simplified?
 	 */
 	std::unordered_map<index_t, UnitType *> available_ids;
 

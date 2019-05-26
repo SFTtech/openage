@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <memory>
 
@@ -361,7 +361,7 @@ PatrolAbility::PatrolAbility(const Sound *s)
 }
 
 bool PatrolAbility::can_invoke(Unit &/*to_modify*/, const Command &/*cmd*/) {
-	// TODO implement
+	// \todo implement
 	return false;
 }
 
@@ -370,7 +370,7 @@ void PatrolAbility::invoke(Unit &to_modify, const Command &/*cmd*/, bool play_so
 	if (play_sound && this->sound) {
 		this->sound->play();
 	}
-	// TODO implement
+	// \todo implement
 }
 
 ConvertAbility::ConvertAbility(const Sound *s)

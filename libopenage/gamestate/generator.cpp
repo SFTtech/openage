@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "generator.h"
 
@@ -293,7 +293,7 @@ void Generator::add_units(GameMain &m) const {
 			m.placed_units.new_unit(*mvtype, *p, tile.to_phys3(*m.terrain));
 			tile.se += 1;
 			m.placed_units.new_unit(*fvtype, *p, tile.to_phys3(*m.terrain));
-			// TODO uncomment when the scout looks better
+			// \todo uncomment when the scout looks better
 			//tile.se += 2;
 			//m.placed_units.new_unit(*sctype, *p, tile.to_tile3().to_phys3());
 		}

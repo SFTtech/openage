@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -235,9 +235,11 @@ private:
 	// a selected type for placement
 	UnitType *type_focus;
 
-	// TODO these shouldn't be here. remove them ASAP.
-	// they are used to carry over mouse information
-	// into some of the game control lambda functions
+	/** \todo these shouldn't be here. remove them ASAP.
+	 * they are used to carry over mouse information
+	 * into some of the game control lambda functions
+	*/
+
 	coord::phys3 mousepos_phys3{0, 0, 0};
 	coord::tile mousepos_tile{0, 0};
 	bool selecting;

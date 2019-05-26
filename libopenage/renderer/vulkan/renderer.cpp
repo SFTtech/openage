@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "renderer.h"
 
@@ -38,7 +38,7 @@ void VlkRenderer::do_the_thing(util::Path& dir) {
 		throw Error(MSG(err) << "No valid Vulkan device available.");
 	}
 
-	// TODO rate devices based on capabilities
+	// \todo rate devices based on capabilities
 	// Given an instance and surface, selects the best (fastest, most capable, etc.) graphics device
 	// which supports rendering onto that particular surface and constructs the object.
 
@@ -53,7 +53,7 @@ void VlkRenderer::do_the_thing(util::Path& dir) {
 
 	VlkDrawableDisplay display(dev.get_device(), info.second);
 
-	// TODO reinit swapchain on window resize
+	// \todo reinit swapchain on window resize
 
 	auto vert = resources::ShaderSource(
 		resources::shader_lang_t::spirv,

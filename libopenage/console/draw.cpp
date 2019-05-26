@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "draw.h"
 
@@ -22,7 +22,7 @@ namespace draw {
 void to_opengl(Engine *engine, Console *console) {
 	coord::camhud topleft {
 		console->bottomleft.x,
-		// TODO This should probably just be console->topright.y
+		// \todo This should probably just be console->topright.y
 		console->bottomleft.y + console->charsize.y * console->buf.dims.y
 	};
 	coord::pixel_t ascender = static_cast<coord::pixel_t>(console->font.get_ascender());

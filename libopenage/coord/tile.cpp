@@ -1,4 +1,4 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #include "tile.h"
 
@@ -10,8 +10,10 @@ namespace coord {
 
 
 tile3 tile::to_tile3(const Terrain & /*terrain*/, tile_t altitude) const {
-	// TODO: once terrain elevations have been implemented,
-	//       query the terrain elevation at {ne, se}.
+	/** \todo once terrain elevations have been implemented,
+	 *        query the terrain elevation at {ne, se}.
+	*/
+
 	tile_t elevation = 0;
 
 	return tile3{this->ne, this->se, elevation + altitude};

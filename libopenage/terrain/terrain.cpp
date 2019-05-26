@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "terrain.h"
 
@@ -33,7 +33,7 @@ Terrain::Terrain(terrain_meta *meta, bool is_infinite)
 	infinite{is_infinite},
 	meta{meta} {
 
-	// TODO:
+	// \todo
 	//this->limit_positive =
 	//this->limit_negative =
 
@@ -276,7 +276,7 @@ bool Terrain::check_tile_position(const coord::tile &/*pos*/) {
 }
 
 void Terrain::draw(Engine *engine, RenderOptions *settings) {
-	// TODO: move this draw invokation to a render manager.
+	// \todo move this draw invokation to a render manager.
 	//       it can reorder the draw instructions and minimize texture switching.
 
 	// query the window coordinates from the engine first
@@ -296,7 +296,7 @@ void Terrain::draw(Engine *engine, RenderOptions *settings) {
 	// main terrain calculation call: get the `terrain_render_data`
 	auto draw_data = this->create_draw_advice(tl, tr, br, bl, settings->terrain_blending.value);
 
-	// TODO: the following loop is totally inefficient and shit.
+	// \todo the following loop is totally inefficient and shit.
 	//       it reloads the drawing texture to the gpu FOR EACH TILE!
 	//       nevertheless, currently it works.
 
@@ -319,7 +319,7 @@ void Terrain::draw(Engine *engine, RenderOptions *settings) {
 		}
 	}
 
-	// TODO: drawing buildings can't be the job of the terrain..
+	// \todo drawing buildings can't be the job of the terrain..
 	// draw the buildings
 	for (auto &object : draw_data.objects) {
 		object->draw(*engine);
@@ -385,7 +385,7 @@ struct terrain_render_data Terrain::create_draw_advice(const coord::tile &ab,
 			tiles->push_back(tile);
 
 			// get the object standing on the tile
-			// TODO: make the terrain independent of objects standing on it.
+			// \todo make the terrain independent of objects standing on it.
 			TileContent *tile_content = this->get_data(tilepos);
 			if (tile_content != nullptr) {
 				for (auto obj_item : tile_content->obj) {

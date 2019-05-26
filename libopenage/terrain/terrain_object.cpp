@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "terrain_object.h"
 
@@ -142,7 +142,7 @@ bool TerrainObject::move(coord::phys3 &position) {
 	}
 	auto old_state = this->state;
 
-	// TODO should do outside of this function
+	// \todo should do outside of this function
 	bool can_move = this->passable(position);
 	if (can_move) {
 		this->remove();
@@ -215,9 +215,10 @@ const TerrainObject *TerrainObject::get_parent() const {
 
 std::vector<TerrainObject *> TerrainObject::get_children() const {
 
-	// TODO: a better performing way of doing this
-	// for example accept a lambda to use for each element
-	// or maintain a duplicate class field for raw pointers
+	/** \todo a better performing way of doing this
+	 * for example accept a lambda to use for each element
+	 * or maintain a duplicate class field for raw pointers
+	*/
 
 	std::vector<TerrainObject *> result;
 	for (auto &obj: this->children) {
@@ -323,13 +324,13 @@ coord::phys_t SquareObject::from_edge(const coord::phys3 &point) const {
 
 coord::phys3 SquareObject::on_edge(const coord::phys3 &angle, coord::phys_t /* extra */) const {
 	// clamp between start and end
-	// TODO extra is unused
+	// \todo extra is unused
 	coord::phys2 start_phys = this->pos.start.to_phys2();
 	coord::phys2 end_phys = this->pos.end.to_phys2();
 	coord::phys_t cx = std::max(start_phys.ne, std::min(end_phys.ne, angle.ne));
 	coord::phys_t cy = std::max(start_phys.se, std::min(end_phys.se, angle.se));
 
-	// todo use extra distance
+	// \todo use extra distance
 	return coord::phys3{cx, cy, 0};
 }
 
@@ -469,7 +470,7 @@ std::vector<coord::tile> tile_list(const tile_range &rng) {
 tile_range building_center(coord::phys3 west, coord::tile_delta size, const Terrain &terrain) {
 	tile_range result;
 
-	// TODO it should be possible that the building is placed on any position,
+	// \todo it should be possible that the building is placed on any position,
 	//      not just tile positions.
 	result.start = west.to_tile();
 	result.end   = result.start + size;

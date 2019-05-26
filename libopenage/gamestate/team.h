@@ -1,4 +1,4 @@
-// Copyright 2016-2017 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -57,7 +57,7 @@ public:
 	member_type get_member_type(Player &player);
 
 	/**
-	 * TODO find a better way to get all the players
+	 * \todo find a better way to get all the players
 	 */
 	std::vector<const Player*> get_players() const;
 

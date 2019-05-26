@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -204,7 +204,7 @@ void UnorderedMap<key_t, val_t>::kill(const time_t &time,
 
 template<typename key_t, typename val_t>
 void UnorderedMap<key_t, val_t>::clean(const time_t &) {
-	// TODO save everything to a file and be happy.
+	// \todo save everything to a file and be happy.
 }
 
 } // openage::curve

@@ -24,7 +24,7 @@ namespace util {
 
 std::string demangle(const char *symbol) {
 #ifdef _WIN32
-	// TODO: demangle names for MSVC; Possibly using UnDecorateSymbolName
+	// \todo demangle names for MSVC; Possibly using UnDecorateSymbolName
 	// https://msdn.microsoft.com/en-us/library/windows/desktop/ms681400(v=vs.85).aspx
 	// Could it be that MSVC's typeid(T).name() already returns a demangled name? It seems that .raw_name() returns the mangled name
 	return symbol;

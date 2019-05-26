@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "program.h"
 
@@ -139,7 +139,7 @@ void Program::set_attribute_id(const char *name, GLuint id) {
 		glBindAttribLocation(this->id, id, name);
 	}
 	else {
-		//TODO: maybe enable overwriting, but after that relink the program
+		//\todo maybe enable overwriting, but after that relink the program
 		throw Error(MSG(err) << "assigned attribute " << name << " = " << id << " after program was linked!");
 	}
 }

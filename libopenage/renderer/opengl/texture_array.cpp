@@ -1,4 +1,4 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2019 the openage authors. See copying.md for legal info.
 
 #include "texture_array.h"
 
@@ -69,7 +69,7 @@ GlTexture2dArray::GlTexture2dArray(size_t n_layers, resources::Texture2dInfo con
 	             nullptr                  // data
 	);
 
-	// TODO these are outdated, use sampler settings
+	// \todo these are outdated, use sampler settings
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 

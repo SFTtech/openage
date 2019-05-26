@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "texture.h"
 
@@ -15,7 +15,7 @@
 
 namespace openage {
 
-// TODO: remove these global variables!!!
+// \todo remove these global variables!!!
 // definition of the shaders,
 // they are "external" in the header.
 namespace texture_shader {
@@ -59,10 +59,10 @@ Texture::Texture(const util::Path &filename, bool use_metafile)
 }
 
 void Texture::load() {
-	// TODO: use libpng directly.
+	// \todo use libpng directly.
 	SDL_Surface *surface;
 
-	// TODO: this will break if there is no native path.
+	// \todo this will break if there is no native path.
 	//       but then we need to load the image
 	//       from the buffer provided by this->filename.open_r().read().
 
@@ -331,7 +331,7 @@ void Texture::draw(coord::viewport pos,
 	};
 
 
-	// store vertex buffer data, TODO: prepare this sometime earlier.
+	// store vertex buffer data, \todo prepare this sometime earlier.
 	glBindBuffer(GL_ARRAY_BUFFER, this->buffer->vertbuf);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vdata), vdata, GL_STREAM_DRAW);
 

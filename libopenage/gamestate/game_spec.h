@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -38,7 +38,7 @@ using unit_meta_list = std::vector<std::shared_ptr<UnitTypeMeta>>;
 
 /**
  * simple sound object
- * TODO: move to assetmanager
+ * \todo move to assetmanager
  */
 class Sound {
 public:
@@ -67,7 +67,7 @@ public:
  * each data object is referenced by a type and id pair
  *
  * dealing directly with files done by asset manager
- * TODO: should the audio loading should be moved there?
+ * \todo should the audio loading should be moved there?
  */
 class GameSpec {
 public:

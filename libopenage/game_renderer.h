@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -22,7 +22,7 @@ class GameMain;
  * via reflection, so adding new members will
  * always be visible
  *
- * TODO include fog drawing etc
+ * \todo include fog drawing etc
  */
 class RenderOptions : public options::OptionNode {
 public:

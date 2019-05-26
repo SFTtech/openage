@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "shader_program.h"
 
@@ -271,7 +271,7 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 
 void GlShaderProgram::use() {
 	if (!this->validated) {
-		// TODO(Vtec234): validation depends on the context state, so this might be worth calling
+		// \todo (Vtec234): validation depends on the context state, so this might be worth calling
 		// more than once. However, once per frame is probably too much.
 		glValidateProgram(*this->handle);
 		check_program_status(*this->handle, GL_VALIDATE_STATUS);
@@ -293,7 +293,7 @@ void GlShaderProgram::use() {
 		// By the time we call bind, the texture may have been deleted, but if it's fixed
 		// afterwards using execute_with, the render state will still be fine, so we can ignore
 		// this error.
-		// TODO this will swallow actual errors elsewhere, and should be avoided. how?
+		// \todo this will swallow actual errors elsewhere, and should be avoided. how?
 		glGetError();
 	}
 }
@@ -319,7 +319,7 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeomet
 			glUniform1f(loc, *reinterpret_cast<const float*>(ptr));
 			break;
 		case GL_DOUBLE:
-			// TODO requires an extension
+			// \todo requires an extension
 			glUniform1d(loc, *reinterpret_cast<const double*>(ptr));
 			break;
 		case GL_FLOAT_VEC2:
@@ -348,7 +348,7 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeomet
 			GLuint tex = *reinterpret_cast<const GLuint*>(ptr);
 			glActiveTexture(GL_TEXTURE0 + tex_unit);
 			glBindTexture(GL_TEXTURE_2D, tex);
-			// TODO: maybe call this at a more appropriate position
+			// \todo maybe call this at a more appropriate position
 			glUniform1i(loc, tex_unit);
 			this->textures_per_texunits[tex_unit] = tex;
 			break;
@@ -359,7 +359,7 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeomet
 	}
 
 	if (geom != nullptr) {
-		// TODO read obj.blend + family
+		// \todo read obj.blend + family
 		geom->draw();
 	}
 }
@@ -426,7 +426,7 @@ void GlShaderProgram::set_f32(UniformInput *in, const char *unif, float val) {
 }
 
 void GlShaderProgram::set_f64(UniformInput *in, const char *unif, double val) {
-	// TODO requires extension
+	// \todo requires extension
 	this->set_unif(in, unif, &val, GL_DOUBLE);
 }
 

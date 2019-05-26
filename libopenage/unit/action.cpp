@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
@@ -168,7 +168,7 @@ bool UnitAction::damage_unit(Unit &target) {
 					}
 				}
 			}
-			// TODO add elevation modifier here
+			// \todo add elevation modifier here
 			if (actual_damage < 1) {
 				actual_damage = 1;
 			}
@@ -182,7 +182,7 @@ bool UnitAction::damage_unit(Unit &target) {
 			}
 		}
 		else {
-			// TODO remove (keep for testing)
+			// \todo remove (keep for testing)
 			unsigned int dmg = 1;
 			if (dm.hp > dmg) {
 				dm.hp -= dmg;
@@ -396,7 +396,7 @@ void DeadAction::update(unsigned int time) {
 void DeadAction::on_completion() {
 	if (this->entity->has_attribute(attr_type::owner)) {
 		auto &owner = this->entity->get_attribute<attr_type::owner>().player;
-		owner.active_unit_removed(this->entity); // TODO move before the start of dead action?
+		owner.active_unit_removed(this->entity); // \todo move before the start of dead action?
 	}
 
 	this->on_complete_func();
@@ -496,7 +496,7 @@ void IdleAction::update(unsigned int time) {
 	}
 
 	// generate resources
-	// TODO move elsewhere
+	// \todo move elsewhere
 	if (this->entity->has_attribute(attr_type::resource_generator) &&
 	    this->entity->has_attribute(attr_type::owner)) {
 
@@ -507,7 +507,7 @@ void IdleAction::update(unsigned int time) {
 		if (resource_generator.rate == 0) {
 			resources *= time;
 		} else {
-			// TODO add in intervals and not continuously
+			// \todo add in intervals and not continuously
 			resources *= time * resource_generator.rate;
 		}
 
@@ -799,10 +799,10 @@ TrainAction::TrainAction(Unit *e, UnitType *pp)
 	:
 	UnitAction{e, graphic_type::standing},
 	trained{pp},
-	timer{10000, 1}, // TODO get the training time from unit type
+	timer{10000, 1}, // \todo get the training time from unit type
 	started{false},
 	complete{false} {
-	// TODO deduct resources
+	// \todo deduct resources
 }
 
 void TrainAction::update(unsigned int time) {
@@ -816,7 +816,7 @@ void TrainAction::update(unsigned int time) {
 			auto &player = this->entity->get_attribute<attr_type::owner>().player;
 			auto &population_demand = this->trained->default_attributes.get<attr_type::population>().demand;
 			bool can_start = population_demand == 0 || population_demand <= player.population.get_space();
-			// TODO trigger not enough population capacity message
+			// \todo trigger not enough population capacity message
 			this->started = can_start;
 		}
 	}
@@ -849,7 +849,7 @@ void TrainAction::update(unsigned int time) {
 
 void TrainAction::on_completion() {
 	if (!this->complete) {
-		// TODO give back the resources
+		// \todo give back the resources
 	}
 }
 
@@ -1181,7 +1181,7 @@ UnitReference GatherAction::nearest_dropsite(game_resource res_type) {
 AttackAction::AttackAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::attack, tar, get_attack_range(e)},
-	timer{500} { // TODO get fire rate from unit type
+	timer{500} { // \todo get fire rate from unit type
 
 	// check if attacking a non resource unit
 	if (this->entity->has_attribute(attr_type::worker) &&
@@ -1192,7 +1192,7 @@ AttackAction::AttackAction(Unit *e, UnitReference tar)
 		}
 	}
 
-	// TODO rivit logic, a start inside the animation should be provided
+	// \todo rivit logic, a start inside the animation should be provided
 	this->timer.skip_to_trigger();
 }
 
@@ -1276,7 +1276,7 @@ bool HealAction::completed_in_range(Unit *target_ptr) const {
 void HealAction::heal(Unit &target) {
 	auto &heal = this->entity->get_attribute<attr_type::heal>();
 
-	// TODO move to seperate function heal_unit (like damage_unit)?
+	// \todo move to seperate function heal_unit (like damage_unit)?
 	// heal object
 	if (target.has_attribute(attr_type::hitpoints) && target.has_attribute(attr_type::damaged)) {
 		auto &hp = target.get_attribute<attr_type::hitpoints>();
@@ -1320,12 +1320,12 @@ ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
 
 
 	if (projectile_arc < 0) {
-		// TODO negative values probably indicate something
+		// \todo negative values probably indicate something
 		projectile_arc += 0.2;
 	}
 
 	// now figure gravity from arc parameter
-	// TODO projectile arc is the ratio between horizontal and
+	// \todo projectile arc is the ratio between horizontal and
 	// vertical components of the initial direction
 	this->grav = 0.01f * (exp(pow(projectile_arc, 0.5f)) - 1) * projectile_speed;
 
@@ -1349,7 +1349,7 @@ void ProjectileAction::update(unsigned int time) {
 	coord::phys3 new_position = this->entity->location->pos.draw + d_attr.unit_dir * time;
 	if (!this->entity->location->move(new_position)) {
 
-		// TODO implement friendly_fire (now friendly_fire is always on), attack_attribute.friendly_fire
+		// \todo implement friendly_fire (now friendly_fire is always on), attack_attribute.friendly_fire
 
 		// find object which was hit
 		auto terrain = this->entity->location->get_terrain();
@@ -1364,7 +1364,7 @@ void ProjectileAction::update(unsigned int time) {
 			}
 		}
 
-		// TODO implement area of effect, attack_attribute.area_of_effect
+		// \todo implement area of effect, attack_attribute.area_of_effect
 
 		has_hit = true;
 	}

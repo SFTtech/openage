@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "loop.h"
 
@@ -56,7 +56,7 @@ std::weak_ptr<Event> Loop::create_event(const std::shared_ptr<EventClass> &event
 void Loop::reach_time(const curve::time_t &max_time,
                       const std::shared_ptr<State> &state) {
 
-	// TODO detect infinite loops (is this a halting problem?)
+	// \todo detect infinite loops (is this a halting problem?)
 	// this happens when the events don't settle:
 	// at least one processed event adds another event so
 	// the queue never stops adding changes
@@ -171,7 +171,7 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 			case EventClass::trigger_type::ONCE:
 			case EventClass::trigger_type::DEPENDENCY: {
 				auto target = evnt->get_target().lock();
-				// TODO what happens when the target is degraded?
+				// \todo what happens when the target is degraded?
 
 				if (target) {
 					curve::time_t new_time = evnt->get_eventclass()

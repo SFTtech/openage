@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <array>
@@ -263,7 +263,7 @@ bool InputManager::is_mouse_at_edge(Edge edge, int window_size) {
 
 	// Border width to consider screen edges for scrolling.
 	// AoE II appears to be approx 10px.
-	// TODO: make configurable through cvar.
+	// \todo make configurable through cvar.
 	const int edge_offset = 10;
 
 	if (edge == Edge::LEFT && x <= edge_offset) {
@@ -345,7 +345,7 @@ bool InputManager::on_input(SDL_Event *e) {
 
 	case SDL_MOUSEBUTTONDOWN: {
 
-		// TODO: set which buttons
+		// \todo set which buttons
 		if (e->button.button == 2) {
 			this->set_relative(true);
 		}
@@ -385,7 +385,7 @@ std::vector<std::string> InputManager::active_binds(const std::unordered_map<act
 
 	std::vector<std::string> result;
 
-	// TODO: this only checks the by_type mappings, the others are missing!
+	// \todo this only checks the by_type mappings, the others are missing!
 	for (auto &action : ctx_actions) {
 		std::string keyboard_key;
 
@@ -398,8 +398,8 @@ std::vector<std::string> InputManager::active_binds(const std::unordered_map<act
 
 		// this is only possible if the action is registered,
 		// then this->input_manager != nullptr.
-		// TODO: try to purge the action manager access here.
-		// TODO: get_name takes O(n) time
+		// \todo try to purge the action manager access here.
+		// \todo get_name takes O(n) time
 		std::string action_type_str = this->get_action_manager()->get_name(action.first);
 
 		result.push_back(keyboard_key + " : " + action_type_str);

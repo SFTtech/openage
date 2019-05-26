@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <initializer_list>
 
@@ -180,7 +180,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 		}
 	}
 
-	// TODO get cost, temp fixed cost of 50 food
+	// \todo get cost, temp fixed cost of 50 food
 	this->cost.set(cost_type::constant, create_resource_cost(game_resource::food, 50));
 
 }
@@ -474,7 +474,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 
 		auto &multitype_attr = unit->get_attribute<attr_type::multitype>();
 		// currently not sure where the game data keeps these values
-		// todo PREY_ANIMAL SEA_FISH
+		// \todo PREY_ANIMAL SEA_FISH
 		if (this->parent_id() == 83) {
 
 			// male graphics
@@ -564,7 +564,7 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 
 	this->terrain_outline = square_outline(this->foundation_size);
 
-	// TODO get cost, temp fixed cost of 100 wood
+	// \todo get cost, temp fixed cost of 100 wood
 	this->cost.set(cost_type::constant, create_resource_cost(game_resource::wood, 100));
 }
 
@@ -620,7 +620,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 
 	// limits
 	if (this->id() == 109 || this->id() == 276) { // Town center, Wonder
-		this->have_limit = 2; // TODO change to 1, 2 is for testing
+		this->have_limit = 2; // \todo change to 1, 2 is for testing
 	}
 
 	bool has_destruct_graphic = this->destroyed != nullptr;
@@ -648,7 +648,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 }
 
 std::vector<game_resource> BuildingProducer::get_accepted_resources() {
-	//TODO use a more general approach instead of hard coded ids
+	// \todo use a more general approach instead of hard coded ids
 
 	auto id_in = [=](std::initializer_list<int> ids) {
 		return std::any_of(ids.begin(), ids.end(), [=](int n) { return n == this->id(); });
@@ -739,7 +739,7 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 		}
 	}
 
-	// TODO: play sound once built
+	// \todo play sound once built
 	if (this->on_create) {
 		this->on_create->play();
 	}

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -132,7 +132,7 @@ OptionValue parse(option_type t, std::string s);
 
 using opt_func_t = std::function<OptionValue()>;
 
-// TODO string description
+// \todo string description
 // This is a base class for event_class, event, action_t mapped to a function
 // This could be constructed with a context and bind itself using the required types
 class OptionAction {
@@ -243,7 +243,7 @@ private:
 
 	/**
 	 * Variables which can be used
-	 * TODO: read only variables
+	 * \todo read only variables
 	 */
 	std::unordered_map<std::string, OptionValue> varmap;
 

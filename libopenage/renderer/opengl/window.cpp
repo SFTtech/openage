@@ -1,4 +1,4 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2019 the openage authors. See copying.md for legal info.
 
 #include "window.h"
 
@@ -19,7 +19,7 @@ GlWindow::GlWindow(const char *title, size_t width, size_t height)
 	make_sdl_available();
 
 	// We need HIGHDPI for eventual support of GUI scaling.
-	// TODO HIGHDPI fails (requires newer SDL2?)
+	// \todo HIGHDPI fails (requires newer SDL2?)
 	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
 	this->window = SDL_CreateWindow(
 		title,
@@ -71,19 +71,19 @@ void GlWindow::update() {
 			}
 		} else if (event.type == SDL_QUIT) {
 			this->should_be_closed = true;
-			// TODO call on_destroy
+			// \todo call on_destroy
 		} else if (event.type == SDL_KEYUP) {
 			auto const ev = *reinterpret_cast<SDL_KeyboardEvent const*>(&event);
 			for (auto& cb : this->on_key) {
 				cb(ev);
 			}
-			// TODO handle keydown
+			// \todo handle keydown
 		} else if (event.type == SDL_MOUSEBUTTONUP) {
 			auto const ev = *reinterpret_cast<SDL_MouseButtonEvent const*>(&event);
 			for (auto& cb : this->on_mouse_button) {
 				cb(ev);
 			}
-			// TODO handle mousedown
+			// \todo handle mousedown
 		}
 	}
 

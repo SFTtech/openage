@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -55,7 +55,7 @@ public:
 
 	/**
 	 * should selection features be drawn
-	 * TODO: should be a pointer to selection to be updated
+	 * \todo should be a pointer to selection to be updated
 	 * when unit is removed, or null if not selected
 	 */
 	bool selected;
@@ -63,7 +63,7 @@ public:
 	/**
 	 * space on the map used by this unit
 	 * null if the object is not yet placed or garrisoned
-	 * TODO: make private field
+	 * \todo make private field
 	 */
 	std::unique_ptr<TerrainObject> location;
 
@@ -198,7 +198,7 @@ public:
 	template<attr_type T>
 	Attribute<T> &get_attribute() {
 		return *reinterpret_cast<Attribute<T> *>(attributes.get(T).get());
-		// TODO change to (templates errors)
+		// \todo change to (templates errors)
 		//return attributes.get<T>();
 	}
 

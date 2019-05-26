@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -324,7 +324,7 @@ private:
 
 /**
  * initiates a patrol action when given a valid target
- * TODO implement
+ * \todo implement
  */
 class PatrolAbility: public UnitAbility {
 public:

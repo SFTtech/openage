@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -103,7 +103,7 @@ private:
 	selection_type_t selection_type;
 
 	bool drag_active;
-	// TODO: turn these into a C++17 optional
+	// \todo turn these into a C++17 optional
 	coord::camgame start = {0, 0}, end = {0, 0};
 	int font_size;
 
