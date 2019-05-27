@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
@@ -170,19 +170,19 @@ void constexpr_map() {
 	static_assert(not create_const_map<int, int>(std::make_pair(42, 0),
 	                                             std::make_pair(13, 37)).contains(9001),
 	              "uncontained element seems to be contained.");
-#ifndef _MSC_VER // HACK: MSVC doesn't have full C++14 constexpr support
+
 	static_assert(create_const_map<int, int>(std::make_pair(42, 9001),
 	                                         std::make_pair(13, 37)).get(42) == 9001,
 	              "fetched wrong value");
 	static_assert(create_const_map<int, int>(std::make_pair(42, 9001),
 	                                         std::make_pair(13, 37)).get(13) == 37,
 	              "fetched wrong value");
-#endif
-	constexpr auto cmap = create_const_map<int, int>(
-		std::make_pair(0, 0),
-		std::make_pair(13, 37),
-		std::make_pair(42, 9001)
-	);
+
+	constexpr ConstMap cmap {
+		std::pair(0, 0),
+		std::pair(13, 37),
+		std::pair(42, 9001)
+	};
 
 	cmap.contains(0) or TESTFAIL;
 	not cmap.contains(18) or TESTFAIL;
