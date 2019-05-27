@@ -9,8 +9,6 @@
 #include "coord_nese.gen.h"
 #include "coord_neseup.gen.h"
 
-#include <typeindex>
-
 namespace openage {
 
 class Terrain;
@@ -77,7 +75,7 @@ namespace std {
 template<>
 struct hash<openage::coord::phys3> {
 	size_t operator ()(const openage::coord::phys3 &pos) const {
-		size_t hash = std::hash<std::type_index>()(std::type_index(typeid(openage::coord::phys3)));
+		size_t hash = openage::util::type_hash<openage::coord::phys3>();
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(pos.ne));
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(pos.se));
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(pos.up));

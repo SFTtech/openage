@@ -6,7 +6,6 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
-#include <typeindex>
 
 #include "../coord/phys.h"
 #include "../coord/tile.h"
@@ -208,7 +207,7 @@ template<>
 struct hash<openage::path::Node &> {
 	size_t operator ()(const openage::path::Node &x) const {
 		openage::coord::phys3 node_pos = x.position;
-		size_t hash = std::hash<std::type_index>()(std::type_index(typeid(openage::path::Node)));
+		size_t hash = openage::util::type_hash<openage::path::Node>();
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(node_pos.ne));
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(node_pos.se));
 		return hash;

@@ -7,7 +7,6 @@
 #include "coord_neseup.gen.h"
 #include "../util/misc.h"
 #include "../util/hash.h"
-#include <typeindex>
 
 namespace openage {
 
@@ -75,7 +74,7 @@ namespace std {
 template<>
 struct hash<openage::coord::tile> {
 	size_t operator ()(const openage::coord::tile &pos) const {
-		size_t hash = std::hash<std::type_index>()(std::type_index(typeid(openage::coord::tile)));
+		size_t hash = openage::util::type_hash<openage::coord::tile>();
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::tile_t>{}(pos.ne));
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::tile_t>{}(pos.se));
 		return hash;
