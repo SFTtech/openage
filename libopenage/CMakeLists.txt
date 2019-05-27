@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 # main C++ library definitions.
 # dependency and source file setup for the resulting library.
@@ -270,7 +270,7 @@ target_include_directories(libopenage
 # all the libraries are not exposed
 # to the public api of libopenage
 target_link_libraries(libopenage
-	PUBLIC
+	PRIVATE
 		Threads::Threads
 		nyan::nyan
 		Eigen3::Eigen
