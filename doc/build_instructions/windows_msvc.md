@@ -9,6 +9,7 @@
  - [Visual Studio 2017 Community edition](https://www.visualstudio.com/downloads/)
    - With the "Desktop development with C++" workload.
    - With the "Windows 10 SDK". Choose the latest version listed.
+ - Instead of Visual Studio, you could also use the [Visual Studio Buildtools](https://download.visualstudio.microsoft.com/download/pr/10413969-2070-40ea-a0ca-30f10ec01d1d/414d8e358a8c44dc56cdac752576b402/vs_buildtools.exe), they use less space
  - [Python 3](https://www.python.org/downloads/windows/)
    - With the "pip" option enabled. We use `pip` to install other dependencies.
    - With the "Precompile standard library" option enabled.
@@ -37,6 +38,8 @@
  Note that openage doesn't support completely out-of-source-tree builds yet.
  We will, however, use a separate `build` directory to build the binaries.
 
+_Note:_ You will also need to set up [the dependencies for Nyan](https://github.com/SFTtech/nyan/blob/master/doc/building.md#windows).
+
  Open a command prompt at `<openage directory>`:
 
      mkdir build
@@ -45,6 +48,8 @@
      cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
 
 _Note:_ If you want to build the x64 version, please add `-G "Visual Studio 15 2017 Win64"` (for VS2017) to the first cmake command.
+
+_Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYAN=YES -DFLEX_EXECUTABLE=<path to win_flex.exe>` to the first cmake command. 
 
 ## Running openage (in devmode)
  While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
@@ -59,12 +64,15 @@ _Note:_ If you want to build the x64 version, please add `-G "Visual Studio 15 2
     - `<openage directory>\build\libopenage\<config built>` (for `openage.dll`)
     - Path to `nyan.dll` (depends on the procedure chosen to get nyan)
     - `<vcpkg directory>\installed\<relevant config>\bin`
+    - `<vcpkg-dir>\installed\<relevant config>\debug\bin`
     - `<QT5 directory>\bin` (if prebuilt QT5 was installed)
 
  Now, execute `<openage directory>/run.exe` and enjoy!
 
 ## Packaging
  Open a command prompt at `<openage directory>\build` (or use the one from the building step):
+
+_Note:_ You need [NSIS](https://nsis.sourceforge.io/Download) to be installed.
 
     cpack -C RelWithDebInfo
 
