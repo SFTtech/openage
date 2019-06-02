@@ -70,6 +70,8 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
  Now, execute `<openage directory>/run.exe` and enjoy!
 
 ## Packaging
+ **Doesn't work with vcpkg installed Qt submodules.** [Open issue for `windeployqt`](https://github.com/microsoft/vcpkg/issues/1654).
+ 
  Open a command prompt at `<openage directory>\build` (or use the one from the building step):
 
 _Note:_ You need [NSIS](https://nsis.sourceforge.io/Download) to be installed.
