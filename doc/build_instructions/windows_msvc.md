@@ -64,7 +64,8 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
     - `<openage directory>\build\libopenage\<config built>` (for `openage.dll`)
     - Path to `nyan.dll` (depends on the procedure chosen to get nyan)
     - `<vcpkg directory>\installed\<relevant config>\bin`
-    - `<vcpkg-dir>\installed\<relevant config>\debug\bin`
+    - `<vcpkg-directory>\installed\<relevant config>\debug\bin`
+    - `<QT5 directory>\<relevant-subfolder-structure>\platforms\qwindows.dll` TODO
     - `<QT5 directory>\bin` (if prebuilt QT5 was installed)
 
  Now, execute `<openage directory>/run.exe` and enjoy!
