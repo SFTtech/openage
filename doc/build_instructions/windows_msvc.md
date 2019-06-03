@@ -49,7 +49,7 @@ _Note:_ You will also need to set up [the dependencies for Nyan](https://github.
 
 _Note:_ If you want to build the x64 version, please add `-G "Visual Studio 15 2017 Win64"` (for VS2017) to the first cmake command.
 
-_Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYAN=YES -DFLEX_EXECUTABLE=<path to win_flex.exe>` to the first cmake command. 
+_Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYAN=YES -DFLEX_EXECUTABLE=<path to win_flex.exe>` to the first cmake command.
 
 ## Running openage (in devmode)
  While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
@@ -71,7 +71,7 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
 
 ## Packaging
  **Doesn't work with vcpkg installed Qt submodules.** [Open issue for `windeployqt`](https://github.com/microsoft/vcpkg/issues/1654).
- 
+
  Open a command prompt at `<openage directory>\build` (or use the one from the building step):
 
 _Note:_ You need [NSIS](https://nsis.sourceforge.io/Download) to be installed.
