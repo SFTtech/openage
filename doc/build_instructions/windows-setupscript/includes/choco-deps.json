@@ -1,0 +1,46 @@
+[
+    {
+        "Name":  "python3",
+        "isGit":  false,
+        "isZip":  false,
+        "isInstaller":  true,
+        "isConfig":  false,
+        "desiredVersion":  "3.7.3",
+        "LatestRelease":  "3.7.3",
+        "RepoName":  "",
+        "DownloadLink":  "https://www.python.org/ftp/python/3.7.3/python-3.7.3-amd64.exe",
+        "HashFile":  "",
+        "HomeDir":  "C:\\openage-dl\\python3\\",
+        "FileName":  "python-3.7.3-amd64.exe"
+    },
+    {
+        "Name":  "vs_buildtools",
+        "isGit":  false,
+        "isZip":  false,
+        "isInstaller":  true,
+        "isConfig":  false,
+        "desiredVersion":  false,
+        "LatestRelease":  false,
+        "RepoName":  "",
+        "DownloadLink":  "https://download.visualstudio.microsoft.com/download/pr/10413969-2070-40ea-a0ca-30f10ec01d1d/414d8e358a8c44dc56cdac752576b402/vs_buildtools.exe",
+        "HashFile":  "",
+        "HomeDir":  "C:\\openage-dl\\vs_buildtools\\",
+        "FileName":  "vs_buildtools.exe",
+        "ConfigPath":  "C:\\openage-dl\\vs_buildtools\\config\\build_tools.vsconfig"
+    },
+    {
+        "Name":  "vs_buildtools\\config",
+        "LinkName":  "vs_buildtools",
+        "isGit":  false,
+        "isZip":  false,
+        "isInstaller":  false,
+        "isConfig":  true,
+        "desiredVersion":  false,
+        "LatestRelease":  false,
+        "RepoName":  "",
+        "DownloadLink":  "https://raw.githubusercontent.com/simonsan/kevin-win-setup/stage2/vsconfig/build_tools.vsconfig",
+        "HashFile":  "",
+        "HomeDir":  "C:\\openage-dl\\vs_buildtools\\config\\",
+        "FileName":  "build_tools.vsconfig"
+    }
+]

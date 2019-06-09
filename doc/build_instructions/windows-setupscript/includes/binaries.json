@@ -1,0 +1,32 @@
+[
+    {
+        "Name":  "cmake",
+        "BinDir":  "C:\\openage-dl\\cmake\\cmake-3.14.5-win64-x64",
+        "BinPath":  "C:\\openage-dl\\cmake\\cmake-3.14.5-win64-x64\\bin\\cmake.exe"
+    },
+    {
+        "Name":  "mingit",
+        "BinDir":  "C:\\openage-dl\\mingit\\mingit-2.21.0-64-bit",
+        "BinPath":  "C:\\openage-dl\\mingit\\mingit-2.21.0-64-bit\\cmd\\git.exe"
+    },
+    {
+        "Name":  "flex",
+        "BinDir":  "C:\\openage-dl\\flex\\win_flex_bison-2.5.18",
+        "BinPath":  "C:\\openage-dl\\flex\\win_flex_bison-2.5.18\\win_flex.exe"
+    },
+    {
+        "Name":  "vcpkg",
+        "BinDir":  "C:\\openage-dl\\vcpkg",
+        "BinPath":  "C:\\openage-dl\\vcpkg\\vcpkg.exe"
+    },
+    {
+        "Name":  "cpack",
+        "BinDir":  "C:\\openage-dl\\cmake\\cmake-3.14.5-win64-x64",
+        "BinPath":  "C:\\openage-dl\\cmake\\cmake-3.14.5-win64-x64\\bin\\cpack.exe"
+    },
+    {
+        "Name":  "nsis",
+        "BinDir":  "C:\\openage-dl\\nsis\\",
+        "BinPath":  "C:\\openage-dl\\nsis\\NSIS.exe"
+    }
+]
