@@ -55,7 +55,7 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
  While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
   - Install the [DejaVu Book Font](https://dejavu-fonts.github.io/Download.html).
     - Download and extract the latest `dejavu-fonts-ttf` tarball/zip file.
-    - Copy `ttf/DejaVuSerif*.ttf` font files to `%WINDIR%/Fonts`.
+    - Select `ttf/DejaVuSerif*.ttf`, right-click them and chose "Install for all users"
     - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\`.
     - Copy `fontconfig/57-dejavu-serif.conf` to `%FONTCONFIG_PATH%/conf.d`.
   - [Optional] Set the `AGE2DIR` environment variable to the AoE 2 installation directory.
@@ -69,13 +69,11 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
  Now, execute `<openage directory>/run.exe` and enjoy!
 
 ## Packaging
- **Doesn't work with vcpkg installed Qt submodules.** [Open issue for `windeployqt`](https://github.com/microsoft/vcpkg/issues/1654).
-
  Open a command prompt at `<openage directory>\build` (or use the one from the building step):
 
 _Note:_ You need [NSIS](https://nsis.sourceforge.io/Download) to be installed.
 
     cpack -C RelWithDebInfo
 
- The installer (`openage-<version>-win32.exe`) will be generated in the same directory.<br>
+ The installer (`openage-<version>-<architecture>.exe`) will be generated in the same directory.<br>
  _Hint_: Append `-V` to the `cpack` command for verbose output (it takes time to package all dependencies).
