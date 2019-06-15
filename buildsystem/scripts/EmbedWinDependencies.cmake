@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 if(NOT forward_variables)
 	message(FATAL_ERROR "CMake configuration variables not available. Please include(ForwardVariables.cmake)")
@@ -25,9 +25,21 @@ function(resolve binary)
 		return()
 	endif()
 	string(REGEX MATCHALL "    [^\\\n]+\\.dll" dll_list ${dump_output})
+
+	# manually add qt dlls
+	list(APPEND dll_list "Qt5Widgets.dll")
+	list(APPEND dll_list "qtquickcontrolsplugin.dll")
+
 	foreach(item ${dll_list})
 		string(STRIP "${item}" dll_name)
-		set(dll_src_path "${vcpkg_dir}/bin/${dll_name}")
+
+		#qtquickcontrolsplugin.dll
+		if(dll_name EQUAL "qtquickcontrolsplugin.dll")
+			set(dll_src_path "${vcpkg_dir}/qml/QtQuick/Controls/${dll_name}")
+		else()
+			set(dll_src_path "${vcpkg_dir}/bin/${dll_name}")
+		endif()
+
 		set(dll_dest_path "${bin_dir}/${dll_name}")
 		if(NOT EXISTS "${dll_dest_path}" AND EXISTS "${dll_src_path}")
 			message(STATUS "Copying ${dll_name}")
