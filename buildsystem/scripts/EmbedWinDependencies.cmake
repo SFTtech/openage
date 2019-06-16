@@ -29,13 +29,24 @@ function(resolve binary)
 	# manually add qt dlls
 	list(APPEND dll_list "Qt5Widgets.dll")
 	list(APPEND dll_list "qtquickcontrolsplugin.dll")
+<<<<<<< HEAD
+=======
+	list(APPEND dll_list "qwindows.dll")
+>>>>>>> ae1b144bb... Use applocal.ps1 to resolve dependencies
 
 	foreach(item ${dll_list})
 		string(STRIP "${item}" dll_name)
 
 		#qtquickcontrolsplugin.dll
+<<<<<<< HEAD
 		if(dll_name EQUAL "qtquickcontrolsplugin.dll")
 			set(dll_src_path "${vcpkg_dir}/qml/QtQuick/Controls/${dll_name}")
+=======
+		if("${dll_name}" EQUAL "qtquickcontrolsplugin.dll")
+			set(dll_src_path "${vcpkg_dir}/qml/QtQuick/Controls/${dll_name}")
+		elseif("${dll_name}" EQUAL "qwindows.dll")
+			set(dll_src_path "${vcpkg_dir}/plugins/platforms/${dll_name}")
+>>>>>>> ae1b144bb... Use applocal.ps1 to resolve dependencies
 		else()
 			set(dll_src_path "${vcpkg_dir}/bin/${dll_name}")
 		endif()
@@ -51,13 +62,27 @@ endfunction()
 
 foreach(file ${CMAKE_INSTALL_MANIFEST_FILES})
 	if(file MATCHES "\\.dll$")
-		resolve("${file}")
 		if(windeployqt)
+			resolve("${file}")
 			execute_process(COMMAND "${CMAKE_COMMAND}" -E env "PATH=${vcpkg_dir}/bin;$ENV{PATH}"
 				"${windeployqt}"
 				--qmldir "${CMAKE_INSTALL_PREFIX}/${asset_dir}/qml"
 				--dir "${CMAKE_INSTALL_PREFIX}/${py_install_prefix}"
 				"${file}"
+			)
+		else()
+			message(STATUS "Applocal used with ${file}!")
+			set(APPLOCAL_SCRIPT "${vcpkg_dir}/../../scripts/buildsystems/msbuild/applocal.ps1")
+			set(POWERSHELL_COMMAND "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
+			message(STATUS "Applocal used with ${POWERSHELL_COMMAND}!")
+			message(STATUS "Use this command manually for diagnosing: ${POWERSHELL_COMMAND} ${APPLOCAL_SCRIPT} -targetBinary ${file} -installedDir ${vcpkg_dir}/bin -tlogFile ${APPLOCAL_LOGFILE_DIR}/applocal.log -copiedFilesLog ${APPLOCAL_LOGFILE_DIR}/applocal_copied_files.log!")
+			execute_process(COMMAND "${POWERSHELL_COMMAND}" "${APPLOCAL_SCRIPT}" 
+					-targetBinary "${file}" 
+					-installedDir "${vcpkg_dir}/bin" 
+					-tlogFile "${APPLOCAL_LOGFILE_DIR}/applocal.log" 
+					-copiedFilesLog "${APPLOCAL_LOGFILE_DIR}/applocal_copied_files.log"
+					ERROR_VARIABLE "${APPLOCAL_LOGFILE_DIR}/applocal_error.log"
+					OUTPUT_FILE "${APPLOCAL_LOGFILE_DIR}/applocal_output.log"
 			)
 		endif()
 	endif()
