@@ -12,11 +12,12 @@ else()
 endif()
 set(python_embed_zip "python-${py_version}-embed-${py_arch}.zip")
 set(python_zip_download_path "${downloads_dir}/${python_embed_zip}")
-# TODO: disable downloading for CI builds. <Need CI first>
-download_cache(
-	"https://www.python.org/ftp/python/${py_version}/${python_embed_zip}"
-	"${python_zip_download_path}"
-)
+if(NOT $KEVIN_USE_CACHE)
+	download_cache(
+		"https://www.python.org/ftp/python/${py_version}/${python_embed_zip}"
+		"${python_zip_download_path}"
+	)
+endif()
 
 execute_process(COMMAND
 	"${CMAKE_COMMAND}" -E tar xf "${python_zip_download_path}"

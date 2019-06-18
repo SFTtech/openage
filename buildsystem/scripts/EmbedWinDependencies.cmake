@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 if(NOT forward_variables)
 	message(FATAL_ERROR "CMake configuration variables not available. Please include(ForwardVariables.cmake)")
@@ -10,6 +10,21 @@ if(NOT dumpbin)
 	message(SEND_ERROR "Cannot locate dumpbin.")
 	return()
 endif()
+
+# Paths for applocal and powershell
+set(APPLOCAL_SCRIPT "${vcpkg_dir}/../../scripts/buildsystems/msbuild/applocal.ps1")
+set(POWERSHELL_COMMAND "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
+
+# Check if applocal exists
+if(NOT EXISTS ${APPLOCAL_SCRIPT})
+	unset(APPLOCAL_SCRIPT)
+endif()
+
+# Check if powershell exists
+if(NOT EXISTS ${POWERSHELL_COMMAND})
+	unset(POWERSHELL_COMMAND)
+endif()
+
 
 # function to wrap the dependency resolving and copying logic on Windows.
 # Inspired by `applocal.ps1` from vcpkg which recursively descends into the
@@ -37,19 +52,47 @@ function(resolve binary)
 	endforeach()
 endfunction()
 
-foreach(file ${CMAKE_INSTALL_MANIFEST_FILES})
-	if(file MATCHES "\\.dll$")
-		resolve("${file}")
-		if(windeployqt)
-			execute_process(COMMAND "${CMAKE_COMMAND}" -E env "PATH=${vcpkg_dir}/bin;$ENV{PATH}"
-				"${windeployqt}"
-				--qmldir "${CMAKE_INSTALL_PREFIX}/${asset_dir}/qml"
-				--dir "${CMAKE_INSTALL_PREFIX}/${py_install_prefix}"
-				"${file}"
-			)
+
+# windeployqt
+if(use_windeployqt AND windeployqt)
+	foreach(file ${CMAKE_INSTALL_MANIFEST_FILES})
+		if(file MATCHES "\\.dll$")
+			resolve("${file}")
+			if(windeployqt)
+				execute_process(COMMAND "${CMAKE_COMMAND}" -E env "PATH=${vcpkg_dir}/bin;$ENV{PATH}"
+					"${windeployqt}"
+					--qmldir "${CMAKE_INSTALL_PREFIX}/${asset_dir}/qml"
+					--dir "${CMAKE_INSTALL_PREFIX}/${py_install_prefix}"
+					"${file}"
+				)
+			endif()
 		endif()
-	endif()
-endforeach()
+	endforeach()
+endif()
+
+# applocal
+if((DEFINED POWERSHELL_COMMAND) AND (DEFINED APPLOCAL_SCRIPT))
+	foreach(file ${CMAKE_INSTALL_MANIFEST_FILES})
+		if(file MATCHES "\\.dll$")
+				# DEBUG
+				# message(STATUS "Use this command manually for diagnosing: ${POWERSHELL_COMMAND} ${APPLOCAL_SCRIPT} -targetBinary ${file} -installedDir ${vcpkg_dir}/bin -tlogFile ${BUILDSYSTEM_DIR}/applocal.log -copiedFilesLog ${BUILDSYSTEM_DIR}/applocal_copied_files.log!")
+
+				execute_process(COMMAND "${POWERSHELL_COMMAND}" "${APPLOCAL_SCRIPT}"
+						-targetBinary "${file}"
+						-installedDir "${vcpkg_dir}/bin"
+						-tlogFile "${BUILDSYSTEM_DIR}/applocal.log"
+						-copiedFilesLog "${BUILDSYSTEM_DIR}/applocal_copied_files.log"
+						ERROR_VARIABLE "${BUILDSYSTEM_DIR}/applocal_error.log"
+						OUTPUT_FILE "${BUILDSYSTEM_DIR}/applocal_output.log"
+				)
+		endif()
+	endforeach()
+endif()
+
+# Copy qt.conf to python-directory
+file(COPY "${buildsystem_dir}/templates/qt.conf"
+	DESTINATION "${CMAKE_INSTALL_PREFIX}/${py_install_prefix}"
+)
 
 # The fonts directory defaults to the same directory as the executable.
 # In this case, it is python.exe at `py_install_prefix`.

@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 if(NOT forward_variables)
 	message(FATAL_ERROR "CMake configuration variables not available. Please include(ForwardVariables.cmake)")
@@ -8,11 +8,12 @@ include("${buildsystem_dir}/modules/DownloadCache.cmake")
 set(dejavu_dir "${downloads_dir}/DejaVu")
 set(dejavu_zip "dejavu-fonts-ttf-2.37.tar.bz2")
 set(dejavu_zip_download_path "${dejavu_dir}/${dejavu_zip}")
-# TODO: disable downloading for CI builds. <Need CI first>
-download_cache(
-	"https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/${dejavu_zip}"
-	"${dejavu_zip_download_path}"
-)
+if(NOT $KEVIN_USE_CACHE)
+	download_cache(
+		"https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/${dejavu_zip}"
+		"${dejavu_zip_download_path}"
+	)
+endif()
 
 execute_process(COMMAND
 	"${CMAKE_COMMAND}" -E tar xf "${dejavu_zip_download_path}"
