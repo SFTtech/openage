@@ -18,9 +18,10 @@ set(py_install_prefix "@CMAKE_PY_INSTALL_PREFIX@")
 set(py_version "@PYTHONLIBS_VERSION_STRING@")
 set(sizeof_void_p @CMAKE_SIZEOF_VOID_P@)
 set(vcpkg_dir "@vcpkg_dir@")
+set(windeployqt "@windeployqt@")
 
-# If '1', this lets Kevin use already downloaded python-embed and fonts, std value: '0', set by Kevin
-set(kevin_use_cache 0)
+# Set packaging flag for windeployqt (pre-built Qt)
+set(use_windeployqt 0)
 
 # the following denotes inclusion of this script.
 set(forward_variables 1)
