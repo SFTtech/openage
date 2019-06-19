@@ -1,5 +1,7 @@
 # Procedure for Microsoft Windows users (Windows 10)
 
+__NOTE:__ We also have an installer for Win10 (x64), if you just want to play around with *openage* you can find it [here](https://github.com/SFTtech/openage/releases).
+
  Since Windows doesn't offer a native package manager, we use a mixture of manual and automated steps to get the dependencies for openage.
  *Please remember to replace the directories referenced below (written in <...>) with the appropriate values.*
 
