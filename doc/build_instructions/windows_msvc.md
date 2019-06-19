@@ -8,9 +8,10 @@ __NOTE:__ We also have an installer for Win10 (x64), if you just want to play ar
 ## Setting up the build environment
  You will need to download and install the following manually.
  Those who already have the latest stable versions of these programs can skip this:
- - [Visual Studio 2017 Community edition](https://www.visualstudio.com/downloads/)
-   - With the "Desktop development with C++" workload.
-   - With the "Windows 10 SDK". Choose the latest version listed.
+ - [Visual Studio Buildtools](https://download.visualstudio.microsoft.com/download/pr/10413969-2070-40ea-a0ca-30f10ec01d1d/414d8e358a8c44dc56cdac752576b402/vs_buildtools.exe)
+   - With the "Visual C++ Buildtools" workload.
+_NOTE:_ If you are searching for an IDE for development you can get an overview [here](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#C/C++), we've also written some [instructions for developing with different IDEs](/doc/ide.md).
+
  - [Python 3](https://www.python.org/downloads/windows/)
    - With the "pip" option enabled. We use `pip` to install other dependencies.
    - With the "Precompile standard library" option enabled.
@@ -39,7 +40,9 @@ __NOTE:__ We also have an installer for Win10 (x64), if you just want to play ar
  Note that openage doesn't support completely out-of-source-tree builds yet.
  We will, however, use a separate `build` directory to build the binaries.
 
- Open a command prompt at `<openage directory>`:
+_Note:_ You will also need to set up [the dependencies for Nyan](https://github.com/SFTtech/nyan/blob/master/doc/building.md#windows), which is mainly [flex](https://sourceforge.net/projects/winflexbison/)
+
+Open a command prompt at `<openage directory>`:
 
      mkdir build
      cd build
@@ -47,6 +50,8 @@ __NOTE:__ We also have an installer for Win10 (x64), if you just want to play ar
      cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
 
 _Note:_ If you want to build the x64 version, please add `-G "Visual Studio 15 2017 Win64"` (for VS2017) to the first cmake command.
+_Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYAN=YES -DFLEX_EXECUTABLE=<path to win_flex.exe>` to the first cmake command.
+
 
 ## Running openage (in devmode)
  While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
@@ -66,7 +71,7 @@ _Note:_ If you want to build the x64 version, please add `-G "Visual Studio 15 2
  Now, execute `<openage directory>/run.exe` and enjoy!
 
 ## Packaging
- - **Doesn't work with vcpkg installed Qt submodules.** [Open issue for `windeployqt`](https://github.com/microsoft/vcpkg/issues/1654).
+
  - Install [NSIS](https://sourceforge.net/projects/nsis/files/latest/download).
 
  Open a command prompt at `<openage directory>\build` (or use the one from the building step):
