@@ -69,6 +69,17 @@ Current State of the Project
    - See [doc/milestones.md](/doc/milestones.md). We also have [lists of crazy xor good ideas](/doc/ideas) and a [technical overview for requested features](/doc/ideas/fr_technical_overview.md). 
 
 
+Packaging
+---------
+
+**Supported Platforms:** Linux, Windows 10 (x64)
+ 
+  - For Linux check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available.
+  - For Windows check our [release page](https://github.com/SFTtech/openage/releases) for the latest installer.
+
+__NOTE:__ If you have any problems starting conversion or starting *openage* take a look into our [troubleshooting guide](/doc/troubleshooting.md).
+
+
 Dependencies, Building and Running
 ----------------------------------
 
@@ -118,14 +129,6 @@ Running openage on macOS worked in the past,
 and might or might not work right now.
 
 Setting up continuous integration for this platform has some complications. Running a hackintosh VM seems to be not so legal, while buying dedicated hardware for it seems to be not so cheap. If you know of a legal and cost-free way of doing so or want to sponsor a semi-recent Mac Mini, please open a ticket in our issue tracker. Until then, PRs untested on macOS will make their way into the master branch and occasional breakage will occur.
-
-
-Windows Version
----------------
-
-The Windows port of openage is under development.
-
-Setting up continuous integration for this platform has problems similar to the OSX version. If you know of a legal and cost-free way of acquiring and running a Windows VM, please open a ticket in our issue tracker. Until then, PRs untested on Windows will make their way into the master branch and occasional breakage will occur.
 
 
 Contributing
