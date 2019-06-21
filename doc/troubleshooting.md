@@ -4,7 +4,8 @@
 
 ### More than one python installation
 
-If you have two (or more) different python installations on your computer try to unset the directory of all python installations from PATH to make sure `openage.bat` takes our own `python.exe` from the installDir.
+If you have two (or more) different python installations on your computer edit the `openage.bat` in the install directory:
+Replace the line `python.exe -m openage` with `call "%INST_DIR%\python\python.exe" -m openage` to start `python.exe` explicitly.
 
 ## Asset Conversion
 
