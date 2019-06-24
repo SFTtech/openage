@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
@@ -167,7 +167,7 @@ GameRenderer::GameRenderer(Engine *e)
 
 	// Renderer keybinds
 	// TODO: a renderer settings struct
-	// would allow these to be put somewher better
+	// would allow these to be put somewhere better
 	input::ActionManager &action = this->engine->get_action_manager();
 	auto &global_input_context = engine->get_input_manager().get_global_context();
 	global_input_context.bind(action.get("TOGGLE_BLENDING"), [this](const input::action_arg_t &) {
