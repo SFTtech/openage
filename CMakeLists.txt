@@ -38,7 +38,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Python and Cython requirements
-set(PYTHON_MIN_VERSION 3.4)
+set(PYTHON_MIN_VERSION 3.6)
 set(CYTHON_MIN_VERSION 0.25)
 
 # CMake policies

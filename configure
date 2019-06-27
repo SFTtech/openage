@@ -16,8 +16,8 @@ import shutil
 import subprocess
 import sys
 
-if sys.version_info < (3, 4):
-    print("openage requires Python 3.4 or higher")
+if sys.version_info < (3, 6):
+    print("openage requires Python 3.6 or higher")
     exit(1)
 
 
