@@ -4,7 +4,7 @@
 rem @AUTOGEN_WARNING@
 
 set INST_DIR=%CD%
-set PATH=%INST_DIR%\@CMAKE_INSTALL_BINDIR@;%INST_DIR%\@CMAKE_PY_INSTALL_PREFIX@
+set PATH=%INST_DIR%\@CMAKE_INSTALL_BINDIR@;
 set XDG_DATA_HOME=%INST_DIR%\share
 
-python.exe -m openage
+call "%INST_DIR%\@CMAKE_PY_INSTALL_PREFIX@\python.exe" -m openage
