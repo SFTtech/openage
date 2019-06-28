@@ -1,4 +1,4 @@
-# Reference
+# engine.aux
 
 Reference documentation of the `engine.aux` module of the openage modding API.
 
@@ -1547,8 +1547,8 @@ AoE2TradeRoute(Entity):
 
 Uses Age of Empires 2 rules for trading. The trading game entity chooses the nearest possible `end_trade_post` from the `start_trade_post`. Calculation of the traded resource amount is based on this formula:
 
-```
-trade_amount = 0.46 * tiles_distance * ((tiles_distance / map_size) + 0.3)
+```math
+trade\_amount = 0.46 \cdot tiles\_distance \cdot ((tiles\_distance / map\_size) + 0.3)
 ```
 
 ## aux.translated.TranslatedObject
