@@ -6,15 +6,15 @@ Age of Empires II.
 
 See https://openage.sft.mx and http://github.com/sfttech/openage.
 
-Requires Python 3.4.
+Requires Python 3.6.
 """
 
 from sys import version_info as py_version
 
 from .log import setup_logging
 
-if py_version < (3, 4):
-    raise Exception("openage requires python 3.4 or higher.")
+if py_version < (3, 6):
+    raise Exception("openage requires python 3.6 or higher.")
 
 
 try:

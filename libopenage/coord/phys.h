@@ -1,8 +1,9 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include "../util/misc.h"
+#include "../util/hash.h"
 
 #include "declarations.h"
 #include "coord_nese.gen.h"
@@ -74,11 +75,11 @@ namespace std {
 template<>
 struct hash<openage::coord::phys3> {
 	size_t operator ()(const openage::coord::phys3 &pos) const {
-		return (
-			openage::util::rol<size_t, 2>(hash<openage::coord::phys_t>{}(pos.ne)) ^
-			openage::util::rol<size_t, 1>(hash<openage::coord::phys_t>{}(pos.se)) ^
-			                              hash<openage::coord::phys_t>{}(pos.up)
-		);
+		size_t hash = openage::util::type_hash<openage::coord::phys3>();
+		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(pos.ne));
+		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(pos.se));
+		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(pos.up));
+		return hash;
 	}
 };
 

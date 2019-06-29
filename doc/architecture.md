@@ -59,7 +59,8 @@ input -> simulation -> renderer -> output
 6 output
 ```
 
-This means that we will have a single authoritative server that is just running
+For *singleplayer* we could bypass `1 network` and `3 network` by using direct function calls or talk to a local socket.
+For *multiplayer* this means that we will have a single authoritative server that is just running
 the simulation. Each client then receives the data visible for it.
 
 The current architecture can be extended by adding the missing components in

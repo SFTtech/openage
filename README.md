@@ -1,7 +1,7 @@
 [![openage](/assets/logo/banner.png)](http://openage.sft.mx)
 ============================================================
 
-**openage**: a volunteer project to create a free engine clone of the *Genie Engine* used by *Age of Empires*, *Age of Empires II (HD)* and *Star Wars: Galactic Battlegrounds*, comparable to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/), [OpenTTD](https://openttd.org/) and [OpenRCT2](https://openrct2.org/). At the moment we focus our efforts on the integration of *Age of Empires II*, while being primarily aimed at POSIX platforms such as **GNU/Linux**.
+**openage**: a volunteer project to create a free engine clone of the *Genie Engine* used by *Age of Empires*, *Age of Empires II (HD)* and *Star Wars: Galactic Battlegrounds*, comparable to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/),  [OpenSAGE](https://github.com/OpenSAGE/OpenSAGE/), [OpenTTD](https://openttd.org/) and [OpenRCT2](https://openrct2.org/). At the moment we focus our efforts on the integration of *Age of Empires II*, while being primarily aimed at POSIX platforms such as **GNU/Linux**.
 
 openage uses the original game assets (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
 To play, you require *an original AoE II : TC installation or [AoE II: HD](http://store.steampowered.com/app/221380/)*
@@ -69,6 +69,17 @@ Current State of the Project
    - See [doc/milestones.md](/doc/milestones.md). We also have [lists of crazy xor good ideas](/doc/ideas) and a [technical overview for requested features](/doc/ideas/fr_technical_overview.md). 
 
 
+Packaging
+---------
+
+**Supported Platforms:** Linux, Windows 10 (x64)
+ 
+  - For Linux check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available.
+  - For Windows check our [release page](https://github.com/SFTtech/openage/releases) for the latest installer.
+
+__NOTE:__ If you have any problems starting conversion or starting *openage* take a look into our [troubleshooting guide](/doc/troubleshooting.md).
+
+
 Dependencies, Building and Running
 ----------------------------------
 
@@ -118,14 +129,6 @@ Running openage on macOS worked in the past,
 and might or might not work right now.
 
 Setting up continuous integration for this platform has some complications. Running a hackintosh VM seems to be not so legal, while buying dedicated hardware for it seems to be not so cheap. If you know of a legal and cost-free way of doing so or want to sponsor a semi-recent Mac Mini, please open a ticket in our issue tracker. Until then, PRs untested on macOS will make their way into the master branch and occasional breakage will occur.
-
-
-Windows Version
----------------
-
-The Windows port of openage is under development.
-
-Setting up continuous integration for this platform has problems similar to the OSX version. If you know of a legal and cost-free way of acquiring and running a Windows VM, please open a ticket in our issue tracker. Until then, PRs untested on Windows will make their way into the master branch and occasional breakage will occur.
 
 
 Contributing

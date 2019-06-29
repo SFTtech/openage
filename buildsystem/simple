@@ -12,8 +12,8 @@
 # this script was written by carefully looking at the output of make VERBOSE=1.
 # if you add libraries/etc to the project, please update this script accordingly (and test it).
 
-PYVER=3.4m
-PYVERDOTLESS=34m
+PYVER=3.6m
+PYVERDOTLESS=36m
 shopt -s globstar
 
 function run() {

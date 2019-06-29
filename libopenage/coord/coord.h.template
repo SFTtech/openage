@@ -1,4 +1,4 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -46,12 +46,8 @@ struct Coord{{ camelcase }}Absolute {
 	constexpr Coord{{ camelcase }}Absolute({{ formatted_members("const CoordType &{}") }}) : {{ formatted_members("{0}{{{0}}}") }} {}
 
 	// copy constructor + assignment operator
-	constexpr Coord{{ camelcase }}Absolute(const Coord{{ camelcase }}Absolute &other) : {{ formatted_members("{0}{{other.{0}}}") }} {}
-	constexpr Coord{{ camelcase }}Absolute &operator =(const Coord{{ camelcase }}Absolute &other) {
-		{{ formatted_members("this->{0} = other.{0};", join_with="\n\t\t") }}
-
-		return *this;
-	}
+	constexpr Coord{{ camelcase }}Absolute(const Coord{{ camelcase }}Absolute &other) = default;
+	constexpr Coord{{ camelcase }}Absolute &operator =(const Coord{{ camelcase }}Absolute &other) = default;
 
 	constexpr Absolute operator +(const Relative &other) const {
 		return Absolute({{ formatted_members("this->{0} + other.{0}") }});
@@ -110,12 +106,8 @@ struct Coord{{ camelcase }}Relative {
 	constexpr Coord{{ camelcase }}Relative({{ formatted_members("const CoordType &{}") }}) : {{ formatted_members("{0}{{{0}}}") }} {}
 
 	// copy constructor and assignment operator
-	constexpr Coord{{ camelcase }}Relative(const Relative &other) : {{ formatted_members("{0}{{other.{0}}}") }} {}
-	constexpr Coord{{ camelcase }}Relative &operator =(const Relative &other) {
-		{{ formatted_members("this->{0} = other.{0};", join_with="\n\t\t") }}
-
-		return *this;
-	}
+	constexpr Coord{{ camelcase }}Relative(const Coord{{ camelcase }}Relative &other) = default;
+	constexpr Coord{{ camelcase }}Relative &operator =(const Coord{{ camelcase }}Relative &other) = default;
 
 	constexpr Relative operator +() const {
 		return Relative({{ formatted_members("+this->{}") }});
