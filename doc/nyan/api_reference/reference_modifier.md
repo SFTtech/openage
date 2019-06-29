@@ -1,4 +1,4 @@
-# Reference
+# engine.modifier
 
 Reference documentation of the `engine.modifier` module of the openage modding API.
 
@@ -362,8 +362,8 @@ AoE2ProjectileAmount(Modifier):
 
 Compares the raw change value of two sets of `ApplyDiscreteEffect` abilities. The final amount is calculated by using this formula:
 
-```
-amount = (change_value_provider / reload_time_provider) / change_value_receiver
+```math
+amount = (change\_value\_provider / reload\_time\_provider) / change\_value\_receiver
 ```
 
 **provider_abilities**

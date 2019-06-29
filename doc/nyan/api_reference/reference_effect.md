@@ -1,4 +1,4 @@
-# Reference
+# engine.effect
 
 Reference documentation of the `engine.effect` module of the openage modding API.
 
@@ -60,7 +60,7 @@ The applied change rate can never go higher than the specified rate. Does not ha
 The gross per-second rate at which the attribute points of the resistor change. The net change rate (applied rate) is calculated by subtracting the effector's `change_rate` from the resistor's `block_rate`.
 
 ```math
-applied_rate = change_rate - block_rate
+applied\_rate = change\_rate - block\_rate
 ```
 
 The applied rate is further bound by the interval defined by `min_change_rate` and `max_change_rate`, if these members are set.
@@ -116,8 +116,8 @@ TimeRelativeAttributeChange(ContinuousEffect):
 
 Generalization object for effects that change the resistor's current attribute values at a  per-second rate relative to the `max_value` of their attribute settings. The change rate is scaled such that it would increase the attribute points of the resistor from 0 to `max_value` (or decrease them from `max_value` to 0, respectively) in a fixed amount of time. The current attribute points are not considered. Calculating the change rate can be done by using this formula:
 
-```
-applied_rate = resistor_max_value / total_change_time
+```math
+applied\_rate = resistor\_max\_value / total\_change\_time
 ```
 
 *Example*: Consider a resistor with 50 maximum HP and an effector with a `TimeRelativeAttributeDecrease` time of 5 seconds. The per-second change rate is calculated by dividing the maximum HP value by the time requirement of the effect. Hence, the change rate is 10HP/s. This rate is fix as long as the maximum HP value does not change. If the resistor currently has 30 HP, it would arrive at 0 HP in 3 seconds.
@@ -157,8 +157,8 @@ TimeRelativeProgress(ContinuousEffect):
 
 Generalization object for effects that changes a resistor's current progress amount at a per-second rate relative to 100%. The change rate is scaled such that it would increase the specified progress amount of the resistor from 0% to 100% (or decrease it from 100% to 0%, respectively) in a fixed amount of time. The current progress amount is not considered. Calculating the change rate can be done by using this formula:
 
-```
-applied_rate = 100 / total_change_time
+```math
+applied\_rate = 100 / total\_change\_time
 ```
 
 *Example*: Consider a constructable resistor and an effector with a `TimeRelativeProgressIncrease` time of 10 seconds. The per-second change rate is calculated by dividing 100% by the time requirement of the effect. Hence, the change rate is 10%/s. This rate is fix. If the resistor currently has 30% construction progress, it would be constructed in 7 seconds.
@@ -219,7 +219,7 @@ The applied chance can never go higher than the specified percentage. Does not h
 Gross chance for the conversion to succeed as a percentage chance. The percentage should be stored as a float value between *0.0* and *1.0*. The net chance (applied chance) of success is calculated by subtracting the effector's `chance_success` from the resistor's `chance_resist`.
 
 ```math
-applied_chance = chance_success - chance_resist
+applied\_chance = chance\_success - chance\_resist
 ```
 
 Any value below *0.0* is an automatic fail, while any value above *1.0* is an automatic success. The applied chance is further bound by the interval defined by `min_chance_success` and `max_chance_success`, if these members are set.
@@ -273,7 +273,7 @@ The applied change value can never go higher than the specified amount. Does not
 The gross amount by that the attribute points of the resistor change. The net change value (applied value) is calculated by subtracting the effector's `change_value` from the resistor's `block_value`.
 
 ```math
-applied_value = change_value - block_value
+applied\_value = change\_value - block\_value
 ```
 
 The applied rate is further bound by the interval defined by `min_change_value` and `max_change_value`, if these members are set.
