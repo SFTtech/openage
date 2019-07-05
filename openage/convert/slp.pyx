@@ -96,7 +96,7 @@ class SLP:
         dbg("SLP")
         dbg(" version:     %s", version.decode('ascii'))
         dbg(" frame count: %s", frame_count)
-        dbg(" comment:     %s", comment.decode('ascii'))
+        dbg(" comment:     %s", comment)   # comment.decode('ascii')
 
         self.frames = list()
 
@@ -545,6 +545,11 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     """
     converts a palette index image matrix to an rgba matrix.
     """
+    if not palette:
+        # assume image is 32-bit if no palette
+        # is provided.
+        return image_matrix
+
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 

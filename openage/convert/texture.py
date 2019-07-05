@@ -107,8 +107,6 @@ class Texture(exportable.Exportable):
         from .slp import SLP
 
         if isinstance(input_data, SLP):
-            if palette is None:
-                raise Exception("palette needed for SLP -> texture generation")
 
             frames = []
 

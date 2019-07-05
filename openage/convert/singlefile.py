@@ -19,17 +19,19 @@ def init_subparser(cli):
 
     cli.set_defaults(entrypoint=main)
 
-    cli.add_argument("--palette", default="50500", help="palette number")
+    cli.add_argument("--palette", help=("palette number"
+                                        "If not set, the SLP is assumed to "
+                                        "support 32-Bit RGBA mode"))
     cli.add_argument("--interfac", type=argparse.FileType('rb'),
                      help=("drs archive where palette "
                            "is contained (interfac.drs). "
                            "If not set, assumed to be in same "
                            "directory as the source drs archive"))
-    cli.add_argument("drs", type=argparse.FileType('rb'),
-                     help=("drs archive filename that contains the slp "
+    cli.add_argument("--drs", type=argparse.FileType('rb'),
+                     help=("drs archive filename that contains an slp "
                            "e.g. path ~/games/aoe/graphics.drs"))
-    cli.add_argument("slp", help=("slp filename inside the drs archive "
-                                  "e.g. 326.slp"))
+    cli.add_argument("slp", help=("slp filename "
+                                  "e.g. path ~/games/aoe/326.slp"))
     cli.add_argument("output", help="image output path name")
 
 
@@ -37,20 +39,46 @@ def main(args, error):
     """ CLI entry point for single file conversions """
     del error  # unused
 
-    drspath = Path(args.drs.name)
+    slppath = Path(args.slp)
     outputpath = Path(args.output)
 
-    if args.interfac:
-        interfacfile = args.interfac
-    else:
-        # if no interfac was given, assume
-        # the same path of the drs archive.
-
-        interfacfile = drspath.with_name("interfac.drs").open("rb")  # pylint: disable=no-member
-
     # here, try opening slps from interfac or whereever
-    info("opening slp in drs '%s:%s'...", drspath, args.slp)
-    slpfile = DRS(args.drs).root[args.slp].open("rb")
+    if args.drs:
+        drspath = Path(args.drs.name)
+
+        # open from drs archive
+        info("opening slp in drs '%s:%s'...", drspath, args.slp)
+        slpfile = DRS(args.drs).root[args.slp].open("rb")
+
+    else:
+        # open directly from unpacked slp
+
+        slpfile = slppath.open("rb")
+
+    # open palette from interfac.drs file
+    if args.palette:
+        if args.interfac:
+            interfacfile = args.interfac
+
+        elif args.drs:
+            # if no interfac was given, but a drs, assume
+            # the same path of the drs archive.
+            drspath = Path(args.drs.name)
+
+            interfacfile = drspath.with_name("interfac.drs").open("rb")  # pylint: disable=no-member
+
+        else:
+            # otherwise use the path of the slp.
+
+            interfacfile = slppath.with_name("interfac.drs").open("rb")  # pylint: disable=no-member
+
+        # open palette
+        info("opening palette in drs '%s:%s.bina'...", interfacfile.name, args.palette)
+        palettefile = DRS(interfacfile).root["%s.bina" % args.palette].open("rb")
+
+        info("parsing palette data...")
+        palette = ColorTable(palettefile.read())
+
 
     # import here to prevent that the __main__ depends on SLP
     # just by importing this singlefile.py.
@@ -60,16 +88,9 @@ def main(args, error):
     info("parsing slp image...")
     slpimage = SLP(slpfile.read())
 
-    # open color palette
-    info("opening palette in drs '%s:%s.bina'...", interfacfile.name, args.palette)
-    palettefile = DRS(interfacfile).root["%s.bina" % args.palette].open("rb")
-
-    info("parsing palette data...")
-    palette = ColorTable(palettefile.read())
-
     # create texture
     info("packing texture...")
-    tex = Texture(slpimage, palette)
+    tex = Texture(slpimage, args.palette)
 
     # to save as png:
     tex.save(Directory(outputpath.parent).root, outputpath.name)
