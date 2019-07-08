@@ -72,10 +72,26 @@ class SLP:
 
     # struct slp_header {
     #   char version[4];
+    # };
+    slp_version = Struct(endianness + "4s")
+
+    # struct slp_header {
     #   int frame_count;
     #   char comment[24];
     # };
-    slp_header = Struct(endianness + "4s i 24s")
+    slp_header = Struct(endianness + "i 24s")
+
+    # struct slp_header_4_0_X {
+    #   int frame_count;
+    #   unsigned short frame_count_2;
+    #   unsigned short frame_count_alt;
+    #   int ??;
+    #   int offset_main;
+    #   int offset_shadow;
+    #   int ??;
+    #   int ??;
+    # };
+    slp_header_4_0_X = Struct(endianness + "i H H i i i i i")
 
     # struct slp_frame_info {
     #   unsigned int qdl_table_offset;
@@ -90,13 +106,27 @@ class SLP:
     slp_frame_info = Struct(endianness + "I I I I i i i i")
 
     def __init__(self, data):
-        header = SLP.slp_header.unpack_from(data)
-        version, frame_count, comment = header
+        version = SLP.slp_version.unpack_from(data)[0]
 
-        dbg("SLP")
-        dbg(" version:     %s", version.decode('ascii'))
-        dbg(" frame count: %s", frame_count)
-        dbg(" comment:     %s", comment)   # comment.decode('ascii')
+        if version == b'4.0X':
+            header = SLP.slp_header_4_0_X.unpack_from(data, SLP.slp_version.size)
+            # TODO: Fill in blanks
+            frame_count, _, _, _, offset_main, offset_shadow, _, _ = header
+
+            dbg("SLP")
+            dbg(" version:               %s", version.decode('ascii'))
+            dbg(" frame count:           %s", frame_count)
+            dbg(" offset main graphic:   %s", offset_main)
+            dbg(" offset shadow graphic: %s", offset_shadow)
+
+        else:
+            header = SLP.slp_header.unpack_from(data, SLP.slp_version.size)
+            frame_count, comment = header
+
+            dbg("SLP")
+            dbg(" version:     %s", version.decode('ascii'))
+            dbg(" frame count: %s", frame_count)
+            dbg(" comment:     %s", comment.decode('ascii'))
 
         self.frames = list()
 
@@ -104,7 +134,8 @@ class SLP:
 
         # read all slp_frame_info structs
         for i in range(frame_count):
-            frame_header_offset = (SLP.slp_header.size +
+            frame_header_offset = (SLP.slp_version.size +
+                                   SLP.slp_header.size +
                                    i * SLP.slp_frame_info.size)
 
             frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(
@@ -112,6 +143,19 @@ class SLP:
             ))
             spam(frame_info)
             self.frames.append(SLPFrame(frame_info, data))
+
+        if version == b'4.0X':
+            # 4.0X SLPs contain a shadow SLP inside them
+            # read all slp_frame_info of shadow
+            for i in range(frame_count):
+                frame_header_offset = (offset_second_slp +
+                                       i * SLP.slp_frame_info.size)
+
+                frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(
+                    data, frame_header_offset
+                    ))
+                spam(frame_info)
+                self.frames.append(SLPFrame(frame_info, data))
 
     def __str__(self):
         ret = list()
@@ -293,7 +337,6 @@ cdef class SLPFrame:
         cdef uint8_t nextbyte
         cdef uint8_t lower_nibble
         cdef uint8_t higher_nibble
-        cdef uint8_t lower_bits
         cdef cmd_pack cpack
         cdef int pixel_count
 
@@ -312,16 +355,15 @@ cdef class SLPFrame:
 
             lower_nibble = 0x0f & cmd
             higher_nibble = 0xf0 & cmd
-            lower_bits = 0b00000011 & cmd
 
             # opcode: cmd, rowid: rowid
 
-            if lower_nibble == 0x0f:
+            if lower_nibble == 0x0F:
                 # eol (end of line) command, this row is finished now.
                 eor = True
                 continue
 
-            elif lower_bits == 0b00000000:
+            elif lower_nibble == 0x00:
                 # color_list command
                 # draw the following bytes as palette colors
 
@@ -331,7 +373,7 @@ cdef class SLPFrame:
                     color = self.get_byte_at(dpos)
                     row_data.push_back(pixel(color_standard, color))
 
-            elif lower_bits == 0b00000001:
+            elif lower_nibble == 0x01:
                 # skip command
                 # draw 'count' transparent pixels
                 # count = cmd >> 2; if count == 0: count = nextbyte
@@ -366,6 +408,26 @@ cdef class SLPFrame:
                 for _ in range(pixel_count):
                     row_data.push_back(pixel(color_transparent, 0))
 
+            elif lower_nibble == 0x04:
+                # color_list command
+                # draw the following bytes as palette colors
+
+                pixel_count = cmd >> 2
+                for _ in range(pixel_count):
+                    dpos += 1
+                    color = self.get_byte_at(dpos)
+                    row_data.push_back(pixel(color_standard, color))
+
+            elif lower_nibble == 0x05:
+                # skip command
+                # draw 'count' transparent pixels
+                # count = cmd >> 2; if count == 0: count = nextbyte
+
+                cpack = self.cmd_or_next(cmd, 2, dpos)
+                dpos = cpack.dpos
+                for _ in range(cpack.count):
+                    row_data.push_back(pixel(color_transparent, 0))
+
             elif lower_nibble == 0x06:
                 # player_color_list command
                 # we have to draw the player color for cmd>>4 times,
@@ -395,6 +457,26 @@ cdef class SLPFrame:
                 for _ in range(cpack.count):
                     row_data.push_back(pixel(color_standard, color))
 
+            elif lower_nibble == 0x08:
+                # color_list command
+                # draw the following bytes as palette colors
+
+                pixel_count = cmd >> 2
+                for _ in range(pixel_count):
+                    dpos += 1
+                    color = self.get_byte_at(dpos)
+                    row_data.push_back(pixel(color_standard, color))
+
+            elif lower_nibble == 0x09:
+                # skip command
+                # draw 'count' transparent pixels
+                # count = cmd >> 2; if count == 0: count = nextbyte
+
+                cpack = self.cmd_or_next(cmd, 2, dpos)
+                dpos = cpack.dpos
+                for _ in range(cpack.count):
+                    row_data.push_back(pixel(color_transparent, 0))
+
             elif lower_nibble == 0x0A:
                 # fill player color command
                 # draw the player color for 'count' times
@@ -422,6 +504,26 @@ cdef class SLPFrame:
 
                 for _ in range(cpack.count):
                     row_data.push_back(pixel(color_shadow, 0))
+
+            elif lower_nibble == 0x0C:
+                # color_list command
+                # draw the following bytes as palette colors
+
+                pixel_count = cmd >> 2
+                for _ in range(pixel_count):
+                    dpos += 1
+                    color = self.get_byte_at(dpos)
+                    row_data.push_back(pixel(color_standard, color))
+
+            elif lower_nibble == 0x0D:
+                # skip command
+                # draw 'count' transparent pixels
+                # count = cmd >> 2; if count == 0: count = nextbyte
+
+                cpack = self.cmd_or_next(cmd, 2, dpos)
+                dpos = cpack.dpos
+                for _ in range(cpack.count):
+                    row_data.push_back(pixel(color_transparent, 0))
 
             elif lower_nibble == 0x0E:
                 # "extended" commands. higher nibble specifies the instruction.
@@ -545,10 +647,6 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     """
     converts a palette index image matrix to an rgba matrix.
     """
-    if not palette:
-        # assume image is 32-bit if no palette
-        # is provided.
-        return image_matrix
 
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()

@@ -5,7 +5,7 @@ Constants for texture generation.
 """
 
 # The maximum allowed texture dimension.
-MAX_TEXTURE_DIMENSION = 8194
+MAX_TEXTURE_DIMENSION = 32768
 
 # Margin between subtextures in atlas to avoid texture bleeding.
 MARGIN = 1

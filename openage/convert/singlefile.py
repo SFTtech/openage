@@ -19,9 +19,10 @@ def init_subparser(cli):
 
     cli.set_defaults(entrypoint=main)
 
-    cli.add_argument("--palette", help=("palette number"
-                                        "If not set, the SLP is assumed to "
-                                        "support 32-Bit RGBA mode"))
+    cli.add_argument("--palette", help="palette number in interfac.drs")
+    cli.add_argument("--palette-file", type=argparse.FileType('rb'),
+                     help=("palette file where the palette"
+                           "colors are contained"))
     cli.add_argument("--interfac", type=argparse.FileType('rb'),
                      help=("drs archive where palette "
                            "is contained (interfac.drs). "
@@ -67,14 +68,30 @@ def main(args, error):
 
             interfacfile = drspath.with_name("interfac.drs").open("rb")  # pylint: disable=no-member
 
+            # open palette
+            info("opening palette in drs '%s:%s.bina'...", interfacfile.name, args.palette)
+            palettefile = DRS(interfacfile).root["%s.bina" % args.palette].open("rb")
+
+            info("parsing palette data...")
+            palette = ColorTable(palettefile.read())
+
         else:
             # otherwise use the path of the slp.
 
             interfacfile = slppath.with_name("interfac.drs").open("rb")  # pylint: disable=no-member
 
-        # open palette
-        info("opening palette in drs '%s:%s.bina'...", interfacfile.name, args.palette)
-        palettefile = DRS(interfacfile).root["%s.bina" % args.palette].open("rb")
+            # open palette
+            info("opening palette in drs '%s:%s.bina'...", interfacfile.name, args.palette)
+            palettefile = DRS(interfacfile).root["%s.bina" % args.palette].open("rb")
+
+            info("parsing palette data...")
+            palette = ColorTable(palettefile.read())
+
+    # open palette from independent file
+    elif args.palette_file:
+        palettepath = Path(args.palette_file.name)
+        info("opening palette in palette file '%s'", args.palette_file.name)
+        palettefile = palettepath.open("rb")
 
         info("parsing palette data...")
         palette = ColorTable(palettefile.read())
@@ -90,7 +107,7 @@ def main(args, error):
 
     # create texture
     info("packing texture...")
-    tex = Texture(slpimage, args.palette)
+    tex = Texture(slpimage, palette)
 
     # to save as png:
     tex.save(Directory(outputpath.parent).root, outputpath.name)
