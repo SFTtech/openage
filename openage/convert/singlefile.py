@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Convert a single slp file from some drs archive to a png image.
@@ -19,7 +19,7 @@ def init_subparser(cli):
 
     cli.set_defaults(entrypoint=main)
 
-    cli.add_argument("--palette", help="palette number in interfac.drs")
+    cli.add_argument("--palette-index", help="palette number in interfac.drs")
     cli.add_argument("--palette-file", type=argparse.FileType('rb'),
                      help=("palette file where the palette"
                            "colors are contained"))
@@ -57,7 +57,7 @@ def main(args, error):
         slpfile = slppath.open("rb")
 
     # open palette from interfac.drs file
-    if args.palette:
+    if args.palette_index:
         if args.interfac:
             interfacfile = args.interfac
 

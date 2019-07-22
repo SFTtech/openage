@@ -133,9 +133,9 @@ class UnitHeader(Exportable):
 
 # Only used in SWGB
 class UnitLine(Exportable):
-    name_struct        = "unit_header"
-    name_struct_file   = "unit"
-    struct_description = "stores a bunch of unit commands."
+    name_struct        = "unit_line"
+    name_struct_file   = "unit_lines"
+    struct_description = "stores a bunch of units in SWGB."
 
     data_format = [
         (READ, "name_length", "uint16_t"),

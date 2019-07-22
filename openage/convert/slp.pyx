@@ -1,4 +1,4 @@
-# Copyright 2013-2018 the openage authors. See copying.md for legal info.
+# Copyright 2013-2019 the openage authors. See copying.md for legal info.
 #
 # cython: profile=False
 
@@ -70,7 +70,7 @@ class SLP:
     This format is used to store all graphics within AOE.
     """
 
-    # struct slp_header {
+    # struct slp_version {
     #   char version[4];
     # };
     slp_version = Struct(endianness + "4s")
