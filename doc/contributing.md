@@ -86,6 +86,7 @@ For tiny stuff like typo fixes, just create your PR and be done with it.
 
 - "Release early and often!" also applies to pull requests!
   - Once your branch has some visible work, create `[WIP]` pull request
+  - Give the pull request a description of what you did or want to do, so we can discuss it
   - Make sure you are in the `copying.md` file
   - People will be able to look at your code and give feedback
   - You'll get free checks from the build bot
