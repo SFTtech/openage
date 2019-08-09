@@ -248,9 +248,9 @@ Blacklist for specific game entities that would be covered by `allowed_types`, b
 
 ```python
 Despawn(Ability):
-    despawn_condition : set(DespawnCondition)
-    despawn_time      : float
-    state_change      : StateChanger
+    despawn_conditions : set(DespawnCondition)
+    despawn_time       : float
+    state_change       : StateChanger
 ```
 
 Second stage of a "clean exit" that removes the game entity from the current game. The ability is can be used when a `Die` ability was executed by the same game entity or if the game entity has no `Die` ability. `Despawn` is triggered if at least one of the conditions in `despawn_conditions` is fulfilled. There can only be one `Despawn` ability active at the same time. If more than one `Despawn` abilities are enabled, the least recently enabled one of them is used.

@@ -2236,10 +2236,10 @@
       /><text x="2" font-size="14px" y="34.2188" clip-path="url(#clipPath60)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
       >ContinuousResistance</text
     ></g
-    ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(4910,3660)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
+    ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(4900,3810)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
     ><rect x="0.5" width="158.5" height="78.5" y="0.5" clip-path="url(#clipPath48)" stroke="none"
     /></g
-    ><g transform="translate(4910,3660)"
+    ><g transform="translate(4900,3810)"
     ><rect fill="none" x="0.5" width="158.5" height="78.5" y="0.5" clip-path="url(#clipPath48)"
       /><text x="25" font-size="14px" y="18.1094" clip-path="url(#clipPath48)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
       >AttributeRate</text
@@ -2455,10 +2455,10 @@
       /><text x="4" font-size="14px" y="34.2188" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
       >GameEntityType</text
     ></g
-    ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(4910,3570)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
+    ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(4900,3720)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
     ><rect x="0.5" width="158.5" height="78.5" y="0.5" clip-path="url(#clipPath48)" stroke="none"
     /></g
-    ><g transform="translate(4910,3570)"
+    ><g transform="translate(4900,3720)"
     ><rect fill="none" x="0.5" width="158.5" height="78.5" y="0.5" clip-path="url(#clipPath48)"
       /><text x="13" font-size="14px" y="18.1094" clip-path="url(#clipPath48)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
       >AttributeAmount</text
@@ -2888,9 +2888,9 @@
       ><text x="5" font-size="14px" y="87.5469" clip-path="url(#clipPath75)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >restock_time : float</text
       ><text x="5" font-size="14px" y="103.6562" clip-path="url(#clipPath75)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >manual_cost : set(ResourceAmount)</text
+      >manual_cost : Cost</text
       ><text x="5" font-size="14px" y="119.7656" clip-path="url(#clipPath75)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >auto_cost : set(ResourceAmount)</text
+      >auto_cost : Cost</text
       ><text x="5" font-size="14px" y="135.875" clip-path="url(#clipPath75)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >amount : int</text
     ></g
@@ -3792,37 +3792,37 @@
       >Despawn</text
       ><path fill="none" d="M1 40.2188 L329 40.2188" clip-path="url(#clipPath78)"
       /><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath78)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >despawn_condition : set(DespawnCondition)</text
+      >despawn_conditions : set(DespawnCondition)</text
       ><text x="5" font-size="14px" y="71.4375" clip-path="url(#clipPath78)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >despawn_time : float</text
       ><text x="5" font-size="14px" y="87.5469" clip-path="url(#clipPath78)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >state_change : StateChanger</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(3300,2010)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
-    ><rect x="0.5" width="198.5" height="78.5" y="0.5" clip-path="url(#clipPath46)" stroke="none"
+    ><rect x="0.5" width="258.5" height="98.5" y="0.5" clip-path="url(#clipPath40)" stroke="none"
     /></g
     ><g transform="translate(3300,2010)"
-    ><rect fill="none" x="0.5" width="198.5" height="78.5" y="0.5" clip-path="url(#clipPath46)"
-      /><text x="77" font-size="14px" y="18.1094" clip-path="url(#clipPath46)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+    ><rect fill="none" x="0.5" width="258.5" height="98.5" y="0.5" clip-path="url(#clipPath40)"
+      /><text x="107" font-size="14px" y="18.1094" clip-path="url(#clipPath40)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
       >Taunt</text
-      ><path fill="none" d="M1 40.2188 L199 40.2188" clip-path="url(#clipPath46)"
-      /><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath46)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><path fill="none" d="M1 40.2188 L259 40.2188" clip-path="url(#clipPath40)"
+      /><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath40)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >activation_message : text</text
-      ><text x="5" font-size="14px" y="71.4375" clip-path="url(#clipPath46)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><text x="5" font-size="14px" y="71.4375" clip-path="url(#clipPath40)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >display_message : TranslatedString</text
-      ><text x="5" font-size="14px" y="87.5469" clip-path="url(#clipPath46)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><text x="5" font-size="14px" y="87.5469" clip-path="url(#clipPath40)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >sound : Sound</text
     ></g
-    ><g fill="rgb(0,255,0)" fill-opacity="0.4902" transform="translate(5150,3460)" stroke-opacity="0.4902" stroke="rgb(0,255,0)"
-    ><rect x="0.5" width="198.5" height="78.5" y="0.5" clip-path="url(#clipPath46)" stroke="none"
+    ><g fill="rgb(0,255,0)" fill-opacity="0.4902" transform="translate(5130,3460)" stroke-opacity="0.4902" stroke="rgb(0,255,0)"
+    ><rect x="0.5" width="238.5" height="78.5" y="0.5" clip-path="url(#clipPath9)" stroke="none"
     /></g
-    ><g transform="translate(5150,3460)"
-    ><rect fill="none" x="0.5" width="198.5" height="78.5" y="0.5" clip-path="url(#clipPath46)"
-      /><text x="83" font-size="14px" y="18.1094" clip-path="url(#clipPath46)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+    ><g transform="translate(5130,3460)"
+    ><rect fill="none" x="0.5" width="238.5" height="78.5" y="0.5" clip-path="url(#clipPath9)"
+      /><text x="103" font-size="14px" y="18.1094" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
       >Live</text
-      ><path fill="none" d="M1 40.2188 L199 40.2188" clip-path="url(#clipPath46)"
-      /><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath46)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >attributes : set(Attribute)</text
+      ><path fill="none" d="M1 40.2188 L239 40.2188" clip-path="url(#clipPath9)"
+      /><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      >attributes : set(AttributeSetting)</text
     ></g
     ><g fill="rgb(0,255,0)" fill-opacity="0.4902" transform="translate(4830,1780)" stroke-opacity="0.4902" stroke="rgb(0,255,0)"
     ><rect x="0.5" width="218.5" height="78.5" y="0.5" clip-path="url(#clipPath20)" stroke="none"
@@ -5204,7 +5204,7 @@
     ><g transform="translate(5240,2450)"
     ><path fill="none" d="M10.5 10.5 L10.5 1010.5" clip-path="url(#clipPath136)"
     /></g
-    ><g stroke-dasharray="8,5" stroke-miterlimit="5" transform="translate(5060,3670)" stroke-linecap="butt"
+    ><g stroke-dasharray="8,5" stroke-miterlimit="5" transform="translate(5050,3820)" stroke-linecap="butt"
     ><path fill="none" d="M80.5 10.5 L10.5 10.5" clip-path="url(#clipPath116)"
       /><path fill="none" stroke-miterlimit="10" stroke-dasharray="none" d="M69.2417 4 L80.5 10.5 L69.2417 17" clip-path="url(#clipPath116)" stroke-linecap="square"
     /></g
@@ -5629,7 +5629,7 @@
     ><path fill="none" d="M50.5 10.5 L10.5 10.5" clip-path="url(#clipPath100)"
       /><path fill="none" stroke-miterlimit="10" stroke-dasharray="none" d="M39.2417 4 L50.5 10.5 L39.2417 17" clip-path="url(#clipPath100)" stroke-linecap="square"
     /></g
-    ><g stroke-dasharray="8,5" stroke-miterlimit="5" transform="translate(5060,3620)" stroke-linecap="butt"
+    ><g stroke-dasharray="8,5" stroke-miterlimit="5" transform="translate(5050,3770)" stroke-linecap="butt"
     ><path fill="none" d="M80.5 10.5 L10.5 10.5" clip-path="url(#clipPath116)"
       /><path fill="none" stroke-miterlimit="10" stroke-dasharray="none" d="M69.2417 4 L80.5 10.5 L69.2417 17" clip-path="url(#clipPath116)" stroke-linecap="square"
     /></g

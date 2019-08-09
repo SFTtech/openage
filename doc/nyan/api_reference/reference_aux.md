@@ -1611,7 +1611,7 @@ The changes to the game entity as a set of patches. Only the created game entity
 **priority**
 When many variants are chosen, this member influences the order in which the patches from their `changes` member are applied. Patches from variants with higher priority value are applied first.
 
-## aux.variant.type.AdjacencyVariant
+## aux.variant.type.AdjacentTilesVariant
 
 ```python
 AdjacentTilesVariant(Variant):
