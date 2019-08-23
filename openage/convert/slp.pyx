@@ -148,7 +148,7 @@ class SLP:
             # 4.0X SLPs contain a shadow SLP inside them
             # read all slp_frame_info of shadow
             for i in range(frame_count):
-                frame_header_offset = (offset_second_slp +
+                frame_header_offset = (offset_shadow +
                                        i * SLP.slp_frame_info.size)
 
                 frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(
@@ -337,6 +337,7 @@ cdef class SLPFrame:
         cdef uint8_t nextbyte
         cdef uint8_t lower_nibble
         cdef uint8_t higher_nibble
+        cdef uint8_t lowest_crumb
         cdef cmd_pack cpack
         cdef int pixel_count
 
@@ -355,6 +356,7 @@ cdef class SLPFrame:
 
             lower_nibble = 0x0f & cmd
             higher_nibble = 0xf0 & cmd
+            lowest_crumb = 0b00000011 & cmd
 
             # opcode: cmd, rowid: rowid
 
@@ -363,7 +365,7 @@ cdef class SLPFrame:
                 eor = True
                 continue
 
-            elif lower_nibble == 0x00:
+            elif lowest_crumb == 0b00000000:
                 # color_list command
                 # draw the following bytes as palette colors
 
@@ -373,7 +375,7 @@ cdef class SLPFrame:
                     color = self.get_byte_at(dpos)
                     row_data.push_back(pixel(color_standard, color))
 
-            elif lower_nibble == 0x01:
+            elif lowest_crumb == 0b00000001:
                 # skip command
                 # draw 'count' transparent pixels
                 # count = cmd >> 2; if count == 0: count = nextbyte
@@ -408,26 +410,6 @@ cdef class SLPFrame:
                 for _ in range(pixel_count):
                     row_data.push_back(pixel(color_transparent, 0))
 
-            elif lower_nibble == 0x04:
-                # color_list command
-                # draw the following bytes as palette colors
-
-                pixel_count = cmd >> 2
-                for _ in range(pixel_count):
-                    dpos += 1
-                    color = self.get_byte_at(dpos)
-                    row_data.push_back(pixel(color_standard, color))
-
-            elif lower_nibble == 0x05:
-                # skip command
-                # draw 'count' transparent pixels
-                # count = cmd >> 2; if count == 0: count = nextbyte
-
-                cpack = self.cmd_or_next(cmd, 2, dpos)
-                dpos = cpack.dpos
-                for _ in range(cpack.count):
-                    row_data.push_back(pixel(color_transparent, 0))
-
             elif lower_nibble == 0x06:
                 # player_color_list command
                 # we have to draw the player color for cmd>>4 times,
@@ -457,26 +439,6 @@ cdef class SLPFrame:
                 for _ in range(cpack.count):
                     row_data.push_back(pixel(color_standard, color))
 
-            elif lower_nibble == 0x08:
-                # color_list command
-                # draw the following bytes as palette colors
-
-                pixel_count = cmd >> 2
-                for _ in range(pixel_count):
-                    dpos += 1
-                    color = self.get_byte_at(dpos)
-                    row_data.push_back(pixel(color_standard, color))
-
-            elif lower_nibble == 0x09:
-                # skip command
-                # draw 'count' transparent pixels
-                # count = cmd >> 2; if count == 0: count = nextbyte
-
-                cpack = self.cmd_or_next(cmd, 2, dpos)
-                dpos = cpack.dpos
-                for _ in range(cpack.count):
-                    row_data.push_back(pixel(color_transparent, 0))
-
             elif lower_nibble == 0x0A:
                 # fill player color command
                 # draw the player color for 'count' times
@@ -504,26 +466,6 @@ cdef class SLPFrame:
 
                 for _ in range(cpack.count):
                     row_data.push_back(pixel(color_shadow, 0))
-
-            elif lower_nibble == 0x0C:
-                # color_list command
-                # draw the following bytes as palette colors
-
-                pixel_count = cmd >> 2
-                for _ in range(pixel_count):
-                    dpos += 1
-                    color = self.get_byte_at(dpos)
-                    row_data.push_back(pixel(color_standard, color))
-
-            elif lower_nibble == 0x0D:
-                # skip command
-                # draw 'count' transparent pixels
-                # count = cmd >> 2; if count == 0: count = nextbyte
-
-                cpack = self.cmd_or_next(cmd, 2, dpos)
-                dpos = cpack.dpos
-                for _ in range(cpack.count):
-                    row_data.push_back(pixel(color_transparent, 0))
 
             elif lower_nibble == 0x0E:
                 # "extended" commands. higher nibble specifies the instruction.

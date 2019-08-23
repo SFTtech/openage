@@ -100,11 +100,12 @@ class Texture(exportable.Exportable):
     # player-specific colors will be in color blue, but with an alpha of 254
     player_id = 1
 
-    def __init__(self, input_data, palette=None, custom_cutter=None):
+    def __init__(self, input_data, main_palette, player_palette=None, custom_cutter=None):
         super().__init__()
         spam("creating Texture from %s", repr(input_data))
 
         from .slp import SLP
+        from .smp import SMP
 
         if isinstance(input_data, SLP):
 
@@ -112,7 +113,18 @@ class Texture(exportable.Exportable):
 
             for frame in input_data.frames:
                 for subtex in self._slp_to_subtextures(frame,
-                                                       palette,
+                                                       main_palette,
+                                                       custom_cutter):
+                    frames.append(subtex)
+
+        elif isinstance(input_data, SMP):
+            
+            frames = []
+             
+            for frame in input_data.main_frames:
+                for subtex in self._smp_to_subtextures(frame,
+                                                       main_palette,
+                                                       player_palette,
                                                        custom_cutter):
                     frames.append(subtex)
 
@@ -134,7 +146,7 @@ class Texture(exportable.Exportable):
 
     def _slp_to_subtextures(self, frame, palette=None, custom_cutter=None):
         """
-        convert slp to subtexture or subtextures, use a palette.
+        convert slp to subtexture or subtextures, using a palette.
         """
         # TODO this needs some _serious_ performance work
         # (at least a 10x improvement, 50x would be better).
@@ -142,6 +154,26 @@ class Texture(exportable.Exportable):
         #        cythonize parts of SLP.py
         subtex = TextureImage(
             frame.get_picture_data(palette, self.player_id),
+            hotspot=frame.get_hotspot()
+        )
+
+        if custom_cutter:
+            # this may cut the texture into some parts
+            return custom_cutter.cut(subtex)
+        else:
+            return [subtex]
+
+    def _smp_to_subtextures(self, frame, main_palette, player_palette=None,
+                            custom_cutter=None):
+        """
+        convert smp to subtexture or subtextures, using a palette.
+        """
+        # TODO this needs some _serious_ performance work
+        # (at least a 10x improvement, 50x would be better).
+        # ideas: remove PIL and use libpng via CPPInterface,
+        #        cythonize parts of SLP.py
+        subtex = TextureImage(
+            frame.get_picture_data(main_palette, player_palette),
             hotspot=frame.get_hotspot()
         )
 
