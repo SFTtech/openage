@@ -23,20 +23,12 @@ endianness = "< "
 
 class SpecialColorValue(Enum):
     transparent = " "
-    player_color = "P"
 
     def __str__(self):
         return self.value
 
     def __repr__(self):
         return self.value
-
-
-# command ids may have encoded the pixel length.
-# this is used when unpacked.
-cdef struct cmd_pack:
-    uint8_t count
-    Py_ssize_t dpos
 
 
 cdef struct boundary_def:
@@ -47,20 +39,20 @@ cdef struct boundary_def:
 
 # SMP pixels are super special.
 cdef enum pixel_type:
-    color_standard       # standard pixel
-    color_shadow         # shadow pixel
-    color_transparent    # transparent pixel
-    color_player         # non-outline player color pixel
-    color_outline        # player color outline pixel
+    color_standard      # standard pixel
+    color_shadow        # shadow pixel
+    color_transparent   # transparent pixel
+    color_player        # non-outline player color pixel
+    color_outline       # player color outline pixel
 
 
 # One SMP pixel.
 cdef struct pixel:
     pixel_type type
-    uint8_t index
-    uint8_t palette
-    uint8_t unknown1
-    uint8_t unknown2
+    uint8_t index       # index in a palette section
+    uint8_t palette     # palette number and palette section
+    uint8_t unknown1    # ???
+    uint8_t unknown2    # masking for damage?
 
 
 class SMP:
@@ -76,11 +68,11 @@ class SMP:
     #   ??? 4 bytes;
     #   ??? 4 bytes;
     #   unsigned int unknown_offset_1;
-    #   unsigned int unknown_offset_2;
+    #   unsigned int file_size;
     #   ??? 4 bytes;
     #   char comment[32];
     # };
-    smp_header = Struct(endianness + "4s i i i i I I I 32s")
+    smp_header = Struct(endianness + "4s i i i i I i I 32s")
 
     # struct smp_frame_bundle_offset {
     #   unsigned int frame_info_offset;
@@ -88,7 +80,7 @@ class SMP:
     smp_frame_bundle_offset = Struct(endianness + "I")
 
     # struct smp_frame_bundle_size {
-    #   padding 28 bytes
+    #   padding 28 bytes;
     #   int frame_bundle_size;
     # };
     smp_frame_bundle_size = Struct(endianness + "28x i")
@@ -216,8 +208,9 @@ class FrameHeader:
     def __repr__(self):
         ret = (
             "% 5d x% 7d | " % self.size,
-            "% 4d /% 5d" % self.hotspot,
-            "% 13d|" % self.outline_table_offset,
+            "% 4d /% 5d | " % self.hotspot,
+            "% 4d | " % self.frame_type,
+            "% 13d| " % self.outline_table_offset,
             "        % 9d|" % self.qdl_table_offset,
         )
         return "".join(ret)
@@ -368,7 +361,6 @@ cdef class SMPFrame:
         cdef uint8_t cmd
         cdef uint8_t nextbyte
         cdef uint8_t lower_crumb
-        cdef cmd_pack cpack
         cdef int pixel_count
 
         # work through commands till end of row.
@@ -480,7 +472,7 @@ cdef class SMPFrame:
     
     cdef inline uint8_t get_byte_at(self, Py_ssize_t offset):
         """
-        Fetch a byte from the smp.
+        Fetch a byte from the SMP.
         """
         return self.data_raw[offset]
 
@@ -557,22 +549,23 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 # to the palette section
                 index = px_index + 256 * palette_section
                 
-                # look up the color index in the table
+                # look up the color index in the
+                # main graphics table
                 r, g, b, alpha = m_lookup[index]
 
             elif px_type == color_transparent:
                 r, g, b, alpha = 0, 0, 0, 0
 
             elif px_type == color_shadow:
-                r, g, b, alpha = 0, 0, 0, 100
+                r, g, b, alpha = 0, 0, 0, px_index
                 
             else:
                 if px_type == color_player:
-                    # mark this pixel as player color
-                    alpha = 254
+                    alpha = 255
 
                 elif px_type == color_outline:
-                    alpha = 253  # mark this pixel as outline
+                    # TODO: What is the outline color?
+                    alpha = 255
 
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)
@@ -590,11 +583,20 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
     return array_data
 
+cdef uint8_t get_palette_number(pixel image_pixel):
+    """
+    returns the palette used for a pixel.
+    """
+    # typecasts to uint8_t to floor the value
+    return <uint8_t>(image_pixel.palette / 4)
+
 @cython.boundscheck(False)
 @cython.wraparound(False)
 cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     """
-    converts a palette index image matrix to an rgba matrix.
+    converts a palette index image matrix to an alpha matrix.
+    
+    TODO: figure out how this works exactly
     """
 
     cdef size_t height = image_matrix.size()
@@ -620,12 +622,9 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
 
         for x in range(width):
             px = current_row[x]
-            px_occlusion = px.unknown2
+            px_mask = px.unknown2
 
-            r = 255
-            g = 0
-            b = 0
-            alpha = px_occlusion
+            r, g, b, alpha = 0, 0, 0, px_mask
 
             # array_data[y, x] = (r, g, b, alpha)
             array_data[y, x, 0] = r

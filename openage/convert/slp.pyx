@@ -49,14 +49,21 @@ cdef struct boundary_def:
 
 # SLP pixels can be very special.
 cdef enum pixel_type:
-    color_standard       # standard pixel
-    color_shadow         # shadow pixel
-    color_transparent    # transparent pixel
-    color_player         # non-outline player color pixel
-    color_black          # black outline pixel
-    color_special_1      # player color outline pixel
-    color_special_2      # black outline pixel
+    color_standard      # standard pixel
+    color_shadow        # shadow pixel
+    color_shadow_v4     # shadow pixel in the 4.0X version
+    color_transparent   # transparent pixel
+    color_player        # non-outline player color pixel
+    color_black         # black outline pixel
+    color_special_1     # player color outline pixel
+    color_special_2     # black outline pixel
 
+
+# SLPs with version 4.0+ have special
+# rules for shadows
+cdef enum slp_type:
+    slp_standard        # standard type
+    slp_shadow          # shadow SLP (v4.0 and higher)
 
 # One SLP pixel.
 cdef struct pixel:
@@ -81,17 +88,17 @@ class SLP:
     # };
     slp_header = Struct(endianness + "i 24s")
 
-    # struct slp_header_4_0_X {
-    #   int frame_count;
-    #   unsigned short frame_count_2;
+    # struct slp_header_v4 {
+    #   unsigned short frame_count;
+    #   unsigned short angles;
+    #   unsigned short unknown;
     #   unsigned short frame_count_alt;
-    #   int ??;
+    #   unsigned int checksum;
     #   int offset_main;
     #   int offset_shadow;
-    #   int ??;
-    #   int ??;
+    #   padding 8 bytes;
     # };
-    slp_header_4_0_X = Struct(endianness + "i H H i i i i i")
+    slp_header_v4 = Struct(endianness + "H H H H i i i 8x")
 
     # struct slp_frame_info {
     #   unsigned int qdl_table_offset;
@@ -109,9 +116,9 @@ class SLP:
         version = SLP.slp_version.unpack_from(data)[0]
 
         if version == b'4.0X':
-            header = SLP.slp_header_4_0_X.unpack_from(data, SLP.slp_version.size)
+            header = SLP.slp_header_v4.unpack_from(data, SLP.slp_version.size)
             # TODO: Fill in blanks
-            frame_count, _, _, _, offset_main, offset_shadow, _, _ = header
+            frame_count, angles, _, _, checksum, offset_main, offset_shadow = header
 
             dbg("SLP")
             dbg(" version:               %s", version.decode('ascii'))
@@ -139,12 +146,11 @@ class SLP:
                                    i * SLP.slp_frame_info.size)
 
             frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(
-                data, frame_header_offset
-            ))
+                data, frame_header_offset), version, slp_standard)
             spam(frame_info)
             self.frames.append(SLPFrame(frame_info, data))
 
-        if version == b'4.0X':
+        if version == b'4.0X' and offset_shadow != 0x00000000:
             # 4.0X SLPs contain a shadow SLP inside them
             # read all slp_frame_info of shadow
             for i in range(frame_count):
@@ -152,8 +158,7 @@ class SLP:
                                        i * SLP.slp_frame_info.size)
 
                 frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(
-                    data, frame_header_offset
-                    ))
+                    data, frame_header_offset), version, slp_shadow)
                 spam(frame_info)
                 self.frames.append(SLPFrame(frame_info, data))
 
@@ -172,19 +177,30 @@ class SLP:
 
 class FrameInfo:
     def __init__(self, qdl_table_offset, outline_table_offset,
-                 palette_offset, properties,
-                 width, height, hotspot_x, hotspot_y):
+                 palette_offset, properties, width, height,
+                 hotspot_x, hotspot_y, version, type):
+        
+        # offset of command table
         self.qdl_table_offset = qdl_table_offset
+        
+        # offset of transparent outline table
         self.outline_table_offset = outline_table_offset
+        
         self.palette_offset = palette_offset
         self.properties = properties  # TODO what are properties good for?
+
         self.size = (width, height)
         self.hotspot = (hotspot_x, hotspot_y)
+
+        # meta info
+        self.version = version
+        self.frame_type = type
 
     @staticmethod
     def repr_header():
         return ("offset (qdl table|outline table|palette) |"
-                " properties | width x height | hotspot x/y")
+                " properties | width x height | hotspot x/y |"
+                " version")
 
     def __repr__(self):
         ret = (
@@ -194,6 +210,7 @@ class FrameInfo:
             "% 10d | " % self.properties,
             "% 5d x% 7d | " % self.size,
             "% 4d /% 5d" % self.hotspot,
+            "% 4d" % self.version,
         )
         return "".join(ret)
 
@@ -373,7 +390,13 @@ cdef class SLPFrame:
                 for _ in range(pixel_count):
                     dpos += 1
                     color = self.get_byte_at(dpos)
-                    row_data.push_back(pixel(color_standard, color))
+                    
+                    # shadows in v4.0 draw a different color
+                    if self.info.frame_type == slp_shadow:
+                        row_data.push_back(pixel(color_shadow_v4, color))
+                        
+                    else:
+                        row_data.push_back(pixel(color_standard, color))
 
             elif lowest_crumb == 0b00000001:
                 # skip command
@@ -437,7 +460,12 @@ cdef class SLPFrame:
                 color = self.get_byte_at(dpos)
 
                 for _ in range(cpack.count):
-                    row_data.push_back(pixel(color_standard, color))
+                    # shadows in v4.0 draw a different color
+                    if self.info.frame_type == slp_shadow:
+                        row_data.push_back(pixel(color_shadow_v4, color))
+                        
+                    else:
+                        row_data.push_back(pixel(color_standard, color))
 
             elif lower_nibble == 0x0A:
                 # fill player color command
@@ -631,6 +659,10 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
             elif px_type == color_shadow:
                 r, g, b, alpha = 0, 0, 0, 100
+            
+            elif px_type == color_shadow_v4:
+                r, g, b = 0, 0, 0
+                alpha = 255 - (px_val << 2)
 
             else:
                 if px_type == color_player:

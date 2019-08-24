@@ -19,7 +19,8 @@ def init_subparser(cli):
 
     cli.set_defaults(entrypoint=main)
 
-    cli.add_argument("--palette-index", help="palette number in interfac.drs")
+    cli.add_argument("--palette-index", default="50500",
+                     help="palette number in interfac.drs")
     cli.add_argument("--palette-file", type=argparse.FileType('rb'),
                      help=("palette file where the palette"
                            "colors are contained"))
@@ -95,7 +96,7 @@ def SLP_file(slp_path, palette, output_path):
     from .slp import SLP
 
     # parse the slp_path image
-    info("parsing slp_path image...")
+    info("parsing slp image...")
     slp_image = SLP(slp_file.read())
 
     # create texture
@@ -126,12 +127,12 @@ def SLP_in_DRS_file(drs, slp_path, palette_index, output_path, interfac=None):
         # otherwise use the path of the drs.
         interfac_file = Path(drs.name).with_name("interfac.drs").open("rb")  # pylint: disable=no-member
         
-        # open palette
-        info("opening palette in drs '%s:%s.bina'...", interfac_file.name, palette_index)
-        palette_file = DRS(interfac).root["%s.bina" % palette_index].open("rb")
+    # open palette
+    info("opening palette in drs '%s:%s.bina'...", interfac_file.name, palette_index)
+    palette_file = DRS(interfac_file).root["%s.bina" % palette_index].open("rb")
 
-        info("parsing palette data...")
-        palette = ColorTable(palette_file.read())
+    info("parsing palette data...")
+    palette = ColorTable(palette_file.read())
 
     # import here to prevent that the __main__ depends on SLP
     # just by importing this singlefile.py.
@@ -156,29 +157,29 @@ def SMP_file(smp_path, main_palette, player_palette, output_path):
     output_file = Path(output_path)
     
     # open the smp
-    info("opening slp file at '%s'", smp_path)
+    info("opening smp file at '%s'", smp_path)
     smp_file = Path(smp_path).open("rb")
 
     # open main palette from independent file
-    info("opening main palette in main_palette file '%s'", main_palette.name)
+    info("opening main palette in palette file '%s'", main_palette.name)
     main_palette_file = Path(main_palette.name).open("rb")
 
     info("parsing palette data...")
     main_palette_table = ColorTable(main_palette_file.read())
 
     # open player color palette from independent file
-    info("opening player color palette in player_palette file '%s'", player_palette.name)
+    info("opening player color palette in palette file '%s'", player_palette.name)
     player_palette_file = Path(player_palette.name).open("rb")
 
     info("parsing palette data...")
     player_palette_table = ColorTable(player_palette_file.read())
     
-    # import here to prevent that the __main__ depends on SLP
+    # import here to prevent that the __main__ depends on SMP
     # just by importing this singlefile.py.
     from .smp import SMP
 
     # parse the slp_path image
-    info("parsing slp_path image...")
+    info("parsing smp image...")
     smp_image = SMP(smp_file.read())
 
     # create texture
