@@ -114,6 +114,7 @@ class Texture(exportable.Exportable):
             for frame in input_data.frames:
                 for subtex in self._slp_to_subtextures(frame,
                                                        main_palette,
+                                                       player_palette,
                                                        custom_cutter):
                     frames.append(subtex)
 
@@ -144,7 +145,8 @@ class Texture(exportable.Exportable):
         self.image_data, (self.width, self.height), self.image_metadata\
             = merge_frames(frames)
 
-    def _slp_to_subtextures(self, frame, palette=None, custom_cutter=None):
+    def _slp_to_subtextures(self, frame, main_palette, player_palette=None,
+                            custom_cutter=None):
         """
         convert slp to subtexture or subtextures, using a palette.
         """
@@ -153,7 +155,8 @@ class Texture(exportable.Exportable):
         # ideas: remove PIL and use libpng via CPPInterface,
         #        cythonize parts of SLP.py
         subtex = TextureImage(
-            frame.get_picture_data(palette, self.player_id),
+            frame.get_picture_data(main_palette, player_palette,
+                                   self.player_id),
             hotspot=frame.get_hotspot()
         )
 

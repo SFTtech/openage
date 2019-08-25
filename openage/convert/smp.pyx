@@ -150,19 +150,18 @@ class SMP:
                 elif frame_header.frame_type == 0x04:
                     # frame that stores a shadow
                     
-                    pass
-                    # self.shadow_frames.append(SMPFrame(frame_header, data))
+                    self.shadow_frames.append(SMPFrame(frame_header, data))
                     
-                elif frame_header.frame_type == 0x08:
+                elif frame_header.frame_type == 0x08 or \
+                     frame_header.frame_type == 0x10:
                     # frame that stores an outline
                     
-                    pass
-                    # self.outline_frames.append(SMPFrame(frame_header, data))
+                    self.outline_frames.append(SMPFrame(frame_header, data))
                 
                 else:
                     raise Exception(
                     "unknown frame header type: " +
-                    "%h at offset %h" % (frame_header.type, frame_header_offset))
+                    "%h at offset %h" % (frame_header.frame_type, frame_header_offset))
                 
                 spam(frame_header)
 
@@ -334,8 +333,10 @@ cdef class SMPFrame:
         # verify size of generated row
         if row_data.size() != pixel_count:
             got = row_data.size()
-            summary = "%d/%d -> row %d, offset %d / %#x" % (
-                got, pixel_count, rowid, first_cmd_offset, first_cmd_offset)
+            summary = "%d/%d -> row %d, frame type %d, offset %d / %#x" % (
+                got, pixel_count, rowid, self.info.frame_type,
+                first_cmd_offset, first_cmd_offset
+                )
             txt = "got %%s pixels than expected: %s, missing: %d" % (
                 summary, abs(pixel_count - got))
 
@@ -367,9 +368,12 @@ cdef class SMPFrame:
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    "Only %d pixels should be drawn in row %d, "
-                    "but we have %d already!" % (
-                        expected_size, rowid, row_data.size()
+                    "Only %d pixels should be drawn in row %d "
+                    "with frame type %d, but we have %d "
+                    "already!" % (
+                        expected_size, rowid,
+                        self.info.frame_type,
+                        row_data.size()
                     )
                 )
             
@@ -384,6 +388,19 @@ cdef class SMPFrame:
             if lower_crumb == 0b00000011:
                 # eol (end of line) command, this row is finished now.
                 eor = True
+                
+                # shadows sometimes need an extra pixel at
+                # the end              
+                if self.info.frame_type == 0x04 \
+                    and row_data.size() < expected_size:
+                    # copy the last drawn pixel
+                    # (still stored in nextbyte)
+                    # 
+                    # TODO: confirm that this is the
+                    #       right way to do it
+                    row_data.push_back(pixel(color_shadow, 
+                                             nextbyte, 0, 0, 0))
+
                 continue
             
             elif lower_crumb == 0b00000000:
@@ -427,12 +444,13 @@ cdef class SMPFrame:
                         
                         row_data.push_back(pixel(color_shadow, 
                                                  nextbyte, 0, 0, 0))
-                    
+
                 # outline pixels
-                if self.info.frame_type == 0x08:
-                    dpos += 1
-                    
+                if self.info.frame_type == 0x08 or \
+                   self.info.frame_type == 0x10:
                     for _ in range(pixel_count):
+                        # we don't know the color the game wants
+                        # so we just draw index 0
                         row_data.push_back(pixel(color_outline, 
                                                  0, 0, 0, 0))
             

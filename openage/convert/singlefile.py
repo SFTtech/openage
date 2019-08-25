@@ -54,7 +54,8 @@ def main(args, error):
         if not args.palette_file:
             raise Exception("palette-file needs to be specified")
         
-        SLP_file(args.filename, args.palette_file, args.output)
+        SLP_file(args.filename, args.palette_file, args.output,
+                 player_palette=args.player_palette_file)
  
     elif args.mode == "DRS-SLP" or (file_extension == "SLP" and args.drs):
         if not (args.drs and args.palette_index):
@@ -74,7 +75,7 @@ def main(args, error):
         raise Exception("format could not be determined")
 
 
-def SLP_file(slp_path, palette, output_path):
+def SLP_file(slp_path, main_palette, output_path, player_palette=None):
     """
     Reads a single SLP file.
     """
@@ -85,11 +86,11 @@ def SLP_file(slp_path, palette, output_path):
     slp_file = Path(slp_path).open("rb")
 
     # open palette from independent file
-    info("opening palette in palette file '%s'", palette.name)
-    palette_file = Path(palette.name).open("rb")
+    info("opening palette in palette file '%s'", main_palette.name)
+    palette_file = Path(main_palette.name).open("rb")
 
     info("parsing palette data...")
-    palette = ColorTable(palette_file.read())
+    main_palette_table = ColorTable(palette_file.read())
 
     # import here to prevent that the __main__ depends on SLP
     # just by importing this singlefile.py.
@@ -99,9 +100,25 @@ def SLP_file(slp_path, palette, output_path):
     info("parsing slp image...")
     slp_image = SLP(slp_file.read())
 
+    player_palette_table = None
+
+    # Player palettes need to be specified if SLP version is greater
+    # than 3.0
+    if slp_image.version in (b'3.0\x00', b'4.0X', b'4.1X'):
+        if not player_palette:
+            raise Exception("SLPs version %s require a player "
+                            "color palette" % slp_image.version)
+        
+        # open player color palette from independent file
+        info("opening player color palette in palette file '%s'", player_palette.name)
+        player_palette_file = Path(player_palette.name).open("rb")
+
+        info("parsing palette data...")
+        player_palette_table = ColorTable(player_palette_file.read())
+
     # create texture
     info("packing texture...")
-    tex = Texture(slp_image, palette)
+    tex = Texture(slp_image, main_palette_table, player_palette=player_palette_table)
 
     # save as png
     tex.save(Directory(output_file.parent).root, output_file.name)

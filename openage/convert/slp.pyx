@@ -54,6 +54,7 @@ cdef enum pixel_type:
     color_shadow_v4     # shadow pixel in the 4.0X version
     color_transparent   # transparent pixel
     color_player        # non-outline player color pixel
+    color_player_v4     # non-outline player color pixel
     color_black         # black outline pixel
     color_special_1     # player color outline pixel
     color_special_2     # black outline pixel
@@ -113,15 +114,15 @@ class SLP:
     slp_frame_info = Struct(endianness + "I I I I i i i i")
 
     def __init__(self, data):
-        version = SLP.slp_version.unpack_from(data)[0]
+        self.version = SLP.slp_version.unpack_from(data)[0]
 
-        if version == b'4.0X':
+        if self.version == b'4.0X':
             header = SLP.slp_header_v4.unpack_from(data, SLP.slp_version.size)
             # TODO: Fill in blanks
             frame_count, angles, _, _, checksum, offset_main, offset_shadow = header
 
             dbg("SLP")
-            dbg(" version:               %s", version.decode('ascii'))
+            dbg(" version:               %s", self.version.decode('ascii'))
             dbg(" frame count:           %s", frame_count)
             dbg(" offset main graphic:   %s", offset_main)
             dbg(" offset shadow graphic: %s", offset_shadow)
@@ -131,7 +132,7 @@ class SLP:
             frame_count, comment = header
 
             dbg("SLP")
-            dbg(" version:     %s", version.decode('ascii'))
+            dbg(" version:     %s", self.version.decode('ascii'))
             dbg(" frame count: %s", frame_count)
             dbg(" comment:     %s", comment.decode('ascii'))
 
@@ -146,11 +147,11 @@ class SLP:
                                    i * SLP.slp_frame_info.size)
 
             frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(
-                data, frame_header_offset), version, slp_standard)
+                data, frame_header_offset), self.version, slp_standard)
             spam(frame_info)
             self.frames.append(SLPFrame(frame_info, data))
 
-        if version == b'4.0X' and offset_shadow != 0x00000000:
+        if self.version == b'4.0X' and offset_shadow != 0x00000000:
             # 4.0X SLPs contain a shadow SLP inside them
             # read all slp_frame_info of shadow
             for i in range(frame_count):
@@ -158,7 +159,7 @@ class SLP:
                                        i * SLP.slp_frame_info.size)
 
                 frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(
-                    data, frame_header_offset), version, slp_shadow)
+                    data, frame_header_offset), self.version, slp_shadow)
                 spam(frame_info)
                 self.frames.append(SLPFrame(frame_info, data))
 
@@ -444,10 +445,15 @@ cdef class SLPFrame:
                     dpos += 1
                     color = self.get_byte_at(dpos)
 
-                    # the SpecialColor class preserves the calculation with
-                    # player * 16 + color, this is the palette offset
-                    # for tinted player colors.
-                    row_data.push_back(pixel(color_player, color))
+                    if self.info.version in (b'3.0\x00', b'4.0X', b'4.1X'):
+                        # version 3.0 uses extra palettes for player colors
+                        row_data.push_back(pixel(color_player_v4, color))
+                        
+                    else:
+                        # the SpecialColor class preserves the calculation with
+                        # player * 16 + color, this is the palette offset
+                        # for tinted player colors.
+                        row_data.push_back(pixel(color_player, color))
 
             elif lower_nibble == 0x07:
                 # fill command
@@ -477,13 +483,18 @@ cdef class SLPFrame:
                 dpos += 1
                 color = self.get_byte_at(dpos)
 
-                # TODO: verify this. might be incorrect.
-                # color = ((color & 0b11001100) | 0b00110011)
-
-                # SpecialColor class preserves the calculation of
-                # player*16 + color
                 for _ in range(cpack.count):
-                    row_data.push_back(pixel(color_player, color))
+                    if self.info.version in (b'3.0\x00', b'4.0X', b'4.1X'):
+                        # version 3.0 uses extra palettes for player colors
+                        row_data.push_back(pixel(color_player_v4, color))
+
+                    else:
+                        # TODO: verify this. might be incorrect.
+                        # color = ((color & 0b11001100) | 0b00110011)
+                        
+                        # SpecialColor class preserves the calculation of
+                        # player*16 + color
+                        row_data.push_back(pixel(color_player, color))
 
             elif lower_nibble == 0x0B:
                 # shadow command
@@ -594,11 +605,13 @@ cdef class SLPFrame:
             pos += 1
             return cmd_pack(self.get_byte_at(pos), pos)
 
-    def get_picture_data(self, palette, player_number=0):
+    def get_picture_data(self, main_palette, player_palette=None,
+                         player_number=0):
         """
         Convert the palette index matrix to a colored image.
         """
-        return determine_rgba_matrix(self.pcolor, palette, player_number)
+        return determine_rgba_matrix(self.pcolor, main_palette,
+                                     player_palette, player_number)
 
     def get_hotspot(self):
         """
@@ -613,7 +626,8 @@ cdef class SLPFrame:
 @cython.boundscheck(False)
 @cython.wraparound(False)
 cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
-                                         palette, int player_number=0):
+                                         main_palette, player_palette,
+                                         int player_number=0):
     """
     converts a palette index image matrix to an rgba matrix.
     """
@@ -625,7 +639,12 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     # micro optimization to avoid call to ColorTable.__getitem__()
-    cdef list lookup = palette.palette
+    cdef list m_lookup = main_palette.palette
+    cdef list p_lookup
+    
+    # player palette for SLPs with version higher than 3.0
+    if player_palette:
+        p_lookup = player_palette.palette
 
     cdef uint8_t r
     cdef uint8_t g
@@ -651,7 +670,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
             if px_type == color_standard:
                 # simply look up the color index in the table
-                r, g, b = lookup[px_val]
+                r, g, b = m_lookup[px_val]
                 alpha = 255
 
             elif px_type == color_transparent:
@@ -664,6 +683,10 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 r, g, b = 0, 0, 0
                 alpha = 255 - (px_val << 2)
 
+            elif px_type == color_player_v4:
+                r, g, b = p_lookup[px_val]
+                alpha = 255
+                
             else:
                 if px_type == color_player:
                     # mark this pixel as player color
@@ -687,7 +710,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 # get rgb base color from the color table
                 # store it the preview player color
                 # in the table: [16*player, 16*player+7]
-                r, g, b = lookup[px_val + (16 * player_number)]
+                r, g, b = m_lookup[px_val + (16 * player_number)]
 
             # array_data[y, x] = (r, g, b, alpha)
             array_data[y, x, 0] = r
