@@ -100,7 +100,8 @@ class Texture(exportable.Exportable):
     # player-specific colors will be in color blue, but with an alpha of 254
     player_id = 1
 
-    def __init__(self, input_data, main_palette, player_palette=None, custom_cutter=None):
+    def __init__(self, input_data, main_palette=None,
+                 player_palette=None, custom_cutter=None):
         super().__init__()
         spam("creating Texture from %s", repr(input_data))
 

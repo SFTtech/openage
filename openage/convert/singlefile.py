@@ -118,7 +118,7 @@ def SLP_file(slp_path, main_palette, output_path, player_palette=None):
 
     # create texture
     info("packing texture...")
-    tex = Texture(slp_image, main_palette_table, player_palette=player_palette_table)
+    tex = Texture(slp_image, main_palette_table, player_palette_table)
 
     # save as png
     tex.save(Directory(output_file.parent).root, output_file.name)

@@ -90,7 +90,7 @@ class SLPConverterPool:
         """
         if self.fake:
             # convert right here, without entering the thread.
-            return Texture(SLP(slpdata), self.palette, custom_cutter)
+            return Texture(SLP(slpdata), self.palette, custom_cutter=custom_cutter)
 
         if free_memory() < 2**30:
             # TODO print the warn only once
@@ -99,7 +99,7 @@ class SLPConverterPool:
             # acquire job_mutex in order to block any concurrent activity until
             # this job is done.
             with self.job_mutex:  # pylint: disable=not-context-manager
-                return Texture(SLP(slpdata), self.palette, custom_cutter)
+                return Texture(SLP(slpdata), self.palette, custom_cutter=custom_cutter)
 
         # get the data queue for an idle worker process
         inqueue, outqueue = self.idle.get()
@@ -154,7 +154,7 @@ def converter_process(inqueue, outqueue):
         slpdata, custom_cutter = work_item
 
         try:
-            texture = Texture(SLP(slpdata), palette, custom_cutter)
+            texture = Texture(SLP(slpdata), palette, custom_cutter=custom_cutter)
             outqueue.put(texture)
         except BaseException as exc:
             import traceback
