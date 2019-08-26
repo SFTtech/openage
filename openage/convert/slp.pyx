@@ -180,13 +180,13 @@ class FrameInfo:
     def __init__(self, qdl_table_offset, outline_table_offset,
                  palette_offset, properties, width, height,
                  hotspot_x, hotspot_y, version, type):
-        
+
         # offset of command table
         self.qdl_table_offset = qdl_table_offset
-        
+
         # offset of transparent outline table
         self.outline_table_offset = outline_table_offset
-        
+
         self.palette_offset = palette_offset
         self.properties = properties  # TODO what are properties good for?
 
@@ -391,11 +391,11 @@ cdef class SLPFrame:
                 for _ in range(pixel_count):
                     dpos += 1
                     color = self.get_byte_at(dpos)
-                    
+
                     # shadows in v4.0 draw a different color
                     if self.info.frame_type == slp_shadow:
                         row_data.push_back(pixel(color_shadow_v4, color))
-                        
+
                     else:
                         row_data.push_back(pixel(color_standard, color))
 
@@ -448,7 +448,7 @@ cdef class SLPFrame:
                     if self.info.version in (b'3.0\x00', b'4.0X', b'4.1X'):
                         # version 3.0 uses extra palettes for player colors
                         row_data.push_back(pixel(color_player_v4, color))
-                        
+
                     else:
                         # the SpecialColor class preserves the calculation with
                         # player * 16 + color, this is the palette offset
@@ -469,7 +469,7 @@ cdef class SLPFrame:
                     # shadows in v4.0 draw a different color
                     if self.info.frame_type == slp_shadow:
                         row_data.push_back(pixel(color_shadow_v4, color))
-                        
+
                     else:
                         row_data.push_back(pixel(color_standard, color))
 
@@ -491,7 +491,7 @@ cdef class SLPFrame:
                     else:
                         # TODO: verify this. might be incorrect.
                         # color = ((color & 0b11001100) | 0b00110011)
-                        
+
                         # SpecialColor class preserves the calculation of
                         # player*16 + color
                         row_data.push_back(pixel(color_player, color))
@@ -641,7 +641,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     # micro optimization to avoid call to ColorTable.__getitem__()
     cdef list m_lookup = main_palette.palette
     cdef list p_lookup
-    
+
     # player palette for SLPs with version higher than 3.0
     if player_palette:
         p_lookup = player_palette.palette
@@ -678,7 +678,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
             elif px_type == color_shadow:
                 r, g, b, alpha = 0, 0, 0, 100
-            
+
             elif px_type == color_shadow_v4:
                 r, g, b = 0, 0, 0
                 alpha = 255 - (px_val << 2)
@@ -686,7 +686,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
             elif px_type == color_player_v4:
                 r, g, b = p_lookup[px_val]
                 alpha = 255
-                
+
             else:
                 if px_type == color_player:
                     # mark this pixel as player color

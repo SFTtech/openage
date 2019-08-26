@@ -53,29 +53,29 @@ def main(args, error):
     if args.mode == "SLP" or (file_extension == "SLP" and not args.drs):
         if not args.palette_file:
             raise Exception("palette-file needs to be specified")
-        
-        SLP_file(args.filename, args.palette_file, args.output,
-                 player_palette=args.player_palette_file)
- 
+
+        read_slp_file(args.filename, args.palette_file, args.output,
+                      player_palette=args.player_palette_file)
+
     elif args.mode == "DRS-SLP" or (file_extension == "SLP" and args.drs):
         if not (args.drs and args.palette_index):
             raise Exception("palette-file needs to be specified")
-        
-        SLP_in_DRS_file(args.drs, args.filename, args.palette_index,
-                        args.output, interfac=args.interfac)
-     
+
+        read_slp_in_drs_file(args.drs, args.filename, args.palette_index,
+                             args.output, interfac=args.interfac)
+
     elif args.mode == "SMP" or file_extension == "SMP":
         if not (args.palette_file and args.player_palette_file):
             raise Exception("palette-file needs to be specified")
-        
-        SMP_file(args.filename, args.palette_file, args.player_palette_file,
-                 args.output)
-     
+
+        read_smp_file(args.filename, args.palette_file, args.player_palette_file,
+                      args.output)
+
     else:
         raise Exception("format could not be determined")
 
 
-def SLP_file(slp_path, main_palette, output_path, player_palette=None):
+def read_slp_file(slp_path, main_palette, output_path, player_palette=None):
     """
     Reads a single SLP file.
     """
@@ -108,7 +108,7 @@ def SLP_file(slp_path, main_palette, output_path, player_palette=None):
         if not player_palette:
             raise Exception("SLPs version %s require a player "
                             "color palette" % slp_image.version)
-        
+
         # open player color palette from independent file
         info("opening player color palette in palette file '%s'", player_palette.name)
         player_palette_file = Path(player_palette.name).open("rb")
@@ -124,26 +124,26 @@ def SLP_file(slp_path, main_palette, output_path, player_palette=None):
     tex.save(Directory(output_file.parent).root, output_file.name)
 
 
-def SLP_in_DRS_file(drs, slp_path, palette_index, output_path, interfac=None):
+def read_slp_in_drs_file(drs, slp_path, palette_index, output_path, interfac=None):
     """
     Reads a SLP file from a DRS archive.
     """
     output_file = Path(output_path)
-    
+
     # open from drs archive
     drs_file = DRS(drs)
-    
+
     info("opening slp in drs '%s:%s'...", drs.name, slp_path)
     slp_file = drs_file.root[slp_path].open("rb")
-    
+
     if interfac:
-        # open the interface file if given 
+        # open the interface file if given
         interfac_file = interfac
-    
+
     else:
         # otherwise use the path of the drs.
         interfac_file = Path(drs.name).with_name("interfac.drs").open("rb")  # pylint: disable=no-member
-        
+
     # open palette
     info("opening palette in drs '%s:%s.bina'...", interfac_file.name, palette_index)
     palette_file = DRS(interfac_file).root["%s.bina" % palette_index].open("rb")
@@ -167,12 +167,12 @@ def SLP_in_DRS_file(drs, slp_path, palette_index, output_path, interfac=None):
     tex.save(Directory(output_file.parent).root, output_file.name)
 
 
-def SMP_file(smp_path, main_palette, player_palette, output_path):
+def read_smp_file(smp_path, main_palette, player_palette, output_path):
     """
     Reads a single SMP file.
     """
     output_file = Path(output_path)
-    
+
     # open the smp
     info("opening smp file at '%s'", smp_path)
     smp_file = Path(smp_path).open("rb")
@@ -190,7 +190,7 @@ def SMP_file(smp_path, main_palette, player_palette, output_path):
 
     info("parsing palette data...")
     player_palette_table = ColorTable(player_palette_file.read())
-    
+
     # import here to prevent that the __main__ depends on SMP
     # just by importing this singlefile.py.
     from .smp import SMP
@@ -205,4 +205,3 @@ def SMP_file(smp_path, main_palette, player_palette, output_path):
 
     # save as png
     tex.save(Directory(output_file.parent).root, output_file.name)
-    

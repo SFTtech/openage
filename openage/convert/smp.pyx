@@ -10,7 +10,7 @@ cimport cython
 import numpy
 cimport numpy
 
-from libc.stdint cimport uint8_t
+from libc.stdint cimport uint8_t, uint16_t
 from libcpp cimport bool
 from libcpp.vector cimport vector
 
@@ -111,12 +111,12 @@ class SMP:
 
         # read offsets of the smp frames
         for i in range(frame_count):
-            frame_bundle_pointer = (SMP.smp_header.size + 
+            frame_bundle_pointer = (SMP.smp_header.size +
                                     i * SMP.smp_frame_bundle_offset.size)
 
             frame_bundle_offset = SMP.smp_frame_bundle_offset.unpack_from(
                 data, frame_bundle_pointer)[0]
-            
+
             frame_bundle_offsets.append(frame_bundle_offset)
 
         # SMP graphic frames are created from overlaying
@@ -134,35 +134,32 @@ class SMP:
             # how many frame headers are in the bundle
             frame_bundle_size = SMP.smp_frame_bundle_size.unpack_from(
                 data, bundle_offset)[0]
-            
+
             for i in range(1, frame_bundle_size + 1):
                 frame_header_offset = (bundle_offset +
                                        i * SMP.smp_frame_header.size)
 
                 frame_header = FrameHeader(*SMP.smp_frame_header.unpack_from(
                     data, frame_header_offset), bundle_offset)
-                
+
                 if frame_header.frame_type == 0x02:
                     # frame that store the main graphic
-                    
                     self.main_frames.append(SMPFrame(frame_header, data))
-                    
+
                 elif frame_header.frame_type == 0x04:
                     # frame that stores a shadow
-                    
                     self.shadow_frames.append(SMPFrame(frame_header, data))
-                    
+
                 elif frame_header.frame_type == 0x08 or \
                      frame_header.frame_type == 0x10:
                     # frame that stores an outline
-                    
                     self.outline_frames.append(SMPFrame(frame_header, data))
-                
+
                 else:
                     raise Exception(
                     "unknown frame header type: " +
                     "%h at offset %h" % (frame_header.frame_type, frame_header_offset))
-                
+
                 spam(frame_header)
 
     def __str__(self):
@@ -186,23 +183,23 @@ class FrameHeader:
 
         self.size = (width, height)
         self.hotspot = (hotspot_x, hotspot_y)
-        
+
         # 2 = normal, 4 = shadow, 8 = outline
         self.frame_type = type
-        
+
         # table offsets are relative to the frame bundle offset
         self.outline_table_offset = outline_table_offset + frame_bundle_offset
         self.qdl_table_offset = qdl_table_offset + frame_bundle_offset
-        
+
         # the absolute offset of the bundle
         self.bundle_offset = frame_bundle_offset
-    
+
     @staticmethod
     def repr_header():
         return ("width x height | hotspot x/y | "
                 "frame type | "
-                "offset (outline table|qdl table) | "
-                "unknown value")
+                "offset (outline table|qdl table)"
+                )
 
     def __repr__(self):
         ret = (
@@ -229,7 +226,7 @@ cdef class SMPFrame:
     #   unsigned int offset;
     # }
     smp_command_offset = Struct(endianness + "I")
-    
+
     # struct smp_pixel {
     #   unsigned char palette_index;
     #   unsigned char palette;
@@ -270,7 +267,7 @@ cdef class SMPFrame:
 
         # process bondary table
         for i in range(row_count):
-            outline_entry_position = (self.info.outline_table_offset + 
+            outline_entry_position = (self.info.outline_table_offset +
                                       i * SMPFrame.smp_frame_row_edge.size)
 
             left, right = SMPFrame.smp_frame_row_edge.unpack_from(
@@ -343,7 +340,7 @@ cdef class SMPFrame:
             raise Exception(txt % ("LESS" if got < pixel_count else "MORE"))
 
         return row_data
-    
+
     cdef process_drawing_cmds(self, vector[pixel] &row_data,
                               Py_ssize_t rowid,
                               Py_ssize_t first_cmd_offset,
@@ -376,73 +373,73 @@ cdef class SMPFrame:
                         row_data.size()
                     )
                 )
-            
+
             # fetch drawing instruction
             cmd = self.get_byte_at(dpos)
-            
+
             # Last 2 bits store command type
             lower_crumb = 0b00000011 & cmd
-            
+
             # opcode: cmd, rowid: rowid
-            
+
             if lower_crumb == 0b00000011:
                 # eol (end of line) command, this row is finished now.
                 eor = True
-                
+
                 # shadows sometimes need an extra pixel at
-                # the end              
+                # the end
                 if self.info.frame_type == 0x04 \
                     and row_data.size() < expected_size:
                     # copy the last drawn pixel
                     # (still stored in nextbyte)
-                    # 
+                    #
                     # TODO: confirm that this is the
                     #       right way to do it
-                    row_data.push_back(pixel(color_shadow, 
+                    row_data.push_back(pixel(color_shadow,
                                              nextbyte, 0, 0, 0))
 
                 continue
-            
+
             elif lower_crumb == 0b00000000:
                 # skip command
                 # draw 'count' transparent pixels
                 # count = (cmd >> 2) + 1
-                
+
                 pixel_count = (cmd >> 2) + 1
-                
+
                 for _ in range(pixel_count):
                     row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-                    
+
             elif lower_crumb == 0b00000001:
                 # color_list command
                 # draw the following 'count' pixels
                 # pixels are stored as rgba 32 bit values
                 # count = (cmd >> 2) + 1
-                
+
                 pixel_count = (cmd >> 2) + 1
 
                 for _ in range(pixel_count):
-                    
+
                     # main graphic pixels
                     if self.info.frame_type == 0x02:
                         pixel_data = list()
-                        
+
                         for _ in range(4):
                             dpos += 1
                             pixel_data.append(self.get_byte_at(dpos))
-                            
-                        row_data.push_back(pixel(color_standard, 
+
+                        row_data.push_back(pixel(color_standard,
                                                  pixel_data[0],
-                                                 pixel_data[1], 
+                                                 pixel_data[1],
                                                  pixel_data[2],
                                                  pixel_data[3]))
-                    
+
                     # shadow pixels
                     elif self.info.frame_type == 0x04:
                         dpos += 1
                         nextbyte = self.get_byte_at(dpos)
-                        
-                        row_data.push_back(pixel(color_shadow, 
+
+                        row_data.push_back(pixel(color_shadow,
                                                  nextbyte, 0, 0, 0))
 
                 # outline pixels
@@ -451,15 +448,15 @@ cdef class SMPFrame:
                     for _ in range(pixel_count):
                         # we don't know the color the game wants
                         # so we just draw index 0
-                        row_data.push_back(pixel(color_outline, 
+                        row_data.push_back(pixel(color_outline,
                                                  0, 0, 0, 0))
-            
+
             elif lower_crumb == 0b00000010:
                 # player_color command
                 # draw the following 'count' pixels
                 # pixels are stored as rgba 32 bit values
                 # count = (cmd >> 2) + 1
-                
+
                 pixel_count = (cmd >> 2) + 1
 
                 for _ in range(pixel_count):
@@ -467,16 +464,17 @@ cdef class SMPFrame:
                     # main graphic pixels
                     if self.info.frame_type == 0x02:
                         pixel_data = list()
-                        
+
                         for _ in range(4):
                             dpos += 1
                             pixel_data.append(self.get_byte_at(dpos))
-                            
-                        row_data.push_back(pixel(color_player, 
+
+                        row_data.push_back(pixel(color_player,
                                                  pixel_data[0],
-                                                 pixel_data[1], 
+                                                 pixel_data[1],
                                                  pixel_data[2],
                                                  pixel_data[3]))
+
             else:
                 raise Exception(
                     "unknown slp drawing command: " +
@@ -487,7 +485,7 @@ cdef class SMPFrame:
 
         # end of row reached, return the created pixel array.
         return
-    
+
     cdef inline uint8_t get_byte_at(self, Py_ssize_t offset):
         """
         Fetch a byte from the SMP.
@@ -562,28 +560,31 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 # palettes have 1024 entries
                 # divided into 4 sections
                 palette_section = px_palette % 4
-                
-                # the ndex has to be adjusted
+
+                # the index has to be adjusted
                 # to the palette section
                 index = px_index + 256 * palette_section
-                
+
                 # look up the color index in the
                 # main graphics table
                 r, g, b, alpha = m_lookup[index]
+
+                # TODO: alpha values are unused
+                # in 0x0C and 0x0B version of SMPs
+                alpha = 255
 
             elif px_type == color_transparent:
                 r, g, b, alpha = 0, 0, 0, 0
 
             elif px_type == color_shadow:
                 r, g, b, alpha = 0, 0, 0, px_index
-                
+
             else:
                 if px_type == color_player:
                     alpha = 255
 
                 elif px_type == color_outline:
-                    # TODO: What is the outline color?
-                    alpha = 255
+                    alpha = 254
 
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)
@@ -601,19 +602,18 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
     return array_data
 
-cdef uint8_t get_palette_number(pixel image_pixel):
+cdef (uint8_t,uint8_t) get_palette_info(pixel image_pixel):
     """
     returns the palette used for a pixel.
     """
-    # typecasts to uint8_t to floor the value
-    return <uint8_t>(image_pixel.palette / 4)
+    return image_pixel.palette >> 4, image_pixel.palette & 0x03
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
 cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     """
     converts a palette index image matrix to an alpha matrix.
-    
+
     TODO: figure out how this works exactly
     """
 
@@ -622,6 +622,7 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
 
     cdef numpy.ndarray[numpy.uint8_t, ndim=3] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
+
 
     cdef uint8_t r
     cdef uint8_t g
@@ -640,7 +641,11 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
 
         for x in range(width):
             px = current_row[x]
-            px_mask = px.unknown2
+            px_u1 = px.unknown1
+            px_u2 = px.unknown2
+
+            # TODO: Correct the darkness here
+            px_mask = ((px_u2 << 2) | px_u1)
 
             r, g, b, alpha = 0, 0, 0, px_mask
 

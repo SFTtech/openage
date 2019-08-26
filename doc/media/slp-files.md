@@ -5,7 +5,7 @@ textures. Like the DRS format, it can also be read sequentially.
 
 ## SLP file format
 
-#### Header (up to version 3.0)
+### Header (up to version 3.0)
 The SLP file starts with a header:
 
 Length   | Type   | Description      | Example
@@ -24,7 +24,7 @@ struct slp_header {
 ```
 Python format: `Struct("< 4s i 24s")`
 
-#### Header (since version 4.0X)
+### Header (since version 4.0X)
 Age of Empires 1: Definitive Edition SLPs (v4.0) use a differently structured header:
 
 Length   | Type    | Description             | Example
@@ -56,8 +56,8 @@ struct slp_header_v4 {
 ```
 Python format: `Struct("< 4s H H H H i i i 8x")`
 
-#### SLP Frame info
-After the header, there are `num_frames` entries of `slp_frame_info`:
+### SLP Frame info
+After the header, there are `num_frames` entries of `slp_frame_info`.
 Every `slp_frame_info` stores meta-information about a single frame (texture)
 within the SLP.
 
@@ -99,7 +99,8 @@ Python format: `Struct("< I I I I i i i i")`
 
 One image of size `width`*`height` has `height` rows, of course.
 
-#### SLP Frame row edge
+
+### SLP Frame row edge
 At `outline_table_offset` (after the `slp_frame_info` structs), an array of
   `slp_frame_row_edge` (of length `height`) structs begins.
 
@@ -155,9 +156,9 @@ The actual command data starts after the end of the command offsets, or:
 ### SLP drawing commands
 
 The image is drawn line by line, a line is finished with the "End of line"
-command (0x0F). A command is a one-byte number (`cmd_byte`), followed 
-by command-specific data with a length (number of pixels) varying 
-depending on the command. The next command immediately follows the 
+command (0x0F). A command is a one-byte number (`cmd_byte`), followed
+by command-specific data with a length (number of pixels) varying
+depending on the command. The next command immediately follows the
 previous command's data.
 
 Commands can also store meta information like the number of following pixels
@@ -299,7 +300,7 @@ us that the row is finished.
 
 SLPs with versions higher than 4.0 store their shadows in separate frames, but
 use the same command syntax. Shadows are drawn with the *lesser draw*,
-*lesser skip* and *fill* commands
+*lesser skip* and *fill* commands.
 
 Command Name             | Byte value        | Pixel Count    | Description
 -------------------------|-------------------|----------------|------------
@@ -334,7 +335,7 @@ third line stores the number of entries, as text.
 The rest is that many `r g b\r\n` lines. Again, `r`, `g` and `b` are stored as
 text (range `0-255`).
 
-Colors from the palette are referenced in the SLP files with an index. 
+Colors from the palette are referenced in the SLP files with an index.
 The index refers to a line in the palette, so line 3=>index 0,
 line 4=>index 1 etc.
 
@@ -343,7 +344,7 @@ line 4=>index 1 etc.
 
 ### SLP files for moving objects
 
-In Age of Empires 1, Age of Empires 2 and Star Wars: Galactic Battlegrounds, 
+In Age of Empires 1, Age of Empires 2 and Star Wars: Galactic Battlegrounds,
 each animation has 10 keyframes and 5 directions. The other 3 directions are
 generated later by flipping the sprite on the y axis.
 
@@ -377,8 +378,8 @@ because they need a smoother transition between up- and downwards motion.
 
 ### SLP files for shadows
 
-Every object in game has a shadow. Up until SLP v3.0, moving units store 
-their shadow in the same frame as the main graphic, but buildings and 
+Every object in game has a shadow. Up until SLP v3.0, moving units store
+their shadow in the same frame as the main graphic, but buildings and
 other objects have their shadows in separate SLPs.
 
 Since version 4.0, shadows are stored in separate frames in the same SLP file.
