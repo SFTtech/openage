@@ -31,7 +31,9 @@ class NyanObject:
         checks, for your convenience.
         """
         self.name = name                        # object name
-        self._fqon = self.name                  # unique identifier (in modpack)
+
+        # unique identifier (in modpack)
+        self._fqon = self.name
 
         self._parents = set()                   # parent objects
         self._inherited_members = set()         # members inherited from parents
@@ -50,25 +52,50 @@ class NyanObject:
                 nested_object.set_fqon("%s.%s" % (self._fqon,
                                                   nested_object.get_name()))
 
+        # Set of children
+        self._children = set()
+
         self._sanity_check()
 
         if len(self._parents) > 0:
             self._process_inheritance()
 
-    def add_nested_object(self, nested_object):
+    def add_nested_object(self, new_nested_object):
         """
         Adds a nested object to the nyan object.
         """
-        if not isinstance(nested_object, NyanObject):
+        if not isinstance(new_nested_object, NyanObject):
             raise Exception("nested object must have <NyanObject> type")
 
-        if nested_object is self:
-            raise Exception("nyan object must not contain itself as nested object")
+        if new_nested_object is self:
+            raise Exception(
+                "nyan object must not contain itself as nested object")
 
-        self._nested_objects.add(nested_object)
+        self._nested_objects.add(new_nested_object)
 
-        nested_object.set_fqon("%s.%s" % (self._fqon,
-                                          nested_object.get_name()))
+        new_nested_object.set_fqon("%s.%s" % (self._fqon,
+                                              new_nested_object.get_name()))
+
+    def add_member(self, new_member):
+        """
+        Adds a member to the nyan object.
+        """
+        if self.is_inherited():
+            raise Exception("added member cannot be inherited")
+
+        if not isinstance(new_member, NyanMember):
+            raise Exception("added member must have <NyanMember> type")
+
+        self._members.add(new_member)
+
+    def add_child(self, new_child):
+        """
+        Registers another object as a child.
+        """
+        if not isinstance(new_child, NyanObject):
+            raise Exception("children must have <NyanObject> type")
+
+        self._children.add(new_child)
 
     def get_fqon(self) -> str:
         """
@@ -86,7 +113,7 @@ class NyanObject:
         """
         Returns the NyanMember with the specified name or
         None if there is no member with that name.
-        
+
         For inherited members, the notation 'origin_name.member'
         must be used.
         """
@@ -155,13 +182,25 @@ class NyanObject:
                 nested_object.set_fqon("%s.%s" % (new_fqon,
                                                   nested_object.get_name()))
 
+    def update_inheritance(self):
+        """
+        Update the set of inherited members.
+        """
+        # Reinitialize set
+        self._inherited_members = set()
+        self._process_inheritance()
+
+        # Update child objects
+        for child in self._children:
+            child.update_inheritance()
+
     def dump(self, indent_depth=0):
         """
         Returns the string representation of the object.
         """
         # Header
         output_str = "%s%s" % (indent_depth * INDENT,
-                                self.get_name())
+                               self.get_name())
 
         output_str += self._prepare_inheritance_content()
 
@@ -207,9 +246,9 @@ class NyanObject:
             empty = False
             for nested_object in self._nested_objects:
                 output_str += "%s%s" % (indent_depth * INDENT,
-                                          nested_object.dump(
-                                              indent_depth + 1
-                                              ))
+                                        nested_object.dump(
+                                            indent_depth + 1
+                                        ))
 
             output_str += "\n"
 
@@ -250,29 +289,29 @@ class NyanObject:
                 if parent_member.is_inherited():
                     member_name = parent_member.get_name().split(".")[-1]
                     inherited_member = InheritedNyanMember(
-                                            member_name,
-                                            parent_member.get_member_type(),
-                                            parent,
-                                            parent_member.get_origin(),
-                                            None,
-                                            parent_member.get_set_type(),
-                                            None,
-                                            None,
-                                            parent_member.is_optional()
-                                            )
+                        member_name,
+                        parent_member.get_member_type(),
+                        parent,
+                        parent_member.get_origin(),
+                        None,
+                        parent_member.get_set_type(),
+                        None,
+                        None,
+                        parent_member.is_optional()
+                    )
 
                 else:
                     inherited_member = InheritedNyanMember(
-                                            parent_member.get_name(),
-                                            parent_member.get_member_type(),
-                                            parent,
-                                            parent,
-                                            None,
-                                            parent_member.get_set_type(),
-                                            None,
-                                            None,
-                                            parent_member.is_optional()
-                                            )
+                        parent_member.get_name(),
+                        parent_member.get_member_type(),
+                        parent,
+                        parent,
+                        None,
+                        parent_member.get_set_type(),
+                        None,
+                        None,
+                        parent_member.is_optional()
+                    )
 
                 self._inherited_members.add(inherited_member)
 
@@ -287,7 +326,8 @@ class NyanObject:
 
         # self.name must conform to nyan grammar rules
         if not re.fullmatch(r"[a-zA-Z_][a-zA-Z_]*", self.name):
-            raise Exception("%s: 'name' is not well-formed" % (self.__repr__()))
+            raise Exception("%s: 'name' is not well-formed" %
+                            (self.__repr__()))
 
         # self._parents must be NyanObjects
         for parent in self._parents:
@@ -420,8 +460,8 @@ class NyanMember:
     Superclass for all nyan members.
     """
 
-    def __init__(self, name: str, member_type, value=None, operator:str=None,
-                override_depth:int=0, set_type=None, optional:bool=False):
+    def __init__(self, name: str, member_type, value=None, operator: str=None,
+                 override_depth: int=0, set_type=None, optional: bool=False):
         """
         Initializes the member and does some correctness
         checks, for your convenience.
@@ -441,7 +481,7 @@ class NyanMember:
                 self._set_type = MemberType(set_type)
 
         self._optional = optional                       # whether the value is allowed
-                                                        # to be NYAN_NONE
+        # to be NYAN_NONE
 
         self._operator = None
         if operator:
@@ -502,7 +542,7 @@ class NyanMember:
         """
         Returns True if the member has a value.
         """
-        return self.value != None
+        return self.value is not None
 
     def is_inherited(self) -> bool:
         """
@@ -527,7 +567,7 @@ class NyanMember:
                     self.value.has_ancestor((self._member_type))):
                 raise Exception(("%s: 'value' with type NyanObject must "
                                  "have their member type as ancestor")
-                                 % (self.__repr__()))
+                                % (self.__repr__()))
         self._type_conversion()
 
     def dump(self) -> str:
@@ -569,7 +609,7 @@ class NyanMember:
         without the type definition.
         """
         return "%s %s%s %s" % (self.get_name(), "@" * self._override_depth,
-                                   self._operator.value, self.__str__())
+                               self._operator.value, self.__str__())
 
     def _sanity_check(self):
         """
@@ -679,7 +719,7 @@ class NyanMember:
                         self.value.has_ancestor((self._member_type))):
                     raise Exception(("%s: 'value' with type NyanObject must "
                                      "have their member type as ancestor")
-                                     % (self.__repr__()))
+                                    % (self.__repr__()))
 
     def _type_conversion(self):
         """
@@ -713,7 +753,7 @@ class NyanMember:
     def _get_primitive_value_str(self, member_type, value) -> str:
         """
         Returns the nyan string representation of primitive values.
-        
+
         Subroutine of __str__()
         """
         if member_type is MemberType.FLOAT:
@@ -732,7 +772,7 @@ class NyanMember:
             return "UNINITIALIZED VALUE %s" % self.__repr__()
 
         if self._optional and self.value is MemberSpecialValue.NYAN_NONE:
-                return MemberSpecialValue.NYAN_NONE.value
+            return MemberSpecialValue.NYAN_NONE.value
 
         if self._member_type in (MemberType.INT, MemberType.FLOAT,
                                  MemberType.TEXT, MemberType.FILE,
@@ -751,9 +791,9 @@ class NyanMember:
             if len(self.value) > 0:
                 for val in self.value:
                     output_str += "%s, " % self._get_primitive_value_str(
-                                                        self._set_type,
-                                                        val
-                                                        )
+                        self._set_type,
+                        val
+                    )
 
                 return output_str[:-2] + "}"
 
@@ -773,18 +813,18 @@ class InheritedNyanMember(NyanMember):
     """
 
     def __init__(self, name: str, member_type, parent, origin, value=None,
-                set_type=None, operator=None, override_depth=None, optional=False):
+                 set_type=None, operator=None, override_depth=None, optional=False):
         """
         Initializes the member and does some correctness
         checks, for your convenience.
         """
 
         self._parent = parent               # the direct parent of the
-                                            # object which contains the
-                                            # member
+        # object which contains the
+        # member
 
         self._origin = origin               # nyan object which originally
-                                            # defines the member
+        # defines the member
 
         super().__init__(name, member_type, value, operator,
                          override_depth, set_type, optional)
@@ -882,10 +922,10 @@ class MemberOperator(Enum):
     Symbols for nyan member operators.
     """
 
-    ASSIGN = "="  # assignment
-    ADD = "+="  # addition, append, insertion, union
-    SUBTRACT = "-="  # subtraction, remove
-    MULTIPLY = "*="  # multiplication
-    DIVIDE = "/="  # division
-    AND = "&="  # logical AND, intersect
-    OR = "|="  # logical OR, union
+    ASSIGN = "="        # assignment
+    ADD = "+="          # addition, append, insertion, union
+    SUBTRACT = "-="     # subtraction, remove
+    MULTIPLY = "*="     # multiplication
+    DIVIDE = "/="       # division
+    AND = "&="          # logical AND, intersect
+    OR = "|="           # logical OR, union
