@@ -145,7 +145,7 @@ class Texture(exportable.Exportable):
                             "from unknown source type: %s" % (type(input_data)))
 
         self.image_data, (self.width, self.height), self.image_metadata\
-            = merge_frames(frames)
+ = merge_frames(frames)
 
     def _slp_to_subtextures(self, frame, main_palette, player_palette=None,
                             custom_cutter=None):
@@ -220,6 +220,9 @@ class Texture(exportable.Exportable):
             formatter.export(targetdir, meta_formats)
 
     def dump(self, filename):
+        """
+        Creates a DataDefinition object for the texture metadata.
+        """
         return [data_definition.DataDefinition(self,
                                                self.image_metadata,
                                                filename)]

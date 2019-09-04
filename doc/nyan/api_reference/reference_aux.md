@@ -6,10 +6,10 @@ Reference documentation of the `engine.aux` module of the openage modding API.
 
 ```python
 Accuracy(Entity):
-    accuracy : float
-    accuracy_dispersion : float
-    dispersion_dropoff : DropOffType
-    target_types : set(GameEntityType)
+    accuracy             : float
+    accuracy_dispersion  : float
+    dispersion_dropoff   : DropOffType
+    target_types         : set(GameEntityType)
     blacklisted_entities : set(GameEntity)
 ```
 
