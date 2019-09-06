@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.3">
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
   <help_text>// Uncomment the following line to change the fontsize and font:
 // fontsize=10
 // fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
@@ -2038,16 +2037,16 @@ resources : ResourceSpot</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5150</x>
+      <x>5130</x>
       <y>3460</y>
-      <w>200</w>
+      <w>240</w>
       <h>80</h>
     </coordinates>
     <panel_attributes>*Live*
 bg=green
 
 --
-attributes : set(Attribute)</panel_attributes>
+attributes : set(AttributeSetting)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -2055,8 +2054,8 @@ attributes : set(Attribute)</panel_attributes>
     <coordinates>
       <x>3300</x>
       <y>2010</y>
-      <w>200</w>
-      <h>80</h>
+      <w>260</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>*Taunt*
 bg=pink
@@ -2123,7 +2122,7 @@ sound : Sound</panel_attributes>
 bg=green
 
 --
-despawn_condition : set(DespawnCondition)
+despawn_conditions : set(DespawnCondition)
 despawn_time : float
 state_change : StateChanger</panel_attributes>
     <additional_attributes/>
@@ -3823,8 +3822,8 @@ bg=green
 auto_restock : bool
 target : RestockableResourceSpot
 restock_time : float
-manual_cost : set(ResourceAmount)
-auto_cost : set(ResourceAmount)
+manual_cost : Cost
+auto_cost : Cost
 amount : int</panel_attributes>
     <additional_attributes/>
   </element>
@@ -4543,8 +4542,8 @@ blacklisted_entities : set(GameEntity)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4910</x>
-      <y>3570</y>
+      <x>4900</x>
+      <y>3720</y>
       <w>160</w>
       <h>80</h>
     </coordinates>
@@ -4559,8 +4558,8 @@ amount : int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>5060</x>
-      <y>3620</y>
+      <x>5050</x>
+      <y>3770</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -4918,8 +4917,8 @@ rate : float</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4910</x>
-      <y>3660</y>
+      <x>4900</x>
+      <y>3810</y>
       <w>160</w>
       <h>80</h>
     </coordinates>
@@ -6833,8 +6832,8 @@ ignore_containers : set(Container)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>5060</x>
-      <y>3670</y>
+      <x>5050</x>
+      <y>3820</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
