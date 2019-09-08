@@ -147,7 +147,7 @@ Guidelines:
 * Don't try to **fix any bugs**, see above.
 * Don't implement any features, your code is crap.
 * Don't even think about sending a **pull request**.
-* Please ignore the [easy tasks](https://github.com/SFTtech/openage/issues?q=is:issue+is:open+label:%22easy%22) that [could just be done](https://github.com/SFTtech/openage/issues?q=is:issue+is:open+label:%22just+do+it%22).
+* Please ignore the [easy tasks](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) that [could just be done](https://github.com/SFTtech/openage/issues?q=is:issue+is:open+label:%22just+do+it%22).
 * Absolutely never ever participate in this [boring community](https://www.reddit.com/r/openage/).
 * Don't note the irony, you idiot.
 
