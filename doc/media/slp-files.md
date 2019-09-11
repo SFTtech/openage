@@ -70,7 +70,7 @@ Length   | Type   | Description                | Example
 4 bytes  | uint32 | Command table offset       | 2464, 0x000009A0
 4 bytes  | uint32 | Outline table offset       | 64, 0x00000040
 4 bytes  | uint32 | Palette offset (unused)    | 0, 0x00000000
-4 bytes  | uint32 | Properties (likely unused) | 16, 0x00000010
+4 bytes  | uint32 | Properties                 | 16, 0x00000010
 4 bytes  | int32  | Width of image             | 800, 0x00000320
 4 bytes  | int32  | Height of image            | 600, 0x00000258
 4 bytes  | int32  | Centre of sprite (X coord) | 0, 0x00000000
@@ -92,12 +92,14 @@ Python format: `Struct("< I I I I i i i i")`
 
 * `palette_offset` is apparently never used.
 * `properties` is only used to indicate which palette for the image to use.
-  However, these seem to be the same, so can generally be ignored.
-    * 0x10 - "default game palette"
-    * 0x00 - "global color palette"
+  Up to HD, these seem to be the same, so can generally be ignored.
+	* 0x10 - "default game palette"
+	* 0x00 - "global color palette"
+* In AoE1:DE `properties` stores the palette number in the second last 2 bytes
+	* 0x0009 - use `09_buildings_asian.pal`
 * `hotspot_x` & `hotspot_y` tell the engine where the centre of the unit is.
 
-One image of size `width`*`height` has `height` rows, of course.
+One image of size `width * height` has `height` rows, of course.
 
 
 ### SLP Frame row edge
@@ -306,6 +308,8 @@ Command Name             | Byte value        | Pixel Count    | Description
 -------------------------|-------------------|----------------|------------
 Lesser draw              | `0bXXXXXX00`     | `cmd_byte >> 2` | An array of length *Count* filled with 1-byte "shadow" values (see below)
 Lesser skip              | `0bXXXXXX01`     | `cmd_byte >> 2` or next | *Count* transparent pixels should be drawn from the current position.
+Greater draw             | `0bXXXX0010`     | `cmd_byte << 4 + next`  | An array of length *Count* filled with 1-byte "shadow" values follows, 1 value per pixel.
+Greater skip             | `0bXXXX0011`     | `cmd_byte << 4 + next`  | *Count* transparent pixels should be drawn from the current position.
 Fill                     | `0bXXXX0111`     | `cmd_byte >> 4` or next | One palette index byte follows. This color should be drawn `pixel_count` times from the current position.
 
 The "shadow" values have to be converted to an alpha mask by left shifting

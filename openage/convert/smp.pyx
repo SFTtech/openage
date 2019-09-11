@@ -144,16 +144,16 @@ class SMP:
 
                 if frame_header.frame_type == 0x02:
                     # frame that store the main graphic
-                    self.main_frames.append(SMPFrame(frame_header, data))
+                    self.main_frames.append(SMPMainFrame(frame_header, data))
 
                 elif frame_header.frame_type == 0x04:
                     # frame that stores a shadow
-                    self.shadow_frames.append(SMPFrame(frame_header, data))
+                    self.shadow_frames.append(SMPShadowFrame(frame_header, data))
 
                 elif frame_header.frame_type == 0x08 or \
                      frame_header.frame_type == 0x10:
                     # frame that stores an outline
-                    self.outline_frames.append(SMPFrame(frame_header, data))
+                    self.outline_frames.append(SMPOutlineFrame(frame_header, data))
 
                 else:
                     raise Exception(
@@ -345,6 +345,169 @@ cdef class SMPFrame:
                               Py_ssize_t rowid,
                               Py_ssize_t first_cmd_offset,
                               size_t expected_size):
+        pass
+
+    cdef inline uint8_t get_byte_at(self, Py_ssize_t offset):
+        """
+        Fetch a byte from the SMP.
+        """
+        return self.data_raw[offset]
+
+    def get_picture_data(self, main_palette, player_palette):
+        """
+        Convert the palette index matrix to a colored image.
+        """
+        return determine_rgba_matrix(self.pcolor, main_palette, player_palette)
+
+    def get_hotspot(self):
+        """
+        Return the frame's hotspot (the "center" of the image)
+        """
+        return self.info.hotspot
+
+    def __repr__(self):
+        return repr(self.info)
+
+
+cdef class SMPMainFrame(SMPFrame):
+    """
+    SMPFrame for the main graphics sprite.
+    """
+
+    def __init__(self, frame_header, data):
+        super().__init__(frame_header, data)
+
+    cdef process_drawing_cmds(self, vector[pixel] &row_data,
+                              Py_ssize_t rowid,
+                              Py_ssize_t first_cmd_offset,
+                              size_t expected_size):
+        """
+        extract colors (pixels) for the drawing commands
+        found for this row in the SMP frame.
+        """
+
+        # position in the data blob, we start at the first command of this row
+        cdef Py_ssize_t dpos = first_cmd_offset
+
+        # is the end of the current row reached?
+        cdef bool eor = False
+
+        cdef uint8_t cmd
+        cdef uint8_t nextbyte
+        cdef uint8_t lower_crumb
+        cdef int pixel_count
+
+        # work through commands till end of row.
+        while not eor:
+            if row_data.size() > expected_size:
+                raise Exception(
+                    "Only %d pixels should be drawn in row %d "
+                    "with frame type %d, but we have %d "
+                    "already!" % (
+                        expected_size, rowid,
+                        self.info.frame_type,
+                        row_data.size()
+                    )
+                )
+
+            # fetch drawing instruction
+            cmd = self.get_byte_at(dpos)
+
+            # Last 2 bits store command type
+            lower_crumb = 0b00000011 & cmd
+
+            # opcode: cmd, rowid: rowid
+
+            if lower_crumb == 0b00000011:
+                # eol (end of line) command, this row is finished now.
+                eor = True
+
+                continue
+
+            elif lower_crumb == 0b00000000:
+                # skip command
+                # draw 'count' transparent pixels
+                # count = (cmd >> 2) + 1
+
+                pixel_count = (cmd >> 2) + 1
+
+                for _ in range(pixel_count):
+                    row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
+
+            elif lower_crumb == 0b00000001:
+                # color_list command
+                # draw the following 'count' pixels
+                # pixels are stored as rgba 32 bit values
+                # count = (cmd >> 2) + 1
+
+                pixel_count = (cmd >> 2) + 1
+
+                for _ in range(pixel_count):
+
+                    pixel_data = list()
+
+                    for _ in range(4):
+                        dpos += 1
+                        pixel_data.append(self.get_byte_at(dpos))
+
+                    row_data.push_back(pixel(color_standard,
+                                             pixel_data[0],
+                                             pixel_data[1],
+                                             pixel_data[2],
+                                             pixel_data[3]))
+
+            elif lower_crumb == 0b00000010:
+                # player_color command
+                # draw the following 'count' pixels
+                # pixels are stored as rgba 32 bit values
+                # count = (cmd >> 2) + 1
+
+                pixel_count = (cmd >> 2) + 1
+
+                for _ in range(pixel_count):
+
+                    pixel_data = list()
+
+                    for _ in range(4):
+                        dpos += 1
+                        pixel_data.append(self.get_byte_at(dpos))
+
+                    row_data.push_back(pixel(color_player,
+                                             pixel_data[0],
+                                             pixel_data[1],
+                                             pixel_data[2],
+                                             pixel_data[3]))
+
+            else:
+                raise Exception(
+                    "unknown smp main frame drawing command: " +
+                    "%#x in row %d" % (cmd, rowid))
+
+            # process next command
+            dpos += 1
+
+        # end of row reached, return the created pixel array.
+        return
+
+    def get_damage_mask(self):
+        """
+        Convert the 4th pixel byte to a mask used for damaged units.
+        """
+        return determine_damage_matrix(self.pcolor)
+
+
+cdef class SMPShadowFrame(SMPFrame):
+    """
+    SMPFrame for the shadow graphics.
+    """
+
+    def __init__(self, frame_header, data):
+        super().__init__(frame_header, data)
+
+    cdef process_drawing_cmds(self, vector[pixel] &row_data,
+                              Py_ssize_t rowid,
+                              Py_ssize_t first_cmd_offset,
+                              size_t expected_size):
         """
         extract colors (pixels) for the drawing commands
         found for this row in the SMP frame.
@@ -388,8 +551,7 @@ cdef class SMPFrame:
 
                 # shadows sometimes need an extra pixel at
                 # the end
-                if self.info.frame_type == 0x04 \
-                    and row_data.size() < expected_size:
+                if row_data.size() < expected_size:
                     # copy the last drawn pixel
                     # (still stored in nextbyte)
                     #
@@ -420,64 +582,15 @@ cdef class SMPFrame:
 
                 for _ in range(pixel_count):
 
-                    # main graphic pixels
-                    if self.info.frame_type == 0x02:
-                        pixel_data = list()
+                    dpos += 1
+                    nextbyte = self.get_byte_at(dpos)
 
-                        for _ in range(4):
-                            dpos += 1
-                            pixel_data.append(self.get_byte_at(dpos))
-
-                        row_data.push_back(pixel(color_standard,
-                                                 pixel_data[0],
-                                                 pixel_data[1],
-                                                 pixel_data[2],
-                                                 pixel_data[3]))
-
-                    # shadow pixels
-                    elif self.info.frame_type == 0x04:
-                        dpos += 1
-                        nextbyte = self.get_byte_at(dpos)
-
-                        row_data.push_back(pixel(color_shadow,
-                                                 nextbyte, 0, 0, 0))
-
-                # outline pixels
-                if self.info.frame_type == 0x08 or \
-                   self.info.frame_type == 0x10:
-                    for _ in range(pixel_count):
-                        # we don't know the color the game wants
-                        # so we just draw index 0
-                        row_data.push_back(pixel(color_outline,
-                                                 0, 0, 0, 0))
-
-            elif lower_crumb == 0b00000010:
-                # player_color command
-                # draw the following 'count' pixels
-                # pixels are stored as rgba 32 bit values
-                # count = (cmd >> 2) + 1
-
-                pixel_count = (cmd >> 2) + 1
-
-                for _ in range(pixel_count):
-
-                    # main graphic pixels
-                    if self.info.frame_type == 0x02:
-                        pixel_data = list()
-
-                        for _ in range(4):
-                            dpos += 1
-                            pixel_data.append(self.get_byte_at(dpos))
-
-                        row_data.push_back(pixel(color_player,
-                                                 pixel_data[0],
-                                                 pixel_data[1],
-                                                 pixel_data[2],
-                                                 pixel_data[3]))
+                    row_data.push_back(pixel(color_shadow,
+                                             nextbyte, 0, 0, 0))
 
             else:
                 raise Exception(
-                    "unknown slp drawing command: " +
+                    "unknown smp shadow frame drawing command: " +
                     "%#x in row %d" % (cmd, rowid))
 
             # process next command
@@ -486,32 +599,98 @@ cdef class SMPFrame:
         # end of row reached, return the created pixel array.
         return
 
-    cdef inline uint8_t get_byte_at(self, Py_ssize_t offset):
-        """
-        Fetch a byte from the SMP.
-        """
-        return self.data_raw[offset]
 
-    def get_picture_data(self, main_palette, player_palette):
-        """
-        Convert the palette index matrix to a colored image.
-        """
-        return determine_rgba_matrix(self.pcolor, main_palette, player_palette)
+cdef class SMPOutlineFrame(SMPFrame):
+    """
+    SMPFrame for the outline graphics.
+    """
 
-    def get_damage_mask(self):
-        """
-        Convert the 4th pixel byte to a mask used for damaged units.
-        """
-        return determine_damage_matrix(self.pcolor)
+    def __init__(self, frame_header, data):
+        super().__init__(frame_header, data)
 
-    def get_hotspot(self):
+    cdef process_drawing_cmds(self, vector[pixel] &row_data,
+                              Py_ssize_t rowid,
+                              Py_ssize_t first_cmd_offset,
+                              size_t expected_size):
         """
-        Return the frame's hotspot (the "center" of the image)
+        extract colors (pixels) for the drawing commands
+        found for this row in the SMP frame.
         """
-        return self.info.hotspot
 
-    def __repr__(self):
-        return repr(self.info)
+        # position in the data blob, we start at the first command of this row
+        cdef Py_ssize_t dpos = first_cmd_offset
+
+        # is the end of the current row reached?
+        cdef bool eor = False
+
+        cdef uint8_t cmd
+        cdef uint8_t nextbyte
+        cdef uint8_t lower_crumb
+        cdef int pixel_count
+
+        # work through commands till end of row.
+        while not eor:
+            if row_data.size() > expected_size:
+                raise Exception(
+                    "Only %d pixels should be drawn in row %d "
+                    "with frame type %d, but we have %d "
+                    "already!" % (
+                        expected_size, rowid,
+                        self.info.frame_type,
+                        row_data.size()
+                    )
+                )
+
+            # fetch drawing instruction
+            cmd = self.get_byte_at(dpos)
+
+            # Last 2 bits store command type
+            lower_crumb = 0b00000011 & cmd
+
+            # opcode: cmd, rowid: rowid
+
+            if lower_crumb == 0b00000011:
+                # eol (end of line) command, this row is finished now.
+                eor = True
+
+                continue
+
+            elif lower_crumb == 0b00000000:
+                # skip command
+                # draw 'count' transparent pixels
+                # count = (cmd >> 2) + 1
+
+                pixel_count = (cmd >> 2) + 1
+
+                for _ in range(pixel_count):
+                    row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
+
+            elif lower_crumb == 0b00000001:
+                # color_list command
+                # draw the following 'count' pixels
+                # as player outline colors.
+                # pixels are stored as rgba 32 bit values
+                # count = (cmd >> 2) + 1
+
+                pixel_count = (cmd >> 2) + 1
+
+                for _ in range(pixel_count):
+                    # we don't know the color the game wants
+                    # so we just draw index 0
+                    row_data.push_back(pixel(color_outline,
+                                             0, 0, 0, 0))
+
+            else:
+                raise Exception(
+                    "unknown smp outline frame drawing command: " +
+                    "%#x in row %d" % (cmd, rowid))
+
+            # process next command
+            dpos += 1
+
+        # end of row reached, return the created pixel array.
+        return
+
 
 @cython.boundscheck(False)
 @cython.wraparound(False)

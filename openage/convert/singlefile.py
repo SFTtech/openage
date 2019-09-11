@@ -35,11 +35,12 @@ def init_subparser(cli):
     cli.add_argument("--drs", type=argparse.FileType('rb'),
                      help=("drs archive filename that contains an slp "
                            "e.g. path ~/games/aoe/graphics.drs"))
-    cli.add_argument("--mode",
-                     help=("choose between DRS-SLP, SLP or SMP; "
+    cli.add_argument("--mode", choices=['drs-slp', 'slp', 'smp'],
+                     help=("choose between drs-slp, slp or smp; "
                            "otherwise, this is determined by the file extension"))
-    cli.add_argument("filename", help=("filename "
-                                       "e.g. path ~/games/aoe/326.slp"))
+    cli.add_argument("filename", help=("filename or, if inside a drs archive "
+                                       "given by --drs, the filename within "
+                                       "the drs archive"))
     cli.add_argument("output", help="image output path name")
 
 
@@ -48,23 +49,23 @@ def main(args, error):
     del error  # unused
 
     file_path = Path(args.filename)
-    file_extension = file_path.suffix[1:].upper()
+    file_extension = file_path.suffix[1:].lower()
 
-    if args.mode == "SLP" or (file_extension == "SLP" and not args.drs):
+    if args.mode == "slp" or (file_extension == "slp" and not args.drs):
         if not args.palette_file:
             raise Exception("palette-file needs to be specified")
 
         read_slp_file(args.filename, args.palette_file, args.output,
                       player_palette=args.player_palette_file)
 
-    elif args.mode == "DRS-SLP" or (file_extension == "SLP" and args.drs):
+    elif args.mode == "drs-slp" or (file_extension == "slp" and args.drs):
         if not (args.drs and args.palette_index):
             raise Exception("palette-file needs to be specified")
 
         read_slp_in_drs_file(args.drs, args.filename, args.palette_index,
                              args.output, interfac=args.interfac)
 
-    elif args.mode == "SMP" or file_extension == "SMP":
+    elif args.mode == "smp" or file_extension == "smp":
         if not (args.palette_file and args.player_palette_file):
             raise Exception("palette-file needs to be specified")
 
@@ -142,11 +143,14 @@ def read_slp_in_drs_file(drs, slp_path, palette_index, output_path, interfac=Non
 
     else:
         # otherwise use the path of the drs.
-        interfac_file = Path(drs.name).with_name("interfac.drs").open("rb")  # pylint: disable=no-member
+        interfac_file = Path(drs.name).with_name(
+            "interfac.drs").open("rb")  # pylint: disable=no-member
 
     # open palette
-    info("opening palette in drs '%s:%s.bina'...", interfac_file.name, palette_index)
-    palette_file = DRS(interfac_file).root["%s.bina" % palette_index].open("rb")
+    info("opening palette in drs '%s:%s.bina'...",
+         interfac_file.name, palette_index)
+    palette_file = DRS(
+        interfac_file).root["%s.bina" % palette_index].open("rb")
 
     info("parsing palette data...")
     palette = ColorTable(palette_file.read())

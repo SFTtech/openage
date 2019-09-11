@@ -112,7 +112,7 @@ class Texture(exportable.Exportable):
 
             frames = []
 
-            for frame in input_data.frames:
+            for frame in input_data.main_frames:
                 for subtex in self._slp_to_subtextures(frame,
                                                        main_palette,
                                                        player_palette,
@@ -153,8 +153,7 @@ class Texture(exportable.Exportable):
         """
         # TODO this needs some _serious_ performance work
         # (at least a 10x improvement, 50x would be better).
-        # ideas: remove PIL and use libpng via CPPInterface,
-        #        cythonize parts of SLP.py
+        # ideas: remove PIL and use libpng via CPPInterface
         subtex = TextureImage(
             frame.get_picture_data(main_palette, player_palette,
                                    self.player_id),
@@ -174,8 +173,7 @@ class Texture(exportable.Exportable):
         """
         # TODO this needs some _serious_ performance work
         # (at least a 10x improvement, 50x would be better).
-        # ideas: remove PIL and use libpng via CPPInterface,
-        #        cythonize parts of SLP.py
+        # ideas: remove PIL and use libpng via CPPInterface
         subtex = TextureImage(
             frame.get_picture_data(main_palette, player_palette),
             hotspot=frame.get_hotspot()
@@ -196,7 +194,8 @@ class Texture(exportable.Exportable):
         if not isinstance(targetdir, Path):
             raise ValueError("util.fslike Path expected as targetdir")
         if not isinstance(filename, str):
-            raise ValueError("str expected as filename, not %s" % type(filename))
+            raise ValueError("str expected as filename, not %s" %
+                             type(filename))
 
         basename, ext = os.path.splitext(filename)
 

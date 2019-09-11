@@ -194,7 +194,7 @@ For examples of drawing commands, see the [Examples](#examples) section.
 
 ### Full command list
 
-An `X` signifies that the bit can have any value. These bts are used for
+An `X` signifies that the bit can have any value. These bits are used for
 storing the length (pixel count) of the command.
 
 The commands works slightly different for each frame type.
@@ -204,10 +204,10 @@ The commands works slightly different for each frame type.
 
 Command Name     | Byte value    | Pixel Count              | Description
 -----------------|---------------|--------------------------|------------
-Skip             | `0bXXXXXX00` | `(cmd_byte >> 2) + 1` | *Count* transparent pixels should be drawn from the current position.
-Draw             | `0bXXXXXX01` | `(cmd_byte >> 2) + 1` | An array of length `pixel_count * 4` bytes filled with 4-byte SMP pixels follows (see [SMP Pixel](#smp-pixel))
-Playercolor Draw | `0bXXXXXX10` | `(cmd_byte >> 2) + 1` | An array of length `pixel_count * 4` bytes filled with 4-byte SMP pixels follows (see [SMP Pixel](#smp-pixel))
-End of Row       | `0bXXXXXX11` | 0                        | End of commands for this row. If more commands follow, they are for the next row.
+Skip             | `0bXXXXXX00`  | `(cmd_byte >> 2) + 1`    | *Count* transparent pixels should be drawn from the current position.
+Draw             | `0bXXXXXX01`  | `(cmd_byte >> 2) + 1`    | An array of length `pixel_count * 4` bytes filled with 4-byte SMP pixels follows (see [SMP Pixel](#smp-pixel))
+Playercolor Draw | `0bXXXXXX10`  | `(cmd_byte >> 2) + 1`    | An array of length `pixel_count * 4` bytes filled with 4-byte SMP pixels follows (see [SMP Pixel](#smp-pixel))
+End of Row       | `0bXXXXXX11`  | 0                        | End of commands for this row. If more commands follow, they are for the next row.
 
 * When converting the main graphics, the alpha values from the palette are
 apparently ignored by the game.
@@ -217,9 +217,9 @@ apparently ignored by the game.
 
 Command Name     | Byte value    | Pixel Count              | Description
 -----------------|---------------|--------------------------|------------
-Skip             | `0bXXXXXX00` | `(cmd_byte >> 2) + 1` | *Count* transparent pixels should be drawn from the current position.
-Draw             | `0bXXXXXX01` | `(cmd_byte >> 2) + 1` | An array of length `pixel_count * 4` bytes filled with 1-byte alpha values follows.
-End of Row       | `0bXXXXXX11` | 0                        | End of commands for this row. If more commands follow, they are for the next row.
+Skip             | `0bXXXXXX00`  | `(cmd_byte >> 2) + 1`    | *Count* transparent pixels should be drawn from the current position.
+Draw             | `0bXXXXXX01`  | `(cmd_byte >> 2) + 1`    | An array of length `pixel_count * 4` bytes filled with 1-byte alpha values follows.
+End of Row       | `0bXXXXXX11`  | 0                        | End of commands for this row. If more commands follow, they are for the next row.
 
 * Shadow frames (frame type `0x04`) sometimes do not explicitely draw the last
 pixel in a row. If that happens, the openage converter draws the last *Draw* command
@@ -230,9 +230,9 @@ again
 
 Command Name     | Byte value    | Pixel Count              | Description
 -----------------|---------------|--------------------------|------------
-Skip             | `0bXXXXXX00` | `(cmd_byte >> 2) + 1` | *Count* transparent pixels should be drawn from the current position.
-Draw             | `0bXXXXXX01` | `(cmd_byte >> 2) + 1` | *Count* player color pixels should be drawn from the current position.
-End of Row       | `0bXXXXXX11` | 0                        | End of commands for this row. If more commands follow, they are for the next row.
+Skip             | `0bXXXXXX00`  | `(cmd_byte >> 2) + 1`    | *Count* transparent pixels should be drawn from the current position.
+Draw             | `0bXXXXXX01`  | `(cmd_byte >> 2) + 1`    | *Count* player color pixels should be drawn from the current position.
+End of Row       | `0bXXXXXX11`  | 0                        | End of commands for this row. If more commands follow, they are for the next row.
 
 * SMP files do ot specify a color from a palette. The openage converter always uses the
 color from index 0 in the player color palette for these *Draw* commands.
