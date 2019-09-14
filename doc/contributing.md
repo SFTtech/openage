@@ -17,7 +17,7 @@ You're in luck. There's various sources for tasks:
 
  - Have a look at the [issue tracker](https://github.com/sfttech/openage/issues), especially issues with labels:
    - [good first issue](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
-   - [just do it](https://github.com/SFTtech/openage/labels/just%20do%20it)!
+   - [just do it](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22just+do+it%22)!
  - Use [your favorite code searching tool](https://github.com/ggreer/the_silver_searcher) to find `TODO` messages!
  - The issue tracker [milestones](https://github.com/SFTtech/openage/milestones)!
  - [milestones.md](/doc/milestones.md) (more ambitious, obviously...)!
