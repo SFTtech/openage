@@ -137,11 +137,20 @@ Item {
 				Layout.fillWidth: true
 				Layout.minimumWidth: epoch.implicitWidth
 
-				Text {
-					id: epoch
+				Rectangle {
 					anchors.centerIn: parent
-					color: "white"
-					text: root.playerName
+					width: 200
+					height: metricsUnit * 2.5
+
+					color: "black"
+
+					Text {
+						id: epoch
+						anchors.centerIn: parent
+
+						color: "white"
+						text: root.playerName
+					}
 				}
 			}
 
@@ -289,6 +298,7 @@ Item {
 
 						color: "black"
 						text: root.actionMode.selection_owner
+						horizontalAlignment: Text.AlignRight
 					}
 
 				}

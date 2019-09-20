@@ -134,7 +134,8 @@ Generator::Generator(qtsdl::GuiItemLink *gui_link)
 	this->setv("player_radius", 10);
 	this->setv("load_filename", "/tmp/default_save.oas");
 	this->setv("from_file", false);
-	this->set_csv("player_names", std::vector<std::string>{"name1", "name2"});
+	// TODO pick the users name
+	this->set_csv("player_names", std::vector<std::string>{"Jonas", "Michael"});
 }
 
 std::shared_ptr<GameSpec> Generator::get_spec() const {
@@ -145,7 +146,7 @@ std::vector<std::string> Generator::player_names() const {
 	auto result = this->get_csv("player_names");
 
 	// gaia is player 0
-	result.insert(result.begin(), "gaia");
+	result.insert(result.begin(), "Gaia");
 
 	return result;
 }

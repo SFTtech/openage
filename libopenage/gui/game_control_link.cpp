@@ -164,7 +164,12 @@ void ActionModeLink::on_selection_changed(UnitSelection *unit_selection) {
 			if (u->has_attribute(attr_type::hitpoints) && u->has_attribute(attr_type::damaged)) {
 				auto &hp = u->get_attribute<attr_type::hitpoints>();
 				auto &dm = u->get_attribute<attr_type::damaged>();
-				this->selection_hp = QString::fromStdString("[====] "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
+				// TODO replace ascii health bar with real one
+				if (hp.hp >= 200) {
+					this->selection_hp = QString::fromStdString("[========] "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
+				} else {
+					this->selection_hp = QString::fromStdString("[====] "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
+				}
 			} else {
 				this->selection_hp = QString::fromStdString("-");
 			}
