@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "selection.h"
 
@@ -22,7 +22,6 @@ UnitSelection::UnitSelection(Engine *engine)
 	:
 	selection_type{selection_type_t::nothing},
 	drag_active{false},
-	font_size{14},
 	engine{engine} {
 }
 

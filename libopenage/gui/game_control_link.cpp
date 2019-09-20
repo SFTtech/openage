@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "game_control_link.h"
 
@@ -159,6 +159,7 @@ void ActionModeLink::on_selection_changed(UnitSelection *unit_selection) {
 				auto &own_attr = u->get_attribute<attr_type::owner>();
 				this->selection_owner = QString::fromStdString(
 						own_attr.player.name + "\n"  + own_attr.player.civ->civ_name);
+				// TODO find the team status of the player
 			}
 
 			if (u->has_attribute(attr_type::hitpoints) && u->has_attribute(attr_type::damaged)) {
