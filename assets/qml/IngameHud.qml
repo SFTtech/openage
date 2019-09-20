@@ -230,6 +230,85 @@ Item {
 					anchors.fill: parent
 					tornBottom: false
 				}
+
+				Item {
+					anchors.fill: parent
+					id: selection_single_panel
+					visible: root.actionMode.selection_size == 1
+
+					Text {
+						anchors.top: parent.top
+						anchors.topMargin: metricsUnit * 2
+						anchors.left: parent.left
+						anchors.leftMargin: metricsUnit * 2
+
+						id: selected_name
+
+						color: "black"
+						text: root.actionMode.selection_name
+						font.pointSize: 16
+					}
+
+					Text {
+						anchors.bottom: selected_name.bottom
+						anchors.left: selected_name.right
+						anchors.leftMargin: metricsUnit * 1
+
+						id: selected_type
+
+						color: "black"
+						opacity: 0.8
+						text: root.actionMode.selection_type
+					}
+
+					Text {
+						anchors.top: selected_name.bottom
+						anchors.left: selected_name.left
+						anchors.topMargin: metricsUnit / 2
+
+						id: selected_owner
+
+						color: "black"
+						text: root.actionMode.selection_hp
+					}
+
+					Text {
+						anchors.top: selected_owner.bottom
+						anchors.left: selected_owner.left
+						anchors.topMargin: metricsUnit * 2
+
+						color: "black"
+						text: root.actionMode.selection_attrs
+					}
+
+					Text {
+						anchors.top: parent.top
+						anchors.right: parent.right
+						anchors.topMargin: metricsUnit * 2
+						anchors.rightMargin: metricsUnit * 2
+
+						color: "black"
+						text: root.actionMode.selection_owner
+					}
+
+				}
+
+				Item {
+					anchors.fill: parent
+					id: selection_group_panel
+					visible: root.actionMode.selection_size > 1
+
+					Text {
+						anchors.top: parent.top
+						anchors.topMargin: metricsUnit * 2
+						anchors.left: parent.left
+						anchors.leftMargin: metricsUnit * 2
+
+						color: "black"
+						text: root.actionMode.selection_name
+						font.pointSize: 14
+					}
+				}
 			}
 		}
 
