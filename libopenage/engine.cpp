@@ -466,8 +466,12 @@ void Engine::register_tick_action(TickHandler *handler) {
 	this->on_engine_tick.push_back(handler);
 }
 
-void Engine::register_drawhud_action(HudHandler *handler) {
-	this->on_drawhud.push_back(handler);
+void Engine::register_drawhud_action(HudHandler *handler, int order) {
+	if (order < 0) {
+		this->on_drawhud.insert(this->on_drawhud.begin(), handler);
+	} else {
+		this->on_drawhud.push_back(handler);
+	}
 }
 
 void Engine::register_draw_action(DrawHandler *handler) {

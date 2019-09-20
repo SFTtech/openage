@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 """
 Entry point for the code compliance checker.
@@ -183,7 +183,7 @@ def main(args):
         if args.fix and auto_fixes:
             remainfound = "remain%s" % plural
         else:
-            remainfound = ("were" if issues_count > 1 else "was") + "found"
+            remainfound = ("were" if issues_count > 1 else "was") + " found"
 
         print("==> \x1b[33;1m{num} issue{plural}\x1b[m {remainfound}."
               "".format(num=issues_count,

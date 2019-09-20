@@ -742,7 +742,7 @@ void GameControl::set_engine(Engine *engine) {
 		this->engine = engine;
 
 		// add handlers
-		this->engine->register_drawhud_action(this);
+		this->engine->register_drawhud_action(this, -1);
 
 		auto &action = this->engine->get_action_manager();
 

@@ -181,8 +181,9 @@ public:
 
 	/**
 	 * register a hud drawing handler, drawn in hud coordinates.
+	 * order: 1 above, -1 below
 	 */
-	void register_drawhud_action(HudHandler *handler);
+	void register_drawhud_action(HudHandler *handler, int order = 1);
 
 	/**
 	 * register a draw handler, run in game coordinates.
