@@ -9,6 +9,8 @@
 #include "../engine.h"
 #include "engine_link.h"
 #include "game_main_link.h"
+#include "../unit/action.h"
+#include "../unit/unit.h"
 
 namespace openage {
 namespace gui {
@@ -115,6 +117,10 @@ QString ActionModeLink::get_population() const {
 	return this->population;
 }
 
+int ActionModeLink::get_selection_size() const {
+	return this->selection ? this->selection->get_units_count() : 0;
+}
+
 bool ActionModeLink::get_population_warn() const {
 	return this->population_warn;
 }
@@ -138,6 +144,58 @@ void ActionModeLink::on_population_changed(int demand, int capacity, bool warn) 
 	emit this->population_changed();
 }
 
+void ActionModeLink::on_selection_changed(UnitSelection *unit_selection) {
+	this->selection = unit_selection;
+
+	if (this->selection->get_units_count() == 1) {
+		auto &ref = this->selection->get_first_unit();
+		if (ref.is_valid()) {
+			Unit *u = ref.get();
+
+			this->selection_name = QString::fromStdString(u->unit_type->name());
+			this->selection_type = QString::fromStdString("(type: " + std::to_string(u->unit_type->id()) + " " + u->top()->name() + ")");
+
+			if (u->has_attribute(attr_type::owner)) {
+				auto &own_attr = u->get_attribute<attr_type::owner>();
+				this->selection_owner = QString::fromStdString(
+						own_attr.player.name + "\n"  + own_attr.player.civ->civ_name);
+			}
+
+			if (u->has_attribute(attr_type::hitpoints) && u->has_attribute(attr_type::damaged)) {
+				auto &hp = u->get_attribute<attr_type::hitpoints>();
+				auto &dm = u->get_attribute<attr_type::damaged>();
+				this->selection_hp = QString::fromStdString("[====] "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
+			} else {
+				this->selection_hp = QString::fromStdString("-");
+			}
+
+			std::string lines;
+			if (u->has_attribute(attr_type::resource)) {
+				auto &res_attr = u->get_attribute<attr_type::resource>();
+				lines += ("resource: "+std::to_string(res_attr.amount)+" "+std::to_string(res_attr.resource_type)) + "\n";
+			}
+			if (u->has_attribute(attr_type::building)) {
+				auto &build_attr = u->get_attribute<attr_type::building>();
+				lines += ("built: "+std::to_string(build_attr.completed)) + "\n";
+			}
+			if (u->has_attribute(attr_type::garrison)) {
+				auto &garrison_attr = u->get_attribute<attr_type::garrison>();
+				lines += ("garrison: "+std::to_string(garrison_attr.content.size())) + "\n";
+			}
+			this->selection_attrs = QString::fromStdString(lines);
+
+		}
+
+	} else if  (this->selection->get_units_count() > 1) {
+
+		this->selection_name = QString::fromStdString(
+				std::to_string(this->selection->get_units_count()) + " units");
+	}
+
+
+	emit this->selection_changed();
+}
+
 void ActionModeLink::on_core_adopted() {
 	this->Inherits::on_core_adopted();
 	QObject::connect(&unwrap(this)->gui_signals,
@@ -148,6 +206,10 @@ void ActionModeLink::on_core_adopted() {
 	                 &ActionModeSignals::population_changed,
 	                 this,
 	                 &ActionModeLink::on_population_changed);
+	QObject::connect(&unwrap(this)->gui_signals,
+	                 &ActionModeSignals::selection_changed,
+	                 this,
+	                 &ActionModeLink::on_selection_changed);
 	QObject::connect(&unwrap(this)->gui_signals,
 	                 &ActionModeSignals::buttons_type_changed,
 	                 this,

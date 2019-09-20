@@ -119,6 +119,14 @@ class ActionModeLink : public qtsdl::Inherits<OutputModeLink, ActionModeLink> {
 	Q_PROPERTY(QString population READ get_population NOTIFY population_changed)
 	Q_PROPERTY(bool population_warn READ get_population_warn NOTIFY population_changed)
 
+	Q_PROPERTY(int selection_size READ get_selection_size NOTIFY selection_changed)
+
+	Q_PROPERTY(QString selection_name MEMBER selection_name NOTIFY selection_changed)
+	Q_PROPERTY(QString selection_type MEMBER selection_type NOTIFY selection_changed)
+	Q_PROPERTY(QString selection_owner MEMBER selection_owner NOTIFY selection_changed)
+	Q_PROPERTY(QString selection_hp MEMBER selection_hp NOTIFY selection_changed)
+	Q_PROPERTY(QString selection_attrs MEMBER selection_attrs NOTIFY selection_changed)
+
 public:
 	ActionModeLink(QObject *parent=nullptr);
 	virtual ~ActionModeLink();
@@ -126,6 +134,7 @@ public:
 	QString get_ability() const;
 	QString get_population() const;
 	bool get_population_warn() const;
+	int get_selection_size() const;
 
 	Q_INVOKABLE void act(const QString &action);
 
@@ -134,11 +143,13 @@ signals:
 	void action_triggered(const std::string &ability);
 	void buttons_type_changed(const ActionButtonsType buttons_type);
 	void population_changed();
+	void selection_changed();
 
 private slots:
 	void on_ability_changed(const std::string &ability);
 	void on_buttons_type_changed(const ActionButtonsType buttons_type);
 	void on_population_changed(int demand, int capacity, bool warn);
+	void on_selection_changed(UnitSelection *unit_selection);
 
 private:
 	virtual void on_core_adopted() override;
@@ -146,6 +157,13 @@ private:
 	QString ability;
 	QString population;
 	bool population_warn;
+	UnitSelection *selection;
+
+	QString selection_name;
+	QString selection_type;
+	QString selection_owner;
+	QString selection_hp;
+	QString selection_attrs;
 };
 
 class EditorModeLink;

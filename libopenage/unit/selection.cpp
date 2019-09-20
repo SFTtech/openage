@@ -8,6 +8,7 @@
 #include "../coord/tile.h"
 #include "../engine.h"
 #include "../log/log.h"
+#include "../renderer/text.h"
 #include "../terrain/terrain.h"
 #include "action.h"
 #include "command.h"
@@ -21,7 +22,7 @@ UnitSelection::UnitSelection(Engine *engine)
 	:
 	selection_type{selection_type_t::nothing},
 	drag_active{false},
-	font_size{12},
+	font_size{14},
 	engine{engine} {
 }
 
@@ -77,14 +78,6 @@ bool UnitSelection::on_drawhud() {
 		}
 	}
 	glColor3f(1.0, 1.0, 1.0); // reset
-
-	// display details of single selected unit
-	if (this->units.size() == 1) {
-		auto &ref = this->units.begin()->second;
-		if (ref.is_valid()) {
-			this->show_attributes(ref.get());
-		}
-	}
 
 	// ui graphics 3404 and 3405
 	return true;
@@ -277,42 +270,6 @@ void UnitSelection::all_invoke(Command &cmd) {
 			// TODO: queue_cmd returns ability which allows playing of sound
 			u.second.get()->queue_cmd(cmd);
 		}
-	}
-}
-
-void UnitSelection::show_attributes(Unit *u) {
-	std::vector<std::string> lines;
-	lines.push_back(u->top()->name());
-	lines.push_back("type: "+std::to_string(u->unit_type->id()));
-
-	if (u->has_attribute(attr_type::owner)) {
-		auto &own_attr = u->get_attribute<attr_type::owner>();
-		lines.push_back(own_attr.player.name);
-	}
-	if (u->has_attribute(attr_type::hitpoints) && u->has_attribute(attr_type::damaged)) {
-		auto &hp = u->get_attribute<attr_type::hitpoints>();
-		auto &dm = u->get_attribute<attr_type::damaged>();
-		lines.push_back("hitpoints: "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
-	}
-	if (u->has_attribute(attr_type::resource)) {
-		auto &res_attr = u->get_attribute<attr_type::resource>();
-		lines.push_back("resource: "+std::to_string(res_attr.amount)+" "+std::to_string(res_attr.resource_type));
-	}
-	if (u->has_attribute(attr_type::building)) {
-		auto &build_attr = u->get_attribute<attr_type::building>();
-		lines.push_back("built: "+std::to_string(build_attr.completed));
-	}
-	if (u->has_attribute(attr_type::garrison)) {
-		auto &garrison_attr = u->get_attribute<attr_type::garrison>();
-		lines.push_back("garrison: "+std::to_string(garrison_attr.content.size()));
-	}
-
-	// render text
-	int vpos = 160;
-	this->engine->render_text({0, vpos}, 20, "%s", u->unit_type->name().c_str());
-	for (auto &s : lines) {
-		vpos -= this->font_size;
-		engine->render_text({0, vpos}, this->font_size, "%s", s.c_str());
 	}
 }
 

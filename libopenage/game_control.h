@@ -148,6 +148,7 @@ public slots:
 signals:
 	void resource_changed(game_resource resource, int amount);
 	void population_changed(int demand, int capacity, bool warn);
+	void selection_changed(UnitSelection *unit_selection);
 	void ability_changed(const std::string &ability);
 	void buttons_type_changed(const ActionButtonsType type);
 
@@ -190,6 +191,8 @@ private:
 	 * (if changed)
 	 */
 	void announce_buttons_type();
+
+	void announce_current_selection();
 
 	/**
 	 * decides which type of right mouse click command
@@ -335,6 +338,7 @@ signals:
 
 	void current_player_name_changed(const std::string &current_player_name);
 	void current_civ_index_changed(int current_civ_index);
+	void is_selected_unit_changed(bool is_selected_unit);
 
 private:
 	GameControl *game_control;

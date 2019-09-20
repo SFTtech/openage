@@ -6,6 +6,7 @@
 #include "error/error.h"
 #include "gamestate/game_spec.h"
 #include "log/log.h"
+#include "renderer/color.h"
 #include "terrain/terrain_chunk.h"
 #include "util/strings.h"
 
@@ -308,6 +309,7 @@ void ActionMode::on_game_control_set() {
 				input->remove_context(top_ctxt);
 			}
 			this->announce_buttons_type();
+			this->announce_current_selection();
 		});
 	};
 
@@ -346,6 +348,7 @@ void ActionMode::on_game_control_set() {
 			this->selecting && !this->type_focus) {
 
 			this->selection->drag_update(mousepos_camgame);
+			this->announce_current_selection();
 			return true;
 		}
 		return false;
@@ -453,6 +456,10 @@ void ActionMode::render() {
 
 		this->announce_resources();
 
+		if (this->selection && this->selection->get_units_count() > 0) {
+			this->announce_current_selection();
+		}
+
 		// when a building is being placed
 		if (this->type_focus) {
 			auto txt = this->type_focus->default_texture();
@@ -463,7 +470,7 @@ void ActionMode::render() {
 		}
 	}
 	else {
-		engine->render_text({0, 140}, 12, "Action Mode requires a game");
+		engine->render_text({0, 140}, 12, renderer::Colors::WHITE, "Action Mode requires a game");
 	}
 
 	ENSURE(this->selection != nullptr, "selection not set");
@@ -834,7 +841,13 @@ void GameControl::announce_current_player_name() {
 		emit this->gui_signals.current_player_name_changed(
 			"[" + std::to_string(player->color) + "] " + player->name);
 		emit this->gui_signals.current_civ_index_changed(player->civ->civ_id);
+
 	}
+}
+
+void ActionMode::announce_current_selection() {
+
+	emit this->gui_signals.selection_changed(this->selection);
 }
 
 bool GameControl::on_drawhud() {

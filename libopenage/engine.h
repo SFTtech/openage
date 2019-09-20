@@ -44,6 +44,7 @@ namespace renderer {
 class Font;
 class FontManager;
 class TextRenderer;
+class Color;
 
 } // openage::renderer
 
@@ -260,7 +261,7 @@ public:
 	/**
 	 * render text with the at a position with specified font size
 	 */
-	void render_text(coord::viewport position, size_t size, const char *format, ...) ATTRIBUTE_FORMAT(4, 5);
+	void render_text(coord::viewport position, size_t size, const renderer::Color &color, const char *format, ...) ATTRIBUTE_FORMAT(5, 6);
 
 	/**
 	 * move the phys3 camera incorporated in the engine

@@ -82,11 +82,11 @@ public:
 	 */
 	void all_invoke(Command &cmd);
 
+	int get_units_count() { return this->units.size(); }
+
+	UnitReference & get_first_unit() { return this->units.begin()->second; }
+
 private:
-	/**
-	 * Must be given a valid unit to display text attribute indicators.
-	 */
-	void show_attributes(Unit *);
 
 	/**
 	 * Check whether the currently selected units may be selected at the same time
