@@ -141,7 +141,7 @@ Item {
 					id: epoch
 					anchors.centerIn: parent
 					color: "white"
-					text: root.playerName + (actionMode.ability.length ? (" (" + actionMode.ability + ")") : "")
+					text: root.playerName
 				}
 			}
 
@@ -306,6 +306,21 @@ Item {
 
 						color: "black"
 						text: root.actionMode.selection_name
+						font.pointSize: 14
+					}
+				}
+
+				Item {
+					anchors.left: parent.left
+					anchors.right: parent.right
+					anchors.bottom: parent.bottom
+					anchors.bottomMargin: metricsUnit * 3
+					visible: actionMode.ability.length
+
+					Text {
+						anchors.centerIn: parent
+
+						text: actionMode.ability
 						font.pointSize: 14
 					}
 				}
