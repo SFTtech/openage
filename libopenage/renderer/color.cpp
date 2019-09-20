@@ -31,4 +31,7 @@ bool Color::operator!=(const Color &other) const {
 	return !operator==(other);
 }
 
+Color Colors::WHITE = {255, 255, 255, 255};
+Color Colors::BLACK = {  0,   0,   0, 255};
+
 }} // openage::renderer

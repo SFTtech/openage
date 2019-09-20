@@ -43,7 +43,7 @@ Engine::Engine(const util::Path &root_dir,
 	:
 	OptionNode{"Engine"},
 	running{false},
-	drawing_debug_overlay{this, "drawing_debug_overlay", true},
+	drawing_debug_overlay{this, "drawing_debug_overlay", false},
 	drawing_huds{this, "drawing_huds", true},
 	root_dir{root_dir},
 	job_manager{SDL_GetCPUCount()},
@@ -56,7 +56,6 @@ Engine::Engine(const util::Path &root_dir,
 	profiler{this},
 	gui_link{} {
 
-
 	if (fps_limit > 0) {
 		this->ns_per_frame = 1e9 / fps_limit;
 	} else {
@@ -64,7 +63,7 @@ Engine::Engine(const util::Path &root_dir,
 	}
 
 	this->font_manager = std::make_unique<renderer::FontManager>();
-	for (uint32_t size : {12, 20}) {
+	for (uint32_t size : {12, 14, 20}) {
 		fonts[size] = this->font_manager->get_font("DejaVu Serif", "Book", size);
 	}
 
@@ -272,21 +271,20 @@ bool Engine::on_resize(coord::viewport_delta new_size) {
 }
 
 bool Engine::draw_debug_overlay() {
-	util::col {255, 255, 255, 255}.use();
 
 	// Draw FPS counter in the lower right corner
 	this->render_text(
-		{this->coord.viewport_size.x - 100, 15}, 20,
-		"%.1f fps", this->fps_counter.fps
+		{this->coord.viewport_size.x - 70, 15}, 20, renderer::Colors::WHITE,
+		"%.0f fps", this->fps_counter.display_fps
 	);
 
 	// Draw version string in the lower left corner
 	this->render_text(
-		{5, 35}, 20,
+		{5, 35}, 20, renderer::Colors::WHITE,
 		"openage %s", config::version
 	);
 	this->render_text(
-		{5, 15}, 12,
+		{5, 15}, 12, renderer::Colors::WHITE,
 		"%s", config::config_option_string
 	);
 
@@ -530,7 +528,7 @@ time_nsec_t Engine::lastframe_duration_nsec() const {
 	return this->fps_counter.nsec_lastframe;
 }
 
-void Engine::render_text(coord::viewport position, size_t size, const char *format, ...) {
+void Engine::render_text(coord::viewport position, size_t size, const renderer::Color &color, const char *format, ...) {
 	auto it = this->fonts.find(size);
 	if (it == this->fonts.end()) {
 		throw Error(MSG(err) << "Unknown font size requested: " << size);
@@ -545,6 +543,7 @@ void Engine::render_text(coord::viewport position, size_t size, const char *form
 	va_end(vl);
 
 	this->text_renderer->set_font(font);
+	this->text_renderer->set_color(color);
 	this->text_renderer->draw(position.x, position.y, buf);
 }
 

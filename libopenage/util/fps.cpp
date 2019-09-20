@@ -42,6 +42,10 @@ void FrameCounter::frame() {
 		fps = 1e9 * this->frame_count_weighted / this->frame_length_sum_weighted;
 	}
 
+	if (count % 20 == 0) {
+		display_fps = fps;
+	}
+
 	count += 1;
 }
 

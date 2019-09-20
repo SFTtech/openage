@@ -18,6 +18,9 @@ public:
 	/** auto-updated to always contain the current FPS value */
 	float fps;
 
+	/** auto-updated every 20 frames to always contain the current FPS value */
+	float display_fps;
+
 	/** contains the number of completed frames */
 	uint64_t count;
 
