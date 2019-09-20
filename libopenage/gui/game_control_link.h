@@ -164,6 +164,8 @@ private:
 	QString selection_owner;
 	QString selection_hp;
 	QString selection_attrs;
+
+	std::string progress(float progress, int size);
 };
 
 class EditorModeLink;

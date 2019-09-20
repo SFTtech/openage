@@ -157,9 +157,13 @@ void ActionModeLink::on_selection_changed(UnitSelection *unit_selection) {
 
 			if (u->has_attribute(attr_type::owner)) {
 				auto &own_attr = u->get_attribute<attr_type::owner>();
-				this->selection_owner = QString::fromStdString(
-						own_attr.player.name + "\n"  + own_attr.player.civ->civ_name);
-				// TODO find the team status of the player
+				if (own_attr.player.civ->civ_id != 0) { // not gaia
+					this->selection_owner = QString::fromStdString(
+						own_attr.player.name + "\n" + own_attr.player.civ->civ_name);
+					// TODO find the team status of the player
+				} else {
+					this->selection_owner = QString::fromStdString(" ");
+				}
 			}
 
 			if (u->has_attribute(attr_type::hitpoints) && u->has_attribute(attr_type::damaged)) {
@@ -167,26 +171,40 @@ void ActionModeLink::on_selection_changed(UnitSelection *unit_selection) {
 				auto &dm = u->get_attribute<attr_type::damaged>();
 				// TODO replace ascii health bar with real one
 				if (hp.hp >= 200) {
-					this->selection_hp = QString::fromStdString("[========] "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
+					this->selection_hp = QString::fromStdString(progress(dm.hp*1.0f/hp.hp, 8)+" "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
 				} else {
-					this->selection_hp = QString::fromStdString("[====] "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
+					this->selection_hp = QString::fromStdString(progress(dm.hp*1.0f/hp.hp, 4)+" "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
 				}
 			} else {
-				this->selection_hp = QString::fromStdString("-");
+				this->selection_hp = QString::fromStdString(" ");
 			}
 
 			std::string lines;
 			if (u->has_attribute(attr_type::resource)) {
 				auto &res_attr = u->get_attribute<attr_type::resource>();
-				lines += ("resource: "+std::to_string(res_attr.amount)+" "+std::to_string(res_attr.resource_type)) + "\n";
+				lines += std::to_string((int) res_attr.amount)+" "+std::to_string(res_attr.resource_type) + "\n";
 			}
 			if (u->has_attribute(attr_type::building)) {
 				auto &build_attr = u->get_attribute<attr_type::building>();
-				lines += ("built: "+std::to_string(build_attr.completed)) + "\n";
+				if (build_attr.completed < 1) {
+					lines += "Building: " + progress(build_attr.completed, 16)+ " "+std::to_string((int) (100 * build_attr.completed)) + "%\n";
+				}
 			}
 			if (u->has_attribute(attr_type::garrison)) {
 				auto &garrison_attr = u->get_attribute<attr_type::garrison>();
-				lines += ("garrison: "+std::to_string(garrison_attr.content.size())) + "\n";
+				if (garrison_attr.content.size() > 0) {
+					lines += "Garrison: "+std::to_string(garrison_attr.content.size()) + " units\n";
+				}
+			}
+			lines += "\n";
+			if (u->has_attribute(attr_type::population)) {
+				auto &population_attr = u->get_attribute<attr_type::population>();
+				if (population_attr.demand > 1) {
+					lines += "Population demand: "+std::to_string(population_attr.demand) + " units\n";
+				}
+				if (population_attr.capacity > 0) {
+					lines += "Population capacity: "+std::to_string(population_attr.capacity) + " units\n";
+				}
 			}
 			this->selection_attrs = QString::fromStdString(lines);
 
@@ -200,6 +218,15 @@ void ActionModeLink::on_selection_changed(UnitSelection *unit_selection) {
 
 
 	emit this->selection_changed();
+}
+
+// TODO remove
+std::string ActionModeLink::progress(float progress, int size) {
+	std::string bar = "[";
+	for (int i = 0; i < size; i++) {
+		bar += (i < progress * size ? "=" : "  ");
+	}
+	return bar + "]";
 }
 
 void ActionModeLink::on_core_adopted() {
