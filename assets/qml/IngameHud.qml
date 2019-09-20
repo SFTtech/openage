@@ -245,11 +245,24 @@ Item {
 					id: selection_single_panel
 					visible: root.actionMode.selection_size == 1
 
-					Text {
+					Image {
 						anchors.top: parent.top
 						anchors.topMargin: metricsUnit * 2
 						anchors.left: parent.left
 						anchors.leftMargin: metricsUnit * 2
+
+						width: 50
+						height: 50
+
+						id: selected_icon
+
+						source: "image://by-filename/converted/interface/50730.slp.png.2"
+					}
+
+					Text {
+						anchors.top: selected_icon.top
+						anchors.left: selected_icon.right
+						anchors.leftMargin: metricsUnit * 1.2
 
 						id: selected_name
 
@@ -259,9 +272,9 @@ Item {
 					}
 
 					Text {
-						anchors.bottom: selected_name.bottom
+						anchors.verticalCenter: selected_name.verticalCenter
 						anchors.left: selected_name.right
-						anchors.leftMargin: metricsUnit * 1
+						anchors.leftMargin: metricsUnit * 1.2
 
 						id: selected_type
 
@@ -273,17 +286,17 @@ Item {
 					Text {
 						anchors.top: selected_name.bottom
 						anchors.left: selected_name.left
-						anchors.topMargin: metricsUnit / 2
+						anchors.topMargin: metricsUnit
 
-						id: selected_owner
+						id: selected_hp
 
 						color: "black"
 						text: root.actionMode.selection_hp
 					}
 
 					Text {
-						anchors.top: selected_owner.bottom
-						anchors.left: selected_owner.left
+						anchors.top: selected_hp.bottom
+						anchors.left: selected_icon.left
 						anchors.topMargin: metricsUnit * 2
 
 						color: "black"
