@@ -1,4 +1,4 @@
-// Copyright 2016-2017 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #include "actions_list_model.h"
 
@@ -91,6 +91,7 @@ void ActionsListModel::set_active_buttons(const ActionButtonsType &active_button
 		this->add_button(32, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_UNIV");
 		this->add_button(28, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_RTWC");
 		this->add_button(37, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_WNDR");
+		// the go back button is not in this slp (is in hudactions.slp.png)
 		this->endResetModel();
 		break;
 
@@ -109,6 +110,7 @@ void ActionsListModel::set_active_buttons(const ActionButtonsType &active_button
 		this->add_button(42, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_WCTW4");
 		this->add_button(36, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_GTCA2");
 		this->add_button(7,  -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_CSTL");
+		// the go back button is not in this slp (is in hudactions.slp.png)
 		this->endResetModel();
 		break;
 

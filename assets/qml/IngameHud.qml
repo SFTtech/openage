@@ -24,6 +24,9 @@ Item {
 	readonly property string srcSuffix: ".slp.png"
 	property string hudImageSource: srcPrefix + (pad + civIndex).slice(-pad.length) + srcSuffix
 
+	readonly property string iconsPrefix: "image://by-filename/converted/interface/"
+	readonly property string iconsBorder: "image://by-filename/converted/interface/53003.slp.png.1"
+
 	width: 1289
 	height: 960
 
@@ -137,11 +140,20 @@ Item {
 				Layout.fillWidth: true
 				Layout.minimumWidth: epoch.implicitWidth
 
-				Text {
-					id: epoch
+				Rectangle {
 					anchors.centerIn: parent
-					color: "white"
-					text: root.playerName + (actionMode.ability.length ? (" (" + actionMode.ability + ")") : "")
+					width: 200
+					height: metricsUnit * 2.5
+
+					color: "black"
+
+					Text {
+						id: epoch
+						anchors.centerIn: parent
+
+						color: "white"
+						text: root.playerName
+					}
 				}
 			}
 
@@ -229,6 +241,122 @@ Item {
 				Paper {
 					anchors.fill: parent
 					tornBottom: false
+				}
+
+				Item {
+					anchors.fill: parent
+					id: selection_single_panel
+					visible: root.actionMode.selection_size == 1
+
+					Image {
+						anchors.top: parent.top
+						anchors.topMargin: metricsUnit * 2
+						anchors.left: parent.left
+						anchors.leftMargin: metricsUnit * 2
+
+						width: 50
+						height: 50
+
+						id: selected_icon
+
+						source: root.actionMode.selection_icon ? iconsPrefix + root.actionMode.selection_icon : iconsBorder
+					}
+					Image {
+						anchors.centerIn: selected_icon
+
+						width: 50
+						height: 50
+
+						source: iconsBorder
+					}
+
+					Text {
+						anchors.top: selected_icon.top
+						anchors.left: selected_icon.right
+						anchors.leftMargin: metricsUnit * 1.2
+
+						id: selected_name
+
+						color: "black"
+						text: root.actionMode.selection_name
+						font.pointSize: 16
+					}
+
+					Text {
+						anchors.verticalCenter: selected_name.verticalCenter
+						anchors.left: selected_name.right
+						anchors.leftMargin: metricsUnit * 1.2
+
+						id: selected_type
+
+						color: "black"
+						opacity: 0.8
+						text: root.actionMode.selection_type
+					}
+
+					Text {
+						anchors.top: selected_name.bottom
+						anchors.left: selected_name.left
+						anchors.topMargin: metricsUnit
+
+						id: selected_hp
+
+						color: "black"
+						text: root.actionMode.selection_hp
+					}
+
+					Text {
+						anchors.top: selected_hp.bottom
+						anchors.left: selected_icon.left
+						anchors.topMargin: metricsUnit * 2
+
+						color: "black"
+						text: root.actionMode.selection_attrs
+					}
+
+					Text {
+						anchors.top: parent.top
+						anchors.right: parent.right
+						anchors.topMargin: metricsUnit * 2
+						anchors.rightMargin: metricsUnit * 2
+
+						color: "black"
+						text: root.actionMode.selection_owner
+						horizontalAlignment: Text.AlignRight
+					}
+
+				}
+
+				Item {
+					anchors.fill: parent
+					id: selection_group_panel
+					visible: root.actionMode.selection_size > 1
+
+					Text {
+						anchors.top: parent.top
+						anchors.topMargin: metricsUnit * 2
+						anchors.left: parent.left
+						anchors.leftMargin: metricsUnit * 2
+
+						color: "black"
+						text: root.actionMode.selection_name
+						font.pointSize: 14
+					}
+				}
+
+				Item {
+					anchors.left: parent.left
+					anchors.right: parent.right
+					anchors.bottom: parent.bottom
+					anchors.bottomMargin: metricsUnit * 3
+					visible: actionMode.ability.length
+
+					Text {
+						anchors.centerIn: parent
+
+						text: actionMode.ability
+						font.pointSize: 14
+					}
 				}
 			}
 		}

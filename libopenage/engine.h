@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -44,6 +44,7 @@ namespace renderer {
 class Font;
 class FontManager;
 class TextRenderer;
+class Color;
 
 } // openage::renderer
 
@@ -180,8 +181,9 @@ public:
 
 	/**
 	 * register a hud drawing handler, drawn in hud coordinates.
+	 * order: 1 above, -1 below
 	 */
-	void register_drawhud_action(HudHandler *handler);
+	void register_drawhud_action(HudHandler *handler, int order = 1);
 
 	/**
 	 * register a draw handler, run in game coordinates.
@@ -260,7 +262,7 @@ public:
 	/**
 	 * render text with the at a position with specified font size
 	 */
-	void render_text(coord::viewport position, size_t size, const char *format, ...) ATTRIBUTE_FORMAT(4, 5);
+	void render_text(coord::viewport position, size_t size, const renderer::Color &color, const char *format, ...) ATTRIBUTE_FORMAT(5, 6);
 
 	/**
 	 * move the phys3 camera incorporated in the engine

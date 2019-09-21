@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "game_control_link.h"
 
@@ -9,6 +9,8 @@
 #include "../engine.h"
 #include "engine_link.h"
 #include "game_main_link.h"
+#include "../unit/action.h"
+#include "../unit/unit.h"
 
 namespace openage {
 namespace gui {
@@ -115,6 +117,10 @@ QString ActionModeLink::get_population() const {
 	return this->population;
 }
 
+int ActionModeLink::get_selection_size() const {
+	return this->selection ? this->selection->get_units_count() : 0;
+}
+
 bool ActionModeLink::get_population_warn() const {
 	return this->population_warn;
 }
@@ -138,6 +144,100 @@ void ActionModeLink::on_population_changed(int demand, int capacity, bool warn) 
 	emit this->population_changed();
 }
 
+void ActionModeLink::on_selection_changed(const UnitSelection *unit_selection, const Player *player) {
+	this->selection = unit_selection;
+
+	if (this->selection->get_units_count() == 1) {
+		auto &ref = this->selection->get_first_unit();
+		if (ref.is_valid()) {
+			Unit *u = ref.get();
+
+			this->selection_name = QString::fromStdString(u->unit_type->name());
+			// the icons are split into two sprites
+			if (u->unit_type->unit_class == gamedata::unit_classes::BUILDING) {
+				this->selection_icon = QString::fromStdString("50706.slp.png." + std::to_string(u->unit_type->icon));
+			} else {
+				this->selection_icon = QString::fromStdString("50730.slp.png." + std::to_string(u->unit_type->icon));
+			}
+			this->selection_type = QString::fromStdString("(type: " + std::to_string(u->unit_type->id()) + " " + u->top()->name() + ")");
+
+			if (u->has_attribute(attr_type::owner)) {
+				auto &own_attr = u->get_attribute<attr_type::owner>();
+				if (own_attr.player.civ->civ_id != 0) { // not gaia
+					this->selection_owner = QString::fromStdString(
+						own_attr.player.name + "\n" + own_attr.player.civ->civ_name + "\n" +
+						(!player || *player == own_attr.player ? ""
+						: player->is_ally(own_attr.player) ? "Ally" : "Enemy")
+					);
+					// TODO find the team status of the player
+				} else {
+					this->selection_owner = QString::fromStdString(" ");
+				}
+			}
+
+			if (u->has_attribute(attr_type::hitpoints) && u->has_attribute(attr_type::damaged)) {
+				auto &hp = u->get_attribute<attr_type::hitpoints>();
+				auto &dm = u->get_attribute<attr_type::damaged>();
+				// TODO replace ascii health bar with real one
+				if (hp.hp >= 200) {
+					this->selection_hp = QString::fromStdString(progress(dm.hp*1.0f/hp.hp, 8)+" "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
+				} else {
+					this->selection_hp = QString::fromStdString(progress(dm.hp*1.0f/hp.hp, 4)+" "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
+				}
+			} else {
+				this->selection_hp = QString::fromStdString(" ");
+			}
+
+			std::string lines;
+			if (u->has_attribute(attr_type::resource)) {
+				auto &res_attr = u->get_attribute<attr_type::resource>();
+				lines += std::to_string((int) res_attr.amount)+" "+std::to_string(res_attr.resource_type) + "\n";
+			}
+			if (u->has_attribute(attr_type::building)) {
+				auto &build_attr = u->get_attribute<attr_type::building>();
+				if (build_attr.completed < 1) {
+					lines += "Building: " + progress(build_attr.completed, 16)+ " "+std::to_string((int) (100 * build_attr.completed)) + "%\n";
+				}
+			}
+			if (u->has_attribute(attr_type::garrison)) {
+				auto &garrison_attr = u->get_attribute<attr_type::garrison>();
+				if (garrison_attr.content.size() > 0) {
+					lines += "Garrison: "+std::to_string(garrison_attr.content.size()) + " units\n";
+				}
+			}
+			lines += "\n";
+			if (u->has_attribute(attr_type::population)) {
+				auto &population_attr = u->get_attribute<attr_type::population>();
+				if (population_attr.demand > 1) {
+					lines += "Population demand: "+std::to_string(population_attr.demand) + " units\n";
+				}
+				if (population_attr.capacity > 0) {
+					lines += "Population capacity: "+std::to_string(population_attr.capacity) + " units\n";
+				}
+			}
+			this->selection_attrs = QString::fromStdString(lines);
+
+		}
+
+	} else if  (this->selection->get_units_count() > 1) {
+
+		this->selection_name = QString::fromStdString(
+				std::to_string(this->selection->get_units_count()) + " units");
+	}
+
+
+	emit this->selection_changed();
+}
+
+// TODO remove
+std::string ActionModeLink::progress(float progress, int size) {
+	std::string bar = "[";
+	for (int i = 0; i < size; i++) {
+		bar += (i < progress * size ? "=" : "  ");
+	}
+	return bar + "]";
+}
+
 void ActionModeLink::on_core_adopted() {
 	this->Inherits::on_core_adopted();
 	QObject::connect(&unwrap(this)->gui_signals,
@@ -148,6 +248,10 @@ void ActionModeLink::on_core_adopted() {
 	                 &ActionModeSignals::population_changed,
 	                 this,
 	                 &ActionModeLink::on_population_changed);
+	QObject::connect(&unwrap(this)->gui_signals,
+	                 &ActionModeSignals::selection_changed,
+	                 this,
+	                 &ActionModeLink::on_selection_changed);
 	QObject::connect(&unwrap(this)->gui_signals,
 	                 &ActionModeSignals::buttons_type_changed,
 	                 this,

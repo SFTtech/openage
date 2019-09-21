@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,6 +17,9 @@ public:
 
 	/** auto-updated to always contain the current FPS value */
 	float fps;
+
+	/** auto-updated every 20 frames to always contain the current FPS value */
+	float display_fps;
 
 	/** contains the number of completed frames */
 	uint64_t count;

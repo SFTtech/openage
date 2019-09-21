@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-lines
 
@@ -560,7 +560,7 @@ class UnitObject(Exportable):
         (READ_EXPORT, "dead_unit_id", "int16_t"),        # unit id to become on death
         (READ, "placement_mode", "int8_t"),              # 0=placable on top of others in scenario editor, 5=can't
         (READ, "can_be_built_on", "int8_t"),             # 1=no footprints
-        (READ, "icon_id", "int16_t"),                    # frame id of the icon slp (57029) to place on the creation button
+        (READ_EXPORT, "icon_id", "int16_t"),             # frame id of the icon slp (57029) to place on the creation button
         (READ, "hidden_in_editor", "int8_t"),
         (READ, "old_portrait_icon_id", "int16_t"),
         (READ, "enabled", "int8_t"),                     # 0=unlocked by research, 1=insta-available

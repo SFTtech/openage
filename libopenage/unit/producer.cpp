@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <initializer_list>
 
@@ -97,6 +97,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 
 	// copy the class type
 	this->unit_class = this->unit_data.unit_class;
+	this->icon = this->unit_data.icon_id;
 
 	// for now just look for type names ending with "_D"
 	this->decay = unit_data.name.substr(unit_data.name.length() - 2) == "_D";
@@ -531,6 +532,7 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 
 	// copy the class type
 	this->unit_class = this->unit_data.unit_class;
+	this->icon = this->unit_data.icon_id;
 
 	// find suitable sounds
 	int creation_sound = this->unit_data.train_sound;
