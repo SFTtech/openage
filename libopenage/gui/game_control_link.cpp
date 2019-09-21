@@ -153,6 +153,12 @@ void ActionModeLink::on_selection_changed(UnitSelection *unit_selection) {
 			Unit *u = ref.get();
 
 			this->selection_name = QString::fromStdString(u->unit_type->name());
+			// the icons are split into two sprites
+			if (u->unit_type->unit_class == gamedata::unit_classes::BUILDING) {
+				this->selection_icon = QString::fromStdString("50706.slp.png." + std::to_string(u->unit_type->icon));
+			} else {
+				this->selection_icon = QString::fromStdString("50730.slp.png." + std::to_string(u->unit_type->icon));
+			}
 			this->selection_type = QString::fromStdString("(type: " + std::to_string(u->unit_type->id()) + " " + u->top()->name() + ")");
 
 			if (u->has_attribute(attr_type::owner)) {

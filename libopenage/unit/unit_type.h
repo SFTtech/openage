@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -179,6 +179,11 @@ public:
 	 * The set of graphics used for this type
 	 */
 	graphic_set graphics;
+
+	/**
+	 * The index of the icon representing this unit
+	 */
+	int icon;
 
 	/**
 	 * the square dimensions of the placement

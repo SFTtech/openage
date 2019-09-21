@@ -122,6 +122,7 @@ class ActionModeLink : public qtsdl::Inherits<OutputModeLink, ActionModeLink> {
 	Q_PROPERTY(int selection_size READ get_selection_size NOTIFY selection_changed)
 
 	Q_PROPERTY(QString selection_name MEMBER selection_name NOTIFY selection_changed)
+	Q_PROPERTY(QString selection_icon MEMBER selection_icon NOTIFY selection_changed)
 	Q_PROPERTY(QString selection_type MEMBER selection_type NOTIFY selection_changed)
 	Q_PROPERTY(QString selection_owner MEMBER selection_owner NOTIFY selection_changed)
 	Q_PROPERTY(QString selection_hp MEMBER selection_hp NOTIFY selection_changed)
@@ -160,6 +161,7 @@ private:
 	UnitSelection *selection;
 
 	QString selection_name;
+	QString selection_icon;
 	QString selection_type;
 	QString selection_owner;
 	QString selection_hp;
