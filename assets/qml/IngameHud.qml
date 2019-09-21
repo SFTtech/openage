@@ -24,6 +24,9 @@ Item {
 	readonly property string srcSuffix: ".slp.png"
 	property string hudImageSource: srcPrefix + (pad + civIndex).slice(-pad.length) + srcSuffix
 
+	readonly property string iconsPrefix: "image://by-filename/converted/interface/"
+	readonly property string iconsBorder: "image://by-filename/converted/interface/53003.slp.png.1"
+
 	width: 1289
 	height: 960
 
@@ -256,7 +259,15 @@ Item {
 
 						id: selected_icon
 
-						source: "image://by-filename/converted/interface/50730.slp.png.2"
+						source: root.actionMode.selection_icon ? iconsPrefix + root.actionMode.selection_icon : iconsBorder
+					}
+					Image {
+						anchors.centerIn: selected_icon
+
+						width: 50
+						height: 50
+
+						source: iconsBorder
 					}
 
 					Text {

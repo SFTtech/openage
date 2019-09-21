@@ -144,7 +144,7 @@ void ActionModeLink::on_population_changed(int demand, int capacity, bool warn) 
 	emit this->population_changed();
 }
 
-void ActionModeLink::on_selection_changed(UnitSelection *unit_selection) {
+void ActionModeLink::on_selection_changed(const UnitSelection *unit_selection, const Player *player) {
 	this->selection = unit_selection;
 
 	if (this->selection->get_units_count() == 1) {
@@ -165,7 +165,10 @@ void ActionModeLink::on_selection_changed(UnitSelection *unit_selection) {
 				auto &own_attr = u->get_attribute<attr_type::owner>();
 				if (own_attr.player.civ->civ_id != 0) { // not gaia
 					this->selection_owner = QString::fromStdString(
-						own_attr.player.name + "\n" + own_attr.player.civ->civ_name);
+						own_attr.player.name + "\n" + own_attr.player.civ->civ_name + "\n" +
+						(!player || *player == own_attr.player ? ""
+						: player->is_ally(own_attr.player) ? "Ally" : "Enemy")
+					);
 					// TODO find the team status of the player
 				} else {
 					this->selection_owner = QString::fromStdString(" ");

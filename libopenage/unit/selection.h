@@ -82,9 +82,9 @@ public:
 	 */
 	void all_invoke(Command &cmd);
 
-	int get_units_count() { return this->units.size(); }
+	int get_units_count() const { return this->units.size(); }
 
-	UnitReference & get_first_unit() { return this->units.begin()->second; }
+	const UnitReference & get_first_unit() const { return this->units.begin()->second; }
 
 private:
 

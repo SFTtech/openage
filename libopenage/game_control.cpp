@@ -847,7 +847,8 @@ void GameControl::announce_current_player_name() {
 
 void ActionMode::announce_current_selection() {
 
-	emit this->gui_signals.selection_changed(this->selection);
+	Player* player = this->game_control->get_current_player();
+	emit this->gui_signals.selection_changed(this->selection, player);
 }
 
 bool GameControl::on_drawhud() {

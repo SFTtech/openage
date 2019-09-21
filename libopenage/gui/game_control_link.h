@@ -150,7 +150,7 @@ private slots:
 	void on_ability_changed(const std::string &ability);
 	void on_buttons_type_changed(const ActionButtonsType buttons_type);
 	void on_population_changed(int demand, int capacity, bool warn);
-	void on_selection_changed(UnitSelection *unit_selection);
+	void on_selection_changed(const UnitSelection *unit_selection, const Player *player);
 
 private:
 	virtual void on_core_adopted() override;
@@ -158,7 +158,7 @@ private:
 	QString ability;
 	QString population;
 	bool population_warn;
-	UnitSelection *selection;
+	const UnitSelection *selection;
 
 	QString selection_name;
 	QString selection_icon;
