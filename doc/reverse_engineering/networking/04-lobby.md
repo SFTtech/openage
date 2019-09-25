@@ -150,7 +150,7 @@ Amount of points to win in score mode or timer for the time limit game mode.
 This field is used for setting the maximum population for the game.
 
 *:player_civ_ids*<br/>
-The ID of the civs the players have chosen. Defaults to Random (`0x1e`).
+The ID of the civilisations the players have chosen. Defaults to Random (`0x1e`).
 
 *:teams*<br/>
 The teams of each individual player. For whatever reason, the value for no team is `0x01` which leaves the teams 1, 2, 3 and 4 with these values:

@@ -1526,10 +1526,10 @@
     ><g transform="translate(2710,2220)"
     ><rect fill="none" x="0.5" width="208.5" height="78.5" y="0.5" clip-path="url(#clipPath39)"
       /><text x="6" font-size="14px" y="18.1094" clip-path="url(#clipPath39)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
-      >PreceedingSubformation</text
+      >PrecedingSubformation</text
       ><path fill="none" d="M1 40.2188 L209 40.2188" clip-path="url(#clipPath39)"
       /><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath39)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >preceeds : Subformation</text
+      >precedes : Subformation</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(6720,790)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
     ><rect x="0.5" width="158.5" height="58.5" y="0.5" clip-path="url(#clipPath22)" stroke="none"
@@ -1978,7 +1978,7 @@
     ><g transform="translate(2610,290)"
     ><rect fill="none" x="0.5" width="238.5" height="58.5" y="0.5" clip-path="url(#clipPath51)"
       /><text x="2" font-size="14px" y="34.2188" clip-path="url(#clipPath51)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
-      >FlatAtttributeChangeModifier</text
+      >FlatAttributeChangeModifier</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(2420,390)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
     ><rect x="0.5" width="268.5" height="58.5" y="0.5" clip-path="url(#clipPath52)" stroke="none"
@@ -2924,7 +2924,7 @@
     ><g transform="translate(4540,3300)"
     ><rect fill="none" x="0.5" width="98.5" height="58.5" y="0.5" clip-path="url(#clipPath53)"
       /><text x="11" font-size="14px" y="34.2188" clip-path="url(#clipPath53)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
-      >Agressive</text
+      >Aggressive</text
     ></g
     ><g fill="rgb(0,255,0)" fill-opacity="0.4902" transform="translate(4550,1270)" stroke-opacity="0.4902" stroke="rgb(0,255,0)"
     ><rect x="0.5" width="308.5" height="128.5" y="0.5" clip-path="url(#clipPath76)" stroke="none"
@@ -3197,7 +3197,7 @@
     ><g transform="translate(1950,290)"
     ><rect fill="none" x="0.5" width="238.5" height="58.5" y="0.5" clip-path="url(#clipPath51)"
       /><text x="2" font-size="14px" y="34.2188" clip-path="url(#clipPath51)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
-      >FlatAtttributeChangeModifier</text
+      >FlatAttributeChangeModifier</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(1380,3220)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
     ><rect x="0.5" width="188.5" height="78.5" y="0.5" clip-path="url(#clipPath68)" stroke="none"

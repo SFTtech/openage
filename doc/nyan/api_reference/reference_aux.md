@@ -42,11 +42,11 @@ AnimationOverride(Entity):
 Internally overrides the animations used for an ability. The ability must be an `AnimatedAbility` when the override occurs. The override stops when
 
 * Another override of the same ability with a *greater than or equal to* (>=) is initiated
-* The overriden ability is deactivated
+* The overridden ability is deactivated
 * The override animation would be the same as the standard animation
 
 **ability**
-The ability whos animations should be overriden. This member can reference a specific ability of the game entity or an API ability. If an API ability is referenced, all its instances in the ability set of the game entity will be overriden.
+The ability whose animations should be overridden. This member can reference a specific ability of the game entity or an API ability. If an API ability is referenced, all its instances in the ability set of the game entity will be overridden.
 
 **animations**
 The replacement animations of the override.
@@ -152,7 +152,7 @@ Used by `FlatAttributeChange` effects and resistances for matching.
 Fallback(AttributeChangeType):
 ```
 
-A special type for `FlatAttributeChange`. Effects with this type are only evaluated if the accumalated applied value or applied rate of all other effects is outside of a specified interval. The interval is defined by the `FlatAttributeChange` object that has its `type` member set to `Fallback`. Upper and lower bounds are `[min_change_rate,max_change_rate]` (continuous effects) and `[min_change_value,max_change_value]` (discrete effects). The fallback effect is also evaluated if no other `FlatAttributeChange` effect is present or matched to any resistances. However, fallback effects still needs to be matched against a resistance object with `type` set to `Fallback`.
+A special type for `FlatAttributeChange`. Effects with this type are only evaluated if the accumulated applied value or applied rate of all other effects is outside of a specified interval. The interval is defined by the `FlatAttributeChange` object that has its `type` member set to `Fallback`. Upper and lower bounds are `[min_change_rate,max_change_rate]` (continuous effects) and `[min_change_value,max_change_value]` (discrete effects). The fallback effect is also evaluated if no other `FlatAttributeChange` effect is present or matched to any resistances. However, fallback effects still needs to be matched against a resistance object with `type` set to `Fallback`.
 
 For example, effects that utilize fallback can be used to model minimum or maximum damage of a game entity.
 
@@ -248,7 +248,7 @@ Civilization(Entity):
     civ_setup          : orderedset(Patch)
 ```
 
-Civilization customize the base state of the game for a player. This includes availabilitty of units, buildings and techs as well as changing their abilities and modifiers plus their individual members.
+Civilization customize the base state of the game for a player. This includes availability of units, buildings and techs as well as changing their abilities and modifiers plus their individual members.
 
 **name**
 The name of the civilization as a translatable string.
@@ -341,7 +341,7 @@ Defines preconditions, placement and spawn configurations for a new instance of 
 Reference to the `GameEntity` object that is spawned.
 
 **cost**
-Resource amount spent to intiate creation. Cancelling the creation results in a refund of the spent resources.
+Resource amount spent to initiate creation. Cancelling the creation results in a refund of the spent resources.
 
 **creation_time**
 Time until the game entity is spawned from the creating game entity.
@@ -438,7 +438,7 @@ Timer(DespawnCondition):
     time : float
 ```
 
-Triggers after a specified amount of time has passed after the `Despawn` ability has been activated. If the `Despawn` ability is diabled before the timer has finished, it will be reset.
+Triggers after a specified amount of time has passed after the `Despawn` ability has been activated. If the `Despawn` ability is disabled before the timer has finished, it will be reset.
 
 **time**
 Time that has to pass after the activation of the corresponding `Despawn` ability.
@@ -449,7 +449,7 @@ Time that has to pass after the activation of the corresponding `Despawn` abilit
 DiplomaticStance(Entity):
 ```
 
-Generalization object for diplomaic stances that can be used for diplomacy ingame. Diplomatic stances also define which player can use the abilities, modifiers and effects of a game entity.
+Generalization object for diplomatic stances that can be used for diplomacy ingame. Diplomatic stances also define which player can use the abilities, modifiers and effects of a game entity.
 
 ## aux.diplomatic_stance.type.Self
 
@@ -518,7 +518,7 @@ Volatile(ExchangeMode):
     scope             : optional(ExchangeScope)
 ```
 
-Generalization object for *volatile* exchange modes. Adjusts the transfered resource amounts after every transaction.
+Generalization object for *volatile* exchange modes. Adjusts the transferred resource amounts after every transaction.
 
 **source_min_amount**
 Lower bound for the source resource amount.
@@ -533,7 +533,7 @@ Upper bound for the source resource amount.
 Upper bound for the target resource amount.
 
 **scope**
-An optional scope for which the adjustments are made. When a scope is defined, the transfered resource amounts are changed for *all* abilities that reference the same scope object in their exchange mode.
+An optional scope for which the adjustments are made. When a scope is defined, the transferred resource amounts are changed for *all* abilities that reference the same scope object in their exchange mode.
 
 ## aux.exchange_mode.volatile.VolatileFlat
 
@@ -543,7 +543,7 @@ VolatileFlat(Volatile):
     change_target_amount : int
 ```
 
-Changes the transfered resource amounts by a fixed amount after every transaction.
+Changes the transferred resource amounts by a fixed amount after every transaction.
 
 **change_source_amount**
 Changes the current source resource amount by this value.
@@ -579,16 +579,16 @@ Subformation(Entity):
 
 Subdivision of a formation. It defines the structure and placement of game entities when the formation is formed.
 
-## aux.formation.PreceedingSubformation
+## aux.formation.PrecedingSubformation
 
 ```python
-PreceedingSubformation(Entity):
-    preceeds : Subformation
+PrecedingSubformation(Entity):
+    precedes : Subformation
 ```
 
 Links the individual subformations of a formation together. By using this object, the subformations form a linked list that represents their order in the parent formation.
 
-**preceeds**
+**precedes**
 Subformation that should be in front of this subformation.
 
 ## aux.game_entity.GameEntity
@@ -707,10 +707,10 @@ The abilities which the game entity will execute or search targets for. Their or
 **type_preference**
 Determines which game entity types are prioritized as targets. Their order in the set defines the priority of usage. Game entities with types that are not in the set will be ignored.
 
-## aux.game_entity_stance.type.Agressive
+## aux.game_entity_stance.type.Aggressive
 
 ```python
-Agressive(GameEntityStance):
+Aggressive(GameEntityStance):
 ```
 
 The game entity will use ranged abilities or move to the nearest target in its line of sight to use other abilities. If the target gets out of the line of sight, the game entity searches for a new target. When no new target can be found, the game entity stops moving and returns to an idle state.
@@ -746,7 +746,7 @@ Animation(Entity):
     sprite : file
 ```
 
-Points to a openage sprite definition file in the `.sprite` format. The specified aniimation can be used by `AnimatedAbility` objects.
+Points to a openage sprite definition file in the `.sprite` format. The specified animation can be used by `AnimatedAbility` objects.
 
 ## aux.graphics.Terrain
 
@@ -859,7 +859,7 @@ Defines a scope of game entities the modifier should apply to.
 Whitelist of game entity types that the modifier should apply to.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `affected_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `affected_types`, but should be excplicitly excluded.
 
 ## aux.modifier_scope.type.Standard
 
@@ -911,7 +911,7 @@ Move to a position on the map. Stances from `GameEntityStance` ability are ignor
 Patrol(MoveMode):
 ```
 
-Lets player set two or more waypoints that the game enity will follow. Stances from `GameEntityStance` ability are considered during movement.
+Lets player set two or more waypoints that the game entity will follow. Stances from `GameEntityStance` ability are considered during movement.
 
 ## aux.patch.Patch
 
@@ -919,7 +919,7 @@ Lets player set two or more waypoints that the game enity will follow. Stances f
 Patch(Entity):
 ```
 
-Generalization object for all nyan patchesv. Let nyan patches inherit from this object to make them usable for the openage API.
+Generalization object for all nyan patches. Let nyan patches inherit from this object to make them usable for the openage API.
 
 ## aux.patch.type.DiplomaticPatch
 
@@ -1048,7 +1048,7 @@ TerrainOverlayProgress(Progress):
 Changes overlayed terrain of a game entity when the specified progress has been reached. The game entity needs an enabled `OverlayTerrain` ability for this to work.
 
 **terrain**
-Overrides the overlayed terrain of the currently enabled `OverlayTerrain` ability of the game entity. The override stops when another terrain overlay override is initiated, the overriden `OverlayTerrain` ability is deactivated or the override terrain is the same as the default overlayed terrain of the ability.
+Overrides the overlayed terrain of the currently enabled `OverlayTerrain` ability of the game entity. The override stops when another terrain overlay override is initiated, the overridden `OverlayTerrain` ability is deactivated or the override terrain is the same as the default overlayed terrain of the ability.
 
 ## aux.progress.specialization.TerrainProgress
 
@@ -1100,7 +1100,7 @@ Monitors the harvesting progress of a resource spot stored by a `Harvestable` ab
 RestockProgress(Progress):
 ```
 
-Monitors the restock progress of a restockable resource spot stored by a `Harvestable` ability. The restocking progress is intiated by the `Restock` ability of another game entity. At the start of the restocking process, the progress is 0\%. After the restocking has finished, the progress is 100\%.
+Monitors the restock progress of a restockable resource spot stored by a `Harvestable` ability. The restocking progress is initiated by the `Restock` ability of another game entity. At the start of the restocking process, the progress is 0\%. After the restocking has finished, the progress is 100\%.
 
 Restocking progress is only tracked between the start and end of restock process. Therefore, state changes initiated by `RestockProgress` objects of type `StateChangerProgress` will be deactivated after the progress reaches 100\%.
 
@@ -1110,7 +1110,7 @@ Restocking progress is only tracked between the start and end of restock process
 TransformProgress(Progress):
 ```
 
-Monitors the progress of a trasformation initiated by a `TransformTo` ability. At the start of the transformation, the progress is 0\%. After the transformation has finished, the progress is 100\%.
+Monitors the progress of a transformation initiated by a `TransformTo` ability. At the start of the transformation, the progress is 0\%. After the transformation has finished, the progress is 100\%.
 
 Transformation progress is only tracked between the start and end of transformation. Therefore, state changes initiated by `TransformProgress` objects of type `StateChangerProgress` will be deactivated after the progress reaches 100\%.
 
@@ -1163,7 +1163,7 @@ Defines preconditions for researching a technology with the `Research` ability.
 Reference to the `Tech` object that is researched.
 
 **cost**
-Resource amount spent to intiate the research. Cancelling the research results in a refund of the spent resources.
+Resource amount spent to initiate the research. Cancelling the research results in a refund of the spent resources.
 
 **research_time**
 Time until the `Tech` object's patches are applied.
@@ -1200,7 +1200,7 @@ ResourceContingent(Resource):
 
 A `Resource` that creates a *contingent* which is temporarily usable by game entities. The size of the contingent is determined by two values:
 
-* Static amounts can be aquired like normal resources
+* Static amounts can be acquired like normal resources
 * Temporary amounts that can be provided by game entities with `ProvideContingent`
 
 By using the contingent (see `UseContingent` ability), the current amount of resources is not reduced. Instead, the game entity will reserve parts of the contingent until it loses the ability or dies. When the whole contingent is reserved, no more game entities using it can be created.
@@ -1326,7 +1326,7 @@ StateChanger(Entity):
     priority          : int
 ```
 
-State changes alter the *base state* of a game entity which is defined by the abilities and modifers stored in a `GameEntity` object. They are allowed to enable new and disable existing abilities as well as modifiers. Multiple state changes can be applied at once. Only abilities and modifiers with a priority *lower than or equal to* (<=) the one defined in the `StateChanger` object will be disabled.
+State changes alter the *base state* of a game entity which is defined by the abilities and modifiers stored in a `GameEntity` object. They are allowed to enable new and disable existing abilities as well as modifiers. Multiple state changes can be applied at once. Only abilities and modifiers with a priority *lower than or equal to* (<=) the one defined in the `StateChanger` object will be disabled.
 
 **enable_abilities**
 A set of abilities that are enabled when the state change is active.
@@ -1401,7 +1401,7 @@ Generalization object for target modes used by projectiles.
 CurrentPosition(TargetMode):
 ```
 
-Makes the projectile path end at the current postion of the target when the projectile spawned.
+Makes the projectile path end at the current position of the target when the projectile spawned.
 
 ## aux.target_mode.type.ExpectedPosition
 
@@ -1409,7 +1409,7 @@ Makes the projectile path end at the current postion of the target when the proj
 ExpectedPosition(TargetMode):
 ```
 
-Makes the projectile path end at the postion where the target is expected to be when the projectile is supposed to hit it.
+Makes the projectile path end at the position where the target is expected to be when the projectile is supposed to hit it.
 
 ## aux.taunt.Taunt
 
@@ -1569,7 +1569,7 @@ TranslatedMarkupFile(TranslatedObject):
 The translated versions of a longer text stored in markup files.
 
 **translations**
-All translations of the makrup files as language-file pairs (see `LanguageMarkupPair`).
+All translations of the markup files as language-file pairs (see `LanguageMarkupPair`).
 
 ## aux.translated.type.TranslatedSound
 
@@ -1680,7 +1680,7 @@ PerspectiveVariant(Variant):
     angle : int
 ```
 
-Variant depending on the placement angle of the game entity. Cuurently only works with the `PlacementMode` of type `Place` with the `allow_ratation` member set to true.
+Variant depending on the placement angle of the game entity. Currently only works with the `PlacementMode` of type `Place` with the `allow_ratation` member set to true.
 
 **angle**
 Angle of the game entity. An angle of *0* points to the south-west direction.

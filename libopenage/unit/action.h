@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -128,7 +128,7 @@ public:
 	 * before removal
 	 * eg dead action must be completed and cannot be discarded
 	 */
-	virtual bool allow_interupt() const = 0;
+	virtual bool allow_interrupt() const = 0;
 
 	/**
 	 * control whether stack can discard the action automatically and
@@ -234,7 +234,7 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interupt() const override { return true; }
+	bool allow_interrupt() const override { return true; }
 	bool allow_control() const override { return true; }
 	virtual std::string name() const override = 0;
 
@@ -280,7 +280,7 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interupt() const override { return false; }
+	bool allow_interrupt() const override { return false; }
 	bool allow_control() const override { return false; }
 	std::string name() const override { return "decay"; }
 
@@ -300,7 +300,7 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interupt() const override { return false; }
+	bool allow_interrupt() const override { return false; }
 	bool allow_control() const override { return false; }
 	std::string name() const override { return "dead"; }
 
@@ -321,7 +321,7 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interupt() const override { return true; }
+	bool allow_interrupt() const override { return true; }
 	bool allow_control() const override { return false; }
 	std::string name() const override { return "foundation"; }
 
@@ -341,7 +341,7 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interupt() const override { return false; }
+	bool allow_interrupt() const override { return false; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "idle"; }
 
@@ -371,7 +371,7 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interupt() const override { return true; }
+	bool allow_interrupt() const override { return true; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "move"; }
 
@@ -430,7 +430,7 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override { return this->complete; }
-	bool allow_interupt() const override { return true; }
+	bool allow_interrupt() const override { return true; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "ungarrison"; }
 
@@ -450,7 +450,7 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override { return this->complete; }
-	bool allow_interupt() const override { return false; }
+	bool allow_interrupt() const override { return false; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "train"; }
 
@@ -475,7 +475,7 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override { return this->complete; }
-	bool allow_interupt() const override { return false; }
+	bool allow_interrupt() const override { return false; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "train"; }
 
@@ -636,7 +636,7 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interupt() const override { return false; }
+	bool allow_interrupt() const override { return false; }
 	bool allow_control() const override { return false; }
 	std::string name() const override { return "projectile"; }
 

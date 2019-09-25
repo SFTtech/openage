@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_input_impl.h"
 
@@ -72,15 +72,10 @@ int sdl_key_to_qt(SDL_Keycode sym) {
 	switch (sym) {
 	case SDLK_BACKSPACE:
 		return Qt::Key_Backspace;
-		break;
-
 	case SDLK_DELETE:
 		return Qt::Key_Delete;
-		break;
-
 	default:
 		return 0;
-		break;
 	}
 }
 }
@@ -94,7 +89,6 @@ bool GuiInputImpl::process(SDL_Event *e) {
 
 		// Allow dragging stuff under the gui overlay.
 		return relay_input_event(&ev, e->motion.state & (SDL_BUTTON_LMASK | SDL_BUTTON_MMASK | SDL_BUTTON_RMASK));
-		break;
 	}
 
 	case SDL_MOUSEBUTTONDOWN: {
@@ -111,7 +105,6 @@ bool GuiInputImpl::process(SDL_Event *e) {
 		}
 
 		return accepted;
-		break;
 	}
 
 	case SDL_MOUSEBUTTONUP: {
@@ -121,7 +114,6 @@ bool GuiInputImpl::process(SDL_Event *e) {
 
 		// Allow dragging stuff under the gui overlay: when no item is grabbed, it probably means that initial MousButtonPress was outside gui.
 		return relay_input_event(&ev, true);
-		break;
 	}
 
 	case SDL_MOUSEWHEEL: {
@@ -132,28 +124,23 @@ bool GuiInputImpl::process(SDL_Event *e) {
 		ev.setAccepted(false);
 
 		return relay_input_event(&ev);
-		break;
 	}
 
 	case SDL_KEYDOWN: {
 		QKeyEvent ev{QEvent::KeyPress, sdl_key_to_qt(e->key.keysym.sym), Qt::NoModifier, QChar((short) e->key.keysym.sym)};
 		ev.setAccepted(false);
 		return relay_input_event(&ev);
-		break;
 	}
 
 	case SDL_KEYUP: {
 		QKeyEvent ev{QEvent::KeyRelease, sdl_key_to_qt(e->key.keysym.sym), Qt::NoModifier, QChar((short) e->key.keysym.sym)};
 		ev.setAccepted(false);
 		return relay_input_event(&ev);
-		break;
 	}
 
 	default:
-		break;
+		return false;
 	}
-
-	return false;
 }
 
 bool GuiInputImpl::relay_input_event(QEvent *ev, bool only_if_grabbed) {

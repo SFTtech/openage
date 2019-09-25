@@ -13,7 +13,7 @@ Generalization object for all abilities. Abilities define what game entities can
 Standard behavior without specializations:
 
 * Abilities in the `abilities` set of `GameEntity` are considered enabled as soon as the game entity is created, unless a `StateChager` object disables them.
-* No ability explicitely requires sounds or to be animated. For this purpose, ability specializations are used.
+* No ability explicitly requires sounds or to be animated. For this purpose, ability specializations are used.
 * A game entity's abilities are available to **all** players, not just the owner. This can be limited to players with specific diplomatic stances towards the owner by inheriting `DiplomaticAbility`.
 
 Specializations:
@@ -48,7 +48,7 @@ Specifies a set of animation overrides that are applied when the ability is used
 *Usage example*: Consider a unit with two attacks. One of them is animated by having the unit wield a sword, while the other one is an animation in which the unit uses a bow. What we want is that the animation of the `Move` and `Idle` abilities correspond to the attack that was used last, e.g. after a sword attack, the movement animation show the unit moving around with a sword in its hand, and after a bow attack, the movement animation show the unit moving around with a bow. To accomplish this, we would let both attack abilities inherit from `AnimationOverrideAbility` and specify `AnimationOverride` objects for them that target `Move` and `Idle`.
 
 **overrides**
-Stores the animations and abilities that will be overriden temporarily as `AnimationOverride` objects.
+Stores the animations and abilities that will be overridden temporarily as `AnimationOverride` objects.
 
 ## ability.specialization.CommandSoundAbility
 
@@ -69,7 +69,7 @@ DiplomaticAbility(Ability):
     stances : set(DiplomaticStance)
 ```
 
-Restricts the players who can access the ability. Access is given to a player when the owner of the game entity has one of the specified stances towards this player. Note that when inheriting from this specilization, the access must also be explicitely allowed for the owner of the game entity by adding the `Self` stance to the set.
+Restricts the players who can access the ability. Access is given to a player when the owner of the game entity has one of the specified stances towards this player. Note that when inheriting from this specialization, the access must also be explicitly allowed for the owner of the game entity by adding the `Self` stance to the set.
 
 *Usage example*: Consider a trade post like the marketplace from AoE games. Players can send trade carts between trade posts to generate resources. Trade post behavior is activated by assigning the `TradePost` ability to a game entity. Without inheriting from `DiplomaticAbility`, all player can trade with this trade post, including its owner. However, if we want to limit the trade post to only be accessible for allies, we can let the ability inherit from `DiplomaticAbility` and add the `Allied` stance to the `stances` set.
 
@@ -110,7 +110,7 @@ Time between the initiation of the ability and the application of the effects.
 Whitelist of game entity types that can be targeted with the ability.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `allowed_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
 
 ## ability.type.ApplyDiscreteEffect
 
@@ -138,7 +138,7 @@ Time between the initiation of the ability and first application of the effects.
 Whitelist of game entity types that can be targeted with the ability.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `allowed_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
 
 ## ability.type.Cloak
 
@@ -242,7 +242,7 @@ The range in which the unit will search for a resource drop site when the abilit
 Whitelist of game entity types that can be used as drop sites. They must have a `DropSite` ability accepting the corresponding resource.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `allowed_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
 
 ## ability.type.Despawn
 
@@ -318,7 +318,7 @@ The containers that can be entered.
 Whitelist of game entity types that can be targeted with the ability.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `allowed_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
 
 ## ability.type.ExchangeResources
 
@@ -331,7 +331,7 @@ ExchangeResources(Ability):
     exchange_mode    : ExchangeMode
 ```
 
-Exhanges a fixed amount of resources for another fixed amount of resources. Players can exchange resources with themselves or other players.
+Exchanges a fixed amount of resources for another fixed amount of resources. Players can exchange resources with themselves or other players.
 
 **source_resources**
 Resource amount sent by the player initiating the ability to the targeted player (this is omitted if the player trades with themselves). This removes an amount of
@@ -438,7 +438,7 @@ Minimum distance to one of the specified game entities at which the game entity 
 Whitelist of game entity types that makes this game entity passable when they are in range.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `allowed_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
 
 ## ability.type.Gather
 
@@ -502,7 +502,7 @@ Minimum distance to a herdable game entity to make it change ownership.
 Whitelist of game entity types that can be herded.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `allowed_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
 
 ## ability.type.Herdable
 
@@ -675,7 +675,7 @@ RangedContinuousEffect(ApplyContinuousEffect):
 Applies a batch of discrete effects on another game entity. This specialization of `ApplyContinuousEffect` allows ranged application.
 
 **min_range**
-Minumum distance to target.
+Minimum distance to target.
 
 **max_range**
 Maximum distance to the target.
@@ -691,7 +691,7 @@ RangedDiscreteEffect(ApplyDiscreteEffect):
 Applies a batch of discrete effects on another game entity. This specialization of `ApplyDiscreteEffect` allows ranged application.
 
 **min_range**
-Minumum distance to target.
+Minimum distance to target.
 
 **max_range**
 Maximum distance to the target.
@@ -706,7 +706,7 @@ RegenerateAttribute(Ability):
 Regenerate attribute points at a defined rate. The game entity must have the attribute in its `Live` ability.
 
 **rate**
-Regeration rate as an `AttributeRate` object.
+Regeneration rate as an `AttributeRate` object.
 
 ## ability.type.RegenerateResourceSpot
 
@@ -719,7 +719,7 @@ RegenerateResourceSpot(Ability):
 Regenerate the available resources of a game entity's resource spot at a defined rate.
 
 **rate**
-Regeration rate as an `ResourceRate` object.
+Regeneration rate as an `ResourceRate` object.
 
 **resource_spot**
 Resource spot that is refilled. The game entity must have a `Harvestable` ability that contains this resource spot.
@@ -818,7 +818,7 @@ Empties the containers of the `Storage` abilities of a game entity and lets the 
 Whitelist of game entity types that can will be affected.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `allowed_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
 
 ## ability.type.ShootProjectile
 
@@ -898,7 +898,7 @@ Value between 0 and 1 that determines far the spawn location can be from the spa
 Whitelist of game entity types that can be targeted with the ability.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `allowed_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
 
 ## ability.type.Stop
 
@@ -988,7 +988,7 @@ TransferStorage(Ability):
 Transfers one game entity from a container to another.
 
 **storage_element**
-Game entity that is transfered.
+Game entity that is transferred.
 
 **source_container**
 Container the game entity is stored in when the ability is used.
@@ -1063,7 +1063,7 @@ Visibility(Ability):
     visible_in_fog : bool
 ```
 
-Configures a game entity's visiblity in the fog of war.
+Configures a game entity's visibility in the fog of war.
 
 **visible_in_fog**
 Determines whether the game entity is visible in the fog of war.

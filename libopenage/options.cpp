@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "options.h"
 
@@ -126,10 +126,9 @@ bool OptionValue::operator ==(const OptionValue &other) const {
 
 	case option_type::list_type:
 		return this->value<option_list>() == other.value<option_list>();
-
+	default:
+		return false;
 	}
-
-	return false;
 }
 
 
@@ -172,7 +171,7 @@ std::string OptionValue::str_value() const {
 	switch (this->type) {
 
 	case option_type::bool_type:
-		return this->value<bool>()? "true" : "false";
+		return this->value<bool>() ? "true" : "false";
 
 	case option_type::int_type:
 		return std::to_string(this->value<int>());
@@ -191,9 +190,9 @@ std::string OptionValue::str_value() const {
 		result += "]";
 		return result;
 	}
-
+	default:
+		return "";
 	}
-	return "";
 }
 
 
@@ -201,19 +200,24 @@ OptionValue parse(option_type t, std::string s) {
 	switch(t) {
 	case options::option_type::bool_type:
 		return options::OptionValue(s == "true");
+
 	case option_type::int_type:
 		return options::OptionValue(stoi(s));
+
 	case option_type::double_type:
 		return options::OptionValue(stod(s));
+
 	case option_type::string_type:
 		return options::OptionValue(s);
+
 	case option_type::list_type:
-		// TODO:
+		// TODO: Missing case
+		return options::OptionValue(false);
+
+	default:
 		return options::OptionValue(false);
 	}
-	return options::OptionValue(false);
 }
-
 
 
 OptionAction::OptionAction(const std::string &name, const opt_func_t f)

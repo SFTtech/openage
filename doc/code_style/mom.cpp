@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 
 // [SFT]tech coding guidelines
@@ -206,7 +206,6 @@ bool YourMom::tick() {
 	// vvv
 	case 0:
 		throw ContentMafia::Error{"Your mom opposes DRM, investigation required."};
-		break;
 
 	case 8: {
 		// ^ when defining new variables for a specific case,
@@ -229,7 +228,6 @@ bool YourMom::tick() {
 
 	return true;
 }
-
 
 // Unused parameters are commented out:
 void YourMom::buy(const Thing & /*item*/) {

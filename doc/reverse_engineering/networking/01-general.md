@@ -17,7 +17,7 @@ One game was established by using the DirectPlay feature, while all other play s
 
 The game utilizes TCP to let players connect to a play session and UDP for all game configuration and ingame communications. This is not surprising, since UDP has the advantage of lightweight packets and therefore fast communication. This document will focus on the interesting part of the packets, i.e. the UDP data field.
 
-## Packet types
+## Packet Types
 
 There are 3 basic types of packets; sync packets, chat message packets and (player) action packets. Sync packets are used to synchronize communication turns, determine turn timers, calculate latency and validate the game state. Chat message packets transport everything the players type in the ingame or lobby chat over the network. The last type discussed in this documentation are the action packets which are utilized for commands from a player or an AI (e.g. movement, unit training).
 
@@ -83,7 +83,7 @@ When the game is recorded, the UDP data stream of a `0x3e` packet (without the h
 
 Much of the actions where already figured out by Stefan Kolb as part of his [.mgx Specification](https://github.com/stefan-kolb/aoc-mgx-format). This analysis will use his document style ([Example](https://github.com/stefan-kolb/aoc-mgx-format/blob/master/spec/body/actions/03-move.md)) as a template.
 
-## Values and data types
+## Values and Data Types
 
 Values in the network protocol can have a length of one, two or four byte. Little endian notation is used. Therefore, values with a length of two and four bytes have to be read starting with the rightmost byte.
 
@@ -98,13 +98,13 @@ other    | (1-dimensional) array
 
 Most of the fields present in the network protocol have a fixed length. The use cases for variable length fields are usually lists of `unit_id`s or waypoints and will be handled as arrays in this documentation.
 
-## ID system
+## ID System
 
 Age of Empires II uses an ID system to reference every object in the game by a unique numerical identifier with a length of 4 bytes. IDs are assigned by using a simple counter, that assigns every new object a the next unassigned number. New objects are not necessarily created by players. For example, cutting down a tree replaces a standing with a fallen tree, whereby the latter is handled as a new object. As a rule of thumb, one can assume that objects have been replaced with new ones when their sprite has changed.
 
 The players are referenced with not less than three IDs; their *network_source_id*/*network_dest_id* (4 bytes), the *player_id* and the *player_number* (both 1 byte). *network_ids* are used in the header to determine from which person a packet comes from or is sent to. The reason why *player_id* and *player_number* are handled differently is due to an undocumented cooperative multiplayer mode. In this mode, which can be activated by assigning to players the same *player_number*, two or more players share control of units, buildings and resources. In consequence, *player_id* is unique for every player, *player_number* not necessarily.
 
-## Coordinate system
+## Coordinate System
 
 In this document, we will assume that AoC uses a carthesian coordinate system with the left corner as an origin point. Keep in mind, that AoC uses a **Quadrant 4** representation for its coordinates, which means that the y-axis is represented by the edge in the bottom left and the x-axis by the top left edge.
 

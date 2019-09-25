@@ -7,7 +7,7 @@ Provides filesystem-like interfaces:
     an abstract class for objects that represent file systems.
 
  - ReadOnlyFileSystemLikeObject (abstract class)
-    implements all write access functions to raise UnsupportedOPeration
+    implements all write access functions to raise UnsupportedOperation
 
 For interface implementations, see the fslike module.
 """

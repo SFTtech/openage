@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "terrain.h"
 
@@ -252,7 +252,7 @@ int Terrain::get_blending_mode(terrain_t base_id, terrain_t neighbor_id) {
 }
 
 tile_state Terrain::check_tile(const coord::tile &position) {
-	if (this->check_tile_position(position) == false) {
+	if (!this->check_tile_position(position)) {
 		return tile_state::invalid;
 	}
 	else {
@@ -267,7 +267,7 @@ tile_state Terrain::check_tile(const coord::tile &position) {
 }
 
 bool Terrain::check_tile_position(const coord::tile &/*pos*/) {
-	if (this->infinite == true) {
+	if (this->infinite) {
 		return true;
 	}
 	else {

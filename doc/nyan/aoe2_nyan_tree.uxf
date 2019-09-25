@@ -3219,7 +3219,7 @@ offset_y : int</panel_attributes>
       <h>60</h>
     </coordinates>
     <panel_attributes>
-*FlatAtttributeChangeModifier*
+*FlatAttributeChangeModifier*
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -3720,7 +3720,7 @@ exchange_mode : ExchangeMode</panel_attributes>
       <h>60</h>
     </coordinates>
     <panel_attributes>
-*Agressive*
+*Aggressive*
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -5601,7 +5601,7 @@ bg=pink</panel_attributes>
       <h>60</h>
     </coordinates>
     <panel_attributes>
-*FlatAtttributeChangeModifier*
+*FlatAttributeChangeModifier*
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -7371,11 +7371,11 @@ bg=pink</panel_attributes>
       <w>210</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>*PreceedingSubformation*
+    <panel_attributes>*PrecedingSubformation*
 bg=pink
 
 --
-preceeds : Subformation</panel_attributes>
+preceds : Subformation</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

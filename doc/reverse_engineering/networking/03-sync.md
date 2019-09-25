@@ -210,7 +210,7 @@ Has the value `0xf7` most of the time.
 Sometimes the value of the fields *:unknown{1-3}* and *:unknown5* will be `0x00`.
 
 *:communication_turn_offset*<br/>
-When the game desyncs, this field indicates the last communication turn where the game was in sync for the player sending this packet. While the game is synced, the value should match up with *:communication_turn* in the header.
+If the game desyncs, this field indicates the last communication turn where the game was in sync for the player sending this packet. While the game is synced, the value should match up with *:communication_turn* in the header.
 
 *:ping1*<br/>
 The difference between the ping from the current turn and the ping from the previous turn.

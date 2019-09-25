@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
@@ -514,8 +514,8 @@ void IdleAction::update(unsigned int time) {
 		player.receive(resources);
 	}
 
-	// unit carrying ressources take the carrying sprite when idle
-	// we're not updating frames because the carying sprite is walking
+	// unit carrying resources take the carrying sprite when idle
+	// we're not updating frames because the carrying sprite is walking
 	if (entity->has_attribute(attr_type::worker)) {
 		auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
 		if (worker_resource.amount > 0) {
@@ -1113,11 +1113,11 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 		player.receive(worker_resource.resource_type, worker_resource.amount);
 		worker_resource.amount = 0.0;
 
-		// make sure the resource stil exists
+		// make sure the resource still exists
 		if (this->target.is_valid() &&
 		    this->target.get()->get_attribute<attr_type::resource>().amount > 0.0) {
 
-			// return to resouce collection
+			// return to resource collection
 			this->target_resource = true;
 			this->set_target(this->target);
 		}
@@ -1276,7 +1276,7 @@ bool HealAction::completed_in_range(Unit *target_ptr) const {
 void HealAction::heal(Unit &target) {
 	auto &heal = this->entity->get_attribute<attr_type::heal>();
 
-	// TODO move to seperate function heal_unit (like damage_unit)?
+	// TODO move to separate function heal_unit (like damage_unit)?
 	// heal object
 	if (target.has_attribute(attr_type::hitpoints) && target.has_attribute(attr_type::damaged)) {
 		auto &hp = target.get_attribute<attr_type::hitpoints>();

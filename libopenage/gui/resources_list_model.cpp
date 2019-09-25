@@ -1,4 +1,4 @@
-// Copyright 2016-2017 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #include "resources_list_model.h"
 
@@ -75,13 +75,10 @@ QVariant ResourcesListModel::data(const QModelIndex &index, int role) const {
 	case Qt::DisplayRole:
 		ENSURE(i >= 0 && i < std::distance(std::begin(this->amounts), std::end(this->amounts)), "Res type index is out of range: '" << i << "'.");
 		return this->amounts[index.row()];
-		break;
 
 	default:
-		break;
+		return QVariant{};
 	}
-
-	return QVariant{};
 }
 
 }} // namespace openage::gui

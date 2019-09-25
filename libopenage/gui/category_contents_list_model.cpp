@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "category_contents_list_model.h"
 
@@ -84,11 +84,9 @@ QVariant CategoryContentsListModel::data(const QModelIndex &index, int role) con
 	switch (role) {
 	case Qt::DisplayRole:
 		return std::get<1>(this->type_and_texture[index.row()]);
-		break;
 
 	case Qt::UserRole + 1:
 		return std::get<0>(this->type_and_texture[index.row()]);
-		break;
 
 	default:
 		break;

@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -74,7 +74,7 @@ static std::vector<ability_type> ability_priority {
 
 /**
  * Abilities create an action when given a target
- * some abilities target positions such as moving or patroling
+ * some abilities target positions such as moving or patrolling
  * others target other game objects, such as attacking or
  * collecting relics
  *

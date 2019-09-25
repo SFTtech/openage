@@ -38,7 +38,7 @@ Determines whether the player gave up himself (`0x00`) or was disconnected (`0x0
 >`03` &mdash; player_id<br/>
 >`00` &mdash; disconnect
 
-## Save game
+## Save Game
 
 Used for saving the game.
 
@@ -105,7 +105,7 @@ The last 4 bytes are a checksum.
 > memory<br/>
 > `2c 00 00 00` &mdash; checksum<br/>
 
-## Diplomacy, Cheats and Gamespeed
+## Diplomacy, Cheats and Game Speed
 
 Used for diplomacy, cheating and changing the game's speed.
 

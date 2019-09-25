@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "texture.h"
 
@@ -103,7 +103,6 @@ void Texture::load() {
 			"Unknown texture bit depth for " << this->filename << ": " <<
 			surface->format->BytesPerPixel << " bytes per pixel");
 
-		break;
 	}
 
 	this->w = surface->w;
