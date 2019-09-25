@@ -57,10 +57,10 @@ EffectMultiplierModifier(MultiplierModifier):
 
 A subclass of `MultiplierModifier` that handles multipliers for `Effect` objects.
 
-## modifier.multiplier.effect.flat_attribute_change.FlatAtttributeChangeModifier
+## modifier.multiplier.effect.flat_attribute_change.FlatAttributeChangeModifier
 
 ```python
-FlatAtttributeChangeModifier(EffectMultiplierModifier):
+FlatAttributeChangeModifier(EffectMultiplierModifier):
 ```
 
 A subclass of `EffectMultiplierModifier` that handles multipliers for `FlatAtttributeChange` effects.
@@ -91,7 +91,7 @@ Applies a multiplier on the cumulated *applied change value* of `FlatAtttributeC
 Whitelist of game entity types that must be under the patch of the projectile. The game entities must have the `Hitbox` ability.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `flyover_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `flyover_types`, but should be excplicitly excluded.
 
 ## modifier.multiplier.effect.flat_attribute_change.type.Terrain
 
@@ -137,10 +137,10 @@ ResistanceMultiplierModifier(MultiplierModifier):
 
 A subclass of `MultiplierModifier` that handles multipliers for `Resistance` resistances.
 
-## modifier.multiplier.resistance.flat_attribute_change.FlatAtttributeChangeModifier
+## modifier.multiplier.resistance.flat_attribute_change.FlatAttributeChangeModifier
 
 ```python
-FlatAtttributeChangeModifier(ResistanceMultiplierModifier):
+FlatAttributeChangeModifier(ResistanceMultiplierModifier):
 ```
 
 A subclass of `ResistanceMultiplierModifier` that handles multipliers for `FlatAtttributeChange` resistances.
@@ -265,7 +265,7 @@ Applies a multiplier to the amount of resources that are removed from a specific
 *Example*: Consider a gold resource spot containing 100 gold and a game entity with a `GatheringEfficiency` modifier for this resource spot with multiplier `0.8`. For an amount of 10 gold that the game entity gathers, the resource spot will remove only `0.8` times this amount, i.e. the resource spot only loses 8 gold. This effectively increases the yield of the resource spot to 125 gold for the game entity.
 
 **resource_spot**
-The resource spot for which the effiency multiplier is applied.
+The resource spot for which the efficiency multiplier is applied.
 
 ## modifier.multiplier.type.GatheringRate
 
@@ -437,7 +437,7 @@ Resources that are dropped off.
 Whitelist of game entity types that can trigger the deposit action when the progress status is reached. The game entities do not need a `DropSite` ability.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `affected_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `affected_types`, but should be excplicitly excluded.
 
 ## modifier.type.DiplomaticLineOfSight
 
@@ -529,4 +529,4 @@ The radius of the visible area around the game entity.
 Whitelist of game entity types that the modifier should apply to.
 
 **blacklisted_game_entities**
-Blacklist for specific game entities that would be covered by `affected_types`, but should be excplicitely excluded.
+Blacklist for specific game entities that would be covered by `affected_types`, but should be excplicitly excluded.

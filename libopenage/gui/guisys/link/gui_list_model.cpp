@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_list_model.h"
 
@@ -53,18 +53,13 @@ QVariant GuiListModel::data(const QModelIndex &index, int role) const {
 	switch (role) {
 	case Qt::DisplayRole:
 		return std::get<QByteArray>(this->values[index.row()]);
-		break;
 
-	case Qt::EditRole: {
+	case Qt::EditRole:
 		return std::get<QVariant>(this->values[index.row()]);
-		break;
-	}
 
 	default:
-		break;
+		return QVariant{};
 	}
-
-	return QVariant{};
 }
 
 bool GuiListModel::setData(const QModelIndex &index, const QVariant &value, int role) {

@@ -1,7 +1,7 @@
 // This file was adapted from cabextract/libmspack <http://www.cabextract.org.uk/>,
 // Copyright 2003-2013 the cabextract contributors.
 // It's licensed under the terms of the GNU Library General Public License version 2.
-// Modifications Copyright 2014-2017 the openage authors.
+// Modifications Copyright 2014-2019 the openage authors.
 // See copying.md for further legal info.
 
 /*
@@ -825,7 +825,8 @@ unsigned LZXDStream::decompress_next_frame(unsigned char *output_buf) {
 
 		throw Error(MSG(err) << "untested code path: frame_size > LZX_FRAME_SIZE");
 
-		frame_size = LZX_FRAME_SIZE;
+		// TODO: unreachable code
+		// frame_size = LZX_FRAME_SIZE;
 	}
 
 	// streams don't extend over frame boundaries

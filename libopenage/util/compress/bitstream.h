@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -327,7 +327,7 @@ public:
 	 * reads at least 1 and at most count bytes.
 	 */
 	unsigned read_bytes(unsigned char *buf, unsigned count) {
-		if (unlikely(this->bitstream_mode == true)) {
+		if (unlikely(this->bitstream_mode)) {
 			throw Error(MSG(err) << "attempt to read_bytes while in bitstream mode");
 		}
 
@@ -382,7 +382,7 @@ public:
 	 * If the previous bytestream had an odd size, one byte is discarded first.
 	 */
 	void switch_to_bitstream_mode() {
-		if (this->bitstream_mode == true) {
+		if (this->bitstream_mode) {
 			return;
 		}
 
@@ -404,7 +404,7 @@ public:
 	 * Discards 1 to 16 bits to align the bitstream first.
 	 */
 	void switch_to_bytestream_mode() {
-		if (this->bitstream_mode == false) {
+		if (! this->bitstream_mode) {
 			return;
 		}
 
@@ -426,7 +426,7 @@ public:
 	 * Otherwise, a no-op.
 	 */
 	void align_if_in_bitstream_mode() {
-		if (this->bitstream_mode == true) {
+		if (this->bitstream_mode) {
 			this->align_bitstream();
 		}
 	}

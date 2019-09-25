@@ -1,6 +1,6 @@
 # Prerequisite steps for openSUSE users (openSUSE 13.2)
 
-If you already have python3 or one of packman/games repositories then no
+If you already have python3 or one of pacman/games repositories then no
 need to run the first two lines. If unsure then just run last line and see
 if all packages can be installed.
 

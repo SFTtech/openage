@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 /** @file
  *
@@ -58,7 +58,7 @@ Path to_object(openage::TerrainObject *to_move,
 Path find_nearest(coord::phys3 start,
                   std::function<bool(const coord::phys3 &)> valid_end,
                   std::function<bool(const coord::phys3 &)> passable) {
-	// Use Dijkstra (hueristic = 0)
+	// Use Dijkstra (heuristic = 0)
 	auto zero = [](const coord::phys3 &) -> cost_t { return .0f; };
 	return a_star(start, valid_end, zero, passable);
 }

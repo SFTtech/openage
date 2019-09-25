@@ -1,6 +1,6 @@
-# Unit interaction - Movement actions
+# Unit Interaction - Movement Actions
 
-## Stop action
+## Stop Action
 
 This action stops the selected units from doing their currently active task (moving, gathering, attacking, etc.). It is also used to stop research in buildings.
 
@@ -47,7 +47,7 @@ Stop a technology research from the building queue.
 >`01` &mdash; selection_count<br/>
 >`5b 07 00 00` &mdash; building_id
 
-## Move action
+## Move Action
 
 Used for moving units around the map.
 
@@ -184,7 +184,7 @@ Set consecutive waypoints.
 >`31` &mdash; x_coord<br/>
 >`17` &mdash; y_coord
 
-## Delete action
+## Delete Action
 
 Used for deleting units and buildings.
 
@@ -225,7 +225,7 @@ The number of the player who the unit belongs to (`0x01` - `0x08`).
 >`00 00 00` &mdash; zero
 
 
-## Attack ground
+## Attack Ground
 
 Used for the "attack ground" action of mangonels, onagers, trebuchets.
 
@@ -276,7 +276,7 @@ The IDs of the selected units.
 >`3d 1a 00 00` &mdash; selected_id<br/>
 >`42 1a 00 00` &mdash; selected_id
 
-## Ungarrison action
+## Ungarrison Action
 
 Used for unloading units from transport ships or rams and ungarrisoning units.
 
@@ -376,7 +376,7 @@ Ungarrisoning with `CTRL + SHIFT`.
 >`5a 1a 00 00` &mdash; release_id<br/>
 >`4b 17 00 00` &mdash; selected_id<br/>
 
-## Garrison action
+## Garrison Action
 
 Used for garrisoning units into buildings as well as packing and unpacking of trebuchets.
 
@@ -484,7 +484,7 @@ Garrisoning units into a building.
 >`6f 1a 00 00` &mdash; selected_id<br/>
 >`6d 1a 00 00` &mdash; selected_id
 
-## Drop relic
+## Drop Relic
 
 Dropping a relic on the ground.
 

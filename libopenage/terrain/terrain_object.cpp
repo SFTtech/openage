@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "terrain_object.h"
 
@@ -459,11 +459,7 @@ std::vector<coord::tile> tile_list(const tile_range &rng) {
 		tiles.push_back(rng.start);
 	}
 	return tiles;
-	// a case when the objects radius is zero
-	if (tiles.empty()) {
-		tiles.push_back(rng.start);
-	}
-	return tiles;
+
 }
 
 tile_range building_center(coord::phys3 west, coord::tile_delta size, const Terrain &terrain) {

@@ -27,7 +27,7 @@ An attacker that is in game with other players will have no problems getting to 
 
 Deriving the valid Sender ID of the receiving player is more difficult and depends on the attacker's ability to capture network traffic. The easiest way to discover all Player IDs is by capturing a few packets of normal gameplay beforehand. The IDs of Players 1-8 have a fixed byte position in the data stream.
 
-## Forging the packet
+## Forging the Packet
 
 With the above knowledge and the protocol structure in mind, we are now able to handcraft a message ourselves. We will use the tool Packet Sender for this purpose.
 

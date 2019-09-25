@@ -1,6 +1,6 @@
-# Unit interaction - Formation actions
+# Unit Interaction - Formation Actions
 
-## Stance action
+## Stance Action
 
 Used for changing the stance of units.
 
@@ -47,7 +47,7 @@ The IDs of the selected units.
 >`02` &mdash; stance<br/>
 >`4b 15 00 00` &mdash; selected_id
 
-## Guard action
+## Guard Action
 
 Used for guarding a unit with others.
 
@@ -94,7 +94,7 @@ The IDs of the guarding units.
 >`4b 15 00 00` &mdash; selected_id<br/>
 >`42 18 00 00` &mdash; selected_id
 
-## Follow action
+## Follow Action
 
 Used for following a unit.
 
@@ -140,7 +140,7 @@ The IDs of the units that are following the unit with *:followed_id*.
 >`44 18 00 00` &mdash; selected_id<br/>
 >`42 18 00 00` &mdash; selected_id
 
-## Patrol action
+## Patrol Action
 
 Used for patrolling units.
 
@@ -225,7 +225,7 @@ The IDs of the units that are patrolling.
 >`43 18 00 00` &mdash; selected_id<br/>
 >`40 18 00 00` &mdash; selected_id
 
-## Formation action
+## Formation Action
 
 Used for changing the formation type.
 

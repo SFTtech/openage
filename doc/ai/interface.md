@@ -75,7 +75,7 @@ class Player {
 	Race   getRace();   // returns the race of the player.
 	Unit[] getUnits();  // returns the set of units the player own.
 	bool   hasResearched(TechType tech);
-	int    getWood()    // Returns the ammount of wood the player owns.
+	int    getWood()    // Returns the amount of wood the player owns.
 	// many more...
 }
 ```

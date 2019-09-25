@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <array>
@@ -30,17 +30,15 @@ std::string mod_set_string(modset_t mod) {
 			switch (it) {
 			case modifier::ALT:
 				return "ALT + ";
-				break;
 			case modifier::CTRL:
 				return "CTRL + ";
-				break;
 			case modifier::SHIFT:
 				return "SHIFT + ";
+			default:
 				break;
 			}
 		}
 	}
-
 	return "";
 }
 
@@ -82,7 +80,6 @@ std::string InputManager::get_bind(const std::string &action_str) {
 		default:
 			return this->key_bind_to_string(it->second);
 	}
-	return "";
 }
 
 bool InputManager::set_bind(const std::string &bind_str, const std::string action_str) {
