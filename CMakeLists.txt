@@ -145,7 +145,6 @@ option(
 )
 
 if(ENABLE_CLANG_TIDY)
-	set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
 	set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=-checks=cppcoreguidelines-*,clang-analyzer-*,bugprone-*,performance-*,portability-*,misc-*,modernize-*,hicpp-*,cert-*,readability-*,llvm-twine-local,llvm-prefer-isa-or-dyn-cast-in-conditionals, llvm-prefer-register-over-unsigned, google-readability-casting -extra-arg=-std=c++17")
 endif()
 

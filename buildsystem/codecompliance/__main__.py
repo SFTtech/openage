@@ -47,7 +47,6 @@ def parse_args():
                            "copyright year matches the git history."))
     cli.add_argument("--clangtidy", action="store_true",
                      help="check the cpp code with clang-tidy")
-
     cli.add_argument("--fix", action="store_true",
                      help=("try to automatically fix the found issues"))
 
