@@ -4,7 +4,7 @@
 
 from ..game_versions import GameVersion
 from ..dataformat.exportable import Exportable
-from ..dataformat.members import ArrayMember, SubdataMember, IncludeMembers
+from openage.convert.dataformat.read_members import ArrayMember, SubdataMember, IncludeMembers
 from ..dataformat.member_access import READ, READ_EXPORT
 
 

@@ -5,7 +5,7 @@
 from collections import OrderedDict
 import re
 
-from .members import IncludeMembers, StringMember, CharArrayMember, NumberMember, DataMember, RefMember
+from openage.convert.dataformat.read_members import IncludeMembers, StringMember, CharArrayMember, NumberMember, ReadMember, RefMember
 from .member_access import READ_EXPORT, NOREAD_EXPORT
 from .content_snippet import ContentSnippet, SectionType
 from .struct_snippet import StructSnippet
@@ -96,7 +96,7 @@ class StructDefinition:
                 else:
                     member = NumberMember(member_type)
 
-            elif isinstance(member_type, DataMember):
+            elif isinstance(member_type, ReadMember):
                 member = member_type
 
             else:

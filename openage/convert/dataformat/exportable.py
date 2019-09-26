@@ -12,9 +12,9 @@ from ...util.strings import decode_until_null
 from .data_definition import DataDefinition
 from .generated_file import GeneratedFile
 from .member_access import READ, READ_EXPORT, READ_UNKNOWN, NOREAD_EXPORT
-from .members import (IncludeMembers, ContinueReadMember,
-                      MultisubtypeMember, GroupMember, SubdataMember,
-                      DataMember)
+from openage.convert.dataformat.read_members import (IncludeMembers, ContinueReadMember,
+                                                     MultisubtypeMember, GroupMember, SubdataMember,
+                                                     ReadMember)
 from .struct_definition import (StructDefinition, vararray_match,
                                 integer_match)
 
@@ -108,11 +108,13 @@ class Exportable:
                                             "not inheriting from Exportable")
 
                         # generate output filename for next-level files
-                        nextlevel_filename = "%s/%04d" % (submember_filename, idx)
+                        nextlevel_filename = "%s/%04d" % (
+                            submember_filename, idx)
 
                         # recursive call, fetches DataDefinitions and the
                         # next-level data dict
-                        data_sets, data = submember_data_item.dump(nextlevel_filename)
+                        data_sets, data = submember_data_item.dump(
+                            nextlevel_filename)
 
                         # store recursively generated DataDefinitions to the
                         # flat list
@@ -140,7 +142,8 @@ class Exportable:
                         multisubtype_ref_file_data.append({
                             MultisubtypeBaseFile.data_format[0][1]: subtype_name,
                             MultisubtypeBaseFile.data_format[1][1]: "%s%s" % (
-                                subdata_definition.name_data_file, GeneratedFile.output_preferences["csv"]["file_suffix"]
+                                subdata_definition.name_data_file, GeneratedFile.output_preferences[
+                                    "csv"]["file_suffix"]
                             ),
                         })
 
@@ -160,7 +163,8 @@ class Exportable:
                     multisubtype_ref_file = DataDefinition(
                         MultisubtypeBaseFile,
                         multisubtype_ref_file_data,
-                        self_data[member_name],  # create file to contain refs to subtype files
+                        # create file to contain refs to subtype files
+                        self_data[member_name],
                     )
 
                     subdata_definitions.append(multisubtype_ref_file)
@@ -195,7 +199,7 @@ class Exportable:
         for _, export, var_name, var_type in members:
 
             if stop_reading_members:
-                if isinstance(var_type, DataMember):
+                if isinstance(var_type, ReadMember):
                     replacement_value = var_type.get_empty_value()
                 else:
                     replacement_value = 0
@@ -219,7 +223,8 @@ class Exportable:
                     # use its read method to store data to itself,
                     # then save the result as a reference named `var_name`
                     # TODO: constructor argument passing may be required here.
-                    grouped_data = var_type.cls(game_versions=self.game_versions)
+                    grouped_data = var_type.cls(
+                        game_versions=self.game_versions)
                     offset = grouped_data.read(raw, offset)
 
                     setattr(self, var_name, grouped_data)
@@ -235,7 +240,8 @@ class Exportable:
                     if isinstance(var_type.passed_args, str):
                         var_type.passed_args = set(var_type.passed_args)
                     for passed_member_name in var_type.passed_args:
-                        varargs[passed_member_name] = getattr(self, passed_member_name)
+                        varargs[passed_member_name] = getattr(
+                            self, passed_member_name)
 
                 # subdata list length has to be defined beforehand as a
                 # object member OR number.  it's name or count is specified
@@ -249,7 +255,8 @@ class Exportable:
                     single_type_subdata = True
                 else:
                     # multi-subtype child data list
-                    setattr(self, var_name, {key: [] for key in var_type.class_lookup})
+                    setattr(self, var_name, {key: []
+                                             for key in var_type.class_lookup})
                     single_type_subdata = False
 
                 # check if entries need offset checking
@@ -282,7 +289,8 @@ class Exportable:
                         # read the variable set by the above read call to
                         # use the read data to determine the denominaton of
                         # the member type
-                        subtype_name = getattr(self, var_type.subtype_definition[1])
+                        subtype_name = getattr(
+                            self, var_type.subtype_definition[1])
 
                         # look up the type name to get the subtype class
                         new_data_class = var_type.class_lookup[subtype_name]
@@ -293,7 +301,8 @@ class Exportable:
                                             new_data_class.__name__))
 
                     # create instance of submember class
-                    new_data = new_data_class(game_versions=self.game_versions, **varargs)
+                    new_data = new_data_class(
+                        game_versions=self.game_versions, **varargs)
 
                     # recursive call, read the subdata.
                     offset = new_data.read(raw, offset, new_data_class)
@@ -333,23 +342,27 @@ class Exportable:
                         struct_type = var_type
                         data_count = 1
 
-                elif isinstance(var_type, DataMember):
+                elif isinstance(var_type, ReadMember):
                     # special type requires having set the raw data type
                     struct_type = var_type.raw_type
                     data_count = var_type.get_length(self)
                     is_custom_member = True
 
                 else:
-                    raise Exception("unknown data member definition %s for member '%s'" % (var_type, var_name))
+                    raise Exception(
+                        "unknown data member definition %s for member '%s'" % (var_type, var_name))
 
                 if data_count < 0:
-                    raise Exception("invalid length %d < 0 in %s for member '%s'" % (data_count, var_type, var_name))
+                    raise Exception("invalid length %d < 0 in %s for member '%s'" % (
+                        data_count, var_type, var_name))
 
                 if struct_type not in struct_type_lookup:
-                    raise Exception("%s: member %s requests unknown data type %s" % (repr(self), var_name, struct_type))
+                    raise Exception("%s: member %s requests unknown data type %s" % (
+                        repr(self), var_name, struct_type))
 
                 if export == READ_UNKNOWN:
-                    # for unknown variables, generate uid for the unknown memory location
+                    # for unknown variables, generate uid for the unknown
+                    # memory location
                     var_name = "unknown-0x%08x" % offset
 
                 # lookup c type to python struct scan type
@@ -464,7 +477,7 @@ class Exportable:
             if member_name:
                 hasher.update(member_name.encode())
 
-            if isinstance(member_type, DataMember):
+            if isinstance(member_type, ReadMember):
                 hasher = member_type.format_hash(hasher)
 
             elif isinstance(member_type, str):

@@ -3,7 +3,7 @@
 # TODO pylint: disable=C,R
 
 from ..dataformat.exportable import Exportable
-from ..dataformat.members import SubdataMember
+from openage.convert.dataformat.read_members import SubdataMember
 from ..dataformat.member_access import READ_EXPORT, READ
 
 

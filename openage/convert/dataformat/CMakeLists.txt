@@ -8,9 +8,10 @@ add_py_modules(
 	generated_file.py
 	header_snippet.py
 	member_access.py
-	members.py
 	multisubtype_base.py
+	read_members.py
 	struct_definition.py
 	struct_snippet.py
 	util.py
+	value_member.py
 )

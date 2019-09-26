@@ -8,7 +8,7 @@ import os.path
 
 from .content_snippet import ContentSnippet, SectionType
 from .generated_file import GeneratedFile
-from .members import EnumMember, MultisubtypeMember
+from openage.convert.dataformat.read_members import EnumMember, MultisubtypeMember
 from .util import encode_value, commentify_lines
 from .struct_definition import StructDefinition
 

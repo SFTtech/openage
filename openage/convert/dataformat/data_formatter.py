@@ -5,7 +5,7 @@
 from . import entry_parser
 from . import util
 from .generated_file import GeneratedFile
-from .members import RefMember
+from openage.convert.dataformat.read_members import RefMember
 
 
 class DataFormatter:
