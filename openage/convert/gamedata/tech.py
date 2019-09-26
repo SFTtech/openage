@@ -3,29 +3,41 @@
 # TODO pylint: disable=C,R
 
 from ..dataformat.exportable import Exportable
-from ..dataformat.members import SubdataMember, EnumLookupMember
+from openage.convert.dataformat.read_members import SubdataMember, EnumLookupMember
 from ..dataformat.member_access import READ, READ_EXPORT
 
 
 class Effect(Exportable):
-    name_struct        = "tech_effect"
-    name_struct_file   = "tech"
+    name_struct = "tech_effect"
+    name_struct_file = "tech"
     struct_description = "applied effect for a research technology."
 
     data_format = [
         (READ, "type_id", EnumLookupMember(
-            raw_type = "int8_t",
-            type_name = "effect_apply_type",
-            lookup_dict = {
+            raw_type="int8_t",
+            type_name="effect_apply_type",
+            lookup_dict={
                 # unused assignage: a = -1, b = -1, c = -1, d = 0
                 -1: "DISABLED",
-                0: "ATTRIBUTE_ABSSET",    # if a != -1: a == unit_id, else b == unit_class_id; c = attribute_id, d = new_value
-                1: "RESOURCE_MODIFY",     # a == resource_id, if b == 0: then d = absval, else d = relval (for inc/dec)
-                2: "UNIT_ENABLED",        # a == unit_id, if b == 0: disable unit, else b == 1: enable unit
-                3: "UNIT_UPGRADE",        # a == old_unit_id, b == new_unit_id
-                4: "ATTRIBUTE_RELSET",    # if a != -1: unit_id, else b == unit_class_id; c=attribute_id, d=relval
-                5: "ATTRIBUTE_MUL",       # if a != -1: unit_id, else b == unit_class_id; c=attribute_id, d=factor
-                6: "RESOURCE_MUL",        # a == resource_id, d == factor
+                # if a != -1: a == unit_id, else b == unit_class_id; c =
+                # attribute_id, d = new_value
+                0: "ATTRIBUTE_ABSSET",
+                # a == resource_id, if b == 0: then d = absval, else d = relval
+                # (for inc/dec)
+                1: "RESOURCE_MODIFY",
+                # a == unit_id, if b == 0: disable unit, else b == 1: enable
+                # unit
+                2: "UNIT_ENABLED",
+                # a == old_unit_id, b == new_unit_id
+                3: "UNIT_UPGRADE",
+                # if a != -1: unit_id, else b == unit_class_id; c=attribute_id,
+                # d=relval
+                4: "ATTRIBUTE_RELSET",
+                # if a != -1: unit_id, else b == unit_class_id; c=attribute_id,
+                # d=factor
+                5: "ATTRIBUTE_MUL",
+                # a == resource_id, d == factor
+                6: "RESOURCE_MUL",
 
                 # may mean something different in aok:hd:
                 10: "TEAM_ATTRIBUTE_ABSSET",
@@ -36,8 +48,11 @@ class Effect(Exportable):
                 15: "TEAM_ATTRIBUTE_MUL",
                 16: "TEAM_RESOURCE_MUL",
 
-                # these are only used in technology trees, 103 even requires one
-                101: "TECHCOST_MODIFY",   # a == research_id, b == resource_id, if c == 0: d==absval else: d == relval
+                # these are only used in technology trees, 103 even requires
+                # one
+                # a == research_id, b == resource_id, if c == 0: d==absval
+                # else: d == relval
+                101: "TECHCOST_MODIFY",
                 102: "TECH_TOGGLE",       # d == research_id
                 103: "TECH_TIME_MODIFY",  # a == research_id, if c == 0: d==absval else d==relval
 
@@ -87,12 +102,13 @@ class Effect(Exportable):
 
 
 class Tech(Exportable):  # also called techage in some other tools
-    name_struct        = "tech"
-    name_struct_file   = "tech"
+    name_struct = "tech"
+    name_struct_file = "tech"
     struct_description = "a technology definition."
 
     data_format = [
-        (READ, "name", "char[31]"),                  # always CHUN4 (change unit 4-arg)
+        # always CHUN4 (change unit 4-arg)
+        (READ, "name", "char[31]"),
         (READ, "effect_count", "uint16_t"),
         (READ, "effects", SubdataMember(
             ref_type=Effect,
@@ -104,15 +120,15 @@ class Tech(Exportable):  # also called techage in some other tools
 # TODO: add common tech class
 
 class Mode(Exportable):
-    name_struct        = "age_tech_tree"
-    name_struct_file   = "tech"
-    struct_description = "items available when this age was reached."
+    name_struct = "mode"
+    name_struct_file = "tech"
+    struct_description = "mode for a building/unit/research connection"
 
     data_format = [
         (READ, "mode", EnumLookupMember(                 # mode for unit_or_research0
-            raw_type = "int32_t",
-            type_name = "building_connection_mode",
-            lookup_dict = {
+            raw_type="int32_t",
+            type_name="connection_mode",
+            lookup_dict={
                 0: "NOTHING",
                 1: "BUILDING",
                 2: "UNIT",
@@ -123,8 +139,8 @@ class Mode(Exportable):
 
 
 class AgeTechTree(Exportable):
-    name_struct        = "age_tech_tree"
-    name_struct_file   = "tech"
+    name_struct = "age_tech_tree"
+    name_struct_file = "tech"
     struct_description = "items available when this age was reached."
 
     data_format = [
@@ -175,7 +191,7 @@ class AgeTechTree(Exportable):
         (READ, "unit_researches", "int32_t[10]"),
         (READ, "modes", SubdataMember(
             ref_type=Mode,
-            length=10,  # number of tile types * 12
+            length=10,
         )),
 
         (READ, "building_level_count", "int8_t"),
@@ -203,19 +219,22 @@ class AgeTechTree(Exportable):
 
 
 class BuildingConnection(Exportable):
-    name_struct        = "building_connection"
-    name_struct_file   = "tech"
+    name_struct = "building_connection"
+    name_struct_file = "tech"
     struct_description = "new available buildings/units/researches when this building was created."
 
     data_format = [
-        (READ_EXPORT, "id", "int32_t"),                   # unit id of the current building
+        # unit id of the current building
+        (READ_EXPORT, "id", "int32_t"),
         # 0=generic
         # 1=TODO
         # 2=default
         # 3=marks as not available
         # 4=upgrading, constructing, creating
         # 5=research completed, building built
-        (READ, "status", "int8_t"),                       # maybe always 2 because we got 2 of them hardcoded below (unit_or_research, mode)
+        # maybe always 2 because we got 2 of them hardcoded below
+        # (unit_or_research, mode)
+        (READ, "status", "int8_t"),
     ]
 
     # TODO: Enable conversion for AOE1; replace 6 values below
@@ -241,7 +260,8 @@ class BuildingConnection(Exportable):
     # ===========================================================================
     data_format.extend([
         (READ_EXPORT, "building_count", "int8_t"),
-        (READ, "buildings", "int32_t[building_count]"),   # new buildings available when this building was created
+        # new buildings available when this building was created
+        (READ, "buildings", "int32_t[building_count]"),
         (READ_EXPORT, "unit_count", "int8_t"),
         (READ, "units", "int32_t[unit_count]"),           # new units
         (READ_EXPORT, "research_count", "int8_t"),
@@ -254,20 +274,24 @@ class BuildingConnection(Exportable):
         (READ, "unit_researches", "int32_t[10]"),
         (READ, "modes", SubdataMember(
             ref_type=Mode,
-            length=10,  # number of tile types * 12
+            length=10,
         )),
 
-        (READ, "location_in_age", "int8_t"),              # minimum age, in which this building is available
-        (READ, "unit_techs_total", "int8_t[5]"),          # total techs for each age (5 ages, post-imp probably counts as one)
+        # minimum age, in which this building is available
+        (READ, "location_in_age", "int8_t"),
+        # total techs for each age (5 ages, post-imp probably counts as one)
+        (READ, "unit_techs_total", "int8_t[5]"),
         (READ, "unit_techs_first", "int8_t[5]"),
-        (READ_EXPORT, "line_mode", "int32_t"),            # 5: >=1 connections, 6: no connections
-        (READ, "enabled_by_research_id", "int32_t"),      # current building is unlocked by this research id, -1=no unlock needed
+        # 5: >=1 connections, 6: no connections
+        (READ_EXPORT, "line_mode", "int32_t"),
+        # current building is unlocked by this research id, -1=no unlock needed
+        (READ, "enabled_by_research_id", "int32_t"),
     ])
 
 
 class UnitConnection(Exportable):
-    name_struct        = "unit_connection"
-    name_struct_file   = "tech"
+    name_struct = "unit_connection"
+    name_struct_file = "tech"
     struct_description = "unit updates to apply when activating the technology."
 
     data_format = [
@@ -279,13 +303,14 @@ class UnitConnection(Exportable):
         # 4=upgrading, constructing, creating
         # 5=research completed, building built
         (READ, "status", "int8_t"),                 # always 2: default
-        (READ, "upper_building", "int32_t"),        # building, where this unit is created
+        # building, where this unit is created
+        (READ, "upper_building", "int32_t"),
 
         (READ, "slots_used", "int32_t"),
         (READ, "unit_researches", "int32_t[10]"),
         (READ, "modes", SubdataMember(
             ref_type=Mode,
-            length=10,  # number of tile types * 12
+            length=10,
         )),
 
         (READ, "vertical_lines", "int32_t"),
@@ -311,15 +336,19 @@ class UnitConnection(Exportable):
 
     data_format.extend([
         (READ, "location_in_age", "int32_t"),    # 0=hidden, 1=first, 2=second
-        (READ, "required_research", "int32_t"),  # min amount of researches to be discovered for this unit to be available
-        (READ, "line_mode", "int32_t"),          # 0=independent/new in its line, 3=depends on a previous research in its line
+        # min amount of researches to be discovered for this unit to be
+        # available
+        (READ, "required_research", "int32_t"),
+        # 0=independent/new in its line, 3=depends on a previous research in
+        # its line
+        (READ, "line_mode", "int32_t"),
         (READ, "enabling_research", "int32_t"),
     ])
 
 
 class ResearchConnection(Exportable):
-    name_struct        = "research_connection"
-    name_struct_file   = "tech"
+    name_struct = "research_connection"
+    name_struct_file = "tech"
     struct_description = "research updates to apply when activating the technology."
 
     data_format = [
@@ -370,10 +399,11 @@ class ResearchConnection(Exportable):
         (READ, "unit_researches", "int32_t[10]"),
         (READ, "modes", SubdataMember(
             ref_type=Mode,
-            length=10,  # number of tile types * 12
+            length=10,
         )),
 
         (READ, "vertical_line", "int32_t"),
         (READ, "location_in_age", "int32_t"),    # 0=hidden, 1=first, 2=second
-        (READ, "line_mode", "int32_t"),          # 0=first age, else other ages.
+        # 0=first age, else other ages.
+        (READ, "line_mode", "int32_t"),
     ])

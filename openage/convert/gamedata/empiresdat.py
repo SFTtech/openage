@@ -17,7 +17,7 @@ from . import unit
 
 from ..game_versions import GameVersion
 from ..dataformat.exportable import Exportable
-from ..dataformat.members import SubdataMember
+from openage.convert.dataformat.read_members import SubdataMember
 from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
 
 from ...log import spam, dbg, info, warn

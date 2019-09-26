@@ -4,7 +4,7 @@
 
 from . import unit
 from ..dataformat.exportable import Exportable
-from ..dataformat.members import MultisubtypeMember, EnumLookupMember
+from openage.convert.dataformat.read_members import MultisubtypeMember, EnumLookupMember
 from ..dataformat.member_access import READ, READ_EXPORT
 
 

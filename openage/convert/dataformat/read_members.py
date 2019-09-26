@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,abstract-method
 
@@ -12,25 +12,26 @@ from .struct_snippet import StructSnippet
 from .util import determine_headers, determine_header
 
 
-class DataMember:
+class ReadMember:
     """
     member variable of data files and generated structs.
 
     equals:
-    * one column in a csv file.
-    * member in the C struct
     * data field in the .dat file
     """
+
     def __init__(self):
         self.length = 1
         self.raw_type = None
         self.do_raw_read = True
 
     def get_parsers(self, idx, member):
-        raise NotImplementedError("implement the parser generation for the member type %s" % type(self))
+        raise NotImplementedError(
+            "implement the parser generation for the member type %s" % type(self))
 
     def get_headers(self, output_target):
-        raise NotImplementedError("return needed headers for %s for a given output target" % type(self))
+        raise NotImplementedError(
+            "return needed headers for %s for a given output target" % type(self))
 
     def get_typerefs(self):
         """
@@ -49,7 +50,8 @@ class DataMember:
         return data
 
     def get_effective_type(self):
-        raise NotImplementedError("return the effective (struct) type of member %s" % type(self))
+        raise NotImplementedError(
+            "return the effective (struct) type of member %s" % type(self))
 
     def get_empty_value(self):
         """
@@ -81,13 +83,15 @@ class DataMember:
 
         used to determine data format changes.
         """
-        raise NotImplementedError("return the hasher updated with member settings")
+        raise NotImplementedError(
+            "return the hasher updated with member settings")
 
     def __repr__(self):
-        raise NotImplementedError("return short description of the member type %s" % (type(self)))
+        raise NotImplementedError(
+            "return short description of the member type %s" % (type(self)))
 
 
-class GroupMember(DataMember):
+class GroupMember(ReadMember):
     """
     member that references to another class, pretty much like the SubdataMember,
     but with a fixed length of 1.
@@ -113,9 +117,9 @@ class GroupMember(DataMember):
         return [
             EntryParser(
                 ["this->%s.fill(buf[%d]);" % (member, idx)],
-                headers     = set(),
-                typerefs    = set(),
-                destination = "fill",
+                headers=set(),
+                typerefs=set(),
+                destination="fill",
             )
         ]
 
@@ -143,7 +147,7 @@ class IncludeMembers(GroupMember):
         return "IncludeMember<%s>" % repr(self.cls)
 
 
-class DynLengthMember(DataMember):
+class DynLengthMember(ReadMember):
     """
     a member that can have a dynamic length.
     """
@@ -162,7 +166,8 @@ class DynLengthMember(DataMember):
             type_ok = True
 
         if not type_ok:
-            raise Exception("invalid length type passed to %s: %s<%s>" % (type(self), length, type(length)))
+            raise Exception("invalid length type passed to %s: %s<%s>" % (
+                type(self), length, type(length)))
 
         self.length = length
 
@@ -186,12 +191,14 @@ class DynLengthMember(DataMember):
                     return length_def
 
             else:
-                # self.length specifies the attribute name where the length is stored
+                # self.length specifies the attribute name where the length is
+                # stored
                 length_def = self.length
 
             # look up the given member name and return the value.
             if not isinstance(length_def, str):
-                raise Exception("length lookup definition is not str: %s<%s>" % (length_def, type(length_def)))
+                raise Exception("length lookup definition is not str: %s<%s>" % (
+                    length_def, type(length_def)))
 
             return getattr(obj, length_def)
 
@@ -225,19 +232,19 @@ class DynLengthMember(DataMember):
         return hasher
 
 
-class RefMember(DataMember):
+class RefMember(ReadMember):
     """
     a struct member that can be referenced/references another struct.
     """
 
     def __init__(self, type_name, file_name):
-        DataMember.__init__(self)
+        ReadMember.__init__(self)
         self.type_name = type_name
         self.file_name = file_name
 
         # xrefs not supported yet.
         # would allow reusing a struct definition that lies in another file
-        self.resolved  = False
+        self.resolved = False
 
     def format_hash(self, hasher):
         # the file_name is irrelevant for the format hash
@@ -251,7 +258,7 @@ class RefMember(DataMember):
         return hasher
 
 
-class NumberMember(DataMember):
+class NumberMember(ReadMember):
     """
     this struct member/data column contains simple numbers
     """
@@ -273,11 +280,12 @@ class NumberMember(DataMember):
     def __init__(self, number_def):
         super().__init__()
         if number_def not in self.type_scan_lookup:
-            raise Exception("created number column from unknown type %s" % number_def)
+            raise Exception(
+                "created number column from unknown type %s" % number_def)
 
         # type used for the output struct
         self.number_type = number_def
-        self.raw_type    = number_def
+        self.raw_type = number_def
 
     def get_parsers(self, idx, member):
         scan_symbol = self.type_scan_lookup[self.number_type]
@@ -286,9 +294,9 @@ class NumberMember(DataMember):
             EntryParser(
                 ["if (sscanf(buf[%d].c_str(), \"%%%s\", &this->%s) != 1) "
                  "{ return %d; }" % (idx, scan_symbol, member, idx)],
-                headers     = determine_header("sscanf"),
-                typerefs    = set(),
-                destination = "fill",
+                headers=determine_header("sscanf"),
+                typerefs=set(),
+                destination="fill",
             )
         ]
 
@@ -330,7 +338,7 @@ class ZeroMember(NumberMember):
 
 
 class ContinueReadMemberResult(Enum):
-    ABORT    = "data_absent"
+    ABORT = "data_absent"
     CONTINUE = "data_exists"
 
     def __str__(self):
@@ -359,7 +367,8 @@ class ContinueReadMember(NumberMember):
             "// remember if the following members are undefined",
             'if (buf[%d] == "%s") {' % (idx, self.Result.ABORT.value),
             "    this->%s = 0;" % (member),
-            '} else if (buf[%d] == "%s") {' % (idx, self.Result.CONTINUE.value),
+            '} else if (buf[%d] == "%s") {' % (
+                idx, self.Result.CONTINUE.value),
             "    this->%s = 1;" % (member),
             "} else {",
             ('    throw openage::error::Error(ERR << "unexpected value \'"'
@@ -370,9 +379,9 @@ class ContinueReadMember(NumberMember):
         return [
             EntryParser(
                 entry_parser_txt,
-                headers     = determine_headers(("engine_error",)),
-                typerefs    = set(),
-                destination = "fill",
+                headers=determine_headers(("engine_error",)),
+                typerefs=set(),
+                destination="fill",
             )
         ]
 
@@ -384,8 +393,8 @@ class EnumMember(RefMember):
 
     def __init__(self, type_name, values, file_name=None):
         super().__init__(type_name, file_name)
-        self.values    = values
-        self.resolved  = True    # TODO, xrefs not supported yet.
+        self.values = values
+        self.resolved = True    # TODO, xrefs not supported yet.
 
     def get_parsers(self, idx, member):
         enum_parse_else = ""
@@ -393,8 +402,10 @@ class EnumMember(RefMember):
         enum_parser.append("// parse enum %s" % (self.type_name))
         for enum_value in self.values:
             enum_parser.extend([
-                '%sif (buf[%d] == "%s") {' % (enum_parse_else, idx, enum_value),
-                "    this->%s = %s::%s;" % (member, self.type_name, enum_value),
+                '%sif (buf[%d] == "%s") {' % (
+                    enum_parse_else, idx, enum_value),
+                "    this->%s = %s::%s;" % (member,
+                                            self.type_name, enum_value),
                 "}",
             ])
             enum_parse_else = "else "
@@ -415,9 +426,9 @@ class EnumMember(RefMember):
         return [
             EntryParser(
                 enum_parser,
-                headers     = determine_headers(("engine_error")),
-                typerefs    = set(),
-                destination = "fill",
+                headers=determine_headers(("engine_error")),
+                typerefs=set(),
+                destination="fill",
             )
         ]
 
@@ -504,7 +515,8 @@ class EnumLookupMember(EnumMember):
                 h = " = %s" % hex(data)
             except TypeError:
                 h = ""
-            raise Exception("failed to find %s%s in lookup dict %s!" % (str(data), h, self.type_name)) from None
+            raise Exception("failed to find %s%s in lookup dict %s!" %
+                            (str(data), h, self.type_name)) from None
 
 
 class CharArrayMember(DynLengthMember):
@@ -527,7 +539,8 @@ class CharArrayMember(DynLengthMember):
             # copy to char[n]
             data_length = self.get_length()
             lines = [
-                "strncpy(this->%s, buf[%d].c_str(), %d);" % (member, idx, data_length),
+                "strncpy(this->%s, buf[%d].c_str(), %d);" % (member,
+                                                             idx, data_length),
                 "this->%s[%d] = '\\0';" % (member, data_length - 1),
             ]
             headers |= determine_header("strncpy")
@@ -535,9 +548,9 @@ class CharArrayMember(DynLengthMember):
         return [
             EntryParser(
                 lines,
-                headers     = headers,
-                typerefs    = set(),
-                destination = "fill",
+                headers=headers,
+                typerefs=set(),
+                destination="fill",
             )
         ]
 
@@ -591,22 +604,22 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         self.subtype_definition = subtype_definition
 
         # dict to look up type_name => exportable class
-        self.class_lookup       = class_lookup
+        self.class_lookup = class_lookup
 
         # list of member names whose values will be passed to the new class
-        self.passed_args        = passed_args
+        self.passed_args = passed_args
 
         # add this member name's value to the filename
-        self.ref_to             = ref_to
+        self.ref_to = ref_to
 
         # link to member name which is a list of binary file offsets
-        self.offset_to          = offset_to
+        self.offset_to = offset_to
 
         # dict to specify type_name => constructor arguments
-        self.ref_type_params    = ref_type_params
+        self.ref_type_params = ref_type_params
 
         # no xrefs supported yet.. just set to true as if they were resolved.
-        self.resolved           = True
+        self.resolved = True
 
     def get_headers(self, output_target):
         if "struct" == output_target:
@@ -635,18 +648,18 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             # first, the parser to just read the index file name
             EntryParser(
                 ["this->%s.subdata_meta.filename = buf[%d];" % (member, idx)],
-                headers     = set(),
-                typerefs    = set(),
-                destination = "fill",
+                headers=set(),
+                typerefs=set(),
+                destination="fill",
             ),
             # then the parser that uses the index file to recurse over
             # the "real" data entries.
             # the above parsed filename is searched in this basedir.
             EntryParser(
                 ["this->%s.recurse(storage, basedir);" % (member)],
-                headers     = set(),
-                typerefs    = set(),
-                destination = "recurse",
+                headers=set(),
+                typerefs=set(),
+                destination="recurse",
             )
         ]
 
@@ -682,7 +695,8 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             snippet.typerefs |= {MultisubtypeBaseFile.name_struct}
 
             # metainformation about locations and types of subdata to recurse
-            # basically maps subdata type to a filename where this subdata is stored
+            # basically maps subdata type to a filename where this subdata is
+            # stored
             snippet.add_member("struct openage::util::csv_subdata<%s> subdata_meta;\n" % (
                 MultisubtypeBaseFile.name_struct))
 
@@ -704,7 +718,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             txt.append(
                 "int {type_name}::fill(const std::string & /*line*/) {{\n"
                 "    return -1;\n"
-                "}}\n".format(type_name = self.type_name)
+                "}}\n".format(type_name=self.type_name)
             )
 
             # function to recursively read the referenced files
@@ -811,14 +825,14 @@ class SubdataMember(MultisubtypeMember):
     def __init__(self, ref_type, length, offset_to=None,
                  ref_to=None, ref_type_params=None, passed_args=None):
         super().__init__(
-            type_name          = None,
-            subtype_definition = None,
-            class_lookup       = {None: ref_type},
-            length             = length,
-            offset_to          = offset_to,
-            ref_to             = ref_to,
-            ref_type_params    = {None: ref_type_params},
-            passed_args        = passed_args,
+            type_name=None,
+            subtype_definition=None,
+            class_lookup={None: ref_type},
+            length=length,
+            offset_to=offset_to,
+            ref_to=ref_to,
+            ref_type_params={None: ref_type_params},
+            passed_args=passed_args,
         )
 
     def get_headers(self, output_target):
@@ -838,17 +852,17 @@ class SubdataMember(MultisubtypeMember):
             # to read subdata, first fetch the filename to read
             EntryParser(
                 ["this->%s.filename = buf[%d];" % (member, idx)],
-                headers     = set(),
-                typerefs    = set(),
-                destination = "fill",
+                headers=set(),
+                typerefs=set(),
+                destination="fill",
             ),
             # then read the subdata content from the storage,
             # searching for the filename relative to basedir.
             EntryParser(
                 ["this->%s.read(storage, basedir);" % (member)],
-                headers     = set(),
-                typerefs    = set(),
-                destination = "recurse",
+                headers=set(),
+                typerefs=set(),
+                destination="recurse",
             ),
         ]
 
