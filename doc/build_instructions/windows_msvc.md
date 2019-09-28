@@ -5,12 +5,22 @@ __NOTE:__ We also have an installer for Win10 (x64), if you just want to play ar
  Since Windows doesn't offer a native package manager, we use a mixture of manual and automated steps to get the dependencies for openage.
  *Please remember to replace the directories referenced below (written in <...>) with the appropriate values.*
 
+## Using CI to build openage
+If you use any CI (like Travis-CI or Appveyor) you can make your life easier by using the following yaml-configuration files:
+- Win_x64 - MSVC 15.x - [> Download .yml <](https://gist.githubusercontent.com/simonsan/4c73314e005239938110ec9c91e484c0/raw/)
+- Win_x86 - MSVC 15.x - [> Download .yml <](https://gist.githubusercontent.com/simonsan/390f2e3f60667608f74a2ed687e14dad/raw/)
+
+They will build you the latest version from our master branch and package them into an installer and a portable 7z-file.
+
+__NOTE:__ You need to manually make sure and doublecheck if the system you are building on has fulfilled all the [dependencies](/doc/building.md).
+
 ## Setting up the build environment
  You will need to download and install the following manually.
  Those who already have the latest stable versions of these programs can skip this:
  - [Visual Studio Buildtools](https://download.visualstudio.microsoft.com/download/pr/10413969-2070-40ea-a0ca-30f10ec01d1d/414d8e358a8c44dc56cdac752576b402/vs_buildtools.exe)
    - With the "Visual C++ Buildtools" workload.
-_NOTE:_ If you are searching for an IDE for development you can get an overview [here](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#C/C++), we've also written some [instructions for developing with different IDEs](/doc/ide.md).
+
+    _NOTE:_ If you are searching for an IDE for development you can get an overview [here](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#C/C++), we've also written some [instructions for developing with different IDEs](/doc/ide.md).
 
  - [Python 3](https://www.python.org/downloads/windows/)
    - With the "pip" option enabled. We use `pip` to install other dependencies.
@@ -61,7 +71,7 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
     - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\`.
     - Copy `fontconfig/57-dejavu-serif.conf` to `%FONTCONFIG_PATH%/conf.d`.
   - [Optional] Set the `AGE2DIR` environment variable to the AoE 2 installation directory.
-  - Set `QML2_IMPORT_PATH` to `<vcpkg directory>\installed\<relevant config>\qml`
+  - Set `QML2_IMPORT_PATH` to `<vcpkg directory>\installed\<relevant config>\qml` or for prebuilt Qt `<qt directory>\<qt-version>\<compiler-version>\qml`
   - Append the following to the environment `PATH`:
     - `<openage directory>\build\libopenage\<config built>` (for `openage.dll`)
     - Path to `nyan.dll` (depends on the procedure chosen to get nyan)
@@ -73,10 +83,18 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
 ## Packaging
 
  - Install [NSIS](https://sourceforge.net/projects/nsis/files/latest/download).
+ - Depending on the way you installed Qt (vcpkg/pre-built) you need to edit the following line in `<openage-repo-dir>\buildsystem\templates\ForwardVariables.cmake.in`:
+```
+	# Use windeploy for packaging qt-prebuilt, standard value '1' for windeploy, '0' for vcpkg
+	set(use_windeployqt 1)
+```
 
  Open a command prompt at `<openage directory>\build` (or use the one from the building step):
 
     cpack -C RelWithDebInfo
 
- The installer (`openage-<version>-win32.exe`) will be generated in the same directory.<br>
- _Hint_: Append `-V` to the `cpack` command for verbose output (it takes time to package all dependencies).
+ The installer (`openage-<version>-<arch>.exe`) will be generated in the same directory.<br>
+
+ _Hint:_ Append `-V` to the `cpack` command for verbose output (it takes time to package all dependencies).
+
+ _Hint:_ <arch> you can set with the environment variable `TARGET_PLATFORM` (e.g. amd64, x86).

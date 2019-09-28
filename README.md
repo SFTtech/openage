@@ -12,8 +12,13 @@ To play, you require *an original AoE II : TC installation or [AoE II: HD](http:
 [![#sfttech on matrix.org](https://img.shields.io/badge/matrix-%23sfttech-blue.svg)](https://riot.im/app/#/room/#sfttech:matrix.org)
 [![quality badge](https://img.shields.io/badge/cuteness-overload-orange.svg)](http://www.emergencykitten.com/)
 
+
+
+Contact
+-------
 Contact  | Where?
----------|-
+---------|-------
+Issue Tracker | [SFTtech/openage](https://github.com/SFTtech/openage/issues)
 Development Blog | [blog.openage.sft.mx](https://blog.openage.sft.mx)
 Forum | [<img src="https://www.redditstatic.com/about/assets/reddit-logo.png" alt="reddit" height="22"/> /r/openage](https://www.reddit.com/r/openage/)
 Matrix Chat | [`#sfttech:matrix.org`](https://riot.im/app/#/room/#sfttech:matrix.org)
@@ -21,7 +26,8 @@ IRC Chat | [`irc.freenode.net #sfttech`](https://webchat.freenode.net/?channels=
 Money Sink | [![money sink](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/SFTtech)
 
 
-The foundation of **openage**:
+Technical foundation
+--------------------
 
 Technology     | Component
 ---------------|----------
@@ -36,7 +42,9 @@ Technology     | Component
 [**nyan**](https://github.com/SFTtech/nyan) | Content Configuration and Modding
 **Humans**     | Mixing together all of the above
 
-Our goals *include*:
+
+Goals
+-----
 
 * Fully authentic look and feel
   * This can only be approximated, since the behaviour of the original game is mostly undocumented,
@@ -46,6 +54,7 @@ Our goals *include*:
 * Matchmaking and ranking with a [haskell masterserver](https://github.com/SFTtech/openage-masterserver)
 * Optionally, [improvements](/doc/ideas/) over the original game
 * AI scripting in Python, you can use [machine learning](http://scikit-learn.org/stable/)
+  * here is some [additional literature](http://www.deeplearningbook.org/)
 * Re-creating [free game assets](https://github.com/SFTtech/openage-data)
 * An easily-moddable content format: [**nyan** yet another notation](https://github.com/SFTtech/nyan)
 * An integrated Python console and API, comparable to [blender](https://www.blender.org/)
@@ -69,15 +78,19 @@ Current State of the Project
    - See [doc/milestones.md](/doc/milestones.md). We also have [lists of crazy xor good ideas](/doc/ideas) and a [technical overview for requested features](/doc/ideas/fr_technical_overview.md). 
 
 
-Packaging
----------
+Installation Packages
+---------------------
 
-**Supported Platforms:** Linux, Windows 10 (x64)
+**Supported Platforms:** Linux, Windows 10, MacOS X 10.14
  
-  - For Linux check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available.
-  - For Windows check our [release page](https://github.com/SFTtech/openage/releases) for the latest installer.
+  - For **Linux** check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available or [here](https://bintray.com/simonsan/openage-packages/openage-linux-releases) for any future updates on *.deb and AppImage packages.
+  - For **Windows** check our [release page](https://github.com/SFTtech/openage/releases) for the latest installer or [here](https://dl.bintray.com/simonsan/openage-packages/) for nightly builds.
 
-__NOTE:__ If you have any problems starting conversion or starting *openage* take a look into our [troubleshooting guide](/doc/troubleshooting.md).
+    __NOTE:__ If you have any problems starting conversion or starting *openage* take a look into the [package instructions](doc/build_instructions/packages.md) and our [troubleshooting guide](/doc/troubleshooting.md).
+
+    __NOTE:__ For **MacOSX** we don't have packages, but here you can check the the build status [![Build](https://travis-ci.com/simonsan/openage.svg?branch=master)](https://api.travis-ci.com/simonsan/openage.svg?branch=master)
+
+    We also have building instructions in [here](/doc/build_instructions/os_x_10.14_mojave.md).
 
 
 Dependencies, Building and Running
@@ -103,32 +116,6 @@ To turn them off, use `./run --dont-segfault --no-errors --dont-eat-dog`.
 
 If this still does not help, try our [troubleshooting guide](/doc/troubleshooting.md), the [contact section](#contact)
 or the [bug tracker](https://github.com/SFTtech/openage/issues).
-
-
-Development Process
--------------------
-
-What does openage development look like in practice?
- - extensive [synchronization](#contact)!
- - [doc/development.md](/doc/development.md).
-
-Can I help?
- - [doc/contributing.md](/doc/contributing.md).
-
-
-All documentation is also in this repo:
-
-- Code documentation is embedded in the sources for Doxygen (see [doc readme](/doc/README.md)).
-- Have a look at the [doc directory](/doc/). This folder tends to outdate when code changes.
-
-
-macOS Version
-------------
-
-Running openage on macOS worked in the past,
-and might or might not work right now.
-
-Setting up continuous integration for this platform has some complications. Running a hackintosh VM seems to be not so legal, while buying dedicated hardware for it seems to be not so cheap. If you know of a legal and cost-free way of doing so or want to sponsor a semi-recent Mac Mini, please open a ticket in our issue tracker. Until then, PRs untested on macOS will make their way into the master branch and occasional breakage will occur.
 
 
 Contributing
@@ -161,25 +148,23 @@ To prevent accidental violation of one of those guidelines, you should *never*
 * [contribute](/doc/contributing.md) anything to the code
 * [contact us](#contact)
 
-cheers, happy hecking.
+Cheers, happy hecking.
 
 
-Contact
--------
+Development Process
+-------------------
 
+What does openage development look like in practice?
+ - extensive [synchronization](#contact)!
+ - [doc/development.md](/doc/development.md).
 
-If you have the desire to perform semi-human interaction,
-join our **Matrix** or **IRC** chatroom!
+Can I help?
+ - [doc/contributing.md](/doc/contributing.md).
 
-* [`#sfttech:matrix.org`](https://riot.im/app/#/room/#sfttech:matrix.org)
-* [`irc.freenode.net #sfttech`](https://webchat.freenode.net/?channels=sfttech)
+All documentation is also in this repo:
 
-Do not hesitate to ping and insult us, we might not see your message otherwise.
-
-For all technical discussion (ideas, problems, ...), use the [issue tracker](https://github.com/SFTtech/openage/issues)!
-It's like a mailing list.
-
-For other discussions or questions, use our [/r/openage subreddit](https://www.reddit.com/r/openage/)!
+- Code documentation is embedded in the sources for Doxygen (see [doc readme](/doc/README.md)).
+- Have a look at the [doc directory](/doc/). This folder tends to outdate when code changes.
 
 
 License

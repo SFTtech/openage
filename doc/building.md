@@ -74,7 +74,7 @@ described below for some of the most common ones:
 - [Fedora (>= 27)](build_instructions/fedora.md)
 - [openSUSE 13.2](build_instructions/opensuse_13.2.md)
 - [openSUSE Tumbleweed](build_instructions/opensuse_tumbleweed.md)
-- [Mac OS X 10.10 Yosemite](build_instructions/os_x_10.10_yosemite.md)
+- [Mac OS X 10.14 Mojave](build_instructions/os_x_10.14_mojave.md)
 - [Arch Linux](build_instructions/arch_linux.md)
 - [FreeBSD](build_instructions/freebsd.md)
 - [Gentoo](build_instructions/gentoo.md)
