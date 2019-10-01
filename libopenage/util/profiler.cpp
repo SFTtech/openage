@@ -1,7 +1,8 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "profiler.h"
 #include "../engine.h"
+#include "../renderer/color.h"
 #include "misc.h"
 
 #include <chrono>
@@ -171,7 +172,7 @@ void Profiler::draw_legend() {
 
 		glColor4f(0.2, 0.2, 0.2, 1);
 		coord::viewport position = coord::viewport{box_x + PROFILER_COM_BOX_WIDTH + 2, box_y + 2};
-		this->engine->render_text(position, 12, "%s", com.second.display_name.c_str());
+		this->engine->render_text(position, 12, renderer::Colors::WHITE, "%s", com.second.display_name.c_str());
 
 		offset += PROFILER_COM_BOX_HEIGHT + 2;
 	}

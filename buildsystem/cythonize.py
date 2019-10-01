@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Runs Cython on all modules that were listed via add_cython_module.
@@ -9,7 +9,11 @@ Runs Cython on all modules that were listed via add_cython_module.
 import argparse
 import os
 import sys
+from contextlib import redirect_stdout
 from multiprocessing import cpu_count
+from pathlib import Path
+
+from Cython.Build import cythonize
 
 
 class LineFilter:
@@ -48,7 +52,7 @@ class CythonFilter(LineFilter):
     # pylint: disable=too-few-public-methods
     def __init__(self):
         filters = [
-            lambda x: x == 'Please put "# distutils: language=c++" in your .pyx or .pxd file(s)',
+            lambda x: 'put "# distutils: language=c++" in your .pyx or .pxd file(s)' in x,
             lambda x: x.startswith('Compiling ') and x.endswith(' because it changed.')
         ]
         super().__init__(filters=filters)
@@ -59,31 +63,36 @@ def read_list_from_file(filename):
     with open(filename) as fileobj:
         data = fileobj.read().strip()
 
-    data = [os.path.realpath(os.path.normpath(filename)) for filename in data.split(';')]
-    if data == ['']:
-        return []
-
-    return data
+    return [Path(filename).resolve() for filename in data.split(';')]
 
 
 def remove_if_exists(filename):
     """ Deletes the file (if it exists) """
-    if os.path.exists(filename):
-        print(os.path.relpath(filename, os.getcwd()))
-        os.remove(filename)
+    if filename.is_file():
+        print(filename.relative_to(os.getcwd()))
+        filename.unlink()
 
 
-def cythonize_cpp_wrapper(modules, nthreads):
+def cythonize_wrapper(modules, **kwargs):
     """ Calls cythonize, filtering useless warnings """
-    from Cython.Build import cythonize
-    from contextlib import redirect_stdout
+    bin_dir, bin_modules = kwargs['build_dir'], []
+    src_dir, src_modules = Path.cwd(), []
 
-    if not modules:
-        return
+    for module in modules:
+        if Path(bin_dir) in module.parents:
+            bin_modules.append(str(module.relative_to(bin_dir)))
+        else:
+            src_modules.append(str(module.relative_to(src_dir)))
 
     with CythonFilter() as cython_filter:
         with redirect_stdout(cython_filter):
-            cythonize(modules, language='c++', nthreads=nthreads)
+            if src_modules:
+                cythonize(src_modules, **kwargs)
+
+            if bin_modules:
+                os.chdir(bin_dir)
+                cythonize(bin_modules, **kwargs)
+                os.chdir(src_dir)
 
 
 def main():
@@ -105,6 +114,10 @@ def main():
     cli.add_argument("--clean", action="store_true", help=(
         "Clean compilation results and exit."
     ))
+    cli.add_argument("--build-dir", help=(
+        "Build output directory to generate the cpp files in."
+        "note: this is also added for module search path."
+    ))
     cli.add_argument("--memcleanup", type=int, default=0, help=(
         "Generate memory cleanup code to make valgrind happy:\n"
         "0: nothing, 1+: interned objects,\n"
@@ -114,45 +127,63 @@ def main():
                      help="number of compilation threads to use")
     args = cli.parse_args()
 
+    # cython emits warnings on using absolute paths to modules
+    # https://github.com/cython/cython/issues/2323
     modules = read_list_from_file(args.module_list)
     embedded_modules = read_list_from_file(args.embedded_module_list)
     depends = set(read_list_from_file(args.depends_list))
 
     if args.clean:
         for module in modules + embedded_modules:
-            module = os.path.splitext(module)[0]
-            remove_if_exists(module + '.cpp')
-            remove_if_exists(module + '.html')
+            rel_module = module.relative_to(Path.cwd())
+            build_module = args.build_dir / rel_module
+            remove_if_exists(build_module.with_suffix('.cpp'))
+            remove_if_exists(build_module.with_suffix('.html'))
         sys.exit(0)
 
     from Cython.Compiler import Options
     Options.annotate = True
     Options.fast_fail = True
-    # TODO https://github.com/cython/cython/pull/415
-    #      Until then, this has no effect.
-    Options.short_cfilenm = '"cpp"'
     Options.generate_cleanup_code = args.memcleanup
+    Options.cplus = 1
 
-    cythonize_cpp_wrapper(modules, args.threads)
+    # build cython modules (emits shared libraries)
+    cythonize_args = {
+        'compiler_directives': {'language_level': 3},
+        'build_dir': args.build_dir,
+        'include_path': [args.build_dir],
+        'nthreads': args.threads
+    }
 
+    # this is deprecated, but still better than
+    # writing funny lines at the head of each file.
+    cythonize_args['language'] = 'c++'
+
+    cythonize_wrapper(modules, **cythonize_args)
+
+    # build standalone executables that embed the py interpreter
     Options.embed = "main"
 
-    cythonize_cpp_wrapper(embedded_modules, args.threads)
+    cythonize_wrapper(embedded_modules, **cythonize_args)
 
     # verify depends
     from Cython.Build.Dependencies import _dep_tree
 
+    depend_failed = False
     # TODO figure out a less hacky way of getting the depends out of Cython
     # pylint: disable=no-member, protected-access
     for module, files in _dep_tree.__cimported_files_cache.items():
         for filename in files:
             if not filename.startswith('.'):
-                # system include
+                # system include starts with /
                 continue
 
             if os.path.realpath(os.path.abspath(filename)) not in depends:
                 print("\x1b[31mERR\x1b[m unlisted dependency: " + filename)
-                sys.exit(1)
+                depend_failed = True
+
+    if depend_failed:
+        sys.exit(1)
 
 
 if __name__ == '__main__':

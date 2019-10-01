@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "console.h"
 
@@ -183,7 +183,6 @@ bool Console::on_input(SDL_Event *e) {
 
 		//do not allow anyone else to handle this input
 		return false;
-		break;
 	}
 
 	return true;

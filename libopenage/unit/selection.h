@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -82,11 +82,11 @@ public:
 	 */
 	void all_invoke(Command &cmd);
 
+	int get_units_count() const { return this->units.size(); }
+
+	const UnitReference & get_first_unit() const { return this->units.begin()->second; }
+
 private:
-	/**
-	 * Must be given a valid unit to display text attribute indicators.
-	 */
-	void show_attributes(Unit *);
 
 	/**
 	 * Check whether the currently selected units may be selected at the same time
@@ -105,7 +105,6 @@ private:
 	bool drag_active;
 	// TODO: turn these into a C++17 optional
 	coord::camgame start = {0, 0}, end = {0, 0};
-	int font_size;
 
 	/**
 	 * Engine where this selection is attached to.

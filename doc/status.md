@@ -24,6 +24,7 @@ Working features
 * Building construction
 * Resource collection
 * Basic combat
+* Windows 10 (x64) installer
 
 
 Missing functionality

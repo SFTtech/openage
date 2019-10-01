@@ -1,8 +1,8 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "stackanalyzer.h"
 
-#include "../config.h"
+#include "config.h"
 #include "../log/log.h"
 #include "../util/compiler.h"
 #include "../util/init.h"
@@ -192,7 +192,7 @@ void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> c
 
 #else // WITHOUT_BACKTRACE
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 #include <windows.h>
 
 namespace openage {

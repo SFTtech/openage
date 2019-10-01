@@ -19,11 +19,12 @@ GlGeometry::GlGeometry()
 
 GlGeometry::GlGeometry(const resources::MeshData &mesh)
 	: Geometry(geometry_t::mesh) {
-	GlBuffer verts(mesh.get_data().data(), mesh.get_data().size());
+	GlBuffer verts_buf(mesh.get_data().data(), mesh.get_data().size());
+	GlVertexArray verts_array(verts_buf, mesh.get_info());
 
 	this->mesh = GlMesh {
-		std::move(verts),
-		GlVertexArray (verts, mesh.get_info()),
+		std::move(verts_buf),
+		std::move(verts_array),
 		{},
 		{},
 		mesh.get_data().size() / mesh.get_info().vert_size(),
@@ -63,7 +64,7 @@ void GlGeometry::draw() const {
 		if (mesh.indices) {
 			mesh.indices->bind(GL_ELEMENT_ARRAY_BUFFER);
 
-			glDrawElements(mesh.primitive, mesh.vert_count, *mesh.index_type, 0);
+			glDrawElements(mesh.primitive, mesh.vert_count, *mesh.index_type, nullptr);
 		} else {
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, mesh.vert_count);
 		}

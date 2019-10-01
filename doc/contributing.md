@@ -16,8 +16,8 @@ What can I do?
 You're in luck. There's various sources for tasks:
 
  - Have a look at the [issue tracker](https://github.com/sfttech/openage/issues), especially issues with labels:
-   - [easy](https://github.com/SFTtech/openage/labels/easy)!
-   - [just do it](https://github.com/SFTtech/openage/labels/just%20do%20it)!
+   - [good first issue](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
+   - [just do it](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22just+do+it%22)!
  - Use [your favorite code searching tool](https://github.com/ggreer/the_silver_searcher) to find `TODO` messages!
  - The issue tracker [milestones](https://github.com/SFTtech/openage/milestones)!
  - [milestones.md](/doc/milestones.md) (more ambitious, obviously...)!
@@ -86,6 +86,7 @@ For tiny stuff like typo fixes, just create your PR and be done with it.
 
 - "Release early and often!" also applies to pull requests!
   - Once your branch has some visible work, create `[WIP]` pull request
+  - Give the pull request a description of what you did or want to do, so we can discuss it
   - Make sure you are in the `copying.md` file
   - People will be able to look at your code and give feedback
   - You'll get free checks from the build bot

@@ -10,10 +10,11 @@ Column {
 
 	Text {
 		id: dummyText
+		font.pointSize: 9
 	}
 
 	Text {
-		font.pointSize: dummyText.font.pointSize + 7
+		font.pointSize: dummyText.font.pointSize + 3
 
 		color: "white"
 		text: gameControl.mode ? gameControl.mode.name : "No Mode"
@@ -23,13 +24,14 @@ Column {
 		model: gameControlObj.mode ? gameControlObj.mode.binds : undefined
 
 		Text {
+			font.pointSize: dummyText.font.pointSize
 			color: "white"
 			text: modelData
 		}
 	}
 
 	Text {
-		font.pointSize: dummyText.font.pointSize + 7
+		font.pointSize: dummyText.font.pointSize + 3
 
 		color: "white"
 		text: "Global Bindings"
@@ -39,6 +41,7 @@ Column {
 		model: OA.Engine.globalBinds
 
 		Text {
+			font.pointSize: dummyText.font.pointSize
 			color: "white"
 			text: modelData
 		}

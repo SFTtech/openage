@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #include "strings.h"
 
@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-#include "../config.h"
+#include "config.h"
 #include "../error/error.h"
 #include "compiler.h"
 

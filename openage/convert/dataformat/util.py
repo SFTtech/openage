@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C
 
@@ -76,17 +76,17 @@ def determine_header(for_type):
     # yes, i know. but we can hardly do better.
     # pylint: disable=too-many-locals
 
-    cstdinth              = HeaderSnippet("stdint.h", is_global=True)
-    stringh               = HeaderSnippet("string",   is_global=True)
-    cstringh              = HeaderSnippet("cstring",  is_global=True)
-    cstdioh               = HeaderSnippet("cstdio",   is_global=True)
-    vectorh               = HeaderSnippet("vector",   is_global=True)
-    cstddefh              = HeaderSnippet("stddef.h", is_global=True)
-    util_strings_h        = HeaderSnippet("../util/strings.h", is_global=False)
-    util_csv_h            = HeaderSnippet("../util/csv.h", is_global=False)
-    util_path_h           = HeaderSnippet("../util/path.h", is_global=False)
-    error_error_h         = HeaderSnippet("../error/error.h", is_global=False)
-    log_h                 = HeaderSnippet("../log.h", is_global=False)
+    cstddefh = HeaderSnippet("cstddef", is_global=True)
+    cstdinth = HeaderSnippet("cstdint", is_global=True)
+    cstdioh = HeaderSnippet("cstdio", is_global=True)
+    cstringh = HeaderSnippet("cstring", is_global=True)
+    stringh = HeaderSnippet("string", is_global=True)
+    vectorh = HeaderSnippet("vector", is_global=True)
+    error_error_h = HeaderSnippet("error/error.h", is_global=False)
+    log_h = HeaderSnippet("log.h", is_global=False)
+    util_csv_h = HeaderSnippet("util/csv.h", is_global=False)
+    util_path_h = HeaderSnippet("util/path.h", is_global=False)
+    util_strings_h = HeaderSnippet("util/strings.h", is_global=False)
 
     # lookup for type->{header}
     type_map = {

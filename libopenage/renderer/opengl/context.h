@@ -17,6 +17,9 @@ struct gl_context_capabilities {
 	size_t max_texture_slots;
 	/// The maximum size of a single dimension of a texture.
 	size_t max_texture_size;
+	/// The maximum number of binding points for uniform blocks
+	/// in a single shader.
+	size_t max_uniform_buffer_bindings;
 
 	int major_version;
 	int minor_version;
@@ -55,7 +58,7 @@ private:
 	SDL_GLContext gl_context;
 
 	/// Context capabilities.
-	gl_context_capabilities capabilities;
+	gl_context_capabilities capabilities{};
 };
 
 }}} // openage::renderer::opengl

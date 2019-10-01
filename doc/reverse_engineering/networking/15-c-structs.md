@@ -298,7 +298,7 @@ struct delete {
 };
 ```
 
-### 6b - Attack ground
+### 6b - Attack Ground
 
 ```c
 struct attack_ground {
@@ -310,7 +310,7 @@ struct attack_ground {
 };
 ```
 
-### 6c - Attack ground
+### 6c - Attack Ground
 
 ```c
 struct attack_ground {
@@ -454,7 +454,7 @@ struct townbell {
 };
 ```
 
-### 80 - Back to work
+### 80 - Back to Work
 
 ```c
 struct back_to_work {

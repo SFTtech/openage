@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "physics.h"
 
@@ -6,12 +6,16 @@
 #include <cmath>
 
 #if WITH_NCURSES
+#ifdef __MINGW32__
+#include <ncurses/ncurses.h>
+#else
 #include <ncurses.h>
+#endif // __MINGW32__
 
 #include "gui.h"
 #endif
 
-#include "../../config.h"
+#include "config.h"
 #include "../../error/error.h"
 #include "../../rng/global_rng.h"
 #include "../../util/stringformatter.h"

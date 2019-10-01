@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -48,16 +48,26 @@ struct OAAPI level : util::Enum<level_value> {
 	// initializes the level to an internal UNDEFINED value.
 	level();
 
-	static constexpr level_value MIN       {{"min loglevel", -1000}, "5"};
+	#ifdef __MINGW32__
+		// Do not try to optimize these out even if it seems they are not used.
+		// Namely MIN that is not used within the library.
+		#define NOOPTIMIZE __attribute__((__used__))
+	#else
+		#define NOOPTIMIZE
+	#endif // _win32
 
-	static constexpr level_value spam      {{"SPAM",          -100}, ""};
-	static constexpr level_value dbg       {{"DBG",            -20}, ""};
-	static constexpr level_value info      {{"INFO",             0}, ""};
-	static constexpr level_value warn      {{"WARN",           100}, "33"};
-	static constexpr level_value err       {{"ERR",            200}, "31;1"};
-	static constexpr level_value crit      {{"CRIT",           500}, "31;1;47"};
+	static constexpr level_value MIN      NOOPTIMIZE {{"min loglevel", -1000}, "5"};
 
-	static constexpr level_value MAX       {{"max loglevel",  1000}, "5"};
+	static constexpr level_value spam     NOOPTIMIZE {{"SPAM",          -100}, ""};
+	static constexpr level_value dbg      NOOPTIMIZE {{"DBG",            -20}, ""};
+	static constexpr level_value info     NOOPTIMIZE {{"INFO",             0}, ""};
+	static constexpr level_value warn     NOOPTIMIZE {{"WARN",           100}, "33"};
+	static constexpr level_value err      NOOPTIMIZE {{"ERR",            200}, "31;1"};
+	static constexpr level_value crit     NOOPTIMIZE {{"CRIT",           500}, "31;1;47"};
+
+	static constexpr level_value MAX      NOOPTIMIZE {{"max loglevel",  1000}, "5"};
+
+	#undef NOOPTIMIZE
 };
 
 }} // namespace openage::log

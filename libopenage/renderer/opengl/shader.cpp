@@ -31,7 +31,7 @@ GlShader::GlShader(const resources::ShaderSource &src)
 
 	// load shader source
 	const char* data = src.get_source().c_str();
-	glShaderSource(handle, 1, &data, 0);
+	glShaderSource(handle, 1, &data, nullptr);
 
 	// compile shader source
 	glCompileShader(handle);
@@ -45,9 +45,9 @@ GlShader::GlShader(const resources::ShaderSource &src)
 		glGetShaderiv(handle, GL_INFO_LOG_LENGTH, &loglen);
 
 		std::vector<char> infolog(loglen);
-		glGetShaderInfoLog(handle, loglen, 0, infolog.data());
+		glGetShaderInfoLog(handle, loglen, nullptr, infolog.data());
 
-		throw Error(MSG(err) << "Failed to compiler shader:\n" << infolog.data() );
+		throw Error(MSG(err) << "Failed to compile shader:\n" << infolog.data() );
 	}
 }
 

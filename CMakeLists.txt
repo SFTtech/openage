@@ -38,7 +38,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Python and Cython requirements
-set(PYTHON_MIN_VERSION 3.4)
+set(PYTHON_MIN_VERSION 3.6)
 set(CYTHON_MIN_VERSION 0.25)
 
 # CMake policies
@@ -204,16 +204,21 @@ add_subdirectory(libopenage/)
 
 ##################################################
 # Python content (uses the C++ library)
-set(PYEXT_LINK_LIBRARY libopenage)
+add_library(pyext_libopenage INTERFACE)
 if(MSVC)
 	set(FORCE_INCLUDE_CXXFLAG "/FI")
 else()
-	set(FORCE_INCLUDE_CXXFLAG "-include ")
+	set(FORCE_INCLUDE_CXXFLAG "-include")
 endif()
-set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} ${FORCE_INCLUDE_CXXFLAG}\"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")
+target_compile_options(pyext_libopenage INTERFACE
+	${FORCE_INCLUDE_CXXFLAG} "${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h"
+)
+target_link_libraries(pyext_libopenage INTERFACE libopenage)
+set(PYEXT_LINK_LIBRARY pyext_libopenage)
 
-add_cython_modules(EMBED NOINSTALL run.py)
-add_py_modules(BININSTALL run.py AS openage)
+configure_file(run.py.in run.py)
+add_cython_modules(EMBED NOINSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py)
+add_py_modules(BININSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py AS openage)
 add_subdirectory(openage/)
 
 python_finalize()

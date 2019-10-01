@@ -22,6 +22,10 @@ add_cython_modules(
 	slp.pyx
 )
 
+add_pxds(
+	__init__.pxd
+)
+
 add_subdirectory(dataformat)
 add_subdirectory(gamedata)
 add_subdirectory(hardcoded)

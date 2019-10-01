@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "font.h"
 
@@ -77,8 +77,9 @@ static hb_direction_t get_hb_font_direction(const font_description &description)
 		return HB_DIRECTION_TTB;
 	case font_direction::bottom_to_top:
 		return HB_DIRECTION_BTT;
+	default:
+		return HB_DIRECTION_INVALID;
 	}
-	return HB_DIRECTION_INVALID;
 }
 
 static hb_language_t get_hb_font_language(const font_description &description) {

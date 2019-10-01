@@ -1,18 +1,31 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <cstdlib>
 #include <array>
+#include <typeindex>
 
 namespace openage {
 namespace util {
 
 /**
+ * Helper function to generate hash of certain type T
+ */
+
+template <typename T>
+size_t type_hash() {
+    return std::hash<std::type_index>()(std::type_index(typeid(T)));
+}
+
+/**
+ * A hash combination function
  * Creates a hash value as a combination of two other hashes. Can be called incrementally to create
- * hash value from several variables.
+ * hash value from several variables. Will always produce the same result for the same combination of
+ * hash1 and hash2 during a single run of a program.
  */
 size_t hash_combine(size_t hash1, size_t hash2);
+
 
 
 /** \class Siphash

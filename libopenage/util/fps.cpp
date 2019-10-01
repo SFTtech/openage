@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "fps.h"
 
@@ -40,6 +40,10 @@ void FrameCounter::frame() {
 		fps = 0.0;
 	} else {
 		fps = 1e9 * this->frame_count_weighted / this->frame_length_sum_weighted;
+	}
+
+	if (count % 20 == 0) {
+		display_fps = fps;
 	}
 
 	count += 1;

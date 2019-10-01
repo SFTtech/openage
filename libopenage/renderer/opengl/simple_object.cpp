@@ -2,13 +2,15 @@
 
 #include "simple_object.h"
 
+#include <utility>
+
 
 namespace openage {
 namespace renderer {
 namespace opengl {
 
 GlSimpleObject::GlSimpleObject(std::function<void(GLuint)> delete_fun)
-	: delete_fun(delete_fun) {}
+	: delete_fun(std::move(delete_fun)) {}
 
 GlSimpleObject::GlSimpleObject(GlSimpleObject&& other)
 	: handle(other.handle)

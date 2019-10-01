@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_game_spec_image_provider.h"
 
@@ -17,14 +17,14 @@ GuiGameSpecImageProvider::GuiGameSpecImageProvider(qtsdl::GuiEventQueue *render_
 		switch(type) {
 		case Type::ByFilename:
 			return std::make_unique<GuiGameSpecImageProviderByFilenameImpl>(render_updater);
-			break;
 
 		case Type::ByGraphicId:
 			return std::make_unique<GuiGameSpecImageProviderByGraphicIdImpl>(render_updater);
-			break;
 
 		case Type::ByTerrainId:
 			return std::make_unique<GuiGameSpecImageProviderByTerrainIdImpl>(render_updater);
+
+		default:
 			break;
 		}
 

@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 """
 Utility and driver module for C++ code generation.
@@ -12,6 +12,7 @@ from enum import Enum
 from io import UnsupportedOperation
 from itertools import chain
 
+from ..util.fslike.directory import Directory
 from ..util.fslike.wrapper import Wrapper
 from ..util.filelike.fifo import FIFO
 from ..log import err
@@ -102,30 +103,34 @@ class CodegenDirWrapper(Wrapper):
         return "CodegenDirWrapper({})".format(repr(self.obj))
 
 
-def codegen(projectdir, mode):
+def codegen(mode, input_dir, output_dir):
     """
     Calls .listing.generate_all(), and post-processes the generated
     data, checking them and adding a header.
-    Writes them to projectdir according to mode. projectdir is a FSLikeObject.
+    Reads the input templates relative to input_dir.
+    Writes them to output_dir according to mode. output_dir is a path or str.
 
     Returns ({generated}, {depends}), where
     generated is a list of (absolute) filenames of generated files, and
     depends is a list of (absolute) filenames of dependency files.
     """
+    input_dir = Directory(input_dir).root
+    output_dir = Directory(output_dir).root
+
     # this wrapper intercepts all writes and logs all reads.
-    wrapper = CodegenDirWrapper(projectdir)
+    wrapper = CodegenDirWrapper(input_dir)
     generate_all(wrapper.root)
 
     # set of all generated filenames
     generated = set()
 
     for parts, data in wrapper.get_writes():
-        # TODO: this assumes projectdir is a fslike.Directory!
-        generated.add(projectdir.fsobj.resolve(parts))
+        # TODO: this assumes output_dir is a fslike.Directory!
+        generated.add(output_dir.fsobj.resolve(parts))
 
         # now, actually perform the generation.
         # first, assemble the path for the current file
-        wpath = projectdir[parts]
+        wpath = output_dir[parts]
 
         try:
             data = postprocess_write(parts, data)
@@ -161,8 +166,8 @@ def codegen(projectdir, mode):
             err("unknown codegen mode: %s", mode)
             sys.exit(1)
 
-    generated = {os.path.abspath(path).decode() for path in generated}
-    depends = {os.path.abspath(path) for path in get_codegen_depends(wrapper)}
+    generated = {os.path.realpath(path).decode() for path in generated}
+    depends = {os.path.realpath(path) for path in get_codegen_depends(wrapper)}
 
     return generated, depends
 

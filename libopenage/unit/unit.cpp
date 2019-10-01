@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
@@ -83,7 +83,7 @@ bool Unit::update(time_nsec_t lastframe_duration) {
 	if (this->pop_destructables) {
 		this->erase_after(
 			[](std::unique_ptr<UnitAction> &e) {
-				return e->allow_interupt() || e->allow_control();
+				return e->allow_interrupt() || e->allow_control();
 			}, false);
 	}
 
@@ -296,7 +296,7 @@ void Unit::stop_actions() {
 	// discard all interruptible tasks
 	this->erase_after(
 		[](std::unique_ptr<UnitAction> &e) {
-			return e->allow_interupt();
+			return e->allow_interrupt();
 		});
 }
 

@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 # main C++ library definitions.
 # dependency and source file setup for the resulting library.
@@ -8,14 +8,6 @@ declare_binary(libopenage openage library allow_no_undefined)
 #################################################################
 # source files and folders are added at the bottom of this file #
 #################################################################
-
-
-##################################################
-# code generation
-
-# run codegen, add files to executable
-codegen_run()
-add_sources(libopenage GENERATED ${CODEGEN_TARGET_TUS})
 
 # set basic library settings
 set_target_properties(libopenage PROPERTIES
@@ -40,11 +32,11 @@ if(NOT WIN32)
 	find_library(MATH_LIB m)
 	find_library(UTIL_LIB util)
 endif()
-if(MSVC)
+if(WIN32)
 	find_library(OGG_LIB ogg)
 	target_link_libraries(libopenage PRIVATE DbgHelp)
 endif()
-if(NOT APPLE AND NOT MSVC)
+if(NOT APPLE AND NOT WIN32)
 	find_library(RT_LIB rt)
 	if (${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
 		find_library(EXECINFO_LIB execinfo)
@@ -62,7 +54,10 @@ find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
-set(QT_VERSION_REQ "5.5")
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+find_package(Threads REQUIRED)
+
+set(QT_VERSION_REQ "5.9")
 find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
 find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
 
@@ -236,12 +231,12 @@ endif()
 # build configuration generation
 get_config_option_string()
 
-configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
-configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
+configure_file(config.h.in config.h)
+configure_file(config.cpp.in config.cpp)
 
 configure_file(
 	"${CMAKE_SOURCE_DIR}/openage/config.py.in"
-	"${CMAKE_SOURCE_DIR}/openage/config.py"
+	"${CMAKE_BINARY_DIR}/openage/config.py"
 )
 
 
@@ -255,7 +250,10 @@ endif()
 ##################################################
 # directories for header inclusion
 target_include_directories(libopenage
+	PUBLIC
+	${CMAKE_CURRENT_BINARY_DIR}
 	PRIVATE
+	${CMAKE_CURRENT_SOURCE_DIR}
 	${FREETYPE_INCLUDE_DIRS}
 	${EPOXY_INCLUDE_DIRS}
 	${OPUS_INCLUDE_DIRS}
@@ -272,8 +270,8 @@ target_include_directories(libopenage
 # all the libraries are not exposed
 # to the public api of libopenage
 target_link_libraries(libopenage
-	PUBLIC
-		pthread
+	PRIVATE
+		Threads::Threads
 		nyan::nyan
 		Eigen3::Eigen
 		${PNG_LIBRARIES}
@@ -301,10 +299,15 @@ install(TARGETS libopenage
 	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
+if(WIN32)
+	install(FILES $<TARGET_FILE:nyan::nyan>
+		DESTINATION ${CMAKE_INSTALL_BINDIR})
+endif()
 
 
 ##################################################
 # source file definitions
+get_codegen_scu_file()
 
 # add new sources here, dependencies for linking and including
 # are specified above the source file list.
@@ -319,7 +322,8 @@ add_sources(libopenage
 	options.cpp
 	screenshot.cpp
 	texture.cpp
-	config.cpp
+	${CMAKE_CURRENT_BINARY_DIR}/config.cpp
+	${CODEGEN_SCU_FILE}
 )
 
 pxdgen(

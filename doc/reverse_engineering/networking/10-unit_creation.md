@@ -1,6 +1,6 @@
-# Unit creation
+# Unit Creation
 
-## Training unit (human player)
+## Training Unit (Human Player)
 
 Used for training units with human player.
 
@@ -43,7 +43,7 @@ The number of trained units.
 >`5d 00` &mdash; unit_id<br/>
 >`05 00` &mdash; train_count
 
-## Rally Point action
+## Rally Point Action
 
 Used for setting rally points.
 

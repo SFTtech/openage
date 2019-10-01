@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "color.h"
 
@@ -30,5 +30,8 @@ bool Color::operator==(const Color &other) const {
 bool Color::operator!=(const Color &other) const {
 	return !operator==(other);
 }
+
+Color Colors::WHITE = {255, 255, 255, 255};
+Color Colors::BLACK = {  0,   0,   0, 255};
 
 }} // openage::renderer

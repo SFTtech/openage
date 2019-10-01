@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Provides Union, a utility class for combining multiple FSLikeObjects to a
@@ -236,8 +236,7 @@ class Union(FSLikeObject):
                 "read-only rename: " +
                 b'/'.join(srcparts).decode(errors='replace') + ' to ' +
                 b'/'.join(tgtparts).decode(errors='replace'))
-        else:
-            raise FileNotFoundError(b'/'.join(srcparts))
+        raise FileNotFoundError(b'/'.join(srcparts))
 
     def is_file(self, parts):
         for path in self.candidate_paths(parts):

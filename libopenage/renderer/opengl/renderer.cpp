@@ -42,6 +42,7 @@ std::unique_ptr<Geometry> GlRenderer::add_bufferless_quad() {
 
 std::unique_ptr<RenderTarget> GlRenderer::create_texture_target(std::vector<Texture2d*> textures) {
 	std::vector<const GlTexture2d*> gl_textures;
+	gl_textures.reserve(textures.size());
 	for (auto tex : textures) {
 		gl_textures.push_back(static_cast<const GlTexture2d*>(tex));
 	}

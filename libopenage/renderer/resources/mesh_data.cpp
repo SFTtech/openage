@@ -4,6 +4,7 @@
 
 #include <array>
 #include <cstring>
+#include <utility>
 
 #include "../../error/error.h"
 #include "../../datastructure/constexpr_map.h"
@@ -36,12 +37,12 @@ size_t vertex_input_count(vertex_input_t in) {
 }
 
 VertexInputInfo::VertexInputInfo(std::vector<vertex_input_t> inputs, vertex_layout_t layout, vertex_primitive_t primitive)
-	: inputs(inputs)
+	: inputs(std::move(inputs))
 	, layout(layout)
 	, primitive(primitive) {}
 
 VertexInputInfo::VertexInputInfo(std::vector<vertex_input_t> inputs, vertex_layout_t layout, vertex_primitive_t primitive, index_t index_type)
-	: inputs(inputs)
+	: inputs(std::move(inputs))
 	, layout(layout)
 	, primitive(primitive)
 	, index_type(index_type) {}

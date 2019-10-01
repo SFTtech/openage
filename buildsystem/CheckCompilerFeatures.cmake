@@ -1,8 +1,8 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 include(CheckCXXSourceCompiles)
-check_cxx_source_compiles("thread_local int i = 0; int main() { return i; }" HAVE_THREAD_LOCAL_STORAGE)
-if(HAVE_THREAD_LOCAL_STORAGE)
+
+if(cxx_thread_local IN_LIST CMAKE_CXX_COMPILE_FEATURES)
 	set(HAVE_THREAD_LOCAL_STORAGE true)
 else()
 	set(HAVE_THREAD_LOCAL_STORAGE false)

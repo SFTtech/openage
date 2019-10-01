@@ -27,10 +27,10 @@ Dependencies are needed for:
 
 Dependency list:
 
-    C     gcc >=7 or clang >=4
-    CRA   python >=3.4
+    C     gcc >=7 or clang >=5
+    CRA   python >=3.6
     C     cython >=0.25
-    C     cmake >=3.1.0
+    C     cmake >=3.8.0
       A   numpy
       A   python imaging library (PIL) -> pillow
     CR    opengl >=3.3
@@ -52,7 +52,7 @@ Dependency list:
        S  pycodestyle
     C     pygments
        S  pylint
-    CR    qt5 >=5.5 (Core, Quick, QuickControls modules)
+    CR    qt5 >=5.9 (Core, Quick, QuickControls modules)
     CR  O vulkan
 
       A   An installed version of any of the following (wine is your friend).
@@ -74,7 +74,7 @@ described below for some of the most common ones:
 - [Fedora (>= 27)](build_instructions/fedora.md)
 - [openSUSE 13.2](build_instructions/opensuse_13.2.md)
 - [openSUSE Tumbleweed](build_instructions/opensuse_tumbleweed.md)
-- [Mac OS X 10.10 Yosemite](build_instructions/os_x_10.10_yosemite.md)
+- [Mac OS X 10.14 Mojave](build_instructions/os_x_10.14_mojave.md)
 - [Arch Linux](build_instructions/arch_linux.md)
 - [FreeBSD](build_instructions/freebsd.md)
 - [Gentoo](build_instructions/gentoo.md)

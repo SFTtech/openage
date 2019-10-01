@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 """ Testing utilities, such as TestError, assert_value, assert_raises. """
 
@@ -10,7 +10,6 @@ class TestError(Exception):
     Raised by assert_value and assert_raises, but may be manually raised
     to indicate a test error.
     """
-    pass
 
 
 def assert_value(value, expected=None, validator=None):

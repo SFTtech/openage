@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -142,8 +142,6 @@ class GeneratedFile:
         a forward declatation is needed when a referenced type is defined
         in an included header, that includes a header that includes the first one.
         """
-
-        pass
 
     def generate(self):
         """

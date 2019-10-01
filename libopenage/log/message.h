@@ -7,7 +7,7 @@
 // pxd: from libcpp.string cimport string
 #include <string>
 
-#include "../config.h"
+#include "config.h"
 #include "../util/constexpr.h"
 #include "../util/stringformatter.h"
 #include "logsink.h"

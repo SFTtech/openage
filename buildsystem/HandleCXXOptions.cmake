@@ -1,8 +1,11 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 # sets CXXFLAGS and compiler for the project
 
 #TODO: integrate PGO (profile-guided optimization) build
+
+
+include(CheckCXXCompilerFlag)
 
 macro(set_compiler_version_flags TYPE MINIMAL FLAGS INVERS EQTYPE)
 	if(${INVERS} CMAKE_CXX_COMPILER_VERSION VERSION_${EQTYPE} ${MINIMAL})
@@ -30,7 +33,6 @@ endmacro()
 
 macro(test_compiler_flag_apply TYPE FLAG NAME DONTRUN)
 	if(NOT ${DONTRUN})
-		include(CheckCXXCompilerFlag)
 		check_cxx_compiler_flag("${FLAG}" ${NAME})
 		if(${NAME})
 			set_compiler_flags(${TYPE} "${FLAG}")
@@ -55,13 +57,54 @@ if(NOT MSVC)
 	set(EXTRA_FLAGS "${EXTRA_FLAGS} -Wall -Wextra -pedantic")
 endif()
 
+# set up gold linker features
+macro(try_enable_gold_linker)
+	# Activate ld.gold instead of the default
+	option(USE_LD_GOLD "Use GNU gold linker" ON)
+	if(USE_LD_GOLD)
+		if(MINGW)
+			execute_process(COMMAND ${CMAKE_CXX_COMPILER} -Wl,--major-image-version,0,--minor-image-version,0 -fuse-ld=gold -Wl,--version ERROR_QUIET OUTPUT_VARIABLE LD_VERSION)
+		else()
+			execute_process(COMMAND ${CMAKE_CXX_COMPILER} -fuse-ld=gold -Wl,--version ERROR_QUIET OUTPUT_VARIABLE LD_VERSION)
+		endif()
+		if("${LD_VERSION}" MATCHES "GNU gold")
+			set(HAVE_LD_GOLD TRUE)
+			set_linker_flags("-fuse-ld=gold")
+		else()
+			set(HAVE_LD_GOLD FALSE)
+			message(WARNING "GNU gold linker isn't available, using the default system linker.")
+		endif()
+	endif()
+
+	# do splitdebug by default when in debug mode
+	set(DEBUG_FISSION_DEFAULT OFF)
+	if(HAVE_LD_GOLD AND CMAKE_BUILD_TYPE STREQUAL "Debug")
+		check_cxx_compiler_flag("-gsplit-dwarf" HAVE_GSPLIT_DWARF_SUPPORT)
+		if(HAVE_GSPLIT_DWARF_SUPPORT)
+			set(DEBUG_FISSION_DEFAULT ON)
+		endif()
+	endif()
+
+	# https://gcc.gnu.org/wiki/DebugFission
+	option(DEBUG_FISSION "Enable Debug Fission" DEBUG_FISSION_DEFAULT)
+	if(DEBUG_FISSION)
+		if(NOT HAVE_LD_GOLD)
+			message(FATAL_ERROR "GNU gold linker required for Debug Fission")
+		endif()
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gsplit-dwarf")
+		set_linker_flags("-Wl,--gdb-index")
+	endif()
+endmacro()
+
 # check for compiler versions
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	set_compiler_greater_flags("CXX" 4.9 "-fdiagnostics-color=auto")
 	set_compiler_greater_flags("EXTRA" 5.0 "-Wsuggest-override")
+	try_enable_gold_linker()
 
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 	set_compiler_flags("EXTRA" "-Wno-gnu-statement-expression")
+	try_enable_gold_linker()
 
 	if(APPLE)
 		set_compiler_flags("CXX" "-stdlib=libc++")

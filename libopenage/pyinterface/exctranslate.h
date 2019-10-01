@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -132,7 +132,7 @@ OAAPI void init_exc_message(log::message *msg, const std::string &filename, unsi
  *
  * pxd:
  *
- * void (*set_exc_translation_funcs) (
+ * void set_exc_translation_funcs(
  *     void (*)(Error *)       except * with gil,
  *     void (*)(PyException *) except * with gil,
  *     cppbool (*)()                    with gil,

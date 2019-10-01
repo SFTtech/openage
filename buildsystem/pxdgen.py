@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Auto-generates PXD files from annotated C++ headers.
@@ -8,6 +8,7 @@ Invoked via cmake during the regular build process.
 
 import argparse
 import os
+from pathlib import Path
 import re
 import sys
 
@@ -161,7 +162,7 @@ class PXDGenerator:
         """
         if "{" in self.stack:
             raise self.parser_error("PXD annotation is brace-enclosed")
-        elif not self.stack:
+        if not self.stack:
             namespace = None
         else:
             namespace = "::".join(self.stack)
@@ -286,9 +287,9 @@ class PXDGenerator:
         yield ""
 
         yield ("# Auto-generated from annotations in " +
-               os.path.split(self.filename)[1])
+               self.filename.name)
 
-        yield "# " + self.filename
+        yield "# " + str(self.filename)
 
         self.parse()
 
@@ -307,7 +308,7 @@ class PXDGenerator:
                 if namespace != previous_namespace:
                     yield (
                         "cdef extern "
-                        "from r\"" + self.filename.replace('\\', '/') + "\" "
+                        "from r\"" + self.filename.as_posix() + "\" "
                         "namespace \"" + namespace + "\" "
                         "nogil"
                         ":"
@@ -357,28 +358,13 @@ class PXDGenerator:
 
         return annotation
 
-    def generate(self, ignore_timestamps=False, print_warnings=True):
+    def generate(self, pxdfile, ignore_timestamps=False, print_warnings=True):
         """
         reads the input file and writes the output file.
         the output file is updated only if its content will change.
 
         on parsing failure, raises ParserError.
         """
-        pxdfile = os.path.splitext(self.filename)[0] + '.pxd'
-
-        # create empty __init__.py in all parent directories.
-        # Cython requires this; else it won't find the .pxd files.
-        dirname = os.path.abspath(os.path.dirname(self.filename))
-        while dirname.startswith(CWD + os.path.sep):
-            initfile = os.path.join(dirname, "__init__.py")
-            if not os.path.isfile(initfile):
-                print("\x1b[36mpxdgen: initfile %s\x1b[0m" % os.path.relpath(initfile, CWD))
-                with open(initfile, "w"):
-                    pass
-
-            # parent dir
-            dirname = os.path.dirname(dirname)
-
         if not ignore_timestamps and os.path.exists(pxdfile):
             # skip the file if the timestamp is up to date
             if os.path.getmtime(self.filename) <= os.path.getmtime(pxdfile):
@@ -419,6 +405,9 @@ def parse_args():
     cli.add_argument('--ignore-timestamps', action='store_true',
                      help="force generating even if the output file is already"
                           "up to date")
+    cli.add_argument('--output-dir',
+                     help="build directory corresponding to the CWD to write"
+                          " the generated file(s) in.")
     cli.add_argument('-v', '--verbose', action="store_true",
                      help="increase logging verbosity")
 
@@ -438,7 +427,9 @@ def parse_args():
 def main():
     """ CLI entry point """
     args = parse_args()
-    cppdir = os.path.join(CWD, "libopenage")
+    cppname = "libopenage"
+    cppdir = Path(cppname).absolute()
+    out_cppdir = Path(args.output_dir) / cppname
 
     if args.verbose:
         hdr_count = len(args.all_files)
@@ -448,23 +439,40 @@ def main():
               "from {} header{}...".format(hdr_count, plural))
 
     for filename in args.all_files:
-        filename = os.path.realpath(os.path.abspath(filename))
-        if not filename.startswith(cppdir):
+        filename = Path(filename).resolve()
+        if cppdir not in filename.parents:
             print("pxdgen source file is not in " + cppdir + ": " + filename)
             sys.exit(1)
 
+        # join out_cppdir with relative path from cppdir
+        pxdfile_relpath = filename.with_suffix('.pxd').relative_to(cppdir)
+        pxdfile = out_cppdir / pxdfile_relpath
+
         if args.verbose:
-            print("creating .pxd for '{}':".format(filename))
+            print("creating '{}' for '{}':".format(pxdfile, filename))
 
         generator = PXDGenerator(filename)
 
         result = generator.generate(
+            pxdfile,
             ignore_timestamps=args.ignore_timestamps,
             print_warnings=True
         )
 
         if args.verbose and not result:
             print("nothing done.")
+
+        # create empty __init__.py in all parent directories.
+        # Cython requires this; else it won't find the .pxd files.
+        for dirname in pxdfile_relpath.parents:
+            template = out_cppdir / dirname / "__init__"
+            for extension in ("py", "pxd"):
+                initfile = template.with_suffix("." + extension)
+                if not initfile.exists():
+                    print("\x1b[36mpxdgen: create package index %s\x1b[0m" % (
+                        initfile.relative_to(args.output_dir)))
+
+                    initfile.touch()
 
 
 if __name__ == '__main__':

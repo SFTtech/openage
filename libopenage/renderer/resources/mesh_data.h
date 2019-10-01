@@ -64,7 +64,7 @@ public:
 	/// Initialize an input info for indexed rendering.
 	VertexInputInfo(std::vector<vertex_input_t>, vertex_layout_t, vertex_primitive_t, index_t);
 
-	/// Adds an mesh->shader input mapping to the info. By default, attributes are mapped
+	/// Adds a mesh->shader input mapping to the info. By default, attributes are mapped
 	/// one-to-one according to their order in the input vector, e.g. (vec2 pos, vec2 uv)
 	/// maps into (0: vec2 pos, 1: vec2 uv) in the shader. However, if a shader skips indices
 	/// in the layout or takes its inputs in a different order, this can be specified using the

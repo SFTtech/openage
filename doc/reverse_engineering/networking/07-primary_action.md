@@ -1,4 +1,4 @@
-# Unit interaction - Primary action
+# Unit Interaction - Primary Action
 
 Used for every action that is executed by selecting a unit and using `Right-Mouse-Botton` on an object in the game environment. It depends on the context (*:target_id*, *:selected_id*) which specific action is executed. Units with several right-click abilities (monks, villagers) will use their primary action for all of them.
 

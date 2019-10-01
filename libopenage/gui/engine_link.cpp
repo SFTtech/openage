@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "engine_link.h"
 
@@ -89,6 +89,8 @@ void EngineLink::on_global_binds_changed(const std::vector<std::string>& global_
 			return QString::fromStdString(s);
 		}
 	);
+
+	new_global_binds.sort();
 
 	if (this->global_binds != new_global_binds) {
 		this->global_binds = new_global_binds;

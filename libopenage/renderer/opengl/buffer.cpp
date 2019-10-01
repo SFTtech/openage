@@ -17,7 +17,7 @@ GlBuffer::GlBuffer(size_t size, GLenum usage)
 	this->handle = handle;
 
 	this->bind(GL_COPY_WRITE_BUFFER);
-	glBufferData(GL_COPY_WRITE_BUFFER, size, 0, usage);
+	glBufferData(GL_COPY_WRITE_BUFFER, size, nullptr, usage);
 }
 
 GlBuffer::GlBuffer(const uint8_t *data, size_t size, GLenum usage)
@@ -45,6 +45,10 @@ void GlBuffer::upload_data(const uint8_t *data, size_t offset, size_t size) {
 }
 
 void GlBuffer::bind(GLenum target) const {
+	if (unlikely(!bool(this->handle))) {
+		throw Error(MSG(err) << "OpenGL buffer has been moved out of.");
+	}
+
 	glBindBuffer(target, *this->handle);
 }
 

@@ -53,7 +53,7 @@ This value is always `0xFFFFFFFF`.
 >`d9 00` &mdash; technology_id<br/>
 >`ff ff ff ff` &mdash; const
 
-## Build action
+## Build Action
 
 Used for building everything except walls.
 
@@ -129,7 +129,7 @@ The IDs of the selected builders.
 >`6e 17 00 00` &mdash; selected_id<br/>
 >`6c 17 00 00` &mdash; selected_id
 
-## Build wall action
+## Build Wall Action
 
 Used for building walls.
 
@@ -256,7 +256,7 @@ The IDs of the selected repairmen.
 >`a0 1a 00 00` &mdash; selected_id<br/>
 >`9f 1a 00 00` &mdash; selected_id
 
-## Toggle gate
+## Toggle Gate
 
 Used for setting a gate to closed/open.
 
@@ -332,7 +332,7 @@ The 3 bytes after *:active* are always zero.
 >`01` &mdash; active<br/>
 >`00 00 00` &mdash; zero2
 
-## Back to work
+## Back to Work
 
 Used for sending villagers back to work.
 

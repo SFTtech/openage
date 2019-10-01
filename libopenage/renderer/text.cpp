@@ -58,10 +58,10 @@ TextRenderer::TextRenderer()
 }
 
 TextRenderer::~TextRenderer() {
-	if (this->vbo) {
+	if (this->vbo != 0u) {
 		glDeleteBuffers(1, &this->vbo);
 	}
-	if (this->ibo) {
+	if (this->ibo != 0u) {
 		glDeleteBuffers(1, &this->ibo);
 	}
 }
@@ -145,8 +145,8 @@ void TextRenderer::render() {
 		unsigned int num_elements = 0;
 
 		for (auto &pass : batch.passes) {
-			float x = static_cast<float>(pass.x);
-			float y = static_cast<float>(pass.y);
+			auto x = static_cast<float>(pass.x);
+			auto y = static_cast<float>(pass.y);
 
 			std::vector<codepoint_t> glyphs = font->get_glyphs(pass.text);
 

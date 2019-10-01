@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 # Find Python
 # ~~~~~~~~~~~
@@ -131,7 +131,7 @@ list(REMOVE_DUPLICATES PYTHON_INTERPRETERS)
 foreach(INTERPRETER ${PYTHON_INTERPRETERS})
 
 	# python* matches pythontex.py, which we never ever want.
-	if(INTERPRETER MATCHES "pythontex\[0-9]?\.py")
+	if(INTERPRETER MATCHES "pythontex\\[0-9]?\\.py")
 		list(REMOVE_ITEM PYTHON_INTERPRETERS "${INTERPRETER}")
 		continue()
 	endif()

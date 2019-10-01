@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "buf.h"
 
@@ -197,7 +197,8 @@ public:
 			if (this->current_line_is_screen_buf) {
 				//TODO write down somewhere the fact that this
 				//line constitutes a part of the screen buffer
-			} else {
+			}
+			else {
 				//TODO write down somewhere the fact that this
 				//line constitutes a part of the scrollback buffer
 			}

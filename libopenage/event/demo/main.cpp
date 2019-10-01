@@ -1,10 +1,12 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
+
+#include "main.h"
 
 #include <chrono>
 #include <ratio>
-#include <unistd.h>
+#include <SDL.h>
 
-#include "../../config.h"
+#include "config.h"
 #include "../event.h"
 #include "aicontroller.h"
 #include "gamestate.h"
@@ -12,7 +14,11 @@
 #include "physics.h"
 
 #if WITH_NCURSES
+#ifdef __MINGW32__
+#include <ncurses/ncurses.h>
+#else
 #include <ncurses.h>
+#endif // __MINGW32__
 #endif
 
 
@@ -153,7 +159,7 @@ void curvepong(bool disable_gui, bool no_human) {
 
 			// handle timing for screen refresh and simulation advancement
 			using dt_s_t = std::chrono::duration<double, std::ratio<1>>;
-			using dt_us_t = std::chrono::duration<double, std::micro>;
+			using dt_ms_t = std::chrono::duration<double, std::milli>;
 
 			// microseconds per frame
 			// 30fps = 1s/30 = 1000000us/30 per frame
@@ -162,16 +168,16 @@ void curvepong(bool disable_gui, bool no_human) {
 
 			if (speed == timescale::NOSLEEP) {
 				// increase the simulation loop time a bit
-				usleep(5000);
+				SDL_Delay(5);
 			}
 
-			dt_us_t dt_us = Clock::now() - loop_start;
+			dt_ms_t dt_us = Clock::now() - loop_start;
 
 			if (speed != timescale::NOSLEEP) {
-				dt_us_t wait_time = per_frame - dt_us;
+				dt_ms_t wait_time = per_frame - dt_us;
 
-				if (wait_time > dt_us_t::zero()) {
-					usleep(wait_time.count());
+				if (wait_time > dt_ms_t::zero()) {
+					SDL_Delay(wait_time.count());
 				}
 			}
 

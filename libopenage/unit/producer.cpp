@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <initializer_list>
 
@@ -26,27 +26,58 @@
 namespace openage {
 
 std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &restriction) {
-	std::unordered_set<terrain_t> result;
+	// returns a terrain whitelist for a given restriction
+	// you can also define a blacklist for brevity, it will be converted and returned
+	std::unordered_set<terrain_t> whitelist;
+	std::unordered_set<terrain_t> blacklist;
 
 	// 1, 14, and 15 are water, 2 is shore
 	if (restriction == gamedata::ground_type::WATER ||
-	    restriction == gamedata::ground_type::WATER_0x0D ||
-	    restriction == gamedata::ground_type::WATER_SHIP_0x03 ||
-	    restriction == gamedata::ground_type::WATER_SHIP_0x0F) {
-		result.insert(1);
-		result.insert(2);
-		result.insert(14);
-		result.insert(15);
+		restriction == gamedata::ground_type::WATER_0x0D ||
+		restriction == gamedata::ground_type::WATER_SHIP_0x03 ||
+		restriction == gamedata::ground_type::WATER_SHIP_0x0F) {
+
+		whitelist.insert(1); // water
+		whitelist.insert(2); // shore
+		whitelist.insert(4); // shallows
+		whitelist.insert(14); // medium water
+		whitelist.insert(15); // deep water
+	}
+	else if (restriction == gamedata::ground_type::SOLID) {
+		blacklist.insert(1); // water
+		blacklist.insert(4); // shallows
+		blacklist.insert(14); // medium water
+		blacklist.insert(15); // deep water
+	}
+	else if (restriction == gamedata::ground_type::FOUNDATION ||
+		restriction == gamedata::ground_type::NO_ICE_0x08 ||
+		restriction == gamedata::ground_type::FOREST) {
+
+		blacklist.insert(1); // water
+		blacklist.insert(4); // shallows
+		blacklist.insert(14); // medium water
+		blacklist.insert(15); // deep water
+		blacklist.insert(18); // ice
 	}
 	else {
+		log::log(MSG(warn) << "undefined terrain restriction, assuming solid");
+		blacklist.insert(1); // water
+		blacklist.insert(4); // shallows
+		blacklist.insert(14); // medium water
+		blacklist.insert(15); // deep water
+	}
+
+	// if we're using a blacklist, fill out a whitelist with everything not on it
+	if (blacklist.size() > 0) {
+		// Allow all terrains that are not on blacklist
 		for (int i = 0; i < 32; ++i) {
-			if (i != 1 && i != 14 && i != 15) {
-				result.insert(i);
+			if (blacklist.count(i) == 0) {
+				whitelist.insert(i);
 			}
 		}
 	}
 
-	return result;
+	return whitelist;
 }
 
 ResourceBundle create_resource_cost(game_resource resource, int amount) {
@@ -66,6 +97,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 
 	// copy the class type
 	this->unit_class = this->unit_data.unit_class;
+	this->icon = this->unit_data.icon_id;
 
 	// for now just look for type names ending with "_D"
 	this->decay = unit_data.name.substr(unit_data.name.length() - 2) == "_D";
@@ -130,7 +162,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 			}
 		}
 
-		// seperate work and attack graphics
+		// separate work and attack graphics
 		if (cmd->work_sprite_id > 0 && cmd->proceed_sprite_id > 0 ) {
 			auto attack = spec.get_unit_texture(cmd->proceed_sprite_id);
 			auto work = spec.get_unit_texture(cmd->work_sprite_id);
@@ -500,6 +532,7 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 
 	// copy the class type
 	this->unit_class = this->unit_data.unit_class;
+	this->icon = this->unit_data.icon_id;
 
 	// find suitable sounds
 	int creation_sound = this->unit_data.train_sound;
@@ -660,19 +693,23 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 	 */
 	TerrainObject *obj_ptr = u->location.get();
 	std::weak_ptr<Terrain> terrain_ptr = terrain;
-	u->location->passable = [obj_ptr, terrain_ptr](const coord::phys3 &pos) -> bool {
+
+	// find set of allowed terrains
+	std::unordered_set<terrain_t> terrains = allowed_terrains(this->unit_data.terrain_restriction);
+
+	u->location->passable = [obj_ptr, terrain_ptr, terrains](const coord::phys3 &pos) -> bool {
 		auto terrain = terrain_ptr.lock();
 
 		// look at all tiles in the bases range
 		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos, *terrain))) {
 			TileContent *tc = terrain->get_data(check_pos);
-			if (!tc) {
+
+			// check if terrains are suitable and free of content
+			if (!tc || !terrains.count(tc->terrain_id) || tc->obj.size()) {
 				return false;
 			}
-			for (auto tobj : tc->obj) {
-				if (tobj->check_collisions()) return false;
-			}
 		}
+
 		return true;
 	};
 
