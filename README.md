@@ -148,7 +148,7 @@ To prevent accidental violation of one of those guidelines, you should *never*
 * [contribute](/doc/contributing.md) anything to the code
 * [contact us](#contact)
 
-Cheers, happy hacking.
+Cheers, happy hecking.
 
 
 Development Process
