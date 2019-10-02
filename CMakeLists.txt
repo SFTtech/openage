@@ -183,6 +183,19 @@ include(python)
 include(util)
 
 
+##################################################
+# includes for target webdoc
+option(
+		ENABLE_BUILD_WEBDOC
+		"activate webdoc builds"
+		OFF
+)
+
+if(ENABLE_BUILD_WEBDOC)
+	include(sphinx)
+	include(docgen)
+endif()
+
 # now that all modules and settings are loaded,
 # apply those to the project.
 
@@ -209,8 +222,10 @@ endif()
 ##################################################
 # documentation generation
 
+# offline documentation generation
+
 # create documentation
-doxygen_configure(libopenage/ openage/ doc/ README.md)
+doxygen_offline_configure(libopenage/ openage/ doc/ README.md)
 
 
 ##################################################

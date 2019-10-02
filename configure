@@ -266,6 +266,9 @@ def invoke_cmake(args, bindir, defines, options):
     if args.download_nyan:
         invocation.append("-DDOWNLOAD_NYAN=YES")
 
+    if args.build_webdoc:
+        invocation.append("-DENABLE_BUILD_WEBDOC=YES")
+
     cxx_options = dict()
     cxx_options["CXX_OPTIMIZATION_LEVEL"] = args.optimize
     cxx_options["CXX_SANITIZE_MODE"] = args.sanitize
@@ -403,6 +406,8 @@ def parse_args():
                      help="emit clang-tidy analysis messages")
     cli.add_argument("--download-nyan", action="store_true",
                      help="enable automatic download of the nyan project")
+    cli.add_argument("--build-webdoc", action="store_true",
+                     help="enable building of webdocumentation")
 
     # arguments after -- are used as raw cmake args
     cli.add_argument('raw_cmake_args', nargs=argparse.REMAINDER, default=[],

@@ -207,6 +207,9 @@ cmake modules ([3-clause BSD license](/legal/BSD-3-clause))
  - `buildsystem/modules/FindSDL2.cmake` (taken from [openmw](https://github.com/OpenMW/openmw))
  - `buildsystem/modules/FindGPerfTools.cmake` (taken from [VAST](https://github.com/mavam/vast))
  - `buildsystem/modules/FindOpusfile.cmake` (taken from [Unvanquished](https://github.com/Unvanquished/Unvanquished))
+ 
+cmake module [Computational Model Builder (CMB) License Version 1.0](/legal/CMBv1)
+ - `buildsystem/modules/FindSphinx.cmake` (taken from [cmb](https://gitlab.kitware.com/cmb/cmb/))
 
 
 #### Disclaimer

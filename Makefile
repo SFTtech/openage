@@ -67,6 +67,10 @@ cythonize: $(BUILDDIR)
 doc: $(BUILDDIR)
 	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) doc
 
+.PHONY: webdoc
+webdoc: $(BUILDDIR)
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) webdoc
+
 .PHONY: cleanelf
 cleanelf: $(BUILDDIR)
 	@# removes all object files and binaries
@@ -160,6 +164,7 @@ help: $(BUILDDIR)/Makefile
 	@echo "inplacemodules     -> create in-place modules"
 	@echo "codegen            -> generate cpp sources"
 	@echo "doc                -> create documentation files"
+	@echo "webdoc             -> create webdocumentation files"
 	@echo ""
 	@echo "cleanelf           -> remove C++ ELF files"
 	@echo "cleancodegen       -> undo 'make codegen'"
