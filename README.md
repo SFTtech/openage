@@ -124,7 +124,7 @@ Contributing
 * Being typical computer science students, we hate people.
 * Please don't contact us.
 * Nobody likes Age of Empires anyway.
-* None of you is interested in making openage more awesome anyway.
+* None of you are interested in making openage more awesome anyway.
 * We don't want a community.
 * Don't even think about trying to help.
 
@@ -164,7 +164,7 @@ Can I help?
 All documentation is also in this repo:
 
 - Code documentation is embedded in the sources for Doxygen (see [doc readme](/doc/README.md)).
-- Have a look at the [doc directory](/doc/). This folder tends to outdate when code changes.
+- Have a look at the [doc directory](/doc/). This folder tends to get outdated when code changes.
 
 
 License
