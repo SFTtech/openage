@@ -234,7 +234,7 @@ add_subdirectory(packaging)
 ##################################################
 # show build configuration overview
 
-message("")
+message("     ")
 print_config_options()
 
 message("${PROJECT_NAME} ${PROJECT_VERSION}
