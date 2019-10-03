@@ -21,19 +21,6 @@ from ..log import spam, dbg
 endianness = "< "
 
 
-class SpecialColorValue(Enum):
-    shadow = "%"
-    transparent = " "
-    player_color = "P"
-    black_color = "#"
-
-    def __str__(self):
-        return self.value
-
-    def __repr__(self):
-        return self.value
-
-
 # command ids may have encoded the pixel length.
 # this is used when unpacked.
 cdef struct cmd_pack:
@@ -498,9 +485,6 @@ cdef class SLPMainFrameAoC(SLPFrame):
                     dpos += 1
                     color = self.get_byte_at(dpos)
 
-                    # the SpecialColor class preserves the calculation with
-                    # player * 16 + color, this is the palette offset
-                    # for tinted player colors.
                     row_data.push_back(pixel(color_player, color))
 
             elif lower_nibble == 0x07:
@@ -527,11 +511,6 @@ cdef class SLPMainFrameAoC(SLPFrame):
                 color = self.get_byte_at(dpos)
 
                 for _ in range(cpack.count):
-                    # TODO: verify this. might be incorrect.
-                    # color = ((color & 0b11001100) | 0b00110011)
-
-                    # SpecialColor class preserves the calculation of
-                    # player*16 + color
                     row_data.push_back(pixel(color_player, color))
 
             elif lower_nibble == 0x0B:

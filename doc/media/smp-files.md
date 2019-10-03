@@ -234,8 +234,8 @@ Skip             | `0bXXXXXX00`  | `(cmd_byte >> 2) + 1`    | *Count* transparen
 Draw             | `0bXXXXXX01`  | `(cmd_byte >> 2) + 1`    | *Count* player color pixels should be drawn from the current position.
 End of Row       | `0bXXXXXX11`  | 0                        | End of commands for this row. If more commands follow, they are for the next row.
 
-* SMP files do ot specify a color from a palette. The openage converter always uses the
-color from index 0 in the player color palette for these *Draw* commands.
+* SMP files do not specify a color from a palette for outlines. The openage converter
+always uses the color from index 0 in the player color palette for these *Draw* commands.
 
 
 ### SMP Pixel

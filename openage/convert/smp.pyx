@@ -21,16 +21,6 @@ from ..log import spam, dbg
 endianness = "< "
 
 
-class SpecialColorValue(Enum):
-    transparent = " "
-
-    def __str__(self):
-        return self.value
-
-    def __repr__(self):
-        return self.value
-
-
 cdef struct boundary_def:
     Py_ssize_t left
     Py_ssize_t right
@@ -783,9 +773,11 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
 cdef (uint8_t,uint8_t) get_palette_info(pixel image_pixel):
     """
-    returns the palette used for a pixel.
+    returns a 2-tuple that contains the palette number of the pixel as
+    the first value and the palette section of the pixel as the
+    second value.
     """
-    return image_pixel.palette >> 4, image_pixel.palette & 0x03
+    return image_pixel.palette >> 2, image_pixel.palette & 0x03
 
 @cython.boundscheck(False)
 @cython.wraparound(False)

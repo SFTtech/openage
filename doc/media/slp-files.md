@@ -43,15 +43,15 @@ v4.1 SLPs have the same structure as the v4.0 SLPs. However, they are only used 
 
 ```cpp
 struct slp_header_v4 {
-  char  version[4];
-  int16 num_frames;
-  int16 angles;
-  int16 unknown;
-  int16 num_frames_alt;
-  int32 checksum;
-  int32 offset_main;
-  int32 offset_shadow;
-  padding;
+  char     version[4];
+  int16    num_frames;
+  int16    angles;
+  int16    unknown;
+  int16    num_frames_alt;
+  int32    checksum;
+  int32    offset_main;
+  int32    offset_shadow;
+  pad byte padding[8];
 };
 ```
 Python format: `Struct("< 4s H H H H i i i 8x")`
@@ -184,12 +184,12 @@ next           | The byte following `cmd_byte`
 `>> n` or next | `pixel_count = cmd_byte >> n; if pixel_count == 0: pixel_count = next_byte`. i.e., the `8 - n` most significant bits of `cmd_byte` if they are `!= 0`, else the next byte.
 `<< 4 + next`  | `((cmd_byte & 0xf0) << 4) + next_byte`
 
-An `X` signifies that the bit can have any value. These bts are often used for
+An `X` signifies that the bit can have any value. These bits are often used for
 storing the length (pixel count) of the command.
 
-Command Name             | Byte value        | Pixel Count    | Description
--------------------------|-------------------|----------------|------------
-Lesser draw              | `0bXXXXXX00`     | `cmd_byte >> 2` | An array of length *Count* filled with 1-byte palette indices follows, 1 index per pixel.
+Command Name             | Byte value       | Pixel Count             | Description
+-------------------------|------------------|-------------------------|------------
+Lesser draw              | `0bXXXXXX00`     | `cmd_byte >> 2`         | An array of length *Count* filled with 1-byte palette indices follows, 1 index per pixel.
 Lesser skip              | `0bXXXXXX01`     | `cmd_byte >> 2` or next | *Count* transparent pixels should be drawn from the current position.
 Greater draw             | `0bXXXX0010`     | `cmd_byte << 4 + next`  | An array of length *Count* filled with 1-byte palette indices follows, 1 index per pixel.
 Greater skip             | `0bXXXX0011`     | `cmd_byte << 4 + next`  | *Count* transparent pixels should be drawn from the current position.
@@ -197,24 +197,24 @@ Player color draw        | `0bXXXX0110`     | `cmd_byte >> 4` or next | An array
 Fill                     | `0bXXXX0111`     | `cmd_byte >> 4` or next | One palette index byte follows. This color should be drawn `pixel_count` times from the current position.
 Fill player color        | `0bXXXX1010`     | `cmd_byte >> 4` or next | One player palette index byte follows. This color should be drawn `pixel_count` times. See `player_color_list (0x06)`
 Shadow draw              | `0bXXXX1011`     | `cmd_byte >> 4` or next | Draw *Count* shadow pixels (The pixels to draw when a unit is behind another object).
-Extended command         | `0bXXXX1110`     | depends        | Get the specific extended command by looking at the most significant bits of the command. (See the table below for details)
-End of row              | `0x0F`            | 0              | End of commands for this row. If more commands follow, they are for the next row.
+Extended command         | `0bXXXX1110`     | depends                 | Get the specific extended command by looking at the most significant bits of the command. (See the table below for details)
+End of row               | `0x0F`           | 0                       | End of commands for this row. If more commands follow, they are for the next row.
 
 Extended commands, for outlines behind trees/buildings:
 
-Command name        | Byte value  | Pixel Count | Description
---------------------|-------------|-------|------------
-render_hint_xflip   | `0x0E`     | 0     | Draw the following command if sprite is not flipped right to left.
-render_h_notxflip   | `0x1E`     | 0     | Draw following command if this sprite is x-flipped.
-table_use_normal    | `0x2E`     | 0     | Set color transform table to normal.
-table_use_alternate | `0x3E`     | 0     | Set color transform table to alternate.
-outline_1           | `0x4E`      | 1     | `palette_index = player_index = player * 16`, if obstructed, draw player color, else transparent. This is the player color outline you see when a unit is behind a building. (special color = 1)
-outline_span_1      | `0x5E`     | next  | `palette_index = player_index = player * 16`, can be >=1 pixel
-outline_2           | `0x6E`      | 1     | `palette_index = 0`, if pixel obstructed, draw a pixel as black outline, else transparent. (special color = 2)
-outline_span_2      | `0x7E`     | next  | `palette_index = 0`, same as obstruct_black, >=1 pixel.
-dither              | `0x8E`     | ?     | ?
-premulti_alpha      | `0x9E`     | ?     | Premultiplied alpha?
-orig_alph           | `0xAE`     | ?     | Original alpha?
+Command name        | Byte value | Pixel Count | Description
+--------------------|------------|-------------|------------
+render_hint_xflip   | `0x0E`     | 0           | Draw the following command if sprite is not flipped right to left.
+render_h_notxflip   | `0x1E`     | 0           | Draw following command if this sprite is x-flipped.
+table_use_normal    | `0x2E`     | 0           | Set color transform table to normal.
+table_use_alternate | `0x3E`     | 0           | Set color transform table to alternate.
+outline_1           | `0x4E`     | 1           | `palette_index = player_index = player * 16`, if obstructed, draw player color, else transparent. This is the player color outline you see when a unit is behind a building. (special color = 1)
+outline_span_1      | `0x5E`     | next        | `palette_index = player_index = player * 16`, can be >=1 pixel
+outline_2           | `0x6E`     | 1           | `palette_index = 0`, if pixel obstructed, draw a pixel as black outline, else transparent. (special color = 2)
+outline_span_2      | `0x7E`     | next        | `palette_index = 0`, same as obstruct_black, >=1 pixel.
+dither              | `0x8E`     | ?           | ?
+premulti_alpha      | `0x9E`     | ?           | Premultiplied alpha?
+orig_alph           | `0xAE`     | ?           | Original alpha?
 
 
 * "Player color block copy" (`0bXXXX0110`) is an index into the palette, in range 0-15.
@@ -304,9 +304,9 @@ SLPs with versions higher than 4.0 store their shadows in separate frames, but
 use the same command syntax. Shadows are drawn with the *lesser draw*,
 *lesser skip* and *fill* commands.
 
-Command Name             | Byte value        | Pixel Count    | Description
--------------------------|-------------------|----------------|------------
-Lesser draw              | `0bXXXXXX00`     | `cmd_byte >> 2` | An array of length *Count* filled with 1-byte "shadow" values (see below)
+Command Name             | Byte value       | Pixel Count             | Description
+-------------------------|------------------|-------------------------|------------
+Lesser draw              | `0bXXXXXX00`     | `cmd_byte >> 2`         | An array of length *Count* filled with 1-byte "shadow" values (see below)
 Lesser skip              | `0bXXXXXX01`     | `cmd_byte >> 2` or next | *Count* transparent pixels should be drawn from the current position.
 Greater draw             | `0bXXXX0010`     | `cmd_byte << 4 + next`  | An array of length *Count* filled with 1-byte "shadow" values follows, 1 value per pixel.
 Greater skip             | `0bXXXX0011`     | `cmd_byte << 4 + next`  | *Count* transparent pixels should be drawn from the current position.
@@ -325,12 +325,6 @@ The drawing palette is stored inside `interfac.drs` (until AoE2: HD), while
 AoE1:DE and AoE2:DE store their palettes in separate files with a `.pal` or
 `.palx` extension. It's basically an array of `(r, g, b)` tuples.
 
-The file id is `50500+x`, the palettes (color tables) are stored the same way
-as SLPs are. (see [DRS Files](drs-files.md)) Here `x` is the palette index,
-which should be 0, experiment with `[1,10]`...
-
-`interfac.drs` contains many of these files, but the ingame art uses id 50500.
-
 The palette is a (text-based) JASC Paint Shop Pro file, starting with
 `JASC-PAL\r\n`. Read this line at the very start of a .BIN file to see if it's a
 palette file. The second line stores version information, should be `0100`. The
@@ -342,6 +336,22 @@ text (range `0-255`).
 Colors from the palette are referenced in the SLP files with an index.
 The index refers to a line in the palette, so line 3=>index 0,
 line 4=>index 1 etc.
+
+
+### Palette files in older versions of AoE1 and AoE2 (up until AoE2:HD)
+
+The file id is `50500+x`, the palettes (color tables) are stored the same way
+as SLPs are. (see [DRS Files](drs-files.md)) Here `x` is the palette index,
+which should be 0, experiment with `[1,10]`...
+
+`interfac.drs` contains many of these files, but the ingame art uses id 50500.
+
+
+### Palette files in AoE1:DE
+
+Palettes are stored as plain human-readable palette files with the suffixes
+`.pal` or `.palx`. Palette numbers are stored in a `palettes.conf` file that
+contains a bunch of lines with assignments in the form of `palette_number,filename`.
 
 
 ## SLP types
