@@ -45,13 +45,18 @@ endfunction()
 # windeployqt
 if(use_windeployqt AND windeployqt)
 	foreach(file ${CMAKE_INSTALL_MANIFEST_FILES})
-		if(file MATCHES "\\.dll$")
+		if((file MATCHES "\\.dll$") AND NOT ("${file}" STREQUAL "nyan.dll"))
 			resolve("${file}")
 			if(windeployqt)
+				message(STATUS "Calling windeployqt with ${file}.")
 				execute_process(COMMAND "${CMAKE_COMMAND}" -E env "PATH=${vcpkg_dir}/bin;$ENV{PATH}"
 					"${windeployqt}"
 					--qmldir "${CMAKE_INSTALL_PREFIX}/${asset_dir}/qml"
-					--dir "${CMAKE_INSTALL_PREFIX}/${py_install_prefix}"
+					--dir "${CMAKE_INSTALL_PREFIX}/bin/qml"
+					--plugindir "${CMAKE_INSTALL_PREFIX}/bin/plugins"
+					--libdir "${CMAKE_INSTALL_PREFIX}/bin"
+					--list "target"
+					--verbose 2
 					"${file}"
 				)
 			endif()

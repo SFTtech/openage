@@ -21,8 +21,8 @@ set(sizeof_void_p @CMAKE_SIZEOF_VOID_P@)
 set(vcpkg_dir "@vcpkg_dir@")
 set(windeployqt "@windeployqt@")
 
-# Use windeploy for packaging qt-prebuilt, standard value '0' for applocal vcpkg
-set(use_windeployqt 0)
+# Use windeploy for packaging qt-prebuilt, standard value '1' for windeploy, '0' for vcpkg
+set(use_windeployqt 1)
 
 # the following denotes inclusion of this script.
 set(forward_variables 1)

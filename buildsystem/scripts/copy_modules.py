@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 """
 Copies the specified modules to the required directory.
@@ -8,6 +8,7 @@ Used for packaging the python dependencies.
 import argparse
 import importlib
 import importlib.abc
+import importlib.util
 import os
 import shutil
 import sys
@@ -15,10 +16,9 @@ import sys
 
 def copy_module(name, destination):
     """Copy the importable module 'name' to the 'destination' directory"""
-    loader = importlib.find_loader(name)
+    loader = importlib.util.find_spec(name).loader
     if not isinstance(loader, importlib.abc.FileLoader):
-        print('Loader for module %s is not handled', name)
-        sys.exit(1)
+        sys.exit("Loader for module %s is not handled" % (name))
 
     print('Copying "%s" to "%s"' % (name, destination))
     filename = loader.get_filename(name)

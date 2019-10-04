@@ -46,6 +46,7 @@ foreach(pol
         CMP0067  # honor language standard in try_compile()
         CMP0071  # enable automoc for generated files
         CMP0072  # prefers GLVND by default FindOpenGL
+        CMP0048  # project() command manages VERSION variables
        )
 	if (POLICY ${pol})
 		cmake_policy(SET ${pol} NEW)
@@ -184,6 +185,18 @@ include(util)
 
 
 ##################################################
+# set project version
+if(USED_GIT_VERSION)
+	# VERSION_FULL_STRING is the full git describe
+	set(VERSION_FULL_STRING "${PROJECT_VERSION}")
+	# PROJECT_VERSION is MAJOR.MINOR.PATCH.TWEAK with Commit-Count as Tweak
+	STRING(REGEX REPLACE "v(([0-9]+.|[0-9]+)+)-([0-9]+)-g([a-f0-9]+)"
+			"\\1.\\3" PROJECT_VERSION "${VERSION_FULL_STRING}")
+endif()
+project(openage VERSION "${PROJECT_VERSION}")
+
+
+##################################################
 # documentation generation
 
 # create documentation
@@ -239,6 +252,7 @@ print_config_options()
 
 message("${PROJECT_NAME} ${PROJECT_VERSION}
 
+   version string | ${VERSION_FULL_STRING}
          compiler | ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}
        build type | ${CMAKE_BUILD_TYPE}
          cxxflags | ${CMAKE_CXX_FLAGS} ${EXTRA_FLAGS}
