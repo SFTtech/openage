@@ -1099,9 +1099,26 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 				// transfer using gather rate
 				double amount = worker.gather_rate[worker_resource.resource_type]
-				                * resource_attr.gather_rate * time;
-				worker_resource.amount += amount;
-				resource_attr.amount -= amount;
+								* resource_attr.gather_rate * time;
+
+				if (amount > resource_attr.amount) {
+					amount = resource_attr.amount;
+					resource_attr.amount = 0;
+				}
+				else {
+					resource_attr.amount -= amount;
+				}
+
+				bool autodrop = ClassicResources::to_resource(resource_attr.resource_type)->autodrop();
+				if (autodrop) {
+					// resources directly to player
+					auto &player = this->entity->get_attribute<attr_type::owner>().player;
+					player.receive(worker_resource.resource_type, amount);
+				}
+				else {
+					// resources to worker
+					worker_resource.amount += amount;
+				}
 			}
 		}
 	}

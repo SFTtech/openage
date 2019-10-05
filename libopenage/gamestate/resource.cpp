@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include <string>
 #include <cmath>
@@ -7,6 +7,20 @@
 #include "resource.h"
 
 namespace openage {
+
+ClassicResources::ClassicResources()
+	:
+	resources{{wood, "wood"},
+	          {food, "food"},
+	          {gold, "gold"},
+	          {stone, "stone"}} {
+}
+
+// TODO remove, here for transition period
+const Resource* ClassicResources::to_resource(game_resource& id) {
+	static ClassicResources cr = ClassicResources();
+	return &cr.get_resource((int) id);
+}
 
 ResourceBundle Resources::create_bundle() const {
 	return ResourceBundle(*this);

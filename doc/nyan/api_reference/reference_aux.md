@@ -1180,6 +1180,7 @@ A set of requirements that unlock the technology for the researching game entity
 Resource(Entity):
     name        : TranslatedString
     max_storage : int
+    autodrop    : bool
 ```
 
 Defines a resource that can be used in the game. Adding a resources will give an amount of 0 of that resource to all players. The current amount of resources can be influenced by the abilities and modifiers of game entities.
@@ -1189,6 +1190,9 @@ The name of the resource as a translatable string.
 
 **max_storage**
 Maximum amount of resources that can be stored at a time by the player.
+
+**autodrop**
+Determines whether a villager does not need a dropsite.
 
 ## aux.resource.ResourceContingent
 
@@ -1220,7 +1224,7 @@ The maximum contingent size.
 ```python
 ResourceAmount(Entity):
     type   : Resource
-    amount : int
+    amount : float
 ```
 
 A fixed amount of a certain resource.

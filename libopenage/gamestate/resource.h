@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,11 +15,11 @@ class ResourceBundle;
 class Resource {
 public:
 
-	Resource();
-
 	virtual int id() const = 0;
 
 	virtual std::string name() const = 0;
+
+	virtual bool autodrop() const = 0;
 
 	// TODO add images and icons
 
@@ -28,20 +28,35 @@ public:
 class ResourceProducer : public Resource {
 public:
 
-	ResourceProducer(int id, std::string name)
+	ResourceProducer(int id, std::string name, bool autodrop = false)
 		:
 		_id{id},
-		_name{name} { }
+		_name{name},
+		_autodrop{autodrop} { }
 
 	int id() const override { return _id; }
 
 	std::string name() const override { return _name; }
 
+	bool autodrop() const override { return _autodrop; }
+
 private:
 
 	int _id;
 	std::string _name;
+	bool _autodrop;
 };
+
+
+// TODO remove, here for backwards compatibility
+enum class game_resource : int {
+	wood = 0,
+	food = 1,
+	gold = 2,
+	stone = 3,
+	RESOURCE_TYPE_COUNT = 4
+};
+
 
 /**
  * All the resources.
@@ -54,15 +69,13 @@ private:
 class Resources {
 public:
 
-	Resources();
-
 	virtual unsigned int get_count() const = 0;
 
 	virtual const Resource& get_resource(int id) const = 0;
 
 	ResourceBundle create_bundle() const;
 
-	// TODO remove when the engine is fully decupled from the data
+	// TODO remove when the engine is fully decoupled from the data
 	static const int wood = 0;
 	static const int food = 1;
 	static const int gold = 2;
@@ -73,30 +86,18 @@ public:
 class ClassicResources : public Resources {
 public:
 
-	ClassicResources()
-		:
-		resources{{Resources::wood, "wood"},
-		          {Resources::food, "food"},
-		          {Resources::gold, "gold"},
-		          {Resources::stone, "stone"}} {
-	}
+	ClassicResources();
 
 	unsigned int get_count() const override { return 4; }
 
 	const Resource& get_resource(int id) const override { return this->resources[id]; };
 
+	// TODO remove, here for transition period
+	static const Resource* to_resource(game_resource& id);
+
 private:
 
 	const ResourceProducer resources[4];
-};
-
-// TODO remove, here for backwards compatibility
-enum class game_resource : int {
-	wood = 0,
-	food = 1,
-	gold = 2,
-	stone = 3,
-	RESOURCE_TYPE_COUNT = 4
 };
 
 
