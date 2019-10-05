@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 # ${AUTOGEN_WARNING}
 
@@ -17,7 +17,7 @@ BUILD_SRC_DIR = "${CMAKE_SOURCE_DIR}"
 BUILD_BIN_DIR = "${CMAKE_BINARY_DIR}"
 
 # version information
-VERSION = "${PROJECT_VERSION}"
+VERSION = "${VERSION_FULL_STRING}"
 CONFIG_OPTIONS = "${CONFIG_OPTION_STRING}"
 
 # toolchain
