@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -52,12 +52,14 @@ public:
 	UnitReference();
 
 	/**
-	 * create referece by unit id
+	 * create reference by unit id
 	 */
 	UnitReference(const UnitContainer *c, id_t id, Unit *);
 
 	bool is_valid() const;
 	Unit *get() const;
+
+	bool operator==(const UnitReference &other) const;
 
 private:
 

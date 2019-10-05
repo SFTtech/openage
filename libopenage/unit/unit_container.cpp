@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "unit_container.h"
 
@@ -44,6 +44,10 @@ Unit *UnitReference::get() const {
 		throw Error{MSG(err) << "Unit reference is no longer valid"};
 	}
 	return this->data->unit_ptr;
+}
+
+bool UnitReference::operator==(const UnitReference &other) const {
+	return this->get() == other.get();
 }
 
 

@@ -556,6 +556,25 @@ private:
 	UnitReference nearest_dropsite(game_resource res_type);
 };
 
+
+/**
+ * Work at a workplace
+ */
+class WorkAction: public TargetAction {
+public:
+	WorkAction(Unit *e, UnitReference tar);
+	virtual ~WorkAction();
+
+	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void on_completion() override;
+	void on_completion_in_range(int) override {};
+	bool completed_in_range(Unit *) const override { return target.is_valid(); }
+	std::string name() const override { return "work"; }
+
+private:
+	UnitReference target;
+};
+
 /**
  * attacks another unit
  */

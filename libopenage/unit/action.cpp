@@ -1195,6 +1195,42 @@ UnitReference GatherAction::nearest_dropsite(game_resource res_type) {
 	}
 }
 
+WorkAction::WorkAction(Unit *e, UnitReference tar)
+	:
+	TargetAction{e, graphic_type::work, tar},
+	target{tar} {
+
+	// handle unit type changes based on resource class
+	if (this->entity->has_attribute(attr_type::multitype)) {
+		this->entity->get_attribute<attr_type::multitype>().switchType(gamedata::unit_classes::BUILDING, this->entity);
+	}
+
+	auto &workforce_attr = this->target.get()->get_attribute<attr_type::workforce>();
+	workforce_attr.workers.push_back(this->entity->get_ref());
+}
+
+WorkAction::~WorkAction() {}
+
+void WorkAction::update_in_range(unsigned int time, Unit *targeted_workplace) {
+
+	auto &workplace_attr = targeted_workplace->get_attribute<attr_type::workplace>();
+
+	auto &player = this->entity->get_attribute<attr_type::owner>().player;
+	player.receive(workplace_attr.production);
+
+	// inc frame
+	this->frame += time * this->frame_rate / 3.0f;
+}
+
+void WorkAction::on_completion() {
+
+	auto &workforce_attr = this->target.get()->get_attribute<attr_type::workforce>();
+
+	workforce_attr.workers.erase(
+			std::remove(workforce_attr.workers.begin(), workforce_attr.workers.end(), this->entity->get_ref()),
+			workforce_attr.workers.end());
+}
+
 AttackAction::AttackAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::attack, tar, get_attack_range(e)},

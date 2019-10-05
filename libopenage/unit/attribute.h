@@ -1,10 +1,11 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include <algorithm>
 #include <functional>
 #include <map>
-#include <algorithm>
+#include <unordered_set>
 
 #include "../coord/tile.h"
 #include "../gamedata/unit.gen.h"
@@ -73,6 +74,8 @@ enum class attr_type {
 	resource,
 	resource_generator,
 	worker,
+	workplace,
+	workforce,
 	storage,
 	multitype,
 	garrison
@@ -579,6 +582,52 @@ public:
 	 * The ResourceBundle class is used but instead of amounts it stores gather rates.
 	 */
 	ResourceBundle gather_rate;
+};
+
+
+/**
+ * A place that workers can work and based on the work force resources are produced.
+ */
+template<> class Attribute<attr_type::workplace>: public SharedAttributeContainer {
+public:
+	Attribute()
+		:
+		SharedAttributeContainer{attr_type::workplace} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::workplace>>(*this);
+	}
+
+	/**
+	 * The max number of workers.
+	 */
+	int capacity;
+
+	/**
+	 * The production rate for each resource per worker.
+	 * The ResourceBundle class is used but instead of amounts it stores productions rates.
+	 */
+	ResourceBundle production;
+
+};
+
+/**
+ * The workforce of a place that workers can work and based on the work force resources are produced.
+ */
+template<> class Attribute<attr_type::workforce>: public UnsharedAttributeContainer {
+public:
+	Attribute()
+		:
+		UnsharedAttributeContainer{attr_type::workforce} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::workforce>>(*this);
+	}
+
+	/**
+	 * The units that are working.
+	 */
+	std::vector<UnitReference> workers;
 };
 
 /**
