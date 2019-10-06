@@ -1,11 +1,13 @@
-# Copyright 2016-2016 the openage authors. See copying.md for legal info.
+# Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 """
 Constants for texture generation.
 """
 
 # The maximum allowed texture dimension.
-MAX_TEXTURE_DIMENSION = 8194
+# TODO: Maximum allowed dimension needs to
+#       be determined by converter.
+MAX_TEXTURE_DIMENSION = 32768
 
 # Margin between subtextures in atlas to avoid texture bleeding.
 MARGIN = 1
