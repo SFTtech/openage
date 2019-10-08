@@ -1,6 +1,7 @@
 add_py_modules(
 	__init__.py
 	content_snippet.py
+	converter_object.py
 	data_definition.py
 	data_formatter.py
 	entry_parser.py
@@ -15,3 +16,5 @@ add_py_modules(
 	util.py
 	value_member.py
 )
+
+add_subdirectory(aoc)
