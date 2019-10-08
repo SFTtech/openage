@@ -1,6 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
-
-# TODO pylint: disable=C,R,abstract-method
+# Copyright 2019-2019 the openage authors. See copying.md for legal info.
 
 """
 Objects that represent data structures in the original game.
@@ -186,3 +184,13 @@ class RawAPIObject:
     def __repr__(self):
         raise NotImplementedError(
             "return short description of the object %s" % (type(self)))
+
+
+class ConverterObjectContainer:
+    """
+    A conainer for all ConverterObject instances in a converter process.
+
+    It is recommended to create one ConverterObjectContainer for everything
+    and pass the reference around. 
+    """
+    pass

@@ -144,7 +144,6 @@ class AgeTechTree(Exportable):
     struct_description = "items available when this age was reached."
 
     data_format = [
-        (READ, "total_unit_tech_groups", "int32_t"),
         (READ, "id", "int32_t"),
         # 0=generic
         # 1=TODO
@@ -215,7 +214,11 @@ class AgeTechTree(Exportable):
         (READ, "group_length_per_zone", "int8_t[10]"),
     ])
 
-    data_format.append((READ, "max_age_length", "int8_t"))
+    data_format.extend([
+        (READ, "max_age_length", "int8_t"),
+        # 1=Age
+        (READ, "line_mode", "int32_t"),
+    ])
 
 
 class BuildingConnection(Exportable):
@@ -339,8 +342,8 @@ class UnitConnection(Exportable):
         # min amount of researches to be discovered for this unit to be
         # available
         (READ, "required_research", "int32_t"),
-        # 0=independent/new in its line, 3=depends on a previous research in
-        # its line
+        # 2=first unit in line
+        # 3=unit that depends on a previous research in its line
         (READ, "line_mode", "int32_t"),
         (READ, "enabling_research", "int32_t"),
     ])
@@ -404,6 +407,7 @@ class ResearchConnection(Exportable):
 
         (READ, "vertical_line", "int32_t"),
         (READ, "location_in_age", "int32_t"),    # 0=hidden, 1=first, 2=second
-        # 0=first age, else other ages.
+        # 0=first age unlocks
+        # 4=research
         (READ, "line_mode", "int32_t"),
     ])
