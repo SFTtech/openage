@@ -96,6 +96,11 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
     in Age of Empires. While buildings have no actual "lines" like units in
     the game data, we will handle them as if they were organized that way.
 
+    Example1: Blacksmith(feudal)->Blacksmith(castle)->Blacksmith(imp)
+
+    Example2: WatchTower->GuardTower->Keep
+
+
     Buildings in AoE2 also create units and research techs, so
     this is handled in here.
 
