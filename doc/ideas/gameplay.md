@@ -1,12 +1,11 @@
-Gameplay improvement ideas
-==========================
+# Gameplay improvement ideas
 
 This file contains ideas to "enhance" the original Age of Kings gameplay.
 Don't worry, vanilla mode will always be available.
 
 
-Environment
------------
+## Environment
+
 
 ### Weather
 
@@ -67,8 +66,8 @@ Irregular terrains (= beaches/mountains/swamps): nothing can be built on these t
 Regular terrain makes up most of the player starting areas, with soft and rock terrains becoming more common as you go further from the player starting areas and irregular terrain makes up larger spaces of the map in-between the player starting areas.
 
 
-Resources
----------
+## Resources
+
 
 ### Infinite regeneration
 
@@ -92,8 +91,7 @@ Resources
   - and also deleted: doesn't recover material, but is faster
 
 
-Map extensions
---------------
+## Map extensions
 
 ### 3D terrain
 
@@ -107,8 +105,7 @@ Map extensions
  - Spherical/Toroidal/Cylindrical surfaces would be possible, too.
 
 
-Research
---------
+## Research
 
  - Only newly-built units receive the bonus when units are upgraded
  - Already-built units need to be "overhauled" for a cost back at the barracks.
@@ -117,14 +114,13 @@ Research
    to click on building again after each research
 
 
-Capture buildings
---------
+## Capture buildings
+
   - when a building is damaged to 20% or less, buildings will eject any units garrisoned, cancels all research or training and cease any inherent behaviors (i.e. towers will no longer attack)
   - a building which has been damaged to 20% HP or less will become the property of the next player who repairs it to a level above 20%
 
 
-Game modes
-----------
+## Game modes
 
 ### Zombie Survival Mode
 
@@ -156,8 +152,7 @@ Extra options like regenerating gold, wood, and stone could be interesting for c
 
 
 
-Unit handling
--------------
+## Unit handling
 
 ### Improved grouping
 
@@ -211,8 +206,7 @@ Unit handling
  - Kosmonautblog wrote an article about the viewcone in Shadow Tactics and how the developers were implementing it, you can find it here: https://web.archive.org/web/20190428103242/https://kosmonautblog.wordpress.com/2017/01/09/shadow-tactics-rendering-breakdown/
 
 
-Multiplayer
------------
+## Multiplayer
 
 ### Lobby settings
 
@@ -319,8 +313,7 @@ Play on one single map with 9001 players. Dynamically extend the map.
 Massively slow down the game speed, and you get a "browser game"-like experience.
 
 
-New Buildings
--------------
+## New Buildings
 
 ### Bridges
 
@@ -350,8 +343,7 @@ New Buildings
    - Decay when not used
    - Appearance and quality depends on traffic (matted grass, dirt path, etc.)
 
-New Units
--------------
+## New Units
 
 ### Water
 
@@ -362,8 +354,7 @@ New Units
  - transport waggon to slowly transport ships over land from one sea to another
 
 
-Relics & Kings
----------
+## Relics & Kings
 
  - Relics could have special abilities like in AOM
    - e.g. they can have attack bonuses for special units or economic/military bonuses
@@ -381,22 +372,20 @@ Relics & Kings
   - Queen units with an somehow identical functionality, may also be added to the game
 
 
-Production
----------
+## Production
 
  - let the last produced unit in a building be produced for an infinite time (as long as resources and pop space are available) --> AOM-style
  - same for farms (either reseed a certain number with a waiting line or an option "reseed forever" as long as ressources are available)
  - Mills can produce sheep, cows, turkeys, etc.
 
-For the lulz
-------------
+## For the lulz
 
  - Big fat damage numbers!!!1
  - Friendly-fire toggle!!111
 
 
-Implement features the AoE-devs didn't do
-------------
+## Implement features the AoE-devs didn't do
+
 See here:
 https://www.reddit.com/r/aoe2/comments/bg4p3m/spirit_of_the_law_stealing_villagers_and_other/
 

@@ -1,3 +1,6 @@
+# Interface
+
+## interface enhancements
 As opposed to the gameplay improvements, these interface enhancements are pretty straightforward, so they will probably be hard-coded in.
 
  - Allow selecting more than 30 units (duh.)
@@ -13,8 +16,7 @@ As opposed to the gameplay improvements, these interface enhancements are pretty
    - possible options "Zoom in center of screen", "Zoom towards mouse cursor" or "zoom towards selected units" (to figure out what makes sense in which situations)
 
 
-after-game stats
----------
+## after-game stats
 
  - by looking at stats it should be clear how many kills were just friendly fire kills (by siege units, deleting idle vills, etc...) and how many were actual opponent kills
  - what was the lumberjack/farmer/miner/trade cart composition during game

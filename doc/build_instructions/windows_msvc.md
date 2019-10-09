@@ -33,12 +33,16 @@ __NOTE:__ You need to manually make sure and doublecheck if the system you are b
 ### Python Modules
  Open a command prompt at `<Python 3 installation directory>/Scripts`
 
-    pip install cython numpy pillow pygments pyreadline Jinja2
+```
+pip install cython numpy pillow pygments pyreadline Jinja2
+```
 
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
 
-    vcpkg install dirent eigen3 fontconfig freetype harfbuzz libepoxy libogg libpng opus opusfile qt5-base qt5-declarative qt5-quickcontrols sdl2 sdl2-image
+```
+vcpkg install dirent eigen3 fontconfig freetype harfbuzz libepoxy libogg libpng opus opusfile qt5-base qt5-declarative qt5-quickcontrols sdl2 sdl2-image
+```
 
  _Note:_ The `qt5` port in vcpkg has been split into multiple packages, build times are acceptable now.
  If you want, you can still use [the prebuilt version](https://www.qt.io/download-open-source/) instead.
@@ -54,10 +58,12 @@ _Note:_ You will also need to set up [the dependencies for Nyan](https://github.
 
 Open a command prompt at `<openage directory>`:
 
-     mkdir build
-     cd build
-     cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>/scripts/buildsystems/vcpkg.cmake ..
-     cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
+```
+mkdir build
+cd build
+cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>/scripts/buildsystems/vcpkg.cmake ..
+cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
+```
 
 _Note:_ If you want to build the x64 version, please add `-G "Visual Studio 15 2017 Win64"` (for VS2017) to the first cmake command.
 _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYAN=YES -DFLEX_EXECUTABLE=<path to win_flex.exe>` to the first cmake command.
@@ -84,17 +90,20 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
 
  - Install [NSIS](https://sourceforge.net/projects/nsis/files/latest/download).
  - Depending on the way you installed Qt (vcpkg/pre-built) you need to edit the following line in `<openage-repo-dir>\buildsystem\templates\ForwardVariables.cmake.in`:
+
 ```
-	# Use windeploy for packaging qt-prebuilt, standard value '1' for windeploy, '0' for vcpkg
-	set(use_windeployqt 1)
+# Use windeploy for packaging qt-prebuilt, standard value '1' for windeploy, '0' for vcpkg
+set(use_windeployqt 1)
 ```
 
  Open a command prompt at `<openage directory>\build` (or use the one from the building step):
 
-    cpack -C RelWithDebInfo
+```
+cpack -C RelWithDebInfo
+```
 
  The installer (`openage-<version>-<arch>.exe`) will be generated in the same directory.<br>
 
  _Hint:_ Append `-V` to the `cpack` command for verbose output (it takes time to package all dependencies).
 
- _Hint:_ <arch> you can set with the environment variable `TARGET_PLATFORM` (e.g. amd64, x86).
+ _Hint:_ `<arch>` you can set with the environment variable `TARGET_PLATFORM` (e.g. amd64, x86).

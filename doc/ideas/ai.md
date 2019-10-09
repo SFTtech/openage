@@ -1,7 +1,6 @@
-Improvements for the AI's gameplay
+# AI gameplay
 
-Villagers
----------
+## Villagers
 
  - Don't collect resources in hazardous areas / send the military to clear them out
  - Send military task forces to guard strategic resources / tower them
@@ -10,8 +9,7 @@ Villagers
  - Prefer to build castles and towers near the water/thin places
  - Create more trade cogs and trade ships
 
-Military
---------
+## Military
 
  - Avoid fighting in hazardous areas / prefer fighting in range of own castles
  - Coordinates reaction to attacks on units (during march, ...) (including attacks by towers/castles)
@@ -23,7 +21,6 @@ Military
    - send smaller amount of troops earlier in the game to annoy you
    - while building up a big army in the back
 
-Ship
---------
+## Ship
 
   - Transport ship can deliver villagers to another islands

@@ -13,17 +13,17 @@ To play, you require *an original AoE II: TC or [AoE II: HD](http://store.steamp
 [![quality badge](https://img.shields.io/badge/cuteness-overload-orange.svg)](http://www.emergencykitten.com/)
 
 
-
 Contact
 -------
-Contact  | Where?
----------|-------
-Issue Tracker | [SFTtech/openage](https://github.com/SFTtech/openage/issues)
-Development Blog | [blog.openage.sft.mx](https://blog.openage.sft.mx)
-Forum | [<img src="https://www.redditstatic.com/about/assets/reddit-logo.png" alt="reddit" height="22"/> /r/openage](https://www.reddit.com/r/openage/)
-Matrix Chat | [`#sfttech:matrix.org`](https://riot.im/app/#/room/#sfttech:matrix.org)
-IRC Chat | [`irc.freenode.net #sfttech`](https://webchat.freenode.net/?channels=sfttech)
-Money Sink | [![money sink](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/SFTtech)
+
+Contact          | Where?
+-----------------|-------
+Issue Tracker    | [`SFTtech/openage`](https://github.com/SFTtech/openage/issues)
+Development Blog | [`blog.openage.sft.mx`](https://blog.openage.sft.mx)
+Forum            | [`/r/openage`](https://www.reddit.com/r/openage/)
+Matrix Chat      | [`#sfttech:matrix.org`](https://riot.im/app/#/room/#sfttech:matrix.org)
+IRC Chat         | [`irc.freenode.net #sfttech`](https://webchat.freenode.net/?channels=sfttech)
+Money Sink       | [![money sink](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/SFTtech)
 
 
 Technical foundation
@@ -124,7 +124,7 @@ or the [bug tracker](https://github.com/SFTtech/openage/issues).
 
 
 Contributing
-============
+------------
 
 * Being typical computer science students, we hate people.
 * Please don't contact us.
