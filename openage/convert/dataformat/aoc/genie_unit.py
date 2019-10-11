@@ -100,7 +100,6 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
 
     Example2: WatchTower->GuardTower->Keep
 
-
     Buildings in AoE2 also create units and research techs, so
     this is handled in here.
 
@@ -134,7 +133,7 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         self.data.add_building_line(self)
 
 
-class GenieUnitTransformGroup(ConverterObjectGroup):
+class GenieUnitTransformGroup(GenieUnitLineGroup):
     """
     Collection of genie units that reference each other with their
     transform_id.
@@ -142,7 +141,7 @@ class GenieUnitTransformGroup(ConverterObjectGroup):
     Example: Trebuchet
     """
 
-    def __init__(self, head_unit_id, full_data_set):
+    def __init__(self, line_id, head_unit_id, full_data_set):
         """
         Creates a new Genie transform group.
 
@@ -153,10 +152,9 @@ class GenieUnitTransformGroup(ConverterObjectGroup):
                               process.
         """
 
-        super().__init__(head_unit_id)
+        super().__init__(line_id, head_unit_id, full_data_set)
 
-        # Reference to everything else in the gamedata
-        self.data = full_data_set
+        # Add a reference for the unit to the dataset
         self.data.add_transform_group(self)
 
         self.head_unit = self.data.genie_units[head_unit_id]
@@ -165,7 +163,7 @@ class GenieUnitTransformGroup(ConverterObjectGroup):
         self.transform_unit = self.data.genie_units[transform_id]
 
 
-class GenieUnitTaskGroup(ConverterObjectGroup):
+class GenieUnitTaskGroup(GenieUnitLineGroup):
     """
     Collection of genie units that have the same task group.
 
@@ -175,7 +173,7 @@ class GenieUnitTaskGroup(ConverterObjectGroup):
     the other ones become variants or AnimationOverrides of abilities.
     """
 
-    def __init__(self, task_group_id, head_task_id, full_data_set):
+    def __init__(self, line_id, task_group_id, head_task_id, full_data_set):
         """
         Creates a new Genie task group.
 
@@ -186,16 +184,15 @@ class GenieUnitTaskGroup(ConverterObjectGroup):
                               process.
         """
 
-        super().__init__(task_group_id)
+        super().__init__(line_id, task_group_id, full_data_set)
 
         self.head_task_id = head_task_id
 
-        # The task group is stored as a dict of GenieUnitObjects.
+        # The task group line is stored as a dict of GenieUnitObjects.
         # key: task id; value: unit
-        self.units = {}
+        self.line = {}
 
-        # Add task group to gamedata
-        self.data = full_data_set
+        # Add a reference for the unit to the dataset
         self.data.add_task_group(self)
 
 
@@ -207,7 +204,7 @@ class GenieVillagerGroup(GenieUnitTaskGroup):
     variant of the other one.
     """
 
-    def __init__(self, task_group_id, head_task_id,
+    def __init__(self, line_id, task_group_id, head_task_id,
                  variant_task_group_id, full_data_set):
         """
         Creates a new Genie villager group.
@@ -219,7 +216,7 @@ class GenieVillagerGroup(GenieUnitTaskGroup):
                               contains all relevant data for the conversion
                               process.
         """
-        super().__init__(task_group_id, head_task_id, full_data_set)
+        super().__init__(line_id, task_group_id, head_task_id, full_data_set)
 
         # Reference to the other task group
         self.variant = self.data.task_groups[variant_task_group_id]
@@ -233,7 +230,8 @@ class GenieVillagerGroup(GenieUnitTaskGroup):
 class GenieMonkGroup(ConverterObjectGroup):
     """
     Collection of monk and monk with relic. The switch
-    is hardcoded in AoE2.
+    is hardcoded in AoE2. (Missionaries are handled as normal lines
+    because they cannot pick up relics).
 
     The 'head unit' will become the GameEntity, the 'switch unit'
     will become a Container ability with CarryProgress.

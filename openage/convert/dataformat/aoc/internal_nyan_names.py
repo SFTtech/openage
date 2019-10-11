@@ -10,6 +10,7 @@ figure out the names for a nyan object.
 unit_line_lookups = {
     3:  "FishingShip",
     4:  "Swordsman",
+    5: "Villager",
     22: "Archer",
     23: "TradeCog",
     24: "Spearman",
@@ -19,7 +20,7 @@ unit_line_lookups = {
     29: "TransportShip",
     49: "Ram",
     50: "Cataphract",
-    51: "ChoKoNu",
+    51: "ChuKoNu",
     52: "Conquistador",
     53: "CamelRider",
     54: "HorseArcher",
@@ -33,6 +34,7 @@ unit_line_lookups = {
     62: "Longboat",
     63: "Longbowman",
     64: "Mangonel",
+    65: "Monk",
     66: "Missionary",
     67: "Mangudai",
     68: "WarElephant",
@@ -51,6 +53,7 @@ unit_line_lookups = {
     113: "BombardCannon",
     114: "CannonGalleon",
     115: "HandCannoneer",
+    116: "Trebuchet",
 }
 
 building_line_lookups = {
@@ -76,17 +79,5 @@ building_line_lookups = {
     487: "StoneGate",
     562: "LumberCamp",
     584: "MiningCamp",
-    598: "Outpost"
-}
-
-transform_group_lookups = {
-    116: "Trebuchet",
-}
-
-villager_group_lookups = {
-    5: "Villager",
-}
-
-monk_group_lookups = {
-    65: "Monk",
+    598: "Outpost",
 }
