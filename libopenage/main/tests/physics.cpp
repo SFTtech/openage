@@ -184,6 +184,20 @@ public:
 		}
 
 		state->ball->position->set_last(now + ty, hit_pos);
+
+		// update ball color through nyan transaction (just as a demo...)
+		nyan::Transaction tx = state->dbroot->new_transaction(now.to_int());
+
+		if (speed[0] > 0) {
+			tx.add(state->dbroot->get_object("pong.RightColor"));
+		} else {
+			tx.add(state->dbroot->get_object("pong.LeftColor"));
+		}
+
+		bool txok = tx.commit();
+		if (not txok) {
+			throw Error{ERR << "failed nyan transaction"};
+		}
 	}
 
 	curve::time_t predict_invoke_time(const std::shared_ptr<event::EventEntity> &target,
