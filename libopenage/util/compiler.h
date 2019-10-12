@@ -119,4 +119,18 @@ std::string typestring() {
 }
 
 
+/**
+ * Returns the string representation of type pointed to by the given pointer.
+ * Example:
+ * struct A {}; struct B : A {};
+ * std::shared_ptr<A> ptr = std::make_shared<B>();
+ * auto str = typestring(ptr.get());
+ * assert(str == "B"s);
+ */
+template <typename T>
+std::string typestring(const T *ptr) {
+	return demangle(typeid(*ptr).name());
+}
+
+
 }} // openage::util

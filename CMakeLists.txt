@@ -43,6 +43,7 @@ set(CYTHON_MIN_VERSION 0.25)
 
 # CMake policies
 foreach(pol
+        CMP0074  # use <pkg>_ROOT vars in find_package()
         CMP0067  # honor language standard in try_compile()
         CMP0071  # enable automoc for generated files
         CMP0072  # prefers GLVND by default FindOpenGL

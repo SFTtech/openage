@@ -93,7 +93,8 @@ void PongBall::child_changes(const curve::time_t &time) {
 
 
 PongState::PongState(const std::shared_ptr<event::Loop> &mgr,
-                     const std::shared_ptr<Gui> &gui)
+                     const std::shared_ptr<Gui> &gui,
+                     const std::shared_ptr<nyan::View> &dbroot)
 	:
 	State{mgr},
 	p1(std::make_shared<PongPlayer>(mgr, 0)),
@@ -104,7 +105,8 @@ PongState::PongState(const std::shared_ptr<event::Loop> &mgr,
 			mgr,
 			1001,
 			"area_size")),
-	gui{gui} {
+	gui{gui},
+	dbroot{dbroot} {
 
 		auto size = gui->get_window_size();
 
@@ -113,6 +115,21 @@ PongState::PongState(const std::shared_ptr<event::Loop> &mgr,
 
 		// initialize display size with real window size
 		this->area_size->set_last(0, size);
+
+		// nyan initialization
+		nyan::Object gamecfg = this->dbroot->get_object("pong.GameTest");
+		if (not gamecfg.extends("pong.PongGame")) {
+			throw Error{ERR << "GameTest is not a PongGame"};
+		}
+
+		this->ballcfg = *gamecfg.get<nyan::Object>("ball");
+
+		nyan::Object ballcolor = this->ballcfg.get_object("color");
+		log::log(INFO << "initial ball color: (r, g, b) = ("
+		         << ballcolor.get_int("r")
+		         << ", " << ballcolor.get_int("g")
+		         << ", " << ballcolor.get_int("b")
+		         << ")");
 	}
 
 } // openage::main::tests::pong

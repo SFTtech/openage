@@ -33,7 +33,6 @@ enum class timescale {
 	FAST,
 };
 
-
 void main(const util::Path& path) {
 	bool human_player = false;
 
@@ -42,7 +41,7 @@ void main(const util::Path& path) {
 	std::shared_ptr<nyan::Database> db = nyan::Database::create();
 
 	db->load(
-		"test.nyan",
+		"pong.nyan",
 		[&path] (const std::string &filename) {
 			// TODO: nyan should provide a file api that we can inherit from
 			// then we can natively interface to the openage file abstraction
@@ -55,10 +54,7 @@ void main(const util::Path& path) {
 		}
 	);
 
-	std::shared_ptr<nyan::View> root = db->new_view();
-	nyan::Object test = root->get("test.Test");
-	log::log(INFO << "nyan read test: " << *test.get<nyan::Int>("member"));
-
+	std::shared_ptr<nyan::View> dbview = db->new_view();
 	std::shared_ptr<Gui> gui = std::make_shared<Gui>();
 
 	bool running = true;
@@ -73,7 +69,7 @@ void main(const util::Path& path) {
 		// the window size is fetched in here already,
 		// so the resize callback doesn't need to be called for
 		// a new state.
-		auto state = std::make_shared<PongState>(loop, gui);
+		auto state = std::make_shared<PongState>(loop, gui, dbview);
 
 		gui->clear_resize_callbacks();
 		gui->add_resize_callback(
@@ -141,16 +137,8 @@ void main(const util::Path& path) {
 			// draw the new state
 			gui->draw(state, now);
 
-			/*
-			int pos = 1;
-			mvprintw(pos++, state->area_size->get(now)[0]/2 + 10, "Enqueued events:");
-			for (const auto &e : loop->get_queue().get_event_queue().get_sorted_events()) {
-				mvprintw(pos++, state->area_size->get(now)[0]/2 + 10,
-				         "%f: %s",
-				         e->get_time().to_double(),
-				         e->get_eventhandler()->id().c_str());
-			}
-			*/
+			// TODO: print event queue from loop->get_queue().get_event_queue().get_sorted_events()
+			//       and show event->get_time and event->get_eventhandler()->id()
 
 			// get the input after the current frame, because the get_inputs
 			// implicitly updates the screen. if this is done too early,

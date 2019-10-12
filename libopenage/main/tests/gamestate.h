@@ -4,6 +4,8 @@
 
 #include <functional>
 
+#include <nyan/nyan.h>
+
 #include "config.h"
 #include "../../curve/continuous.h"
 #include "../../curve/discrete.h"
@@ -72,7 +74,8 @@ private:
 class PongState : public event::State {
 public:
 	PongState(const std::shared_ptr<event::Loop> &mgr,
-	          const std::shared_ptr<Gui> &gui);
+	          const std::shared_ptr<Gui> &gui,
+	          const std::shared_ptr<nyan::View> &dbroot);
 
 	std::shared_ptr<PongPlayer> p1;
 	std::shared_ptr<PongPlayer> p2;
@@ -80,6 +83,9 @@ public:
 	std::shared_ptr<curve::Discrete<util::Vector2s>> area_size;
 
 	std::shared_ptr<Gui> gui;
+
+	std::shared_ptr<nyan::View> dbroot;
+	nyan::Object ballcfg;
 };
 
 

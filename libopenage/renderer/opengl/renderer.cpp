@@ -83,9 +83,9 @@ void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {
 		auto renderables = pass->get_renderables();
 		std::stable_sort(renderables.begin(), renderables.end(), [](const Renderable& a, const Renderable& b) {
 			GLuint shader_a = std::dynamic_pointer_cast<GlShaderProgram>(
-				std::dynamic_pointer_cast<GlUniformInput>(a.unif_in)->get_program())->get_handle();
+				std::dynamic_pointer_cast<GlUniformInput>(a.uniform)->get_program())->get_handle();
 			GLuint shader_b = std::dynamic_pointer_cast<GlShaderProgram>(
-				std::dynamic_pointer_cast<GlUniformInput>(b.unif_in)->get_program())->get_handle();
+				std::dynamic_pointer_cast<GlUniformInput>(b.uniform)->get_program())->get_handle();
 			return shader_a < shader_b;
 		});
 
@@ -119,7 +119,7 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 			glDisable(GL_DEPTH_TEST);
 		}
 
-		auto in = std::dynamic_pointer_cast<GlUniformInput>(obj.unif_in);
+		auto in = std::dynamic_pointer_cast<GlUniformInput>(obj.uniform);
 		auto program = std::static_pointer_cast<GlShaderProgram>(in->get_program());
 
 		// this also calls program->use()

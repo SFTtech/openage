@@ -1,0 +1,30 @@
+PongGame():
+    ball : Ball
+    player1 : Player
+    player2 : Player
+
+Ball():
+    Color():
+        r : int = 0
+        g : int = 200
+        b : int = 0
+    color : Color = Color
+
+Player():
+    lifes : int = 3
+    size : int = 200
+
+GameTest(PongGame):
+    ball = Ball
+    player1 = Player
+    player2 = Player
+
+LeftColor<Ball.Color>():
+    r = 0
+    g = 20
+    b = 230
+
+RightColor<Ball.Color>():
+    r = 180
+    g = 40
+    b = 0
