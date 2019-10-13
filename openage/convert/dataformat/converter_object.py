@@ -14,19 +14,20 @@ class ConverterObject:
     Storage object for data objects in the to-be-converted games.
     """
 
-    def __init__(self, obj_id, members):
+    def __init__(self, obj_id, members=None):
         """
         Creates a new ConverterObject.
 
-        :param obj_id: An identifier for the object (as a string)
+        :param obj_id: An identifier for the object (as a string or int)
         :param members: A list of members.
         """
         self.obj_id = obj_id
 
-        if all(isinstance(member, ValueMember) for member in members):
-            self.members = {}
+        if members:
+            if all(isinstance(member, ValueMember) for member in members):
+                self.members = {}
 
-            self._create_member_dict(members)
+                self._create_member_dict(members)
 
         else:
             raise Exception("members must be an instance of ValueMember")
@@ -102,7 +103,7 @@ class ConverterObjectGroup:
         """
         Creates a new ConverterObjectGroup.
 
-        :paran group_id:  An identifier for the object group (as a string)
+        :paran group_id:  An identifier for the object group (as a string or int)
         :param raw_api_objects: A list of raw API objects. These will become
                                 proper API objects during conversion.
         """
@@ -162,7 +163,7 @@ class RawAPIObject:
         # fqon of the API object
         self.api_ref = api_ref
 
-        # A list of ValueMembers that are neceessary to translate
+        # A list of ValueMembers that are necessary to translate
         # the object to an actual API object.
         self.data = data
 

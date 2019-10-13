@@ -7,8 +7,8 @@ from openage.convert.dataformat.read_members import SubdataMember
 from ..dataformat.member_access import READ
 
 
-class ResearchResourceCost(Exportable):
-    name_struct        = "research_resource_cost"
+class TechResourceCost(Exportable):
+    name_struct        = "tech_resource_cost"
     name_struct_file   = "research"
     struct_description = "amount definition for a single type resource for researches."
 
@@ -19,15 +19,15 @@ class ResearchResourceCost(Exportable):
     ]
 
 
-class Research(Exportable):
-    name_struct        = "research"
+class Tech(Exportable):
+    name_struct        = "tech"
     name_struct_file   = "research"
     struct_description = "one researchable technology."
 
     data_format = [
         (READ, "required_techs", "int16_t[6]"),         # research ids of techs that are required for activating the possible research
         (READ, "research_resource_costs", SubdataMember(
-            ref_type=ResearchResourceCost,
+            ref_type=TechResourceCost,
             length=3,
         )),
         (READ, "required_tech_count", "int16_t"),       # a subset of the above required techs may be sufficient, this defines the minimum amount

@@ -209,11 +209,11 @@ class EmpiresDat(Exportable):
             length="random_map_count",
         )),
 
-        # technology data
-        (READ_EXPORT, "tech_count", "uint32_t"),
-        (READ_EXPORT, "techs", SubdataMember(
-            ref_type=tech.Tech,
-            length="tech_count",
+        # technology effect data
+        (READ_EXPORT, "effect_bundle_count", "uint32_t"),
+        (READ_EXPORT, "effect_bundles", SubdataMember(
+            ref_type=tech.EffectBundle,
+            length="effect_bundle_count",
         )),
     ])
 
@@ -267,7 +267,7 @@ class EmpiresDat(Exportable):
     data_format.extend([
         (READ_EXPORT, "research_count", "uint16_t"),
         (READ_EXPORT, "researches", SubdataMember(
-            ref_type=research.Research,
+            ref_type=research.Tech,
             length="research_count"
         )),
     ])

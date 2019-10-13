@@ -8,8 +8,8 @@ figure out the names for a nyan object.
 
 # key: line_id; value: nyan object name
 unit_line_lookups = {
-    3:  "FishingShip",
-    4:  "Swordsman",
+    3: "FishingShip",
+    4: "Swordsman",
     5: "Villager",
     22: "Archer",
     23: "TradeCog",
@@ -80,4 +80,26 @@ building_line_lookups = {
     562: "LumberCamp",
     584: "MiningCamp",
     598: "Outpost",
+}
+
+civ_group_lookups = {
+    0: "Gaia",
+    1: "Britons",
+    2: "Franks",
+    3: "Goths",
+    4: "Teutons",
+    5: "Japanese",
+    6: "Chinese",
+    7: "Byzantines",
+    8: "Persians",
+    9: "Saracens",
+    10: "Turks",
+    11: "Vikings",
+    12: "Mongols",
+    13: "Celts",
+    14: "Spanish",
+    15: "Aztecs",
+    16: "Mayans",
+    17: "Huns",
+    18: "Koreans",
 }

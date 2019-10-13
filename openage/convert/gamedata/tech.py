@@ -101,13 +101,13 @@ class Effect(Exportable):
     ]
 
 
-class Tech(Exportable):  # also called techage in some other tools
-    name_struct = "tech"
+class EffectBundle(Exportable):  # also called techage in some other tools
+    name_struct = "effect_bundle"
     name_struct_file = "tech"
-    struct_description = "a technology definition."
+    struct_description = "a bundle of effects."
 
     data_format = [
-        # always CHUN4 (change unit 4-arg)
+        # always CHUN4 (change unit 4-arg) in AoE1-AoC, later versions name them
         (READ, "name", "char[31]"),
         (READ, "effect_count", "uint16_t"),
         (READ, "effects", SubdataMember(
