@@ -11,11 +11,19 @@ class GenieUnitObject(ConverterObject):
     """
 
     def __init__(self, unit_id, full_data_set):
+        """
+        Creates a new Genie unit object.
 
-        super().__init__(unit_id, [])
+        :param unit_id: The internal unit_id of the unit.
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        """
+
+        super().__init__(unit_id)
 
         self.data = full_data_set
-        self.data.genie_units.append(self)
+        self.data.genie_units.update({self.get_id(): self})
 
 
 class GenieUnitLineGroup(ConverterObjectGroup):
@@ -46,7 +54,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
         # Reference to everything else in the gamedata
         self.data = full_data_set
-        self.data.add_unit_line(self)
+        self.data.unit_lines.update({self.get_id(): self})
 
     def add_unit(self, genie_unit, after=None):
         """
@@ -63,8 +71,8 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         unit_type = genie_unit.get_member("type").get_value()
 
         # Valid units have type >= 70
-        if unit_type < 70:
-            raise Exception("GenieUnitObject must have type >= 70"
+        if unit_type != 70:
+            raise Exception("GenieUnitObject must have type == 70"
                             "to be added to line")
 
         if after:
@@ -93,8 +101,8 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 class GenieBuildingLineGroup(ConverterObjectGroup):
     """
     A collection of GenieUnitObject types that represent a building
-    in Age of Empires. While buildings have no actual "lines" like units in
-    the game data, we will handle them as if they were organized that way.
+    in Age of Empires. Buildings actually have no line id, so we take
+    the id of the first occurence of the building's id as the line id.
 
     Example1: Blacksmith(feudal)->Blacksmith(castle)->Blacksmith(imp)
 
@@ -130,7 +138,7 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
 
         # Reference to everything else in the gamedata
         self.data = full_data_set
-        self.data.add_building_line(self)
+        self.data.building_lines.update({self.get_id(): self})
 
 
 class GenieUnitTransformGroup(GenieUnitLineGroup):
@@ -152,15 +160,46 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
                               process.
         """
 
-        super().__init__(line_id, head_unit_id, full_data_set)
+        super().__init__(line_id, full_data_set)
 
-        # Add a reference for the unit to the dataset
-        self.data.add_transform_group(self)
+        # Add a reference to the unit to the dataset
+        self.data.transform_groups.update({self.get_id(): self})
 
         self.head_unit = self.data.genie_units[head_unit_id]
 
         transform_id = self.head_unit.get_member("transform_id").get_value()
         self.transform_unit = self.data.genie_units[transform_id]
+
+
+class GenieMonkGroup(GenieUnitLineGroup):
+    """
+    Collection of monk and monk with relic. The switch
+    is hardcoded in AoE2. (Missionaries are handled as normal lines
+    because they cannot pick up relics).
+
+    The 'head unit' will become the GameEntity, the 'switch unit'
+    will become a Container ability with CarryProgress.
+    """
+
+    def __init__(self, line_id, head_unit_id, switch_unit_id, full_data_set):
+        """
+        Creates a new Genie monk group.
+
+        :param head_unit_id: The unit with this task will become the actual
+                             GameEntity.
+        :param switch_unit_id: This unit will be used to determine the
+                               CarryProgress objects.
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        """
+        super().__init__(line_id, full_data_set)
+
+        # Reference to everything else in the gamedata
+        self.data.monk_groups.update({self.get_id(): self})
+
+        self.head_unit = self.data.genie_units[head_unit_id]
+        self.switch_unit = self.data.genie_units[switch_unit_id]
 
 
 class GenieUnitTaskGroup(GenieUnitLineGroup):
@@ -184,8 +223,9 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
                               process.
         """
 
-        super().__init__(line_id, task_group_id, full_data_set)
+        super().__init__(line_id, full_data_set)
 
+        self.task_group_id = task_group_id
         self.head_task_id = head_task_id
 
         # The task group line is stored as a dict of GenieUnitObjects.
@@ -193,67 +233,39 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         self.line = {}
 
         # Add a reference for the unit to the dataset
-        self.data.add_task_group(self)
+        self.data.task_groups.update({self.get_id(): self})
 
 
-class GenieVillagerGroup(GenieUnitTaskGroup):
+class GenieVillagerGroup(ConverterObjectGroup):
     """
-    Special GenieUnitTaskGroup for villagers.
+    Special collection of task groups for villagers.
 
-    Villagers come in two task groups, so one task group is a
-    variant of the other one.
+    Villagers come in two task groups (male/female) and will form
+    variants of the common villager game entity.
     """
 
-    def __init__(self, line_id, task_group_id, head_task_id,
-                 variant_task_group_id, full_data_set):
+    def __init__(self, group_id, task_group_ids, full_data_set):
         """
         Creates a new Genie villager group.
 
-        :param task_group_id: Internal task group id in the .dat file.
-        :param head_task_id: The unit with this task will become the head unit.
-        :param variant_task_group_id: The task group id of the variant.
+        :param group_id: Group id for the cases where there is more than one
+                         villager group in the game.
+        :param task_group_ids: Internal task group ids in the .dat file. 
+                               (as a list of integers)
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
         """
-        super().__init__(line_id, task_group_id, head_task_id, full_data_set)
+        super().__init__(group_id)
 
-        # Reference to the other task group
-        self.variant = self.data.task_groups[variant_task_group_id]
+        self.data = full_data_set
+        self.data.villager_groups.update({self.get_id(): self})
+
+        # Reference to the variant task groups
+        self.variants = []
+        for task_group_id in task_group_ids:
+            task_group = self.data.task_groups[task_group_id]
+            self.variants.append(task_group)
 
         # List of buildings that villagers can create
         self.creates = []
-
-        self.data.add_villager_group(self)
-
-
-class GenieMonkGroup(ConverterObjectGroup):
-    """
-    Collection of monk and monk with relic. The switch
-    is hardcoded in AoE2. (Missionaries are handled as normal lines
-    because they cannot pick up relics).
-
-    The 'head unit' will become the GameEntity, the 'switch unit'
-    will become a Container ability with CarryProgress.
-    """
-
-    def __init__(self, head_unit_id, switch_unit_id, full_data_set):
-        """
-        Creates a new Genie monk group.
-
-        :param head_unit_id: The unit with this task will become the actual
-                             GameEntity.
-        :param switch_unit_id: This unit will be used to determine the
-                               CarryProgress objects.
-        :param full_data_set: GenieObjectContainer instance that
-                              contains all relevant data for the conversion
-                              process.
-        """
-        super().__init__(head_unit_id)
-
-        # Reference to everything else in the gamedata
-        self.data = full_data_set
-        self.data.add_monk_group(self)
-
-        self.head_unit = self.data.genie_units[head_unit_id]
-        self.switch_unit = self.data.genie_units[switch_unit_id]
