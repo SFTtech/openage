@@ -216,7 +216,7 @@ class AgeTechTree(Exportable):
 
     data_format.extend([
         (READ, "max_age_length", "int8_t"),
-        # 1=Age
+        # 1= Age
         (READ, "line_mode", "int32_t"),
     ])
 
