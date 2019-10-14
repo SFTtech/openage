@@ -74,7 +74,9 @@ find_package(nyan CONFIG)
 
 # if this didn't work, we can download nyan like a git submodule.
 # this is the treeish to be checked out.
-set(nyan_clone_version origin/master)
+if(NOT DEFINED NYAN_CLONE_VERSION)
+	set(NYAN_CLONE_VERSION origin/master)
+endif()
 
 option(
 	DOWNLOAD_NYAN
@@ -108,7 +110,7 @@ if((NOT nyan_FOUND AND DOWNLOAD_NYAN) OR FORCE_DOWNLOAD_NYAN)
 		NAME nyan
 		${DISABLE_NYAN_UPDATES}
 		GIT_REPOSITORY https://github.com/SFTtech/nyan
-		GIT_TAG ${nyan_clone_version}
+		GIT_TAG ${NYAN_CLONE_VERSION}
 	)
 
 	# don't register nyan to the userpackage-repo!
