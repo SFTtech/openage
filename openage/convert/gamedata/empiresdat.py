@@ -319,12 +319,13 @@ class EmpiresDat(Exportable):
 
     data_format.extend([
         (READ_EXPORT, "research_connection_count", "uint8_t"),
+        (READ_EXPORT, "total_unit_tech_groups", "int32_t"),
         (READ_EXPORT, "age_tech_tree", SubdataMember(
             ref_type=tech.AgeTechTree,
             length="age_entry_count"
         )),
         # What is this? There shouldn't be something here
-        (READ_UNKNOWN, None, "int32_t"),
+        # (READ_UNKNOWN, None, "int32_t"),
         (READ_EXPORT, "building_connection", SubdataMember(
             ref_type=tech.BuildingConnection,
             length="building_connection_count"
