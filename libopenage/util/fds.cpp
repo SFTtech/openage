@@ -1,11 +1,11 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "fds.h"
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cstdarg>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 
 #include <fcntl.h>
 #include "pty.h"
@@ -17,8 +17,7 @@
 
 #include "unicode.h"
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 FD::FD(int fd) {
 	this->fd = fd;
@@ -74,7 +73,7 @@ int FD::putcp(int cp) {
 
 int FD::printf(const char *format, ...) {
 	const unsigned buf_size = 16;
-	char *buf = (char*) malloc(sizeof(char) * buf_size);
+	char *buf = static_cast<char*>(malloc(sizeof(char) * buf_size));
 	if (!buf) {
 		return -1;
 	}
@@ -89,7 +88,7 @@ int FD::printf(const char *format, ...) {
 	//if that wasn't enough, allocate more memory and try again
 	if (len >= buf_size) {
 		char *oldbuf = buf;
-		buf = (char*) realloc(oldbuf, sizeof(char) * (len + 1));
+		buf = static_cast<char*>(realloc(oldbuf, sizeof(char) * (len + 1)));
 		if (!buf) {
 			free(oldbuf);
 			return -1;
@@ -138,4 +137,4 @@ void FD::restoreinputmode() {
 	#endif /* _WIN32 */
 }
 
-}} // openage::util
+} // openage::util

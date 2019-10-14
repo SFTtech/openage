@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include <cmath>
 
@@ -18,7 +18,7 @@ Score::Score()
 }
 
 void Score::add_score(const score_category cat, double value) {
-	this->add_score(cat, (int) std::lround(value));
+	this->add_score(cat, static_cast<int>(std::lround(value)));
 }
 
 void Score::add_score(const score_category cat, int value) {
@@ -27,7 +27,7 @@ void Score::add_score(const score_category cat, int value) {
 }
 
 void Score::remove_score(const score_category cat, double value) {
-	this->remove_score(cat, (int) std::lround(value));
+	this->remove_score(cat, static_cast<int>(std::lround(value)));
 }
 
 void Score::remove_score(const score_category cat, int value) {

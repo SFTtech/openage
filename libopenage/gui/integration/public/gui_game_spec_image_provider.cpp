@@ -8,8 +8,7 @@
 #include "../private/gui_game_spec_image_provider_by_graphic_id_impl.h"
 #include "../private/gui_game_spec_image_provider_by_terrain_id_impl.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 GuiGameSpecImageProvider::GuiGameSpecImageProvider(qtsdl::GuiEventQueue *render_updater, Type type)
 	:
@@ -33,7 +32,6 @@ GuiGameSpecImageProvider::GuiGameSpecImageProvider(qtsdl::GuiEventQueue *render_
 	}()} {
 }
 
-GuiGameSpecImageProvider::~GuiGameSpecImageProvider() {
-}
+GuiGameSpecImageProvider::~GuiGameSpecImageProvider() = default;
 
-}} // namespace openage::gui
+} // namespace openage::gui

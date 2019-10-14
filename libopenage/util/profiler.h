@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -46,13 +46,13 @@ public:
 	 * @param com the identifier to distinguish the components
 	 * @param component_color color of the plotted line
 	 */
-	void register_component(std::string com, color component_color);
+	void register_component(const std::string &com, color component_color);
 
 	/**
 	 * unregisters an individual component
 	 * @param com component name which should be unregistered
 	 */
-	void unregister_component(std::string com);
+	void unregister_component(const std::string &com);
 
 	/**
 	 * unregisters all remaining components
@@ -69,13 +69,13 @@ public:
 	 * registered, its getting registered and the profiler uses the color
 	 * information given by component_color. The default value is white.
 	 */
-	void start_measure(std::string com, color component_color={1.0, 1.0, 1.0});
+	void start_measure(const std::string &com, color component_color={1.0, 1.0, 1.0});
 
 	/*
 	 * stops the measurement for the component com. If com is not yet
 	 * registered it does nothing.
 	 */
-	void end_measure(std::string com);
+	void end_measure(const std::string &com);
 
 	/*
 	 * draws the profiler gui if debug_mode is set
@@ -90,7 +90,7 @@ public:
 	/*
 	 * true if the component com is already registered, otherwise false
 	 */
-	bool registered(std::string com) const;
+	bool registered(const std::string &com) const;
 
 	/*
 	 * returns the number of registered components
@@ -113,9 +113,9 @@ public:
 private:
 	void draw_canvas();
 	void draw_legend();
-	void draw_component_performance(std::string com);
+	void draw_component_performance(const std::string &com);
 	double duration_to_percentage(std::chrono::high_resolution_clock::duration duration);
-	void append_to_history(std::string com, double percentage);
+	void append_to_history(const std::string &com, double percentage);
 	bool engine_in_debug_mode();
 
 	std::chrono::high_resolution_clock::time_point frame_start;

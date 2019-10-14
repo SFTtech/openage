@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -63,7 +63,7 @@ public:
 	 * /wheel). Remove previous assignation. Do nothing if either they
 	 * given bind or action is invalid/unknow.
 	 */
-	bool set_bind(const std::string &bind_str, const std::string action);
+	bool set_bind(const std::string &bind_str, const std::string &action);
 
 	/**
 	 * Return the string representation of the key event.

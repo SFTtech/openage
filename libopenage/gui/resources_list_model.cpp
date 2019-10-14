@@ -12,8 +12,7 @@
 #include "../game_control.h"
 #include "game_control_link.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 namespace {
 const int registration = qmlRegisterType<ResourcesListModel>("yay.sfttech.openage", 1, 0, "Resources");
@@ -30,8 +29,7 @@ ResourcesListModel::ResourcesListModel(QObject *parent)
 	Q_UNUSED(registration);
 }
 
-ResourcesListModel::~ResourcesListModel() {
-}
+ResourcesListModel::~ResourcesListModel() = default;
 
 ActionModeLink* ResourcesListModel::get_action_mode() const {
 	return this->action_mode;
@@ -81,4 +79,4 @@ QVariant ResourcesListModel::data(const QModelIndex &index, int role) const {
 	}
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

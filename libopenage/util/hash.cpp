@@ -1,13 +1,12 @@
 // Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include <array>
-#include <limits.h>
+#include <climits>
 
 #include "hash.h"
 #include "misc.h"
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 size_t hash_combine(size_t hash1, size_t hash2) {
 	// https://www.boost.org/doc/libs/1_70_0/doc/html/hash/reference.html#boost.hash_combine
@@ -115,4 +114,4 @@ uint64_t Siphash::digest(uint64_t value) {
 }
 
 
-}} // openage::util
+} // openage::util

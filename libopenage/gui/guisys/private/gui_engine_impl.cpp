@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_engine_impl.h"
 
@@ -41,8 +41,7 @@ GuiEngineImpl::GuiEngineImpl(GuiRenderer *renderer,
 	                 &GuiEngineImpl::onReload);
 }
 
-GuiEngineImpl::~GuiEngineImpl() {
-}
+GuiEngineImpl::~GuiEngineImpl() = default;
 
 GuiEngineImpl* GuiEngineImpl::impl(GuiEngine *engine) {
 	return engine->impl.get();

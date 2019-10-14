@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "glyph_atlas.h"
 
@@ -11,8 +11,7 @@
 #include "../../error/error.h"
 #include "../../util/hash.h"
 
-namespace openage {
-namespace renderer {
+namespace openage::renderer {
 
 GlyphAtlas::Shelf::Shelf(int y_position, int width, int height)
 	:
@@ -153,4 +152,4 @@ void GlyphAtlas::update_dirty_area(int x, int y, int width, int height) {
 		std::max(this->dirty_area.y2, y + height)};
 }
 
-}} // openage::renderer
+} // openage::renderer

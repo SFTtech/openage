@@ -1,6 +1,8 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "eventclass.h"
+
+#include <utility>
 
 #include "event.h"
 #include "eventtarget.h"
@@ -10,9 +12,9 @@
 namespace openage::event {
 
 
-EventClass::EventClass(const std::string &name, const EventClass::trigger_type &type) :
+EventClass::EventClass(std::string name, const EventClass::trigger_type &type) :
 	type{type},
-	_id{name} {}
+	_id{std::move(name)} {}
 
 
 const std::string &EventClass::id() {

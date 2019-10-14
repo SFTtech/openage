@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_game_spec_image_provider_by_id_impl.h"
 
@@ -7,16 +7,14 @@
 #include "../../../gamestate/game_spec.h"
 #include "gui_texture_factory.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 GuiGameSpecImageProviderByIdImpl::GuiGameSpecImageProviderByIdImpl(qtsdl::GuiEventQueue *render_updater)
 	:
 	GuiGameSpecImageProviderImpl{render_updater} {
 }
 
-GuiGameSpecImageProviderByIdImpl::~GuiGameSpecImageProviderByIdImpl() {
-}
+GuiGameSpecImageProviderByIdImpl::~GuiGameSpecImageProviderByIdImpl() = default;
 
 TextureHandle GuiGameSpecImageProviderByIdImpl::get_texture_handle(const QString &id) {
 	ENSURE(this->loaded_game_spec, "trying to actually get a texture from a non-loaded spec");
@@ -48,4 +46,4 @@ TextureHandle GuiGameSpecImageProviderByIdImpl::get_texture_handle(const QString
 	}
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

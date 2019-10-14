@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "hash.h"
 
@@ -8,9 +8,7 @@
 #include "misc.h"
 
 
-namespace openage {
-namespace util {
-namespace tests {
+namespace openage::util::tests {
 
 static const std::array<uint8_t, 16> test_key {{
 	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -65,4 +63,4 @@ void siphash() {
 	TESTEQUALS(siphash.digest(data8, 8), siphash.digest(data64));
 }
 
-}}} // openage::util::tests
+} // openage::util::tests

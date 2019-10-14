@@ -29,7 +29,7 @@ class UnitTypeMeta {
 public:
 	using type_ptr = std::shared_ptr<UnitType>;
 	using init_func = std::function<type_ptr(const Player &owner)>;
-	UnitTypeMeta(const std::string &name, int id, init_func f);
+	UnitTypeMeta(std::string name, int id, init_func f);
 
 	std::string name() const;
 

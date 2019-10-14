@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <memory>
 
@@ -101,7 +101,7 @@ void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 	}
 }
 
-SetPointAbility::SetPointAbility() {}
+SetPointAbility::SetPointAbility() = default;
 
 bool SetPointAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	return cmd.has_position() &&

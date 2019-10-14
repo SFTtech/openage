@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -113,7 +113,7 @@ struct class_code_hash {
 class Event {
 public:
 	Event(event_class cl, code_t code, modset_t mod);
-	Event(event_class cl, const std::string &, modset_t mod);
+	Event(event_class cl, std::string , modset_t mod);
 
 	/**
 	 * Return keyboard text as char

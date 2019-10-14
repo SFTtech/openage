@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_rendering_setup_routines.h"
 
@@ -25,8 +25,7 @@ GuiRenderingSetupRoutines::GuiRenderingSetupRoutines(SDL_Window *window) {
 	}
 }
 
-GuiRenderingSetupRoutines::~GuiRenderingSetupRoutines() {
-}
+GuiRenderingSetupRoutines::~GuiRenderingSetupRoutines() = default;
 
 QOpenGLContext* GuiRenderingSetupRoutines::get_ctx() {
 	return this->ctx_extraction_mode->get_ctx();

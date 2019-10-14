@@ -12,9 +12,7 @@
 #include "geometry.h"
 
 
-namespace openage {
-namespace renderer {
-namespace opengl {
+namespace openage::renderer::opengl {
 
 GlRenderer::GlRenderer(GlContext *ctx)
 	: gl_context(ctx)
@@ -123,4 +121,4 @@ void GlRenderer::render(RenderPass* pass) {
 	}
 }
 
-}}} // openage::renderer::opengl
+} // openage::renderer::opengl

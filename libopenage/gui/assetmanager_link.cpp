@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "assetmanager_link.h"
 
@@ -23,8 +23,7 @@ AssetManagerLink::AssetManagerLink(QObject *parent)
 	Q_UNUSED(registration);
 }
 
-AssetManagerLink::~AssetManagerLink() {
-}
+AssetManagerLink::~AssetManagerLink() = default;
 
 
 const util::Path &AssetManagerLink::get_asset_dir() const {

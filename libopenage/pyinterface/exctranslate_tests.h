@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -33,7 +33,7 @@ extern OAAPI PyIfFunc<void> err_py_to_cpp_helper;
  *
  * pxd: void bounce_call(Func0[void], int) except +
  */
-OAAPI void bounce_call(Func<void> func, int times);
+OAAPI void bounce_call(const Func<void> &func, int times);
 
 
 /**

@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "subprocess.h"
 
@@ -19,8 +19,7 @@
 #include "../log/log.h"
 #include "strings.h"
 
-namespace openage {
-namespace subprocess {
+namespace openage::subprocess {
 
 bool is_executable(const char *filename) {
 #ifdef _WIN32
@@ -160,7 +159,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 		// execv has failed. write errno to parent
 
 		// welcome to our little adventure of writing _4_ bytes to our parent :)
-		char *write_buf = (char *) &child_errno;
+		char *write_buf = reinterpret_cast<char *>(&child_errno);
 		ssize_t remaining = sizeof(child_errno);
 
 		while (remaining > 0) {
@@ -186,7 +185,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 
 	// welcome to our little adventure of reading _4_ bytes from our child :)
 	int child_errno;
-	char *read_buf = (char *) &child_errno;
+	char *read_buf = reinterpret_cast<char *>(&child_errno);
 	size_t total = 0;
 
 	// we expect to read either 0, or sizeof(child_errno) bytes.
@@ -239,5 +238,4 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 	#endif
 }
 
-} // namespace subprocess
-} // namespace openage
+} // namespace openage::subprocess

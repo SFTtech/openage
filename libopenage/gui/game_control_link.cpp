@@ -12,8 +12,7 @@
 #include "../unit/action.h"
 #include "../unit/unit.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 namespace {
 const int registration_mode = qmlRegisterUncreatableType<OutputModeLink>("yay.sfttech.openage", 1, 0, "OutputMode", "OutputMode is an abstract interface for the concrete modes like EditorMode or ActionMode.");
@@ -30,8 +29,7 @@ OutputModeLink::OutputModeLink(QObject *parent)
 	GuiItemInterface<OutputModeLink>{} {
 }
 
-OutputModeLink::~OutputModeLink() {
-}
+OutputModeLink::~OutputModeLink() = default;
 
 QString OutputModeLink::get_name() const {
 	return this->name;
@@ -97,8 +95,7 @@ CreateModeLink::CreateModeLink(QObject *parent)
 	Q_UNUSED(registration_create);
 }
 
-CreateModeLink::~CreateModeLink() {
-}
+CreateModeLink::~CreateModeLink() = default;
 
 ActionModeLink::ActionModeLink(QObject *parent)
 	:
@@ -106,8 +103,7 @@ ActionModeLink::ActionModeLink(QObject *parent)
 	Q_UNUSED(registration_action);
 }
 
-ActionModeLink::~ActionModeLink() {
-}
+ActionModeLink::~ActionModeLink() = default;
 
 QString ActionModeLink::get_ability() const {
 	return this->ability;
@@ -271,8 +267,7 @@ EditorModeLink::EditorModeLink(QObject *parent)
 	Q_UNUSED(registration_editor);
 }
 
-EditorModeLink::~EditorModeLink() {
-}
+EditorModeLink::~EditorModeLink() = default;
 
 int EditorModeLink::get_current_type_id() const {
 	return this->current_type_id;
@@ -347,8 +342,7 @@ GameControlLink::GameControlLink(QObject *parent)
 	Q_UNUSED(registration);
 }
 
-GameControlLink::~GameControlLink() {
-}
+GameControlLink::~GameControlLink() = default;
 
 void GameControlLink::classBegin() {
 }
@@ -466,4 +460,4 @@ void GameControlLink::on_current_civ_index_changed(int current_civ_index) {
 	emit this->current_civ_index_changed();
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

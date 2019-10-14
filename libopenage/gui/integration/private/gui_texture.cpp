@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_texture.h"
 
@@ -10,8 +10,7 @@
 
 #include "gui_make_standalone_subtexture.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 GuiTexture::GuiTexture(const SizedTextureHandle &texture_handle)
 	:
@@ -19,8 +18,7 @@ GuiTexture::GuiTexture(const SizedTextureHandle &texture_handle)
 	texture_handle(texture_handle) {
 }
 
-GuiTexture::~GuiTexture() {
-}
+GuiTexture::~GuiTexture() = default;
 
 void GuiTexture::bind() {
 	glBindTexture(GL_TEXTURE_2D, this->textureId());
@@ -118,4 +116,4 @@ QSize GuiTexture::textureSize() const {
 	return openage::gui::textureSize(this->texture_handle);
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

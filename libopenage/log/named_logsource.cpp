@@ -1,14 +1,15 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "named_logsource.h"
 
-namespace openage {
-namespace log {
+#include <utility>
+
+namespace openage::log {
 
 
-NamedLogSource::NamedLogSource(const std::string &name)
+NamedLogSource::NamedLogSource(std::string name)
 	:
-	name{name} {}
+	name{std::move(name)} {}
 
 
 std::string NamedLogSource::logsource_name() {
@@ -22,4 +23,4 @@ NamedLogSource &general_source() {
 }
 
 
-}} // namespace openage::log
+} // namespace openage::log

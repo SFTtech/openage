@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "../../testing/testing.h"
 #include "../curve.h"
@@ -16,7 +16,7 @@ namespace openage::curve::tests {
 struct map_test_element {
 	int value;
 
-	map_test_element(int v) :
+	explicit map_test_element(int v) :
 		value(v) {}
 
 	bool operator != (int rhs) {

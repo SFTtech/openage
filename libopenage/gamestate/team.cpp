@@ -1,8 +1,10 @@
-// Copyright 2016-2017 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #include "team.h"
+
 #include "player.h"
 #include "score.h"
+#include <utility>
 
 
 namespace openage {
@@ -13,12 +15,12 @@ Team::Team(unsigned int id)
 
 Team::Team(unsigned int id, std::string name)
 	:
-	Team{id, name, nullptr} {}
+	Team{id, std::move(name), nullptr} {}
 
 Team::Team(unsigned int id, std::string name, Player *leader)
 	:
 	id{id},
-	name{name},
+	name{std::move(name)},
 	score{this} {
 
 	if (leader) {

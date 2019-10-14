@@ -20,8 +20,7 @@ CategoryContentsListModel::CategoryContentsListModel(QObject *parent)
 	Q_UNUSED(registration);
 }
 
-CategoryContentsListModel::~CategoryContentsListModel() {
-}
+CategoryContentsListModel::~CategoryContentsListModel() = default;
 
 QString CategoryContentsListModel::get_name() const {
 	return this->name;

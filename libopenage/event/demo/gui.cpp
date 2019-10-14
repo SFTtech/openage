@@ -91,7 +91,7 @@ enum {
 
 constexpr const int max_log_msgs = 10;
 
-Gui::Gui() {}
+Gui::Gui() = default;
 
 
 void Gui::init() {
@@ -250,7 +250,7 @@ void Gui::update_screen() {
 
 
 void Gui::draw_ball(util::Vector2d pos, const char *str) {
-	mvprintw((int)(pos[1]), (int)(pos[0]), "%s", str);
+	mvprintw(static_cast<int>(pos[1]), static_cast<int>(pos[0]), "%s", str);
 	standend();
 }
 

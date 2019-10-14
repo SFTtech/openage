@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "job_manager.h"
 
@@ -7,8 +7,7 @@
 #include "worker.h"
 
 
-namespace openage {
-namespace job {
+namespace openage::job {
 
 
 JobManager::JobManager(int number_of_workers)
@@ -87,7 +86,7 @@ JobGroup JobManager::create_job_group() {
 }
 
 
-void JobManager::enqueue_state(std::shared_ptr<JobStateBase> state) {
+void JobManager::enqueue_state(const std::shared_ptr<JobStateBase> &state) {
 	std::lock_guard<std::mutex> lock{this->pending_jobs_mutex};
 	this->pending_jobs.push(state);
 	for (auto &worker : this->workers) {
@@ -114,7 +113,7 @@ bool JobManager::has_job() {
 }
 
 
-void JobManager::finish_job(std::shared_ptr<JobStateBase> job) {
+void JobManager::finish_job(const std::shared_ptr<JobStateBase> &job) {
 	std::lock_guard<std::mutex> lock{this->finished_jobs_mutex};
 	auto it = this->finished_jobs.find(job->get_thread_id());
 	// if there hasn't been a finished job for the thread_id, create a new
@@ -128,4 +127,4 @@ void JobManager::finish_job(std::shared_ptr<JobStateBase> job) {
 }
 
 
-}} // namespace openage::job
+} // namespace openage::job

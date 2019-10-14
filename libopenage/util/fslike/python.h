@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -40,7 +40,7 @@ namespace fslike {
  */
 class Python : public FSLike {
 public:
-	Python(py::Obj fsobj);
+	Python(const py::Obj &fsobj);
 
 	bool is_file(const Path::parts_t &parts) override;
 	bool is_dir(const Path::parts_t &parts) override;

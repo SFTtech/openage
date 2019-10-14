@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -84,9 +84,9 @@ public:
 	 */
 	void restoreinputmode();
 
-	#ifndef _WIN32
+#ifndef _WIN32
 	struct termios old_tio;
-	#endif
+#endif
 };
 
 }} // openage::util

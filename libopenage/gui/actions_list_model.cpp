@@ -6,6 +6,7 @@
 #include "game_control_link.h"
 
 #include <QtQml>
+#include <utility>
 
 namespace openage {
 namespace gui {
@@ -21,8 +22,7 @@ ActionsListModel::ActionsListModel(QObject *parent)
 	Q_UNUSED(registration);
 }
 
-ActionsListModel::~ActionsListModel() {
-}
+ActionsListModel::~ActionsListModel() = default;
 
 ActionButtonsType ActionsListModel::get_active_buttons() const {
 	return this->active_buttons;
@@ -146,10 +146,10 @@ QUrl ActionsListModel::get_icons_source() const {
 }
 
 void ActionsListModel::set_icons_source(QUrl icons_source) {
-	this->icons_source = icons_source;
+	this->icons_source = std::move(icons_source);
 }
 
-void ActionsListModel::set_icons_source(std::string icons_source) {
+void ActionsListModel::set_icons_source(const std::string &icons_source) {
 	this->icons_source = QUrl(icons_source.c_str());
 	emit this->icons_source_changed(this->icons_source);
 }

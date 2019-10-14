@@ -1,21 +1,20 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_filled_texture_handles.h"
 
+#include <utility>
+
 #include "gui_texture_handle.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
-GuiFilledTextureHandles::GuiFilledTextureHandles() {
-}
+GuiFilledTextureHandles::GuiFilledTextureHandles() = default;
 
-GuiFilledTextureHandles::~GuiFilledTextureHandles() {
-}
+GuiFilledTextureHandles::~GuiFilledTextureHandles() = default;
 
 void GuiFilledTextureHandles::add_texture_handle(const QString &id, const QSize &requested_size, SizedTextureHandle *filled_handle) {
 	std::unique_lock<std::mutex> lck{this->handles_mutex};
-	this->handles.push_back(std::make_tuple(id, requested_size, filled_handle));
+	this->handles.emplace_back(id, requested_size, filled_handle);
 }
 
 void GuiFilledTextureHandles::free_texture_handle(SizedTextureHandle *filled_handle) {
@@ -33,7 +32,7 @@ void GuiFilledTextureHandles::fill_all_handles_with_texture(const TextureHandle 
 	});
 }
 
-void GuiFilledTextureHandles::refresh_all_handles_with_texture(std::function<void(const QString&, const QSize&, SizedTextureHandle*)> refresher) {
+void GuiFilledTextureHandles::refresh_all_handles_with_texture(const std::function<void(const QString&, const QSize&, SizedTextureHandle*)>& refresher) {
 	std::unique_lock<std::mutex> lck{this->handles_mutex};
 
 	std::vector<SizedTextureHandle> refreshed_handles(this->handles.size());
@@ -48,9 +47,9 @@ void GuiFilledTextureHandles::refresh_all_handles_with_texture(std::function<voi
 		*std::get<SizedTextureHandle*>(this->handles[i]) = refreshed_handles[i];
 }
 
-GuiFilledTextureHandleUser::GuiFilledTextureHandleUser(const std::shared_ptr<GuiFilledTextureHandles> &texture_handles, const QString &id, const QSize &requested_size, SizedTextureHandle *filled_handle)
+GuiFilledTextureHandleUser::GuiFilledTextureHandleUser(std::shared_ptr<GuiFilledTextureHandles> texture_handles, const QString &id, const QSize &requested_size, SizedTextureHandle *filled_handle)
 	:
-	texture_handles{texture_handles},
+	texture_handles{std::move(texture_handles)},
 	filled_handle{filled_handle} {
 
 	this->texture_handles->add_texture_handle(id, requested_size, filled_handle);
@@ -61,4 +60,4 @@ GuiFilledTextureHandleUser::~GuiFilledTextureHandleUser() {
 	texture_handles->free_texture_handle(filled_handle);
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

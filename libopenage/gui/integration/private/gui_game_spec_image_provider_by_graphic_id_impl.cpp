@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_game_spec_image_provider_by_graphic_id_impl.h"
 
@@ -6,16 +6,14 @@
 
 #include "../../../gamestate/game_spec.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 GuiGameSpecImageProviderByGraphicIdImpl::GuiGameSpecImageProviderByGraphicIdImpl(qtsdl::GuiEventQueue *render_updater)
 	:
 	GuiGameSpecImageProviderByIdImpl{render_updater} {
 }
 
-GuiGameSpecImageProviderByGraphicIdImpl::~GuiGameSpecImageProviderByGraphicIdImpl() {
-}
+GuiGameSpecImageProviderByGraphicIdImpl::~GuiGameSpecImageProviderByGraphicIdImpl() = default;
 
 const char* GuiGameSpecImageProviderByGraphicIdImpl::id() {
 	return "by-graphic-id";
@@ -30,4 +28,4 @@ openage::Texture* GuiGameSpecImageProviderByGraphicIdImpl::get_texture(int textu
 	return this->loaded_game_spec->get_texture(texture_id);
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

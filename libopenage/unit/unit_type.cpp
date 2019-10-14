@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "../gamestate/player.h"
 #include "../terrain/terrain_object.h"
@@ -8,12 +8,14 @@
 #include "unit_container.h"
 #include "unit_type.h"
 
+#include <utility>
+
 namespace openage {
 
-UnitTypeMeta::UnitTypeMeta(const std::string &name, int id, init_func f)
+UnitTypeMeta::UnitTypeMeta(std::string name, int id, init_func f)
 	:
 	init{f},
-	type_name{name},
+	type_name{std::move(name)},
 	type_id{id} {
 }
 
@@ -101,7 +103,7 @@ NyanType::NyanType(const Player &owner)
 	// TODO: the type should be given attributes and abilities
 }
 
-NyanType::~NyanType() {}
+NyanType::~NyanType() = default;
 
 int NyanType::id() const {
 	return 1;

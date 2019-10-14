@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "game_spec_link.h"
 
@@ -6,8 +6,7 @@
 
 #include "assetmanager_link.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 namespace {
 const int registration = qmlRegisterType<GameSpecLink>("yay.sfttech.openage", 1, 0, "GameSpec");
@@ -27,8 +26,7 @@ GameSpecLink::GameSpecLink(QObject *parent)
 	Q_UNUSED(registration_of_ptr);
 }
 
-GameSpecLink::~GameSpecLink() {
-}
+GameSpecLink::~GameSpecLink() = default;
 
 void GameSpecLink::classBegin() {
 }
@@ -114,4 +112,4 @@ void GameSpecLink::set_state(GameSpecLink::State state) {
 	}
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

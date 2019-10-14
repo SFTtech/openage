@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,7 +20,7 @@ class Event : public std::enable_shared_from_this<Event> {
 public:
 	Event(const std::shared_ptr<EventTarget> &trgt,
 	      const std::shared_ptr<EventClass> &eventclass,
-	      const EventClass::param_map &params);
+	      EventClass::param_map params);
 
 	const std::weak_ptr<EventTarget> &get_target() const {
 		return this->target;

@@ -2,12 +2,11 @@
 
 #include "fps.h"
 
-#include <math.h>
+#include <cmath>
 
 #include "timing.h"
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 FrameCounter::FrameCounter()
 	:
@@ -49,4 +48,4 @@ void FrameCounter::frame() {
 	count += 1;
 }
 
-}} // openage::util
+} // openage::util

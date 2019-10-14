@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_image_provider_link.h"
 
@@ -18,8 +18,7 @@
 #include "gui_game_spec_image_provider_by_graphic_id_impl.h"
 #include "gui_game_spec_image_provider_by_terrain_id_impl.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 namespace {
 const int registration_by_filename = qmlRegisterSingletonType<GuiImageProviderLink>("yay.sfttech.openage", 1, 0, "ImageProviderByFilename", &GuiImageProviderLink::provider_by_filename);
@@ -37,8 +36,7 @@ GuiImageProviderLink::GuiImageProviderLink(QObject *parent, GuiGameSpecImageProv
 	Q_UNUSED(registration_by_terrain_id);
 }
 
-GuiImageProviderLink::~GuiImageProviderLink() {
-}
+GuiImageProviderLink::~GuiImageProviderLink() = default;
 
 GameSpecLink* GuiImageProviderLink::get_game_spec() const {
 	return this->game_spec;
@@ -94,4 +92,4 @@ void GuiImageProviderLink::on_game_spec_loaded(GameSpecLink *game_spec, std::sha
 		this->image_provider.on_game_spec_loaded(loaded_game_spec);
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

@@ -1,16 +1,14 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "filelike.h"
 
-namespace openage {
-namespace util {
-namespace filelike {
+namespace openage::util::filelike {
 
 
-FileLike::FileLike() {}
+FileLike::FileLike() = default;
 
 bool FileLike::is_python_native() const noexcept {
 	return false;
 }
 
-}}} // openage::util::filelike
+} // openage::util::filelike

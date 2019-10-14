@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_image_provider_impl.h"
 
@@ -13,8 +13,7 @@ GuiImageProviderImpl::GuiImageProviderImpl()
 	QQuickImageProvider{QQmlImageProviderBase::Texture, QQuickImageProvider::ForceAsynchronousImageLoading} {
 }
 
-GuiImageProviderImpl::~GuiImageProviderImpl() {
-}
+GuiImageProviderImpl::~GuiImageProviderImpl() = default;
 
 std::unique_ptr<GuiImageProviderImpl> GuiImageProviderImpl::take_ownership(GuiImageProvider *image_provider) {
 	std::unique_ptr<GuiImageProviderImpl> ptr{image_provider->impl.release()};

@@ -11,8 +11,7 @@
 #include "guisys/link/qml_engine_with_singleton_items_info.h"
 #include "guisys/link/qtsdl_checked_static_cast.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 namespace {
 // this pushes the EngineLink in the QML engine.
@@ -98,4 +97,4 @@ void EngineLink::on_global_binds_changed(const std::vector<std::string>& global_
 	}
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

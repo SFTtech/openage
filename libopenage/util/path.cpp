@@ -1,6 +1,8 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "path.h"
+
+#include <utility>
 
 #include "compiler.h"
 #include "fslike/directory.h"
@@ -11,8 +13,7 @@
 #include "../error/error.h"
 
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 
 /**
@@ -38,10 +39,10 @@ void path_normalizer(Path::parts_t &output, const Path::parts_t &input) {
 }
 
 
-Path::Path() {}
+Path::Path() = default;
 
 
-Path::Path(py::Obj fsobj_in,
+Path::Path(const py::Obj &fsobj_in,
            const std::vector<std::string> &parts) {
 
 	path_normalizer(this->parts, parts);
@@ -64,10 +65,10 @@ Path::Path(py::Obj fsobj_in,
 }
 
 
-Path::Path(const std::shared_ptr<fslike::FSLike> &fsobj,
+Path::Path(std::shared_ptr<fslike::FSLike> fsobj,
            const parts_t &parts)
 	:
-	fsobj{fsobj} {
+	fsobj{std::move(fsobj)} {
 
 	path_normalizer(this->parts, parts);
 }
@@ -260,7 +261,7 @@ const std::string &Path::get_name() const {
 
 std::string Path::get_suffix() const {
 	auto &name = this->get_name();
-	size_t pos = name.rfind(".");
+	size_t pos = name.rfind('.');
 	if (pos == std::string::npos) {
 		return "";
 	}
@@ -381,4 +382,4 @@ std::string dirname(const std::string &fullpath) {
 }
 
 
-}} // openage::util
+} // openage::util

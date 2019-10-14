@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "generator_link.h"
 
@@ -6,8 +6,7 @@
 
 #include "guisys/link/gui_property_map_impl.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 namespace
 {
@@ -21,7 +20,6 @@ GeneratorLink::GeneratorLink(QObject *parent)
 	Q_UNUSED(registration);
 }
 
-GeneratorLink::~GeneratorLink() {
-}
+GeneratorLink::~GeneratorLink() = default;
 
-}} // namespace openage::gui
+} // namespace openage::gui

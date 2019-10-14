@@ -1,4 +1,4 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #include "game_saver.h"
 
@@ -11,8 +11,7 @@
 #include "game_main_link.h"
 #include "generator_link.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 namespace {
 const int registration = qmlRegisterType<GameSaver>("yay.sfttech.openage", 1, 0, "GameSaver");
@@ -26,8 +25,7 @@ GameSaver::GameSaver(QObject *parent)
 	Q_UNUSED(registration);
 }
 
-GameSaver::~GameSaver() {
-}
+GameSaver::~GameSaver() = default;
 
 QString GameSaver::get_error_string() const {
 	return this->error_string;
@@ -88,4 +86,4 @@ void GameSaver::on_processed(const QString &error_string) {
 	emit this->error_string_changed();
 }
 
-}}  // namespace openage::gui
+}  // namespace openage::gui

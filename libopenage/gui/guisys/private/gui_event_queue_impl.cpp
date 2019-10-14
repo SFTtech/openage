@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_event_queue_impl.h"
 
@@ -18,8 +18,7 @@ GuiEventQueueImpl::GuiEventQueueImpl()
 	thread{QThread::currentThread()} {
 }
 
-GuiEventQueueImpl::~GuiEventQueueImpl() {
-}
+GuiEventQueueImpl::~GuiEventQueueImpl() = default;
 
 GuiEventQueueImpl* GuiEventQueueImpl::impl(GuiEventQueue *event_queue) {
 	return event_queue->impl.get();

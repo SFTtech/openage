@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_property_map_impl.h"
 
@@ -14,8 +14,7 @@ GuiPropertyMapImpl::GuiPropertyMapImpl()
 	QObject{} {
 }
 
-GuiPropertyMapImpl::~GuiPropertyMapImpl() {
-}
+GuiPropertyMapImpl::~GuiPropertyMapImpl() = default;
 
 bool GuiPropertyMapImpl::event(QEvent *e) {
 	if (e->type() == QEvent::DynamicPropertyChange) {

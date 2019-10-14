@@ -9,8 +9,7 @@
 #include "text_to_event.h"
 
 
-namespace openage {
-namespace input {
+namespace openage::input {
 
 InputManager::InputManager(ActionManager *action_manager)
 	:
@@ -82,7 +81,7 @@ std::string InputManager::get_bind(const std::string &action_str) {
 	}
 }
 
-bool InputManager::set_bind(const std::string &bind_str, const std::string action_str) {
+bool InputManager::set_bind(const std::string &bind_str, const std::string &action_str) {
 	try {
 		action_t action = this->action_manager->get(action_str);
 		if (this->action_manager->is("UNDEFINED", action)) {
@@ -411,4 +410,4 @@ ActionManager *InputManager::get_action_manager() const {
 }
 
 
-}} // openage::input
+} // openage::input

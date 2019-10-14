@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "game_creator.h"
 
@@ -12,8 +12,7 @@
 #include "game_spec_link.h"
 #include "generator_link.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 namespace {
 const int registration = qmlRegisterType<GameCreator>("yay.sfttech.openage", 1, 0, "GameCreator");
@@ -28,8 +27,7 @@ GameCreator::GameCreator(QObject *parent)
 	Q_UNUSED(registration);
 }
 
-GameCreator::~GameCreator() {
-}
+GameCreator::~GameCreator() = default;
 
 QString GameCreator::get_error_string() const {
 	return this->error_string;
@@ -95,4 +93,4 @@ void GameCreator::on_processed(const QString &error_string) {
 	emit this->error_string_changed();
 }
 
-}}  // namespace openage::gui
+}  // namespace openage::gui

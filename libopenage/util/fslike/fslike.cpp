@@ -1,15 +1,13 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "fslike.h"
 
 #include "../path.h"
 
 
-namespace openage {
-namespace util {
-namespace fslike {
+namespace openage::util::fslike {
 
-FSLike::FSLike() {}
+FSLike::FSLike() = default;
 
 Path FSLike::root() {
 	return Path{this->shared_from_this(), {}};
@@ -41,4 +39,4 @@ bool FSLike::is_python_native() const noexcept {
 }
 
 
-}}} // openage::util::fslike
+} // openage::util::fslike

@@ -586,7 +586,7 @@ void MoveAction::initialise() {
 	};
 }
 
-MoveAction::~MoveAction() {}
+MoveAction::~MoveAction() = default;
 
 void MoveAction::update(unsigned int time) {
 	if (this->unit_target.is_valid()) {
@@ -1045,7 +1045,7 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	}
 }
 
-GatherAction::~GatherAction() {}
+GatherAction::~GatherAction() = default;
 
 void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 	auto &worker = this->entity->get_attribute<attr_type::worker>();
@@ -1196,7 +1196,7 @@ AttackAction::AttackAction(Unit *e, UnitReference tar)
 	this->timer.skip_to_trigger();
 }
 
-AttackAction::~AttackAction() {}
+AttackAction::~AttackAction() = default;
 
 void AttackAction::update_in_range(unsigned int time, Unit *target_ptr) {
 	if (this->timer.update(time)) {
@@ -1256,7 +1256,7 @@ HealAction::HealAction(Unit *e, UnitReference tar)
 
 }
 
-HealAction::~HealAction() {}
+HealAction::~HealAction() = default;
 
 void HealAction::update_in_range(unsigned int time, Unit *target_ptr) {
 	if (this->timer.update(time)) {
@@ -1338,7 +1338,7 @@ ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
 	d_attr.unit_dir.up = coord::phys_t((grav * flight_time) / 2) - (initial_height * (1 / flight_time));
 }
 
-ProjectileAction::~ProjectileAction() {}
+ProjectileAction::~ProjectileAction() = default;
 
 void ProjectileAction::update(unsigned int time) {
 	auto &d_attr = this->entity->get_attribute<attr_type::direction>();

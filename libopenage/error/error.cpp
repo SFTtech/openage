@@ -1,13 +1,14 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "error.h"
+
+#include <utility>
 
 #include "../util/compiler.h"
 
 #include "stackanalyzer.h"
 
-namespace openage {
-namespace error {
+namespace openage::error {
 
 
 constexpr const char *runtime_error_message = "polymorphic openage Error object; catch by reference!";
@@ -128,4 +129,4 @@ std::ostream &operator <<(std::ostream &os, const Error &e) {
 }
 
 
-}} // openage::error
+} // openage::error

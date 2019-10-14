@@ -1,8 +1,9 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "eventqueue.h"
 
 #include <algorithm>
+#include <utility>
 
 #include "event.h"
 #include "eventclass.h"
@@ -191,9 +192,9 @@ void EventQueue::swap_changesets() {
 
 
 EventQueue::OnChangeElement::OnChangeElement(const std::shared_ptr<Event> &evnt,
-                                             const curve::time_t &time)
+                                             curve::time_t time)
 	:
-	time{time},
+	time{std::move(time)},
 	evnt{evnt},
 	hash{evnt->hash()} {}
 

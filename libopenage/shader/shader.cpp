@@ -1,17 +1,16 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "shader.h"
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdio>
+#include <cstdlib>
 
 #include "../error/error.h"
 #include "../log/log.h"
 #include "../util/file.h"
 #include "../util/strings.h"
 
-namespace openage {
-namespace shader {
+namespace openage::shader {
 
 const char *type_to_string(GLenum type) {
 	switch (type) {
@@ -35,7 +34,7 @@ Shader::Shader(GLenum type, std::initializer_list<const char *> sources) {
 
 	//load shader source
 	std::vector<const char*> x = std::vector<const char*>(sources);
-	glShaderSource(this->id, x.size(), x.data(), NULL);
+	glShaderSource(this->id, x.size(), x.data(), nullptr);
 
 	//compile shader source
 	glCompileShader(this->id);
@@ -49,7 +48,7 @@ Shader::Shader(GLenum type, std::initializer_list<const char *> sources) {
 		glGetShaderiv(this->id, GL_INFO_LOG_LENGTH, &loglen);
 
 		auto infolog = std::make_unique<char[]>(loglen);
-		glGetShaderInfoLog(this->id, loglen, NULL, infolog.get());
+		glGetShaderInfoLog(this->id, loglen, nullptr, infolog.get());
 
 		auto errmsg = MSG(err);
 		errmsg << "Failed to compile " << type_to_string(type) << " shader\n" << infolog;
@@ -64,4 +63,4 @@ Shader::~Shader() {
 	glDeleteShader(this->id);
 }
 
-}} // openage::shader
+} // openage::shader

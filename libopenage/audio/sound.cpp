@@ -1,20 +1,20 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "sound.h"
 
 #include <tuple>
+#include <utility>
 
 #include "audio_manager.h"
 #include "resource.h"
 
-namespace openage {
-namespace audio {
+namespace openage::audio {
 
 
 Sound::Sound(AudioManager *audio_manager, std::shared_ptr<SoundImpl> sound_impl)
 	:
 	audio_manager{audio_manager},
-	sound_impl{sound_impl} {
+	sound_impl{std::move(sound_impl)} {
 }
 
 
@@ -103,7 +103,7 @@ bool Sound::is_playing() const {
 
 SoundImpl::SoundImpl(std::shared_ptr<Resource> resource, int32_t volume)
 	:
-	resource{resource},
+	resource{std::move(resource)},
 	in_use{false},
 	volume{volume},
 	offset{0},
@@ -158,4 +158,4 @@ bool SoundImpl::mix_audio(int32_t *stream, int length) {
 	return false;
 }
 
-}} // openage::audio
+} // openage::audio

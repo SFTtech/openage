@@ -3,9 +3,9 @@
 #include "engine.h"
 
 #include <cstdint>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>

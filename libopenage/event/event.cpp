@@ -1,6 +1,8 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "event.h"
+
+#include <utility>
 
 #include "eventtarget.h"
 #include "eventclass.h"
@@ -12,9 +14,9 @@ namespace openage::event {
 
 Event::Event(const std::shared_ptr<EventTarget> &target,
              const std::shared_ptr<EventClass> &eventclass,
-             const EventClass::param_map &params)
+             EventClass::param_map params)
 	:
-	params(params),
+	params(std::move(params)),
 	target{target},
 	eventclass{eventclass},
 	myhash{

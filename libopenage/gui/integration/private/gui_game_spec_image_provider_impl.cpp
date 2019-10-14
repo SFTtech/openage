@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_game_spec_image_provider_impl.h"
 
@@ -14,8 +14,7 @@
 #include "gui_texture_factory.h"
 #include "gui_filled_texture_handles.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 GuiGameSpecImageProviderImpl::GuiGameSpecImageProviderImpl(qtsdl::GuiEventQueue *render_updater)
 	:
@@ -29,8 +28,7 @@ GuiGameSpecImageProviderImpl::GuiGameSpecImageProviderImpl(qtsdl::GuiEventQueue 
 	QObject::connect(&this->render_thread_callback, &qtsdl::GuiCallback::process_blocking, &this->render_thread_callback, &qtsdl::GuiCallback::process, render_thread != QThread::currentThread() ? Qt::BlockingQueuedConnection : Qt::DirectConnection);
 }
 
-GuiGameSpecImageProviderImpl::~GuiGameSpecImageProviderImpl() {
-}
+GuiGameSpecImageProviderImpl::~GuiGameSpecImageProviderImpl() = default;
 
 void GuiGameSpecImageProviderImpl::on_game_spec_loaded(const std::shared_ptr<GameSpec>& loaded_game_spec) {
 	ENSURE(loaded_game_spec, "spec hasn't been checked or was invalidated");
@@ -116,4 +114,4 @@ void GuiGameSpecImageProviderImpl::give_up() {
 	this->loaded_game_spec_cond.notify_one();
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

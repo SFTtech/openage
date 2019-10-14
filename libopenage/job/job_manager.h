@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -131,7 +131,7 @@ public:
 
 private:
 	/** Enqueues the given job into the internal job queue. */
-	void enqueue_state(std::shared_ptr<JobStateBase> state);
+	void enqueue_state(const std::shared_ptr<JobStateBase> &state);
 
 	/**
 	 * Returns a job from the internal job queue. If the queue is empty, a
@@ -143,7 +143,7 @@ private:
 	bool has_job();
 
 	/** Adds a finished job to the internal finished job map. */
-	void finish_job(std::shared_ptr<JobStateBase> job);
+	void finish_job(const std::shared_ptr<JobStateBase> &job);
 
 	/**
 	 * A worker has to be a friend of the job manager in order to call the

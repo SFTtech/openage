@@ -1,11 +1,10 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "format.h"
 
 #include "../error/error.h"
 
-namespace openage {
-namespace audio {
+namespace openage::audio {
 
 
 const char *format_t_to_str(format_t val) {
@@ -25,4 +24,4 @@ std::ostream &operator <<(std::ostream &os, const format_t val) {
 }
 
 
-}} // namespace openage::audio
+} // namespace openage::audio

@@ -1,16 +1,16 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "setup.h"
 
+#include <map>
 #include <mutex>
 #include <set>
-#include <map>
+#include <utility>
 
 #include "../error/error.h"
 #include "../util/compiler.h"
 
-namespace openage {
-namespace pyinterface {
+namespace openage::pyinterface {
 
 
 // no need for these global objects to have any linkage.
@@ -56,7 +56,7 @@ void add_py_if_component(void *thisptr, std::function<bool ()> checker) {
 			true);
 	}
 
-	checkers.map[thisptr] = checker;
+	checkers.map[thisptr] = std::move(checker);
 }
 
 
@@ -124,4 +124,4 @@ void check() {
 }
 
 
-}} // openage::pyinterface
+} // openage::pyinterface

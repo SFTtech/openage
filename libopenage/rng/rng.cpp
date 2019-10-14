@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "rng.h"
 
@@ -60,7 +60,7 @@ void RNG::seed(const void *dat, size_t count) {
 		throw Error(MSG(err) << "0 bytes supplied as seed data");
 	}
 
-	const uint8_t *data = static_cast<const uint8_t *>(dat);
+	const auto *data = static_cast<const uint8_t *>(dat);
 
 	openage::util::Siphash siphash(seed_key);
 

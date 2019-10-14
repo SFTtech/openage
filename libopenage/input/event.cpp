@@ -1,11 +1,11 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "event.h"
 
 #include <functional>
+#include <utility>
 
-namespace openage {
-namespace input {
+namespace openage::input {
 
 ClassCode::ClassCode(event_class cl, code_t code)
 	:
@@ -46,14 +46,14 @@ bool operator ==(ClassCode a, ClassCode b) {
 Event::Event(event_class cl, code_t code, modset_t mod)
 	:
 	cc(cl, code),
-	mod(mod) {}
+	mod(std::move(mod)) {}
 
 
-Event::Event(event_class cl, const std::string &text, modset_t mod)
+Event::Event(event_class cl, std::string text, modset_t mod)
 	:
 	cc(cl, 0),
-	mod(mod),
-	utf8(text) {}
+	mod(std::move(mod)),
+	utf8(std::move(text)) {}
 
 
 char Event::as_char() const {
@@ -166,4 +166,4 @@ Event sdl_wheel(int direction, SDL_Keymod mod) {
 }
 
 
-}} // openage::input
+} // openage::input

@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "opus_loading.h"
 
@@ -6,8 +6,7 @@
 #include "../log/log.h"
 
 
-namespace openage {
-namespace audio {
+namespace openage::audio {
 
 // custom deleter for OggOpusFile unique pointers
 static auto opus_deleter = [](OggOpusFile *op_file) {
@@ -21,7 +20,7 @@ static op_read_func opus_reader = [](void *stream,
                                      unsigned char *buf,
                                      int count) -> int {
 
-	util::File *file = reinterpret_cast<util::File *>(stream);
+	auto *file = reinterpret_cast<util::File *>(stream);
 	return file->read_to(buf, count);
 };
 
@@ -30,7 +29,7 @@ static op_seek_func opus_seeker = [](void *stream,
                                      opus_int64 offset,
                                      int whence) -> int {
 
-	util::File *file = reinterpret_cast<util::File *>(stream);
+	auto *file = reinterpret_cast<util::File *>(stream);
 	if (unlikely(not file->seekable())) {
 		return -1;
 	}
@@ -41,7 +40,7 @@ static op_seek_func opus_seeker = [](void *stream,
 
 
 static op_tell_func opus_teller = [](void *stream) -> opus_int64 {
-	util::File *file = reinterpret_cast<util::File *>(stream);
+	auto *file = reinterpret_cast<util::File *>(stream);
 	return file->tell();
 };
 
@@ -124,4 +123,4 @@ opus_file_t open_opus_file(const util::Path &path) {
 	return op_file;
 }
 
-}} // openage::audio
+} // openage::audio

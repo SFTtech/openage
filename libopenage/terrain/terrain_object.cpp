@@ -301,7 +301,7 @@ SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size, std::shar
 	this->outline_texture = out_tex;
 }
 
-SquareObject::~SquareObject() {}
+SquareObject::~SquareObject() = default;
 
 tile_range SquareObject::get_range(const coord::phys3 &pos, const Terrain &terrain) const {
 	return building_center(pos, this->size, terrain);
@@ -345,7 +345,7 @@ bool SquareObject::contains(const coord::phys3 &other) const {
 }
 
 bool SquareObject::intersects(const TerrainObject &other, const coord::phys3 &position) const {
-	if (const SquareObject *sq = dynamic_cast<const SquareObject *>(&other)) {
+	if (const auto *sq = dynamic_cast<const SquareObject *>(&other)) {
 		auto terrain_ptr = this->terrain.lock();
 		if (not terrain_ptr) {
 			throw Error{ERR << "object is not associated to a valid terrain"};
@@ -357,7 +357,7 @@ bool SquareObject::intersects(const TerrainObject &other, const coord::phys3 &po
 		       || rng.end.se < sq->pos.start.se
 		       || rng.end.se < sq->pos.start.se;
 	}
-	else if (const RadialObject *rad = dynamic_cast<const RadialObject *>(&other)) {
+	else if (const auto *rad = dynamic_cast<const RadialObject *>(&other)) {
 		auto terrain_ptr = this->terrain.lock();
 		if (not terrain_ptr) {
 			throw Error{ERR << "object is not associated to a valid terrain"};
@@ -393,7 +393,7 @@ RadialObject::RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex)
 	this->outline_texture = out_tex;
 }
 
-RadialObject::~RadialObject() {}
+RadialObject::~RadialObject() = default;
 
 tile_range RadialObject::get_range(const coord::phys3 &pos, const Terrain &/*terrain*/) const {
 	tile_range result;
@@ -428,10 +428,10 @@ bool RadialObject::contains(const coord::phys3 &other) const {
 }
 
 bool RadialObject::intersects(const TerrainObject &other, const coord::phys3 &position) const {
-	if (const SquareObject *sq = dynamic_cast<const SquareObject *>(&other)) {
+	if (const auto *sq = dynamic_cast<const SquareObject *>(&other)) {
 		return sq->from_edge(position) < this->phys_radius;
 	}
-	else if (const RadialObject *rad = dynamic_cast<const RadialObject *>(&other)) {
+	else if (const auto *rad = dynamic_cast<const RadialObject *>(&other)) {
 		return position.to_phys2().distance(rad->pos.draw.to_phys2()) < (this->phys_radius + rad->phys_radius).to_double();
 	}
 	return false;

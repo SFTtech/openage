@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -65,11 +65,11 @@ struct font_description {
 	 * @param language: The font's language.
 	 * @param script: The font's script.
 	 */
-	font_description(const std::string &font_file,
+	font_description(std::string font_file,
 	                 unsigned int size,
 	                 font_direction direction = font_direction::left_to_right,
-	                 const std::string &language = "en",
-	                 const std::string &script = "Latn");
+	                 std::string language="en",
+	                 std::string script="Latin");
 
 	/**
 	 * Constructs a font_description instance.

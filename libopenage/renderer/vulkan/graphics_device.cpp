@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "graphics_device.h"
 
@@ -10,9 +10,7 @@
 #include "util.h"
 
 
-namespace openage {
-namespace renderer {
-namespace vulkan {
+namespace openage::renderer::vulkan {
 
 std::optional<SurfaceSupportDetails> VlkGraphicsDevice::find_device_surface_support(VkPhysicalDevice dev, VkSurfaceKHR surf) {
 	// Search for queue families in the device
@@ -167,4 +165,4 @@ VlkGraphicsDevice::~VlkGraphicsDevice() {
 	vkDestroyDevice(this->device, nullptr);
 }
 
-}}} // openage::renderer::vulkan
+} // openage::renderer::vulkan

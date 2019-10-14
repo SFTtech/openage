@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -84,7 +84,7 @@ private:
 	 * Then, after loading, it's pushed into the `decay_queue` so it
 	 * can decay again.
 	 */
-	void load_chunk_async(std::shared_ptr<chunk_info_t> chunk_info,
+	void load_chunk_async(const std::shared_ptr<chunk_info_t> &chunk_info,
 	                      size_t resource_chunk_offset);
 
 public:

@@ -271,7 +271,7 @@ void main() {
 	}
 }
 
-void renderer_demo(int demo_id, util::Path path) {
+void renderer_demo(int demo_id, const util::Path &path) {
 	switch (demo_id) {
 	case 0:
 		renderer_demo_0(path);

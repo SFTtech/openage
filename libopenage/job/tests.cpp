@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "../log/log.h"
 #include "../testing/testing.h"
@@ -24,7 +24,7 @@ void test_simple_job() {
 		return 42;
 	};
 
-	auto job_callback = [&](result_function_t<int> get_result) {
+	auto job_callback = [&](const result_function_t<int> &get_result) {
 		int job_result = get_result();
 		if (job_result == 42) {
 			result = true;
@@ -63,7 +63,7 @@ void test_simple_job_with_exception() {
 		return 42;
 	};
 
-	auto job_callback = [&](result_function_t<int> get_result) {
+	auto job_callback = [&](const result_function_t<int> &get_result) {
 		try {
 			get_result();
 		} catch (const char *e) {

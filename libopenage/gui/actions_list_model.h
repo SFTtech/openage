@@ -1,4 +1,4 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -35,7 +35,7 @@ public:
 	void set_action_mode(ActionModeLink* action_mode);
 
 	QUrl get_icons_source() const;
-	void set_icons_source(const QUrl icons_source);
+	void set_icons_source(QUrl icons_source);
 
 	Q_INVOKABLE void set_initial_buttons();
 
@@ -66,7 +66,7 @@ private:
 	/**
 	 * Utility function to create a QUrl from a string and set it as iconsSource
 	 */
-	void set_icons_source(const std::string icons_source);
+	void set_icons_source(const std::string &icons_source);
 
 	/**
 	 * Clears all buttons

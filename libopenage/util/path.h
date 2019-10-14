@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -71,13 +71,13 @@ public:
 	 *
 	 * You will probably never call that manually.
 	 */
-	Path(py::Obj fslike,
+	Path(const py::Obj &fslike,
 	     const parts_t &parts={});
 
 	/**
 	 * Construct a path from a fslike pointer.
 	 */
-	Path(const std::shared_ptr<fslike::FSLike> &fslike,
+	Path(std::shared_ptr<fslike::FSLike> fslike,
 	     const parts_t &parts={});
 
 	virtual ~Path() = default;

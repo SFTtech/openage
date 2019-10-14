@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <iostream>
 #include <iomanip>
@@ -11,9 +11,7 @@
 
 #include "../util/strings.h"
 
-namespace openage {
-namespace log {
-namespace tests {
+namespace openage::log::tests {
 
 
 class TestLogSource : public LogSource {
@@ -26,7 +24,7 @@ public:
 
 class TestLogSink : public LogSink {
 public:
-	TestLogSink(std::ostream &os)
+	explicit TestLogSink(std::ostream &os)
 		:
 		os{os} {}
 private:
@@ -64,4 +62,4 @@ void demo() {
 	t1.join();
 }
 
-}}} // openage::log::tests
+} // openage::log::tests

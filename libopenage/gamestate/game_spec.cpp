@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "game_spec.h"
 
@@ -28,7 +28,7 @@ GameSpec::GameSpec(AssetManager *am)
 	gamedata_loaded{false} {
 }
 
-GameSpec::~GameSpec() {}
+GameSpec::~GameSpec() = default;
 
 
 bool GameSpec::initialize() {

@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "cost.h"
 #include "player.h"
@@ -25,8 +25,7 @@ ResourceCost::ResourceCost(cost_type type, const ResourceBundle& multiplier)
 	this->resources.set(multiplier);
 }
 
-ResourceCost::~ResourceCost() {
-}
+ResourceCost::~ResourceCost() = default;
 
 void ResourceCost::set(cost_type type, const ResourceBundle& resources) {
 	this->type = type;

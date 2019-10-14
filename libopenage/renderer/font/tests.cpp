@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "../../testing/testing.h"
 
@@ -31,7 +31,7 @@ void font_test_font_description() {
 	font_description fd1{"DejaVu Serif", "Book", 12};
 	(fd1.direction == font_direction::left_to_right) or TESTFAIL;
 	(fd1.language == "en") or TESTFAIL;
-	(fd1.script == "Latn") or TESTFAIL;
+	(fd1.script == "Latin") or TESTFAIL;
 
 	// Equality check of two different font_description instances
 	font_description fd2{"DejaVu Serif", "Book", 20};

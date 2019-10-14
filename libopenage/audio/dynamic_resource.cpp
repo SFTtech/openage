@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "dynamic_resource.h"
 
@@ -8,8 +8,7 @@
 #include "../job/job_manager.h"
 #include "../log/log.h"
 
-namespace openage {
-namespace audio {
+namespace openage::audio {
 
 chunk_info_t::chunk_info_t(chunk_info_t::state_t state,
                            size_t buffer_size)
@@ -170,7 +169,7 @@ void DynamicResource::start_preloading(size_t resource_chunk_index) {
 }
 
 
-void DynamicResource::load_chunk_async(std::shared_ptr<chunk_info_t> chunk_info,
+void DynamicResource::load_chunk_async(const std::shared_ptr<chunk_info_t> &chunk_info,
                                        size_t resource_chunk_offset) {
 	chunk_info->state.store(chunk_info_t::state_t::LOADING);
 
@@ -198,4 +197,4 @@ void DynamicResource::load_chunk_async(std::shared_ptr<chunk_info_t> chunk_info,
 }
 
 
-}} // namespace openage::audio
+} // namespace openage::audio

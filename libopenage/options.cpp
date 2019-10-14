@@ -1,9 +1,9 @@
 // Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "options.h"
+#include <utility>
 
-namespace openage {
-namespace options {
+namespace openage::options {
 
 
 OptionValue::OptionValue(bool b)
@@ -196,7 +196,7 @@ std::string OptionValue::str_value() const {
 }
 
 
-OptionValue parse(option_type t, std::string s) {
+OptionValue parse(option_type t, const std::string &s) {
 	switch(t) {
 	case options::option_type::bool_type:
 		return options::OptionValue(s == "true");
@@ -220,10 +220,10 @@ OptionValue parse(option_type t, std::string s) {
 }
 
 
-OptionAction::OptionAction(const std::string &name, const opt_func_t f)
+OptionAction::OptionAction(std::string name, opt_func_t f)
 	:
-	name{name},
-	function{f} {
+	name{std::move(name)},
+	function{std::move(f)} {
 }
 
 
@@ -232,9 +232,9 @@ OptionValue OptionAction::do_action() {
 }
 
 
-OptionNode::OptionNode(const std::string &panel_name)
+OptionNode::OptionNode(std::string panel_name)
 	:
-	name{panel_name},
+	name{std::move(panel_name)},
 	parent{nullptr} {
 }
 
@@ -246,7 +246,7 @@ OptionNode::~OptionNode() {
 }
 
 
-std::vector<std::string> OptionNode::list_options(bool recurse, std::string indent) {
+std::vector<std::string> OptionNode::list_options(bool recurse, const std::string &indent) {
 	std::vector<std::string> result;
 	result.push_back(indent + "node " + this->name + " {");
 	std::string inner_indent = indent + "\t";
@@ -341,10 +341,7 @@ void OptionNode::remove_panel(OptionNode *child) {
 }
 
 
-OptionHud::OptionHud() {
-
-}
+OptionHud::OptionHud() = default;
 
 
-} // namespace options
 } // namespace openage

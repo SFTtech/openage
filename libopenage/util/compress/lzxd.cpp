@@ -13,23 +13,22 @@
 #include "lzxd.h"
 
 #include <algorithm>
-#include <cinttypes>
 #include <cerrno>
+#include <cinttypes>
+#include <climits>
 #include <cstdarg>
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <climits>
+#include <utility>
 
 #include "../../error/error.h"
 #include "../compiler.h"
 
 #include "bitstream.h"
 
-namespace openage {
-namespace util {
-namespace compress {
+namespace openage::util::compress {
 
 
 // LZX specification constants
@@ -120,7 +119,7 @@ public:
 	 */
 	bool is_empty;
 
-	HuffmanTable(class LZXDStream *lzx) : lzx{lzx}, is_empty{true} {}
+	explicit HuffmanTable(class LZXDStream *lzx) : lzx{lzx}, is_empty{true} {}
 
 	/**
 	 * Decodes the next huffman symbol from the input bitstream,
@@ -341,7 +340,8 @@ bool HuffmanTable<maxsymbols_p, tablebits_p, allow_empty>::try_make_decode_table
 
 				// follow the path and select either left or right for next bit
 				leaf = table[leaf] << 1;
-				if ((pos >> (15-fill)) & 1) leaf++;
+				if ((pos >> (15-fill)) & 1)
+					leaf++;
 			}
 			table[leaf] = sym;
 
@@ -405,7 +405,10 @@ void HuffmanTable<maxsymbols_p, tablebits_p, allow_empty>::read_lengths(unsigned
 		}
 		else {
 			// code = 0 to 16, delta current length entry
-			z = len[x] - z; if (z < 0) z += 17;
+			z = len[x] - z;
+			if (z < 0)
+				z += 17;
+
 			len[x++] = z;
 		}
 	}
@@ -417,12 +420,12 @@ LZXDStream::LZXDStream(read_callback_t read_callback,
                        unsigned int reset_interval)
 		:
 		output_pos{0},
-		window_size{(unsigned int) 1 << window_bits},
+		window_size{static_cast<unsigned int>(1) << window_bits},
 		window_posn{0},
 		frame_posn{0},
 		frame{0},
 		reset_interval{reset_interval},
-		bits{read_callback},
+		bits{std::move(read_callback)},
 		htpre{this},
 		htmain{this},
 		htlength{this},
@@ -525,7 +528,7 @@ void LZXDStream::init_next_block() {
 
 int LZXDStream::decode_symbol_from_verbatim_block() {
 	int main_element = this->htmain.read_sym();
-	if (main_element < (int) LZX_NUM_CHARS) {
+	if (main_element < static_cast<int>(LZX_NUM_CHARS)) {
 		// literal: 0 to LZX_NUM_CHARS-1
 		window[this->window_posn++] = main_element;
 		return 1;
@@ -616,7 +619,7 @@ int LZXDStream::decode_symbol_from_verbatim_block() {
 
 int LZXDStream::decode_symbol_from_aligned_block() {
 	int main_element = this->htmain.read_sym();
-	if (main_element < (int) LZX_NUM_CHARS) {
+	if (main_element < static_cast<int>(LZX_NUM_CHARS)) {
 		// literal: 0 to LZX_NUM_CHARS - 1
 		window[this->window_posn++] = main_element;
 		return 1;
@@ -902,10 +905,10 @@ void LZXDStream::postprocess_intel_e8(unsigned char *buf, int frame_size) {
 			}
 
 			// write the next 4 bytes as little endian
-			buf[pos + 1] = (unsigned char) (rel_offset >>  0);
-			buf[pos + 2] = (unsigned char) (rel_offset >>  8);
-			buf[pos + 3] = (unsigned char) (rel_offset >> 16);
-			buf[pos + 4] = (unsigned char) (rel_offset >> 24);
+			buf[pos + 1] = static_cast<unsigned char>(rel_offset >>  0);
+			buf[pos + 2] = static_cast<unsigned char>(rel_offset >>  8);
+			buf[pos + 3] = static_cast<unsigned char>(rel_offset >> 16);
+			buf[pos + 4] = static_cast<unsigned char>(rel_offset >> 24);
 		}
 
 		// skip the next four bytes (they are what we just translated).
@@ -918,7 +921,7 @@ LZXDecompressor::LZXDecompressor(read_callback_t read_callback,
                                  unsigned int window_bits,
                                  unsigned int reset_interval)
 	:
-	stream{new LZXDStream{read_callback, window_bits, reset_interval}} {}
+	stream{new LZXDStream{std::move(read_callback), window_bits, reset_interval}} {}
 
 
 LZXDecompressor::~LZXDecompressor() {
@@ -931,4 +934,4 @@ unsigned LZXDecompressor::decompress_next_frame(unsigned char *output_buf) {
 }
 
 
-}}} // openage::util::compress
+} // openage::util::compress
