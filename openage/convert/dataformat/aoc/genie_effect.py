@@ -1,7 +1,6 @@
 # Copyright 2019-2019 the openage authors. See copying.md for legal info.
 
-from openage.convert.dataformat.converter_object import ConverterObject,\
-    ConverterObjectGroup
+from openage.convert.dataformat.converter_object import ConverterObject
 
 
 class GenieEffectObject(ConverterObject):
@@ -11,7 +10,7 @@ class GenieEffectObject(ConverterObject):
 
     def __init__(self, effect_id, bundle_id, full_data_set):
         """
-        Creates a new Genie civilization object.
+        Creates a new Genie effect object.
 
         :param effect_id: The index of the effect in the .dat file's effect
                           bundle. (the index is referenced as tech_effect_id by techs)
@@ -35,7 +34,7 @@ class GenieEffectBundle(ConverterObject):
 
     def __init__(self, bundle_id, full_data_set):
         """
-        Creates a new Genie civilization object.
+        Creates a new Genie effect bundle.
 
         :param bundle_id: The index of the effect in the .dat file's effect
                           block. (the index is referenced as tech_effect_id by techs)
