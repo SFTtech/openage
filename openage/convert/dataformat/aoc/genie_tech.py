@@ -50,17 +50,21 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         self.data = full_data_set
         self.data.tech_groups.update({self.get_id(): self})
 
+        # The tech that belongs to the tech id
+        self.tech = self.data.genie_techs[tech_id]
+
+        # Effects of the tech
         self.effects = []
 
-        effect_bundle_id = self.data.genie_techs[tech_id].get_member("tech_effect_id").get_value()
+        effect_bundle_id = self.tech.get_member("tech_effect_id").get_value()
         tech_effects = self.data.genie_effect_bundles[effect_bundle_id].get_effects()
 
         self.effects.extend(tech_effects)
 
 
-class TechLineGroup(ConverterObjectGroup):
+class GenieTechLineGroup(ConverterObjectGroup):
     """
-    Collection of GenieTechGroups that form a line (i.e. they unlock each other
+    Collection of GenieTechEffectBundleGroups that form a line (i.e. they unlock each other
     consecutively).
 
     Example: Double-bit axe->Bow Saw-> Two-man saw

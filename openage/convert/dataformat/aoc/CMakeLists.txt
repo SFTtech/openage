@@ -4,6 +4,8 @@ add_py_modules(
 	genie_connection.py
 	genie_effect.py
 	genie_object_container.py
+	genie_sound.py
+	genie_sprite.py
 	genie_tech.py
 	genie_unit.py
 	internal_nyan_names.py

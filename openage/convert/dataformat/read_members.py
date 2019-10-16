@@ -46,7 +46,6 @@ class ReadMember:
 
         is used e.g. for the number => enum lookup
         """
-
         return data
 
     def get_effective_type(self):

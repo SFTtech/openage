@@ -14,7 +14,7 @@ add_py_modules(
 	struct_definition.py
 	struct_snippet.py
 	util.py
-	value_member.py
+	value_members.py
 )
 
 add_subdirectory(aoc)

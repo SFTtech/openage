@@ -1165,7 +1165,7 @@ class LivingUnit(ProjectileUnit):
             length=3,
         )),
         (READ_EXPORT, "creation_time", "int16_t"),         # in seconds
-        (READ_EXPORT, "creation_location_id", "int16_t"),  # e.g. 118 = villager
+        (READ_EXPORT, "train_location_id", "int16_t"),  # e.g. 118 = villager
 
         # where to place the button with the given icon
         # creation page:

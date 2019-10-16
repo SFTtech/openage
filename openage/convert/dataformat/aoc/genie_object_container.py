@@ -24,8 +24,8 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.building_connections = {}
         self.unit_connections = {}
         self.tech_connections = {}
-        self.graphics = {}
-        self.sounds = {}
+        self.genie_graphics = {}
+        self.genie_sounds = {}
 
         # ConverterObjectGroup types (things that will become
         # nyan objects)

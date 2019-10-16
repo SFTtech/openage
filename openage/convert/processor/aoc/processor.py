@@ -1,17 +1,20 @@
 # Copyright 2019-2019 the openage authors. See copying.md for legal info.
 
 
-def convert():
-    pass
+class AoĆConverter:
 
+    @classmethod
+    def convert(self):
+        pass
 
-def pre_processor():
-    pass
+    @classmethod
+    def pre_processor(self):
+        pass
 
+    @classmethod
+    def processor(self):
+        pass
 
-def processor():
-    pass
-
-
-def post_processor():
-    pass
+    @classmethod
+    def post_processor(self):
+        pass
