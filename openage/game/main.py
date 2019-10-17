@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Holds the game entry point for openage.
@@ -60,7 +60,7 @@ def main(args, error):
         # try to get previously used source dir
         asset_location_path = root["cfg"] / "asset_location"
         try:
-            with asset_location_path.open("rb") as file_obj:
+            with asset_location_path.open("r") as file_obj:
                 prev_source_dir_path = file_obj.read().strip()
         except FileNotFoundError:
             prev_source_dir_path = None
