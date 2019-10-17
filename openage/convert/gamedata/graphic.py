@@ -2,12 +2,12 @@
 
 # TODO pylint: disable=C,R
 
-from ..dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from openage.convert.dataformat.read_members import SubdataMember, EnumLookupMember
 from ..dataformat.member_access import READ, READ_EXPORT
 
 
-class GraphicDelta(Exportable):
+class GraphicDelta(GenieStructure):
     name_struct        = "graphic_delta"
     name_struct_file   = "graphic"
     struct_description = "delta definitions for ingame graphics files."
@@ -23,7 +23,7 @@ class GraphicDelta(Exportable):
     ]
 
 
-class SoundProp(Exportable):
+class SoundProp(GenieStructure):
     name_struct        = "sound_prop"
     name_struct_file   = "graphic"
     struct_description = "sound id and delay definition for graphics sounds."
@@ -34,7 +34,7 @@ class SoundProp(Exportable):
     ]
 
 
-class GraphicAttackSound(Exportable):
+class GraphicAttackSound(GenieStructure):
     name_struct        = "graphic_attack_sound"
     name_struct_file   = "graphic"
     struct_description = "attack sounds for a given graphics file."
@@ -47,7 +47,7 @@ class GraphicAttackSound(Exportable):
     ]
 
 
-class Graphic(Exportable):
+class Graphic(GenieStructure):
     name_struct        = "graphic"
     name_struct_file   = name_struct
     struct_description = "metadata for ingame graphics files."

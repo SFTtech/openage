@@ -5,8 +5,8 @@ add_py_modules(
 	data_definition.py
 	data_formatter.py
 	entry_parser.py
-	exportable.py
 	generated_file.py
+	genie_structure.py
 	header_snippet.py
 	member_access.py
 	multisubtype_base.py

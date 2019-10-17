@@ -19,11 +19,9 @@ from .struct_definition import (StructDefinition, vararray_match,
                                 integer_match)
 
 
-class Exportable:
+class GenieStructure:
     """
-    superclass for all exportable data members
-
-    exportable classes shall inherit from this.
+    superclass for all structures from Genie Engine games.
     """
 
     # name of the created struct
@@ -103,9 +101,9 @@ class Exportable:
 
                     submember_data = list()
                     for idx, submember_data_item in enumerate(subdata_item_iter):
-                        if not isinstance(submember_data_item, Exportable):
+                        if not isinstance(submember_data_item, GenieStructure):
                             raise Exception("tried to dump object "
-                                            "not inheriting from Exportable")
+                                            "not inheriting from GenieStructure")
 
                         # generate output filename for next-level files
                         nextlevel_filename = "%s/%04d" % (
@@ -208,7 +206,7 @@ class Exportable:
                 continue
 
             if isinstance(var_type, GroupMember):
-                if not issubclass(var_type.cls, Exportable):
+                if not issubclass(var_type.cls, GenieStructure):
                     raise Exception("class where members should be "
                                     "included is not exportable: %s" % (
                                         var_type.cls.__name__))
@@ -295,7 +293,7 @@ class Exportable:
                         # look up the type name to get the subtype class
                         new_data_class = var_type.class_lookup[subtype_name]
 
-                    if not issubclass(new_data_class, Exportable):
+                    if not issubclass(new_data_class, GenieStructure):
                         raise Exception("dumped data "
                                         "is not exportable: %s" % (
                                             new_data_class.__name__))
@@ -425,14 +423,14 @@ class Exportable:
             self_member_count += 1
             if isinstance(member_type, MultisubtypeMember):
                 for _, subtype_class in sorted(member_type.class_lookup.items()):
-                    if not issubclass(subtype_class, Exportable):
+                    if not issubclass(subtype_class, GenieStructure):
                         raise Exception("tried to export structs "
                                         "from non-exportable %s" % (
                                             subtype_class))
                     ret += subtype_class.structs()
 
             elif isinstance(member_type, GroupMember):
-                if not issubclass(member_type.cls, Exportable):
+                if not issubclass(member_type.cls, GenieStructure):
                     raise Exception("tried to export structs "
                                     "from non-exportable member "
                                     "included class %r" % (member_type.cls))

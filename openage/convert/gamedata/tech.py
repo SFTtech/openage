@@ -2,12 +2,12 @@
 
 # TODO pylint: disable=C,R
 
-from ..dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from openage.convert.dataformat.read_members import SubdataMember, EnumLookupMember
 from ..dataformat.member_access import READ, READ_EXPORT
 
 
-class Effect(Exportable):
+class Effect(GenieStructure):
     name_struct = "tech_effect"
     name_struct_file = "tech"
     struct_description = "applied effect for a research technology."
@@ -101,7 +101,7 @@ class Effect(Exportable):
     ]
 
 
-class EffectBundle(Exportable):  # also called techage in some other tools
+class EffectBundle(GenieStructure):  # also called techage in some other tools
     name_struct = "effect_bundle"
     name_struct_file = "tech"
     struct_description = "a bundle of effects."
@@ -119,7 +119,7 @@ class EffectBundle(Exportable):  # also called techage in some other tools
 
 # TODO: add common tech class
 
-class Mode(Exportable):
+class Mode(GenieStructure):
     name_struct = "mode"
     name_struct_file = "tech"
     struct_description = "mode for a building/unit/research connection"
@@ -138,7 +138,7 @@ class Mode(Exportable):
     ]
 
 
-class AgeTechTree(Exportable):
+class AgeTechTree(GenieStructure):
     name_struct = "age_tech_tree"
     name_struct_file = "tech"
     struct_description = "items available when this age was reached."
@@ -221,7 +221,7 @@ class AgeTechTree(Exportable):
     ])
 
 
-class BuildingConnection(Exportable):
+class BuildingConnection(GenieStructure):
     name_struct = "building_connection"
     name_struct_file = "tech"
     struct_description = "new available buildings/units/researches when this building was created."
@@ -292,7 +292,7 @@ class BuildingConnection(Exportable):
     ])
 
 
-class UnitConnection(Exportable):
+class UnitConnection(GenieStructure):
     name_struct = "unit_connection"
     name_struct_file = "tech"
     struct_description = "unit updates to apply when activating the technology."
@@ -349,7 +349,7 @@ class UnitConnection(Exportable):
     ])
 
 
-class ResearchConnection(Exportable):
+class ResearchConnection(GenieStructure):
     name_struct = "research_connection"
     name_struct_file = "tech"
     struct_description = "research updates to apply when activating the technology."
