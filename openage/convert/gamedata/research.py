@@ -2,12 +2,12 @@
 
 # TODO pylint: disable=C,R
 
-from ..dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from openage.convert.dataformat.read_members import SubdataMember
 from ..dataformat.member_access import READ
 
 
-class TechResourceCost(Exportable):
+class TechResourceCost(GenieStructure):
     name_struct        = "tech_resource_cost"
     name_struct_file   = "research"
     struct_description = "amount definition for a single type resource for researches."
@@ -19,7 +19,7 @@ class TechResourceCost(Exportable):
     ]
 
 
-class Tech(Exportable):
+class Tech(GenieStructure):
     name_struct        = "tech"
     name_struct_file   = "research"
     struct_description = "one researchable technology."

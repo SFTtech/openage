@@ -2,12 +2,12 @@
 
 # TODO pylint: disable=C,R
 
-from ..dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from openage.convert.dataformat.read_members import SubdataMember
 from ..dataformat.member_access import READ
 
 
-class MapInfo(Exportable):
+class MapInfo(GenieStructure):
     name_struct_file   = "randommap"
     name_struct        = "map_header"
     struct_description = "random map information header"
@@ -34,7 +34,7 @@ class MapInfo(Exportable):
     ]
 
 
-class MapLand(Exportable):
+class MapLand(GenieStructure):
     name_struct_file   = "randommap"
     name_struct        = "map"
     struct_description = "random map information data"
@@ -58,7 +58,7 @@ class MapLand(Exportable):
     ]
 
 
-class MapTerrain(Exportable):
+class MapTerrain(GenieStructure):
     name_struct_file   = "randommap"
     name_struct        = "map_terrain"
     struct_description = "random map terrain information data"
@@ -73,7 +73,7 @@ class MapTerrain(Exportable):
     ]
 
 
-class MapUnit(Exportable):
+class MapUnit(GenieStructure):
     name_struct_file   = "randommap"
     name_struct        = "map_unit"
     struct_description = "random map unit information data"
@@ -95,7 +95,7 @@ class MapUnit(Exportable):
     ]
 
 
-class MapElevation(Exportable):
+class MapElevation(GenieStructure):
     name_struct_file   = "randommap"
     name_struct        = "map_elevation"
     struct_description = "random map elevation data"
@@ -110,7 +110,7 @@ class MapElevation(Exportable):
     ]
 
 
-class Map(Exportable):
+class Map(GenieStructure):
     name_struct_file   = "randommap"
     name_struct        = "map"
     struct_description = "random map information data"

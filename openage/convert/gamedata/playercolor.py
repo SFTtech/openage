@@ -2,11 +2,11 @@
 
 # TODO pylint: disable=C,R
 
-from ..dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from ..dataformat.member_access import READ, READ_EXPORT
 
 
-class PlayerColor(Exportable):
+class PlayerColor(GenieStructure):
     name_struct        = "player_color"
     name_struct_file   = name_struct
     struct_description = "describes player color settings."

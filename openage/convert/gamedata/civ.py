@@ -3,12 +3,12 @@
 # TODO pylint: disable=C,R
 
 from . import unit
-from ..dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from openage.convert.dataformat.read_members import MultisubtypeMember, EnumLookupMember
 from ..dataformat.member_access import READ, READ_EXPORT
 
 
-class Civ(Exportable):
+class Civ(GenieStructure):
     name_struct = "civilisation"
     name_struct_file = name_struct
     struct_description = "describes a civilisation."

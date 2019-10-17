@@ -2,12 +2,12 @@
 
 # TODO pylint: disable=C,R
 
-from ..dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from openage.convert.dataformat.read_members import SubdataMember
 from ..dataformat.member_access import READ_EXPORT, READ
 
 
-class SoundItem(Exportable):
+class SoundItem(GenieStructure):
     name_struct        = "sound_item"
     name_struct_file   = "sound"
     struct_description = "one possible file for a sound."
@@ -42,7 +42,7 @@ class SoundItem(Exportable):
     ])
 
 
-class Sound(Exportable):
+class Sound(GenieStructure):
     name_struct        = "sound"
     name_struct_file   = "sound"
     struct_description = "describes a sound, consisting of several sound items."

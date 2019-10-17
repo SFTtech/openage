@@ -4,13 +4,13 @@
 
 import math
 
-from .dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from .dataformat.data_definition import DataDefinition
 from .dataformat.struct_definition import StructDefinition
 from ..log import dbg
 
 
-class ColorTable(Exportable):
+class ColorTable(GenieStructure):
     name_struct = "palette_color"
     name_struct_file = "color"
     struct_description = "indexed color storage."

@@ -11,8 +11,7 @@ from PIL import Image
 
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .blendomatic import BlendingMode
-from .dataformat import (exportable, data_definition,
-                         struct_definition, data_formatter)
+from .dataformat import genie_structure, data_definition, struct_definition, data_formatter
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
                                 TERRAIN_ASPECT_RATIO)
@@ -76,7 +75,7 @@ class TextureImage:
         return self.data
 
 
-class Texture(exportable.Exportable):
+class Texture(genie_structure.GenieStructure):
     image_format = "png"
 
     name_struct = "subtexture"
@@ -145,7 +144,7 @@ class Texture(exportable.Exportable):
                             "from unknown source type: %s" % (type(input_data)))
 
         self.image_data, (self.width, self.height), self.image_metadata\
- = merge_frames(frames)
+            = merge_frames(frames)
 
     def _slp_to_subtextures(self, frame, main_palette, player_palette=None,
                             custom_cutter=None):

@@ -16,7 +16,7 @@ from . import terrain
 from . import unit
 
 from ..game_versions import GameVersion
-from ..dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from openage.convert.dataformat.read_members import SubdataMember
 from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
 
@@ -32,7 +32,7 @@ from ...log import spam, dbg, info, warn
 # the binary structure, which the dat file has, is in `doc/gamedata.struct`
 
 
-class EmpiresDat(Exportable):
+class EmpiresDat(GenieStructure):
     """
     class for fighting and beating the compressed empires2*.dat
 
@@ -347,7 +347,7 @@ class EmpiresDat(Exportable):
         return cls.format_hash().hexdigest()
 
 
-class EmpiresDatWrapper(Exportable):
+class EmpiresDatWrapper(GenieStructure):
     """
     This wrapper exists because the top-level element is discarded:
     The gathered data fields are passed to the parent,

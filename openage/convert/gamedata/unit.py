@@ -2,12 +2,12 @@
 
 # TODO pylint: disable=C,R,too-many-lines
 
-from ..dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from ..dataformat.member_access import READ, READ_EXPORT
 from openage.convert.dataformat.read_members import EnumLookupMember, ContinueReadMember, IncludeMembers, SubdataMember
 
 
-class UnitCommand(Exportable):
+class UnitCommand(GenieStructure):
     """
     also known as "Task" according to ES debug code,
     this structure is the master for spawn-unit actions.
@@ -125,7 +125,7 @@ class UnitCommand(Exportable):
     ]
 
 
-class UnitHeader(Exportable):
+class UnitHeader(GenieStructure):
     name_struct = "unit_header"
     name_struct_file = "unit"
     struct_description = "stores a bunch of unit commands."
@@ -141,7 +141,7 @@ class UnitHeader(Exportable):
 
 
 # Only used in SWGB
-class UnitLine(Exportable):
+class UnitLine(GenieStructure):
     name_struct        = "unit_line"
     name_struct_file   = "unit_lines"
     struct_description = "stores a bunch of units in SWGB."
@@ -154,7 +154,7 @@ class UnitLine(Exportable):
     ]
 
 
-class ResourceStorage(Exportable):
+class ResourceStorage(GenieStructure):
     name_struct = "resource_storage"
     name_struct_file = "unit"
     struct_description = "determines the resource storage capacity for one unit mode."
@@ -175,7 +175,7 @@ class ResourceStorage(Exportable):
     ]
 
 
-class DamageGraphic(Exportable):
+class DamageGraphic(GenieStructure):
     name_struct = "damage_graphic"
     name_struct_file = "unit"
     struct_description = "stores one possible unit image that is displayed at a given damage percentage."
@@ -197,7 +197,7 @@ class DamageGraphic(Exportable):
     ]
 
 
-class HitType(Exportable):
+class HitType(GenieStructure):
     name_struct = "hit_type"
     name_struct_file = "unit"
     struct_description = "stores attack amount for a damage type."
@@ -240,7 +240,7 @@ class HitType(Exportable):
     ]
 
 
-class ResourceCost(Exportable):
+class ResourceCost(GenieStructure):
     name_struct = "resource_cost"
     name_struct_file = "unit"
     struct_description = "stores cost for one resource for creating the unit."
@@ -456,7 +456,7 @@ class ResourceCost(Exportable):
     ]
 
 
-class BuildingAnnex(Exportable):
+class BuildingAnnex(GenieStructure):
 
     name_struct = "building_annex"
     name_struct_file = "unit"
@@ -469,7 +469,7 @@ class BuildingAnnex(Exportable):
     ]
 
 
-class UnitObject(Exportable):
+class UnitObject(GenieStructure):
     """
     base properties for every unit entry.
     """

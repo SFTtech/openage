@@ -11,7 +11,7 @@ from math import sqrt
 from struct import Struct, unpack_from
 
 from ..log import dbg
-from .dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from .dataformat.data_definition import DataDefinition
 from .dataformat.struct_definition import StructDefinition
 
@@ -192,7 +192,7 @@ class BlendingMode:
         return BlendingTile(tilerows, max_width, self.row_count)
 
 
-class Blendomatic(Exportable):
+class Blendomatic(GenieStructure):
     """
     Represents the blendomatic.dat file.
     In it are multiple blending modes,

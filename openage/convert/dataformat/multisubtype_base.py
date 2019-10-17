@@ -2,11 +2,11 @@
 
 # TODO pylint: disable=C,R
 
-from .exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from .member_access import NOREAD_EXPORT
 
 
-class MultisubtypeBaseFile(Exportable):
+class MultisubtypeBaseFile(GenieStructure):
     """
     class that describes the format
     for the base-file pointing to the per-subtype files.

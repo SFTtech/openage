@@ -3,12 +3,12 @@
 # TODO pylint: disable=C,R
 
 from ..game_versions import GameVersion
-from ..dataformat.exportable import Exportable
+from openage.convert.dataformat.genie_structure import GenieStructure
 from openage.convert.dataformat.read_members import ArrayMember, SubdataMember, IncludeMembers
 from ..dataformat.member_access import READ, READ_EXPORT
 
 
-class FrameData(Exportable):
+class FrameData(GenieStructure):
     name_struct_file   = "terrain"
     name_struct        = "frame_data"
     struct_description = "specification of terrain frames."
@@ -20,7 +20,7 @@ class FrameData(Exportable):
     ]
 
 
-class TerrainPassGraphic(Exportable):
+class TerrainPassGraphic(GenieStructure):
     name_struct_file   = "terrain"
     name_struct        = "terrain_pass_graphic"
     struct_description = None
@@ -42,7 +42,7 @@ class TerrainPassGraphic(Exportable):
     data_format.append((READ, "replication_amount", "int32_t"))
 
 
-class TerrainRestriction(Exportable):
+class TerrainRestriction(GenieStructure):
     """
     access policies for units on specific terrain.
     """
@@ -76,7 +76,7 @@ class TerrainRestriction(Exportable):
     )))
 
 
-class TerrainAnimation(Exportable):
+class TerrainAnimation(GenieStructure):
     name_struct        = "terrain_animation"
     name_struct_file   = "terrain"
     struct_description = "describes animation properties of a terrain type"
@@ -95,7 +95,7 @@ class TerrainAnimation(Exportable):
     ]
 
 
-class Terrain(Exportable):
+class Terrain(GenieStructure):
     name_struct        = "terrain_type"
     name_struct_file   = "terrain"
     struct_description = "describes a terrain type, like water, ice, etc."
@@ -180,7 +180,7 @@ class Terrain(Exportable):
     data_format.append((READ, "phantom",                 "int16_t"))
 
 
-class TerrainBorder(Exportable):
+class TerrainBorder(GenieStructure):
     name_struct        = "terrain_border"
     name_struct_file   = "terrain"
     struct_description = "one inter-terraintile border specification."
@@ -208,7 +208,7 @@ class TerrainBorder(Exportable):
     ]
 
 
-class TileSize(Exportable):
+class TileSize(GenieStructure):
     name_struct        = "tile_size"
     name_struct_file   = "terrain"
     struct_description = "size definition of one terrain tile."
