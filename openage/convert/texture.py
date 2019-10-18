@@ -88,12 +88,12 @@ class Texture(genie_structure.GenieStructure):
     )
 
     data_format = (
-        (True, "x", "int32_t"),
-        (True, "y", "int32_t"),
-        (True, "w", "int32_t"),
-        (True, "h", "int32_t"),
-        (True, "cx", "int32_t"),
-        (True, "cy", "int32_t"),
+        (True, "x", None, "int32_t"),
+        (True, "y", None, "int32_t"),
+        (True, "w", None, "int32_t"),
+        (True, "h", None, "int32_t"),
+        (True, "cx", None, "int32_t"),
+        (True, "cy", None, "int32_t"),
     )
 
     # player-specific colors will be in color blue, but with an alpha of 254

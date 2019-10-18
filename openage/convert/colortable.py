@@ -16,11 +16,11 @@ class ColorTable(GenieStructure):
     struct_description = "indexed color storage."
 
     data_format = (
-        (True, "idx", "int32_t"),
-        (True, "r",   "uint8_t"),
-        (True, "g",   "uint8_t"),
-        (True, "b",   "uint8_t"),
-        (True, "a",   "uint8_t"),
+        (True, "idx", None, "int32_t"),
+        (True, "r", None,   "uint8_t"),
+        (True, "g", None,   "uint8_t"),
+        (True, "b", None,   "uint8_t"),
+        (True, "a", None,   "uint8_t"),
     )
 
     def __init__(self, data):
@@ -171,6 +171,7 @@ class PlayerColorTable(ColorTable):
 
     each player has 8 subcolors, where 0 is the darkest and 7 is the lightest
     """
+
     def __init__(self, base_table):
         # TODO pylint: disable=super-init-not-called
         if not isinstance(base_table, ColorTable):

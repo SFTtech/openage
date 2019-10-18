@@ -205,7 +205,7 @@ class Blendomatic(GenieStructure):
                           "a blending transition shape "
                           "between two different terrain types.")
     data_format = (
-        (True, "blend_mode", "int32_t"),
+        (True, "blend_mode", None, "int32_t"),
     )
 
     # struct blendomatic_header {

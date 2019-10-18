@@ -6,7 +6,6 @@ Storage format for values from data file entries.
 """
 
 from enum import Enum
-from collections import OrderedDict
 
 
 class ValueMember:
@@ -228,14 +227,14 @@ class ContainerMember(ValueMember):
     are the value of the dict.
     """
 
-    def __init__(self, name, value):
+    def __init__(self, name, submembers):
         super().__init__(name)
 
-        self.value = OrderedDict()
+        self.value = {}
         self.member_type = MemberTypes.CONTAINER_MEMBER
 
-        # value is a list of members
-        self._create_dict(value)
+        # submembers is a list of members
+        self._create_dict(submembers)
 
     def get_value(self):
         return self.value
@@ -245,16 +244,14 @@ class ContainerMember(ValueMember):
 
     def diff(self, other):
         if self.get_type() is other.get_type():
-
             if len(self) == len(other):
                 diff_list = list()
 
                 # optimization to avoid constant calls to other
-                self_dict = self.get_value()
                 other_dict = other.get_value()
 
-                for key in self.get_value().keys():
-                    diff_value = self_dict.get(key).diff(other_dict.get(key))
+                for key in self.value.keys():
+                    diff_value = self.value.get(key).diff(other_dict.get(key))
 
                     diff_list.append(diff_value)
 
@@ -284,6 +281,58 @@ class ContainerMember(ValueMember):
         return "ContainerMember<%s>" % (type(self))
 
 
+class ArrayMember(ValueMember):
+    """
+    Stores an ordered list of members with the same type.
+    """
+
+    def __init__(self, name, allowed_member_type, members):
+        super().__init__(name)
+
+        # Check if members have correct type
+        for member in members:
+            if member.get_type() is not allowed_member_type:
+                raise Exception("%s has type %s, but this ArrayMember only allows %s"
+                                % (member, member.get_type(), allowed_member_type))
+
+        self.value = members
+        self.member_type = allowed_member_type
+
+    def get_value(self):
+        return self.value
+
+    def get_type(self):
+        return self.member_type
+
+    def diff(self, other):
+        if self.get_type() == other.get_type():
+            if len(self) == len(other):
+
+                diff_list = []
+                other_list = other.get_value()
+
+                for index in range(len(self)):
+                    diff_value = self.value[index].diff(other_list[index])
+
+                    diff_list.append(diff_value)
+
+                return ArrayMember(self.name, diff_list)
+
+            else:
+                raise Exception(
+                    "ArrayMembers must have same length for diff")
+
+        else:
+            raise Exception(
+                "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+
+    def __len__(self):
+        return len(self.value)
+
+    def __repr__(self):
+        return "ArrayMember<%s>" % (type(self))
+
+
 class NoDiffMember(ValueMember):
     """
     Is returned when no difference between two members is found.
@@ -301,9 +350,17 @@ class MemberTypes(Enum):
     Types for values members.
     """
 
-    INT_MEMBER = "int"
-    FLOAT_MEMBER = "float"
-    BOOLEAN_MEMBER = "boolean"
-    ID_MEMBER = "id"
-    STRING_MEMBER = "string"
+    INT_MEMBER       = "int"
+    FLOAT_MEMBER     = "float"
+    BOOLEAN_MEMBER   = "boolean"
+    ID_MEMBER        = "id"
+    STRING_MEMBER    = "string"
     CONTAINER_MEMBER = "container"
+
+    # Array types
+    ARRAY_INT        = "intarray"
+    ARRAY_FLOAT      = "floatarray"
+    ARRAY_ID         = "idarray"
+    ARRAY_BOOL       = "boolarray"
+    ARRAY_STRING     = "stringarray"
+    ARRAY_CONTAINER  = "contarray"

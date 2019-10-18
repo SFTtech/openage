@@ -4,6 +4,7 @@
 
 from openage.convert.dataformat.genie_structure import GenieStructure
 from ..dataformat.member_access import READ, READ_EXPORT
+from ..dataformat.value_members import MemberTypes as StorageType
 
 
 class PlayerColor(GenieStructure):
@@ -34,13 +35,13 @@ class PlayerColor(GenieStructure):
     #     ]
     # ===========================================================================
     data_format = [
-        (READ_EXPORT, "id", "int32_t"),
-        (READ_EXPORT, "player_color_base", "int32_t"),       # palette index offset, where the 8 player colors start
-        (READ_EXPORT, "outline_color", "int32_t"),           # palette index
-        (READ, "unit_selection_color1", "int32_t"),
-        (READ, "unit_selection_color2", "int32_t"),
-        (READ_EXPORT, "minimap_color1", "int32_t"),          # palette index
-        (READ, "minimap_color2", "int32_t"),
-        (READ, "minimap_color3", "int32_t"),
-        (READ_EXPORT, "statistics_text_color", "int32_t"),
+        (READ_EXPORT, "id", StorageType.ID_MEMBER, "int32_t"),
+        (READ_EXPORT, "player_color_base", StorageType.ID_MEMBER, "int32_t"),       # palette index offset, where the 8 player colors start
+        (READ_EXPORT, "outline_color", StorageType.ID_MEMBER, "int32_t"),           # palette index
+        (READ, "unit_selection_color1", StorageType.ID_MEMBER, "int32_t"),
+        (READ, "unit_selection_color2", StorageType.ID_MEMBER, "int32_t"),
+        (READ_EXPORT, "minimap_color1", StorageType.ID_MEMBER, "int32_t"),          # palette index
+        (READ, "minimap_color2", StorageType.ID_MEMBER, "int32_t"),
+        (READ, "minimap_color3", StorageType.ID_MEMBER, "int32_t"),
+        (READ_EXPORT, "statistics_text_color", StorageType.ID_MEMBER, "int32_t"),
     ]

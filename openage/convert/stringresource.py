@@ -15,9 +15,9 @@ class StringResource(genie_structure.GenieStructure):
                          " extracted from language.dll file."
 
     data_format = (
-        (True, "id",   "int32_t"),
-        (True, "lang", "char[16]"),
-        (True, "text", "std::string"),
+        (True, "id", None,   "int32_t"),
+        (True, "lang", None, "char[16]"),
+        (True, "text", None, "std::string"),
     )
 
     def __init__(self):

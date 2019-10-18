@@ -27,6 +27,7 @@ class StructDefinition:
     one data set roughly represents one struct in the gamedata dat file.
     it consists of multiple DataMembers, they define the struct members.
     """
+
     def __init__(self, target):
         """
         create a struct definition from an Exportable
@@ -60,7 +61,7 @@ class StructDefinition:
             flatten_includes=True
         )
 
-        for is_parent, _, member_name, member_type in target_members:
+        for is_parent, _, member_name, _, member_type in target_members:
 
             if isinstance(member_type, IncludeMembers):
                 raise Exception("something went very wrong, "
@@ -112,7 +113,7 @@ class StructDefinition:
                 self.inherited_members.append(member_name)
 
         members = target.get_data_format(flatten_includes=False)
-        for _, _, _, member_type in members:
+        for _, _, _, _, member_type in members:
             if isinstance(member_type, IncludeMembers):
                 self.parent_classes.append(member_type.cls)
 

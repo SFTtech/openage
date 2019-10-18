@@ -5,6 +5,7 @@
 from openage.convert.dataformat.genie_structure import GenieStructure
 from openage.convert.dataformat.read_members import SubdataMember
 from ..dataformat.member_access import READ_EXPORT, READ
+from ..dataformat.value_members import MemberTypes as StorageType
 
 
 class SoundItem(GenieStructure):
@@ -21,11 +22,11 @@ class SoundItem(GenieStructure):
     # else:
     #     data_format.append((READ_EXPORT, "filename", "char[13]"))
     # ===========================================================================
-    data_format.append((READ_EXPORT, "filename", "char[13]"))
+    data_format.append((READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[13]"))
 
     data_format.extend([
-        (READ_EXPORT, "resource_id",  "int32_t"),
-        (READ_EXPORT, "probablilty",  "int16_t"),
+        (READ_EXPORT, "resource_id", StorageType.INT_MEMBER, "int32_t"),
+        (READ_EXPORT, "probablilty", StorageType.INT_MEMBER, "int16_t"),
     ])
 
     # TODO: Enable conversion for AOE1; replace "civilisation", "icon_set"
@@ -37,8 +38,8 @@ class SoundItem(GenieStructure):
     #     ])
     # ===========================================================================
     data_format.extend([
-        (READ_EXPORT, "civilisation", "int16_t"),
-        (READ,        "icon_set",     "int16_t"),
+        (READ_EXPORT, "civilisation", StorageType.ID_MEMBER, "int16_t"),
+        (READ,        "icon_set", StorageType.ID_MEMBER,     "int16_t"),
     ])
 
 
@@ -48,11 +49,11 @@ class Sound(GenieStructure):
     struct_description = "describes a sound, consisting of several sound items."
 
     data_format = [
-        (READ_EXPORT, "id", "int16_t"),
-        (READ, "play_delay", "int16_t"),
-        (READ_EXPORT, "file_count", "uint16_t"),
-        (READ, "cache_time", "int32_t"),                   # always 300000
-        (READ_EXPORT, "sound_items", SubdataMember(
+        (READ_EXPORT, "id", StorageType.ID_MEMBER, "int16_t"),
+        (READ, "play_delay", StorageType.INT_MEMBER, "int16_t"),
+        (READ_EXPORT, "file_count", StorageType.INT_MEMBER, "uint16_t"),
+        (READ, "cache_time", StorageType.INT_MEMBER, "int32_t"),                   # always 300000
+        (READ_EXPORT, "sound_items", StorageType.CONTAINER_MEMBER, SubdataMember(
             ref_type=SoundItem,
             ref_to="id",
             length="file_count",

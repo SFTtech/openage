@@ -37,6 +37,18 @@ class GenieStructure:
     game_versions = list()
 
     # struct format specification
+    #===========================================================
+    # contains a list of 4-tuples that define
+    # (read_mode, var_name, storage_type, read_type)
+    #
+    # read_mode: Tells whether to read or skip values
+    # var_name: The stored name of the extracted variable.
+    #           Must be unique for each ConverterObject
+    # storage_type: ValueMember type for storage
+    #               (see value_members.MemberTypes)
+    # read_type: ReadMember type for reading the values from bytes
+    #            (see read_members.py)
+    #===========================================================
     data_format = list()
 
     def __init__(self, **args):
@@ -58,7 +70,7 @@ class GenieStructure:
         members = self.get_data_format(
             allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
             flatten_includes=True)
-        for _, _, member_name, member_type in members:
+        for _, _, member_name, _, member_type in members:
 
             # gather data members of the currently queried object
             self_data[member_name] = getattr(self, member_name)
@@ -194,7 +206,7 @@ class GenieStructure:
                 allowed_modes=(True, READ_EXPORT, READ, READ_UNKNOWN),
                 flatten_includes=False)
 
-        for _, export, var_name, var_type in members:
+        for _, export, var_name, storage_type, var_type in members:
 
             if stop_reading_members:
                 if isinstance(var_type, ReadMember):
@@ -419,7 +431,8 @@ class GenieStructure:
         members = cls.get_data_format(
             allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
             flatten_includes=False)
-        for _, _, _, member_type in members:
+
+        for _, _, _, _, member_type in members:
             self_member_count += 1
             if isinstance(member_type, MultisubtypeMember):
                 for _, subtype_class in sorted(member_type.class_lookup.items()):
@@ -469,7 +482,7 @@ class GenieStructure:
             allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
             flatten_includes=False,
         )
-        for _, export, member_name, member_type in members:
+        for _, export, member_name, _, member_type in members:
 
             # includemembers etc have no name.
             if member_name:
@@ -504,18 +517,21 @@ class GenieStructure:
         """
 
         for member in cls.data_format:
-            export, _, member_type = member
+            if len(member) < 4:
+                print(member)
+
+            export, _, storage_type, read_type = member
 
             definitively_return_member = False
 
-            if isinstance(member_type, IncludeMembers):
+            if isinstance(read_type, IncludeMembers):
                 if flatten_includes:
                     # recursive call
-                    yield from member_type.cls.get_data_format(
+                    yield from read_type.cls.get_data_format(
                         allowed_modes, flatten_includes, is_parent=True)
                     continue
 
-            elif isinstance(member_type, ContinueReadMember):
+            elif isinstance(read_type, ContinueReadMember):
                 definitively_return_member = True
 
             if allowed_modes:
