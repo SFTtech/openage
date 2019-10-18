@@ -17,6 +17,6 @@ class MultisubtypeBaseFile(GenieStructure):
     struct_description = "format for multi-subtype references"
 
     data_format = (
-        (NOREAD_EXPORT, "subtype", "std::string"),
-        (NOREAD_EXPORT, "filename", "std::string"),
+        (NOREAD_EXPORT, "subtype", None, "std::string"),
+        (NOREAD_EXPORT, "filename", None, "std::string"),
     )

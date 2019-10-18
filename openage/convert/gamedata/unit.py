@@ -4,6 +4,7 @@
 
 from openage.convert.dataformat.genie_structure import GenieStructure
 from ..dataformat.member_access import READ, READ_EXPORT
+from ..dataformat.value_members import MemberTypes as StorageType
 from openage.convert.dataformat.read_members import EnumLookupMember, ContinueReadMember, IncludeMembers, SubdataMember
 
 
@@ -18,10 +19,10 @@ class UnitCommand(GenieStructure):
 
     data_format = [
         # Type (0 = Generic, 1 = Tribe)
-        (READ, "command_used", "int16_t"),
-        (READ_EXPORT, "id", "int16_t"),                     # Identity
-        (READ, "is_default", "int8_t"),
-        (READ_EXPORT, "type", EnumLookupMember(
+        (READ, "command_used", StorageType.INT_MEMBER, "int16_t"),
+        (READ_EXPORT, "id", StorageType.ID_MEMBER, "int16_t"),
+        (READ, "is_default", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ_EXPORT, "type", StorageType.INT_MEMBER, EnumLookupMember(
             raw_type="int16_t",
             type_name="command_ability",
             lookup_dict={
@@ -75,24 +76,24 @@ class UnitCommand(GenieStructure):
                 1024: "UNKNOWN_1024",
             },
         )),
-        (READ_EXPORT, "class_id", "int16_t"),
-        (READ_EXPORT, "unit_id", "int16_t"),
-        (READ_EXPORT, "terrain_id", "int16_t"),
-        (READ_EXPORT, "resource_in", "int16_t"),            # carry resource
+        (READ_EXPORT, "class_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "unit_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "terrain_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "resource_in", StorageType.INT_MEMBER, "int16_t"),        # carry resource
         # resource that multiplies the amount you can gather
-        (READ_EXPORT, "resource_multiplier", "int16_t"),
-        (READ_EXPORT, "resource_out", "int16_t"),           # drop resource
-        (READ_EXPORT, "unused_resource", "int16_t"),
-        (READ_EXPORT, "work_value1", "float"),              # quantity
-        (READ_EXPORT, "work_value2", "float"),              # execution radius?
-        (READ_EXPORT, "work_range", "float"),
-        (READ, "search_mode", "int8_t"),
-        (READ, "search_time", "float"),
-        (READ, "enable_targeting", "int8_t"),
-        (READ, "combat_level_flag", "int8_t"),
-        (READ, "gather_type", "int16_t"),
-        (READ, "work_mode2", "int16_t"),
-        (READ_EXPORT, "owner_type", EnumLookupMember(
+        (READ_EXPORT, "resource_multiplier", StorageType.INT_MEMBER, "int16_t"),
+        (READ_EXPORT, "resource_out", StorageType.INT_MEMBER, "int16_t"),       # drop resource
+        (READ_EXPORT, "unused_resource", StorageType.INT_MEMBER, "int16_t"),
+        (READ_EXPORT, "work_value1", StorageType.FLOAT_MEMBER, "float"),        # quantity
+        (READ_EXPORT, "work_value2", StorageType.FLOAT_MEMBER, "float"),        # execution radius?
+        (READ_EXPORT, "work_range", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "search_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ, "search_time", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "enable_targeting", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ, "combat_level_flag", StorageType.ID_MEMBER, "int8_t"),
+        (READ, "gather_type", StorageType.INT_MEMBER, "int16_t"),
+        (READ, "work_mode2", StorageType.INT_MEMBER, "int16_t"),
+        (READ_EXPORT, "owner_type", StorageType.ID_MEMBER, EnumLookupMember(
             # what can be selected as a target for the unit command?
             raw_type="int8_t",
             type_name="selection_type",
@@ -108,20 +109,20 @@ class UnitCommand(GenieStructure):
             },
         )),
         # TODO: what does it do? right click?
-        (READ, "carry_check", "int8_t"),
-        (READ, "state_build", "int8_t"),
+        (READ, "carry_check", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ, "state_build", StorageType.BOOLEAN_MEMBER, "int8_t"),
         # walking with tool but no resource
-        (READ_EXPORT, "move_sprite_id", "int16_t"),
+        (READ_EXPORT, "move_sprite_id", StorageType.ID_MEMBER, "int16_t"),
         # proceeding resource gathering or attack
-        (READ_EXPORT, "proceed_sprite_id", "int16_t"),
+        (READ_EXPORT, "proceed_sprite_id", StorageType.ID_MEMBER, "int16_t"),
         # actual execution or transformation graphic
-        (READ_EXPORT, "work_sprite_id", "int16_t"),
+        (READ_EXPORT, "work_sprite_id", StorageType.ID_MEMBER, "int16_t"),
         # display resources in hands
-        (READ_EXPORT, "carry_sprite_id", "int16_t"),
+        (READ_EXPORT, "carry_sprite_id", StorageType.ID_MEMBER, "int16_t"),
         # sound to play when execution starts
-        (READ_EXPORT, "resource_gather_sound_id", "int16_t"),
+        (READ_EXPORT, "resource_gather_sound_id", StorageType.ID_MEMBER, "int16_t"),
         # sound to play on resource drop
-        (READ_EXPORT, "resource_deposit_sound_id", "int16_t"),
+        (READ_EXPORT, "resource_deposit_sound_id", StorageType.ID_MEMBER, "int16_t"),
     ]
 
 
@@ -131,9 +132,9 @@ class UnitHeader(GenieStructure):
     struct_description = "stores a bunch of unit commands."
 
     data_format = [
-        (READ, "exists", ContinueReadMember("uint8_t")),
-        (READ, "unit_command_count", "uint16_t"),
-        (READ_EXPORT, "unit_commands", SubdataMember(
+        (READ, "exists", StorageType.BOOLEAN_MEMBER, ContinueReadMember("uint8_t")),
+        (READ, "unit_command_count", StorageType.INT_MEMBER, "uint16_t"),
+        (READ_EXPORT, "unit_commands", StorageType.CONTAINER_MEMBER, SubdataMember(
             ref_type=UnitCommand,
             length="unit_command_count",
         )),
@@ -147,10 +148,10 @@ class UnitLine(GenieStructure):
     struct_description = "stores a bunch of units in SWGB."
 
     data_format = [
-        (READ, "name_length", "uint16_t"),
-        (READ, "name", "char[name_length]"),
-        (READ, "unit_ids_counter", "uint16_t"),
-        (READ, "unit_ids", "int16_t[unit_ids_counter]"),
+        (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
+        (READ, "name", StorageType.STRING_MEMBER, "char[name_length]"),
+        (READ, "unit_ids_counter", StorageType.INT_MEMBER, "uint16_t"),
+        (READ, "unit_ids", StorageType.CONTAINER_MEMBER, "int16_t[unit_ids_counter]"),
     ]
 
 
@@ -160,9 +161,9 @@ class ResourceStorage(GenieStructure):
     struct_description = "determines the resource storage capacity for one unit mode."
 
     data_format = [
-        (READ, "type", "int16_t"),
-        (READ, "amount", "float"),
-        (READ, "used_mode", EnumLookupMember(
+        (READ, "type", StorageType.ID_MEMBER, "int16_t"),
+        (READ, "amount", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "used_mode", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int8_t",
             type_name="resource_handling",
             lookup_dict={
@@ -181,11 +182,11 @@ class DamageGraphic(GenieStructure):
     struct_description = "stores one possible unit image that is displayed at a given damage percentage."
 
     data_format = [
-        (READ_EXPORT, "graphic_id", "int16_t"),
-        (READ_EXPORT, "damage_percent", "int8_t"),
+        (READ_EXPORT, "graphic_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "damage_percent", StorageType.INT_MEMBER, "int8_t"),
         # gets overwritten in aoe memory by the real apply_mode:
-        (READ, "old_apply_mode", "int8_t"),
-        (READ_EXPORT, "apply_mode", EnumLookupMember(
+        (READ, "old_apply_mode", StorageType.ID_MEMBER, "int8_t"),
+        (READ_EXPORT, "apply_mode", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int8_t",
             type_name="damage_draw_type",
             lookup_dict={
@@ -203,7 +204,7 @@ class HitType(GenieStructure):
     struct_description = "stores attack amount for a damage type."
 
     data_format = [
-        (READ, "type_id", EnumLookupMember(
+        (READ, "type_id", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int16_t",
             type_name="hit_class",
             lookup_dict={
@@ -236,7 +237,7 @@ class HitType(GenieStructure):
                 30: "UNKNOWN_30",
             },
         )),
-        (READ, "amount", "int16_t"),
+        (READ, "amount", StorageType.INT_MEMBER, "int16_t"),
     ]
 
 
@@ -246,7 +247,7 @@ class ResourceCost(GenieStructure):
     struct_description = "stores cost for one resource for creating the unit."
 
     data_format = [
-        (READ, "type_id", EnumLookupMember(
+        (READ, "type_id", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int16_t",
             type_name="resource_types",
             lookup_dict={
@@ -451,8 +452,8 @@ class ResourceCost(GenieStructure):
                 197: "SPIES_DISCOUNT",                  # or atheism_active?
             }
         )),
-        (READ, "amount", "int16_t"),
-        (READ, "enabled", "int16_t"),
+        (READ, "amount", StorageType.INT_MEMBER, "int16_t"),
+        (READ, "enabled", StorageType.BOOLEAN_MEMBER, "int16_t"),
     ]
 
 
@@ -463,9 +464,9 @@ class BuildingAnnex(GenieStructure):
     struct_description = "a possible building annex."
 
     data_format = [
-        (READ_EXPORT, "unit_id",    "int16_t"),
-        (READ_EXPORT, "misplaced0", "float"),
-        (READ_EXPORT, "misplaced1", "float"),
+        (READ_EXPORT, "unit_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "misplaced0", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "misplaced1", StorageType.FLOAT_MEMBER, "float"),
     ]
 
 
@@ -479,11 +480,11 @@ class UnitObject(GenieStructure):
     struct_description = "base properties for all units."
 
     data_format = [
-        (READ, "name_length", "uint16_t"),
-        (READ_EXPORT, "id0", "int16_t"),
-        (READ_EXPORT, "language_dll_name", "uint16_t"),
-        (READ_EXPORT, "language_dll_creation", "uint16_t"),
-        (READ_EXPORT, "unit_class", EnumLookupMember(
+        (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
+        (READ_EXPORT, "id0", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "language_dll_name", StorageType.ID_MEMBER, "uint16_t"),
+        (READ_EXPORT, "language_dll_creation", StorageType.ID_MEMBER, "uint16_t"),
+        (READ_EXPORT, "unit_class", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int16_t",
             type_name="unit_classes",
             lookup_dict={
@@ -546,21 +547,22 @@ class UnitObject(GenieStructure):
                 61: "HORSE",
             },
         )),
-        (READ_EXPORT, "graphic_standing0", "int16_t"),
-        (READ_EXPORT, "graphic_standing1", "int16_t"),
-        (READ_EXPORT, "dying_graphic", "int16_t"),
-        (READ_EXPORT, "undead_graphic", "int16_t"),
+        (READ_EXPORT, "graphic_standing0", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "graphic_standing1", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "dying_graphic", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "undead_graphic", StorageType.ID_MEMBER, "int16_t"),
         # 1 = become `dead_unit_id` (reviving does not make it usable again)
-        (READ, "death_mode", "int8_t"),
+        (READ, "death_mode", StorageType.INT_MEMBER, "int8_t"),
         # unit health. -1=insta-die
-        (READ_EXPORT, "hit_points", "int16_t"),
-        (READ, "line_of_sight", "float"),
+        (READ_EXPORT, "hit_points", StorageType.INT_MEMBER, "int16_t"),
+        (READ, "line_of_sight", StorageType.FLOAT_MEMBER, "float"),
         # number of units that can garrison in there
-        (READ, "garrison_capacity", "int8_t"),
-        (READ_EXPORT, "radius_x", "float"),              # size of the unit
-        (READ_EXPORT, "radius_y", "float"),
-        (READ_EXPORT, "radius_z", "float"),
-        (READ_EXPORT, "train_sound", "int16_t"),
+        (READ, "garrison_capacity", StorageType.INT_MEMBER, "int8_t"),
+        # size of the unit
+        (READ_EXPORT, "radius_x", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "radius_y", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "radius_z", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "train_sound", StorageType.ID_MEMBER, "int16_t"),
     ]
 
     # TODO: Enable conversion for AOE1; replace "damage_sound"
@@ -568,19 +570,19 @@ class UnitObject(GenieStructure):
     # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
     #     data_format.append((READ_EXPORT, "damage_sound", "int16_t"))
     # ===========================================================================
-    data_format.append((READ_EXPORT, "damage_sound", "int16_t"))
+    data_format.append((READ_EXPORT, "damage_sound", StorageType.ID_MEMBER, "int16_t"))
 
     data_format.extend([
         # unit id to become on death
-        (READ_EXPORT, "dead_unit_id", "int16_t"),
+        (READ_EXPORT, "dead_unit_id", StorageType.ID_MEMBER, "int16_t"),
         # 0=placable on top of others in scenario editor, 5=can't
-        (READ, "placement_mode", "int8_t"),
-        (READ, "can_be_built_on", "int8_t"),             # 1=no footprints
-        (READ_EXPORT, "icon_id", "int16_t"),             # frame id of the icon slp (57029) to place on the creation button
-        (READ, "hidden_in_editor", "int8_t"),
-        (READ, "old_portrait_icon_id", "int16_t"),
+        (READ, "placement_mode", StorageType.INT_MEMBER, "int8_t"),
+        (READ, "can_be_built_on", StorageType.BOOLEAN_MEMBER, "int8_t"),  # 1=no footprints
+        (READ_EXPORT, "icon_id", StorageType.ID_MEMBER, "int16_t"),      # frame id of the icon slp (57029) to place on the creation button
+        (READ, "hidden_in_editor", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ, "old_portrait_icon_id", StorageType.ID_MEMBER, "int16_t"),
         # 0=unlocked by research, 1=insta-available
-        (READ, "enabled", "int8_t"),
+        (READ, "enabled", StorageType.BOOLEAN_MEMBER, "int8_t"),
     ])
 
     # TODO: Enable conversion for AOE1; replace "disabled"
@@ -588,21 +590,21 @@ class UnitObject(GenieStructure):
     # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
     #     data_format.append((READ, "disabled", "int8_t"))
     # ===========================================================================
-    data_format.append((READ, "disabled", "int8_t"))
+    data_format.append((READ, "disabled", StorageType.BOOLEAN_MEMBER, "int8_t"))
 
     data_format.extend([
         # terrain id that's needed somewhere on the foundation (e.g. dock
         # water)
-        (READ, "placement_side_terrain0", "int16_t"),
-        (READ, "placement_side_terrain1", "int16_t"),    # second slot for ^
+        (READ, "placement_side_terrain0", StorageType.ID_MEMBER, "int16_t"),
+        (READ, "placement_side_terrain1", StorageType.ID_MEMBER, "int16_t"),    # second slot for ^
         # terrain needed for placement (e.g. dock: water)
-        (READ, "placement_terrain0", "int16_t"),
+        (READ, "placement_terrain0", StorageType.ID_MEMBER, "int16_t"),
         # alternative terrain needed for placement (e.g. dock: shallows)
-        (READ, "placement_terrain1", "int16_t"),
+        (READ, "placement_terrain1", StorageType.ID_MEMBER, "int16_t"),
         # minimum space required to allow placement in editor
-        (READ, "clearance_size_x", "float"),
-        (READ, "clearance_size_y", "float"),
-        (READ_EXPORT, "building_mode", EnumLookupMember(
+        (READ, "clearance_size_x", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "clearance_size_y", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "building_mode", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int8_t",
             type_name="building_modes",
             lookup_dict={
@@ -611,7 +613,7 @@ class UnitObject(GenieStructure):
                 3: "ANY",
             },
         )),
-        (READ_EXPORT, "visible_in_fog", EnumLookupMember(
+        (READ_EXPORT, "visible_in_fog", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int8_t",
             type_name="fog_visibility",
             lookup_dict={
@@ -620,7 +622,7 @@ class UnitObject(GenieStructure):
                 3: "ONLY_IN_FOG",
             },
         )),
-        (READ_EXPORT, "terrain_restriction", EnumLookupMember(
+        (READ_EXPORT, "terrain_restriction", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int16_t",      # determines on what type of ground the unit can be placed/walk
             type_name="ground_type",  # is actually the id of the terrain_restriction entry!
             lookup_dict={
@@ -649,11 +651,11 @@ class UnitObject(GenieStructure):
             },
         )),
         # determines whether the unit can fly
-        (READ_EXPORT, "fly_mode", "int8_t"),
-        (READ_EXPORT, "resource_capacity", "int16_t"),
+        (READ_EXPORT, "fly_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ_EXPORT, "resource_capacity", StorageType.INT_MEMBER, "int16_t"),
         # when animals rot, their resources decay
-        (READ_EXPORT, "resource_decay", "float"),
-        (READ_EXPORT, "blast_defense_level", EnumLookupMember(
+        (READ_EXPORT, "resource_decay", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "blast_defense_level", StorageType.ID_MEMBER, EnumLookupMember(
             # receive blast damage from units that have lower or same
             # blast_attack_level.
             raw_type="int8_t",
@@ -665,7 +667,7 @@ class UnitObject(GenieStructure):
                 3: "UNIT_3",    # boar, farm, fishingship, villager, tradecart, sheep, turkey, archers, junk, ships, monk, siege
             }
         )),
-        (READ_EXPORT, "combat_level", EnumLookupMember(
+        (READ_EXPORT, "combat_level", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int8_t",
             type_name="combat_levels",
             lookup_dict={
@@ -677,7 +679,7 @@ class UnitObject(GenieStructure):
                 5: "OTHER",
             }
         )),
-        (READ_EXPORT, "interaction_mode", EnumLookupMember(
+        (READ_EXPORT, "interaction_mode", StorageType.ID_MEMBER, EnumLookupMember(
             # what can be done with this unit?
             raw_type="int8_t",
             type_name="interaction_modes",
@@ -690,7 +692,7 @@ class UnitObject(GenieStructure):
                 5: "SELECT_MOVE",
             },
         )),
-        (READ_EXPORT, "map_draw_level", EnumLookupMember(
+        (READ_EXPORT, "map_draw_level", StorageType.ID_MEMBER, EnumLookupMember(
             # how does the unit show up on the minimap?
             raw_type="int8_t",
             type_name="minimap_modes",
@@ -708,7 +710,7 @@ class UnitObject(GenieStructure):
                 10: "NO_DOT_10",
             },
         )),
-        (READ_EXPORT, "unit_level", EnumLookupMember(
+        (READ_EXPORT, "unit_level", StorageType.ID_MEMBER, EnumLookupMember(
             # selects the available ui command buttons for the unit
             raw_type="int8_t",
             type_name="command_attributes",
@@ -728,18 +730,18 @@ class UnitObject(GenieStructure):
                 12: "UNKNOWN_12",
             },
         )),
-        (READ, "attack_reaction", "float"),
+        (READ, "attack_reaction", StorageType.FLOAT_MEMBER, "float"),
         # palette color id for the minimap
-        (READ_EXPORT, "minimap_color", "int8_t"),
+        (READ_EXPORT, "minimap_color", StorageType.ID_MEMBER, "int8_t"),
         # help text for this unit, stored in the translation dll.
-        (READ_EXPORT, "language_dll_help", "int32_t"),
-        (READ_EXPORT, "language_dll_hotkey_text", "int32_t"),
+        (READ_EXPORT, "language_dll_help", StorageType.ID_MEMBER, "int32_t"),
+        (READ_EXPORT, "language_dll_hotkey_text", StorageType.ID_MEMBER, "int32_t"),
         # language dll dependent (kezb lazouts!)
-        (READ, "hot_keys", "int32_t"),
-        (READ, "reclyclable", "int8_t"),
-        (READ, "enable_auto_gather", "int8_t"),
-        (READ, "doppelgaenger_on_death", "int8_t"),
-        (READ, "resource_gather_drop", "int8_t"),
+        (READ, "hot_keys", StorageType.ID_MEMBER, "int32_t"),
+        (READ, "reclyclable", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ, "enable_auto_gather", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ, "doppelgaenger_on_death", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ, "resource_gather_drop", StorageType.INT_MEMBER, "int8_t"),
     ])
 
     # TODO: Enable conversion for AOE1, AOK; replace 6 values below
@@ -790,8 +792,8 @@ class UnitObject(GenieStructure):
     # val == {-1, 7}: in open area mask is partially displayed
     # val == {6, 10}: building, causes mask to appear on units behind it
     data_format.extend([
-        (READ, "occlusion_mask", "int8_t"),
-        (READ, "obstruction_type", EnumLookupMember(
+        (READ, "occlusion_mask", StorageType.INT_MEMBER, "int8_t"),
+        (READ, "obstruction_type", StorageType.ID_MEMBER, EnumLookupMember(
             # selects the available ui command buttons for the unit
             raw_type="int8_t",
             type_name="obstruction_types",
@@ -805,7 +807,7 @@ class UnitObject(GenieStructure):
         )),
         # There shouldn't be a value here according to genieutils
         # What is this?
-        (READ_EXPORT, "selection_shape", "int8_t"),            # 0=square, 1<=round
+        (READ_EXPORT, "selection_shape", StorageType.INT_MEMBER, "int8_t"),            # 0=square, 1<=round
 
         # bitfield of unit attributes:
         # bit 0: allow garrison,
@@ -816,15 +818,15 @@ class UnitObject(GenieStructure):
         # bit 5: biological unit,
         # bit 6: self-shielding unit,
         # bit 7: invisible unit
-        (READ, "trait", "uint8_t"),
-        (READ, "civilisation", "int8_t"),
+        (READ, "trait", StorageType.INT_MEMBER, "uint8_t"),
+        (READ, "civilisation", StorageType.ID_MEMBER, "int8_t"),
         # leftover from trait+civ variable
-        (READ, "attribute_piece", "int16_t"),
+        (READ, "attribute_piece", StorageType.INT_MEMBER, "int16_t"),
     ])
     # ===========================================================================
 
     data_format.extend([
-        (READ_EXPORT, "selection_effect", EnumLookupMember(
+        (READ_EXPORT, "selection_effect", StorageType.ID_MEMBER, EnumLookupMember(
             # things that happen when the unit was selected
             raw_type="int8_t",
             type_name="selection_effects",
@@ -843,22 +845,22 @@ class UnitObject(GenieStructure):
         )),
         # 0: default, -16: fish trap, farm, 52: deadfarm, OLD-*, 116: flare,
         # whale, dolphin -123: fish
-        (READ, "editor_selection_color", "uint8_t"),
-        (READ_EXPORT, "selection_shape_x", "float"),
-        (READ_EXPORT, "selection_shape_y", "float"),
-        (READ_EXPORT, "selection_shape_z", "float"),
-        (READ_EXPORT, "resource_storage", SubdataMember(
+        (READ, "editor_selection_color", StorageType.ID_MEMBER, "uint8_t"),
+        (READ_EXPORT, "selection_shape_x", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "selection_shape_y", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "selection_shape_z", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "resource_storage", StorageType.CONTAINER_MEMBER, SubdataMember(
             ref_type=ResourceStorage,
             length=3,
         )),
-        (READ, "damage_graphic_count", "int8_t"),
-        (READ_EXPORT, "damage_graphic", SubdataMember(
+        (READ, "damage_graphic_count", StorageType.INT_MEMBER, "int8_t"),
+        (READ_EXPORT, "damage_graphic", StorageType.CONTAINER_MEMBER, SubdataMember(
             ref_type=DamageGraphic,
             length="damage_graphic_count",
         )),
-        (READ_EXPORT, "sound_selection", "int16_t"),
-        (READ_EXPORT, "sound_dying", "int16_t"),
-        (READ_EXPORT, "old_attack_mode", EnumLookupMember(  # obsolete, as it's copied when converting the unit
+        (READ_EXPORT, "sound_selection", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "sound_dying", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "old_attack_mode", StorageType.ID_MEMBER, EnumLookupMember(  # obsolete, as it's copied when converting the unit
             raw_type="int8_t",     # things that happen when the unit was selected
             type_name="attack_modes",
             lookup_dict={
@@ -870,8 +872,8 @@ class UnitObject(GenieStructure):
             },
         )),
 
-        (READ, "convert_terrain", "int8_t"),
-        (READ_EXPORT, "name", "char[name_length]"),
+        (READ, "convert_terrain", StorageType.INT_MEMBER, "int8_t"),
+        (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_length]"),
     ])
 
     # TODO: Enable conversion for SWGB
@@ -884,14 +886,14 @@ class UnitObject(GenieStructure):
     #     ])
     # ===========================================================================
 
-    data_format.append((READ_EXPORT, "id1", "int16_t"))
+    data_format.append((READ_EXPORT, "id1", StorageType.ID_MEMBER, "int16_t"))
 
     # TODO: Enable conversion for AOE1; replace "id2"
     # ===========================================================================
     # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
     #     data_format.append((READ_EXPORT, "id2", "int16_t"))
     # ===========================================================================
-    data_format.append((READ_EXPORT, "id2", "int16_t"))
+    data_format.append((READ_EXPORT, "id2", StorageType.ID_MEMBER, "int16_t"))
 
 
 class TreeUnit(UnitObject):
@@ -904,7 +906,7 @@ class TreeUnit(UnitObject):
     struct_description = "just a tree unit."
 
     data_format = [
-        (READ_EXPORT, None, IncludeMembers(cls=UnitObject)),
+        (READ_EXPORT, None, None, IncludeMembers(cls=UnitObject)),
     ]
 
 
@@ -919,8 +921,8 @@ class AnimatedUnit(UnitObject):
     struct_description = "adds speed property to units."
 
     data_format = [
-        (READ_EXPORT, None, IncludeMembers(cls=UnitObject)),
-        (READ_EXPORT, "speed", "float"),
+        (READ_EXPORT, None, None, IncludeMembers(cls=UnitObject)),
+        (READ_EXPORT, "speed", StorageType.FLOAT_MEMBER, "float"),
     ]
 
 
@@ -934,7 +936,7 @@ class DoppelgangerUnit(AnimatedUnit):
     struct_description = "weird doppelganger unit thats actually the same as an animated unit."
 
     data_format = [
-        (READ_EXPORT, None, IncludeMembers(cls=AnimatedUnit)),
+        (READ_EXPORT, None, None, IncludeMembers(cls=AnimatedUnit)),
     ]
 
 
@@ -949,20 +951,20 @@ class MovingUnit(DoppelgangerUnit):
     struct_description = "adds walking graphics, rotations and tracking properties to units."
 
     data_format = [
-        (READ_EXPORT, None, IncludeMembers(cls=DoppelgangerUnit)),
-        (READ_EXPORT, "walking_graphics0", "int16_t"),
-        (READ_EXPORT, "walking_graphics1", "int16_t"),
-        (READ, "turn_speed", "float"),
-        (READ, "old_size_class", "int8_t"),
+        (READ_EXPORT, None, None, IncludeMembers(cls=DoppelgangerUnit)),
+        (READ_EXPORT, "walking_graphics0", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "walking_graphics1", StorageType.ID_MEMBER, "int16_t"),
+        (READ, "turn_speed", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "old_size_class", StorageType.ID_MEMBER, "int8_t"),
         # unit id for the ground traces
-        (READ, "trail_unit_id", "int16_t"),
+        (READ, "trail_unit_id", StorageType.ID_MEMBER, "int16_t"),
         # ground traces: -1: no tracking present, 2: projectiles with tracking
         # unit
-        (READ, "trail_opsions", "uint8_t"),
+        (READ, "trail_opsions", StorageType.INT_MEMBER, "uint8_t"),
         # ground trace spacing: 0: no tracking, 0.5: trade cart, 0.12: some
         # projectiles, 0.4: other projectiles
-        (READ, "trail_spacing", "float"),
-        (READ, "old_move_algorithm", "int8_t"),
+        (READ, "trail_spacing", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "old_move_algorithm", StorageType.ID_MEMBER, "int8_t"),
     ]
 
     # TODO: Enable conversion for AOE1; replace 5 values below
@@ -977,11 +979,11 @@ class MovingUnit(DoppelgangerUnit):
     #     ])
     # ===========================================================================
     data_format.extend([
-        (READ, "turn_radius", "float"),
-        (READ, "turn_radius_speed", "float"),
-        (READ, "max_yaw_per_sec_moving", "float"),
-        (READ, "stationary_yaw_revolution_time", "float"),
-        (READ, "max_yaw_per_sec_stationary", "float"),
+        (READ, "turn_radius", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "turn_radius_speed", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "max_yaw_per_sec_moving", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "stationary_yaw_revolution_time", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "max_yaw_per_sec_stationary", StorageType.FLOAT_MEMBER, "float"),
     ])
 
 
@@ -996,20 +998,20 @@ class ActionUnit(MovingUnit):
     struct_description = "adds search radius and work properties, as well as movement sounds."
 
     data_format = [
-        (READ_EXPORT, None, IncludeMembers(cls=MovingUnit)),
+        (READ_EXPORT, None, None, IncludeMembers(cls=MovingUnit)),
         # callback unit action id when found.
         # monument and sheep: 107 = enemy convert.
         # all auto-convertible units: 0, most other units: -1
         # e.g. when sheep are discovered
-        (READ, "default_task_id", "int16_t"),
-        (READ, "search_radius", "float"),
-        (READ_EXPORT, "work_rate", "float"),
+        (READ, "default_task_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ, "search_radius", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "work_rate", StorageType.FLOAT_MEMBER, "float"),
         # unit id where gathered resources shall be delivered to
-        (READ_EXPORT, "drop_site0", "int16_t"),
-        (READ_EXPORT, "drop_site1", "int16_t"),          # alternative unit id
+        (READ_EXPORT, "drop_site0", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "drop_site1", StorageType.ID_MEMBER, "int16_t"),          # alternative unit id
         # if a task is not found in the current unit, other units with the same
         # group id are tried.
-        (READ_EXPORT, "task_group", "int8_t"),
+        (READ_EXPORT, "task_group", StorageType.ID_MEMBER, "int8_t"),
         # 1: male villager; 2: female villager; 3+: free slots
         # basically this
         # creates a "swap
@@ -1018,11 +1020,11 @@ class ActionUnit(MovingUnit):
         # different-graphic
         # units together.
         # sound played when a command is instanciated
-        (READ_EXPORT, "command_sound_id", "int16_t"),
+        (READ_EXPORT, "command_sound_id", StorageType.ID_MEMBER, "int16_t"),
         # sound when the command is done (e.g. unit stops at target position)
-        (READ_EXPORT, "stop_sound_id", "int16_t"),
+        (READ_EXPORT, "stop_sound_id", StorageType.ID_MEMBER, "int16_t"),
         # how animals run around randomly
-        (READ, "run_pattern", "int8_t"),
+        (READ, "run_pattern", StorageType.INT_MEMBER, "int8_t"),
     ]
 
     # TODO: Enable conversion for AOE1
@@ -1049,7 +1051,7 @@ class ProjectileUnit(ActionUnit):
     struct_description = "adds attack and armor properties to units."
 
     data_format = [
-        (READ_EXPORT, None, IncludeMembers(cls=ActionUnit)),
+        (READ_EXPORT, None, None, IncludeMembers(cls=ActionUnit)),
     ]
 
     # TODO: Enable conversion for AOE1; replace "default_armor"
@@ -1059,14 +1061,20 @@ class ProjectileUnit(ActionUnit):
     # else:
     #     data_format.append((READ, "default_armor", "int16_t"))
     # ===========================================================================
-    data_format.append((READ, "default_armor", "int16_t"))
+    data_format.append((READ, "default_armor", StorageType.ID_MEMBER, "int16_t"))
 
     data_format.extend([
-        (READ, "attack_count", "uint16_t"),
-        (READ, "attacks", SubdataMember(ref_type=HitType, length="attack_count")),
-        (READ, "armor_count", "uint16_t"),
-        (READ, "armors", SubdataMember(ref_type=HitType, length="armor_count")),
-        (READ_EXPORT, "boundary_id", EnumLookupMember(
+        (READ, "attack_count", StorageType.INT_MEMBER, "uint16_t"),
+        (READ, "attacks", StorageType.CONTAINER_MEMBER, SubdataMember(
+            ref_type=HitType,
+            length="attack_count",
+        )),
+        (READ, "armor_count", StorageType.INT_MEMBER, "uint16_t"),
+        (READ, "armors", StorageType.CONTAINER_MEMBER, SubdataMember(
+            ref_type=HitType,
+            length="armor_count",
+        )),
+        (READ_EXPORT, "boundary_id", StorageType.ID_MEMBER, EnumLookupMember(
             # the damage received by this unit is multiplied by
             # the accessible values on the specified terrain restriction
             raw_type="int16_t",
@@ -1078,20 +1086,20 @@ class ProjectileUnit(ActionUnit):
                 10: "WALL",
             },
         )),
-        (READ_EXPORT, "weapon_range_max", "float"),
-        (READ, "blast_range", "float"),
-        (READ, "attack_speed", "float"),                    # = "reload time"
+        (READ_EXPORT, "weapon_range_max", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "blast_range", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "attack_speed", StorageType.FLOAT_MEMBER, "float"),  # = "reload time"
         # which projectile to use?
-        (READ_EXPORT, "missile_unit_id", "int16_t"),
+        (READ_EXPORT, "missile_unit_id", StorageType.ID_MEMBER, "int16_t"),
         # probablity of attack hit in percent
-        (READ, "base_hit_chance", "int16_t"),
+        (READ, "base_hit_chance", StorageType.INT_MEMBER, "int16_t"),
         # = tower mode?; not used anywhere
-        (READ, "break_off_combat", "int8_t"),
+        (READ, "break_off_combat", StorageType.INT_MEMBER, "int8_t"),
         # the frame number at which the missile is fired, = delay
-        (READ, "frame_delay", "int16_t"),
+        (READ, "frame_delay", StorageType.INT_MEMBER, "int16_t"),
         # graphics displacement in x, y and z
-        (READ, "weapon_offset", "float[3]"),
-        (READ_EXPORT, "blast_level_offence", EnumLookupMember(
+        (READ, "weapon_offset", StorageType.CONTAINER_MEMBER, "float[3]"),
+        (READ_EXPORT, "blast_level_offence", StorageType.ID_MEMBER, EnumLookupMember(
             # blasts damage units that have higher or same blast_defense_level
             raw_type="int8_t",
             type_name="range_damage_type",
@@ -1104,7 +1112,7 @@ class ProjectileUnit(ActionUnit):
             },
         )),
         # minimum range that this projectile requests for display
-        (READ, "weapon_range_min", "float"),
+        (READ, "weapon_range_min", StorageType.FLOAT_MEMBER, "float"),
     ])
 
     # TODO: Enable conversion for AOE1; replace "accuracy_dispersion"
@@ -1112,14 +1120,14 @@ class ProjectileUnit(ActionUnit):
     # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
     #     data_format.append((READ, "accuracy_dispersion", "float"))
     # ===========================================================================
-    data_format.append((READ, "accuracy_dispersion", "float"))
+    data_format.append((READ, "accuracy_dispersion", StorageType.FLOAT_MEMBER, "float"))
 
     data_format.extend([
-        (READ_EXPORT, "fight_sprite_id", "int16_t"),
-        (READ, "melee_armor_displayed", "int16_t"),
-        (READ, "attack_displayed", "int16_t"),
-        (READ, "range_displayed", "float"),
-        (READ, "reload_time_displayed", "float"),
+        (READ_EXPORT, "fight_sprite_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ, "melee_armor_displayed", StorageType.INT_MEMBER, "int16_t"),
+        (READ, "attack_displayed", StorageType.INT_MEMBER, "int16_t"),
+        (READ, "range_displayed", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "reload_time_displayed", StorageType.FLOAT_MEMBER, "float"),
     ])
 
 
@@ -1134,18 +1142,18 @@ class MissileUnit(ProjectileUnit):
     struct_description = "adds missile specific unit properties."
 
     data_format = [
-        (READ_EXPORT, None, IncludeMembers(cls=ProjectileUnit)),
+        (READ_EXPORT, None, None, IncludeMembers(cls=ProjectileUnit)),
         # 0 = default; 1 = projectile falls vertically to the bottom of the
         # map; 3 = teleporting projectiles
-        (READ, "projectile_type", "int8_t"),
+        (READ, "projectile_type", StorageType.ID_MEMBER, "int8_t"),
         # "better aiming". tech attribute 19 changes this: 0 = shoot at current pos; 1 = shoot at predicted pos
-        (READ, "smart_mode", "int8_t"),
-        (READ, "drop_animation_mode", "int8_t"),  # 1 = disappear on hit
+        (READ, "smart_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ, "drop_animation_mode", StorageType.ID_MEMBER, "int8_t"),  # 1 = disappear on hit
         # 1 = pass through hit object; 0 = stop projectile on hit; (only for
         # graphics, not pass-through damage)
-        (READ, "penetration_mode", "int8_t"),
-        (READ, "area_of_effect_special", "int8_t"),
-        (READ_EXPORT, "projectile_arc", "float"),
+        (READ, "penetration_mode", StorageType.ID_MEMBER, "int8_t"),
+        (READ, "area_of_effect_special", StorageType.INT_MEMBER, "int8_t"),
+        (READ_EXPORT, "projectile_arc", StorageType.FLOAT_MEMBER, "float"),
     ]
 
 
@@ -1159,13 +1167,13 @@ class LivingUnit(ProjectileUnit):
     struct_description = "adds creation location and garrison unit properties."
 
     data_format = [
-        (READ_EXPORT, None, IncludeMembers(cls=ProjectileUnit)),
-        (READ_EXPORT, "resource_cost", SubdataMember(
+        (READ_EXPORT, None, None, IncludeMembers(cls=ProjectileUnit)),
+        (READ_EXPORT, "resource_cost", StorageType.CONTAINER_MEMBER, SubdataMember(
             ref_type=ResourceCost,
             length=3,
         )),
-        (READ_EXPORT, "creation_time", "int16_t"),         # in seconds
-        (READ_EXPORT, "train_location_id", "int16_t"),  # e.g. 118 = villager
+        (READ_EXPORT, "creation_time", StorageType.INT_MEMBER, "int16_t"),     # in seconds
+        (READ_EXPORT, "train_location_id", StorageType.ID_MEMBER, "int16_t"),  # e.g. 118 = villager builder
 
         # where to place the button with the given icon
         # creation page:
@@ -1185,7 +1193,7 @@ class LivingUnit(ProjectileUnit):
         # |----|----|----|----|----|
         # | 31 | 32 | 33 | 34 | 35 |
         # +------------------------+
-        (READ, "creation_button_id", "int8_t"),
+        (READ, "creation_button_id", StorageType.ID_MEMBER, "int8_t"),
     ]
 
     # TODO: Enable conversion for AOE1; replace 13 values below
@@ -1230,9 +1238,9 @@ class LivingUnit(ProjectileUnit):
     #     ])
     # ===========================================================================
     data_format.extend([
-        (READ, "rear_attack_modifier", "float"),
-        (READ, "flank_attack_modifier", "float"),
-        (READ_EXPORT, "creatable_type", EnumLookupMember(
+        (READ, "rear_attack_modifier", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "flank_attack_modifier", StorageType.FLOAT_MEMBER, "float"),
+        (READ_EXPORT, "creatable_type", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int8_t",
             type_name="creatable_types",
             lookup_dict={
@@ -1248,25 +1256,25 @@ class LivingUnit(ProjectileUnit):
         )),
         # if building: "others" tab in editor, if living unit: "heroes" tab,
         # regenerate health + monk immunity
-        (READ, "hero_mode", "int8_t"),
+        (READ, "hero_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
         # graphic to display when units are garrisoned
-        (READ_EXPORT, "garrison_graphic", "int32_t"),
+        (READ_EXPORT, "garrison_graphic", StorageType.ID_MEMBER, "int32_t"),
         # projectile count when nothing garrisoned, including both normal and
         # duplicated projectiles
-        (READ, "attack_projectile_count", "float"),
+        (READ, "attack_projectile_count", StorageType.INT_MEMBER, "float"),
         # total projectiles when fully garrisoned
-        (READ, "attack_projectile_max_count", "int8_t"),
-        (READ, "attack_projectile_spawning_area_width", "float"),
-        (READ, "attack_projectile_spawning_area_length", "float"),
+        (READ, "attack_projectile_max_count", StorageType.INT_MEMBER, "int8_t"),
+        (READ, "attack_projectile_spawning_area_width", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "attack_projectile_spawning_area_length", StorageType.FLOAT_MEMBER, "float"),
         # placement randomness, 0=from single spot, 1=random, 1<less random
-        (READ, "attack_projectile_spawning_area_randomness", "float"),
-        (READ, "attack_projectile_secondary_unit_id",
-         "int32_t"),       # uses its own attack values
+        (READ, "attack_projectile_spawning_area_randomness", StorageType.FLOAT_MEMBER, "float"),
+        # uses its own attack values
+        (READ, "attack_projectile_secondary_unit_id", StorageType.ID_MEMBER, "int32_t"),
         # used just before unit reaches its target enemy, configuration:
-        (READ, "special_graphic_id", "int32_t"),
+        (READ, "special_graphic_id", StorageType.ID_MEMBER, "int32_t"),
         # determines adjacent unit graphics, if 1: building can adapt graphics
         # by adjacent buildings
-        (READ, "special_activation", "int8_t"),
+        (READ, "special_activation", StorageType.INT_MEMBER, "int8_t"),
         # 0: default: only works when facing the hit angle.
         # 1: block: activates special graphic when receiving damage and not pursuing the attacker.
         # while idle, blocking decreases damage taken by 1/3.
@@ -1281,7 +1289,7 @@ class LivingUnit(ProjectileUnit):
     # ===========================================================================
 
     # unit stats display of pierce armor
-    data_format.append((READ, "pierce_armor_displayed", "int16_t"))
+    data_format.append((READ, "pierce_armor_displayed", StorageType.INT_MEMBER, "int16_t"))
 
 
 class BuildingUnit(LivingUnit):
@@ -1294,8 +1302,8 @@ class BuildingUnit(LivingUnit):
     struct_description = "construction graphics and garrison building properties for units."
 
     data_format = [
-        (READ_EXPORT, None, IncludeMembers(cls=LivingUnit)),
-        (READ_EXPORT, "construction_graphic_id", "int16_t"),
+        (READ_EXPORT, None, None, IncludeMembers(cls=LivingUnit)),
+        (READ_EXPORT, "construction_graphic_id", StorageType.ID_MEMBER, "int16_t"),
     ]
 
     # TODO: Enable conversion for AOE1; replace "snow_graphic_id"
@@ -1303,22 +1311,22 @@ class BuildingUnit(LivingUnit):
     # if (GameVersion.aoe_1 or GameVersion.aoe_ror or age2_aok) not in game_versions:
     #     data_format.append((READ, "snow_graphic_id", "int16_t"))
     # ===========================================================================
-    data_format.append((READ, "snow_graphic_id", "int16_t"))
+    data_format.append((READ, "snow_graphic_id", StorageType.ID_MEMBER, "int16_t"))
 
     data_format.extend([
         # 1=adjacent units may change the graphics
-        (READ, "adjacent_mode", "int8_t"),
-        (READ, "graphics_angle", "int16_t"),
-        (READ, "disappears_when_built", "int8_t"),
+        (READ, "adjacent_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ, "graphics_angle", StorageType.INT_MEMBER, "int16_t"),
+        (READ, "disappears_when_built", StorageType.BOOLEAN_MEMBER, "int8_t"),
         # second building to place directly on top
-        (READ_EXPORT, "stack_unit_id", "int16_t"),
+        (READ_EXPORT, "stack_unit_id", StorageType.ID_MEMBER, "int16_t"),
         # change underlying terrain to this id when building completed
-        (READ_EXPORT, "foundation_terrain_id", "int16_t"),
+        (READ_EXPORT, "foundation_terrain_id", StorageType.ID_MEMBER, "int16_t"),
         # deprecated terrain-like structures knowns as "Overlays" from alpha
         # AOE used for roads
-        (READ, "old_overlay_id", "int16_t"),
+        (READ, "old_overlay_id", StorageType.ID_MEMBER, "int16_t"),
         # research_id to be enabled when building creation
-        (READ, "research_id", "int16_t"),
+        (READ, "research_id", StorageType.ID_MEMBER, "int16_t"),
     ])
 
     # TODO: Enable conversion for AOE1; replace 5 values below
@@ -1336,20 +1344,20 @@ class BuildingUnit(LivingUnit):
     #     ])
     # ===========================================================================
     data_format.extend([
-        (READ, "can_burn", "int8_t"),
-        (READ_EXPORT, "building_annex", SubdataMember(
+        (READ, "can_burn", StorageType.BOOLEAN_MEMBER, "int8_t"),
+        (READ_EXPORT, "building_annex", StorageType.CONTAINER_MEMBER, SubdataMember(
             ref_type=BuildingAnnex,
             length=4
         )),
         # building at which an annex building is attached to
-        (READ, "head_unit_id", "int16_t"),
+        (READ, "head_unit_id", StorageType.ID_MEMBER, "int16_t"),
         # destination unit id when unit shall transform (e.g. unpack)
-        (READ, "transform_unit_id", "int16_t"),
-        (READ, "transform_sound_id", "int16_t"),
+        (READ, "transform_unit_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ, "transform_sound_id", StorageType.ID_MEMBER, "int16_t"),
     ])
     # ===========================================================================
 
-    data_format.append((READ, "construction_sound_id", "int16_t"))
+    data_format.append((READ, "construction_sound_id", StorageType.ID_MEMBER, "int16_t"))
 
     # TODO: Enable conversion for AOE1; replace 5 values below
     # ===========================================================================
@@ -1375,7 +1383,7 @@ class BuildingUnit(LivingUnit):
     #     ])
     # ===========================================================================
     data_format.extend([
-        (READ_EXPORT, "garrison_type", EnumLookupMember(
+        (READ_EXPORT, "garrison_type", StorageType.ID_MEMBER, EnumLookupMember(
             raw_type="int8_t",
             type_name="garrison_types",
             lookup_dict={  # TODO: create bitfield
@@ -1388,12 +1396,12 @@ class BuildingUnit(LivingUnit):
                 0x0f: "ALL",
             },
         )),
-        (READ, "garrison_heal_rate", "float"),
-        (READ, "garrison_repair_rate", "float"),
+        (READ, "garrison_heal_rate", StorageType.FLOAT_MEMBER, "float"),
+        (READ, "garrison_repair_rate", StorageType.FLOAT_MEMBER, "float"),
         # id of the unit used for salvages
-        (READ, "salvage_unit_id", "int16_t"),
+        (READ, "salvage_unit_id", StorageType.ID_MEMBER, "int16_t"),
         # list of attributes for salvages (looting table)
-        (READ, "salvage_attributes", "int8_t[6]"),
+        (READ, "salvage_attributes", StorageType.CONTAINER_MEMBER, "int8_t[6]"),
     ])
     # ===========================================================================
 
