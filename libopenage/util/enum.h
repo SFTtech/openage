@@ -137,6 +137,7 @@ public:
 
 	constexpr Enum &operator =(const DerivedType &value) {
 		this->value = &value;
+		return *this;
 	}
 
 	constexpr const DerivedType *operator ->() const {
