@@ -123,6 +123,7 @@ _the openage authors_ are:
 | Lorenzo Gaifas              | brisvag                     | brisvag à gmail dawt com                          |
 | Shim Myeongseob             | violet716                   | zzangsim231 à gmail dawt com                      |
 | Serhan Tutar                | randomnoise                 | serhantutar à outlook dawt com                    |
+| Georgy Komarov              | jubnzv                      | jubnzv à gmail dawt com                           |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
