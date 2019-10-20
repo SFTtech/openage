@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -25,7 +25,7 @@ class SoundItem(GenieStructure):
     data_format.append((READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[13]"))
 
     data_format.extend([
-        (READ_EXPORT, "resource_id", StorageType.INT_MEMBER, "int32_t"),
+        (READ_EXPORT, "resource_id", StorageType.ID_MEMBER, "int32_t"),
         (READ_EXPORT, "probablilty", StorageType.INT_MEMBER, "int16_t"),
     ])
 
@@ -38,8 +38,8 @@ class SoundItem(GenieStructure):
     #     ])
     # ===========================================================================
     data_format.extend([
-        (READ_EXPORT, "civilisation", StorageType.ID_MEMBER, "int16_t"),
-        (READ,        "icon_set", StorageType.ID_MEMBER,     "int16_t"),
+        (READ_EXPORT, "civilisation_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ, "icon_set", StorageType.ID_MEMBER, "int16_t"),
     ])
 
 
@@ -49,11 +49,11 @@ class Sound(GenieStructure):
     struct_description = "describes a sound, consisting of several sound items."
 
     data_format = [
-        (READ_EXPORT, "id", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "sound_id", StorageType.ID_MEMBER, "int16_t"),
         (READ, "play_delay", StorageType.INT_MEMBER, "int16_t"),
         (READ_EXPORT, "file_count", StorageType.INT_MEMBER, "uint16_t"),
         (READ, "cache_time", StorageType.INT_MEMBER, "int32_t"),                   # always 300000
-        (READ_EXPORT, "sound_items", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ_EXPORT, "sound_items", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=SoundItem,
             ref_to="id",
             length="file_count",

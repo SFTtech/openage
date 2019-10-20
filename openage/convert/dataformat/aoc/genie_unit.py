@@ -431,7 +431,7 @@ class GenieVillagerGroup(ConverterObjectGroup):
 
         :param group_id: Unit id for the villager unit that is referenced by buildings
                          (in AoE2: 118 = male builder).
-        :param task_group_ids: Internal task group ids in the .dat file. 
+        :param task_group_ids: Internal task group ids in the .dat file.
                                (as a list of integers)
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion

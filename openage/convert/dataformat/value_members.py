@@ -3,6 +3,22 @@
 
 """
 Storage format for values from data file entries.
+Data from ReadMembers is supposed to be transferred
+to these objects for easier handling during the conversion
+process and advanced features like creating diffs.
+
+Quick usage guide on when to use which ValueMember:
+    - IntMember, FloatMember, BooleanMember and StringMember: should
+      be self explanatory.
+    - IDMember: References to other structures in form of identifiers.
+                Also useful for flags with more than two options.
+    - ContainerMember: For modelling specific substructures. ContainerMembers
+                       can store members with different types. However, the
+                       member names must be unique.
+                       (e.g. a unit object)
+    - ArrayMember: Stores a list of members with uniform type. Can be used
+                   when repeating substructures appear in a data file.
+                   (e.g. multiple unit objects, list of coordinates)
 """
 
 from enum import Enum
@@ -357,10 +373,10 @@ class MemberTypes(Enum):
     STRING_MEMBER    = "string"
     CONTAINER_MEMBER = "container"
 
-    # Array types
-    ARRAY_INT        = "intarray"
-    ARRAY_FLOAT      = "floatarray"
-    ARRAY_ID         = "idarray"
-    ARRAY_BOOL       = "boolarray"
-    ARRAY_STRING     = "stringarray"
-    ARRAY_CONTAINER  = "contarray"
+    # Array types                       # array of:
+    ARRAY_INT        = "intarray"       # IntegerMembers
+    ARRAY_FLOAT      = "floatarray"     # FloatMembers
+    ARRAY_BOOL       = "boolarray"      # BooleanMembers
+    ARRAY_ID         = "idarray"        # IDMembers
+    ARRAY_STRING     = "stringarray"    # StringMembers
+    ARRAY_CONTAINER  = "contarray"      # ContainerMembers

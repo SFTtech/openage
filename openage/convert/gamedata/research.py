@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -26,8 +26,8 @@ class Tech(GenieStructure):
     struct_description = "one researchable technology."
 
     data_format = [
-        (READ, "required_techs", StorageType.CONTAINER_MEMBER, "int16_t[6]"),         # research ids of techs that are required for activating the possible research
-        (READ, "research_resource_costs", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ, "required_techs", StorageType.ARRAY_ID, "int16_t[6]"),   # research ids of techs that are required for activating the possible research
+        (READ, "research_resource_costs", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=TechResourceCost,
             length=3,
         )),
@@ -44,7 +44,7 @@ class Tech(GenieStructure):
     # ===========================================================================
     data_format.extend([
         (READ, "civilisation_id", StorageType.ID_MEMBER, "int16_t"),           # id of the civ that gets this technology
-        (READ, "full_tech_mode", StorageType.BOOLEAN_MEMBER, "int16_t"),            # 1: research is available when the full tech tree is activated on game start, 0: not
+        (READ, "full_tech_mode", StorageType.BOOLEAN_MEMBER, "int16_t"),       # 1: research is available when the full tech tree is activated on game start, 0: not
     ])
 
     data_format.extend([
@@ -53,7 +53,7 @@ class Tech(GenieStructure):
         (READ, "language_dll_description", StorageType.ID_MEMBER, "uint16_t"),
         (READ, "research_time", StorageType.INT_MEMBER, "int16_t"),            # time in seconds that are needed to finish this research
         (READ, "tech_effect_id", StorageType.ID_MEMBER, "int16_t"),            # techage id that actually contains the research effect information
-        (READ, "tech_type", StorageType.INT_MEMBER, "int16_t"),                # 0: normal tech, 2: show in Age progress bar
+        (READ, "tech_type", StorageType.ID_MEMBER, "int16_t"),                 # 0: normal tech, 2: show in Age progress bar
         (READ, "icon_id", StorageType.ID_MEMBER, "int16_t"),                   # frame id - 1 in icon slp (57029)
         (READ, "button_id", StorageType.ID_MEMBER, "int8_t"),                  # button id as defined in the unit.py button matrix
         (READ, "language_dll_help", StorageType.ID_MEMBER, "int32_t"),         # 100000 + the language file id for the name/description

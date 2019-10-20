@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -38,12 +38,12 @@ class Civ(GenieStructure):
     # ===========================================================================
 
     data_format.extend([
-        (READ, "resources", StorageType.CONTAINER_MEMBER, "float[resources_count]"),
+        (READ, "resources", StorageType.ARRAY_FLOAT, "float[resources_count]"),
         (READ, "icon_set", StorageType.ID_MEMBER, "int8_t"),                      # building icon set, trade cart graphics, changes no other graphics
         (READ_EXPORT, "unit_count", StorageType.INT_MEMBER, "uint16_t"),
-        (READ, "unit_offsets", StorageType.CONTAINER_MEMBER, "int32_t[unit_count]"),
+        (READ, "unit_offsets", StorageType.ARRAY_ID, "int32_t[unit_count]"),
 
-        (READ_EXPORT, "units", StorageType.CONTAINER_MEMBER, MultisubtypeMember(
+        (READ_EXPORT, "units", StorageType.ARRAY_CONTAINER, MultisubtypeMember(
             type_name          = "unit_types",
             subtype_definition = (READ, "unit_type", StorageType.ID_MEMBER, EnumLookupMember(
                 type_name      = "unit_type_id",

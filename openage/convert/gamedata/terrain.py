@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -60,7 +60,7 @@ class TerrainRestriction(GenieStructure):
         # pass-ability: [no: == 0, yes: > 0]
         # build-ability: [<= 0.05 can't build here, > 0.05 can build]
         # damage: [0: damage multiplier is 1, > 0: multiplier = value]
-        (READ, "accessible_dmgmultiplier", StorageType.CONTAINER_MEMBER, "float[terrain_count]")
+        (READ, "accessible_dmgmultiplier", StorageType.ARRAY_FLOAT, "float[terrain_count]")
     ]
 
     # TODO: Enable conversion for AOE1; replace "pass_graphics"
@@ -71,7 +71,7 @@ class TerrainRestriction(GenieStructure):
     #         length="terrain_count",
     #     )))
     # ===========================================================================
-    data_format.append((READ, "pass_graphics", StorageType.CONTAINER_MEMBER, SubdataMember(
+    data_format.append((READ, "pass_graphics", StorageType.ARRAY_CONTAINER, SubdataMember(
         ref_type=TerrainPassGraphic,
         length="terrain_count",
     )))
@@ -89,7 +89,7 @@ class TerrainAnimation(GenieStructure):
         # pause n * (frame rate) after last frame draw
         (READ, "pause_frame_count", StorageType.INT_MEMBER, "int16_t"),
         # time between frames
-        (READ, "interval", StorageType.FLOAT_MEMBER,  "float"),
+        (READ, "interval", StorageType.FLOAT_MEMBER, "float"),
         # pause time between frames
         (READ, "pause_between_loops", StorageType.FLOAT_MEMBER, "float"),
         # current frame (including animation and pause frames)
@@ -134,7 +134,7 @@ class Terrain(GenieStructure):
 
     data_format.extend([
         (READ_EXPORT, "slp_id", StorageType.ID_MEMBER, "int32_t"),
-        (READ,        "shape_ptr", StorageType.INT_MEMBER, "int32_t"),
+        (READ,        "shape_ptr", StorageType.ID_MEMBER, "int32_t"),
         (READ_EXPORT, "sound_id", StorageType.ID_MEMBER, "int32_t"),
     ])
 
@@ -147,7 +147,7 @@ class Terrain(GenieStructure):
     #     ])
     # ===========================================================================
     data_format.extend([
-        (READ_EXPORT, "blend_priority", StorageType.INT_MEMBER, "int32_t"),     # see doc/media/blendomatic.md for blending stuff
+        (READ_EXPORT, "blend_priority", StorageType.ID_MEMBER, "int32_t"),     # see doc/media/blendomatic.md for blending stuff
         (READ_EXPORT, "blend_mode", StorageType.ID_MEMBER, "int32_t"),
     ])
 
@@ -162,7 +162,7 @@ class Terrain(GenieStructure):
 
         (READ_EXPORT, None, None, IncludeMembers(cls=TerrainAnimation)),
 
-        (READ_EXPORT, "elevation_graphics", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ_EXPORT, "elevation_graphics", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=FrameData,   # tile Graphics: flat, 2 x 8 elevation, 2 x 1:1; frame Count, animations, shape (frame) index
             length=19,
         )),
@@ -172,14 +172,18 @@ class Terrain(GenieStructure):
         (READ_EXPORT, "terrain_to_draw1", StorageType.ID_MEMBER, "int16_t"),
 
         # probably references to the TerrainBorders, there are 42 terrains in game
-        (READ, "borders", StorageType.CONTAINER_MEMBER, ArrayMember(
+        (READ, "borders", StorageType.ARRAY_INT, ArrayMember(
             "int16_t",
             (lambda o: 100 if GameVersion.age2_hd_ak in o.game_versions else 42)
         )),
-        (READ, "terrain_unit_id", StorageType.CONTAINER_MEMBER, "int16_t[30]"),  # place these unit id on the terrain, with prefs from fields below
-        (READ, "terrain_unit_density", StorageType.CONTAINER_MEMBER, "int16_t[30]"),  # how many of the above units to place
-        (READ, "terrain_placement_flag", StorageType.CONTAINER_MEMBER, "int8_t[30]"),   # when placing two terrain units on the same spot, selects which prevails(=1)
-        (READ, "terrain_units_used_count", StorageType.INT_MEMBER, "int16_t"),      # how many entries of the above lists shall we use to place units implicitly when this terrain is placed
+        # place these unit id on the terrain, with prefs from fields below
+        (READ, "terrain_unit_id", StorageType.ARRAY_ID, "int16_t[30]"),
+        # how many of the above units to place
+        (READ, "terrain_unit_density", StorageType.ARRAY_INT, "int16_t[30]"),
+        # when placing two terrain units on the same spot, selects which prevails(=1)
+        (READ, "terrain_placement_flag", StorageType.ARRAY_BOOL, "int8_t[30]"),
+        # how many entries of the above lists shall we use to place units implicitly when this terrain is placed
+        (READ, "terrain_units_used_count", StorageType.INT_MEMBER, "int16_t"),
     ])
 
     # TODO: Enable conversion for SWGB
@@ -196,17 +200,17 @@ class TerrainBorder(GenieStructure):
 
     data_format = [
         (READ, "enabled", StorageType.BOOLEAN_MEMBER, "int8_t"),
-        (READ, "random", StorageType.CONTAINER_MEMBER, "int8_t"),
-        (READ, "name0", StorageType.STRING_MEMBER, "char[13]"),
-        (READ, "name1", StorageType.STRING_MEMBER, "char[13]"),
+        (READ, "random", StorageType.INT_MEMBER, "int8_t"),
+        (READ, "internal_name", StorageType.STRING_MEMBER, "char[13]"),
+        (READ, "filename", StorageType.STRING_MEMBER, "char[13]"),
         (READ, "slp_id", StorageType.ID_MEMBER, "int32_t"),
-        (READ, "shape_ptr", StorageType.CONTAINER_MEMBER, "int32_t"),
+        (READ, "shape_ptr", StorageType.ID_MEMBER, "int32_t"),
         (READ, "sound_id", StorageType.ID_MEMBER, "int32_t"),
-        (READ, "color", StorageType.CONTAINER_MEMBER, "uint8_t[3]"),
+        (READ, "color", StorageType.ARRAY_ID, "uint8_t[3]"),
 
         (READ_EXPORT, None, None, IncludeMembers(cls=TerrainAnimation)),
 
-        (READ, "frames", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ, "frames", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=FrameData,
             length=19 * 12,  # number of tile types * 12
         )),

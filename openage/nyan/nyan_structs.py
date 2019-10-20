@@ -212,7 +212,7 @@ class NyanObject:
     def _prepare_object_content(self, indent_depth) -> str:
         """
         Returns a string containing the nyan object's content
-        (members, nested objects). 
+        (members, nested objects).
 
         Subroutine of dump().
         """
@@ -225,7 +225,7 @@ class NyanObject:
                     empty = False
                     output_str += "%s%s\n" % ((indent_depth + 1) * INDENT,
                                               inherited_member.dump())
-            if empty == False:
+            if empty is not False:
                 output_str += "\n"
 
         if len(self._members) > 0:
@@ -261,7 +261,7 @@ class NyanObject:
     def _prepare_inheritance_content(self) -> str:
         """
         Returns a string containing the nyan object's inheritance set
-        in the header. 
+        in the header.
 
         Subroutine of dump().
         """
@@ -647,7 +647,7 @@ class NyanMember:
         if self.is_initialized():
             # Check if operator type matches with member type
             if self._member_type in (MemberType.INT, MemberType.FLOAT)\
-                    and not self._operator in (MemberOperator.ASSIGN,
+                    and self._operator not in (MemberOperator.ASSIGN,
                                                MemberOperator.ADD,
                                                MemberOperator.SUBTRACT,
                                                MemberOperator.MULTIPLY,
@@ -657,20 +657,20 @@ class NyanMember:
                                    self._member_type))
 
             elif self._member_type is MemberType.TEXT\
-                    and not self._operator in (MemberOperator.ASSIGN,
+                    and self._operator not in (MemberOperator.ASSIGN,
                                                MemberOperator.ADD):
                 raise Exception("%s: %s is not a valid operator for %s member type"
                                 % (self.__repr__(), self._operator,
                                    self._member_type))
 
             elif self._member_type is MemberType.FILE\
-                    and not self._operator is MemberOperator.ASSIGN:
+                    and self._operator is not MemberOperator.ASSIGN:
                 raise Exception("%s: %s is not a valid operator for %s member type"
                                 % (self.__repr__(), self._operator,
                                    self._member_type))
 
             elif self._member_type is MemberType.BOOLEAN\
-                    and not self._operator in (MemberOperator.ASSIGN,
+                    and self._operator not in (MemberOperator.ASSIGN,
                                                MemberOperator.AND,
                                                MemberOperator.OR):
                 raise Exception("%s: %s is not a valid operator for %s member type"
@@ -678,7 +678,7 @@ class NyanMember:
                                    self._member_type))
 
             elif self._member_type is MemberType.SET\
-                    and not self._operator in (MemberOperator.ASSIGN,
+                    and self._operator not in (MemberOperator.ASSIGN,
                                                MemberOperator.ADD,
                                                MemberOperator.SUBTRACT,
                                                MemberOperator.AND,
@@ -688,7 +688,7 @@ class NyanMember:
                                    self._member_type))
 
             elif self._member_type is MemberType.ORDEREDSET\
-                    and not self._operator in (MemberOperator.ASSIGN,
+                    and self._operator not in (MemberOperator.ASSIGN,
                                                MemberOperator.ADD,
                                                MemberOperator.SUBTRACT,
                                                MemberOperator.AND):
@@ -709,8 +709,8 @@ class NyanMember:
                                 % (self.__repr__()))
 
             # NYAN_NONE values can only be assigned
-            if self.value is MemberSpecialValue.NYAN_NONE and not\
-                    self._operator is MemberOperator.ASSIGN:
+            if self.value is MemberSpecialValue.NYAN_NONE and\
+                    self._operator is not MemberOperator.ASSIGN:
                 raise Exception(("%s: 'value' with NYAN_NONE can only have operator type "
                                  "MemberOperator.ASSIGN") % (self.__repr__()))
 
@@ -863,7 +863,7 @@ class InheritedNyanMember(NyanMember):
         """
         Returns True if the inherited member has a value
         """
-        return self.value != None
+        return self.value is not None
 
     def dump(self) -> str:
         """
