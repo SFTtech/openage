@@ -95,7 +95,7 @@ class ConverterObject:
 class ConverterObjectGroup:
     """
     A group of objects that are connected together in some way
-    and need each other for conversion. ConverterObjectGroup 
+    and need each other for conversion. ConverterObjectGroup
     instances are converted to the nyan API.
     """
 
@@ -192,6 +192,6 @@ class ConverterObjectContainer:
     A conainer for all ConverterObject instances in a converter process.
 
     It is recommended to create one ConverterObjectContainer for everything
-    and pass the reference around. 
+    and pass the reference around.
     """
     pass

@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -111,7 +111,7 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
         # always CHUN4 (change unit 4-arg) in AoE1-AoC, later versions name them
         (READ, "name", StorageType.STRING_MEMBER, "char[31]"),
         (READ, "effect_count", StorageType.INT_MEMBER, "uint16_t"),
-        (READ, "effects", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ, "effects", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=Effect,
             length="effect_count",
         )),
@@ -126,7 +126,7 @@ class OtherConnection(GenieStructure):
     struct_description = "misc connection for a building/unit/research connection"
 
     data_format = [
-        (READ, "other_connection", StorageType.INT_MEMBER, EnumLookupMember(  # mode for unit_or_research0
+        (READ, "other_connection", StorageType.ID_MEMBER, EnumLookupMember(  # mode for unit_or_research0
             raw_type="int32_t",
             type_name="connection_mode",
             lookup_dict={
@@ -152,7 +152,7 @@ class AgeTechTree(GenieStructure):
         # 3=marks as not available
         # 4=upgrading, constructing, creating
         # 5=research completed, building built
-        (READ, "status", StorageType.INT_MEMBER, "int8_t"),
+        (READ, "status", StorageType.ID_MEMBER, "int8_t"),
     ]
 
     # TODO: Enable conversion for AOE1; replace 6 values below
@@ -178,18 +178,18 @@ class AgeTechTree(GenieStructure):
     # ===========================================================================
     data_format.extend([
         (READ, "building_count", StorageType.INT_MEMBER, "int8_t"),
-        (READ, "buildings", StorageType.CONTAINER_MEMBER, "int32_t[building_count]"),
+        (READ, "buildings", StorageType.ARRAY_ID, "int32_t[building_count]"),
         (READ, "unit_count", StorageType.INT_MEMBER, "int8_t"),
-        (READ, "units", StorageType.CONTAINER_MEMBER, "int32_t[unit_count]"),
+        (READ, "units", StorageType.ARRAY_ID, "int32_t[unit_count]"),
         (READ, "research_count", StorageType.INT_MEMBER, "int8_t"),
-        (READ, "researches", StorageType.CONTAINER_MEMBER, "int32_t[research_count]"),
+        (READ, "researches", StorageType.ARRAY_ID, "int32_t[research_count]"),
     ])
     # ===========================================================================
 
     data_format.extend([
         (READ, "slots_used", StorageType.INT_MEMBER, "int32_t"),
-        (READ, "unit_researches", StorageType.CONTAINER_MEMBER, "int32_t[10]"),
-        (READ, "other_connections", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ, "unit_researches", StorageType.ARRAY_ID, "int32_t[10]"),
+        (READ, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=OtherConnection,
             length=10,
         )),
@@ -238,7 +238,7 @@ class BuildingConnection(GenieStructure):
         # 5=research completed, building built
         # maybe always 2 because we got 2 of them hardcoded below
         # (unit_or_research, mode)
-        (READ, "status", StorageType.INT_MEMBER, "int8_t"),
+        (READ, "status", StorageType.ID_MEMBER, "int8_t"),
     ]
 
     # TODO: Enable conversion for AOE1; replace 6 values below
@@ -265,18 +265,18 @@ class BuildingConnection(GenieStructure):
     data_format.extend([
         (READ_EXPORT, "building_count", StorageType.INT_MEMBER, "int8_t"),
         # new buildings available when this building was created
-        (READ, "buildings", StorageType.CONTAINER_MEMBER, "int32_t[building_count]"),
+        (READ, "buildings", StorageType.ARRAY_ID, "int32_t[building_count]"),
         (READ_EXPORT, "unit_count", StorageType.INT_MEMBER, "int8_t"),
-        (READ, "units", StorageType.CONTAINER_MEMBER, "int32_t[unit_count]"),           # new units
+        (READ, "units", StorageType.ARRAY_ID, "int32_t[unit_count]"),           # new units
         (READ_EXPORT, "research_count", StorageType.INT_MEMBER, "int8_t"),
-        (READ, "researches", StorageType.CONTAINER_MEMBER, "int32_t[research_count]"),  # new researches
+        (READ, "researches", StorageType.ARRAY_ID, "int32_t[research_count]"),  # new researches
     ])
     # ===========================================================================
 
     data_format.extend([
         (READ, "slots_used", StorageType.INT_MEMBER, "int32_t"),
-        (READ, "unit_researches", StorageType.CONTAINER_MEMBER, "int32_t[10]"),
-        (READ, "other_connections", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ, "unit_researches", StorageType.ARRAY_ID, "int32_t[10]"),
+        (READ, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=OtherConnection,
             length=10,
         )),
@@ -284,10 +284,10 @@ class BuildingConnection(GenieStructure):
         # minimum age, in which this building is available
         (READ, "location_in_age", StorageType.ID_MEMBER, "int8_t"),
         # total techs for each age (5 ages, post-imp probably counts as one)
-        (READ, "unit_techs_total", StorageType.CONTAINER_MEMBER, "int8_t[5]"),
-        (READ, "unit_techs_first", StorageType.CONTAINER_MEMBER, "int8_t[5]"),
+        (READ, "unit_techs_total", StorageType.ARRAY_INT, "int8_t[5]"),
+        (READ, "unit_techs_first", StorageType.ARRAY_INT, "int8_t[5]"),
         # 5: >=1 connections, 6: no connections
-        (READ_EXPORT, "line_mode", StorageType.INT_MEMBER, "int32_t"),
+        (READ_EXPORT, "line_mode", StorageType.ID_MEMBER, "int32_t"),
         # current building is unlocked by this research id, -1=no unlock needed
         (READ, "enabled_by_research_id", StorageType.ID_MEMBER, "int32_t"),
     ])
@@ -306,18 +306,18 @@ class UnitConnection(GenieStructure):
         # 3=marks as not available
         # 4=upgrading, constructing, creating
         # 5=research completed, building built
-        (READ, "status", StorageType.INT_MEMBER, "int8_t"),  # always 2: default
+        (READ, "status", StorageType.ID_MEMBER, "int8_t"),  # always 2: default
         # building, where this unit is created
         (READ, "upper_building", StorageType.ID_MEMBER, "int32_t"),
 
         (READ, "slots_used", StorageType.INT_MEMBER, "int32_t"),
-        (READ, "unit_researches", StorageType.CONTAINER_MEMBER, "int32_t[10]"),
-        (READ, "other_connections", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ, "unit_researches", StorageType.ARRAY_ID, "int32_t[10]"),
+        (READ, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=OtherConnection,
             length=10,
         )),
 
-        (READ, "vertical_line", StorageType.INT_MEMBER, "int32_t"),
+        (READ, "vertical_line", StorageType.ID_MEMBER, "int32_t"),
     ]
 
     # TODO: Enable conversion for AOE1; replace "unit_count", "units"
@@ -335,7 +335,7 @@ class UnitConnection(GenieStructure):
     # ===========================================================================
     data_format.extend([
         (READ, "unit_count", StorageType.INT_MEMBER, "int8_t"),
-        (READ, "units", StorageType.CONTAINER_MEMBER, "int32_t[unit_count]"),
+        (READ, "units", StorageType.ARRAY_ID, "int32_t[unit_count]"),
     ])
 
     data_format.extend([
@@ -345,7 +345,7 @@ class UnitConnection(GenieStructure):
         (READ, "required_research", StorageType.ID_MEMBER, "int32_t"),
         # 2=first unit in line
         # 3=unit that depends on a previous research in its line
-        (READ, "line_mode", StorageType.INT_MEMBER, "int32_t"),
+        (READ, "line_mode", StorageType.ID_MEMBER, "int32_t"),
         (READ, "enabling_research", StorageType.ID_MEMBER, "int32_t"),
     ])
 
@@ -363,7 +363,7 @@ class ResearchConnection(GenieStructure):
         # 3=marks as not available
         # 4=upgrading, constructing, creating
         # 5=research completed, building built
-        (READ, "status", StorageType.INT_MEMBER, "int8_t"),
+        (READ, "status", StorageType.ID_MEMBER, "int8_t"),
         (READ, "upper_building", StorageType.ID_MEMBER, "int32_t"),
     ]
 
@@ -390,18 +390,18 @@ class ResearchConnection(GenieStructure):
     # ===========================================================================
     data_format.extend([
         (READ, "building_count", StorageType.INT_MEMBER, "int8_t"),
-        (READ, "buildings", StorageType.CONTAINER_MEMBER, "int32_t[building_count]"),
+        (READ, "buildings", StorageType.ARRAY_ID, "int32_t[building_count]"),
         (READ, "unit_count", StorageType.INT_MEMBER, "int8_t"),
-        (READ, "units", StorageType.CONTAINER_MEMBER, "int32_t[unit_count]"),
+        (READ, "units", StorageType.ARRAY_ID, "int32_t[unit_count]"),
         (READ, "research_count", StorageType.INT_MEMBER, "int8_t"),
-        (READ, "researches", StorageType.CONTAINER_MEMBER, "int32_t[research_count]"),
+        (READ, "researches", StorageType.ARRAY_ID, "int32_t[research_count]"),
     ])
     # ===========================================================================
 
     data_format.extend([
         (READ, "slots_used", StorageType.INT_MEMBER, "int32_t"),
-        (READ, "unit_researches", StorageType.CONTAINER_MEMBER, "int32_t[10]"),
-        (READ, "modes", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ, "unit_researches", StorageType.ARRAY_ID, "int32_t[10]"),
+        (READ, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=OtherConnection,
             length=10,
         )),
@@ -410,5 +410,5 @@ class ResearchConnection(GenieStructure):
         (READ, "location_in_age", StorageType.ID_MEMBER, "int32_t"),    # 0=hidden, 1=first, 2=second
         # 0=first age unlocks
         # 4=research
-        (READ, "line_mode", StorageType.INT_MEMBER, "int32_t"),
+        (READ, "line_mode", StorageType.ID_MEMBER, "int32_t"),
     ])

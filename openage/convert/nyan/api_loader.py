@@ -3,7 +3,7 @@
 """
 Loads the API into the converter.
 
-TODO: Implement a parser instead of hardcoded 
+TODO: Implement a parser instead of hardcoded
 object creation.
 """
 

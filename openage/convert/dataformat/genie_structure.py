@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -37,7 +37,7 @@ class GenieStructure:
     game_versions = list()
 
     # struct format specification
-    #===========================================================
+    # ===========================================================
     # contains a list of 4-tuples that define
     # (read_mode, var_name, storage_type, read_type)
     #
@@ -48,7 +48,7 @@ class GenieStructure:
     #               (see value_members.MemberTypes)
     # read_type: ReadMember type for reading the values from bytes
     #            (see read_members.py)
-    #===========================================================
+    # ===========================================================
     data_format = list()
 
     def __init__(self, **args):
