@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -137,6 +137,7 @@ public:
 
 	constexpr Enum &operator =(const DerivedType &value) {
 		this->value = &value;
+		return *this;
 	}
 
 	constexpr const DerivedType *operator ->() const {
