@@ -4,12 +4,10 @@
 - XCode >= Xcode 10.2.1 (Build: 10E1001)
 - Install [Homebrew](http://brew.sh). Other package managers and building from source might also work, but aren't supported as of now. If you figure out fixes for those other options, you're welcome to open pullrequests, as long as the Homebrew build doesn't break.
 ```
-brew update
-brew tap caskroom/cask
-brew tap caskroom/fonts
-brew update` (yes, again)
+brew update-reset && brew update
+brew tap homebrew/cask-fonts
 brew cask install font-dejavu-sans
-brew install python3 libepoxy freetype fontconfig harfbuzz cmake sdl2 sdl2_image opus libogg opusfile libpng
+brew install cmake python3 libepoxy freetype fontconfig harfbuzz sdl2 sdl2_image opus libogg opusfile libpng
 brew install qt5
 brew install -cc=clang llvm@8
 export PATH="/usr/local/opt/llvm@8/bin:$PATH:/usr/local/lib:/usr/local/opt/llvm/bin"
@@ -27,7 +25,7 @@ brew install make
 ## Building
 
 ```
-./configure --compiler=clang --mode=release --download-nyan
+./configure --compiler=clang++ --mode=release --download-nyan
 make
 ```
 ## Testing
