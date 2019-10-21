@@ -195,8 +195,8 @@ void GameSpec::on_gamedata_loaded(const gamedata::empiresdat &gamedata) {
 
 	// create graphic id => graphic map
 	for (auto &graphic : gamedata.graphics.data) {
-		this->graphics[graphic.id] = &graphic;
-		this->slp_to_graphic[graphic.slp_id] = graphic.id;
+		this->graphics[graphic.graphic_id] = &graphic;
+		this->slp_to_graphic[graphic.slp_id] = graphic.graphic_id;
 	}
 
 	log::log(INFO << "Loading textures...");
@@ -249,7 +249,7 @@ void GameSpec::on_gamedata_loaded(const gamedata::empiresdat &gamedata) {
 
 		// create test sound objects that can be played later
 		this->available_sounds.insert({
-			sound.id,
+			sound.sound_id,
 			Sound{
 				this,
 				std::move(sound_items)

@@ -14,9 +14,13 @@ from .generated_file import GeneratedFile
 from .member_access import READ, READ_EXPORT, READ_UNKNOWN, NOREAD_EXPORT
 from openage.convert.dataformat.read_members import (IncludeMembers, ContinueReadMember,
                                                      MultisubtypeMember, GroupMember, SubdataMember,
-                                                     ReadMember)
+                                                     ReadMember,
+                                                     EnumLookupMember)
 from .struct_definition import (StructDefinition, vararray_match,
                                 integer_match)
+from ..dataformat.value_members import MemberTypes as StorageType
+from openage.convert.dataformat.value_members import ContainerMember,\
+    ArrayMember, IntMember, FloatMember, StringMember, BooleanMember, IDMember
 
 
 class GenieStructure:
@@ -197,6 +201,9 @@ class GenieStructure:
         else:
             target_class = self
 
+        # Members are returned at the end
+        generated_value_members = []
+
         # break out of the current reading loop when members don't exist in
         # source data file
         stop_reading_members = False
@@ -226,8 +233,12 @@ class GenieStructure:
                 if isinstance(var_type, IncludeMembers):
                     # call the read function of the referenced class (cls),
                     # but store the data to the current object (self).
-                    offset = var_type.cls.read(self, raw, offset,
-                                               cls=var_type.cls)
+                    offset, gen_members = var_type.cls.read(self, raw, offset,
+                                                            cls=var_type.cls)
+
+                    # Push the passed members directly into the list of generated members
+                    generated_value_members.extend(gen_members)
+
                 else:
                     # create new instance of referenced class (cls),
                     # use its read method to store data to itself,
@@ -235,9 +246,33 @@ class GenieStructure:
                     # TODO: constructor argument passing may be required here.
                     grouped_data = var_type.cls(
                         game_versions=self.game_versions)
-                    offset = grouped_data.read(raw, offset)
+                    offset, gen_members = grouped_data.read(raw, offset)
 
                     setattr(self, var_name, grouped_data)
+
+                    # Store the data
+                    if storage_type is StorageType.CONTAINER_MEMBER:
+                        # push the members into a ContainerMember
+                        container = ContainerMember(var_name, gen_members)
+
+                        generated_value_members.append(container)
+
+                    elif storage_type is StorageType.ARRAY_CONTAINER:
+                        # create a container for the members first, then push the
+                        # container into an array
+                        container = ContainerMember(var_name, gen_members)
+                        allowed_member_type = StorageType.CONTAINER_MEMBER
+                        array = ArrayMember(var_name, allowed_member_type, [container])
+
+                        generated_value_members.append(array)
+
+                    else:
+                        raise Exception("%s at offset %# 08x: Data read via %s "
+                                        "cannot be stored as %s;"
+                                        " expected %s or %s"
+                                        % (var_name, offset, var_type, storage_type,
+                                           StorageType.CONTAINER_MEMBER,
+                                           StorageType.ARRAY_CONTAINER))
 
             elif isinstance(var_type, MultisubtypeMember):
                 # subdata reference implies recursive call for reading the
@@ -269,6 +304,10 @@ class GenieStructure:
                                              for key in var_type.class_lookup})
                     single_type_subdata = False
 
+                # List for storing the ValueMember instance of each subdata structure
+                subdata_value_members = []
+                allowed_member_type = StorageType.CONTAINER_MEMBER
+
                 # check if entries need offset checking
                 if var_type.offset_to:
                     offset_lookup = getattr(self, var_type.offset_to[0])
@@ -291,7 +330,7 @@ class GenieStructure:
                         # to determine the subtype class, read the binary
                         # definition. this utilizes an on-the-fly definition
                         # of the data to be read.
-                        offset = self.read(
+                        offset, _ = self.read(
                             raw, offset, cls=target_class,
                             members=(((False,) + var_type.subtype_definition),)
                         )
@@ -315,7 +354,7 @@ class GenieStructure:
                         game_versions=self.game_versions, **varargs)
 
                     # recursive call, read the subdata.
-                    offset = new_data.read(raw, offset, new_data_class)
+                    offset, gen_members = new_data.read(raw, offset, new_data_class)
 
                     # append the new data to the appropriate list
                     if single_type_subdata:
@@ -323,11 +362,33 @@ class GenieStructure:
                     else:
                         getattr(self, var_name)[subtype_name].append(new_data)
 
+                    # Append the data to the ValueMember list
+                    if storage_type is StorageType.ARRAY_CONTAINER:
+                        # create a container for the retrieved members
+                        container = ContainerMember(var_name, gen_members)
+
+                        # Save the container to a list
+                        # The array is created after the for-loop
+                        subdata_value_members.append(container)
+
+                    else:
+                        raise Exception("%s at offset %# 08x: Data read via %s "
+                                        "cannot be stored as %s;"
+                                        " expected %s"
+                                        % (var_name, offset, var_type, storage_type,
+                                           StorageType.ARRAY_CONTAINER))
+
+                # Create an array from the subdata structures
+                # and append it to the other generated members
+                array = ArrayMember(var_name, allowed_member_type, subdata_value_members)
+                generated_value_members.append(array)
+
             else:
                 # reading binary data, as this member is no reference but
                 # actual content.
 
                 data_count = 1
+                is_array = False
                 is_custom_member = False
 
                 if isinstance(var_type, str):
@@ -348,11 +409,24 @@ class GenieStructure:
                             # dynamic length specified by member name
                             data_count = getattr(self, data_count)
 
+                        if storage_type not in (StorageType.STRING_MEMBER,
+                                                StorageType.ARRAY_INT,
+                                                StorageType.ARRAY_FLOAT,
+                                                StorageType.ARRAY_BOOL,
+                                                StorageType.ARRAY_ID,
+                                                StorageType.ARRAY_STRING):
+                            raise Exception("%s at offset %# 08x: Data read via %s "
+                                            "cannot be stored as %s;"
+                                            " expected ArrayMember format"
+                                            % (var_name, offset, var_type, storage_type))
+
                     else:
                         struct_type = var_type
                         data_count = 1
 
                 elif isinstance(var_type, ReadMember):
+                    # These could be EnumMember, EnumLookupMember, etc.
+
                     # special type requires having set the raw data type
                     struct_type = var_type.raw_type
                     data_count = var_type.get_length(self)
@@ -392,6 +466,66 @@ class GenieStructure:
                 if symbol == "s":
                     # stringify char array
                     result = decode_until_null(result[0])
+
+                    if storage_type is StorageType.STRING_MEMBER:
+                        gen_member = StringMember(var_name, result)
+
+                    else:
+                        raise Exception("%s at offset %# 08x: Data read via %s "
+                                        "cannot be stored as %s;"
+                                        " expected %s"
+                                        % (var_name, offset, var_type, storage_type,
+                                           StorageType.STRING_MEMBER))
+
+                    generated_value_members.append(gen_member)
+
+                elif is_array:
+                    # Turn every element of result into a member
+                    # and put them into an array
+                    array_members = []
+                    allowed_member_type = None
+
+                    for elem in result:
+                        if storage_type is StorageType.ARRAY_INT:
+                            gen_member = IntMember(var_name, elem)
+                            allowed_member_type = StorageType.INT_MEMBER
+                            array_members.append(gen_member)
+
+                        elif storage_type is StorageType.ARRAY_FLOAT:
+                            gen_member = FloatMember(var_name, elem)
+                            allowed_member_type = StorageType.FLOAT_MEMBER
+                            array_members.append(gen_member)
+
+                        elif storage_type is StorageType.ARRAY_BOOL:
+                            gen_member = BooleanMember(var_name, elem)
+                            allowed_member_type = StorageType.BOOLEAN_MEMBER
+                            array_members.append(gen_member)
+
+                        elif storage_type is StorageType.ARRAY_ID:
+                            gen_member = IDMember(var_name, elem)
+                            allowed_member_type = StorageType.ID_MEMBER
+                            array_members.append(gen_member)
+
+                        elif storage_type is StorageType.ARRAY_STRING:
+                            gen_member = StringMember(var_name, elem)
+                            allowed_member_type = StorageType.STRING_MEMBER
+                            array_members.append(gen_member)
+
+                        else:
+                            raise Exception("%s at offset %# 08x: Data read via %s "
+                                            "cannot be stored as %s;"
+                                            " expected %s, %s, %s, %s or %s"
+                                            % (var_name, offset, var_type, storage_type,
+                                               StorageType.ARRAY_INT,
+                                               StorageType.ARRAY_FLOAT,
+                                               StorageType.ARRAY_BOOL,
+                                               StorageType.ARRAY_ID,
+                                               StorageType.ARRAY_STRING))
+
+                    # Create the array
+                    array = ArrayMember(var_name, allowed_member_type, array_members)
+                    generated_value_members.append(array)
+
                 elif data_count == 1:
                     # store first tuple element
                     result = result[0]
@@ -401,6 +535,66 @@ class GenieStructure:
                             raise Exception("invalid float when "
                                             "reading %s at offset %# 08x" % (
                                                 var_name, offset))
+
+                    # Store the member as ValueMember
+                    if is_custom_member:
+                        lookup_result = var_type.entry_hook(result)
+
+                        if isinstance(var_type, EnumLookupMember):
+                            # store differently depending on storage type
+                            if storage_type in (StorageType.INT_MEMBER,
+                                                StorageType.ID_MEMBER):
+                                # store as plain integer value
+                                gen_member = IntMember(var_name, result)
+
+                            elif storage_type is StorageType.STRING_MEMBER:
+                                # store by looking up value from dict
+                                gen_member = StringMember(var_name, lookup_result)
+
+                            else:
+                                raise Exception("%s at offset %# 08x: Data read via %s "
+                                                "cannot be stored as %s;"
+                                                " expected %s, %s or %s"
+                                                % (var_name, offset, var_type, storage_type,
+                                                   StorageType.INT_MEMBER,
+                                                   StorageType.ID_MEMBER,
+                                                   StorageType.STRING_MEMBER))
+
+                        elif isinstance(var_type, ContinueReadMember):
+                            if storage_type is StorageType.BOOLEAN_MEMBER:
+                                gen_member = StringMember(var_name, lookup_result)
+
+                            else:
+                                raise Exception("%s at offset %# 08x: Data read via %s "
+                                                "cannot be stored as %s;"
+                                                " expected %s"
+                                                % (var_name, offset, var_type, storage_type,
+                                                   StorageType.BOOLEAN_MEMBER))
+
+                    else:
+                        if storage_type is StorageType.INT_MEMBER:
+                            gen_member = IntMember(var_name, result)
+
+                        elif storage_type is StorageType.FLOAT_MEMBER:
+                            gen_member = FloatMember(var_name, result)
+
+                        elif storage_type is StorageType.BOOLEAN_MEMBER:
+                            gen_member = BooleanMember(var_name, result)
+
+                        elif storage_type is StorageType.ID_MEMBER:
+                            gen_member = IDMember(var_name, result)
+
+                        else:
+                            raise Exception("%s at offset %# 08x: Data read via %s "
+                                            "cannot be stored as %s;"
+                                            " expected %s, %s, %s or %s"
+                                            % (var_name, offset, var_type, storage_type,
+                                               StorageType.INT_MEMBER,
+                                               StorageType.FLOAT_MEMBER,
+                                               StorageType.BOOLEAN_MEMBER,
+                                               StorageType.ID_MEMBER))
+
+                    generated_value_members.append(gen_member)
 
                 # increase the current file position by the size we just read
                 offset += struct.calcsize(struct_format)
@@ -416,7 +610,7 @@ class GenieStructure:
                 # store member's data value
                 setattr(self, var_name, result)
 
-        return offset
+        return offset, generated_value_members
 
     @classmethod
     def structs(cls):
@@ -517,9 +711,6 @@ class GenieStructure:
         """
 
         for member in cls.data_format:
-            if len(member) < 4:
-                print(member)
-
             export, _, storage_type, read_type = member
 
             definitively_return_member = False

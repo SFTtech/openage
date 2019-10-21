@@ -365,7 +365,7 @@ class EmpiresDatWrapper(GenieStructure):
 
     # TODO: we could reference to other gamedata structures
     data_format = [
-        (READ_EXPORT, "empiresdat", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ_EXPORT, "empiresdat", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=EmpiresDat,
             length=1,
         )),
@@ -413,7 +413,7 @@ def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False)
     spam("length of decompressed data: %d", len(file_data))
 
     gamespec = EmpiresDatWrapper(game_versions=game_versions)
-    gamespec.read(file_data, 0)
+    _, convert_data = gamespec.read(file_data, 0)
 
     if cachefile_name:
         dbg("dumping dat file contents to cache file: %s", cachefile_name)
