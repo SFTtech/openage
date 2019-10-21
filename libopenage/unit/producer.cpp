@@ -124,7 +124,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	};
 
 	// shape of the outline
-	if (this->unit_data.selection_shape > 1) {
+	if (this->unit_data.obstruction_class > 1) {
 		this->terrain_outline = radial_outline(this->unit_data.radius_x);
 	}
 	else {
@@ -295,7 +295,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// create new object with correct base shape
-	if (this->unit_data.selection_shape > 1) {
+	if (this->unit_data.obstruction_class > 1) {
 		u->make_location<RadialObject>(this->unit_data.radius_x, this->terrain_outline);
 	}
 	else {

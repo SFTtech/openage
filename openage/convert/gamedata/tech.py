@@ -211,8 +211,8 @@ class AgeTechTree(GenieStructure):
     #     ])
     # ===========================================================================
     data_format.extend([
-        (READ, "buildings_per_zone", StorageType.INT_MEMBER, "int8_t[10]"),
-        (READ, "group_length_per_zone", StorageType.INT_MEMBER, "int8_t[10]"),
+        (READ, "buildings_per_zone", StorageType.ARRAY_INT, "int8_t[10]"),
+        (READ, "group_length_per_zone", StorageType.ARRAY_INT, "int8_t[10]"),
     ])
 
     data_format.extend([

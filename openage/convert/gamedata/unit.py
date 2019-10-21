@@ -1167,7 +1167,7 @@ class LivingUnit(ProjectileUnit):
 
     data_format = [
         (READ_EXPORT, None, None, IncludeMembers(cls=ProjectileUnit)),
-        (READ_EXPORT, "resource_cost", StorageType.CONTAINER_MEMBER, SubdataMember(
+        (READ_EXPORT, "resource_cost", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=ResourceCost,
             length=3,
         )),
