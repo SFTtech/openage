@@ -1,10 +1,11 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_application_impl.h"
 
 #include <locale>
 #include <cassert>
 
+#include <QSurfaceFormat>
 #include <QtGlobal>
 #include <QtDebug>
 
@@ -16,6 +17,14 @@ std::shared_ptr<GuiApplicationImpl> GuiApplicationImpl::get() {
 	std::shared_ptr<GuiApplicationImpl> candidate = GuiApplicationImpl::instance.lock();
 
 	assert(!candidate || std::this_thread::get_id() == candidate->owner);
+
+	// Ensure that OpenGL is used and not OpenGL ES.
+	// This occurred in macos. See issue #1177 (PR #1179)
+	if (!candidate) {
+		QSurfaceFormat format;
+		format.setRenderableType(QSurfaceFormat::OpenGL);
+		QSurfaceFormat::setDefaultFormat(format);
+	}
 
 	return candidate ? candidate : std::shared_ptr<GuiApplicationImpl>{new GuiApplicationImpl};
 }
