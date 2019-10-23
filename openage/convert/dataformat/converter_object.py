@@ -19,18 +19,20 @@ class ConverterObject:
         Creates a new ConverterObject.
 
         :param obj_id: An identifier for the object (as a string or int)
-        :param members: A list of members.
+        :param members: An already existing member dict.
         """
         self.obj_id = obj_id
 
+        self.members = {}
+
         if members:
-            if all(isinstance(member, ValueMember) for member in members):
-                self.members = {}
+            member_list = list(members.values())
 
-                self._create_member_dict(members)
+            if all(isinstance(member, ValueMember) for member in member_list):
+                self.members.update(members)
 
-        else:
-            raise Exception("members must be an instance of ValueMember")
+            else:
+                raise Exception("members must be an instance of ValueMember")
 
     def get_id(self):
         """
@@ -44,6 +46,14 @@ class ConverterObject:
         """
         key = member.get_name()
         self.members.update({key: member})
+
+    def add_members(self, members):
+        """
+        Adds multiple members to the object.
+        """
+        for member in members:
+            key = member.get_name()
+            self.members.update({key: member})
 
     def get_member(self, name):
         """
@@ -79,13 +89,6 @@ class ConverterObject:
         """
         raise NotImplementedError(
             "%s has no diff() implementation" % (type(self)))
-
-    def _create_member_dict(self, member_list):
-        """
-        Creates the dict from the member list passed to __init__.
-        """
-        for member in member_list:
-            self.add_member(member)
 
     def __repr__(self):
         raise NotImplementedError(

@@ -3,8 +3,8 @@
 # TODO pylint: disable=C,R
 
 from . import unit
-from openage.convert.dataformat.genie_structure import GenieStructure
-from openage.convert.dataformat.read_members import MultisubtypeMember, EnumLookupMember
+from ..dataformat.genie_structure import GenieStructure
+from ..dataformat.read_members import MultisubtypeMember, EnumLookupMember
 from ..dataformat.member_access import READ, READ_EXPORT
 from ..dataformat.value_members import MemberTypes as StorageType
 

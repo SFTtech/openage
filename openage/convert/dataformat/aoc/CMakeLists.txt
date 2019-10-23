@@ -3,10 +3,11 @@ add_py_modules(
 	genie_civ.py
 	genie_connection.py
 	genie_effect.py
+	genie_graphic.py
 	genie_object_container.py
 	genie_sound.py
-	genie_sprite.py
 	genie_tech.py
+	genie_terrain.py
 	genie_unit.py
 	internal_nyan_names.py
 )
