@@ -1,6 +1,6 @@
 # Copyright 2019-2019 the openage authors. See copying.md for legal info.
 
-from openage.convert.dataformat.converter_object import ConverterObject,\
+from ...dataformat.converter_object import ConverterObject,\
     ConverterObjectGroup
 
 
@@ -9,7 +9,7 @@ class GenieCivilizationObject(ConverterObject):
     Civilization in AoE2.
     """
 
-    def __init__(self, civ_id, full_data_set):
+    def __init__(self, civ_id, full_data_set, members=None):
         """
         Creates a new Genie civilization object.
 
@@ -18,9 +18,10 @@ class GenieCivilizationObject(ConverterObject):
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
+        :param members: An already existing member dict.
         """
 
-        super().__init__(civ_id)
+        super().__init__(civ_id, members=members)
 
         self.data = full_data_set
         self.data.genie_civs.update({self.get_id(): self})

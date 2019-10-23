@@ -3,8 +3,8 @@
 # TODO pylint: disable=C,R
 
 from ..game_versions import GameVersion
-from openage.convert.dataformat.genie_structure import GenieStructure
-from openage.convert.dataformat.read_members import ArrayMember, SubdataMember, IncludeMembers
+from ..dataformat.genie_structure import GenieStructure
+from ..dataformat.read_members import ArrayMember, SubdataMember, IncludeMembers
 from ..dataformat.member_access import READ, READ_EXPORT
 from ..dataformat.value_members import MemberTypes as StorageType
 
@@ -152,7 +152,7 @@ class Terrain(GenieStructure):
     ])
 
     data_format.extend([
-        (READ_EXPORT, "map_color_hi", StorageType.ID_MEMBER, "uint8_t"),     # color of this terrain tile, mainly used in the minimap.
+        (READ_EXPORT, "map_color_hi", StorageType.ID_MEMBER, "uint8_t"),       # color of this terrain tile, mainly used in the minimap.
         (READ_EXPORT, "map_color_med", StorageType.ID_MEMBER, "uint8_t"),
         (READ_EXPORT, "map_color_low", StorageType.ID_MEMBER, "uint8_t"),
         (READ_EXPORT, "map_color_cliff_lt", StorageType.ID_MEMBER, "uint8_t"),
@@ -163,7 +163,7 @@ class Terrain(GenieStructure):
         (READ_EXPORT, None, None, IncludeMembers(cls=TerrainAnimation)),
 
         (READ_EXPORT, "elevation_graphics", StorageType.ARRAY_CONTAINER, SubdataMember(
-            ref_type=FrameData,   # tile Graphics: flat, 2 x 8 elevation, 2 x 1:1; frame Count, animations, shape (frame) index
+            ref_type=FrameData,   # tile Graphics: flat, 2 x 8 elevation, 2 x 1:1;
             length=19,
         )),
 

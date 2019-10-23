@@ -1,6 +1,6 @@
 # Copyright 2019-2019 the openage authors. See copying.md for legal info.
 
-from openage.convert.dataformat.converter_object import ConverterObjectContainer
+from ...dataformat.converter_object import ConverterObjectContainer
 
 
 class GenieObjectContainer(ConverterObjectContainer):
@@ -26,6 +26,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.tech_connections = {}
         self.genie_graphics = {}
         self.genie_sounds = {}
+        self.genie_terrains = {}
 
         # ConverterObjectGroup types (things that will become
         # nyan objects)

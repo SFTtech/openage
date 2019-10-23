@@ -35,3 +35,7 @@ def load_api():
     nyan_object.set_fqon(fqon)
 
     api_objects.update({fqon: nyan_object})
+
+    # TODO
+
+    return api_objects

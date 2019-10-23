@@ -2,10 +2,10 @@
 
 # TODO pylint: disable=C,R,too-many-lines
 
-from openage.convert.dataformat.genie_structure import GenieStructure
+from ..dataformat.genie_structure import GenieStructure
 from ..dataformat.member_access import READ, READ_EXPORT
 from ..dataformat.value_members import MemberTypes as StorageType
-from openage.convert.dataformat.read_members import EnumLookupMember, ContinueReadMember, IncludeMembers, SubdataMember
+from ..dataformat.read_members import EnumLookupMember, ContinueReadMember, IncludeMembers, SubdataMember
 
 
 class UnitCommand(GenieStructure):
@@ -145,7 +145,7 @@ class UnitHeader(GenieStructure):
 class UnitLine(GenieStructure):
     name_struct        = "unit_line"
     name_struct_file   = "unit_lines"
-    struct_description = "stores a bunch of units in SWGB."
+    struct_description = "stores refernces to units in SWGB."
 
     data_format = [
         (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
@@ -794,7 +794,6 @@ class UnitObject(GenieStructure):
     data_format.extend([
         (READ, "occlusion_mask", StorageType.ID_MEMBER, "int8_t"),
         (READ, "obstruction_type", StorageType.ID_MEMBER, EnumLookupMember(
-            # selects the available ui command buttons for the unit
             raw_type="int8_t",
             type_name="obstruction_types",
             lookup_dict={
@@ -1009,15 +1008,14 @@ class ActionUnit(MovingUnit):
         (READ_EXPORT, "drop_site0", StorageType.ID_MEMBER, "int16_t"),
         (READ_EXPORT, "drop_site1", StorageType.ID_MEMBER, "int16_t"),  # alternative unit id
         # if a task is not found in the current unit, other units with the same
-        # group id are tried.
-        (READ_EXPORT, "task_group", StorageType.ID_MEMBER, "int8_t"),
-        # 1: male villager; 2: female villager; 3+: free slots
-        # basically this
-        # creates a "swap
-        # group id" where you
-        # can place
-        # different-graphic
-        # units together.
+        # task group are tried.
+        (READ_EXPORT, "task_group", StorageType.ID_MEMBER, "int8_t"),   # 1: male villager; 2: female villager; 3+: free slots
+                                                                        # basically this
+                                                                        # creates a "swap
+                                                                        # group id" where you
+                                                                        # can place
+                                                                        # different-graphic
+                                                                        # units together.
         # sound played when a command is instanciated
         (READ_EXPORT, "command_sound_id", StorageType.ID_MEMBER, "int16_t"),
         # sound when the command is done (e.g. unit stops at target position)

@@ -29,6 +29,7 @@ add_pxds(
 )
 
 add_subdirectory(dataformat)
+add_subdirectory(export)
 add_subdirectory(gamedata)
 add_subdirectory(hardcoded)
 add_subdirectory(interface)

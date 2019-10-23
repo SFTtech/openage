@@ -12,14 +12,14 @@ from ...util.strings import decode_until_null
 from .data_definition import DataDefinition
 from .generated_file import GeneratedFile
 from .member_access import READ, READ_EXPORT, READ_UNKNOWN, NOREAD_EXPORT
-from openage.convert.dataformat.read_members import (IncludeMembers, ContinueReadMember,
-                                                     MultisubtypeMember, GroupMember, SubdataMember,
-                                                     ReadMember,
-                                                     EnumLookupMember)
+from .read_members import (IncludeMembers, ContinueReadMember,
+                           MultisubtypeMember, GroupMember, SubdataMember,
+                           ReadMember,
+                           EnumLookupMember)
 from .struct_definition import (StructDefinition, vararray_match,
                                 integer_match)
-from ..dataformat.value_members import MemberTypes as StorageType
-from openage.convert.dataformat.value_members import ContainerMember,\
+from .value_members import MemberTypes as StorageType
+from .value_members import ContainerMember,\
     ArrayMember, IntMember, FloatMember, StringMember, BooleanMember, IDMember
 
 

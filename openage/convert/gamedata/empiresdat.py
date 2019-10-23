@@ -16,8 +16,8 @@ from . import terrain
 from . import unit
 
 from ..game_versions import GameVersion
-from openage.convert.dataformat.genie_structure import GenieStructure
-from openage.convert.dataformat.read_members import SubdataMember
+from ..dataformat.genie_structure import GenieStructure
+from ..dataformat.read_members import SubdataMember
 from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
 from ..dataformat.value_members import MemberTypes as StorageType
 
@@ -119,7 +119,6 @@ class EmpiresDat(GenieStructure):
     # TODO: Enable conversion for SWGB; replace "terrains"
     # ===========================================================================
     # # 42 terrains are stored (100 in African Kingdoms), but less are used.
-    # # TODO: maybe this number is defined somewhere.
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ_EXPORT,  "terrains", SubdataMember(
     #             ref_type=terrain.Terrain,
@@ -145,7 +144,6 @@ class EmpiresDat(GenieStructure):
         (READ_EXPORT,  "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=terrain.Terrain,
             # 42 terrains are stored (100 in African Kingdoms), but less are used.
-            # TODO: maybe this number is defined somewhere.
             length=(lambda self:
                     100 if GameVersion.age2_hd_ak in self.game_versions
                     else 42),
@@ -305,7 +303,7 @@ class EmpiresDat(GenieStructure):
 
     # technology tree data
     data_format.extend([
-        (READ_EXPORT, "age_entry_count", StorageType.INT_MEMBER, "uint8_t"),
+        (READ_EXPORT, "age_connection_count", StorageType.INT_MEMBER, "uint8_t"),
         (READ_EXPORT, "building_connection_count", StorageType.INT_MEMBER, "uint8_t"),
     ])
 
@@ -319,25 +317,25 @@ class EmpiresDat(GenieStructure):
     data_format.append((READ_EXPORT, "unit_connection_count", StorageType.INT_MEMBER, "uint8_t"))
 
     data_format.extend([
-        (READ_EXPORT, "research_connection_count", StorageType.INT_MEMBER, "uint8_t"),
+        (READ_EXPORT, "tech_connection_count", StorageType.INT_MEMBER, "uint8_t"),
         (READ_EXPORT, "total_unit_tech_groups", StorageType.INT_MEMBER, "int32_t"),
-        (READ_EXPORT, "age_tech_tree", StorageType.ARRAY_CONTAINER, SubdataMember(
+        (READ_EXPORT, "age_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=tech.AgeTechTree,
-            length="age_entry_count"
+            length="age_connection_count"
         )),
         # What is this? There shouldn't be something here
         # (READ_UNKNOWN, None, "int32_t"),
-        (READ_EXPORT, "building_connection", StorageType.ARRAY_CONTAINER, SubdataMember(
+        (READ_EXPORT, "building_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=tech.BuildingConnection,
             length="building_connection_count"
         )),
-        (READ_EXPORT, "unit_connection", StorageType.ARRAY_CONTAINER, SubdataMember(
+        (READ_EXPORT, "unit_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=tech.UnitConnection,
             length="unit_connection_count"
         )),
-        (READ_EXPORT, "research_connection", StorageType.ARRAY_CONTAINER, SubdataMember(
+        (READ_EXPORT, "tech_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=tech.ResearchConnection,
-            length="research_connection_count"
+            length="tech_connection_count"
         )),
     ])
 
@@ -374,7 +372,7 @@ class EmpiresDatWrapper(GenieStructure):
 
 def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False):
     """
-    Helper method that loads the contents of a 'empires.dat' gzipped gamespec
+    Helper method that loads the contents of a 'empires.dat' gzipped wrapper
     file.
 
     If cachefile_name is given, this file is consulted before performing the
@@ -387,11 +385,11 @@ def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False)
                 # pickle.load() can fail in many ways, we need to catch all.
                 # pylint: disable=broad-except
                 try:
-                    gamespec = pickle.load(cachefile)
-                    info("using cached gamespec: %s", cachefile_name)
-                    return gamespec
+                    wrapper = pickle.load(cachefile)
+                    info("using cached wrapper: %s", cachefile_name)
+                    return wrapper
                 except Exception:
-                    warn("could not use cached gamespec:")
+                    warn("could not use cached wrapper:")
                     import traceback
                     traceback.print_exc()
                     warn("we will just skip the cache, no worries.")
@@ -412,8 +410,11 @@ def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False)
 
     spam("length of decompressed data: %d", len(file_data))
 
-    gamespec = EmpiresDatWrapper(game_versions=game_versions)
-    _, convert_data = gamespec.read(file_data, 0)
+    wrapper = EmpiresDatWrapper(game_versions=game_versions)
+    _, gamespec = wrapper.read(file_data, 0)
+
+    # Remove the list sorrounding the converted data
+    gamespec = gamespec[0]
 
     if cachefile_name:
         dbg("dumping dat file contents to cache file: %s", cachefile_name)

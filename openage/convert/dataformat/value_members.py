@@ -312,7 +312,19 @@ class ArrayMember(ValueMember):
                                 % (member, member.get_type(), allowed_member_type))
 
         self.value = members
-        self.member_type = allowed_member_type
+
+        if allowed_member_type is MemberTypes.INT_MEMBER:
+            self.member_type = MemberTypes.ARRAY_INT
+        elif allowed_member_type is MemberTypes.FLOAT_MEMBER:
+            self.member_type = MemberTypes.ARRAY_FLOAT
+        elif allowed_member_type is MemberTypes.BOOLEAN_MEMBER:
+            self.member_type = MemberTypes.ARRAY_BOOL
+        elif allowed_member_type is MemberTypes.ID_MEMBER:
+            self.member_type = MemberTypes.ARRAY_ID
+        elif allowed_member_type is MemberTypes.STRING_MEMBER:
+            self.member_type = MemberTypes.ARRAY_STRING
+        elif allowed_member_type is MemberTypes.CONTAINER_MEMBER:
+            self.member_type = MemberTypes.ARRAY_CONTAINER
 
     def get_value(self):
         return self.value

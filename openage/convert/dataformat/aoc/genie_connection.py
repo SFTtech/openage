@@ -1,7 +1,7 @@
 # Copyright 2019-2019 the openage authors. See copying.md for legal info.
 
 
-from openage.convert.dataformat.converter_object import ConverterObject
+from ...dataformat.converter_object import ConverterObject
 
 
 class GenieAgeConnection(ConverterObject):
@@ -9,7 +9,7 @@ class GenieAgeConnection(ConverterObject):
     A relation between an Age and buildings/techs/units in AoE.
     """
 
-    def __init__(self, age_id, full_data_set):
+    def __init__(self, age_id, full_data_set, members=None):
         """
         Creates a new Genie age connection.
 
@@ -17,9 +17,10 @@ class GenieAgeConnection(ConverterObject):
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
+        :param members: An already existing member dict.
         """
 
-        super().__init__(age_id)
+        super().__init__(age_id, members=members)
 
         self.data = full_data_set
         self.data.age_connections.update({self.get_id(): self})
@@ -30,7 +31,7 @@ class GenieBuildingConnection(ConverterObject):
     A relation between a building and other buildings/techs/units in AoE.
     """
 
-    def __init__(self, building_id, full_data_set):
+    def __init__(self, building_id, full_data_set, members=None):
         """
         Creates a new Genie building connection.
 
@@ -38,9 +39,10 @@ class GenieBuildingConnection(ConverterObject):
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
+        :param members: An already existing member dict.
         """
 
-        super().__init__(building_id)
+        super().__init__(building_id, members=members)
 
         self.data = full_data_set
         self.data.building_connections.update({self.get_id(): self})
@@ -51,7 +53,7 @@ class GenieTechConnection(ConverterObject):
     A relation between a tech and other buildings/techs/units in AoE.
     """
 
-    def __init__(self, tech_id, full_data_set):
+    def __init__(self, tech_id, full_data_set, members=None):
         """
         Creates a new Genie tech connection.
 
@@ -59,9 +61,10 @@ class GenieTechConnection(ConverterObject):
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
+        :param members: An already existing member dict.
         """
 
-        super().__init__(tech_id)
+        super().__init__(tech_id, members=members)
 
         self.data = full_data_set
         self.data.tech_connections.update({self.get_id(): self})
@@ -72,7 +75,7 @@ class GenieUnitConnection(ConverterObject):
     A relation between a unit and other buildings/techs/units in AoE.
     """
 
-    def __init__(self, unit_id, full_data_set):
+    def __init__(self, unit_id, full_data_set, members=None):
         """
         Creates a new Genie unit connection.
 
@@ -80,9 +83,10 @@ class GenieUnitConnection(ConverterObject):
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
+        :param members: An already existing member dict.
         """
 
-        super().__init__(unit_id)
+        super().__init__(unit_id, members=members)
 
         self.data = full_data_set
         self.data.unit_connections.update({self.get_id(): self})

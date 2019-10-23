@@ -23,6 +23,7 @@ from .hdlanguagefile import (read_age2_hd_fe_stringresources,
                              read_age2_hd_3x_stringresources)
 from .interface.cutter import InterfaceCutter
 from .interface.rename import hud_rename
+from .processor.aoc.processor import AoĆProcessor
 from .slp_converter_pool import SLPConverterPool
 from .stringresource import StringResource
 
@@ -93,10 +94,13 @@ def get_gamespec(srcdir, game_versions, dont_pickle):
                                  cache_file,
                                  not dont_pickle)
 
-    # modify the read contents of datfile
-    from .fix_data import fix_data
-    # pylint: disable=no-member
-    gamespec.empiresdat[0] = fix_data(gamespec.empiresdat[0])
+    # TODO: Reimplement this in actual converter
+    #===========================================================================
+    # # modify the read contents of datfile
+    # from .fix_data import fix_data
+    # # pylint: disable=no-member
+    # gamespec.empiresdat[0] = fix_data(gamespec.empiresdat[0])
+    #===========================================================================
 
     return gamespec
 
@@ -158,8 +162,12 @@ def convert_metadata(args):
     if gamedata_path.exists():
         gamedata_path.removerecursive()
 
+    # TODO: Move this somewhere else
+    args.converter = AoĆProcessor
+
     yield "empires.dat"
     gamespec = get_gamespec(args.srcdir, args.game_versions, args.flag("no_pickle_cache"))
+    modpacks = args.converter.convert(gamespec, None)
     data_dump = gamespec.dump("gamedata")
     data_formatter.add_data(data_dump[0], prefix="gamedata/", single_output="gamedata")
 
