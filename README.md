@@ -88,13 +88,18 @@ Installation Packages
 
     __NOTE:__ If you have any problems starting conversion or starting *openage* take a look into the [package instructions](doc/build_instructions/packages.md) and our [troubleshooting guide](/doc/troubleshooting.md).
 
-    __NOTE:__ For **MacOSX** we don't have packages, but here you can check the the build status [![Build](https://travis-ci.com/simonsan/openage.svg?branch=master)](https://api.travis-ci.com/simonsan/openage.svg?branch=master)
-
-    We also have building instructions in [here](/doc/build_instructions/os_x_10.14_mojave.md).
+    __NOTE:__ For **MacOSX** we currently don't have any packages.
 
 
 Dependencies, Building and Running
 ----------------------------------
+
+  Operating System    | Build status
+  :------------------:|:--------------:
+  Debian Sid          | [Todo: Kevin #11](https://github.com/SFTtech/kevin/issues/11)
+  MacOSX 10.14        | [![Build Status](https://travis-ci.org/SFTtech/openage.svg?branch=master)](https://travis-ci.org/SFTtech/openage)
+  Windows 10 - x64    | [![Build status](https://ci.appveyor.com/api/projects/status/66sx35key94u740e?svg=true)](https://ci.appveyor.com/project/simonsan/openage-sl215)
+
 
  - How do I get this to run on my box?
    - See [doc/building.md](/doc/building.md).
