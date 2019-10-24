@@ -1,6 +1,8 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "renderer.h"
+
+#include <algorithm>
 
 #include "../../log/log.h"
 #include "../../error/error.h"
@@ -40,6 +42,10 @@ std::unique_ptr<Geometry> GlRenderer::add_bufferless_quad() {
 	return std::make_unique<GlGeometry>();
 }
 
+std::unique_ptr<RenderPass> GlRenderer::add_render_pass(std::vector<Renderable> renderables, RenderTarget const* target) {
+	return std::make_unique<GlRenderPass>(renderables, target);
+}
+
 std::unique_ptr<RenderTarget> GlRenderer::create_texture_target(std::vector<Texture2d*> textures) {
 	std::vector<const GlTexture2d*> gl_textures;
 	gl_textures.reserve(textures.size());
@@ -72,14 +78,31 @@ resources::Texture2dData GlRenderer::display_into_data() {
 	return img.flip_y();
 }
 
-void GlRenderer::render(RenderPass const& pass) {
-	auto gl_target = dynamic_cast<const GlRenderTarget*>(pass.target);
+
+void GlRenderer::optimise(GlRenderPass* pass) {
+	if (!pass->get_is_optimised()) {
+		auto renderables = pass->get_renderables();
+		std::stable_sort(renderables.begin(), renderables.end(), [](const Renderable& a, const Renderable& b) {
+			GLuint shader_a = dynamic_cast<GlUniformInput const*>(a.unif_in)->program->get_handle();
+			GLuint shader_b = dynamic_cast<GlUniformInput const*>(b.unif_in)->program->get_handle();
+			return shader_a < shader_b;
+		});
+
+		pass->set_renderables(renderables);
+		pass->set_is_optimised(true);
+	}
+}
+
+void GlRenderer::render(RenderPass* pass) {
+	auto gl_target = dynamic_cast<const GlRenderTarget*>(pass->get_target());
 	gl_target->bind_write();
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	for (auto obj : pass.renderables) {
+	auto gl_pass = dynamic_cast<GlRenderPass*>(pass);
+	GlRenderer::optimise(gl_pass);
+	for (auto obj : gl_pass->get_renderables()) {
 		if (obj.alpha_blending) {
 			glEnable(GL_BLEND);
 		}

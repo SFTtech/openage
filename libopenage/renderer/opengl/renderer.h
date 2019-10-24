@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -10,6 +10,7 @@
 #include "../renderer.h"
 #include "shader_program.h"
 #include "render_target.h"
+#include "render_pass.h"
 
 
 namespace openage {
@@ -29,18 +30,22 @@ public:
 	std::unique_ptr<Geometry> add_mesh_geometry(resources::MeshData const&) override;
 	std::unique_ptr<Geometry> add_bufferless_quad() override;
 
+	std::unique_ptr<RenderPass> add_render_pass(std::vector<Renderable>, RenderTarget const*) override;
+
 	std::unique_ptr<RenderTarget> create_texture_target(std::vector<Texture2d*>) override;
 	RenderTarget const* get_display_target() override;
 
 	resources::Texture2dData display_into_data() override;
 
-	void render(RenderPass const&) override;
+	void render(RenderPass*) override;
 
 private:
 	/// The GL context.
 	GlContext *gl_context;
 
 	GlRenderTarget display;
+
+	static void optimise(GlRenderPass*);
 };
 
 }}} // openage::renderer::opengl

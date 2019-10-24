@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -60,9 +60,17 @@ struct Renderable {
 };
 
 /// A render pass is a series of draw calls represented by renderables that output into the given render target.
-struct RenderPass {
+class RenderPass {
+protected:
+	RenderPass(std::vector<Renderable>, RenderTarget const*);
 	/// The renderables to parse and possibly execute.
 	std::vector<Renderable> renderables;
+
+public:
+	virtual ~RenderPass() = default;
+	void set_target(RenderTarget const*);
+	RenderTarget const* get_target() const;
+private:
 	/// The render target to write into.
 	RenderTarget const *target;
 };
@@ -92,6 +100,9 @@ public:
 	/// Useful for generating positions in the vertex shader.
 	virtual std::unique_ptr<Geometry> add_bufferless_quad() = 0;
 
+	/// Creates a render pass object from the given list of renderables that output to the given render target
+	virtual std::unique_ptr<RenderPass> add_render_pass(std::vector<Renderable>, RenderTarget const*) = 0;
+
 	/// Constructs a render target from the given textures. All subsequent drawing operations pointed at this
 	/// target will write to these textures. Textures are attached to the target in the order in which they
 	/// appear within the vector. Depth textures are attached as depth components. Textures of every other
@@ -106,7 +117,8 @@ public:
 	virtual resources::Texture2dData display_into_data() = 0;
 
 	/// Executes a render pass.
-	virtual void render(RenderPass const&) = 0;
+	/// A renderer implementation might modify the RenderPass.
+	virtual void render(RenderPass*) = 0;
 };
 
 }}

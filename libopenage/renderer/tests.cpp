@@ -197,10 +197,7 @@ void main() {
 		false,
 	};
 
-	RenderPass pass1 {
-		{ proj_update, obj1, obj2, obj3 },
-		fbo.get()
-	};
+	auto pass1 = renderer->add_render_pass({ proj_update, obj1, obj2, obj3 }, fbo.get());
 
 	/* Make an object encompassing the entire screen for the second render pass. The object
 	 * will be textured with the color output of pass 1, effectively copying its framebuffer. */
@@ -212,10 +209,7 @@ void main() {
 		false,
 	};
 
-	RenderPass pass2 {
-		{ display_obj },
-		renderer->get_display_target(),
-	};
+	auto pass2 = renderer->add_render_pass({ display_obj }, renderer->get_display_target());
 
 	/* Data retrieved from the object index texture. */
 	resources::Texture2dData id_texture_data = id_texture->into_data();
@@ -266,12 +260,12 @@ void main() {
 			display_shader->update_uniform_input(color_texture_unif.get(), "color_texture", color_texture.get());
 
 			texture_data_valid = false;
-			pass1.target = fbo.get();
+			pass1->set_target(fbo.get());
 		} );
 
 	while (!window.should_close()) {
-		renderer->render(pass1);
-		renderer->render(pass2);
+		renderer->render(pass1.get());
+		renderer->render(pass2.get());
 		window.update();
 		opengl::GlContext::check_error();
 	}
