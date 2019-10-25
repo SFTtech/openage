@@ -69,7 +69,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
                       of the line.
         """
 
-        unit_type = genie_unit.get_member("type").get_value()
+        unit_type = genie_unit.get_member("unit_type").get_value()
         unit_id = genie_unit.get_member("id0").get_value()
 
         # Only add unit if it is not already in the list
@@ -226,7 +226,7 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
                       of the line.
         """
 
-        unit_type = genie_unit.get_member("type").get_value()
+        unit_type = genie_unit.get_member("unit_type").get_value()
         unit_id = genie_unit.get_member("id0").get_value()
 
         # Only add building if it is not already in the list

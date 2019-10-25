@@ -187,8 +187,8 @@ class AgeTechTree(GenieStructure):
     # ===========================================================================
 
     data_format.extend([
-        (READ, "slots_used", StorageType.INT_MEMBER, "int32_t"),
-        (READ, "unit_researches", StorageType.ARRAY_ID, "int32_t[10]"),
+        (READ, "connected_slots_used", StorageType.INT_MEMBER, "int32_t"),
+        (READ, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[10]"),
         (READ, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=OtherConnection,
             length=10,
@@ -274,8 +274,8 @@ class BuildingConnection(GenieStructure):
     # ===========================================================================
 
     data_format.extend([
-        (READ, "slots_used", StorageType.INT_MEMBER, "int32_t"),
-        (READ, "unit_researches", StorageType.ARRAY_ID, "int32_t[10]"),
+        (READ, "connected_slots_used", StorageType.INT_MEMBER, "int32_t"),
+        (READ, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[10]"),
         (READ, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=OtherConnection,
             length=10,
@@ -310,8 +310,8 @@ class UnitConnection(GenieStructure):
         # building, where this unit is created
         (READ, "upper_building", StorageType.ID_MEMBER, "int32_t"),
 
-        (READ, "slots_used", StorageType.INT_MEMBER, "int32_t"),
-        (READ, "unit_researches", StorageType.ARRAY_ID, "int32_t[10]"),
+        (READ, "connected_slots_used", StorageType.INT_MEMBER, "int32_t"),
+        (READ, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[10]"),
         (READ, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=OtherConnection,
             length=10,
@@ -399,8 +399,8 @@ class ResearchConnection(GenieStructure):
     # ===========================================================================
 
     data_format.extend([
-        (READ, "slots_used", StorageType.INT_MEMBER, "int32_t"),
-        (READ, "unit_researches", StorageType.ARRAY_ID, "int32_t[10]"),
+        (READ, "connected_slots_used", StorageType.INT_MEMBER, "int32_t"),
+        (READ, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[10]"),
         (READ, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=OtherConnection,
             length=10,

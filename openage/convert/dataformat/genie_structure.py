@@ -316,6 +316,9 @@ class GenieStructure:
 
                 for i in range(list_len):
 
+                    # List of subtype members filled if there's a subtype to be read
+                    sub_members = []
+
                     # if datfile offset == 0, entry has to be skipped.
                     if offset_lookup:
                         if not var_type.offset_to[1](offset_lookup[i]):
@@ -330,7 +333,7 @@ class GenieStructure:
                         # to determine the subtype class, read the binary
                         # definition. this utilizes an on-the-fly definition
                         # of the data to be read.
-                        offset, _ = self.read(
+                        offset, sub_members = self.read(
                             raw, offset, cls=target_class,
                             members=(((False,) + var_type.subtype_definition),)
                         )
@@ -364,6 +367,9 @@ class GenieStructure:
 
                     # Append the data to the ValueMember list
                     if storage_type is StorageType.ARRAY_CONTAINER:
+                        # Put the subtype members in front
+                        sub_members.extend(gen_members)
+                        gen_members = sub_members
                         # create a container for the retrieved members
                         container = ContainerMember(var_name, gen_members)
 
