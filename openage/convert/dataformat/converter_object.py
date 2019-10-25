@@ -118,6 +118,12 @@ class ConverterObjectGroup:
         if raw_api_objects:
             self._create_raw_api_object_dict(raw_api_objects)
 
+    def get_id(self):
+        """
+        Returns the object group's ID.
+        """
+        return self.group_id
+
     def add_raw_api_object(self, subobject):
         """
         Adds a subobject to the object.

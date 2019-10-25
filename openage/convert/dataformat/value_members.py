@@ -267,7 +267,7 @@ class ContainerMember(ValueMember):
                 other_dict = other.get_value()
 
                 for key in self.value.keys():
-                    diff_value = self.value.get(key).diff(other_dict.get(key))
+                    diff_value = self.value[key].diff(other_dict[key])
 
                     diff_list.append(diff_value)
 

@@ -15,7 +15,9 @@ from ...dataformat.aoc.genie_graphic import GenieGraphic
 from ...dataformat.aoc.genie_sound import GenieSound
 
 from ...nyan.api_loader import load_api
-from openage.convert.dataformat.aoc.genie_terrain import GenieTerrainObject
+from ...dataformat.aoc.genie_terrain import GenieTerrainObject
+from ...dataformat.aoc.genie_unit import GenieUnitLineGroup,\
+    GenieUnitTransformGroup, GenieMonkGroup, GenieVillagerGroup
 
 
 class AoĆProcessor:
@@ -74,7 +76,18 @@ class AoĆProcessor:
 
     @classmethod
     def _processor(cls, full_data_set):
-        pass
+        """
+        1. Transfer structures used in Genie games to more openage-friendly
+           Python objects.
+        2. Convert these objects to nyan.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+
+        cls._create_unit_lines(full_data_set)
 
     @classmethod
     def _post_processor(cls, full_data_set):
@@ -324,3 +337,76 @@ class AoĆProcessor:
             GenieTerrainObject(terrain_index, full_data_set, members=terrain_members)
 
             index += 1
+
+    @staticmethod
+    def _create_unit_lines(full_data_set):
+        """
+        Sort units into lines, based on information in the unit connections.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+
+        unit_connections = full_data_set.unit_connections
+
+        for _, connection in unit_connections.items():
+            unit_id = connection.get_member("id").get_value()
+            unit = full_data_set.genie_units[unit_id]
+            line_id = connection.get_member("vertical_line").get_value()
+
+            # Check if a line object already exists for this id
+            # if not, create it
+            if line_id in full_data_set.unit_lines.keys():
+                unit_line = full_data_set.unit_lines[line_id]
+
+            else:
+                # Check for special cases first
+                if unit.has_member("transform_id") and unit.get_member("transform_id").get_value() > -1:
+                    # Trebuchet
+                    unit_line = GenieUnitTransformGroup(line_id, unit_id, full_data_set)
+
+                elif line_id == 65:
+                    # Monks
+                    # Switch to mobk with relic is hardcoded :(
+                    unit_line = GenieMonkGroup(line_id, unit_id, 286, full_data_set)
+
+                elif unit.has_member("task_group") and unit.get_member("task_group").get_value() > 0:
+                    # Villager
+                    # done somewhere else because they are special^TM
+                    continue
+
+                else:
+                    # Normal units
+                    unit_line = GenieUnitLineGroup(line_id, full_data_set)
+
+            if connection.get_member("line_mode").get_value() == 2:
+                # The unit is the first in line
+                unit_line.add_unit(unit)
+            else:
+                # The unit comes after another one
+                # Search other_connections for the previous unit in line
+                connected_types = connection.get_member("other_connections").get_value()
+                connected_index = -1
+                for index in range(len(connected_types)):
+                    connected_type = connected_types[index].get_value()["other_connection"].get_value()
+                    if connected_type == 2:
+                        # 2 == Unit
+                        connected_index = index
+                        break
+
+                else:
+                    raise Exception("Unit %s is not first in line, but no previous unit can"
+                                    " be found in other_connections" % (unit_id))
+
+                # Find the id of the connected unit
+                connected_ids = connection.get_member("other_connected_ids").get_value()
+                previous_unit_id = connected_ids[connected_index].get_value()
+                previous_unit = full_data_set.genie_units[previous_unit_id]
+
+                unit_line.add_unit(unit, after=previous_unit)
+
+    @staticmethod
+    def _create_building_lines(full_data_set):
+        pass
