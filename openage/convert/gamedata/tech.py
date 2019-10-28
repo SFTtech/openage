@@ -130,7 +130,7 @@ class OtherConnection(GenieStructure):
             raw_type="int32_t",
             type_name="connection_mode",
             lookup_dict={
-                0: "NOTHING",
+                0: "AGE",
                 1: "BUILDING",
                 2: "UNIT",
                 3: "RESEARCH",

@@ -54,4 +54,11 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         self.civ = self.data.genie_civs[civ_id]
 
         team_bonus_id = self.civ.get_member("team_bonus_id").get_value()
-        self.team_bonus = self.data.genie_effect_bundles[team_bonus_id]
+        if civ_id == 0:
+            # Gaia civ has no team bonus
+            self.team_bonus = None
+        else:
+            self.team_bonus = self.data.genie_effect_bundles[team_bonus_id]
+
+        tech_tree_id = self.civ.get_member("tech_tree_id").get_value()
+        self.disabled_techs = self.data.genie_effect_bundles[tech_tree_id]

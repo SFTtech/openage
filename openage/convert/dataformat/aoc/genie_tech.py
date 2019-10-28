@@ -3,6 +3,7 @@
 
 from ...dataformat.converter_object import ConverterObject,\
     ConverterObjectGroup
+from openage.convert.dataformat.aoc.genie_effect import GenieEffectBundle
 
 
 class GenieTechObject(ConverterObject):
@@ -49,47 +50,18 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         super().__init__(tech_id)
 
         self.data = full_data_set
-        self.data.tech_groups.update({self.get_id(): self})
 
         # The tech that belongs to the tech id
         self.tech = self.data.genie_techs[tech_id]
 
         # Effects of the tech
-        self.effects = []
-
         effect_bundle_id = self.tech.get_member("tech_effect_id").get_value()
-        tech_effects = self.data.genie_effect_bundles[effect_bundle_id].get_effects()
 
-        self.effects.extend(tech_effects)
+        if effect_bundle_id > -1:
+            self.effects = self.data.genie_effect_bundles[effect_bundle_id]
 
-
-class GenieTechLineGroup(ConverterObjectGroup):
-    """
-    Collection of GenieTechEffectBundleGroups that form a line (i.e. they unlock each other
-    consecutively).
-
-    Example: Double-bit axe->Bow Saw-> Two-man saw
-
-    Each of the techs in line will become individual Tech API objects.
-    """
-
-    def __init__(self, line_id, full_data_set):
-        """
-        Creates a new Genie tech group object.
-
-        :param line_id: The internal line_id from the .dat file (ResearchConnection).
-        :param full_data_set: GenieObjectContainer instance that
-                              contains all relevant data for the conversion
-                              process.
-        """
-
-        super().__init__(line_id)
-
-        # The line is stored as an ordered list of GenieTechEffectBundleGroups.
-        self.line = []
-
-        self.data = full_data_set
-        self.data.tech_lines.update({self.get_id(): self})
+            # only add it to the set if there's an effect
+            self.data.tech_groups.update({self.get_id(): self})
 
 
 class AgeUpgrade(GenieTechEffectBundleGroup):
@@ -117,6 +89,8 @@ class AgeUpgrade(GenieTechEffectBundleGroup):
 
         self.age_id = age_id
 
+        self.data.age_upgrades.update({self.get_id(): self})
+
 
 class UnitLineUpgrade(GenieTechEffectBundleGroup):
     """
@@ -142,6 +116,8 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
         self.unit_line_id = unit_line_id
         self.upgrade_target_id = upgrade_target_id
 
+        self.data.unit_upgrades.update({self.get_id(): self})
+
 
 class UnitUnlock(GenieTechEffectBundleGroup):
     """
@@ -153,12 +129,11 @@ class UnitUnlock(GenieTechEffectBundleGroup):
     will be created.
     """
 
-    def __init__(self, tech_id, unit_type, line_id, full_data_set):
+    def __init__(self, tech_id, line_id, full_data_set):
         """
         Creates a new Genie tech group object.
 
         :param tech_id: The internal tech_id from the .dat file.
-        :param unit_type: Type of the unit (unit=70,building=80).
         :param line_id: The unit line that is unlocked.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
@@ -167,8 +142,9 @@ class UnitUnlock(GenieTechEffectBundleGroup):
 
         super().__init__(tech_id, full_data_set)
 
-        self.unit_type = unit_type
         self.line_id = line_id
+
+        self.data.unit_unlocks.update({self.get_id(): self})
 
 
 class CivBonus(GenieTechEffectBundleGroup):
@@ -193,3 +169,5 @@ class CivBonus(GenieTechEffectBundleGroup):
         super().__init__(tech_id, full_data_set)
 
         self.civ_id = civ_id
+
+        self.data.civ_boni.update({self.get_id(): self})

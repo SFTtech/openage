@@ -68,21 +68,14 @@ class GenieUnitLineGroup(ConverterObjectGroup):
                       is not present, the unit is appended at the end
                       of the line.
         """
-
-        unit_type = genie_unit.get_member("unit_type").get_value()
         unit_id = genie_unit.get_member("id0").get_value()
 
         # Only add unit if it is not already in the list
         if not self.contains_unit(unit_id):
-            # Valid units have type >= 70
-            if unit_type != 70:
-                raise Exception("GenieUnitObject must have type == 70"
-                                "to be added to a unit line")
-
             if after:
                 for unit in self.line:
                     if after == unit.get_id():
-                        self.line.insert(self.line.index(unit), genie_unit)
+                        self.line.insert(self.line.index(unit) + 1, genie_unit)
                         break
 
                 else:
@@ -225,21 +218,14 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
                       is not present, the unit is appended at the end
                       of the line.
         """
-
-        unit_type = genie_unit.get_member("unit_type").get_value()
         unit_id = genie_unit.get_member("id0").get_value()
 
         # Only add building if it is not already in the list
         if not self.contains_building(unit_id):
-            # Valid units have type >= 70
-            if unit_type != 80:
-                raise Exception("GenieUnitObject must have type == 80"
-                                "to be added to a building line")
-
             if after:
                 for unit in self.line:
                     if after == unit.get_id():
-                        self.line.insert(self.line.index(unit), genie_unit)
+                        self.line.insert(self.line.index(unit) + 1, genie_unit)
                         break
 
                 else:
@@ -293,6 +279,31 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         return tech_line in self.researches
 
 
+class GenieStackBuildingGroup(GenieBuildingLineGroup):
+    """
+    Buildings that stack with other units and have annexes. These buildings
+    are replaced by their stack unit once built.
+
+    Examples: Gate, Town Center
+
+    The 'stack unit' becomes the GameEntity, the 'head unit' will be a state
+    during construction.
+    """
+
+    def __init__(self, head_building_id, stack_unit_id, full_data_set):
+        """
+        Creates a new Genie building line.
+
+        :param head_building_id: The building that is first in line.
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        """
+        super().__init__(head_building_id, full_data_set)
+
+        # TODO
+
+
 class GenieUnitTransformGroup(GenieUnitLineGroup):
     """
     Collection of genie units that reference each other with their
@@ -319,7 +330,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
 
         self.head_unit = self.data.genie_units[head_unit_id]
 
-        transform_id = self.head_unit.get_member("transform_id").get_value()
+        transform_id = self.head_unit.get_member("transform_unit_id").get_value()
         self.transform_unit = self.data.genie_units[transform_id]
 
 
@@ -386,11 +397,14 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
     the other are used to create more abilities with AnimationOverride.
     """
 
+    # From unit connection
+    male_line_id = 83   # male villager (with combat task)
+
     # Female villagers have no line id (boo!) so we just assign an arbitrary
     # ID to them.
     female_line_id = 1337
 
-    def __init__(self, line_id, task_group_id, head_task_id, full_data_set):
+    def __init__(self, line_id, task_group_id, full_data_set):
         """
         Creates a new Genie task group.
 
@@ -404,10 +418,9 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         super().__init__(line_id, full_data_set)
 
         self.task_group_id = task_group_id
-        self.head_task_id = head_task_id
 
         # Add a reference for the unit to the dataset
-        self.data.task_groups.update({self.get_id(): self})
+        self.data.task_groups.update({task_group_id: self})
 
 
 class GenieVillagerGroup(ConverterObjectGroup):

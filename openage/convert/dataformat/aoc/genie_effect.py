@@ -49,5 +49,23 @@ class GenieEffectBundle(ConverterObject):
 
         self.effects = effects
 
+        # Sanitized bundles should not contain 'garbage' effects, e.g.
+        #     - effects that do nothing
+        #     - effects without a type        #
+        # Processors should set this to True, once the bundle is sanitized.
+        self.sanitized = False
+
         self.data = full_data_set
         self.data.genie_effect_bundles.update({self.get_id(): self})
+
+    def get_effects(self):
+        """
+        Returns the effects in the bundle.
+        """
+        return self.effects
+
+    def is_sanitized(self):
+        """
+        Returns whether the effect bundle has been sanitized.
+        """
+        return self.sanitized
