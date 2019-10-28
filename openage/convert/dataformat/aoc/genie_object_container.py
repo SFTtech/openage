@@ -38,6 +38,8 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.villager_groups = {}
         self.monk_groups = {}
         self.civ_groups = {}
-        self.team_boni = {}
         self.tech_groups = {}
-        self.tech_lines = {}
+        self.age_upgrades = {}
+        self.unit_upgrades = {}
+        self.unit_unlocks = {}
+        self.civ_boni = {}
