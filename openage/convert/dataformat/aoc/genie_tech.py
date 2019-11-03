@@ -3,7 +3,6 @@
 
 from ...dataformat.converter_object import ConverterObject,\
     ConverterObjectGroup
-from openage.convert.dataformat.aoc.genie_effect import GenieEffectBundle
 
 
 class GenieTechObject(ConverterObject):
@@ -50,6 +49,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         super().__init__(tech_id)
 
         self.data = full_data_set
+        self.data.tech_groups.update({self.get_id(): self})
 
         # The tech that belongs to the tech id
         self.tech = self.data.genie_techs[tech_id]
@@ -60,8 +60,41 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         if effect_bundle_id > -1:
             self.effects = self.data.genie_effect_bundles[effect_bundle_id]
 
-            # only add it to the set if there's an effect
-            self.data.tech_groups.update({self.get_id(): self})
+        else:
+            self.effects = None
+
+    def is_researchable(self):
+        """
+        Techs are researchable if they have a valid research location.
+
+        :returns: True if the research location id is greater than zero.
+        """
+        research_location_id = self.tech.get_member("research_location_id").get_value()
+
+        # -1 = no train location
+        if research_location_id == -1:
+            return False
+
+        return True
+
+    def get_research_location(self):
+        """
+        Returns the group_id for a building line if the tech is
+        researchable, otherwise return None.
+        """
+        if self.is_researchable():
+            return self.tech.get_member("research_location_id").get_value()
+
+        return None
+
+    def has_effect(self):
+        """
+        Returns True if the techology's effects do anything.
+        """
+        if self.effects:
+            return len(self.effects.get_effects()) > 0
+        else:
+            return False
 
 
 class AgeUpgrade(GenieTechEffectBundleGroup):
@@ -101,7 +134,7 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
 
     def __init__(self, tech_id, unit_line_id, upgrade_target_id, full_data_set):
         """
-        Creates a new Genie tech group object.
+        Creates a new Genie line upgrade object.
 
         :param tech_id: The internal tech_id from the .dat file.
         :param unit_line_id: The unit line that is upgraded.
@@ -117,6 +150,33 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
         self.upgrade_target_id = upgrade_target_id
 
         self.data.unit_upgrades.update({self.get_id(): self})
+
+
+class BuildingLineUpgrade(GenieTechEffectBundleGroup):
+    """
+    Upgrades a building in a line.
+
+    This will become a Tech API object targeted at the line's game entity.
+    """
+
+    def __init__(self, tech_id, building_line_id, upgrade_target_id, full_data_set):
+        """
+        Creates a new Genie line upgrade object.
+
+        :param tech_id: The internal tech_id from the .dat file.
+        :param building_line_id: The building line that is upgraded.
+        :param upgrade_target_id: The unit that is the result of the upgrade.
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        """
+
+        super().__init__(tech_id, full_data_set)
+
+        self.building_line_id = building_line_id
+        self.upgrade_target_id = upgrade_target_id
+
+        self.data.building_upgrades.update({self.get_id(): self})
 
 
 class UnitUnlock(GenieTechEffectBundleGroup):

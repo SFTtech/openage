@@ -247,7 +247,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	else if (this->unit_data.unit_class == gamedata::unit_classes::PREY_ANIMAL) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 140));
 	}
-	else if (this->unit_data.unit_class == gamedata::unit_classes::SHEEP) {
+	else if (this->unit_data.unit_class == gamedata::unit_classes::HERDABLE) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 100, 0.1));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::GOLD_MINE) {
@@ -455,7 +455,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 	MovableProducer::initialise(unit, player);
 
 	// population of 1 for all movable units
-	if (this->unit_data.unit_class != gamedata::unit_classes::SHEEP) {
+	if (this->unit_data.unit_class != gamedata::unit_classes::HERDABLE) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(1, 0));
 	}
 
@@ -482,7 +482,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 			multitype_attr.types[gamedata::unit_classes::CIVILIAN] = this->parent_type(); // get default villager
 			multitype_attr.types[gamedata::unit_classes::BUILDING] = this->owner.get_type(156); // builder 118
 			multitype_attr.types[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(120); // forager
-			multitype_attr.types[gamedata::unit_classes::SHEEP] = this->owner.get_type(592); // sheperd
+			multitype_attr.types[gamedata::unit_classes::HERDABLE] = this->owner.get_type(592); // sheperd
 			multitype_attr.types[gamedata::unit_classes::TREES] = this->owner.get_type(123); // woodcutter
 			multitype_attr.types[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(579); // gold miner
 			multitype_attr.types[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(124); // stone miner
@@ -494,7 +494,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 			multitype_attr.types[gamedata::unit_classes::CIVILIAN] = this->parent_type(); // get default villager
 			multitype_attr.types[gamedata::unit_classes::BUILDING] = this->owner.get_type(222); // builder 212
 			multitype_attr.types[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(354); // forager
-			multitype_attr.types[gamedata::unit_classes::SHEEP] = this->owner.get_type(590); // sheperd
+			multitype_attr.types[gamedata::unit_classes::HERDABLE] = this->owner.get_type(590); // sheperd
 			multitype_attr.types[gamedata::unit_classes::TREES] = this->owner.get_type(218); // woodcutter
 			multitype_attr.types[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(581); // gold miner
 			multitype_attr.types[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(220); // stone miner
