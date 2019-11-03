@@ -8,7 +8,7 @@ See [Developing openage in IDE](/doc/ide.md).
 
 It's being developed in QML language.
 
-Sources are in the `libopenage/gui/qml` directory.
+Sources are in the `assets/qml` directory.
 Start the game and edit the code.
 Changes apply immediately after any QML file is saved.
 

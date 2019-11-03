@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Checks some general whitespace rules and the encoding for text files.
@@ -21,7 +21,7 @@ IMMEDIATE_TODO_RE = re.compile(
 
 def find_issues(dirnames, exts):
     """
-    checks all files ending in exts in dirnames.
+    Checks all files ending in exts in dirnames.
     """
     for filename in findfiles(dirnames, exts):
         data = readfile(filename)
@@ -51,7 +51,7 @@ def find_issues(dirnames, exts):
         if TRAIL_WHITESPACE_RE.search(data) or IMMEDIATE_TODO_RE.search(data):
             analyse_each_line = True
 
-        # if there are possible issues perform a in deepth analysis
+        # If there are possible issues, perform an in-depth analysis.
         if analyse_each_line:
             yield from find_issues_with_lines(filename)
 
@@ -61,7 +61,7 @@ def find_issues(dirnames, exts):
 
 def find_issues_with_lines(filename):
     """
-    checks a file for issues per line
+    Checks a file for issues per line.
     """
     data = readfile(filename)
 

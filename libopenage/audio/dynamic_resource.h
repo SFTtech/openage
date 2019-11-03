@@ -94,7 +94,7 @@ public:
 	 */
 	static constexpr int DEFAULT_PRELOAD_AMOUNT = 10;
 
-	/** The default used chunk size in bytes (100ms). */
+	/** The default used chunk size in bytes (100ms for 48kHz stereo audio). */
 	static constexpr size_t DEFAULT_CHUNK_SIZE = 9600*2;
 
 	/** The default number of chunks, that can be loaded at the same time. */

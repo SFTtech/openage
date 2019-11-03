@@ -6,7 +6,7 @@
 # pylint: disable=line-too-long
 
 """
-Project configuration, writen by the build system.
+Project configuration, written by the build system.
 """
 
 import importlib

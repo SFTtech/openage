@@ -72,7 +72,7 @@ Which alpha mask is determined by two conditions:
 
 1. the tile positioning
     * what direction will the transition be?
-1. the blending mode
+2. the blending mode
     * how does the transition look like?
     * associated to terrain class -> ice needs other edges than shore
     * which mode is used does not depend on the terrain priority,
