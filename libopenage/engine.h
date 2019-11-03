@@ -253,7 +253,7 @@ public:
 	time_nsec_t lastframe_duration_nsec() const;
 
 	/**
-	 * render text with the at a position with specified font size
+	 * render text at a position with the specified font size
 	 */
 	void render_text(coord::viewport position, size_t size, const renderer::Color &color, const char *format, ...) ATTRIBUTE_FORMAT(5, 6);
 
