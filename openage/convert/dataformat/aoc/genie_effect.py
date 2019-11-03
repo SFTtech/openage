@@ -26,6 +26,12 @@ class GenieEffectObject(ConverterObject):
         self.bundle_id = bundle_id
         self.data = full_data_set
 
+    def get_type(self):
+        """
+        Returns the effect's type.
+        """
+        return self.get_member("type_id").get_value()
+
 
 class GenieEffectBundle(ConverterObject):
     """
@@ -58,11 +64,26 @@ class GenieEffectBundle(ConverterObject):
         self.data = full_data_set
         self.data.genie_effect_bundles.update({self.get_id(): self})
 
-    def get_effects(self):
+    def get_effects(self, effect_type=None):
         """
-        Returns the effects in the bundle.
+        Returns the effects in the bundle, optionally only effects with a specific
+        type.
+
+        :param effect_type: Type that the effects should have.
+        :type effect_type: int, optional
+        :returns: List of matching effects.
+        :rtype: list
         """
-        return self.effects
+        if effect_type:
+            matching_effects = []
+            for _, effect in self.effects.items():
+                if effect.get_type() == effect_type:
+                    matching_effects.append(effect)
+
+            return matching_effects
+
+        else:
+            return self.effects
 
     def is_sanitized(self):
         """

@@ -13,8 +13,6 @@ from ...dataformat.aoc.genie_connection import GenieAgeConnection,\
     GenieBuildingConnection, GenieUnitConnection, GenieTechConnection
 from ...dataformat.aoc.genie_graphic import GenieGraphic
 from ...dataformat.aoc.genie_sound import GenieSound
-
-from ...nyan.api_loader import load_api
 from ...dataformat.aoc.genie_terrain import GenieTerrainObject
 from ...dataformat.aoc.genie_unit import GenieUnitLineGroup,\
     GenieUnitTransformGroup, GenieMonkGroup
@@ -22,9 +20,13 @@ from ...dataformat.aoc.genie_unit import GenieStackBuildingGroup,\
     GenieBuildingLineGroup
 from ...dataformat.aoc.genie_tech import AgeUpgrade,\
     GenieTechEffectBundleGroup, UnitUnlock, UnitLineUpgrade, CivBonus
-from openage.convert.dataformat.aoc.genie_civ import GenieCivilizationGroup
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
+from ...dataformat.aoc.genie_civ import GenieCivilizationGroup
+from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup
+from ...dataformat.aoc.genie_tech import BuildingLineUpgrade
+
+from ...nyan.api_loader import load_api
+from openage.convert.dataformat.aoc.genie_unit import GenieVariantGroup
 
 
 class AoĆProcessor:
@@ -80,6 +82,8 @@ class AoĆProcessor:
         cls._extract_genie_sounds(gamespec, data_set)
         cls._extract_genie_terrains(gamespec, data_set)
 
+        # TODO: Media files
+
         return data_set
 
     @classmethod
@@ -100,6 +104,10 @@ class AoĆProcessor:
         cls._create_tech_groups(full_data_set)
         cls._create_civ_groups(full_data_set)
         cls._create_villager_groups(full_data_set)
+        cls._create_variant_groups(full_data_set)
+
+        cls._link_creatables(full_data_set)
+        cls._link_researchables(full_data_set)
 
         return full_data_set
 
@@ -193,7 +201,7 @@ class AoĆProcessor:
 
             # Pass everything to the bundle
             effect_bundle_members = raw_effect_bundle.get_value()
-            effect_bundle_members.pop("effects")                    # Removed because we store them as separate objects
+            effect_bundle_members.pop("effects")  # Removed because we store them as separate objects
 
             # Created objects are added automatically to the data set.
             GenieEffectBundle(bundle_id, effects, full_data_set, members=effect_bundle_members)
@@ -216,7 +224,7 @@ class AoĆProcessor:
             civ_id = index
 
             civ_members = raw_civ.get_value()
-            civ_members.pop("units")            # Removed because we store them as separate objects
+            civ_members.pop("units")  # Removed because we store them as separate objects
 
             # Created objects are added automatically to the data set.
             GenieCivilizationObject(civ_id, full_data_set, members=civ_members)
@@ -426,7 +434,7 @@ class AoĆProcessor:
         Establish building lines, based on information in the building connections.
         Because of how Genie building lines work, this will only find the first
         building in the line. Subsequent buildings in the line have to be determined
-        by AgeUpTechs.
+        by effects in AgeUpTechs.
 
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
@@ -438,7 +446,7 @@ class AoĆProcessor:
         for _, connection in building_connections.items():
             building_id = connection.get_member("id").get_value()
             building = full_data_set.genie_units[building_id]
-
+            previous_building_id = None
             stack_building = False
 
             # Buildings have no actual lines, so we use
@@ -446,30 +454,89 @@ class AoĆProcessor:
             line_id = building_id
 
             # Check if we have to create a GenieStackBuildingGroup
-            if building.has_member("stack_unit_id") and \
-                    building.get_member("stack_unit_id").get_value() > -1:
-                stack_building = True
-
             if building.has_member("head_unit_id") and \
                     building.get_member("head_unit_id").get_value() > -1:
+                stack_building = True
+
+            if building.has_member("stack_unit_id") and \
+                    building.get_member("stack_unit_id").get_value() > -1:
                 # we don't care about stacked units because we process
                 # them with their head unit
                 continue
 
+            # Check if the building is part of an existing line.
+            # To do this, we look for connected techs and
+            # check if any tech has an upgrade effect.
+            connected_types = connection.get_member("other_connections").get_value()
+            connected_tech_indices = []
+            for index in range(len(connected_types)):
+                connected_type = connected_types[index].get_value()["other_connection"].get_value()
+                if connected_type == 3:
+                    # 3 == Tech
+                    connected_tech_indices.append(index)
+
+            connected_ids = connection.get_member("other_connected_ids").get_value()
+            for index in connected_tech_indices:
+                connected_tech_id = connected_ids[index].get_value()
+                connected_tech = full_data_set.genie_techs[connected_tech_id]
+                effect_bundle_id = connected_tech.get_member("tech_effect_id").get_value()
+                effect_bundle = full_data_set.genie_effect_bundles[effect_bundle_id]
+
+                upgrade_effects = effect_bundle.get_effects(effect_type=3)
+
+                if len(upgrade_effects) < 0:
+                    continue
+
+                # Search upgrade effects for the line_id
+                for upgrade in upgrade_effects:
+                    upgrade_source = upgrade.get_member("attr_a").get_value()
+                    upgrade_target = upgrade.get_member("attr_b").get_value()
+
+                    # Check if the upgrade target is correct
+                    if upgrade_target == building_id:
+                        # Line id is the source building id
+                        line_id = upgrade_source
+                        break
+
+                else:
+                    # If no upgrade was found, then search remaining techs
+                    continue
+
+                # Find the previous building
+                connected_index = -1
+                for c_index in range(len(connected_types)):
+                    connected_type = connected_types[c_index].get_value()["other_connection"].get_value()
+                    if connected_type == 1:
+                        # 1 == Building
+                        connected_index = c_index
+                        break
+
+                else:
+                    raise Exception("Building %s is not first in line, but no previous building can"
+                                    " be found in other_connections" % (building_id))
+
+                previous_building_id = connected_ids[connected_index].get_value()
+
+                # Add the upgrade tech group to the data set.
+                _ = BuildingLineUpgrade(connected_tech_id, line_id, building_id, full_data_set)
+
+                break
+
             # Check if a line object already exists for this id
             # if not, create it
             if line_id in full_data_set.building_lines.keys():
-                continue
+                building_line = full_data_set.building_lines[line_id]
+                building_line.add_unit(building, after=previous_building_id)
 
             else:
                 if stack_building:
-                    stack_unit_id = building.get_member("stack_unit_id").get_value()
-                    building_line = GenieStackBuildingGroup(line_id, stack_unit_id, full_data_set)
+                    head_unit_id = building.get_member("head_unit_id").get_value()
+                    building_line = GenieStackBuildingGroup(line_id, head_unit_id, full_data_set)
 
                 else:
                     building_line = GenieBuildingLineGroup(line_id, full_data_set)
 
-                building_line.add_unit(building)
+                building_line.add_unit(building, after=previous_building_id)
 
     @staticmethod
     def _sanitize_effect_bundles(full_data_set):
@@ -570,15 +637,15 @@ class AoĆProcessor:
                 _ = UnitLineUpgrade(required_research_id, line_id, unit_id, full_data_set)
 
         # Civ boni have to be aquired from techs
-        # Civ boni = unique techs, unique unit unlocks, eco boni without team bonus
+        # Civ boni = unique techs, unique unit unlocks, eco boni (but not team bonus)
         genie_techs = full_data_set.genie_techs
 
         for index in range(len(genie_techs)):
             tech_id = index
             civ_id = genie_techs[index].get_member("civilisation_id").get_value()
 
-            # Civ ID must be non-zero
-            if civ_id > -1:
+            # Civ ID must be positive and non-zero
+            if civ_id > 0:
                 _ = CivBonus(tech_id, civ_id, full_data_set)
 
     @staticmethod
@@ -644,3 +711,92 @@ class AoĆProcessor:
 
         # Create the villager task group
         _ = GenieVillagerGroup(118, task_group_ids, full_data_set)
+
+    @staticmethod
+    def _create_variant_groups(full_data_set):
+        """
+        Create variant groups, mostly for resources and cliffs.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        units = full_data_set.genie_units
+
+        for _, unit in units.items():
+            class_id = unit.get_member("unit_class").get_value()
+
+            # Most of these classes are assigned to Gaia units
+            if class_id not in (5, 7, 8, 9, 10, 15, 29, 30, 31,
+                                32, 33, 34, 42, 58, 59, 61):
+                continue
+
+            # Check if a variant group already exists for this id
+            # if not, create it
+            if class_id in full_data_set.variant_groups.keys():
+                variant_group = full_data_set.variant_groups[class_id]
+
+            else:
+                variant_group = GenieVariantGroup(class_id, full_data_set)
+
+            variant_group.add_unit(unit)
+
+    @staticmethod
+    def _link_creatables(full_data_set):
+        """
+        Link creatable units and buildings to their creating entity. This is done
+        to provide quick access during conversion.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        # Link units to buildings
+        unit_lines = full_data_set.unit_lines
+
+        for _, unit_line in unit_lines.items():
+            if isinstance(unit_line, GenieUnitTaskGroup):
+                # ignore task groups because they are stored in villager groups
+                continue
+
+            if unit_line.is_creatable():
+                train_location_id = unit_line.get_train_location()
+                full_data_set.building_lines[train_location_id].add_creatable(unit_line)
+
+        # Link buildings to villagers and fishing ships
+        building_lines = full_data_set.building_lines
+
+        for _, building_line in building_lines.items():
+            if building_line.is_creatable():
+                train_location_id = building_line.get_train_location()
+
+                if train_location_id in full_data_set.villager_groups.keys():
+                    full_data_set.villager_groups[train_location_id].add_creatable(building_line)
+
+                else:
+                    # try normal units
+                    unit_lines = full_data_set.unit_lines
+
+                    for _, unit_line in unit_lines.items():
+                        if unit_line.get_head_unit_id() == train_location_id:
+                            unit_line.add_creatable(building_line)
+
+    @staticmethod
+    def _link_researchables(full_data_set):
+        """
+        Link techs to their buildings. This is done
+        to provide quick access during conversion.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        tech_groups = full_data_set.tech_groups
+
+        for _, tech in tech_groups.items():
+            if tech.is_researchable():
+                research_location_id = tech.get_research_location()
+                full_data_set.building_lines[research_location_id].add_researchable(tech)

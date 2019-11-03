@@ -57,6 +57,18 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         self.data = full_data_set
         self.data.unit_lines.update({self.get_id(): self})
 
+        # List of buildings that units can create
+        self.creates = []
+
+    def add_creatable(self, building_line):
+        """
+        Adds a building line to the list of creatables.
+
+        :param building_line: The GenieBuildingLineGroup the villager produces.
+        """
+        if not self.contains_creatable(building_line.get_id()):
+            self.creates.append(building_line)
+
     def add_unit(self, genie_unit, after=None):
         """
         Adds a unit to the line.
@@ -83,6 +95,15 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
             else:
                 self.line.append(genie_unit)
+
+    def contains_creatable(self, line_id):
+        """
+        Returns True if a building line with line_id is a creatable of
+        this unit.
+        """
+        building_line = self.data.building_lines[line_id]
+
+        return building_line in self.creates
 
     def contains_unit(self, unit_id):
         """
@@ -124,8 +145,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         """
         Units are creatable if they have a valid train location.
 
-        :returns: True if the trainn location id is a valid building
-                  line id.
+        :returns: True if the train location id is greater than zero.
         """
         # Get the train location id for the first unit in the line
         head_unit = self.line[0]
@@ -152,6 +172,13 @@ class GenieUnitLineGroup(ConverterObjectGroup):
             return enabling_research.get_member("civilization_id").get_value()
 
         return None
+
+    def get_head_unit_id(self):
+        """
+        Return the id of the first unit in the line.
+        """
+        head_unit = self.line[0]
+        return head_unit.get_member("id0").get_value()
 
     def get_train_location(self):
         """
@@ -200,7 +227,7 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         # List of GenieUnitLine objects
         self.creates = []
 
-        # List of TechLineGroup objects
+        # List of GenieTechEffectBundleGroup objects
         self.researches = []
 
         # Reference to everything else in the gamedata
@@ -212,7 +239,7 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         Adds a unit to the line.
 
         :param genie_unit: A GenieUnit object that is part of this
-                           unit line.
+                           building line.
         :param after: ID of a unit after which the new unit is
                       placed in the line. If a unit with this id
                       is not present, the unit is appended at the end
@@ -221,7 +248,7 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         unit_id = genie_unit.get_member("id0").get_value()
 
         # Only add building if it is not already in the list
-        if not self.contains_building(unit_id):
+        if not self.contains_unit(unit_id):
             if after:
                 for unit in self.line:
                     if after == unit.get_id():
@@ -243,16 +270,16 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         if not self.contains_creatable(unit_line.get_id()):
             self.creates.append(unit_line)
 
-    def add_researchable(self, tech_line):
+    def add_researchable(self, tech_group):
         """
-        Adds a tech line to the list of researchables.
+        Adds a tech group to the list of researchables.
 
-        :param tech_line: The GenieTechLineGroup the building researches.
+        :param tech_group: The GenieTechLineGroup the building researches.
         """
-        if not self.contains_researchable(tech_line.get_id()):
-            self.researches.append(tech_line)
+        if not self.contains_researchable(tech_group.get_id()):
+            self.researches.append(tech_group)
 
-    def contains_building(self, building_id):
+    def contains_unit(self, building_id):
         """
         Returns True if a building with building_id is part of the line.
         """
@@ -274,9 +301,36 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         Returns True if a tech line with line_id is researchable
         in this building.
         """
-        tech_line = self.data.tech_lines[line_id]
+        tech_line = self.data.tech_groups[line_id]
 
         return tech_line in self.researches
+
+    def is_creatable(self):
+        """
+        Buildings are creatable if they have a valid train location.
+
+        :returns: True if the train location id is greater than zero.
+        """
+        # Get the train location id for the first building in the line
+        head_building = self.line[0]
+        train_location_id = head_building.get_member("train_location_id").get_value()
+
+        # -1 = no train location
+        if train_location_id == -1:
+            return False
+
+        return True
+
+    def get_train_location(self):
+        """
+        Returns the group_id for a villager group if the building is
+        creatable, otherwise return None.
+        """
+        if self.is_creatable():
+            head_building = self.line[0]
+            return head_building.get_member("train_location_id").get_value()
+
+        return None
 
 
 class GenieStackBuildingGroup(GenieBuildingLineGroup):
@@ -290,18 +344,47 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
     during construction.
     """
 
-    def __init__(self, head_building_id, stack_unit_id, full_data_set):
+    def __init__(self, stack_unit_id, head_building_id, full_data_set):
         """
         Creates a new Genie building line.
 
-        :param head_building_id: The building that is first in line.
+        :param stack_unit_id: "Actual" building that appears when constructed.
+        :param head_building_id: The building used during construction.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
         """
-        super().__init__(head_building_id, full_data_set)
+        super().__init__(stack_unit_id, full_data_set)
 
-        # TODO
+        self.head = self.data.genie_units[head_building_id]
+        self.stack = self.data.genie_units[stack_unit_id]
+
+    def is_creatable(self):
+        """
+        Stack buildings are created through their head building. We have to
+        lookup its values.
+
+        :returns: True if the train location id is greater than zero.
+        """
+        train_location_id = self.head.get_member("train_location_id").get_value()
+
+        # -1 = no train location
+        if train_location_id == -1:
+            return False
+
+        return True
+
+    def get_train_location(self):
+        """
+        Stack buildings are creatable when their head building is creatable.
+
+        Returns the group_id for a villager group if the head building is
+        creatable, otherwise return None.
+        """
+        if self.is_creatable():
+            return self.head.get_member("train_location_id").get_value()
+
+        return None
 
 
 class GenieUnitTransformGroup(GenieUnitLineGroup):
@@ -375,6 +458,7 @@ class GenieVariantGroup(ConverterObjectGroup):
 
     def __init__(self, class_id, full_data_set):
         """
+        TODO: Implement
         """
 
         super().__init__(class_id)
@@ -384,7 +468,46 @@ class GenieVariantGroup(ConverterObjectGroup):
 
         # Reference to everything else in the gamedata
         self.data = full_data_set
-        self.data.building_lines.update({self.get_id(): self})
+        self.data.variant_groups.update({self.get_id(): self})
+
+    def add_unit(self, genie_unit, after=None):
+        """
+        Adds a unit to the list of variants.
+
+        :param genie_unit: A GenieUnit object that is in the same class.
+        :param after: ID of a unit after which the new unit is
+                      placed in the list. If a unit with this id
+                      is not present, the unit is appended at the end
+                      of the list.
+        """
+        unit_id = genie_unit.get_member("id0").get_value()
+        class_id = genie_unit.get_member("unit_class").get_value()
+
+        if class_id != self.get_id():
+            raise Exception("Classes do not match: unit %s with class %s cannot be added to"
+                            " %s with class %s" % (genie_unit, class_id, self, self.get_id()))
+
+        # Only add unit if it is not already in the list
+        if not self.contains_unit(unit_id):
+            if after:
+                for unit in self.variants:
+                    if after == unit.get_id():
+                        self.variants.insert(self.variants.index(unit) + 1, genie_unit)
+                        break
+
+                else:
+                    self.variants.append(genie_unit)
+
+            else:
+                self.variants.append(genie_unit)
+
+    def contains_unit(self, object_id):
+        """
+        Returns True if a unit with unit_id is part of the group.
+        """
+        obj = self.data.genie_units[object_id]
+
+        return obj in self.variants
 
 
 class GenieUnitTaskGroup(GenieUnitLineGroup):
@@ -422,8 +545,35 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         # Add a reference for the unit to the dataset
         self.data.task_groups.update({task_group_id: self})
 
+    def is_creatable(self):
+        """
+        Task groups are creatable if any unit in the group is creatable.
 
-class GenieVillagerGroup(ConverterObjectGroup):
+        :returns: True if any train location id is greater than zero.
+        """
+        for unit in self.line:
+            train_location_id = unit.get_member("train_location_id").get_value()
+            # -1 = no train location
+            if train_location_id > -1:
+                return True
+
+        return False
+
+    def get_train_location(self):
+        """
+        Returns the group_id for building line if the task group is
+        creatable, otherwise return None.
+        """
+        for unit in self.line:
+            train_location_id = unit.get_member("train_location_id").get_value()
+            # -1 = no train location
+            if train_location_id > -1:
+                return train_location_id
+
+        return None
+
+
+class GenieVillagerGroup(GenieUnitLineGroup):
     """
     Special collection of task groups for villagers.
 
@@ -451,7 +601,7 @@ class GenieVillagerGroup(ConverterObjectGroup):
                               contains all relevant data for the conversion
                               process.
         """
-        super().__init__(group_id)
+        super().__init__(group_id, full_data_set)
 
         self.data = full_data_set
         self.data.villager_groups.update({self.get_id(): self})
@@ -462,5 +612,34 @@ class GenieVillagerGroup(ConverterObjectGroup):
             task_group = self.data.task_groups[task_group_id]
             self.variants.append(task_group)
 
-        # List of buildings that villagers can create
+        # List of buildings that units can create
         self.creates = []
+
+    def is_creatable(self):
+        """
+        Villagers are creatable if any of their variant task groups are creatable.
+
+        :returns: True if any train location id is greater than zero.
+        """
+        for variant in self.variants:
+            if variant.is_creatable():
+                return True
+
+        return False
+
+    def get_head_unit_id(self):
+        """
+        For villagers, this returns the group id.
+        """
+        return self.get_id()
+
+    def get_train_location(self):
+        """
+        Returns the group_id for building line if the task group is
+        creatable, otherwise return None.
+        """
+        for variant in self.variants:
+            if variant.is_creatable():
+                return variant.get_train_location()
+
+        return None
