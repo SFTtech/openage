@@ -24,7 +24,7 @@ class NyanObject:
     Superclass for nyan objects.
     """
 
-    def __init__(self, name: str, parents=None, members=None,
+    def __init__(self, name, parents=None, members=None,
                  nested_objects=None):
         """
         Initializes the object and does some correctness
@@ -97,7 +97,7 @@ class NyanObject:
 
         self._children.add(new_child)
 
-    def get_fqon(self) -> str:
+    def get_fqon(self):
         """
         Returns the fqon of the nyan object.
         """
@@ -123,13 +123,13 @@ class NyanObject:
 
         return None
 
-    def get_name(self) -> str:
+    def get_name(self):
         """
         Returns the name of the object.
         """
         return self.name
 
-    def has_ancestor(self, nyan_object) -> bool:
+    def has_ancestor(self, nyan_object):
         """
         Returns True if the given nyan object is an ancestor
         of this nyan object.
@@ -144,7 +144,7 @@ class NyanObject:
 
         return False
 
-    def is_abstract(self) -> bool:
+    def is_abstract(self):
         """
         Returns True if unique or inherited members were
         not initialized.
@@ -155,7 +155,7 @@ class NyanObject:
 
         return False
 
-    def is_patch(self) -> bool:
+    def is_patch(self):
         """
         Returns True if the object is a NyanPatch.
         """
@@ -209,7 +209,7 @@ class NyanObject:
 
         return output_str
 
-    def _prepare_object_content(self, indent_depth) -> str:
+    def _prepare_object_content(self, indent_depth):
         """
         Returns a string containing the nyan object's content
         (members, nested objects).
@@ -258,7 +258,7 @@ class NyanObject:
 
         return output_str
 
-    def _prepare_inheritance_content(self) -> str:
+    def _prepare_inheritance_content(self):
         """
         Returns a string containing the nyan object's inheritance set
         in the header.
@@ -386,13 +386,13 @@ class NyanPatch(NyanObject):
         """
         return self._target
 
-    def is_patch(self) -> bool:
+    def is_patch(self):
         """
         Returns True if the object is a nyan patch.
         """
         return True
 
-    def dump(self, indent_depth) -> str:
+    def dump(self, indent_depth):
         """
         Returns the string representation of the object.
         """
@@ -460,8 +460,8 @@ class NyanMember:
     Superclass for all nyan members.
     """
 
-    def __init__(self, name: str, member_type, value=None, operator: str=None,
-                 override_depth: int=0, set_type=None, optional: bool=False):
+    def __init__(self, name: str, member_type, value=None, operator=None,
+                 override_depth=0, set_type=None, optional=False):
         """
         Initializes the member and does some correctness
         checks, for your convenience.
@@ -480,8 +480,7 @@ class NyanMember:
             else:
                 self._set_type = MemberType(set_type)
 
-        self._optional = optional                       # whether the value is allowed
-        # to be NYAN_NONE
+        self._optional = optional                       # whether the value is allowed to be NYAN_NONE
 
         self._operator = None
         if operator:
@@ -496,7 +495,7 @@ class NyanMember:
         if self.value:
             self._type_conversion()
 
-    def get_name(self) -> str:
+    def get_name(self):
         """
         Returns the name of the member.
         """
@@ -520,7 +519,7 @@ class NyanMember:
         """
         return self._operator
 
-    def get_override_depth(self) -> int:
+    def get_override_depth(self):
         """
         Returns the override depth of the member.
         """
@@ -532,25 +531,25 @@ class NyanMember:
         """
         return self.value
 
-    def is_complex(self) -> bool:
+    def is_complex(self):
         """
         Returns True if the member is a set or orderedset.
         """
         return self._member_type in (MemberType.SET, MemberType.ORDEREDSET)
 
-    def is_initialized(self) -> bool:
+    def is_initialized(self):
         """
         Returns True if the member has a value.
         """
         return self.value is not None
 
-    def is_inherited(self) -> bool:
+    def is_inherited(self):
         """
         Returns True if the member is inherited from another object.
         """
         return False
 
-    def is_optional(self) -> bool:
+    def is_optional(self):
         """
         Returns True if the member is optional.
         """
@@ -568,9 +567,13 @@ class NyanMember:
                 raise Exception(("%s: 'value' with type NyanObject must "
                                  "have their member type as ancestor")
                                 % (self.__repr__()))
-        self._type_conversion()
 
-    def dump(self) -> str:
+        elif self.value is not MemberSpecialValue.NYAN_INF:
+            self._type_conversion()
+
+        self._sanity_check()
+
+    def dump(self):
         """
         Returns the nyan string representation of the member.
         """
@@ -708,6 +711,11 @@ class NyanMember:
                 raise Exception("%s: 'value' is NYAN_NONE but member is not optional"
                                 % (self.__repr__()))
 
+            if self.value is MemberSpecialValue.NYAN_INF and\
+                    self._member_type not in (MemberType.INT, MemberType.FLOAT):
+                raise Exception("%s: 'value' is NYAN_INF but member type is not "
+                                "INT or FLOAT" % (self.__repr__()))
+
             # NYAN_NONE values can only be assigned
             if self.value is MemberSpecialValue.NYAN_NONE and\
                     self._operator is not MemberOperator.ASSIGN:
@@ -750,12 +758,13 @@ class NyanMember:
             # TODO: Implement Orderedset()
             self.value = list(self.value)
 
-    def _get_primitive_value_str(self, member_type, value) -> str:
+    def _get_primitive_value_str(self, member_type, value):
         """
         Returns the nyan string representation of primitive values.
 
         Subroutine of __str__()
         """
+
         if member_type is MemberType.FLOAT:
             return "%sf" % value
 
@@ -773,6 +782,9 @@ class NyanMember:
 
         if self._optional and self.value is MemberSpecialValue.NYAN_NONE:
             return MemberSpecialValue.NYAN_NONE.value
+
+        if self.value is MemberSpecialValue.NYAN_INF:
+            return MemberSpecialValue.NYAN_INF.value
 
         if self._member_type in (MemberType.INT, MemberType.FLOAT,
                                  MemberType.TEXT, MemberType.FILE,
@@ -829,7 +841,7 @@ class InheritedNyanMember(NyanMember):
         super().__init__(name, member_type, value, operator,
                          override_depth, set_type, optional)
 
-    def get_name(self) -> str:
+    def get_name(self):
         """
         Returns the name of the member in <origin>.<name> form.
         """
@@ -847,25 +859,25 @@ class InheritedNyanMember(NyanMember):
         """
         return self._parent
 
-    def is_inherited(self) -> bool:
+    def is_inherited(self):
         """
         Returns True if the member is inherited from another object.
         """
         return True
 
-    def is_initialized(self) -> bool:
+    def is_initialized(self):
         """
         Returns True if the parent is initialized.
         """
         return self._parent.get_member_by_name(self.name).is_initialized()
 
-    def has_value(self) -> bool:
+    def has_value(self):
         """
         Returns True if the inherited member has a value
         """
         return self.value is not None
 
-    def dump(self) -> str:
+    def dump(self):
         """
         Returns the string representation of the member.
         """
@@ -915,6 +927,9 @@ class MemberSpecialValue(Enum):
     """
     # nyan none type
     NYAN_NONE = "None"
+
+    # infinite value for float and int
+    NYAN_INF = "inf"
 
 
 class MemberOperator(Enum):
