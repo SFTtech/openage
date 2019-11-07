@@ -23,7 +23,6 @@ class GenieAgeConnection(ConverterObject):
         super().__init__(age_id, members=members)
 
         self.data = full_data_set
-        self.data.age_connections.update({self.get_id(): self})
 
 
 class GenieBuildingConnection(ConverterObject):
@@ -45,7 +44,6 @@ class GenieBuildingConnection(ConverterObject):
         super().__init__(building_id, members=members)
 
         self.data = full_data_set
-        self.data.building_connections.update({self.get_id(): self})
 
 
 class GenieTechConnection(ConverterObject):
@@ -67,7 +65,6 @@ class GenieTechConnection(ConverterObject):
         super().__init__(tech_id, members=members)
 
         self.data = full_data_set
-        self.data.tech_connections.update({self.get_id(): self})
 
 
 class GenieUnitConnection(ConverterObject):
@@ -89,4 +86,3 @@ class GenieUnitConnection(ConverterObject):
         super().__init__(unit_id, members=members)
 
         self.data = full_data_set
-        self.data.unit_connections.update({self.get_id(): self})

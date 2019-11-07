@@ -24,7 +24,6 @@ class GenieCivilizationObject(ConverterObject):
         super().__init__(civ_id, members=members)
 
         self.data = full_data_set
-        self.data.genie_civs.update({self.get_id(): self})
 
 
 class GenieCivilizationGroup(ConverterObjectGroup):
@@ -49,7 +48,6 @@ class GenieCivilizationGroup(ConverterObjectGroup):
 
         # Reference to everything else in the gamedata
         self.data = full_data_set
-        self.data.civ_groups.update({self.get_id(): self})
 
         self.civ = self.data.genie_civs[civ_id]
 

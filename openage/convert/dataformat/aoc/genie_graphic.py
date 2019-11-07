@@ -26,7 +26,6 @@ class GenieGraphic(ConverterObject):
         super().__init__(graphic_id, members=members)
 
         self.data = full_data_set
-        self.data.genie_graphics.update({self.get_id(): self})
 
 
 class CombinedSprite(ConverterObjectGroup):

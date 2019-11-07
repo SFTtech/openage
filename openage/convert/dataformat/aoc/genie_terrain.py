@@ -24,4 +24,3 @@ class GenieTerrainObject(ConverterObject):
         super().__init__(terrain_id, members=members)
 
         self.data = full_data_set
-        self.data.genie_terrains.update({self.get_id(): self})
