@@ -124,7 +124,7 @@ class AoĆProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # Units are stored in the civ container.
-        # All civs point to the same units (?) except for Gaia.
+        # All civs point to the same units (?) except for Gaia which has more.
         # Gaia also seems to have the most units, so we only read from Gaia
         #
         # call hierarchy: wrapper[0]->civs[0]->units
@@ -138,12 +138,12 @@ class AoĆProcessor:
             unit_id = raw_unit.get_value()["id0"].get_value()
             unit_members = raw_unit.get_value()
 
-            # Created objects are added automatically to the data set.
-            obj = GenieUnitObject(unit_id, full_data_set, members=unit_members)
+            unit = GenieUnitObject(unit_id, full_data_set, members=unit_members)
+            full_data_set.genie_units.update({unit.get_id(): unit})
 
             # Commands
             unit_commands = raw_unit_headers[unit_id].get_value()["unit_commands"]
-            obj.add_member(unit_commands)
+            unit.add_member(unit_commands)
 
     @staticmethod
     def _extract_genie_techs(gamespec, full_data_set):
@@ -163,8 +163,8 @@ class AoĆProcessor:
             tech_id = index
             tech_members = raw_tech.get_value()
 
-            # Created objects are added automatically to the data set.
-            GenieTechObject(tech_id, full_data_set, members=tech_members)
+            tech = GenieTechObject(tech_id, full_data_set, members=tech_members)
+            full_data_set.genie_techs.update({tech.get_id(): tech})
 
             index += 1
 
@@ -203,8 +203,8 @@ class AoĆProcessor:
             effect_bundle_members = raw_effect_bundle.get_value()
             effect_bundle_members.pop("effects")  # Removed because we store them as separate objects
 
-            # Created objects are added automatically to the data set.
-            GenieEffectBundle(bundle_id, effects, full_data_set, members=effect_bundle_members)
+            bundle = GenieEffectBundle(bundle_id, effects, full_data_set, members=effect_bundle_members)
+            full_data_set.genie_effect_bundles.update({bundle.get_id(): bundle})
 
             index_bundle += 1
 
@@ -226,8 +226,8 @@ class AoĆProcessor:
             civ_members = raw_civ.get_value()
             civ_members.pop("units")  # Removed because we store them as separate objects
 
-            # Created objects are added automatically to the data set.
-            GenieCivilizationObject(civ_id, full_data_set, members=civ_members)
+            civ = GenieCivilizationObject(civ_id, full_data_set, members=civ_members)
+            full_data_set.genie_civs.update({civ.get_id(): civ})
 
             index += 1
 
@@ -246,8 +246,8 @@ class AoĆProcessor:
             age_id = raw_connection.get_value()["id"].get_value()
             connection_members = raw_connection.get_value()
 
-            # Created objects are added automatically to the data set.
-            GenieAgeConnection(age_id, full_data_set, members=connection_members)
+            connection = GenieAgeConnection(age_id, full_data_set, members=connection_members)
+            full_data_set.age_connections.update({connection.get_id(): connection})
 
     @staticmethod
     def _extract_building_connections(gamespec, full_data_set):
@@ -264,8 +264,8 @@ class AoĆProcessor:
             building_id = raw_connection.get_value()["id"].get_value()
             connection_members = raw_connection.get_value()
 
-            # Created objects are added automatically to the data set.
-            GenieBuildingConnection(building_id, full_data_set, members=connection_members)
+            connection = GenieBuildingConnection(building_id, full_data_set, members=connection_members)
+            full_data_set.building_connections.update({connection.get_id(): connection})
 
     @staticmethod
     def _extract_unit_connections(gamespec, full_data_set):
@@ -282,8 +282,8 @@ class AoĆProcessor:
             unit_id = raw_connection.get_value()["id"].get_value()
             connection_members = raw_connection.get_value()
 
-            # Created objects are added automatically to the data set.
-            GenieUnitConnection(unit_id, full_data_set, members=connection_members)
+            connection = GenieUnitConnection(unit_id, full_data_set, members=connection_members)
+            full_data_set.unit_connections.update({connection.get_id(): connection})
 
     @staticmethod
     def _extract_tech_connections(gamespec, full_data_set):
@@ -300,8 +300,8 @@ class AoĆProcessor:
             tech_id = raw_connection.get_value()["id"].get_value()
             connection_members = raw_connection.get_value()
 
-            # Created objects are added automatically to the data set.
-            GenieTechConnection(tech_id, full_data_set, members=connection_members)
+            connection = GenieTechConnection(tech_id, full_data_set, members=connection_members)
+            full_data_set.tech_connections.update({connection.get_id(): connection})
 
     @staticmethod
     def _extract_genie_graphics(gamespec, full_data_set):
@@ -318,8 +318,8 @@ class AoĆProcessor:
             graphic_id = raw_graphic.get_value()["graphic_id"].get_value()
             graphic_members = raw_graphic.get_value()
 
-            # Created objects are added automatically to the data set.
-            GenieGraphic(graphic_id, full_data_set, members=graphic_members)
+            graphic = GenieGraphic(graphic_id, full_data_set, members=graphic_members)
+            full_data_set.genie_graphics.update({graphic.get_id(): graphic})
 
     @staticmethod
     def _extract_genie_sounds(gamespec, full_data_set):
@@ -336,8 +336,8 @@ class AoĆProcessor:
             sound_id = raw_sound.get_value()["sound_id"].get_value()
             sound_members = raw_sound.get_value()
 
-            # Created objects are added automatically to the data set.
-            GenieSound(sound_id, full_data_set, members=sound_members)
+            sound = GenieSound(sound_id, full_data_set, members=sound_members)
+            full_data_set.genie_sounds.update({sound.get_id(): sound})
 
     @staticmethod
     def _extract_genie_terrains(gamespec, full_data_set):
@@ -355,8 +355,8 @@ class AoĆProcessor:
             terrain_index = index
             terrain_members = raw_terrain.get_value()
 
-            # Created objects are added automatically to the data set.
-            GenieTerrainObject(terrain_index, full_data_set, members=terrain_members)
+            terrain = GenieTerrainObject(terrain_index, full_data_set, members=terrain_members)
+            full_data_set.genie_terrains.update({terrain.get_id(): terrain})
 
             index += 1
 
@@ -373,6 +373,11 @@ class AoĆProcessor:
 
         unit_connections = full_data_set.unit_connections
 
+        # Stores unit lines with key=line_id and val=object
+        # while they are created. Later in the data set,
+        # we store them with key=head_unit_id.
+        pre_unit_lines = {}
+
         for _, connection in unit_connections.items():
             unit_id = connection.get_member("id").get_value()
             unit = full_data_set.genie_units[unit_id]
@@ -380,19 +385,21 @@ class AoĆProcessor:
 
             # Check if a line object already exists for this id
             # if not, create it
-            if line_id in full_data_set.unit_lines.keys():
-                unit_line = full_data_set.unit_lines[line_id]
+            if line_id in pre_unit_lines.keys():
+                unit_line = pre_unit_lines[line_id]
 
             else:
                 # Check for special cases first
                 if unit.has_member("transform_unit_id") and unit.get_member("transform_unit_id").get_value() > -1:
                     # Trebuchet
                     unit_line = GenieUnitTransformGroup(line_id, unit_id, full_data_set)
+                    full_data_set.transform_groups.update({unit_line.get_id(): unit_line})
 
                 elif line_id == 65:
                     # Monks
-                    # Switch to mobk with relic is hardcoded :(
+                    # Switch to monk with relic is hardcoded :(
                     unit_line = GenieMonkGroup(line_id, unit_id, 286, full_data_set)
+                    full_data_set.monk_groups.update({unit_line.get_id(): unit_line})
 
                 elif unit.has_member("task_group") and unit.get_member("task_group").get_value() > 0:
                     # Villager
@@ -403,9 +410,12 @@ class AoĆProcessor:
                     # Normal units
                     unit_line = GenieUnitLineGroup(line_id, full_data_set)
 
+                pre_unit_lines.update({unit_line.get_id(): unit_line})
+
             if connection.get_member("line_mode").get_value() == 2:
                 # The unit is the first in line
                 unit_line.add_unit(unit)
+
             else:
                 # The unit comes after another one
                 # Search other_connections for the previous unit in line
@@ -427,6 +437,10 @@ class AoĆProcessor:
                 previous_unit_id = connected_ids[connected_index].get_value()
 
                 unit_line.add_unit(unit, after=previous_unit_id)
+
+        # Store the lines in the data set, but with the head unit ids as keys
+        for _, line in pre_unit_lines.items():
+            full_data_set.unit_lines.update({line.get_head_unit_id(): line})
 
     @staticmethod
     def _create_building_lines(full_data_set):
@@ -536,6 +550,7 @@ class AoĆProcessor:
                 else:
                     building_line = GenieBuildingLineGroup(line_id, full_data_set)
 
+                full_data_set.building_lines.update({building_line.get_id(): building_line})
                 building_line.add_unit(building, after=previous_building_id)
 
     @staticmethod
@@ -610,11 +625,14 @@ class AoĆProcessor:
                 # Find the age id in the connected ids
                 connected_ids = connection.get_member("other_connected_ids").get_value()
                 age_id = connected_ids[connected_index].get_value()
-                _ = AgeUpgrade(tech_id, age_id, full_data_set)
+                age_up = AgeUpgrade(tech_id, age_id, full_data_set)
+                full_data_set.tech_groups.update({age_up.get_id(): age_up})
+                full_data_set.age_upgrades.update({age_up.get_id(): age_up})
 
             else:
                 # Create a normal tech for other techs
-                _ = GenieTechEffectBundleGroup(tech_id, full_data_set)
+                tech_group = GenieTechEffectBundleGroup(tech_id, full_data_set)
+                full_data_set.tech_groups.update({tech_group.get_id(): tech_group})
 
         # Unit upgrades and unlocks are stored in unit connections
         unit_connections = full_data_set.unit_connections
@@ -629,12 +647,18 @@ class AoĆProcessor:
             if required_research_id == -1 and enabling_research_id == -1:
                 # Unit is unlocked from the start
                 continue
+
             elif line_mode == 2:
                 # Unit is first in line, there should be an unlock tech
-                _ = UnitUnlock(enabling_research_id, line_id, full_data_set)
+                unit_unlock = UnitUnlock(enabling_research_id, line_id, full_data_set)
+                full_data_set.tech_groups.update({unit_unlock.get_id(): unit_unlock})
+                full_data_set.unit_unlocks.update({unit_unlock.get_id(): unit_unlock})
+
             elif line_mode == 3:
                 # Units further down the line receive line upgrades
-                _ = UnitLineUpgrade(required_research_id, line_id, unit_id, full_data_set)
+                unit_upgrade = UnitLineUpgrade(required_research_id, line_id, unit_id, full_data_set)
+                full_data_set.tech_groups.update({unit_upgrade.get_id(): unit_upgrade})
+                full_data_set.unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
 
         # Civ boni have to be aquired from techs
         # Civ boni = unique techs, unique unit unlocks, eco boni (but not team bonus)
@@ -646,7 +670,9 @@ class AoĆProcessor:
 
             # Civ ID must be positive and non-zero
             if civ_id > 0:
-                _ = CivBonus(tech_id, civ_id, full_data_set)
+                civ_bonus = CivBonus(tech_id, civ_id, full_data_set)
+                full_data_set.tech_groups.update({civ_bonus.get_id(): civ_bonus})
+                full_data_set.civ_boni.update({civ_bonus.get_id(): civ_bonus})
 
     @staticmethod
     def _create_civ_groups(full_data_set):
@@ -663,7 +689,8 @@ class AoĆProcessor:
         for index in range(len(civ_objects)):
             civ_id = index
 
-            _ = GenieCivilizationGroup(civ_id, full_data_set)
+            civ_group = GenieCivilizationGroup(civ_id, full_data_set)
+            full_data_set.civ_groups.update({civ_group.get_id(): civ_group})
 
             index += 1
 
@@ -706,11 +733,14 @@ class AoĆProcessor:
 
                 task_group = GenieUnitTaskGroup(line_id, task_group_id, full_data_set)
                 task_group.add_unit(unit)
+                full_data_set.task_groups.update({task_group_id: task_group})
 
             task_group_ids.add(task_group_id)
 
         # Create the villager task group
-        _ = GenieVillagerGroup(118, task_group_ids, full_data_set)
+        villager = GenieVillagerGroup(118, task_group_ids, full_data_set)
+        full_data_set.unit_lines.update({villager.get_id(): villager})
+        full_data_set.villager_groups.update({villager.get_id(): villager})
 
     @staticmethod
     def _create_variant_groups(full_data_set):
@@ -739,6 +769,7 @@ class AoĆProcessor:
 
             else:
                 variant_group = GenieVariantGroup(class_id, full_data_set)
+                full_data_set.variant_groups.update({variant_group.get_id(): variant_group})
 
             variant_group.add_unit(unit)
 
@@ -757,10 +788,6 @@ class AoĆProcessor:
         unit_lines = full_data_set.unit_lines
 
         for _, unit_line in unit_lines.items():
-            if isinstance(unit_line, GenieUnitTaskGroup):
-                # ignore task groups because they are stored in villager groups
-                continue
-
             if unit_line.is_creatable():
                 train_location_id = unit_line.get_train_location()
                 full_data_set.building_lines[train_location_id].add_creatable(unit_line)
@@ -777,11 +804,7 @@ class AoĆProcessor:
 
                 else:
                     # try normal units
-                    unit_lines = full_data_set.unit_lines
-
-                    for _, unit_line in unit_lines.items():
-                        if unit_line.get_head_unit_id() == train_location_id:
-                            unit_line.add_creatable(building_line)
+                    full_data_set.unit_lines[train_location_id].add_creatable(building_line)
 
     @staticmethod
     def _link_researchables(full_data_set):

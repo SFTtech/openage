@@ -24,7 +24,6 @@ class GenieUnitObject(ConverterObject):
         super().__init__(unit_id, members=members)
 
         self.data = full_data_set
-        self.data.genie_units.update({self.get_id(): self})
 
 
 class GenieUnitLineGroup(ConverterObjectGroup):
@@ -55,7 +54,6 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
         # Reference to everything else in the gamedata
         self.data = full_data_set
-        self.data.unit_lines.update({self.get_id(): self})
 
         # List of buildings that units can create
         self.creates = []
@@ -232,7 +230,6 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
 
         # Reference to everything else in the gamedata
         self.data = full_data_set
-        self.data.building_lines.update({self.get_id(): self})
 
     def add_unit(self, genie_unit, after=None):
         """
@@ -408,9 +405,6 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
 
         super().__init__(line_id, full_data_set)
 
-        # Add a reference to the unit to the dataset
-        self.data.transform_groups.update({self.get_id(): self})
-
         self.head_unit = self.data.genie_units[head_unit_id]
 
         transform_id = self.head_unit.get_member("transform_unit_id").get_value()
@@ -441,9 +435,6 @@ class GenieMonkGroup(GenieUnitLineGroup):
         """
         super().__init__(line_id, full_data_set)
 
-        # Reference to everything else in the gamedata
-        self.data.monk_groups.update({self.get_id(): self})
-
         self.head_unit = self.data.genie_units[head_unit_id]
         self.switch_unit = self.data.genie_units[switch_unit_id]
 
@@ -468,7 +459,6 @@ class GenieVariantGroup(ConverterObjectGroup):
 
         # Reference to everything else in the gamedata
         self.data = full_data_set
-        self.data.variant_groups.update({self.get_id(): self})
 
     def add_unit(self, genie_unit, after=None):
         """
@@ -523,9 +513,8 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
     # From unit connection
     male_line_id = 83   # male villager (with combat task)
 
-    # Female villagers have no line id (boo!) so we just assign an arbitrary
-    # ID to them.
-    female_line_id = 1337
+    # Female villagers have no line id, so we use the combat unit
+    female_line_id = 293  # female villager (with combat task)
 
     def __init__(self, line_id, task_group_id, full_data_set):
         """
@@ -541,9 +530,6 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         super().__init__(line_id, full_data_set)
 
         self.task_group_id = task_group_id
-
-        # Add a reference for the unit to the dataset
-        self.data.task_groups.update({task_group_id: self})
 
     def is_creatable(self):
         """
@@ -604,7 +590,6 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         super().__init__(group_id, full_data_set)
 
         self.data = full_data_set
-        self.data.villager_groups.update({self.get_id(): self})
 
         # Reference to the variant task groups
         self.variants = []

@@ -28,7 +28,6 @@ class GenieTechObject(ConverterObject):
         super().__init__(tech_id, members=members)
 
         self.data = full_data_set
-        self.data.genie_techs.update({self.get_id(): self})
 
 
 class GenieTechEffectBundleGroup(ConverterObjectGroup):
@@ -49,7 +48,6 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         super().__init__(tech_id)
 
         self.data = full_data_set
-        self.data.tech_groups.update({self.get_id(): self})
 
         # The tech that belongs to the tech id
         self.tech = self.data.genie_techs[tech_id]
@@ -122,8 +120,6 @@ class AgeUpgrade(GenieTechEffectBundleGroup):
 
         self.age_id = age_id
 
-        self.data.age_upgrades.update({self.get_id(): self})
-
 
 class UnitLineUpgrade(GenieTechEffectBundleGroup):
     """
@@ -149,8 +145,6 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
         self.unit_line_id = unit_line_id
         self.upgrade_target_id = upgrade_target_id
 
-        self.data.unit_upgrades.update({self.get_id(): self})
-
 
 class BuildingLineUpgrade(GenieTechEffectBundleGroup):
     """
@@ -175,8 +169,6 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
 
         self.building_line_id = building_line_id
         self.upgrade_target_id = upgrade_target_id
-
-        self.data.building_upgrades.update({self.get_id(): self})
 
 
 class UnitUnlock(GenieTechEffectBundleGroup):
@@ -204,8 +196,6 @@ class UnitUnlock(GenieTechEffectBundleGroup):
 
         self.line_id = line_id
 
-        self.data.unit_unlocks.update({self.get_id(): self})
-
 
 class CivBonus(GenieTechEffectBundleGroup):
     """
@@ -229,5 +219,3 @@ class CivBonus(GenieTechEffectBundleGroup):
         super().__init__(tech_id, full_data_set)
 
         self.civ_id = civ_id
-
-        self.data.civ_boni.update({self.get_id(): self})

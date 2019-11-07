@@ -22,4 +22,3 @@ class GenieSound(ConverterObject):
         super().__init__(sound_id, members=members)
 
         self.data = full_data_set
-        self.data.genie_sounds.update({self.get_id(): self})

@@ -62,7 +62,6 @@ class GenieEffectBundle(ConverterObject):
         self.sanitized = False
 
         self.data = full_data_set
-        self.data.genie_effect_bundles.update({self.get_id(): self})
 
     def get_effects(self, effect_type=None):
         """
