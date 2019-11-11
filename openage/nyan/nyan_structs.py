@@ -80,13 +80,29 @@ class NyanObject:
         """
         Adds a member to the nyan object.
         """
-        if self.is_inherited():
+        if new_member.is_inherited():
             raise Exception("added member cannot be inherited")
 
         if not isinstance(new_member, NyanMember):
             raise Exception("added member must have <NyanMember> type")
 
         self._members.add(new_member)
+
+        # Update child objects
+        for child in self._children:
+            # Create a new member for every child with self as parent and origin
+            inherited_member = InheritedNyanMember(
+                new_member.get_name(),
+                new_member.get_member_type(),
+                self,
+                self,
+                None,
+                new_member.get_set_type(),
+                None,
+                None,
+                new_member.is_optional()
+            )
+            child.update_inheritance(inherited_member)
 
     def add_child(self, new_child):
         """
@@ -96,6 +112,37 @@ class NyanObject:
             raise Exception("children must have <NyanObject> type")
 
         self._children.add(new_child)
+
+        # Pass members and inherited members to the child object
+        for member in self._members:
+            # Create a new member with self as parent and origin
+            inherited_member = InheritedNyanMember(
+                member.get_name(),
+                member.get_member_type(),
+                self,
+                self,
+                None,
+                member.get_set_type(),
+                None,
+                None,
+                member.is_optional()
+            )
+            new_child.update_inheritance(inherited_member)
+
+        for inherited in self._inherited_members:
+            # Create a new member with self as parent
+            inherited_member = InheritedNyanMember(
+                inherited.get_name(),
+                inherited.get_member_type(),
+                self,
+                inherited.get_origin(),
+                None,
+                member.get_set_type(),
+                None,
+                None,
+                member.is_optional()
+            )
+            new_child.update_inheritance(inherited_member)
 
     def get_fqon(self):
         """
@@ -169,10 +216,10 @@ class NyanObject:
             raise Exception("%s: 'new_fqon' must be a string"
                             % (self.__repr__()))
 
-        elif not re.fullmatch(r"[a-zA-Z_][a-zA-Z_]*('.'[a-zA-Z_][a-zA-Z_]*)*",
+        elif not re.fullmatch(r"[a-zA-Z_][a-zA-Z0-9_]*('.'[a-zA-Z_][a-zA-Z0-9_]*)*",
                               self.name):
-            raise Exception("%s: 'new_fqon' must be match [a-zA-Z_.]* grammar"
-                            % (self.__repr__()))
+            raise Exception("%s: new fqon '%s' is not well formed"
+                            % (self.__repr__(). new_fqon))
 
         else:
             self._fqon = new_fqon
@@ -182,17 +229,37 @@ class NyanObject:
                 nested_object.set_fqon("%s.%s" % (new_fqon,
                                                   nested_object.get_name()))
 
-    def update_inheritance(self):
+    def update_inheritance(self, new_inherited_member):
         """
-        Update the set of inherited members.
+        Add an inherited member to the object. Should only be used by
+        parent objects.
         """
-        # Reinitialize set
-        self._inherited_members = set()
-        self._process_inheritance()
+        if not self.has_ancestor(new_inherited_member.get_origin()):
+            raise Exception("%s: cannot add inherited member %s because"
+                            " %s is not an ancestor of %s"
+                            % (self.__repr__(), new_inherited_member,
+                               new_inherited_member.get_origin(), self))
+
+        if not isinstance(new_inherited_member, InheritedNyanMember):
+            raise Exception("added member must have <InheritedNyanMember> type")
+
+        self._inherited_members.add(new_inherited_member)
 
         # Update child objects
         for child in self._children:
-            child.update_inheritance()
+            # Create a new member for every child with self as parent
+            inherited_member = InheritedNyanMember(
+                new_inherited_member.get_name(),
+                new_inherited_member.get_member_type(),
+                self,
+                new_inherited_member.get_origin(),
+                None,
+                new_inherited_member.get_set_type(),
+                None,
+                None,
+                new_inherited_member.is_optional()
+            )
+            child.update_inheritance(inherited_member)
 
     def dump(self, indent_depth=0):
         """
@@ -279,41 +346,10 @@ class NyanObject:
 
     def _process_inheritance(self):
         """
-        Creates inherited members from parent members.
+        Notify parents of the object.
         """
         for parent in self._parents:
-            parent_members = parent.get_members()
-
-            for parent_member in parent_members:
-                # Copy members without initializing them
-                if parent_member.is_inherited():
-                    member_name = parent_member.get_name().split(".")[-1]
-                    inherited_member = InheritedNyanMember(
-                        member_name,
-                        parent_member.get_member_type(),
-                        parent,
-                        parent_member.get_origin(),
-                        None,
-                        parent_member.get_set_type(),
-                        None,
-                        None,
-                        parent_member.is_optional()
-                    )
-
-                else:
-                    inherited_member = InheritedNyanMember(
-                        parent_member.get_name(),
-                        parent_member.get_member_type(),
-                        parent,
-                        parent,
-                        None,
-                        parent_member.get_set_type(),
-                        None,
-                        None,
-                        parent_member.is_optional()
-                    )
-
-                self._inherited_members.add(inherited_member)
+            parent.add_child(self)
 
     def _sanity_check(self):
         """
@@ -325,13 +361,12 @@ class NyanObject:
             raise Exception("%s: 'name' must be a string" % (self.__repr__()))
 
         # self.name must conform to nyan grammar rules
-        if not re.fullmatch(r"[a-zA-Z_][a-zA-Z_]*", self.name):
+        if not re.fullmatch(r"[a-zA-Z_][a-zA-Z0-9_]*", self.name):
             raise Exception("%s: 'name' is not well-formed" %
                             (self.__repr__()))
 
         # self._parents must be NyanObjects
         for parent in self._parents:
-            print("Parent")
             if not isinstance(parent, NyanObject):
                 raise Exception("%s: %s must have NyanObject type"
                                 % (self.__repr__(), parent.__repr__()))
@@ -460,7 +495,7 @@ class NyanMember:
     Superclass for all nyan members.
     """
 
-    def __init__(self, name: str, member_type, value=None, operator=None,
+    def __init__(self, name, member_type, value=None, operator=None,
                  override_depth=0, set_type=None, optional=False):
         """
         Initializes the member and does some correctness
@@ -625,7 +660,7 @@ class NyanMember:
                             % (self.__repr__()))
 
         # self.name must conform to nyan grammar rules
-        if not re.fullmatch(r"[a-zA-Z_][a-zA-Z_]*", self.name[0]):
+        if not re.fullmatch(r"[a-zA-Z_][a-zA-Z0-9_]*", self.name[0]):
             raise Exception("%s: 'name' is not well-formed"
                             % (self.__repr__()))
 
@@ -824,19 +859,16 @@ class InheritedNyanMember(NyanMember):
     Superclass for all nyan members inherited from other objects.
     """
 
-    def __init__(self, name: str, member_type, parent, origin, value=None,
+    def __init__(self, name, member_type, parent, origin, value=None,
                  set_type=None, operator=None, override_depth=None, optional=False):
         """
         Initializes the member and does some correctness
         checks, for your convenience.
         """
 
-        self._parent = parent               # the direct parent of the
-        # object which contains the
-        # member
+        self._parent = parent               # the direct parent of the object which contains the member
 
-        self._origin = origin               # nyan object which originally
-        # defines the member
+        self._origin = origin               # nyan object which originally defined the member
 
         super().__init__(name, member_type, value, operator,
                          override_depth, set_type, optional)
