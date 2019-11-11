@@ -13,7 +13,7 @@ Accuracy(Entity):
     blacklisted_entities : set(GameEntity)
 ```
 
-Stores information for the accuracy calculation of a game entity with `Projectile` ability.
+<!-- Stores information for the accuracy calculation of a game entity with `Projectile` ability. -->
 
 **accuracy**
 The chance for the projectile to land at the "perfect" position to hit its target as a value between 0 and 1.
@@ -582,7 +582,7 @@ Subdivision of a formation. It defines the structure and placement of game entit
 ## aux.formation.PrecedingSubformation
 
 ```python
-PrecedingSubformation(Entity):
+PrecedingSubformation(Subformation):
     precedes : Subformation
 ```
 
@@ -723,6 +723,14 @@ Defensive(GameEntityStance):
 
 The game entity will use ranged abilities or move to the nearest target in its line of sight to use other abilities. If the target gets out of range or the line of sight, the game entity searches for a new target. When no new target can be found, the game entity returns to its original position and returns to an idle state.
 
+## aux.game_entity_stance.type.Passive
+
+```python
+Passive(GameEntityStance):
+```
+
+The game entity will stay at its current position and only reacts to manual commands given by players. Abilities in `ability_preference` will be ignored.
+
 ## aux.game_entity_stance.type.StandGround
 
 ```python
@@ -731,13 +739,13 @@ StandGround(GameEntityStance):
 
 The game entity will stay at its current position.
 
-## aux.game_entity_stance.type.Passive
+## aux.game_entity_type.GameEntityType
 
 ```python
-Passive(GameEntityStance):
+GameEntityType(Entity):
 ```
 
-The game entity will stay at its current position and only reacts to manual commands given by players. Abilities in `ability_preference` will be ignored.
+Classification for a game entity.
 
 ## aux.graphics.Animation
 

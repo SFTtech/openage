@@ -6,6 +6,7 @@ Reference documentation of the `engine.ability` module of the openage modding AP
 
 ```python
 Ability(Entity):
+    pass
 ```
 
 Generalization object for all abilities. Abilities define what game entities can *do* and what they *are*, respectively. They can be considered passive and active traits.
@@ -116,7 +117,7 @@ Blacklist for specific game entities that would be covered by `allowed_types`, b
 
 ```python
 ApplyDiscreteEffect(Ability):
-    effects                   : set(ContinuousEffect)
+    effects                   : set(DiscreteEffect)
     reload_time               : float
     application_delay         : float
     allowed_types             : set(GameEntityType)
@@ -220,6 +221,7 @@ A set of `DamageProgress` objects that can activate state changes and animation 
 
 ```python
 Deletable(Ability):
+    pass
 ```
 
 Makes the game entity deletable via manual command. This will trigger the currently active `Die` ability without the need to fulfill the conditions for death. If the game entity does not have an active `Die` ability, the engine will try to trigger `Despawn` instead. If this ability is also not present, the game entity is instantly removed from the game.
