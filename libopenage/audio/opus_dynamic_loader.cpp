@@ -1,8 +1,8 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "opus_dynamic_loader.h"
 
-#include <opusfile.h>
+#include <opus/opusfile.h>
 
 #include "error.h"
 #include "../log/log.h"
