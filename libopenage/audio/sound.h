@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -72,7 +72,7 @@ public:
 	 * finished or not.
 	 *
 	 * @param stream the stream to mix with
-	 * @param length the number of values that should mixed
+	 * @param length the number of values that should be mixed
 	 *
 	 * @returns if the sound was finished and should no longer be played.
 	 */
@@ -118,7 +118,7 @@ public:
 
 	/**
 	 * Sets whether this sound should be looping or not. A looping sound
-	 * restarts automatically after it has finishes.
+	 * restarts automatically after it has finished.
 	 * @param looping true, if this sound should be looping, otherwise false
 	 */
 	void set_looping(bool looping);

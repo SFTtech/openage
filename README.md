@@ -4,8 +4,8 @@
 **openage**: a volunteer project to create a free engine clone of the *Genie Engine* used by *Age of Empires*, *Age of Empires II (HD)* and *Star Wars: Galactic Battlegrounds*, comparable to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/),  [OpenSAGE](https://github.com/OpenSAGE/OpenSAGE/), [OpenTTD](https://openttd.org/) and [OpenRCT2](https://openrct2.org/). At the moment we focus our efforts on the integration of *Age of Empires II*, while being primarily aimed at POSIX platforms such as **GNU/Linux**.
 
 openage uses the original game assets (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
-To play, you require *an original AoE II : TC installation or [AoE II: HD](http://store.steampowered.com/app/221380/)*
-(installation via [Wine](https://www.winehq.org/) or [Steam-Linux](doc/media_convert.md#how-to-use-the-original-game-assets)).
+To play, you require *an original AoE II: TC or [AoE II: HD](http://store.steampowered.com/app/221380/)* installation
+(via [Wine](https://www.winehq.org/) or [Steam-Linux](doc/media_convert.md#how-to-use-the-original-game-assets)).
 
 [![github stars](https://img.shields.io/github/stars/SFTtech/openage.svg)](https://github.com/SFTtech/openage/stargazers)
 [![#sfttech on Freenode](https://img.shields.io/badge/chat-on%20freenode-brightgreen)](https://webchat.freenode.net/?channels=sfttech)

@@ -158,13 +158,6 @@ public:
 	void end_game();
 
 	/**
-	 * draw the current frames per second number on screen.
-	 * save the current framebuffer to a given png file.
-	 * @param filename the file where the picture will be saved to.
-	 */
-	void save_screenshot(const char* filename);
-
-	/**
 	 * Draw the game version and the current FPS on screen.
 	 */
 	bool draw_debug_overlay();
@@ -260,7 +253,7 @@ public:
 	time_nsec_t lastframe_duration_nsec() const;
 
 	/**
-	 * render text with the at a position with specified font size
+	 * render text at a position with the specified font size
 	 */
 	void render_text(coord::viewport position, size_t size, const renderer::Color &color, const char *format, ...) ATTRIBUTE_FORMAT(5, 6);
 

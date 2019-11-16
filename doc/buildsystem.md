@@ -17,7 +17,7 @@ compiler-independently.
 Components
 ==========
 
-The buildsystem is pretty sophisticated because *openage* consists C++
+The buildsystem is pretty sophisticated because *openage* consists of C++
 code, generated C++ code, generated Cython code and Python code. All C++
 parts are packed in `libopenage`, the Python stuff is in the `openage`
 python package. We generate code with the `openage.codegen` Python
@@ -108,7 +108,7 @@ The [python module](/buildsystem/python.cmake) is similar to the cpp module. It 
 
  - `add_cython_modules` adds Cython modules (i.e. `.pyx` or `.py` files) that will be compiled. See the code for option docs.
  - `pxdgen` adds C++ headers for `.pxd` file generation (see [pyinterface](/doc/code/pyinterface.md)).
- - `add_pxd` adds any additional `.pxd` or `.pxi` files.
+ - `add_pxds` adds any additional `.pxd` or `.pxi` files.
  - `add_py_modules` adds pure-Python modules; note that you also must declare `.py` files that were declared in `add_cython_modules`.
 
 codegen

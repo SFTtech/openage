@@ -12,7 +12,7 @@ function(python_init)
 	set_property(GLOBAL PROPERTY SFT_CYTHON_MODULES_EMBED)
 
 	# list of pxd files added manually
-	# filled by add_pxd only. for use as depends list for cythonize.py.
+	# filled by add_pxds only. for use as depends list for cythonize.py.
 	set_property(GLOBAL PROPERTY SFT_PXD_FILES)
 
 	# filled by pxdgen. for use as output list for the pxdgen target.

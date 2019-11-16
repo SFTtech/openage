@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "program.h"
 
@@ -65,10 +65,10 @@ void Program::link() {
 }
 
 /**
-checks a given status for this program.
-
-@param what_to_check GL_LINK_STATUS GL_VALIDATE_STATUS GL_COMPILE_STATUS
-*/
+ * checks a given status for this program.
+ *
+ * @param what_to_check GL_LINK_STATUS GL_VALIDATE_STATUS GL_COMPILE_STATUS
+ */
 void Program::check(GLenum what_to_check) {
 	GLint status;
 	glGetProgramiv(this->id, what_to_check, &status);
@@ -140,7 +140,8 @@ void Program::set_attribute_id(const char *name, GLuint id) {
 	}
 	else {
 		//TODO: maybe enable overwriting, but after that relink the program
-		throw Error(MSG(err) << "assigned attribute " << name << " = " << id << " after program was linked!");
+		throw Error(MSG(err) << "assigned attribute " << name << " = " << id
+		                     << " after program was linked!");
 	}
 }
 
@@ -159,7 +160,8 @@ void Program::dump_active_attributes() {
 		GLint attrib_size;
 		GLenum attrib_type;
 		char *attrib_name = new char[attrib_max_length];
-		glGetActiveAttrib(this->id, i, attrib_max_length, &attrib_length, &attrib_size, &attrib_type, attrib_name);
+		glGetActiveAttrib(this->id, i, attrib_max_length, &attrib_length,
+		                  &attrib_size, &attrib_type, attrib_name);
 
 		msg << "\n" <<
 			"-> attribute " << attrib_name << ": "

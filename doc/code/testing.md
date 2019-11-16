@@ -35,6 +35,8 @@ They usually produce lots of output on stdout or may even be interactive. Python
 
 All tests must be registered in `openage/testing/testlist.py` (else the game won't know about them).
 
+Also see `./run test --help`.
+
 ## Adding new tests
 
 ### C++ tests
@@ -73,7 +75,7 @@ void test_prime() {
 
 Python tests are simple argument-less functions somewhere in the `openage` package.
 
-They shall return `None` on success, and raise `openage.testing.TestError` on failure.
+They shall return `None` on success, and raise `openage.testing.testing.TestError` on failure.
 
 Add their names to `openage/testing/testlist.py`.
 
