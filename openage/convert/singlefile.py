@@ -35,8 +35,8 @@ def init_subparser(cli):
     cli.add_argument("--drs", type=argparse.FileType('rb'),
                      help=("drs archive filename that contains an slp "
                            "e.g. path ~/games/aoe/graphics.drs"))
-    cli.add_argument("--mode", choices=['drs-slp', 'slp', 'smp'],
-                     help=("choose between drs-slp, slp or smp; "
+    cli.add_argument("--mode", choices=['drs-slp', 'slp', 'smp', 'smx'],
+                     help=("choose between drs-slp, slp, smp or smx; "
                            "otherwise, this is determined by the file extension"))
     cli.add_argument("filename", help=("filename or, if inside a drs archive "
                                        "given by --drs, the filename within "
@@ -70,6 +70,13 @@ def main(args, error):
             raise Exception("palette-file needs to be specified")
 
         read_smp_file(args.filename, args.palette_file, args.player_palette_file,
+                      args.output)
+
+    elif args.mode == "smx" or file_extension == "smx":
+        if not (args.palette_file and args.player_palette_file):
+            raise Exception("palette-file needs to be specified")
+
+        read_smx_file(args.filename, args.palette_file, args.player_palette_file,
                       args.output)
 
     else:
@@ -199,13 +206,53 @@ def read_smp_file(smp_path, main_palette, player_palette, output_path):
     # just by importing this singlefile.py.
     from .smp import SMP
 
-    # parse the slp_path image
+    # parse the smp_path image
     info("parsing smp image...")
     smp_image = SMP(smp_file.read())
 
     # create texture
     info("packing texture...")
     tex = Texture(smp_image, main_palette_table, player_palette_table)
+
+    # save as png
+    tex.save(Directory(output_file.parent).root, output_file.name)
+
+
+def read_smx_file(smx_path, main_palette, player_palette, output_path):
+    """
+    Reads a single SMX (compressed SMP) file.
+    """
+    output_file = Path(output_path)
+
+    # open the smx
+    info("opening smx file at '%s'", smx_path)
+    smx_file = Path(smx_path).open("rb")
+
+    # open main palette from independent file
+    info("opening main palette in palette file '%s'", main_palette.name)
+    main_palette_file = Path(main_palette.name).open("rb")
+
+    info("parsing palette data...")
+    main_palette_table = ColorTable(main_palette_file.read())
+
+    # open player color palette from independent file
+    info("opening player color palette in palette file '%s'", player_palette.name)
+    player_palette_file = Path(player_palette.name).open("rb")
+
+    info("parsing palette data...")
+    player_palette_table = ColorTable(player_palette_file.read())
+
+    # import here to prevent that the __main__ depends on SMP
+    # just by importing this singlefile.py.
+    from .smx import SMX
+
+    # parse the smx_path image
+    info("parsing smx image...")
+    smx_image = SMX(smx_file.read())
+
+    # create texture
+    info("packing texture...")
+    tex = Texture(smx_image, main_palette_table, player_palette_table)
 
     # save as png
     tex.save(Directory(output_file.parent).root, output_file.name)

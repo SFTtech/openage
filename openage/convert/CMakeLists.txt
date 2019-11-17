@@ -21,6 +21,7 @@ add_py_modules(
 add_cython_modules(
 	slp.pyx
 	smp.pyx
+	smx.pyx
 )
 
 add_pxds(

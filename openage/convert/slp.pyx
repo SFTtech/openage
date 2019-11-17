@@ -1023,7 +1023,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
             else:
                 if px_type == color_player:
                     # mark this pixel as player color
-                    alpha = 254
+                    alpha = 255
 
                 elif px_type == color_special_2 or\
                      px_type == color_black:

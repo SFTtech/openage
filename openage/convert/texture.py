@@ -107,6 +107,7 @@ class Texture(exportable.Exportable):
 
         from .slp import SLP
         from .smp import SMP
+        from .smx import SMX
 
         if isinstance(input_data, SLP):
 
@@ -119,7 +120,7 @@ class Texture(exportable.Exportable):
                                                        custom_cutter):
                     frames.append(subtex)
 
-        elif isinstance(input_data, SMP):
+        elif isinstance(input_data, (SMP, SMX)):
 
             frames = []
 

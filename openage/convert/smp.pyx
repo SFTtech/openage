@@ -386,6 +386,9 @@ cdef class SMPMainFrame(SMPFrame):
         cdef uint8_t nextbyte
         cdef uint8_t lower_crumb
         cdef int pixel_count
+        
+        cdef vector[uint8_t] pixel_data
+        pixel_data.reserve(4)
 
         # work through commands till end of row.
         while not eor:
@@ -427,40 +430,36 @@ cdef class SMPMainFrame(SMPFrame):
             elif lower_crumb == 0b00000001:
                 # color_list command
                 # draw the following 'count' pixels
-                # pixels are stored as rgba 32 bit values
+                # pixels are stored as 4 byte palette and meta infos
                 # count = (cmd >> 2) + 1
 
                 pixel_count = (cmd >> 2) + 1
 
                 for _ in range(pixel_count):
-
-                    pixel_data = list()
-
                     for _ in range(4):
                         dpos += 1
-                        pixel_data.append(self.get_byte_at(dpos))
+                        pixel_data.push_back(self.get_byte_at(dpos))
 
                     row_data.push_back(pixel(color_standard,
                                              pixel_data[0],
                                              pixel_data[1],
                                              pixel_data[2],
                                              pixel_data[3]))
+                    
+                    pixel_data.clear()
 
             elif lower_crumb == 0b00000010:
                 # player_color command
                 # draw the following 'count' pixels
-                # pixels are stored as rgba 32 bit values
+                # pixels are stored as 4 byte palette and meta infos
                 # count = (cmd >> 2) + 1
 
                 pixel_count = (cmd >> 2) + 1
 
                 for _ in range(pixel_count):
-
-                    pixel_data = list()
-
                     for _ in range(4):
                         dpos += 1
-                        pixel_data.append(self.get_byte_at(dpos))
+                        pixel_data.push_back(self.get_byte_at(dpos))
 
                     row_data.push_back(pixel(color_player,
                                              pixel_data[0],
@@ -468,6 +467,8 @@ cdef class SMPMainFrame(SMPFrame):
                                              pixel_data[2],
                                              pixel_data[3]))
 
+                    pixel_data.clear()
+                    
             else:
                 raise Exception(
                     "unknown smp main frame drawing command: " +
@@ -565,7 +566,7 @@ cdef class SMPShadowFrame(SMPFrame):
             elif lower_crumb == 0b00000001:
                 # color_list command
                 # draw the following 'count' pixels
-                # pixels are stored as rgba 32 bit values
+                # pixels are stored as 1 byte alpha values
                 # count = (cmd >> 2) + 1
 
                 pixel_count = (cmd >> 2) + 1
@@ -659,7 +660,6 @@ cdef class SMPOutlineFrame(SMPFrame):
                 # color_list command
                 # draw the following 'count' pixels
                 # as player outline colors.
-                # pixels are stored as rgba 32 bit values
                 # count = (cmd >> 2) + 1
 
                 pixel_count = (cmd >> 2) + 1
@@ -703,13 +703,15 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     cdef uint8_t r
     cdef uint8_t g
     cdef uint8_t b
-    cdef uint8_t a
+    cdef uint8_t alpha
 
     cdef vector[pixel] current_row
     cdef pixel px
     cdef pixel_type px_type
-    cdef int px_index
-    cdef int px_palette
+    cdef uint8_t px_index
+    cdef uint8_t px_palette
+    
+    cdef uint16_t palette_section
 
     cdef size_t x
     cdef size_t y
@@ -728,11 +730,11 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 # look up the palette secition
                 # palettes have 1024 entries
                 # divided into 4 sections
-                palette_section = px_palette % 4
+                palette_section = px_palette & 0x03
 
                 # the index has to be adjusted
                 # to the palette section
-                index = px_index + 256 * palette_section
+                index = px_index + (palette_section * 256)
 
                 # look up the color index in the
                 # main graphics table
@@ -753,7 +755,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                     alpha = 255
 
                 elif px_type == color_outline:
-                    alpha = 254
+                    alpha = 253
 
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)
@@ -798,10 +800,13 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     cdef uint8_t r
     cdef uint8_t g
     cdef uint8_t b
-    cdef uint8_t a
+    cdef uint8_t alpha
 
     cdef vector[pixel] current_row
     cdef pixel px
+    cdef uint8_t px_u1
+    cdef uint8_t px_u2
+    cdef uint8_t px_mask
 
     cdef size_t x
     cdef size_t y
