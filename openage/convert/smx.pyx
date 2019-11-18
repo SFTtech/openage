@@ -17,7 +17,7 @@ from libcpp.vector cimport vector
 from ..log import spam, dbg
 
 
-# SMP files have little endian byte order
+# SMX files have little endian byte order
 endianness = "< "
 
 
@@ -43,8 +43,8 @@ cdef struct pixel:
     uint8_t palette     # palette number and palette section
     uint8_t unknown1    # ???
     uint8_t unknown2    # masking for damage?
-    
-    
+
+
 class SMX:
     """
     Class for reading/converting compressed SMP files (delivered
@@ -60,14 +60,14 @@ class SMX:
     #   char[16]       comment;
     # };
     smx_header = Struct(endianness + "4s H H I I 16s")
-    
+
     # struct smx_frame_header_head {
     #   unsigned char  frame_type;
     #   unsigned char  palette_index;
     #   ???            4 bytes;
     # };
     smx_frame_header_head = Struct(endianness + "B B i")
-    
+
     # struct smx_frame_header_body {
     #   unsigned short width;
     #   unsigned short height;
@@ -96,53 +96,52 @@ class SMX:
         self.main_frames = list()
         self.shadow_frames = list()
         self.outline_frames = list()
-        
+
         spam(SMXFrameHeader.repr_header())
-        
+
         # SMX files have no offsets, we have to calculate them
         current_offset = SMX.smx_header.size
         for i in range(frame_count):
             frame_header_head = SMX.smx_frame_header_head.unpack_from(
                 data, current_offset)
-            
-            compression_type, palette_index, _ = frame_header_head
-            
+
+            bundle_type , palette_index, _ = frame_header_head
+
             current_offset += SMX.smx_frame_header_head.size
-            
+
             frame_types = []
-            
-            if compression_type == 0x01:
+
+            if bundle_type == 0x01:
                 # neither stores palette number nor width, height info
                 frame_types.append("weird")
-                raise Exception("frames with compression type %s cannot be"
-                                " converted")
-            
-            if compression_type in (0x03, 0x07, 0x0B, 0x0F, 0x13):
+                raise Exception("broken bundle type %s" % bundle_type)
+
+            if bundle_type & 0x01:
                 frame_types.append("main")
-                
-            if compression_type in (0x03, 0x07, 0x0B, 0x0F, 0x13):
+
+            if bundle_type & 0x02:
                 frame_types.append("shadow")
-                
-            if compression_type in (0x07, 0x0F):
+
+            if bundle_type & 0x04:
                 frame_types.append("outline")
 
             for frame_type in frame_types:
                 frame_header_body = SMX.smx_frame_header_body.unpack_from(
                     data, current_offset)
-                
+
                 width, height, hotspot_x, hotspot_y, \
                     distance_next_frame, _, _ = frame_header_body
-                    
+
                 current_offset += SMX.smx_frame_header_body.size
-            
+
                 outline_table_offset = current_offset
-            
+
                 # Skip outline table
                 current_offset += 4 * height
 
                 qdl_command_array_size = Struct("< I").unpack_from(data, current_offset)[0]
                 current_offset += 4
-            
+
                 # Read length of color table
                 if frame_type == "main":
                     qdl_color_table_size = Struct("< I").unpack_from(data, current_offset)[0]
@@ -155,26 +154,27 @@ class SMX:
 
                 qdl_command_table_offset = current_offset
                 current_offset += qdl_color_table_size + qdl_command_array_size
-                
-                frame_header = SMXFrameHeader(frame_type, palette_index,
+
+                frame_header = SMXFrameHeader(frame_type, bundle_type,
+                                              palette_index,
                                               width, height, hotspot_x,
                                               hotspot_y, outline_table_offset,
                                               qdl_command_table_offset,
                                               qdl_color_table_offset)
-                
+
                 if frame_type == "main":
-                    if compression_type in (0x0B, 0x0F):
+                    if frame_header.compression_type == 0x08:
                         self.main_frames.append(SMXMainFrame8to5(frame_header, data))
 
-                    elif compression_type in (0x03, 0x07, 0x13):
+                    elif frame_header.compression_type == 0x00:
                         self.main_frames.append(SMXMainFrame4plus1(frame_header, data))
-                    
+
                 elif frame_type == "shadow":
                     self.shadow_frames.append(SMXShadowFrame(frame_header, data))
-                
+
                 elif frame_type == "outline":
                     self.outline_frames.append(SMXOutlineFrame(frame_header, data))
-                
+
 
     def __str__(self):
         ret = list()
@@ -190,7 +190,8 @@ class SMX:
 
 
 class SMXFrameHeader:
-    def __init__(self, frame_type, palette_index,
+    def __init__(self, frame_type, bundle_type,
+                 palette_index,
                  width, height, hotspot_x, hotspot_y,
                  outline_table_offset,
                  qdl_command_table_offset,
@@ -200,6 +201,8 @@ class SMXFrameHeader:
         self.hotspot = (hotspot_x, hotspot_y)
 
         self.frame_type = frame_type
+        self.bundle_type = bundle_type
+        self.compression_type = bundle_type & 8
 
         self.outline_table_offset = outline_table_offset
         self.qdl_command_table_offset = qdl_command_table_offset
@@ -240,17 +243,6 @@ cdef class SMXFrame:
     # }
     smp_command_offset = Struct(endianness + "I")
 
-    # struct smx_pixel_even {
-    #   unsigned char pixel_data;
-    # }
-    smx_pixel_even = Struct("> B B B B")
-    
-    # struct smx_pixel_odd {
-    #   unsigned short pixel_data1;
-    #   unsigned short pixel_data2;
-    # }
-    smx_pixel_odd = Struct("> H H")
-    
     # frame information
     cdef object info
 
@@ -300,9 +292,9 @@ cdef class SMXFrame:
         for i in range(row_count):
             cmd_offset, color_offset, chunk_index, row_data = \
                 self.create_color_row(i, cmd_offset, color_offset, chunk_index)
-            
+
             self.pcolor.push_back(row_data)
-            
+
     cdef tuple create_color_row(self, Py_ssize_t rowid,
                                 int cmd_offset, int color_offset,
                                 int chunk_index) except +:
@@ -325,7 +317,7 @@ cdef class SMXFrame:
         if bounds.full_row:
             for _ in range(pixel_count):
                 row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-                
+
             return cmd_offset, color_offset, chunk_index, row_data
 
         # start drawing the left transparent space
@@ -378,7 +370,7 @@ cdef class SMXFrame:
         Rotate a uint16_t by 6 to the left.
         """
         return (value << 6)|(value >> 10)
-    
+
     def get_picture_data(self, main_palette, player_palette):
         """
         Convert the palette index matrix to a colored image.
@@ -399,10 +391,9 @@ cdef class SMXMainFrame8to5(SMXFrame):
     """
     Compressed SMP frame (compression type 0x0B) for the main graphics sprite.
     """
-
     def __init__(self, frame_header, data):
         super().__init__(frame_header, data)
-        
+
     cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
@@ -440,7 +431,7 @@ cdef class SMXMainFrame8to5(SMXFrame):
         cdef uint8_t pixel_mask_even_1 = 0b00000011
         cdef uint8_t pixel_mask_even_2 = 0b11110000
         cdef uint8_t pixel_mask_even_3 = 0b00111111
-        
+
         # work through commands till end of row.
         while not eor:
             if row_data.size() > expected_size:
@@ -466,7 +457,7 @@ cdef class SMXMainFrame8to5(SMXFrame):
                 dpos_cmd += 1
 
                 continue
-            
+
             elif lower_crumb == 0b00000000:
                 # skip command
                 # draw 'count' transparent pixels
@@ -476,7 +467,7 @@ cdef class SMXMainFrame8to5(SMXFrame):
 
                 for _ in range(pixel_count):
                     row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-                    
+
             elif lower_crumb == 0b00000001:
                 # color_list command
                 # draw the following 'count' pixels
@@ -492,25 +483,25 @@ cdef class SMXMainFrame8to5(SMXFrame):
                     # Start fetching pixel data
                     if odd:
                         # Odd indices require manual extraction of each of the 4 values
-                        
+
                         # Palette index. Essentially a rotation of (byte[1]byte[2])
                         # by 6 to the left, then masking with 0x00FF.
                         pixel_data_odd_0 = self.get_byte_at(dpos_color + 1)
                         pixel_data_odd_1 = self.get_byte_at(dpos_color + 2)
                         pixel_data.push_back((pixel_data_odd_0 >> 2) | (pixel_data_odd_1 << 6))
-                        
+
                         # Palette section. Described in byte[2] in bits 4-5.
                         pixel_data.push_back((pixel_data_odd_1 >> 2) & 0x03)
-                        
+
                         # Damage mask 1. Essentially a rotation of (byte[3]byte[4])
                         # by 6 to the left, then masking with 0x00FF.
                         pixel_data_odd_2 = self.get_byte_at(dpos_color + 3)
                         pixel_data_odd_3 = self.get_byte_at(dpos_color + 4)
                         pixel_data.push_back((pixel_data_odd_0 >> 2) | (pixel_data_odd_1 << 6))
-                        
+
                         # Damage mask 2. Described in byte[4] in bits 0-5.
                         pixel_data.push_back((pixel_data_odd_3 >> 2) & 0xFD)
-                        
+
                         row_data.push_back(pixel(color_standard,
                                                  pixel_data[0],
                                                  pixel_data[1],
@@ -549,25 +540,25 @@ cdef class SMXMainFrame8to5(SMXFrame):
                     # Start fetching pixel data
                     if odd:
                         # Odd indices require manual extraction of each of the 4 values
-                        
+
                         # Palette index. Essentially a rotation of (byte[1]byte[2])
                         # by 6 to the left, then masking with 0x00FF.
                         pixel_data_odd_0 = self.get_byte_at(dpos_color + 1)
                         pixel_data_odd_1 = self.get_byte_at(dpos_color + 2)
                         pixel_data.push_back((pixel_data_odd_0 >> 2) | (pixel_data_odd_1 << 6))
-                        
+
                         # Palette section. Described in byte[2] in bits 4-5.
                         pixel_data.push_back((pixel_data_odd_1 >> 2) & 0x03)
-                        
+
                         # Damage mask 1. Essentially a rotation of (byte[3]byte[4])
                         # by 6 to the left, then masking with 0x00FF.
                         pixel_data_odd_2 = self.get_byte_at(dpos_color + 3)
                         pixel_data_odd_3 = self.get_byte_at(dpos_color + 4)
                         pixel_data.push_back((pixel_data_odd_0 >> 2) | (pixel_data_odd_1 << 6))
-                        
+
                         # Damage mask 2. Described in byte[4] in bits 0-5.
                         pixel_data.push_back((pixel_data_odd_3 >> 2) & 0xFD)
-                        
+
                         row_data.push_back(pixel(color_player,
                                                  pixel_data[0],
                                                  pixel_data[1],
@@ -595,7 +586,7 @@ cdef class SMXMainFrame8to5(SMXFrame):
                 raise Exception(
                     "unknown smp main frame drawing command: " +
                     "%#x in row %d" % (cmd, rowid))
-            
+
             # Process next command
             dpos_cmd += 1
 
@@ -609,7 +600,7 @@ cdef class SMXMainFrame4plus1(SMXFrame):
 
     def __init__(self, frame_header, data):
         super().__init__(frame_header, data)
-        
+
     cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
@@ -620,7 +611,6 @@ cdef class SMXMainFrame4plus1(SMXFrame):
         extract colors (pixels) for the drawing commands
         found for this row in the SMX frame.
         """
-
         # position in the data blob, we start at the first command of this row
         cdef Py_ssize_t dpos_cmd = first_cmd_offset
         cdef Py_ssize_t dpos_color = first_color_offset
@@ -634,7 +624,7 @@ cdef class SMXMainFrame4plus1(SMXFrame):
         cdef int pixel_count
         cdef uint8_t palette_section_block
         cdef uint8_t palette_section
-        
+
         # work through commands till end of row.
         while not eor:
             if row_data.size() > expected_size:
@@ -660,7 +650,7 @@ cdef class SMXMainFrame4plus1(SMXFrame):
                 dpos_cmd += 1
 
                 continue
-            
+
             elif lower_crumb == 0b00000000:
                 # skip command
                 # draw 'count' transparent pixels
@@ -670,7 +660,7 @@ cdef class SMXMainFrame4plus1(SMXFrame):
 
                 for _ in range(pixel_count):
                     row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-                    
+
             elif lower_crumb == 0b00000001:
                 # color_list command
                 # draw the following 'count' pixels
@@ -681,7 +671,7 @@ cdef class SMXMainFrame4plus1(SMXFrame):
                 # count = (cmd >> 2) + 1
 
                 pixel_count = (cmd >> 2) + 1
-                
+
                 palette_section_block = self.get_byte_at(dpos_color + (4 - dpos_chunk))
 
                 for _ in range(pixel_count):
@@ -692,10 +682,10 @@ cdef class SMXMainFrame4plus1(SMXFrame):
                                              palette_section,
                                              0,
                                              0))
-                    
+
                     dpos_color += 1
                     dpos_chunk += 1
-                    
+
                     # Skip to next chunk
                     if dpos_chunk > 3:
                         dpos_chunk = 0
@@ -721,10 +711,10 @@ cdef class SMXMainFrame4plus1(SMXFrame):
                                              palette_section,
                                              0,
                                              0))
-                    
+
                     dpos_color += 1
                     dpos_chunk += 1
-                    
+
                     # Skip to next chunk
                     if dpos_chunk > 3:
                         dpos_chunk = 0
@@ -735,7 +725,7 @@ cdef class SMXMainFrame4plus1(SMXFrame):
                 raise Exception(
                     "unknown smp main frame drawing command: " +
                     "%#x in row %d" % (cmd, rowid))
-            
+
             # Process next command
             dpos_cmd += 1
 
@@ -746,7 +736,6 @@ cdef class SMXShadowFrame(SMXFrame):
     """
     Compressed SMP for the shadow graphics.
     """
-
     def __init__(self, frame_header, data):
         super().__init__(frame_header, data)
 
@@ -849,7 +838,6 @@ cdef class SMXOutlineFrame(SMXFrame):
     """
     Compressed SMPFrame for the outline graphics.
     """
-
     def __init__(self, frame_header, data):
         super().__init__(frame_header, data)
 
@@ -945,7 +933,6 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     """
     converts a palette index image matrix to an rgba matrix.
     """
-
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
@@ -966,7 +953,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     cdef pixel_type px_type
     cdef uint8_t px_index
     cdef uint8_t px_palette
-    
+
     cdef uint16_t palette_section
 
     cdef size_t x
@@ -1045,7 +1032,6 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     cdef numpy.ndarray[numpy.uint8_t, ndim=3] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
-
     cdef uint8_t r
     cdef uint8_t g
     cdef uint8_t b
@@ -1081,4 +1067,3 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
             array_data[y, x, 3] = alpha
 
     return array_data
-

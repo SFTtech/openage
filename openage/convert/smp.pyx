@@ -386,7 +386,7 @@ cdef class SMPMainFrame(SMPFrame):
         cdef uint8_t nextbyte
         cdef uint8_t lower_crumb
         cdef int pixel_count
-        
+
         cdef vector[uint8_t] pixel_data
         pixel_data.reserve(4)
 
@@ -445,7 +445,7 @@ cdef class SMPMainFrame(SMPFrame):
                                              pixel_data[1],
                                              pixel_data[2],
                                              pixel_data[3]))
-                    
+
                     pixel_data.clear()
 
             elif lower_crumb == 0b00000010:
@@ -468,7 +468,7 @@ cdef class SMPMainFrame(SMPFrame):
                                              pixel_data[3]))
 
                     pixel_data.clear()
-                    
+
             else:
                 raise Exception(
                     "unknown smp main frame drawing command: " +
@@ -710,7 +710,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     cdef pixel_type px_type
     cdef uint8_t px_index
     cdef uint8_t px_palette
-    
+
     cdef uint16_t palette_section
 
     cdef size_t x
