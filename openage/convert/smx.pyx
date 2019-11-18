@@ -27,7 +27,7 @@ cdef struct boundary_def:
     bool full_row
 
 
-# SMP pixels are super special.
+# SMX uses SMP pixel tytes
 cdef enum pixel_type:
     color_standard      # standard pixel
     color_shadow        # shadow pixel
@@ -36,7 +36,7 @@ cdef enum pixel_type:
     color_outline       # player color outline pixel
 
 
-# One SMP pixel.
+# One uncompressed SMP pixel.
 cdef struct pixel:
     pixel_type type
     uint8_t index       # index in a palette section
@@ -80,6 +80,12 @@ class SMX:
     smx_frame_header_body = Struct(endianness + "H H H H I h h")
 
     def __init__(self, data):
+        """
+        Read SMX image file.
+
+        :param data: File content as bytes.
+        :type data: bytes, bytearray
+        """
 
         smx_header = SMX.smx_header.unpack_from(data)
         self.smp_type, _, frame_count, file_size_comp, file_size_uncomp, comment = smx_header
@@ -105,7 +111,7 @@ class SMX:
             frame_header_head = SMX.smx_frame_header_head.unpack_from(
                 data, current_offset)
 
-            bundle_type , palette_index, _ = frame_header_head
+            bundle_type , palette_number, _ = frame_header_head
 
             current_offset += SMX.smx_frame_header_head.size
 
@@ -156,7 +162,7 @@ class SMX:
                 current_offset += qdl_color_table_size + qdl_command_array_size
 
                 frame_header = SMXFrameHeader(frame_type, bundle_type,
-                                              palette_index,
+                                              palette_number,
                                               width, height, hotspot_x,
                                               hotspot_y, outline_table_offset,
                                               qdl_command_table_offset,
@@ -191,11 +197,35 @@ class SMX:
 
 class SMXFrameHeader:
     def __init__(self, frame_type, bundle_type,
-                 palette_index,
+                 palette_number,
                  width, height, hotspot_x, hotspot_y,
                  outline_table_offset,
                  qdl_command_table_offset,
                  qdl_color_table_offset):
+        """
+        Store the header of a frame.
+
+        :param frame_type: Type of frame. Either main. shadow or outline.
+        :param bundle_type: Type of the bundle the frame is part of.
+        :param palette_number: Palette number used for pixels in the frame.
+        :param width: Width of frame in pixels.
+        :param height: Heught of frame in pixels.
+        :param hotspot_x: x coordinate of the hotspot used for anchoring.
+        :param hotspot_y: y coordinate of the hotspot used for anchoring.
+        :param outline_table_offset: Absolute position of the frame's outline table in the file.
+        :param qdl_command_table_offset: Absolute position of the frame's command table in the file.
+        :param qdl_color_table_offset: Absolute position of the frame's pixel data table in the file.
+        :type frame_type: str
+        :type bundle_type: int
+        :type palette_number: int
+        :type width: int
+        :type height: int
+        :type hotspot_x: int
+        :type hotspot_y: int
+        :type outline_table_offset: int
+        :type qdl_command_table_offset: int
+        :type qdl_color_table_offset: int
+        """
 
         self.size = (width, height)
         self.hotspot = (hotspot_x, hotspot_y)
@@ -203,6 +233,7 @@ class SMXFrameHeader:
         self.frame_type = frame_type
         self.bundle_type = bundle_type
         self.compression_type = bundle_type & 8
+        self.palette_number = palette_number
 
         self.outline_table_offset = outline_table_offset
         self.qdl_command_table_offset = qdl_command_table_offset
@@ -257,6 +288,15 @@ cdef class SMXFrame:
     cdef const uint8_t *data_raw
 
     def __init__(self, frame_header, data):
+        """
+        SMX frame definition superclass. There can be various types of
+        frame in an SMX file.
+
+        :param frame_header: Header definition of the frame.
+        :param data: File content as bytes.
+        :type frame_header: FrameHeader
+        :type data: bytes, bytearray
+        """
         self.info = frame_header
 
         if not (isinstance(data, bytes) or isinstance(data, bytearray)):
@@ -286,20 +326,25 @@ cdef class SMXFrame:
 
         cdef int cmd_offset = self.info.qdl_command_table_offset
         cdef int color_offset = self.info.qdl_color_table_offset
-        cdef int chunk_index = 0
+        cdef int chunk_pos = 0
 
         # process cmd table
         for i in range(row_count):
-            cmd_offset, color_offset, chunk_index, row_data = \
-                self.create_color_row(i, cmd_offset, color_offset, chunk_index)
+            cmd_offset, color_offset, chunk_pos, row_data = \
+                self.create_color_row(i, cmd_offset, color_offset, chunk_pos)
 
             self.pcolor.push_back(row_data)
 
     cdef tuple create_color_row(self, Py_ssize_t rowid,
                                 int cmd_offset, int color_offset,
-                                int chunk_index) except +:
+                                int chunk_pos) except +:
         """
-        extract colors (pixels) for the given rowid.
+        Extract colors (pixels) for the given rowid.
+
+        :param rowid: Index of the current row in the frame.
+        :param cmd_offset: Offset of the command table of the frame.
+        :param color_offset: Offset of the color table of the frame.
+        :param chunk_pos: Current position in the compressed chunk.
         """
 
         cdef vector[pixel] row_data
@@ -318,19 +363,19 @@ cdef class SMXFrame:
             for _ in range(pixel_count):
                 row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
 
-            return cmd_offset, color_offset, chunk_index, row_data
+            return cmd_offset, color_offset, chunk_pos, row_data
 
         # start drawing the left transparent space
         for i in range(bounds.left):
             row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
 
         # process the drawing commands for this row.
-        next_cmd_offset, next_color_offset, chunk_index, row_data = \
+        next_cmd_offset, next_color_offset, chunk_pos, row_data = \
             self.process_drawing_cmds(row_data,
                                       rowid,
                                       first_cmd_offset,
                                       first_color_offset,
-                                      chunk_index,
+                                      chunk_pos,
                                       pixel_count - bounds.right)
 
         # finish by filling up the right transparent space
@@ -349,37 +394,55 @@ cdef class SMXFrame:
 
             raise Exception(txt % ("LESS" if got < pixel_count else "MORE"))
 
-        return next_cmd_offset, next_color_offset, chunk_index, row_data
+        return next_cmd_offset, next_color_offset, chunk_pos, row_data
 
     cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
                                     Py_ssize_t first_color_offset,
-                                    int chunk_index,
+                                    int chunk_pos,
                                     size_t expected_size):
+        """
+        Extracts pixel data from the frame data. Every frame type uses
+        its own implementation for better optimization.
+
+        :param row_data: Pixel data is appended to this array.
+        :param rowid: Index of the current row in the frame.
+        :param first_cmd_offset: Offset of the first command of the current row.
+        :param first_color_offset: Offset of the first pixel data value of the current row.
+        :param chunk_pos: Current position in the compressed chunk.
+        :param expected_size: Expected length of row_data after encountering the EOR command.
+        """
         pass
 
     cdef inline uint8_t get_byte_at(self, Py_ssize_t offset):
         """
-        Fetch a byte from the SMP.
+        Fetch a byte from the SMX.
+
+        :param offset: Offset of the byte in the file.
+        :return: Byte value at offset.
         """
         return self.data_raw[offset]
-
-    cdef inline uint16_t rotate_left_6(self, uint16_t value):
-        """
-        Rotate a uint16_t by 6 to the left.
-        """
-        return (value << 6)|(value >> 10)
 
     def get_picture_data(self, main_palette, player_palette):
         """
         Convert the palette index matrix to a colored image.
+
+        :param main_palette: Color palette used for normal pixels in the sprite.
+        :param player_palette: Color palette used for player color pixels in the sprite.
+        :type main_palette: .colortable.ColorTable
+        :type player_palette: .colortable.ColorTable
+        :return: Array of RGBA values.
+        :rtype: numpy.ndarray
         """
         return determine_rgba_matrix(self.pcolor, main_palette, player_palette)
 
     def get_hotspot(self):
         """
         Return the frame's hotspot (the "center" of the image)
+
+        :return: Hotspot of the frame.
+        :rtype: tuple
         """
         return self.info.hotspot
 
@@ -389,7 +452,7 @@ cdef class SMXFrame:
 
 cdef class SMXMainFrame8to5(SMXFrame):
     """
-    Compressed SMP frame (compression type 0x0B) for the main graphics sprite.
+    Compressed SMP frame (compression type 8to5) for the main graphics sprite.
     """
     def __init__(self, frame_header, data):
         super().__init__(frame_header, data)
@@ -398,17 +461,20 @@ cdef class SMXMainFrame8to5(SMXFrame):
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
                                     Py_ssize_t first_color_offset,
-                                    int chunk_index,
+                                    int chunk_pos,
                                     size_t expected_size):
         """
-        extract colors (pixels) for the drawing commands
-        found for this row in the SMX frame.
+        extract colors (pixels) for the drawing commands that were
+        compressed with 8to5 compression.
         """
-
-        # position in the data blob, we start at the first command of this row
+        # position in the command array, we start at the first command of this row
         cdef Py_ssize_t dpos_cmd = first_cmd_offset
+
+        # Position in the pixel data array
         cdef Py_ssize_t dpos_color = first_color_offset
-        cdef bool odd = chunk_index
+
+        # Position in the compression chunk.
+        cdef bool odd = chunk_pos
         cdef int px_dpos # For loop iterator
 
         # is the end of the current row reached?
@@ -452,7 +518,7 @@ cdef class SMXMainFrame8to5(SMXFrame):
             lower_crumb = 0b00000011 & cmd
 
             if lower_crumb == 0b00000011:
-                # eol (end of line) command, this row is finished now.
+                # eor (end of row) command, this row is finished now.
                 eor = True
                 dpos_cmd += 1
 
@@ -595,9 +661,8 @@ cdef class SMXMainFrame8to5(SMXFrame):
 
 cdef class SMXMainFrame4plus1(SMXFrame):
     """
-    Compressed SMP frame (compression type 0x07) for the main graphics sprite.
+    Compressed SMP frame (compression type 4plus1) for the main graphics sprite.
     """
-
     def __init__(self, frame_header, data):
         super().__init__(frame_header, data)
 
@@ -605,16 +670,20 @@ cdef class SMXMainFrame4plus1(SMXFrame):
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
                                     Py_ssize_t first_color_offset,
-                                    int chunk_index,
+                                    int chunk_pos,
                                     size_t expected_size):
         """
-        extract colors (pixels) for the drawing commands
-        found for this row in the SMX frame.
+        extract colors (pixels) for the drawing commands that were
+        compressed with 4plus1 compression.
         """
         # position in the data blob, we start at the first command of this row
         cdef Py_ssize_t dpos_cmd = first_cmd_offset
+
+        # Position in the pixel data array
         cdef Py_ssize_t dpos_color = first_color_offset
-        cdef uint8_t dpos_chunk = chunk_index
+
+        # Position in the compression chunk
+        cdef uint8_t dpos_chunk = chunk_pos
 
         # is the end of the current row reached?
         cdef bool eor = False
@@ -645,7 +714,7 @@ cdef class SMXMainFrame4plus1(SMXFrame):
             lower_crumb = 0b00000011 & cmd
 
             if lower_crumb == 0b00000011:
-                # eol (end of line) command, this row is finished now.
+                # eor (end of row) command, this row is finished now.
                 eor = True
                 dpos_cmd += 1
 
@@ -664,10 +733,9 @@ cdef class SMXMainFrame4plus1(SMXFrame):
             elif lower_crumb == 0b00000001:
                 # color_list command
                 # draw the following 'count' pixels
-                # pixels are stored in 5 byte chunks
-                # even pixel indices have their info stored
-                # in byte[0] - byte[3]. odd pixel indices have
-                # their info stored in byte[1] - byte[4].
+                # 4 pixels are stored in every 5 byte chunk.
+                # palette indices are contained in byte[0] - byte[3]
+                # palette sections are stored in byte[4]
                 # count = (cmd >> 2) + 1
 
                 pixel_count = (cmd >> 2) + 1
@@ -695,10 +763,9 @@ cdef class SMXMainFrame4plus1(SMXFrame):
             elif lower_crumb == 0b00000010:
                 # player_color command
                 # draw the following 'count' pixels
-                # pixels are stored in 5 byte chunks
-                # even pixel indices have their info stored
-                # in byte[0] - byte[3]. odd pixel indices have
-                # their info stored in byte[1] - byte[4].
+                # 4 pixels are stored in every 5 byte chunk.
+                # palette indices are contained in byte[0] - byte[3]
+                # palette sections are stored in byte[4]
                 # count = (cmd >> 2) + 1
 
                 pixel_count = (cmd >> 2) + 1
@@ -743,7 +810,7 @@ cdef class SMXShadowFrame(SMXFrame):
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
                                     Py_ssize_t first_color_offset,
-                                    int chunk_index,
+                                    int chunk_pos,
                                     size_t expected_size):
         """
         extract colors (pixels) for the drawing commands
@@ -831,7 +898,7 @@ cdef class SMXShadowFrame(SMXFrame):
             dpos += 1
 
         # end of row reached, return the created pixel array.
-        return dpos, dpos, chunk_index, row_data
+        return dpos, dpos, chunk_pos, row_data
 
 
 cdef class SMXOutlineFrame(SMXFrame):
@@ -845,7 +912,7 @@ cdef class SMXOutlineFrame(SMXFrame):
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
                                     Py_ssize_t first_color_offset,
-                                    int chunk_index,
+                                    int chunk_pos,
                                     size_t expected_size):
         """
         extract colors (pixels) for the drawing commands
@@ -923,7 +990,7 @@ cdef class SMXOutlineFrame(SMXFrame):
             dpos += 1
 
         # end of row reached, return the created pixel array.
-        return dpos, dpos, chunk_index, row_data
+        return dpos, dpos, chunk_pos, row_data
 
 
 @cython.boundscheck(False)
@@ -932,6 +999,10 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                                          main_palette, player_palette):
     """
     converts a palette index image matrix to an rgba matrix.
+
+    :param image_matrix: A 2-dimensional array of SMP pixels.
+    :param main_palette: Color palette used for normal pixels in the sprite.
+    :param player_palette: Color palette used for player color pixels in the sprite.
     """
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
@@ -1024,8 +1095,9 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     converts a palette index image matrix to an alpha matrix.
 
     TODO: figure out how this works exactly
-    """
 
+    :param image_matrix: A 2-dimensional array of SMP pixels.
+    """
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 

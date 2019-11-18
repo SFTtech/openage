@@ -10,8 +10,8 @@ to get a better understanding of the concepts of the format.
 
 ## SMX file format
 
-SMX files are basically a trimmed version of SMPs that removes unnecessary
-meta information and padding from the file. They also do not define explicit
+SMX files are basically a trimmed version of SMPs that remove unnecessary
+metadata and padding from the file. They also do not define explicit
 offsets for each frame and frame header, so the file has to be read sequentially.
 Compression is only used for pixel data.
 
@@ -28,8 +28,6 @@ Length   | Type   | Description                 | Example
 4 bytes  | int32  | File size SMP (source file) | 6051456, 0x0005C5680 (size without header)
 16 bytes | string | Comment                     | Always empty
 
-
-
 ```cpp
 struct smx_header {
   char  file_descriptor[4];
@@ -40,7 +38,7 @@ struct smx_header {
   char  comment[16];
 };
 ```
-Python format: `Struct("< 4s H H I I 16s")`
+Python format: `Struct("< 4s 2H 2I 16s")`
 
 
 ### SMX Frame
@@ -55,13 +53,14 @@ SMP format, the frames come in bundles that consist of up to 3 images:
 Which of these images are present in a bundle is determined by the value
 `bundle_type` from the bundle header.
 
+
 #### SMX Bundle header
 
 The bundle header contains 3 values:
 
 Length   | Type   | Description                | Example
 ---------|--------|----------------------------|--------
-1 bytes  | uint8  | Bundle Type                | 3, 0b00000011 (bitfield values)
+1 bytes  | uint8  | Bundle Type                | 3, 0b00000011 (bit field)
 1 bytes  | uint8  | Palette number             | 21, 0x15
 4 bytes  | uint32 | possibly uncompressed size | 6272, 0x1880
 
@@ -72,9 +71,9 @@ struct smx_bundle_header {
   uint32 ??;
 };
 ```
-Python format: `Struct("< B B I")`
+Python format: `Struct("< 2B I")`
 
-`bundle_type` is a bitfield value. This means that every bit set to `1`
+`bundle_type` is a bit field. This means that every bit set to `1`
 in this values tells us something about the bundle.
 
 Bit index | Description
@@ -86,21 +85,22 @@ Bit index | Description
 3         | Unknown, but only used by bridges
 0-2       | Unused
 
-Example:
+**Example**
 
 ```
 bundle_type = 0x0B = 0000 1011
 ```
 
-This bundle would contain a main graphic sprite, a shadow for that sprite
-and use the 8to5 compression algorithm for its main graphic pixels.
+This bundle would contain a *main graphic sprite*, a *shadow* for that sprite
+and use the *8to5* compression algorithm for its main graphic pixels.
 
 **Notes**
 
 * SMX files containing bundles with `bundle_type = 0x01` are essentially
 broken because the following frame header does not contain correct metadata information.
 These files cannot be read sequentially even though they contain valid pixel data.
-The uncompressed SMP versions of these files also have incorrect frame headers.
+The uncompressed SMP versions of these files also have broken frame headers.
+
 
 #### SMX Frame header
 
@@ -162,12 +162,18 @@ Pixels in the pixel data array are compressed in chunks using one of
 the two [compression algorithms](#compression-algorithms).
 Each chunk can store information for multiple pixels.
 
+
+**Command Reference Sheet**
+
+(The commands are the same as in the SMP format.)
+
 Command Name     | Byte value    | Pixel Count              | Description
 -----------------|---------------|--------------------------|------------
 Skip             | `0bXXXXXX00`  | `(cmd_byte >> 2) + 1`    | *Count* transparent pixels should be drawn from the current position.
 Draw             | `0bXXXXXX01`  | `(cmd_byte >> 2) + 1`    | Read *Count* entries from the pixel data array as normal pixels.
 Playercolor Draw | `0bXXXXXX10`  | `(cmd_byte >> 2) + 1`    | Read *Count* entries from the pixel data array as playercolor pixels.
 End of Row       | `0bXXXXXX11`  | 0                        | End of commands for this row. If more commands follow, they are for the next row.
+
 
 ##### Shadow type
 
@@ -183,13 +189,14 @@ Length   | Type   | Description                | Example
 ---------|--------|----------------------------|--------
 4 bytes  | uint32 | Unified array length       | 354, 0x00000162
 
+
 ##### Outline type
 
 Outline types also **only use one array** for drawing commands
 and pixel data. The information is stored exactly as in the
 [SMP outline frames](#outline-type) and **does not use compression**.
 
-TLike the SMX shadow type frames they store the length of the
+Like the SMX shadow type frames they store the length of the
 unified array immediately after the SMX frame row edge definitions end:
 
 Length   | Type   | Description                | Example
@@ -203,10 +210,11 @@ Every SMX bundles uses one of two available compression methods
 for the main graphic sprite. Each of the compression methods
 will store pixel data in chunks of 5 byte which can either contain
 2 (8to5 compression) or 4 compressed pixels (4plus1 compression).
-These chunks can be read independently.
+The chunks can be read independently.
 
 Both compression methods only remove metadata of the pixels and
 have no effect on the RGBA values of the resulting ingame sprites.
+
 
 ### 4plus1 method
 
@@ -225,9 +233,9 @@ Length   | Type   | Description                  | Example
 1 bytes  | uint32 | Palette index `pixel1`       | 43, 0x2B
 1 bytes  | uint32 | Palette index `pixel2`       | 43, 0x2B
 1 bytes  | uint32 | Palette index `pixel3`       | 43, 0x2B
-1 bytes  | uint32 | Palette sections             | 255, 0xFF (bitfield values)
+1 bytes  | uint32 | Palette sections             | 255, 0xFF (bit field)
 
-The last byte stores the palette sections as bitfield values.
+The last byte stores the palette sections as bit field values.
 
 Bit index | Description
 ----------|------------
@@ -239,6 +247,7 @@ Bit index | Description
 This compression method is used for anything that does
 not require the damage mask values (basically everything that is
 not a building).
+
 
 ### 8to5 method
 
@@ -252,11 +261,11 @@ Information lost (compared to [SMP pixel](smp-files.md#smp-pixel)):
 The chunk is basically a giant bitfield, but the values are not that
 hard to extract.
 
-We will first show where the values of `pixel0` and `pixel1` are
-before discussing the extraction method as it might help with the
+We will first show where the values of `pixel0` and `pixel1` are stored
+in the bit field before discussing the extraction method as it might help
 understanding of the compression.
 
-Example:
+**Example**
 
 ```
 Compressed:
@@ -264,23 +273,23 @@ Hex:        90 1E 32 73 AA
 Bin:        10010000 00011110 00110010 01110011 10101010
 
 Uncompressed:
-Hex pixel0: 90 02 30 33
-Bin pixel0: 10010000 00000010 00110000 00110011
+pixel0 Hex: 90 02 30 33
+pixel0 Bin: 10010000 00000010 00110000 00110011
 
-Hex pixel1: 87 00 90 2A
-Bin pixel1: 10000111 00000000 10010000 00101010
+pixel1 Hex: 87 00 90 2A
+pixel1 Bin: 10000111 00000000 10010000 00101010
 ```
 
 Value                       | Bit indices
 ----------------------------|------------
-`pixel0` palette index       | 0-7
-`pixel0` palette section     | 14-15
-`pixel0` damage mask 1       | 16-19
-`pixel0` damage mask 2       | 26-31
-`pixel1` palette index       | 22-23, 8-13
-`pixel1` palette section     | 20-21
-`pixel1` damage mask 1       | 38-39,24-25
-`pixel1` damage mask 2       | 32-37
+`pixel0` palette index      | 0-7
+`pixel0` palette section    | 14-15
+`pixel0` damage mask 1      | 16-19
+`pixel0` damage mask 2      | 26-31
+`pixel1` palette index      | 22-23, 8-13
+`pixel1` palette section    | 20-21
+`pixel1` damage mask 1      | 38-39,24-25
+`pixel1` damage mask 2      | 32-37
 
 While this might look confusing at first, the two pixels can be easily
 extracted. If you look closely, you will notice that the bit positions
@@ -292,7 +301,7 @@ Compressed:
 Bin:        10010000 00011110 00110010 01110011 10101010
 
 Uncompressed:
-Bin pixel0: 10010000 XXXXXX10 0011XXXX XX110011
+pixel0 Bin: 10010000 XXXXXX10 0011XXXX XX110011
 
 X = irrelevant to pixel0
 ```
@@ -326,14 +335,14 @@ rot_1 = chunk[3:4] ROTR 2
 ```
 
 If we now append the results, we get a similar situation for `pixel1`
-as we had for `pixel0`.
-
+as we had for `pixel0`. The bit positions of the appended results align
+with the bit positions in the uncompressed version of `pixel1`.
 
 ```
 [rot_0,rot_1] = 10000111 10001100 10011100 11101010
 
 Uncompressed:
-Bin pixel1:   10000111 XXXXXX00 1001XXXX XX101010
+Bin pixel1:     10000111 XXXXXX00 1001XXXX XX101010
 
 X = irrelevant to pixel1
 ```
