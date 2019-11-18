@@ -1,16 +1,33 @@
+git:
+  depth: 1
 os: osx
 osx_image: xcode10.2
-language: cpp 
+language: cpp
 script:
-    - brew update-reset && brew update
-    - brew tap homebrew/cask-fonts
-    - brew cask install font-dejavu-sans
-    - brew upgrade cmake
-    - brew upgrade python3
-    - brew install flex
-    - brew install make
-    - brew install libepoxy freetype fontconfig harfbuzz sdl2 sdl2_image opus libogg opusfile libpng eigen
-    - brew install qt5
+    - brew update-reset
+addons:
+  homebrew:
+    packages:
+    - freetype
+    - cmake
+    - python3
+    - qt
+    - flex
+    - make
+    - libepoxy
+    - fontconfig
+    - harfbuzz
+    - sdl2
+    - sdl2_image
+    - opus
+    - libogg
+    - opusfile
+    - libpng
+    - eigen
+    taps: homebrew/cask-fonts
+    casks: font-dejavu-sans
+    update: true
+script:
     - brew install -cc=clang llvm@8
     - export PATH="/usr/local/opt/llvm@8/bin:$PATH:/usr/local/lib:/usr/local/opt/llvm/bin"
     - export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig:/usr/local/lib"
