@@ -94,13 +94,6 @@ bundle_type = 0x0B = 0000 1011
 This bundle would contain a *main graphic sprite*, a *shadow* for that sprite
 and use the *8to5* compression algorithm for its main graphic pixels.
 
-**Notes**
-
-* SMX files containing bundles with `bundle_type = 0x01` are essentially
-broken because the following frame header does not contain correct metadata information.
-These files cannot be read sequentially even though they contain valid pixel data.
-The uncompressed SMP versions of these files also have broken frame headers.
-
 
 #### SMX Frame header
 
@@ -127,7 +120,6 @@ struct smx_frame_header {
 };
 ```
 Python format: `Struct("< 4H 2I")`
-
 
 #### SMX Frame row edge
 

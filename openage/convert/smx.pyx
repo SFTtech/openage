@@ -117,11 +117,6 @@ class SMX:
 
             frame_types = []
 
-            if bundle_type == 0x01:
-                # neither stores palette number nor width, height info
-                frame_types.append("weird")
-                raise Exception("broken bundle type %s" % bundle_type)
-
             if bundle_type & 0x01:
                 frame_types.append("main")
 
@@ -439,12 +434,21 @@ cdef class SMXFrame:
 
     def get_hotspot(self):
         """
-        Return the frame's hotspot (the "center" of the image)
+        Return the frame's hotspot (the "center" of the image).
 
         :return: Hotspot of the frame.
         :rtype: tuple
         """
         return self.info.hotspot
+
+    def get_palette_number(self):
+        """
+        Return the frame's palette number.
+
+        :return: Palette number of the frame.
+        :rtype: int
+        """
+        return self.info.palette_number
 
     def __repr__(self):
         return repr(self.info)
