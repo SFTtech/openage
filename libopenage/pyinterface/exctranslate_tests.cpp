@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "exctranslate_tests.h"
 
@@ -9,9 +9,7 @@
 #include "pyexception.h"
 
 
-namespace openage {
-namespace pyinterface {
-namespace tests {
+namespace openage::pyinterface::tests {
 
 
 template<int i=3>
@@ -119,7 +117,7 @@ void err_py_to_cpp_demo() {
 }
 
 
-void bounce_call(Func<void> func, int times) {
+void bounce_call(const Func<void> &func, int times) {
 	bounce_call_py.call(func, times);
 }
 
@@ -128,4 +126,4 @@ PyIfFunc<void> err_py_to_cpp_helper;
 PyIfFunc<void, Func<void>, int> bounce_call_py;
 
 
-}}} // openage::pyinterface::tests
+} // openage::pyinterface::tests

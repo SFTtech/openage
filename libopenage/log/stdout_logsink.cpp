@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "stdout_logsink.h"
 
@@ -12,8 +12,7 @@
 
 #include "named_logsource.h"
 
-namespace openage {
-namespace log {
+namespace openage::log {
 
 namespace {
 
@@ -67,4 +66,4 @@ StdOutSink &global_stdoutsink() {
 }
 
 
-}} // namespace openage::log
+} // namespace openage::log

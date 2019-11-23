@@ -1,4 +1,6 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+
+#include <utility>
 
 #include "../public/gui_application.h"
 
@@ -16,8 +18,7 @@ GuiApplication::GuiApplication(std::shared_ptr<GuiApplicationImpl> application)
 	application{application} {
 }
 
-GuiApplication::~GuiApplication() {
-}
+GuiApplication::~GuiApplication() = default;
 
 void GuiApplication::processEvents() {
 	this->application->processEvents();

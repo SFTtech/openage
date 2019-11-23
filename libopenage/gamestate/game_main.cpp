@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "game_main.h"
 
@@ -37,8 +37,7 @@ GameMain::GameMain(const Generator &generator)
 	generator.add_units(*this);
 }
 
-GameMain::~GameMain() {
-}
+GameMain::~GameMain() = default;
 
 unsigned int GameMain::player_count() const {
 	return this->players.size();

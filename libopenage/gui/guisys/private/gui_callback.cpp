@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_callback.h"
 
@@ -16,8 +16,7 @@ GuiCallback::GuiCallback()
 	Q_UNUSED(registration);
 }
 
-GuiCallback::~GuiCallback() {
-}
+GuiCallback::~GuiCallback() = default;
 
 void GuiCallback::process(const std::function<void()> &f) {
 	f();

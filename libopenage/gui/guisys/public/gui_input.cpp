@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "../public/gui_input.h"
 
@@ -11,8 +11,7 @@ GuiInput:: GuiInput(GuiRenderer *renderer, GuiEventQueue *game_logic_updater)
 	impl{std::make_unique<GuiInputImpl>(renderer, game_logic_updater)} {
 }
 
-GuiInput::~GuiInput() {
-}
+GuiInput::~GuiInput() = default;
 
 bool GuiInput::process(SDL_Event *event) {
 	return this->impl->process(event);

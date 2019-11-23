@@ -30,8 +30,7 @@ RenderOptions::RenderOptions()
 	:
 	OptionNode{"RendererOptions"},
 	draw_debug{this, "draw_debug", false},
-	terrain_blending{this, "terrain_blending", true} {
-}
+	terrain_blending{this, "terrain_blending", true} {}
 
 GameRenderer::GameRenderer(Engine *e)
 	:

@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "renderer.h"
 
@@ -13,9 +13,7 @@
 #include "shader_program.h"
 
 
-namespace openage {
-namespace renderer {
-namespace vulkan {
+namespace openage::renderer::vulkan {
 
 void VlkRenderer::do_the_thing(util::Path& dir) {
 	// Please keep in mind that this function is only for testing and so might be messy.
@@ -310,4 +308,4 @@ void VlkRenderer::do_the_thing(util::Path& dir) {
 	}
 }
 
-}}} // openage::renderer::vulkan
+} // openage::renderer::vulkan

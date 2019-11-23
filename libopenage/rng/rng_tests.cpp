@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "rng.h"
 
@@ -10,9 +10,7 @@
 #include <vector>
 #include <cmath>
 
-namespace openage {
-namespace rng {
-namespace tests {
+namespace openage::rng::tests {
 
 /**
  * This is the number of generation repetitions
@@ -59,7 +57,7 @@ void freq_dist() {
 
 	for (size_t i = 0; i < num_rand; i++) {
 		sample = myrng();  // get a random value
-		unsigned char *valptr = reinterpret_cast<unsigned char*>(&sample);
+		auto *valptr = reinterpret_cast<unsigned char*>(&sample);
 
 		// for each bit of the generated value:
 		// increment the "weight" of the bit.
@@ -240,4 +238,4 @@ void run() {
 }
 
 
-}}} // namespace openage::rng::tests
+} // namespace openage::rng::tests

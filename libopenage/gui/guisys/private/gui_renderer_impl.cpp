@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_renderer_impl.h"
 
@@ -27,8 +27,7 @@ EventHandlingQuickWindow::EventHandlingQuickWindow(QQuickRenderControl *render_c
 	Q_UNUSED(registration);
 }
 
-EventHandlingQuickWindow::~EventHandlingQuickWindow() {
-}
+EventHandlingQuickWindow::~EventHandlingQuickWindow() = default;
 
 void EventHandlingQuickWindow::on_input_event(std::atomic<bool> *processed, QEvent *event, bool only_if_grabbed) {
 	if (!only_if_grabbed || this->mouseGrabberItem()) {

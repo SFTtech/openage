@@ -4,7 +4,7 @@
 
 #include "../util/unicode.h"
 
-#include "stdio.h"
+#include <cstdio>
 
 namespace openage {
 namespace console {

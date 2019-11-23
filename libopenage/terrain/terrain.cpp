@@ -26,7 +26,7 @@ TileContent::TileContent() :
 	terrain_id{0} {
 }
 
-TileContent::~TileContent() {}
+TileContent::~TileContent() = default;
 
 Terrain::Terrain(terrain_meta *meta, bool is_infinite)
 	:
@@ -162,7 +162,7 @@ TerrainObject *Terrain::obj_at_point(const coord::phys3 &point) {
 }
 
 bool Terrain::validate_terrain(terrain_t terrain_id) {
-	if (terrain_id >= (ssize_t)this->meta->terrain_id_count) {
+	if (terrain_id >= static_cast<ssize_t>(this->meta->terrain_id_count)) {
 		throw Error(MSG(err) << "Requested terrain_id is out of range: " << terrain_id);
 	}
 	else {
@@ -171,7 +171,7 @@ bool Terrain::validate_terrain(terrain_t terrain_id) {
 }
 
 bool Terrain::validate_mask(ssize_t mask_id) {
-	if (mask_id >= (ssize_t)this->meta->blendmode_count) {
+	if (mask_id >= static_cast<ssize_t>(this->meta->blendmode_count)) {
 		throw Error(MSG(err) << "Requested mask_id is out of range: " << mask_id);
 	}
 	else {
@@ -501,7 +501,7 @@ struct influence_group Terrain::calculate_influences(struct tile_data *base_tile
                                                      struct neighbor_tile *neigh_data,
                                                      struct influence *influences_by_terrain_id) {
 	// influences to actually draw (-> maximum 8)
-	struct influence_group influences;
+	struct influence_group influences{};
 	influences.count = 0;
 
 	// process adjacent neighbors first,

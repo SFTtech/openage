@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -30,7 +30,7 @@ namespace filelike {
  */
 class Python : public FileLike {
 public:
-	Python(py::Obj fileobj);
+	Python(const py::Obj &fileobj);
 
 	std::string read(ssize_t max) override;
 	size_t read_to(void *buf, ssize_t max) override;

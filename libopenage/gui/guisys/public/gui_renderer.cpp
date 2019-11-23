@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "../public/gui_renderer.h"
 
@@ -13,8 +13,7 @@ GuiRenderer::GuiRenderer(SDL_Window *window)
 	impl{std::make_unique<GuiRendererImpl>(window)} {
 }
 
-GuiRenderer::~GuiRenderer() {
-}
+GuiRenderer::~GuiRenderer() = default;
 
 GLuint GuiRenderer::render() {
 	return this->impl->render();

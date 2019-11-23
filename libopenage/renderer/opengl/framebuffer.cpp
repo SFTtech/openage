@@ -1,15 +1,13 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "framebuffer.h"
 
 
-namespace openage {
-namespace renderer {
-namespace opengl {
+namespace openage::renderer::opengl {
 
 // TODO the validity of this object is contingent
 // on its texture existing. use shared_ptr?
-GlFramebuffer::GlFramebuffer(std::vector<const GlTexture2d*> textures)
+GlFramebuffer::GlFramebuffer(const std::vector<const GlTexture2d*> &textures)
 	: GlSimpleObject([] (GLuint handle) { glDeleteFramebuffers(1, &handle); } )
 {
 	GLuint handle;
@@ -47,4 +45,4 @@ void GlFramebuffer::bind_write() const {
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, *this->handle);
 }
 
-}}} // openage::renderer::opengl
+} // openage::renderer::opengl

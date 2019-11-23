@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "audio_manager.h"
 
@@ -25,7 +25,7 @@ namespace audio {
  */
 class SDLDeviceLock {
 public:
-	SDLDeviceLock(const SDL_AudioDeviceID &id)
+	explicit SDLDeviceLock(const SDL_AudioDeviceID &id)
 		:
 		dev_id{id} {
 		SDL_LockAudioDevice(this->dev_id);
@@ -72,7 +72,7 @@ AudioManager::AudioManager(job::JobManager *job_manager,
 
 	// call back that is invoked once SDL needs the next chunk of data
 	desired_spec.callback = [] (void *userdata, uint8_t *stream, int len) {
-		AudioManager *audio_manager = static_cast<AudioManager*>(userdata);
+		auto *audio_manager = static_cast<AudioManager*>(userdata);
 		audio_manager->audio_callback(reinterpret_cast<int16_t*>(stream), len / 2);
 	};
 
@@ -191,7 +191,7 @@ void AudioManager::audio_callback(int16_t *stream, int length) {
 	}
 }
 
-void AudioManager::add_sound(std::shared_ptr<SoundImpl> sound) {
+void AudioManager::add_sound(const std::shared_ptr<SoundImpl>& sound) {
 	SDLDeviceLock lock{this->device_id};
 
 	auto category = sound->get_category();
@@ -200,7 +200,7 @@ void AudioManager::add_sound(std::shared_ptr<SoundImpl> sound) {
 	playing_list.push_back(sound);
 }
 
-void AudioManager::remove_sound(std::shared_ptr<SoundImpl> sound) {
+void AudioManager::remove_sound(const std::shared_ptr<SoundImpl>& sound) {
 	SDLDeviceLock lock{this->device_id};
 
 	auto category = sound->get_category();
@@ -230,8 +230,9 @@ bool AudioManager::is_available() const {
 std::vector<std::string> AudioManager::get_devices() {
 	std::vector<std::string> device_list;
 	auto num_devices = SDL_GetNumAudioDevices(0);
+	device_list.reserve(num_devices);
 	for (int i = 0; i < num_devices; i++) {
-		device_list.push_back(SDL_GetAudioDeviceName(i, 0));
+		device_list.emplace_back(SDL_GetAudioDeviceName(i, 0));
 	}
 	return device_list;
 }
@@ -239,8 +240,9 @@ std::vector<std::string> AudioManager::get_devices() {
 std::vector<std::string> AudioManager::get_drivers() {
 	std::vector<std::string> driver_list;
 	auto num_drivers = SDL_GetNumAudioDrivers();
+	driver_list.reserve(num_drivers);
 	for (int i = 0; i < num_drivers; i++) {
-		driver_list.push_back(SDL_GetAudioDriver(i));
+		driver_list.emplace_back(SDL_GetAudioDriver(i));
 	}
 	return driver_list;
 }

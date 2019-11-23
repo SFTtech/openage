@@ -1,16 +1,14 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "render_target.h"
 
 
-namespace openage {
-namespace renderer {
-namespace opengl {
+namespace openage::renderer::opengl {
 
 GlRenderTarget::GlRenderTarget()
 	: type(gl_render_target_t::display) {}
 
-GlRenderTarget::GlRenderTarget(std::vector<const GlTexture2d*> textures)
+GlRenderTarget::GlRenderTarget(const std::vector<const GlTexture2d*> &textures)
 	: type(gl_render_target_t::textures)
 	, framebuffer(textures) {}
 
@@ -32,4 +30,4 @@ void GlRenderTarget::bind_read() const {
 	}
 }
 
-}}} // openage::renderer::opengl
+} // openage::renderer::opengl

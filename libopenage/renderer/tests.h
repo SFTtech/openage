@@ -12,6 +12,6 @@ namespace renderer {
 namespace tests {
 
 // pxd: void renderer_demo(int demo_id, Path path) except +
-OAAPI void renderer_demo(int demo_id, util::Path path);
+OAAPI void renderer_demo(int demo_id, const util::Path &path);
 
 }}} // openage::renderer::tests

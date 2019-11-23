@@ -1,7 +1,8 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
-#include <iostream>
 #include <cstring> // for strcmp
+#include <iostream>
+#include <utility>
 
 #include "../testing/testing.h"
 #include "../log/log.h"
@@ -31,7 +32,7 @@ public:
 			this->changes(time + curve::time_t::from_double(1));
 		}
 
-		size_t id() const override {
+		[[nodiscard]] size_t id() const override {
 			return _id;
 		}
 
@@ -42,7 +43,7 @@ public:
 		int number;
 	};
 
-	TestState(const std::shared_ptr<Loop> &loop)
+	explicit TestState(const std::shared_ptr<Loop> &loop)
 		:
 		State(loop),
 		objectA(std::make_shared<TestObject>(loop, 0)) ,
@@ -52,10 +53,10 @@ public:
 	std::shared_ptr<TestObject> objectB;
 
 	struct traceelement {
-		traceelement(const std::string &event, curve::time_t time)
+		traceelement(std::string event, curve::time_t time)
 			:
-			time{time},
-			name{event} {}
+			time{std::move(time)},
+			name{std::move(event)} {}
 
 		curve::time_t time;
 		std::string name;
@@ -132,7 +133,7 @@ public:
 
 class TestEventClassTwo : public EventClass {
 public:
-	TestEventClassTwo(const std::string &name)
+	explicit TestEventClassTwo(const std::string &name)
 		:
 		EventClass(name, EventClass::trigger_type::DEPENDENCY) {}
 

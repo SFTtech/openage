@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_game_spec_image_provider_by_terrain_id_impl.h"
 
@@ -6,16 +6,14 @@
 
 #include "../../../gamestate/game_spec.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 GuiGameSpecImageProviderByTerrainIdImpl::GuiGameSpecImageProviderByTerrainIdImpl(qtsdl::GuiEventQueue *render_updater)
 	:
 	GuiGameSpecImageProviderByIdImpl{render_updater} {
 }
 
-GuiGameSpecImageProviderByTerrainIdImpl::~GuiGameSpecImageProviderByTerrainIdImpl() {
-}
+GuiGameSpecImageProviderByTerrainIdImpl::~GuiGameSpecImageProviderByTerrainIdImpl() = default;
 
 const char* GuiGameSpecImageProviderByTerrainIdImpl::id() {
 	return "by-terrain-id";
@@ -31,4 +29,4 @@ openage::Texture* GuiGameSpecImageProviderByTerrainIdImpl::get_texture(int textu
 	return meta && texture_id >=0 && texture_id < std::distance(std::begin(meta->textures), std::end(meta->textures)) ? meta->textures[texture_id] : nullptr;
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

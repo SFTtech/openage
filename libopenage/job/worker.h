@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -56,7 +56,7 @@ public:
 	void join();
 
 	/** Adds the given job to the internal pending job queue. */
-	void enqueue(std::shared_ptr<JobStateBase> job);
+	void enqueue(const std::shared_ptr<JobStateBase> &job);
 
 	/**
 	 * Notifies this worker, that new jobs are available. This method is

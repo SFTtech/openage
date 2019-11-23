@@ -1,12 +1,13 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "file.h"
 
 #include <cstdio>
 #include <fstream>
 #include <string>
-#include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/types.h>
+#include <utility>
 
 #include "path.h"
 #include "filelike/native.h"
@@ -15,11 +16,10 @@
 #include "../log/log.h"
 
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 
-File::File() {}
+File::File() = default;
 
 
 // yes. i'm sorry. but cython can't enum class yet.
@@ -38,7 +38,7 @@ File::File(std::shared_ptr<filelike::FileLike> filelike)
 	filelike{filelike} {}
 
 
-File::File(py::Obj filelike) {
+File::File(const py::Obj &filelike) {
 	this->filelike = std::make_shared<filelike::Python>(filelike);
 }
 
@@ -128,4 +128,4 @@ std::ostream &operator <<(std::ostream &stream, const File &file) {
 }
 
 
-}} // openage::util
+} // openage::util

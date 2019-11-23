@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "os.h"
 
@@ -22,8 +22,7 @@
 #include "../log/log.h"
 #include "subprocess.h"
 
-namespace openage {
-namespace os {
+namespace openage::os {
 
 std::string read_symlink(const char *path) {
 #ifdef _WIN32
@@ -43,7 +42,7 @@ std::string read_symlink(const char *path) {
 			return "";
 		}
 
-		if ((size_t) len >= bufsize) {
+		if (static_cast<size_t>(len) >= bufsize) {
 			continue;
 		}
 
@@ -123,5 +122,4 @@ int execute_file(const char *path, bool background) {
 #endif
 }
 
-} // namespace os
 } // namespace openage

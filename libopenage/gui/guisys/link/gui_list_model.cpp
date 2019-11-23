@@ -11,8 +11,7 @@ GuiListModel::GuiListModel(QObject *parent)
 	QAbstractListModel{parent} {
 }
 
-GuiListModel::~GuiListModel() {
-}
+GuiListModel::~GuiListModel() = default;
 
 void GuiListModel::set(const std::vector<std::tuple<QByteArray, QVariant>> &values) {
 	this->beginResetModel();

@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "font_manager.h"
 
@@ -8,8 +8,7 @@
 #include "font.h"
 
 
-namespace openage {
-namespace renderer {
+namespace openage::renderer {
 
 std::string FontManager::get_font_filename(const char *family, const char *style) {
 	// Initialize fontconfig
@@ -78,4 +77,4 @@ Font *FontManager::get_font(const char *font_file, unsigned int size) {
 	return inserted.first->second.get();
 }
 
-}} // openage::renderer
+} // openage::renderer

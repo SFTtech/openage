@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -125,7 +125,7 @@ public:
 	/**
 	 * Constructor to be constructed with the unique identifier
 	 */
-	EventClass(const std::string &name, const trigger_type &type);
+	EventClass(std::string name, const trigger_type &type);
 
 	virtual ~EventClass() = default;
 

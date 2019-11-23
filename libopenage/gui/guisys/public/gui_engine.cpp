@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "../public/gui_engine.h"
 
@@ -11,7 +11,6 @@ GuiEngine::GuiEngine(GuiRenderer *renderer, const std::vector<GuiImageProvider*>
 	impl{std::make_unique<GuiEngineImpl>(renderer, image_providers, singleton_items_info)} {
 }
 
-GuiEngine::~GuiEngine() {
-}
+GuiEngine::~GuiEngine() = default;
 
 } // namespace qtsdl

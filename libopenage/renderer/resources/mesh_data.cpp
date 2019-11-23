@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "mesh_data.h"
 
@@ -10,9 +10,7 @@
 #include "../../datastructure/constexpr_map.h"
 
 
-namespace openage {
-namespace renderer {
-namespace resources {
+namespace openage::renderer::resources {
 
 static constexpr auto vin_size = datastructure::create_const_map<vertex_input_t, size_t>(
 	std::make_pair(vertex_input_t::F32, 4),
@@ -90,11 +88,11 @@ MeshData::MeshData(const util::Path &/*path*/) {
 	throw "unimplemented lol";
 }
 
-MeshData::MeshData(std::vector<uint8_t>&& verts, VertexInputInfo info)
+MeshData::MeshData(std::vector<uint8_t>&& verts, const VertexInputInfo &info)
 	: data(std::move(verts))
 	, info(info) {}
 
-MeshData::MeshData(std::vector<uint8_t> &&verts, std::vector<uint8_t> &&ids, VertexInputInfo info)
+MeshData::MeshData(std::vector<uint8_t> &&verts, std::vector<uint8_t> &&ids, const VertexInputInfo &info)
 	: data(std::move(verts))
 	, ids(std::move(ids))
 	, info(info) {}
@@ -130,4 +128,4 @@ MeshData MeshData::make_quad() {
 	return MeshData(std::move(verts), info);
 }
 
-}}}
+}

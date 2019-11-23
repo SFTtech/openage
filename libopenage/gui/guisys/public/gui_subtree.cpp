@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_subtree.h"
 
@@ -20,6 +20,6 @@ GuiSubtree::GuiSubtree(GuiRenderer *renderer,
 		QString::fromStdString(rootdir)
 	)} {}
 
-GuiSubtree::~GuiSubtree() {}
+GuiSubtree::~GuiSubtree() = default;
 
 } // namespace qtsdl

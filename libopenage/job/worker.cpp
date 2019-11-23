@@ -1,8 +1,10 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "job_aborted_exception.h"
 #include "job_manager.h"
 #include "worker.h"
+
+#include <memory>
 
 
 namespace openage {
@@ -18,7 +20,7 @@ Worker::Worker(JobManager *manager)
 
 void Worker::start() {
 	this->is_running = true;
-	this->executor.reset(new std::thread{&Worker::process, this});
+	this->executor = std::make_unique<std::thread>(&Worker::process, this);
 }
 
 
@@ -30,7 +32,7 @@ void Worker::stop() {
 }
 
 
-void Worker::enqueue(std::shared_ptr<JobStateBase> job) {
+void Worker::enqueue(const std::shared_ptr<JobStateBase> &job) {
 	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
 	this->pending_jobs.push(job);
 	lock.unlock();

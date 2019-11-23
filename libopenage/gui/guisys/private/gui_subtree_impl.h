@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -29,7 +29,7 @@ public:
 	GuiEngineImplConnection();
 	explicit GuiEngineImplConnection(GuiSubtreeImpl *subtree,
 	                                 GuiEngineImpl *engine,
-	                                 const QString &root_dir);
+	                                 QString root_dir);
 	~GuiEngineImplConnection();
 
 	GuiEngineImplConnection(GuiEngineImplConnection &&cnx) noexcept;

@@ -8,9 +8,9 @@
 #include <chrono>
 #include <epoxy/gl.h>
 #include <iostream>
+#include <utility>
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 Profiler::Profiler(Engine *engine)
 	:
@@ -21,7 +21,7 @@ Profiler::~Profiler() {
 	this->unregister_all();
 }
 
-void Profiler::register_component(std::string com, color component_color) {
+void Profiler::register_component(const std::string &com, color component_color) {
 	if (this->registered(com)) {
 		return;
 	}
@@ -37,7 +37,7 @@ void Profiler::register_component(std::string com, color component_color) {
 	this->components[com] = cdt;
 }
 
-void Profiler::unregister_component(std::string com) {
+void Profiler::unregister_component(const std::string &com) {
 	if (not this->registered(com)) {
 		return;
 	}
@@ -62,7 +62,7 @@ std::vector<std::string> Profiler::registered_components() {
 	return registered_components;
 }
 
-void Profiler::start_measure(std::string com, color component_color) {
+void Profiler::start_measure(const std::string &com, color component_color) {
 	if (not this->engine_in_debug_mode()) {
 		return;
 	}
@@ -74,7 +74,7 @@ void Profiler::start_measure(std::string com, color component_color) {
 	this->components[com].start = std::chrono::high_resolution_clock::now();
 }
 
-void Profiler::end_measure(std::string com) {
+void Profiler::end_measure(const std::string &com) {
 	if (not this->engine_in_debug_mode()) {
 		return;
 	}
@@ -85,15 +85,15 @@ void Profiler::end_measure(std::string com) {
 	}
 }
 
-void Profiler::draw_component_performance(std::string com) {
+void Profiler::draw_component_performance(const std::string &com) {
 	color rgb = this->components[com].drawing_color;
 	glColor4f(rgb.r, rgb.g, rgb.b, 1.0);
 
 	glLineWidth(1.0);
 	glBegin(GL_LINE_STRIP);
 	float x_offset = 0.0;
-	float offset_factor = (float)PROFILER_CANVAS_WIDTH / (float)MAX_DURATION_HISTORY;
-	float percentage_factor = (float)PROFILER_CANVAS_HEIGHT / 100.0;
+	float offset_factor = static_cast<float>(PROFILER_CANVAS_WIDTH) / static_cast<float>(MAX_DURATION_HISTORY);
+	float percentage_factor = static_cast<float>(PROFILER_CANVAS_HEIGHT) / 100.0;
 
 	for (auto i = this->insert_pos; mod(i, MAX_DURATION_HISTORY) != mod(this->insert_pos-1, MAX_DURATION_HISTORY); ++i) {
 		i = mod(i, MAX_DURATION_HISTORY);
@@ -124,7 +124,7 @@ void Profiler::show() {
 	}
 }
 
-bool Profiler::registered(std::string com) const {
+bool Profiler::registered(const std::string& com) const {
 	return this->components.find(com) != this->components.end();
 }
 
@@ -185,7 +185,7 @@ double Profiler::duration_to_percentage(std::chrono::high_resolution_clock::dura
 	return percentage;
 }
 
-void Profiler::append_to_history(std::string com, double percentage) {
+void Profiler::append_to_history(const std::string& com, double percentage) {
 	if (this->insert_pos == MAX_DURATION_HISTORY) {
 		this->insert_pos = 0;
 	}
@@ -200,4 +200,4 @@ bool Profiler::engine_in_debug_mode() {
 	}
 }
 
-}} // openage::util
+} // openage::util

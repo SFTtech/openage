@@ -186,7 +186,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 
 }
 
-ObjectProducer::~ObjectProducer() {}
+ObjectProducer::~ObjectProducer() = default;
 
 int ObjectProducer::id() const {
 	return this->unit_data.id0;
@@ -395,7 +395,7 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 	this->type_abilities.emplace_back(std::make_shared<AttackAbility>(this->on_attack));
 }
 
-MovableProducer::~MovableProducer() {}
+MovableProducer::~MovableProducer() = default;
 
 void MovableProducer::initialise(Unit *unit, Player &player) {
 
@@ -445,7 +445,7 @@ LivingProducer::LivingProducer(const Player &owner, const GameSpec &spec, const 
 	this->type_abilities.emplace_back(std::make_shared<GarrisonAbility>(this->on_move));
 }
 
-LivingProducer::~LivingProducer() {}
+LivingProducer::~LivingProducer() = default;
 
 void LivingProducer::initialise(Unit *unit, Player &player) {
 
@@ -570,7 +570,7 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	this->cost.set(cost_type::constant, create_resource_cost(game_resource::wood, 100));
 }
 
-BuildingProducer::~BuildingProducer() {}
+BuildingProducer::~BuildingProducer() = default;
 
 int BuildingProducer::id() const {
 	return this->unit_data.id0;
@@ -811,7 +811,7 @@ ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec
 	terrain_outline = radial_outline(pd->radius_y);
 }
 
-ProjectileProducer::~ProjectileProducer() {}
+ProjectileProducer::~ProjectileProducer() = default;
 
 int ProjectileProducer::id() const {
 	return this->unit_data.id0;

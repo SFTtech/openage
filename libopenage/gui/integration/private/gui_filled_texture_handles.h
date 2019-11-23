@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -31,7 +31,7 @@ public:
 	void free_texture_handle(SizedTextureHandle *filled_handle);
 
 	void fill_all_handles_with_texture(const TextureHandle &texture);
-	void refresh_all_handles_with_texture(std::function<void(const QString&, const QSize&, SizedTextureHandle*)> refresher);
+	void refresh_all_handles_with_texture(const std::function<void(const QString&, const QSize&, SizedTextureHandle*)>& refresher);
 
 private:
 	/**
@@ -46,7 +46,7 @@ private:
 
 class GuiFilledTextureHandleUser {
 public:
-	GuiFilledTextureHandleUser(const std::shared_ptr<GuiFilledTextureHandles> &texture_handles, const QString &id, const QSize &requested_size, SizedTextureHandle *filled_handle);
+	GuiFilledTextureHandleUser(std::shared_ptr<GuiFilledTextureHandles> texture_handles, const QString &id, const QSize &requested_size, SizedTextureHandle *filled_handle);
 	~GuiFilledTextureHandleUser();
 
 	GuiFilledTextureHandleUser(GuiFilledTextureHandleUser&&) noexcept = default;

@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "aicontroller.h"
 
@@ -16,11 +16,11 @@ const std::vector<PongEvent> &AIInput::get_inputs(const std::shared_ptr<PongPlay
 
 	// Ball is below position
 	if (ball->position->get(now)[1] > position + player->size->get(now) / 3) {
-		this->commands.push_back(PongEvent{player->id(), PongEvent::DOWN});
+		this->commands.emplace_back(player->id(), PongEvent::DOWN);
 	}
 	// Ball is above position
 	else if (ball->position->get(now)[1] < position - player->size->get(now) / 3) {
-		this->commands.push_back(PongEvent{player->id(), PongEvent::UP});
+		this->commands.emplace_back(player->id(), PongEvent::UP);
 	}
 
 	return this->commands;

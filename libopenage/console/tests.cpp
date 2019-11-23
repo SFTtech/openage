@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include <vector>
 #include <string>
@@ -10,10 +10,10 @@
 #endif
 #include "../util/fds.h"
 #include "../util/pty.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include <cerrno>
+#include <cstdio>
+#include <cstdlib>
 #include <fcntl.h>
-#include <errno.h>
 
 #include "../log/log.h"
 #include "../error/error.h"
@@ -22,9 +22,7 @@
 #include "console.h"
 #include "draw.h"
 
-namespace openage {
-namespace console {
-namespace tests {
+namespace openage::console::tests {
 
 
 // TODO: move to util
@@ -114,7 +112,7 @@ void interactive() {
 		tv.tv_sec = 0;
 		tv.tv_usec = 1000000 / 60;
 
-		switch (select(nfds, &rfds, NULL, NULL, &tv)) {
+		switch (select(nfds, &rfds, nullptr, nullptr, &tv)) {
 		case -1:
 			// error
 			break;
@@ -181,4 +179,4 @@ void interactive() {
 }
 
 
-}}} // namespace openage::console::tests
+} // namespace openage::console::tests

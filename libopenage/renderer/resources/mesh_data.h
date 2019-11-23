@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -117,10 +117,10 @@ public:
 	explicit MeshData(const util::Path&);
 
 	/// Initializes the mesh data to a custom unindexed vertex vector described by the given info.
-	MeshData(std::vector<uint8_t> &&verts, VertexInputInfo);
+	MeshData(std::vector<uint8_t> &&verts, const VertexInputInfo&);
 
 	/// Initializes the mesh data to a custom indexed vertex vector described by the given info.
-	MeshData(std::vector<uint8_t> &&verts, std::vector<uint8_t> &&ids, VertexInputInfo);
+	MeshData(std::vector<uint8_t> &&verts, std::vector<uint8_t> &&ids, const VertexInputInfo&);
 
 	/// Returns the raw vertex data.
 	std::vector<uint8_t> const &get_data() const;

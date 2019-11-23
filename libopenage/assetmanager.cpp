@@ -1,11 +1,11 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "assetmanager.h"
 
 #if WITH_INOTIFY
+#include <climits> /* for NAME_MAX */
 #include <sys/inotify.h>
 #include <unistd.h>
-#include <limits.h> /* for NAME_MAX */
 #endif
 
 #include "util/compiler.h"
@@ -155,7 +155,7 @@ void AssetManager::check_updates() {
 		// the kernel guarantees complete events in the buffer.
 		char *ptr = buf;
 		while (ptr < buf + len) {
-			struct inotify_event *event = (struct inotify_event *)ptr;
+			auto *event = reinterpret_cast<struct inotify_event *>(ptr);
 
 			if (event->mask & IN_CLOSE_WRITE) {
 				// TODO: this should invoke callback functions

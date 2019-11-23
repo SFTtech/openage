@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include <string>
 #include <cmath>
@@ -51,7 +51,7 @@ void ResourceBundle::expand(const int count) {
 		return;
 	}
 	// create new array with old values
-	double *new_value = new double[count];
+	auto *new_value = new double[count];
 	for (int i = 0; i < this->count; i++) {
 		new_value[i] = this->value[i];
 	}

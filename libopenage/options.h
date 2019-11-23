@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -127,7 +127,7 @@ private:
 
 };
 
-OptionValue parse(option_type t, std::string s);
+OptionValue parse(option_type t, const std::string &s);
 
 
 using opt_func_t = std::function<OptionValue()>;
@@ -137,7 +137,7 @@ using opt_func_t = std::function<OptionValue()>;
 // This could be constructed with a context and bind itself using the required types
 class OptionAction {
 public:
-	OptionAction(const std::string &name, const opt_func_t f);
+	OptionAction(std::string name, opt_func_t f);
 
 	/**
 	 * pass mouse position
@@ -164,13 +164,13 @@ class OptionNode {
 	template<class T>
 	friend class Var;
 public:
-	OptionNode(const std::string &panel_name);
+	OptionNode(std::string panel_name);
 	virtual ~OptionNode();
 
 	/**
 	 * lists all available options in a readable format
 	 */
-	std::vector<std::string> list_options(bool recurse=false, std::string indent="");
+	std::vector<std::string> list_options(bool recurse=false, const std::string &indent="");
 
 	/**
 	 * shows all available variable names

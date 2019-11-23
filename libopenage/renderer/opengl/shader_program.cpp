@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "shader_program.h"
 
@@ -15,9 +15,7 @@
 #include "lookup.h"
 
 
-namespace openage {
-namespace renderer {
-namespace opengl {
+namespace openage::renderer::opengl {
 
 static void check_program_status(GLuint program, GLenum what_to_check) {
 	GLint status;
@@ -452,4 +450,4 @@ void GlShaderProgram::set_tex(UniformInput *in, const char *unif, Texture2d cons
 	this->set_unif(in, unif, &handle, GL_SAMPLER_2D);
 }
 
-}}} // openage::renderer::opengl
+} // openage::renderer::opengl

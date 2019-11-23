@@ -2,8 +2,8 @@
 
 #include "program.h"
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdio>
+#include <cstdlib>
 #include <iostream>
 
 #include "../error/error.h"
@@ -14,8 +14,7 @@
 
 #include "shader.h"
 
-namespace openage {
-namespace shader {
+namespace openage::shader {
 
 Program::Program() : is_linked(false), vert(nullptr), frag(nullptr), geom(nullptr) {
 	this->id = glCreateProgram();
@@ -77,7 +76,7 @@ void Program::check(GLenum what_to_check) {
 		GLint loglen;
 		glGetProgramiv(this->id, GL_INFO_LOG_LENGTH, &loglen);
 		char *infolog = new char[loglen];
-		glGetProgramInfoLog(this->id, loglen, NULL, infolog);
+		glGetProgramInfoLog(this->id, loglen, nullptr, infolog);
 
 		const char *what_str;
 		switch(what_to_check) {
@@ -176,4 +175,4 @@ void Program::post_link_hook() {
 	this->mvpm_id = this->get_uniform_id("mvp_matrix");
 }
 
-}} // openage::shader
+} // openage::shader

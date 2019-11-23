@@ -1,8 +1,8 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "unicode.h"
 
-#include <string.h>
+#include <cstring>
 
 namespace openage {
 namespace util {

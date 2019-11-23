@@ -9,8 +9,7 @@
 
 
 
-namespace openage {
-namespace error {
+namespace openage::error {
 
 /**
  * Skip this many frames at the beginning of the trace.
@@ -24,7 +23,7 @@ constexpr uint64_t skip_entry_frames = 1;
  */
 constexpr uint64_t base_skip_frames = 1;
 
-}} // openage::error
+} // openage::error
 
 
 
@@ -215,8 +214,7 @@ void StackAnalyzer::analyze() {
 // use GNU's <execinfo.h>
 #include <execinfo.h>
 
-namespace openage {
-namespace error {
+namespace openage::error {
 
 
 void StackAnalyzer::analyze() {
@@ -229,7 +227,7 @@ void StackAnalyzer::analyze() {
 		int elements = backtrace(buffer.data(), buffer.size());
 
 		// the buffer was large enough, so stop resizing.
-		if (elements < (ssize_t) buffer.size()) {
+		if (elements < static_cast<ssize_t>(buffer.size())) {
 			buffer.resize(elements);
 			break;
 		}
@@ -257,12 +255,11 @@ void StackAnalyzer::analyze() {
 	}
 }
 
-}} // openage::error
+} // openage::error
 
 #endif // for _MSC_VER or GNU execinfo
 
-namespace openage {
-namespace error {
+namespace openage::error {
 
 
 void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> cb,
@@ -293,13 +290,12 @@ void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> c
 }
 
 
-}} // openage::error
+} // openage::error
 
 #endif // WITHOUT_BACKTRACE
 
 
-namespace openage {
-namespace error {
+namespace openage::error {
 
 
 void StackAnalyzer::trim_to_current_stack_frame() {
@@ -317,4 +313,4 @@ void StackAnalyzer::trim_to_current_stack_frame() {
 }
 
 
-}} // openage::error
+} // openage::error

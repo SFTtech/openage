@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "native.h"
 
@@ -7,9 +7,7 @@
 #include "../../error/error.h"
 
 
-namespace openage {
-namespace util {
-namespace filelike {
+namespace openage::util::filelike {
 
 Native::Native(const std::string &path, mode_t mode)
 	:
@@ -49,7 +47,7 @@ Native::Native(const std::string &path, mode_t mode)
 }
 
 
-Native::~Native() {}
+Native::~Native() = default;
 
 
 std::string Native::read(ssize_t max) {
@@ -166,4 +164,4 @@ std::ostream &Native::repr(std::ostream &stream) {
 	return stream;
 }
 
-}}} // openage::util::filelike
+} // openage::util::filelike

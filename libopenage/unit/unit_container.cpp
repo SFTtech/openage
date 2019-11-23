@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "unit_container.h"
 
@@ -52,7 +52,7 @@ UnitContainer::UnitContainer()
 	next_new_id{1} {}
 
 
-UnitContainer::~UnitContainer() {}
+UnitContainer::~UnitContainer() = default;
 
 
 void UnitContainer::reset() {

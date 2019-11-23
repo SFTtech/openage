@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -25,7 +25,7 @@ public:
 	class OnChangeElement {
 	public:
 		OnChangeElement(const std::shared_ptr<Event> &evnt,
-		                const curve::time_t &time);
+		                curve::time_t time);
 
 		curve::time_t time;
 		std::weak_ptr<Event> evnt;

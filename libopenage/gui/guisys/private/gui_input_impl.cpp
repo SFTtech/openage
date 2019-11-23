@@ -28,8 +28,7 @@ GuiInputImpl::GuiInputImpl(GuiRenderer *renderer, GuiEventQueue *game_logic_upda
 	QObject::connect(this, &GuiInputImpl::input_event, GuiRendererImpl::impl(renderer)->get_window(), &EventHandlingQuickWindow::on_input_event, input_to_gui);
 }
 
-GuiInputImpl::~GuiInputImpl() {
-}
+GuiInputImpl::~GuiInputImpl() = default;
 
 namespace {
 static_assert(!(Qt::LeftButton & (Qt::LeftButton - 1)), "Qt non-one-bit mask.");
@@ -127,13 +126,13 @@ bool GuiInputImpl::process(SDL_Event *e) {
 	}
 
 	case SDL_KEYDOWN: {
-		QKeyEvent ev{QEvent::KeyPress, sdl_key_to_qt(e->key.keysym.sym), Qt::NoModifier, QChar((short) e->key.keysym.sym)};
+		QKeyEvent ev{QEvent::KeyPress, sdl_key_to_qt(e->key.keysym.sym), Qt::NoModifier, QChar(static_cast<short>(e->key.keysym.sym))};
 		ev.setAccepted(false);
 		return relay_input_event(&ev);
 	}
 
 	case SDL_KEYUP: {
-		QKeyEvent ev{QEvent::KeyRelease, sdl_key_to_qt(e->key.keysym.sym), Qt::NoModifier, QChar((short) e->key.keysym.sym)};
+		QKeyEvent ev{QEvent::KeyRelease, sdl_key_to_qt(e->key.keysym.sym), Qt::NoModifier, QChar(static_cast<short>(e->key.keysym.sym))};
 		ev.setAccepted(false);
 		return relay_input_event(&ev);
 	}

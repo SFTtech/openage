@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "quaternion.h"
 
@@ -9,9 +9,7 @@
 #include "../testing/testing.h"
 
 
-namespace openage {
-namespace util {
-namespace tests {
+namespace openage::util::tests {
 
 void quaternion() {
 	{
@@ -249,4 +247,4 @@ void quaternion() {
 	}
 }
 
-}}} // openage::util::tests
+} // openage::util::tests

@@ -7,23 +7,24 @@
 #include <harfbuzz/hb.h>
 #include <harfbuzz/hb-ft.h>
 
+#include <utility>
+
 #include "../../error/error.h"
 #include "../../util/compiler.h"
 
-namespace openage {
-namespace renderer {
+namespace openage::renderer {
 
-font_description::font_description(const std::string &font_file,
+font_description::font_description(std::string font_file,
                                    unsigned int size,
                                    font_direction direction,
-                                   const std::string &language,
-                                   const std::string &script)
+                                   std::string language,
+                                   std::string script)
 	:
-	font_file{font_file},
+	font_file{std::move(font_file)},
 	size{size},
 	direction{direction},
-	language{language},
-	script{script} {
+	language{std::move(language)},
+	script{std::move(script)} {
 	// Empty
 }
 
@@ -235,4 +236,4 @@ std::unique_ptr<unsigned char[]> Font::load_glyph(codepoint_t codepoint, Glyph &
 	return glyph_data;
 }
 
-}} // openage::renderer
+} // openage::renderer

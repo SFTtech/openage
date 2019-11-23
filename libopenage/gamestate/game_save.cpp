@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "game_save.h"
 
@@ -14,8 +14,7 @@
 #include "game_save.h"
 #include "game_spec.h"
 
-namespace openage {
-namespace gameio {
+namespace openage::gameio {
 
 void save_unit(std::ofstream &file, Unit *unit) {
 	file << unit->unit_type->id() << std::endl;
@@ -67,7 +66,7 @@ TileContent load_tile_content(std::ifstream &file) {
 	return content;
 }
 
-void save(openage::GameMain *game, std::string fname) {
+void save(openage::GameMain *game, const std::string &fname) {
 	std::ofstream file(fname, std::ofstream::out);
 	log::log(MSG(dbg) << "saving " + fname);
 
@@ -99,7 +98,7 @@ void save(openage::GameMain *game, std::string fname) {
 	}
 }
 
-void load(openage::GameMain *game, std::string fname) {
+void load(openage::GameMain *game, const std::string &fname) {
 	std::ifstream file(fname, std::ifstream::in);
 	if (!file.good()) {
 		log::log(MSG(dbg) << "could not find " + fname);
@@ -145,4 +144,4 @@ void load(openage::GameMain *game, std::string fname) {
 	}
 }
 
-}} // openage::gameio
+} // openage::gameio

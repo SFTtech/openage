@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -69,7 +69,7 @@ public:
 	 *
 	 * You will probably never call that manually.
 	 */
-	File(py::Obj filelike);
+	File(const py::Obj &filelike);
 
 	virtual ~File() = default;
 

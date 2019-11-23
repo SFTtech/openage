@@ -1,15 +1,15 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #include "screenshot.h"
 
+#include <cmath>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <ctime>
 #include <epoxy/gl.h>
-#include <math.h>
 #include <memory>
 #include <png.h>
-#include <stdlib.h>
 
 #include "coord/pixel.h"
 #include "job/job_manager.h"

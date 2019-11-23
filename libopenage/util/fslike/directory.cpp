@@ -14,6 +14,7 @@
 #include <iostream>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <utility>
 
 #ifdef __APPLE__
 #include <sys/time.h>
@@ -37,14 +38,12 @@
 #include "../path.h"
 
 
-namespace openage {
-namespace util {
-namespace fslike {
+namespace openage::util::fslike {
 
 
-Directory::Directory(const std::string &basepath, bool create_if_missing)
+Directory::Directory(std::string basepath, bool create_if_missing)
 	:
-	basepath{basepath} {
+	basepath{std::move(basepath)} {
 
 	if (create_if_missing) {
 		this->mkdirs({});
@@ -136,7 +135,7 @@ std::vector<Path::part_t> Directory::list(const Path::parts_t &parts) {
 
 	// walk over dir contents
 	while ((ent = readdir(dir)) != nullptr) {
-		ret.push_back(ent->d_name);
+		ret.emplace_back(ent->d_name);
 	}
 
 	closedir(dir);
@@ -309,4 +308,4 @@ std::ostream &Directory::repr(std::ostream &stream) {
 	return stream;
 }
 
-}}} // openage::util::fslike
+} // openage::util::fslike

@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -82,8 +82,8 @@ public:
 	bool is_available() const;
 
 private:
-	void add_sound(std::shared_ptr<SoundImpl> sound);
-	void remove_sound(std::shared_ptr<SoundImpl> sound);
+	void add_sound(const std::shared_ptr<SoundImpl> &sound);
+	void remove_sound(const std::shared_ptr<SoundImpl> &sound);
 
 	// Sound is the AudioManager's friend, so that only sounds can access the
 	// add and remove sound method's

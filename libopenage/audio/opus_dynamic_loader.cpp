@@ -7,8 +7,7 @@
 #include "error.h"
 #include "../log/log.h"
 
-namespace openage {
-namespace audio {
+namespace openage::audio {
 
 
 OpusDynamicLoader::OpusDynamicLoader(const util::Path &path)
@@ -43,7 +42,7 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer,
 	// seek to the requested offset, the seek offset is given in samples
 	// while the requested offset is given in int16_t values, so the division
 	// by 2 is necessary
-	int64_t pcm_offset = static_cast<int64_t>(offset / 2);
+	auto pcm_offset = static_cast<int64_t>(offset / 2);
 
 	int op_ret = op_pcm_seek(this->source.handle.get(), pcm_offset);
 	if (op_ret < 0) {
@@ -97,4 +96,4 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer,
 	return (read_count * 2) / channels;
 }
 
-}} // openage::audio
+} // openage::audio

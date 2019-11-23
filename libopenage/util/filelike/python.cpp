@@ -1,15 +1,13 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "python.h"
 
 #include <type_traits>
 
 
-namespace openage {
-namespace util {
-namespace filelike {
+namespace openage::util::filelike {
 
-Python::Python(py::Obj fileobj)
+Python::Python(const py::Obj &fileobj)
 	:
 	fileobj{std::make_shared<py::Obj>(fileobj)} {}
 
@@ -101,4 +99,4 @@ pyinterface::PyIfFunc<void, PyObject *> pyx_file_flush;
 pyinterface::PyIfFunc<ssize_t, PyObject *> pyx_file_size;
 
 
-}}} // openage::util::filelike
+} // openage::util::filelike

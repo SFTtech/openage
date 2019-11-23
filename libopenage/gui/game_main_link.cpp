@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "game_main_link.h"
 
@@ -7,8 +7,7 @@
 #include "../engine.h"
 #include "engine_link.h"
 
-namespace openage {
-namespace gui {
+namespace openage::gui {
 
 namespace {
 const int registration = qmlRegisterType<GameMainLink>("yay.sfttech.openage", 1, 0, "GameMain");
@@ -25,8 +24,7 @@ GameMainLink::GameMainLink(QObject *parent)
 	Q_UNUSED(registration);
 }
 
-GameMainLink::~GameMainLink() {
-}
+GameMainLink::~GameMainLink() = default;
 
 void GameMainLink::classBegin() {
 }
@@ -73,4 +71,4 @@ void GameMainLink::on_game_running(bool running) {
 	}
 }
 
-}} // namespace openage::gui
+} // namespace openage::gui

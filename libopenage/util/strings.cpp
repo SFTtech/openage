@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 #include "strings.h"
 
@@ -13,8 +13,7 @@
 #include "../error/error.h"
 #include "compiler.h"
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 
 std::string sformat(const char *fmt, ...) {
@@ -165,14 +164,14 @@ std::vector<std::string> split_escape(const std::string &txt, char delim, size_t
 
 		// end of input string
 		if (*r == '\0') {
-			items.push_back(std::string{std::begin(buf), std::end(buf)});
+			items.emplace_back(std::begin(buf), std::end(buf));
 			buf.clear();
 			break;
 		}
 
 		// delimiter found
 		if (*r == delim) {
-			items.push_back(std::string{std::begin(buf), std::end(buf)});
+			items.emplace_back(std::begin(buf), std::end(buf));
 			buf.clear();
 
 			r++;
@@ -211,4 +210,4 @@ std::vector<std::string> split_escape(const std::string &txt, char delim, size_t
 	return items;
 }
 
-}} // openage::util
+} // openage::util

@@ -1,6 +1,8 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "player.h"
+
+#include <utility>
 
 #include "../log/log.h"
 #include "../unit/unit.h"
@@ -16,7 +18,7 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	player_number{number},
 	color{number},
 	civ{civ},
-	name{name},
+	name{std::move(name)},
 	team{nullptr},
 	population{0, 200}, // TODO change, get population cap max from game options
 	score{this},

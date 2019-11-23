@@ -1,15 +1,13 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "python.h"
 
 #include "../../log/log.h"
 
-namespace openage {
-namespace util {
-namespace fslike {
+namespace openage::util::fslike {
 
 
-Python::Python(py::Obj fsobj)
+Python::Python(const py::Obj &fsobj)
 	:
 	fsobj{std::make_shared<py::Obj>(fsobj)} {}
 
@@ -140,4 +138,4 @@ pyinterface::PyIfFunc<int, PyObject *, const std::vector<std::string>&> pyx_fs_g
 pyinterface::PyIfFunc<uint64_t, PyObject *, const std::vector<std::string>&> pyx_fs_get_filesize;
 pyinterface::PyIfFunc<bool, PyObject *> pyx_fs_is_fslike_directory;
 
-}}} // openage::util::fslike
+} // openage::util::fslike

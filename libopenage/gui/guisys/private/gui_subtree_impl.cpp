@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "gui_subtree_impl.h"
 #include "gui_renderer_impl.h"
@@ -7,12 +7,13 @@
 #include <ciso646>
 
 #include <QCoreApplication>
-#include <QQmlEngine>
-#include <QQuickWindow>
-#include <QQuickItem>
-#include <QFileInfo>
-#include <QDir>
 #include <QDebug>
+#include <QDir>
+#include <QFileInfo>
+#include <QQmlEngine>
+#include <QQuickItem>
+#include <QQuickWindow>
+#include <utility>
 
 #include "gui_engine_impl.h"
 #include "../link/gui_item.h"
@@ -67,8 +68,7 @@ GuiSubtreeImpl::GuiSubtreeImpl(GuiRenderer *renderer,
 	                          Q_ARG(QUrl, QUrl::fromLocalFile(source)));
 }
 
-GuiSubtreeImpl::~GuiSubtreeImpl() {
-}
+GuiSubtreeImpl::~GuiSubtreeImpl() = default;
 
 void GuiSubtreeImpl::onEngineReloaded() {
 	const QUrl source = this->root_component->url();
@@ -95,7 +95,7 @@ void GuiSubtreeImpl::attach_to(GuiRendererImpl *renderer) {
 	assert(renderer);
 
 	if (this->renderer)
-		QObject::disconnect(this->renderer, 0, this, 0);
+		QObject::disconnect(this->renderer, nullptr, this, nullptr);
 
 	this->renderer = renderer;
 
@@ -194,11 +194,11 @@ GuiEngineImplConnection::GuiEngineImplConnection()
 
 GuiEngineImplConnection::GuiEngineImplConnection(GuiSubtreeImpl *subtree,
                                                  GuiEngineImpl *engine,
-                                                 const QString &root_dir)
+                                                 QString root_dir)
 	:
 	subtree{subtree},
 	engine{engine},
-	root_dir{root_dir} {
+	root_dir{std::move(root_dir)} {
 
 	assert(this->subtree);
 	assert(this->engine);

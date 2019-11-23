@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "texture_info.h"
 
@@ -74,10 +74,10 @@ std::pair<int, int> Texture2dInfo::get_subtexture_size(size_t subid) const {
 std::tuple<float, float, float, float> Texture2dInfo::get_subtexture_coordinates(size_t subid) const {
 	auto tx = this->get_subtexture(subid);
 	return std::make_tuple(
-		((float)tx.x)           / this->w,
-		((float)(tx.x + tx.w)) / this->w,
-		((float)tx.y)           / this->h,
-		((float)(tx.y + tx.h)) / this->h
+		(static_cast<float>(tx.x)) / this->w,
+		(static_cast<float>(tx.x + tx.w)) / this->w,
+		(static_cast<float>(tx.y)) / this->h,
+		(static_cast<float>(tx.y + tx.h)) / this->h
 	);
 }
 

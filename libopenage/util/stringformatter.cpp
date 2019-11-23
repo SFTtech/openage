@@ -1,14 +1,13 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "stringformatter.h"
 
 #include <array>
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 
-CachableOSStream::CachableOSStream() {}
+CachableOSStream::CachableOSStream() = default;
 
 
 CachableOSStream::CachableOSStream(std::string &output)
@@ -61,4 +60,4 @@ void CachableOSStream::release(CachableOSStream *cs) {
 }
 
 
-}} // namespace openage::util
+} // namespace openage::util
