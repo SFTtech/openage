@@ -7,6 +7,7 @@ add_sources(libopenage
   texture.cpp
   texture_array.cpp
   window.cpp
+  renderer.cpp
 )
 
 pxdgen(

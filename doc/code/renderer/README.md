@@ -88,15 +88,14 @@ std::unique_ptr<UniformInput> input = prog->new_uniform_input(
 
 std::unique_ptr<Geometry> geom = renderer->add_bufferless_quad();
 
-RenderPass pass {
-  { {
-    input.get(),
-    geom.get(),
-    true,
-    true,
-  } },
-  renderer->get_framebuffer_target(),
-};
+Renderable obj {
+  input.get(),
+  geom.get(),
+  true,
+  true,
+}
+
+std::unique_ptr<RenderPass> pass =  renderer->add_render_pass({ obj }, renderer->get_framebuffer_target())
 
 renderer->render(pass);
 ```

@@ -3,6 +3,7 @@ add_sources(libopenage
 	context.cpp
 	framebuffer.cpp
 	geometry.cpp
+	render_pass.cpp
 	render_target.cpp
 	renderer.cpp
 	shader.cpp
