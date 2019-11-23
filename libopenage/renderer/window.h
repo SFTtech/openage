@@ -17,6 +17,9 @@ namespace renderer {
 
 class Window {
 public:
+	static std::shared_ptr<Window> create(const std::string &title,
+	                                      size_t width, size_t height);
+
 	virtual ~Window() = default;
 
 	/// Returns the dimensions of this window.

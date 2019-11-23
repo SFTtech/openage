@@ -1,13 +1,25 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "window.h"
+
+#include "opengl/window.h"
 
 
 namespace openage {
 namespace renderer {
 
+std::shared_ptr<Window> Window::create(const std::string &title,
+                                       size_t width, size_t height) {
+	// currently we only have a functional GL window
+	// TODO: support other renderer windows
+	//       and add some selection mechanism.
+	return std::make_shared<opengl::GlWindow>(title, width, height);
+}
+
+
 Window::Window(size_t width, size_t height)
 	: size{width, height} {}
+
 
 const util::Vector2s &Window::get_size() const {
 	return this->size;

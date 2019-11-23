@@ -16,7 +16,7 @@ namespace opengl {
 class GlWindow final : public Window {
 public:
 	/// Create a shiny window with the given title.
-	GlWindow(const char *title, size_t width, size_t height);
+	GlWindow(const std::string &title, size_t width, size_t height);
 	~GlWindow() = default;
 
 	void set_size(size_t width, size_t height) override;

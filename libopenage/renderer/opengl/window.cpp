@@ -1,4 +1,4 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2019 the openage authors. See copying.md for legal info.
 
 #include "window.h"
 
@@ -13,7 +13,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-GlWindow::GlWindow(const char *title, size_t width, size_t height)
+GlWindow::GlWindow(const std::string &title, size_t width, size_t height)
 	: Window(width, height)
 {
 	make_sdl_available();
@@ -23,7 +23,7 @@ GlWindow::GlWindow(const char *title, size_t width, size_t height)
 	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
 	this->window = std::shared_ptr<SDL_Window>(
 		SDL_CreateWindow(
-			title,
+			title.c_str(),
 			SDL_WINDOWPOS_CENTERED,
 			SDL_WINDOWPOS_CENTERED,
 			this->size[0],
