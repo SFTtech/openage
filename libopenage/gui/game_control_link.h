@@ -158,7 +158,7 @@ private:
 	QString ability;
 	QString population;
 	bool population_warn;
-	const UnitSelection *selection;
+	const UnitSelection *selection = nullptr;
 
 	QString selection_name;
 	QString selection_icon;
@@ -307,13 +307,13 @@ private:
 	virtual void on_core_adopted() override;
 	virtual void componentComplete() override;
 
-	OutputModeLink *mode;
+	OutputModeLink *mode = nullptr;
 	int effective_mode_index;
 	int mode_index;
 	QVariantList modes;
 	// TODO: remove engine because it's already accessible through the game
-	EngineLink *engine;
-	GameMainLink *game;
+	EngineLink *engine = nullptr;
+	GameMainLink *game = nullptr;
 	QString current_player_name;
 	int current_civ_index;
 };
