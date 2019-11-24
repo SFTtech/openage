@@ -1035,7 +1035,8 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                     px_val = -16
 
                 elif px_type == color_special_1:
-                    alpha = 253  # mark this pixel as outline
+                    # TODO: Make this 253 with new renderer
+                    alpha = 254  # mark this pixel as outline
 
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)

@@ -22,7 +22,7 @@ The SMP file starts with a header:
 Length   | Type   | Description        | Example
 ---------|--------|--------------------|--------
 4 bytes  | string | File descriptor    | SMP$
-4 bytes  | int32  | ??                 | 256, 0x00000100 (same value for almost all units)
+4 bytes  | int32  | possibly version   | 256, 0x00000100 (same value for almost all units)
 4 bytes  | int32  | Number of frames   | 721, 0x000002D1
 4 bytes  | int32  | ??                 | 1, 0x0000001 (almost always 0x00000001)
 4 bytes  | int32  | Number of frames   | 721, 0x000002D1 (0x00000001 for version 0x0B)
