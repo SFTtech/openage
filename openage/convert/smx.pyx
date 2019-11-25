@@ -564,10 +564,10 @@ cdef class SMXMainFrame8to5(SMXFrame):
                         pixel_data.push_back((pixel_data_odd_1 >> 2) & 0x03)
 
                         # Damage mask 1. Essentially a rotation of (byte[3]byte[4])
-                        # by 6 to the left, then masking with 0x00FF.
+                        # by 6 to the left, then masking with 0x00F0.
                         pixel_data_odd_2 = self.get_byte_at(dpos_color + 3)
                         pixel_data_odd_3 = self.get_byte_at(dpos_color + 4)
-                        pixel_data.push_back((pixel_data_odd_0 >> 2) | (pixel_data_odd_1 << 6))
+                        pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
 
                         # Damage mask 2. Described in byte[4] in bits 0-5.
                         pixel_data.push_back((pixel_data_odd_3 >> 2) & 0xFD)
@@ -621,10 +621,10 @@ cdef class SMXMainFrame8to5(SMXFrame):
                         pixel_data.push_back((pixel_data_odd_1 >> 2) & 0x03)
 
                         # Damage mask 1. Essentially a rotation of (byte[3]byte[4])
-                        # by 6 to the left, then masking with 0x00FF.
+                        # by 6 to the left, then masking with 0x00F0.
                         pixel_data_odd_2 = self.get_byte_at(dpos_color + 3)
                         pixel_data_odd_3 = self.get_byte_at(dpos_color + 4)
-                        pixel_data.push_back((pixel_data_odd_0 >> 2) | (pixel_data_odd_1 << 6))
+                        pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
 
                         # Damage mask 2. Described in byte[4] in bits 0-5.
                         pixel_data.push_back((pixel_data_odd_3 >> 2) & 0xFD)
@@ -1070,11 +1070,11 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
             else:
                 if px_type == color_player:
-                    alpha = 255
+                    # TODO: Make this 255 with new renderer
+                    alpha = 254
 
                 elif px_type == color_outline:
-                    # TODO: Make this 253 with new renderer
-                    alpha = 254
+                    alpha = 253
 
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)
