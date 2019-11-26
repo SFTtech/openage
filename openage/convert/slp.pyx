@@ -1018,17 +1018,20 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
             elif px_type == color_player_v4:
                 r, g, b = p_lookup[px_val]
-                alpha = 255
+                # TODO: Make this 255 with new renderer
+                # mark this pixel as player color
+                alpha = 254
 
             else:
                 if px_type == color_player:
+                    # TODO: Make this 255 with new renderer
                     # mark this pixel as player color
                     alpha = 254
 
                 elif px_type == color_special_2 or\
                      px_type == color_black:
-                    # mark this pixel as outline
-                    alpha = 253
+                    # TODO: Make this 251 with new renderer
+                    alpha = 253  # mark this pixel as special outline
 
                     # black outline pixel, we will probably never encounter this.
                     #  -16 ensures palette[16+(-16)=0] will be used.

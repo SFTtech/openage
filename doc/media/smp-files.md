@@ -4,6 +4,9 @@ SMP files are the successor format to SLP files. Like SLP files,
 they contain animations, shadows and outlines for units. SMPs
 were introduced with Age of Empires 2: Definitive Edition.
 
+The Age of Empires 2: Definitive Edition almost exclusively stores
+sprites in a compressed version of the format that is called SMX.
+You can read more about SMX files [here](smx-files.md).
 
 ## SMP file format
 
@@ -18,8 +21,8 @@ The SMP file starts with a header:
 
 Length   | Type   | Description        | Example
 ---------|--------|--------------------|--------
-4 bytes  | string | Version            | SMP$
-4 bytes  | int32  | ??                 | 256, 0x00000100 (same value for almost all units)
+4 bytes  | string | File descriptor    | SMP$
+4 bytes  | int32  | possibly version   | 256, 0x00000100 (same value for almost all units)
 4 bytes  | int32  | Number of frames   | 721, 0x000002D1
 4 bytes  | int32  | ??                 | 1, 0x0000001 (almost always 0x00000001)
 4 bytes  | int32  | Number of frames   | 721, 0x000002D1 (0x00000001 for version 0x0B)
@@ -31,7 +34,7 @@ Length   | Type   | Description        | Example
 
 ```cpp
 struct smp_header {
-  char  version[4];
+  char  file_descriptor[4];
   int32 ??;
   int32 num_frames;
   int32 ??;
