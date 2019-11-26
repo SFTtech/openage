@@ -6,7 +6,7 @@
 # Set the output path
 set(WEBDOC_PATH "${CMAKE_BINARY_DIR}/webdoc")
 #set(WEBDOC_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/webdoc-hosting")
-set(WEBDOC_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../openage-docs/")
+set(WEBDOC_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../openage-webdoc/")
 
 # branch 'webdoc build'
 
