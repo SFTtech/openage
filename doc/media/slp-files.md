@@ -14,7 +14,6 @@ Length   | Type   | Description      | Example
 4 bytes  | int32  | Number of frames | 1, 0x00000001
 24 bytes | string | Comment          | ArtDesk 1.00 SLP Writer
 
-
 ```cpp
 struct slp_header {
   char  version[4];
@@ -31,39 +30,79 @@ Length   | Type    | Description             | Example
 ---------|---------|-------------------------|--------
 4 bytes  | string  | Version                 | 4.0X
 2 bytes  | int16   | Number of frames        | 960, 0x000003C0
-2 bytes  | int16   | possibly angles         | 8, 0x08 (only for effects and v4.1 SLPs)
-2 bytes  | int16   | unknown                 | always 0x0001
-2 bytes  | int16   | Number of frames        | value never differs from previous value
-4 bytes  | int32   | possibly checksum field | always 0x00000000 (v4.1 uses it)
+2 bytes  | int16   | Type                    | 8, 0x08 (for VFX SLPs)
+2 bytes  | int16   | Number of directions    | 32, 0x0020 (always set to 1)
+2 bytes  | int16   | Frames per direction    | 45, 0x002D (always set to num_frames)
+4 bytes  | int32   | Palette ID              | always 0x00000000 (v4.1 uses it)
 4 bytes  | int32   | Offset for main graphic | 0x00000020
-4 bytes  | int32   | Offset for shadow       | 0x0010C8C0, if 0x00000000 then there is no shadow stored
-8 bytes  | Padding | Padding                 | -
-
-v4.1 SLPs have the same structure as the v4.0 SLPs. However, they are only used for *decay* SLPs.
+4 bytes  | int32   | Offset for shadow/alphas| 0x0010C8C0, if 0x00000000 then there is no attached graphic data
+8 bytes  | Padding | Padding                 | - (possibly used for additional offsets)
 
 ```cpp
 struct slp_header_v4 {
   char     version[4];
   int16    num_frames;
-  int16    angles;
-  int16    unknown;
-  int16    num_frames_alt;
-  int32    checksum;
+  int16    type;
+  int16    num_directions;
+  int16    frames_per_direction;
+  int32    palette_id;
   int32    offset_main;
-  int32    offset_shadow;
+  int32    offset_secondary;
   pad byte padding[8];
 };
 ```
 Python format: `Struct("< 4s H H H H i i i 8x")`
+
+There are 4 known versions of SLP: '2.0N', '3.0', '4.0X', and '4.1X'. AoE1,
+AoK (including HD), and SWGB all use the '2.0N' version. With AoE1: Definitive
+Edition (AoE1 DE), three new versions were created; '3.0' '4.0X', and '4.1X'.
+Version 3.0 doesn't seem to be much different from 2.0N SLPs (seems to be used
+for rescaled SLPs and terrains), whereas 4.0X and 4.1X SLPs have additional
+variables in the header that replace the comment field. '4.1X' was introduced
+in a patch for AoE1 DE (probably Update 9). It uses the same structure as '4.0X',
+but only seems to be used with decay SLPs. It was likely updated to include the
+'decay' type of SLP which apparently darkens bodies on decay.
+
+The Type field designates what type of graphic the SLP is:
+
+Value    | Description
+---------|------------------------------------------------------------------------
+0x00     | "Normal"
+0x01     | "Color Mask" (Possibly unused, there are no examples of it being used)
+0x02     | "Shadow Layer"
+0x04     | "Outline" (Possibly unused, outlines were never implemented in AoE1 DE)
+0x08     | "VFX Color" (Used for effects, like fire or smoke)
+0x10     | "VFX Alpha" (Uses "0x08" instead as it's frame type marker when used in attached data)
+0x20     | "Decay" (Introduced in 4.1X SLPs)
+
+The `num_directions` and `frames_per_direction` fields are for reference only as
+these values are still determined within the .dat file. All official 4.0X SLPs
+don't appear to even use these fields correctly, since `num_directions` is always
+set to 0x0001 and `frames_per_direction` is always set to the same value as
+`num_frames`. In 4.1X, these fields are not used at all.
+
+`palette_id` may also be for reference only and is always unused in 4.0X SLPs.
+In 4.1X, an unknown value seems to have replaced it.
+
+`offset_main` points to the location of where frame data begins. This value is
+usually set to 0x20 for the third line where frame headers are located. This value
+could pontentially be changed to a value such as 0x30 to make room for a comment
+field or something.
+
+`offset_secondary` points to the location of where attached data begins. Usually,
+this is where shadow data is stored, but is also used to store alpha values to the
+VFX type SLPs that use a palette. The attached data essentially works like a SLP
+within a SLP as they contain their own frame info headers, edge outline tables,
+command offset tables, and draw commands. Shadows in 4.0X SLPs don't use the
+shadow draw commands of previous version SLPs.
 
 ### SLP Frame info
 After the header, there are `num_frames` entries of `slp_frame_info`.
 Every `slp_frame_info` stores meta-information about a single frame (texture)
 within the SLP.
 
-SLPs with version higher than 4.0 have `num_frames` additional entries of
-`slp_frame_info` at `offset_shadow` if the offset is a non-zero value.
-These frames store the shadows of the game entity.
+SLPs with version 4.0X or higher have `num_frames` additional entries of
+`slp_frame_info` at `offset_secondary` if the offset is a non-zero value.
 
 Length   | Type   | Description                | Example
 ---------|--------|----------------------------|--------
@@ -90,17 +129,55 @@ struct slp_frame_info {
 ```
 Python format: `Struct("< I I I I i i i i")`
 
-* `palette_offset` is apparently never used.
-* `properties` is only used to indicate which palette for the image to use.
-  Up to HD, these seem to be the same, so can generally be ignored.
-	* 0x10 - "default game palette"
-	* 0x00 - "global color palette"
-* In AoE1:DE `properties` stores the palette number in the second last 2 bytes
-	* 0x0009 - use `09_buildings_asian.pal`
-* `hotspot_x` & `hotspot_y` tell the engine where the centre of the unit is.
+Following the `slp_frame_info` array is the data for each frame.
+`outline_table_offset` points to the position of the `slp_frame_row_edge` array
+and `cmd_table_offset` points to the position of the `slp_command_offset` array.
+Both of these arrays are of length `height`.
 
-One image of size `width * height` has `height` rows, of course.
+The `height` and `width` values represent the size of the sprite while the
+`hotspot_X` and `hotspot_Y` values represent the center coordinates of the sprite.
 
+The `palette_offset` is unused in all games. AoE1 SLPs have written values here,
+but they are not read. It seems to be an early remnant of AoE1 development that
+was abandoned.
+
+The `properties` field is also an unused field (despite having some values such as
+0x10 written there) for AoE1, AoK, and SWGB, but it was later repurposed in AoK HD
+and AoE1 DE to include palette IDs for each frame. Values work as following:
+
+**AoK HD Palette IDs:**
+
+Value      | Description
+-----------|------------------------------------------------------------------------
+0x00       | Default (50500)
+0x07       | 32-bit / Or: (value & 7) == 0x07
+0x10       | Default (50500)
+0x18       | Default (50500)
+0x010000   | clf_pal (Cliff)
+0x020000   | pal_2 (Oak Trees)
+0x030000   | pal_3 (Palm Trees)
+0x040000   | pal_4 (Pine Trees)
+0x050000   | pal_5 (Snow Trees)
+0x060000   | pal_6 (Fire Effects)
+
+**AoE1 DE Palette IDs:**
+
+Value      | Description
+-----------|------------------------------------------------------------------------
+0x00       | Default (50500)
+0x07       | 32-bit / Or: (value & 7) == 0x07
+0x010000   | 01_units
+0x020000   | 02_nature
+0x030000   | 03_buildings_stonetool
+0x040000   | 04_buildings_greek
+0x050000   | 05_buildings_babylon
+0x060000   | 06_buildings_roman
+0x070000   | 07_nature_tree_conifer
+0x080000   | 08_nature_tree_palms
+0x090000   | 09_buildings_asian
+0x0A0000   | 10_buildings_egypt
+0x360000   | effects
+0x08000000 | effects
 
 ### SLP Frame row edge
 At `outline_table_offset` (after the `slp_frame_info` structs), an array of
@@ -200,37 +277,147 @@ Shadow draw              | `0bXXXX1011`     | `cmd_byte >> 4` or next | Draw *Co
 Extended command         | `0bXXXX1110`     | depends                 | Get the specific extended command by looking at the most significant bits of the command. (See the table below for details)
 End of row               | `0x0F`           | 0                       | End of commands for this row. If more commands follow, they are for the next row.
 
-Extended commands, for outlines behind trees/buildings:
+**Command cases:**
+
+**Lesser Draw (Case 0x00, 0x04, 0x08, 0x0C):**
+
+This case represents a short block of pixels up to a length of 64 and is good for
+small chunks of non-repeating pixels. The pixels to copy follows the command byte
+and is `length` bytes long. Each of these bytes represents an index within the
+color palette. For 32-bit SLPs, each 4 bytes is read for "length" bytes long in
+BGRA order and the alpha value here is always 255.
+```
+length = command >> 2
+(ex: 0x04 = 1, 0x08 = 2, 0x0C = 3, 0x10 = 4, 0x14 = 5, 0x18 = 6, 0x1C = 7, 0x20 = 8, 0x24 = 9)
+```
+
+**Lesser Skip (Case 0x01, 0x05, 0x09, 0x0D):**
+
+This case represents a short skip up to a length of 64 pixels. This command is
+mainly used for an empty/transparent space within the sprite, as it just moves
+the pointer to the drawing buffer forward.
+```
+length = command >> 2
+(ex: 0x05 = 1, 0x09 = 2, 0x0D = 3, 0x11 = 4, 0x15 = 5, 0x19 = 6, 0x1D = 7, 0x21 = 8,  0x25 = 9)
+```
+
+**Greater Draw (Case 0x02):**
+
+This case represents a long block of pixels greater than a length of 64 and is
+good for big chunks of non-repeating pixels. The pixels to copy follows the
+command byte and is "length" bytes long. Each of these bytes represents an index
+within the color palette. For 32-bit SLPs, each 4 bytes is read for `length` bytes
+long in BGRA order and the alpha value is always 255.
+```
+length = ((command & 0xf0) << 4) + next_byte
+(ex: 0x12 + 0x00 = 256, 0x12 + 0x0A = 266, 0x22 + 0x00 = 512)
+```
+
+**Greater Skip (Case 0x03):**
+
+This case represents a long skip of pixels greater than 64 pixels.
+length = ((command & 0xf0) << 4) + next_byte
+```
+(ex: 0x13 + 0x00 = 256, 0x13 + 0x0A = 266, 0x23 + 0x00 = 512)
+```
+
+**Player Color Draw (Case 0x06):**
+
+This case represents a block of player color pixels that transform based on the
+color selected by the player. The pixels to copy follows the command byte and is
+`length` bytes long. Each of these bytes represents an index within the player color
+range and is different for each game. For AoE1, index values are between 0x00 (brightest)
+and 0x09 (darkest). In AoK and SWGB, index values are between 0x00 (darkest) and
+0x07 (brightest). And in AoE1 DE, index values are between 0x00 and 0x7F (0-127)
+and use separate player color palettes. In-game, the colors are drawn from the start
+index in the palette for the player + the index within the player color range. For AoK
+and SWGB, blue player colors begin at index 16 in the palette, red at index 32, green
+at index 48, yellow at index 64, orange at index 80, cyan/teal at index 96, purple at
+index 112, and grey at index 128.
+```
+length = command >> 4. If 0, the next byte is read and used as the length.
+(ex: 0x16 = 1, 0x26 = 2, 0xA6 = 10, 0xF6 = 15, 0x06 + 0x10 = 16)
+```
+
+**Fill (Case 0x07):**
+
+This case represents a block of the same color pixels. This command is useful for
+shortening the amount of bytes needed for a line that consists of the same exact color
+for more than 2 pixels straight and shrink it down to just 2 or 3 bytes (depending on
+length). This command does not work in AoE1 and will break terrain SLPs in AoK and
+SWGB due to how elevation and blending are generated. The byte after the command/length
+byte represents an index within the color palette. For 32-bit SLPs, 4 bytes is read
+after the command/length byte in BGRA order and the alpha value is always 255.
+```
+length = command >> 4. If 0, the next byte is read and used as the length.
+(ex: 0x17 = 1, 0x27 = 2, 0xA7 = 10, 0xF7 = 15, 0x07 + 0x10 = 16)
+```
+
+**Fill Player Color (Case 0x0A):**
+
+This case represents a block of the same player color pixels. This command is useful
+for shortening the amount of bytes needed for a line that consists of the same exact
+player color for more than 2 pixels straight and shrink it down to just 2 or 3 bytes
+(depending on length). This command does not work in AoE1.
+```
+length = command >> 4. If 0, the next byte is read and used as the length.
+(ex: 0x1A = 1, 0x2A = 2, 0xAA = 10, 0xFA = 15, 0x0A + 0x10 = 16)
+```
+
+**Shadow Draw (Case 0x0B):**
+
+This case represents a block of shadow pixels. The pixels underneath these shadow
+pixels are identified within a shadow palette and used to draw into the buffer. The
+shadow palette is essentially a darkened variation of the graphic color palette (50500).
+It's also used to draw things like the red-tinted checkerboard when placing buildings
+at forbidden places.
+```
+length = command >> 4. If 0, the next byte is read and used as the length.
+(ex: 0x1B = 1, 0x2B = 2, 0xAB = 10, 0xFB = 15, 0x0B + 0x10 = 16)
+```
+
+**Extended Commands (Case 0x0E):**
 
 Command name        | Byte value | Pixel Count | Description
 --------------------|------------|-------------|------------
-render_hint_xflip   | `0x0E`     | 0           | Draw the following command if sprite is not flipped right to left.
-render_h_notxflip   | `0x1E`     | 0           | Draw following command if this sprite is x-flipped.
-table_use_normal    | `0x2E`     | 0           | Set color transform table to normal.
-table_use_alternate | `0x3E`     | 0           | Set color transform table to alternate.
-outline_1           | `0x4E`     | 1           | `palette_index = player_index = player * 16`, if obstructed, draw player color, else transparent. This is the player color outline you see when a unit is behind a building. (special color = 1)
-outline_span_1      | `0x5E`     | next        | `palette_index = player_index = player * 16`, can be >=1 pixel
-outline_2           | `0x6E`     | 1           | `palette_index = 0`, if pixel obstructed, draw a pixel as black outline, else transparent. (special color = 2)
-outline_span_2      | `0x7E`     | next        | `palette_index = 0`, same as obstruct_black, >=1 pixel.
-dither              | `0x8E`     | ?           | ?
-premulti_alpha      | `0x9E`     | ?           | Premultiplied alpha?
-orig_alph           | `0xAE`     | ?           | Original alpha?
+Forward Draw        | `0x0E`     | 0           | Draw the following command if sprite is not flipped right to left.
+Reverse Draw        | `0x1E`     | 0           | Draw following command if this sprite is x-flipped.
+Normal Transform    | `0x2E`     | 0           | Set color transform table to normal.
+Alternate Transform | `0x3E`     | 0           | Set color transform table to alternate.
+Outline 1           | `0x4E`     | 1           | `palette_index = player_index = player * 16`, if obstructed, draw player color, else transparent. This is the player color outline you see when a unit is behind a building. (special color = 1)
+Outline 1 Fill      | `0x5E`     | next        | `palette_index = player_index = player * 16`, can be >=1 pixel
+Outline 2           | `0x6E`     | 1           | `palette_index = 243`, shield outline. Used in SWGB for when shielded units are hit, a yellow outline is drawn surrounding the unit. (special color = 2)
+Outline 2 Fill      | `0x7E`     | next        | `palette_index = 243`, shield outline, can be >=1 pixel.
+Dither              | `0x8E`     | ?           | ?
+Premultiplied Alpha | `0x9E`     | next        | Draws a line of semi-transparent pixels
+Original Alpha      | `0xAE`     | ?           | ?
 
+Forward Draw, Reverse Draw, Normal Transform, and Alternate Transform are all
+possibly unused, obsolete, or abandoned commands.
 
-* "Player color block copy" (`0bXXXX0110`) is an index into the palette, in range 0-15.
-* "Shadow" (`0bXXXX1011`) destination "pixels" are used as a lookup into a shadow_table.
-  This lookup pixel is then used to draw into the buffer. The shadow table is a
-  color-tinted variation of the real color table. It's also used to draw things
-  like the red-tinted checkerboard when placing buildings at forbidden places.
-* "special color" - 2 means black (enhance the outline, cartoonlike), 1 is
-  player color.
-* When a unit is behind an object (Commands `0x{4,5,6,7}E` used), only the
-  outline of the corresponding part of the unit is drawn, the rest of the unit
-  is transparent. So, the left outline is one pixel more to the left than the
-  first color.
+Outline 1 is the outline that surrounds a unit and is seen when a unit is obstructed,
+such as when it is behind a building or tree in AoK and SWGB. Its color is determined
+by the team color of the player. For AoK, Outline 2 does not have a real purpose. It
+may have originally been intended as a black outline when obstructed, but in HD it draws
+a player color outline the same as Outline 1. In SWGB, Outline 2 is used for the shield
+outline. This outline is the yellow outline that surrounds a unit and is seen when a
+shielded unit takes damage. When a unit is behind an object, only the outline of the
+corresponding part of the unit is drawn, the rest of the unit is transparent. So, the
+left outline is one pixel more to the left than the first color. Usually, these outline
+pixels should be stored to a second spritesheet, which is rendered on top of the
+tree/building by the fragment shader.
 
-  Usually, these outline pixels should be stored to a second spritesheet, which is
-  rendered on top of the tree/building by the fragment shader.
+Dither is unknown and was possibly an unused or abandoned command. There are no known
+examples of it being used.
+
+Premultiplied Alpha (32-bit Only) draws pixels that contain alpha values lesser than
+255. The next pixel after the command determines the `length`. After the `length` byte,
+each 4 bytes therafter is read for `length` bytes long in BGRA order to determine the
+color. The alpha value is also inverted `(ex: 255 - alpha)`.
+
+Original Alpha is unknown and was possibly abandoned. There are no known examples of
+it being used.
+
 
 For later drawing, a graphics file needs flags for:
 
@@ -298,10 +485,58 @@ command (`0x99 0x35 0xF4 0x6D 0x67 0x6E 0xA5 0x01 0x4D 0x8E`).
 Our next command byte is `0x0F`. This is the *end of row* command which tells
 us that the row is finished.
 
-### SLP shadow commands (since version 4.0X)
 
-SLPs with versions higher than 4.0 store their shadows in separate frames, but
-use the same command syntax. Shadows are drawn with the *lesser draw*,
+### Secondary Frame info (since version 4.0X)
+SLPs with versions of 4.0X or higher store an attached secondary graphic data located
+after all the main graphic draw commands. This secondary frame data can be used for
+shadow layers, alpha values for 8-bit pixels, and potentially player outlines
+(although unused in AoE1 DE). If the main graphic draw commands end before the end
+of the line, the rest of the line is padded with null bytes so that the attached
+data can begin at a position ending in 0.
+
+Attached data begins with the `secondary_frame_info` array. This array is of size
+`num_frames` and contains structures with info for each of it's frames. Each
+structure should be 32 bytes in length.
+
+Length   | Type   | Description                | Example
+---------|--------|----------------------------|--------
+4 bytes  | uint32 | Command table offset       | 43328, 0x0000A940
+4 bytes  | uint32 | Outline table offset       | 43072, 0x0000A840
+4 bytes  | ?      | Unused                     | 0, 0x00000000
+3 bytes  | uint24 | Properties? (Unknown)      | 0, 0x000000 (sometimes 0x010010)
+1 byte   | uint8  | Frame Type                 | 8, 0x08 (VFX Alpha)
+4 bytes  | int32  | Width of image             | 800, 0x00000320
+4 bytes  | int32  | Height of image            | 600, 0x00000258
+4 bytes  | int32  | Centre of sprite (X coord) | 0, 0x00000000
+4 bytes  | int32  | Centre of sprite (Y coord) | 0, 0x00000000
+
+```cpp
+struct secondary_frame_info {
+  uint32 sec_cmd_table_offset;
+  uint32 sec_outline_table_offset;
+  uint32 sec_null;
+  uint24 sec_properties;
+  uint8  sec_frame_type;
+  int32  sec_width;
+  int32  sec_height;
+  int32  sec_hotspot_x;
+  int32  sec_hotspot_y;
+};
+```
+The Frame Type field designates what type of graphic the secondary frame is:
+
+Value    | Description
+---------|------------------------------------------------------------------------
+0x01     | "Color Mask" (Possibly unused, there are no examples of it being used)
+0x02     | "Shadow Layer"
+0x04     | "Outline" (Possibly unused, outlines were never implemented in AoE1 DE)
+0x08     | "VFX Alpha" (Not 0x10)
+
+Just like with the main graphic data, secondary graphics also contain their own frame
+info headers, edge outline tables, command offset tables, and draw commands.
+
+### Secondary Draw Commands (since version 4.0X)
+Secondary draw commands use the same command syntax, but only use the *lesser draw*,
 *lesser skip* and *fill* commands.
 
 Command Name             | Byte value       | Pixel Count             | Description
@@ -312,12 +547,15 @@ Greater draw             | `0bXXXX0010`     | `cmd_byte << 4 + next`  | An array
 Greater skip             | `0bXXXX0011`     | `cmd_byte << 4 + next`  | *Count* transparent pixels should be drawn from the current position.
 Fill                     | `0bXXXX0111`     | `cmd_byte >> 4` or next | One palette index byte follows. This color should be drawn `pixel_count` times from the current position.
 
-The "shadow" values have to be converted to an alpha mask by left shifting
+For shadows, the values read have to be converted to an alpha mask by left shifting
 by 2 and and flipping the bits (i.e. subtracting from 255):
 
 ```
 shadow_alpha = 255 - (shadow_value << 2)
 ```
+
+For VFX alphas, the values can be read as-is and are not inverted or altered in any way:
+
 
 ## Palette Files
 
