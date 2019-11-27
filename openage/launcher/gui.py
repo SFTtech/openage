@@ -49,27 +49,6 @@ class MenuButton(QPushButton):
         # background?
 
 
-class NewsBox(QTextBrowser):
-    """
-    rich text browser for openage news with hyperlink
-    """
-    def __init__(self, *args, **kwargs):
-        super(NewsBox, self).__init__(*args, **kwargs)
-        self.setOpenExternalLinks(True)
-
-        self.setText('<p><a href="https://github.com/SFTtech/openage/">Check out the Openage Github</a></p>'
-                     '<p>Any HTML should work here.</p>')
-
-        dummy = ('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing '
-                 'elit. Aenean commodo ligula eget dolor. Aenean massa '
-                 '<strong>strong</strong>. Cum sociis natoque penatibus '
-                 'et magnis dis parturient montes, nascetur ridiculus '
-                 'mus.</p>')
-
-        for _ in range(10):
-            self.append(dummy)
-
-
 class ContentTable(QTableWidget):
     # create and add table
     def __init__(self, *args, noselect=False, **kwargs):
@@ -106,6 +85,27 @@ class ContentTable(QTableWidget):
         self.setItem(idx, 3, QTableWidgetItem(author))
 
 
+class NewsBox(QTextBrowser):
+    """
+    rich text browser for openage news with hyperlink
+    """
+    def __init__(self, *args, **kwargs):
+        super(NewsBox, self).__init__(*args, **kwargs)
+        self.setOpenExternalLinks(True)
+
+        self.setText('<p><a href="https://github.com/SFTtech/openage/">Check out the Openage Github</a></p>'
+                     '<p>Any HTML should work here.</p>')
+
+        dummy = ('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing '
+                 'elit. Aenean commodo ligula eget dolor. Aenean massa '
+                 '<strong>strong</strong>. Cum sociis natoque penatibus '
+                 'et magnis dis parturient montes, nascetur ridiculus '
+                 'mus.</p>')
+
+        for _ in range(10):
+            self.append(dummy)
+
+
 class ContentBox(QWidget):
     def __init__(self, *args, **kwargs):
         super(ContentBox, self).__init__(*args, **kwargs)
@@ -117,6 +117,7 @@ class ContentBox(QWidget):
         # test content
         self.table.add_entry('testcontent0', '2.0', 'Someone', False)
         self.table.add_entry('testcontent1', '1.0', 'Someone Else', True)
+
 
 class ModBox(QWidget):
     def __init__(self, *args, **kwargs):
@@ -145,27 +146,23 @@ class ModBox(QWidget):
         self.buttons.layout().addWidget(self.buttons.delete)
 
         # connect buttons to methods
-        self.buttons.up.pressed.connect(self.mod_up)
-        self.buttons.down.pressed.connect(self.mod_down)
+        self.buttons.up.clicked.connect(lambda: self.move_mod(-1))
+        self.buttons.down.clicked.connect(lambda: self.move_mod(1))
+        self.buttons.add.clicked.connect(self.add_mod)
+        self.buttons.delete.clicked.connect(self.delete_mod)
 
         # test mods
         self.table.add_entry('testmod0', '2.0', 'Someone', False)
         self.table.add_entry('testmod1', '1.0', 'Someone Else', True)
 
-    def _move_mod(self, direction):
-        pass
+    def move_mod(self, step):
+        print('mod priority changed by {}'.format(step))
 
-    def mod_up(self):
-        """
-        increase mod priority
-        """
-        self._move_mod('up')
+    def add_mod(self):
+        print('add a mod')
 
-    def mod_down(self):
-        """
-        decrease mod priority
-        """
-        self._move_mod('down')
+    def delete_mod(self):
+        print('delete selected mod')
 
 
 class LauncherWindow(QMainWindow):
