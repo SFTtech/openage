@@ -85,30 +85,32 @@ class ContentTable(QTableWidget):
         self.setItem(idx, 3, QTableWidgetItem(author))
 
 
-class NewsBox(QTextBrowser):
+class NewsTab(QTextBrowser):
     """
-    rich text browser for openage news with hyperlink
+    rich text browser for openage news with hyperlinks
     """
     def __init__(self, *args, **kwargs):
-        super(NewsBox, self).__init__(*args, **kwargs)
+        super(NewsTab, self).__init__(*args, **kwargs)
         self.setOpenExternalLinks(True)
+        self.content = self.fetch_news()
+        self.setText(self.content)
 
-        self.setText('<p><a href="https://github.com/SFTtech/openage/">Check out the Openage Github</a></p>'
-                     '<p>Any HTML should work here.</p>')
+    def fetch_news(self):
+        # TODO get news feed
+        feed = ('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing '
+                'elit. Aenean commodo ligula eget dolor. Aenean massa '
+                '<strong>strong</strong>. Cum sociis natoque penatibus '
+                'et magnis dis parturient montes, nascetur ridiculus '
+                'mus.</p>') * 10
 
-        dummy = ('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing '
-                 'elit. Aenean commodo ligula eget dolor. Aenean massa '
-                 '<strong>strong</strong>. Cum sociis natoque penatibus '
-                 'et magnis dis parturient montes, nascetur ridiculus '
-                 'mus.</p>')
-
-        for _ in range(10):
-            self.append(dummy)
+        # show it
+        return ('<p><a href="https://github.com/SFTtech/openage/">Check out the Openage Github</a></p>'
+                '<p>Any HTML should work here.</p>' + feed)
 
 
-class ContentBox(QWidget):
+class ContentTab(QWidget):
     def __init__(self, *args, **kwargs):
-        super(ContentBox, self).__init__(*args, **kwargs)
+        super(ContentTab, self).__init__(*args, **kwargs)
         self.setLayout(QVBoxLayout())
 
         self.table = ContentTable(noselect=True)
@@ -119,9 +121,9 @@ class ContentBox(QWidget):
         self.table.add_entry('testcontent1', '1.0', 'Someone Else', True)
 
 
-class ModBox(QWidget):
+class ModTab(QWidget):
     def __init__(self, *args, **kwargs):
-        super(ModBox, self).__init__(*args, **kwargs)
+        super(ModTab, self).__init__(*args, **kwargs)
         self.setLayout(QVBoxLayout())
 
         # create and add table
@@ -155,14 +157,71 @@ class ModBox(QWidget):
         self.table.add_entry('testmod0', '2.0', 'Someone', False)
         self.table.add_entry('testmod1', '1.0', 'Someone Else', True)
 
+    def selected_row(self):
+        if not self.table.selectedItems():
+            return None
+        return self.table.selectedItems()[1].text(), self.table.selectedItems()[1].row()
+
     def move_mod(self, step):
-        print('mod priority changed by {}'.format(step))
+        sel = self.selected_row()
+        if sel is None:
+            return
+        print('mod {}, row {}, changed priority by {}'.format(*sel, step))
 
     def add_mod(self):
+        # TODO should adding from local and browsing repo happen from the same spot?
         print('add a mod')
 
     def delete_mod(self):
-        print('delete selected mod')
+        sel = self.selected_row()
+        if sel is None:
+            return
+        print('delete selected mod: {}, row {}'.format(*sel))
+
+
+class MainMenu(QWidget):
+    def __init__(self, *args, **kwargs):
+        super(MainMenu, self).__init__(*args, **kwargs)
+        self.setLayout(QVBoxLayout())
+
+        buttons = [
+            ('Continue', self.continue_),
+            ('Play', self.play_),
+            ('Editor', self.editor_),
+            ('Options', self.options_),
+            ('Search for Updates', self.search_for_updates_),
+            ('Quit', self.quit_)
+        ]
+
+        background = None
+        for button, action in buttons:
+            button_widget = MenuButton(button, icon_path, background)
+            button_widget.clicked.connect(action)
+            self.layout().addWidget(button_widget)
+            self.layout().addStretch(1)
+
+    def fake_action(self, text):
+        dialog = QErrorMessage(self)
+        dialog.showMessage(text)
+
+    def continue_(self):
+        self.fake_action('Continue!')
+
+    def play_(self):
+        self.fake_action('Play!')
+
+    def editor_(self):
+        self.fake_action('Editor!')
+
+    def options_(self):
+        self.fake_action('Options!')
+
+    def search_for_updates_(self):
+        self.fake_action('Update!')
+
+    def quit_(self):
+        # TODO not sure this is a good way to do it
+        QApplication.quit()
 
 
 class LauncherWindow(QMainWindow):
@@ -188,75 +247,39 @@ class LauncherWindow(QMainWindow):
         self.right.setLayout(QVBoxLayout())
         self.main.layout().addWidget(self.right)
 
-        self._init_menu()
-        self._init_tabs()
-
-        self.show()
-
-    def _init_menu(self):
+        # left side
         self.logo = ImageLabel(logo_path, 250, 250)
         self.left.layout().addWidget(self.logo)
 
         self.left.layout().addStretch(5)
 
-        buttons = [
-            ('Continue', self.continue_),
-            ('Play', self.play),
-            ('Options', self.options),
-            ('Search for Updates', self.search_for_updates),
-            ('Quit', self.quit)
-        ]
-
-        background = None
-        for button, action in buttons:
-            button_widget = MenuButton(button, icon_path, background)
-            button_widget.clicked.connect(action)
-            self.left.layout().addWidget(button_widget)
-            self.left.layout().addStretch(1)
-
+        self.menu = MainMenu()
+        self.left.layout().addWidget(self.menu)
         self.left.layout().addStretch(10)
 
         version = 'dummy version number'
-
         self.version = QLabel(version)
         self.left.layout().addWidget(self.version)
 
-    def _init_tabs(self):
+        # right side
         self.tabs = QTabWidget()
         self.right.layout().addWidget(self.tabs)
 
-        self.news = NewsBox()
+        self.news = NewsTab()
         self.tabs.addTab(self.news, 'News')
 
-        self.content = ContentBox()
+        self.content = ContentTab()
         self.tabs.addTab(self.content, 'Content')
 
-        self.mods = ModBox()
+        self.mods = ModTab()
         self.tabs.addTab(self.mods, 'Mods')
 
-    def fake_action(self, text):
-        dialog = QErrorMessage(self)
-        dialog.showMessage(text)
-
-    def continue_(self):
-        self.fake_action('Continue!')
-
-    def play(self):
-        self.fake_action('Play!')
-
-    def options(self):
-        self.fake_action('Options!')
-
-    def search_for_updates(self):
-        self.fake_action('Update!')
-
-    def quit(self):
-        self.close()
+        self.show()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-
+    app.setApplicationName('Openage Launcher')
     launcher_window = LauncherWindow()
 
     # catch KeyboardInterrupt
