@@ -195,6 +195,13 @@ if(USED_GIT_VERSION)
 endif()
 project(openage VERSION "${PROJECT_VERSION}")
 
+# set CI version
+if(DEFINED ENV{CI_CFG_VERSION})
+    set(CI_CFG_VERSION "$ENV{CI_CFG_VERSION}")
+else()
+    set(CI_CFG_VERSION "NOT SET")
+endif()
+
 
 ##################################################
 # documentation generation

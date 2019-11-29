@@ -32,14 +32,16 @@ else:
         "openage {version}{devmode}\n"
         "{config_options}\n"
         "{compiler} [{compilerflags}]\n"
-        "Cython {cython}"
+        "Cython {cython}\n"
+        "CI config version {cicfg}"
     ).format(
         version=config.VERSION,
         devmode=(" [devmode]" if config.DEVMODE else ""),
         config_options=config.CONFIG_OPTIONS,
         compiler=config.COMPILER,
         compilerflags=config.COMPILERFLAGS,
-        cython=config.CYTHONVERSION
+        cython=config.CYTHONVERSION,
+        cicfg=config.CICFGVERSION
     )
 
 setup_logging()
