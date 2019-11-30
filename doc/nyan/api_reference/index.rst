@@ -1,3 +1,5 @@
+.. _nyan_api_reference:
+
 API reference
 -------------
 

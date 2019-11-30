@@ -1,17 +1,55 @@
-.. openage documentation master file, created by
-   sphinx-quickstart on Fri May 24 08:06:38 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
-***********************************
-Welcome to openage's documentation!
-***********************************
 
-Free (as in freedom) open source remake of the Age of Empires II engine
+#################################################
+  Welcome to the openage |version| documentation!
+#################################################
 
-Table of Contents
-==================
+openage is a free (as in freedom) open source remake of the Age of Empires II engine.
+
+Our vision for Development of openage is —
+
+  openage is a free and open source cross-platform application that offers 
+  TODO: XXX
+
+
+openage tools are developed keeping the above vision in mind. 
+
+
++---------------------------------------------------------+----------------------------------------------------------+
+| .. image:: doc/sphinx/images/intro_page/placeholder.png | .. image:: doc/sphinx/images/intro_page/placeholder.png  |
+|                                                         |                                                          |
+|:ref:`user_manual`                                       |:ref:`tutorials`                                          |
+|                                                         |                                                          |
+|Discover Krita’s features through an                     |Learn through developer and user                          |
+|online manual. Guides to help you                        |generated tutorials to see Krita                          |
+|transition from other applications.                      |in action.                                                |
++---------------------------------------------------------+----------------------------------------------------------+
+| .. image:: doc/sphinx/images/intro_page/placeholder.png | .. image:: doc/sphinx/images/intro_page/placeholder.png  |
+|                                                         |                                                          |
+|:ref:`getting_started`                                   |:ref:`reference_manual`                                   |
+|                                                         |                                                          |
+|New to Krita and don't know where to start?              |A quick run-down of all of the tools that                 |
+|                                                         |are available                                             |
++---------------------------------------------------------+----------------------------------------------------------+
+| .. image:: doc/sphinx/images/intro_page/placeholder.png | .. image:: doc/sphinx/images/intro_page/placeholder.png  |
+|                                                         |                                                          |
+|:ref:`general_concepts`                                  |:ref:`faq`                                                |
+|                                                         |                                                          |
+|Learn about general art and technology                   |Find answers to the most common questions                 |
+|concepts that are not specific to Krita.                 |about Krita and what it offers.                           |
++---------------------------------------------------------+----------------------------------------------------------+
+| .. image:: doc/sphinx/images/intro_page/placeholder.png |                                                          |
+|                                                         |                                                          |
+|:ref:`resources_page`                                    |:ref:`genindex`                                           |
+|                                                         |                                                          |
+|Textures, brush packs, and python plugins                |An index of the manual for searching                      |
+|to help add variety to your artwork.                     |terms by browsing.                                        |
++---------------------------------------------------------+----------------------------------------------------------+
+
+
 .. toctree::
+   :maxdepth: 4
+   :hidden:
 
   Building & Installation <doc/sphinx/installation/index.rst>
   Handbooks <doc/sphinx/handbooks/index.rst>
@@ -20,8 +58,4 @@ Table of Contents
   About <doc/sphinx/about.rst>
 
 
-Indices and tables
-==================
-
-* :ref:`genindex`
 * :ref:`search`
