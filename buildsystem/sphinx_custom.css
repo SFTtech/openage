@@ -1,0 +1,24 @@
+/* This line is theme specific - it includes the base theme CSS */
+@import 'theme.css';       /* for the Read the Docs theme */
+
+.wy-side-nav-search input[type="text"] {
+    width: 100%;
+    padding: 6px 12px;
+    border-radius: 0px;
+    border-color: #2472a4;
+}
+
+.wy-breadcrumbs {
+    *zoom: 1;
+    background: #f3f3f3;
+    padding: 0.2em 1em;
+    margin-bottom: 1em;
+}
+
+.wy-nav-content {
+    padding: 1.618em 3.236em;
+    height: 100%;
+    max-width: 100%;
+    min-width: 50%;
+    margin: auto;
+}

@@ -10,7 +10,7 @@ Openage currently depends on the original game assets, so you need a copy of the
   2. Place the file in your steamapps folder, typically found in `~/.steam/steam/SteamApps` or `~/Library/Application Support/Steam/steamapps`
   3. Restart Steam after placing the file
 
-```json
+``` json
     "AppState"
     {
       "AppID"  "221380"
@@ -23,7 +23,9 @@ Openage currently depends on the original game assets, so you need a copy of the
   1. Install SteamCMD by following the instructions on [Valve's developer wiki](https://developer.valvesoftware.com/wiki/SteamCMD).
   2. Download the assets with the following command (replacing `USERNAME` and `ASSET_DIR` as appropriate):
 
-`./steamcmd.sh +@sSteamCmdForcePlatformType windows +login USERNAME +force_install_dir ASSET_DIR +app_update 221380 validate +quit`
+```
+./steamcmd.sh +@sSteamCmdForcePlatformType windows +login USERNAME +force_install_dir ASSET_DIR +app_update 221380 validate +quit
+```
 
 In the future, using installation disks may be supported.
 
@@ -34,10 +36,12 @@ That conversion is performed by the openage.convert python module when the game 
 
 The game will ask for your AoE II installation folder; examples include:
 
+```
     ~/.wine-age/drive_c/programs/ms-games/aoe2
     /var/run/media/windisk/Program Files (x86)/Steam/SteamApps/common/Age2HD
     ~/.steam/steam/SteamApps/common/Age2HD
     ~/Library/Application Support/Steam/steamapps/common/Age2HD
+```
 
 You will find the converted files in `assets/converted`.
 

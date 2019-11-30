@@ -36,7 +36,9 @@ __NOTE:__ You need to manually make sure and doublecheck if the system you are b
 ### Python Modules
  Open a command prompt at `<Python 3 installation directory>/Scripts`
 
-    pip install cython numpy pillow pygments pyreadline Jinja2
+```
+pip install cython numpy pillow pygments pyreadline Jinja2
+```
 
 _Note:_ Make sure the Python 3 instance you're installing these scripts for is the one you call `python` in CMD
 _Note:_ Also ensure that `python` and `python3` both point to the correct and the same version of Python 3
@@ -44,7 +46,9 @@ _Note:_ Also ensure that `python` and `python3` both point to the correct and th
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
 
-    vcpkg install dirent eigen3 fontconfig freetype harfbuzz libepoxy libogg libpng opus opusfile qt5-base qt5-declarative qt5-quickcontrols sdl2 sdl2-image
+```
+vcpkg install dirent eigen3 fontconfig freetype harfbuzz libepoxy libogg libpng opus opusfile qt5-base qt5-declarative qt5-quickcontrols sdl2 sdl2-image
+```
 
  _Note:_ The `qt5` port in vcpkg has been split into multiple packages, build times are acceptable now.
  If you want, you can still use [the prebuilt version](https://www.qt.io/download-open-source/) instead.
@@ -98,6 +102,7 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
 
  - Install [NSIS](https://sourceforge.net/projects/nsis/files/latest/download).
  - Depending on the way you installed Qt (vcpkg/pre-built) you need to edit the following line in `<openage-repo-dir>\buildsystem\templates\ForwardVariables.cmake.in`:
+
 ```
 	# Use windeploy for packaging qt-prebuilt, standard value '1' for windeploy, '0' for vcpkg
 	set(use_windeployqt 1)
@@ -111,4 +116,4 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
 
  _Hint:_ Append `-V` to the `cpack` command for verbose output (it takes time to package all dependencies).
 
- _Hint:_ <arch> you can set with the environment variable `TARGET_PLATFORM` (e.g. amd64, x86).
+ _Hint:_ `<arch>` you can set with the environment variable `TARGET_PLATFORM` (e.g. amd64, x86).

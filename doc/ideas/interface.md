@@ -1,3 +1,6 @@
+# Interface
+
+## interface enhancements
 As opposed to the gameplay improvements, these interface enhancements are pretty straightforward, so they will probably be hard-coded in.
 
  - Allow selecting more than 30 units (duh.)

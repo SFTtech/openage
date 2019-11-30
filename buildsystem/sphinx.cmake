@@ -4,13 +4,16 @@
 
 # check for sphinx + extensions
 find_package(Sphinx REQUIRED)
-        # recommonmark autodoc breathe graphviz sphinx-markdown-tables sphinx-rtd-theme)
+        # recommonmark autodoc breathe graphviz sphinx-markdown-tables sphinx-rtd-theme */sphinxcontrib-moderncmakedomain)
 
 function(sphinx_configure)
     if(${SPHINX_FOUND})
 
     # configure sphinx conf.py.in for webdoc build
     configure_file("${BUILDSYSTEM_DIR}/templates/webdoc/conf.py.in" "${WEBDOC_PATH}/conf.py" @ONLY)
+
+    # Copy stylesheets
+    configure_file("${BUILDSYSTEM_DIR}/sphinx_custom.css" "${WEBDOC_PATH}/_static/css/sphinx_custom.css" COPYONLY)
 
     # arguments from the functions call
     #foreach(folder ${ARGN})

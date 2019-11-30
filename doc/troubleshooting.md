@@ -28,7 +28,7 @@ Make sure you don't have *UserPatch*, compatibility patches or modifications ins
 
 If you have Wololo Kingdoms and various mods installed that change the base assets the converter will not work. A workaround would be to make a backup of your AGE2 directory and let the AGE2DIR environment variable point to that backup. In that backup at subfolder `AGE2/resources` delete all files ***except*** folders. Another workaround would be to backup your AGE2 folder and redownload it to have a clean install. After conversion you can replace it with the backup.
 
-## Ingame
+## In-game
 
 ### UI elements are visible but the background stays black
 

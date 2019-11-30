@@ -1,10 +1,9 @@
-Technical overview for requested features
---------
+# Technical overview for requested features
 
 These are some thoughts for a feature rich mode. Don't worry, there will be a vanilla mode without all that fancy stuff just feeling as good as this famous 20-years-old game. So every fancy feature changing the gameplay drastically could be also disabled by users.
 
 
-### Explanations:
+## Explanations:
 
 1. ITEM: A description of the item
 2. COMPLEXITY: subjective evaluation for the complexity of the implementation

@@ -2,11 +2,9 @@
 
 ## Monitor Game Asset Folder (e.g. with inotify)
 
-When the user modifies an asset, such as a texture, the ingame models are updated instantly.
-
--> awesome live-testing for modders
-
-Far more challenging: make this work for unit stats.
+  - when the user modifies an asset, such as a texture, the in-game models are updated instantly
+    - awesome live-testing for modders
+  - far more challenging: make this work for unit stats.
 
 
 ## Built-in Snapshot Creation for Mods
