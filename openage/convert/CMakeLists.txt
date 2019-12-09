@@ -22,6 +22,7 @@ add_cython_modules(
 	slp.pyx
 	smp.pyx
 	smx.pyx
+	terrain_convert.pyx
 )
 
 add_pxds(

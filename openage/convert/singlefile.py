@@ -61,9 +61,12 @@ def main(args, error):
     elif args.mode == "drs-slp" or (file_extension == "slp" and args.drs):
         if not (args.drs and args.palette_index):
             raise Exception("palette-file needs to be specified")
+        
+        # Only for the test of this draft.
+        #read_slp_in_drs_file(args.drs, args.filename, args.palette_index,
+                             #args.output, interfac=args.interfac)
 
-        read_slp_in_drs_file(args.drs, args.filename, args.palette_index,
-                             args.output, interfac=args.interfac)
+        terrain_convert(args.drs, args.filename, args.palette_index, args.output, interfac = args.interfac)
 
     elif args.mode == "smp" or file_extension == "smp":
         if not (args.palette_file and args.player_palette_file):
@@ -256,3 +259,79 @@ def read_smx_file(smx_path, main_palette, player_palette, output_path):
 
     # save as png
     tex.save(Directory(output_file.parent).root, output_file.name)
+
+
+def terrain_convert(drs, slp_path, palette_index, output_path, interfac=None):
+    """
+    Reads a SLP from a DRS archive and output a texture from it. It uses Cython code (for now pure Python), which is faster.
+    """
+    output_file = Path(output_path)
+
+    # open from drs archive
+    drs_file = DRS(drs)
+
+    info("opening slp in drs '%s:%s'...", drs.name, slp_path)
+    slp_file = drs_file.root[slp_path].open("rb")
+
+    if interfac:
+        # open the interface file if given
+        interfac_file = interfac
+
+    else:
+        # otherwise use the path of the drs.
+        interfac_file = Path(drs.name).with_name(
+            "interfac.drs").open("rb")  # pylint: disable=no-member
+
+    # open palette
+    info("opening palette in drs '%s:%s.bina'...",
+         interfac_file.name, palette_index)
+    palette_file = DRS(
+        interfac_file).root["%s.bina" % palette_index].open("rb")
+
+    info("parsing palette data...")
+    palette = ColorTable(palette_file.read())
+
+    # import here to prevent that the __main__ depends on SLP
+    # just by importing this singlefile.py.
+    from .slp import determine_rgba_matrix, SLP, SLPFrame, FrameInfo
+    from PIL import Image
+    from .texture import Texture, TextureImage
+    from .terrain_convert import Terrain_convert
+    import numpy as np
+    
+
+    # parse the slp image
+    info("parsing slp image...")
+    slp_image = SLP(slp_file.read())
+    
+    # In order to extract the special image data from the SLP, I have to merge first all the frames ?
+    # In this case, the format is bad, we have a ndarray(10,10,dtype=np.ndarray(49,97),ndtype=tuple4), where each ndarray is of
+    # size 49x97x4
+    # How do we need to pass "special SLP image data" to PIL Image ?
+    # Should we have a matrix of 490x970 with each pixel is a rgba tuple?
+    info("parsing SLP Image into RGBA Matrix")
+    image = np.empty([10,10],dtype=np.ndarray)
+    row=0
+    column=0
+    count=0
+    while count < 100:
+        if row % 10 ==0 and row > 0:
+            column+=1
+            row=0
+        image[row][column] = slp_image.main_frames[count].get_picture_data(palette)
+        row+=1
+        count+=1
+
+    #matrix = determine_rgba_matrix(image, None, 0) ???
+    image_new = Image.fromarray(image)
+    info("merging RGBA Matrix")
+    merged_image = Terrain_convert.merge(image_new)
+
+    info("transforming RGBA Matrix")
+    transformed_image = Terrain_convert.transform(merged_image)
+    
+    
+    #transform RGBA matrix into a Texture or TextureImage ?
+    info("rgba->TextureImage")
+    final_texture = TextureImage(transformed_image)
+
