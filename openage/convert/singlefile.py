@@ -35,7 +35,7 @@ def init_subparser(cli):
     cli.add_argument("--drs", type=argparse.FileType('rb'),
                      help=("drs archive filename that contains an slp "
                            "e.g. path ~/games/aoe/graphics.drs"))
-    cli.add_argument("--mode", choices=['drs-slp', 'slp', 'smp', 'smx'],
+    cli.add_argument("--mode", choices=['drs-slp','terrain', 'slp', 'smp', 'smx'],
                      help=("choose between drs-slp, slp, smp or smx; "
                            "otherwise, this is determined by the file extension"))
     cli.add_argument("filename", help=("filename or, if inside a drs archive "
@@ -50,8 +50,15 @@ def main(args, error):
 
     file_path = Path(args.filename)
     file_extension = file_path.suffix[1:].lower()
+    
+    if args.mode == "terrain" or (file_extension == "slp" and args.drs):
+        if not (args.drs and args.palette_index):
+            raise Exception("palette-file needs to be specified")
+        
+        terrain_convert(args.drs, args.filename, args.palette_index,
+                        args.output, interfac = args.interfac)
 
-    if args.mode == "slp" or (file_extension == "slp" and not args.drs):
+    elif args.mode == "slp" or (file_extension == "slp" and not args.drs):
         if not args.palette_file:
             raise Exception("palette-file needs to be specified")
 
@@ -62,11 +69,8 @@ def main(args, error):
         if not (args.drs and args.palette_index):
             raise Exception("palette-file needs to be specified")
         
-        # Only for the test of this draft.
-        #read_slp_in_drs_file(args.drs, args.filename, args.palette_index,
-                             #args.output, interfac=args.interfac)
-
-        terrain_convert(args.drs, args.filename, args.palette_index, args.output, interfac = args.interfac)
+        read_slp_in_drs_file(args.drs, args.filename, args.palette_index,
+                             args.output, interfac=args.interfac)
 
     elif args.mode == "smp" or file_extension == "smp":
         if not (args.palette_file and args.player_palette_file):
