@@ -11,6 +11,11 @@ SLPs in DRS archives (for older versions of Age of Empires 1, Age of Empires 2 a
 python3 -m openage convert-file --drs ~/games/aoe2/Data/graphics.drs 326.slp /tmp/rofl.png
 ```
 
+Terrain SLPs in DRS archives (for older versions of Age of Empires 1, Age of Empires 2 and SWGB):
+```
+python3 -m openage convert-file --drs ~/games/aoe2/Data/terrain.drs 15006.slp --mode terrain /tmp/rofl.png
+```
+
 Standalone SLPs (Age of Empires 1: DE and Age of Empires 2: HD):
 ```
 python3 -m openage convert-file --palette-file ~/games/aoe2hd/Data/50500.bina 326.slp /tmp/rofl.png
