@@ -19,33 +19,33 @@ compatible to each other.
 
 The SMP file starts with a header:
 
-Length   | Type   | Description        | Example
----------|--------|--------------------|--------
-4 bytes  | string | File descriptor    | SMP$
-4 bytes  | int32  | possibly version   | 256, 0x00000100 (same value for almost all units)
-4 bytes  | int32  | Number of frames   | 721, 0x000002D1
-4 bytes  | int32  | ??                 | 1, 0x0000001 (almost always 0x00000001)
-4 bytes  | int32  | Number of frames   | 721, 0x000002D1 (0x00000001 for version 0x0B)
-4 bytes  | int32  | possibly checksum  | 0x8554F6F3
-4 bytes  | int32  | File size in bytes | 0x003D5800
-4 bytes  | int32  | Version?           | 0x0B or 0x0C
-32 bytes | string | Comment            | Apparently the file path on FE's machines
+Length   | Type   | Description          | Example
+---------|--------|----------------------|--------
+4 bytes  | string | Signature            | SMP$
+4 bytes  | uint32 | Version?             | 256, 0x00000100
+4 bytes  | uint32 | Number of frames     | 721, 0x000002D1
+4 bytes  | uint32 | Number of animations | 1, 0x0000001 (almost always 0x00000001)
+4 bytes  | uint32 | Frames per animation | 721, 0x000002D1 (0x00000001 for version 0x0B)
+4 bytes  | uint32 | possibly checksum    | 0x8554F6F3
+4 bytes  | uint32 | File size in bytes   | 0x003D5800
+4 bytes  | uint32 | Other Version?       | 0x0B or 0x0C
+32 bytes | string | Comment              | Apparently the file path on FE's machines
 
 
 ```cpp
 struct smp_header {
-  char  file_descriptor[4];
-  int32 ??;
-  int32 num_frames;
-  int32 ??;
-  int32 num_frames;
-  int32 checksum;
-  int32 file_size;
-  int32 version;
-  char  comment[32];
+  char   signature[4];
+  uint32 ??;
+  uint32 num_frames;
+  uint32 num_animations;
+  uint32 frames_per_animation;
+  uint32 checksum;
+  uint32 file_size;
+  uint32 version;
+  char   comment[32];
 };
 ```
-Python format: `Struct("< 4s 7i 32s")`
+Python format: `Struct("< 4s 7I 32s")`
 
 
 ### SMP Bundle Offsets
@@ -100,10 +100,10 @@ Length   | Type   | Description                | Example
 4 bytes  | uint32 | Height of image            | 145, 0x00000091
 4 bytes  | uint32 | Centre of sprite (X coord) | 88, 0x00000058
 4 bytes  | uint32 | Centre of sprite (Y coord) | 99, 0x00000063
-4 bytes  | int32  | Frame type                 | 0x02, 0x04 or 0x08
-4 bytes  | int32  | Outline table offset       | 600, 0x00000258
-4 bytes  | int32  | Command table offset       | 0, 0x00000000
-4 bytes  | int32  | ??                         | 0x01, 0x02 or 0x80
+4 bytes  | uint32 | Frame type                 | 0x02, 0x04 or 0x08
+4 bytes  | uint32 | Outline table offset       | 600, 0x00000258
+4 bytes  | uint32 | Command table offset       | 0, 0x00000000
+4 bytes  | uint32 | Flags                      | 0x01, 0x02 or 0x80
 
 ```cpp
 struct smp_frame_header {
@@ -114,10 +114,10 @@ struct smp_frame_header {
   uint32 frame_type;
   uint32 outline_table_offset;
   uint32 cmd_table_offset;
-  uint32 ??;
+  uint32 flags;
 };
 ```
-Python format: `Struct("< 8i")`
+Python format: `Struct("< 8I")`
 
 * Frame types can be `0x02` (main graphic), `0x04` (shadow) or `0x08`
 (outline). In version 0x0B, outlines have a different frame type: `0x10`.
@@ -213,7 +213,7 @@ Playercolor Draw | `0bXXXXXX10`  | `(cmd_byte >> 2) + 1`    | An array of length
 End of Row       | `0bXXXXXX11`  | 0                        | End of commands for this row. If more commands follow, they are for the next row.
 
 * When converting the main graphics, the alpha values from the palette are
-apparently ignored by the game.
+ignored by the game.
 
 
 #### Shadow type
@@ -250,18 +250,18 @@ Length   | Type   | Description                | Example
 ---------|--------|----------------------------|--------
 1 byte   | uint8  | Palette index              | 20, 0x0014
 1 byte   | uint8  | Palette number and section | 7, 0x0007
-1 byte   | uint8  | Damage mask                | 128, 0x80 (only high nibble is used)
-1 byte   | uint8  | Damage mask                | 3, 0x03
+2 byte   | uint16 | Damage modifier            | 0x29D0 (bits [0,1] and [12,15] are unused)
 
 ```cpp
 struct smp_pixel {
-  uint8 px_index;
-  uint8 px_palette;
-  uint8 px_damage_mask_1;
-  uint8 px_damage_mask_2;
+  uint8  px_index;
+  uint8  px_palette;
+  uint16 px_damage_modifier;
 };
 ```
-Python format: `Struct("< B B B B")`
+Python format: `Struct("< B B H")`
+
+#### Palette info
 
 Colors are stored in JASC palettes with 1024 colors. The palettes are assigned an index
 which is stored in a `palette.conf` file. To find the encoded color of a SMP pixel,
@@ -279,7 +279,70 @@ palette_section = px_palette & 0b00000011
 index for the palette. This index can then be used to get the color value from
 the palette with the index `palette_index`.
 
-The other two bytes in the file are used for masking when units get damaged.
+#### Damage info
+
+The last two bytes of the pixel contain a modifier value that is internally used to
+calculate the darkening effect of units. Using the modifier and the
+current damage percentage, the game internally calculates a multiplier that is
+applied to the RGB values of the pixel. More on how that works is described further below.
+
+The modifier only effectively uses 10 of the uint16's bits (bits with index [2,11]).
+Of these 10 bits, the most significant bit seems to be a usage flag that indicates
+whether the modifier should be applied to the pixels. The other 9 bits contain the
+modifier value. You can calculate the effective value by shifting `px_damage_modifier`
+by 4 to the right and then masking with `0x01FF` to get rid of the usage flag.
+
+```
+damage_modifier_value = (px_damage_modifier >> 4) & 0x01FF
+```
+
+This yields a value between 0 and 511. From this value, the game creates an
+approximation of a [sigmoid curve](https://en.wikipedia.org/wiki/Sigmoid_function)
+("S"-shaped curve) that, given the current damage percentage, returns a multiplier
+which is then applied to the RGB values of the retrieved palette color. Visually
+this means that the darkening effect is small at first, then rapidly increases until 50%
+damage has been reached. Afterwards, the increase will slow down until it levels off
+at a maximum value.
+
+You can retrieve the multiplier by using this function:
+
+```python
+calculate_rgb_multiplier(damage_modifier, current_damage_percent):
+    damage_window_99_to_50 = current_damage_percent * 2
+    damage_window_74_to_25 = damage_window_99_to_50 - 0.5
+    damage_window_49_to_0 =  damage_window_74_to_25 - 0.5
+
+    damage_window_99_to_50 = min(max(damage_window_99_to_50, 0.0), 1.0)
+    damage_window_74_to_25 = min(max(damage_window_74_to_25, 0.0), 1.0)
+    damage_window_49_to_0 = min(max(damage_window_49_to_0, 0.0), 1.0)
+
+    a = math.floor(damage_modifier / 64)
+    temp = damage_modifier - 64 * a + 0.5
+    b = math.floor(temp / 8)
+    c = temp - 8 * b
+
+    a = a * damage_window_99_to_50
+    b = b * damage_window_74_to_25
+    c = c * damage_window_49_to_0
+
+    sigmoid_result = (a + b + c) / 7
+    sigmoid_result = min(max(sigmoid_result, 0.0), 0.65)
+
+    rgb_multiplier = 1 - rgb_multiplier
+
+    return rgb_multiplier
+```
+
+Remarks:
+
+* Pixel's RGB values can at maximum get 65% darker than their original color. This
+behaviour is hardcoded into the game and cannot be changed.
+* Adding `0.5` to `temp` is not strictly necessary, but will solve problems with
+floating point rounding errors.
+* The three `damage_window_X_Y` values represent how far health of a building
+has gone down relative to a health interval between `X` and `Y` (both representing percentages of health left). For example, if the building is currently at 70% health,
+then we have progressed by 60% in the health interval that monitors 99% to 50% health.
+Therefore, `damage_window_99_to_50` would be `0.6`.
 
 
 #### Examples

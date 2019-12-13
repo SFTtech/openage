@@ -620,13 +620,13 @@ cdef class SMXMainFrame8to5(SMXFrame):
                         # Palette section. Described in byte[2] in bits 4-5.
                         pixel_data.push_back((pixel_data_odd_1 >> 2) & 0x03)
 
-                        # Damage mask 1. Essentially a rotation of (byte[3]byte[4])
+                        # Damage modifier 1. Essentially a rotation of (byte[3]byte[4])
                         # by 6 to the left, then masking with 0x00F0.
                         pixel_data_odd_2 = self.get_byte_at(dpos_color + 3)
                         pixel_data_odd_3 = self.get_byte_at(dpos_color + 4)
                         pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
 
-                        # Damage mask 2. Described in byte[4] in bits 0-5.
+                        # Damage modifier 2. Described in byte[4] in bits 0-5.
                         pixel_data.push_back((pixel_data_odd_3 >> 2) & 0xFD)
 
                         row_data.push_back(pixel(color_player,
@@ -1058,7 +1058,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 # main graphics table
                 r, g, b, alpha = m_lookup[index]
 
-                # TODO: alpha values are unused
+                # alpha values are unused
                 # in 0x0C and 0x0B version of SMPs
                 alpha = 255
 
@@ -1099,8 +1099,6 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     """
     converts a palette index image matrix to an alpha matrix.
 
-    TODO: figure out how this works exactly
-
     :param image_matrix: A 2-dimensional array of SMP pixels.
     """
     cdef size_t height = image_matrix.size()
@@ -1116,9 +1114,6 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
 
     cdef vector[pixel] current_row
     cdef pixel px
-    cdef uint8_t px_u1
-    cdef uint8_t px_u2
-    cdef uint8_t px_mask
 
     cdef size_t x
     cdef size_t y
@@ -1129,13 +1124,8 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
 
         for x in range(width):
             px = current_row[x]
-            px_u1 = px.unknown1
-            px_u2 = px.unknown2
 
-            # TODO: Correct the darkness here
-            px_mask = ((px_u2 << 2) | px_u1)
-
-            r, g, b, alpha = 0, 0, 0, px_mask
+            r, g, b, alpha = px.unknown1, px.unknown2, 0, 0
 
             # array_data[y, x] = (r, g, b, alpha)
             array_data[y, x, 0] = r

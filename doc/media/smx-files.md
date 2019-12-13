@@ -21,7 +21,7 @@ The SMX file starts with a header:
 
 Length   | Type   | Description                 | Example
 ---------|--------|-----------------------------|--------
-4 bytes  | string | File descriptor             | SMPX
+4 bytes  | string | Signature                   | SMPX
 2 bytes  | int16  | probably version            | 2, 0x0002 (for almost all units, some have 0x0001)
 2 bytes  | int16  | Number of frames            | 961, 0x03C1
 4 bytes  | int32  | File size SMX (this file)   | 2706603, 0x000294CAB (size without header)
@@ -216,8 +216,7 @@ The 4plus1 compression method stores the data of 4 pixels in a
 Information lost (compared to [SMP pixel](smp-files.md#smp-pixel)):
 
 * `palette_index`: instead stored in SMX Bundle Header
-* `px_damage_mask_1`: completely removed
-* `px_damage_mask_2`: completely removed
+* `px_damage_modifier`: completely removed
 
 Length   | Type   | Description                  | Example
 ---------|--------|------------------------------|--------
@@ -237,7 +236,7 @@ Bit index | Description
 0-1       | Palette section `pixel3`
 
 This compression method is used for anything that does
-not require the damage mask values (basically everything that is
+not require the damage modifier values (basically everything that is
 not a building).
 
 
@@ -276,12 +275,12 @@ Value                       | Bit indices
 ----------------------------|------------
 `pixel0` palette index      | 0-7
 `pixel0` palette section    | 14-15
-`pixel0` damage mask 1      | 16-19
-`pixel0` damage mask 2      | 26-31
+`pixel0` damage modifier 1  | 16-19
+`pixel0` damage modifier 2  | 26-31
 `pixel1` palette index      | 22-23, 8-13
 `pixel1` palette section    | 20-21
-`pixel1` damage mask 1      | 38-39,24-25
-`pixel1` damage mask 2      | 32-37
+`pixel1` damage modifier 1  | 38-39,24-25
+`pixel1` damage modifier 2  | 32-37
 
 While this might look confusing at first, the two pixels can be easily
 extracted. If you look closely, you will notice that the bit positions

@@ -39,10 +39,10 @@ cdef enum pixel_type:
 # One SMP pixel.
 cdef struct pixel:
     pixel_type type
-    uint8_t index       # index in a palette section
-    uint8_t palette     # palette number and palette section
-    uint8_t unknown1    # ???
-    uint8_t unknown2    # masking for damage?
+    uint8_t index               # index in a palette section
+    uint8_t palette             # palette number and palette section
+    uint8_t damage_modifier_1   # modifier for damage (part 1)
+    uint8_t damage_modifier_2   # modifier for damage (part 2)
 
 
 class SMP:
@@ -52,17 +52,17 @@ class SMP:
     """
 
     # struct smp_header {
-    #   char file_descriptor[4];
-    #   ??? 4 bytes;
-    #   int frame_count;
-    #   ??? 4 bytes;
-    #   ??? 4 bytes;
-    #   unsigned int unknown_offset_1;
+    #   char         signature[4];
+    #   ??           4 bytes;
+    #   unsigned int frame_count;
+    #   unsigned int animations_count;
+    #   unsigned int frames_per_animation;
+    #   unsigned int checksum;
     #   unsigned int file_size;
-    #   ??? 4 bytes;
-    #   char comment[32];
+    #   unsigned int version;
+    #   char         comment[32];
     # };
-    smp_header = Struct(endianness + "4s i i i i I i I 32s")
+    smp_header = Struct(endianness + "4s 7I 32s")
 
     # struct smp_frame_bundle_offset {
     #   unsigned int frame_info_offset;
@@ -89,12 +89,15 @@ class SMP:
 
     def __init__(self, data):
         smp_header = SMP.smp_header.unpack_from(data)
-        _, _, frame_count, _, _, _, file_size, _, comment = smp_header
+        signature, _, frame_count, animations_count, frames_per_animation,\
+            checksum, file_size, _, comment = smp_header
 
         dbg("SMP")
-        dbg(" frame count: %s", frame_count)
-        dbg(" file size:   %s B", file_size)
-        dbg(" comment:     %s", comment.decode('ascii'))
+        dbg(" frame count:          %s", frame_count)
+        dbg(" animation count:      %s", animations_count)
+        dbg(" frames per animation: %s", frames_per_animation)
+        dbg(" file size:            %s B", file_size)
+        dbg(" comment:              %s", comment.decode('ascii'))
 
         # Frame bundles store main graohic, shadow and outline headers
         frame_bundle_offsets = list()
@@ -740,7 +743,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 # main graphics table
                 r, g, b, alpha = m_lookup[index]
 
-                # TODO: alpha values are unused
+                # alpha values are unused
                 # in 0x0C and 0x0B version of SMPs
                 alpha = 255
 
@@ -787,8 +790,6 @@ cdef (uint8_t,uint8_t) get_palette_info(pixel image_pixel):
 cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     """
     converts a palette index image matrix to an alpha matrix.
-
-    TODO: figure out how this works exactly
     """
 
     cdef size_t height = image_matrix.size()
@@ -797,7 +798,6 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     cdef numpy.ndarray[numpy.uint8_t, ndim=3] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
-
     cdef uint8_t r
     cdef uint8_t g
     cdef uint8_t b
@@ -805,9 +805,6 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
 
     cdef vector[pixel] current_row
     cdef pixel px
-    cdef uint8_t px_u1
-    cdef uint8_t px_u2
-    cdef uint8_t px_mask
 
     cdef size_t x
     cdef size_t y
@@ -818,13 +815,8 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
 
         for x in range(width):
             px = current_row[x]
-            px_u1 = px.unknown1
-            px_u2 = px.unknown2
 
-            # TODO: Correct the darkness here
-            px_mask = ((px_u2 << 2) | px_u1)
-
-            r, g, b, alpha = 0, 0, 0, px_mask
+            r, g, b, alpha = px.unknown1, px.unknown2, 0, 0
 
             # array_data[y, x] = (r, g, b, alpha)
             array_data[y, x, 0] = r
