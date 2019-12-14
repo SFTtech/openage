@@ -22,75 +22,79 @@ The SMP file starts with a header:
 Length   | Type   | Description          | Example
 ---------|--------|----------------------|--------
 4 bytes  | string | Signature            | SMP$
-4 bytes  | uint32 | Version?             | 256, 0x00000100
+4 bytes  | uint32 | Version              | 0x00000100
 4 bytes  | uint32 | Number of frames     | 721, 0x000002D1
-4 bytes  | uint32 | Number of animations | 1, 0x0000001 (almost always 0x00000001)
-4 bytes  | uint32 | Frames per animation | 721, 0x000002D1 (0x00000001 for version 0x0B)
+4 bytes  | uint32 | Number of facets     | 1, 0x0000001 (almost always 0x00000001)
+4 bytes  | uint32 | Frames per facet     | 721, 0x000002D1
 4 bytes  | uint32 | possibly checksum    | 0x8554F6F3
 4 bytes  | uint32 | File size in bytes   | 0x003D5800
-4 bytes  | uint32 | Other Version?       | 0x0B or 0x0C
+4 bytes  | uint32 | Source format        | 0x0B (SLP) or 0x0C (PSD)
 32 bytes | string | Comment              | Apparently the file path on FE's machines
 
 
 ```cpp
 struct smp_header {
   char   signature[4];
-  uint32 ??;
+  uint32 version;
   uint32 num_frames;
   uint32 num_animations;
   uint32 frames_per_animation;
   uint32 checksum;
   uint32 file_size;
-  uint32 version;
+  uint32 source_format;
   char   comment[32];
 };
 ```
 Python format: `Struct("< 4s 7I 32s")`
 
+Remarks:
 
-### SMP Bundle Offsets
+* *Source format* refers to the format of the file used as input for the
+official asset conversion tool `DEAssetTool.exe` when creating the SMP.
 
-SMP frames come in bundles that can consist of up to 3 images. The images
-contain the following data:
+### SMP Frame Offsets
 
-* main sprite
-* shadow for that sprite (optional)
-* outline (optional, only used for units)
+SMP frames can have up to 3 layers.
 
-After the header, there are `num_frames` entries of `smp_bundle_offset`.
-Every `smp_bundle_offset` stores the offset to a bundle within the SMP
+* main graphic layer
+* shadow layer (optional)
+* outline layer (optional)
+
+After the file header, there are `num_frames` entries of `smp_frame_offset`.
+Every `smp_frame_offset` stores the offset to a frame within the SMP
 file.
 
 ```cpp
-struct smp_bundle_offset {
+struct smp_frame_offset {
   uint32 offset;
 }
 ```
 Python format: `Struct("< I")`
 
 
-### SMP Bundle header
+### SMP Frame Header
 
-At every `smp_bundle_offset` there is a 32 bytes long bundle header
-that stores how many images exist for the frame in a 4 byte length
+At every `smp_frame_offset` there is a 32 bytes long frame header
+that stores the number of layers for the frame in a 4 byte length
 field at the end.
 
 ```cpp
-struct smp_bundle_offset {
-  28 bytes unused; # stores frame header info in 0x0B SMP version
+struct smp_frame_header {
+  28 bytes unused; # stores frame header info for source_format = 0x0B
   uint32   length;
 }
 ```
 
-In version 0x0B, the bundle header has the same structure as the frame
-headers (see below), except that `outline_table_offset` and
-`cmd_table_offset` and `frame_type` are set to zero. In version
-0x0C, all fields except the length fiield are set to zero.
+SMPs converted from SLPs (source format 0x0B), the frame header has
+the same structure as the layer headers (see below), except that
+`outline_table_offset` and `cmd_table_offset` are set to zero.
+For SMPs created from PSD files, all fields except the length field
+are set to zero.
 
 
-### SMP Frame Header
+### SMP Layer Header
 
-After the bundle header, there are `length` entries of `smp_frame_header`.
+After the frame header, there are `length` entries of `smp_layer_header`.
 These struct are similar to the SLP Frame Info struct in that they store
 metadata about the frame.
 
@@ -100,18 +104,18 @@ Length   | Type   | Description                | Example
 4 bytes  | uint32 | Height of image            | 145, 0x00000091
 4 bytes  | uint32 | Centre of sprite (X coord) | 88, 0x00000058
 4 bytes  | uint32 | Centre of sprite (Y coord) | 99, 0x00000063
-4 bytes  | uint32 | Frame type                 | 0x02, 0x04 or 0x08
+4 bytes  | uint32 | Layer type                 | 0x02, 0x04 or 0x08
 4 bytes  | uint32 | Outline table offset       | 600, 0x00000258
 4 bytes  | uint32 | Command table offset       | 0, 0x00000000
 4 bytes  | uint32 | Flags                      | 0x01, 0x02 or 0x80
 
 ```cpp
-struct smp_frame_header {
+struct smp_layer_header {
   uint32 width;
   uint32 height;
   uint32 hotspot_x;
   uint32 hotspot_y;
-  uint32 frame_type;
+  uint32 layer_type;
   uint32 outline_table_offset;
   uint32 cmd_table_offset;
   uint32 flags;
@@ -119,15 +123,17 @@ struct smp_frame_header {
 ```
 Python format: `Struct("< 8I")`
 
-* Frame types can be `0x02` (main graphic), `0x04` (shadow) or `0x08`
-(outline). In version 0x0B, outlines have a different frame type: `0x10`.
-* Outline and command table offsets **are always relative to the bundle offset**.
+Remarks:
+
+* Layer types can be `0x02` (main graphic), `0x04` (shadow) or `0x08`
+(outline). In SMPs with source format 0x0B, outlines use a different layer type: `0x10`.
+* Outline and command table offsets **are always relative to the frame offset**.
 
 
-### SMP Frame row edge
+### SMP Layer Row Edge
 
-At `outline_table_offset` (after the `smp_frame_header` structs), an array of
-`smp_frame_row_edge` (of length `height`) structs begins.
+At `outline_table_offset` (after the `smp_layer_header` structs), an array of
+`smp_layer_row_edge` (of length `height`) structs begins.
 
 Length   | Type   | Description   | Example
 ---------|--------|---------------|-----------
@@ -135,7 +141,7 @@ Length   | Type   | Description   | Example
 2 bytes  | uint16 | Right spacing | 3, 0x0003
 
 ```cpp
-struct smp_frame_row_edge {
+struct smp_layer_row_edge {
   uint16 left_space;
   uint16 right_space;
 };
@@ -144,20 +150,20 @@ Python format: `Struct("< H H")`
 
 For every row, `left_space` and `right_space` specify the number of transparent
 pixels, from each side to the center. For example, in a 50 pixels wide row, with
-a `smp_frame_row_edge` of `{ .left_space = 20, .right_space = 3 }`, the leftmost
+a `smp_layer_row_edge` of `{ .left_space = 20, .right_space = 3 }`, the leftmost
 20 pixels will be transparent, the rightmost 3 will be transparent and there
 will be 27 pixels of graphical data provided through some number of commands.
 
 If the right or left value is `0xFFFF`, the row is completely transparent.
-Note that there are no command bytes for these rows, so will have to be skipped
+Note that there are no command bytes for these rows, so it has to be skipped
 "manually".
 
 `width - left_space - right_space` = number of pixels in this line.
 
 
-### SMP command table
+### SMP Command Table
 
-At `smp_frame_header.cmd_table_offset`, an array of
+At `smp_layer_header.cmd_table_offset`, an array of
 uint32 (of length `height`) begins:
 
 ```cpp
@@ -169,7 +175,7 @@ Python format: `Struct("< I")`
 
 Each `offset` defines the offset (beginning) of the first command of a row.
 The first `offset` in this array is the first drawing command for the image.
-All offsets are relative to their respective `smp_bundle_offset`.
+All offsets are relative to their respective `smp_frame_offset`.
 
 These are not actually necessary to use (but obviously are necessary to read),
 since the commands can be read sequentially, although they can be used for
@@ -178,7 +184,7 @@ validation purposes.
 
 ### SMP drawing commands
 
-The image is drawn line by line, a line is finished with the "End of line"
+The image is drawn line by line, a line is finished with the *End of Row*
 command (0x03). A command is a one-byte number (`cmd_byte`), followed
 by command-specific data with a length (number of pixels) varying
 depending on the command. The next command immediately follows the
@@ -195,15 +201,15 @@ Each command triggers a drawing method for n = "Count" pixels.
 For examples of drawing commands, see the [Examples](#examples) section.
 
 
-### Full command list
+### Full Command List
 
 An `X` signifies that the bit can have any value. These bits are used for
 storing the length (pixel count) of the command.
 
-The commands works slightly different for each frame type.
+The commands works slightly different for each layer type.
 
 
-#### Main graphics type
+#### Main Graphics type
 
 Command Name     | Byte value    | Pixel Count              | Description
 -----------------|---------------|--------------------------|------------
@@ -224,9 +230,9 @@ Skip             | `0bXXXXXX00`  | `(cmd_byte >> 2) + 1`    | *Count* transparen
 Draw             | `0bXXXXXX01`  | `(cmd_byte >> 2) + 1`    | An array of length `pixel_count * 4` bytes filled with 1-byte alpha values follows.
 End of Row       | `0bXXXXXX11`  | 0                        | End of commands for this row. If more commands follow, they are for the next row.
 
-* Shadow frames (frame type `0x04`) sometimes do not explicitely draw the last
+* Shadow layers (layer type `0x04`) sometimes do not explicitely draw the last
 pixel in a row. If that happens, the openage converter draws the last *Draw* command
-again
+again.
 
 
 #### Outline type
@@ -244,7 +250,7 @@ always uses the color from index 0 in the player color palette for these *Draw* 
 ### SMP Pixel
 
 SMP pixels store a palette index, palette number and section as well
-as occlusion masks.
+as a modifier for darkening the pixel if the corresponding unit is damaged.
 
 Length   | Type   | Description                | Example
 ---------|--------|----------------------------|--------
@@ -340,7 +346,8 @@ behaviour is hardcoded into the game and cannot be changed.
 * Adding `0.5` to `temp` is not strictly necessary, but will solve problems with
 floating point rounding errors.
 * The three `damage_window_X_Y` values represent how far health of a building
-has gone down relative to a health interval between `X` and `Y` (both representing percentages of health left). For example, if the building is currently at 70% health,
+has gone down relative to a health interval between `X` and `Y` (both representing
+percentages of health left). For example, if the building is currently at 70% health,
 then we have progressed by 60% in the health interval that monitors 99% to 50% health.
 Therefore, `damage_window_99_to_50` would be `0.6`.
 
