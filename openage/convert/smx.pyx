@@ -39,10 +39,10 @@ cdef enum pixel_type:
 # One uncompressed SMP pixel.
 cdef struct pixel:
     pixel_type type
-    uint8_t index       # index in a palette section
-    uint8_t palette     # palette number and palette section
-    uint8_t unknown1    # ???
-    uint8_t unknown2    # masking for damage?
+    uint8_t index               # index in a palette section
+    uint8_t palette             # palette number and palette section
+    uint8_t damage_modifier_1   # modifier for damage (part 1)
+    uint8_t damage_modifier_2   # modifier for damage (part 2)
 
 
 class SMX:
@@ -52,8 +52,8 @@ class SMX:
     """
 
     # struct smx_header {
-    #   char[4] file_descriptor;
-    #   ???            2 bytes; version?
+    #   char[4]        signature;
+    #   unsigned short version;
     #   unsigned short frame_count;
     #   unsigned int   file_size_comp;
     #   unsigned int   file_size_uncomp;
@@ -61,79 +61,79 @@ class SMX:
     # };
     smx_header = Struct(endianness + "4s H H I I 16s")
 
-    # struct smx_frame_header_head {
-    #   unsigned char  frame_type;
-    #   unsigned char  palette_index;
-    #   ???            4 bytes;
+    # struct smx_frame_header {
+    #   unsigned char frame_type;
+    #   unsigned char palette_index;
+    #   unsigned int  uncomp_size;
     # };
-    smx_frame_header_head = Struct(endianness + "B B i")
+    smx_frame_header = Struct(endianness + "B B I")
 
-    # struct smx_frame_header_body {
+    # struct smx_layer_header {
     #   unsigned short width;
     #   unsigned short height;
     #   unsigned short hotspot_x;
     #   unsigned short hotspot_y;
     #   unsigned int   distance_next_frame;
-    #   ???            2 bytes;
-    #   ???            2 bytes;
+    #   int            4 bytes;
     # };
-    smx_frame_header_body = Struct(endianness + "H H H H I h h")
+    smx_layer_header = Struct(endianness + "H H H H I i")
 
     def __init__(self, data):
         """
-        Read SMX image file.
+        Read an SMX image file.
 
         :param data: File content as bytes.
         :type data: bytes, bytearray
         """
 
         smx_header = SMX.smx_header.unpack_from(data)
-        self.smp_type, _, frame_count, file_size_comp, file_size_uncomp, comment = smx_header
+        self.smp_type, version, frame_count, file_size_comp,\
+            file_size_uncomp, comment = smx_header
 
         dbg("SMX")
         dbg(" frame count:              %s",   frame_count)
-        dbg(" file size compressed:     %s B", file_size_comp + 0x20)   # 0x20 = header size
-        dbg(" file size uncompressed:   %s B", file_size_uncomp + 0x80) # 0x80 = header size
+        dbg(" file size compressed:     %s B", file_size_comp + 0x20)   # 0x20 = SMX header size
+        dbg(" file size uncompressed:   %s B", file_size_uncomp + 0x40) # 0x80 = SMP header size
         dbg(" comment:                  %s",   comment.decode('ascii'))
 
         # SMP graphic frames are created from overlaying
-        # the main graphic frame with a shadow frame and
-        # and (for units) an outline frame
+        # the main graphic frame with a shadow layer and
+        # and (for units) an outline layer
         self.main_frames = list()
         self.shadow_frames = list()
         self.outline_frames = list()
 
-        spam(SMXFrameHeader.repr_header())
+        spam(SMXLayerHeader.repr_header())
 
         # SMX files have no offsets, we have to calculate them
         current_offset = SMX.smx_header.size
         for i in range(frame_count):
-            frame_header_head = SMX.smx_frame_header_head.unpack_from(
+            frame_header = SMX.smx_frame_header.unpack_from(
                 data, current_offset)
 
-            bundle_type , palette_number, _ = frame_header_head
+            frame_type , palette_number, _ = frame_header
 
-            current_offset += SMX.smx_frame_header_head.size
+            current_offset += SMX.smx_frame_header.size
 
-            frame_types = []
+            layer_types = []
 
-            if bundle_type & 0x01:
-                frame_types.append("main")
+            if frame_type & 0x01:
+                layer_types.append("main")
 
-            if bundle_type & 0x02:
-                frame_types.append("shadow")
+            if frame_type & 0x02:
+                layer_types.append("shadow")
 
-            if bundle_type & 0x04:
-                frame_types.append("outline")
+            if frame_type & 0x04:
+                layer_types.append("outline")
 
-            for frame_type in frame_types:
-                frame_header_body = SMX.smx_frame_header_body.unpack_from(
+            for layer_type in layer_types:
+                layer_header_data = SMX.smx_layer_header.unpack_from(
                     data, current_offset)
 
-                width, height, hotspot_x, hotspot_y, \
-                    distance_next_frame, _, _ = frame_header_body
+                width, height, hotspot_x, hotspot_y,\
+                    distance_next_frame, _ = layer_header_data
 
-                current_offset += SMX.smx_frame_header_body.size
+                current_offset += SMX.smx_layer_header.size
 
                 outline_table_offset = current_offset
 
@@ -144,7 +144,7 @@ class SMX:
                 current_offset += 4
 
                 # Read length of color table
-                if frame_type == "main":
+                if layer_type == "main":
                     qdl_color_table_size = Struct("< I").unpack_from(data, current_offset)[0]
                     current_offset += 4
                     qdl_color_table_offset = current_offset + qdl_command_array_size
@@ -156,31 +156,30 @@ class SMX:
                 qdl_command_table_offset = current_offset
                 current_offset += qdl_color_table_size + qdl_command_array_size
 
-                frame_header = SMXFrameHeader(frame_type, bundle_type,
+                layer_header = SMXLayerHeader(layer_type, frame_type,
                                               palette_number,
                                               width, height, hotspot_x,
                                               hotspot_y, outline_table_offset,
                                               qdl_command_table_offset,
                                               qdl_color_table_offset)
 
-                if frame_type == "main":
-                    if frame_header.compression_type == 0x08:
-                        self.main_frames.append(SMXMainFrame8to5(frame_header, data))
+                if layer_type == "main":
+                    if layer_header.compression_type == 0x08:
+                        self.main_frames.append(SMXMainLayer8to5(layer_header, data))
 
-                    elif frame_header.compression_type == 0x00:
-                        self.main_frames.append(SMXMainFrame4plus1(frame_header, data))
+                    elif layer_header.compression_type == 0x00:
+                        self.main_frames.append(SMXMainLayer4plus1(layer_header, data))
 
-                elif frame_type == "shadow":
-                    self.shadow_frames.append(SMXShadowFrame(frame_header, data))
+                elif layer_type == "shadow":
+                    self.shadow_frames.append(SMXShadowLayer(layer_header, data))
 
-                elif frame_type == "outline":
-                    self.outline_frames.append(SMXOutlineFrame(frame_header, data))
-
+                elif layer_type == "outline":
+                    self.outline_frames.append(SMXOutlineLayer(layer_header, data))
 
     def __str__(self):
         ret = list()
 
-        ret.extend([repr(self), "\n", SMXFrameHeader.repr_header(), "\n"])
+        ret.extend([repr(self), "\n", SMXLayerHeader.repr_header(), "\n"])
         for frame in self.frames:
             ret.extend([repr(frame), "\n"])
         return "".join(ret)
@@ -190,28 +189,28 @@ class SMX:
         return "%s image<%d frames>" % (self.smp_type, len(self.main_frames))
 
 
-class SMXFrameHeader:
-    def __init__(self, frame_type, bundle_type,
+class SMXLayerHeader:
+    def __init__(self, layer_type, frame_type,
                  palette_number,
                  width, height, hotspot_x, hotspot_y,
                  outline_table_offset,
                  qdl_command_table_offset,
                  qdl_color_table_offset):
         """
-        Store the header of a frame.
+        Stores the header of a layer including additional info about its frame.
 
-        :param frame_type: Type of frame. Either main. shadow or outline.
-        :param bundle_type: Type of the bundle the frame is part of.
+        :param layer_type: Type of layer. Either main. shadow or outline.
+        :param frame_type: Type of the frame the layer belongs to.
         :param palette_number: Palette number used for pixels in the frame.
-        :param width: Width of frame in pixels.
-        :param height: Heught of frame in pixels.
+        :param width: Width of layer in pixels.
+        :param height: Height of layer in pixels.
         :param hotspot_x: x coordinate of the hotspot used for anchoring.
         :param hotspot_y: y coordinate of the hotspot used for anchoring.
-        :param outline_table_offset: Absolute position of the frame's outline table in the file.
-        :param qdl_command_table_offset: Absolute position of the frame's command table in the file.
-        :param qdl_color_table_offset: Absolute position of the frame's pixel data table in the file.
-        :type frame_type: str
-        :type bundle_type: int
+        :param outline_table_offset: Absolute position of the layer's outline table in the file.
+        :param qdl_command_table_offset: Absolute position of the layer's command table in the file.
+        :param qdl_color_table_offset: Absolute position of the layer's pixel data table in the file.
+        :type layer_type: str
+        :type frame_type: int
         :type palette_number: int
         :type width: int
         :type height: int
@@ -225,9 +224,9 @@ class SMXFrameHeader:
         self.size = (width, height)
         self.hotspot = (hotspot_x, hotspot_y)
 
+        self.layer_type = layer_type
         self.frame_type = frame_type
-        self.bundle_type = bundle_type
-        self.compression_type = bundle_type & 8
+        self.compression_type = frame_type & 8
         self.palette_number = palette_number
 
         self.outline_table_offset = outline_table_offset
@@ -236,13 +235,13 @@ class SMXFrameHeader:
 
     @staticmethod
     def repr_header():
-        return ("frame type | width x height | "
+        return ("layer type | width x height | "
                 "hotspot x/y | "
                 )
 
     def __repr__(self):
         ret = (
-            "% s | " % self.frame_type,
+            "% s | " % self.layer_type,
             "% 5d x% 7d | " % self.size,
             "% 4d /% 5d | " % self.hotspot,
             "% 13d | " % self.outline_table_offset,
@@ -252,24 +251,18 @@ class SMXFrameHeader:
         return "".join(ret)
 
 
-cdef class SMXFrame:
+cdef class SMXLayer:
     """
-    one image inside the compressed SMP. you can imagine it as a
-    frame of a video.
+    one layer inside the compressed SMP.
     """
 
-    # struct smp_frame_row_edge {
+    # struct smp_layer_row_edge {
     #   unsigned short left_space;
     #   unsigned short right_space;
     # };
-    smp_frame_row_edge = Struct(endianness + "H H")
+    smp_layer_row_edge = Struct(endianness + "H H")
 
-    # struct smp_command_offset {
-    #   unsigned int offset;
-    # }
-    smp_command_offset = Struct(endianness + "I")
-
-    # frame information
+    # layer and frame information
     cdef object info
 
     # for each row:
@@ -282,20 +275,20 @@ cdef class SMXFrame:
     # memory pointer
     cdef const uint8_t *data_raw
 
-    def __init__(self, frame_header, data):
+    def __init__(self, layer_header, data):
         """
-        SMX frame definition superclass. There can be various types of
-        frame in an SMX file.
+        SMX layer definition superclass. There can be various types of
+        layers inside an SMX frame.
 
-        :param frame_header: Header definition of the frame.
+        :param layer_header: Header definition of the layer.
         :param data: File content as bytes.
-        :type frame_header: FrameHeader
+        :type layer_header: SMXLayerHeader
         :type data: bytes, bytearray
         """
-        self.info = frame_header
+        self.info = layer_header
 
         if not (isinstance(data, bytes) or isinstance(data, bytearray)):
-            raise ValueError("Frame data must be some bytes object")
+            raise ValueError("Layer data must be some bytes object")
 
         # convert the bytes obj to char*
         self.data_raw = data
@@ -307,9 +300,9 @@ cdef class SMXFrame:
         # process bondary table
         for i in range(row_count):
             outline_entry_position = (self.info.outline_table_offset +
-                                      i * SMXFrame.smp_frame_row_edge.size)
+                                      i * SMXLayer.smp_layer_row_edge.size)
 
-            left, right = SMXFrame.smp_frame_row_edge.unpack_from(
+            left, right = SMXLayer.smp_layer_row_edge.unpack_from(
                 data, outline_entry_position
             )
 
@@ -336,9 +329,9 @@ cdef class SMXFrame:
         """
         Extract colors (pixels) for the given rowid.
 
-        :param rowid: Index of the current row in the frame.
-        :param cmd_offset: Offset of the command table of the frame.
-        :param color_offset: Offset of the color table of the frame.
+        :param rowid: Index of the current row in the layer.
+        :param cmd_offset: Offset of the command table of the layer.
+        :param color_offset: Offset of the color table of the layer.
         :param chunk_pos: Current position in the compressed chunk.
         """
 
@@ -380,8 +373,8 @@ cdef class SMXFrame:
         # verify size of generated row
         if row_data.size() != pixel_count:
             got = row_data.size()
-            summary = "%d/%d -> row %d, frame type %d, offset %d / %#x" % (
-                got, pixel_count, rowid, self.info.frame_type,
+            summary = "%d/%d -> row %d, layer type %d, offset %d / %#x" % (
+                got, pixel_count, rowid, self.info.layer_type,
                 first_cmd_offset, first_cmd_offset
                 )
             txt = "got %%s pixels than expected: %s, missing: %d" % (
@@ -398,11 +391,11 @@ cdef class SMXFrame:
                                     int chunk_pos,
                                     size_t expected_size):
         """
-        Extracts pixel data from the frame data. Every frame type uses
+        Extracts pixel data from the layer data. Every layer type uses
         its own implementation for better optimization.
 
         :param row_data: Pixel data is appended to this array.
-        :param rowid: Index of the current row in the frame.
+        :param rowid: Index of the current row in the layer.
         :param first_cmd_offset: Offset of the first command of the current row.
         :param first_color_offset: Offset of the first pixel data value of the current row.
         :param chunk_pos: Current position in the compressed chunk.
@@ -434,18 +427,18 @@ cdef class SMXFrame:
 
     def get_hotspot(self):
         """
-        Return the frame's hotspot (the "center" of the image).
+        Return the layer's hotspot (the "center" of the image).
 
-        :return: Hotspot of the frame.
+        :return: Hotspot of the layer.
         :rtype: tuple
         """
         return self.info.hotspot
 
     def get_palette_number(self):
         """
-        Return the frame's palette number.
+        Return the layer's palette number.
 
-        :return: Palette number of the frame.
+        :return: Palette number of the layer.
         :rtype: int
         """
         return self.info.palette_number
@@ -454,12 +447,13 @@ cdef class SMXFrame:
         return repr(self.info)
 
 
-cdef class SMXMainFrame8to5(SMXFrame):
+cdef class SMXMainLayer8to5(SMXLayer):
     """
-    Compressed SMP frame (compression type 8to5) for the main graphics sprite.
+    Compressed SMP layer (compression type 8to5) for the main graphics sprite.
     """
-    def __init__(self, frame_header, data):
-        super().__init__(frame_header, data)
+
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
     cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
@@ -507,10 +501,10 @@ cdef class SMXMainFrame8to5(SMXFrame):
             if row_data.size() > expected_size:
                 raise Exception(
                     "Only %d pixels should be drawn in row %d "
-                    "with frame type %d, but we have %d "
+                    "with layer type %d, but we have %d "
                     "already!" % (
                         expected_size, rowid,
-                        self.info.frame_type,
+                        self.info.layer_type,
                         row_data.size()
                     )
                 )
@@ -570,7 +564,7 @@ cdef class SMXMainFrame8to5(SMXFrame):
                         pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
 
                         # Damage mask 2. Described in byte[4] in bits 0-5.
-                        pixel_data.push_back((pixel_data_odd_3 >> 2) & 0xFD)
+                        pixel_data.push_back((pixel_data_odd_3 >> 2) & 0x1F)
 
                         row_data.push_back(pixel(color_standard,
                                                  pixel_data[0],
@@ -627,7 +621,7 @@ cdef class SMXMainFrame8to5(SMXFrame):
                         pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
 
                         # Damage modifier 2. Described in byte[4] in bits 0-5.
-                        pixel_data.push_back((pixel_data_odd_3 >> 2) & 0xFD)
+                        pixel_data.push_back((pixel_data_odd_3 >> 2) & 0x1F)
 
                         row_data.push_back(pixel(color_player,
                                                  pixel_data[0],
@@ -654,7 +648,7 @@ cdef class SMXMainFrame8to5(SMXFrame):
 
             else:
                 raise Exception(
-                    "unknown smp main frame drawing command: " +
+                    "unknown smx main graphics layer drawing command: " +
                     "%#x in row %d" % (cmd, rowid))
 
             # Process next command
@@ -663,12 +657,13 @@ cdef class SMXMainFrame8to5(SMXFrame):
         return dpos_cmd, dpos_color, odd, row_data
 
 
-cdef class SMXMainFrame4plus1(SMXFrame):
+cdef class SMXMainLayer4plus1(SMXLayer):
     """
-    Compressed SMP frame (compression type 4plus1) for the main graphics sprite.
+    Compressed SMP layer (compression type 4plus1) for the main graphics sprite.
     """
-    def __init__(self, frame_header, data):
-        super().__init__(frame_header, data)
+
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
     cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
@@ -703,10 +698,10 @@ cdef class SMXMainFrame4plus1(SMXFrame):
             if row_data.size() > expected_size:
                 raise Exception(
                     "Only %d pixels should be drawn in row %d "
-                    "with frame type %d, but we have %d "
+                    "with layer type %d, but we have %d "
                     "already!" % (
                         expected_size, rowid,
-                        self.info.frame_type,
+                        self.info.layer_type,
                         row_data.size()
                     )
                 )
@@ -794,7 +789,7 @@ cdef class SMXMainFrame4plus1(SMXFrame):
 
             else:
                 raise Exception(
-                    "unknown smp main frame drawing command: " +
+                    "unknown smx main graphics layer drawing command: " +
                     "%#x in row %d" % (cmd, rowid))
 
             # Process next command
@@ -803,12 +798,13 @@ cdef class SMXMainFrame4plus1(SMXFrame):
         return dpos_cmd, dpos_color, dpos_chunk, row_data
 
 
-cdef class SMXShadowFrame(SMXFrame):
+cdef class SMXShadowLayer(SMXLayer):
     """
-    Compressed SMP for the shadow graphics.
+    Compressed SMP layer for the shadow graphics.
     """
-    def __init__(self, frame_header, data):
-        super().__init__(frame_header, data)
+
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
     cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
@@ -818,7 +814,7 @@ cdef class SMXShadowFrame(SMXFrame):
                                     size_t expected_size):
         """
         extract colors (pixels) for the drawing commands
-        found for this row in the SMX frame.
+        found for this row in the SMX layer.
         """
         # position in the data blob, we start at the first command of this row
         cdef Py_ssize_t dpos = first_cmd_offset
@@ -836,10 +832,10 @@ cdef class SMXShadowFrame(SMXFrame):
             if row_data.size() > expected_size:
                 raise Exception(
                     "Only %d pixels should be drawn in row %d "
-                    "with frame type %d, but we have %d "
+                    "with layer type %d, but we have %d "
                     "already!" % (
                         expected_size, rowid,
-                        self.info.frame_type,
+                        self.info.layer_type,
                         row_data.size()
                     )
                 )
@@ -895,7 +891,7 @@ cdef class SMXShadowFrame(SMXFrame):
 
             else:
                 raise Exception(
-                    "unknown smp shadow frame drawing command: " +
+                    "unknown smp shadow layer drawing command: " +
                     "%#x in row %d" % (cmd, rowid))
 
             # process next command
@@ -905,12 +901,13 @@ cdef class SMXShadowFrame(SMXFrame):
         return dpos, dpos, chunk_pos, row_data
 
 
-cdef class SMXOutlineFrame(SMXFrame):
+cdef class SMXOutlineLayer(SMXLayer):
     """
-    Compressed SMPFrame for the outline graphics.
+    Compressed SMP layer for the outline graphics.
     """
-    def __init__(self, frame_header, data):
-        super().__init__(frame_header, data)
+
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
     cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
@@ -920,7 +917,7 @@ cdef class SMXOutlineFrame(SMXFrame):
                                     size_t expected_size):
         """
         extract colors (pixels) for the drawing commands
-        found for this row in the SMX frame.
+        found for this row in the SMX layer.
         """
         # position in the data blob, we start at the first command of this row
         cdef Py_ssize_t dpos = first_cmd_offset
@@ -938,10 +935,10 @@ cdef class SMXOutlineFrame(SMXFrame):
             if row_data.size() > expected_size:
                 raise Exception(
                     "Only %d pixels should be drawn in row %d "
-                    "with frame type %d, but we have %d "
+                    "with layer type %d, but we have %d "
                     "already!" % (
                         expected_size, rowid,
-                        self.info.frame_type,
+                        self.info.layer_type,
                         row_data.size()
                     )
                 )
@@ -987,7 +984,7 @@ cdef class SMXOutlineFrame(SMXFrame):
 
             else:
                 raise Exception(
-                    "unknown smp outline frame drawing command: " +
+                    "unknown smp outline layer drawing command: " +
                     "%#x in row %d" % (cmd, rowid))
 
             # process next command
@@ -1008,6 +1005,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     :param main_palette: Color palette used for normal pixels in the sprite.
     :param player_palette: Color palette used for player color pixels in the sprite.
     """
+
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
@@ -1040,6 +1038,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
         for x in range(width):
             px = current_row[x]
+
             px_type = px.type
             px_index = px.index
             px_palette = px.palette
@@ -1097,10 +1096,11 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 @cython.wraparound(False)
 cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     """
-    converts a palette index image matrix to an alpha matrix.
+    converts the damage modifier values to an image using the RG values.
 
     :param image_matrix: A 2-dimensional array of SMP pixels.
     """
+
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
@@ -1125,7 +1125,7 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
         for x in range(width):
             px = current_row[x]
 
-            r, g, b, alpha = px.unknown1, px.unknown2, 0, 0
+            r, g, b, alpha = px.damage_modifier_1, px.damage_modifier_2, 0, 255
 
             # array_data[y, x] = (r, g, b, alpha)
             array_data[y, x, 0] = r

@@ -59,11 +59,11 @@ Which of these layers are present in a frame is determined by the value
 
 The frame header contains 3 values:
 
-Length   | Type   | Description                | Example
----------|--------|----------------------------|--------
-1 bytes  | uint8  | Frame Type                 | 3, 0b00000011 (bit field)
-1 bytes  | uint8  | Palette number             | 21, 0x15
-4 bytes  | uint32 | Uncompressed size          | 6272, 0x1880
+Length   | Type   | Description       | Example
+---------|--------|-------------------|--------
+1 bytes  | uint8  | Frame Type        | 3, 0b00000011 (bit field)
+1 bytes  | uint8  | Palette number    | 21, 0x15
+4 bytes  | uint32 | Uncompressed size | 6272, 0x1880
 
 ```cpp
 struct smx_frame_header {

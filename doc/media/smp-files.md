@@ -107,7 +107,7 @@ Length   | Type   | Description                | Example
 4 bytes  | uint32 | Layer type                 | 0x02, 0x04 or 0x08
 4 bytes  | uint32 | Outline table offset       | 600, 0x00000258
 4 bytes  | uint32 | Command table offset       | 0, 0x00000000
-4 bytes  | uint32 | Flags                      | 0x01, 0x02 or 0x80
+4 bytes  | uint32 | Flags                      | 0x01, 0x02, 0x80 or 0xA0
 
 ```cpp
 struct smp_layer_header {
@@ -313,7 +313,7 @@ at a maximum value.
 You can retrieve the multiplier by using this function:
 
 ```python
-calculate_rgb_multiplier(damage_modifier, current_damage_percent):
+def calculate_rgb_multiplier(damage_modifier, current_damage_percent):
     damage_window_99_to_50 = current_damage_percent * 2
     damage_window_74_to_25 = damage_window_99_to_50 - 0.5
     damage_window_49_to_0 =  damage_window_74_to_25 - 0.5
