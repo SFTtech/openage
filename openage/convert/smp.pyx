@@ -39,10 +39,10 @@ cdef enum pixel_type:
 # One SMP pixel.
 cdef struct pixel:
     pixel_type type
-    uint8_t index       # index in a palette section
-    uint8_t palette     # palette number and palette section
-    uint8_t unknown1    # ???
-    uint8_t unknown2    # masking for damage?
+    uint8_t index               # index in a palette section
+    uint8_t palette             # palette number and palette section
+    uint8_t damage_modifier_1   # modifier for damage (part 1)
+    uint8_t damage_modifier_2   # modifier for damage (part 2)
 
 
 class SMP:
@@ -52,111 +52,115 @@ class SMP:
     """
 
     # struct smp_header {
-    #   char file_descriptor[4];
-    #   ??? 4 bytes;
-    #   int frame_count;
-    #   ??? 4 bytes;
-    #   ??? 4 bytes;
-    #   unsigned int unknown_offset_1;
+    #   char         signature[4];
+    #   unsigned int version;
+    #   unsigned int frame_count;
+    #   unsigned int facet_count;
+    #   unsigned int frames_per_facet;
+    #   unsigned int checksum;
     #   unsigned int file_size;
-    #   ??? 4 bytes;
-    #   char comment[32];
+    #   unsigned int source_format;
+    #   char         comment[32];
     # };
-    smp_header = Struct(endianness + "4s i i i i I i I 32s")
+    smp_header = Struct(endianness + "4s 7I 32s")
 
-    # struct smp_frame_bundle_offset {
+    # struct smp_frame_header_offset {
     #   unsigned int frame_info_offset;
     # };
-    smp_frame_bundle_offset = Struct(endianness + "I")
+    smp_frame_header_offset = Struct(endianness + "I")
 
-    # struct smp_frame_bundle_size {
+    # struct smp_frame_header_size {
     #   padding 28 bytes;
-    #   int frame_bundle_size;
+    #   int frame_header_size;
     # };
-    smp_frame_bundle_size = Struct(endianness + "28x i")
+    smp_frame_header_size = Struct(endianness + "28x i")
 
-    # struct smp_frame_info {
+    # struct smp_layer_header {
     #   int          width;
     #   int          height;
     #   int          hotspot_x;
     #   int          hotspot_y;
-    #   int          frame_type;
+    #   int          layer_type;
     #   unsigned int outline_table_offset;
     #   unsigned int qdl_table_offset;
-    #   ??? 4 bytes;
+    #   ???          flags;
     # };
-    smp_frame_header = Struct(endianness + "i i i i I I I I")
+    smp_layer_header = Struct(endianness + "i i i i I I I I")
 
     def __init__(self, data):
         smp_header = SMP.smp_header.unpack_from(data)
-        _, _, frame_count, _, _, _, file_size, _, comment = smp_header
+        signature, version, frame_count, facet_count, frames_per_facet,\
+            checksum, file_size, source_format, comment = smp_header
 
         dbg("SMP")
-        dbg(" frame count: %s", frame_count)
-        dbg(" file size:   %s B", file_size)
-        dbg(" comment:     %s", comment.decode('ascii'))
+        dbg(" frame count:          %s", frame_count)
+        dbg(" facet count:          %s", facet_count)
+        dbg(" facets per animation: %s", frames_per_facet)
+        dbg(" file size:            %s B", file_size)
+        dbg(" source format:        %s", source_format)
+        dbg(" comment:              %s", comment.decode('ascii'))
 
-        # Frame bundles store main graohic, shadow and outline headers
-        frame_bundle_offsets = list()
+        # Frames store main graphic, shadow and outline layer headers
+        frame_header_offsets = list()
 
         # read offsets of the smp frames
         for i in range(frame_count):
-            frame_bundle_pointer = (SMP.smp_header.size +
-                                    i * SMP.smp_frame_bundle_offset.size)
+            frame_header_pointer = (SMP.smp_header.size +
+                                    i * SMP.smp_frame_header_offset.size)
 
-            frame_bundle_offset = SMP.smp_frame_bundle_offset.unpack_from(
-                data, frame_bundle_pointer)[0]
+            frame_header_offset = SMP.smp_frame_header_offset.unpack_from(
+                data, frame_header_pointer)[0]
 
-            frame_bundle_offsets.append(frame_bundle_offset)
+            frame_header_offsets.append(frame_header_offset)
 
         # SMP graphic frames are created from overlaying
-        # the main graphic frame with a shadow frame and
-        # and (for units) an outline frame
+        # the main graphic layer with a shadow layer and
+        # and (for units) an outline layer
         self.main_frames = list()
         self.shadow_frames = list()
         self.outline_frames = list()
 
-        spam(FrameHeader.repr_header())
+        spam(SMPLayerHeader.repr_header())
 
-        # read all smp_frame_bundle structs in a frame bundle
-        for bundle_offset in frame_bundle_offsets:
+        # read all smp_frame_header structs in a frame
+        for frame_offset in frame_header_offsets:
 
-            # how many frame headers are in the bundle
-            frame_bundle_size = SMP.smp_frame_bundle_size.unpack_from(
-                data, bundle_offset)[0]
+            # how many layer headers are in the frame
+            frame_header_size = SMP.smp_frame_header_size.unpack_from(
+                data, frame_offset)[0]
 
-            for i in range(1, frame_bundle_size + 1):
-                frame_header_offset = (bundle_offset +
-                                       i * SMP.smp_frame_header.size)
+            for i in range(1, frame_header_size + 1):
+                layer_header_offset = (frame_offset +
+                                       i * SMP.smp_layer_header.size)
 
-                frame_header = FrameHeader(*SMP.smp_frame_header.unpack_from(
-                    data, frame_header_offset), bundle_offset)
+                layer_header = SMPLayerHeader(*SMP.smp_layer_header.unpack_from(
+                    data, layer_header_offset), frame_offset)
 
-                if frame_header.frame_type == 0x02:
-                    # frame that store the main graphic
-                    self.main_frames.append(SMPMainFrame(frame_header, data))
+                if layer_header.layer_type == 0x02:
+                    # layer that store the main graphic
+                    self.main_frames.append(SMPMainLayer(layer_header, data))
 
-                elif frame_header.frame_type == 0x04:
-                    # frame that stores a shadow
-                    self.shadow_frames.append(SMPShadowFrame(frame_header, data))
+                elif layer_header.layer_type == 0x04:
+                    # layer that stores a shadow
+                    self.shadow_frames.append(SMPShadowLayer(layer_header, data))
 
-                elif frame_header.frame_type == 0x08 or \
-                     frame_header.frame_type == 0x10:
-                    # frame that stores an outline
-                    self.outline_frames.append(SMPOutlineFrame(frame_header, data))
+                elif layer_header.layer_type == 0x08 or \
+                     layer_header.layer_type == 0x10:
+                    # layer that stores an outline
+                    self.outline_frames.append(SMPOutlineLayer(layer_header, data))
 
                 else:
                     raise Exception(
-                    "unknown frame header type: " +
-                    "%h at offset %h" % (frame_header.frame_type, frame_header_offset))
+                    "unknown layer type: " +
+                    "%h at offset %h" % (layer_header.layer_type, layer_header_offset))
 
-                spam(frame_header)
+                spam(layer_header)
 
     def __str__(self):
         ret = list()
 
-        ret.extend([repr(self), "\n", FrameHeader.repr_header(), "\n"])
-        for frame in self.frames:
+        ret.extend([repr(self), "\n", SMPLayerHeader.repr_header(), "\n"])
+        for frame in self.main_frames:
             ret.extend([repr(frame), "\n"])
         return "".join(ret)
 
@@ -165,29 +169,29 @@ class SMP:
         return "SMP image<%d frames>" % len(self.main_frames)
 
 
-class FrameHeader:
+class SMPLayerHeader:
     def __init__(self, width, height, hotspot_x,
-                 hotspot_y, type, outline_table_offset,
-                 qdl_table_offset, unknown_value,
-                 frame_bundle_offset):
+                 hotspot_y, layer_type, outline_table_offset,
+                 qdl_table_offset, flags,
+                 frame_offset):
 
         self.size = (width, height)
         self.hotspot = (hotspot_x, hotspot_y)
 
         # 2 = normal, 4 = shadow, 8 = outline
-        self.frame_type = type
+        self.layer_type = layer_type
 
-        # table offsets are relative to the frame bundle offset
-        self.outline_table_offset = outline_table_offset + frame_bundle_offset
-        self.qdl_table_offset = qdl_table_offset + frame_bundle_offset
+        # table offsets are relative to the frame offset
+        self.outline_table_offset = outline_table_offset + frame_offset
+        self.qdl_table_offset = qdl_table_offset + frame_offset
 
-        # the absolute offset of the bundle
-        self.bundle_offset = frame_bundle_offset
+        # the absolute offset of the frame
+        self.frame_offset = frame_offset
 
     @staticmethod
     def repr_header():
         return ("width x height | hotspot x/y | "
-                "frame type | "
+                "layer type | "
                 "offset (outline table|qdl table)"
                 )
 
@@ -195,15 +199,15 @@ class FrameHeader:
         ret = (
             "% 5d x% 7d | " % self.size,
             "% 4d /% 5d | " % self.hotspot,
-            "% 4d | " % self.frame_type,
+            "% 4d | " % self.layer_type,
             "% 13d| " % self.outline_table_offset,
             "        % 9d|" % self.qdl_table_offset,
         )
         return "".join(ret)
 
-cdef class SMPFrame:
+cdef class SMPLayer:
     """
-    one image inside the SMP. you can imagine it as a frame of a video.
+    one layer inside the SMP. you can imagine it as a frame of a video.
     """
 
     # struct smp_frame_row_edge {
@@ -217,15 +221,7 @@ cdef class SMPFrame:
     # }
     smp_command_offset = Struct(endianness + "I")
 
-    # struct smp_pixel {
-    #   unsigned char palette_index;
-    #   unsigned char palette;
-    #   unsigned char unknown1; occlusion mask?
-    #   unsigned char unknown2; occlusion mask?
-    # }
-    smp_pixel = Struct(endianness + "B B B B")
-
-    # frame information
+    # layer and frame information
     cdef object info
 
     # for each row:
@@ -241,11 +237,11 @@ cdef class SMPFrame:
     # memory pointer
     cdef const uint8_t *data_raw
 
-    def __init__(self, frame_header, data):
-        self.info = frame_header
+    def __init__(self, layer_header, data):
+        self.info = layer_header
 
         if not (isinstance(data, bytes) or isinstance(data, bytearray)):
-            raise ValueError("Frame data must be some bytes object")
+            raise ValueError("Layer data must be some bytes object")
 
         # convert the bytes obj to char*
         self.data_raw = data
@@ -258,9 +254,9 @@ cdef class SMPFrame:
         # process bondary table
         for i in range(row_count):
             outline_entry_position = (self.info.outline_table_offset +
-                                      i * SMPFrame.smp_frame_row_edge.size)
+                                      i * SMPLayer.smp_frame_row_edge.size)
 
-            left, right = SMPFrame.smp_frame_row_edge.unpack_from(
+            left, right = SMPLayer.smp_frame_row_edge.unpack_from(
                 data, outline_entry_position
             )
 
@@ -273,10 +269,10 @@ cdef class SMPFrame:
         # process cmd table
         for i in range(row_count):
             cmd_table_position = (self.info.qdl_table_offset +
-                                  i * SMPFrame.smp_command_offset.size)
+                                  i * SMPLayer.smp_command_offset.size)
 
-            cmd_offset = SMPFrame.smp_command_offset.unpack_from(
-                data, cmd_table_position)[0] + self.info.bundle_offset
+            cmd_offset = SMPLayer.smp_command_offset.unpack_from(
+                data, cmd_table_position)[0] + self.info.frame_offset
             self.cmd_offsets.push_back(cmd_offset)
 
         for i in range(row_count):
@@ -320,8 +316,8 @@ cdef class SMPFrame:
         # verify size of generated row
         if row_data.size() != pixel_count:
             got = row_data.size()
-            summary = "%d/%d -> row %d, frame type %d, offset %d / %#x" % (
-                got, pixel_count, rowid, self.info.frame_type,
+            summary = "%d/%d -> row %d, layer type %d, offset %d / %#x" % (
+                got, pixel_count, rowid, self.info.layer_type,
                 first_cmd_offset, first_cmd_offset
                 )
             txt = "got %%s pixels than expected: %s, missing: %d" % (
@@ -351,7 +347,7 @@ cdef class SMPFrame:
 
     def get_hotspot(self):
         """
-        Return the frame's hotspot (the "center" of the image)
+        Return the layer's hotspot (the "center" of the image)
         """
         return self.info.hotspot
 
@@ -359,13 +355,13 @@ cdef class SMPFrame:
         return repr(self.info)
 
 
-cdef class SMPMainFrame(SMPFrame):
+cdef class SMPMainLayer(SMPLayer):
     """
-    SMPFrame for the main graphics sprite.
+    SMPLayer for the main graphics sprite.
     """
 
-    def __init__(self, frame_header, data):
-        super().__init__(frame_header, data)
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
     cdef process_drawing_cmds(self, vector[pixel] &row_data,
                               Py_ssize_t rowid,
@@ -395,10 +391,10 @@ cdef class SMPMainFrame(SMPFrame):
             if row_data.size() > expected_size:
                 raise Exception(
                     "Only %d pixels should be drawn in row %d "
-                    "with frame type %d, but we have %d "
+                    "with layer type %d, but we have %d "
                     "already!" % (
                         expected_size, rowid,
-                        self.info.frame_type,
+                        self.info.layer_type,
                         row_data.size()
                     )
                 )
@@ -444,7 +440,7 @@ cdef class SMPMainFrame(SMPFrame):
                                              pixel_data[0],
                                              pixel_data[1],
                                              pixel_data[2],
-                                             pixel_data[3]))
+                                             pixel_data[3] & 0x1F)) # remove "usage" bit here
 
                     pixel_data.clear()
 
@@ -465,13 +461,13 @@ cdef class SMPMainFrame(SMPFrame):
                                              pixel_data[0],
                                              pixel_data[1],
                                              pixel_data[2],
-                                             pixel_data[3]))
+                                             pixel_data[3] & 0x1F)) # remove "usage" bit here
 
                     pixel_data.clear()
 
             else:
                 raise Exception(
-                    "unknown smp main frame drawing command: " +
+                    "unknown smp main graphics layer drawing command: " +
                     "%#x in row %d" % (cmd, rowid))
 
             # process next command
@@ -487,13 +483,13 @@ cdef class SMPMainFrame(SMPFrame):
         return determine_damage_matrix(self.pcolor)
 
 
-cdef class SMPShadowFrame(SMPFrame):
+cdef class SMPShadowLayer(SMPLayer):
     """
-    SMPFrame for the shadow graphics.
+    SMPLayer for the shadow graphics.
     """
 
-    def __init__(self, frame_header, data):
-        super().__init__(frame_header, data)
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
     cdef process_drawing_cmds(self, vector[pixel] &row_data,
                               Py_ssize_t rowid,
@@ -520,10 +516,10 @@ cdef class SMPShadowFrame(SMPFrame):
             if row_data.size() > expected_size:
                 raise Exception(
                     "Only %d pixels should be drawn in row %d "
-                    "with frame type %d, but we have %d "
+                    "with layer type %d, but we have %d "
                     "already!" % (
                         expected_size, rowid,
-                        self.info.frame_type,
+                        self.info.layer_type,
                         row_data.size()
                     )
                 )
@@ -581,7 +577,7 @@ cdef class SMPShadowFrame(SMPFrame):
 
             else:
                 raise Exception(
-                    "unknown smp shadow frame drawing command: " +
+                    "unknown smp shadow layer drawing command: " +
                     "%#x in row %d" % (cmd, rowid))
 
             # process next command
@@ -591,13 +587,13 @@ cdef class SMPShadowFrame(SMPFrame):
         return
 
 
-cdef class SMPOutlineFrame(SMPFrame):
+cdef class SMPOutlineLayer(SMPLayer):
     """
-    SMPFrame for the outline graphics.
+    SMPLayer for the outline graphics.
     """
 
-    def __init__(self, frame_header, data):
-        super().__init__(frame_header, data)
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
     cdef process_drawing_cmds(self, vector[pixel] &row_data,
                               Py_ssize_t rowid,
@@ -624,10 +620,10 @@ cdef class SMPOutlineFrame(SMPFrame):
             if row_data.size() > expected_size:
                 raise Exception(
                     "Only %d pixels should be drawn in row %d "
-                    "with frame type %d, but we have %d "
+                    "with layer type %d, but we have %d "
                     "already!" % (
                         expected_size, rowid,
-                        self.info.frame_type,
+                        self.info.layer_type,
                         row_data.size()
                     )
                 )
@@ -672,7 +668,7 @@ cdef class SMPOutlineFrame(SMPFrame):
 
             else:
                 raise Exception(
-                    "unknown smp outline frame drawing command: " +
+                    "unknown smp outline layer drawing command: " +
                     "%#x in row %d" % (cmd, rowid))
 
             # process next command
@@ -740,7 +736,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 # main graphics table
                 r, g, b, alpha = m_lookup[index]
 
-                # TODO: alpha values are unused
+                # alpha values are unused
                 # in 0x0C and 0x0B version of SMPs
                 alpha = 255
 
@@ -786,9 +782,9 @@ cdef (uint8_t,uint8_t) get_palette_info(pixel image_pixel):
 @cython.wraparound(False)
 cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     """
-    converts a palette index image matrix to an alpha matrix.
+    converts the damage modifier values to an image using the RG values.
 
-    TODO: figure out how this works exactly
+    :param image_matrix: A 2-dimensional array of SMP pixels.
     """
 
     cdef size_t height = image_matrix.size()
@@ -797,7 +793,6 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     cdef numpy.ndarray[numpy.uint8_t, ndim=3] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
-
     cdef uint8_t r
     cdef uint8_t g
     cdef uint8_t b
@@ -805,9 +800,6 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
 
     cdef vector[pixel] current_row
     cdef pixel px
-    cdef uint8_t px_u1
-    cdef uint8_t px_u2
-    cdef uint8_t px_mask
 
     cdef size_t x
     cdef size_t y
@@ -818,13 +810,8 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
 
         for x in range(width):
             px = current_row[x]
-            px_u1 = px.unknown1
-            px_u2 = px.unknown2
 
-            # TODO: Correct the darkness here
-            px_mask = ((px_u2 << 2) | px_u1)
-
-            r, g, b, alpha = 0, 0, 0, px_mask
+            r, g, b, alpha = px.damage_modifier_1, px.damage_modifier_2, 0, 255
 
             # array_data[y, x] = (r, g, b, alpha)
             array_data[y, x, 0] = r
