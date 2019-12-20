@@ -2458,3 +2458,644 @@ def _insert_members(api_objects):
 
     member = NyanMember("visible_in_fog", MemberType.BOOLEAN, None, None, 0, None, False)
     api_object.add_member(member)
+
+    # engine.aux
+    # engine.aux.accuracy.Accuracy
+    api_object = api_objects["engine.aux.accuracy.Accuracy"]
+
+    member = NyanMember("accuracy", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("accuracy_dispersion", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.dropoff_type.DropoffType"]
+    member = NyanMember("dispersion_dropoff", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
+    member = NyanMember("target_types", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("blacklisted_entities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.animation_override.AnimationOverride
+    api_object = api_objects["engine.aux.animation_override.AnimationOverride"]
+
+    ref_object = api_objects["engine.ability.Ability"]
+    member = NyanMember("ability", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.graphics.Animation"]
+    member = NyanMember("animations", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    member = NyanMember("priority", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.attribute.Attribute
+    api_object = api_objects["engine.aux.attribute.Attribute"]
+
+    ref_object = api_objects["engine.aux.translated.type.TranslatedString"]
+    member = NyanMember("name", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.translated.type.TranslatedString"]
+    member = NyanMember("abbreviation", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.attribute.AttributeAmount
+    api_object = api_objects["engine.aux.attribute.AttributeAmount"]
+
+    ref_object = api_objects["engine.aux.attribute.Attribute"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.attribute.AttributeRate
+    api_object = api_objects["engine.aux.attribute.AttributeRate"]
+
+    ref_object = api_objects["engine.aux.attribute.Attribute"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("rate", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.attribute.AttributeSetting
+    api_object = api_objects["engine.aux.attribute.AttributeSetting"]
+
+    ref_object = api_objects["engine.aux.attribute.Attribute"]
+    member = NyanMember("attribute", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("min_value", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("max_value", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("starting_value", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.attribute.ProtectingAttribute
+    api_object = api_objects["engine.aux.attribute.ProtectingAttribute"]
+
+    ref_object = api_objects["engine.aux.attribute.Attribute"]
+    member = NyanMember("protects", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.cheat.Cheat
+    api_object = api_objects["engine.aux.cheat.Cheat"]
+
+    member = NyanMember("activation_message", MemberType.TEXT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("display_message", MemberType.TEXT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.patch.Patch"]
+    member = NyanMember("changes", MemberType.ORDEREDSET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.civilization.Civilization
+    api_object = api_objects["engine.aux.civilization.Civilization"]
+
+    ref_object = api_objects["engine.aux.translated.type.TranslatedString"]
+    member = NyanMember("name", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.translated.type.TranslatedMarkupFile"]
+    member = NyanMember("description", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.translated.type.TranslatedMarkupFile"]
+    member = NyanMember("long_description", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.translated.type.TranslatedString"]
+    member = NyanMember("leader_names", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.modifier.Modifier"]
+    member = NyanMember("modifiers", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.resource.ResourceAmount"]
+    member = NyanMember("starting_resources", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.patch.Patch"]
+    member = NyanMember("civ_setup", MemberType.ORDEREDSET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.cost.Cost
+    api_object = api_objects["engine.aux.cost.Cost"]
+
+    ref_object = api_objects["engine.aux.payment_mode.PaymentMode"]
+    member = NyanMember("payment_mode", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.cost.type.AttributeCost
+    api_object = api_objects["engine.aux.cost.type.AttributeCost"]
+
+    set_type = api_objects["engine.aux.attribute.AttributeAmount"]
+    member = NyanMember("amount", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.cost.type.ResourceCost
+    api_object = api_objects["engine.aux.cost.type.ResourceCost"]
+
+    set_type = api_objects["engine.aux.resource.ResourceAmount"]
+    member = NyanMember("amount", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.create.CreatableGameEntity
+    api_object = api_objects["engine.aux.create.CreatableGameEntity"]
+
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("game_entity", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.cost.Cost"]
+    member = NyanMember("cost", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("creation_time", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.sound.Sound"]
+    member = NyanMember("creation_sound", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.availability_requirement.AvailabilityRequirement"]
+    member = NyanMember("requirements", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.placement_mode.PlacementMode"]
+    member = NyanMember("placement_mode", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.exchange_mode.volatile.Volatile
+    api_object = api_objects["engine.aux.exchange_mode.volatile.Volatile"]
+
+    member = NyanMember("source_min_amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("source_max_amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("target_min_amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("target_max_amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.exchange_scope.ExchangeScope"]
+    member = NyanMember("scope", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+
+    # engine.aux.exchange_mode.volatile.VolatileFlat
+    api_object = api_objects["engine.aux.exchange_mode.volatile.Volatile"]
+
+    member = NyanMember("change_source_amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("change_target_amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.formation.Formation
+    api_object = api_objects["engine.aux.formation.Formation"]
+
+    set_type = api_objects["engine.aux.formation.Subformation"]
+    member = NyanMember("subformations", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.formation.PrecedingSubformation
+    api_object = api_objects["engine.aux.formation.PrecedingSubformation"]
+
+    ref_object = api_objects["engine.aux.formation.Subformation"]
+    member = NyanMember("precedes", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.game_entity.GameEntity
+    api_object = api_objects["engine.aux.game_entity.GameEntity"]
+
+    set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
+    member = NyanMember("types", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.variant.Variant"]
+    member = NyanMember("variants", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.ability.Ability"]
+    member = NyanMember("abilities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.modifier.Modifier"]
+    member = NyanMember("modifiers", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.game_entity.GameEntity
+    api_object = api_objects["engine.aux.game_entity.GameEntity"]
+
+    ref_object = api_objects["engine.aux.formation.Formation"]
+    member = NyanMember("formation", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.formation.Subformation"]
+    member = NyanMember("subformation", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.game_entity_stance.GameEntityStance
+    api_object = api_objects["engine.aux.game_entity_stance.GameEntityStance"]
+
+    set_type = api_objects["engine.ability.Ability"]
+    member = NyanMember("ability_preference", MemberType.ORDEREDSET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
+    member = NyanMember("type_preference", MemberType.ORDEREDSET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.graphics.Animation
+    api_object = api_objects["engine.aux.graphics.Animation"]
+
+    member = NyanMember("sprite", MemberType.FILE, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.graphics.Terrain
+    api_object = api_objects["engine.aux.graphics.Terrain"]
+
+    member = NyanMember("sprite", MemberType.FILE, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.language.Language
+    api_object = api_objects["engine.aux.language.Language"]
+
+    member = NyanMember("ietf_string", MemberType.TEXT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.language.LanguageMarkupPair
+    api_object = api_objects["engine.aux.language.LanguageMarkupPair"]
+
+    ref_object = api_objects["engine.aux.language.Language"]
+    member = NyanMember("language", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("markup_file", MemberType.FILE, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.language.LanguageSoundPair
+    api_object = api_objects["engine.aux.language.LanguageSoundPair"]
+
+    ref_object = api_objects["engine.aux.language.Language"]
+    member = NyanMember("language", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.sound.Sound"]
+    member = NyanMember("sound", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.language.LanguageTextPair
+    api_object = api_objects["engine.aux.language.LanguageTextPair"]
+
+    ref_object = api_objects["engine.aux.language.Language"]
+    member = NyanMember("language", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("string", MemberType.TEXT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.mod.Mod
+    api_object = api_objects["engine.aux.mod.Mod"]
+
+    set_type = api_objects["engine.aux.patch.Patch"]
+    member = NyanMember("patches", MemberType.ORDEREDSET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.modifier_scope.type.GameEntityScope
+    api_object = api_objects["engine.aux.modifier_scope.type.GameEntityScope"]
+
+    set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
+    member = NyanMember("affected_types", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("blacklisted_game_entities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.move_mode.type.Follow
+    api_object = api_objects["engine.aux.move_mode.type.Follow"]
+
+    member = NyanMember("range", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.patch.type.DiplomaticPatch
+    api_object = api_objects["engine.aux.patch.type.DiplomaticPatch"]
+
+    set_type = api_objects["engine.aux.diplomatic_stance.DiplomaticStance"]
+    member = NyanMember("stances", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.placement_mode.type.Place
+    api_object = api_objects["engine.aux.placement_mode.type.Place"]
+
+    member = NyanMember("allow_rotation", MemberType.BOOLEAN, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.progress.Progress
+    api_object = api_objects["engine.aux.progress.Progress"]
+
+    member = NyanMember("progress", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.progress.specialization.AnimatedProgress
+    api_object = api_objects["engine.aux.progress.specialization.AnimatedProgress"]
+
+    ref_object = api_objects["engine.aux.animation_override.AnimationOverride"]
+    member = NyanMember("progress_sprite", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.progress.specialization.StateChangeProgress
+    api_object = api_objects["engine.aux.progress.specialization.StateChangeProgress"]
+
+    ref_object = api_objects["engine.aux.state_machine.StateChanger"]
+    member = NyanMember("state_change", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.progress.specialization.TerrainOverlayProgress
+    api_object = api_objects["engine.aux.progress.specialization.TerrainOverlayProgress"]
+
+    ref_object = api_objects["engine.aux.terrain.Terrain"]
+    member = NyanMember("terrain_overlay", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.progress.specialization.TerrainProgress
+    api_object = api_objects["engine.aux.progress.specialization.TerrainProgress"]
+
+    ref_object = api_objects["engine.aux.terrain.Terrain"]
+    member = NyanMember("terrain", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.progress_status.ProgressStatus
+    api_object = api_objects["engine.aux.progress_status.ProgressStatus"]
+
+    ref_object = api_objects["engine.aux.progress_type.ProgressType"]
+    member = NyanMember("progress_type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("progress", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.research.ResearchableTech
+    api_object = api_objects["engine.aux.research.ResearchableTech"]
+
+    ref_object = api_objects["engine.aux.tech.Tech"]
+    member = NyanMember("tech", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.cost.Cost"]
+    member = NyanMember("cost", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("research_time", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.sound.Sound"]
+    member = NyanMember("research_sound", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.availability_requirement.AvailabilityRequirement"]
+    member = NyanMember("requirements", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.resource.Resource
+    api_object = api_objects["engine.aux.resource.Resource"]
+
+    ref_object = api_objects["engine.aux.translated.type.TranslatedString"]
+    member = NyanMember("name", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("max_storage", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.resource.ResourceContingent
+    api_object = api_objects["engine.aux.resource.ResourceContingent"]
+
+    member = NyanMember("min_amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("max_amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.resource.ResourceAmount
+    api_object = api_objects["engine.aux.resource.ResourceAmount"]
+
+    ref_object = api_objects["engine.aux.resource.Resource"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.resource.ResourceRate
+    api_object = api_objects["engine.aux.resource.ResourceRate"]
+
+    ref_object = api_objects["engine.aux.resource.Resource"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("rate", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.resource_spot.ResourceSpot
+    api_object = api_objects["engine.aux.resource_spot.ResourceSpot"]
+
+    ref_object = api_objects["engine.aux.resource.Resource"]
+    member = NyanMember("resource", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("capacity", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("starting_amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("decay_rate", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.progress.type.HarvestProgress"]
+    member = NyanMember("harvest_progress", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    member = NyanMember("gatherer_limit", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("harvestable_by_default", MemberType.BOOLEAN, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.resource_spot.RestockableResourceSpot
+    api_object = api_objects["engine.aux.resource_spot.RestockableResourceSpot"]
+
+    member = NyanMember("destruction_time_limit", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.progress.type.RestockProgress"]
+    member = NyanMember("restock_progress", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.sound.Sound
+    api_object = api_objects["engine.aux.sound.Sound"]
+
+    member = NyanMember("play_delay", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = MemberType.FILE
+    member = NyanMember("sounds", MemberType.ORDEREDSET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.state_machine.StateChanger
+    api_object = api_objects["engine.aux.state_machine.StateChanger"]
+
+    set_type = api_objects["engine.ability.Ability"]
+    member = NyanMember("enable_abilities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.ability.Ability"]
+    member = NyanMember("disable_abilities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.modifier.Modifier"]
+    member = NyanMember("enable_modifiers", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.modifier.Modifier"]
+    member = NyanMember("disable_modifiers", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    member = NyanMember("priority", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.storage.Container
+    api_object = api_objects["engine.aux.storage.Container"]
+
+    set_type = api_objects["engine.aux.storage.StorageElement"]
+    member = NyanMember("storage_elements", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    member = NyanMember("slots", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.progress.type.CarryProgress"]
+    member = NyanMember("carry_progress", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.storage.StorageElement
+    api_object = api_objects["engine.aux.storage.StorageElement"]
+
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("storage_element", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("elements_per_slot", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.storage.StorageElement"]
+    member = NyanMember("conflicts", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.state_machine.StateChanger"]
+    member = NyanMember("state_change", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.taunt.Taunt
+    api_object = api_objects["engine.aux.taunt.Taunt"]
+
+    member = NyanMember("activation_message", MemberType.TEXT, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.translated.type.TranslatedString"]
+    member = NyanMember("display_message", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.sound.Sound"]
+    member = NyanMember("sound", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.tech.Tech
+    api_object = api_objects["engine.aux.tech.Tech"]
+
+    ref_object = api_objects["engine.aux.translated.type.TranslatedString"]
+    member = NyanMember("name", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.translated.type.TranslatedMarkupFile"]
+    member = NyanMember("description", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.translated.type.TranslatedMarkupFile"]
+    member = NyanMember("long_description", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.patch.Patch"]
+    member = NyanMember("updates", MemberType.ORDEREDSET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.terrain.Terrain
+    api_object = api_objects["engine.aux.terrain.Terrain"]
+
+    ref_object = api_objects["engine.aux.translated.type.TranslatedString"]
+    member = NyanMember("name", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.graphics.Terrain"]
+    member = NyanMember("terrain_graphic", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.sound.Sound"]
+    member = NyanMember("sound", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
+    member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("blacklisted_game_entities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.terrain.TerrainAmbient"]
+    member = NyanMember("ambience", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.terrain.TerrainAmbient
+    api_object = api_objects["engine.aux.terrain.TerrainAmbient"]
+
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("object", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("max_density", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.trade_route.TradeRoute
+    api_object = api_objects["engine.aux.trade_route.TradeRoute"]
+
+    ref_object = api_objects["engine.aux.resource.Resource"]
+    member = NyanMember("trade_resource", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("start_trade_post", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("end_trade_post", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.trade_route.type.AoE1TradeRoute
+    api_object = api_objects["engine.aux.trade_route.type.AoE1TradeRoute"]
+
+    set_type = api_objects["engine.aux.resource.Resource"]
+    member = NyanMember("exchange_resources", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    member = NyanMember("trade_amount", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.translated.type.TranslatedMarkupFile
+    api_object = api_objects["engine.aux.translated.type.TranslatedMarkupFile"]
+
+    set_type = api_objects["engine.aux.language.LanguageMarkupPair"]
+    member = NyanMember("translations", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.translated.type.TranslatedSound
+    api_object = api_objects["engine.aux.translated.type.TranslatedSound"]
+
+    set_type = api_objects["engine.aux.language.LanguageSoundPair"]
+    member = NyanMember("translations", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.translated.type.TranslatedString
+    api_object = api_objects["engine.aux.translated.type.TranslatedString"]
+
+    set_type = api_objects["engine.aux.language.LanguageTextPair"]
+    member = NyanMember("translations", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.variant.Variant
+    api_object = api_objects["engine.aux.variant.Variant"]
+
+    set_type = api_objects["engine.aux.patch.Patch"]
+    member = NyanMember("changes", MemberType.ORDEREDSET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    member = NyanMember("priority", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.variant.type.AdjacentTilesVariant
+    api_object = api_objects["engine.aux.variant.type.AdjacentTilesVariant"]
+
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("north", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("north_east", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("east", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("south_east", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("south", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("south_west", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("west", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("north_west", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+
+    # engine.aux.variant.type.RandomVariant
+    api_object = api_objects["engine.aux.variant.type.RandomVariant"]
+
+    member = NyanMember("chance_share", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.variant.type.PerspectiveVariant
+    api_object = api_objects["engine.aux.variant.type.PerspectiveVariant"]
+
+    member = NyanMember("angle", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
