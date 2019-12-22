@@ -3099,3 +3099,139 @@ def _insert_members(api_objects):
 
     member = NyanMember("angle", MemberType.INT, None, None, 0, None, False)
     api_object.add_member(member)
+
+    # engine.effect
+    # engine.effect.continuous.flat_attribute_change.FlatAttributeChange
+    api_object = api_objects["engine.effect.continuous.flat_attribute_change.FlatAttributeChange"]
+
+    ref_object = api_objects["engine.aux.attribute_change_type.AttributeChangeType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.attribute.AttributeRate"]
+    member = NyanMember("min_change_rate", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.attribute.AttributeRate"]
+    member = NyanMember("max_change_rate", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.attribute.AttributeRate"]
+    member = NyanMember("change_rate", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.attribute.ProtectingAttribute"]
+    member = NyanMember("ignore_protection", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.effect.continuous.type.Lure
+    api_object = api_objects["engine.effect.continuous.type.Lure"]
+
+    ref_object = api_objects["engine.aux.lure_type.LureType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("destination", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    member = NyanMember("min_distance_to_destination", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.effect.continuous.time_relative_attribute_change.TimeRelativeAttributeChange
+    api_object = api_objects["engine.effect.continuous.time_relative_attribute_change.TimeRelativeAttributeChange"]
+
+    ref_object = api_objects["engine.aux.attribute_change_type.AttributeChangeType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("total_change_time", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.attribute.ProtectingAttribute"]
+    member = NyanMember("ignore_protection", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange
+    api_object = api_objects["engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange"]
+
+    ref_object = api_objects["engine.aux.progress_type.ProgressType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("total_change_time", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.effect.discrete.convert.Convert
+    api_object = api_objects["engine.effect.discrete.convert.Convert"]
+
+    ref_object = api_objects["engine.aux.convert_type.ConvertType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("min_chance_success", MemberType.FLOAT, None, None, 0, None, True)
+    api_object.add_member(member)
+    member = NyanMember("max_chance_success", MemberType.FLOAT, None, None, 0, None, True)
+    api_object.add_member(member)
+    member = NyanMember("chance_success", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.cost.Cost"]
+    member = NyanMember("cost_fail", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+
+    # engine.effect.discrete.convert.type.AoE2Convert
+    api_object = api_objects["engine.effect.discrete.convert.type.AoE2Convert"]
+
+    member = NyanMember("skip_guaranteed_rounds", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("skip_protected_rounds", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.effect.discrete.flat_attribute_change.FlatAttributeChange
+    api_object = api_objects["engine.effect.discrete.flat_attribute_change.FlatAttributeChange"]
+
+    ref_object = api_objects["engine.aux.attribute_change_type.AttributeChangeType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
+    member = NyanMember("min_change_rate", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
+    member = NyanMember("max_change_rate", ref_object, None, None, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
+    member = NyanMember("change_rate", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.attribute.ProtectingAttribute"]
+    member = NyanMember("ignore_protection", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.effect.discrete.type.MakeHarvestable
+    api_object = api_objects["engine.effect.discrete.type.MakeHarvestable"]
+
+    ref_object = api_objects["engine.aux.resource_spot.ResourceSpot"]
+    member = NyanMember("resource_spot", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.effect.discrete.type.SendToContainer
+    api_object = api_objects["engine.effect.discrete.type.SendToContainer"]
+
+    ref_object = api_objects["engine.aux.container_type.SendToContainerType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.storage.Container"]
+    member = NyanMember("storages", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.effect.specialization.AreaEffect
+    api_object = api_objects["engine.effect.specialization.AreaEffect"]
+
+    member = NyanMember("range", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.dropoff_type.DropoffType"]
+    member = NyanMember("dropoff", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.effect.specialization.CostEffect
+    api_object = api_objects["engine.effect.specialization.CostEffect"]
+
+    ref_object = api_objects["engine.aux.cost.Cost"]
+    member = NyanMember("cost", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.effect.specialization.DiplomaticEffect
+    api_object = api_objects["engine.effect.specialization.DiplomaticEffect"]
+
+    set_type = api_objects["engine.aux.diplomatic_stance.DiplomaticEffect"]
+    member = NyanMember("stances", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
