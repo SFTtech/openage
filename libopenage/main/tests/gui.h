@@ -49,7 +49,8 @@ private:
 	renderer::Renderable p1paddle;
 	renderer::Renderable p2paddle;
 
-	renderer::RenderPass pass;
+	// render pass for the game area
+	std::shared_ptr<renderer::RenderPass> render_pass;
 
 	std::vector<renderer::Window::resize_cb_t> resize_callbacks;
 };
