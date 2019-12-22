@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,16 +9,20 @@
 #include <QStringList>
 #include <QHash>
 #include <QList>
+#include <QtGlobal>
 #include <QtQml>
 
+// since qt 5.14, the std::hash of q* types are included in qt
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
 namespace std {
 template<>
 struct hash<QString> {
-	size_t operator()(const QString& val) const throw () {
+	size_t operator()(const QString& val) const noexcept {
 		return qHash(val);
 	}
 };
 }
+#endif
 
 namespace qtsdl {
 
