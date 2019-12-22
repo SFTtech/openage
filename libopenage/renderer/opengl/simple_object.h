@@ -1,9 +1,10 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <optional>
 #include <functional>
+#include <memory>
+#include <optional>
 
 #include <epoxy/gl.h>
 
@@ -11,6 +12,9 @@
 namespace openage {
 namespace renderer {
 namespace opengl {
+
+class GlContext;
+
 
 /// A base class for all classes representing OpenGL Objects to inherit from.
 /// It allows moving the object, but not copying it through the copy constructor.
@@ -35,7 +39,13 @@ public:
 	GLuint get_handle() const;
 
 protected:
-	explicit GlSimpleObject(std::function<void(GLuint)> delete_fun);
+	explicit GlSimpleObject(const std::shared_ptr<GlContext> &,
+	                        std::function<void(GLuint)> &&delete_fun);
+
+	/// Context, in which this object is valid in.
+	/// We hold this reference to keep the context active as long as this object
+	/// is not deconstructed.
+	std::shared_ptr<GlContext> context;
 
 	/// The handle to the OpenGL Object that this class represents.
 	std::optional<GLuint> handle;

@@ -110,4 +110,13 @@ OAAPI std::string symbol_name(const void *addr, bool require_exact_addr=true, bo
 bool is_symbol(const void *addr);
 
 
+/**
+ * Returns the string representation of the given type.
+ */
+template <typename T>
+std::string typestring() {
+	return demangle(typeid(T).name());
+}
+
+
 }} // openage::util

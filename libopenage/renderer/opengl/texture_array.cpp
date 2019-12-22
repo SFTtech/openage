@@ -1,4 +1,4 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2019 the openage authors. See copying.md for legal info.
 
 #include "texture_array.h"
 
@@ -19,9 +19,10 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-GlTexture2dArray::GlTexture2dArray(const std::vector<resources::Texture2dData>& data)
+GlTexture2dArray::GlTexture2dArray(const std::shared_ptr<GlContext> &context,
+                                   const std::vector<resources::Texture2dData>& data)
 	// Call the data-less constructor first.
-	: GlTexture2dArray(data.size(), data[0].get_info())
+	: GlTexture2dArray(context, data.size(), data[0].get_info())
 {
 	auto fmt_in_out = GL_PIXEL_FORMAT.get(this->layer_info.get_format());
 	auto size = this->layer_info.get_size();
@@ -42,9 +43,11 @@ GlTexture2dArray::GlTexture2dArray(const std::vector<resources::Texture2dData>& 
 	}
 }
 
-GlTexture2dArray::GlTexture2dArray(size_t n_layers, resources::Texture2dInfo const& layer_info)
+GlTexture2dArray::GlTexture2dArray(const std::shared_ptr<GlContext> &context,
+                                   size_t n_layers, resources::Texture2dInfo const& layer_info)
 	: Texture2dArray(layer_info)
-	, GlSimpleObject([] (GLuint handle) { glDeleteTextures(1, &handle); } )
+	, GlSimpleObject(context,
+	                 [] (GLuint handle) { glDeleteTextures(1, &handle); } )
 	, n_layers(n_layers)
 {
 	GLuint handle;

@@ -1,6 +1,8 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
+
+#include <memory>
 
 #include <SDL2/SDL.h>
 
@@ -8,6 +10,8 @@
 namespace openage {
 namespace renderer {
 namespace opengl {
+
+class GlShaderProgram;
 
 /// Stores information about context capabilities and limitations.
 struct gl_context_capabilities {
@@ -29,7 +33,7 @@ struct gl_context_capabilities {
 class GlContext {
 public:
 	/// Create a GL context in the given SDL window.
-	explicit GlContext(SDL_Window*);
+	explicit GlContext(const std::shared_ptr<SDL_Window> &);
 	~GlContext();
 
 	/// It doesn't make sense to have more than one instance of the same context.
@@ -53,12 +57,24 @@ public:
 	/// and throws an exception if it did. Note that it's static.
 	static void check_error();
 
+	/// Returns a handle to the last-activated shader program
+	const std::weak_ptr<GlShaderProgram> &get_current_program() const;
+
+	/// Store the last-activated shader program
+	void set_current_program(const std::shared_ptr<GlShaderProgram> &);
+
 private:
+	/// The associated SDL window is held here so the context remains active.
+	std::shared_ptr<SDL_Window> window;
+
 	/// Pointer to SDL struct representing the GL context.
 	SDL_GLContext gl_context;
 
 	/// Context capabilities.
 	gl_context_capabilities capabilities{};
+
+	// The last-active shader program
+	std::weak_ptr<GlShaderProgram> last_program;
 };
 
 }}} // openage::renderer::opengl

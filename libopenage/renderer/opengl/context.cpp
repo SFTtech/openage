@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "context.h"
 
@@ -83,7 +83,9 @@ static gl_context_capabilities find_capabilities() {
 	return caps;
 }
 
-GlContext::GlContext(SDL_Window *window) {
+GlContext::GlContext(const std::shared_ptr<SDL_Window> &window)
+	:
+	window{window} {
 	this->capabilities = find_capabilities();
 	auto const &capabilities = this->capabilities;
 
@@ -94,7 +96,7 @@ GlContext::GlContext(SDL_Window *window) {
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, capabilities.major_version);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, capabilities.minor_version);
 
-	this->gl_context = SDL_GL_CreateContext(window);
+	this->gl_context = SDL_GL_CreateContext(window.get());
 
 	if (this->gl_context == nullptr) {
 		throw Error(MSG(err) << "OpenGL context creation failed. SDL error: " << SDL_GetError());
@@ -129,6 +131,7 @@ GlContext::GlContext(SDL_Window *window) {
 
 GlContext::~GlContext() {
 	if (this->gl_context != nullptr) {
+		log::log(MSG(info) << "Destroying OpenGL context...");
 		SDL_GL_DeleteContext(this->gl_context);
 	}
 }
@@ -219,5 +222,16 @@ void GlContext::set_vsync(bool on) {
 		SDL_GL_SetSwapInterval(0);
 	}
 }
+
+
+const std::weak_ptr<GlShaderProgram> &GlContext::get_current_program() const {
+	return this->last_program;
+}
+
+
+void GlContext::set_current_program(const std::shared_ptr<GlShaderProgram> &prog) {
+	this->last_program = prog;
+}
+
 
 }}} // openage::renderer::opengl

@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "geometry.h"
 
@@ -15,12 +15,15 @@ namespace renderer {
 namespace opengl {
 
 GlGeometry::GlGeometry()
-	: Geometry(geometry_t::bufferless_quad) {}
+	:
+	Geometry(geometry_t::bufferless_quad) {}
 
-GlGeometry::GlGeometry(const resources::MeshData &mesh)
-	: Geometry(geometry_t::mesh) {
-	GlBuffer verts_buf(mesh.get_data().data(), mesh.get_data().size());
-	GlVertexArray verts_array(verts_buf, mesh.get_info());
+GlGeometry::GlGeometry(const std::shared_ptr<GlContext> &context, const resources::MeshData &mesh)
+	:
+	Geometry(geometry_t::mesh) {
+
+	GlBuffer verts_buf{context, mesh.get_data().data(), mesh.get_data().size()};
+	GlVertexArray verts_array(context, verts_buf, mesh.get_info());
 
 	this->mesh = GlMesh {
 		std::move(verts_buf),
@@ -32,7 +35,7 @@ GlGeometry::GlGeometry(const resources::MeshData &mesh)
 	};
 
 	if (mesh.get_ids()) {
-		this->mesh->indices = GlBuffer(mesh.get_ids()->data(), mesh.get_ids()->size());
+		this->mesh->indices = GlBuffer{context, mesh.get_ids()->data(), mesh.get_ids()->size()};
 		this->mesh->index_type = GL_INDEX_TYPE.get(*mesh.get_info().get_index_type());
 		this->mesh->vert_count = mesh.get_ids()->size() / sizeof(GLuint);
 	}
