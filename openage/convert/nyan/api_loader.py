@@ -570,6 +570,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.boolean.Clause
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("Clause", parents)
+    fqon = "engine.aux.boolean.Clause"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.cheat.Cheat
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("Cheat", parents)
@@ -3144,8 +3151,8 @@ def _insert_members(api_objects):
     member = NyanMember("ignore_protection", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
-    # engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange
-    api_object = api_objects["engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange"]
+    # engine.effect.continuous.time_relative_progress.TimeRelativeProgress
+    api_object = api_objects["engine.effect.continuous.time_relative_progress.TimeRelativeProgress"]
 
     ref_object = api_objects["engine.aux.progress_type.ProgressType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
@@ -3184,13 +3191,13 @@ def _insert_members(api_objects):
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
-    member = NyanMember("min_change_rate", ref_object, None, None, 0, None, True)
+    member = NyanMember("min_change_value", ref_object, None, None, 0, None, True)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
-    member = NyanMember("max_change_rate", ref_object, None, None, 0, None, True)
+    member = NyanMember("max_change_value", ref_object, None, None, 0, None, True)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
-    member = NyanMember("change_rate", ref_object, None, None, 0, None, False)
+    member = NyanMember("change_value", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.attribute.ProtectingAttribute"]
     member = NyanMember("ignore_protection", MemberType.SET, None, None, 0, set_type, False)
@@ -3232,6 +3239,96 @@ def _insert_members(api_objects):
     # engine.effect.specialization.DiplomaticEffect
     api_object = api_objects["engine.effect.specialization.DiplomaticEffect"]
 
-    set_type = api_objects["engine.aux.diplomatic_stance.DiplomaticEffect"]
+    set_type = api_objects["engine.aux.diplomatic_stance.DiplomaticStance"]
     member = NyanMember("stances", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.resistance
+    # engine.resistance.continuous.flat_attribute_change.FlatAttributeChange
+    api_object = api_objects["engine.resistance.continuous.flat_attribute_change.FlatAttributeChange"]
+
+    ref_object = api_objects["engine.aux.attribute_change_type.AttributeChangeType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.attribute.AttributeRate"]
+    member = NyanMember("block_rate", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.resistance.continuous.type.Lure
+    api_object = api_objects["engine.resistance.continuous.type.Lure"]
+
+    ref_object = api_objects["engine.aux.lure_type.LureType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.resistance.continuous.time_relative_attribute_change.TimeRelativeAttributeChange
+    api_object = api_objects["engine.resistance.continuous.time_relative_attribute_change.TimeRelativeAttributeChange"]
+
+    ref_object = api_objects["engine.aux.attribute_change_type.AttributeChangeType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.resistance.continuous.time_relative_progress.TimeRelativeProgress
+    api_object = api_objects["engine.resistance.continuous.time_relative_progress.TimeRelativeProgress"]
+
+    ref_object = api_objects["engine.aux.progress_type.ProgressType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.resistance.discrete.convert.Convert
+    api_object = api_objects["engine.resistance.discrete.convert.Convert"]
+
+    ref_object = api_objects["engine.aux.convert_type.ConvertType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("chance_resist", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.resistance.discrete.convert.type.AoE2Convert
+    api_object = api_objects["engine.resistance.discrete.convert.type.AoE2Convert"]
+
+    member = NyanMember("guaranteed_resist_rounds", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("protected_rounds", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("protection_round_recharge_time", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.resistance.discrete.flat_attribute_change.FlatAttributeChange
+    api_object = api_objects["engine.resistance.discrete.flat_attribute_change.FlatAttributeChange"]
+
+    ref_object = api_objects["engine.aux.attribute_change_type.AttributeChangeType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
+    member = NyanMember("block_value", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.resistance.discrete.type.MakeHarvestable
+    api_object = api_objects["engine.resistance.discrete.type.MakeHarvestable"]
+
+    ref_object = api_objects["engine.aux.resource_spot.ResourceSpot"]
+    member = NyanMember("resource_spot", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.boolean.Clause"]
+    member = NyanMember("harvest_conditions", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.resistance.discrete.type.SendToContainer
+    api_object = api_objects["engine.resistance.discrete.type.SendToContainer"]
+
+    ref_object = api_objects["engine.aux.container_type.SendToContainerType"]
+    member = NyanMember("type", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("search_range", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.storage.Container"]
+    member = NyanMember("ignore_containers", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.resistance.specialization.CostResistance
+    api_object = api_objects["engine.resistance.specialization.CostResistance"]
+
+    ref_object = api_objects["engine.aux.cost.Cost"]
+    member = NyanMember("cost", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
