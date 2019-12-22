@@ -80,6 +80,8 @@ struct ShaderUpdate : Renderable {
 /// A render pass is a series of draw calls represented by renderables that output into the given render target.
 class RenderPass {
 protected:
+	/// Create a new RenderPass. This is called from Renderer::add_render_pass,
+	/// which then creates the proper subclass of RenderPass, depending on the backend.
 	RenderPass(std::vector<Renderable>, const std::shared_ptr<RenderTarget> &);
 	/// The renderables to parse and possibly execute.
 	std::vector<Renderable> renderables;

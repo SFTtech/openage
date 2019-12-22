@@ -156,8 +156,8 @@ void main() {
 	auto set_col = renderer::ShaderUpdate{col_in};
 	auto set_col_red = renderer::ShaderUpdate{col_red_in};
 
-	this->pass = renderer::RenderPass{
-		{
+	this->render_pass = this->renderer->add_render_pass(
+		std::vector<renderer::Renderable>{
 			std::move(set_projmatrix),
 			std::move(set_col),
 			this->ball,
@@ -165,8 +165,8 @@ void main() {
 			this->p1paddle,
 			this->p2paddle
 		},
-		this->renderer->get_display_target(),
-	};
+		this->renderer->get_display_target()
+	);
 
 	glDepthFunc(GL_LEQUAL);
 	glDepthRange(0.0, 1.0);
@@ -232,7 +232,7 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 	p2_pos_matrix.pretranslate(Eigen::Vector3f(screen_size[0], p2_pos, 0.0f));
 	this->p2paddle.uniform->update("pos", p2_pos_matrix.matrix());
 
-	this->renderer->render(this->pass);
+	this->renderer->render(this->render_pass);
 	this->window.update();
 	renderer::opengl::GlContext::check_error();
 
