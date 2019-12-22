@@ -7,6 +7,7 @@ add_py_modules(
 	fsprinting.py
 	iterators.py
 	math.py
+	ordered_set.py
 	profiler.py
 	strings.py
 	struct.py
