@@ -5,7 +5,6 @@
 #include <type_traits>
 
 #include "base_curve.h"
-#include "error.h"
 #include "../log/log.h"
 
 namespace openage::curve {
