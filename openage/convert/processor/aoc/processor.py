@@ -29,7 +29,7 @@ from ...nyan.api_loader import load_api
 from openage.convert.dataformat.aoc.genie_unit import GenieVariantGroup
 
 
-class AoĆProcessor:
+class AoCProcessor:
 
     # The interface to the API
     nyan_api_objects = load_api()

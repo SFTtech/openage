@@ -32,7 +32,7 @@ class CombinedSprite(ConverterObjectGroup):
     """
     Collection of sprite information for openage files.
 
-    This will become an Animation with a sprite file.
+    This will become a spritesheet texture with a sprite file.
     """
 
     def __init__(self, head_sprite_id, full_data_set):
@@ -45,6 +45,37 @@ class CombinedSprite(ConverterObjectGroup):
                               process.
         :type full_data_set: class: ...dataformat.converter_object.ConverterObjectContainer
         """
+
+        self.head_sprite_id = head_sprite_id
+        self.data = full_data_set
+
+        # 0 = do not convert; 1 = store with GameEntity; >1 = store in 'shared' resources
+        self._refs = 0
+
+    def add_reference(self):
+        """
+        Increase the reference counter for this sprite by 1.
+        """
+        self._refs += 1
+
+    def remove_reference(self):
+        """
+        Decrease the reference counter for this sprite by 1.
+        """
+        self._refs -= 1
+
+    def resolve_location(self):
+        """
+        Returns the location of the definition file in the modpack
+        """
+        # TODO: This depends on modpavk structure
+        pass
+
+    def save(self):
+        """
+        Create a .sprite or .terrain definition and corresponding texture.
+        """
+        # TODO: Create SpriteFile(..) and TerrainFile() instances here.
         pass
 
 

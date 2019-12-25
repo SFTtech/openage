@@ -14,6 +14,7 @@ class GenieObjectContainer(ConverterObjectContainer):
 
     def __init__(self):
 
+        # Phase 1: Genie-like objects
         # ConverterObject types (the data from the game)
         # key: obj_id; value: ConverterObject instance
         self.genie_units = {}
@@ -28,6 +29,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.genie_sounds = {}
         self.genie_terrains = {}
 
+        # Phase 2: API-like objects
         # ConverterObjectGroup types (things that will become
         # nyan objects)
         # key: group_id; value: ConverterObjectGroup instance
@@ -45,3 +47,6 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.building_upgrades = {}
         self.unit_unlocks = {}
         self.civ_boni = {}
+
+        # Phase 3: nyan objects
+        self.combined_sprites = {}
