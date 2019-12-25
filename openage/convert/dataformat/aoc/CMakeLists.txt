@@ -1,5 +1,6 @@
 add_py_modules(
 	__init__.py
+	expected_pointer.py
 	genie_civ.py
 	genie_connection.py
 	genie_effect.py

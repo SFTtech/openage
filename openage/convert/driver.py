@@ -23,7 +23,7 @@ from .hdlanguagefile import (read_age2_hd_fe_stringresources,
                              read_age2_hd_3x_stringresources)
 from .interface.cutter import InterfaceCutter
 from .interface.rename import hud_rename
-from .processor.aoc.processor import AoĆProcessor
+from .processor.aoc.processor import AoCProcessor
 from .slp_converter_pool import SLPConverterPool
 from .stringresource import StringResource
 
@@ -163,7 +163,7 @@ def convert_metadata(args):
         gamedata_path.removerecursive()
 
     # TODO: Move this somewhere else
-    args.converter = AoĆProcessor
+    args.converter = AoCProcessor
 
     yield "empires.dat"
     gamespec = get_gamespec(args.srcdir, args.game_versions, args.flag("no_pickle_cache"))

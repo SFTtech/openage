@@ -7,6 +7,7 @@ These are simple containers that can be processed by the converter.
 """
 
 from .value_members import ValueMember
+from openage.nyan.nyan_structs import NyanObject
 
 
 class ConverterObject:
@@ -112,7 +113,8 @@ class ConverterObjectGroup:
         """
         self.group_id = group_id
 
-        # stores the objects that will later be mapped to nyan objects
+        # stores the objects that will later be converted to nyan objects
+        # this uses a preliminary fqon as a key
         self.raw_api_objects = {}
 
         if raw_api_objects:
@@ -164,25 +166,32 @@ class ConverterObjectGroup:
 class RawAPIObject:
     """
     An object that contains all the necessary information to create
-    a nyan API object.
+    a nyan API object. Members are stored as (membername, value) pairs.
+    Values refer either to primitive values (int, float, str) or
+    pointers to objects. The latter have to be resolved in an
+    additional step.
     """
 
-    def __init__(self, api_ref, data):
+    def __init__(self, name, api_ref):
 
-        # fqon of the API object
-        self.api_ref = api_ref
+        from ..processor.aoc.processor import AoCProcessor
 
-        # A list of ValueMembers that are necessary to translate
-        # the object to an actual API object.
-        self.data = data
+        self.api_ref = AoCProcessor.nyan_api_objects[api_ref]
+        self.nyan_object = NyanObject(name, self.api_ref, None, None)
 
-    def add_data(self, new_data):
+        self.raw_members = []
+        self.raw_parents = []
+
+    def add_raw_member(self, name, value):
         """
-        Adds more data to the object.
+        Adds a raw member to the object.
 
-        :param new_data: A list of new ValueMembers.
+        :param name: Name of the member (has to be a valid inherited member name),
+        :type name: str
+        :param value: Value of the member.
+        :type value: int, float, bool, str, .aoc.expected_pointer.ExpectedPointer
         """
-        self.data.extend(new_data)
+        self.raw_members.append((name, value))
 
     def get_nyan_object(self):
         """
@@ -192,8 +201,7 @@ class RawAPIObject:
             "returning a nyan object of the object %s not possible" (type(self)))
 
     def __repr__(self):
-        raise NotImplementedError(
-            "return short description of the object %s" % (type(self)))
+        return "RawAPIObject<%s>" % (self.nyan_object)
 
 
 class ConverterObjectContainer:
