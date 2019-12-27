@@ -154,6 +154,10 @@ Mixture of RTS (Age of Empires) and Tactical Stealth (Shadow Tactics) will requi
 
 Extra options like regenerating gold, wood, and stone could be interesting for casual multiplayer games. Goofy game modes like randomized techs and bonuses would be fun. Or what about a mode where you gain random civ bonuses and techs each time you advance an age?
 
+## Tactical Unit Comparator
+
+A game mode where two players assemble an army of AI controlled units that are pinned
+against each other in a fight to the death. The player with the surviving army wins.
 
 
 Unit handling
