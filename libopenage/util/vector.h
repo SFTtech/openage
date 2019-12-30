@@ -1,7 +1,8 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -33,12 +34,10 @@ public:
 	static constexpr T default_eps = 1e-4;
 
 	/**
-	 * Default, random-value constructor.
+	 * Default, zero-value constructor.
 	 */
 	Vector() {
-		for (size_t i = 0; i < N; i++) {
-			(*this)[i] = 0;
-		}
+		this->fill(0);
 	}
 
 	~Vector() = default;
@@ -52,6 +51,16 @@ public:
 		std::array<T, N>{static_cast<T>(args)...} {
 
 		static_assert(sizeof...(args) == N, "not all values supplied.");
+	}
+
+	/**
+	 * Cast every value to NT and return the new Vector.
+	 */
+	template<typename NT>
+	Vector<N, NT> casted() const {
+		Vector<N, NT> ret;
+		std::copy(std::begin(*this), std::end(*this), std::begin(ret));
+		return ret;
 	}
 
 	/**
@@ -225,5 +234,17 @@ using Vector4f = Vector<4, float>;
 using Vector2d = Vector<2, double>;
 using Vector3d = Vector<3, double>;
 using Vector4d = Vector<4, double>;
+
+using Vector2i = Vector<2, int>;
+using Vector3i = Vector<3, int>;
+using Vector4i = Vector<4, int>;
+
+using Vector2s = Vector<2, size_t>;
+using Vector3s = Vector<3, size_t>;
+using Vector4s = Vector<4, size_t>;
+
+using Vector2ss = Vector<2, ssize_t>;
+using Vector3ss = Vector<3, ssize_t>;
+using Vector4ss = Vector<4, ssize_t>;
 
 } // openage::util

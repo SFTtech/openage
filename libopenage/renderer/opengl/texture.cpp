@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "texture.h"
 
@@ -19,9 +19,11 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-GlTexture2d::GlTexture2d(const resources::Texture2dData& data)
+GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
+                         const resources::Texture2dData& data)
 	: Texture2d(data.get_info())
-	, GlSimpleObject([] (GLuint handle) { glDeleteTextures(1, &handle); } )
+	, GlSimpleObject(context,
+	                 [] (GLuint handle) { glDeleteTextures(1, &handle); } )
 {
 	GLuint handle;
 	glGenTextures(1, &handle);
@@ -51,9 +53,11 @@ GlTexture2d::GlTexture2d(const resources::Texture2dData& data)
 	log::log(MSG(dbg) << "Created OpenGL texture from data");
 }
 
-GlTexture2d::GlTexture2d(const resources::Texture2dInfo &info)
+GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
+                         const resources::Texture2dInfo &info)
 	: Texture2d(info)
-	, GlSimpleObject([] (GLuint handle) { glDeleteTextures(1, &handle); } )
+	, GlSimpleObject(context,
+	                 [] (GLuint handle) { glDeleteTextures(1, &handle); } )
 {
 	GLuint handle;
 	glGenTextures(1, &handle);

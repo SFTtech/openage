@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,18 +6,22 @@
 #include <vector>
 
 #include "../renderer.h"
+#include "../uniform_input.h"
 
 
 namespace openage {
 namespace renderer {
+
+class ShaderProgram;
+
 namespace opengl {
 
 class GlShaderProgram;
 
 /// Describes OpenGL-specific uniform valuations.
-struct GlUniformInput final : public UniformInput {
-	/// The program that this was created for.
-	GlShaderProgram* program;
+class GlUniformInput final : public UniformInput {
+public:
+	GlUniformInput(std::shared_ptr<ShaderProgram> const&);
 
 	/// We store uniform updates lazily. They are only actually uploaded to GPU
 	/// when a draw call is made. Update_offs maps the uniform names to where their

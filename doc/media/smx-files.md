@@ -12,8 +12,9 @@ to get a better understanding of the concepts of the format.
 
 SMX files are basically a trimmed version of SMPs that remove unnecessary
 metadata and padding from the file. They also do not define explicit
-offsets for each frame and frame header, so the file has to be read sequentially.
+offsets for each frame and its layers, so the file has to be read sequentially.
 Compression is only used for pixel data.
+
 
 ### Header
 
@@ -21,8 +22,8 @@ The SMX file starts with a header:
 
 Length   | Type   | Description                 | Example
 ---------|--------|-----------------------------|--------
-4 bytes  | string | File descriptor             | SMPX
-2 bytes  | int16  | probably version            | 2, 0x0002 (for almost all units, some have 0x0001)
+4 bytes  | string | Signature                   | SMPX
+2 bytes  | int16  | Version                     | 2, 0x0002 (for almost all units, some have 0x0001)
 2 bytes  | int16  | Number of frames            | 961, 0x03C1
 4 bytes  | int32  | File size SMX (this file)   | 2706603, 0x000294CAB (size without header)
 4 bytes  | int32  | File size SMP (source file) | 6051456, 0x0005C5680 (size without header)
@@ -44,61 +45,61 @@ Python format: `Struct("< 4s 2H 2I 16s")`
 ### SMX Frame
 
 The frame definitions start directly after the file header. Like in the
-SMP format, the frames come in bundles that consist of up to 3 images:
+SMP format, the frames consist of up to 3 layers:
 
-* main sprite
-* shadow for that sprite (optional)
-* outline (optional)
+* main graphic layer
+* shadow layer (optional)
+* outline layer (optional)
 
-Which of these images are present in a bundle is determined by the value
-`bundle_type` from the bundle header.
+Which of these layers are present in a frame is determined by the value
+`frame_type` from the frame header.
 
 
-#### SMX Bundle header
+#### SMX Frame Header
 
-The bundle header contains 3 values:
+The frame header contains 3 values:
 
-Length   | Type   | Description                | Example
----------|--------|----------------------------|--------
-1 bytes  | uint8  | Bundle Type                | 3, 0b00000011 (bit field)
-1 bytes  | uint8  | Palette number             | 21, 0x15
-4 bytes  | uint32 | possibly uncompressed size | 6272, 0x1880
+Length   | Type   | Description       | Example
+---------|--------|-------------------|--------
+1 bytes  | uint8  | Frame Type        | 3, 0b00000011 (bit field)
+1 bytes  | uint8  | Palette number    | 21, 0x15
+4 bytes  | uint32 | Uncompressed size | 6272, 0x1880
 
 ```cpp
-struct smx_bundle_header {
-  uint8 bundle_type;
-  uint8 palette_number;
-  uint32 ??;
+struct smx_frame_header {
+  uint8  frame_type;
+  uint8  palette_number;
+  uint32 uncomp_size;
 };
 ```
 Python format: `Struct("< 2B I")`
 
-`bundle_type` is a bit field. This means that every bit set to `1`
-in this values tells us something about the bundle.
+`frame_type` is a bit field. This means that every bit set to `1`
+in this values tells us something about the frame.
 
 Bit index | Description
 ----------|------------
-7         | If set to `1`, the bundle contains a main graphic frame
-6         | If set to `1`, the bundle contains a shadow frame
-5         | If set to `1`, the bundle contains an outline frame
-4         | Determines the compression algorithm for the main graphic frame. `0` = 4plus1; `1` = 8to5 (see the [Compression Algorithms](#compression-algorithms) section)
+7         | If set to `1`, the frame contains a main graphic layer
+6         | If set to `1`, the frame contains a shadow layer
+5         | If set to `1`, the frame contains an outline layer
+4         | Determines the compression algorithm for the main graphic layer. `0` = 4plus1; `1` = 8to5 (see the [Compression Algorithms](#compression-algorithms) section)
 3         | Unknown, but only used by bridges
 0-2       | Unused
 
 **Example**
 
 ```
-bundle_type = 0x0B = 0000 1011
+frame_type = 0x0B = 0000 1011
 ```
 
-This bundle would contain a *main graphic sprite*, a *shadow* for that sprite
-and use the *8to5* compression algorithm for its main graphic pixels.
+This frame would contain a *main graphic layer*, a *shadow layer*
+and use the *8to5* compression algorithm for its main graphic layer.
 
 
-#### SMX Frame header
+#### SMX Layer Header
 
-After the bundle header the frame definitions start. Every frame begins
-with a frame header that stores metadata about the frame.
+After the frame header the layer definitions start. Every layer begins
+with a layer header that stores metadata about the layer.
 
 Length   | Type   | Description                | Example
 ---------|--------|----------------------------|--------
@@ -106,48 +107,48 @@ Length   | Type   | Description                | Example
 2 bytes  | uint16 | Height of image            | 145, 0x0091
 2 bytes  | uint16 | Centre of sprite (X coord) | 88, 0x0058
 2 bytes  | uint16 | Centre of sprite (Y coord) | 99, 0x0063
-4 bytes  | uint32 | Length of frame in bytes   | 1848, 0x00000738
+4 bytes  | uint32 | Length of layer in bytes   | 1848, 0x00000738
 4 bytes  | uint32 | Unknown                    | 950, 0x000003B6
 
 ```cpp
-struct smx_frame_header {
+struct smx_layer_header {
   uint16 width;
   uint16 height;
   uint16 hotspot_x;
   uint16 hotspot_y;
-  uint32 frame_len;
+  uint32 layer_len;
   uint32 ??;
 };
 ```
 Python format: `Struct("< 4H 2I")`
 
-#### SMX Frame row edge
+#### SMX Layer row edge
 
-Directly after the frame header, an array of `smp_frame_row_edge`
+Directly after the layer header, an array of `smp_layer_row_edge`
 (of length `height`) structs begins. These work exactly like the row edges
-in the [SMP files](smp-files.md#smp-frame-row-edge).
+in the [SMP files](smp-files.md#smp-layer-row-edge).
 
 
 #### SMX Pixel data
 
-##### Main graphics type
+##### Main Graphics type
 
 In the SMX format, drawing commands and pixel data for the
 main graphic image are stored **in two separate arrays**.
 
-Immediately after the SMX frame row edge definition there are two values
-that define the length of these array in bytes:
+Immediately after the SMX layer row edge definition there are two values
+that define the length of these arrays in bytes:
 
 Length   | Type   | Description                | Example
----------|--------|----------------------------|--------
+---------|--------|----------------------------|-----------------
 4 bytes  | uint32 | Command array length       | 354, 0x00000162
 4 bytes  | uint32 | Pixel data array length    | 1270, 0x000004F6
 
 The commands are the same as in the SMP files except that their pixel
 data has to be read from the pixel data array. Data from the
-pixel data array has to be read sequentially, The first draw
+pixel data array has to be read sequentially, The first *Draw*
 command will start reading at index 0 of the pixel data array.
-The next draw command will continue reading where the previous command
+The next *Draw* command will continue reading where the previous command
 stopped.
 
 Pixels in the pixel data array are compressed in chunks using one of
@@ -169,13 +170,13 @@ End of Row       | `0bXXXXXX11`  | 0                        | End of commands fo
 
 ##### Shadow type
 
-Unlike the main graphics type frames, the shadow type frames
+Unlike the main graphics type layers, the shadow type layers
 **only use one array** for drawing commands and pixel data. They can be
-read exactly like [SMP shadow frames](#shadow-type) and are
+read exactly like [SMP shadow layers](#shadow-type) and are
 **not compressed**.
 
 However, they still store the length of the unified array immediately
-after the SMX frame row edge definitions end:
+after the SMX layer row edge definitions end:
 
 Length   | Type   | Description                | Example
 ---------|--------|----------------------------|--------
@@ -186,10 +187,10 @@ Length   | Type   | Description                | Example
 
 Outline types also **only use one array** for drawing commands
 and pixel data. The information is stored exactly as in the
-[SMP outline frames](#outline-type) and **does not use compression**.
+[SMP outline layers](#outline-type) and **does not use compression**.
 
-Like the SMX shadow type frames they store the length of the
-unified array immediately after the SMX frame row edge definitions end:
+Like the SMX shadow type layers, they store the length of the
+unified array immediately after the SMX layer row edge definitions end:
 
 Length   | Type   | Description                | Example
 ---------|--------|----------------------------|--------
@@ -198,7 +199,7 @@ Length   | Type   | Description                | Example
 
 ## Compression Algorithms
 
-Every SMX bundles uses one of two available compression methods
+Every SMX frame uses one of two available compression methods
 for the main graphic sprite. Each of the compression methods
 will store pixel data in chunks of 5 byte which can either contain
 2 (8to5 compression) or 4 compressed pixels (4plus1 compression).
@@ -215,9 +216,8 @@ The 4plus1 compression method stores the data of 4 pixels in a
 
 Information lost (compared to [SMP pixel](smp-files.md#smp-pixel)):
 
-* `palette_index`: instead stored in SMX Bundle Header
-* `px_damage_mask_1`: completely removed
-* `px_damage_mask_2`: completely removed
+* `palette_index`: instead stored in SMX frame header
+* `px_damage_modifier`: completely removed
 
 Length   | Type   | Description                  | Example
 ---------|--------|------------------------------|--------
@@ -237,7 +237,7 @@ Bit index | Description
 0-1       | Palette section `pixel3`
 
 This compression method is used for anything that does
-not require the damage mask values (basically everything that is
+not require the damage modifier values (basically everything that is
 not a building).
 
 
@@ -248,7 +248,7 @@ The 8to5 compression method stores the data of 2 pixels in a
 
 Information lost (compared to [SMP pixel](smp-files.md#smp-pixel)):
 
-* `palette_index`: instead stored in SMX Bundle Header
+* `palette_index`: instead stored in SMX frame header
 
 The chunk is basically a giant bitfield, but the values are not that
 hard to extract.
@@ -276,12 +276,12 @@ Value                       | Bit indices
 ----------------------------|------------
 `pixel0` palette index      | 0-7
 `pixel0` palette section    | 14-15
-`pixel0` damage mask 1      | 16-19
-`pixel0` damage mask 2      | 26-31
+`pixel0` damage modifier 1  | 16-19
+`pixel0` damage modifier 2  | 26-31
 `pixel1` palette index      | 22-23, 8-13
 `pixel1` palette section    | 20-21
-`pixel1` damage mask 1      | 38-39,24-25
-`pixel1` damage mask 2      | 32-37
+`pixel1` damage modifier 1  | 38-39,24-25
+`pixel1` damage modifier 2  | 32-37
 
 While this might look confusing at first, the two pixels can be easily
 extracted. If you look closely, you will notice that the bit positions
@@ -313,7 +313,8 @@ pixel0 = chunk[0:3] & 0xFF03F03F = 90 02 30 33
 ```
 
 For the second pixel, two extra steps are needed. What we have to do
-is to take the second and third byte of the chunk and [rotate](https://en.wikipedia.org/wiki/Bitwise_operation#Rotate) this value by 2 to the right. We also do the same
+is to take the second and third byte of the chunk and [rotate](https://en.wikipedia.org/wiki/Bitwise_operation#Rotate)
+this value by 2 to the right. We also do the same
 to the fourth and fifth byte of the chunk.
 
 ```

@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "windowvk.h"
 
@@ -87,8 +87,8 @@ VlkWindow::VlkWindow(const char* title)
 		title,
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
-		this->size.first,
-		this->size.second,
+		this->size[0],
+		this->size[1],
 		SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED
 	);
 

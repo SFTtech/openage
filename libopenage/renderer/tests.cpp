@@ -126,7 +126,7 @@ void main() {
 	auto obj1_unifs = obj_shader->new_uniform_input(
 		"mv", transform1.matrix(),
 		"u_id", 1u,
-		"tex", gltex.get()
+		"tex", gltex
 	);
 
 	auto transform2 = Eigen::Affine3f::Identity();
@@ -140,7 +140,8 @@ void main() {
 	auto obj2_unifs = obj_shader->new_uniform_input(
 		"mv", transform2.matrix(),
 		"u_id", 2u,
-		"tex", gltex.get()
+		// TODO bug: this tex input spills over to all the other uniform inputs!
+		"tex", gltex
 	);
 
 	transform3.prerotate(Eigen::AngleAxisf(90.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitZ()));
@@ -149,28 +150,28 @@ void main() {
 	auto obj3_unifs = obj_shader->new_uniform_input(
 		"mv", transform3.matrix(),
 		"u_id", 3u,
-		"tex", gltex.get()
+		"tex", gltex
 	);
 
 	/* The objects are using built-in quadrilateral geometry. */
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
 	Renderable obj1 {
-		obj1_unifs.get(),
-		quad.get(),
+		obj1_unifs,
+		quad,
 		true,
 		true,
 	};
 
 	Renderable obj2{
-		obj2_unifs.get(),
-		quad.get(),
+		obj2_unifs,
+		quad,
 		true,
 		true,
 	};
 
 	Renderable obj3 {
-		obj3_unifs.get(),
-		quad.get(),
+		obj3_unifs,
+		quad,
 		true,
 		true,
 	};
@@ -180,10 +181,10 @@ void main() {
 	 * which we can later read in order to determine which object was clicked. The depth texture is required,
 	 * but mostly irrelevant in this case. */
 	auto size = window.get_size();
-	auto color_texture = renderer->add_texture(resources::Texture2dInfo(size.first, size.second, resources::pixel_format::rgba8));
-	auto id_texture = renderer->add_texture(resources::Texture2dInfo(size.first, size.second, resources::pixel_format::r32ui));
-	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(size.first, size.second, resources::pixel_format::depth24));
-	auto fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
+	auto color_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::rgba8));
+	auto id_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::r32ui));
+	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::depth24));
+	auto fbo = renderer->create_texture_target( { color_texture, id_texture, depth_texture } );
 
 	/* Make an object to update the projection matrix in pass 1 according to changes in the screen size.
 	 * Because uniform values are preserved across objects using the same shader in a single render pass,
@@ -191,20 +192,23 @@ void main() {
 	 * geometry, which will set the uniform but not render anything. */
 	auto proj_unif = obj_shader->new_uniform_input();
 	Renderable proj_update {
-		proj_unif.get(),
+		proj_unif,
 		nullptr,
 		false,
 		false,
 	};
 
-	auto pass1 = renderer->add_render_pass({ proj_update, obj1, obj2, obj3 }, fbo.get());
+	auto pass1 = renderer->add_render_pass(
+		{ proj_update, obj1, obj2, obj3 },
+		fbo
+	);
 
 	/* Make an object encompassing the entire screen for the second render pass. The object
 	 * will be textured with the color output of pass 1, effectively copying its framebuffer. */
-	auto color_texture_unif = display_shader->new_uniform_input("color_texture", color_texture.get());
+	auto color_texture_unif = display_shader->new_uniform_input("color_texture", color_texture);
 	Renderable display_obj {
-		color_texture_unif.get(),
-		quad.get(),
+		color_texture_unif,
+		quad,
 		false,
 		false,
 	};
@@ -221,51 +225,51 @@ void main() {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	window.add_mouse_button_callback([&] (SDL_MouseButtonEvent const& ev) {
-			auto x = ev.x;
-			auto y = ev.y;
+		auto x = ev.x;
+		auto y = ev.y;
 
-			log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
-			if (!texture_data_valid) {
-				id_texture_data = id_texture->into_data();
-				texture_data_valid = true;
-			}
-			auto id = id_texture_data.read_pixel<uint32_t>(x, y);
-			log::log(INFO << "Id-texture-value at location: " << id);
-			if (id == 0) {
-				log::log(INFO << "Clicked at non existent object");
-			} else {
-				log::log(INFO << "Object number " << id << " clicked.");
-			}
-		} );
+		log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
+		if (!texture_data_valid) {
+			id_texture_data = id_texture->into_data();
+			texture_data_valid = true;
+		}
+		auto id = id_texture_data.read_pixel<uint32_t>(x, y);
+		log::log(INFO << "Id-texture-value at location: " << id);
+		if (id == 0) {
+			log::log(INFO << "Clicked at non existent object");
+		} else {
+			log::log(INFO << "Object number " << id << " clicked.");
+		}
+	});
 
 	window.add_resize_callback([&] (size_t w, size_t h) {
-			/* Calculate a projection matrix for the new screen size. */
-			float aspectRatio = float(w)/float(h);
-			float xScale = 1.0/aspectRatio;
+		/* Calculate a projection matrix for the new screen size. */
+		float aspectRatio = float(w)/float(h);
+		float xScale = 1.0/aspectRatio;
 
-			Eigen::Matrix4f pmat;
-			pmat << xScale, 0, 0, 0,
-			             0, 1, 0, 0,
-			             0, 0, 1, 0,
-			             0, 0, 0, 1;
+		Eigen::Matrix4f pmat;
+		pmat << xScale, 0, 0, 0,
+		             0, 1, 0, 0,
+		             0, 0, 1, 0,
+		             0, 0, 0, 1;
 
-			obj_shader->update_uniform_input(proj_unif.get(), "proj", pmat);
+		proj_unif->update("proj", pmat);
 
-			/* Create a new FBO with the right dimensions. */
-			color_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::rgba8));
-			id_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::r32ui));
-			depth_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::depth24));
-			fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
+		/* Create a new FBO with the right dimensions. */
+		color_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::rgba8));
+		id_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::r32ui));
+		depth_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::depth24));
+		fbo = renderer->create_texture_target( { color_texture, id_texture, depth_texture } );
 
-			display_shader->update_uniform_input(color_texture_unif.get(), "color_texture", color_texture.get());
+		color_texture_unif->update("color_texture", color_texture);
 
-			texture_data_valid = false;
-			pass1->set_target(fbo.get());
-		} );
+		texture_data_valid = false;
+		pass1->set_target(fbo);
+	});
 
-	while (!window.should_close()) {
-		renderer->render(pass1.get());
-		renderer->render(pass2.get());
+	while (not window.should_close()) {
+		renderer->render(pass1);
+		renderer->render(pass2);
 		window.update();
 		opengl::GlContext::check_error();
 	}

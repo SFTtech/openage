@@ -4,8 +4,11 @@
 
 namespace openage::renderer::opengl {
 
-GlRenderPass::GlRenderPass(const std::vector<Renderable>& renderables, RenderTarget const* target)
-:RenderPass(renderables, target), is_optimised(false) {}
+GlRenderPass::GlRenderPass(std::vector<Renderable> renderables,
+                           const std::shared_ptr<RenderTarget> &target)
+	:
+	RenderPass(renderables, target),
+	is_optimised(false) {}
 
 std::vector<Renderable> GlRenderPass::get_renderables() const {
 	return this->renderables;

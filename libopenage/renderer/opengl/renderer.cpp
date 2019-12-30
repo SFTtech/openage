@@ -14,48 +14,50 @@
 
 namespace openage::renderer::opengl {
 
-GlRenderer::GlRenderer(GlContext *ctx)
-	: gl_context(ctx)
+GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx)
+	:
+	gl_context{ctx},
+	display{std::make_shared<GlRenderTarget>()}
 {
 	log::log(MSG(info) << "Created OpenGL renderer");
 }
 
-std::unique_ptr<Texture2d> GlRenderer::add_texture(const resources::Texture2dData& data) {
-	return std::make_unique<GlTexture2d>(data);
+std::shared_ptr<Texture2d> GlRenderer::add_texture(const resources::Texture2dData& data) {
+	return std::make_shared<GlTexture2d>(this->gl_context, data);
 }
 
-std::unique_ptr<Texture2d> GlRenderer::add_texture(const resources::Texture2dInfo& info) {
-	return std::make_unique<GlTexture2d>(info);
+std::shared_ptr<Texture2d> GlRenderer::add_texture(const resources::Texture2dInfo& info) {
+	return std::make_shared<GlTexture2d>(this->gl_context, info);
 }
 
-std::unique_ptr<ShaderProgram> GlRenderer::add_shader(std::vector<resources::ShaderSource> const& srcs) {
-	return std::make_unique<GlShaderProgram>(srcs, this->gl_context->get_capabilities());
+std::shared_ptr<ShaderProgram> GlRenderer::add_shader(std::vector<resources::ShaderSource> const& srcs) {
+	return std::make_shared<GlShaderProgram>(this->gl_context, srcs);
 }
 
-std::unique_ptr<Geometry> GlRenderer::add_mesh_geometry(resources::MeshData const& mesh) {
-	return std::make_unique<GlGeometry>(mesh);
+std::shared_ptr<Geometry> GlRenderer::add_mesh_geometry(resources::MeshData const& mesh) {
+	return std::make_shared<GlGeometry>(this->gl_context, mesh);
 }
 
-std::unique_ptr<Geometry> GlRenderer::add_bufferless_quad() {
-	return std::make_unique<GlGeometry>();
+std::shared_ptr<Geometry> GlRenderer::add_bufferless_quad() {
+	return std::make_shared<GlGeometry>();
 }
 
-std::unique_ptr<RenderPass> GlRenderer::add_render_pass(std::vector<Renderable> renderables, RenderTarget const* target) {
-	return std::make_unique<GlRenderPass>(renderables, target);
+std::shared_ptr<RenderPass> GlRenderer::add_render_pass(std::vector<Renderable> renderables, const std::shared_ptr<RenderTarget> &target) {
+	return std::make_shared<GlRenderPass>(std::move(renderables), target);
 }
 
-std::unique_ptr<RenderTarget> GlRenderer::create_texture_target(std::vector<Texture2d*> textures) {
-	std::vector<const GlTexture2d*> gl_textures;
+std::shared_ptr<RenderTarget> GlRenderer::create_texture_target(std::vector<std::shared_ptr<Texture2d>> const& textures) {
+	std::vector<std::shared_ptr<GlTexture2d>> gl_textures;
 	gl_textures.reserve(textures.size());
 	for (auto tex : textures) {
-		gl_textures.push_back(static_cast<const GlTexture2d*>(tex));
+		gl_textures.push_back(std::dynamic_pointer_cast<GlTexture2d>(tex));
 	}
 
-	return std::make_unique<GlRenderTarget>(gl_textures);
+	return std::make_shared<GlRenderTarget>(this->gl_context, gl_textures);
 }
 
-RenderTarget const* GlRenderer::get_display_target() {
-	return &this->display;
+std::shared_ptr<RenderTarget> GlRenderer::get_display_target() {
+	return this->display;
 }
 
 resources::Texture2dData GlRenderer::display_into_data() {
@@ -68,7 +70,7 @@ resources::Texture2dData GlRenderer::display_into_data() {
 	resources::Texture2dInfo tex_info(width, height, resources::pixel_format::rgba8, 4);
 	std::vector<uint8_t> data(tex_info.get_data_size());
 
-	static_cast<GlRenderTarget const*>(this->get_display_target())->bind_read();
+	std::static_pointer_cast<GlRenderTarget>(this->get_display_target())->bind_read();
 	glPixelStorei(GL_PACK_ALIGNMENT, 4);
 	glReadnPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, tex_info.get_data_size(), data.data());
 
@@ -76,13 +78,14 @@ resources::Texture2dData GlRenderer::display_into_data() {
 	return img.flip_y();
 }
 
-
-void GlRenderer::optimise(GlRenderPass* pass) {
+void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {
 	if (!pass->get_is_optimised()) {
 		auto renderables = pass->get_renderables();
 		std::stable_sort(renderables.begin(), renderables.end(), [](const Renderable& a, const Renderable& b) {
-			GLuint shader_a = dynamic_cast<GlUniformInput const*>(a.unif_in)->program->get_handle();
-			GLuint shader_b = dynamic_cast<GlUniformInput const*>(b.unif_in)->program->get_handle();
+			GLuint shader_a = std::dynamic_pointer_cast<GlShaderProgram>(
+				std::dynamic_pointer_cast<GlUniformInput>(a.unif_in)->get_program())->get_handle();
+			GLuint shader_b = std::dynamic_pointer_cast<GlShaderProgram>(
+				std::dynamic_pointer_cast<GlUniformInput>(b.unif_in)->get_program())->get_handle();
 			return shader_a < shader_b;
 		});
 
@@ -91,15 +94,16 @@ void GlRenderer::optimise(GlRenderPass* pass) {
 	}
 }
 
-void GlRenderer::render(RenderPass* pass) {
-	auto gl_target = dynamic_cast<const GlRenderTarget*>(pass->get_target());
+void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
+	auto gl_target = std::dynamic_pointer_cast<GlRenderTarget>(pass->get_target());
 	gl_target->bind_write();
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	auto gl_pass = dynamic_cast<GlRenderPass*>(pass);
+	auto gl_pass = std::dynamic_pointer_cast<GlRenderPass>(pass);
 	GlRenderer::optimise(gl_pass);
+
 	for (auto obj : gl_pass->get_renderables()) {
 		if (obj.alpha_blending) {
 			glEnable(GL_BLEND);
@@ -115,9 +119,18 @@ void GlRenderer::render(RenderPass* pass) {
 			glDisable(GL_DEPTH_TEST);
 		}
 
-		auto in = dynamic_cast<GlUniformInput const*>(obj.unif_in);
-		auto geom = dynamic_cast<GlGeometry const*>(obj.geometry);
-		in->program->execute_with(in, geom);
+		auto in = std::dynamic_pointer_cast<GlUniformInput>(obj.unif_in);
+		auto program = std::static_pointer_cast<GlShaderProgram>(in->get_program());
+
+		// this also calls program->use()
+		program->update_uniforms(in);
+
+		// draw the geometry
+		if (obj.geometry != nullptr) {
+			auto geom = std::dynamic_pointer_cast<GlGeometry>(obj.geometry);
+			// TODO read obj.blend + family
+			geom->draw();
+		}
 	}
 }
 

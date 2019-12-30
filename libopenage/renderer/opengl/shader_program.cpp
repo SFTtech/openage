@@ -3,11 +3,13 @@
 #include "shader_program.h"
 
 #include <algorithm>
+#include <cstdio>
 #include <unordered_set>
 
 #include "../../error/error.h"
 #include "../../log/log.h"
 #include "../../datastructure/constexpr_map.h"
+#include "../../util/opengl.h"
 
 #include "texture.h"
 #include "shader.h"
@@ -18,16 +20,12 @@
 namespace openage::renderer::opengl {
 
 static void check_program_status(GLuint program, GLenum what_to_check) {
-	GLint status;
+	GLint status = GL_FALSE;
 	glGetProgramiv(program, what_to_check, &status);
 
+	GlContext::check_error();
+
 	if (status != GL_TRUE) {
-		GLint loglen;
-		glGetProgramiv(program, GL_INFO_LOG_LENGTH, &loglen);
-
-		std::vector<char> infolog(loglen);
-		glGetProgramInfoLog(program, loglen, nullptr, infolog.data());
-
 		const char *what_str = [=] {
 			switch (what_to_check) {
 			case GL_LINK_STATUS:
@@ -41,19 +39,36 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 			}
 		}();
 
-		throw Error(MSG(err) << "OpenGL shader program " << what_str << " failed:\n" << infolog.data(), true);
+		GLint loglen = 0;
+		glGetProgramiv(program, GL_INFO_LOG_LENGTH, &loglen);
+
+		std::vector<char> infolog(loglen);
+		GLint real_loglen;
+		glGetProgramInfoLog(program, loglen, &real_loglen, infolog.data());
+
+		std::string gl_message = "no reason returned";
+		if (infolog.size() and strlen(infolog.data())) {
+			gl_message = infolog.data();
+		}
+
+		throw Error(ERR << "OpenGL shader program " << what_str << " failed (len " << loglen << ", real: " << real_loglen << "):\n" << gl_message, true);
 	}
 }
 
-GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &srcs, const gl_context_capabilities &caps)
-	: GlSimpleObject([] (GLuint handle) { glDeleteProgram(handle); } )
+GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
+                                 const std::vector<resources::ShaderSource> &srcs)
+	: GlSimpleObject(context,
+	                 [] (GLuint handle) { glDeleteProgram(handle); } )
 	, validated(false) {
+
+	const gl_context_capabilities& caps = context->get_capabilities();
+
 	GLuint handle = glCreateProgram();
 	this->handle = handle;
 
 	std::vector<GlShader> shaders;
 	for (auto const& src : srcs) {
-		GlShader shader(src);
+		GlShader shader{context, src};
 		glAttachShader(handle, shader.get_handle());
 		shaders.push_back(std::move(shader));
 	}
@@ -267,7 +282,13 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 	}
 }
 
+
 void GlShaderProgram::use() {
+	// the setup doesn't need to be done if this program is already active.
+	if (this->in_use()) {
+		return;
+	}
+
 	if (!this->validated) {
 		// TODO(Vtec234): validation depends on the context state, so this might be worth calling
 		// more than once. However, once per frame is probably too much.
@@ -279,27 +300,43 @@ void GlShaderProgram::use() {
 
 	glUseProgram(*this->handle);
 
+	// store this program as the active one
+	this->context->set_current_program(
+		std::static_pointer_cast<GlShaderProgram>(
+			this->shared_from_this()
+		)
+	);
+
 	for (auto const &pair : this->textures_per_texunits) {
 		// We have to bind the texture to their texture units here because
 		// the texture unit bindings are global to the context. Each time
 		// the shader switches, it is possible that some other shader overwrote
-		// these, and since we want the uniform values to persist across execute_with
-		// calls, we have to set them more often than just on execute_with.
+		// these, and since we want the uniform values to persist across update_uniforms
+		// calls, we have to set them more often than just on update_uniforms.
 		glActiveTexture(GL_TEXTURE0 + pair.first);
 		glBindTexture(GL_TEXTURE_2D, pair.second);
 
 		// By the time we call bind, the texture may have been deleted, but if it's fixed
-		// afterwards using execute_with, the render state will still be fine, so we can ignore
+		// afterwards using update_uniforms, the render state will still be fine, so we can ignore
 		// this error.
 		// TODO this will swallow actual errors elsewhere, and should be avoided. how?
+		// probably by holding the texture object as shared_ptr as long as it is bound
 		glGetError();
 	}
 }
 
-void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeometry *geom) {
-	ENSURE(unif_in->program == this, "Uniform input passed to different shader than it was created with.");
 
-	this->use();
+bool GlShaderProgram::in_use() const {
+	return this->context->get_current_program().lock() == this->shared_from_this();
+}
+
+
+void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const& unif_in) {
+	ENSURE(unif_in->get_program() == this->shared_from_this(), "Uniform input passed to different shader than it was created with.");
+
+	if (not this->in_use()) {
+		this->use();
+	}
 
 	uint8_t const* data = unif_in->update_data.data();
 	for (auto const &pair : unif_in->update_offs) {
@@ -355,11 +392,6 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeomet
 			throw Error(MSG(err) << "Tried to upload unknown uniform type to GL shader.");
 		}
 	}
-
-	if (geom != nullptr) {
-		// TODO read obj.blend + family
-		geom->draw();
-	}
 }
 
 std::map<size_t, resources::vertex_input_t> GlShaderProgram::vertex_attributes() const {
@@ -372,9 +404,11 @@ std::map<size_t, resources::vertex_input_t> GlShaderProgram::vertex_attributes()
 	return attrib_map;
 }
 
-std::unique_ptr<UniformInput> GlShaderProgram::new_unif_in() {
-	auto in = std::make_unique<GlUniformInput>();
-	in->program = this;
+std::shared_ptr<UniformInput> GlShaderProgram::new_unif_in() {
+	auto in = std::make_shared<GlUniformInput>(
+		this->shared_from_this()
+	);
+
 	return in;
 }
 
@@ -382,8 +416,8 @@ bool GlShaderProgram::has_uniform(const char* name) {
 	return this->uniforms.count(name) == 1;
 }
 
-void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* val, GLenum type) {
-	auto *unif_in = static_cast<GlUniformInput*>(in);
+void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const& in, const char *unif, void const* val, GLenum type) {
+	auto unif_in = std::dynamic_pointer_cast<GlUniformInput>(in);
 
 	ENSURE(this->uniforms.count(unif) != 0,
 		"Tried to set uniform " << unif << " that does not exist in the shader program."
@@ -411,42 +445,42 @@ void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* v
 	}
 }
 
-void GlShaderProgram::set_i32(UniformInput *in, const char *unif, int32_t val) {
+void GlShaderProgram::set_i32(std::shared_ptr<UniformInput> const& in, const char *unif, int32_t val) {
 	this->set_unif(in, unif, &val, GL_INT);
 }
 
-void GlShaderProgram::set_u32(UniformInput *in, const char *unif, uint32_t val) {
+void GlShaderProgram::set_u32(std::shared_ptr<UniformInput> const& in, const char *unif, uint32_t val) {
 	this->set_unif(in, unif, &val, GL_UNSIGNED_INT);
 }
 
-void GlShaderProgram::set_f32(UniformInput *in, const char *unif, float val) {
+void GlShaderProgram::set_f32(std::shared_ptr<UniformInput> const& in, const char *unif, float val) {
 	this->set_unif(in, unif, &val, GL_FLOAT);
 }
 
-void GlShaderProgram::set_f64(UniformInput *in, const char *unif, double val) {
+void GlShaderProgram::set_f64(std::shared_ptr<UniformInput> const& in, const char *unif, double val) {
 	// TODO requires extension
 	this->set_unif(in, unif, &val, GL_DOUBLE);
 }
 
-void GlShaderProgram::set_v2f32(UniformInput *in, const char *unif, Eigen::Vector2f const& val) {
+void GlShaderProgram::set_v2f32(std::shared_ptr<UniformInput> const& in, const char *unif, Eigen::Vector2f const& val) {
 	this->set_unif(in, unif, &val, GL_FLOAT_VEC2);
 }
 
-void GlShaderProgram::set_v3f32(UniformInput *in, const char *unif, Eigen::Vector3f const& val) {
+void GlShaderProgram::set_v3f32(std::shared_ptr<UniformInput> const& in, const char *unif, Eigen::Vector3f const& val) {
 	this->set_unif(in, unif, &val, GL_FLOAT_VEC3);
 }
 
-void GlShaderProgram::set_v4f32(UniformInput *in, const char *unif, Eigen::Vector4f const& val) {
+void GlShaderProgram::set_v4f32(std::shared_ptr<UniformInput> const& in, const char *unif, Eigen::Vector4f const& val) {
 	this->set_unif(in, unif, &val, GL_FLOAT_VEC4);
 }
 
-void GlShaderProgram::set_m4f32(UniformInput *in, const char *unif, Eigen::Matrix4f const& val) {
+void GlShaderProgram::set_m4f32(std::shared_ptr<UniformInput> const& in, const char *unif, Eigen::Matrix4f const& val) {
 	this->set_unif(in, unif, val.data(), GL_FLOAT_MAT4);
 }
 
-void GlShaderProgram::set_tex(UniformInput *in, const char *unif, Texture2d const* val) {
-	auto const& tex = *static_cast<const GlTexture2d*>(val);
-	GLuint handle = tex.get_handle();
+void GlShaderProgram::set_tex(std::shared_ptr<UniformInput> const& in, const char *unif, std::shared_ptr<Texture2d> const& val) {
+	auto tex = std::dynamic_pointer_cast<GlTexture2d>(val);
+	GLuint handle = tex->get_handle();
 	this->set_unif(in, unif, &handle, GL_SAMPLER_2D);
 }
 

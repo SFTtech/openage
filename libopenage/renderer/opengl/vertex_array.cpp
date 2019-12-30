@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "vertex_array.h"
 
@@ -14,8 +14,10 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-GlVertexArray::GlVertexArray(std::vector<std::pair<GlBuffer const&, resources::VertexInputInfo const&>> buffers)
-	: GlSimpleObject([] (GLuint handle) { glDeleteVertexArrays(1, &handle); } )
+GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
+                             std::vector<std::pair<GlBuffer const&,
+                                         resources::VertexInputInfo const&>> buffers)
+	: GlSimpleObject(context, [] (GLuint handle) { glDeleteVertexArrays(1, &handle); } )
 {
 	GLuint handle;
 	glGenVertexArrays(1, &handle);
@@ -140,11 +142,14 @@ GlVertexArray::GlVertexArray(std::vector<std::pair<GlBuffer const&, resources::V
 	}
 }
 
-GlVertexArray::GlVertexArray(GlBuffer const& buf, resources::VertexInputInfo const& info)
-	: GlVertexArray( { { buf, info } } ) {}
+GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
+                             GlBuffer const& buf,
+                             resources::VertexInputInfo const& info)
+	: GlVertexArray(context, { { buf, info } } ) {}
 
-GlVertexArray::GlVertexArray()
-	: GlSimpleObject([] (GLuint handle) { glDeleteVertexArrays(1, &handle); } )
+GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context)
+	: GlSimpleObject(context,
+	                 [] (GLuint handle) { glDeleteVertexArrays(1, &handle); } )
 {
 	GLuint handle;
 	glGenVertexArrays(1, &handle);
