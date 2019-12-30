@@ -297,9 +297,9 @@ def terrain_convert(drs, slp_path, palette_index, output_path, interfac=None):
 
     # import here to prevent that the __main__ depends on SLP
     # just by importing this singlefile.py.
-    from .slp import determine_rgba_matrix, SLP, SLPFrame, FrameInfo
+    from .slp import SLP, SLPFrame, FrameInfo
     from PIL import Image
-    from .texture import Texture, TextureImage
+    from .texture import Texture, TextureImage, merge_frames
     from .terrain_convert import Terrain_convert
     import numpy as np
     
@@ -307,35 +307,19 @@ def terrain_convert(drs, slp_path, palette_index, output_path, interfac=None):
     # parse the slp image
     info("parsing slp image...")
     slp_image = SLP(slp_file.read())
+    texture_tomod = Texture(slp_image, palette)
     
-    # In order to extract the special image data from the SLP, I have to merge first all the frames ?
-    # In this case, the format is bad, we have a ndarray(10,10,dtype=np.ndarray(49,97),ndtype=tuple4), where each ndarray is of
-    # size 49x97x4
-    # How do we need to pass "special SLP image data" to PIL Image ?
-    # Should we have a matrix of 490x970 with each pixel is a rgba tuple?
-    info("parsing SLP Image into RGBA Matrix")
-    image = np.empty([10,10],dtype=np.ndarray)
-    row=0
-    column=0
-    count=0
-    while count < 100:
-        if row % 10 ==0 and row > 0:
-            column+=1
-            row=0
-        image[row][column] = slp_image.main_frames[count].get_picture_data(palette)
-        row+=1
-        count+=1
 
     #matrix = determine_rgba_matrix(image, None, 0) ???
-    image_new = Image.fromarray(image)
+    image_new = texture_tomod.image_data.get_data().transpose(1,0,2)
     info("merging RGBA Matrix")
     merged_image = Terrain_convert.merge(image_new)
-
     info("transforming RGBA Matrix")
-    transformed_image = Terrain_convert.transform(merged_image)
+    # Not yet verified
+    # transformed_image = Terrain_convert.transform(merged_image)
     
-    
-    #transform RGBA matrix into a Texture or TextureImage ?
-    info("rgba->TextureImage")
-    final_texture = TextureImage(transformed_image)
-
+    # The fromarray always swaps the x and y. Is it due to the memory representation (column first or row first) ? 
+    # How can we fix this problem ? We need to determine which technique is used.
+    # Maybe just take the bigger axis first because it will always be the x ?
+    created = Image.fromarray(merged_image,'RGBA')
+    created.save("testerrr" + ".png", "PNG")
