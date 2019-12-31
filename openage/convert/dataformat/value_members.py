@@ -199,6 +199,56 @@ class IDMember(IntMember):
         return "IDMember<%s>" % (type(self))
 
 
+class BitfieldMember(ValueMember):
+    """
+    Stores bit field members.
+    """
+
+    def __init__(self, name, value):
+        super().__init__(name)
+
+        self.value = value
+        self.member_type = MemberTypes.BITFIELD_MEMBER
+
+    def get_value(self):
+        return self.value
+
+    def get_value_at_pos(self, pos):
+        """
+        Return the boolean value stored at a specific position
+        in the bitfield.
+
+        :param pos: Position in the bitfield, starting with the least significant bit.
+        :type pos: int
+        """
+        return bool(self.value & (2 ** pos))
+
+    def get_type(self):
+        return self.member_type
+
+    def diff(self, other):
+        """
+        Uses XOR to determine which bits are different in 'other'.
+        """
+        if self.get_type() is other.get_type():
+            if self.get_value() == other.get_value():
+                return NoDiffMember(self.name)
+
+            else:
+                difference = self.value ^ other.get_value()
+                return BitfieldMember(self.name, difference)
+
+        else:
+            raise Exception(
+                "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+
+    def __len__(self):
+        return len(self.value)
+
+    def __repr__(self):
+        return "BitfieldMember<%s>" % (type(self))
+
+
 class StringMember(ValueMember):
     """
     Stores string values.
@@ -321,6 +371,8 @@ class ArrayMember(ValueMember):
             self.member_type = MemberTypes.ARRAY_BOOL
         elif allowed_member_type is MemberTypes.ID_MEMBER:
             self.member_type = MemberTypes.ARRAY_ID
+        elif allowed_member_type is MemberTypes.BITFIELD_MEMBER:
+            self.member_type = MemberTypes.ARRAY_BITFIELD
         elif allowed_member_type is MemberTypes.STRING_MEMBER:
             self.member_type = MemberTypes.ARRAY_STRING
         elif allowed_member_type is MemberTypes.CONTAINER_MEMBER:
@@ -382,6 +434,7 @@ class MemberTypes(Enum):
     FLOAT_MEMBER     = "float"
     BOOLEAN_MEMBER   = "boolean"
     ID_MEMBER        = "id"
+    BITFIELD_MEMBER  = "bitfield"
     STRING_MEMBER    = "string"
     CONTAINER_MEMBER = "container"
 
@@ -390,5 +443,6 @@ class MemberTypes(Enum):
     ARRAY_FLOAT      = "floatarray"     # FloatMembers
     ARRAY_BOOL       = "boolarray"      # BooleanMembers
     ARRAY_ID         = "idarray"        # IDMembers
+    ARRAY_BITFIELD   = "bitfieldarray"  # BitfieldMembers
     ARRAY_STRING     = "stringarray"    # StringMembers
     ARRAY_CONTAINER  = "contarray"      # ContainerMembers
