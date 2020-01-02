@@ -25,14 +25,13 @@ from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup
 from ...dataformat.aoc.genie_tech import BuildingLineUpgrade
 
-from ...nyan.api_loader import load_api
 from openage.convert.dataformat.aoc.genie_unit import GenieVariantGroup
+from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
+from openage.nyan.nyan_structs import NyanObject, MemberType, MemberOperator
+from openage.convert.nyan.api_loader import load_api
 
 
 class AoCProcessor:
-
-    # The interface to the API
-    nyan_api_objects = load_api()
 
     @classmethod
     def convert(cls, gamespec, media):
@@ -69,6 +68,8 @@ class AoCProcessor:
         """
         data_set = GenieObjectContainer()
 
+        data_set.nyan_api_objects = load_api()
+
         cls._extract_genie_units(gamespec, data_set)
         cls._extract_genie_techs(gamespec, data_set)
         cls._extract_genie_effect_bundles(gamespec, data_set)
@@ -81,6 +82,8 @@ class AoCProcessor:
         cls._extract_genie_graphics(gamespec, data_set)
         cls._extract_genie_sounds(gamespec, data_set)
         cls._extract_genie_terrains(gamespec, data_set)
+
+        cls._pregenerate_hardcoded_objects(data_set)
 
         # TODO: Media files
 
@@ -113,7 +116,8 @@ class AoCProcessor:
 
     @classmethod
     def _post_processor(cls, full_data_set):
-        pass
+
+        AoCNyanSubprocessor.convert(full_data_set)
 
     @staticmethod
     def _extract_genie_units(gamespec, full_data_set):
@@ -361,6 +365,51 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
+    def _pregenerate_hardcoded_objects(full_data_set):
+        """
+        Creates nyan objects for things that are hardcoded into the Genie Engine,
+        but configurable in openage. E.g. HP.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
+        api_objects = full_data_set.nyan_api_objects
+
+        #=======================================================================
+        # Attributes
+        #=======================================================================
+        health_parents = [api_objects["engine.aux.attribute.Attribute"]]
+        health_nyan_object = NyanObject("Health", health_parents)
+
+        # TODO: Fill translations
+        health_name_value_parents = [api_objects["engine.aux.translated.type.TranslatedString"]]
+        health_name_value = NyanObject("HealthName", health_name_value_parents)
+
+        translations = health_name_value.get_member_by_name("TranslatedString.translations",
+                                                            api_objects["engine.aux.translated.type.TranslatedString"])
+        translations.set_value([], MemberOperator.ASSIGN)
+
+        health_abbrv_value_parents = [api_objects["engine.aux.translated.type.TranslatedString"]]
+        health_abbrv_value = NyanObject("HealthAbbreviation", health_abbrv_value_parents)
+
+        translations = health_abbrv_value.get_member_by_name("TranslatedString.translations",
+                                                             api_objects["engine.aux.translated.type.TranslatedString"])
+        translations.set_value([], MemberOperator.ASSIGN)
+
+        health_name = health_nyan_object.get_member_by_name("Attribute.name",
+                                                            api_objects["engine.aux.attribute.Attribute"])
+        health_name.set_value(health_name_value, MemberOperator.ASSIGN)
+        health_abbrv = health_nyan_object.get_member_by_name("Attribute.abbreviation",
+                                                             api_objects["engine.aux.attribute.Attribute"])
+        health_abbrv.set_value(health_abbrv_value, MemberOperator.ASSIGN)
+
+        health_ref_in_modpack = "aux.attribute.types.Health"
+        pregen_nyan_objects.update({health_ref_in_modpack: health_nyan_object})
+
+    @staticmethod
     def _create_unit_lines(full_data_set):
         """
         Sort units into lines, based on information in the unit connections.
@@ -374,8 +423,8 @@ class AoCProcessor:
         unit_connections = full_data_set.unit_connections
 
         # Stores unit lines with key=line_id and val=object
-        # while they are created. Later in the data set,
-        # we store them with key=head_unit_id.
+        # while they are created. In the GenieObjectContainer,
+        # we store them with key=head_unit_id and val=object.
         pre_unit_lines = {}
 
         for _, connection in unit_connections.items():

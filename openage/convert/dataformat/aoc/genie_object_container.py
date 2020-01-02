@@ -7,12 +7,15 @@ class GenieObjectContainer(ConverterObjectContainer):
     """
     Contains everything from the dat file, sorted into several
     categories.
-
-    Newly created instances of ConverterObject and ConverterObjectGroup
-    should add themselves to the object's dicts during initilization.
     """
 
     def __init__(self):
+
+        # API reference
+        self.nyan_api_objects = None
+
+        # Things that don't exist in the game, e.g. Attributes
+        self.pregen_nyan_objects = {}
 
         # Phase 1: Genie-like objects
         # ConverterObject types (the data from the game)
@@ -49,4 +52,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.civ_boni = {}
 
         # Phase 3: nyan objects
-        self.combined_sprites = {}
+        self.combined_sprites = {}          # Animation or Terrain graphics
+        self.nyan_files = []
+        self.sprite_files = []
+        self.terrain_files = []
