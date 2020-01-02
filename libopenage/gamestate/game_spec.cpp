@@ -282,7 +282,7 @@ bool GameSpec::valid_graphic_id(index_t graphic_id) const {
 void GameSpec::load_building(const gamedata::building_unit &building, unit_meta_list &list) const {
 
 	// check graphics
-	if (this->valid_graphic_id(building.graphic_standing0)) {
+	if (this->valid_graphic_id(building.idle_graphic0)) {
 		auto meta_type = std::make_shared<UnitTypeMeta>("Building", building.id0, [this, &building](const Player &owner) {
 			return std::make_shared<BuildingProducer>(owner, *this, &building);
 		});
@@ -294,7 +294,7 @@ void GameSpec::load_living(const gamedata::living_unit &unit, unit_meta_list &li
 
 	// check graphics
 	if (this->valid_graphic_id(unit.dying_graphic) &&
-		this->valid_graphic_id(unit.graphic_standing0) &&
+		this->valid_graphic_id(unit.idle_graphic0) &&
 		this->valid_graphic_id(unit.walking_graphics0)) {
 		auto meta_type = std::make_shared<UnitTypeMeta>("Living", unit.id0, [this, &unit](const Player &owner) {
 			return std::make_shared<LivingProducer>(owner, *this, &unit);
@@ -306,7 +306,7 @@ void GameSpec::load_living(const gamedata::living_unit &unit, unit_meta_list &li
 void GameSpec::load_object(const gamedata::unit_object &object, unit_meta_list &list) const {
 
 	// check graphics
-	if (this->valid_graphic_id(object.graphic_standing0)) {
+	if (this->valid_graphic_id(object.idle_graphic0)) {
 		auto meta_type = std::make_shared<UnitTypeMeta>("Object", object.id0, [this, &object](const Player &owner) {
 			return std::make_shared<ObjectProducer>(owner, *this, &object);
 		});
@@ -317,7 +317,7 @@ void GameSpec::load_object(const gamedata::unit_object &object, unit_meta_list &
 void GameSpec::load_missile(const gamedata::missile_unit &proj, unit_meta_list &list) const {
 
 	// check graphics
-	if (this->valid_graphic_id(proj.graphic_standing0)) {
+	if (this->valid_graphic_id(proj.idle_graphic0)) {
 		auto meta_type = std::make_shared<UnitTypeMeta>("Projectile", proj.id0, [this, &proj](const Player &owner) {
 			return std::make_shared<ProjectileProducer>(owner, *this, &proj);
 		});

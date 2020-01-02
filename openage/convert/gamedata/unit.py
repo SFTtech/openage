@@ -548,8 +548,8 @@ class UnitObject(GenieStructure):
                 61: "HORSE",
             },
         )),
-        (READ_EXPORT, "graphic_standing0", StorageType.ID_MEMBER, "int16_t"),
-        (READ_EXPORT, "graphic_standing1", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "idle_graphic0", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "idle_graphic1", StorageType.ID_MEMBER, "int16_t"),
         (READ_EXPORT, "dying_graphic", StorageType.ID_MEMBER, "int16_t"),
         (READ_EXPORT, "undead_graphic", StorageType.ID_MEMBER, "int16_t"),
         # 1 = become `dead_unit_id` (reviving does not make it usable again)

@@ -124,7 +124,7 @@ class NyanObject:
                 None,
                 member.get_set_type(),
                 None,
-                None,
+                0,
                 member.is_optional()
             )
             new_child.update_inheritance(inherited_member)
@@ -139,7 +139,7 @@ class NyanObject:
                 None,
                 member.get_set_type(),
                 None,
-                None,
+                0,
                 member.is_optional()
             )
             new_child.update_inheritance(inherited_member)
@@ -156,17 +156,21 @@ class NyanObject:
         """
         return self._members | self._inherited_members
 
-    def get_member_by_name(self, member_name):
+    def get_member_by_name(self, member_name, origin=None):
         """
         Returns the NyanMember with the specified name or
         None if there is no member with that name.
-
-        For inherited members, the notation 'origin_name.member'
-        must be used.
         """
-        for member in self.get_members():
-            if member.get_name() == member_name:
-                return member
+        if origin and origin is not self:
+            for inherited_member in self._inherited_members:
+                if origin == inherited_member.get_origin():
+                    if inherited_member.get_name() == member_name:
+                        return inherited_member
+
+        else:
+            for member in self._members:
+                if member.get_name() == member_name:
+                    return member
 
         return None
 
@@ -256,7 +260,7 @@ class NyanObject:
                 None,
                 new_inherited_member.get_set_type(),
                 None,
-                None,
+                0,
                 new_inherited_member.is_optional()
             )
             child.update_inheritance(inherited_member)
@@ -860,7 +864,7 @@ class InheritedNyanMember(NyanMember):
     """
 
     def __init__(self, name, member_type, parent, origin, value=None,
-                 set_type=None, operator=None, override_depth=None, optional=False):
+                 set_type=None, operator=None, override_depth=0, optional=False):
         """
         Initializes the member and does some correctness
         checks, for your convenience.
@@ -899,9 +903,10 @@ class InheritedNyanMember(NyanMember):
 
     def is_initialized(self):
         """
-        Returns True if the parent is initialized.
+        Returns True if self or the parent is initialized.
         """
-        return self._parent.get_member_by_name(self.name).is_initialized()
+        return super().is_initialized() or\
+            self._parent.get_member_by_name(self.name, self._origin).is_initialized()
 
     def has_value(self):
         """
@@ -914,6 +919,14 @@ class InheritedNyanMember(NyanMember):
         Returns the string representation of the member.
         """
         return self.dump_short()
+
+    def set_value(self, value, operator):
+        """
+        Set the value and operator of the inherited nyan member.
+        """
+        self._operator = operator
+
+        super().set_value(value)
 
     def _sanity_check(self):
         """

@@ -264,7 +264,7 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
 
         :param unit_line: The GenieUnitLine the building produces.
         """
-        if not self.contains_creatable(unit_line.get_id()):
+        if not self.contains_creatable(unit_line.get_head_unit_id()):
             self.creates.append(unit_line)
 
     def add_researchable(self, tech_group):
@@ -284,12 +284,12 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
 
         return building in self.line
 
-    def contains_creatable(self, line_id):
+    def contains_creatable(self, head_unit_id):
         """
-        Returns True if a unit line with line_id is a creatable of
+        Returns True if a unit line with head_unit_id is a creatable of
         this building.
         """
-        unit_line = self.data.unit_lines[line_id]
+        unit_line = self.data.unit_lines[head_unit_id]
 
         return unit_line in self.creates
 
