@@ -167,41 +167,101 @@ class RawAPIObject:
     """
     An object that contains all the necessary information to create
     a nyan API object. Members are stored as (membername, value) pairs.
-    Values refer either to primitive values (int, float, str) or
-    pointers to objects. The latter have to be resolved in an
-    additional step.
+    Values refer either to primitive values (int, float, str),
+    expected pointers to objects or expected media files.
+    The 'expected' values two have to be resolved in an additional step.
     """
 
-    def __init__(self, name, api_ref):
+    def __init__(self, obj_id, name, api_ref, location=""):
+        """
+        Creates a raw API object.
 
-        from ..processor.aoc.processor import AoCProcessor
+        :param obj_id: Unique identifier for the raw API object.
+        :type obj_id: str
+        :param name: Name of the nyan object created from the raw API object.
+        :type name: str
+        :param api_ref: The openage API objects used as reference for creating the nyan object.
+        :type api_ref: dict
+        :param location: Relative path of the nyan file in the modpack
+        :type location: str
+        """
 
-        self.api_ref = AoCProcessor.nyan_api_objects[api_ref]
-        self.nyan_object = NyanObject(name, self.api_ref, None, None)
+        self.id = obj_id
+        self.name = name
+
+        self.api_ref = api_ref
 
         self.raw_members = []
         self.raw_parents = []
+
+        self._location = location
+
+        self.nyan_object = None
 
     def add_raw_member(self, name, value):
         """
         Adds a raw member to the object.
 
-        :param name: Name of the member (has to be a valid inherited member name),
+        :param name: Name of the member (has to be a valid inherited member name).
         :type name: str
         :param value: Value of the member.
         :type value: int, float, bool, str, .aoc.expected_pointer.ExpectedPointer
         """
         self.raw_members.append((name, value))
 
+    def add_raw_parent(self, parent_id):
+        """
+        Adds a raw parent to the object.
+
+        :param parent_id: fqon of the parent in the API object dictionary
+        :type parent_id: str
+        """
+        self.raw_parents.append(parent_id)
+
+    def create_nyan_object(self):
+        """
+        Create the nyan object for this raw API object. Members have to be created separately.
+        """
+        parents = []
+        for raw_parent in self.raw_parents:
+            parents.append(self.api_ref[raw_parent])
+
+        self.nyan_object = NyanObject(self.name, parents)
+
+    def get_id(self):
+        """
+        Returns the ID of the raw API object.
+        """
+        return self.id
+
+    def get_location(self):
+        """
+        Returns the relative path of the raw API object.
+        """
+        return self._location
+
     def get_nyan_object(self):
         """
         Returns the nyan API object for the raw API object.
         """
-        raise NotImplementedError(
-            "returning a nyan object of the object %s not possible" (type(self)))
+        if self.nyan_object:
+            return self.nyan_object
+
+        else:
+            raise Exception("nyan object for %s has not been created yet" % (self))
+
+    def set_location(self, relative_path):
+        """
+        Set the relative location of the object in a modpack. This must
+        be a path to a nyan file.
+
+        :param relative_path: Relative path to the nyan file of the object.
+        :type relative_path: str
+        """
+        self._location = relative_path
 
     def __repr__(self):
-        return "RawAPIObject<%s>" % (self.nyan_object)
+        return "RawAPIObject<%s>" % (self.id)
 
 
 class ConverterObjectContainer:

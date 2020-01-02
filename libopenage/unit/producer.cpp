@@ -92,7 +92,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	dataspec(spec),
 	unit_data(*ud),
 	terrain_outline{nullptr},
-	default_tex{spec.get_unit_texture(ud->graphic_standing0)},
+	default_tex{spec.get_unit_texture(ud->idle_graphic0)},
 	dead_unit_id{ud->dead_unit_id} {
 
 	// copy the class type
@@ -132,7 +132,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	}
 
 	// graphic set
-	auto standing = spec.get_unit_texture(this->unit_data.graphic_standing0);
+	auto standing = spec.get_unit_texture(this->unit_data.idle_graphic0);
 	if (!standing) {
 
 		// indicates problems with data converion
@@ -524,7 +524,7 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	:
 	UnitType(owner),
 	unit_data{*ud},
-	texture{spec.get_unit_texture(ud->graphic_standing0)},
+	texture{spec.get_unit_texture(ud->idle_graphic0)},
 	destroyed{spec.get_unit_texture(ud->dying_graphic)},
 	projectile{this->unit_data.missile_unit_id},
 	foundation_terrain{ud->foundation_terrain_id},
@@ -557,8 +557,8 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 
 	// graphic set
 	this->graphics[graphic_type::construct] = spec.get_unit_texture(ud->construction_graphic_id);
-	this->graphics[graphic_type::standing] = spec.get_unit_texture(ud->graphic_standing0);
-	this->graphics[graphic_type::attack] = spec.get_unit_texture(ud->graphic_standing0);
+	this->graphics[graphic_type::standing] = spec.get_unit_texture(ud->idle_graphic0);
+	this->graphics[graphic_type::attack] = spec.get_unit_texture(ud->idle_graphic0);
 	auto dying_tex = spec.get_unit_texture(ud->dying_graphic);
 	if (dying_tex) {
 		this->graphics[graphic_type::dying] = dying_tex;
@@ -793,7 +793,7 @@ ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec
 	:
 	UnitType(owner),
 	unit_data{*pd},
-	tex{spec.get_unit_texture(this->unit_data.graphic_standing0)},
+	tex{spec.get_unit_texture(this->unit_data.idle_graphic0)},
 	sh{spec.get_unit_texture(3379)}, // 3379 = general arrow shadow
 	destroyed{spec.get_unit_texture(this->unit_data.dying_graphic)} {
 
