@@ -380,20 +380,24 @@ class AoCProcessor:
 
         #=======================================================================
         # Attributes
-        #=======================================================================
-        health_parents = [api_objects["engine.aux.attribute.Attribute"]]
-        health_nyan_object = NyanObject("Health", health_parents)
-
+        #
         # TODO: Fill translations
-        health_name_value_parents = [api_objects["engine.aux.translated.type.TranslatedString"]]
-        health_name_value = NyanObject("HealthName", health_name_value_parents)
+        #=======================================================================
+        #=======================================================================
+        # HP
+        #=======================================================================
+        attribute_parents = [api_objects["engine.aux.attribute.Attribute"]]
+        health_nyan_object = NyanObject("Health", attribute_parents)
+
+        name_value_parents = [api_objects["engine.aux.translated.type.TranslatedString"]]
+        health_name_value = NyanObject("HealthName", name_value_parents)
 
         translations = health_name_value.get_member_by_name("TranslatedString.translations",
                                                             api_objects["engine.aux.translated.type.TranslatedString"])
         translations.set_value([], MemberOperator.ASSIGN)
 
-        health_abbrv_value_parents = [api_objects["engine.aux.translated.type.TranslatedString"]]
-        health_abbrv_value = NyanObject("HealthAbbreviation", health_abbrv_value_parents)
+        abbrv_value_parents = [api_objects["engine.aux.translated.type.TranslatedString"]]
+        health_abbrv_value = NyanObject("HealthAbbreviation", abbrv_value_parents)
 
         translations = health_abbrv_value.get_member_by_name("TranslatedString.translations",
                                                              api_objects["engine.aux.translated.type.TranslatedString"])
@@ -406,8 +410,39 @@ class AoCProcessor:
                                                              api_objects["engine.aux.attribute.Attribute"])
         health_abbrv.set_value(health_abbrv_value, MemberOperator.ASSIGN)
 
+        health_nyan_object.add_nested_object(health_name_value)
+        health_nyan_object.add_nested_object(health_abbrv_value)
+
         health_ref_in_modpack = "aux.attribute.types.Health"
         pregen_nyan_objects.update({health_ref_in_modpack: health_nyan_object})
+
+        #=======================================================================
+        # Faith
+        #=======================================================================
+        faith_nyan_object = NyanObject("Faith", attribute_parents)
+
+        faith_name_value = NyanObject("FaithName", name_value_parents)
+        translations = faith_name_value.get_member_by_name("TranslatedString.translations",
+                                                           api_objects["engine.aux.translated.type.TranslatedString"])
+        translations.set_value([], MemberOperator.ASSIGN)
+
+        faith_abbrv_value = NyanObject("FaithAbbreviation", abbrv_value_parents)
+        translations = faith_abbrv_value.get_member_by_name("TranslatedString.translations",
+                                                            api_objects["engine.aux.translated.type.TranslatedString"])
+        translations.set_value([], MemberOperator.ASSIGN)
+
+        faith_name = faith_nyan_object.get_member_by_name("Attribute.name",
+                                                          api_objects["engine.aux.attribute.Attribute"])
+        faith_name.set_value(faith_name_value, MemberOperator.ASSIGN)
+        faith_abbrv = faith_nyan_object.get_member_by_name("Attribute.abbreviation",
+                                                           api_objects["engine.aux.attribute.Attribute"])
+        faith_abbrv.set_value(faith_abbrv_value, MemberOperator.ASSIGN)
+
+        faith_nyan_object.add_nested_object(faith_name_value)
+        faith_nyan_object.add_nested_object(faith_abbrv_value)
+
+        faith_ref_in_modpack = "aux.attribute.types.Faith"
+        pregen_nyan_objects.update({faith_ref_in_modpack: faith_nyan_object})
 
     @staticmethod
     def _create_unit_lines(full_data_set):
