@@ -7,6 +7,8 @@ from ...dataformat.aoc.internal_nyan_names import unit_line_lookups, class_id_lo
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.nyan.nyan_structs import NyanObject
 from openage.convert.dataformat.aoc.genie_graphic import CombinedSprite
+from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup
 
 
 class AoCNyanSubprocessor:
@@ -32,12 +34,17 @@ class AoCNyanSubprocessor:
         """
         Creates raw API objects for a unit line.
 
-        TODO: Convert other units than te head unit.
+        TODO: Convert other units than the head unit.
 
         :param unit_line: Unit line that gets converted to a game entity.
         :type unit_line: ..dataformat.converter_object.ConverterObjectGroup
         """
-        current_unit = unit_line.line[0]
+        if isinstance(unit_line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = unit_line.variants[0].line[0]
+
+        else:
+            current_unit = unit_line.line[0]
         current_unit_id = unit_line.get_head_unit_id()
 
         dataset = unit_line.data
@@ -55,7 +62,7 @@ class AoCNyanSubprocessor:
         # Game Entity Types
         #------------------
         # we give a unit two types
-        #    - aux.game_entity_type.types.Unit (if unit_type == 70)
+        #    - aux.game_entity_type.types.Unit (if unit_type >= 70)
         #    - aux.game_entity_type.types.<Class> (depending on the class)
         #=======================================================================
         # Create or use existing auxiliary types
@@ -68,7 +75,7 @@ class AoCNyanSubprocessor:
 
         unit_class = current_unit.get_member("unit_class").get_value()
         class_name = class_id_lookups[unit_class]
-        class_obj_name = ".aux.game_entity_type.types.%s" % (class_name)
+        class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
 
         # Create the game entity type if it not already exists
         if class_obj_name not in dataset.pregen_nyan_objects.keys():
@@ -98,8 +105,7 @@ class AoCNyanSubprocessor:
 
         if idle_animation_id > -1:
             # Make the ability animated
-            idle_specialization = dataset.nyan_api_objects["engine.ability.specialization.AnimatedAbility"]
-            idle_raw_api_object.get_nyan_object().add_parent(idle_specialization)
+            idle_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
 
@@ -111,7 +117,9 @@ class AoCNyanSubprocessor:
 
             sprite = CombinedSprite(idle_animation_id, dataset)
             animation_raw_api_object.add_raw_member("sprite", sprite)
-            animations_set.append(animation_raw_api_object.get_nyan_object())
+
+            animation_expected_pointer = ExpectedPointer(unit_line, obj_name)
+            animations_set.append(animation_expected_pointer)
 
             idle_raw_api_object.add_raw_member("animations", animations_set)
 

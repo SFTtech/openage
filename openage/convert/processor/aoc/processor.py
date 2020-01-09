@@ -27,7 +27,7 @@ from ...dataformat.aoc.genie_tech import BuildingLineUpgrade
 
 from openage.convert.dataformat.aoc.genie_unit import GenieVariantGroup
 from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
-from openage.nyan.nyan_structs import NyanObject, MemberType, MemberOperator
+from openage.nyan.nyan_structs import NyanObject, MemberOperator
 from openage.convert.nyan.api_loader import load_api
 
 
@@ -383,10 +383,11 @@ class AoCProcessor:
         #
         # TODO: Fill translations
         #=======================================================================
+        attribute_parents = [api_objects["engine.aux.attribute.Attribute"]]
+
         #=======================================================================
         # HP
         #=======================================================================
-        attribute_parents = [api_objects["engine.aux.attribute.Attribute"]]
         health_nyan_object = NyanObject("Health", attribute_parents)
 
         name_value_parents = [api_objects["engine.aux.translated.type.TranslatedString"]]
@@ -443,6 +444,46 @@ class AoCProcessor:
 
         faith_ref_in_modpack = "aux.attribute.types.Faith"
         pregen_nyan_objects.update({faith_ref_in_modpack: faith_nyan_object})
+
+        #=======================================================================
+        # Game Entity Types
+        #=======================================================================
+        type_parents = [api_objects["engine.aux.game_entity_type.GameEntityType"]]
+
+        #=======================================================================
+        # Ambient
+        #=======================================================================
+        ambient_nyan_object = NyanObject("Ambient", type_parents)
+        ambient_ref_in_modpack = "aux.game_entity_type.types.Ambient"
+        pregen_nyan_objects.update({ambient_ref_in_modpack: ambient_nyan_object})
+
+        #=======================================================================
+        # Building
+        #=======================================================================
+        building_nyan_object = NyanObject("Building", type_parents)
+        building_ref_in_modpack = "aux.game_entity_type.types.Building"
+        pregen_nyan_objects.update({building_ref_in_modpack: building_nyan_object})
+
+        #=======================================================================
+        # Item
+        #=======================================================================
+        item_nyan_object = NyanObject("Item", type_parents)
+        item_ref_in_modpack = "aux.game_entity_type.types.Item"
+        pregen_nyan_objects.update({item_ref_in_modpack: item_nyan_object})
+
+        #=======================================================================
+        # Projectile
+        #=======================================================================
+        projectile_nyan_object = NyanObject("Projectile", type_parents)
+        projectile_ref_in_modpack = "aux.game_entity_type.types.Projectile"
+        pregen_nyan_objects.update({projectile_ref_in_modpack: projectile_nyan_object})
+
+        #=======================================================================
+        # Unit
+        #=======================================================================
+        unit_nyan_object = NyanObject("Unit", type_parents)
+        unit_ref_in_modpack = "aux.game_entity_type.types.Unit"
+        pregen_nyan_objects.update({unit_ref_in_modpack: unit_nyan_object})
 
     @staticmethod
     def _create_unit_lines(full_data_set):
