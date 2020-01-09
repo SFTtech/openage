@@ -42,7 +42,7 @@ unit_line_lookups = {
     420: ("CannonGalleon", "cannon_galleon"),
     440: ("Petard", "petard"),
     448: ("LightCavalry", "light_cavalry"),
-    528: ("DemolitionShip", "demo_ship"),
+    527: ("DemolitionShip", "demo_ship"),
     529: ("FireTrireme", "fire_trireme"),
     539: ("Galley", "galley"),
     545: ("TransportShip", "transport_ship"),
