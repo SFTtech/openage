@@ -295,7 +295,7 @@ void GameSpec::load_living(const gamedata::living_unit &unit, unit_meta_list &li
 	// check graphics
 	if (this->valid_graphic_id(unit.dying_graphic) &&
 		this->valid_graphic_id(unit.idle_graphic0) &&
-		this->valid_graphic_id(unit.walking_graphics0)) {
+		this->valid_graphic_id(unit.move_graphics)) {
 		auto meta_type = std::make_shared<UnitTypeMeta>("Living", unit.id0, [this, &unit](const Player &owner) {
 			return std::make_shared<LivingProducer>(owner, *this, &unit);
 		});

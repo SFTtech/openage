@@ -372,7 +372,7 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 	// extra graphics if available
 	// villagers have invalid attack and walk graphics
 	// it seems these come from the command data instead
-	auto walk = spec.get_unit_texture(this->unit_data.walking_graphics0);
+	auto walk = spec.get_unit_texture(this->unit_data.move_graphics);
 	if (!walk) {
 
 		// use standing instead

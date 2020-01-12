@@ -1,7 +1,7 @@
 # Copyright 2019-2019 the openage authors. See copying.md for legal info.
 
 """
-Convert data and/or media from AoC to openage formats.
+Convert data from AoC to openage formats.
 """
 from ...dataformat.aoc.genie_object_container import GenieObjectContainer
 from ...dataformat.aoc.genie_unit import GenieUnitObject
@@ -34,7 +34,7 @@ from openage.convert.nyan.api_loader import load_api
 class AoCProcessor:
 
     @classmethod
-    def convert(cls, gamespec, media):
+    def convert(cls, gamespec):
         """
         Input game speification and media here and get a set of
         modpacks back.
@@ -42,13 +42,12 @@ class AoCProcessor:
         :param gamespec: Gamedata from empires.dat read in by the
                          reader functions.
         :type gamespec: class: ...dataformat.value_members.ArrayMember
-        :param media: Pointers to media files/directories and related metadata.
         :returns: A list of modpacks.
         :rtype: list
         """
 
         # Create a new container for the conversion process
-        data_set = cls._pre_processor(gamespec, media)
+        data_set = cls._pre_processor(gamespec)
 
         # Create the custom openae formats (nyan, sprite, terrain)
         data_set = cls._processor(data_set)
@@ -59,7 +58,7 @@ class AoCProcessor:
         return modpacks
 
     @classmethod
-    def _pre_processor(cls, gamespec, media):
+    def _pre_processor(cls, gamespec):
         """
         Store data from the reader in a conversion container.
 
@@ -84,8 +83,6 @@ class AoCProcessor:
         cls._extract_genie_terrains(gamespec, data_set)
 
         cls._pregenerate_hardcoded_objects(data_set)
-
-        # TODO: Media files
 
         return data_set
 
@@ -484,6 +481,60 @@ class AoCProcessor:
         unit_nyan_object = NyanObject("Unit", type_parents)
         unit_ref_in_modpack = "aux.game_entity_type.types.Unit"
         pregen_nyan_objects.update({unit_ref_in_modpack: unit_nyan_object})
+
+        # TODO: Wait for API version 0.3.0
+        #=======================================================================
+        # Generic Death Condition (HP<=0)
+        #    sidenote: Apparently this is actually HP<1 in Genie
+        #              (https://youtu.be/FdBk8zGbE7U?t=7m16s)
+        #
+        #=======================================================================
+#         clause_parents = [api_objects["engine.aux.boolean.Clause"]]
+#
+#         clause_nyan_object = NyanObject("StandardHealthDeath", clause_parents)
+#
+#         # Clause will not default to 'True' when it was fulfilled once
+#         only_once = clause_nyan_object.get_member_by_name("only_once", api_objects["engine.aux.boolean.Clause"])
+#         only_once.set_value(False, MemberOperator.ASSIGN)
+#
+#         # Requirement mode does not matter, so we use ANY
+#         clause_requirement_value = api_objects["engine.aux.requirement_mode.type.any"]
+#         clause_requirement = clause_nyan_object.get_member_by_name("clause_requirement",
+#                                                                    api_objects["engine.aux.boolean.Clause"])
+#         clause_requirement.set_value(clause_requirement_value, MemberOperator.ASSIGN)
+#
+#         # Literal
+#         literal_parents = [api_objects["engine.aux.boolean.literal.type.AttributeBelowValue"]]
+#
+#         literal_nyan_object = NyanObject("HPBelowZero", literal_parents)
+#
+#         attribute_value = pregen_nyan_objects["aux.attribute.types.Health"]
+#         attribute = literal_nyan_object.get_member_by_name("attribute",
+#                                                            api_objects["engine.aux.boolean.literal.type.AttributeBelowValue"])
+#         attribute.set_value(attribute_value, MemberOperator.ASSIGN)
+#
+#         value = literal_nyan_object.get_member_by_name("value",
+#                                                        api_objects["engine.aux.boolean.literal.type.AttributeBelowValue"])
+#         value.set_value(0, MemberOperator.ASSIGN)
+#
+#         mode = literal_nyan_object.get_member_by_name("mode",
+#                                                       api_objects["engine.aux.boolean.Literal"])
+#         mode.set_value(True, MemberOperator.ASSIGN)
+#
+#         scope_parents = [api_objects["engine.aux.literal_scope.type.Self"]]
+#
+#         scope_nyan_object = NyanObject("StandardHealthDeathScope", scope_parents)
+#
+#         stances = scope_nyan_object.get_member_by_name("diplomatic_stances",
+#                                                        api_objects["engine.aux.literal_scope.LiteralScope"])
+#         stances.set_value([], MemberOperator.ASSIGN)
+#
+#         clause_ref_in_modpack = "aux.boolean.death.standard.StandardHealthDeath"
+#         literal_ref_in_modpack = "aux.boolean.death.standard.StandardHealthDeath.HPBelowZero"
+#         scope_ref_in_modpack = "aux.boolean.death.standard.StandardHealthDeath.HPBelowZero.StandardHealthDeathScope"
+#         pregen_nyan_objects.update({clause_ref_in_modpack: clause_nyan_object,
+#                                     literal_ref_in_modpack: literal_nyan_object,
+#                                     scope_ref_in_modpack: scope_nyan_object})
 
     @staticmethod
     def _create_unit_lines(full_data_set):
