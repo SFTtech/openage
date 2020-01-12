@@ -7,6 +7,9 @@ MAKEARGS += $(if $(VERBOSE),,--no-print-directory)
 .PHONY: default
 default: build
 
+.PHONY: all
+all: default
+
 $(BUILDDIR):
 	@echo "call ./configure to initialize the build directory."
 	@echo "also see ./configure --help, and doc/building.md"
