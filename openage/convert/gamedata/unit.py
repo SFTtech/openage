@@ -952,8 +952,8 @@ class MovingUnit(DoppelgangerUnit):
 
     data_format = [
         (READ_EXPORT, None, None, IncludeMembers(cls=DoppelgangerUnit)),
-        (READ_EXPORT, "walking_graphics0", StorageType.ID_MEMBER, "int16_t"),
-        (READ_EXPORT, "walking_graphics1", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "move_graphics", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "run_graphics", StorageType.ID_MEMBER, "int16_t"),
         (READ, "turn_speed", StorageType.FLOAT_MEMBER, "float"),
         (READ, "old_size_class", StorageType.ID_MEMBER, "int8_t"),
         # unit id for the ground traces

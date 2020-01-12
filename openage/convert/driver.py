@@ -167,7 +167,7 @@ def convert_metadata(args):
 
     yield "empires.dat"
     gamespec = get_gamespec(args.srcdir, args.game_versions, args.flag("no_pickle_cache"))
-    modpacks = args.converter.convert(gamespec, None)
+    modpacks = args.converter.convert(gamespec)
     data_dump = gamespec.dump("gamedata")
     data_formatter.add_data(data_dump[0], prefix="gamedata/", single_output="gamedata")
 
