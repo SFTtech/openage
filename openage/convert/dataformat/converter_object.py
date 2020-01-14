@@ -8,6 +8,8 @@ These are simple containers that can be processed by the converter.
 
 from .value_members import ValueMember
 from openage.nyan.nyan_structs import NyanObject
+from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
 
 
 class ConverterObject:
@@ -205,7 +207,7 @@ class RawAPIObject:
         :param name: Name of the member (has to be a valid inherited member name).
         :type name: str
         :param value: Value of the member.
-        :type value: int, float, bool, str, .aoc.expected_pointer.ExpectedPointer
+        :type value: int, float, bool, str, TODO: everything else
         """
         self.raw_members.append((name, value))
 
@@ -227,6 +229,29 @@ class RawAPIObject:
             parents.append(self.api_ref[raw_parent])
 
         self.nyan_object = NyanObject(self.name, parents)
+
+    def create_nyan_members(self):
+        """
+        Fills the nyan object members with values from the raw members.
+        References to nyan objects or media files with be resolved.
+        The nyan object has to be created before this function can be called.
+        """
+        if self.nyan_object is None:
+            raise Exception("%s: nyan object needs to be created before"
+                            "members" % (self))
+
+        for raw_member in self.raw_members:
+            member_name = raw_member[0]
+            member_value = raw_member[1]
+
+            if isinstance(member_value, ExpectedPointer):
+                member_value = member_value.resolve()
+
+            elif isinstance(member_value, CombinedSprite):
+                member_value = member_value.resolve_location()
+
+            nyan_member = self.nyan_object.get_member_by_name(member_name)
+            nyan_member.set_value(member_value)
 
     def get_id(self):
         """

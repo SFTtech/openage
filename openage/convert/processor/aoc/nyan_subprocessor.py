@@ -6,7 +6,7 @@ Convert API-like objects to nyan objects.
 from ...dataformat.aoc.internal_nyan_names import unit_line_lookups, class_id_lookups
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.nyan.nyan_structs import NyanObject, MemberSpecialValue
-from openage.convert.dataformat.aoc.genie_graphic import CombinedSprite
+from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup
 
@@ -51,7 +51,7 @@ class AoCNyanSubprocessor:
 
         # Start with the generic GameEntity
         game_entity_name = unit_line_lookups[current_unit_id][0]
-        obj_location = "data/game_entity/unique/%s.nyan" % (unit_line_lookups[current_unit_id][1])
+        obj_location = "data/game_entity/generic/%s.nyan" % (unit_line_lookups[current_unit_id][1])
         raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
@@ -116,6 +116,9 @@ class AoCNyanSubprocessor:
             animation_raw_api_object.set_location(obj_location)
 
             idle_sprite = CombinedSprite(idle_animation_id, dataset)
+            dataset.combined_sprites.update({idle_sprite.get_id(): idle_sprite})
+            idle_sprite.add_reference()
+
             animation_raw_api_object.add_raw_member("sprite", idle_sprite)
 
             animation_expected_pointer = ExpectedPointer(unit_line, obj_name)
@@ -153,6 +156,9 @@ class AoCNyanSubprocessor:
             animation_raw_api_object.set_location(obj_location)
 
             move_sprite = CombinedSprite(move_animation_id, dataset)
+            dataset.combined_sprites.update({move_sprite.get_id(): move_sprite})
+            move_sprite.add_reference()
+
             animation_raw_api_object.add_raw_member("sprite", move_sprite)
 
             animation_expected_pointer = ExpectedPointer(unit_line, obj_name)
