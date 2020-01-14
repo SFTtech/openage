@@ -7,7 +7,7 @@ These are simple containers that can be processed by the converter.
 """
 
 from .value_members import ValueMember
-from openage.nyan.nyan_structs import NyanObject
+from openage.nyan.nyan_structs import NyanObject, MemberOperator
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
 
@@ -135,6 +135,24 @@ class ConverterObjectGroup:
         key = subobject.get_id()
         self.raw_api_objects.update({key: subobject})
 
+    def create_nyan_objects(self):
+        """
+        Creates nyan objects from the existing raw API objects.
+        """
+        for raw_api_object in self.raw_api_objects.values():
+            raw_api_object.create_nyan_object()
+
+    def create_nyan_members(self):
+        """
+        Fill nyan members of all raw API objects.
+        """
+        for raw_api_object in self.raw_api_objects.values():
+            raw_api_object.create_nyan_members()
+
+            if not raw_api_object.is_ready():
+                raise Exception("%s: Raw API object is not ready for export."
+                                "Member or object not initialized." % (raw_api_object))
+
     def get_raw_api_object(self, obj_id):
         """
         Returns a subobject of the object.
@@ -200,16 +218,18 @@ class RawAPIObject:
 
         self.nyan_object = None
 
-    def add_raw_member(self, name, value):
+    def add_raw_member(self, name, value, origin):
         """
         Adds a raw member to the object.
 
         :param name: Name of the member (has to be a valid inherited member name).
         :type name: str
         :param value: Value of the member.
-        :type value: int, float, bool, str, TODO: everything else
+        :type value: int, float, bool, str, list
+        :param origin: from which parent the member was inherited.
+        :type origin: str
         """
-        self.raw_members.append((name, value))
+        self.raw_members.append((name, value, origin))
 
     def add_raw_parent(self, parent_id):
         """
@@ -238,11 +258,12 @@ class RawAPIObject:
         """
         if self.nyan_object is None:
             raise Exception("%s: nyan object needs to be created before"
-                            "members" % (self))
+                            "member values can be assigned" % (self))
 
         for raw_member in self.raw_members:
             member_name = raw_member[0]
             member_value = raw_member[1]
+            member_origin = self.api_ref[raw_member[2]]
 
             if isinstance(member_value, ExpectedPointer):
                 member_value = member_value.resolve()
@@ -250,8 +271,26 @@ class RawAPIObject:
             elif isinstance(member_value, CombinedSprite):
                 member_value = member_value.resolve_location()
 
-            nyan_member = self.nyan_object.get_member_by_name(member_name)
-            nyan_member.set_value(member_value)
+            elif type(member_value) is list:
+                # Resolve elements in the list, if necessary
+                if len(member_value) > 0:
+                    temp_values = []
+
+                    for temp_value in member_value:
+                        if isinstance(temp_value, ExpectedPointer):
+                            temp_values.append(temp_value.resolve())
+
+                        elif isinstance(member_value[0], CombinedSprite):
+                            temp_values.append(temp_value.resolve_location())
+
+                        else:
+                            temp_values.append(temp_value)
+
+                    member_value = temp_values
+
+            nyan_member = self.nyan_object.get_member_by_name("%s.%s" % (member_origin.get_name(), member_name),
+                                                              member_origin)
+            nyan_member.set_value(member_value, MemberOperator.ASSIGN)
 
     def get_id(self):
         """
@@ -274,6 +313,12 @@ class RawAPIObject:
 
         else:
             raise Exception("nyan object for %s has not been created yet" % (self))
+
+    def is_ready(self):
+        """
+        Returns whether the object is ready to be exported.
+        """
+        return self.nyan_object is not None and not self.nyan_object.is_abstract()
 
     def set_location(self, relative_path):
         """

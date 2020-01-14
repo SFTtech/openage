@@ -12,11 +12,14 @@ class CombinedSprite:
     This will become a spritesheet texture with a sprite file.
     """
 
-    def __init__(self, head_sprite_id, full_data_set):
+    def __init__(self, head_sprite_id, filename, full_data_set):
         """
         Creates a new CombinedSprite instance.
+
         :param head_sprite_id: The id of the top level graphic of this sprite.
         :type head_sprite_id: int
+        :param filename: Name of the sprite and definition file.
+        :type filename: str
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
@@ -24,16 +27,20 @@ class CombinedSprite:
         """
 
         self.head_sprite_id = head_sprite_id
+        self.filename = filename
         self.data = full_data_set
 
-        # 0 = do not convert; 1 = store with GameEntity; >1 = store in 'shared' resources
-        self._refs = 0
+        # Depending on the amounts of references:
+        # 0 = do not convert;
+        # 1 = store with GameEntity;
+        # >1 = store in 'shared' resources;
+        self._refs = []
 
-    def add_reference(self):
+    def add_reference(self, referer):
         """
-        Increase the reference counter for this sprite by 1.
+        Add an object that is referencing this sprite.
         """
-        self._refs += 1
+        self._refs.append(referer)
 
     def get_id(self):
         """
@@ -41,18 +48,23 @@ class CombinedSprite:
         """
         return self.head_sprite_id
 
-    def remove_reference(self):
+    def remove_reference(self, referer):
         """
-        Decrease the reference counter for this sprite by 1.
+        Remove an object that is referencing this sprite.
         """
-        self._refs -= 1
+        self._refs.remove(referer)
 
     def resolve_location(self):
         """
         Returns the location of the definition file in the modpack
         """
-        # TODO: This depends on modpavk structure
-        pass
+        if len(self._refs) > 1:
+            return "data/game_entity/shared/graphics/%s.sprite" % (self.filename)
+
+        elif len(self._refs) == 1:
+            return "%s%s/%s.sprite" % (self._refs[0], "graphics", self.filename)
+
+        return None
 
     def save(self):
         """
@@ -60,6 +72,9 @@ class CombinedSprite:
         """
         # TODO: Create SpriteFile(..) and TerrainFile() instances here.
         pass
+
+    def __repr__(self):
+        return "CombinedSprite<%s>" % (self.head_sprite_id)
 
 
 def frame_to_seconds(frame_num, frame_rate):

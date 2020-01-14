@@ -2675,8 +2675,8 @@ def _insert_members(api_objects):
     member = NyanMember("modifiers", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
-    # engine.aux.game_entity.GameEntity
-    api_object = api_objects["engine.aux.game_entity.GameEntity"]
+    # engine.aux.game_entity_formation.GameEntityFormation
+    api_object = api_objects["engine.aux.game_entity_formation.GameEntityFormation"]
 
     ref_object = api_objects["engine.aux.formation.Formation"]
     member = NyanMember("formation", ref_object, None, None, 0, None, False)

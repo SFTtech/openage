@@ -31,3 +31,6 @@ class ExpectedPointer:
         raw_api_obj = self.group_object.get_raw_api_object(self.raw_api_object_name)
 
         return raw_api_obj.get_nyan_object()
+
+    def __repr__(self):
+        return "CombinedSprite<%s>" % (self.raw_api_object_name)
