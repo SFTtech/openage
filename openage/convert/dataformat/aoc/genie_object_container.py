@@ -15,6 +15,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.nyan_api_objects = None
 
         # Things that don't exist in the game, e.g. Attributes
+        # saved as RawAPIObjects
         self.pregen_nyan_objects = {}
 
         # Phase 1: Genie-like objects
