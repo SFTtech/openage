@@ -27,8 +27,10 @@ from ...dataformat.aoc.genie_tech import BuildingLineUpgrade
 
 from openage.convert.dataformat.aoc.genie_unit import GenieVariantGroup
 from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
-from openage.nyan.nyan_structs import NyanObject, MemberOperator
 from openage.convert.nyan.api_loader import load_api
+from openage.convert.dataformat.converter_object import RawAPIObject,\
+    ConverterObjectGroup
+from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 
 
 class AoCProcessor:
@@ -375,111 +377,163 @@ class AoCProcessor:
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
 
+        # Stores pregenerated raw API objects as a container
+        pregen_converter_group = ConverterObjectGroup("pregen")
+
         #=======================================================================
         # Attributes
         #
         # TODO: Fill translations
         #=======================================================================
-        attribute_parents = [api_objects["engine.aux.attribute.Attribute"]]
+        attribute_parent = "engine.aux.attribute.Attribute"
+        attributes_location = "data/aux/attribute/"
 
         #=======================================================================
         # HP
         #=======================================================================
-        health_nyan_object = NyanObject("Health", attribute_parents)
-
-        name_value_parents = [api_objects["engine.aux.translated.type.TranslatedString"]]
-        health_name_value = NyanObject("HealthName", name_value_parents)
-
-        translations = health_name_value.get_member_by_name("TranslatedString.translations",
-                                                            api_objects["engine.aux.translated.type.TranslatedString"])
-        translations.set_value([], MemberOperator.ASSIGN)
-
-        abbrv_value_parents = [api_objects["engine.aux.translated.type.TranslatedString"]]
-        health_abbrv_value = NyanObject("HealthAbbreviation", abbrv_value_parents)
-
-        translations = health_abbrv_value.get_member_by_name("TranslatedString.translations",
-                                                             api_objects["engine.aux.translated.type.TranslatedString"])
-        translations.set_value([], MemberOperator.ASSIGN)
-
-        health_name = health_nyan_object.get_member_by_name("Attribute.name",
-                                                            api_objects["engine.aux.attribute.Attribute"])
-        health_name.set_value(health_name_value, MemberOperator.ASSIGN)
-        health_abbrv = health_nyan_object.get_member_by_name("Attribute.abbreviation",
-                                                             api_objects["engine.aux.attribute.Attribute"])
-        health_abbrv.set_value(health_abbrv_value, MemberOperator.ASSIGN)
-
-        health_nyan_object.add_nested_object(health_name_value)
-        health_nyan_object.add_nested_object(health_abbrv_value)
-
         health_ref_in_modpack = "aux.attribute.types.Health"
+        health_nyan_object = RawAPIObject(health_ref_in_modpack,
+                                          "Health", api_objects,
+                                          attributes_location)
+        health_nyan_object.add_raw_parent(attribute_parent)
+
+        name_expected_pointer = ExpectedPointer(pregen_converter_group,
+                                                "aux.attribute.types.Health.HealthName")
+        health_nyan_object.add_raw_member("name", name_expected_pointer,
+                                          attribute_parent)
+        abbrv_expected_pointer = ExpectedPointer(pregen_converter_group,
+                                                 "aux.attribute.types.Health.HealthAbbreviation")
+        health_nyan_object.add_raw_member("abbreviation", abbrv_expected_pointer,
+                                          attribute_parent)
+
+        pregen_converter_group.add_raw_api_object(health_nyan_object)
         pregen_nyan_objects.update({health_ref_in_modpack: health_nyan_object})
+
+        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        health_name_ref_in_modpack = "aux.attribute.types.Health.HealthName"
+        health_name_value = RawAPIObject(health_name_ref_in_modpack, "HealthName",
+                                         api_objects, attributes_location)
+        health_name_value.add_raw_parent(name_value_parent)
+        health_name_value.add_raw_member("translations", [], name_value_parent)
+
+        pregen_converter_group.add_raw_api_object(health_name_value)
+        pregen_nyan_objects.update({health_name_ref_in_modpack: health_name_value})
+
+        abbrv_value_parent = "engine.aux.translated.type.TranslatedString"
+        health_abbrv_ref_in_modpack = "aux.attribute.types.Health.HealthAbbreviation"
+        health_abbrv_value = RawAPIObject(health_abbrv_ref_in_modpack, "HealthAbbreviation",
+                                          api_objects, attributes_location)
+        health_abbrv_value.add_raw_parent(abbrv_value_parent)
+        health_abbrv_value.add_raw_member("translations", [], abbrv_value_parent)
+
+        pregen_converter_group.add_raw_api_object(health_abbrv_value)
+        pregen_nyan_objects.update({health_abbrv_ref_in_modpack: health_abbrv_value})
 
         #=======================================================================
         # Faith
         #=======================================================================
-        faith_nyan_object = NyanObject("Faith", attribute_parents)
-
-        faith_name_value = NyanObject("FaithName", name_value_parents)
-        translations = faith_name_value.get_member_by_name("TranslatedString.translations",
-                                                           api_objects["engine.aux.translated.type.TranslatedString"])
-        translations.set_value([], MemberOperator.ASSIGN)
-
-        faith_abbrv_value = NyanObject("FaithAbbreviation", abbrv_value_parents)
-        translations = faith_abbrv_value.get_member_by_name("TranslatedString.translations",
-                                                            api_objects["engine.aux.translated.type.TranslatedString"])
-        translations.set_value([], MemberOperator.ASSIGN)
-
-        faith_name = faith_nyan_object.get_member_by_name("Attribute.name",
-                                                          api_objects["engine.aux.attribute.Attribute"])
-        faith_name.set_value(faith_name_value, MemberOperator.ASSIGN)
-        faith_abbrv = faith_nyan_object.get_member_by_name("Attribute.abbreviation",
-                                                           api_objects["engine.aux.attribute.Attribute"])
-        faith_abbrv.set_value(faith_abbrv_value, MemberOperator.ASSIGN)
-
-        faith_nyan_object.add_nested_object(faith_name_value)
-        faith_nyan_object.add_nested_object(faith_abbrv_value)
-
         faith_ref_in_modpack = "aux.attribute.types.Faith"
+        faith_nyan_object = RawAPIObject(faith_ref_in_modpack,
+                                         "Faith", api_objects,
+                                         attributes_location)
+        faith_nyan_object.add_raw_parent(attribute_parent)
+
+        name_expected_pointer = ExpectedPointer(pregen_converter_group,
+                                                "aux.attribute.types.Faith.FaithName")
+        faith_nyan_object.add_raw_member("name", name_expected_pointer,
+                                         attribute_parent)
+        abbrv_expected_pointer = ExpectedPointer(pregen_converter_group,
+                                                 "aux.attribute.types.Faith.FaithAbbreviation")
+        faith_nyan_object.add_raw_member("abbreviation", abbrv_expected_pointer,
+                                         attribute_parent)
+
+        pregen_converter_group.add_raw_api_object(faith_nyan_object)
         pregen_nyan_objects.update({faith_ref_in_modpack: faith_nyan_object})
+
+        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        faith_name_ref_in_modpack = "aux.attribute.types.Faith.FaithName"
+        faith_name_value = RawAPIObject(faith_name_ref_in_modpack, "FaithName",
+                                        api_objects, attributes_location)
+        faith_name_value.add_raw_parent(name_value_parent)
+        faith_name_value.add_raw_member("translations", [], name_value_parent)
+
+        pregen_converter_group.add_raw_api_object(faith_name_value)
+        pregen_nyan_objects.update({faith_name_ref_in_modpack: faith_name_value})
+
+        abbrv_value_parent = "engine.aux.translated.type.TranslatedString"
+        faith_abbrv_ref_in_modpack = "aux.attribute.types.Faith.FaithAbbreviation"
+        faith_abbrv_value = RawAPIObject(faith_abbrv_ref_in_modpack, "FaithAbbreviation",
+                                         api_objects, attributes_location)
+        faith_abbrv_value.add_raw_parent(abbrv_value_parent)
+        faith_abbrv_value.add_raw_member("translations", [], abbrv_value_parent)
+
+        pregen_converter_group.add_raw_api_object(faith_abbrv_value)
+        pregen_nyan_objects.update({faith_abbrv_ref_in_modpack: faith_abbrv_value})
 
         #=======================================================================
         # Game Entity Types
         #=======================================================================
-        type_parents = [api_objects["engine.aux.game_entity_type.GameEntityType"]]
+        type_parent = "engine.aux.game_entity_type.GameEntityType"
+        types_location = "data/aux/game_entity_type/"
 
         #=======================================================================
         # Ambient
         #=======================================================================
-        ambient_nyan_object = NyanObject("Ambient", type_parents)
         ambient_ref_in_modpack = "aux.game_entity_type.types.Ambient"
+        ambient_nyan_object = RawAPIObject(ambient_ref_in_modpack,
+                                           "Ambient", api_objects,
+                                           types_location)
+        ambient_nyan_object.add_raw_parent(type_parent)
+
+        pregen_converter_group.add_raw_api_object(ambient_nyan_object)
         pregen_nyan_objects.update({ambient_ref_in_modpack: ambient_nyan_object})
 
         #=======================================================================
         # Building
         #=======================================================================
-        building_nyan_object = NyanObject("Building", type_parents)
         building_ref_in_modpack = "aux.game_entity_type.types.Building"
+        building_nyan_object = RawAPIObject(building_ref_in_modpack,
+                                            "Building", api_objects,
+                                            types_location)
+        building_nyan_object.add_raw_parent(type_parent)
+
+        pregen_converter_group.add_raw_api_object(building_nyan_object)
         pregen_nyan_objects.update({building_ref_in_modpack: building_nyan_object})
 
         #=======================================================================
         # Item
         #=======================================================================
-        item_nyan_object = NyanObject("Item", type_parents)
         item_ref_in_modpack = "aux.game_entity_type.types.Item"
+        item_nyan_object = RawAPIObject(item_ref_in_modpack,
+                                        "Item", api_objects,
+                                        types_location)
+        item_nyan_object.add_raw_parent(type_parent)
+
+        pregen_converter_group.add_raw_api_object(item_nyan_object)
         pregen_nyan_objects.update({item_ref_in_modpack: item_nyan_object})
 
         #=======================================================================
         # Projectile
         #=======================================================================
-        projectile_nyan_object = NyanObject("Projectile", type_parents)
         projectile_ref_in_modpack = "aux.game_entity_type.types.Projectile"
+        projectile_nyan_object = RawAPIObject(projectile_ref_in_modpack,
+                                              "Projectile", api_objects,
+                                              types_location)
+        projectile_nyan_object.add_raw_parent(type_parent)
+
+        pregen_converter_group.add_raw_api_object(projectile_nyan_object)
         pregen_nyan_objects.update({projectile_ref_in_modpack: projectile_nyan_object})
 
         #=======================================================================
         # Unit
         #=======================================================================
-        unit_nyan_object = NyanObject("Unit", type_parents)
         unit_ref_in_modpack = "aux.game_entity_type.types.Unit"
+        unit_nyan_object = RawAPIObject(unit_ref_in_modpack,
+                                        "Unit", api_objects,
+                                        types_location)
+        unit_nyan_object.add_raw_parent(type_parent)
+
+        pregen_converter_group.add_raw_api_object(unit_nyan_object)
         pregen_nyan_objects.update({unit_ref_in_modpack: unit_nyan_object})
 
         # TODO: Wait for API version 0.3.0
@@ -535,6 +589,17 @@ class AoCProcessor:
 #         pregen_nyan_objects.update({clause_ref_in_modpack: clause_nyan_object,
 #                                     literal_ref_in_modpack: literal_nyan_object,
 #                                     scope_ref_in_modpack: scope_nyan_object})
+
+        for pregen_object in pregen_nyan_objects.values():
+            pregen_object.create_nyan_object()
+
+        # This has to be separate because of possible object interdependencies
+        for pregen_object in pregen_nyan_objects.values():
+            pregen_object.create_nyan_members()
+
+            if not pregen_object.is_ready():
+                raise Exception("%s: Pregenerated object is not ready for export."
+                                "Member or object not initialized." % (pregen_object))
 
     @staticmethod
     def _create_unit_lines(full_data_set):
