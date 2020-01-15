@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 from ...dataformat.converter_object import ConverterObject,\
     ConverterObjectGroup
@@ -24,6 +24,9 @@ class GenieCivilizationObject(ConverterObject):
         super().__init__(civ_id, members=members)
 
         self.data = full_data_set
+
+    def __repr__(self):
+        return "GenieCivilizationObject<%s>" % (self.get_id())
 
 
 class GenieCivilizationGroup(ConverterObjectGroup):
@@ -60,3 +63,6 @@ class GenieCivilizationGroup(ConverterObjectGroup):
 
         tech_tree_id = self.civ.get_member("tech_tree_id").get_value()
         self.disabled_techs = self.data.genie_effect_bundles[tech_tree_id]
+
+    def __repr__(self):
+        return "GenieCivilizationGroup<%s>" % (self.get_id())

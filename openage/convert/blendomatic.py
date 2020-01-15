@@ -1,4 +1,4 @@
-# Copyright 2013-2019 the openage authors. See copying.md for legal info.
+# Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
 """
 Conversion for the terrain blending masks.
@@ -11,7 +11,7 @@ from math import sqrt
 from struct import Struct, unpack_from
 
 from ..log import dbg
-from openage.convert.dataformat.genie_structure import GenieStructure
+from .dataformat.genie_structure import GenieStructure
 from .dataformat.data_definition import DataDefinition
 from .dataformat.struct_definition import StructDefinition
 

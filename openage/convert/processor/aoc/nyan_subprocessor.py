@@ -1,14 +1,14 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 """
 Convert API-like objects to nyan objects.
 """
-from ...dataformat.aoc.internal_nyan_names import unit_line_lookups, class_id_lookups
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.nyan.nyan_structs import MemberSpecialValue
-from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup
+from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, CLASS_ID_LOOKUPS
+from ...dataformat.converter_object import RawAPIObject
+from ....nyan.nyan_structs import MemberSpecialValue
+from ...dataformat.aoc.combined_sprite import CombinedSprite
+from ...dataformat.aoc.expected_pointer import ExpectedPointer
+from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 
 
 class AoCNyanSubprocessor:
@@ -78,21 +78,21 @@ class AoCNyanSubprocessor:
         dataset = unit_line.data
 
         # Start with the generic GameEntity
-        game_entity_name = unit_line_lookups[current_unit_id][0]
-        obj_location = "data/game_entity/generic/%s/" % (unit_line_lookups[current_unit_id][1])
+        game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (UNIT_LINE_LOOKUPS[current_unit_id][1])
         raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
         raw_api_object.set_location(obj_location)
         unit_line.add_raw_api_object(raw_api_object)
 
-        #=======================================================================
+        # =======================================================================
         # Game Entity Types
-        #------------------
+        # ------------------
         # we give a unit two types
         #    - aux.game_entity_type.types.Unit (if unit_type >= 70)
         #    - aux.game_entity_type.types.<Class> (depending on the class)
-        #=======================================================================
+        # =======================================================================
         # Create or use existing auxiliary types
         types_set = []
         unit_type = current_unit.get_member("unit_type").get_value()
@@ -102,7 +102,7 @@ class AoCNyanSubprocessor:
             types_set.append(type_obj)
 
         unit_class = current_unit.get_member("unit_class").get_value()
-        class_name = class_id_lookups[unit_class]
+        class_name = CLASS_ID_LOOKUPS[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
 
         # Create the game entity type on-the-fly if it not already exists
@@ -119,14 +119,14 @@ class AoCNyanSubprocessor:
 
         raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")
 
-        #=======================================================================
+        # =======================================================================
         # Abilities
-        #=======================================================================
+        # =======================================================================
         abilities_set = []
 
-        #=======================================================================
+        # =======================================================================
         # Idle ability
-        #=======================================================================
+        # =======================================================================
         obj_name = "%s.Idle" % (game_entity_name)
         idle_raw_api_object = RawAPIObject(obj_name, "Idle", dataset.nyan_api_objects)
         idle_raw_api_object.add_raw_parent("engine.ability.type.Idle")
@@ -147,7 +147,7 @@ class AoCNyanSubprocessor:
             animation_raw_api_object.set_location(obj_location)
 
             idle_sprite = CombinedSprite(idle_animation_id,
-                                         "idle_%s" % (unit_line_lookups[current_unit_id][1]),
+                                         "idle_%s" % (UNIT_LINE_LOOKUPS[current_unit_id][1]),
                                          dataset)
             dataset.combined_sprites.update({idle_sprite.get_id(): idle_sprite})
             idle_sprite.add_reference(animation_raw_api_object)
@@ -167,9 +167,9 @@ class AoCNyanSubprocessor:
 
         unit_line.add_raw_api_object(idle_raw_api_object)
 
-        #=======================================================================
+        # =======================================================================
         # Move ability
-        #=======================================================================
+        # =======================================================================
         obj_name = "%s.Move" % (game_entity_name)
         move_raw_api_object = RawAPIObject(obj_name, "Move", dataset.nyan_api_objects)
         move_raw_api_object.add_raw_parent("engine.ability.type.Move")
@@ -191,7 +191,7 @@ class AoCNyanSubprocessor:
             animation_raw_api_object.set_location(obj_location)
 
             move_sprite = CombinedSprite(move_animation_id,
-                                         "move_%s" % (unit_line_lookups[current_unit_id][1]),
+                                         "move_%s" % (UNIT_LINE_LOOKUPS[current_unit_id][1]),
                                          dataset)
             dataset.combined_sprites.update({move_sprite.get_id(): move_sprite})
             move_sprite.add_reference(animation_raw_api_object)
@@ -239,9 +239,9 @@ class AoCNyanSubprocessor:
 
         unit_line.add_raw_api_object(move_raw_api_object)
 
-        #=======================================================================
+        # =======================================================================
         # Turn ability
-        #=======================================================================
+        # =======================================================================
         obj_name = "%s.Turn" % (game_entity_name)
         turn_raw_api_object = RawAPIObject(obj_name, "Turn", dataset.nyan_api_objects)
         turn_raw_api_object.add_raw_parent("engine.ability.type.Turn")
@@ -270,9 +270,9 @@ class AoCNyanSubprocessor:
 
         unit_line.add_raw_api_object(turn_raw_api_object)
 
-        #=======================================================================
+        # =======================================================================
         # LineOfSight ability
-        #=======================================================================
+        # =======================================================================
         obj_name = "%s.LineOfSight" % (game_entity_name)
         los_raw_api_object = RawAPIObject(obj_name, "LineOfSight", dataset.nyan_api_objects)
         los_raw_api_object.add_raw_parent("engine.ability.type.LineOfSight")
@@ -293,9 +293,9 @@ class AoCNyanSubprocessor:
 
         unit_line.add_raw_api_object(los_raw_api_object)
 
-        #=======================================================================
+        # =======================================================================
         # Visibility ability
-        #=======================================================================
+        # =======================================================================
         obj_name = "%s.Visibility" % (game_entity_name)
         visibility_raw_api_object = RawAPIObject(obj_name, "Visibility", dataset.nyan_api_objects)
         visibility_raw_api_object.add_raw_parent("engine.ability.type.Visibility")
@@ -309,9 +309,9 @@ class AoCNyanSubprocessor:
 
         unit_line.add_raw_api_object(visibility_raw_api_object)
 
-        #=======================================================================
+        # =======================================================================
         # Live ability
-        #=======================================================================
+        # =======================================================================
         obj_name = "%s.Live" % (game_entity_name)
         live_raw_api_object = RawAPIObject(obj_name, "Live", dataset.nyan_api_objects)
         live_raw_api_object.add_raw_parent("engine.ability.type.Live")
@@ -347,9 +347,9 @@ class AoCNyanSubprocessor:
         unit_line.add_raw_api_object(health_raw_api_object)
         unit_line.add_raw_api_object(live_raw_api_object)
 
-        #=======================================================================
+        # =======================================================================
         # Stop ability
-        #=======================================================================
+        # =======================================================================
         obj_name = "%s.Stop" % (game_entity_name)
         stop_raw_api_object = RawAPIObject(obj_name, "Stop", dataset.nyan_api_objects)
         stop_raw_api_object.add_raw_parent("engine.ability.type.Stop")
@@ -365,24 +365,24 @@ class AoCNyanSubprocessor:
 
         unit_line.add_raw_api_object(stop_raw_api_object)
 
-        #=======================================================================
+        # =======================================================================
         # TODO: Bunch of other abilities
         #       Death, Selectable, Hitbox, Despawn, ApplyEffect, Resistance, ...
-        #=======================================================================
+        # =======================================================================
         raw_api_object.add_raw_member("abilities", abilities_set,
                                       "engine.aux.game_entity.GameEntity")
 
-        #=======================================================================
+        # =======================================================================
         # TODO: Modifiers
-        #=======================================================================
+        # =======================================================================
         modifiers_set = []
 
         raw_api_object.add_raw_member("modifiers", modifiers_set,
                                       "engine.aux.game_entity.GameEntity")
 
-        #=======================================================================
+        # =======================================================================
         # TODO: Variants
-        #=======================================================================
+        # =======================================================================
         variants_set = []
 
         raw_api_object.add_raw_member("variants", variants_set,

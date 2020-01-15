@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 #include <initializer_list>
 

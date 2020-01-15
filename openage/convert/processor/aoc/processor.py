@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 """
 Convert data from AoC to openage formats.
@@ -25,12 +25,12 @@ from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup
 from ...dataformat.aoc.genie_tech import BuildingLineUpgrade
 
-from openage.convert.dataformat.aoc.genie_unit import GenieVariantGroup
-from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
-from openage.convert.nyan.api_loader import load_api
-from openage.convert.dataformat.converter_object import RawAPIObject,\
+from ...dataformat.aoc.genie_unit import GenieVariantGroup
+from .nyan_subprocessor import AoCNyanSubprocessor
+from ...nyan.api_loader import load_api
+from ...dataformat.converter_object import RawAPIObject,\
     ConverterObjectGroup
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from ...dataformat.aoc.expected_pointer import ExpectedPointer
 
 
 class AoCProcessor:
@@ -196,7 +196,8 @@ class AoCProcessor:
                 effect_id = index_effect
                 effect_members = raw_effect.get_value()
 
-                effect = GenieEffectObject(effect_id, bundle_id, full_data_set, members=effect_members)
+                effect = GenieEffectObject(effect_id, bundle_id, full_data_set,
+                                           members=effect_members)
 
                 effects.update({effect_id: effect})
 
@@ -204,9 +205,11 @@ class AoCProcessor:
 
             # Pass everything to the bundle
             effect_bundle_members = raw_effect_bundle.get_value()
-            effect_bundle_members.pop("effects")  # Removed because we store them as separate objects
+            # Remove effects we store them as separate objects
+            effect_bundle_members.pop("effects")
 
-            bundle = GenieEffectBundle(bundle_id, effects, full_data_set, members=effect_bundle_members)
+            bundle = GenieEffectBundle(bundle_id, effects, full_data_set,
+                                       members=effect_bundle_members)
             full_data_set.genie_effect_bundles.update({bundle.get_id(): bundle})
 
             index_bundle += 1
@@ -267,7 +270,8 @@ class AoCProcessor:
             building_id = raw_connection.get_value()["id"].get_value()
             connection_members = raw_connection.get_value()
 
-            connection = GenieBuildingConnection(building_id, full_data_set, members=connection_members)
+            connection = GenieBuildingConnection(building_id, full_data_set,
+                                                 members=connection_members)
             full_data_set.building_connections.update({connection.get_id(): connection})
 
     @staticmethod
@@ -380,17 +384,17 @@ class AoCProcessor:
         # Stores pregenerated raw API objects as a container
         pregen_converter_group = ConverterObjectGroup("pregen")
 
-        #=======================================================================
+        # =======================================================================
         # Attributes
         #
         # TODO: Fill translations
-        #=======================================================================
+        # =======================================================================
         attribute_parent = "engine.aux.attribute.Attribute"
         attributes_location = "data/aux/attribute/"
 
-        #=======================================================================
+        # =======================================================================
         # HP
-        #=======================================================================
+        # =======================================================================
         health_ref_in_modpack = "aux.attribute.types.Health"
         health_nyan_object = RawAPIObject(health_ref_in_modpack,
                                           "Health", api_objects,
@@ -429,9 +433,9 @@ class AoCProcessor:
         pregen_converter_group.add_raw_api_object(health_abbrv_value)
         pregen_nyan_objects.update({health_abbrv_ref_in_modpack: health_abbrv_value})
 
-        #=======================================================================
+        # =======================================================================
         # Faith
-        #=======================================================================
+        # =======================================================================
         faith_ref_in_modpack = "aux.attribute.types.Faith"
         faith_nyan_object = RawAPIObject(faith_ref_in_modpack,
                                          "Faith", api_objects,
@@ -470,15 +474,15 @@ class AoCProcessor:
         pregen_converter_group.add_raw_api_object(faith_abbrv_value)
         pregen_nyan_objects.update({faith_abbrv_ref_in_modpack: faith_abbrv_value})
 
-        #=======================================================================
+        # =======================================================================
         # Game Entity Types
-        #=======================================================================
+        # =======================================================================
         type_parent = "engine.aux.game_entity_type.GameEntityType"
         types_location = "data/aux/game_entity_type/"
 
-        #=======================================================================
+        # =======================================================================
         # Ambient
-        #=======================================================================
+        # =======================================================================
         ambient_ref_in_modpack = "aux.game_entity_type.types.Ambient"
         ambient_nyan_object = RawAPIObject(ambient_ref_in_modpack,
                                            "Ambient", api_objects,
@@ -488,9 +492,9 @@ class AoCProcessor:
         pregen_converter_group.add_raw_api_object(ambient_nyan_object)
         pregen_nyan_objects.update({ambient_ref_in_modpack: ambient_nyan_object})
 
-        #=======================================================================
+        # =======================================================================
         # Building
-        #=======================================================================
+        # =======================================================================
         building_ref_in_modpack = "aux.game_entity_type.types.Building"
         building_nyan_object = RawAPIObject(building_ref_in_modpack,
                                             "Building", api_objects,
@@ -500,9 +504,9 @@ class AoCProcessor:
         pregen_converter_group.add_raw_api_object(building_nyan_object)
         pregen_nyan_objects.update({building_ref_in_modpack: building_nyan_object})
 
-        #=======================================================================
+        # =======================================================================
         # Item
-        #=======================================================================
+        # =======================================================================
         item_ref_in_modpack = "aux.game_entity_type.types.Item"
         item_nyan_object = RawAPIObject(item_ref_in_modpack,
                                         "Item", api_objects,
@@ -512,9 +516,9 @@ class AoCProcessor:
         pregen_converter_group.add_raw_api_object(item_nyan_object)
         pregen_nyan_objects.update({item_ref_in_modpack: item_nyan_object})
 
-        #=======================================================================
+        # =======================================================================
         # Projectile
-        #=======================================================================
+        # =======================================================================
         projectile_ref_in_modpack = "aux.game_entity_type.types.Projectile"
         projectile_nyan_object = RawAPIObject(projectile_ref_in_modpack,
                                               "Projectile", api_objects,
@@ -524,9 +528,9 @@ class AoCProcessor:
         pregen_converter_group.add_raw_api_object(projectile_nyan_object)
         pregen_nyan_objects.update({projectile_ref_in_modpack: projectile_nyan_object})
 
-        #=======================================================================
+        # =======================================================================
         # Unit
-        #=======================================================================
+        # =======================================================================
         unit_ref_in_modpack = "aux.game_entity_type.types.Unit"
         unit_nyan_object = RawAPIObject(unit_ref_in_modpack,
                                         "Unit", api_objects,
@@ -537,18 +541,19 @@ class AoCProcessor:
         pregen_nyan_objects.update({unit_ref_in_modpack: unit_nyan_object})
 
         # TODO: Wait for API version 0.3.0
-        #=======================================================================
+        # =======================================================================
         # Generic Death Condition (HP<=0)
         #    sidenote: Apparently this is actually HP<1 in Genie
         #              (https://youtu.be/FdBk8zGbE7U?t=7m16s)
         #
-        #=======================================================================
+        # =======================================================================
 #         clause_parents = [api_objects["engine.aux.boolean.Clause"]]
 #
 #         clause_nyan_object = NyanObject("StandardHealthDeath", clause_parents)
 #
 #         # Clause will not default to 'True' when it was fulfilled once
-#         only_once = clause_nyan_object.get_member_by_name("only_once", api_objects["engine.aux.boolean.Clause"])
+#         only_once = clause_nyan_object.get_member_by_name("only_once",
+#                                                           api_objects["engine.aux.boolean.Clause"])
 #         only_once.set_value(False, MemberOperator.ASSIGN)
 #
 #         # Requirement mode does not matter, so we use ANY
@@ -631,7 +636,8 @@ class AoCProcessor:
 
             else:
                 # Check for special cases first
-                if unit.has_member("transform_unit_id") and unit.get_member("transform_unit_id").get_value() > -1:
+                if unit.has_member("transform_unit_id")\
+                        and unit.get_member("transform_unit_id").get_value() > -1:
                     # Trebuchet
                     unit_line = GenieUnitTransformGroup(line_id, unit_id, full_data_set)
                     full_data_set.transform_groups.update({unit_line.get_id(): unit_line})
@@ -642,7 +648,8 @@ class AoCProcessor:
                     unit_line = GenieMonkGroup(line_id, unit_id, 286, full_data_set)
                     full_data_set.monk_groups.update({unit_line.get_id(): unit_line})
 
-                elif unit.has_member("task_group") and unit.get_member("task_group").get_value() > 0:
+                elif unit.has_member("task_group")\
+                        and unit.get_member("task_group").get_value() > 0:
                     # Villager
                     # done somewhere else because they are special^TM
                     continue
@@ -897,7 +904,8 @@ class AoCProcessor:
 
             elif line_mode == 3:
                 # Units further down the line receive line upgrades
-                unit_upgrade = UnitLineUpgrade(required_research_id, line_id, unit_id, full_data_set)
+                unit_upgrade = UnitLineUpgrade(required_research_id, line_id,
+                                               unit_id, full_data_set)
                 full_data_set.tech_groups.update({unit_upgrade.get_id(): unit_upgrade})
                 full_data_set.unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
 

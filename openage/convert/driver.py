@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 """
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
@@ -95,12 +95,12 @@ def get_gamespec(srcdir, game_versions, dont_pickle):
                                  not dont_pickle)
 
     # TODO: Reimplement this in actual converter
-    #===========================================================================
+    # ===========================================================================
     # # modify the read contents of datfile
     # from .fix_data import fix_data
     # # pylint: disable=no-member
     # gamespec.empiresdat[0] = fix_data(gamespec.empiresdat[0])
-    #===========================================================================
+    # ===========================================================================
 
     return gamespec
 
@@ -232,7 +232,7 @@ def extract_mediafiles_names_map(srcdir):
 def slp_rename(filepath, names_map):
     """ Returns a human-readable name if it's in the map """
     try:
-        # look up the slp id (= file stem) in the rename map
+        # look up the slp obj_id (= file stem) in the rename map
         return filepath.parent[
             names_map[filepath.stem] + filepath.suffix
         ]
@@ -263,8 +263,8 @@ def convert_media(args):
                     break
 
             # skip unwanted ids ("just debugging things(tm)")
-            if getattr(args, "id", None) and\
-               int(filepath.stem) != args.id:
+            if getattr(args, "obj_id", None) and\
+               int(filepath.stem) != args.obj_id:
                 skip_file = True
 
             if skip_file or filepath.is_dir():
@@ -289,7 +289,7 @@ def convert_media(args):
 
     info("converting media")
 
-    # there is id->name mapping information in some bina files
+    # there is obj_id->name mapping information in some bina files
     named_mediafiles_map = extract_mediafiles_names_map(args.srcdir)
 
     jobs = getattr(args, "jobs", None)
@@ -359,7 +359,7 @@ def convert_slp(filepath, dirname, names_map, converter_pool, args):
 
     # some user interface textures must be cut using hardcoded values
     if filepath.parent.name == 'interface':
-        # the stem is the file id
+        # the stem is the file obj_id
         cutter = InterfaceCutter(int(filepath.stem))
     else:
         cutter = None
@@ -375,7 +375,7 @@ def convert_slp(filepath, dirname, names_map, converter_pool, args):
             entry["cy"] = TILE_HALFSIZE["y"]
 
     # replace .slp by .png and rename the file
-    # by some lookups (that map id -> human readable)
+    # by some lookups (that map obj_id -> human readable)
     tex_filepath = hud_rename(slp_rename(
         filepath,
         names_map

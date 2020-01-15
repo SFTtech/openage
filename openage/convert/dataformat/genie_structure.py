@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -240,10 +240,9 @@ class GenieStructure:
                     generated_value_members.extend(gen_members)
 
                 else:
-                    # create new instance of referenced class (cls),
-                    # use its read method to store data to itself,
+                    # create new instance of ValueMember,
+                    # depending on the storage type.
                     # then save the result as a reference named `var_name`
-                    # TODO: constructor argument passing may be required here.
                     grouped_data = var_type.cls(
                         game_versions=self.game_versions)
                     offset, gen_members = grouped_data.read(raw, offset)
@@ -398,8 +397,6 @@ class GenieStructure:
                 is_custom_member = False
 
                 if isinstance(var_type, str):
-                    # TODO: generate and save member type on the fly
-                    # instead of just reading
                     is_array = vararray_match.match(var_type)
 
                     if is_array:
@@ -717,7 +714,7 @@ class GenieStructure:
         """
 
         for member in cls.data_format:
-            export, _, storage_type, read_type = member
+            export, _, _, read_type = member
 
             definitively_return_member = False
 

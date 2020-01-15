@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 from ...dataformat.converter_object import ConverterObject
 
@@ -31,6 +31,9 @@ class GenieEffectObject(ConverterObject):
         Returns the effect's type.
         """
         return self.get_member("type_id").get_value()
+
+    def __repr__(self):
+        return "GenieEffectObject<%s>" % (self.get_id())
 
 
 class GenieEffectBundle(ConverterObject):
@@ -89,3 +92,6 @@ class GenieEffectBundle(ConverterObject):
         Returns whether the effect bundle has been sanitized.
         """
         return self.sanitized
+
+    def __repr__(self):
+        return "GenieEffectBundle<%s>" % (self.get_id())

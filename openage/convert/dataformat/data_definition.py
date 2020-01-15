@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 """
 Output format specification for data to write.
@@ -8,7 +8,7 @@ import os.path
 
 from .content_snippet import ContentSnippet, SectionType
 from .generated_file import GeneratedFile
-from openage.convert.dataformat.read_members import EnumMember, MultisubtypeMember
+from .read_members import EnumMember, MultisubtypeMember
 from .util import encode_value, commentify_lines
 from .struct_definition import StructDefinition
 
