@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 # TODO pylint: disable=C,R,abstract-method
 
 """
@@ -396,7 +396,7 @@ class ArrayMember(ValueMember):
 
                     diff_list.append(diff_value)
 
-                return ArrayMember(self.name, diff_list)
+                return ArrayMember(self.name, self.member_type, diff_list)
 
             else:
                 raise Exception(
@@ -417,9 +417,6 @@ class NoDiffMember(ValueMember):
     """
     Is returned when no difference between two members is found.
     """
-
-    def __init__(self, name):
-        super().__init__(name)
 
     def __repr__(self):
         return "NoDiffMember<%s>" % (type(self))

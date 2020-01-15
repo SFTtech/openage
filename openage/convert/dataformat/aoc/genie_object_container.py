@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 from ...dataformat.converter_object import ConverterObjectContainer
 
@@ -57,3 +57,6 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.nyan_files = []
         self.sprite_files = []
         self.terrain_files = []
+
+    def __repr__(self):
+        return "GenieObjectContainer"

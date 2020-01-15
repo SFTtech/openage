@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 """
 Objects that represent data structures in the original game.
@@ -7,9 +7,9 @@ These are simple containers that can be processed by the converter.
 """
 
 from .value_members import ValueMember
-from openage.nyan.nyan_structs import NyanObject, MemberOperator
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
+from ...nyan.nyan_structs import NyanObject, MemberOperator
+from .aoc.expected_pointer import ExpectedPointer
+from .aoc.combined_sprite import CombinedSprite
 
 
 class ConverterObject:
@@ -68,7 +68,7 @@ class ConverterObject:
         """
         Returns True if the object has a member with the specified name.
         """
-        return (name in self.members)
+        return name in self.members
 
     def remove_member(self, name):
         """
@@ -163,7 +163,7 @@ class ConverterObjectGroup:
         """
         Returns True if the object has a subobject with the specified ID.
         """
-        return (obj_id in self.raw_api_objects)
+        return obj_id in self.raw_api_objects
 
     def remove_raw_api_object(self, obj_id):
         """
@@ -206,7 +206,7 @@ class RawAPIObject:
         :type location: str
         """
 
-        self.id = obj_id
+        self.obj_id = obj_id
         self.name = name
 
         self.api_ref = api_ref
@@ -271,9 +271,9 @@ class RawAPIObject:
             elif isinstance(member_value, CombinedSprite):
                 member_value = member_value.resolve_location()
 
-            elif type(member_value) is list:
-                # Resolve elements in the list, if necessary
-                if len(member_value) > 0:
+            elif isinstance(member_value, list):
+                # Resolve elements in the list, if it's not empty
+                if not member_value:
                     temp_values = []
 
                     for temp_value in member_value:
@@ -288,15 +288,15 @@ class RawAPIObject:
 
                     member_value = temp_values
 
-            nyan_member = self.nyan_object.get_member_by_name("%s.%s" % (member_origin.get_name(), member_name),
-                                                              member_origin)
+            nyan_member_name = "%s.%s" % (member_origin.get_name(), member_name)
+            nyan_member = self.nyan_object.get_member_by_name(nyan_member_name, member_origin)
             nyan_member.set_value(member_value, MemberOperator.ASSIGN)
 
     def get_id(self):
         """
         Returns the ID of the raw API object.
         """
-        return self.id
+        return self.obj_id
 
     def get_location(self):
         """
@@ -311,8 +311,7 @@ class RawAPIObject:
         if self.nyan_object:
             return self.nyan_object
 
-        else:
-            raise Exception("nyan object for %s has not been created yet" % (self))
+        raise Exception("nyan object for %s has not been created yet" % (self))
 
     def is_ready(self):
         """
@@ -331,7 +330,7 @@ class RawAPIObject:
         self._location = relative_path
 
     def __repr__(self):
-        return "RawAPIObject<%s>" % (self.id)
+        return "RawAPIObject<%s>" % (self.obj_id)
 
 
 class ConverterObjectContainer:
@@ -341,4 +340,3 @@ class ConverterObjectContainer:
     It is recommended to create one ConverterObjectContainer for everything
     and pass the reference around.
     """
-    pass

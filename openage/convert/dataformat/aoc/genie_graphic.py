@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 from ...dataformat.converter_object import ConverterObject
 
@@ -25,3 +25,6 @@ class GenieGraphic(ConverterObject):
         super().__init__(graphic_id, members=members)
 
         self.data = full_data_set
+
+    def __repr__(self):
+        return "GenieGraphic<%s>" % (self.get_id())

@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 
 from ...dataformat.converter_object import ConverterObject
@@ -24,6 +24,9 @@ class GenieAgeConnection(ConverterObject):
 
         self.data = full_data_set
 
+    def __repr__(self):
+        return "GenieAgeConnection<%s>" % (self.get_id())
+
 
 class GenieBuildingConnection(ConverterObject):
     """
@@ -44,6 +47,9 @@ class GenieBuildingConnection(ConverterObject):
         super().__init__(building_id, members=members)
 
         self.data = full_data_set
+
+    def __repr__(self):
+        return "GenieBuildingConnection<%s>" % (self.get_id())
 
 
 class GenieTechConnection(ConverterObject):
@@ -66,6 +72,9 @@ class GenieTechConnection(ConverterObject):
 
         self.data = full_data_set
 
+    def __repr__(self):
+        return "GenieTechConnection<%s>" % (self.get_id())
+
 
 class GenieUnitConnection(ConverterObject):
     """
@@ -86,3 +95,6 @@ class GenieUnitConnection(ConverterObject):
         super().__init__(unit_id, members=members)
 
         self.data = full_data_set
+
+    def __repr__(self):
+        return "GenieUnitConnection<%s>" % (self.get_id())

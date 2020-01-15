@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 from ...dataformat.converter_object import ConverterObject
 
@@ -22,3 +22,6 @@ class GenieSound(ConverterObject):
         super().__init__(sound_id, members=members)
 
         self.data = full_data_set
+
+    def __repr__(self):
+        return "GenieSound<%s>" % (self.get_id())

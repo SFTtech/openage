@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 
 from ...dataformat.converter_object import ConverterObject,\
@@ -28,6 +28,9 @@ class GenieTechObject(ConverterObject):
         super().__init__(tech_id, members=members)
 
         self.data = full_data_set
+
+    def __repr__(self):
+        return "GenieTechObject<%s>" % (self.get_id())
 
 
 class GenieTechEffectBundleGroup(ConverterObjectGroup):
@@ -94,6 +97,9 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         else:
             return False
 
+    def __repr__(self):
+        return "GenieTechEffectBundleGroup<%s>" % (self.get_id())
+
 
 class AgeUpgrade(GenieTechEffectBundleGroup):
     """
@@ -120,6 +126,9 @@ class AgeUpgrade(GenieTechEffectBundleGroup):
 
         self.age_id = age_id
 
+    def __repr__(self):
+        return "AgeUpgrade<%s>" % (self.get_id())
+
 
 class UnitLineUpgrade(GenieTechEffectBundleGroup):
     """
@@ -145,6 +154,9 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
         self.unit_line_id = unit_line_id
         self.upgrade_target_id = upgrade_target_id
 
+    def __repr__(self):
+        return "UnitLineUpgrade<%s>" % (self.get_id())
+
 
 class BuildingLineUpgrade(GenieTechEffectBundleGroup):
     """
@@ -169,6 +181,9 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
 
         self.building_line_id = building_line_id
         self.upgrade_target_id = upgrade_target_id
+
+    def __repr__(self):
+        return "BuildingLineUpgrade<%s>" % (self.get_id())
 
 
 class UnitUnlock(GenieTechEffectBundleGroup):
@@ -196,6 +211,9 @@ class UnitUnlock(GenieTechEffectBundleGroup):
 
         self.line_id = line_id
 
+    def __repr__(self):
+        return "UnitUnlock<%s>" % (self.get_id())
+
 
 class CivBonus(GenieTechEffectBundleGroup):
     """
@@ -219,3 +237,6 @@ class CivBonus(GenieTechEffectBundleGroup):
         super().__init__(tech_id, full_data_set)
 
         self.civ_id = civ_id
+
+    def __repr__(self):
+        return "CivBonus<%s>" % (self.get_id())

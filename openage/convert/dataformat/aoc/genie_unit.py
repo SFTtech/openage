@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 
 from ...dataformat.converter_object import ConverterObject,\
@@ -25,6 +25,9 @@ class GenieUnitObject(ConverterObject):
 
         self.data = full_data_set
 
+    def __repr__(self):
+        return "GenieUnitObject<%s>" % (self.get_id())
+
 
 class GenieUnitLineGroup(ConverterObjectGroup):
     """
@@ -41,7 +44,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         """
         Creates a new Genie unit line.
 
-        :param line_id: Internal line id in the .dat file.
+        :param line_id: Internal line obj_id in the .dat file.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
@@ -74,7 +77,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         :param genie_unit: A GenieUnit object that is part of this
                            unit line.
         :param after: ID of a unit after which the new unit is
-                      placed in the line. If a unit with this id
+                      placed in the line. If a unit with this obj_id
                       is not present, the unit is appended at the end
                       of the line.
         """
@@ -118,7 +121,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
         :returns: True if the unit is tied to one specific civ.
         """
-        # Get the enabling research id for the first unit in the line
+        # Get the enabling research obj_id for the first unit in the line
         head_unit = self.line[0]
         head_unit_id = head_unit.get_member("id0").get_value()
         head_unit_connection = self.data.unit_connections[head_unit_id]
@@ -143,9 +146,9 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         """
         Units are creatable if they have a valid train location.
 
-        :returns: True if the train location id is greater than zero.
+        :returns: True if the train location obj_id is greater than zero.
         """
-        # Get the train location id for the first unit in the line
+        # Get the train location obj_id for the first unit in the line
         head_unit = self.line[0]
         train_location_id = head_unit.get_member("train_location_id").get_value()
 
@@ -157,7 +160,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
     def get_civ_id(self):
         """
-        Returns the enabling civ id if the unit is unique,
+        Returns the enabling civ obj_id if the unit is unique,
         otherwise return None.
         """
         if self.is_unique():
@@ -173,7 +176,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
     def get_head_unit_id(self):
         """
-        Return the id of the first unit in the line.
+        Return the obj_id of the first unit in the line.
         """
         head_unit = self.line[0]
         return head_unit.get_member("id0").get_value()
@@ -189,12 +192,15 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
         return None
 
+    def __repr__(self):
+        return "GenieUnitLineGroup<%s>" % (self.get_id())
+
 
 class GenieBuildingLineGroup(ConverterObjectGroup):
     """
     A collection of GenieUnitObject types that represent a building
-    in Age of Empires. Buildings actually have no line id, so we take
-    the id of the first occurence of the building's id as the line id.
+    in Age of Empires. Buildings actually have no line obj_id, so we take
+    the obj_id of the first occurence of the building's obj_id as the line obj_id.
 
     Example1: Blacksmith(feudal)->Blacksmith(castle)->Blacksmith(imp)
 
@@ -238,7 +244,7 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         :param genie_unit: A GenieUnit object that is part of this
                            building line.
         :param after: ID of a unit after which the new unit is
-                      placed in the line. If a unit with this id
+                      placed in the line. If a unit with this obj_id
                       is not present, the unit is appended at the end
                       of the line.
         """
@@ -306,9 +312,9 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         """
         Buildings are creatable if they have a valid train location.
 
-        :returns: True if the train location id is greater than zero.
+        :returns: True if the train location obj_id is greater than zero.
         """
-        # Get the train location id for the first building in the line
+        # Get the train location obj_id for the first building in the line
         head_building = self.line[0]
         train_location_id = head_building.get_member("train_location_id").get_value()
 
@@ -328,6 +334,9 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
             return head_building.get_member("train_location_id").get_value()
 
         return None
+
+    def __repr__(self):
+        return "GenieBuildingLineGroup<%s>" % (self.get_id())
 
 
 class GenieStackBuildingGroup(GenieBuildingLineGroup):
@@ -361,7 +370,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
         Stack buildings are created through their head building. We have to
         lookup its values.
 
-        :returns: True if the train location id is greater than zero.
+        :returns: True if the train location obj_id is greater than zero.
         """
         train_location_id = self.head.get_member("train_location_id").get_value()
 
@@ -383,6 +392,9 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
 
         return None
 
+    def __repr__(self):
+        return "GenieStackBuildingGroup<%s>" % (self.get_id())
+
 
 class GenieUnitTransformGroup(GenieUnitLineGroup):
     """
@@ -396,7 +408,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
         """
         Creates a new Genie transform group.
 
-        :param head_unit_id: Internal unit id of the unit that should be
+        :param head_unit_id: Internal unit obj_id of the unit that should be
                              the initial state.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
@@ -409,6 +421,9 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
 
         transform_id = self.head_unit.get_member("transform_unit_id").get_value()
         self.transform_unit = self.data.genie_units[transform_id]
+
+    def __repr__(self):
+        return "GenieUnitTransformGroup<%s>" % (self.get_id())
 
 
 class GenieMonkGroup(GenieUnitLineGroup):
@@ -438,6 +453,9 @@ class GenieMonkGroup(GenieUnitLineGroup):
         self.head_unit = self.data.genie_units[head_unit_id]
         self.switch_unit = self.data.genie_units[switch_unit_id]
 
+    def __repr__(self):
+        return "GenieMonkGroup<%s>" % (self.get_id())
+
 
 class GenieVariantGroup(ConverterObjectGroup):
     """
@@ -466,7 +484,7 @@ class GenieVariantGroup(ConverterObjectGroup):
 
         :param genie_unit: A GenieUnit object that is in the same class.
         :param after: ID of a unit after which the new unit is
-                      placed in the list. If a unit with this id
+                      placed in the list. If a unit with this obj_id
                       is not present, the unit is appended at the end
                       of the list.
         """
@@ -499,6 +517,9 @@ class GenieVariantGroup(ConverterObjectGroup):
 
         return obj in self.variants
 
+    def __repr__(self):
+        return "GenieVariantGroup<%s>" % (self.get_id())
+
 
 class GenieUnitTaskGroup(GenieUnitLineGroup):
     """
@@ -513,14 +534,14 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
     # From unit connection
     male_line_id = 83   # male villager (with combat task)
 
-    # Female villagers have no line id, so we use the combat unit
+    # Female villagers have no line obj_id, so we use the combat unit
     female_line_id = 293  # female villager (with combat task)
 
     def __init__(self, line_id, task_group_id, full_data_set):
         """
         Creates a new Genie task group.
 
-        :param task_group_id: Internal task group id in the .dat file.
+        :param task_group_id: Internal task group obj_id in the .dat file.
         :param head_task_id: The unit with this task will become the head unit.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
@@ -535,7 +556,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         """
         Task groups are creatable if any unit in the group is creatable.
 
-        :returns: True if any train location id is greater than zero.
+        :returns: True if any train location obj_id is greater than zero.
         """
         for unit in self.line:
             train_location_id = unit.get_member("train_location_id").get_value()
@@ -558,6 +579,9 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
 
         return None
 
+    def __repr__(self):
+        return "GenieUnitTaskGroup<%s>" % (self.get_id())
+
 
 class GenieVillagerGroup(GenieUnitLineGroup):
     """
@@ -579,7 +603,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         """
         Creates a new Genie villager group.
 
-        :param group_id: Unit id for the villager unit that is referenced by buildings
+        :param group_id: Unit obj_id for the villager unit that is referenced by buildings
                          (in AoE2: 118 = male builder).
         :param task_group_ids: Internal task group ids in the .dat file.
                                (as a list of integers)
@@ -604,7 +628,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         """
         Villagers are creatable if any of their variant task groups are creatable.
 
-        :returns: True if any train location id is greater than zero.
+        :returns: True if any train location obj_id is greater than zero.
         """
         for variant in self.variants:
             if variant.is_creatable():
@@ -614,7 +638,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
     def get_head_unit_id(self):
         """
-        For villagers, this returns the group id.
+        For villagers, this returns the group obj_id.
         """
         return self.get_id()
 
@@ -628,3 +652,6 @@ class GenieVillagerGroup(GenieUnitLineGroup):
                 return variant.get_train_location()
 
         return None
+
+    def __repr__(self):
+        return "GenieVillagerGroup<%s>" % (self.get_id())

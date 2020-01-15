@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 
 from ...dataformat.converter_object import ConverterObject
@@ -24,3 +24,6 @@ class GenieTerrainObject(ConverterObject):
         super().__init__(terrain_id, members=members)
 
         self.data = full_data_set
+
+    def __repr__(self):
+        return "GenieTerrainObject<%s>" % (self.get_id())

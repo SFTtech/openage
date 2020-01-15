@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 """
 Age of Empires games do not necessarily come with an english
@@ -7,7 +7,7 @@ figure out the names for a nyan object.
 """
 
 # key: line_id; value: (nyan object name, filename prefix)
-unit_line_lookups = {
+UNIT_LINE_LOOKUPS = {
     4: ("Archer", "archer"),
     5: ("HandCannoneer", "hand_cannoneer"),
     7: ("Skirmisher", "skirmisher"),
@@ -57,7 +57,7 @@ unit_line_lookups = {
     831: ("TurtleShip", "turtle_ship"),
 }
 
-building_line_lookups = {
+BUILDING_LINE_LOOKUPS = {
     12: ("Barracks", "barracks"),
     45: ("Harbor", "harbor"),
     49: ("SiegeWorkshop", "siege_workshop"),
@@ -83,7 +83,7 @@ building_line_lookups = {
     598: ("Outpost", "outpost"),
 }
 
-civ_group_lookups = {
+CIV_GROUP_LOOKUPS = {
     0: "Gaia",
     1: "Britons",
     2: "Franks",
@@ -105,7 +105,7 @@ civ_group_lookups = {
     18: "Koreans",
 }
 
-class_id_lookups = {
+CLASS_ID_LOOKUPS = {
     0: "Archer",
     1: "Artifact",
     2: "TradeBoat",
