@@ -12,6 +12,7 @@ Quick usage guide on when to use which ValueMember:
       be self explanatory.
     - IDMember: References to other structures in form of identifiers.
                 Also useful for flags with more than two options.
+    - BitfieldMember: Value is used as a bitfield.
     - ContainerMember: For modelling specific substructures. ContainerMembers
                        can store members with different types. However, the
                        member names must be unique.

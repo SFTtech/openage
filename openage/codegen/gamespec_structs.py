@@ -4,7 +4,7 @@
 gamespec struct code generation listing.
 """
 
-from ..convert.dataformat.data_formatter import DataFormatter
+from ..convert.export.data_formatter import DataFormatter
 
 from ..convert.dataformat.multisubtype_base import MultisubtypeBaseFile
 from ..convert.gamedata.empiresdat import EmpiresDat

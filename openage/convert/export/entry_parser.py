@@ -37,6 +37,7 @@ class ParserTemplate:
     """
     Tempalte for a data parser function, its content is generated.
     """
+
     def __init__(self, signature, template, impl_headers, headers):
         # function signature, containing %s as possible namespace prefix
         self.signature = signature

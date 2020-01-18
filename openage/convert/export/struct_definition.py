@@ -5,8 +5,8 @@
 from collections import OrderedDict
 import re
 
-from openage.convert.dataformat.read_members import IncludeMembers, StringMember, CharArrayMember, NumberMember, ReadMember, RefMember
-from .member_access import READ_EXPORT, NOREAD_EXPORT
+from ..dataformat.read_members import IncludeMembers, StringMember, CharArrayMember, NumberMember, ReadMember, RefMember
+from ..dataformat.member_access import READ_EXPORT, NOREAD_EXPORT
 from .content_snippet import ContentSnippet, SectionType
 from .struct_snippet import StructSnippet
 from .util import determine_header

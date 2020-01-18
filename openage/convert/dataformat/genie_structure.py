@@ -6,18 +6,16 @@ import hashlib
 import math
 import struct
 
-from .util import struct_type_lookup
+from ..export.util import struct_type_lookup
 from ...util.strings import decode_until_null
 
-from .data_definition import DataDefinition
-from .generated_file import GeneratedFile
 from .member_access import READ, READ_EXPORT, READ_UNKNOWN, NOREAD_EXPORT
 from .read_members import (IncludeMembers, ContinueReadMember,
                            MultisubtypeMember, GroupMember, SubdataMember,
                            ReadMember,
                            EnumLookupMember)
-from .struct_definition import (StructDefinition, vararray_match,
-                                integer_match)
+from ..export.struct_definition import (StructDefinition, vararray_match,
+                                        integer_match)
 from .value_members import MemberTypes as StorageType
 from .value_members import ContainerMember,\
     ArrayMember, IntMember, FloatMember, StringMember, BooleanMember, IDMember
@@ -58,137 +56,6 @@ class GenieStructure:
     def __init__(self, **args):
         # store passed arguments as members
         self.__dict__.update(args)
-
-    def dump(self, filename):
-        """
-        main data dumping function, the magic happens in here.
-
-        recursively dumps all object members as DataDefinitions.
-
-        returns [DataDefinition, ..]
-        """
-
-        ret = list()        # returned list of data definitions
-        self_data = dict()  # data of the current object
-
-        members = self.get_data_format(
-            allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
-            flatten_includes=True)
-        for _, _, member_name, _, member_type in members:
-
-            # gather data members of the currently queried object
-            self_data[member_name] = getattr(self, member_name)
-
-            if isinstance(member_type, MultisubtypeMember):
-                current_member_filename = filename + "-" + member_name
-
-                if isinstance(member_type, SubdataMember):
-                    is_single_subdata = True
-                    subdata_item_iter = self_data[member_name]
-
-                    # filename for the file containing the single subdata
-                    # type entries:
-                    submember_filename = current_member_filename
-
-                else:
-                    is_single_subdata = False
-
-                    # TODO: bad design, move import to better place:
-                    from .multisubtype_base import MultisubtypeBaseFile
-
-                # file names for ref types
-                multisubtype_ref_file_data = list()
-
-                # subdata member DataDefitions
-                subdata_definitions = list()
-                for subtype_name, submember_class in member_type.class_lookup.items():
-
-                    # if we are in a subdata member, this for loop will only
-                    # run through once.
-                    # else, do the actions for each subtype
-
-                    if not is_single_subdata:
-                        # iterate over the data for the current subtype
-                        subdata_item_iter = self_data[member_name][subtype_name]
-
-                        # filename for the file containing one of the
-                        # subtype data entries:
-                        submember_filename = "%s/%s" % (filename, subtype_name)
-
-                    submember_data = list()
-                    for idx, submember_data_item in enumerate(subdata_item_iter):
-                        if not isinstance(submember_data_item, GenieStructure):
-                            raise Exception("tried to dump object "
-                                            "not inheriting from GenieStructure")
-
-                        # generate output filename for next-level files
-                        nextlevel_filename = "%s/%04d" % (
-                            submember_filename, idx)
-
-                        # recursive call, fetches DataDefinitions and the
-                        # next-level data dict
-                        data_sets, data = submember_data_item.dump(
-                            nextlevel_filename)
-
-                        # store recursively generated DataDefinitions to the
-                        # flat list
-                        ret += data_sets
-
-                        # append the next-level entry to the list that will
-                        # contain the data for the current level
-                        # DataDefinition
-                        if len(data.keys()) > 0:
-                            submember_data.append(data)
-
-                    # always create a file, even with 0 entries.
-                    # create DataDefinition for the next-level data pile.
-                    subdata_definition = DataDefinition(
-                        submember_class,
-                        submember_data,
-                        submember_filename,
-                    )
-
-                    if not is_single_subdata:
-                        # create entry for type file index.
-                        # for each subtype, create entry in the subtype data
-                        # file lookup file.
-                        # sync this with MultisubtypeBaseFile!
-                        multisubtype_ref_file_data.append({
-                            MultisubtypeBaseFile.data_format[0][1]: subtype_name,
-                            MultisubtypeBaseFile.data_format[1][1]: "%s%s" % (
-                                subdata_definition.name_data_file, GeneratedFile.output_preferences[
-                                    "csv"]["file_suffix"]
-                            ),
-                        })
-
-                    subdata_definitions.append(subdata_definition)
-
-                # store filename instead of data list
-                # is used to determine the file to read next.
-                # -> multisubtype members: type file index
-                # -> subdata members:      filename of subdata
-                self_data[member_name] = current_member_filename
-
-                # for multisubtype members, append data definition for
-                # storing references to all the subtype files
-                if not is_single_subdata and len(multisubtype_ref_file_data) > 0:
-
-                    # this is the type file index.
-                    multisubtype_ref_file = DataDefinition(
-                        MultisubtypeBaseFile,
-                        multisubtype_ref_file_data,
-                        # create file to contain refs to subtype files
-                        self_data[member_name],
-                    )
-
-                    subdata_definitions.append(multisubtype_ref_file)
-
-                # store all created submembers to the flat list
-                ret += subdata_definitions
-
-        # return flat list of DataDefinitions and dict of
-        # {member_name: member_value, ...}
-        return ret, self_data
 
     def read(self, raw, offset, cls=None, members=None):
         """

@@ -15,7 +15,7 @@ from .blendomatic import Blendomatic
 from .changelog import (ASSET_VERSION, ASSET_VERSION_FILENAME,
                         GAMESPEC_VERSION_FILENAME)
 from .colortable import ColorTable, PlayerColorTable
-from .dataformat.data_formatter import DataFormatter
+from .export.data_formatter import DataFormatter
 from .gamedata.empiresdat import load_gamespec, EmpiresDat
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE

@@ -4,7 +4,7 @@
 
 from collections import defaultdict
 
-from .dataformat import data_definition, struct_definition
+from .export import data_definition, struct_definition
 from openage.convert.dataformat import genie_structure
 
 
