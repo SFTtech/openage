@@ -8,7 +8,7 @@ import os.path
 
 from .content_snippet import ContentSnippet, SectionType
 from .generated_file import GeneratedFile
-from .read_members import EnumMember, MultisubtypeMember
+from ..dataformat.read_members import EnumMember, MultisubtypeMember
 from .util import encode_value, commentify_lines
 from .struct_definition import StructDefinition
 
@@ -85,7 +85,7 @@ class DataDefinition(StructDefinition):
                     entry += GeneratedFile.output_preferences["csv"]["file_suffix"]
                     make_relpath = True
 
-                from .multisubtype_base import MultisubtypeBaseFile
+                from ..dataformat.multisubtype_base import MultisubtypeBaseFile
                 if self.target == MultisubtypeBaseFile:
                     # if the struct definition target is the multisubtype
                     # base file, it already created the filename entry.

@@ -5,8 +5,8 @@
 import math
 
 from openage.convert.dataformat.genie_structure import GenieStructure
-from .dataformat.data_definition import DataDefinition
-from .dataformat.struct_definition import StructDefinition
+from .export.data_definition import DataDefinition
+from .export.struct_definition import StructDefinition
 from ..log import dbg
 
 

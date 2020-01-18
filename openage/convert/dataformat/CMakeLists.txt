@@ -1,19 +1,10 @@
 add_py_modules(
 	__init__.py
-	content_snippet.py
 	converter_object.py
-	data_definition.py
-	data_formatter.py
-	entry_parser.py
-	generated_file.py
 	genie_structure.py
-	header_snippet.py
 	member_access.py
 	multisubtype_base.py
 	read_members.py
-	struct_definition.py
-	struct_snippet.py
-	util.py
 	value_members.py
 )
 

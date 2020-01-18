@@ -11,7 +11,9 @@ from PIL import Image
 
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .blendomatic import BlendingMode
-from .dataformat import genie_structure, data_definition, struct_definition, data_formatter
+from .dataformat import genie_structure
+from .export import struct_definition, data_formatter
+from .export import data_definition
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
                                 TERRAIN_ASPECT_RATIO)
