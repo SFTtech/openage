@@ -202,8 +202,8 @@ class RawAPIObject:
         :type name: str
         :param api_ref: The openage API objects used as reference for creating the nyan object.
         :type api_ref: dict
-        :param location: Relative path of the nyan file in the modpack
-        :type location: str
+        :param location: Relative path of the nyan file in the modpack or another raw API object.
+        :type location: str, .expected_pointer.ExpectedPointer
         """
 
         self.obj_id = obj_id
@@ -215,6 +215,7 @@ class RawAPIObject:
         self.raw_parents = []
 
         self._location = location
+        self._filename = None
 
         self.nyan_object = None
 
@@ -292,6 +293,12 @@ class RawAPIObject:
             nyan_member = self.nyan_object.get_member_by_name(nyan_member_name, member_origin)
             nyan_member.set_value(member_value, MemberOperator.ASSIGN)
 
+    def get_filename(self):
+        """
+        Returns the filename of the raw API object.
+        """
+        return self._filename
+
     def get_id(self):
         """
         Returns the ID of the raw API object.
@@ -319,15 +326,26 @@ class RawAPIObject:
         """
         return self.nyan_object is not None and not self.nyan_object.is_abstract()
 
-    def set_location(self, relative_path):
+    def set_filename(self, filename, suffix="nyan"):
+        """
+        Set the filename of the resulting nyan file.
+
+        :param filename: File name prefix (without extension).
+        :type filename: str
+        :param suffix: File extension (defaults to "nyan")
+        :type suffix: str
+        """
+        self._filename = "%s.%s" % (filename, suffix)
+
+    def set_location(self, location):
         """
         Set the relative location of the object in a modpack. This must
-        be a path to a nyan file.
+        be a path to a nyan file or an ExpectedPointer to a nyan object.
 
-        :param relative_path: Relative path to the nyan file of the object.
-        :type relative_path: str
+        :param location: Relative path of the nyan file in the modpack or another raw API object.
+        :type location: str, .expected_pointer.ExpectedPointer
         """
-        self._location = relative_path
+        self._location = location
 
     def __repr__(self):
         return "RawAPIObject<%s>" % (self.obj_id)
@@ -340,3 +358,6 @@ class ConverterObjectContainer:
     It is recommended to create one ConverterObjectContainer for everything
     and pass the reference around.
     """
+
+    def __repr__(self):
+        return "ConverterObjectContainer"

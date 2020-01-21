@@ -10,3 +10,5 @@ add_py_modules(
 	struct_snippet.py
 	util.py
 )
+
+add_subdirectory(formats)
