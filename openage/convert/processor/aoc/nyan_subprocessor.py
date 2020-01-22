@@ -84,6 +84,7 @@ class AoCNyanSubprocessor:
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
         raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(UNIT_LINE_LOOKUPS[current_unit_id][1])
         unit_line.add_raw_api_object(raw_api_object)
 
         # =======================================================================
@@ -107,9 +108,10 @@ class AoCNyanSubprocessor:
 
         # Create the game entity type on-the-fly if it not already exists
         if class_obj_name not in dataset.pregen_nyan_objects.keys():
-            type_location = "data/aux/game_entity_type/types.nyan"
+            type_location = "data/aux/game_entity_type/"
             new_game_entity_type = RawAPIObject(class_obj_name, class_name,
                                                 dataset.nyan_api_objects, type_location)
+            new_game_entity_type.set_filename("types")
             new_game_entity_type.add_raw_parent("engine.aux.game_entity_type.GameEntityType")
             new_game_entity_type.create_nyan_object()
             dataset.pregen_nyan_objects.update({class_obj_name: new_game_entity_type})
@@ -130,7 +132,8 @@ class AoCNyanSubprocessor:
         obj_name = "%s.Idle" % (game_entity_name)
         idle_raw_api_object = RawAPIObject(obj_name, "Idle", dataset.nyan_api_objects)
         idle_raw_api_object.add_raw_parent("engine.ability.type.Idle")
-        idle_raw_api_object.set_location(obj_location)
+        idle_location = ExpectedPointer(unit_line, game_entity_name)
+        idle_raw_api_object.set_location(idle_location)
 
         idle_animation_id = current_unit.get_member("idle_graphic0").get_value()
 
@@ -144,7 +147,8 @@ class AoCNyanSubprocessor:
             obj_name = "%s.Idle.IdleAnimation" % (game_entity_name)
             animation_raw_api_object = RawAPIObject(obj_name, "IdleAnimation", dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_raw_api_object.set_location(obj_location)
+            animation_location = ExpectedPointer(unit_line, "%s.Idle" % (game_entity_name))
+            animation_raw_api_object.set_location(animation_location)
 
             idle_sprite = CombinedSprite(idle_animation_id,
                                          "idle_%s" % (UNIT_LINE_LOOKUPS[current_unit_id][1]),
@@ -173,7 +177,8 @@ class AoCNyanSubprocessor:
         obj_name = "%s.Move" % (game_entity_name)
         move_raw_api_object = RawAPIObject(obj_name, "Move", dataset.nyan_api_objects)
         move_raw_api_object.add_raw_parent("engine.ability.type.Move")
-        move_raw_api_object.set_location(obj_location)
+        move_location = ExpectedPointer(unit_line, game_entity_name)
+        move_raw_api_object.set_location(move_location)
 
         # Animation
         move_animation_id = current_unit.get_member("move_graphics").get_value()
@@ -188,7 +193,8 @@ class AoCNyanSubprocessor:
             obj_name = "%s.Move.MoveAnimation" % (game_entity_name)
             animation_raw_api_object = RawAPIObject(obj_name, "MoveAnimation", dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_raw_api_object.set_location(obj_location)
+            animation_location = ExpectedPointer(unit_line, "%s.Move" % (game_entity_name))
+            animation_raw_api_object.set_location(animation_location)
 
             move_sprite = CombinedSprite(move_animation_id,
                                          "move_%s" % (UNIT_LINE_LOOKUPS[current_unit_id][1]),
@@ -219,7 +225,8 @@ class AoCNyanSubprocessor:
         obj_name = "%s.Move.Follow" % (game_entity_name)
         follow_raw_api_object = RawAPIObject(obj_name, "Follow", dataset.nyan_api_objects)
         follow_raw_api_object.add_raw_parent("engine.aux.move_mode.type.Follow")
-        move_raw_api_object.set_location(obj_location)
+        follow_location = ExpectedPointer(unit_line, "%s.Move" % (game_entity_name))
+        follow_raw_api_object.set_location(follow_location)
 
         follow_range = current_unit.get_member("line_of_sight").get_value() - 1
         follow_raw_api_object.add_raw_member("range", follow_range, "engine.aux.move_mode.type.Follow")
@@ -245,7 +252,8 @@ class AoCNyanSubprocessor:
         obj_name = "%s.Turn" % (game_entity_name)
         turn_raw_api_object = RawAPIObject(obj_name, "Turn", dataset.nyan_api_objects)
         turn_raw_api_object.add_raw_parent("engine.ability.type.Turn")
-        turn_raw_api_object.set_location(obj_location)
+        turn_location = ExpectedPointer(unit_line, game_entity_name)
+        turn_raw_api_object.set_location(turn_location)
 
         # Speed
         turn_speed_unmodified = current_unit.get_member("turn_speed").get_value()
@@ -276,7 +284,8 @@ class AoCNyanSubprocessor:
         obj_name = "%s.LineOfSight" % (game_entity_name)
         los_raw_api_object = RawAPIObject(obj_name, "LineOfSight", dataset.nyan_api_objects)
         los_raw_api_object.add_raw_parent("engine.ability.type.LineOfSight")
-        los_raw_api_object.set_location(obj_location)
+        los_location = ExpectedPointer(unit_line, game_entity_name)
+        los_raw_api_object.set_location(los_location)
 
         # Line of sight
         line_of_sight = current_unit.get_member("line_of_sight").get_value()
@@ -299,7 +308,8 @@ class AoCNyanSubprocessor:
         obj_name = "%s.Visibility" % (game_entity_name)
         visibility_raw_api_object = RawAPIObject(obj_name, "Visibility", dataset.nyan_api_objects)
         visibility_raw_api_object.add_raw_parent("engine.ability.type.Visibility")
-        visibility_raw_api_object.set_location(obj_location)
+        visibility_location = ExpectedPointer(unit_line, game_entity_name)
+        visibility_raw_api_object.set_location(visibility_location)
 
         # Units are not visible in fog
         visibility_raw_api_object.add_raw_member("visible_in_fog", False,
@@ -315,13 +325,16 @@ class AoCNyanSubprocessor:
         obj_name = "%s.Live" % (game_entity_name)
         live_raw_api_object = RawAPIObject(obj_name, "Live", dataset.nyan_api_objects)
         live_raw_api_object.add_raw_parent("engine.ability.type.Live")
-        live_raw_api_object.set_location(obj_location)
+        live_location = ExpectedPointer(unit_line, game_entity_name)
+        live_raw_api_object.set_location(live_location)
 
         attributes_set = []
 
+        obj_name = "%s.Live.Health" % (game_entity_name)
         health_raw_api_object = RawAPIObject(obj_name, "Health", dataset.nyan_api_objects)
         health_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeSetting")
-        health_raw_api_object.set_location(obj_location)
+        health_location = ExpectedPointer(unit_line, "%s.Live" % (game_entity_name))
+        health_raw_api_object.set_location(health_location)
 
         attribute_value = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
         health_raw_api_object.add_raw_member("attribute", attribute_value,
@@ -353,7 +366,8 @@ class AoCNyanSubprocessor:
         obj_name = "%s.Stop" % (game_entity_name)
         stop_raw_api_object = RawAPIObject(obj_name, "Stop", dataset.nyan_api_objects)
         stop_raw_api_object.add_raw_parent("engine.ability.type.Stop")
-        stop_raw_api_object.set_location(obj_location)
+        stop_location = ExpectedPointer(unit_line, game_entity_name)
+        stop_raw_api_object.set_location(stop_location)
 
         # Diplomacy settings
         stop_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")

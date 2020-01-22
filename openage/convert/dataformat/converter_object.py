@@ -159,6 +159,12 @@ class ConverterObjectGroup:
         """
         return self.raw_api_objects[obj_id]
 
+    def get_raw_api_objects(self):
+        """
+        Returns all raw API objects.
+        """
+        return self.raw_api_objects
+
     def has_raw_api_object(self, obj_id):
         """
         Returns True if the object has a subobject with the specified ID.

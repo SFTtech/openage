@@ -28,6 +28,7 @@ class ModpackInfo(DataDefinition):
         self.requires = []
         self.url = None
         self.license = None
+        self.author_groups = {}
         self.authors = {}
         self.load_files = []
 
@@ -53,6 +54,19 @@ class ModpackInfo(DataDefinition):
         :type contact_info: dict
         """
         self.authors[author] = contact_info
+
+    def add_author_group(self, author_group, authors=[]):
+        """
+        Adds an author with optional contact info.
+
+        :param author: Human-readable author identifier.
+        :type author: str
+        :param contact_info: Dictionary with contact info.
+                             (key = contact method, value = address)
+                             example: {"e-mail": "mastermind@openage.dev"}
+        :type contact_info: dict
+        """
+        self.author_groups[author_group] = authors
 
     def add_provided_modpack(self, modpack_name, version, uid):
         """
@@ -104,11 +118,12 @@ class ModpackInfo(DataDefinition):
         info_table["info"].update({"name": self.name})
         if self.uid:
             # Encode as base64 string
-            uid = base64.b64encode(self.uid.to_bytes(6, byteorder='big'))
+            uid = base64.b64encode(self.uid.to_bytes(6, byteorder='big')).decode("utf-8")
             info_table["info"].update({"uid": uid})
 
         if not self.version:
             raise Exception("%s: version needs to be defined before dumping." % (self))
+
         info_table["info"].update({"version": self.version})
 
         if self.short_description:
@@ -120,12 +135,20 @@ class ModpackInfo(DataDefinition):
             info_table["info"].update({"url": self.url})
         if self.license:
             info_table["info"].update({"license": self.license})
-        if self.provides:
-            info_table["info"].update({"provides": self.provides})
-        if self.conflicts:
-            info_table["info"].update({"conflicts": self.conflicts})
 
         output_dict.update(info_table)
+
+        # provides table
+        provides_table = {"provides": {}}
+        provides_table["provides"].update(self.provides)
+
+        output_dict.update(provides_table)
+
+        # conflicts table
+        conflicts_table = {"conflicts": {}}
+        conflicts_table["conflicts"].update(self.conflicts)
+
+        output_dict.update(conflicts_table)
 
         # requires table
         requires_table = {"requires": {}}
@@ -133,17 +156,17 @@ class ModpackInfo(DataDefinition):
 
         output_dict.update(requires_table)
 
-        # authors table
-        authors_table = {"authors": {}}
-        authors_table["authors"].update(self.authors)
-
-        output_dict.update(authors_table)
-
         # load table
         load_table = {"load": {}}
         load_table["load"].update(self.load_files)
 
         output_dict.update(load_table)
+
+        # authors table
+        authors_table = {"authors": {}}
+        authors_table["authors"].update(self.authors)
+
+        output_dict.update(authors_table)
 
         output_str = "# MODPACK INFO version %s\n" % (FILE_VERSION)
         output_str += toml.dumps(output_dict)
