@@ -52,11 +52,8 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.unit_unlocks = {}
         self.civ_boni = {}
 
-        # Phase 3: nyan objects
+        # Phase 3: nyan objects and sprites
         self.combined_sprites = {}          # Animation or Terrain graphics
-        self.nyan_files = []
-        self.sprite_files = []
-        self.terrain_files = []
 
     def __repr__(self):
         return "GenieObjectContainer"
