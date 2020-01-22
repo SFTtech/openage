@@ -32,18 +32,18 @@ class DataDefinition:
         raise NotImplementedError("%s has not implemented dump() method"
                                   % (type(self)))
 
-    def save(self, modpackdir):
+    def save(self, exportdir):
         """
         Outputs the contents of the DataDefinition to a file.
 
-        :param modpackdir: Relative path to the export directory.
-        :type modpackdir: ...util.fslike.path.Path
+        :param exportdir: Relative path to the export directory.
+        :type exportdir: ...util.fslike.path.Path
         """
-        if not isinstance(modpackdir, Path):
+        if not isinstance(exportdir, Path):
             raise ValueError("util.fslike.path.Path expected as filename, not %s" %
-                             type(modpackdir))
+                             type(exportdir))
 
-        output_file = modpackdir.joinpath(self.targetdir)[self.filename]
+        output_file = exportdir.joinpath(self.targetdir)[self.filename]
         output_content = self.dump()
 
         # generate human-readable file
@@ -75,8 +75,5 @@ class DataDefinition:
 
         self.targetdir = targetdir
 
-    def __str__(self):
-        return self.dump()
-
     def __repr__(self):
-        return "DataDefinition<%s>" % (self.name_struct)
+        return "DataDefinition<%s>" % (type(self))

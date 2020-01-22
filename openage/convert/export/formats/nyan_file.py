@@ -16,8 +16,10 @@ class NyanFile(DataDefinition):
     Superclass for nyan files.
     """
 
-    def __init__(self, targetdir, filename, nyan_objects=None):
+    def __init__(self, targetdir, filename, modpack_name, nyan_objects=None):
         super().__init__(targetdir, filename)
+
+        self.modpack_name = modpack_name
 
         self.nyan_objects = set()
 
@@ -45,7 +47,7 @@ class NyanFile(DataDefinition):
         """
         Returns the string that represents the nyan file.
         """
-        output_str = "# NYAN FILE version %s" % (FILE_VERSION)
+        output_str = "# NYAN FILE version %s\n" % (FILE_VERSION)
 
         # TODO: imports
 
@@ -58,17 +60,25 @@ class NyanFile(DataDefinition):
         super().set_filename(self, filename)
         self._reset_fqons()
 
+    def set_modpack_name(self, modpack_name):
+        """
+        Set the name of the modpack, the file is contained in.
+        """
+        self.modpack_name = modpack_name
+
     def set_targetdir(self, targetdir):
         super().set_targetdir(self, targetdir)
         self._reset_fqons()
 
     def _reset_fqons(self):
         """
-        Resets fqons, depending on the current target directory and filename.
+        Resets fqons, depending on the modpack name,
+        target directory and filename.
         """
         for nyan_object in self.nyan_objects:
-            new_fqon = self.targetdir.replace("/", ".")
-            new_fqon += self.filename.split(".")[0]
-            new_fqon += nyan_object.get_name()
+            new_fqon = "%s.%s%s.%s" % (self.modpack_name,
+                                       self.targetdir.replace("/", "."),
+                                       self.filename.split(".")[0],
+                                       nyan_object.get_name())
 
             nyan_object.set_fqon(new_fqon)
