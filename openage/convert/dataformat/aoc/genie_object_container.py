@@ -52,8 +52,9 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.unit_unlocks = {}
         self.civ_boni = {}
 
-        # Phase 3: nyan objects and sprites
+        # Phase 3: sprites, sounds
         self.combined_sprites = {}          # Animation or Terrain graphics
+        self.sounds = {}
 
     def __repr__(self):
         return "GenieObjectContainer"

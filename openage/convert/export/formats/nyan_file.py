@@ -17,15 +17,15 @@ class NyanFile(DataDefinition):
     """
 
     def __init__(self, targetdir, filename, modpack_name, nyan_objects=None):
-        super().__init__(targetdir, filename)
-
-        self.modpack_name = modpack_name
-
         self.nyan_objects = set()
 
         if nyan_objects:
             for nyan_object in nyan_objects:
                 self.add_nyan_object(nyan_object)
+
+        super().__init__(targetdir, filename)
+
+        self.modpack_name = modpack_name
 
     def add_nyan_object(self, new_object):
         """
@@ -56,8 +56,14 @@ class NyanFile(DataDefinition):
 
         return output_str
 
+    def get_relative_file_path(self):
+        """
+        Relative path of the nyan file in the modpack.
+        """
+        return "%s/%s%s" % (self.modpack_name, self.targetdir, self.filename)
+
     def set_filename(self, filename):
-        super().set_filename(self, filename)
+        super().set_filename(filename)
         self._reset_fqons()
 
     def set_modpack_name(self, modpack_name):
@@ -67,7 +73,7 @@ class NyanFile(DataDefinition):
         self.modpack_name = modpack_name
 
     def set_targetdir(self, targetdir):
-        super().set_targetdir(self, targetdir)
+        super().set_targetdir(targetdir)
         self._reset_fqons()
 
     def _reset_fqons(self):
