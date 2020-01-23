@@ -3,7 +3,6 @@
 """
 References a graphic in the game that has to be converted.
 """
-from .expected_pointer import ExpectedPointer
 
 
 class CombinedSprite:
@@ -49,6 +48,17 @@ class CombinedSprite:
         """
         return self.head_sprite_id
 
+    def get_relative_sprite_location(self):
+        """
+        Return the sprite file location relative to where the file
+        is expected to be in the modpack.
+        """
+        if len(self._refs) > 1:
+            return "../shared/graphics/%s.sprite" % (self.filename)
+
+        elif len(self._refs) == 1:
+            return "./graphics/%s.sprite" % (self.filename)
+
     def remove_reference(self, referer):
         """
         Remove an object that is referencing this sprite.
@@ -60,10 +70,10 @@ class CombinedSprite:
         Returns the location of the definition file in the modpack
         """
         if len(self._refs) > 1:
-            return "data/game_entity/shared/graphics/%s.sprite" % (self.filename)
+            return "data/game_entity/shared/graphics/"
 
         elif len(self._refs) == 1:
-            return "%s/%s.sprite" % ("graphics", self.filename)
+            return "%s%s" % (self._refs[0].get_file_location()[0], "graphics/")
 
         return None
 

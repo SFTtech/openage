@@ -276,7 +276,7 @@ class RawAPIObject:
                 member_value = member_value.resolve()
 
             elif isinstance(member_value, CombinedSprite):
-                member_value = member_value.resolve_location()
+                member_value = member_value.get_relative_sprite_location()
 
             elif isinstance(member_value, list):
                 # Resolve elements in the list, if it's not empty
@@ -288,7 +288,7 @@ class RawAPIObject:
                             temp_values.append(temp_value.resolve())
 
                         elif isinstance(member_value[0], CombinedSprite):
-                            temp_values.append(temp_value.resolve_location())
+                            temp_values.append(temp_value.get_relative_sprite_location())
 
                         else:
                             temp_values.append(temp_value)
@@ -305,6 +305,29 @@ class RawAPIObject:
         """
         return self._filename
 
+    def get_file_location(self):
+        """
+        Returns a tuple with 
+            1. the relative path to the directory
+            2. the filename
+        where the nyan object will be stored.
+
+        This method can be called instead of get_location() when
+        you are unsure whether the nyan object will be nested.
+        """
+        if isinstance(self._location, ExpectedPointer):
+            # Work upwards until we find the root object
+            nesting_raw_api_object = self._location.resolve_raw()
+            nesting_location = nesting_raw_api_object.get_location()
+
+            while isinstance(nesting_location, ExpectedPointer):
+                nesting_raw_api_object = nesting_location.resolve_raw()
+                nesting_location = nesting_raw_api_object.get_location()
+
+            return (nesting_location, nesting_raw_api_object.get_filename())
+
+        return (self._location, self._filename)
+
     def get_id(self):
         """
         Returns the ID of the raw API object.
@@ -313,7 +336,8 @@ class RawAPIObject:
 
     def get_location(self):
         """
-        Returns the relative path of the raw API object.
+        Returns the relative path to a directory or an ExpectedPointer
+        to another RawAPIObject.
         """
         return self._location
 
