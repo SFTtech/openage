@@ -32,5 +32,11 @@ class ExpectedPointer:
 
         return raw_api_obj.get_nyan_object()
 
+    def resolve_raw(self):
+        """
+        Returns the raw API object reference for the pointer.
+        """
+        return self.group_object.get_raw_api_object(self.raw_api_object_name)
+
     def __repr__(self):
         return "ExpectedPointer<%s>" % (self.raw_api_object_name)

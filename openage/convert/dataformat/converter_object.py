@@ -280,7 +280,7 @@ class RawAPIObject:
 
             elif isinstance(member_value, list):
                 # Resolve elements in the list, if it's not empty
-                if not member_value:
+                if member_value:
                     temp_values = []
 
                     for temp_value in member_value:

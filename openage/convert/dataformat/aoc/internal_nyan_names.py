@@ -47,7 +47,7 @@ UNIT_LINE_LOOKUPS = {
     539: ("Galley", "galley"),
     545: ("TransportShip", "transport_ship"),
     692: ("Berserk", "berserk"),
-    725: ("JaguarWarrior", "haguar_warrior"),
+    725: ("JaguarWarrior", "jaguar_warrior"),
     751: ("EagleWarrior", "eagle_warrior"),
     755: ("Tarkan", "tarkan"),
     763: ("PlumedArcher", "plumed_archer"),

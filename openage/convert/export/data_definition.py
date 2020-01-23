@@ -43,11 +43,11 @@ class DataDefinition:
             raise ValueError("util.fslike.path.Path expected as filename, not %s" %
                              type(exportdir))
 
-        output_file = exportdir.joinpath(self.targetdir)[self.filename]
+        output_dir = exportdir.joinpath(self.targetdir)
         output_content = self.dump()
 
         # generate human-readable file
-        with output_file as outfile:
+        with output_dir[self.filename].open('wb') as outfile:
             outfile.write(output_content.encode('utf-8'))
 
     def set_filename(self, filename):

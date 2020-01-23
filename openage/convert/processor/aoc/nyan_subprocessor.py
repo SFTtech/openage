@@ -9,6 +9,7 @@ from ....nyan.nyan_structs import MemberSpecialValue
 from ...dataformat.aoc.combined_sprite import CombinedSprite
 from ...dataformat.aoc.expected_pointer import ExpectedPointer
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
+from openage.convert.gamedata.unit import UnitLine
 
 
 class AoCNyanSubprocessor:
@@ -167,7 +168,8 @@ class AoCNyanSubprocessor:
 
             unit_line.add_raw_api_object(animation_raw_api_object)
 
-        abilities_set.append(idle_raw_api_object)
+        idle_expected_pointer = ExpectedPointer(unit_line, idle_raw_api_object.get_id())
+        abilities_set.append(idle_expected_pointer)
 
         unit_line.add_raw_api_object(idle_raw_api_object)
 
@@ -232,7 +234,8 @@ class AoCNyanSubprocessor:
         follow_raw_api_object.add_raw_member("range", follow_range, "engine.aux.move_mode.type.Follow")
 
         unit_line.add_raw_api_object(follow_raw_api_object)
-        move_modes.append(follow_raw_api_object)
+        follow_expected_pointer = ExpectedPointer(unit_line, follow_raw_api_object.get_id())
+        move_modes.append(follow_expected_pointer)
 
         move_raw_api_object.add_raw_member("modes", move_modes, "engine.ability.type.Move")
 
@@ -242,7 +245,8 @@ class AoCNyanSubprocessor:
         move_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                            "engine.ability.specialization.DiplomaticAbility")
 
-        abilities_set.append(move_raw_api_object)
+        move_expected_pointer = ExpectedPointer(unit_line, move_raw_api_object.get_id())
+        abilities_set.append(move_expected_pointer)
 
         unit_line.add_raw_api_object(move_raw_api_object)
 
@@ -274,7 +278,8 @@ class AoCNyanSubprocessor:
         turn_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                            "engine.ability.specialization.DiplomaticAbility")
 
-        abilities_set.append(turn_raw_api_object)
+        turn_expected_pointer = ExpectedPointer(unit_line, turn_raw_api_object.get_id())
+        abilities_set.append(turn_expected_pointer)
 
         unit_line.add_raw_api_object(turn_raw_api_object)
 
@@ -298,7 +303,8 @@ class AoCNyanSubprocessor:
         los_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                           "engine.ability.specialization.DiplomaticAbility")
 
-        abilities_set.append(los_raw_api_object)
+        los_expected_pointer = ExpectedPointer(unit_line, los_raw_api_object.get_id())
+        abilities_set.append(los_expected_pointer)
 
         unit_line.add_raw_api_object(los_raw_api_object)
 
@@ -315,7 +321,8 @@ class AoCNyanSubprocessor:
         visibility_raw_api_object.add_raw_member("visible_in_fog", False,
                                                  "engine.ability.type.Visibility")
 
-        abilities_set.append(visibility_raw_api_object)
+        visibility_expected_pointer = ExpectedPointer(unit_line, visibility_raw_api_object.get_id())
+        abilities_set.append(visibility_expected_pointer)
 
         unit_line.add_raw_api_object(visibility_raw_api_object)
 
@@ -351,11 +358,13 @@ class AoCNyanSubprocessor:
         health_raw_api_object.add_raw_member("starting_value", max_hp_value,
                                              "engine.aux.attribute.AttributeSetting")
 
-        attributes_set.append(health_raw_api_object)
+        health_expected_pointer = ExpectedPointer(unit_line, health_raw_api_object.get_id())
+        attributes_set.append(health_expected_pointer)
         live_raw_api_object.add_raw_member("attributes", attributes_set,
                                            "engine.ability.type.Live")
 
-        abilities_set.append(live_raw_api_object)
+        live_expected_pointer = ExpectedPointer(unit_line, live_raw_api_object.get_id())
+        abilities_set.append(live_expected_pointer)
 
         unit_line.add_raw_api_object(health_raw_api_object)
         unit_line.add_raw_api_object(live_raw_api_object)
@@ -375,7 +384,8 @@ class AoCNyanSubprocessor:
         stop_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                            "engine.ability.specialization.DiplomaticAbility")
 
-        abilities_set.append(stop_raw_api_object)
+        stop_expected_pointer = ExpectedPointer(unit_line, stop_raw_api_object.get_id())
+        abilities_set.append(stop_expected_pointer)
 
         unit_line.add_raw_api_object(stop_raw_api_object)
 

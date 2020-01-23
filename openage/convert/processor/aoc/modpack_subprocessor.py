@@ -77,6 +77,6 @@ class AoCModpackSubprocessor:
                 nyan_file = NyanFile(obj_location, obj_filename,
                                      modpack.info.name)
                 created_nyan_files.update({nyan_file.get_relative_file_path(): nyan_file})
+                modpack.add_data_export(nyan_file)
 
             nyan_file.add_nyan_object(raw_api_object.get_nyan_object())
-            modpack.add_data_export(nyan_file)
