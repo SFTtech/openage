@@ -158,7 +158,7 @@ class ModpackInfo(DataDefinition):
 
         # load table
         load_table = {"load": {}}
-        load_table["load"].update(self.load_files)
+        load_table["load"].update({"include": self.load_files})
 
         output_dict.update(load_table)
 
@@ -168,7 +168,7 @@ class ModpackInfo(DataDefinition):
 
         output_dict.update(authors_table)
 
-        output_str = "# MODPACK INFO version %s\n" % (FILE_VERSION)
+        output_str = "# MODPACK INFO version %s\n\n" % (FILE_VERSION)
         output_str += toml.dumps(output_dict)
 
         return output_str

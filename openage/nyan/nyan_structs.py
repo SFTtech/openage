@@ -270,8 +270,7 @@ class NyanObject:
         Returns the string representation of the object.
         """
         # Header
-        output_str = "%s%s" % (indent_depth * INDENT,
-                               self.get_name())
+        output_str = "%s" % (self.get_name())
 
         output_str += self._prepare_inheritance_content()
 
@@ -296,7 +295,7 @@ class NyanObject:
                     empty = False
                     output_str += "%s%s\n" % ((indent_depth + 1) * INDENT,
                                               inherited_member.dump())
-            if empty is not False:
+            if not empty:
                 output_str += "\n"
 
         if len(self._members) > 0:
@@ -316,12 +315,12 @@ class NyanObject:
         if len(self._nested_objects) > 0:
             empty = False
             for nested_object in self._nested_objects:
-                output_str += "%s%s" % (indent_depth * INDENT,
+                output_str += "%s%s" % ((indent_depth + 1) * INDENT,
                                         nested_object.dump(
                                             indent_depth + 1
-                                        ))
+                ))
 
-            output_str += "\n"
+            output_str += ""
 
         # Empty objects need a 'pass' line
         if empty:
@@ -807,7 +806,10 @@ class NyanMember:
         if member_type is MemberType.FLOAT:
             return "%sf" % value
 
-        if isinstance(member_type, NyanObject):
+        elif member_type in (MemberType.TEXT, MemberType.FILE):
+            return "\"%s\"" % (value)
+
+        elif isinstance(member_type, NyanObject):
             return value.get_name()
 
         return "%s" % value
@@ -847,6 +849,8 @@ class NyanMember:
                     )
 
                 return output_str[:-2] + "}"
+
+            return output_str + "}"
 
         elif isinstance(self._member_type, NyanObject):
             return self.value.get_name()

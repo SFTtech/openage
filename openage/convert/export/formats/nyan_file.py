@@ -47,7 +47,7 @@ class NyanFile(DataDefinition):
         """
         Returns the string that represents the nyan file.
         """
-        output_str = "# NYAN FILE version %s\n" % (FILE_VERSION)
+        output_str = "# NYAN FILE version %s\n\n" % (FILE_VERSION)
 
         # TODO: imports
 

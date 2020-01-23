@@ -3,6 +3,7 @@
 """
 References a graphic in the game that has to be converted.
 """
+from .expected_pointer import ExpectedPointer
 
 
 class CombinedSprite:
@@ -62,7 +63,7 @@ class CombinedSprite:
             return "data/game_entity/shared/graphics/%s.sprite" % (self.filename)
 
         elif len(self._refs) == 1:
-            return "%s%s/%s.sprite" % (self._refs[0], "graphics", self.filename)
+            return "%s/%s.sprite" % ("graphics", self.filename)
 
         return None
 
