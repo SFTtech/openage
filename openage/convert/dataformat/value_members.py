@@ -23,6 +23,7 @@ Quick usage guide on when to use which ValueMember:
 """
 
 from enum import Enum
+from math import isclose
 
 
 class ValueMember:
@@ -125,7 +126,8 @@ class FloatMember(ValueMember):
 
     def diff(self, other):
         if self.get_type() is other.get_type():
-            if self.get_value() == other.get_value():
+            # Float must have the last 6 digits in common
+            if isclose(self.get_value(), other.get_value(), rel_tol=1e-7):
                 return NoDiffMember(self.name)
 
             else:

@@ -295,6 +295,11 @@ class RawAPIObject:
 
                     member_value = temp_values
 
+            elif isinstance(member_value, float):
+                # Round floats to 6 decimal places for increased readability
+                # should have no effect on balance, hopefully
+                member_value = round(member_value, ndigits=6)
+
             nyan_member_name = "%s.%s" % (member_origin.get_name(), member_name)
             nyan_member = self.nyan_object.get_member_by_name(nyan_member_name, member_origin)
             nyan_member.set_value(member_value, MemberOperator.ASSIGN)
