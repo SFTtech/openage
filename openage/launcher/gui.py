@@ -20,41 +20,54 @@ icon_path = '../../assets/logo/favicon.ico'
 
 class ImageLabel(QLabel):
     """
-    image widget with antialiased scaling
+    Image widget with antialiased scaling
     """
     def __init__(self, image_path, max_x, max_y, *args, **kwargs):
-        super(ImageLabel, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         pixmap = QPixmap(image_path).scaled(max_x, max_y, aspectRatioMode=Qt.KeepAspectRatio,
                                             transformMode=Qt.SmoothTransformation)
         self.setPixmap(pixmap)
 
 
-class MenuButton(QPushButton):
+class NiceButton(QPushButton):
     """
-    main menu button class for the openage launcher
+    Good-looking button
     """
-    def __init__(self, text, icon, background, *args, **kwargs):
-        super(MenuButton, self).__init__(*args, **kwargs)
-        self.setFixedSize(QSize(250, 50))
+    def __init__(self, text, *args, icon=None, background=None, text_size=10, **kwargs):
+        # TODO: implement background
+        super().__init__(*args, **kwargs)
 
         # configure font
         fixedfont = QFontDatabase.systemFont(QFontDatabase.FixedFont)
-        fixedfont.setPointSize(15)
+        fixedfont.setPointSize(text_size)
         self.setFont(fixedfont)
 
-        self.setIcon(QIcon(icon))
-        self.setIconSize(QSize(30, 30))
+        if icon is not None:
+            self.setIcon(QIcon(icon))
+            self.setIconSize(QSize(30, 30))
+        
         self.setText(text)
 
-        # background?
+
+class MenuButton(NiceButton):
+    """
+    Menu button for the openage launcher
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, text_size=15, **kwargs)
+        self.setFixedSize(QSize(250, 50))
 
 
 class ContentTable(QTableWidget):
+    """
+    Displays a table of arbitrary contents and allows
+    check selection of its members.
+    """
     # create and add table
     def __init__(self, *args, noselect=False, **kwargs):
-        super(ContentTable, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
-        # table settings
+        # table settings, hardcoded for now TODO
         self.setColumnCount(4)
         self.setHorizontalHeaderLabels(['Activate', 'Name', 'Version', 'Author'])
         self.horizontalHeader().setStretchLastSection(True)
@@ -84,19 +97,28 @@ class ContentTable(QTableWidget):
         self.setItem(idx, 2, QTableWidgetItem(version))
         self.setItem(idx, 3, QTableWidgetItem(author))
 
+    def load_content(self, dir_path):
+        """
+        Load all the available content into the table
+        """
+        # TODO
+        # for thing in dir:
+        #     unpack stuff
+        #     self.add_entry(*stuff)
+
 
 class NewsTab(QTextBrowser):
     """
     rich text browser for openage news with hyperlinks
     """
     def __init__(self, *args, **kwargs):
-        super(NewsTab, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.setOpenExternalLinks(True)
         self.content = self.fetch_news()
         self.setText(self.content)
 
     def fetch_news(self):
-        # TODO get news feed
+        # TODO get news feed from somewhere
         feed = ('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing '
                 'elit. Aenean commodo ligula eget dolor. Aenean massa '
                 '<strong>strong</strong>. Cum sociis natoque penatibus '
@@ -110,7 +132,7 @@ class NewsTab(QTextBrowser):
 
 class ContentTab(QWidget):
     def __init__(self, *args, **kwargs):
-        super(ContentTab, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.setLayout(QVBoxLayout())
 
         self.table = ContentTable(noselect=True)
@@ -123,7 +145,7 @@ class ContentTab(QWidget):
 
 class ModTab(QWidget):
     def __init__(self, *args, **kwargs):
-        super(ModTab, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.setLayout(QVBoxLayout())
 
         # create and add table
@@ -136,10 +158,10 @@ class ModTab(QWidget):
         self.buttons.setLayout(QHBoxLayout())
 
         # create and add buttons
-        self.buttons.up = QPushButton('Up')
-        self.buttons.down = QPushButton('Down')
-        self.buttons.add = QPushButton('Add')
-        self.buttons.delete = QPushButton('Delete')
+        self.buttons.up = NiceButton('Up')
+        self.buttons.down = NiceButton('Down')
+        self.buttons.add = NiceButton('Add')
+        self.buttons.delete = NiceButton('Delete')
 
         self.buttons.layout().addWidget(self.buttons.up)
         self.buttons.layout().addWidget(self.buttons.down)
@@ -181,7 +203,7 @@ class ModTab(QWidget):
 
 class MainMenu(QWidget):
     def __init__(self, *args, **kwargs):
-        super(MainMenu, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.setLayout(QVBoxLayout())
 
         buttons = [
@@ -195,7 +217,7 @@ class MainMenu(QWidget):
 
         background = None
         for button, action in buttons:
-            button_widget = MenuButton(button, icon_path, background)
+            button_widget = MenuButton(button, icon=icon_path, background=background)
             button_widget.clicked.connect(action)
             self.layout().addWidget(button_widget)
             self.layout().addStretch(1)
@@ -228,53 +250,81 @@ class LauncherWindow(QMainWindow):
     title = 'Openage Launcher'
 
     def __init__(self, *args, **kwargs):
-        super(LauncherWindow, self).__init__(*args, **kwargs)
-        self.setWindowTitle(LauncherWindow.title)
+        super().__init__(*args, **kwargs)
+
+        # initialize version and run checks and test
+        self.version = self.get_version()
+        if self.is_outdated():
+            self.update()
+
+        
+        
+
+        # construct the ui layouts and populate them
+        self.build_ui()
+
+
+    def build_ui(self):
+        self.setWindowTitle(self.title)
         self.setWindowIcon(QIcon(icon_path))
         self.setMinimumSize(QSize(700, 450))
 
         # main widget and main layout
-        self.main = QWidget()
-        self.main.setLayout(QHBoxLayout())
-        self.setCentralWidget(self.main)
+        self.main_widget = QWidget()
+        self.main_widget.setLayout(QHBoxLayout())
+        self.setCentralWidget(self.main_widget)
 
         # various sub-layouts and their relative positioning
-        self.left = QWidget()
-        self.left.setLayout(QVBoxLayout())
-        self.main.layout().addWidget(self.left)
+        self.left_widget = QWidget()
+        self.left_widget.setLayout(QVBoxLayout())
+        self.main_widget.layout().addWidget(self.left_widget)
 
-        self.right = QWidget()
-        self.right.setLayout(QVBoxLayout())
-        self.main.layout().addWidget(self.right)
+        self.right_widget = QWidget()
+        self.right_widget.setLayout(QVBoxLayout())
+        self.main_widget.layout().addWidget(self.right_widget)
 
         # left side
-        self.logo = ImageLabel(logo_path, 250, 250)
-        self.left.layout().addWidget(self.logo)
+        self.logo_widget = ImageLabel(logo_path, 250, 250)
+        self.left_widget.layout().addWidget(self.logo_widget)
 
-        self.left.layout().addStretch(5)
+        self.left_widget.layout().addStretch(5)
 
-        self.menu = MainMenu()
-        self.left.layout().addWidget(self.menu)
-        self.left.layout().addStretch(10)
+        self.menu_widget = MainMenu()
+        self.left_widget.layout().addWidget(self.menu_widget)
+        self.left_widget.layout().addStretch(10)
 
-        version = 'dummy version number'
-        self.version = QLabel(version)
-        self.left.layout().addWidget(self.version)
+        self.version_widget = QLabel(self.version)
+        self.left_widget.layout().addWidget(self.version_widget)
 
         # right side
-        self.tabs = QTabWidget()
-        self.right.layout().addWidget(self.tabs)
+        self.tabs_widget = QTabWidget()
+        self.right_widget.layout().addWidget(self.tabs_widget)
 
-        self.news = NewsTab()
-        self.tabs.addTab(self.news, 'News')
+        self.news_widget = NewsTab()
+        self.tabs_widget.addTab(self.news_widget, 'News')
 
-        self.content = ContentTab()
-        self.tabs.addTab(self.content, 'Content')
+        self.content_widget = ContentTab()
+        self.tabs_widget.addTab(self.content_widget, 'Content')
 
-        self.mods = ModTab()
-        self.tabs.addTab(self.mods, 'Mods')
+        self.mods_widget = ModTab()
+        self.tabs_widget.addTab(self.mods_widget, 'Mods')
 
         self.show()
+
+    def get_version(self):
+        return 'dummy version number'
+
+    def is_outdated(self):
+        latest = 'dummy version number'
+        if self.version != latest:
+            return True
+        return False
+
+    def run_tests(self):
+
+
+    def update(self):
+        print('updating to latest version')
 
 
 if __name__ == '__main__':
