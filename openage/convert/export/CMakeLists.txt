@@ -6,6 +6,7 @@ add_py_modules(
 	entry_parser.py
 	generated_file.py
 	header_snippet.py
+	media_export_request.py
 	struct_definition.py
 	struct_snippet.py
 	util.py

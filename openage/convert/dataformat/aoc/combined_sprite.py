@@ -77,13 +77,6 @@ class CombinedSprite:
 
         return None
 
-    def save(self):
-        """
-        Create a .sprite or .terrain definition and corresponding texture.
-        """
-        # TODO: Create SpriteFile(..) and TerrainFile() instances here.
-        pass
-
     def __repr__(self):
         return "CombinedSprite<%s>" % (self.head_sprite_id)
 

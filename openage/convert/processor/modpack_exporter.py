@@ -28,14 +28,7 @@ class ModpackExporter:
         for data_file in data_files:
             data_file.save(modpack_dir)
 
-        # Graphics files
-        graphics_files = modpack.get_graphics_files()
+        # Media files
+        media_files = modpack.get_media_files()
 
-        for graphics_file in graphics_files:
-            graphics_file.save(modpack_dir)
-
-        # Sound files
-        sound_files = modpack.get_sound_files()
-
-        for sound_file in sound_files:
-            sound_file.save(modpack_dir)
+        # TODO: Media file export

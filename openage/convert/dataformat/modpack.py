@@ -6,6 +6,7 @@ Defines a modpack that can be exported.
 
 from openage.convert.export.formats.modpack_info import ModpackInfo
 from openage.convert.export.data_definition import DataDefinition
+from openage.convert.export.media_export_request import MediaExportRequest
 
 
 class Modpack:
@@ -19,8 +20,7 @@ class Modpack:
 
         # Data/media export
         self.data_export_files = []
-        self.graphics_export_files = []
-        self.sound_export_files = []
+        self.media_export_files = {}
 
     def add_data_export(self, export_file):
         """
@@ -32,17 +32,19 @@ class Modpack:
 
         self.data_export_files.append(export_file)
 
-    def add_graphics_export(self, export_file):
+    def add_media_export(self, export_request):
         """
-        Add a graphics file to the modpack for exporting.
+        Add a media export request to the modpack.
         """
-        self.graphics_export_files.append(export_file)
+        if not isinstance(export_request, MediaExportRequest):
+            raise Exception("%s: export file must be of type MediaExportRequest"
+                            "not %s" % (self, type(export_request)))
 
-    def add_sound_export(self, export_file):
-        """
-        Add a sound file to the modpack for exporting.
-        """
-        self.sound_export_files.append(export_file)
+        if export_request.get_media_type() in self.media_export_files.keys():
+            self.media_export_files[export_request.get_media_type()].append(export_request)
+
+        else:
+            self.media_export_files[export_request.get_media_type()] = [export_request]
 
     def get_info(self):
         """
@@ -56,14 +58,8 @@ class Modpack:
         """
         return self.data_export_files
 
-    def get_graphics_files(self):
+    def get_media_files(self):
         """
-        Returns the data files for exporting.
+        Returns the media requests for exporting.
         """
-        return self.graphics_export_files
-
-    def get_sound_files(self):
-        """
-        Returns the data files for exporting.
-        """
-        return self.sound_export_files
+        return self.media_export_files
