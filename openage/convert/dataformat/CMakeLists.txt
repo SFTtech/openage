@@ -7,6 +7,7 @@ add_py_modules(
 	multisubtype_base.py
 	read_members.py
 	value_members.py
+	version_detect.py
 )
 
 add_subdirectory(aoc)
