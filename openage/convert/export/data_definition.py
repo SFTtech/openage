@@ -19,7 +19,7 @@ class DataDefinition:
 
         :param targetdir: Relative path to the export directory.
         :type targetdir: str
-        :param filename: Filename of the resuilting file.
+        :param filename: Filename of the resulting file.
         :type filename: str
         """
         self.set_targetdir(targetdir)
