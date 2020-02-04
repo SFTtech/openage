@@ -11,10 +11,12 @@ class ModInfo:
     """
     Parses and exposes info about a mod
     """
-    def __init__(self, info_str): 
+    def __init__(self, info_str, path=None): 
         self.info = toml.loads(info_str)
+        self.path = path
 
         # for convenience
+        self.name = self.info['name']
         self.uid = self.info['uid']
         self.version = self.info['version']
         self.author = self.info['author']
@@ -29,6 +31,9 @@ class ModInfo:
 
     def dump_info(self):
         return self.name, self.author, self.version
+
+    def set_path(self, path):
+        self.path = path
 
     def __eq__(self, other):
         if isinstance(other, type(self)):
