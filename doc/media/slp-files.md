@@ -261,17 +261,26 @@ next           | The byte following `cmd_byte`
 `>> n` or next | `pixel_count = cmd_byte >> n; if pixel_count == 0: pixel_count = next_byte`. i.e., the `8 - n` most significant bits of `cmd_byte` if they are `!= 0`, else the next byte.
 `<< 4 + next`  | `((cmd_byte & 0xf0) << 4) + next_byte`
 
+The length of a pixel's `px_color_value` depends on the SLP version and whether
+it is a 32-bit SLP.
+
+SLP properties     | Length  | Color value
+-------------------|---------|-----------------------------------------------
+SLP version <= 4.0 | 1 bytes | 1-byte palette index
+SLP version >= 4.1 | 2 bytes | 1-byte display modifier, 1-byte palette index
+32-Bit SLP         | 4 bytes | BGRA color
+
 An `X` signifies that the bit can have any value. These bits are often used for
 storing the length (pixel count) of the command.
 
 Command Name             | Byte value       | Pixel Count             | Description
 -------------------------|------------------|-------------------------|------------
-Lesser draw              | `0bXXXXXX00`     | `cmd_byte >> 2`         | An array of length *Count* filled with 1-byte palette indices follows, 1 index per pixel.
+Lesser draw              | `0bXXXXXX00`     | `cmd_byte >> 2`         | An array of length *Count* filled with `px_color_value`.
 Lesser skip              | `0bXXXXXX01`     | `cmd_byte >> 2` or next | *Count* transparent pixels should be drawn from the current position.
-Greater draw             | `0bXXXX0010`     | `cmd_byte << 4 + next`  | An array of length *Count* filled with 1-byte palette indices follows, 1 index per pixel.
+Greater draw             | `0bXXXX0010`     | `cmd_byte << 4 + next`  | An array of length *Count* filled with `px_color_value`.
 Greater skip             | `0bXXXX0011`     | `cmd_byte << 4 + next`  | *Count* transparent pixels should be drawn from the current position.
-Player color draw        | `0bXXXX0110`     | `cmd_byte >> 4` or next | An array of length "Count" filled with 1-byte player color palette indices follow, 1 index per pixel. The real palette index is `player_color_palette_index + player * 16`, where `player` is the player ID you're drawing for (1-8).
-Fill                     | `0bXXXX0111`     | `cmd_byte >> 4` or next | One palette index byte follows. This color should be drawn `pixel_count` times from the current position.
+Player color draw        | `0bXXXX0110`     | `cmd_byte >> 4` or next | An array of length "Count" filled with `px_color_value`. The real palette index is `player_color_palette_index + player * 16`, where `player` is the player ID you're drawing for (1-8).
+Fill                     | `0bXXXX0111`     | `cmd_byte >> 4` or next | One `px_color_value` struct follows. This color should be drawn `pixel_count` times from the current position.
 Fill player color        | `0bXXXX1010`     | `cmd_byte >> 4` or next | One player palette index byte follows. This color should be drawn `pixel_count` times. See `player_color_list (0x06)`
 Shadow draw              | `0bXXXX1011`     | `cmd_byte >> 4` or next | Draw *Count* shadow pixels (The pixels to draw when a unit is behind another object).
 Extended command         | `0bXXXX1110`     | depends                 | Get the specific extended command by looking at the most significant bits of the command. (See the table below for details)
@@ -283,8 +292,17 @@ End of row               | `0x0F`           | 0                       | End of c
 
 This case represents a short block of pixels up to a length of 64 and is good for
 small chunks of non-repeating pixels. The pixels to copy follows the command byte
-and is `length` bytes long. Each of these bytes represents an index within the
-color palette. For 32-bit SLPs, each 4 bytes is read for "length" bytes long in
+and is `length` bytes long.
+
+In SLPs with version 4.0 and below, each of these bytes represents an index within
+the color palette.
+
+SLPs with version 4.1 store an additional *display modifier* byte before the
+palette index. This modifier defines how long the pixel should be shown on screen
+after the animation has started. The display time is `display_modifier / 2` seconds.
+After this time has passed, the pixel is drawn transparently.
+
+For 32-bit SLPs, each 4 bytes is read for "length" bytes long in
 BGRA order and the alpha value here is always 255.
 ```
 length = command >> 2
@@ -305,9 +323,18 @@ length = command >> 2
 
 This case represents a long block of pixels greater than a length of 64 and is
 good for big chunks of non-repeating pixels. The pixels to copy follows the
-command byte and is "length" bytes long. Each of these bytes represents an index
-within the color palette. For 32-bit SLPs, each 4 bytes is read for `length` bytes
-long in BGRA order and the alpha value is always 255.
+command byte and is "length" bytes long.
+
+In SLPs with version 4.0 and below, each of these bytes represents an index within
+the color palette.
+
+SLPs with version 4.1 store an additional *display modifier* byte before the
+palette index. This modifier defines how long the pixel should be shown on screen
+after the animation has started. The display time is `display_modifier / 2` seconds.
+After this time has passed, the pixel is drawn transparently.
+
+For 32-bit SLPs, each 4 bytes is read for "length" bytes long in
+BGRA order and the alpha value here is always 255.
 ```
 length = ((command & 0xf0) << 4) + next_byte
 (ex: 0x12 + 0x00 = 256, 0x12 + 0x0A = 266, 0x22 + 0x00 = 512)
@@ -345,9 +372,18 @@ This case represents a block of the same color pixels. This command is useful fo
 shortening the amount of bytes needed for a line that consists of the same exact color
 for more than 2 pixels straight and shrink it down to just 2 or 3 bytes (depending on
 length). This command does not work in AoE1 and will break terrain SLPs in AoK and
-SWGB due to how elevation and blending are generated. The byte after the command/length
-byte represents an index within the color palette. For 32-bit SLPs, 4 bytes is read
-after the command/length byte in BGRA order and the alpha value is always 255.
+SWGB due to how elevation and blending are generated.
+
+In SLPs with version 4.0 and below, each of these bytes represents an index within
+the color palette.
+
+SLPs with version 4.1 store an additional *display modifier* byte before the
+palette index. This modifier defines how long the pixel should be shown on screen
+after the animation has started. The display time is `display_modifier / 2` seconds.
+After this time has passed, the pixel is drawn transparently.
+
+For 32-bit SLPs, each 4 bytes is read for "length" bytes long in
+BGRA order and the alpha value here is always 255.
 ```
 length = command >> 4. If 0, the next byte is read and used as the length.
 (ex: 0x17 = 1, 0x27 = 2, 0xA7 = 10, 0xF7 = 15, 0x07 + 0x10 = 16)
