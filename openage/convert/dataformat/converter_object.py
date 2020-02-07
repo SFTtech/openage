@@ -135,6 +135,13 @@ class ConverterObjectGroup:
         key = subobject.get_id()
         self.raw_api_objects.update({key: subobject})
 
+    def add_raw_api_objects(self, subobjects):
+        """
+        Adds several subobject to the object.
+        """
+        for subobject in subobjects:
+            self.add_raw_api_object(subobject)
+
     def create_nyan_objects(self):
         """
         Creates nyan objects from the existing raw API objects.
