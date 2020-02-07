@@ -32,8 +32,8 @@ class NyanFile(DataDefinition):
         Adds a nyan object to the file.
         """
         if not isinstance(new_object, NyanObject):
-            raise Exception("nyan file cannot contain non-nyan object %s",
-                            new_object)
+            raise Exception("nyan file cannot contain non-nyan object %s" %
+                            (new_object))
 
         self.nyan_objects.add(new_object)
 
@@ -47,7 +47,7 @@ class NyanFile(DataDefinition):
         """
         Returns the string that represents the nyan file.
         """
-        output_str = "# NYAN FILE version %s\n\n" % (FILE_VERSION)
+        output_str = "# NYAN FILE \nversion %s\n\n" % (FILE_VERSION)
 
         # TODO: imports
 

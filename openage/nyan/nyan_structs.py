@@ -15,6 +15,7 @@ Python does not enforce static types, so be careful
 import re
 
 from enum import Enum
+from openage.util.ordered_set import OrderedSet
 
 INDENT = "    "
 
@@ -35,16 +36,16 @@ class NyanObject:
         # unique identifier (in modpack)
         self._fqon = self.name
 
-        self._parents = set()                   # parent objects
-        self._inherited_members = set()         # members inherited from parents
+        self._parents = OrderedSet()            # parent objects
+        self._inherited_members = OrderedSet()  # members inherited from parents
         if parents:
             self._parents.update(parents)
 
-        self._members = set()                   # members unique to this object
+        self._members = OrderedSet()            # members unique to this object
         if members:
             self._members.update(members)
 
-        self._nested_objects = set()            # nested objects
+        self._nested_objects = OrderedSet()     # nested objects
         if nested_objects:
             self._nested_objects.update(nested_objects)
 
@@ -53,7 +54,7 @@ class NyanObject:
                                                   nested_object.get_name()))
 
         # Set of children
-        self._children = set()
+        self._children = OrderedSet()
 
         self._sanity_check()
 
@@ -137,10 +138,10 @@ class NyanObject:
                 self,
                 inherited.get_origin(),
                 None,
-                member.get_set_type(),
+                inherited.get_set_type(),
                 None,
                 0,
-                member.is_optional()
+                inherited.is_optional()
             )
             new_child.update_inheritance(inherited_member)
 
@@ -154,7 +155,7 @@ class NyanObject:
         """
         Returns all NyanMembers of the object, excluding members from nested objects.
         """
-        return self._members | self._inherited_members
+        return self._members.union(self._inherited_members)
 
     def get_member_by_name(self, member_name, origin=None):
         """
@@ -396,9 +397,6 @@ class NyanObject:
                 raise Exception("%s: must not contain itself as nested object"
                                 % (self.__repr__()))
 
-    def __iter__(self):
-        return self
-
     def __repr__(self):
         return "NyanObject<%s>" % (self.name)
 
@@ -412,7 +410,7 @@ class NyanPatch(NyanObject):
                  nested_objects=None, add_inheritance=None):
 
         self._target = target           # patch target
-        self._add_inheritance = set()   # new inheritance
+        self._add_inheritance = OrderedSet()   # new inheritance
         if add_inheritance:
             self._add_inheritance.update(add_inheritance)
 
@@ -430,7 +428,7 @@ class NyanPatch(NyanObject):
         """
         return True
 
-    def dump(self, indent_depth):
+    def dump(self, indent_depth=0):
         """
         Returns the string representation of the object.
         """
@@ -593,11 +591,17 @@ class NyanMember:
         """
         return self._optional
 
-    def set_value(self, value):
+    def set_value(self, value, operator=None):
         """
-        Set the value of the nyan member to the specified value.
+        Set the value of the nyan member to the specified value and
+        optionally, the operator.
         """
+        if not self.value and not operator:
+            raise Exception("Setting a value for an uninitialized member "
+                            "requires also setting the operator")
+
         self.value = value
+        self._operator = operator
 
         if isinstance(self._member_type, NyanObject):
             if not (self.value is self._member_type or
@@ -790,11 +794,10 @@ class NyanMember:
             self.value = bool(self.value)
 
         elif self._member_type is MemberType.SET:
-            self.value = set(self.value)
+            self.value = OrderedSet(self.value)
 
         elif self._member_type is MemberType.ORDEREDSET:
-            # TODO: Implement Orderedset()
-            self.value = list(self.value)
+            self.value = OrderedSet(self.value)
 
     def _get_primitive_value_str(self, member_type, value):
         """
@@ -923,14 +926,6 @@ class InheritedNyanMember(NyanMember):
         Returns the string representation of the member.
         """
         return self.dump_short()
-
-    def set_value(self, value, operator):
-        """
-        Set the value and operator of the inherited nyan member.
-        """
-        self._operator = operator
-
-        super().set_value(value)
 
     def _sanity_check(self):
         """
