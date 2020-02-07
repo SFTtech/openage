@@ -129,12 +129,12 @@ class AoCNyanSubprocessor:
         abilities_set = []
 
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
-        abilities_set.append(AoCAbilitySubprocessor.move_ability(unit_line))
-        abilities_set.append(AoCAbilitySubprocessor.turn_ability(unit_line))
-        abilities_set.append(AoCAbilitySubprocessor.los_ability(unit_line))
-        abilities_set.append(AoCAbilitySubprocessor.visibility_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.los_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.move_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.turn_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.visibility_ability(unit_line))
         # =======================================================================
         # TODO: Bunch of other abilities
         #       Death, Selectable, Hitbox, Despawn, ApplyEffect, Resistance, ...

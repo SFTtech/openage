@@ -644,7 +644,7 @@ class NyanMember:
 
         if self.is_initialized():
             output_str += " %s%s %s" % ("@" * self._override_depth,
-                                        self._operator.value, self.__str__())
+                                        self._operator.value, self._get_str_representation())
 
         return output_str
 
@@ -654,7 +654,7 @@ class NyanMember:
         without the type definition.
         """
         return "%s %s%s %s" % (self.get_name(), "@" * self._override_depth,
-                               self._operator.value, self.__str__())
+                               self._operator.value, self._get_str_representation())
 
     def _sanity_check(self):
         """
@@ -803,7 +803,7 @@ class NyanMember:
         """
         Returns the nyan string representation of primitive values.
 
-        Subroutine of __str__()
+        Subroutine of _get_str_representation()
         """
 
         if member_type is MemberType.FLOAT:
@@ -817,7 +817,7 @@ class NyanMember:
 
         return "%s" % value
 
-    def __str__(self):
+    def _get_str_representation(self):
         """
         Returns the nyan string representation of the value.
         """
@@ -860,6 +860,9 @@ class NyanMember:
 
         else:
             raise Exception("%s has no valid type" % self.__repr__())
+
+    def __str__(self):
+        return self._get_str_representation()
 
     def __repr__(self):
         return "NyanMember<%s: %s>" % (self.name, self._member_type)
