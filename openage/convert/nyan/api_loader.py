@@ -79,6 +79,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.ability.type.ActiveTransformTo
+    parents = [api_objects["engine.ability.Ability"]]
+    nyan_object = NyanObject("ActiveTransformTo", parents)
+    fqon = "engine.ability.type.ActiveTransformTo"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.ability.type.ApplyContinuousEffect
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("ApplyContinuousEffect", parents)
@@ -90,6 +97,13 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("ApplyDiscreteEffect", parents)
     fqon = "engine.ability.type.ApplyDiscreteEffect"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.ability.type.AttributeChangeTracker
+    parents = [api_objects["engine.ability.Ability"]]
+    nyan_object = NyanObject("AttributeChangeTracker", parents)
+    fqon = "engine.ability.type.AttributeChangeTracker"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -121,13 +135,6 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.ability.type.Damageable
-    parents = [api_objects["engine.ability.Ability"]]
-    nyan_object = NyanObject("Damageable", parents)
-    fqon = "engine.ability.type.Damageable"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.ability.type.Deletable
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("Deletable", parents)
@@ -149,10 +156,10 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.ability.type.Die
+    # engine.ability.type.DetectCloak
     parents = [api_objects["engine.ability.Ability"]]
-    nyan_object = NyanObject("Die", parents)
-    fqon = "engine.ability.type.Die"
+    nyan_object = NyanObject("DetectCloak", parents)
+    fqon = "engine.ability.type.DetectCloak"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -209,13 +216,6 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("GameEntityStance", parents)
     fqon = "engine.ability.type.GameEntityStance"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.ability.type.Gate
-    parents = [api_objects["engine.ability.Ability"]]
-    nyan_object = NyanObject("Gate", parents)
-    fqon = "engine.ability.type.Gate"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -293,6 +293,20 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("Passable", parents)
     fqon = "engine.ability.type.Passable"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.ability.type.PassiveTransformTo
+    parents = [api_objects["engine.ability.Ability"]]
+    nyan_object = NyanObject("PassiveTransformTo", parents)
+    fqon = "engine.ability.type.PassiveTransformTo"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.ability.type.ProductionQueue
+    parents = [api_objects["engine.ability.Ability"]]
+    nyan_object = NyanObject("ProductionQueue", parents)
+    fqon = "engine.ability.type.ProductionQueue"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -408,13 +422,6 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.ability.type.TileRequirement
-    parents = [api_objects["engine.ability.Ability"]]
-    nyan_object = NyanObject("TileRequirement", parents)
-    fqon = "engine.ability.type.TileRequirement"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.ability.type.TerrainRequirement
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("TerrainRequirement", parents)
@@ -447,13 +454,6 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("Transform", parents)
     fqon = "engine.ability.type.Transform"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.ability.type.TransformTo
-    parents = [api_objects["engine.ability.Ability"]]
-    nyan_object = NyanObject("TransformTo", parents)
-    fqon = "engine.ability.type.TransformTo"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -542,38 +542,150 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.availability_prerequisite.AvailabilityPrerequisite
-    parents = [api_objects["engine.root.Entity"]]
-    nyan_object = NyanObject("AvailabilityPrerequisite", parents)
-    fqon = "engine.aux.availability_prerequisite.AvailabilityPrerequisite"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.availability_prerequisite.type.TechResearched
-    parents = [api_objects["engine.aux.availability_prerequisite.AvailabilityPrerequisite"]]
-    nyan_object = NyanObject("TechResearched", parents)
-    fqon = "engine.aux.availability_prerequisite.type.TechResearched"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.availability_prerequisite.type.GameEntityProgress
-    parents = [api_objects["engine.aux.availability_prerequisite.AvailabilityPrerequisite"]]
-    nyan_object = NyanObject("GameEntityProgress", parents)
-    fqon = "engine.aux.availability_prerequisite.type.GameEntityProgress"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.availability_requirement.AvailabilityRequirement
-    parents = [api_objects["engine.root.Entity"]]
-    nyan_object = NyanObject("AvailabilityRequirement", parents)
-    fqon = "engine.aux.availability_requirement.AvailabilityRequirement"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.aux.boolean.Clause
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("Clause", parents)
     fqon = "engine.aux.boolean.Clause"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.Literal
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("Literal", parents)
+    fqon = "engine.aux.boolean.Literal"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal.type.AttributeInterval
+    parents = [api_objects["engine.aux.boolean.Literal"]]
+    nyan_object = NyanObject("AttributeInterval", parents)
+    fqon = "engine.aux.boolean.literal.type.AttributeInterval"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal.type.GameEntityProgress
+    parents = [api_objects["engine.aux.boolean.Literal"]]
+    nyan_object = NyanObject("GameEntityProgress", parents)
+    fqon = "engine.aux.boolean.literal.type.GameEntityProgress"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal.type.ProjectileHit
+    parents = [api_objects["engine.aux.boolean.Literal"]]
+    nyan_object = NyanObject("ProjectileHit", parents)
+    fqon = "engine.aux.boolean.literal.type.ProjectileHit"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal.type.ProjectileHitTerrain
+    parents = [api_objects["engine.aux.boolean.Literal"]]
+    nyan_object = NyanObject("ProjectileHitTerrain", parents)
+    fqon = "engine.aux.boolean.literal.type.ProjectileHitTerrain"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal.type.ProjectilePassThrough
+    parents = [api_objects["engine.aux.boolean.Literal"]]
+    nyan_object = NyanObject("ProjectilePassThrough", parents)
+    fqon = "engine.aux.boolean.literal.type.ProjectilePassThrough"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal.type.ResourceSpotsDepleted
+    parents = [api_objects["engine.aux.boolean.Literal"]]
+    nyan_object = NyanObject("ResourceSpotsDepleted", parents)
+    fqon = "engine.aux.boolean.literal.type.ResourceSpotsDepleted"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal.type.TechResearched
+    parents = [api_objects["engine.aux.boolean.Literal"]]
+    nyan_object = NyanObject("TechResearched", parents)
+    fqon = "engine.aux.boolean.literal.type.TechResearched"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal.type.Timer
+    parents = [api_objects["engine.aux.boolean.Literal"]]
+    nyan_object = NyanObject("Timer", parents)
+    fqon = "engine.aux.boolean.literal.type.Timer"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal_scope.LiteralScope
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("LiteralScope", parents)
+    fqon = "engine.aux.boolean.literal_scope.LiteralScope"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal_scope.type.Any
+    parents = [api_objects["engine.aux.boolean.literal_scope.LiteralScope"]]
+    nyan_object = NyanObject("Any", parents)
+    fqon = "engine.aux.boolean.literal_scope.type.Any"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal_scope.type.Self
+    parents = [api_objects["engine.aux.boolean.literal_scope.LiteralScope"]]
+    nyan_object = NyanObject("Self", parents)
+    fqon = "engine.aux.boolean.literal_scope.type.Self"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.requirement_mode.RequirementMode
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("RequirementMode", parents)
+    fqon = "engine.aux.boolean.requirement_mode.RequirementMode"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.requirement_mode.type.All
+    parents = [api_objects["engine.aux.boolean.requirement_mode.RequirementMode"]]
+    nyan_object = NyanObject("All", parents)
+    fqon = "engine.aux.boolean.requirement_mode.type.All"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.requirement_mode.type.Any
+    parents = [api_objects["engine.aux.boolean.requirement_mode.RequirementMode"]]
+    nyan_object = NyanObject("Any", parents)
+    fqon = "engine.aux.boolean.requirement_mode.type.Any"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.requirement_mode.type.Subset
+    parents = [api_objects["engine.aux.boolean.requirement_mode.RequirementMode"]]
+    nyan_object = NyanObject("Subset", parents)
+    fqon = "engine.aux.boolean.requirement_mode.type.Subset"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.calculation_type.CalculationType
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("CalculationType", parents)
+    fqon = "engine.aux.calculation_type.CalculationType"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.calculation_type.type.Hyperbolic
+    parents = [api_objects["engine.aux.calculation_type.CalculationType"]]
+    nyan_object = NyanObject("Hyperbolic", parents)
+    fqon = "engine.aux.calculation_type.type.Hyperbolic"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.calculation_type.type.Linear
+    parents = [api_objects["engine.aux.calculation_type.CalculationType"]]
+    nyan_object = NyanObject("Linear", parents)
+    fqon = "engine.aux.calculation_type.type.Linear"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.calculation_type.type.NoStack
+    parents = [api_objects["engine.aux.calculation_type.CalculationType"]]
+    nyan_object = NyanObject("NoStack", parents)
+    fqon = "engine.aux.calculation_type.type.NoStack"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -633,62 +745,6 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.death_condition.DeathCondition
-    parents = [api_objects["engine.root.Entity"]]
-    nyan_object = NyanObject("DeathCondition", parents)
-    fqon = "engine.aux.death_condition.DeathCondition"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.death_condition.type.AttributeInterval
-    parents = [api_objects["engine.aux.death_condition.DeathCondition"]]
-    nyan_object = NyanObject("AttributeInterval", parents)
-    fqon = "engine.aux.death_condition.type.AttributeInterval"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.death_condition.type.ProjectileHit
-    parents = [api_objects["engine.aux.death_condition.DeathCondition"]]
-    nyan_object = NyanObject("ProjectileHit", parents)
-    fqon = "engine.aux.death_condition.type.ProjectileHit"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.death_condition.type.ProjectileHitTerrain
-    parents = [api_objects["engine.aux.death_condition.DeathCondition"]]
-    nyan_object = NyanObject("ProjectileHitTerrain", parents)
-    fqon = "engine.aux.death_condition.type.ProjectileHitTerrain"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.death_condition.type.ProjectilePassThrough
-    parents = [api_objects["engine.aux.death_condition.DeathCondition"]]
-    nyan_object = NyanObject("ProjectilePassThrough", parents)
-    fqon = "engine.aux.death_condition.type.ProjectilePassThrough"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.despawn_condition.DespawnCondition
-    parents = [api_objects["engine.root.Entity"]]
-    nyan_object = NyanObject("DespawnCondition", parents)
-    fqon = "engine.aux.despawn_condition.DespawnCondition"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.despawn_condition.type.ResourceSpotsDepleted
-    parents = [api_objects["engine.aux.despawn_condition.DespawnCondition"]]
-    nyan_object = NyanObject("ResourceSpotsDepleted", parents)
-    fqon = "engine.aux.despawn_condition.type.ResourceSpotsDepleted"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.despawn_condition.type.Timer
-    parents = [api_objects["engine.aux.despawn_condition.DespawnCondition"]]
-    nyan_object = NyanObject("Timer", parents)
-    fqon = "engine.aux.despawn_condition.type.Timer"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.aux.diplomatic_stance.DiplomaticStance
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("DiplomaticStance", parents)
@@ -700,6 +756,20 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.aux.diplomatic_stance.DiplomaticStance"]]
     nyan_object = NyanObject("Self", parents)
     fqon = "engine.aux.diplomatic_stance.type.Self"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.distribution_type.DistributionType
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("DistributionType", parents)
+    fqon = "engine.aux.distribution_type.DistributionType"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.distribution_type.type.Mean
+    parents = [api_objects["engine.aux.distribution_type.DistributionType"]]
+    nyan_object = NyanObject("Mean", parents)
+    fqon = "engine.aux.distribution_type.type.Mean"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -857,6 +927,41 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.herdable_mode.HerdableMode
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("HerdableMode", parents)
+    fqon = "engine.aux.herdable_mode.HerdableMode"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.herdable_mode.type.ClosestHerding
+    parents = [api_objects["engine.aux.herdable_mode.HerdableMode"]]
+    nyan_object = NyanObject("ClosestHerding", parents)
+    fqon = "engine.aux.herdable_mode.type.ClosestHerding"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.herdable_mode.type.LongestTimeInRange
+    parents = [api_objects["engine.aux.herdable_mode.HerdableMode"]]
+    nyan_object = NyanObject("LongestTimeInRange", parents)
+    fqon = "engine.aux.herdable_mode.type.LongestTimeInRange"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.herdable_mode.type.MostHerding
+    parents = [api_objects["engine.aux.herdable_mode.HerdableMode"]]
+    nyan_object = NyanObject("MostHerding", parents)
+    fqon = "engine.aux.herdable_mode.type.MostHerding"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.hitbox.Hitbox
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("Hitbox", parents)
+    fqon = "engine.aux.hitbox.Hitbox"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.language.Language
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("Language", parents)
@@ -955,6 +1060,27 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.passable_mode.PassableMode
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("PassableMode", parents)
+    fqon = "engine.aux.passable_mode.PassableMode"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.passable_mode.type.Gate
+    parents = [api_objects["engine.aux.passable_mode.PassableMode"]]
+    nyan_object = NyanObject("Gate", parents)
+    fqon = "engine.aux.passable_mode.type.Gate"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.passable_mode.type.Normal
+    parents = [api_objects["engine.aux.passable_mode.PassableMode"]]
+    nyan_object = NyanObject("Normal", parents)
+    fqon = "engine.aux.passable_mode.type.Normal"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.patch.Patch
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("Patch", parents)
@@ -997,6 +1123,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.payment_mode.type.Shadow
+    parents = [api_objects["engine.aux.payment_mode.PaymentMode"]]
+    nyan_object = NyanObject("Shadow", parents)
+    fqon = "engine.aux.payment_mode.type.Shadow"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.placement_mode.PlacementMode
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("PlacementMode", parents)
@@ -1011,10 +1144,38 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.placement_mode.type.OwnStorage
+    parents = [api_objects["engine.aux.placement_mode.PlacementMode"]]
+    nyan_object = NyanObject("OwnStorage", parents)
+    fqon = "engine.aux.placement_mode.type.OwnStorage"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.placement_mode.type.Place
     parents = [api_objects["engine.aux.placement_mode.PlacementMode"]]
     nyan_object = NyanObject("Place", parents)
     fqon = "engine.aux.placement_mode.type.Place"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.production_mode.ProductionMode
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("ProductionMode", parents)
+    fqon = "engine.aux.production_mode.ProductionMode"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.production_mode.type.Creatables
+    parents = [api_objects["engine.aux.production_mode.ProductionMode"]]
+    nyan_object = NyanObject("Creatables", parents)
+    fqon = "engine.aux.production_mode.type.Creatables"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.production_mode.type.Researchables
+    parents = [api_objects["engine.aux.production_mode.ProductionMode"]]
+    nyan_object = NyanObject("Researchables", parents)
+    fqon = "engine.aux.production_mode.type.Researchables"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -1053,6 +1214,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.progress.type.AttributeChangeProgress
+    parents = [api_objects["engine.aux.progress.Progress"]]
+    nyan_object = NyanObject("AttributeChangeProgress", parents)
+    fqon = "engine.aux.progress.type.AttributeChangeProgress"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.progress.type.CarryProgress
     parents = [api_objects["engine.aux.progress.Progress"]]
     nyan_object = NyanObject("CarryProgress", parents)
@@ -1064,13 +1232,6 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.aux.progress.Progress"]]
     nyan_object = NyanObject("ConstructionProgress", parents)
     fqon = "engine.aux.progress.type.ConstructionProgress"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.progress.type.DamageProgress
-    parents = [api_objects["engine.aux.progress.Progress"]]
-    nyan_object = NyanObject("DamageProgress", parents)
-    fqon = "engine.aux.progress.type.DamageProgress"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -1165,6 +1326,27 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.selection_box.SelectionBox
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("SelectionBox", parents)
+    fqon = "engine.aux.selection_box.SelectionBox"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.selection_box.type.MatchToSprite
+    parents = [api_objects["engine.aux.selection_box.SelectionBox"]]
+    nyan_object = NyanObject("MatchToSprite", parents)
+    fqon = "engine.aux.selection_box.type.MatchToSprite"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.selection_box.type.Rectangle
+    parents = [api_objects["engine.aux.selection_box.SelectionBox"]]
+    nyan_object = NyanObject("Rectangle", parents)
+    fqon = "engine.aux.selection_box.type.Rectangle"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.sound.Sound
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("Sound", parents)
@@ -1242,6 +1424,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.terrain_type.TerrainType
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("TerrainType", parents)
+    fqon = "engine.aux.terrain_type.TerrainType"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.trade_route.TradeRoute
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("TradeRoute", parents)
@@ -1260,6 +1449,13 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.aux.trade_route.TradeRoute"]]
     nyan_object = NyanObject("AoE2TradeRoute", parents)
     fqon = "engine.aux.trade_route.type.AoE2TradeRoute"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.transform_pool.TransformPool
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("TransformPool", parents)
+    fqon = "engine.aux.transform_pool.TransformPool"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -1383,22 +1579,22 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.effect.continuous.time_relative_progress.TimeRelativeProgress
+    # engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange
     parents = [api_objects["engine.effect.continuous.ContinuousEffect"]]
-    nyan_object = NyanObject("TimeRelativeProgress", parents)
-    fqon = "engine.effect.continuous.time_relative_progress.TimeRelativeProgress"
+    nyan_object = NyanObject("TimeRelativeProgressChange", parents)
+    fqon = "engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
     # engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressDecrease
-    parents = [api_objects["engine.effect.continuous.time_relative_progress.TimeRelativeProgress"]]
+    parents = [api_objects["engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange"]]
     nyan_object = NyanObject("TimeRelativeProgressDecrease", parents)
     fqon = "engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressDecrease"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
     # engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressIncrease
-    parents = [api_objects["engine.effect.continuous.time_relative_progress.TimeRelativeProgress"]]
+    parents = [api_objects["engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange"]]
     nyan_object = NyanObject("TimeRelativeProgressIncrease", parents)
     fqon = "engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressIncrease"
     nyan_object.set_fqon(fqon)
@@ -1489,6 +1685,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.resistance.specialization.StackedResistance
+    parents = [api_objects["engine.resistance.Resistance"]]
+    nyan_object = NyanObject("StackedResistance", parents)
+    fqon = "engine.resistance.specialization.StackedResistance"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.resistance.continuous.ContinuousResistance
     parents = [api_objects["engine.resistance.Resistance"]]
     nyan_object = NyanObject("Resistance", parents)
@@ -1545,22 +1748,22 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.resistance.continuous.time_relative_progress.TimeRelativeProgress
+    # engine.resistance.continuous.time_relative_progress_change.TimeRelativeProgressChange
     parents = [api_objects["engine.resistance.continuous.ContinuousResistance"]]
-    nyan_object = NyanObject("TimeRelativeProgress", parents)
-    fqon = "engine.resistance.continuous.time_relative_progress.TimeRelativeProgress"
+    nyan_object = NyanObject("TimeRelativeProgressChange", parents)
+    fqon = "engine.resistance.continuous.time_relative_progress_change.TimeRelativeProgressChange"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
     # engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressDecrease
-    parents = [api_objects["engine.resistance.continuous.time_relative_progress.TimeRelativeProgress"]]
+    parents = [api_objects["engine.resistance.continuous.time_relative_progress_change.TimeRelativeProgressChange"]]
     nyan_object = NyanObject("TimeRelativeProgressDecrease", parents)
     fqon = "engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressDecrease"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
     # engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressIncrease
-    parents = [api_objects["engine.resistance.continuous.time_relative_progress.TimeRelativeProgress"]]
+    parents = [api_objects["engine.resistance.continuous.time_relative_progress_change.TimeRelativeProgressChange"]]
     nyan_object = NyanObject("TimeRelativeProgressIncrease", parents)
     fqon = "engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressIncrease"
     nyan_object.set_fqon(fqon)
@@ -1641,6 +1844,13 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.modifier.Modifier"]]
     nyan_object = NyanObject("ScopeModifier", parents)
     fqon = "engine.modifier.specialization.ScopeModifier"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.modifier.specialization.StackedModifier
+    parents = [api_objects["engine.modifier.Modifier"]]
+    nyan_object = NyanObject("StackedModifier", parents)
+    fqon = "engine.modifier.specialization.StackedModifier"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -1968,6 +2178,18 @@ def _insert_members(api_objects):
     member = NyanMember("sounds", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
+    # engine.ability.type.ActiveTransformTo
+    api_object = api_objects["engine.ability.type.ActiveTransformTo"]
+
+    ref_object = api_objects["engine.aux.state_machine.StateChanger"]
+    member = NyanMember("target_state", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("transform_time", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.progress.type.TransformProgress"]
+    member = NyanMember("transform_progress", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
     # engine.ability.type.ApplyContinuousEffect
     api_object = api_objects["engine.ability.type.ApplyContinuousEffect"]
 
@@ -1998,6 +2220,16 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity.GameEntity"]
     member = NyanMember("blacklisted_game_entities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.ability.type.AttributeChangeTracker
+    api_object = api_objects["engine.ability.type.AttributeChangeTracker"]
+
+    ref_object = api_objects["engine.aux.attribute.Attribute"]
+    member = NyanMember("attribute", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.progress.type.AttributeChangeProgress"]
+    member = NyanMember("change_progress", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.ability.type.Cloak
@@ -2035,16 +2267,6 @@ def _insert_members(api_objects):
     member = NyanMember("creatables", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
-    # engine.ability.type.Damageable
-    api_object = api_objects["engine.ability.type.Damageable"]
-
-    ref_object = api_objects["engine.aux.attribute.Attribute"]
-    member = NyanMember("attribute", ref_object, None, None, 0, None, False)
-    api_object.add_member(member)
-    set_type = api_objects["engine.aux.progress.type.DamageProgress"]
-    member = NyanMember("damage_progress", MemberType.SET, None, None, 0, set_type, False)
-    api_object.add_member(member)
-
     # engine.ability.type.DepositResources
     api_object = api_objects["engine.ability.type.DepositResources"]
 
@@ -2060,22 +2282,13 @@ def _insert_members(api_objects):
     # engine.ability.type.Despawn
     api_object = api_objects["engine.ability.type.Despawn"]
 
-    set_type = api_objects["engine.aux.despawn_condition.DespawnCondition"]
-    member = NyanMember("despawn_conditions", MemberType.SET, None, None, 0, set_type, False)
+    set_type = api_objects["engine.aux.boolean.Clause"]
+    member = NyanMember("activation_condition", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.boolean.Clause"]
+    member = NyanMember("despawn_condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
     member = NyanMember("despawn_time", MemberType.FLOAT, None, None, 0, None, False)
-    api_object.add_member(member)
-    ref_object = api_objects["engine.aux.state_machine.StateChanger"]
-    member = NyanMember("state_change", ref_object, None, None, 0, None, False)
-    api_object.add_member(member)
-
-    # engine.ability.type.Die
-    api_object = api_objects["engine.ability.type.Die"]
-
-    set_type = api_objects["engine.aux.death_condition.DeathCondition"]
-    member = NyanMember("death_conditions", MemberType.SET, None, None, 0, set_type, False)
-    api_object.add_member(member)
-    member = NyanMember("death_time", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.state_machine.StateChanger"]
     member = NyanMember("state_change", ref_object, None, None, 0, None, False)
@@ -2179,6 +2392,16 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.resource_spot.ResourceSpot"]
     member = NyanMember("resources", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
+    set_type = api_objects["engine.aux.progress.type.HarvestProgress"]
+    member = NyanMember("harvest_progress", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.progress.type.RestockProgress"]
+    member = NyanMember("restock_progress", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    member = NyanMember("gatherer_limit", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("harvestable_by_default", MemberType.BOOLEAN, None, None, 0, None, False)
+    api_object.add_member(member)
 
     # engine.ability.type.Herd
     api_object = api_objects["engine.ability.type.Herd"]
@@ -2196,6 +2419,9 @@ def _insert_members(api_objects):
     api_object = api_objects["engine.ability.type.Herdable"]
 
     member = NyanMember("adjacent_discover_range", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.herdable_mode.HerdableMode"]
+    member = NyanMember("herdable_mode", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.LineOfSight
@@ -2231,6 +2457,28 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.translated.type.TranslatedMarkupFile"]
     member = NyanMember("long_description", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.ability.type.Passable
+    api_object = api_objects["engine.ability.type.Passable"]
+
+    ref_object = api_objects["engine.aux.hitbox.Hitbox"]
+    member = NyanMember("hitbox", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.passable_mode.PassableMode"]
+    member = NyanMember("mode", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.ability.type.PassiveTransformTo
+    api_object = api_objects["engine.ability.type.PassiveTransformTo"]
+
+    set_type = api_objects["engine.aux.boolean.Clause"]
+    member = NyanMember("death_condition", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    member = NyanMember("death_time", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.state_machine.StateChanger"]
+    member = NyanMember("state_change", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Projectile
@@ -2351,6 +2599,13 @@ def _insert_members(api_objects):
     member = NyanMember("blacklisted_game_entities", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
+    # engine.ability.type.Selectable
+    api_object = api_objects["engine.ability.type.Selectable"]
+
+    ref_object = api_objects["engine.aux.selection_box.SelectionBox"]
+    member = NyanMember("selection_box", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
     # engine.ability.type.ShootProjectile
     api_object = api_objects["engine.ability.type.ShootProjectile"]
 
@@ -2407,8 +2662,11 @@ def _insert_members(api_objects):
     # engine.ability.type.TerrainRequirement
     api_object = api_objects["engine.ability.type.TerrainRequirement"]
 
+    set_type = api_objects["engine.aux.terrain_type.TerrainType"]
+    member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
     set_type = api_objects["engine.aux.terrain.Terrain"]
-    member = NyanMember("terrain_requirement", MemberType.SET, None, None, 0, set_type, False)
+    member = NyanMember("blacklisted_terrains", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.ability.type.Trade
@@ -2428,23 +2686,14 @@ def _insert_members(api_objects):
     # engine.ability.type.Transform
     api_object = api_objects["engine.ability.type.Transform"]
 
+    ref_object = api_objects["engine.aux.transform_pool.TransformPool"]
+    member = NyanMember("transform_pool", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
     set_type = api_objects["engine.aux.state_machine.StateChanger"]
     member = NyanMember("states", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.state_machine.StateChanger"]
     member = NyanMember("initial_state", ref_object, None, None, 0, None, False)
-    api_object.add_member(member)
-
-    # engine.ability.type.TransformTo
-    api_object = api_objects["engine.ability.type.TransformTo"]
-
-    ref_object = api_objects["engine.aux.state_machine.StateChanger"]
-    member = NyanMember("target_state", ref_object, None, None, 0, None, False)
-    api_object.add_member(member)
-    member = NyanMember("transform_time", MemberType.FLOAT, None, None, 0, None, False)
-    api_object.add_member(member)
-    set_type = api_objects["engine.aux.progress.type.TransformProgress"]
-    member = NyanMember("transform_progress", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.ability.type.Turn
@@ -2544,6 +2793,25 @@ def _insert_members(api_objects):
     member = NyanMember("protects", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
+    # engine.aux.boolean.Clause
+    api_object = api_objects["engine.aux.boolean.Clause"]
+
+    ref_object = api_objects["engine.aux.boolean.requirement_mode.RequirementMode"]
+    member = NyanMember("clause_requirement", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.boolean.Literal"]
+    member = NyanMember("literals", MemberType.ORDEREDSET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    member = NyanMember("only_once", MemberType.BOOLEAN, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.boolean.Literal
+    api_object = api_objects["engine.aux.boolean.Literal"]
+
+    ref_object = api_objects["engine.aux.boolean.literal_scope.LiteralScope"]
+    member = NyanMember("scope", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
     # engine.aux.cheat.Cheat
     api_object = api_objects["engine.aux.cheat.Cheat"]
 
@@ -2615,11 +2883,11 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.sound.Sound"]
     member = NyanMember("creation_sound", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = api_objects["engine.aux.availability_requirement.AvailabilityRequirement"]
-    member = NyanMember("requirements", MemberType.SET, None, None, 0, set_type, False)
+    set_type = api_objects["engine.aux.boolean.Clause"]
+    member = NyanMember("condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    ref_object = api_objects["engine.aux.placement_mode.PlacementMode"]
-    member = NyanMember("placement_mode", ref_object, None, None, 0, None, False)
+    set_type = api_objects["engine.aux.placement_mode.PlacementMode"]
+    member = NyanMember("placement_modes", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.aux.exchange_mode.volatile.Volatile
@@ -2744,6 +3012,8 @@ def _insert_members(api_objects):
     # engine.aux.mod.Mod
     api_object = api_objects["engine.aux.mod.Mod"]
 
+    member = NyanMember("priority", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
     set_type = api_objects["engine.aux.patch.Patch"]
     member = NyanMember("patches", MemberType.ORDEREDSET, None, None, 0, set_type, False)
     api_object.add_member(member)
@@ -2774,7 +3044,7 @@ def _insert_members(api_objects):
     # engine.aux.placement_mode.type.Place
     api_object = api_objects["engine.aux.placement_mode.type.Place"]
 
-    member = NyanMember("allow_rotation", MemberType.BOOLEAN, None, None, 0, None, False)
+    member = NyanMember("snap_to_tiles", MemberType.BOOLEAN, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.progress.Progress
@@ -2834,8 +3104,8 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.sound.Sound"]
     member = NyanMember("research_sound", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = api_objects["engine.aux.availability_requirement.AvailabilityRequirement"]
-    member = NyanMember("requirements", MemberType.SET, None, None, 0, set_type, False)
+    set_type = api_objects["engine.aux.boolean.Clause"]
+    member = NyanMember("condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.aux.resource.Resource
@@ -2879,27 +3149,11 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.resource.Resource"]
     member = NyanMember("resource", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("capacity", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_amount", MemberType.INT, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("starting_amount", MemberType.INT, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("decay_rate", MemberType.FLOAT, None, None, 0, None, False)
-    api_object.add_member(member)
-    set_type = api_objects["engine.aux.progress.type.HarvestProgress"]
-    member = NyanMember("harvest_progress", MemberType.SET, None, None, 0, set_type, False)
-    api_object.add_member(member)
-    member = NyanMember("gatherer_limit", MemberType.INT, None, None, 0, None, False)
-    api_object.add_member(member)
-    member = NyanMember("harvestable_by_default", MemberType.BOOLEAN, None, None, 0, None, False)
-    api_object.add_member(member)
-
-    # engine.aux.resource_spot.RestockableResourceSpot
-    api_object = api_objects["engine.aux.resource_spot.RestockableResourceSpot"]
-
-    member = NyanMember("destruction_time_limit", MemberType.FLOAT, None, None, 0, None, False)
-    api_object.add_member(member)
-    set_type = api_objects["engine.aux.progress.type.RestockProgress"]
-    member = NyanMember("restock_progress", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.aux.sound.Sound
@@ -2987,6 +3241,9 @@ def _insert_members(api_objects):
     # engine.aux.terrain.Terrain
     api_object = api_objects["engine.aux.terrain.Terrain"]
 
+    set_type = api_objects["engine.aux.terrain_type.TerrainType"]
+    member = NyanMember("types", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
     ref_object = api_objects["engine.aux.translated.type.TranslatedString"]
     member = NyanMember("name", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
@@ -2995,12 +3252,6 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.sound.Sound"]
     member = NyanMember("sound", ref_object, None, None, 0, None, False)
-    api_object.add_member(member)
-    set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
-    member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
-    api_object.add_member(member)
-    set_type = api_objects["engine.aux.game_entity.GameEntity"]
-    member = NyanMember("blacklisted_game_entities", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.terrain.TerrainAmbient"]
     member = NyanMember("ambience", MemberType.SET, None, None, 0, set_type, False)
@@ -3151,8 +3402,8 @@ def _insert_members(api_objects):
     member = NyanMember("ignore_protection", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
-    # engine.effect.continuous.time_relative_progress.TimeRelativeProgress
-    api_object = api_objects["engine.effect.continuous.time_relative_progress.TimeRelativeProgress"]
+    # engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange
+    api_object = api_objects["engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange"]
 
     ref_object = api_objects["engine.aux.progress_type.ProgressType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
@@ -3269,7 +3520,7 @@ def _insert_members(api_objects):
     api_object.add_member(member)
 
     # engine.resistance.continuous.time_relative_progress.TimeRelativeProgress
-    api_object = api_objects["engine.resistance.continuous.time_relative_progress.TimeRelativeProgress"]
+    api_object = api_objects["engine.resistance.continuous.time_relative_progress_change.TimeRelativeProgressChange"]
 
     ref_object = api_objects["engine.aux.progress_type.ProgressType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
@@ -3548,7 +3799,7 @@ def _insert_members(api_objects):
     member = NyanMember("tech", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.boolean.Clause"]
-    member = NyanMember("requirements", MemberType.SET, None, None, 0, set_type, False)
+    member = NyanMember("condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.modifier.type.RefundOnDeath
