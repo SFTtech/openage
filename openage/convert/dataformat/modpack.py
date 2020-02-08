@@ -16,7 +16,7 @@ class Modpack:
         self.name = name
 
         # Definition file
-        self.info = ModpackInfo("", self.name + ".mod", self.name)
+        self.info = ModpackInfo("", self.name + ".nfo", self.name)
 
         # Data/media export
         self.data_export_files = []
