@@ -3103,12 +3103,13 @@ selection_box : SelectionBox</panel_attributes>
       <x>3980</x>
       <y>3780</y>
       <w>240</w>
-      <h>90</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>*Transform*
 bg=green
 
 --
+transform_pool : TransformPool
 states : set(StateChanger)
 initial_state : StateChanger</panel_attributes>
     <additional_attributes/>
@@ -8073,12 +8074,12 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1470</x>
+      <x>1440</x>
       <y>4970</y>
-      <w>220</w>
+      <w>250</w>
       <h>90</h>
     </coordinates>
-    <panel_attributes>*TimeRelativeProgress*
+    <panel_attributes>*TimeRelativeProgressChange*
 bg=pink
 
 --
@@ -8174,12 +8175,12 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2240</x>
+      <x>2210</x>
       <y>4970</y>
-      <w>220</w>
+      <w>250</w>
       <h>90</h>
     </coordinates>
-    <panel_attributes>*TimeRelativeProgress*
+    <panel_attributes>*TimeRelativeProgressChange*
 bg=pink
 
 --
@@ -10197,5 +10198,55 @@ bg=pink</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2550</x>
+      <y>1250</y>
+      <w>170</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*StackedModifier*
+bg=pink
+
+--
+stack_limit : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2710</x>
+      <y>1280</y>
+      <w>230</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3800</x>
+      <y>3800</y>
+      <w>140</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*TransformPool*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3930</x>
+      <y>3820</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
   </element>
 </diagram>
