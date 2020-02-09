@@ -10,6 +10,7 @@ from .value_members import ValueMember
 from ...nyan.nyan_structs import NyanObject, MemberOperator
 from .aoc.expected_pointer import ExpectedPointer
 from .aoc.combined_sprite import CombinedSprite
+from openage.convert.dataformat.value_members import NoDiffMember
 
 
 class ConverterObject:
@@ -78,20 +79,31 @@ class ConverterObject:
 
     def short_diff(self, other):
         """
-        Returns the diff between two objects as another ConverterObject.
+        Returns the obj_diff between two objects as another ConverterObject.
 
-        The object created by short_diff() only contains members and raw_api_objects
+        The object created by short_diff() only contains members
         that are different. It does not contain NoDiffMembers.
         """
-        raise NotImplementedError(
-            "%s has no short_diff() implementation" % (type(self)))
+        obj_diff = {}
+
+        for member_id, member in self.members.items():
+            member_diff = member.diff(other.get_member(member_id))
+
+            if not isinstance(member_diff, NoDiffMember):
+                obj_diff.update({member_id: member_diff})
+
+        return ConverterObject("%s-%s-sdiff" % (self.obj_id, other.get_id()), members=obj_diff)
 
     def diff(self, other):
         """
-        Returns the diff between two objects as another ConverterObject.
+        Returns the obj_diff between two objects as another ConverterObject.
         """
-        raise NotImplementedError(
-            "%s has no diff() implementation" % (type(self)))
+        obj_diff = {}
+
+        for member_id, member in self.members.items():
+            obj_diff.update({member_id: member.diff(other.get_member(member_id))})
+
+        return ConverterObject("%s-%s-diff" % (self.obj_id, other.get_id()), members=obj_diff)
 
     def __repr__(self):
         raise NotImplementedError(
