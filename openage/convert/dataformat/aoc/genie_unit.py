@@ -55,6 +55,10 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         # The line is stored as an ordered list of GenieUnitObjects.
         self.line = []
 
+        # This dict stores unit ids and their repective position in the
+        # unit line for quick referencing and searching
+        self.unit_line_positions = {}
+
         # Reference to everything else in the gamedata
         self.data = full_data_set
 
@@ -85,17 +89,18 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
         # Only add unit if it is not already in the list
         if not self.contains_unit(unit_id):
+            insert_index = len(self.line)
+
             if after:
-                for unit in self.line:
-                    if after == unit.get_id():
-                        self.line.insert(self.line.index(unit) + 1, genie_unit)
-                        break
+                if self.contains_unit(after):
+                    insert_index = self.unit_line_positions[after] + 1
 
-                else:
-                    self.line.append(genie_unit)
+                    for unit in self.unit_line_positions.keys():
+                        if self.unit_line_positions[unit] >= insert_index:
+                            self.unit_line_positions[unit] += 1
 
-            else:
-                self.line.append(genie_unit)
+            self.unit_line_positions.update({genie_unit.get_id(): insert_index})
+            self.line.insert(insert_index, genie_unit)
 
     def contains_creatable(self, line_id):
         """
@@ -110,9 +115,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         """
         Returns True if a unit with unit_id is part of the line.
         """
-        unit = self.data.genie_units[unit_id]
-
-        return unit in self.line
+        return unit_id in self.unit_line_positions.keys()
 
     def is_unique(self):
         """
