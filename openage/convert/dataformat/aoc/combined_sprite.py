@@ -30,6 +30,8 @@ class CombinedSprite:
         self.filename = filename
         self.data = full_data_set
 
+        self.metadata = None
+
         # Depending on the amounts of references:
         # 0 = do not convert;
         # 1 = store with GameEntity;
@@ -41,6 +43,18 @@ class CombinedSprite:
         Add an object that is referencing this sprite.
         """
         self._refs.append(referer)
+
+    def add_metadata(self, metadata):
+        """
+        Add a metadata file to the sprite.
+        """
+        self.metadata = metadata
+
+    def get_filename(self):
+        """
+        Returns the desired filename of the sprite.
+        """
+        return self.filename
 
     def get_id(self):
         """
@@ -67,7 +81,7 @@ class CombinedSprite:
 
     def resolve_location(self):
         """
-        Returns the location of the definition file in the modpack
+        Returns the location of the definition file in the modpack.
         """
         if len(self._refs) > 1:
             return "data/game_entity/shared/graphics/"

@@ -358,12 +358,6 @@ class ArrayMember(ValueMember):
     def __init__(self, name, allowed_member_type, members):
         super().__init__(name)
 
-        # Check if members have correct type
-        for member in members:
-            if member.get_type() is not allowed_member_type:
-                raise Exception("%s has type %s, but this ArrayMember only allows %s"
-                                % (member, member.get_type(), allowed_member_type))
-
         self.value = members
 
         if allowed_member_type is MemberTypes.INT_MEMBER:
@@ -380,6 +374,12 @@ class ArrayMember(ValueMember):
             self.member_type = MemberTypes.ARRAY_STRING
         elif allowed_member_type is MemberTypes.CONTAINER_MEMBER:
             self.member_type = MemberTypes.ARRAY_CONTAINER
+
+        # Check if members have correct type
+        for member in members:
+            if member.get_type() is not allowed_member_type:
+                raise Exception("%s has type %s, but this ArrayMember only allows %s"
+                                % (member, member.get_type(), allowed_member_type))
 
     def get_value(self):
         return self.value

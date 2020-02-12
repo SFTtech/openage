@@ -1,7 +1,8 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
 
 """
-Derives and adds abilities for to unit lines.
+Derives and adds abilities for to unit lines. Subroutine of the
+nyan subprocessor.
 """
 from ...dataformat.converter_object import RawAPIObject
 from ...dataformat.aoc.expected_pointer import ExpectedPointer
@@ -293,13 +294,6 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(unit_line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = unit_line.variants[0].line[0]
-
-        else:
-            current_unit = unit_line.line[0]
-
         current_unit_id = unit_line.get_head_unit_id()
         dataset = unit_line.data
         game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
@@ -384,13 +378,6 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(unit_line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = unit_line.variants[0].line[0]
-
-        else:
-            current_unit = unit_line.line[0]
-
         current_unit_id = unit_line.get_head_unit_id()
         dataset = unit_line.data
         game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]

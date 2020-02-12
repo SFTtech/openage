@@ -32,6 +32,7 @@ from ...dataformat.converter_object import RawAPIObject,\
     ConverterObjectGroup
 from ...dataformat.aoc.expected_pointer import ExpectedPointer
 from .modpack_subprocessor import AoCModpackSubprocessor
+from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
 
 
 class AoCProcessor:
@@ -118,6 +119,7 @@ class AoCProcessor:
     def _post_processor(cls, full_data_set):
 
         AoCNyanSubprocessor.convert(full_data_set)
+        AoCMediaSubprocessor.convert(full_data_set)
 
         return AoCModpackSubprocessor.get_modpacks(full_data_set)
 
@@ -546,8 +548,8 @@ class AoCProcessor:
         # =======================================================================
         unit_ref_in_modpack = "aux.game_entity_type.types.Unit"
         unit_raw_api_object = RawAPIObject(unit_ref_in_modpack,
-                                        "Unit", api_objects,
-                                        types_location)
+                                           "Unit", api_objects,
+                                           types_location)
         unit_raw_api_object.set_filename("types")
         unit_raw_api_object.add_raw_parent(type_parent)
 

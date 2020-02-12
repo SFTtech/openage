@@ -84,6 +84,10 @@ class ConverterObject:
         The object created by short_diff() only contains members
         that are different. It does not contain NoDiffMembers.
         """
+        if type(self) is not type(other):
+            raise Exception("type %s cannot be diffed with type %s"
+                            % (type(self), type(other)))
+
         obj_diff = {}
 
         for member_id, member in self.members.items():
@@ -98,6 +102,10 @@ class ConverterObject:
         """
         Returns the obj_diff between two objects as another ConverterObject.
         """
+        if type(self) is not type(other):
+            raise Exception("type %s cannot be diffed with type %s"
+                            % (type(self), type(other)))
+
         obj_diff = {}
 
         for member_id, member in self.members.items():

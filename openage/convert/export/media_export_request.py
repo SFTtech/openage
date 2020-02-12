@@ -78,6 +78,7 @@ class MediaExportRequest:
         :type targetdir: str
         """
         if not isinstance(targetdir, str):
-            raise ValueError("str expected as targetdir")
+            raise ValueError("str expected as targetdir, not %s" %
+                             type(targetdir))
 
         self.targetdir = targetdir
