@@ -80,22 +80,22 @@ class GameVersion(enum.Enum):
     # HD edition version 4.0
     age2_hd_fe = (
         12.0,
-        "Age of Empires 2: HD + Forgotten Empires (Version 4.0+)",
+        "Age of Empires 2: HD (Version 4.0+)",
         Support.yes,
         {'AoK HD.exe', 'resources/_common/dat/empires2_x1_p1.dat'},
     )
-    # HD Edition v4.7+ with African Kingdoms. Maybe 4.6 as well.
+    # HD Edition v4.7+ circa African Kingdoms. Maybe 4.6 as well.
     age2_hd_ak = (
         12.0,
-        "Age of Empires 2: HD + African Kingdoms (Version 4.7+)",
+        "Age of Empires 2: HD (Version 4.7+)",
         Support.yes,
         {'AoK HD.exe', 'resources/_common/dat/empires2_x2_p1.dat',
          'resources/_packages/african-kingdoms/config.json'},
     )
-    # HD Edition v5.1+ with Rise of the Rajas
+    # HD Edition v5.1+ circa Rise of the Rajas
     age2_hd_rajas = (
         12.0,
-        "Age of Empires 2: HD + Rise of the Rajas (Version 5.x)",
+        "Age of Empires 2: HD (Version 5.x)",
         Support.breaks,
         {'AoK HD.exe', 'resources/_common/dat/empires2_x2_p1.dat',
          'resources/_packages/rise-of-the-rajas/config.json'},
