@@ -28,9 +28,9 @@ class GameExpansion(Enum):
                                   Support.nope,
                                   {("resources/_common/dat/empires2_x2_p1.dat", {})},
                                   {MediaType.GRAPHICS: (False, ["resources/_common/slp/"]),
-                                   MediaType.SOUNDS: (True, ["resources/_common/sound/"]),
-                                   MediaType.INTERFACE: (True, ["resources/_common/drs/interface/"]),
-                                   MediaType.TERRAIN: (True, ["resources/_common/terrain"])},
+                                   MediaType.SOUNDS: (False, ["resources/_common/sound/"]),
+                                   MediaType.INTERFACE: (False, ["resources/_common/drs/interface/"]),
+                                   MediaType.TERRAIN: (False, ["resources/_common/terrain/"])},
                                   ["aoe2-ak", "aoe2-ak-graphics"])
 
 
@@ -44,7 +44,7 @@ class GameEdition(Enum):
     The Conquerors are considered "downgrade" expansions.
     """
 
-    AOC = GameEditionInfo("Age of Empires 2: The Conqueror's (Patch 1.0c)",
+    AOC = GameEditionInfo("Age of Empires 2: The Conqueror's",
                           Support.yes,
                           {('age2_x1/age2_x1.exe', {}),
                            ('data/empires2_x1_p1.dat', {})},

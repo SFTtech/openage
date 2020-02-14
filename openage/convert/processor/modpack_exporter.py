@@ -31,4 +31,9 @@ class ModpackExporter:
         # Media files
         media_files = modpack.get_media_files()
 
-        # TODO: Media file export
+        for media_type in media_files.keys():
+            cur_export_requests = media_files[media_type]
+
+            # TODO: Source directory derived from game edition
+            for request in cur_export_requests:
+                request.save(None, exportdir)

@@ -4,11 +4,16 @@
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
 """
+from openage.convert.dataformat.media_types import MediaType
+from openage.convert.slp import SLP
+from openage.util.fslike.path import Path
+from openage.convert.colortable import ColorTable
+from openage.convert.texture import Texture
 
 
 class MediaExportRequest:
 
-    def __init__(self, media_type, targetdir, source_filename, target_filename):
+    def __init__(self, targetdir, source_filename, target_filename):
         """
         Create a request for a media file.
 
@@ -20,8 +25,6 @@ class MediaExportRequest:
         :type target_filename: str
         """
 
-        self.media_type = media_type
-
         self.set_targetdir(targetdir)
         self.set_source_filename(source_filename)
         self.set_target_filename(target_filename)
@@ -30,19 +33,21 @@ class MediaExportRequest:
         """
         Return the media type.
         """
-        return self.media_type
+        raise NotImplementedError("%s has not implemented get_type()"
+                                  % (self))
 
-    def export(self, sourcedir, exportdir):
+    def save(self, sourcedir, exportdir):
         """
         Convert the media to openage target format and output the result
-        to a file.
+        to a file. Encountered metadata is returned on completion.
 
         :param sourcedir: Relative path to the source directory.
         :type sourcedir: ...util.fslike.path.Path
         :param exportdir: Relative path to the export directory.
         :type exportdir: ...util.fslike.path.Path
         """
-        # TODO: Depends on media type and source file type
+        raise NotImplementedError("%s has not implemented save()"
+                                  % (self))
 
     def set_source_filename(self, filename):
         """
@@ -82,3 +87,37 @@ class MediaExportRequest:
                              type(targetdir))
 
         self.targetdir = targetdir
+
+
+class GraphicsMediaExportRequest(MediaExportRequest):
+    """
+    Export requests for ingame graphics such as animations or sprites.
+    """
+
+    def get_type(self):
+        return MediaType.GRAPHICS
+
+    def save(self, sourcedir, exportdir, palette_file):
+        sourcefile = sourcedir.joinpath(self.source_filename)
+
+        media_file = sourcefile.open("rb")
+        palette_file = palette_file.open("rb")
+        palette_table = ColorTable(palette_file.read())
+
+        if sourcefile.suffix().lower() == "slp":
+            from ..slp import SLP
+
+            image = SLP(media_file.read())
+
+        elif sourcefile.suffix().lower() == "smp":
+            from ..smp import SMP
+
+            image = SMP(media_file.read())
+
+        elif sourcefile.suffix().lower() == "smx":
+            from ..smx import SMX
+
+            image = SMX(media_file.read())
+
+        texture = Texture(image, palette_table)
+        texture.save(self.targetdir, self.target_filename)

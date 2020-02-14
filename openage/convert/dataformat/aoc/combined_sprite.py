@@ -56,6 +56,15 @@ class CombinedSprite:
         """
         return self.filename
 
+    def get_graphics(self):
+        """
+        Return all graphics referenced by this sprite.
+        """
+        graphics = [self.data.genie_graphics[self.head_sprite_id]]
+        graphics.extend(self.data.genie_graphics[self.head_sprite_id].get_subgraphics())
+
+        return graphics
+
     def get_id(self):
         """
         Returns the head sprite ID of the sprite.
@@ -79,9 +88,25 @@ class CombinedSprite:
         """
         self._refs.remove(referer)
 
-    def resolve_location(self):
+    def resolve_graphics_location(self):
         """
-        Returns the location of the definition file in the modpack.
+        Returns the planned location in the modpack of all image files
+        referenced by the sprite.
+        """
+        location_dict = {}
+
+        for graphic in self.get_graphics():
+            if graphic.is_shared():
+                location_dict.update({graphic.get_id(): "data/game_entity/shared/graphics/"})
+
+            else:
+                location_dict.update({graphic.get_id(): self.resolve_sprite_location()})
+
+        return location_dict
+
+    def resolve_sprite_location(self):
+        """
+        Returns the planned location of the definition file in the modpack.
         """
         if len(self._refs) > 1:
             return "data/game_entity/shared/graphics/"

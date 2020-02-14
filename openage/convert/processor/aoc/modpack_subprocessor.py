@@ -33,6 +33,7 @@ class AoCModpackSubprocessor:
         mod_def.add_assets_to_load("data/*")
 
         cls._organize_nyan_objects(modpack, gamedata)
+        cls._organize_media_objects(modpack, gamedata)
 
         return modpack
 
@@ -80,3 +81,11 @@ class AoCModpackSubprocessor:
                 modpack.add_data_export(nyan_file)
 
             nyan_file.add_nyan_object(raw_api_object.get_nyan_object())
+
+    @staticmethod
+    def _organize_media_objects(modpack, full_data_set):
+        """
+        Put export requests and sprite files into as given modpack.
+        """
+        for graphic_export in full_data_set.graphics_exports.values():
+            modpack.add_media_export(graphic_export)

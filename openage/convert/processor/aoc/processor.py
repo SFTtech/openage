@@ -327,11 +327,20 @@ class AoCProcessor:
         raw_graphics = gamespec.get_value()[0].get_value()["graphics"].get_value()
 
         for raw_graphic in raw_graphics:
+            # Can be ignored if there is no filename associated
+            filename = raw_graphic.get_value()["filename"].get_value()
+            if not filename:
+                continue
+
             graphic_id = raw_graphic.get_value()["graphic_id"].get_value()
             graphic_members = raw_graphic.get_value()
 
             graphic = GenieGraphic(graphic_id, full_data_set, members=graphic_members)
             full_data_set.genie_graphics.update({graphic.get_id(): graphic})
+
+        # Detect subgraphics
+        for genie_graphic in full_data_set.genie_graphics.values():
+            genie_graphic.detect_subgraphics()
 
     @staticmethod
     def _extract_genie_sounds(gamespec, full_data_set):
