@@ -20,6 +20,7 @@ from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from ..util.fslike.directory import CaseIgnoringDirectory, Directory
 from ..util.strings import format_progress
+from openage.convert.dataformat.version_detect import get_game_info, GameEdition
 
 STANDARD_PATH_IN_32BIT_WINEPREFIX =\
     "drive_c/Program Files/Microsoft Games/Age of Empires II/"
@@ -31,6 +32,63 @@ REGISTRY_KEY = \
     "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
 REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
 REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
+
+
+def mount_asset_dirs(srcdir, game_version):
+    """
+    Returns a Union path where srcdir is mounted at /,
+    and all the asset files are mounted in subfolders.
+    """
+    from ..util.fslike.union import Union
+    from .drs import DRS
+
+    result = Union().root
+    result.mount(srcdir)
+
+    def mount_drs(filename, target):
+        """
+        Mounts the DRS file from srcdir's filename at result's target.
+        """
+
+        drspath = srcdir[filename]
+        result[target].mount(DRS(drspath.open('rb')).root)
+
+    # Mount the media sources of the game edition
+    for media_type, media_paths in game_version[0].media_paths.items():
+        for media_path in media_paths:
+            path_to_media = srcdir[media_path]
+            if path_to_media.is_dir():
+                # Mount folder
+                result[media_type.value].mount(path_to_media)
+
+            elif path_to_media.is_file():
+                # Mount archive
+                if path_to_media.suffix.lower() == ".drs":
+                    mount_drs(media_path, media_type.value)
+
+            else:
+                raise Exception("Media at path %s could not be found"
+                                % (path_to_media))
+
+    # Mount the media sources of the game edition
+    for expansion in game_version[1]:
+        for media_type, media_paths in expansion.media_paths.items():
+            for media_path in media_paths:
+                path_to_media = srcdir[media_path]
+                if path_to_media.is_dir():
+                    # Mount folder
+                    result[media_type.value].mount(path_to_media)
+
+                elif path_to_media.is_file():
+                    # Mount archive
+                    if path_to_media.suffix.lower() == ".drs":
+                        mount_drs(media_path, media_type.value)
+
+                else:
+                    raise Exception("Media at path %s could not be found"
+                                    % (path_to_media))
+
+    return result
 
 
 def mount_drs_archives(srcdir, game_versions=None):
@@ -99,48 +157,51 @@ def mount_input(srcdir=None, prev_source_dir_path=None):
     if srcdir is None:
         srcdir = acquire_conversion_source_dir(prev_source_dir_path)
 
-    game_versions = set(get_game_versions(srcdir))
-    if not game_versions:
-        warn("Game version(s) could not be detected in %s", srcdir)
+    game_version = get_game_info(srcdir)
+    if not game_version:
+        warn("No valid game version(s) could not be detected in %s", srcdir)
 
     # true if no supported version was found
     no_support = False
 
-    break_vers = []
-    for ver in game_versions:
-        if ver.support == Support.breaks:
-            break_vers.append(ver)
+    broken_edition = game_version[0].support == Support.breaks
 
-    # a breaking version is installed
-    if break_vers:
-        warn("You have installed incompatible game version(s):")
-        for ver in break_vers:
-            warn(" * \x1b[31;1m%s\x1b[m", ver)
+    # a broken edition is installed
+    if broken_edition:
+        warn("You have installed an incompatible game edition:")
+        warn(" * \x1b[31;1m%s\x1b[m", game_version[0])
         no_support = True
 
-    # no supported version was found
-    if not any(version.support == Support.yes for version in game_versions):
-        warn("No supported game version found:")
-        for version in GameVersion:
-            warn(" * %s", version)
-        no_support = True
+    broken_expansions = []
+    for expansion in game_version[1]:
+        if expansion.support == Support.breaks:
+            broken_expansions.append(expansion)
+
+    # a broken expansion is installed
+    if broken_expansions:
+        warn("You have installed incompatible game expansions:")
+        for expansion in broken_expansions:
+            warn(" * \x1b[31;1m%s\x1b[m", expansion)
 
     # inform about supported versions
     if no_support:
         warn("You need at least one of:")
-        for ver in GameVersion:
-            if ver.support == Support.yes:
-                warn(" * \x1b[34m%s\x1b[m", ver)
+        for edition in GameEdition:
+            if edition.support == Support.yes:
+                warn(" * \x1b[34m%s\x1b[m", edition)
 
         return (False, set())
 
-    info("Game version(s) detected:")
-    for version in game_versions:
-        info(" * %s", version)
+    info("Game edition detected:")
+    info(" * %s", game_version[0].edition_name)
+    if game_version[1]:
+        info("Expansions detected:")
+        for expansion in game_version[1]:
+            info(" * %s", expansion)
 
-    output = mount_drs_archives(srcdir, game_versions)
+    output = mount_asset_dirs(srcdir, game_version)
 
-    return (output, game_versions)
+    return output, game_version
 
 
 def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
@@ -159,13 +220,13 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     conversion experience, then passes them to .driver.convert().
     """
 
-    data_dir, game_versions = mount_input(srcdir, prev_source_dir_path)
+    data_dir, game_version = mount_input(srcdir, prev_source_dir_path)
 
     if not data_dir:
         return None
 
     # make versions available easily
-    args.game_versions = game_versions
+    args.game_version = game_version
 
     converted_path = assets / "converted"
     converted_path.mkdirs()

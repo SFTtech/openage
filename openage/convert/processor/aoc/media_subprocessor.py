@@ -4,8 +4,7 @@
 Convert media information to metadata definitions and export
 requests. Subroutine of the main AoC processor.
 """
-from openage.convert.export.media_export_request import MediaExportRequest
-from openage.convert.dataformat.media_types import MediaType
+from openage.convert.export.media_export_request import GraphicsMediaExportRequest
 
 
 class AoCMediaSubprocessor:
@@ -33,11 +32,11 @@ class AoCMediaSubprocessor:
                     continue
 
                 targetdir = graphic_targetdirs[graphic_id]
-                source_filename = graphic.get_member("filename").get_value()
-                target_filename = graphic.get_member("filename").get_value()
+                source_filename = "%s.slp" % str(graphic.get_member("slp_id").get_value())
+                target_filename = "%s.slp" % str(graphic.get_member("slp_id").get_value())
 
-                export_request = MediaExportRequest(MediaType.GRAPHICS, targetdir,
-                                                    source_filename, target_filename)
+                export_request = GraphicsMediaExportRequest(targetdir, source_filename,
+                                                            target_filename)
                 full_data_set.graphics_exports.update({graphic_id: export_request})
 
                 handled_graphic_ids.add(graphic_id)

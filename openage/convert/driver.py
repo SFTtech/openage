@@ -27,6 +27,7 @@ from .processor.aoc.processor import AoCProcessor
 from .slp_converter_pool import SLPConverterPool
 from .stringresource import StringResource
 from .processor.modpack_exporter import ModpackExporter
+from openage.convert.dataformat.media_types import MediaType
 
 
 def get_string_resources(args):
@@ -77,21 +78,16 @@ def get_blendomatic_data(srcdir):
     return Blendomatic(blendomatic_dat)
 
 
-def get_gamespec(srcdir, game_versions, dont_pickle):
+def get_gamespec(srcdir, game_version, dont_pickle):
     """ reads empires.dat and fixes it """
 
-    if GameVersion.age2_hd_ak in game_versions:
-        filename = "empires2_x2_p1.dat"
-    elif has_x1_p1(game_versions):
-        filename = "empires2_x1_p1.dat"
-    else:
-        filename = "empires2_x1.dat"
+    filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
 
-    cache_file = os.path.join(gettempdir(), "{}.pickle".format(filename))
+    cache_file = os.path.join(gettempdir(), "{}.pickle".format(filepath.name))
 
-    with srcdir["data", filename].open('rb') as empiresdat_file:
+    with filepath.open('rb') as empiresdat_file:
         gamespec = load_gamespec(empiresdat_file,
-                                 game_versions,
+                                 game_version,
                                  cache_file,
                                  not dont_pickle)
 
@@ -167,11 +163,11 @@ def convert_metadata(args):
     args.converter = AoCProcessor
 
     yield "empires.dat"
-    gamespec = get_gamespec(args.srcdir, args.game_versions, args.flag("no_pickle_cache"))
+    gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
     modpacks = args.converter.convert(gamespec)
 
     for modpack in modpacks:
-        ModpackExporter.export(modpack, args.targetdir)
+        ModpackExporter.export(modpack, args.srcdir, args.targetdir)
 
     yield "blendomatic.dat"
     blend_data = get_blendomatic_data(args.srcdir)

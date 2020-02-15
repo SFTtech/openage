@@ -370,7 +370,7 @@ class EmpiresDatWrapper(GenieStructure):
     ]
 
 
-def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False):
+def load_gamespec(fileobj, game_version, cachefile_name=None, load_cache=False):
     """
     Helper method that loads the contents of a 'empires.dat' gzipped wrapper
     file.
@@ -410,7 +410,7 @@ def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False)
 
     spam("length of decompressed data: %d", len(file_data))
 
-    wrapper = EmpiresDatWrapper(game_versions=game_versions)
+    wrapper = EmpiresDatWrapper(game_version=game_version)
     _, gamespec = wrapper.read(file_data, 0)
 
     # Remove the list sorrounding the converted data

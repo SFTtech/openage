@@ -120,4 +120,4 @@ class GraphicsMediaExportRequest(MediaExportRequest):
             image = SMX(media_file.read())
 
         texture = Texture(image, palette_table)
-        texture.save(self.targetdir, self.target_filename)
+        texture.save(exportdir.joinpath(self.targetdir), self.target_filename)

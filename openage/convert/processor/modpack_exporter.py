@@ -8,7 +8,7 @@ Export data from a modpack to files.
 class ModpackExporter:
 
     @staticmethod
-    def export(modpack, exportdir):
+    def export(modpack, assetsrc, exportdir):
         """
         Export a modpack to a directory.
 
@@ -34,6 +34,7 @@ class ModpackExporter:
         for media_type in media_files.keys():
             cur_export_requests = media_files[media_type]
 
-            # TODO: Source directory derived from game edition
+            srcdir = assetsrc[media_type.value]
+
             for request in cur_export_requests:
-                request.save(None, exportdir)
+                request.save(srcdir, exportdir, None)

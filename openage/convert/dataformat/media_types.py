@@ -10,10 +10,12 @@ from enum import Enum
 
 class MediaType(Enum):
     """
-    A type of media.
+    A type of media. Stores the mount point as the value.
     """
 
-    GRAPHICS = {"SLP", "SMX", "PNG"}
-    TERRAIN = {"SLP", "DDS"}
-    SOUNDS = {"WAV", "WEM"}
-    INTERFACE = {"SLP", "BMP"}
+    DATFILE   = "data"
+    GAMEDATA  = "gamedata"
+    GRAPHICS  = "graphics"
+    TERRAIN   = "terrain"
+    SOUNDS    = "sounds"
+    INTERFACE = "interface"
