@@ -167,7 +167,7 @@ def convert_metadata(args):
     modpacks = args.converter.convert(gamespec)
 
     for modpack in modpacks:
-        ModpackExporter.export(modpack, args.srcdir, args.targetdir)
+        ModpackExporter.export(modpack, args.srcdir, args.targetdir, args.game_version)
 
     yield "blendomatic.dat"
     blend_data = get_blendomatic_data(args.srcdir)

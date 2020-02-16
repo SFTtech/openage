@@ -16,6 +16,7 @@ class MediaType(Enum):
     DATFILE   = "data"
     GAMEDATA  = "gamedata"
     GRAPHICS  = "graphics"
+    PALETTES  = "palettes"
     TERRAIN   = "terrain"
     SOUNDS    = "sounds"
     INTERFACE = "interface"

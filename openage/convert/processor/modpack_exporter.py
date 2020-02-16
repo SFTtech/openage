@@ -3,12 +3,14 @@
 """
 Export data from a modpack to files.
 """
+from openage.convert.dataformat.media_types import MediaType
+from bin.openage.convert import game_versions
 
 
 class ModpackExporter:
 
     @staticmethod
-    def export(modpack, assetsrc, exportdir):
+    def export(modpack, assetsrc, exportdir, game_version):
         """
         Export a modpack to a directory.
 
@@ -34,7 +36,5 @@ class ModpackExporter:
         for media_type in media_files.keys():
             cur_export_requests = media_files[media_type]
 
-            srcdir = assetsrc[media_type.value]
-
             for request in cur_export_requests:
-                request.save(srcdir, exportdir, None)
+                request.save(assetsrc, modpack_dir, game_version)

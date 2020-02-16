@@ -88,6 +88,7 @@ class GameEdition(enum.Enum):
            {MediaType.DATFILE: ["data/empires2_x1_p1.dat"],
             MediaType.GAMEDATA: ["data/gamedata_x1_p1.drs"],
             MediaType.GRAPHICS: ["data/graphics.drs"],
+            MediaType.PALETTES: ["data/interfac.drs"],
             MediaType.SOUNDS: ["data/sounds.drs", "data/sounds_x1.drs"],
             MediaType.INTERFACE: ["data/interfac.drs"],
             MediaType.TERRAIN: ["data/terrain.drs"]},
