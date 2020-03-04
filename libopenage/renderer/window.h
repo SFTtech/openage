@@ -47,7 +47,7 @@ public:
 	virtual void update() = 0;
 
 	/// Creates a renderer which uses the window's graphics API and targets the window.
-	virtual std::unique_ptr<Renderer> make_renderer() = 0;
+	virtual std::shared_ptr<Renderer> make_renderer() = 0;
 
 protected:
 	Window(size_t width, size_t height);

@@ -272,7 +272,8 @@ void main() {
 		renderer->render(pass1);
 		renderer->render(pass2);
 		window.update();
-		opengl::GlContext::check_error();
+
+		renderer->check_error();
 	}
 }
 

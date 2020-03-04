@@ -38,11 +38,9 @@
  */
 namespace openage {
 
-
-Engine::Engine(const util::Path &root_dir,
-               int32_t fps_limit,
-               bool gl_debug,
-               const char *windowtitle)
+Engine::Engine(mode mode,
+               const util::Path &root_dir,
+               const std::shared_ptr<cvar::CVarManager> &cvar_manager)
 	:
 	OptionNode{"Engine"},
 	running{false},
@@ -52,13 +50,15 @@ Engine::Engine(const util::Path &root_dir,
 	job_manager{SDL_GetCPUCount()},
 	qml_info{this, root_dir["assets"]},
 	screenshot_manager{&this->job_manager},
-	cvar_manager{root_dir["cfg"]},
-	action_manager{&this->input_manager, &this->cvar_manager},
+	cvar_manager{cvar_manager},
+	action_manager{&this->input_manager, this->cvar_manager},
 	audio_manager{&this->job_manager},
 	input_manager{&this->action_manager},
 	profiler{this},
 	gui_link{} {
 
+	// TODO get this from config system (cvar)
+	int32_t fps_limit = 0;
 	if (fps_limit > 0) {
 		this->ns_per_frame = 1e9 / fps_limit;
 	} else {
@@ -93,7 +93,7 @@ Engine::Engine(const util::Path &root_dir,
 
 	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
 	this->window = SDL_CreateWindow(
-		windowtitle,
+		"openage",
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		this->coord.viewport_size.x,
@@ -112,10 +112,12 @@ Engine::Engine(const util::Path &root_dir,
 		throw Error(MSG(err) << "Failed to init PNG support: " << IMG_GetError());
 	}
 
-	if (gl_debug)
+	if (false) {
 		this->glcontext = error::create_debug_context(this->window);
-	else
+	}
+	else {
 		this->glcontext = SDL_GL_CreateContext(this->window);
+	}
 
 	if (this->glcontext == nullptr) {
 		throw Error(MSG(err) << "Failed creating OpenGL context: " << SDL_GetError());
@@ -510,7 +512,7 @@ input::ActionManager &Engine::get_action_manager() {
 }
 
 cvar::CVarManager &Engine::get_cvar_manager() {
-	return this->cvar_manager;
+	return *this->cvar_manager;
 }
 
 input::InputManager &Engine::get_input_manager() {

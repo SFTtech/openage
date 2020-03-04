@@ -38,6 +38,8 @@ public:
 
 	resources::Texture2dData display_into_data() override;
 
+	void check_error() override;
+
 	void render(const std::shared_ptr<RenderPass> &) override;
 
 private:

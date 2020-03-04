@@ -90,14 +90,19 @@ class Engine : public ResizeHandler, public options::OptionNode {
 	friend class GameMain;
 
 public:
+	enum class mode {
+		LEGACY,
+		HEADLESS,
+		FULL,
+	};
+
 	/**
 	 * engine initialization method.
-	 * opens a window and initializes the OpenGL context.
+	 * starts the engine subsystems depending on the requested run mode.
 	 */
-	Engine(const util::Path &root_dir,
-	       int32_t fps_limit,
-	       bool gl_debug,
-	       const char *windowtitle);
+	Engine(mode mode,
+	       const util::Path &root_dir,
+	       const std::shared_ptr<cvar::CVarManager> &cvar_manager);
 
 	/**
 	 * engine copy constructor.
@@ -372,7 +377,7 @@ private:
 	/**
 	 * the engine's cvar manager.
 	 */
-	cvar::CVarManager cvar_manager;
+	std::shared_ptr<cvar::CVarManager> cvar_manager;
 
 	/**
 	 * the engine's action manager.

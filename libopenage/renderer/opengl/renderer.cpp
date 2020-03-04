@@ -94,6 +94,11 @@ void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {
 	}
 }
 
+void GlRenderer::check_error() {
+	// thanks for the global state, opengl!
+	GlContext::check_error();
+}
+
 void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	auto gl_target = std::dynamic_pointer_cast<GlRenderTarget>(pass->get_target());
 	gl_target->bind_write();

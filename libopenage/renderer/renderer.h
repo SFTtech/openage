@@ -138,6 +138,9 @@ public:
 	/// Stores the display framebuffer into a CPU-accessible data object. Essentially, this takes a screenshot.
 	virtual resources::Texture2dData display_into_data() = 0;
 
+	/// Runs error checking code on the current renderer state.
+	virtual void check_error() = 0;
+
 	/// Executes a render pass.
 	/// A renderer implementation might modify the RenderPass because of optimizations.
 	virtual void render(const std::shared_ptr<RenderPass> &) = 0;

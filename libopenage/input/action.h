@@ -36,7 +36,7 @@ using action_t = unsigned int;
 class ActionManager {
 public:
 	ActionManager(InputManager *input_manager,
-	              cvar::CVarManager *cvar_manager);
+	              const std::shared_ptr<cvar::CVarManager> &cvar_manager);
 
 public:
 	action_t get(const std::string &type);
@@ -52,7 +52,7 @@ private:
 	std::unordered_map<action_t, std::string> reverse_map;
 
 	InputManager *const input_manager;
-	cvar::CVarManager *const cvar_manager;
+	const std::shared_ptr<cvar::CVarManager> cvar_manager;
 
 	// the id of the next action that is added via create().
 	action_t next_action_id = 0;

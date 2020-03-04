@@ -3,6 +3,7 @@
 #include "main.h"
 
 #include "console/console.h"
+#include "cvar/cvar.h"
 #include "engine.h"
 #include "game_control.h"
 #include "game_renderer.h"
@@ -22,7 +23,7 @@ namespace openage {
  */
 int run_game(const main_arguments &args) {
 	log::log(MSG(info)
-	         << "launching engine with "
+	         << "launching legacy engine with "
 	         << args.root_path
 	         << " and fps limit "
 	         << args.fps_limit);
@@ -30,10 +31,13 @@ int run_game(const main_arguments &args) {
 	util::Timer timer;
 	timer.start();
 
-	Engine engine{args.root_path, args.fps_limit, args.gl_debug, "openage"};
-
 	// read and apply the configuration files
-	engine.get_cvar_manager().load_all();
+	auto cvar_manager = std::make_shared<cvar::CVarManager>(args.root_path["cfg"]);
+	cvar_manager->load_all();
+
+	// TODO: store args.fps_limit and args.gl_debug as default in the cvar system.
+
+	Engine engine{Engine::mode::LEGACY, args.root_path, cvar_manager};
 
 	// initialize terminal colors
 	std::vector<gamedata::palette_color> termcolors = util::read_csv_file<gamedata::palette_color>(

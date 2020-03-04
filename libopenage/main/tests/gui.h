@@ -39,7 +39,7 @@ public:
 
 private:
 	renderer::opengl::GlWindow window;
-	std::unique_ptr<renderer::Renderer> renderer;
+	std::shared_ptr<renderer::Renderer> renderer;
 
 	std::vector<PongEvent> input_cache;
 	std::deque<std::string> log_msgs;
