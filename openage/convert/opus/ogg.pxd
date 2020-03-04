@@ -21,8 +21,6 @@ cdef extern from "ogg/ogg.h":
         ogg_int64_t granulepos
         ogg_int64_t packetno
 
-
-
     int ogg_stream_packetin(ogg_stream_state *os, ogg_packet *op)
     int ogg_stream_pageout(ogg_stream_state *os, ogg_page *og)
     int ogg_stream_flush(ogg_stream_state *os, ogg_page *og)

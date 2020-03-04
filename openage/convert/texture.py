@@ -210,9 +210,20 @@ class Texture(genie_structure.GenieStructure):
         # without the dot
         ext = ext[1:]
 
-        # generate PNG file
-        with targetdir[filename].open("wb") as imagefile:
-            self.image_data.get_pil_image().save(imagefile, ext)
+        # ASDF: Remove the shoddy PNG file location mess
+        # TODO: The png conversion should return a bytearray and
+        #       let Python handle writing it. To do that libpng
+        #       must write to a buffer that is returned.
+        # ------------------------------------------------------------------------------
+        assetdir = targetdir.fsobj.obj.fsobj.obj.fsobj.path.decode("utf-8") + "/"
+        convertdir = assetdir + targetdir.fsobj.obj.fsobj.obj.parts[0].decode("utf-8") + "/"
+        for part in targetdir.parts:
+            convertdir = convertdir + part.decode("utf-8") + "/"
+        targetstr = convertdir + filename
+
+        from .png import png_create
+        png_create.save(targetstr, self.image_data.data)
+        # ------------------------------------------------------------------------------
 
         if meta_formats:
             # generate formatted texture metadata
