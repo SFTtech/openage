@@ -563,7 +563,7 @@ class UnitObject(GenieStructure):
         (READ_EXPORT, "radius_x", StorageType.FLOAT_MEMBER, "float"),
         (READ_EXPORT, "radius_y", StorageType.FLOAT_MEMBER, "float"),
         (READ_EXPORT, "radius_z", StorageType.FLOAT_MEMBER, "float"),
-        (READ_EXPORT, "train_sound", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "train_sound_id", StorageType.ID_MEMBER, "int16_t"),
     ]
 
     # TODO: Enable conversion for AOE1; replace "damage_sound"
@@ -571,7 +571,7 @@ class UnitObject(GenieStructure):
     # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
     #     data_format.append((READ_EXPORT, "damage_sound", "int16_t"))
     # ===========================================================================
-    data_format.append((READ_EXPORT, "damage_sound", StorageType.ID_MEMBER, "int16_t"))
+    data_format.append((READ_EXPORT, "damage_sound_id", StorageType.ID_MEMBER, "int16_t"))
 
     data_format.extend([
         # unit id to become on death
@@ -858,8 +858,8 @@ class UnitObject(GenieStructure):
             ref_type=DamageGraphic,
             length="damage_graphic_count",
         )),
-        (READ_EXPORT, "sound_selection", StorageType.ID_MEMBER, "int16_t"),
-        (READ_EXPORT, "sound_dying", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "selection_sound_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "dying_sound_id", StorageType.ID_MEMBER, "int16_t"),
         (READ_EXPORT, "old_attack_mode", StorageType.ID_MEMBER, EnumLookupMember(  # obsolete, as it's copied when converting the unit
             raw_type="int8_t",     # things that happen when the unit was selected
             type_name="attack_modes",

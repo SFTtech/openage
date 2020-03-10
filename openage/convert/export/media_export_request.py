@@ -132,3 +132,32 @@ class GraphicsMediaExportRequest(MediaExportRequest):
 
         texture = Texture(image, palette_table)
         texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
+
+
+class SoundMediaExportRequest(MediaExportRequest):
+    """
+    Export requests for ingame graphics such as animations or sprites.
+    """
+
+    def get_type(self):
+        return MediaType.SOUNDS
+
+    def save(self, sourcedir, exportdir, game_version):
+        source_file = sourcedir[self.get_type().value, self.source_filename]
+
+        if source_file.is_file():
+            media_file = source_file.open("rb")
+
+        else:
+            # TODO: Filter files that do not exist out sooner
+            return
+
+        from ..opus.opusenc import encode
+
+        soundata = encode(media_file.read())
+
+        if isinstance(soundata, (str, int)):
+            raise Exception("opusenc failed: {}".format(soundata))
+
+        with exportdir[self.target_filename].open_w() as outfile:
+            outfile.write(soundata)

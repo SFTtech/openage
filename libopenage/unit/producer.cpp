@@ -103,13 +103,13 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	this->decay = unit_data.name.substr(unit_data.name.length() - 2) == "_D";
 
 	// find suitable sounds
-	int creation_sound = this->unit_data.train_sound;
-	int dying_sound = this->unit_data.sound_dying;
+	int creation_sound = this->unit_data.train_sound_id;
+	int dying_sound = this->unit_data.dying_sound_id;
 	if (creation_sound == -1) {
-		creation_sound = this->unit_data.damage_sound;
+		creation_sound = this->unit_data.damage_sound_id;
 	}
 	if (creation_sound == -1) {
-		creation_sound = this->unit_data.sound_selection;
+		creation_sound = this->unit_data.selection_sound_id;
 	}
 	if (dying_sound == -1) {
 		dying_sound = 323; //generic explosion sound
@@ -535,13 +535,13 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	this->icon = this->unit_data.icon_id;
 
 	// find suitable sounds
-	int creation_sound = this->unit_data.train_sound;
-	int dying_sound = this->unit_data.sound_dying;
+	int creation_sound = this->unit_data.train_sound_id;
+	int dying_sound = this->unit_data.dying_sound_id;
 	if (creation_sound == -1) {
-		creation_sound = this->unit_data.damage_sound;
+		creation_sound = this->unit_data.damage_sound_id;
 	}
 	if (creation_sound == -1) {
-		creation_sound = this->unit_data.sound_selection;
+		creation_sound = this->unit_data.selection_sound_id;
 	}
 	if (dying_sound == -1) {
 		dying_sound = 323; //generic explosion sound
