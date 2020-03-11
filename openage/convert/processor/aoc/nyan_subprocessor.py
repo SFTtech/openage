@@ -6,11 +6,10 @@ main AoC processor.
 """
 from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, CLASS_ID_LOOKUPS
 from ...dataformat.converter_object import RawAPIObject
-from ...dataformat.aoc.combined_sprite import CombinedSprite
-from ...dataformat.aoc.expected_pointer import ExpectedPointer
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
-from ....nyan.nyan_structs import MemberSpecialValue
 from .ability_subprocessor import AoCAbilitySubprocessor
+from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
+from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS
 
 
 class AoCNyanSubprocessor:
@@ -129,10 +128,14 @@ class AoCNyanSubprocessor:
         # =======================================================================
         abilities_set = []
 
+        if len(unit_line.creates) > 0:
+            abilities_set.append(AoCAbilitySubprocessor.create_ability(unit_line))
+
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.los_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.move_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.named_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.turn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(unit_line))
@@ -159,12 +162,103 @@ class AoCNyanSubprocessor:
         raw_api_object.add_raw_member("variants", variants_set,
                                       "engine.aux.game_entity.GameEntity")
 
+        # =======================================================================
+        # Misc (Objects that are not used by the unit line itself, but use its values)
+        # =======================================================================
+        if unit_line.is_creatable():
+            AoCAuxiliarySubprocessor.get_creatable_game_entity(unit_line)
+
     @staticmethod
     def _building_line_to_game_entity(building_line):
         """
         Creates raw API objects for a building line.
 
-        :param unit_line: Unit line that gets converted to a game entity.
-        :type unit_line: ..dataformat.converter_object.ConverterObjectGroup
+        :param building_line: Building line that gets converted to a game entity.
+        :type building_line: ..dataformat.converter_object.ConverterObjectGroup
         """
-        pass
+        current_building = building_line.line[0]
+        current_building_id = building_line.get_head_unit_id()
+        dataset = building_line.data
+
+        # Start with the generic GameEntity
+        game_entity_name = BUILDING_LINE_LOOKUPS[current_building_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (BUILDING_LINE_LOOKUPS[current_building_id][1])
+        raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(BUILDING_LINE_LOOKUPS[current_building_id][1])
+        building_line.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # TODO: Game Entity Types
+        # ------------------
+        # we give a unit two types
+        #    - aux.game_entity_type.types.Unit (if unit_type >= 70)
+        #    - aux.game_entity_type.types.<Class> (depending on the class)
+        # =======================================================================
+        # Create or use existing auxiliary types
+        types_set = []
+        unit_type = current_building.get_member("unit_type").get_value()
+
+        if unit_type >= 80:
+            type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+            types_set.append(type_obj)
+
+        unit_class = current_building.get_member("unit_class").get_value()
+        class_name = CLASS_ID_LOOKUPS[unit_class]
+        class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+
+        # Create the game entity type on-the-fly if it not already exists
+        if class_obj_name not in dataset.pregen_nyan_objects.keys():
+            type_location = "data/aux/game_entity_type/"
+            new_game_entity_type = RawAPIObject(class_obj_name, class_name,
+                                                dataset.nyan_api_objects, type_location)
+            new_game_entity_type.set_filename("types")
+            new_game_entity_type.add_raw_parent("engine.aux.game_entity_type.GameEntityType")
+            new_game_entity_type.create_nyan_object()
+            dataset.pregen_nyan_objects.update({class_obj_name: new_game_entity_type})
+
+        type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
+        types_set.append(type_obj)
+
+        raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # TODO: Abilities
+        # =======================================================================
+        abilities_set = []
+
+        if len(building_line.creates) > 0:
+            abilities_set.append(AoCAbilitySubprocessor.create_ability(building_line))
+
+        abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.los_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.move_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.named_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.stop_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.turn_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.visibility_ability(building_line))
+        # =======================================================================
+        # TODO: Bunch of other abilities
+        #       Death, Selectable, Hitbox, Despawn, ApplyEffect, Resistance, ...
+        # =======================================================================
+        raw_api_object.add_raw_member("abilities", abilities_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # TODO: Modifiers
+        # =======================================================================
+        raw_api_object.add_raw_member("modifiers", [], "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # TODO: Variants
+        # =======================================================================
+        raw_api_object.add_raw_member("variants", [], "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Misc (Objects that are not used by the unit line itself, but use its values)
+        # =======================================================================
+        if building_line.is_creatable():
+            AoCAuxiliarySubprocessor.get_creatable_game_entity(building_line)
