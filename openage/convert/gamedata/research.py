@@ -43,7 +43,7 @@ class Tech(GenieStructure):
     #     ])
     # ===========================================================================
     data_format.extend([
-        (READ, "civilisation_id", StorageType.ID_MEMBER, "int16_t"),           # id of the civ that gets this technology
+        (READ, "civilization_id", StorageType.ID_MEMBER, "int16_t"),           # id of the civ that gets this technology
         (READ, "full_tech_mode", StorageType.BOOLEAN_MEMBER, "int16_t"),       # 1: research is available when the full tech tree is activated on game start, 0: not
     ])
 

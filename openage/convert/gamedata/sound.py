@@ -38,7 +38,7 @@ class SoundItem(GenieStructure):
     #     ])
     # ===========================================================================
     data_format.extend([
-        (READ_EXPORT, "civilisation_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "civilization_id", StorageType.ID_MEMBER, "int16_t"),
         (READ, "icon_set", StorageType.ID_MEMBER, "int16_t"),
     ])
 

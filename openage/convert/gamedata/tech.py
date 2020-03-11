@@ -289,7 +289,7 @@ class BuildingConnection(GenieStructure):
         # 5: >=1 connections, 6: no connections
         (READ_EXPORT, "line_mode", StorageType.ID_MEMBER, "int32_t"),
         # current building is unlocked by this research id, -1=no unlock needed
-        (READ, "enabled_by_research_id", StorageType.ID_MEMBER, "int32_t"),
+        (READ, "enabling_research", StorageType.ID_MEMBER, "int32_t"),
     ])
 
 
