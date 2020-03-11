@@ -23,5 +23,21 @@ class GenieSound(ConverterObject):
 
         self.data = full_data_set
 
+    def get_sounds_for_civ(self, civ_id):
+        """
+        Return all sound ids for sounds tied to a specific civ.
+        """
+        sound_ids = []
+        sound_items = self.get_member("sound_items").get_value()
+        for item in sound_items:
+            item_civ_id = item.get_value()["civilization_id"].get_value()
+            if not item_civ_id == civ_id:
+                continue
+
+            sound_id = item.get_value()["resource_id"].get_value()
+            sound_ids.append(sound_id)
+
+        return sound_ids
+
     def __repr__(self):
         return "GenieSound<%s>" % (self.get_id())
