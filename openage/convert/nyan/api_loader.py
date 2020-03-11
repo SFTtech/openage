@@ -556,10 +556,17 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal.type.AttributeInterval
+    # engine.aux.boolean.literal.type.AttributeAboveValue
     parents = [api_objects["engine.aux.boolean.Literal"]]
-    nyan_object = NyanObject("AttributeInterval", parents)
-    fqon = "engine.aux.boolean.literal.type.AttributeInterval"
+    nyan_object = NyanObject("AttributeAboveValue", parents)
+    fqon = "engine.aux.boolean.literal.type.AttributeAboveValue"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.boolean.literal.type.AttributeBelowValue
+    parents = [api_objects["engine.aux.boolean.Literal"]]
+    nyan_object = NyanObject("AttributeBelowValue", parents)
+    fqon = "engine.aux.boolean.literal.type.AttributeBelowValue"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2800,7 +2807,7 @@ def _insert_members(api_objects):
     member = NyanMember("clause_requirement", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.boolean.Literal"]
-    member = NyanMember("literals", MemberType.ORDEREDSET, None, None, 0, set_type, False)
+    member = NyanMember("literals", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
     member = NyanMember("only_once", MemberType.BOOLEAN, None, None, 0, None, False)
     api_object.add_member(member)
@@ -2808,8 +2815,35 @@ def _insert_members(api_objects):
     # engine.aux.boolean.Literal
     api_object = api_objects["engine.aux.boolean.Literal"]
 
+    member = NyanMember("mode", MemberType.BOOLEAN, None, None, 0, None, False)
+    api_object.add_member(member)
     ref_object = api_objects["engine.aux.boolean.literal_scope.LiteralScope"]
     member = NyanMember("scope", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.boolean.literal_scope.LiteralScope
+    api_object = api_objects["engine.aux.boolean.literal_scope.LiteralScope"]
+
+    set_type = api_objects["engine.aux.diplomatic_stance.DiplomaticStance"]
+    member = NyanMember("diplomatic_stances", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.boolean.literal.type.AttributeAboveValue
+    api_object = api_objects["engine.aux.boolean.literal.type.AttributeAboveValue"]
+
+    ref_object = api_objects["engine.aux.attribute.Attribute"]
+    member = NyanMember("attribute", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("threshold", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.boolean.literal.type.AttributeBelowValue
+    api_object = api_objects["engine.aux.boolean.literal.type.AttributeBelowValue"]
+
+    ref_object = api_objects["engine.aux.attribute.Attribute"]
+    member = NyanMember("attribute", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("threshold", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.cheat.Cheat
