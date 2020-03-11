@@ -6,39 +6,101 @@ nyan subprocessor.
 """
 from ...dataformat.converter_object import RawAPIObject
 from ...dataformat.aoc.expected_pointer import ExpectedPointer
-from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS
+from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.aoc.combined_sprite import CombinedSprite
 from openage.nyan.nyan_structs import MemberSpecialValue
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 
 
 class AoCAbilitySubprocessor:
 
     @staticmethod
-    def idle_ability(unit_line):
+    def create_ability(line):
         """
-        Adds the Idle ability to a unit line.
+        Adds the Idle ability to a line.
 
-        :param unit_line: Unit line that gets the ability.
-        :type unit_line: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(unit_line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = unit_line.variants[0].line[0]
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+            creatable_lookup_dict = UNIT_LINE_LOOKUPS
 
         else:
-            current_unit = unit_line.line[0]
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+            creatable_lookup_dict = BUILDING_LINE_LOOKUPS
 
-        current_unit_id = unit_line.get_head_unit_id()
-        dataset = unit_line.data
-        game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+        obj_name = "%s.Create" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Create", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Create")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        creatables_set = []
+
+        for creatable in line.creates:
+            if creatable.is_unique():
+                # Skip this because unique units are handled by civs
+                continue
+
+            # CreatableGameEntity objects are created for each unit/building
+            # line individually to avoid duplicates. We just point to the
+            # raw API objects here.
+            creatable_id = creatable.get_head_unit_id()
+            creatable_name = creatable_lookup_dict[creatable_id][0]
+
+            raw_api_object_ref = "%s.CreatableGameEntity" % creatable_name
+            creatable_expected_pointer = ExpectedPointer(creatable,
+                                                         raw_api_object_ref)
+            creatables_set.append(creatable_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("creatables", creatables_set,
+                                              "engine.ability.type.Create")
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def idle_ability(line):
+        """
+        Adds the Idle ability to a line.
+
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
 
         obj_name = "%s.Idle" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(obj_name, "Idle", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Idle")
-        ability_location = ExpectedPointer(unit_line, game_entity_name)
+        ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         ability_animation_id = current_unit.get_member("idle_graphic0").get_value()
@@ -54,11 +116,11 @@ class AoCAbilitySubprocessor:
             animation_raw_api_object = RawAPIObject(obj_name, "IdleAnimation",
                                                     dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(unit_line, "%s.Idle" % (game_entity_name))
+            animation_location = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
             animation_raw_api_object.set_location(animation_location)
 
             ability_sprite = CombinedSprite(ability_animation_id,
-                                            "idle_%s" % (UNIT_LINE_LOOKUPS[current_unit_id][1]),
+                                            "idle_%s" % (name_lookup_dict[current_unit_id][1]),
                                             dataset)
             dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
             ability_sprite.add_reference(animation_raw_api_object)
@@ -66,45 +128,52 @@ class AoCAbilitySubprocessor:
             animation_raw_api_object.add_raw_member("sprite", ability_sprite,
                                                     "engine.aux.graphics.Animation")
 
-            animation_expected_pointer = ExpectedPointer(unit_line, obj_name)
+            animation_expected_pointer = ExpectedPointer(line, obj_name)
             animations_set.append(animation_expected_pointer)
 
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
-            unit_line.add_raw_api_object(animation_raw_api_object)
+            line.add_raw_api_object(animation_raw_api_object)
 
-        unit_line.add_raw_api_object(ability_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(unit_line, ability_raw_api_object.get_id())
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
 
         return ability_expected_pointer
 
     @staticmethod
-    def live_ability(unit_line):
+    def live_ability(line):
         """
-        Adds the Live ability to a unit line.
+        Adds the Live ability to a line.
 
-        :param unit_line: Unit line that gets the ability.
-        :type unit_line: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(unit_line, GenieVillagerGroup):
+        if isinstance(line, GenieVillagerGroup):
             # TODO: Requires special treatment?
-            current_unit = unit_line.variants[0].line[0]
+            current_unit = line.variants[0].line[0]
 
         else:
-            current_unit = unit_line.line[0]
+            current_unit = line.line[0]
 
-        current_unit_id = unit_line.get_head_unit_id()
-        dataset = unit_line.data
-        game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
 
         obj_name = "%s.Live" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(obj_name, "Live", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Live")
-        ability_location = ExpectedPointer(unit_line, game_entity_name)
+        ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         attributes_set = []
@@ -112,7 +181,7 @@ class AoCAbilitySubprocessor:
         obj_name = "%s.Live.Health" % (game_entity_name)
         health_raw_api_object = RawAPIObject(obj_name, "Health", dataset.nyan_api_objects)
         health_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeSetting")
-        health_location = ExpectedPointer(unit_line, "%s.Live" % (game_entity_name))
+        health_location = ExpectedPointer(line, "%s.Live" % (game_entity_name))
         health_raw_api_object.set_location(health_location)
 
         attribute_value = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -130,43 +199,50 @@ class AoCAbilitySubprocessor:
         health_raw_api_object.add_raw_member("starting_value", max_hp_value,
                                              "engine.aux.attribute.AttributeSetting")
 
-        health_expected_pointer = ExpectedPointer(unit_line, health_raw_api_object.get_id())
+        health_expected_pointer = ExpectedPointer(line, health_raw_api_object.get_id())
         attributes_set.append(health_expected_pointer)
         ability_raw_api_object.add_raw_member("attributes", attributes_set,
                                               "engine.ability.type.Live")
 
-        unit_line.add_raw_api_object(health_raw_api_object)
-        unit_line.add_raw_api_object(ability_raw_api_object)
+        line.add_raw_api_object(health_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(unit_line, ability_raw_api_object.get_id())
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
 
         return ability_expected_pointer
 
     @staticmethod
-    def los_ability(unit_line):
+    def los_ability(line):
         """
-        Adds the LineOfSight ability to a unit line.
+        Adds the LineOfSight ability to a line.
 
-        :param unit_line: Unit line that gets the ability.
-        :type unit_line: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(unit_line, GenieVillagerGroup):
+        if isinstance(line, GenieVillagerGroup):
             # TODO: Requires special treatment?
-            current_unit = unit_line.variants[0].line[0]
+            current_unit = line.variants[0].line[0]
 
         else:
-            current_unit = unit_line.line[0]
+            current_unit = line.line[0]
 
-        current_unit_id = unit_line.get_head_unit_id()
-        dataset = unit_line.data
-        game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
 
         obj_name = "%s.LineOfSight" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(obj_name, "LineOfSight", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.LineOfSight")
-        ability_location = ExpectedPointer(unit_line, game_entity_name)
+        ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Line of sight
@@ -180,37 +256,44 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                               "engine.ability.specialization.DiplomaticAbility")
 
-        unit_line.add_raw_api_object(ability_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(unit_line, ability_raw_api_object.get_id())
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
 
         return ability_expected_pointer
 
     @staticmethod
-    def move_ability(unit_line):
+    def move_ability(line):
         """
-        Adds the Move ability to a unit line.
+        Adds the Move ability to a line.
 
-        :param unit_line: Unit line that gets the ability.
-        :type unit_line: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(unit_line, GenieVillagerGroup):
+        if isinstance(line, GenieVillagerGroup):
             # TODO: Requires special treatment?
-            current_unit = unit_line.variants[0].line[0]
+            current_unit = line.variants[0].line[0]
 
         else:
-            current_unit = unit_line.line[0]
+            current_unit = line.line[0]
 
-        current_unit_id = unit_line.get_head_unit_id()
-        dataset = unit_line.data
-        game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
 
         obj_name = "%s.Move" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(obj_name, "Move", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
-        ability_location = ExpectedPointer(unit_line, game_entity_name)
+        ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Animation
@@ -227,11 +310,11 @@ class AoCAbilitySubprocessor:
             animation_raw_api_object = RawAPIObject(obj_name, "MoveAnimation",
                                                     dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(unit_line, "%s.Move" % (game_entity_name))
+            animation_location = ExpectedPointer(line, "%s.Move" % (game_entity_name))
             animation_raw_api_object.set_location(animation_location)
 
             ability_sprite = CombinedSprite(ability_animation_id,
-                                            "move_%s" % (UNIT_LINE_LOOKUPS[current_unit_id][1]),
+                                            "move_%s" % (name_lookup_dict[current_unit_id][1]),
                                             dataset)
             dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
             ability_sprite.add_reference(animation_raw_api_object)
@@ -239,13 +322,13 @@ class AoCAbilitySubprocessor:
             animation_raw_api_object.add_raw_member("sprite", ability_sprite,
                                                     "engine.aux.graphics.Animation")
 
-            animation_expected_pointer = ExpectedPointer(unit_line, obj_name)
+            animation_expected_pointer = ExpectedPointer(line, obj_name)
             animations_set.append(animation_expected_pointer)
 
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
-            unit_line.add_raw_api_object(animation_raw_api_object)
+            line.add_raw_api_object(animation_raw_api_object)
 
         # Speed
         speed = current_unit.get_member("speed").get_value()
@@ -259,15 +342,15 @@ class AoCAbilitySubprocessor:
         obj_name = "%s.Move.Follow" % (game_entity_name)
         follow_raw_api_object = RawAPIObject(obj_name, "Follow", dataset.nyan_api_objects)
         follow_raw_api_object.add_raw_parent("engine.aux.move_mode.type.Follow")
-        follow_location = ExpectedPointer(unit_line, "%s.Move" % (game_entity_name))
+        follow_location = ExpectedPointer(line, "%s.Move" % (game_entity_name))
         follow_raw_api_object.set_location(follow_location)
 
         follow_range = current_unit.get_member("line_of_sight").get_value() - 1
         follow_raw_api_object.add_raw_member("range", follow_range,
                                              "engine.aux.move_mode.type.Follow")
 
-        unit_line.add_raw_api_object(follow_raw_api_object)
-        follow_expected_pointer = ExpectedPointer(unit_line, follow_raw_api_object.get_id())
+        line.add_raw_api_object(follow_raw_api_object)
+        follow_expected_pointer = ExpectedPointer(line, follow_raw_api_object.get_id())
         move_modes.append(follow_expected_pointer)
 
         ability_raw_api_object.add_raw_member("modes", move_modes, "engine.ability.type.Move")
@@ -278,30 +361,134 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                               "engine.ability.specialization.DiplomaticAbility")
 
-        unit_line.add_raw_api_object(ability_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(unit_line, ability_raw_api_object.get_id())
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
 
         return ability_expected_pointer
 
     @staticmethod
-    def stop_ability(unit_line):
+    def named_ability(line):
         """
-        Adds the Stop ability to a unit line.
+        Adds the Named ability to a line.
 
-        :param unit_line: Unit line that gets the ability.
-        :type unit_line: ...dataformat.converter_object.ConverterObjectGroup
+        TODO: Lookup names from language.dll
+
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        current_unit_id = unit_line.get_head_unit_id()
-        dataset = unit_line.data
-        game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Named" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Named", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Named")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Name
+        name_ref = "%s.Named.%sName" % (game_entity_name, game_entity_name)
+        name_raw_api_object = RawAPIObject(name_ref,
+                                           "%sName"  % (game_entity_name),
+                                           dataset.nyan_api_objects)
+        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_location = ExpectedPointer(line, obj_name)
+        name_raw_api_object.set_location(name_location)
+
+        name_raw_api_object.add_raw_member("translations",
+                                           [],
+                                           "engine.aux.translated.type.TranslatedString")
+
+        name_expected_pointer = ExpectedPointer(line, name_ref)
+        ability_raw_api_object.add_raw_member("name", name_expected_pointer, "engine.ability.type.Named")
+        line.add_raw_api_object(name_raw_api_object)
+
+        # Description
+        description_ref = "%s.Named.%sDescription" % (game_entity_name, game_entity_name)
+        description_raw_api_object = RawAPIObject(description_ref,
+                                                  "%sDescription"  % (game_entity_name),
+                                                  dataset.nyan_api_objects)
+        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_location = ExpectedPointer(line, obj_name)
+        description_raw_api_object.set_location(description_location)
+
+        description_raw_api_object.add_raw_member("translations",
+                                                  [],
+                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+
+        description_expected_pointer = ExpectedPointer(line, description_ref)
+        ability_raw_api_object.add_raw_member("description",
+                                              description_expected_pointer,
+                                              "engine.ability.type.Named")
+        line.add_raw_api_object(description_raw_api_object)
+
+        # Long description
+        long_description_ref = "%s.Named.%sLongDescription" % (game_entity_name, game_entity_name)
+        long_description_raw_api_object = RawAPIObject(long_description_ref,
+                                                       "%sLongDescription"  % (game_entity_name),
+                                                       dataset.nyan_api_objects)
+        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_location = ExpectedPointer(line, obj_name)
+        long_description_raw_api_object.set_location(long_description_location)
+
+        long_description_raw_api_object.add_raw_member("translations",
+                                                       [],
+                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+
+        long_description_expected_pointer = ExpectedPointer(line, long_description_ref)
+        ability_raw_api_object.add_raw_member("long_description",
+                                              long_description_expected_pointer,
+                                              "engine.ability.type.Named")
+        line.add_raw_api_object(long_description_raw_api_object)
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def stop_ability(line):
+        """
+        Adds the Stop ability to a line.
+
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
 
         obj_name = "%s.Stop" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(obj_name, "Stop", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Stop")
-        ability_location = ExpectedPointer(unit_line, game_entity_name)
+        ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Diplomacy settings
@@ -310,37 +497,44 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                               "engine.ability.specialization.DiplomaticAbility")
 
-        unit_line.add_raw_api_object(ability_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(unit_line, ability_raw_api_object.get_id())
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
 
         return ability_expected_pointer
 
     @staticmethod
-    def turn_ability(unit_line):
+    def turn_ability(line):
         """
-        Adds the Turn ability to a unit line.
+        Adds the Turn ability to a line.
 
-        :param unit_line: Unit line that gets the ability.
-        :type unit_line: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(unit_line, GenieVillagerGroup):
+        if isinstance(line, GenieVillagerGroup):
             # TODO: Requires special treatment?
-            current_unit = unit_line.variants[0].line[0]
+            current_unit = line.variants[0].line[0]
 
         else:
-            current_unit = unit_line.line[0]
+            current_unit = line.line[0]
 
-        current_unit_id = unit_line.get_head_unit_id()
-        dataset = unit_line.data
-        game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
 
         obj_name = "%s.Turn" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(obj_name, "Turn", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Turn")
-        ability_location = ExpectedPointer(unit_line, game_entity_name)
+        ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Speed
@@ -362,38 +556,45 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                               "engine.ability.specialization.DiplomaticAbility")
 
-        unit_line.add_raw_api_object(ability_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(unit_line, ability_raw_api_object.get_id())
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
 
         return ability_expected_pointer
 
     @staticmethod
-    def visibility_ability(unit_line):
+    def visibility_ability(line):
         """
-        Adds the Visibility ability to a unit line.
+        Adds the Visibility ability to a line.
 
-        :param unit_line: Unit line that gets the ability.
-        :type unit_line: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        current_unit_id = unit_line.get_head_unit_id()
-        dataset = unit_line.data
-        game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
 
         obj_name = "%s.Visibility" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(obj_name, "Visibility", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Visibility")
-        ability_location = ExpectedPointer(unit_line, game_entity_name)
+        ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Units are not visible in fog
         ability_raw_api_object.add_raw_member("visible_in_fog", False,
                                               "engine.ability.type.Visibility")
 
-        unit_line.add_raw_api_object(ability_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(unit_line, ability_raw_api_object.get_id())
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
 
         return ability_expected_pointer
