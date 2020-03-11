@@ -74,12 +74,14 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         if not self.contains_creatable(building_line.get_id()):
             self.creates.append(building_line)
 
-    def add_unit(self, genie_unit, after=None):
+    def add_unit(self, genie_unit, position=-1, after=None):
         """
         Adds a unit to the line.
 
         :param genie_unit: A GenieUnit object that is part of this
                            unit line.
+        :param position: Puts the unit at an specific position in the line.
+                         If this is -1, the unit is placed at the end 
         :param after: ID of a unit after which the new unit is
                       placed in the line. If a unit with this obj_id
                       is not present, the unit is appended at the end
@@ -91,7 +93,14 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         if not self.contains_unit(unit_id):
             insert_index = len(self.line)
 
-            if after:
+            if position > -1:
+                insert_index = position
+
+                for unit in self.unit_line_positions.keys():
+                    if self.unit_line_positions[unit] >= insert_index:
+                        self.unit_line_positions[unit] += 1
+
+            elif after:
                 if self.contains_unit(after):
                     insert_index = self.unit_line_positions[after] + 1
 
@@ -138,7 +147,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         enabling_research = self.data.genie_techs[enabling_research_id]
         enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
 
-        # Enabling tech has no specific civ -> mot unique
+        # Enabling tech has no specific civ -> not unique
         if enabling_civ_id == -1:
             return False
 
@@ -231,6 +240,10 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         # The line is stored as an ordered list of GenieUnitObjects.
         self.line = []
 
+        # This dict stores unit ids and their repective position in the
+        # unit line for quick referencing and searching
+        self.unit_line_positions = {}
+
         # List of GenieUnitLine objects
         self.creates = []
 
@@ -240,12 +253,14 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         # Reference to everything else in the gamedata
         self.data = full_data_set
 
-    def add_unit(self, genie_unit, after=None):
+    def add_unit(self, genie_unit, position=-1, after=None):
         """
-        Adds a unit to the line.
+        Adds a building to the line.
 
         :param genie_unit: A GenieUnit object that is part of this
                            building line.
+        :param position: Puts the building at an specific position in the line.
+                         If this is -1, the building. is placed at the end.
         :param after: ID of a unit after which the new unit is
                       placed in the line. If a unit with this obj_id
                       is not present, the unit is appended at the end
@@ -255,17 +270,25 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
 
         # Only add building if it is not already in the list
         if not self.contains_unit(unit_id):
-            if after:
-                for unit in self.line:
-                    if after == unit.get_id():
-                        self.line.insert(self.line.index(unit) + 1, genie_unit)
-                        break
+            insert_index = len(self.line)
 
-                else:
-                    self.line.append(genie_unit)
+            if position > -1:
+                insert_index = position
 
-            else:
-                self.line.append(genie_unit)
+                for unit in self.unit_line_positions.keys():
+                    if self.unit_line_positions[unit] >= insert_index:
+                        self.unit_line_positions[unit] += 1
+
+            elif after:
+                if self.contains_unit(after):
+                    insert_index = self.unit_line_positions[after] + 1
+
+                    for unit in self.unit_line_positions.keys():
+                        if self.unit_line_positions[unit] >= insert_index:
+                            self.unit_line_positions[unit] += 1
+
+            self.unit_line_positions.update({genie_unit.get_id(): insert_index})
+            self.line.insert(insert_index, genie_unit)
 
     def add_creatable(self, unit_line):
         """
@@ -326,6 +349,40 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
             return False
 
         return True
+
+    def is_unique(self):
+        """
+        Buildings are unique if they belong to a specific civ.
+
+        :returns: True if the building is tied to one specific civ.
+        """
+        # Get the enabling research obj_id for the first unit in the line
+        head_building = self.line[0]
+        head_building_id = head_building.get_member("id0").get_value()
+        head_building_connection = self.data.building_connections[head_building_id]
+        enabling_research_id = head_building_connection.get_member("enabling_research").get_value()
+
+        # BUilding does not need to be enabled -> not unique
+        if enabling_research_id == -1:
+            return False
+
+        # Get enabling civ
+        enabling_research = self.data.genie_techs[enabling_research_id]
+        enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
+
+        # Enabling tech has no specific civ -> not unique
+        if enabling_civ_id == -1:
+            return False
+
+        # Values other than -1 are civ ids -> building must be unique
+        return True
+
+    def get_head_unit_id(self):
+        """
+        Return the obj_id of the first building in the line.
+        """
+        head_building = self.line[0]
+        return head_building.get_member("id0").get_value()
 
     def get_train_location(self):
         """
@@ -555,6 +612,15 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
 
         self.task_group_id = task_group_id
 
+    def add_unit(self, genie_unit, position=-1, after=None):
+        # Force the idle/combat units at the beginning of the line
+        if genie_unit.get_member("id0").get_value() in (GenieUnitTaskGroup.male_line_id,
+                                                        GenieUnitTaskGroup.female_line_id):
+            super().add_unit(genie_unit, 0, after)
+
+        else:
+            super().add_unit(genie_unit, position, after)
+
     def is_creatable(self):
         """
         Task groups are creatable if any unit in the group is creatable.
@@ -637,6 +703,10 @@ class GenieVillagerGroup(GenieUnitLineGroup):
             if variant.is_creatable():
                 return True
 
+        return False
+
+    def is_unique(self):
+        # TODO: More checks here?
         return False
 
     def get_head_unit_id(self):

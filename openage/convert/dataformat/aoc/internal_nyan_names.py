@@ -72,6 +72,7 @@ BUILDING_LINE_LOOKUPS = {
     101: ("Stable", "stable"),
     103: ("Blacksmith", "blacksmith"),
     104: ("Monastery", "monastery"),
+    109: ("TownCenter", "town_center"),
     117: ("StoneWall", "stone_wall"),
     199: ("FishingTrap", "fishing_trap"),
     209: ("University", "university"),
