@@ -11,6 +11,7 @@ from ...nyan.nyan_structs import NyanObject, MemberOperator
 from .aoc.expected_pointer import ExpectedPointer
 from .aoc.combined_sprite import CombinedSprite
 from openage.convert.dataformat.value_members import NoDiffMember
+from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 
 
 class ConverterObject:
@@ -177,7 +178,7 @@ class ConverterObjectGroup:
             raw_api_object.create_nyan_members()
 
             if not raw_api_object.is_ready():
-                raise Exception("%s: Raw API object is not ready for export."
+                raise Exception("%s: object is not ready for export. "
                                 "Member or object not initialized." % (raw_api_object))
 
     def get_raw_api_object(self, obj_id):
@@ -305,6 +306,9 @@ class RawAPIObject:
             elif isinstance(member_value, CombinedSprite):
                 member_value = member_value.get_relative_sprite_location()
 
+            elif isinstance(member_value, CombinedSound):
+                member_value = member_value.get_relative_file_location()
+
             elif isinstance(member_value, list):
                 # Resolve elements in the list, if it's not empty
                 if member_value:
@@ -314,8 +318,11 @@ class RawAPIObject:
                         if isinstance(temp_value, ExpectedPointer):
                             temp_values.append(temp_value.resolve())
 
-                        elif isinstance(member_value[0], CombinedSprite):
+                        elif isinstance(temp_value, CombinedSprite):
                             temp_values.append(temp_value.get_relative_sprite_location())
+
+                        elif isinstance(temp_value, CombinedSound):
+                            temp_values.append(temp_value.get_relative_file_location())
 
                         else:
                             temp_values.append(temp_value)
@@ -327,7 +334,7 @@ class RawAPIObject:
                 # should have no effect on balance, hopefully
                 member_value = round(member_value, ndigits=6)
 
-            nyan_member_name = "%s.%s" % (member_origin.get_name(), member_name)
+            nyan_member_name = member_name
             nyan_member = self.nyan_object.get_member_by_name(nyan_member_name, member_origin)
             nyan_member.set_value(member_value, MemberOperator.ASSIGN)
 

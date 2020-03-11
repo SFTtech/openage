@@ -221,6 +221,9 @@ class Texture(genie_structure.GenieStructure):
             convertdir = convertdir + part.decode("utf-8") + "/"
         targetstr = convertdir + filename
 
+        with targetdir[filename].open("wb") as imagefile:
+            pass
+
         from .png import png_create
         png_create.save(targetstr, self.image_data.data)
         # ------------------------------------------------------------------------------
