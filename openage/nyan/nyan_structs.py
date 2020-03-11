@@ -168,12 +168,14 @@ class NyanObject:
                     if inherited_member.get_name() == member_name:
                         return inherited_member
 
+            raise Exception("%s has no member '%s' with origin '%s'"
+                            % (self, member_name, origin))
         else:
             for member in self._members:
                 if member.get_name() == member_name:
                     return member
 
-        return None
+        raise Exception("%s has no member '%s'" % (self, member_name))
 
     def get_name(self):
         """
@@ -605,7 +607,7 @@ class NyanMember:
 
         if isinstance(self._member_type, NyanObject):
             if not (self.value is self._member_type or
-                    self.value.has_ancestor((self._member_type))):
+                    self.value.has_ancestor(self._member_type)):
                 raise Exception(("%s: 'value' with type NyanObject must "
                                  "have their member type as ancestor")
                                 % (self.__repr__()))
@@ -887,7 +889,7 @@ class InheritedNyanMember(NyanMember):
         super().__init__(name, member_type, value, operator,
                          override_depth, set_type, optional)
 
-    def get_name(self):
+    def get_name_with_origin(self):
         """
         Returns the name of the member in <origin>.<name> form.
         """
@@ -929,6 +931,14 @@ class InheritedNyanMember(NyanMember):
         Returns the string representation of the member.
         """
         return self.dump_short()
+
+    def dump_short(self):
+        """
+        Returns the nyan string representation of the member, but
+        without the type definition.
+        """
+        return "%s %s%s %s" % (self.get_name_with_origin(), "@" * self._override_depth,
+                               self._operator.value, self._get_str_representation())
 
     def _sanity_check(self):
         """
