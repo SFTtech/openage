@@ -56,6 +56,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.combined_sprites = {}          # Animation or Terrain graphics
         self.combined_sounds = {}
         self.graphics_exports = {}
+        self.sound_exports = {}
 
     def __repr__(self):
         return "GenieObjectContainer"

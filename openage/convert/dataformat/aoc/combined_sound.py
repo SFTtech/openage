@@ -51,6 +51,18 @@ class CombinedSound:
         """
         return self.filename
 
+    def get_file_id(self):
+        """
+        Returns the ID of the sound file in the game folder.
+        """
+        return self.file_id
+
+    def get_id(self):
+        """
+        Returns the ID of the sound object in the .dat.
+        """
+        return self.head_sound_id
+
     def get_relative_file_location(self):
         """
         Return the sound file location relative to where the file

@@ -89,3 +89,6 @@ class AoCModpackSubprocessor:
         """
         for graphic_export in full_data_set.graphics_exports.values():
             modpack.add_media_export(graphic_export)
+
+        for sound_export in full_data_set.sound_exports.values():
+            modpack.add_media_export(sound_export)
