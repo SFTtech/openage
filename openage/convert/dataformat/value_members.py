@@ -31,6 +31,8 @@ class ValueMember:
     Stores a value member from a data file.
     """
 
+    __slots__ = ['name', 'member_type', 'value']
+
     def __init__(self, name):
         self.name = name
         self.member_type = None
@@ -342,6 +344,12 @@ class ContainerMember(ValueMember):
             key = member.get_name()
 
             self.value.update({key: member})
+
+    def __getitem__(self, key):
+        """
+        Short command for getting the value of a member in the container.
+        """
+        return self.get_value()[key]
 
     def __len__(self):
         return len(self.value)

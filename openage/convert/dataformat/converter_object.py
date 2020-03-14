@@ -114,6 +114,12 @@ class ConverterObject:
 
         return ConverterObject("%s-%s-diff" % (self.obj_id, other.get_id()), members=obj_diff)
 
+    def __getitem__(self, key):
+        """
+        Short command for getting the value of a member.
+        """
+        return self.get_member(key).get_value()
+
     def __repr__(self):
         raise NotImplementedError(
             "return short description of the object %s" % (type(self)))
