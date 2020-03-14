@@ -709,6 +709,47 @@ class AoCProcessor:
         pregen_nyan_objects.update({gold_name_ref_in_modpack: gold_name_value})
 
         # =======================================================================
+        # Population Space
+        # =======================================================================
+        resource_contingent_parent = "engine.aux.resource.ResourceContingent"
+
+        pop_ref_in_modpack = "aux.resource.types.PopulationSpace"
+        pop_raw_api_object = RawAPIObject(pop_ref_in_modpack,
+                                          "PopulationSpace", api_objects,
+                                          resources_location)
+        pop_raw_api_object.set_filename("types")
+        pop_raw_api_object.add_raw_parent(resource_contingent_parent)
+
+        pregen_converter_group.add_raw_api_object(pop_raw_api_object)
+        pregen_nyan_objects.update({pop_ref_in_modpack: pop_raw_api_object})
+
+        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        pop_name_ref_in_modpack = "aux.attribute.types.PopulationSpace.PopulationSpaceName"
+        pop_name_value = RawAPIObject(pop_name_ref_in_modpack, "PopulationSpaceName",
+                                      api_objects, resources_location)
+        pop_name_value.set_filename("types")
+        pop_name_value.add_raw_parent(name_value_parent)
+        pop_name_value.add_raw_member("translations", [], name_value_parent)
+
+        name_expected_pointer = ExpectedPointer(pregen_converter_group,
+                                                pop_name_ref_in_modpack)
+        pop_raw_api_object.add_raw_member("name",
+                                          name_expected_pointer,
+                                          resource_parent)
+        pop_raw_api_object.add_raw_member("max_storage",
+                                          MemberSpecialValue.NYAN_INF,
+                                          resource_parent)
+        pop_raw_api_object.add_raw_member("min_amount",
+                                          0,
+                                          resource_contingent_parent)
+        pop_raw_api_object.add_raw_member("max_amount",
+                                          MemberSpecialValue.NYAN_INF,
+                                          resource_contingent_parent)
+
+        pregen_converter_group.add_raw_api_object(pop_name_value)
+        pregen_nyan_objects.update({pop_name_ref_in_modpack: pop_name_value})
+
+        # =======================================================================
         # Generic Death Condition (HP<=0)
         #    sidenote: Apparently this is actually HP<1 in Genie
         #              (https://youtu.be/FdBk8zGbE7U?t=7m16s)

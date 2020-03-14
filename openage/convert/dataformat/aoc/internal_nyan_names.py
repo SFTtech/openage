@@ -59,7 +59,7 @@ UNIT_LINE_LOOKUPS = {
 
 BUILDING_LINE_LOOKUPS = {
     12: ("Barracks", "barracks"),
-    45: ("Harbor", "harbor"),
+    45: ("Dock", "dock"),
     49: ("SiegeWorkshop", "siege_workshop"),
     50: ("Farm", "farm"),
     68: ("Mill", "mill"),

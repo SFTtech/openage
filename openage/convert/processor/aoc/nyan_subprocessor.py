@@ -131,6 +131,10 @@ class AoCNyanSubprocessor:
         if len(unit_line.creates) > 0:
             abilities_set.append(AoCAbilitySubprocessor.create_ability(unit_line))
 
+        ability = AoCAbilitySubprocessor.use_contingent_ability(unit_line)
+        if ability:
+            abilities_set.append(ability)
+
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.los_ability(unit_line))
@@ -139,6 +143,7 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.turn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(unit_line))
+
         # =======================================================================
         # TODO: Bunch of other abilities
         #       Death, Selectable, Hitbox, Despawn, ApplyEffect, Resistance, ...
@@ -231,6 +236,10 @@ class AoCNyanSubprocessor:
 
         if len(building_line.creates) > 0:
             abilities_set.append(AoCAbilitySubprocessor.create_ability(building_line))
+
+        ability = AoCAbilitySubprocessor.provide_contingent_ability(building_line)
+        if ability:
+            abilities_set.append(ability)
 
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))

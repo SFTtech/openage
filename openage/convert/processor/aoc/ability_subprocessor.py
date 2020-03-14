@@ -11,6 +11,7 @@ from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.aoc.combined_sprite import CombinedSprite
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from plainbox.impl.session import storage
 
 
 class AoCAbilitySubprocessor:
@@ -465,6 +466,88 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def provide_contingent_ability(line):
+        """
+        Adds the ProvideContingent ability to a line.
+
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.ProvideContingent" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "ProvideContingent", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.ProvideContingent")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Also stores the pop space
+        resource_storage = current_unit.get_member("resource_storage").get_value()
+
+        contingents = []
+        for storage in resource_storage:
+            type_id = storage.get_value()["type"].get_value()
+
+            if type_id == 4:
+                resource = dataset.pregen_nyan_objects["aux.resource.types.PopulationSpace"].get_nyan_object()
+                resource_name = "PopSpace"
+
+            else:
+                continue
+
+            amount = storage.get_value()["amount"].get_value()
+
+            contingent_amount_name = "%s.ProvideContingent.%s" % (game_entity_name, resource_name)
+            contingent_amount = RawAPIObject(contingent_amount_name, resource_name,
+                                             dataset.nyan_api_objects)
+            contingent_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
+            ability_expected_pointer = ExpectedPointer(line, obj_name)
+            contingent_amount.set_location(ability_expected_pointer)
+
+            contingent_amount.add_raw_member("type",
+                                             resource,
+                                             "engine.aux.resource.ResourceAmount")
+            contingent_amount.add_raw_member("amount",
+                                             amount,
+                                             "engine.aux.resource.ResourceAmount")
+
+            line.add_raw_api_object(contingent_amount)
+            contingent_amount_expected_pointer = ExpectedPointer(line,
+                                                                 contingent_amount_name)
+            contingents.append(contingent_amount_expected_pointer)
+
+        if not contingents:
+            # Do not create the ability if its values are empty
+            return None
+
+        ability_raw_api_object.add_raw_member("amount",
+                                              contingents,
+                                              "engine.ability.type.ProvideContingent")
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def stop_ability(line):
         """
         Adds the Stop ability to a line.
@@ -556,6 +639,88 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                               "engine.ability.specialization.DiplomaticAbility")
 
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def use_contingent_ability(line):
+        """
+        Adds the UseContingent ability to a line.
+
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.UseContingent" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "UseContingent", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.UseContingent")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Also stores the pop space
+        resource_storage = current_unit.get_member("resource_storage").get_value()
+
+        contingents = []
+        for storage in resource_storage:
+            type_id = storage.get_value()["type"].get_value()
+
+            if type_id == 11:
+                resource = dataset.pregen_nyan_objects["aux.resource.types.PopulationSpace"].get_nyan_object()
+                resource_name = "PopSpace"
+
+            else:
+                continue
+
+            amount = storage.get_value()["amount"].get_value()
+
+            contingent_amount_name = "%s.UseContingent.%s" % (game_entity_name, resource_name)
+            contingent_amount = RawAPIObject(contingent_amount_name, resource_name,
+                                             dataset.nyan_api_objects)
+            contingent_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
+            ability_expected_pointer = ExpectedPointer(line, obj_name)
+            contingent_amount.set_location(ability_expected_pointer)
+
+            contingent_amount.add_raw_member("type",
+                                             resource,
+                                             "engine.aux.resource.ResourceAmount")
+            contingent_amount.add_raw_member("amount",
+                                             amount,
+                                             "engine.aux.resource.ResourceAmount")
+
+            line.add_raw_api_object(contingent_amount)
+            contingent_amount_expected_pointer = ExpectedPointer(line,
+                                                                 contingent_amount_name)
+            contingents.append(contingent_amount_expected_pointer)
+
+        if not contingents:
+            # Do not create the ability if its values are empty
+            return None
+
+        ability_raw_api_object.add_raw_member("amount",
+                                              contingents,
+                                              "engine.ability.type.UseContingent")
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
