@@ -37,7 +37,8 @@ class GenieObjectContainer(ConverterObjectContainer):
         # ConverterObjectGroup types (things that will become
         # nyan objects)
         # key: group_id; value: ConverterObjectGroup instance
-        self.unit_lines = {}
+        self.unit_lines = {}                        # Keys are the ID of the first unit in line
+        self.unit_lines_vertical_ref = {}           # Keys are the line ID of the unit connection
         self.building_lines = {}
         self.task_groups = {}
         self.transform_groups = {}
@@ -51,6 +52,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.building_upgrades = {}
         self.unit_unlocks = {}
         self.civ_boni = {}
+        self.stat_upgrades = {}
 
         # Phase 3: sprites, sounds
         self.combined_sprites = {}          # Animation or Terrain graphics

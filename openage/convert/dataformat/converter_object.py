@@ -116,9 +116,9 @@ class ConverterObject:
 
     def __getitem__(self, key):
         """
-        Short command for getting the value of a member.
+        Short command for getting a member of the object.
         """
-        return self.get_member(key).get_value()
+        return self.get_member(key)
 
     def __repr__(self):
         raise NotImplementedError(

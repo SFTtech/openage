@@ -50,12 +50,17 @@ class AoCModpackSubprocessor:
 
         for unit_line in full_data_set.unit_lines.values():
             raw_api_objects.extend(unit_line.get_raw_api_objects().values())
+
         for building_line in full_data_set.building_lines.values():
             raw_api_objects.extend(building_line.get_raw_api_objects().values())
+
         for variant_group in full_data_set.variant_groups.values():
             raw_api_objects.extend(variant_group.get_raw_api_objects().values())
 
         # TODO: Other lines?
+
+        for tech_group in full_data_set.tech_groups.values():
+            raw_api_objects.extend(tech_group.get_raw_api_objects().values())
 
         for raw_api_object in raw_api_objects:
             obj_location = raw_api_object.get_location()

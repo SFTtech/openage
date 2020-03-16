@@ -4,12 +4,14 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main AoC processor.
 """
-from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, CLASS_ID_LOOKUPS
+from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, CLASS_ID_LOOKUPS,\
+    BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
 from ...dataformat.converter_object import RawAPIObject
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from .ability_subprocessor import AoCAbilitySubprocessor
 from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
-from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS
+from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 
 
 class AoCNyanSubprocessor:
@@ -32,7 +34,10 @@ class AoCNyanSubprocessor:
         for building_line in full_data_set.building_lines.values():
             building_line.create_nyan_objects()
 
-        # TODO: Techs, civs, more complex game entities
+        for tech_group in full_data_set.tech_groups.values():
+            tech_group.create_nyan_objects()
+
+        # TODO: civs, more complex game entities
 
     @classmethod
     def _create_nyan_members(cls, full_data_set):
@@ -45,7 +50,10 @@ class AoCNyanSubprocessor:
         for building_line in full_data_set.building_lines.values():
             building_line.create_nyan_members()
 
-        # TODO: Techs, civs, more complex game entities
+        for tech_group in full_data_set.tech_groups.values():
+            tech_group.create_nyan_members()
+
+        # TODO: civs, more complex game entities
 
     @classmethod
     def _process_game_entities(cls, full_data_set):
@@ -56,7 +64,23 @@ class AoCNyanSubprocessor:
         for building_line in full_data_set.building_lines.values():
             cls._building_line_to_game_entity(building_line)
 
-        # TODO: Techs, civs, more complex game entities
+        # 'Real' Techs in the openage sense
+        technologies = dict()
+        technologies.update(full_data_set.age_upgrades)
+        technologies.update(full_data_set.unit_upgrades)
+        technologies.update(full_data_set.stat_upgrades)
+        for tech_group in technologies.values():
+            cls._tech_group_to_tech(tech_group)
+
+        # Techs that unlock game entities in Genie
+        for tech_group in full_data_set.unit_unlocks.values():
+            pass
+
+        # Techs that only provide the Civ bonus
+        for tech_group in full_data_set.civ_boni.values():
+            pass
+
+        # TODO: civs, more complex game entities
 
     @staticmethod
     def _unit_line_to_game_entity(unit_line):
@@ -230,7 +254,7 @@ class AoCNyanSubprocessor:
         raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")
 
         # =======================================================================
-        # TODO: Abilities
+        # Abilities
         # =======================================================================
         abilities_set = []
 
@@ -271,3 +295,109 @@ class AoCNyanSubprocessor:
         # =======================================================================
         if building_line.is_creatable():
             AoCAuxiliarySubprocessor.get_creatable_game_entity(building_line)
+
+    @staticmethod
+    def _tech_group_to_tech(tech_group):
+        """
+        Creates raw API objects for a tech group.
+
+        :param tech_group: Tech group that gets converted to a tech.
+        :type tech_group: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        tech_id = tech_group.get_id()
+
+        # Skip Dark Age tech
+        if tech_id == 104:
+            return
+
+        dataset = tech_group.data
+
+        # Start with the Tech object
+        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+        raw_api_object = RawAPIObject(tech_name, tech_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.tech.Tech")
+
+        if isinstance(tech_group, UnitLineUpgrade):
+            unit_line = dataset.unit_lines_vertical_ref[tech_group.get_line_id()]
+            head_unit_id = unit_line.get_head_unit_id()
+            obj_location = "data/game_entity/generic/%s/" % (UNIT_LINE_LOOKUPS[head_unit_id][1])
+
+        else:
+            obj_location = "data/tech/generic/%s/" % (TECH_GROUP_LOOKUPS[tech_id][1])
+
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(TECH_GROUP_LOOKUPS[tech_id][1])
+        tech_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Name
+        # =======================================================================
+        name_ref = "%s.%sName" % (tech_name, tech_name)
+        name_raw_api_object = RawAPIObject(name_ref,
+                                           "%sName"  % (tech_name),
+                                           dataset.nyan_api_objects)
+        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_location = ExpectedPointer(tech_group, tech_name)
+        name_raw_api_object.set_location(name_location)
+
+        name_raw_api_object.add_raw_member("translations",
+                                           [],
+                                           "engine.aux.translated.type.TranslatedString")
+
+        name_expected_pointer = ExpectedPointer(tech_group, name_ref)
+        raw_api_object.add_raw_member("name", name_expected_pointer, "engine.aux.tech.Tech")
+        tech_group.add_raw_api_object(name_raw_api_object)
+
+        # =======================================================================
+        # Description
+        # =======================================================================
+        description_ref = "%s.%sDescription" % (tech_name, tech_name)
+        description_raw_api_object = RawAPIObject(description_ref,
+                                                  "%sDescription"  % (tech_name),
+                                                  dataset.nyan_api_objects)
+        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_location = ExpectedPointer(tech_group, tech_name)
+        description_raw_api_object.set_location(description_location)
+
+        description_raw_api_object.add_raw_member("translations",
+                                                  [],
+                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+
+        description_expected_pointer = ExpectedPointer(tech_group, description_ref)
+        raw_api_object.add_raw_member("description",
+                                      description_expected_pointer,
+                                      "engine.aux.tech.Tech")
+        tech_group.add_raw_api_object(description_raw_api_object)
+
+        # =======================================================================
+        # Long description
+        # =======================================================================
+        long_description_ref = "%s.%sLongDescription" % (tech_name, tech_name)
+        long_description_raw_api_object = RawAPIObject(long_description_ref,
+                                                       "%sLongDescription"  % (tech_name),
+                                                       dataset.nyan_api_objects)
+        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_location = ExpectedPointer(tech_group, tech_name)
+        long_description_raw_api_object.set_location(long_description_location)
+
+        long_description_raw_api_object.add_raw_member("translations",
+                                                       [],
+                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+
+        long_description_expected_pointer = ExpectedPointer(tech_group, long_description_ref)
+        raw_api_object.add_raw_member("long_description",
+                                      long_description_expected_pointer,
+                                      "engine.aux.tech.Tech")
+        tech_group.add_raw_api_object(long_description_raw_api_object)
+
+        # =======================================================================
+        # TODO: Updates
+        # =======================================================================
+        raw_api_object.add_raw_member("updates", [], "engine.aux.tech.Tech")
+
+        # =======================================================================
+        # Misc (Objects that are not used by the tech group itself, but use its values)
+        # =======================================================================
+        if tech_group.is_researchable():
+            AoCAuxiliarySubprocessor.get_researchable_tech(tech_group)

@@ -347,7 +347,7 @@ class ContainerMember(ValueMember):
 
     def __getitem__(self, key):
         """
-        Short command for getting the value of a member in the container.
+        Short command for getting a member in the container.
         """
         return self.get_value()[key]
 
@@ -416,6 +416,12 @@ class ArrayMember(ValueMember):
         else:
             raise Exception(
                 "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+
+    def __getitem__(self, key):
+        """
+        Short command for getting a member in the array.
+        """
+        return self.get_value()[key]
 
     def __len__(self):
         return len(self.value)

@@ -73,12 +73,29 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         research_location_id = self.tech.get_member("research_location_id").get_value()
 
         # -1 = no train location
-        if research_location_id == -1:
-            return False
+        return research_location_id > -1
 
-        return True
+    def is_unique(self):
+        """
+        Techs are unique if they belong to a specific civ.
 
-    def get_research_location(self):
+        :returns: True if the civilization id is greater than zero.
+        """
+        civilization_id = self.tech.get_member("civilization_id").get_value()
+
+        # -1 = no train location
+        return civilization_id > -1
+
+    def get_civiliztion(self):
+        """
+        Returns the civilization id if the tech is unique, otherwise return None.
+        """
+        if self.is_unique():
+            return self.tech.get_member("civilization_id").get_value()
+
+        return None
+
+    def get_research_location_id(self):
         """
         Returns the group_id for a building line if the tech is
         researchable, otherwise return None.
@@ -99,6 +116,15 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
     def __repr__(self):
         return "GenieTechEffectBundleGroup<%s>" % (self.get_id())
+
+
+class StatUpgrade(GenieTechEffectBundleGroup):
+    """
+    Upgrades attributes of units/buildings or other stats in the game.
+    """
+
+    def __repr__(self):
+        return "StatUpgrade<%s>" % (self.get_id())
 
 
 class AgeUpgrade(GenieTechEffectBundleGroup):
@@ -153,6 +179,12 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
 
         self.unit_line_id = unit_line_id
         self.upgrade_target_id = upgrade_target_id
+
+    def get_line_id(self):
+        """
+        Returns the line id of the upgraded line.
+        """
+        return self.unit_line_id
 
     def __repr__(self):
         return "UnitLineUpgrade<%s>" % (self.get_id())

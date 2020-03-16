@@ -14,7 +14,7 @@ class TechResourceCost(GenieStructure):
     struct_description = "amount definition for a single type resource for researches."
 
     data_format = [
-        (READ, "resource_id", StorageType.ID_MEMBER, "int16_t"),  # see unit/resource_cost, TODO: type xref
+        (READ, "type_id", StorageType.ID_MEMBER, "int16_t"),  # see unit/resource_cost, TODO: type xref
         (READ, "amount", StorageType.INT_MEMBER, "int16_t"),
         (READ, "enabled", StorageType.BOOLEAN_MEMBER, "int8_t"),
     ]

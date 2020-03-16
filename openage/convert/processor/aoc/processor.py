@@ -34,6 +34,7 @@ from ...dataformat.aoc.expected_pointer import ExpectedPointer
 from .modpack_subprocessor import AoCModpackSubprocessor
 from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
 from openage.nyan.nyan_structs import MemberSpecialValue
+from openage.convert.dataformat.aoc.genie_tech import StatUpgrade
 
 
 class AoCProcessor:
@@ -866,7 +867,8 @@ class AoCProcessor:
 
         # Stores unit lines with key=line_id and val=object
         # while they are created. In the GenieObjectContainer,
-        # we store them with key=head_unit_id and val=object.
+        # we additionally store them with key=head_unit_id
+        # and val=object.
         pre_unit_lines = {}
 
         for _, connection in unit_connections.items():
@@ -931,9 +933,12 @@ class AoCProcessor:
 
                 unit_line.add_unit(unit, after=previous_unit_id)
 
-        # Store the lines in the data set, but with the head unit ids as keys
+        # Store the lines in the data set with the head unit ids as keys
         for _, line in pre_unit_lines.items():
             full_data_set.unit_lines.update({line.get_head_unit_id(): line})
+
+        # Store the lines in the data set with the line ids as keys
+        full_data_set.unit_lines_vertical_ref.update(pre_unit_lines)
 
     @staticmethod
     def _create_building_lines(full_data_set):
@@ -1123,9 +1128,10 @@ class AoCProcessor:
                 full_data_set.age_upgrades.update({age_up.get_id(): age_up})
 
             else:
-                # Create a normal tech for other techs
-                tech_group = GenieTechEffectBundleGroup(tech_id, full_data_set)
-                full_data_set.tech_groups.update({tech_group.get_id(): tech_group})
+                # Create a stat upgrade for other techs
+                stat_up = StatUpgrade(tech_id, full_data_set)
+                full_data_set.tech_groups.update({stat_up.get_id(): stat_up})
+                full_data_set.stat_upgrades.update({stat_up.get_id(): stat_up})
 
         # Unit upgrades and unlocks are stored in unit connections
         unit_connections = full_data_set.unit_connections
@@ -1155,18 +1161,30 @@ class AoCProcessor:
                 full_data_set.unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
 
         # Civ boni have to be aquired from techs
-        # Civ boni = unique techs, unique unit unlocks, eco boni (but not team bonus)
+        # Civ boni = ONLY passive boni (not unit unlocks, unit upgrades or team bonus)
         genie_techs = full_data_set.genie_techs
 
         for index in range(len(genie_techs)):
             tech_id = index
-            civ_id = genie_techs[index].get_member("civilization_id").get_value()
 
             # Civ ID must be positive and non-zero
-            if civ_id > 0:
-                civ_bonus = CivBonus(tech_id, civ_id, full_data_set)
-                full_data_set.tech_groups.update({civ_bonus.get_id(): civ_bonus})
-                full_data_set.civ_boni.update({civ_bonus.get_id(): civ_bonus})
+            civ_id = genie_techs[index].get_member("civilization_id").get_value()
+            if civ_id <= 0:
+                continue
+
+            # Passive boni are not researched anywhere
+            research_location_id = genie_techs[index].get_member("research_location_id").get_value()
+            if research_location_id > 0:
+                continue
+
+            # Passive boni are not available in full tech mode
+            full_tech_mode = genie_techs[index].get_member("full_tech_mode").get_value()
+            if full_tech_mode:
+                continue
+
+            civ_bonus = CivBonus(tech_id, civ_id, full_data_set)
+            full_data_set.tech_groups.update({civ_bonus.get_id(): civ_bonus})
+            full_data_set.civ_boni.update({civ_bonus.get_id(): civ_bonus})
 
     @staticmethod
     def _create_civ_groups(full_data_set):
@@ -1315,5 +1333,5 @@ class AoCProcessor:
 
         for _, tech in tech_groups.items():
             if tech.is_researchable():
-                research_location_id = tech.get_research_location()
+                research_location_id = tech.get_research_location_id()
                 full_data_set.building_lines[research_location_id].add_researchable(tech)
