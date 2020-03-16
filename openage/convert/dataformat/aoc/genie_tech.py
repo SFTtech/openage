@@ -66,14 +66,15 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
     def is_researchable(self):
         """
-        Techs are researchable if they have a valid research location.
+        Techs are researchable if they are associated with an ingame tech.
+        This is the case if the research time is greater than 0.
 
-        :returns: True if the research location id is greater than zero.
+        :returns: True if the research time is greater than zero.
         """
-        research_location_id = self.tech.get_member("research_location_id").get_value()
+        research_time = self.tech.get_member("research_time").get_value()
 
         # -1 = no train location
-        return research_location_id > -1
+        return research_time > 0
 
     def is_unique(self):
         """

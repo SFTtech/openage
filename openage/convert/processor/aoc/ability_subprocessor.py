@@ -12,6 +12,7 @@ from ...dataformat.aoc.combined_sprite import CombinedSprite
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 from plainbox.impl.session import storage
+from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS
 
 
 class AoCAbilitySubprocessor:
@@ -19,7 +20,7 @@ class AoCAbilitySubprocessor:
     @staticmethod
     def create_ability(line):
         """
-        Adds the Idle ability to a line.
+        Adds the Create ability to a line.
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
@@ -541,6 +542,58 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("amount",
                                               contingents,
                                               "engine.ability.type.ProvideContingent")
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def research_ability(line):
+        """
+        Adds the Research ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+        obj_name = "%s.Research" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Research", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Research")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        researchables_set = []
+
+        for researchable in line.researches:
+            if researchable.is_unique():
+                # Skip this because unique techs are handled by civs
+                continue
+
+            # ResearchableTech objects are created for each unit/building
+            # line individually to avoid duplicates. We just point to the
+            # raw API objects here.
+            researchable_id = researchable.get_id()
+            researchable_name = TECH_GROUP_LOOKUPS[researchable_id][0]
+
+            raw_api_object_ref = "%s.ResearchableTech" % researchable_name
+            researchable_expected_pointer = ExpectedPointer(researchable,
+                                                            raw_api_object_ref)
+            researchables_set.append(researchable_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("researchables", researchables_set,
+                                              "engine.ability.type.Research")
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())

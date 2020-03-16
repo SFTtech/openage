@@ -111,6 +111,7 @@ TECH_GROUP_LOOKUPS = {
     27: ("WarElephant", "war_elephant"),
     34: ("WarGalley", "war_galley"),
     35: ("Galleon", "galleon"),
+    37: ("CannonGalleon", "cannon_galleon"),
     39: ("Husbandry", "husbandry"),
     45: ("Faith", "faith"),
     47: ("Chemistry", "chemistry"),

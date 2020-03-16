@@ -64,8 +64,10 @@ class AoCAuxiliarySubprocessor:
                                                 "engine.aux.create.CreatableGameEntity")
 
         # Cost
-        cost_name = "%s.CreatableGameEntity.Cost" % (game_entity_name)
-        cost_raw_api_object = RawAPIObject(cost_name, "Cost", dataset.nyan_api_objects)
+        cost_name = "%s.CreatableGameEntity.%sCost" % (game_entity_name, game_entity_name)
+        cost_raw_api_object = RawAPIObject(cost_name,
+                                           "%sCost" % (game_entity_name),
+                                           dataset.nyan_api_objects)
         cost_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
         creatable_expected_pointer = ExpectedPointer(line, obj_ref)
         cost_raw_api_object.set_location(creatable_expected_pointer)
@@ -254,8 +256,10 @@ class AoCAuxiliarySubprocessor:
                                                    "engine.aux.research.ResearchableTech")
 
         # Cost
-        cost_name = "%s.ResearchableTech.Cost" % (tech_name)
-        cost_raw_api_object = RawAPIObject(cost_name, "Cost", dataset.nyan_api_objects)
+        cost_name = "%s.ResearchableTech.%sCost" % (tech_name, tech_name)
+        cost_raw_api_object = RawAPIObject(cost_name,
+                                           "%sCost" % (tech_name),
+                                           dataset.nyan_api_objects)
         cost_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
         tech_expected_pointer = ExpectedPointer(tech_group, obj_ref)
         cost_raw_api_object.set_location(tech_expected_pointer)
@@ -337,11 +341,11 @@ class AoCAuxiliarySubprocessor:
 
         # Create sound object
         obj_name = "%s.ResearchableTech.Sound" % (research_location_name)
-        sound_raw_api_object = RawAPIObject(obj_name, "CreationSound",
+        sound_raw_api_object = RawAPIObject(obj_name, "ResearchSound",
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
         sound_location = ExpectedPointer(tech_group,
-                                         "%s.ResearchableTech" % (research_location_name))
+                                         "%s.ResearchableTech" % (tech_name))
         sound_raw_api_object.set_location(sound_location)
 
         # AoE doesn't support sounds here, so this is empty

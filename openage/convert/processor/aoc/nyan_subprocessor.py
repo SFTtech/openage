@@ -64,21 +64,9 @@ class AoCNyanSubprocessor:
         for building_line in full_data_set.building_lines.values():
             cls._building_line_to_game_entity(building_line)
 
-        # 'Real' Techs in the openage sense
-        technologies = dict()
-        technologies.update(full_data_set.age_upgrades)
-        technologies.update(full_data_set.unit_upgrades)
-        technologies.update(full_data_set.stat_upgrades)
-        for tech_group in technologies.values():
-            cls._tech_group_to_tech(tech_group)
-
-        # Techs that unlock game entities in Genie
-        for tech_group in full_data_set.unit_unlocks.values():
-            pass
-
-        # Techs that only provide the Civ bonus
-        for tech_group in full_data_set.civ_boni.values():
-            pass
+        for tech_group in full_data_set.tech_groups.values():
+            if tech_group.is_researchable():
+                cls._tech_group_to_tech(tech_group)
 
         # TODO: civs, more complex game entities
 
@@ -260,6 +248,9 @@ class AoCNyanSubprocessor:
 
         if len(building_line.creates) > 0:
             abilities_set.append(AoCAbilitySubprocessor.create_ability(building_line))
+
+        if len(building_line.researches) > 0:
+            abilities_set.append(AoCAbilitySubprocessor.research_ability(building_line))
 
         ability = AoCAbilitySubprocessor.provide_contingent_ability(building_line)
         if ability:
