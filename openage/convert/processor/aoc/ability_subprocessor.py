@@ -72,6 +72,75 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def hitbox_ability(line):
+        """
+        Adds the Hitbox ability to a line.
+
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Hitbox" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Hitbox", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Hitbox")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Hitbox object
+        hitbox_name = "%s.Hitbox.%sHitbox" % (game_entity_name, game_entity_name)
+        hitbox_raw_api_object = RawAPIObject(hitbox_name,
+                                             "%sHitbox" % (game_entity_name),
+                                             dataset.nyan_api_objects)
+        hitbox_raw_api_object.add_raw_parent("engine.aux.hitbox.Hitbox")
+        hitbox_location = ExpectedPointer(line, obj_name)
+        hitbox_raw_api_object.set_location(hitbox_location)
+
+        radius_x = current_unit.get_member("radius_x").get_value()
+        radius_y = current_unit.get_member("radius_y").get_value()
+        radius_z = current_unit.get_member("radius_z").get_value()
+
+        hitbox_raw_api_object.add_raw_member("radius_x",
+                                             radius_x,
+                                             "engine.aux.hitbox.Hitbox")
+        hitbox_raw_api_object.add_raw_member("radius_y",
+                                             radius_y,
+                                             "engine.aux.hitbox.Hitbox")
+        hitbox_raw_api_object.add_raw_member("radius_z",
+                                             radius_z,
+                                             "engine.aux.hitbox.Hitbox")
+
+        hitbox_expected_pointer = ExpectedPointer(line, hitbox_name)
+        ability_raw_api_object.add_raw_member("hitbox",
+                                              hitbox_expected_pointer,
+                                              "engine.ability.type.Hitbox")
+
+        line.add_raw_api_object(hitbox_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def idle_ability(line):
         """
         Adds the Idle ability to a line.

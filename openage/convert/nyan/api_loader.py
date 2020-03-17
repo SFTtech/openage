@@ -2431,6 +2431,13 @@ def _insert_members(api_objects):
     member = NyanMember("herdable_mode", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
+    # engine.ability.type.Hitbox
+    api_object = api_objects["engine.ability.type.Hitbox"]
+
+    ref_object = api_objects["engine.aux.hitbox.Hitbox"]
+    member = NyanMember("hitbox", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
     # engine.ability.type.LineOfSight
     api_object = api_objects["engine.ability.type.LineOfSight"]
 
@@ -3007,6 +3014,16 @@ def _insert_members(api_objects):
     api_object = api_objects["engine.aux.graphics.Terrain"]
 
     member = NyanMember("sprite", MemberType.FILE, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.hitbox.hitbox
+    api_object = api_objects["engine.aux.hitbox.Hitbox"]
+
+    member = NyanMember("radius_x", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("radius_y", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("radius_z", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.language.Language
