@@ -11,6 +11,9 @@ class GenieObjectContainer(ConverterObjectContainer):
 
     def __init__(self):
 
+        # Game version
+        self.game_version = None
+
         # API reference
         self.nyan_api_objects = None
 

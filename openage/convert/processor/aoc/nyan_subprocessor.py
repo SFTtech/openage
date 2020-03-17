@@ -249,6 +249,7 @@ class AoCNyanSubprocessor:
 
         if len(building_line.creates) > 0:
             abilities_set.append(AoCAbilitySubprocessor.create_ability(building_line))
+            abilities_set.append(AoCAbilitySubprocessor.production_queue_ability(building_line))
 
         if len(building_line.researches) > 0:
             abilities_set.append(AoCAbilitySubprocessor.research_ability(building_line))

@@ -2495,6 +2495,15 @@ def _insert_members(api_objects):
     member = NyanMember("state_change", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
+    # engine.ability.type.ProductionQueue
+    api_object = api_objects["engine.ability.type.ProductionQueue"]
+
+    member = NyanMember("size", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.production_mode.ProductionMode"]
+    member = NyanMember("production_modes", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
     # engine.ability.type.Projectile
     api_object = api_objects["engine.ability.type.Projectile"]
 
@@ -3096,6 +3105,20 @@ def _insert_members(api_objects):
     api_object = api_objects["engine.aux.placement_mode.type.Place"]
 
     member = NyanMember("snap_to_tiles", MemberType.BOOLEAN, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.production_mode.type.Creatables
+    api_object = api_objects["engine.aux.production_mode.type.Creatables"]
+
+    set_type = api_objects["engine.aux.create.CreatableGameEntity"]
+    member = NyanMember("exclude", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.production_mode.type.Researchables
+    api_object = api_objects["engine.aux.production_mode.type.Researchables"]
+
+    set_type = api_objects["engine.aux.research.ResearchableTech"]
+    member = NyanMember("exclude", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.aux.progress.Progress

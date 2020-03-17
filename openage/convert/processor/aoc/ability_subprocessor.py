@@ -536,6 +536,71 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def production_queue_ability(line):
+        """
+        Adds the ProductionQueue ability to a line.
+
+        :param line: Unit line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.ProductionQueue" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "ProductionQueue", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.ProductionQueue")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Size
+        size = 14
+
+        ability_raw_api_object.add_raw_member("size", size, "engine.ability.type.ProductionQueue")
+
+        # Production modes
+        modes = []
+
+        mode_name = "%s.ProvideContingent.CreatablesMode" % (game_entity_name)
+        mode_raw_api_object = RawAPIObject(mode_name, "CreatablesMode", dataset.nyan_api_objects)
+        mode_raw_api_object.add_raw_parent("engine.aux.production_mode.type.Creatables")
+        mode_location = ExpectedPointer(line, obj_name)
+        mode_raw_api_object.set_location(mode_location)
+
+        # AoE2 allows all creatables in production queue
+        mode_raw_api_object.add_raw_member("exclude", [], "engine.aux.production_mode.type.Creatables")
+
+        mode_expected_pointer = ExpectedPointer(line, mode_name)
+        modes.append(mode_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("production_modes",
+                                              modes,
+                                              "engine.ability.type.ProductionQueue")
+
+        line.add_raw_api_object(mode_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def provide_contingent_ability(line):
         """
         Adds the ProvideContingent ability to a line.
@@ -627,6 +692,13 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
