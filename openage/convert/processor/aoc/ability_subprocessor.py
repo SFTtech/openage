@@ -588,6 +588,119 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def projectile_ability(line, position=1):
+        """
+        Adds a Projectile ability to projectiles in a line. Which projectile should
+        be added is determined by the 'position' argument.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param position: When 1, gives the first projectile its ability. When 2, the second...
+        :type position: int
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        # First projectile is mandatory
+        obj_name = "%s.ShootProjectile.%sProjectile%s.Projectile"\
+            % (game_entity_name, game_entity_name, position)
+        ability_raw_api_object = RawAPIObject(obj_name, "Projectile", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Projectile")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Arc
+        if position == 1:
+            projectile_id = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
+
+        elif position == 2:
+            projectile_id = current_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+
+        else:
+            raise Exception("Invalid position")
+
+        projectile = dataset.genie_units[projectile_id]
+        # TODO: radiant?
+        arc = projectile.get_member("projectile_arc").get_value() * 180 / 3.14
+        ability_raw_api_object.add_raw_member("arc",
+                                              arc,
+                                              "engine.ability.type.Projectile")
+
+        # Accuracy
+        accuracy_name = "%s.ShootProjectile.%sProjectile.Projectile.Accuracy"\
+                        % (game_entity_name, game_entity_name)
+        accuracy_raw_api_object = RawAPIObject(accuracy_name, "Accuracy", dataset.nyan_api_objects)
+        accuracy_raw_api_object.add_raw_parent("engine.aux.accuracy.Accuracy")
+        accuracy_location = ExpectedPointer(line, accuracy_name)
+        accuracy_raw_api_object.set_location(accuracy_location)
+
+        accuracy_value = current_unit.get_member("accuracy").get_value()
+        accuracy_raw_api_object.add_raw_member("accuracy",
+                                               accuracy_value,
+                                               "engine.aux.accuracy.Accuracy")
+
+        accuracy_dispersion = current_unit.get_member("accuracy_dispersion").get_value()
+        accuracy_raw_api_object.add_raw_member("accuracy_dispersion",
+                                               accuracy_dispersion,
+                                               "engine.aux.accuracy.Accuracy")
+        dropoff_type = dataset.nyan_api_objects["engine.aux.dropoff_type.type.InverseLinear"]
+        accuracy_raw_api_object.add_raw_member("dispersion_dropoff",
+                                               dropoff_type,
+                                               "engine.aux.accuracy.Accuracy")
+
+        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
+                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
+        accuracy_raw_api_object.add_raw_member("target_types",
+                                               allowed_types,
+                                               "engine.aux.accuracy.Accuracy")
+        accuracy_raw_api_object.add_raw_member("blacklisted_entities",
+                                               [],
+                                               "engine.aux.accuracy.Accuracy")
+
+        line.add_raw_api_object(accuracy_raw_api_object)
+        accuracy_expected_pointer = ExpectedPointer(line, accuracy_name)
+        ability_raw_api_object.add_raw_member("accuracy",
+                                              [accuracy_expected_pointer],
+                                              "engine.ability.type.Projectile")
+
+        # Target mode
+        target_mode = dataset.nyan_api_objects["engine.aux.target_mode.type.CurrentPosition"]
+        ability_raw_api_object.add_raw_member("target_mode",
+                                              target_mode,
+                                              "engine.ability.type.Projectile")
+
+        # TODO: Ingore types
+        ability_raw_api_object.add_raw_member("ignore_types",
+                                              [],
+                                              "engine.ability.type.Projectile")
+        ability_raw_api_object.add_raw_member("unignore_entities",
+                                              [],
+                                              "engine.ability.type.Projectile")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def provide_contingent_ability(line):
         """
         Adds the ProvideContingent ability to a line.

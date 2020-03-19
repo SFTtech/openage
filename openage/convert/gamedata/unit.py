@@ -1090,7 +1090,7 @@ class ProjectileUnit(ActionUnit):
         # which projectile to use?
         (READ_EXPORT, "attack_projectile_primary_unit_id", StorageType.ID_MEMBER, "int16_t"),
         # probablity of attack hit in percent
-        (READ, "base_hit_chance", StorageType.INT_MEMBER, "int16_t"),
+        (READ, "accuracy", StorageType.INT_MEMBER, "int16_t"),
         # = tower mode?; not used anywhere
         (READ, "break_off_combat", StorageType.INT_MEMBER, "int8_t"),
         # the frame number at which the missile is fired, = delay
