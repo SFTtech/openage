@@ -588,14 +588,14 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
-    def projectile_ability(line, position=1):
+    def projectile_ability(line, position=0):
         """
         Adds a Projectile ability to projectiles in a line. Which projectile should
         be added is determined by the 'position' argument.
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param position: When 1, gives the first projectile its ability. When 2, the second...
+        :param position: When 0, gives the first projectile its ability. When 1, the second...
         :type position: int
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
@@ -619,18 +619,19 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         # First projectile is mandatory
-        obj_name = "%s.ShootProjectile.%sProjectile%s.Projectile"\
-            % (game_entity_name, game_entity_name, position)
+        obj_ref  = "%s.ShootProjectile.Projectile%s" % (game_entity_name, str(position))
+        obj_name = "%s.ShootProjectile.Projectile%s.Projectile"\
+            % (game_entity_name, str(position))
         ability_raw_api_object = RawAPIObject(obj_name, "Projectile", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Projectile")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ExpectedPointer(line, obj_ref)
         ability_raw_api_object.set_location(ability_location)
 
         # Arc
-        if position == 1:
+        if position == 0:
             projectile_id = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
 
-        elif position == 2:
+        elif position == 1:
             projectile_id = current_unit.get_member("attack_projectile_secondary_unit_id").get_value()
 
         else:
@@ -644,11 +645,11 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Projectile")
 
         # Accuracy
-        accuracy_name = "%s.ShootProjectile.%sProjectile.Projectile.Accuracy"\
-                        % (game_entity_name, game_entity_name)
+        accuracy_name = "%s.ShootProjectile.Projectile%s.Projectile.Accuracy"\
+                        % (game_entity_name, str(position))
         accuracy_raw_api_object = RawAPIObject(accuracy_name, "Accuracy", dataset.nyan_api_objects)
         accuracy_raw_api_object.add_raw_parent("engine.aux.accuracy.Accuracy")
-        accuracy_location = ExpectedPointer(line, accuracy_name)
+        accuracy_location = ExpectedPointer(line, obj_name)
         accuracy_raw_api_object.set_location(accuracy_location)
 
         accuracy_value = current_unit.get_member("accuracy").get_value()
@@ -687,10 +688,10 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Projectile")
 
         # TODO: Ingore types
-        ability_raw_api_object.add_raw_member("ignore_types",
+        ability_raw_api_object.add_raw_member("ignored_types",
                                               [],
                                               "engine.ability.type.Projectile")
-        ability_raw_api_object.add_raw_member("unignore_entities",
+        ability_raw_api_object.add_raw_member("unignored_entities",
                                               [],
                                               "engine.ability.type.Projectile")
 
@@ -876,15 +877,15 @@ class AoCAbilitySubprocessor:
             animations_set = []
 
             # Create animation object
-            obj_name = "%s.Idle.IdleAnimation" % (game_entity_name)
-            animation_raw_api_object = RawAPIObject(obj_name, "IdleAnimation",
+            obj_name = "%s.ShootProjectile.ShootAnimation" % (game_entity_name)
+            animation_raw_api_object = RawAPIObject(obj_name, "ShootAnimation",
                                                     dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+            animation_location = ExpectedPointer(line, "%s.ShootProjectile" % (game_entity_name))
             animation_raw_api_object.set_location(animation_location)
 
             ability_sprite = CombinedSprite(ability_animation_id,
-                                            "idle_%s" % (name_lookup_dict[current_unit_id][1]),
+                                            "attack_%s" % (name_lookup_dict[current_unit_id][1]),
                                             dataset)
             dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
             ability_sprite.add_reference(animation_raw_api_object)
@@ -903,6 +904,13 @@ class AoCAbilitySubprocessor:
         # Projectile
         # TODO: Projectile ability
         projectiles = []
+        projectiles.append(ExpectedPointer(line,
+                                           "%s.ShootProjectile.Projectile0" % (game_entity_name)))
+        _, has_secondary_projectile = line.is_ranged()
+        if has_secondary_projectile:
+            projectiles.append(ExpectedPointer(line,
+                                               "%s.ShootProjectile.Projectile1" % (game_entity_name)))
+
         ability_raw_api_object.add_raw_member("projectiles",
                                               projectiles,
                                               "engine.ability.type.ShootProjectile")

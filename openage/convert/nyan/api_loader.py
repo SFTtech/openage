@@ -2519,7 +2519,7 @@ def _insert_members(api_objects):
     member = NyanMember("ignored_types", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity.GameEntity"]
-    member = NyanMember("unignore_entities", MemberType.SET, None, None, 0, set_type, False)
+    member = NyanMember("unignored_entities", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.ability.type.ProvideContingent

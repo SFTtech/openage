@@ -148,7 +148,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
 
         # Enabling tech has no specific civ -> not unique
-        return enabling_civ_id == -1
+        return enabling_civ_id > -1
 
     def is_creatable(self):
         """
@@ -161,21 +161,23 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         train_location_id = head_unit.get_member("train_location_id").get_value()
 
         # -1 = no train location
-        return train_location_id == -1
+        return train_location_id > -1
 
     def is_ranged(self):
         """
         Units are ranged if they have assigned a projectile ID.
 
-        :returns: True if the first projectile obj_id is greater than zero.
+        :returns: Boolean tuple for the first and second projectile,
+                  True if the projectile obj_id is greater than zero.
         """
-        # Get the projectile obj_id for the first unit in the line. AoE's
+        # Get the projectiles' obj_id for the first unit in the line. AoE's
         # units stay ranged with upgrades, so this should be fine.
         head_unit = self.line[0]
-        projectile_id = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
 
         # -1 -> no projectile
-        return projectile_id > -1
+        return projectile_id_0 > -1, projectile_id_1 > -1
 
     def get_civ_id(self):
         """
@@ -352,10 +354,7 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         train_location_id = head_building.get_member("train_location_id").get_value()
 
         # -1 = no train location
-        if train_location_id == -1:
-            return False
-
-        return True
+        return train_location_id > -1
 
     def is_unique(self):
         """
@@ -378,11 +377,7 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
 
         # Enabling tech has no specific civ -> not unique
-        if enabling_civ_id == -1:
-            return False
-
-        # Values other than -1 are civ ids -> building must be unique
-        return True
+        return enabling_civ_id > -1
 
     def is_ranged(self):
         """
@@ -393,10 +388,11 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         # Get the projectile obj_id for the first unit in the line. AoE's
         # units stay ranged with upgrades, so this should be fine.
         head_unit = self.line[0]
-        projectile_id = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
 
         # -1 -> no projectile
-        return projectile_id > -1
+        return projectile_id_0 > -1, projectile_id_1 > -1
 
     def get_head_unit_id(self):
         """
@@ -732,7 +728,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
     def is_ranged(self):
         # TODO: Only hunting; should be done differently?
-        return False
+        return False, False
 
     def get_head_unit_id(self):
         """

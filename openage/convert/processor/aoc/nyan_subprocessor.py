@@ -147,8 +147,19 @@ class AoCNyanSubprocessor:
         if ability:
             abilities_set.append(ability)
 
-        if unit_line.is_ranged():
+        has_primary_projectile, has_secondary_projectile = unit_line.is_ranged()
+        if has_primary_projectile:
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(unit_line))
+
+            # Projectile abilities are not appended to the unit, but to the projectile
+            AoCAbilitySubprocessor.projectile_ability(unit_line, position=0)
+            # This creates the projectiles and attaches abilities
+            AoCAuxiliarySubprocessor.get_projectile(unit_line, position=0)
+
+            # Same for secondary projectile if it exists
+            if has_secondary_projectile:
+                AoCAbilitySubprocessor.projectile_ability(unit_line, position=1)
+                AoCAuxiliarySubprocessor.get_projectile(unit_line, position=1)
 
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(unit_line))
@@ -261,8 +272,19 @@ class AoCNyanSubprocessor:
         if ability:
             abilities_set.append(ability)
 
-        if building_line.is_ranged():
+        has_primary_projectile, has_secondary_projectile = building_line.is_ranged()
+        if has_primary_projectile:
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line))
+
+            # Projectile abilities are not appended to the unit, but to the projectile
+            AoCAbilitySubprocessor.projectile_ability(building_line, position=0)
+            # This creates the projectiles and attaches abilities
+            AoCAuxiliarySubprocessor.get_projectile(building_line, position=0)
+
+            # Same for secondary projectile if it exists
+            if has_secondary_projectile:
+                AoCAbilitySubprocessor.projectile_ability(building_line, position=1)
+                AoCAuxiliarySubprocessor.get_projectile(building_line, position=1)
 
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))
