@@ -367,7 +367,7 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 	unit_data(*um),
 	on_move{spec.get_sound(this->unit_data.command_sound_id)},
 	on_attack{spec.get_sound(this->unit_data.command_sound_id)},
-	projectile{this->unit_data.missile_unit_id} {
+	projectile{this->unit_data.attack_projectile_primary_unit_id} {
 
 	// extra graphics if available
 	// villagers have invalid attack and walk graphics
@@ -385,7 +385,7 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 		this->graphics[graphic_type::carrying] = walk;
 	}
 
-	auto attack = spec.get_unit_texture(this->unit_data.fight_sprite_id);
+	auto attack = spec.get_unit_texture(this->unit_data.attack_sprite_id);
 	if (attack && attack->is_valid()) {
 		this->graphics[graphic_type::attack] = attack;
 	}
@@ -420,7 +420,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 
 	// projectile of melee attacks
 	UnitType *proj_type = this->owner.get_type(this->projectile);
-	if (this->unit_data.missile_unit_id > 0 && proj_type) {
+	if (this->unit_data.attack_projectile_primary_unit_id > 0 && proj_type) {
 
 		// calculate requirements for ranged attacks
 		coord::phys_t range_phys = this->unit_data.weapon_range_max;
@@ -526,7 +526,7 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	unit_data{*ud},
 	texture{spec.get_unit_texture(ud->idle_graphic0)},
 	destroyed{spec.get_unit_texture(ud->dying_graphic)},
-	projectile{this->unit_data.missile_unit_id},
+	projectile{this->unit_data.attack_projectile_primary_unit_id},
 	foundation_terrain{ud->foundation_terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
 
@@ -629,7 +629,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
 
 	UnitType *proj_type = this->owner.get_type(this->projectile);
-	if (this->unit_data.missile_unit_id > 0 && proj_type) {
+	if (this->unit_data.attack_projectile_primary_unit_id > 0 && proj_type) {
 		coord::phys_t range_phys = this->unit_data.weapon_range_max;
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1));
 		// formation is used only for the attack_stance

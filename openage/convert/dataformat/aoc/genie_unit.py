@@ -148,11 +148,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
 
         # Enabling tech has no specific civ -> not unique
-        if enabling_civ_id == -1:
-            return False
-
-        # Values other than -1 are civ ids -> unit must be unique
-        return True
+        return enabling_civ_id == -1
 
     def is_creatable(self):
         """
@@ -165,10 +161,21 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         train_location_id = head_unit.get_member("train_location_id").get_value()
 
         # -1 = no train location
-        if train_location_id == -1:
-            return False
+        return train_location_id == -1
 
-        return True
+    def is_ranged(self):
+        """
+        Units are ranged if they have assigned a projectile ID.
+
+        :returns: True if the first projectile obj_id is greater than zero.
+        """
+        # Get the projectile obj_id for the first unit in the line. AoE's
+        # units stay ranged with upgrades, so this should be fine.
+        head_unit = self.line[0]
+        projectile_id = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+
+        # -1 -> no projectile
+        return projectile_id > -1
 
     def get_civ_id(self):
         """
@@ -376,6 +383,20 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
 
         # Values other than -1 are civ ids -> building must be unique
         return True
+
+    def is_ranged(self):
+        """
+        Buildings are ranged if they have assigned a projectile ID.
+
+        :returns: True if the first projectile obj_id is greater than zero.
+        """
+        # Get the projectile obj_id for the first unit in the line. AoE's
+        # units stay ranged with upgrades, so this should be fine.
+        head_unit = self.line[0]
+        projectile_id = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+
+        # -1 -> no projectile
+        return projectile_id > -1
 
     def get_head_unit_id(self):
         """
@@ -707,6 +728,10 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
     def is_unique(self):
         # TODO: More checks here?
+        return False
+
+    def is_ranged(self):
+        # TODO: Only hunting; should be done differently?
         return False
 
     def get_head_unit_id(self):

@@ -147,6 +147,9 @@ class AoCNyanSubprocessor:
         if ability:
             abilities_set.append(ability)
 
+        if unit_line.is_ranged():
+            abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(unit_line))
+
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(unit_line))
@@ -257,6 +260,9 @@ class AoCNyanSubprocessor:
         ability = AoCAbilitySubprocessor.provide_contingent_ability(building_line)
         if ability:
             abilities_set.append(ability)
+
+        if building_line.is_ranged():
+            abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line))
 
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))

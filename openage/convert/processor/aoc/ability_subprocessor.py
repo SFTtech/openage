@@ -13,6 +13,7 @@ from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 from plainbox.impl.session import storage
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS
+from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
 
 
 class AoCAbilitySubprocessor:
@@ -76,7 +77,7 @@ class AoCAbilitySubprocessor:
         """
         Adds the Hitbox ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
@@ -145,7 +146,7 @@ class AoCAbilitySubprocessor:
         """
         Adds the Idle ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
@@ -218,7 +219,7 @@ class AoCAbilitySubprocessor:
         """
         Adds the Live ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
@@ -287,7 +288,7 @@ class AoCAbilitySubprocessor:
         """
         Adds the LineOfSight ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
@@ -338,7 +339,7 @@ class AoCAbilitySubprocessor:
         """
         Adds the Move ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
@@ -445,18 +446,11 @@ class AoCAbilitySubprocessor:
 
         TODO: Lookup names from language.dll
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -540,18 +534,11 @@ class AoCAbilitySubprocessor:
         """
         Adds the ProductionQueue ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -605,7 +592,7 @@ class AoCAbilitySubprocessor:
         """
         Adds the ProvideContingent ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
@@ -692,13 +679,6 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -742,11 +722,197 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def shoot_projectile_ability(line):
+        """
+        Adds the ShootProjectile ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+        obj_name = "%s.ShootProjectile" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "ShootProjectile", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.ShootProjectile")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        ability_animation_id = current_unit.get_member("idle_graphic0").get_value()
+
+        if ability_animation_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+
+            animations_set = []
+
+            # Create animation object
+            obj_name = "%s.Idle.IdleAnimation" % (game_entity_name)
+            animation_raw_api_object = RawAPIObject(obj_name, "IdleAnimation",
+                                                    dataset.nyan_api_objects)
+            animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
+            animation_location = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+            animation_raw_api_object.set_location(animation_location)
+
+            ability_sprite = CombinedSprite(ability_animation_id,
+                                            "idle_%s" % (name_lookup_dict[current_unit_id][1]),
+                                            dataset)
+            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
+            ability_sprite.add_reference(animation_raw_api_object)
+
+            animation_raw_api_object.add_raw_member("sprite", ability_sprite,
+                                                    "engine.aux.graphics.Animation")
+
+            animation_expected_pointer = ExpectedPointer(line, obj_name)
+            animations_set.append(animation_expected_pointer)
+
+            ability_raw_api_object.add_raw_member("animations", animations_set,
+                                                  "engine.ability.specialization.AnimatedAbility")
+
+            line.add_raw_api_object(animation_raw_api_object)
+
+        # Projectile
+        # TODO: Projectile ability
+        projectiles = []
+        ability_raw_api_object.add_raw_member("projectiles",
+                                              projectiles,
+                                              "engine.ability.type.ShootProjectile")
+
+        # Projectile count
+        min_projectiles = current_unit.get_member("attack_projectile_count").get_value()
+        ability_raw_api_object.add_raw_member("min_projectiles",
+                                              min_projectiles,
+                                              "engine.ability.type.ShootProjectile")
+
+        max_projectiles = current_unit.get_member("attack_projectile_max_count").get_value()
+        ability_raw_api_object.add_raw_member("max_projectiles",
+                                              max_projectiles,
+                                              "engine.ability.type.ShootProjectile")
+
+        # Range
+        min_range = current_unit.get_member("weapon_range_min").get_value()
+        ability_raw_api_object.add_raw_member("min_range",
+                                              min_range,
+                                              "engine.ability.type.ShootProjectile")
+
+        max_range = current_unit.get_member("weapon_range_max").get_value()
+        ability_raw_api_object.add_raw_member("max_range",
+                                              max_range,
+                                              "engine.ability.type.ShootProjectile")
+
+        # Reload time and delay
+        reload_time = current_unit.get_member("attack_speed").get_value()
+        ability_raw_api_object.add_raw_member("reload_time",
+                                              reload_time,
+                                              "engine.ability.type.ShootProjectile")
+
+        if ability_animation_id > -1:
+            animation = dataset.genie_graphics[ability_animation_id]
+            frame_rate = animation.get_member("frame_rate").get_value()
+
+        else:
+            frame_rate = 0
+
+        spawn_delay_frames = current_unit.get_member("frame_delay").get_value()
+        spawn_delay = frame_to_seconds(spawn_delay_frames, frame_rate)
+        ability_raw_api_object.add_raw_member("spawn_delay",
+                                              spawn_delay,
+                                              "engine.ability.type.ShootProjectile")
+
+        # TODO: Hardcoded?
+        ability_raw_api_object.add_raw_member("projectile_delay",
+                                              0.1,
+                                              "engine.ability.type.ShootProjectile")
+
+        # Turning
+        if isinstance(line, GenieBuildingLineGroup):
+            require_turning = False
+
+        else:
+            require_turning = True
+
+        ability_raw_api_object.add_raw_member("require_turning",
+                                              require_turning,
+                                              "engine.ability.type.ShootProjectile")
+
+        # Manual Aiming (Mangonel + Trebuchet)
+        if line.get_head_unit_id() in (280, 331):
+            manual_aiming_allowed = True
+
+        else:
+            manual_aiming_allowed = False
+
+        ability_raw_api_object.add_raw_member("manual_aiming_allowed",
+                                              manual_aiming_allowed,
+                                              "engine.ability.type.ShootProjectile")
+
+        # Spawning area
+        spawning_area_offset_x = current_unit.get_member("weapon_offset")[0].get_value()
+        spawning_area_offset_y = current_unit.get_member("weapon_offset")[1].get_value()
+        spawning_area_offset_z = current_unit.get_member("weapon_offset")[2].get_value()
+
+        ability_raw_api_object.add_raw_member("spawning_area_offset_x",
+                                              spawning_area_offset_x,
+                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member("spawning_area_offset_y",
+                                              spawning_area_offset_y,
+                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member("spawning_area_offset_z",
+                                              spawning_area_offset_z,
+                                              "engine.ability.type.ShootProjectile")
+
+        spawning_area_width = current_unit.get_member("attack_projectile_spawning_area_width").get_value()
+        spawning_area_height = current_unit.get_member("attack_projectile_spawning_area_length").get_value()
+        spawning_area_randomness = current_unit.get_member("attack_projectile_spawning_area_randomness").get_value()
+
+        ability_raw_api_object.add_raw_member("spawning_area_width",
+                                              spawning_area_width,
+                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member("spawning_area_height",
+                                              spawning_area_height,
+                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member("spawning_area_randomness",
+                                              spawning_area_randomness,
+                                              "engine.ability.type.ShootProjectile")
+
+        # Restrictions on targets (only units and buildings allowed)
+        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
+                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
+        ability_raw_api_object.add_raw_member("allowed_types",
+                                              allowed_types,
+                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+                                              [],
+                                              "engine.ability.type.ShootProjectile")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def stop_ability(line):
         """
         Adds the Stop ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
@@ -785,7 +951,7 @@ class AoCAbilitySubprocessor:
         """
         Adds the Turn ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
@@ -844,7 +1010,7 @@ class AoCAbilitySubprocessor:
         """
         Adds the UseContingent ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
@@ -926,7 +1092,7 @@ class AoCAbilitySubprocessor:
         """
         Adds the Visibility ability to a line.
 
-        :param line: Unit line that gets the ability.
+        :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer

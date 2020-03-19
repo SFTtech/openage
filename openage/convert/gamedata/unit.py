@@ -1088,7 +1088,7 @@ class ProjectileUnit(ActionUnit):
         (READ, "blast_range", StorageType.FLOAT_MEMBER, "float"),
         (READ, "attack_speed", StorageType.FLOAT_MEMBER, "float"),  # = "reload time"
         # which projectile to use?
-        (READ_EXPORT, "missile_unit_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "attack_projectile_primary_unit_id", StorageType.ID_MEMBER, "int16_t"),
         # probablity of attack hit in percent
         (READ, "base_hit_chance", StorageType.INT_MEMBER, "int16_t"),
         # = tower mode?; not used anywhere
@@ -1121,7 +1121,7 @@ class ProjectileUnit(ActionUnit):
     data_format.append((READ, "accuracy_dispersion", StorageType.FLOAT_MEMBER, "float"))
 
     data_format.extend([
-        (READ_EXPORT, "fight_sprite_id", StorageType.ID_MEMBER, "int16_t"),
+        (READ_EXPORT, "attack_sprite_id", StorageType.ID_MEMBER, "int16_t"),
         (READ, "melee_armor_displayed", StorageType.INT_MEMBER, "int16_t"),
         (READ, "attack_displayed", StorageType.INT_MEMBER, "int16_t"),
         (READ, "range_displayed", StorageType.FLOAT_MEMBER, "float"),
