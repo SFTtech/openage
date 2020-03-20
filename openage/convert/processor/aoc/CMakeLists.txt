@@ -5,5 +5,6 @@ add_py_modules(
 	media_subprocessor.py
 	modpack_subprocessor.py
 	nyan_subprocessor.py
+	pregen_processor.py
 	processor.py
 )
