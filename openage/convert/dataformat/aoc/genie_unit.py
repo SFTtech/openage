@@ -29,12 +29,11 @@ class GenieUnitObject(ConverterObject):
         return "GenieUnitObject<%s>" % (self.get_id())
 
 
-class GenieUnitLineGroup(ConverterObjectGroup):
+class GenieGameEntityGroup(ConverterObjectGroup):
     """
     A collection of GenieUnitObject types that form an "upgrade line"
-    in Age of Empires.
-
-    Example: Spearman->Pikeman->Helbardier
+    in Age of Empires. This acts as the common super class for
+    units and buildings.
 
     The first unit in the line will become the GameEntity, the rest will
     be patches to that GameEntity applied by Techs.
@@ -42,7 +41,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
     def __init__(self, line_id, full_data_set):
         """
-        Creates a new Genie unit line.
+        Creates a new Genie game entity line.
 
         :param line_id: Internal line obj_id in the .dat file.
         :param full_data_set: GenieObjectContainer instance that
@@ -52,34 +51,46 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
         super().__init__(line_id)
 
+        # Reference to everything else in the gamedata
+        self.data = full_data_set
+
         # The line is stored as an ordered list of GenieUnitObjects.
         self.line = []
 
         # This dict stores unit ids and their repective position in the
         # unit line for quick referencing and searching
-        self.unit_line_positions = {}
+        self.line_positions = {}
 
-        # Reference to everything else in the gamedata
-        self.data = full_data_set
-
-        # List of buildings that units can create
+        # List of units/buildings that the line can create
         self.creates = []
 
-    def add_creatable(self, building_line):
-        """
-        Adds a building line to the list of creatables.
+        # List of GenieTechEffectBundleGroup objects
+        self.researches = []
 
-        :param building_line: The GenieBuildingLineGroup the villager produces.
+    def add_creatable(self, line):
         """
-        if not self.contains_creatable(building_line.get_id()):
-            self.creates.append(building_line)
+        Adds another line to the list of creatables.
+
+        :param line: The GenieBuildingLineGroup the villager produces.
+        """
+        if not self.contains_creatable(line.get_head_unit_id()):
+            self.creates.append(line)
+
+    def add_researchable(self, tech_group):
+        """
+        Adds a tech group to the list of researchables.
+
+        :param tech_group: The GenieTechLineGroup the building researches.
+        """
+        if not self.contains_researchable(tech_group.get_id()):
+            self.researches.append(tech_group)
 
     def add_unit(self, genie_unit, position=-1, after=None):
         """
-        Adds a unit to the line.
+        Adds a unit/building to the line.
 
         :param genie_unit: A GenieUnit object that is part of this
-                           unit line.
+                           line.
         :param position: Puts the unit at an specific position in the line.
                          If this is -1, the unit is placed at the end 
         :param after: ID of a unit after which the new unit is
@@ -96,50 +107,96 @@ class GenieUnitLineGroup(ConverterObjectGroup):
             if position > -1:
                 insert_index = position
 
-                for unit in self.unit_line_positions.keys():
-                    if self.unit_line_positions[unit] >= insert_index:
-                        self.unit_line_positions[unit] += 1
+                for unit in self.line_positions.keys():
+                    if self.line_positions[unit] >= insert_index:
+                        self.line_positions[unit] += 1
 
             elif after:
                 if self.contains_unit(after):
-                    insert_index = self.unit_line_positions[after] + 1
+                    insert_index = self.line_positions[after] + 1
 
-                    for unit in self.unit_line_positions.keys():
-                        if self.unit_line_positions[unit] >= insert_index:
-                            self.unit_line_positions[unit] += 1
+                    for unit in self.line_positions.keys():
+                        if self.line_positions[unit] >= insert_index:
+                            self.line_positions[unit] += 1
 
-            self.unit_line_positions.update({genie_unit.get_id(): insert_index})
+            self.line_positions.update({genie_unit.get_id(): insert_index})
             self.line.insert(insert_index, genie_unit)
 
     def contains_creatable(self, line_id):
         """
-        Returns True if a building line with line_id is a creatable of
+        Returns True if a line with line_id is a creatable of
         this unit.
         """
-        building_line = self.data.building_lines[line_id]
+        if isinstance(self, GenieUnitLineGroup):
+            line = self.data.building_lines[line_id]
 
-        return building_line in self.creates
+        elif isinstance(self, GenieBuildingLineGroup):
+            line = self.data.unit_lines[line_id]
 
-    def contains_unit(self, unit_id):
+        return line in self.creates
+
+    def contains_entity(self, unit_id):
         """
-        Returns True if a unit with unit_id is part of the line.
+        Returns True if a entity with unit_id is part of the line.
         """
-        return unit_id in self.unit_line_positions.keys()
+        return unit_id in self.line_positions.keys()
+
+    def contains_researchable(self, line_id):
+        """
+        Returns True if a tech line with line_id is researchable
+        in this building.
+        """
+        tech_line = self.data.tech_groups[line_id]
+
+        return tech_line in self.researches
+
+    def is_creatable(self):
+        """
+        Units/Buildings are creatable if they have a valid train location.
+
+        :returns: True if the train location obj_id is greater than zero.
+        """
+        # Get the train location obj_id for the first unit in the line
+        head_unit = self.get_head_unit()
+        train_location_id = head_unit.get_member("train_location_id").get_value()
+
+        # -1 = no train location
+        return train_location_id > -1
+
+    def is_ranged(self):
+        """
+        Units/Buildings are ranged if they have assigned a projectile ID.
+
+        :returns: Boolean tuple for the first and second projectile,
+                  True if the projectile obj_id is greater than zero.
+        """
+        # Get the projectiles' obj_id for the first unit in the line. AoE's
+        # units stay ranged with upgrades, so this should be fine.
+        head_unit = self.get_head_unit()
+        projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+
+        # -1 -> no projectile
+        return projectile_id_0 > -1
 
     def is_unique(self):
         """
-        Units are unique if they belong to a specific civ.
-        Eagles and battle elephants do not count as unique units.
+        Buildings are unique if they belong to a specific civ.
 
-        :returns: True if the unit is tied to one specific civ.
+        :returns: True if the building is tied to one specific civ.
         """
         # Get the enabling research obj_id for the first unit in the line
-        head_unit = self.line[0]
+        head_unit = self.get_head_unit()
         head_unit_id = head_unit.get_member("id0").get_value()
-        head_unit_connection = self.data.unit_connections[head_unit_id]
+
+        if isinstance(self, GenieUnitLineGroup):
+            head_unit_connection = self.data.unit_connections[head_unit_id]
+
+        elif isinstance(self, GenieBuildingLineGroup):
+            head_unit_connection = self.data.building_connections[head_unit_id]
+
         enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
 
-        # Unit does not need to be enabled -> not unique
+        # does not need to be enabled -> not unique
         if enabling_research_id == -1:
             return False
 
@@ -150,33 +207,50 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         # Enabling tech has no specific civ -> not unique
         return enabling_civ_id > -1
 
-    def is_creatable(self):
+    def get_head_unit_id(self):
         """
-        Units are creatable if they have a valid train location.
-
-        :returns: True if the train location obj_id is greater than zero.
+        Return the obj_id of the first unit in the line.
         """
-        # Get the train location obj_id for the first unit in the line
-        head_unit = self.line[0]
-        train_location_id = head_unit.get_member("train_location_id").get_value()
+        head_unit = self.get_head_unit()
+        return head_unit.get_member("id0").get_value()
 
-        # -1 = no train location
-        return train_location_id > -1
-
-    def is_ranged(self):
+    def get_head_unit(self):
         """
-        Units are ranged if they have assigned a projectile ID.
-
-        :returns: Boolean tuple for the first and second projectile,
-                  True if the projectile obj_id is greater than zero.
+        Return the first unit in the line.
         """
-        # Get the projectiles' obj_id for the first unit in the line. AoE's
-        # units stay ranged with upgrades, so this should be fine.
-        head_unit = self.line[0]
-        projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        return self.line[0]
 
-        # -1 -> no projectile
-        return projectile_id_0 > -1
+    def get_train_location(self):
+        """
+        Returns the group_id for building line if the unit is
+        creatable, otherwise return None.
+        """
+        if self.is_creatable():
+            head_unit = self.get_head_unit()
+            return head_unit.get_member("train_location_id").get_value()
+
+        return None
+
+    def __repr__(self):
+        return "GenieGameEntityGroup<%s>" % (self.get_id())
+
+
+class GenieUnitLineGroup(GenieGameEntityGroup):
+    """
+    A collection of GenieUnitObject types that form an "upgrade line"
+    in Age of Empires.
+
+    Example: Spearman->Pikeman->Helbardier
+
+    The first unit in the line will become the GameEntity, the rest will
+    be patches to that GameEntity applied by Techs.
+    """
+
+    def contains_unit(self, unit_id):
+        """
+        Returns True if a unit with unit_id is part of the line.
+        """
+        return self.contains_entity(unit_id)
 
     def get_civ_id(self):
         """
@@ -184,7 +258,7 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         otherwise return None.
         """
         if self.is_unique():
-            head_unit = self.line[0]
+            head_unit = self.get_head_unit()
             head_unit_id = head_unit.get_member("id0").get_value()
             head_unit_connection = self.data.unit_connections[head_unit_id]
             enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
@@ -194,29 +268,11 @@ class GenieUnitLineGroup(ConverterObjectGroup):
 
         return None
 
-    def get_head_unit_id(self):
-        """
-        Return the obj_id of the first unit in the line.
-        """
-        head_unit = self.line[0]
-        return head_unit.get_member("id0").get_value()
-
-    def get_train_location(self):
-        """
-        Returns the group_id for building line if the unit is
-        creatable, otherwise return None.
-        """
-        if self.is_creatable():
-            head_unit = self.line[0]
-            return head_unit.get_member("train_location_id").get_value()
-
-        return None
-
     def __repr__(self):
         return "GenieUnitLineGroup<%s>" % (self.get_id())
 
 
-class GenieBuildingLineGroup(ConverterObjectGroup):
+class GenieBuildingLineGroup(GenieGameEntityGroup):
     """
     A collection of GenieUnitObject types that represent a building
     in Age of Empires. Buildings actually have no line obj_id, so we take
@@ -233,182 +289,11 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
     be patches to that GameEntity applied by Techs.
     """
 
-    def __init__(self, head_building_id, full_data_set):
-        """
-        Creates a new Genie building line.
-
-        :param head_building_id: The building that is first in line.
-        :param full_data_set: GenieObjectContainer instance that
-                              contains all relevant data for the conversion
-                              process.
-        """
-
-        super().__init__(head_building_id)
-
-        # The line is stored as an ordered list of GenieUnitObjects.
-        self.line = []
-
-        # This dict stores unit ids and their repective position in the
-        # unit line for quick referencing and searching
-        self.unit_line_positions = {}
-
-        # List of GenieUnitLine objects
-        self.creates = []
-
-        # List of GenieTechEffectBundleGroup objects
-        self.researches = []
-
-        # Reference to everything else in the gamedata
-        self.data = full_data_set
-
-    def add_unit(self, genie_unit, position=-1, after=None):
-        """
-        Adds a building to the line.
-
-        :param genie_unit: A GenieUnit object that is part of this
-                           building line.
-        :param position: Puts the building at an specific position in the line.
-                         If this is -1, the building. is placed at the end.
-        :param after: ID of a unit after which the new unit is
-                      placed in the line. If a unit with this obj_id
-                      is not present, the unit is appended at the end
-                      of the line.
-        """
-        unit_id = genie_unit.get_member("id0").get_value()
-
-        # Only add building if it is not already in the list
-        if not self.contains_unit(unit_id):
-            insert_index = len(self.line)
-
-            if position > -1:
-                insert_index = position
-
-                for unit in self.unit_line_positions.keys():
-                    if self.unit_line_positions[unit] >= insert_index:
-                        self.unit_line_positions[unit] += 1
-
-            elif after:
-                if self.contains_unit(after):
-                    insert_index = self.unit_line_positions[after] + 1
-
-                    for unit in self.unit_line_positions.keys():
-                        if self.unit_line_positions[unit] >= insert_index:
-                            self.unit_line_positions[unit] += 1
-
-            self.unit_line_positions.update({genie_unit.get_id(): insert_index})
-            self.line.insert(insert_index, genie_unit)
-
-    def add_creatable(self, unit_line):
-        """
-        Adds a unit line to the list of creatables.
-
-        :param unit_line: The GenieUnitLine the building produces.
-        """
-        if not self.contains_creatable(unit_line.get_head_unit_id()):
-            self.creates.append(unit_line)
-
-    def add_researchable(self, tech_group):
-        """
-        Adds a tech group to the list of researchables.
-
-        :param tech_group: The GenieTechLineGroup the building researches.
-        """
-        if not self.contains_researchable(tech_group.get_id()):
-            self.researches.append(tech_group)
-
     def contains_unit(self, building_id):
         """
         Returns True if a building with building_id is part of the line.
         """
-        building = self.data.genie_units[building_id]
-
-        return building in self.line
-
-    def contains_creatable(self, head_unit_id):
-        """
-        Returns True if a unit line with head_unit_id is a creatable of
-        this building.
-        """
-        unit_line = self.data.unit_lines[head_unit_id]
-
-        return unit_line in self.creates
-
-    def contains_researchable(self, line_id):
-        """
-        Returns True if a tech line with line_id is researchable
-        in this building.
-        """
-        tech_line = self.data.tech_groups[line_id]
-
-        return tech_line in self.researches
-
-    def is_creatable(self):
-        """
-        Buildings are creatable if they have a valid train location.
-
-        :returns: True if the train location obj_id is greater than zero.
-        """
-        # Get the train location obj_id for the first building in the line
-        head_building = self.line[0]
-        train_location_id = head_building.get_member("train_location_id").get_value()
-
-        # -1 = no train location
-        return train_location_id > -1
-
-    def is_unique(self):
-        """
-        Buildings are unique if they belong to a specific civ.
-
-        :returns: True if the building is tied to one specific civ.
-        """
-        # Get the enabling research obj_id for the first unit in the line
-        head_building = self.line[0]
-        head_building_id = head_building.get_member("id0").get_value()
-        head_building_connection = self.data.building_connections[head_building_id]
-        enabling_research_id = head_building_connection.get_member("enabling_research").get_value()
-
-        # BUilding does not need to be enabled -> not unique
-        if enabling_research_id == -1:
-            return False
-
-        # Get enabling civ
-        enabling_research = self.data.genie_techs[enabling_research_id]
-        enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
-
-        # Enabling tech has no specific civ -> not unique
-        return enabling_civ_id > -1
-
-    def is_ranged(self):
-        """
-        Buildings are ranged if they have assigned a projectile ID.
-
-        :returns: True if the first projectile obj_id is greater than zero.
-        """
-        # Get the projectile obj_id for the first unit in the line. AoE's
-        # units stay ranged with upgrades, so this should be fine.
-        head_unit = self.line[0]
-        projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
-
-        # -1 -> no projectile
-        return projectile_id_0 > -1
-
-    def get_head_unit_id(self):
-        """
-        Return the obj_id of the first building in the line.
-        """
-        head_building = self.line[0]
-        return head_building.get_member("id0").get_value()
-
-    def get_train_location(self):
-        """
-        Returns the group_id for a villager group if the building is
-        creatable, otherwise return None.
-        """
-        if self.is_creatable():
-            head_building = self.line[0]
-            return head_building.get_member("train_location_id").get_value()
-
-        return None
+        return self.contains_entity(building_id)
 
     def __repr__(self):
         return "GenieBuildingLineGroup<%s>" % (self.get_id())
@@ -733,6 +618,12 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         For villagers, this returns the group obj_id.
         """
         return self.get_id()
+
+    def get_head_unit(self):
+        """
+        For villagers, this returns the group obj_id.
+        """
+        return self.variants[0].line[0]
 
     def get_train_location(self):
         """
