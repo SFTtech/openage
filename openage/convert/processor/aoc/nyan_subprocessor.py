@@ -12,6 +12,7 @@ from .ability_subprocessor import AoCAbilitySubprocessor
 from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 
 
 class AoCNyanSubprocessor:
@@ -147,19 +148,9 @@ class AoCNyanSubprocessor:
         if ability:
             abilities_set.append(ability)
 
-        has_primary_projectile, has_secondary_projectile = unit_line.is_ranged()
-        if has_primary_projectile:
+        if unit_line.is_ranged():
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(unit_line))
-
-            # Projectile abilities are not appended to the unit, but to the projectile
-            AoCAbilitySubprocessor.projectile_ability(unit_line, position=0)
-            # This creates the projectiles and attaches abilities
-            AoCAuxiliarySubprocessor.get_projectile(unit_line, position=0)
-
-            # Same for secondary projectile if it exists
-            if has_secondary_projectile:
-                AoCAbilitySubprocessor.projectile_ability(unit_line, position=1)
-                AoCAuxiliarySubprocessor.get_projectile(unit_line, position=1)
+            AoCNyanSubprocessor._projectiles_from_line(unit_line)
 
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(unit_line))
@@ -272,19 +263,9 @@ class AoCNyanSubprocessor:
         if ability:
             abilities_set.append(ability)
 
-        has_primary_projectile, has_secondary_projectile = building_line.is_ranged()
-        if has_primary_projectile:
+        if building_line.is_ranged():
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line))
-
-            # Projectile abilities are not appended to the unit, but to the projectile
-            AoCAbilitySubprocessor.projectile_ability(building_line, position=0)
-            # This creates the projectiles and attaches abilities
-            AoCAuxiliarySubprocessor.get_projectile(building_line, position=0)
-
-            # Same for secondary projectile if it exists
-            if has_secondary_projectile:
-                AoCAbilitySubprocessor.projectile_ability(building_line, position=1)
-                AoCAuxiliarySubprocessor.get_projectile(building_line, position=1)
+            AoCNyanSubprocessor._projectiles_from_line(building_line)
 
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))
@@ -421,3 +402,73 @@ class AoCNyanSubprocessor:
         # =======================================================================
         if tech_group.is_researchable():
             AoCAuxiliarySubprocessor.get_researchable_tech(tech_group)
+
+    @staticmethod
+    def _projectiles_from_line(line):
+        """
+        Creates Projectile(GameEntity) raw API objects for a unit/building line.
+
+        :param line: Line for which the projectiles are extracted.
+        :type line: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            game_entity_name = BUILDING_LINE_LOOKUPS[current_unit_id][0]
+            game_entity_filename = BUILDING_LINE_LOOKUPS[current_unit_id][1]
+
+        else:
+            game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
+            game_entity_filename = UNIT_LINE_LOOKUPS[current_unit_id][1]
+
+        projectiles_location = "data/game_entity/generic/%s/projectiles/" % (game_entity_filename)
+
+        projectile_count = 1
+        projectile_secondary = current_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+        if projectile_secondary > -1:
+            projectile_count += 1
+
+        for projectile_num in range(projectile_count):
+            obj_ref = "%s.ShootProjectile.Projectile%s" % (game_entity_name, str(projectile_num))
+            obj_name = "Projectile%s" % (str(projectile_num))
+            proj_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
+            proj_raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
+            proj_raw_api_object.set_location(projectiles_location)
+            proj_raw_api_object.set_filename("%s_projectiles" % (game_entity_filename))
+
+            # =======================================================================
+            # Types
+            # =======================================================================
+            types_set = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Projectile"].get_nyan_object()]
+            proj_raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")
+
+            # =======================================================================
+            # Abilities
+            # =======================================================================
+            abilities_set = []
+            abilities_set.append(AoCAbilitySubprocessor.projectile_ability(line, position=projectile_num))
+            # TODO: Attack, Death, Despawn
+            proj_raw_api_object.add_raw_member("abilities", abilities_set, "engine.aux.game_entity.GameEntity")
+
+            # =======================================================================
+            # Modifiers
+            # =======================================================================
+            # Modifiers (created somewhere else)
+            modifiers_set = []
+            proj_raw_api_object.add_raw_member("modifiers", modifiers_set, "engine.aux.game_entity.GameEntity")
+
+            # =======================================================================
+            # Variants
+            # =======================================================================
+            variants_set = []
+            proj_raw_api_object.add_raw_member("variants", variants_set, "engine.aux.game_entity.GameEntity")
+
+            line.add_raw_api_object(proj_raw_api_object)

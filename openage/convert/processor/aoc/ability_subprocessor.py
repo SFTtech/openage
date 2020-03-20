@@ -906,8 +906,8 @@ class AoCAbilitySubprocessor:
         projectiles = []
         projectiles.append(ExpectedPointer(line,
                                            "%s.ShootProjectile.Projectile0" % (game_entity_name)))
-        _, has_secondary_projectile = line.is_ranged()
-        if has_secondary_projectile:
+        projectile_secondary = current_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+        if projectile_secondary > -1:
             projectiles.append(ExpectedPointer(line,
                                                "%s.ShootProjectile.Projectile1" % (game_entity_name)))
 

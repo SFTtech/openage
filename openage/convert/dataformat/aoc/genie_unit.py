@@ -174,10 +174,9 @@ class GenieUnitLineGroup(ConverterObjectGroup):
         # units stay ranged with upgrades, so this should be fine.
         head_unit = self.line[0]
         projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
-        projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
 
         # -1 -> no projectile
-        return projectile_id_0 > -1, projectile_id_1 > -1
+        return projectile_id_0 > -1
 
     def get_civ_id(self):
         """
@@ -389,10 +388,9 @@ class GenieBuildingLineGroup(ConverterObjectGroup):
         # units stay ranged with upgrades, so this should be fine.
         head_unit = self.line[0]
         projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
-        projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
 
         # -1 -> no projectile
-        return projectile_id_0 > -1, projectile_id_1 > -1
+        return projectile_id_0 > -1
 
     def get_head_unit_id(self):
         """
@@ -728,7 +726,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
     def is_ranged(self):
         # TODO: Only hunting; should be done differently?
-        return False, False
+        return False
 
     def get_head_unit_id(self):
         """
