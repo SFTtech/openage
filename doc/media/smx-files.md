@@ -105,8 +105,8 @@ Length   | Type   | Description                | Example
 ---------|--------|----------------------------|--------
 2 bytes  | uint16 | Width of image             | 168, 0x00A8
 2 bytes  | uint16 | Height of image            | 145, 0x0091
-2 bytes  | uint16 | Centre of sprite (X coord) | 88, 0x0058
-2 bytes  | uint16 | Centre of sprite (Y coord) | 99, 0x0063
+2 bytes  |  int16 | Centre of sprite (X coord) | 88, 0x0058
+2 bytes  |  int16 | Centre of sprite (Y coord) | 99, 0x0063
 4 bytes  | uint32 | Length of layer in bytes   | 1848, 0x00000738
 4 bytes  | uint32 | Unknown                    | 950, 0x000003B6
 
