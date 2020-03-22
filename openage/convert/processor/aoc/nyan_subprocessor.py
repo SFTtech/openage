@@ -13,6 +13,7 @@ from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySub
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS
 
 
 class AoCNyanSubprocessor:
@@ -35,6 +36,9 @@ class AoCNyanSubprocessor:
         for building_line in full_data_set.building_lines.values():
             building_line.create_nyan_objects()
 
+        for ambient_group in full_data_set.ambient_groups.values():
+            ambient_group.create_nyan_objects()
+
         for tech_group in full_data_set.tech_groups.values():
             tech_group.create_nyan_objects()
 
@@ -51,6 +55,9 @@ class AoCNyanSubprocessor:
         for building_line in full_data_set.building_lines.values():
             building_line.create_nyan_members()
 
+        for ambient_group in full_data_set.ambient_groups.values():
+            ambient_group.create_nyan_members()
+
         for tech_group in full_data_set.tech_groups.values():
             tech_group.create_nyan_members()
 
@@ -64,6 +71,9 @@ class AoCNyanSubprocessor:
 
         for building_line in full_data_set.building_lines.values():
             cls._building_line_to_game_entity(building_line)
+
+        for ambient_group in full_data_set.ambient_groups.values():
+            cls._ambient_group_to_game_entity(ambient_group)
 
         for tech_group in full_data_set.tech_groups.values():
             if tech_group.is_researchable():
@@ -222,9 +232,11 @@ class AoCNyanSubprocessor:
         # =======================================================================
         # TODO: Game Entity Types
         # ------------------
-        # we give a unit two types
-        #    - aux.game_entity_type.types.Unit (if unit_type >= 70)
+        # we give a building two types
+        #    - aux.game_entity_type.types.Building (if unit_type >= 80)
         #    - aux.game_entity_type.types.<Class> (depending on the class)
+        # and additionally
+        #    - aux.game_entity_type.types.DropSite (only if this is used as a drop site)
         # =======================================================================
         # Create or use existing auxiliary types
         types_set = []
@@ -313,6 +325,85 @@ class AoCNyanSubprocessor:
         # =======================================================================
         if building_line.is_creatable():
             AoCAuxiliarySubprocessor.get_creatable_game_entity(building_line)
+
+    @staticmethod
+    def _ambient_group_to_game_entity(ambient_group):
+        """
+        Creates raw API objects for an ambient group.
+
+        :param ambient_group: Unit line that gets converted to a game entity.
+        :type ambient_group: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        ambient_unit = ambient_group.get_head_unit()
+        ambient_id = ambient_group.get_head_unit_id()
+
+        dataset = ambient_group.data
+
+        # Start with the generic GameEntity
+        game_entity_name = AMBIENT_GROUP_LOOKUPS[ambient_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (AMBIENT_GROUP_LOOKUPS[ambient_id][1])
+        raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(AMBIENT_GROUP_LOOKUPS[ambient_id][1])
+        ambient_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Game Entity Types
+        # ------------------
+        # we give an ambient the types
+        #    - aux.game_entity_type.types.Ambient
+        # =======================================================================
+        # Create or use existing auxiliary types
+        types_set = []
+
+        type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Ambient"].get_nyan_object()
+        types_set.append(type_obj)
+
+        raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Abilities
+        # =======================================================================
+        abilities_set = []
+
+        interaction_mode = ambient_unit.get_member("interaction_mode").get_value()
+
+        if interaction_mode >= 0:
+            abilities_set.append(AoCAbilitySubprocessor.idle_ability(ambient_group))
+
+        if interaction_mode >= 2:
+            abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.live_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.named_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.visibility_ability(ambient_group))
+
+        if ambient_group.is_harvestable():
+            abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(ambient_group))
+
+        # =======================================================================
+        # TODO: Bunch of other abilities
+        #       Death, Selectable, Hitbox, Despawn, ApplyEffect, Resistance, ...
+        # =======================================================================
+        raw_api_object.add_raw_member("abilities", abilities_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # TODO: Modifiers
+        # =======================================================================
+        modifiers_set = []
+
+        raw_api_object.add_raw_member("modifiers", modifiers_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # TODO: Variants
+        # =======================================================================
+        variants_set = []
+
+        raw_api_object.add_raw_member("variants", variants_set,
+                                      "engine.aux.game_entity.GameEntity")
 
     @staticmethod
     def _tech_group_to_tech(tech_group):

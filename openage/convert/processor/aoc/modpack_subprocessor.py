@@ -54,6 +54,9 @@ class AoCModpackSubprocessor:
         for building_line in full_data_set.building_lines.values():
             raw_api_objects.extend(building_line.get_raw_api_objects().values())
 
+        for ambient_group in full_data_set.ambient_groups.values():
+            raw_api_objects.extend(ambient_group.get_raw_api_objects().values())
+
         for variant_group in full_data_set.variant_groups.values():
             raw_api_objects.extend(variant_group.get_raw_api_objects().values())
 

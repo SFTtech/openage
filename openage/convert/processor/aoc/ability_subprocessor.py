@@ -11,9 +11,10 @@ from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.aoc.combined_sprite import CombinedSprite
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieUnitLineGroup
+    GenieUnitLineGroup, GenieAmbientGroup
 from plainbox.impl.session import storage
-from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS
+from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
+    AMBIENT_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
 
 
@@ -198,6 +199,9 @@ class AoCAbilitySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             name_lookup_dict = BUILDING_LINE_LOOKUPS
 
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
@@ -336,6 +340,9 @@ class AoCAbilitySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             name_lookup_dict = BUILDING_LINE_LOOKUPS
 
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
@@ -404,6 +411,9 @@ class AoCAbilitySubprocessor:
 
         if isinstance(line, GenieBuildingLineGroup):
             name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
@@ -477,6 +487,9 @@ class AoCAbilitySubprocessor:
 
         if isinstance(line, GenieBuildingLineGroup):
             name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
@@ -697,6 +710,9 @@ class AoCAbilitySubprocessor:
 
         if isinstance(line, GenieBuildingLineGroup):
             name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
@@ -1465,6 +1481,9 @@ class AoCAbilitySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             name_lookup_dict = BUILDING_LINE_LOOKUPS
 
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
@@ -1477,7 +1496,13 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Units are not visible in fog
-        ability_raw_api_object.add_raw_member("visible_in_fog", False,
+        visible = False
+
+        # Buidings and scenery is though
+        if isinstance(line, (GenieBuildingLineGroup, GenieAmbientGroup)):
+            visible = True
+
+        ability_raw_api_object.add_raw_member("visible_in_fog", visible,
                                               "engine.ability.type.Visibility")
 
         line.add_raw_api_object(ability_raw_api_object)

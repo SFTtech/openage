@@ -686,7 +686,7 @@ class UnitObject(GenieStructure):
             type_name="interaction_modes",
             lookup_dict={
                 0: "NOTHING_0",
-                1: "NOTHING_1",
+                1: "BIRD",
                 2: "SELECTABLE",
                 3: "SELECT_ATTACK",
                 4: "SELECT_ATTACK_MOVE",

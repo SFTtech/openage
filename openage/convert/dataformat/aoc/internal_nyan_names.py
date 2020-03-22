@@ -94,6 +94,7 @@ AMBIENT_GROUP_LOOKUPS = {
     59: ("BerryBush", "berry_bush"),
     66: ("GoldMine", "gold_mine"),
     102: ("StoneMine", "stone_mine"),
+    285: ("Relic", "relic"),
     348: ("BambooForest", "bamboo_forest"),
     349: ("OakTree", "oak_tree"),
     350: ("Conifer", "conifer"),
@@ -109,6 +110,7 @@ VARIANT_GROUP_LOOKUPS = {
     0: ((450, 451), "BigOceanFish", "big_ocean_fish"),
     1: ((455, 456, 457, 458), "OceanFish", "ocean_fish"),
     2: ((69,), "Shorefish", "shore_fish"),
+    3: ((96, 816), "Bird", "bird")
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)

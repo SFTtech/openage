@@ -34,7 +34,6 @@ from openage.convert.dataformat.aoc.genie_tech import StatUpgrade
 from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
-from numpy import full
 from openage.convert.dataformat.aoc.genie_unit import GenieAmbientGroup
 
 
