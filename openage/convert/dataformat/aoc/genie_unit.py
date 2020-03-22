@@ -179,6 +179,22 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return False
 
+    def is_gatherer(self):
+        """
+        Checks whether the group has any gather abilities.
+
+        :returns: True if the group contains at least one resource storage.
+        """
+        head_unit = self.get_head_unit()
+        commands = head_unit.get_member("unit_commands").get_value()
+        for command in commands:
+            type_id = command.get_value()["type"].get_value()
+
+            if type_id == 5:
+                return True
+
+        return False
+
     def is_ranged(self):
         """
         Units/Buildings are ranged if they have assigned a projectile ID.
@@ -619,6 +635,9 @@ class GenieVillagerGroup(GenieUnitLineGroup):
                 return True
 
         return False
+
+    def is_gatherer(self):
+        return True
 
     def is_unique(self):
         # TODO: More checks here?

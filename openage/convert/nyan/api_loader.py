@@ -170,6 +170,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.ability.type.DropResources
+    parents = [api_objects["engine.ability.Ability"]]
+    nyan_object = NyanObject("DropResources", parents)
+    fqon = "engine.ability.type.DropResources"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.ability.type.EnterContainer
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("EnterContainer", parents)
@@ -2306,6 +2313,18 @@ def _insert_members(api_objects):
 
     set_type = api_objects["engine.aux.resource.Resource"]
     member = NyanMember("accepts", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.ability.type.DropResources
+    api_object = api_objects["engine.ability.type.DropResources"]
+
+    member = NyanMember("search_range", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
+    member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("blacklisted_game_entities", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.ability.type.EnterContainer

@@ -165,8 +165,8 @@ class AoCNyanSubprocessor:
         if unit_line.is_harvestable():
             abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(unit_line))
 
-        if isinstance(unit_line, GenieVillagerGroup):
-            pass
+        if unit_line.is_gatherer():
+            abilities_set.append(AoCAbilitySubprocessor.drop_resources_ability(unit_line))
 
         # =======================================================================
         # TODO: Bunch of other abilities
