@@ -163,6 +163,22 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         # -1 = no train location
         return train_location_id > -1
 
+    def is_harvestable(self):
+        """
+        Checks whether the group holds any of the 4 main resources Food,
+        Wood, Gold and Stone.
+
+        :returns: True if the group contains at least one resource storage.
+        """
+        head_unit = self.get_head_unit()
+        for resource_storage in head_unit.get_member("resource_storage").get_value():
+            type_id = resource_storage.get_value()["type"].get_value()
+
+            if type_id in (0, 1, 2, 3, 15, 16, 17):
+                return True
+
+        return False
+
     def is_ranged(self):
         """
         Units/Buildings are ranged if they have assigned a projectile ID.
@@ -289,11 +305,37 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
     be patches to that GameEntity applied by Techs.
     """
 
+    def __init__(self, line_id, full_data_set):
+        super().__init__(line_id, full_data_set)
+
+        # IDs of resources that cen be dropped off here
+        self.accepts_resources = set()
+
+    def add_accepted_resource(self, resource_id):
+        """
+        Adds a resourced that can be dropped off at this building.
+
+        :param resource_id: ID of the resource that can be dropped off.
+        """
+        self.accepts_resources.add(resource_id)
+
     def contains_unit(self, building_id):
         """
         Returns True if a building with building_id is part of the line.
         """
         return self.contains_entity(building_id)
+
+    def is_dropsite(self):
+        """
+        Returns True if the building accepts resources.
+        """
+        return len(self.accepts_resources) > 0
+
+    def get_accepted_resources(self):
+        """
+        Returns resource IDs for resources that can be dropped off at this building.
+        """
+        return self.accepts_resources
 
     def __repr__(self):
         return "GenieBuildingLineGroup<%s>" % (self.get_id())
@@ -417,65 +459,38 @@ class GenieMonkGroup(GenieUnitLineGroup):
         return "GenieMonkGroup<%s>" % (self.get_id())
 
 
-class GenieVariantGroup(ConverterObjectGroup):
+class GenieAmbientGroup(GenieGameEntityGroup):
     """
-    Collection of Genie units that are variants of the same game entity.
-    Mostly for resource spots.
+    One Genie unit that is an ambient scenery object.
+    Mostly for resources, specifically trees. For these objects
+    every frame in their graphics file is a variant.
 
-    Example: Trees, fish, gold mines, stone mines
+    Example: Trees, Gold mines, Sign
     """
 
-    def __init__(self, class_id, full_data_set):
+    def contains_unit(self, ambient_id):
         """
-        TODO: Implement
+        Returns True if the ambient object with ambient_id is in this group.
         """
+        return self.contains_entity(ambient_id)
 
-        super().__init__(class_id)
+    def __repr__(self):
+        return "GenieAmbientGroup<%s>" % (self.get_id())
 
-        # The variants of the units
-        self.variants = []
 
-        # Reference to everything else in the gamedata
-        self.data = full_data_set
+class GenieVariantGroup(GenieGameEntityGroup):
+    """
+    Collection of multiple Genie units that are variants of the same game entity.
+    Mostly for cliffs and ambient terrain objects.
 
-    def add_unit(self, genie_unit, after=None):
-        """
-        Adds a unit to the list of variants.
-
-        :param genie_unit: A GenieUnit object that is in the same class.
-        :param after: ID of a unit after which the new unit is
-                      placed in the list. If a unit with this obj_id
-                      is not present, the unit is appended at the end
-                      of the list.
-        """
-        unit_id = genie_unit.get_member("id0").get_value()
-        class_id = genie_unit.get_member("unit_class").get_value()
-
-        if class_id != self.get_id():
-            raise Exception("Classes do not match: unit %s with class %s cannot be added to"
-                            " %s with class %s" % (genie_unit, class_id, self, self.get_id()))
-
-        # Only add unit if it is not already in the list
-        if not self.contains_unit(unit_id):
-            if after:
-                for unit in self.variants:
-                    if after == unit.get_id():
-                        self.variants.insert(self.variants.index(unit) + 1, genie_unit)
-                        break
-
-                else:
-                    self.variants.append(genie_unit)
-
-            else:
-                self.variants.append(genie_unit)
+    Example: Cliffs, flowers, mountains
+    """
 
     def contains_unit(self, object_id):
         """
         Returns True if a unit with unit_id is part of the group.
         """
-        obj = self.data.genie_units[object_id]
-
-        return obj in self.variants
+        return self.contains_entity(object_id)
 
     def __repr__(self):
         return "GenieVariantGroup<%s>" % (self.get_id())

@@ -47,6 +47,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.transform_groups = {}
         self.villager_groups = {}
         self.monk_groups = {}
+        self.ambient_groups = {}
         self.variant_groups = {}
         self.civ_groups = {}
         self.tech_groups = {}

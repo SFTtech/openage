@@ -10,7 +10,8 @@ from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, BUILDING_LI
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.aoc.combined_sprite import CombinedSprite
 from openage.nyan.nyan_structs import MemberSpecialValue
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
+    GenieUnitLineGroup
 from plainbox.impl.session import storage
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
@@ -66,6 +67,198 @@ class AoCAbilitySubprocessor:
 
         ability_raw_api_object.add_raw_member("creatables", creatables_set,
                                               "engine.ability.type.Create")
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def drop_site_ability(line):
+        """
+        Adds the DropSite ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.DropSite" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "DropSite", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.DropSite")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        resources = []
+        for resource_id in line.get_accepted_resources():
+            if resource_id == 0:
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
+
+            elif resource_id == 1:
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
+
+            elif resource_id == 2:
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
+
+            elif resource_id == 3:
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
+
+            else:
+                continue
+
+            resources.append(resource)
+
+        ability_raw_api_object.add_raw_member("accepts", resources, "engine.ability.type.DropSite")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def harvestable_ability(line):
+        """
+        Adds the Harvestable ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Harvestable" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Harvestable", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Harvestable")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Resource spot
+        resource_storage = current_unit.get_member("resource_storage").get_value()
+
+        for storage in resource_storage:
+            resource_id = storage.get_value()["type"].get_value()
+
+            # IDs 15, 16, 17 are other types of food (meat, berries, fish)
+            if resource_id in (0, 15, 16, 17):
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
+                resource_name = "Food"
+
+            elif resource_id == 1:
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
+                resource_name = "Wood"
+
+            elif resource_id == 2:
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
+                resource_name = "Stone"
+
+            elif resource_id == 3:
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
+                resource_name = "Gold"
+
+            else:
+                continue
+
+            spot_name = "%s.Harvestable.%sResourceSpot" % (game_entity_name, resource_name)
+            spot_raw_api_object = RawAPIObject(spot_name,
+                                               "%sResourceSpot" % (resource_name),
+                                               dataset.nyan_api_objects)
+            spot_raw_api_object.add_raw_parent("engine.aux.resource_spot.ResourceSpot")
+            spot_location = ExpectedPointer(line, obj_name)
+            spot_raw_api_object.set_location(spot_location)
+
+            # Type
+            spot_raw_api_object.add_raw_member("resource",
+                                               resource,
+                                               "engine.aux.resource_spot.ResourceSpot")
+
+            # Start amount (equals max amount)
+
+            if line.get_id() == 50:
+                # Farm food amount (hardcoded in civ)
+                starting_amount = dataset.genie_civs[1].get_member("resources").get_value()[36].get_value()
+
+            elif line.get_id() == 199:
+                # Fish trap food amount (hardcoded in civ)
+                starting_amount = storage.get_value()["amount"].get_value()
+                starting_amount += dataset.genie_civs[1].get_member("resources").get_value()[88].get_value()
+
+            else:
+                starting_amount = storage.get_value()["amount"].get_value()
+
+            spot_raw_api_object.add_raw_member("starting_amount",
+                                               starting_amount,
+                                               "engine.aux.resource_spot.ResourceSpot")
+
+            # Max amount
+            spot_raw_api_object.add_raw_member("max_amount",
+                                               starting_amount,
+                                               "engine.aux.resource_spot.ResourceSpot")
+
+            # Decay rate
+            decay_rate = current_unit.get_member("resource_decay").get_value()
+            spot_raw_api_object.add_raw_member("decay_rate",
+                                               decay_rate,
+                                               "engine.aux.resource_spot.ResourceSpot")
+
+            spot_expected_pointer = ExpectedPointer(line, spot_name)
+            ability_raw_api_object.add_raw_member("resources",
+                                                  spot_expected_pointer,
+                                                  "engine.ability.type.Harvestable")
+            line.add_raw_api_object(spot_raw_api_object)
+
+            # Only one resource spot per ability
+            break
+
+        # Harvest Progress
+        ability_raw_api_object.add_raw_member("harvest_progress",
+                                              [],
+                                              "engine.ability.type.Harvestable")
+
+        # Restock Progress (TODO: Farms are different)
+        ability_raw_api_object.add_raw_member("restock_progress",
+                                              [],
+                                              "engine.ability.type.Harvestable")
+
+        # Gatherer limit (infinite in AoC)
+        ability_raw_api_object.add_raw_member("gatherer_limit",
+                                              MemberSpecialValue.NYAN_INF,
+                                              "engine.ability.type.Harvestable")
+
+        # Unit have to die before they are harvestable
+        harvestable_by_default = not isinstance(line, GenieUnitLineGroup)
+        ability_raw_api_object.add_raw_member("harvestable_by_default",
+                                              harvestable_by_default,
+                                              "engine.ability.type.Harvestable")
+
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())

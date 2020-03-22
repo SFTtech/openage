@@ -23,6 +23,8 @@ UNIT_LINE_LOOKUPS = {
     40: ("Cataphract", "cataphract"),
     41: ("Huscarl", "huscarl"),
     46: ("Janissary", "janissary"),
+    48: ("Boar", "boar"),
+    65: ("Deer", "deer"),
     73: ("ChuKoNu", "chu_ko_nu"),
     74: ("Militia", "militia"),
     93: ("Spearman", "spearman"),
@@ -46,6 +48,7 @@ UNIT_LINE_LOOKUPS = {
     529: ("FireTrireme", "fire_trireme"),
     539: ("Galley", "galley"),
     545: ("TransportShip", "transport_ship"),
+    594: ("Sheep", "sheep"),
     692: ("Berserk", "berserk"),
     725: ("JaguarWarrior", "jaguar_warrior"),
     751: ("EagleWarrior", "eagle_warrior"),
@@ -55,6 +58,7 @@ UNIT_LINE_LOOKUPS = {
     775: ("Missionary", "missionary"),
     827: ("WarWaggon", "war_waggon"),
     831: ("TurtleShip", "turtle_ship"),
+    833: ("Turkey", "turkey"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)
@@ -83,6 +87,28 @@ BUILDING_LINE_LOOKUPS = {
     562: ("LumberCamp", "lumber_camp"),
     584: ("MiningCamp", "mining_camp"),
     598: ("Outpost", "outpost"),
+}
+
+# key: (head) unit id; value: (nyan object name, filename prefix)
+AMBIENT_GROUP_LOOKUPS = {
+    59: ("BerryBush", "berry_bush"),
+    66: ("GoldMine", "gold_mine"),
+    102: ("StoneMine", "stone_mine"),
+    348: ("BambooForest", "bamboo_forest"),
+    349: ("OakTree", "oak_tree"),
+    350: ("Conifer", "conifer"),
+    351: ("PalmTree", "palm_tree"),
+    411: ("ForestTree", "forest_tree"),
+    413: ("SnowyConifer", "snowy_conifer"),
+    414: ("JungleTree", "jungle_tree"),
+    709: ("Cactus", "cactus"),
+}
+
+# key: head unit id; value: (units belonging to group, nyan object name, filename prefix)
+VARIANT_GROUP_LOOKUPS = {
+    0: ((450, 451), "BigOceanFish", "big_ocean_fish"),
+    1: ((455, 456, 457, 458), "OceanFish", "ocean_fish"),
+    2: ((69,), "Shorefish", "shore_fish"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)

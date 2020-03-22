@@ -231,6 +231,19 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(unit_raw_api_object)
         pregen_nyan_objects.update({unit_ref_in_modpack: unit_raw_api_object})
 
+        # =======================================================================
+        # DropSite
+        # =======================================================================
+        drop_site_ref_in_modpack = "aux.game_entity_type.types.DropSite"
+        drop_site_raw_api_object = RawAPIObject(drop_site_ref_in_modpack,
+                                                "DropSite", api_objects,
+                                                types_location)
+        drop_site_raw_api_object.set_filename("types")
+        drop_site_raw_api_object.add_raw_parent(type_parent)
+
+        pregen_converter_group.add_raw_api_object(drop_site_raw_api_object)
+        pregen_nyan_objects.update({drop_site_ref_in_modpack: drop_site_raw_api_object})
+
     @staticmethod
     def _generate_resources(full_data_set, pregen_converter_group):
         """

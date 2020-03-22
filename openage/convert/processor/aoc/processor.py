@@ -32,6 +32,10 @@ from .modpack_subprocessor import AoCModpackSubprocessor
 from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
 from openage.convert.dataformat.aoc.genie_tech import StatUpgrade
 from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
+from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
+    VARIANT_GROUP_LOOKUPS
+from numpy import full
+from openage.convert.dataformat.aoc.genie_unit import GenieAmbientGroup
 
 
 class AoCProcessor:
@@ -103,14 +107,17 @@ class AoCProcessor:
         """
 
         cls._create_unit_lines(full_data_set)
+        cls._create_extra_unit_lines(full_data_set)
         cls._create_building_lines(full_data_set)
         cls._create_tech_groups(full_data_set)
         cls._create_civ_groups(full_data_set)
         cls._create_villager_groups(full_data_set)
+        cls._create_ambient_groups(full_data_set)
         cls._create_variant_groups(full_data_set)
 
         cls._link_creatables(full_data_set)
         cls._link_researchables(full_data_set)
+        cls._link_resources_to_dropsites(full_data_set)
 
         return full_data_set
 
@@ -469,6 +476,23 @@ class AoCProcessor:
         full_data_set.unit_lines_vertical_ref.update(pre_unit_lines)
 
     @staticmethod
+    def _create_extra_unit_lines(full_data_set):
+        """
+        Create additional units that are not in the unit connections.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        extra_units = (48, 65, 594, 833)  # Wildlife
+
+        for unit_id in extra_units:
+            unit_line = GenieUnitLineGroup(unit_id, full_data_set)
+            unit_line.add_unit(full_data_set.genie_units[unit_id])
+            full_data_set.unit_lines.update({unit_line.get_id(): unit_line})
+
+    @staticmethod
     def _create_building_lines(full_data_set):
         """
         Establish building lines, based on information in the building connections.
@@ -787,35 +811,41 @@ class AoCProcessor:
         full_data_set.villager_groups.update({villager.get_id(): villager})
 
     @staticmethod
-    def _create_variant_groups(full_data_set):
+    def _create_ambient_groups(full_data_set):
         """
-        Create variant groups, mostly for resources and cliffs.
+        Create ambient groups, mostly for resources and scenery.
 
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
-        units = full_data_set.genie_units
+        ambient_ids = AMBIENT_GROUP_LOOKUPS.keys()
+        genie_units = full_data_set.genie_units
 
-        for unit in units.values():
-            class_id = unit.get_member("unit_class").get_value()
+        for ambient_id in ambient_ids:
+            ambient_group = GenieAmbientGroup(ambient_id, full_data_set)
+            ambient_group.add_unit(genie_units[ambient_id])
+            full_data_set.ambient_groups.update({ambient_group.get_id(): ambient_group})
 
-            # Most of these classes are assigned to Gaia units
-            if class_id not in (5, 7, 8, 9, 10, 15, 29, 30, 31,
-                                32, 33, 34, 42, 58, 59, 61):
-                continue
+    @staticmethod
+    def _create_variant_groups(full_data_set):
+        """
+        Create variant groups.
 
-            # Check if a variant group already exists for this id
-            # if not, create it
-            if class_id in full_data_set.variant_groups.keys():
-                variant_group = full_data_set.variant_groups[class_id]
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        variants = VARIANT_GROUP_LOOKUPS
 
-            else:
-                variant_group = GenieVariantGroup(class_id, full_data_set)
-                full_data_set.variant_groups.update({variant_group.get_id(): variant_group})
+        for group_id, variant in variants.items():
+            variant_group = GenieVariantGroup(group_id, full_data_set)
+            full_data_set.variant_groups.update({variant_group.get_id(): variant_group})
 
-            variant_group.add_unit(unit)
+            for variant_id in variant[0]:
+                variant_group.add_unit(full_data_set.genie_units[variant_id])
 
     @staticmethod
     def _link_creatables(full_data_set):
@@ -867,3 +897,40 @@ class AoCProcessor:
             if tech.is_researchable():
                 research_location_id = tech.get_research_location_id()
                 full_data_set.building_lines[research_location_id].add_researchable(tech)
+
+    @staticmethod
+    def _link_resources_to_dropsites(full_data_set):
+        """
+        Link resources to the buildings they can be dropped off at. This is done
+        to provide quick access during conversion.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        villager_groups = full_data_set.villager_groups
+
+        for villager in villager_groups.values():
+            for variant in villager.variants:
+                for unit in variant.line:
+                    drop_site_id0 = unit.get_member("drop_site0").get_value()
+                    drop_site_id1 = unit.get_member("drop_site1").get_value()
+
+                    if drop_site_id0 > -1:
+                        drop_site0 = full_data_set.building_lines[drop_site_id0]
+
+                    if drop_site_id1 > -1:
+                        drop_site1 = full_data_set.building_lines[drop_site_id1]
+
+                    commands = unit.get_member("unit_commands").get_value()
+                    for command in commands:
+                        type_id = command.get_value()["type"].get_value()
+
+                        if type_id == 5:
+                            resource_id = command.get_value()["resource_out"].get_value()
+
+                            if drop_site_id0 > -1:
+                                drop_site0.add_accepted_resource(resource_id)
+                            if drop_site_id1 > -1:
+                                drop_site1.add_accepted_resource(resource_id)
