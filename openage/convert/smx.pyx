@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 #
 # cython: profile=False
 
@@ -71,12 +71,12 @@ class SMX:
     # struct smx_layer_header {
     #   unsigned short width;
     #   unsigned short height;
-    #   unsigned short hotspot_x;
-    #   unsigned short hotspot_y;
+    #   short hotspot_x;
+    #   short hotspot_y;
     #   unsigned int   distance_next_frame;
     #   int            4 bytes;
     # };
-    smx_layer_header = Struct(endianness + "H H H H I i")
+    smx_layer_header = Struct(endianness + "H H h h I i")
 
     def __init__(self, data):
         """
