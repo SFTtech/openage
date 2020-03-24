@@ -926,8 +926,11 @@ class AoCProcessor:
                     for command in commands:
                         type_id = command.get_value()["type"].get_value()
 
-                        if type_id == 5:
+                        if type_id in (5, 110):
                             resource_id = command.get_value()["resource_out"].get_value()
+
+                            if resource_id == -1:
+                                resource_id = command.get_value()["resource_in"].get_value()
 
                             if drop_site_id0 > -1:
                                 drop_site0.add_accepted_resource(resource_id)

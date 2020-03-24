@@ -239,6 +239,12 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         # Enabling tech has no specific civ -> not unique
         return enabling_civ_id > -1
 
+    def get_class_id(self):
+        """
+        Return the class ID for units in the line.
+        """
+        return self.get_head_unit().get_member("unit_class").get_value()
+
     def get_head_unit_id(self):
         """
         Return the obj_id of the first unit in the line.
@@ -596,7 +602,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         7: "COMBAT",    # Attack
         101: "BUILD",   # Build buildings
         106: "REPAIR",  # Repair buildings, ships, rams
-        110: "HUNT",    # Hunt animals, Chop trees
+        110: "HUNT",    # Kill first, then gather
     }
 
     def __init__(self, group_id, task_group_ids, full_data_set):

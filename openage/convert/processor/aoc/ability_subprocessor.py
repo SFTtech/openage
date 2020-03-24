@@ -14,7 +14,7 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieUnitLineGroup, GenieAmbientGroup
 from plainbox.impl.session import storage
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
-    AMBIENT_GROUP_LOOKUPS
+    AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS
 from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
 
 
@@ -177,6 +177,186 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def gather_ability(line):
+        """
+        Adds the Gather abilities to a line. Unlike the other methods, this
+        creates multiple abilities.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointers for the abilities.
+        :rtype: list
+        """
+        if isinstance(line, GenieVillagerGroup):
+            gatherers = line.variants[1].line
+
+        else:
+            gatherers = [line.line[0]]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        abilities = []
+        for gatherer in gatherers:
+            unit_commands = gatherer.get_member("unit_commands").get_value()
+            resource = None
+            harvestable_class_ids = set()
+            harvestable_unit_ids = set()
+
+            for command in unit_commands:
+                # Find a gather ability. It doesn't matter which one because
+                # they should all produce the same resource for one genie unit.
+                type_id = command.get_value()["type"].get_value()
+
+                if type_id not in (5, 110):
+                    continue
+
+                target_class_id = command.get_value()["class_id"].get_value()
+                if target_class_id > -1:
+                    harvestable_class_ids.add(target_class_id)
+
+                target_unit_id = command.get_value()["unit_id"].get_value()
+                if target_unit_id > -1:
+                    harvestable_unit_ids.add(target_unit_id)
+
+                resource_id = command.get_value()["resource_out"].get_value()
+
+                # If resource_out is not specified, the gatherer harvests resource_in
+                if resource_id == -1:
+                    resource_id = command.get_value()["resource_in"].get_value()
+
+                if resource_id == 0:
+                    resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
+
+                elif resource_id == 1:
+                    resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
+
+                elif resource_id == 2:
+                    resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
+
+                elif resource_id == 3:
+                    resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
+
+                else:
+                    continue
+
+            # Look for the harvestable groups that match the class IDs and unit IDs
+            check_groups = set()
+            check_groups.update(dataset.unit_lines.values())
+            check_groups.update(dataset.building_lines.values())
+            check_groups.update(dataset.ambient_groups.values())
+
+            harvestable_groups = set()
+            for group in check_groups:
+                if not group.is_harvestable():
+                    continue
+
+                if group.get_class_id() in harvestable_class_ids:
+                    harvestable_groups.add(group)
+                    continue
+
+                for unit_id in harvestable_unit_ids:
+                    if group.contains_entity(unit_id):
+                        harvestable_groups.add(group)
+
+            if len(harvestable_groups) == 0:
+                # If no matching groups are found, then we don't
+                # need to create an ability.
+                continue
+
+            gatherer_unit_id = gatherer.get_id()
+            if gatherer_unit_id not in GATHER_TASK_LOOKUPS.keys():
+                # Skips hunting wolves
+                continue
+
+            ability_name = GATHER_TASK_LOOKUPS[gatherer_unit_id]
+
+            obj_name = "%s.%s" % (game_entity_name, ability_name)
+            ability_raw_api_object = RawAPIObject(obj_name, ability_name, dataset.nyan_api_objects)
+            ability_raw_api_object.add_raw_parent("engine.ability.type.Gather")
+            ability_location = ExpectedPointer(line, game_entity_name)
+            ability_raw_api_object.set_location(ability_location)
+
+            # Auto resume
+            ability_raw_api_object.add_raw_member("auto_resume",
+                                                  True,
+                                                  "engine.ability.type.Gather")
+
+            # search range
+            ability_raw_api_object.add_raw_member("resume_search_range",
+                                                  MemberSpecialValue.NYAN_INF,
+                                                  "engine.ability.type.Gather")
+
+            # Carry capacity
+            carry_capacity = gatherer.get_member("resource_capacity").get_value()
+            ability_raw_api_object.add_raw_member("carry_capacity",
+                                                  carry_capacity,
+                                                  "engine.ability.type.Gather")
+
+            # Gather rate
+            # TODO: The work_rate attribute must be turned into a MultiplierModifier
+            rate_name = "%s.%s.GatherRate" % (game_entity_name, ability_name)
+            rate_raw_api_object = RawAPIObject(rate_name, "GatherRate", dataset.nyan_api_objects)
+            rate_raw_api_object.add_raw_parent("engine.aux.resource.ResourceRate")
+            rate_location = ExpectedPointer(line, obj_name)
+            rate_raw_api_object.set_location(rate_location)
+
+            rate_raw_api_object.add_raw_member("type", resource, "engine.aux.resource.ResourceRate")
+
+            gather_rate = gatherer.get_member("work_rate").get_value()
+            rate_raw_api_object.add_raw_member("rate", gather_rate, "engine.aux.resource.ResourceRate")
+
+            line.add_raw_api_object(rate_raw_api_object)
+
+            rate_expected_pointer = ExpectedPointer(line, rate_name)
+            ability_raw_api_object.add_raw_member("gather_rate",
+                                                  rate_expected_pointer,
+                                                  "engine.ability.type.Gather")
+
+            # TODO: Carry progress
+            ability_raw_api_object.add_raw_member("carry_progress",
+                                                  [],
+                                                  "engine.ability.type.Gather")
+
+            # Targets (resource spots)
+            entity_lookups = {}
+            entity_lookups.update(UNIT_LINE_LOOKUPS)
+            entity_lookups.update(BUILDING_LINE_LOOKUPS)
+            entity_lookups.update(AMBIENT_GROUP_LOOKUPS)
+
+            spot_expected_pointers = []
+            for group in harvestable_groups:
+                group_id = group.get_head_unit_id()
+                group_name = entity_lookups[group_id][0]
+
+                spot_expected_pointer = ExpectedPointer(group,
+                                                        "%s.Harvestable.%sResourceSpot"
+                                                        % (group_name, group_name))
+                spot_expected_pointers.append(spot_expected_pointer)
+
+            ability_raw_api_object.add_raw_member("targets",
+                                                  spot_expected_pointers,
+                                                  "engine.ability.type.Gather")
+
+            line.add_raw_api_object(ability_raw_api_object)
+
+            ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+            abilities.append(ability_expected_pointer)
+
+        return abilities
+
+    @staticmethod
     def harvestable_ability(line):
         """
         Adds the Harvestable ability to a line.
@@ -222,26 +402,22 @@ class AoCAbilitySubprocessor:
             # IDs 15, 16, 17 are other types of food (meat, berries, fish)
             if resource_id in (0, 15, 16, 17):
                 resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
-                resource_name = "Food"
 
             elif resource_id == 1:
                 resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
-                resource_name = "Wood"
 
             elif resource_id == 2:
                 resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
-                resource_name = "Stone"
 
             elif resource_id == 3:
                 resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
-                resource_name = "Gold"
 
             else:
                 continue
 
-            spot_name = "%s.Harvestable.%sResourceSpot" % (game_entity_name, resource_name)
+            spot_name = "%s.Harvestable.%sResourceSpot" % (game_entity_name, game_entity_name)
             spot_raw_api_object = RawAPIObject(spot_name,
-                                               "%sResourceSpot" % (resource_name),
+                                               "%sResourceSpot" % (game_entity_name),
                                                dataset.nyan_api_objects)
             spot_raw_api_object.add_raw_parent("engine.aux.resource_spot.ResourceSpot")
             spot_location = ExpectedPointer(line, obj_name)
@@ -306,7 +482,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Harvestable")
 
         # Unit have to die before they are harvestable
-        harvestable_by_default = not isinstance(line, GenieUnitLineGroup)
+        harvestable_by_default = current_unit.get_member("hit_points").get_value() == 0
         ability_raw_api_object.add_raw_member("harvestable_by_default",
                                               harvestable_by_default,
                                               "engine.ability.type.Harvestable")

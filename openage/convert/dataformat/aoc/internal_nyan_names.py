@@ -336,3 +336,24 @@ CLASS_ID_LOOKUPS = {
     59: "King",
     61: "Horse",
 }
+
+# key: genie unit id; value: Gather ability name
+GATHER_TASK_LOOKUPS = {
+    13: "Fish",  # fishing boat
+    56: "Fish",  # male
+    57: "Fish",  # female
+    120: "CollectBerries",  # male
+    354: "CollectBerries",  # female
+    122: "HarvestGame",  # male
+    216: "HarvestGame",  # female
+    123: "ChopWood",  # male
+    218: "ChopWood",  # female
+    124: "MineStone",  # male
+    220: "MineStone",  # female
+    214: "FarmCrops",  # male
+    259: "FarmCrops",  # female
+    579: "MineGold",  # male
+    581: "MineGold",  # female
+    590: "HarvestLivestock",  # male
+    592: "HarvestLivestock",  # female
+}
