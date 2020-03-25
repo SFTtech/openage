@@ -11,10 +11,9 @@ from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.aoc.combined_sprite import CombinedSprite
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieUnitLineGroup, GenieAmbientGroup
-from plainbox.impl.session import storage
+    GenieAmbientGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
-    AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS
+    AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS
 from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
 
 
@@ -1210,6 +1209,110 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("amount",
                                               contingents,
                                               "engine.ability.type.ProvideContingent")
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def restock_ability(line, restock_target_id):
+        """
+        Adds the Restock ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        # get the restock target
+        converter_groups = {}
+        converter_groups.update(dataset.unit_lines)
+        converter_groups.update(dataset.building_lines)
+        converter_groups.update(dataset.ambient_groups)
+
+        restock_target = converter_groups[restock_target_id]
+
+        if not restock_target.is_harvestable():
+            raise Exception("%s cannot be restocked: is not harvestable"
+                            % (restock_target))
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+        obj_name = "%s.%s" % (game_entity_name, RESTOCK_TARGET_LOOKUPS[restock_target_id])
+        ability_raw_api_object = RawAPIObject(obj_name,
+                                              RESTOCK_TARGET_LOOKUPS[restock_target_id],
+                                              dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Restock")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Auto restock
+        ability_raw_api_object.add_raw_member("auto_restock",
+                                              True,  # always True since AoC
+                                              "engine.ability.type.Restock")
+
+        # Target
+        restock_target_lookup_dict = {}
+        restock_target_lookup_dict.update(UNIT_LINE_LOOKUPS)
+        restock_target_lookup_dict.update(BUILDING_LINE_LOOKUPS)
+        restock_target_lookup_dict.update(AMBIENT_GROUP_LOOKUPS)
+        restock_target_name = restock_target_lookup_dict[restock_target_id][0]
+        spot_expected_pointer = ExpectedPointer(restock_target,
+                                                "%s.Harvestable.%sResourceSpot"
+                                                % (restock_target_name,
+                                                   restock_target_name))
+        ability_raw_api_object.add_raw_member("target",
+                                              spot_expected_pointer,
+                                              "engine.ability.type.Restock")
+
+        # restock time
+        restock_time = restock_target.get_head_unit().get_member("creation_time").get_value()
+        ability_raw_api_object.add_raw_member("restock_time",
+                                              restock_time,
+                                              "engine.ability.type.Restock")
+
+        # Manual/Auto Cost
+        # Link to the same Cost object as Create
+        cost_expected_pointer = ExpectedPointer(restock_target,
+                                                "%s.CreatableGameEntity.%sCost"
+                                                % (restock_target_name, restock_target_name))
+        ability_raw_api_object.add_raw_member("manual_cost",
+                                              cost_expected_pointer,
+                                              "engine.ability.type.Restock")
+        ability_raw_api_object.add_raw_member("auto_cost",
+                                              cost_expected_pointer,
+                                              "engine.ability.type.Restock")
+
+        # Amount
+        restock_amount = restock_target.get_head_unit().get_member("resource_capacity").get_value()
+        if restock_target_id == 50:
+            # Farm food amount (hardcoded in civ)
+            restock_amount = dataset.genie_civs[1].get_member("resources").get_value()[36].get_value()
+
+        elif restock_target_id == 199:
+            # Fish trap added food amount (hardcoded in civ)
+            restock_amount += dataset.genie_civs[1].get_member("resources").get_value()[88].get_value()
+
+        ability_raw_api_object.add_raw_member("amount",
+                                              restock_amount,
+                                              "engine.ability.type.Restock")
+
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())

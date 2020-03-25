@@ -357,3 +357,8 @@ GATHER_TASK_LOOKUPS = {
     590: "HarvestLivestock",  # male
     592: "HarvestLivestock",  # female
 }
+
+# key: restock target unit id; value: Gather ability name
+RESTOCK_TARGET_LOOKUPS = {
+    50: "ReseedFarm",
+}

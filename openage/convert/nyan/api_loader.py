@@ -2618,7 +2618,7 @@ def _insert_members(api_objects):
     member = NyanMember("auto_restock", MemberType.BOOLEAN, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.resource_spot.ResourceSpot"]
-    member = NyanMember("auto_restock", ref_object, None, None, 0, None, False)
+    member = NyanMember("target", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("restock_time", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)

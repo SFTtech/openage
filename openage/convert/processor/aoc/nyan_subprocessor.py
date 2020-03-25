@@ -179,6 +179,10 @@ class AoCNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.drop_resources_ability(unit_line))
             abilities_set.extend(AoCAbilitySubprocessor.gather_ability(unit_line))
 
+        if isinstance(unit_line, GenieVillagerGroup):
+            # Farm restocking
+            abilities_set.append(AoCAbilitySubprocessor.restock_ability(unit_line, 50))
+
         # =======================================================================
         # TODO: Bunch of other abilities
         #       Death, Selectable, Hitbox, Despawn, ApplyEffect, Resistance, ...
