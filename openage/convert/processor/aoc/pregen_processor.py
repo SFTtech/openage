@@ -9,6 +9,7 @@ from openage.convert.dataformat.converter_object import RawAPIObject,\
     ConverterObjectGroup
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.nyan.nyan_structs import MemberSpecialValue
+from openage.convert.dataformat.aoc.internal_nyan_names import CLASS_ID_LOOKUPS
 
 
 class AoCPregenSubprocessor:
@@ -243,6 +244,28 @@ class AoCPregenSubprocessor:
 
         pregen_converter_group.add_raw_api_object(drop_site_raw_api_object)
         pregen_nyan_objects.update({drop_site_ref_in_modpack: drop_site_raw_api_object})
+
+        # =======================================================================
+        # Others (generated from class ID)
+        # =======================================================================
+        converter_groups = []
+        converter_groups.extend(full_data_set.unit_lines.values())
+        converter_groups.extend(full_data_set.building_lines.values())
+        converter_groups.extend(full_data_set.ambient_groups.values())
+        converter_groups.extend(full_data_set.variant_groups.values())
+
+        for unit_line in converter_groups:
+            unit_class = unit_line.get_class_id()
+            class_name = CLASS_ID_LOOKUPS[unit_class]
+            class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+
+            new_game_entity_type = RawAPIObject(class_obj_name, class_name,
+                                                full_data_set.nyan_api_objects,
+                                                types_location)
+            new_game_entity_type.set_filename("types")
+            new_game_entity_type.add_raw_parent("engine.aux.game_entity_type.GameEntityType")
+            new_game_entity_type.create_nyan_object()
+            full_data_set.pregen_nyan_objects.update({class_obj_name: new_game_entity_type})
 
     @staticmethod
     def _generate_resources(full_data_set, pregen_converter_group):

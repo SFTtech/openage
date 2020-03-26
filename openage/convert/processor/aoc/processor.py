@@ -88,8 +88,6 @@ class AoCProcessor:
         cls._extract_genie_sounds(gamespec, data_set)
         cls._extract_genie_terrains(gamespec, data_set)
 
-        AoCPregenSubprocessor.generate(data_set)
-
         return data_set
 
     @classmethod
@@ -117,6 +115,8 @@ class AoCProcessor:
         cls._link_creatables(full_data_set)
         cls._link_researchables(full_data_set)
         cls._link_resources_to_dropsites(full_data_set)
+
+        AoCPregenSubprocessor.generate(full_data_set)
 
         return full_data_set
 

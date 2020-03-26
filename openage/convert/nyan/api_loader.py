@@ -2085,13 +2085,6 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.modifier.type.AlwaysHerd
-    parents = [api_objects["engine.modifier.Modifier"]]
-    nyan_object = NyanObject("AlwaysHerd", parents)
-    fqon = "engine.modifier.type.AlwaysHerd"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.modifier.type.ContinuousResource
     parents = [api_objects["engine.modifier.Modifier"]]
     nyan_object = NyanObject("ContinuousResource", parents)
@@ -2434,6 +2427,8 @@ def _insert_members(api_objects):
 
     member = NyanMember("range", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
+    member = NyanMember("strength", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
     member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
@@ -2447,7 +2442,7 @@ def _insert_members(api_objects):
     member = NyanMember("adjacent_discover_range", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.herdable_mode.HerdableMode"]
-    member = NyanMember("herdable_mode", ref_object, None, None, 0, None, False)
+    member = NyanMember("mode", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Hitbox

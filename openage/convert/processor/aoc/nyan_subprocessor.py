@@ -130,17 +130,6 @@ class AoCNyanSubprocessor:
         unit_class = current_unit.get_member("unit_class").get_value()
         class_name = CLASS_ID_LOOKUPS[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
-
-        # Create the game entity type on-the-fly if it not already exists
-        if class_obj_name not in dataset.pregen_nyan_objects.keys():
-            type_location = "data/aux/game_entity_type/"
-            new_game_entity_type = RawAPIObject(class_obj_name, class_name,
-                                                dataset.nyan_api_objects, type_location)
-            new_game_entity_type.set_filename("types")
-            new_game_entity_type.add_raw_parent("engine.aux.game_entity_type.GameEntityType")
-            new_game_entity_type.create_nyan_object()
-            dataset.pregen_nyan_objects.update({class_obj_name: new_game_entity_type})
-
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
         types_set.append(type_obj)
 
@@ -174,6 +163,13 @@ class AoCNyanSubprocessor:
 
         if unit_line.is_harvestable():
             abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(unit_line))
+
+        if unit_line.get_class_id() == 58:
+            abilities_set.append(AoCAbilitySubprocessor.herdable_ability(unit_line))
+
+        if unit_type == 70 and unit_line.get_class_id() not in (9, 10, 58):
+            # Excludes trebuchets and animals
+            abilities_set.append(AoCAbilitySubprocessor.herd_ability(unit_line))
 
         if unit_line.is_gatherer():
             abilities_set.append(AoCAbilitySubprocessor.drop_resources_ability(unit_line))
@@ -254,17 +250,6 @@ class AoCNyanSubprocessor:
         unit_class = current_building.get_member("unit_class").get_value()
         class_name = CLASS_ID_LOOKUPS[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
-
-        # Create the game entity type on-the-fly if it not already exists
-        if class_obj_name not in dataset.pregen_nyan_objects.keys():
-            type_location = "data/aux/game_entity_type/"
-            new_game_entity_type = RawAPIObject(class_obj_name, class_name,
-                                                dataset.nyan_api_objects, type_location)
-            new_game_entity_type.set_filename("types")
-            new_game_entity_type.add_raw_parent("engine.aux.game_entity_type.GameEntityType")
-            new_game_entity_type.create_nyan_object()
-            dataset.pregen_nyan_objects.update({class_obj_name: new_game_entity_type})
-
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
         types_set.append(type_obj)
 
@@ -364,6 +349,12 @@ class AoCNyanSubprocessor:
         types_set = []
 
         type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Ambient"].get_nyan_object()
+        types_set.append(type_obj)
+
+        unit_class = ambient_unit.get_member("unit_class").get_value()
+        class_name = CLASS_ID_LOOKUPS[unit_class]
+        class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+        type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
         types_set.append(type_obj)
 
         raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")

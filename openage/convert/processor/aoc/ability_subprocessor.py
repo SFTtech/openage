@@ -493,6 +493,108 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def herd_ability(line):
+        """
+        Adds the Herd ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Herd" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Herd", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Herd")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Range
+        ability_raw_api_object.add_raw_member("range",
+                                              3.0,
+                                              "engine.ability.type.Herd")
+
+        # Strength
+        ability_raw_api_object.add_raw_member("strength",
+                                              0,
+                                              "engine.ability.type.Herd")
+
+        # Allowed types
+        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Herdable"].get_nyan_object()]
+        ability_raw_api_object.add_raw_member("allowed_types",
+                                              allowed_types,
+                                              "engine.ability.type.Herd")
+
+        # Blacklisted entities
+        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+                                              [],
+                                              "engine.ability.type.Herd")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def herdable_ability(line):
+        """
+        Adds the Herdable ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Herdable" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Herdable", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Herdable")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Mode
+        mode = dataset.nyan_api_objects["engine.aux.herdable_mode.type.LongestTimeInRange"]
+        ability_raw_api_object.add_raw_member("mode", mode, "engine.ability.type.Herdable")
+
+        # Discover range
+        ability_raw_api_object.add_raw_member("adjacent_discover_range",
+                                              1.0,
+                                              "engine.ability.type.Herdable")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def hitbox_ability(line):
         """
         Adds the Hitbox ability to a line.
@@ -1225,13 +1327,6 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
