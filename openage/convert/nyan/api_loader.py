@@ -2713,6 +2713,19 @@ def _insert_members(api_objects):
     member = NyanMember("trade_routes", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
+    # engine.ability.type.TransferStorage
+    api_object = api_objects["engine.ability.type.TransferStorage"]
+
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("storage_element", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.storage.Container"]
+    member = NyanMember("source_container", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.storage.Container"]
+    member = NyanMember("target_container", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
     # engine.ability.type.Transform
     api_object = api_objects["engine.ability.type.Transform"]
 

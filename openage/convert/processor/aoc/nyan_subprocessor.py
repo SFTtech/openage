@@ -13,7 +13,7 @@ from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySub
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieGarrisonMode
+    GenieGarrisonMode, GenieMonkGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS
 
 
@@ -158,20 +158,12 @@ class AoCNyanSubprocessor:
         if ability:
             abilities_set.append(ability)
 
+        # Applying effects and shooting projectiles
         if unit_line.is_ranged():
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(unit_line))
             AoCNyanSubprocessor._projectiles_from_line(unit_line)
 
-        if unit_line.is_harvestable():
-            abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(unit_line))
-
-        if unit_line.get_class_id() == 58:
-            abilities_set.append(AoCAbilitySubprocessor.herdable_ability(unit_line))
-
-        if unit_type == 70 and unit_line.get_class_id() not in (9, 10, 58):
-            # Excludes trebuchets and animals
-            abilities_set.append(AoCAbilitySubprocessor.herd_ability(unit_line))
-
+        # Storage abilities
         if unit_line.is_garrison():
             abilities_set.append(AoCAbilitySubprocessor.storage_ability(unit_line))
             abilities_set.append(AoCAbilitySubprocessor.remove_storage_ability(unit_line))
@@ -181,6 +173,19 @@ class AoCNyanSubprocessor:
             if garrison_mode == GenieGarrisonMode.MONK:
                 abilities_set.append(AoCAbilitySubprocessor.collect_storage_ability(unit_line))
 
+        if len(unit_line.garrison_locations) > 0:
+            ability = AoCAbilitySubprocessor.enter_container_ability(unit_line)
+            if ability:
+                abilities_set.append(ability)
+
+            ability = AoCAbilitySubprocessor.exit_container_ability(unit_line)
+            if ability:
+                abilities_set.append(ability)
+
+        if isinstance(unit_line, GenieMonkGroup):
+            abilities_set.append(AoCAbilitySubprocessor.transfer_storage_ability(unit_line))
+
+        # Resource abilities
         if unit_line.is_gatherer():
             abilities_set.append(AoCAbilitySubprocessor.drop_resources_ability(unit_line))
             abilities_set.extend(AoCAbilitySubprocessor.gather_ability(unit_line))
@@ -188,6 +193,16 @@ class AoCNyanSubprocessor:
         if isinstance(unit_line, GenieVillagerGroup):
             # Farm restocking
             abilities_set.append(AoCAbilitySubprocessor.restock_ability(unit_line, 50))
+
+        if unit_line.is_harvestable():
+            abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(unit_line))
+
+        if unit_type == 70 and unit_line.get_class_id() not in (9, 10, 58):
+            # Excludes trebuchets and animals
+            abilities_set.append(AoCAbilitySubprocessor.herd_ability(unit_line))
+
+        if unit_line.get_class_id() == 58:
+            abilities_set.append(AoCAbilitySubprocessor.herdable_ability(unit_line))
 
         # =======================================================================
         # TODO: Bunch of other abilities
@@ -297,15 +312,20 @@ class AoCNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line))
             AoCNyanSubprocessor._projectiles_from_line(building_line)
 
+        # Storage abilities
         if building_line.is_garrison():
             abilities_set.append(AoCAbilitySubprocessor.storage_ability(building_line))
             abilities_set.append(AoCAbilitySubprocessor.remove_storage_ability(building_line))
 
             garrison_mode = building_line.get_garrison_mode()
 
+            if garrison_mode == GenieGarrisonMode.NATURAL:
+                abilities_set.append(AoCAbilitySubprocessor.send_back_to_task_ability(building_line))
+
             if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
                 abilities_set.append(AoCAbilitySubprocessor.rally_point_ability(building_line))
 
+        # Resource abilities
         if building_line.is_harvestable():
             abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(building_line))
 

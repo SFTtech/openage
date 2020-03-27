@@ -558,6 +558,12 @@ class GenieMonkGroup(GenieUnitLineGroup):
     def get_garrison_mode(self):
         return GenieGarrisonMode.MONK
 
+    def get_switch_unit(self):
+        """
+        Returns the unit that is switched to when picking up something.
+        """
+        return self.switch_unit
+
     def __repr__(self):
         return "GenieMonkGroup<%s>" % (self.get_id())
 

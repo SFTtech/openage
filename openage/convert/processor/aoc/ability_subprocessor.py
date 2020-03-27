@@ -11,7 +11,7 @@ from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.aoc.combined_sprite import CombinedSprite
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieAmbientGroup
+    GenieAmbientGroup, GenieGarrisonMode
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS
 from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
@@ -29,13 +29,6 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -229,6 +222,135 @@ class AoCAbilitySubprocessor:
             resources.append(resource)
 
         ability_raw_api_object.add_raw_member("accepts", resources, "engine.ability.type.DropSite")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def enter_container_ability(line):
+        """
+        Adds the EnterContainer ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability. None if no valid containers were found.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer, None
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.EnterContainer" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "EnterContainer", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.EnterContainer")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Containers
+        containers = []
+        entity_lookups = {}
+        entity_lookups.update(UNIT_LINE_LOOKUPS)
+        entity_lookups.update(BUILDING_LINE_LOOKUPS)
+
+        for garrison in line.garrison_locations:
+            garrison_mode = garrison.get_garrison_mode()
+
+            # Cannot enter production buildings or monk inventories
+            if garrison_mode in (GenieGarrisonMode.SELF_PRODUCED, GenieGarrisonMode.MONK):
+                continue
+
+            garrison_name = entity_lookups[garrison.get_head_unit_id()][0]
+
+            container_ref = "%s.Storage.%sContainer" % (garrison_name, garrison_name)
+            container_expected_pointer = ExpectedPointer(garrison, container_ref)
+            containers.append(container_expected_pointer)
+
+        if not containers:
+            return None
+
+        ability_raw_api_object.add_raw_member("allowed_containers",
+                                              containers,
+                                              "engine.ability.type.EnterContainer")
+
+        # Allowed types (all buildings/units)
+        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
+                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+
+        ability_raw_api_object.add_raw_member("allowed_types",
+                                              allowed_types,
+                                              "engine.ability.type.EnterContainer")
+        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+                                              [],
+                                              "engine.ability.type.EnterContainer")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def exit_container_ability(line):
+        """
+        Adds the ExitContainer ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability. None if no valid containers were found.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer, None
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.ExitContainer" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "ExitContainer", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.ExitContainer")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Containers
+        containers = []
+        entity_lookups = {}
+        entity_lookups.update(UNIT_LINE_LOOKUPS)
+        entity_lookups.update(BUILDING_LINE_LOOKUPS)
+
+        for garrison in line.garrison_locations:
+            garrison_mode = garrison.get_garrison_mode()
+
+            # Cannot enter production buildings or monk inventories
+            if garrison_mode == GenieGarrisonMode.MONK:
+                continue
+
+            garrison_name = entity_lookups[garrison.get_head_unit_id()][0]
+
+            container_ref = "%s.Storage.%sContainer" % (garrison_name, garrison_name)
+            container_expected_pointer = ExpectedPointer(garrison, container_ref)
+            containers.append(container_expected_pointer)
+
+        if not containers:
+            return None
+
+        ability_raw_api_object.add_raw_member("allowed_containers",
+                                              containers,
+                                              "engine.ability.type.ExitContainer")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -1421,13 +1543,6 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -1615,6 +1730,47 @@ class AoCAbilitySubprocessor:
 
         ability_raw_api_object.add_raw_member("researchables", researchables_set,
                                               "engine.ability.type.Research")
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def send_back_to_task_ability(line):
+        """
+        Adds the SendBackToTask ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+        obj_name = "%s.SendBackToTask" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "SendBackToTask", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.SendBackToTask")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Only works on villagers
+        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Villager"].get_nyan_object()]
+        ability_raw_api_object.add_raw_member("allowed_types",
+                                              allowed_types,
+                                              "engine.ability.type.SendBackToTask")
+        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+                                              [],
+                                              "engine.ability.type.SendBackToTask")
+
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
@@ -1932,6 +2088,82 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("empty_condition",
                                               [],
                                               "engine.ability.type.Storage")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def transfer_storage_ability(line):
+        """
+        Adds the TransferStorage ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer, None
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.TransferStorage" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "TransferStorage", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.TransferStorage")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # storage element
+        storage_entity = None
+        garrisoned_expected_pointer = None
+        for garrisoned in line.garrison_entities:
+            creatable_type = garrisoned.get_head_unit().get_member("creatable_type").get_value()
+
+            if creatable_type == 4:
+                storage_name = AMBIENT_GROUP_LOOKUPS[garrisoned.get_id()][0]
+                storage_entity = garrisoned
+                garrisoned_expected_pointer = ExpectedPointer(storage_entity, storage_name)
+
+                # TODO: There are other relics in the .dat
+                break
+
+        ability_raw_api_object.add_raw_member("storage_element",
+                                              garrisoned_expected_pointer,
+                                              "engine.ability.type.TransferStorage")
+
+        # Source container
+        source_ref = "%s.Storage.%sContainer" % (game_entity_name, game_entity_name)
+        source_expected_pointer = ExpectedPointer(line, source_ref)
+        ability_raw_api_object.add_raw_member("source_container",
+                                              source_expected_pointer,
+                                              "engine.ability.type.TransferStorage")
+
+        # Target container
+        target = None
+        unit_commands = line.get_switch_unit().get_member("unit_commands").get_value()
+        for command in unit_commands:
+            type_id = command.get_value()["type"].get_value()
+
+            # Deposit
+            if type_id == 136:
+                target_id = command.get_value()["unit_id"].get_value()
+                target = dataset.building_lines[target_id]
+
+        target_name = BUILDING_LINE_LOOKUPS[target.get_id()][0]
+        target_ref = "%s.Storage.%sContainer" % (target_name, target_name)
+        target_expected_pointer = ExpectedPointer(target, target_ref)
+        ability_raw_api_object.add_raw_member("target_container",
+                                              target_expected_pointer,
+                                              "engine.ability.type.TransferStorage")
 
         line.add_raw_api_object(ability_raw_api_object)
 
