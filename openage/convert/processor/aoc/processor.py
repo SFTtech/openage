@@ -34,7 +34,8 @@ from openage.convert.dataformat.aoc.genie_tech import StatUpgrade
 from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
-from openage.convert.dataformat.aoc.genie_unit import GenieAmbientGroup
+from openage.convert.dataformat.aoc.genie_unit import GenieAmbientGroup,\
+    GenieGarrisonMode
 
 
 class AoCProcessor:
@@ -115,6 +116,7 @@ class AoCProcessor:
         cls._link_creatables(full_data_set)
         cls._link_researchables(full_data_set)
         cls._link_resources_to_dropsites(full_data_set)
+        cls._link_garrison(full_data_set)
 
         AoCPregenSubprocessor.generate(full_data_set)
 
@@ -936,3 +938,65 @@ class AoCProcessor:
                                 drop_site0.add_accepted_resource(resource_id)
                             if drop_site_id1 > -1:
                                 drop_site1.add_accepted_resource(resource_id)
+
+    @staticmethod
+    def _link_garrison(full_data_set):
+        """
+        Link a garrison unit to the lines that are stored and vice versa. This is done
+        to provide quick access during conversion.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        unit_lines = full_data_set.unit_lines
+        building_lines = full_data_set.building_lines
+
+        garrison_lines = {}
+        garrison_lines.update(unit_lines)
+        garrison_lines.update(building_lines)
+
+        for garrison in garrison_lines.values():
+            if garrison.is_garrison():
+                garrison_mode = garrison.get_garrison_mode()
+                garrison_head = garrison.get_head_unit()
+                garrison_type = 0
+
+                if garrison.get_garrison_mode() == GenieGarrisonMode.NATURAL:
+                    garrison_type = garrison_head.get_member("garrison_type").get_value()
+
+                # Check all lines if they fit the garrison mode
+                for unit_line in unit_lines.values():
+                    head_unit = unit_line.get_head_unit()
+                    creatable_type = head_unit.get_member("creatable_type").get_value()
+                    trait = head_unit.get_member("trait").get_value()
+
+                    if creatable_type not in garrison_mode.value:
+                        if not trait & 0x02:
+                            continue
+
+                    if garrison_mode == GenieGarrisonMode.NATURAL:
+
+                        if creatable_type == 1 and not garrison_type & 0x01:
+                            continue
+
+                        elif creatable_type == 2 and not garrison_type & 0x02:
+                            continue
+
+                        elif creatable_type == 3 and not garrison_type & 0x04:
+                            continue
+
+                        elif creatable_type == 6 and not garrison_type & 0x08:
+                            continue
+
+                    if garrison_mode == GenieGarrisonMode.SELF_PRODUCED:
+                        if not unit_line in garrison.creates:
+                            continue
+
+                    # Allow ships as garrisoned units, but only for production
+                    if trait & 0x02 and not garrison_mode == GenieGarrisonMode.SELF_PRODUCED:
+                        continue
+
+                    unit_line.garrison_locations.append(garrison)
+                    garrison.garrison_entities.append(unit_line)

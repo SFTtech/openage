@@ -2543,13 +2543,6 @@ def _insert_members(api_objects):
     member = NyanMember("amount", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
-    # engine.ability.type.RallyPoint
-    api_object = api_objects["engine.ability.type.RallyPoint"]
-
-    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
-    member = NyanMember("indicator", ref_object, None, None, 0, None, False)
-    api_object.add_member(member)
-
     # engine.ability.type.RangedContinuousEffect
     api_object = api_objects["engine.ability.type.RangedContinuousEffect"]
 

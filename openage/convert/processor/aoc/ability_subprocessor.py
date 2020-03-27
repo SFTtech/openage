@@ -1318,6 +1318,39 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def rally_point_ability(line):
+        """
+        Adds the RallyPoint ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.RallyPoint" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "RallyPoint", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.RallyPoint")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def restock_ability(line, restock_target_id):
         """
         Adds the Restock ability to a line.
@@ -1499,7 +1532,7 @@ class AoCAbilitySubprocessor:
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id = current_unit.get_member("idle_graphic0").get_value()
+        ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
 
         if ability_animation_id > -1:
             # Make the ability animated
@@ -1533,10 +1566,12 @@ class AoCAbilitySubprocessor:
             line.add_raw_api_object(animation_raw_api_object)
 
         # Projectile
-        # TODO: Projectile ability
         projectiles = []
-        projectiles.append(ExpectedPointer(line,
-                                           "%s.ShootProjectile.Projectile0" % (game_entity_name)))
+        projectile_primary = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        if projectile_primary > -1:
+            projectiles.append(ExpectedPointer(line,
+                                               "%s.ShootProjectile.Projectile0" % (game_entity_name)))
+
         projectile_secondary = current_unit.get_member("attack_projectile_secondary_unit_id").get_value()
         if projectile_secondary > -1:
             projectiles.append(ExpectedPointer(line,
@@ -1548,11 +1583,17 @@ class AoCAbilitySubprocessor:
 
         # Projectile count
         min_projectiles = current_unit.get_member("attack_projectile_count").get_value()
+        max_projectiles = current_unit.get_member("attack_projectile_max_count").get_value()
+
+        # Special case where only the second projectile is defined (town center)
+        # The min/max projectile count is lowered by 1 in this case
+        if projectile_primary == -1:
+            min_projectiles -= 1
+            max_projectiles -= 1
+
         ability_raw_api_object.add_raw_member("min_projectiles",
                                               min_projectiles,
                                               "engine.ability.type.ShootProjectile")
-
-        max_projectiles = current_unit.get_member("attack_projectile_max_count").get_value()
         ability_raw_api_object.add_raw_member("max_projectiles",
                                               max_projectiles,
                                               "engine.ability.type.ShootProjectile")

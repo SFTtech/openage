@@ -12,7 +12,8 @@ from .ability_subprocessor import AoCAbilitySubprocessor
 from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
+    GenieGarrisonMode
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS
 
 
@@ -170,6 +171,13 @@ class AoCNyanSubprocessor:
         if unit_type == 70 and unit_line.get_class_id() not in (9, 10, 58):
             # Excludes trebuchets and animals
             abilities_set.append(AoCAbilitySubprocessor.herd_ability(unit_line))
+
+        if unit_line.is_garrison():
+            # abilities_set.append(AoCAbilitySubprocessor.container_ability(unit_line))
+
+            if unit_line.get_garrison_mode()\
+                    in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
+                abilities_set.append(AoCAbilitySubprocessor.rally_point_ability(unit_line))
 
         if unit_line.is_gatherer():
             abilities_set.append(AoCAbilitySubprocessor.drop_resources_ability(unit_line))
@@ -535,13 +543,18 @@ class AoCNyanSubprocessor:
 
         projectiles_location = "data/game_entity/generic/%s/projectiles/" % (game_entity_filename)
 
-        projectile_count = 1
+        projectile_indices = []
+        projectile_primary = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        if projectile_primary > -1:
+            projectile_indices.append(0)
+
         projectile_secondary = current_unit.get_member("attack_projectile_secondary_unit_id").get_value()
         if projectile_secondary > -1:
-            projectile_count += 1
+            projectile_indices.append(1)
 
-        for projectile_num in range(projectile_count):
-            obj_ref = "%s.ShootProjectile.Projectile%s" % (game_entity_name, str(projectile_num))
+        for projectile_num in projectile_indices:
+            obj_ref = "%s.ShootProjectile.Projectile%s" % (game_entity_name,
+                                                           str(projectile_num))
             obj_name = "Projectile%s" % (str(projectile_num))
             proj_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
             proj_raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")

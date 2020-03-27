@@ -3,6 +3,7 @@
 
 from ...dataformat.converter_object import ConverterObject,\
     ConverterObjectGroup
+from enum import Enum
 
 
 class GenieUnitObject(ConverterObject):
@@ -66,6 +67,12 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         # List of GenieTechEffectBundleGroup objects
         self.researches = []
+
+        # List of units that the line can garrison
+        self.garrison_entities = []
+
+        # List of units/buildings where the line can garrison
+        self.garrison_locations = []
 
     def add_creatable(self, line):
         """
@@ -179,6 +186,41 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return False
 
+    def is_garrison(self):
+        """
+        Checks whether the group can garrison other entities. This covers
+        all of these garrisons:
+
+        - Natural garrisons (castle, town center, tower)
+        - Production garrisons (barracks, archery range, stable, etc.)
+        - Unit garrisons (ram, siege tower)
+        - Transport ships
+
+        This does not include kidnapping units!
+
+        :returns: True if the group falls into the above categories.
+        """
+        head_unit = self.get_head_unit()
+        trait = head_unit.get_member("trait").get_value()
+
+        # Transport ship/ram
+        if trait & 0x01:
+            return True
+
+        # Production garrison
+        type_id = head_unit.get_member("unit_type").get_value()
+        if len(self.creates) > 0 and type_id == 80:
+            return True
+
+        # Natural garrison
+        if head_unit.has_member("garrison_type"):
+            garrison_type = head_unit.get_member("garrison_type").get_value()
+
+            if garrison_type > 0:
+                return True
+
+        return False
+
     def is_gatherer(self):
         """
         Checks whether the group has any gather abilities.
@@ -199,16 +241,16 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         Units/Buildings are ranged if they have assigned a projectile ID.
 
-        :returns: Boolean tuple for the first and second projectile,
-                  True if the projectile obj_id is greater than zero.
+        :returns: True ifone of the projectile IDs is greater than zero.
         """
         # Get the projectiles' obj_id for the first unit in the line. AoE's
         # units stay ranged with upgrades, so this should be fine.
         head_unit = self.get_head_unit()
         projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
 
         # -1 -> no projectile
-        return projectile_id_0 > -1
+        return (projectile_id_0 > -1 or projectile_id_1 > -1)
 
     def is_unique(self):
         """
@@ -244,6 +286,39 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         Return the class ID for units in the line.
         """
         return self.get_head_unit().get_member("unit_class").get_value()
+
+    def get_garrison_mode(self):
+        """
+        Returns the mode the garrison operates in. This is used by the
+        converter to determine which storage abilities the line will get.
+
+        :returns: The garrison mode of the line.
+        :rtype: GenieGarrisonMode
+        """
+        head_unit = self.get_head_unit()
+        trait = head_unit.get_member("trait").get_value()
+
+        # Ram
+        if trait == 1:
+            return GenieGarrisonMode.UNIT_GARRISON
+
+        # Transport ship
+        if trait == 3:
+            return GenieGarrisonMode.TRANSPORT
+
+        # Natural garrison
+        if head_unit.has_member("garrison_type"):
+            garrison_type = head_unit.get_member("garrison_type").get_value()
+
+            if garrison_type > 0:
+                return GenieGarrisonMode.NATURAL
+
+        # Production garrison
+        type_id = head_unit.get_member("unit_type").get_value()
+        if len(self.creates) > 0 and type_id == 80:
+            return GenieGarrisonMode.SELF_PRODUCED
+
+        return None
 
     def get_head_unit_id(self):
         """
@@ -477,6 +552,9 @@ class GenieMonkGroup(GenieUnitLineGroup):
         self.head_unit = self.data.genie_units[head_unit_id]
         self.switch_unit = self.data.genie_units[switch_unit_id]
 
+    def get_garrison_mode(self):
+        return GenieGarrisonMode.MONK
+
     def __repr__(self):
         return "GenieMonkGroup<%s>" % (self.get_id())
 
@@ -642,6 +720,9 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
         return False
 
+    def is_garrison(self):
+        return False
+
     def is_gatherer(self):
         return True
 
@@ -652,6 +733,9 @@ class GenieVillagerGroup(GenieUnitLineGroup):
     def is_ranged(self):
         # TODO: Only hunting; should be done differently?
         return False
+
+    def get_garrison_mode(self):
+        return None
 
     def get_head_unit_id(self):
         """
@@ -678,3 +762,20 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
     def __repr__(self):
         return "GenieVillagerGroup<%s>" % (self.get_id())
+
+
+class GenieGarrisonMode(Enum):
+    """
+    Garrison mode of a genie group. This should not be confused with
+    the "garrison_type" from the .dat file. These garrison modes reflect
+    how the garrison will be handled in the openage API.
+    """
+
+    # Keys = all possible creatable types; may be specified further by other factors
+    # The negative integers at the start of the tupe prevent Python from creating
+    # aliases for the enums.
+    NATURAL       = (-1, 1, 2, 3, 5, 6)  # enter/exit/remove; rally point
+    UNIT_GARRISON = (-2, 1, 2, 5)        # enter/exit/remove; no cavalry/monks; speedboost for infantry
+    TRANSPORT     = (-3, 1, 2, 3, 5, 6)  # enter/exit/remove; no rally point
+    SELF_PRODUCED = (-4, 1, 2, 3, 5, 6)  # enter only with OwnStorage; exit/remove; only produced units; rally point
+    MONK          = (-5, 4,)             # remove/collect/transfer; only relics; no rally point
