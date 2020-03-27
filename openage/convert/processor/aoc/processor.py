@@ -952,6 +952,7 @@ class AoCProcessor:
         """
         unit_lines = full_data_set.unit_lines
         building_lines = full_data_set.building_lines
+        ambient_groups = full_data_set.ambient_groups
 
         garrison_lines = {}
         garrison_lines.update(unit_lines)
@@ -1000,3 +1001,17 @@ class AoCProcessor:
 
                     unit_line.garrison_locations.append(garrison)
                     garrison.garrison_entities.append(unit_line)
+
+                if garrison_mode == GenieGarrisonMode.MONK:
+                    # Search for the relic
+                    for ambient_group in ambient_groups.values():
+                        head_unit = ambient_group.get_head_unit()
+                        if not head_unit.has_member("creatable_type"):
+                            continue
+
+                        creatable_type = head_unit.get_member("creatable_type").get_value()
+                        if creatable_type != 4:
+                            continue
+
+                        ambient_group.garrison_locations.append(garrison)
+                        garrison.garrison_entities.append(ambient_group)

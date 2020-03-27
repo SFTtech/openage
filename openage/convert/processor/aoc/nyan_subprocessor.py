@@ -173,11 +173,13 @@ class AoCNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.herd_ability(unit_line))
 
         if unit_line.is_garrison():
-            # abilities_set.append(AoCAbilitySubprocessor.container_ability(unit_line))
+            abilities_set.append(AoCAbilitySubprocessor.storage_ability(unit_line))
+            abilities_set.append(AoCAbilitySubprocessor.remove_storage_ability(unit_line))
 
-            if unit_line.get_garrison_mode()\
-                    in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
-                abilities_set.append(AoCAbilitySubprocessor.rally_point_ability(unit_line))
+            garrison_mode = unit_line.get_garrison_mode()
+
+            if garrison_mode == GenieGarrisonMode.MONK:
+                abilities_set.append(AoCAbilitySubprocessor.collect_storage_ability(unit_line))
 
         if unit_line.is_gatherer():
             abilities_set.append(AoCAbilitySubprocessor.drop_resources_ability(unit_line))
@@ -294,6 +296,15 @@ class AoCNyanSubprocessor:
         if building_line.is_ranged():
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line))
             AoCNyanSubprocessor._projectiles_from_line(building_line)
+
+        if building_line.is_garrison():
+            abilities_set.append(AoCAbilitySubprocessor.storage_ability(building_line))
+            abilities_set.append(AoCAbilitySubprocessor.remove_storage_ability(building_line))
+
+            garrison_mode = building_line.get_garrison_mode()
+
+            if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
+                abilities_set.append(AoCAbilitySubprocessor.rally_point_ability(building_line))
 
         if building_line.is_harvestable():
             abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(building_line))

@@ -20,6 +20,67 @@ from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
 class AoCAbilitySubprocessor:
 
     @staticmethod
+    def collect_storage_ability(line):
+        """
+        Adds the CollectStorage ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.CollectStorage" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "CollectStorage", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.CollectStorage")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Container
+        container_ref = "%s.Storage.%sContainer" % (game_entity_name, game_entity_name)
+        container_expected_pointer = ExpectedPointer(line, container_ref)
+        ability_raw_api_object.add_raw_member("container",
+                                              container_expected_pointer,
+                                              "engine.ability.type.CollectStorage")
+
+        # Storage elements
+        elements = []
+        entity_lookups = {}
+        entity_lookups.update(UNIT_LINE_LOOKUPS)
+        entity_lookups.update(AMBIENT_GROUP_LOOKUPS)
+        for entity in line.garrison_entities:
+            entity_ref = entity_lookups[entity.get_head_unit_id()][0]
+            entity_expected_pointer = ExpectedPointer(entity, entity_ref)
+            elements.append(entity_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("storage_elements",
+                                              elements,
+                                              "engine.ability.type.CollectStorage")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def create_ability(line):
         """
         Adds the Create ability to a line.
@@ -1351,6 +1412,67 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def remove_storage_ability(line):
+        """
+        Adds the RemoveStorage ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.RemoveStorage" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "RemoveStorage", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.RemoveStorage")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Container
+        container_ref = "%s.Storage.%sContainer" % (game_entity_name, game_entity_name)
+        container_expected_pointer = ExpectedPointer(line, container_ref)
+        ability_raw_api_object.add_raw_member("container",
+                                              container_expected_pointer,
+                                              "engine.ability.type.RemoveStorage")
+
+        # Storage elements
+        elements = []
+        entity_lookups = {}
+        entity_lookups.update(UNIT_LINE_LOOKUPS)
+        entity_lookups.update(AMBIENT_GROUP_LOOKUPS)
+        for entity in line.garrison_entities:
+            entity_ref = entity_lookups[entity.get_head_unit_id()][0]
+            entity_expected_pointer = ExpectedPointer(entity, entity_ref)
+            elements.append(entity_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("storage_elements",
+                                              elements,
+                                              "engine.ability.type.RemoveStorage")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def restock_ability(line, restock_target_id):
         """
         Adds the Restock ability to a line.
@@ -1732,6 +1854,84 @@ class AoCAbilitySubprocessor:
         diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                               "engine.ability.specialization.DiplomaticAbility")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def storage_ability(line):
+        """
+        Adds the Storage ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            # TODO: Requires special treatment?
+            current_unit = line.variants[0].line[0]
+
+        else:
+            current_unit = line.line[0]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Storage" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Storage", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Storage")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Container
+        # ==============================================================================
+        container_name = "%s.Storage.%sContainer" % (game_entity_name, game_entity_name)
+        container_raw_api_object = RawAPIObject(container_name,
+                                                "%sContainer" % (game_entity_name),
+                                                dataset.nyan_api_objects)
+        container_raw_api_object.add_raw_parent("engine.aux.storage.Container")
+        container_location = ExpectedPointer(line, obj_name)
+        container_raw_api_object.set_location(container_location)
+
+        # TODO: Define storage elements
+        container_raw_api_object.add_raw_member("storage_elements",
+                                                [],
+                                                "engine.aux.storage.Container")
+
+        # Container slots
+        slots = current_unit.get_member("garrison_capacity").get_value()
+        container_raw_api_object.add_raw_member("slots",
+                                                slots,
+                                                "engine.aux.storage.Container")
+
+        # TODO: Carry progress
+        container_raw_api_object.add_raw_member("carry_progress",
+                                                [],
+                                                "engine.aux.storage.Container")
+
+        line.add_raw_api_object(container_raw_api_object)
+        # ==============================================================================
+        container_expected_pointer = ExpectedPointer(line, container_name)
+        ability_raw_api_object.add_raw_member("container",
+                                              container_expected_pointer,
+                                              "engine.ability.type.Storage")
+
+        # TODO: Empty condition
+        ability_raw_api_object.add_raw_member("empty_condition",
+                                              [],
+                                              "engine.ability.type.Storage")
 
         line.add_raw_api_object(ability_raw_api_object)
 

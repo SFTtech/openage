@@ -2685,8 +2685,8 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.storage.Container"]
     member = NyanMember("container", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
-    member = NyanMember("empty_threshold", ref_object, None, None, 0, None, False)
+    set_type = api_objects["engine.aux.boolean.Clause"]
+    member = NyanMember("empty_condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.ability.type.TerrainRequirement

@@ -552,6 +552,9 @@ class GenieMonkGroup(GenieUnitLineGroup):
         self.head_unit = self.data.genie_units[head_unit_id]
         self.switch_unit = self.data.genie_units[switch_unit_id]
 
+    def is_garrison(self):
+        return True
+
     def get_garrison_mode(self):
         return GenieGarrisonMode.MONK
 
