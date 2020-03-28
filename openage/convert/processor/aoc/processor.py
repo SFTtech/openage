@@ -974,21 +974,31 @@ class AoCProcessor:
                     trait = head_unit.get_member("trait").get_value()
 
                     if creatable_type not in garrison_mode.value:
+                        # Exception for ships; instead handled below
                         if not trait & 0x02:
                             continue
 
                     if garrison_mode == GenieGarrisonMode.NATURAL:
-
                         if creatable_type == 1 and not garrison_type & 0x01:
                             continue
 
                         elif creatable_type == 2 and not garrison_type & 0x02:
                             continue
 
+                        elif creatable_type == 2 and unit_line.get_class_id() in (13, 51, 54, 55):
+                            # Siege and trebuchet cannot be in garrisons
+                            # even though the .dat file allows them to
+                            continue
+
                         elif creatable_type == 3 and not garrison_type & 0x04:
                             continue
 
                         elif creatable_type == 6 and not garrison_type & 0x08:
+                            continue
+
+                    # Prevents siege units/trebuchet from being stored in rams
+                    if garrison_mode == GenieGarrisonMode.UNIT_GARRISON:
+                        if unit_line.get_class_id() in (13, 51, 54, 55):
                             continue
 
                     if garrison_mode == GenieGarrisonMode.SELF_PRODUCED:

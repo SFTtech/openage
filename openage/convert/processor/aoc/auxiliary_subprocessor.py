@@ -217,6 +217,28 @@ class AoCAuxiliarySubprocessor:
         else:
             placement_modes.append(dataset.nyan_api_objects["engine.aux.placement_mode.type.Eject"])
 
+            # OwnStorage mode
+            obj_name = "%s.CreatableGameEntity.OwnStorage" % (game_entity_name)
+            own_storage_raw_api_object = RawAPIObject(obj_name, "OwnStorage",
+                                                      dataset.nyan_api_objects)
+            own_storage_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.OwnStorage")
+            own_storage_location = ExpectedPointer(line,
+                                                   "%s.CreatableGameEntity" % (game_entity_name))
+            own_storage_raw_api_object.set_location(own_storage_location)
+
+            # Container
+            container_expected_pointer = ExpectedPointer(train_location,
+                                                         "%s.Storage.%sContainer"
+                                                         % (train_location_name, train_location_name))
+            own_storage_raw_api_object.add_raw_member("container",
+                                                      container_expected_pointer,
+                                                      "engine.aux.placement_mode.type.OwnStorage")
+
+            line.add_raw_api_object(own_storage_raw_api_object)
+
+            own_storage_expected_pointer = ExpectedPointer(line, obj_name)
+            placement_modes.append(own_storage_expected_pointer)
+
         creatable_raw_api_object.add_raw_member("placement_modes",
                                                 placement_modes,
                                                 "engine.aux.create.CreatableGameEntity")

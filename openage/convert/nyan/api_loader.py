@@ -3121,6 +3121,13 @@ def _insert_members(api_objects):
     member = NyanMember("stances", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
+    # engine.aux.placement_mode.type.OwnStorage
+    api_object = api_objects["engine.aux.placement_mode.type.OwnStorage"]
+
+    ref_object = api_objects["engine.aux.storage.Container"]
+    member = NyanMember("container", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
     # engine.aux.placement_mode.type.Place
     api_object = api_objects["engine.aux.placement_mode.type.Place"]
 
