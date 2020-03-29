@@ -11,10 +11,12 @@ from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.aoc.combined_sprite import CombinedSprite
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieAmbientGroup, GenieGarrisonMode
+    GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
+    GenieUnitLineGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS
 from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
+from openage.util.ordered_set import OrderedSet
 
 
 class AoCAbilitySubprocessor:
@@ -393,8 +395,8 @@ class AoCAbilitySubprocessor:
         for gatherer in gatherers:
             unit_commands = gatherer.get_member("unit_commands").get_value()
             resource = None
-            harvestable_class_ids = set()
-            harvestable_unit_ids = set()
+            harvestable_class_ids = OrderedSet()
+            harvestable_unit_ids = OrderedSet()
 
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
@@ -434,23 +436,23 @@ class AoCAbilitySubprocessor:
                     continue
 
             # Look for the harvestable groups that match the class IDs and unit IDs
-            check_groups = set()
-            check_groups.update(dataset.unit_lines.values())
-            check_groups.update(dataset.building_lines.values())
-            check_groups.update(dataset.ambient_groups.values())
+            check_groups = []
+            check_groups.extend(dataset.unit_lines.values())
+            check_groups.extend(dataset.building_lines.values())
+            check_groups.extend(dataset.ambient_groups.values())
 
-            harvestable_groups = set()
+            harvestable_groups = []
             for group in check_groups:
                 if not group.is_harvestable():
                     continue
 
                 if group.get_class_id() in harvestable_class_ids:
-                    harvestable_groups.add(group)
+                    harvestable_groups.append(group)
                     continue
 
                 for unit_id in harvestable_unit_ids:
                     if group.contains_entity(unit_id):
-                        harvestable_groups.add(group)
+                        harvestable_groups.append(group)
 
             if len(harvestable_groups) == 0:
                 # If no matching groups are found, then we don't
@@ -548,13 +550,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -658,13 +654,20 @@ class AoCAbilitySubprocessor:
                                               [],
                                               "engine.ability.type.Harvestable")
 
-        # Gatherer limit (infinite in AoC)
+        # Gatherer limit (infinite in AoC except for farms)
+        gatherer_limit = MemberSpecialValue.NYAN_INF
+        if line.get_class_id() == 49:
+            gatherer_limit = 1
+
         ability_raw_api_object.add_raw_member("gatherer_limit",
-                                              MemberSpecialValue.NYAN_INF,
+                                              gatherer_limit,
                                               "engine.ability.type.Harvestable")
 
-        # Unit have to die before they are harvestable
+        # Unit have to die before they are harvestable (except for farms)
         harvestable_by_default = current_unit.get_member("hit_points").get_value() == 0
+        if line.get_class_id() == 49:
+            harvestable_by_default = True
+
         ability_raw_api_object.add_raw_member("harvestable_by_default",
                                               harvestable_by_default,
                                               "engine.ability.type.Harvestable")
@@ -787,13 +790,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -859,13 +856,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -935,13 +926,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -1007,13 +992,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -1058,13 +1037,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -1247,6 +1220,82 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def passable_ability(line):
+        """
+        Adds the Passable ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Passable" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Passable", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Passable")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Hitbox
+        hitbox_ref = "%s.Hitbox.%sHitbox" % (game_entity_name, game_entity_name)
+        hitbox_expected_pointer = ExpectedPointer(line, hitbox_ref)
+        ability_raw_api_object.add_raw_member("hitbox",
+                                              hitbox_expected_pointer,
+                                              "engine.ability.type.Passable")
+
+        # Passable mode
+        # =====================================================================================
+        mode_name = "%s.Passable.PassableMode" % (game_entity_name)
+        mode_raw_api_object = RawAPIObject(mode_name, "PassableMode", dataset.nyan_api_objects)
+        mode_parent = "engine.aux.passable_mode.type.Normal"
+        if isinstance(line, GenieStackBuildingGroup):
+            if line.is_gate():
+                mode_parent = "engine.aux.passable_mode.type.Gate"
+
+        mode_raw_api_object.add_raw_parent(mode_parent)
+        mode_location = ExpectedPointer(line, obj_name)
+        mode_raw_api_object.set_location(mode_location)
+
+        # Allowed types
+        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
+                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
+                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Projectile"].get_nyan_object()]
+        mode_raw_api_object.add_raw_member("allowed_types",
+                                           allowed_types,
+                                           "engine.aux.passable_mode.PassableMode")
+
+        # Blacklisted entities
+        mode_raw_api_object.add_raw_member("blacklisted_game_entities",
+                                           [],
+                                           "engine.aux.passable_mode.PassableMode")
+
+        line.add_raw_api_object(mode_raw_api_object)
+        # =====================================================================================
+        mode_expected_pointer = ExpectedPointer(line, mode_name)
+        ability_raw_api_object.add_raw_member("mode",
+                                              mode_expected_pointer,
+                                              "engine.ability.type.Passable")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def production_queue_ability(line):
         """
         Adds the ProductionQueue ability to a line.
@@ -1317,13 +1366,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -1428,13 +1471,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -1737,6 +1774,128 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def selectable_ability(line):
+        """
+        Adds Selectable abilities to a line. Units will get two of these,
+        one Rectangle box for the Self stance and one MatchToSprite box
+        for other stances.
+
+        :param line: Unit/Building line that gets the abilities.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the abilities.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_refs = ("%s.Selectable" % (game_entity_name),)
+        obj_names = ("Selectable",)
+
+        if isinstance(line, GenieUnitLineGroup):
+            obj_refs = ("%s.SelectableOthers" % (game_entity_name),
+                        "%s.SelectableSelf" % (game_entity_name))
+            obj_names = ("SelectableOthers",
+                         "SelectableSelf")
+
+        abilities = []
+
+        # First box (MatchToSrite)
+        obj_ref = obj_refs[0]
+        obj_name = obj_names[0]
+
+        ability_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Selectable")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Selection box
+        box_ref = dataset.nyan_api_objects["engine.aux.selection_box.type.MatchToSprite"]
+        ability_raw_api_object.add_raw_member("selection_box",
+                                              box_ref,
+                                              "engine.ability.type.Selectable")
+
+        # Diplomacy setting (for units)
+        if isinstance(line, GenieUnitLineGroup):
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+
+            stances = [dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Enemy"].get_nyan_object(),
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Neutral"].get_nyan_object(),
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            ability_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.ability.specialization.DiplomaticAbility")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        abilities.append(ability_expected_pointer)
+
+        if not isinstance(line, GenieUnitLineGroup):
+            return abilities
+
+        # Second box (Rectangle)
+        obj_ref = obj_refs[1]
+        obj_name = obj_names[1]
+
+        ability_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Selectable")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Selection box
+        box_name = "%s.SelectableSelf.Rectangle"
+        box_raw_api_object = RawAPIObject(box_name, "Rectangle", dataset.nyan_api_objects)
+        box_raw_api_object.add_raw_parent("engine.aux.selection_box.type.Rectangle")
+        box_location = ExpectedPointer(line, obj_ref)
+        box_raw_api_object.set_location(box_location)
+
+        radius_x = current_unit.get_member("selection_shape_x").get_value()
+        box_raw_api_object.add_raw_member("radius_x",
+                                          radius_x,
+                                          "engine.aux.selection_box.type.Rectangle")
+
+        radius_y = current_unit.get_member("selection_shape_y").get_value()
+        box_raw_api_object.add_raw_member("radius_y",
+                                          radius_y,
+                                          "engine.aux.selection_box.type.Rectangle")
+
+        line.add_raw_api_object(box_raw_api_object)
+
+        box_expected_pointer = ExpectedPointer(line, box_name)
+        ability_raw_api_object.add_raw_member("selection_box",
+                                              box_expected_pointer,
+                                              "engine.ability.type.Selectable")
+
+        # Diplomacy settings
+        ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+
+        stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+        ability_raw_api_object.add_raw_member("stances",
+                                              stances,
+                                              "engine.ability.specialization.DiplomaticAbility")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        abilities.append(ability_expected_pointer)
+
+        return abilities
+
+    @staticmethod
     def send_back_to_task_ability(line):
         """
         Adds the SendBackToTask ability to a line.
@@ -1787,13 +1946,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -2027,13 +2180,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -2181,13 +2328,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -2240,13 +2381,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 

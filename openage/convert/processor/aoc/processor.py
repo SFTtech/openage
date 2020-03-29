@@ -519,14 +519,14 @@ class AoCProcessor:
             line_id = building_id
 
             # Check if we have to create a GenieStackBuildingGroup
-            if building.has_member("head_unit_id") and \
-                    building.get_member("head_unit_id").get_value() > -1:
-                stack_building = True
-
             if building.has_member("stack_unit_id") and \
                     building.get_member("stack_unit_id").get_value() > -1:
-                # we don't care about stacked units because we process
-                # them with their head unit
+                stack_building = True
+
+            if building.has_member("head_unit_id") and \
+                    building.get_member("head_unit_id").get_value() > -1:
+                # we don't care about head units because we process
+                # them with their stack unit
                 continue
 
             # Check if the building is part of an existing line.
@@ -599,8 +599,8 @@ class AoCProcessor:
 
             else:
                 if stack_building:
-                    head_unit_id = building.get_member("head_unit_id").get_value()
-                    building_line = GenieStackBuildingGroup(line_id, head_unit_id, full_data_set)
+                    stack_unit_id = building.get_member("stack_unit_id").get_value()
+                    building_line = GenieStackBuildingGroup(stack_unit_id, line_id, full_data_set)
 
                 else:
                     building_line = GenieBuildingLineGroup(line_id, full_data_set)

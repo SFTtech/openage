@@ -13,7 +13,7 @@ from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySub
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieGarrisonMode, GenieMonkGroup
+    GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS
 
 
@@ -92,13 +92,7 @@ class AoCNyanSubprocessor:
         :param unit_line: Unit line that gets converted to a game entity.
         :type unit_line: ..dataformat.converter_object.ConverterObjectGroup
         """
-        if isinstance(unit_line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = unit_line.variants[0].line[0]
-
-        else:
-            current_unit = unit_line.line[0]
-
+        current_unit = unit_line.get_head_unit()
         current_unit_id = unit_line.get_head_unit_id()
 
         dataset = unit_line.data
@@ -147,6 +141,7 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.los_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.move_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.named_ability(unit_line))
+        abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.turn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(unit_line))
@@ -294,9 +289,16 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.los_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.named_ability(building_line))
+        abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(building_line))
 
+        # Config abilities
+        if building_line.is_passable() or\
+                (isinstance(building_line, GenieStackBuildingGroup) and building_line.is_gate()):
+            abilities_set.append(AoCAbilitySubprocessor.passable_ability(building_line))
+
+        # Creation/Research abilities
         if len(building_line.creates) > 0:
             abilities_set.append(AoCAbilitySubprocessor.create_ability(building_line))
             abilities_set.append(AoCAbilitySubprocessor.production_queue_ability(building_line))
@@ -304,10 +306,7 @@ class AoCNyanSubprocessor:
         if len(building_line.researches) > 0:
             abilities_set.append(AoCAbilitySubprocessor.research_ability(building_line))
 
-        ability = AoCAbilitySubprocessor.provide_contingent_ability(building_line)
-        if ability:
-            abilities_set.append(ability)
-
+        # Attack abilities
         if building_line.is_ranged():
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line))
             AoCNyanSubprocessor._projectiles_from_line(building_line)
@@ -331,6 +330,10 @@ class AoCNyanSubprocessor:
 
         if building_line.is_dropsite():
             abilities_set.append(AoCAbilitySubprocessor.drop_site_ability(building_line))
+
+        ability = AoCAbilitySubprocessor.provide_contingent_ability(building_line)
+        if ability:
+            abilities_set.append(ability)
 
         # =======================================================================
         # TODO: Bunch of other abilities
@@ -412,7 +415,11 @@ class AoCNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.live_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.named_ability(ambient_group))
+            abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.visibility_ability(ambient_group))
+
+            if ambient_group.is_passable():
+                abilities_set.append(AoCAbilitySubprocessor.passable_ability(ambient_group))
 
         if ambient_group.is_harvestable():
             abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(ambient_group))

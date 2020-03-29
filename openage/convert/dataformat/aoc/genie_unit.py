@@ -237,11 +237,20 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return False
 
+    def is_passable(self):
+        """
+        Checks whether the group has a passable hitbox.
+
+        :returns: True if the group has obstruction type 0.
+        """
+        head_unit = self.get_head_unit()
+        return head_unit.get_member("obstruction_type").get_value() == 0
+
     def is_ranged(self):
         """
         Units/Buildings are ranged if they have assigned a projectile ID.
 
-        :returns: True ifone of the projectile IDs is greater than zero.
+        :returns: True if one of the projectile IDs is greater than zero.
         """
         # Get the projectiles' obj_id for the first unit in the line. AoE's
         # units stay ranged with upgrades, so this should be fine.
@@ -256,7 +265,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         Buildings are unique if they belong to a specific civ.
 
-        :returns: True if the building is tied to one specific civ.
+        :returns: True if the group is tied to one specific civ.
         """
         # Get the enabling research obj_id for the first unit in the line
         head_unit = self.get_head_unit()
@@ -283,7 +292,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
     def get_class_id(self):
         """
-        Return the class ID for units in the line.
+        Return the class ID for units in the group.
         """
         return self.get_head_unit().get_member("unit_class").get_value()
 
@@ -478,6 +487,33 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
             return False
 
         return True
+
+    def is_gate(self):
+        """
+        Checks if the building has gate properties.
+
+        :returns: True if the building has obstruction class 4.
+        """
+        head_unit = self.get_head_unit()
+        return head_unit.get_member("obstruction_class").get_value() == 4
+
+    def get_head_unit(self):
+        """
+        Return the first unit in the line.
+        """
+        return self.head
+
+    def get_head_unit_id(self):
+        """
+        Returns the stack unit ID because that is the unit that is referenced by other entities.
+        """
+        return self.get_stack_unit_id()
+
+    def get_stack_unit_id(self):
+        """
+        Returns the stack unit ID.
+        """
+        return self.stack.get_member("id0").get_value()
 
     def get_train_location(self):
         """

@@ -20,6 +20,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group = ConverterObjectGroup("pregen")
 
         cls._generate_attributes(gamedata, pregen_converter_group)
+        cls._generate_diplomatic_stances(gamedata, pregen_converter_group)
         cls._generate_entity_types(gamedata, pregen_converter_group)
         cls._generate_resources(gamedata, pregen_converter_group)
         cls._generate_death_condition(gamedata, pregen_converter_group)
@@ -146,6 +147,78 @@ class AoCPregenSubprocessor:
 
         pregen_converter_group.add_raw_api_object(faith_abbrv_value)
         pregen_nyan_objects.update({faith_abbrv_ref_in_modpack: faith_abbrv_value})
+
+    @staticmethod
+    def _generate_diplomatic_stances(full_data_set, pregen_converter_group):
+        """
+        Generate DiplomaticStance objects.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :param pregen_converter_group: GenieObjectGroup instance that stores
+                                       pregenerated API objects for referencing with
+                                       ExpectedPointer
+        :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        """
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
+        api_objects = full_data_set.nyan_api_objects
+
+        stance_parent = "engine.aux.diplomatic_stance.DiplomaticStance"
+        stance_location = "data/aux/diplomatic_stance/"
+
+        # =======================================================================
+        # Enemy
+        # =======================================================================
+        enemy_ref_in_modpack = "aux.diplomatic_stance.types.Enemy"
+        enemy_raw_api_object = RawAPIObject(enemy_ref_in_modpack,
+                                            "Enemy", api_objects,
+                                            stance_location)
+        enemy_raw_api_object.set_filename("types")
+        enemy_raw_api_object.add_raw_parent(stance_parent)
+
+        pregen_converter_group.add_raw_api_object(enemy_raw_api_object)
+        pregen_nyan_objects.update({enemy_ref_in_modpack: enemy_raw_api_object})
+
+        # =======================================================================
+        # Neutral
+        # =======================================================================
+        neutral_ref_in_modpack = "aux.diplomatic_stance.types.Neutral"
+        neutral_raw_api_object = RawAPIObject(neutral_ref_in_modpack,
+                                              "Neutral", api_objects,
+                                              stance_location)
+        neutral_raw_api_object.set_filename("types")
+        neutral_raw_api_object.add_raw_parent(stance_parent)
+
+        pregen_converter_group.add_raw_api_object(neutral_raw_api_object)
+        pregen_nyan_objects.update({neutral_ref_in_modpack: neutral_raw_api_object})
+
+        # =======================================================================
+        # Friendly
+        # =======================================================================
+        friendly_ref_in_modpack = "aux.diplomatic_stance.types.Friendly"
+        friendly_raw_api_object = RawAPIObject(friendly_ref_in_modpack,
+                                               "Friendly", api_objects,
+                                               stance_location)
+        friendly_raw_api_object.set_filename("types")
+        friendly_raw_api_object.add_raw_parent(stance_parent)
+
+        pregen_converter_group.add_raw_api_object(friendly_raw_api_object)
+        pregen_nyan_objects.update({friendly_ref_in_modpack: friendly_raw_api_object})
+
+        # =======================================================================
+        # Gaia
+        # =======================================================================
+        gaia_ref_in_modpack = "aux.diplomatic_stance.types.Gaia"
+        gaia_raw_api_object = RawAPIObject(gaia_ref_in_modpack,
+                                           "Gaia", api_objects,
+                                           stance_location)
+        gaia_raw_api_object.set_filename("types")
+        gaia_raw_api_object.add_raw_parent(stance_parent)
+
+        pregen_converter_group.add_raw_api_object(gaia_raw_api_object)
+        pregen_nyan_objects.update({gaia_ref_in_modpack: gaia_raw_api_object})
 
     @staticmethod
     def _generate_entity_types(full_data_set, pregen_converter_group):

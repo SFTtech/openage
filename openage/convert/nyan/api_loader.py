@@ -3114,6 +3114,16 @@ def _insert_members(api_objects):
     member = NyanMember("range", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
+    # engine.aux.passable_mode.PassableMode
+    api_object = api_objects["engine.aux.passable_mode.PassableMode"]
+
+    set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
+    member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("blacklisted_game_entities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
     # engine.aux.patch.type.DiplomaticPatch
     api_object = api_objects["engine.aux.patch.type.DiplomaticPatch"]
 
@@ -3255,6 +3265,14 @@ def _insert_members(api_objects):
     member = NyanMember("starting_amount", MemberType.INT, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("decay_rate", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.selection_box.type.Rectangle
+    api_object = api_objects["engine.aux.selection_box.type.Rectangle"]
+
+    member = NyanMember("radius_x", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("radius_y", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.sound.Sound
