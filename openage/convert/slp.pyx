@@ -1,4 +1,4 @@
-# Copyright 2013-2019 the openage authors. See copying.md for legal info.
+# Copyright 2013-2020 the openage authors. See copying.md for legal info.
 #
 # cython: profile=False
 
@@ -171,7 +171,7 @@ class SLP:
 class FrameInfo:
     def __init__(self, qdl_table_offset, outline_table_offset,
                  palette_offset, properties, width, height,
-                 hotspot_x, hotspot_y, version, type):
+                 hotspot_x, hotspot_y, version, frame_type):
 
         # offset of command table
         self.qdl_table_offset = qdl_table_offset
@@ -187,7 +187,7 @@ class FrameInfo:
 
         # meta info
         self.version = version
-        self.frame_type = type
+        self.frame_type = frame_type
 
     @staticmethod
     def repr_header():
@@ -203,7 +203,7 @@ class FrameInfo:
             "% 10d | " % self.properties,
             "% 5d x% 7d | " % self.size,
             "% 4d /% 5d" % self.hotspot,
-            "% 4d" % self.version,
+            "% 4s" % self.version.decode('ascii'),
         )
         return "".join(ret)
 
