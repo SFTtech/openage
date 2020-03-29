@@ -37,6 +37,8 @@ from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOO
 from openage.convert.dataformat.aoc.genie_unit import GenieAmbientGroup,\
     GenieGarrisonMode
 
+from ....log import info
+
 
 class AoCProcessor:
 
@@ -52,6 +54,8 @@ class AoCProcessor:
         :returns: A list of modpacks.
         :rtype: list
         """
+
+        info("Starting conversion...")
 
         # Create a new container for the conversion process
         data_set = cls._pre_processor(gamespec)
@@ -75,6 +79,8 @@ class AoCProcessor:
         data_set = GenieObjectContainer()
 
         data_set.nyan_api_objects = load_api()
+
+        info("Extracting Genie data...")
 
         cls._extract_genie_units(gamespec, data_set)
         cls._extract_genie_techs(gamespec, data_set)
@@ -104,6 +110,8 @@ class AoCProcessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
 
+        info("Creating API-like objects...")
+
         cls._create_unit_lines(full_data_set)
         cls._create_extra_unit_lines(full_data_set)
         cls._create_building_lines(full_data_set)
@@ -113,10 +121,14 @@ class AoCProcessor:
         cls._create_ambient_groups(full_data_set)
         cls._create_variant_groups(full_data_set)
 
+        info("Linking API-like objects...")
+
         cls._link_creatables(full_data_set)
         cls._link_researchables(full_data_set)
         cls._link_resources_to_dropsites(full_data_set)
         cls._link_garrison(full_data_set)
+
+        info("Generating auxiliary objects...")
 
         AoCPregenSubprocessor.generate(full_data_set)
 
@@ -125,7 +137,12 @@ class AoCProcessor:
     @classmethod
     def _post_processor(cls, full_data_set):
 
+        info("Creating nyan objects...")
+
         AoCNyanSubprocessor.convert(full_data_set)
+
+        info("Creating requests for media export...")
+
         AoCMediaSubprocessor.convert(full_data_set)
 
         return AoCModpackSubprocessor.get_modpacks(full_data_set)

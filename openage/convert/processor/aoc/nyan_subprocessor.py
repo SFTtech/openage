@@ -411,15 +411,15 @@ class AoCNyanSubprocessor:
         interaction_mode = ambient_unit.get_member("interaction_mode").get_value()
 
         if interaction_mode >= 0:
-            abilities_set.append(AoCAbilitySubprocessor.idle_ability(ambient_group))
-
-        if interaction_mode >= 2:
             abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.idle_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.live_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.named_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.resistance_ability(ambient_group))
-            abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.visibility_ability(ambient_group))
+
+        if interaction_mode >= 2:
+            abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(ambient_group))
 
             if ambient_group.is_passable():
                 abilities_set.append(AoCAbilitySubprocessor.passable_ability(ambient_group))
