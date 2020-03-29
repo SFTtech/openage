@@ -431,6 +431,13 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         """
         return self.contains_entity(building_id)
 
+    def has_foundation(self):
+        """
+        Returns True if the building has a foundation terrain.
+        """
+        head_unit = self.get_head_unit()
+        return head_unit["foundation_terrain_id"].get_value() > -1
+
     def is_dropsite(self):
         """
         Returns True if the building accepts resources.

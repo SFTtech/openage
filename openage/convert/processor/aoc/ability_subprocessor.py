@@ -15,7 +15,7 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieUnitLineGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
-    ARMOR_CLASS_LOOKUPS
+    ARMOR_CLASS_LOOKUPS, TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS
 from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
 from openage.util.ordered_set import OrderedSet
 
@@ -354,6 +354,61 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("allowed_containers",
                                               containers,
                                               "engine.ability.type.ExitContainer")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def foundation_ability(line, terrain_id=-1):
+        """
+        Adds the Foundation abilities to a line. Optionally chooses the specified
+        terrain ID.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param terrain_id: Force this terrain ID as foundation
+        :type terrain_id: int
+        :returns: The expected pointers for the abilities.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Foundation" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Foundation", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Foundation")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Terrain
+        if terrain_id == -1:
+            terrain_id = current_unit["foundation_terrain_id"].get_value()
+
+        terrain = dataset.terrain_groups[terrain_id]
+        terrain_expected_pointer = ExpectedPointer(terrain, TERRAIN_GROUP_LOOKUPS[terrain_id][1])
+        ability_raw_api_object.add_raw_member("foundation_terrain",
+                                              terrain_expected_pointer,
+                                              "engine.ability.type.Foundation")
+
+        # Flatten ground (TODO: always true?)
+        ability_raw_api_object.add_raw_member("flatten_ground",
+                                              True,
+                                              "engine.ability.type.Foundation")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -1213,6 +1268,51 @@ class AoCAbilitySubprocessor:
                                               long_description_expected_pointer,
                                               "engine.ability.type.Named")
         line.add_raw_api_object(long_description_raw_api_object)
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def overlay_terrain_ability(line):
+        """
+        Adds the OverlayTerrain to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointers for the abilities.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.OverlayTerrain" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "OverlayTerrain", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.OverlayTerrain")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Terrain (Use foundation terrain)
+        terrain_id = current_unit["foundation_terrain_id"].get_value()
+        terrain = dataset.terrain_groups[terrain_id]
+        terrain_expected_pointer = ExpectedPointer(terrain, TERRAIN_GROUP_LOOKUPS[terrain_id][1])
+        ability_raw_api_object.add_raw_member("terrain_overlay",
+                                              terrain_expected_pointer,
+                                              "engine.ability.type.OverlayTerrain")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -2337,6 +2437,62 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("empty_condition",
                                               [],
                                               "engine.ability.type.Storage")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def terrain_requirement_ability(line):
+        """
+        Adds the TerrainRequirement to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointers for the abilities.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.TerrainRequirement" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "TerrainRequirement", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.TerrainRequirement")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Allowed types
+        allowed_types = []
+        terrain_restriction = current_unit["terrain_restriction"].get_value()
+        for terrain_type in TERRAIN_TYPE_LOOKUPS.values():
+            # Check if terrain type is covered by terrain restriction
+            if terrain_restriction in terrain_type[1]:
+                type_name = "aux.terrain_type.types.%s" % (terrain_type[2])
+                type_obj = dataset.pregen_nyan_objects[type_name].get_nyan_object()
+                allowed_types.append(type_obj)
+
+        ability_raw_api_object.add_raw_member("allowed_types",
+                                              allowed_types,
+                                              "engine.ability.type.TerrainRequirement")
+
+        # Blacklisted terrains
+        ability_raw_api_object.add_raw_member("blacklisted_terrains",
+                                              [],
+                                              "engine.ability.type.TerrainRequirement")
 
         line.add_raw_api_object(ability_raw_api_object)
 

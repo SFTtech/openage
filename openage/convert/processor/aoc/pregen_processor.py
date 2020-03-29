@@ -10,7 +10,7 @@ from openage.convert.dataformat.converter_object import RawAPIObject,\
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.internal_nyan_names import CLASS_ID_LOOKUPS,\
-    ARMOR_CLASS_LOOKUPS
+    ARMOR_CLASS_LOOKUPS, TERRAIN_TYPE_LOOKUPS
 
 
 class AoCPregenSubprocessor:
@@ -24,6 +24,7 @@ class AoCPregenSubprocessor:
         cls._generate_diplomatic_stances(gamedata, pregen_converter_group)
         cls._generate_entity_types(gamedata, pregen_converter_group)
         cls._generate_effect_types(gamedata, pregen_converter_group)
+        cls._generate_terrain_types(gamedata, pregen_converter_group)
         cls._generate_resources(gamedata, pregen_converter_group)
         cls._generate_death_condition(gamedata, pregen_converter_group)
 
@@ -225,7 +226,7 @@ class AoCPregenSubprocessor:
     @staticmethod
     def _generate_entity_types(full_data_set, pregen_converter_group):
         """
-        Generate Attribute objects.
+        Generate GameEntityType objects.
 
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
@@ -367,6 +368,40 @@ class AoCPregenSubprocessor:
 
         for type_name in ARMOR_CLASS_LOOKUPS.values():
             type_ref_in_modpack = "aux.attribute_change_type.types.%s" % (type_name)
+            type_raw_api_object = RawAPIObject(type_ref_in_modpack,
+                                               type_name, api_objects,
+                                               types_location)
+            type_raw_api_object.set_filename("types")
+            type_raw_api_object.add_raw_parent(type_parent)
+
+            pregen_converter_group.add_raw_api_object(type_raw_api_object)
+            pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
+
+    @staticmethod
+    def _generate_terrain_types(full_data_set, pregen_converter_group):
+        """
+        Generate GameEntityType objects.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :param pregen_converter_group: GenieObjectGroup instance that stores
+                                       pregenerated API objects for referencing with
+                                       ExpectedPointer
+        :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        """
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
+        api_objects = full_data_set.nyan_api_objects
+
+        type_parent = "engine.aux.terrain_type.TerrainType"
+        types_location = "data/aux/terrain_type/"
+
+        terrain_type_lookups = TERRAIN_TYPE_LOOKUPS.values()
+
+        for terrain_type in terrain_type_lookups:
+            type_name = terrain_type[2]
+            type_ref_in_modpack = "aux.terrain_type.types.%s" % (type_name)
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                                type_name, api_objects,
                                                types_location)

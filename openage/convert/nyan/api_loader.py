@@ -296,6 +296,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.ability.type.OverlayTerrain
+    parents = [api_objects["engine.ability.Ability"]]
+    nyan_object = NyanObject("OverlayTerrain", parents)
+    fqon = "engine.ability.type.OverlayTerrain"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.ability.type.Passable
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("Passable", parents)
@@ -2485,6 +2492,13 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.translated.type.TranslatedMarkupFile"]
     member = NyanMember("long_description", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.ability.type.OverlayTerrain
+    api_object = api_objects["engine.ability.type.OverlayTerrain"]
+
+    ref_object = api_objects["engine.aux.terrain.Terrain"]
+    member = NyanMember("terrain_overlay", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Passable

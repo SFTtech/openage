@@ -307,7 +307,7 @@ TERRAIN_GROUP_LOOKUPS = {
     24: ((0, 1, 4, 7, 8, 10, 20,), "Road", "road"),
     25: ((0, 1, 4, 7, 8, 10, 20,), "RoadWeathered", "road_weathered"),
     26: ((0, 1, 4, 7, 8, 10, 20,), "Ice", "ice"),
-    27: ((0, 1, 4, 7, 8, 10, 20,), "Foundation", "founation"),
+    27: ((0, 1, 4, 7, 8, 10, 20,), "Foundation", "foundation"),
     28: ((0, 3, 13, 15, 21,), "WaterBridge", "water_bridge"),
     29: ((0, 1, 4, 7, 10, 20,), "FarmConstruction1", "farm_construction1"),
     30: ((0, 1, 4, 7, 10, 20,), "FarmConstruction2", "farm_construction2"),
@@ -323,16 +323,29 @@ TERRAIN_GROUP_LOOKUPS = {
     40: ((0, 1, 4, 7, 8, 10, 20,), "KOH", "koh"),
 }
 
-# key: terrain index; value: (terrain indices, nyan object name)
+# key: not relevant; value: (terrain indices, unit terrain restrictions, nyan object name)
 TERRAIN_TYPE_LOOKUPS = {
     0: ((0, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 24,
-         25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 38, 39, 40), "Land",),
-    1: ((1, 15, 22, 23, 28), "Water",),
-    2: ((2, 37), "Beach",),
-    3: ((4,), "Shallow",),
-    4: ((26, 35, 37), "Ice",),
-    5: ((7, 8, 29, 30, 31), "Farm",),
+         25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 38, 39, 40),
+        (0, 1, 4, 7, 8, 10, 11, 12, 14, 16, 18, 20,),
+        "Land",),
+    1: ((1, 15, 22, 23, 28),
+        (0, 3, 6, 13, 17, 19,),
+        "Water",),
+    2: ((2, 37),
+        (0, 2, 7, 10, 12, 14, 16, 18, 20,),
+        "Beach",),
+    3: ((4,),
+        (0, 1, 7, 12, 14, 18, 21,),
+        "Shallow",),
+    4: ((26, 35, 37),
+        (0, 1, 4, 7, 8, 10, 11, 12, 14, 18, 19, 20,),
+        "Ice",),
+    5: ((7, 8, 29, 30, 31),
+        (0, 1, 4, 7, 10, 12, 14, 18, 20),
+        "Farm",),
 }
+
 
 CLASS_ID_LOOKUPS = {
     0: "Archer",

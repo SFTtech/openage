@@ -15,7 +15,7 @@ from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
-    TERRAIN_GROUP_LOOKUPS
+    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
 
 
@@ -155,6 +155,7 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.resistance_ability(unit_line))
         abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.turn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(unit_line))
 
@@ -304,12 +305,23 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.resistance_ability(building_line))
         abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(building_line))
 
         # Config abilities
         if building_line.is_passable() or\
                 (isinstance(building_line, GenieStackBuildingGroup) and building_line.is_gate()):
             abilities_set.append(AoCAbilitySubprocessor.passable_ability(building_line))
+
+        if building_line.has_foundation():
+            if building_line.get_class_id() == 49:
+                # Use OverlayTerrain for the farm terrain
+                abilities_set.append(AoCAbilitySubprocessor.overlay_terrain_ability(building_line))
+                abilities_set.append(AoCAbilitySubprocessor.foundation_ability(building_line,
+                                                                               terrain_id=27))
+
+            else:
+                abilities_set.append(AoCAbilitySubprocessor.foundation_ability(building_line))
 
         # Creation/Research abilities
         if len(building_line.creates) > 0:
@@ -427,6 +439,7 @@ class AoCNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.live_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.named_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.resistance_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.visibility_ability(ambient_group))
 
         if interaction_mode >= 2:
@@ -590,9 +603,17 @@ class AoCNyanSubprocessor:
         terrain_group.add_raw_api_object(raw_api_object)
 
         # =======================================================================
-        # TODO: Types
+        # Types
         # =======================================================================
-        raw_api_object.add_raw_member("types", [], "engine.aux.terrain.Terrain")
+        terrain_types = []
+
+        for terrain_type in TERRAIN_TYPE_LOOKUPS.values():
+            if terrain_index in terrain_type[0]:
+                type_name = "aux.terrain_type.types.%s" % (terrain_type[2])
+                type_obj = dataset.pregen_nyan_objects[type_name].get_nyan_object()
+                terrain_types.append(type_obj)
+
+        raw_api_object.add_raw_member("types", terrain_types, "engine.aux.terrain.Terrain")
 
         # =======================================================================
         # Name
