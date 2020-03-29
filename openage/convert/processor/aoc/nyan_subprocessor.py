@@ -297,6 +297,7 @@ class AoCNyanSubprocessor:
         # =======================================================================
         abilities_set = []
 
+        abilities_set.append(AoCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
@@ -309,6 +310,9 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(building_line))
 
         # Config abilities
+        if building_line.is_creatable():
+            abilities_set.append(AoCAbilitySubprocessor.constructable_ability(building_line))
+
         if building_line.is_passable() or\
                 (isinstance(building_line, GenieStackBuildingGroup) and building_line.is_gate()):
             abilities_set.append(AoCAbilitySubprocessor.passable_ability(building_line))

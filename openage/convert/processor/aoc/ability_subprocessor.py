@@ -23,6 +23,50 @@ from openage.util.ordered_set import OrderedSet
 class AoCAbilitySubprocessor:
 
     @staticmethod
+    def attribute_change_tracker_ability(line):
+        """
+        Adds the AttributeChangeTracker ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.AttributeChangeTracker" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "AttributeChangeTracker", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.AttributeChangeTracker")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Attribute
+        attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
+        ability_raw_api_object.add_raw_member("attribute",
+                                              attribute,
+                                              "engine.ability.type.AttributeChangeTracker")
+
+        # TODO: Change progress
+        ability_raw_api_object.add_raw_member("change_progress",
+                                              [],
+                                              "engine.ability.type.AttributeChangeTracker")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
     def collect_storage_ability(line):
         """
         Adds the CollectStorage ability to a line.
@@ -69,6 +113,49 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("storage_elements",
                                               elements,
                                               "engine.ability.type.CollectStorage")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def constructable_ability(line):
+        """
+        Adds the Constructable ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Constructable" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Constructable", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Constructable")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Starting progress (always 0)
+        ability_raw_api_object.add_raw_member("starting_progress",
+                                              0,
+                                              "engine.ability.type.Constructable")
+
+        # TODO: Construction progress
+        ability_raw_api_object.add_raw_member("construction_progress",
+                                              [],
+                                              "engine.ability.type.Constructable")
 
         line.add_raw_api_object(ability_raw_api_object)
 

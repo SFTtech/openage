@@ -278,7 +278,8 @@ CIV_GROUP_LOOKUPS = {
     18: "Koreans",
 }
 
-# key: terrain index; value: (unit terrain restrictions, nyan object name, filename prefix)
+# key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)
+# TODO: Use terrain restrictions from .dat
 TERRAIN_GROUP_LOOKUPS = {
     0:  ((0, 1, 4, 7, 8, 10, 20,), "Grass", "grass"),
     1:  ((0, 3, 13, 15, 21,), "Water", "water"),
@@ -323,7 +324,8 @@ TERRAIN_GROUP_LOOKUPS = {
     40: ((0, 1, 4, 7, 8, 10, 20,), "KOH", "koh"),
 }
 
-# key: not relevant; value: (terrain indices, unit terrain restrictions, nyan object name)
+# key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
+# TODO: Use terrain restrictions from .dat
 TERRAIN_TYPE_LOOKUPS = {
     0: ((0, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 24,
          25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 38, 39, 40),
