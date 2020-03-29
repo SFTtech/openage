@@ -134,6 +134,46 @@ class GraphicsMediaExportRequest(MediaExportRequest):
         texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
 
 
+class TerrainMediaExportRequest(MediaExportRequest):
+    """
+    Export requests for terrain graphics.
+    """
+
+    def get_type(self):
+        return MediaType.TERRAIN
+
+    def save(self, sourcedir, exportdir, game_version):
+        source_file = sourcedir[self.get_type().value, self.source_filename]
+
+        if source_file.is_file():
+            media_file = source_file.open("rb")
+
+        else:
+            # TODO: Filter files that do not exist out sooner
+            return
+
+        if source_file.suffix.lower() == ".slp":
+            from ..slp import SLP
+
+            image = SLP(media_file.read())
+
+        elif source_file.suffix.lower() == ".dds":
+            # TODO: Implenent
+            pass
+
+        palette_subdir = MediaType.PALETTES.value
+
+        if GameEdition.AOC is game_version[0]:
+            palette_name = "50500.bina"
+
+        palette_path = sourcedir[palette_subdir, palette_name]
+        palette_file = palette_path.open("rb")
+        palette_table = ColorTable(palette_file.read())
+
+        texture = Texture(image, palette_table)
+        texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
+
+
 class SoundMediaExportRequest(MediaExportRequest):
     """
     Export requests for ingame graphics such as animations or sprites.

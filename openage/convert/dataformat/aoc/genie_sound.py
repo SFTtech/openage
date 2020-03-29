@@ -23,9 +23,12 @@ class GenieSound(ConverterObject):
 
         self.data = full_data_set
 
-    def get_sounds_for_civ(self, civ_id):
+    def get_sounds(self, civ_id=-1):
         """
-        Return all sound ids for sounds tied to a specific civ.
+        Return sound resource ids for the associated DRS file.
+
+        :param civ_id: If specified, only return sounds that belong to this civ.
+        :type civ_id: int
         """
         sound_ids = []
         sound_items = self.get_member("sound_items").get_value()

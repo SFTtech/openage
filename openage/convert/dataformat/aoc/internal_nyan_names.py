@@ -278,6 +278,62 @@ CIV_GROUP_LOOKUPS = {
     18: "Koreans",
 }
 
+# key: terrain index; value: (unit terrain restrictions, nyan object name, filename prefix)
+TERRAIN_GROUP_LOOKUPS = {
+    0:  ((0, 1, 4, 7, 8, 10, 20,), "Grass", "grass"),
+    1:  ((0, 3, 13, 15, 21,), "Water", "water"),
+    2:  ((0, 2, 6, 7,), "Beach", "beach"),
+    3:  ((0, 1, 4, 7, 8, 10, 20,), "Dirt3", "dirt3"),
+    4:  ((0, 1, 6, 7, 21,), "Shallows", "shallows"),
+    5:  ((0, 1, 4, 7, 8, 10, 20,), "Leaves", "leaves"),
+    6:  ((0, 1, 4, 7, 8, 10, 20,), "Dirt", "dirt"),
+    7:  ((0, 1, 4, 7, 10, 20,), "FarmCrops", "farm_crops"),
+    8:  ((0, 1, 4, 7, 10, 20,), "FarmHarvested", "farm_harvested"),
+    9:  ((0, 1, 4, 7, 8, 10, 20,), "Grass3", "grass3"),
+    10: ((0, 1, 4, 7, 8, 10, 20,), "Forest", "forest"),
+    11: ((0, 1, 4, 7, 8, 10, 20,), "Dirt2", "dirt2"),
+    12: ((0, 1, 4, 7, 8, 10, 20,), "Grass2", "grass2"),
+    13: ((0, 1, 4, 7, 8, 10, 20,), "PalmDesert", "palm_desert"),
+    14: ((0, 1, 4, 7, 8, 10, 20,), "Desert", "desert"),
+    15: ((0, 3, 13, 15, 21,), "WaterOld", "water_old"),
+    16: ((0, 1, 4, 7, 8, 10, 20,), "GrassOld", "grass_old"),
+    17: ((0, 1, 4, 7, 8, 10, 20,), "Jungle", "jungle"),
+    18: ((0, 1, 4, 7, 8, 10, 20,), "BambooForest", "bamboo_forest"),
+    19: ((0, 1, 4, 7, 8, 10, 20,), "PineForest", "pine-forest"),
+    20: ((0, 1, 4, 7, 8, 10, 20,), "OakForest", "oak_forest"),
+    21: ((0, 1, 4, 7, 8, 10, 20,), "SnowForest", "snow_forest"),
+    22: ((0, 3, 13, 15, 21,), "Water2", "water2"),
+    23: ((0, 3, 13, 15, 21,), "Water3", "water3"),
+    24: ((0, 1, 4, 7, 8, 10, 20,), "Road", "road"),
+    25: ((0, 1, 4, 7, 8, 10, 20,), "RoadWeathered", "road_weathered"),
+    26: ((0, 1, 4, 7, 8, 10, 20,), "Ice", "ice"),
+    27: ((0, 1, 4, 7, 8, 10, 20,), "Foundation", "founation"),
+    28: ((0, 3, 13, 15, 21,), "WaterBridge", "water_bridge"),
+    29: ((0, 1, 4, 7, 10, 20,), "FarmConstruction1", "farm_construction1"),
+    30: ((0, 1, 4, 7, 10, 20,), "FarmConstruction2", "farm_construction2"),
+    31: ((0, 1, 4, 7, 10, 20,), "FarmConstruction3", "farm_construction3"),
+    32: ((0, 1, 4, 7, 8, 10, 20,), "Snow", "snow"),
+    33: ((0, 1, 4, 7, 8, 10, 20,), "SnowDesert", "snow_desert"),
+    34: ((0, 1, 4, 7, 8, 10, 20,), "SnowGrass", "snow_grass"),
+    35: ((0, 1, 4, 7, 8, 10, 20,), "Ice2", "ice2"),
+    36: ((0, 1, 4, 7, 8, 10, 20,), "SnowFoundation", "snow_foundation"),
+    37: ((0, 2, 6, 7,), "IceBeach", "ice_beach"),
+    38: ((0, 1, 4, 7, 8, 10, 20,), "RoadSnow", "road_snow"),
+    39: ((0, 1, 4, 7, 8, 10, 20,), "RoadMossy", "road_mossy"),
+    40: ((0, 1, 4, 7, 8, 10, 20,), "KOH", "koh"),
+}
+
+# key: terrain index; value: (terrain indices, nyan object name)
+TERRAIN_TYPE_LOOKUPS = {
+    0: ((0, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 24,
+         25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 38, 39, 40), "Land",),
+    1: ((1, 15, 22, 23, 28), "Water",),
+    2: ((2, 37), "Beach",),
+    3: ((4,), "Shallow",),
+    4: ((26, 35, 37), "Ice",),
+    5: ((7, 8, 29, 30, 31), "Farm",),
+}
+
 CLASS_ID_LOOKUPS = {
     0: "Archer",
     1: "Artifact",

@@ -14,7 +14,9 @@ from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
-from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS
+from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
+    TERRAIN_GROUP_LOOKUPS
+from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
 
 
 class AoCNyanSubprocessor:
@@ -43,6 +45,9 @@ class AoCNyanSubprocessor:
         for tech_group in full_data_set.tech_groups.values():
             tech_group.create_nyan_objects()
 
+        for terrain_group in full_data_set.terrain_groups.values():
+            terrain_group.create_nyan_objects()
+
         # TODO: civs, more complex game entities
 
     @classmethod
@@ -62,6 +67,9 @@ class AoCNyanSubprocessor:
         for tech_group in full_data_set.tech_groups.values():
             tech_group.create_nyan_members()
 
+        for terrain_group in full_data_set.terrain_groups.values():
+            terrain_group.create_nyan_members()
+
         # TODO: civs, more complex game entities
 
     @classmethod
@@ -79,6 +87,9 @@ class AoCNyanSubprocessor:
         for tech_group in full_data_set.tech_groups.values():
             if tech_group.is_researchable():
                 cls._tech_group_to_tech(tech_group)
+
+        for terrain_group in full_data_set.terrain_groups.values():
+            cls._terrain_group_to_terrain(terrain_group)
 
         # TODO: civs, more complex game entities
 
@@ -555,6 +566,121 @@ class AoCNyanSubprocessor:
         # =======================================================================
         if tech_group.is_researchable():
             AoCAuxiliarySubprocessor.get_researchable_tech(tech_group)
+
+    @staticmethod
+    def _terrain_group_to_terrain(terrain_group):
+        """
+        Creates raw API objects for a terrain group.
+
+        :param tech_group: Terrain group that gets converted to a tech.
+        :type tech_group: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        terrain_index = terrain_group.get_id()
+
+        dataset = terrain_group.data
+
+        # Start with the Terrain object
+        terrain_name = TERRAIN_GROUP_LOOKUPS[terrain_index][1]
+        raw_api_object = RawAPIObject(terrain_name, terrain_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.terrain.Terrain")
+        obj_location = "data/terrain/%s/" % (TERRAIN_GROUP_LOOKUPS[terrain_index][2])
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(TERRAIN_GROUP_LOOKUPS[terrain_index][2])
+        terrain_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # TODO: Types
+        # =======================================================================
+        raw_api_object.add_raw_member("types", [], "engine.aux.terrain.Terrain")
+
+        # =======================================================================
+        # Name
+        # =======================================================================
+        name_ref = "%s.%sName" % (terrain_name, terrain_name)
+        name_raw_api_object = RawAPIObject(name_ref,
+                                           "%sName"  % (terrain_name),
+                                           dataset.nyan_api_objects)
+        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_location = ExpectedPointer(terrain_group, terrain_name)
+        name_raw_api_object.set_location(name_location)
+
+        name_raw_api_object.add_raw_member("translations",
+                                           [],
+                                           "engine.aux.translated.type.TranslatedString")
+
+        name_expected_pointer = ExpectedPointer(terrain_group, name_ref)
+        raw_api_object.add_raw_member("name", name_expected_pointer, "engine.aux.terrain.Terrain")
+        terrain_group.add_raw_api_object(name_raw_api_object)
+
+        # =======================================================================
+        # Sound
+        # =======================================================================
+        sound_name = "%s.Sound" % (terrain_name)
+        sound_raw_api_object = RawAPIObject(sound_name, "Sound",
+                                            dataset.nyan_api_objects)
+        sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
+        sound_location = ExpectedPointer(terrain_group, terrain_name)
+        sound_raw_api_object.set_location(sound_location)
+
+        # Sounds for terrains don't exist in AoC (TODO: Really?)
+        sounds = []
+
+        sound_raw_api_object.add_raw_member("play_delay",
+                                            0,
+                                            "engine.aux.sound.Sound")
+        sound_raw_api_object.add_raw_member("sounds",
+                                            sounds,
+                                            "engine.aux.sound.Sound")
+
+        sound_expected_pointer = ExpectedPointer(terrain_group, sound_name)
+        raw_api_object.add_raw_member("sound",
+                                      sound_expected_pointer,
+                                      "engine.aux.terrain.Terrain")
+
+        terrain_group.add_raw_api_object(sound_raw_api_object)
+
+        # =======================================================================
+        # TODO: Ambience
+        # =======================================================================
+        raw_api_object.add_raw_member("ambience", [], "engine.aux.terrain.Terrain")
+
+        # =======================================================================
+        # Graphic
+        # =======================================================================
+        if terrain_group.has_subterrain():
+            subterrain = terrain_group.get_subterrain()
+            slp_id = subterrain["slp_id"].get_value()
+
+        else:
+            slp_id = terrain_group.get_terrain()["slp_id"].get_value()
+
+        # Create animation object
+        graphic_name = "%s.TerrainTexture" % (terrain_name)
+        graphic_raw_api_object = RawAPIObject(graphic_name, "TerrainTexture",
+                                              dataset.nyan_api_objects)
+        graphic_raw_api_object.add_raw_parent("engine.aux.graphics.Terrain")
+        graphic_location = ExpectedPointer(terrain_group, terrain_name)
+        graphic_raw_api_object.set_location(graphic_location)
+
+        if slp_id in dataset.combined_terrains.keys():
+            terrain_graphic = dataset.combined_terrains[slp_id]
+
+        else:
+            terrain_graphic = CombinedTerrain(slp_id,
+                                              "texture_%s" % (TERRAIN_GROUP_LOOKUPS[terrain_index][2]),
+                                              dataset)
+            dataset.combined_terrains.update({terrain_graphic.get_id(): terrain_graphic})
+
+        terrain_graphic.add_reference(graphic_raw_api_object)
+
+        graphic_raw_api_object.add_raw_member("sprite", terrain_graphic,
+                                              "engine.aux.graphics.Terrain")
+
+        terrain_group.add_raw_api_object(graphic_raw_api_object)
+        graphic_expected_pointer = ExpectedPointer(terrain_group, graphic_name)
+        raw_api_object.add_raw_member("terrain_graphic", graphic_expected_pointer,
+                                      "engine.aux.terrain.Terrain")
 
     @staticmethod
     def _projectiles_from_line(line):

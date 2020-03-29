@@ -171,7 +171,7 @@ class AoCAuxiliarySubprocessor:
         if creation_sound_id > -1:
             # Creation sound should be civ agnostic
             genie_sound = dataset.genie_sounds[creation_sound_id]
-            file_id = genie_sound.get_sounds_for_civ(-1)[0]
+            file_id = genie_sound.get_sounds(civ_id=-1)[0]
 
             if file_id in dataset.combined_sounds:
                 creation_sound = dataset.combined_sounds[file_id]

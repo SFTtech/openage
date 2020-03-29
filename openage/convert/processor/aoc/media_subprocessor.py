@@ -5,7 +5,7 @@ Convert media information to metadata definitions and export
 requests. Subroutine of the main AoC processor.
 """
 from openage.convert.export.media_export_request import GraphicsMediaExportRequest,\
-    SoundMediaExportRequest
+    SoundMediaExportRequest, TerrainMediaExportRequest
 
 
 class AoCMediaSubprocessor:
@@ -42,6 +42,18 @@ class AoCMediaSubprocessor:
                 full_data_set.graphics_exports.update({graphic_id: export_request})
 
                 handled_graphic_ids.add(graphic_id)
+
+        combined_terrains = full_data_set.combined_terrains.values()
+        for texture in combined_terrains:
+            slp_id = texture.get_id()
+
+            targetdir = texture.resolve_graphics_location()
+            source_filename = "%s.slp" % str(slp_id)
+            target_filename = "%s.png" % texture.get_filename()
+
+            export_request = TerrainMediaExportRequest(targetdir, source_filename,
+                                                       target_filename)
+            full_data_set.graphics_exports.update({slp_id: export_request})
 
     @staticmethod
     def _create_sound_requests(full_data_set):

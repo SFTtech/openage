@@ -57,10 +57,13 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.unit_unlocks = {}
         self.civ_boni = {}
         self.stat_upgrades = {}
+        self.terrain_groups = {}
 
         # Phase 3: sprites, sounds
         self.combined_sprites = {}          # Animation or Terrain graphics
         self.combined_sounds = {}
+        self.combined_terrains = {}
+
         self.graphics_exports = {}
         self.sound_exports = {}
 

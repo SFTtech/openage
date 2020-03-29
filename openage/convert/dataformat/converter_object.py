@@ -12,6 +12,7 @@ from .aoc.expected_pointer import ExpectedPointer
 from .aoc.combined_sprite import CombinedSprite
 from openage.convert.dataformat.value_members import NoDiffMember
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
+from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
 
 
 class ConverterObject:
@@ -312,6 +313,9 @@ class RawAPIObject:
             elif isinstance(member_value, CombinedSprite):
                 member_value = member_value.get_relative_sprite_location()
 
+            elif isinstance(member_value, CombinedTerrain):
+                member_value = member_value.get_relative_terrain_location()
+
             elif isinstance(member_value, CombinedSound):
                 member_value = member_value.get_relative_file_location()
 
@@ -326,6 +330,9 @@ class RawAPIObject:
 
                         elif isinstance(temp_value, CombinedSprite):
                             temp_values.append(temp_value.get_relative_sprite_location())
+
+                        elif isinstance(member_value, CombinedTerrain):
+                            member_value = member_value.get_relative_terrain_location()
 
                         elif isinstance(temp_value, CombinedSound):
                             temp_values.append(temp_value.get_relative_file_location())

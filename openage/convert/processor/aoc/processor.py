@@ -38,6 +38,7 @@ from openage.convert.dataformat.aoc.genie_unit import GenieAmbientGroup,\
     GenieGarrisonMode
 
 from ....log import info
+from openage.convert.dataformat.aoc.genie_terrain import GenieTerrainGroup
 
 
 class AoCProcessor:
@@ -120,6 +121,7 @@ class AoCProcessor:
         cls._create_villager_groups(full_data_set)
         cls._create_ambient_groups(full_data_set)
         cls._create_variant_groups(full_data_set)
+        cls._create_terrain_groups(full_data_set)
 
         info("Linking API-like objects...")
 
@@ -864,6 +866,25 @@ class AoCProcessor:
 
             for variant_id in variant[0]:
                 variant_group.add_unit(full_data_set.genie_units[variant_id])
+
+    @staticmethod
+    def _create_terrain_groups(full_data_set):
+        """
+        Create terrain groups.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        terrains = full_data_set.genie_terrains.values()
+
+        for terrain in terrains:
+            enabled = terrain.get_member("enabled").get_value()
+
+            if enabled:
+                terrain_group = GenieTerrainGroup(terrain.get_id(), full_data_set)
+                full_data_set.terrain_groups.update({terrain.get_id(): terrain_group})
 
     @staticmethod
     def _link_creatables(full_data_set):

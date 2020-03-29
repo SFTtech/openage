@@ -65,6 +65,9 @@ class AoCModpackSubprocessor:
         for tech_group in full_data_set.tech_groups.values():
             raw_api_objects.extend(tech_group.get_raw_api_objects().values())
 
+        for terrain_group in full_data_set.terrain_groups.values():
+            raw_api_objects.extend(terrain_group.get_raw_api_objects().values())
+
         for raw_api_object in raw_api_objects:
             obj_location = raw_api_object.get_location()
 

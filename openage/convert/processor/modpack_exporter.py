@@ -6,6 +6,8 @@ Export data from a modpack to files.
 from openage.convert.dataformat.media_types import MediaType
 from bin.openage.convert import game_versions
 
+from ...log import info
+
 
 class ModpackExporter:
 
@@ -21,14 +23,21 @@ class ModpackExporter:
         """
         modpack_dir = exportdir.joinpath("%s" % (modpack.info.name))
 
+        info("Starting export...")
+        info("Dumping info file...")
+
         # Modpack info file
         modpack.info.save(modpack_dir)
+
+        info("Dumping data files...")
 
         # Data files
         data_files = modpack.get_data_files()
 
         for data_file in data_files:
             data_file.save(modpack_dir)
+
+        info("Exporting media files...")
 
         # Media files
         media_files = modpack.get_media_files()
