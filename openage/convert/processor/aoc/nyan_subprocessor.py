@@ -141,6 +141,7 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.los_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.move_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.named_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.resistance_ability(unit_line))
         abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.turn_ability(unit_line))
@@ -289,6 +290,7 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.los_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.named_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.resistance_ability(building_line))
         abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(building_line))
@@ -415,6 +417,7 @@ class AoCNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.live_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.named_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.resistance_ability(ambient_group))
             abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.visibility_ability(ambient_group))
 

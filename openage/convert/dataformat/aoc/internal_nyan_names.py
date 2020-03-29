@@ -362,3 +362,29 @@ GATHER_TASK_LOOKUPS = {
 RESTOCK_TARGET_LOOKUPS = {
     50: "ReseedFarm",
 }
+
+# key: armor class; value: Gather ability name
+ARMOR_CLASS_LOOKUPS = {
+    1: "Infantry",
+    2: "TurtleShip",
+    3: "Pierce",
+    4: "Melee",
+    5: "WarElephant",
+    8: "Cavalry",
+    11: "BuildingNoPort",
+    13: "StoneDefense",
+    15: "Archer",
+    16: "ShipCamelSaboteur",
+    17: "Ram",
+    18: "Tree",
+    19: "UniqueUnit",
+    20: "SiegeWeapon",
+    21: "Building",
+    22: "Wall",
+    24: "Boar",
+    25: "Monk",
+    26: "Castle",
+    27: "Spearman",
+    28: "CavalryArchers",
+    29: "EagleWarrior",
+}

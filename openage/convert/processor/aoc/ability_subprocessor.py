@@ -14,7 +14,8 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
     GenieUnitLineGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
-    AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS
+    AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
+    ARMOR_CLASS_LOOKUPS
 from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
 from openage.util.ordered_set import OrderedSet
 
@@ -1767,6 +1768,107 @@ class AoCAbilitySubprocessor:
 
         ability_raw_api_object.add_raw_member("researchables", researchables_set,
                                               "engine.ability.type.Research")
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def resistance_ability(line):
+        """
+        Adds the Resistance ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+        obj_name = "%s.Resistance" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Resistance", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Resistance")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        resistances = []
+
+        # FlatAttributeChangeDecrease
+        resistance_parent = "engine.resistance.discrete.flat_attribute_change.FlatAttributeChange"
+        armor_parent = "engine.resistance.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
+
+        if current_unit.has_member("armors"):
+            armors = current_unit["armors"].get_value()
+
+        else:
+            # TODO: Trees and blast defense
+            armors = []
+
+        for armor in armors:
+            armor_class = armor["type_id"].get_value()
+            armor_amount = armor["amount"].get_value()
+            class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+
+            armor_name = "%s.Resistance.%s" % (game_entity_name, class_name)
+            armor_raw_api_object = RawAPIObject(armor_name, class_name, dataset.nyan_api_objects)
+            armor_raw_api_object.add_raw_parent(armor_parent)
+            armor_location = ExpectedPointer(line, obj_name)
+            armor_raw_api_object.set_location(armor_location)
+
+            # Type
+            type_ref = "aux.attribute_change_type.types.%s" % (class_name)
+            change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+            armor_raw_api_object.add_raw_member("type",
+                                                change_type,
+                                                resistance_parent)
+
+            # Block value
+            # =================================================================================
+            amount_name = "%s.Resistance.%s.BlockAmount" % (game_entity_name, class_name)
+            amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", dataset.nyan_api_objects)
+            amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
+            amount_location = ExpectedPointer(line, armor_name)
+            amount_raw_api_object.set_location(amount_location)
+
+            attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
+            amount_raw_api_object.add_raw_member("type",
+                                                 attribute,
+                                                 "engine.aux.attribute.AttributeAmount")
+            amount_raw_api_object.add_raw_member("amount",
+                                                 armor_amount,
+                                                 "engine.aux.attribute.AttributeAmount")
+
+            line.add_raw_api_object(amount_raw_api_object)
+            # =================================================================================
+            amount_expected_pointer = ExpectedPointer(line, amount_name)
+            armor_raw_api_object.add_raw_member("block_value",
+                                                amount_expected_pointer,
+                                                resistance_parent)
+
+            line.add_raw_api_object(armor_raw_api_object)
+            armor_expected_pointer = ExpectedPointer(line, armor_name)
+            resistances.append(armor_expected_pointer)
+
+        # TODO: Fallback type
+
+        # Resistances
+        ability_raw_api_object.add_raw_member("resistances",
+                                              resistances,
+                                              "engine.ability.type.Resistance")
+
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
