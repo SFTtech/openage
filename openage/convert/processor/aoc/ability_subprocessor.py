@@ -8,7 +8,7 @@ from ...dataformat.converter_object import RawAPIObject
 from ...dataformat.aoc.expected_pointer import ExpectedPointer
 from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
-from ...dataformat.aoc.combined_sprite import CombinedSprite
+from ...dataformat.aoc.combined_sprite import CombinedSprite, frame_to_seconds
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
@@ -16,11 +16,166 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
     ARMOR_CLASS_LOOKUPS, TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS
-from openage.convert.dataformat.aoc.combined_sprite import frame_to_seconds
 from openage.util.ordered_set import OrderedSet
 
 
 class AoCAbilitySubprocessor:
+
+    @staticmethod
+    def apply_discrete_effect_ability(line, ranged=False):
+        """
+        Adds the ApplyDiscreteEffect ability to a line.
+
+        TODO: More than attack.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        if ranged:
+            ability_parent = "engine.ability.type.RangedDiscreteEffect"
+
+        else:
+            ability_parent = "engine.ability.type.ApplyDiscreteEffect"
+
+        obj_name = "%s.Attack" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Attack", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent(ability_parent)
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        if ranged:
+            # Min range
+            min_range = current_unit["weapon_range_min"].get_value()
+            ability_raw_api_object.add_raw_member("min_range",
+                                                  min_range,
+                                                  "engine.ability.type.RangedDiscreteEffect")
+
+            # Max range
+            max_range = current_unit["weapon_range_max"].get_value()
+            ability_raw_api_object.add_raw_member("max_range",
+                                                  max_range,
+                                                  "engine.ability.type.RangedDiscreteEffect")
+
+        # Effects
+        effects = []
+
+        # FlatAttributeChangeDecrease
+        effect_parent = "engine.effect.discrete.flat_attribute_change.FlatAttributeChange"
+        attack_parent = "engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
+
+        attacks = current_unit["attacks"].get_value()
+
+        for attack in attacks:
+            armor_class = attack["type_id"].get_value()
+            attack_amount = attack["amount"].get_value()
+            class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+
+            attack_name = "%s.Attack.%s" % (game_entity_name, class_name)
+            attack_raw_api_object = RawAPIObject(attack_name, class_name, dataset.nyan_api_objects)
+            attack_raw_api_object.add_raw_parent(attack_parent)
+            attack_location = ExpectedPointer(line, obj_name)
+            attack_raw_api_object.set_location(attack_location)
+
+            # Type
+            type_ref = "aux.attribute_change_type.types.%s" % (class_name)
+            change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+            attack_raw_api_object.add_raw_member("type",
+                                                 change_type,
+                                                 effect_parent)
+
+            # Min value
+            # TODO: Use a common object here
+            attack_raw_api_object.add_raw_member("min_change_value",
+                                                 MemberSpecialValue.NYAN_NONE,
+                                                 effect_parent)
+
+            # Max value
+            attack_raw_api_object.add_raw_member("max_change_value",
+                                                 MemberSpecialValue.NYAN_NONE,
+                                                 effect_parent)
+
+            # Change value
+            # =================================================================================
+            amount_name = "%s.Attack.%s.ChangeAmount" % (game_entity_name, class_name)
+            amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
+            amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
+            amount_location = ExpectedPointer(line, attack_name)
+            amount_raw_api_object.set_location(amount_location)
+
+            attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
+            amount_raw_api_object.add_raw_member("type",
+                                                 attribute,
+                                                 "engine.aux.attribute.AttributeAmount")
+            amount_raw_api_object.add_raw_member("amount",
+                                                 attack_amount,
+                                                 "engine.aux.attribute.AttributeAmount")
+
+            line.add_raw_api_object(amount_raw_api_object)
+            # =================================================================================
+            amount_expected_pointer = ExpectedPointer(line, amount_name)
+            attack_raw_api_object.add_raw_member("change_value",
+                                                 amount_expected_pointer,
+                                                 effect_parent)
+
+            # Ignore protection
+            attack_raw_api_object.add_raw_member("ignore_protection",
+                                                 [],
+                                                 effect_parent)
+
+            line.add_raw_api_object(attack_raw_api_object)
+            armor_expected_pointer = ExpectedPointer(line, attack_name)
+            effects.append(armor_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("effects",
+                                              effects,
+                                              "engine.ability.type.ApplyDiscreteEffect")
+
+        # Reload time
+        reload_time = current_unit["attack_speed"].get_value()
+        ability_raw_api_object.add_raw_member("reload_time",
+                                              reload_time,
+                                              "engine.ability.type.ApplyDiscreteEffect")
+
+        # Application delay
+        attack_graphic_id = current_unit["attack_sprite_id"].get_value()
+        attack_graphic = dataset.genie_graphics[attack_graphic_id]
+        frame_rate = attack_graphic["frame_rate"].get_value()
+        frame_delay = current_unit["frame_delay"].get_value()
+        application_delay = frame_to_seconds(frame_delay, frame_rate)
+        ability_raw_api_object.add_raw_member("application_delay",
+                                              application_delay,
+                                              "engine.ability.type.ApplyDiscreteEffect")
+
+        # Allowed types (all buildings/units)
+        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
+                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+
+        ability_raw_api_object.add_raw_member("allowed_types",
+                                              allowed_types,
+                                              "engine.ability.type.ApplyDiscreteEffect")
+        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+                                              [],
+                                              "engine.ability.type.ApplyDiscreteEffect")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
 
     @staticmethod
     def attribute_change_tracker_ability(line):

@@ -246,9 +246,9 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         head_unit = self.get_head_unit()
         return head_unit.get_member("obstruction_type").get_value() == 0
 
-    def is_ranged(self):
+    def is_projectile_shooter(self):
         """
-        Units/Buildings are ranged if they have assigned a projectile ID.
+        Units/Buildings are projectile shooters if they have assigned a projectile ID.
 
         :returns: True if one of the projectile IDs is greater than zero.
         """
@@ -261,9 +261,34 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         # -1 -> no projectile
         return (projectile_id_0 > -1 or projectile_id_1 > -1)
 
+    def is_ranged(self):
+        """
+        Groups are ranged if their maximum range is greater than 0.
+
+        :returns: True if the group's max range is greater than 0.
+        """
+        head_unit = self.get_head_unit()
+        return head_unit["weapon_range_max"].get_value() > 0
+
+    def is_melee(self):
+        """
+        Groups are melee if they have a Combat ability and are not ranged units.
+
+        :returns: True if the group is not ranged and has a combat ability.
+        """
+        head_unit = self.get_head_unit()
+        commands = head_unit.get_member("unit_commands").get_value()
+        for command in commands:
+            type_id = command.get_value()["type"].get_value()
+
+            if type_id == 7:
+                return not self.is_ranged()
+
+        return False
+
     def is_unique(self):
         """
-        Buildings are unique if they belong to a specific civ.
+        Groups are unique if they belong to a specific civ.
 
         :returns: True if the group is tied to one specific civ.
         """
@@ -564,6 +589,40 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
         transform_id = self.head_unit.get_member("transform_unit_id").get_value()
         self.transform_unit = self.data.genie_units[transform_id]
 
+    def is_projectile_shooter(self):
+        """
+        Transform groups are projectile shooters if their head or transform units
+        have assigned a projectile ID.
+
+        :returns: True if one of the projectile IDs is greater than zero.
+        """
+        projectile_id_0 = self.head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_id_1 = self.head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+        projectile_id_2 = self.transform_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_id_3 = self.transform_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+
+        # -1 -> no projectile
+        return (projectile_id_0 > -1 or projectile_id_1 > -1
+                or projectile_id_2 > -1 or projectile_id_3 > -1)
+
+    def get_head_unit_id(self):
+        """
+        Returns the unit that is switched to when picking up something.
+        """
+        return self.head_unit["id0"].get_value()
+
+    def get_head_unit(self):
+        """
+        Returns the unit that is switched to when picking up something.
+        """
+        return self.head_unit
+
+    def get_transform_unit(self):
+        """
+        Returns the unit that is switched to when picking up something.
+        """
+        return self.transform_unit
+
     def __repr__(self):
         return "GenieUnitTransformGroup<%s>" % (self.get_id())
 
@@ -782,7 +841,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         # TODO: More checks here?
         return False
 
-    def is_ranged(self):
+    def is_projectile_shooter(self):
         # TODO: Only hunting; should be done differently?
         return False
 

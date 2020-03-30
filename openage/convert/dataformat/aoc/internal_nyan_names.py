@@ -459,3 +459,13 @@ ARMOR_CLASS_LOOKUPS = {
     28: "CavalryArchers",
     29: "EagleWarrior",
 }
+
+# key: command type; value: Apply*Effect ability name
+COMMAND_TYPE_LOOKUPS = {
+    7: "Attack",
+    101: "Construct",
+    104: "Convert",
+    105: "Heal",
+    106: "Repair",
+    110: "Hunt",
+}

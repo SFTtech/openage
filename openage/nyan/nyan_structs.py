@@ -605,17 +605,18 @@ class NyanMember:
         self.value = value
         self._operator = operator
 
-        if isinstance(self._member_type, NyanObject):
+        if self.value not in (MemberSpecialValue.NYAN_INF, MemberSpecialValue.NYAN_NONE):
+            self._type_conversion()
+
+        self._sanity_check()
+
+        if isinstance(self._member_type, NyanObject) and not\
+                value is MemberSpecialValue.NYAN_NONE:
             if not (self.value is self._member_type or
                     self.value.has_ancestor(self._member_type)):
                 raise Exception(("%s: 'value' with type NyanObject must "
                                  "have their member type as ancestor")
                                 % (self.__repr__()))
-
-        elif self.value is not MemberSpecialValue.NYAN_INF:
-            self._type_conversion()
-
-        self._sanity_check()
 
     def dump(self):
         """
@@ -766,7 +767,8 @@ class NyanMember:
                 raise Exception(("%s: 'value' with NYAN_NONE can only have operator type "
                                  "MemberOperator.ASSIGN") % (self.__repr__()))
 
-            if isinstance(self._member_type, NyanObject):
+            if isinstance(self._member_type, NyanObject) and not\
+                    self.value is MemberSpecialValue.NYAN_NONE:
                 if not (self.value is self._member_type or
                         self.value.has_ancestor((self._member_type))):
                     raise Exception(("%s: 'value' with type NyanObject must "
