@@ -14,6 +14,7 @@ class MemberAccess(Enum):
     READ_EXPORT   = "binary-read-export_member"
     NOREAD_EXPORT = "noread-export_member"
     READ_UNKNOWN  = "read-unknown_member"
+    SKIP          = "skip-member"
 
 
 # TODO those values are made available in the module's global namespace

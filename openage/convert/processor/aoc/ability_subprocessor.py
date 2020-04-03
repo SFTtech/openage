@@ -693,6 +693,7 @@ class AoCAbilitySubprocessor:
         for gatherer in gatherers:
             unit_commands = gatherer.get_member("unit_commands").get_value()
             resource = None
+            ability_animation_id = -1
             harvestable_class_ids = OrderedSet()
             harvestable_unit_ids = OrderedSet()
 
@@ -733,6 +734,12 @@ class AoCAbilitySubprocessor:
                 else:
                     continue
 
+                if type_id == 110:
+                    ability_animation_id = command.get_value()["work_sprite_id"].get_value()
+
+                else:
+                    ability_animation_id = command.get_value()["proceed_sprite_id"].get_value()
+
             # Look for the harvestable groups that match the class IDs and unit IDs
             check_groups = []
             check_groups.extend(dataset.unit_lines.values())
@@ -769,6 +776,38 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.type.Gather")
             ability_location = ExpectedPointer(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
+
+            if ability_animation_id > -1:
+                # Make the ability animated
+                ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+
+                animations_set = []
+
+                # Create animation object
+                obj_name = "%s.%s.%sAnimation" % (game_entity_name, ability_name, ability_name)
+                animation_raw_api_object = RawAPIObject(obj_name, "%sAnimation" % (ability_name),
+                                                        dataset.nyan_api_objects)
+                animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
+                animation_location = ExpectedPointer(line, "%s.%s" % (game_entity_name, ability_name))
+                animation_raw_api_object.set_location(animation_location)
+
+                ability_sprite = CombinedSprite(ability_animation_id,
+                                                "%s_%s" % (ability_name,
+                                                           name_lookup_dict[current_unit_id][1]),
+                                                dataset)
+                dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
+                ability_sprite.add_reference(animation_raw_api_object)
+
+                animation_raw_api_object.add_raw_member("sprite", ability_sprite,
+                                                        "engine.aux.graphics.Animation")
+
+                animation_expected_pointer = ExpectedPointer(line, obj_name)
+                animations_set.append(animation_expected_pointer)
+
+                ability_raw_api_object.add_raw_member("animations", animations_set,
+                                                      "engine.ability.specialization.AnimatedAbility")
+
+                line.add_raw_api_object(animation_raw_api_object)
 
             # Auto resume
             ability_raw_api_object.add_raw_member("auto_resume",
@@ -2006,6 +2045,53 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_parent("engine.ability.type.Restock")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
+
+        ability_animation_id  = -1
+
+        if isinstance(line, GenieVillagerGroup) and restock_target_id == 50:
+            # Search for the build graphic of farms
+            restock_unit = line.get_units_with_command(101)[0]
+            commands = restock_unit.get_member("unit_commands").get_value()
+            for command in commands:
+                type_id = command.get_value()["type"].get_value()
+
+                if type_id == 101:
+                    ability_animation_id = command.get_value()["work_sprite_id"].get_value()
+
+        if ability_animation_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+
+            animations_set = []
+
+            # Create animation object
+            obj_name = "%s.%s.RestockAnimation" % (game_entity_name,
+                                                   RESTOCK_TARGET_LOOKUPS[restock_target_id])
+            animation_raw_api_object = RawAPIObject(obj_name,
+                                                    "%sAnimation" % (RESTOCK_TARGET_LOOKUPS[restock_target_id]),
+                                                    dataset.nyan_api_objects)
+            animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
+            animation_location = ExpectedPointer(line,
+                                                 "%s.%s" % (game_entity_name,
+                                                            RESTOCK_TARGET_LOOKUPS[restock_target_id]))
+            animation_raw_api_object.set_location(animation_location)
+
+            ability_sprite = CombinedSprite(ability_animation_id,
+                                            "restock_%s" % (name_lookup_dict[current_unit_id][1]),
+                                            dataset)
+            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
+            ability_sprite.add_reference(animation_raw_api_object)
+
+            animation_raw_api_object.add_raw_member("sprite", ability_sprite,
+                                                    "engine.aux.graphics.Animation")
+
+            animation_expected_pointer = ExpectedPointer(line, obj_name)
+            animations_set.append(animation_expected_pointer)
+
+            ability_raw_api_object.add_raw_member("animations", animations_set,
+                                                  "engine.ability.specialization.AnimatedAbility")
+
+            line.add_raw_api_object(animation_raw_api_object)
 
         # Auto restock
         ability_raw_api_object.add_raw_member("auto_restock",

@@ -157,6 +157,24 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return tech_line in self.researches
 
+    def has_command(self, command_id):
+        """
+        Checks if units in the line can execute a specific command.
+
+        :param command_id: The type of command searched for.
+        :type command_id: int
+        :returns: True if the train location obj_id is greater than zero.
+        """
+        head_unit = self.get_head_unit()
+        commands = head_unit.get_member("unit_commands").get_value()
+        for command in commands:
+            type_id = command.get_value()["type"].get_value()
+
+            if type_id == command_id:
+                return True
+
+        return False
+
     def is_creatable(self):
         """
         Units/Buildings are creatable if they have a valid train location.
@@ -227,15 +245,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         :returns: True if the group contains at least one resource storage.
         """
-        head_unit = self.get_head_unit()
-        commands = head_unit.get_member("unit_commands").get_value()
-        for command in commands:
-            type_id = command.get_value()["type"].get_value()
-
-            if type_id == 5:
-                return True
-
-        return False
+        return self.has_command(5)
 
     def is_passable(self):
         """
@@ -276,15 +286,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         :returns: True if the group is not ranged and has a combat ability.
         """
-        head_unit = self.get_head_unit()
-        commands = head_unit.get_member("unit_commands").get_value()
-        for command in commands:
-            type_id = command.get_value()["type"].get_value()
-
-            if type_id == 7:
-                return not self.is_ranged()
-
-        return False
+        return self.has_command(7)
 
     def is_unique(self):
         """
@@ -819,6 +821,19 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         # List of buildings that units can create
         self.creates = []
 
+    def has_command(self, command_id):
+        for variant in self.variants:
+            for genie_unit in variant.line:
+                commands = genie_unit.get_member("unit_commands").get_value()
+
+                for command in commands:
+                    type_id = command.get_value()["type"].get_value()
+
+                    if type_id == command_id:
+                        return True
+
+        return False
+
     def is_creatable(self):
         """
         Villagers are creatable if any of their variant task groups are creatable.
@@ -859,6 +874,24 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         For villagers, this returns the group obj_id.
         """
         return self.variants[0].line[0]
+
+    def get_units_with_command(self, command_id):
+        """
+        Returns all genie units which have the specified command.
+        """
+        matching_units = []
+
+        for variant in self.variants:
+            for genie_unit in variant.line:
+                commands = genie_unit.get_member("unit_commands").get_value()
+
+                for command in commands:
+                    type_id = command.get_value()["type"].get_value()
+
+                    if type_id == command_id:
+                        matching_units.append(genie_unit)
+
+        return matching_units
 
     def get_train_location(self):
         """
