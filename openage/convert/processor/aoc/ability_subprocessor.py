@@ -15,8 +15,9 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieUnitLineGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
-    ARMOR_CLASS_LOOKUPS, TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS
+    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS
 from openage.util.ordered_set import OrderedSet
+from openage.convert.processor.aoc.effect_resistance_subprocessor import AoCEffectResistanceSubprocessor
 
 
 class AoCAbilitySubprocessor:
@@ -71,75 +72,7 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.type.RangedDiscreteEffect")
 
         # Effects
-        effects = []
-
-        # FlatAttributeChangeDecrease
-        effect_parent = "engine.effect.discrete.flat_attribute_change.FlatAttributeChange"
-        attack_parent = "engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
-
-        attacks = current_unit["attacks"].get_value()
-
-        for attack in attacks:
-            armor_class = attack["type_id"].get_value()
-            attack_amount = attack["amount"].get_value()
-            class_name = ARMOR_CLASS_LOOKUPS[armor_class]
-
-            attack_name = "%s.Attack.%s" % (game_entity_name, class_name)
-            attack_raw_api_object = RawAPIObject(attack_name, class_name, dataset.nyan_api_objects)
-            attack_raw_api_object.add_raw_parent(attack_parent)
-            attack_location = ExpectedPointer(line, obj_name)
-            attack_raw_api_object.set_location(attack_location)
-
-            # Type
-            type_ref = "aux.attribute_change_type.types.%s" % (class_name)
-            change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-            attack_raw_api_object.add_raw_member("type",
-                                                 change_type,
-                                                 effect_parent)
-
-            # Min value
-            # TODO: Use a common object here
-            attack_raw_api_object.add_raw_member("min_change_value",
-                                                 MemberSpecialValue.NYAN_NONE,
-                                                 effect_parent)
-
-            # Max value
-            attack_raw_api_object.add_raw_member("max_change_value",
-                                                 MemberSpecialValue.NYAN_NONE,
-                                                 effect_parent)
-
-            # Change value
-            # =================================================================================
-            amount_name = "%s.Attack.%s.ChangeAmount" % (game_entity_name, class_name)
-            amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
-            amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-            amount_location = ExpectedPointer(line, attack_name)
-            amount_raw_api_object.set_location(amount_location)
-
-            attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
-            amount_raw_api_object.add_raw_member("type",
-                                                 attribute,
-                                                 "engine.aux.attribute.AttributeAmount")
-            amount_raw_api_object.add_raw_member("amount",
-                                                 attack_amount,
-                                                 "engine.aux.attribute.AttributeAmount")
-
-            line.add_raw_api_object(amount_raw_api_object)
-            # =================================================================================
-            amount_expected_pointer = ExpectedPointer(line, amount_name)
-            attack_raw_api_object.add_raw_member("change_value",
-                                                 amount_expected_pointer,
-                                                 effect_parent)
-
-            # Ignore protection
-            attack_raw_api_object.add_raw_member("ignore_protection",
-                                                 [],
-                                                 effect_parent)
-
-            line.add_raw_api_object(attack_raw_api_object)
-            armor_expected_pointer = ExpectedPointer(line, attack_name)
-            effects.append(armor_expected_pointer)
-
+        effects = AoCEffectResistanceSubprocessor.get_attack_effects(line, obj_name)
         ability_raw_api_object.add_raw_member("effects",
                                               effects,
                                               "engine.ability.type.ApplyDiscreteEffect")
@@ -2212,7 +2145,6 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -2232,65 +2164,7 @@ class AoCAbilitySubprocessor:
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        resistances = []
-
-        # FlatAttributeChangeDecrease
-        resistance_parent = "engine.resistance.discrete.flat_attribute_change.FlatAttributeChange"
-        armor_parent = "engine.resistance.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
-
-        if current_unit.has_member("armors"):
-            armors = current_unit["armors"].get_value()
-
-        else:
-            # TODO: Trees and blast defense
-            armors = []
-
-        for armor in armors:
-            armor_class = armor["type_id"].get_value()
-            armor_amount = armor["amount"].get_value()
-            class_name = ARMOR_CLASS_LOOKUPS[armor_class]
-
-            armor_name = "%s.Resistance.%s" % (game_entity_name, class_name)
-            armor_raw_api_object = RawAPIObject(armor_name, class_name, dataset.nyan_api_objects)
-            armor_raw_api_object.add_raw_parent(armor_parent)
-            armor_location = ExpectedPointer(line, obj_name)
-            armor_raw_api_object.set_location(armor_location)
-
-            # Type
-            type_ref = "aux.attribute_change_type.types.%s" % (class_name)
-            change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-            armor_raw_api_object.add_raw_member("type",
-                                                change_type,
-                                                resistance_parent)
-
-            # Block value
-            # =================================================================================
-            amount_name = "%s.Resistance.%s.BlockAmount" % (game_entity_name, class_name)
-            amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", dataset.nyan_api_objects)
-            amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-            amount_location = ExpectedPointer(line, armor_name)
-            amount_raw_api_object.set_location(amount_location)
-
-            attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
-            amount_raw_api_object.add_raw_member("type",
-                                                 attribute,
-                                                 "engine.aux.attribute.AttributeAmount")
-            amount_raw_api_object.add_raw_member("amount",
-                                                 armor_amount,
-                                                 "engine.aux.attribute.AttributeAmount")
-
-            line.add_raw_api_object(amount_raw_api_object)
-            # =================================================================================
-            amount_expected_pointer = ExpectedPointer(line, amount_name)
-            armor_raw_api_object.add_raw_member("block_value",
-                                                amount_expected_pointer,
-                                                resistance_parent)
-
-            line.add_raw_api_object(armor_raw_api_object)
-            armor_expected_pointer = ExpectedPointer(line, armor_name)
-            resistances.append(armor_expected_pointer)
-
-        # TODO: Fallback type
+        resistances = AoCEffectResistanceSubprocessor.get_attack_resistances(line, obj_name)
 
         # Resistances
         ability_raw_api_object.add_raw_member("resistances",
@@ -2386,7 +2260,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Selection box
-        box_name = "%s.SelectableSelf.Rectangle"
+        box_name = "%s.SelectableSelf.Rectangle" % (game_entity_name)
         box_raw_api_object = RawAPIObject(box_name, "Rectangle", dataset.nyan_api_objects)
         box_raw_api_object.add_raw_parent("engine.aux.selection_box.type.Rectangle")
         box_location = ExpectedPointer(line, obj_ref)

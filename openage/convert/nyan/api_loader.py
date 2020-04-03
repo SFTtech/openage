@@ -8,7 +8,8 @@ object creation.
 """
 
 from ...nyan.nyan_structs import NyanObject, NyanMember
-from openage.nyan.nyan_structs import MemberType
+from openage.nyan.nyan_structs import MemberType, MemberSpecialValue,\
+    MemberOperator
 
 
 def load_api():
@@ -3499,10 +3500,12 @@ def _insert_members(api_objects):
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.attribute.AttributeRate"]
-    member = NyanMember("min_change_rate", ref_object, None, None, 0, None, True)
+    member = NyanMember("min_change_rate", ref_object, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.attribute.AttributeRate"]
-    member = NyanMember("max_change_rate", ref_object, None, None, 0, None, True)
+    member = NyanMember("max_change_rate", ref_object, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.attribute.AttributeRate"]
     member = NyanMember("change_rate", ref_object, None, None, 0, None, False)
@@ -3575,10 +3578,12 @@ def _insert_members(api_objects):
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
-    member = NyanMember("min_change_value", ref_object, None, None, 0, None, True)
+    member = NyanMember("min_change_value", ref_object, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
-    member = NyanMember("max_change_value", ref_object, None, None, 0, None, True)
+    member = NyanMember("max_change_value", ref_object, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.attribute.AttributeAmount"]
     member = NyanMember("change_value", ref_object, None, None, 0, None, False)

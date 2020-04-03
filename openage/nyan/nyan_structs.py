@@ -100,7 +100,7 @@ class NyanObject:
                 None,
                 new_member.get_set_type(),
                 None,
-                None,
+                0,
                 new_member.is_optional()
             )
             child.update_inheritance(inherited_member)
@@ -767,8 +767,8 @@ class NyanMember:
                 raise Exception(("%s: 'value' with NYAN_NONE can only have operator type "
                                  "MemberOperator.ASSIGN") % (self.__repr__()))
 
-            if isinstance(self._member_type, NyanObject) and not\
-                    self.value is MemberSpecialValue.NYAN_NONE:
+            if isinstance(self._member_type, NyanObject) and self.value\
+                    and self.value is not MemberSpecialValue.NYAN_NONE:
                 if not (self.value is self._member_type or
                         self.value.has_ancestor((self._member_type))):
                     raise Exception(("%s: 'value' with type NyanObject must "
