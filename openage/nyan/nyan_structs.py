@@ -16,6 +16,7 @@ import re
 
 from enum import Enum
 from openage.util.ordered_set import OrderedSet
+from _ast import Or
 
 INDENT = "    "
 
@@ -519,19 +520,18 @@ class NyanMember:
                 self._set_type = MemberType(set_type)
 
         self._optional = optional                       # whether the value is allowed to be NYAN_NONE
+        self._override_depth = override_depth           # override depth
 
         self._operator = None
+        self.value = None                               # value
         if operator:
-            self._operator = MemberOperator(operator)   # operator type
-        self._override_depth = override_depth           # override depth
-        self.value = value                              # value
+            operator = MemberOperator(operator)   # operator type
+
+        if value:
+            self.set_value(value, operator)
 
         # check for errors in the initilization
         self._sanity_check()
-
-        # Explicit type conversions for values
-        if self.value:
-            self._type_conversion()
 
     def get_name(self):
         """
@@ -692,7 +692,8 @@ class NyanMember:
                 raise Exception("%s: member has '_set_type' but is not complex"
                                 % (self.__repr__()))
 
-        if self.is_initialized():
+        if (self.is_initialized() and not isinstance(self, InheritedNyanMember)) or\
+                (isinstance(self, InheritedNyanMember) and self.has_value()):
             # Check if operator type matches with member type
             if self._member_type in (MemberType.INT, MemberType.FLOAT)\
                     and self._operator not in (MemberOperator.ASSIGN,

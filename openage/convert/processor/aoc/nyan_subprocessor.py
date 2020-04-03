@@ -168,12 +168,25 @@ class AoCNyanSubprocessor:
 
         # Applying effects and shooting projectiles
         if unit_line.is_projectile_shooter():
-            abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(unit_line))
+            abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(unit_line, 7))
             AoCNyanSubprocessor._projectiles_from_line(unit_line)
 
         elif unit_line.is_melee() or unit_line.is_ranged():
-            abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(unit_line,
-                                                                                      unit_line.is_ranged()))
+            if unit_line.has_command(7):
+                # Attack
+                abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(unit_line,
+                                                                                          7,
+                                                                                          unit_line.is_ranged()))
+
+            if unit_line.has_command(104):
+                abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(unit_line,
+                                                                                          104,
+                                                                                          unit_line.is_ranged()))
+
+            if unit_line.has_command(105):
+                abilities_set.append(AoCAbilitySubprocessor.apply_continuous_effect_ability(unit_line,
+                                                                                            105,
+                                                                                            unit_line.is_ranged()))
 
         # Storage abilities
         if unit_line.is_garrison():
@@ -339,9 +352,9 @@ class AoCNyanSubprocessor:
         if len(building_line.researches) > 0:
             abilities_set.append(AoCAbilitySubprocessor.research_ability(building_line))
 
-        # Attack abilities
+        # Effect abilities
         if building_line.is_projectile_shooter():
-            abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line))
+            abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line, 7))
             AoCNyanSubprocessor._projectiles_from_line(building_line)
 
         # Storage abilities

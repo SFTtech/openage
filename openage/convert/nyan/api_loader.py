@@ -3553,14 +3553,17 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.convert_type.ConvertType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("min_chance_success", MemberType.FLOAT, None, None, 0, None, True)
+    member = NyanMember("min_chance_success", MemberType.FLOAT, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
-    member = NyanMember("max_chance_success", MemberType.FLOAT, None, None, 0, None, True)
+    member = NyanMember("max_chance_success", MemberType.FLOAT, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
     member = NyanMember("chance_success", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.cost.Cost"]
-    member = NyanMember("cost_fail", ref_object, None, None, 0, None, True)
+    member = NyanMember("cost_fail", ref_object, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
 
     # engine.effect.discrete.convert.type.AoE2Convert

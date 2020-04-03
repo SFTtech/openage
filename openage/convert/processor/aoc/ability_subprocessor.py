@@ -15,7 +15,7 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieUnitLineGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
-    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS
+    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, COMMAND_TYPE_LOOKUPS
 from openage.util.ordered_set import OrderedSet
 from openage.convert.processor.aoc.effect_resistance_subprocessor import AoCEffectResistanceSubprocessor
 
@@ -23,11 +23,9 @@ from openage.convert.processor.aoc.effect_resistance_subprocessor import AoCEffe
 class AoCAbilitySubprocessor:
 
     @staticmethod
-    def apply_discrete_effect_ability(line, ranged=False):
+    def apply_continuous_effect_ability(line, command_id, ranged=False):
         """
-        Adds the ApplyDiscreteEffect ability to a line.
-
-        TODO: More than attack.
+        Adds the ApplyContinuousEffect ability to a line.
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
@@ -46,14 +44,111 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
+        ability_name = COMMAND_TYPE_LOOKUPS[command_id]
+
+        if ranged:
+            ability_parent = "engine.ability.type.RangedContinuousEffect"
+
+        else:
+            ability_parent = "engine.ability.type.ApplyContinuousEffect"
+
+        obj_name = "%s.%s" % (game_entity_name, ability_name)
+        ability_raw_api_object = RawAPIObject(obj_name, ability_name, dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent(ability_parent)
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        if ranged:
+            # Min range
+            min_range = current_unit["weapon_range_min"].get_value()
+            ability_raw_api_object.add_raw_member("min_range",
+                                                  min_range,
+                                                  "engine.ability.type.RangedContinuousEffect")
+
+            # Max range
+            max_range = current_unit["weapon_range_max"].get_value()
+            ability_raw_api_object.add_raw_member("max_range",
+                                                  max_range,
+                                                  "engine.ability.type.RangedContinuousEffect")
+
+        # Effects
+        if command_id == 101:
+            # TODO: Construct
+            effects = []
+            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
+                             dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+
+        elif command_id == 105:
+            # Heal
+            effects = AoCEffectResistanceSubprocessor.get_heal_effects(line, obj_name)
+            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
+
+        elif command_id == 106:
+            # TODO: Repair
+            effects = []
+            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+
+        ability_raw_api_object.add_raw_member("effects",
+                                              effects,
+                                              "engine.ability.type.ApplyContinuousEffect")
+
+        # Application delay
+        attack_graphic_id = current_unit["attack_sprite_id"].get_value()
+        attack_graphic = dataset.genie_graphics[attack_graphic_id]
+        frame_rate = attack_graphic["frame_rate"].get_value()
+        frame_delay = current_unit["frame_delay"].get_value()
+        application_delay = frame_to_seconds(frame_delay, frame_rate)
+        ability_raw_api_object.add_raw_member("application_delay",
+                                              application_delay,
+                                              "engine.ability.type.ApplyContinuousEffect")
+
+        # Allowed types (all buildings/units)
+
+        ability_raw_api_object.add_raw_member("allowed_types",
+                                              allowed_types,
+                                              "engine.ability.type.ApplyContinuousEffect")
+        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+                                              [],
+                                              "engine.ability.type.ApplyContinuousEffect")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def apply_discrete_effect_ability(line, command_id, ranged=False):
+        """
+        Adds the ApplyDiscreteEffect ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_name = COMMAND_TYPE_LOOKUPS[command_id]
+
         if ranged:
             ability_parent = "engine.ability.type.RangedDiscreteEffect"
 
         else:
             ability_parent = "engine.ability.type.ApplyDiscreteEffect"
 
-        obj_name = "%s.Attack" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Attack", dataset.nyan_api_objects)
+        obj_name = "%s.%s" % (game_entity_name, ability_name)
+        ability_raw_api_object = RawAPIObject(obj_name, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent(ability_parent)
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -72,7 +167,14 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.type.RangedDiscreteEffect")
 
         # Effects
-        effects = AoCEffectResistanceSubprocessor.get_attack_effects(line, obj_name)
+        if command_id == 7:
+            # Attack
+            effects = AoCEffectResistanceSubprocessor.get_attack_effects(line, obj_name)
+
+        elif command_id == 104:
+            # Convert
+            effects = AoCEffectResistanceSubprocessor.get_convert_effects(line, obj_name)
+
         ability_raw_api_object.add_raw_member("effects",
                                               effects,
                                               "engine.ability.type.ApplyDiscreteEffect")
@@ -2164,7 +2266,9 @@ class AoCAbilitySubprocessor:
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        resistances = AoCEffectResistanceSubprocessor.get_attack_resistances(line, obj_name)
+        resistances = []
+        resistances.extend(AoCEffectResistanceSubprocessor.get_attack_resistances(line, obj_name))
+        # TODO: Other resistance types
 
         # Resistances
         ability_raw_api_object.add_raw_member("resistances",
@@ -2341,7 +2445,7 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
-    def shoot_projectile_ability(line):
+    def shoot_projectile_ability(line, command_id):
         """
         Adds the ShootProjectile ability to a line.
 
@@ -2360,9 +2464,11 @@ class AoCAbilitySubprocessor:
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
+        ability_name = COMMAND_TYPE_LOOKUPS[command_id]
+
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        obj_name = "%s.ShootProjectile" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "ShootProjectile", dataset.nyan_api_objects)
+        obj_name = "%s.%s" % (game_entity_name, ability_name)
+        ability_raw_api_object = RawAPIObject(obj_name, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ShootProjectile")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2376,11 +2482,11 @@ class AoCAbilitySubprocessor:
             animations_set = []
 
             # Create animation object
-            obj_name = "%s.ShootProjectile.ShootAnimation" % (game_entity_name)
+            obj_name = "%s.%s.ShootAnimation" % (game_entity_name, ability_name)
             animation_raw_api_object = RawAPIObject(obj_name, "ShootAnimation",
                                                     dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, "%s.ShootProjectile" % (game_entity_name))
+            animation_location = ExpectedPointer(line, "%s.%s" % (game_entity_name, ability_name))
             animation_raw_api_object.set_location(animation_location)
 
             ability_sprite = CombinedSprite(ability_animation_id,
