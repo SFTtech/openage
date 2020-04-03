@@ -12,7 +12,7 @@ from ...log import info
 class ModpackExporter:
 
     @staticmethod
-    def export(modpack, assetsrc, exportdir, game_version):
+    def export(modpack, args):
         """
         Export a modpack to a directory.
 
@@ -21,6 +21,10 @@ class ModpackExporter:
         :param exportdir: Directory wheere modpacks are stored.
         :type exportdir: ...util.fslike.path.Path
         """
+        sourcedir = args.srcdir
+        exportdir = args.targetdir
+        game_version = args.game_version
+
         modpack_dir = exportdir.joinpath("%s" % (modpack.info.name))
 
         info("Starting export...")
@@ -37,6 +41,10 @@ class ModpackExporter:
         for data_file in data_files:
             data_file.save(modpack_dir)
 
+        if args.flag("no_media"):
+            info("Skipping media file export...")
+            return
+
         info("Exporting media files...")
 
         # Media files
@@ -46,4 +54,4 @@ class ModpackExporter:
             cur_export_requests = media_files[media_type]
 
             for request in cur_export_requests:
-                request.save(assetsrc, modpack_dir, game_version)
+                request.save(sourcedir, modpack_dir, game_version)
