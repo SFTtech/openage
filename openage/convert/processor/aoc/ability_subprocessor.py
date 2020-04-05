@@ -8,7 +8,7 @@ from ...dataformat.converter_object import RawAPIObject
 from ...dataformat.aoc.expected_pointer import ExpectedPointer
 from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
-from ...dataformat.aoc.combined_sprite import CombinedSprite, frame_to_seconds
+from ...dataformat.aoc.combined_sprite import CombinedSprite
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
@@ -95,9 +95,9 @@ class AoCAbilitySubprocessor:
         # Application delay
         attack_graphic_id = current_unit["attack_sprite_id"].get_value()
         attack_graphic = dataset.genie_graphics[attack_graphic_id]
-        frame_rate = attack_graphic["frame_rate"].get_value()
+        frame_rate = attack_graphic.get_frame_rate()
         frame_delay = current_unit["frame_delay"].get_value()
-        application_delay = frame_to_seconds(frame_delay, frame_rate)
+        application_delay = frame_rate * frame_delay
         ability_raw_api_object.add_raw_member("application_delay",
                                               application_delay,
                                               "engine.ability.type.ApplyContinuousEffect")
@@ -188,9 +188,9 @@ class AoCAbilitySubprocessor:
         # Application delay
         attack_graphic_id = current_unit["attack_sprite_id"].get_value()
         attack_graphic = dataset.genie_graphics[attack_graphic_id]
-        frame_rate = attack_graphic["frame_rate"].get_value()
+        frame_rate = attack_graphic.get_frame_rate()
         frame_delay = current_unit["frame_delay"].get_value()
-        application_delay = frame_to_seconds(frame_delay, frame_rate)
+        application_delay = frame_rate * frame_delay
         ability_raw_api_object.add_raw_member("application_delay",
                                               application_delay,
                                               "engine.ability.type.ApplyDiscreteEffect")
@@ -401,6 +401,250 @@ class AoCAbilitySubprocessor:
 
         ability_raw_api_object.add_raw_member("creatables", creatables_set,
                                               "engine.ability.type.Create")
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def death_ability(line):
+        """
+        Adds a PassiveTransformTo ability to a line that is used to make entities die.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Death" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Death", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.PassiveTransformTo")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        ability_animation_id = current_unit.get_member("dying_graphic").get_value()
+
+        if ability_animation_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+
+            animations_set = []
+
+            # Create animation object
+            animation_name = "%s.Death.DeathAnimation" % (game_entity_name)
+            animation_raw_api_object = RawAPIObject(animation_name, "DeathAnimation",
+                                                    dataset.nyan_api_objects)
+            animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
+            animation_location = ExpectedPointer(line, "%s.Death" % (game_entity_name))
+            animation_raw_api_object.set_location(animation_location)
+
+            ability_sprite = CombinedSprite(ability_animation_id,
+                                            "death_%s" % (name_lookup_dict[current_unit_id][1]),
+                                            dataset)
+            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
+            ability_sprite.add_reference(animation_raw_api_object)
+
+            animation_raw_api_object.add_raw_member("sprite", ability_sprite,
+                                                    "engine.aux.graphics.Animation")
+
+            animation_expected_pointer = ExpectedPointer(line, animation_name)
+            animations_set.append(animation_expected_pointer)
+
+            ability_raw_api_object.add_raw_member("animations", animations_set,
+                                                  "engine.ability.specialization.AnimatedAbility")
+
+            line.add_raw_api_object(animation_raw_api_object)
+
+        # Death condition
+        death_condition = [dataset.pregen_nyan_objects["aux.boolean.clause.death.StandardHealthDeath"].get_nyan_object()]
+        ability_raw_api_object.add_raw_member("condition",
+                                              death_condition,
+                                              "engine.ability.type.PassiveTransformTo")
+
+        # Transform time
+        # Not setting this to 0.0 allows abilities to use the death condition
+        # for stuff before they are deactivated (TODO: is this a good idea?)
+        ability_raw_api_object.add_raw_member("transform_time",
+                                              0.01,
+                                              "engine.ability.type.PassiveTransformTo")
+
+        # Target state
+        # =====================================================================================
+        target_state_name = "%s.Death.DeadState" % (game_entity_name)
+        target_state_raw_api_object = RawAPIObject(target_state_name, "DeadState", dataset.nyan_api_objects)
+        target_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
+        target_state_location = ExpectedPointer(line, obj_name)
+        target_state_raw_api_object.set_location(target_state_location)
+
+        # Priority
+        target_state_raw_api_object.add_raw_member("priority",
+                                                   1000,
+                                                   "engine.aux.state_machine.StateChanger")
+
+        # Enabled abilities
+        target_state_raw_api_object.add_raw_member("enable_abilities",
+                                                   [],
+                                                   "engine.aux.state_machine.StateChanger")
+
+        # TODO: Disabled abilities
+        target_state_raw_api_object.add_raw_member("disable_abilities",
+                                                   [],
+                                                   "engine.aux.state_machine.StateChanger")
+
+        # Enabled modifiers
+        target_state_raw_api_object.add_raw_member("enable_modifiers",
+                                                   [],
+                                                   "engine.aux.state_machine.StateChanger")
+
+        # Disabled modifiers
+        target_state_raw_api_object.add_raw_member("disable_modifiers",
+                                                   [],
+                                                   "engine.aux.state_machine.StateChanger")
+
+        line.add_raw_api_object(target_state_raw_api_object)
+        # =====================================================================================
+        target_state_expected_pointer = ExpectedPointer(line, target_state_name)
+        ability_raw_api_object.add_raw_member("target_state",
+                                              target_state_expected_pointer,
+                                              "engine.ability.type.PassiveTransformTo")
+
+        # Transform progress
+        ability_raw_api_object.add_raw_member("transform_progress",
+                                              [],
+                                              "engine.ability.type.PassiveTransformTo")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def despawn_ability(line):
+        """
+        Adds the Despawn ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        # Animation and time come from dead unit
+        death_animation_id = current_unit.get_member("dying_graphic").get_value()
+        dead_unit_id = current_unit.get_member("dead_unit_id").get_value()
+        dead_unit = None
+        if dead_unit_id > -1:
+            dead_unit = dataset.genie_units[dead_unit_id]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        obj_name = "%s.Despawn" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(obj_name, "Despawn", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Despawn")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        ability_animation_id = -1
+        if dead_unit:
+            ability_animation_id = dead_unit.get_member("idle_graphic0").get_value()
+
+        if ability_animation_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+
+            animations_set = []
+
+            # Create animation object
+            animation_name = "%s.Despawn.DespawnAnimation" % (game_entity_name)
+            animation_raw_api_object = RawAPIObject(animation_name, "DespawnAnimation",
+                                                    dataset.nyan_api_objects)
+            animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
+            animation_location = ExpectedPointer(line, "%s.Despawn" % (game_entity_name))
+            animation_raw_api_object.set_location(animation_location)
+
+            ability_sprite = CombinedSprite(ability_animation_id,
+                                            "despawn_%s" % (name_lookup_dict[current_unit_id][1]),
+                                            dataset)
+            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
+            ability_sprite.add_reference(animation_raw_api_object)
+
+            animation_raw_api_object.add_raw_member("sprite", ability_sprite,
+                                                    "engine.aux.graphics.Animation")
+
+            animation_expected_pointer = ExpectedPointer(line, animation_name)
+            animations_set.append(animation_expected_pointer)
+
+            ability_raw_api_object.add_raw_member("animations", animations_set,
+                                                  "engine.ability.specialization.AnimatedAbility")
+
+            line.add_raw_api_object(animation_raw_api_object)
+
+        # Activation condition
+        # Uses the death condition of the units
+        activation_condition = [dataset.pregen_nyan_objects["aux.boolean.clause.death.StandardHealthDeath"].get_nyan_object()]
+        ability_raw_api_object.add_raw_member("activation_condition",
+                                              activation_condition,
+                                              "engine.ability.type.Despawn")
+
+        # Despawn condition
+        # TODO: implement
+        ability_raw_api_object.add_raw_member("despawn_condition",
+                                              [],
+                                              "engine.ability.type.Despawn")
+
+        # Despawn time = corpse decay time (dead unit) or Death animation time (if no dead unit exist)
+        despawn_time = 0
+        if dead_unit:
+            resource_storage = dead_unit.get_member("resource_storage").get_value()
+            for storage in resource_storage:
+                resource_id = storage.get_value()["type"].get_value()
+
+                if resource_id == 12:
+                    despawn_time = storage.get_value()["amount"].get_value()
+
+        elif death_animation_id > -1:
+            despawn_time = dataset.genie_graphics[death_animation_id].get_animation_length()
+
+        ability_raw_api_object.add_raw_member("despawn_time",
+                                              despawn_time,
+                                              "engine.ability.type.Despawn")
+
+        # State change (let Death handle state change?)
+        # Uses the same state changer as Death
+        state_change_expected_pointer = ExpectedPointer(line, "%s.Death.DeadState" % (game_entity_name))
+        ability_raw_api_object.add_raw_member("state_change",
+                                              state_change_expected_pointer,
+                                              "engine.ability.type.Despawn")
+
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
@@ -2558,13 +2802,13 @@ class AoCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             animation = dataset.genie_graphics[ability_animation_id]
-            frame_rate = animation.get_member("frame_rate").get_value()
+            frame_rate = animation.get_frame_rate()
 
         else:
             frame_rate = 0
 
         spawn_delay_frames = current_unit.get_member("frame_delay").get_value()
-        spawn_delay = frame_to_seconds(spawn_delay_frames, frame_rate)
+        spawn_delay = frame_rate * spawn_delay_frames
         ability_raw_api_object.add_raw_member("spawn_delay",
                                               spawn_delay,
                                               "engine.ability.type.ShootProjectile")

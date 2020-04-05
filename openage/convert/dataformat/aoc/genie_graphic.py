@@ -56,11 +56,25 @@ class GenieGraphic(ConverterObject):
             self.subgraphics.append(graphic)
             graphic.add_reference(self)
 
+    def get_animation_length(self):
+        """
+        Returns the time taken to display all frames in this graphic.
+        """
+        head_graphic = self.data.genie_graphics[self.get_id()]
+        return head_graphic["frame_rate"].get_value() * head_graphic["frame_count"].get_value()
+
     def get_subgraphics(self):
         """
         Return the subgraphics of this graphic
         """
         return self.subgraphics
+
+    def get_frame_rate(self):
+        """
+        Returns the time taken to display a single frame in this graphic.
+        """
+        head_graphic = self.data.genie_graphics[self.get_id()]
+        return head_graphic["frame_rate"].get_value()
 
     def is_shared(self):
         """

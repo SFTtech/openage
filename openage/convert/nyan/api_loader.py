@@ -2306,7 +2306,8 @@ def _insert_members(api_objects):
     member = NyanMember("despawn_time", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.state_machine.StateChanger"]
-    member = NyanMember("state_change", ref_object, None, None, 0, None, False)
+    member = NyanMember("state_change", ref_object, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
 
     # engine.ability.type.DropSite
@@ -2516,12 +2517,15 @@ def _insert_members(api_objects):
     api_object = api_objects["engine.ability.type.PassiveTransformTo"]
 
     set_type = api_objects["engine.aux.boolean.Clause"]
-    member = NyanMember("death_condition", MemberType.SET, None, None, 0, set_type, False)
+    member = NyanMember("condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("death_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("transform_time", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.state_machine.StateChanger"]
-    member = NyanMember("state_change", ref_object, None, None, 0, None, False)
+    member = NyanMember("target_state", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.progress.type.TransformProgress"]
+    member = NyanMember("transform_progress", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.ability.type.ProductionQueue

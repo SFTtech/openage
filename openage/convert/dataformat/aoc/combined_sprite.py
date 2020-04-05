@@ -118,25 +118,3 @@ class CombinedSprite:
 
     def __repr__(self):
         return "CombinedSprite<%s>" % (self.head_sprite_id)
-
-
-def frame_to_seconds(frame_num, frame_rate):
-    """
-    Translates a number of frames to the time it takes to display
-    them in the Genie Engine games. The framerate is defined by the
-    individual graphics.
-
-    :param frame_num: Number of frames.
-    :type frame_num: int
-    :param frame_rate: Time necesary to display a single frame.
-    :type frame_rate: float
-    """
-    if frame_num < 0:
-        raise Exception("Number of frames cannot be negative, received %s"
-                        % (frame_num))
-
-    if frame_rate < 0:
-        raise Exception("Framerate cannot be negative, received %s"
-                        % (frame_rate))
-
-    return frame_num * frame_rate

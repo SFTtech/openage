@@ -146,6 +146,8 @@ class AoCNyanSubprocessor:
         # =======================================================================
         abilities_set = []
 
+        abilities_set.append(AoCAbilitySubprocessor.death_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.despawn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(unit_line))
@@ -315,6 +317,7 @@ class AoCNyanSubprocessor:
         abilities_set = []
 
         abilities_set.append(AoCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.death_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
@@ -455,6 +458,7 @@ class AoCNyanSubprocessor:
         interaction_mode = ambient_unit.get_member("interaction_mode").get_value()
 
         if interaction_mode >= 0:
+            abilities_set.append(AoCAbilitySubprocessor.death_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.idle_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.live_ability(ambient_group))

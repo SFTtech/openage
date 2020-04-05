@@ -800,10 +800,12 @@ class AoCPregenSubprocessor:
                                        ExpectedPointer
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
-
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
 
+        # =======================================================================
+        # Death condition
+        # =======================================================================
         clause_parent = "engine.aux.boolean.Clause"
         clause_location = "data/aux/boolean/clause/death/"
 

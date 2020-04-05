@@ -100,11 +100,11 @@ class Graphic(GenieStructure):
         (READ_EXPORT, "delta_count", StorageType.INT_MEMBER, "uint16_t"),
         (READ_EXPORT, "sound_id", StorageType.ID_MEMBER, "int16_t"),
         (READ_EXPORT, "attack_sound_used", StorageType.INT_MEMBER, "uint8_t"),
-        (READ_EXPORT, "frame_count", StorageType.INT_MEMBER, "uint16_t"),       # number of frames per angle
-        (READ_EXPORT, "angle_count", StorageType.INT_MEMBER, "uint16_t"),       # number of heading angles stored, some of the frames must be mirrored
-        (READ, "speed_adjust", StorageType.FLOAT_MEMBER, "float"),              # multiplies the speed of the unit this graphic is applied to
-        (READ_EXPORT, "frame_rate", StorageType.FLOAT_MEMBER, "float"),         # frame rate in seconds
-        (READ_EXPORT, "replay_delay", StorageType.FLOAT_MEMBER, "float"),       # seconds to wait before current_frame=0 again
+        (READ_EXPORT, "frame_count", StorageType.INT_MEMBER, "uint16_t"),           # number of frames per angle
+        (READ_EXPORT, "angle_count", StorageType.INT_MEMBER, "uint16_t"),           # number of heading angles stored, some of the frames must be mirrored
+        (READ, "speed_adjust", StorageType.FLOAT_MEMBER, "float"),                  # multiplies the speed of the unit this graphic is applied to
+        (READ_EXPORT, "frame_rate", StorageType.FLOAT_MEMBER, "float"),             # how long a frame is displayed
+        (READ_EXPORT, "replay_delay", StorageType.FLOAT_MEMBER, "float"),           # seconds to wait before current_frame=0 again
         (READ_EXPORT, "sequence_type", StorageType.ID_MEMBER, "int8_t"),
         (READ_EXPORT, "graphic_id", StorageType.ID_MEMBER, "int16_t"),
         (READ_EXPORT, "mirroring_mode", StorageType.ID_MEMBER, "int8_t"),
