@@ -150,6 +150,9 @@ def get_game_info(srcdir):
             edition = game_edition
             break
 
+    else:
+        raise Exception("no valid game version found.")
+
     for game_expansion in edition.expansions:
         for detection_hints in game_expansion.game_file_versions:
             required_path = detection_hints.get_path()

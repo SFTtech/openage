@@ -52,8 +52,8 @@ class AoCAbilitySubprocessor:
         else:
             ability_parent = "engine.ability.type.ApplyContinuousEffect"
 
-        obj_name = "%s.%s" % (game_entity_name, ability_name)
-        ability_raw_api_object = RawAPIObject(obj_name, ability_name, dataset.nyan_api_objects)
+        ability_ref = "%s.%s" % (game_entity_name, ability_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent(ability_parent)
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -80,7 +80,7 @@ class AoCAbilitySubprocessor:
 
         elif command_id == 105:
             # Heal
-            effects = AoCEffectResistanceSubprocessor.get_heal_effects(line, obj_name)
+            effects = AoCEffectResistanceSubprocessor.get_heal_effects(line, ability_ref)
             allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
 
         elif command_id == 106:
@@ -147,8 +147,8 @@ class AoCAbilitySubprocessor:
         else:
             ability_parent = "engine.ability.type.ApplyDiscreteEffect"
 
-        obj_name = "%s.%s" % (game_entity_name, ability_name)
-        ability_raw_api_object = RawAPIObject(obj_name, ability_name, dataset.nyan_api_objects)
+        ability_ref = "%s.%s" % (game_entity_name, ability_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent(ability_parent)
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -169,11 +169,11 @@ class AoCAbilitySubprocessor:
         # Effects
         if command_id == 7:
             # Attack
-            effects = AoCEffectResistanceSubprocessor.get_attack_effects(line, obj_name)
+            effects = AoCEffectResistanceSubprocessor.get_attack_effects(line, ability_ref)
 
         elif command_id == 104:
             # Convert
-            effects = AoCEffectResistanceSubprocessor.get_convert_effects(line, obj_name)
+            effects = AoCEffectResistanceSubprocessor.get_convert_effects(line, ability_ref)
 
         ability_raw_api_object.add_raw_member("effects",
                                               effects,
@@ -233,8 +233,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.AttributeChangeTracker" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "AttributeChangeTracker", dataset.nyan_api_objects)
+        ability_ref = "%s.AttributeChangeTracker" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "AttributeChangeTracker", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.AttributeChangeTracker")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -277,8 +277,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.CollectStorage" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "CollectStorage", dataset.nyan_api_objects)
+        ability_ref = "%s.CollectStorage" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "CollectStorage", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.CollectStorage")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -331,8 +331,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Constructable" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Constructable", dataset.nyan_api_objects)
+        ability_ref = "%s.Constructable" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Constructable", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Constructable")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -375,8 +375,8 @@ class AoCAbilitySubprocessor:
             creatable_lookup_dict = BUILDING_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        obj_name = "%s.Create" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Create", dataset.nyan_api_objects)
+        ability_ref = "%s.Create" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Create", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Create")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -432,8 +432,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Death" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Death", dataset.nyan_api_objects)
+        ability_ref = "%s.Death" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Death", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.PassiveTransformTo")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -447,11 +447,11 @@ class AoCAbilitySubprocessor:
             animations_set = []
 
             # Create animation object
-            animation_name = "%s.Death.DeathAnimation" % (game_entity_name)
-            animation_raw_api_object = RawAPIObject(animation_name, "DeathAnimation",
+            animation_ref = "%s.Death.DeathAnimation" % (game_entity_name)
+            animation_raw_api_object = RawAPIObject(animation_ref, "DeathAnimation",
                                                     dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, "%s.Death" % (game_entity_name))
+            animation_location = ExpectedPointer(line, ability_ref)
             animation_raw_api_object.set_location(animation_location)
 
             ability_sprite = CombinedSprite(ability_animation_id,
@@ -463,7 +463,7 @@ class AoCAbilitySubprocessor:
             animation_raw_api_object.add_raw_member("sprite", ability_sprite,
                                                     "engine.aux.graphics.Animation")
 
-            animation_expected_pointer = ExpectedPointer(line, animation_name)
+            animation_expected_pointer = ExpectedPointer(line, animation_ref)
             animations_set.append(animation_expected_pointer)
 
             ability_raw_api_object.add_raw_member("animations", animations_set,
@@ -489,7 +489,7 @@ class AoCAbilitySubprocessor:
         target_state_name = "%s.Death.DeadState" % (game_entity_name)
         target_state_raw_api_object = RawAPIObject(target_state_name, "DeadState", dataset.nyan_api_objects)
         target_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
-        target_state_location = ExpectedPointer(line, obj_name)
+        target_state_location = ExpectedPointer(line, ability_ref)
         target_state_raw_api_object.set_location(target_state_location)
 
         # Priority
@@ -567,8 +567,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Despawn" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Despawn", dataset.nyan_api_objects)
+        ability_ref = "%s.Despawn" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Despawn", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Despawn")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -584,11 +584,11 @@ class AoCAbilitySubprocessor:
             animations_set = []
 
             # Create animation object
-            animation_name = "%s.Despawn.DespawnAnimation" % (game_entity_name)
-            animation_raw_api_object = RawAPIObject(animation_name, "DespawnAnimation",
+            animation_ref = "%s.Despawn.DespawnAnimation" % (game_entity_name)
+            animation_raw_api_object = RawAPIObject(animation_ref, "DespawnAnimation",
                                                     dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, "%s.Despawn" % (game_entity_name))
+            animation_location = ExpectedPointer(line, ability_ref)
             animation_raw_api_object.set_location(animation_location)
 
             ability_sprite = CombinedSprite(ability_animation_id,
@@ -600,7 +600,7 @@ class AoCAbilitySubprocessor:
             animation_raw_api_object.add_raw_member("sprite", ability_sprite,
                                                     "engine.aux.graphics.Animation")
 
-            animation_expected_pointer = ExpectedPointer(line, animation_name)
+            animation_expected_pointer = ExpectedPointer(line, animation_ref)
             animations_set.append(animation_expected_pointer)
 
             ability_raw_api_object.add_raw_member("animations", animations_set,
@@ -672,8 +672,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.DropResources" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "DropResources", dataset.nyan_api_objects)
+        ability_ref = "%s.DropResources" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "DropResources", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.DropResources")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -720,8 +720,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.DropSite" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "DropSite", dataset.nyan_api_objects)
+        ability_ref = "%s.DropSite" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "DropSite", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.DropSite")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -774,8 +774,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.EnterContainer" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "EnterContainer", dataset.nyan_api_objects)
+        ability_ref = "%s.EnterContainer" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "EnterContainer", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.EnterContainer")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -844,8 +844,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.ExitContainer" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "ExitContainer", dataset.nyan_api_objects)
+        ability_ref = "%s.ExitContainer" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "ExitContainer", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ExitContainer")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -910,8 +910,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Foundation" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Foundation", dataset.nyan_api_objects)
+        ability_ref = "%s.Foundation" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Foundation", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Foundation")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1050,8 +1050,8 @@ class AoCAbilitySubprocessor:
 
             ability_name = GATHER_TASK_LOOKUPS[gatherer_unit_id]
 
-            obj_name = "%s.%s" % (game_entity_name, ability_name)
-            ability_raw_api_object = RawAPIObject(obj_name, ability_name, dataset.nyan_api_objects)
+            ability_ref = "%s.%s" % (game_entity_name, ability_name)
+            ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent("engine.ability.type.Gather")
             ability_location = ExpectedPointer(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
@@ -1063,11 +1063,11 @@ class AoCAbilitySubprocessor:
                 animations_set = []
 
                 # Create animation object
-                obj_name = "%s.%s.%sAnimation" % (game_entity_name, ability_name, ability_name)
-                animation_raw_api_object = RawAPIObject(obj_name, "%sAnimation" % (ability_name),
+                animation_ref = "%s.%s.%sAnimation" % (game_entity_name, ability_name, ability_name)
+                animation_raw_api_object = RawAPIObject(animation_ref, "%sAnimation" % (ability_name),
                                                         dataset.nyan_api_objects)
                 animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-                animation_location = ExpectedPointer(line, "%s.%s" % (game_entity_name, ability_name))
+                animation_location = ExpectedPointer(line, ability_ref)
                 animation_raw_api_object.set_location(animation_location)
 
                 ability_sprite = CombinedSprite(ability_animation_id,
@@ -1080,7 +1080,7 @@ class AoCAbilitySubprocessor:
                 animation_raw_api_object.add_raw_member("sprite", ability_sprite,
                                                         "engine.aux.graphics.Animation")
 
-                animation_expected_pointer = ExpectedPointer(line, obj_name)
+                animation_expected_pointer = ExpectedPointer(line, animation_ref)
                 animations_set.append(animation_expected_pointer)
 
                 ability_raw_api_object.add_raw_member("animations", animations_set,
@@ -1109,7 +1109,7 @@ class AoCAbilitySubprocessor:
             rate_name = "%s.%s.GatherRate" % (game_entity_name, ability_name)
             rate_raw_api_object = RawAPIObject(rate_name, "GatherRate", dataset.nyan_api_objects)
             rate_raw_api_object.add_raw_parent("engine.aux.resource.ResourceRate")
-            rate_location = ExpectedPointer(line, obj_name)
+            rate_location = ExpectedPointer(line, ability_ref)
             rate_raw_api_object.set_location(rate_location)
 
             rate_raw_api_object.add_raw_member("type", resource, "engine.aux.resource.ResourceRate")
@@ -1181,8 +1181,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Harvestable" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Harvestable", dataset.nyan_api_objects)
+        ability_ref = "%s.Harvestable" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Harvestable", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Harvestable")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1214,7 +1214,7 @@ class AoCAbilitySubprocessor:
                                                "%sResourceSpot" % (game_entity_name),
                                                dataset.nyan_api_objects)
             spot_raw_api_object.add_raw_parent("engine.aux.resource_spot.ResourceSpot")
-            spot_location = ExpectedPointer(line, obj_name)
+            spot_location = ExpectedPointer(line, ability_ref)
             spot_raw_api_object.set_location(spot_location)
 
             # Type
@@ -1318,8 +1318,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Herd" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Herd", dataset.nyan_api_objects)
+        ability_ref = "%s.Herd" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Herd", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Herd")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1375,8 +1375,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Herdable" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Herdable", dataset.nyan_api_objects)
+        ability_ref = "%s.Herdable" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Herdable", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Herdable")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1421,8 +1421,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Hitbox" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Hitbox", dataset.nyan_api_objects)
+        ability_ref = "%s.Hitbox" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Hitbox", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Hitbox")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1433,7 +1433,7 @@ class AoCAbilitySubprocessor:
                                              "%sHitbox" % (game_entity_name),
                                              dataset.nyan_api_objects)
         hitbox_raw_api_object.add_raw_parent("engine.aux.hitbox.Hitbox")
-        hitbox_location = ExpectedPointer(line, obj_name)
+        hitbox_location = ExpectedPointer(line, ability_ref)
         hitbox_raw_api_object.set_location(hitbox_location)
 
         radius_x = current_unit.get_member("radius_x").get_value()
@@ -1487,8 +1487,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Idle" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Idle", dataset.nyan_api_objects)
+        ability_ref = "%s.Idle" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Idle", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Idle")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1502,8 +1502,8 @@ class AoCAbilitySubprocessor:
             animations_set = []
 
             # Create animation object
-            obj_name = "%s.Idle.IdleAnimation" % (game_entity_name)
-            animation_raw_api_object = RawAPIObject(obj_name, "IdleAnimation",
+            animation_ref = "%s.Idle.IdleAnimation" % (game_entity_name)
+            animation_raw_api_object = RawAPIObject(animation_ref, "IdleAnimation",
                                                     dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
             animation_location = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
@@ -1518,7 +1518,7 @@ class AoCAbilitySubprocessor:
             animation_raw_api_object.add_raw_member("sprite", ability_sprite,
                                                     "engine.aux.graphics.Animation")
 
-            animation_expected_pointer = ExpectedPointer(line, obj_name)
+            animation_expected_pointer = ExpectedPointer(line, animation_ref)
             animations_set.append(animation_expected_pointer)
 
             ability_raw_api_object.add_raw_member("animations", animations_set,
@@ -1557,16 +1557,16 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Live" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Live", dataset.nyan_api_objects)
+        ability_ref = "%s.Live" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Live", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Live")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         attributes_set = []
 
-        obj_name = "%s.Live.Health" % (game_entity_name)
-        health_raw_api_object = RawAPIObject(obj_name, "Health", dataset.nyan_api_objects)
+        ability_ref = "%s.Live.Health" % (game_entity_name)
+        health_raw_api_object = RawAPIObject(ability_ref, "Health", dataset.nyan_api_objects)
         health_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeSetting")
         health_location = ExpectedPointer(line, "%s.Live" % (game_entity_name))
         health_raw_api_object.set_location(health_location)
@@ -1620,8 +1620,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.LineOfSight" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "LineOfSight", dataset.nyan_api_objects)
+        ability_ref = "%s.LineOfSight" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "LineOfSight", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.LineOfSight")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1644,18 +1644,33 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
-    def move_ability(line):
+    def move_ability(line, projectile=-1):
         """
-        Adds the Move ability to a line.
+        Adds the Move ability to a line or to a projectile of that line.
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        current_unit = line.get_head_unit()
-        current_unit_id = line.get_head_unit_id()
         dataset = line.data
+
+        if projectile == -1:
+            current_unit = line.get_head_unit()
+            current_unit_id = line.get_head_unit_id()
+
+        elif projectile == 0:
+            current_unit_id = line.get_head_unit_id()
+            projectile_id = line.get_head_unit()["attack_projectile_primary_unit_id"].get_value()
+            current_unit = dataset.genie_units[projectile_id]
+
+        elif projectile == 1:
+            current_unit_id = line.get_head_unit_id()
+            projectile_id = line.get_head_unit()["attack_projectile_secondary_unit_id"].get_value()
+            current_unit = dataset.genie_units[projectile_id]
+
+        else:
+            raise Exception("Invalid projectile number: %s" % (projectile))
 
         if isinstance(line, GenieBuildingLineGroup):
             name_lookup_dict = BUILDING_LINE_LOOKUPS
@@ -1665,11 +1680,21 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Move" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Move", dataset.nyan_api_objects)
-        ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
-        ability_location = ExpectedPointer(line, game_entity_name)
-        ability_raw_api_object.set_location(ability_location)
+        if projectile == -1:
+            ability_ref = "%s.Move" % (game_entity_name)
+            ability_raw_api_object = RawAPIObject(ability_ref, "Move", dataset.nyan_api_objects)
+            ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
+            ability_location = ExpectedPointer(line, game_entity_name)
+            ability_raw_api_object.set_location(ability_location)
+
+        else:
+            ability_ref = "Projectile%s.Move" % (projectile)
+            ability_raw_api_object = RawAPIObject(ability_ref, "Move", dataset.nyan_api_objects)
+            ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
+            ability_location = ExpectedPointer(line,
+                                               "%s.ShootProjectile.Projectile%s"
+                                               % (game_entity_name, projectile))
+            ability_raw_api_object.set_location(ability_location)
 
         # Animation
         ability_animation_id = current_unit.get_member("move_graphics").get_value()
@@ -1681,11 +1706,11 @@ class AoCAbilitySubprocessor:
             animations_set = []
 
             # Create animation object
-            obj_name = "%s.Move.MoveAnimation" % (game_entity_name)
-            animation_raw_api_object = RawAPIObject(obj_name, "MoveAnimation",
+            animation_ref = "%s.MoveAnimation" % (ability_ref)
+            animation_raw_api_object = RawAPIObject(animation_ref, "MoveAnimation",
                                                     dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, "%s.Move" % (game_entity_name))
+            animation_location = ExpectedPointer(line, ability_ref)
             animation_raw_api_object.set_location(animation_location)
 
             ability_sprite = CombinedSprite(ability_animation_id,
@@ -1697,7 +1722,7 @@ class AoCAbilitySubprocessor:
             animation_raw_api_object.add_raw_member("sprite", ability_sprite,
                                                     "engine.aux.graphics.Animation")
 
-            animation_expected_pointer = ExpectedPointer(line, obj_name)
+            animation_expected_pointer = ExpectedPointer(line, animation_ref)
             animations_set.append(animation_expected_pointer)
 
             ability_raw_api_object.add_raw_member("animations", animations_set,
@@ -1709,32 +1734,38 @@ class AoCAbilitySubprocessor:
         speed = current_unit.get_member("speed").get_value()
         ability_raw_api_object.add_raw_member("speed", speed, "engine.ability.type.Move")
 
-        # Standard move modes
-        move_modes = [dataset.nyan_api_objects["engine.aux.move_mode.type.AttackMove"],
-                      dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"],
-                      dataset.nyan_api_objects["engine.aux.move_mode.type.Patrol"]]
-        # Follow
-        obj_name = "%s.Move.Follow" % (game_entity_name)
-        follow_raw_api_object = RawAPIObject(obj_name, "Follow", dataset.nyan_api_objects)
-        follow_raw_api_object.add_raw_parent("engine.aux.move_mode.type.Follow")
-        follow_location = ExpectedPointer(line, "%s.Move" % (game_entity_name))
-        follow_raw_api_object.set_location(follow_location)
+        if projectile == -1:
+            # Standard move modes
+            move_modes = [dataset.nyan_api_objects["engine.aux.move_mode.type.AttackMove"],
+                          dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"],
+                          dataset.nyan_api_objects["engine.aux.move_mode.type.Patrol"]]
 
-        follow_range = current_unit.get_member("line_of_sight").get_value() - 1
-        follow_raw_api_object.add_raw_member("range", follow_range,
-                                             "engine.aux.move_mode.type.Follow")
+            # Follow
+            ability_ref = "%s.Move.Follow" % (game_entity_name)
+            follow_raw_api_object = RawAPIObject(ability_ref, "Follow", dataset.nyan_api_objects)
+            follow_raw_api_object.add_raw_parent("engine.aux.move_mode.type.Follow")
+            follow_location = ExpectedPointer(line, "%s.Move" % (game_entity_name))
+            follow_raw_api_object.set_location(follow_location)
 
-        line.add_raw_api_object(follow_raw_api_object)
-        follow_expected_pointer = ExpectedPointer(line, follow_raw_api_object.get_id())
-        move_modes.append(follow_expected_pointer)
+            follow_range = current_unit.get_member("line_of_sight").get_value() - 1
+            follow_raw_api_object.add_raw_member("range", follow_range,
+                                                 "engine.aux.move_mode.type.Follow")
+
+            line.add_raw_api_object(follow_raw_api_object)
+            follow_expected_pointer = ExpectedPointer(line, follow_raw_api_object.get_id())
+            move_modes.append(follow_expected_pointer)
+
+        else:
+            move_modes = [dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"], ]
 
         ability_raw_api_object.add_raw_member("modes", move_modes, "engine.ability.type.Move")
 
         # Diplomacy settings
-        ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
-        diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
-        ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
-                                              "engine.ability.specialization.DiplomaticAbility")
+        if projectile == -1:
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+            diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+            ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
+                                                  "engine.ability.specialization.DiplomaticAbility")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -1768,8 +1799,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Named" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Named", dataset.nyan_api_objects)
+        ability_ref = "%s.Named" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Named", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Named")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1780,7 +1811,7 @@ class AoCAbilitySubprocessor:
                                            "%sName"  % (game_entity_name),
                                            dataset.nyan_api_objects)
         name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
-        name_location = ExpectedPointer(line, obj_name)
+        name_location = ExpectedPointer(line, ability_ref)
         name_raw_api_object.set_location(name_location)
 
         name_raw_api_object.add_raw_member("translations",
@@ -1797,7 +1828,7 @@ class AoCAbilitySubprocessor:
                                                   "%sDescription"  % (game_entity_name),
                                                   dataset.nyan_api_objects)
         description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
-        description_location = ExpectedPointer(line, obj_name)
+        description_location = ExpectedPointer(line, ability_ref)
         description_raw_api_object.set_location(description_location)
 
         description_raw_api_object.add_raw_member("translations",
@@ -1816,7 +1847,7 @@ class AoCAbilitySubprocessor:
                                                        "%sLongDescription"  % (game_entity_name),
                                                        dataset.nyan_api_objects)
         long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
-        long_description_location = ExpectedPointer(line, obj_name)
+        long_description_location = ExpectedPointer(line, ability_ref)
         long_description_raw_api_object.set_location(long_description_location)
 
         long_description_raw_api_object.add_raw_member("translations",
@@ -1860,8 +1891,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.OverlayTerrain" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "OverlayTerrain", dataset.nyan_api_objects)
+        ability_ref = "%s.OverlayTerrain" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "OverlayTerrain", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.OverlayTerrain")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1904,8 +1935,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Passable" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Passable", dataset.nyan_api_objects)
+        ability_ref = "%s.Passable" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Passable", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Passable")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1927,7 +1958,7 @@ class AoCAbilitySubprocessor:
                 mode_parent = "engine.aux.passable_mode.type.Gate"
 
         mode_raw_api_object.add_raw_parent(mode_parent)
-        mode_location = ExpectedPointer(line, obj_name)
+        mode_location = ExpectedPointer(line, ability_ref)
         mode_raw_api_object.set_location(mode_location)
 
         # Allowed types
@@ -1977,8 +2008,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.ProductionQueue" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "ProductionQueue", dataset.nyan_api_objects)
+        ability_ref = "%s.ProductionQueue" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "ProductionQueue", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ProductionQueue")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -1994,7 +2025,7 @@ class AoCAbilitySubprocessor:
         mode_name = "%s.ProvideContingent.CreatablesMode" % (game_entity_name)
         mode_raw_api_object = RawAPIObject(mode_name, "CreatablesMode", dataset.nyan_api_objects)
         mode_raw_api_object.add_raw_parent("engine.aux.production_mode.type.Creatables")
-        mode_location = ExpectedPointer(line, obj_name)
+        mode_location = ExpectedPointer(line, ability_ref)
         mode_raw_api_object.set_location(mode_location)
 
         # AoE2 allows all creatables in production queue
@@ -2041,9 +2072,9 @@ class AoCAbilitySubprocessor:
 
         # First projectile is mandatory
         obj_ref  = "%s.ShootProjectile.Projectile%s" % (game_entity_name, str(position))
-        obj_name = "%s.ShootProjectile.Projectile%s.Projectile"\
+        ability_ref = "%s.ShootProjectile.Projectile%s.Projectile"\
             % (game_entity_name, str(position))
-        ability_raw_api_object = RawAPIObject(obj_name, "Projectile", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Projectile", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Projectile")
         ability_location = ExpectedPointer(line, obj_ref)
         ability_raw_api_object.set_location(ability_location)
@@ -2070,7 +2101,7 @@ class AoCAbilitySubprocessor:
                         % (game_entity_name, str(position))
         accuracy_raw_api_object = RawAPIObject(accuracy_name, "Accuracy", dataset.nyan_api_objects)
         accuracy_raw_api_object.add_raw_parent("engine.aux.accuracy.Accuracy")
-        accuracy_location = ExpectedPointer(line, obj_name)
+        accuracy_location = ExpectedPointer(line, ability_ref)
         accuracy_raw_api_object.set_location(accuracy_location)
 
         accuracy_value = current_unit.get_member("accuracy").get_value()
@@ -2144,8 +2175,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.ProvideContingent" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "ProvideContingent", dataset.nyan_api_objects)
+        ability_ref = "%s.ProvideContingent" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "ProvideContingent", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ProvideContingent")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2170,7 +2201,7 @@ class AoCAbilitySubprocessor:
             contingent_amount = RawAPIObject(contingent_amount_name, resource_name,
                                              dataset.nyan_api_objects)
             contingent_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
-            ability_expected_pointer = ExpectedPointer(line, obj_name)
+            ability_expected_pointer = ExpectedPointer(line, ability_ref)
             contingent_amount.set_location(ability_expected_pointer)
 
             contingent_amount.add_raw_member("type",
@@ -2219,8 +2250,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.RallyPoint" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "RallyPoint", dataset.nyan_api_objects)
+        ability_ref = "%s.RallyPoint" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "RallyPoint", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.RallyPoint")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2252,8 +2283,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.RemoveStorage" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "RemoveStorage", dataset.nyan_api_objects)
+        ability_ref = "%s.RemoveStorage" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "RemoveStorage", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.RemoveStorage")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2317,8 +2348,8 @@ class AoCAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        obj_name = "%s.%s" % (game_entity_name, RESTOCK_TARGET_LOOKUPS[restock_target_id])
-        ability_raw_api_object = RawAPIObject(obj_name,
+        ability_ref = "%s.%s" % (game_entity_name, RESTOCK_TARGET_LOOKUPS[restock_target_id])
+        ability_raw_api_object = RawAPIObject(ability_ref,
                                               RESTOCK_TARGET_LOOKUPS[restock_target_id],
                                               dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Restock")
@@ -2344,15 +2375,13 @@ class AoCAbilitySubprocessor:
             animations_set = []
 
             # Create animation object
-            obj_name = "%s.%s.RestockAnimation" % (game_entity_name,
-                                                   RESTOCK_TARGET_LOOKUPS[restock_target_id])
-            animation_raw_api_object = RawAPIObject(obj_name,
+            animation_ref = "%s.%s.RestockAnimation" % (game_entity_name,
+                                                        RESTOCK_TARGET_LOOKUPS[restock_target_id])
+            animation_raw_api_object = RawAPIObject(animation_ref,
                                                     "%sAnimation" % (RESTOCK_TARGET_LOOKUPS[restock_target_id]),
                                                     dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line,
-                                                 "%s.%s" % (game_entity_name,
-                                                            RESTOCK_TARGET_LOOKUPS[restock_target_id]))
+            animation_location = ExpectedPointer(line, ability_ref)
             animation_raw_api_object.set_location(animation_location)
 
             ability_sprite = CombinedSprite(ability_animation_id,
@@ -2364,7 +2393,7 @@ class AoCAbilitySubprocessor:
             animation_raw_api_object.add_raw_member("sprite", ability_sprite,
                                                     "engine.aux.graphics.Animation")
 
-            animation_expected_pointer = ExpectedPointer(line, obj_name)
+            animation_expected_pointer = ExpectedPointer(line, animation_ref)
             animations_set.append(animation_expected_pointer)
 
             ability_raw_api_object.add_raw_member("animations", animations_set,
@@ -2449,8 +2478,8 @@ class AoCAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        obj_name = "%s.Research" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Research", dataset.nyan_api_objects)
+        ability_ref = "%s.Research" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Research", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Research")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2504,14 +2533,14 @@ class AoCAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        obj_name = "%s.Resistance" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Resistance", dataset.nyan_api_objects)
+        ability_ref = "%s.Resistance" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Resistance", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Resistance")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         resistances = []
-        resistances.extend(AoCEffectResistanceSubprocessor.get_attack_resistances(line, obj_name))
+        resistances.extend(AoCEffectResistanceSubprocessor.get_attack_resistances(line, ability_ref))
         # TODO: Other resistance types
 
         # Resistances
@@ -2553,21 +2582,21 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         obj_refs = ("%s.Selectable" % (game_entity_name),)
-        obj_names = ("Selectable",)
+        ability_refs = ("Selectable",)
 
         if isinstance(line, GenieUnitLineGroup):
             obj_refs = ("%s.SelectableOthers" % (game_entity_name),
                         "%s.SelectableSelf" % (game_entity_name))
-            obj_names = ("SelectableOthers",
-                         "SelectableSelf")
+            ability_refs = ("SelectableOthers",
+                            "SelectableSelf")
 
         abilities = []
 
-        # First box (MatchToSrite)
+        # First box (MatchToSprite)
         obj_ref = obj_refs[0]
-        obj_name = obj_names[0]
+        ability_ref = ability_refs[0]
 
-        ability_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(obj_ref, ability_ref, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Selectable")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2600,9 +2629,9 @@ class AoCAbilitySubprocessor:
 
         # Second box (Rectangle)
         obj_ref = obj_refs[1]
-        obj_name = obj_names[1]
+        ability_ref = ability_refs[1]
 
-        ability_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(obj_ref, ability_ref, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Selectable")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2667,8 +2696,8 @@ class AoCAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        obj_name = "%s.SendBackToTask" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "SendBackToTask", dataset.nyan_api_objects)
+        ability_ref = "%s.SendBackToTask" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "SendBackToTask", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.SendBackToTask")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2711,8 +2740,8 @@ class AoCAbilitySubprocessor:
         ability_name = COMMAND_TYPE_LOOKUPS[command_id]
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        obj_name = "%s.%s" % (game_entity_name, ability_name)
-        ability_raw_api_object = RawAPIObject(obj_name, ability_name, dataset.nyan_api_objects)
+        ability_ref = "%s.%s" % (game_entity_name, ability_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ShootProjectile")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2726,11 +2755,11 @@ class AoCAbilitySubprocessor:
             animations_set = []
 
             # Create animation object
-            obj_name = "%s.%s.ShootAnimation" % (game_entity_name, ability_name)
-            animation_raw_api_object = RawAPIObject(obj_name, "ShootAnimation",
+            animation_ref = "%s.%s.ShootAnimation" % (game_entity_name, ability_name)
+            animation_raw_api_object = RawAPIObject(animation_ref, "ShootAnimation",
                                                     dataset.nyan_api_objects)
             animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, "%s.%s" % (game_entity_name, ability_name))
+            animation_location = ExpectedPointer(line, ability_ref)
             animation_raw_api_object.set_location(animation_location)
 
             ability_sprite = CombinedSprite(ability_animation_id,
@@ -2742,7 +2771,7 @@ class AoCAbilitySubprocessor:
             animation_raw_api_object.add_raw_member("sprite", ability_sprite,
                                                     "engine.aux.graphics.Animation")
 
-            animation_expected_pointer = ExpectedPointer(line, obj_name)
+            animation_expected_pointer = ExpectedPointer(line, animation_ref)
             animations_set.append(animation_expected_pointer)
 
             ability_raw_api_object.add_raw_member("animations", animations_set,
@@ -2906,8 +2935,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Stop" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Stop", dataset.nyan_api_objects)
+        ability_ref = "%s.Stop" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Stop", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Stop")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2946,8 +2975,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Storage" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Storage", dataset.nyan_api_objects)
+        ability_ref = "%s.Storage" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Storage", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Storage")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2959,7 +2988,7 @@ class AoCAbilitySubprocessor:
                                                 "%sContainer" % (game_entity_name),
                                                 dataset.nyan_api_objects)
         container_raw_api_object.add_raw_parent("engine.aux.storage.Container")
-        container_location = ExpectedPointer(line, obj_name)
+        container_location = ExpectedPointer(line, ability_ref)
         container_raw_api_object.set_location(container_location)
 
         # TODO: Define storage elements
@@ -3021,8 +3050,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.TerrainRequirement" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "TerrainRequirement", dataset.nyan_api_objects)
+        ability_ref = "%s.TerrainRequirement" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "TerrainRequirement", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.TerrainRequirement")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -3073,8 +3102,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.TransferStorage" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "TransferStorage", dataset.nyan_api_objects)
+        ability_ref = "%s.TransferStorage" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "TransferStorage", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.TransferStorage")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -3150,8 +3179,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Turn" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Turn", dataset.nyan_api_objects)
+        ability_ref = "%s.Turn" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Turn", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Turn")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -3203,8 +3232,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.UseContingent" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "UseContingent", dataset.nyan_api_objects)
+        ability_ref = "%s.UseContingent" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "UseContingent", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.UseContingent")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -3229,7 +3258,7 @@ class AoCAbilitySubprocessor:
             contingent_amount = RawAPIObject(contingent_amount_name, resource_name,
                                              dataset.nyan_api_objects)
             contingent_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
-            ability_expected_pointer = ExpectedPointer(line, obj_name)
+            ability_expected_pointer = ExpectedPointer(line, ability_ref)
             contingent_amount.set_location(ability_expected_pointer)
 
             contingent_amount.add_raw_member("type",
@@ -3281,8 +3310,8 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_name = "%s.Visibility" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(obj_name, "Visibility", dataset.nyan_api_objects)
+        ability_ref = "%s.Visibility" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Visibility", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Visibility")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
