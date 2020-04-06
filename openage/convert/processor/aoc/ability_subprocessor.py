@@ -18,6 +18,7 @@ from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUP
     TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, COMMAND_TYPE_LOOKUPS
 from openage.util.ordered_set import OrderedSet
 from openage.convert.processor.aoc.effect_resistance_subprocessor import AoCEffectResistanceSubprocessor
+from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 
 
 class AoCAbilitySubprocessor:
@@ -44,7 +45,7 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_name = COMMAND_TYPE_LOOKUPS[command_id]
+        ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
 
         if ranged:
             ability_parent = "engine.ability.type.RangedContinuousEffect"
@@ -57,6 +58,39 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_parent(ability_parent)
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
+
+        ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
+
+        if ability_animation_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+
+            animations_set = []
+            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                  ability_animation_id,
+                                                                                  ability_ref,
+                                                                                  ability_name,
+                                                                                  "%s_"
+                                                                                  % COMMAND_TYPE_LOOKUPS[command_id][1])
+            animations_set.append(animation_expected_pointer)
+            ability_raw_api_object.add_raw_member("animations", animations_set,
+                                                  "engine.ability.specialization.AnimatedAbility")
+
+        # Command Sound
+        ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+        if ability_comm_sound_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+
+            sounds_set = []
+            sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
+                                                                          ability_comm_sound_id,
+                                                                          ability_ref,
+                                                                          ability_name,
+                                                                          "command_")
+            sounds_set.append(sound_expected_pointer)
+            ability_raw_api_object.add_raw_member("sounds", sounds_set,
+                                                  "engine.ability.specialization.CommandSoundAbility")
 
         if ranged:
             # Min range
@@ -118,7 +152,7 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
-    def apply_discrete_effect_ability(line, command_id, ranged=False):
+    def apply_discrete_effect_ability(line, command_id, ranged=False, projectile=-1):
         """
         Adds the ApplyDiscreteEffect ability to a line.
 
@@ -139,7 +173,7 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_name = COMMAND_TYPE_LOOKUPS[command_id]
+        ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
 
         if ranged:
             ability_parent = "engine.ability.type.RangedDiscreteEffect"
@@ -152,6 +186,46 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_parent(ability_parent)
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
+
+        ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
+
+        if ability_animation_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+
+            animations_set = []
+            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                  ability_animation_id,
+                                                                                  ability_ref,
+                                                                                  ability_name,
+                                                                                  "%s_"
+                                                                                  % COMMAND_TYPE_LOOKUPS[command_id][1])
+            animations_set.append(animation_expected_pointer)
+            ability_raw_api_object.add_raw_member("animations", animations_set,
+                                                  "engine.ability.specialization.AnimatedAbility")
+
+        # Command Sound
+        ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+        if ability_comm_sound_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+
+            sounds_set = []
+
+            if projectile == -1:
+                sound_obj_prefix = ability_name
+
+            else:
+                sound_obj_prefix = "ProjectileAttack"
+
+            sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
+                                                                          ability_comm_sound_id,
+                                                                          ability_ref,
+                                                                          sound_obj_prefix,
+                                                                          "command_")
+            sounds_set.append(sound_expected_pointer)
+            ability_raw_api_object.add_raw_member("sounds", sounds_set,
+                                                  "engine.ability.specialization.CommandSoundAbility")
 
         if ranged:
             # Min range
@@ -445,31 +519,14 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-
-            # Create animation object
-            animation_ref = "%s.Death.DeathAnimation" % (game_entity_name)
-            animation_raw_api_object = RawAPIObject(animation_ref, "DeathAnimation",
-                                                    dataset.nyan_api_objects)
-            animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, ability_ref)
-            animation_raw_api_object.set_location(animation_location)
-
-            ability_sprite = CombinedSprite(ability_animation_id,
-                                            "death_%s" % (name_lookup_dict[current_unit_id][1]),
-                                            dataset)
-            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
-            ability_sprite.add_reference(animation_raw_api_object)
-
-            animation_raw_api_object.add_raw_member("sprite", ability_sprite,
-                                                    "engine.aux.graphics.Animation")
-
-            animation_expected_pointer = ExpectedPointer(line, animation_ref)
+            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                  ability_animation_id,
+                                                                                  ability_ref,
+                                                                                  "Death",
+                                                                                  "death_")
             animations_set.append(animation_expected_pointer)
-
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
-
-            line.add_raw_api_object(animation_raw_api_object)
 
         # Death condition
         death_condition = [dataset.pregen_nyan_objects["aux.boolean.clause.death.StandardHealthDeath"].get_nyan_object()]
@@ -582,31 +639,14 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-
-            # Create animation object
-            animation_ref = "%s.Despawn.DespawnAnimation" % (game_entity_name)
-            animation_raw_api_object = RawAPIObject(animation_ref, "DespawnAnimation",
-                                                    dataset.nyan_api_objects)
-            animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, ability_ref)
-            animation_raw_api_object.set_location(animation_location)
-
-            ability_sprite = CombinedSprite(ability_animation_id,
-                                            "despawn_%s" % (name_lookup_dict[current_unit_id][1]),
-                                            dataset)
-            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
-            ability_sprite.add_reference(animation_raw_api_object)
-
-            animation_raw_api_object.add_raw_member("sprite", ability_sprite,
-                                                    "engine.aux.graphics.Animation")
-
-            animation_expected_pointer = ExpectedPointer(line, animation_ref)
+            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                  ability_animation_id,
+                                                                                  ability_ref,
+                                                                                  "Despawn",
+                                                                                  "despawn_")
             animations_set.append(animation_expected_pointer)
-
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
-
-            line.add_raw_api_object(animation_raw_api_object)
 
         # Activation condition
         # Uses the death condition of the units
@@ -1048,7 +1088,7 @@ class AoCAbilitySubprocessor:
                 # Skips hunting wolves
                 continue
 
-            ability_name = GATHER_TASK_LOOKUPS[gatherer_unit_id]
+            ability_name = GATHER_TASK_LOOKUPS[gatherer_unit_id][0]
 
             ability_ref = "%s.%s" % (game_entity_name, ability_name)
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
@@ -1061,32 +1101,15 @@ class AoCAbilitySubprocessor:
                 ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
                 animations_set = []
-
-                # Create animation object
-                animation_ref = "%s.%s.%sAnimation" % (game_entity_name, ability_name, ability_name)
-                animation_raw_api_object = RawAPIObject(animation_ref, "%sAnimation" % (ability_name),
-                                                        dataset.nyan_api_objects)
-                animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-                animation_location = ExpectedPointer(line, ability_ref)
-                animation_raw_api_object.set_location(animation_location)
-
-                ability_sprite = CombinedSprite(ability_animation_id,
-                                                "%s_%s" % (ability_name,
-                                                           name_lookup_dict[current_unit_id][1]),
-                                                dataset)
-                dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
-                ability_sprite.add_reference(animation_raw_api_object)
-
-                animation_raw_api_object.add_raw_member("sprite", ability_sprite,
-                                                        "engine.aux.graphics.Animation")
-
-                animation_expected_pointer = ExpectedPointer(line, animation_ref)
+                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                      ability_animation_id,
+                                                                                      ability_ref,
+                                                                                      ability_name,
+                                                                                      "%s_"
+                                                                                      % GATHER_TASK_LOOKUPS[gatherer_unit_id][1])
                 animations_set.append(animation_expected_pointer)
-
                 ability_raw_api_object.add_raw_member("animations", animations_set,
                                                       "engine.ability.specialization.AnimatedAbility")
-
-                line.add_raw_api_object(animation_raw_api_object)
 
             # Auto resume
             ability_raw_api_object.add_raw_member("auto_resume",
@@ -1500,31 +1523,14 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-
-            # Create animation object
-            animation_ref = "%s.Idle.IdleAnimation" % (game_entity_name)
-            animation_raw_api_object = RawAPIObject(animation_ref, "IdleAnimation",
-                                                    dataset.nyan_api_objects)
-            animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
-            animation_raw_api_object.set_location(animation_location)
-
-            ability_sprite = CombinedSprite(ability_animation_id,
-                                            "idle_%s" % (name_lookup_dict[current_unit_id][1]),
-                                            dataset)
-            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
-            ability_sprite.add_reference(animation_raw_api_object)
-
-            animation_raw_api_object.add_raw_member("sprite", ability_sprite,
-                                                    "engine.aux.graphics.Animation")
-
-            animation_expected_pointer = ExpectedPointer(line, animation_ref)
+            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                  ability_animation_id,
+                                                                                  ability_ref,
+                                                                                  "Idle",
+                                                                                  "idle_")
             animations_set.append(animation_expected_pointer)
-
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
-
-            line.add_raw_api_object(animation_raw_api_object)
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -1698,37 +1704,51 @@ class AoCAbilitySubprocessor:
 
         # Animation
         ability_animation_id = current_unit.get_member("move_graphics").get_value()
-
         if ability_animation_id > -1:
             # Make the ability animated
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
 
-            # Create animation object
-            animation_ref = "%s.MoveAnimation" % (ability_ref)
-            animation_raw_api_object = RawAPIObject(animation_ref, "MoveAnimation",
-                                                    dataset.nyan_api_objects)
-            animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, ability_ref)
-            animation_raw_api_object.set_location(animation_location)
+            if projectile == -1:
+                animation_obj_prefix = "Move"
+                animation_filename_prefix = "move_"
 
-            ability_sprite = CombinedSprite(ability_animation_id,
-                                            "move_%s" % (name_lookup_dict[current_unit_id][1]),
-                                            dataset)
-            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
-            ability_sprite.add_reference(animation_raw_api_object)
+            else:
+                animation_obj_prefix = "ProjectileFly"
+                animation_filename_prefix = "projectile_fly_"
 
-            animation_raw_api_object.add_raw_member("sprite", ability_sprite,
-                                                    "engine.aux.graphics.Animation")
-
-            animation_expected_pointer = ExpectedPointer(line, animation_ref)
+            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                  ability_animation_id,
+                                                                                  ability_ref,
+                                                                                  animation_obj_prefix,
+                                                                                  animation_filename_prefix)
             animations_set.append(animation_expected_pointer)
-
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
-            line.add_raw_api_object(animation_raw_api_object)
+        # Command Sound
+        ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+        if ability_comm_sound_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+
+            sounds_set = []
+
+            if projectile == -1:
+                sound_obj_prefix = "Move"
+
+            else:
+                sound_obj_prefix = "ProjectileFly"
+
+            sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
+                                                                          ability_comm_sound_id,
+                                                                          ability_ref,
+                                                                          sound_obj_prefix,
+                                                                          "command_")
+            sounds_set.append(sound_expected_pointer)
+            ability_raw_api_object.add_raw_member("sounds", sounds_set,
+                                                  "engine.ability.specialization.CommandSoundAbility")
 
         # Speed
         speed = current_unit.get_member("speed").get_value()
@@ -2348,9 +2368,9 @@ class AoCAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        ability_ref = "%s.%s" % (game_entity_name, RESTOCK_TARGET_LOOKUPS[restock_target_id])
+        ability_ref = "%s.%s" % (game_entity_name, RESTOCK_TARGET_LOOKUPS[restock_target_id][0])
         ability_raw_api_object = RawAPIObject(ability_ref,
-                                              RESTOCK_TARGET_LOOKUPS[restock_target_id],
+                                              RESTOCK_TARGET_LOOKUPS[restock_target_id][0],
                                               dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Restock")
         ability_location = ExpectedPointer(line, game_entity_name)
@@ -2373,33 +2393,16 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
+            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                  ability_animation_id,
+                                                                                  ability_ref,
+                                                                                  RESTOCK_TARGET_LOOKUPS[restock_target_id][0],
+                                                                                  "%s_"
+                                                                                  % RESTOCK_TARGET_LOOKUPS[restock_target_id][1])
 
-            # Create animation object
-            animation_ref = "%s.%s.RestockAnimation" % (game_entity_name,
-                                                        RESTOCK_TARGET_LOOKUPS[restock_target_id])
-            animation_raw_api_object = RawAPIObject(animation_ref,
-                                                    "%sAnimation" % (RESTOCK_TARGET_LOOKUPS[restock_target_id]),
-                                                    dataset.nyan_api_objects)
-            animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, ability_ref)
-            animation_raw_api_object.set_location(animation_location)
-
-            ability_sprite = CombinedSprite(ability_animation_id,
-                                            "restock_%s" % (name_lookup_dict[current_unit_id][1]),
-                                            dataset)
-            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
-            ability_sprite.add_reference(animation_raw_api_object)
-
-            animation_raw_api_object.add_raw_member("sprite", ability_sprite,
-                                                    "engine.aux.graphics.Animation")
-
-            animation_expected_pointer = ExpectedPointer(line, animation_ref)
             animations_set.append(animation_expected_pointer)
-
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
-
-            line.add_raw_api_object(animation_raw_api_object)
 
         # Auto restock
         ability_raw_api_object.add_raw_member("auto_restock",
@@ -2581,22 +2584,22 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_refs = ("%s.Selectable" % (game_entity_name),)
-        ability_refs = ("Selectable",)
+        ability_refs = ("%s.Selectable" % (game_entity_name),)
+        ability_names = ("Selectable",)
 
         if isinstance(line, GenieUnitLineGroup):
-            obj_refs = ("%s.SelectableOthers" % (game_entity_name),
-                        "%s.SelectableSelf" % (game_entity_name))
-            ability_refs = ("SelectableOthers",
-                            "SelectableSelf")
+            ability_refs = ("%s.SelectableOthers" % (game_entity_name),
+                            "%s.SelectableSelf" % (game_entity_name))
+            ability_names = ("SelectableOthers",
+                             "SelectableSelf")
 
         abilities = []
 
         # First box (MatchToSprite)
-        obj_ref = obj_refs[0]
         ability_ref = ability_refs[0]
+        ability_name = ability_names[0]
 
-        ability_raw_api_object = RawAPIObject(obj_ref, ability_ref, dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Selectable")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2628,19 +2631,35 @@ class AoCAbilitySubprocessor:
             return abilities
 
         # Second box (Rectangle)
-        obj_ref = obj_refs[1]
         ability_ref = ability_refs[1]
+        ability_name = ability_names[1]
 
-        ability_raw_api_object = RawAPIObject(obj_ref, ability_ref, dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Selectable")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
+
+        # Command Sound
+        ability_comm_sound_id = current_unit.get_member("selection_sound_id").get_value()
+        if ability_comm_sound_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+
+            sounds_set = []
+            sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
+                                                                          ability_comm_sound_id,
+                                                                          ability_ref,
+                                                                          ability_name,
+                                                                          "select_")
+            sounds_set.append(sound_expected_pointer)
+            ability_raw_api_object.add_raw_member("sounds", sounds_set,
+                                                  "engine.ability.specialization.CommandSoundAbility")
 
         # Selection box
         box_name = "%s.SelectableSelf.Rectangle" % (game_entity_name)
         box_raw_api_object = RawAPIObject(box_name, "Rectangle", dataset.nyan_api_objects)
         box_raw_api_object.add_raw_parent("engine.aux.selection_box.type.Rectangle")
-        box_location = ExpectedPointer(line, obj_ref)
+        box_location = ExpectedPointer(line, ability_ref)
         box_raw_api_object.set_location(box_location)
 
         radius_x = current_unit.get_member("selection_shape_x").get_value()
@@ -2737,7 +2756,7 @@ class AoCAbilitySubprocessor:
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
-        ability_name = COMMAND_TYPE_LOOKUPS[command_id]
+        ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
         ability_ref = "%s.%s" % (game_entity_name, ability_name)
@@ -2753,31 +2772,31 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-
-            # Create animation object
-            animation_ref = "%s.%s.ShootAnimation" % (game_entity_name, ability_name)
-            animation_raw_api_object = RawAPIObject(animation_ref, "ShootAnimation",
-                                                    dataset.nyan_api_objects)
-            animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-            animation_location = ExpectedPointer(line, ability_ref)
-            animation_raw_api_object.set_location(animation_location)
-
-            ability_sprite = CombinedSprite(ability_animation_id,
-                                            "attack_%s" % (name_lookup_dict[current_unit_id][1]),
-                                            dataset)
-            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
-            ability_sprite.add_reference(animation_raw_api_object)
-
-            animation_raw_api_object.add_raw_member("sprite", ability_sprite,
-                                                    "engine.aux.graphics.Animation")
-
-            animation_expected_pointer = ExpectedPointer(line, animation_ref)
+            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                  ability_animation_id,
+                                                                                  ability_ref,
+                                                                                  ability_name,
+                                                                                  "%s_"
+                                                                                  % COMMAND_TYPE_LOOKUPS[command_id][1])
             animations_set.append(animation_expected_pointer)
-
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
-            line.add_raw_api_object(animation_raw_api_object)
+        # Command Sound
+        ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+        if ability_comm_sound_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+
+            sounds_set = []
+            sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
+                                                                          ability_comm_sound_id,
+                                                                          ability_ref,
+                                                                          ability_name,
+                                                                          "command_")
+            sounds_set.append(sound_expected_pointer)
+            ability_raw_api_object.add_raw_member("sounds", sounds_set,
+                                                  "engine.ability.specialization.CommandSoundAbility")
 
         # Projectile
         projectiles = []
@@ -3331,3 +3350,110 @@ class AoCAbilitySubprocessor:
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
 
         return ability_expected_pointer
+
+    @staticmethod
+    def _create_animation(line, animation_id, ability_ref, ability_name, filename_prefix):
+        """
+        Generates an animation for an ability.
+        """
+        dataset = line.data
+        head_unit_id = line.get_head_unit_id()
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        animation_ref = "%s.%sAnimation" % (ability_ref, ability_name)
+        animation_obj_name = "%sAnimation" % (ability_name)
+        animation_raw_api_object = RawAPIObject(animation_ref, animation_obj_name,
+                                                dataset.nyan_api_objects)
+        animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
+        animation_location = ExpectedPointer(line, ability_ref)
+        animation_raw_api_object.set_location(animation_location)
+
+        if animation_id in dataset.combined_sprites.keys():
+            ability_sprite = dataset.combined_sprites[animation_id]
+
+        else:
+            ability_sprite = CombinedSprite(animation_id,
+                                            "%s%s" % (filename_prefix,
+                                                      name_lookup_dict[head_unit_id][1]),
+                                            dataset)
+            dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
+
+        ability_sprite.add_reference(animation_raw_api_object)
+
+        animation_raw_api_object.add_raw_member("sprite", ability_sprite,
+                                                "engine.aux.graphics.Animation")
+
+        line.add_raw_api_object(animation_raw_api_object)
+
+        animation_expected_pointer = ExpectedPointer(line, animation_ref)
+
+        return animation_expected_pointer
+
+    @staticmethod
+    def _create_sound(line, sound_id, ability_ref, ability_name, filename_prefix):
+        """
+        Generates a sound for an ability.
+        """
+        dataset = line.data
+
+#===============================================================================
+#         head_unit_id = line.get_head_unit_id()
+#
+#         if isinstance(line, GenieBuildingLineGroup):
+#             name_lookup_dict = BUILDING_LINE_LOOKUPS
+#
+#         elif isinstance(line, GenieAmbientGroup):
+#             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+#
+#         else:
+#             name_lookup_dict = UNIT_LINE_LOOKUPS
+#===============================================================================
+
+        sound_ref = "%s.%sSound" % (ability_ref, ability_name)
+        sound_obj_name = "%sSound" % (ability_name)
+        sound_raw_api_object = RawAPIObject(sound_ref, sound_obj_name,
+                                            dataset.nyan_api_objects)
+        sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
+        sound_location = ExpectedPointer(line, ability_ref)
+        sound_raw_api_object.set_location(sound_location)
+
+        # Search for the sound if it exists
+        sounds_set = []
+
+        genie_sound = dataset.genie_sounds[sound_id]
+        file_ids = genie_sound.get_sounds(civ_id=-1)
+
+        for file_id in file_ids:
+            if file_id in dataset.combined_sounds:
+                sound = dataset.combined_sounds[file_id]
+
+            else:
+                sound = CombinedSound(sound_id,
+                                      file_id,
+                                      "%ssound_%s" % (filename_prefix, str(file_id)),
+                                      dataset)
+                dataset.combined_sounds.update({file_id: sound})
+
+            sound.add_reference(sound_raw_api_object)
+            sounds_set.append(sound)
+
+        sound_raw_api_object.add_raw_member("play_delay",
+                                            0,
+                                            "engine.aux.sound.Sound")
+        sound_raw_api_object.add_raw_member("sounds",
+                                            sounds_set,
+                                            "engine.aux.sound.Sound")
+
+        line.add_raw_api_object(sound_raw_api_object)
+
+        sound_expected_pointer = ExpectedPointer(line, sound_ref)
+
+        return sound_expected_pointer

@@ -410,28 +410,28 @@ CLASS_ID_LOOKUPS = {
 
 # key: genie unit id; value: Gather ability name
 GATHER_TASK_LOOKUPS = {
-    13: "Fish",  # fishing boat
-    56: "Fish",  # male
-    57: "Fish",  # female
-    120: "CollectBerries",  # male
-    354: "CollectBerries",  # female
-    122: "HarvestGame",  # male
-    216: "HarvestGame",  # female
-    123: "ChopWood",  # male
-    218: "ChopWood",  # female
-    124: "MineStone",  # male
-    220: "MineStone",  # female
-    214: "FarmCrops",  # male
-    259: "FarmCrops",  # female
-    579: "MineGold",  # male
-    581: "MineGold",  # female
-    590: "HarvestLivestock",  # male
-    592: "HarvestLivestock",  # female
+    13: ("Fish", "fish"),  # fishing boat
+    56: ("Fish", "fish"),  # male
+    57: ("Fish", "fish"),  # female
+    120: ("CollectBerries", "collect_berries"),  # male
+    354: ("CollectBerries", "collect_berries"),  # female
+    122: ("HarvestGame", "harvest_game"),  # male
+    216: ("HarvestGame", "harvest_game"),  # female
+    123: ("ChopWood", "chop_wood"),  # male
+    218: ("ChopWood", "chop_wood"),  # female
+    124: ("MineStone", "mine_stone"),  # male
+    220: ("MineStone", "mine_stone"),  # female
+    214: ("FarmCrops", "farm_crops"),  # male
+    259: ("FarmCrops", "farm_crops"),  # female
+    579: ("MineGold", "mine_gold"),  # male
+    581: ("MineGold", "mine_gold"),  # female
+    590: ("HarvestLivestock", "harvest_livestock"),  # male
+    592: ("HarvestLivestock", "harvest_livestock"),  # female
 }
 
 # key: restock target unit id; value: Gather ability name
 RESTOCK_TARGET_LOOKUPS = {
-    50: "ReseedFarm",
+    50: ("ReseedFarm", "reseed_farm"),
 }
 
 # key: armor class; value: Gather ability name
@@ -462,10 +462,10 @@ ARMOR_CLASS_LOOKUPS = {
 
 # key: command type; value: Apply*Effect ability name
 COMMAND_TYPE_LOOKUPS = {
-    7: "Attack",
-    101: "Construct",
-    104: "Convert",
-    105: "Heal",
-    106: "Repair",
-    110: "Hunt",
+    7: ("Attack", "attack"),
+    101: ("Construct", "construct"),
+    104: ("Convert", "convert"),
+    105: ("Heal", "heal"),
+    106: ("Repair", "repair"),
+    110: ("Hunt", "hunt"),
 }

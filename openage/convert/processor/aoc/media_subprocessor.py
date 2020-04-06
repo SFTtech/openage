@@ -67,7 +67,7 @@ class AoCMediaSubprocessor:
 
             targetdir = sound.resolve_sound_location()
             source_filename = "%s.wav" % str(sound_id)
-            target_filename = "%s.opus" % str(sound_id)
+            target_filename = "%s.opus" % sound.get_filename()
 
             export_request = SoundMediaExportRequest(targetdir, source_filename,
                                                      target_filename)
