@@ -59,6 +59,10 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.stat_upgrades = {}
         self.terrain_groups = {}
 
+        # Stores which line a unit is part of
+        # key: unit id; value: ConverterObjectGroup
+        self.unit_ref = {}
+
         # Phase 3: sprites, sounds
         self.combined_sprites = {}          # Animation or Terrain graphics
         self.combined_sounds = {}

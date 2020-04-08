@@ -369,6 +369,12 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         return self.line[0]
 
+    def get_unit_position(self, unit_id):
+        """
+        Return the position of a unit in the line.
+        """
+        return self.line_positions[unit_id]
+
     def get_train_location(self):
         """
         Returns the group_id for building line if the unit is

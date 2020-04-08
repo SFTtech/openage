@@ -17,6 +17,7 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
+from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
 
 
 class AoCNyanSubprocessor:
@@ -597,7 +598,9 @@ class AoCNyanSubprocessor:
         # =======================================================================
         # TODO: Updates
         # =======================================================================
-        raw_api_object.add_raw_member("updates", [], "engine.aux.tech.Tech")
+        patches = []
+        patches.extend(AoCTechSubprocessor.get_patches(tech_group))
+        raw_api_object.add_raw_member("updates", patches, "engine.aux.tech.Tech")
 
         # =======================================================================
         # Misc (Objects that are not used by the tech group itself, but use its values)

@@ -1103,6 +1103,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.patch.NyanPatch
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("NyanPatch", parents)
+    fqon = "engine.aux.patch.NyanPatch"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.patch.Patch
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("Patch", parents)
@@ -3141,6 +3148,13 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity.GameEntity"]
     member = NyanMember("blacklisted_game_entities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.patch.Patch
+    api_object = api_objects["engine.aux.patch.Patch"]
+
+    ref_object = api_objects["engine.aux.patch.NyanPatch"]
+    member = NyanMember("patch", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.patch.type.DiplomaticPatch

@@ -435,6 +435,7 @@ class AoCProcessor:
             # if not, create it
             if line_id in pre_unit_lines.keys():
                 unit_line = pre_unit_lines[line_id]
+                full_data_set.unit_ref.update({unit_id: unit_line})
 
             else:
                 # Check for special cases first
@@ -461,6 +462,7 @@ class AoCProcessor:
                     unit_line = GenieUnitLineGroup(line_id, full_data_set)
 
                 pre_unit_lines.update({unit_line.get_id(): unit_line})
+                full_data_set.unit_ref.update({unit_id: unit_line})
 
             if connection.get_member("line_mode").get_value() == 2:
                 # The unit is the first in line
@@ -511,6 +513,7 @@ class AoCProcessor:
             unit_line = GenieUnitLineGroup(unit_id, full_data_set)
             unit_line.add_unit(full_data_set.genie_units[unit_id])
             full_data_set.unit_lines.update({unit_line.get_id(): unit_line})
+            full_data_set.unit_ref.update({unit_id: unit_line})
 
     @staticmethod
     def _create_building_lines(full_data_set):
@@ -615,6 +618,7 @@ class AoCProcessor:
             if line_id in full_data_set.building_lines.keys():
                 building_line = full_data_set.building_lines[line_id]
                 building_line.add_unit(building, after=previous_building_id)
+                full_data_set.unit_ref.update({building_id: building_line})
 
             else:
                 if stack_building:
@@ -626,6 +630,7 @@ class AoCProcessor:
 
                 full_data_set.building_lines.update({building_line.get_id(): building_line})
                 building_line.add_unit(building, after=previous_building_id)
+                full_data_set.unit_ref.update({building_id: building_line})
 
     @staticmethod
     def _sanitize_effect_bundles(full_data_set):
@@ -645,7 +650,7 @@ class AoCProcessor:
             effects = bundle.get_effects()
 
             index = 0
-            for effect in effects.values():
+            for effect in effects:
                 effect_type = effect.get_member("type_id").get_value()
                 if effect_type < 0:
                     # Effect has no type
@@ -676,6 +681,7 @@ class AoCProcessor:
         tech_connections = full_data_set.tech_connections
 
         for connection in tech_connections.values():
+            connected_buildings = connection.get_member("buildings").get_value()
             tech_id = connection.get_member("id").get_value()
             tech = full_data_set.genie_techs[tech_id]
 
@@ -702,6 +708,9 @@ class AoCProcessor:
                 age_up = AgeUpgrade(tech_id, age_id, full_data_set)
                 full_data_set.tech_groups.update({age_up.get_id(): age_up})
                 full_data_set.age_upgrades.update({age_up.get_id(): age_up})
+
+            elif len(connected_buildings) > 0:
+                pass
 
             else:
                 # Create a stat upgrade for other techs
@@ -795,6 +804,7 @@ class AoCProcessor:
         """
         units = full_data_set.genie_units
         task_group_ids = set()
+        unit_ids = set()
 
         # Find task groups in the dataset
         for unit in units.values():
@@ -824,11 +834,14 @@ class AoCProcessor:
                 full_data_set.task_groups.update({task_group_id: task_group})
 
             task_group_ids.add(task_group_id)
+            unit_ids.add(unit.get_member("id0").get_value())
 
         # Create the villager task group
         villager = GenieVillagerGroup(118, task_group_ids, full_data_set)
         full_data_set.unit_lines.update({villager.get_id(): villager})
         full_data_set.villager_groups.update({villager.get_id(): villager})
+        for unit_id in unit_ids:
+            full_data_set.unit_ref.update({unit_id: villager})
 
     @staticmethod
     def _create_ambient_groups(full_data_set):
@@ -847,6 +860,7 @@ class AoCProcessor:
             ambient_group = GenieAmbientGroup(ambient_id, full_data_set)
             ambient_group.add_unit(genie_units[ambient_id])
             full_data_set.ambient_groups.update({ambient_group.get_id(): ambient_group})
+            full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
     def _create_variant_groups(full_data_set):
@@ -866,6 +880,7 @@ class AoCProcessor:
 
             for variant_id in variant[0]:
                 variant_group.add_unit(full_data_set.genie_units[variant_id])
+                full_data_set.unit_ref.update({variant_id: variant_group})
 
     @staticmethod
     def _create_terrain_groups(full_data_set):

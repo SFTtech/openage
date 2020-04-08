@@ -13,6 +13,7 @@ from .aoc.combined_sprite import CombinedSprite
 from openage.convert.dataformat.value_members import NoDiffMember
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
+from openage.nyan.nyan_structs import NyanPatch, NyanMember, NyanPatchMember
 
 
 class ConverterObject:
@@ -174,8 +175,15 @@ class ConverterObjectGroup:
         """
         Creates nyan objects from the existing raw API objects.
         """
+        patch_objects = []
         for raw_api_object in self.raw_api_objects.values():
             raw_api_object.create_nyan_object()
+
+            if raw_api_object.is_patch():
+                patch_objects.append(raw_api_object)
+
+        for patch_object in patch_objects:
+            patch_object.link_patch_target()
 
     def create_nyan_members(self):
         """
@@ -259,6 +267,7 @@ class RawAPIObject:
         self._filename = None
 
         self.nyan_object = None
+        self._patch_target = None
 
     def add_raw_member(self, name, value, origin):
         """
@@ -272,6 +281,21 @@ class RawAPIObject:
         :type origin: str
         """
         self.raw_members.append((name, value, origin))
+
+    def add_raw_patch_member(self, name, value, origin, operator):
+        """
+        Adds a raw member to the object.
+
+        :param name: Name of the member (has to be a valid target member name).
+        :type name: str
+        :param value: Value of the member.
+        :type value: int, float, bool, str, list
+        :param origin: from which parent the target's member was inherited.
+        :type origin: str
+        :param operator: the operator for the patched member
+        :type operator: MemberOperator
+        """
+        self.raw_members.append((name, value, origin, operator))
 
     def add_raw_parent(self, parent_id):
         """
@@ -290,7 +314,11 @@ class RawAPIObject:
         for raw_parent in self.raw_parents:
             parents.append(self.api_ref[raw_parent])
 
-        self.nyan_object = NyanObject(self.name, parents)
+        if self.is_patch():
+            self.nyan_object = NyanPatch(self.name, parents)
+
+        else:
+            self.nyan_object = NyanObject(self.name, parents)
 
     def create_nyan_members(self):
         """
@@ -306,6 +334,9 @@ class RawAPIObject:
             member_name = raw_member[0]
             member_value = raw_member[1]
             member_origin = self.api_ref[raw_member[2]]
+            member_operator = None
+            if self.is_patch():
+                member_operator = raw_member[3]
 
             if isinstance(member_value, ExpectedPointer):
                 member_value = member_value.resolve()
@@ -347,9 +378,25 @@ class RawAPIObject:
                 # should have no effect on balance, hopefully
                 member_value = round(member_value, ndigits=6)
 
-            nyan_member_name = member_name
-            nyan_member = self.nyan_object.get_member_by_name(nyan_member_name, member_origin)
-            nyan_member.set_value(member_value, MemberOperator.ASSIGN)
+            if self.is_patch():
+                nyan_member = NyanPatchMember(member_name, self.nyan_object.get_target(), member_origin,
+                                              member_value, member_operator)
+                self.nyan_object.add_member(nyan_member)
+
+            else:
+                nyan_member = self.nyan_object.get_member_by_name(member_name, member_origin)
+                nyan_member.set_value(member_value, MemberOperator.ASSIGN)
+
+    def link_patch_target(self):
+        """
+        Link the target NyanObject for a patch.
+        """
+        if not self.is_patch():
+            raise Exception("Cannot link patch target: %s is not a patch"
+                            % (self))
+
+        target = self._patch_target.resolve()
+        self.nyan_object.set_target(target)
 
     def get_filename(self):
         """
@@ -408,6 +455,12 @@ class RawAPIObject:
         """
         return self.nyan_object is not None and not self.nyan_object.is_abstract()
 
+    def is_patch(self):
+        """
+        Returns True if the object is a patch.
+        """
+        return self._patch_target is not None
+
     def set_filename(self, filename, suffix="nyan"):
         """
         Set the filename of the resulting nyan file.
@@ -424,10 +477,21 @@ class RawAPIObject:
         Set the relative location of the object in a modpack. This must
         be a path to a nyan file or an ExpectedPointer to a nyan object.
 
-        :param location: Relative path of the nyan file in the modpack or another raw API object.
+        :param location: Relative path of the nyan file in the modpack or
+                         an expected pointer toanother raw API object.
         :type location: str, .expected_pointer.ExpectedPointer
         """
         self._location = location
+
+    def set_patch_target(self, target):
+        """
+        Set an ExpectedPointer as a target for this object. If this
+        is done, the RawAPIObject will be converted to a patch.
+
+        :param target: An expected pointer toanother raw API object.
+        :type target: .expected_pointer.ExpectedPointer
+        """
+        self._patch_target = target
 
     def __repr__(self):
         return "RawAPIObject<%s>" % (self.obj_id)

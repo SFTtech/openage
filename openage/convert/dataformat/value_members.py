@@ -31,7 +31,7 @@ class ValueMember:
     Stores a value member from a data file.
     """
 
-    __slots__ = ['name', 'member_type', 'value']
+    __slots__ = ('name', 'member_type', 'value')
 
     def __init__(self, name):
         self.name = name
@@ -97,7 +97,7 @@ class IntMember(ValueMember):
                 return NoDiffMember(self.name)
 
             else:
-                diff_value = self.get_value() - other.get_value()
+                diff_value = other.get_value() - self.get_value()
 
                 return IntMember(self.name, diff_value)
 
@@ -106,7 +106,7 @@ class IntMember(ValueMember):
                 "type %s member cannot be diffed with type %s" % (type(self), type(other)))
 
     def __repr__(self):
-        return "IntMember<%s>" % (type(self))
+        return "IntMember<%s>" % (self.name)
 
 
 class FloatMember(ValueMember):
@@ -133,7 +133,7 @@ class FloatMember(ValueMember):
                 return NoDiffMember(self.name)
 
             else:
-                diff_value = self.get_value() - other.get_value()
+                diff_value = other.get_value() - self.get_value()
 
                 return FloatMember(self.name, diff_value)
 
@@ -142,7 +142,7 @@ class FloatMember(ValueMember):
                 "type %s member cannot be diffed with type %s" % (type(self), type(other)))
 
     def __repr__(self):
-        return "FloatMember<%s>" % (type(self))
+        return "FloatMember<%s>" % (self.name)
 
 
 class BooleanMember(ValueMember):
@@ -175,7 +175,7 @@ class BooleanMember(ValueMember):
                 "type %s member cannot be diffed with type %s" % (type(self), type(other)))
 
     def __repr__(self):
-        return "BooleanMember<%s>" % (type(self))
+        return "BooleanMember<%s>" % (self.name)
 
 
 class IDMember(IntMember):
@@ -201,7 +201,7 @@ class IDMember(IntMember):
                 "type %s member cannot be diffed with type %s" % (type(self), type(other)))
 
     def __repr__(self):
-        return "IDMember<%s>" % (type(self))
+        return "IDMember<%s>" % (self.name)
 
 
 class BitfieldMember(ValueMember):
@@ -251,7 +251,7 @@ class BitfieldMember(ValueMember):
         return len(self.value)
 
     def __repr__(self):
-        return "BitfieldMember<%s>" % (type(self))
+        return "BitfieldMember<%s>" % (self.name)
 
 
 class StringMember(ValueMember):
@@ -287,7 +287,7 @@ class StringMember(ValueMember):
         return len(self.value)
 
     def __repr__(self):
-        return "StringMember<%s>" % (type(self))
+        return "StringMember<%s>" % (self.name)
 
 
 class ContainerMember(ValueMember):
@@ -318,13 +318,15 @@ class ContainerMember(ValueMember):
             if len(self) == len(other):
                 diff_list = list()
 
-                # optimization to avoid constant calls to other
                 other_dict = other.get_value()
 
                 for key in self.value.keys():
                     diff_value = self.value[key].diff(other_dict[key])
 
                     diff_list.append(diff_value)
+
+                if all(isinstance(member, NoDiffMember) for member in diff_list):
+                    return NoDiffMember(self.name)
 
                 return ContainerMember(self.name, diff_list)
 
@@ -355,13 +357,15 @@ class ContainerMember(ValueMember):
         return len(self.value)
 
     def __repr__(self):
-        return "ContainerMember<%s>" % (type(self))
+        return "ContainerMember<%s>" % (self.name)
 
 
 class ArrayMember(ValueMember):
     """
     Stores an ordered list of members with the same type.
     """
+
+    __slots__ = ('_allowed_member_type')
 
     def __init__(self, name, allowed_member_type, members):
         super().__init__(name)
@@ -383,11 +387,14 @@ class ArrayMember(ValueMember):
         elif allowed_member_type is MemberTypes.CONTAINER_MEMBER:
             self.member_type = MemberTypes.ARRAY_CONTAINER
 
+        self._allowed_member_type = allowed_member_type
+
         # Check if members have correct type
         for member in members:
-            if member.get_type() is not allowed_member_type:
-                raise Exception("%s has type %s, but this ArrayMember only allows %s"
-                                % (member, member.get_type(), allowed_member_type))
+            if not isinstance(member, (NoDiffMember, LeftMissingMember, RightMissingMember)):
+                if member.get_type() is not self._allowed_member_type:
+                    raise Exception("%s has type %s, but this ArrayMember only allows %s"
+                                    % (member, member.get_type(), allowed_member_type))
 
     def get_value(self):
         return self.value
@@ -397,21 +404,36 @@ class ArrayMember(ValueMember):
 
     def diff(self, other):
         if self.get_type() == other.get_type():
-            if len(self) == len(other):
+            diff_list = []
+            other_list = other.get_value()
 
-                diff_list = []
-                other_list = other.get_value()
-
-                for index in range(len(self)):
+            index = 0
+            if len(self) <= len(other):
+                while index < len(self):
                     diff_value = self.value[index].diff(other_list[index])
-
                     diff_list.append(diff_value)
+                    index += 1
 
-                return ArrayMember(self.name, self.member_type, diff_list)
+                while index < len(other):
+                    diff_value = other_list[index]
+                    diff_list.append(LeftMissingMember(diff_value.name, diff_value))
+                    index += 1
 
             else:
-                raise Exception(
-                    "ArrayMembers must have same length for diff")
+                while index < len(other):
+                    diff_value = self.value[index].diff(other_list[index])
+                    diff_list.append(diff_value)
+                    index += 1
+
+                while index < len(self):
+                    diff_value = self.value[index]
+                    diff_list.append(RightMissingMember(diff_value.name, diff_value))
+                    index += 1
+
+            if all(isinstance(member, NoDiffMember) for member in diff_list):
+                return NoDiffMember(self.name)
+
+            return ArrayMember(self.name, self._allowed_member_type, diff_list)
 
         else:
             raise Exception(
@@ -427,7 +449,7 @@ class ArrayMember(ValueMember):
         return len(self.value)
 
     def __repr__(self):
-        return "ArrayMember<%s>" % (type(self))
+        return "ArrayMember<%s>" % (self.name)
 
 
 class NoDiffMember(ValueMember):
@@ -436,7 +458,51 @@ class NoDiffMember(ValueMember):
     """
 
     def __repr__(self):
-        return "NoDiffMember<%s>" % (type(self))
+        return "NoDiffMember<%s>" % (self.name)
+
+
+class LeftMissingMember(ValueMember):
+    """
+    Is returned when an array or container on the left side of
+    the comparison has no member to compare. It stores the right
+    side member as value.
+    """
+
+    def __init__(self, name, value):
+        super().__init__(name)
+
+        self.value = value
+
+    def get_value(self):
+        """
+        Returns the value of a member.
+        """
+        return self.value
+
+    def __repr__(self):
+        return "LeftMissingMember<%s>" % (self.name)
+
+
+class RightMissingMember(ValueMember):
+    """
+    Is returned when an array or container on the right side of
+    the comparison has no member to compare. It stores the left
+    side member as value.
+    """
+
+    def __init__(self, name, value):
+        super().__init__(name)
+
+        self.value = value
+
+    def get_value(self):
+        """
+        Returns the value of a member.
+        """
+        return self.value
+
+    def __repr__(self):
+        return "RightMissingMember<%s>" % (self.name)
 
 
 class MemberTypes(Enum):

@@ -35,7 +35,8 @@ class AoCMediaSubprocessor:
 
                 targetdir = graphic_targetdirs[graphic_id]
                 source_filename = "%s.slp" % str(graphic.get_member("slp_id").get_value())
-                target_filename = "%s.png" % str(graphic.get_member("slp_id").get_value())
+                target_filename = "%s_%s.png" % (sprite.get_filename(),
+                                                 str(graphic.get_member("slp_id").get_value()))
 
                 export_request = GraphicsMediaExportRequest(targetdir, source_filename,
                                                             target_filename)

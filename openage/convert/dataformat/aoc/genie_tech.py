@@ -148,7 +148,6 @@ class AgeUpgrade(GenieTechEffectBundleGroup):
                               contains all relevant data for the conversion
                               process.
         """
-
         super().__init__(tech_id, full_data_set)
 
         self.age_id = age_id
@@ -175,7 +174,6 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
                               contains all relevant data for the conversion
                               process.
         """
-
         super().__init__(tech_id, full_data_set)
 
         self.unit_line_id = unit_line_id
@@ -209,11 +207,16 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
                               contains all relevant data for the conversion
                               process.
         """
-
         super().__init__(tech_id, full_data_set)
 
         self.building_line_id = building_line_id
         self.upgrade_target_id = upgrade_target_id
+
+    def get_line_id(self):
+        """
+        Returns the line id of the upgraded line.
+        """
+        return self.building_line_id
 
     def __repr__(self):
         return "BuildingLineUpgrade<%s>" % (self.get_id())

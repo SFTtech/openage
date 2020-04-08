@@ -78,14 +78,14 @@ class GenieEffectBundle(ConverterObject):
         """
         if effect_type:
             matching_effects = []
-            for _, effect in self.effects.items():
+            for effect in self.effects.values():
                 if effect.get_type() == effect_type:
                     matching_effects.append(effect)
 
             return matching_effects
 
         else:
-            return self.effects
+            return list(self.effects.values())
 
     def is_sanitized(self):
         """
