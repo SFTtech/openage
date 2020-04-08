@@ -16,7 +16,6 @@ import re
 
 from enum import Enum
 from openage.util.ordered_set import OrderedSet
-from _ast import Or
 
 INDENT = "    "
 
@@ -145,6 +144,23 @@ class NyanObject:
                 inherited.is_optional()
             )
             new_child.update_inheritance(inherited_member)
+
+    def has_member(self, member_name, origin=None):
+        """
+        Returns True if the NyanMember with the specified name exists.
+        """
+        if origin and origin is not self:
+            for inherited_member in self._inherited_members:
+                if origin == inherited_member.get_origin():
+                    if inherited_member.get_name() == member_name:
+                        return True
+
+        else:
+            for member in self._members:
+                if member.get_name() == member_name:
+                    return True
+
+        return False
 
     def get_fqon(self):
         """
@@ -409,10 +425,10 @@ class NyanPatch(NyanObject):
     Superclass for nyan patches.
     """
 
-    def __init__(self, name: str, target, parents=None, members=None,
-                 nested_objects=None, add_inheritance=None):
+    def __init__(self, name, parents=None, members=None, nested_objects=None,
+                 target=None, add_inheritance=None):
 
-        self._target = target           # patch target
+        self._target = target                  # patch target (can be added later)
         self._add_inheritance = OrderedSet()   # new inheritance
         if add_inheritance:
             self._add_inheritance.update(add_inheritance)
@@ -425,20 +441,36 @@ class NyanPatch(NyanObject):
         """
         return self._target
 
+    def is_abstract(self):
+        """
+        Returns True if unique or inherited members were
+        not initialized or the patch target is not set.
+        """
+        return super().is_abstract() or not self._target
+
     def is_patch(self):
         """
         Returns True if the object is a nyan patch.
         """
         return True
 
+    def set_target(self, target):
+        """
+        Set the target of the patch.
+        """
+        self._target = target
+
+        if not isinstance(self._target, NyanObject):
+            raise Exception("%s: '_target' must have NyanObject type"
+                            % (self.__repr__()))
+
     def dump(self, indent_depth=0):
         """
         Returns the string representation of the object.
         """
         # Header
-        output_str = "%s%s<%s>" % (indent_depth * INDENT,
-                                   self.get_name(),
-                                   self.get_target().get_name())
+        output_str = "%s<%s>" % (self.get_name(),
+                                 self.get_target().get_name())
 
         if len(self._add_inheritance) > 0:
             output_str += "["
@@ -466,9 +498,10 @@ class NyanPatch(NyanObject):
         super()._sanity_check()
 
         # Target must be a nyan object
-        if not isinstance(self._target, NyanObject):
-            raise Exception("%s: '_target' must have NyanObject type"
-                            % (self.__repr__()))
+        if self._target:
+            if not isinstance(self._target, NyanObject):
+                raise Exception("%s: '_target' must have NyanObject type"
+                                % (self.__repr__()))
 
         # Added inheritance must be tuples of "FRONT"/"BACK"
         # and a nyan object
@@ -873,9 +906,86 @@ class NyanMember:
         return "NyanMember<%s: %s>" % (self.name, self._member_type)
 
 
+class NyanPatchMember(NyanMember):
+    """
+    Nyan members for patches.
+    """
+
+    def __init__(self, name, patch_target, member_origin, value,
+                 operator, override_depth=0):
+        """
+        Initializes the member and does some correctness checks,
+        for your convenience. Other than the normal members,
+        patch members must initialize all values in the constructor
+        """
+        # the target object of the patch
+        self._patch_target = patch_target
+
+        # the origin of the patched member from the patch target
+        self._member_origin = member_origin
+
+        target_member_type, target_set_type = self._get_target_member_type(name, member_origin)
+
+        super().__init__(name, target_member_type, value, operator,
+                         override_depth, target_set_type, False)
+
+    def get_name_with_origin(self):
+        """
+        Returns the name of the member in <member_origin>.<name> form.
+        """
+        return "%s.%s" % (self._member_origin.name, self.name)
+
+    def dump(self):
+        """
+        Returns the string representation of the member.
+        """
+        return self.dump_short()
+
+    def dump_short(self):
+        """
+        Returns the nyan string representation of the member, but
+        without the type definition.
+        """
+        return "%s %s%s %s" % (self.get_name_with_origin(), "@" * self._override_depth,
+                               self._operator.value, self._get_str_representation())
+
+    def _sanity_check(self):
+        """
+        Check if the member conforms to nyan grammar rules. Also does
+        a bunch of type checks.
+        """
+        super()._sanity_check()
+
+        # patch target must be a nyan object
+        if not isinstance(self._patch_target, NyanObject):
+            raise Exception("%s: '_patch_target' must have NyanObject type"
+                            % (self))
+
+        # member origin must be a nyan object
+        if not isinstance(self._member_origin, NyanObject):
+            raise Exception("%s: '_member_origin' must have NyanObject type"
+                            % (self))
+
+    def _get_target_member_type(self, name, origin):
+        """
+        Retrieves the type of the patched member.
+        """
+        # member must exist in the patch target
+        if not self._patch_target.has_member(name, origin):
+            raise Exception("%s: patch target does not have a member % with origin %s"
+                            % (self, name, origin))
+
+        target_member = self._patch_target.get_member_by_name(name, origin)
+
+        return target_member.get_member_type(), target_member.get_set_type()
+
+    def __repr__(self):
+        return "NyanPatchMember<%s: %s>" % (self.name, self._member_type)
+
+
 class InheritedNyanMember(NyanMember):
     """
-    Superclass for all nyan members inherited from other objects.
+    Nyan members inherited from other objects.
     """
 
     def __init__(self, name, member_type, parent, origin, value=None,
