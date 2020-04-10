@@ -94,7 +94,7 @@ class IntMember(ValueMember):
         if self.get_type() is other.get_type():
 
             if self.get_value() == other.get_value():
-                return NoDiffMember(self.name)
+                return NoDiffMember(self.name, self)
 
             else:
                 diff_value = other.get_value() - self.get_value()
@@ -130,7 +130,7 @@ class FloatMember(ValueMember):
         if self.get_type() is other.get_type():
             # Float must have the last 6 digits in common
             if isclose(self.get_value(), other.get_value(), rel_tol=1e-7):
-                return NoDiffMember(self.name)
+                return NoDiffMember(self.name, self)
 
             else:
                 diff_value = other.get_value() - self.get_value()
@@ -165,7 +165,7 @@ class BooleanMember(ValueMember):
     def diff(self, other):
         if self.get_type() is other.get_type():
             if self.get_value() == other.get_value():
-                return NoDiffMember(self.name)
+                return NoDiffMember(self.name, self)
 
             else:
                 return BooleanMember(self.name, other.get_value())
@@ -191,7 +191,7 @@ class IDMember(IntMember):
     def diff(self, other):
         if self.get_type() is other.get_type():
             if self.get_value() == other.get_value():
-                return NoDiffMember(self.name)
+                return NoDiffMember(self.name, self)
 
             else:
                 return IDMember(self.name, other.get_value())
@@ -237,7 +237,7 @@ class BitfieldMember(ValueMember):
         """
         if self.get_type() is other.get_type():
             if self.get_value() == other.get_value():
-                return NoDiffMember(self.name)
+                return NoDiffMember(self.name, self)
 
             else:
                 difference = self.value ^ other.get_value()
@@ -274,7 +274,7 @@ class StringMember(ValueMember):
     def diff(self, other):
         if self.get_type() is other.get_type():
             if self.get_value() == other.get_value():
-                return NoDiffMember(self.name)
+                return NoDiffMember(self.name, self)
 
             else:
                 return StringMember(self.name, other.get_value())
@@ -299,13 +299,21 @@ class ContainerMember(ValueMember):
     """
 
     def __init__(self, name, submembers):
+        """
+        :param submembers: Stored members as a list or dict
+        :type submembers: list, dict
+        """
         super().__init__(name)
 
         self.value = {}
         self.member_type = MemberTypes.CONTAINER_MEMBER
 
         # submembers is a list of members
-        self._create_dict(submembers)
+        if not isinstance(submembers, dict):
+            self._create_dict(submembers)
+
+        else:
+            self.value = submembers
 
     def get_value(self):
         return self.value
@@ -326,7 +334,7 @@ class ContainerMember(ValueMember):
                     diff_list.append(diff_value)
 
                 if all(isinstance(member, NoDiffMember) for member in diff_list):
-                    return NoDiffMember(self.name)
+                    return NoDiffMember(self.name, self)
 
                 return ContainerMember(self.name, diff_list)
 
@@ -402,6 +410,46 @@ class ArrayMember(ValueMember):
     def get_type(self):
         return self.member_type
 
+    def get_container(self, key_member_name, force=False):
+        """
+        Returns a ContainerMember generated from an array with type ARRAY_CONTAINER.
+        It uses the values of the members with the specified name as keys.
+        By default, this method raises an exception if a member with this
+        name does not exist or the same key is used twice.
+
+        :param key_member_name: A member in the containers whos value is used as the key.
+        :type key_member_name: str
+        :param force: Do not raise an exception if the member is not found or the same
+                      key value is used twice.
+        :type force: bool
+        """
+        if self.get_type() is not MemberTypes.ARRAY_CONTAINER:
+            raise Exception("%s: Container can only be generated from arrays with"
+                            " type 'contarray', not %s"
+                            % (self, self.get_type()))
+
+        member_dict = {}
+        for container in self.value:
+            if key_member_name not in container.get_value().keys():
+                if force:
+                    continue
+
+                raise Exception("%s: Container %s has no member called %s"
+                                % (self, container, key_member_name))
+
+            key_member_value = container[key_member_name].get_value()
+
+            if key_member_value in member_dict.keys():
+                if force:
+                    continue
+
+                raise Exception("%s: Container %s has no member called %s"
+                                % (self, container, key_member_name))
+
+            member_dict.update({key_member_value: container})
+
+        return ContainerMember(self.name, member_dict)
+
     def diff(self, other):
         if self.get_type() == other.get_type():
             diff_list = []
@@ -431,7 +479,7 @@ class ArrayMember(ValueMember):
                     index += 1
 
             if all(isinstance(member, NoDiffMember) for member in diff_list):
-                return NoDiffMember(self.name)
+                return NoDiffMember(self.name, self)
 
             return ArrayMember(self.name, self._allowed_member_type, diff_list)
 
@@ -457,6 +505,21 @@ class NoDiffMember(ValueMember):
     Is returned when no difference between two members is found.
     """
 
+    def __init__(self, name, value):
+        """
+        :param value: Reference to the one of the diffed members.
+        :type value: ValueMember
+        """
+        super().__init__(name)
+
+        self.value = value
+
+    def get_reference(self):
+        """
+        Returns the reference to the diffed object.
+        """
+        return self.value
+
     def __repr__(self):
         return "NoDiffMember<%s>" % (self.name)
 
@@ -469,13 +532,17 @@ class LeftMissingMember(ValueMember):
     """
 
     def __init__(self, name, value):
+        """
+        :param value: Reference to the right member's object.
+        :type value: ValueMember
+        """
         super().__init__(name)
 
         self.value = value
 
-    def get_value(self):
+    def get_reference(self):
         """
-        Returns the value of a member.
+        Returns the reference to the diffed object.
         """
         return self.value
 
@@ -491,13 +558,17 @@ class RightMissingMember(ValueMember):
     """
 
     def __init__(self, name, value):
+        """
+        :param value: Reference to the left member's object.
+        :type value: ValueMember
+        """
         super().__init__(name)
 
         self.value = value
 
-    def get_value(self):
+    def get_reference(self):
         """
-        Returns the value of a member.
+        Returns the reference to the diffed object.
         """
         return self.value
 
