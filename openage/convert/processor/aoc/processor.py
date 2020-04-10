@@ -172,6 +172,16 @@ class AoCProcessor:
             unit_id = raw_unit.get_value()["id0"].get_value()
             unit_members = raw_unit.get_value()
 
+            # Turn attack and armor into containers to make diffing work
+            if "attacks" in unit_members.keys():
+                attacks_member = unit_members.pop("attacks")
+                attacks_member = attacks_member.get_container("type_id")
+                armors_member = unit_members.pop("armors")
+                armors_member = armors_member.get_container("type_id")
+
+                unit_members.update({"attacks": attacks_member})
+                unit_members.update({"armors": armors_member})
+
             unit = GenieUnitObject(unit_id, full_data_set, members=unit_members)
             full_data_set.genie_units.update({unit.get_id(): unit})
 

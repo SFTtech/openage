@@ -34,13 +34,13 @@ class AoCEffectResistanceSubprocessor:
 
         attacks = current_unit["attacks"].get_value()
 
-        for attack in attacks:
+        for attack in attacks.values():
             armor_class = attack["type_id"].get_value()
             attack_amount = attack["amount"].get_value()
             class_name = ARMOR_CLASS_LOOKUPS[armor_class]
 
-            attack_name = "%s.%s" % (ability_ref, class_name)
-            attack_raw_api_object = RawAPIObject(attack_name,
+            attack_ref = "%s.%s" % (ability_ref, class_name)
+            attack_raw_api_object = RawAPIObject(attack_ref,
                                                  class_name,
                                                  dataset.nyan_api_objects)
             attack_raw_api_object.add_raw_parent(attack_parent)
@@ -68,7 +68,7 @@ class AoCEffectResistanceSubprocessor:
             amount_name = "%s.%s.ChangeAmount" % (ability_ref, class_name)
             amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-            amount_location = ExpectedPointer(line, attack_name)
+            amount_location = ExpectedPointer(line, attack_ref)
             amount_raw_api_object.set_location(amount_location)
 
             attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -92,7 +92,7 @@ class AoCEffectResistanceSubprocessor:
                                                  effect_parent)
 
             line.add_raw_api_object(attack_raw_api_object)
-            attack_expected_pointer = ExpectedPointer(line, attack_name)
+            attack_expected_pointer = ExpectedPointer(line, attack_ref)
             effects.append(attack_expected_pointer)
 
         # Fallback effect
@@ -134,8 +134,8 @@ class AoCEffectResistanceSubprocessor:
             # Return the empty set
             return effects
 
-        convert_name = "%s.ConvertEffect" % (ability_ref)
-        convert_raw_api_object = RawAPIObject(convert_name,
+        convert_ref = "%s.ConvertEffect" % (ability_ref)
+        convert_raw_api_object = RawAPIObject(convert_ref,
                                               "ConvertEffect",
                                               dataset.nyan_api_objects)
         convert_raw_api_object.add_raw_parent(convert_parent)
@@ -171,7 +171,7 @@ class AoCEffectResistanceSubprocessor:
                                               convert_parent)
 
         line.add_raw_api_object(convert_raw_api_object)
-        attack_expected_pointer = ExpectedPointer(line, convert_name)
+        attack_expected_pointer = ExpectedPointer(line, convert_ref)
         effects.append(attack_expected_pointer)
 
         return effects
@@ -213,8 +213,8 @@ class AoCEffectResistanceSubprocessor:
 
         heal_rate = heal_command.get_value()["work_value1"].get_value()
 
-        heal_name = "%s.HealEffect" % (ability_ref)
-        heal_raw_api_object = RawAPIObject(heal_name,
+        heal_ref = "%s.HealEffect" % (ability_ref)
+        heal_raw_api_object = RawAPIObject(heal_ref,
                                            "HealEffect",
                                            dataset.nyan_api_objects)
         heal_raw_api_object.add_raw_parent(attack_parent)
@@ -242,7 +242,7 @@ class AoCEffectResistanceSubprocessor:
         rate_name = "%s.Heal.ChangeRate" % (ability_ref)
         rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
-        rate_location = ExpectedPointer(line, heal_name)
+        rate_location = ExpectedPointer(line, heal_ref)
         rate_raw_api_object.set_location(rate_location)
 
         attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -266,7 +266,7 @@ class AoCEffectResistanceSubprocessor:
                                            effect_parent)
 
         line.add_raw_api_object(heal_raw_api_object)
-        heal_expected_pointer = ExpectedPointer(line, heal_name)
+        heal_expected_pointer = ExpectedPointer(line, heal_ref)
         effects.append(heal_expected_pointer)
 
         return effects
@@ -297,15 +297,15 @@ class AoCEffectResistanceSubprocessor:
 
         else:
             # TODO: Trees and blast defense
-            armors = []
+            armors = {}
 
-        for armor in armors:
+        for armor in armors.values():
             armor_class = armor["type_id"].get_value()
             armor_amount = armor["amount"].get_value()
             class_name = ARMOR_CLASS_LOOKUPS[armor_class]
 
-            armor_name = "%s.%s" % (ability_ref, class_name)
-            armor_raw_api_object = RawAPIObject(armor_name, class_name, dataset.nyan_api_objects)
+            armor_ref = "%s.%s" % (ability_ref, class_name)
+            armor_raw_api_object = RawAPIObject(armor_ref, class_name, dataset.nyan_api_objects)
             armor_raw_api_object.add_raw_parent(armor_parent)
             armor_location = ExpectedPointer(line, ability_ref)
             armor_raw_api_object.set_location(armor_location)
@@ -322,7 +322,7 @@ class AoCEffectResistanceSubprocessor:
             amount_name = "%s.%s.BlockAmount" % (ability_ref, class_name)
             amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-            amount_location = ExpectedPointer(line, armor_name)
+            amount_location = ExpectedPointer(line, armor_ref)
             amount_raw_api_object.set_location(amount_location)
 
             attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -341,7 +341,7 @@ class AoCEffectResistanceSubprocessor:
                                                 resistance_parent)
 
             line.add_raw_api_object(armor_raw_api_object)
-            armor_expected_pointer = ExpectedPointer(line, armor_name)
+            armor_expected_pointer = ExpectedPointer(line, armor_ref)
             resistances.append(armor_expected_pointer)
 
         # TODO: Fallback type

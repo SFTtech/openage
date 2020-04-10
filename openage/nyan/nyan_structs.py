@@ -972,8 +972,8 @@ class NyanPatchMember(NyanMember):
         """
         # member must exist in the patch target
         if not self._patch_target.has_member(name, origin):
-            raise Exception("%s: patch target does not have a member % with origin %s"
-                            % (self, name, origin))
+            raise Exception("patch target does not have a member % with origin %s"
+                            % (name, origin))
 
         target_member = self._patch_target.get_member_by_name(name, origin)
 

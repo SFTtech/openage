@@ -136,7 +136,7 @@ TECH_GROUP_LOOKUPS = {
     22: ("Loom", "loom"),
     23: ("Coinage", "coinage"),
     24: ("GarlandWars", "garland_wars"),
-    27: ("WarElephant", "war_elephant"),
+    27: ("ElitePlumedArcher", "elite_plumed_archer"),
     34: ("WarGalley", "war_galley"),
     35: ("Galleon", "galleon"),
     37: ("CannonGalleon", "cannon_galleon"),

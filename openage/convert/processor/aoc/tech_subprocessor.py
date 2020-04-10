@@ -4,6 +4,7 @@
 Creates patches for technologies.
 """
 from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgradeAbilitySubprocessor
+from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
 
 
 class AoCTechSubprocessor:
@@ -32,19 +33,53 @@ class AoCTechSubprocessor:
         dataset = tech_group.data
 
         upgrade_source_id = effect["attr_a"].get_value()
-        if upgrade_source_id not in dataset.unit_ref.keys():
+        upgrade_target_id = effect["attr_b"].get_value()
+
+        if upgrade_source_id not in dataset.unit_ref.keys() or\
+                upgrade_target_id not in dataset.unit_ref.keys():
+            # Skip annexes or transform units
             return patches
 
         line = dataset.unit_ref[upgrade_source_id]
-        upgrade_source = line.line[line.get_unit_position(upgrade_source_id)]
-        upgrade_target_id = effect["attr_b"].get_value()
-        if upgrade_target_id not in dataset.unit_ref.keys():
+        upgrade_source_pos = line.get_unit_position(upgrade_source_id)
+        upgrade_target_pos = line.get_unit_position(upgrade_target_id)
+
+        if upgrade_target_pos - upgrade_source_pos != 1:
+            # Skip effects that upgrades entities not next to each other in
+            # the line. This is not used in the games anyway and we would handle
+            # it differently.
             return patches
 
-        upgrade_target = line.line[line.get_unit_position(upgrade_target_id)]
+        upgrade_source = line.line[upgrade_source_pos]
+        upgrade_target = line.line[upgrade_target_pos]
 
         diff = upgrade_source.diff(upgrade_target)
 
+        patches.extend(AoCUgradeAbilitySubprocessor.death_ability(tech_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.despawn_ability(tech_group, line, diff))
         patches.extend(AoCUgradeAbilitySubprocessor.idle_ability(tech_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.live_ability(tech_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.los_ability(tech_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.selectable_ability(tech_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.turn_ability(tech_group, line, diff))
+
+        if line.is_projectile_shooter():
+            patches.extend(AoCUgradeAbilitySubprocessor.shoot_projectile_ability(tech_group, line,
+                                                                                 upgrade_source,
+                                                                                 upgrade_target,
+                                                                                 7, diff))
+        elif line.is_melee() or line.is_ranged():
+            if line.has_command(7):
+                # Attack
+                patches.extend(AoCUgradeAbilitySubprocessor.apply_discrete_effect_ability(tech_group,
+                                                                                          line,
+                                                                                          7,
+                                                                                          line.is_ranged(),
+                                                                                          diff))
+
+            # TODO: Other commands
+
+        if isinstance(line, GenieUnitLineGroup):
+            patches.extend(AoCUgradeAbilitySubprocessor.move_ability(tech_group, line, diff))
 
         return patches

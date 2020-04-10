@@ -10,4 +10,5 @@ add_py_modules(
 	processor.py
 	tech_subprocessor.py
 	upgrade_ability_subprocessor.py
+	upgrade_effect_subprocessor.py
 )

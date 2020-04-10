@@ -19,6 +19,7 @@ from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUP
 from openage.util.ordered_set import OrderedSet
 from openage.convert.processor.aoc.effect_resistance_subprocessor import AoCEffectResistanceSubprocessor
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
+from math import degrees
 
 
 class AoCAbilitySubprocessor:
@@ -1650,33 +1651,18 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
-    def move_ability(line, projectile=-1):
+    def move_ability(line):
         """
-        Adds the Move ability to a line or to a projectile of that line.
+        Adds the Move ability to a line.
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
         dataset = line.data
-
-        if projectile == -1:
-            current_unit = line.get_head_unit()
-            current_unit_id = line.get_head_unit_id()
-
-        elif projectile == 0:
-            current_unit_id = line.get_head_unit_id()
-            projectile_id = line.get_head_unit()["attack_projectile_primary_unit_id"].get_value()
-            current_unit = dataset.genie_units[projectile_id]
-
-        elif projectile == 1:
-            current_unit_id = line.get_head_unit_id()
-            projectile_id = line.get_head_unit()["attack_projectile_secondary_unit_id"].get_value()
-            current_unit = dataset.genie_units[projectile_id]
-
-        else:
-            raise Exception("Invalid projectile number: %s" % (projectile))
 
         if isinstance(line, GenieBuildingLineGroup):
             name_lookup_dict = BUILDING_LINE_LOOKUPS
@@ -1686,21 +1672,11 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        if projectile == -1:
-            ability_ref = "%s.Move" % (game_entity_name)
-            ability_raw_api_object = RawAPIObject(ability_ref, "Move", dataset.nyan_api_objects)
-            ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
-            ability_location = ExpectedPointer(line, game_entity_name)
-            ability_raw_api_object.set_location(ability_location)
-
-        else:
-            ability_ref = "Projectile%s.Move" % (projectile)
-            ability_raw_api_object = RawAPIObject(ability_ref, "Move", dataset.nyan_api_objects)
-            ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
-            ability_location = ExpectedPointer(line,
-                                               "%s.ShootProjectile.Projectile%s"
-                                               % (game_entity_name, projectile))
-            ability_raw_api_object.set_location(ability_location)
+        ability_ref = "%s.Move" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Move", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
 
         # Animation
         ability_animation_id = current_unit.get_member("move_graphics").get_value()
@@ -1710,13 +1686,8 @@ class AoCAbilitySubprocessor:
 
             animations_set = []
 
-            if projectile == -1:
-                animation_obj_prefix = "Move"
-                animation_filename_prefix = "move_"
-
-            else:
-                animation_obj_prefix = "ProjectileFly"
-                animation_filename_prefix = "projectile_fly_"
+            animation_obj_prefix = "Move"
+            animation_filename_prefix = "move_"
 
             animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
                                                                                   ability_animation_id,
@@ -1735,11 +1706,7 @@ class AoCAbilitySubprocessor:
 
             sounds_set = []
 
-            if projectile == -1:
-                sound_obj_prefix = "Move"
-
-            else:
-                sound_obj_prefix = "ProjectileFly"
+            sound_obj_prefix = "Move"
 
             sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
                                                                           ability_comm_sound_id,
@@ -1754,38 +1721,108 @@ class AoCAbilitySubprocessor:
         speed = current_unit.get_member("speed").get_value()
         ability_raw_api_object.add_raw_member("speed", speed, "engine.ability.type.Move")
 
-        if projectile == -1:
-            # Standard move modes
-            move_modes = [dataset.nyan_api_objects["engine.aux.move_mode.type.AttackMove"],
-                          dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"],
-                          dataset.nyan_api_objects["engine.aux.move_mode.type.Patrol"]]
+        # Standard move modes
+        move_modes = [dataset.nyan_api_objects["engine.aux.move_mode.type.AttackMove"],
+                      dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"],
+                      dataset.nyan_api_objects["engine.aux.move_mode.type.Patrol"]]
 
-            # Follow
-            ability_ref = "%s.Move.Follow" % (game_entity_name)
-            follow_raw_api_object = RawAPIObject(ability_ref, "Follow", dataset.nyan_api_objects)
-            follow_raw_api_object.add_raw_parent("engine.aux.move_mode.type.Follow")
-            follow_location = ExpectedPointer(line, "%s.Move" % (game_entity_name))
-            follow_raw_api_object.set_location(follow_location)
+        # Follow
+        ability_ref = "%s.Move.Follow" % (game_entity_name)
+        follow_raw_api_object = RawAPIObject(ability_ref, "Follow", dataset.nyan_api_objects)
+        follow_raw_api_object.add_raw_parent("engine.aux.move_mode.type.Follow")
+        follow_location = ExpectedPointer(line, "%s.Move" % (game_entity_name))
+        follow_raw_api_object.set_location(follow_location)
 
-            follow_range = current_unit.get_member("line_of_sight").get_value() - 1
-            follow_raw_api_object.add_raw_member("range", follow_range,
-                                                 "engine.aux.move_mode.type.Follow")
+        follow_range = current_unit.get_member("line_of_sight").get_value() - 1
+        follow_raw_api_object.add_raw_member("range", follow_range,
+                                             "engine.aux.move_mode.type.Follow")
 
-            line.add_raw_api_object(follow_raw_api_object)
-            follow_expected_pointer = ExpectedPointer(line, follow_raw_api_object.get_id())
-            move_modes.append(follow_expected_pointer)
-
-        else:
-            move_modes = [dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"], ]
+        line.add_raw_api_object(follow_raw_api_object)
+        follow_expected_pointer = ExpectedPointer(line, follow_raw_api_object.get_id())
+        move_modes.append(follow_expected_pointer)
 
         ability_raw_api_object.add_raw_member("modes", move_modes, "engine.ability.type.Move")
 
         # Diplomacy settings
-        if projectile == -1:
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
-            diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
-            ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
-                                                  "engine.ability.specialization.DiplomaticAbility")
+        ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+        diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+        ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
+                                              "engine.ability.specialization.DiplomaticAbility")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def move_projectile_ability(line, position=-1):
+        """
+        Adds the Move ability to a projectile of the specified line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        dataset = line.data
+
+        if position == 0:
+            current_unit_id = line.get_head_unit_id()
+            projectile_id = line.get_head_unit()["attack_projectile_primary_unit_id"].get_value()
+            current_unit = dataset.genie_units[projectile_id]
+
+        elif position == 1:
+            current_unit_id = line.get_head_unit_id()
+            projectile_id = line.get_head_unit()["attack_projectile_secondary_unit_id"].get_value()
+            current_unit = dataset.genie_units[projectile_id]
+
+        else:
+            raise Exception("Invalid projectile number: %s" % (position))
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_ref = "Projectile%s.Move" % (position)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Move", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
+        ability_location = ExpectedPointer(line,
+                                           "%s.ShootProjectile.Projectile%s"
+                                           % (game_entity_name, position))
+        ability_raw_api_object.set_location(ability_location)
+
+        # Animation
+        ability_animation_id = current_unit.get_member("move_graphics").get_value()
+        if ability_animation_id > -1:
+            # Make the ability animated
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+
+            animations_set = []
+
+            animation_obj_prefix = "ProjectileFly"
+            animation_filename_prefix = "projectile_fly_"
+
+            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                  ability_animation_id,
+                                                                                  ability_ref,
+                                                                                  animation_obj_prefix,
+                                                                                  animation_filename_prefix)
+            animations_set.append(animation_expected_pointer)
+            ability_raw_api_object.add_raw_member("animations", animations_set,
+                                                  "engine.ability.specialization.AnimatedAbility")
+
+        # Speed
+        speed = current_unit.get_member("speed").get_value()
+        ability_raw_api_object.add_raw_member("speed", speed, "engine.ability.type.Move")
+
+        # Move modes
+        move_modes = [dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"], ]
+        ability_raw_api_object.add_raw_member("modes", move_modes, "engine.ability.type.Move")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -2818,11 +2855,21 @@ class AoCAbilitySubprocessor:
         min_projectiles = current_unit.get_member("attack_projectile_count").get_value()
         max_projectiles = current_unit.get_member("attack_projectile_max_count").get_value()
 
-        # Special case where only the second projectile is defined (town center)
-        # The min/max projectile count is lowered by 1 in this case
         if projectile_primary == -1:
+            # Special case where only the second projectile is defined (town center)
+            # The min/max projectile count is lowered by 1 in this case
             min_projectiles -= 1
             max_projectiles -= 1
+
+        elif min_projectiles == 0 and max_projectiles == 0:
+            # If there's a primary projectile defined, but these values are 0,
+            # the game still fires a projectile on attack.
+            min_projectiles += 1
+            max_projectiles += 1
+
+        if current_unit_id == 236:
+            # Bombard Tower (gets treated like a tower for max projectiles)
+            max_projectiles = 5
 
         ability_raw_api_object.add_raw_member("min_projectiles",
                                               min_projectiles,
@@ -3211,9 +3258,9 @@ class AoCAbilitySubprocessor:
         turn_speed = MemberSpecialValue.NYAN_INF
 
         # Ships/Trebuchets turn slower
-        if turn_speed_unmodified >= 0:
-            # TODO: Calculate this
-            pass
+        if turn_speed_unmodified > 0:
+            turn_yaw = current_unit.get_member("max_yaw_per_sec_moving").get_value()
+            turn_speed = degrees(turn_yaw)
 
         ability_raw_api_object.add_raw_member("turn_speed", turn_speed, "engine.ability.type.Turn")
 

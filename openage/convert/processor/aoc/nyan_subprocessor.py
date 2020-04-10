@@ -788,7 +788,7 @@ class AoCNyanSubprocessor:
             # =======================================================================
             abilities_set = []
             abilities_set.append(AoCAbilitySubprocessor.projectile_ability(line, position=projectile_num))
-            abilities_set.append(AoCAbilitySubprocessor.move_ability(line, projectile=projectile_num))
+            abilities_set.append(AoCAbilitySubprocessor.move_projectile_ability(line, position=projectile_num))
             # TODO: Attack, Death, Despawn
             proj_raw_api_object.add_raw_member("abilities", abilities_set, "engine.aux.game_entity.GameEntity")
 

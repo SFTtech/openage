@@ -323,24 +323,30 @@ class ContainerMember(ValueMember):
 
     def diff(self, other):
         if self.get_type() is other.get_type():
-            if len(self) == len(other):
-                diff_list = list()
+            diff_dict = {}
 
-                other_dict = other.get_value()
+            other_dict = other.get_value()
 
-                for key in self.value.keys():
+            for key in self.value.keys():
+                if key in other.value.keys():
                     diff_value = self.value[key].diff(other_dict[key])
 
-                    diff_list.append(diff_value)
+                else:
+                    # Key is missing in other dict
+                    diff_value = RightMissingMember(self.name, self)
 
-                if all(isinstance(member, NoDiffMember) for member in diff_list):
-                    return NoDiffMember(self.name, self)
+                diff_dict.update({key: diff_value})
 
-                return ContainerMember(self.name, diff_list)
+            for key in other.value.keys():
+                if key not in self.value.keys():
+                    # Key is missing in this dict
+                    diff_value = LeftMissingMember(other.name, other)
+                    diff_dict.update({key: diff_value})
 
-            else:
-                raise Exception(
-                    "ContainerMembers must have same length for diff")
+            if all(isinstance(member, NoDiffMember) for member in diff_dict.values()):
+                return NoDiffMember(self.name, self)
+
+            return ContainerMember(self.name, diff_dict)
 
         else:
             raise Exception(
@@ -410,7 +416,7 @@ class ArrayMember(ValueMember):
     def get_type(self):
         return self.member_type
 
-    def get_container(self, key_member_name, force=False):
+    def get_container(self, key_member_name, force_not_found= False, force_duplicate=False):
         """
         Returns a ContainerMember generated from an array with type ARRAY_CONTAINER.
         It uses the values of the members with the specified name as keys.
@@ -419,9 +425,10 @@ class ArrayMember(ValueMember):
 
         :param key_member_name: A member in the containers whos value is used as the key.
         :type key_member_name: str
-        :param force: Do not raise an exception if the member is not found or the same
-                      key value is used twice.
-        :type force: bool
+        :param force_not_found: Do not raise an exception if the member is not found.
+        :type force_not_found: bool
+        :param force_duplicate: Do not raise an exception if the same key value is used twice.
+        :type force_duplicate: bool
         """
         if self.get_type() is not MemberTypes.ARRAY_CONTAINER:
             raise Exception("%s: Container can only be generated from arrays with"
@@ -431,7 +438,7 @@ class ArrayMember(ValueMember):
         member_dict = {}
         for container in self.value:
             if key_member_name not in container.get_value().keys():
-                if force:
+                if force_not_found:
                     continue
 
                 raise Exception("%s: Container %s has no member called %s"
@@ -440,11 +447,11 @@ class ArrayMember(ValueMember):
             key_member_value = container[key_member_name].get_value()
 
             if key_member_value in member_dict.keys():
-                if force:
+                if force_duplicate:
                     continue
 
-                raise Exception("%s: Container %s has no member called %s"
-                                % (self, container, key_member_name))
+                raise Exception("%s: Duplicate key %s for container member %s"
+                                % (self, key_member_value, key_member_name))
 
             member_dict.update({key_member_value: container})
 
