@@ -560,7 +560,7 @@ class NyanMember:
         if operator:
             operator = MemberOperator(operator)   # operator type
 
-        if value:
+        if value is not None:
             self.set_value(value, operator)
 
         # check for errors in the initilization
@@ -972,7 +972,7 @@ class NyanPatchMember(NyanMember):
         """
         # member must exist in the patch target
         if not self._patch_target.has_member(name, origin):
-            raise Exception("patch target does not have a member % with origin %s"
+            raise Exception("patch target does not have a member %s with origin %s"
                             % (name, origin))
 
         target_member = self._patch_target.get_member_by_name(name, origin)

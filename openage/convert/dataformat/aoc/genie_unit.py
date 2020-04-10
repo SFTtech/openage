@@ -827,6 +827,13 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         # List of buildings that units can create
         self.creates = []
 
+    def contains_entity(self, unit_id):
+        for task_group in self.variants:
+            if task_group.contains_entity(unit_id):
+                return True
+
+        return False
+
     def has_command(self, command_id):
         for variant in self.variants:
             for genie_unit in variant.line:

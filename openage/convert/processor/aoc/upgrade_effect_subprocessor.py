@@ -155,7 +155,7 @@ class AoCUpgradeEffectSubprocessor:
 
                 class_name = ARMOR_CLASS_LOOKUPS[armor_class]
 
-                patch_target_ref = "%s.%s.ChangeAmount" % (ability_ref, class_name)
+                patch_target_ref = "%s.%s.BlockAmount" % (ability_ref, class_name)
                 patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
 
                 # Wrapper
