@@ -119,7 +119,7 @@ class AoCUpgradeEffectSubprocessor:
         :type diff: ...dataformat.converter_object.ConverterObject
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The expected pointers for the resistances.
         :rtype: list
         """
         tech_id = tech_group.get_id()

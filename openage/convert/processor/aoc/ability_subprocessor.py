@@ -1620,10 +1620,12 @@ class AoCAbilitySubprocessor:
 
         attributes_set = []
 
-        ability_ref = "%s.Live.Health" % (game_entity_name)
-        health_raw_api_object = RawAPIObject(ability_ref, "Health", dataset.nyan_api_objects)
+        # Health
+        # =======================================================================================
+        health_ref = "%s.Live.Health" % (game_entity_name)
+        health_raw_api_object = RawAPIObject(health_ref, "Health", dataset.nyan_api_objects)
         health_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeSetting")
-        health_location = ExpectedPointer(line, "%s.Live" % (game_entity_name))
+        health_location = ExpectedPointer(line, ability_ref)
         health_raw_api_object.set_location(health_location)
 
         attribute_value = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -1631,22 +1633,58 @@ class AoCAbilitySubprocessor:
                                              "engine.aux.attribute.AttributeSetting")
 
         # Lowest HP can go
-        health_raw_api_object.add_raw_member("min_value", -1,
+        health_raw_api_object.add_raw_member("min_value",
+                                             0,
                                              "engine.aux.attribute.AttributeSetting")
 
         # Max HP and starting HP
         max_hp_value = current_unit.get_member("hit_points").get_value()
-        health_raw_api_object.add_raw_member("max_value", max_hp_value,
+        health_raw_api_object.add_raw_member("max_value",
+                                             max_hp_value,
                                              "engine.aux.attribute.AttributeSetting")
-        health_raw_api_object.add_raw_member("starting_value", max_hp_value,
+        health_raw_api_object.add_raw_member("starting_value",
+                                             max_hp_value,
                                              "engine.aux.attribute.AttributeSetting")
 
+        line.add_raw_api_object(health_raw_api_object)
+
+        # =======================================================================================
         health_expected_pointer = ExpectedPointer(line, health_raw_api_object.get_id())
         attributes_set.append(health_expected_pointer)
+
+        if current_unit_id == 125:
+            # Faith (only monk)
+            faith_ref = "%s.Live.Faith" % (game_entity_name)
+            faith_raw_api_object = RawAPIObject(faith_ref, "Faith", dataset.nyan_api_objects)
+            faith_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeSetting")
+            faith_location = ExpectedPointer(line, ability_ref)
+            faith_raw_api_object.set_location(faith_location)
+
+            attribute_value = dataset.pregen_nyan_objects["aux.attribute.types.Faith"].get_nyan_object()
+            faith_raw_api_object.add_raw_member("attribute", attribute_value,
+                                                "engine.aux.attribute.AttributeSetting")
+
+            # Lowest faith can go
+            faith_raw_api_object.add_raw_member("min_value",
+                                                0,
+                                                "engine.aux.attribute.AttributeSetting")
+
+            # Max faith and starting faith
+            faith_raw_api_object.add_raw_member("max_value",
+                                                100,
+                                                "engine.aux.attribute.AttributeSetting")
+            faith_raw_api_object.add_raw_member("starting_value",
+                                                100,
+                                                "engine.aux.attribute.AttributeSetting")
+
+            line.add_raw_api_object(faith_raw_api_object)
+
+            faith_expected_pointer = ExpectedPointer(line, faith_ref)
+            attributes_set.append(faith_expected_pointer)
+
         ability_raw_api_object.add_raw_member("attributes", attributes_set,
                                               "engine.ability.type.Live")
 
-        line.add_raw_api_object(health_raw_api_object)
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
@@ -2374,10 +2412,83 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The expected pointers for the ability.
+        :rtype: list
         """
-        # TODO: Implement
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        attribute = None
+        attribute_name = ""
+        if current_unit_id == 125:
+            # Monk; regenerates Faith
+            attribute = dataset.pregen_nyan_objects["aux.attribute.types.Faith"].get_nyan_object()
+            attribute_name = "Faith"
+
+        elif current_unit_id == 692:
+            # Berserk: regenerates Health
+            attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
+            attribute_name = "Health"
+
+        else:
+            return []
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_name = "Regenerate%s" % (attribute_name)
+        ability_ref = "%s.%s" % (game_entity_name, ability_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.RegenerateAttribute")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Attribute rate
+        # ===============================================================================
+        rate_name = "%sRate" % (attribute_name)
+        rate_ref = "%s.%s.%s" % (game_entity_name, ability_name, rate_name)
+        rate_raw_api_object = RawAPIObject(rate_ref, rate_name, dataset.nyan_api_objects)
+        rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
+        rate_location = ExpectedPointer(line, ability_ref)
+        rate_raw_api_object.set_location(rate_location)
+
+        # Attribute
+        rate_raw_api_object.add_raw_member("type",
+                                           attribute,
+                                           "engine.aux.attribute.AttributeRate")
+
+        # Rate
+        attribute_rate = 0
+        if current_unit_id == 125:
+            # stored in civ resources
+            attribute_rate = dataset.genie_civs[0]["resources"][35].get_value()
+
+        elif current_unit_id == 692:
+            # stored in civ resources, but has to get converted to amount/second
+            heal_timer = dataset.genie_civs[0]["resources"][96].get_value()
+            attribute_rate = 1 / heal_timer
+
+        rate_raw_api_object.add_raw_member("rate",
+                                           attribute_rate,
+                                           "engine.aux.attribute.AttributeRate")
+
+        line.add_raw_api_object(rate_raw_api_object)
+        # ===============================================================================
+        rate_expected_pointer = ExpectedPointer(line, rate_ref)
+        ability_raw_api_object.add_raw_member("rate",
+                                              rate_expected_pointer,
+                                              "engine.ability.type.RegenerateAttribute")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return [ability_expected_pointer]
 
     @staticmethod
     def regenerate_resource_spot_ability(line):
@@ -2389,7 +2500,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        # TODO: Implement
+        # TODO: Unused in AoC?
 
     @staticmethod
     def remove_storage_ability(line):

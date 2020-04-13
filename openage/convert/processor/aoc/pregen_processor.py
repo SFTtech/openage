@@ -865,7 +865,7 @@ class AoCPregenSubprocessor:
         # sidenote: Apparently this is actually HP<1 in Genie
         # (https://youtu.be/FdBk8zGbE7U?t=7m16s)
         literal_raw_api_object.add_raw_member("threshold",
-                                              0,
+                                              1,
                                               interval_parent)
 
         pregen_converter_group.add_raw_api_object(literal_raw_api_object)

@@ -162,12 +162,18 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.turn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(unit_line))
 
+        # Creation
         if len(unit_line.creates) > 0:
             abilities_set.append(AoCAbilitySubprocessor.create_ability(unit_line))
 
+        # Config
         ability = AoCAbilitySubprocessor.use_contingent_ability(unit_line)
         if ability:
             abilities_set.append(ability)
+
+        if unit_line.get_head_unit_id() in (125, 692):
+            # Healing/Recharging attribute points (monks, berserks)
+            abilities_set.extend(AoCAbilitySubprocessor.regenerate_attribute_ability(unit_line))
 
         # Applying effects and shooting projectiles
         if unit_line.is_projectile_shooter():
