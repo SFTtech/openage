@@ -4,7 +4,7 @@
 Export data from a modpack to files.
 """
 from openage.convert.dataformat.media_types import MediaType
-from bin.openage.convert import game_versions
+from openage.convert import game_versions
 
 from ...log import info
 
