@@ -131,8 +131,8 @@ class AoCAbilitySubprocessor:
             allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
 
         elif command_id == 106:
-            # TODO: Repair
-            effects = []
+            # Repair
+            effects = AoCEffectResistanceSubprocessor.get_repair_effects(line, ability_ref)
             allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
 
         ability_raw_api_object.add_raw_member("effects",

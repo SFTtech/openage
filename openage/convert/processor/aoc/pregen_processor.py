@@ -10,7 +10,9 @@ from openage.convert.dataformat.converter_object import RawAPIObject,\
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.internal_nyan_names import CLASS_ID_LOOKUPS,\
-    ARMOR_CLASS_LOOKUPS, TERRAIN_TYPE_LOOKUPS
+    ARMOR_CLASS_LOOKUPS, TERRAIN_TYPE_LOOKUPS, BUILDING_LINE_LOOKUPS,\
+    UNIT_LINE_LOOKUPS
+from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
 
 
 class AoCPregenSubprocessor:
@@ -390,6 +392,57 @@ class AoCPregenSubprocessor:
 
         pregen_converter_group.add_raw_api_object(type_raw_api_object)
         pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
+
+        # =======================================================================
+        # Repair (one for each repairable entity)
+        # =======================================================================
+        repairable_lines = []
+        repairable_lines.extend(full_data_set.building_lines.values())
+        for unit_line in full_data_set.unit_lines.values():
+            if unit_line.get_class_id() in (2, 13, 20, 21, 22, 55):
+                repairable_lines.append(unit_line)
+
+        for repairable_line in repairable_lines:
+            if isinstance(repairable_line, GenieUnitLineGroup):
+                game_entity_name = UNIT_LINE_LOOKUPS[repairable_line.get_head_unit_id()][0]
+
+            else:
+                game_entity_name = BUILDING_LINE_LOOKUPS[repairable_line.get_head_unit_id()][0]
+
+            type_ref_in_modpack = "aux.attribute_change_type.types.%sRepair" % (game_entity_name)
+            type_raw_api_object = RawAPIObject(type_ref_in_modpack,
+                                               "%sRepair" % (game_entity_name),
+                                               api_objects,
+                                               types_location)
+            type_raw_api_object.set_filename("types")
+            type_raw_api_object.add_raw_parent(type_parent)
+
+            pregen_converter_group.add_raw_api_object(type_raw_api_object)
+            pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
+
+        # =======================================================================
+        # Construct (one for each constructable entity)
+        # =======================================================================
+        constructable_lines = []
+        constructable_lines.extend(full_data_set.building_lines.values())
+
+        for constructable_line in constructable_lines:
+            if isinstance(constructable_line, GenieUnitLineGroup):
+                game_entity_name = UNIT_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
+
+            else:
+                game_entity_name = BUILDING_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
+
+            type_ref_in_modpack = "aux.construct_type.types.%sConstruct" % (game_entity_name)
+            type_raw_api_object = RawAPIObject(type_ref_in_modpack,
+                                               "%sConstruct" % (game_entity_name),
+                                               api_objects,
+                                               types_location)
+            type_raw_api_object.set_filename("types")
+            type_raw_api_object.add_raw_parent(type_parent)
+
+            pregen_converter_group.add_raw_api_object(type_raw_api_object)
+            pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
         # =======================================================================
         # ConvertType: Convert

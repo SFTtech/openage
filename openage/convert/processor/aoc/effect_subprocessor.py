@@ -4,9 +4,11 @@
 Creates effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
-from openage.convert.dataformat.aoc.internal_nyan_names import ARMOR_CLASS_LOOKUPS
+from openage.convert.dataformat.aoc.internal_nyan_names import ARMOR_CLASS_LOOKUPS,\
+    UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
 
 
 class AoCEffectResistanceSubprocessor:
@@ -239,7 +241,7 @@ class AoCEffectResistanceSubprocessor:
 
         # Change rate
         # =================================================================================
-        rate_name = "%s.Heal.ChangeRate" % (ability_ref)
+        rate_name = "%s.HealEffect.ChangeRate" % (ability_ref)
         rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
         rate_location = ExpectedPointer(line, heal_ref)
@@ -268,6 +270,97 @@ class AoCEffectResistanceSubprocessor:
         line.add_raw_api_object(heal_raw_api_object)
         heal_expected_pointer = ExpectedPointer(line, heal_ref)
         effects.append(heal_expected_pointer)
+
+        return effects
+
+    @staticmethod
+    def get_repair_effects(line, ability_ref):
+        """
+        Creates effects that are used for repairing (unit command: 106)
+
+        TODO: Cost
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param ability_ref: Reference of the ability raw API object the effects are added to.
+        :type ability_ref: str
+        :returns: The expected pointers for the effects.
+        :rtype: list
+        """
+        dataset = line.data
+
+        effects = []
+
+        effect_parent = "engine.effect.continuous.flat_attribute_change.FlatAttributeChange"
+        attack_parent = "engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
+
+        repairable_lines = []
+        repairable_lines.extend(dataset.building_lines.values())
+        for unit_line in dataset.unit_lines.values():
+            if unit_line.get_class_id() in (2, 13, 20, 21, 22, 55):
+                repairable_lines.append(unit_line)
+
+        for repairable_line in repairable_lines:
+            if isinstance(repairable_line, GenieUnitLineGroup):
+                game_entity_name = UNIT_LINE_LOOKUPS[repairable_line.get_head_unit_id()][0]
+
+            else:
+                game_entity_name = BUILDING_LINE_LOOKUPS[repairable_line.get_head_unit_id()][0]
+
+            repair_name = "%sRepairEffect" % (game_entity_name)
+            repair_ref = "%s.%s" % (ability_ref, repair_name)
+            repair_raw_api_object = RawAPIObject(repair_ref,
+                                                 repair_name,
+                                                 dataset.nyan_api_objects)
+            repair_raw_api_object.add_raw_parent(attack_parent)
+            repair_location = ExpectedPointer(line, ability_ref)
+            repair_raw_api_object.set_location(repair_location)
+
+            # Type
+            type_ref = "aux.attribute_change_type.types.%sRepair" % (game_entity_name)
+            change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+            repair_raw_api_object.add_raw_member("type",
+                                                 change_type,
+                                                 effect_parent)
+
+            # Min value (optional; not added because buildings don't block repairing)
+
+            # Max value (optional; not added because there is none in AoE2)
+
+            # Change rate
+            # =================================================================================
+            rate_name = "%s.%s.ChangeRate" % (ability_ref, repair_name)
+            rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
+            rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
+            rate_location = ExpectedPointer(line, repair_ref)
+            rate_raw_api_object.set_location(rate_location)
+
+            attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
+            rate_raw_api_object.add_raw_member("type",
+                                               attribute,
+                                               "engine.aux.attribute.AttributeRate")
+
+            # Hardcoded repair rate: 750 HP/min = 12.5 HP/s
+            repair_rate = 12.5
+            rate_raw_api_object.add_raw_member("rate",
+                                               repair_rate,
+                                               "engine.aux.attribute.AttributeRate")
+
+            line.add_raw_api_object(rate_raw_api_object)
+            # =================================================================================
+            rate_expected_pointer = ExpectedPointer(line, rate_name)
+            repair_raw_api_object.add_raw_member("change_rate",
+                                                 rate_expected_pointer,
+                                                 effect_parent)
+
+            # Ignore protection
+            repair_raw_api_object.add_raw_member("ignore_protection",
+                                                 [],
+                                                 effect_parent)
+
+            line.add_raw_api_object(repair_raw_api_object)
+            repair_expected_pointer = ExpectedPointer(line, repair_ref)
+            effects.append(repair_expected_pointer)
 
         return effects
 

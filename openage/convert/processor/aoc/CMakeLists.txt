@@ -2,7 +2,7 @@ add_py_modules(
 	__init__.py
 	ability_subprocessor.py
 	auxiliary_subprocessor.py
-	effect_resistance_subprocessor.py
+	effect_subprocessor.py
 	media_subprocessor.py
 	modpack_subprocessor.py
 	nyan_subprocessor.py

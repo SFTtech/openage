@@ -196,6 +196,10 @@ class AoCNyanSubprocessor:
                 abilities_set.append(AoCAbilitySubprocessor.apply_continuous_effect_ability(unit_line,
                                                                                             105,
                                                                                             unit_line.is_ranged()))
+            if unit_line.has_command(106):
+                abilities_set.append(AoCAbilitySubprocessor.apply_continuous_effect_ability(unit_line,
+                                                                                            106,
+                                                                                            unit_line.is_ranged()))
 
         # Storage abilities
         if unit_line.is_garrison():
