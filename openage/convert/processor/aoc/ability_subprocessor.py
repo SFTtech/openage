@@ -25,6 +25,18 @@ from math import degrees
 class AoCAbilitySubprocessor:
 
     @staticmethod
+    def active_transform_to_ability(line):
+        """
+        Adds the ActiveTransformTo ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        # TODO: Implement
+
+    @staticmethod
     def apply_continuous_effect_ability(line, command_id, ranged=False):
         """
         Adds the ApplyContinuousEffect ability to a line.
@@ -865,6 +877,18 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def exchange_resources_ability(line):
+        """
+        Adds the ExchangeResources ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        # TODO: Implement
+
+    @staticmethod
     def exit_container_ability(line):
         """
         Adds the ExitContainer ability to a line.
@@ -922,6 +946,30 @@ class AoCAbilitySubprocessor:
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
 
         return ability_expected_pointer
+
+    @staticmethod
+    def game_entity_stance_ability(line):
+        """
+        Adds the GameEntityStance ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        # TODO: Implement
+
+    @staticmethod
+    def formation_ability(line):
+        """
+        Adds the Formation ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        # TODO: Implement
 
     @staticmethod
     def foundation_ability(line, terrain_id=-1):
@@ -2320,6 +2368,30 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def regenerate_attribute_ability(line):
+        """
+        Adds the RegenerateAttribute ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        # TODO: Implement
+
+    @staticmethod
+    def regenerate_resource_spot_ability(line):
+        """
+        Adds the RegenerateResourceSpot ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        # TODO: Implement
+
+    @staticmethod
     def remove_storage_ability(line):
         """
         Adds the RemoveStorage ability to a line.
@@ -3148,6 +3220,30 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
+    def trade_ability(line):
+        """
+        Adds the Trade ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        # TODO: Implement
+
+    @staticmethod
+    def trade_post_ability(line):
+        """
+        Adds the TradePost ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        # TODO: Implement
+
+    @staticmethod
     def transfer_storage_ability(line):
         """
         Adds the TransferStorage ability to a line.
@@ -3222,6 +3318,18 @@ class AoCAbilitySubprocessor:
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
 
         return ability_expected_pointer
+
+    @staticmethod
+    def transform_ability(line):
+        """
+        Adds the Transform ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        # TODO: Implement
 
     @staticmethod
     def turn_ability(line):

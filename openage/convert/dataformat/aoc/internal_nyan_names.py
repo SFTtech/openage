@@ -191,7 +191,7 @@ TECH_GROUP_LOOKUPS = {
     215: ("Squires", "squires"),
     217: ("TwoHandedSwordsman", "two_handed_swordsman"),
     218: ("HeavyCavalryArcher", "heavy_cavalry_archer"),
-    219: ("RingArcherArmor", "RingArcherArmor"),
+    219: ("RingArcherArmor", "ring_archer_armor"),
     221: ("TwoManSaw", "two_man_saw"),
     222: ("Swordsman", "swordsman"),
     230: ("BlockPrinting", "block_printing"),
