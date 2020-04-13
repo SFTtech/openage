@@ -148,8 +148,6 @@ class AoCAuxiliarySubprocessor:
             # Buildings are created immediately
             creation_time = 0
 
-            # TODO: Construction time effects
-
         creatable_raw_api_object.add_raw_member("creation_time",
                                                 creation_time,
                                                 "engine.aux.create.CreatableGameEntity")

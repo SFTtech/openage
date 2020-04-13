@@ -196,7 +196,7 @@ class AoCEffectResistanceSubprocessor:
         effects = []
 
         effect_parent = "engine.effect.continuous.flat_attribute_change.FlatAttributeChange"
-        attack_parent = "engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
+        heal_parent = "engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
 
         unit_commands = current_unit.get_member("unit_commands").get_value()
         heal_command = None
@@ -219,7 +219,7 @@ class AoCEffectResistanceSubprocessor:
         heal_raw_api_object = RawAPIObject(heal_ref,
                                            "HealEffect",
                                            dataset.nyan_api_objects)
-        heal_raw_api_object.add_raw_parent(attack_parent)
+        heal_raw_api_object.add_raw_parent(heal_parent)
         heal_location = ExpectedPointer(line, ability_ref)
         heal_raw_api_object.set_location(heal_location)
 
@@ -292,7 +292,7 @@ class AoCEffectResistanceSubprocessor:
         effects = []
 
         effect_parent = "engine.effect.continuous.flat_attribute_change.FlatAttributeChange"
-        attack_parent = "engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
+        repair_parent = "engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
 
         repairable_lines = []
         repairable_lines.extend(dataset.building_lines.values())
@@ -312,7 +312,7 @@ class AoCEffectResistanceSubprocessor:
             repair_raw_api_object = RawAPIObject(repair_ref,
                                                  repair_name,
                                                  dataset.nyan_api_objects)
-            repair_raw_api_object.add_raw_parent(attack_parent)
+            repair_raw_api_object.add_raw_parent(repair_parent)
             repair_location = ExpectedPointer(line, ability_ref)
             repair_raw_api_object.set_location(repair_location)
 
@@ -361,6 +361,98 @@ class AoCEffectResistanceSubprocessor:
             line.add_raw_api_object(repair_raw_api_object)
             repair_expected_pointer = ExpectedPointer(line, repair_ref)
             effects.append(repair_expected_pointer)
+
+        return effects
+
+    @staticmethod
+    def get_construct_effects(line, ability_ref):
+        """
+        Creates effects that are used for construction (unit command: 101)
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param ability_ref: Reference of the ability raw API object the effects are added to.
+        :type ability_ref: str
+        :returns: The expected pointers for the effects.
+        :rtype: list
+        """
+        dataset = line.data
+
+        effects = []
+
+        progress_effect_parent = "engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange"
+        progress_construct_parent = "engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressIncrease"
+        attr_effect_parent = "engine.effect.continuous.time_relative_attribute.TimeRelativeAttributeChange"
+        attr_construct_parent = "engine.effect.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease"
+
+        constructable_lines = []
+        constructable_lines.extend(dataset.building_lines.values())
+
+        for constructable_line in constructable_lines:
+            if isinstance(constructable_line, GenieUnitLineGroup):
+                game_entity_name = UNIT_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
+
+            else:
+                game_entity_name = BUILDING_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
+
+            # Construction progress
+            contruct_progress_name = "%sConstructProgressEffect" % (game_entity_name)
+            contruct_progress_ref = "%s.%s" % (ability_ref, contruct_progress_name)
+            contruct_progress_raw_api_object = RawAPIObject(contruct_progress_ref,
+                                                            contruct_progress_name,
+                                                            dataset.nyan_api_objects)
+            contruct_progress_raw_api_object.add_raw_parent(progress_construct_parent)
+            contruct_progress_location = ExpectedPointer(line, ability_ref)
+            contruct_progress_raw_api_object.set_location(contruct_progress_location)
+
+            # Type
+            type_ref = "aux.construct_type.types.%sConstruct" % (game_entity_name)
+            change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+            contruct_progress_raw_api_object.add_raw_member("type",
+                                                            change_type,
+                                                            progress_effect_parent)
+
+            # Total change time
+            change_time = constructable_line.get_head_unit()["creation_time"].get_value()
+            contruct_progress_raw_api_object.add_raw_member("total_change_time",
+                                                            change_time,
+                                                            progress_effect_parent)
+
+            line.add_raw_api_object(contruct_progress_raw_api_object)
+            contruct_progress_expected_pointer = ExpectedPointer(line, contruct_progress_ref)
+            effects.append(contruct_progress_expected_pointer)
+
+            # HP increase during construction
+            contruct_hp_name = "%sConstructHPEffect" % (game_entity_name)
+            contruct_hp_ref = "%s.%s" % (ability_ref, contruct_hp_name)
+            contruct_hp_raw_api_object = RawAPIObject(contruct_hp_ref,
+                                                      contruct_hp_name,
+                                                      dataset.nyan_api_objects)
+            contruct_hp_raw_api_object.add_raw_parent(attr_construct_parent)
+            contruct_hp_location = ExpectedPointer(line, ability_ref)
+            contruct_hp_raw_api_object.set_location(contruct_hp_location)
+
+            # Type
+            type_ref = "aux.attribute_change_type.types.%sConstruct" % (game_entity_name)
+            change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+            contruct_hp_raw_api_object.add_raw_member("type",
+                                                      change_type,
+                                                      attr_effect_parent)
+
+            # Total change time
+            change_time = constructable_line.get_head_unit()["creation_time"].get_value()
+            contruct_hp_raw_api_object.add_raw_member("total_change_time",
+                                                      change_time,
+                                                      attr_effect_parent)
+
+            # Ignore protection
+            contruct_hp_raw_api_object.add_raw_member("ignore_protection",
+                                                      [],
+                                                      attr_effect_parent)
+
+            line.add_raw_api_object(contruct_hp_raw_api_object)
+            contruct_hp_expected_pointer = ExpectedPointer(line, contruct_hp_ref)
+            effects.append(contruct_hp_expected_pointer)
 
         return effects
 

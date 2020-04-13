@@ -1587,43 +1587,43 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.effect.continuous.time_relative_attribute_change.TimeRelativeAttributeChange
+    # engine.effect.continuous.time_relative_attribute.TimeRelativeAttributeChange
     parents = [api_objects["engine.effect.continuous.ContinuousEffect"]]
     nyan_object = NyanObject("TimeRelativeAttributeChange", parents)
-    fqon = "engine.effect.continuous.time_relative_attribute_change.TimeRelativeAttributeChange"
+    fqon = "engine.effect.continuous.time_relative_attribute.TimeRelativeAttributeChange"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.effect.continuous.time_relative_attribute_change.type.TimeRelativeAttributeDecrease
-    parents = [api_objects["engine.effect.continuous.time_relative_attribute_change.TimeRelativeAttributeChange"]]
+    # engine.effect.continuous.time_relative_attribute.type.TimeRelativeAttributeDecrease
+    parents = [api_objects["engine.effect.continuous.time_relative_attribute.TimeRelativeAttributeChange"]]
     nyan_object = NyanObject("TimeRelativeAttributeDecrease", parents)
-    fqon = "engine.effect.continuous.time_relative_attribute_change.type.TimeRelativeAttributeDecrease"
+    fqon = "engine.effect.continuous.time_relative_attribute.type.TimeRelativeAttributeDecrease"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.effect.continuous.time_relative_attribute_change.type.TimeRelativeAttributeIncrease
-    parents = [api_objects["engine.effect.continuous.time_relative_attribute_change.TimeRelativeAttributeChange"]]
+    # engine.effect.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease
+    parents = [api_objects["engine.effect.continuous.time_relative_attribute.TimeRelativeAttributeChange"]]
     nyan_object = NyanObject("TimeRelativeAttributeIncrease", parents)
-    fqon = "engine.effect.continuous.time_relative_attribute_change.type.TimeRelativeAttributeIncrease"
+    fqon = "engine.effect.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange
+    # engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange
     parents = [api_objects["engine.effect.continuous.ContinuousEffect"]]
     nyan_object = NyanObject("TimeRelativeProgressChange", parents)
-    fqon = "engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange"
+    fqon = "engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
     # engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressDecrease
-    parents = [api_objects["engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange"]]
+    parents = [api_objects["engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange"]]
     nyan_object = NyanObject("TimeRelativeProgressDecrease", parents)
     fqon = "engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressDecrease"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
     # engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressIncrease
-    parents = [api_objects["engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange"]]
+    parents = [api_objects["engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange"]]
     nyan_object = NyanObject("TimeRelativeProgressIncrease", parents)
     fqon = "engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressIncrease"
     nyan_object.set_fqon(fqon)
@@ -3544,8 +3544,8 @@ def _insert_members(api_objects):
     member = NyanMember("min_distance_to_destination", MemberType.INT, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.effect.continuous.time_relative_attribute_change.TimeRelativeAttributeChange
-    api_object = api_objects["engine.effect.continuous.time_relative_attribute_change.TimeRelativeAttributeChange"]
+    # engine.effect.continuous.time_relative_attribute.TimeRelativeAttributeChange
+    api_object = api_objects["engine.effect.continuous.time_relative_attribute.TimeRelativeAttributeChange"]
 
     ref_object = api_objects["engine.aux.attribute_change_type.AttributeChangeType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
@@ -3556,8 +3556,8 @@ def _insert_members(api_objects):
     member = NyanMember("ignore_protection", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
-    # engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange
-    api_object = api_objects["engine.effect.continuous.time_relative_progress_change.TimeRelativeProgressChange"]
+    # engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange
+    api_object = api_objects["engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange"]
 
     ref_object = api_objects["engine.aux.progress_type.ProgressType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)

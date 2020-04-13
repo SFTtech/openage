@@ -421,10 +421,31 @@ class AoCPregenSubprocessor:
             pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
         # =======================================================================
-        # Construct (one for each constructable entity)
+        # Construct (two for each constructable entity)
         # =======================================================================
         constructable_lines = []
         constructable_lines.extend(full_data_set.building_lines.values())
+
+        for constructable_line in constructable_lines:
+            if isinstance(constructable_line, GenieUnitLineGroup):
+                game_entity_name = UNIT_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
+
+            else:
+                game_entity_name = BUILDING_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
+
+            type_ref_in_modpack = "aux.attribute_change_type.types.%sConstruct" % (game_entity_name)
+            type_raw_api_object = RawAPIObject(type_ref_in_modpack,
+                                               "%sConstruct" % (game_entity_name),
+                                               api_objects,
+                                               types_location)
+            type_raw_api_object.set_filename("types")
+            type_raw_api_object.add_raw_parent(type_parent)
+
+            pregen_converter_group.add_raw_api_object(type_raw_api_object)
+            pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
+
+        type_parent = "engine.aux.progress_type.type.Construct"
+        types_location = "data/aux/construct_type/"
 
         for constructable_line in constructable_lines:
             if isinstance(constructable_line, GenieUnitLineGroup):

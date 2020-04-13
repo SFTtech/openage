@@ -17,7 +17,7 @@ from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUP
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
     TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, COMMAND_TYPE_LOOKUPS
 from openage.util.ordered_set import OrderedSet
-from openage.convert.processor.aoc.effect_resistance_subprocessor import AoCEffectResistanceSubprocessor
+from openage.convert.processor.aoc.effect_subprocessor import AoCEffectResistanceSubprocessor
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from math import degrees
 
@@ -120,10 +120,9 @@ class AoCAbilitySubprocessor:
 
         # Effects
         if command_id == 101:
-            # TODO: Construct
-            effects = []
-            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
-                             dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+            # Construct
+            effects = AoCEffectResistanceSubprocessor.get_construct_effects(line, ability_ref)
+            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
 
         elif command_id == 105:
             # Heal
