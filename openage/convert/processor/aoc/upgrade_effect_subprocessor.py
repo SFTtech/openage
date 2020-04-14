@@ -7,10 +7,11 @@ abilities.
 from openage.convert.dataformat.value_members import NoDiffMember,\
     LeftMissingMember, RightMissingMember
 from openage.convert.dataformat.aoc.internal_nyan_names import ARMOR_CLASS_LOOKUPS,\
-    TECH_GROUP_LOOKUPS
+    TECH_GROUP_LOOKUPS, BUILDING_LINE_LOOKUPS
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.nyan.nyan_structs import MemberOperator
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 
 
 class AoCUpgradeEffectSubprocessor:
@@ -31,6 +32,7 @@ class AoCUpgradeEffectSubprocessor:
         :returns: The expected pointers for the effects.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
         tech_id = tech_group.get_id()
         dataset = line.data
 
@@ -70,12 +72,20 @@ class AoCUpgradeEffectSubprocessor:
                 # Wrapper
                 wrapper_name = "Change%sAttackWrapper" % (class_name)
                 wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-                wrapper_location = ExpectedPointer(tech_group, tech_name)
                 wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                       wrapper_name,
-                                                      dataset.nyan_api_objects,
-                                                      wrapper_location)
+                                                      dataset.nyan_api_objects)
                 wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+                if isinstance(line, GenieBuildingLineGroup):
+                    # Store building upgrades next to their game entity definition,
+                    # not in the Age up techs.
+                    wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                        % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+                    wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+                else:
+                    wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
                 # Nyan patch
                 nyan_patch_name = "Change%sAttack" % (class_name)
@@ -122,6 +132,7 @@ class AoCUpgradeEffectSubprocessor:
         :returns: The expected pointers for the resistances.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
         tech_id = tech_group.get_id()
         dataset = line.data
 
@@ -161,12 +172,20 @@ class AoCUpgradeEffectSubprocessor:
                 # Wrapper
                 wrapper_name = "Change%sResistanceWrapper" % (class_name)
                 wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-                wrapper_location = ExpectedPointer(tech_group, tech_name)
                 wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                       wrapper_name,
-                                                      dataset.nyan_api_objects,
-                                                      wrapper_location)
+                                                      dataset.nyan_api_objects)
                 wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+                if isinstance(line, GenieBuildingLineGroup):
+                    # Store building upgrades next to their game entity definition,
+                    # not in the Age up techs.
+                    wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                        % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+                    wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+                else:
+                    wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
                 # Nyan patch
                 nyan_patch_name = "Change%sResistance" % (class_name)

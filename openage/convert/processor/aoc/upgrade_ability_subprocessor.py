@@ -64,7 +64,7 @@ class AoCUgradeAbilitySubprocessor:
                                                                  diff_frame_delay)):
             changed = True
 
-        # TODO: Command types
+        # Command types Heal, Construct, Repair are not upgraded by lines
 
         diff_min_range = None
         diff_max_range = None
@@ -82,12 +82,20 @@ class AoCUgradeAbilitySubprocessor:
             # Wrapper
             wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
             wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-            wrapper_location = ExpectedPointer(tech_group, tech_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+                                                  dataset.nyan_api_objects)
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            if isinstance(line, GenieBuildingLineGroup):
+                # Store building upgrades next to their game entity definition,
+                # not in the Age up techs.
+                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+            else:
+                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
             # Nyan patch
             nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
@@ -106,6 +114,7 @@ class AoCUgradeAbilitySubprocessor:
                 if diff_animation_id > -1:
                     # Patch the new animation in
                     animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                                                                                                line,
                                                                                                 diff_animation_id,
                                                                                                 nyan_patch_ref,
                                                                                                 ability_name,
@@ -135,8 +144,6 @@ class AoCUgradeAbilitySubprocessor:
                                                                sounds_set,
                                                                "engine.ability.specialization.CommandSoundAbility",
                                                                MemberOperator.ASSIGN)
-
-            # TODO: Command types
 
             if not isinstance(diff_frame_delay, NoDiffMember):
                 # TODO: Calculate this
@@ -234,12 +241,20 @@ class AoCUgradeAbilitySubprocessor:
             # Wrapper
             wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
             wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-            wrapper_location = ExpectedPointer(tech_group, tech_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+                                                  dataset.nyan_api_objects)
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            if isinstance(line, GenieBuildingLineGroup):
+                # Store building upgrades next to their game entity definition,
+                # not in the Age up techs.
+                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+            else:
+                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
             # Nyan patch
             nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
@@ -258,6 +273,7 @@ class AoCUgradeAbilitySubprocessor:
                 if diff_animation_id > -1:
                     # Patch the new animation in
                     animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                                                                                                line,
                                                                                                 diff_animation_id,
                                                                                                 nyan_patch_ref,
                                                                                                 ability_name,
@@ -336,16 +352,12 @@ class AoCUgradeAbilitySubprocessor:
             if not isinstance(diff_attacks, NoDiffMember):
                 changed = True
 
-        # TODO: Other command types
-
         if changed:
             patch_target_ref = "%s.%s" % (game_entity_name, ability_name)
             if command_id == 7 and not isinstance(diff_attacks, NoDiffMember):
                 patches.extend(AoCUpgradeEffectSubprocessor.get_attack_effects(tech_group,
                                                                                line, diff,
                                                                                patch_target_ref))
-
-            # TODO: Other command types
 
         return patches
 
@@ -398,12 +410,12 @@ class AoCUgradeAbilitySubprocessor:
         if diff:
             diff_animation = diff.get_member("dying_graphic")
             if isinstance(diff_animation, NoDiffMember):
-                return []
+                return patches
 
             diff_animation_id = diff_animation.get_value()
 
         else:
-            return []
+            return patches
 
         patch_target_ref = "%s.Death" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -411,12 +423,20 @@ class AoCUgradeAbilitySubprocessor:
         # Wrapper
         wrapper_name = "Change%sDeathAnimationWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+                                              dataset.nyan_api_objects)
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        if isinstance(line, GenieBuildingLineGroup):
+            # Store building upgrades next to their game entity definition,
+            # not in the Age up techs.
+            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+        else:
+            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
         # Nyan patch
         nyan_patch_name = "Change%sDeathAnimation" % (game_entity_name)
@@ -433,6 +453,7 @@ class AoCUgradeAbilitySubprocessor:
         if diff_animation_id > -1:
             # Patch the new animation in
             animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                                                                                        line,
                                                                                         diff_animation_id,
                                                                                         nyan_patch_ref,
                                                                                         "Death",
@@ -494,12 +515,12 @@ class AoCUgradeAbilitySubprocessor:
         if diff:
             diff_dead_unit = diff.get_member("dead_unit_id")
             if isinstance(diff_dead_unit, NoDiffMember):
-                return []
+                return patches
 
             diff_animation_id = dataset.genie_units[diff_dead_unit.get_value()]["idle_graphic0"].get_value()
 
         else:
-            return []
+            return patches
 
         patch_target_ref = "%s.Despawn" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -507,12 +528,20 @@ class AoCUgradeAbilitySubprocessor:
         # Wrapper
         wrapper_name = "Change%sDespawnAnimationWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+                                              dataset.nyan_api_objects)
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        if isinstance(line, GenieBuildingLineGroup):
+            # Store building upgrades next to their game entity definition,
+            # not in the Age up techs.
+            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+        else:
+            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
         # Nyan patch
         nyan_patch_name = "Change%sDespawnAnimation" % (game_entity_name)
@@ -529,6 +558,7 @@ class AoCUgradeAbilitySubprocessor:
         if diff_animation_id > -1:
             # Patch the new animation in
             animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                                                                                        line,
                                                                                         diff_animation_id,
                                                                                         nyan_patch_ref,
                                                                                         "Despawn",
@@ -590,12 +620,12 @@ class AoCUgradeAbilitySubprocessor:
         if diff:
             diff_animation = diff.get_member("idle_graphic0")
             if isinstance(diff_animation, NoDiffMember):
-                return []
+                return patches
 
             diff_animation_id = diff_animation.get_value()
 
         else:
-            return []
+            return patches
 
         patch_target_ref = "%s.Idle" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -603,12 +633,20 @@ class AoCUgradeAbilitySubprocessor:
         # Wrapper
         wrapper_name = "Change%sIdleAnimationWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+                                              dataset.nyan_api_objects)
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        if isinstance(line, GenieBuildingLineGroup):
+            # Store building upgrades next to their game entity definition,
+            # not in the Age up techs.
+            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+        else:
+            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
         # Nyan patch
         nyan_patch_name = "Change%sIdleAnimation" % (game_entity_name)
@@ -625,6 +663,7 @@ class AoCUgradeAbilitySubprocessor:
         if diff_animation_id > -1:
             # Patch the new animation in
             animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                                                                                        line,
                                                                                         diff_animation_id,
                                                                                         nyan_patch_ref,
                                                                                         "Idle",
@@ -686,12 +725,12 @@ class AoCUgradeAbilitySubprocessor:
         if diff:
             diff_hp = diff.get_member("hit_points")
             if isinstance(diff_hp, NoDiffMember):
-                return []
+                return patches
 
             diff_hp_value = diff_hp.get_value()
 
         else:
-            return []
+            return patches
 
         patch_target_ref = "%s.Live.Health" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -699,12 +738,20 @@ class AoCUgradeAbilitySubprocessor:
         # Wrapper
         wrapper_name = "Change%sHealthWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+                                              dataset.nyan_api_objects)
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        if isinstance(line, GenieBuildingLineGroup):
+            # Store building upgrades next to their game entity definition,
+            # not in the Age up techs.
+            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+        else:
+            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
         # Nyan patch
         nyan_patch_name = "Change%sHealth" % (game_entity_name)
@@ -773,12 +820,12 @@ class AoCUgradeAbilitySubprocessor:
         if diff:
             diff_line_of_sight = diff.get_member("line_of_sight")
             if isinstance(diff_line_of_sight, NoDiffMember):
-                return []
+                return patches
 
             diff_los_range = diff_line_of_sight.get_value()
 
         else:
-            return []
+            return patches
 
         patch_target_ref = "%s.LineOfSight" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -786,12 +833,20 @@ class AoCUgradeAbilitySubprocessor:
         # Wrapper
         wrapper_name = "Change%sLineOfSightWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+                                              dataset.nyan_api_objects)
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        if isinstance(line, GenieBuildingLineGroup):
+            # Store building upgrades next to their game entity definition,
+            # not in the Age up techs.
+            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+        else:
+            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
         # Nyan patch
         nyan_patch_name = "Change%sLineOfSight" % (game_entity_name)
@@ -873,12 +928,20 @@ class AoCUgradeAbilitySubprocessor:
             # Wrapper
             wrapper_name = "Change%sMoveWrapper" % (game_entity_name)
             wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-            wrapper_location = ExpectedPointer(tech_group, tech_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+                                                  dataset.nyan_api_objects)
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            if isinstance(line, GenieBuildingLineGroup):
+                # Store building upgrades next to their game entity definition,
+                # not in the Age up techs.
+                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+            else:
+                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
             # Nyan patch
             nyan_patch_name = "Change%sMove" % (game_entity_name)
@@ -897,6 +960,7 @@ class AoCUgradeAbilitySubprocessor:
                 if diff_animation_id > -1:
                     # Patch the new animation in
                     animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                                                                                                line,
                                                                                                 diff_animation_id,
                                                                                                 nyan_patch_ref,
                                                                                                 "Move",
@@ -1082,12 +1146,20 @@ class AoCUgradeAbilitySubprocessor:
             # Wrapper
             wrapper_name = "Change%sSelectableSelfWrapper" % (game_entity_name)
             wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-            wrapper_location = ExpectedPointer(tech_group, tech_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+                                                  dataset.nyan_api_objects)
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            if isinstance(line, GenieBuildingLineGroup):
+                # Store building upgrades next to their game entity definition,
+                # not in the Age up techs.
+                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+            else:
+                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
             # Nyan patch
             nyan_patch_name = "Change%sSelectableSelf" % (game_entity_name)
@@ -1128,6 +1200,7 @@ class AoCUgradeAbilitySubprocessor:
             wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
             patches.append(wrapper_expected_pointer)
 
+        # Second patch: Selection box
         changed = False
         if diff:
             diff_radius_x = diff.get_member("selection_shape_x")
@@ -1143,12 +1216,20 @@ class AoCUgradeAbilitySubprocessor:
             # Wrapper
             wrapper_name = "Change%sSelectableRectangleWrapper" % (game_entity_name)
             wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-            wrapper_location = ExpectedPointer(tech_group, tech_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+                                                  dataset.nyan_api_objects)
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            if isinstance(line, GenieBuildingLineGroup):
+                # Store building upgrades next to their game entity definition,
+                # not in the Age up techs.
+                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+            else:
+                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
             # Nyan patch
             nyan_patch_name = "Change%sSelectableRectangle" % (game_entity_name)
@@ -1268,12 +1349,20 @@ class AoCUgradeAbilitySubprocessor:
             # Wrapper
             wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
             wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-            wrapper_location = ExpectedPointer(tech_group, tech_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+                                                  dataset.nyan_api_objects)
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            if isinstance(line, GenieBuildingLineGroup):
+                # Store building upgrades next to their game entity definition,
+                # not in the Age up techs.
+                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+            else:
+                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
             # Nyan patch
             nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
@@ -1292,6 +1381,7 @@ class AoCUgradeAbilitySubprocessor:
                 if diff_animation_id > -1:
                     # Patch the new animation in
                     animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                                                                                                line,
                                                                                                 diff_animation_id,
                                                                                                 nyan_patch_ref,
                                                                                                 ability_name,
@@ -1496,12 +1586,12 @@ class AoCUgradeAbilitySubprocessor:
         if diff:
             diff_turn_speed = diff.get_member("turn_speed")
             if isinstance(diff_turn_speed, NoDiffMember):
-                return []
+                return patches
 
             diff_turn_speed_value = diff_turn_speed.get_value()
 
         else:
-            return []
+            return patches
 
         patch_target_ref = "%s.Turn" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -1509,12 +1599,20 @@ class AoCUgradeAbilitySubprocessor:
         # Wrapper
         wrapper_name = "Change%sTurnWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+                                              dataset.nyan_api_objects)
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        if isinstance(line, GenieBuildingLineGroup):
+            # Store building upgrades next to their game entity definition,
+            # not in the Age up techs.
+            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+        else:
+            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
 
         # Nyan patch
         nyan_patch_name = "Change%sTurn" % (game_entity_name)
@@ -1554,7 +1652,7 @@ class AoCUgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def _create_animation(tech_group, animation_id, nyan_patch_ref, animation_name, filename_prefix):
+    def _create_animation(tech_group, line, animation_id, nyan_patch_ref, animation_name, filename_prefix):
         """
         Generates an animation for an ability.
         """
@@ -1573,9 +1671,16 @@ class AoCUgradeAbilitySubprocessor:
             animation_sprite = dataset.combined_sprites[animation_id]
 
         else:
+            if isinstance(line, GenieBuildingLineGroup):
+                animation_filename = "%s%s_%s" % (filename_prefix,
+                                                  BUILDING_LINE_LOOKUPS[line.get_head_unit_id()][1],
+                                                  TECH_GROUP_LOOKUPS[tech_id][1])
+
+            else:
+                animation_filename = "%s%s" % (filename_prefix, TECH_GROUP_LOOKUPS[tech_id][1])
+
             animation_sprite = CombinedSprite(animation_id,
-                                              "%s%s" % (filename_prefix,
-                                                        TECH_GROUP_LOOKUPS[tech_id][1]),
+                                              animation_filename,
                                               dataset)
             dataset.combined_sprites.update({animation_sprite.get_id(): animation_sprite})
 
@@ -1616,9 +1721,11 @@ class AoCUgradeAbilitySubprocessor:
                 sound = dataset.combined_sounds[file_id]
 
             else:
+                sound_filename = "%ssound_%s" % (filename_prefix, str(file_id))
+
                 sound = CombinedSound(sound_id,
                                       file_id,
-                                      "%ssound_%s" % (filename_prefix, str(file_id)),
+                                      sound_filename,
                                       dataset)
                 dataset.combined_sounds.update({file_id: sound})
 
