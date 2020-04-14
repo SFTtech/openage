@@ -193,13 +193,25 @@ class AoCAbilitySubprocessor:
         else:
             ability_parent = "engine.ability.type.ApplyDiscreteEffect"
 
-        ability_ref = "%s.%s" % (game_entity_name, ability_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
-        ability_raw_api_object.add_raw_parent(ability_parent)
-        ability_location = ExpectedPointer(line, game_entity_name)
-        ability_raw_api_object.set_location(ability_location)
+        if projectile == -1:
+            ability_ref = "%s.%s" % (game_entity_name, ability_name)
+            ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
+            ability_raw_api_object.add_raw_parent(ability_parent)
+            ability_location = ExpectedPointer(line, game_entity_name)
+            ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
+            ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
+
+        else:
+            ability_ref = "%s.ShootProjectile.Projectile%s.%s" % (game_entity_name, str(projectile), ability_name)
+            ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
+            ability_raw_api_object.add_raw_parent(ability_parent)
+            ability_location = ExpectedPointer(line,
+                                               "%s.ShootProjectile.Projectile%s"
+                                               % (game_entity_name, str(projectile)))
+            ability_raw_api_object.set_location(ability_location)
+
+            ability_animation_id = -1
 
         if ability_animation_id > -1:
             # Make the ability animated
@@ -217,7 +229,12 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.specialization.AnimatedAbility")
 
         # Command Sound
-        ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+        if projectile == -1:
+            ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+
+        else:
+            ability_comm_sound_id = -1
+
         if ability_comm_sound_id > -1:
             # Make the ability animated
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
@@ -255,7 +272,12 @@ class AoCAbilitySubprocessor:
         # Effects
         if command_id == 7:
             # Attack
-            effects = AoCEffectResistanceSubprocessor.get_attack_effects(line, ability_ref)
+            if projectile != 1:
+                effects = AoCEffectResistanceSubprocessor.get_attack_effects(line, ability_ref)
+
+            else:
+                # TODO: Second projectile
+                effects = []
 
         elif command_id == 104:
             # Convert
@@ -266,17 +288,27 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ApplyDiscreteEffect")
 
         # Reload time
-        reload_time = current_unit["attack_speed"].get_value()
+        if projectile == -1:
+            reload_time = current_unit["attack_speed"].get_value()
+
+        else:
+            reload_time = 0
+
         ability_raw_api_object.add_raw_member("reload_time",
                                               reload_time,
                                               "engine.ability.type.ApplyDiscreteEffect")
 
         # Application delay
-        attack_graphic_id = current_unit["attack_sprite_id"].get_value()
-        attack_graphic = dataset.genie_graphics[attack_graphic_id]
-        frame_rate = attack_graphic.get_frame_rate()
-        frame_delay = current_unit["frame_delay"].get_value()
-        application_delay = frame_rate * frame_delay
+        if projectile == -1:
+            attack_graphic_id = current_unit["attack_sprite_id"].get_value()
+            attack_graphic = dataset.genie_graphics[attack_graphic_id]
+            frame_rate = attack_graphic.get_frame_rate()
+            frame_delay = current_unit["frame_delay"].get_value()
+            application_delay = frame_rate * frame_delay
+
+        else:
+            application_delay = 0
+
         ability_raw_api_object.add_raw_member("application_delay",
                                               application_delay,
                                               "engine.ability.type.ApplyDiscreteEffect")

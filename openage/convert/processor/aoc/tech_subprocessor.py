@@ -26,7 +26,6 @@ class AoCTechSubprocessor:
         12: AoCUpgradeAttributeSubprocessor.max_range_upgrade,
         13: AoCUpgradeAttributeSubprocessor.min_range_upgrade,
         14: AoCUpgradeAttributeSubprocessor.carry_capacity_upgrade,
-        15: None,
         16: AoCUpgradeAttributeSubprocessor.projectile_unit_upgrade,
         17: AoCUpgradeAttributeSubprocessor.graphics_angle_upgrade,
         18: AoCUpgradeAttributeSubprocessor.terrain_defense_upgrade,
@@ -121,7 +120,6 @@ class AoCTechSubprocessor:
 
         upgrade_func = AoCTechSubprocessor.upgrade_attribute_funcs[attribute_type]
         for affected_entity in affected_entities:
-
             upgrade_func(tech_group, affected_entity, value, operator)
 
         return patches

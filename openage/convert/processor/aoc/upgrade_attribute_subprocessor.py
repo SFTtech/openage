@@ -130,10 +130,76 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        tech_id = tech_group.get_id()
+        dataset = line.data
+
         patches = []
 
         attack_amount = int(value) & 0x0F
         armor_class = int(value) >> 8
+
+        if armor_class == -1:
+            return patches
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+        class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+
+        if line.is_projectile_shooter():
+            patch_target_ref = ("%s.ShootProjectile.Projectile0.Attack.%s.ChangeAmount"
+                                % (game_entity_name, class_name))
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        else:
+            patch_target_ref = "%s.Attack.%s.ChangeAmount" % (game_entity_name, class_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = "Change%s%sAttackWrapper" % (game_entity_name, class_name)
+        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_location = ExpectedPointer(tech_group, tech_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%s%sAttack" % (game_entity_name, class_name)
+        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("amount",
+                                                       attack_amount,
+                                                       "engine.aux.attribute.AttributeAmount",
+                                                       operator)
+
+        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        tech_group.add_raw_api_object(wrapper_raw_api_object)
+        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches
 
