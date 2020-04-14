@@ -7,6 +7,7 @@ from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
 from openage.nyan.nyan_structs import MemberOperator
 from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
+from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
 
 
 class AoCTechSubprocessor:
@@ -45,6 +46,40 @@ class AoCTechSubprocessor:
         108: AoCUpgradeAttributeSubprocessor.garrison_heal_upgrade,
     }
 
+    upgrade_resource_funcs = {
+        4: AoCUpgradeResourceSubprocessor.starting_population_space_upgrade,
+        27: AoCUpgradeResourceSubprocessor.monk_conversion_upgrade,
+        28: AoCUpgradeResourceSubprocessor.building_conversion_upgrade,
+        32: AoCUpgradeResourceSubprocessor.bonus_population_upgrade,
+        35: AoCUpgradeResourceSubprocessor.faith_recharge_rate_upgrade,
+        36: AoCUpgradeResourceSubprocessor.farm_food_upgrade,
+        46: AoCUpgradeResourceSubprocessor.tribute_inefficiency_upgrade,
+        47: AoCUpgradeResourceSubprocessor.gather_gold_efficiency_upgrade,
+        50: AoCUpgradeResourceSubprocessor.reveal_ally_upgrade,
+        77: AoCUpgradeResourceSubprocessor.conversion_resistance_upgrade,
+        78: AoCUpgradeResourceSubprocessor.trade_penalty_upgrade,
+        79: AoCUpgradeResourceSubprocessor.gather_stone_efficiency_upgrade,
+        84: AoCUpgradeResourceSubprocessor.starting_villagers_upgrade,
+        85: AoCUpgradeResourceSubprocessor.chinese_tech_discount_upgrade,
+        89: AoCUpgradeResourceSubprocessor.heal_rate_upgrade,
+        90: AoCUpgradeResourceSubprocessor.heal_range_upgrade,
+        91: AoCUpgradeResourceSubprocessor.starting_food_upgrade,
+        92: AoCUpgradeResourceSubprocessor.starting_wood_upgrade,
+        96: AoCUpgradeResourceSubprocessor.berserk_heal_rate_upgrade,
+        97: AoCUpgradeResourceSubprocessor.herding_dominance_upgrade,
+        178: AoCUpgradeResourceSubprocessor.conversion_resistance_min_rounds_upgrade,
+        179: AoCUpgradeResourceSubprocessor.conversion_resistance_max_rounds_upgrade,
+        183: AoCUpgradeResourceSubprocessor.reveal_enemy_upgrade,
+        189: AoCUpgradeResourceSubprocessor.gather_wood_efficiency_upgrade,
+        190: AoCUpgradeResourceSubprocessor.gather_food_efficiency_upgrade,
+        191: AoCUpgradeResourceSubprocessor.relic_gold_bonus_upgrade,
+        192: AoCUpgradeResourceSubprocessor.heresy_upgrade,
+        193: AoCUpgradeResourceSubprocessor.theocracy_upgrade,
+        194: AoCUpgradeResourceSubprocessor.crenellations_upgrade,
+        196: AoCUpgradeResourceSubprocessor.wonder_time_increase_upgrade,
+        197: AoCUpgradeResourceSubprocessor.spies_discount_upgrade,
+    }
+
     @classmethod
     def get_patches(cls, tech_group):
         """
@@ -55,18 +90,42 @@ class AoCTechSubprocessor:
         for effect in tech_group.effects.get_effects():
             type_id = effect.get_type()
 
+            team_effect = False
+            if type_id in (10, 11, 12, 13, 14, 15, 16):
+                team_effect = True
+                type_id -= 10
+
             if type_id in (0, 4, 5):
                 patches.extend(cls._attribute_modify_effect(tech_group, effect))
 
-            if type_id == 3:
+            elif type_id in (1, 6):
+                patches.extend(cls._resource_modify_effect(tech_group, effect))
+
+            elif type_id == 2:
+                # TODO: Enabling/disabling units
+                pass
+
+            elif type_id == 3:
                 patches.extend(cls._upgrade_unit_effect(tech_group, effect))
+
+            elif type_id == 101:
+                # TODO: Tech cost
+                pass
+
+            elif type_id == 102:
+                # TODO: Disable tech
+                pass
+
+            elif type_id == 103:
+                # TODO: Tech time
+                pass
 
         return patches
 
     @staticmethod
     def _attribute_modify_effect(tech_group, effect):
         """
-        Creates the patches for setting attributes of entities. .
+        Creates the patches for modifying attributes of entities.
         """
         patches = []
         dataset = tech_group.data
@@ -120,7 +179,45 @@ class AoCTechSubprocessor:
 
         upgrade_func = AoCTechSubprocessor.upgrade_attribute_funcs[attribute_type]
         for affected_entity in affected_entities:
-            upgrade_func(tech_group, affected_entity, value, operator)
+            patches.extend(upgrade_func(tech_group, affected_entity, value, operator))
+
+        return patches
+
+    @staticmethod
+    def _resource_modify_effect(tech_group, effect):
+        """
+        Creates the patches for modifying resources.
+        """
+        patches = []
+
+        effect_type = effect.get_type()
+        operator = None
+        if effect_type == 1:
+            mode = effect["attr_b"].get_value()
+
+            if mode == 0:
+                operator = MemberOperator.ASSIGN
+
+            else:
+                operator = MemberOperator.ADD
+
+        elif effect_type == 6:
+            operator = MemberOperator.MULTIPLY
+
+        else:
+            raise Exception("Effect type %s is not a valid resource effect"
+                            % str(effect_type))
+
+        resource_id = effect["attr_a"].get_value()
+        value = effect["attr_d"].get_value()
+
+        if resource_id in (-1, 6):
+            # -1 = invalid ID
+            # 6 = set current age (we don't use this)
+            return patches
+
+        upgrade_func = AoCTechSubprocessor.upgrade_resource_funcs[resource_id]
+        patches.extend(upgrade_func(tech_group, value, operator))
 
         return patches
 
@@ -177,8 +274,6 @@ class AoCTechSubprocessor:
                                                                                           7,
                                                                                           line.is_ranged(),
                                                                                           diff))
-
-            # TODO: Other commands
 
         if isinstance(line, GenieUnitLineGroup):
             patches.extend(AoCUgradeAbilitySubprocessor.move_ability(tech_group, line, diff))

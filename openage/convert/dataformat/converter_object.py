@@ -395,7 +395,12 @@ class RawAPIObject:
             raise Exception("Cannot link patch target: %s is not a patch"
                             % (self))
 
-        target = self._patch_target.resolve()
+        if isinstance(self._patch_target, ExpectedPointer):
+            target = self._patch_target.resolve()
+
+        else:
+            target = self._patch_target
+
         self.nyan_object.set_target(target)
 
     def get_filename(self):
@@ -488,8 +493,8 @@ class RawAPIObject:
         Set an ExpectedPointer as a target for this object. If this
         is done, the RawAPIObject will be converted to a patch.
 
-        :param target: An expected pointer toanother raw API object.
-        :type target: .expected_pointer.ExpectedPointer
+        :param target: An expected pointer to another raw API object or a nyan object.
+        :type target: .expected_pointer.ExpectedPointer, ..nyan.nyan_structs.NyanObject
         """
         self._patch_target = target
 

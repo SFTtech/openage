@@ -854,7 +854,7 @@ class AoCPregenSubprocessor:
                                           0,
                                           resource_contingent_parent)
         pop_raw_api_object.add_raw_member("max_amount",
-                                          MemberSpecialValue.NYAN_INF,
+                                          200,
                                           resource_contingent_parent)
 
         pregen_converter_group.add_raw_api_object(pop_name_value)

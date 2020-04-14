@@ -113,7 +113,13 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.type.RangedContinuousEffect")
 
             # Max range
-            max_range = current_unit["weapon_range_max"].get_value()
+            if command_id == 105:
+                # Heal
+                max_range = 4
+
+            else:
+                max_range = current_unit["weapon_range_max"].get_value()
+
             ability_raw_api_object.add_raw_member("max_range",
                                                   max_range,
                                                   "engine.ability.type.RangedContinuousEffect")
@@ -314,14 +320,35 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ApplyDiscreteEffect")
 
         # Allowed types (all buildings/units)
-        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
-                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+        if command_id == 104:
+            # Convert
+            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
+
+        else:
+            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
+                             dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
 
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
                                               "engine.ability.type.ApplyDiscreteEffect")
+
+        if command_id == 104:
+            # Convert
+            monk_line = dataset.unit_lines[125]
+            ram_line = dataset.unit_lines[35]
+            mangonel_line = dataset.unit_lines[280]
+            scorpion_line = dataset.unit_lines[279]
+
+            blacklisted_entities = [ExpectedPointer(monk_line, "Monk"),
+                                    ExpectedPointer(ram_line, "Ram"),
+                                    ExpectedPointer(mangonel_line, "Mangonel"),
+                                    ExpectedPointer(scorpion_line, "Scorpion")]
+
+        else:
+            blacklisted_entities = []
+
         ability_raw_api_object.add_raw_member("blacklisted_game_entities",
-                                              [],
+                                              blacklisted_entities,
                                               "engine.ability.type.ApplyDiscreteEffect")
 
         line.add_raw_api_object(ability_raw_api_object)
@@ -1326,7 +1353,6 @@ class AoCAbilitySubprocessor:
                                                "engine.aux.resource_spot.ResourceSpot")
 
             # Start amount (equals max amount)
-
             if line.get_id() == 50:
                 # Farm food amount (hardcoded in civ)
                 starting_amount = dataset.genie_civs[1].get_member("resources").get_value()[36].get_value()
