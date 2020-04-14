@@ -156,6 +156,11 @@ class AoCUpgradeAttributeSubprocessor:
         class_name = ARMOR_CLASS_LOOKUPS[armor_class]
 
         if line.is_projectile_shooter():
+            primary_projectile_id = line.get_head_unit()["attack_projectile_primary_unit_id"].get_value()
+            if primary_projectile_id == -1:
+                # Upgrade is skipped if the primary projectile is not defined
+                return patches
+
             patch_target_ref = ("%s.ShootProjectile.Projectile0.Attack.%s.ChangeAmount"
                                 % (game_entity_name, class_name))
             patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)

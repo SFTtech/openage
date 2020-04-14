@@ -1231,7 +1231,6 @@ class AoCUgradeAbilitySubprocessor:
         tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
         ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
 
-        # First patch: Sound for the SelectableSelf ability
         changed = False
         if diff:
             diff_animation = diff.get_member("attack_sprite_id")

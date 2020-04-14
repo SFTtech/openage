@@ -125,6 +125,7 @@ class AoCProcessor:
 
         info("Linking API-like objects...")
 
+        cls._link_building_upgrades(full_data_set)
         cls._link_creatables(full_data_set)
         cls._link_researchables(full_data_set)
         cls._link_resources_to_dropsites(full_data_set)
@@ -910,6 +911,38 @@ class AoCProcessor:
             if enabled:
                 terrain_group = GenieTerrainGroup(terrain.get_id(), full_data_set)
                 full_data_set.terrain_groups.update({terrain.get_id(): terrain_group})
+
+    @staticmethod
+    def _link_building_upgrades(full_data_set):
+        """
+        Find building upgrades in the AgeUp techs and append them to the building lines.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        age_ups = full_data_set.age_upgrades
+
+        # Order of age ups should be correct
+        for age_up in age_ups.values():
+            for effect in age_up.effects.get_effects():
+                type_id = effect.get_type()
+
+                if type_id != 3:
+                    continue
+
+                upgrade_source_id = effect["attr_a"].get_value()
+                upgrade_target_id = effect["attr_b"].get_value()
+
+                if upgrade_source_id not in full_data_set.building_lines.keys():
+                    continue
+
+                upgraded_line = full_data_set.building_lines[upgrade_source_id]
+                upgrade_target = full_data_set.genie_units[upgrade_target_id]
+
+                upgraded_line.add_unit(upgrade_target)
+                full_data_set.unit_ref.update({upgrade_target_id: upgraded_line})
 
     @staticmethod
     def _link_creatables(full_data_set):
