@@ -15,7 +15,7 @@ from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
-    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS
+    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, CIV_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
 
@@ -49,6 +49,9 @@ class AoCNyanSubprocessor:
         for terrain_group in full_data_set.terrain_groups.values():
             terrain_group.create_nyan_objects()
 
+        for civ_group in full_data_set.civ_groups.values():
+            civ_group.create_nyan_objects()
+
         # TODO: civs, more complex game entities
 
     @classmethod
@@ -71,6 +74,9 @@ class AoCNyanSubprocessor:
         for terrain_group in full_data_set.terrain_groups.values():
             terrain_group.create_nyan_members()
 
+        for civ_group in full_data_set.civ_groups.values():
+            civ_group.create_nyan_members()
+
         # TODO: civs, more complex game entities
 
     @classmethod
@@ -91,6 +97,9 @@ class AoCNyanSubprocessor:
 
         for terrain_group in full_data_set.terrain_groups.values():
             cls._terrain_group_to_terrain(terrain_group)
+
+        for civ_group in full_data_set.civ_groups.values():
+            cls._civ_group_to_civ(civ_group)
 
         # TODO: civs, more complex game entities
 
@@ -629,8 +638,8 @@ class AoCNyanSubprocessor:
         """
         Creates raw API objects for a terrain group.
 
-        :param tech_group: Terrain group that gets converted to a tech.
-        :type tech_group: ..dataformat.converter_object.ConverterObjectGroup
+        :param terrain_group: Terrain group that gets converted to a tech.
+        :type terrain_group: ..dataformat.converter_object.ConverterObjectGroup
         """
         terrain_index = terrain_group.get_id()
 
@@ -746,6 +755,119 @@ class AoCNyanSubprocessor:
         graphic_expected_pointer = ExpectedPointer(terrain_group, graphic_name)
         raw_api_object.add_raw_member("terrain_graphic", graphic_expected_pointer,
                                       "engine.aux.terrain.Terrain")
+
+    @staticmethod
+    def _civ_group_to_civ(civ_group):
+        """
+        Creates raw API objects for a civ group.
+
+        :param civ_group: Terrain group that gets converted to a tech.
+        :type civ_group: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        civ_id = civ_group.get_id()
+
+        dataset = civ_group.data
+
+        # Start with the Tech object
+        tech_name = CIV_GROUP_LOOKUPS[civ_id][0]
+        raw_api_object = RawAPIObject(tech_name, tech_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.civilization.Civilization")
+
+        obj_location = "data/civ/%s/" % (CIV_GROUP_LOOKUPS[civ_id][1])
+
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(CIV_GROUP_LOOKUPS[civ_id][1])
+        civ_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Name
+        # =======================================================================
+        name_ref = "%s.%sName" % (tech_name, tech_name)
+        name_raw_api_object = RawAPIObject(name_ref,
+                                           "%sName"  % (tech_name),
+                                           dataset.nyan_api_objects)
+        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_location = ExpectedPointer(civ_group, tech_name)
+        name_raw_api_object.set_location(name_location)
+
+        name_raw_api_object.add_raw_member("translations",
+                                           [],
+                                           "engine.aux.translated.type.TranslatedString")
+
+        name_expected_pointer = ExpectedPointer(civ_group, name_ref)
+        raw_api_object.add_raw_member("name", name_expected_pointer, "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(name_raw_api_object)
+
+        # =======================================================================
+        # Description
+        # =======================================================================
+        description_ref = "%s.%sDescription" % (tech_name, tech_name)
+        description_raw_api_object = RawAPIObject(description_ref,
+                                                  "%sDescription"  % (tech_name),
+                                                  dataset.nyan_api_objects)
+        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_location = ExpectedPointer(civ_group, tech_name)
+        description_raw_api_object.set_location(description_location)
+
+        description_raw_api_object.add_raw_member("translations",
+                                                  [],
+                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+
+        description_expected_pointer = ExpectedPointer(civ_group, description_ref)
+        raw_api_object.add_raw_member("description",
+                                      description_expected_pointer,
+                                      "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(description_raw_api_object)
+
+        # =======================================================================
+        # Long description
+        # =======================================================================
+        long_description_ref = "%s.%sLongDescription" % (tech_name, tech_name)
+        long_description_raw_api_object = RawAPIObject(long_description_ref,
+                                                       "%sLongDescription"  % (tech_name),
+                                                       dataset.nyan_api_objects)
+        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_location = ExpectedPointer(civ_group, tech_name)
+        long_description_raw_api_object.set_location(long_description_location)
+
+        long_description_raw_api_object.add_raw_member("translations",
+                                                       [],
+                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+
+        long_description_expected_pointer = ExpectedPointer(civ_group, long_description_ref)
+        raw_api_object.add_raw_member("long_description",
+                                      long_description_expected_pointer,
+                                      "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(long_description_raw_api_object)
+
+        # =======================================================================
+        # TODO: Leader names
+        # =======================================================================
+        raw_api_object.add_raw_member("leader_names",
+                                      [],
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # TODO: Modifiers
+        # =======================================================================
+        raw_api_object.add_raw_member("modifiers",
+                                      [],
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # TODO: Starting resources
+        # =======================================================================
+        raw_api_object.add_raw_member("starting_resources",
+                                      [],
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # TODO: Civ setup
+        # =======================================================================
+        raw_api_object.add_raw_member("civ_setup",
+                                      [],
+                                      "engine.aux.civilization.Civilization")
 
     @staticmethod
     def _projectiles_from_line(line):

@@ -362,16 +362,26 @@ class AoCUgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def attribute_change_tracker_ability(line):
+    def attribute_change_tracker_ability(tech_group, line, diff=None):
         """
-        Adds the AttributeChangeTracker ability to a line.
+        Creates a patch for the AttributeChangeTracker ability of a line. You can either supply a
+        diff between two units in the line or name the updated members specifically
+        with a member dict.
 
-        :param line: Unit/Building line that gets the ability.
+        :param tech_group: Tech that gets the patch.
+        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :param diff: A diff between two ConvertObject instances.
+        :type diff: ...dataformat.converter_object.ConverterObject
+        :returns: The expected pointers for the generated patches.
+        :rtype: list
         """
+        patches = []
+
         # TODO: Implement
+
+        return patches
 
     @staticmethod
     def death_ability(tech_group, line, diff=None):
