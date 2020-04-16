@@ -193,8 +193,8 @@ class AoCAuxiliarySubprocessor:
                                             "engine.aux.sound.Sound")
 
         sound_expected_pointer = ExpectedPointer(line, obj_name)
-        creatable_raw_api_object.add_raw_member("creation_sound",
-                                                sound_expected_pointer,
+        creatable_raw_api_object.add_raw_member("creation_sounds",
+                                                [sound_expected_pointer],
                                                 "engine.aux.create.CreatableGameEntity")
 
         line.add_raw_api_object(sound_raw_api_object)
@@ -209,7 +209,7 @@ class AoCAuxiliarySubprocessor:
         placement_modes = []
         if isinstance(line, GenieBuildingLineGroup):
             # Buildings are placed on the map
-            # TODO: Define standard placement mode for all buildings somewhere else
+            # TODO: Place (and Replace for gates)
             pass
 
         else:
@@ -377,8 +377,8 @@ class AoCAuxiliarySubprocessor:
                                             "engine.aux.sound.Sound")
 
         sound_expected_pointer = ExpectedPointer(tech_group, obj_name)
-        researchable_raw_api_object.add_raw_member("research_sound",
-                                                   sound_expected_pointer,
+        researchable_raw_api_object.add_raw_member("research_sounds",
+                                                   [sound_expected_pointer],
                                                    "engine.aux.research.ResearchableTech")
 
         tech_group.add_raw_api_object(sound_raw_api_object)

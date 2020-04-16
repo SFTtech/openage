@@ -159,7 +159,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
                                               "engine.ability.type.ApplyContinuousEffect")
-        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+        ability_raw_api_object.add_raw_member("blacklisted_entities",
                                               [],
                                               "engine.ability.type.ApplyContinuousEffect")
 
@@ -347,7 +347,7 @@ class AoCAbilitySubprocessor:
         else:
             blacklisted_entities = []
 
-        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+        ability_raw_api_object.add_raw_member("blacklisted_entities",
                                               blacklisted_entities,
                                               "engine.ability.type.ApplyDiscreteEffect")
 
@@ -800,7 +800,7 @@ class AoCAbilitySubprocessor:
                                               allowed_types,
                                               "engine.ability.type.DropResources")
         # Blacklisted enties
-        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+        ability_raw_api_object.add_raw_member("blacklisted_entities",
                                               [],
                                               "engine.ability.type.DropResources")
 
@@ -924,7 +924,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
                                               "engine.ability.type.EnterContainer")
-        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+        ability_raw_api_object.add_raw_member("blacklisted_entities",
                                               [],
                                               "engine.ability.type.EnterContainer")
 
@@ -1470,7 +1470,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Herd")
 
         # Blacklisted entities
-        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+        ability_raw_api_object.add_raw_member("blacklisted_entities",
                                               [],
                                               "engine.ability.type.Herd")
 
@@ -2170,7 +2170,7 @@ class AoCAbilitySubprocessor:
                                            "engine.aux.passable_mode.PassableMode")
 
         # Blacklisted entities
-        mode_raw_api_object.add_raw_member("blacklisted_game_entities",
+        mode_raw_api_object.add_raw_member("blacklisted_entities",
                                            [],
                                            "engine.aux.passable_mode.PassableMode")
 
@@ -3003,7 +3003,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
                                               "engine.ability.type.SendBackToTask")
-        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+        ability_raw_api_object.add_raw_member("blacklisted_entities",
                                               [],
                                               "engine.ability.type.SendBackToTask")
 
@@ -3210,7 +3210,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
                                               "engine.ability.type.ShootProjectile")
-        ability_raw_api_object.add_raw_member("blacklisted_game_entities",
+        ability_raw_api_object.add_raw_member("blacklisted_entities",
                                               [],
                                               "engine.ability.type.ShootProjectile")
 

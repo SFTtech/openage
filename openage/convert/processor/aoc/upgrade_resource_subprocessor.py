@@ -3,11 +3,8 @@
 """
 Creates upgrade patches for resource modification effects in AoC.
 """
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieAmbientGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS,\
-    AMBIENT_GROUP_LOOKUPS, UNIT_LINE_LOOKUPS, TECH_GROUP_LOOKUPS,\
-    ARMOR_CLASS_LOOKUPS
+    UNIT_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.nyan.nyan_structs import MemberOperator
@@ -224,7 +221,7 @@ class AoCUpgradeResourceSubprocessor:
                                          ExpectedPointer(stone_gate_line, "StoneGate"),
                                          ExpectedPointer(wonder_line, "Wonder"),
                                          ]
-        nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_game_entities",
+        nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
                                                        blacklisted_expected_pointers,
                                                        "engine.ability.type.ApplyDiscreteEffect",
                                                        MemberOperator.ADD)
@@ -272,7 +269,7 @@ class AoCUpgradeResourceSubprocessor:
                                 ExpectedPointer(mangonel_line, "Mangonel"),
                                 ExpectedPointer(scorpion_line, "Scorpion")]
 
-        nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_game_entities",
+        nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
                                                        blacklisted_entities,
                                                        "engine.ability.type.ApplyDiscreteEffect",
                                                        MemberOperator.SUBTRACT)
@@ -773,7 +770,7 @@ class AoCUpgradeResourceSubprocessor:
         nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
 
         monk_expected_pointer = ExpectedPointer(line, "Monk")
-        nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_game_entities",
+        nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
                                                        [monk_expected_pointer],
                                                        "engine.ability.type.ApplyDiscreteEffect",
                                                        MemberOperator.SUBTRACT)
