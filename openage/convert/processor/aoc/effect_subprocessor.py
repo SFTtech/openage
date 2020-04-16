@@ -11,7 +11,7 @@ from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
 
 
-class AoCEffectResistanceSubprocessor:
+class AoCEffectSubprocessor:
 
     @staticmethod
     def get_attack_effects(line, ability_ref):

@@ -99,8 +99,6 @@ class AoCNyanSubprocessor:
         """
         Creates raw API objects for a unit line.
 
-        TODO: Convert other units than the head unit.
-
         :param unit_line: Unit line that gets converted to a game entity.
         :type unit_line: ..dataformat.converter_object.ConverterObjectGroup
         """
@@ -249,8 +247,7 @@ class AoCNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.herdable_ability(unit_line))
 
         # =======================================================================
-        # TODO: Bunch of other abilities
-        #       Death, Selectable, Hitbox, Despawn, ApplyEffect, Resistance, ...
+        # TODO: Everything with Progress objects
         # =======================================================================
         raw_api_object.add_raw_member("abilities", abilities_set,
                                       "engine.aux.game_entity.GameEntity")
@@ -300,7 +297,7 @@ class AoCNyanSubprocessor:
         building_line.add_raw_api_object(raw_api_object)
 
         # =======================================================================
-        # TODO: Game Entity Types
+        # Game Entity Types
         # ------------------
         # we give a building two types
         #    - aux.game_entity_type.types.Building (if unit_type >= 80)
@@ -402,8 +399,7 @@ class AoCNyanSubprocessor:
             abilities_set.append(ability)
 
         # =======================================================================
-        # TODO: Bunch of other abilities
-        #       Death, Selectable, Hitbox, Despawn, ApplyEffect, Resistance, ...
+        # TODO: Everything with Progress objects
         # =======================================================================
         raw_api_object.add_raw_member("abilities", abilities_set,
                                       "engine.aux.game_entity.GameEntity")
@@ -494,8 +490,7 @@ class AoCNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(ambient_group))
 
         # =======================================================================
-        # TODO: Bunch of other abilities
-        #       Death, Selectable, Hitbox, Despawn, ApplyEffect, Resistance, ...
+        # Abilities
         # =======================================================================
         raw_api_object.add_raw_member("abilities", abilities_set,
                                       "engine.aux.game_entity.GameEntity")
@@ -612,7 +607,7 @@ class AoCNyanSubprocessor:
         tech_group.add_raw_api_object(long_description_raw_api_object)
 
         # =======================================================================
-        # TODO: Updates
+        # Updates
         # =======================================================================
         patches = []
         patches.extend(AoCTechSubprocessor.get_patches(tech_group))
@@ -806,13 +801,12 @@ class AoCNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.projectile_ability(line, position=projectile_num))
             abilities_set.append(AoCAbilitySubprocessor.move_projectile_ability(line, position=projectile_num))
             abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(line, 7, False, projectile_num))
-            # TODO: Attack, Death, Despawn
+            # TODO: Death, Despawn
             proj_raw_api_object.add_raw_member("abilities", abilities_set, "engine.aux.game_entity.GameEntity")
 
             # =======================================================================
-            # Modifiers
+            # TODO: Modifiers
             # =======================================================================
-            # Modifiers (created somewhere else)
             modifiers_set = []
             proj_raw_api_object.add_raw_member("modifiers", modifiers_set, "engine.aux.game_entity.GameEntity")
 

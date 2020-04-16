@@ -118,8 +118,6 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
     ]
 
 
-# TODO: add common tech class
-
 class OtherConnection(GenieStructure):
     name_struct = "other_connection"
     name_struct_file = "tech"

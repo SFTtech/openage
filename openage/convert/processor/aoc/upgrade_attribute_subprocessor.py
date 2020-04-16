@@ -1002,7 +1002,7 @@ class AoCUpgradeAttributeSubprocessor:
         """
         patches = []
 
-        # TODO: Unused in AoC
+        # Unused in AoC
 
         return patches
 
@@ -1024,7 +1024,7 @@ class AoCUpgradeAttributeSubprocessor:
         """
         patches = []
 
-        # TODO: Tied to LineOfsight in openage
+        # TODO: Tied to LineOfSight in openage
 
         return patches
 
@@ -1046,6 +1046,8 @@ class AoCUpgradeAttributeSubprocessor:
         """
         patches = []
 
+        # Unused in AoC
+
         return patches
 
     @staticmethod
@@ -1066,7 +1068,7 @@ class AoCUpgradeAttributeSubprocessor:
         """
         patches = []
 
-        # TODO: Unused in AoC
+        # Unused in AoC
 
         return patches
 
@@ -1088,7 +1090,7 @@ class AoCUpgradeAttributeSubprocessor:
         """
         patches = []
 
-        # TODO: Unused in AoC
+        # Unused in AoC
 
         return patches
 

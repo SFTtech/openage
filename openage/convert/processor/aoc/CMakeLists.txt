@@ -4,6 +4,7 @@ add_py_modules(
 	auxiliary_subprocessor.py
 	effect_subprocessor.py
 	media_subprocessor.py
+	modifier_subprocessor.py
 	modpack_subprocessor.py
 	nyan_subprocessor.py
 	pregen_processor.py

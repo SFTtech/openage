@@ -56,7 +56,7 @@ class AoCUpgradeEffectSubprocessor:
             else:
                 diff_armor_class = diff_attack["type_id"]
                 if not isinstance(diff_armor_class, NoDiffMember):
-                    # TODO: If this happens then the attacks are out of order
+                    # If this happens then the attacks are out of order
                     # and we have to try something else
                     raise Exception("Could not create effect upgrade for line %s: Out of order"
                                     % (line))
@@ -156,7 +156,7 @@ class AoCUpgradeEffectSubprocessor:
             else:
                 diff_armor_class = diff_armor["type_id"]
                 if not isinstance(diff_armor_class, NoDiffMember):
-                    # TODO: If this happens then the attacks are out of order
+                    # If this happens then the armors are out of order
                     # and we have to try something else
                     raise Exception("Could not create effect upgrade for line %s: Out of order"
                                     % (line))

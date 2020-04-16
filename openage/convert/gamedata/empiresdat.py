@@ -350,7 +350,7 @@ class EmpiresDatWrapper(GenieStructure):
     """
     This wrapper exists because the top-level element is discarded:
     The gathered data fields are passed to the parent,
-    and are accumulated there to be written out.
+    and are accumulated there to be processed further.
 
     This class acts as the parent for the "real" data values,
     and has no parent itself. Thereby this class is discarded
@@ -361,7 +361,6 @@ class EmpiresDatWrapper(GenieStructure):
     name_struct        = "gamedata"
     struct_description = "wrapper for empires2_x1_p1.dat structure"
 
-    # TODO: we could reference to other gamedata structures
     data_format = [
         (READ_EXPORT, "empiresdat", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=EmpiresDat,

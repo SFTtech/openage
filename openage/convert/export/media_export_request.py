@@ -158,7 +158,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
             image = SLP(media_file.read())
 
         elif source_file.suffix.lower() == ".dds":
-            # TODO: Implenent
+            # TODO: Implement
             pass
 
         palette_subdir = MediaType.PALETTES.value

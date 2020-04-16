@@ -522,7 +522,6 @@ def conversion_required(asset_dir, args):
         info("Game specification version file not found.")
         spec_version = None
 
-    # TODO: datapack parsing
     changes = changelog.changes(asset_version, spec_version)
 
     if not changes:

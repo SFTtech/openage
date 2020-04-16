@@ -1,7 +1,7 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
 
 """
-Derives and adds abilities for to unit lines. Subroutine of the
+Derives and adds abilities to lines. Subroutine of the
 nyan subprocessor.
 """
 from ...dataformat.converter_object import RawAPIObject
@@ -17,7 +17,7 @@ from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUP
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
     TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, COMMAND_TYPE_LOOKUPS
 from openage.util.ordered_set import OrderedSet
-from openage.convert.processor.aoc.effect_subprocessor import AoCEffectResistanceSubprocessor
+from openage.convert.processor.aoc.effect_subprocessor import AoCEffectSubprocessor
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from math import degrees
 
@@ -127,17 +127,17 @@ class AoCAbilitySubprocessor:
         # Effects
         if command_id == 101:
             # Construct
-            effects = AoCEffectResistanceSubprocessor.get_construct_effects(line, ability_ref)
+            effects = AoCEffectSubprocessor.get_construct_effects(line, ability_ref)
             allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
 
         elif command_id == 105:
             # Heal
-            effects = AoCEffectResistanceSubprocessor.get_heal_effects(line, ability_ref)
+            effects = AoCEffectSubprocessor.get_heal_effects(line, ability_ref)
             allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
 
         elif command_id == 106:
             # Repair
-            effects = AoCEffectResistanceSubprocessor.get_repair_effects(line, ability_ref)
+            effects = AoCEffectSubprocessor.get_repair_effects(line, ability_ref)
             allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
 
         ability_raw_api_object.add_raw_member("effects",
@@ -279,7 +279,7 @@ class AoCAbilitySubprocessor:
         if command_id == 7:
             # Attack
             if projectile != 1:
-                effects = AoCEffectResistanceSubprocessor.get_attack_effects(line, ability_ref)
+                effects = AoCEffectSubprocessor.get_attack_effects(line, ability_ref)
 
             else:
                 # TODO: Second projectile
@@ -287,7 +287,7 @@ class AoCAbilitySubprocessor:
 
         elif command_id == 104:
             # Convert
-            effects = AoCEffectResistanceSubprocessor.get_convert_effects(line, ability_ref)
+            effects = AoCEffectSubprocessor.get_convert_effects(line, ability_ref)
 
         ability_raw_api_object.add_raw_member("effects",
                                               effects,
@@ -2820,7 +2820,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         resistances = []
-        resistances.extend(AoCEffectResistanceSubprocessor.get_attack_resistances(line, ability_ref))
+        resistances.extend(AoCEffectSubprocessor.get_attack_resistances(line, ability_ref))
         # TODO: Other resistance types
 
         # Resistances
