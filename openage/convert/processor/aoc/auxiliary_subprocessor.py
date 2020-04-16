@@ -7,7 +7,7 @@ or other objects.
 from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieBuildingLineGroup, GenieUnitLineGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS,\
-    BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
+    BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
@@ -43,7 +43,7 @@ class AoCAuxiliarySubprocessor:
         creatable_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
         creatable_raw_api_object.add_raw_parent("engine.aux.create.CreatableGameEntity")
 
-        # Add object to the train location's Create ability if it exists
+        # Get train location of line
         train_location_id = line.get_train_location()
         if isinstance(line, GenieBuildingLineGroup):
             train_location = dataset.unit_lines[train_location_id]
@@ -53,8 +53,29 @@ class AoCAuxiliarySubprocessor:
             train_location = dataset.building_lines[train_location_id]
             train_location_name = BUILDING_LINE_LOOKUPS[train_location_id][0]
 
-        creatable_location = ExpectedPointer(train_location,
-                                             "%s.Create" % (train_location_name))
+        # Location of the object depends on whether it'a a unique unit or a normal unit
+        if line.is_unique():
+            # Add object to the Civ object
+            if isinstance(line, GenieUnitLineGroup):
+                head_unit_connection = dataset.unit_connections[current_unit_id]
+
+            elif isinstance(line, GenieBuildingLineGroup):
+                head_unit_connection = dataset.building_connections[current_unit_id]
+
+            enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
+            enabling_research = dataset.genie_techs[enabling_research_id]
+            enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
+
+            civ = dataset.civ_groups[enabling_civ_id]
+            civ_name = CIV_GROUP_LOOKUPS[enabling_civ_id][0]
+
+            creatable_location = ExpectedPointer(civ, civ_name)
+
+        else:
+            # Add object to the train location's Create ability
+            creatable_location = ExpectedPointer(train_location,
+                                                 "%s.Create" % (train_location_name))
+
         creatable_raw_api_object.set_location(creatable_location)
 
         # Game Entity
@@ -264,9 +285,20 @@ class AoCAuxiliarySubprocessor:
         researchable_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
         researchable_raw_api_object.add_raw_parent("engine.aux.research.ResearchableTech")
 
-        # Add object to the research location's Research ability if it exists
-        researchable_location = ExpectedPointer(research_location,
-                                                "%s.Research" % (research_location_name))
+        # Location of the object depends on whether it'a a unique tech or a normal tech
+        if tech_group.is_unique():
+            # Add object to the Civ object
+            civ_id = tech_group.get_civilization()
+            civ = dataset.civ_groups[civ_id]
+            civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
+
+            researchable_location = ExpectedPointer(civ, civ_name)
+
+        else:
+            # Add object to the research location's Research ability
+            researchable_location = ExpectedPointer(research_location,
+                                                    "%s.Research" % (research_location_name))
+
         researchable_raw_api_object.set_location(researchable_location)
 
         # Tech

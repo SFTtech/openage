@@ -87,7 +87,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         # -1 = no train location
         return civilization_id > -1
 
-    def get_civiliztion(self):
+    def get_civilization(self):
         """
         Returns the civilization id if the tech is unique, otherwise return None.
         """
