@@ -380,7 +380,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         return self.line_positions[unit_id]
 
-    def get_train_location(self):
+    def get_train_location_id(self):
         """
         Returns the group_id for building line if the unit is
         creatable, otherwise return None.
@@ -560,7 +560,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
         """
         return self.stack.get_member("id0").get_value()
 
-    def get_train_location(self):
+    def get_train_location_id(self):
         """
         Stack buildings are creatable when their head building is creatable.
 
@@ -774,7 +774,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
 
         return False
 
-    def get_train_location(self):
+    def get_train_location_id(self):
         """
         Returns the group_id for building line if the task group is
         creatable, otherwise return None.
@@ -911,14 +911,14 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
         return matching_units
 
-    def get_train_location(self):
+    def get_train_location_id(self):
         """
         Returns the group_id for building line if the task group is
         creatable, otherwise return None.
         """
         for variant in self.variants:
             if variant.is_creatable():
-                return variant.get_train_location()
+                return variant.get_train_location_id()
 
         return None
 

@@ -44,7 +44,7 @@ class AoCAuxiliarySubprocessor:
         creatable_raw_api_object.add_raw_parent("engine.aux.create.CreatableGameEntity")
 
         # Get train location of line
-        train_location_id = line.get_train_location()
+        train_location_id = line.get_train_location_id()
         if isinstance(line, GenieBuildingLineGroup):
             train_location = dataset.unit_lines[train_location_id]
             train_location_name = UNIT_LINE_LOOKUPS[train_location_id][0]

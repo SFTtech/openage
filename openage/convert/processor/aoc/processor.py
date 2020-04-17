@@ -30,7 +30,7 @@ from .nyan_subprocessor import AoCNyanSubprocessor
 from ...nyan.api_loader import load_api
 from .modpack_subprocessor import AoCModpackSubprocessor
 from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
-from openage.convert.dataformat.aoc.genie_tech import StatUpgrade
+from openage.convert.dataformat.aoc.genie_tech import StatUpgrade, InitiatedTech
 from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
@@ -116,12 +116,12 @@ class AoCProcessor:
         cls._create_unit_lines(full_data_set)
         cls._create_extra_unit_lines(full_data_set)
         cls._create_building_lines(full_data_set)
-        cls._create_tech_groups(full_data_set)
-        cls._create_civ_groups(full_data_set)
         cls._create_villager_groups(full_data_set)
         cls._create_ambient_groups(full_data_set)
         cls._create_variant_groups(full_data_set)
         cls._create_terrain_groups(full_data_set)
+        cls._create_tech_groups(full_data_set)
+        cls._create_civ_groups(full_data_set)
 
         info("Linking API-like objects...")
 
@@ -273,7 +273,6 @@ class AoCProcessor:
             civ_id = index
 
             civ_members = raw_civ.get_value()
-            civ_members.pop("units")  # Removed because we store them as separate objects
 
             civ = GenieCivilizationObject(civ_id, full_data_set, members=civ_members)
             full_data_set.genie_civs.update({civ.get_id(): civ})
@@ -757,6 +756,23 @@ class AoCProcessor:
                 full_data_set.tech_groups.update({unit_upgrade.get_id(): unit_upgrade})
                 full_data_set.unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
 
+        # Initiated techs are stored with buildings
+        genie_units = full_data_set.genie_units
+
+        for genie_unit in genie_units.values():
+            if not genie_unit.has_member("research_id"):
+                continue
+
+            building_id = genie_unit.get_member("id0").get_value()
+            initiated_tech_id = genie_unit.get_member("research_id").get_value()
+
+            if initiated_tech_id == -1:
+                continue
+
+            initiated_tech = InitiatedTech(initiated_tech_id, building_id, full_data_set)
+            full_data_set.tech_groups.update({initiated_tech.get_id(): initiated_tech})
+            full_data_set.initiated_techs.update({initiated_tech.get_id(): initiated_tech})
+
         # Civ boni have to be aquired from techs
         # Civ boni = ONLY passive boni (not unit unlocks, unit upgrades or team bonus)
         genie_techs = full_data_set.genie_techs
@@ -961,7 +977,7 @@ class AoCProcessor:
 
         for unit_line in unit_lines.values():
             if unit_line.is_creatable():
-                train_location_id = unit_line.get_train_location()
+                train_location_id = unit_line.get_train_location_id()
                 full_data_set.building_lines[train_location_id].add_creatable(unit_line)
 
         # Link buildings to villagers and fishing ships
@@ -969,7 +985,7 @@ class AoCProcessor:
 
         for building_line in building_lines.values():
             if building_line.is_creatable():
-                train_location_id = building_line.get_train_location()
+                train_location_id = building_line.get_train_location_id()
 
                 if train_location_id in full_data_set.villager_groups.keys():
                     full_data_set.villager_groups[train_location_id].add_creatable(building_line)

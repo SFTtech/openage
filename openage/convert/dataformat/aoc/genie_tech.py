@@ -247,8 +247,7 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
 
 class UnitUnlock(GenieTechEffectBundleGroup):
     """
-    Unlocks units and buildings for an Age, sometimes with additional
-    requirements like (266 - Castle built).
+    Unlocks units, sometimes with additional requirements like (266 - Castle built).
 
     This will become one or more patches for an AgeUpgrade Tech. If the unlock
     is civ-specific, two patches (one for the age, one for the civ)
@@ -260,7 +259,7 @@ class UnitUnlock(GenieTechEffectBundleGroup):
         Creates a new Genie tech group object.
 
         :param tech_id: The internal tech_id from the .dat file.
-        :param line_id: The unit line that is unlocked.
+        :param line_id: The id of the unlocked line.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
@@ -270,8 +269,74 @@ class UnitUnlock(GenieTechEffectBundleGroup):
 
         self.line_id = line_id
 
+    def get_unlocked_line(self):
+        """
+        Returns the line that is unlocked by this tech.
+        """
+        return self.data.unit_lines_vertical_ref[self.line_id]
+
     def __repr__(self):
         return "UnitUnlock<%s>" % (self.get_id())
+
+
+class BuildingUnlock(GenieTechEffectBundleGroup):
+    """
+    Unlocks buildings, sometimes with additional requirements like (266 - Castle built).
+
+    This will become one or more patches for an AgeUpgrade Tech. If the unlock
+    is civ-specific, two patches (one for the age, one for the civ)
+    will be created.
+    """
+
+    def __init__(self, tech_id, head_unit_id, full_data_set):
+        """
+        Creates a new Genie tech group object.
+
+        :param tech_id: The internal tech_id from the .dat file.
+        :param head_unit_id: The id of the unlocked line.
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        """
+
+        super().__init__(tech_id, full_data_set)
+
+        self.head_unit_id = head_unit_id
+
+    def get_unlocked_line(self):
+        """
+        Returns the line that is unlocked by this tech.
+        """
+        return self.data.building_lines[self.head_unit_id]
+
+    def __repr__(self):
+        return "BuildingUnlock<%s>" % (self.get_id())
+
+
+class InitiatedTech(GenieTechEffectBundleGroup):
+    """
+    Techs initiated by buildings when they have finished constructing.
+
+    This will used to determine requirements for the creatables.
+    """
+
+    def __init__(self, tech_id, building_id, full_data_set):
+        """
+        Creates a new Genie tech group object.
+
+        :param tech_id: The internal tech_id from the .dat file.
+        :param building_id: The id of the genie building initiatig this tech.
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        """
+
+        super().__init__(tech_id, full_data_set)
+
+        self.building_id = building_id
+
+    def __repr__(self):
+        return "InitiatedTech<%s>" % (self.get_id())
 
 
 class CivBonus(GenieTechEffectBundleGroup):

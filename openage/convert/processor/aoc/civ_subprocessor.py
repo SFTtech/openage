@@ -25,8 +25,7 @@ class AoCCivSubprocessor:
 
         patches.extend(cls._setup_unique_units(civ_group))
         patches.extend(cls._setup_unique_techs(civ_group))
-
-        # TODO: Tech tree
+        patches.extend(cls._setup_tech_tree(civ_group))
 
         # TODO: Team bonus
 
@@ -183,7 +182,7 @@ class AoCCivSubprocessor:
                 game_entity_name = UNIT_LINE_LOOKUPS[head_unit_id][0]
 
             # Get train location of line
-            train_location_id = unique_line.get_train_location()
+            train_location_id = unique_line.get_train_location_id()
             if isinstance(unique_line, GenieBuildingLineGroup):
                 train_location = dataset.unit_lines[train_location_id]
                 train_location_name = UNIT_LINE_LOOKUPS[train_location_id][0]
@@ -288,6 +287,183 @@ class AoCCivSubprocessor:
                                                            [researchable_expected_pointer],
                                                            "engine.ability.type.Research",
                                                            MemberOperator.ADD)
+
+            patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+            wrapper_raw_api_object.add_raw_member("patch",
+                                                  patch_expected_pointer,
+                                                  "engine.aux.patch.Patch")
+
+            civ_group.add_raw_api_object(wrapper_raw_api_object)
+            civ_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+            wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
+            patches.append(wrapper_expected_pointer)
+
+        return patches
+
+    @staticmethod
+    def _setup_tech_tree(civ_group):
+        """
+        Patches standard techs and units out of Research and Create.
+        """
+        patches = []
+
+        civ_id = civ_group.get_id()
+        dataset = civ_group.data
+        civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
+
+        disabled_techs = dict()
+        disabled_entities = dict()
+
+        tech_tree = civ_group.get_tech_tree_effects()
+        for effect in tech_tree:
+            type_id = effect.get_type()
+
+            if type_id != 102:
+                continue
+
+            # Get tech id
+            tech_id = int(effect["attr_d"].get_value())
+
+            # Check what the purpose of the tech is
+            if tech_id in dataset.unit_unlocks.keys():
+                unlock_tech = dataset.unit_unlocks[tech_id]
+                unlocked_line = unlock_tech.get_unlocked_line()
+                train_location_id = unlocked_line.get_train_location_id()
+
+                if isinstance(unlocked_line, GenieBuildingLineGroup):
+                    train_location = dataset.unit_lines[train_location_id]
+
+                else:
+                    train_location = dataset.building_lines[train_location_id]
+
+                if train_location in disabled_entities.keys():
+                    disabled_entities[train_location].append(unlocked_line)
+
+                else:
+                    disabled_entities[train_location] = [unlocked_line]
+
+            elif tech_id in dataset.civ_boni.keys():
+                # Disables civ boni of other civs
+                continue
+
+            elif tech_id in dataset.tech_groups.keys():
+                tech_group = dataset.tech_groups[tech_id]
+                if tech_group.is_researchable():
+                    research_location_id = tech_group.get_research_location_id()
+                    research_location = dataset.building_lines[research_location_id]
+
+                    if research_location in disabled_techs.keys():
+                        disabled_techs[research_location].append(tech_group)
+
+                    else:
+                        disabled_techs[research_location] = [tech_group]
+
+            else:
+                continue
+
+        for train_location, entities in disabled_entities.items():
+            train_location_id = train_location.get_head_unit_id()
+            if isinstance(train_location, GenieBuildingLineGroup):
+                train_location_name = BUILDING_LINE_LOOKUPS[train_location_id][0]
+
+            else:
+                train_location_name = UNIT_LINE_LOOKUPS[train_location_id][0]
+
+            patch_target_ref = "%s.Create" % (train_location_name)
+            patch_target_expected_pointer = ExpectedPointer(train_location, patch_target_ref)
+
+            # Wrapper
+            wrapper_name = "Disable%sCreatablesWrapper" % (train_location_name)
+            wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
+            wrapper_location = ExpectedPointer(civ_group, civ_name)
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                                  wrapper_name,
+                                                  dataset.nyan_api_objects,
+                                                  wrapper_location)
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            # Nyan patch
+            nyan_patch_name = "Disable%sCreatables" % (train_location_name)
+            nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                     nyan_patch_name,
+                                                     dataset.nyan_api_objects,
+                                                     nyan_patch_location)
+            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+            entities_expected_pointers = []
+            for entity in entities:
+                entity_id = entity.get_head_unit_id()
+                if isinstance(entity, GenieBuildingLineGroup):
+                    game_entity_name = BUILDING_LINE_LOOKUPS[entity_id][0]
+
+                else:
+                    game_entity_name = UNIT_LINE_LOOKUPS[entity_id][0]
+
+                disabled_ref = "%s.CreatableGameEntity" % (game_entity_name)
+                disabled_expected_pointer = ExpectedPointer(entity, disabled_ref)
+                entities_expected_pointers.append(disabled_expected_pointer)
+
+            nyan_patch_raw_api_object.add_raw_patch_member("creatables",
+                                                           entities_expected_pointers,
+                                                           "engine.ability.type.Create",
+                                                           MemberOperator.SUBTRACT)
+
+            patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+            wrapper_raw_api_object.add_raw_member("patch",
+                                                  patch_expected_pointer,
+                                                  "engine.aux.patch.Patch")
+
+            civ_group.add_raw_api_object(wrapper_raw_api_object)
+            civ_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+            wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
+            patches.append(wrapper_expected_pointer)
+
+        for research_location, techs in disabled_techs.items():
+            research_location_id = research_location.get_head_unit_id()
+            research_location_name = BUILDING_LINE_LOOKUPS[research_location_id][0]
+
+            patch_target_ref = "%s.Research" % (research_location_name)
+            patch_target_expected_pointer = ExpectedPointer(research_location, patch_target_ref)
+
+            # Wrapper
+            wrapper_name = "Disable%sResearchablesWrapper" % (research_location_name)
+            wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
+            wrapper_location = ExpectedPointer(civ_group, civ_name)
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                                  wrapper_name,
+                                                  dataset.nyan_api_objects,
+                                                  wrapper_location)
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            # Nyan patch
+            nyan_patch_name = "Disable%sResearchables" % (research_location_name)
+            nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                     nyan_patch_name,
+                                                     dataset.nyan_api_objects,
+                                                     nyan_patch_location)
+            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+            entities_expected_pointers = []
+            for tech_group in techs:
+                tech_id = tech_group.get_id()
+                tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+
+                disabled_ref = "%s.ResearchableTech" % (tech_name)
+                disabled_expected_pointer = ExpectedPointer(tech_group, disabled_ref)
+                entities_expected_pointers.append(disabled_expected_pointer)
+
+            nyan_patch_raw_api_object.add_raw_patch_member("researchables",
+                                                           entities_expected_pointers,
+                                                           "engine.ability.type.Research",
+                                                           MemberOperator.SUBTRACT)
 
             patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",

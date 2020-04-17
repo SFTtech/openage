@@ -57,6 +57,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.unit_unlocks = {}
         self.civ_boni = {}
         self.stat_upgrades = {}
+        self.initiated_techs = {}
         self.terrain_groups = {}
 
         # Stores which line a unit is part of
