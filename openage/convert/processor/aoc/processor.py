@@ -1031,7 +1031,7 @@ class AoCProcessor:
                 full_data_set.civ_groups[enabling_civ_id].add_unique_entity(building_line)
 
         for tech_group in full_data_set.tech_groups.values():
-            if tech_group.is_unique():
+            if tech_group.is_unique() and tech_group.is_researchable():
                 civ_id = tech_group.get_civilization()
                 full_data_set.civ_groups[civ_id].add_unique_tech(tech_group)
 

@@ -865,10 +865,11 @@ class AoCNyanSubprocessor:
                                       "engine.aux.civilization.Civilization")
 
         # =======================================================================
-        # TODO: Civ setup
+        # Civ setup
         # =======================================================================
+        civ_setup = AoCCivSubprocessor.get_civ_setup(civ_group)
         raw_api_object.add_raw_member("civ_setup",
-                                      [],
+                                      civ_setup,
                                       "engine.aux.civilization.Civilization")
 
     @staticmethod

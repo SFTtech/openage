@@ -3,9 +3,12 @@
 """
 Creates patches and modifiers for civs.
 """
-from openage.convert.dataformat.aoc.internal_nyan_names import CIV_GROUP_LOOKUPS
+from openage.convert.dataformat.aoc.internal_nyan_names import CIV_GROUP_LOOKUPS,\
+    UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from openage.nyan.nyan_structs import MemberOperator
 
 
 class AoCCivSubprocessor:
@@ -13,10 +16,19 @@ class AoCCivSubprocessor:
     @classmethod
     def get_civ_setup(cls, civ_group):
         """
-        Returns the patches for the civ setup which configures
+        Returns the patches for the civ setup which configures architecture sets
         unique units, unique techs, team boni and unique stat upgrades.
         """
         patches = []
+
+        # TODO: Architecture set
+
+        patches.extend(cls._setup_unique_units(civ_group))
+        patches.extend(cls._setup_unique_techs(civ_group))
+
+        # TODO: Tech tree
+
+        # TODO: Team bonus
 
         return patches
 
@@ -150,3 +162,142 @@ class AoCCivSubprocessor:
         civ_group.add_raw_api_object(stone_raw_api_object)
 
         return resource_amounts
+
+    @staticmethod
+    def _setup_unique_units(civ_group):
+        """
+        Patches the unique units into their train location.
+        """
+        patches = []
+
+        civ_id = civ_group.get_id()
+        dataset = civ_group.data
+        civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
+
+        for unique_line in civ_group.unique_entities.values():
+            head_unit_id = unique_line.get_head_unit_id()
+            if isinstance(unique_line, GenieBuildingLineGroup):
+                game_entity_name = BUILDING_LINE_LOOKUPS[head_unit_id][0]
+
+            else:
+                game_entity_name = UNIT_LINE_LOOKUPS[head_unit_id][0]
+
+            # Get train location of line
+            train_location_id = unique_line.get_train_location()
+            if isinstance(unique_line, GenieBuildingLineGroup):
+                train_location = dataset.unit_lines[train_location_id]
+                train_location_name = UNIT_LINE_LOOKUPS[train_location_id][0]
+
+            else:
+                train_location = dataset.building_lines[train_location_id]
+                train_location_name = BUILDING_LINE_LOOKUPS[train_location_id][0]
+
+            patch_target_ref = "%s.Create" % (train_location_name)
+            patch_target_expected_pointer = ExpectedPointer(train_location, patch_target_ref)
+
+            # Wrapper
+            wrapper_name = "Add%sCreatableWrapper" % (game_entity_name)
+            wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
+            wrapper_location = ExpectedPointer(civ_group, civ_name)
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                                  wrapper_name,
+                                                  dataset.nyan_api_objects,
+                                                  wrapper_location)
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            # Nyan patch
+            nyan_patch_name = "Add%sCreatable" % (game_entity_name)
+            nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                     nyan_patch_name,
+                                                     dataset.nyan_api_objects,
+                                                     nyan_patch_location)
+            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+            # Add creatable
+            creatable_ref = "%s.CreatableGameEntity" % (game_entity_name)
+            creatable_expected_pointer = ExpectedPointer(unique_line, creatable_ref)
+            nyan_patch_raw_api_object.add_raw_patch_member("creatables",
+                                                           [creatable_expected_pointer],
+                                                           "engine.ability.type.Create",
+                                                           MemberOperator.ADD)
+
+            patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+            wrapper_raw_api_object.add_raw_member("patch",
+                                                  patch_expected_pointer,
+                                                  "engine.aux.patch.Patch")
+
+            civ_group.add_raw_api_object(wrapper_raw_api_object)
+            civ_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+            wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
+            patches.append(wrapper_expected_pointer)
+
+        return patches
+
+    @staticmethod
+    def _setup_unique_techs(civ_group):
+        """
+        Patches the unique techs into their research location.
+        """
+        patches = []
+
+        civ_id = civ_group.get_id()
+        dataset = civ_group.data
+        civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
+
+        for unique_tech in civ_group.unique_techs.values():
+            tech_id = unique_tech.get_id()
+            tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+
+            # Get train location of line
+            research_location_id = unique_tech.get_research_location_id()
+            research_location = dataset.building_lines[research_location_id]
+            research_location_name = BUILDING_LINE_LOOKUPS[research_location_id][0]
+
+            patch_target_ref = "%s.Research" % (research_location_name)
+            patch_target_expected_pointer = ExpectedPointer(research_location, patch_target_ref)
+
+            # Wrapper
+            wrapper_name = "Add%sResearchableWrapper" % (tech_name)
+            wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
+            wrapper_location = ExpectedPointer(civ_group, civ_name)
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                                  wrapper_name,
+                                                  dataset.nyan_api_objects,
+                                                  wrapper_location)
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            # Nyan patch
+            nyan_patch_name = "Add%sResearchable" % (tech_name)
+            nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                     nyan_patch_name,
+                                                     dataset.nyan_api_objects,
+                                                     nyan_patch_location)
+            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+            # Add creatable
+            researchable_ref = "%s.ResearchableTech" % (tech_name)
+            researchable_expected_pointer = ExpectedPointer(unique_tech, researchable_ref)
+            nyan_patch_raw_api_object.add_raw_patch_member("researchables",
+                                                           [researchable_expected_pointer],
+                                                           "engine.ability.type.Research",
+                                                           MemberOperator.ADD)
+
+            patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+            wrapper_raw_api_object.add_raw_member("patch",
+                                                  patch_expected_pointer,
+                                                  "engine.aux.patch.Patch")
+
+            civ_group.add_raw_api_object(wrapper_raw_api_object)
+            civ_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+            wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
+            patches.append(wrapper_expected_pointer)
+
+        return patches
