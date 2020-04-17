@@ -55,14 +55,53 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         self.civ = self.data.genie_civs[civ_id]
 
         team_bonus_id = self.civ.get_member("team_bonus_id").get_value()
-        if civ_id == 0:
+        if team_bonus_id == -1:
             # Gaia civ has no team bonus
             self.team_bonus = None
         else:
             self.team_bonus = self.data.genie_effect_bundles[team_bonus_id]
 
         tech_tree_id = self.civ.get_member("tech_tree_id").get_value()
-        self.disabled_techs = self.data.genie_effect_bundles[tech_tree_id]
+        self.tech_tree = self.data.genie_effect_bundles[tech_tree_id]
+
+        # Civ boni (without team bonus)
+        self.civ_boni = {}
+
+        # Unique units/buildings
+        self.unique_entities = {}
+
+        # Unique techs
+        self.unique_techs = {}
+
+    def add_civ_bonus(self, civ_bonus):
+        """
+        Adds a civ bonus tech to the civilization.
+        """
+        self.civ_boni.update({civ_bonus.get_id(): civ_bonus})
+
+    def add_unique_entity(self, entity_group):
+        """
+        Adds a unique unit to the civilization.
+        """
+        self.unique_entities.update({entity_group.get_id(): entity_group})
+
+    def add_unique_tech(self, tech_group):
+        """
+        Adds a unique tech to the civilization.
+        """
+        self.unique_techs.update({tech_group.get_id(): tech_group})
+
+    def get_team_bonus_effects(self):
+        """
+        Returns the effects of the team bonus.
+        """
+        return self.team_bonus.get_effects()
+
+    def get_tech_tree_effects(self):
+        """
+        Returns the tech tree effects.
+        """
+        return self.tech_tree.get_effects()
 
     def __repr__(self):
         return "GenieCivilizationGroup<%s>" % (self.get_id())

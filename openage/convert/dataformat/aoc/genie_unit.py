@@ -299,7 +299,12 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         head_unit_id = head_unit.get_member("id0").get_value()
 
         if isinstance(self, GenieUnitLineGroup):
-            head_unit_connection = self.data.unit_connections[head_unit_id]
+            if head_unit_id in self.data.unit_connections.keys():
+                head_unit_connection = self.data.unit_connections[head_unit_id]
+
+            else:
+                # Animals
+                return False
 
         elif isinstance(self, GenieBuildingLineGroup):
             head_unit_connection = self.data.building_connections[head_unit_id]

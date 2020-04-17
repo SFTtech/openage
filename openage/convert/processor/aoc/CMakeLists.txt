@@ -2,6 +2,7 @@ add_py_modules(
 	__init__.py
 	ability_subprocessor.py
 	auxiliary_subprocessor.py
+	civ_subprocessor.py
 	effect_subprocessor.py
 	media_subprocessor.py
 	modifier_subprocessor.py

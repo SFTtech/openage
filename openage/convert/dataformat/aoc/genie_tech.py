@@ -96,6 +96,29 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
         return None
 
+    def get_required_techs(self):
+        """
+        Returns the techs that are required for this tech.
+        """
+        required_tech_ids = self.tech.get_member("required_techs").get_value()
+
+        required_techs = []
+
+        for tech_id_member in required_tech_ids:
+            tech_id = tech_id_member.get_value()
+            if tech_id == -1:
+                break
+
+            required_techs.append(self.data.genie_techs[tech_id])
+
+        return required_techs
+
+    def get_required_tech_count(self):
+        """
+        Returns the number of required techs necessary to unlock this  tech.
+        """
+        return self.tech.get_member("required_tech_count").get_value()
+
     def get_research_location_id(self):
         """
         Returns the group_id for a building line if the tech is
@@ -253,8 +276,7 @@ class UnitUnlock(GenieTechEffectBundleGroup):
 
 class CivBonus(GenieTechEffectBundleGroup):
     """
-    Gives one specific civilization a bonus. Not the team bonus
-    because that's not a Tech in Genie.
+    Gives one specific civilization a bonus. Not the team bonus or tech tree.
 
     This will become patches in the Civilization API object.
     """
@@ -273,6 +295,9 @@ class CivBonus(GenieTechEffectBundleGroup):
         super().__init__(tech_id, full_data_set)
 
         self.civ_id = civ_id
+
+    def get_civilization(self):
+        return self.civ_id
 
     def __repr__(self):
         return "CivBonus<%s>" % (self.get_id())

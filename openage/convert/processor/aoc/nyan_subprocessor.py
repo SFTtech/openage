@@ -18,6 +18,7 @@ from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOO
     TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, CIV_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
+from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
 
 
 class AoCNyanSubprocessor:
@@ -856,10 +857,11 @@ class AoCNyanSubprocessor:
                                       "engine.aux.civilization.Civilization")
 
         # =======================================================================
-        # TODO: Starting resources
+        # Starting resources
         # =======================================================================
+        resource_amounts = AoCCivSubprocessor.get_starting_resources(civ_group)
         raw_api_object.add_raw_member("starting_resources",
-                                      [],
+                                      resource_amounts,
                                       "engine.aux.civilization.Civilization")
 
         # =======================================================================
