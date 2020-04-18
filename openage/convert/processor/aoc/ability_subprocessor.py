@@ -25,18 +25,6 @@ from math import degrees
 class AoCAbilitySubprocessor:
 
     @staticmethod
-    def active_transform_to_ability(line):
-        """
-        Adds the ActiveTransformTo ability to a line.
-
-        :param line: Unit/Building line that gets the ability.
-        :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
-        """
-        # TODO: Implement
-
-    @staticmethod
     def apply_continuous_effect_ability(line, command_id, ranged=False):
         """
         Adds the ApplyContinuousEffect ability to a line.
@@ -606,10 +594,16 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.PassiveTransformTo")
 
         # Transform time
-        # Not setting this to 0.0 allows abilities to use the death condition
-        # for stuff before they are deactivated (TODO: is this a good idea?)
+        # Use the time of the dying graphics
+        if ability_animation_id > -1:
+            dying_animation = dataset.genie_graphics[ability_animation_id]
+            death_time = dying_animation.get_animation_length()
+
+        else:
+            death_time = 0.0
+
         ability_raw_api_object.add_raw_member("transform_time",
-                                              0.01,
+                                              death_time,
                                               "engine.ability.type.PassiveTransformTo")
 
         # Target state
@@ -653,9 +647,109 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.PassiveTransformTo")
 
         # Transform progress
+        # =====================================================================================
+        progress_name = "%s.Death.DeathProgress" % (game_entity_name)
+        progress_raw_api_object = RawAPIObject(progress_name, "DeathProgress", dataset.nyan_api_objects)
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.TransformProgress")
+        progress_location = ExpectedPointer(line, ability_ref)
+        progress_raw_api_object.set_location(progress_location)
+
+        # Interval = (0.0, 100.0)
+        progress_raw_api_object.add_raw_member("left_boundary",
+                                               0.0,
+                                               "engine.aux.progress.Progress")
+        progress_raw_api_object.add_raw_member("right_boundary",
+                                               100.0,
+                                               "engine.aux.progress.Progress")
+
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+        progress_raw_api_object.add_raw_member("state_change",
+                                               target_state_expected_pointer,
+                                               "engine.aux.progress.specialization.StateChangeProgress")
+
+        line.add_raw_api_object(progress_raw_api_object)
+        # =====================================================================================
+        progress_expected_pointer = ExpectedPointer(line, progress_name)
         ability_raw_api_object.add_raw_member("transform_progress",
-                                              [],
+                                              [progress_expected_pointer],
                                               "engine.ability.type.PassiveTransformTo")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def delete_ability(line):
+        """
+        Adds a PassiveTransformTo ability to a line that is used to make entities die.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_ref = "%s.Delete" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Delete", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.ActiveTransformTo")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        ability_animation_id = current_unit.get_member("dying_graphic").get_value()
+
+        if ability_animation_id > -1:
+            # Use the animation from Death ability
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+
+            animations_set = []
+            animation_ref = "%s.Death.DeathAnimation" % (game_entity_name)
+            animation_expected_pointer = ExpectedPointer(line, animation_ref)
+            animations_set.append(animation_expected_pointer)
+            ability_raw_api_object.add_raw_member("animations", animations_set,
+                                                  "engine.ability.specialization.AnimatedAbility")
+
+        # Transform time
+        # Use the time of the dying graphics
+        if ability_animation_id > -1:
+            dying_animation = dataset.genie_graphics[ability_animation_id]
+            death_time = dying_animation.get_animation_length()
+
+        else:
+            death_time = 0.0
+
+        ability_raw_api_object.add_raw_member("transform_time",
+                                              death_time,
+                                              "engine.ability.type.ActiveTransformTo")
+
+        # Target state (reuse from Death)
+        target_state_ref = "%s.Death.DeadState" % (game_entity_name)
+        target_state_expected_pointer = ExpectedPointer(line, target_state_ref)
+        ability_raw_api_object.add_raw_member("target_state",
+                                              target_state_expected_pointer,
+                                              "engine.ability.type.ActiveTransformTo")
+
+        # Transform progress (reuse from Death)
+        progress_ref = "%s.Death.DeathProgress" % (game_entity_name)
+        progress_expected_pointer = ExpectedPointer(line, progress_ref)
+        ability_raw_api_object.add_raw_member("transform_progress",
+                                              [progress_expected_pointer],
+                                              "engine.ability.type.ActiveTransformTo")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -2557,7 +2651,7 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        # TODO: Unused in AoC?
+        # Unused in AoC
 
     @staticmethod
     def remove_storage_ability(line):

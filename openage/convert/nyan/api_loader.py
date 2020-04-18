@@ -3239,7 +3239,9 @@ def _insert_members(api_objects):
     # engine.aux.progress.Progress
     api_object = api_objects["engine.aux.progress.Progress"]
 
-    member = NyanMember("progress", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("left_boundary", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("right_boundary", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.progress.specialization.AnimatedProgress

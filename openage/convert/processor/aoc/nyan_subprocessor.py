@@ -158,6 +158,7 @@ class AoCNyanSubprocessor:
         abilities_set = []
 
         abilities_set.append(AoCAbilitySubprocessor.death_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.delete_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.despawn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(unit_line))
@@ -344,6 +345,7 @@ class AoCNyanSubprocessor:
 
         abilities_set.append(AoCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.death_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.delete_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
