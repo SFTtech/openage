@@ -267,7 +267,10 @@ class NyanObject:
         if not isinstance(new_inherited_member, InheritedNyanMember):
             raise Exception("added member must have <InheritedNyanMember> type")
 
-        self._inherited_members.add(new_inherited_member)
+        # Only add it, if it was not inherited before
+        if not self.has_member(new_inherited_member.get_name(),
+                               new_inherited_member.get_origin()):
+            self._inherited_members.add(new_inherited_member)
 
         # Update child objects
         for child in self._children:

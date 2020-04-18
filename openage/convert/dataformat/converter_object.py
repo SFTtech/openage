@@ -13,7 +13,7 @@ from .aoc.combined_sprite import CombinedSprite
 from openage.convert.dataformat.value_members import NoDiffMember
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
-from openage.nyan.nyan_structs import NyanPatch, NyanMember, NyanPatchMember
+from openage.nyan.nyan_structs import NyanPatch, NyanPatchMember
 
 
 class ConverterObject:
@@ -200,7 +200,12 @@ class ConverterObjectGroup:
         """
         Returns a subobject of the object.
         """
-        return self.raw_api_objects[obj_id]
+        try:
+            return self.raw_api_objects[obj_id]
+
+        except KeyError:
+            raise Exception("%s: Could not find raw API object with obj_id %s"
+                            % (self, obj_id))
 
     def get_raw_api_objects(self):
         """

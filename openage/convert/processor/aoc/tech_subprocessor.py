@@ -8,6 +8,7 @@ from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
 from openage.nyan.nyan_structs import MemberOperator
 from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
+from openage.convert.dataformat.aoc.genie_civ import GenieCivilizationGroup
 
 
 class AoCTechSubprocessor:
@@ -81,32 +82,40 @@ class AoCTechSubprocessor:
     }
 
     @classmethod
-    def get_patches(cls, tech_group):
+    def get_patches(cls, converter_group):
         """
-        Returns the patches for a tech group, depending on the type
+        Returns the patches for a converter group, depending on the type
         of its effects.
         """
         patches = []
-        for effect in tech_group.effects.get_effects():
+        team_effect = False
+
+        if isinstance(converter_group, GenieCivilizationGroup):
+            effects = converter_group.get_team_bonus_effects()
+            team_effect = True
+
+        else:
+            effects = converter_group.effects.get_effects()
+
+        for effect in effects:
             type_id = effect.get_type()
 
-            team_effect = False
             if type_id in (10, 11, 12, 13, 14, 15, 16):
                 team_effect = True
                 type_id -= 10
 
             if type_id in (0, 4, 5):
-                patches.extend(cls._attribute_modify_effect(tech_group, effect))
+                patches.extend(cls._attribute_modify_effect(converter_group, effect, team=team_effect))
 
             elif type_id in (1, 6):
-                patches.extend(cls._resource_modify_effect(tech_group, effect))
+                patches.extend(cls._resource_modify_effect(converter_group, effect, team=team_effect))
 
             elif type_id == 2:
                 # TODO: Enabling/disabling units
                 pass
 
             elif type_id == 3:
-                patches.extend(cls._upgrade_unit_effect(tech_group, effect))
+                patches.extend(cls._upgrade_unit_effect(converter_group, effect))
 
             elif type_id == 101:
                 # TODO: Tech cost
@@ -123,12 +132,12 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def _attribute_modify_effect(tech_group, effect):
+    def _attribute_modify_effect(converter_group, effect, team=False):
         """
         Creates the patches for modifying attributes of entities.
         """
         patches = []
-        dataset = tech_group.data
+        dataset = converter_group.data
 
         effect_type = effect.get_type()
         operator = None
@@ -179,12 +188,12 @@ class AoCTechSubprocessor:
 
         upgrade_func = AoCTechSubprocessor.upgrade_attribute_funcs[attribute_type]
         for affected_entity in affected_entities:
-            patches.extend(upgrade_func(tech_group, affected_entity, value, operator))
+            patches.extend(upgrade_func(converter_group, affected_entity, value, operator, team))
 
         return patches
 
     @staticmethod
-    def _resource_modify_effect(tech_group, effect):
+    def _resource_modify_effect(converter_group, effect, team=False):
         """
         Creates the patches for modifying resources.
         """
@@ -217,17 +226,17 @@ class AoCTechSubprocessor:
             return patches
 
         upgrade_func = AoCTechSubprocessor.upgrade_resource_funcs[resource_id]
-        patches.extend(upgrade_func(tech_group, value, operator))
+        patches.extend(upgrade_func(converter_group, value, operator, team))
 
         return patches
 
     @staticmethod
-    def _upgrade_unit_effect(tech_group, effect):
+    def _upgrade_unit_effect(converter_group, effect):
         """
         Creates the patches for upgrading entities in a line.
         """
         patches = []
-        dataset = tech_group.data
+        dataset = converter_group.data
 
         upgrade_source_id = effect["attr_a"].get_value()
         upgrade_target_id = effect["attr_b"].get_value()
@@ -252,30 +261,30 @@ class AoCTechSubprocessor:
 
         diff = upgrade_source.diff(upgrade_target)
 
-        patches.extend(AoCUgradeAbilitySubprocessor.death_ability(tech_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.despawn_ability(tech_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.idle_ability(tech_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.live_ability(tech_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.los_ability(tech_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.resistance_ability(tech_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.selectable_ability(tech_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.turn_ability(tech_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.death_ability(converter_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.despawn_ability(converter_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.idle_ability(converter_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.live_ability(converter_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.los_ability(converter_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.resistance_ability(converter_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.selectable_ability(converter_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.turn_ability(converter_group, line, diff))
 
         if line.is_projectile_shooter():
-            patches.extend(AoCUgradeAbilitySubprocessor.shoot_projectile_ability(tech_group, line,
+            patches.extend(AoCUgradeAbilitySubprocessor.shoot_projectile_ability(converter_group, line,
                                                                                  upgrade_source,
                                                                                  upgrade_target,
                                                                                  7, diff))
         elif line.is_melee() or line.is_ranged():
             if line.has_command(7):
                 # Attack
-                patches.extend(AoCUgradeAbilitySubprocessor.apply_discrete_effect_ability(tech_group,
+                patches.extend(AoCUgradeAbilitySubprocessor.apply_discrete_effect_ability(converter_group,
                                                                                           line,
                                                                                           7,
                                                                                           line.is_ranged(),
                                                                                           diff))
 
         if isinstance(line, GenieUnitLineGroup):
-            patches.extend(AoCUgradeAbilitySubprocessor.move_ability(tech_group, line, diff))
+            patches.extend(AoCUgradeAbilitySubprocessor.move_ability(converter_group, line, diff))
 
         return patches

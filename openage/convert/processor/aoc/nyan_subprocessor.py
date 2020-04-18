@@ -99,6 +99,8 @@ class AoCNyanSubprocessor:
         for terrain_group in full_data_set.terrain_groups.values():
             cls._terrain_group_to_terrain(terrain_group)
 
+        AoCCivSubprocessor.create_graphics_sets(full_data_set)
+
         for civ_group in full_data_set.civ_groups.values():
             cls._civ_group_to_civ(civ_group)
 

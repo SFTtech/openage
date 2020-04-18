@@ -273,6 +273,10 @@ class AoCProcessor:
             civ_id = index
 
             civ_members = raw_civ.get_value()
+            units_member = civ_members.pop("units")
+            units_member = units_member.get_container("id0")
+
+            civ_members.update({"units": units_member})
 
             civ = GenieCivilizationObject(civ_id, full_data_set, members=civ_members)
             full_data_set.genie_civs.update({civ.get_id(): civ})

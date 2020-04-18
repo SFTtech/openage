@@ -4,11 +4,14 @@
 Creates patches and modifiers for civs.
 """
 from openage.convert.dataformat.aoc.internal_nyan_names import CIV_GROUP_LOOKUPS,\
-    UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
+    UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS,\
+    GRAPHICS_SET_LOOKUPS
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 from openage.nyan.nyan_structs import MemberOperator
+from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
+from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
 
 
 class AoCCivSubprocessor:
@@ -21,13 +24,13 @@ class AoCCivSubprocessor:
         """
         patches = []
 
-        # TODO: Architecture set
-
+        patches.extend(cls._setup_graphics_set(civ_group))
         patches.extend(cls._setup_unique_units(civ_group))
         patches.extend(cls._setup_unique_techs(civ_group))
         patches.extend(cls._setup_tech_tree(civ_group))
 
-        # TODO: Team bonus
+        if len(civ_group.get_team_bonus_effects()) > 0:
+            patches.extend(AoCTechSubprocessor.get_patches(civ_group))
 
         return patches
 
@@ -161,6 +164,115 @@ class AoCCivSubprocessor:
         civ_group.add_raw_api_object(stone_raw_api_object)
 
         return resource_amounts
+
+    @classmethod
+    def create_graphics_sets(cls, full_data_set):
+        """
+        Creates patches for the graphics sets of civs.
+        """
+        graphics_sets = GRAPHICS_SET_LOOKUPS
+
+        for set_id, graphics_set in graphics_sets.items():
+            if set_id == 0:
+                # The standard graphics set can be skipped
+                continue
+
+            # Use the first civ for creation
+            civ_id = graphics_set[0][0]
+            civ_group = full_data_set.civ_groups[civ_id]
+            civ_units = civ_group.civ["units"].get_value()
+
+            # We don't need a full diff, only a few animations change
+            for building_line in full_data_set.building_lines.values():
+                std_head_unit = building_line.get_head_unit()
+                std_head_unit_id = building_line.get_head_unit_id()
+                civ_head_unit = civ_units[std_head_unit_id]
+
+                std_idle_animation_id = std_head_unit["idle_graphic0"].get_value()
+                civ_idle_animation_id = civ_head_unit["idle_graphic0"].get_value()
+
+                if std_idle_animation_id != civ_idle_animation_id:
+                    cls._idle_graphics_set(building_line, civ_idle_animation_id,
+                                           graphics_set[1], graphics_set[2])
+
+            for unit_line in full_data_set.unit_lines.values():
+                std_head_unit = unit_line.get_head_unit()
+                std_head_unit_id = unit_line.get_head_unit_id()
+                if std_head_unit_id in civ_units.keys():
+                    civ_head_unit = civ_units[std_head_unit_id]
+
+                else:
+                    continue
+
+                std_idle_animation_id = std_head_unit["idle_graphic0"].get_value()
+                civ_idle_animation_id = civ_head_unit["idle_graphic0"].get_value()
+
+                if std_idle_animation_id != civ_idle_animation_id:
+                    cls._idle_graphics_set(unit_line, civ_idle_animation_id,
+                                           graphics_set[1], graphics_set[2])
+
+    @staticmethod
+    def _setup_graphics_set(civ_group):
+        """
+        Patches the graphics set in.
+        """
+        patches = []
+
+        civ_id = civ_group.get_id()
+        graphics_sets = GRAPHICS_SET_LOOKUPS
+        civ_graphics_set_lookup = None
+        dataset = civ_group.data
+
+        for set_id, graphics_set in graphics_sets.items():
+            if civ_id in graphics_set[0]:
+                civ_graphics_set_lookup = graphics_set
+
+                if set_id == 0:
+                    # This is the standard set that doesn't need extra patching
+                    return patches
+
+                break
+
+        civ_units = civ_group.civ["units"].get_value()
+        graphics_set_name = civ_graphics_set_lookup[1]
+
+        for building_line in dataset.building_lines.values():
+            std_head_unit = building_line.get_head_unit()
+            std_head_unit_id = building_line.get_head_unit_id()
+            civ_head_unit = civ_units[std_head_unit_id]
+
+            std_idle_animation_id = std_head_unit["idle_graphic0"].get_value()
+            civ_idle_animation_id = civ_head_unit["idle_graphic0"].get_value()
+
+            building_name = BUILDING_LINE_LOOKUPS[std_head_unit_id][0]
+
+            if std_idle_animation_id != civ_idle_animation_id:
+                graphics_change_expected_pointer = ExpectedPointer(building_line,
+                                                                   "%s.%sIdleAnimationWrapper"
+                                                                   % (building_name, graphics_set_name))
+                patches.append(graphics_change_expected_pointer)
+
+        for unit_line in dataset.unit_lines.values():
+            std_head_unit = unit_line.get_head_unit()
+            std_head_unit_id = unit_line.get_head_unit_id()
+            if std_head_unit_id in civ_units.keys():
+                civ_head_unit = civ_units[std_head_unit_id]
+
+            else:
+                continue
+
+            std_idle_animation_id = std_head_unit["idle_graphic0"].get_value()
+            civ_idle_animation_id = civ_head_unit["idle_graphic0"].get_value()
+
+            unit_name = UNIT_LINE_LOOKUPS[std_head_unit_id][0]
+
+            if std_idle_animation_id != civ_idle_animation_id:
+                graphics_change_expected_pointer = ExpectedPointer(unit_line,
+                                                                   "%s.%sIdleAnimationWrapper"
+                                                                   % (unit_name, graphics_set_name))
+                patches.append(graphics_change_expected_pointer)
+
+        return patches
 
     @staticmethod
     def _setup_unique_units(civ_group):
@@ -477,3 +589,124 @@ class AoCCivSubprocessor:
             patches.append(wrapper_expected_pointer)
 
         return patches
+
+    @staticmethod
+    def _idle_graphics_set(line, animation_id, graphics_set_name, graphics_set_filename_prefix):
+        """
+        Creates patches for civ-specific graühics the Idle ability of a line.
+
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointers for the generated patches.
+        :rtype: list
+        """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        patches = []
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        patch_target_ref = "%s.Idle" % (game_entity_name)
+        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = "%sIdleAnimationWrapper" % (graphics_set_name)
+        wrapper_ref = "%s.%s" % (game_entity_name, wrapper_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Store cib graphic changes next to their game entity definition,
+        wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                            % (name_lookup_dict[head_unit_id][1]))
+        wrapper_raw_api_object.set_filename("%s_graphics_set" % (graphics_set_filename_prefix))
+
+        # Nyan patch
+        nyan_patch_name = "%sIdleAnimation" % (graphics_set_name)
+        nyan_patch_ref = "%s.%s.%s" % (game_entity_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(line, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        animations_set = []
+        # Patch the new animation in
+        animation_expected_pointer = AoCCivSubprocessor._create_animation(line,
+                                                                          animation_id,
+                                                                          nyan_patch_ref,
+                                                                          "%sIdle" % (graphics_set_name),
+                                                                          "%s_idle_"
+                                                                          % (graphics_set_filename_prefix))
+        animations_set.append(animation_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("animations",
+                                                       animations_set,
+                                                       "engine.ability.specialization.AnimatedAbility",
+                                                       MemberOperator.ASSIGN)
+
+        patch_expected_pointer = ExpectedPointer(line, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        line.add_raw_api_object(wrapper_raw_api_object)
+        line.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(line, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
+
+        return patches
+
+    @staticmethod
+    def _create_animation(line, animation_id, nyan_patch_ref, animation_name, filename_prefix):
+        """
+        Generates an animation for an ability.
+        """
+        dataset = line.data
+
+        animation_ref = "%s.%sAnimation" % (nyan_patch_ref, animation_name)
+        animation_obj_name = "%sAnimation" % (animation_name)
+        animation_raw_api_object = RawAPIObject(animation_ref, animation_obj_name,
+                                                dataset.nyan_api_objects)
+        animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
+        animation_location = ExpectedPointer(line, nyan_patch_ref)
+        animation_raw_api_object.set_location(animation_location)
+
+        if animation_id in dataset.combined_sprites.keys():
+            animation_sprite = dataset.combined_sprites[animation_id]
+
+        else:
+            if isinstance(line, GenieBuildingLineGroup):
+                animation_filename = "%s%s" % (filename_prefix,
+                                               BUILDING_LINE_LOOKUPS[line.get_head_unit_id()][1])
+
+            else:
+                animation_filename = "%s%s" % (filename_prefix,
+                                               UNIT_LINE_LOOKUPS[line.get_head_unit_id()][1])
+
+            animation_sprite = CombinedSprite(animation_id,
+                                              animation_filename,
+                                              dataset)
+            dataset.combined_sprites.update({animation_sprite.get_id(): animation_sprite})
+
+        animation_sprite.add_reference(animation_raw_api_object)
+
+        animation_raw_api_object.add_raw_member("sprite", animation_sprite,
+                                                "engine.aux.graphics.Animation")
+
+        line.add_raw_api_object(animation_raw_api_object)
+
+        animation_expected_pointer = ExpectedPointer(line, animation_ref)
+
+        return animation_expected_pointer

@@ -257,6 +257,7 @@ TECH_GROUP_LOOKUPS = {
     457: ("Perfusion", "perfusion"),
 }
 
+# key: civ index; value: (nyan object name, filename prefix)
 CIV_GROUP_LOOKUPS = {
     0: ("Gaia", "gaia"),
     1: ("Britons", "britons"),
@@ -277,6 +278,16 @@ CIV_GROUP_LOOKUPS = {
     16: ("Mayans", "mayans"),
     17: ("Huns", "huns"),
     18: ("Koreans", "koreans"),
+}
+
+# key: civ index; value: (civ ids, nyan object name, filename prefix)
+GRAPHICS_SET_LOOKUPS = {
+    0: ((0, 1, 2, 13, 14), "WesternEuropean", "western_european"),
+    1: ((3, 4, 11, 17), "CentralEuropean", "central_european"),
+    2: ((5, 6, 12, 18), "EastAsian", "east_asian"),
+    3: ((8, 9, 10), "MiddleEastern", "middle_eastern"),
+    4: ((7,), "Byzantine", "byzantine"),
+    5: ((15, 16), "MesoAmerican", "meso"),
 }
 
 # key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)

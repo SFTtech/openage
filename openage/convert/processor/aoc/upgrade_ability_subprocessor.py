@@ -596,9 +596,7 @@ class AoCUgradeAbilitySubprocessor:
     @staticmethod
     def idle_ability(tech_group, line, diff=None):
         """
-        Creates a patch for the Idle ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the Idle ability of a line.
 
         :param tech_group: Tech that gets the patch.
         :type tech_group: ...dataformat.converter_object.ConverterObjectGroup

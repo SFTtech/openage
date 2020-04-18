@@ -4,21 +4,22 @@
 Creates upgrade patches for resource modification effects in AoC.
 """
 from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS,\
-    UNIT_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
+    UNIT_LINE_LOOKUPS, TECH_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.nyan.nyan_structs import MemberOperator
+from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 
 
 class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
-    def berserk_heal_rate_upgrade(tech_group, value, operator):
+    def berserk_heal_rate_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the berserk heal rate modify effect (ID: 96).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -27,22 +28,27 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         berserk_id = 692
-        tech_id = tech_group.get_id()
-        dataset = tech_group.data
+        dataset = converter_group.data
         line = dataset.unit_lines[berserk_id]
 
         patches = []
 
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
         game_entity_name = UNIT_LINE_LOOKUPS[berserk_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         patch_target_ref = "%s.RegenerateHealth.HealthRate" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Change%sHealthRegenerationWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -51,8 +57,8 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "Change%sHealthRegeneration" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -67,26 +73,34 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.aux.attribute.AttributeRate",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def bonus_population_upgrade(tech_group, value, operator):
+    def bonus_population_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the bonus population effect (ID: 32).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -94,20 +108,24 @@ class AoCUpgradeResourceSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
-        tech_id = tech_group.get_id()
-        dataset = tech_group.data
+        dataset = converter_group.data
 
         patches = []
 
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
 
         patch_target_ref = "aux.resource.types.PopulationSpace"
         patch_target = dataset.pregen_nyan_objects[patch_target_ref].get_nyan_object()
 
         # Wrapper
         wrapper_name = "ChangePopulationCapWrapper"
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -116,8 +134,8 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "ChangePopulationCap"
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -130,26 +148,34 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.aux.resource.ResourceContingent",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def building_conversion_upgrade(tech_group, value, operator):
+    def building_conversion_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the building conversion effect (ID: 28).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -158,14 +184,19 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         monk_id = 125
-        tech_id = tech_group.get_id()
-        dataset = tech_group.data
+        dataset = converter_group.data
         line = dataset.unit_lines[monk_id]
 
         patches = []
 
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
         game_entity_name = UNIT_LINE_LOOKUPS[monk_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         patch_target_ref = "%s.Convert" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -174,8 +205,8 @@ class AoCUpgradeResourceSubprocessor:
 
         # Wrapper
         wrapper_name = "EnableBuildingConversionWrapper"
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -184,8 +215,8 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "EnableBuildingConversion"
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -226,23 +257,23 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.ability.type.ApplyDiscreteEffect",
                                                        MemberOperator.ADD)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         # Siege unit conversion
 
         # Wrapper
         wrapper_name = "EnableSiegeUnitConversionWrapper"
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -251,8 +282,8 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "EnableSiegeUnitConversion"
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -274,26 +305,34 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.ability.type.ApplyDiscreteEffect",
                                                        MemberOperator.SUBTRACT)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def chinese_tech_discount_upgrade(tech_group, value, operator):
+    def chinese_tech_discount_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the chinese tech discount effect (ID: 85).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -306,12 +345,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def construction_speed_upgrade(tech_group, value, operator):
+    def construction_speed_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the construction speed modify effect (ID: 195).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -324,12 +363,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def conversion_resistance_upgrade(tech_group, value, operator):
+    def conversion_resistance_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the conversion resistance modify effect (ID: 77).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -342,12 +381,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def conversion_resistance_min_rounds_upgrade(tech_group, value, operator):
+    def conversion_resistance_min_rounds_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the conversion resistance modify effect (ID: 178).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -360,12 +399,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def conversion_resistance_max_rounds_upgrade(tech_group, value, operator):
+    def conversion_resistance_max_rounds_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the conversion resistance modify effect (ID: 179).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -378,12 +417,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def crenellations_upgrade(tech_group, value, operator):
+    def crenellations_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the crenellations effect (ID: 194).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -396,12 +435,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def faith_recharge_rate_upgrade(tech_group, value, operator):
+    def faith_recharge_rate_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the faith_recharge_rate modify effect (ID: 35).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -410,22 +449,27 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         monk_id = 125
-        tech_id = tech_group.get_id()
-        dataset = tech_group.data
+        dataset = converter_group.data
         line = dataset.unit_lines[monk_id]
 
         patches = []
 
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
         game_entity_name = UNIT_LINE_LOOKUPS[monk_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         patch_target_ref = "%s.RegenerateFaith.FaithRate" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Change%sFaithRegenerationWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -434,8 +478,8 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "Change%sFaithRegeneration" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -448,26 +492,34 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.aux.attribute.AttributeRate",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def farm_food_upgrade(tech_group, value, operator):
+    def farm_food_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the farm food modify effect (ID: 36).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -476,22 +528,27 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         farm_id = 50
-        tech_id = tech_group.get_id()
-        dataset = tech_group.data
+        dataset = converter_group.data
         line = dataset.building_lines[farm_id]
 
         patches = []
 
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
         game_entity_name = BUILDING_LINE_LOOKUPS[farm_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         patch_target_ref = "%s.Harvestable.%sResourceSpot" % (game_entity_name, game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Change%sFoodAmountWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -500,8 +557,8 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "Change%sFoodAmount" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -514,26 +571,34 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.aux.resource_spot.ResourceSpot",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def gather_food_efficiency_upgrade(tech_group, value, operator):
+    def gather_food_efficiency_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the food gathering efficiency modify effect (ID: 190).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -546,12 +611,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def gather_wood_efficiency_upgrade(tech_group, value, operator):
+    def gather_wood_efficiency_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the wood gathering efficiency modify effect (ID: 189).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -564,12 +629,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def gather_gold_efficiency_upgrade(tech_group, value, operator):
+    def gather_gold_efficiency_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the gold gathering efficiency modify effect (ID: 47).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -582,12 +647,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def gather_stone_efficiency_upgrade(tech_group, value, operator):
+    def gather_stone_efficiency_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the stone gathering efficiency modify effect (ID: 79).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -600,12 +665,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def heal_range_upgrade(tech_group, value, operator):
+    def heal_range_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the heal range modify effect (ID: 90).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -614,22 +679,27 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         monk_id = 125
-        tech_id = tech_group.get_id()
-        dataset = tech_group.data
+        dataset = converter_group.data
         line = dataset.unit_lines[monk_id]
 
         patches = []
 
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
         game_entity_name = UNIT_LINE_LOOKUPS[monk_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         patch_target_ref = "%s.Heal" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Change%sHealRangeWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -638,8 +708,8 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "Change%sHealRange" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -652,26 +722,34 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.ability.type.RangedContinuousEffect",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def heal_rate_upgrade(tech_group, value, operator):
+    def heal_rate_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the heal rate modify effect (ID: 89).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -686,12 +764,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def herding_dominance_upgrade(tech_group, value, operator):
+    def herding_dominance_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the herding dominance effect (ID: 97).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -704,12 +782,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def heresy_upgrade(tech_group, value, operator):
+    def heresy_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the heresy effect (ID: 192).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -722,12 +800,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def monk_conversion_upgrade(tech_group, value, operator):
+    def monk_conversion_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the monk conversion effect (ID: 27).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -736,22 +814,27 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         monk_id = 125
-        tech_id = tech_group.get_id()
-        dataset = tech_group.data
+        dataset = converter_group.data
         line = dataset.unit_lines[monk_id]
 
         patches = []
 
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
         game_entity_name = UNIT_LINE_LOOKUPS[monk_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         patch_target_ref = "%s.Convert" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Enable%sConversionWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -760,8 +843,8 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "Enable%sConversion" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -775,26 +858,34 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.ability.type.ApplyDiscreteEffect",
                                                        MemberOperator.SUBTRACT)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def relic_gold_bonus_upgrade(tech_group, value, operator):
+    def relic_gold_bonus_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the relic gold bonus modify effect (ID: 191).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -807,12 +898,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def reveal_ally_upgrade(tech_group, value, operator):
+    def reveal_ally_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the reveal ally modify effect (ID: 50).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -825,12 +916,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def reveal_enemy_upgrade(tech_group, value, operator):
+    def reveal_enemy_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the reveal enemy modify effect (ID: 183).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -843,12 +934,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def ship_conversion_upgrade(tech_group, value, operator):
+    def ship_conversion_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the ship conversion effect (ID: 87).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -863,12 +954,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def spies_discount_upgrade(tech_group, value, operator):
+    def spies_discount_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the spies discount effect (ID: 197).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -881,12 +972,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def starting_food_upgrade(tech_group, value, operator):
+    def starting_food_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the starting food modify effect (ID: 91).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -899,12 +990,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def starting_wood_upgrade(tech_group, value, operator):
+    def starting_wood_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the starting wood modify effect (ID: 92).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -917,12 +1008,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def starting_villagers_upgrade(tech_group, value, operator):
+    def starting_villagers_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the starting villagers modify effect (ID: 84).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -935,12 +1026,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def starting_population_space_upgrade(tech_group, value, operator):
+    def starting_population_space_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the starting popspace modify effect (ID: 4).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -948,20 +1039,24 @@ class AoCUpgradeResourceSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
-        tech_id = tech_group.get_id()
-        dataset = tech_group.data
+        dataset = converter_group.data
 
         patches = []
 
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
 
         patch_target_ref = "aux.resource.types.PopulationSpace"
         patch_target = dataset.pregen_nyan_objects[patch_target_ref].get_nyan_object()
 
         # Wrapper
         wrapper_name = "ChangeInitialPopulationLimitWrapper"
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(tech_group, tech_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -970,8 +1065,8 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "ChangeInitialPopulationLimit"
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -984,26 +1079,34 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.aux.resource.ResourceContingent",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def theocracy_upgrade(tech_group, value, operator):
+    def theocracy_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the theocracy effect (ID: 193).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -1016,12 +1119,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def trade_penalty_upgrade(tech_group, value, operator):
+    def trade_penalty_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the trade penalty modify effect (ID: 78).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -1034,12 +1137,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def tribute_inefficiency_upgrade(tech_group, value, operator):
+    def tribute_inefficiency_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the tribute inefficiency modify effect (ID: 46).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
@@ -1052,12 +1155,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def wonder_time_increase_upgrade(tech_group, value, operator):
+    def wonder_time_increase_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the wonder time modify effect (ID: 196).
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
