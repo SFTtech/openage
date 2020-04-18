@@ -1791,43 +1791,43 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.resistance.continuous.time_relative_attribute_change.TimeRelativeAttributeChange
+    # engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange
     parents = [api_objects["engine.resistance.continuous.ContinuousResistance"]]
     nyan_object = NyanObject("TimeRelativeAttributeChange", parents)
-    fqon = "engine.resistance.continuous.time_relative_attribute_change.TimeRelativeAttributeChange"
+    fqon = "engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.resistance.continuous.time_relative_attribute_change.type.TimeRelativeAttributeDecrease
-    parents = [api_objects["engine.resistance.continuous.time_relative_attribute_change.TimeRelativeAttributeChange"]]
+    # engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeDecrease
+    parents = [api_objects["engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"]]
     nyan_object = NyanObject("TimeRelativeAttributeDecrease", parents)
-    fqon = "engine.resistance.continuous.time_relative_attribute_change.type.TimeRelativeAttributeDecrease"
+    fqon = "engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeDecrease"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.resistance.continuous.time_relative_attribute_change.type.TimeRelativeAttributeIncrease
-    parents = [api_objects["engine.resistance.continuous.time_relative_attribute_change.TimeRelativeAttributeChange"]]
+    # engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease
+    parents = [api_objects["engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"]]
     nyan_object = NyanObject("TimeRelativeAttributeIncrease", parents)
-    fqon = "engine.resistance.continuous.time_relative_attribute_change.type.TimeRelativeAttributeIncrease"
+    fqon = "engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.resistance.continuous.time_relative_progress_change.TimeRelativeProgressChange
+    # engine.resistance.continuous.time_relative_progress.TimeRelativeProgressChange
     parents = [api_objects["engine.resistance.continuous.ContinuousResistance"]]
     nyan_object = NyanObject("TimeRelativeProgressChange", parents)
-    fqon = "engine.resistance.continuous.time_relative_progress_change.TimeRelativeProgressChange"
+    fqon = "engine.resistance.continuous.time_relative_progress.TimeRelativeProgressChange"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
     # engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressDecrease
-    parents = [api_objects["engine.resistance.continuous.time_relative_progress_change.TimeRelativeProgressChange"]]
+    parents = [api_objects["engine.resistance.continuous.time_relative_progress.TimeRelativeProgressChange"]]
     nyan_object = NyanObject("TimeRelativeProgressDecrease", parents)
     fqon = "engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressDecrease"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
     # engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressIncrease
-    parents = [api_objects["engine.resistance.continuous.time_relative_progress_change.TimeRelativeProgressChange"]]
+    parents = [api_objects["engine.resistance.continuous.time_relative_progress.TimeRelativeProgressChange"]]
     nyan_object = NyanObject("TimeRelativeProgressIncrease", parents)
     fqon = "engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressIncrease"
     nyan_object.set_fqon(fqon)
@@ -3721,15 +3721,15 @@ def _insert_members(api_objects):
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.resistance.continuous.time_relative_attribute_change.TimeRelativeAttributeChange
-    api_object = api_objects["engine.resistance.continuous.time_relative_attribute_change.TimeRelativeAttributeChange"]
+    # engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange
+    api_object = api_objects["engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"]
 
     ref_object = api_objects["engine.aux.attribute_change_type.AttributeChangeType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.resistance.continuous.time_relative_progress.TimeRelativeProgress
-    api_object = api_objects["engine.resistance.continuous.time_relative_progress_change.TimeRelativeProgressChange"]
+    api_object = api_objects["engine.resistance.continuous.time_relative_progress.TimeRelativeProgressChange"]
 
     ref_object = api_objects["engine.aux.progress_type.ProgressType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)

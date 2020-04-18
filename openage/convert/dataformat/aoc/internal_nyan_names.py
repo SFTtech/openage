@@ -206,7 +206,7 @@ TECH_GROUP_LOOKUPS = {
     252: ("Fervor", "fervor"),
     254: ("LightCavalry", "light_cavalry"),
     255: ("SiegeRam", "siege_ram"),
-    257: ("Onager", "Onager"),
+    257: ("Onager", "onager"),
     264: ("Champion", "champion"),
     265: ("Paladin", "paladin"),
     278: ("StoneMining", "stone_mining"),

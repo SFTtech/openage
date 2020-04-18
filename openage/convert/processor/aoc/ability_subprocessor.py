@@ -3228,11 +3228,21 @@ class AoCAbilitySubprocessor:
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
+        # Resistances
         resistances = []
         resistances.extend(AoCEffectSubprocessor.get_attack_resistances(line, ability_ref))
-        # TODO: Other resistance types
+        if isinstance(line, (GenieUnitLineGroup, GenieBuildingLineGroup)):
+            resistances.extend(AoCEffectSubprocessor.get_convert_resistances(line, ability_ref))
 
-        # Resistances
+            if isinstance(line, GenieUnitLineGroup) and not line.is_repairable():
+                resistances.extend(AoCEffectSubprocessor.get_heal_resistances(line, ability_ref))
+
+            if isinstance(line, GenieBuildingLineGroup):
+                resistances.extend(AoCEffectSubprocessor.get_construct_resistances(line, ability_ref))
+
+            if line.is_repairable():
+                resistances.extend(AoCEffectSubprocessor.get_repair_resistances(line, ability_ref))
+
         ability_raw_api_object.add_raw_member("resistances",
                                               resistances,
                                               "engine.ability.type.Resistance")

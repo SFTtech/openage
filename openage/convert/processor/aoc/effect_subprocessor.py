@@ -8,7 +8,8 @@ from openage.convert.dataformat.aoc.internal_nyan_names import ARMOR_CLASS_LOOKU
     UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
+from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
+    GenieBuildingLineGroup
 
 
 class AoCEffectSubprocessor:
@@ -107,7 +108,7 @@ class AoCEffectSubprocessor:
     @staticmethod
     def get_convert_effects(line, ability_ref):
         """
-        Creates effects that are used for attacking (unit command: 104)
+        Creates effects that are used for conversion (unit command: 104)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
@@ -130,22 +131,25 @@ class AoCEffectSubprocessor:
             type_id = command.get_value()["type"].get_value()
 
             if type_id == 104:
+                skip_guaranteed_rounds = -1 * command.get_value()["work_value1"].get_value()
+                skip_protected_rounds = -1 * command.get_value()["work_value2"].get_value()
                 break
 
         else:
             # Return the empty set
             return effects
 
-        convert_ref = "%s.ConvertEffect" % (ability_ref)
+        # Unit conversion
+        convert_ref = "%s.ConvertUnitEffect" % (ability_ref)
         convert_raw_api_object = RawAPIObject(convert_ref,
-                                              "ConvertEffect",
+                                              "ConvertUnitEffect",
                                               dataset.nyan_api_objects)
         convert_raw_api_object.add_raw_parent(convert_parent)
         convert_location = ExpectedPointer(line, ability_ref)
         convert_raw_api_object.set_location(convert_location)
 
         # Type
-        type_ref = "aux.convert_type.types.Convert"
+        type_ref = "aux.convert_type.types.UnitConvert"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
         convert_raw_api_object.add_raw_member("type",
                                               change_type,
@@ -155,7 +159,48 @@ class AoCEffectSubprocessor:
         # Max success (optional; not added because there is none in AoE2)
 
         # Chance
-        chance_success = 0.25   # hardcoded
+        chance_success = dataset.genie_civs[0]["resources"][182].get_value() / 100  # hardcoded resource
+        convert_raw_api_object.add_raw_member("chance_success",
+                                              chance_success,
+                                              effect_parent)
+
+        # Fail cost (optional; not added because there is none in AoE2)
+
+        # Guaranteed rounds skip
+        convert_raw_api_object.add_raw_member("skip_guaranteed_rounds",
+                                              skip_guaranteed_rounds,
+                                              convert_parent)
+
+        # Protected rounds skip
+        convert_raw_api_object.add_raw_member("skip_protected_rounds",
+                                              skip_protected_rounds,
+                                              convert_parent)
+
+        line.add_raw_api_object(convert_raw_api_object)
+        attack_expected_pointer = ExpectedPointer(line, convert_ref)
+        effects.append(attack_expected_pointer)
+
+        # Building conversion
+        convert_ref = "%s.ConvertBuildingEffect" % (ability_ref)
+        convert_raw_api_object = RawAPIObject(convert_ref,
+                                              "ConvertBuildingUnitEffect",
+                                              dataset.nyan_api_objects)
+        convert_raw_api_object.add_raw_parent(convert_parent)
+        convert_location = ExpectedPointer(line, ability_ref)
+        convert_raw_api_object.set_location(convert_location)
+
+        # Type
+        type_ref = "aux.convert_type.types.BuildingConvert"
+        change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+        convert_raw_api_object.add_raw_member("type",
+                                              change_type,
+                                              effect_parent)
+
+        # Min success (optional; not added because there is none in AoE2)
+        # Max success (optional; not added because there is none in AoE2)
+
+        # Chance
+        chance_success = dataset.genie_civs[0]["resources"][182].get_value() / 100  # hardcoded resource
         convert_raw_api_object.add_raw_member("chance_success",
                                               chance_success,
                                               effect_parent)
@@ -340,8 +385,15 @@ class AoCEffectSubprocessor:
                                                attribute,
                                                "engine.aux.attribute.AttributeRate")
 
-            # Hardcoded repair rate: 750 HP/min = 12.5 HP/s
-            repair_rate = 12.5
+            # Hardcoded repair rate:
+            # - Buildings: 750 HP/min = 12.5 HP/s
+            # - Ships/Siege: 187.5 HP/min = 3.125 HP/s
+            if isinstance(repairable_line, GenieBuildingLineGroup):
+                repair_rate = 12.5
+
+            else:
+                repair_rate = 3.125
+
             rate_raw_api_object.add_raw_member("rate",
                                                repair_rate,
                                                "engine.aux.attribute.AttributeRate")
@@ -529,6 +581,290 @@ class AoCEffectSubprocessor:
             armor_expected_pointer = ExpectedPointer(line, armor_ref)
             resistances.append(armor_expected_pointer)
 
-        # TODO: Fallback type
+        # Fallback effect
+        fallback_effect = dataset.pregen_nyan_objects[("resistance.discrete.flat_attribute_change."
+                                                       "fallback.AoE2AttackFallback")].get_nyan_object()
+        resistances.append(fallback_effect)
+
+        return resistances
+
+    @staticmethod
+    def get_convert_resistances(line, ability_ref):
+        """
+        Creates resistances that are used for conversion (unit command: 104)
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param ability_ref: Reference of the ability raw API object the effects are added to.
+        :type ability_ref: str
+        :returns: The expected pointers for the effects.
+        :rtype: list
+        """
+        current_unit = line.get_head_unit()
+        dataset = line.data
+
+        resistances = []
+
+        # AoE2Convert
+        resistance_parent = "engine.resistance.discrete.convert.Convert"
+        convert_parent = "engine.resistance.discrete.convert.type.AoE2Convert"
+
+        resistance_ref = "%s.Convert" % (ability_ref)
+        resistance_raw_api_object = RawAPIObject(resistance_ref, "Convert", dataset.nyan_api_objects)
+        resistance_raw_api_object.add_raw_parent(convert_parent)
+        resistance_location = ExpectedPointer(line, ability_ref)
+        resistance_raw_api_object.set_location(resistance_location)
+
+        # Type
+        if isinstance(line, GenieUnitLineGroup):
+            type_ref = "aux.convert_type.types.UnitConvert"
+
+        else:
+            type_ref = "aux.convert_type.types.BuildingConvert"
+
+        convert_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+        resistance_raw_api_object.add_raw_member("type",
+                                                 convert_type,
+                                                 resistance_parent)
+
+        # Chance resist
+        chance_resist = dataset.genie_civs[0]["resources"][77].get_value() / 100  # hardcoded resource
+        resistance_raw_api_object.add_raw_member("chance_resist",
+                                                 chance_resist,
+                                                 resistance_parent)
+
+        if isinstance(line, GenieUnitLineGroup):
+            guaranteed_rounds = dataset.genie_civs[0]["resources"][178].get_value()
+            protected_rounds = dataset.genie_civs[0]["resources"][179].get_value()
+
+        else:
+            guaranteed_rounds = dataset.genie_civs[0]["resources"][180].get_value()
+            protected_rounds = dataset.genie_civs[0]["resources"][181].get_value()
+
+        # Guaranteed rounds
+        resistance_raw_api_object.add_raw_member("guaranteed_resist_rounds",
+                                                 guaranteed_rounds,
+                                                 convert_parent)
+
+        # Protected rounds
+        resistance_raw_api_object.add_raw_member("protected_rounds",
+                                                 protected_rounds,
+                                                 convert_parent)
+
+        # Protection recharge
+        resistance_raw_api_object.add_raw_member("protection_round_recharge_time",
+                                                 0.0,
+                                                 convert_parent)
+
+        line.add_raw_api_object(resistance_raw_api_object)
+        resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
+        resistances.append(resistance_expected_pointer)
+
+        return resistances
+
+    @staticmethod
+    def get_heal_resistances(line, ability_ref):
+        """
+        Creates resistances that are used for healing (unit command: 105)
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param ability_ref: Reference of the ability raw API object the effects are added to.
+        :type ability_ref: str
+        :returns: The expected pointers for the effects.
+        :rtype: list
+        """
+        dataset = line.data
+
+        resistances = []
+
+        resistance_parent = "engine.resistance.continuous.flat_attribute_change.FlatAttributeChange"
+        heal_parent = "engine.resistance.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
+
+        resistance_ref = "%s.Heal" % (ability_ref)
+        resistance_raw_api_object = RawAPIObject(resistance_ref,
+                                                 "Heal",
+                                                 dataset.nyan_api_objects)
+        resistance_raw_api_object.add_raw_parent(heal_parent)
+        resistance_location = ExpectedPointer(line, ability_ref)
+        resistance_raw_api_object.set_location(resistance_location)
+
+        # Type
+        type_ref = "aux.attribute_change_type.types.Heal"
+        change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+        resistance_raw_api_object.add_raw_member("type",
+                                                 change_type,
+                                                 resistance_parent)
+
+        # Block rate
+        # =================================================================================
+        rate_name = "%s.Heal.BlockRate" % (ability_ref)
+        rate_raw_api_object = RawAPIObject(rate_name, "BlockRate", dataset.nyan_api_objects)
+        rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
+        rate_location = ExpectedPointer(line, resistance_ref)
+        rate_raw_api_object.set_location(rate_location)
+
+        attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
+        rate_raw_api_object.add_raw_member("type",
+                                           attribute,
+                                           "engine.aux.attribute.AttributeRate")
+        rate_raw_api_object.add_raw_member("rate",
+                                           0.0,
+                                           "engine.aux.attribute.AttributeRate")
+
+        line.add_raw_api_object(rate_raw_api_object)
+        # =================================================================================
+        rate_expected_pointer = ExpectedPointer(line, rate_name)
+        resistance_raw_api_object.add_raw_member("block_rate",
+                                                 rate_expected_pointer,
+                                                 resistance_parent)
+
+        line.add_raw_api_object(resistance_raw_api_object)
+        resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
+        resistances.append(resistance_expected_pointer)
+
+        return resistances
+
+    @staticmethod
+    def get_repair_resistances(line, ability_ref):
+        """
+        Creates resistances that are used for repairing (unit command: 106)
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param ability_ref: Reference of the ability raw API object the effects are added to.
+        :type ability_ref: str
+        :returns: The expected pointers for the effects.
+        :rtype: list
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        resistances = []
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        resistance_parent = "engine.resistance.continuous.flat_attribute_change.FlatAttributeChange"
+        repair_parent = "engine.resistance.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
+
+        resistance_ref = "%s.Repair" % (ability_ref)
+        resistance_raw_api_object = RawAPIObject(resistance_ref,
+                                                 "Repair",
+                                                 dataset.nyan_api_objects)
+        resistance_raw_api_object.add_raw_parent(repair_parent)
+        resistance_location = ExpectedPointer(line, ability_ref)
+        resistance_raw_api_object.set_location(resistance_location)
+
+        # Type
+        type_ref = "aux.attribute_change_type.types.%sRepair" % (game_entity_name)
+        change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+        resistance_raw_api_object.add_raw_member("type",
+                                                 change_type,
+                                                 resistance_parent)
+
+        # Block rate
+        # =================================================================================
+        rate_name = "%s.Repair.BlockRate" % (ability_ref)
+        rate_raw_api_object = RawAPIObject(rate_name, "BlockRate", dataset.nyan_api_objects)
+        rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
+        rate_location = ExpectedPointer(line, resistance_ref)
+        rate_raw_api_object.set_location(rate_location)
+
+        attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
+        rate_raw_api_object.add_raw_member("type",
+                                           attribute,
+                                           "engine.aux.attribute.AttributeRate")
+        rate_raw_api_object.add_raw_member("rate",
+                                           0.0,
+                                           "engine.aux.attribute.AttributeRate")
+
+        line.add_raw_api_object(rate_raw_api_object)
+        # =================================================================================
+        rate_expected_pointer = ExpectedPointer(line, rate_name)
+        resistance_raw_api_object.add_raw_member("block_rate",
+                                                 rate_expected_pointer,
+                                                 resistance_parent)
+
+        line.add_raw_api_object(resistance_raw_api_object)
+        resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
+        resistances.append(resistance_expected_pointer)
+
+        return resistances
+
+    @staticmethod
+    def get_construct_resistances(line, ability_ref):
+        """
+        Creates resistances that are used for constructing (unit command: 101)
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param ability_ref: Reference of the ability raw API object the effects are added to.
+        :type ability_ref: str
+        :returns: The expected pointers for the effects.
+        :rtype: list
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        resistances = []
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        progress_resistance_parent = "engine.resistance.continuous.time_relative_progress.TimeRelativeProgressChange"
+        progress_construct_parent = "engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressIncrease"
+        attr_resistance_parent = "engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"
+        attr_construct_parent = "engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease"
+
+        # Progress
+        resistance_ref = "%s.ConstructProgress" % (ability_ref)
+        resistance_raw_api_object = RawAPIObject(resistance_ref,
+                                                 "ConstructProgress",
+                                                 dataset.nyan_api_objects)
+        resistance_raw_api_object.add_raw_parent(progress_construct_parent)
+        resistance_location = ExpectedPointer(line, ability_ref)
+        resistance_raw_api_object.set_location(resistance_location)
+
+        # Type
+        type_ref = "aux.construct_type.types.%sConstruct" % (game_entity_name)
+        change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+        resistance_raw_api_object.add_raw_member("type",
+                                                 change_type,
+                                                 progress_resistance_parent)
+
+        line.add_raw_api_object(resistance_raw_api_object)
+        resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
+        resistances.append(resistance_expected_pointer)
+
+        # Health
+        resistance_ref = "%s.ConstructHP" % (ability_ref)
+        resistance_raw_api_object = RawAPIObject(resistance_ref,
+                                                 "ConstructHP",
+                                                 dataset.nyan_api_objects)
+        resistance_raw_api_object.add_raw_parent(attr_construct_parent)
+        resistance_location = ExpectedPointer(line, ability_ref)
+        resistance_raw_api_object.set_location(resistance_location)
+
+        # Type
+        type_ref = "aux.attribute_change_type.types.%sConstruct" % (game_entity_name)
+        change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
+        resistance_raw_api_object.add_raw_member("type",
+                                                 change_type,
+                                                 attr_resistance_parent)
+
+        line.add_raw_api_object(resistance_raw_api_object)
+        resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
+        resistances.append(resistance_expected_pointer)
 
         return resistances

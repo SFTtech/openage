@@ -288,6 +288,14 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         return self.has_command(7)
 
+    def is_repairable(self):
+        """
+        Only certain lines and classes are repairable.
+
+        :returns: True if the group's class is repairable.
+        """
+        return self.get_class_id() in (2, 13, 20, 21, 22, 53)
+
     def is_unique(self):
         """
         Groups are unique if they belong to a specific civ.

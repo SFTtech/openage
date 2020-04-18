@@ -466,14 +466,30 @@ class AoCPregenSubprocessor:
             pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
         # =======================================================================
-        # ConvertType: Convert
+        # ConvertType: UnitConvert
         # =======================================================================
         type_parent = "engine.aux.convert_type.ConvertType"
         types_location = "data/aux/convert_type/"
 
-        type_ref_in_modpack = "aux.convert_type.types.Convert"
+        type_ref_in_modpack = "aux.convert_type.types.UnitConvert"
         type_raw_api_object = RawAPIObject(type_ref_in_modpack,
-                                           "Convert", api_objects,
+                                           "UnitConvert", api_objects,
+                                           types_location)
+        type_raw_api_object.set_filename("types")
+        type_raw_api_object.add_raw_parent(type_parent)
+
+        pregen_converter_group.add_raw_api_object(type_raw_api_object)
+        pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
+
+        # =======================================================================
+        # ConvertType: BuildingConvert
+        # =======================================================================
+        type_parent = "engine.aux.convert_type.ConvertType"
+        types_location = "data/aux/convert_type/"
+
+        type_ref_in_modpack = "aux.convert_type.types.BuildingConvert"
+        type_raw_api_object = RawAPIObject(type_ref_in_modpack,
+                                           "BuildingConvert", api_objects,
                                            types_location)
         type_raw_api_object.set_filename("types")
         type_raw_api_object.add_raw_parent(type_parent)
@@ -624,6 +640,56 @@ class AoCPregenSubprocessor:
         # Ignore protection
         fallback_raw_api_object.add_raw_member("ignore_protection",
                                                [],
+                                               effect_parent)
+
+        pregen_converter_group.add_raw_api_object(fallback_raw_api_object)
+        pregen_nyan_objects.update({fallback_ref_in_modpack: fallback_raw_api_object})
+
+        # =======================================================================
+        # Fallback resistance
+        # =======================================================================
+        effect_parent = "engine.resistance.discrete.flat_attribute_change.FlatAttributeChange"
+        fallback_parent = "engine.resistance.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
+        fallback_location = "data/resistance/discrete/flat_attribute_change/"
+
+        fallback_ref_in_modpack = "resistance.discrete.flat_attribute_change.fallback.AoE2AttackFallback"
+        fallback_raw_api_object = RawAPIObject(fallback_ref_in_modpack,
+                                               "AoE2AttackFallback",
+                                               api_objects,
+                                               fallback_location)
+        fallback_raw_api_object.set_filename("fallback")
+        fallback_raw_api_object.add_raw_parent(fallback_parent)
+
+        # Type
+        type_ref = "engine.aux.attribute_change_type.type.Fallback"
+        change_type = api_objects[type_ref]
+        fallback_raw_api_object.add_raw_member("type",
+                                               change_type,
+                                               effect_parent)
+
+        # Block value
+        # =================================================================================
+        amount_name = "%s.BlockAmount" % (fallback_ref_in_modpack)
+        amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", api_objects)
+        amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
+        amount_location = ExpectedPointer(pregen_converter_group, fallback_ref_in_modpack)
+        amount_raw_api_object.set_location(amount_location)
+
+        attribute = ExpectedPointer(pregen_converter_group, "aux.attribute.types.Health")
+        amount_raw_api_object.add_raw_member("type",
+                                             attribute,
+                                             "engine.aux.attribute.AttributeAmount")
+        amount_raw_api_object.add_raw_member("amount",
+                                             0,
+                                             "engine.aux.attribute.AttributeAmount")
+
+        pregen_converter_group.add_raw_api_object(amount_raw_api_object)
+        pregen_nyan_objects.update({amount_name: amount_raw_api_object})
+
+        # =================================================================================
+        amount_expected_pointer = ExpectedPointer(pregen_converter_group, amount_name)
+        fallback_raw_api_object.add_raw_member("block_value",
+                                               amount_expected_pointer,
                                                effect_parent)
 
         pregen_converter_group.add_raw_api_object(fallback_raw_api_object)
