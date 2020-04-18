@@ -230,8 +230,59 @@ class AoCAuxiliarySubprocessor:
         placement_modes = []
         if isinstance(line, GenieBuildingLineGroup):
             # Buildings are placed on the map
-            # TODO: Place (and Replace for gates)
-            pass
+            # Place mode
+            obj_name = "%s.CreatableGameEntity.Place" % (game_entity_name)
+            place_raw_api_object = RawAPIObject(obj_name,
+                                                "Place",
+                                                dataset.nyan_api_objects)
+            place_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.Place")
+            place_location = ExpectedPointer(line,
+                                             "%s.CreatableGameEntity" % (game_entity_name))
+            place_raw_api_object.set_location(place_location)
+
+            # Tile snap distance (uses 1.0 for grid placement)
+            place_raw_api_object.add_raw_member("tile_snap_distance",
+                                                1.0,
+                                                "engine.aux.placement_mode.type.Place")
+            # Clearance size
+            clearance_size_x = current_unit.get_member("clearance_size_x").get_value()
+            clearance_size_y = current_unit.get_member("clearance_size_y").get_value()
+            place_raw_api_object.add_raw_member("clearance_size_x",
+                                                clearance_size_x,
+                                                "engine.aux.placement_mode.type.Place")
+            place_raw_api_object.add_raw_member("clearance_size_y",
+                                                clearance_size_y,
+                                                "engine.aux.placement_mode.type.Place")
+
+            line.add_raw_api_object(place_raw_api_object)
+
+            place_expected_pointer = ExpectedPointer(line, obj_name)
+            placement_modes.append(place_expected_pointer)
+
+            if line.get_class_id() == 39:
+                # Gates
+                obj_name = "%s.CreatableGameEntity.Replace" % (game_entity_name)
+                replace_raw_api_object = RawAPIObject(obj_name,
+                                                      "Replace",
+                                                      dataset.nyan_api_objects)
+                replace_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.Replace")
+                replace_location = ExpectedPointer(line,
+                                                   "%s.CreatableGameEntity" % (game_entity_name))
+                replace_raw_api_object.set_location(replace_location)
+
+                # Game entities (only stone wall)
+                wall_line_id = 117
+                wall_line = dataset.building_lines[wall_line_id]
+                wall_name = BUILDING_LINE_LOOKUPS[117][0]
+                game_entities = [ExpectedPointer(wall_line, wall_name)]
+                replace_raw_api_object.add_raw_member("game_entities",
+                                                      game_entities,
+                                                      "engine.aux.placement_mode.type.Replace")
+
+                line.add_raw_api_object(replace_raw_api_object)
+
+                replace_expected_pointer = ExpectedPointer(line, obj_name)
+                placement_modes.append(replace_expected_pointer)
 
         else:
             placement_modes.append(dataset.nyan_api_objects["engine.aux.placement_mode.type.Eject"])
