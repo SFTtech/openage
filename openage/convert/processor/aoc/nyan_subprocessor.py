@@ -259,6 +259,10 @@ class AoCNyanSubprocessor:
         if unit_line.get_class_id() == 58:
             abilities_set.append(AoCAbilitySubprocessor.herdable_ability(unit_line))
 
+        # Trade abilities
+        if unit_line.has_command(111):
+            abilities_set.append(AoCAbilitySubprocessor.trade_ability(unit_line))
+
         # =======================================================================
         # TODO: Everything with Progress objects
         # =======================================================================
@@ -411,6 +415,10 @@ class AoCNyanSubprocessor:
         ability = AoCAbilitySubprocessor.provide_contingent_ability(building_line)
         if ability:
             abilities_set.append(ability)
+
+        # Trade abilities
+        if building_line.is_trade_post():
+            abilities_set.append(AoCAbilitySubprocessor.trade_post_ability(building_line))
 
         # =======================================================================
         # TODO: Everything with Progress objects

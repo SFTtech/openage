@@ -455,6 +455,9 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         # IDs of resources that cen be dropped off here
         self.accepts_resources = set()
 
+        # Unit lines that this building trades with
+        self.trades_with = []
+
     def add_accepted_resource(self, resource_id):
         """
         Adds a resourced that can be dropped off at this building.
@@ -462,6 +465,14 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         :param resource_id: ID of the resource that can be dropped off.
         """
         self.accepts_resources.add(resource_id)
+
+    def add_trading_line(self, unit_line):
+        """
+        Adds a reference to a line that trades with this building.
+
+        :param unit_line: Line that trades with this building.
+        """
+        self.trades_with.append(unit_line)
 
     def contains_unit(self, building_id):
         """
@@ -481,6 +492,12 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         Returns True if the building accepts resources.
         """
         return len(self.accepts_resources) > 0
+
+    def is_trade_post(self):
+        """
+        Returns True if the building is traded with.
+        """
+        return len(self.trades_with) > 0
 
     def get_accepted_resources(self):
         """

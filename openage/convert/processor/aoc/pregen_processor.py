@@ -632,7 +632,7 @@ class AoCPregenSubprocessor:
     @staticmethod
     def _generate_terrain_types(full_data_set, pregen_converter_group):
         """
-        Generate GameEntityType objects.
+        Generate TerrainType objects.
 
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion

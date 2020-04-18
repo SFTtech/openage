@@ -3218,8 +3218,8 @@ def _insert_members(api_objects):
     # engine.aux.placement_mode.type.Replace
     api_object = api_objects["engine.aux.placement_mode.type.Replace"]
 
-    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
-    member = NyanMember("game_entity", ref_object, None, None, 0, None, False)
+    set_type = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("game_entities", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.aux.production_mode.type.Creatables

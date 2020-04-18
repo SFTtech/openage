@@ -131,6 +131,7 @@ class AoCProcessor:
         cls._link_civ_uniques(full_data_set)
         cls._link_resources_to_dropsites(full_data_set)
         cls._link_garrison(full_data_set)
+        cls._link_trade_posts(full_data_set)
 
         info("Generating auxiliary objects...")
 
@@ -1181,3 +1182,33 @@ class AoCProcessor:
 
                         ambient_group.garrison_locations.append(garrison)
                         garrison.garrison_entities.append(ambient_group)
+
+    @staticmethod
+    def _link_trade_posts(full_data_set):
+        """
+        Link a trade post building to the lines that it trades with.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        unit_lines = full_data_set.unit_lines.values()
+
+        for unit_line in unit_lines:
+            if unit_line.has_command(111):
+                head_unit = unit_line.get_head_unit()
+                unit_commands = head_unit.get_member("unit_commands").get_value()
+                trade_post_id = -1
+                for command in unit_commands:
+                    # Find the trade command and the trade post id
+                    type_id = command.get_value()["type"].get_value()
+
+                    if type_id != 111:
+                        continue
+
+                    trade_post_id = command.get_value()["unit_id"].get_value()
+                    break
+
+                # Notify buiding
+                full_data_set.building_lines[trade_post_id].add_trading_line(unit_line)

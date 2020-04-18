@@ -379,8 +379,73 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.AttributeChangeTracker")
 
         # TODO: Change progress
+        progress_expected_pointers = []
+        # =====================================================================================
+        progress_name = "%s.AttributeChangeTracker.ChangeProgress50" % (game_entity_name)
+        progress_raw_api_object = RawAPIObject(progress_name,
+                                               "ChangeProgress50",
+                                               dataset.nyan_api_objects)
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
+        progress_location = ExpectedPointer(line, ability_ref)
+        progress_raw_api_object.set_location(progress_location)
+
+        # Interval = (0.0, 100.0)
+        progress_raw_api_object.add_raw_member("left_boundary",
+                                               50.0,
+                                               "engine.aux.progress.Progress")
+        progress_raw_api_object.add_raw_member("right_boundary",
+                                               75.0,
+                                               "engine.aux.progress.Progress")
+
+        # TODO: AnimationOverride
+
+        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+        line.add_raw_api_object(progress_raw_api_object)
+        # =====================================================================================
+        progress_name = "%s.AttributeChangeTracker.ChangeProgress25" % (game_entity_name)
+        progress_raw_api_object = RawAPIObject(progress_name,
+                                               "ChangeProgress25",
+                                               dataset.nyan_api_objects)
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
+        progress_location = ExpectedPointer(line, ability_ref)
+        progress_raw_api_object.set_location(progress_location)
+
+        # Interval = (0.0, 100.0)
+        progress_raw_api_object.add_raw_member("left_boundary",
+                                               25.0,
+                                               "engine.aux.progress.Progress")
+        progress_raw_api_object.add_raw_member("right_boundary",
+                                               50.0,
+                                               "engine.aux.progress.Progress")
+
+        # TODO: AnimationOverride
+
+        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+        line.add_raw_api_object(progress_raw_api_object)
+        # =====================================================================================
+        progress_name = "%s.AttributeChangeTracker.ChangeProgress0" % (game_entity_name)
+        progress_raw_api_object = RawAPIObject(progress_name,
+                                               "ChangeProgress0",
+                                               dataset.nyan_api_objects)
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
+        progress_location = ExpectedPointer(line, ability_ref)
+        progress_raw_api_object.set_location(progress_location)
+
+        # Interval = (0.0, 100.0)
+        progress_raw_api_object.add_raw_member("left_boundary",
+                                               0.0,
+                                               "engine.aux.progress.Progress")
+        progress_raw_api_object.add_raw_member("right_boundary",
+                                               25.0,
+                                               "engine.aux.progress.Progress")
+
+        # TODO: AnimationOverride
+
+        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+        line.add_raw_api_object(progress_raw_api_object)
+        # =====================================================================================
         ability_raw_api_object.add_raw_member("change_progress",
-                                              [],
+                                              progress_expected_pointers,
                                               "engine.ability.type.AttributeChangeTracker")
 
         line.add_raw_api_object(ability_raw_api_object)
@@ -476,8 +541,140 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Constructable")
 
         # TODO: Construction progress
+        progress_expected_pointers = []
+        # =====================================================================================
+        progress_name = "%s.Constructable.ConstructionProgress0" % (game_entity_name)
+        progress_raw_api_object = RawAPIObject(progress_name,
+                                               "ConstructionProgress0",
+                                               dataset.nyan_api_objects)
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+        progress_location = ExpectedPointer(line, ability_ref)
+        progress_raw_api_object.set_location(progress_location)
+
+        # Interval = (0.0, 100.0)
+        progress_raw_api_object.add_raw_member("left_boundary",
+                                               0.0,
+                                               "engine.aux.progress.Progress")
+        progress_raw_api_object.add_raw_member("right_boundary",
+                                               0.0,
+                                               "engine.aux.progress.Progress")
+
+        # TODO: State change, AnimationOverride
+        #=======================================================================
+        # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+        # progress_raw_api_object.add_raw_member("state_change",
+        #                                        None,
+        #                                        "engine.aux.progress.specialization.StateChangeProgress")
+        #=======================================================================
+        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+        line.add_raw_api_object(progress_raw_api_object)
+        # =====================================================================================
+        progress_name = "%s.Constructable.ConstructionProgress25" % (game_entity_name)
+        progress_raw_api_object = RawAPIObject(progress_name,
+                                               "ConstructionProgress25",
+                                               dataset.nyan_api_objects)
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+        progress_location = ExpectedPointer(line, ability_ref)
+        progress_raw_api_object.set_location(progress_location)
+
+        # Interval = (0.0, 100.0)
+        progress_raw_api_object.add_raw_member("left_boundary",
+                                               0.0,
+                                               "engine.aux.progress.Progress")
+        progress_raw_api_object.add_raw_member("right_boundary",
+                                               25.0,
+                                               "engine.aux.progress.Progress")
+
+        # TODO: State change, AnimationOverride
+        #=======================================================================
+        # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+        # progress_raw_api_object.add_raw_member("state_change",
+        #                                        None,
+        #                                        "engine.aux.progress.specialization.StateChangeProgress")
+        #=======================================================================
+        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+        line.add_raw_api_object(progress_raw_api_object)
+        # =====================================================================================
+        progress_name = "%s.Constructable.ConstructionProgress50" % (game_entity_name)
+        progress_raw_api_object = RawAPIObject(progress_name,
+                                               "ConstructionProgress50",
+                                               dataset.nyan_api_objects)
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+        progress_location = ExpectedPointer(line, ability_ref)
+        progress_raw_api_object.set_location(progress_location)
+
+        # Interval = (0.0, 100.0)
+        progress_raw_api_object.add_raw_member("left_boundary",
+                                               25.0,
+                                               "engine.aux.progress.Progress")
+        progress_raw_api_object.add_raw_member("right_boundary",
+                                               50.0,
+                                               "engine.aux.progress.Progress")
+
+        # TODO: State change, AnimationOverride
+        #=======================================================================
+        # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+        # progress_raw_api_object.add_raw_member("state_change",
+        #                                        None,
+        #                                        "engine.aux.progress.specialization.StateChangeProgress")
+        #=======================================================================
+        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+        line.add_raw_api_object(progress_raw_api_object)
+        # =====================================================================================
+        progress_name = "%s.Constructable.ConstructionProgress75" % (game_entity_name)
+        progress_raw_api_object = RawAPIObject(progress_name,
+                                               "ConstructionProgress75",
+                                               dataset.nyan_api_objects)
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+        progress_location = ExpectedPointer(line, ability_ref)
+        progress_raw_api_object.set_location(progress_location)
+
+        # Interval = (0.0, 100.0)
+        progress_raw_api_object.add_raw_member("left_boundary",
+                                               50.0,
+                                               "engine.aux.progress.Progress")
+        progress_raw_api_object.add_raw_member("right_boundary",
+                                               75.0,
+                                               "engine.aux.progress.Progress")
+
+        # TODO: State change, AnimationOverride
+        #=======================================================================
+        # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+        # progress_raw_api_object.add_raw_member("state_change",
+        #                                        None,
+        #                                        "engine.aux.progress.specialization.StateChangeProgress")
+        #=======================================================================
+        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+        line.add_raw_api_object(progress_raw_api_object)
+        # =====================================================================================
+        progress_name = "%s.Constructable.ConstructionProgress100" % (game_entity_name)
+        progress_raw_api_object = RawAPIObject(progress_name,
+                                               "ConstructionProgress100",
+                                               dataset.nyan_api_objects)
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+        progress_location = ExpectedPointer(line, ability_ref)
+        progress_raw_api_object.set_location(progress_location)
+
+        # Interval = (0.0, 100.0)
+        progress_raw_api_object.add_raw_member("left_boundary",
+                                               75.0,
+                                               "engine.aux.progress.Progress")
+        progress_raw_api_object.add_raw_member("right_boundary",
+                                               100.0,
+                                               "engine.aux.progress.Progress")
+
+        # TODO: State change, AnimationOverride
+        #=======================================================================
+        # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+        # progress_raw_api_object.add_raw_member("state_change",
+        #                                        None,
+        #                                        "engine.aux.progress.specialization.StateChangeProgress")
+        #=======================================================================
+        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+        line.add_raw_api_object(progress_raw_api_object)
+        # =====================================================================================
         ability_raw_api_object.add_raw_member("construction_progress",
-                                              [],
+                                              progress_expected_pointers,
                                               "engine.ability.type.Constructable")
 
         line.add_raw_api_object(ability_raw_api_object)
@@ -821,7 +1018,6 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Despawn")
 
         # Despawn condition
-        # TODO: implement
         ability_raw_api_object.add_raw_member("despawn_condition",
                                               [],
                                               "engine.ability.type.Despawn")
@@ -841,13 +1037,6 @@ class AoCAbilitySubprocessor:
 
         ability_raw_api_object.add_raw_member("despawn_time",
                                               despawn_time,
-                                              "engine.ability.type.Despawn")
-
-        # State change (let Death handle state change?)
-        # Uses the same state changer as Death
-        state_change_expected_pointer = ExpectedPointer(line, "%s.Death.DeadState" % (game_entity_name))
-        ability_raw_api_object.add_raw_member("state_change",
-                                              state_change_expected_pointer,
                                               "engine.ability.type.Despawn")
 
         line.add_raw_api_object(ability_raw_api_object)
@@ -1780,7 +1969,8 @@ class AoCAbilitySubprocessor:
         health_raw_api_object.set_location(health_location)
 
         attribute_value = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
-        health_raw_api_object.add_raw_member("attribute", attribute_value,
+        health_raw_api_object.add_raw_member("attribute",
+                                             attribute_value,
                                              "engine.aux.attribute.AttributeSetting")
 
         # Lowest HP can go
@@ -1793,8 +1983,14 @@ class AoCAbilitySubprocessor:
         health_raw_api_object.add_raw_member("max_value",
                                              max_hp_value,
                                              "engine.aux.attribute.AttributeSetting")
+
+        starting_value = max_hp_value
+        if isinstance(line, GenieBuildingLineGroup):
+            # Buildings spawn with 1 HP
+            starting_value = 1
+
         health_raw_api_object.add_raw_member("starting_value",
-                                             max_hp_value,
+                                             starting_value,
                                              "engine.aux.attribute.AttributeSetting")
 
         line.add_raw_api_object(health_raw_api_object)
@@ -3491,7 +3687,58 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        # TODO: Implement
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_ref = "%s.Trade" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Trade", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Trade")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Trade route (use the trade route o the market)
+        trade_routes = []
+
+        trade_post_id = -1
+        unit_commands = current_unit.get_member("unit_commands").get_value()
+        for command in unit_commands:
+            # Find the trade command and the trade post id
+            type_id = command.get_value()["type"].get_value()
+
+            if type_id != 111:
+                continue
+
+            trade_post_id = command.get_value()["unit_id"].get_value()
+            break
+
+        trade_post_line = dataset.building_lines[trade_post_id]
+        trade_post_name = BUILDING_LINE_LOOKUPS[trade_post_id][0]
+
+        trade_route_ref = "%s.TradePost.AoE2%sTradeRoute" % (trade_post_name, trade_post_name)
+        trade_route_expected_pointer = ExpectedPointer(trade_post_line, trade_route_ref)
+        trade_routes.append(trade_route_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("trade_routes",
+                                              trade_routes,
+                                              "engine.ability.type.Trade")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
 
     @staticmethod
     def trade_post_ability(line):
@@ -3503,7 +3750,67 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        # TODO: Implement
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_ref = "%s.TradePost" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "TradePost", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.TradePost")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Trade route
+        trade_routes = []
+        # =====================================================================================
+        trade_route_name = "AoE2%sTradeRoute" % (game_entity_name)
+        trade_route_ref = "%s.TradePost.%s" % (game_entity_name, trade_route_name)
+        trade_route_raw_api_object = RawAPIObject(trade_route_ref,
+                                                  trade_route_name,
+                                                  dataset.nyan_api_objects)
+        trade_route_raw_api_object.add_raw_parent("engine.aux.trade_route.type.AoE2TradeRoute")
+        trade_route_location = ExpectedPointer(line, ability_ref)
+        trade_route_raw_api_object.set_location(trade_route_location)
+
+        # Trade resource
+        resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
+        trade_route_raw_api_object.add_raw_member("trade_resource",
+                                                  resource,
+                                                  "engine.aux.trade_route.TradeRoute")
+
+        # Start- and endpoints
+        market_expected_pointer = ExpectedPointer(line, game_entity_name)
+        trade_route_raw_api_object.add_raw_member("start_trade_post",
+                                                  market_expected_pointer,
+                                                  "engine.aux.trade_route.TradeRoute")
+        trade_route_raw_api_object.add_raw_member("end_trade_post",
+                                                  market_expected_pointer,
+                                                  "engine.aux.trade_route.TradeRoute")
+
+        trade_route_expected_pointer = ExpectedPointer(line, trade_route_ref)
+        trade_routes.append(trade_route_expected_pointer)
+
+        line.add_raw_api_object(trade_route_raw_api_object)
+        # =====================================================================================
+        ability_raw_api_object.add_raw_member("trade_routes",
+                                              trade_routes,
+                                              "engine.ability.type.TradePost")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
 
     @staticmethod
     def transfer_storage_ability(line):
