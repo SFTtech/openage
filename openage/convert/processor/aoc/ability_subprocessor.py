@@ -270,8 +270,7 @@ class AoCAbilitySubprocessor:
                 effects = AoCEffectSubprocessor.get_attack_effects(line, ability_ref)
 
             else:
-                # TODO: Second projectile
-                effects = []
+                effects = AoCEffectSubprocessor.get_attack_effects(line, ability_ref, projectile=1)
 
         elif command_id == 104:
             # Convert

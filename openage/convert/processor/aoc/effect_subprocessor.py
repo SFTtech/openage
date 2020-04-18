@@ -15,7 +15,7 @@ from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
 class AoCEffectSubprocessor:
 
     @staticmethod
-    def get_attack_effects(line, ability_ref):
+    def get_attack_effects(line, ability_ref, projectile=-1):
         """
         Creates effects that are used for attacking (unit command: 7)
 
@@ -26,8 +26,14 @@ class AoCEffectSubprocessor:
         :returns: The expected pointers for the effects.
         :rtype: list
         """
-        current_unit = line.get_head_unit()
         dataset = line.data
+
+        if projectile != 1:
+            current_unit = line.get_head_unit()
+
+        else:
+            projectile_id = line.get_head_unit()["attack_projectile_secondary_unit_id"].get_value()
+            current_unit = dataset.genie_units[projectile_id]
 
         effects = []
 
@@ -730,6 +736,8 @@ class AoCEffectSubprocessor:
         """
         Creates resistances that are used for repairing (unit command: 106)
 
+        TODO: StackedResistance
+
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
@@ -801,6 +809,8 @@ class AoCEffectSubprocessor:
     def get_construct_resistances(line, ability_ref):
         """
         Creates resistances that are used for constructing (unit command: 101)
+
+        TODO: StackedResistance
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
