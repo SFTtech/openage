@@ -8,7 +8,8 @@ from openage.convert.dataformat.aoc.internal_nyan_names import CIV_GROUP_LOOKUPS
     GRAPHICS_SET_LOOKUPS
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
+    GenieVillagerGroup
 from openage.nyan.nyan_structs import MemberOperator
 from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
@@ -200,6 +201,10 @@ class AoCCivSubprocessor:
                 # TODO: Building upgrades
 
             for unit_line in full_data_set.unit_lines.values():
+                if isinstance(unit_line, GenieVillagerGroup):
+                    # Villagers have different IDs, but the sprites are unchanged
+                    continue
+
                 std_head_unit = unit_line.get_head_unit()
                 std_head_unit_id = unit_line.get_head_unit_id()
                 if std_head_unit_id in civ_units.keys():
@@ -259,6 +264,10 @@ class AoCCivSubprocessor:
                 patches.append(graphics_change_expected_pointer)
 
         for unit_line in dataset.unit_lines.values():
+            if isinstance(unit_line, GenieVillagerGroup):
+                # Villagers have different IDs, but the sprites are unchanged
+                continue
+
             std_head_unit = unit_line.get_head_unit()
             std_head_unit_id = unit_line.get_head_unit_id()
             if std_head_unit_id in civ_units.keys():

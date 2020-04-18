@@ -3247,8 +3247,8 @@ def _insert_members(api_objects):
     # engine.aux.progress.specialization.AnimatedProgress
     api_object = api_objects["engine.aux.progress.specialization.AnimatedProgress"]
 
-    ref_object = api_objects["engine.aux.animation_override.AnimationOverride"]
-    member = NyanMember("progress_sprite", ref_object, None, None, 0, None, False)
+    set_type = api_objects["engine.aux.animation_override.AnimationOverride"]
+    member = NyanMember("overrides", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.aux.progress.specialization.StateChangeProgress

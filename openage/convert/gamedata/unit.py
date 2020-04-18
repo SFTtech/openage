@@ -854,7 +854,7 @@ class UnitObject(GenieStructure):
             length=3,
         )),
         (READ, "damage_graphic_count", StorageType.INT_MEMBER, "int8_t"),
-        (READ_EXPORT, "damage_graphic", StorageType.ARRAY_CONTAINER, SubdataMember(
+        (READ_EXPORT, "damage_graphics", StorageType.ARRAY_CONTAINER, SubdataMember(
             ref_type=DamageGraphic,
             length="damage_graphic_count",
         )),
