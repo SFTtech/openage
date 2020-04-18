@@ -108,7 +108,7 @@ class UnitCommand(GenieStructure):
                 7: "ANY_7",
             },
         )),
-        # TODO: what does it do? right click?
+        # checks if the targeted unit has > 0 resources
         (READ, "carry_check", StorageType.BOOLEAN_MEMBER, "int8_t"),
         (READ, "state_build", StorageType.BOOLEAN_MEMBER, "int8_t"),
         # walking with tool but no resource

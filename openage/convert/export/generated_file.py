@@ -147,9 +147,6 @@ class GeneratedFile:
         """
         actually generate the content for this file.
         """
-
-        # TODO: create new snippets for resolving cyclic dependencies (forward declarations)
-
         # apply preference overrides
         prefs = self.default_preferences.copy()
         prefs.update(self.output_preferences[self.format_])

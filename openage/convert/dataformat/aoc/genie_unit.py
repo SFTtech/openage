@@ -871,7 +871,6 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         return True
 
     def is_unique(self):
-        # TODO: More checks here?
         return False
 
     def is_projectile_shooter(self):

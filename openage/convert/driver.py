@@ -91,14 +91,6 @@ def get_gamespec(srcdir, game_version, dont_pickle):
                                  cache_file,
                                  not dont_pickle)
 
-    # TODO: Reimplement this in actual converter
-    # ===========================================================================
-    # # modify the read contents of datfile
-    # from .fix_data import fix_data
-    # # pylint: disable=no-member
-    # gamespec.empiresdat[0] = fix_data(gamespec.empiresdat[0])
-    # ===========================================================================
-
     return gamespec
 
 

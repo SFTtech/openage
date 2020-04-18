@@ -29,6 +29,8 @@ class AoCCivSubprocessor:
         patches.extend(cls._setup_unique_techs(civ_group))
         patches.extend(cls._setup_tech_tree(civ_group))
 
+        # TODO: Civ bonus
+
         if len(civ_group.get_team_bonus_effects()) > 0:
             patches.extend(AoCTechSubprocessor.get_patches(civ_group))
 
@@ -195,6 +197,8 @@ class AoCCivSubprocessor:
                     cls._idle_graphics_set(building_line, civ_idle_animation_id,
                                            graphics_set[1], graphics_set[2])
 
+                # TODO: Building upgrades
+
             for unit_line in full_data_set.unit_lines.values():
                 std_head_unit = unit_line.get_head_unit()
                 std_head_unit_id = unit_line.get_head_unit_id()
@@ -210,6 +214,8 @@ class AoCCivSubprocessor:
                 if std_idle_animation_id != civ_idle_animation_id:
                     cls._idle_graphics_set(unit_line, civ_idle_animation_id,
                                            graphics_set[1], graphics_set[2])
+
+                # TODO: Other unit animations
 
     @staticmethod
     def _setup_graphics_set(civ_group):

@@ -112,7 +112,6 @@ class GroupMember(ReadMember):
         return self.cls.get_effective_type()
 
     def get_parsers(self, idx, member):
-        # TODO: new type of csv file, probably go for yaml...
         return [
             EntryParser(
                 ["this->%s.fill(buf[%d]);" % (member, idx)],
@@ -317,7 +316,6 @@ class NumberMember(ReadMember):
         return self.number_type
 
 
-# TODO: convert to KnownValueMember
 class ZeroMember(NumberMember):
     """
     data field that is known to always needs to be zero.
