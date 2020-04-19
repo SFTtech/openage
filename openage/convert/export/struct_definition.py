@@ -56,10 +56,10 @@ class StructDefinition:
         self.inherited_members = list()
         self.parent_classes = list()
 
-        target_members = target.get_data_format(
-            allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
-            flatten_includes=True
-        )
+        target_members = target.get_data_format(None,
+                                                allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
+                                                flatten_includes=True
+                                                )
 
         for is_parent, _, member_name, _, member_type in target_members:
 
@@ -112,7 +112,7 @@ class StructDefinition:
             if is_parent:
                 self.inherited_members.append(member_name)
 
-        members = target.get_data_format(flatten_includes=False)
+        members = target.get_data_format(None, flatten_includes=False)
         for _, _, _, _, member_type in members:
             if isinstance(member_type, IncludeMembers):
                 self.parent_classes.append(member_type.cls)

@@ -6,6 +6,7 @@ from ..dataformat.genie_structure import GenieStructure
 from ..dataformat.read_members import SubdataMember
 from ..dataformat.member_access import READ_EXPORT, READ
 from ..dataformat.value_members import MemberTypes as StorageType
+from openage.convert.dataformat.version_detect import GameEdition
 
 
 class SoundItem(GenieStructure):
@@ -13,34 +14,30 @@ class SoundItem(GenieStructure):
     name_struct_file   = "sound"
     struct_description = "one possible file for a sound."
 
-    data_format = []
+    @classmethod
+    def get_data_format_members(cls, game_version):
+        """
+        Return the members in this struct.
+        """
+        data_format = []
 
-    # TODO: Enable conversion for SWGB; replace "filename"
-    # ===========================================================================
-    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
-    #     data_format.append((READ_EXPORT, "filename", "char[27]"))
-    # else:
-    #     data_format.append((READ_EXPORT, "filename", "char[13]"))
-    # ===========================================================================
-    data_format.append((READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[13]"))
+        if game_version[0] is GameEdition.SWGB:
+            data_format.append((READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[27]"))
+        else:
+            data_format.append((READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[13]"))
 
-    data_format.extend([
-        (READ_EXPORT, "resource_id", StorageType.ID_MEMBER, "int32_t"),
-        (READ_EXPORT, "probablilty", StorageType.INT_MEMBER, "int16_t"),
-    ])
+        data_format.extend([
+            (READ_EXPORT, "resource_id", StorageType.ID_MEMBER, "int32_t"),
+            (READ_EXPORT, "probablilty", StorageType.INT_MEMBER, "int16_t"),
+        ])
 
-    # TODO: Enable conversion for AOE1; replace "civilisation", "icon_set"
-    # ===========================================================================
-    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
-    #     data_format.extend([
-    #         (READ_EXPORT, "civilisation", "int16_t"),
-    #         (READ,        "icon_set",     "int16_t"),
-    #     ])
-    # ===========================================================================
-    data_format.extend([
-        (READ_EXPORT, "civilization_id", StorageType.ID_MEMBER, "int16_t"),
-        (READ, "icon_set", StorageType.ID_MEMBER, "int16_t"),
-    ])
+        if game_version[0] is not GameEdition.ROR:
+            data_format.extend([
+                (READ_EXPORT, "civilization_id", StorageType.ID_MEMBER, "int16_t"),
+                (READ, "icon_set", StorageType.ID_MEMBER, "int16_t"),
+            ])
+
+        return data_format
 
 
 class Sound(GenieStructure):
@@ -48,14 +45,21 @@ class Sound(GenieStructure):
     name_struct_file   = "sound"
     struct_description = "describes a sound, consisting of several sound items."
 
-    data_format = [
-        (READ_EXPORT, "sound_id", StorageType.ID_MEMBER, "int16_t"),
-        (READ, "play_delay", StorageType.INT_MEMBER, "int16_t"),
-        (READ_EXPORT, "file_count", StorageType.INT_MEMBER, "uint16_t"),
-        (READ, "cache_time", StorageType.INT_MEMBER, "int32_t"),                   # always 300000
-        (READ_EXPORT, "sound_items", StorageType.ARRAY_CONTAINER, SubdataMember(
-            ref_type=SoundItem,
-            ref_to="id",
-            length="file_count",
-        )),
-    ]
+    @classmethod
+    def get_data_format_members(cls, game_version):
+        """
+        Return the members in this struct.
+        """
+        data_format = [
+            (READ_EXPORT, "sound_id", StorageType.ID_MEMBER, "int16_t"),
+            (READ, "play_delay", StorageType.INT_MEMBER, "int16_t"),
+            (READ_EXPORT, "file_count", StorageType.INT_MEMBER, "uint16_t"),
+            (READ, "cache_time", StorageType.INT_MEMBER, "int32_t"),                   # always 300000
+            (READ_EXPORT, "sound_items", StorageType.ARRAY_CONTAINER, SubdataMember(
+                ref_type=SoundItem,
+                ref_to="id",
+                length="file_count",
+            )),
+        ]
+
+        return data_format

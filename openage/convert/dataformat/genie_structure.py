@@ -19,6 +19,7 @@ from ..export.struct_definition import (StructDefinition, vararray_match,
 from .value_members import MemberTypes as StorageType
 from .value_members import ContainerMember,\
     ArrayMember, IntMember, FloatMember, StringMember, BooleanMember, IDMember
+from openage.convert.dataformat.value_members import BitfieldMember
 
 
 class GenieStructure:
@@ -34,9 +35,6 @@ class GenieStructure:
 
     # comment for the created struct
     struct_description = None
-
-    # detected game versions
-    game_versions = list()
 
     # struct format specification
     # ===========================================================
@@ -57,7 +55,7 @@ class GenieStructure:
         # store passed arguments as members
         self.__dict__.update(args)
 
-    def read(self, raw, offset, cls=None, members=None):
+    def read(self, raw, offset, game_version, cls=None, members=None):
         """
         recursively read defined binary data from raw at given offset.
 
@@ -76,9 +74,9 @@ class GenieStructure:
         stop_reading_members = False
 
         if not members:
-            members = target_class.get_data_format(
-                allowed_modes=(True, READ_EXPORT, READ, READ_UNKNOWN),
-                flatten_includes=False)
+            members = target_class.get_data_format(game_version,
+                                                   allowed_modes=(True, READ_EXPORT, READ, READ_UNKNOWN),
+                                                   flatten_includes=False)
 
         for _, export, var_name, storage_type, var_type in members:
 
@@ -101,6 +99,7 @@ class GenieStructure:
                     # call the read function of the referenced class (cls),
                     # but store the data to the current object (self).
                     offset, gen_members = var_type.cls.read(self, raw, offset,
+                                                            game_version,
                                                             cls=var_type.cls)
 
                     # Push the passed members directly into the list of generated members
@@ -110,9 +109,8 @@ class GenieStructure:
                     # create new instance of ValueMember,
                     # depending on the storage type.
                     # then save the result as a reference named `var_name`
-                    grouped_data = var_type.cls(
-                        game_versions=self.game_versions)
-                    offset, gen_members = grouped_data.read(raw, offset)
+                    grouped_data = var_type.cls()
+                    offset, gen_members = grouped_data.read(raw, offset, game_version)
 
                     setattr(self, var_name, grouped_data)
 
@@ -200,7 +198,7 @@ class GenieStructure:
                         # definition. this utilizes an on-the-fly definition
                         # of the data to be read.
                         offset, sub_members = self.read(
-                            raw, offset, cls=target_class,
+                            raw, offset, game_version, cls=target_class,
                             members=(((False,) + var_type.subtype_definition),)
                         )
 
@@ -219,11 +217,10 @@ class GenieStructure:
                                             new_data_class.__name__))
 
                     # create instance of submember class
-                    new_data = new_data_class(
-                        game_versions=self.game_versions, **varargs)
+                    new_data = new_data_class(**varargs)
 
                     # recursive call, read the subdata.
-                    offset, gen_members = new_data.read(raw, offset, new_data_class)
+                    offset, gen_members = new_data.read(raw, offset, game_version, new_data_class)
 
                     # append the new data to the appropriate list
                     if single_type_subdata:
@@ -412,10 +409,17 @@ class GenieStructure:
 
                         if isinstance(var_type, EnumLookupMember):
                             # store differently depending on storage type
-                            if storage_type in (StorageType.INT_MEMBER,
-                                                StorageType.ID_MEMBER):
+                            if storage_type is StorageType.INT_MEMBER:
                                 # store as plain integer value
                                 gen_member = IntMember(var_name, result)
+
+                            elif storage_type is StorageType.ID_MEMBER:
+                                # store as plain integer value
+                                gen_member = IDMember(var_name, result)
+
+                            elif storage_type is StorageType.BITFIELD_MEMBER:
+                                # store as plain integer value
+                                gen_member = BitfieldMember(var_name, result)
 
                             elif storage_type is StorageType.STRING_MEMBER:
                                 # store by looking up value from dict
@@ -424,10 +428,11 @@ class GenieStructure:
                             else:
                                 raise Exception("%s at offset %# 08x: Data read via %s "
                                                 "cannot be stored as %s;"
-                                                " expected %s, %s or %s"
+                                                " expected %s, %s, %s or %s"
                                                 % (var_name, offset, var_type, storage_type,
                                                    StorageType.INT_MEMBER,
                                                    StorageType.ID_MEMBER,
+                                                   StorageType.BITFIELD_MEMBER,
                                                    StorageType.STRING_MEMBER))
 
                         elif isinstance(var_type, ContinueReadMember):
@@ -492,9 +497,9 @@ class GenieStructure:
         self_member_count = 0
 
         # acquire all struct members, including the included members
-        members = cls.get_data_format(
-            allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
-            flatten_includes=False)
+        members = cls.get_data_format(None,
+                                      allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
+                                      flatten_includes=False)
 
         for _, _, _, _, member_type in members:
             self_member_count += 1
@@ -524,7 +529,7 @@ class GenieStructure:
         return ret
 
     @classmethod
-    def format_hash(cls, hasher=None):
+    def format_hash(cls, game_version, hasher=None):
         """
         provides a deterministic hash of all exported structure members
 
@@ -542,10 +547,10 @@ class GenieStructure:
 
         # only hash exported struct members!
         # non-exported values don't influence anything.
-        members = cls.get_data_format(
-            allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
-            flatten_includes=False,
-        )
+        members = cls.get_data_format(game_version,
+                                      allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
+                                      flatten_includes=False,
+                                      )
         for _, export, member_name, _, member_type in members:
 
             # includemembers etc have no name.
@@ -570,7 +575,7 @@ class GenieStructure:
         return cls.name_struct
 
     @classmethod
-    def get_data_format(cls, allowed_modes=False,
+    def get_data_format(cls, game_version, allowed_modes=False,
                         flatten_includes=False, is_parent=False):
         """
         return all members of this exportable (a struct.)
@@ -580,7 +585,10 @@ class GenieStructure:
         or can be fetched and displayed as if they weren't inherited.
         """
 
-        for member in cls.data_format:
+        for member in cls.get_data_format_members(game_version):
+            if len(member) != 4:
+                print(member[1])
+
             export, _, _, read_type = member
 
             definitively_return_member = False
@@ -588,8 +596,10 @@ class GenieStructure:
             if isinstance(read_type, IncludeMembers):
                 if flatten_includes:
                     # recursive call
-                    yield from read_type.cls.get_data_format(
-                        allowed_modes, flatten_includes, is_parent=True)
+                    yield from read_type.cls.get_data_format(game_version,
+                                                             allowed_modes,
+                                                             flatten_includes,
+                                                             is_parent=True)
                     continue
 
             elif isinstance(read_type, ContinueReadMember):

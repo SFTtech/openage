@@ -51,7 +51,7 @@ def mount_asset_dirs(srcdir, game_version):
         """
 
         drspath = srcdir[filename]
-        result[target].mount(DRS(drspath.open('rb')).root)
+        result[target].mount(DRS(drspath.open('rb'), game_version).root)
 
     # Mount the media sources of the game edition
     for media_type, media_paths in game_version[0].media_paths.items():
@@ -197,7 +197,7 @@ def mount_input(srcdir=None, prev_source_dir_path=None):
     if game_version[1]:
         info("Expansions detected:")
         for expansion in game_version[1]:
-            info(" * %s", expansion)
+            info(" * %s", expansion.expansion_name)
 
     output = mount_asset_dirs(srcdir, game_version)
 

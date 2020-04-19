@@ -3976,7 +3976,6 @@ class AoCAbilitySubprocessor:
                 storage_entity = garrisoned
                 garrisoned_expected_pointer = ExpectedPointer(storage_entity, storage_name)
 
-                # TODO: There are other relics in the .dat
                 break
 
         ability_raw_api_object.add_raw_member("storage_element",

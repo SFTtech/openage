@@ -12,26 +12,39 @@ from ..util.strings import decode_until_null
 from ..util.struct import NamedStruct
 from ..util.fslike.filecollection import FileCollection
 from ..util.filelike.stream import StreamFragment
+from openage.convert.dataformat.version_detect import GameEdition
 
 # version of the drs files, hardcoded for now
-FILE_VERSION = 57
-
-if FILE_VERSION == 57:
-    COPYRIGHT_SIZE = 40
-elif FILE_VERSION == 59:
-    COPYRIGHT_SIZE = 60
+COPYRIGHT_SIZE_ENSEMBLE = 40
+COPYRIGHT_SIZE_LUCAS = 60
 
 
-class DRSHeader(NamedStruct):
+class DRSHeaderEnsemble(NamedStruct):
     """
-    DRS file header; see doc/media/drs-files
+    DRS file header for AoE1 and AoE2; see doc/media/drs-files
     """
 
     # pylint: disable=bad-whitespace,too-few-public-methods
 
     endianness       = "<"
 
-    copyright        = str(COPYRIGHT_SIZE) + "s"
+    copyright        = str(COPYRIGHT_SIZE_ENSEMBLE) + "s"
+    version          = "4s"
+    ftype            = "12s"
+    table_count      = "i"
+    file_offset      = "i"     # offset of the first file
+
+
+class DRSHeaderLucasArts(NamedStruct):
+    """
+    DRS file header for SWGB; see doc/media/drs-files
+    """
+
+    # pylint: disable=bad-whitespace,too-few-public-methods
+
+    endianness       = "<"
+
+    copyright        = str(COPYRIGHT_SIZE_LUCAS) + "s"
     version          = "4s"
     ftype            = "12s"
     table_count      = "i"
@@ -70,14 +83,20 @@ class DRS(FileCollection):
     """
     represents a file archive in DRS format.
     """
-    def __init__(self, fileobj):
+
+    def __init__(self, fileobj, game_version):
         super().__init__()
 
         # queried from the outside
         self.fileobj = fileobj
 
         # read header
-        header = DRSHeader.read(fileobj)
+        if GameEdition.SWGB is game_version[0]:
+            header = DRSHeaderLucasArts.read(fileobj)
+
+        else:
+            header = DRSHeaderEnsemble.read(fileobj)
+
         header.copyright = decode_until_null(header.copyright).strip()
         header.version = decode_until_null(header.version)
         header.ftype = decode_until_null(header.ftype)

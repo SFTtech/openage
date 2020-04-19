@@ -16,7 +16,14 @@ class MultisubtypeBaseFile(GenieStructure):
     name_struct        = "multisubtype_ref"
     struct_description = "format for multi-subtype references"
 
-    data_format = (
-        (NOREAD_EXPORT, "subtype", None, "std::string"),
-        (NOREAD_EXPORT, "filename", None, "std::string"),
-    )
+    @classmethod
+    def get_data_format_members(cls, game_version):
+        """
+        Return the members in this struct.
+        """
+        data_format = (
+            (NOREAD_EXPORT, "subtype", None, "std::string"),
+            (NOREAD_EXPORT, "filename", None, "std::string"),
+        )
+
+        return data_format

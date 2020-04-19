@@ -710,7 +710,7 @@ class AoCNyanSubprocessor:
         sound_location = ExpectedPointer(terrain_group, terrain_name)
         sound_raw_api_object.set_location(sound_location)
 
-        # Sounds for terrains don't exist in AoC (TODO: Really?)
+        # Sounds for terrains don't exist in AoC
         sounds = []
 
         sound_raw_api_object.add_raw_member("play_delay",
@@ -892,13 +892,7 @@ class AoCNyanSubprocessor:
         :param line: Line for which the projectiles are extracted.
         :type line: ..dataformat.converter_object.ConverterObjectGroup
         """
-        if isinstance(line, GenieVillagerGroup):
-            # TODO: Requires special treatment?
-            current_unit = line.variants[0].line[0]
-
-        else:
-            current_unit = line.line[0]
-
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
