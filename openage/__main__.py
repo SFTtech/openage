@@ -1,4 +1,4 @@
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Behold: The central entry point for all of openage.
@@ -27,6 +27,10 @@ class PrintVersion(argparse.Action):
 
         from . import LONGVERSION
         print(LONGVERSION)
+        from .versions.versions import get_version_numbers
+        version_numbers = get_version_numbers()
+        for key in version_numbers:
+            print(key.decode("utf8") + " " + version_numbers[key].decode("utf8"))
         sys.exit(0)
 
 
