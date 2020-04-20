@@ -139,7 +139,19 @@ class Terrain(GenieStructure):
             (READ, "random", StorageType.INT_MEMBER, "int8_t"),
         ]
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "is_water", StorageType.BOOLEAN_MEMBER, "int8_t"),
+                (READ_EXPORT, "hide_in_editor", StorageType.BOOLEAN_MEMBER, "int8_t"),
+                (READ_EXPORT, "string_id", StorageType.ID_MEMBER, "int32_t"),
+                (READ_EXPORT, "internal_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "internal_name_len", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "internal_name", StorageType.STRING_MEMBER, "char[internal_name_len]"),
+                (READ_EXPORT, "filename_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "filename_len", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[filename_len]"),
+            ])
+        elif game_version[0] is GameEdition.SWGB:
             data_format.extend([
                 (READ_EXPORT, "internal_name", StorageType.STRING_MEMBER, "char[17]"),
                 (READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[17]"),
@@ -156,12 +168,24 @@ class Terrain(GenieStructure):
             (READ_EXPORT, "sound_id", StorageType.ID_MEMBER, "int32_t"),
         ])
 
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "wwise_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+                (READ_EXPORT, "wwise_stop_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+            ])
+
         if game_version[0] is not GameEdition.ROR:
             data_format.extend([
                 # see doc/media/blendomatic.md for blending stuff
                 (READ_EXPORT, "blend_priority", StorageType.ID_MEMBER, "int32_t"),
                 (READ_EXPORT, "blend_mode", StorageType.ID_MEMBER, "int32_t"),
             ])
+            if game_version[0] is GameEdition.AOE2DE:
+                data_format.extend([
+                    (READ_EXPORT, "overlay_mask_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                    (READ_EXPORT, "overlay_mask_name_len", StorageType.INT_MEMBER, "uint16_t"),
+                    (READ_EXPORT, "overlay_mask_name", StorageType.STRING_MEMBER, "char[overlay_mask_name_len]"),
+                ])
 
         data_format.extend([
             (READ_EXPORT, "map_color_hi", StorageType.ID_MEMBER, "uint8_t"),       # color of this terrain tile, mainly used in the minimap.
@@ -184,9 +208,11 @@ class Terrain(GenieStructure):
             (READ_EXPORT, "terrain_to_draw1", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        # probably references to the TerrainBorders, there are 42 terrains in game
-
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.append(
+                (READ, "terrain_unit_masked_density", StorageType.ARRAY_INT, "int16_t[30]")
+            )
+        elif game_version[0] is GameEdition.SWGB:
             data_format.append(
                 (READ, "borders", StorageType.ARRAY_INT, ArrayMember(
                     "int16_t",

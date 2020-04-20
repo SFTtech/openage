@@ -223,6 +223,27 @@ class TechResourceCost(GenieStructure):
                     195: "CONSTRUCTION_RATE_MULTIPLIER",    # except for wonders
                     196: "HUN_WONDER_BONUS",
                     197: "SPIES_DISCOUNT",                  # or atheism_active?
+                    198: "AK_UNUSED_198",
+                    199: "AK_UNUSED_199",
+                    200: "AK_UNUSED_200",
+                    201: "AK_UNUSED_201",
+                    202: "AK_UNUSED_202",
+                    203: "AK_UNUSED_203",
+                    204: "AK_UNUSED_204",
+                    205: "AK_FEITORIA_FOOD_PRODUCTIVITY",
+                    206: "AK_FEITORIA_WOOD_PRODUCTIVITY",
+                    207: "AK_FEITORIA_GOLD_PRODUCTIVITY",
+                    208: "AK_FEITORIA_STONE_PRODUCTIVITY",
+                    209: "RAJ_REVEAL_ENEMY_TOWN_CENTER",
+                    210: "RAJ_REVEAL_RELIC",
+                    211: "DE2_UNKNOWN_211",
+                    212: "DE2_UNKNOWN_212",
+                    213: "DE2_UNKNOWN_213",
+                    214: "DE2_UNKNOWN_214",
+                    215: "DE2_UNKNOWN_215",
+                    216: "DE2_UNKNOWN_216",
+                    217: "DE2_UNKNOWN_217",
+                    218: "DE2_UNKNOWN_218",
                 }
             )),  # see unit/resource_cost
             (READ, "amount", StorageType.INT_MEMBER, "int16_t"),
@@ -279,20 +300,25 @@ class Tech(GenieStructure):
             (READ, "language_dll_help", StorageType.ID_MEMBER, "int32_t"),         # 100000 + the language file id for the name/description
             (READ, "language_dll_techtree", StorageType.ID_MEMBER, "int32_t"),     # 149000 + lang_dll_description
             (READ, "hotkey", StorageType.ID_MEMBER, "int32_t"),                    # -1 for every tech
-            (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
-            (READ, "name", StorageType.STRING_MEMBER, "char[name_length]"),
         ])
 
         if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ, "name_length_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
+                (READ, "name", StorageType.STRING_MEMBER, "char[name_length]"),
+            ])
+
+        else:
             data_format.extend([
                 (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name", StorageType.STRING_MEMBER, "char[name_length]"),
             ])
 
-        if game_version[0] is GameEdition.SWGB:
-            data_format.extend([
-                (READ, "name2_length", StorageType.INT_MEMBER, "uint16_t"),
-                (READ, "name2", StorageType.STRING_MEMBER, "char[name2_length]"),
-            ])
+            if game_version[0] is GameEdition.SWGB:
+                data_format.extend([
+                    (READ, "name2_length", StorageType.INT_MEMBER, "uint16_t"),
+                    (READ, "name2", StorageType.STRING_MEMBER, "char[name2_length]"),
+                ])
 
         return data_format

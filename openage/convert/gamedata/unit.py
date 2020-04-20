@@ -132,6 +132,13 @@ class UnitCommand(GenieStructure):
             (READ_EXPORT, "resource_deposit_sound_id", StorageType.ID_MEMBER, "int16_t"),
         ]
 
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "wwise_resource_gather_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+                # sound to play on resource drop
+                (READ_EXPORT, "wwise_resource_deposit_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+            ])
+
         return data_format
 
 
@@ -200,6 +207,8 @@ class ResourceStorage(GenieStructure):
                     1: "KEEP_AFTER_DEATH",
                     2: "RESET_ON_DEATH_INSTANT",
                     4: "RESET_ON_DEATH_WHEN_COMPLETED",
+                    8: "DE2_UNKNOWN_8",
+                    32: "DE2_UNKNOWN_32",
                 },
             )),
         ]
@@ -265,7 +274,7 @@ class HitType(GenieStructure):
                     10: "SWGB_SUBMARINE",
                     11: "BUILDINGS_NO_PORT",
                     13: "STONE_DEFENSES",
-                    14: "UNKNOWN_14",
+                    14: "HD_PREDATOR",
                     15: "ARCHERS",
                     16: "SHIPS_CAMELS_SABOTEURS",
                     17: "RAMS",
@@ -274,14 +283,20 @@ class HitType(GenieStructure):
                     20: "SIEGE_WEAPONS",
                     21: "BUILDINGS",
                     22: "WALLS_GATES",
-                    23: "UNKNOWN_23",
+                    23: "HD_GUNPOWDER",
                     24: "BOAR",
                     25: "MONKS",
                     26: "CASTLE",
                     27: "SPEARMEN",
                     28: "CAVALRY_ARCHER",
                     29: "EAGLE_WARRIOR",
-                    30: "UNKNOWN_30",
+                    30: "HD_CAMEL",
+                    31: "DE2_UNKOWN_31",
+                    32: "DE2_UNKOWN_32",
+                    33: "DE2_UNKOWN_33",
+                    34: "DE2_UNKOWN_34",
+                    35: "DE2_UNKOWN_35",
+                    36: "DE2_UNKOWN_36",
                 },
             )),
             (READ, "amount", StorageType.INT_MEMBER, "int16_t"),
@@ -504,6 +519,27 @@ class ResourceCost(GenieStructure):
                     195: "CONSTRUCTION_RATE_MULTIPLIER",    # except for wonders
                     196: "HUN_WONDER_BONUS",
                     197: "SPIES_DISCOUNT",                  # or atheism_active?
+                    198: "AK_UNUSED_198",
+                    199: "AK_UNUSED_199",
+                    200: "AK_UNUSED_200",
+                    201: "AK_UNUSED_201",
+                    202: "AK_UNUSED_202",
+                    203: "AK_UNUSED_203",
+                    204: "AK_UNUSED_204",
+                    205: "AK_FEITORIA_FOOD_PRODUCTIVITY",
+                    206: "AK_FEITORIA_WOOD_PRODUCTIVITY",
+                    207: "AK_FEITORIA_GOLD_PRODUCTIVITY",
+                    208: "AK_FEITORIA_STONE_PRODUCTIVITY",
+                    209: "RAJ_REVEAL_ENEMY_TOWN_CENTER",
+                    210: "RAJ_REVEAL_RELIC",
+                    211: "DE2_UNKNOWN_211",
+                    212: "DE2_UNKNOWN_212",
+                    213: "DE2_UNKNOWN_213",
+                    214: "DE2_UNKNOWN_214",
+                    215: "DE2_UNKNOWN_215",
+                    216: "DE2_UNKNOWN_216",
+                    217: "DE2_UNKNOWN_217",
+                    218: "DE2_UNKNOWN_218",
                 }
             )),
             (READ, "amount", StorageType.INT_MEMBER, "int16_t"),
@@ -546,8 +582,14 @@ class UnitObject(GenieStructure):
         """
         Return the members in this struct.
         """
-        data_format = [
-            (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
+        if game_version[0] is not GameEdition.AOE2DE:
+            data_format = [
+                (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
+            ]
+        else:
+            data_format = []
+
+        data_format.extend([
             (READ_EXPORT, "id0", StorageType.ID_MEMBER, "int16_t"),
             (READ_EXPORT, "language_dll_name", StorageType.ID_MEMBER, "uint16_t"),
             (READ_EXPORT, "language_dll_creation", StorageType.ID_MEMBER, "uint16_t"),
@@ -623,7 +665,14 @@ class UnitObject(GenieStructure):
                 },
             )),
             (READ_EXPORT, "idle_graphic0", StorageType.ID_MEMBER, "int16_t"),
-            (READ_EXPORT, "idle_graphic1", StorageType.ID_MEMBER, "int16_t"),
+        ])
+
+        if game_version[0] is not GameEdition.ROR:
+            data_format.extend([
+                (READ_EXPORT, "idle_graphic1", StorageType.ID_MEMBER, "int16_t"),
+            ])
+
+        data_format.extend([
             (READ_EXPORT, "dying_graphic", StorageType.ID_MEMBER, "int16_t"),
             (READ_EXPORT, "undead_graphic", StorageType.ID_MEMBER, "int16_t"),
             # 1 = become `dead_unit_id` (reviving does not make it usable again)
@@ -638,7 +687,7 @@ class UnitObject(GenieStructure):
             (READ_EXPORT, "radius_y", StorageType.FLOAT_MEMBER, "float"),
             (READ_EXPORT, "radius_z", StorageType.FLOAT_MEMBER, "float"),
             (READ_EXPORT, "train_sound_id", StorageType.ID_MEMBER, "int16_t"),
-        ]
+        ])
 
         if game_version[0] is not GameEdition.ROR:
             data_format.append((READ_EXPORT, "damage_sound_id", StorageType.ID_MEMBER, "int16_t"))
@@ -646,6 +695,14 @@ class UnitObject(GenieStructure):
         data_format.extend([
             # unit id to become on death
             (READ_EXPORT, "dead_unit_id", StorageType.ID_MEMBER, "int16_t"),
+        ])
+
+        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+            data_format.extend([
+                (READ, "blood_unit_id", StorageType.ID_MEMBER, "int16_t"),
+            ])
+
+        data_format.extend([
             # 0=placable on top of others in scenario editor, 5=can't
             (READ, "placement_mode", StorageType.ID_MEMBER, "int8_t"),
             (READ, "can_be_built_on", StorageType.BOOLEAN_MEMBER, "int8_t"),  # 1=no footprints
@@ -724,6 +781,7 @@ class UnitObject(GenieStructure):
                     0x1B: "SWGB_DEEP_WATER",
                     0x1C: "SWGB_WASTELAND",
                     0x1D: "SWGB_ICE",
+                    0x1E: "DE2_UNKNOWN",
                 },
             )),
             # determines whether the unit can fly
@@ -826,7 +884,7 @@ class UnitObject(GenieStructure):
             # val == {-1, 7}: in open area mask is partially displayed
             # val == {6, 10}: building, causes mask to appear on units behind it
             data_format.extend([
-                (READ, "occlusion_mask", StorageType.ID_MEMBER, "int8_t"),
+                (READ, "occlusion_mode", StorageType.ID_MEMBER, "uint8_t"),
                 (READ, "obstruction_type", StorageType.ID_MEMBER, EnumLookupMember(
                     raw_type="int8_t",
                     type_name="obstruction_types",
@@ -881,6 +939,15 @@ class UnitObject(GenieStructure):
             (READ_EXPORT, "selection_shape_x", StorageType.FLOAT_MEMBER, "float"),
             (READ_EXPORT, "selection_shape_y", StorageType.FLOAT_MEMBER, "float"),
             (READ_EXPORT, "selection_shape_z", StorageType.FLOAT_MEMBER, "float"),
+        ])
+
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "scenario_trigger_data0", StorageType.ID_MEMBER, "uint32_t"),
+                (READ_EXPORT, "scenario_trigger_data1", StorageType.ID_MEMBER, "uint32_t"),
+            ])
+
+        data_format.extend([
             (READ_EXPORT, "resource_storage", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=ResourceStorage,
                 length=3,
@@ -892,6 +959,17 @@ class UnitObject(GenieStructure):
             )),
             (READ_EXPORT, "selection_sound_id", StorageType.ID_MEMBER, "int16_t"),
             (READ_EXPORT, "dying_sound_id", StorageType.ID_MEMBER, "int16_t"),
+        ])
+
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "wwise_creation_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+                (READ_EXPORT, "wwise_damage_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+                (READ_EXPORT, "wwise_selection_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+                (READ_EXPORT, "wwise_dying_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+            ])
+
+        data_format.extend([
             (READ_EXPORT, "old_attack_mode", StorageType.ID_MEMBER, EnumLookupMember(  # obsolete, as it's copied when converting the unit
                 raw_type="int8_t",     # things that happen when the unit was selected
                 type_name="attack_modes",
@@ -905,21 +983,35 @@ class UnitObject(GenieStructure):
             )),
 
             (READ, "convert_terrain", StorageType.INT_MEMBER, "int8_t"),
-            (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_length]"),
         ])
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0] is GameEdition.AOE2DE:
             data_format.extend([
-                (READ, "name2_length", StorageType.INT_MEMBER, "uint16_t"),
-                (READ, "name2", StorageType.STRING_MEMBER, "char[name2_length]"),
-                (READ, "unit_line", StorageType.ID_MEMBER, "int16_t"),
-                (READ, "min_tech_level", StorageType.ID_MEMBER, "int8_t"),
+                (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_len]"),
             ])
+
+        else:
+            data_format.extend([
+                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_length]"),
+            ])
+
+            if game_version[0] is GameEdition.SWGB:
+                data_format.extend([
+                    (READ, "name2_length", StorageType.INT_MEMBER, "uint16_t"),
+                    (READ, "name2", StorageType.STRING_MEMBER, "char[name2_length]"),
+                    (READ, "unit_line", StorageType.ID_MEMBER, "int16_t"),
+                    (READ, "min_tech_level", StorageType.ID_MEMBER, "int8_t"),
+                ])
 
         data_format.append((READ_EXPORT, "id1", StorageType.ID_MEMBER, "int16_t"))
 
         if game_version[0] is not GameEdition.ROR:
             data_format.append((READ_EXPORT, "id2", StorageType.ID_MEMBER, "int16_t"))
+
+        if game_version[0] is GameEdition.AOE1DE:
+            data_format.append((READ_EXPORT, "telemetry_id", StorageType.ID_MEMBER, "int16_t"))
 
         return data_format
 
@@ -1029,6 +1121,11 @@ class MovingUnit(DoppelgangerUnit):
                 (READ, "max_yaw_per_sec_stationary", StorageType.FLOAT_MEMBER, "float"),
             ])
 
+            if game_version[0] is GameEdition.AOE2DE:
+                data_format.extend([
+                    (READ_EXPORT, "min_collision_size_multiplier", StorageType.FLOAT_MEMBER, "float"),
+                ])
+
         return data_format
 
 
@@ -1072,9 +1169,18 @@ class ActionUnit(MovingUnit):
             (READ_EXPORT, "command_sound_id", StorageType.ID_MEMBER, "int16_t"),
             # sound when the command is done (e.g. unit stops at target position)
             (READ_EXPORT, "stop_sound_id", StorageType.ID_MEMBER, "int16_t"),
+        ]
+
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "wwise_command_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+                (READ_EXPORT, "wwise_stop_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+            ])
+
+        data_format.extend([
             # how animals run around randomly
             (READ, "run_pattern", StorageType.ID_MEMBER, "int8_t"),
-        ]
+        ])
 
         if game_version[0] is GameEdition.ROR:
             data_format.extend([
@@ -1107,7 +1213,7 @@ class ProjectileUnit(ActionUnit):
             (READ_EXPORT, None, None, IncludeMembers(cls=ActionUnit)),
         ]
 
-        if game_version[0] is GameEdition.ROR:
+        if game_version[0] is GameEdition.AOE1DE:
             data_format.append((READ, "default_armor", StorageType.INT_MEMBER, "uint8_t"))
         else:
             data_format.append((READ, "default_armor", StorageType.INT_MEMBER, "int16_t"))
@@ -1280,6 +1386,15 @@ class LivingUnit(ProjectileUnit):
                 (READ_EXPORT, "garrison_graphic", StorageType.ID_MEMBER, "int32_t"),
                 # projectile count when nothing garrisoned, including both normal and
                 # duplicated projectiles
+            ])
+
+            if game_version[0] is GameEdition.AOE2DE:
+                data_format.extend([
+                    (READ, "spawn_graphic_id", StorageType.ID_MEMBER, "int16_t"),
+                    (READ, "upgrade_graphic_id", StorageType.ID_MEMBER, "int16_t"),
+                ])
+
+            data_format.extend([
                 (READ, "attack_projectile_count", StorageType.INT_MEMBER, "float"),
                 # total projectiles when fully garrisoned
                 (READ, "attack_projectile_max_count", StorageType.INT_MEMBER, "int8_t"),
@@ -1334,6 +1449,14 @@ class BuildingUnit(LivingUnit):
         if game_version[0] is not GameEdition.ROR:
             data_format.append((READ, "snow_graphic_id", StorageType.ID_MEMBER, "int16_t"))
 
+            if game_version[0] is GameEdition.AOE2DE:
+                data_format.extend([
+                    (READ, "destruction_graphic_id", StorageType.ID_MEMBER, "int16_t"),
+                    (READ, "destruction_rubble_graphic_id", StorageType.ID_MEMBER, "int16_t"),
+                    (READ, "research_graphic_id", StorageType.ID_MEMBER, "int16_t"),
+                    (READ, "research_complete_graphic_id", StorageType.ID_MEMBER, "int16_t"),
+                ])
+
         data_format.extend([
             # 1=adjacent units may change the graphics
             (READ, "adjacent_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
@@ -1365,6 +1488,12 @@ class BuildingUnit(LivingUnit):
             ])
 
         data_format.append((READ, "construction_sound_id", StorageType.ID_MEMBER, "int16_t"))
+
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ, "wwise_construction_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+                (READ, "wwise_transform_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+            ])
 
         if game_version[0] is not GameEdition.ROR:
             data_format.extend([

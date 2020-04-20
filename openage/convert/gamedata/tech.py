@@ -120,15 +120,25 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
         """
         Return the members in this struct.
         """
-        data_format = [
-            # always CHUN4 (change unit 4-arg) in AoE1-AoC, later versions name them
-            (READ, "name", StorageType.STRING_MEMBER, "char[31]"),
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format = [
+                (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+            ]
+        else:
+            data_format = [
+                # always CHUN4 (change unit 4-arg) in AoE1-AoC, later versions name them
+                (READ, "name", StorageType.STRING_MEMBER, "char[31]"),
+            ]
+
+        data_format.extend([
             (READ, "effect_count", StorageType.INT_MEMBER, "uint16_t"),
             (READ, "effects", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=Effect,
                 length="effect_count",
             )),
-        ]
+        ])
 
         return data_format
 

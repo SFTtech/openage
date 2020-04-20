@@ -114,11 +114,17 @@ class EmpiresDat(GenieStructure):
             (READ, "padding1", StorageType.INT_MEMBER, "int16_t"),
         ])
 
-        # 42 terrains are stored (100 in African Kingdoms), but less are used.
+        # Stored terrain number is hardcoded.
+        # Usually less terrains are used by the game
         if game_version[0] is GameEdition.SWGB:
             data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=55,
+            )))
+        elif game_version[0] is GameEdition.AOE2DE:
+            data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+                ref_type=terrain.Terrain,
+                length=200,
             )))
         elif GameExpansion.AFRI_KING in game_version[1]:
             data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -131,13 +137,16 @@ class EmpiresDat(GenieStructure):
                 length=42,
             )))
 
-        data_format.extend([
-            (READ,         "terrain_border", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=terrain.TerrainBorder,
-                length=16,
-            )),
+        if game_version[0] is not GameEdition.AOE2DE:
+            data_format.extend([
+                (READ, "terrain_border", StorageType.ARRAY_CONTAINER, SubdataMember(
+                    ref_type=terrain.TerrainBorder,
+                    length=16,
+                )),
+                (READ, "map_row_offset", StorageType.INT_MEMBER, "int32_t"),
+            ])
 
-            (READ,         "map_row_offset", StorageType.INT_MEMBER, "int32_t"),
+        data_format.extend([
             (READ,         "map_min_x", StorageType.FLOAT_MEMBER, "float"),
             (READ,         "map_min_y", StorageType.FLOAT_MEMBER, "float"),
             (READ,         "map_max_x", StorageType.FLOAT_MEMBER, "float"),
@@ -166,14 +175,24 @@ class EmpiresDat(GenieStructure):
             (READ,         "fog_flag", StorageType.INT_MEMBER, "int8_t"),
         ])
 
-        if game_version[0] is GameEdition.SWGB:
-            data_format.append((READ_UNKNOWN, "terrain_blob0", StorageType.ARRAY_INT, "uint8_t[25]"))
-        else:
-            data_format.append((READ_UNKNOWN, "terrain_blob0", StorageType.ARRAY_INT, "uint8_t[21]"))
+        if game_version[0] is not GameEdition.AOE2DE:
+            if game_version[0] is GameEdition.SWGB:
+                data_format.extend([
+                    (READ_UNKNOWN, "terrain_blob0", StorageType.ARRAY_INT, "uint8_t[25]"),
+                    (READ_UNKNOWN, "terrain_blob1", StorageType.ARRAY_INT, "uint32_t[157]"),
+                ])
+            elif game_version[0] is GameEdition.ROR:
+                data_format.extend([
+                    (READ_UNKNOWN, "terrain_blob0", StorageType.ARRAY_INT, "uint8_t[2]"),
+                    (READ_UNKNOWN, "terrain_blob1", StorageType.ARRAY_INT, "uint32_t[5]"),
+                ])
+            else:
+                data_format.extend([
+                    (READ_UNKNOWN, "terrain_blob0", StorageType.ARRAY_INT, "uint8_t[21]"),
+                    (READ_UNKNOWN, "terrain_blob1", StorageType.ARRAY_INT, "uint32_t[157]"),
+                ])
 
         data_format.extend([
-            (READ_UNKNOWN, "terrain_blob1", StorageType.ARRAY_INT, "uint32_t[157]"),
-
             # random map config
             (READ, "random_map_count", StorageType.INT_MEMBER, "uint32_t"),
             (READ, "random_map_ptr", StorageType.ID_MEMBER, "uint32_t"),

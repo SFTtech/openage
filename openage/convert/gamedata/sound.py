@@ -55,11 +55,19 @@ class Sound(GenieStructure):
             (READ, "play_delay", StorageType.INT_MEMBER, "int16_t"),
             (READ_EXPORT, "file_count", StorageType.INT_MEMBER, "uint16_t"),
             (READ, "cache_time", StorageType.INT_MEMBER, "int32_t"),                   # always 300000
+        ]
+
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "total_probability", StorageType.ID_MEMBER, "int16_t"),
+            ])
+
+        data_format.extend([
             (READ_EXPORT, "sound_items", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=SoundItem,
                 ref_to="id",
                 length="file_count",
             )),
-        ]
+        ])
 
         return data_format

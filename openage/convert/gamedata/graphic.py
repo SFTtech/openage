@@ -32,6 +32,31 @@ class GraphicDelta(GenieStructure):
         return data_format
 
 
+class DE2SoundProp(GenieStructure):
+    name_struct        = "de2_sound_prop"
+    name_struct_file   = "graphic"
+    struct_description = "DE2 sound id and delay definition for graphics sounds."
+
+    @classmethod
+    def get_data_format_members(cls, game_version):
+        """
+        Return the members in this struct.
+        """
+        data_format = [
+            (READ, "sound_delay0", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "sound_id0", StorageType.ID_MEMBER, "int16_t"),
+            (READ, "wwise_sound0", StorageType.ID_MEMBER, "uint32_t"),
+            (READ, "sound_delay1", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "wwise_sound1", StorageType.ID_MEMBER, "uint32_t"),
+            (READ, "sound_id1", StorageType.ID_MEMBER, "int16_t"),
+            (READ, "sound_delay2", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "wwise_sound2", StorageType.ID_MEMBER, "uint32_t"),
+            (READ, "sound_id2", StorageType.ID_MEMBER, "int16_t"),
+        ]
+
+        return data_format
+
+
 class SoundProp(GenieStructure):
     name_struct        = "sound_prop"
     name_struct_file   = "graphic"
@@ -47,12 +72,6 @@ class SoundProp(GenieStructure):
             (READ, "sound_id", StorageType.ID_MEMBER, "int16_t"),
         ]
 
-        # TODO: Correct order?
-        if game_version[0] is GameEdition.AOE2DE:
-            data_format.extend([
-                (READ_EXPORT, "wwise_sound_id", StorageType.ID_MEMBER, "uint32_t"),
-            ])
-
         return data_format
 
 
@@ -66,12 +85,21 @@ class GraphicAttackSound(GenieStructure):
         """
         Return the members in this struct.
         """
-        data_format = [
-            (READ, "sound_props", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=SoundProp,
-                length=3,
-            )),
-        ]
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format = [
+                (READ, "sound_props", StorageType.ARRAY_CONTAINER, SubdataMember(
+                    ref_type=DE2SoundProp,
+                    length=1,
+                )),
+            ]
+
+        else:
+            data_format = [
+                (READ, "sound_props", StorageType.ARRAY_CONTAINER, SubdataMember(
+                    ref_type=SoundProp,
+                    length=3,
+                )),
+            ]
 
         return data_format
 
@@ -89,15 +117,29 @@ class Graphic(GenieStructure):
         data_format = []
 
         # internal name: e.g. ARRG2NNE = archery range feudal Age north european
-        if game_version[0] is GameEdition.SWGB:
-            data_format.append((READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[25]"))
-        else:
-            data_format.append((READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[21]"))
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+                (READ_EXPORT, "filename_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "filename_len", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[filename_len]"),
+                (READ_EXPORT, "particle_effect_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "particle_effect_name_len", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "particle_effect_name", StorageType.STRING_MEMBER, "char[particle_effect_name_len]"),
+            ])
 
-        if game_version[0] is GameEdition.SWGB:
-            data_format.append((READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[25]"))
+        elif game_version[0] is GameEdition.SWGB:
+            data_format.extend([
+                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[25]"),
+                (READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[25]"),
+            ])
         else:
-            data_format.append((READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[13]"))
+            data_format.extend([
+                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[21]"),
+                (READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[13]"),
+            ])
 
         data_format.extend([
             (READ_EXPORT, "slp_id", StorageType.ID_MEMBER, "int32_t"),             # id of the graphics file in the drs
@@ -108,8 +150,11 @@ class Graphic(GenieStructure):
                 type_name   = "graphics_layer",
                 lookup_dict = {
                     0: "TERRAIN",      # cliff
+                    1: "GRASS_PATCH",
+                    2: "DE2_CLIFF",
                     5: "SHADOW",       # farm fields as well
                     6: "RUBBLE",
+                    7: "PLANT",
                     9: "SWGB_EFFECT",
                     10: "UNIT_LOW",    # constructions, dead units, tree stumps, flowers, paths
                     11: "FISH",

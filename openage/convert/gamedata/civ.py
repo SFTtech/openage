@@ -23,21 +23,34 @@ class Civ(GenieStructure):
         data_format = [
             # always 1
             (READ, "player_type", StorageType.INT_MEMBER, "int8_t"),
-            (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[20]"),
+        ]
+
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+            ])
+        else:
+            data_format.extend([
+                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[20]"),
+            ])
+
+        data_format.extend([
             (READ, "resources_count", StorageType.INT_MEMBER, "uint16_t"),
             # links to effect bundle id (to apply its effects)
             (READ_EXPORT, "tech_tree_id", StorageType.ID_MEMBER, "int16_t"),
-        ]
+        ])
 
         if game_version[0] is not GameEdition.ROR:
             # links to tech id as well
             data_format.append((READ_EXPORT, "team_bonus_id", StorageType.ID_MEMBER, "int16_t"))
 
-        if game_version[0] is GameEdition.SWGB:
-            data_format.extend([
-                (READ, "name2", StorageType.STRING_MEMBER, "char[20]"),
-                (READ, "unique_unit_techs", StorageType.ARRAY_ID, "int16_t[4]"),
-            ])
+            if game_version[0] is GameEdition.SWGB:
+                data_format.extend([
+                    (READ, "name2", StorageType.STRING_MEMBER, "char[20]"),
+                    (READ, "unique_unit_techs", StorageType.ARRAY_ID, "int16_t[4]"),
+                ])
 
         data_format.extend([
             (READ, "resources", StorageType.ARRAY_FLOAT, "float[resources_count]"),
