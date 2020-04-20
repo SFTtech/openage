@@ -18,15 +18,12 @@ def generate_gamespec_structs(projectdir):
     """ Header and C++ files for the gamespec structs """
     generator = DataFormatter()
 
-    # ASDF: Reactivate buildsystem
-    #===========================================================================
-    # generator.add_data(MultisubtypeBaseFile.structs())
-    # generator.add_data(EmpiresDat.structs())
-    # generator.add_data(Blendomatic.structs())
-    # generator.add_data(ColorTable.structs())
-    # generator.add_data(Texture.structs())
-    # generator.add_data(StringResource.structs())
-    #===========================================================================
+    generator.add_data(MultisubtypeBaseFile.structs())
+    generator.add_data(EmpiresDat.structs())
+    generator.add_data(Blendomatic.structs())
+    generator.add_data(ColorTable.structs())
+    generator.add_data(Texture.structs())
+    generator.add_data(StringResource.structs())
 
     cpppath = projectdir.joinpath('libopenage/gamedata')
     generator.export(cpppath, ("struct", "structimpl"))

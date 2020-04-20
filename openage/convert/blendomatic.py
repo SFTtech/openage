@@ -204,9 +204,6 @@ class Blendomatic(GenieStructure):
     struct_description = ("describes one blending mode, "
                           "a blending transition shape "
                           "between two different terrain types.")
-    data_format = (
-        (True, "blend_mode", None, "int32_t"),
-    )
 
     # struct blendomatic_header {
     #   unsigned int nr_blending_modes;
@@ -272,6 +269,17 @@ class Blendomatic(GenieStructure):
             texture.save(fslikeobj, path + '/' + name, save_format)
 
         dbg("blending masks successfully exported")
+
+    @classmethod
+    def get_data_format_members(cls, game_version):
+        """
+        Return the members in this struct.
+        """
+        data_format = (
+            (True, "blend_mode", None, "int32_t"),
+        )
+
+        return data_format
 
     def __str__(self):
         return str(self.blending_modes)

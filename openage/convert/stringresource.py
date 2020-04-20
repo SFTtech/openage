@@ -14,12 +14,6 @@ class StringResource(genie_structure.GenieStructure):
     struct_description = "string id/language to text mapping,"\
                          " extracted from language.dll file."
 
-    data_format = (
-        (True, "id", None,   "int32_t"),
-        (True, "lang", None, "char[16]"),
-        (True, "text", None, "std::string"),
-    )
-
     def __init__(self):
         super().__init__()
         self.strings = defaultdict(lambda: {})
@@ -49,3 +43,16 @@ class StringResource(genie_structure.GenieStructure):
     @classmethod
     def structs(cls):
         return [struct_definition.StructDefinition(cls)]
+
+    @classmethod
+    def get_data_format_members(cls, game_version):
+        """
+        Return the members in this struct.
+        """
+        data_format = (
+            (True, "id", None,   "int32_t"),
+            (True, "lang", None, "char[16]"),
+            (True, "text", None, "std::string"),
+        )
+
+        return data_format

@@ -15,14 +15,6 @@ class ColorTable(GenieStructure):
     name_struct_file = "color"
     struct_description = "indexed color storage."
 
-    data_format = (
-        (True, "idx", None, "int32_t"),
-        (True, "r", None,   "uint8_t"),
-        (True, "g", None,   "uint8_t"),
-        (True, "b", None,   "uint8_t"),
-        (True, "a", None,   "uint8_t"),
-    )
-
     def __init__(self, data):
         super().__init__()
 
@@ -163,6 +155,21 @@ class ColorTable(GenieStructure):
     @classmethod
     def structs(cls):
         return [StructDefinition(cls)]
+
+    @classmethod
+    def get_data_format_members(cls, game_version):
+        """
+        Return the members in this struct.
+        """
+        data_format = (
+            (True, "idx", None, "int32_t"),
+            (True, "r", None,   "uint8_t"),
+            (True, "g", None,   "uint8_t"),
+            (True, "b", None,   "uint8_t"),
+            (True, "a", None,   "uint8_t"),
+        )
+
+        return data_format
 
 
 class PlayerColorTable(ColorTable):

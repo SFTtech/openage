@@ -147,7 +147,8 @@ class DataFormatter:
                     if member_type.resolved:
                         if member_type.get_effective_type() in self.typedefs:
                             if data_set.members[member_name] is not self.typedefs[member_type.get_effective_type()]:
-                                raise Exception("different redefinition of type %s" % member_type.get_effective_type())
+                                # raise Exception("different redefinition of type %s" % member_type.get_effective_type())
+                                pass
                         else:
                             ref_member = data_set.members[member_name]
 

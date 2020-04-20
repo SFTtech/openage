@@ -20,6 +20,7 @@ from .value_members import MemberTypes as StorageType
 from .value_members import ContainerMember,\
     ArrayMember, IntMember, FloatMember, StringMember, BooleanMember, IDMember
 from openage.convert.dataformat.value_members import BitfieldMember
+from openage.convert.dataformat.version_detect import GameEdition
 
 
 class GenieStructure:
@@ -49,7 +50,6 @@ class GenieStructure:
     # read_type: ReadMember type for reading the values from bytes
     #            (see read_members.py)
     # ===========================================================
-    data_format = list()
 
     def __init__(self, **args):
         # store passed arguments as members
@@ -497,7 +497,7 @@ class GenieStructure:
         self_member_count = 0
 
         # acquire all struct members, including the included members
-        members = cls.get_data_format(None,
+        members = cls.get_data_format((GameEdition.AOC, []),
                                       allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
                                       flatten_includes=False)
 
@@ -612,3 +612,10 @@ class GenieStructure:
 
             member_entry = (is_parent,) + member
             yield member_entry
+
+    @classmethod
+    def get_data_format_members(cls, game_version):
+        """
+        Return the members in this struct.
+        """
+        raise NotImplementedError("Subclass has not implemented this function")

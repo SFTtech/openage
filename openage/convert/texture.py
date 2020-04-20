@@ -89,15 +89,6 @@ class Texture(genie_structure.GenieStructure):
         "of sprites included in the 'big texture'."
     )
 
-    data_format = (
-        (True, "x", None, "int32_t"),
-        (True, "y", None, "int32_t"),
-        (True, "w", None, "int32_t"),
-        (True, "h", None, "int32_t"),
-        (True, "cx", None, "int32_t"),
-        (True, "cy", None, "int32_t"),
-    )
-
     # player-specific colors will be in color blue, but with an alpha of 254
     player_id = 1
 
@@ -245,6 +236,21 @@ class Texture(genie_structure.GenieStructure):
     @classmethod
     def structs(cls):
         return [struct_definition.StructDefinition(cls)]
+
+    @classmethod
+    def get_data_format_members(cls, game_version):
+        """
+        Return the members in this struct.
+        """
+        data_format = (
+            (True, "x", None, "int32_t"),
+            (True, "y", None, "int32_t"),
+            (True, "w", None, "int32_t"),
+            (True, "h", None, "int32_t"),
+            (True, "cx", None, "int32_t"),
+            (True, "cy", None, "int32_t"),
+        )
+        return data_format
 
 
 def merge_frames(frames):

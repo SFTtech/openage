@@ -10,6 +10,7 @@ from ..dataformat.member_access import READ_EXPORT, NOREAD_EXPORT
 from .content_snippet import ContentSnippet, SectionType
 from .struct_snippet import StructSnippet
 from .util import determine_header
+from openage.convert.dataformat.version_detect import GameEdition
 
 
 # regex for matching type array definitions like int[1337]
@@ -56,7 +57,7 @@ class StructDefinition:
         self.inherited_members = list()
         self.parent_classes = list()
 
-        target_members = target.get_data_format(None,
+        target_members = target.get_data_format((GameEdition.AOC, []),
                                                 allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
                                                 flatten_includes=True
                                                 )
@@ -112,7 +113,7 @@ class StructDefinition:
             if is_parent:
                 self.inherited_members.append(member_name)
 
-        members = target.get_data_format(None, flatten_includes=False)
+        members = target.get_data_format((GameEdition.AOC, []), flatten_includes=False)
         for _, _, _, _, member_type in members:
             if isinstance(member_type, IncludeMembers):
                 self.parent_classes.append(member_type.cls)
