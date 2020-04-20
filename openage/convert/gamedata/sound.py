@@ -21,17 +21,27 @@ class SoundItem(GenieStructure):
         """
         data_format = []
 
-        if game_version[0] is GameEdition.SWGB:
-            data_format.append((READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[27]"))
+        if game_version[0] is GameEdition.AOE1DE:
+            data_format.extend([
+                (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+            ])
+        elif game_version[0] is GameEdition.SWGB:
+            data_format.extend([
+                (READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[27]"),
+            ])
         else:
-            data_format.append((READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[13]"))
+            data_format.extend([
+                (READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[13]"),
+            ])
 
         data_format.extend([
             (READ_EXPORT, "resource_id", StorageType.ID_MEMBER, "int32_t"),
             (READ_EXPORT, "probablilty", StorageType.INT_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
                 (READ_EXPORT, "civilization_id", StorageType.ID_MEMBER, "int16_t"),
                 (READ, "icon_set", StorageType.ID_MEMBER, "int16_t"),
@@ -57,7 +67,7 @@ class Sound(GenieStructure):
             (READ, "cache_time", StorageType.INT_MEMBER, "int32_t"),                   # always 300000
         ]
 
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
                 (READ_EXPORT, "total_probability", StorageType.ID_MEMBER, "int16_t"),
             ])

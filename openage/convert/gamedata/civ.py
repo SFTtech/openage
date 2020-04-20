@@ -25,7 +25,7 @@ class Civ(GenieStructure):
             (READ, "player_type", StorageType.INT_MEMBER, "int8_t"),
         ]
 
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
                 (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
@@ -42,7 +42,7 @@ class Civ(GenieStructure):
             (READ_EXPORT, "tech_tree_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             # links to tech id as well
             data_format.append((READ_EXPORT, "team_bonus_id", StorageType.ID_MEMBER, "int16_t"))
 

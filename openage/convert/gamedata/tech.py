@@ -120,7 +120,7 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
         """
         Return the members in this struct.
         """
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format = [
                 (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),

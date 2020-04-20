@@ -117,7 +117,7 @@ class Graphic(GenieStructure):
         data_format = []
 
         # internal name: e.g. ARRG2NNE = archery range feudal Age north european
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
                 (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
@@ -125,10 +125,17 @@ class Graphic(GenieStructure):
                 (READ_EXPORT, "filename_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "filename_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[filename_len]"),
-                (READ_EXPORT, "particle_effect_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_EXPORT, "particle_effect_name_len", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_EXPORT, "particle_effect_name", StorageType.STRING_MEMBER, "char[particle_effect_name_len]"),
             ])
+            if game_version[0] is GameEdition.AOE2DE:
+                data_format.extend([
+                    (READ_EXPORT, "particle_effect_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                    (READ_EXPORT, "particle_effect_name_len", StorageType.INT_MEMBER, "uint16_t"),
+                    (READ_EXPORT, "particle_effect_name", StorageType.STRING_MEMBER, "char[particle_effect_name_len]"),
+                ])
+            if game_version[0] is GameEdition.AOE1DE:
+                data_format.extend([
+                    (READ_EXPORT, "first_frame", StorageType.ID_MEMBER, "uint16_t"),
+                ])
 
         elif game_version[0] is GameEdition.SWGB:
             data_format.extend([
@@ -152,6 +159,8 @@ class Graphic(GenieStructure):
                     0: "TERRAIN",      # cliff
                     1: "GRASS_PATCH",
                     2: "DE2_CLIFF",
+                    3: "AOE1_DIRT",
+                    4: "DE1_DESTRUCTION",
                     5: "SHADOW",       # farm fields as well
                     6: "RUBBLE",
                     7: "PLANT",
@@ -192,7 +201,7 @@ class Graphic(GenieStructure):
             (READ_EXPORT, "mirroring_mode", StorageType.ID_MEMBER, "int8_t"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             # sprite editor thing for AoK
             data_format.append((READ, "editor_flag", StorageType.BOOLEAN_MEMBER, "int8_t"))
 

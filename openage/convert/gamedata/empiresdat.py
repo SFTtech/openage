@@ -67,7 +67,7 @@ class EmpiresDat(GenieStructure):
             (READ, "float_ptr_terrain_tables", StorageType.ARRAY_ID, "int32_t[terrain_restriction_count]"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.append((READ, "terrain_pass_graphics_ptrs", StorageType.ARRAY_ID, "int32_t[terrain_restriction_count]"))
 
         data_format.extend([
@@ -126,15 +126,25 @@ class EmpiresDat(GenieStructure):
                 ref_type=terrain.Terrain,
                 length=200,
             )))
-        elif GameExpansion.AFRI_KING in game_version[1]:
+        elif game_version[0] is GameEdition.AOE1DE:
+            data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+                ref_type=terrain.Terrain,
+                length=96,
+            )))
+        elif game_version[0] is GameEdition.HDEDITION:
             data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=100,
             )))
-        else:
+        elif game_version[0] is GameEdition.AOC:
             data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=42,
+            )))
+        else:
+            data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+                ref_type=terrain.Terrain,
+                length=32,
             )))
 
         if game_version[0] is not GameEdition.AOE2DE:
@@ -146,33 +156,49 @@ class EmpiresDat(GenieStructure):
                 (READ, "map_row_offset", StorageType.INT_MEMBER, "int32_t"),
             ])
 
-        data_format.extend([
-            (READ,         "map_min_x", StorageType.FLOAT_MEMBER, "float"),
-            (READ,         "map_min_y", StorageType.FLOAT_MEMBER, "float"),
-            (READ,         "map_max_x", StorageType.FLOAT_MEMBER, "float"),
-            (READ,         "map_max_y", StorageType.FLOAT_MEMBER, "float"),
-            (READ,         "map_max_xplus1", StorageType.FLOAT_MEMBER, "float"),
-            (READ,         "map_min_yplus1", StorageType.FLOAT_MEMBER, "float"),
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+            data_format.extend([
+                (READ, "map_min_x", StorageType.FLOAT_MEMBER, "float"),
+                (READ, "map_min_y", StorageType.FLOAT_MEMBER, "float"),
+                (READ, "map_max_x", StorageType.FLOAT_MEMBER, "float"),
+                (READ, "map_max_y", StorageType.FLOAT_MEMBER, "float"),
+                (READ, "map_max_xplus1", StorageType.FLOAT_MEMBER, "float"),
+                (READ, "map_min_yplus1", StorageType.FLOAT_MEMBER, "float"),
+            ])
 
-            (READ,         "terrain_count_additional", StorageType.INT_MEMBER, "uint16_t"),
-            (READ,         "borders_used", StorageType.INT_MEMBER, "uint16_t"),
-            (READ,         "max_terrain", StorageType.INT_MEMBER, "int16_t"),
-            (READ_EXPORT,  "tile_width", StorageType.INT_MEMBER, "int16_t"),
-            (READ_EXPORT,  "tile_height", StorageType.INT_MEMBER, "int16_t"),
-            (READ_EXPORT,  "tile_half_height", StorageType.INT_MEMBER, "int16_t"),
-            (READ_EXPORT,  "tile_half_width", StorageType.INT_MEMBER, "int16_t"),
-            (READ_EXPORT,  "elev_height", StorageType.INT_MEMBER, "int16_t"),
-            (READ,         "current_row", StorageType.INT_MEMBER, "int16_t"),
-            (READ,         "current_column", StorageType.INT_MEMBER, "int16_t"),
-            (READ,         "block_beginn_row", StorageType.INT_MEMBER, "int16_t"),
-            (READ,         "block_end_row", StorageType.INT_MEMBER, "int16_t"),
-            (READ,         "block_begin_column", StorageType.INT_MEMBER, "int16_t"),
-            (READ,         "block_end_column", StorageType.INT_MEMBER, "int16_t"),
-            (READ,         "search_map_ptr", StorageType.INT_MEMBER, "int32_t"),
-            (READ,         "search_map_rows_ptr", StorageType.INT_MEMBER, "int32_t"),
-            (READ,         "any_frame_change", StorageType.INT_MEMBER, "int8_t"),
-            (READ,         "map_visible_flag", StorageType.INT_MEMBER, "int8_t"),
-            (READ,         "fog_flag", StorageType.INT_MEMBER, "int8_t"),
+        data_format.extend([
+            (READ, "terrain_count_additional", StorageType.INT_MEMBER, "uint16_t"),
+            (READ, "borders_used", StorageType.INT_MEMBER, "uint16_t"),
+            (READ, "max_terrain", StorageType.INT_MEMBER, "int16_t"),
+            (READ_EXPORT, "tile_width", StorageType.INT_MEMBER, "int16_t"),
+            (READ_EXPORT, "tile_height", StorageType.INT_MEMBER, "int16_t"),
+            (READ_EXPORT, "tile_half_height", StorageType.INT_MEMBER, "int16_t"),
+            (READ_EXPORT, "tile_half_width", StorageType.INT_MEMBER, "int16_t"),
+            (READ_EXPORT, "elev_height", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "current_row", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "current_column", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "block_beginn_row", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "block_end_row", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "block_begin_column", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "block_end_column", StorageType.INT_MEMBER, "int16_t"),
+        ])
+
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+            data_format.extend([
+                (READ,         "search_map_ptr", StorageType.INT_MEMBER, "int32_t"),
+                (READ,         "search_map_rows_ptr", StorageType.INT_MEMBER, "int32_t"),
+                (READ,         "any_frame_change", StorageType.INT_MEMBER, "int8_t"),
+            ])
+        else:
+            data_format.extend([
+                (READ, "any_frame_change", StorageType.INT_MEMBER, "int32_t"),
+                (READ, "search_map_ptr", StorageType.INT_MEMBER, "int32_t"),
+                (READ, "search_map_rows_ptr", StorageType.INT_MEMBER, "int32_t"),
+            ])
+
+        data_format.extend([
+            (READ, "map_visible_flag", StorageType.INT_MEMBER, "int8_t"),
+            (READ, "fog_flag", StorageType.INT_MEMBER, "int8_t"),
         ])
 
         if game_version[0] is not GameEdition.AOE2DE:
@@ -181,7 +207,7 @@ class EmpiresDat(GenieStructure):
                     (READ_UNKNOWN, "terrain_blob0", StorageType.ARRAY_INT, "uint8_t[25]"),
                     (READ_UNKNOWN, "terrain_blob1", StorageType.ARRAY_INT, "uint32_t[157]"),
                 ])
-            elif game_version[0] is GameEdition.ROR:
+            elif game_version[0] in (GameEdition.ROR, GameEdition.AOE1DE):
                 data_format.extend([
                     (READ_UNKNOWN, "terrain_blob0", StorageType.ARRAY_INT, "uint8_t[2]"),
                     (READ_UNKNOWN, "terrain_blob1", StorageType.ARRAY_INT, "uint32_t[5]"),
@@ -223,7 +249,7 @@ class EmpiresDat(GenieStructure):
             ])
 
         # unit header data
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
                 (READ_EXPORT, "unit_count", StorageType.INT_MEMBER, "uint32_t"),
                 (READ_EXPORT, "unit_headers", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -256,7 +282,7 @@ class EmpiresDat(GenieStructure):
         if game_version[0] is GameEdition.SWGB:
             data_format.append((READ_UNKNOWN, None, StorageType.INT_MEMBER, "int8_t"))
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
                 (READ, "time_slice", StorageType.INT_MEMBER, "int32_t"),
                 (READ, "unit_kill_rate", StorageType.INT_MEMBER, "int32_t"),
@@ -267,38 +293,38 @@ class EmpiresDat(GenieStructure):
                 (READ, "razing_kill_total", StorageType.INT_MEMBER, "int32_t"),
             ])
 
-        # technology tree data
-        data_format.extend([
-            (READ_EXPORT, "age_connection_count", StorageType.INT_MEMBER, "uint8_t"),
-            (READ_EXPORT, "building_connection_count", StorageType.INT_MEMBER, "uint8_t"),
-        ])
+            # technology tree data
+            data_format.extend([
+                (READ_EXPORT, "age_connection_count", StorageType.INT_MEMBER, "uint8_t"),
+                (READ_EXPORT, "building_connection_count", StorageType.INT_MEMBER, "uint8_t"),
+            ])
 
-        if game_version[0] is GameEdition.SWGB:
-            data_format.append((READ_EXPORT, "unit_connection_count", StorageType.INT_MEMBER, "uint16_t"))
+            if game_version[0] is GameEdition.SWGB:
+                data_format.append((READ_EXPORT, "unit_connection_count", StorageType.INT_MEMBER, "uint16_t"))
 
-        else:
-            data_format.append((READ_EXPORT, "unit_connection_count", StorageType.INT_MEMBER, "uint8_t"))
+            else:
+                data_format.append((READ_EXPORT, "unit_connection_count", StorageType.INT_MEMBER, "uint8_t"))
 
-        data_format.extend([
-            (READ_EXPORT, "tech_connection_count", StorageType.INT_MEMBER, "uint8_t"),
-            (READ_EXPORT, "total_unit_tech_groups", StorageType.INT_MEMBER, "int32_t"),
-            (READ_EXPORT, "age_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=tech.AgeTechTree,
-                length="age_connection_count"
-            )),
-            (READ_EXPORT, "building_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=tech.BuildingConnection,
-                length="building_connection_count"
-            )),
-            (READ_EXPORT, "unit_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=tech.UnitConnection,
-                length="unit_connection_count"
-            )),
-            (READ_EXPORT, "tech_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=tech.ResearchConnection,
-                length="tech_connection_count"
-            )),
-        ])
+            data_format.extend([
+                (READ_EXPORT, "tech_connection_count", StorageType.INT_MEMBER, "uint8_t"),
+                (READ_EXPORT, "total_unit_tech_groups", StorageType.INT_MEMBER, "int32_t"),
+                (READ_EXPORT, "age_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
+                    ref_type=tech.AgeTechTree,
+                    length="age_connection_count"
+                )),
+                (READ_EXPORT, "building_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
+                    ref_type=tech.BuildingConnection,
+                    length="building_connection_count"
+                )),
+                (READ_EXPORT, "unit_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
+                    ref_type=tech.UnitConnection,
+                    length="unit_connection_count"
+                )),
+                (READ_EXPORT, "tech_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
+                    ref_type=tech.ResearchConnection,
+                    length="tech_connection_count"
+                )),
+            ])
 
         return data_format
 

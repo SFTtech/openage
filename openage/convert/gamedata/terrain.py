@@ -139,11 +139,20 @@ class Terrain(GenieStructure):
             (READ, "random", StorageType.INT_MEMBER, "int8_t"),
         ]
 
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
                 (READ_EXPORT, "is_water", StorageType.BOOLEAN_MEMBER, "int8_t"),
                 (READ_EXPORT, "hide_in_editor", StorageType.BOOLEAN_MEMBER, "int8_t"),
                 (READ_EXPORT, "string_id", StorageType.ID_MEMBER, "int32_t"),
+            ])
+
+            if game_version[0] is GameEdition.AOE1DE:
+                data_format.extend([
+                    (READ_EXPORT, "blend_priority", StorageType.ID_MEMBER, "int16_t"),
+                    (READ_EXPORT, "blend_type", StorageType.ID_MEMBER, "int16_t"),
+                ])
+
+            data_format.extend([
                 (READ_EXPORT, "internal_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "internal_name_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "internal_name", StorageType.STRING_MEMBER, "char[internal_name_len]"),
@@ -174,7 +183,7 @@ class Terrain(GenieStructure):
                 (READ_EXPORT, "wwise_stop_sound_id", StorageType.ID_MEMBER, "uint32_t"),
             ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
                 # see doc/media/blendomatic.md for blending stuff
                 (READ_EXPORT, "blend_priority", StorageType.ID_MEMBER, "int32_t"),
@@ -219,18 +228,32 @@ class Terrain(GenieStructure):
                     55
                 ))
             )
-        elif GameExpansion.AFRI_KING in game_version[1]:
+        elif game_version[0] is GameEdition.AOE1DE:
+            data_format.append(
+                (READ, "borders", StorageType.ARRAY_INT, ArrayMember(
+                    "int16_t",
+                    96
+                ))
+            )
+        elif game_version[0] is GameEdition.HDEDITION:
             data_format.append(
                 (READ, "borders", StorageType.ARRAY_INT, ArrayMember(
                     "int16_t",
                     100
                 ))
             )
-        else:
+        elif game_version[0] is GameEdition.AOC:
             data_format.append(
                 (READ, "borders", StorageType.ARRAY_INT, ArrayMember(
                     "int16_t",
                     42
+                ))
+            )
+        else:
+            data_format.append(
+                (READ, "borders", StorageType.ARRAY_INT, ArrayMember(
+                    "int16_t",
+                    32
                 ))
             )
 

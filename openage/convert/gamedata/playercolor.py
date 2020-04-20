@@ -19,7 +19,7 @@ class PlayerColor(GenieStructure):
         Return the members in this struct.
         """
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format = [
                 (READ_EXPORT, "id", StorageType.ID_MEMBER, "int32_t"),
                 # palette index offset, where the 8 player colors start
@@ -37,9 +37,9 @@ class PlayerColor(GenieStructure):
         else:
             data_format = [
                 (READ, "name", StorageType.STRING_MEMBER, "char[30]"),
-                (READ, "id_short", StorageType.ID_MEMBER, "int16_t"),
+                (READ, "id", StorageType.ID_MEMBER, "int16_t"),
                 (READ, "resource_id", StorageType.ID_MEMBER, "int16_t"),
-                (READ, "color", StorageType.ID_MEMBER, "uint8_t"),
+                (READ, "minimap_color", StorageType.ID_MEMBER, "uint8_t"),
                 # 0 transform
                 # 1 transform player color
                 # 2 shadow

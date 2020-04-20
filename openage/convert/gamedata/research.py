@@ -263,7 +263,7 @@ class Tech(GenieStructure):
         """
         Return the members in this struct.
         """
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format = [
                 # research ids of techs that are required for activating the possible research
                 (READ, "required_techs", StorageType.ARRAY_ID, "int16_t[6]"),
@@ -282,7 +282,7 @@ class Tech(GenieStructure):
             (READ, "required_tech_count", StorageType.INT_MEMBER, "int16_t"),       # a subset of the above required techs may be sufficient, this defines the minimum amount
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
                 (READ, "civilization_id", StorageType.ID_MEMBER, "int16_t"),           # id of the civ that gets this technology
                 (READ, "full_tech_mode", StorageType.BOOLEAN_MEMBER, "int16_t"),       # 1: research is available when the full tech tree is activated on game start, 0: not
@@ -302,7 +302,7 @@ class Tech(GenieStructure):
             (READ, "hotkey", StorageType.ID_MEMBER, "int32_t"),                    # -1 for every tech
         ])
 
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
                 (READ, "name_length_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),

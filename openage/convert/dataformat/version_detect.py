@@ -93,106 +93,134 @@ class GameEdition(enum.Enum):
     """
 
     # TODO: Fill in values
-    ROR = ("Age of Empires 1: Rise of Rome",
-           Support.yes,
-           {GameFileVersion('PLACEHOLDER PLACEHOLDER PLACEHOLDER',
-                            {"f2bf8b128b4bdac36ee36fafe139baf1": "1.0c"})},
-           {},
-           ["aoe1-base", "aoe1-base-graphics"],
-           [])
+    ROR = (
+        "Age of Empires 1: Rise of Rome",
+        Support.yes,
+        {GameFileVersion('PLACEHOLDER PLACEHOLDER PLACEHOLDER',
+                         {"f2bf8b128b4bdac36ee36fafe139baf1": "1.0c"})},
+        {},
+        ["aoe1-base", "aoe1-base-graphics"],
+        []
+    )
 
-    AOE1DE = ("Age of Empires 1: Definitive Edition",
-              Support.yes,
-              {GameFileVersion('AoEDE.exe',
-                               {"0b652f0821cc0796a6a104bffc69875e": "ms"}),
-               GameFileVersion('Data/empires.dat',
-                               {"0b652f0821cc0796a6a104bffc69875e": "ms"})},
-              {MediaType.DATFILE: ["Data/empires.dat"],
-               MediaType.GRAPHICS: ["Assets/SLP/"],
-               MediaType.PALETTES: ["Assets/Palettes/"],
-               MediaType.SOUNDS: ["Assets/Sounds/"]},
-              ["aoe2-base", "aoe2-base-graphics"],
-              [])
+    AOE1DE = (
+        "Age of Empires 1: Definitive Edition (Steam)",
+        Support.yes,
+        {
+            GameFileVersion('AoEDE_s.exe',
+                            {"0b652f0821cc0796a6a104bffc69875e": "steam"}),
+            GameFileVersion('Data/empires.dat',
+                            {"0b652f0821cc0796a6a104bffc69875e": "steam"})},
+        {
+            MediaType.DATFILE: ["Data/empires.dat"],
+            MediaType.GRAPHICS: ["Assets/SLP/"],
+            MediaType.PALETTES: ["Assets/Palettes/"],
+            MediaType.SOUNDS: ["Assets/Sounds/"],
+            MediaType.INTERFACE: ["Data/DRS/interfac.drs", "Data/DRS/interfac_x1.drs"],
+        },
+        ["aoe1-base", "aoe1-base-graphics"],
+        []
+    )
 
-    AOK = ("Age of Empires 2: Age of Kings",
-           Support.nope,
-           {GameFileVersion('empires2.exe',
+    AOK = (
+        "Age of Empires 2: Age of Kings",
+        Support.nope,
+        {
+            GameFileVersion('empires2.exe',
                             {"5f7ca6c7edeba075c7982714619bc66b": "2.0a"}),
             GameFileVersion('data/empires2.dat',
                             {"89ff818894b69040ebd1657d8029b068": "2.0a"})},
-           {MediaType.DATFILE: ["data/empires2.dat"],
+        {
+            MediaType.DATFILE: ["data/empires2.dat"],
             MediaType.GAMEDATA: ["data/gamedata.drs"],
             MediaType.GRAPHICS: ["data/graphics.drs"],
             MediaType.PALETTES: ["data/interfac.drs"],
             MediaType.SOUNDS: ["data/sounds.drs"],
             MediaType.INTERFACE: ["data/interfac.drs"],
             MediaType.TERRAIN: ["data/terrain.drs"]},
-           [],
-           [])
+        [],
+        []
+    )
 
-    AOC = ("Age of Empires 2: The Conqueror's",
-           Support.yes,
-           {GameFileVersion('age2_x1/age2_x1.exe',
+    AOC = (
+        "Age of Empires 2: The Conqueror's",
+        Support.yes,
+        {
+            GameFileVersion('age2_x1/age2_x1.exe',
                             {"f2bf8b128b4bdac36ee36fafe139baf1": "1.0c"}),
             GameFileVersion('data/empires2_x1_p1.dat',
                             {"8358c9e64ec0e70e7b13bd34d5a46296": "1.0c"})},
-           {MediaType.DATFILE: ["data/empires2_x1_p1.dat"],
+        {
+            MediaType.DATFILE: ["data/empires2_x1_p1.dat"],
             MediaType.GAMEDATA: ["data/gamedata_x1_p1.drs"],
             MediaType.GRAPHICS: ["data/graphics.drs"],
             MediaType.PALETTES: ["data/interfac.drs"],
             MediaType.SOUNDS: ["data/sounds.drs", "data/sounds_x1.drs"],
             MediaType.INTERFACE: ["data/interfac.drs"],
             MediaType.TERRAIN: ["data/terrain.drs"]},
-           ["aoe2-base", "aoe2-base-graphics"],
-           [])
+        ["aoe2-base", "aoe2-base-graphics"],
+        []
+    )
 
-    AOE2HD = ("Age of Empires 2: HD Edition",
-              Support.yes,
-              {GameFileVersion('AoK HD.exe',
-                               {"ca2d6c1e26e8900a9a3140ba2e12e4c9": "5.8"}),
-               GameFileVersion('resources/_common/dat/empires2_x1_p1.dat',
-                               {"6f5a83789ec3dc0fd92986294d03031f": "5.8"})},
-              {MediaType.DATFILE: ["resources/_common/dat/empires2_x1_p1.dat"],
-               MediaType.GAMEDATA: ["resources/_common/drs/gamedata_x1/"],
-               MediaType.GRAPHICS: ["resources/_common/drs/graphics/"],
-               MediaType.PALETTES: ["resources/_common/drs/interface/"],
-               MediaType.SOUNDS: ["resources/_common/drs/sounds/"],
-               MediaType.INTERFACE: ["resources/_common/drs/interface/"],
-               MediaType.TERRAIN: ["resources/_common/drs/terrain/"]},
-              ["aoe2-base", "aoe2-base-graphics"],
-              [])
+    HDEDITION = (
+        "Age of Empires 2: HD Edition",
+        Support.yes,
+        {
+            GameFileVersion('AoK HD.exe',
+                            {"ca2d6c1e26e8900a9a3140ba2e12e4c9": "5.8"}),
+            GameFileVersion('resources/_common/dat/empires2_x1_p1.dat',
+                            {"6f5a83789ec3dc0fd92986294d03031f": "5.8"})},
+        {
+            MediaType.DATFILE: ["resources/_common/dat/empires2_x1_p1.dat"],
+            MediaType.GAMEDATA: ["resources/_common/drs/gamedata_x1/"],
+            MediaType.GRAPHICS: ["resources/_common/drs/graphics/"],
+            MediaType.PALETTES: ["resources/_common/drs/interface/"],
+            MediaType.SOUNDS: ["resources/_common/drs/sounds/"],
+            MediaType.INTERFACE: ["resources/_common/drs/interface/"],
+            MediaType.TERRAIN: ["resources/_common/drs/terrain/"]},
+        ["aoe2-base", "aoe2-base-graphics"],
+        []
+    )
 
-    AOE2DE = ("Age of Empires 2: Definitive Edition",
-              Support.yes,
-              {GameFileVersion('AoE2DE_s.exe',
-                               {"8771d2380f8637efb407d09198167c12": "release"}),
-               GameFileVersion('resources/_common/dat/empires2_x2_p1.dat',
-                               {"1dd581c6b06e2615c1a0ed8069f5eb13": "release"})},
-              {MediaType.DATFILE: ["resources/_common/dat/empires2_x2_p1.dat"],
-               MediaType.GAMEDATA: ["resources/_common/drs/gamedata_x1/"],
-               MediaType.GRAPHICS: ["resources/_common/drs/graphics/"],
-               MediaType.PALETTES: ["resources/_common/drs/interface/"],
-               MediaType.SOUNDS: ["wwise/"],
-               MediaType.INTERFACE: ["resources/_common/drs/interface/"],
-               MediaType.TERRAIN: ["resources/_common/terrain/textures/"]},
-              ["aoe2-base", "aoe2-base-graphics"],
-              [])
+    AOE2DE = (
+        "Age of Empires 2: Definitive Edition",
+        Support.yes,
+        {
+            GameFileVersion('AoE2DE_s.exe',
+                            {"8771d2380f8637efb407d09198167c12": "release"}),
+            GameFileVersion('resources/_common/dat/empires2_x2_p1.dat',
+                            {"1dd581c6b06e2615c1a0ed8069f5eb13": "release"})},
+        {
+            MediaType.DATFILE: ["resources/_common/dat/empires2_x2_p1.dat"],
+            MediaType.GAMEDATA: ["resources/_common/drs/gamedata_x1/"],
+            MediaType.GRAPHICS: ["resources/_common/drs/graphics/"],
+            MediaType.PALETTES: ["resources/_common/drs/interface/"],
+            MediaType.SOUNDS: ["wwise/"],
+            MediaType.INTERFACE: ["resources/_common/drs/interface/"],
+            MediaType.TERRAIN: ["resources/_common/terrain/textures/"]},
+        ["aoe2-base", "aoe2-base-graphics"],
+        []
+    )
 
-    SWGB = ("Star Wars: Galactic Battlegrounds",
-            Support.yes,
-            {GameFileVersion('Game/Battlegrounds.exe',
-                             {"6ad181133823a72f046c75a649cf8124": "GOG"}),
-             GameFileVersion('Game/Data/GENIE.DAT',
-                             {"2e2704e8fcf9e9fd0ee2147209ad6617": "GOG"})},
-            {MediaType.DATFILE: ["Game/Data/GENIE.DAT"],
-             MediaType.GAMEDATA: ["Game/Data/GAMEDATA.DRS"],
-             MediaType.GRAPHICS: ["Game/Data/GRAPHICS.DRS"],
-             MediaType.PALETTES: ["Game/Data/INTERFAC.DRS"],
-             MediaType.SOUNDS: ["Game/Data/SOUNDS.DRS"],
-             MediaType.INTERFACE: ["Game/Data/INTERFAC.DRS"],
-             MediaType.TERRAIN: ["Game/Data/TERRAIN.DRS"]},
-            ["swgb-base", "swgb-base-graphics"],
-            [GameExpansion.SWGB_CC])
+    SWGB = (
+        "Star Wars: Galactic Battlegrounds",
+        Support.yes,
+        {
+            GameFileVersion('Game/Battlegrounds.exe',
+                            {"6ad181133823a72f046c75a649cf8124": "GOG"}),
+            GameFileVersion('Game/Data/GENIE.DAT',
+                            {"2e2704e8fcf9e9fd0ee2147209ad6617": "GOG"})},
+        {
+            MediaType.DATFILE: ["Game/Data/GENIE.DAT"],
+            MediaType.GAMEDATA: ["Game/Data/GAMEDATA.DRS"],
+            MediaType.GRAPHICS: ["Game/Data/GRAPHICS.DRS"],
+            MediaType.PALETTES: ["Game/Data/INTERFAC.DRS"],
+            MediaType.SOUNDS: ["Game/Data/SOUNDS.DRS"],
+            MediaType.INTERFACE: ["Game/Data/INTERFAC.DRS"],
+            MediaType.TERRAIN: ["Game/Data/TERRAIN.DRS"]},
+        ["swgb-base", "swgb-base-graphics"],
+        [GameExpansion.SWGB_CC]
+    )
 
     def __init__(self, name, support_status, game_file_versions,
                  media_paths, target_modpacks, expansions, **flags):

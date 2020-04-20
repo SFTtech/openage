@@ -273,6 +273,7 @@ class HitType(GenieStructure):
                     9: "SWGB_SHIPS",
                     10: "SWGB_SUBMARINE",
                     11: "BUILDINGS_NO_PORT",
+                    12: "AOE1_VILLAGER",
                     13: "STONE_DEFENSES",
                     14: "HD_PREDATOR",
                     15: "ARCHERS",
@@ -582,7 +583,7 @@ class UnitObject(GenieStructure):
         """
         Return the members in this struct.
         """
-        if game_version[0] is not GameEdition.AOE2DE:
+        if game_version[0] not in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format = [
                 (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
             ]
@@ -622,6 +623,7 @@ class UnitObject(GenieStructure):
                     21: "FISHING_BOAT",
                     22: "WAR_BOAT",
                     23: "CONQUISTADOR",
+                    24: "AOE1_WAR_ELEPPHANT",
                     25: "SWGB_SHORE_FISH",
                     26: "SWGB_MARKER",
                     27: "WALLS",
@@ -667,7 +669,7 @@ class UnitObject(GenieStructure):
             (READ_EXPORT, "idle_graphic0", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
                 (READ_EXPORT, "idle_graphic1", StorageType.ID_MEMBER, "int16_t"),
             ])
@@ -689,7 +691,7 @@ class UnitObject(GenieStructure):
             (READ_EXPORT, "train_sound_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.append((READ_EXPORT, "damage_sound_id", StorageType.ID_MEMBER, "int16_t"))
 
         data_format.extend([
@@ -713,7 +715,7 @@ class UnitObject(GenieStructure):
             (READ, "enabled", StorageType.BOOLEAN_MEMBER, "int8_t"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.append((READ, "disabled", StorageType.BOOLEAN_MEMBER, "int8_t"))
 
         data_format.extend([
@@ -743,7 +745,9 @@ class UnitObject(GenieStructure):
                 lookup_dict={
                     0: "INVISIBLE",     # people etc
                     1: "VISIBLE",       # buildings
+                    2: "VISIBLE_IF_ALIVE",
                     3: "ONLY_IN_FOG",
+                    4: "DOPPELGANGER",
                 },
             )),
             (READ_EXPORT, "terrain_restriction", StorageType.ID_MEMBER, EnumLookupMember(
@@ -878,7 +882,7 @@ class UnitObject(GenieStructure):
             (READ, "resource_gather_drop", StorageType.INT_MEMBER, "int8_t"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             # bit 0 == 1 && val != 7: mask shown behind buildings,
             # bit 0 == 0 && val != {6, 10}: no mask displayed,
             # val == {-1, 7}: in open area mask is partially displayed
@@ -896,8 +900,6 @@ class UnitObject(GenieStructure):
                         10: "MOUNTAIN",             # mountain (matches occlusion_mask)
                     },
                 )),
-                # There shouldn't be a value here according to genieutils
-                # What is this?
                 (READ_EXPORT, "obstruction_class", StorageType.ID_MEMBER, "int8_t"),
 
                 # bitfield of unit attributes:
@@ -913,6 +915,21 @@ class UnitObject(GenieStructure):
                 (READ, "civilisation", StorageType.ID_MEMBER, "int8_t"),
                 # leftover from trait+civ variable
                 (READ, "attribute_piece", StorageType.INT_MEMBER, "int16_t"),
+            ])
+        elif game_version[0] is GameEdition.AOE1DE:
+            data_format.extend([
+                (READ, "obstruction_type", StorageType.ID_MEMBER, EnumLookupMember(
+                    raw_type="int8_t",
+                    type_name="obstruction_types",
+                    lookup_dict={
+                        0: "PASSABLE",              # farm, gate, dead bodies, town center
+                        2: "BUILDING",
+                        3: "BERSERK",
+                        5: "UNIT",
+                        10: "MOUNTAIN",             # mountain (matches occlusion_mask)
+                    },
+                )),
+                (READ_EXPORT, "obstruction_class", StorageType.ID_MEMBER, "int8_t"),
             ])
 
         data_format.extend([
@@ -985,7 +1002,7 @@ class UnitObject(GenieStructure):
             (READ, "convert_terrain", StorageType.INT_MEMBER, "int8_t"),
         ])
 
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
                 (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
@@ -1007,10 +1024,9 @@ class UnitObject(GenieStructure):
 
         data_format.append((READ_EXPORT, "id1", StorageType.ID_MEMBER, "int16_t"))
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.append((READ_EXPORT, "id2", StorageType.ID_MEMBER, "int16_t"))
-
-        if game_version[0] is GameEdition.AOE1DE:
+        elif game_version[0] is GameEdition.AOE1DE:
             data_format.append((READ_EXPORT, "telemetry_id", StorageType.ID_MEMBER, "int16_t"))
 
         return data_format
@@ -1112,7 +1128,7 @@ class MovingUnit(DoppelgangerUnit):
             (READ, "old_move_algorithm", StorageType.ID_MEMBER, "int8_t"),
         ]
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
                 (READ, "turn_radius", StorageType.FLOAT_MEMBER, "float"),
                 (READ, "turn_radius_speed", StorageType.FLOAT_MEMBER, "float"),
@@ -1182,7 +1198,7 @@ class ActionUnit(MovingUnit):
             (READ, "run_pattern", StorageType.ID_MEMBER, "int8_t"),
         ])
 
-        if game_version[0] is GameEdition.ROR:
+        if game_version[0] in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
                 (READ_EXPORT, "unit_command_count", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "unit_commands", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -1213,7 +1229,7 @@ class ProjectileUnit(ActionUnit):
             (READ_EXPORT, None, None, IncludeMembers(cls=ActionUnit)),
         ]
 
-        if game_version[0] is GameEdition.AOE1DE:
+        if game_version[0] is GameEdition.ROR:
             data_format.append((READ, "default_armor", StorageType.INT_MEMBER, "uint8_t"))
         else:
             data_format.append((READ, "default_armor", StorageType.INT_MEMBER, "int16_t"))
@@ -1270,7 +1286,7 @@ class ProjectileUnit(ActionUnit):
             (READ, "weapon_range_min", StorageType.FLOAT_MEMBER, "float"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.append((READ, "accuracy_dispersion", StorageType.FLOAT_MEMBER, "float"))
 
         data_format.extend([
@@ -1361,7 +1377,7 @@ class LivingUnit(ProjectileUnit):
             (READ, "creation_button_id", StorageType.ID_MEMBER, "int8_t"),
         ]
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
                 (READ, "rear_attack_modifier", StorageType.FLOAT_MEMBER, "float"),
                 (READ, "flank_attack_modifier", StorageType.FLOAT_MEMBER, "float"),
@@ -1446,7 +1462,7 @@ class BuildingUnit(LivingUnit):
             (READ_EXPORT, "construction_graphic_id", StorageType.ID_MEMBER, "int16_t"),
         ]
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.append((READ, "snow_graphic_id", StorageType.ID_MEMBER, "int16_t"))
 
             if game_version[0] is GameEdition.AOE2DE:
@@ -1473,7 +1489,7 @@ class BuildingUnit(LivingUnit):
             (READ, "research_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
                 (READ, "can_burn", StorageType.BOOLEAN_MEMBER, "int8_t"),
                 (READ_EXPORT, "building_annex", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -1489,13 +1505,13 @@ class BuildingUnit(LivingUnit):
 
         data_format.append((READ, "construction_sound_id", StorageType.ID_MEMBER, "int16_t"))
 
-        if game_version[0] is GameEdition.AOE2DE:
-            data_format.extend([
-                (READ, "wwise_construction_sound_id", StorageType.ID_MEMBER, "uint32_t"),
-                (READ, "wwise_transform_sound_id", StorageType.ID_MEMBER, "uint32_t"),
-            ])
+        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+            if game_version[0] is GameEdition.AOE2DE:
+                data_format.extend([
+                    (READ, "wwise_construction_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+                    (READ, "wwise_transform_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+                ])
 
-        if game_version[0] is not GameEdition.ROR:
             data_format.extend([
                 (READ_EXPORT, "garrison_type", StorageType.BITFIELD_MEMBER, EnumLookupMember(
                     raw_type="int8_t",
