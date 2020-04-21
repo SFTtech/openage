@@ -2,21 +2,23 @@
 
 #pragma once
 
-// pxd: from libcpp.string cimport string
 // pxd: from libcpp.map cimport map
 #include <map>
+// pxd: from libcpp.string cimport string
+#include <string>
 
 #include "../util/compiler.h"
 
 
-namespace openage {
+namespace openage::versions {
 
 /**
- * gets some int
+ * return a mapping of tool name to tool version,
+ * for various components of the engine.
  *
  * pxd:
- *
  * map[string,string] get_version_numbers() except +
  */
 OAAPI std::map<std::string,std::string> get_version_numbers();
-}
+
+} // namespace openage::versions
