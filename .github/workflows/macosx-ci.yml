@@ -12,7 +12,7 @@ jobs:
       - name: Brew update
         run: brew update
       - name: Brew install DeJaVu fonts
-        run: brew tap homebrew/cask-fonts && brew cask install font-dejavu-sans
+        run: brew tap homebrew/cask-fonts && brew cask install font-dejavu
       - name: Upgrade cmake
         run: brew upgrade cmake
       - name: Install dependencies with homebrew
