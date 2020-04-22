@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # ${AUTOGEN_WARNING}
 
@@ -9,7 +9,13 @@
 Project configuration, written by the build system.
 """
 
+import sys
 import importlib
+import cython
+import jinja2
+import numpy
+import PIL
+import pygments
 
 GLOBAL_CONFIG_DIR = "${GLOBAL_CONFIG_DIR}"
 GLOBAL_ASSET_DIR = "${GLOBAL_ASSET_DIR}"
@@ -23,8 +29,14 @@ CONFIG_OPTIONS = "${CONFIG_OPTION_STRING}"
 # toolchain
 COMPILER = "${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}"
 COMPILERFLAGS = "${CMAKE_CXX_FLAGS}"
-CYTHONVERSION = "${CYTHON_VERSION}"
 CICFGVERSION = "${CI_CFG_VERSION}"
+PYTHONINTERPRETER = sys.version
+PYTHONCAPI = sys.api_version
+CYTHONVERSION = cython.__version__
+JINJAVERSION = jinja2.__version__
+NUMPYVERSION = numpy.__version__
+PILVERSION = PIL.__version__
+PYGMENTSVERSION = pygments.__version__
 
 # features
 WITH_NCURSES = ("${WITH_NCURSES}" == "true")

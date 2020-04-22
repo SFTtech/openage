@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #include "game_save.h"
 
@@ -10,6 +10,7 @@
 #include "../unit/producer.h"
 #include "../unit/unit.h"
 #include "../unit/unit_type.h"
+#include "../versions/compiletime.h"
 #include "game_main.h"
 #include "game_save.h"
 #include "game_spec.h"
@@ -73,7 +74,7 @@ void save(openage::GameMain *game, const std::string &fname) {
 	// metadata
 	file << save_label << std::endl;
 	file << save_version << std::endl;
-	file << config::version << std::endl;
+	file << versions::engine_version << std::endl;
 
 	// how many chunks
 	std::vector<coord::chunk> used = game->terrain->used_chunks();
