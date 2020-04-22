@@ -333,14 +333,14 @@ class ContainerMember(ValueMember):
 
                 else:
                     # Key is missing in other dict
-                    diff_value = RightMissingMember(self.name, self)
+                    diff_value = RightMissingMember(key, self.value[key])
 
                 diff_dict.update({key: diff_value})
 
             for key in other.value.keys():
                 if key not in self.value.keys():
                     # Key is missing in this dict
-                    diff_value = LeftMissingMember(other.name, other)
+                    diff_value = LeftMissingMember(key, other_dict[key])
                     diff_dict.update({key: diff_value})
 
             if all(isinstance(member, NoDiffMember) for member in diff_dict.values()):

@@ -44,6 +44,8 @@ class AoCCivSubprocessor:
         """
         modifiers = []
 
+        # TODO: Implement
+
         return modifiers
 
     @staticmethod
