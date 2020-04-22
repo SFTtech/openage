@@ -446,7 +446,15 @@ class AoCCivSubprocessor:
         for effect in tech_tree:
             type_id = effect.get_type()
 
-            if type_id != 102:
+            if type_id == 101:
+                patches.extend(AoCTechSubprocessor._tech_cost_modify_effect(civ_group, effect))
+                continue
+
+            elif type_id == 103:
+                patches.extend(AoCTechSubprocessor._tech_time_modify_effect(civ_group, effect))
+                continue
+
+            elif type_id != 102:
                 continue
 
             # Get tech id

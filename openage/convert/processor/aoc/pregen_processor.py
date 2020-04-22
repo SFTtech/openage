@@ -992,7 +992,7 @@ class AoCPregenSubprocessor:
         health_expected_pointer = ExpectedPointer(pregen_converter_group,
                                                   "aux.attribute.types.Health")
         literal_raw_api_object.add_raw_member("mode",
-                                              False,
+                                              True,
                                               literal_parent)
         scope_expected_pointer = ExpectedPointer(pregen_converter_group,
                                                  "aux.boolean.clause.death.StandardHealthDeathScope")
@@ -1018,6 +1018,93 @@ class AoCPregenSubprocessor:
         death_scope_ref_in_modpack = "aux.boolean.clause.death.StandardHealthDeathScope"
         scope_raw_api_object = RawAPIObject(death_scope_ref_in_modpack,
                                             "StandardHealthDeathScope",
+                                            api_objects,
+                                            clause_location)
+        scope_location = ExpectedPointer(pregen_converter_group, death_ref_in_modpack)
+        scope_raw_api_object.set_location(scope_location)
+        scope_raw_api_object.add_raw_parent(self_scope_parent)
+
+        scope_diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Self"]]
+        scope_raw_api_object.add_raw_member("diplomatic_stances",
+                                            scope_diplomatic_stances,
+                                            scope_parent)
+
+        pregen_converter_group.add_raw_api_object(scope_raw_api_object)
+        pregen_nyan_objects.update({death_scope_ref_in_modpack: scope_raw_api_object})
+
+        # =======================================================================
+        # Garrison empty condition
+        # =======================================================================
+        clause_parent = "engine.aux.boolean.Clause"
+        clause_location = "data/aux/boolean/clause/garrison_empty/"
+
+        death_ref_in_modpack = "aux.boolean.clause.death.BuildingDamageEmpty"
+        clause_raw_api_object = RawAPIObject(death_ref_in_modpack,
+                                             "BuildingDamageEmpty",
+                                             api_objects,
+                                             clause_location)
+        clause_raw_api_object.set_filename("building_damage_empty")
+        clause_raw_api_object.add_raw_parent(clause_parent)
+
+        # Literals (see below)
+        literals_expected_pointer = [ExpectedPointer(pregen_converter_group,
+                                                     "aux.boolean.clause.death.BuildingDamageEmptyLiteral")]
+        clause_raw_api_object.add_raw_member("literals",
+                                             literals_expected_pointer,
+                                             clause_parent)
+
+        # Requirement mode does not matter, so we use ANY
+        requirement_mode = api_objects["engine.aux.boolean.requirement_mode.type.Any"]
+        clause_raw_api_object.add_raw_member("clause_requirement",
+                                             requirement_mode,
+                                             clause_parent)
+
+        # Clause will not default to 'True' when it was fulfilled once
+        clause_raw_api_object.add_raw_member("only_once", False, clause_parent)
+
+        pregen_converter_group.add_raw_api_object(clause_raw_api_object)
+        pregen_nyan_objects.update({death_ref_in_modpack: clause_raw_api_object})
+
+        # Literal
+        literal_parent = "engine.aux.boolean.Literal"
+        interval_parent = "engine.aux.boolean.literal.type.AttributeBelowValue"
+
+        death_literal_ref_in_modpack = "aux.boolean.clause.death.BuildingDamageEmptyLiteral"
+        literal_raw_api_object = RawAPIObject(death_literal_ref_in_modpack,
+                                              "BuildingDamageEmptyLiteral",
+                                              api_objects,
+                                              clause_location)
+        literal_location = ExpectedPointer(pregen_converter_group, death_ref_in_modpack)
+        literal_raw_api_object.set_location(literal_location)
+        literal_raw_api_object.add_raw_parent(interval_parent)
+
+        health_expected_pointer = ExpectedPointer(pregen_converter_group,
+                                                  "aux.attribute.types.Health")
+        literal_raw_api_object.add_raw_member("mode",
+                                              True,
+                                              literal_parent)
+        scope_expected_pointer = ExpectedPointer(pregen_converter_group,
+                                                 "aux.boolean.clause.death.BuildingDamageEmptyScope")
+        literal_raw_api_object.add_raw_member("scope",
+                                              scope_expected_pointer,
+                                              literal_parent)
+        literal_raw_api_object.add_raw_member("attribute",
+                                              health_expected_pointer,
+                                              interval_parent)
+        literal_raw_api_object.add_raw_member("threshold",
+                                              0.2,
+                                              interval_parent)
+
+        pregen_converter_group.add_raw_api_object(literal_raw_api_object)
+        pregen_nyan_objects.update({death_literal_ref_in_modpack: literal_raw_api_object})
+
+        # LiteralScope
+        scope_parent = "engine.aux.boolean.literal_scope.LiteralScope"
+        self_scope_parent = "engine.aux.boolean.literal_scope.type.Self"
+
+        death_scope_ref_in_modpack = "aux.boolean.clause.death.BuildingDamageEmptyScope"
+        scope_raw_api_object = RawAPIObject(death_scope_ref_in_modpack,
+                                            "BuildingDamageEmptyScope",
                                             api_objects,
                                             clause_location)
         scope_location = ExpectedPointer(pregen_converter_group, death_ref_in_modpack)

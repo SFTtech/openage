@@ -9,6 +9,12 @@ from openage.nyan.nyan_structs import MemberOperator
 from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
 from openage.convert.dataformat.aoc.genie_civ import GenieCivilizationGroup
+from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS,\
+    TECH_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS
+from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup,\
+    BuildingLineUpgrade
 
 
 class AoCTechSubprocessor:
@@ -111,22 +117,22 @@ class AoCTechSubprocessor:
                 patches.extend(cls._resource_modify_effect(converter_group, effect, team=team_effect))
 
             elif type_id == 2:
-                # TODO: Enabling/disabling units
+                # Enabling/disabling units: Handled in creatable conditions
                 pass
 
             elif type_id == 3:
                 patches.extend(cls._upgrade_unit_effect(converter_group, effect))
 
             elif type_id == 101:
-                # TODO: Tech cost
+                patches.extend(cls._tech_cost_modify_effect(converter_group, effect, team=team_effect))
                 pass
 
             elif type_id == 102:
-                # TODO: Disable tech
+                # Tech disable: Only used for civ tech tree
                 pass
 
             elif type_id == 103:
-                # TODO: Tech time
+                patches.extend(cls._tech_time_modify_effect(converter_group, effect, team=team_effect))
                 pass
 
         return patches
@@ -250,10 +256,11 @@ class AoCTechSubprocessor:
         upgrade_source_pos = line.get_unit_position(upgrade_source_id)
         upgrade_target_pos = line.get_unit_position(upgrade_target_id)
 
-        if upgrade_target_pos - upgrade_source_pos != 1:
+        if upgrade_target_pos - upgrade_source_pos != 1 and not\
+                isinstance(converter_group, BuildingLineUpgrade):
             # Skip effects that upgrades entities not next to each other in
-            # the line. This is not used in the games anyway and we would handle
-            # it differently.
+            # the line. Building upgrades are an exception because they technically
+            # have no lines and there is always only one upgrade.
             return patches
 
         upgrade_source = line.line[upgrade_source_pos]
@@ -286,5 +293,187 @@ class AoCTechSubprocessor:
 
         if isinstance(line, GenieUnitLineGroup):
             patches.extend(AoCUgradeAbilitySubprocessor.move_ability(converter_group, line, diff))
+
+        return patches
+
+    @staticmethod
+    def _tech_cost_modify_effect(converter_group, effect, team=False):
+        """
+        Creates the patches for modifying tech costs.
+        """
+        patches = []
+        dataset = converter_group.data
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        tech_id = effect["attr_a"].get_value()
+        resource_id = effect["attr_b"].get_value()
+        mode = effect["attr_c"].get_value()
+        amount = int(effect["attr_d"].get_value())
+
+        if not tech_id in TECH_GROUP_LOOKUPS.keys():
+            # Skips some legacy techs from AoK such as the tech for bombard cannon
+            return patches
+
+        tech_group = dataset.tech_groups[tech_id]
+        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+
+        if resource_id == 0:
+            resource_name = "Food"
+
+        elif resource_id == 1:
+            resource_name = "Wood"
+
+        elif resource_id == 2:
+            resource_name = "Stone"
+
+        elif resource_id == 3:
+            resource_name = "Gold"
+
+        else:
+            raise Exception("no valid resource ID found")
+
+        if mode == 0:
+            operator = MemberOperator.ASSIGN
+
+        else:
+            operator = MemberOperator.ADD
+
+        patch_target_ref = "%s.ResearchableTech.%sCost.%sAmount" % (tech_name,
+                                                                    tech_name,
+                                                                    resource_name)
+        patch_target_expected_pointer = ExpectedPointer(tech_group, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = "Change%sCostWrapper" % (tech_name)
+        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%sCost" % (tech_name)
+        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("amount",
+                                                       amount,
+                                                       "engine.aux.resource.ResourceAmount",
+                                                       operator)
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
+
+        return patches
+
+    @staticmethod
+    def _tech_time_modify_effect(converter_group, effect, team=False):
+        """
+        Creates the patches for modifying tech research times.
+        """
+        patches = []
+        dataset = converter_group.data
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        tech_id = effect["attr_a"].get_value()
+        mode = effect["attr_c"].get_value()
+        research_time = effect["attr_d"].get_value()
+
+        if not tech_id in TECH_GROUP_LOOKUPS.keys():
+            # Skips some legacy techs from AoK such as the tech for bombard cannon
+            return patches
+
+        tech_group = dataset.tech_groups[tech_id]
+        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+
+        if mode == 0:
+            operator = MemberOperator.ASSIGN
+
+        else:
+            operator = MemberOperator.ADD
+
+        patch_target_ref = "%s.ResearchableTech" % (tech_name)
+        patch_target_expected_pointer = ExpectedPointer(tech_group, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = "Change%sResearchTimeWrapper" % (tech_name)
+        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%sResearchTime" % (tech_name)
+        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("research_time",
+                                                       research_time,
+                                                       "engine.aux.research.ResearchableTech",
+                                                       operator)
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches

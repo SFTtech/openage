@@ -54,9 +54,10 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.age_upgrades = {}
         self.unit_upgrades = {}
         self.building_upgrades = {}
-        self.unit_unlocks = {}
-        self.civ_boni = {}
         self.stat_upgrades = {}
+        self.unit_unlocks = {}
+        self.building_unlocks = {}
+        self.civ_boni = {}
         self.initiated_techs = {}
         self.terrain_groups = {}
 

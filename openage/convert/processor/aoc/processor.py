@@ -30,7 +30,8 @@ from .nyan_subprocessor import AoCNyanSubprocessor
 from ...nyan.api_loader import load_api
 from .modpack_subprocessor import AoCModpackSubprocessor
 from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
-from openage.convert.dataformat.aoc.genie_tech import StatUpgrade, InitiatedTech
+from openage.convert.dataformat.aoc.genie_tech import StatUpgrade, InitiatedTech,\
+    BuildingUnlock
 from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
@@ -726,7 +727,23 @@ class AoCProcessor:
                 full_data_set.age_upgrades.update({age_up.get_id(): age_up})
 
             elif len(connected_buildings) > 0:
-                pass
+                # Building upgrades are created in _create_building_lines() method
+                # so we don't need to create them here
+                if tech_id not in full_data_set.building_upgrades.keys():
+                    # Check if the tech is a building unlock
+                    effect_bundle_id = tech.get_member("tech_effect_id").get_value()
+                    effect_bundle = full_data_set.genie_effect_bundles[effect_bundle_id]
+
+                    unlock_effects = effect_bundle.get_effects(effect_type=2)
+
+                    if len(unlock_effects) > 0:
+                        # Search unlock effects for the line_id
+                        for upgrade in unlock_effects:
+                            unlock_id = upgrade.get_member("attr_a").get_value()
+
+                        building_unlock = BuildingUnlock(tech_id, unlock_id, full_data_set)
+                        full_data_set.tech_groups.update({building_unlock.get_id(): building_unlock})
+                        full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
 
             else:
                 # Create a stat upgrade for other techs
@@ -945,6 +962,7 @@ class AoCProcessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         age_ups = full_data_set.age_upgrades
+        tech_connections = full_data_set.tech_connections
 
         # Order of age ups should be correct
         for age_up in age_ups.values():
@@ -965,6 +983,12 @@ class AoCProcessor:
 
                 upgraded_line.add_unit(upgrade_target)
                 full_data_set.unit_ref.update({upgrade_target_id: upgraded_line})
+
+        # Building upgrades through techs
+        for connection in tech_connections.values():
+            connected_buildings = connection.get_member("buildings").get_value()
+            tech_id = connection.get_member("id").get_value()
+            tech = full_data_set.genie_techs[tech_id]
 
     @staticmethod
     def _link_creatables(full_data_set):

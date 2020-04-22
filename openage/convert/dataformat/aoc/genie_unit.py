@@ -961,7 +961,7 @@ class GenieGarrisonMode(Enum):
     # The negative integers at the start of the tupe prevent Python from creating
     # aliases for the enums.
     NATURAL       = (-1, 1, 2, 3, 5, 6)  # enter/exit/remove; rally point
-    UNIT_GARRISON = (-2, 1, 2, 5)        # enter/exit/remove; no cavalry/monks; speedboost for infantry
+    UNIT_GARRISON = (-2, 1, 2, 5)        # enter/exit/remove; no cavalry/monks; speedboost for infantry; no rally point
     TRANSPORT     = (-3, 1, 2, 3, 5, 6)  # enter/exit/remove; no rally point
     SELF_PRODUCED = (-4, 1, 2, 3, 5, 6)  # enter only with OwnStorage; exit/remove; only produced units; rally point
     MONK          = (-5, 4,)             # remove/collect/transfer; only relics; no rally point

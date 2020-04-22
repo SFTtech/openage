@@ -730,13 +730,14 @@ class UnitObject(GenieStructure):
             # minimum space required to allow placement in editor
             (READ, "clearance_size_x", StorageType.FLOAT_MEMBER, "float"),
             (READ, "clearance_size_y", StorageType.FLOAT_MEMBER, "float"),
-            (READ_EXPORT, "building_mode", StorageType.ID_MEMBER, EnumLookupMember(
+            # determines the maxmimum elevation difference for terrain under the unit
+            (READ_EXPORT, "elevation_mode", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int8_t",
-                type_name="building_modes",
+                type_name="elevation_modes",
                 lookup_dict={
-                    0: "NON_BUILDING",    # gates, farms, walls, towers
-                    2: "TRADE_BUILDING",  # towncenter, port, trade workshop
-                    3: "ANY",
+                    0: "NONE",    # gates, farms, walls, towers
+                    2: "ZERO_ELEV_DIFFERENCe",  # towncenter, port, trade workshop
+                    3: "ONE_ELEV_DIFFERENCe",   # everything else
                 },
             )),
             (READ_EXPORT, "visible_in_fog", StorageType.ID_MEMBER, EnumLookupMember(

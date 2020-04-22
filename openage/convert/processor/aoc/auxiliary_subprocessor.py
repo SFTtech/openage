@@ -11,6 +11,7 @@ from openage.convert.dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
+from openage.nyan.nyan_structs import MemberSpecialValue
 
 
 class AoCAuxiliarySubprocessor:
@@ -252,6 +253,21 @@ class AoCAuxiliarySubprocessor:
                                                 "engine.aux.placement_mode.type.Place")
             place_raw_api_object.add_raw_member("clearance_size_y",
                                                 clearance_size_y,
+                                                "engine.aux.placement_mode.type.Place")
+
+            # Max elevation difference
+            elevation_mode = current_unit.get_member("elevation_mode").get_value()
+            if elevation_mode == 2:
+                max_elevation_difference = 0
+
+            elif elevation_mode == 3:
+                max_elevation_difference = 1
+
+            else:
+                max_elevation_difference = MemberSpecialValue.NYAN_INF
+
+            place_raw_api_object.add_raw_member("max_elevation_difference",
+                                                max_elevation_difference,
                                                 "engine.aux.placement_mode.type.Place")
 
             line.add_raw_api_object(place_raw_api_object)

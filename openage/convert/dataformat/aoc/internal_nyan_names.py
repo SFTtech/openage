@@ -181,7 +181,7 @@ TECH_GROUP_LOOKUPS = {
     199: ("Fletching", "fletching"),
     200: ("BodkinArrow", "bodkin_arrow"),
     201: ("Bracer", "bracer"),
-    202: ("BoubleBitAxe", "double_bit_axe"),
+    202: ("DoubleBitAxe", "double_bit_axe"),
     203: ("BowSaw", "bow_saw"),
     207: ("Longswordsman", "longswordsman"),
     209: ("Chevalier", "chevalier"),

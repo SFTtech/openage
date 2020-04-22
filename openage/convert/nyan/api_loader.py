@@ -921,10 +921,10 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.game_entity_type.GameEntityType.type.Any
+    # engine.aux.game_entity_type.type.Any
     parents = [api_objects["engine.aux.game_entity_type.GameEntityType"]]
     nyan_object = NyanObject("Any", parents)
-    fqon = "engine.aux.game_entity_type.GameEntityType.type.Any"
+    fqon = "engine.aux.game_entity_type.type.Any"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -1236,6 +1236,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.progress.specialization.AnimationOverlayProgress
+    parents = [api_objects["engine.aux.progress.Progress"]]
+    nyan_object = NyanObject("AnimationOverlayProgress", parents)
+    fqon = "engine.aux.progress.specialization.AnimationOverlayProgress"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.progress.specialization.StateChangeProgress
     parents = [api_objects["engine.aux.progress.Progress"]]
     nyan_object = NyanObject("StateChangeProgress", parents)
@@ -1460,10 +1467,10 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.tech_type.TechType.type.Any
+    # engine.aux.tech_type.type.Any
     parents = [api_objects["engine.aux.tech_type.TechType"]]
     nyan_object = NyanObject("Any", parents)
-    fqon = "engine.aux.tech_type.TechType.type.Any"
+    fqon = "engine.aux.tech_type.type.Any"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -1488,10 +1495,10 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.terrain_type.TerrainType.type.Any
+    # engine.aux.terrain_type.type.Any
     parents = [api_objects["engine.aux.terrain_type.TerrainType"]]
     nyan_object = NyanObject("Any", parents)
-    fqon = "engine.aux.terrain_type.TerrainType.type.Any"
+    fqon = "engine.aux.terrain_type.type.Any"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2415,8 +2422,6 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.terrain.Terrain"]
     member = NyanMember("foundation_terrain", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("flatten_ground", MemberType.BOOLEAN, None, None, 0, None, False)
-    api_object.add_member(member)
 
     # engine.ability.type.GameEntityStance
     api_object = api_objects["engine.ability.type.GameEntityStance"]
@@ -3214,6 +3219,8 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("clearance_size_y", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
+    member = NyanMember("max_elevation_difference", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
 
     # engine.aux.placement_mode.type.Replace
     api_object = api_objects["engine.aux.placement_mode.type.Replace"]
@@ -3249,6 +3256,13 @@ def _insert_members(api_objects):
 
     set_type = api_objects["engine.aux.animation_override.AnimationOverride"]
     member = NyanMember("overrides", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.progress.specialization.AnimationOverlayProgress
+    api_object = api_objects["engine.aux.progress.specialization.AnimationOverlayProgress"]
+
+    set_type = api_objects["engine.aux.graphics.Animation"]
+    member = NyanMember("overlays", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.aux.progress.specialization.StateChangeProgress
@@ -3385,8 +3399,14 @@ def _insert_members(api_objects):
     # engine.aux.storage.Container
     api_object = api_objects["engine.aux.storage.Container"]
 
+    set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
+    member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("blacklisted_entities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
     set_type = api_objects["engine.aux.storage.StorageElementDefinition"]
-    member = NyanMember("storage_elements", MemberType.SET, None, None, 0, set_type, False)
+    member = NyanMember("storage_element_defs", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
     member = NyanMember("slots", MemberType.INT, None, None, 0, None, False)
     api_object.add_member(member)
@@ -3406,7 +3426,8 @@ def _insert_members(api_objects):
     member = NyanMember("conflicts", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.state_machine.StateChanger"]
-    member = NyanMember("state_change", ref_object, None, None, 0, None, False)
+    member = NyanMember("state_change", ref_object, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
 
     # engine.aux.taunt.Taunt
