@@ -13,6 +13,7 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
 from openage.nyan.nyan_structs import MemberOperator
 from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
+from openage.convert.dataformat.aoc.genie_tech import AgeUpgrade
 
 
 class AoCCivSubprocessor:
@@ -233,17 +234,82 @@ class AoCCivSubprocessor:
         """
         patches = []
 
+        civ_name = CIV_GROUP_LOOKUPS[civ_group.get_id()][0]
+        dataset = civ_group.data
+
+        # key: tech_id; value patched in patches
+        tech_patches = {}
+
         for civ_bonus in civ_group.civ_boni.values():
             if not civ_bonus.replaces_researchable_tech():
                 bonus_patches = AoCTechSubprocessor.get_patches(civ_bonus)
 
                 # civ boni might be unlocked by age ups. if so, patch them into the age up
-                if civ_bonus.tech["required_tech_count"].get_value() > 0:
-                    # TODO: Patch into tech
-                    pass
+                # patches are queued here
+                required_tech_count = civ_bonus.tech["required_tech_count"].get_value()
+                if required_tech_count > 0 and len(bonus_patches) > 0:
+                    if required_tech_count == 1:
+                        tech_id = civ_bonus.tech["required_techs"][0].get_value()
+
+                    elif required_tech_count == 2:
+                        tech_id = civ_bonus.tech["required_techs"][1].get_value()
+
+                    if tech_id == 104:
+                        # Skip Dark Age; it is not a tech in openage
+                        patches.extend(bonus_patches)
+
+                    elif tech_id in tech_patches.keys():
+                        tech_patches[tech_id].extend(bonus_patches)
+
+                    else:
+                        tech_patches[tech_id] = bonus_patches
 
                 else:
                     patches.extend(bonus_patches)
+
+        for tech_id, patches in tech_patches.items():
+            tech_group = dataset.tech_groups[tech_id]
+            tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+
+            patch_target_ref = "%s" % (tech_name)
+            patch_target_expected_pointer = ExpectedPointer(tech_group, patch_target_ref)
+
+            # Wrapper
+            wrapper_name = "%sCivBonusWrapper" % (tech_name)
+            wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
+            wrapper_location = ExpectedPointer(civ_group, civ_name)
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                                  wrapper_name,
+                                                  dataset.nyan_api_objects,
+                                                  wrapper_location)
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            # Nyan patch
+            nyan_patch_name = "%sCivBonus" % (tech_name)
+            nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                     nyan_patch_name,
+                                                     dataset.nyan_api_objects,
+                                                     nyan_patch_location)
+            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+            nyan_patch_raw_api_object.add_raw_patch_member("updates",
+                                                           patches,
+                                                           "engine.aux.tech.Tech",
+                                                           MemberOperator.ADD)
+
+            patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+            wrapper_raw_api_object.add_raw_member("patch",
+                                                  patch_expected_pointer,
+                                                  "engine.aux.patch.Patch")
+
+            civ_group.add_raw_api_object(wrapper_raw_api_object)
+            civ_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+            wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
+            patches.append(wrapper_expected_pointer)
 
         return patches
 
