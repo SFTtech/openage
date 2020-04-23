@@ -2,6 +2,7 @@
 
 from ...dataformat.converter_object import ConverterObject,\
     ConverterObjectGroup
+from openage.convert.dataformat.aoc.genie_tech import CivTeamBonus, CivTechTree
 
 
 class GenieCivilizationObject(ConverterObject):
@@ -59,10 +60,16 @@ class GenieCivilizationGroup(ConverterObjectGroup):
             # Gaia civ has no team bonus
             self.team_bonus = None
         else:
-            self.team_bonus = self.data.genie_effect_bundles[team_bonus_id]
+            # Create an object for the team bonus. We use the effect ID + 10000 to avoid
+            # conflicts with techs or effects
+            self.team_bonus = CivTeamBonus(10000 + team_bonus_id, civ_id,
+                                           team_bonus_id, full_data_set)
 
+        # Create an object for the tech tree bonus. We use the effect ID + 10000 to avoid
+        # conflicts with techs or effects
         tech_tree_id = self.civ.get_member("tech_tree_id").get_value()
-        self.tech_tree = self.data.genie_effect_bundles[tech_tree_id]
+        self.tech_tree = CivTechTree(10000 + tech_tree_id, civ_id,
+                                     tech_tree_id, full_data_set)
 
         # Civ boni (without team bonus)
         self.civ_boni = {}
@@ -96,7 +103,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         Returns the effects of the team bonus.
         """
         if self.team_bonus:
-            return self.team_bonus.get_effects()
+            return self.team_bonus.effects.get_effects()
 
         return []
 
@@ -104,7 +111,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         """
         Returns the tech tree effects.
         """
-        return self.tech_tree.get_effects()
+        return self.tech_tree.effects.get_effects()
 
     def __repr__(self):
         return "GenieCivilizationGroup<%s>" % (self.get_id())

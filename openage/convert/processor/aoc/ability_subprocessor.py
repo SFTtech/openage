@@ -1556,7 +1556,6 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.type.Gather")
 
             # Gather rate
-            # TODO: The work_rate attribute must be turned into a MultiplierModifier
             rate_name = "%s.%s.GatherRate" % (game_entity_name, ability_name)
             rate_raw_api_object = RawAPIObject(rate_name, "GatherRate", dataset.nyan_api_objects)
             rate_raw_api_object.add_raw_parent("engine.aux.resource.ResourceRate")

@@ -13,7 +13,7 @@ from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUP
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup,\
-    BuildingLineUpgrade
+    BuildingLineUpgrade, CivTeamBonus, CivBonus
 
 
 class AoCTechSubprocessor:
@@ -93,19 +93,32 @@ class AoCTechSubprocessor:
         of its effects.
         """
         patches = []
-        team_effect = False
+        dataset = converter_group.data
+        team_bonus = False
 
-        if isinstance(converter_group, GenieCivilizationGroup):
-            effects = converter_group.get_team_bonus_effects()
-            team_effect = True
+        if isinstance(converter_group, CivTeamBonus):
+            effects = converter_group.get_effects()
+
+            # Change converter group here, so that the Civ object gets the patches
+            # TODO: Solve this furher down the line
+            converter_group = dataset.civ_groups[converter_group.get_civilization()]
+            team_bonus = True
+
+        elif isinstance(converter_group, CivBonus):
+            effects = converter_group.get_effects()
+
+            # Change converter group here, so that the Civ object gets the patches
+            # TODO: Solve this furher down the line
+            converter_group = dataset.civ_groups[converter_group.get_civilization()]
 
         else:
-            effects = converter_group.effects.get_effects()
+            effects = converter_group.get_effects()
 
+        team_effect = False
         for effect in effects:
             type_id = effect.get_type()
 
-            if type_id in (10, 11, 12, 13, 14, 15, 16):
+            if team_bonus or type_id in (10, 11, 12, 13, 14, 15, 16):
                 team_effect = True
                 type_id -= 10
 
@@ -133,6 +146,8 @@ class AoCTechSubprocessor:
             elif type_id == 103:
                 patches.extend(cls._tech_time_modify_effect(converter_group, effect, team=team_effect))
                 pass
+
+            team_effect = False
 
         return patches
 

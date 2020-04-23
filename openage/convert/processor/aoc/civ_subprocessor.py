@@ -29,11 +29,10 @@ class AoCCivSubprocessor:
         patches.extend(cls._setup_unique_units(civ_group))
         patches.extend(cls._setup_unique_techs(civ_group))
         patches.extend(cls._setup_tech_tree(civ_group))
-
-        # TODO: Civ bonus
+        patches.extend(cls._setup_civ_bonus(civ_group))
 
         if len(civ_group.get_team_bonus_effects()) > 0:
-            patches.extend(AoCTechSubprocessor.get_patches(civ_group))
+            patches.extend(AoCTechSubprocessor.get_patches(civ_group.team_bonus))
 
         return patches
 
@@ -44,7 +43,10 @@ class AoCCivSubprocessor:
         """
         modifiers = []
 
-        # TODO: Implement
+        for civ_bonus in civ_group.civ_boni.values():
+            if civ_bonus.replaces_researchable_tech():
+                # TODO: instant tech research modifier
+                pass
 
         return modifiers
 
@@ -223,6 +225,27 @@ class AoCCivSubprocessor:
                                            graphics_set[1], graphics_set[2])
 
                 # TODO: Other unit animations
+
+    @classmethod
+    def _setup_civ_bonus(cls, civ_group):
+        """
+        Returns global modifiers of a civ.
+        """
+        patches = []
+
+        for civ_bonus in civ_group.civ_boni.values():
+            if not civ_bonus.replaces_researchable_tech():
+                bonus_patches = AoCTechSubprocessor.get_patches(civ_bonus)
+
+                # civ boni might be unlocked by age ups. if so, patch them into the age up
+                if civ_bonus.tech["required_tech_count"].get_value() > 0:
+                    # TODO: Patch into tech
+                    pass
+
+                else:
+                    patches.extend(bonus_patches)
+
+        return patches
 
     @staticmethod
     def _setup_graphics_set(civ_group):

@@ -12,7 +12,6 @@ from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOO
     VARIANT_GROUP_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.util.ordered_set import OrderedSet
 
 
 class AoCModifierSubprocessor:

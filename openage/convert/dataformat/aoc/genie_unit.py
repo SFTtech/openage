@@ -157,6 +157,42 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return tech_line in self.researches
 
+    def has_armor(self, armor_class):
+        """
+        Checks if units in the line have a specific armor class.
+
+        :param armor_class: The type of armor class searched for.
+        :type armor_class: int
+        :returns: True if the train location obj_id is greater than zero.
+        """
+        head_unit = self.get_head_unit()
+        armors = head_unit.get_member("armors").get_value()
+        for armor in armors.values():
+            type_id = armor.get_value()["type_id"].get_value()
+
+            if type_id == armor_class:
+                return True
+
+        return False
+
+    def has_attack(self, armor_class):
+        """
+        Checks if units in the line can execute a specific command.
+
+        :param armor_class: The type of attack class searched for.
+        :type armor_class: int
+        :returns: True if the train location obj_id is greater than zero.
+        """
+        head_unit = self.get_head_unit()
+        attacks = head_unit.get_member("attacks").get_value()
+        for attack in attacks.values():
+            type_id = attack.get_value()["type_id"].get_value()
+
+            if type_id == armor_class:
+                return True
+
+        return False
+
     def has_command(self, command_id):
         """
         Checks if units in the line can execute a specific command.

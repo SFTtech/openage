@@ -96,6 +96,15 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
         return None
 
+    def get_effects(self):
+        """
+        Returns the associated effects.
+        """
+        if self.effects:
+            return self.effects.get_effects()
+
+        return []
+
     def get_required_techs(self):
         """
         Returns the techs that are required for this tech.
@@ -364,5 +373,94 @@ class CivBonus(GenieTechEffectBundleGroup):
     def get_civilization(self):
         return self.civ_id
 
+    def replaces_researchable_tech(self):
+        """
+        Checks if this bonus replaces a researchable Tech and returns the tech group
+        if thats the case. Otherwise None is returned.
+        """
+        for tech_group in self.data.tech_groups.values():
+            if tech_group.is_researchable():
+                bonus_effect_id = self.tech.get_member("tech_effect_id").get_value()
+                tech_group_effect_id = tech_group.tech.get_member("tech_effect_id").get_value()
+
+                if bonus_effect_id == tech_group_effect_id:
+                    return tech_group
+
+        return None
+
     def __repr__(self):
         return "CivBonus<%s>" % (self.get_id())
+
+
+class CivTeamBonus(ConverterObjectGroup):
+    """
+    Gives a civilization and all allies a bonus.
+
+    This will become patches in the Civilization API object.
+    """
+
+    def __init__(self, tech_id, civ_id, effect_bundle_id, full_data_set):
+        """
+        Creates a new Genie tech group object.
+
+        :param tech_id: The internal tech_id from the .dat file.
+        :param civ_id: The index of the civ.
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        """
+        super().__init__(tech_id)
+
+        self.tech_id = tech_id
+        self.data = full_data_set
+        self.civ_id = civ_id
+        self.effects = self.data.genie_effect_bundles[effect_bundle_id]
+
+    def get_effects(self):
+        """
+        Returns the associated effects.
+        """
+        return self.effects.get_effects()
+
+    def get_civilization(self):
+        return self.civ_id
+
+    def __repr__(self):
+        return "CivTeamBonus<%s>" % (self.get_id())
+
+
+class CivTechTree(ConverterObjectGroup):
+    """
+    Tech tree of a civilization.
+
+    This will become patches in the Civilization API object.
+    """
+
+    def __init__(self, tech_id, civ_id, effect_bundle_id, full_data_set):
+        """
+        Creates a new Genie tech group object.
+
+        :param tech_id: The internal tech_id from the .dat file.
+        :param civ_id: The index of the civ.
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        """
+        super().__init__(tech_id)
+
+        self.tech_id = tech_id
+        self.data = full_data_set
+        self.civ_id = civ_id
+        self.effects = self.data.genie_effect_bundles[effect_bundle_id]
+
+    def get_effects(self):
+        """
+        Returns the associated effects.
+        """
+        return self.effects.get_effects()
+
+    def get_civilization(self):
+        return self.civ_id
+
+    def __repr__(self):
+        return "CivTechTree<%s>" % (self.get_id())

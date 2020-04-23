@@ -78,8 +78,13 @@ class AoCUpgradeAttributeSubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
         class_name = ARMOR_CLASS_LOOKUPS[armor_class]
 
-        patch_target_ref = "%s.Resistance.%s.BlockAmount" % (game_entity_name, class_name)
-        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+        if line.has_armor(armor_class):
+            patch_target_ref = "%s.Resistance.%s.BlockAmount" % (game_entity_name, class_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        else:
+            # TODO: Create new attack resistance
+            return patches
 
         # Wrapper
         wrapper_name = "Change%s%sResistanceWrapper" % (game_entity_name, class_name)
@@ -183,6 +188,10 @@ class AoCUpgradeAttributeSubprocessor:
             patch_target_ref = ("%s.ShootProjectile.Projectile0.Attack.%s.ChangeAmount"
                                 % (game_entity_name, class_name))
             patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        elif not line.has_attack(armor_class):
+            # TODO: Create new attack effect
+            return patches
 
         else:
             patch_target_ref = "%s.Attack.%s.ChangeAmount" % (game_entity_name, class_name)
