@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
