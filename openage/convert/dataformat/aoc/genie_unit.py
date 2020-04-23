@@ -609,6 +609,12 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
         """
         return self.head
 
+    def get_stack_unit(self):
+        """
+        Returns the unit that is stacked on this building after construction.
+        """
+        return self.stack
+
     def get_head_unit_id(self):
         """
         Returns the stack unit ID because that is the unit that is referenced by other entities.

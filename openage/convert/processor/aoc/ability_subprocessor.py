@@ -2826,6 +2826,9 @@ class AoCAbilitySubprocessor:
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
         current_unit = line.get_head_unit()
+        if isinstance(line, GenieStackBuildingGroup):
+            current_unit = line.get_stack_unit()
+
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 

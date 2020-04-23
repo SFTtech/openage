@@ -13,7 +13,6 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
 from openage.nyan.nyan_structs import MemberOperator
 from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
-from openage.convert.dataformat.aoc.genie_tech import AgeUpgrade
 
 
 class AoCCivSubprocessor:

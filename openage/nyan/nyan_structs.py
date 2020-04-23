@@ -819,7 +819,8 @@ class NyanMember:
         This lets us convert data fields without worrying about the
         correct types too much, e.g. if a boolean is stored as uint8.
         """
-        if self._member_type is MemberType.INT:
+        if self._member_type is MemberType.INT and not\
+                self._operator in (MemberOperator.DIVIDE, MemberOperator.MULTIPLY):
             self.value = int(self.value)
 
         elif self._member_type is MemberType.FLOAT:

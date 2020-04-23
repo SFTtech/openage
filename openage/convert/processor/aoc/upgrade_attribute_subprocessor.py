@@ -320,7 +320,77 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        patch_target_ref = "%s.CreatableGameEntity.%sCost.FoodAmount" % (game_entity_name,
+                                                                         game_entity_name)
+        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = "Change%sFoodCostWrapper" % (game_entity_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%sFoodCost" % (game_entity_name)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("amount",
+                                                       value,
+                                                       "engine.aux.resource.ResourceAmount",
+                                                       operator)
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -340,7 +410,77 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        patch_target_ref = "%s.CreatableGameEntity.%sCost.WoodAmount" % (game_entity_name,
+                                                                         game_entity_name)
+        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = "Change%sWoodCostWrapper" % (game_entity_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%sWoodCost" % (game_entity_name)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("amount",
+                                                       value,
+                                                       "engine.aux.resource.ResourceAmount",
+                                                       operator)
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -360,7 +500,77 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        patch_target_ref = "%s.CreatableGameEntity.%sCost.GoldAmount" % (game_entity_name,
+                                                                         game_entity_name)
+        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = "Change%sGoldCostWrapper" % (game_entity_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%sGoldCost" % (game_entity_name)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("amount",
+                                                       value,
+                                                       "engine.aux.resource.ResourceAmount",
+                                                       operator)
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -380,7 +590,77 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        patch_target_ref = "%s.CreatableGameEntity.%sCost.StoneAmount" % (game_entity_name,
+                                                                          game_entity_name)
+        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = "Change%sStoneCostWrapper" % (game_entity_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%sStoneCost" % (game_entity_name)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("amount",
+                                                       value,
+                                                       "engine.aux.resource.ResourceAmount",
+                                                       operator)
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -489,7 +769,76 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        patch_target_ref = "%s.Storage.%sContainer" % (game_entity_name, game_entity_name)
+        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = "Change%sCreationTimeWrapper" % (game_entity_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%sCreationTime" % (game_entity_name)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("slots",
+                                                       value,
+                                                       "engine.aux.storage.Container",
+                                                       operator)
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -905,7 +1254,93 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        if line.is_projectile_shooter():
+            patch_target_ref = "%s.Attack" % (game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            patch_target_parent = "engine.ability.type.ShootProjectile"
+
+        elif line.is_melee():
+            if line.is_ranged():
+                patch_target_ref = "%s.Attack" % (game_entity_name)
+                patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+                patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
+
+            else:
+                # excludes ram upgrades
+                return patches
+
+        elif line.has_command(104):
+            patch_target_ref = "%s.Convert" % (game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
+
+        # Wrapper
+        wrapper_name = "Change%sMaxRangeWrapper" % (game_entity_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%sMaxRange" % (game_entity_name)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("max_range",
+                                                       value,
+                                                       patch_target_parent,
+                                                       operator)
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -925,7 +1360,88 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        if line.is_projectile_shooter():
+            patch_target_ref = "%s.Attack" % (game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            patch_target_parent = "engine.ability.type.ShootProjectile"
+
+        elif line.is_melee():
+            patch_target_ref = "%s.Attack" % (game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
+
+        elif line.has_command(104):
+            patch_target_ref = "%s.Convert" % (game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
+
+        # Wrapper
+        wrapper_name = "Change%sMinRangeWrapper" % (game_entity_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%sMinRange" % (game_entity_name)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("min_range",
+                                                       value,
+                                                       patch_target_parent,
+                                                       operator)
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -1036,6 +1552,8 @@ class AoCUpgradeAttributeSubprocessor:
         """
         patches = []
 
+        # Unused in AoC
+
         return patches
 
     @staticmethod
@@ -1054,7 +1572,88 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        if line.is_projectile_shooter():
+            patch_target_ref = "%s.Attack" % (game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            patch_target_parent = "engine.ability.type.ShootProjectile"
+
+        elif line.is_melee():
+            patch_target_ref = "%s.Attack" % (game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            patch_target_parent = "engine.ability.type.ApplyDiscreteEffect"
+
+        elif line.has_command(104):
+            patch_target_ref = "%s.Convert" % (game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            patch_target_parent = "engine.ability.type.ApplyDiscreteEffect"
+
+        # Wrapper
+        wrapper_name = "Change%sReloadTimeWrapper" % (game_entity_name)
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_name = "Change%sReloadTime" % (game_entity_name)
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("reload_time",
+                                                       value,
+                                                       patch_target_parent,
+                                                       operator)
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -1074,7 +1673,109 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit = line.get_head_unit()
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        for resource_amount in head_unit.get_member("resource_cost").get_value():
+            resource_id = resource_amount.get_value()["type_id"].get_value()
+
+            resource_name = ""
+            if resource_id == -1:
+                # Not a valid resource
+                continue
+
+            elif resource_id == 0:
+                resource_name = "Food"
+
+            elif resource_id == 1:
+                resource_name = "Wood"
+
+            elif resource_id == 2:
+                resource_name = "Stone"
+
+            elif resource_id == 3:
+                resource_name = "Gold"
+
+            else:
+                # Other resource ids are handled differently
+                continue
+
+            # Skip resources that are only expected to be there
+            if not resource_amount.get_value()["enabled"].get_value():
+                continue
+
+            patch_target_ref = "%s.CreatableGameEntity.%sCost.%sAmount" % (game_entity_name,
+                                                                           game_entity_name,
+                                                                           resource_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+            # Wrapper
+            wrapper_name = "Change%s%sCostWrapper" % (game_entity_name,
+                                                      resource_name)
+            wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+            wrapper_location = ExpectedPointer(converter_group, obj_name)
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                                  wrapper_name,
+                                                  dataset.nyan_api_objects,
+                                                  wrapper_location)
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            # Nyan patch
+            nyan_patch_name = "Change%s%sCost" % (game_entity_name,
+                                                  resource_name)
+            nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                     nyan_patch_name,
+                                                     dataset.nyan_api_objects,
+                                                     nyan_patch_location)
+            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+            nyan_patch_raw_api_object.add_raw_patch_member("amount",
+                                                           value,
+                                                           "engine.aux.resource.ResourceAmount",
+                                                           operator)
+
+            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+            wrapper_raw_api_object.add_raw_member("patch",
+                                                  patch_expected_pointer,
+                                                  "engine.aux.patch.Patch")
+
+            if team:
+                wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+                stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                           dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+                wrapper_raw_api_object.add_raw_member("stances",
+                                                      stances,
+                                                      "engine.aux.patch.type.DiplomaticPatch")
+
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+            patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -1094,7 +1795,90 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
+
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        if line.is_harvestable():
+            patch_target_ref = "%s.Harvestable.%ResourceSpot" % (game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            wrapper_name = "Change%sHarvestableAmountWrapper" % (game_entity_name)
+            nyan_patch_name = "Change%sHarvestableAmount" % (game_entity_name)
+
+        else:
+            patch_target_ref = "%s.ProvideContingent.PopSpace" % (game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            wrapper_name = "Change%sPopSpaceWrapper" % (game_entity_name)
+            nyan_patch_name = "Change%sPopSpace" % (game_entity_name)
+
+        # Wrapper
+        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects,
+                                              wrapper_location)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+        # Nyan patch
+        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        if line.is_harvestable():
+            nyan_patch_raw_api_object.add_raw_patch_member("max_amount",
+                                                           value,
+                                                           "engine.aux.resource_spot.ResourceSpot",
+                                                           operator)
+
+        else:
+            nyan_patch_raw_api_object.add_raw_patch_member("amount",
+                                                           value,
+                                                           "engine.aux.resource.ResourceAmount",
+                                                           operator)
+
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        if team:
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            wrapper_raw_api_object.add_raw_member("stances",
+                                                  stances,
+                                                  "engine.aux.patch.type.DiplomaticPatch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+        patches.append(wrapper_expected_pointer)
 
         return patches
 

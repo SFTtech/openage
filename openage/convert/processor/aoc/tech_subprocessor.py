@@ -31,7 +31,7 @@ class AoCTechSubprocessor:
         10: AoCUpgradeAttributeSubprocessor.reload_time_upgrade,
         11: AoCUpgradeAttributeSubprocessor.accuracy_upgrade,
         12: AoCUpgradeAttributeSubprocessor.max_range_upgrade,
-        13: AoCUpgradeAttributeSubprocessor.min_range_upgrade,
+        13: AoCUpgradeAttributeSubprocessor.work_rate_upgrade,
         14: AoCUpgradeAttributeSubprocessor.carry_capacity_upgrade,
         16: AoCUpgradeAttributeSubprocessor.projectile_unit_upgrade,
         17: AoCUpgradeAttributeSubprocessor.graphics_angle_upgrade,
