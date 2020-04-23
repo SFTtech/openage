@@ -58,7 +58,7 @@ cdef void png_create(char* filename, numpy.uint8_t[:,:,::1] imagedata,
 
     libpng.png_write_end(png, info)
 
-    # TODO: This doesn't work, but would be faster
+    # This doesn't work, but would be a cleaner solution:
     # libpng.png_set_rows(png, info, imagedata)
     # libpng.png_write_png(png, info, libpng.PNG_TRANSFORM_IDENTITY, NULL)
     

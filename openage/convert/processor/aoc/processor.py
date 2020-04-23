@@ -962,7 +962,6 @@ class AoCProcessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         age_ups = full_data_set.age_upgrades
-        tech_connections = full_data_set.tech_connections
 
         # Order of age ups should be correct
         for age_up in age_ups.values():
@@ -983,12 +982,6 @@ class AoCProcessor:
 
                 upgraded_line.add_unit(upgrade_target)
                 full_data_set.unit_ref.update({upgrade_target_id: upgraded_line})
-
-        # Building upgrades through techs
-        for connection in tech_connections.values():
-            connected_buildings = connection.get_member("buildings").get_value()
-            tech_id = connection.get_member("id").get_value()
-            tech = full_data_set.genie_techs[tech_id]
 
     @staticmethod
     def _link_creatables(full_data_set):

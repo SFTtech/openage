@@ -606,7 +606,6 @@ class AoCEffectSubprocessor:
         :returns: The expected pointers for the effects.
         :rtype: list
         """
-        current_unit = line.get_head_unit()
         dataset = line.data
 
         resistances = []

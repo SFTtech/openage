@@ -19,6 +19,7 @@ from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOO
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
 from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
+from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
 
 
 class AoCNyanSubprocessor:
@@ -53,7 +54,7 @@ class AoCNyanSubprocessor:
         for civ_group in full_data_set.civ_groups.values():
             civ_group.create_nyan_objects()
 
-        # TODO: civs, more complex game entities
+        # TODO: variant groups
 
     @classmethod
     def _create_nyan_members(cls, full_data_set):
@@ -78,7 +79,7 @@ class AoCNyanSubprocessor:
         for civ_group in full_data_set.civ_groups.values():
             civ_group.create_nyan_members()
 
-        # TODO: civs, more complex game entities
+        # TODO: variant groups
 
     @classmethod
     def _process_game_entities(cls, full_data_set):
@@ -104,7 +105,7 @@ class AoCNyanSubprocessor:
         for civ_group in full_data_set.civ_groups.values():
             cls._civ_group_to_civ(civ_group)
 
-        # TODO: civs, more complex game entities
+        # TODO: variant groups
 
     @staticmethod
     def _unit_line_to_game_entity(unit_line):
@@ -273,6 +274,12 @@ class AoCNyanSubprocessor:
         # TODO: Modifiers
         # =======================================================================
         modifiers_set = []
+
+        if unit_line.has_command(7) and not unit_line.is_projectile_shooter():
+            modifiers_set.extend(AoCModifierSubprocessor.elevation_attack_modifiers(unit_line))
+
+        if unit_line.is_gatherer():
+            modifiers_set.extend(AoCModifierSubprocessor.gather_rate_modifier(unit_line))
 
         raw_api_object.add_raw_member("modifiers", modifiers_set,
                                       "engine.aux.game_entity.GameEntity")
@@ -728,9 +735,42 @@ class AoCNyanSubprocessor:
         terrain_group.add_raw_api_object(sound_raw_api_object)
 
         # =======================================================================
-        # TODO: Ambience
+        # Ambience
         # =======================================================================
-        raw_api_object.add_raw_member("ambience", [], "engine.aux.terrain.Terrain")
+        terrain = terrain_group.get_terrain()
+        ambients_count = terrain["terrain_units_used_count"].get_value()
+
+        ambience = []
+        for ambient_index in range(ambients_count):
+            ambient_id = terrain["terrain_unit_id"][ambient_index].get_value()
+            ambient_line = dataset.unit_ref[ambient_id]
+            ambient_name = AMBIENT_GROUP_LOOKUPS[ambient_line.get_head_unit_id()][0]
+
+            ambient_ref = "%s.Ambient%s" % (terrain_name, str(ambient_index))
+            ambient_raw_api_object = RawAPIObject(ambient_ref,
+                                                  "Ambient%s" % (str(ambient_index)),
+                                                  dataset.nyan_api_objects)
+            ambient_raw_api_object.add_raw_parent("engine.aux.terrain.TerrainAmbient")
+            ambient_location = ExpectedPointer(terrain_group, terrain_name)
+            ambient_raw_api_object.set_location(ambient_location)
+
+            # Game entity reference
+            ambient_line_expected_pointer = ExpectedPointer(ambient_line, ambient_name)
+            ambient_raw_api_object.add_raw_member("object",
+                                                  ambient_line_expected_pointer,
+                                                  "engine.aux.terrain.TerrainAmbient")
+
+            # Max density
+            max_density = terrain["terrain_unit_density"][ambient_index].get_value()
+            ambient_raw_api_object.add_raw_member("max_density",
+                                                  max_density,
+                                                  "engine.aux.terrain.TerrainAmbient")
+
+            terrain_group.add_raw_api_object(ambient_raw_api_object)
+            terrain_ambient_expected_pointer = ExpectedPointer(terrain_group, ambient_ref)
+            ambience.append(terrain_ambient_expected_pointer)
+
+        raw_api_object.add_raw_member("ambience", ambience, "engine.aux.terrain.Terrain")
 
         # =======================================================================
         # Graphic
@@ -941,9 +981,13 @@ class AoCNyanSubprocessor:
             proj_raw_api_object.add_raw_member("abilities", abilities_set, "engine.aux.game_entity.GameEntity")
 
             # =======================================================================
-            # TODO: Modifiers
+            # Modifiers
             # =======================================================================
             modifiers_set = []
+
+            modifiers_set.append(AoCModifierSubprocessor.flyover_effect_modifier(line))
+            modifiers_set.extend(AoCModifierSubprocessor.elevation_attack_modifiers(line))
+
             proj_raw_api_object.add_raw_member("modifiers", modifiers_set, "engine.aux.game_entity.GameEntity")
 
             # =======================================================================

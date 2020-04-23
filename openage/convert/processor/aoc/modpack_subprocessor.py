@@ -60,8 +60,6 @@ class AoCModpackSubprocessor:
         for variant_group in full_data_set.variant_groups.values():
             raw_api_objects.extend(variant_group.get_raw_api_objects().values())
 
-        # TODO: Other lines?
-
         for tech_group in full_data_set.tech_groups.values():
             raw_api_objects.extend(tech_group.get_raw_api_objects().values())
 

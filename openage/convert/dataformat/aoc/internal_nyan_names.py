@@ -105,12 +105,13 @@ AMBIENT_GROUP_LOOKUPS = {
     709: ("Cactus", "cactus"),
 }
 
-# key: head unit id; value: (units belonging to group, nyan object name, filename prefix)
+# key: index; value: (units belonging to group, nyan object name, filename prefix)
 VARIANT_GROUP_LOOKUPS = {
     0: ((450, 451), "BigOceanFish", "big_ocean_fish"),
     1: ((455, 456, 457, 458), "OceanFish", "ocean_fish"),
     2: ((69,), "Shorefish", "shore_fish"),
-    3: ((96, 816), "Bird", "bird")
+    3: ((96, 816), "Bird", "bird"),
+    4: ((264, 265, 266, 267, 268, 269, 270, 271, 272, 273), "Cliff", "cliff"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)
