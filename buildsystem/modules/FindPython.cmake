@@ -1,4 +1,4 @@
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 # Find Python
 # ~~~~~~~~~~~
@@ -18,6 +18,9 @@
 # Also defines py_exec and py_get_config_var.
 #
 
+# find_package(PythonLibs) needs this
+# this will limit the search for libraries to our supported versions of Python
+set(Python_ADDITIONAL_VERSIONS 3.7 3.6)
 
 # python version string to test for
 set(PYTHON_MIN_VERSION "${Python_FIND_VERSION_MAJOR}.${Python_FIND_VERSION_MINOR}")
