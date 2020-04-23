@@ -18,7 +18,7 @@ set(REQUIRED_PYTHON_MODULES "PIL.Image" "PIL.ImageDraw" "numpy" "pygments" "jinj
 function(check_python_module_exists MODULE EXISTS)
 	set(STATEMENT "from importlib import import_module; import_module(\"${MODULE}\")")
 	execute_process(
-		COMMAND ${PYTHON} -c "${STATEMENT}"
+		COMMAND ${Python3_EXECUTABLE} -c "${STATEMENT}"
 		RESULT_VARIABLE PY_RESULT)
 
 	if(PY_RESULT EQUAL 0)

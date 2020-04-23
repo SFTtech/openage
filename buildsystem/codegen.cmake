@@ -16,7 +16,7 @@ function(codegen_run)
 	set_property(GLOBAL PROPERTY SFT_CODEGEN_HAS_BEEN_RUN 1)
 
 	set(CODEGEN_INVOCATION
-		"${PYTHON}" -m openage codegen
+		"${Python3_EXECUTABLE}" -m openage codegen
 		"--input-dir=${CMAKE_SOURCE_DIR}"
 		"--output-dir=${CMAKE_BINARY_DIR}"
 		"--generated-list-file=${CMAKE_BINARY_DIR}/codegen_generated_files"

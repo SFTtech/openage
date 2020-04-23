@@ -8,9 +8,31 @@
 #
 # It depends on:
 #
-#  PYTHON
+#  PYTHON3
 
-set(CYTHON "${PYTHON} -m cython")
+# set the python version for the cpython api test
+set(PYTHON_MIN_VERSION_HEX "0x0${Python3_VERSION_MAJOR}0${Python3_VERSION_MINOR}0000")
+
+function(py_exec STATEMENTS RESULTVAR)
+	# executes some python statement(s), and returns the result in RESULTVAR.
+	# aborts with a fatal error on error.
+	# no single quotes are allowed in STATEMENTS.
+	execute_process(
+		COMMAND "${Python3_EXECUTABLE}" -c "${STATEMENTS}"
+		OUTPUT_VARIABLE PY_OUTPUT
+		RESULT_VARIABLE PY_RETVAL
+	)
+
+	if (NOT PY_RETVAL EQUAL 0)
+		message(FATAL_ERROR "failed:\n${Python3_EXECUTABLE} -c '${STATEMENTS}'\n${PY_OUTPUT}")
+	endif()
+
+	string(STRIP "${PY_OUTPUT}" PY_OUTPUT_STRIPPED)
+
+	set("${RESULTVAR}" "${PY_OUTPUT_STRIPPED}" PARENT_SCOPE)
+endfunction()
+
+set(CYTHON "${Python3_EXECUTABLE} -m cython")
 py_exec("import cython; print(cython.__version__)" CYTHON_VERSION)
 
 include(FindPackageHandleStandardArgs)

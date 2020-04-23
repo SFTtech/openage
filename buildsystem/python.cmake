@@ -306,7 +306,7 @@ function(python_finalize)
 	write_on_change("${CMAKE_BINARY_DIR}/py/pxdgen_sources" "${pxdgen_sources}")
 	set(PXDGEN_TIMEFILE "${CMAKE_BINARY_DIR}/py/pxdgen_timefile")
 	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}"
-		COMMAND "${PYTHON}" -m buildsystem.pxdgen
+		COMMAND "${Python3_EXECUTABLE}" -m buildsystem.pxdgen
 		--file-list "${CMAKE_BINARY_DIR}/py/pxdgen_sources"
 		--output-dir "${CMAKE_BINARY_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${PXDGEN_TIMEFILE}"
@@ -332,7 +332,7 @@ function(python_finalize)
 		COMMAND "${CMAKE_COMMAND}" -E remove -f
 			"${CMAKE_BINARY_DIR}/__init__.py"
 			"${CMAKE_BINARY_DIR}/__init__.pxd"
-		COMMAND "${PYTHON}" -m buildsystem.cythonize
+		COMMAND "${Python3_EXECUTABLE}" -m buildsystem.cythonize
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
 		"${CMAKE_BINARY_DIR}/py/pxd_list"
@@ -363,7 +363,7 @@ function(python_finalize)
 	write_on_change("${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
 	set(COMPILEPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
 	set(COMPILEPY_INVOCATION
-		"${PYTHON}" -m buildsystem.compilepy
+		"${Python3_EXECUTABLE}" -m buildsystem.compilepy
 		"${CMAKE_BINARY_DIR}/py/py_files"
 		"${CMAKE_SOURCE_DIR}"
 		"${CMAKE_BINARY_DIR}"
@@ -453,7 +453,7 @@ function(python_finalize)
 		CONTENT "${cython_module_files_expr}"
 	)
 	set(INPLACEMODULES_INVOCATION
-		"${PYTHON}" -m buildsystem.inplacemodules
+		"${Python3_EXECUTABLE}" -m buildsystem.inplacemodules
 		${INPLACEMODULES_LISTFILE}
 		"$<CONFIG>"
 	)
@@ -473,7 +473,7 @@ function(python_finalize)
 
 	add_custom_target(cleancython
 		COMMAND ${INPLACEMODULES_INVOCATION} --clean
-		COMMAND "${PYTHON}" -m buildsystem.cythonize --clean
+		COMMAND "${Python3_EXECUTABLE}" -m buildsystem.cythonize --clean
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
 		"${CMAKE_BINARY_DIR}/py/pxd_list"
@@ -501,7 +501,7 @@ function(python_finalize)
 	# check for any unlisted .py files, and error.
 
 	execute_process(
-		COMMAND "${PYTHON}" -m buildsystem.check_py_file_list
+		COMMAND "${Python3_EXECUTABLE}" -m buildsystem.check_py_file_list
 		"${CMAKE_BINARY_DIR}/py/py_files"
 		"${CMAKE_SOURCE_DIR}/openage"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"

@@ -3,9 +3,19 @@
 # finds the python interpreter, install destination and extension flags.
 
 # the Python version number requirement is in modules/FindPython_test.cpp
-find_package(Python ${PYTHON_MIN_VERSION} REQUIRED)
+find_package(Python3 COMPONENTS Interpreter Development)
 find_package(Cython ${CYTHON_MIN_VERSION} REQUIRED)
 find_package(Numpy REQUIRED)
+
+function(py_get_config_var VAR RESULTVAR)
+	# uses py_exec to determine a config var as in distutils.sysconfig.get_config_var().
+	py_exec(
+		"from distutils.sysconfig import get_config_var; print(get_config_var('${VAR}'))"
+		RESULT
+	)
+
+	set("${RESULTVAR}" "${RESULT}" PARENT_SCOPE)
+endfunction()
 
 py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)
 
@@ -22,8 +32,8 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-#warnings")
 endif()
 
-set(PYEXT_LIBRARY "${PYTHON_LIBRARIES}")
-set(PYEXT_INCLUDE_DIRS "${PYTHON_INCLUDE_DIRS};${NUMPY_INCLUDE_DIR}")
+set(PYEXT_LIBRARY "${Python3_LIBRARIES}")
+set(PYEXT_INCLUDE_DIRS "${Python3_INCLUDE_DIRS};${NUMPY_INCLUDE_DIR}")
 
 if(NOT CMAKE_PY_INSTALL_PREFIX)
 	if(MSVC)

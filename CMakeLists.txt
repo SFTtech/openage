@@ -1,7 +1,8 @@
 # Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
-cmake_minimum_required(VERSION 3.8.0)
-# required for CMAKE_CXX_STANDARD for C++17
+cmake_minimum_required(VERSION 3.12.0)
+# required for FindPython3.cmake
+# >3.8 required for CMAKE_CXX_STANDARD for C++17
 
 # main build configuration file
 
