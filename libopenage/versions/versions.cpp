@@ -1,6 +1,8 @@
 // Copyright 2020-2020 the openage authors. See copying.md for legal info.
 
+#ifdef __linux__
 #include <gnu/libc-version.h>
+#endif
 #include <SDL2/SDL.h>
 #include <sstream>
 
@@ -28,8 +30,10 @@ map<string,string> get_version_numbers()
 
 	version_numbers.insert(pair<string,string>("SDL", s));
 
-	//Add libc version number
-	version_numbers.insert(pair<string,string>("libc",gnu_get_libc_version()));
+#ifdef __linux__
+//Add libc version number
+version_numbers.insert(pair<string,string>("libc",gnu_get_libc_version()));
+#endif
 
 	return version_numbers;
 }
