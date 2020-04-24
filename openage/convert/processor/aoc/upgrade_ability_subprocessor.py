@@ -377,9 +377,106 @@ class AoCUgradeAbilitySubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        tech_id = tech_group.get_id()
+        dataset = line.data
+
         patches = []
 
-        # TODO: Implement
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+
+        if diff:
+            diff_damage_graphics = diff.get_member("damage_graphics")
+            if isinstance(diff_damage_graphics, NoDiffMember):
+                return patches
+
+            diff_damage_animations = [diff_damage_graphics[0],
+                                      diff_damage_graphics[1],
+                                      diff_damage_graphics[2]]
+
+        else:
+            return patches
+
+        percentage = 25
+        for diff_damage_animation in diff_damage_animations:
+            if isinstance(diff_damage_animation["graphic_id"], NoDiffMember):
+                percentage += 25
+                continue
+
+            patch_target_ref = "%s.AttributeChangeTracker.ChangeProgress%s" % (game_entity_name,
+                                                                               str(percentage))
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+            # Wrapper
+            wrapper_name = "Change%sDamageGraphic%sWrapper" % (game_entity_name,
+                                                               str(percentage))
+            wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                                  wrapper_name,
+                                                  dataset.nyan_api_objects)
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            if isinstance(line, GenieBuildingLineGroup):
+                # Store building upgrades next to their game entity definition,
+                # not in the Age up techs.
+                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+
+            else:
+                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+
+            # Nyan patch
+            nyan_patch_name = "Change%sDamageGraphic%s" % (game_entity_name,
+                                                           str(percentage))
+            nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                     nyan_patch_name,
+                                                     dataset.nyan_api_objects,
+                                                     nyan_patch_location)
+            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+            animations_set = []
+            diff_animation_id = diff_damage_animation["graphic_id"].get_value()
+            if diff_animation_id > -1:
+                # Patch the new animation in
+                animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                                                                                            line,
+                                                                                            diff_animation_id,
+                                                                                            nyan_patch_ref,
+                                                                                            "Idle",
+                                                                                            "idle_damage_override_%s_"
+                                                                                            % (str(percentage)))
+                animations_set.append(animation_expected_pointer)
+
+            nyan_patch_raw_api_object.add_raw_patch_member("overlays",
+                                                           animations_set,
+                                                           "engine.aux.progress.specialization.AnimationOverlayProgress",
+                                                           MemberOperator.ASSIGN)
+
+            patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+            wrapper_raw_api_object.add_raw_member("patch",
+                                                  patch_expected_pointer,
+                                                  "engine.aux.patch.Patch")
+
+            tech_group.add_raw_api_object(wrapper_raw_api_object)
+            tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+            wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+            patches.append(wrapper_expected_pointer)
+            percentage += 25
 
         return patches
 

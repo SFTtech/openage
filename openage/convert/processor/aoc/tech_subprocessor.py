@@ -5,11 +5,10 @@ Creates patches for technologies.
 """
 from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgradeAbilitySubprocessor
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
-    GenieGameEntityGroup
+    GenieBuildingLineGroup
 from openage.nyan.nyan_structs import MemberOperator
 from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
-from openage.convert.dataformat.aoc.genie_civ import GenieCivilizationGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.converter_object import RawAPIObject
@@ -312,6 +311,9 @@ class AoCTechSubprocessor:
 
         if isinstance(line, GenieUnitLineGroup):
             patches.extend(AoCUgradeAbilitySubprocessor.move_ability(converter_group, line, diff))
+
+        if isinstance(line, GenieBuildingLineGroup):
+            patches.extend(AoCUgradeAbilitySubprocessor.attribute_change_tracker_ability(converter_group, line, diff))
 
         return patches
 
