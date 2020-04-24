@@ -15,11 +15,13 @@ from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
-    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, CIV_GROUP_LOOKUPS
+    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, CIV_GROUP_LOOKUPS,\
+    VARIANT_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
 from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
 from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
+from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgradeAbilitySubprocessor
 
 
 class AoCNyanSubprocessor:
@@ -44,6 +46,9 @@ class AoCNyanSubprocessor:
 
         for ambient_group in full_data_set.ambient_groups.values():
             ambient_group.create_nyan_objects()
+
+        for variant_group in full_data_set.variant_groups.values():
+            variant_group.create_nyan_objects()
 
         for tech_group in full_data_set.tech_groups.values():
             tech_group.create_nyan_objects()
@@ -70,6 +75,9 @@ class AoCNyanSubprocessor:
         for ambient_group in full_data_set.ambient_groups.values():
             ambient_group.create_nyan_members()
 
+        for variant_group in full_data_set.variant_groups.values():
+            variant_group.create_nyan_members()
+
         for tech_group in full_data_set.tech_groups.values():
             tech_group.create_nyan_members()
 
@@ -92,6 +100,9 @@ class AoCNyanSubprocessor:
 
         for ambient_group in full_data_set.ambient_groups.values():
             cls._ambient_group_to_game_entity(ambient_group)
+
+        for variant_group in full_data_set.variant_groups.values():
+            cls._variant_group_to_game_entity(variant_group)
 
         for tech_group in full_data_set.tech_groups.values():
             if tech_group.is_researchable():
@@ -132,7 +143,7 @@ class AoCNyanSubprocessor:
 
         # =======================================================================
         # Game Entity Types
-        # ------------------
+        # =======================================================================
         # we give a unit two types
         #    - aux.game_entity_type.types.Unit (if unit_type >= 70)
         #    - aux.game_entity_type.types.<Class> (depending on the class)
@@ -322,7 +333,7 @@ class AoCNyanSubprocessor:
 
         # =======================================================================
         # Game Entity Types
-        # ------------------
+        # =======================================================================
         # we give a building two types
         #    - aux.game_entity_type.types.Building (if unit_type >= 80)
         #    - aux.game_entity_type.types.<Class> (depending on the class)
@@ -474,7 +485,7 @@ class AoCNyanSubprocessor:
 
         # =======================================================================
         # Game Entity Types
-        # ------------------
+        # =======================================================================
         # we give an ambient the types
         #    - aux.game_entity_type.types.Ambient
         # =======================================================================
@@ -525,7 +536,7 @@ class AoCNyanSubprocessor:
                                       "engine.aux.game_entity.GameEntity")
 
         # =======================================================================
-        # TODO: Modifiers
+        # Modifiers
         # =======================================================================
         modifiers_set = []
 
@@ -536,6 +547,164 @@ class AoCNyanSubprocessor:
         # TODO: Variants
         # =======================================================================
         variants_set = []
+
+        raw_api_object.add_raw_member("variants", variants_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+    @staticmethod
+    def _variant_group_to_game_entity(variant_group):
+        """
+        Creates raw API objects for a variant group.
+
+        :param ambient_group: Unit line that gets converted to a game entity.
+        :type ambient_group: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        variant_main_unit = variant_group.get_head_unit()
+        variant_id = variant_group.get_head_unit_id()
+
+        dataset = variant_group.data
+
+        # Start with the generic GameEntity
+        game_entity_name = VARIANT_GROUP_LOOKUPS[variant_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (VARIANT_GROUP_LOOKUPS[variant_id][1])
+        raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(VARIANT_GROUP_LOOKUPS[variant_id][1])
+        variant_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Game Entity Types
+        # =======================================================================
+        # we give variants the types
+        #    - aux.game_entity_type.types.Ambient
+        # =======================================================================
+        # Create or use existing auxiliary types
+        types_set = []
+
+        type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Ambient"].get_nyan_object()
+        types_set.append(type_obj)
+
+        unit_class = variant_main_unit.get_member("unit_class").get_value()
+        class_name = CLASS_ID_LOOKUPS[unit_class]
+        class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+        type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
+        types_set.append(type_obj)
+
+        raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Abilities
+        # =======================================================================
+        abilities_set = []
+
+        abilities_set.append(AoCAbilitySubprocessor.death_ability(variant_group))
+        abilities_set.append(AoCAbilitySubprocessor.despawn_ability(variant_group))
+        abilities_set.append(AoCAbilitySubprocessor.idle_ability(variant_group))
+        abilities_set.append(AoCAbilitySubprocessor.named_ability(variant_group))
+        abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(variant_group))
+        abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(variant_group))
+        abilities_set.append(AoCAbilitySubprocessor.visibility_ability(variant_group))
+
+        if variant_main_unit.has_member("speed") and variant_main_unit["speed"].get_value() > 0:
+            abilities_set.append(AoCAbilitySubprocessor.move_ability(variant_group))
+
+        if variant_group.is_harvestable():
+            abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(variant_group))
+
+        raw_api_object.add_raw_member("abilities", abilities_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Modifiers
+        # =======================================================================
+        modifiers_set = []
+
+        raw_api_object.add_raw_member("modifiers", modifiers_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # TODO: Variants
+        # =======================================================================
+        variants_set = []
+
+        variant_type = VARIANT_GROUP_LOOKUPS[variant_id][3]
+
+        index = 0
+        for variant in variant_group.line:
+            # Create a diff
+            diff_variant = variant_main_unit.diff(variant)
+
+            if variant_type == "random":
+                variant_type_ref = "engine.aux.variant.type.RandomVariant"
+
+            elif variant_type == "angle":
+                variant_type_ref = "engine.aux.variant.type.PerspectiveVariant"
+
+            elif variant_type == "misc":
+                variant_type_ref = "engine.aux.variant.type.MiscVariant"
+
+            variant_name = "Variant%s" % (str(index))
+            variant_ref = "%s.%s" % (game_entity_name, variant_name)
+            variant_raw_api_object = RawAPIObject(variant_ref,
+                                                  variant_name,
+                                                  dataset.nyan_api_objects)
+            variant_raw_api_object.add_raw_parent(variant_type_ref)
+            variant_location = ExpectedPointer(variant_group, game_entity_name)
+            variant_raw_api_object.set_location(variant_location)
+
+            # Create patches for the diff
+            patches = []
+
+            patches.extend(AoCUgradeAbilitySubprocessor.death_ability(variant_group,
+                                                                      variant_group,
+                                                                      variant_ref,
+                                                                      diff_variant))
+            patches.extend(AoCUgradeAbilitySubprocessor.despawn_ability(variant_group,
+                                                                        variant_group,
+                                                                        variant_ref,
+                                                                        diff_variant))
+            patches.extend(AoCUgradeAbilitySubprocessor.idle_ability(variant_group,
+                                                                     variant_group,
+                                                                     variant_ref,
+                                                                     diff_variant))
+            patches.extend(AoCUgradeAbilitySubprocessor.named_ability(variant_group,
+                                                                      variant_group,
+                                                                      variant_ref,
+                                                                      diff_variant))
+
+            if variant_main_unit.has_member("speed") and variant_main_unit["speed"].get_value() > 0:
+                patches.extend(AoCUgradeAbilitySubprocessor.move_ability(variant_group,
+                                                                         variant_group,
+                                                                         variant_ref,
+                                                                         diff_variant))
+
+            # Changes
+            variant_raw_api_object.add_raw_member("changes",
+                                                  patches,
+                                                  "engine.aux.variant.Variant")
+
+            # Prority
+            variant_raw_api_object.add_raw_member("priority",
+                                                  1,
+                                                  "engine.aux.variant.Variant")
+
+            if variant_type == "random":
+                variant_raw_api_object.add_raw_member("chance_share",
+                                                      1 / len(variant_group.line),
+                                                      "engine.aux.variant.type.RandomVariant")
+
+            elif variant_type == "angle":
+                variant_raw_api_object.add_raw_member("angle",
+                                                      index,
+                                                      "engine.aux.variant.type.PerspectiveVariant")
+
+            variants_expected_pointer = ExpectedPointer(variant_group, variant_ref)
+            variants_set.append(variants_expected_pointer)
+            variant_group.add_raw_api_object(variant_raw_api_object)
+
+            index += 1
 
         raw_api_object.add_raw_member("variants", variants_set,
                                       "engine.aux.game_entity.GameEntity")
@@ -902,10 +1071,11 @@ class AoCNyanSubprocessor:
                                       "engine.aux.civilization.Civilization")
 
         # =======================================================================
-        # TODO: Modifiers
+        # Modifiers
         # =======================================================================
+        modifiers = AoCCivSubprocessor.get_civ_setup(civ_group)
         raw_api_object.add_raw_member("modifiers",
-                                      [],
+                                      modifiers,
                                       "engine.aux.civilization.Civilization")
 
         # =======================================================================

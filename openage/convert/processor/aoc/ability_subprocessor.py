@@ -12,10 +12,11 @@ from ...dataformat.aoc.combined_sprite import CombinedSprite
 from openage.nyan.nyan_structs import MemberSpecialValue
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
-    GenieUnitLineGroup, GenieMonkGroup
+    GenieUnitLineGroup, GenieMonkGroup, GenieVariantGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
-    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, COMMAND_TYPE_LOOKUPS
+    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, COMMAND_TYPE_LOOKUPS,\
+    VARIANT_GROUP_LOOKUPS
 from openage.util.ordered_set import OrderedSet
 from openage.convert.processor.aoc.effect_subprocessor import AoCEffectSubprocessor
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
@@ -800,6 +801,9 @@ class AoCAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
@@ -1023,6 +1027,9 @@ class AoCAbilitySubprocessor:
 
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
 
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
@@ -1626,6 +1633,9 @@ class AoCAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
@@ -2066,6 +2076,9 @@ class AoCAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
@@ -2272,6 +2285,9 @@ class AoCAbilitySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             name_lookup_dict = BUILDING_LINE_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
@@ -2455,6 +2471,9 @@ class AoCAbilitySubprocessor:
 
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
 
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
@@ -3331,6 +3350,9 @@ class AoCAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
@@ -4062,6 +4084,9 @@ class AoCAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
@@ -4466,6 +4491,9 @@ class AoCAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
@@ -4506,6 +4534,9 @@ class AoCAbilitySubprocessor:
 
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
 
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS

@@ -928,7 +928,7 @@ class AoCProcessor:
             variant_group = GenieVariantGroup(group_id, full_data_set)
             full_data_set.variant_groups.update({variant_group.get_id(): variant_group})
 
-            for variant_id in variant[0]:
+            for variant_id in variant[2]:
                 variant_group.add_unit(full_data_set.genie_units[variant_id])
                 full_data_set.unit_ref.update({variant_id: variant_group})
 

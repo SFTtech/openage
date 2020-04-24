@@ -1572,6 +1572,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.variant.type.MiscVariant
+    parents = [api_objects["engine.aux.variant.Variant"]]
+    nyan_object = NyanObject("MiscVariant", parents)
+    fqon = "engine.aux.variant.type.MiscVariant"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.variant.type.RandomVariant
     parents = [api_objects["engine.aux.variant.Variant"]]
     nyan_object = NyanObject("RandomVariant", parents)

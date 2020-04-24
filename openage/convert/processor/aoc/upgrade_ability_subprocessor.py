@@ -4,10 +4,10 @@
 Creates upgrade patches for abilities.
 """
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieAmbientGroup
+    GenieAmbientGroup, GenieVariantGroup, GenieUnitLineGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS,\
     AMBIENT_GROUP_LOOKUPS, UNIT_LINE_LOOKUPS, TECH_GROUP_LOOKUPS,\
-    COMMAND_TYPE_LOOKUPS
+    COMMAND_TYPE_LOOKUPS, VARIANT_GROUP_LOOKUPS
 from openage.convert.dataformat.value_members import NoDiffMember
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.converter_object import RawAPIObject
@@ -21,23 +21,26 @@ from openage.convert.processor.aoc.upgrade_effect_subprocessor import AoCUpgrade
 class AoCUgradeAbilitySubprocessor:
 
     @staticmethod
-    def apply_continuous_effect_ability(tech_group, line, command_id, ranged=False, diff=None):
+    def apply_continuous_effect_ability(converter_group, line, container_obj_ref,
+                                        command_id, ranged=False, diff=None):
         """
         Creates a patch for the ApplyContinuousEffect ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -52,7 +55,6 @@ class AoCUgradeAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
         ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
 
         changed = False
@@ -81,7 +83,7 @@ class AoCUgradeAbilitySubprocessor:
 
             # Wrapper
             wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
-            wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -95,12 +97,12 @@ class AoCUgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
             else:
-                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
             # Nyan patch
             nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
-            nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
@@ -113,7 +115,7 @@ class AoCUgradeAbilitySubprocessor:
                 animations_set = []
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
                                                                                                 line,
                                                                                                 diff_animation_id,
                                                                                                 nyan_patch_ref,
@@ -132,7 +134,7 @@ class AoCUgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.get_value()
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(tech_group,
+                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(converter_group,
                                                                                         diff_comm_sound_id,
                                                                                         nyan_patch_ref,
                                                                                         ability_name,
@@ -166,37 +168,40 @@ class AoCUgradeAbilitySubprocessor:
                                                                    "engine.ability.type.RangedApplyContinuousEffect",
                                                                    MemberOperator.ADD)
 
-            patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_expected_pointer,
                                                   "engine.aux.patch.Patch")
 
-            tech_group.add_raw_api_object(wrapper_raw_api_object)
-            tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
             patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def apply_discrete_effect_ability(tech_group, line, command_id, ranged=False, diff=None):
+    def apply_discrete_effect_ability(converter_group, line, container_obj_ref,
+                                      command_id, ranged=False, diff=None):
         """
         Creates a patch for the ApplyDiscreteEffect ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -211,7 +216,6 @@ class AoCUgradeAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
         ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
 
         changed = False
@@ -240,7 +244,7 @@ class AoCUgradeAbilitySubprocessor:
 
             # Wrapper
             wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
-            wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -254,12 +258,12 @@ class AoCUgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
             else:
-                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
             # Nyan patch
             nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
-            nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
@@ -272,7 +276,7 @@ class AoCUgradeAbilitySubprocessor:
                 animations_set = []
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
                                                                                                 line,
                                                                                                 diff_animation_id,
                                                                                                 nyan_patch_ref,
@@ -291,7 +295,7 @@ class AoCUgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.get_value()
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(tech_group,
+                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(converter_group,
                                                                                         diff_comm_sound_id,
                                                                                         nyan_patch_ref,
                                                                                         ability_name,
@@ -333,15 +337,15 @@ class AoCUgradeAbilitySubprocessor:
                                                                    "engine.ability.type.RangedApplyDiscreteEffect",
                                                                    MemberOperator.ADD)
 
-            patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_expected_pointer,
                                                   "engine.aux.patch.Patch")
 
-            tech_group.add_raw_api_object(wrapper_raw_api_object)
-            tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
             patches.append(wrapper_expected_pointer)
 
         # Seperate because effects get their own wrappers from the subprocessor
@@ -355,30 +359,32 @@ class AoCUgradeAbilitySubprocessor:
         if changed:
             patch_target_ref = "%s.%s" % (game_entity_name, ability_name)
             if command_id == 7 and not isinstance(diff_attacks, NoDiffMember):
-                patches.extend(AoCUpgradeEffectSubprocessor.get_attack_effects(tech_group,
+                patches.extend(AoCUpgradeEffectSubprocessor.get_attack_effects(converter_group,
                                                                                line, diff,
                                                                                patch_target_ref))
 
         return patches
 
     @staticmethod
-    def attribute_change_tracker_ability(tech_group, line, diff=None):
+    def attribute_change_tracker_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the AttributeChangeTracker ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -434,13 +440,13 @@ class AoCUgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
             else:
-                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, tech_name))
 
             # Nyan patch
             nyan_patch_name = "Change%sDamageGraphic%s" % (game_entity_name,
                                                            str(percentage))
             nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
@@ -452,7 +458,7 @@ class AoCUgradeAbilitySubprocessor:
             diff_animation_id = diff_damage_animation["graphic_id"].get_value()
             if diff_animation_id > -1:
                 # Patch the new animation in
-                animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
                                                                                             line,
                                                                                             diff_animation_id,
                                                                                             nyan_patch_ref,
@@ -466,38 +472,40 @@ class AoCUgradeAbilitySubprocessor:
                                                            "engine.aux.progress.specialization.AnimationOverlayProgress",
                                                            MemberOperator.ASSIGN)
 
-            patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_expected_pointer,
                                                   "engine.aux.patch.Patch")
 
-            tech_group.add_raw_api_object(wrapper_raw_api_object)
-            tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
             patches.append(wrapper_expected_pointer)
             percentage += 25
 
         return patches
 
     @staticmethod
-    def death_ability(tech_group, line, diff=None):
+    def death_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the Death ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -508,11 +516,13 @@ class AoCUgradeAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         if diff:
             diff_animation = diff.get_member("dying_graphic")
@@ -529,7 +539,7 @@ class AoCUgradeAbilitySubprocessor:
 
         # Wrapper
         wrapper_name = "Change%sDeathAnimationWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -543,12 +553,12 @@ class AoCUgradeAbilitySubprocessor:
             wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
         else:
-            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+            wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
         # Nyan patch
         nyan_patch_name = "Change%sDeathAnimation" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -559,7 +569,7 @@ class AoCUgradeAbilitySubprocessor:
         animations_set = []
         if diff_animation_id > -1:
             # Patch the new animation in
-            animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+            animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
                                                                                         line,
                                                                                         diff_animation_id,
                                                                                         nyan_patch_ref,
@@ -572,37 +582,39 @@ class AoCUgradeAbilitySubprocessor:
                                                        "engine.ability.specialization.AnimatedAbility",
                                                        MemberOperator.ASSIGN)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def despawn_ability(tech_group, line, diff=None):
+    def despawn_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the Despawn ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -613,11 +625,13 @@ class AoCUgradeAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         if diff:
             diff_dead_unit = diff.get_member("dead_unit_id")
@@ -634,7 +648,7 @@ class AoCUgradeAbilitySubprocessor:
 
         # Wrapper
         wrapper_name = "Change%sDespawnAnimationWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -648,12 +662,12 @@ class AoCUgradeAbilitySubprocessor:
             wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
         else:
-            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+            wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
         # Nyan patch
         nyan_patch_name = "Change%sDespawnAnimation" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -664,7 +678,7 @@ class AoCUgradeAbilitySubprocessor:
         animations_set = []
         if diff_animation_id > -1:
             # Patch the new animation in
-            animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+            animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
                                                                                         line,
                                                                                         diff_animation_id,
                                                                                         nyan_patch_ref,
@@ -677,35 +691,37 @@ class AoCUgradeAbilitySubprocessor:
                                                        "engine.ability.specialization.AnimatedAbility",
                                                        MemberOperator.ASSIGN)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def idle_ability(tech_group, line, diff=None):
+    def idle_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the Idle ability of a line.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -716,11 +732,13 @@ class AoCUgradeAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         if diff:
             diff_animation = diff.get_member("idle_graphic0")
@@ -737,7 +755,7 @@ class AoCUgradeAbilitySubprocessor:
 
         # Wrapper
         wrapper_name = "Change%sIdleAnimationWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -751,12 +769,12 @@ class AoCUgradeAbilitySubprocessor:
             wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
         else:
-            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+            wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
         # Nyan patch
         nyan_patch_name = "Change%sIdleAnimation" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -767,7 +785,7 @@ class AoCUgradeAbilitySubprocessor:
         animations_set = []
         if diff_animation_id > -1:
             # Patch the new animation in
-            animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+            animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
                                                                                         line,
                                                                                         diff_animation_id,
                                                                                         nyan_patch_ref,
@@ -780,37 +798,39 @@ class AoCUgradeAbilitySubprocessor:
                                                        "engine.ability.specialization.AnimatedAbility",
                                                        MemberOperator.ASSIGN)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def live_ability(tech_group, line, diff=None):
+    def live_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the Live ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -825,7 +845,6 @@ class AoCUgradeAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         if diff:
             diff_hp = diff.get_member("hit_points")
@@ -842,7 +861,7 @@ class AoCUgradeAbilitySubprocessor:
 
         # Wrapper
         wrapper_name = "Change%sHealthWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -856,12 +875,12 @@ class AoCUgradeAbilitySubprocessor:
             wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
         else:
-            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+            wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
         # Nyan patch
         nyan_patch_name = "Change%sHealth" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -875,37 +894,39 @@ class AoCUgradeAbilitySubprocessor:
                                                        "engine.aux.attribute.AttributeSetting",
                                                        MemberOperator.ADD)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def los_ability(tech_group, line, diff=None):
+    def los_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the LineOfSight ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -920,7 +941,6 @@ class AoCUgradeAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         if diff:
             diff_line_of_sight = diff.get_member("line_of_sight")
@@ -937,7 +957,7 @@ class AoCUgradeAbilitySubprocessor:
 
         # Wrapper
         wrapper_name = "Change%sLineOfSightWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -951,12 +971,12 @@ class AoCUgradeAbilitySubprocessor:
             wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
         else:
-            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+            wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
         # Nyan patch
         nyan_patch_name = "Change%sLineOfSight" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -970,37 +990,39 @@ class AoCUgradeAbilitySubprocessor:
                                                        "engine.ability.type.LineOfSight",
                                                        MemberOperator.ADD)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def move_ability(tech_group, line, diff=None):
+    def move_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the Move ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -1011,11 +1033,13 @@ class AoCUgradeAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         changed = False
         diff_move_animation = diff.get_member("move_graphics")
@@ -1032,7 +1056,7 @@ class AoCUgradeAbilitySubprocessor:
 
             # Wrapper
             wrapper_name = "Change%sMoveWrapper" % (game_entity_name)
-            wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -1046,12 +1070,12 @@ class AoCUgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
             else:
-                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
             # Nyan patch
             nyan_patch_name = "Change%sMove" % (game_entity_name)
-            nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
@@ -1064,7 +1088,7 @@ class AoCUgradeAbilitySubprocessor:
                 diff_animation_id = diff_move_animation.get_value()
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
                                                                                                 line,
                                                                                                 diff_animation_id,
                                                                                                 nyan_patch_ref,
@@ -1082,7 +1106,7 @@ class AoCUgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.get_value()
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(tech_group,
+                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(converter_group,
                                                                                         diff_comm_sound_id,
                                                                                         nyan_patch_ref,
                                                                                         "Move",
@@ -1102,37 +1126,39 @@ class AoCUgradeAbilitySubprocessor:
                                                                "engine.ability.type.Move",
                                                                MemberOperator.ADD)
 
-            patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_expected_pointer,
                                                   "engine.aux.patch.Patch")
 
-            tech_group.add_raw_api_object(wrapper_raw_api_object)
-            tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
             patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def named_ability(tech_group, line, diff=None):
+    def named_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the Named ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -1143,11 +1169,13 @@ class AoCUgradeAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         diff_name = diff.get_member("language_dll_name")
         if not isinstance(diff_name, NoDiffMember):
@@ -1162,16 +1190,18 @@ class AoCUgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def resistance_ability(tech_group, line, diff=None):
+    def resistance_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the Resistance ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
@@ -1195,7 +1225,7 @@ class AoCUgradeAbilitySubprocessor:
         diff_armors = diff.get_member("armors")
         if not isinstance(diff_armors, NoDiffMember):
             patch_target_ref = "%s.Resistance" % (game_entity_name)
-            patches.extend(AoCUpgradeEffectSubprocessor.get_attack_resistances(tech_group,
+            patches.extend(AoCUpgradeEffectSubprocessor.get_attack_resistances(converter_group,
                                                                                line, diff,
                                                                                patch_target_ref))
 
@@ -1204,23 +1234,25 @@ class AoCUgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def selectable_ability(tech_group, line, diff=None):
+    def selectable_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the Selectable ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -1231,11 +1263,13 @@ class AoCUgradeAbilitySubprocessor:
         elif isinstance(line, GenieAmbientGroup):
             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
 
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
         else:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         # First patch: Sound for the SelectableSelf ability
         changed = False
@@ -1250,7 +1284,7 @@ class AoCUgradeAbilitySubprocessor:
 
             # Wrapper
             wrapper_name = "Change%sSelectableSelfWrapper" % (game_entity_name)
-            wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -1264,12 +1298,12 @@ class AoCUgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
             else:
-                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
             # Nyan patch
             nyan_patch_name = "Change%sSelectableSelf" % (game_entity_name)
-            nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
@@ -1282,7 +1316,7 @@ class AoCUgradeAbilitySubprocessor:
             sounds_set = []
             if diff_selection_sound_id > -1:
                 # Patch the new sound in
-                sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(tech_group,
+                sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(converter_group,
                                                                                     diff_selection_sound_id,
                                                                                     nyan_patch_ref,
                                                                                     "SelectableSelf",
@@ -1294,15 +1328,15 @@ class AoCUgradeAbilitySubprocessor:
                                                            "engine.ability.specialization.SoundAbility",
                                                            MemberOperator.ASSIGN)
 
-            patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_expected_pointer,
                                                   "engine.aux.patch.Patch")
 
-            tech_group.add_raw_api_object(wrapper_raw_api_object)
-            tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
             patches.append(wrapper_expected_pointer)
 
         # Second patch: Selection box
@@ -1320,7 +1354,7 @@ class AoCUgradeAbilitySubprocessor:
 
             # Wrapper
             wrapper_name = "Change%sSelectableRectangleWrapper" % (game_entity_name)
-            wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -1334,12 +1368,12 @@ class AoCUgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
             else:
-                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
             # Nyan patch
             nyan_patch_name = "Change%sSelectableRectangle" % (game_entity_name)
-            nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
@@ -1363,43 +1397,41 @@ class AoCUgradeAbilitySubprocessor:
                                                                "engine.aux.selection_box.type.Rectangle",
                                                                MemberOperator.ADD)
 
-            patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_expected_pointer,
                                                   "engine.aux.patch.Patch")
 
-            tech_group.add_raw_api_object(wrapper_raw_api_object)
-            tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
             patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def shoot_projectile_ability(tech_group, line, upgrade_source, upgrade_target,
+    def shoot_projectile_ability(converter_group, line, container_obj_ref,
+                                 upgrade_source, upgrade_target,
                                  command_id, diff=None):
         """
         Creates a patch for the Selectable ability of a line. You can either supply a
         diff between two units in the line or name the updated members specifically
         with a member dict.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
-        :param member_dict: A dict that supplies info for the patched members. The
-                            keys in the dict should reference the changed member.
-                            Values should be tuples in the form of:
-                            (<patch value>, <operator>)
-        :type member_dict: dict
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -1414,7 +1446,6 @@ class AoCUgradeAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
         ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
 
         changed = False
@@ -1453,7 +1484,7 @@ class AoCUgradeAbilitySubprocessor:
 
             # Wrapper
             wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
-            wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -1467,12 +1498,12 @@ class AoCUgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
             else:
-                wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
             # Nyan patch
             nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
-            nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
@@ -1485,7 +1516,7 @@ class AoCUgradeAbilitySubprocessor:
                 diff_animation_id = diff_animation.get_value()
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(tech_group,
+                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
                                                                                                 line,
                                                                                                 diff_animation_id,
                                                                                                 nyan_patch_ref,
@@ -1504,7 +1535,7 @@ class AoCUgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.get_value()
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(tech_group,
+                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(converter_group,
                                                                                         diff_comm_sound_id,
                                                                                         nyan_patch_ref,
                                                                                         ability_name,
@@ -1643,35 +1674,37 @@ class AoCUgradeAbilitySubprocessor:
                                                                "engine.ability.type.ShootProjectile",
                                                                MemberOperator.ADD)
 
-            patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_expected_pointer,
                                                   "engine.aux.patch.Patch")
 
-            tech_group.add_raw_api_object(wrapper_raw_api_object)
-            tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
             patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def turn_ability(tech_group, line, diff=None):
+    def turn_ability(converter_group, line, container_obj_ref, diff=None):
         """
         Creates a patch for the Turn ability of a line.
 
-        :param tech_group: Tech that gets the patch.
-        :type tech_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param converter_group: Group that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = tech_group.get_id()
+        tech_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -1686,7 +1719,6 @@ class AoCUgradeAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         if diff:
             diff_turn_speed = diff.get_member("turn_speed")
@@ -1703,7 +1735,7 @@ class AoCUgradeAbilitySubprocessor:
 
         # Wrapper
         wrapper_name = "Change%sTurnWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -1717,12 +1749,12 @@ class AoCUgradeAbilitySubprocessor:
             wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
         else:
-            wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+            wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
         # Nyan patch
         nyan_patch_name = "Change%sTurn" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -1743,33 +1775,39 @@ class AoCUgradeAbilitySubprocessor:
                                                        "engine.ability.type.Turn",
                                                        MemberOperator.ASSIGN)
 
-        patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_expected_pointer,
                                               "engine.aux.patch.Patch")
 
-        tech_group.add_raw_api_object(wrapper_raw_api_object)
-        tech_group.add_raw_api_object(nyan_patch_raw_api_object)
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
+        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
         patches.append(wrapper_expected_pointer)
 
         return patches
 
     @staticmethod
-    def _create_animation(tech_group, line, animation_id, nyan_patch_ref, animation_name, filename_prefix):
+    def _create_animation(converter_group, line, animation_id, nyan_patch_ref, animation_name, filename_prefix):
         """
         Generates an animation for an ability.
         """
-        dataset = tech_group.data
-        tech_id = tech_group.get_id()
+        dataset = converter_group.data
+
+        if isinstance(converter_group, GenieVariantGroup):
+            group_name = str(animation_id)
+
+        else:
+            tech_id = converter_group.get_id()
+            group_name = TECH_GROUP_LOOKUPS[tech_id][1]
 
         animation_ref = "%s.%sAnimation" % (nyan_patch_ref, animation_name)
         animation_obj_name = "%sAnimation" % (animation_name)
         animation_raw_api_object = RawAPIObject(animation_ref, animation_obj_name,
                                                 dataset.nyan_api_objects)
         animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-        animation_location = ExpectedPointer(tech_group, nyan_patch_ref)
+        animation_location = ExpectedPointer(converter_group, nyan_patch_ref)
         animation_raw_api_object.set_location(animation_location)
 
         if animation_id in dataset.combined_sprites.keys():
@@ -1779,10 +1817,10 @@ class AoCUgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 animation_filename = "%s%s_%s" % (filename_prefix,
                                                   BUILDING_LINE_LOOKUPS[line.get_head_unit_id()][1],
-                                                  TECH_GROUP_LOOKUPS[tech_id][1])
+                                                  group_name)
 
             else:
-                animation_filename = "%s%s" % (filename_prefix, TECH_GROUP_LOOKUPS[tech_id][1])
+                animation_filename = "%s%s" % (filename_prefix, group_name)
 
             animation_sprite = CombinedSprite(animation_id,
                                               animation_filename,
@@ -1794,25 +1832,25 @@ class AoCUgradeAbilitySubprocessor:
         animation_raw_api_object.add_raw_member("sprite", animation_sprite,
                                                 "engine.aux.graphics.Animation")
 
-        tech_group.add_raw_api_object(animation_raw_api_object)
+        converter_group.add_raw_api_object(animation_raw_api_object)
 
-        animation_expected_pointer = ExpectedPointer(tech_group, animation_ref)
+        animation_expected_pointer = ExpectedPointer(converter_group, animation_ref)
 
         return animation_expected_pointer
 
     @staticmethod
-    def _create_sound(tech_group, sound_id, nyan_patch_ref, sound_name, filename_prefix):
+    def _create_sound(converter_group, sound_id, nyan_patch_ref, sound_name, filename_prefix):
         """
         Generates a sound for an ability.
         """
-        dataset = tech_group.data
+        dataset = converter_group.data
 
         sound_ref = "%s.%sSound" % (nyan_patch_ref, sound_name)
         sound_obj_name = "%sSound" % (sound_name)
         sound_raw_api_object = RawAPIObject(sound_ref, sound_obj_name,
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
-        sound_location = ExpectedPointer(tech_group, nyan_patch_ref)
+        sound_location = ExpectedPointer(converter_group, nyan_patch_ref)
         sound_raw_api_object.set_location(sound_location)
 
         # Search for the sound if it exists
@@ -1844,8 +1882,8 @@ class AoCUgradeAbilitySubprocessor:
                                             sounds_set,
                                             "engine.aux.sound.Sound")
 
-        tech_group.add_raw_api_object(sound_raw_api_object)
+        converter_group.add_raw_api_object(sound_raw_api_object)
 
-        sound_expected_pointer = ExpectedPointer(tech_group, sound_ref)
+        sound_expected_pointer = ExpectedPointer(converter_group, sound_ref)
 
         return sound_expected_pointer

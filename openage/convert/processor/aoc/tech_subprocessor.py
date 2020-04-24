@@ -260,6 +260,7 @@ class AoCTechSubprocessor:
         Creates the patches for upgrading entities in a line.
         """
         patches = []
+        tech_id = converter_group.get_id()
         dataset = converter_group.data
 
         upgrade_source_id = effect["attr_a"].get_value()
@@ -283,20 +284,22 @@ class AoCTechSubprocessor:
 
         upgrade_source = line.line[upgrade_source_pos]
         upgrade_target = line.line[upgrade_target_pos]
+        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         diff = upgrade_source.diff(upgrade_target)
 
-        patches.extend(AoCUgradeAbilitySubprocessor.death_ability(converter_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.despawn_ability(converter_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.idle_ability(converter_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.live_ability(converter_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.los_ability(converter_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.resistance_ability(converter_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.selectable_ability(converter_group, line, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.turn_ability(converter_group, line, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.death_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.despawn_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.idle_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.live_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.los_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.resistance_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.selectable_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.turn_ability(converter_group, line, tech_name, diff))
 
         if line.is_projectile_shooter():
             patches.extend(AoCUgradeAbilitySubprocessor.shoot_projectile_ability(converter_group, line,
+                                                                                 tech_name,
                                                                                  upgrade_source,
                                                                                  upgrade_target,
                                                                                  7, diff))
@@ -304,16 +307,18 @@ class AoCTechSubprocessor:
             if line.has_command(7):
                 # Attack
                 patches.extend(AoCUgradeAbilitySubprocessor.apply_discrete_effect_ability(converter_group,
-                                                                                          line,
+                                                                                          line, tech_name,
                                                                                           7,
                                                                                           line.is_ranged(),
                                                                                           diff))
 
         if isinstance(line, GenieUnitLineGroup):
-            patches.extend(AoCUgradeAbilitySubprocessor.move_ability(converter_group, line, diff))
+            patches.extend(AoCUgradeAbilitySubprocessor.move_ability(converter_group, line,
+                                                                     tech_name, diff))
 
         if isinstance(line, GenieBuildingLineGroup):
-            patches.extend(AoCUgradeAbilitySubprocessor.attribute_change_tracker_ability(converter_group, line, diff))
+            patches.extend(AoCUgradeAbilitySubprocessor.attribute_change_tracker_ability(converter_group, line,
+                                                                                         tech_name, diff))
 
         return patches
 
