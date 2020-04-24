@@ -211,6 +211,20 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return False
 
+    def has_projectile(self, projectile_id):
+        """
+        Checks if units shoot a projectile with this ID.
+
+        :param projectile_id: The ID of the projectile unit.
+        :type projectile_id: int
+        :returns: True if the train location obj_id is greater than zero.
+        """
+        head_unit = self.get_head_unit()
+        projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+
+        return (projectile_id_0 == projectile_id or projectile_id_1 == projectile_id)
+
     def is_creatable(self):
         """
         Units/Buildings are creatable if they have a valid train location.
@@ -764,6 +778,9 @@ class GenieAmbientGroup(GenieGameEntityGroup):
         Returns True if the ambient object with ambient_id is in this group.
         """
         return self.contains_entity(ambient_id)
+
+    def is_projectile_shooter(self):
+        return False
 
     def __repr__(self):
         return "GenieAmbientGroup<%s>" % (self.get_id())

@@ -4,7 +4,8 @@
 Creates patches for technologies.
 """
 from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgradeAbilitySubprocessor
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
+from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
+    GenieGameEntityGroup
 from openage.nyan.nyan_structs import MemberOperator
 from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
@@ -192,6 +193,10 @@ class AoCTechSubprocessor:
             for line in entity_lines.values():
                 if line.contains_entity(unit_id):
                     affected_entities.append(line)
+
+                elif attribute_type == 19:
+                    if line.is_projectile_shooter() and line.has_projectile(unit_id):
+                        affected_entities.append(line)
 
         elif class_id != -1:
             entity_lines = {}
