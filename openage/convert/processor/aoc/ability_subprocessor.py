@@ -589,361 +589,364 @@ class AoCAbilitySubprocessor:
 
         # TODO: Construction progress
         progress_expected_pointers = []
-        # =====================================================================================
-        progress_name = "%s.Constructable.ConstructionProgress0" % (game_entity_name)
-        progress_raw_api_object = RawAPIObject(progress_name,
-                                               "ConstructionProgress0",
-                                               dataset.nyan_api_objects)
-        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-        progress_location = ExpectedPointer(line, ability_ref)
-        progress_raw_api_object.set_location(progress_location)
+        if line.get_class_id() == 49:
+            pass
 
-        # Interval = (0.0, 0.0)
-        progress_raw_api_object.add_raw_member("left_boundary",
-                                               0.0,
-                                               "engine.aux.progress.Progress")
-        progress_raw_api_object.add_raw_member("right_boundary",
-                                               0.0,
-                                               "engine.aux.progress.Progress")
-
-        if construction_animation_id > -1:
-            # ===========================================================================================
-            # Idle override
-            # ===========================================================================================
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
-
-            overrides = []
-            override_ref = "%s.Constructable.ConstructionProgress0.IdleOverride" % (game_entity_name)
-            override_raw_api_object = RawAPIObject(override_ref,
-                                                   "IdleOverride",
+        else:
+            progress_name = "%s.Constructable.ConstructionProgress0" % (game_entity_name)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ConstructionProgress0",
                                                    dataset.nyan_api_objects)
-            override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-            override_location = ExpectedPointer(line, progress_name)
-            override_raw_api_object.set_location(override_location)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+            progress_location = ExpectedPointer(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
 
-            idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
-            override_raw_api_object.add_raw_member("ability",
-                                                   idle_expected_pointer,
-                                                   "engine.aux.animation_override.AnimationOverride")
+            # Interval = (0.0, 0.0)
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   0.0,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   0.0,
+                                                   "engine.aux.progress.Progress")
 
-            # Animation
-            animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  construction_animation_id,
-                                                                                  override_ref,
-                                                                                  "Idle",
-                                                                                  "idle_carry_override_")
+            if construction_animation_id > -1:
+                # ===========================================================================================
+                # Idle override
+                # ===========================================================================================
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
 
-            animations_set.append(animation_expected_pointer)
-            override_raw_api_object.add_raw_member("animations",
-                                                   animations_set,
-                                                   "engine.aux.animation_override.AnimationOverride")
+                overrides = []
+                override_ref = "%s.Constructable.ConstructionProgress0.IdleOverride" % (game_entity_name)
+                override_raw_api_object = RawAPIObject(override_ref,
+                                                       "IdleOverride",
+                                                       dataset.nyan_api_objects)
+                override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
+                override_location = ExpectedPointer(line, progress_name)
+                override_raw_api_object.set_location(override_location)
 
-            override_raw_api_object.add_raw_member("priority",
-                                                   1,
-                                                   "engine.aux.animation_override.AnimationOverride")
+                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                override_raw_api_object.add_raw_member("ability",
+                                                       idle_expected_pointer,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-            override_expected_pointer = ExpectedPointer(line, override_ref)
-            overrides.append(override_expected_pointer)
-            line.add_raw_api_object(override_raw_api_object)
-            # ===========================================================================================
-            progress_raw_api_object.add_raw_member("overrides",
-                                                   overrides,
-                                                   "engine.aux.progress.specialization.AnimatedProgress")
+                # Animation
+                animations_set = []
+                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                      construction_animation_id,
+                                                                                      override_ref,
+                                                                                      "Idle",
+                                                                                      "idle_carry_override_")
 
-        # TODO: State change
-        #=======================================================================
-        # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-        # progress_raw_api_object.add_raw_member("state_change",
-        #                                        None,
-        #                                        "engine.aux.progress.specialization.StateChangeProgress")
-        #=======================================================================
-        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-        line.add_raw_api_object(progress_raw_api_object)
-        # =====================================================================================
-        progress_name = "%s.Constructable.ConstructionProgress25" % (game_entity_name)
-        progress_raw_api_object = RawAPIObject(progress_name,
-                                               "ConstructionProgress25",
-                                               dataset.nyan_api_objects)
-        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-        progress_location = ExpectedPointer(line, ability_ref)
-        progress_raw_api_object.set_location(progress_location)
+                animations_set.append(animation_expected_pointer)
+                override_raw_api_object.add_raw_member("animations",
+                                                       animations_set,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-        # Interval = (0.0, 25.0)
-        progress_raw_api_object.add_raw_member("left_boundary",
-                                               0.0,
-                                               "engine.aux.progress.Progress")
-        progress_raw_api_object.add_raw_member("right_boundary",
-                                               25.0,
-                                               "engine.aux.progress.Progress")
+                override_raw_api_object.add_raw_member("priority",
+                                                       1,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-        if construction_animation_id > -1:
-            # ===========================================================================================
-            # Idle override
-            # ===========================================================================================
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                override_expected_pointer = ExpectedPointer(line, override_ref)
+                overrides.append(override_expected_pointer)
+                line.add_raw_api_object(override_raw_api_object)
+                # ===========================================================================================
+                progress_raw_api_object.add_raw_member("overrides",
+                                                       overrides,
+                                                       "engine.aux.progress.specialization.AnimatedProgress")
 
-            overrides = []
-            override_ref = "%s.Constructable.ConstructionProgress25.IdleOverride" % (game_entity_name)
-            override_raw_api_object = RawAPIObject(override_ref,
-                                                   "IdleOverride",
+            # TODO: State change
+            #=======================================================================
+            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            # progress_raw_api_object.add_raw_member("state_change",
+            #                                        None,
+            #                                        "engine.aux.progress.specialization.StateChangeProgress")
+            #=======================================================================
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
+            # =====================================================================================
+            progress_name = "%s.Constructable.ConstructionProgress25" % (game_entity_name)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ConstructionProgress25",
                                                    dataset.nyan_api_objects)
-            override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-            override_location = ExpectedPointer(line, progress_name)
-            override_raw_api_object.set_location(override_location)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+            progress_location = ExpectedPointer(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
 
-            idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
-            override_raw_api_object.add_raw_member("ability",
-                                                   idle_expected_pointer,
-                                                   "engine.aux.animation_override.AnimationOverride")
+            # Interval = (0.0, 25.0)
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   0.0,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   25.0,
+                                                   "engine.aux.progress.Progress")
 
-            # Animation
-            animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  construction_animation_id,
-                                                                                  override_ref,
-                                                                                  "Idle",
-                                                                                  "idle_carry_override_")
+            if construction_animation_id > -1:
+                # ===========================================================================================
+                # Idle override
+                # ===========================================================================================
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
 
-            animations_set.append(animation_expected_pointer)
-            override_raw_api_object.add_raw_member("animations",
-                                                   animations_set,
-                                                   "engine.aux.animation_override.AnimationOverride")
+                overrides = []
+                override_ref = "%s.Constructable.ConstructionProgress25.IdleOverride" % (game_entity_name)
+                override_raw_api_object = RawAPIObject(override_ref,
+                                                       "IdleOverride",
+                                                       dataset.nyan_api_objects)
+                override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
+                override_location = ExpectedPointer(line, progress_name)
+                override_raw_api_object.set_location(override_location)
 
-            override_raw_api_object.add_raw_member("priority",
-                                                   1,
-                                                   "engine.aux.animation_override.AnimationOverride")
+                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                override_raw_api_object.add_raw_member("ability",
+                                                       idle_expected_pointer,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-            override_expected_pointer = ExpectedPointer(line, override_ref)
-            overrides.append(override_expected_pointer)
-            line.add_raw_api_object(override_raw_api_object)
-            # ===========================================================================================
-            progress_raw_api_object.add_raw_member("overrides",
-                                                   overrides,
-                                                   "engine.aux.progress.specialization.AnimatedProgress")
+                # Animation
+                animations_set = []
+                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                      construction_animation_id,
+                                                                                      override_ref,
+                                                                                      "Idle",
+                                                                                      "idle_carry_override_")
 
-        # TODO: State change
-        #=======================================================================
-        # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-        # progress_raw_api_object.add_raw_member("state_change",
-        #                                        None,
-        #                                        "engine.aux.progress.specialization.StateChangeProgress")
-        #=======================================================================
-        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-        line.add_raw_api_object(progress_raw_api_object)
-        # =====================================================================================
-        progress_name = "%s.Constructable.ConstructionProgress50" % (game_entity_name)
-        progress_raw_api_object = RawAPIObject(progress_name,
-                                               "ConstructionProgress50",
-                                               dataset.nyan_api_objects)
-        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-        progress_location = ExpectedPointer(line, ability_ref)
-        progress_raw_api_object.set_location(progress_location)
+                animations_set.append(animation_expected_pointer)
+                override_raw_api_object.add_raw_member("animations",
+                                                       animations_set,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-        # Interval = (25.0, 50.0)
-        progress_raw_api_object.add_raw_member("left_boundary",
-                                               25.0,
-                                               "engine.aux.progress.Progress")
-        progress_raw_api_object.add_raw_member("right_boundary",
-                                               50.0,
-                                               "engine.aux.progress.Progress")
+                override_raw_api_object.add_raw_member("priority",
+                                                       1,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-        if construction_animation_id > -1:
-            # ===========================================================================================
-            # Idle override
-            # ===========================================================================================
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                override_expected_pointer = ExpectedPointer(line, override_ref)
+                overrides.append(override_expected_pointer)
+                line.add_raw_api_object(override_raw_api_object)
+                # ===========================================================================================
+                progress_raw_api_object.add_raw_member("overrides",
+                                                       overrides,
+                                                       "engine.aux.progress.specialization.AnimatedProgress")
 
-            overrides = []
-            override_ref = "%s.Constructable.ConstructionProgress50.IdleOverride" % (game_entity_name)
-            override_raw_api_object = RawAPIObject(override_ref,
-                                                   "IdleOverride",
+            # TODO: State change
+            #=======================================================================
+            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            # progress_raw_api_object.add_raw_member("state_change",
+            #                                        None,
+            #                                        "engine.aux.progress.specialization.StateChangeProgress")
+            #=======================================================================
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
+            # =====================================================================================
+            progress_name = "%s.Constructable.ConstructionProgress50" % (game_entity_name)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ConstructionProgress50",
                                                    dataset.nyan_api_objects)
-            override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-            override_location = ExpectedPointer(line, progress_name)
-            override_raw_api_object.set_location(override_location)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+            progress_location = ExpectedPointer(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
 
-            idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
-            override_raw_api_object.add_raw_member("ability",
-                                                   idle_expected_pointer,
-                                                   "engine.aux.animation_override.AnimationOverride")
+            # Interval = (25.0, 50.0)
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   25.0,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   50.0,
+                                                   "engine.aux.progress.Progress")
 
-            # Animation
-            animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  construction_animation_id,
-                                                                                  override_ref,
-                                                                                  "Idle",
-                                                                                  "idle_carry_override_")
+            if construction_animation_id > -1:
+                # ===========================================================================================
+                # Idle override
+                # ===========================================================================================
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
 
-            animations_set.append(animation_expected_pointer)
-            override_raw_api_object.add_raw_member("animations",
-                                                   animations_set,
-                                                   "engine.aux.animation_override.AnimationOverride")
+                overrides = []
+                override_ref = "%s.Constructable.ConstructionProgress50.IdleOverride" % (game_entity_name)
+                override_raw_api_object = RawAPIObject(override_ref,
+                                                       "IdleOverride",
+                                                       dataset.nyan_api_objects)
+                override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
+                override_location = ExpectedPointer(line, progress_name)
+                override_raw_api_object.set_location(override_location)
 
-            override_raw_api_object.add_raw_member("priority",
-                                                   1,
-                                                   "engine.aux.animation_override.AnimationOverride")
+                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                override_raw_api_object.add_raw_member("ability",
+                                                       idle_expected_pointer,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-            override_expected_pointer = ExpectedPointer(line, override_ref)
-            overrides.append(override_expected_pointer)
-            line.add_raw_api_object(override_raw_api_object)
-            # ===========================================================================================
-            progress_raw_api_object.add_raw_member("overrides",
-                                                   overrides,
-                                                   "engine.aux.progress.specialization.AnimatedProgress")
+                # Animation
+                animations_set = []
+                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                      construction_animation_id,
+                                                                                      override_ref,
+                                                                                      "Idle",
+                                                                                      "idle_carry_override_")
 
-        # TODO: State change
-        #=======================================================================
-        # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-        # progress_raw_api_object.add_raw_member("state_change",
-        #                                        None,
-        #                                        "engine.aux.progress.specialization.StateChangeProgress")
-        #=======================================================================
-        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-        line.add_raw_api_object(progress_raw_api_object)
-        # =====================================================================================
-        progress_name = "%s.Constructable.ConstructionProgress75" % (game_entity_name)
-        progress_raw_api_object = RawAPIObject(progress_name,
-                                               "ConstructionProgress75",
-                                               dataset.nyan_api_objects)
-        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-        progress_location = ExpectedPointer(line, ability_ref)
-        progress_raw_api_object.set_location(progress_location)
+                animations_set.append(animation_expected_pointer)
+                override_raw_api_object.add_raw_member("animations",
+                                                       animations_set,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-        # Interval = (50.0, 75.0)
-        progress_raw_api_object.add_raw_member("left_boundary",
-                                               50.0,
-                                               "engine.aux.progress.Progress")
-        progress_raw_api_object.add_raw_member("right_boundary",
-                                               75.0,
-                                               "engine.aux.progress.Progress")
+                override_raw_api_object.add_raw_member("priority",
+                                                       1,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-        if construction_animation_id > -1:
-            # ===========================================================================================
-            # Idle override
-            # ===========================================================================================
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                override_expected_pointer = ExpectedPointer(line, override_ref)
+                overrides.append(override_expected_pointer)
+                line.add_raw_api_object(override_raw_api_object)
+                # ===========================================================================================
+                progress_raw_api_object.add_raw_member("overrides",
+                                                       overrides,
+                                                       "engine.aux.progress.specialization.AnimatedProgress")
 
-            overrides = []
-            override_ref = "%s.Constructable.ConstructionProgress75.IdleOverride" % (game_entity_name)
-            override_raw_api_object = RawAPIObject(override_ref,
-                                                   "IdleOverride",
+            # TODO: State change
+            #=======================================================================
+            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            # progress_raw_api_object.add_raw_member("state_change",
+            #                                        None,
+            #                                        "engine.aux.progress.specialization.StateChangeProgress")
+            #=======================================================================
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
+            # =====================================================================================
+            progress_name = "%s.Constructable.ConstructionProgress75" % (game_entity_name)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ConstructionProgress75",
                                                    dataset.nyan_api_objects)
-            override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-            override_location = ExpectedPointer(line, progress_name)
-            override_raw_api_object.set_location(override_location)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+            progress_location = ExpectedPointer(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
 
-            idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
-            override_raw_api_object.add_raw_member("ability",
-                                                   idle_expected_pointer,
-                                                   "engine.aux.animation_override.AnimationOverride")
+            # Interval = (50.0, 75.0)
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   50.0,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   75.0,
+                                                   "engine.aux.progress.Progress")
 
-            # Animation
-            animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  construction_animation_id,
-                                                                                  override_ref,
-                                                                                  "Idle",
-                                                                                  "idle_carry_override_")
+            if construction_animation_id > -1:
+                # ===========================================================================================
+                # Idle override
+                # ===========================================================================================
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
 
-            animations_set.append(animation_expected_pointer)
-            override_raw_api_object.add_raw_member("animations",
-                                                   animations_set,
-                                                   "engine.aux.animation_override.AnimationOverride")
+                overrides = []
+                override_ref = "%s.Constructable.ConstructionProgress75.IdleOverride" % (game_entity_name)
+                override_raw_api_object = RawAPIObject(override_ref,
+                                                       "IdleOverride",
+                                                       dataset.nyan_api_objects)
+                override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
+                override_location = ExpectedPointer(line, progress_name)
+                override_raw_api_object.set_location(override_location)
 
-            override_raw_api_object.add_raw_member("priority",
-                                                   1,
-                                                   "engine.aux.animation_override.AnimationOverride")
+                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                override_raw_api_object.add_raw_member("ability",
+                                                       idle_expected_pointer,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-            override_expected_pointer = ExpectedPointer(line, override_ref)
-            overrides.append(override_expected_pointer)
-            line.add_raw_api_object(override_raw_api_object)
-            # ===========================================================================================
-            progress_raw_api_object.add_raw_member("overrides",
-                                                   overrides,
-                                                   "engine.aux.progress.specialization.AnimatedProgress")
+                # Animation
+                animations_set = []
+                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                      construction_animation_id,
+                                                                                      override_ref,
+                                                                                      "Idle",
+                                                                                      "idle_carry_override_")
 
-        # TODO: State change
-        #=======================================================================
-        # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-        # progress_raw_api_object.add_raw_member("state_change",
-        #                                        None,
-        #                                        "engine.aux.progress.specialization.StateChangeProgress")
-        #=======================================================================
-        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-        line.add_raw_api_object(progress_raw_api_object)
-        # =====================================================================================
-        progress_name = "%s.Constructable.ConstructionProgress100" % (game_entity_name)
-        progress_raw_api_object = RawAPIObject(progress_name,
-                                               "ConstructionProgress100",
-                                               dataset.nyan_api_objects)
-        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-        progress_location = ExpectedPointer(line, ability_ref)
-        progress_raw_api_object.set_location(progress_location)
+                animations_set.append(animation_expected_pointer)
+                override_raw_api_object.add_raw_member("animations",
+                                                       animations_set,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-        # Interval = (75.0, 100.0)
-        progress_raw_api_object.add_raw_member("left_boundary",
-                                               75.0,
-                                               "engine.aux.progress.Progress")
-        progress_raw_api_object.add_raw_member("right_boundary",
-                                               100.0,
-                                               "engine.aux.progress.Progress")
+                override_raw_api_object.add_raw_member("priority",
+                                                       1,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-        if construction_animation_id > -1:
-            # ===========================================================================================
-            # Idle override
-            # ===========================================================================================
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                override_expected_pointer = ExpectedPointer(line, override_ref)
+                overrides.append(override_expected_pointer)
+                line.add_raw_api_object(override_raw_api_object)
+                # ===========================================================================================
+                progress_raw_api_object.add_raw_member("overrides",
+                                                       overrides,
+                                                       "engine.aux.progress.specialization.AnimatedProgress")
 
-            overrides = []
-            override_ref = "%s.Constructable.ConstructionProgress100.IdleOverride" % (game_entity_name)
-            override_raw_api_object = RawAPIObject(override_ref,
-                                                   "IdleOverride",
+            # TODO: State change
+            #=======================================================================
+            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            # progress_raw_api_object.add_raw_member("state_change",
+            #                                        None,
+            #                                        "engine.aux.progress.specialization.StateChangeProgress")
+            #=======================================================================
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
+            # =====================================================================================
+            progress_name = "%s.Constructable.ConstructionProgress100" % (game_entity_name)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ConstructionProgress100",
                                                    dataset.nyan_api_objects)
-            override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-            override_location = ExpectedPointer(line, progress_name)
-            override_raw_api_object.set_location(override_location)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+            progress_location = ExpectedPointer(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
 
-            idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
-            override_raw_api_object.add_raw_member("ability",
-                                                   idle_expected_pointer,
-                                                   "engine.aux.animation_override.AnimationOverride")
+            # Interval = (75.0, 100.0)
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   75.0,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   100.0,
+                                                   "engine.aux.progress.Progress")
 
-            # Animation
-            animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  construction_animation_id,
-                                                                                  override_ref,
-                                                                                  "Idle",
-                                                                                  "idle_carry_override_")
+            if construction_animation_id > -1:
+                # ===========================================================================================
+                # Idle override
+                # ===========================================================================================
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
 
-            animations_set.append(animation_expected_pointer)
-            override_raw_api_object.add_raw_member("animations",
-                                                   animations_set,
-                                                   "engine.aux.animation_override.AnimationOverride")
+                overrides = []
+                override_ref = "%s.Constructable.ConstructionProgress100.IdleOverride" % (game_entity_name)
+                override_raw_api_object = RawAPIObject(override_ref,
+                                                       "IdleOverride",
+                                                       dataset.nyan_api_objects)
+                override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
+                override_location = ExpectedPointer(line, progress_name)
+                override_raw_api_object.set_location(override_location)
 
-            override_raw_api_object.add_raw_member("priority",
-                                                   1,
-                                                   "engine.aux.animation_override.AnimationOverride")
+                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                override_raw_api_object.add_raw_member("ability",
+                                                       idle_expected_pointer,
+                                                       "engine.aux.animation_override.AnimationOverride")
 
-            override_expected_pointer = ExpectedPointer(line, override_ref)
-            overrides.append(override_expected_pointer)
-            line.add_raw_api_object(override_raw_api_object)
-            # ===========================================================================================
-            progress_raw_api_object.add_raw_member("overrides",
-                                                   overrides,
-                                                   "engine.aux.progress.specialization.AnimatedProgress")
+                # Animation
+                animations_set = []
+                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                      construction_animation_id,
+                                                                                      override_ref,
+                                                                                      "Idle",
+                                                                                      "idle_carry_override_")
 
-        # TODO: State change
-        #=======================================================================
-        # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-        # progress_raw_api_object.add_raw_member("state_change",
-        #                                        None,
-        #                                        "engine.aux.progress.specialization.StateChangeProgress")
-        #=======================================================================
-        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-        line.add_raw_api_object(progress_raw_api_object)
+                animations_set.append(animation_expected_pointer)
+                override_raw_api_object.add_raw_member("animations",
+                                                       animations_set,
+                                                       "engine.aux.animation_override.AnimationOverride")
+
+                override_raw_api_object.add_raw_member("priority",
+                                                       1,
+                                                       "engine.aux.animation_override.AnimationOverride")
+
+                override_expected_pointer = ExpectedPointer(line, override_ref)
+                overrides.append(override_expected_pointer)
+                line.add_raw_api_object(override_raw_api_object)
+                # ===========================================================================================
+                progress_raw_api_object.add_raw_member("overrides",
+                                                       overrides,
+                                                       "engine.aux.progress.specialization.AnimatedProgress")
+
+            # TODO: State change
+            #=======================================================================
+            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            # progress_raw_api_object.add_raw_member("state_change",
+            #                                        None,
+            #                                        "engine.aux.progress.specialization.StateChangeProgress")
+            #=======================================================================
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
         # =====================================================================================
         ability_raw_api_object.add_raw_member("construction_progress",
                                               progress_expected_pointers,
@@ -1983,9 +1986,9 @@ class AoCAbilitySubprocessor:
             progress_expected_pointers.append(ExpectedPointer(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
-            progress_name = "%s.Constructable.RestockProgress25" % (game_entity_name)
+            progress_name = "%s.Harvestable.RestockProgress33" % (game_entity_name)
             progress_raw_api_object = RawAPIObject(progress_name,
-                                                   "RestockProgress25",
+                                                   "RestockProgress33",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.RestockProgress")
             progress_location = ExpectedPointer(line, ability_ref)
@@ -1996,7 +1999,7 @@ class AoCAbilitySubprocessor:
                                                    0.0,
                                                    "engine.aux.progress.Progress")
             progress_raw_api_object.add_raw_member("right_boundary",
-                                                   25.0,
+                                                   33.0,
                                                    "engine.aux.progress.Progress")
 
             # TODO: State change, TerrainOverlay
@@ -2009,9 +2012,9 @@ class AoCAbilitySubprocessor:
             progress_expected_pointers.append(ExpectedPointer(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
-            progress_name = "%s.Constructable.RestockProgress50" % (game_entity_name)
+            progress_name = "%s.Harvestable.RestockProgress66" % (game_entity_name)
             progress_raw_api_object = RawAPIObject(progress_name,
-                                                   "RestockProgress50",
+                                                   "RestockProgress66",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.RestockProgress")
             progress_location = ExpectedPointer(line, ability_ref)
@@ -2019,10 +2022,10 @@ class AoCAbilitySubprocessor:
 
             # Interval = (25.0, 50.0)
             progress_raw_api_object.add_raw_member("left_boundary",
-                                                   25.0,
+                                                   33.0,
                                                    "engine.aux.progress.Progress")
             progress_raw_api_object.add_raw_member("right_boundary",
-                                                   50.0,
+                                                   66.0,
                                                    "engine.aux.progress.Progress")
 
             # TODO: State change, TerrainOverlay
@@ -2035,33 +2038,7 @@ class AoCAbilitySubprocessor:
             progress_expected_pointers.append(ExpectedPointer(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
-            progress_name = "%s.Constructable.RestockProgress75" % (game_entity_name)
-            progress_raw_api_object = RawAPIObject(progress_name,
-                                                   "RestockProgress75",
-                                                   dataset.nyan_api_objects)
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.RestockProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
-            progress_raw_api_object.set_location(progress_location)
-
-            # Interval = (50.0, 75.0)
-            progress_raw_api_object.add_raw_member("left_boundary",
-                                                   50.0,
-                                                   "engine.aux.progress.Progress")
-            progress_raw_api_object.add_raw_member("right_boundary",
-                                                   75.0,
-                                                   "engine.aux.progress.Progress")
-
-            # TODO: State change, TerrainOverlay
-            #=======================================================================
-            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-            # progress_raw_api_object.add_raw_member("state_change",
-            #                                        None,
-            #                                        "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-            line.add_raw_api_object(progress_raw_api_object)
-            # =====================================================================================
-            progress_name = "%s.Constructable.RestockProgress100" % (game_entity_name)
+            progress_name = "%s.Harvestable.RestockProgress100" % (game_entity_name)
             progress_raw_api_object = RawAPIObject(progress_name,
                                                    "RestockProgress100",
                                                    dataset.nyan_api_objects)
@@ -2069,24 +2046,13 @@ class AoCAbilitySubprocessor:
             progress_location = ExpectedPointer(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
-            # Interval = (75.0, 100.0)
+            # Interval = (50.0, 75.0)
             progress_raw_api_object.add_raw_member("left_boundary",
-                                                   75.0,
+                                                   66.0,
                                                    "engine.aux.progress.Progress")
             progress_raw_api_object.add_raw_member("right_boundary",
                                                    100.0,
                                                    "engine.aux.progress.Progress")
-
-            # TODO: State change, TerrainOverlay
-            #=======================================================================
-            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-            # progress_raw_api_object.add_raw_member("state_change",
-            #                                        None,
-            #                                        "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-            line.add_raw_api_object(progress_raw_api_object)
-            # =====================================================================================
 
         ability_raw_api_object.add_raw_member("restock_progress",
                                               progress_expected_pointers,
