@@ -18,10 +18,10 @@
 #include "mom.h"
 
 // System includes follow, sorted alphabetically
-#include <iostream>
+#include <SDL/SDL.h>
 #include <cmath>
 #include <cstdio>
-#include <SDL/SDL.h>
+#include <iostream>
 
 // Local includes next, sorted alphabetically
 #include "../valve.h"
@@ -59,12 +59,11 @@
  * Will be parsed by Doxygen.
  */
 struct another_stupid_type {
-	rofl_t blergh_gnampf;  //!< variables and functions in lowercase
-	                       //   with _ as word separator.
-	epictype42_t løl;      //!< no question, we use UTF-8 encoding.
-	ub0rtype røfëlkøptør;  //!< proper documentation is Doxygen parsable.
+	rofl_t blergh_gnampf; //!< variables and functions in lowercase
+	                      //   with _ as word separator.
+	epictype42_t løl;     //!< no question, we use UTF-8 encoding.
+	ub0rtype røfëlkøptør; //!< proper documentation is Doxygen parsable.
 };
-
 
 
 /**
@@ -74,10 +73,10 @@ class HalfLife3 : public ValveGame {
 // vvv The access modifier is at the same indent level as the class definition:
 public:
 	void release_game(const ValveTeam &team,
-	                  uint128_t        passed_time,
-	                  const Engine    *game_engine,
-	                  Internet        *community,
-	                  bool             keep_secret=true) {
+	                  uint128_t passed_time,
+	                  const Engine *game_engine,
+	                  Internet *community,
+	                  bool keep_secret = true) {
 
 		// ^ insert a empty line here to make it more readable.
 

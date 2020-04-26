@@ -62,7 +62,7 @@ public:
 	 * Creates your mom.
 	 * @param mass: Initial mass for this mother.
 	 */
-	YourMom(int mass=DEFAULT_MOM_MASS);
+	YourMom(int mass = DEFAULT_MOM_MASS);
 
 	~YourMom();
 	// Note that the destructor has no doc,
@@ -84,7 +84,7 @@ public:
 
 protected:
 	/** Let your mom buy something */
-	void buy(const Thing& item);
+	void buy(const Thing &item);
 
 	// To have doxygen parse one-liners, write the following:
 	int64_t mass; //!< Your mom's mass (solar masses).
@@ -113,7 +113,7 @@ protected:
 enum class awesome_enumeration {
 	LOW,
 	MID,
-	HIGH,  // <- note the last , there!
+	HIGH, // <- note the last , there!
 };
 
 
