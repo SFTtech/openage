@@ -486,6 +486,17 @@ class GenieUnitLineGroup(GenieGameEntityGroup):
 
         return None
 
+    def get_enabling_research_id(self):
+        """
+        Returns the enabling tech id of the unit
+        """
+        head_unit = self.get_head_unit()
+        head_unit_id = head_unit.get_member("id0").get_value()
+        head_unit_connection = self.data.unit_connections[head_unit_id]
+        enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
+
+        return enabling_research_id
+
     def __repr__(self):
         return "GenieUnitLineGroup<%s>" % (self.get_id())
 
@@ -562,6 +573,17 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         Returns resource IDs for resources that can be dropped off at this building.
         """
         return self.accepts_resources
+
+    def get_enabling_research_id(self):
+        """
+        Returns the enabling tech id of the unit
+        """
+        head_unit = self.get_head_unit()
+        head_unit_id = head_unit.get_member("id0").get_value()
+        head_unit_connection = self.data.building_connections[head_unit_id]
+        enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
+
+        return enabling_research_id
 
     def __repr__(self):
         return "GenieBuildingLineGroup<%s>" % (self.get_id())

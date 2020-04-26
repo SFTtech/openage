@@ -2957,6 +2957,29 @@ def _insert_members(api_objects):
     member = NyanMember("threshold", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
+    # engine.aux.boolean.literal.type.GameEntityProgress
+    api_object = api_objects["engine.aux.boolean.literal.type.GameEntityProgress"]
+
+    ref_object = api_objects["engine.aux.game_entity.GameEntity"]
+    member = NyanMember("game_entity", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.progress_status.ProgressStatus"]
+    member = NyanMember("progress_status", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.boolean.literal.type.TechResearched
+    api_object = api_objects["engine.aux.boolean.literal.type.TechResearched"]
+
+    ref_object = api_objects["engine.aux.tech.Tech"]
+    member = NyanMember("tech", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.boolean.requirement_mode.type.Subset
+    api_object = api_objects["engine.aux.boolean.requirement_mode.type.Subset"]
+
+    member = NyanMember("size", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
     # engine.aux.cheat.Cheat
     api_object = api_objects["engine.aux.cheat.Cheat"]
 

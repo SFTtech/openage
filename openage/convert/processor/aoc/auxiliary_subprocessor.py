@@ -12,6 +12,7 @@ from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from openage.nyan.nyan_structs import MemberSpecialValue
+from openage.convert.dataformat.aoc.genie_tech import CivBonus
 
 
 class AoCAuxiliarySubprocessor:
@@ -57,13 +58,7 @@ class AoCAuxiliarySubprocessor:
         # Location of the object depends on whether it'a a unique unit or a normal unit
         if line.is_unique():
             # Add object to the Civ object
-            if isinstance(line, GenieUnitLineGroup):
-                head_unit_connection = dataset.unit_connections[current_unit_id]
-
-            elif isinstance(line, GenieBuildingLineGroup):
-                head_unit_connection = dataset.building_connections[current_unit_id]
-
-            enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
+            enabling_research_id = line.get_enabling_research_id()
             enabling_research = dataset.genie_techs[enabling_research_id]
             enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
 
@@ -182,8 +177,7 @@ class AoCAuxiliarySubprocessor:
         sound_raw_api_object = RawAPIObject(obj_name, "CreationSound",
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
-        sound_location = ExpectedPointer(line,
-                                         "%s.CreatableGameEntity" % (game_entity_name))
+        sound_location = ExpectedPointer(line, obj_ref)
         sound_raw_api_object.set_location(sound_location)
 
         # Search for the sound if it exists
@@ -221,10 +215,186 @@ class AoCAuxiliarySubprocessor:
 
         line.add_raw_api_object(sound_raw_api_object)
 
-        # TODO: Condition
-        unlock_condition = []
+        # Condition
+        unlock_conditions = []
+        enabling_research_id = line.get_enabling_research_id()
+        if enabling_research_id > -1:
+            tech = dataset.genie_techs[enabling_research_id]
+            assoc_tech_ids = []
+            assoc_tech_ids.extend(tech["required_techs"].get_value())
+            required_tech_count = tech["required_tech_count"].get_value()
+
+            # Remove tech ids that are invalid or those we don't use
+            relevant_ids = []
+            for tech_id_member in assoc_tech_ids:
+                tech_id = tech_id_member.get_value()
+                if tech_id == -1:
+                    continue
+
+                elif tech_id == 104:
+                    # Skip Dark Age tech
+                    required_tech_count -= 1
+                    continue
+
+                elif tech_id in dataset.civ_boni.keys():
+                    continue
+
+                relevant_ids.append(tech_id_member)
+
+            assoc_tech_ids = relevant_ids
+
+            clause_ref = "%s.UnlockCondition" % (obj_ref)
+            clause_raw_api_object = RawAPIObject(clause_ref,
+                                                 "UnlockCondition",
+                                                 dataset.nyan_api_objects)
+            clause_raw_api_object.add_raw_parent("engine.aux.boolean.Clause")
+            clause_location = ExpectedPointer(line, obj_ref)
+            clause_raw_api_object.set_location(clause_location)
+
+            if required_tech_count == len(assoc_tech_ids):
+                requirement_mode = dataset.nyan_api_objects["engine.aux.boolean.requirement_mode.type.All"]
+
+            else:
+                subset_ref = "%s.SubsetMode" % (clause_ref)
+                subset_raw_api_object = RawAPIObject(subset_ref,
+                                                     "SubsetMode",
+                                                     dataset.nyan_api_objects)
+                subset_raw_api_object.add_raw_parent("engine.aux.boolean.requirement_mode.type.Subset")
+                subset_location = ExpectedPointer(line, clause_ref)
+                subset_raw_api_object.set_location(subset_location)
+
+                subset_raw_api_object.add_raw_member("size",
+                                                     required_tech_count,
+                                                     "engine.aux.boolean.requirement_mode.type.Subset")
+
+                requirement_mode = ExpectedPointer(line, subset_ref)
+                line.add_raw_api_object(subset_raw_api_object)
+
+            clause_raw_api_object.add_raw_member("clause_requirement",
+                                                 requirement_mode,
+                                                 "engine.aux.boolean.Clause")
+
+            # Once unlocked, a unit is unlocked forever
+            clause_raw_api_object.add_raw_member("only_once",
+                                                 True,
+                                                 "engine.aux.boolean.Clause")
+
+            # Literals
+            # ========================================================================================
+            literals = []
+            for tech_id_member in assoc_tech_ids:
+                tech_id = tech_id_member.get_value()
+                if tech_id in dataset.initiated_techs.keys():
+                    initiated_tech = dataset.initiated_techs[tech_id]
+                    building_id = initiated_tech.get_building_id()
+                    building_name = BUILDING_LINE_LOOKUPS[building_id][0]
+                    literal_name = "%sBuilt" % (building_name)
+                    literal_parent = "engine.aux.boolean.literal.type.GameEntityProgress"
+
+                elif dataset.tech_groups[tech_id].is_researchable():
+                    tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+                    literal_name = "%sResearched" % (tech_name)
+                    literal_parent = "engine.aux.boolean.literal.type.TechResearched"
+
+                else:
+                    raise Exception("Required tech id %s is neither intiated nor researchable"
+                                    % (tech_id))
+
+                literal_ref = "%s.%s" % (clause_ref,
+                                         literal_name)
+                literal_raw_api_object = RawAPIObject(literal_ref,
+                                                      literal_name,
+                                                      dataset.nyan_api_objects)
+                literal_raw_api_object.add_raw_parent(literal_parent)
+                literal_location = ExpectedPointer(line, clause_ref)
+                literal_raw_api_object.set_location(literal_location)
+
+                if tech_id in dataset.initiated_techs.keys():
+                    building_line = dataset.unit_ref[building_id]
+                    building_expected_pointer = ExpectedPointer(building_line, building_name)
+
+                    # Building
+                    literal_raw_api_object.add_raw_member("game_entity",
+                                                          building_expected_pointer,
+                                                          literal_parent)
+
+                    # Progress
+                    # =======================================================================
+                    progress_ref = "%s.ProgressStatus" % (literal_ref)
+                    progress_raw_api_object = RawAPIObject(progress_ref,
+                                                           "ProgressStatus",
+                                                           dataset.nyan_api_objects)
+                    progress_raw_api_object.add_raw_parent("engine.aux.progress_status.ProgressStatus")
+                    progress_location = ExpectedPointer(line, literal_ref)
+                    progress_raw_api_object.set_location(progress_location)
+
+                    # Type
+                    progress_type = dataset.nyan_api_objects["engine.aux.progress_type.type.Construct"]
+                    progress_raw_api_object.add_raw_member("progress_type",
+                                                           progress_type,
+                                                           "engine.aux.progress_status.ProgressStatus")
+
+                    # Progress (building must be 100% constructed)
+                    progress_raw_api_object.add_raw_member("progress",
+                                                           100,
+                                                           "engine.aux.progress_status.ProgressStatus")
+
+                    line.add_raw_api_object(progress_raw_api_object)
+                    # =======================================================================
+                    progress_expected_pointer = ExpectedPointer(line, progress_ref)
+                    literal_raw_api_object.add_raw_member("progress_status",
+                                                          progress_expected_pointer,
+                                                          literal_parent)
+
+                elif dataset.tech_groups[tech_id].is_researchable():
+                    tech_group = dataset.tech_groups[tech_id]
+                    tech_expected_pointer = ExpectedPointer(tech_group, tech_name)
+                    literal_raw_api_object.add_raw_member("tech",
+                                                          tech_expected_pointer,
+                                                          literal_parent)
+
+                # LiteralScope
+                # ==========================================================================
+                scope_ref = "%s.LiteralScope" % (literal_ref)
+                scope_raw_api_object = RawAPIObject(scope_ref,
+                                                    "LiteralScope",
+                                                    dataset.nyan_api_objects)
+                scope_raw_api_object.add_raw_parent("engine.aux.boolean.literal_scope.type.Any")
+                scope_location = ExpectedPointer(line, literal_ref)
+                scope_raw_api_object.set_location(scope_location)
+
+                scope_diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+                scope_raw_api_object.add_raw_member("diplomatic_stances",
+                                                    scope_diplomatic_stances,
+                                                    "engine.aux.boolean.literal_scope.LiteralScope")
+
+                line.add_raw_api_object(scope_raw_api_object)
+                # ==========================================================================
+                scope_expected_pointer = ExpectedPointer(line, scope_ref)
+                literal_raw_api_object.add_raw_member("scope",
+                                                      scope_expected_pointer,
+                                                      "engine.aux.boolean.Literal")
+
+                # Mode = True
+                literal_raw_api_object.add_raw_member("mode",
+                                                      True,
+                                                      "engine.aux.boolean.Literal")
+
+                line.add_raw_api_object(literal_raw_api_object)
+                literal_expected_pointer = ExpectedPointer(line, literal_ref)
+                literals.append(literal_expected_pointer)
+            # ========================================================================================
+            clause_raw_api_object.add_raw_member("literals",
+                                                 literals,
+                                                 "engine.aux.boolean.Clause")
+
+            line.add_raw_api_object(clause_raw_api_object)
+
+            clause_expected_pointer = ExpectedPointer(line, clause_ref)
+            unlock_conditions.append(clause_expected_pointer)
+
         creatable_raw_api_object.add_raw_member("condition",
-                                                unlock_condition,
+                                                unlock_conditions,
                                                 "engine.aux.create.CreatableGameEntity")
 
         # Placement modes
@@ -375,8 +545,8 @@ class AoCAuxiliarySubprocessor:
                                                    "engine.aux.research.ResearchableTech")
 
         # Cost
-        cost_name = "%s.ResearchableTech.%sCost" % (tech_name, tech_name)
-        cost_raw_api_object = RawAPIObject(cost_name,
+        cost_ref = "%s.ResearchableTech.%sCost" % (tech_name, tech_name)
+        cost_raw_api_object = RawAPIObject(cost_ref,
                                            "%sCost" % (tech_name),
                                            dataset.nyan_api_objects)
         cost_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
@@ -424,12 +594,12 @@ class AoCAuxiliarySubprocessor:
 
             amount = resource_amount.get_value()["amount"].get_value()
 
-            cost_amount_name = "%s.%sAmount" % (cost_name, resource_name)
-            cost_amount = RawAPIObject(cost_amount_name,
+            cost_amount_ref = "%s.%sAmount" % (cost_ref, resource_name)
+            cost_amount = RawAPIObject(cost_amount_ref,
                                        "%sAmount" % resource_name,
                                        dataset.nyan_api_objects)
             cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
-            cost_expected_pointer = ExpectedPointer(tech_group, cost_name)
+            cost_expected_pointer = ExpectedPointer(tech_group, cost_ref)
             cost_amount.set_location(cost_expected_pointer)
 
             cost_amount.add_raw_member("type",
@@ -439,7 +609,7 @@ class AoCAuxiliarySubprocessor:
                                        amount,
                                        "engine.aux.resource.ResourceAmount")
 
-            cost_amount_expected_pointer = ExpectedPointer(tech_group, cost_amount_name)
+            cost_amount_expected_pointer = ExpectedPointer(tech_group, cost_amount_ref)
             cost_amounts.append(cost_amount_expected_pointer)
             tech_group.add_raw_api_object(cost_amount)
 
@@ -447,7 +617,7 @@ class AoCAuxiliarySubprocessor:
                                            cost_amounts,
                                            "engine.aux.cost.type.ResourceCost")
 
-        cost_expected_pointer = ExpectedPointer(tech_group, cost_name)
+        cost_expected_pointer = ExpectedPointer(tech_group, cost_ref)
         researchable_raw_api_object.add_raw_member("cost",
                                                    cost_expected_pointer,
                                                    "engine.aux.research.ResearchableTech")
@@ -459,8 +629,8 @@ class AoCAuxiliarySubprocessor:
                                                    "engine.aux.research.ResearchableTech")
 
         # Create sound object
-        obj_name = "%s.ResearchableTech.Sound" % (research_location_name)
-        sound_raw_api_object = RawAPIObject(obj_name, "ResearchSound",
+        sound_ref = "%s.ResearchableTech.Sound" % (tech_name)
+        sound_raw_api_object = RawAPIObject(sound_ref, "ResearchSound",
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
         sound_location = ExpectedPointer(tech_group,
@@ -475,17 +645,214 @@ class AoCAuxiliarySubprocessor:
                                             [],
                                             "engine.aux.sound.Sound")
 
-        sound_expected_pointer = ExpectedPointer(tech_group, obj_name)
+        sound_expected_pointer = ExpectedPointer(tech_group, sound_ref)
         researchable_raw_api_object.add_raw_member("research_sounds",
                                                    [sound_expected_pointer],
                                                    "engine.aux.research.ResearchableTech")
 
         tech_group.add_raw_api_object(sound_raw_api_object)
 
-        # TODO: Condition
-        unlock_condition = []
+        # Condition
+        unlock_conditions = []
+
+        clause_techs = [tech_group]
+        index = 0
+        while len(clause_techs) > 0:
+            current_tech = clause_techs[0].tech
+
+            assoc_tech_ids = []
+            assoc_tech_ids.extend(current_tech["required_techs"].get_value())
+            required_tech_count = current_tech["required_tech_count"].get_value()
+
+            # Remove tech ids that are invalid or those we don't use
+            relevant_ids = []
+            for tech_id_member in assoc_tech_ids:
+                tech_id = tech_id_member.get_value()
+                if tech_id == -1:
+                    continue
+
+                elif tech_id == 104:
+                    # Skip Dark Age tech
+                    required_tech_count -= 1
+                    continue
+
+                elif tech_id not in dataset.tech_groups.keys():
+                    # ignores leftover techs
+                    required_tech_count -= 1
+                    continue
+
+                elif tech_id in dataset.node_techs.keys():
+                    # Node techs will become other clauses
+                    clause_techs.append(dataset.node_techs[tech_id])
+                    required_tech_count -= 1
+                    continue
+
+                elif tech_id in dataset.unit_unlocks.keys():
+                    # Unit unlocks are ignored
+                    required_tech_count -= 1
+                    continue
+
+                elif tech_id in dataset.civ_boni.keys():
+                    continue
+
+                relevant_ids.append(tech_id_member)
+
+            assoc_tech_ids = relevant_ids
+
+            clause_ref = "%s.UnlockCondition%s" % (obj_ref, str(index))
+            clause_raw_api_object = RawAPIObject(clause_ref,
+                                                 "UnlockCondition%s" % (str(index)),
+                                                 dataset.nyan_api_objects)
+            clause_raw_api_object.add_raw_parent("engine.aux.boolean.Clause")
+            clause_location = ExpectedPointer(tech_group, obj_ref)
+            clause_raw_api_object.set_location(clause_location)
+
+            if required_tech_count == len(assoc_tech_ids):
+                requirement_mode = dataset.nyan_api_objects["engine.aux.boolean.requirement_mode.type.All"]
+
+            else:
+                subset_ref = "%s.SubsetMode" % (clause_ref)
+                subset_raw_api_object = RawAPIObject(subset_ref,
+                                                     "SubsetMode",
+                                                     dataset.nyan_api_objects)
+                subset_raw_api_object.add_raw_parent("engine.aux.boolean.requirement_mode.type.Subset")
+                subset_location = ExpectedPointer(tech_group, clause_ref)
+                subset_raw_api_object.set_location(subset_location)
+
+                subset_raw_api_object.add_raw_member("size",
+                                                     required_tech_count,
+                                                     "engine.aux.boolean.requirement_mode.type.Subset")
+
+                requirement_mode = ExpectedPointer(tech_group, subset_ref)
+                tech_group.add_raw_api_object(subset_raw_api_object)
+
+            clause_raw_api_object.add_raw_member("clause_requirement",
+                                                 requirement_mode,
+                                                 "engine.aux.boolean.Clause")
+
+            # Once unlocked, a unit is unlocked forever
+            clause_raw_api_object.add_raw_member("only_once",
+                                                 True,
+                                                 "engine.aux.boolean.Clause")
+
+            # Literals
+            # ========================================================================================
+            literals = []
+            for tech_id_member in assoc_tech_ids:
+                tech_id = tech_id_member.get_value()
+                if tech_id in dataset.initiated_techs.keys():
+                    initiated_tech = dataset.initiated_techs[tech_id]
+                    building_id = initiated_tech.get_building_id()
+                    building_name = BUILDING_LINE_LOOKUPS[building_id][0]
+                    literal_name = "%sBuilt" % (building_name)
+                    literal_parent = "engine.aux.boolean.literal.type.GameEntityProgress"
+
+                elif dataset.tech_groups[tech_id].is_researchable():
+                    required_tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+                    literal_name = "%sResearched" % (required_tech_name)
+                    literal_parent = "engine.aux.boolean.literal.type.TechResearched"
+
+                else:
+                    raise Exception("Required tech id %s is neither intiated nor researchable"
+                                    % (tech_id))
+
+                literal_ref = "%s.%s" % (clause_ref,
+                                         literal_name)
+                literal_raw_api_object = RawAPIObject(literal_ref,
+                                                      literal_name,
+                                                      dataset.nyan_api_objects)
+                literal_raw_api_object.add_raw_parent(literal_parent)
+                literal_location = ExpectedPointer(tech_group, clause_ref)
+                literal_raw_api_object.set_location(literal_location)
+
+                if tech_id in dataset.initiated_techs.keys():
+                    building_line = dataset.unit_ref[building_id]
+                    building_expected_pointer = ExpectedPointer(building_line, building_name)
+
+                    # Building
+                    literal_raw_api_object.add_raw_member("game_entity",
+                                                          building_expected_pointer,
+                                                          literal_parent)
+
+                    # Progress
+                    # =======================================================================
+                    progress_ref = "%s.ProgressStatus" % (literal_ref)
+                    progress_raw_api_object = RawAPIObject(progress_ref,
+                                                           "ProgressStatus",
+                                                           dataset.nyan_api_objects)
+                    progress_raw_api_object.add_raw_parent("engine.aux.progress_status.ProgressStatus")
+                    progress_location = ExpectedPointer(tech_group, literal_ref)
+                    progress_raw_api_object.set_location(progress_location)
+
+                    # Type
+                    progress_type = dataset.nyan_api_objects["engine.aux.progress_type.type.Construct"]
+                    progress_raw_api_object.add_raw_member("progress_type",
+                                                           progress_type,
+                                                           "engine.aux.progress_status.ProgressStatus")
+
+                    # Progress (building must be 100% constructed)
+                    progress_raw_api_object.add_raw_member("progress",
+                                                           100,
+                                                           "engine.aux.progress_status.ProgressStatus")
+
+                    tech_group.add_raw_api_object(progress_raw_api_object)
+                    # =======================================================================
+                    progress_expected_pointer = ExpectedPointer(tech_group, progress_ref)
+                    literal_raw_api_object.add_raw_member("progress_status",
+                                                          progress_expected_pointer,
+                                                          literal_parent)
+
+                elif dataset.tech_groups[tech_id].is_researchable():
+                    required_tech = dataset.tech_groups[tech_id]
+                    required_tech_expected_pointer = ExpectedPointer(required_tech, required_tech_name)
+                    literal_raw_api_object.add_raw_member("tech",
+                                                          required_tech_expected_pointer,
+                                                          literal_parent)
+
+                # LiteralScope
+                # ==========================================================================
+                scope_ref = "%s.LiteralScope" % (literal_ref)
+                scope_raw_api_object = RawAPIObject(scope_ref,
+                                                    "LiteralScope",
+                                                    dataset.nyan_api_objects)
+                scope_raw_api_object.add_raw_parent("engine.aux.boolean.literal_scope.type.Any")
+                scope_location = ExpectedPointer(tech_group, literal_ref)
+                scope_raw_api_object.set_location(scope_location)
+
+                scope_diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+                scope_raw_api_object.add_raw_member("diplomatic_stances",
+                                                    scope_diplomatic_stances,
+                                                    "engine.aux.boolean.literal_scope.LiteralScope")
+
+                tech_group.add_raw_api_object(scope_raw_api_object)
+                # ==========================================================================
+                scope_expected_pointer = ExpectedPointer(tech_group, scope_ref)
+                literal_raw_api_object.add_raw_member("scope",
+                                                      scope_expected_pointer,
+                                                      "engine.aux.boolean.Literal")
+
+                # Mode = True
+                literal_raw_api_object.add_raw_member("mode",
+                                                      True,
+                                                      "engine.aux.boolean.Literal")
+
+                tech_group.add_raw_api_object(literal_raw_api_object)
+                literal_expected_pointer = ExpectedPointer(tech_group, literal_ref)
+                literals.append(literal_expected_pointer)
+            # ========================================================================================
+            clause_raw_api_object.add_raw_member("literals",
+                                                 literals,
+                                                 "engine.aux.boolean.Clause")
+
+            tech_group.add_raw_api_object(clause_raw_api_object)
+
+            clause_expected_pointer = ExpectedPointer(tech_group, clause_ref)
+            unlock_conditions.append(clause_expected_pointer)
+            clause_techs.remove(clause_techs[0])
+            index += 1
+
         researchable_raw_api_object.add_raw_member("condition",
-                                                   unlock_condition,
+                                                   unlock_conditions,
                                                    "engine.aux.research.ResearchableTech")
 
         tech_group.add_raw_api_object(researchable_raw_api_object)

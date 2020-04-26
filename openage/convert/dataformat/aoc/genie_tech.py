@@ -344,8 +344,34 @@ class InitiatedTech(GenieTechEffectBundleGroup):
 
         self.building_id = building_id
 
+    def get_building_id(self):
+        return self.building_id
+
     def __repr__(self):
         return "InitiatedTech<%s>" % (self.get_id())
+
+
+class NodeTech(GenieTechEffectBundleGroup):
+    """
+    Techs that act as a container for other techs. It is used to form complex
+    requirements for age upgrades.
+    """
+
+    def __init__(self, tech_id, full_data_set):
+        """
+        Creates a new Genie tech group object.
+
+        :param tech_id: The internal tech_id from the .dat file.
+        :param building_id: The id of the genie building initiatig this tech.
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        """
+
+        super().__init__(tech_id, full_data_set)
+
+    def __repr__(self):
+        return "NodeTech<%s>" % (self.get_id())
 
 
 class CivBonus(GenieTechEffectBundleGroup):

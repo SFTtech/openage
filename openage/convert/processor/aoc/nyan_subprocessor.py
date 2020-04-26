@@ -59,8 +59,6 @@ class AoCNyanSubprocessor:
         for civ_group in full_data_set.civ_groups.values():
             civ_group.create_nyan_objects()
 
-        # TODO: variant groups
-
     @classmethod
     def _create_nyan_members(cls, full_data_set):
         """
@@ -86,8 +84,6 @@ class AoCNyanSubprocessor:
 
         for civ_group in full_data_set.civ_groups.values():
             civ_group.create_nyan_members()
-
-        # TODO: variant groups
 
     @classmethod
     def _process_game_entities(cls, full_data_set):
@@ -115,8 +111,6 @@ class AoCNyanSubprocessor:
 
         for civ_group in full_data_set.civ_groups.values():
             cls._civ_group_to_civ(civ_group)
-
-        # TODO: variant groups
 
     @staticmethod
     def _unit_line_to_game_entity(unit_line):
@@ -625,7 +619,7 @@ class AoCNyanSubprocessor:
                                       "engine.aux.game_entity.GameEntity")
 
         # =======================================================================
-        # TODO: Variants
+        # Variants
         # =======================================================================
         variants_set = []
 

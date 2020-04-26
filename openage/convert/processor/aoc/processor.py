@@ -31,7 +31,7 @@ from ...nyan.api_loader import load_api
 from .modpack_subprocessor import AoCModpackSubprocessor
 from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
 from openage.convert.dataformat.aoc.genie_tech import StatUpgrade, InitiatedTech,\
-    BuildingUnlock
+    BuildingUnlock, NodeTech
 from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
@@ -122,6 +122,7 @@ class AoCProcessor:
         cls._create_variant_groups(full_data_set)
         cls._create_terrain_groups(full_data_set)
         cls._create_tech_groups(full_data_set)
+        cls._create_node_tech_groups(full_data_set)
         cls._create_civ_groups(full_data_set)
 
         info("Linking API-like objects...")
@@ -687,7 +688,7 @@ class AoCProcessor:
     @staticmethod
     def _create_tech_groups(full_data_set):
         """
-        Create economy techs from tech connections and unit upgrades/unlocks
+        Create techs from tech connections and unit upgrades/unlocks
         from unit connections.
 
         :param full_data_set: GenieObjectContainer instance that
@@ -791,6 +792,10 @@ class AoCProcessor:
             if initiated_tech_id == -1:
                 continue
 
+            if building_id not in full_data_set.building_lines.keys():
+                # Skips upgraded buildings (which initiate the same techs)
+                continue
+
             initiated_tech = InitiatedTech(initiated_tech_id, building_id, full_data_set)
             full_data_set.tech_groups.update({initiated_tech.get_id(): initiated_tech})
             full_data_set.initiated_techs.update({initiated_tech.get_id(): initiated_tech})
@@ -820,6 +825,68 @@ class AoCProcessor:
             civ_bonus = CivBonus(tech_id, civ_id, full_data_set)
             full_data_set.tech_groups.update({civ_bonus.get_id(): civ_bonus})
             full_data_set.civ_boni.update({civ_bonus.get_id(): civ_bonus})
+
+    @staticmethod
+    def _create_node_tech_groups(full_data_set):
+        """
+        Create tech condition chains for age upgrades
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        age_ups = full_data_set.age_upgrades.values()
+
+        for age_up in age_ups:
+            # Find associated techs
+            required_tech_ids = []
+            required_tech_ids.extend(age_up.tech["required_techs"].get_value())
+
+            node_techs = []
+            for tech_id_member in required_tech_ids:
+                tech_id = tech_id_member.get_value()
+                if tech_id == -1:
+                    continue
+
+                elif tech_id == 104:
+                    continue
+
+                elif tech_id in full_data_set.tech_groups.keys():
+                    continue
+
+                node_tech_group = NodeTech(tech_id, full_data_set)
+                full_data_set.tech_groups.update({tech_id: node_tech_group})
+                full_data_set.node_techs.update({tech_id: node_tech_group})
+
+                node_tech = full_data_set.genie_techs[tech_id]
+                node_techs.append(node_tech)
+
+            # Recursively search for other node techs
+            while len(node_techs) > 0:
+                current_tech = node_techs[0]
+                required_tech_ids = []
+                required_tech_ids.extend(current_tech["required_techs"].get_value())
+
+                for tech_id_member in required_tech_ids:
+                    tech_id = tech_id_member.get_value()
+                    if tech_id == -1:
+                        continue
+
+                    elif tech_id == 104:
+                        continue
+
+                    elif tech_id in full_data_set.tech_groups.keys():
+                        continue
+
+                    node_tech_group = NodeTech(tech_id, full_data_set)
+                    full_data_set.tech_groups.update({tech_id: node_tech_group})
+                    full_data_set.node_techs.update({tech_id: node_tech_group})
+
+                    node_tech = full_data_set.genie_techs[tech_id]
+                    node_techs.append(node_tech)
+
+                node_techs.remove(current_tech)
 
     @staticmethod
     def _create_civ_groups(full_data_set):

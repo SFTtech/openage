@@ -49,7 +49,9 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.monk_groups = {}
         self.ambient_groups = {}
         self.variant_groups = {}
+
         self.civ_groups = {}
+
         self.tech_groups = {}
         self.age_upgrades = {}
         self.unit_upgrades = {}
@@ -59,6 +61,8 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.building_unlocks = {}
         self.civ_boni = {}
         self.initiated_techs = {}
+        self.node_techs = {}
+
         self.terrain_groups = {}
 
         # Stores which line a unit is part of
