@@ -1,7 +1,7 @@
 # This file was taken from Unvanquished,
 # Copyright 2000-2009 Kitware, Inc., Insight Software Consortium
 # It's licensed under the terms of the 3-clause OpenBSD license.
-# Modifications Copyright 2014-2017 the openage authors.
+# Modifications Copyright 2014-2020 the openage authors.
 # See copying.md for further legal info.
 
 # - Find opus library
@@ -9,7 +9,7 @@
 # This module defines
 #  OPUS_INCLUDE_DIRS   - where to find opus/opus.h, opus/opusfile.h, etc
 #  OPUS_LIBRARIES      - List of libraries when using libopus
-#  OPUS_FOUND          - True if opus is found.
+#  OPUSFILE_FOUND      - True if opus is found.
 
 # find the opusfile header, defines our api.
 find_path(OPUSFILE_INCLUDE_DIR
@@ -43,7 +43,7 @@ mark_as_advanced(OPUS_LIBRARY)
 # handle the QUIETLY and REQUIRED arguments and set OPUS_FOUND to TRUE if
 # all listed variables are TRUE
 include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(Opus DEFAULT_MSG OPUSFILE_LIBRARY OPUS_LIBRARY OPUS_INCLUDE_DIR)
+find_package_handle_standard_args(Opusfile DEFAULT_MSG OPUSFILE_LIBRARY OPUS_LIBRARY OPUS_INCLUDE_DIR)
 
 # export the variables
 set(OPUS_LIBRARIES "${OPUSFILE_LIBRARY}" "${OPUS_LIBRARY}")
