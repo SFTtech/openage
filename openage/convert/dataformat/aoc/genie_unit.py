@@ -976,11 +976,13 @@ class GenieVillagerGroup(GenieUnitLineGroup):
     def is_gatherer(self):
         return True
 
+    def is_hunter(self):
+        return True
+
     def is_unique(self):
         return False
 
     def is_projectile_shooter(self):
-        # TODO: Only hunting; should be done differently?
         return False
 
     def get_garrison_mode(self):

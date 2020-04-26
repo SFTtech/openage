@@ -185,7 +185,6 @@ class SMX:
         return "".join(ret)
 
     def __repr__(self):
-        # TODO: lookup the image content description
         return "%s image<%d frames>" % (self.smp_type, len(self.main_frames))
 
 
@@ -1069,8 +1068,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
             else:
                 if px_type == color_player:
-                    # TODO: Make this 255 with new renderer
-                    alpha = 254
+                    alpha = 255
 
                 elif px_type == color_outline:
                     alpha = 253

@@ -148,8 +148,21 @@ class AoCUgradeAbilitySubprocessor:
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_frame_delay, NoDiffMember):
-                # TODO: Calculate this
-                pass
+                if not isinstance(diff_animation, NoDiffMember):
+                    attack_graphic_id = diff_animation.get_value()
+
+                else:
+                    attack_graphic_id = diff_animation.value.get_value()
+
+                attack_graphic = dataset.genie_graphics[attack_graphic_id]
+                frame_rate = attack_graphic.get_frame_rate()
+                frame_delay = diff_frame_delay.get_value()
+                application_delay = frame_rate * frame_delay
+
+                nyan_patch_raw_api_object.add_raw_patch_member("application_delay",
+                                                               application_delay,
+                                                               "engine.ability.type.ApplyContinuousEffect",
+                                                               MemberOperator.ASSIGN)
 
             if ranged:
                 if not isinstance(diff_min_range, NoDiffMember):
@@ -157,7 +170,7 @@ class AoCUgradeAbilitySubprocessor:
 
                     nyan_patch_raw_api_object.add_raw_patch_member("min_range",
                                                                    min_range,
-                                                                   "engine.ability.type.RangedApplyContinuousEffect",
+                                                                   "engine.ability.type.RangedContinuousEffect",
                                                                    MemberOperator.ADD)
 
                 if not isinstance(diff_max_range, NoDiffMember):
@@ -165,7 +178,7 @@ class AoCUgradeAbilitySubprocessor:
 
                     nyan_patch_raw_api_object.add_raw_patch_member("max_range",
                                                                    max_range,
-                                                                   "engine.ability.type.RangedApplyContinuousEffect",
+                                                                   "engine.ability.type.RangedContinuousEffect",
                                                                    MemberOperator.ADD)
 
             patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
@@ -317,8 +330,21 @@ class AoCUgradeAbilitySubprocessor:
                                                                MemberOperator.ADD)
 
             if not isinstance(diff_frame_delay, NoDiffMember):
-                # TODO: Calculate this
-                pass
+                if not isinstance(diff_animation, NoDiffMember):
+                    attack_graphic_id = diff_animation.get_value()
+
+                else:
+                    attack_graphic_id = diff_animation.value.get_value()
+
+                attack_graphic = dataset.genie_graphics[attack_graphic_id]
+                frame_rate = attack_graphic.get_frame_rate()
+                frame_delay = diff_frame_delay.get_value()
+                application_delay = frame_rate * frame_delay
+
+                nyan_patch_raw_api_object.add_raw_patch_member("application_delay",
+                                                               application_delay,
+                                                               "engine.ability.type.ApplyDiscreteEffect",
+                                                               MemberOperator.ASSIGN)
 
             if ranged:
                 if not isinstance(diff_min_range, NoDiffMember):
@@ -1616,10 +1642,22 @@ class AoCUgradeAbilitySubprocessor:
                                                                "engine.ability.type.ShootProjectile",
                                                                MemberOperator.ADD)
 
-            if not (isinstance(diff_spawn_delay, NoDiffMember)
-                    and isinstance(diff_animation, NoDiffMember)):
-                # TODO: Compare times
-                pass
+            if not (isinstance(diff_spawn_delay, NoDiffMember)):
+                if not isinstance(diff_animation, NoDiffMember):
+                    attack_graphic_id = diff_animation.get_value()
+
+                else:
+                    attack_graphic_id = diff_animation.value.get_value()
+
+                attack_graphic = dataset.genie_graphics[attack_graphic_id]
+                frame_rate = attack_graphic.get_frame_rate()
+                frame_delay = diff_spawn_delay.get_value()
+                spawn_delay = frame_rate * frame_delay
+
+                nyan_patch_raw_api_object.add_raw_patch_member("spawn_delay",
+                                                               spawn_delay,
+                                                               "engine.ability.type.ShootProjectile",
+                                                               MemberOperator.ASSIGN)
 
             if not isinstance(diff_spawn_area_offsets, NoDiffMember):
                 diff_spawn_area_x = diff_spawn_area_offsets[0]

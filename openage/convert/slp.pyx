@@ -164,7 +164,6 @@ class SLP:
         return "".join(ret)
 
     def __repr__(self):
-        # TODO: lookup the image content description
         return "SLP image<%d frames>" % len(self.main_frames)
 
 
@@ -1018,20 +1017,17 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
             elif px_type == color_player_v4:
                 r, g, b = p_lookup[px_val]
-                # TODO: Make this 255 with new renderer
                 # mark this pixel as player color
-                alpha = 254
+                alpha = 255
 
             else:
                 if px_type == color_player:
-                    # TODO: Make this 255 with new renderer
                     # mark this pixel as player color
                     alpha = 254
 
                 elif px_type == color_special_2 or\
                      px_type == color_black:
-                    # TODO: Make this 251 with new renderer
-                    alpha = 253  # mark this pixel as special outline
+                    alpha = 251  # mark this pixel as special outline
 
                     # black outline pixel, we will probably never encounter this.
                     #  -16 ensures palette[16+(-16)=0] will be used.
