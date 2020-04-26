@@ -1336,6 +1336,12 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
+        if isinstance(line, GenieVillagerGroup):
+            gatherers = line.variants[1].line
+
+        else:
+            gatherers = [line.line[0]]
+
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -1352,6 +1358,33 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_parent("engine.ability.type.DropResources")
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
+
+        # Resource containers
+        containers = []
+        for gatherer in gatherers:
+            unit_commands = gatherer.get_member("unit_commands").get_value()
+
+            for command in unit_commands:
+                # Find a gather ability. It doesn't matter which one because
+                # they should all produce the same resource for one genie unit.
+                type_id = command.get_value()["type"].get_value()
+
+                if type_id in (5, 110):
+                    break
+
+            gatherer_unit_id = gatherer.get_id()
+            if gatherer_unit_id not in GATHER_TASK_LOOKUPS.keys():
+                # Skips hunting wolves
+                continue
+
+            container_ref = "%s.ResourceStorage.%sContainer" % (game_entity_name,
+                                                                GATHER_TASK_LOOKUPS[gatherer_unit_id][0])
+            container_expected_pointer = ExpectedPointer(line, container_ref)
+            containers.append(container_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("containers",
+                                              containers,
+                                              "engine.ability.type.DropResources")
 
         # Search range
         ability_raw_api_object.add_raw_member("search_range",
@@ -1401,26 +1434,27 @@ class AoCAbilitySubprocessor:
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        resources = []
-        for resource_id in line.get_accepted_resources():
-            if resource_id == 0:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
+        # Resource containers
+        gatherer_ids = line.get_gatherer_ids()
 
-            elif resource_id == 1:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
-
-            elif resource_id == 2:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
-
-            elif resource_id == 3:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
-
-            else:
+        containers = []
+        for gatherer_id in gatherer_ids:
+            if gatherer_id not in GATHER_TASK_LOOKUPS.keys():
+                # Skips hunting wolves
                 continue
 
-            resources.append(resource)
+            gatherer_line = dataset.unit_ref[gatherer_id]
+            gatherer_head_unit_id = gatherer_line.get_head_unit_id()
+            gatherer_name = UNIT_LINE_LOOKUPS[gatherer_head_unit_id][0]
 
-        ability_raw_api_object.add_raw_member("accepts", resources, "engine.ability.type.DropSite")
+            container_ref = "%s.ResourceStorage.%sContainer" % (gatherer_name,
+                                                                GATHER_TASK_LOOKUPS[gatherer_id][0])
+            container_expected_pointer = ExpectedPointer(gatherer_line, container_ref)
+            containers.append(container_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("accepts_from",
+                                              containers,
+                                              "engine.ability.type.DropSite")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -1787,12 +1821,6 @@ class AoCAbilitySubprocessor:
                                                   MemberSpecialValue.NYAN_INF,
                                                   "engine.ability.type.Gather")
 
-            # Carry capacity
-            carry_capacity = gatherer.get_member("resource_capacity").get_value()
-            ability_raw_api_object.add_raw_member("carry_capacity",
-                                                  carry_capacity,
-                                                  "engine.ability.type.Gather")
-
             # Gather rate
             rate_name = "%s.%s.GatherRate" % (game_entity_name, ability_name)
             rate_raw_api_object = RawAPIObject(rate_name, "GatherRate", dataset.nyan_api_objects)
@@ -1812,9 +1840,12 @@ class AoCAbilitySubprocessor:
                                                   rate_expected_pointer,
                                                   "engine.ability.type.Gather")
 
-            # TODO: Carry progress
-            ability_raw_api_object.add_raw_member("carry_progress",
-                                                  [],
+            # Resource container
+            container_ref = "%s.ResourceStorage.%sContainer" % (game_entity_name,
+                                                                GATHER_TASK_LOOKUPS[gatherer_unit_id][0])
+            container_expected_pointer = ExpectedPointer(line, container_ref)
+            ability_raw_api_object.add_raw_member("container",
+                                                  container_expected_pointer,
                                                   "engine.ability.type.Gather")
 
             # Targets (resource spots)
@@ -3515,6 +3546,122 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("resistances",
                                               resistances,
                                               "engine.ability.type.Resistance")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def resource_storage_ability(line):
+        """
+        Adds the ResourceStorage ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        if isinstance(line, GenieVillagerGroup):
+            gatherers = line.variants[1].line
+
+        else:
+            gatherers = [line.line[0]]
+
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_ref = "%s.ResourceStorage" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "ResourceStorage",
+                                              dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.ResourceStorage")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Create containers
+        containers = []
+        for gatherer in gatherers:
+            unit_commands = gatherer.get_member("unit_commands").get_value()
+            resource = None
+
+            for command in unit_commands:
+                # Find a gather ability. It doesn't matter which one because
+                # they should all produce the same resource for one genie unit.
+                type_id = command.get_value()["type"].get_value()
+
+                if type_id not in (5, 110):
+                    continue
+
+                resource_id = command.get_value()["resource_out"].get_value()
+
+                # If resource_out is not specified, the gatherer harvests resource_in
+                if resource_id == -1:
+                    resource_id = command.get_value()["resource_in"].get_value()
+
+                if resource_id == 0:
+                    resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
+
+                elif resource_id == 1:
+                    resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
+
+                elif resource_id == 2:
+                    resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
+
+                elif resource_id == 3:
+                    resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
+
+                else:
+                    continue
+
+            gatherer_unit_id = gatherer.get_id()
+            if gatherer_unit_id not in GATHER_TASK_LOOKUPS.keys():
+                # Skips hunting wolves
+                continue
+
+            container_name = "%sContainer" % (GATHER_TASK_LOOKUPS[gatherer_unit_id][0])
+
+            container_ref = "%s.%s" % (ability_ref, container_name)
+            container_raw_api_object = RawAPIObject(container_ref, container_name, dataset.nyan_api_objects)
+            container_raw_api_object.add_raw_parent("engine.aux.storage.ResourceContainer")
+            container_location = ExpectedPointer(line, ability_ref)
+            container_raw_api_object.set_location(container_location)
+
+            # Resource
+            container_raw_api_object.add_raw_member("resource",
+                                                    resource,
+                                                    "engine.aux.storage.ResourceContainer")
+
+            # Carry capacity
+            carry_capacity = gatherer.get_member("resource_capacity").get_value()
+            container_raw_api_object.add_raw_member("capacity",
+                                                    carry_capacity,
+                                                    "engine.aux.storage.ResourceContainer")
+
+            # TODO: Carry progress
+            container_raw_api_object.add_raw_member("carry_progress",
+                                                    [],
+                                                    "engine.aux.storage.ResourceContainer")
+
+            line.add_raw_api_object(container_raw_api_object)
+
+            container_expected_pointer = ExpectedPointer(line, container_ref)
+            containers.append(container_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("containers",
+                                              containers,
+                                              "engine.ability.type.ResourceStorage")
 
         line.add_raw_api_object(ability_raw_api_object)
 

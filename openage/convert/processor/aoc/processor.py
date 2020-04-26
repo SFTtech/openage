@@ -131,7 +131,7 @@ class AoCProcessor:
         cls._link_creatables(full_data_set)
         cls._link_researchables(full_data_set)
         cls._link_civ_uniques(full_data_set)
-        cls._link_resources_to_dropsites(full_data_set)
+        cls._link_gatherers_to_dropsites(full_data_set)
         cls._link_garrison(full_data_set)
         cls._link_trade_posts(full_data_set)
 
@@ -1141,9 +1141,9 @@ class AoCProcessor:
                 full_data_set.civ_groups[civ_id].add_unique_tech(tech_group)
 
     @staticmethod
-    def _link_resources_to_dropsites(full_data_set):
+    def _link_gatherers_to_dropsites(full_data_set):
         """
-        Link resources to the buildings they can be dropped off at. This is done
+        Link gatherers to the buildings they drop resources off. This is done
         to provide quick access during conversion.
 
         :param full_data_set: GenieObjectContainer instance that
@@ -1154,31 +1154,18 @@ class AoCProcessor:
         villager_groups = full_data_set.villager_groups
 
         for villager in villager_groups.values():
-            for variant in villager.variants:
-                for unit in variant.line:
-                    drop_site_id0 = unit.get_member("drop_site0").get_value()
-                    drop_site_id1 = unit.get_member("drop_site1").get_value()
+            for unit in villager.variants[0].line:
+                drop_site_id0 = unit.get_member("drop_site0").get_value()
+                drop_site_id1 = unit.get_member("drop_site1").get_value()
+                unit_id = unit.get_member("id0").get_value()
 
-                    if drop_site_id0 > -1:
-                        drop_site0 = full_data_set.building_lines[drop_site_id0]
+                if drop_site_id0 > -1:
+                    drop_site0 = full_data_set.building_lines[drop_site_id0]
+                    drop_site0.add_gatherer_id(unit_id)
 
-                    if drop_site_id1 > -1:
-                        drop_site1 = full_data_set.building_lines[drop_site_id1]
-
-                    commands = unit.get_member("unit_commands").get_value()
-                    for command in commands:
-                        type_id = command.get_value()["type"].get_value()
-
-                        if type_id in (5, 110):
-                            resource_id = command.get_value()["resource_out"].get_value()
-
-                            if resource_id == -1:
-                                resource_id = command.get_value()["resource_in"].get_value()
-
-                            if drop_site_id0 > -1:
-                                drop_site0.add_accepted_resource(resource_id)
-                            if drop_site_id1 > -1:
-                                drop_site1.add_accepted_resource(resource_id)
+                if drop_site_id1 > -1:
+                    drop_site1 = full_data_set.building_lines[drop_site_id1]
+                    drop_site1.add_gatherer_id(unit_id)
 
     @staticmethod
     def _link_garrison(full_data_set):

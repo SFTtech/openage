@@ -521,19 +521,19 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
     def __init__(self, line_id, full_data_set):
         super().__init__(line_id, full_data_set)
 
-        # IDs of resources that cen be dropped off here
-        self.accepts_resources = set()
+        # IDs of gatherers that drop off resources here
+        self.gatherer_ids = set()
 
         # Unit lines that this building trades with
         self.trades_with = []
 
-    def add_accepted_resource(self, resource_id):
+    def add_gatherer_id(self, unit_id):
         """
-        Adds a resourced that can be dropped off at this building.
+        Adds Id of gatherers that drop off resources at this building.
 
-        :param resource_id: ID of the resource that can be dropped off.
+        :param unit_id: ID of the gatherer.
         """
-        self.accepts_resources.add(resource_id)
+        self.gatherer_ids.add(unit_id)
 
     def add_trading_line(self, unit_line):
         """
@@ -560,7 +560,7 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         """
         Returns True if the building accepts resources.
         """
-        return len(self.accepts_resources) > 0
+        return len(self.gatherer_ids) > 0
 
     def is_trade_post(self):
         """
@@ -568,11 +568,11 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         """
         return len(self.trades_with) > 0
 
-    def get_accepted_resources(self):
+    def get_gatherer_ids(self):
         """
-        Returns resource IDs for resources that can be dropped off at this building.
+        Returns gatherer unit IDs that drop off resources at this building.
         """
-        return self.accepts_resources
+        return self.gatherer_ids
 
     def get_enabling_research_id(self):
         """

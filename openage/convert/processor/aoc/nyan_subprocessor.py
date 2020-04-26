@@ -250,6 +250,7 @@ class AoCNyanSubprocessor:
         if unit_line.is_gatherer():
             abilities_set.append(AoCAbilitySubprocessor.drop_resources_ability(unit_line))
             abilities_set.extend(AoCAbilitySubprocessor.gather_ability(unit_line))
+            abilities_set.append(AoCAbilitySubprocessor.resource_storage_ability(unit_line))
 
         if isinstance(unit_line, GenieVillagerGroup):
             # Farm restocking

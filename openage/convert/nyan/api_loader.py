@@ -388,6 +388,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.ability.type.ResourceStorage
+    parents = [api_objects["engine.ability.Ability"]]
+    nyan_object = NyanObject("ResourceStorage", parents)
+    fqon = "engine.ability.type.ResourceStorage"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.ability.type.Restock
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("Restock", parents)
@@ -1369,13 +1376,6 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.resource_spot.RestockableResourceSpot
-    parents = [api_objects["engine.aux.resource_spot.ResourceSpot"]]
-    nyan_object = NyanObject("RestockableResourceSpot", parents)
-    fqon = "engine.aux.resource_spot.RestockableResourceSpot"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.aux.selection_box.SelectionBox
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("SelectionBox", parents)
@@ -1415,6 +1415,20 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("Container", parents)
     fqon = "engine.aux.storage.Container"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.storage.ResourceContainer
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("ResourceContainer", parents)
+    fqon = "engine.aux.storage.ResourceContainer"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.storage.resource_container.type.GlobalSink
+    parents = [api_objects["engine.aux.storage.ResourceContainer"]]
+    nyan_object = NyanObject("GlobalSink", parents)
+    fqon = "engine.aux.storage.resource_container.type.GlobalSink"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2371,13 +2385,16 @@ def _insert_members(api_objects):
     # engine.ability.type.DropSite
     api_object = api_objects["engine.ability.type.DropSite"]
 
-    set_type = api_objects["engine.aux.resource.Resource"]
-    member = NyanMember("accepts", MemberType.SET, None, None, 0, set_type, False)
+    set_type = api_objects["engine.aux.storage.ResourceContainer"]
+    member = NyanMember("accepts_from", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.ability.type.DropResources
     api_object = api_objects["engine.ability.type.DropResources"]
 
+    set_type = api_objects["engine.aux.storage.ResourceContainer"]
+    member = NyanMember("containers", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
     member = NyanMember("search_range", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
@@ -2461,13 +2478,11 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.resource_spot.ResourceSpot"]
     member = NyanMember("targets", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("carry_capacity", MemberType.INT, None, None, 0, None, False)
-    api_object.add_member(member)
     ref_object = api_objects["engine.aux.resource.ResourceRate"]
     member = NyanMember("gather_rate", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = api_objects["engine.aux.progress.type.CarryProgress"]
-    member = NyanMember("carry_progress", MemberType.SET, None, None, 0, set_type, False)
+    ref_object = api_objects["engine.aux.storage.ResourceContainer"]
+    member = NyanMember("container", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Harvestable
@@ -2673,6 +2688,13 @@ def _insert_members(api_objects):
 
     set_type = api_objects["engine.resistance.Resistance"]
     member = NyanMember("resistances", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.ability.type.ResourceStorage
+    api_object = api_objects["engine.ability.type.ResourceStorage"]
+
+    set_type = api_objects["engine.aux.storage.ResourceContainer"]
+    member = NyanMember("containers", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.ability.type.Restock
@@ -3456,6 +3478,24 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     set_type = api_objects["engine.aux.progress.type.CarryProgress"]
     member = NyanMember("carry_progress", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.storage.ResourceContainer
+    api_object = api_objects["engine.aux.storage.ResourceContainer"]
+
+    ref_object = api_objects["engine.aux.resource.Resource"]
+    member = NyanMember("resource", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("capacity", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+    set_type = api_objects["engine.aux.progress.type.CarryProgress"]
+    member = NyanMember("carry_progress", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.storage.resource_container.type.GlobalSink
+    api_object = api_objects["engine.aux.storage.resource_container.type.GlobalSink"]
+
+    member = NyanMember("update_time", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.storage.StorageElementDefinition
