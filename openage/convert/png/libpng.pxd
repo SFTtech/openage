@@ -2,7 +2,7 @@
 
 from libc.stdio cimport FILE
 
-cdef extern from "libpng/png.h":
+cdef extern from "png.h":
     const char PNG_LIBPNG_VER_STRING[]
     const int PNG_COLOR_TYPE_RGBA = 6
     const int PNG_INTERLACE_NONE = 0
