@@ -205,28 +205,33 @@ class AoCNyanSubprocessor:
                                                                                           unit_line.is_ranged()))
 
             if unit_line.has_command(101):
+                # Build
                 abilities_set.append(AoCAbilitySubprocessor.apply_continuous_effect_ability(unit_line,
                                                                                             101,
                                                                                             unit_line.is_ranged()))
 
             if unit_line.has_command(104):
+                # convert
                 abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(unit_line,
                                                                                           104,
                                                                                           unit_line.is_ranged()))
 
             if unit_line.has_command(105):
+                # Heal
                 abilities_set.append(AoCAbilitySubprocessor.apply_continuous_effect_ability(unit_line,
                                                                                             105,
                                                                                             unit_line.is_ranged()))
 
             if unit_line.has_command(106):
+                # Repair
                 abilities_set.append(AoCAbilitySubprocessor.apply_continuous_effect_ability(unit_line,
                                                                                             106,
                                                                                             unit_line.is_ranged()))
 
-        # Formation
+        # Formation/Stance
         if not isinstance(unit_line, GenieVillagerGroup):
             abilities_set.append(AoCAbilitySubprocessor.formation_ability(unit_line))
+            abilities_set.append(AoCAbilitySubprocessor.game_entity_stance_ability(unit_line))
 
         # Storage abilities
         if unit_line.is_garrison():
@@ -407,6 +412,7 @@ class AoCNyanSubprocessor:
         # Effect abilities
         if building_line.is_projectile_shooter():
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line, 7))
+            abilities_set.append(AoCAbilitySubprocessor.game_entity_stance_ability(building_line))
             AoCNyanSubprocessor._projectiles_from_line(building_line)
 
         # Storage abilities

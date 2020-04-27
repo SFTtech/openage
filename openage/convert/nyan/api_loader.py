@@ -3125,6 +3125,8 @@ def _insert_members(api_objects):
     # engine.aux.game_entity_stance.GameEntityStance
     api_object = api_objects["engine.aux.game_entity_stance.GameEntityStance"]
 
+    member = NyanMember("search_range", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
     set_type = api_objects["engine.ability.Ability"]
     member = NyanMember("ability_preference", MemberType.ORDEREDSET, None, None, 0, set_type, False)
     api_object.add_member(member)

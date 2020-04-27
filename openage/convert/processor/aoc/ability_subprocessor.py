@@ -2223,7 +2223,84 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        # TODO: Implement
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_ref = "%s.GameEntityStance" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "GameEntityStance", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.GameEntityStance")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Stances
+        search_range = current_unit["search_radius"].get_value()
+        stance_names = ["Aggressive", "Defensive", "StandGround", "Passive"]
+
+        # Attacking is prefered
+        ability_preferences = []
+        if line.is_projectile_shooter():
+            ability_preferences.append(ExpectedPointer(line, "%s.Attack" % (game_entity_name)))
+
+        elif line.is_melee() or line.is_ranged():
+            if line.has_command(7):
+                ability_preferences.append(ExpectedPointer(line, "%s.Attack" % (game_entity_name)))
+
+            if line.has_command(105):
+                ability_preferences.append(ExpectedPointer(line, "%s.Heal" % (game_entity_name)))
+
+        # Units are prefered before buildings
+        type_preferences = [
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
+        ]
+
+        stances = []
+        for stance_name in stance_names:
+            stance_api_ref = "engine.aux.game_entity_stance.type.%s" % (stance_name)
+
+            stance_ref = "%s.GameEntityStance.%s" % (game_entity_name, stance_name)
+            stance_raw_api_object = RawAPIObject(stance_ref, stance_name, dataset.nyan_api_objects)
+            stance_raw_api_object.add_raw_parent(stance_api_ref)
+            stance_location = ExpectedPointer(line, ability_ref)
+            stance_raw_api_object.set_location(stance_location)
+
+            # Search range
+            stance_raw_api_object.add_raw_member("search_range",
+                                                 search_range,
+                                                 "engine.aux.game_entity_stance.GameEntityStance")
+
+            # Ability preferences
+            stance_raw_api_object.add_raw_member("ability_preference",
+                                                 ability_preferences,
+                                                 "engine.aux.game_entity_stance.GameEntityStance")
+
+            # Type preferences
+            stance_raw_api_object.add_raw_member("type_preference",
+                                                 type_preferences,
+                                                 "engine.aux.game_entity_stance.GameEntityStance")
+
+            line.add_raw_api_object(stance_raw_api_object)
+            stance_expected_pointer = ExpectedPointer(line, stance_ref)
+            stances.append(stance_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("stances",
+                                              stances,
+                                              "engine.ability.type.GameEntityStance")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
 
     @staticmethod
     def formation_ability(line):
@@ -2235,7 +2312,6 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
