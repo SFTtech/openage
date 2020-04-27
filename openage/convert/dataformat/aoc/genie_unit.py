@@ -312,9 +312,13 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         :returns: True if one of the projectile IDs is greater than zero.
         """
+        head_unit = self.get_head_unit()
+
+        if not head_unit.has_member("attack_projectile_primary_unit_id"):
+            return False
+
         # Get the projectiles' obj_id for the first unit in the line. AoE's
         # units stay ranged with upgrades, so this should be fine.
-        head_unit = self.get_head_unit()
         projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
         projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
 
