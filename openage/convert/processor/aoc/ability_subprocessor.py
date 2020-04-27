@@ -981,7 +981,7 @@ class AoCAbilitySubprocessor:
                                                                                       construction_animation_id,
                                                                                       override_ref,
                                                                                       "Idle",
-                                                                                      "idle_carry_override_")
+                                                                                      "idle_construct0_override_")
 
                 animations_set.append(animation_expected_pointer)
                 override_raw_api_object.add_raw_member("animations",
@@ -1152,7 +1152,7 @@ class AoCAbilitySubprocessor:
                                                                                       construction_animation_id,
                                                                                       override_ref,
                                                                                       "Idle",
-                                                                                      "idle_carry_override_")
+                                                                                      "idle_construct25_override_")
 
                 animations_set.append(animation_expected_pointer)
                 override_raw_api_object.add_raw_member("animations",
@@ -1315,7 +1315,7 @@ class AoCAbilitySubprocessor:
                                                                                       construction_animation_id,
                                                                                       override_ref,
                                                                                       "Idle",
-                                                                                      "idle_carry_override_")
+                                                                                      "idle_construct50_override_")
 
                 animations_set.append(animation_expected_pointer)
                 override_raw_api_object.add_raw_member("animations",
@@ -1385,7 +1385,7 @@ class AoCAbilitySubprocessor:
                                                                                       construction_animation_id,
                                                                                       override_ref,
                                                                                       "Idle",
-                                                                                      "idle_carry_override_")
+                                                                                      "idle_construct75_override_")
 
                 animations_set.append(animation_expected_pointer)
                 override_raw_api_object.add_raw_member("animations",
@@ -1455,7 +1455,7 @@ class AoCAbilitySubprocessor:
                                                                                       construction_animation_id,
                                                                                       override_ref,
                                                                                       "Idle",
-                                                                                      "idle_carry_override_")
+                                                                                      "idle_construct100_override_")
 
                 animations_set.append(animation_expected_pointer)
                 override_raw_api_object.add_raw_member("animations",

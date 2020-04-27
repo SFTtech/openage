@@ -277,7 +277,7 @@ class AoCNyanSubprocessor:
                                       "engine.aux.game_entity.GameEntity")
 
         # =======================================================================
-        # TODO: Modifiers
+        # Modifiers
         # =======================================================================
         modifiers_set = []
 
@@ -440,7 +440,7 @@ class AoCNyanSubprocessor:
                                       "engine.aux.game_entity.GameEntity")
 
         # =======================================================================
-        # TODO: Modifiers
+        # Modifiers
         # =======================================================================
         raw_api_object.add_raw_member("modifiers", [], "engine.aux.game_entity.GameEntity")
 

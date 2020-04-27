@@ -275,11 +275,14 @@ class AoCTechSubprocessor:
         upgrade_source_pos = line.get_unit_position(upgrade_source_id)
         upgrade_target_pos = line.get_unit_position(upgrade_target_id)
 
-        if upgrade_target_pos - upgrade_source_pos != 1 and not\
-                isinstance(converter_group, BuildingLineUpgrade):
+        if isinstance(line, GenieBuildingLineGroup):
+            # Building upgrades always reference the head unit
+            # so we use the decremented target id instead
+            upgrade_source_pos = upgrade_target_pos - 1
+
+        elif upgrade_target_pos - upgrade_source_pos != 1:
             # Skip effects that upgrades entities not next to each other in
-            # the line. Building upgrades are an exception because they technically
-            # have no lines and there is always only one upgrade.
+            # the line.
             return patches
 
         upgrade_source = line.line[upgrade_source_pos]
