@@ -26,6 +26,18 @@ from math import degrees
 class AoCAbilitySubprocessor:
 
     @staticmethod
+    def active_transform_to_ability(line):
+        """
+        Adds the ActiveTransformTo ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        # TODO: Implement
+
+    @staticmethod
     def apply_continuous_effect_ability(line, command_id, ranged=False):
         """
         Adds the ApplyContinuousEffect ability to a line.
@@ -587,10 +599,344 @@ class AoCAbilitySubprocessor:
 
         construction_animation_id = current_unit["construction_graphic_id"].get_value()
 
-        # TODO: Construction progress
+        # Construction progress
         progress_expected_pointers = []
         if line.get_class_id() == 49:
-            pass
+            # Farms
+            # =====================================================================================
+            progress_name = "%s.Constructable.ConstructionProgress0" % (game_entity_name)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ConstructionProgress0",
+                                                   dataset.nyan_api_objects)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+            progress_location = ExpectedPointer(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
+
+            # Interval = (0.0, 0.0)
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   0.0,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   0.0,
+                                                   "engine.aux.progress.Progress")
+
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            # Terrain overlay
+            terrain_ref = "FarmConstruction1"
+            terrain_group = dataset.terrain_groups[29]
+            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            progress_raw_api_object.add_raw_member("terrain_overlay",
+                                                   terrain_expected_pointer,
+                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+
+            # State change
+            # =====================================================================================
+            init_state_name = "%s.InitState" % (ability_ref)
+            init_state_raw_api_object = RawAPIObject(init_state_name,
+                                                     "InitState",
+                                                     dataset.nyan_api_objects)
+            init_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
+            init_state_location = ExpectedPointer(line, ability_ref)
+            init_state_raw_api_object.set_location(init_state_location)
+
+            # Priority
+            init_state_raw_api_object.add_raw_member("priority",
+                                                     1,
+                                                     "engine.aux.state_machine.StateChanger")
+
+            # TODO: Enabled abilities
+            init_state_raw_api_object.add_raw_member("enable_abilities",
+                                                     [],
+                                                     "engine.aux.state_machine.StateChanger")
+
+            # Disabled abilities
+            disabled_expected_pointers = [
+                ExpectedPointer(line,
+                                "%s.AttributeChangeTracker"
+                                % (game_entity_name)),
+                ExpectedPointer(line,
+                                "%s.LineOfSight"
+                                % (game_entity_name)),
+                ExpectedPointer(line,
+                                "%s.Visibility"
+                                % (game_entity_name))
+            ]
+            if len(line.creates) > 0:
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Create"
+                                                                  % (game_entity_name)))
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.ProductionQueue"
+                                                                  % (game_entity_name)))
+            if len(line.researches) > 0:
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Research"
+                                                                  % (game_entity_name)))
+
+            if line.is_projectile_shooter():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Attack"
+                                                                  % (game_entity_name)))
+
+            if line.is_garrison():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Storage"
+                                                                  % (game_entity_name)))
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.RemoveStorage"
+                                                                  % (game_entity_name)))
+
+                garrison_mode = line.get_garrison_mode()
+
+                if garrison_mode == GenieGarrisonMode.NATURAL:
+                    disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                      "%s.SendBackToTask"
+                                                                      % (game_entity_name)))
+
+                if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
+                    disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                      "%s.RallyPoint"
+                                                                      % (game_entity_name)))
+
+            if line.is_harvestable():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Harvestable"
+                                                                  % (game_entity_name)))
+
+            if line.is_dropsite():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.DropSite"
+                                                                  % (game_entity_name)))
+
+            if line.is_trade_post():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.TradePost"
+                                                                  % (game_entity_name)))
+
+            init_state_raw_api_object.add_raw_member("disable_abilities",
+                                                     disabled_expected_pointers,
+                                                     "engine.aux.state_machine.StateChanger")
+
+            # Enabled modifiers
+            init_state_raw_api_object.add_raw_member("enable_modifiers",
+                                                     [],
+                                                     "engine.aux.state_machine.StateChanger")
+
+            # Disabled modifiers
+            init_state_raw_api_object.add_raw_member("disable_modifiers",
+                                                     [],
+                                                     "engine.aux.state_machine.StateChanger")
+
+            line.add_raw_api_object(init_state_raw_api_object)
+            # =====================================================================================
+            init_state_expected_pointer = ExpectedPointer(line, init_state_name)
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   init_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            # =====================================================================================
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
+            # =====================================================================================
+            progress_name = "%s.Constructable.ConstructionProgress33" % (game_entity_name)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ConstructionProgress33",
+                                                   dataset.nyan_api_objects)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+            progress_location = ExpectedPointer(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
+
+            # Interval = (0.0, 33.0)
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   0.0,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   33.0,
+                                                   "engine.aux.progress.Progress")
+
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            # Terrain overlay
+            terrain_ref = "FarmConstruction1"
+            terrain_group = dataset.terrain_groups[29]
+            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            progress_raw_api_object.add_raw_member("terrain_overlay",
+                                                   terrain_expected_pointer,
+                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+
+            # State change
+            # =====================================================================================
+            construct_state_name = "%s.ConstructState" % (ability_ref)
+            construct_state_raw_api_object = RawAPIObject(construct_state_name,
+                                                          "ConstructState",
+                                                          dataset.nyan_api_objects)
+            construct_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
+            construct_state_location = ExpectedPointer(line, ability_ref)
+            construct_state_raw_api_object.set_location(construct_state_location)
+
+            # Priority
+            construct_state_raw_api_object.add_raw_member("priority",
+                                                          1,
+                                                          "engine.aux.state_machine.StateChanger")
+
+            # Enabled abilities
+            construct_state_raw_api_object.add_raw_member("enable_abilities",
+                                                          [],
+                                                          "engine.aux.state_machine.StateChanger")
+
+            # Disabled abilities
+            disabled_expected_pointers = [ExpectedPointer(line,
+                                                          "%s.AttributeChangeTracker"
+                                                          % (game_entity_name))]
+            if len(line.creates) > 0:
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Create"
+                                                                  % (game_entity_name)))
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.ProductionQueue"
+                                                                  % (game_entity_name)))
+            if len(line.researches) > 0:
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Research"
+                                                                  % (game_entity_name)))
+
+            if line.is_projectile_shooter():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Attack"
+                                                                  % (game_entity_name)))
+
+            if line.is_garrison():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Storage"
+                                                                  % (game_entity_name)))
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.RemoveStorage"
+                                                                  % (game_entity_name)))
+
+                garrison_mode = line.get_garrison_mode()
+
+                if garrison_mode == GenieGarrisonMode.NATURAL:
+                    disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                      "%s.SendBackToTask"
+                                                                      % (game_entity_name)))
+
+                if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
+                    disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                      "%s.RallyPoint"
+                                                                      % (game_entity_name)))
+
+            if line.is_harvestable():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Harvestable"
+                                                                  % (game_entity_name)))
+
+            if line.is_dropsite():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.DropSite"
+                                                                  % (game_entity_name)))
+
+            if line.is_trade_post():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.TradePost"
+                                                                  % (game_entity_name)))
+
+            construct_state_raw_api_object.add_raw_member("disable_abilities",
+                                                          disabled_expected_pointers,
+                                                          "engine.aux.state_machine.StateChanger")
+
+            # Enabled modifiers
+            construct_state_raw_api_object.add_raw_member("enable_modifiers",
+                                                          [],
+                                                          "engine.aux.state_machine.StateChanger")
+
+            # Disabled modifiers
+            construct_state_raw_api_object.add_raw_member("disable_modifiers",
+                                                          [],
+                                                          "engine.aux.state_machine.StateChanger")
+
+            line.add_raw_api_object(construct_state_raw_api_object)
+            # =====================================================================================
+            construct_state_expected_pointer = ExpectedPointer(line, construct_state_name)
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   construct_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            #======================================================================================
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
+            # =====================================================================================
+            progress_name = "%s.Constructable.ConstructionProgress66" % (game_entity_name)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ConstructionProgress66",
+                                                   dataset.nyan_api_objects)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+            progress_location = ExpectedPointer(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
+
+            # Interval = (33.0, 66.0)
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   33.0,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   66.0,
+                                                   "engine.aux.progress.Progress")
+
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            # Terrain overlay
+            terrain_ref = "FarmConstruction2"
+            terrain_group = dataset.terrain_groups[30]
+            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            progress_raw_api_object.add_raw_member("terrain_overlay",
+                                                   terrain_expected_pointer,
+                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            # State change
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   construct_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            #======================================================================================
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
+            # =====================================================================================
+            progress_name = "%s.Constructable.ConstructionProgress100" % (game_entity_name)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ConstructionProgress100",
+                                                   dataset.nyan_api_objects)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
+            progress_location = ExpectedPointer(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
+
+            # Interval = (66.0, 100.0)
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   66.0,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   100.0,
+                                                   "engine.aux.progress.Progress")
+
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            # Terrain overlay
+            terrain_ref = "FarmConstruction3"
+            terrain_group = dataset.terrain_groups[31]
+            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            progress_raw_api_object.add_raw_member("terrain_overlay",
+                                                   terrain_expected_pointer,
+                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            # State change
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   construct_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            #======================================================================================
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
 
         else:
             progress_name = "%s.Constructable.ConstructionProgress0" % (game_entity_name)
@@ -654,13 +1000,113 @@ class AoCAbilitySubprocessor:
                                                        overrides,
                                                        "engine.aux.progress.specialization.AnimatedProgress")
 
-            # TODO: State change
-            #=======================================================================
-            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-            # progress_raw_api_object.add_raw_member("state_change",
-            #                                        None,
-            #                                        "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+
+            # State change
+            # =====================================================================================
+            init_state_name = "%s.InitState" % (ability_ref)
+            init_state_raw_api_object = RawAPIObject(init_state_name,
+                                                     "InitState",
+                                                     dataset.nyan_api_objects)
+            init_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
+            init_state_location = ExpectedPointer(line, ability_ref)
+            init_state_raw_api_object.set_location(init_state_location)
+
+            # Priority
+            init_state_raw_api_object.add_raw_member("priority",
+                                                     1,
+                                                     "engine.aux.state_machine.StateChanger")
+
+            # TODO: Enabled abilities
+            init_state_raw_api_object.add_raw_member("enable_abilities",
+                                                     [],
+                                                     "engine.aux.state_machine.StateChanger")
+
+            # Disabled abilities
+            disabled_expected_pointers = [
+                ExpectedPointer(line,
+                                "%s.AttributeChangeTracker"
+                                % (game_entity_name)),
+                ExpectedPointer(line,
+                                "%s.LineOfSight"
+                                % (game_entity_name)),
+                ExpectedPointer(line,
+                                "%s.Visibility"
+                                % (game_entity_name))
+            ]
+            if len(line.creates) > 0:
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Create"
+                                                                  % (game_entity_name)))
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.ProductionQueue"
+                                                                  % (game_entity_name)))
+            if len(line.researches) > 0:
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Research"
+                                                                  % (game_entity_name)))
+
+            if line.is_projectile_shooter():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Attack"
+                                                                  % (game_entity_name)))
+
+            if line.is_garrison():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Storage"
+                                                                  % (game_entity_name)))
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.RemoveStorage"
+                                                                  % (game_entity_name)))
+
+                garrison_mode = line.get_garrison_mode()
+
+                if garrison_mode == GenieGarrisonMode.NATURAL:
+                    disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                      "%s.SendBackToTask"
+                                                                      % (game_entity_name)))
+
+                if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
+                    disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                      "%s.RallyPoint"
+                                                                      % (game_entity_name)))
+
+            if line.is_harvestable():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Harvestable"
+                                                                  % (game_entity_name)))
+
+            if line.is_dropsite():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.DropSite"
+                                                                  % (game_entity_name)))
+
+            if line.is_trade_post():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.TradePost"
+                                                                  % (game_entity_name)))
+
+            init_state_raw_api_object.add_raw_member("disable_abilities",
+                                                     disabled_expected_pointers,
+                                                     "engine.aux.state_machine.StateChanger")
+
+            # Enabled modifiers
+            init_state_raw_api_object.add_raw_member("enable_modifiers",
+                                                     [],
+                                                     "engine.aux.state_machine.StateChanger")
+
+            # Disabled modifiers
+            init_state_raw_api_object.add_raw_member("disable_modifiers",
+                                                     [],
+                                                     "engine.aux.state_machine.StateChanger")
+
+            line.add_raw_api_object(init_state_raw_api_object)
+            # =====================================================================================
+            init_state_expected_pointer = ExpectedPointer(line, init_state_name)
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   init_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            #======================================================================================
             progress_expected_pointers.append(ExpectedPointer(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -725,13 +1171,105 @@ class AoCAbilitySubprocessor:
                                                        overrides,
                                                        "engine.aux.progress.specialization.AnimatedProgress")
 
-            # TODO: State change
-            #=======================================================================
-            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-            # progress_raw_api_object.add_raw_member("state_change",
-            #                                        None,
-            #                                        "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+
+            # State change
+            # =====================================================================================
+            construct_state_name = "%s.ConstructState" % (ability_ref)
+            construct_state_raw_api_object = RawAPIObject(construct_state_name,
+                                                          "ConstructState",
+                                                          dataset.nyan_api_objects)
+            construct_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
+            construct_state_location = ExpectedPointer(line, ability_ref)
+            construct_state_raw_api_object.set_location(construct_state_location)
+
+            # Priority
+            construct_state_raw_api_object.add_raw_member("priority",
+                                                          1,
+                                                          "engine.aux.state_machine.StateChanger")
+
+            # Enabled abilities
+            construct_state_raw_api_object.add_raw_member("enable_abilities",
+                                                          [],
+                                                          "engine.aux.state_machine.StateChanger")
+
+            # Disabled abilities
+            disabled_expected_pointers = [ExpectedPointer(line,
+                                                          "%s.AttributeChangeTracker"
+                                                          % (game_entity_name))]
+            if len(line.creates) > 0:
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Create"
+                                                                  % (game_entity_name)))
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.ProductionQueue"
+                                                                  % (game_entity_name)))
+            if len(line.researches) > 0:
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Research"
+                                                                  % (game_entity_name)))
+
+            if line.is_projectile_shooter():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Attack"
+                                                                  % (game_entity_name)))
+
+            if line.is_garrison():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Storage"
+                                                                  % (game_entity_name)))
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.RemoveStorage"
+                                                                  % (game_entity_name)))
+
+                garrison_mode = line.get_garrison_mode()
+
+                if garrison_mode == GenieGarrisonMode.NATURAL:
+                    disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                      "%s.SendBackToTask"
+                                                                      % (game_entity_name)))
+
+                if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
+                    disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                      "%s.RallyPoint"
+                                                                      % (game_entity_name)))
+
+            if line.is_harvestable():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.Harvestable"
+                                                                  % (game_entity_name)))
+
+            if line.is_dropsite():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.DropSite"
+                                                                  % (game_entity_name)))
+
+            if line.is_trade_post():
+                disabled_expected_pointers.append(ExpectedPointer(line,
+                                                                  "%s.TradePost"
+                                                                  % (game_entity_name)))
+
+            construct_state_raw_api_object.add_raw_member("disable_abilities",
+                                                          disabled_expected_pointers,
+                                                          "engine.aux.state_machine.StateChanger")
+
+            # Enabled modifiers
+            construct_state_raw_api_object.add_raw_member("enable_modifiers",
+                                                          [],
+                                                          "engine.aux.state_machine.StateChanger")
+
+            # Disabled modifiers
+            construct_state_raw_api_object.add_raw_member("disable_modifiers",
+                                                          [],
+                                                          "engine.aux.state_machine.StateChanger")
+
+            line.add_raw_api_object(construct_state_raw_api_object)
+            # =====================================================================================
+            construct_state_expected_pointer = ExpectedPointer(line, construct_state_name)
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   construct_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            #======================================================================================
             progress_expected_pointers.append(ExpectedPointer(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -796,13 +1334,12 @@ class AoCAbilitySubprocessor:
                                                        overrides,
                                                        "engine.aux.progress.specialization.AnimatedProgress")
 
-            # TODO: State change
-            #=======================================================================
-            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-            # progress_raw_api_object.add_raw_member("state_change",
-            #                                        None,
-            #                                        "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
+            # State change
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   construct_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            #======================================================================================
             progress_expected_pointers.append(ExpectedPointer(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -867,13 +1404,12 @@ class AoCAbilitySubprocessor:
                                                        overrides,
                                                        "engine.aux.progress.specialization.AnimatedProgress")
 
-            # TODO: State change
-            #=======================================================================
-            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-            # progress_raw_api_object.add_raw_member("state_change",
-            #                                        None,
-            #                                        "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
+            # State change
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   construct_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            #======================================================================================
             progress_expected_pointers.append(ExpectedPointer(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -938,13 +1474,12 @@ class AoCAbilitySubprocessor:
                                                        overrides,
                                                        "engine.aux.progress.specialization.AnimatedProgress")
 
-            # TODO: State change
-            #=======================================================================
-            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-            # progress_raw_api_object.add_raw_member("state_change",
-            #                                        None,
-            #                                        "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
+            # State change
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   construct_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            #======================================================================================
             progress_expected_pointers.append(ExpectedPointer(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
         # =====================================================================================
@@ -1991,32 +2526,6 @@ class AoCAbilitySubprocessor:
         if line.get_class_id() == 49:
             # Farms
             # =====================================================================================
-            progress_name = "%s.Harvestable.RestockProgress0" % (game_entity_name)
-            progress_raw_api_object = RawAPIObject(progress_name,
-                                                   "RestockProgress0",
-                                                   dataset.nyan_api_objects)
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.RestockProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
-            progress_raw_api_object.set_location(progress_location)
-
-            # Interval = (0.0, 0.0)
-            progress_raw_api_object.add_raw_member("left_boundary",
-                                                   0.0,
-                                                   "engine.aux.progress.Progress")
-            progress_raw_api_object.add_raw_member("right_boundary",
-                                                   0.0,
-                                                   "engine.aux.progress.Progress")
-
-            # TODO: State change, TerrainOverlay
-            #=======================================================================
-            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-            # progress_raw_api_object.add_raw_member("state_change",
-            #                                        None,
-            #                                        "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-            line.add_raw_api_object(progress_raw_api_object)
-            # =====================================================================================
             progress_name = "%s.Harvestable.RestockProgress33" % (game_entity_name)
             progress_raw_api_object = RawAPIObject(progress_name,
                                                    "RestockProgress33",
@@ -2033,13 +2542,25 @@ class AoCAbilitySubprocessor:
                                                    33.0,
                                                    "engine.aux.progress.Progress")
 
-            # TODO: State change, TerrainOverlay
-            #=======================================================================
-            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-            # progress_raw_api_object.add_raw_member("state_change",
-            #                                        None,
-            #                                        "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            # Terrain overlay
+            terrain_ref = "FarmConstruction1"
+            terrain_group = dataset.terrain_groups[29]
+            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            progress_raw_api_object.add_raw_member("terrain_overlay",
+                                                   terrain_expected_pointer,
+                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+
+            # State change
+            init_state_ref = "%s.Constructable.InitState" % (game_entity_name)
+            init_state_expected_pointer = ExpectedPointer(line, init_state_ref)
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   init_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            # =====================================================================================
             progress_expected_pointers.append(ExpectedPointer(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -2059,13 +2580,25 @@ class AoCAbilitySubprocessor:
                                                    66.0,
                                                    "engine.aux.progress.Progress")
 
-            # TODO: State change, TerrainOverlay
-            #=======================================================================
-            # progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
-            # progress_raw_api_object.add_raw_member("state_change",
-            #                                        None,
-            #                                        "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            # Terrain overlay
+            terrain_ref = "FarmConstruction2"
+            terrain_group = dataset.terrain_groups[30]
+            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            progress_raw_api_object.add_raw_member("terrain_overlay",
+                                                   terrain_expected_pointer,
+                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+
+            # State change
+            construct_state_ref = "%s.Constructable.ConstructState" % (game_entity_name)
+            construct_state_expected_pointer = ExpectedPointer(line, construct_state_ref)
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   construct_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            # =====================================================================================
             progress_expected_pointers.append(ExpectedPointer(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -2077,13 +2610,34 @@ class AoCAbilitySubprocessor:
             progress_location = ExpectedPointer(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
-            # Interval = (50.0, 75.0)
             progress_raw_api_object.add_raw_member("left_boundary",
                                                    66.0,
                                                    "engine.aux.progress.Progress")
             progress_raw_api_object.add_raw_member("right_boundary",
                                                    100.0,
                                                    "engine.aux.progress.Progress")
+
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            # Terrain overlay
+            terrain_ref = "FarmConstruction3"
+            terrain_group = dataset.terrain_groups[31]
+            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            progress_raw_api_object.add_raw_member("terrain_overlay",
+                                                   terrain_expected_pointer,
+                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+
+            # State change
+            construct_state_ref = "%s.Constructable.ConstructState" % (game_entity_name)
+            construct_state_expected_pointer = ExpectedPointer(line, construct_state_ref)
+            progress_raw_api_object.add_raw_member("state_change",
+                                                   construct_state_expected_pointer,
+                                                   "engine.aux.progress.specialization.StateChangeProgress")
+            #=======================================================================
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
 
         ability_raw_api_object.add_raw_member("restock_progress",
                                               progress_expected_pointers,
@@ -4673,18 +5227,6 @@ class AoCAbilitySubprocessor:
         return ability_expected_pointer
 
     @staticmethod
-    def transform_ability(line):
-        """
-        Adds the Transform ability to a line.
-
-        :param line: Unit/Building line that gets the ability.
-        :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
-        """
-        # TODO: Implement
-
-    @staticmethod
     def turn_ability(line):
         """
         Adds the Turn ability to a line.
@@ -4846,19 +5388,54 @@ class AoCAbilitySubprocessor:
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        # Units are not visible in fog
+        # Units are not visible in fog...
         visible = False
 
-        # Buidings and scenery is though
+        # ...Buidings and scenery is though
         if isinstance(line, (GenieBuildingLineGroup, GenieAmbientGroup)):
             visible = True
 
         ability_raw_api_object.add_raw_member("visible_in_fog", visible,
                                               "engine.ability.type.Visibility")
 
+        # Diplomacy settings
+        ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+        diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                              dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object(),
+                              dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Neutral"].get_nyan_object(),
+                              dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Enemy"].get_nyan_object(),
+                              dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Gaia"].get_nyan_object()]
+        ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
+                                              "engine.ability.specialization.DiplomaticAbility")
+
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        # Add another Visibility ability for buildings with construction progress = 0.0
+        # It is not returned by this method, but referenced by the Constructable ability
+        if isinstance(line, GenieBuildingLineGroup):
+            ability_ref = "%s.VisibilityConstruct0" % (game_entity_name)
+            ability_raw_api_object = RawAPIObject(ability_ref, "VisibilityConstruct0", dataset.nyan_api_objects)
+            ability_raw_api_object.add_raw_parent("engine.ability.type.Visibility")
+            ability_location = ExpectedPointer(line, game_entity_name)
+            ability_raw_api_object.set_location(ability_location)
+
+            # The construction site is not visible in fog
+            visible = False
+
+            ability_raw_api_object.add_raw_member("visible_in_fog", visible,
+                                                  "engine.ability.type.Visibility")
+
+            # Diplomacy settings
+            ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+            # Only the player and friendly players can see the construction site
+            diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                                  dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
+                                                  "engine.ability.specialization.DiplomaticAbility")
+
+            line.add_raw_api_object(ability_raw_api_object)
 
         return ability_expected_pointer
 

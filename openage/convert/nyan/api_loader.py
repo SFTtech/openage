@@ -465,13 +465,6 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.ability.type.Transform
-    parents = [api_objects["engine.ability.Ability"]]
-    nyan_object = NyanObject("Transform", parents)
-    fqon = "engine.ability.type.Transform"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.ability.type.Turn
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("Turn", parents)
@@ -2823,19 +2816,6 @@ def _insert_members(api_objects):
     member = NyanMember("target_container", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.ability.type.Transform
-    api_object = api_objects["engine.ability.type.Transform"]
-
-    ref_object = api_objects["engine.aux.transform_pool.TransformPool"]
-    member = NyanMember("transform_pool", ref_object, None, None, 0, None, False)
-    api_object.add_member(member)
-    set_type = api_objects["engine.aux.state_machine.StateChanger"]
-    member = NyanMember("states", MemberType.SET, None, None, 0, set_type, False)
-    api_object.add_member(member)
-    ref_object = api_objects["engine.aux.state_machine.StateChanger"]
-    member = NyanMember("initial_state", ref_object, None, None, 0, None, False)
-    api_object.add_member(member)
-
     # engine.ability.type.Turn
     api_object = api_objects["engine.ability.type.Turn"]
 
@@ -3458,6 +3438,10 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     set_type = api_objects["engine.modifier.Modifier"]
     member = NyanMember("disable_modifiers", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.transform_pool.TransformPool"]
+    member = NyanMember("transform_pool", ref_object, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
     member = NyanMember("priority", MemberType.INT, None, None, 0, None, False)
     api_object.add_member(member)
