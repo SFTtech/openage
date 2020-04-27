@@ -26,6 +26,7 @@ class AoCPregenSubprocessor:
         cls._generate_diplomatic_stances(gamedata, pregen_converter_group)
         cls._generate_entity_types(gamedata, pregen_converter_group)
         cls._generate_effect_types(gamedata, pregen_converter_group)
+        cls._generate_formation_types(gamedata, pregen_converter_group)
         cls._generate_misc_effect_objects(gamedata, pregen_converter_group)
         cls._generate_modifiers(gamedata, pregen_converter_group)
         cls._generate_terrain_types(gamedata, pregen_converter_group)
@@ -499,6 +500,216 @@ class AoCPregenSubprocessor:
 
         pregen_converter_group.add_raw_api_object(type_raw_api_object)
         pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
+
+    @staticmethod
+    def _generate_formation_types(full_data_set, pregen_converter_group):
+        """
+        Generate Formation and Subformation objects.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :param pregen_converter_group: GenieObjectGroup instance that stores
+                                       pregenerated API objects for referencing with
+                                       ExpectedPointer
+        :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        """
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
+        api_objects = full_data_set.nyan_api_objects
+
+        # =======================================================================
+        # Line formation
+        # =======================================================================
+        formation_parent = "engine.aux.formation.Formation"
+        formation_location = "data/aux/formation/"
+
+        formation_ref_in_modpack = "aux.formation.types.Line"
+        formation_raw_api_object = RawAPIObject(formation_ref_in_modpack,
+                                                "Line",
+                                                api_objects,
+                                                formation_location)
+        formation_raw_api_object.set_filename("types")
+        formation_raw_api_object.add_raw_parent(formation_parent)
+
+        subformations = [
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Siege"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Support"),
+        ]
+        formation_raw_api_object.add_raw_member("subformations",
+                                                subformations,
+                                                formation_parent)
+
+        pregen_converter_group.add_raw_api_object(formation_raw_api_object)
+        pregen_nyan_objects.update({formation_ref_in_modpack: formation_raw_api_object})
+        # =======================================================================
+        # Staggered formation
+        # =======================================================================
+        formation_ref_in_modpack = "aux.formation.types.Staggered"
+        formation_raw_api_object = RawAPIObject(formation_ref_in_modpack,
+                                                "Staggered",
+                                                api_objects,
+                                                formation_location)
+        formation_raw_api_object.set_filename("types")
+        formation_raw_api_object.add_raw_parent(formation_parent)
+
+        subformations = [
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Siege"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Support"),
+        ]
+        formation_raw_api_object.add_raw_member("subformations",
+                                                subformations,
+                                                formation_parent)
+
+        pregen_converter_group.add_raw_api_object(formation_raw_api_object)
+        pregen_nyan_objects.update({formation_ref_in_modpack: formation_raw_api_object})
+        # =======================================================================
+        # Box formation
+        # =======================================================================
+        formation_ref_in_modpack = "aux.formation.types.Box"
+        formation_raw_api_object = RawAPIObject(formation_ref_in_modpack,
+                                                "Box",
+                                                api_objects,
+                                                formation_location)
+        formation_raw_api_object.set_filename("types")
+        formation_raw_api_object.add_raw_parent(formation_parent)
+
+        subformations = [
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Siege"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Support"),
+        ]
+        formation_raw_api_object.add_raw_member("subformations",
+                                                subformations,
+                                                formation_parent)
+
+        pregen_converter_group.add_raw_api_object(formation_raw_api_object)
+        pregen_nyan_objects.update({formation_ref_in_modpack: formation_raw_api_object})
+        # =======================================================================
+        # Flank formation
+        # =======================================================================
+        formation_ref_in_modpack = "aux.formation.types.Flank"
+        formation_raw_api_object = RawAPIObject(formation_ref_in_modpack,
+                                                "Flank",
+                                                api_objects,
+                                                formation_location)
+        formation_raw_api_object.set_filename("types")
+        formation_raw_api_object.add_raw_parent(formation_parent)
+
+        subformations = [
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Siege"),
+            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Support"),
+        ]
+        formation_raw_api_object.add_raw_member("subformations",
+                                                subformations,
+                                                formation_parent)
+
+        pregen_converter_group.add_raw_api_object(formation_raw_api_object)
+        pregen_nyan_objects.update({formation_ref_in_modpack: formation_raw_api_object})
+
+        # =======================================================================
+        # Cavalry subformation
+        # =======================================================================
+        subformation_parent = "engine.aux.formation.Subformation"
+        subformation_location = "data/aux/formation/"
+
+        subformation_ref_in_modpack = "aux.formation.subformation.types.Cavalry"
+        subformation_raw_api_object = RawAPIObject(subformation_ref_in_modpack,
+                                                   "Cavalry",
+                                                   api_objects,
+                                                   subformation_location)
+        subformation_raw_api_object.set_filename("subformations")
+        subformation_raw_api_object.add_raw_parent(subformation_parent)
+
+        subformation_raw_api_object.add_raw_member("ordering_priority",
+                                                   5,
+                                                   subformation_parent)
+
+        pregen_converter_group.add_raw_api_object(subformation_raw_api_object)
+        pregen_nyan_objects.update({subformation_ref_in_modpack: subformation_raw_api_object})
+
+        # =======================================================================
+        # Infantry subformation
+        # =======================================================================
+        subformation_ref_in_modpack = "aux.formation.subformation.types.Infantry"
+        subformation_raw_api_object = RawAPIObject(subformation_ref_in_modpack,
+                                                   "Infantry",
+                                                   api_objects,
+                                                   subformation_location)
+        subformation_raw_api_object.set_filename("subformations")
+        subformation_raw_api_object.add_raw_parent(subformation_parent)
+
+        subformation_raw_api_object.add_raw_member("ordering_priority",
+                                                   4,
+                                                   subformation_parent)
+
+        pregen_converter_group.add_raw_api_object(subformation_raw_api_object)
+        pregen_nyan_objects.update({subformation_ref_in_modpack: subformation_raw_api_object})
+
+        # =======================================================================
+        # Ranged subformation
+        # =======================================================================
+        subformation_ref_in_modpack = "aux.formation.subformation.types.Ranged"
+        subformation_raw_api_object = RawAPIObject(subformation_ref_in_modpack,
+                                                   "Ranged",
+                                                   api_objects,
+                                                   subformation_location)
+        subformation_raw_api_object.set_filename("subformations")
+        subformation_raw_api_object.add_raw_parent(subformation_parent)
+
+        subformation_raw_api_object.add_raw_member("ordering_priority",
+                                                   3,
+                                                   subformation_parent)
+
+        pregen_converter_group.add_raw_api_object(subformation_raw_api_object)
+        pregen_nyan_objects.update({subformation_ref_in_modpack: subformation_raw_api_object})
+
+        # =======================================================================
+        # Siege subformation
+        # =======================================================================
+        subformation_ref_in_modpack = "aux.formation.subformation.types.Siege"
+        subformation_raw_api_object = RawAPIObject(subformation_ref_in_modpack,
+                                                   "Siege",
+                                                   api_objects,
+                                                   subformation_location)
+        subformation_raw_api_object.set_filename("subformations")
+        subformation_raw_api_object.add_raw_parent(subformation_parent)
+
+        subformation_raw_api_object.add_raw_member("ordering_priority",
+                                                   2,
+                                                   subformation_parent)
+
+        pregen_converter_group.add_raw_api_object(subformation_raw_api_object)
+        pregen_nyan_objects.update({subformation_ref_in_modpack: subformation_raw_api_object})
+
+        # =======================================================================
+        # Support subformation
+        # =======================================================================
+        subformation_ref_in_modpack = "aux.formation.subformation.types.Support"
+        subformation_raw_api_object = RawAPIObject(subformation_ref_in_modpack,
+                                                   "Support",
+                                                   api_objects,
+                                                   subformation_location)
+        subformation_raw_api_object.set_filename("subformations")
+        subformation_raw_api_object.add_raw_parent(subformation_parent)
+
+        subformation_raw_api_object.add_raw_member("ordering_priority",
+                                                   1,
+                                                   subformation_parent)
+
+        pregen_converter_group.add_raw_api_object(subformation_raw_api_object)
+        pregen_nyan_objects.update({subformation_ref_in_modpack: subformation_raw_api_object})
 
     @staticmethod
     def _generate_misc_effect_objects(full_data_set, pregen_converter_group):

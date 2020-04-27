@@ -224,6 +224,10 @@ class AoCNyanSubprocessor:
                                                                                             106,
                                                                                             unit_line.is_ranged()))
 
+        # Formation
+        if not isinstance(unit_line, GenieVillagerGroup):
+            abilities_set.append(AoCAbilitySubprocessor.formation_ability(unit_line))
+
         # Storage abilities
         if unit_line.is_garrison():
             abilities_set.append(AoCAbilitySubprocessor.storage_ability(unit_line))

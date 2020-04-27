@@ -7,6 +7,7 @@ manages imports.
 
 from ....nyan.nyan_structs import NyanObject
 from ..data_definition import DataDefinition
+from openage.util.ordered_set import OrderedSet
 
 FILE_VERSION = "0.1.0"
 
@@ -17,7 +18,7 @@ class NyanFile(DataDefinition):
     """
 
     def __init__(self, targetdir, filename, modpack_name, nyan_objects=None):
-        self.nyan_objects = set()
+        self.nyan_objects = OrderedSet()
 
         if nyan_objects:
             for nyan_object in nyan_objects:

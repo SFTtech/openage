@@ -13,7 +13,7 @@ from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUP
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup,\
-    BuildingLineUpgrade, CivTeamBonus, CivBonus
+    CivTeamBonus, CivBonus
 
 
 class AoCTechSubprocessor:

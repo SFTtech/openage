@@ -2235,7 +2235,73 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        # TODO: Implement
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_ref = "%s.Formation" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Formation", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Formation")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Formation definitions
+        if line.get_class_id() in (6,):
+            subformation = dataset.pregen_nyan_objects["aux.formation.subformation.types.Infantry"].get_nyan_object()
+
+        elif line.get_class_id() in (12, 47):
+            subformation = dataset.pregen_nyan_objects["aux.formation.subformation.types.Cavalry"].get_nyan_object()
+
+        elif line.get_class_id() in (0, 23, 36, 44, 55):
+            subformation = dataset.pregen_nyan_objects["aux.formation.subformation.types.Ranged"].get_nyan_object()
+
+        elif line.get_class_id() in (2, 13, 18, 20, 35, 43, 51, 59):
+            subformation = dataset.pregen_nyan_objects["aux.formation.subformation.types.Siege"].get_nyan_object()
+
+        else:
+            subformation = dataset.pregen_nyan_objects["aux.formation.subformation.types.Support"].get_nyan_object()
+
+        formation_names = ["Line", "Staggered", "Box", "Flank"]
+
+        formation_defs = []
+        for formation_name in formation_names:
+            ge_formation_ref = "%s.Formation.%s" % (game_entity_name, formation_name)
+            ge_formation_raw_api_object = RawAPIObject(ge_formation_ref,
+                                                       formation_name,
+                                                       dataset.nyan_api_objects)
+            ge_formation_raw_api_object.add_raw_parent("engine.aux.game_entity_formation.GameEntityFormation")
+            ge_formation_location = ExpectedPointer(line, ability_ref)
+            ge_formation_raw_api_object.set_location(ge_formation_location)
+
+            # Formation
+            formation_ref = "aux.formation.types.%s" % (formation_name)
+            formation = dataset.pregen_nyan_objects[formation_ref].get_nyan_object()
+            ge_formation_raw_api_object.add_raw_member("formation",
+                                                       formation,
+                                                       "engine.aux.game_entity_formation.GameEntityFormation")
+
+            # Subformation
+            ge_formation_raw_api_object.add_raw_member("subformation",
+                                                       subformation,
+                                                       "engine.aux.game_entity_formation.GameEntityFormation")
+
+            line.add_raw_api_object(ge_formation_raw_api_object)
+            ge_formation_expected_pointer = ExpectedPointer(line, ge_formation_ref)
+            formation_defs.append(ge_formation_expected_pointer)
+
+        ability_raw_api_object.add_raw_member("formations",
+                                              formation_defs,
+                                              "engine.ability.type.Formation")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
 
     @staticmethod
     def foundation_ability(line, terrain_id=-1):

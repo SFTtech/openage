@@ -199,10 +199,10 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.ability.type.FormFormation
+    # engine.ability.type.Formation
     parents = [api_objects["engine.ability.Ability"]]
-    nyan_object = NyanObject("FormFormation", parents)
-    fqon = "engine.ability.type.FormFormation"
+    nyan_object = NyanObject("Formation", parents)
+    fqon = "engine.ability.type.Formation"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2440,8 +2440,8 @@ def _insert_members(api_objects):
     member = NyanMember("height", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.ability.type.FormFormation
-    api_object = api_objects["engine.ability.type.FormFormation"]
+    # engine.ability.type.Formation
+    api_object = api_objects["engine.ability.type.Formation"]
 
     set_type = api_objects["engine.aux.game_entity_formation.GameEntityFormation"]
     member = NyanMember("formations", MemberType.SET, None, None, 0, set_type, False)
