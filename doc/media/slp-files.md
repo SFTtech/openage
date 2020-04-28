@@ -486,7 +486,7 @@ The pixel count is 2 which tells us that an array of 2 indices will follow
 `cmd_byte`. Therefore, the bytes `0x55` and `0xF4` belong to the drawing
 command.
 
-The next `cmd_byte` is `0xF4`:
+The next `cmd_byte` is `0x19`:
 
 ```
 second cmd_byte = 0x19 = 0b00011001
