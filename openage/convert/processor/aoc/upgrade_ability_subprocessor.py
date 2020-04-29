@@ -4,7 +4,7 @@
 Creates upgrade patches for abilities.
 """
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieAmbientGroup, GenieVariantGroup, GenieUnitLineGroup
+    GenieAmbientGroup, GenieVariantGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS,\
     AMBIENT_GROUP_LOOKUPS, UNIT_LINE_LOOKUPS, TECH_GROUP_LOOKUPS,\
     COMMAND_TYPE_LOOKUPS, VARIANT_GROUP_LOOKUPS
@@ -425,7 +425,6 @@ class AoCUgradeAbilitySubprocessor:
             name_lookup_dict = UNIT_LINE_LOOKUPS
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
 
         if diff:
             diff_damage_graphics = diff.get_member("damage_graphics")
@@ -452,7 +451,7 @@ class AoCUgradeAbilitySubprocessor:
             # Wrapper
             wrapper_name = "Change%sDamageGraphic%sWrapper" % (game_entity_name,
                                                                str(percentage))
-            wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -466,12 +465,12 @@ class AoCUgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
 
             else:
-                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, tech_name))
+                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
 
             # Nyan patch
             nyan_patch_name = "Change%sDamageGraphic%s" % (game_entity_name,
                                                            str(percentage))
-            nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
             nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,

@@ -480,6 +480,8 @@ class AoCUpgradeAttributeSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -499,6 +501,8 @@ class AoCUpgradeAttributeSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -1058,6 +1062,8 @@ class AoCUpgradeAttributeSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -1077,6 +1083,8 @@ class AoCUpgradeAttributeSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -2118,9 +2126,79 @@ class AoCUpgradeAttributeSubprocessor:
         :returns: The expected pointers for the generated patches.
         :rtype: list
         """
+        head_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
         patches = []
 
-        # TODO: Tied to LineOfSight in openage
+        obj_id = converter_group.get_id()
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+
+        else:
+            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+
+        stance_names = ["Aggressive", "Defensive", "StandGround", "Passive"]
+
+        for stance_name in stance_names:
+            patch_target_ref = "%s.GameEntityStance.%s" % (game_entity_name, stance_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+            # Wrapper
+            wrapper_name = "Change%s%sSearchRangeWrapper" % (game_entity_name, stance_name)
+            wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+            wrapper_location = ExpectedPointer(converter_group, obj_name)
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                                  wrapper_name,
+                                                  dataset.nyan_api_objects,
+                                                  wrapper_location)
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+
+            # Nyan patch
+            nyan_patch_name = "Change%s%sSearchRange" % (game_entity_name, stance_name)
+            nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                     nyan_patch_name,
+                                                     dataset.nyan_api_objects,
+                                                     nyan_patch_location)
+            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+            nyan_patch_raw_api_object.add_raw_patch_member("search_range",
+                                                           value,
+                                                           "engine.aux.game_entity_stance.GameEntityStance",
+                                                           operator)
+
+            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+            wrapper_raw_api_object.add_raw_member("patch",
+                                                  patch_expected_pointer,
+                                                  "engine.aux.patch.Patch")
+
+            if team:
+                wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+                stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                           dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+                wrapper_raw_api_object.add_raw_member("stances",
+                                                      stances,
+                                                      "engine.aux.patch.type.DiplomaticPatch")
+
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+            patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -2207,5 +2285,7 @@ class AoCUpgradeAttributeSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches

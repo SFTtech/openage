@@ -100,7 +100,6 @@ class AoCTechSubprocessor:
             effects = converter_group.get_effects()
 
             # Change converter group here, so that the Civ object gets the patches
-            # TODO: Solve this furher down the line
             converter_group = dataset.civ_groups[converter_group.get_civilization()]
             team_bonus = True
 
@@ -108,7 +107,6 @@ class AoCTechSubprocessor:
             effects = converter_group.get_effects()
 
             # Change converter group here, so that the Civ object gets the patches
-            # TODO: Solve this furher down the line
             converter_group = dataset.civ_groups[converter_group.get_civilization()]
 
         else:
