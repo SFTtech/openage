@@ -280,7 +280,7 @@ class AoCNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.trade_ability(unit_line))
 
         # =======================================================================
-        # TODO: Everything with Progress objects
+        # TODO: Transform
         # =======================================================================
         raw_api_object.add_raw_member("abilities", abilities_set,
                                       "engine.aux.game_entity.GameEntity")
@@ -447,9 +447,6 @@ class AoCNyanSubprocessor:
             # Market trading
             abilities_set.extend(AoCAbilitySubprocessor.exchange_resources_ability(building_line))
 
-        # =======================================================================
-        # TODO: Everything with Progress objects
-        # =======================================================================
         raw_api_object.add_raw_member("abilities", abilities_set,
                                       "engine.aux.game_entity.GameEntity")
 

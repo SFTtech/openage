@@ -1224,6 +1224,41 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(fallback_raw_api_object)
         pregen_nyan_objects.update({fallback_ref_in_modpack: fallback_raw_api_object})
 
+        # =======================================================================
+        # Calculation type Construct
+        # =======================================================================
+        calc_parent = "engine.aux.calculation_type.type.Hyperbolic"
+        calc_location = "data/resistance/discrete/flat_attribute_change/"
+
+        calc_ref_in_modpack = "aux.calculation_type.construct_calculation.BuildingConstruct"
+        calc_raw_api_object = RawAPIObject(calc_ref_in_modpack,
+                                           "BuildingConstruct",
+                                           api_objects,
+                                           calc_location)
+        calc_raw_api_object.set_filename("construct_calculation")
+        calc_raw_api_object.add_raw_parent(calc_parent)
+
+        # Formula: (scale_factor * val)/(count_effectors - shift_x) + shift_y
+        # AoE2: (3 * construction_time) / (vil_count + 2)
+
+        # Shift x
+        calc_raw_api_object.add_raw_member("shift_x",
+                                           -2,
+                                           calc_parent)
+
+        # Shift y
+        calc_raw_api_object.add_raw_member("shift_y",
+                                           0,
+                                           calc_parent)
+
+        # Scale
+        calc_raw_api_object.add_raw_member("scale_factor",
+                                           3,
+                                           calc_parent)
+
+        pregen_converter_group.add_raw_api_object(calc_raw_api_object)
+        pregen_nyan_objects.update({calc_ref_in_modpack: calc_raw_api_object})
+
     @staticmethod
     def _generate_modifiers(full_data_set, pregen_converter_group):
         """

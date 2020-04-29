@@ -566,6 +566,9 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         """
         return len(self.gatherer_ids) > 0
 
+    def is_repairable(self):
+        return True
+
     def is_trade_post(self):
         """
         Returns True if the building is traded with.

@@ -224,7 +224,7 @@ class AoCCivSubprocessor:
                     cls._idle_graphics_set(unit_line, civ_idle_animation_id,
                                            graphics_set[1], graphics_set[2])
 
-                # TODO: Other unit animations
+                # TODO: Move, Die, Despawn, Attack
 
     @classmethod
     def _setup_civ_bonus(cls, civ_group):
@@ -737,7 +737,7 @@ class AoCCivSubprocessor:
                                               dataset.nyan_api_objects)
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
-        # Store cib graphic changes next to their game entity definition,
+        # Store civ graphic changes next to their game entity definition,
         wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                             % (name_lookup_dict[head_unit_id][1]))
         wrapper_raw_api_object.set_filename("%s_graphics_set" % (graphics_set_filename_prefix))

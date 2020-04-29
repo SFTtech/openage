@@ -80,7 +80,7 @@ class AoCAuxiliarySubprocessor:
                                                 game_entity_expected_pointer,
                                                 "engine.aux.create.CreatableGameEntity")
 
-        # Cost
+        # Cost (construction)
         cost_name = "%s.CreatableGameEntity.%sCost" % (game_entity_name, game_entity_name)
         cost_raw_api_object = RawAPIObject(cost_name,
                                            "%sCost" % (game_entity_name),
@@ -94,7 +94,25 @@ class AoCAuxiliarySubprocessor:
                                            payment_mode,
                                            "engine.aux.cost.Cost")
 
+        if isinstance(line, GenieBuildingLineGroup) or line.get_class_id() in (2, 13, 20, 21, 22, 55):
+            # Cost (repair) for buildings
+            cost_repair_name = "%s.CreatableGameEntity.%sRepairCost" % (game_entity_name,
+                                                                        game_entity_name)
+            cost_repair_raw_api_object = RawAPIObject(cost_repair_name,
+                                                      "%sRepairCost" % (game_entity_name),
+                                                      dataset.nyan_api_objects)
+            cost_repair_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
+            creatable_expected_pointer = ExpectedPointer(line, obj_ref)
+            cost_repair_raw_api_object.set_location(creatable_expected_pointer)
+
+            payment_repair_mode = dataset.nyan_api_objects["engine.aux.payment_mode.type.Adaptive"]
+            cost_repair_raw_api_object.add_raw_member("payment_mode",
+                                                      payment_repair_mode,
+                                                      "engine.aux.cost.Cost")
+            line.add_raw_api_object(cost_repair_raw_api_object)
+
         cost_amounts = []
+        cost_repair_amounts = []
         for resource_amount in current_unit.get_member("resource_cost").get_value():
             resource_id = resource_amount.get_value()["type_id"].get_value()
 
@@ -149,9 +167,35 @@ class AoCAuxiliarySubprocessor:
             cost_amounts.append(cost_amount_expected_pointer)
             line.add_raw_api_object(cost_amount)
 
+            if isinstance(line, GenieBuildingLineGroup) or line.get_class_id() in (2, 13, 20, 21, 22, 55):
+                # Cost for repairing = half of the construction cost
+                cost_amount_name = "%s.%sAmount" % (cost_repair_name, resource_name)
+                cost_amount = RawAPIObject(cost_amount_name,
+                                           "%sAmount" % resource_name,
+                                           dataset.nyan_api_objects)
+                cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
+                cost_expected_pointer = ExpectedPointer(line, cost_repair_name)
+                cost_amount.set_location(cost_expected_pointer)
+
+                cost_amount.add_raw_member("type",
+                                           resource,
+                                           "engine.aux.resource.ResourceAmount")
+                cost_amount.add_raw_member("amount",
+                                           amount / 2,
+                                           "engine.aux.resource.ResourceAmount")
+
+                cost_amount_expected_pointer = ExpectedPointer(line, cost_amount_name)
+                cost_repair_amounts.append(cost_amount_expected_pointer)
+                line.add_raw_api_object(cost_amount)
+
         cost_raw_api_object.add_raw_member("amount",
                                            cost_amounts,
                                            "engine.aux.cost.type.ResourceCost")
+
+        if isinstance(line, GenieBuildingLineGroup) or line.get_class_id() in (2, 13, 20, 21, 22, 55):
+            cost_repair_raw_api_object.add_raw_member("amount",
+                                                      cost_repair_amounts,
+                                                      "engine.aux.cost.type.ResourceCost")
 
         cost_expected_pointer = ExpectedPointer(line, cost_name)
         creatable_raw_api_object.add_raw_member("cost",

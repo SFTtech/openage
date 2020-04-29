@@ -2495,7 +2495,7 @@ class AoCAbilitySubprocessor:
         :rtype: list
         """
         if isinstance(line, GenieVillagerGroup):
-            gatherers = line.variants[1].line
+            gatherers = line.variants[0].line
 
         else:
             gatherers = [line.line[0]]

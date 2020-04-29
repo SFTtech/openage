@@ -10,6 +10,7 @@ from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup
+from openage.nyan.nyan_structs import MemberSpecialValue
 
 
 class AoCEffectSubprocessor:
@@ -329,8 +330,6 @@ class AoCEffectSubprocessor:
         """
         Creates effects that are used for repairing (unit command: 106)
 
-        TODO: Cost
-
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
@@ -415,6 +414,14 @@ class AoCEffectSubprocessor:
             repair_raw_api_object.add_raw_member("ignore_protection",
                                                  [],
                                                  effect_parent)
+
+            # Repair cost
+            repair_raw_api_object.add_raw_parent("engine.effect.specialization.CostEffect")
+            cost_ref = "%s.CreatableGameEntity.%sRepairCost" % (game_entity_name, game_entity_name)
+            cost_expected_pointer = ExpectedPointer(repairable_line, cost_ref)
+            repair_raw_api_object.add_raw_member("cost",
+                                                 cost_expected_pointer,
+                                                 "engine.effect.specialization.CostEffect")
 
             line.add_raw_api_object(repair_raw_api_object)
             repair_expected_pointer = ExpectedPointer(line, repair_ref)
@@ -735,8 +742,6 @@ class AoCEffectSubprocessor:
         """
         Creates resistances that are used for repairing (unit command: 106)
 
-        TODO: StackedResistance
-
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
@@ -798,6 +803,26 @@ class AoCEffectSubprocessor:
                                                  rate_expected_pointer,
                                                  resistance_parent)
 
+        # Stacking of villager repair HP increase
+        resistance_raw_api_object.add_raw_parent("engine.resistance.specialization.StackedResistance")
+
+        # Stack limit
+        resistance_raw_api_object.add_raw_member("stack_limit",
+                                                 MemberSpecialValue.NYAN_INF,
+                                                 "engine.resistance.specialization.StackedResistance")
+
+        # Calculation type
+        calculation_type = dataset.pregen_nyan_objects["aux.calculation_type.construct_calculation.BuildingConstruct"].get_nyan_object()
+        resistance_raw_api_object.add_raw_member("calculation_type",
+                                                 calculation_type,
+                                                 "engine.resistance.specialization.StackedResistance")
+
+        # Calculation type
+        distribution_type = dataset.nyan_api_objects["engine.aux.distribution_type.type.Mean"]
+        resistance_raw_api_object.add_raw_member("distribution_type",
+                                                 distribution_type,
+                                                 "engine.resistance.specialization.StackedResistance")
+
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
         resistances.append(resistance_expected_pointer)
@@ -808,8 +833,6 @@ class AoCEffectSubprocessor:
     def get_construct_resistances(line, ability_ref):
         """
         Creates resistances that are used for constructing (unit command: 101)
-
-        TODO: StackedResistance
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
@@ -856,6 +879,26 @@ class AoCEffectSubprocessor:
         resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
         resistances.append(resistance_expected_pointer)
 
+        # Stacking of villager construction times
+        resistance_raw_api_object.add_raw_parent("engine.resistance.specialization.StackedResistance")
+
+        # Stack limit
+        resistance_raw_api_object.add_raw_member("stack_limit",
+                                                 MemberSpecialValue.NYAN_INF,
+                                                 "engine.resistance.specialization.StackedResistance")
+
+        # Calculation type
+        calculation_type = dataset.pregen_nyan_objects["aux.calculation_type.construct_calculation.BuildingConstruct"].get_nyan_object()
+        resistance_raw_api_object.add_raw_member("calculation_type",
+                                                 calculation_type,
+                                                 "engine.resistance.specialization.StackedResistance")
+
+        # Calculation type
+        distribution_type = dataset.nyan_api_objects["engine.aux.distribution_type.type.Mean"]
+        resistance_raw_api_object.add_raw_member("distribution_type",
+                                                 distribution_type,
+                                                 "engine.resistance.specialization.StackedResistance")
+
         # Health
         resistance_ref = "%s.ConstructHP" % (ability_ref)
         resistance_raw_api_object = RawAPIObject(resistance_ref,
@@ -871,6 +914,26 @@ class AoCEffectSubprocessor:
         resistance_raw_api_object.add_raw_member("type",
                                                  change_type,
                                                  attr_resistance_parent)
+
+        # Stacking of villager construction HP increase
+        resistance_raw_api_object.add_raw_parent("engine.resistance.specialization.StackedResistance")
+
+        # Stack limit
+        resistance_raw_api_object.add_raw_member("stack_limit",
+                                                 MemberSpecialValue.NYAN_INF,
+                                                 "engine.resistance.specialization.StackedResistance")
+
+        # Calculation type
+        calculation_type = dataset.pregen_nyan_objects["aux.calculation_type.construct_calculation.BuildingConstruct"].get_nyan_object()
+        resistance_raw_api_object.add_raw_member("calculation_type",
+                                                 calculation_type,
+                                                 "engine.resistance.specialization.StackedResistance")
+
+        # Calculation type
+        distribution_type = dataset.nyan_api_objects["engine.aux.distribution_type.type.Mean"]
+        resistance_raw_api_object.add_raw_member("distribution_type",
+                                                 distribution_type,
+                                                 "engine.resistance.specialization.StackedResistance")
 
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
