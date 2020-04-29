@@ -1,7 +1,9 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
-cmake_minimum_required(VERSION 3.8.0)
-# required for CMAKE_CXX_STANDARD for C++17
+cmake_minimum_required(VERSION 3.12)
+
+# required for FindPython3.cmake
+# >3.8 required for CMAKE_CXX_STANDARD for C++17
 
 # main build configuration file
 
@@ -47,6 +49,7 @@ foreach(pol
         CMP0071  # enable automoc for generated files
         CMP0072  # prefers GLVND by default FindOpenGL
         CMP0048  # project() command manages VERSION variables
+        CMP0094  # take the first satisfying Python version
        )
 	if (POLICY ${pol})
 		cmake_policy(SET ${pol} NEW)

@@ -1,4 +1,4 @@
-# Copyright 2017-2019 the openage authors. See copying.md for legal info.
+# Copyright 2017-2020 the openage authors. See copying.md for legal info.
 
 if(NOT forward_variables)
 	message(FATAL_ERROR "CMake configuration variables not available. Please include(ForwardVariables.cmake)")
@@ -68,9 +68,7 @@ endif()
 if((EXISTS ${POWERSHELL_COMMAND}) AND (EXISTS ${APPLOCAL_SCRIPT}))
 	foreach(file ${CMAKE_INSTALL_MANIFEST_FILES})
 		if(file MATCHES "\\.dll$")
-			# DEBUG
-			# message(STATUS "Use this command manually for diagnosing: ${POWERSHELL_COMMAND} ${APPLOCAL_SCRIPT} -targetBinary ${file} -installedDir ${vcpkg_dir}/bin -tlogFile ${LOGFILES_DIR}/applocal.log -copiedFilesLog ${LOGFILES_DIR}/applocal_copied_files.log!")
-
+			message(STATUS "Calling applocal.ps1 with ${file}.")
 			execute_process(COMMAND "${POWERSHELL_COMMAND}" "${APPLOCAL_SCRIPT}"
 					-targetBinary "${file}"
 					-installedDir "${vcpkg_dir}/bin"
