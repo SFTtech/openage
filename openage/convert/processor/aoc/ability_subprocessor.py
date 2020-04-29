@@ -2152,7 +2152,61 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        # TODO: Implement
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        resource_names = ["Food", "Wood", "Stone"]
+
+        abilities = []
+        for resource_name in resource_names:
+            ability_name = "MarketExchange%s" % (resource_name)
+            ability_ref = "%s.%s" % (game_entity_name, ability_name)
+            ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
+            ability_raw_api_object.add_raw_parent("engine.ability.type.ExchangeResources")
+            ability_location = ExpectedPointer(line, game_entity_name)
+            ability_raw_api_object.set_location(ability_location)
+
+            # Resource that is exchanged (resource A)
+            resource_a = dataset.pregen_nyan_objects["aux.resource.types.%s" % (resource_name)].get_nyan_object()
+            ability_raw_api_object.add_raw_member("resource_a",
+                                                  resource_a,
+                                                  "engine.ability.type.ExchangeResources")
+
+            # Resource that is exchanged for (resource B)
+            resource_b = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
+            ability_raw_api_object.add_raw_member("resource_b",
+                                                  resource_b,
+                                                  "engine.ability.type.ExchangeResources")
+
+            # Exchange rate
+            exchange_rate = dataset.pregen_nyan_objects[("aux.resource.market_trading.Market%sExchangeRate"
+                                                         % (resource_name))].get_nyan_object()
+            ability_raw_api_object.add_raw_member("exchange_rate",
+                                                  exchange_rate,
+                                                  "engine.ability.type.ExchangeResources")
+
+            # Exchange modes
+            exchange_modes = [
+                dataset.pregen_nyan_objects["aux.resource.market_trading.MarketBuyExchangeMode"].get_nyan_object(),
+                dataset.pregen_nyan_objects["aux.resource.market_trading.MarketSellExchangeMode"].get_nyan_object(),
+            ]
+            ability_raw_api_object.add_raw_member("exchange_modes",
+                                                  exchange_modes,
+                                                  "engine.ability.type.ExchangeResources")
+
+            line.add_raw_api_object(ability_raw_api_object)
+            ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+            abilities.append(ability_expected_pointer)
+
+        return abilities
 
     @staticmethod
     def exit_container_ability(line):
@@ -3767,8 +3821,7 @@ class AoCAbilitySubprocessor:
             raise Exception("Invalid position")
 
         projectile = dataset.genie_units[projectile_id]
-        # TODO: radiant?
-        arc = projectile.get_member("projectile_arc").get_value() * 180 / 3.14
+        arc = degrees(projectile.get_member("projectile_arc").get_value())
         ability_raw_api_object.add_raw_member("arc",
                                               arc,
                                               "engine.ability.type.Projectile")

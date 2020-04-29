@@ -443,6 +443,10 @@ class AoCNyanSubprocessor:
         if building_line.is_trade_post():
             abilities_set.append(AoCAbilitySubprocessor.trade_post_ability(building_line))
 
+        if building_line.get_id() == 84:
+            # Market trading
+            abilities_set.extend(AoCAbilitySubprocessor.exchange_resources_ability(building_line))
+
         # =======================================================================
         # TODO: Everything with Progress objects
         # =======================================================================

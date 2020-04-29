@@ -767,6 +767,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.aux.diplomatic_stance.type.Any
+    parents = [api_objects["engine.aux.diplomatic_stance.DiplomaticStance"]]
+    nyan_object = NyanObject("Any", parents)
+    fqon = "engine.aux.diplomatic_stance.type.Any"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.aux.diplomatic_stance.type.Self
     parents = [api_objects["engine.aux.diplomatic_stance.DiplomaticStance"]]
     nyan_object = NyanObject("Self", parents)
@@ -823,31 +830,24 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.exchange_mode.type.Fixed
+    # engine.aux.exchange_mode.type.Buy
     parents = [api_objects["engine.aux.exchange_mode.ExchangeMode"]]
-    nyan_object = NyanObject("Fixed", parents)
-    fqon = "engine.aux.exchange_mode.type.Fixed"
+    nyan_object = NyanObject("Buy", parents)
+    fqon = "engine.aux.exchange_mode.type.Buy"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.exchange_mode.volatile.Volatile
+    # engine.aux.exchange_mode.type.Sell
     parents = [api_objects["engine.aux.exchange_mode.ExchangeMode"]]
-    nyan_object = NyanObject("Volatile", parents)
-    fqon = "engine.aux.exchange_mode.volatile.Volatile"
+    nyan_object = NyanObject("Sell", parents)
+    fqon = "engine.aux.exchange_mode.type.Sell"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.exchange_mode.volatile.VolatileFlat
-    parents = [api_objects["engine.aux.exchange_mode.volatile.Volatile"]]
-    nyan_object = NyanObject("VolatileFlat", parents)
-    fqon = "engine.aux.exchange_mode.volatile.VolatileFlat"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.exchange_scope.ExchangePool
+    # engine.aux.exchange_rate.ExchangeRate
     parents = [api_objects["engine.root.Entity"]]
-    nyan_object = NyanObject("ExchangePool", parents)
-    fqon = "engine.aux.exchange_pool.ExchangePool"
+    nyan_object = NyanObject("ExchangeRate", parents)
+    fqon = "engine.aux.exchange_rate.ExchangeRate"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -1198,6 +1198,48 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.aux.placement_mode.PlacementMode"]]
     nyan_object = NyanObject("Replace", parents)
     fqon = "engine.aux.placement_mode.type.Replace"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.price_change.PriceChange
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("PriceChange", parents)
+    fqon = "engine.aux.price_change.PriceChange"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.price_mode.PriceMode
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("PriceMode", parents)
+    fqon = "engine.aux.price_mode.PriceMode"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.price_mode.dynamic.Dynamic
+    parents = [api_objects["engine.aux.price_mode.PriceMode"]]
+    nyan_object = NyanObject("Dynamic", parents)
+    fqon = "engine.aux.price_mode.dynamic.Dynamic"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.price_mode.dynamic.type.DynamicFlat
+    parents = [api_objects["engine.aux.price_mode.dynamic.Dynamic"]]
+    nyan_object = NyanObject("DynamicFlat", parents)
+    fqon = "engine.aux.price_mode.dynamic.type.DynamicFlat"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.price_mode.type.Fixed
+    parents = [api_objects["engine.aux.price_mode.PriceMode"]]
+    nyan_object = NyanObject("Fixed", parents)
+    fqon = "engine.aux.price_mode.type.Fixed"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.price_pool.PricePool
+    parents = [api_objects["engine.root.Entity"]]
+    nyan_object = NyanObject("PricePool", parents)
+    fqon = "engine.aux.price_pool.PricePool"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2413,18 +2455,17 @@ def _insert_members(api_objects):
     # engine.ability.type.ExchangeResources
     api_object = api_objects["engine.ability.type.ExchangeResources"]
 
-    ref_object = api_objects["engine.aux.cost.Cost"]
-    member = NyanMember("source_resources", ref_object, None, None, 0, None, False)
+    ref_object = api_objects["engine.aux.resource.Resource"]
+    member = NyanMember("resource_a", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    ref_object = api_objects["engine.aux.cost.Cost"]
-    member = NyanMember("target_resources", ref_object, None, None, 0, None, False)
+    ref_object = api_objects["engine.aux.resource.Resource"]
+    member = NyanMember("resource_b", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("source_fee", MemberType.FLOAT, None, None, 0, None, False)
-    api_object.add_member(member)
-    member = NyanMember("target_fee", MemberType.FLOAT, None, None, 0, None, False)
+    ref_object = api_objects["engine.aux.exchange_rate.ExchangeRate"]
+    member = NyanMember("exchange_rate", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.exchange_mode.ExchangeMode"]
-    member = NyanMember("exchange_mode", MemberType.SET, None, None, 0, set_type, False)
+    member = NyanMember("exchange_modes", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.ability.type.ExitContainer
@@ -3060,27 +3101,31 @@ def _insert_members(api_objects):
     member = NyanMember("placement_modes", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
-    # engine.aux.exchange_mode.volatile.Volatile
-    api_object = api_objects["engine.aux.exchange_mode.volatile.Volatile"]
+    # engine.aux.exchange_mode.ExchangeMode
+    api_object = api_objects["engine.aux.exchange_mode.ExchangeMode"]
 
-    member = NyanMember("source_min_amount", MemberType.INT, None, None, 0, None, False)
-    api_object.add_member(member)
-    member = NyanMember("source_max_amount", MemberType.INT, None, None, 0, None, False)
-    api_object.add_member(member)
-    member = NyanMember("target_min_amount", MemberType.INT, None, None, 0, None, False)
-    api_object.add_member(member)
-    member = NyanMember("target_max_amount", MemberType.INT, None, None, 0, None, False)
-    api_object.add_member(member)
-    ref_object = api_objects["engine.aux.exchange_pool.ExchangePool"]
-    member = NyanMember("scope", ref_object, None, None, 0, None, True)
+    member = NyanMember("fee_multiplier", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.aux.exchange_mode.volatile.VolatileFlat
-    api_object = api_objects["engine.aux.exchange_mode.volatile.Volatile"]
+    # engine.aux.exchange_rate.ExchangeRate
+    api_object = api_objects["engine.aux.exchange_rate.ExchangeRate"]
 
-    member = NyanMember("change_source_amount", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("base_price", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("change_target_amount", MemberType.INT, None, None, 0, None, False)
+    ref_object = api_objects["engine.aux.price_mode.PriceMode"]
+    member = NyanMember("price_adjust", ref_object, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
+    api_object.add_member(member)
+    ref_object = api_objects["engine.aux.price_pool.PricePool"]
+    member = NyanMember("price_pool", ref_object, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, True)
+    api_object.add_member(member)
+
+    # engine.aux.price_pool.PricePool
+    api_object = api_objects["engine.aux.price_pool.PricePool"]
+
+    set_type = api_objects["engine.aux.diplomatic_stance.DiplomaticStance"]
+    member = NyanMember("diplomatic_stances", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.aux.formation.Formation
@@ -3275,6 +3320,30 @@ def _insert_members(api_objects):
 
     set_type = api_objects["engine.aux.game_entity.GameEntity"]
     member = NyanMember("game_entities", MemberType.SET, None, None, 0, set_type, False)
+    api_object.add_member(member)
+
+    # engine.aux.price_change.PriceChange
+    api_object = api_objects["engine.aux.price_change.PriceChange"]
+
+    ref_object = api_objects["engine.aux.exchange_mode.ExchangeMode"]
+    member = NyanMember("exchange_mode", ref_object, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("change_value", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.price_mode.dynamic.Dynamic
+    api_object = api_objects["engine.aux.price_mode.dynamic.Dynamic"]
+
+    member = NyanMember("min_price", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+    member = NyanMember("max_price", MemberType.FLOAT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.price_mode.dynamic.type.DynamicFlat
+    api_object = api_objects["engine.aux.price_mode.dynamic.type.DynamicFlat"]
+
+    set_type = api_objects["engine.aux.price_change.PriceChange"]
+    member = NyanMember("change_settings", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
     # engine.aux.production_mode.type.Creatables

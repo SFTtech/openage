@@ -233,8 +233,7 @@ class ConverterObjectGroup:
             self.add_raw_api_object(subobject)
 
     def __repr__(self):
-        raise NotImplementedError(
-            "return short description of the object %s" % (type(self)))
+        return "ConverterObjectGroup<%s>" % (self.group_id)
 
 
 class RawAPIObject:
