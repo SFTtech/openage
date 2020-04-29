@@ -1,4 +1,4 @@
-# Copyright 2013-2019 the openage authors. See copying.md for legal info.
+# Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
 """
 The Python part of openage, a free engine re-write of
@@ -30,18 +30,34 @@ else:
 
     LONGVERSION = (
         "openage {version}{devmode}\n"
-        "{config_options}\n"
+        "{config_options}, ci-cfg {cicfg}\n"
         "{compiler} [{compilerflags}]\n"
-        "Cython {cython}\n"
-        "CI config version {cicfg}"
+        "\n"
+        "== Python ==\n"
+        "Python        {python_interpreter}\n"
+        "Python C API  {python_c_api}\n"
+        "Cython        {cython}\n"
+        "Jinja2        {jinja2}\n"
+        "NumPy         {numpy}\n"
+        "Pillow        {pillow}\n"
+        "Pygments      {pygments}\n"
+        "\n"
+        "== C++ =="
     ).format(
         version=config.VERSION,
         devmode=(" [devmode]" if config.DEVMODE else ""),
         config_options=config.CONFIG_OPTIONS,
         compiler=config.COMPILER,
         compilerflags=config.COMPILERFLAGS,
+        cicfg=config.CICFGVERSION,
+        python_interpreter=config.PYTHONINTERPRETER,
+        python_c_api=config.PYTHONCAPI,
         cython=config.CYTHONVERSION,
-        cicfg=config.CICFGVERSION
+        jinja2=config.JINJAVERSION,
+        numpy=config.NUMPYVERSION,
+        pillow=config.PILVERSION,
+        pygments=config.PYGMENTSVERSION,
     )
+
 
 setup_logging()

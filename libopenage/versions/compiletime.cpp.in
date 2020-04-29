@@ -1,0 +1,12 @@
+// Copyright 2020-2020 the openage authors. See copying.md for legal info.
+
+// ${AUTOGEN_WARNING}
+
+#include "compiletime.h"
+
+namespace openage::versions {
+
+const char *const engine_version = "${VERSION_FULL_STRING}";
+const char *const nyan_version = "${nyan_VERSION}";
+
+} // namespace openage::versions

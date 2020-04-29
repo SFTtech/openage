@@ -1,0 +1,12 @@
+// Copyright 2020-2020 the openage authors. See copying.md for legal info.
+
+// ${AUTOGEN_WARNING}
+
+#pragma once
+
+namespace openage::versions {
+
+extern const char *const engine_version;
+extern const char *const nyan_version;
+
+} // namespace openage::versions
