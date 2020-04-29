@@ -1,5 +1,5 @@
 Any file in this project that doesn't state otherwise, and isn't listed as an
-exception below, is Copyright 2013-2018 The openage authors, and licensed
+exception below, is Copyright 2013-2020 The openage authors, and licensed
 under the terms of the GNU General Public License Version 3, or
 (at your option) any later version ("GPL3+").
 A copy of the license can be found in [legal/GPLV3](/legal/GPLv3).
