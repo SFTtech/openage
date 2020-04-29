@@ -47,7 +47,7 @@ def get_string_resources(args):
         count += read_age2_hd_3x_stringresources(stringres, srcdir)
 
     elif srcdir["language.dll"].is_file():
-        from .pefile import PEFile
+        from .langfile.pefile import PEFile
         names = ["language.dll", "language_x1.dll"]
         if has_x1_p1(args.game_versions):
             names.append("language_x1_p1.dll")

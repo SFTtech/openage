@@ -4,8 +4,8 @@
 Module for reading AoeII HD Edition text-based language files.
 """
 
-from .hardcoded.langcodes_hd import LANGCODE_MAP_HD
-from .pefile import PEFile
+from .langfile.langcodes_hd import LANGCODE_MAP_HD
+from .langfile.pefile import PEFile
 from ..log import dbg
 
 

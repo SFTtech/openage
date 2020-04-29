@@ -9,8 +9,6 @@ add_py_modules(
 	game_versions.py
 	hdlanguagefile.py
 	main.py
-	pefile.py
-	peresource.py
 	singlefile.py
 	slp_converter_pool.py
 	stringresource.py
@@ -32,6 +30,7 @@ add_subdirectory(export)
 add_subdirectory(gamedata)
 add_subdirectory(hardcoded)
 add_subdirectory(interface)
+add_subdirectory(langfile)
 add_subdirectory(nyan)
 add_subdirectory(opus)
 add_subdirectory(png)

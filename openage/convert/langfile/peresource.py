@@ -6,10 +6,10 @@ Provides PEResources, which reads the resource section from a PEFile.
 
 from collections import defaultdict
 
-from ..util.struct import NamedStruct
-from ..util.filelike.stream import StreamFragment
+from ...util.struct import NamedStruct
+from ...util.filelike.stream import StreamFragment
 
-from .hardcoded.langcodes import LANGCODES
+from .langcodes import LANGCODES
 
 # types for id in resource directory root node
 RESOURCE_TYPES = {
@@ -145,6 +145,7 @@ class PEResources:
 
     The constructor takes a PEFile object.
     """
+
     def __init__(self, pefile):
         self.data, self.datava = pefile.open_section('.rsrc')
 
