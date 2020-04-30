@@ -309,6 +309,11 @@ class Tech(GenieStructure):
                 (READ, "name", StorageType.STRING_MEMBER, "char[name_length]"),
             ])
 
+            if game_version[0] is GameEdition.AOE2DE:
+                data_format.extend([
+                    (READ, "repeatable", StorageType.INT_MEMBER, "int8_t"),
+                ])
+
         else:
             data_format.extend([
                 (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),

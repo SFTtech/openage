@@ -592,8 +592,20 @@ class UnitObject(GenieStructure):
 
         data_format.extend([
             (READ_EXPORT, "id0", StorageType.ID_MEMBER, "int16_t"),
-            (READ_EXPORT, "language_dll_name", StorageType.ID_MEMBER, "uint16_t"),
-            (READ_EXPORT, "language_dll_creation", StorageType.ID_MEMBER, "uint16_t"),
+        ])
+
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "language_dll_name", StorageType.ID_MEMBER, "uint32_t"),
+                (READ_EXPORT, "language_dll_creation", StorageType.ID_MEMBER, "uint32_t"),
+            ])
+        else:
+            data_format.extend([
+                (READ_EXPORT, "language_dll_name", StorageType.ID_MEMBER, "uint16_t"),
+                (READ_EXPORT, "language_dll_creation", StorageType.ID_MEMBER, "uint16_t"),
+            ])
+
+        data_format.extend([
             (READ_EXPORT, "unit_class", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int16_t",
                 type_name="unit_classes",
@@ -1175,6 +1187,14 @@ class ActionUnit(MovingUnit):
             (READ_EXPORT, "drop_site1", StorageType.ID_MEMBER, "int16_t"),  # alternative unit id
             # if a task is not found in the current unit, other units with the same
             # task group are tried.
+        ]
+
+        if game_version[0] is GameEdition.AOE2DE:
+            data_format.extend([
+                (READ_EXPORT, "drop_site2", StorageType.ID_MEMBER, "int16_t"),
+            ])
+
+        data_format.extend([
             (READ_EXPORT, "task_group", StorageType.ID_MEMBER, "int8_t"),   # 1: male villager; 2: female villager; 3+: free slots
                                                                             # basically this
                                                                             # creates a "swap
@@ -1186,7 +1206,7 @@ class ActionUnit(MovingUnit):
             (READ_EXPORT, "command_sound_id", StorageType.ID_MEMBER, "int16_t"),
             # sound when the command is done (e.g. unit stops at target position)
             (READ_EXPORT, "stop_sound_id", StorageType.ID_MEMBER, "int16_t"),
-        ]
+        ])
 
         if game_version[0] is GameEdition.AOE2DE:
             data_format.extend([
@@ -1199,7 +1219,7 @@ class ActionUnit(MovingUnit):
             (READ, "run_pattern", StorageType.ID_MEMBER, "int8_t"),
         ])
 
-        if game_version[0] in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0] in (GameEdition.ROR, GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
                 (READ_EXPORT, "unit_command_count", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "unit_commands", StorageType.ARRAY_CONTAINER, SubdataMember(

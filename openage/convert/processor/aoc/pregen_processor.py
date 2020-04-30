@@ -707,7 +707,7 @@ class AoCPregenSubprocessor:
 
         # Base price
         exchange_rate_raw_api_object.add_raw_member("base_price",
-                                                    1.0,
+                                                    1.3,
                                                     exchange_rate_parent)
 
         # Price adjust method
