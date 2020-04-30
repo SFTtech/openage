@@ -154,6 +154,7 @@ class GameEdition(enum.Enum):
             MediaType.DATFILE: ["data/empires2_x1_p1.dat"],
             MediaType.GAMEDATA: ["data/gamedata_x1_p1.drs"],
             MediaType.GRAPHICS: ["data/graphics.drs"],
+            MediaType.LANGUAGE: ["language.dll", "language_x1.dll", "language_x1_p1.dll"],
             MediaType.PALETTES: ["data/interfac.drs"],
             MediaType.SOUNDS: ["data/sounds.drs", "data/sounds_x1.drs"],
             MediaType.INTERFACE: ["data/interfac.drs"],

@@ -4,7 +4,7 @@
 
 from collections import defaultdict
 
-from .export import data_definition, struct_definition
+from ..export import data_definition, struct_definition
 from openage.convert.dataformat import genie_structure
 
 
@@ -24,6 +24,12 @@ class StringResource(genie_structure.GenieStructure):
         """
         for lang, langstrings in stringtable.items():
             self.strings[lang].update(langstrings)
+
+    def get_tables(self):
+        """
+        Returns the stringtable.
+        """
+        return self.strings
 
     def dump(self, filename):
         data = list()

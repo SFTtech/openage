@@ -19,15 +19,16 @@ from .export.data_formatter import DataFormatter
 from .gamedata.empiresdat import load_gamespec, EmpiresDat
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
-from .hdlanguagefile import (read_age2_hd_fe_stringresources,
-                             read_age2_hd_3x_stringresources)
+from .langfile.hdlanguagefile import (read_age2_hd_fe_stringresources,
+                                      read_age2_hd_3x_stringresources)
 from .interface.cutter import InterfaceCutter
 from .interface.rename import hud_rename
 from .processor.aoc.processor import AoCProcessor
 from .slp_converter_pool import SLPConverterPool
-from .stringresource import StringResource
+from .langfile.stringresource import StringResource
 from .processor.modpack_exporter import ModpackExporter
 from openage.convert.dataformat.media_types import MediaType
+from openage.convert.dataformat.version_detect import GameEdition
 
 
 def get_string_resources(args):
@@ -36,31 +37,25 @@ def get_string_resources(args):
     stringres = StringResource()
 
     srcdir = args.srcdir
-    count = 0
+    game_edition = args.game_version[0]
 
-    # AoK:TC uses .DLL PE files for its string resources,
-    # HD uses plaintext files
-    if GameVersion.age2_hd_fe in args.game_versions:
-        count += read_age2_hd_fe_stringresources(stringres, srcdir["resources"])
+    language_files = game_edition.media_paths[MediaType.LANGUAGE]
 
-    elif GameVersion.age2_hd_3x in args.game_versions:
-        count += read_age2_hd_3x_stringresources(stringres, srcdir)
+    from .langfile.pefile import PEFile
 
-    elif srcdir["language.dll"].is_file():
-        from .langfile.pefile import PEFile
-        names = ["language.dll", "language_x1.dll"]
-        if has_x1_p1(args.game_versions):
-            names.append("language_x1_p1.dll")
-        for name in names:
-            pefile = PEFile(srcdir[name].open('rb'))
+    for language_file in language_files:
+        if game_edition in (GameEdition.ROR, GameEdition.AOC):
+            # AoC/RoR use .DLL PE files for their string resources
+            pefile = PEFile(srcdir[language_file].open('rb'))
             stringres.fill_from(pefile.resources().strings)
-            count += 1
 
-    if not count:
-        raise FileNotFoundError("could not find any language files")
+        elif game_edition is GameEdition.HDEDITION:
+            read_age2_hd_3x_stringresources(stringres, srcdir)
 
-    # TODO transform and cleanup the read strings:
-    #      convert formatting indicators from HTML to something sensible, etc
+        # TODO: Other game versions
+
+    # TODO: transform and cleanup the read strings:
+    #       convert formatting indicators from HTML to something sensible, etc
 
     return stringres
 
@@ -154,9 +149,13 @@ def convert_metadata(args):
     # TODO: Move this somewhere else
     args.converter = AoCProcessor
 
+    # Read
     yield "empires.dat"
     gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
-    modpacks = args.converter.convert(gamespec)
+    string_resources = get_string_resources(args)
+
+    # Convert
+    modpacks = args.converter.convert(gamespec, string_resources)
 
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)

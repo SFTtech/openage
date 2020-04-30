@@ -45,7 +45,7 @@ from openage.convert.dataformat.aoc.genie_terrain import GenieTerrainGroup
 class AoCProcessor:
 
     @classmethod
-    def convert(cls, gamespec):
+    def convert(cls, gamespec, string_resources):
         """
         Input game speification and media here and get a set of
         modpacks back.
@@ -60,7 +60,7 @@ class AoCProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        data_set = cls._pre_processor(gamespec)
+        data_set = cls._pre_processor(gamespec, string_resources)
 
         # Create the custom openae formats (nyan, sprite, terrain)
         data_set = cls._processor(data_set)
@@ -71,33 +71,34 @@ class AoCProcessor:
         return modpacks
 
     @classmethod
-    def _pre_processor(cls, gamespec):
+    def _pre_processor(cls, gamespec, string_resources):
         """
         Store data from the reader in a conversion container.
 
         :param gamespec: Gamedata from empires.dat file.
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
-        data_set = GenieObjectContainer()
+        dataset = GenieObjectContainer()
 
-        data_set.nyan_api_objects = load_api()
+        dataset.nyan_api_objects = load_api()
+        dataset.strings = string_resources
 
         info("Extracting Genie data...")
 
-        cls._extract_genie_units(gamespec, data_set)
-        cls._extract_genie_techs(gamespec, data_set)
-        cls._extract_genie_effect_bundles(gamespec, data_set)
-        cls._sanitize_effect_bundles(data_set)
-        cls._extract_genie_civs(gamespec, data_set)
-        cls._extract_age_connections(gamespec, data_set)
-        cls._extract_building_connections(gamespec, data_set)
-        cls._extract_unit_connections(gamespec, data_set)
-        cls._extract_tech_connections(gamespec, data_set)
-        cls._extract_genie_graphics(gamespec, data_set)
-        cls._extract_genie_sounds(gamespec, data_set)
-        cls._extract_genie_terrains(gamespec, data_set)
+        cls._extract_genie_units(gamespec, dataset)
+        cls._extract_genie_techs(gamespec, dataset)
+        cls._extract_genie_effect_bundles(gamespec, dataset)
+        cls._sanitize_effect_bundles(dataset)
+        cls._extract_genie_civs(gamespec, dataset)
+        cls._extract_age_connections(gamespec, dataset)
+        cls._extract_building_connections(gamespec, dataset)
+        cls._extract_unit_connections(gamespec, dataset)
+        cls._extract_tech_connections(gamespec, dataset)
+        cls._extract_genie_graphics(gamespec, dataset)
+        cls._extract_genie_sounds(gamespec, dataset)
+        cls._extract_genie_terrains(gamespec, dataset)
 
-        return data_set
+        return dataset
 
     @classmethod
     def _processor(cls, full_data_set):

@@ -28,6 +28,7 @@ class AoCPregenSubprocessor:
         cls._generate_effect_types(gamedata, pregen_converter_group)
         cls._generate_exchange_objects(gamedata, pregen_converter_group)
         cls._generate_formation_types(gamedata, pregen_converter_group)
+        cls._generate_language_objects(gamedata, pregen_converter_group)
         cls._generate_misc_effect_objects(gamedata, pregen_converter_group)
         cls._generate_modifiers(gamedata, pregen_converter_group)
         cls._generate_terrain_types(gamedata, pregen_converter_group)
@@ -1025,6 +1026,44 @@ class AoCPregenSubprocessor:
 
         pregen_converter_group.add_raw_api_object(subformation_raw_api_object)
         pregen_nyan_objects.update({subformation_ref_in_modpack: subformation_raw_api_object})
+
+    @staticmethod
+    def _generate_language_objects(full_data_set, pregen_converter_group):
+        """
+        Generate language objects from the string resources
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :param pregen_converter_group: GenieObjectGroup instance that stores
+                                       pregenerated API objects for referencing with
+                                       ExpectedPointer
+        :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        """
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
+        api_objects = full_data_set.nyan_api_objects
+
+        language_parent = "engine.aux.language.Language"
+        language_location = "data/aux/language/"
+
+        languages = full_data_set.strings.get_tables().keys()
+
+        for language in languages:
+            language_ref_in_modpack = "aux.language.%s" % (language)
+            language_raw_api_object = RawAPIObject(language_ref_in_modpack,
+                                                   language,
+                                                   api_objects,
+                                                   language_location)
+            language_raw_api_object.set_filename("min_damage")
+            language_raw_api_object.add_raw_parent(language_parent)
+
+            language_raw_api_object.add_raw_member("ietf_string",
+                                                   language,
+                                                   language_parent)
+
+            pregen_converter_group.add_raw_api_object(language_raw_api_object)
+            pregen_nyan_objects.update({language_ref_in_modpack: language_raw_api_object})
 
     @staticmethod
     def _generate_misc_effect_objects(full_data_set, pregen_converter_group):

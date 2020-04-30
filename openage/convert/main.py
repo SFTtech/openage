@@ -12,7 +12,7 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 
 from . import changelog
-from .game_versions import GameVersion, get_game_versions, Support, has_x1_p1
+from .game_versions import GameVersion, Support, has_x1_p1
 
 from ..log import warn, info, dbg
 from ..util.files import which
@@ -87,63 +87,6 @@ def mount_asset_dirs(srcdir, game_version):
                 else:
                     raise Exception("Media at path %s could not be found"
                                     % (path_to_media))
-
-    return result
-
-
-def mount_drs_archives(srcdir, game_versions=None):
-    """
-    Returns a Union path where srcdir is mounted at /,
-    and all the DRS files are mounted in subfolders.
-    """
-    from ..util.fslike.union import Union
-    from .drs import DRS
-
-    result = Union().root
-    result.mount(srcdir)
-
-    # hd edition mounting
-    if GameVersion.age2_hd_fe in game_versions:
-        result['graphics'].mount(srcdir['resources/_common/drs/graphics'])
-        result['interface'].mount(srcdir['resources/_common/drs/interface'])
-        result['sounds'].mount(srcdir['resources/_common/drs/sounds'])
-        result['gamedata'].mount(srcdir['resources/_common/drs/gamedata'])
-        if GameVersion.age2_hd_ak in game_versions:
-            result['gamedata'].mount(srcdir['resources/_common/drs/gamedata_x1'])
-        if GameVersion.age2_hd_rajas in game_versions:
-            result['gamedata'].mount(srcdir['resources/_common/drs/gamedata_x2'])
-        result['terrain'].mount(srcdir['resources/_common/drs/terrain'])
-        result['data'].mount(srcdir['resources/_common/dat'])
-
-        return result
-
-    def mount_drs(filename, target):
-        """
-        Mounts the DRS file from srcdir's filename at result's target.
-        """
-
-        drspath = srcdir[filename]
-        result[target].mount(DRS(drspath.open('rb')).root)
-
-    # non-hd file mounting
-    mount_drs("data/graphics.drs", "graphics")
-    mount_drs("data/interfac.drs", "interface")
-    mount_drs("data/sounds.drs", "sounds")
-    mount_drs("data/sounds_x1.drs", "sounds")
-    mount_drs("data/terrain.drs", "terrain")
-
-    if GameVersion.age2_hd_3x not in game_versions:
-        mount_drs("data/gamedata.drs", "gamedata")
-
-    if GameVersion.age2_tc_fe in game_versions:
-        mount_drs("games/forgotten empires/data/gamedata_x1.drs",
-                  "gamedata")
-        mount_drs("games/forgotten empires/data/gamedata_x1_p1.drs",
-                  "gamedata")
-    else:
-        mount_drs("data/gamedata_x1.drs", "gamedata")
-        if has_x1_p1(game_versions):
-            mount_drs("data/gamedata_x1_p1.drs", "gamedata")
 
     return result
 

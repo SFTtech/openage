@@ -21,6 +21,9 @@ class GenieObjectContainer(ConverterObjectContainer):
         # saved as RawAPIObjects
         self.pregen_nyan_objects = {}
 
+        # Strings
+        self.strings = None
+
         # Phase 1: Genie-like objects
         # ConverterObject types (the data from the game)
         # key: obj_id; value: ConverterObject instance

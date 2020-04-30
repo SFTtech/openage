@@ -7,11 +7,9 @@ add_py_modules(
 	driver.py
 	drs.py
 	game_versions.py
-	hdlanguagefile.py
 	main.py
 	singlefile.py
 	slp_converter_pool.py
-	stringresource.py
 	texture.py
 )
 

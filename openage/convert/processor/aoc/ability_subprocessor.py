@@ -3506,13 +3506,12 @@ class AoCAbilitySubprocessor:
         """
         Adds the Named ability to a line.
 
-        TODO: Lookup names from language.dll
-
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
+        current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -3545,8 +3544,14 @@ class AoCAbilitySubprocessor:
         name_location = ExpectedPointer(line, ability_ref)
         name_raw_api_object.set_location(name_location)
 
+        name_string_id = current_unit["language_dll_name"].get_value()
+        translations = AoCAbilitySubprocessor._create_language_strings(line,
+                                                                       name_string_id,
+                                                                       name_ref,
+                                                                       "%sName"
+                                                                       % (game_entity_name))
         name_raw_api_object.add_raw_member("translations",
-                                           [],
+                                           translations,
                                            "engine.aux.translated.type.TranslatedString")
 
         name_expected_pointer = ExpectedPointer(line, name_ref)
@@ -5941,3 +5946,39 @@ class AoCAbilitySubprocessor:
         sound_expected_pointer = ExpectedPointer(line, sound_ref)
 
         return sound_expected_pointer
+
+    @staticmethod
+    def _create_language_strings(line, string_id, obj_ref, obj_name_prefix):
+        """
+        Generates a sound for an ability.
+        """
+        dataset = line.data
+        string_resources = dataset.strings.get_tables()
+
+        string_objs = []
+        for language, strings in string_resources.items():
+            if string_id in strings.keys():
+                string_name = "%sString" % (obj_name_prefix)
+                string_ref = "%s.%s" % (obj_ref, string_name)
+                string_raw_api_object = RawAPIObject(string_ref, string_name,
+                                                     dataset.nyan_api_objects)
+                string_raw_api_object.add_raw_parent("engine.aux.language.LanguageTextPair")
+                string_location = ExpectedPointer(line, obj_ref)
+                string_raw_api_object.set_location(string_location)
+
+                # Language identifier
+                lang_expected_pointer = dataset.pregen_nyan_objects["aux.language.%s" % (language)].get_nyan_object()
+                string_raw_api_object.add_raw_member("language",
+                                                     lang_expected_pointer,
+                                                     "engine.aux.language.LanguageTextPair")
+
+                # String
+                string_raw_api_object.add_raw_member("string",
+                                                     strings[string_id],
+                                                     "engine.aux.language.LanguageTextPair")
+
+                line.add_raw_api_object(string_raw_api_object)
+                string_expected_pointer = ExpectedPointer(line, string_ref)
+                string_objs.append(string_expected_pointer)
+
+        return string_objs
