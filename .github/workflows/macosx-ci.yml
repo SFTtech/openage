@@ -1,31 +1,126 @@
-name: MacOSX-CI
+name: MacOS 10.15
 on: [push, pull_request]
+env: 
+  QT_INSTALL_VERSION: '5.14.2'
+  CCACHE_COMPRESS: 1
+  CCACHE_MAXSIZE:  '1G'
+  CCACHE_DIR: '${{ github.workspace }}/.ccache'
+  CI_CFG_VERSION: 'github-mac-0.1.0-dev'
 
 jobs:
   macosx-build:
-    runs-on: macOS-latest
+    name: LLVM/Clang10+ with ${{ matrix.python-version }}
+    runs-on: macos-10.15
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+          python-version: [python@3, python@3.8]
+
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+
+      - name: Prepare tar-zstd for the cache
+        run: |
+          brew install zstd gnu-tar
+          chmod u+x ./.github/workflows-support/install-tar-wrapper.sh && ./.github/workflows-support/install-tar-wrapper.sh /usr/local/bin/gtar /usr/local/bin/tar
+
+      - name: Cache (pip)
+        uses: actions/cache@v1.1.2
+        id: cache-pip-dep
+        if: startsWith(runner.os, 'macOS')
+        with:
+          path: ~/Library/Caches/pip
+          key: ${{ runner.os }}-cache-pip-${{ hashFiles('.github/workflows-support/requirements.txt') }}-${{ matrix.python-version }}
+
+      - name: Cache (homebrew)
+        uses: actions/cache@v1.1.2
+        id: cache-homebrew
+        if: startsWith(runner.os, 'macOS')
+        with:
+          path: /usr/local/
+          key: ${{ runner.os }}-cache-brew-${{ hashFiles('.github/workflows/macosx-ci.yml') }}-${{ matrix.python-version }}
+
+      - name: Cache (ccache)
+        uses: actions/cache@v1.1.2
+        id: cache-ccache
+        if: startsWith(runner.os, 'macOS')
+        with:
+          path: '${{ github.workspace }}/.ccache'
+          key: ${{ runner.os }}-cache-ccache
+
+      - name: Cache (Qt)
+        uses: actions/cache@v1.1.2
+        id: cache-qt
+        with:
+          path: ../Qt
+          key: ${{ runner.os }}-QtCache-${{ env.QT_INSTALL_VERSION }}
+
+      - name: Cleanup before caching of brew
+        run: |
+          brew cleanup
+        if: steps.cache-homebrew.outputs.cache-hit != 'true'
+
+      - name: Hardreset Brew
+        run: chmod u+x ./.github/workflows-support/reset-brew.sh && ./.github/workflows-support/reset-brew.sh
+        if: steps.cache-homebrew.outputs.cache-hit != 'true'
+
       - name: Brew update-reset
         run: brew update-reset
+        if: steps.cache-homebrew.outputs.cache-hit != 'true'
+
       - name: Brew update
         run: brew update
+        if: steps.cache-homebrew.outputs.cache-hit != 'true'
+
       - name: Brew install DeJaVu fonts
         run: brew tap homebrew/cask-fonts && brew cask install font-dejavu
-      - name: Upgrade cmake
-        run: brew upgrade cmake
+        if: steps.cache-homebrew.outputs.cache-hit != 'true'
+
       - name: Install dependencies with homebrew
-        run: brew install freetype cmake python3 qt5 flex make libepoxy fontconfig harfbuzz sdl2 sdl2_image opus libogg opusfile libpng eigen
-      - name: Install LLVM
-        run: brew install -cc=clang llvm@8
-      - name: Setting environment variables
-        run: export PATH="/usr/local/opt/llvm@8/bin:$PATH:/usr/local/lib:/usr/local/opt/llvm/bin" && export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig:/usr/local/lib"
+        run: brew install freetype ccache cmake ${{ matrix.python-version }} flex make libepoxy fontconfig harfbuzz sdl2 sdl2_image opus libogg opusfile libpng eigen llvm
+        if: steps.cache-homebrew.outputs.cache-hit != 'true'
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2.6.2
+        with:
+          host: 'mac'
+          version: ${{ env.QT_INSTALL_VERSION }}
+          mirror: 'http://mirrors.ocf.berkeley.edu/qt/'
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+
+      - name: Shrink brew
+        run: sudo chmod u+x ./.github/workflows-support/shrink-brew.sh && sudo ./.github/workflows-support/shrink-brew.sh
+        if: steps.cache-homebrew.outputs.cache-hit != 'true'
+
       - name: Install python3 dependencies
-        run: pip3 install pygments cython numpy pillow pyreadline jinja2
-      - name: Configure 
-        run: ./configure --compiler=clang++ --mode=debug --download-nyan 
+        run: pip3 install  -r ".github/workflows-support/requirements.txt"
+        if: steps.cache-pip-dep.outputs.cache-hit != 'true'
+
+      - name: Upgrade python3 dependencies
+        run: pip3 install --upgrade -r ".github/workflows-support/requirements.txt"
+        if: steps.cache-pip-dep.outputs.cache-hit == 'true'
+
+      - name: Show environment settings
+        shell: bash
+        run: |
+          set -x
+          uname -a
+          uname -s
+          uname -m
+          env
+
+      - name: Set environment and run ./configure 
+        run: |
+          chmod u+x ./.github/workflows-support/set-mac-env.sh && ./.github/workflows-support/set-mac-env.sh
+          ./configure --compiler=$(brew --prefix)/opt/llvm/bin/clang++ --mode=debug --ccache --flags="-Wfatal-errors" --download-nyan -- -DCMAKE_PREFIX_PATH=${Qt5_DIR}
+
       - name: Build
-        run: make
+        run: make build -j"$(sysctl -n hw.physicalcpu || echo 4)"
+
       - name: Test
         run: make test
+
+      - name: Install
+        run: make install DESTDIR=/tmp/openage

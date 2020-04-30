@@ -97,7 +97,7 @@ Dependencies, Building and Running
   Operating System    | Build status
   :------------------:|:--------------:
   Debian Sid          | [Todo: Kevin #11](https://github.com/SFTtech/kevin/issues/11)
-  MacOSX 10.14        | [![Build Status](https://travis-ci.org/SFTtech/openage.svg?branch=master)](https://travis-ci.org/SFTtech/openage)
+  MacOSX 10.14        | ![MacOSX builds](https://github.com/SFTtech/openage/workflows/MacOSX%20builds/badge.svg)
   Windows 10 - x64    | [![Build status](https://ci.appveyor.com/api/projects/status/66sx35key94u740e?svg=true)](https://ci.appveyor.com/project/simonsan/openage-sl215)
 
 

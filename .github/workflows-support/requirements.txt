@@ -1,0 +1,6 @@
+Cython==0.29.16
+Jinja2==2.11.1
+numpy==1.18.3
+Pillow==6.2.1
+Pygments==2.6.1
+pyreadline==2.1

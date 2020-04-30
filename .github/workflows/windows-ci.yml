@@ -1,0 +1,241 @@
+name: Windows 10
+on: [push, pull_request]
+env:
+  QT_INSTALL_VERSION: '5.14.2'
+  vcpkgResponseFile: '${{ github.workspace }}\.github\workflows-support\response_file.txt'
+  vcpkgGitCommitID: '28ab0b15cd7cdc1004cac9a28a5ecab198c161b9'        # Updated 26/04/2020
+  nyanGitCommitID: '03a996994b87803b5a8ff6ed0e85ab730163aa2d'         # Updated 27/04/2020
+  CI_CFG_VERSION: 'github-win-0.1.0-dev'
+
+jobs:
+  build_windows_msvc:
+    name: MSVC2019 (${{ matrix.arch }}) (${{ matrix.build-type }}) Python ${{ matrix.python-version }}
+    runs-on: windows-2019
+    continue-on-error: false                                          # DEBUG: set to true
+    strategy:
+      fail-fast: false
+      matrix:
+          arch: [x64] #[Win32, x64]
+          qt64: [win64_msvc2017_64] #[win64_mingw73, win64_msvc2017_64]
+          env-bit: [64] #[64, 32]
+          triplet: [x64-windows] #[x64-windows, x86-windows]
+          python-version: [3.8.2, 3.7.7]
+          python-platform: [amd64] #[amd64,]
+          build-type: [RelWithDebInfo] #[RelWithDebInfo, Debug]       #DEBUG builds: use second bracket
+    steps:
+      - name: Export shell environment variables
+        uses: lukka/set-shell-env@v1.0
+        with:
+          PreferredToolArchitecture: '${{matrix.arch}}'
+          PYTHON_INSTALL_DIR: '${{ runner.workspace }}\deps\Python${{ matrix.python-version }}-${{ matrix.python-platform }}-dbg'
+          NOWARN_FLAGS: '-noWarn:C4251;C4101;C4275;D9002'
+
+#         -noWarn
+#         C4251 - dll-interface
+#         C4275 - non dll-interface class used as base for dll-interface class
+#         C4101 - unreferenced local variable
+#         D9002 - ignoring unknown option '-fwrapv' (cl.exe)
+
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Cache (Qt)
+        uses: actions/cache@v1.1.2
+        id: cache-qt
+        with:
+          path: '../Qt'
+          key: '${{ runner.os }}-QtCache-${{ env.QT_INSTALL_VERSION }}'
+
+      - name: Cache (Python)
+        uses: actions/cache@v1.1.2
+        id: cache-python
+        with:
+          path: '${{ env.PYTHON_INSTALL_DIR }}\'
+          key: '${{ runner.os }}-PythonCache-v${{ matrix.python-version }}-${{ matrix.python-platform }}-dbg'
+
+# TODO: Packaging
+#      - name: Cache (Dejavu)
+#        uses: actions/cache@v1.1.2
+#        id: cache-dejavu
+#        with:
+#          path: 'C:\ProgramData\chocolatey\lib\dejavufonts'
+#          key: ${{ runner.os }}-ChocoCache-Dejavu-${{ hashFiles('.github/workflows/windows-ci.yml') }}
+
+      - name: Cache (Flex)
+        uses: actions/cache@v1.1.2
+        id: cache-flex
+        with:
+          path: 'C:\ProgramData\chocolatey\lib\winflexbison3'
+          key: ${{ runner.os }}-ChocoCache-Flex-${{ hashFiles('.github/workflows/windows-ci.yml') }}
+
+      - name: Cache (nyan)
+        uses: actions/cache@v1.1.2
+        id: cache-nyan
+        with:
+          path: '${{ runner.workspace }}\deps\nyan\'
+          key: ${{ runner.os }}-NyanCache-CommitHash${{ env.nyanGitCommitID }}-${{ matrix.build-type }}
+
+      # Pinned CMake here
+      - name: Install pinned CMake Version
+        uses: lukka/get-cmake@v3.17.1
+
+      - name: Prepare Environment
+        run: |
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars${{ matrix.env-bit }}.bat"
+        shell: cmd
+
+#       TODO: Waiting for Upstream Issue: https://github.com/actions/setup-python/issues/86
+#       To pull in debug binaries and stdlib
+#      - name: Set up Python
+#        uses: actions/setup-python@vX.Y.Z
+#        with:
+#         python-version: ${{ matrix.python-version }}
+#         with-debug: true
+
+      - name: Download Python
+        uses: carlosperate/download-file-action@v1.0.3
+        id: download-python
+        with:
+         file-url: 'https://www.python.org/ftp/python/${{ matrix.python-version }}/python-${{ matrix.python-version }}-${{ matrix.python-platform }}.exe'
+         file-name: 'python-${{ matrix.python-version }}-${{ matrix.python-platform }}.exe'
+         location: '${{ runner.workspace }}\dl\'
+        if: steps.cache-python.outputs.cache-hit != 'true'
+
+      - name: Print downloaded the file path
+        run: echo "The file was downloaded to ${{ steps.download-python.outputs.file-path }}"
+        shell: cmd
+        if: steps.cache-python.outputs.cache-hit != 'true'
+
+      - name: Install Python debug (x64) # we need debug binaries and precompiled standard libraries
+        run: |
+          Start-Process -FilePath "${{ runner.workspace }}\dl\python-${{ matrix.python-version }}-${{ matrix.python-platform }}.exe" -ArgumentList "/quiet Include_debug=1 Include_dev=1 Include_lib=1 Include_pip=1 PrependPath=1 CompileAll=1 InstallAllUsers=0 TargetDir=${{ env.PYTHON_INSTALL_DIR }}\" -Verb runas -Wait
+        if: matrix.arch == 'x64' && steps.cache-python.outputs.cache-hit != 'true'
+        shell: pwsh
+
+      - name: Display Python version
+        run: ${{ env.PYTHON_INSTALL_DIR }}\python.exe -c "import sys; print(sys.version)"
+        shell: cmd
+
+      - name: Upgrade Python pip
+        run: |
+          ${{ env.PYTHON_INSTALL_DIR }}\python.exe -m pip install --upgrade pip
+        shell: cmd
+
+      - name: Install Python dependencies
+        run: ${{ env.PYTHON_INSTALL_DIR }}\Scripts\pip.exe install -r ".github/workflows-support/requirements.txt"
+        if: steps.cache-python.outputs.cache-hit != 'true'
+
+      - name: Install Qt (x64)
+        uses: jurplel/install-qt-action@v2.6.2
+        with:
+          host: 'windows'
+          version: '${{ env.QT_INSTALL_VERSION }}'
+          mirror: 'http://mirrors.ocf.berkeley.edu/qt/'
+          arch: ${{ matrix.qt64 }}
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+        if: matrix.arch == 'x64'
+
+      - name: Install Vcpkg dependencies
+        uses: lukka/run-vcpkg@v2.1
+        with:
+          vcpkgArguments: '@${{ env.vcpkgResponseFile }}'
+          vcpkgTriplet: '${{ matrix.triplet }}'
+          vcpkgGitCommitId: '${{ env.vcpkgGitCommitID }}'
+          vcpkgDirectory: '${{ runner.workspace }}\deps\vcpkg'
+          cleanAfterBuild: 'true'
+          appendedCacheKey: '${{ hashFiles(env.vcpkgResponseFile) }}'
+
+      - name: Install dependencies with Chocolatey
+        uses: crazy-max/ghaction-chocolatey@v1.1.0
+        with:
+          args: install winflexbison3
+        if: steps.cache-flex.outputs.cache-hit != 'true'
+
+#       TODO: Packaging
+#      - name: Install Dejavu fonts with Chocolatey
+#        uses: crazy-max/ghaction-chocolatey@v1.1.0
+#        with:
+#          args: install dejavufonts
+#        if: steps.cache-dejavu.outputs.cache-hit != 'true'
+
+      - name:  Show environment settings
+        run: |
+          Set-PSDebug -Trace 1
+          systeminfo
+          gci env:
+          Set-PSDebug -Trace 0
+        shell: pwsh
+
+      - name: Clone nyan repository
+        run: |
+          git clone https://github.com/SFTtech/nyan.git ${{ runner.workspace }}\deps\nyan
+          cd ${{ runner.workspace }}\deps\nyan
+          git reset --hard ${{ env.nyanGitCommitID }}
+        if: steps.cache-nyan.outputs.cache-hit != 'true'
+
+      - name: 'nyan: Generate build files & run build procedure'
+        uses: lukka/run-cmake@v2.3
+        env:
+          CMAKE_VERBOSE_MAKEFILE: TRUE
+          PATH: '${{ env.PYTHON_INSTALL_DIR }}; ${{ env.PYTHON_INSTALL_DIR }}\Scripts; ${env:PATH}'
+        with:
+          useVcpkgToolchainFile: True
+          cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
+          cmakeListsTxtPath: '${{ runner.workspace }}\deps\nyan\CMakeLists.txt'
+          buildDirectory: '${{ runner.workspace }}\deps\nyan\build\'
+          cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -G "Visual Studio 16 2019" -A ${{ matrix.arch }} -DFLEX_EXECUTABLE=C:\ProgramData\chocolatey\lib\winflexbison3\tools\win_flex.exe'
+          buildWithCMake: true
+          buildWithCMakeArgs: '--config ${{ matrix.build-type }} -- -nologo -m -v:m ${{ env.NOWARN_FLAGS }}'
+        if: steps.cache-nyan.outputs.cache-hit != 'true'
+
+      - name: 'openage: Generate build files & run build procedure'
+        uses: lukka/run-cmake@v2.3
+        env:
+          CMAKE_VERBOSE_MAKEFILE: TRUE
+          PATH: '${{ env.PYTHON_INSTALL_DIR }}; ${{ env.PYTHON_INSTALL_DIR }}\Scripts; ${env:PATH}'
+        with:
+          useVcpkgToolchainFile: True
+          cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
+          cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
+          buildDirectory: '${{ runner.workspace }}\build-openage\'
+          cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -G "Visual Studio 16 2019" -A ${{ matrix.arch }} -DPYTHON_DIR=${{ env.PYTHON_INSTALL_DIR }}\ -DCMAKE_PREFIX_PATH=${Qt5_DIR} -Dnyan_DIR=${{ runner.workspace }}\deps\nyan\build\'
+          buildWithCMake: true
+          buildWithCMakeArgs: '--config ${{ matrix.build-type }} -- -nologo -m -v:m ${{ env.NOWARN_FLAGS }}'
+
+#       Toolchain file for CMake could be also taken from here
+#       -DCMAKE_TOOLCHAIN_FILE="${{ env.RUNVCPKG_VCPKG_ROOT }}\scripts\buildsystems\vcpkg.cmake"
+#       if useVcpkgToolchainFile is set to 'False'
+
+#      - name: Show directory tree (DEBUG)
+#        run: Get-ChildItem -Path "<PATH>"
+#        shell: pwsh
+
+#      TODO: Preparations for running/packaging steps
+#      - name: Copy Font
+#        run: |
+#          MD "C:\Windows\Fonts\DejaVu Serif"
+#
+#          COPY /B /Y "C:\ProgramData\chocolatey\lib\dejavufonts\dejavu-fonts-ttf-2.37\ttf\DejaVuSerif*" "C:\Windows\Fonts\DejaVu Serif\"
+#
+#          COPY /B /Y "C:\ProgramData\chocolatey\lib\dejavufonts\dejavu-fonts-ttf-2.37\fontconfig\57-dejavu-serif.conf" "${{ env.RUNVCPKG_VCPKG_ROOT }}\installed\x64-windows\tools\fontconfig\fonts\conf.d\"
+#        shell: cmd
+
+#      TODO: Investigate for broken output of Test command
+#      - name: Run Tests
+#        run: |
+#          Install-Script -Name Invoke-Process
+#          Invoke-Process -FilePath ${{ runner.workspace }}\build-openage\run.exe -ArgumentList 'test -a'
+#        shell: pwsh
+#        env:
+#          PYTHONHOME: '${{ env.PYTHON_INSTALL_DIR }}\'
+#          FONTCONFIG_PATH: '${{ env.RUNVCPKG_VCPKG_ROOT }}\installed\x64-windows\tools\fontconfig\fonts\'
+#          QML2_IMPORT_PATH: '${Qt5_DIR}\qml'
+#          PATH: '${{ env.RUNVCPKG_VCPKG_ROOT }}\installed\x64-windows\bin;${Qt5_DIR}\bin;${{ runner.workspace }}\deps\nyan\build\nyan\;${{ runner.workspace }}\build-openage\libopenage\${{ matrix.build-type }}\;${{ env.PYTHON_INSTALL_DIR }}; ${{ env.PYTHON_INSTALL_DIR }}\Scripts; ${env:PATH}'
+
+#      TODO: Virus scan before publishing
+#      - name: Windows Defender AV Scan
+#        shell: powershell
+#        run: |
+#          Get-MpComputerStatus
+#          Start-MpScan -ScanPath "<PATH>"
+#          echo $?
