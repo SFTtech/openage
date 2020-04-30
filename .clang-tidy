@@ -1,0 +1,5 @@
+---
+Checks: 'clang-diagnostic-*,clang-analyzer-*,-clang-analyzer-alpha*,-clang-analyzer-optin.performance.Padding'
+HeaderFilterRegex: 'src/.*|unittest/.*'
+CheckOptions:
+...

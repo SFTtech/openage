@@ -1,0 +1,65 @@
+name: Ubuntu-CI
+on: [push, pull_request]
+
+jobs:
+  ubuntu-build:
+    if:
+      contains(github.repository, 'SFTtech')==false # CI for forks, lets this job run just outside of the main repo
+    strategy:
+      matrix:
+        cc: [gcc, clang-9]
+    runs-on: ubuntu-latest
+    env:
+      CC: ${{matrix.cc}}
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v1
+      - name: Cache (ccache)
+        uses: actions/cache@v1.0.2
+        id: cache-ccache
+        if: startsWith(runner.os, 'Linux')
+        with:
+          path: ~/.ccache
+          key: ${{ runner.os }}-${{matrix.cc}}-ccache
+          restore-keys: |
+            ${{ runner.os }}-${{matrix.cc}}-ccache
+      - name: Setup apt repositories
+        run: |
+          if [ $CC = clang-9 ]; then
+            sudo add-apt-repository 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main' -y
+          fi
+      - name: Update apt repositories
+        run: sudo apt-get update -q
+      - name: Install Dependencies
+        run: |
+          sudo apt-get install -y --no-install-recommends ccache cmake cython3 libeigen3-dev libepoxy-dev libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libogg-dev libopus-dev libopusfile-dev libpng-dev libsdl2-dev libsdl2-image-dev python3-dev python3-jinja2 python3-numpy python3-pil python3-pip python3-pygments pylint3 python3-pycodestyle qml-module-qtquick-controls qtdeclarative5-dev flex make
+      - name: Install C compiler
+        run: |
+          if [ $CC = clang-9 ]; then
+            sudo apt-get install -y --no-install-recommends clang-9 lld-9 libc++-9-dev libc++abi-9-dev clang-tools-9
+            export CXX=clang++-9
+            export CC=clang-9
+          else
+            sudo apt-get install -y --no-install-recommends $CC g++
+          fi
+      - name: Show environment settings
+        shell: bash
+        run: |
+          set -x
+          uname -a
+          uname -s
+          uname -m
+          env
+      - name: Generate build files
+        run: |
+          if [ $CC = clang-9 ]; then
+            ./configure --compiler=clang++-9 --mode=debug --flags="-Werror" --ccache --download-nyan
+          else
+            ./configure --mode=debug --flags="-Werror" --ccache --download-nyan 
+          fi
+      - name: Build
+        run: make -j$(nproc) build
+      - name: Test
+        run: make tests
+      - name: Install
+        run: make install DESTDIR=/tmp/openage

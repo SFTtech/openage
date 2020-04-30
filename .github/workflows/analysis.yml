@@ -1,0 +1,151 @@
+name: Code analysis
+on: [push, pull_request]
+
+jobs:
+  run_linters:
+    name: Code compliance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v1
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install python3-setuptools
+          sudo apt-get install -y --no-install-recommends python3-dev python3-pip pylint3 python3-pycodestyle
+      - name: Sanity check
+        run: make checkall
+
+  build_clang_static_analyzer:
+    name: Clang-tidy static analyzer
+    runs-on: ubuntu-latest
+#   needs: run_linters  # If make checkall has no issues anymore, we can activate that.
+    steps:
+      - uses: actions/checkout@v1
+      - name: Cache (ccache)
+        uses: actions/cache@v1.0.2
+        id: cache-ccache
+        if: startsWith(runner.os, 'Linux')
+        with:
+          path: ~/.ccache
+          key: ${{ runner.os }}-clang-tidy-ccache
+          restore-keys: |
+            ${{ runner.os }}-clang-tidy-ccache
+      - name: Setup apt repositories
+        run: |
+          sudo add-apt-repository 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main' -y
+      - run:  sudo apt-get update -q
+      - name: Install Dependencies
+        run: |
+          sudo apt-get install -y --no-install-recommends ccache cmake cython3 libeigen3-dev libepoxy-dev libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libogg-dev libopus-dev libopusfile-dev libpng-dev libsdl2-dev libsdl2-image-dev python3-dev python3-jinja2 python3-numpy python3-pil python3-pip python3-pygments pylint3 python3-pycodestyle python3-setuptools qml-module-qtquick-controls qtdeclarative5-dev flex make
+      - name: Install Clang compiler collection
+        run: |
+            sudo apt-get install -y clang-9 clang-tools-9 clang-9-doc libclang-common-9-dev libclang-9-dev libclang1-9 clang-format-9 python-clang-9 clangd-9 clang-tidy-9
+            export CXX=clang++-9
+            export CC=clang-9
+      - name: Install scan-build (Python version)
+        run:  sudo pip3 install scan-build beautifulsoup4 html5lib
+      - name: Show environment settings
+        shell: bash
+        run: |
+          set -x
+          uname -a
+          uname -s
+          uname -m
+          env
+      - name: Generate build files
+        run: |
+          set -x
+          ./configure --compiler=clang++-9 --mode=debug --flags="-Werror" --ccache --download-nyan
+          intercept-build make -j$(nproc) build
+      - name: Analyze
+        run:  analyze-build -v -o report --html-title="openage (${GITHUB_SHA:0:8})"
+      - uses: actions/upload-artifact@master
+        with:
+          name: report
+          path: report
+      - name: Summarize report
+        run: |
+          # summary
+          echo "Full report is included in build Artifacts"
+          echo
+          chmod u+x ./buildsystem/scripts/count-bugs.py && ./buildsystem/scripts/count-bugs.py 40 report/*/index.html
+
+  build_clang_tidy_fixes:
+    name: Clang-tidy fixes
+    runs-on: ubuntu-latest
+#   needs: run_linters  # If make checkall has no issues anymore, we can activate that.
+    steps:
+      - uses: actions/checkout@v1
+      - name: Cache (ccache)
+        uses: actions/cache@v1.0.2
+        id: cache-ccache
+        if: startsWith(runner.os, 'Linux')
+        with:
+          path: ~/.ccache
+          key: ${{ runner.os }}-clang-tidy-ccache
+          restore-keys: |
+            ${{ runner.os }}-clang-tidy-ccache
+      - name: Setup apt repositories
+        run: |
+          sudo add-apt-repository 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main' -y
+      - run:  sudo apt-get update -q
+      - name: Install Dependencies
+        run: |
+          sudo apt-get install -y --no-install-recommends ccache cmake cython3 libeigen3-dev libepoxy-dev libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libogg-dev libopus-dev libopusfile-dev libpng-dev libsdl2-dev libsdl2-image-dev python3-dev python3-jinja2 python3-numpy python3-pil python3-pip python3-pygments pylint3 python3-pycodestyle python3-setuptools qml-module-qtquick-controls qtdeclarative5-dev flex make
+      - name: Install Clang compiler collection
+        run: |
+            sudo apt-get install -y clang-9 clang-tools-9 clang-9-doc libclang-common-9-dev libclang-9-dev libclang1-9 clang-format-9 python-clang-9 clangd-9 clang-tidy-9
+            export CXX=clang++-9
+            export CC=clang-9
+      - name: Show environment settings
+        shell: bash
+        run: |
+          set -x
+          uname -a
+          uname -s
+          uname -m
+          env
+      - name: Generate build files
+        run: |
+          set -x
+          ./configure --compiler=clang++-9 --mode=debug --flags="-Werror" --ccache --download-nyan
+      - name: Show folder structure
+        run: ls -als */**
+      - name: Analyze
+        run: |
+          echo "Here we run the script, still to debug what's not working there"
+#         chmod u+x ./buildsystem/scripts/ci/run-clang-tidy.py && ./buildsystem/scripts/ci/run-clang-tidy.py -clang-tidy-binary "/usr/bin/clang-tidy" -j "$(nproc)" -export-fixes "clang-tidy-fixes_${GITHUB_SHA:0:8}"  -p ".bin/"
+
+#         as soon as we have a clang-format file, we can format the exported fixes directly in the way we need it with
+#         adding -format -style
+#         -config ".clang-tidy"
+#         add checks beside the standard checks
+
+  build_clang_format_fixes:
+    name: Clang-format fixes
+    runs-on: ubuntu-latest
+#   needs: run_linters  # If make checkall has no issues anymore, we can activate that.
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup apt repositories
+        run: |
+          sudo add-apt-repository 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main' -y
+      - run:  sudo apt-get update -q
+      - name: Install Clang compiler collection
+        run: |
+            sudo apt-get install -y clang-9 clang-tools-9 clang-9-doc libclang-common-9-dev libclang-9-dev libclang1-9 clang-format-9 python-clang-9 clangd-9 clang-tidy-9
+            export CXX=clang++-9
+            export CC=clang-9
+      - name: Show environment settings
+        shell: bash
+        run: |
+          set -x
+          uname -a
+          uname -s
+          uname -m
+          env
+      - name: Generate clang-format fixes
+        run: |
+          echo "Here we generate the fix and upload it as an artifact"
+          set -x
