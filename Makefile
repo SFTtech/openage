@@ -132,6 +132,10 @@ checkfast:
 checkall:
 	python3 -m buildsystem.codecompliance --all
 
+.PHONY: diagnose
+diagnose:
+	python3 -m buildsystem.diagnose --all
+
 .PHONY: checkchanged
 checkchanged:
 	python3 -m buildsystem.codecompliance --all --only-changed-files=origin/master

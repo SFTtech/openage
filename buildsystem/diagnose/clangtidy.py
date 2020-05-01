@@ -5,6 +5,7 @@ Checks Cpp files with clang-tidy
 """
 
 import subprocess
+import buildsystem
 
 from .cppstyle import filter_file_list
 from .util import findfiles
