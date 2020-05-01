@@ -12,11 +12,9 @@ from .util import findfiles
 
 def find_issues(check_files, dirnames):
     """ Invokes the external clang-tidy tool. """
-    invocation = ['clang-tidy', '-checks=cppcoreguidelines-*,clang-analyzer-*,bugprone-*, ' +
-                  'performance-*,portability-*,misc-*,modernize-*,hicpp-*,cert-*, ' +
-                  'llvm-twine-local,llvm-prefer-isa-or-dyn-cast-in-conditionals, ' +
-                  'llvm-prefer-register-over-unsigned,google-readability-casting ' +
-                  '-extra-arg=-std=c++17 -fix']
+    invocation = ['clang-tidy', '-checks=clang-diagnostic-*,clang-analyzer-*,-clang-analyzer-alpha*,' +
+                  '-clang-analyzer-optin.performance.Padding,cppcoreguidelines-*,performance-*,llvm-*,' +
+                  'bugprone-*,cert-*, -extra-arg=-std=c++17 -fix']
 
     if check_files is not None:
         filenames = filter_file_list(check_files, dirnames)
