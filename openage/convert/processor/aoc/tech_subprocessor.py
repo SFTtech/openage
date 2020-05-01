@@ -294,6 +294,7 @@ class AoCTechSubprocessor:
         patches.extend(AoCUgradeAbilitySubprocessor.idle_ability(converter_group, line, tech_name, diff))
         patches.extend(AoCUgradeAbilitySubprocessor.live_ability(converter_group, line, tech_name, diff))
         patches.extend(AoCUgradeAbilitySubprocessor.los_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUgradeAbilitySubprocessor.named_ability(converter_group, line, tech_name, diff))
         patches.extend(AoCUgradeAbilitySubprocessor.resistance_ability(converter_group, line, tech_name, diff))
         patches.extend(AoCUgradeAbilitySubprocessor.selectable_ability(converter_group, line, tech_name, diff))
         patches.extend(AoCUgradeAbilitySubprocessor.turn_ability(converter_group, line, tech_name, diff))

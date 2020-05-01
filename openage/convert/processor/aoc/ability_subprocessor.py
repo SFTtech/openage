@@ -5950,7 +5950,7 @@ class AoCAbilitySubprocessor:
     @staticmethod
     def _create_language_strings(line, string_id, obj_ref, obj_name_prefix):
         """
-        Generates a sound for an ability.
+        Generates a language string for an ability.
         """
         dataset = line.data
         string_resources = dataset.strings.get_tables()

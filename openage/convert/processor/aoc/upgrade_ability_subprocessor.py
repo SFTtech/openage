@@ -16,6 +16,7 @@ from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from math import degrees
 from openage.convert.processor.aoc.upgrade_effect_subprocessor import AoCUpgradeEffectSubprocessor
+from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 
 
 class AoCUgradeAbilitySubprocessor:
@@ -1183,7 +1184,7 @@ class AoCUgradeAbilitySubprocessor:
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
-        tech_id = converter_group.get_id()
+        group_id = converter_group.get_id()
         dataset = line.data
 
         patches = []
@@ -1202,15 +1203,66 @@ class AoCUgradeAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
+        if isinstance(converter_group, GenieTechEffectBundleGroup):
+            obj_prefix = TECH_GROUP_LOOKUPS[group_id][0]
+
+        else:
+            obj_prefix = game_entity_name
+
         diff_name = diff.get_member("language_dll_name")
         if not isinstance(diff_name, NoDiffMember):
-            # TODO: Read from DLL file
-            pass
+            patch_target_ref = "%s.Named.%sName" % (game_entity_name, game_entity_name)
+            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
 
-        diff_long_description = diff.get_member("language_dll_help")
-        if not isinstance(diff_long_description, NoDiffMember):
-            # TODO: Read from DLL file
-            pass
+            # Wrapper
+            wrapper_name = "Change%sNameWrapper" % (game_entity_name)
+            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                                  wrapper_name,
+                                                  dataset.nyan_api_objects)
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            if isinstance(line, GenieBuildingLineGroup):
+                # Store building upgrades next to their game entity definition,
+                # not in the Age up techs.
+                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
+                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[group_id][1])
+
+            else:
+                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
+
+            # Nyan patch
+            nyan_patch_name = "Change%sName" % (game_entity_name)
+            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                     nyan_patch_name,
+                                                     dataset.nyan_api_objects,
+                                                     nyan_patch_location)
+            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+            name_string_id = diff_name.get_value()
+            translations = AoCUgradeAbilitySubprocessor._create_language_strings(converter_group,
+                                                                                 name_string_id,
+                                                                                 nyan_patch_ref,
+                                                                                 "%sName"
+                                                                                 % (obj_prefix))
+            nyan_patch_raw_api_object.add_raw_patch_member("translations",
+                                                           translations,
+                                                           "engine.aux.translated.type.TranslatedString",
+                                                           MemberOperator.ASSIGN)
+
+            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+            wrapper_raw_api_object.add_raw_member("patch",
+                                                  patch_expected_pointer,
+                                                  "engine.aux.patch.Patch")
+
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
+            patches.append(wrapper_expected_pointer)
 
         return patches
 
@@ -1924,3 +1976,39 @@ class AoCUgradeAbilitySubprocessor:
         sound_expected_pointer = ExpectedPointer(converter_group, sound_ref)
 
         return sound_expected_pointer
+
+    @staticmethod
+    def _create_language_strings(converter_group, string_id, obj_ref, obj_name_prefix):
+        """
+        Generates a language string for an ability.
+        """
+        dataset = converter_group.data
+        string_resources = dataset.strings.get_tables()
+
+        string_objs = []
+        for language, strings in string_resources.items():
+            if string_id in strings.keys():
+                string_name = "%sString" % (obj_name_prefix)
+                string_ref = "%s.%s" % (obj_ref, string_name)
+                string_raw_api_object = RawAPIObject(string_ref, string_name,
+                                                     dataset.nyan_api_objects)
+                string_raw_api_object.add_raw_parent("engine.aux.language.LanguageTextPair")
+                string_location = ExpectedPointer(converter_group, obj_ref)
+                string_raw_api_object.set_location(string_location)
+
+                # Language identifier
+                lang_expected_pointer = dataset.pregen_nyan_objects["aux.language.%s" % (language)].get_nyan_object()
+                string_raw_api_object.add_raw_member("language",
+                                                     lang_expected_pointer,
+                                                     "engine.aux.language.LanguageTextPair")
+
+                # String
+                string_raw_api_object.add_raw_member("string",
+                                                     strings[string_id],
+                                                     "engine.aux.language.LanguageTextPair")
+
+                converter_group.add_raw_api_object(string_raw_api_object)
+                string_expected_pointer = ExpectedPointer(converter_group, string_ref)
+                string_objs.append(string_expected_pointer)
+
+        return string_objs
