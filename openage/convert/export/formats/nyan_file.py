@@ -8,6 +8,7 @@ manages imports.
 from ....nyan.nyan_structs import NyanObject
 from ..data_definition import DataDefinition
 from openage.util.ordered_set import OrderedSet
+from debian.debtags import output
 
 FILE_VERSION = "0.1.0"
 
@@ -24,9 +25,15 @@ class NyanFile(DataDefinition):
             for nyan_object in nyan_objects:
                 self.add_nyan_object(nyan_object)
 
-        super().__init__(targetdir, filename)
-
+        self.targetdir = targetdir
+        self.filename = filename
         self.modpack_name = modpack_name
+
+        self.import_tree = None
+
+        self.fqon = (self.modpack_name,
+                     *self.targetdir.replace("/", ".")[:-1].split("."),
+                     self.filename.split(".")[0])
 
     def add_nyan_object(self, new_object):
         """
@@ -38,30 +45,56 @@ class NyanFile(DataDefinition):
 
         self.nyan_objects.add(new_object)
 
-        new_fqon = self.targetdir.replace("/", ".")
-        new_fqon += self.filename.split(".")[0]
-        new_fqon += new_object.get_name()
-
+        new_fqon = (*self.fqon, new_object.get_name())
         new_object.set_fqon(new_fqon)
 
     def dump(self):
         """
         Returns the string that represents the nyan file.
         """
-        output_str = "# NYAN FILE \nversion %s\n\n" % (FILE_VERSION)
+        output_str = "# NYAN FILE\nversion %s\n\n" % (FILE_VERSION)
 
-        # TODO: imports
+        import_aliases = self.import_tree.establish_import_dict(self, ignore_names=["type", "types"])
+
+        for alias, fqon in import_aliases.items():
+            output_str += "import "
+
+            for part in fqon:
+                output_str += "%s." % (part)
+
+            output_str = output_str[:-1]
+
+            output_str += " as %s\n" % (alias)
+
+        output_str += "\n"
 
         for nyan_object in self.nyan_objects:
-            output_str += nyan_object.dump()
+            output_str += nyan_object.dump(import_tree=self.import_tree)
+
+        self.import_tree.clear_marks()
+
+        # Removes one empty line at the end of the file
+        output_str = output_str[:-1]
 
         return output_str
+
+    def get_fqon(self):
+        """
+        Return the fqon of the nyan file
+        """
+        return self.fqon
 
     def get_relative_file_path(self):
         """
         Relative path of the nyan file in the modpack.
         """
         return "%s/%s%s" % (self.modpack_name, self.targetdir, self.filename)
+
+    def set_import_tree(self, import_tree):
+        """
+        Sets the import tree of the file.
+        """
+        self.import_tree = import_tree
 
     def set_filename(self, filename):
         super().set_filename(filename)
@@ -83,9 +116,10 @@ class NyanFile(DataDefinition):
         target directory and filename.
         """
         for nyan_object in self.nyan_objects:
-            new_fqon = "%s.%s%s.%s" % (self.modpack_name,
-                                       self.targetdir.replace("/", "."),
-                                       self.filename.split(".")[0],
-                                       nyan_object.get_name())
+            new_fqon = (*self.fqon, nyan_object.get_name())
 
             nyan_object.set_fqon(new_fqon)
+
+        self.fqon = (self.modpack_name,
+                     *self.targetdir.replace("/", ".")[:-1].split("."),
+                     self.filename.split(".")[0])

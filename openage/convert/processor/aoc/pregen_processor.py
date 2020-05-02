@@ -1055,7 +1055,7 @@ class AoCPregenSubprocessor:
                                                    language,
                                                    api_objects,
                                                    language_location)
-            language_raw_api_object.set_filename("min_damage")
+            language_raw_api_object.set_filename("language")
             language_raw_api_object.add_raw_parent(language_parent)
 
             language_raw_api_object.add_raw_member("ietf_string",

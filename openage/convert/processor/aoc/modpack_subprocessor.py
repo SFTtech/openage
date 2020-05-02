@@ -7,6 +7,7 @@ into modpacks.
 from openage.convert.dataformat.modpack import Modpack
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.export.formats.nyan_file import NyanFile
+from openage.nyan.import_tree import ImportTree
 
 
 class AoCModpackSubprocessor:
@@ -69,6 +70,7 @@ class AoCModpackSubprocessor:
         for civ_group in full_data_set.civ_groups.values():
             raw_api_objects.extend(civ_group.get_raw_api_objects().values())
 
+        # Create the files
         for raw_api_object in raw_api_objects:
             obj_location = raw_api_object.get_location()
 
@@ -93,6 +95,20 @@ class AoCModpackSubprocessor:
                 modpack.add_data_export(nyan_file)
 
             nyan_file.add_nyan_object(raw_api_object.get_nyan_object())
+
+        # Create an import tree from the files
+        import_tree = ImportTree()
+
+        for nyan_file in created_nyan_files.values():
+            import_tree.expand_from_file(nyan_file)
+
+        for nyan_object in full_data_set.nyan_api_objects.values():
+            import_tree.expand_from_object(nyan_object)
+
+        for nyan_file in created_nyan_files.values():
+            nyan_file.set_import_tree(import_tree)
+
+        pass
 
     @staticmethod
     def _organize_media_objects(modpack, full_data_set):

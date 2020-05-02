@@ -104,7 +104,7 @@ class OrderedSet:
         return elem in self.ordered_set
 
     def __iter__(self):
-        return iter(self.ordered_set)
+        return iter(self.ordered_set.keys())
 
     def __len__(self):
         return len(self.ordered_set)
