@@ -286,7 +286,7 @@ jobs:
         with:
           file-url: 'https://downloads.kdab.com/clazy/1.6/Clazy-x86_64-1.6.AppImage'
           file-name: 'Clazy-x86_64-1.6.AppImage'
-          location: '${{ runner.workspace }}\dl\'
+          location: '${{ runner.workspace }}/dl'
         if: steps.cache-clazy.outputs.cache-hit != 'true'
 
       - name: Print the file path
