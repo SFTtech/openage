@@ -264,7 +264,7 @@ jobs:
         run: |
           set -x
           chmod u+x buildsystem/scripts/clang-format/clang-format-diff.py
-          git diff -U0 --no-color --cached HEAD^ -- | ./buildsystem/scripts/clang-format/clang-format-diff.py -i -p1 -binary "clang-format-10"
+          git diff -U0 --no-color --cached HEAD^ -- | buildsystem/scripts/clang-format/clang-format-diff.py -i -p1 -binary "clang-format-10"
 
       - name: Format-patch (Clang-format)
         run: |
