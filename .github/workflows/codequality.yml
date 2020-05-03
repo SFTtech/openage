@@ -41,6 +41,7 @@ jobs:
           path: compliance-fixes-${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
 
+
 # TODO: Rename or move IWYU etc. out to separate jobs
   iwyu_fixes:
     name: IWYU (Fixes)
@@ -156,6 +157,7 @@ jobs:
 #         add checks beside the standard checks
   # TODO: Rename or move IWYU etc. out to separate jobs
 
+
   clang_tidy_fixes:
     name: Clang-tidy (Fixes)
     runs-on: ubuntu-latest
@@ -225,12 +227,6 @@ jobs:
           path: clang-tidy-fixes-${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
 
-  # TODO: Clang-format file for fixes
-  # clang-tidy takes --format-style, edit in the script? check!
-  #         as soon as we have a clang-format file, we can format the exported fixes directly in the way we need it with
-  #         adding -format -style
-  #         -config ".clang-tidy"
-  #         add checks beside the standard checks
 
   clazy_fixes:
     name: Clazy (Fixes)
@@ -298,37 +294,40 @@ jobs:
         shell: cmd
         if: steps.download-clazy.outputs.cache-hit != 'true'
 
-#      - name: Run Clazy
-#        run: |
-#          set -x
-#          /usr/lib/llvm-10/lib/clang/10.0.0
-#
-#  ${{ steps.download-clazy.outputs.file-path }}
-
-
-      # TODO: TESTING! Will this include the header files as well, if the cpp files get changed?
-      # if not, most likely, how do we do it
-      - name: Format-patch (clang-tidy)
+      - name: Run Clazy
         run: |
-          git diff --name-only --diff-filter=ACMRTUXB --cached HEAD^ -- > pathspec.out
-          git add --pathspec-from-file="pathspec.out"
-          git diff --cached > clang-tidy-fixes-${{ GITHUB.SHA }}.patch
+          set -x
+          mv ${{ steps.download-clazy.outputs.file-path }} /usr/bin/clazy
+          find . -name "*cpp" | xargs /usr/bin/clazy --standalone -checks=level2 -p bin/compile_commands.json -export-fixes=clazy-fixes-${{ GITHUB.SHA }}.yaml
+
+      - name: Apply fixes
+        run: |
+          set -x
+          clang-apply-replacements-10 --format -style=file clazy-fixes-${{ GITHUB.SHA }}.yaml
+
+      - name: Format-patch (Clazy)
+        run: |
+          git add .
+          git diff --cached > clazy-fixes${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
+
+#      # TODO: TESTING! Will this include the header files as well, if the cpp files get changed?
+#      # if not, most likely, how do we do it
+#      - name: Format-patch (Clazy)
+#        run: |
+#          git diff --name-only --diff-filter=ACMRTUXB --cached HEAD^ -- > pathspec.out
+#          git add --pathspec-from-file="pathspec.out"
+#          git diff --cached > clang-tidy-fixes-${{ GITHUB.SHA }}.patch
+#        if: ${{ always() }}
 
       #       TODO: Activate again, to upload patch
       - name: Upload clang-tidy fixes
         uses: actions/upload-artifact@master
         with:
-          name: clang-tidy-fixes-${{ GITHUB.SHA }}
-          path: clang-tidy-fixes-${{ GITHUB.SHA }}.patch
+          name: clazy-fixes${{ GITHUB.SHA }}
+          path: clazy-fixes${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
 
-  # TODO: Clang-format file for fixes
-  # clang-tidy takes --format-style, edit in the script? check!
-  #         as soon as we have a clang-format file, we can format the exported fixes directly in the way we need it with
-  #         adding -format -style
-  #         -config ".clang-tidy"
-  #         add checks beside the standard checks
 
   clang_format_fixes:
     name: Clang-format (Fixes)
@@ -377,6 +376,7 @@ jobs:
           name: clang-format-fixes-${{ GITHUB.SHA }}
           path: clang-format-fixes-${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
+
 
   scan_build_analyzer:
     name: Scan-build (Report)
