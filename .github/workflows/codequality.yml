@@ -296,7 +296,7 @@ jobs:
       - name: Run Clazy
         run: |
           set -x
-          mv ${{ steps.download-clazy.outputs.file-path }} /usr/bin/clazy
+          mv ${{ runner.workspace }}/dl/Clazy-x86_64-1.6.AppImage /usr/bin/clazy
           chmod u+x /usr/bin/clazy
           find . -name "*cpp" | xargs /usr/bin/clazy --standalone -checks=level2 -p bin/compile_commands.json -export-fixes=clazy-fixes-${{ GITHUB.SHA }}.yaml
 
