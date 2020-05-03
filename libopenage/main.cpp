@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
@@ -66,4 +66,4 @@ int run_game(const main_arguments &args) {
 	return 0;
 }
 
-} // openage
+} // namespace openage

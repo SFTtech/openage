@@ -1,0 +1,349 @@
+name: Code Quality
+on: [push, pull_request]
+env:
+  CCACHE_COMPRESS: 1
+  CCACHE_MAXSIZE:  '1G'
+  CCACHE_DIR: '${{ github.workspace }}/.ccache'
+  CI_CFG_VERSION: 'github-linux-0.1.0-dev'
+  MAX_BUG_AMOUNT: 0
+
+jobs:
+  run_linters:
+    name: Code Compliance (Fixes)
+#    if: (contains(github.repository, 'simonsan') ||  contains(github.repository, 'SFTtech')) == false        # TODO: CI for forks, don't run in the main repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install python3-setuptools
+          sudo apt-get install -y --no-install-recommends python3-dev python3-pip pylint3 python3-pycodestyle
+
+      - name: Compliance check
+        run: |
+          python3 -m buildsystem.codecompliance --all --fix
+
+      - name: Format-patch (Compliance)
+        run: |
+          git add .
+          git diff --cached > compliance-fixes${{ GITHUB.SHA }}.patch
+        if: ${{ always() }}
+
+      # TODO: Export patches if possible (dates, pep8 fixes, etc.)
+      - name: Upload Compliance fixes
+        uses: actions/upload-artifact@master
+        with:
+          name: compliance-fixes${{ GITHUB.SHA }}
+          path: compliance-fixes${{ GITHUB.SHA }}.patch
+        if: ${{ always() }}
+
+# TODO: Rename or move IWYU etc. out to separate jobs
+  iwyu_fixes:
+    name: IWYU (Fixes)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Export shell environment variables
+        uses: lukka/set-shell-env@v1.0
+        with:
+          IWYU_CLONE_DIR: '${{ runner.temp }}/deps/iwyu'
+
+      - uses: actions/checkout@v2
+
+      - name: Cache (ccache)
+        uses: actions/cache@v1.1.2
+        id: cache-ccache
+        with:
+          path: '${{ github.workspace }}/.ccache'
+          key: ${{ runner.os }}-clang-tidy-ccache
+
+# TODO: Change hash to clang10 executable or so
+      - name: Cache (iwyu)
+        uses: actions/cache@v1.1.2
+        id: cache-iwyu
+        with:
+          path: '${{ env.IWYU_CLONE_DIR }}'
+          key: ${{ runner.os }}-cache-iwyu-${{ hashFiles('.github/workflows-support/count-bugs.py') }}
+
+      - name: Setup apt repositories
+        run: |
+          sudo add-apt-repository 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main' -y
+
+      - name: Update apt repositories
+        run: sudo apt-get update -q
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get install -y --no-install-recommends libc++-dev ccache flex make cmake cython3 libeigen3-dev libepoxy-dev libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libogg-dev libopus-dev libopusfile-dev libpng-dev libsdl2-dev libsdl2-image-dev python3-dev python3-jinja2 python3-numpy python3-pil python3-pip python3-pygments qml-module-qtquick-controls qtdeclarative5-dev
+
+      - name: Install Clang
+        run: |
+          sudo apt-get install -y --no-install-recommends clang-tidy-10 llvm-10-dev clang-10 clang-tools-10 clang-10-doc libclang-common-10-dev libclang-10-dev libclang1-10 clang-format-10 clangd-10
+          clang-10 -print-resource-dir
+
+#  Build needs:
+#  llvm-<version>-dev
+#  libclang-<version>-dev
+#  clang-<version>
+# + special branch of iwyu-repository
+
+      - name: Build iwyu for clang-10
+        run: |
+          git clone --single-branch -b clang_10 https://github.com/include-what-you-use/include-what-you-use.git ${{ env.IWYU_CLONE_DIR }}
+          mkdir -p ${{ env.IWYU_CLONE_DIR }}/build && cd ${{ env.IWYU_CLONE_DIR }}/build
+          CC=clang-10 CXX=clang++-10 cmake -G "Unix Makefiles" -DCMAKE_PREFIX_PATH=/usr/lib/llvm-10 ..
+          make
+        if: steps.cache-iwyu.outputs.cache-hit != 'true'
+
+      - name: Copy clang libraries
+        run:
+          cp -R /usr/lib/llvm-10/lib/clang/10.0.0/. ${{ env.IWYU_CLONE_DIR }}/build/lib/clang/10.0.0/
+        if: steps.cache-iwyu.outputs.cache-hit != 'true'
+
+      - name: Show/Set environment settings
+        shell: bash
+        run: |
+          set -x
+          echo "::add-path::${{ env.IWYU_CLONE_DIR }}/build/bin/"
+          uname -a
+          uname -s
+          uname -m
+          env
+
+      - name: Configure build files
+        run: |
+          set -x
+          CC=clang-10 ./configure --compiler=clang-10 --mode=debug --flags="-Werror" --ccache --download-nyan --clang-tidy
+
+# TODO: Unless a source filename is provided, all files in the project will be analyzed.
+# Extract filenames of changed files of commit and use them here =>
+# TODO: exclude libopenage/gamedata/ because of file generation
+
+      - name: Run Include-what-you-use
+        run: |
+          chmod u+x ${{ env.IWYU_CLONE_DIR }}/iwyu_tool.py
+          ${{ env.IWYU_CLONE_DIR }}/iwyu_tool.py -j$(nproc) -p "bin" > ${{ env.IWYU_CLONE_DIR }}/iwyu-fixes${{ GITHUB.SHA }}.out
+
+      - name: Apply IWYU fixes
+        run: |
+          chmod u+x ${{ env.IWYU_CLONE_DIR }}/fix_includes.py
+          ${{ env.IWYU_CLONE_DIR }}/fix_includes.py < ${{ env.IWYU_CLONE_DIR }}/iwyu-fixes${{ GITHUB.SHA }}.out
+          exit 0
+        if: ${{ always() }}
+
+      - name: Format-patch (IWYU)
+        run: |
+          git add .
+          git diff --cached > iwyu-fixes${{ GITHUB.SHA }}.patch
+        if: ${{ always() }}
+
+      - name: Upload Include-what-you-use fixes
+        uses: actions/upload-artifact@master
+        with:
+          name: iwyu-fixes${{ GITHUB.SHA }}
+          path: iwyu-fixes${{ GITHUB.SHA }}.patch
+        if: ${{ always() }}
+
+  # TODO: Clang-format file for fixes
+#         as soon as we have a clang-format file, we can format the exported fixes directly in the way we need it with
+#         adding -format -style
+#         -config ".clang-tidy"
+#         add checks beside the standard checks
+  # TODO: Rename or move IWYU etc. out to separate jobs
+
+  clang_tidy_fixes:
+    name: Clang-tidy (Fixes)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache (ccache)
+        uses: actions/cache@v1.1.2
+        id: cache-ccache
+        with:
+          path: '${{ github.workspace }}/.ccache'
+          key: ${{ runner.os }}-clang-tidy-ccache
+
+      - name: Setup apt repositories
+        run: |
+          sudo add-apt-repository 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main' -y
+
+      - name: Update apt repositories
+        run: sudo apt-get update -q
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get install -y --no-install-recommends libc++-dev ccache flex make cmake cython3 libeigen3-dev libepoxy-dev libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libogg-dev libopus-dev libopusfile-dev libpng-dev libsdl2-dev libsdl2-image-dev python3-dev python3-jinja2 python3-numpy python3-pil python3-pip python3-pygments qml-module-qtquick-controls qtdeclarative5-dev
+
+      - name: Install Clang
+        run: |
+          sudo apt-get install -y --no-install-recommends clang-tidy-10 llvm-10-dev clang-10 clang-tools-10 clang-10-doc libclang-common-10-dev libclang-10-dev libclang1-10 clang-format-10 clangd-10
+
+      - name: Show/Set environment settings
+        shell: bash
+        run: |
+          set -x
+          which clang-tidy-10
+          uname -a
+          uname -s
+          uname -m
+          env
+
+      - name: Configure build files
+        run: |
+          set -x
+          CC=clang-10 ./configure --compiler=clang-10 --mode=debug --flags="-Werror" --ccache --download-nyan --clang-tidy
+
+# TODO: Maybe even a bash loop and pass the checks one by one,
+# like this we could have patches for every single check and not everything mix
+# Use what you need principle
+
+      - name: Run Clang-tidy script
+        run: |
+          chmod u+x ./buildsystem/scripts/clang-tidy/run-clang-tidy.py
+          buildsystem/scripts/clang-tidy/run-clang-tidy.py -clang-tidy-binary="clang-tidy-10" -clang-apply-replacements-binary="clang-apply-replacements-10" -p="bin/" -j="$(nproc)" -format -fix -checks="clang-diagnostic-*,clang-analyzer-*,-clang-analyzer-alpha*,-clang-analyzer-optin.performance.Padding,cppcoreguidelines-*,performance-*,llvm-*,bugprone-*,cert-*" -extra-arg=-std=c++17
+
+      - name: Format-patch (clang-tidy)
+        run: |
+          git add .
+          git diff --cached > clang-tidy-fixes${{ GITHUB.SHA }}.patch
+        if: ${{ always() }}
+
+      #       TODO: Activate again, to upload patch
+      - name: Upload clang-tidy fixes
+        uses: actions/upload-artifact@master
+        with:
+          name: clang-tidy-fixes${{ GITHUB.SHA }}
+          path: clang-tidy-fixes${{ GITHUB.SHA }}.patch
+        if: ${{ always() }}
+
+  # TODO: Clang-format file for fixes
+  # clang-tidy takes --format-style, edit in the script? check!
+  #         as soon as we have a clang-format file, we can format the exported fixes directly in the way we need it with
+  #         adding -format -style
+  #         -config ".clang-tidy"
+  #         add checks beside the standard checks
+
+  clang_format_fixes:
+    name: Clang-format (Fixes)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Setup apt repositories
+        run: |
+          sudo add-apt-repository 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main' -y
+
+      - name: Update apt repositories
+        run: sudo apt-get update -q
+
+      - name: Install Clang format
+        run: |
+            sudo apt-get install -y clang-format-10
+
+      - name: Show environment settings
+        shell: bash
+        run: |
+          set -x
+          uname -a
+          uname -s
+          uname -m
+          env
+
+# TODO: filenames of changed files: git diff --name-only --diff-filter=ACMRTUXB gitref
+      - name: Generate clang-format fixes
+        run: |
+          set -x
+          chmod u+x buildsystem/scripts/clang-format/clang-format-diff.py
+          git diff -U0 --no-color HEAD^ | ./buildsystem/scripts/clang-format/clang-format-diff.py -i -p1 -binary "clang-format-10"
+
+      - name: Format-patch (Clang-format)
+        run: |
+          git add .
+          git diff --cached > clang-format-fixes${{ GITHUB.SHA }}.patch
+        if: ${{ always() }}
+
+      - name: Upload Clang-format fixes
+        uses: actions/upload-artifact@master
+        with:
+          name: clang-format-fixes${{ GITHUB.SHA }}
+          path: clang-format-fixes${{ GITHUB.SHA }}.patch
+        if: ${{ always() }}
+
+  scan_build_analyzer:
+    name: Scan-build (Report)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Export shell environment variables
+        uses: lukka/set-shell-env@v1.0
+        with:
+          CC: clang-10
+          CXX: clang++-10
+
+      - uses: actions/checkout@v2
+
+      - name: Cache (ccache)
+        uses: actions/cache@v1.1.2
+        id: cache-ccache
+        with:
+          path: '${{ github.workspace }}/.ccache'
+          key: ${{ runner.os }}-clang-tidy-ccache
+
+      - name: Setup apt repositories
+        run: |
+          sudo add-apt-repository 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main' -y
+
+      - name: Update apt repositories
+        run: sudo apt-get update -q
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get install -y --no-install-recommends libc++-dev ccache flex make cmake cython3 libeigen3-dev libepoxy-dev libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libogg-dev libopus-dev libopusfile-dev libpng-dev libsdl2-dev libsdl2-image-dev python3-dev python3-jinja2 python3-numpy python3-pil python3-pip python3-pygments qml-module-qtquick-controls qtdeclarative5-dev
+
+      - name: Install Clang
+        run: |
+          sudo apt-get install -y --no-install-recommends clang-tidy-10 clang-10 clang-tools-10 clang-10-doc libclang-common-10-dev libclang-10-dev libclang1-10 clang-format-10 clangd-10
+
+      - name: Install scan-build dependencies
+        run: |
+          pip3 install beautifulsoup4 html5lib
+
+      - name: Show environment settings
+        shell: bash
+        run: |
+          set -x
+          uname -a
+          uname -s
+          uname -m
+          env
+
+      - name: Generate build files
+        run: |
+          set -x
+          CC=clang-10 scan-build-10 ./configure --compiler=clang-10 --mode=debug --flags="-Werror" --ccache --download-nyan
+
+      #TODO: More Tests?
+      - name: Running scan-build
+        id: scan-build
+        run: |
+          scan-build-10 -o report -k --status-bugs --html-title="openage (${{ GITHUB.SHA }})" make build -j$(nproc)
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: scan-build_report-commit-(${{ GITHUB.SHA }}
+          path: report
+        if: steps.scan-build.outcome == 'failure'
+
+      # TODO: scan-build might not give any failure if bugs are found, recheck with more tests activated
+      - name: Summarize report
+        run: |
+          echo "Full report is included in build Artifacts"
+          echo
+          chmod u+x ./.github/workflows-support/count-bugs.py && ./.github/workflows-support/count-bugs.py ${{ env.MAX_BUG_AMOUNT }} report/*/index.html
+        if: steps.scan-build.outcome == 'failure'
