@@ -300,7 +300,7 @@ jobs:
           ln -sf /usr/lib/llvm-10/lib/clang/ ${{ runner.temp }}/lib/clang
           mv ${{ runner.workspace }}/dl/Clazy-x86_64-1.6.AppImage ${{ runner.temp }}/lib/clazy
           chmod u+x ${{ runner.temp }}/lib/clazy
-          find . -name "*cpp" | xargs ${{ runner.temp }}/lib/clazy --standalone -checks=level2 -p bin/compile_commands.json -export-fixes=clazy-fixes-${{ GITHUB.SHA }}.yaml
+          find . -name "*cpp" | xargs ${{ runner.temp }}/lib/clazy --standalone -checks=level1 -p bin/compile_commands.json -export-fixes=clazy-fixes-${{ GITHUB.SHA }}.yaml
 
       - name: Apply fixes
         run: |
