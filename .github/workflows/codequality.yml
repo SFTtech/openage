@@ -232,6 +232,104 @@ jobs:
   #         -config ".clang-tidy"
   #         add checks beside the standard checks
 
+  clazy_fixes:
+    name: Clazy (Fixes)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache (ccache)
+        uses: actions/cache@v1.1.2
+        id: cache-ccache
+        with:
+          path: '${{ github.workspace }}/.ccache'
+          key: ${{ runner.os }}-clang-tidy-ccache
+
+      - name: Cache (Clazy)
+        uses: actions/cache@v1.1.2
+        id: cache-clazy
+        with:
+          path: '${{ runner.workspace }}\dl\'
+          key: '${{ runner.os }}-ClazyDL'
+
+      - name: Setup apt repositories
+        run: |
+          sudo add-apt-repository 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main' -y
+
+      - name: Update apt repositories
+        run: sudo apt-get update -q
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get install -y --no-install-recommends libc++-dev ccache flex make cmake cython3 libeigen3-dev libepoxy-dev libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libogg-dev libopus-dev libopusfile-dev libpng-dev libsdl2-dev libsdl2-image-dev python3-dev python3-jinja2 python3-numpy python3-pil python3-pip python3-pygments qml-module-qtquick-controls qtdeclarative5-dev
+
+      - name: Install Clang
+        run: |
+          sudo apt-get install -y --no-install-recommends clang-tidy-10 llvm-10-dev clang-10 clang-tools-10 clang-10-doc libclang-common-10-dev libclang-10-dev libclang1-10 clang-format-10 clangd-10
+
+      - name: Show/Set environment settings
+        shell: bash
+        run: |
+          set -x
+          which clang-tidy-10
+          clang-10 -v
+          which clang-10
+          uname -a
+          uname -s
+          uname -m
+          env
+
+      - name: Configure build files
+        run: |
+          set -x
+          CC=clang-10 ./configure --compiler=clang-10 --mode=debug --flags="-Werror" --ccache --download-nyan --clang-tidy
+
+      - name: Download Clazy
+        uses: carlosperate/download-file-action@v1.0.3
+        id: download-clazy
+        with:
+          file-url: 'https://downloads.kdab.com/clazy/1.6/Clazy-x86_64-1.6.AppImage'
+          file-name: 'Clazy-x86_64-1.6.AppImage'
+          location: '${{ runner.workspace }}\dl\'
+        if: steps.cache-clazy.outputs.cache-hit != 'true'
+
+      - name: Print the file path
+        run: echo "The file was downloaded to ${{ steps.download-clazy.outputs.file-path }}"
+        shell: cmd
+        if: steps.download-clazy.outputs.cache-hit != 'true'
+
+#      - name: Run Clazy
+#        run: |
+#          set -x
+#          /usr/lib/llvm-10/lib/clang/10.0.0
+#
+#  ${{ steps.download-clazy.outputs.file-path }}
+
+
+      # TODO: TESTING! Will this include the header files as well, if the cpp files get changed?
+      # if not, most likely, how do we do it
+      - name: Format-patch (clang-tidy)
+        run: |
+          git diff --name-only --diff-filter=ACMRTUXB --cached HEAD^ -- > pathspec.out
+          git add --pathspec-from-file="pathspec.out"
+          git diff --cached > clang-tidy-fixes-${{ GITHUB.SHA }}.patch
+        if: ${{ always() }}
+
+      #       TODO: Activate again, to upload patch
+      - name: Upload clang-tidy fixes
+        uses: actions/upload-artifact@master
+        with:
+          name: clang-tidy-fixes-${{ GITHUB.SHA }}
+          path: clang-tidy-fixes-${{ GITHUB.SHA }}.patch
+        if: ${{ always() }}
+
+  # TODO: Clang-format file for fixes
+  # clang-tidy takes --format-style, edit in the script? check!
+  #         as soon as we have a clang-format file, we can format the exported fixes directly in the way we need it with
+  #         adding -format -style
+  #         -config ".clang-tidy"
+  #         add checks beside the standard checks
+
   clang_format_fixes:
     name: Clang-format (Fixes)
     runs-on: ubuntu-latest
