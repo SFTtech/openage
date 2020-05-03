@@ -296,9 +296,11 @@ jobs:
       - name: Run Clazy
         run: |
           set -x
-          mv ${{ runner.workspace }}/dl/Clazy-x86_64-1.6.AppImage /usr/bin/clazy
-          chmod u+x /usr/bin/clazy
-          find . -name "*cpp" | xargs /usr/bin/clazy --standalone -checks=level2 -p bin/compile_commands.json -export-fixes=clazy-fixes-${{ GITHUB.SHA }}.yaml
+          mkdir -p ${{ runner.temp }}/lib/
+          ln -sf /usr/lib/llvm-10/lib/clang/ ${{ runner.temp }}/lib/clang
+          mv ${{ runner.workspace }}/dl/Clazy-x86_64-1.6.AppImage ${{ runner.temp }}/lib/clazy
+          chmod u+x ${{ runner.temp }}/lib/clazy
+          find . -name "*cpp" | xargs ${{ runner.temp }}/lib/clazy --standalone -checks=level2 -p bin/compile_commands.json -export-fixes=clazy-fixes-${{ GITHUB.SHA }}.yaml
 
       - name: Apply fixes
         run: |
@@ -311,6 +313,10 @@ jobs:
           git diff --cached > clazy-fixes${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
 
+
+
+
+
 #      # TODO: TESTING! Will this include the header files as well, if the cpp files get changed?
 #      # if not, most likely, how do we do it
 #      - name: Format-patch (Clazy)
@@ -321,7 +327,7 @@ jobs:
 #        if: ${{ always() }}
 
       #       TODO: Activate again, to upload patch
-      - name: Upload clang-tidy fixes
+      - name: Upload clazy fixes
         uses: actions/upload-artifact@master
         with:
           name: clazy-fixes${{ GITHUB.SHA }}
