@@ -291,13 +291,13 @@ jobs:
 
       - name: Print the file path
         run: echo "The file was downloaded to ${{ steps.download-clazy.outputs.file-path }}"
-        shell: cmd
         if: steps.download-clazy.outputs.cache-hit != 'true'
 
       - name: Run Clazy
         run: |
           set -x
           mv ${{ steps.download-clazy.outputs.file-path }} /usr/bin/clazy
+          chmod u+x /usr/bin/clazy
           find . -name "*cpp" | xargs /usr/bin/clazy --standalone -checks=level2 -p bin/compile_commands.json -export-fixes=clazy-fixes-${{ GITHUB.SHA }}.yaml
 
       - name: Apply fixes
