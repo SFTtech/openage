@@ -310,12 +310,8 @@ jobs:
       - name: Format-patch (Clazy)
         run: |
           git add .
-          git diff --cached > clazy-fixes${{ GITHUB.SHA }}.patch
+          git diff --cached > clazy-fixes-${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
-
-
-
-
 
 #      # TODO: TESTING! Will this include the header files as well, if the cpp files get changed?
 #      # if not, most likely, how do we do it
@@ -330,8 +326,8 @@ jobs:
       - name: Upload clazy fixes
         uses: actions/upload-artifact@master
         with:
-          name: clazy-fixes${{ GITHUB.SHA }}
-          path: clazy-fixes${{ GITHUB.SHA }}.patch
+          name: clazy-fixes-${{ GITHUB.SHA }}
+          path: clazy-fixes-${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
 
 
