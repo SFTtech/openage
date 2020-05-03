@@ -306,6 +306,7 @@ jobs:
         run: |
           set -x
           clang-apply-replacements-10 --format -style=file clazy-fixes-${{ GITHUB.SHA }}.yaml
+        if: ${{ always() }}
 
       - name: Format-patch (Clazy)
         run: |
