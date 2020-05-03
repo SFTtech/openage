@@ -30,7 +30,7 @@ jobs:
         run: |
           git diff --name-only --diff-filter=ACMRTUXB --cached HEAD^ > pathspec.out
           git add --pathspec-from-file="pathspec.out"
-          git diff --cached > compliance-fixes${{ GITHUB.SHA }}.patch
+          git diff --cached > compliance-fixes-${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
 
       # TODO: Export patches if possible (dates, pep8 fixes, etc.)
@@ -146,7 +146,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: iwyu-fixes-${{ GITHUB.SHA }}
-          path: iwyu-fixes${{ GITHUB.SHA }}.patch
+          path: iwyu-fixes-${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
 
   # TODO: Clang-format file for fixes
@@ -214,7 +214,7 @@ jobs:
         run: |
           git diff --name-only --diff-filter=ACMRTUXB --cached HEAD^ > pathspec.out
           git add --pathspec-from-file="pathspec.out"
-          git diff --cached > clang-tidy-fixes${{ GITHUB.SHA }}.patch
+          git diff --cached > clang-tidy-fixes-${{ GITHUB.SHA }}.patch
         if: ${{ always() }}
 
       #       TODO: Activate again, to upload patch
