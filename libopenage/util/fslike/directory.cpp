@@ -11,6 +11,7 @@
 #include <cstdio>
 #include <dirent.h>
 #include <fcntl.h>
+#include <filesystem>
 #include <iostream>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -37,7 +38,7 @@
 #include "../misc.h"
 #include "../path.h"
 
-
+namespace fs = std::filesystem;
 namespace openage::util::fslike {
 
 
@@ -64,22 +65,22 @@ std::string Directory::resolve(const Path::parts_t &parts) const {
 }
 
 
-// TODO: use std::optional when available
-std::tuple<struct stat, int> Directory::do_stat(const Path::parts_t &parts) const {
+/* Added the usage of std::optional here together with std::filesystem (a.k.a fs)
+   currently only do_stat, is_file and is_dir updated*/
+std::optional<fs::file_status> Directory::do_stat(const Path::parts_t &parts) const {
 	const std::string path = this->resolve(parts);
-	struct stat buf;
-	int result = stat(path.c_str(), &buf);
-
-	return std::make_tuple(buf, result);
+	fs::path fsPath{path};
+	fs::file_status stat{fs::status(fsPath)};
+	return fs::exists(stat)?stat:std::nullopt;
 }
 
 
 bool Directory::is_file(const Path::parts_t &parts) {
 	auto stat_result = this->do_stat(parts);
 
-	// test for regular file
-	if (std::get<1>(stat_result) == 0 and
-	    S_ISREG(std::get<0>(stat_result).st_mode)) {
+	// test for existing regular file
+	if (stat_result and
+	    sf::is_regular_file(stat_result)) {
 		return true;
 	}
 
@@ -90,11 +91,11 @@ bool Directory::is_file(const Path::parts_t &parts) {
 bool Directory::is_dir(const Path::parts_t &parts) {
 	auto stat_result = this->do_stat(parts);
 
-	// test for regular file
-	if (std::get<1>(stat_result) == 0 and
-	    S_ISDIR(std::get<0>(stat_result).st_mode)) {
-		return true;
-	}
+	// test for existing directory
+    if (stat_result and
+        sf::is_directory(stat_result)) {
+        return true;
+    }
 
 	return false;
 }
@@ -272,7 +273,7 @@ bool Directory::unlink(const Path::parts_t &parts) {
 	return std::remove(this->resolve(parts).c_str()) == 0;
 }
 
-
+// Need to research how std::filesystem::last_write_time plays with different platforms
 int Directory::get_mtime(const Path::parts_t &parts) {
 	auto stat_result = this->do_stat(parts);
 
@@ -290,7 +291,7 @@ int Directory::get_mtime(const Path::parts_t &parts) {
 	throw Error{ERR << "can't get mtime"};
 }
 
-
+// Will need to build std::filesystem::path from parts again to get filesize
 uint64_t Directory::get_filesize(const Path::parts_t &parts) {
 	auto stat_result = this->do_stat(parts);
 
