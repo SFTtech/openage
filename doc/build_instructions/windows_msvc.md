@@ -28,12 +28,18 @@ __NOTE:__ You need to manually make sure and doublecheck if the system you are b
    - With the "Download debug binaries (...)" option enabled.
    - If in doubt, run the installer again and choose "Modify".
    - You are going to need the 64-bit version of python if you are planning to build the 64-bit version of openage, and vice versa.
+
+    __Note:__ You need to install Python 3.7.x currently, because 3.8 deals with finding DLLs differently (see [#1201](https://github.com/SFTtech/openage/issues/1201)) which would result in errors down the line
+
  - [CMake](https://cmake.org/download/)
 
 ### Python Modules
  Open a command prompt at `<Python 3 installation directory>/Scripts`
 
     pip install cython numpy pillow pygments pyreadline Jinja2
+
+_Note:_ Make sure the Python 3 instance you're installing these scripts for is the one you call `python` in CMD
+_Note:_ Also ensure that `python` and `python3` both point to the correct and the same version of Python 3
 
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
@@ -46,6 +52,8 @@ __NOTE:__ You need to manually make sure and doublecheck if the system you are b
 
  _Note:_ If you are planning to build the 64-bit version of openage, you are going to need 64-bit libraries. Add command line option `--triplet x64-windows` to the above command or add the environment variable `VCPKG_DEFAULT_TRIPLET=x64-windows` to build x64 libraries. [See here](https://github.com/Microsoft/vcpkg/issues/1254)
 
+__NOTE:__ You can also download the pre-built vcpkg dependencies (without Qt) [from this repository](https://github.com/simonsan/openage-win-dependencies/releases).
+
 ## Building openage
  Note that openage doesn't support completely out-of-source-tree builds yet.
  We will, however, use a separate `build` directory to build the binaries.
@@ -56,20 +64,22 @@ Open a command prompt at `<openage directory>`:
 
      mkdir build
      cd build
-     cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>/scripts/buildsystems/vcpkg.cmake ..
+     cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>\scripts\buildsystems\vcpkg.cmake ..
      cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
 
-_Note:_ If you want to build the x64 version, please add `-G "Visual Studio 15 2017 Win64"` (for VS2017) to the first cmake command.
-_Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYAN=YES -DFLEX_EXECUTABLE=<path to win_flex.exe>` to the first cmake command.
+_Note:_ If you want to build the x64 version, please add `-G "Visual Studio 15 2017 Win64"` (for VS2017) or `-G "Visual Studio 16 2019" -A x64` (for VS2019) to the first cmake command.
 
+_Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYAN=YES -DFLEX_EXECUTABLE=<path to win_flex.exe>` to the first cmake command.
 
 ## Running openage (in devmode)
  While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
   - Install the [DejaVu Book Font](https://dejavu-fonts.github.io/Download.html).
     - Download and extract the latest `dejavu-fonts-ttf` tarball/zip file.
-    - Copy `ttf/DejaVuSerif*.ttf` font files to `%WINDIR%/Fonts`.
+    - Select all `ttf\DejaVuSerif*.ttf` files, right click and click `Install for all users`.
+
+    _Note:_ This will require administrator rights.
     - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\`.
-    - Copy `fontconfig/57-dejavu-serif.conf` to `%FONTCONFIG_PATH%/conf.d`.
+    - Copy `fontconfig\57-dejavu-serif.conf` to `%FONTCONFIG_PATH%\conf.d`.
   - [Optional] Set the `AGE2DIR` environment variable to the AoE 2 installation directory.
   - Set `QML2_IMPORT_PATH` to `<vcpkg directory>\installed\<relevant config>\qml` or for prebuilt Qt `<qt directory>\<qt-version>\<compiler-version>\qml`
   - Append the following to the environment `PATH`:
@@ -78,7 +88,11 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
     - `<vcpkg directory>\installed\<relevant config>\bin`
     - `<QT5 directory>\bin` (if prebuilt QT5 was installed)
 
- Now, execute `<openage directory>/run.exe` and enjoy!
+    __Note:__ The paths above should be added to the global system variables `PATH` and not to the user specific variables.
+
+  - Now, to run the openage:
+    - Open a CMD window in `<openage directory>\build\` and run `python -m openage game`
+    - Execute`<openage directory>\build\run.exe` every time after that and enjoy!
 
 ## Packaging
 
