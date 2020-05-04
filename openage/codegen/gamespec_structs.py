@@ -11,7 +11,7 @@ from ..convert.gamedata.empiresdat import EmpiresDat
 from ..convert.blendomatic import Blendomatic
 from ..convert.colortable import ColorTable
 from ..convert.texture import Texture
-from ..convert.stringresource import StringResource
+from ..convert.langfile.stringresource import StringResource
 
 
 def generate_gamespec_structs(projectdir):

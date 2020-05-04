@@ -9,11 +9,15 @@ cdef extern from "png.h":
     const int PNG_COMPRESSION_TYPE_DEFAULT = 0
     const int PNG_FILTER_TYPE_DEFAULT = 0
     const int PNG_TRANSFORM_IDENTITY = 0
+    const int PNG_IMAGE_VERSION = 1
+    const char PNG_FORMAT_RGBA = 0x03
 
     ctypedef unsigned char png_byte
     ctypedef const png_byte *png_const_bytep
+    ctypedef png_byte *png_bytep
     ctypedef png_byte **png_bytepp
     ctypedef unsigned long int png_uint_32
+    ctypedef long int png_int_32
 
     ctypedef struct png_struct
     ctypedef png_struct *png_structp
@@ -31,6 +35,22 @@ cdef extern from "png.h":
     ctypedef void *png_voidp
     ctypedef (png_structp, png_const_charp) *png_error_ptr
     ctypedef FILE *png_FILE_p
+    
+    ctypedef struct png_control
+    ctypedef png_control *png_controlp
+    ctypedef struct png_image:
+        png_controlp opaque
+        png_uint_32 version
+        png_uint_32 width
+        png_uint_32 height
+        png_uint_32 format
+        png_uint_32 flags
+        png_uint_32 colormap_entries
+        png_uint_32 warning_or_error
+        char message[64]
+    ctypedef png_image *png_imagep
+    
+    ctypedef size_t png_alloc_size_t
 
     png_structp png_create_write_struct(png_const_charp user_png_ver,
                                         png_voidp error_ptr,
@@ -59,6 +79,15 @@ cdef extern from "png.h":
     void png_destroy_write_struct(png_structpp png_ptr_ptr,
                                   png_infopp info_ptr_ptr)
     
+    # Buffer writing
+    int png_image_write_to_memory(png_imagep image,
+                                  void *memory,
+                                  png_alloc_size_t *memory_bytes,
+                                  int convert_to_8_bit,
+                                  const void *buffer,
+                                  png_int_32 row_stride,
+                                  const void *colormap)
+
     # Should not be necessary if png_write_png() works
     void png_write_info(png_structrp png_ptr,
                         png_const_inforp info_ptr)

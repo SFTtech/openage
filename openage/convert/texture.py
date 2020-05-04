@@ -192,8 +192,7 @@ class Texture(genie_structure.GenieStructure):
 
         basename, ext = os.path.splitext(filename)
 
-        # only allow png, although PIL could of course
-        # do other formats.
+        # only allow png
         if ext != ".png":
             raise ValueError("Filename invalid, a texture must be saved"
                              "as 'filename.png', not '%s'" % (filename))
@@ -201,23 +200,10 @@ class Texture(genie_structure.GenieStructure):
         # without the dot
         ext = ext[1:]
 
-        # ASDF: Remove the shoddy PNG file location mess
-        # TODO: The png conversion should return a bytearray and
-        #       let Python handle writing it. To do that libpng
-        #       must write to a buffer that is returned.
-        # ------------------------------------------------------------------------------
-        assetdir = targetdir.fsobj.obj.fsobj.obj.fsobj.path.decode("utf-8") + "/"
-        convertdir = assetdir + targetdir.fsobj.obj.fsobj.obj.parts[0].decode("utf-8") + "/"
-        for part in targetdir.parts:
-            convertdir = convertdir + part.decode("utf-8") + "/"
-        targetstr = convertdir + filename
-
-        with targetdir[filename].open("wb") as imagefile:
-            pass
-
         from .png import png_create
-        png_create.save(targetstr, self.image_data.data)
-        # ------------------------------------------------------------------------------
+        with targetdir[filename].open("wb") as imagefile:
+            png_data = png_create.save(self.image_data.data)
+            imagefile.write(png_data)
 
         if meta_formats:
             # generate formatted texture metadata
