@@ -2,26 +2,27 @@
 
 """ Entry point for all of the asset conversion. """
 
+from configparser import ConfigParser
 import os
-# importing readline enables the input() calls to have history etc.
+from pathlib import Path
 import readline  # pylint: disable=unused-import
 import subprocess
 import sys
-from configparser import ConfigParser
-from pathlib import Path
 from tempfile import NamedTemporaryFile
 
-from . import changelog
-from .game_versions import GameVersion, Support, has_x1_p1
-
-from ..log import warn, info, dbg
-from ..util.files import which
-from ..util.fslike.wrapper import (DirectoryCreator,
-                                   Synchronizer as AccessSynchronizer)
-from ..util.fslike.directory import CaseIgnoringDirectory, Directory
-from ..util.strings import format_progress
 from openage.convert.dataformat.version_detect import get_game_info, GameEdition
 
+from . import changelog
+from ..log import warn, info, dbg
+from ..util.files import which
+from ..util.fslike.directory import CaseIgnoringDirectory, Directory
+from ..util.fslike.wrapper import (DirectoryCreator,
+                                   Synchronizer as AccessSynchronizer)
+from ..util.strings import format_progress
+from .game_versions import Support
+
+
+# importing readline enables the input() calls to have history etc.
 STANDARD_PATH_IN_32BIT_WINEPREFIX =\
     "drive_c/Program Files/Microsoft Games/Age of Empires II/"
 STANDARD_PATH_IN_64BIT_WINEPREFIX =\

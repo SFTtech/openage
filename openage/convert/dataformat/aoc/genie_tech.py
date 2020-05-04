@@ -14,6 +14,8 @@ class GenieTechObject(ConverterObject):
     (excluding team boni).
     """
 
+    __slots__ = ('data')
+
     def __init__(self, tech_id, full_data_set, members=None):
         """
         Creates a new Genie tech object.
@@ -37,6 +39,8 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
     """
     A tech and the collection of its effects.
     """
+
+    __slots__ = ('data', 'tech', 'effects')
 
     def __init__(self, tech_id, full_data_set):
         """
@@ -170,6 +174,8 @@ class AgeUpgrade(GenieTechEffectBundleGroup):
     here and create a Tech from it.
     """
 
+    __slots__ = ('age_id')
+
     def __init__(self, tech_id, age_id, full_data_set):
         """
         Creates a new Genie tech group object.
@@ -194,6 +200,8 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
 
     This will become a Tech API object targeted at the line's game entity.
     """
+
+    __slots__ = ('unit_line_id', 'upgrade_target_id')
 
     def __init__(self, tech_id, unit_line_id, upgrade_target_id, full_data_set):
         """
@@ -227,6 +235,8 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
 
     This will become a Tech API object targeted at the line's game entity.
     """
+
+    __slots__ = ('building_line_id', 'upgrade_target_id')
 
     def __init__(self, tech_id, building_line_id, upgrade_target_id, full_data_set):
         """
@@ -263,6 +273,8 @@ class UnitUnlock(GenieTechEffectBundleGroup):
     will be created.
     """
 
+    __slots__ = ('line_id')
+
     def __init__(self, tech_id, line_id, full_data_set):
         """
         Creates a new Genie tech group object.
@@ -297,6 +309,8 @@ class BuildingUnlock(GenieTechEffectBundleGroup):
     will be created.
     """
 
+    __slots__ = ('head_unit_id')
+
     def __init__(self, tech_id, head_unit_id, full_data_set):
         """
         Creates a new Genie tech group object.
@@ -328,6 +342,8 @@ class InitiatedTech(GenieTechEffectBundleGroup):
 
     This will used to determine requirements for the creatables.
     """
+
+    __slots__ = ('building_id')
 
     def __init__(self, tech_id, building_id, full_data_set):
         """
@@ -381,6 +397,8 @@ class CivBonus(GenieTechEffectBundleGroup):
     This will become patches in the Civilization API object.
     """
 
+    __slots__ = ('civ_id')
+
     def __init__(self, tech_id, civ_id, full_data_set):
         """
         Creates a new Genie tech group object.
@@ -425,6 +443,8 @@ class CivTeamBonus(ConverterObjectGroup):
     This will become patches in the Civilization API object.
     """
 
+    __slots__ = ('tech_id', 'data', 'civ_id', 'effects')
+
     def __init__(self, tech_id, civ_id, effect_bundle_id, full_data_set):
         """
         Creates a new Genie tech group object.
@@ -461,6 +481,8 @@ class CivTechTree(ConverterObjectGroup):
 
     This will become patches in the Civilization API object.
     """
+
+    __slots__ = ('tech_id', 'data', 'civ_id', 'effects')
 
     def __init__(self, tech_id, civ_id, effect_bundle_id, full_data_set):
         """

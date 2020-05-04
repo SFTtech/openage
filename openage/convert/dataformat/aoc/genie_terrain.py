@@ -1,14 +1,17 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 
-from ...dataformat.converter_object import ConverterObject
 from openage.convert.dataformat.converter_object import ConverterObjectGroup
+
+from ...dataformat.converter_object import ConverterObject
 
 
 class GenieTerrainObject(ConverterObject):
     """
     Terrain definition from a .dat file.
     """
+
+    __slots__ = ('data')
 
     def __init__(self, terrain_id, full_data_set, members=None):
         """
@@ -34,6 +37,8 @@ class GenieTerrainGroup(ConverterObjectGroup):
     """
     A terrain from AoE that will become an openage Terrain object.
     """
+
+    __slots__ = ('data', 'terrain')
 
     def __init__(self, terrain_id, full_data_set):
         """

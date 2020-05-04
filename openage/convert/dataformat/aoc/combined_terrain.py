@@ -12,6 +12,8 @@ class CombinedTerrain:
     This will become a spritesheet texture with a terrain file.
     """
 
+    __slots__ = ('slp_id', 'filename', 'data', 'metadata', '_refs')
+
     def __init__(self, slp_id, filename, full_data_set):
         """
         Creates a new CombinedSprite instance.

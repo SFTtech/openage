@@ -12,6 +12,8 @@ class OrderedSet:
     Set that saves the input order of elements.
     """
 
+    __slots__ = ('ordered_set')
+
     def __init__(self, elements=None):
         self.ordered_set = {}
 

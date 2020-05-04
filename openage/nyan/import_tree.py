@@ -4,14 +4,17 @@
 Tree structure for resolving imports.
 """
 from enum import Enum
-from openage.util.ordered_set import OrderedSet
+
 from openage.nyan.nyan_structs import NyanObject, NyanPatch
+from openage.util.ordered_set import OrderedSet
 
 
 class ImportTree:
     """
     Tree for storing nyan object references.
     """
+
+    __slots__ = ('root')
 
     def __init__(self):
         self.root = Node("", NodeType.ROOT, None)
@@ -316,6 +319,8 @@ class Node:
     Node in the import tree. This can be a directory, a file
     or an object.
     """
+
+    __slots__ = ('name', 'node_type', 'parent', 'depth', 'children', 'alias')
 
     def __init__(self, name, node_type, parent):
         """

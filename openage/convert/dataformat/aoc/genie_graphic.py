@@ -8,6 +8,8 @@ class GenieGraphic(ConverterObject):
     Graphic definition from a .dat file.
     """
 
+    __slots__ = ('subgraphics', '_refs', 'data')
+
     def __init__(self, graphic_id, full_data_set, members=None):
         """
         Creates a new Genie graphic object.

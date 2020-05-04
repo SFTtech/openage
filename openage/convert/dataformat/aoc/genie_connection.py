@@ -9,6 +9,8 @@ class GenieAgeConnection(ConverterObject):
     A relation between an Age and buildings/techs/units in AoE.
     """
 
+    __slots__ = ('data')
+
     def __init__(self, age_id, full_data_set, members=None):
         """
         Creates a new Genie age connection.
@@ -32,6 +34,8 @@ class GenieBuildingConnection(ConverterObject):
     """
     A relation between a building and other buildings/techs/units in AoE.
     """
+
+    __slots__ = ('data')
 
     def __init__(self, building_id, full_data_set, members=None):
         """
@@ -57,6 +61,8 @@ class GenieTechConnection(ConverterObject):
     A relation between a tech and other buildings/techs/units in AoE.
     """
 
+    __slots__ = ('data')
+
     def __init__(self, tech_id, full_data_set, members=None):
         """
         Creates a new Genie tech connection.
@@ -80,6 +86,8 @@ class GenieUnitConnection(ConverterObject):
     """
     A relation between a unit and other buildings/techs/units in AoE.
     """
+
+    __slots__ = ('data')
 
     def __init__(self, unit_id, full_data_set, members=None):
         """

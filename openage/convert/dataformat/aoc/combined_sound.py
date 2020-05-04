@@ -10,6 +10,8 @@ class CombinedSound:
     Collection of sound information for openage files.
     """
 
+    __slots__ = ('head_sound_id', 'file_id', 'filename', 'data', 'genie_sound', '_refs')
+
     def __init__(self, head_sound_id, file_id, filename, full_data_set):
         """
         Creates a new CombinedSound instance.

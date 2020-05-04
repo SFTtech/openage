@@ -23,9 +23,9 @@ def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None):
     cdef unsigned int width = imagedata.shape[1]
     cdef unsigned int height = imagedata.shape[0]
     cdef numpy.uint8_t[:,:,::1] mview = imagedata
-    
+
     outdata = png_create(mview, width, height)
-    
+
     return outdata
 
 
@@ -66,10 +66,10 @@ cdef bytearray png_create(numpy.uint8_t[:,:,::1] imagedata, int width, int heigh
                                                rgb_data,
                                                0,
                                                NULL)
-    
+
     if not wresult:
         raise MemoryError("Write to buffer failed for PNG conversion.")
-                          
+
     # Output data
     outdata = bytearray(write_image_size)
     cdef char *out = PyByteArray_AS_STRING(outdata)

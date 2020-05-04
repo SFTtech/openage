@@ -12,10 +12,11 @@ Python does not enforce static types, so be careful
  and only use the provided functions, please. :)
 """
 
+from enum import Enum
 import re
 
-from enum import Enum
 from openage.util.ordered_set import OrderedSet
+
 
 INDENT = "    "
 
@@ -24,6 +25,9 @@ class NyanObject:
     """
     Superclass for nyan objects.
     """
+
+    __slots__ = ('name', '_fqon', '_parents', '_inherited_members', '_members',
+                 '_nested_objects', '_children')
 
     def __init__(self, name, parents=None, members=None,
                  nested_objects=None):
@@ -453,6 +457,8 @@ class NyanPatch(NyanObject):
     Superclass for nyan patches.
     """
 
+    __slots__ = ('_target', '_add_inheritance')
+
     def __init__(self, name, parents=None, members=None, nested_objects=None,
                  target=None, add_inheritance=None):
 
@@ -573,6 +579,9 @@ class NyanMember:
     """
     Superclass for all nyan members.
     """
+
+    __slots__ = ('name', '_member_type', '_set_type', '_optional', '_override_depth',
+                 '_operator', 'value')
 
     def __init__(self, name, member_type, value=None, operator=None,
                  override_depth=0, set_type=None, optional=False):
@@ -982,6 +991,8 @@ class NyanPatchMember(NyanMember):
     Nyan members for patches.
     """
 
+    __slots__ = ('_patch_target', '_member_origin')
+
     def __init__(self, name, patch_target, member_origin, value,
                  operator, override_depth=0):
         """
@@ -1060,6 +1071,8 @@ class InheritedNyanMember(NyanMember):
     """
     Nyan members inherited from other objects.
     """
+
+    __slots__ = ('_parent', '_origin')
 
     def __init__(self, name, member_type, parent, origin, value=None,
                  set_type=None, operator=None, override_depth=0, optional=False):

@@ -10,6 +10,8 @@ once the object has been created.
 
 class ExpectedPointer:
 
+    __slots__ = ('group_object', 'raw_api_object_name')
+
     def __init__(self, converter_object_group_ref, raw_api_object_ref):
         """
         Creates an expected pointer to a RawAPIObject that will be created

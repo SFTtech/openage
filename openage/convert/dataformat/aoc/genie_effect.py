@@ -8,6 +8,8 @@ class GenieEffectObject(ConverterObject):
     Single effect contained in GenieEffectBundle.
     """
 
+    __slots__ = ('bundle_id', 'data')
+
     def __init__(self, effect_id, bundle_id, full_data_set, members=None):
         """
         Creates a new Genie effect object.
@@ -40,6 +42,8 @@ class GenieEffectBundle(ConverterObject):
     """
     A set of effects of a tech.
     """
+
+    __slots__ = ('effects', 'sanitized', 'data')
 
     def __init__(self, bundle_id, effects, full_data_set, members=None):
         """

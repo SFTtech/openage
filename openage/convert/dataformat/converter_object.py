@@ -6,20 +6,23 @@ Objects that represent data structures in the original game.
 These are simple containers that can be processed by the converter.
 """
 
-from .value_members import ValueMember
-from ...nyan.nyan_structs import NyanObject, MemberOperator
-from .aoc.expected_pointer import ExpectedPointer
-from .aoc.combined_sprite import CombinedSprite
-from openage.convert.dataformat.value_members import NoDiffMember
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
+from openage.convert.dataformat.value_members import NoDiffMember
 from openage.nyan.nyan_structs import NyanPatch, NyanPatchMember
+
+from ...nyan.nyan_structs import NyanObject, MemberOperator
+from .aoc.combined_sprite import CombinedSprite
+from .aoc.expected_pointer import ExpectedPointer
+from .value_members import ValueMember
 
 
 class ConverterObject:
     """
     Storage object for data objects in the to-be-converted games.
     """
+
+    __slots__ = ('obj_id', 'members')
 
     def __init__(self, obj_id, members=None):
         """
@@ -134,6 +137,8 @@ class ConverterObjectGroup:
     instances are converted to the nyan API.
     """
 
+    __slots__ = ('group_id', 'raw_api_objects')
+
     def __init__(self, group_id, raw_api_objects=None):
         """
         Creates a new ConverterObjectGroup.
@@ -244,6 +249,9 @@ class RawAPIObject:
     expected pointers to objects or expected media files.
     The 'expected' values two have to be resolved in an additional step.
     """
+
+    __slots__ = ('obj_id', 'name', 'api_ref', 'raw_members', 'raw_parents',
+                 '_location', '_filename', 'nyan_object', '_patch_target')
 
     def __init__(self, obj_id, name, api_ref, location=""):
         """

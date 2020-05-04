@@ -1,15 +1,18 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 
+from enum import Enum
+
 from ...dataformat.converter_object import ConverterObject,\
     ConverterObjectGroup
-from enum import Enum
 
 
 class GenieUnitObject(ConverterObject):
     """
     Ingame object in AoE2.
     """
+
+    __slots__ = ('data')
 
     def __init__(self, unit_id, full_data_set, members=None):
         """
@@ -39,6 +42,9 @@ class GenieGameEntityGroup(ConverterObjectGroup):
     The first unit in the line will become the GameEntity, the rest will
     be patches to that GameEntity applied by Techs.
     """
+
+    __slots__ = ('data', 'line', 'line_positions', 'creates', 'researches',
+                 'garrison_entities', 'garrison_locations')
 
     def __init__(self, line_id, full_data_set):
         """
@@ -522,6 +528,8 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
     be patches to that GameEntity applied by Techs.
     """
 
+    __slots__ = ('gatherer_ids', 'trades_with')
+
     def __init__(self, line_id, full_data_set):
         super().__init__(line_id, full_data_set)
 
@@ -606,6 +614,8 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
     The 'stack unit' becomes the GameEntity, the 'head unit' will be a state
     during construction.
     """
+
+    __slots__ = ('head', 'stack')
 
     def __init__(self, stack_unit_id, head_building_id, full_data_set):
         """
@@ -694,6 +704,8 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
     Example: Trebuchet
     """
 
+    __slots__ = ('head_unit', 'transform_unit')
+
     def __init__(self, line_id, head_unit_id, full_data_set):
         """
         Creates a new Genie transform group.
@@ -759,6 +771,8 @@ class GenieMonkGroup(GenieUnitLineGroup):
     The 'head unit' will become the GameEntity, the 'switch unit'
     will become a Container ability with CarryProgress.
     """
+
+    __slots__ = ('head_unit', 'switch_unit')
 
     def __init__(self, line_id, head_unit_id, switch_unit_id, full_data_set):
         """
@@ -843,6 +857,8 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
     the other are used to create more abilities with AnimationOverride.
     """
 
+    __slots__ = ('task_group_id')
+
     # From unit connection
     male_line_id = 83   # male villager (with combat task)
 
@@ -911,6 +927,8 @@ class GenieVillagerGroup(GenieUnitLineGroup):
     Villagers come in two task groups (male/female) and will form
     variants of the common villager game entity.
     """
+
+    __slots__ = ('data', 'variants', 'creates')
 
     valid_switch_tasks_lookup = {
         5: "GATHER",    # Gather from resource spots

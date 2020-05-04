@@ -12,6 +12,8 @@ class CombinedSprite:
     This will become a spritesheet texture with a sprite file.
     """
 
+    __slots__ = ('head_sprite_id', 'filename', 'data', 'metadata', '_refs')
+
     def __init__(self, head_sprite_id, filename, full_data_set):
         """
         Creates a new CombinedSprite instance.

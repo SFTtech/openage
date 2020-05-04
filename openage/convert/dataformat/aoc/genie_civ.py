@@ -1,14 +1,17 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
+from openage.convert.dataformat.aoc.genie_tech import CivTeamBonus, CivTechTree
+
 from ...dataformat.converter_object import ConverterObject,\
     ConverterObjectGroup
-from openage.convert.dataformat.aoc.genie_tech import CivTeamBonus, CivTechTree
 
 
 class GenieCivilizationObject(ConverterObject):
     """
     Civilization in AoE2.
     """
+
+    __slots__ = ('data')
 
     def __init__(self, civ_id, full_data_set, members=None):
         """
@@ -36,6 +39,9 @@ class GenieCivilizationGroup(ConverterObjectGroup):
 
     This will become a Civilization API object.
     """
+
+    __slots__ = ('data', 'civ', 'team_bonus', 'tech_tree', 'civ_boni',
+                 'unique_entities', 'unique_techs')
 
     def __init__(self, civ_id, full_data_set):
         """

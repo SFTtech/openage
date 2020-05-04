@@ -8,6 +8,8 @@ class GenieSound(ConverterObject):
     Sound definition from a .dat file.
     """
 
+    __slots__ = ('data')
+
     def __init__(self, sound_id, full_data_set, members=None):
         """
         Creates a new Genie sound object.

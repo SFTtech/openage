@@ -8,27 +8,28 @@ import os
 import re
 from tempfile import gettempdir
 
+from openage.convert.dataformat.media_types import MediaType
+from openage.convert.dataformat.version_detect import GameEdition
+
 from ..log import info, dbg
-from .opus import opusenc
-from .game_versions import GameVersion, has_x1_p1
 from .blendomatic import Blendomatic
 from .changelog import (ASSET_VERSION, ASSET_VERSION_FILENAME,
                         GAMESPEC_VERSION_FILENAME)
 from .colortable import ColorTable, PlayerColorTable
 from .export.data_formatter import DataFormatter
+from .game_versions import GameVersion, has_x1_p1
 from .gamedata.empiresdat import load_gamespec, EmpiresDat
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
-from .langfile.hdlanguagefile import (read_age2_hd_fe_stringresources,
-                                      read_age2_hd_3x_stringresources)
 from .interface.cutter import InterfaceCutter
 from .interface.rename import hud_rename
-from .processor.aoc.processor import AoCProcessor
-from .slp_converter_pool import SLPConverterPool
+from .langfile.hdlanguagefile import (read_age2_hd_fe_stringresources,
+                                      read_age2_hd_3x_stringresources)
 from .langfile.stringresource import StringResource
+from .opus import opusenc
+from .processor.aoc.processor import AoCProcessor
 from .processor.modpack_exporter import ModpackExporter
-from openage.convert.dataformat.media_types import MediaType
-from openage.convert.dataformat.version_detect import GameEdition
+from .slp_converter_pool import SLPConverterPool
 
 
 def get_string_resources(args):
