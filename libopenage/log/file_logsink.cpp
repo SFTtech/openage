@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #include "file_logsink.h"
 
@@ -8,13 +8,12 @@
 #include "message.h"
 #include "logsource.h"
 
-namespace openage {
-namespace log {
+namespace openage::log {
 
 
 FileSink::FileSink(const char *filename, bool append)
 	:
-	outfile{filename, std::ios_base::out | append ? std::ios_base::app : std::ios_base::trunc} {}
+	outfile{filename, std::ios_base::out | (append ? std::ios_base::app : std::ios_base::trunc)} {}
 
 
 void FileSink::output_log_message(const message &msg, LogSource *source) {
@@ -27,4 +26,4 @@ void FileSink::output_log_message(const message &msg, LogSource *source) {
 	this->outfile << msg.text << std::endl;
 }
 
-}} // namespace openage::log
+} // namespace openage::log

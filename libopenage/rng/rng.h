@@ -1,12 +1,11 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <iostream>
 #include <string>
 
-namespace openage {
-namespace rng {
+namespace openage::rng {
 
 
 /** \class RNG
@@ -19,10 +18,9 @@ public:
 	 * Creates an rng and seeds it with the 64 bit seed
 	 * @param seed The inital seed for the following number generation.
 	 */
-	RNG(uint64_t seed);
+	explicit RNG(uint64_t seed);
 
-
-	/**
+        [[maybe_unused]] /**
 	 * Initializes the rng using data from the buffer pointed to by data
 	 * @param data The buffer that contains data for seeding the rng
 	 * @param count The number of bytes in the buffer
@@ -38,7 +36,7 @@ public:
 	 * @param instr The string from which the rng is serialized
 	 * @throws Error if the rng cannot be read from the string
 	 */
-	RNG(const std::string &instr);
+	explicit RNG(const std::string &instr);
 
 
 	/**
@@ -47,7 +45,7 @@ public:
 	 * @param instream The input stream for serializing the rng
 	 * @throws Error if stream initialization fails
 	 */
-	RNG(std::istream &instream);
+	explicit RNG(std::istream &instream);
 
 
 	/**
@@ -152,7 +150,7 @@ public:
 	/**
 	 * Writes the rng state to a string
 	 */
-	std::string to_string() const;
+	[[nodiscard]] std::string to_string() const;
 
 
 	/**
@@ -176,7 +174,7 @@ private:
 	/**
 	 * The internal state array
 	 */
-	uint64_t state[2];
+	uint64_t state[2]{};
 
 
 	/**
@@ -212,4 +210,4 @@ uint64_t time_seed();
 uint64_t random_seed();
 
 
-}} // namespace openage::rng
+} // namespace openage::rng

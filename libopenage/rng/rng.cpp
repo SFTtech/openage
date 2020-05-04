@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #include "rng.h"
 
@@ -10,17 +10,14 @@
 #include "../util/hash.h"
 #include "../error/error.h"
 
-
-namespace openage {
-
-
 /**
  * Contains an easy to use and fast random number generator.
  *
  * This was never designed or intended as a cryptographic-quality,
  * RNG, so don't use it as one. If you do, I'll tell my mom.
  */
-namespace rng {
+
+namespace openage::rng {
 
 
 // Key for seed hashing, just some hardcoded key
@@ -34,8 +31,7 @@ RNG::RNG(uint64_t v1) {
 	this->seed(v1);
 }
 
-
-RNG::RNG(const void *data, size_t len) {
+[[maybe_unused]] RNG::RNG(const void *data, size_t len) {
 	this->seed(data, len);
 }
 
@@ -139,7 +135,7 @@ void RNG::fill_real(double *dat, size_t len) {
 	act_fill(
 		dat, this->state, len,
 		[](double v, double *d, size_t i) {
-			d[i] = v / RNG::max();
+			d[i] = v / (double) RNG::max();
 		}
 	);
 }
@@ -224,4 +220,4 @@ uint64_t random_seed() {
 }
 
 
-}} // namespace openage::rng
+} // namespace openage::rng
