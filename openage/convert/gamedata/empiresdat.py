@@ -5,6 +5,8 @@
 import pickle
 from zlib import decompress
 
+from openage.convert.dataformat.version_detect import GameExpansion, GameEdition
+
 from . import civ
 from . import graphic
 from . import maps
@@ -14,14 +16,11 @@ from . import sound
 from . import tech
 from . import terrain
 from . import unit
-
-from ..dataformat.genie_structure import GenieStructure
-from ..dataformat.read_members import SubdataMember
-from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
-from ..dataformat.value_members import MemberTypes as StorageType
-
 from ...log import spam, dbg, info, warn
-from openage.convert.dataformat.version_detect import GameExpansion, GameEdition
+from ..dataformat.genie_structure import GenieStructure
+from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN, SKIP
+from ..dataformat.read_members import SubdataMember
+from ..dataformat.value_members import MemberTypes as StorageType
 
 
 # this file can parse and represent the empires2_x1_p1.dat file.
@@ -31,8 +30,6 @@ from openage.convert.dataformat.version_detect import GameExpansion, GameEdition
 #
 # documentation for this can be found in `doc/gamedata`
 # the binary structure, which the dat file has, is in `doc/gamedata.struct`
-
-
 class EmpiresDat(GenieStructure):
     """
     class for fighting and beating the compressed empires2*.dat
@@ -101,17 +98,17 @@ class EmpiresDat(GenieStructure):
             )),
 
             # terrain data
-            (READ, "virt_function_ptr", StorageType.ID_MEMBER, "int32_t"),
-            (READ, "map_pointer", StorageType.ID_MEMBER, "int32_t"),
-            (READ, "map_width", StorageType.INT_MEMBER, "int32_t"),
-            (READ, "map_height", StorageType.INT_MEMBER, "int32_t"),
-            (READ, "world_width", StorageType.INT_MEMBER, "int32_t"),
-            (READ, "world_height", StorageType.INT_MEMBER, "int32_t"),
+            (SKIP, "virt_function_ptr", StorageType.ID_MEMBER, "int32_t"),
+            (SKIP, "map_pointer", StorageType.ID_MEMBER, "int32_t"),
+            (SKIP, "map_width", StorageType.INT_MEMBER, "int32_t"),
+            (SKIP, "map_height", StorageType.INT_MEMBER, "int32_t"),
+            (SKIP, "world_width", StorageType.INT_MEMBER, "int32_t"),
+            (SKIP, "world_height", StorageType.INT_MEMBER, "int32_t"),
             (READ_EXPORT,  "tile_sizes", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.TileSize,
                 length=19,      # number of tile types
             )),
-            (READ, "padding1", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "padding1", StorageType.INT_MEMBER, "int16_t"),
         ])
 
         # Stored terrain number is hardcoded.
@@ -153,17 +150,17 @@ class EmpiresDat(GenieStructure):
                     ref_type=terrain.TerrainBorder,
                     length=16,
                 )),
-                (READ, "map_row_offset", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "map_row_offset", StorageType.INT_MEMBER, "int32_t"),
             ])
 
         if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
-                (READ, "map_min_x", StorageType.FLOAT_MEMBER, "float"),
-                (READ, "map_min_y", StorageType.FLOAT_MEMBER, "float"),
-                (READ, "map_max_x", StorageType.FLOAT_MEMBER, "float"),
-                (READ, "map_max_y", StorageType.FLOAT_MEMBER, "float"),
-                (READ, "map_max_xplus1", StorageType.FLOAT_MEMBER, "float"),
-                (READ, "map_min_yplus1", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "map_min_x", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "map_min_y", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "map_max_x", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "map_max_y", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "map_max_xplus1", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "map_min_yplus1", StorageType.FLOAT_MEMBER, "float"),
             ])
 
         data_format.extend([
@@ -175,30 +172,30 @@ class EmpiresDat(GenieStructure):
             (READ_EXPORT, "tile_half_height", StorageType.INT_MEMBER, "int16_t"),
             (READ_EXPORT, "tile_half_width", StorageType.INT_MEMBER, "int16_t"),
             (READ_EXPORT, "elev_height", StorageType.INT_MEMBER, "int16_t"),
-            (READ, "current_row", StorageType.INT_MEMBER, "int16_t"),
-            (READ, "current_column", StorageType.INT_MEMBER, "int16_t"),
-            (READ, "block_beginn_row", StorageType.INT_MEMBER, "int16_t"),
-            (READ, "block_end_row", StorageType.INT_MEMBER, "int16_t"),
-            (READ, "block_begin_column", StorageType.INT_MEMBER, "int16_t"),
-            (READ, "block_end_column", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "current_row", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "current_column", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "block_beginn_row", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "block_end_row", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "block_begin_column", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "block_end_column", StorageType.INT_MEMBER, "int16_t"),
         ])
 
         if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
-                (READ,         "search_map_ptr", StorageType.INT_MEMBER, "int32_t"),
-                (READ,         "search_map_rows_ptr", StorageType.INT_MEMBER, "int32_t"),
-                (READ,         "any_frame_change", StorageType.INT_MEMBER, "int8_t"),
+                (SKIP, "search_map_ptr", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "search_map_rows_ptr", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "any_frame_change", StorageType.INT_MEMBER, "int8_t"),
             ])
         else:
             data_format.extend([
-                (READ, "any_frame_change", StorageType.INT_MEMBER, "int32_t"),
-                (READ, "search_map_ptr", StorageType.INT_MEMBER, "int32_t"),
-                (READ, "search_map_rows_ptr", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "any_frame_change", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "search_map_ptr", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "search_map_rows_ptr", StorageType.INT_MEMBER, "int32_t"),
             ])
 
         data_format.extend([
-            (READ, "map_visible_flag", StorageType.INT_MEMBER, "int8_t"),
-            (READ, "fog_flag", StorageType.INT_MEMBER, "int8_t"),
+            (SKIP, "map_visible_flag", StorageType.INT_MEMBER, "int8_t"),
+            (SKIP, "fog_flag", StorageType.INT_MEMBER, "int8_t"),
         ])
 
         if game_version[0] is not GameEdition.AOE2DE:
@@ -284,13 +281,13 @@ class EmpiresDat(GenieStructure):
 
         if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
-                (READ, "time_slice", StorageType.INT_MEMBER, "int32_t"),
-                (READ, "unit_kill_rate", StorageType.INT_MEMBER, "int32_t"),
-                (READ, "unit_kill_total", StorageType.INT_MEMBER, "int32_t"),
-                (READ, "unit_hitpoint_rate", StorageType.INT_MEMBER, "int32_t"),
-                (READ, "unit_hitpoint_total", StorageType.INT_MEMBER, "int32_t"),
-                (READ, "razing_kill_rate", StorageType.INT_MEMBER, "int32_t"),
-                (READ, "razing_kill_total", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "time_slice", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "unit_kill_rate", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "unit_kill_total", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "unit_hitpoint_rate", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "unit_hitpoint_total", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "razing_kill_rate", StorageType.INT_MEMBER, "int32_t"),
+                (SKIP, "razing_kill_total", StorageType.INT_MEMBER, "int32_t"),
             ])
 
             # technology tree data

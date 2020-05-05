@@ -150,9 +150,11 @@ def convert_metadata(args):
     # TODO: Move this somewhere else
     args.converter = AoCProcessor
 
-    # Read
+    # Read .dat
     yield "empires.dat"
     gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
+
+    # Read strings
     string_resources = get_string_resources(args)
 
     # Convert

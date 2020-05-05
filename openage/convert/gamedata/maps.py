@@ -3,8 +3,8 @@
 # TODO pylint: disable=C,R
 
 from ..dataformat.genie_structure import GenieStructure
+from ..dataformat.member_access import READ, SKIP
 from ..dataformat.read_members import SubdataMember
-from ..dataformat.member_access import READ
 from ..dataformat.value_members import MemberTypes as StorageType
 
 
@@ -28,7 +28,7 @@ class MapInfo(GenieStructure):
             (READ, "water_shape", StorageType.INT_MEMBER, "int32_t"),
             (READ, "base_terrain", StorageType.INT_MEMBER, "int32_t"),
             (READ, "land_coverage", StorageType.INT_MEMBER, "int32_t"),
-            (READ, "unused_id", StorageType.ID_MEMBER, "int32_t"),
+            (SKIP, "unused_id", StorageType.ID_MEMBER, "int32_t"),
             (READ, "base_zone_count", StorageType.INT_MEMBER, "uint32_t"),
             (READ, "base_zone_ptr", StorageType.ID_MEMBER, "int32_t"),
             (READ, "map_terrain_count", StorageType.INT_MEMBER, "uint32_t"),
@@ -59,12 +59,12 @@ class MapLand(GenieStructure):
             (READ, "base_size", StorageType.INT_MEMBER, "int32_t"),
             (READ, "zone", StorageType.INT_MEMBER, "int8_t"),
             (READ, "placement_type", StorageType.ID_MEMBER, "int8_t"),
-            (READ, "padding1", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "padding1", StorageType.INT_MEMBER, "int16_t"),
             (READ, "base_x", StorageType.INT_MEMBER, "int32_t"),
             (READ, "base_y", StorageType.INT_MEMBER, "int32_t"),
             (READ, "land_proportion", StorageType.INT_MEMBER, "int8_t"),
             (READ, "by_player_flag", StorageType.ID_MEMBER, "int8_t"),
-            (READ, "padding2", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "padding2", StorageType.INT_MEMBER, "int16_t"),
             (READ, "start_area_radius", StorageType.INT_MEMBER, "int32_t"),
             (READ, "terrain_edge_fade", StorageType.INT_MEMBER, "int32_t"),
             (READ, "clumpiness", StorageType.INT_MEMBER, "int32_t"),
@@ -110,7 +110,7 @@ class MapUnit(GenieStructure):
             (READ, "host_terrain", StorageType.ID_MEMBER, "int32_t"),   # -1 = land; 1 = water
             (READ, "group_placing", StorageType.ID_MEMBER, "int8_t"),   # 0 =
             (READ, "scale_flag", StorageType.BOOLEAN_MEMBER, "int8_t"),
-            (READ, "padding1", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "padding1", StorageType.INT_MEMBER, "int16_t"),
             (READ, "objects_per_group", StorageType.INT_MEMBER, "int32_t"),
             (READ, "fluctuation", StorageType.INT_MEMBER, "int32_t"),
             (READ, "groups_per_player", StorageType.INT_MEMBER, "int32_t"),
@@ -165,7 +165,7 @@ class Map(GenieStructure):
             (READ, "water_shape", StorageType.INT_MEMBER, "int32_t"),
             (READ, "base_terrain", StorageType.INT_MEMBER, "int32_t"),
             (READ, "land_coverage", StorageType.INT_MEMBER, "int32_t"),
-            (READ, "unused_id", StorageType.ID_MEMBER, "int32_t"),
+            (SKIP, "unused_id", StorageType.ID_MEMBER, "int32_t"),
 
             (READ, "base_zone_count", StorageType.INT_MEMBER, "uint32_t"),
             (READ, "base_zone_ptr", StorageType.ID_MEMBER, "int32_t"),

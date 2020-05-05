@@ -2,12 +2,12 @@
 
 # TODO pylint: disable=C,R
 
-from ..game_versions import GameVersion
+from openage.convert.dataformat.version_detect import GameEdition
+
 from ..dataformat.genie_structure import GenieStructure
+from ..dataformat.member_access import READ, READ_EXPORT, SKIP
 from ..dataformat.read_members import ArrayMember, SubdataMember, IncludeMembers
-from ..dataformat.member_access import READ, READ_EXPORT
 from ..dataformat.value_members import MemberTypes as StorageType
-from openage.convert.dataformat.version_detect import GameExpansion, GameEdition
 
 
 class FrameData(GenieStructure):
@@ -153,10 +153,10 @@ class Terrain(GenieStructure):
                 ])
 
             data_format.extend([
-                (READ_EXPORT, "internal_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (SKIP, "internal_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "internal_name_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "internal_name", StorageType.STRING_MEMBER, "char[internal_name_len]"),
-                (READ_EXPORT, "filename_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (SKIP, "filename_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "filename_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[filename_len]"),
             ])
@@ -173,7 +173,7 @@ class Terrain(GenieStructure):
 
         data_format.extend([
             (READ_EXPORT, "slp_id", StorageType.ID_MEMBER, "int32_t"),
-            (READ,        "shape_ptr", StorageType.ID_MEMBER, "int32_t"),
+            (SKIP,        "shape_ptr", StorageType.ID_MEMBER, "int32_t"),
             (READ_EXPORT, "sound_id", StorageType.ID_MEMBER, "int32_t"),
         ])
 
@@ -191,7 +191,7 @@ class Terrain(GenieStructure):
             ])
             if game_version[0] is GameEdition.AOE2DE:
                 data_format.extend([
-                    (READ_EXPORT, "overlay_mask_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                    (SKIP, "overlay_mask_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                     (READ_EXPORT, "overlay_mask_name_len", StorageType.INT_MEMBER, "uint16_t"),
                     (READ_EXPORT, "overlay_mask_name", StorageType.STRING_MEMBER, "char[overlay_mask_name_len]"),
                 ])
@@ -290,7 +290,7 @@ class TerrainBorder(GenieStructure):
             (READ, "internal_name", StorageType.STRING_MEMBER, "char[13]"),
             (READ, "filename", StorageType.STRING_MEMBER, "char[13]"),
             (READ, "slp_id", StorageType.ID_MEMBER, "int32_t"),
-            (READ, "shape_ptr", StorageType.ID_MEMBER, "int32_t"),
+            (SKIP, "shape_ptr", StorageType.ID_MEMBER, "int32_t"),
             (READ, "sound_id", StorageType.ID_MEMBER, "int32_t"),
             (READ, "color", StorageType.ARRAY_ID, "uint8_t[3]"),
 
@@ -301,7 +301,7 @@ class TerrainBorder(GenieStructure):
                 length=19 * 12,  # number of tile types * 12
             )),
 
-            (READ, "draw_tile", StorageType.INT_MEMBER, "int16_t"),         # always 0
+            (SKIP, "draw_tile", StorageType.INT_MEMBER, "int16_t"),         # always 0
             (READ, "underlay_terrain", StorageType.ID_MEMBER, "int16_t"),
             (READ, "border_style", StorageType.INT_MEMBER, "int16_t"),
         ]

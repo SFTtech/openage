@@ -2,11 +2,12 @@
 
 # TODO pylint: disable=C,R
 
-from ..dataformat.genie_structure import GenieStructure
-from ..dataformat.read_members import SubdataMember, EnumLookupMember
-from ..dataformat.member_access import READ, READ_EXPORT
-from ..dataformat.value_members import MemberTypes as StorageType
 from openage.convert.dataformat.version_detect import GameEdition
+
+from ..dataformat.genie_structure import GenieStructure
+from ..dataformat.member_access import READ, READ_EXPORT, SKIP
+from ..dataformat.read_members import SubdataMember, EnumLookupMember
+from ..dataformat.value_members import MemberTypes as StorageType
 
 
 class GraphicDelta(GenieStructure):
@@ -21,12 +22,12 @@ class GraphicDelta(GenieStructure):
         """
         data_format = [
             (READ_EXPORT, "graphic_id", StorageType.ID_MEMBER, "int16_t"),
-            (READ, "padding_1", StorageType.INT_MEMBER, "int16_t"),
-            (READ, "sprite_ptr", StorageType.INT_MEMBER, "int32_t"),
+            (SKIP, "padding_1", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "sprite_ptr", StorageType.INT_MEMBER, "int32_t"),
             (READ_EXPORT, "offset_x", StorageType.INT_MEMBER, "int16_t"),
             (READ_EXPORT, "offset_y", StorageType.INT_MEMBER, "int16_t"),
             (READ, "display_angle", StorageType.INT_MEMBER, "int16_t"),
-            (READ, "padding_2", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "padding_2", StorageType.INT_MEMBER, "int16_t"),
         ]
 
         return data_format
@@ -119,16 +120,16 @@ class Graphic(GenieStructure):
         # internal name: e.g. ARRG2NNE = archery range feudal Age north european
         if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
-                (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_len]"),
-                (READ_EXPORT, "filename_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (SKIP, "filename_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "filename_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "filename", StorageType.STRING_MEMBER, "char[filename_len]"),
             ])
             if game_version[0] is GameEdition.AOE2DE:
                 data_format.extend([
-                    (READ_EXPORT, "particle_effect_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                    (SKIP, "particle_effect_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                     (READ_EXPORT, "particle_effect_name_len", StorageType.INT_MEMBER, "uint16_t"),
                     (READ_EXPORT, "particle_effect_name", StorageType.STRING_MEMBER, "char[particle_effect_name_len]"),
                 ])
@@ -150,8 +151,8 @@ class Graphic(GenieStructure):
 
         data_format.extend([
             (READ_EXPORT, "slp_id", StorageType.ID_MEMBER, "int32_t"),             # id of the graphics file in the drs
-            (READ, "is_loaded", StorageType.BOOLEAN_MEMBER, "int8_t"),             # unused
-            (READ, "old_color_flag", StorageType.BOOLEAN_MEMBER, "int8_t"),        # unused
+            (SKIP, "is_loaded", StorageType.BOOLEAN_MEMBER, "int8_t"),             # unused
+            (SKIP, "old_color_flag", StorageType.BOOLEAN_MEMBER, "int8_t"),        # unused
             (READ_EXPORT, "layer", StorageType.ID_MEMBER, EnumLookupMember(       # originally 40 layers, higher -> drawn on top
                 raw_type    = "int8_t",  # -> same layer -> order according to map position.
                 type_name   = "graphics_layer",
@@ -203,7 +204,7 @@ class Graphic(GenieStructure):
 
         if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             # sprite editor thing for AoK
-            data_format.append((READ, "editor_flag", StorageType.BOOLEAN_MEMBER, "int8_t"))
+            data_format.append((SKIP, "editor_flag", StorageType.BOOLEAN_MEMBER, "int8_t"))
 
         data_format.extend([
             (READ_EXPORT, "graphic_deltas", StorageType.ARRAY_CONTAINER, SubdataMember(

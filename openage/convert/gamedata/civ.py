@@ -2,12 +2,13 @@
 
 # TODO pylint: disable=C,R
 
+from openage.convert.dataformat.version_detect import GameEdition
+
 from . import unit
 from ..dataformat.genie_structure import GenieStructure
+from ..dataformat.member_access import READ, READ_EXPORT, SKIP
 from ..dataformat.read_members import MultisubtypeMember, EnumLookupMember
-from ..dataformat.member_access import READ, READ_EXPORT
 from ..dataformat.value_members import MemberTypes as StorageType
-from openage.convert.dataformat.version_detect import GameEdition
 
 
 class Civ(GenieStructure):
@@ -22,12 +23,12 @@ class Civ(GenieStructure):
         """
         data_format = [
             # always 1
-            (READ, "player_type", StorageType.INT_MEMBER, "int8_t"),
+            (SKIP, "player_type", StorageType.INT_MEMBER, "int8_t"),
         ]
 
         if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
-                (READ_EXPORT, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_len]"),
             ])

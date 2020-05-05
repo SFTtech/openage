@@ -2,11 +2,12 @@
 
 # TODO pylint: disable=C,R
 
-from ..dataformat.genie_structure import GenieStructure
-from ..dataformat.read_members import SubdataMember, EnumLookupMember
-from ..dataformat.member_access import READ
-from ..dataformat.value_members import MemberTypes as StorageType
 from openage.convert.dataformat.version_detect import GameEdition
+
+from ..dataformat.genie_structure import GenieStructure
+from ..dataformat.member_access import READ, SKIP
+from ..dataformat.read_members import SubdataMember, EnumLookupMember
+from ..dataformat.value_members import MemberTypes as StorageType
 
 
 class TechResourceCost(GenieStructure):
@@ -304,7 +305,7 @@ class Tech(GenieStructure):
 
         if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
-                (READ, "name_length_debug", StorageType.INT_MEMBER, "uint16_t"),
+                (SKIP, "name_length_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name", StorageType.STRING_MEMBER, "char[name_length]"),
             ])
