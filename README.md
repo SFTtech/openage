@@ -97,8 +97,8 @@ Dependencies, Building and Running
   Operating System    | Build status
   :------------------:|:--------------:
   Debian Sid          | [Todo: Kevin #11](https://github.com/SFTtech/kevin/issues/11)
-  MacOSX 10.14        | [![Build Status](https://travis-ci.org/SFTtech/openage.svg?branch=master)](https://travis-ci.org/SFTtech/openage)
-  Windows 10 - x64    | [![Build status](https://ci.appveyor.com/api/projects/status/66sx35key94u740e?svg=true)](https://ci.appveyor.com/project/simonsan/openage-sl215)
+  MacOS 10.14         | [![Build Status](https://travis-ci.org/SFTtech/openage.svg?branch=master)](https://travis-ci.org/SFTtech/openage)
+  Windows 10          | [![Windows 10](https://github.com/SFTtech/openage/workflows/Windows%2010/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions?query=workflow%3A%22Windows+10%22)
 
 
  - How do I get this to run on my box?

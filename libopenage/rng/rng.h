@@ -20,7 +20,7 @@ public:
 	 */
 	explicit RNG(uint64_t seed);
 
-        [[maybe_unused]] /**
+    /**
 	 * Initializes the rng using data from the buffer pointed to by data
 	 * @param data The buffer that contains data for seeding the rng
 	 * @param count The number of bytes in the buffer
