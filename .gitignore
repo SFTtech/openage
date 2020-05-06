@@ -30,6 +30,8 @@ __pycache__
 /.bin
 /build
 /deps
+/bin-release/
+/cmake-build-release-mingw-clang/
 
 # root dir run script
 /run
@@ -75,3 +77,4 @@ perf.data*
 # copyrighted assets
 /assets/converted/
 /assets/terrain/
+

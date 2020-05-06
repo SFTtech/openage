@@ -1,0 +1,6 @@
+Cython
+Jinja2
+numpy
+Pillow
+Pygments
+pyreadline

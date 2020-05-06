@@ -208,7 +208,11 @@ cmake modules ([3-clause BSD license](/legal/BSD-3-clause))
  - `buildsystem/modules/FindGPerfTools.cmake` (taken from [VAST](https://github.com/mavam/vast))
  - `buildsystem/modules/FindOpusfile.cmake` (taken from [Unvanquished](https://github.com/Unvanquished/Unvanquished))
 
-
+From [Kevin R Croft <krcroft@gmail.com>](https://github.com/kcgen) ([GPL 2.0+](/legal/GPLv2))
+ - `buildsystem/scripts/ci/install-tar-wrapper.sh`
+ - `buildsystem/scripts/ci/reset-brew.sh`
+ - `buildsystem/scripts/ci/shrink-brew.sh`
+ 
 #### Disclaimer
 
 Notes about this file:
