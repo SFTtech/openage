@@ -12,7 +12,6 @@ class MemberAccess(Enum):
 
     READ          = "binary-read_member"
     READ_GEN      = "binary-read_gen_member"
-    READ_EXPORT   = "binary-read-export_member"
     NOREAD_EXPORT = "noread-export_member"
     READ_UNKNOWN  = "read-unknown_member"
     SKIP          = "skip-member"
@@ -24,7 +23,6 @@ class MemberAccess(Enum):
 
 READ = MemberAccess.READ                        # Reads the data
 READ_GEN = MemberAccess.READ_GEN
-READ_EXPORT = MemberAccess.READ_EXPORT          # Reads the data and exports it to a file
 NOREAD_EXPORT = MemberAccess.NOREAD_EXPORT
 READ_UNKNOWN = MemberAccess.READ_UNKNOWN        # For unknown chunks of data
 SKIP = MemberAccess.SKIP

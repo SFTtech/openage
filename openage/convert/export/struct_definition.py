@@ -5,12 +5,13 @@
 from collections import OrderedDict
 import re
 
-from ..dataformat.read_members import IncludeMembers, StringMember, CharArrayMember, NumberMember, ReadMember, RefMember
-from ..dataformat.member_access import READ_EXPORT, NOREAD_EXPORT
+from openage.convert.dataformat.version_detect import GameEdition
+
+from ..dataformat.member_access import SKIP, READ_GEN, NOREAD_EXPORT
+from ..dataformat.read_members import IncludeMembers, StringMember, CharArrayMember, NumberMember, ReadMember, RefMember, ArrayMember
 from .content_snippet import ContentSnippet, SectionType
 from .struct_snippet import StructSnippet
 from .util import determine_header
-from openage.convert.dataformat.version_detect import GameEdition
 
 
 # regex for matching type array definitions like int[1337]
@@ -58,7 +59,7 @@ class StructDefinition:
         self.parent_classes = list()
 
         target_members = target.get_data_format((GameEdition.AOC, []),
-                                                allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
+                                                allowed_modes=(True, SKIP, READ_GEN, NOREAD_EXPORT),
                                                 flatten_includes=True
                                                 )
 
@@ -87,8 +88,9 @@ class StructDefinition:
                         # member = ArrayMember(ref_type=NumberMember,
                         #                      length=array_length,
                         #                      ref_type_params=[array_type])
-                        # BIG BIG TODO
-                        raise NotImplementedError("implement exporting arrays!")
+                        # BIG BIG TODO: Remove this
+                        #raise NotImplementedError("implement exporting arrays!")
+                        member = ArrayMember(array_type, array_length)
 
                     else:
                         raise Exception("member %s has unknown array type %s" % (member_name, member_type))
@@ -161,10 +163,11 @@ class StructDefinition:
                 # inherited members don't need to be added as they're stored in the superclass
                 continue
 
-            snippet.includes |= member_type.get_headers("struct")
-            snippet.typerefs |= member_type.get_typerefs()
+            if not isinstance(member_type, ArrayMember):
+                snippet.includes |= member_type.get_headers("struct")
+                snippet.typerefs |= member_type.get_typerefs()
 
-            snippet.add_members(member_type.get_struct_entries(member_name))
+                snippet.add_members(member_type.get_struct_entries(member_name))
 
         # append member count variable
         snippet.add_member("static constexpr size_t member_count = %d;" % len(self.members))

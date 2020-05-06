@@ -4,19 +4,18 @@
 Utility and driver module for C++ code generation.
 """
 
-import os
-import sys
-from sys import modules
 from datetime import datetime
 from enum import Enum
 from io import UnsupportedOperation
 from itertools import chain
+import os
+from sys import modules
+import sys
 
+from ..log import err
+from ..util.filelike.fifo import FIFO
 from ..util.fslike.directory import Directory
 from ..util.fslike.wrapper import Wrapper
-from ..util.filelike.fifo import FIFO
-from ..log import err
-
 from .listing import generate_all
 
 
@@ -43,6 +42,7 @@ class WriteCatcher(FIFO):
     Behaves like FIFO, but close() is converted to seteof(),
     and read() fails if eof is not set.
     """
+
     def close(self):
         self.eof = True
 
@@ -61,6 +61,7 @@ class CodegenDirWrapper(Wrapper):
 
     The constructor takes the to-be-wrapped fslike object.
     """
+
     def __init__(self, obj):
         super().__init__(obj)
 
@@ -132,12 +133,7 @@ def codegen(mode, input_dir, output_dir):
         # first, assemble the path for the current file
         wpath = output_dir[parts]
 
-        try:
-            data = postprocess_write(parts, data)
-        except ValueError as exc:
-            err("code generation issue with output file %s:\n%s",
-                b'/'.join(parts).decode(errors='replace'), exc.args[0])
-            sys.exit(1)
+        data = postprocess_write(parts, data)
 
         if mode == CodegenMode.codegen:
             # skip writing if the file already has that exact content

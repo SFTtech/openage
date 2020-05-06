@@ -150,9 +150,19 @@ def convert_metadata(args):
     # TODO: Move this somewhere else
     args.converter = AoCProcessor
 
+    import tracemalloc
+    tracemalloc.start()
+
     # Read .dat
     yield "empires.dat"
     gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
+
+    snapshot = tracemalloc.take_snapshot()
+    top_stats = snapshot.statistics('lineno')
+
+    print("[ Top 10 ]")
+    for stat in top_stats[:10]:
+        print(stat)
 
     # Read strings
     string_resources = get_string_resources(args)

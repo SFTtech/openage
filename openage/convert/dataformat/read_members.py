@@ -2,8 +2,8 @@
 
 # TODO pylint: disable=C,R,abstract-method
 
-import types
 from enum import Enum
+import types
 
 from ..export.content_snippet import ContentSnippet, SectionType
 from ..export.entry_parser import EntryParser
@@ -885,6 +885,16 @@ class ArrayMember(DynLengthMember):
     def __init__(self, raw_type, length):
         super().__init__(length)
         self.raw_type = raw_type
+
+    # TODO: Taken from above, remove with buildsystem cleanup
+    # =====================================================================
+    def get_effective_type(self):
+        return self.raw_type
+
+    def get_parsers(self, idx, member):
+        return [
+        ]
+    # =====================================================================
 
     def __repr__(self):
         return "ArrayMember<%s:len=%s>" % (self.raw_type, self.length)

@@ -5,7 +5,7 @@
 import pickle
 from zlib import decompress
 
-from openage.convert.dataformat.version_detect import GameExpansion, GameEdition
+from openage.convert.dataformat.version_detect import GameEdition
 
 from . import civ
 from . import graphic
@@ -18,7 +18,7 @@ from . import terrain
 from . import unit
 from ...log import spam, dbg, info, warn
 from ..dataformat.genie_structure import GenieStructure
-from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN, SKIP
+from ..dataformat.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
 from ..dataformat.read_members import SubdataMember
 from ..dataformat.value_members import MemberTypes as StorageType
 
@@ -46,11 +46,11 @@ class EmpiresDat(GenieStructure):
         """
         Return the members in this struct.
         """
-        data_format = [(READ, "versionstr", StorageType.STRING_MEMBER, "char[8]")]
+        data_format = [(READ_GEN, "versionstr", StorageType.STRING_MEMBER, "char[8]")]
 
         if game_version[0] is GameEdition.SWGB:
             data_format.extend([
-                (READ, "civ_count_swgb", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_GEN, "civ_count_swgb", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_UNKNOWN, None, StorageType.INT_MEMBER, "int32_t"),
                 (READ_UNKNOWN, None, StorageType.INT_MEMBER, "int32_t"),
                 (READ_UNKNOWN, None, StorageType.INT_MEMBER, "int32_t"),
@@ -68,7 +68,7 @@ class EmpiresDat(GenieStructure):
             data_format.append((READ, "terrain_pass_graphics_ptrs", StorageType.ARRAY_ID, "int32_t[terrain_restriction_count]"))
 
         data_format.extend([
-            (READ, "terrain_restrictions", StorageType.ARRAY_CONTAINER, SubdataMember(
+            (READ_GEN, "terrain_restrictions", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.TerrainRestriction,
                 length="terrain_restriction_count",
                 passed_args={"terrain_count"},
@@ -76,14 +76,14 @@ class EmpiresDat(GenieStructure):
 
             # player color data
             (READ, "player_color_count", StorageType.INT_MEMBER, "uint16_t"),
-            (READ, "player_colors", StorageType.ARRAY_CONTAINER, SubdataMember(
+            (READ_GEN, "player_colors", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=playercolor.PlayerColor,
                 length="player_color_count",
             )),
 
             # sound data
-            (READ_EXPORT, "sound_count", StorageType.INT_MEMBER, "uint16_t"),
-            (READ_EXPORT, "sounds", StorageType.ARRAY_CONTAINER, SubdataMember(
+            (READ, "sound_count", StorageType.INT_MEMBER, "uint16_t"),
+            (READ_GEN, "sounds", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=sound.Sound,
                 length="sound_count",
             )),
@@ -91,7 +91,7 @@ class EmpiresDat(GenieStructure):
             # graphic data
             (READ, "graphic_count", StorageType.INT_MEMBER, "uint16_t"),
             (READ, "graphic_ptrs", StorageType.ARRAY_ID, "uint32_t[graphic_count]"),
-            (READ_EXPORT, "graphics", StorageType.ARRAY_CONTAINER, SubdataMember(
+            (READ_GEN, "graphics", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type  = graphic.Graphic,
                 length    = "graphic_count",
                 offset_to = ("graphic_ptrs", lambda o: o > 0),
@@ -104,7 +104,7 @@ class EmpiresDat(GenieStructure):
             (SKIP, "map_height", StorageType.INT_MEMBER, "int32_t"),
             (SKIP, "world_width", StorageType.INT_MEMBER, "int32_t"),
             (SKIP, "world_height", StorageType.INT_MEMBER, "int32_t"),
-            (READ_EXPORT,  "tile_sizes", StorageType.ARRAY_CONTAINER, SubdataMember(
+            (READ_GEN,  "tile_sizes", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.TileSize,
                 length=19,      # number of tile types
             )),
@@ -114,39 +114,39 @@ class EmpiresDat(GenieStructure):
         # Stored terrain number is hardcoded.
         # Usually less terrains are used by the game
         if game_version[0] is GameEdition.SWGB:
-            data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+            data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=55,
             )))
         elif game_version[0] is GameEdition.AOE2DE:
-            data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+            data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=200,
             )))
         elif game_version[0] is GameEdition.AOE1DE:
-            data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+            data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=96,
             )))
         elif game_version[0] is GameEdition.HDEDITION:
-            data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+            data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=100,
             )))
         elif game_version[0] is GameEdition.AOC:
-            data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+            data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=42,
             )))
         else:
-            data_format.append((READ_EXPORT, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+            data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=32,
             )))
 
         if game_version[0] is not GameEdition.AOE2DE:
             data_format.extend([
-                (READ, "terrain_border", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (READ_GEN, "terrain_border", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=terrain.TerrainBorder,
                     length=16,
                 )),
@@ -167,11 +167,11 @@ class EmpiresDat(GenieStructure):
             (READ, "terrain_count_additional", StorageType.INT_MEMBER, "uint16_t"),
             (READ, "borders_used", StorageType.INT_MEMBER, "uint16_t"),
             (READ, "max_terrain", StorageType.INT_MEMBER, "int16_t"),
-            (READ_EXPORT, "tile_width", StorageType.INT_MEMBER, "int16_t"),
-            (READ_EXPORT, "tile_height", StorageType.INT_MEMBER, "int16_t"),
-            (READ_EXPORT, "tile_half_height", StorageType.INT_MEMBER, "int16_t"),
-            (READ_EXPORT, "tile_half_width", StorageType.INT_MEMBER, "int16_t"),
-            (READ_EXPORT, "elev_height", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "tile_width", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "tile_height", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "tile_half_height", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "tile_half_width", StorageType.INT_MEMBER, "int16_t"),
+            (READ, "elev_height", StorageType.INT_MEMBER, "int16_t"),
             (SKIP, "current_row", StorageType.INT_MEMBER, "int16_t"),
             (SKIP, "current_column", StorageType.INT_MEMBER, "int16_t"),
             (SKIP, "block_beginn_row", StorageType.INT_MEMBER, "int16_t"),
@@ -229,8 +229,8 @@ class EmpiresDat(GenieStructure):
             )),
 
             # technology effect data
-            (READ_EXPORT, "effect_bundle_count", StorageType.INT_MEMBER, "uint32_t"),
-            (READ_EXPORT, "effect_bundles", StorageType.ARRAY_CONTAINER, SubdataMember(
+            (READ, "effect_bundle_count", StorageType.INT_MEMBER, "uint32_t"),
+            (READ_GEN, "effect_bundles", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=tech.EffectBundle,
                 length="effect_bundle_count",
             )),
@@ -239,7 +239,7 @@ class EmpiresDat(GenieStructure):
         if game_version[0] is GameEdition.SWGB:
             data_format.extend([
                 (READ, "unit_line_count", StorageType.INT_MEMBER, "uint16_t"),
-                (READ, "unit_lines", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (READ_GEN, "unit_lines", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=unit.UnitLine,
                     length="unit_line_count",
                 )),
@@ -248,8 +248,8 @@ class EmpiresDat(GenieStructure):
         # unit header data
         if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format.extend([
-                (READ_EXPORT, "unit_count", StorageType.INT_MEMBER, "uint32_t"),
-                (READ_EXPORT, "unit_headers", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (READ, "unit_count", StorageType.INT_MEMBER, "uint32_t"),
+                (READ_GEN, "unit_headers", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=unit.UnitHeader,
                     length="unit_count",
                 )),
@@ -257,8 +257,8 @@ class EmpiresDat(GenieStructure):
 
         # civilisation data
         data_format.extend([
-            (READ_EXPORT, "civ_count", StorageType.INT_MEMBER, "uint16_t"),
-            (READ_EXPORT, "civs", StorageType.ARRAY_CONTAINER, SubdataMember(
+            (READ, "civ_count", StorageType.INT_MEMBER, "uint16_t"),
+            (READ_GEN, "civs", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=civ.Civ,
                 length="civ_count"
             )),
@@ -269,8 +269,8 @@ class EmpiresDat(GenieStructure):
 
         # research data
         data_format.extend([
-            (READ_EXPORT, "research_count", StorageType.INT_MEMBER, "uint16_t"),
-            (READ_EXPORT, "researches", StorageType.ARRAY_CONTAINER, SubdataMember(
+            (READ, "research_count", StorageType.INT_MEMBER, "uint16_t"),
+            (READ_GEN, "researches", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=research.Tech,
                 length="research_count"
             )),
@@ -292,32 +292,32 @@ class EmpiresDat(GenieStructure):
 
             # technology tree data
             data_format.extend([
-                (READ_EXPORT, "age_connection_count", StorageType.INT_MEMBER, "uint8_t"),
-                (READ_EXPORT, "building_connection_count", StorageType.INT_MEMBER, "uint8_t"),
+                (READ, "age_connection_count", StorageType.INT_MEMBER, "uint8_t"),
+                (READ, "building_connection_count", StorageType.INT_MEMBER, "uint8_t"),
             ])
 
             if game_version[0] is GameEdition.SWGB:
-                data_format.append((READ_EXPORT, "unit_connection_count", StorageType.INT_MEMBER, "uint16_t"))
+                data_format.append((READ, "unit_connection_count", StorageType.INT_MEMBER, "uint16_t"))
 
             else:
-                data_format.append((READ_EXPORT, "unit_connection_count", StorageType.INT_MEMBER, "uint8_t"))
+                data_format.append((READ, "unit_connection_count", StorageType.INT_MEMBER, "uint8_t"))
 
             data_format.extend([
-                (READ_EXPORT, "tech_connection_count", StorageType.INT_MEMBER, "uint8_t"),
-                (READ_EXPORT, "total_unit_tech_groups", StorageType.INT_MEMBER, "int32_t"),
-                (READ_EXPORT, "age_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (READ, "tech_connection_count", StorageType.INT_MEMBER, "uint8_t"),
+                (READ_GEN, "total_unit_tech_groups", StorageType.INT_MEMBER, "int32_t"),
+                (READ_GEN, "age_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=tech.AgeTechTree,
                     length="age_connection_count"
                 )),
-                (READ_EXPORT, "building_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (READ_GEN, "building_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=tech.BuildingConnection,
                     length="building_connection_count"
                 )),
-                (READ_EXPORT, "unit_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (READ_GEN, "unit_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=tech.UnitConnection,
                     length="unit_connection_count"
                 )),
-                (READ_EXPORT, "tech_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (READ_GEN, "tech_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=tech.ResearchConnection,
                     length="tech_connection_count"
                 )),
@@ -354,7 +354,7 @@ class EmpiresDatWrapper(GenieStructure):
         Return the members in this struct.
         """
         data_format = [
-            (READ_EXPORT, "empiresdat", StorageType.ARRAY_CONTAINER, SubdataMember(
+            (READ_GEN, "empiresdat", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=EmpiresDat,
                 length=1,
             )),

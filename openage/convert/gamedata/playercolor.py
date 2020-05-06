@@ -2,10 +2,11 @@
 
 # TODO pylint: disable=C,R
 
-from ..dataformat.genie_structure import GenieStructure
-from ..dataformat.member_access import READ, READ_EXPORT
-from ..dataformat.value_members import MemberTypes as StorageType
 from openage.convert.dataformat.version_detect import GameEdition
+
+from ..dataformat.genie_structure import GenieStructure
+from ..dataformat.member_access import READ_GEN
+from ..dataformat.value_members import MemberTypes as StorageType
 
 
 class PlayerColor(GenieStructure):
@@ -21,30 +22,30 @@ class PlayerColor(GenieStructure):
 
         if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             data_format = [
-                (READ_EXPORT, "id", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "id", StorageType.ID_MEMBER, "int32_t"),
                 # palette index offset, where the 8 player colors start
-                (READ_EXPORT, "player_color_base", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "player_color_base", StorageType.ID_MEMBER, "int32_t"),
                 # palette index
-                (READ_EXPORT, "outline_color", StorageType.ID_MEMBER, "int32_t"),
-                (READ, "unit_selection_color1", StorageType.ID_MEMBER, "int32_t"),
-                (READ, "unit_selection_color2", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "outline_color", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "unit_selection_color1", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "unit_selection_color2", StorageType.ID_MEMBER, "int32_t"),
                 # palette index
-                (READ_EXPORT, "minimap_color1", StorageType.ID_MEMBER, "int32_t"),
-                (READ, "minimap_color2", StorageType.ID_MEMBER, "int32_t"),
-                (READ, "minimap_color3", StorageType.ID_MEMBER, "int32_t"),
-                (READ_EXPORT, "statistics_text_color", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "minimap_color1", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "minimap_color2", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "minimap_color3", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "statistics_text_color", StorageType.ID_MEMBER, "int32_t"),
             ]
         else:
             data_format = [
-                (READ, "name", StorageType.STRING_MEMBER, "char[30]"),
-                (READ, "id", StorageType.ID_MEMBER, "int16_t"),
-                (READ, "resource_id", StorageType.ID_MEMBER, "int16_t"),
-                (READ, "minimap_color", StorageType.ID_MEMBER, "uint8_t"),
+                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[30]"),
+                (READ_GEN, "id", StorageType.ID_MEMBER, "int16_t"),
+                (READ_GEN, "resource_id", StorageType.ID_MEMBER, "int16_t"),
+                (READ_GEN, "minimap_color", StorageType.ID_MEMBER, "uint8_t"),
                 # 0 transform
                 # 1 transform player color
                 # 2 shadow
                 # 3 translucent
-                (READ, "type", StorageType.ID_MEMBER, "uint8_t"),
+                (READ_GEN, "type", StorageType.ID_MEMBER, "uint8_t"),
             ]
 
         return data_format

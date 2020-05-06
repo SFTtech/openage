@@ -6,7 +6,7 @@ from openage.convert.dataformat.version_detect import GameEdition
 
 from . import unit
 from ..dataformat.genie_structure import GenieStructure
-from ..dataformat.member_access import READ, READ_EXPORT, SKIP
+from ..dataformat.member_access import READ, READ_GEN, SKIP
 from ..dataformat.read_members import MultisubtypeMember, EnumLookupMember
 from ..dataformat.value_members import MemberTypes as StorageType
 
@@ -29,39 +29,40 @@ class Civ(GenieStructure):
         if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_EXPORT, "name_len", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+                (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
+                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_len]"),
             ])
         else:
             data_format.extend([
-                (READ_EXPORT, "name", StorageType.STRING_MEMBER, "char[20]"),
+                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[20]"),
             ])
 
         data_format.extend([
             (READ, "resources_count", StorageType.INT_MEMBER, "uint16_t"),
             # links to effect bundle id (to apply its effects)
-            (READ_EXPORT, "tech_tree_id", StorageType.ID_MEMBER, "int16_t"),
+            (READ_GEN, "tech_tree_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
         if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
             # links to tech id as well
-            data_format.append((READ_EXPORT, "team_bonus_id", StorageType.ID_MEMBER, "int16_t"))
+            data_format.append((READ_GEN, "team_bonus_id", StorageType.ID_MEMBER, "int16_t"))
 
             if game_version[0] is GameEdition.SWGB:
                 data_format.extend([
-                    (READ, "name2", StorageType.STRING_MEMBER, "char[20]"),
-                    (READ, "unique_unit_techs", StorageType.ARRAY_ID, "int16_t[4]"),
+                    (READ_GEN, "name2", StorageType.STRING_MEMBER, "char[20]"),
+                    (READ_GEN, "unique_unit_techs", StorageType.ARRAY_ID, "int16_t[4]"),
                 ])
 
         data_format.extend([
-            (READ, "resources", StorageType.ARRAY_FLOAT, "float[resources_count]"),
-            (READ, "icon_set", StorageType.ID_MEMBER, "int8_t"),                      # building icon set, trade cart graphics, changes no other graphics
-            (READ_EXPORT, "unit_count", StorageType.INT_MEMBER, "uint16_t"),
+            (READ_GEN, "resources", StorageType.ARRAY_FLOAT, "float[resources_count]"),
+            # building icon set, trade cart graphics, changes no other graphics
+            (READ_GEN, "icon_set", StorageType.ID_MEMBER, "int8_t"),
+            (READ, "unit_count", StorageType.INT_MEMBER, "uint16_t"),
             (READ, "unit_offsets", StorageType.ARRAY_ID, "int32_t[unit_count]"),
 
-            (READ_EXPORT, "units", StorageType.ARRAY_CONTAINER, MultisubtypeMember(
+            (READ_GEN, "units", StorageType.ARRAY_CONTAINER, MultisubtypeMember(
                 type_name          = "unit_types",
-                subtype_definition = (READ, "unit_type", StorageType.ID_MEMBER, EnumLookupMember(
+                subtype_definition = (READ_GEN, "unit_type", StorageType.ID_MEMBER, EnumLookupMember(
                     type_name      = "unit_type_id",
                     lookup_dict    = unit.unit_type_lookup,
                     raw_type       = "int8_t",

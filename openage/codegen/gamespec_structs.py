@@ -4,14 +4,13 @@
 gamespec struct code generation listing.
 """
 
-from ..convert.export.data_formatter import DataFormatter
-
-from ..convert.dataformat.multisubtype_base import MultisubtypeBaseFile
-from ..convert.gamedata.empiresdat import EmpiresDat
 from ..convert.blendomatic import Blendomatic
 from ..convert.colortable import ColorTable
-from ..convert.texture import Texture
+from ..convert.dataformat.multisubtype_base import MultisubtypeBaseFile
+from ..convert.export.data_formatter import DataFormatter
+from ..convert.gamedata.empiresdat import EmpiresDat
 from ..convert.langfile.stringresource import StringResource
+from ..convert.texture import Texture
 
 
 def generate_gamespec_structs(projectdir):
