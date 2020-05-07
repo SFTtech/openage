@@ -152,12 +152,12 @@ def main():
         'compiler_directives': {'language_level': 3},
         'build_dir': args.build_dir,
         'include_path': [args.build_dir],
-        'nthreads': args.threads
+        'nthreads': args.threads,
+        'language': 'c++'
     }
 
     # this is deprecated, but still better than
     # writing funny lines at the head of each file.
-    cythonize_args['language'] = 'c++'
 
     cythonize_wrapper(modules, **cythonize_args)
 
