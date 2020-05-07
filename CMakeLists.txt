@@ -243,11 +243,11 @@ set(PYEXT_LINK_LIBRARY pyext_libopenage)
 
 # Temporarily deactivated for Windows due to WINAPI WinMain() problems
 # https://stackoverflow.com/questions/5259714/undefined-reference-to-winmain16
-if(NOT WIN32)
+#if(NOT WIN32)
 configure_file(run.py.in run.py)
 add_cython_modules(EMBED NOINSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py)
 add_py_modules(BININSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py AS openage)
-endif()
+#endif()
 
 add_subdirectory(openage/)
 
