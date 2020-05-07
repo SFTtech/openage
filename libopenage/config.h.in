@@ -15,11 +15,10 @@
 #define WITH_NCURSES ${WITH_NCURSES}
 
 
-namespace openage {
-namespace config {
+namespace openage::config {
 
 extern const char *const config_option_string;
 
 constexpr const char *buildsystem_sourcefile_dir = "${CMAKE_SOURCE_DIR}/";
 
-}} // openage::config
+} // openage::config

@@ -9,6 +9,9 @@
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #include <DbgHelp.h>
+#if defined(__MINGW32__)
+#include <cxxabi.h>
+#endif
 #endif
 
 #include "strings.h"
@@ -18,18 +21,18 @@
 #include <optional>
 #include <mutex>
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 
 std::string demangle(const char *symbol) {
-#ifdef _WIN32
+#if defined (_WIN32) && !defined(__MINGW32__)
 	// TODO: demangle names for MSVC; Possibly using UnDecorateSymbolName
 	// https://msdn.microsoft.com/en-us/library/windows/desktop/ms681400(v=vs.85).aspx
 	// Could it be that MSVC's typeid(T).name() already returns a demangled name? It seems that .raw_name() returns the mangled name
 	return symbol;
 #else
-	int status;
+    int status=-1;
+
 	char *buf = abi::__cxa_demangle(symbol, nullptr, nullptr, &status);
 
 	if (status != 0) {
@@ -47,7 +50,7 @@ std::string addr_to_string(const void *addr) {
 	return sformat("[%p]", addr);
 }
 
-#ifdef _WIN32
+#if defined (_WIN32)
 namespace {
 
 
@@ -90,13 +93,12 @@ std::optional<std::string> symbol_name_win(const void *addr) {
 
 	return std::optional<std::string>();
 }
-
-
-}
 #endif
 
+}
+
 std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_addrs) {
-#ifdef _WIN32
+#if defined (_WIN32)
 
 	auto symbol_name_result = symbol_name_win(addr);
 
@@ -134,7 +136,7 @@ std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_
 
 
 bool is_symbol(const void *addr) {
-#ifdef _WIN32
+#if defined (_WIN32)
 
 	if (!initialized_symbol_handler_successfully) {
 		return true;
@@ -142,7 +144,7 @@ bool is_symbol(const void *addr) {
 		return symbol_name_win(addr).has_value();
 	}
 
-#else
+#elif !defined (_WIN32)
 	Dl_info addr_info;
 
 	if (dladdr(addr, &addr_info) == 0) {
@@ -153,5 +155,4 @@ bool is_symbol(const void *addr) {
 #endif
 }
 
-
-}} // openage::util
+} // openage::util

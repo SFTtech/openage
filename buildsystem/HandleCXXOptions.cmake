@@ -7,6 +7,10 @@
 
 include(CheckCXXCompilerFlag)
 
+# Exports compile commands to json in bin-dir
+# Used for clang-tidy and other static analysis tools
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 macro(set_compiler_version_flags TYPE MINIMAL FLAGS INVERS EQTYPE)
 	if(${INVERS} CMAKE_CXX_COMPILER_VERSION VERSION_${EQTYPE} ${MINIMAL})
 		if(${TYPE} STREQUAL "CXX")
@@ -40,6 +44,8 @@ macro(test_compiler_flag_apply TYPE FLAG NAME DONTRUN)
 	endif()
 endmacro()
 
+# TODO: Set linker flags dependent on targets
+# Use target_link_options()
 macro(set_linker_flags FLAGS)
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${FLAGS}")
 	set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} ${FLAGS}")
@@ -51,8 +57,6 @@ macro(set_cxx_optimize_flags FLAGS)
 	set(${BUILD_TYPE_CXX_FLAGS} "${${BUILD_TYPE_CXX_FLAGS}} ${FLAGS}")
 endmacro()
 
-
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 if(NOT MSVC)
 	set(EXTRA_FLAGS "${EXTRA_FLAGS} -Wall -Wextra -pedantic")
 endif()
@@ -62,7 +66,7 @@ macro(try_enable_gold_linker)
 	# Activate ld.gold instead of the default
 	option(USE_LD_GOLD "Use GNU gold linker" ON)
 	if(USE_LD_GOLD)
-		if(MINGW)
+		if(MINGW) # Not working
 			execute_process(COMMAND ${CMAKE_CXX_COMPILER} -Wl,--major-image-version,0,--minor-image-version,0 -fuse-ld=gold -Wl,--version ERROR_QUIET OUTPUT_VARIABLE LD_VERSION)
 		else()
 			execute_process(COMMAND ${CMAKE_CXX_COMPILER} -fuse-ld=gold -Wl,--version ERROR_QUIET OUTPUT_VARIABLE LD_VERSION)
@@ -100,6 +104,12 @@ endmacro()
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	set_compiler_greater_flags("CXX" 4.9 "-fdiagnostics-color=auto")
 	set_compiler_greater_flags("EXTRA" 5.0 "-Wsuggest-override")
+	if(MINGW)
+		# Undefined reference to WinMain
+		# https://stackoverflow.com/questions/5259714/undefined-reference-to-winmain16
+		# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mwindows")
+		set_linker_flags("-Wl,-subsystem,windows")
+	endif()
 	try_enable_gold_linker()
 
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
@@ -108,6 +118,11 @@ elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 
 	if(APPLE)
 		set_compiler_flags("CXX" "-stdlib=libc++")
+	elseif(MINGW)
+		# Necessary to set
+		# https://github.com/msys2/MINGW-packages/issues/5786
+		# https://reviews.llvm.org/D10524#204928
+		set_compiler_flags("CXX" "-femulated-tls")
 	endif()
 
 elseif(MSVC)

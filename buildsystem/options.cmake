@@ -67,3 +67,16 @@ function(get_config_option_string)
 
 	set(CONFIG_OPTION_STRING "${CONFIG_OPTION_STRING}" PARENT_SCOPE)
 endfunction()
+
+function(collect_library_paths)
+
+	# nyan dll (nyan_Dir) nyan\build\nyan\<relevant config>\
+	# libopenage dll (build-dir\libopenage)
+	# Qt bin dir (Qt dir\bin)
+	# vcpkg bin dir (<vcpkg directory>\installed\<relevant config>\bin)
+
+	MESSAGE(STATUS "We are creating our nice Target list here!")
+	# LIST()
+
+
+endfunction()

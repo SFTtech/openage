@@ -10,7 +10,9 @@ find_package(Numpy REQUIRED)
 py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)
 
 # This is the only useful thing after cleaning up what python suggests
-set(PYEXT_CXXFLAGS "-fwrapv")
+if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+	set(PYEXT_CXXFLAGS "-fwrapv")
+endif()
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	# suppress #warning about deprecated numpy api

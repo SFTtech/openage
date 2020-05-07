@@ -101,6 +101,9 @@ function(py_get_config_var VAR RESULTVAR)
 		"from distutils.sysconfig import get_config_var; print(get_config_var('${VAR}'))"
 		RESULT
 	)
-
+	MESSAGE(STATUS "Output generated for ${VAR} python config var: ${RESULT}") #DEBUG FLAG, REMOVE!
 	set("${RESULTVAR}" "${RESULT}" PARENT_SCOPE)
+	if(MINGW)
+		set("${RESULTVAR}" "-cpython-38.pyd" PARENT_SCOPE)
+	endif()
 endfunction()

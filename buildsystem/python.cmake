@@ -54,7 +54,7 @@ function(add_cython_modules)
 	# test.pyx is compiled to a shared library linked against PYEXT_LINK_LIBRARY
 	# __main__.pyx is compiled to a executable with embedded python interpreter,
 	# linked against libpython and PYEXT_LINK_LIBRARY.
-	# foo/bar.pyx is compiled to a executable with embedded pytthon interpreter,
+	# foo/bar.pyx is compiled to a executable with embedded python interpreter,
 	# linked only against libpython.
 	# foo/test.pyx is compiled to a shared library linked against nothing, and will
 	# not be installed.
@@ -102,9 +102,10 @@ function(add_cython_modules)
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES_EMBED "${source}")
 				add_executable("${TARGETNAME}" "${CPPNAME}")
 
-				if(MINGW)
-					set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-municode")
-				endif()
+# CLANG
+#				if(MINGW)
+#					set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-municode")
+#				endif()
 
 				# TODO: use full ldflags and cflags provided by python${VERSION}-config
 				target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
@@ -112,12 +113,20 @@ function(add_cython_modules)
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES "${source}")
 				add_library("${TARGETNAME}" MODULE "${CPPNAME}")
 
+# CLANG
+#				if(MINGW)
+#					message(NOTICE "${CMAKE_CXX_COMPILER_ID}")
+#					message(NOTICE "PY_LIBRARY_NAME is ${TARGETNAME}${PYEXT_SUFFIX}")
+#					set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-municode")
+#				endif()
+
 				set_target_properties("${TARGETNAME}" PROPERTIES
 					PREFIX ""
 					SUFFIX "${PYEXT_SUFFIX}"
 				)
 
 				if(WIN32)
+					# for MingW as well
 					target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
 				endif()
 			endif()
@@ -146,8 +155,12 @@ function(add_cython_modules)
 
 			# Since this module is not embedded with python interpreter,
 			# Mac OS X requires a link flag to resolve undefined symbols
-			if(NOT EMBED_NEXT AND APPLE)
-				set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-undefined dynamic_lookup" )
+			if(NOT EMBED_NEXT)
+				if(APPLE)
+					set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-undefined dynamic_lookup" )
+				elseif(MINGW)
+					#set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-llibpython3.8" )
+				endif()
 			endif()
 
 			add_dependencies("${TARGETNAME}" cythonize)

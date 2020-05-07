@@ -222,8 +222,10 @@ add_subdirectory(cfg/)
 
 ##################################################
 # C++ content
-add_subdirectory(libopenage/)
+set(CMAKE_CXX_VISIBILITY_PRESET default)
+set(CMAKE_VISIBILITY_INLINES_HIDDEN 0)
 
+add_subdirectory(libopenage/)
 
 ##################################################
 # Python content (uses the C++ library)
@@ -239,9 +241,14 @@ target_compile_options(pyext_libopenage INTERFACE
 target_link_libraries(pyext_libopenage INTERFACE libopenage)
 set(PYEXT_LINK_LIBRARY pyext_libopenage)
 
+# Temporarily deactivated for Windows due to WINAPI WinMain() problems
+# https://stackoverflow.com/questions/5259714/undefined-reference-to-winmain16
+if(NOT WIN32)
 configure_file(run.py.in run.py)
 add_cython_modules(EMBED NOINSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py)
 add_py_modules(BININSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py AS openage)
+endif()
+
 add_subdirectory(openage/)
 
 python_finalize()
