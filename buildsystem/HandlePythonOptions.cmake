@@ -1,16 +1,17 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 # finds the python interpreter, install destination and extension flags.
 
 # the Python version number requirement is in modules/FindPython_test.cpp
 find_package(Python ${PYTHON_MIN_VERSION} REQUIRED)
 find_package(Cython ${CYTHON_MIN_VERSION} REQUIRED)
-find_package(Numpy REQUIRED)
 
 py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)
 
 # This is the only useful thing after cleaning up what python suggests
-set(PYEXT_CXXFLAGS "-fwrapv")
+if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+	set(PYEXT_CXXFLAGS "-fwrapv")
+endif()
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	# suppress #warning about deprecated numpy api
