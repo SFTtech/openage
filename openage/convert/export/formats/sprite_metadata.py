@@ -34,6 +34,7 @@ class SpriteMetadata(DataDefinition):
     Collects sprite metadata and can format it
     as a .sprite custom format
     """
+
     def __init__(self, targetdir, filename):
         super().__init__(targetdir, filename)
 
@@ -51,7 +52,7 @@ class SpriteMetadata(DataDefinition):
         :param filename: Name of the image file, with extension.
         :type filename: str
         """
-        self.image_files[img_id] = filename
+        self.image_files[img_id] = (filename,)
 
     def add_layer(self, layer_id, mode, position, time_per_frame=None, replay_delay=None):
         """
@@ -80,7 +81,7 @@ class SpriteMetadata(DataDefinition):
         :type mirror_from: int
         """
         # when not None, it will look for the mirrored angle
-        self.angles[degree] = mirror_from
+        self.angles[degree] = (mirror_from,)
 
     def add_frame(self, layer_id, angle, img_id, xpos, ypos, xsize, ysize, xhotspot, yhotspot):
         """
@@ -115,7 +116,7 @@ class SpriteMetadata(DataDefinition):
 
         # image files
         for img_id, file in self.image_files.items():
-            out += f'imagefile {img_id} {file}\n'
+            out += f'imagefile {img_id} {file[0]}\n\n'
 
         # layer definitions
         for layer_id, params in self.layers.items():
@@ -130,16 +131,20 @@ class SpriteMetadata(DataDefinition):
                 out += f' replay_delay={params[3]}'
             out += '\n'
 
+        out += '\n'
+
         # angle mirroring declarations
         for degree, mirror_from in self.angles.items():
             out += f'angle {degree}'
-            if mirror_from is not None:
-                out += f' mirror_from={mirror_from}'
+            if mirror_from[0] is not None:
+                out += f' mirror_from={mirror_from[0]}'
             out += '\n'
+
+        out += '\n'
 
         # frame definitions
         for frame in self.frames:
-            out += f'frame {" ".join(frame)}\n'
+            out += f'frame {" ".join(str(param) for param in frame)}\n'
 
         return out
 

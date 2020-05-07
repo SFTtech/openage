@@ -21,8 +21,9 @@ class GenieObjectContainer(ConverterObjectContainer):
         # saved as RawAPIObjects
         self.pregen_nyan_objects = {}
 
-        # Strings
+        # Auxiliary
         self.strings = None
+        self.existing_graphics = None
 
         # Phase 1: Genie-like objects
         # ConverterObject types (the data from the game)
@@ -79,6 +80,7 @@ class GenieObjectContainer(ConverterObjectContainer):
 
         self.graphics_exports = {}
         self.sound_exports = {}
+        self.metadata_exports = []
 
     def __repr__(self):
         return "GenieObjectContainer"

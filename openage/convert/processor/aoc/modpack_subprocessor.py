@@ -4,8 +4,8 @@
 Organize export data (nyan objects, media, scripts, etc.)
 into modpacks.
 """
-from openage.convert.dataformat.modpack import Modpack
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.modpack import Modpack
 from openage.convert.export.formats.nyan_file import NyanFile
 from openage.nyan.import_tree import ImportTree
 
@@ -120,3 +120,6 @@ class AoCModpackSubprocessor:
 
         for sound_export in full_data_set.sound_exports.values():
             modpack.add_media_export(sound_export)
+
+        for metadata_file in full_data_set.metadata_exports:
+            modpack.add_metadata_export(metadata_file)

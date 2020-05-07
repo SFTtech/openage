@@ -12,7 +12,6 @@ class MediaType(Enum):
     """
     A type of media. Stores the mount point as the value.
     """
-
     DATFILE   = "data"
     GAMEDATA  = "gamedata"
     GRAPHICS  = "graphics"
@@ -21,3 +20,4 @@ class MediaType(Enum):
     PALETTES  = "palettes"
     TERRAIN   = "terrain"
     SOUNDS    = "sounds"
+    BLEND     = "blend"

@@ -32,8 +32,6 @@ class CombinedSprite:
         self.filename = filename
         self.data = full_data_set
 
-        self.metadata = None
-
         # Depending on the amounts of references:
         # 0 = do not convert;
         # 1 = store with GameEntity;
@@ -65,7 +63,13 @@ class CombinedSprite:
         graphics = [self.data.genie_graphics[self.head_sprite_id]]
         graphics.extend(self.data.genie_graphics[self.head_sprite_id].get_subgraphics())
 
-        return graphics
+        # Pnly consider existing graphics
+        existing_graphics = []
+        for graphic in graphics:
+            if graphic.exists:
+                existing_graphics.append(graphic)
+
+        return existing_graphics
 
     def get_id(self):
         """

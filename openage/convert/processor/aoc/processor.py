@@ -3,49 +3,48 @@
 """
 Convert data from AoC to openage formats.
 """
-from ...dataformat.aoc.genie_object_container import GenieObjectContainer
-from ...dataformat.aoc.genie_unit import GenieUnitObject
-from ...dataformat.aoc.genie_tech import GenieTechObject
-from ...dataformat.aoc.genie_effect import GenieEffectObject,\
-    GenieEffectBundle
+from openage.convert.dataformat.aoc.genie_tech import StatUpgrade, InitiatedTech,\
+    BuildingUnlock, NodeTech
+from openage.convert.dataformat.aoc.genie_terrain import GenieTerrainGroup
+from openage.convert.dataformat.aoc.genie_unit import GenieAmbientGroup,\
+    GenieGarrisonMode
+from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
+    VARIANT_GROUP_LOOKUPS
+from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
+from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
+
+from ....log import info
+from ...dataformat.aoc.genie_civ import GenieCivilizationGroup
 from ...dataformat.aoc.genie_civ import GenieCivilizationObject
 from ...dataformat.aoc.genie_connection import GenieAgeConnection,\
     GenieBuildingConnection, GenieUnitConnection, GenieTechConnection
+from ...dataformat.aoc.genie_effect import GenieEffectObject,\
+    GenieEffectBundle
 from ...dataformat.aoc.genie_graphic import GenieGraphic
+from ...dataformat.aoc.genie_object_container import GenieObjectContainer
 from ...dataformat.aoc.genie_sound import GenieSound
-from ...dataformat.aoc.genie_terrain import GenieTerrainObject
-from ...dataformat.aoc.genie_unit import GenieUnitLineGroup,\
-    GenieUnitTransformGroup, GenieMonkGroup
-from ...dataformat.aoc.genie_unit import GenieStackBuildingGroup,\
-    GenieBuildingLineGroup
 from ...dataformat.aoc.genie_tech import AgeUpgrade,\
     UnitUnlock, UnitLineUpgrade, CivBonus
-from ...dataformat.aoc.genie_civ import GenieCivilizationGroup
+from ...dataformat.aoc.genie_tech import BuildingLineUpgrade
+from ...dataformat.aoc.genie_tech import GenieTechObject
+from ...dataformat.aoc.genie_terrain import GenieTerrainObject
+from ...dataformat.aoc.genie_unit import GenieStackBuildingGroup,\
+    GenieBuildingLineGroup
+from ...dataformat.aoc.genie_unit import GenieUnitLineGroup,\
+    GenieUnitTransformGroup, GenieMonkGroup
+from ...dataformat.aoc.genie_unit import GenieUnitObject
 from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup
-from ...dataformat.aoc.genie_tech import BuildingLineUpgrade
-
 from ...dataformat.aoc.genie_unit import GenieVariantGroup
-from .nyan_subprocessor import AoCNyanSubprocessor
 from ...nyan.api_loader import load_api
 from .modpack_subprocessor import AoCModpackSubprocessor
-from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
-from openage.convert.dataformat.aoc.genie_tech import StatUpgrade, InitiatedTech,\
-    BuildingUnlock, NodeTech
-from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
-from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
-    VARIANT_GROUP_LOOKUPS
-from openage.convert.dataformat.aoc.genie_unit import GenieAmbientGroup,\
-    GenieGarrisonMode
-
-from ....log import info
-from openage.convert.dataformat.aoc.genie_terrain import GenieTerrainGroup
+from .nyan_subprocessor import AoCNyanSubprocessor
 
 
 class AoCProcessor:
 
     @classmethod
-    def convert(cls, gamespec, string_resources):
+    def convert(cls, gamespec, string_resources, existing_graphics):
         """
         Input game speification and media here and get a set of
         modpacks back.
@@ -60,7 +59,7 @@ class AoCProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        data_set = cls._pre_processor(gamespec, string_resources)
+        data_set = cls._pre_processor(gamespec, string_resources, existing_graphics)
 
         # Create the custom openae formats (nyan, sprite, terrain)
         data_set = cls._processor(data_set)
@@ -71,7 +70,7 @@ class AoCProcessor:
         return modpacks
 
     @classmethod
-    def _pre_processor(cls, gamespec, string_resources):
+    def _pre_processor(cls, gamespec, string_resources, existing_graphics):
         """
         Store data from the reader in a conversion container.
 
@@ -82,6 +81,7 @@ class AoCProcessor:
 
         dataset.nyan_api_objects = load_api()
         dataset.strings = string_resources
+        dataset.existing_graphics = existing_graphics
 
         info("Extracting Genie data...")
 
@@ -381,6 +381,10 @@ class AoCProcessor:
             graphic_members = raw_graphic.get_value()
 
             graphic = GenieGraphic(graphic_id, full_data_set, members=graphic_members)
+            slp_id = raw_graphic.get_value()["slp_id"].get_value()
+            if str(slp_id) not in full_data_set.existing_graphics:
+                graphic.exists = False
+
             full_data_set.genie_graphics.update({graphic.get_id(): graphic})
 
         # Detect subgraphics

@@ -30,8 +30,8 @@ class Observer:
         :type observable: Observable
         :param message: An optional message of any type.
         """
-        raise Exception("%s has not implemented update()"
-                        % (self))
+        raise NotImplementedError("%s has not implemented update()"
+                                  % (self))
 
 
 class Observable:

@@ -17,7 +17,6 @@ from .changelog import (ASSET_VERSION, ASSET_VERSION_FILENAME,
                         GAMESPEC_VERSION_FILENAME)
 from .colortable import ColorTable, PlayerColorTable
 from .export.data_formatter import DataFormatter
-from .game_versions import GameVersion, has_x1_p1
 from .gamedata.empiresdat import load_gamespec, EmpiresDat
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
@@ -61,15 +60,14 @@ def get_string_resources(args):
     return stringres
 
 
-def get_blendomatic_data(srcdir):
+def get_blendomatic_data(args):
     """ reads blendomatic.dat """
     # in HD edition, blendomatic.dat has been renamed to
     # blendomatic_x1.dat; their new blendomatic.dat has a new, unsupported
     # format.
-    try:
-        blendomatic_dat = srcdir["data/blendomatic_x1.dat"].open('rb')
-    except FileNotFoundError:
-        blendomatic_dat = srcdir["data/blendomatic.dat"].open('rb')
+    game_edition = args.game_version[0]
+    blendomatic_path = game_edition.media_paths[MediaType.BLEND][0]
+    blendomatic_dat = args.srcdir[blendomatic_path].open('rb')
 
     return Blendomatic(blendomatic_dat)
 
@@ -101,15 +99,8 @@ def convert(args):
     """
     # data conversion
     yield from convert_metadata(args)
-    with args.targetdir[GAMESPEC_VERSION_FILENAME].open('w') as fil:
-        fil.write(EmpiresDat.get_hash())
-
-    # media conversion
-    if not args.flag('no_media'):
-        yield from convert_media(args)
-
-        with args.targetdir[ASSET_VERSION_FILENAME].open('w') as fil:
-            fil.write(str(ASSET_VERSION))
+    # with args.targetdir[GAMESPEC_VERSION_FILENAME].open('w') as fil:
+    #     fil.write(EmpiresDat.get_hash(args.game_version))
 
     # clean args (set by convert_metadata for convert_media)
     del args.palette
@@ -150,48 +141,37 @@ def convert_metadata(args):
     # TODO: Move this somewhere else
     args.converter = AoCProcessor
 
-    import tracemalloc
-    tracemalloc.start()
-
     # Read .dat
     yield "empires.dat"
     gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
 
-    snapshot = tracemalloc.take_snapshot()
-    top_stats = snapshot.statistics('lineno')
-
-    print("[ Top 10 ]")
-    for stat in top_stats[:10]:
-        print(stat)
-
     # Read strings
     string_resources = get_string_resources(args)
 
+    # Existing graphic IDs/filenames
+    existing_graphics = get_existing_graphics(args)
+
     # Convert
-    modpacks = args.converter.convert(gamespec, string_resources)
+    modpacks = args.converter.convert(gamespec, string_resources, existing_graphics)
 
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)
 
     yield "blendomatic.dat"
-    blend_data = get_blendomatic_data(args.srcdir)
-    blend_data.save(args.targetdir, "blendomatic", ("csv",))
-    data_formatter.add_data(blend_data.dump("blending_modes"))
+    blend_data = get_blendomatic_data(args)
+    blend_data.save(args.targetdir, "blendomatic")
+    # data_formatter.add_data(blend_data.dump("blending_modes"))
 
     yield "player color palette"
     player_palette = PlayerColorTable(palette)
-    data_formatter.add_data(player_palette.dump("player_palette"))
+    # data_formatter.add_data(player_palette.dump("player_palette"))
 
     yield "terminal color palette"
     termcolortable = ColorTable(URXVTCOLS)
-    data_formatter.add_data(termcolortable.dump("termcolors"))
-
-    yield "string resources"
-    stringres = get_string_resources(args)
-    data_formatter.add_data(stringres.dump("string_resources"))
+    # data_formatter.add_data(termcolortable.dump("termcolors"))
 
     yield "game specification files"
-    data_formatter.export(args.targetdir, ("csv",))
+    # data_formatter.export(args.targetdir, ("csv",))
 
     if args.flag('gen_extra_files'):
         dbg("generating extra files for visualization")
@@ -241,6 +221,17 @@ def slp_rename(filepath, names_map):
 
     except KeyError:
         return filepath
+
+
+def get_existing_graphics(args):
+    """
+    List the graphics files that exist in the graphics file paths.
+    """
+    filenames = []
+    for filepath in args.srcdir[MediaType.GRAPHICS.value].iterdir():
+        filenames.append(filepath.stem)
+
+    return filenames
 
 
 def convert_media(args):

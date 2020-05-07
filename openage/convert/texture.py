@@ -4,21 +4,21 @@
 
 # TODO pylint: disable=C,R
 
+from PIL import Image
 import os
+
 import numpy
 
-from PIL import Image
-
+from ..log import spam
+from ..util.fslike.path import Path
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .blendomatic import BlendingMode
 from .dataformat import genie_structure
-from .export import struct_definition, data_formatter
 from .export import data_definition
+from .export import struct_definition, data_formatter
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
                                 TERRAIN_ASPECT_RATIO)
-from ..log import spam
-from ..util.fslike.path import Path
 
 
 def subtexture_meta(tx, ty, hx, hy, cx, cy):
@@ -178,11 +178,10 @@ class Texture(genie_structure.GenieStructure):
         else:
             return [subtex]
 
-    def save(self, targetdir, filename, meta_formats=None):
+    def save(self, targetdir, filename):
         """
         Store the image data into the target directory path,
-        with given filename="dir/out.png"
-        If metaformats are requested, export e.g. as "dir/out.docx".
+        with given filename="dir/out.png".
         """
         if not isinstance(targetdir, Path):
             raise ValueError("util.fslike Path expected as targetdir")
@@ -190,7 +189,7 @@ class Texture(genie_structure.GenieStructure):
             raise ValueError("str expected as filename, not %s" %
                              type(filename))
 
-        basename, ext = os.path.splitext(filename)
+        _, ext = os.path.splitext(filename)
 
         # only allow png
         if ext != ".png":
@@ -205,19 +204,7 @@ class Texture(genie_structure.GenieStructure):
             png_data = png_create.save(self.image_data.data)
             imagefile.write(png_data)
 
-        if meta_formats:
-            # generate formatted texture metadata
-            formatter = data_formatter.DataFormatter()
-            formatter.add_data(self.dump(basename))
-            formatter.export(targetdir, meta_formats)
-
-    def dump(self, filename):
-        """
-        Creates a DataDefinition object for the texture metadata.
-        """
-        return [data_definition.DataDefinition(self,
-                                               self.image_metadata,
-                                               filename)]
+        return self.image_metadata
 
     @classmethod
     def structs(cls):

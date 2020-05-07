@@ -8,7 +8,7 @@ class GenieGraphic(ConverterObject):
     Graphic definition from a .dat file.
     """
 
-    __slots__ = ('subgraphics', '_refs', 'data')
+    __slots__ = ('exists', 'subgraphics', '_refs', 'data')
 
     def __init__(self, graphic_id, full_data_set, members=None):
         """
@@ -27,6 +27,9 @@ class GenieGraphic(ConverterObject):
         super().__init__(graphic_id, members=members)
 
         self.data = full_data_set
+
+        # Should be set to False if no graphics file exists for it
+        self.exists = True
 
         # Direct subgraphics (deltas) of this graphic
         self.subgraphics = []

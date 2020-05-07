@@ -4,9 +4,10 @@
 Defines a modpack that can be exported.
 """
 
-from openage.convert.export.formats.modpack_info import ModpackInfo
 from openage.convert.export.data_definition import DataDefinition
+from openage.convert.export.formats.modpack_info import ModpackInfo
 from openage.convert.export.media_export_request import MediaExportRequest
+from openage.convert.export.metadata_export import MetadataExport
 
 
 class Modpack:
@@ -21,6 +22,7 @@ class Modpack:
         # Data/media export
         self.data_export_files = []
         self.media_export_files = {}
+        self.metadata_files = []
 
     def add_data_export(self, export_file):
         """
@@ -46,6 +48,16 @@ class Modpack:
         else:
             self.media_export_files[export_request.get_type()] = [export_request]
 
+    def add_metadata_export(self, export_file):
+        """
+        Add a metadata file to the modpack for exporting.
+        """
+        if not isinstance(export_file, MetadataExport):
+            raise Exception("%s: export file must be of type MetadataExport"
+                            "not %s" % (self, type(export_file)))
+
+        self.metadata_files.append(export_file)
+
     def get_info(self):
         """
         Return the modpack definition file.
@@ -63,3 +75,9 @@ class Modpack:
         Returns the media requests for exporting.
         """
         return self.media_export_files
+
+    def get_metadata_files(self):
+        """
+        Returns the metadata exports.
+        """
+        return self.metadata_files

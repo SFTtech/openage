@@ -4,6 +4,7 @@
 Derives and adds abilities to lines or civ groups. Subroutine of the
 nyan subprocessor.
 """
+from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_unit import GenieGameEntityGroup,\
     GenieBuildingLineGroup, GenieVillagerGroup, GenieAmbientGroup,\
     GenieVariantGroup
@@ -11,7 +12,6 @@ from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOO
     UNIT_LINE_LOOKUPS, CIV_GROUP_LOOKUPS, AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 
 
 class AoCModifierSubprocessor:
@@ -140,7 +140,7 @@ class AoCModifierSubprocessor:
                                                                "engine.modifier.multiplier.MultiplierModifier")
 
                         # Resource spot
-                        spot_ref = "%s.Harvestable.%sResourceSpot" (resource_line_name, resource_line_name)
+                        spot_ref = "%s.Harvestable.%sResourceSpot" % (resource_line_name, resource_line_name)
                         spot_expected_pointer = ExpectedPointer(resource_line, spot_ref)
                         modifier_raw_api_object.add_raw_member("resource_spot",
                                                                spot_expected_pointer,

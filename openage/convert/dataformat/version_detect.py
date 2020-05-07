@@ -158,7 +158,8 @@ class GameEdition(enum.Enum):
             MediaType.PALETTES: ["data/interfac.drs"],
             MediaType.SOUNDS: ["data/sounds.drs", "data/sounds_x1.drs"],
             MediaType.INTERFACE: ["data/interfac.drs"],
-            MediaType.TERRAIN: ["data/terrain.drs"]},
+            MediaType.TERRAIN: ["data/terrain.drs"],
+            MediaType.BLEND: ["data/blendomatic.dat"]},
         ["aoe2-base", "aoe2-base-graphics"],
         []
     )

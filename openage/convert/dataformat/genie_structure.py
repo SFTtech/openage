@@ -597,7 +597,6 @@ class GenieStructure:
         inherited members can either be returned as to-be-included,
         or can be fetched and displayed as if they weren't inherited.
         """
-
         for member in cls.get_data_format_members(game_version):
             if len(member) != 4:
                 print(member[1])

@@ -4,13 +4,14 @@
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
 """
-from openage.convert.dataformat.media_types import MediaType
 from openage.convert.colortable import ColorTable
-from openage.convert.texture import Texture
+from openage.convert.dataformat.media_types import MediaType
 from openage.convert.dataformat.version_detect import GameEdition
+from openage.convert.texture import Texture
+from openage.util.observer import Observable
 
 
-class MediaExportRequest:
+class MediaExportRequest(Observable):
 
     def __init__(self, targetdir, source_filename, target_filename):
         """
@@ -23,6 +24,7 @@ class MediaExportRequest:
         :param target_filename: Filename of the resulting file.
         :type target_filename: str
         """
+        super().__init__()
 
         self.set_targetdir(targetdir)
         self.set_source_filename(source_filename)
@@ -98,27 +100,18 @@ class GraphicsMediaExportRequest(MediaExportRequest):
 
     def save(self, sourcedir, exportdir, game_version):
         source_file = sourcedir[self.get_type().value, self.source_filename]
-
-        if source_file.is_file():
-            media_file = source_file.open("rb")
-
-        else:
-            # TODO: Filter files that do not exist out sooner
-            return
+        media_file = source_file.open("rb")
 
         if source_file.suffix.lower() == ".slp":
             from ..slp import SLP
-
             image = SLP(media_file.read())
 
         elif source_file.suffix.lower() == ".smp":
             from ..smp import SMP
-
             image = SMP(media_file.read())
 
         elif source_file.suffix.lower() == ".smx":
             from ..smx import SMX
-
             image = SMX(media_file.read())
 
         palette_subdir = MediaType.PALETTES.value
@@ -131,7 +124,12 @@ class GraphicsMediaExportRequest(MediaExportRequest):
         palette_table = ColorTable(palette_file.read())
 
         texture = Texture(image, palette_table)
-        texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
+        metadata = texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
+        metadata = {self.target_filename: metadata}
+
+        self.set_changed()
+        self.notify_observers(metadata)
+        self.clear_changed()
 
 
 class TerrainMediaExportRequest(MediaExportRequest):
@@ -144,17 +142,10 @@ class TerrainMediaExportRequest(MediaExportRequest):
 
     def save(self, sourcedir, exportdir, game_version):
         source_file = sourcedir[self.get_type().value, self.source_filename]
-
-        if source_file.is_file():
-            media_file = source_file.open("rb")
-
-        else:
-            # TODO: Filter files that do not exist out sooner
-            return
+        media_file = source_file.open("rb")
 
         if source_file.suffix.lower() == ".slp":
             from ..slp import SLP
-
             image = SLP(media_file.read())
 
         elif source_file.suffix.lower() == ".dds":

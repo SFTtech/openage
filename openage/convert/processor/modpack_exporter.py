@@ -3,8 +3,8 @@
 """
 Export data from a modpack to files.
 """
-from openage.convert.dataformat.media_types import MediaType
 from openage.convert import game_versions
+from openage.convert.dataformat.media_types import MediaType
 
 from ...log import info
 
@@ -55,3 +55,11 @@ class ModpackExporter:
 
             for request in cur_export_requests:
                 request.save(sourcedir, modpack_dir, game_version)
+
+        info("Dumping metadata files...")
+
+        # Metadata files
+        metadata_files = modpack.get_metadata_files()
+
+        for metadata_file in metadata_files:
+            metadata_file.save(modpack_dir)
