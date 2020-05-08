@@ -104,12 +104,6 @@ endmacro()
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	set_compiler_greater_flags("CXX" 4.9 "-fdiagnostics-color=auto")
 	set_compiler_greater_flags("EXTRA" 5.0 "-Wsuggest-override")
-	if(MINGW)
-		# Undefined reference to WinMain
-		# https://stackoverflow.com/questions/5259714/undefined-reference-to-winmain16
-		# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mwindows")
-		set_linker_flags("-Wl,-subsystem,windows")
-	endif()
 	try_enable_gold_linker()
 
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")

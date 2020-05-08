@@ -227,8 +227,16 @@ function(add_cython_modules)
 						"${PROJECT_SOURCE_DIR}/"
 				)
 
+				if(MINGW)
+					# Undefined reference to WinMain
+					# https://stackoverflow.com/questions/5259714/undefined-reference-to-winmain16
+					set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mwindows")
+					add_link_options("LINKER:-subsystem,windows")
+				endif()
+
 				target_compile_options("${TARGETNAME}"
 						PRIVATE
+						"${CMAKE_CXX_FLAGS}"
 						"${PYTHON_CONFIG_COMPILE_FLAGS}"
 						"${SDL2_CONFIG_COMPILE_FLAGS}"
 				)
@@ -268,6 +276,9 @@ function(add_cython_modules)
 					OUTPUT_NAME "${OUTPUTNAME}"
 			)
 
+
+			# DEBUG
+			add_link_options("LINKER:-v -v")
 
 			if (STANDALONE_NEXT)
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [standalone]")
