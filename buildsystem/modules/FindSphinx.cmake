@@ -1,7 +1,7 @@
 # This file was taken from cmb,
 # Copyright 2012-2012 Kitware Inc. 28 Corporate Drive
 # It's licensed under the terms of Computational Model Builder (CMB) Version 1.0 license.
-# Modifications Copyright 2019-2019 the openage authors.
+# Modifications Copyright 2019-2020 the openage authors.
 # See copying.md for further legal info.
 
 # - This module looks for Sphinx
@@ -10,8 +10,9 @@
 # This modules defines
 # SPHINX_EXECUTABLE
 # SPHINX_FOUND
+
 set(_python_paths )
-#find_package(PythonInterp)
+
 if(PYTHON_EXECUTABLE)
     get_filename_component(_python_dir "${PYTHON_EXECUTABLE}" DIRECTORY)
     list(APPEND _python_paths
@@ -34,7 +35,7 @@ find_program(SPHINX_EXECUTABLE
         /usr/local/bin
         /opt/local/bin
         %APPDATA%\\Python
-        DOC "Sphinx documentation generator"
+        DOC "Path to sphinx-build executable"
         )
 
 if( NOT SPHINX_EXECUTABLE )
