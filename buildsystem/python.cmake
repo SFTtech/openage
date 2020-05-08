@@ -87,6 +87,7 @@ function(add_cython_modules)
 			set_source_files_properties("${CPPNAME}" PROPERTIES GENERATED ON)
 
 			# construct some hopefully unique target name
+			# TODO: Construct a unique target name
 			set(TARGETNAME "${REL_CURRENT_SOURCE_DIR}/${OUTPUTNAME}")
 			string(REPLACE "/" "_" TARGETNAME "${TARGETNAME}")
 
@@ -96,20 +97,25 @@ function(add_cython_modules)
 			string(REGEX REPLACE "^\\." "" PRETTY_MODULE_NAME "${PRETTY_MODULE_NAME}")
 			set(PRETTY_MODULE_PROPERTIES "")
 
+
+			# Bis hierhin ist alles gut
+			##########################
 			if(EMBED_NEXT)
+				# run.exe is produced here
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [embedded interpreter]")
 
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES_EMBED "${source}")
 				add_executable("${TARGETNAME}" "${CPPNAME}")
 
-# CLANG
+
 #				if(MINGW)
 #					set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-municode")
 #				endif()
+#
+#				target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
 
-				# TODO: use full ldflags and cflags provided by python${VERSION}-config
-				target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
 			else()
+				# .pyd libraries are produced here
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES "${source}")
 				add_library("${TARGETNAME}" MODULE "${CPPNAME}")
 
@@ -125,10 +131,11 @@ function(add_cython_modules)
 					SUFFIX "${PYEXT_SUFFIX}"
 				)
 
-				if(WIN32)
-					# for MingW as well
-					target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
-				endif()
+#				if(WIN32)
+#					# for MingW as well
+#					message(STATUS "${TARGETNAME}:${PYEXT_LIBRARY}")
+#					target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
+#				endif()
 			endif()
 
 			if(NOINSTALL_NEXT)
@@ -140,17 +147,133 @@ function(add_cython_modules)
 				)
 			endif()
 
-			set_target_properties("${TARGETNAME}" PROPERTIES
-				COMPILE_FLAGS "${PYEXT_CXXFLAGS}"
-				INCLUDE_DIRECTORIES "${PYEXT_INCLUDE_DIRS}"
-				OUTPUT_NAME "${OUTPUTNAME}"
+			# Giver linker and compile flags here for run.exe
+			if("${TARGETNAME}" STREQUAL "_run")
+
+
+				# PYTHON
+				#$ python3.8-config --cflags
+				# -Wno-unused-result -Wsign-compare -march=x86-64 -mtune=generic -O2 -pipe -fwrapv -D__USE_MINGW_ANSI_STDIO=1 -D_WIN32_WINNT=0x0601 -DNDEBUG  -DNDEBUG
+				#
+				#$ python3.8-config --ldflags
+				#
+
+				#SDL2
+				#$ sdl2-config --cflags --libs
+				#-I/mingw64/include/SDL2 -Dmain=SDL_main
+				#SHARED=> -L/mingw64/lib -lmingw32 -lSDL2main -lSDL2 -mwindows
+				#STATIC=> -L/mingw64/lib -lmingw32 -ldxerr8 -ldinput8 -lshell32 -lsetupapi -ladvapi32 -luuid -lversion -loleaut32 -lole32 -limm32 -lwinmm -lgdi32 -luser32 -lm -Wl,--no-undefined -pipe -lmingw32 -lSDL2main -lSDL2 -mwindows
+
+				if(MINGW)
+					string(REPLACE ".exe" "-config" PYTHON_CONFIG_EXECUTABLE "${Python3_EXECUTABLE}")
+				elseif(WIN32)
+					string(REPLACE ".exe" "-config.exe" PYTHON_CONFIG_EXECUTABLE "${Python3_EXECUTABLE}")
+				else()
+					string(CONCAT PYTHON_CONFIG_EXECUTABLE "${Python3_EXECUTABLE}-config")
+				endif()
+
+				# TODO: FIX! output is not working
+				# PYTHON CFLAGS | LDFLAGS
+#				execute_process(COMMAND ${PYTHON_CONFIG_EXECUTABLE} "--cflags"
+#						OUTPUT_VARIABLE PYTHON_CONFIG_COMPILE_FLAGS
+#						WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+#						OUTPUT_STRIP_TRAILING_WHITESPACE
+#				)
+#
+#				execute_process(COMMAND ${PYTHON_CONFIG_EXECUTABLE} "--ldflags"
+#						OUTPUT_VARIABLE PYTHON_CONFIG_LINKER_FLAGS
+#						WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+#						OUTPUT_STRIP_TRAILING_WHITESPACE
+#						)
+
+				# TODO: Testing manually
+				set(PYTHON_CONFIG_COMPILER_FLAGS "-IC:/msys64/mingw64/include/python3.8 -IC:/msys64/mingw64/include/python3.8
+				  -Wno-unused-result -Wsign-compare -march=x86-64 -mtune=generic -O2 -pipe -fwrapv -D__USE_MINGW_ANSI_STDIO=1
+				  -D_WIN32_WINNT=0x0601 -DNDEBUG  -DNDEBUG"
+				)
+
+				set(PYTHON_CONFIG_LINKER_FLAGS "-LC:/msys64/mingw64/lib -lpython3.8  -lm -lversion -lshlwapi -lm")
+
+
+				# SDL2 CFLAGS | LDFLAGS
+#				execute_process(COMMAND ## TODO: "--cflags"
+#						OUTPUT_VARIABLE SDL2_CONFIG_COMPILE_FLAGS
+#						WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+#						OUTPUT_STRIP_TRAILING_WHITESPACE
+#						)
+#
+#				execute_process(COMMAND  ## TODO: "--libs"
+#						OUTPUT_VARIABLE SDL2_CONFIG_LINKER_FLAGS
+#						WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+#						OUTPUT_STRIP_TRAILING_WHITESPACE
+#						)
+
+				set(SDL2_CONFIG_COMPILE_FLAGS "-I/mingw64/include/SDL2 -Dmain=SDL_main")
+
+				set(SDL2_CONFIG_LINKER_FLAGS "-L/mingw64/lib -lmingw32 -lSDL2main -lSDL2 -mwindows")
+
+
+				target_link_libraries("${TARGETNAME}"
+						PRIVATE
+						"${PYTHON_LIBRARIES}"
+						"${SDL2_LIBRARY}"
+				)
+
+				target_include_directories("${TARGETNAME}"
+						PRIVATE
+						"${PYTHON_INCLUDE_DIRS}"
+						"${SDL2_INCLUDE_DIR}"
+						"${PROJECT_BINARY_DIR}"
+						"${PROJECT_SOURCE_DIR}/"
+				)
+
+				target_compile_options("${TARGETNAME}"
+						PRIVATE
+						"${PYTHON_CONFIG_COMPILE_FLAGS}"
+						"${SDL2_CONFIG_COMPILE_FLAGS}"
+				)
+
+				target_link_options("${TARGETNAME}"
+						PRIVATE
+						"${PYTHON_CONFIG_LINKER_FLAGS}"
+						"${SDL2_CONFIG_LINKER_FLAGS}"
+				)
+
+
+			else()
+				# final compile flags get written here
+
+				target_include_directories("${TARGETNAME}"
+						PRIVATE
+						"${PYEXT_INCLUDE_DIRS}"
+						"${PROJECT_BINARY_DIR}"
+						"${PROJECT_SOURCE_DIR}/"
+						)
+
+				target_link_options("${TARGETNAME}"
+						INTERFACE
+						"${PYTHON_CONFIG_LINKER_FLAGS}"
+				)
+
+				target_compile_options("${TARGETNAME}"
+						INTERFACE
+						"${PYEXT_CXXFLAGS}"
+						"${PYTHON_CONFIG_COMPILE_FLAGS}"
+				)
+
+			endif()
+
+			set_target_properties("${TARGETNAME}"
+					PROPERTIES
+					OUTPUT_NAME "${OUTPUTNAME}"
 			)
+
 
 			if (STANDALONE_NEXT)
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [standalone]")
 			else()
-				set_target_properties("${TARGETNAME}" PROPERTIES LINK_DEPENDS_NO_SHARED 1)
-				target_link_libraries("${TARGETNAME}" "${PYEXT_LINK_LIBRARY}")
+				#set_target_properties("${TARGETNAME}" PROPERTIES LINK_DEPENDS_NO_SHARED 1)
+				#target_link_libraries("${TARGETNAME}" "${PYEXT_LINK_LIBRARY}")
 			endif()
 
 			# Since this module is not embedded with python interpreter,
