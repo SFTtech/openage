@@ -7,6 +7,7 @@
 #include <dlfcn.h>
 #else
 #define WIN32_LEAN_AND_MEAN
+// Windows.h needs to be included first
 #include <Windows.h>
 #include <DbgHelp.h>
 #if defined(__MINGW32__)
@@ -18,26 +19,28 @@
 
 #include <array>
 #include <iostream>
-#include <optional>
 #include <mutex>
+#include <optional>
 
 namespace openage::util {
 
 
 std::string demangle(const char *symbol) {
-#if defined (_WIN32) && !defined(__MINGW32__)
+#if defined(_WIN32) && !defined(__MINGW32__)
 	// TODO: demangle names for MSVC; Possibly using UnDecorateSymbolName
 	// https://msdn.microsoft.com/en-us/library/windows/desktop/ms681400(v=vs.85).aspx
-	// Could it be that MSVC's typeid(T).name() already returns a demangled name? It seems that .raw_name() returns the mangled name
+	// Could it be that MSVC's typeid(T).name() already returns a demangled name? It seems
+	// that .raw_name() returns the mangled name
 	return symbol;
 #else
-    int status=-1;
+	int status = -1;
 
 	char *buf = abi::__cxa_demangle(symbol, nullptr, nullptr, &status);
 
 	if (status != 0) {
 		return symbol;
-	} else {
+	}
+	else {
 		std::string result{buf};
 		free(buf);
 		return result;
@@ -50,7 +53,7 @@ std::string addr_to_string(const void *addr) {
 	return sformat("[%p]", addr);
 }
 
-#if defined (_WIN32)
+#if defined(_WIN32)
 namespace {
 
 
@@ -67,12 +70,14 @@ std::optional<std::string> symbol_name_win(const void *addr) {
 	std::lock_guard<std::mutex> sym_lock_guard{sym_mutex};
 
 	// Initialize symbol handler for process, if it has not yet been initialized
-	// If we are not succesful on the first try, leave it, since MSDN says that searching for symbol files is very time consuming
+	// If we are not succesful on the first try, leave it, since MSDN says that searching
+	// for symbol files is very time consuming
 	if (!initialized_symbol_handler) {
 		initialized_symbol_handler = true;
 
 		process_handle = GetCurrentProcess();
-		initialized_symbol_handler_successfully = SymInitialize(process_handle, nullptr, TRUE);
+		initialized_symbol_handler_successfully
+		    = SymInitialize(process_handle, nullptr, TRUE);
 	}
 
 	if (initialized_symbol_handler_successfully) {
@@ -81,12 +86,13 @@ std::optional<std::string> symbol_name_win(const void *addr) {
 		constexpr int buffer_size = sizeof(SYMBOL_INFO) + name_buffer_size * sizeof(char);
 		std::array<char, buffer_size> buffer;
 
-		SYMBOL_INFO *symbol_info = reinterpret_cast<SYMBOL_INFO*>(buffer.data());
+		SYMBOL_INFO *symbol_info = reinterpret_cast<SYMBOL_INFO *>(buffer.data());
 
 		symbol_info->SizeOfStruct = sizeof(SYMBOL_INFO);
 		symbol_info->MaxNameLen = name_buffer_size;
 
-		if (SymFromAddr(process_handle, reinterpret_cast<DWORD64>(addr), nullptr, symbol_info))	{
+		if (SymFromAddr(
+		        process_handle, reinterpret_cast<DWORD64>(addr), nullptr, symbol_info)) {
 			return std::string(symbol_info->Name);
 		}
 	}
@@ -95,15 +101,14 @@ std::optional<std::string> symbol_name_win(const void *addr) {
 }
 #endif
 
-}
+} // namespace openage::util
 
 std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_addrs) {
-#if defined (_WIN32)
+#if defined(_WIN32)
 
 	auto symbol_name_result = symbol_name_win(addr);
 
-	if (!initialized_symbol_handler_successfully ||
-		!symbol_name_result.has_value()) {
+	if (!initialized_symbol_handler_successfully || !symbol_name_result.has_value()) {
 		return no_pure_addrs ? "" : addr_to_string(addr);
 	}
 
@@ -115,20 +120,22 @@ std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_
 	if (dladdr(addr, &addr_info) == 0) {
 		// dladdr has... failed.
 		return no_pure_addrs ? "" : addr_to_string(addr);
-	} else {
+	}
+	else {
 		size_t symbol_offset = (size_t) addr - (size_t) addr_info.dli_saddr;
 
-		if (addr_info.dli_sname == nullptr or (symbol_offset != 0 and require_exact_addr)) {
+		if (addr_info.dli_sname == nullptr
+		    or (symbol_offset != 0 and require_exact_addr)) {
 			return no_pure_addrs ? "" : addr_to_string(addr);
 		}
 
 		if (symbol_offset == 0) {
 			// this is our symbol name.
 			return demangle(addr_info.dli_sname);
-		} else {
-			return util::sformat("%s+0x%lx",
-			                     demangle(addr_info.dli_sname).c_str(),
-			                     symbol_offset);
+		}
+		else {
+			return util::sformat(
+			    "%s+0x%lx", demangle(addr_info.dli_sname).c_str(), symbol_offset);
 		}
 	}
 #endif
@@ -136,15 +143,16 @@ std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_
 
 
 bool is_symbol(const void *addr) {
-#if defined (_WIN32)
+#if defined(_WIN32)
 
 	if (!initialized_symbol_handler_successfully) {
 		return true;
-	} else {
+	}
+	else {
 		return symbol_name_win(addr).has_value();
 	}
 
-#elif !defined (_WIN32)
+#elif !defined(_WIN32)
 	Dl_info addr_info;
 
 	if (dladdr(addr, &addr_info) == 0) {
@@ -155,4 +163,4 @@ bool is_symbol(const void *addr) {
 #endif
 }
 
-} // openage::util
+} // namespace openage::util
