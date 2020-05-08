@@ -5,17 +5,16 @@
 
 
 sanity_check:
-	- skip              (? if job != "arch-clang" ?)
+	- skip              (? if job != "debian" ?)
 	make checkall
 
 # Various optimisation options can affect warnings compiler generates.
 # Make sure both release and debug are tested. Arch job has more checks,
 # so it should run debug, while Debian can test build in release.
 configure:
-	- env: mode=release compiler=gcc            (? if job == "debian" ?)
-	- env: mode=debug   compiler=gcc            (? if job == "arch-gcc" ?)
-	- env: mode=debug   compiler=clang          (? if job == "arch-clang" ?)
-	./configure --mode=${mode} --compiler=${compiler} --flags="-Werror" --ccache --download-nyan
+	- env: mode=debug   compiler=gcc            (? if job == "debian" ?)
+	- env: mode=debug   compiler=clang          (? if job == "debian-clang" ?)
+	./configure --mode=${mode} --compiler=${compiler} --ccache --download-nyan
 
 build: configure
 	make -j$(nproc) build
