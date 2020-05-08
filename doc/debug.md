@@ -1,7 +1,18 @@
-# How to debug openage?
-## Qt Creator IDE
+# Debugging
+
+## Buildsystem
+If you want to have a look what CMake is doing while setting up the build directory,
+you can add
+`cmake --trace-source=<path to cmake file or cmakelists you want to trace>` to the 
+initial CMake invocation. Adding `--trace-expand` to that expands all the variables to their values
+
+
+## Buildprocess
+
+## Engine
+### Qt Creator IDE
 See [ide.md](/doc/ide.md)
-## GDB
+### GDB
 GDB can be used to debug C++ code in a terminal.
 
 To being able to debug with GDB use `./configure` script such as:
@@ -18,11 +29,11 @@ gdb -ex 'set breakpoint pending on' -ex 'b openage::run_game' -ex run --args run
 ```
 The game will be paused at the start of the function run_game() located in `libopenage/main.cpp`
 
-#### Note:
+##### Note:
 The `run` executable is a compiled version of `run.py` that also embeds the interpreter.
 The game is intended to be run by `run.py` but it is much easier to debug the `./run` file
 
-### GDBGUI
+#### GDBGUI
 
 [gdbgui](https://github.com/cs01/gdbgui) is a browser-based frontend for GDB.
 
