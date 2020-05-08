@@ -16,14 +16,29 @@ To play, you require *an original AoE II: TC or [AoE II: HD](http://store.steamp
 Contact
 -------
 
-Contact          | Where?
------------------|-------
-Issue Tracker    | [`SFTtech/openage`](https://github.com/SFTtech/openage/issues)
-Development Blog | [`blog.openage.sft.mx`](https://blog.openage.sft.mx)
-Forum            | [`/r/openage`](https://www.reddit.com/r/openage/)
-Matrix Chat      | [`#sfttech:matrix.org`](https://riot.im/app/#/room/#sfttech:matrix.org)
-IRC Chat         | [`irc.freenode.net #sfttech`](https://webchat.freenode.net/?channels=sfttech)
-Money Sink       | [![money sink](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/SFTtech)
+### Forum
+> You are looking for updates on the development of certain features, discussions with and explanations by the developers regarding the engine architecture and components? 
+
+The [official forum](https://forum.openage.dev) is the right place for you.
+
+
+### Chat
+> You need a quick response that doesn't require a lot of elaboration which would benefit the whole community in the long-term?
+
+Contact us using [Matrix `#sfttech:matrix.org`](https://riot.im/app/#/room/#sfttech:matrix.org) or [IRC `irc.freenode.net #sfttech`](https://webchat.freenode.net/?channels=sfttech) (both are bridged).
+
+
+### News
+> You want the latest updates regarding openage and its' development?
+
+Our [Development Blog](https://blog.openage.sft.mx) will give you deep insight into the design and development of new features, while a weekly news-post in our [Subreddit `/r/openage`](https://www.reddit.com/r/openage/) will inform you about latest changes to the code base.
+
+
+### Moneysink
+> You ask yourself how to financially support the development of openage?
+
+We accept [donations](https://liberapay.com/SFTtech) to pay the running costs of our infrastructure.
+
 
 
 Technical foundation
@@ -97,7 +112,7 @@ Dependencies, Building and Running
   Operating System    | Build status
   :------------------:|:--------------:
   Debian Sid          | [Todo: Kevin #11](https://github.com/SFTtech/kevin/issues/11)
-  MacOSX 10.14        | [![Build Status](https://travis-ci.org/SFTtech/openage.svg?branch=master)](https://travis-ci.org/SFTtech/openage)
+  MacOSX 10.14        | [![Build Status](https://github.com/SFTtech/openage/workflows/MacOSX-CI/badge.svg)](https://github.com/SFTtech/openage/actions)
   Windows 10 - x64    | [![Build status](https://ci.appveyor.com/api/projects/status/66sx35key94u740e?svg=true)](https://ci.appveyor.com/project/simonsan/openage-sl215)
 
 
@@ -124,7 +139,7 @@ or the [bug tracker](https://github.com/SFTtech/openage/issues).
 
 
 Contributing
-------------
+============
 
 * Being typical computer science students, we hate people.
 * Please don't contact us.
