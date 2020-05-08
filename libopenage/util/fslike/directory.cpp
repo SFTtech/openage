@@ -3,7 +3,7 @@
 #include "directory.h"
 
 // HACK: windows.h defines max and min as macros. This results in compile errors.
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(NOMINMAX)
 // defining `NOMINMAX` disables the definition of those macros.
 #define NOMINMAX
 #endif

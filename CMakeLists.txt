@@ -235,10 +235,16 @@ if(MSVC)
 else()
 	set(FORCE_INCLUDE_CXXFLAG "-include")
 endif()
-target_compile_options(pyext_libopenage INTERFACE
-	${FORCE_INCLUDE_CXXFLAG} "${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h"
+target_compile_options(pyext_libopenage
+		INTERFACE
+			${FORCE_INCLUDE_CXXFLAG}
+			"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h"
 )
-target_link_libraries(pyext_libopenage INTERFACE libopenage)
+
+target_link_libraries(pyext_libopenage
+		INTERFACE
+			libopenage)
+
 set(PYEXT_LINK_LIBRARY pyext_libopenage)
 
 # Temporarily deactivated for Windows due to WINAPI WinMain() problems

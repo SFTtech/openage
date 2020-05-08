@@ -14,7 +14,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 macro(set_compiler_version_flags TYPE MINIMAL FLAGS INVERS EQTYPE)
 	if(${INVERS} CMAKE_CXX_COMPILER_VERSION VERSION_${EQTYPE} ${MINIMAL})
 		if(${TYPE} STREQUAL "CXX")
-			add_compile_options("${FLAGS}")
+			add_compile_options("SHELL:${FLAGS}")
 
 			# OLD BEHAVIOUR - REMOVE AFTER TESTING
 			#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${FLAGS}")
@@ -61,7 +61,7 @@ macro(set_cxx_optimize_flags FLAGS)
 endmacro()
 
 if(NOT MSVC)
-	set(EXTRA_FLAGS "${EXTRA_FLAGS} -Wall -Wextra -pedantic")
+	add_compile_options("SHELL:-Wall -Wextra -pedantic")
 endif()
 
 # set up gold linker features
@@ -76,7 +76,7 @@ macro(try_enable_gold_linker)
 		endif()
 		if("${LD_VERSION}" MATCHES "GNU gold")
 			set(HAVE_LD_GOLD TRUE)
-			set_linker_flags("-fuse-ld=gold")
+			add_link_options("LINKER:-fuse-ld=gold")
 		else()
 			set(HAVE_LD_GOLD FALSE)
 			message(WARNING "GNU gold linker isn't available, using the default system linker.")
@@ -98,12 +98,14 @@ macro(try_enable_gold_linker)
 		if(NOT HAVE_LD_GOLD)
 			message(FATAL_ERROR "GNU gold linker required for Debug Fission")
 		endif()
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gsplit-dwarf")
-		set_linker_flags("-Wl,--gdb-index")
+		add_compile_options("-gsplit-dwarf")
+		add_link_options("LINKER:--gdb-index")
 	endif()
 endmacro()
 
 # check for compiler versions
+# TODO: Use generator expressions
+# https://cmake.org/cmake/help/v3.12/manual/cmake-generator-expressions.7.html
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	set_compiler_greater_flags("CXX" 4.9 "-fdiagnostics-color=auto")
 	set_compiler_greater_flags("EXTRA" 5.0 "-Wsuggest-override")
@@ -114,19 +116,19 @@ elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 	try_enable_gold_linker()
 
 	if(APPLE)
-		set_compiler_flags("CXX" "-stdlib=libc++")
+		add_compile_options("-stdlib=libc++")
 	elseif(MINGW)
 		# Necessary to set
 		# https://github.com/msys2/MINGW-packages/issues/5786
 		# https://reviews.llvm.org/D10524#204928
-		set_compiler_flags("CXX" "-femulated-tls")
+		add_compile_options("-femulated-tls")
 	endif()
 
 elseif(MSVC)
 	# Don't worry. You're not alone. If you face an issue, just ask.
 
 	# Enable multi processor compilation on MSVC
-	set_compiler_flags("CXX" "/MP")
+	add_compile_options("/MP")
 
 	return() # The following flag specifications don't apply.
 
@@ -179,7 +181,7 @@ elseif("${CXX_OPTIMIZATION_LEVEL}" STREQUAL "max")
 		ProcessorCount(N)
 		if(NOT N EQUAL 0)
 			set_cxx_optimize_flags("-flto=${N}")
-			set_linker_flags("-flto=${N}")
+			add_link_options("LINKER:-flto=${N}")
 		endif()
 	endif()
 endif()
