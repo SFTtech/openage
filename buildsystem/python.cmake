@@ -227,13 +227,6 @@ function(add_cython_modules)
 						"${PROJECT_SOURCE_DIR}/"
 				)
 
-				if(MINGW)
-					# Undefined reference to WinMain
-					# https://stackoverflow.com/questions/5259714/undefined-reference-to-winmain16
-					set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mwindows")
-					add_link_options("LINKER:-subsystem,windows")
-				endif()
-
 				target_compile_options("${TARGETNAME}"
 						PRIVATE
 						"${CMAKE_CXX_FLAGS}"
@@ -247,6 +240,15 @@ function(add_cython_modules)
 						"${SDL2_CONFIG_LINKER_FLAGS}"
 				)
 
+				###############################################
+				# Platform dependant compile and linker options
+
+				if(MINGW)
+					# Undefined reference to WinMain
+					# https://stackoverflow.com/questions/5259714/undefined-reference-to-winmain16
+					add_compile_options("-mwindows")
+					#add_link_options("LINKER:-subsystem,windows") # TODO
+				endif()
 
 			else()
 				# final compile flags get written here
