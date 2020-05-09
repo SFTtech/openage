@@ -1,4 +1,4 @@
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """ Entry point for all of the asset conversion. """
 
@@ -274,9 +274,9 @@ def set_custom_wineprefix():
         # test if it probably is a wineprefix
         if (Path(new_wineprefix) / "drive_c").is_dir():  # pylint: disable=no-member
             break
-        else:
-            print("This does not appear to be a valid WINEPREFIX.")
-            print("Enter a valid one, or leave it empty to skip.")
+
+        print("This does not appear to be a valid WINEPREFIX.")
+        print("Enter a valid one, or leave it empty to skip.")
 
     # store the updated env variable for the wine subprocess
     if new_wineprefix:
@@ -311,8 +311,7 @@ def query_source_dir(proposals):
         sourcedir = expand_relative_path(sourcedir)
         if Path(sourcedir).is_dir():
             break
-        else:
-            warn("No valid existing directory: %s", sourcedir)
+        warn("No valid existing directory: %s", sourcedir)
 
     return sourcedir
 
