@@ -164,7 +164,7 @@ function(add_cython_modules)
 				if(APPLE)
 					target_link_options("${TARGETNAME}"
 							PRIVATE
-								"-undefined dynamic_lookup"
+								"LINKER:SHELL:-undefined dynamic_lookup"
 					)
 				endif()
 			endif()
