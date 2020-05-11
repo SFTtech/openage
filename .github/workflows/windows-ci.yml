@@ -147,8 +147,19 @@ jobs:
       - name: Install dependencies with Chocolatey
         uses: crazy-max/ghaction-chocolatey@v1.1.0
         with:
-          args: install winflexbison3
+          args: install winflexbison3 pkgconfiglite
         if: (steps.cache-nyan.outputs.cache-hit != 'true') && (steps.cache-flex.outputs.cache-hit != 'true')
+
+      - name: Install dependencies with Chocolatey
+        uses: crazy-max/ghaction-chocolatey@v1.1.0
+        with:
+          args: install pkgconfiglite
+
+      - name: Show files from build directories
+        run: |
+          dir /s /b /o:gn "${{ env.FONTCONFIG_PATH }}\conf.d\"
+        shell: cmd
+        if: contains(matrix.python-version, '3.7.')
 
       - name: Clone nyan repository
         run: |
@@ -193,10 +204,10 @@ jobs:
           path: ${{ github.workspace }}\MSVC2019-${{ matrix.arch }}-${{ matrix.build-type }}-py${{ matrix.python-version }}.log
         if: ${{ always() }}
 
-
+# DEBUG for caching
       - name: Show files from build directories
         run: |
-          dir /s /b /o:gn "${{ runner.workspace }}\build-openage\"
+          dir /s /b /o:gn "C:\ProgramData\chocolatey\lib\"
         shell: cmd
 
       - name: Upload build directory

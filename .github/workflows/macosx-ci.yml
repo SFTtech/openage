@@ -79,7 +79,7 @@ jobs:
         if: steps.cache-homebrew.outputs.cache-hit != 'true'
 
       - name: Install dependencies with homebrew
-        run: brew install freetype ccache cmake ${{ matrix.python-version }} flex make libepoxy fontconfig harfbuzz sdl2 sdl2_image opus libogg opusfile libpng eigen llvm
+        run: brew install freetype ccache cmake ${{ matrix.python-version }} pkg-config flex make libepoxy fontconfig harfbuzz sdl2 sdl2_image opus libogg opusfile libpng eigen llvm
         if: steps.cache-homebrew.outputs.cache-hit != 'true'
 
       - name: Install Qt
