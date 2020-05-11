@@ -41,7 +41,7 @@ set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
 set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
 
 # TODO: REMOVE WHEN READY
-set(DEBUG_VERBOSITY "medium")
+set(DEBUG_VERBOSITY "spam")
 # Debug verbosity is defined here
 include(DebugVerbosity)
 
