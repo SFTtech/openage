@@ -8,7 +8,7 @@
 #
 # this is the file used to tell the nested cmake run what to do.
 
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION @CMAKE_MINIMUM_REQUIRED_VERSION@)
 
 project(@PROJ_NAME@-external LANGUAGES)
 

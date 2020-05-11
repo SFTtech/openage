@@ -1,11 +1,13 @@
 # Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
-cmake_minimum_required(VERSION 3.12)
-
-# required for FindPython3.cmake
+cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+# finding numpy with the findpython3 module
 # >3.8 required for CMAKE_CXX_STANDARD for C++17
 
-# main build configuration file
+##################################################
+##################################################
+# Main Build Configuration
+
 
 # text art: figlet -f rounded "[SFT] openage" | sed -e 's/\\/\\\\/g'
 message("
@@ -30,18 +32,22 @@ Or ask for help:
   * IRC:    #sfttech on freenode.net
 ")
 
-
 ##################################################
 # main buildsystem setup entry point
 project(openage CXX)
 
+# Add search paths to helper modules
+set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
+set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
+
+# TODO: REMOVE WHEN READY
+set(DEBUG_VERBOSITY "medium")
+# Debug verbosity is defined here
+include(DebugVerbosity)
+
 # C++ standard requirement
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# Python and Cython requirements
-set(PYTHON_MIN_VERSION 3.6)
-set(CYTHON_MIN_VERSION 0.25)
 
 # CMake policies
 foreach(pol
@@ -50,6 +56,8 @@ foreach(pol
         CMP0072  # prefers GLVND by default FindOpenGL
         CMP0048  # project() command manages VERSION variables
         CMP0094  # take the first satisfying Python version
+        CMP0079  # target_link_libraries() allows use with targets in other directories
+        CMP0102  # don't set empty cache entries
        )
 	if (POLICY ${pol})
 		cmake_policy(SET ${pol} NEW)
@@ -147,6 +155,9 @@ if(ENABLE_CLANG_TIDY)
 	set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=-*,readability-*")
 endif()
 
+# Activate LINK_WHAT_YOU_USE
+set(LINK_WHAT_YOU_USE true)
+
 
 # option processing is now done.
 
@@ -154,18 +165,12 @@ endif()
 ##################################################
 # include buildsystem features
 
-# add search paths to helper modules
-set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
-set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
-
 # load helper modules
 include(GNUInstallDirs)
 include(CheckInSourceBuild)
 include(HandleCXXOptions)
 include(CheckCompilerFeatures)
 include(CMakeParseArguments)
-include(HandlePythonOptions)
-include(CheckRuntimeDependencies)
 include(DetectProjectVersion)
 include(DependencyFetch)
 include(FindPkgConfig)
@@ -174,11 +179,23 @@ include(FindPackageHandleStandardArgs)
 # include build configuration modules
 include(CTest)
 
+# Forward declaration
+# main C++ library definitions.
+# dependency and source file setup for the resulting library.
+include(InitializeBinaries)
+declare_binary(libopenage
+		openage
+		library
+		allow_no_undefined
+)
+
+# initialize platform dependencies
+include(options)
+include(PlatformDependency)
+
 # initialize language support
 include(codegen)
-include(cpp)
 include(doxygen)
-include(options)
 include(python)
 include(util)
 
@@ -222,26 +239,43 @@ add_subdirectory(cfg/)
 
 ##################################################
 # C++ content
-add_subdirectory(libopenage/)
+# TODO: Make option
+set(CMAKE_CXX_VISIBILITY_PRESET default)
+set(CMAKE_VISIBILITY_INLINES_HIDDEN 0)
 
+add_subdirectory(libopenage/)
 
 ##################################################
 # Python content (uses the C++ library)
 add_library(pyext_libopenage INTERFACE)
+
 if(MSVC)
 	set(FORCE_INCLUDE_CXXFLAG "/FI")
 else()
 	set(FORCE_INCLUDE_CXXFLAG "-include")
 endif()
-target_compile_options(pyext_libopenage INTERFACE
-	${FORCE_INCLUDE_CXXFLAG} "${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h"
+
+target_compile_options(pyext_libopenage
+		INTERFACE
+			${FORCE_INCLUDE_CXXFLAG}
+			"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h"
 )
-target_link_libraries(pyext_libopenage INTERFACE libopenage)
+
+target_link_libraries(pyext_libopenage
+		INTERFACE
+			libopenage
+)
+
 set(PYEXT_LINK_LIBRARY pyext_libopenage)
 
+# Temporarily deactivated for Windows due to WINAPI WinMain() problems
+# https://stackoverflow.com/questions/5259714/undefined-reference-to-winmain16
+#if(NOT WIN32)
 configure_file(run.py.in run.py)
 add_cython_modules(EMBED NOINSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py)
 add_py_modules(BININSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py AS openage)
+#endif()
+
 add_subdirectory(openage/)
 
 python_finalize()

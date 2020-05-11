@@ -5,6 +5,9 @@
 #ifdef __linux__
 #include <gnu/libc-version.h>
 #endif
+#ifdef __MINGW32__
+#define SDL_MAIN_HANDLED
+#endif
 
 #include <eigen3/Eigen/Dense>
 #include <epoxy/gl.h>
@@ -18,6 +21,8 @@
 #include "../util/strings.h"
 
 namespace openage::versions {
+
+int main(int /*argc*/, char /**argv[]*/) { return 0;}
 
 std::map<std::string, std::string> get_version_numbers() {
 
@@ -74,7 +79,7 @@ std::map<std::string, std::string> get_version_numbers() {
 	std::string opus_version = opus_get_version_string();
 	version_numbers.emplace("Opus", opus_version.substr(opus_version.find(' ') + 1));
 
-#ifdef __linux__
+#if defined(__linux__)
 	// Add libc version number if not MacOSX
 	version_numbers.emplace("libc-runtime", gnu_get_libc_version());
 
@@ -87,8 +92,13 @@ std::map<std::string, std::string> get_version_numbers() {
 	version_numbers.emplace("libc-runtime", "Apple");
 #endif
 
-#ifdef __WINDOWS__
+#if defined(_WIN32) & !defined(__MINGW32__)
 	version_numbers.emplace("libc-runtime", "Windows");
+#endif
+
+#if defined(__MINGW32__)
+    version_numbers.emplace("glibcxx-compile", util::sformat("%d",
+                                                            __GLIBCXX__));
 #endif
 
 	return version_numbers;

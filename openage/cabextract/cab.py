@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Provides CABFile, an extractor for the MSCAB format.
@@ -524,10 +524,9 @@ class CABFolderStream(PosSavingReadOnlyFileLikeObject):
                     discard -= len(block_data)
                     continue
 
-                else:
-                    # discard the first few bytes of the block's data.
-                    block_data = block_data[discard:]
-                    discard = 0
+                # discard the first few bytes of the block's data.
+                block_data = block_data[discard:]
+                discard = 0
 
             if len(block_data) > size:
                 # less than the entire block was requested.

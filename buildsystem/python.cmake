@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
@@ -40,7 +40,6 @@ function(python_init)
 	set_property(GLOBAL PROPERTY SFT_CYTHON_MODULE_TARGETS)
 endfunction()
 
-
 function(add_cython_modules)
 	# adds a new module for cython compilation, by relative filename.
 	# synoposis:
@@ -54,7 +53,7 @@ function(add_cython_modules)
 	# test.pyx is compiled to a shared library linked against PYEXT_LINK_LIBRARY
 	# __main__.pyx is compiled to a executable with embedded python interpreter,
 	# linked against libpython and PYEXT_LINK_LIBRARY.
-	# foo/bar.pyx is compiled to a executable with embedded pytthon interpreter,
+	# foo/bar.pyx is compiled to a executable with embedded python interpreter,
 	# linked only against libpython.
 	# foo/test.pyx is compiled to a shared library linked against nothing, and will
 	# not be installed.
@@ -67,6 +66,10 @@ function(add_cython_modules)
 	set(STANDALONE_NEXT FALSE)
 	set(NOINSTALL_NEXT FALSE)
 	foreach(source ${ARGN})
+		# This loop checks for EMBED, STANDALONE, NOINSTALL
+		# to adjust the compile and linking options later
+		# Example ARGN: EMBED;NOINSTALL;<path>/run.py
+
 		if(source STREQUAL "EMBED")
 			set(EMBED_NEXT TRUE)
 		elseif(source STREQUAL "STANDALONE")
@@ -87,6 +90,7 @@ function(add_cython_modules)
 			set_source_files_properties("${CPPNAME}" PROPERTIES GENERATED ON)
 
 			# construct some hopefully unique target name
+			# TODO: Construct a unique target name
 			set(TARGETNAME "${REL_CURRENT_SOURCE_DIR}/${OUTPUTNAME}")
 			string(REPLACE "/" "_" TARGETNAME "${TARGETNAME}")
 
@@ -97,29 +101,43 @@ function(add_cython_modules)
 			set(PRETTY_MODULE_PROPERTIES "")
 
 			if(EMBED_NEXT)
+				# Embeddables (e.g. run.exe) are produced here
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [embedded interpreter]")
 
-				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES_EMBED "${source}")
-				add_executable("${TARGETNAME}" "${CPPNAME}")
-
-				if(MINGW)
-					set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-municode")
-				endif()
-
-				# TODO: use full ldflags and cflags provided by python${VERSION}-config
-				target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
-			else()
-				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES "${source}")
-				add_library("${TARGETNAME}" MODULE "${CPPNAME}")
-
-				set_target_properties("${TARGETNAME}" PROPERTIES
-					PREFIX ""
-					SUFFIX "${PYEXT_SUFFIX}"
+				set_property(GLOBAL APPEND
+						PROPERTY
+						SFT_CYTHON_MODULES_EMBED "${source}"
 				)
 
-				if(WIN32)
-					target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
-				endif()
+				add_executable("${TARGETNAME}"
+						"${CPPNAME}"
+				)
+
+			else()
+				# .pyd libraries are produced here
+				set_property(GLOBAL APPEND
+						PROPERTY
+							SFT_CYTHON_MODULES "${source}"
+				)
+
+				add_library("${TARGETNAME}"
+						MODULE
+							"${CPPNAME}"
+				)
+
+				set_target_properties("${TARGETNAME}"
+						PROPERTIES
+							PREFIX ""
+							SUFFIX "${PYEXT_SUFFIX}"
+				)
+			endif()
+
+			if(MINGW)
+				set_target_properties("${TARGETNAME}"
+						PROPERTIES
+						LINK_OPTIONS
+							"-municode"
+				)
 			endif()
 
 			if(NOINSTALL_NEXT)
@@ -131,23 +149,170 @@ function(add_cython_modules)
 				)
 			endif()
 
-			set_target_properties("${TARGETNAME}" PROPERTIES
-				COMPILE_FLAGS "${PYEXT_CXXFLAGS}"
-				INCLUDE_DIRECTORIES "${PYEXT_INCLUDE_DIRS}"
-				OUTPUT_NAME "${OUTPUTNAME}"
-			)
-
 			if (STANDALONE_NEXT)
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [standalone]")
 			else()
-				set_target_properties("${TARGETNAME}" PROPERTIES LINK_DEPENDS_NO_SHARED 1)
-				target_link_libraries("${TARGETNAME}" "${PYEXT_LINK_LIBRARY}")
+				set_target_properties("${TARGETNAME}"
+						PROPERTIES
+							LINK_DEPENDS_NO_SHARED 1
+				)
 			endif()
 
 			# Since this module is not embedded with python interpreter,
 			# Mac OS X requires a link flag to resolve undefined symbols
-			if(NOT EMBED_NEXT AND APPLE)
-				set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-undefined dynamic_lookup" )
+			if(NOT EMBED_NEXT)
+				if(APPLE)
+					target_link_options("${TARGETNAME}"
+							PRIVATE
+								"-undefined dynamic_lookup"
+					)
+				endif()
+			endif()
+
+			# Give link and compile flags here for run executable
+			if("${TARGETNAME}" MATCHES "_run" OR "${TARGETNAME}" MATCHES "openage_versions_versions")
+
+				if(WIN32)
+					target_link_libraries("${TARGETNAME}"
+							PUBLIC
+								PkgConfig::PLATFORM_SDL2
+								PkgConfig::PLATFORM_PYTHON3
+								"${PYEXT_LINK_LIBRARY}"
+					)
+				else()
+					target_link_libraries("${TARGETNAME}"
+							PUBLIC
+								PkgConfig::PLATFORM_PYTHON3
+								"${PYEXT_LINK_LIBRARY}"
+					)
+				endif()
+
+				target_link_options("${TARGETNAME}"
+						PRIVATE
+							"${PLATFORM_PYTHON3_LDFLAGS}"
+							"${PLATFORM_SDL2_LDFLAGS}"
+				)
+
+				target_include_directories("${TARGETNAME}"
+						PUBLIC
+							"${CMAKE_CURRENT_BINARY_DIR}"
+						PRIVATE
+							"${CMAKE_CURRENT_SOURCE_DIR}"
+							"${PLATFORM_PYTHON3_INCLUDE_DIRS}"
+							"${PLATFORM_SDL2_INCLUDE_DIRS}"
+				)
+
+				target_compile_options("${TARGETNAME}"
+						PRIVATE
+							"${CMAKE_CXX_FLAGS}"
+							"${PLATFORM_PYTHON3_CFLAGS}"
+							"${PLATFORM_SDL2_CFLAGS}"
+				)
+
+			elseif("${TARGETNAME}" MATCHES "openage_convert_opus_opusenc")
+				# Target: PkgConfig::AUDIO_LIBS
+
+				target_link_libraries("${TARGETNAME}"
+						PUBLIC
+							PkgConfig::PLATFORM_PYTHON3
+							"${PYEXT_LINK_LIBRARY}"
+							PkgConfig::PLATFORM_AUDIO
+				)
+
+				target_link_options("${TARGETNAME}"
+						PRIVATE
+							"${PLATFORM_PYTHON3_LDFLAGS}"
+							"${PLATFORM_AUDIO_LDFLAGS}"
+				)
+
+				target_include_directories("${TARGETNAME}"
+						PUBLIC
+							"${CMAKE_CURRENT_BINARY_DIR}"
+						PRIVATE
+							"${CMAKE_CURRENT_SOURCE_DIR}"
+							"${PLATFORM_PYTHON3_INCLUDE_DIRS}"
+							"${PLATFORM_AUDIO_INCLUDE_DIRS}"
+				)
+
+				target_compile_options("${TARGETNAME}"
+						PRIVATE
+							"${PLATFORM_AUDIO_CFLAGS}"
+							"${CMAKE_CXX_FLAGS}"
+							"${PLATFORM_PYTHON3_CFLAGS}"
+				)
+			elseif("${TARGETNAME}" MATCHES "openage.cython_check")
+
+				target_link_libraries("${TARGETNAME}"
+						PUBLIC
+						PkgConfig::PLATFORM_PYTHON3
+				)
+
+				target_link_options("${TARGETNAME}"
+						PRIVATE
+						"${PLATFORM_PYTHON3_LDFLAGS}"
+				)
+
+				target_include_directories("${TARGETNAME}"
+						PUBLIC
+							"${CMAKE_CURRENT_BINARY_DIR}"
+						PRIVATE
+							"${CMAKE_CURRENT_SOURCE_DIR}"
+							"${PLATFORM_PYTHON3_INCLUDE_DIRS}"
+				)
+
+				target_compile_options("${TARGETNAME}"
+						PRIVATE
+						"${CMAKE_CXX_FLAGS}"
+						"${PLATFORM_PYTHON3_CFLAGS}"
+				)
+
+			else()
+				# final compile flags get written here
+				# Target: PkgConfig::PLATFORM_PYTHON3
+
+				target_link_libraries("${TARGETNAME}"
+						PUBLIC
+							PkgConfig::PLATFORM_PYTHON3
+							"${PYEXT_LINK_LIBRARY}"
+				)
+
+				target_link_options("${TARGETNAME}"
+						PRIVATE
+							"${PLATFORM_PYTHON3_LDFLAGS}"
+				)
+
+				target_include_directories("${TARGETNAME}"
+						PUBLIC
+							"${CMAKE_CURRENT_BINARY_DIR}"
+						PRIVATE
+							"${CMAKE_CURRENT_SOURCE_DIR}"
+							"${PLATFORM_PYTHON3_INCLUDE_DIRS}"
+				)
+
+				target_compile_options("${TARGETNAME}"
+						PRIVATE
+							"${CMAKE_CXX_FLAGS}"
+							"${PLATFORM_PYTHON3_CFLAGS}"
+				)
+
+			endif()
+
+			# Set properties for all targets
+			set_target_properties("${TARGETNAME}"
+					PROPERTIES
+						OUTPUT_NAME "${OUTPUTNAME}"
+			)
+
+			if(("${DEBUG_VERBOSITY}" STREQUAL "high") OR ("${DEBUG_VERBOSITY}" STREQUAL "spam"))
+				cmake_print_properties(
+						TARGETS "${TARGETNAME}"
+						PROPERTIES
+							OUTPUT_NAME
+							COMPILE_OPTIONS
+							LINK_OPTIONS
+							LINK_LIBRARIES
+							INCLUDE_DIRECTORIES
+				)
 			endif()
 
 			add_dependencies("${TARGETNAME}" cythonize)
@@ -196,7 +361,7 @@ function(add_pxds)
 		endif()
 
 		if(NOT "${source}" MATCHES ".*\\.px[id]$")
-			message(FATAL_ERROR "non-pxd/pxi file given to add_pyd: ${source}")
+			message(FATAL_ERROR "non-pxd/pxi file given to add_pxds: ${source}")
 		endif()
 
 		set_property(GLOBAL APPEND PROPERTY SFT_PXD_FILES "${source}")
@@ -251,13 +416,19 @@ function(add_py_modules)
 			if(NOINSTALL_NEXT OR BININSTALL_NEXT)
 				# if source should not be installed or be installed to bin/
 				# it is excluded from the big python installation list
-				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_NOINSTALL "${source}")
+				set_property(GLOBAL APPEND
+						PROPERTY
+							SFT_PY_FILES_NOINSTALL "${source}"
+				)
 				set(NOINSTALL_NEXT FALSE)
 			endif()
 
 			if(BININSTALL_NEXT)
 				# if the file is to be installed to bin/
-				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_BININSTALL "${source}")
+				set_property(GLOBAL APPEND
+						PROPERTY
+						SFT_PY_FILES_BININSTALL "${source}"
+				)
 				set(BININSTALL_NEXT FALSE)
 				set(IN_BININSTALL TRUE)
 			endif()
@@ -268,7 +439,10 @@ function(add_py_modules)
 					message(FATAL_ERROR "you used AS without BININSTALL!")
 				endif()
 
-				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_INSTALLNAMES "${source}")
+				set_property(GLOBAL APPEND
+						PROPERTY
+						SFT_PY_FILES_INSTALLNAMES "${source}"
+				)
 			else()
 				# in all cases except the "AS $newname",
 				# add the python file to the to-compile list.
@@ -277,15 +451,24 @@ function(add_py_modules)
 					set(REL_CURRENT_SOURCE_DIR "./")
 				endif()
 
-				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES "${source}")
-				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_RELSRCDIRS "${REL_CURRENT_SOURCE_DIR}")
+				set_property(GLOBAL APPEND
+						PROPERTY
+						SFT_PY_FILES "${source}"
+				)
+				set_property(GLOBAL APPEND
+						PROPERTY
+						SFT_PY_FILES_RELSRCDIRS "${REL_CURRENT_SOURCE_DIR}"
+				)
 			endif()
 
 			if(NOT IN_BININSTALL)
 				# don't replace the install name if we're in the "AS $name"
 				# or no AS followed the BININSTALL
 
-				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_INSTALLNAMES "__nope")
+				set_property(GLOBAL APPEND
+						PROPERTY
+						SFT_PY_FILES_INSTALLNAMES "__nope"
+				)
 			endif()
 
 			if(AS_NEXT)
@@ -302,7 +485,10 @@ endfunction()
 function(python_finalize)
 	# pxdgen (.h -> .pxd)
 
-	get_property(pxdgen_sources GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
+	get_property(pxdgen_sources GLOBAL
+			PROPERTY
+				SFT_PXDGEN_SOURCES
+	)
 	write_on_change("${CMAKE_BINARY_DIR}/py/pxdgen_sources" "${pxdgen_sources}")
 	set(PXDGEN_TIMEFILE "${CMAKE_BINARY_DIR}/py/pxdgen_timefile")
 	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}"
@@ -314,19 +500,43 @@ function(python_finalize)
 		COMMENT "pxdgen: generating .pxd files from headers"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 	)
-	add_custom_target(pxdgen ALL DEPENDS "${PXDGEN_TIMEFILE}")
+
+	add_custom_target(pxdgen
+			ALL DEPENDS
+				"${PXDGEN_TIMEFILE}"
+	)
 
 
 	# cythonize (.pyx -> .cpp)
 
-	get_property(cython_modules GLOBAL PROPERTY SFT_CYTHON_MODULES)
+	get_property(cython_modules GLOBAL
+			PROPERTY
+				SFT_CYTHON_MODULES
+	)
+
 	write_on_change("${CMAKE_BINARY_DIR}/py/cython_modules" "${cython_modules}")
-	get_property(cython_modules_embed GLOBAL PROPERTY SFT_CYTHON_MODULES_EMBED)
+
+	get_property(cython_modules_embed GLOBAL
+			PROPERTY
+				SFT_CYTHON_MODULES_EMBED
+	)
+
 	write_on_change("${CMAKE_BINARY_DIR}/py/cython_modules_embed" "${cython_modules_embed}")
-	get_property(pxd_list GLOBAL PROPERTY SFT_PXD_FILES)
-	get_property(generated_pxd_list GLOBAL PROPERTY SFT_GENERATED_PXD_FILES)
+
+	get_property(pxd_list GLOBAL
+			PROPERTY
+				SFT_PXD_FILES
+	)
+
+	get_property(generated_pxd_list GLOBAL
+			PROPERTY
+			SFT_GENERATED_PXD_FILES
+	)
+
 	write_on_change("${CMAKE_BINARY_DIR}/py/pxd_list" "${pxd_list};${generated_pxd_list}")
+
 	set(CYTHONIZE_TIMEFILE "${CMAKE_BINARY_DIR}/py/cythonize_timefile")
+
 	add_custom_command(OUTPUT "${CYTHONIZE_TIMEFILE}"
 		# remove unneeded files from the previous builds (if any)
 		COMMAND "${CMAKE_COMMAND}" -E remove -f
@@ -354,14 +564,35 @@ function(python_finalize)
 
 	# py compile (.py -> .pyc)
 
-	get_property(py_files GLOBAL PROPERTY SFT_PY_FILES)
-	get_property(py_files_srcdirs GLOBAL PROPERTY SFT_PY_FILES_RELSRCDIRS)
-	get_property(py_files_noinstall GLOBAL PROPERTY SFT_PY_FILES_NOINSTALL)
-	get_property(py_files_bininstall GLOBAL PROPERTY SFT_PY_FILES_BININSTALL)
-	get_property(py_install_names GLOBAL PROPERTY SFT_PY_FILES_INSTALLNAMES)
+	get_property(py_files GLOBAL
+			PROPERTY
+			SFT_PY_FILES
+	)
+
+	get_property(py_files_srcdirs GLOBAL
+			PROPERTY
+				SFT_PY_FILES_RELSRCDIRS
+	)
+
+	get_property(py_files_noinstall GLOBAL
+			PROPERTY
+			SFT_PY_FILES_NOINSTALL
+	)
+
+	get_property(py_files_bininstall GLOBAL
+			PROPERTY
+			SFT_PY_FILES_BININSTALL
+	)
+
+	get_property(py_install_names GLOBAL
+			PROPERTY
+				SFT_PY_FILES_INSTALLNAMES
+	)
 
 	write_on_change("${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
+
 	set(COMPILEPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
+
 	set(COMPILEPY_INVOCATION
 		"${PYTHON}" -m buildsystem.compilepy
 		"${CMAKE_BINARY_DIR}/py/py_files"
@@ -376,9 +607,11 @@ function(python_finalize)
 		OUTPUT_VARIABLE py_compiled_files
 		RESULT_VARIABLE COMMAND_RESULT
 	)
+
 	if(NOT ${COMMAND_RESULT} EQUAL 0)
 		message(FATAL_ERROR "failed to get output list from compilepy invocation")
 	endif()
+
 	string(STRIP "${py_compiled_files}" py_compiled_files)
 
 	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
@@ -388,9 +621,13 @@ function(python_finalize)
 		DEPENDS "${CMAKE_BINARY_DIR}/py/py_files" ${py_files}
 		COMMENT "compiling .py files to .pyc files"
 	)
-	add_custom_target(compilepy ALL DEPENDS "${COMPILEPY_TIMEFILE}")
+
+	add_custom_target(compilepy
+			ALL DEPENDS "${COMPILEPY_TIMEFILE}"
+	)
 
 	list(LENGTH py_files py_files_count)
+
 	math(EXPR py_files_count_range "${py_files_count} - 1")
 
 	foreach(idx RANGE ${py_files_count_range})
@@ -441,23 +678,32 @@ function(python_finalize)
 	# in a directory different from `CMAKE_CURRENT_BINARY_DIR`.
 	# link/copy the output files as required for the cython modules.
 
-	get_property(cython_module_targets GLOBAL PROPERTY SFT_CYTHON_MODULE_TARGETS)
+	get_property(cython_module_targets GLOBAL
+			PROPERTY
+				SFT_CYTHON_MODULE_TARGETS
+	)
+
 	set(cython_module_files_expr)
+
 	foreach(cython_module_target ${cython_module_targets})
 		list(APPEND cython_module_files_expr "$<TARGET_FILE:${cython_module_target}>")
 	endforeach()
 
 	set(INPLACEMODULES_LISTFILE "${CMAKE_BINARY_DIR}/py/inplace_module_list_$<CONFIG>")
+
 	file(GENERATE
 		OUTPUT ${INPLACEMODULES_LISTFILE}
 		CONTENT "${cython_module_files_expr}"
 	)
+
 	set(INPLACEMODULES_INVOCATION
 		"${PYTHON}" -m buildsystem.inplacemodules
 		${INPLACEMODULES_LISTFILE}
 		"$<CONFIG>"
 	)
+
 	set(INPLACEMODULES_TIMEFILE "${CMAKE_BINARY_DIR}/py/inplacemodules_timefile")
+
 	add_custom_command(OUTPUT "${INPLACEMODULES_TIMEFILE}"
 		COMMAND ${INPLACEMODULES_INVOCATION}
 		DEPENDS
@@ -466,7 +712,10 @@ function(python_finalize)
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		COMMENT "creating in-place modules"
 	)
-	add_custom_target(inplacemodules ALL DEPENDS "${INPLACEMODULES_TIMEFILE}")
+
+	add_custom_target(inplacemodules
+			ALL DEPENDS "${INPLACEMODULES_TIMEFILE}"
+	)
 
 
 	# cleaning of all in-sourcedir stuff
@@ -480,6 +729,7 @@ function(python_finalize)
 		"--build-dir" "${CMAKE_BINARY_DIR}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 	)
+
 	add_custom_command(TARGET cleancython POST_BUILD
 		# general deleters to catch files that have already been un-listed.
 		COMMAND find openage -name "'*.cpp'" -type f -print -delete
@@ -507,6 +757,7 @@ function(python_finalize)
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		RESULT_VARIABLE res
 	)
+
 	if(NOT res EQUAL 0)
 		message(FATAL_ERROR ".py file listing inconsistent")
 	endif()

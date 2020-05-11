@@ -31,7 +31,7 @@ RNG::RNG(uint64_t v1) {
 	this->seed(v1);
 }
 
-[[maybe_unused]] RNG::RNG(const void *data, size_t len) {
+RNG::RNG(const void *data, size_t len) {
 	this->seed(data, len);
 }
 

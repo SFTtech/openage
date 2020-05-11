@@ -1,0 +1,12 @@
+dirent
+eigen3
+fontconfig
+freetype
+harfbuzz
+libepoxy
+libogg
+libpng
+opus
+opusfile
+sdl2
+sdl2-image

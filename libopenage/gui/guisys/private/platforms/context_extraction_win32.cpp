@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #include <cassert>
 
@@ -14,13 +14,15 @@ namespace qtsdl {
 std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 	assert(window);
 
-	HGLRC current_context;
+	HGLRC current_context = nullptr;
 	SDL_SysWMinfo wm_info;
 	SDL_VERSION(&wm_info.version);
 	if (SDL_GetWindowWMInfo(window, &wm_info)) {
 		current_context = wglGetCurrentContext();
-		assert(current_context);
 	}
+
+	assert(current_context);
+
 	QWGLNativeContext nativeContext(current_context, wm_info.info.win.window);
 	return {QVariant::fromValue(nativeContext), reinterpret_cast<WId>(wm_info.info.win.window)};
 }

@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,26 +17,26 @@
  * DLL entry-point decorations.
  */
 #if defined(_WIN32)
-	#if defined(libopenage_EXPORTS)
-		#define OAAPI __declspec(dllexport)
-	#else
-		#define OAAPI __declspec(dllimport)
-	#endif /* libopenage_EXPORTS */
+#if defined(libopenage_EXPORTS)
+#define OAAPI __declspec(dllexport)
 #else
-	#define OAAPI
+#define OAAPI __declspec(dllimport)
+#endif /* libopenage_EXPORTS */
+#else
+#define OAAPI
 #endif
 
 #if defined(_MSC_VER)
-	#ifndef HAVE_SSIZE_T
-	// ssize_t is defined the same as Python's definition it in pyconfig.h.
-	// This is necessary to facilitate the build and link procedure using MSVC.
-		#ifdef _WIN64
-			typedef __int64 ssize_t;
-		#else
-			typedef int ssize_t;
-		#endif
-		#define HAVE_SSIZE_T 1
-	#endif // HAVE_SSIZE_T
+#ifndef HAVE_SSIZE_T
+// ssize_t is defined the same as Python's definition it in pyconfig.h.
+// This is necessary to facilitate the build and link procedure using MSVC.
+#ifdef _WIN64
+typedef __int64 ssize_t;
+#else
+typedef int ssize_t;
+#endif
+#define HAVE_SSIZE_T 1
+#endif // HAVE_SSIZE_T
 #endif // _MSC_VER
 
 /*
@@ -46,10 +46,10 @@
  * btw, this implementation was taken from the Linux kernel.
  */
 #if defined(__GNUC__)
-#define likely(x)    __builtin_expect(!!(x), 1)
-#define unlikely(x)  __builtin_expect(!!(x), 0)
+#define likely(x) __builtin_expect(!!(x), 1)
+#define unlikely(x) __builtin_expect(!!(x), 0)
 #else
-#define likely(x)   (x)
+#define likely(x) (x)
 #define unlikely(x) (x)
 #endif
 
@@ -59,10 +59,10 @@
  * to add it in gdb but instead wanna add it into the code directly.
  */
 #ifdef _WIN32
-	#define BREAKPOINT __debugbreak()
+#define BREAKPOINT __debugbreak()
 #else
-	#include <signal.h>
-	#define BREAKPOINT raise(SIGTRAP)
+#include <signal.h>
+#define BREAKPOINT raise(SIGTRAP)
 #endif
 
 
@@ -76,8 +76,7 @@
 #define TYPEINFO(var) printf("%d", var)
 
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 /**
  * Demangles a symbol name.
@@ -101,7 +100,8 @@ std::string demangle(const char *symbol);
  *
  * pxd: string symbol_name(const void *addr) except +
  */
-OAAPI std::string symbol_name(const void *addr, bool require_exact_addr=true, bool no_pure_addrs=false);
+OAAPI std::string
+symbol_name(const void *addr, bool require_exact_addr = true, bool no_pure_addrs = false);
 
 
 /**
@@ -113,10 +113,10 @@ bool is_symbol(const void *addr);
 /**
  * Returns the string representation of the given type.
  */
-template <typename T>
+template<typename T>
 std::string typestring() {
 	return demangle(typeid(T).name());
 }
 
 
-}} // openage::util
+} // namespace openage::util

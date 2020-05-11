@@ -1,9 +1,9 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2020 the openage authors. See copying.md for legal info.
 
 #include "directory.h"
 
 // HACK: windows.h defines max and min as macros. This results in compile errors.
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(NOMINMAX)
 // defining `NOMINMAX` disables the definition of those macros.
 #define NOMINMAX
 #endif

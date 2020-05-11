@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Runs Cython on all modules that were listed via add_cython_module.
@@ -152,12 +152,9 @@ def main():
         'compiler_directives': {'language_level': 3},
         'build_dir': args.build_dir,
         'include_path': [args.build_dir],
-        'nthreads': args.threads
+        'nthreads': args.threads,
+        'language': 'c++'
     }
-
-    # this is deprecated, but still better than
-    # writing funny lines at the head of each file.
-    cythonize_args['language'] = 'c++'
 
     cythonize_wrapper(modules, **cythonize_args)
 

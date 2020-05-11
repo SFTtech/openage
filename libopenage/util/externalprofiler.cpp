@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 #include "externalprofiler.h"
 
@@ -10,23 +10,24 @@
 #include <gperftools/profiler.h>
 #endif
 
-#include "subprocess.h"
-#include "os.h"
 #include "../log/log.h"
+#include "os.h"
+#include "subprocess.h"
 
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 
 ExternalProfiler::ExternalProfiler()
-	:
-	currently_profiling{false},
-	can_profile{WITH_GPERFTOOLS_PROFILER} {}
+    :
+    currently_profiling{false},
+    can_profile{WITH_GPERFTOOLS_PROFILER} {}
 
 
-const char *const ExternalProfiler::profiling_filename = "/tmp/openage-gperftools-cpuprofile";
-const char *const ExternalProfiler::profiling_pdf_filename = "/tmp/openage-gperftools-cpuprofile.pdf";
+const char *const ExternalProfiler::profiling_filename
+    = "/tmp/openage-gperftools-cpuprofile";
+const char *const ExternalProfiler::profiling_pdf_filename
+    = "/tmp/openage-gperftools-cpuprofile.pdf";
 
 
 void ExternalProfiler::start() {
@@ -40,7 +41,8 @@ void ExternalProfiler::start() {
 		return;
 	}
 
-	log::log(MSG(info) << "Starting profiler; writing data to " << this->profiling_filename);
+	log::log(MSG(info) << "Starting profiler; writing data to "
+	                   << this->profiling_filename);
 
 	this->currently_profiling = true;
 #if WITH_GPERFTOOLS_PROFILER
@@ -65,7 +67,8 @@ void ExternalProfiler::stop() {
 	ProfilerStop();
 #endif
 
-	log::log(MSG(info) << "Profiler stopped; data written to " << this->profiling_filename);
+	log::log(MSG(info) << "Profiler stopped; data written to "
+	                   << this->profiling_filename);
 }
 
 
@@ -76,7 +79,8 @@ void ExternalProfiler::show_results() {
 	}
 
 	if (this->currently_profiling) {
-		log::log(MSG(warn) << "Profiler is currently running; trying to show results anyway");
+		log::log(
+		    MSG(warn) << "Profiler is currently running; trying to show results anyway");
 	}
 
 #if WITH_GPERFTOOLS_PROFILER
@@ -88,21 +92,19 @@ void ExternalProfiler::show_results() {
 	}
 
 	if (pprof_path.size() == 0) {
-		log::log(ERR << "Can not process profiling results: google-pprof or pprof not found in PATH");
+		log::log(ERR << "Can not process profiling results: google-pprof or pprof not "
+		                "found in PATH");
 		return;
 	}
 
-	int retval = subprocess::call(
-		{
-			pprof_path.c_str(),
-			"--pdf",
-			"--",
-			os::self_exec_filename().c_str(),
-			this->profiling_filename,
-			nullptr
-		},
-		true,
-		this->profiling_pdf_filename);
+	int retval = subprocess::call({pprof_path.c_str(),
+	                               "--pdf",
+	                               "--",
+	                               os::self_exec_filename().c_str(),
+	                               this->profiling_filename,
+	                               nullptr},
+	                              true,
+	                              this->profiling_pdf_filename);
 
 	if (retval != 0) {
 		log::log(MSG(err) << "Profile analysis failed: " << retval);
@@ -112,13 +114,11 @@ void ExternalProfiler::show_results() {
 	retval = os::execute_file(this->profiling_pdf_filename);
 
 	if (retval != 0) {
-		log::log(MSG(err) <<
-			"Could not view profiling visualization " <<
-			this->profiling_pdf_filename << ": " << retval);
+		log::log(MSG(err) << "Could not view profiling visualization "
+		                  << this->profiling_pdf_filename << ": " << retval);
 		return;
 	}
 #endif
 }
 
-} // namespace util
-} // namespace openage
+} // namespace openage::util

@@ -5,9 +5,11 @@
 #include <cstdlib>
 #include <array>
 #include <typeindex>
+#if defined(__MINGW32__)
+#include <cstdint>
+#endif
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 /**
  * Helper function to generate hash of certain type T
@@ -79,4 +81,4 @@ private:
 };
 
 
-}} // openage::util
+} // openage::util

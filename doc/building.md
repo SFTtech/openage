@@ -30,7 +30,7 @@ Dependency list:
     C     gcc >=7 or clang >=5
     CRA   python >=3.6
     C     cython >=0.25
-    C     cmake >=3.12
+    C     cmake >=3.16
       A   numpy
       A   python imaging library (PIL) -> pillow
     CR    opengl >=3.3
@@ -185,8 +185,6 @@ and will provide you with updates!
   - Unfortunately, it's not as simple as invoking a compiler. Building
     `openage` involves code generation and the building of Cython
     extension modules.
-  - See [buildsystem/simple](/buildsystem/simple), which does exactly
-    these things, manually (don't use this for production).
 
 * Why don't you `$proposition`? Your `$component` is crap
   and would be much better then!

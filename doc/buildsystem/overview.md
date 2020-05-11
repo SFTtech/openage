@@ -1,5 +1,6 @@
-Concept
-=======
+# Overview
+
+## Concept
 
 Our buildsystem is based on `cmake`.
 We use a bunch of custom cmake modules and python scripts
@@ -14,8 +15,7 @@ The `/Makefile` is another wrapper to invoke the build and tests
 compiler-independently.
 
 
-Components
-==========
+## Components
 
 The buildsystem is pretty sophisticated because *openage* consists of C++
 code, generated C++ code, generated Cython code and Python code. All C++
@@ -24,8 +24,7 @@ python package. We generate code with the `openage.codegen` Python
 package.
 
 
-Procedure
-=========
+## Procedure
 
 Steps in building openage:
 
@@ -35,7 +34,7 @@ Steps in building openage:
  - build and link `libopenage.so` (recipe: `openage`)
  - build Cython extension modules (generate cpp files and compile them, via `buildsystem.cythonize`) (recipe: `cython`); those link against libopenage.
 
-Additional recipes:
+### Additional recipes:
 
  - see `make help`
  - `install`
@@ -45,11 +44,11 @@ Additional recipes:
  - various compliance checkers: `checkfast`, `checkall`, ...
 
 
-Phases
-======
+## Phases
 
-CMake-time: `./configure`
-------------------------
+
+### CMake-time: `./configure`
+
 
 cmake reads and interprets all cmake modules and `CMakeLists.txt` files, populating the build directory with Makefiles and generating `config.py`, `config.h` and `config.cpp`. In addition, the codegen script is invoked to determine the list of files it will generate, and the list of (python) files it depends on.
 
@@ -58,8 +57,7 @@ The `./configure` cmake-wrapper script may be used to achieve a pleasant build e
 For each compiler invocation (gcc -Og, clang -O3, etc...), `./configure` creates its own build directory. This allows you to quickly switch compilers and flags (e.g. via `./configure -c clang -O2`) without having to re-build all object files when switching back.
 
 
-Build time: `make`
-------------------
+### Build time: `make`
 
 `cmake` supports many backends: Project files for various IDEs and more.
 
@@ -70,8 +68,7 @@ The recipes `codegen`, `libopenage`, `pxdgen`, `cythonize`, `compilepy` and `inp
 The `Makefile` in the project root directory may be used to invoke `GNU make` in the build directory (`make -C bin/` would be the manual way of doing this).
 
 
-Install time `make install`
---------------------------
+### Install time `make install`
 
 At install time, the openage library, python modules, Cython extension
 modules and game assets are installed to the prefix that was set at cmake
@@ -85,11 +82,9 @@ installed binaries (if you don't know what that is: Lucky you. CMake
 makes sure you don't need to).
 
 
-Core buildsystem modules
-========================
+## Core buildsystem modules
 
-cpp
----
+### cpp
 
 The [cpp module](/buildsystem/cpp.cmake), apart from verifying the compiler version and setting flags, provides functions for assembling binaries step-by-step.
 
@@ -101,8 +96,7 @@ At build time, this will cause all relevant object files and binaries to be buil
 
 Plain invocations of `add_executable` require all translation units to be specified at once; this system is designed to allow each subfolder to have its own `CMakeLists.txt` file, adding all sources specified in that folder to the main binary.
 
-python
-------
+### python
 
 The [python module](/buildsystem/python.cmake) is similar to the cpp module. It checks the Python interpreter and provides functions to declare Cython and Python modules.
 
@@ -111,8 +105,7 @@ The [python module](/buildsystem/python.cmake) is similar to the cpp module. It 
  - `add_pxds` adds any additional `.pxd` or `.pxi` files.
  - `add_py_modules` adds pure-Python modules; note that you also must declare `.py` files that were declared in `add_cython_modules`.
 
-codegen
--------
+### codegen
 
 Provides the function `codegen_run`, which
 
@@ -125,7 +118,6 @@ The python script automatically determines the python dependencies of the codege
 
 The generated `.cpp` files are placed in the `libopenage` folder, and all end in `.gen.cpp` (or `.gen.h`).
 
-other modules
--------------
+### other modules
 
 read the source, or nag somebody to write more docs on them! wheeee!
