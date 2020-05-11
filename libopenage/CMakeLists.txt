@@ -38,25 +38,26 @@ target_include_directories(libopenage
 			${PLATFORM_FONT_INCLUDE_DIRS}
 			${PLATFORM_SDL2_INCLUDE_DIRS}
 			${PLATFORM_CALC_INCLUDE_DIRS}
-			${PLATFORM_QT_INCLUDE_DIRS}
 			${PLATFORM_AUDIO_INCLUDE_DIRS}
 			${PLATFORM_GRAPHIC_INCLUDE_DIRS}
+			${QTPLATFORM_INCLUDE_DIRS}
 )
 
 ##################################################
 # dependency linking
 
-# all the libraries are not exposed to the
-# public api of libopenage
+# all the libraries are not exposed
+# to the public api of libopenage
 target_link_libraries(libopenage
 		PRIVATE
 			Threads::Threads
 			nyan::nyan
+			Eigen3::Eigen
+			Qt5::Core
+			Qt5::Quick
 			PkgConfig::PLATFORM_SDL2
-			PkgConfig::PLATFORM_CALC
 			PkgConfig::PLATFORM_AUDIO
 			PkgConfig::PLATFORM_GRAPHIC
-			PkgConfig::PLATFORM_QT
 			PkgConfig::PLATFORM_FONT
 			${UTIL_LIB}
 			${MATH_LIB}

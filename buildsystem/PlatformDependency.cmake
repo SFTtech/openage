@@ -119,13 +119,6 @@ pkg_check_modules(PLATFORM_GRAPHIC
             libpng
 )
 
-pkg_check_modules(PLATFORM_CALC
-        "${PKG_CHECK_QUIET}"
-        IMPORTED_TARGET
-        GLOBAL
-            eigen3
-)
-
 
 if(WIN32)
 ###################################################
