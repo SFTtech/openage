@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2020 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -153,13 +153,13 @@ public:
 };
 
 class VlkFramebuffer final : public RenderTarget {
-	std::vector<VkImageView> attachments;
-	VkFramebuffer framebuffer;
-	VkViewport viewport;
+	//std::vector<VkImageView> attachments;
+	//VkFramebuffer framebuffer;
+	//VkViewport viewport;
 
 public:
 	VlkFramebuffer(VkRenderPass /*pass*/, std::vector<VkImageView> const& /*attachments*/) {
-
+		// TODO.
 	}
 };
 
