@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,8 +7,7 @@
 
 #include "level.h"
 
-namespace openage {
-namespace log {
+namespace openage::log {
 
 
 /**
@@ -48,7 +47,7 @@ private:
 * Holds a list of all registered log sinks;
 * Maintained from the LogSink constructors/destructors.
 */
-class LogSinkList {
+class OAAPI LogSinkList {
 public:
 	static LogSinkList &instance();
 
@@ -79,4 +78,4 @@ private:
 };
 
 
-}} // namespace openage::log
+} // namespace openage::log
