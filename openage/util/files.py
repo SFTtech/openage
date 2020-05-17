@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 """
 Some file handling utilities
 """
@@ -36,8 +36,8 @@ def read_nullterminated_string(fileobj, maxlen=255):
 
         if char == 0:
             break
-        else:
-            result.append(char)
+
+        result.append(char)
 
         if len(result) > maxlen:
             raise Exception("Null-terminated string too long.")

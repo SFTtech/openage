@@ -78,7 +78,7 @@ confidence=
 # if cython modules are not yet build, they can't be imported.
 #
 # TODO: enable cyclic-import, once those issues have been fixed.
-disable=locally-disabled, cyclic-import, file-ignored, import-error, no-name-in-module
+disable=locally-disabled, cyclic-import, file-ignored, import-error, no-name-in-module, import-outside-toplevel
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

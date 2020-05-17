@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Compiles python modules with cpython to pyc/pyo files.
@@ -91,7 +91,7 @@ def main():
 
     if args.print_output_paths_only:
         print(';'.join(all_output_files))
-        exit(0)
+        sys.exit(0)
 
     maxwidth = len(str(len(to_compile)))
     for idx, (module, outputfile) in enumerate(to_compile):
