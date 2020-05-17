@@ -5,14 +5,14 @@ Creates nyan objects for things that are hardcoded into the Genie Engine,
 but configurable in openage. E.g. HP.
 
 """
-from openage.convert.dataformat.converter_object import RawAPIObject,\
-    ConverterObjectGroup
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.nyan.nyan_structs import MemberSpecialValue
+from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
 from openage.convert.dataformat.aoc.internal_nyan_names import CLASS_ID_LOOKUPS,\
     ARMOR_CLASS_LOOKUPS, TERRAIN_TYPE_LOOKUPS, BUILDING_LINE_LOOKUPS,\
     UNIT_LINE_LOOKUPS
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
+from openage.convert.dataformat.converter_object import RawAPIObject,\
+    ConverterObjectGroup
+from openage.nyan.nyan_structs import MemberSpecialValue
 
 
 class AoCPregenSubprocessor:
@@ -1650,62 +1650,36 @@ class AoCPregenSubprocessor:
         # =======================================================================
         # Death condition
         # =======================================================================
-        clause_parent = "engine.aux.boolean.Clause"
-        clause_location = "data/aux/boolean/clause/death/"
+        logic_parent = "engine.aux.logic.LogicElement"
+        literal_parent = "engine.aux.logic.literal.Literal"
+        interval_parent = "engine.aux.logic.literal.type.AttributeBelowValue"
+        literal_location = "data/aux/logic/death/"
 
-        death_ref_in_modpack = "aux.boolean.clause.death.StandardHealthDeath"
-        clause_raw_api_object = RawAPIObject(death_ref_in_modpack,
-                                             "StandardHealthDeath",
-                                             api_objects,
-                                             clause_location)
-        clause_raw_api_object.set_filename("death")
-        clause_raw_api_object.add_raw_parent(clause_parent)
-
-        # Literals (see below)
-        literals_expected_pointer = [ExpectedPointer(pregen_converter_group,
-                                                     "aux.boolean.clause.death.StandardHealthDeathLiteral")]
-        clause_raw_api_object.add_raw_member("literals",
-                                             literals_expected_pointer,
-                                             clause_parent)
-
-        # Requirement mode does not matter, so we use ANY
-        requirement_mode = api_objects["engine.aux.boolean.requirement_mode.type.Any"]
-        clause_raw_api_object.add_raw_member("clause_requirement",
-                                             requirement_mode,
-                                             clause_parent)
-
-        # Clause will not default to 'True' when it was fulfilled once
-        clause_raw_api_object.add_raw_member("only_once", False, clause_parent)
-
-        pregen_converter_group.add_raw_api_object(clause_raw_api_object)
-        pregen_nyan_objects.update({death_ref_in_modpack: clause_raw_api_object})
-
-        # Literal
-        literal_parent = "engine.aux.boolean.Literal"
-        interval_parent = "engine.aux.boolean.literal.type.AttributeBelowValue"
-
-        death_literal_ref_in_modpack = "aux.boolean.clause.death.StandardHealthDeathLiteral"
-        literal_raw_api_object = RawAPIObject(death_literal_ref_in_modpack,
+        death_ref_in_modpack = "aux.logic.literal.death.StandardHealthDeathLiteral"
+        literal_raw_api_object = RawAPIObject(death_ref_in_modpack,
                                               "StandardHealthDeathLiteral",
                                               api_objects,
-                                              clause_location)
-        literal_location = ExpectedPointer(pregen_converter_group, death_ref_in_modpack)
-        literal_raw_api_object.set_location(literal_location)
+                                              literal_location)
+        literal_raw_api_object.set_filename("death")
         literal_raw_api_object.add_raw_parent(interval_parent)
 
-        health_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                  "aux.attribute.types.Health")
-        literal_raw_api_object.add_raw_member("mode",
-                                              True,
-                                              literal_parent)
+        # Literal will not default to 'True' when it was fulfilled once
+        literal_raw_api_object.add_raw_member("only_once", False, logic_parent)
+
+        # Scope
         scope_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                 "aux.boolean.clause.death.StandardHealthDeathScope")
+                                                 "aux.logic.literal_scope.death.StandardHealthDeathScope")
         literal_raw_api_object.add_raw_member("scope",
                                               scope_expected_pointer,
                                               literal_parent)
+
+        # Attribute
+        health_expected_pointer = ExpectedPointer(pregen_converter_group,
+                                                  "aux.attribute.types.Health")
         literal_raw_api_object.add_raw_member("attribute",
                                               health_expected_pointer,
                                               interval_parent)
+
         # sidenote: Apparently this is actually HP<1 in Genie
         # (https://youtu.be/FdBk8zGbE7U?t=7m16s)
         literal_raw_api_object.add_raw_member("threshold",
@@ -1713,17 +1687,16 @@ class AoCPregenSubprocessor:
                                               interval_parent)
 
         pregen_converter_group.add_raw_api_object(literal_raw_api_object)
-        pregen_nyan_objects.update({death_literal_ref_in_modpack: literal_raw_api_object})
+        pregen_nyan_objects.update({death_ref_in_modpack: literal_raw_api_object})
 
         # LiteralScope
-        scope_parent = "engine.aux.boolean.literal_scope.LiteralScope"
-        self_scope_parent = "engine.aux.boolean.literal_scope.type.Self"
+        scope_parent = "engine.aux.logic.literal_scope.LiteralScope"
+        self_scope_parent = "engine.aux.logic.literal_scope.type.Self"
 
-        death_scope_ref_in_modpack = "aux.boolean.clause.death.StandardHealthDeathScope"
+        death_scope_ref_in_modpack = "aux.logic.literal_scope.death.StandardHealthDeathScope"
         scope_raw_api_object = RawAPIObject(death_scope_ref_in_modpack,
                                             "StandardHealthDeathScope",
-                                            api_objects,
-                                            clause_location)
+                                            api_objects)
         scope_location = ExpectedPointer(pregen_converter_group, death_ref_in_modpack)
         scope_raw_api_object.set_location(scope_location)
         scope_raw_api_object.add_raw_parent(self_scope_parent)
@@ -1739,79 +1712,53 @@ class AoCPregenSubprocessor:
         # =======================================================================
         # Garrison empty condition
         # =======================================================================
-        clause_parent = "engine.aux.boolean.Clause"
-        clause_location = "data/aux/boolean/clause/garrison_empty/"
+        logic_parent = "engine.aux.logic.LogicElement"
+        literal_parent = "engine.aux.logic.literal.Literal"
+        interval_parent = "engine.aux.logic.literal.type.AttributeBelowValue"
+        literal_location = "data/aux/logic/garrison_empty/"
 
-        death_ref_in_modpack = "aux.boolean.clause.death.BuildingDamageEmpty"
-        clause_raw_api_object = RawAPIObject(death_ref_in_modpack,
-                                             "BuildingDamageEmpty",
-                                             api_objects,
-                                             clause_location)
-        clause_raw_api_object.set_filename("building_damage_empty")
-        clause_raw_api_object.add_raw_parent(clause_parent)
-
-        # Literals (see below)
-        literals_expected_pointer = [ExpectedPointer(pregen_converter_group,
-                                                     "aux.boolean.clause.death.BuildingDamageEmptyLiteral")]
-        clause_raw_api_object.add_raw_member("literals",
-                                             literals_expected_pointer,
-                                             clause_parent)
-
-        # Requirement mode does not matter, so we use ANY
-        requirement_mode = api_objects["engine.aux.boolean.requirement_mode.type.Any"]
-        clause_raw_api_object.add_raw_member("clause_requirement",
-                                             requirement_mode,
-                                             clause_parent)
-
-        # Clause will not default to 'True' when it was fulfilled once
-        clause_raw_api_object.add_raw_member("only_once", False, clause_parent)
-
-        pregen_converter_group.add_raw_api_object(clause_raw_api_object)
-        pregen_nyan_objects.update({death_ref_in_modpack: clause_raw_api_object})
-
-        # Literal
-        literal_parent = "engine.aux.boolean.Literal"
-        interval_parent = "engine.aux.boolean.literal.type.AttributeBelowValue"
-
-        death_literal_ref_in_modpack = "aux.boolean.clause.death.BuildingDamageEmptyLiteral"
-        literal_raw_api_object = RawAPIObject(death_literal_ref_in_modpack,
+        garrison_literal_ref_in_modpack = "aux.logic.literal.garrison.BuildingDamageEmpty"
+        literal_raw_api_object = RawAPIObject(garrison_literal_ref_in_modpack,
                                               "BuildingDamageEmptyLiteral",
                                               api_objects,
-                                              clause_location)
-        literal_location = ExpectedPointer(pregen_converter_group, death_ref_in_modpack)
-        literal_raw_api_object.set_location(literal_location)
+                                              literal_location)
+        literal_raw_api_object.set_filename("garrison_empty")
         literal_raw_api_object.add_raw_parent(interval_parent)
 
-        health_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                  "aux.attribute.types.Health")
-        literal_raw_api_object.add_raw_member("mode",
-                                              True,
-                                              literal_parent)
+        # Literal will not default to 'True' when it was fulfilled once
+        literal_raw_api_object.add_raw_member("only_once", False, logic_parent)
+
+        # Scope
         scope_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                 "aux.boolean.clause.death.BuildingDamageEmptyScope")
+                                                 "aux.logic.literal_scope.garrison.BuildingDamageEmptyScope")
         literal_raw_api_object.add_raw_member("scope",
                                               scope_expected_pointer,
                                               literal_parent)
+
+        # Attribute
+        health_expected_pointer = ExpectedPointer(pregen_converter_group,
+                                                  "aux.attribute.types.Health")
         literal_raw_api_object.add_raw_member("attribute",
                                               health_expected_pointer,
                                               interval_parent)
+
+        # Threshhold
         literal_raw_api_object.add_raw_member("threshold",
                                               0.2,
                                               interval_parent)
 
         pregen_converter_group.add_raw_api_object(literal_raw_api_object)
-        pregen_nyan_objects.update({death_literal_ref_in_modpack: literal_raw_api_object})
+        pregen_nyan_objects.update({garrison_literal_ref_in_modpack: literal_raw_api_object})
 
         # LiteralScope
-        scope_parent = "engine.aux.boolean.literal_scope.LiteralScope"
-        self_scope_parent = "engine.aux.boolean.literal_scope.type.Self"
+        scope_parent = "engine.aux.logic.literal_scope.LiteralScope"
+        self_scope_parent = "engine.aux.logic.literal_scope.type.Self"
 
-        death_scope_ref_in_modpack = "aux.boolean.clause.death.BuildingDamageEmptyScope"
-        scope_raw_api_object = RawAPIObject(death_scope_ref_in_modpack,
+        garrison_scope_ref_in_modpack = "aux.logic.literal_scope.garrison.BuildingDamageEmptyScope"
+        scope_raw_api_object = RawAPIObject(garrison_scope_ref_in_modpack,
                                             "BuildingDamageEmptyScope",
-                                            api_objects,
-                                            clause_location)
-        scope_location = ExpectedPointer(pregen_converter_group, death_ref_in_modpack)
+                                            api_objects)
+        scope_location = ExpectedPointer(pregen_converter_group, garrison_literal_ref_in_modpack)
         scope_raw_api_object.set_location(scope_location)
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
@@ -1821,4 +1768,4 @@ class AoCPregenSubprocessor:
                                             scope_parent)
 
         pregen_converter_group.add_raw_api_object(scope_raw_api_object)
-        pregen_nyan_objects.update({death_scope_ref_in_modpack: scope_raw_api_object})
+        pregen_nyan_objects.update({garrison_scope_ref_in_modpack: scope_raw_api_object})

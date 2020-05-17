@@ -7,9 +7,10 @@ TODO: Implement a parser instead of hardcoded
 object creation.
 """
 
-from ...nyan.nyan_structs import NyanObject, NyanMember
 from openage.nyan.nyan_structs import MemberType, MemberSpecialValue,\
     MemberOperator
+
+from ...nyan.nyan_structs import NyanObject, NyanMember
 
 
 def load_api():
@@ -550,129 +551,164 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.Clause
+    # engine.aux.logic.LogicElement
     parents = [api_objects["engine.root.Entity"]]
-    nyan_object = NyanObject("Clause", parents)
-    fqon = "engine.aux.boolean.Clause"
+    nyan_object = NyanObject("LogicElement", parents)
+    fqon = "engine.aux.logic.LogicElement"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.Literal
-    parents = [api_objects["engine.root.Entity"]]
+    # engine.aux.logic.gate.LogicGate
+    parents = [api_objects["engine.aux.logic.LogicElement"]]
+    nyan_object = NyanObject("LogicGate", parents)
+    fqon = "engine.aux.logic.gate.LogicGate"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.logic.gate.type.AND
+    parents = [api_objects["engine.aux.logic.gate.LogicGate"]]
+    nyan_object = NyanObject("AND", parents)
+    fqon = "engine.aux.logic.gate.type.AND"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.logic.gate.type.AND
+    parents = [api_objects["engine.aux.logic.gate.LogicGate"]]
+    nyan_object = NyanObject("AND", parents)
+    fqon = "engine.aux.logic.gate.type.AND"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.logic.gate.type.MULTIXOR
+    parents = [api_objects["engine.aux.logic.gate.LogicGate"]]
+    nyan_object = NyanObject("MULTIXOR", parents)
+    fqon = "engine.aux.logic.gate.type.MULTIXOR"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.logic.gate.type.NOT
+    parents = [api_objects["engine.aux.logic.gate.LogicGate"]]
+    nyan_object = NyanObject("NOT", parents)
+    fqon = "engine.aux.logic.gate.type.NOT"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.logic.gate.type.OR
+    parents = [api_objects["engine.aux.logic.gate.LogicGate"]]
+    nyan_object = NyanObject("OR", parents)
+    fqon = "engine.aux.logic.gate.type.OR"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.logic.gate.type.SUBSETMAX
+    parents = [api_objects["engine.aux.logic.gate.LogicGate"]]
+    nyan_object = NyanObject("SUBSETMAX", parents)
+    fqon = "engine.aux.logic.gate.type.SUBSETMAX"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.logic.gate.type.SUBSETMIN
+    parents = [api_objects["engine.aux.logic.gate.LogicGate"]]
+    nyan_object = NyanObject("SUBSETMIN", parents)
+    fqon = "engine.aux.logic.gate.type.SUBSETMIN"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.logic.gate.type.XOR
+    parents = [api_objects["engine.aux.logic.gate.LogicGate"]]
+    nyan_object = NyanObject("XOR", parents)
+    fqon = "engine.aux.logic.gate.type.XOR"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.aux.logic.literal.Literal
+    parents = [api_objects["engine.aux.logic.LogicElement"]]
     nyan_object = NyanObject("Literal", parents)
-    fqon = "engine.aux.boolean.Literal"
+    fqon = "engine.aux.logic.literal.Literal"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal.type.AttributeAboveValue
-    parents = [api_objects["engine.aux.boolean.Literal"]]
+    # engine.aux.logic.literal.type.AttributeAboveValue
+    parents = [api_objects["engine.aux.logic.literal.Literal"]]
     nyan_object = NyanObject("AttributeAboveValue", parents)
-    fqon = "engine.aux.boolean.literal.type.AttributeAboveValue"
+    fqon = "engine.aux.logic.literal.type.AttributeAboveValue"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal.type.AttributeBelowValue
-    parents = [api_objects["engine.aux.boolean.Literal"]]
+    # engine.aux.logic.literal.type.AttributeBelowValue
+    parents = [api_objects["engine.aux.logic.literal.Literal"]]
     nyan_object = NyanObject("AttributeBelowValue", parents)
-    fqon = "engine.aux.boolean.literal.type.AttributeBelowValue"
+    fqon = "engine.aux.logic.literal.type.AttributeBelowValue"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal.type.GameEntityProgress
-    parents = [api_objects["engine.aux.boolean.Literal"]]
+    # engine.aux.logic.literal.type.GameEntityProgress
+    parents = [api_objects["engine.aux.logic.literal.Literal"]]
     nyan_object = NyanObject("GameEntityProgress", parents)
-    fqon = "engine.aux.boolean.literal.type.GameEntityProgress"
+    fqon = "engine.aux.logic.literal.type.GameEntityProgress"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal.type.ProjectileHit
-    parents = [api_objects["engine.aux.boolean.Literal"]]
+    # engine.aux.logic.literal.type.ProjectileHit
+    parents = [api_objects["engine.aux.logic.literal.Literal"]]
     nyan_object = NyanObject("ProjectileHit", parents)
-    fqon = "engine.aux.boolean.literal.type.ProjectileHit"
+    fqon = "engine.aux.logic.literal.type.ProjectileHit"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal.type.ProjectileHitTerrain
-    parents = [api_objects["engine.aux.boolean.Literal"]]
+    # engine.aux.logic.literal.type.ProjectileHitTerrain
+    parents = [api_objects["engine.aux.logic.literal.Literal"]]
     nyan_object = NyanObject("ProjectileHitTerrain", parents)
-    fqon = "engine.aux.boolean.literal.type.ProjectileHitTerrain"
+    fqon = "engine.aux.logic.literal.type.ProjectileHitTerrain"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal.type.ProjectilePassThrough
-    parents = [api_objects["engine.aux.boolean.Literal"]]
+    # engine.aux.logic.literal.type.ProjectilePassThrough
+    parents = [api_objects["engine.aux.logic.literal.Literal"]]
     nyan_object = NyanObject("ProjectilePassThrough", parents)
-    fqon = "engine.aux.boolean.literal.type.ProjectilePassThrough"
+    fqon = "engine.aux.logic.literal.type.ProjectilePassThrough"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal.type.ResourceSpotsDepleted
-    parents = [api_objects["engine.aux.boolean.Literal"]]
+    # engine.aux.logic.literal.type.ResourceSpotsDepleted
+    parents = [api_objects["engine.aux.logic.literal.Literal"]]
     nyan_object = NyanObject("ResourceSpotsDepleted", parents)
-    fqon = "engine.aux.boolean.literal.type.ResourceSpotsDepleted"
+    fqon = "engine.aux.logic.literal.type.ResourceSpotsDepleted"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal.type.TechResearched
-    parents = [api_objects["engine.aux.boolean.Literal"]]
+    # engine.aux.logic.literal.type.TechResearched
+    parents = [api_objects["engine.aux.logic.literal.Literal"]]
     nyan_object = NyanObject("TechResearched", parents)
-    fqon = "engine.aux.boolean.literal.type.TechResearched"
+    fqon = "engine.aux.logic.literal.type.TechResearched"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal.type.Timer
-    parents = [api_objects["engine.aux.boolean.Literal"]]
+    # engine.aux.logic.literal.type.Timer
+    parents = [api_objects["engine.aux.logic.literal.Literal"]]
     nyan_object = NyanObject("Timer", parents)
-    fqon = "engine.aux.boolean.literal.type.Timer"
+    fqon = "engine.aux.logic.literal.type.Timer"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal_scope.LiteralScope
+    # engine.aux.logic.literal_scope.LiteralScope
     parents = [api_objects["engine.root.Entity"]]
     nyan_object = NyanObject("LiteralScope", parents)
-    fqon = "engine.aux.boolean.literal_scope.LiteralScope"
+    fqon = "engine.aux.logic.literal_scope.LiteralScope"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal_scope.type.Any
-    parents = [api_objects["engine.aux.boolean.literal_scope.LiteralScope"]]
+    # engine.aux.logic.literal_scope.type.Any
+    parents = [api_objects["engine.aux.logic.literal_scope.LiteralScope"]]
     nyan_object = NyanObject("Any", parents)
-    fqon = "engine.aux.boolean.literal_scope.type.Any"
+    fqon = "engine.aux.logic.literal_scope.type.Any"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.aux.boolean.literal_scope.type.Self
-    parents = [api_objects["engine.aux.boolean.literal_scope.LiteralScope"]]
+    # engine.aux.logic.literal_scope.type.Self
+    parents = [api_objects["engine.aux.logic.literal_scope.LiteralScope"]]
     nyan_object = NyanObject("Self", parents)
-    fqon = "engine.aux.boolean.literal_scope.type.Self"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.boolean.requirement_mode.RequirementMode
-    parents = [api_objects["engine.root.Entity"]]
-    nyan_object = NyanObject("RequirementMode", parents)
-    fqon = "engine.aux.boolean.requirement_mode.RequirementMode"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.boolean.requirement_mode.type.All
-    parents = [api_objects["engine.aux.boolean.requirement_mode.RequirementMode"]]
-    nyan_object = NyanObject("All", parents)
-    fqon = "engine.aux.boolean.requirement_mode.type.All"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.boolean.requirement_mode.type.Any
-    parents = [api_objects["engine.aux.boolean.requirement_mode.RequirementMode"]]
-    nyan_object = NyanObject("Any", parents)
-    fqon = "engine.aux.boolean.requirement_mode.type.Any"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.aux.boolean.requirement_mode.type.Subset
-    parents = [api_objects["engine.aux.boolean.requirement_mode.RequirementMode"]]
-    nyan_object = NyanObject("Subset", parents)
-    fqon = "engine.aux.boolean.requirement_mode.type.Subset"
+    fqon = "engine.aux.logic.literal_scope.type.Self"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2404,10 +2440,10 @@ def _insert_members(api_objects):
     # engine.ability.type.Despawn
     api_object = api_objects["engine.ability.type.Despawn"]
 
-    set_type = api_objects["engine.aux.boolean.Clause"]
+    set_type = api_objects["engine.aux.logic.LogicElement"]
     member = NyanMember("activation_condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    set_type = api_objects["engine.aux.boolean.Clause"]
+    set_type = api_objects["engine.aux.logic.LogicElement"]
     member = NyanMember("despawn_condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
     member = NyanMember("despawn_time", MemberType.FLOAT, None, None, 0, None, False)
@@ -2621,7 +2657,7 @@ def _insert_members(api_objects):
     # engine.ability.type.PassiveTransformTo
     api_object = api_objects["engine.ability.type.PassiveTransformTo"]
 
-    set_type = api_objects["engine.aux.boolean.Clause"]
+    set_type = api_objects["engine.aux.logic.LogicElement"]
     member = NyanMember("condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
     member = NyanMember("transform_time", MemberType.FLOAT, None, None, 0, None, False)
@@ -2816,7 +2852,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.storage.Container"]
     member = NyanMember("container", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = api_objects["engine.aux.boolean.Clause"]
+    set_type = api_objects["engine.aux.logic.LogicElement"]
     member = NyanMember("empty_condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
@@ -2954,36 +2990,47 @@ def _insert_members(api_objects):
     member = NyanMember("protects", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.aux.boolean.Clause
-    api_object = api_objects["engine.aux.boolean.Clause"]
+    # engine.aux.logic.LogicElement
+    api_object = api_objects["engine.aux.logic.LogicElement"]
 
-    ref_object = api_objects["engine.aux.boolean.requirement_mode.RequirementMode"]
-    member = NyanMember("clause_requirement", ref_object, None, None, 0, None, False)
-    api_object.add_member(member)
-    set_type = api_objects["engine.aux.boolean.Literal"]
-    member = NyanMember("literals", MemberType.SET, None, None, 0, set_type, False)
-    api_object.add_member(member)
     member = NyanMember("only_once", MemberType.BOOLEAN, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.aux.boolean.Literal
-    api_object = api_objects["engine.aux.boolean.Literal"]
+    # engine.aux.logic.gate.LogicGate
+    api_object = api_objects["engine.aux.logic.gate.LogicGate"]
 
-    member = NyanMember("mode", MemberType.BOOLEAN, None, None, 0, None, False)
+    set_type = api_objects["engine.aux.logic.LogicElement"]
+    member = NyanMember("inputs", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    ref_object = api_objects["engine.aux.boolean.literal_scope.LiteralScope"]
+
+    # engine.aux.logic.gate.type.SUBSETMAX
+    api_object = api_objects["engine.aux.logic.gate.type.SUBSETMAX"]
+
+    member = NyanMember("size", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.logic.gate.type.SUBSETMIN
+    api_object = api_objects["engine.aux.logic.gate.type.SUBSETMIN"]
+
+    member = NyanMember("size", MemberType.INT, None, None, 0, None, False)
+    api_object.add_member(member)
+
+    # engine.aux.logic.literal.Literal
+    api_object = api_objects["engine.aux.logic.literal.Literal"]
+
+    ref_object = api_objects["engine.aux.logic.literal_scope.LiteralScope"]
     member = NyanMember("scope", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.aux.boolean.literal_scope.LiteralScope
-    api_object = api_objects["engine.aux.boolean.literal_scope.LiteralScope"]
+    # engine.aux.logic.literal_scope.LiteralScope
+    api_object = api_objects["engine.aux.logic.literal_scope.LiteralScope"]
 
     set_type = api_objects["engine.aux.diplomatic_stance.DiplomaticStance"]
     member = NyanMember("diplomatic_stances", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
-    # engine.aux.boolean.literal.type.AttributeAboveValue
-    api_object = api_objects["engine.aux.boolean.literal.type.AttributeAboveValue"]
+    # engine.aux.logic.literal.type.AttributeAboveValue
+    api_object = api_objects["engine.aux.logic.literal.type.AttributeAboveValue"]
 
     ref_object = api_objects["engine.aux.attribute.Attribute"]
     member = NyanMember("attribute", ref_object, None, None, 0, None, False)
@@ -2991,8 +3038,8 @@ def _insert_members(api_objects):
     member = NyanMember("threshold", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.aux.boolean.literal.type.AttributeBelowValue
-    api_object = api_objects["engine.aux.boolean.literal.type.AttributeBelowValue"]
+    # engine.aux.logic.literal.type.AttributeBelowValue
+    api_object = api_objects["engine.aux.logic.literal.type.AttributeBelowValue"]
 
     ref_object = api_objects["engine.aux.attribute.Attribute"]
     member = NyanMember("attribute", ref_object, None, None, 0, None, False)
@@ -3000,8 +3047,8 @@ def _insert_members(api_objects):
     member = NyanMember("threshold", MemberType.FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.aux.boolean.literal.type.GameEntityProgress
-    api_object = api_objects["engine.aux.boolean.literal.type.GameEntityProgress"]
+    # engine.aux.logic.literal.type.GameEntityProgress
+    api_object = api_objects["engine.aux.logic.literal.type.GameEntityProgress"]
 
     ref_object = api_objects["engine.aux.game_entity.GameEntity"]
     member = NyanMember("game_entity", ref_object, None, None, 0, None, False)
@@ -3010,17 +3057,11 @@ def _insert_members(api_objects):
     member = NyanMember("progress_status", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
 
-    # engine.aux.boolean.literal.type.TechResearched
-    api_object = api_objects["engine.aux.boolean.literal.type.TechResearched"]
+    # engine.aux.logic.literal.type.TechResearched
+    api_object = api_objects["engine.aux.logic.literal.type.TechResearched"]
 
     ref_object = api_objects["engine.aux.tech.Tech"]
     member = NyanMember("tech", ref_object, None, None, 0, None, False)
-    api_object.add_member(member)
-
-    # engine.aux.boolean.requirement_mode.type.Subset
-    api_object = api_objects["engine.aux.boolean.requirement_mode.type.Subset"]
-
-    member = NyanMember("size", MemberType.INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.calculation_type.type.Hyperbolic
@@ -3104,7 +3145,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.sound.Sound"]
     member = NyanMember("creation_sounds", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    set_type = api_objects["engine.aux.boolean.Clause"]
+    set_type = api_objects["engine.aux.logic.LogicElement"]
     member = NyanMember("condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.placement_mode.PlacementMode"]
@@ -3436,7 +3477,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.sound.Sound"]
     member = NyanMember("research_sounds", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    set_type = api_objects["engine.aux.boolean.Clause"]
+    set_type = api_objects["engine.aux.logic.LogicElement"]
     member = NyanMember("condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
@@ -3940,7 +3981,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.resource_spot.ResourceSpot"]
     member = NyanMember("resource_spot", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = api_objects["engine.aux.boolean.Clause"]
+    set_type = api_objects["engine.aux.logic.LogicElement"]
     member = NyanMember("harvest_conditions", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 
@@ -4213,7 +4254,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.tech.Tech"]
     member = NyanMember("tech", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = api_objects["engine.aux.boolean.Clause"]
+    set_type = api_objects["engine.aux.logic.LogicElement"]
     member = NyanMember("condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
 

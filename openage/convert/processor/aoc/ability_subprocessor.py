@@ -4,12 +4,9 @@
 Derives and adds abilities to lines. Subroutine of the
 nyan subprocessor.
 """
-from ...dataformat.converter_object import RawAPIObject
-from ...dataformat.aoc.expected_pointer import ExpectedPointer
-from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS
-from ...dataformat.aoc.genie_unit import GenieVillagerGroup
-from ...dataformat.aoc.combined_sprite import CombinedSprite
-from openage.nyan.nyan_structs import MemberSpecialValue
+from math import degrees
+
+from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
     GenieUnitLineGroup, GenieMonkGroup, GenieVariantGroup
@@ -17,10 +14,15 @@ from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUP
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
     TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, COMMAND_TYPE_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
-from openage.util.ordered_set import OrderedSet
 from openage.convert.processor.aoc.effect_subprocessor import AoCEffectSubprocessor
-from openage.convert.dataformat.aoc.combined_sound import CombinedSound
-from math import degrees
+from openage.nyan.nyan_structs import MemberSpecialValue
+from openage.util.ordered_set import OrderedSet
+
+from ...dataformat.aoc.combined_sprite import CombinedSprite
+from ...dataformat.aoc.expected_pointer import ExpectedPointer
+from ...dataformat.aoc.genie_unit import GenieVillagerGroup
+from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS
+from ...dataformat.converter_object import RawAPIObject
 
 
 class AoCAbilitySubprocessor:
@@ -1608,7 +1610,7 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.specialization.AnimatedAbility")
 
         # Death condition
-        death_condition = [dataset.pregen_nyan_objects["aux.boolean.clause.death.StandardHealthDeath"].get_nyan_object()]
+        death_condition = [dataset.pregen_nyan_objects["aux.logic.literal.death.StandardHealthDeathLiteral"].get_nyan_object()]
         ability_raw_api_object.add_raw_member("condition",
                                               death_condition,
                                               "engine.ability.type.PassiveTransformTo")
@@ -1903,7 +1905,7 @@ class AoCAbilitySubprocessor:
 
         # Activation condition
         # Uses the death condition of the units
-        activation_condition = [dataset.pregen_nyan_objects["aux.boolean.clause.death.StandardHealthDeath"].get_nyan_object()]
+        activation_condition = [dataset.pregen_nyan_objects["aux.logic.literal.death.StandardHealthDeathLiteral"].get_nyan_object()]
         ability_raw_api_object.add_raw_member("activation_condition",
                                               activation_condition,
                                               "engine.ability.type.Despawn")
@@ -5337,11 +5339,11 @@ class AoCAbilitySubprocessor:
         # Empty condition
         if garrison_mode in (GenieGarrisonMode.UNIT_GARRISON, GenieGarrisonMode.MONK):
             # Empty before death
-            condition = [dataset.pregen_nyan_objects["aux.boolean.clause.death.StandardHealthDeath"].get_nyan_object()]
+            condition = [dataset.pregen_nyan_objects["aux.logic.literal.death.StandardHealthDeathLiteral"].get_nyan_object()]
 
         elif garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
             # Empty when HP < 20%
-            condition = [dataset.pregen_nyan_objects["aux.boolean.clause.death.BuildingDamageEmpty"].get_nyan_object()]
+            condition = [dataset.pregen_nyan_objects["aux.logic.literal.garrison.BuildingDamageEmpty"].get_nyan_object()]
 
         else:
             # Never empty automatically (transport ships)
