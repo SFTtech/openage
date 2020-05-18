@@ -688,7 +688,7 @@
       ><text x="5" font-size="14px" y="69.125" clip-path="url(#clipPath6)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >price_adjust : optional(PriceMode)</text
       ><text x="5" font-size="14px" y="84.6562" clip-path="url(#clipPath6)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >price_pool : optional(ExchangePool)</text
+      >price_pool : optional(PricePool)</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(3550,2150)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
     ><rect x="0.5" width="98.5" height="58.5" y="0.5" clip-path="url(#clipPath3)" stroke="none"
