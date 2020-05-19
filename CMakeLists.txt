@@ -50,6 +50,8 @@ foreach(pol
         CMP0072  # prefers GLVND by default FindOpenGL
         CMP0048  # project() command manages VERSION variables
         CMP0094  # take the first satisfying Python version
+        CMP0082  # run add_subdirectory() in the declaration order
+        CMP0102  # Don't create empty cache entries
        )
 	if (POLICY ${pol})
 		cmake_policy(SET ${pol} NEW)
