@@ -1,8 +1,8 @@
 # Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.16)
 
-# required for FindPython3.cmake
+# finding numpy with the findpython3 module
 # >3.8 required for CMAKE_CXX_STANDARD for C++17
 
 # main build configuration file

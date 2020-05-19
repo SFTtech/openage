@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
@@ -54,7 +54,7 @@ function(add_cython_modules)
 	# test.pyx is compiled to a shared library linked against PYEXT_LINK_LIBRARY
 	# __main__.pyx is compiled to a executable with embedded python interpreter,
 	# linked against libpython and PYEXT_LINK_LIBRARY.
-	# foo/bar.pyx is compiled to a executable with embedded pytthon interpreter,
+	# foo/bar.pyx is compiled to a executable with embedded python interpreter,
 	# linked only against libpython.
 	# foo/test.pyx is compiled to a shared library linked against nothing, and will
 	# not be installed.
@@ -196,7 +196,7 @@ function(add_pxds)
 		endif()
 
 		if(NOT "${source}" MATCHES ".*\\.px[id]$")
-			message(FATAL_ERROR "non-pxd/pxi file given to add_pyd: ${source}")
+			message(FATAL_ERROR "non-pxd/pxi file given to add_pxds: ${source}")
 		endif()
 
 		set_property(GLOBAL APPEND PROPERTY SFT_PXD_FILES "${source}")

@@ -33,7 +33,7 @@ endif()
 set(Python3_FIND_REGISTRY "NEVER")
 
 # use cmake's FindPython3 to locate library and interpreter
-find_package(Python3 ${PYTHON_MIN_VERSION} COMPONENTS Interpreter Development)
+find_package(Python3 ${PYTHON_MIN_VERSION} COMPONENTS Interpreter Development NumPy)
 
 
 # python version string to cpython api test in modules/FindPython_test.cpp
@@ -64,6 +64,11 @@ elseif(PYTHON_TEST_RESULT)
 	set(PYTHON_LIBRARIES ${Python3_LIBRARIES} CACHE STRING "Linker invocation for the Python library" FORCE)
 	set(PYTHON_INCLUDE_DIRS ${Python3_INCLUDE_DIRS} CACHE PATH "Location of the Python include dir" FORCE)
 	set(PYTHONLIBS_VERSION_STRING ${Python3_VERSION})
+
+	# Numpy.cmake vars <= Python3.cmake vars
+	set(NUMPY_FOUND ${Python3_NumPy_FOUND})
+	set(NUMPY_VERSION ${Python3_NumPy_VERSION})
+	set(NUMPY_INCLUDE_DIR ${Python3_NumPy_INCLUDE_DIRS} CACHE STRING "Linker invocation for the NumPy library" FORCE)
 
 	include(FindPackageHandleStandardArgs)
 	find_package_handle_standard_args(Python REQUIRED_VARS PYTHON PYTHON_INCLUDE_DIRS PYTHON_LIBRARIES)
