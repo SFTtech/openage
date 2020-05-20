@@ -149,9 +149,12 @@ class ConverterObjectGroup:
         """
         self.group_id = group_id
 
-        # stores the objects that will later be converted to nyan objects
-        # this uses a preliminary fqon as a key
+        # Stores the objects that will later be converted to nyan objects
+        # This uses the RawAPIObject's ids as keys.
         self.raw_api_objects = {}
+
+        # Stores push values to members of other converter object groups
+        self.raw_member_pushs = []
 
         if raw_api_objects:
             self._create_raw_api_object_dict(raw_api_objects)
@@ -175,6 +178,12 @@ class ConverterObjectGroup:
         """
         for subobject in subobjects:
             self.add_raw_api_object(subobject)
+
+    def add_raw_member_push(self, push_object):
+        """
+        Adds a RawPushMember to the object.
+        """
+        self.raw_member_pushs.append(push_object)
 
     def create_nyan_objects(self):
         """
@@ -200,6 +209,14 @@ class ConverterObjectGroup:
             if not raw_api_object.is_ready():
                 raise Exception("%s: object is not ready for export. "
                                 "Member or object not initialized." % (raw_api_object))
+
+    def execute_raw_member_pushs(self, push_object):
+        """
+        Extend raw members of referenced raw API objects.
+        """
+        for push in self.raw_member_pushs:
+            expected_pointer = push.get_object_target()
+            raw_api_object = expected_pointer.resolve_raw()
 
     def get_raw_api_object(self, obj_id):
         """
@@ -318,6 +335,30 @@ class RawAPIObject:
         """
         self.raw_parents.append(parent_id)
 
+    def extend_raw_member(self, name, push_value, origin):
+        """
+        Extends a raw member value.
+
+        :param name: Name of the member (has to be a valid inherited member name).
+        :type name: str
+        :param push_value: Extended value of the member.
+        :type push_value: list
+        :param origin: from which parent the member was inherited.
+        :type origin: str
+        """
+        for raw_member in self.raw_members:
+            member_name = raw_member[0]
+            member_value = raw_member[1]
+            member_origin = raw_member[2]
+
+            if name == member_name and member_origin == member_origin:
+                member_value = member_value.extend(push_value)
+                break
+
+        else:
+            raise Exception("%s: Cannot extend raw member %s with origin %s: member not found"
+                            % (self, name, origin))
+
     def create_nyan_object(self):
         """
         Create the nyan object for this raw API object. Members have to be created separately.
@@ -401,7 +442,7 @@ class RawAPIObject:
 
     def link_patch_target(self):
         """
-        Link the target NyanObject for a patch.
+        Set the target NyanObject for a patch.
         """
         if not self.is_patch():
             raise Exception("Cannot link patch target: %s is not a patch"
@@ -512,6 +553,57 @@ class RawAPIObject:
 
     def __repr__(self):
         return "RawAPIObject<%s>" % (self.obj_id)
+
+
+class RawMemberPush:
+    """
+    An object that contains additional values for complex members
+    in raw API objects (lists or sets). Pushing these values to the
+    raw API object will extennd the list or set. The values should be
+    pushed to the raw API objects before their nyan members are created.
+    """
+
+    def __init__(self, expected_pointer, member_name, member_origin, push_value):
+        """
+        Creates a new member push.
+
+        :param expected_pointer: Expected pointer of the RawAPIObject.
+        :type expected_pointer: ExpectedPointer
+        :param member_name: Name of the member that is extended.
+        :type member_name: str
+        :param member_origin: Fqon of the object the member was inherited from.
+        :type member_origin: str
+        :param push_value: Value that extends the existing member value.
+        :type push_value: list
+        """
+        self.expected_pointer = expected_pointer
+        self.member_name = member_name
+        self.member_origin = member_origin
+        self.push_value = push_value
+
+    def get_object_target(self):
+        """
+        Returns the expected pointer for the push target.
+        """
+        return self.expected_pointer
+
+    def get_member_name(self):
+        """
+        Returns the name of the member that is extended.
+        """
+        return self.member_name
+
+    def get_member_origin(self):
+        """
+        Returns the fqon of the member's origin.
+        """
+        return self.member_origin
+
+    def get_push_value(self):
+        """
+        Returns the value that extends the member's existing value.
+        """
+        return self.push_value
 
 
 class ConverterObjectContainer:
