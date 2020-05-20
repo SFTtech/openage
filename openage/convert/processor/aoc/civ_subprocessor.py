@@ -3,16 +3,14 @@
 """
 Creates patches and modifiers for civs.
 """
-from openage.convert.dataformat.aoc.internal_nyan_names import CIV_GROUP_LOOKUPS,\
-    UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS,\
-    GRAPHICS_SET_LOOKUPS
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieVillagerGroup
-from openage.nyan.nyan_structs import MemberOperator
 from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
+from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from openage.convert.dataformat.aoc.internal_nyan_names import CIV_GROUP_LOOKUPS,\
+    UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
+from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
+from openage.nyan.nyan_structs import MemberOperator
 
 
 class AoCCivSubprocessor:
@@ -25,7 +23,6 @@ class AoCCivSubprocessor:
         """
         patches = []
 
-        patches.extend(cls._setup_graphics_set(civ_group))
         patches.extend(cls._setup_unique_units(civ_group))
         patches.extend(cls._setup_unique_techs(civ_group))
         patches.extend(cls._setup_tech_tree(civ_group))
@@ -173,60 +170,6 @@ class AoCCivSubprocessor:
         return resource_amounts
 
     @classmethod
-    def create_graphics_sets(cls, full_data_set):
-        """
-        Creates patches for the graphics sets of civs.
-        """
-        graphics_sets = GRAPHICS_SET_LOOKUPS
-
-        for set_id, graphics_set in graphics_sets.items():
-            if set_id == 0:
-                # The standard graphics set can be skipped
-                continue
-
-            # Use the first civ for creation
-            civ_id = graphics_set[0][0]
-            civ_group = full_data_set.civ_groups[civ_id]
-            civ_units = civ_group.civ["units"].get_value()
-
-            # We don't need a full diff, only a few animations change
-            for building_line in full_data_set.building_lines.values():
-                std_head_unit = building_line.get_head_unit()
-                std_head_unit_id = building_line.get_head_unit_id()
-                civ_head_unit = civ_units[std_head_unit_id]
-
-                std_idle_animation_id = std_head_unit["idle_graphic0"].get_value()
-                civ_idle_animation_id = civ_head_unit["idle_graphic0"].get_value()
-
-                if std_idle_animation_id != civ_idle_animation_id:
-                    cls._idle_graphics_set(building_line, civ_idle_animation_id,
-                                           graphics_set[1], graphics_set[2])
-
-                # TODO: Building upgrades
-
-            for unit_line in full_data_set.unit_lines.values():
-                if isinstance(unit_line, GenieVillagerGroup):
-                    # Villagers have different IDs, but the sprites are unchanged
-                    continue
-
-                std_head_unit = unit_line.get_head_unit()
-                std_head_unit_id = unit_line.get_head_unit_id()
-                if std_head_unit_id in civ_units.keys():
-                    civ_head_unit = civ_units[std_head_unit_id]
-
-                else:
-                    continue
-
-                std_idle_animation_id = std_head_unit["idle_graphic0"].get_value()
-                civ_idle_animation_id = civ_head_unit["idle_graphic0"].get_value()
-
-                if std_idle_animation_id != civ_idle_animation_id:
-                    cls._idle_graphics_set(unit_line, civ_idle_animation_id,
-                                           graphics_set[1], graphics_set[2])
-
-                # TODO: Move, Die, Despawn, Attack
-
-    @classmethod
     def _setup_civ_bonus(cls, civ_group):
         """
         Returns global modifiers of a civ.
@@ -309,73 +252,6 @@ class AoCCivSubprocessor:
 
             wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
             patches.append(wrapper_expected_pointer)
-
-        return patches
-
-    @staticmethod
-    def _setup_graphics_set(civ_group):
-        """
-        Patches the graphics set in.
-        """
-        patches = []
-
-        civ_id = civ_group.get_id()
-        graphics_sets = GRAPHICS_SET_LOOKUPS
-        civ_graphics_set_lookup = None
-        dataset = civ_group.data
-
-        for set_id, graphics_set in graphics_sets.items():
-            if civ_id in graphics_set[0]:
-                civ_graphics_set_lookup = graphics_set
-
-                if set_id == 0:
-                    # This is the standard set that doesn't need extra patching
-                    return patches
-
-                break
-
-        civ_units = civ_group.civ["units"].get_value()
-        graphics_set_name = civ_graphics_set_lookup[1]
-
-        for building_line in dataset.building_lines.values():
-            std_head_unit = building_line.get_head_unit()
-            std_head_unit_id = building_line.get_head_unit_id()
-            civ_head_unit = civ_units[std_head_unit_id]
-
-            std_idle_animation_id = std_head_unit["idle_graphic0"].get_value()
-            civ_idle_animation_id = civ_head_unit["idle_graphic0"].get_value()
-
-            building_name = BUILDING_LINE_LOOKUPS[std_head_unit_id][0]
-
-            if std_idle_animation_id != civ_idle_animation_id:
-                graphics_change_expected_pointer = ExpectedPointer(building_line,
-                                                                   "%s.%sIdleAnimationWrapper"
-                                                                   % (building_name, graphics_set_name))
-                patches.append(graphics_change_expected_pointer)
-
-        for unit_line in dataset.unit_lines.values():
-            if isinstance(unit_line, GenieVillagerGroup):
-                # Villagers have different IDs, but the sprites are unchanged
-                continue
-
-            std_head_unit = unit_line.get_head_unit()
-            std_head_unit_id = unit_line.get_head_unit_id()
-            if std_head_unit_id in civ_units.keys():
-                civ_head_unit = civ_units[std_head_unit_id]
-
-            else:
-                continue
-
-            std_idle_animation_id = std_head_unit["idle_graphic0"].get_value()
-            civ_idle_animation_id = civ_head_unit["idle_graphic0"].get_value()
-
-            unit_name = UNIT_LINE_LOOKUPS[std_head_unit_id][0]
-
-            if std_idle_animation_id != civ_idle_animation_id:
-                graphics_change_expected_pointer = ExpectedPointer(unit_line,
-                                                                   "%s.%sIdleAnimationWrapper"
-                                                                   % (unit_name, graphics_set_name))
-                patches.append(graphics_change_expected_pointer)
 
         return patches
 

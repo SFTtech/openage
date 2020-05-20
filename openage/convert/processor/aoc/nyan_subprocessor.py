@@ -4,12 +4,7 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main AoC processor.
 """
-from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, CLASS_ID_LOOKUPS,\
-    BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
-from ...dataformat.converter_object import RawAPIObject
-from ...dataformat.aoc.genie_unit import GenieVillagerGroup
-from .ability_subprocessor import AoCAbilitySubprocessor
-from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
+from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
@@ -17,11 +12,17 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
 from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, CIV_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
-from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
-from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
+from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
 from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
+from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
 from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgradeAbilitySubprocessor
+
+from ...dataformat.aoc.genie_unit import GenieVillagerGroup
+from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, CLASS_ID_LOOKUPS,\
+    BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
+from ...dataformat.converter_object import RawAPIObject
+from .ability_subprocessor import AoCAbilitySubprocessor
 
 
 class AoCNyanSubprocessor:
@@ -40,24 +41,31 @@ class AoCNyanSubprocessor:
         """
         for unit_line in full_data_set.unit_lines.values():
             unit_line.create_nyan_objects()
+            unit_line.execute_raw_member_pushs()
 
         for building_line in full_data_set.building_lines.values():
             building_line.create_nyan_objects()
+            building_line.execute_raw_member_pushs()
 
         for ambient_group in full_data_set.ambient_groups.values():
             ambient_group.create_nyan_objects()
+            ambient_group.execute_raw_member_pushs()
 
         for variant_group in full_data_set.variant_groups.values():
             variant_group.create_nyan_objects()
+            variant_group.execute_raw_member_pushs()
 
         for tech_group in full_data_set.tech_groups.values():
             tech_group.create_nyan_objects()
+            tech_group.execute_raw_member_pushs()
 
         for terrain_group in full_data_set.terrain_groups.values():
             terrain_group.create_nyan_objects()
+            terrain_group.execute_raw_member_pushs()
 
         for civ_group in full_data_set.civ_groups.values():
             civ_group.create_nyan_objects()
+            civ_group.execute_raw_member_pushs()
 
     @classmethod
     def _create_nyan_members(cls, full_data_set):
@@ -106,8 +114,6 @@ class AoCNyanSubprocessor:
 
         for terrain_group in full_data_set.terrain_groups.values():
             cls._terrain_group_to_terrain(terrain_group)
-
-        AoCCivSubprocessor.create_graphics_sets(full_data_set)
 
         for civ_group in full_data_set.civ_groups.values():
             cls._civ_group_to_civ(civ_group)

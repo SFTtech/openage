@@ -137,7 +137,7 @@ class ConverterObjectGroup:
     instances are converted to the nyan API.
     """
 
-    __slots__ = ('group_id', 'raw_api_objects')
+    __slots__ = ('group_id', 'raw_api_objects', 'raw_member_pushs')
 
     def __init__(self, group_id, raw_api_objects=None):
         """
@@ -210,13 +210,16 @@ class ConverterObjectGroup:
                 raise Exception("%s: object is not ready for export. "
                                 "Member or object not initialized." % (raw_api_object))
 
-    def execute_raw_member_pushs(self, push_object):
+    def execute_raw_member_pushs(self):
         """
         Extend raw members of referenced raw API objects.
         """
-        for push in self.raw_member_pushs:
-            expected_pointer = push.get_object_target()
+        for push_object in self.raw_member_pushs:
+            expected_pointer = push_object.get_object_target()
             raw_api_object = expected_pointer.resolve_raw()
+            raw_api_object.extend_raw_member(push_object.get_member_name(),
+                                             push_object.get_push_value(),
+                                             push_object.get_member_origin())
 
     def get_raw_api_object(self, obj_id):
         """
@@ -562,6 +565,8 @@ class RawMemberPush:
     raw API object will extennd the list or set. The values should be
     pushed to the raw API objects before their nyan members are created.
     """
+
+    __slots__ = ('expected_pointer', 'member_name', 'member_origin', 'push_value')
 
     def __init__(self, expected_pointer, member_name, member_origin, push_value):
         """

@@ -4,6 +4,7 @@
 Derives and adds abilities to lines. Subroutine of the
 nyan subprocessor.
 """
+from builtins import staticmethod
 from math import degrees
 
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
@@ -13,9 +14,10 @@ from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
 from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
     AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
     TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, COMMAND_TYPE_LOOKUPS,\
-    VARIANT_GROUP_LOOKUPS
+    VARIANT_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS, GRAPHICS_SET_LOOKUPS
+from openage.convert.dataformat.converter_object import RawMemberPush
 from openage.convert.processor.aoc.effect_subprocessor import AoCEffectSubprocessor
-from openage.nyan.nyan_structs import MemberSpecialValue
+from openage.nyan.nyan_structs import MemberSpecialValue, MemberOperator
 from openage.util.ordered_set import OrderedSet
 
 from ...dataformat.aoc.combined_sprite import CombinedSprite
@@ -75,7 +77,19 @@ class AoCAbilitySubprocessor:
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
+        # Get animation from commands proceed sprite
+        unit_commands = current_unit.get_member("unit_commands").get_value()
+        for command in unit_commands:
+            type_id = command.get_value()["type"].get_value()
+
+            if type_id != command_id:
+                continue
+
+            ability_animation_id = command["proceed_sprite_id"].get_value()
+            break
+
+        else:
+            ability_animation_id = -1
 
         if ability_animation_id > -1:
             # Make the ability animated
@@ -91,6 +105,40 @@ class AoCAbilitySubprocessor:
             animations_set.append(animation_expected_pointer)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
+
+            # Create custom civ graphics
+            handled_graphics_set_ids = set()
+            for civ_group in dataset.civ_groups.values():
+                civ = civ_group.civ
+                civ_id = civ_group.get_id()
+
+                # Only proceed if the civ stores the unit in the line
+                if current_unit_id not in civ["units"].get_value().keys():
+                    continue
+
+                civ_animation_id = civ["units"][current_unit_id]["attack_sprite_id"].get_value()
+
+                if civ_animation_id != ability_animation_id:
+                    # Find the corresponding graphics set
+                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                        if civ_id in items[0]:
+                            break
+
+                    # Check if the object for the animation has been created before
+                    obj_exists = graphics_set_id in handled_graphics_set_ids
+                    if not obj_exists:
+                        handled_graphics_set_ids.add(graphics_set_id)
+
+                    obj_prefix = "%s%s" % (GRAPHICS_SET_LOOKUPS[graphics_set_id][1], ability_name)
+                    filename_prefix = "%s_%s_" % (COMMAND_TYPE_LOOKUPS[command_id][1],
+                                                  GRAPHICS_SET_LOOKUPS[graphics_set_id][2],)
+                    AoCAbilitySubprocessor._create_civ_animation(line,
+                                                                 civ_group,
+                                                                 civ_animation_id,
+                                                                 ability_ref,
+                                                                 obj_prefix,
+                                                                 filename_prefix,
+                                                                 obj_exists)
 
         # Command Sound
         ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
@@ -157,8 +205,7 @@ class AoCAbilitySubprocessor:
                                               application_delay,
                                               "engine.ability.type.ApplyContinuousEffect")
 
-        # Allowed types (all buildings/units)
-
+        # Allowed types
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
                                               "engine.ability.type.ApplyContinuousEffect")
@@ -236,6 +283,40 @@ class AoCAbilitySubprocessor:
             animations_set.append(animation_expected_pointer)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
+
+            # Create custom civ graphics
+            handled_graphics_set_ids = set()
+            for civ_group in dataset.civ_groups.values():
+                civ = civ_group.civ
+                civ_id = civ_group.get_id()
+
+                # Only proceed if the civ stores the unit in the line
+                if current_unit_id not in civ["units"].get_value().keys():
+                    continue
+
+                civ_animation_id = civ["units"][current_unit_id]["attack_sprite_id"].get_value()
+
+                if civ_animation_id != ability_animation_id:
+                    # Find the corresponding graphics set
+                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                        if civ_id in items[0]:
+                            break
+
+                    # Check if the object for the animation has been created before
+                    obj_exists = graphics_set_id in handled_graphics_set_ids
+                    if not obj_exists:
+                        handled_graphics_set_ids.add(graphics_set_id)
+
+                    obj_prefix = "%s%s" % (GRAPHICS_SET_LOOKUPS[graphics_set_id][1], ability_name)
+                    filename_prefix = "%s_%s_" % (COMMAND_TYPE_LOOKUPS[command_id][1],
+                                                  GRAPHICS_SET_LOOKUPS[graphics_set_id][2],)
+                    AoCAbilitySubprocessor._create_civ_animation(line,
+                                                                 civ_group,
+                                                                 civ_animation_id,
+                                                                 ability_ref,
+                                                                 obj_prefix,
+                                                                 filename_prefix,
+                                                                 obj_exists)
 
         # Command Sound
         if projectile == -1:
@@ -1609,6 +1690,39 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
+            # Create custom civ graphics
+            handled_graphics_set_ids = set()
+            for civ_group in dataset.civ_groups.values():
+                civ = civ_group.civ
+                civ_id = civ_group.get_id()
+
+                # Only proceed if the civ stores the unit in the line
+                if current_unit_id not in civ["units"].get_value().keys():
+                    continue
+
+                civ_animation_id = civ["units"][current_unit_id]["dying_graphic"].get_value()
+
+                if civ_animation_id != ability_animation_id:
+                    # Find the corresponding graphics set
+                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                        if civ_id in items[0]:
+                            break
+
+                    # Check if the object for the animation has been created before
+                    obj_exists = graphics_set_id in handled_graphics_set_ids
+                    if not obj_exists:
+                        handled_graphics_set_ids.add(graphics_set_id)
+
+                    obj_prefix = "%sDeath" % (GRAPHICS_SET_LOOKUPS[graphics_set_id][1])
+                    filename_prefix = "death_%s_" % (GRAPHICS_SET_LOOKUPS[graphics_set_id][2])
+                    AoCAbilitySubprocessor._create_civ_animation(line,
+                                                                 civ_group,
+                                                                 civ_animation_id,
+                                                                 ability_ref,
+                                                                 obj_prefix,
+                                                                 filename_prefix,
+                                                                 obj_exists)
+
         # Death condition
         death_condition = [dataset.pregen_nyan_objects["aux.logic.literal.death.StandardHealthDeathLiteral"].get_nyan_object()]
         ability_raw_api_object.add_raw_member("condition",
@@ -1902,6 +2016,45 @@ class AoCAbilitySubprocessor:
             animations_set.append(animation_expected_pointer)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
+
+            # Create custom civ graphics
+            handled_graphics_set_ids = set()
+            for civ_group in dataset.civ_groups.values():
+                civ = civ_group.civ
+                civ_id = civ_group.get_id()
+
+                # Only proceed if the civ stores the unit in the line
+                if current_unit_id not in civ["units"].get_value().keys():
+                    continue
+
+                civ_unit = civ["units"][current_unit_id]
+                civ_dead_unit_id = civ_unit["dead_unit_id"].get_value()
+                civ_dead_unit = None
+                if civ_dead_unit_id > -1:
+                    civ_dead_unit = dataset.genie_units[civ_dead_unit_id]
+
+                civ_animation_id = civ_dead_unit["idle_graphic0"].get_value()
+
+                if civ_animation_id != ability_animation_id:
+                    # Find the corresponding graphics set
+                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                        if civ_id in items[0]:
+                            break
+
+                    # Check if the object for the animation has been created before
+                    obj_exists = graphics_set_id in handled_graphics_set_ids
+                    if not obj_exists:
+                        handled_graphics_set_ids.add(graphics_set_id)
+
+                    obj_prefix = "%sDespawn" % GRAPHICS_SET_LOOKUPS[graphics_set_id][1]
+                    filename_prefix = "despawn_%s_" % GRAPHICS_SET_LOOKUPS[graphics_set_id][2]
+                    AoCAbilitySubprocessor._create_civ_animation(line,
+                                                                 civ_group,
+                                                                 civ_animation_id,
+                                                                 ability_ref,
+                                                                 obj_prefix,
+                                                                 filename_prefix,
+                                                                 obj_exists)
 
         # Activation condition
         # Uses the death condition of the units
@@ -3158,6 +3311,39 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
+            # Create custom civ graphics
+            handled_graphics_set_ids = set()
+            for civ_group in dataset.civ_groups.values():
+                civ = civ_group.civ
+                civ_id = civ_group.get_id()
+
+                # Only proceed if the civ stores the unit in the line
+                if current_unit_id not in civ["units"].get_value().keys():
+                    continue
+
+                civ_animation_id = civ["units"][current_unit_id]["idle_graphic0"].get_value()
+
+                if civ_animation_id != ability_animation_id:
+                    # Find the corresponding graphics set
+                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                        if civ_id in items[0]:
+                            break
+
+                    # Check if the object for the animation has been created before
+                    obj_exists = graphics_set_id in handled_graphics_set_ids
+                    if not obj_exists:
+                        handled_graphics_set_ids.add(graphics_set_id)
+
+                    obj_prefix = "%sIdle" % GRAPHICS_SET_LOOKUPS[graphics_set_id][1]
+                    filename_prefix = "idle_%s_" % GRAPHICS_SET_LOOKUPS[graphics_set_id][2]
+                    AoCAbilitySubprocessor._create_civ_animation(line,
+                                                                 civ_group,
+                                                                 civ_animation_id,
+                                                                 ability_ref,
+                                                                 obj_prefix,
+                                                                 filename_prefix,
+                                                                 obj_exists)
+
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
@@ -3370,6 +3556,39 @@ class AoCAbilitySubprocessor:
             animations_set.append(animation_expected_pointer)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
+
+            # Create custom civ graphics
+            handled_graphics_set_ids = set()
+            for civ_group in dataset.civ_groups.values():
+                civ = civ_group.civ
+                civ_id = civ_group.get_id()
+
+                # Only proceed if the civ stores the unit in the line
+                if current_unit_id not in civ["units"].get_value().keys():
+                    continue
+
+                civ_animation_id = civ["units"][current_unit_id]["move_graphics"].get_value()
+
+                if civ_animation_id != ability_animation_id:
+                    # Find the corresponding graphics set
+                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                        if civ_id in items[0]:
+                            break
+
+                    # Check if the object for the animation has been created before
+                    obj_exists = graphics_set_id in handled_graphics_set_ids
+                    if not obj_exists:
+                        handled_graphics_set_ids.add(graphics_set_id)
+
+                    obj_prefix = "%sMove" % GRAPHICS_SET_LOOKUPS[graphics_set_id][1]
+                    filename_prefix = "move_%s_" % GRAPHICS_SET_LOOKUPS[graphics_set_id][2]
+                    AoCAbilitySubprocessor._create_civ_animation(line,
+                                                                 civ_group,
+                                                                 civ_animation_id,
+                                                                 ability_ref,
+                                                                 obj_prefix,
+                                                                 filename_prefix,
+                                                                 obj_exists)
 
         # Command Sound
         ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
@@ -4194,7 +4413,7 @@ class AoCAbilitySubprocessor:
         ability_location = ExpectedPointer(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id  = -1
+        ability_animation_id = -1
 
         if isinstance(line, GenieVillagerGroup) and restock_target_id == 50:
             # Search for the build graphic of farms
@@ -5843,6 +6062,17 @@ class AoCAbilitySubprocessor:
     def _create_animation(line, animation_id, ability_ref, ability_name, filename_prefix):
         """
         Generates an animation for an ability.
+
+        :param line: ConverterObjectGroup that the animation object is added to.
+        :type line: ConverterObjectGroup
+        :param animation_id: ID of the animation in the dataset.
+        :type animation_id: int
+        :param ability_ref: Reference of the ability object the animation is nested in.
+        :type ability_ref: str
+        :param ability_name: Name of the ability object.
+        :type ability_name: str
+        :param filename_prefix: Prefix for the animation PNG and sprite files.
+        :type filename_prefix: str
         """
         dataset = line.data
         head_unit_id = line.get_head_unit_id()
@@ -5887,6 +6117,106 @@ class AoCAbilitySubprocessor:
         animation_expected_pointer = ExpectedPointer(line, animation_ref)
 
         return animation_expected_pointer
+
+    @staticmethod
+    def _create_civ_animation(line, civ_group, animation_id, ability_ref,
+                              ability_name, filename_prefix, exists=False):
+        """
+        Generates an animation as a patch for a civ.
+
+        :param line: ConverterObjectGroup that the animation object is added to.
+        :type line: ConverterObjectGroup
+        :param civ_group: ConverterObjectGroup that patches the animation object into the ability.
+        :type civ_group: ConverterObjectGroup
+        :param animation_id: ID of the animation in the dataset.
+        :type animation_id: int
+        :param ability_ref: Reference of the ability object the animation is nested in.
+        :type ability_ref: str
+        :param ability_name: Name of the ability object.
+        :type ability_name: str
+        :param filename_prefix: Prefix for the animation PNG and sprite files.
+        :type filename_prefix: str
+        :param exists: Tells the method if the animation object has already been created.
+        :type exists: bool
+        """
+        dataset = civ_group.data
+        head_unit_id = line.get_head_unit_id()
+        civ_id = civ_group.get_id()
+
+        if isinstance(line, GenieBuildingLineGroup):
+            name_lookup_dict = BUILDING_LINE_LOOKUPS
+
+        elif isinstance(line, GenieAmbientGroup):
+            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
+
+        elif isinstance(line, GenieVariantGroup):
+            name_lookup_dict = VARIANT_GROUP_LOOKUPS
+
+        else:
+            name_lookup_dict = UNIT_LINE_LOOKUPS
+
+        game_entity_name = name_lookup_dict[head_unit_id][0]
+        civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
+
+        patch_target_ref = "%s" % (ability_ref)
+        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = "%s%sAnimationWrapper" % (game_entity_name, ability_name)
+        wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects)
+        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.set_location(ExpectedPointer(civ_group, civ_name))
+
+        # Nyan patch
+        nyan_patch_name = "%s%sAnimation" % (game_entity_name, ability_name)
+        nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
+        nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+
+        # If the animation object already exists, we do not need to create it again
+        if exists:
+            # Point to a previously created animation object
+            animation_ref = "%s.%sAnimation" % (ability_ref, ability_name)
+            animation_expected_pointer = ExpectedPointer(line, animation_ref)
+
+        else:
+            # Create the animation object
+            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                  animation_id,
+                                                                                  ability_ref,
+                                                                                  ability_name,
+                                                                                  filename_prefix)
+
+        # Patch animation into ability
+        nyan_patch_raw_api_object.add_raw_patch_member("animations",
+                                                       [animation_expected_pointer],
+                                                       "engine.ability.specialization.AnimatedAbility",
+                                                       MemberOperator.ASSIGN)
+
+        patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_expected_pointer,
+                                              "engine.aux.patch.Patch")
+
+        civ_group.add_raw_api_object(wrapper_raw_api_object)
+        civ_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        # Add patch to civ_setup
+        civ_expected_pointer = ExpectedPointer(civ_group, civ_name)
+        wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
+        push_object = RawMemberPush(civ_expected_pointer,
+                                    "civ_setup",
+                                    "engine.aux.civ.Civilization",
+                                    [wrapper_expected_pointer])
+        civ_group.add_raw_member_push(push_object)
 
     @staticmethod
     def _create_sound(line, sound_id, ability_ref, ability_name, filename_prefix):
